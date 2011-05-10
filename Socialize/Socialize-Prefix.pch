@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Socialize' target in the 'Socialize' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
