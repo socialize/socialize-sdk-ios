@@ -17,7 +17,7 @@
     
     int number = [test intForfailedCase];
     NSLog(@"NUBMER ------->%i", number);
-    GHAssertEquals(number, 2, @"Should fail");
+    GHAssertEquals(number, 1, @"ShouldPass");
 }
 
 - (void) testSecondUT 
