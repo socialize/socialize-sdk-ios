@@ -7,15 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C6EC78E13798FA10073AE65 /* UnitTestConfigurationCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6EC78C13798FA10073AE65 /* UnitTestConfigurationCheck.h */; };
-		5C6EC78F13798FA10073AE65 /* UnitTestConfigurationCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EC78D13798FA10073AE65 /* UnitTestConfigurationCheck.m */; };
+		5C6AAC66137C40C100AF0219 /* SocializeActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC64137C40C100AF0219 /* SocializeActivity.h */; };
+		5C6AAC67137C40C100AF0219 /* SocializeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6AAC65137C40C100AF0219 /* SocializeActivity.m */; };
+		5C6AAC70137C531100AF0219 /* SocializeComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC6E137C531100AF0219 /* SocializeComment.h */; };
+		5C6AAC71137C531100AF0219 /* SocializeComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6AAC6F137C531100AF0219 /* SocializeComment.m */; };
+		5C6AAC77137C714800AF0219 /* SocializeEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC75137C714700AF0219 /* SocializeEntity.h */; };
+		5C6AAC78137C714800AF0219 /* SocializeEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6AAC76137C714700AF0219 /* SocializeEntity.m */; };
+		5C6AAC7C137C8A4E00AF0219 /* SocializeObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC7A137C8A4E00AF0219 /* SocializeObject.h */; };
+		5C6AAC7D137C8A4E00AF0219 /* SocializeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6AAC7B137C8A4E00AF0219 /* SocializeObject.m */; };
+		5C6AAC83137C8F9000AF0219 /* SocializeApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC81137C8F8F00AF0219 /* SocializeApplication.h */; };
+		5C6AAC84137C8F9000AF0219 /* SocializeApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6AAC82137C8F9000AF0219 /* SocializeApplication.m */; };
+		5C6AAC88137C8FDB00AF0219 /* SocializeUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC86137C8FDA00AF0219 /* SocializeUser.h */; };
+		5C6AAC89137C8FDB00AF0219 /* SocializeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6AAC87137C8FDB00AF0219 /* SocializeUser.m */; };
 		5C6EC7971379CF7D0073AE65 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DABE1378824800B11B78 /* libSocialize.a */; };
 		5CC3DAC21378824800B11B78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
 		5CC3DAEC1378859000B11B78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
 		5CC3DAF31378859000B11B78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CC3DAF11378859000B11B78 /* InfoPlist.strings */; };
 		5CC3DB121378889E00B11B78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
 		5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
-		5CC3DB351378A14E00B11B78 /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3DB341378A14E00B11B78 /* MyClass.m */; };
+		5CEC337C1381AFCD00F100B1 /* SocializeObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC337B1381AFCD00F100B1 /* SocializeObjectTests.m */; };
 		5CFA26311379D61F003675B8 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CFA26301379D61F003675B8 /* GHUnitIOS.framework */; };
 		5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */; };
 /* End PBXBuildFile section */
@@ -31,8 +41,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5C6EC78C13798FA10073AE65 /* UnitTestConfigurationCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitTestConfigurationCheck.h; sourceTree = "<group>"; };
-		5C6EC78D13798FA10073AE65 /* UnitTestConfigurationCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitTestConfigurationCheck.m; sourceTree = "<group>"; };
+		5C6AAC64137C40C100AF0219 /* SocializeActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeActivity.h; sourceTree = "<group>"; };
+		5C6AAC65137C40C100AF0219 /* SocializeActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeActivity.m; sourceTree = "<group>"; };
+		5C6AAC6E137C531100AF0219 /* SocializeComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeComment.h; sourceTree = "<group>"; };
+		5C6AAC6F137C531100AF0219 /* SocializeComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeComment.m; sourceTree = "<group>"; };
+		5C6AAC75137C714700AF0219 /* SocializeEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeEntity.h; sourceTree = "<group>"; };
+		5C6AAC76137C714700AF0219 /* SocializeEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeEntity.m; sourceTree = "<group>"; };
+		5C6AAC7A137C8A4E00AF0219 /* SocializeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeObject.h; sourceTree = "<group>"; };
+		5C6AAC7B137C8A4E00AF0219 /* SocializeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeObject.m; sourceTree = "<group>"; };
+		5C6AAC81137C8F8F00AF0219 /* SocializeApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeApplication.h; sourceTree = "<group>"; };
+		5C6AAC82137C8F9000AF0219 /* SocializeApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeApplication.m; sourceTree = "<group>"; };
+		5C6AAC86137C8FDA00AF0219 /* SocializeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUser.h; sourceTree = "<group>"; };
+		5C6AAC87137C8FDB00AF0219 /* SocializeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUser.m; sourceTree = "<group>"; };
 		5CC3DABE1378824800B11B78 /* libSocialize.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSocialize.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC3DAC11378824800B11B78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5CC3DAC51378824800B11B78 /* Socialize-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Socialize-Prefix.pch"; sourceTree = "<group>"; };
@@ -42,8 +62,8 @@
 		5CC3DAF41378859000B11B78 /* unitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "unitTests-Prefix.pch"; sourceTree = "<group>"; };
 		5CC3DB101378889E00B11B78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		5CC3DB111378889E00B11B78 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		5CC3DB331378A14E00B11B78 /* MyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClass.h; sourceTree = "<group>"; };
-		5CC3DB341378A14E00B11B78 /* MyClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClass.m; sourceTree = "<group>"; };
+		5CEC337A1381AFCD00F100B1 /* SocializeObjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeObjectTests.h; sourceTree = "<group>"; };
+		5CEC337B1381AFCD00F100B1 /* SocializeObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeObjectTests.m; sourceTree = "<group>"; };
 		5CFA26301379D61F003675B8 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/GHUnitIOS.framework; sourceTree = "<group>"; };
 		5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +92,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C6AAC62137C3F5500AF0219 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C6AAC8B137C9CBA00AF0219 /* Factories */,
+				5C6AAC64137C40C100AF0219 /* SocializeActivity.h */,
+				5C6AAC65137C40C100AF0219 /* SocializeActivity.m */,
+				5C6AAC6E137C531100AF0219 /* SocializeComment.h */,
+				5C6AAC6F137C531100AF0219 /* SocializeComment.m */,
+				5C6AAC75137C714700AF0219 /* SocializeEntity.h */,
+				5C6AAC76137C714700AF0219 /* SocializeEntity.m */,
+				5C6AAC7A137C8A4E00AF0219 /* SocializeObject.h */,
+				5C6AAC7B137C8A4E00AF0219 /* SocializeObject.m */,
+				5C6AAC81137C8F8F00AF0219 /* SocializeApplication.h */,
+				5C6AAC82137C8F9000AF0219 /* SocializeApplication.m */,
+				5C6AAC86137C8FDA00AF0219 /* SocializeUser.h */,
+				5C6AAC87137C8FDB00AF0219 /* SocializeUser.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		5C6AAC8B137C9CBA00AF0219 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Factories;
+			sourceTree = "<group>";
+		};
 		5CC3DAB1137881B900B11B78 = {
 			isa = PBXGroup;
 			children = (
@@ -105,9 +152,8 @@
 		5CC3DAC31378824800B11B78 /* Socialize */ = {
 			isa = PBXGroup;
 			children = (
+				5C6AAC62137C3F5500AF0219 /* Models */,
 				5CC3DAC41378824800B11B78 /* Supporting Files */,
-				5C6EC78C13798FA10073AE65 /* UnitTestConfigurationCheck.h */,
-				5C6EC78D13798FA10073AE65 /* UnitTestConfigurationCheck.m */,
 			);
 			path = Socialize;
 			sourceTree = "<group>";
@@ -124,8 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				5CC3DAEF1378859000B11B78 /* Main Files */,
-				5CC3DB331378A14E00B11B78 /* MyClass.h */,
-				5CC3DB341378A14E00B11B78 /* MyClass.m */,
+				5CEC337A1381AFCD00F100B1 /* SocializeObjectTests.h */,
+				5CEC337B1381AFCD00F100B1 /* SocializeObjectTests.m */,
 			);
 			path = unitTests;
 			sourceTree = "<group>";
@@ -148,7 +194,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C6EC78E13798FA10073AE65 /* UnitTestConfigurationCheck.h in Headers */,
+				5C6AAC66137C40C100AF0219 /* SocializeActivity.h in Headers */,
+				5C6AAC70137C531100AF0219 /* SocializeComment.h in Headers */,
+				5C6AAC77137C714800AF0219 /* SocializeEntity.h in Headers */,
+				5C6AAC7C137C8A4E00AF0219 /* SocializeObject.h in Headers */,
+				5C6AAC83137C8F9000AF0219 /* SocializeApplication.h in Headers */,
+				5C6AAC88137C8FDB00AF0219 /* SocializeUser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +248,7 @@
 		5CC3DAB3137881B900B11B78 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				ORGANIZATIONNAME = "PointAbout, Inc.";
+				ORGANIZATIONNAME = "Socialize, Inc.";
 			};
 			buildConfigurationList = 5CC3DAB6137881B900B11B78 /* Build configuration list for PBXProject "SocializeSDK" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -250,7 +301,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C6EC78F13798FA10073AE65 /* UnitTestConfigurationCheck.m in Sources */,
+				5C6AAC67137C40C100AF0219 /* SocializeActivity.m in Sources */,
+				5C6AAC71137C531100AF0219 /* SocializeComment.m in Sources */,
+				5C6AAC78137C714800AF0219 /* SocializeEntity.m in Sources */,
+				5C6AAC7D137C8A4E00AF0219 /* SocializeObject.m in Sources */,
+				5C6AAC84137C8F9000AF0219 /* SocializeApplication.m in Sources */,
+				5C6AAC89137C8FDB00AF0219 /* SocializeUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,8 +314,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CC3DB351378A14E00B11B78 /* MyClass.m in Sources */,
 				5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */,
+				5CEC337C1381AFCD00F100B1 /* SocializeObjectTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +344,7 @@
 		5CC3DAB8137881BA00B11B78 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = 4.2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
@@ -297,6 +354,7 @@
 		5CC3DAB9137881BA00B11B78 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = 4.2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
@@ -317,6 +375,7 @@
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -336,9 +395,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
-				GCC_VERSION = 4.2;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
