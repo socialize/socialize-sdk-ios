@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C54DE6113830F9800090269 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C54DE6013830F9800090269 /* libOCMock.a */; };
+		5C54DE631383103400090269 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C54DE621383103400090269 /* GHUnitIOS.framework */; };
+		5C54DE65138326EA00090269 /* Headers in Resources */ = {isa = PBXBuildFile; fileRef = 5C54DE64138326EA00090269 /* Headers */; };
+		5C54DE681383376700090269 /* SocializePOOCObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C54DE661383376700090269 /* SocializePOOCObjectFactory.h */; };
+		5C54DE691383376700090269 /* SocializePOOCObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C54DE671383376700090269 /* SocializePOOCObjectFactory.m */; };
 		5C6AAC66137C40C100AF0219 /* SocializeActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC64137C40C100AF0219 /* SocializeActivity.h */; };
 		5C6AAC67137C40C100AF0219 /* SocializeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6AAC65137C40C100AF0219 /* SocializeActivity.m */; };
 		5C6AAC70137C531100AF0219 /* SocializeComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC6E137C531100AF0219 /* SocializeComment.h */; };
@@ -25,9 +30,11 @@
 		5CC3DAF31378859000B11B78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CC3DAF11378859000B11B78 /* InfoPlist.strings */; };
 		5CC3DB121378889E00B11B78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
 		5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
-		5CEC337C1381AFCD00F100B1 /* SocializeObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC337B1381AFCD00F100B1 /* SocializeObjectTests.m */; };
-		5CFA26311379D61F003675B8 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CFA26301379D61F003675B8 /* GHUnitIOS.framework */; };
+		5CEC337C1381AFCD00F100B1 /* SocializeObjectFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC337B1381AFCD00F100B1 /* SocializeObjectFactoryTests.m */; };
 		5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */; };
+		9A3095B01384430700292DC6 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AFDDFB313840515009BB902 /* SocializeConfigurationInfo.plist */; };
+		9A3095B31384DA1F00292DC6 /* SocializeConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A3095B11384DA1F00292DC6 /* SocializeConfiguration.h */; };
+		9A3095B41384DA1F00292DC6 /* SocializeConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3095B21384DA1F00292DC6 /* SocializeConfiguration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +48,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C54DE6013830F9800090269 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = unitTests/Libraries/libOCMock.a; sourceTree = "<group>"; };
+		5C54DE621383103400090269 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
+		5C54DE64138326EA00090269 /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Headers; path = unitTests/Libraries/Headers; sourceTree = "<group>"; };
+		5C54DE661383376700090269 /* SocializePOOCObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializePOOCObjectFactory.h; sourceTree = "<group>"; };
+		5C54DE671383376700090269 /* SocializePOOCObjectFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializePOOCObjectFactory.m; sourceTree = "<group>"; };
 		5C6AAC64137C40C100AF0219 /* SocializeActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeActivity.h; sourceTree = "<group>"; };
 		5C6AAC65137C40C100AF0219 /* SocializeActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeActivity.m; sourceTree = "<group>"; };
 		5C6AAC6E137C531100AF0219 /* SocializeComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeComment.h; sourceTree = "<group>"; };
@@ -62,10 +74,12 @@
 		5CC3DAF41378859000B11B78 /* unitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "unitTests-Prefix.pch"; sourceTree = "<group>"; };
 		5CC3DB101378889E00B11B78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		5CC3DB111378889E00B11B78 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		5CEC337A1381AFCD00F100B1 /* SocializeObjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeObjectTests.h; sourceTree = "<group>"; };
-		5CEC337B1381AFCD00F100B1 /* SocializeObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeObjectTests.m; sourceTree = "<group>"; };
-		5CFA26301379D61F003675B8 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/GHUnitIOS.framework; sourceTree = "<group>"; };
+		5CEC337A1381AFCD00F100B1 /* SocializeObjectFactoryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeObjectFactoryTests.h; sourceTree = "<group>"; };
+		5CEC337B1381AFCD00F100B1 /* SocializeObjectFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeObjectFactoryTests.m; sourceTree = "<group>"; };
 		5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
+		9A3095B11384DA1F00292DC6 /* SocializeConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeConfiguration.h; sourceTree = "<group>"; };
+		9A3095B21384DA1F00292DC6 /* SocializeConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeConfiguration.m; sourceTree = "<group>"; };
+		9AFDDFB313840515009BB902 /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CFA26311379D61F003675B8 /* GHUnitIOS.framework in Frameworks */,
+				5C54DE631383103400090269 /* GHUnitIOS.framework in Frameworks */,
+				5C54DE6113830F9800090269 /* libOCMock.a in Frameworks */,
 				5C6EC7971379CF7D0073AE65 /* libSocialize.a in Frameworks */,
 				5CC3DB121378889E00B11B78 /* CoreGraphics.framework in Frameworks */,
 				5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */,
@@ -115,6 +130,8 @@
 		5C6AAC8B137C9CBA00AF0219 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
+				5C54DE661383376700090269 /* SocializePOOCObjectFactory.h */,
+				5C54DE671383376700090269 /* SocializePOOCObjectFactory.m */,
 			);
 			name = Factories;
 			sourceTree = "<group>";
@@ -122,10 +139,10 @@
 		5CC3DAB1137881B900B11B78 = {
 			isa = PBXGroup;
 			children = (
-				5CC3DABE1378824800B11B78 /* libSocialize.a */,
 				5CC3DAC31378824800B11B78 /* Socialize */,
 				5CC3DAEE1378859000B11B78 /* unitTests */,
 				5CC3DAC01378824800B11B78 /* Frameworks */,
+				5CEB6CE113858BAA00462EFF /* Libraries */,
 				5CC3DABF1378824800B11B78 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -141,7 +158,9 @@
 		5CC3DAC01378824800B11B78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5CFA26301379D61F003675B8 /* GHUnitIOS.framework */,
+				5C54DE64138326EA00090269 /* Headers */,
+				5C54DE6013830F9800090269 /* libOCMock.a */,
+				5C54DE621383103400090269 /* GHUnitIOS.framework */,
 				5CC3DB101378889E00B11B78 /* CoreGraphics.framework */,
 				5CC3DB111378889E00B11B78 /* UIKit.framework */,
 				5CC3DAC11378824800B11B78 /* Foundation.framework */,
@@ -152,8 +171,10 @@
 		5CC3DAC31378824800B11B78 /* Socialize */ = {
 			isa = PBXGroup;
 			children = (
+				9A3095B51384F04100292DC6 /* Configuration */,
 				5C6AAC62137C3F5500AF0219 /* Models */,
 				5CC3DAC41378824800B11B78 /* Supporting Files */,
+				9AFDDFB313840515009BB902 /* SocializeConfigurationInfo.plist */,
 			);
 			path = Socialize;
 			sourceTree = "<group>";
@@ -170,8 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				5CC3DAEF1378859000B11B78 /* Main Files */,
-				5CEC337A1381AFCD00F100B1 /* SocializeObjectTests.h */,
-				5CEC337B1381AFCD00F100B1 /* SocializeObjectTests.m */,
+				5CEC337A1381AFCD00F100B1 /* SocializeObjectFactoryTests.h */,
+				5CEC337B1381AFCD00F100B1 /* SocializeObjectFactoryTests.m */,
 			);
 			path = unitTests;
 			sourceTree = "<group>";
@@ -187,6 +208,23 @@
 			name = "Main Files";
 			sourceTree = "<group>";
 		};
+		5CEB6CE113858BAA00462EFF /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				5CC3DABE1378824800B11B78 /* libSocialize.a */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		9A3095B51384F04100292DC6 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				9A3095B11384DA1F00292DC6 /* SocializeConfiguration.h */,
+				9A3095B21384DA1F00292DC6 /* SocializeConfiguration.m */,
+			);
+			name = Configuration;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -200,6 +238,8 @@
 				5C6AAC7C137C8A4E00AF0219 /* SocializeObject.h in Headers */,
 				5C6AAC83137C8F9000AF0219 /* SocializeApplication.h in Headers */,
 				5C6AAC88137C8FDB00AF0219 /* SocializeUser.h in Headers */,
+				5C54DE681383376700090269 /* SocializePOOCObjectFactory.h in Headers */,
+				9A3095B31384DA1F00292DC6 /* SocializeConfiguration.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +314,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CC3DAF31378859000B11B78 /* InfoPlist.strings in Resources */,
+				5C54DE65138326EA00090269 /* Headers in Resources */,
+				9A3095B01384430700292DC6 /* SocializeConfigurationInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +349,8 @@
 				5C6AAC7D137C8A4E00AF0219 /* SocializeObject.m in Sources */,
 				5C6AAC84137C8F9000AF0219 /* SocializeApplication.m in Sources */,
 				5C6AAC89137C8FDB00AF0219 /* SocializeUser.m in Sources */,
+				5C54DE691383376700090269 /* SocializePOOCObjectFactory.m in Sources */,
+				9A3095B41384DA1F00292DC6 /* SocializeConfiguration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,7 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */,
-				5CEC337C1381AFCD00F100B1 /* SocializeObjectTests.m in Sources */,
+				5CEC337C1381AFCD00F100B1 /* SocializeObjectFactoryTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +390,11 @@
 			buildSettings = {
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnit.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
+					"\"$(SRCROOT)\"/Socialize",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
 			};
@@ -356,6 +405,11 @@
 			buildSettings = {
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnit.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
+					"\"$(SRCROOT)\"/Socialize",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
 			};
@@ -418,6 +472,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/unitTests\"",
+					"\"$(SRCROOT)/unitTests/Frameworks\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -432,7 +487,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)\"/unitTests/GHUnit.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnit.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
 					"\"$(SRCROOT)\"/Socialize",
 				);
 				INFOPLIST_FILE = "unitTests/unitTests-Info.plist";
@@ -440,6 +496,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/unitTests/Libraries\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -463,6 +520,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/unitTests\"",
+					"\"$(SRCROOT)/unitTests/Frameworks\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -473,7 +531,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)\"/unitTests/GHUnit.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnit.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
 					"\"$(SRCROOT)\"/Socialize",
 				);
 				INFOPLIST_FILE = "unitTests/unitTests-Info.plist";
@@ -481,6 +540,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/unitTests/Libraries\"",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (

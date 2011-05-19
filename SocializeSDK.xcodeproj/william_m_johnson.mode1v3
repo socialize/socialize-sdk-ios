@@ -336,14 +336,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {580, 277}}</string>
+								<string>{{0, 0}, {580, 269}}</string>
 								<key>RubberWindowFrame</key>
 								<string>326 295 788 504 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>277pt</string>
+							<string>269pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -356,14 +356,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 282}, {580, 181}}</string>
+								<string>{{0, 274}, {580, 189}}</string>
 								<key>RubberWindowFrame</key>
 								<string>326 295 788 504 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>181pt</string>
+							<string>189pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -382,9 +382,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>9A2C2014137908AF00FD8FD1</string>
+				<string>9A9D37FC1383CB5D00B47EA6</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>9A2C2015137908AF00FD8FD1</string>
+				<string>9A9D37FD1383CB5D00B47EA6</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -523,7 +523,7 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>9A2C2017137908AF00FD8FD1</string>
-		<string>/Users/william_m_johnson/Desktop/Dropbox/Personal/William/Development/PointAbout/Projects/Socialize/iOS/sdk/SocializeSDK/SocializeSDK.xcodeproj</string>
+		<string>/Users/william_m_johnson/Desktop/Dropbox/Personal/William/Development/PointAbout/Projects/Socialize/iOS/socialize-sdk-ios/SocializeSDK.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>326 295 788 504 0 0 1440 878 </string>
@@ -603,7 +603,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>9A2C2017137908AF00FD8FD1</string>
-				<string>9A2C2018137908AF00FD8FD1</string>
+				<string>9A9D37FE1383CB5D00B47EA6</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

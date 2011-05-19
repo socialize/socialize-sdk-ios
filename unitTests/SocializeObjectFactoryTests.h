@@ -18,11 +18,15 @@
 
 //#import "application_headers" as required
 
-
-@interface SocializeObjectTests : GHTestCase {
-    
+@class SocializePOOCObjectFactory;
+@class SocializeConfiguration;
+@interface SocializeObjectTests : GHTestCase 
+{
+    @private
+        SocializePOOCObjectFactory * factory;  
+        //NSArray * socializeObjectPrototypes;
+        SocializeConfiguration * configuration;
 }
 
 
--(void)testSocializeObject;
 @end
