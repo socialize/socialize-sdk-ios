@@ -7,18 +7,18 @@
 //
 #import <OCMock/OCMock.h>
 #import "SocializeComment.h"
-#import "SocializeObjectFactoryTests.h"
+#import "SocializePOOCObjectFactoryTests.h"
 #import "SocializeObject.h"
 #import "SocializePOOCObjectFactory.h"
 #import "SocializeConfiguration.h"
 
-@interface SocializeObjectTests ()
+@interface SocializePOOCObjectFactoryTests ()
 -(id)helperCreateMockConfigurationWithPrototypeConfiguration:(NSDictionary *)prototypeConfiguration;
 -(void)helperTestThatPrototypesExistsForPrototypeConfiguration:(NSDictionary *)prototypeConfiguration 
                                                      inFactory:(SocializePOOCObjectFactory *)theTestFactory;
 @end
 
-@implementation SocializeObjectTests
+@implementation SocializePOOCObjectFactoryTests
 
 
 - (void)setUpClass 

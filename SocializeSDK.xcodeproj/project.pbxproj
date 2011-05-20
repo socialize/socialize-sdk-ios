@@ -33,7 +33,7 @@
 		5CD4882D1386C42300E60C4C /* profile_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CD4882C1386C42300E60C4C /* profile_functions.c */; };
 		5CD488301387046100E60C4C /* UnitTest-SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CD4882F1387046100E60C4C /* UnitTest-SocializeConfigurationInfo.plist */; };
 		5CD4883213870E6300E60C4C /* UnitTest-SocializeConfigurationInfo-EMPTY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CD4883113870E6300E60C4C /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */; };
-		5CEC337C1381AFCD00F100B1 /* SocializeObjectFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC337B1381AFCD00F100B1 /* SocializeObjectFactoryTests.m */; };
+		5CEC337C1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC337B1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.m */; };
 		5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */; };
 		5CFCBE421385B66300EF5073 /* SocializeConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCBE411385B66300EF5073 /* SocializeConfigurationTests.m */; };
 		9A3095B01384430700292DC6 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AFDDFB313840515009BB902 /* SocializeConfigurationInfo.plist */; };
@@ -81,8 +81,8 @@
 		5CD4882C1386C42300E60C4C /* profile_functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = profile_functions.c; sourceTree = "<group>"; };
 		5CD4882F1387046100E60C4C /* UnitTest-SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UnitTest-SocializeConfigurationInfo.plist"; sourceTree = "<group>"; };
 		5CD4883113870E6300E60C4C /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UnitTest-SocializeConfigurationInfo-EMPTY.plist"; sourceTree = "<group>"; };
-		5CEC337A1381AFCD00F100B1 /* SocializeObjectFactoryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeObjectFactoryTests.h; sourceTree = "<group>"; };
-		5CEC337B1381AFCD00F100B1 /* SocializeObjectFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeObjectFactoryTests.m; sourceTree = "<group>"; };
+		5CEC337A1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SocializePOOCObjectFactoryTests.h; sourceTree = "<group>"; };
+		5CEC337B1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializePOOCObjectFactoryTests.m; sourceTree = "<group>"; };
 		5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
 		5CFCBE401385B66300EF5073 /* SocializeConfigurationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeConfigurationTests.h; sourceTree = "<group>"; };
 		5CFCBE411385B66300EF5073 /* SocializeConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeConfigurationTests.m; sourceTree = "<group>"; };
@@ -252,8 +252,8 @@
 		5CFCBE371385952600EF5073 /* Factory Tests */ = {
 			isa = PBXGroup;
 			children = (
-				5CEC337A1381AFCD00F100B1 /* SocializeObjectFactoryTests.h */,
-				5CEC337B1381AFCD00F100B1 /* SocializeObjectFactoryTests.m */,
+				5CEC337A1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.h */,
+				5CEC337B1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.m */,
 			);
 			name = "Factory Tests";
 			sourceTree = "<group>";
@@ -431,7 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */,
-				5CEC337C1381AFCD00F100B1 /* SocializeObjectFactoryTests.m in Sources */,
+				5CEC337C1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.m in Sources */,
 				5CFCBE421385B66300EF5073 /* SocializeConfigurationTests.m in Sources */,
 				5CD4882D1386C42300E60C4C /* profile_functions.c in Sources */,
 			);

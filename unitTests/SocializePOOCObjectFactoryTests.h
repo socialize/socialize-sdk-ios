@@ -17,7 +17,7 @@
 
 @class SocializePOOCObjectFactory;
 @class SocializeConfiguration;
-@interface SocializeObjectTests : GHTestCase 
+@interface SocializePOOCObjectFactoryTests : GHTestCase 
 {
 
 }
