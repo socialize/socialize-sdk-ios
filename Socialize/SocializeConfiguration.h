@@ -20,7 +20,10 @@ extern NSString * const kSocializeModuleConfigurationPrototypesKey;
 
 -(id)initWithWithConfigurationPath:(NSString *)configurationFilePath;
 
-@property(nonatomic, readonly) NSDictionary * configurationInfo;
++(NSString *)defaultConfigurationPath;
 
+@property(nonatomic, readonly) NSDictionary * configurationInfo;
+@property(nonatomic, readonly) NSString * configurationFilePath;
+@property(nonatomic, readonly) NSString * defaultConfigurationPath;
 
 @end

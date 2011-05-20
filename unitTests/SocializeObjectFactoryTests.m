@@ -13,7 +13,9 @@
 #import "SocializeConfiguration.h"
 
 @interface SocializeObjectTests ()
-
+-(id)helperCreateMockConfigurationWithPrototypeConfiguration:(NSDictionary *)prototypeConfiguration;
+-(void)helperTestThatPrototypesExistsForPrototypeConfiguration:(NSDictionary *)prototypeConfiguration 
+                                                     inFactory:(SocializePOOCObjectFactory *)theTestFactory;
 @end
 
 @implementation SocializeObjectTests
@@ -21,22 +23,21 @@
 
 - (void)setUpClass 
 {
-    factory = [[SocializePOOCObjectFactory alloc]init]; 
-    configuration = [[SocializeConfiguration alloc] init];
+    
 }
 
 
 - (void)tearDownClass 
 {
-    [factory release];
-    [configuration release];
 }
 
-- (void)setUp {
+- (void)setUp 
+{
     // Run before each test method
 }
 
-- (void)tearDown {
+- (void)tearDown 
+{
     // Run after each test method
 }  
 
@@ -46,49 +47,114 @@
 //    GHAssertThrows([factory  addPrototype:[NSURL class] forKey:@"NSURL"],
 //                   @"Factory did not throw exception when adding a unsupported prototype");
 //}
+-(void)testCreateFactoryWithConfigurationInjection
+{
+    NSDictionary * prototypeConfiguration = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          @"SocializeComment",@"SocializeComment", 
+                                          @"SocializeEntity", @"SocializeEntity",
+                                          nil];
+    
+    id mockConfiguration = [self helperCreateMockConfigurationWithPrototypeConfiguration:prototypeConfiguration];   
+    
+    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]initializeWithConfiguration:mockConfiguration]autorelease];
+    
+    [self helperTestThatPrototypesExistsForPrototypeConfiguration:prototypeConfiguration inFactory:myTestFactory];
+ 
+}
+
+-(void)testCreateFactoryWithDefaultConfiguration
+{
+    
+    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init]autorelease];
+    SocializeConfiguration * defaultConfiguration = [[[SocializeConfiguration alloc]init]autorelease];
+    
+    NSDictionary * defaultPrototypeConfiguration = [defaultConfiguration.configurationInfo objectForKey:kSocializeModuleConfigurationPrototypesKey];
+    
+    [self helperTestThatPrototypesExistsForPrototypeConfiguration:defaultPrototypeConfiguration inFactory:myTestFactory];
+   
+}
+
+-(void)testCreateFactoryWithNilOrEmptyConfiguration
+{
+
+    
+    //Configuration is nil
+    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initializeWithConfiguration:nil]autorelease],
+                   @"Should throw exception");
+
+    
+    //Configuration NOT nil, configInfo nil
+    id mockConfiguration1 = [OCMockObject mockForClass:[SocializeConfiguration class]];
+    [[[mockConfiguration1 stub] andReturn:nil] configurationInfo];
+    
+    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initializeWithConfiguration:mockConfiguration1]autorelease],
+                   @"Should throw exception");
+    
+    
+    //Configuration NOT nil, ConfigInfo Empty, prototypes nil
+    id mockConfiguration2 = [self helperCreateMockConfigurationWithPrototypeConfiguration:nil];
+    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initializeWithConfiguration:mockConfiguration2]autorelease],
+                   @"Should throw exception");
+    
+    
+    //Configuration NOT nil, ConfigInfo NOT Empty, prototypes Empty
+    id mockConfiguration3 = [self helperCreateMockConfigurationWithPrototypeConfiguration:
+                              [[[NSDictionary alloc]init]autorelease]];
+    
+    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initializeWithConfiguration:mockConfiguration3]autorelease],
+                   @"Should throw exception");
+   
+}
+
+
 
 -(void)testAddPrototypesToFactoriesThatAreNotSocializeObjects
 {
     id mockObject = [OCMockObject mockForClass:[NSObject class]];
-    
     [[mockObject expect] conformsToProtocol:[OCMArg any]];
     
-    GHAssertThrows([factory  addPrototype:mockObject forKey:@"SocializeComment"],
+    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init]autorelease];
+    
+    GHAssertThrows([myTestFactory  addPrototype:mockObject forKey:@"SocializeComment"],
                    @"Factory did not throw exception when adding a non socialize object");
     
-    
-    id mockConfiguration = [OCMockObject mockForClass:[SocializeConfiguration class]];
-    
+    [mockObject verify];
+   
+   
     NSDictionary * prototypeDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"NSBundle",@"SocializeComment", nil];
     
-    NSDictionary * configurationDictionary = [NSDictionary dictionaryWithObjectsAndKeys:prototypeDictionary, kSocializeModuleConfigurationPrototypesKey, nil];
-   
-    [[[mockConfiguration stub] andReturn:configurationDictionary] configurationInfo];
-   
+    id mockConfiguration = [self helperCreateMockConfigurationWithPrototypeConfiguration:prototypeDictionary];
     
-    SocializePOOCObjectFactory * myTestFactory = nil;
     
-    GHAssertThrows(myTestFactory = [[SocializePOOCObjectFactory alloc]initializeWithConfiguration:mockConfiguration],
-               @"Should throw exception");
-
+    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initializeWithConfiguration:mockConfiguration]autorelease],
+                   @"Should throw exception");
+    
 }
 
--(void)testCreateCorrectObjectsThatDoExistInFactory
-{
 
+-(void)testCreateAnObjectThatDoesNotExistInFactory
+{
+    
+    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init]autorelease];
+    
+    GHAssertThrows([myTestFactory createObject:@"hello"], @"Factory did not throw exception for a non existant prototype");
+    
+}
+
+
+#pragma mark helper methods
+-(void)helperTestThatPrototypesExistsForPrototypeConfiguration:(NSDictionary *)prototypeConfiguration 
+                                                     inFactory:(SocializePOOCObjectFactory *)theTestFactory
+{
     NSString * prototypeClassName = nil;
-   
-    //Attempt to retrieve the correct object of the correct class for the key
-    NSDictionary * protypeDictionary = [configuration.configurationInfo objectForKey:kSocializeModuleConfigurationPrototypesKey];
-    
-    for (NSString * prototypeName in [protypeDictionary allKeys]) 
+    for (NSString * protocolName in [prototypeConfiguration allKeys]) 
     {
-        prototypeClassName = (NSString *)[protypeDictionary objectForKey:prototypeName]; 
-    
+        prototypeClassName = (NSString *)[prototypeConfiguration objectForKey:protocolName]; 
+        
         
         Class expectedClass = NSClassFromString(prototypeClassName);
         
-        id actualObject = [factory createObject:prototypeName];
+        id actualObject = [theTestFactory createObject:protocolName];
         
         Class actualClass = [actualObject class];
         
@@ -97,17 +163,29 @@
                      actualClass, expectedClass);
         
     }
+
 }
 
--(void)testCreateAnObjectThatDoesNotExistInFactory
+-(id)helperCreateMockConfigurationWithPrototypeConfiguration:(NSDictionary *)prototypeConfiguration
 {
+    id mockConfiguration = [OCMockObject mockForClass:[SocializeConfiguration class]];
     
-    GHAssertThrows([factory createObject:@"hello"], @"Factory did not throw exception for a non existant prototype");
+    NSDictionary * configurationDictionary = nil;
     
+    if ( prototypeConfiguration != nil ) 
+    {
+        configurationDictionary = [NSDictionary dictionaryWithObjectsAndKeys:prototypeConfiguration, kSocializeModuleConfigurationPrototypesKey, nil];
+    }
+    else
+    {
+        configurationDictionary = [[[NSDictionary alloc]init]autorelease];
         
+    }
+    
+    [[[mockConfiguration stub] andReturn:configurationDictionary] configurationInfo];
+    
+    return  mockConfiguration;
 }
-
-
 
 
 

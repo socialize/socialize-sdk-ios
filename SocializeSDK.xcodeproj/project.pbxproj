@@ -30,8 +30,12 @@
 		5CC3DAF31378859000B11B78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CC3DAF11378859000B11B78 /* InfoPlist.strings */; };
 		5CC3DB121378889E00B11B78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
 		5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
+		5CD4882D1386C42300E60C4C /* profile_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CD4882C1386C42300E60C4C /* profile_functions.c */; };
+		5CD488301387046100E60C4C /* UnitTest-SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CD4882F1387046100E60C4C /* UnitTest-SocializeConfigurationInfo.plist */; };
+		5CD4883213870E6300E60C4C /* UnitTest-SocializeConfigurationInfo-EMPTY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CD4883113870E6300E60C4C /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */; };
 		5CEC337C1381AFCD00F100B1 /* SocializeObjectFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC337B1381AFCD00F100B1 /* SocializeObjectFactoryTests.m */; };
 		5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */; };
+		5CFCBE421385B66300EF5073 /* SocializeConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCBE411385B66300EF5073 /* SocializeConfigurationTests.m */; };
 		9A3095B01384430700292DC6 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AFDDFB313840515009BB902 /* SocializeConfigurationInfo.plist */; };
 		9A3095B31384DA1F00292DC6 /* SocializeConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A3095B11384DA1F00292DC6 /* SocializeConfiguration.h */; };
 		9A3095B41384DA1F00292DC6 /* SocializeConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3095B21384DA1F00292DC6 /* SocializeConfiguration.m */; };
@@ -74,12 +78,17 @@
 		5CC3DAF41378859000B11B78 /* unitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "unitTests-Prefix.pch"; sourceTree = "<group>"; };
 		5CC3DB101378889E00B11B78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		5CC3DB111378889E00B11B78 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		5CD4882C1386C42300E60C4C /* profile_functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = profile_functions.c; sourceTree = "<group>"; };
+		5CD4882F1387046100E60C4C /* UnitTest-SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UnitTest-SocializeConfigurationInfo.plist"; sourceTree = "<group>"; };
+		5CD4883113870E6300E60C4C /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UnitTest-SocializeConfigurationInfo-EMPTY.plist"; sourceTree = "<group>"; };
 		5CEC337A1381AFCD00F100B1 /* SocializeObjectFactoryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeObjectFactoryTests.h; sourceTree = "<group>"; };
 		5CEC337B1381AFCD00F100B1 /* SocializeObjectFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeObjectFactoryTests.m; sourceTree = "<group>"; };
 		5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
+		5CFCBE401385B66300EF5073 /* SocializeConfigurationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeConfigurationTests.h; sourceTree = "<group>"; };
+		5CFCBE411385B66300EF5073 /* SocializeConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeConfigurationTests.m; sourceTree = "<group>"; };
 		9A3095B11384DA1F00292DC6 /* SocializeConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeConfiguration.h; sourceTree = "<group>"; };
 		9A3095B21384DA1F00292DC6 /* SocializeConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeConfiguration.m; sourceTree = "<group>"; };
-		9AFDDFB313840515009BB902 /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
+		9AFDDFB313840515009BB902 /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SocializeConfigurationInfo.plist; path = ../Socialize/SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,10 +180,10 @@
 		5CC3DAC31378824800B11B78 /* Socialize */ = {
 			isa = PBXGroup;
 			children = (
+				5CFCBE341385947800EF5073 /* Utilities */,
 				9A3095B51384F04100292DC6 /* Configuration */,
 				5C6AAC62137C3F5500AF0219 /* Models */,
 				5CC3DAC41378824800B11B78 /* Supporting Files */,
-				9AFDDFB313840515009BB902 /* SocializeConfigurationInfo.plist */,
 			);
 			path = Socialize;
 			sourceTree = "<group>";
@@ -190,9 +199,9 @@
 		5CC3DAEE1378859000B11B78 /* unitTests */ = {
 			isa = PBXGroup;
 			children = (
+				5CFCBE431385CAD100EF5073 /* Resources */,
+				5CD488221386B91B00E60C4C /* Test Files */,
 				5CC3DAEF1378859000B11B78 /* Main Files */,
-				5CEC337A1381AFCD00F100B1 /* SocializeObjectFactoryTests.h */,
-				5CEC337B1381AFCD00F100B1 /* SocializeObjectFactoryTests.m */,
 			);
 			path = unitTests;
 			sourceTree = "<group>";
@@ -200,12 +209,21 @@
 		5CC3DAEF1378859000B11B78 /* Main Files */ = {
 			isa = PBXGroup;
 			children = (
+				5CD4882C1386C42300E60C4C /* profile_functions.c */,
 				5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */,
-				5CC3DAF01378859000B11B78 /* unitTests-Info.plist */,
-				5CC3DAF11378859000B11B78 /* InfoPlist.strings */,
 				5CC3DAF41378859000B11B78 /* unitTests-Prefix.pch */,
 			);
 			name = "Main Files";
+			sourceTree = "<group>";
+		};
+		5CD488221386B91B00E60C4C /* Test Files */ = {
+			isa = PBXGroup;
+			children = (
+				5CFCBE3F1385B60D00EF5073 /* Configuration Tests */,
+				5CFCBE381385953F00EF5073 /* Parser Tests */,
+				5CFCBE371385952600EF5073 /* Factory Tests */,
+			);
+			name = "Test Files";
 			sourceTree = "<group>";
 		};
 		5CEB6CE113858BAA00462EFF /* Libraries */ = {
@@ -214,6 +232,58 @@
 				5CC3DABE1378824800B11B78 /* libSocialize.a */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		5CFCBE341385947800EF5073 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5CFCBE36138594E800EF5073 /* SocializeObjectParsers */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		5CFCBE36138594E800EF5073 /* SocializeObjectParsers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SocializeObjectParsers;
+			sourceTree = "<group>";
+		};
+		5CFCBE371385952600EF5073 /* Factory Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5CEC337A1381AFCD00F100B1 /* SocializeObjectFactoryTests.h */,
+				5CEC337B1381AFCD00F100B1 /* SocializeObjectFactoryTests.m */,
+			);
+			name = "Factory Tests";
+			sourceTree = "<group>";
+		};
+		5CFCBE381385953F00EF5073 /* Parser Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Parser Tests";
+			sourceTree = "<group>";
+		};
+		5CFCBE3F1385B60D00EF5073 /* Configuration Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5CFCBE401385B66300EF5073 /* SocializeConfigurationTests.h */,
+				5CFCBE411385B66300EF5073 /* SocializeConfigurationTests.m */,
+			);
+			name = "Configuration Tests";
+			sourceTree = "<group>";
+		};
+		5CFCBE431385CAD100EF5073 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5CD4883113870E6300E60C4C /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */,
+				5CD4882F1387046100E60C4C /* UnitTest-SocializeConfigurationInfo.plist */,
+				5CC3DAF01378859000B11B78 /* unitTests-Info.plist */,
+				5CC3DAF11378859000B11B78 /* InfoPlist.strings */,
+				9AFDDFB313840515009BB902 /* SocializeConfigurationInfo.plist */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		9A3095B51384F04100292DC6 /* Configuration */ = {
@@ -316,6 +386,8 @@
 				5CC3DAF31378859000B11B78 /* InfoPlist.strings in Resources */,
 				5C54DE65138326EA00090269 /* Headers in Resources */,
 				9A3095B01384430700292DC6 /* SocializeConfigurationInfo.plist in Resources */,
+				5CD488301387046100E60C4C /* UnitTest-SocializeConfigurationInfo.plist in Resources */,
+				5CD4883213870E6300E60C4C /* UnitTest-SocializeConfigurationInfo-EMPTY.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +432,8 @@
 			files = (
 				5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */,
 				5CEC337C1381AFCD00F100B1 /* SocializeObjectFactoryTests.m in Sources */,
+				5CFCBE421385B66300EF5073 /* SocializeConfigurationTests.m in Sources */,
+				5CD4882D1386C42300E60C4C /* profile_functions.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +508,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -456,6 +531,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -476,14 +552,14 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "unitTests/unitTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -523,11 +599,11 @@
 					"\"$(SRCROOT)/unitTests/Frameworks\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "unitTests/unitTests-Prefix.pch";
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (

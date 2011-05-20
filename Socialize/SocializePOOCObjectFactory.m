@@ -13,12 +13,12 @@
 @interface SocializePOOCObjectFactory()
 
 -(id)createObjectForClass:(Class)socializeClass;
-
+-(void)configureFactory:(SocializeConfiguration*)configuration;
 //The following verify functions should be abstracted out as specifications.
 //Objects must satisfy the specifications.  However, I put them here fore simplicity.
 
 -(void)verifyClass:(Class)classToTest AndProtocol:(Protocol *)protocolToTest;
--(void)verifyClass:(Class)classToTest;
+//-(void)verifyClass:(Class)classToTest;
 -(void)verifySupportForProtocol:(Protocol *)protocolToTest;
 -(void)verifyClass:(Class)classToTest conformsToProtocol:(Protocol *)protocolToTest;
 @end 
@@ -27,10 +27,10 @@
 
 //The following verify functions should be abstracted out as specifications.
 //Objects must satisfy the specifications.  However, I put it here fore simplicity.
--(void)verifyClass:(Class)classToTest
-{
-    //TODO: Create logic here for unsupported classes.
-}
+//-(void)verifyClass:(Class)classToTest
+//{
+//    //TODO: Create logic here for unsupported classes.
+//}
 
 -(void)verifyClass:(Class)classToTest AndProtocol:(Protocol *)protocolToTest
 {
@@ -75,24 +75,28 @@
     if (self) 
     {
         prototypeDictionary = [[NSMutableDictionary dictionaryWithCapacity:10]retain]; 
-    
-        NSDictionary * prototypes = (NSDictionary *)[[configuration configurationInfo]objectForKey:kSocializeModuleConfigurationPrototypesKey];
-
-        
-        NSString * prototypeClassName = nil;
-        for (NSString * prototypeProtocolName in [prototypes allKeys]) 
-        {
-            prototypeClassName = (NSString *)[prototypes objectForKey:prototypeProtocolName]; 
-        
-        
-            Class prototypeClass = NSClassFromString(prototypeClassName);
-            [self  addPrototype:prototypeClass forKey:prototypeProtocolName];
-        }
+        [self configureFactory:configuration];
     }
     return self;
     
 }
 
+-(void)configureFactory:(SocializeConfiguration*)configuration
+{
+    NSDictionary * prototypes = (NSDictionary *)[[configuration configurationInfo]objectForKey:kSocializeModuleConfigurationPrototypesKey];
+   
+    NSAssert((prototypes!=nil && ([prototypes count] >0)), @"Prototype configuration is nil or Empty");
+    
+    NSString * prototypeClassName = nil;
+    for (NSString * prototypeProtocolName in [prototypes allKeys]) 
+    {
+        prototypeClassName = (NSString *)[prototypes objectForKey:prototypeProtocolName]; 
+        
+        
+        Class prototypeClass = NSClassFromString(prototypeClassName);
+        [self  addPrototype:prototypeClass forKey:prototypeProtocolName];
+    }
+}
 
 -(void)addPrototype:(Class)prototypeClass forKey:(NSString *)prototypeProtocolName
 {    

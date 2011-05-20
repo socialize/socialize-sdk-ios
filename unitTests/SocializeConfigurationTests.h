@@ -1,8 +1,8 @@
 //
-//  SocializeObjectTests.h
+//  SocializeConfigurationTests.h
 //  SocializeSDK
 //
-//  Created by William Johnson on 5/16/11.
+//  Created by William Johnson on 5/19/11.
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 //  See Also: http://developer.apple.com/iphone/library/documentation/Xcode/Conceptual/iphone_development/135-Unit_Testing_Applications/unit_testing_applications.html
@@ -14,12 +14,9 @@
 #import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
 
-
-@class SocializePOOCObjectFactory;
-@class SocializeConfiguration;
-@interface SocializeObjectTests : GHTestCase 
+@interface SocializeConfigurationTests : GHTestCase 
 {
-
+    
 }
 
 

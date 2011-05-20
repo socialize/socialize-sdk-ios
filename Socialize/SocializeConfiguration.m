@@ -12,48 +12,68 @@ NSString * const kSocializeModuleConfigurationPrototypesKey = @"Prototypes";
 
 @interface SocializeConfiguration ()
 
--(NSDictionary *)retrieveConfigurationDataFromFileAtPath:(NSString *)filePath;
+-(NSDictionary *)retrieveConfigurationDataFromFileAtPath:(NSString *)configurationPath;
+
 @end
 
 
 @implementation SocializeConfiguration
 
 @synthesize configurationInfo = _configurationInfo;
+@synthesize configurationFilePath = _configurationFilePath;
 
 - (void)dealloc 
 {
     [_configurationInfo release]; 
+    [_configurationFilePath release];
     [super dealloc];
 }
 
 - (id)init 
 {
-    NSBundle * bundle =  [NSBundle bundleForClass:[self class]];
-    
-    NSString * configPath = [bundle pathForResource:@"SocializeConfigurationInfo" ofType:@"plist"];
-
-    return [self initWithWithConfigurationPath:configPath];
+    return [self initWithWithConfigurationPath:nil];
 }
 
--(id)initWithWithConfigurationPath:(NSString *)configurationFilePath
+-(id)initWithWithConfigurationPath:(NSString *)configurationPath
 {
     self = [super init];
     if (self) 
     {
-        _configurationInfo = [[self retrieveConfigurationDataFromFileAtPath:configurationFilePath]retain];
+        NSString * tempConfigurationPath =  (configurationPath!=nil)? configurationPath:[SocializeConfiguration defaultConfigurationPath];
+        
+        NSDictionary * newConfigurationIfo = [self retrieveConfigurationDataFromFileAtPath:tempConfigurationPath];
+        
+        NSAssert(newConfigurationIfo!=nil,
+                 @"Configuration information was not found at path ->%@", tempConfigurationPath);
+        
+        NSAssert([newConfigurationIfo count]> 0, @"Configuration information is empty (Path-> %@)", tempConfigurationPath);
+        
+        
+        
+        _configurationFilePath = [tempConfigurationPath copy];         
+        _configurationInfo = [newConfigurationIfo retain];
     }
     return self; 
     
 }
+-(NSString *)defaultConfigurationPath
+{
+    return [SocializeConfiguration defaultConfigurationPath];    
+}
 
++(NSString *)defaultConfigurationPath
+{
+    NSBundle * bundle =  [NSBundle bundleForClass:[self class]];
+    NSString * configPath = [bundle pathForResource:@"SocializeConfigurationInfo" ofType:@"plist"];
 
--(NSDictionary *)retrieveConfigurationDataFromFileAtPath:(NSString *)filePath
+    return  configPath;
+}
+
+-(NSDictionary *)retrieveConfigurationDataFromFileAtPath:(NSString *)configurationPath
 {
     
-    NSAssert((filePath!=nil && ([filePath length]> 3)), @"SocializeConfiguration : Invalid file path-> %@",filePath);    
-    NSDictionary * configurationDictionary = [[NSDictionary alloc]initWithContentsOfFile:filePath];
-    
-    return  configurationDictionary;
+    NSDictionary * configurationDictionary = [[NSDictionary alloc]initWithContentsOfFile:configurationPath];
+    return  [configurationDictionary autorelease];
   
 }
 
