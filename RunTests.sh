@@ -62,13 +62,11 @@ if [ ! -e "$BUILD_DIR/test-coverage/" ]; then
 
 fi
 
-eval "lcov --test-name \"Socialize iOS SDK\" --output-file \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage.info --capture --directory \"$CONFIGURATION_TEMP_DIR\"/Socialize.build/Objects-normal/i386/"
+eval "lcov --test-name \"Socialize iOS SDK\" --output-file \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info --capture --directory \"$CONFIGURATION_TEMP_DIR\"/Socialize.build/Objects-normal/i386/"
 
-#echo "working dir $(PWD)"
+eval "lcov --extract \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info \"*/Socialize*\" --output-file \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage.info"
 
-#eval "lcov --extract \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info \"$(PWD)/Socialize\"* --output-file \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage.info"
-
-#eval "$(RM) \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info"
+eval "rm -rf \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info"
 
 eval "genhtml --title \"Socialize SDK iOS\"  --output-directory \"$BUILD_DIR\"/test-coverage \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage.info --legend"
 
