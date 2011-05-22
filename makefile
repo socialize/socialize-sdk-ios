@@ -6,4 +6,4 @@ default:
 clean:
 	xcodebuild -alltargets -configuration Debug -sdk iphonesimulator clean
 test:
-	GHUNIT_CLI=1 xcodebuild -target unitTests -configuration Debug -sdk iphonesimulator build
+	WRITE_JUNIT_XML=YES GHUNIT_CLI=1 xcodebuild -target unitTests -configuration Debug -sdk iphonesimulator build
