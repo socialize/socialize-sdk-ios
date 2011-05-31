@@ -8,9 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-
-@interface SocializeObjectFactory : NSObject {
-    
+@class SocializeConfiguration;
+@interface SocializeObjectFactory : NSObject 
+{
+    @protected
+        NSMutableDictionary * prototypeDictionary; 
 }
 
+-(id)initializeWithConfiguration:(SocializeConfiguration*)configuration;
+-(id)createObject:(NSString *)protocolName;
+-(void)addPrototype:(Class)socializeObjectPrototype forKey:(NSString *)protocolName;
 @end

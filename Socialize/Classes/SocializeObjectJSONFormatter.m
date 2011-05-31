@@ -6,10 +6,10 @@
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeObjectParser.h"
+#import "SocializeObjectJSONFormatter.h"
 
 
-@implementation SocializeObjectParser
+@implementation SocializeObjectJSONFormatter
 
 -(void)dealloc
 {
@@ -37,14 +37,30 @@
     return self;
 }
 
--(void)toObject:(id<SocializeObject>) toObject From:(id)dataToParse
+#pragma mark template method implementations
+-(void)toObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {
+    [self doToObject:toObject fromDictionary:JSONDictionary];
+}
+
+-(NSDictionary *)fromObject:(id<SocializeObject>) fromObject
+{
+    
+    return [self doFromObject:fromObject];
+}
+
+
+#pragma mark primitive method implementations
+-(void)doToObject:(id<SocializeObject>)toObject fromDictionary:(NSDictionary *)JSONDictionary
+{
+    
     
 }
--(id)fromObject:(id<SocializeObject>) fromObject
+
+-(NSDictionary *)doFromObject:(id<SocializeObject>) fromObject
 {
     
-    return nil;
+    return  nil;
 }
 
 @end

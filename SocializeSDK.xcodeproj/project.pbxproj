@@ -8,22 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5C54DE6113830F9800090269 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C54DE6013830F9800090269 /* libOCMock.a */; };
-		5C54DE631383103400090269 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C54DE621383103400090269 /* GHUnitIOS.framework */; };
-		5C54DE65138326EA00090269 /* Headers in Resources */ = {isa = PBXBuildFile; fileRef = 5C54DE64138326EA00090269 /* Headers */; };
-		5C54DE681383376700090269 /* SocializePOOCObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C54DE661383376700090269 /* SocializePOOCObjectFactory.h */; };
-		5C54DE691383376700090269 /* SocializePOOCObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C54DE671383376700090269 /* SocializePOOCObjectFactory.m */; };
-		5C6AAC66137C40C100AF0219 /* SocializeActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC64137C40C100AF0219 /* SocializeActivity.h */; };
-		5C6AAC67137C40C100AF0219 /* SocializeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6AAC65137C40C100AF0219 /* SocializeActivity.m */; };
-		5C6AAC70137C531100AF0219 /* SocializeComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC6E137C531100AF0219 /* SocializeComment.h */; };
-		5C6AAC71137C531100AF0219 /* SocializeComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6AAC6F137C531100AF0219 /* SocializeComment.m */; };
-		5C6AAC77137C714800AF0219 /* SocializeEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC75137C714700AF0219 /* SocializeEntity.h */; };
-		5C6AAC78137C714800AF0219 /* SocializeEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6AAC76137C714700AF0219 /* SocializeEntity.m */; };
-		5C6AAC7C137C8A4E00AF0219 /* SocializeObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC7A137C8A4E00AF0219 /* SocializeObject.h */; };
-		5C6AAC7D137C8A4E00AF0219 /* SocializeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6AAC7B137C8A4E00AF0219 /* SocializeObject.m */; };
-		5C6AAC83137C8F9000AF0219 /* SocializeApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC81137C8F8F00AF0219 /* SocializeApplication.h */; };
-		5C6AAC84137C8F9000AF0219 /* SocializeApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6AAC82137C8F9000AF0219 /* SocializeApplication.m */; };
-		5C6AAC88137C8FDB00AF0219 /* SocializeUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6AAC86137C8FDA00AF0219 /* SocializeUser.h */; };
-		5C6AAC89137C8FDB00AF0219 /* SocializeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6AAC87137C8FDB00AF0219 /* SocializeUser.m */; };
 		5C6EC7971379CF7D0073AE65 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DABE1378824800B11B78 /* libSocialize.a */; };
 		5CC3DAC21378824800B11B78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
 		5CC3DAEC1378859000B11B78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
@@ -31,14 +15,41 @@
 		5CC3DB121378889E00B11B78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
 		5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		5CD4882D1386C42300E60C4C /* profile_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CD4882C1386C42300E60C4C /* profile_functions.c */; };
-		5CD488301387046100E60C4C /* UnitTest-SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CD4882F1387046100E60C4C /* UnitTest-SocializeConfigurationInfo.plist */; };
-		5CD4883213870E6300E60C4C /* UnitTest-SocializeConfigurationInfo-EMPTY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CD4883113870E6300E60C4C /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */; };
-		5CEC337C1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC337B1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.m */; };
 		5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */; };
-		5CFCBE421385B66300EF5073 /* SocializeConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCBE411385B66300EF5073 /* SocializeConfigurationTests.m */; };
-		9A3095B01384430700292DC6 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AFDDFB313840515009BB902 /* SocializeConfigurationInfo.plist */; };
-		9A3095B31384DA1F00292DC6 /* SocializeConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A3095B11384DA1F00292DC6 /* SocializeConfiguration.h */; };
-		9A3095B41384DA1F00292DC6 /* SocializeConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3095B21384DA1F00292DC6 /* SocializeConfiguration.m */; };
+		9A4D295C1393FE530065C0CB /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D295A1393FE530065C0CB /* JSONKit.h */; };
+		9A4D295D1393FE530065C0CB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D295B1393FE530065C0CB /* JSONKit.m */; };
+		9A4D29601393FE7A0065C0CB /* SocializeConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D295E1393FE7A0065C0CB /* SocializeConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A4D29611393FE7A0065C0CB /* SocializeConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D295F1393FE7A0065C0CB /* SocializeConfiguration.m */; };
+		9A4D29651393FE9F0065C0CB /* SocializePOOCObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29631393FE9F0065C0CB /* SocializePOOCObjectFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A4D29661393FE9F0065C0CB /* SocializePOOCObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29641393FE9F0065C0CB /* SocializePOOCObjectFactory.m */; };
+		9A4D29691393FEB80065C0CB /* SocializeObjectJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29671393FEB80065C0CB /* SocializeObjectJSONFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A4D296A1393FEB80065C0CB /* SocializeObjectJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29681393FEB80065C0CB /* SocializeObjectJSONFormatter.m */; };
+		9A4D29771393FEDD0065C0CB /* SocializeActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D296B1393FED80065C0CB /* SocializeActivity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A4D29781393FEDD0065C0CB /* SocializeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D296C1393FED90065C0CB /* SocializeActivity.m */; };
+		9A4D29791393FEDD0065C0CB /* SocializeApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D296D1393FED90065C0CB /* SocializeApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A4D297A1393FEDD0065C0CB /* SocializeApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D296E1393FEDA0065C0CB /* SocializeApplication.m */; };
+		9A4D297B1393FEDD0065C0CB /* SocializeComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D296F1393FEDA0065C0CB /* SocializeComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A4D297C1393FEDD0065C0CB /* SocializeComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29701393FEDB0065C0CB /* SocializeComment.m */; };
+		9A4D297D1393FEDD0065C0CB /* SocializeEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29711393FEDB0065C0CB /* SocializeEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A4D297E1393FEDD0065C0CB /* SocializeEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29721393FEDC0065C0CB /* SocializeEntity.m */; };
+		9A4D297F1393FEDD0065C0CB /* SocializeObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29731393FEDC0065C0CB /* SocializeObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A4D29801393FEDD0065C0CB /* SocializeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29741393FEDC0065C0CB /* SocializeObject.m */; };
+		9A4D29811393FEDD0065C0CB /* SocializeUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29751393FEDC0065C0CB /* SocializeUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A4D29821393FEDD0065C0CB /* SocializeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29761393FEDD0065C0CB /* SocializeUser.m */; };
+		9A4D29861394002A0065C0CB /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4D29841393FFCD0065C0CB /* SocializeConfigurationInfo.plist */; };
+		9A4D2989139401B60065C0CB /* SocializeConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D2988139401B60065C0CB /* SocializeConfigurationTests.m */; };
+		9A4D298C139401C70065C0CB /* SocializeObjectParserTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D298A139401C70065C0CB /* SocializeObjectParserTests.h */; };
+		9A4D2990139401E40065C0CB /* SocializePOOCObjectFactoryTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D298E139401E40065C0CB /* SocializePOOCObjectFactoryTests.h */; };
+		9A4D2998139401FC0065C0CB /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4D2992139401F70065C0CB /* SocializeConfigurationInfo.plist */; };
+		9A4D2999139402020065C0CB /* UnitTest-SocializeConfigurationInfo-EMPTY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4D2993139401F70065C0CB /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */; };
+		9A4D299A139402020065C0CB /* UnitTest-SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4D2994139401F70065C0CB /* UnitTest-SocializeConfigurationInfo.plist */; };
+		9A4D299D1394032C0065C0CB /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4D299C1394032B0065C0CB /* GHUnitIOS.framework */; };
+		9A4D29A0139404F90065C0CB /* SocializeObjectParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D298B139401C70065C0CB /* SocializeObjectParserTests.m */; };
+		9A4D29A1139404FF0065C0CB /* SocializePOOCObjectFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D298F139401E40065C0CB /* SocializePOOCObjectFactoryTests.m */; };
+		9A4D29A4139408710065C0CB /* SocializeObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29A2139408710065C0CB /* SocializeObjectFactory.h */; };
+		9A4D29A5139408710065C0CB /* SocializeObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29A3139408710065C0CB /* SocializeObjectFactory.m */; };
+		9A4D29AC13940FF70065C0CB /* SocializeEntityJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29AA13940FF70065C0CB /* SocializeEntityJSONFormatter.h */; };
+		9A4D29AD13940FF70065C0CB /* SocializeEntityJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29AB13940FF70065C0CB /* SocializeEntityJSONFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,22 +64,7 @@
 
 /* Begin PBXFileReference section */
 		5C54DE6013830F9800090269 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = unitTests/Libraries/libOCMock.a; sourceTree = "<group>"; };
-		5C54DE621383103400090269 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		5C54DE64138326EA00090269 /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Headers; path = unitTests/Libraries/Headers; sourceTree = "<group>"; };
-		5C54DE661383376700090269 /* SocializePOOCObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializePOOCObjectFactory.h; sourceTree = "<group>"; };
-		5C54DE671383376700090269 /* SocializePOOCObjectFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializePOOCObjectFactory.m; sourceTree = "<group>"; };
-		5C6AAC64137C40C100AF0219 /* SocializeActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeActivity.h; sourceTree = "<group>"; };
-		5C6AAC65137C40C100AF0219 /* SocializeActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeActivity.m; sourceTree = "<group>"; };
-		5C6AAC6E137C531100AF0219 /* SocializeComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeComment.h; sourceTree = "<group>"; };
-		5C6AAC6F137C531100AF0219 /* SocializeComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeComment.m; sourceTree = "<group>"; };
-		5C6AAC75137C714700AF0219 /* SocializeEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeEntity.h; sourceTree = "<group>"; };
-		5C6AAC76137C714700AF0219 /* SocializeEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeEntity.m; sourceTree = "<group>"; };
-		5C6AAC7A137C8A4E00AF0219 /* SocializeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeObject.h; sourceTree = "<group>"; };
-		5C6AAC7B137C8A4E00AF0219 /* SocializeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeObject.m; sourceTree = "<group>"; };
-		5C6AAC81137C8F8F00AF0219 /* SocializeApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeApplication.h; sourceTree = "<group>"; };
-		5C6AAC82137C8F9000AF0219 /* SocializeApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeApplication.m; sourceTree = "<group>"; };
-		5C6AAC86137C8FDA00AF0219 /* SocializeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUser.h; sourceTree = "<group>"; };
-		5C6AAC87137C8FDB00AF0219 /* SocializeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUser.m; sourceTree = "<group>"; };
 		5CC3DABE1378824800B11B78 /* libSocialize.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSocialize.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC3DAC11378824800B11B78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5CC3DAC51378824800B11B78 /* Socialize-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Socialize-Prefix.pch"; sourceTree = "<group>"; };
@@ -79,16 +75,42 @@
 		5CC3DB101378889E00B11B78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		5CC3DB111378889E00B11B78 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		5CD4882C1386C42300E60C4C /* profile_functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = profile_functions.c; sourceTree = "<group>"; };
-		5CD4882F1387046100E60C4C /* UnitTest-SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UnitTest-SocializeConfigurationInfo.plist"; sourceTree = "<group>"; };
-		5CD4883113870E6300E60C4C /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UnitTest-SocializeConfigurationInfo-EMPTY.plist"; sourceTree = "<group>"; };
-		5CEC337A1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SocializePOOCObjectFactoryTests.h; sourceTree = "<group>"; };
-		5CEC337B1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializePOOCObjectFactoryTests.m; sourceTree = "<group>"; };
 		5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
-		5CFCBE401385B66300EF5073 /* SocializeConfigurationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeConfigurationTests.h; sourceTree = "<group>"; };
-		5CFCBE411385B66300EF5073 /* SocializeConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeConfigurationTests.m; sourceTree = "<group>"; };
-		9A3095B11384DA1F00292DC6 /* SocializeConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeConfiguration.h; sourceTree = "<group>"; };
-		9A3095B21384DA1F00292DC6 /* SocializeConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeConfiguration.m; sourceTree = "<group>"; };
-		9AFDDFB313840515009BB902 /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SocializeConfigurationInfo.plist; path = ../Socialize/SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
+		9A4D295A1393FE530065C0CB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = Libraries/JSONKit.h; sourceTree = SOURCE_ROOT; };
+		9A4D295B1393FE530065C0CB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = Libraries/JSONKit.m; sourceTree = SOURCE_ROOT; };
+		9A4D295E1393FE7A0065C0CB /* SocializeConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeConfiguration.h; path = Classes/SocializeConfiguration.h; sourceTree = "<group>"; };
+		9A4D295F1393FE7A0065C0CB /* SocializeConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeConfiguration.m; path = Classes/SocializeConfiguration.m; sourceTree = "<group>"; };
+		9A4D29631393FE9F0065C0CB /* SocializePOOCObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePOOCObjectFactory.h; path = Classes/SocializePOOCObjectFactory.h; sourceTree = "<group>"; };
+		9A4D29641393FE9F0065C0CB /* SocializePOOCObjectFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializePOOCObjectFactory.m; path = Classes/SocializePOOCObjectFactory.m; sourceTree = "<group>"; };
+		9A4D29671393FEB80065C0CB /* SocializeObjectJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeObjectJSONFormatter.h; path = Classes/SocializeObjectJSONFormatter.h; sourceTree = "<group>"; };
+		9A4D29681393FEB80065C0CB /* SocializeObjectJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeObjectJSONFormatter.m; path = Classes/SocializeObjectJSONFormatter.m; sourceTree = "<group>"; };
+		9A4D296B1393FED80065C0CB /* SocializeActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivity.h; path = Classes/SocializeActivity.h; sourceTree = "<group>"; };
+		9A4D296C1393FED90065C0CB /* SocializeActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivity.m; path = Classes/SocializeActivity.m; sourceTree = "<group>"; };
+		9A4D296D1393FED90065C0CB /* SocializeApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeApplication.h; path = Classes/SocializeApplication.h; sourceTree = "<group>"; };
+		9A4D296E1393FEDA0065C0CB /* SocializeApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeApplication.m; path = Classes/SocializeApplication.m; sourceTree = "<group>"; };
+		9A4D296F1393FEDA0065C0CB /* SocializeComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeComment.h; path = Classes/SocializeComment.h; sourceTree = "<group>"; };
+		9A4D29701393FEDB0065C0CB /* SocializeComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeComment.m; path = Classes/SocializeComment.m; sourceTree = "<group>"; };
+		9A4D29711393FEDB0065C0CB /* SocializeEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEntity.h; path = Classes/SocializeEntity.h; sourceTree = "<group>"; };
+		9A4D29721393FEDC0065C0CB /* SocializeEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeEntity.m; path = Classes/SocializeEntity.m; sourceTree = "<group>"; };
+		9A4D29731393FEDC0065C0CB /* SocializeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeObject.h; path = Classes/SocializeObject.h; sourceTree = "<group>"; };
+		9A4D29741393FEDC0065C0CB /* SocializeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeObject.m; path = Classes/SocializeObject.m; sourceTree = "<group>"; };
+		9A4D29751393FEDC0065C0CB /* SocializeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUser.h; path = Classes/SocializeUser.h; sourceTree = "<group>"; };
+		9A4D29761393FEDD0065C0CB /* SocializeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUser.m; path = Classes/SocializeUser.m; sourceTree = "<group>"; };
+		9A4D29841393FFCD0065C0CB /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SocializeConfigurationInfo.plist; path = Resources/SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
+		9A4D2987139401B60065C0CB /* SocializeConfigurationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeConfigurationTests.h; path = "Test Cases/SocializeConfigurationTests.h"; sourceTree = "<group>"; };
+		9A4D2988139401B60065C0CB /* SocializeConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeConfigurationTests.m; path = "Test Cases/SocializeConfigurationTests.m"; sourceTree = "<group>"; };
+		9A4D298A139401C70065C0CB /* SocializeObjectParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeObjectParserTests.h; path = "Test Cases/SocializeObjectParserTests.h"; sourceTree = "<group>"; };
+		9A4D298B139401C70065C0CB /* SocializeObjectParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeObjectParserTests.m; path = "Test Cases/SocializeObjectParserTests.m"; sourceTree = "<group>"; };
+		9A4D298E139401E40065C0CB /* SocializePOOCObjectFactoryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePOOCObjectFactoryTests.h; path = "Test Cases/SocializePOOCObjectFactoryTests.h"; sourceTree = "<group>"; };
+		9A4D298F139401E40065C0CB /* SocializePOOCObjectFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializePOOCObjectFactoryTests.m; path = "Test Cases/SocializePOOCObjectFactoryTests.m"; sourceTree = "<group>"; };
+		9A4D2992139401F70065C0CB /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SocializeConfigurationInfo.plist; path = Resources/SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
+		9A4D2993139401F70065C0CB /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UnitTest-SocializeConfigurationInfo-EMPTY.plist"; path = "Resources/UnitTest-SocializeConfigurationInfo-EMPTY.plist"; sourceTree = "<group>"; };
+		9A4D2994139401F70065C0CB /* UnitTest-SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UnitTest-SocializeConfigurationInfo.plist"; path = "Resources/UnitTest-SocializeConfigurationInfo.plist"; sourceTree = "<group>"; };
+		9A4D299C1394032B0065C0CB /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
+		9A4D29A2139408710065C0CB /* SocializeObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeObjectFactory.h; path = Classes/SocializeObjectFactory.h; sourceTree = "<group>"; };
+		9A4D29A3139408710065C0CB /* SocializeObjectFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeObjectFactory.m; path = Classes/SocializeObjectFactory.m; sourceTree = "<group>"; };
+		9A4D29AA13940FF70065C0CB /* SocializeEntityJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEntityJSONFormatter.h; path = Classes/SocializeEntityJSONFormatter.h; sourceTree = "<group>"; };
+		9A4D29AB13940FF70065C0CB /* SocializeEntityJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeEntityJSONFormatter.m; path = Classes/SocializeEntityJSONFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C54DE631383103400090269 /* GHUnitIOS.framework in Frameworks */,
+				9A4D299D1394032C0065C0CB /* GHUnitIOS.framework in Frameworks */,
 				5C54DE6113830F9800090269 /* libOCMock.a in Frameworks */,
 				5C6EC7971379CF7D0073AE65 /* libSocialize.a in Frameworks */,
 				5CC3DB121378889E00B11B78 /* CoreGraphics.framework in Frameworks */,
@@ -119,30 +141,31 @@
 		5C6AAC62137C3F5500AF0219 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5C6AAC8B137C9CBA00AF0219 /* Factories */,
-				5C6AAC64137C40C100AF0219 /* SocializeActivity.h */,
-				5C6AAC65137C40C100AF0219 /* SocializeActivity.m */,
-				5C6AAC6E137C531100AF0219 /* SocializeComment.h */,
-				5C6AAC6F137C531100AF0219 /* SocializeComment.m */,
-				5C6AAC75137C714700AF0219 /* SocializeEntity.h */,
-				5C6AAC76137C714700AF0219 /* SocializeEntity.m */,
-				5C6AAC7A137C8A4E00AF0219 /* SocializeObject.h */,
-				5C6AAC7B137C8A4E00AF0219 /* SocializeObject.m */,
-				5C6AAC81137C8F8F00AF0219 /* SocializeApplication.h */,
-				5C6AAC82137C8F9000AF0219 /* SocializeApplication.m */,
-				5C6AAC86137C8FDA00AF0219 /* SocializeUser.h */,
-				5C6AAC87137C8FDB00AF0219 /* SocializeUser.m */,
+				9A4D29621393FE860065C0CB /* Factories */,
+				5CFCBE36138594E800EF5073 /* SocializeObjectParsers */,
+				9A4D296B1393FED80065C0CB /* SocializeActivity.h */,
+				9A4D296C1393FED90065C0CB /* SocializeActivity.m */,
+				9A4D296D1393FED90065C0CB /* SocializeApplication.h */,
+				9A4D296E1393FEDA0065C0CB /* SocializeApplication.m */,
+				9A4D296F1393FEDA0065C0CB /* SocializeComment.h */,
+				9A4D29701393FEDB0065C0CB /* SocializeComment.m */,
+				9A4D29711393FEDB0065C0CB /* SocializeEntity.h */,
+				9A4D29721393FEDC0065C0CB /* SocializeEntity.m */,
+				9A4D29731393FEDC0065C0CB /* SocializeObject.h */,
+				9A4D29741393FEDC0065C0CB /* SocializeObject.m */,
+				9A4D29751393FEDC0065C0CB /* SocializeUser.h */,
+				9A4D29761393FEDD0065C0CB /* SocializeUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
 		};
-		5C6AAC8B137C9CBA00AF0219 /* Factories */ = {
+		5CC0AD2A138ADA2A00A4A384 /* JSON Parser */ = {
 			isa = PBXGroup;
 			children = (
-				5C54DE661383376700090269 /* SocializePOOCObjectFactory.h */,
-				5C54DE671383376700090269 /* SocializePOOCObjectFactory.m */,
+				9A4D295A1393FE530065C0CB /* JSONKit.h */,
+				9A4D295B1393FE530065C0CB /* JSONKit.m */,
 			);
-			name = Factories;
+			name = "JSON Parser";
 			sourceTree = "<group>";
 		};
 		5CC3DAB1137881B900B11B78 = {
@@ -169,7 +192,7 @@
 			children = (
 				5C54DE64138326EA00090269 /* Headers */,
 				5C54DE6013830F9800090269 /* libOCMock.a */,
-				5C54DE621383103400090269 /* GHUnitIOS.framework */,
+				9A4D299C1394032B0065C0CB /* GHUnitIOS.framework */,
 				5CC3DB101378889E00B11B78 /* CoreGraphics.framework */,
 				5CC3DB111378889E00B11B78 /* UIKit.framework */,
 				5CC3DAC11378824800B11B78 /* Foundation.framework */,
@@ -184,6 +207,7 @@
 				9A3095B51384F04100292DC6 /* Configuration */,
 				5C6AAC62137C3F5500AF0219 /* Models */,
 				5CC3DAC41378824800B11B78 /* Supporting Files */,
+				9A4D29831393FF720065C0CB /* Resources */,
 			);
 			path = Socialize;
 			sourceTree = "<group>";
@@ -237,7 +261,7 @@
 		5CFCBE341385947800EF5073 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				5CFCBE36138594E800EF5073 /* SocializeObjectParsers */,
+				5CC0AD2A138ADA2A00A4A384 /* JSON Parser */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -245,6 +269,10 @@
 		5CFCBE36138594E800EF5073 /* SocializeObjectParsers */ = {
 			isa = PBXGroup;
 			children = (
+				9A4D29671393FEB80065C0CB /* SocializeObjectJSONFormatter.h */,
+				9A4D29681393FEB80065C0CB /* SocializeObjectJSONFormatter.m */,
+				9A4D29AA13940FF70065C0CB /* SocializeEntityJSONFormatter.h */,
+				9A4D29AB13940FF70065C0CB /* SocializeEntityJSONFormatter.m */,
 			);
 			name = SocializeObjectParsers;
 			sourceTree = "<group>";
@@ -252,8 +280,8 @@
 		5CFCBE371385952600EF5073 /* Factory Tests */ = {
 			isa = PBXGroup;
 			children = (
-				5CEC337A1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.h */,
-				5CEC337B1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.m */,
+				9A4D298E139401E40065C0CB /* SocializePOOCObjectFactoryTests.h */,
+				9A4D298F139401E40065C0CB /* SocializePOOCObjectFactoryTests.m */,
 			);
 			name = "Factory Tests";
 			sourceTree = "<group>";
@@ -261,6 +289,8 @@
 		5CFCBE381385953F00EF5073 /* Parser Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9A4D298A139401C70065C0CB /* SocializeObjectParserTests.h */,
+				9A4D298B139401C70065C0CB /* SocializeObjectParserTests.m */,
 			);
 			name = "Parser Tests";
 			sourceTree = "<group>";
@@ -268,8 +298,8 @@
 		5CFCBE3F1385B60D00EF5073 /* Configuration Tests */ = {
 			isa = PBXGroup;
 			children = (
-				5CFCBE401385B66300EF5073 /* SocializeConfigurationTests.h */,
-				5CFCBE411385B66300EF5073 /* SocializeConfigurationTests.m */,
+				9A4D2987139401B60065C0CB /* SocializeConfigurationTests.h */,
+				9A4D2988139401B60065C0CB /* SocializeConfigurationTests.m */,
 			);
 			name = "Configuration Tests";
 			sourceTree = "<group>";
@@ -277,11 +307,11 @@
 		5CFCBE431385CAD100EF5073 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5CD4883113870E6300E60C4C /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */,
-				5CD4882F1387046100E60C4C /* UnitTest-SocializeConfigurationInfo.plist */,
+				9A4D2992139401F70065C0CB /* SocializeConfigurationInfo.plist */,
+				9A4D2993139401F70065C0CB /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */,
+				9A4D2994139401F70065C0CB /* UnitTest-SocializeConfigurationInfo.plist */,
 				5CC3DAF01378859000B11B78 /* unitTests-Info.plist */,
 				5CC3DAF11378859000B11B78 /* InfoPlist.strings */,
-				9AFDDFB313840515009BB902 /* SocializeConfigurationInfo.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -289,10 +319,29 @@
 		9A3095B51384F04100292DC6 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				9A3095B11384DA1F00292DC6 /* SocializeConfiguration.h */,
-				9A3095B21384DA1F00292DC6 /* SocializeConfiguration.m */,
+				9A4D295E1393FE7A0065C0CB /* SocializeConfiguration.h */,
+				9A4D295F1393FE7A0065C0CB /* SocializeConfiguration.m */,
 			);
 			name = Configuration;
+			sourceTree = "<group>";
+		};
+		9A4D29621393FE860065C0CB /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				9A4D29631393FE9F0065C0CB /* SocializePOOCObjectFactory.h */,
+				9A4D29641393FE9F0065C0CB /* SocializePOOCObjectFactory.m */,
+				9A4D29A2139408710065C0CB /* SocializeObjectFactory.h */,
+				9A4D29A3139408710065C0CB /* SocializeObjectFactory.m */,
+			);
+			name = Factories;
+			sourceTree = "<group>";
+		};
+		9A4D29831393FF720065C0CB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9A4D29841393FFCD0065C0CB /* SocializeConfigurationInfo.plist */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,14 +351,20 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C6AAC66137C40C100AF0219 /* SocializeActivity.h in Headers */,
-				5C6AAC70137C531100AF0219 /* SocializeComment.h in Headers */,
-				5C6AAC77137C714800AF0219 /* SocializeEntity.h in Headers */,
-				5C6AAC7C137C8A4E00AF0219 /* SocializeObject.h in Headers */,
-				5C6AAC83137C8F9000AF0219 /* SocializeApplication.h in Headers */,
-				5C6AAC88137C8FDB00AF0219 /* SocializeUser.h in Headers */,
-				5C54DE681383376700090269 /* SocializePOOCObjectFactory.h in Headers */,
-				9A3095B31384DA1F00292DC6 /* SocializeConfiguration.h in Headers */,
+				9A4D29601393FE7A0065C0CB /* SocializeConfiguration.h in Headers */,
+				9A4D29651393FE9F0065C0CB /* SocializePOOCObjectFactory.h in Headers */,
+				9A4D29691393FEB80065C0CB /* SocializeObjectJSONFormatter.h in Headers */,
+				9A4D29771393FEDD0065C0CB /* SocializeActivity.h in Headers */,
+				9A4D29791393FEDD0065C0CB /* SocializeApplication.h in Headers */,
+				9A4D297B1393FEDD0065C0CB /* SocializeComment.h in Headers */,
+				9A4D297D1393FEDD0065C0CB /* SocializeEntity.h in Headers */,
+				9A4D297F1393FEDD0065C0CB /* SocializeObject.h in Headers */,
+				9A4D29811393FEDD0065C0CB /* SocializeUser.h in Headers */,
+				9A4D295C1393FE530065C0CB /* JSONKit.h in Headers */,
+				9A4D298C139401C70065C0CB /* SocializeObjectParserTests.h in Headers */,
+				9A4D2990139401E40065C0CB /* SocializePOOCObjectFactoryTests.h in Headers */,
+				9A4D29A4139408710065C0CB /* SocializeObjectFactory.h in Headers */,
+				9A4D29AC13940FF70065C0CB /* SocializeEntityJSONFormatter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +378,7 @@
 				5CC3DABA1378824700B11B78 /* Sources */,
 				5CC3DABB1378824700B11B78 /* Frameworks */,
 				5CC3DABC1378824700B11B78 /* Headers */,
+				9A4D2985139400060065C0CB /* Resources */,
 			);
 			buildRules = (
 			);
@@ -384,10 +440,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CC3DAF31378859000B11B78 /* InfoPlist.strings in Resources */,
-				5C54DE65138326EA00090269 /* Headers in Resources */,
-				9A3095B01384430700292DC6 /* SocializeConfigurationInfo.plist in Resources */,
-				5CD488301387046100E60C4C /* UnitTest-SocializeConfigurationInfo.plist in Resources */,
-				5CD4883213870E6300E60C4C /* UnitTest-SocializeConfigurationInfo-EMPTY.plist in Resources */,
+				9A4D2998139401FC0065C0CB /* SocializeConfigurationInfo.plist in Resources */,
+				9A4D2999139402020065C0CB /* UnitTest-SocializeConfigurationInfo-EMPTY.plist in Resources */,
+				9A4D299A139402020065C0CB /* UnitTest-SocializeConfigurationInfo.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A4D2985139400060065C0CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A4D29861394002A0065C0CB /* SocializeConfigurationInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,14 +478,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C6AAC67137C40C100AF0219 /* SocializeActivity.m in Sources */,
-				5C6AAC71137C531100AF0219 /* SocializeComment.m in Sources */,
-				5C6AAC78137C714800AF0219 /* SocializeEntity.m in Sources */,
-				5C6AAC7D137C8A4E00AF0219 /* SocializeObject.m in Sources */,
-				5C6AAC84137C8F9000AF0219 /* SocializeApplication.m in Sources */,
-				5C6AAC89137C8FDB00AF0219 /* SocializeUser.m in Sources */,
-				5C54DE691383376700090269 /* SocializePOOCObjectFactory.m in Sources */,
-				9A3095B41384DA1F00292DC6 /* SocializeConfiguration.m in Sources */,
+				9A4D295D1393FE530065C0CB /* JSONKit.m in Sources */,
+				9A4D29611393FE7A0065C0CB /* SocializeConfiguration.m in Sources */,
+				9A4D29661393FE9F0065C0CB /* SocializePOOCObjectFactory.m in Sources */,
+				9A4D296A1393FEB80065C0CB /* SocializeObjectJSONFormatter.m in Sources */,
+				9A4D29781393FEDD0065C0CB /* SocializeActivity.m in Sources */,
+				9A4D297A1393FEDD0065C0CB /* SocializeApplication.m in Sources */,
+				9A4D297C1393FEDD0065C0CB /* SocializeComment.m in Sources */,
+				9A4D297E1393FEDD0065C0CB /* SocializeEntity.m in Sources */,
+				9A4D29801393FEDD0065C0CB /* SocializeObject.m in Sources */,
+				9A4D29821393FEDD0065C0CB /* SocializeUser.m in Sources */,
+				9A4D29A5139408710065C0CB /* SocializeObjectFactory.m in Sources */,
+				9A4D29AD13940FF70065C0CB /* SocializeEntityJSONFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,9 +498,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */,
-				5CEC337C1381AFCD00F100B1 /* SocializePOOCObjectFactoryTests.m in Sources */,
-				5CFCBE421385B66300EF5073 /* SocializeConfigurationTests.m in Sources */,
 				5CD4882D1386C42300E60C4C /* profile_functions.c in Sources */,
+				9A4D2989139401B60065C0CB /* SocializeConfigurationTests.m in Sources */,
+				9A4D29A0139404F90065C0CB /* SocializeObjectParserTests.m in Sources */,
+				9A4D29A1139404FF0065C0CB /* SocializePOOCObjectFactoryTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +533,7 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = 4.2;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnit.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
 					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
 					"\"$(SRCROOT)\"/Socialize",
 				);
@@ -480,7 +548,7 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = 4.2;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnit.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
 					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
 					"\"$(SRCROOT)\"/Socialize",
 				);
@@ -563,7 +631,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnit.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
 					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
 					"\"$(SRCROOT)\"/Socialize",
 				);
@@ -607,7 +675,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnit.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
 					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
 					"\"$(SRCROOT)\"/Socialize",
 				);
