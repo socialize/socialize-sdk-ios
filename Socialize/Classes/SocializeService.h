@@ -19,15 +19,3 @@
 }
 
 @end
--(SocializeRequest *)getObject
-
-
-
-@protocol SocializeServiceDelegate
-
--(void)socializeService:(SocializeService *)service didAuthenticateWithSession:(SocializeSession *)session;
--(void)socializeService:(SocializeService *)service did:id<SocializeObject> object error:(NSError *) error;
--(void)socializeService:(SocializeService *)service didListObjects:(NSArray *)objectlist;
--(void)socializeService:(SocializeService *)service didPostObjects:(NSArray *)objectlist;
-
-@end

@@ -11,4 +11,11 @@
 
 @implementation SocializeRequest
 
+@synthesize requestID;
+@synthesize endPoint;
+@synthesize method;
+@synthesize Object;
+@synthesize isSecure;
+
+
 @end

@@ -1,16 +1,16 @@
 //
-//  SocializeGetRequest.m
+//  SocializeResponse.h
 //  SocializeSDK
 //
 //  Created by William Johnson on 6/1/11.
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeGetRequest.h"
+#import <Foundation/Foundation.h>
 
 
-@implementation SocializeGetRequest
-
-@synthesize Id;
+@interface SocializeResponse : NSObject {
+    
+}
 
 @end

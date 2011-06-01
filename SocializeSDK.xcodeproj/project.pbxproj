@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C21C0C41396BF8300CF2B9F /* SocializeGetRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0BE1396BF8300CF2B9F /* SocializeGetRequest.h */; };
+		5C21C0C51396BF8300CF2B9F /* SocializeGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0BF1396BF8300CF2B9F /* SocializeGetRequest.m */; };
+		5C21C0C61396BF8300CF2B9F /* SocializeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */; };
+		5C21C0C71396BF8300CF2B9F /* SocializeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */; };
+		5C21C0C81396BF8300CF2B9F /* SocializeService.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C21396BF8300CF2B9F /* SocializeService.h */; };
+		5C21C0C91396BF8300CF2B9F /* SocializeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C31396BF8300CF2B9F /* SocializeService.m */; };
+		5C21C0D01396D9A800CF2B9F /* SocializeEntityService.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0CE1396D9A800CF2B9F /* SocializeEntityService.h */; };
+		5C21C0D11396D9A800CF2B9F /* SocializeEntityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0CF1396D9A800CF2B9F /* SocializeEntityService.m */; };
+		5C21C0D41396DA0500CF2B9F /* SocializeActivityService.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0D21396DA0400CF2B9F /* SocializeActivityService.h */; };
+		5C21C0D51396DA0500CF2B9F /* SocializeActivityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0D31396DA0400CF2B9F /* SocializeActivityService.m */; };
+		5C21C0DC1396E77300CF2B9F /* SocializeResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0DA1396E77200CF2B9F /* SocializeResponse.h */; };
+		5C21C0DD1396E77300CF2B9F /* SocializeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0DB1396E77300CF2B9F /* SocializeResponse.m */; };
 		5C54DE6113830F9800090269 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C54DE6013830F9800090269 /* libOCMock.a */; };
 		5C6EC7971379CF7D0073AE65 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DABE1378824800B11B78 /* libSocialize.a */; };
 		5CC3DAC21378824800B11B78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
@@ -59,6 +71,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C21C0BE1396BF8300CF2B9F /* SocializeGetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeGetRequest.h; path = Classes/SocializeGetRequest.h; sourceTree = "<group>"; };
+		5C21C0BF1396BF8300CF2B9F /* SocializeGetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeGetRequest.m; path = Classes/SocializeGetRequest.m; sourceTree = "<group>"; };
+		5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequest.h; path = Classes/SocializeRequest.h; sourceTree = "<group>"; };
+		5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRequest.m; path = Classes/SocializeRequest.m; sourceTree = "<group>"; };
+		5C21C0C21396BF8300CF2B9F /* SocializeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeService.h; path = Classes/SocializeService.h; sourceTree = "<group>"; };
+		5C21C0C31396BF8300CF2B9F /* SocializeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeService.m; path = Classes/SocializeService.m; sourceTree = "<group>"; };
+		5C21C0CE1396D9A800CF2B9F /* SocializeEntityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEntityService.h; path = Classes/SocializeEntityService.h; sourceTree = "<group>"; };
+		5C21C0CF1396D9A800CF2B9F /* SocializeEntityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeEntityService.m; path = Classes/SocializeEntityService.m; sourceTree = "<group>"; };
+		5C21C0D21396DA0400CF2B9F /* SocializeActivityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityService.h; path = Classes/SocializeActivityService.h; sourceTree = "<group>"; };
+		5C21C0D31396DA0400CF2B9F /* SocializeActivityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityService.m; path = Classes/SocializeActivityService.m; sourceTree = "<group>"; };
+		5C21C0DA1396E77200CF2B9F /* SocializeResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeResponse.h; path = Classes/SocializeResponse.h; sourceTree = "<group>"; };
+		5C21C0DB1396E77300CF2B9F /* SocializeResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeResponse.m; path = Classes/SocializeResponse.m; sourceTree = "<group>"; };
 		5C54DE6013830F9800090269 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = unitTests/Libraries/libOCMock.a; sourceTree = "<group>"; };
 		5C54DE64138326EA00090269 /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Headers; path = unitTests/Libraries/Headers; sourceTree = "<group>"; };
 		5CC3DABE1378824800B11B78 /* libSocialize.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSocialize.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +187,18 @@
 		5C9004351395968F007361F6 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				5C21C0BE1396BF8300CF2B9F /* SocializeGetRequest.h */,
+				5C21C0BF1396BF8300CF2B9F /* SocializeGetRequest.m */,
+				5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */,
+				5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */,
+				5C21C0C21396BF8300CF2B9F /* SocializeService.h */,
+				5C21C0C31396BF8300CF2B9F /* SocializeService.m */,
+				5C21C0CE1396D9A800CF2B9F /* SocializeEntityService.h */,
+				5C21C0CF1396D9A800CF2B9F /* SocializeEntityService.m */,
+				5C21C0D21396DA0400CF2B9F /* SocializeActivityService.h */,
+				5C21C0D31396DA0400CF2B9F /* SocializeActivityService.m */,
+				5C21C0DA1396E77200CF2B9F /* SocializeResponse.h */,
+				5C21C0DB1396E77300CF2B9F /* SocializeResponse.m */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
@@ -367,6 +403,12 @@
 				9A4D298C139401C70065C0CB /* SocializeObjectParserTests.h in Headers */,
 				9A4D2990139401E40065C0CB /* SocializePOOCObjectFactoryTests.h in Headers */,
 				9A4D29A4139408710065C0CB /* SocializeObjectFactory.h in Headers */,
+				5C21C0C41396BF8300CF2B9F /* SocializeGetRequest.h in Headers */,
+				5C21C0C61396BF8300CF2B9F /* SocializeRequest.h in Headers */,
+				5C21C0C81396BF8300CF2B9F /* SocializeService.h in Headers */,
+				5C21C0D01396D9A800CF2B9F /* SocializeEntityService.h in Headers */,
+				5C21C0D41396DA0500CF2B9F /* SocializeActivityService.h in Headers */,
+				5C21C0DC1396E77300CF2B9F /* SocializeResponse.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +532,12 @@
 				9A4D29801393FEDD0065C0CB /* SocializeObject.m in Sources */,
 				9A4D29821393FEDD0065C0CB /* SocializeUser.m in Sources */,
 				9A4D29A5139408710065C0CB /* SocializeObjectFactory.m in Sources */,
+				5C21C0C51396BF8300CF2B9F /* SocializeGetRequest.m in Sources */,
+				5C21C0C71396BF8300CF2B9F /* SocializeRequest.m in Sources */,
+				5C21C0C91396BF8300CF2B9F /* SocializeService.m in Sources */,
+				5C21C0D11396D9A800CF2B9F /* SocializeEntityService.m in Sources */,
+				5C21C0D51396DA0500CF2B9F /* SocializeActivityService.m in Sources */,
+				5C21C0DD1396E77300CF2B9F /* SocializeResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

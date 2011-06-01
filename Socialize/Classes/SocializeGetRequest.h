@@ -9,8 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "SocializeRequest.h"
 
-@interface SocializeGetRequest : SocializeRequest {
-    
+@interface SocializeGetRequest : SocializeRequest 
+{
+    uint64_t Id;
+
+
 }
+
+@property (nonatomic) uint64_t Id; 
 
 @end

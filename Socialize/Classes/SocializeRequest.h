@@ -8,9 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
-
-@interface SocializeRequest : NSObject {
+typedef enum 
+{
+    SocializeRequestMethodGET = 0,
+    SocializeRequestMethodPUT = 1,
+    SocializeRequestMethodPOST = 2
     
+} SocializeRequestMethod;
+
+@interface SocializeRequest : NSObject 
+{
+    NSString * requestID;
+    NSString * endPoint;
+    SocializeRequestMethod * method;
+    NSObject * Object;
+    BOOL isSecure;
 }
+
+@property (readonly) NSString * requestID;
+@property (nonatomic, copy) NSString * endPoint;
+@property (nonatomic) SocializeRequestMethod * method;
+@property (nonatomic, retain ) NSObject * Object;
+@property (nonatomic) BOOL isSecure;
 
 @end
