@@ -22,8 +22,6 @@
 		9A4D29611393FE7A0065C0CB /* SocializeConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D295F1393FE7A0065C0CB /* SocializeConfiguration.m */; };
 		9A4D29651393FE9F0065C0CB /* SocializePOOCObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29631393FE9F0065C0CB /* SocializePOOCObjectFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A4D29661393FE9F0065C0CB /* SocializePOOCObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29641393FE9F0065C0CB /* SocializePOOCObjectFactory.m */; };
-		9A4D29691393FEB80065C0CB /* SocializeObjectJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29671393FEB80065C0CB /* SocializeObjectJSONFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9A4D296A1393FEB80065C0CB /* SocializeObjectJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29681393FEB80065C0CB /* SocializeObjectJSONFormatter.m */; };
 		9A4D29771393FEDD0065C0CB /* SocializeActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D296B1393FED80065C0CB /* SocializeActivity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A4D29781393FEDD0065C0CB /* SocializeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D296C1393FED90065C0CB /* SocializeActivity.m */; };
 		9A4D29791393FEDD0065C0CB /* SocializeApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D296D1393FED90065C0CB /* SocializeApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -48,8 +46,6 @@
 		9A4D29A1139404FF0065C0CB /* SocializePOOCObjectFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D298F139401E40065C0CB /* SocializePOOCObjectFactoryTests.m */; };
 		9A4D29A4139408710065C0CB /* SocializeObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29A2139408710065C0CB /* SocializeObjectFactory.h */; };
 		9A4D29A5139408710065C0CB /* SocializeObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29A3139408710065C0CB /* SocializeObjectFactory.m */; };
-		9A4D29AC13940FF70065C0CB /* SocializeEntityJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29AA13940FF70065C0CB /* SocializeEntityJSONFormatter.h */; };
-		9A4D29AD13940FF70065C0CB /* SocializeEntityJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29AB13940FF70065C0CB /* SocializeEntityJSONFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +78,6 @@
 		9A4D295F1393FE7A0065C0CB /* SocializeConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeConfiguration.m; path = Classes/SocializeConfiguration.m; sourceTree = "<group>"; };
 		9A4D29631393FE9F0065C0CB /* SocializePOOCObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePOOCObjectFactory.h; path = Classes/SocializePOOCObjectFactory.h; sourceTree = "<group>"; };
 		9A4D29641393FE9F0065C0CB /* SocializePOOCObjectFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializePOOCObjectFactory.m; path = Classes/SocializePOOCObjectFactory.m; sourceTree = "<group>"; };
-		9A4D29671393FEB80065C0CB /* SocializeObjectJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeObjectJSONFormatter.h; path = Classes/SocializeObjectJSONFormatter.h; sourceTree = "<group>"; };
-		9A4D29681393FEB80065C0CB /* SocializeObjectJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeObjectJSONFormatter.m; path = Classes/SocializeObjectJSONFormatter.m; sourceTree = "<group>"; };
 		9A4D296B1393FED80065C0CB /* SocializeActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivity.h; path = Classes/SocializeActivity.h; sourceTree = "<group>"; };
 		9A4D296C1393FED90065C0CB /* SocializeActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivity.m; path = Classes/SocializeActivity.m; sourceTree = "<group>"; };
 		9A4D296D1393FED90065C0CB /* SocializeApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeApplication.h; path = Classes/SocializeApplication.h; sourceTree = "<group>"; };
@@ -109,8 +103,6 @@
 		9A4D299C1394032B0065C0CB /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		9A4D29A2139408710065C0CB /* SocializeObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeObjectFactory.h; path = Classes/SocializeObjectFactory.h; sourceTree = "<group>"; };
 		9A4D29A3139408710065C0CB /* SocializeObjectFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeObjectFactory.m; path = Classes/SocializeObjectFactory.m; sourceTree = "<group>"; };
-		9A4D29AA13940FF70065C0CB /* SocializeEntityJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEntityJSONFormatter.h; path = Classes/SocializeEntityJSONFormatter.h; sourceTree = "<group>"; };
-		9A4D29AB13940FF70065C0CB /* SocializeEntityJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeEntityJSONFormatter.m; path = Classes/SocializeEntityJSONFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,9 +154,17 @@
 		5C9004331395963A007361F6 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5C9004351395968F007361F6 /* Infrastructure */,
 				5CFCBE341385947800EF5073 /* Parsers */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		5C9004351395968F007361F6 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Infrastructure;
 			sourceTree = "<group>";
 		};
 		5CC0AD2A138ADA2A00A4A384 /* JSON Parser */ = {
@@ -277,10 +277,6 @@
 		5CFCBE36138594E800EF5073 /* SocializeObjectParsers */ = {
 			isa = PBXGroup;
 			children = (
-				9A4D29671393FEB80065C0CB /* SocializeObjectJSONFormatter.h */,
-				9A4D29681393FEB80065C0CB /* SocializeObjectJSONFormatter.m */,
-				9A4D29AA13940FF70065C0CB /* SocializeEntityJSONFormatter.h */,
-				9A4D29AB13940FF70065C0CB /* SocializeEntityJSONFormatter.m */,
 			);
 			name = SocializeObjectParsers;
 			sourceTree = "<group>";
@@ -361,7 +357,6 @@
 			files = (
 				9A4D29601393FE7A0065C0CB /* SocializeConfiguration.h in Headers */,
 				9A4D29651393FE9F0065C0CB /* SocializePOOCObjectFactory.h in Headers */,
-				9A4D29691393FEB80065C0CB /* SocializeObjectJSONFormatter.h in Headers */,
 				9A4D29771393FEDD0065C0CB /* SocializeActivity.h in Headers */,
 				9A4D29791393FEDD0065C0CB /* SocializeApplication.h in Headers */,
 				9A4D297B1393FEDD0065C0CB /* SocializeComment.h in Headers */,
@@ -372,7 +367,6 @@
 				9A4D298C139401C70065C0CB /* SocializeObjectParserTests.h in Headers */,
 				9A4D2990139401E40065C0CB /* SocializePOOCObjectFactoryTests.h in Headers */,
 				9A4D29A4139408710065C0CB /* SocializeObjectFactory.h in Headers */,
-				9A4D29AC13940FF70065C0CB /* SocializeEntityJSONFormatter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,7 +483,6 @@
 				9A4D295D1393FE530065C0CB /* JSONKit.m in Sources */,
 				9A4D29611393FE7A0065C0CB /* SocializeConfiguration.m in Sources */,
 				9A4D29661393FE9F0065C0CB /* SocializePOOCObjectFactory.m in Sources */,
-				9A4D296A1393FEB80065C0CB /* SocializeObjectJSONFormatter.m in Sources */,
 				9A4D29781393FEDD0065C0CB /* SocializeActivity.m in Sources */,
 				9A4D297A1393FEDD0065C0CB /* SocializeApplication.m in Sources */,
 				9A4D297C1393FEDD0065C0CB /* SocializeComment.m in Sources */,
@@ -497,7 +490,6 @@
 				9A4D29801393FEDD0065C0CB /* SocializeObject.m in Sources */,
 				9A4D29821393FEDD0065C0CB /* SocializeUser.m in Sources */,
 				9A4D29A5139408710065C0CB /* SocializeObjectFactory.m in Sources */,
-				9A4D29AD13940FF70065C0CB /* SocializeEntityJSONFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
