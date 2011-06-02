@@ -11,9 +11,8 @@
 
 @interface SocializeGetRequest : SocializeRequest 
 {
-    uint64_t Id;
-
-
+    @private
+        uint64_t Id;
 }
 
 @property (nonatomic) uint64_t Id; 
