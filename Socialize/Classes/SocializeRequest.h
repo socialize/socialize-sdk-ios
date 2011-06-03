@@ -18,11 +18,12 @@ typedef enum
 
 @interface SocializeRequest : NSObject 
 {
-    NSString * requestID;
-    NSString * endPoint;
-    SocializeRequestMethod * method;
-    NSObject * Object;
-    BOOL isSecure;
+    @private
+        NSString * requestID;
+        NSString * endPoint;
+        SocializeRequestMethod * method;
+        NSObject * Object;
+        BOOL isSecure;
 }
 
 @property (readonly) NSString * requestID;

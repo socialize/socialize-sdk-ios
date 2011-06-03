@@ -162,11 +162,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5C6AAC62137C3F5500AF0219 /* Models */ = {
+		16E2C3D1139778FE007C91ED /* SocializeObjects */ = {
 			isa = PBXGroup;
 			children = (
-				9A4D29621393FE860065C0CB /* Factories */,
-				5CFCBE36138594E800EF5073 /* SocializeObjectParsers */,
 				9A4D296B1393FED80065C0CB /* SocializeActivity.h */,
 				9A4D296C1393FED90065C0CB /* SocializeActivity.m */,
 				9A4D296D1393FED90065C0CB /* SocializeApplication.h */,
@@ -179,6 +177,16 @@
 				9A4D29741393FEDC0065C0CB /* SocializeObject.m */,
 				9A4D29751393FEDC0065C0CB /* SocializeUser.h */,
 				9A4D29761393FEDD0065C0CB /* SocializeUser.m */,
+			);
+			name = SocializeObjects;
+			sourceTree = "<group>";
+		};
+		5C6AAC62137C3F5500AF0219 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				16E2C3D1139778FE007C91ED /* SocializeObjects */,
+				9A4D29621393FE860065C0CB /* Factories */,
+				5CFCBE36138594E800EF5073 /* SocializeObjectParsers */,
 			);
 			name = Models;
 			sourceTree = "<group>";
