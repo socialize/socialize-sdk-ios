@@ -46,7 +46,7 @@
     [JSONFormatDictionary setObject:[fromObject name] forKey:@"Name"];
     [JSONFormatDictionary setObject:[NSNumber numberWithInt:[fromObject views]] forKey:@"Views"];
     [JSONFormatDictionary setObject:[NSNumber numberWithInt:[fromObject likes]] forKey:@"Likes"];
-    [JSONFormatDictionary setObject:[NSNumber numberWithInt:[fromObject comments]] forKey:@"comments"];
+    [JSONFormatDictionary setObject:[NSNumber numberWithInt:[fromObject comments]] forKey:@"Comments"];
     [JSONFormatDictionary setObject:[NSNumber numberWithInt:[fromObject shares]] forKey:@"Shares"];
     
     return JSONFormatDictionary;
