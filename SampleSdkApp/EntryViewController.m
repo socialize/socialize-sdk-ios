@@ -85,6 +85,10 @@
     self.socializeActionPanel.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin);
     self.socializeActionPanel.autoresizesSubviews = YES;
     self.socializeActionPanel.delegate = self;
+    
+    //Demo value
+    [self.socializeActionPanel updateCountsWithViewsCount:[NSNumber numberWithInt:100] withLikesCount:[NSNumber numberWithInt:5] withCommentsCount:[NSNumber numberWithInt:3]];
+    
     [self.view addSubview:self.socializeActionPanel];
         
     [self.socializeActionPanel setNeedsDisplay];       

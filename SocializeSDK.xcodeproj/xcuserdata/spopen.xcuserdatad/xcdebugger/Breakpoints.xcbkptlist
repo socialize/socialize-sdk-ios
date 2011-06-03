@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SampleSdkApp/SocializeActionView.m"
-         timestampString = "328794943.863884"
+         timestampString = "328798990.103698"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "299"
-         endingLineNumber = "299"
+         startingLineNumber = "295"
+         endingLineNumber = "295"
          landmarkName = "-commentButtonPressed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SampleSdkApp/SocializeActionView.m"
-         timestampString = "328794943.863884"
+         timestampString = "328798990.103698"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "305"
-         endingLineNumber = "305"
+         startingLineNumber = "301"
+         endingLineNumber = "301"
          landmarkName = "-likeButtonPressed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SampleSdkApp/SocializeActionView.m"
-         timestampString = "328794943.863884"
+         timestampString = "328798990.103698"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "309"
-         endingLineNumber = "309"
+         startingLineNumber = "305"
+         endingLineNumber = "305"
          landmarkName = "-shareButtonPressed:"
          landmarkType = "5">
       </FileBreakpoint>

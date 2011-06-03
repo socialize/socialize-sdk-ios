@@ -26,13 +26,11 @@
 	UIButton*	_viewCounter;
 	
 	UIFont*		_buttonLabelFont;
-	UIColor*	_shadowColor;
     
     UIImageView* _newCommentMarker;
 	UIActivityIndicatorView*  _activityIndicator;
 	
-	BOOL		_drawBackViewShadows;
-	BOOL		_observersAdded;
+	BOOL		_isLiked;
 	BOOL		_hasNewComment;
 	
 //	Entry					 *entry;
@@ -40,7 +38,9 @@
 }
 
 - (id)initWithFrame:(CGRect)frame;
+- (void) updateCountsWithViewsCount:(NSNumber*) viewsCount withLikesCount: (NSNumber*) likesCount withCommentsCount: (NSNumber*) commentsCount;
 
 @property (nonatomic, assign) id<SocializeActionViewDelegate> delegate;
+@property (nonatomic, assign) BOOL isLiked;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "SocializeActionView.h"
-
+#import "NSNumber+Additions.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define UIColorFromRGB(rgbValue) [UIColor \
@@ -29,7 +29,6 @@
 @interface SocializeActionView()
 
 -(void)setupButtons;
-//-(void)updateCounts:(Entry*)myentry;
 -(void)setButtonLabel:(NSString*)labelString 
 		withImageForNormalState:(NSString*)bgImage 
 		withImageForHightlightedState:(NSString*)bgHighlightedImage 
@@ -46,16 +45,16 @@
 @end
 
 @implementation SocializeActionView
+
 @synthesize delegate = _socializeDelegate;
+@synthesize isLiked = _isLiked;
+
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-		_observersAdded = NO;
 		_buttonLabelFont = [[UIFont boldSystemFontOfSize:11.0f] retain];
-		_shadowColor = [UIColor blackColor];
-		_drawBackViewShadows = YES;
         self.delegate = nil;
 	
 		[self setupButtons];
@@ -112,7 +111,7 @@
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN; 
 	
-	if (YES){
+	if (_isLiked){
 		[self setButtonLabel:nil 
 			withImageForNormalState: @"action-bar-button-red.png" 
 				withImageForHightlightedState:@"action-bar-button-red-hover.png"
@@ -148,9 +147,9 @@
 			withSelector:nil];
 	[self addSubview:_viewCounter];
 	
-	//_activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(buttonOrigin.x, buttonOrigin.y + 5, 20, 20)];
-	//[self addSubview:_activityIndicator];
-	//[_activityIndicator startAnimating];
+	_activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(buttonOrigin.x, buttonOrigin.y + 5, 20, 20)];
+	[self addSubview:_activityIndicator];
+	[_activityIndicator startAnimating];
 }
 
 - (CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName {
@@ -170,83 +169,80 @@
 	return labelSize;
 }
 
-//-(void)updateCounts:(Entry*)myentry{
-//	
-//	if (myentry.statistics != nil) {
-//		
-//		[UIView beginAnimations:@"adjustActionBar" context:nil];
-//
-//		CGPoint buttonOrigin;
-//		CGSize buttonSize;
-//		
-//		buttonSize = [self getButtonSizeForLabel:@"Share" iconName:@"socialize_resources/action-bar-icon-share.png"];
-//		buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
-//		buttonOrigin.y = BUTTON_Y_ORIGIN;
-//		shareButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
-//		[shareButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON)]; // Left inset is the negative of image width.
-//		[shareButton setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
-//		
-//		NSString* formattedValue = [NSNumber formatMyNumber:myentry.statistics.numberOfComments ceiling:[NSNumber numberWithInt:1000]];
-//
-//		buttonSize = [self getButtonSizeForLabel:formattedValue  iconName:@"socialize_resources/comment-sm-icon.png"];
-//		buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
-//		buttonOrigin.y = BUTTON_Y_ORIGIN;
-//		[commentButton setTitle:formattedValue forState:UIControlStateNormal] ;
-//		commentButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
-//		[commentButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON)]; // Left inset is the negative of image width.
-//		[commentButton setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
-//
-//		formattedValue = [NSNumber formatMyNumber:myentry.statistics.numberOfLikes ceiling:[NSNumber numberWithInt:1000]]; 
-//
-//		buttonSize = [self getButtonSizeForLabel:formattedValue iconName:@"socialize_resources/likes-sm-icon.png"];
-//		buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
-//		buttonOrigin.y = BUTTON_Y_ORIGIN;
-//		[likeButton setTitle:formattedValue forState:UIControlStateNormal] ;
-//		if ([[entry liked] boolValue]){
-//			[likeButton setBackgroundImage:[UIImage imageNamed:@"socialize_resources/action-bar-button-red.png"] forState:UIControlStateNormal]; 
-//			[likeButton setBackgroundImage:[UIImage imageNamed:@"socialize_resources/action-bar-button-red-hover.png"] forState:UIControlStateHighlighted]; 
-//			[likeButton setImage:[UIImage imageNamed:@"socialize_resources/action-bar-icon-liked.png"] forState:UIControlStateNormal];
-//			[likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
-//		}
-//		else{
-//			[likeButton setBackgroundImage:[UIImage imageNamed:@"socialize_resources/action-bar-button-black.png"] forState:UIControlStateNormal]; 
-//			[likeButton setBackgroundImage:[UIImage imageNamed:@"socialize_resources/action-bar-button-black-hover.png"] forState:UIControlStateHighlighted]; 
-//			[likeButton setImage:[UIImage imageNamed:@"socialize_resources/action-bar-icon-like.png"] forState:UIControlStateNormal];
-//			[likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
-//		}
-//		[likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
-//		likeButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
-//		[likeButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON)]; // Left inset is the negative of image width.
-//		
-//		[_activityIndicator stopAnimating];
-//		[_activityIndicator removeFromSuperview];
-//		
-//		formattedValue = [NSNumber formatMyNumber:myentry.statistics.numberOfViews ceiling:[NSNumber numberWithInt:10000000]];
-//
-//		buttonSize = [self getButtonSizeForLabel:formattedValue iconName:@"socialize_resources/view-sm-icon.png"];
-//		buttonOrigin.x = PADDING_IN_BETWEEN_BUTTONS; 
-//		buttonOrigin.y = BUTTON_Y_ORIGIN;
-//
-//		[viewCounter setTitle:formattedValue forState:UIControlStateNormal];
-//		viewCounter.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
-//		[viewCounter setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON - 2)]; // Left inset is the negative of image width.
-//		[viewCounter setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
-//		viewCounter.hidden = NO;
-//		[UIView commitAnimations];
-//		
-//		
-//		if (_hasNewComment && !newCommentMarker){
-//			newCommentMarker = [[UIImageView alloc] initWithFrame:CGRectMake(commentButton.frame.size.width - (COMMENT_INDICATOR_SIZE_WIDTH/2) - 3,
-//																			 - (COMMENT_INDICATOR_SIZE_HEIGHT/2) + 3, 
-//																			 COMMENT_INDICATOR_SIZE_WIDTH, 
-//																			 COMMENT_INDICATOR_SIZE_HEIGHT )];
-//			newCommentMarker.image = [UIImage imageNamed:@"socialize_resources/action-bar-notification-icon.png"];
-//			newCommentMarker.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-//			[commentButton addSubview:newCommentMarker];
-//			[commentButton bringSubviewToFront:newCommentMarker];
-//		}
-//	}
-//}
+- (void) updateCountsWithViewsCount:(NSNumber*) viewsCount withLikesCount: (NSNumber*) likesCount withCommentsCount: (NSNumber*) commentsCount
+{
+	[UIView beginAnimations:@"adjustActionBar" context:nil];
+    
+    CGPoint buttonOrigin;
+	CGSize buttonSize;
+		
+	buttonSize = [self getButtonSizeForLabel:@"Share" iconName:@"action-bar-icon-share.png"];
+	buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
+	buttonOrigin.y = BUTTON_Y_ORIGIN;
+	_shareButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
+	[_shareButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON)]; // Left inset is the negative of image width.
+	[_shareButton setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
+		
+	NSString* formattedValue = [NSNumber formatMyNumber:commentsCount ceiling:[NSNumber numberWithInt:1000]];
+
+	buttonSize = [self getButtonSizeForLabel:formattedValue  iconName:@"comment-sm-icon.png"];
+	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
+	buttonOrigin.y = BUTTON_Y_ORIGIN;
+	[_commentButton setTitle:formattedValue forState:UIControlStateNormal] ;
+	_commentButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
+	[_commentButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON)]; // Left inset is the negative of image width.
+	[_commentButton setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
+
+	formattedValue = [NSNumber formatMyNumber:likesCount ceiling:[NSNumber numberWithInt:1000]]; 
+
+	buttonSize = [self getButtonSizeForLabel:formattedValue iconName:@"likes-sm-icon.png"];
+	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
+	buttonOrigin.y = BUTTON_Y_ORIGIN;
+	[_likeButton setTitle:formattedValue forState:UIControlStateNormal] ;
+	if (_isLiked){
+		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-red.png"] forState:UIControlStateNormal]; 
+		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-red-hover.png"] forState: UIControlStateHighlighted]; 
+		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-liked.png"] forState:UIControlStateNormal];
+		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
+    }
+	else{
+		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-black.png"] forState:UIControlStateNormal]; 
+		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-black-hover.png"] forState:UIControlStateHighlighted]; 
+		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-like.png"] forState:UIControlStateNormal];
+		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
+    }
+	[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
+	_likeButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
+	[_likeButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON)]; // Left inset is the negative of image width.
+		
+	[_activityIndicator stopAnimating];
+	[_activityIndicator removeFromSuperview];
+		
+	formattedValue = [NSNumber formatMyNumber:viewsCount ceiling:[NSNumber numberWithInt:10000000]];
+
+	buttonSize = [self getButtonSizeForLabel:formattedValue iconName:@"view-sm-icon.png"];
+	buttonOrigin.x = PADDING_IN_BETWEEN_BUTTONS; 
+	buttonOrigin.y = BUTTON_Y_ORIGIN;
+
+	[_viewCounter setTitle:formattedValue forState:UIControlStateNormal];
+	_viewCounter.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
+	[_viewCounter setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON - 2)]; // Left inset is the negative of image width.
+	[_viewCounter setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
+	_viewCounter.hidden = NO;
+	[UIView commitAnimations];
+		
+	// TODO:: investigate newCommentMarker allocation	
+	if (_hasNewComment && !_newCommentMarker){
+		_newCommentMarker = [[UIImageView alloc] initWithFrame:CGRectMake(_commentButton.frame.size.width - (COMMENT_INDICATOR_SIZE_WIDTH/2) - 3,
+																			 - (COMMENT_INDICATOR_SIZE_HEIGHT/2) + 3, 
+																			 COMMENT_INDICATOR_SIZE_WIDTH, 
+																			 COMMENT_INDICATOR_SIZE_HEIGHT )];
+		_newCommentMarker.image = [UIImage imageNamed:@"action-bar-notification-icon.png"];
+		_newCommentMarker.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+		[_commentButton addSubview:_newCommentMarker];
+		[_commentButton bringSubviewToFront:_newCommentMarker];
+	}
+}
 
 
 -(void)setButtonLabel:(NSString*)labelString 
@@ -327,8 +323,7 @@
 	[_viewCounter release]; _viewCounter = nil;
 	
     [_buttonLabelFont release]; _buttonLabelFont = nil;
-    [_shadowColor release]; _shareButton = nil;
-    
+        
     [_newCommentMarker release]; _newCommentMarker = nil;
 	[_activityIndicator release]; _activityIndicator = nil;
     [super dealloc];
