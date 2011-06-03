@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EntryViewController.h"
 
 @interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate> {
-
+@private
+    EntryViewController* entryController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) EntryViewController* entryController;
 
 @end

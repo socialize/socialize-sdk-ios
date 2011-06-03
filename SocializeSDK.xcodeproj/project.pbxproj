@@ -14,6 +14,18 @@
 		16E2C4421398C40F007C91ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4411398C40F007C91ED /* main.m */; };
 		16E2C4451398C40F007C91ED /* SampleSdkAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */; };
 		16E2C4481398C40F007C91ED /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C4461398C40F007C91ED /* MainWindow.xib */; };
+		16E2C4541398D1C2007C91ED /* SocializeActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4521398D1C2007C91ED /* SocializeActionView.m */; };
+		16E2C4571398D45A007C91ED /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4561398D45A007C91ED /* EntryViewController.m */; };
+		16E2C4621398F6E3007C91ED /* action-bar-button-black-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C4591398F6E3007C91ED /* action-bar-button-black-hover.png */; };
+		16E2C4631398F6E3007C91ED /* action-bar-button-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C45A1398F6E3007C91ED /* action-bar-button-black.png */; };
+		16E2C4641398F6E3007C91ED /* action-bar-button-red-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C45B1398F6E3007C91ED /* action-bar-button-red-hover.png */; };
+		16E2C4651398F6E3007C91ED /* action-bar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C45C1398F6E3007C91ED /* action-bar-button-red.png */; };
+		16E2C4661398F6E3007C91ED /* action-bar-icon-like.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C45D1398F6E3007C91ED /* action-bar-icon-like.png */; };
+		16E2C4671398F6E3007C91ED /* action-bar-icon-share.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C45E1398F6E3007C91ED /* action-bar-icon-share.png */; };
+		16E2C4681398F6E3007C91ED /* action-bar-icon-views.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C45F1398F6E3007C91ED /* action-bar-icon-views.png */; };
+		16E2C4691398F6E3007C91ED /* action-bar-notification-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C4601398F6E3007C91ED /* action-bar-notification-icon.png */; };
+		16E2C46A1398F6E3007C91ED /* comment-sm-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C4611398F6E3007C91ED /* comment-sm-icon.png */; };
+		16E2C46C1399000C007C91ED /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C46B1399000C007C91ED /* action-bar-bg.png */; };
 		5C21C0C41396BF8300CF2B9F /* SocializeGetRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0BE1396BF8300CF2B9F /* SocializeGetRequest.h */; };
 		5C21C0C51396BF8300CF2B9F /* SocializeGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0BF1396BF8300CF2B9F /* SocializeGetRequest.m */; };
 		5C21C0C61396BF8300CF2B9F /* SocializeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */; };
@@ -93,6 +105,20 @@
 		16E2C4431398C40F007C91ED /* SampleSdkAppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleSdkAppAppDelegate.h; sourceTree = "<group>"; };
 		16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppAppDelegate.m; sourceTree = "<group>"; };
 		16E2C4471398C40F007C91ED /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		16E2C4511398D1C2007C91ED /* SocializeActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeActionView.h; sourceTree = "<group>"; };
+		16E2C4521398D1C2007C91ED /* SocializeActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeActionView.m; sourceTree = "<group>"; };
+		16E2C4551398D45A007C91ED /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryViewController.h; sourceTree = "<group>"; };
+		16E2C4561398D45A007C91ED /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryViewController.m; sourceTree = "<group>"; };
+		16E2C4591398F6E3007C91ED /* action-bar-button-black-hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-black-hover.png"; sourceTree = "<group>"; };
+		16E2C45A1398F6E3007C91ED /* action-bar-button-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-black.png"; sourceTree = "<group>"; };
+		16E2C45B1398F6E3007C91ED /* action-bar-button-red-hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-red-hover.png"; sourceTree = "<group>"; };
+		16E2C45C1398F6E3007C91ED /* action-bar-button-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-red.png"; sourceTree = "<group>"; };
+		16E2C45D1398F6E3007C91ED /* action-bar-icon-like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-like.png"; sourceTree = "<group>"; };
+		16E2C45E1398F6E3007C91ED /* action-bar-icon-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-share.png"; sourceTree = "<group>"; };
+		16E2C45F1398F6E3007C91ED /* action-bar-icon-views.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-views.png"; sourceTree = "<group>"; };
+		16E2C4601398F6E3007C91ED /* action-bar-notification-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-notification-icon.png"; sourceTree = "<group>"; };
+		16E2C4611398F6E3007C91ED /* comment-sm-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-sm-icon.png"; sourceTree = "<group>"; };
+		16E2C46B1399000C007C91ED /* action-bar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-bg.png"; sourceTree = "<group>"; };
 		5C21C0BE1396BF8300CF2B9F /* SocializeGetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeGetRequest.h; path = Classes/SocializeGetRequest.h; sourceTree = "<group>"; };
 		5C21C0BF1396BF8300CF2B9F /* SocializeGetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeGetRequest.m; path = Classes/SocializeGetRequest.m; sourceTree = "<group>"; };
 		5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequest.h; path = Classes/SocializeRequest.h; sourceTree = "<group>"; };
@@ -208,6 +234,11 @@
 		16E2C43A1398C40E007C91ED /* SampleSdkApp */ = {
 			isa = PBXGroup;
 			children = (
+				16E2C4581398F6E3007C91ED /* socialize_resources */,
+				16E2C4551398D45A007C91ED /* EntryViewController.h */,
+				16E2C4561398D45A007C91ED /* EntryViewController.m */,
+				16E2C4511398D1C2007C91ED /* SocializeActionView.h */,
+				16E2C4521398D1C2007C91ED /* SocializeActionView.m */,
 				16E2C4431398C40F007C91ED /* SampleSdkAppAppDelegate.h */,
 				16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */,
 				16E2C4461398C40F007C91ED /* MainWindow.xib */,
@@ -225,6 +256,23 @@
 				16E2C4411398C40F007C91ED /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		16E2C4581398F6E3007C91ED /* socialize_resources */ = {
+			isa = PBXGroup;
+			children = (
+				16E2C4591398F6E3007C91ED /* action-bar-button-black-hover.png */,
+				16E2C45A1398F6E3007C91ED /* action-bar-button-black.png */,
+				16E2C45B1398F6E3007C91ED /* action-bar-button-red-hover.png */,
+				16E2C46B1399000C007C91ED /* action-bar-bg.png */,
+				16E2C45C1398F6E3007C91ED /* action-bar-button-red.png */,
+				16E2C45D1398F6E3007C91ED /* action-bar-icon-like.png */,
+				16E2C45E1398F6E3007C91ED /* action-bar-icon-share.png */,
+				16E2C45F1398F6E3007C91ED /* action-bar-icon-views.png */,
+				16E2C4601398F6E3007C91ED /* action-bar-notification-icon.png */,
+				16E2C4611398F6E3007C91ED /* comment-sm-icon.png */,
+			);
+			path = socialize_resources;
 			sourceTree = "<group>";
 		};
 		5C6AAC62137C3F5500AF0219 /* Models */ = {
@@ -568,6 +616,16 @@
 			files = (
 				16E2C43F1398C40F007C91ED /* InfoPlist.strings in Resources */,
 				16E2C4481398C40F007C91ED /* MainWindow.xib in Resources */,
+				16E2C4621398F6E3007C91ED /* action-bar-button-black-hover.png in Resources */,
+				16E2C4631398F6E3007C91ED /* action-bar-button-black.png in Resources */,
+				16E2C4641398F6E3007C91ED /* action-bar-button-red-hover.png in Resources */,
+				16E2C4651398F6E3007C91ED /* action-bar-button-red.png in Resources */,
+				16E2C4661398F6E3007C91ED /* action-bar-icon-like.png in Resources */,
+				16E2C4671398F6E3007C91ED /* action-bar-icon-share.png in Resources */,
+				16E2C4681398F6E3007C91ED /* action-bar-icon-views.png in Resources */,
+				16E2C4691398F6E3007C91ED /* action-bar-notification-icon.png in Resources */,
+				16E2C46A1398F6E3007C91ED /* comment-sm-icon.png in Resources */,
+				16E2C46C1399000C007C91ED /* action-bar-bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +674,8 @@
 			files = (
 				16E2C4421398C40F007C91ED /* main.m in Sources */,
 				16E2C4451398C40F007C91ED /* SampleSdkAppAppDelegate.m in Sources */,
+				16E2C4541398D1C2007C91ED /* SocializeActionView.m in Sources */,
+				16E2C4571398D45A007C91ED /* EntryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

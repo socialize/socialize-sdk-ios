@@ -12,10 +12,13 @@
 
 
 @synthesize window=_window;
+@synthesize entryController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    self.entryController = [[EntryViewController alloc] init];
+    [self.window addSubview:self.entryController.view];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -61,6 +64,7 @@
 
 - (void)dealloc
 {
+    [entryController  release];
     [_window release];
     [super dealloc];
 }
