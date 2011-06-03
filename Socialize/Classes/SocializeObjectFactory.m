@@ -37,17 +37,13 @@
 
 -(void)verifyClass:(Class)classToTest AndProtocol:(Protocol *)protocolToTest
 {
-    
     [self verifySupportForProtocol:protocolToTest];
     [self verifyClass:classToTest conformsToProtocol:protocolToTest];
-    
-    
 }
 
 -(void)verifyClass:(Class)classToTest conformsToProtocol:(Protocol *)protocolToTest
 {
     NSAssert([classToTest conformsToProtocol:protocolToTest],@"class doesn't conform to protocol");
-    
 }
 
 -(void)verifySupportForProtocol:(Protocol *)protocolToTest
@@ -121,5 +117,11 @@
     
     return [[socializeClass new ]autorelease];
 }
+
+
+-(id)createObjectForProtocol:(Protocol *)protocol{
+    return [self createObject:[protocol description]];
+}
+
 
 @end

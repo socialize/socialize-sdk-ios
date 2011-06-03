@@ -28,6 +28,10 @@
 		5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		5CD4882D1386C42300E60C4C /* profile_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CD4882C1386C42300E60C4C /* profile_functions.c */; };
 		5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */; };
+		84B8F3D11396EF4100C95F41 /* SocializeEntityJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8F3CF1396EF4100C95F41 /* SocializeEntityJSONFormatter.m */; };
+		84B8F3D21396EF4100C95F41 /* SocializeEntityJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B8F3D01396EF4100C95F41 /* SocializeEntityJSONFormatter.h */; };
+		84B8F3D61396EF4D00C95F41 /* SocializeObjectJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8F3D41396EF4D00C95F41 /* SocializeObjectJSONFormatter.m */; };
+		84B8F3D71396EF4D00C95F41 /* SocializeObjectJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B8F3D51396EF4D00C95F41 /* SocializeObjectJSONFormatter.h */; };
 		9A4D295C1393FE530065C0CB /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D295A1393FE530065C0CB /* JSONKit.h */; };
 		9A4D295D1393FE530065C0CB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D295B1393FE530065C0CB /* JSONKit.m */; };
 		9A4D29601393FE7A0065C0CB /* SocializeConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D295E1393FE7A0065C0CB /* SocializeConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -96,6 +100,10 @@
 		5CC3DB111378889E00B11B78 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		5CD4882C1386C42300E60C4C /* profile_functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = profile_functions.c; sourceTree = "<group>"; };
 		5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
+		84B8F3CF1396EF4100C95F41 /* SocializeEntityJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeEntityJSONFormatter.m; path = Classes/SocializeEntityJSONFormatter.m; sourceTree = "<group>"; };
+		84B8F3D01396EF4100C95F41 /* SocializeEntityJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEntityJSONFormatter.h; path = Classes/SocializeEntityJSONFormatter.h; sourceTree = "<group>"; };
+		84B8F3D41396EF4D00C95F41 /* SocializeObjectJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeObjectJSONFormatter.m; path = Classes/SocializeObjectJSONFormatter.m; sourceTree = "<group>"; };
+		84B8F3D51396EF4D00C95F41 /* SocializeObjectJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeObjectJSONFormatter.h; path = Classes/SocializeObjectJSONFormatter.h; sourceTree = "<group>"; };
 		9A4D295A1393FE530065C0CB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = Libraries/JSONKit.h; sourceTree = SOURCE_ROOT; };
 		9A4D295B1393FE530065C0CB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = Libraries/JSONKit.m; sourceTree = SOURCE_ROOT; };
 		9A4D295E1393FE7A0065C0CB /* SocializeConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeConfiguration.h; path = Classes/SocializeConfiguration.h; sourceTree = "<group>"; };
@@ -313,6 +321,10 @@
 		5CFCBE36138594E800EF5073 /* SocializeObjectParsers */ = {
 			isa = PBXGroup;
 			children = (
+				84B8F3D41396EF4D00C95F41 /* SocializeObjectJSONFormatter.m */,
+				84B8F3D51396EF4D00C95F41 /* SocializeObjectJSONFormatter.h */,
+				84B8F3CF1396EF4100C95F41 /* SocializeEntityJSONFormatter.m */,
+				84B8F3D01396EF4100C95F41 /* SocializeEntityJSONFormatter.h */,
 			);
 			name = SocializeObjectParsers;
 			sourceTree = "<group>";
@@ -409,6 +421,8 @@
 				5C21C0D01396D9A800CF2B9F /* SocializeEntityService.h in Headers */,
 				5C21C0D41396DA0500CF2B9F /* SocializeActivityService.h in Headers */,
 				5C21C0DC1396E77300CF2B9F /* SocializeResponse.h in Headers */,
+				84B8F3D21396EF4100C95F41 /* SocializeEntityJSONFormatter.h in Headers */,
+				84B8F3D71396EF4D00C95F41 /* SocializeObjectJSONFormatter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +552,8 @@
 				5C21C0D11396D9A800CF2B9F /* SocializeEntityService.m in Sources */,
 				5C21C0D51396DA0500CF2B9F /* SocializeActivityService.m in Sources */,
 				5C21C0DD1396E77300CF2B9F /* SocializeResponse.m in Sources */,
+				84B8F3D11396EF4100C95F41 /* SocializeEntityJSONFormatter.m in Sources */,
+				84B8F3D61396EF4D00C95F41 /* SocializeObjectJSONFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

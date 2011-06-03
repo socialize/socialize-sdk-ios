@@ -18,4 +18,5 @@
 -(id)initializeWithConfiguration:(SocializeConfiguration*)configuration;
 -(id)createObject:(NSString *)protocolName;
 -(void)addPrototype:(Class)socializeObjectPrototype forKey:(NSString *)protocolName;
+-(id)createObjectForProtocol:(Protocol *)protocol;
 @end
