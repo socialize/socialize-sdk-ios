@@ -10,9 +10,9 @@
 
 @protocol SocializeActionViewDelegate <NSObject>
 
-//-(void)commentButtonTouched:(Entry*)entry;
-//-(void)likeButtonTouched:(Entry*)entry;
-//-(void)shareButtonTouched:(Entry*)entry;
+-(void)commentButtonTouched:(id)sender;
+-(void)likeButtonTouched:(id)sender;
+-(void)shareButtonTouched:(id)sender;
 
 @end
 
@@ -27,13 +27,10 @@
 	
 	UIFont*		_buttonLabelFont;
     
-    UIImageView* _newCommentMarker;
 	UIActivityIndicatorView*  _activityIndicator;
 	
 	BOOL		_isLiked;
-	BOOL		_hasNewComment;
-	
-//	Entry					 *entry;
+
 	id<SocializeActionViewDelegate>   _socializeDelegate;
 }
 

@@ -62,8 +62,8 @@
     return self;
 }
 
--(void)setupButtons {
-
+-(void)setupButtons 
+{
 	CGPoint buttonOrigin;
 	CGSize buttonSize;
 
@@ -94,16 +94,6 @@
 				onButton:_commentButton
 			withSelector:@selector(commentButtonPressed:)];
 	
-		if (_hasNewComment){
-			_newCommentMarker = [[UIImageView alloc] initWithFrame:CGRectMake(_commentButton.frame.size.width - (COMMENT_INDICATOR_SIZE_WIDTH/2) - 3,
-																						 - (COMMENT_INDICATOR_SIZE_HEIGHT/2) + 3, 
-																			COMMENT_INDICATOR_SIZE_WIDTH, 
-																			COMMENT_INDICATOR_SIZE_HEIGHT )];
-			_newCommentMarker.image = [UIImage imageNamed:@"action-bar-notification-icon.png"];
-			_newCommentMarker.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-			[_commentButton addSubview:_newCommentMarker];
-			[_commentButton bringSubviewToFront:_newCommentMarker];
-		}
 	[self addSubview:_commentButton];
 
 	_likeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -135,7 +125,6 @@
 	_viewCounter.userInteractionEnabled = NO;
 	_viewCounter.hidden = YES;
 
-	buttonSize = [self getButtonSizeForLabel:nil iconName:@"action-bar-icon-like.png"];
 	buttonOrigin.x = PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
 	[self setButtonLabel:nil 
@@ -152,15 +141,14 @@
 	[_activityIndicator startAnimating];
 }
 
-- (CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName {
-	
-	CGSize labelSize;
+- (CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName 
+{
 	if ([labelString length] <= 0)
 	{
-		labelSize = CGSizeZero;
+		return CGSizeZero;
 	}
 	
-	labelSize = [labelString sizeWithFont:_buttonLabelFont];
+	CGSize labelSize = [labelString sizeWithFont:_buttonLabelFont];
 	if (iconName)
 		labelSize = CGSizeMake(labelSize.width + (2 * BUTTON_PADDINGS) + PADDING_BETWEEN_TEXT_ICON + 5 + ICON_WIDTH, BUTTON_HEIGHT);
 	else
@@ -230,18 +218,6 @@
 	[_viewCounter setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
 	_viewCounter.hidden = NO;
 	[UIView commitAnimations];
-		
-	// TODO:: investigate newCommentMarker allocation	
-	if (_hasNewComment && !_newCommentMarker){
-		_newCommentMarker = [[UIImageView alloc] initWithFrame:CGRectMake(_commentButton.frame.size.width - (COMMENT_INDICATOR_SIZE_WIDTH/2) - 3,
-																			 - (COMMENT_INDICATOR_SIZE_HEIGHT/2) + 3, 
-																			 COMMENT_INDICATOR_SIZE_WIDTH, 
-																			 COMMENT_INDICATOR_SIZE_HEIGHT )];
-		_newCommentMarker.image = [UIImage imageNamed:@"action-bar-notification-icon.png"];
-		_newCommentMarker.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-		[_commentButton addSubview:_newCommentMarker];
-		[_commentButton bringSubviewToFront:_newCommentMarker];
-	}
 }
 
 
@@ -251,8 +227,8 @@
 		withIconName:(NSString*)iconName
 			 atOrigin:(CGPoint)frameOrigin 
 			 onButton:(UIButton*)button
-		 withSelector:(SEL)selector {
-	
+		 withSelector:(SEL)selector 
+{
 	CGSize buttonSize = [self getButtonSizeForLabel:labelString iconName:iconName];
 
 	if (iconName)
@@ -291,24 +267,25 @@
 
 #pragma mark Socialize Delegate
 
--(void)commentButtonPressed:(id)sender{
-//	// Create the modal view controller
-//	newCommentMarker.hidden = YES;
-//	[socializeDelegate commentButtonTouched:self.entry];
+-(void)commentButtonPressed:(id)sender
+{
+    //newCommentMarker.hidden = YES;
+	[_socializeDelegate commentButtonTouched:sender];
 }	
-//
--(void)likeButtonPressed:(id)sender{
-//	[socializeDelegate likeButtonTouched:self.entry];
+
+-(void)likeButtonPressed:(id)sender
+{
+	[_socializeDelegate likeButtonTouched:sender];
 }
 
--(void)shareButtonPressed:(id)sender{
-//	[socializeDelegate shareButtonTouched:self.entry];
+-(void)shareButtonPressed:(id)sender
+{
+	[_socializeDelegate shareButtonTouched:sender];
 }
-//
 
 #pragma -
-- (void)drawRect:(CGRect)rect {
-	
+- (void)drawRect:(CGRect)rect 
+{	
 	[super drawRect:rect];
 	[[[UIImage imageNamed:@"action-bar-bg.png"] stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5] 
 			drawInRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
@@ -316,16 +293,16 @@
 }
 
 
-- (void)dealloc {
+- (void)dealloc 
+{
     [_commentButton release]; _commentButton = nil;
 	[_likeButton release]; _likeButton = nil;
 	[_shareButton release]; _shareButton = nil;
 	[_viewCounter release]; _viewCounter = nil;
-	
     [_buttonLabelFont release]; _buttonLabelFont = nil;
-        
-    [_newCommentMarker release]; _newCommentMarker = nil;
-	[_activityIndicator release]; _activityIndicator = nil;
+    [_activityIndicator release]; _activityIndicator = nil;
+
     [super dealloc];
 }
+
 @end

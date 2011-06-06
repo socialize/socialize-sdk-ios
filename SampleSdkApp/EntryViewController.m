@@ -99,4 +99,21 @@
     return NO;
 }
 
+#pragma mark - SocializeActionViewDelegate
+
+-(void)commentButtonTouched:(id)sender
+{
+    
+}
+
+-(void)likeButtonTouched:(id)sender
+{
+    
+}
+
+-(void)shareButtonTouched:(id)sender
+{
+    
+}
+
 @end
