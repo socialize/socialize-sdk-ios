@@ -7,6 +7,7 @@
 //
 
 #import "SampleSdkAppAppDelegate.h"
+#import "DemoEntry.h"
 
 @implementation SampleSdkAppAppDelegate
 
@@ -16,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.entryController = [[EntryViewController alloc] init];
+    self.entryController = [[EntryViewController alloc] initWithEntry:[DemoEntry createDemoEntryWithText:@"This is demo entry"]];
     [self.window addSubview:self.entryController.view];
     
     [self.window makeKeyAndVisible];

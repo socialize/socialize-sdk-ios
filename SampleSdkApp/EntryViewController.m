@@ -14,17 +14,30 @@
     -(void) initSocialize;
     @property (nonatomic, retain) SocializeActionView* socializeActionPanel;
     @property (nonatomic, retain) UIWebView* webView;
+    @property (nonatomic, retain) DemoEntry* entry;
 @end
 
 @implementation EntryViewController
 
 @synthesize socializeActionPanel = _socializeActionPanel;
 @synthesize webView = _webView;
+@synthesize entry = _entry;
+
+-(id) initWithEntry: (DemoEntry*) entry
+{
+    self = [super init];
+    if(self != nil)
+    {
+        self.entry = entry;
+    }
+    return self;
+}
 
 - (void)dealloc
 {
     [_socializeActionPanel release]; _socializeActionPanel = nil;
     [_webView release]; _webView = nil;
+    [_entry release]; _entry = nil;
     [super dealloc];
 }
 
@@ -47,19 +60,18 @@
 	self.view.autoresizesSubviews = YES;
 	self.view.backgroundColor = [UIColor whiteColor];
 	
+    self.webView = [[UIWebView alloc] initWithFrame: CGRectMake(0,
+                                                                0, 
+                                                                self.view.bounds.size.width,
+                                                                self.view.bounds.size.height - ACTION_PANE_HEIGHT)
+                    ];
+
 	
-	UIWebView *newWebView = [[UIWebView alloc] init];
-	
-	self.webView = newWebView;
-	[newWebView release];
-    
-	self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);	
-	
-	[self.view addSubview: self.webView];
+	NSString* entryContextToShow = [NSString stringWithFormat:@"<html><center>%@</center></html>", self.entry.entryContext];
+    [self.webView loadHTMLString:entryContextToShow baseURL:nil];   
     
 	self.webView.delegate = self;
-	self.webView.scalesPageToFit = YES;
-	self.webView.dataDetectorTypes = UIDataDetectorTypeLink;
+    [self.view addSubview: self.webView];
 
 	//initialize socialize related classes
 	[self initSocialize];   
@@ -86,8 +98,11 @@
     self.socializeActionPanel.autoresizesSubviews = YES;
     self.socializeActionPanel.delegate = self;
     
-    //Demo value
-    [self.socializeActionPanel updateCountsWithViewsCount:[NSNumber numberWithInt:100] withLikesCount:[NSNumber numberWithInt:5] isLiked: NO withCommentsCount:[NSNumber numberWithInt:100]];
+    [self.socializeActionPanel updateCountsWithViewsCount:[NSNumber numberWithInt:self.entry.socializeEntry.views]
+                                           withLikesCount:[NSNumber numberWithInt:self.entry.socializeEntry.likes] 
+                                                  isLiked: NO 
+                                        withCommentsCount:[NSNumber numberWithInt:self.entry.socializeEntry.comments]
+     ];
     
     [self.view addSubview:self.socializeActionPanel];
         

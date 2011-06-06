@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "SocializeActionView.h"
+#import "DemoEntry.h"
 
 @interface EntryViewController : UIViewController<UIWebViewDelegate, SocializeActionViewDelegate> {
     
 @private
     SocializeActionView* _socializeActionPanel;
     UIWebView* _webView;
+    
+    DemoEntry* _entry;
 }
+
+-(id) initWithEntry: (DemoEntry*) entry;
 
 @end

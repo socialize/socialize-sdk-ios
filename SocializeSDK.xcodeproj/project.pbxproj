@@ -36,6 +36,8 @@
 		16A5B333139CF18500F3EF75 /* action-bar-icon-liked.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A5B332139CF18500F3EF75 /* action-bar-icon-liked.png */; };
 		16A5B335139CF1D100F3EF75 /* view-sm-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A5B334139CF1D000F3EF75 /* view-sm-icon.png */; };
 		16A5B337139CF24100F3EF75 /* action-bar-icon-comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A5B336139CF24100F3EF75 /* action-bar-icon-comments.png */; };
+		16A5B33A139CF69E00F3EF75 /* DemoEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B339139CF69D00F3EF75 /* DemoEntry.m */; };
+		16A5B33B139CFE6C00F3EF75 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DABE1378824800B11B78 /* libSocialize.a */; };
 		16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		16E2C4381398C40E007C91ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
 		16E2C4391398C40E007C91ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
@@ -160,6 +162,8 @@
 		16A5B332139CF18500F3EF75 /* action-bar-icon-liked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-liked.png"; sourceTree = "<group>"; };
 		16A5B334139CF1D000F3EF75 /* view-sm-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view-sm-icon.png"; sourceTree = "<group>"; };
 		16A5B336139CF24100F3EF75 /* action-bar-icon-comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-comments.png"; sourceTree = "<group>"; };
+		16A5B338139CF69D00F3EF75 /* DemoEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoEntry.h; sourceTree = "<group>"; };
+		16A5B339139CF69D00F3EF75 /* DemoEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoEntry.m; sourceTree = "<group>"; };
 		16E2C4351398C40E007C91ED /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E2C43C1398C40F007C91ED /* SampleSdkApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleSdkApp-Info.plist"; sourceTree = "<group>"; };
 		16E2C43E1398C40F007C91ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -251,6 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16A5B33B139CFE6C00F3EF75 /* libSocialize.a in Frameworks */,
 				16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */,
 				16E2C4381398C40E007C91ED /* Foundation.framework in Frameworks */,
 				16E2C4391398C40E007C91ED /* CoreGraphics.framework in Frameworks */,
@@ -304,6 +309,8 @@
 			isa = PBXGroup;
 			children = (
 				16E2C4581398F6E3007C91ED /* socialize_resources */,
+				16A5B338139CF69D00F3EF75 /* DemoEntry.h */,
+				16A5B339139CF69D00F3EF75 /* DemoEntry.m */,
 				16E2C46D13991239007C91ED /* NSNumber+Additions.h */,
 				16E2C46E13991239007C91ED /* NSNumber+Additions.m */,
 				16E2C4551398D45A007C91ED /* EntryViewController.h */,
@@ -399,6 +406,7 @@
 		5CC3DAB1137881B900B11B78 = {
 			isa = PBXGroup;
 			children = (
+				5CC3DABE1378824800B11B78 /* libSocialize.a */,
 				5CC3DAC31378824800B11B78 /* Socialize */,
 				5CC3DAEE1378859000B11B78 /* unitTests */,
 				16E2C43A1398C40E007C91ED /* SampleSdkApp */,
@@ -483,7 +491,6 @@
 		5CEB6CE113858BAA00462EFF /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				5CC3DABE1378824800B11B78 /* libSocialize.a */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -809,6 +816,7 @@
 				16E2C4541398D1C2007C91ED /* SocializeActionView.m in Sources */,
 				16E2C4571398D45A007C91ED /* EntryViewController.m in Sources */,
 				16E2C46F13991239007C91ED /* NSNumber+Additions.m in Sources */,
+				16A5B33A139CF69E00F3EF75 /* DemoEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,6 +931,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-lgcov";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -944,6 +953,7 @@
 				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-lgcov";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
