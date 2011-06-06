@@ -87,7 +87,7 @@
     self.socializeActionPanel.delegate = self;
     
     //Demo value
-    [self.socializeActionPanel updateCountsWithViewsCount:[NSNumber numberWithInt:100] withLikesCount:[NSNumber numberWithInt:5] withCommentsCount:[NSNumber numberWithInt:3]];
+    [self.socializeActionPanel updateCountsWithViewsCount:[NSNumber numberWithInt:100] withLikesCount:[NSNumber numberWithInt:5] isLiked: NO withCommentsCount:[NSNumber numberWithInt:100]];
     
     [self.view addSubview:self.socializeActionPanel];
         

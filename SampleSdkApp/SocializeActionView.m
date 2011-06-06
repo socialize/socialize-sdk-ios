@@ -90,8 +90,8 @@
 			withImageForNormalState: @"action-bar-button-black.png" 
 			withImageForHightlightedState:@"action-bar-button-black-hover.png"
 			withIconName:@"action-bar-icon-comments.png"
-				atOrigin:buttonOrigin
-				onButton:_commentButton
+			atOrigin:buttonOrigin
+			onButton:_commentButton
 			withSelector:@selector(commentButtonPressed:)];
 	
 	[self addSubview:_commentButton];
@@ -101,33 +101,24 @@
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN; 
 	
-	if (_isLiked){
-		[self setButtonLabel:nil 
-			withImageForNormalState: @"action-bar-button-red.png" 
-				withImageForHightlightedState:@"action-bar-button-red-hover.png"
-				withIconName:@"action-bar-icon-liked.png"
-					atOrigin:buttonOrigin
-					onButton:_likeButton
-				withSelector:@selector(likeButtonPressed:)];
-	}
-	else {
-		[self setButtonLabel:nil 
-			withImageForNormalState: @"action-bar-button-black.png" 
-			withImageForHightlightedState:@"action-bar-button-black-hover.png"
-				withIconName:@"action-bar-icon-like.png"
-					atOrigin:buttonOrigin
-					onButton:_likeButton
-				withSelector:@selector(likeButtonPressed:)];
-	}
+	[self setButtonLabel:nil 
+          withImageForNormalState: @"action-bar-button-black.png" 
+		  withImageForHightlightedState:@"action-bar-button-black-hover.png"
+		  withIconName:@"action-bar-icon-like.png"
+		  atOrigin:buttonOrigin
+		  onButton:_likeButton
+		  withSelector:@selector(likeButtonPressed:)];
 
 	[self addSubview:_likeButton];
+    
  	_viewCounter = [UIButton buttonWithType:UIButtonTypeCustom];
 	_viewCounter.userInteractionEnabled = NO;
 	_viewCounter.hidden = YES;
 
 	buttonOrigin.x = PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
-	[self setButtonLabel:nil 
+	
+    [self setButtonLabel:nil 
 		withImageForNormalState: nil 
 		withImageForHightlightedState:nil
 			withIconName:@"action-bar-icon-views.png"
@@ -157,35 +148,47 @@
 	return labelSize;
 }
 
-- (void) updateCountsWithViewsCount:(NSNumber*) viewsCount withLikesCount: (NSNumber*) likesCount withCommentsCount: (NSNumber*) commentsCount
+- (void) updateCountsWithViewsCount:(NSNumber*) viewsCount withLikesCount: (NSNumber*) likesCount isLiked: (BOOL)liked withCommentsCount: (NSNumber*) commentsCount
 {
 	[UIView beginAnimations:@"adjustActionBar" context:nil];
     
-    CGPoint buttonOrigin;
-	CGSize buttonSize;
+    [self updateCommentsCount:commentsCount];
+    [self updateLikesCount:likesCount liked:liked];
 		
-	buttonSize = [self getButtonSizeForLabel:@"Share" iconName:@"action-bar-icon-share.png"];
-	buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
-	buttonOrigin.y = BUTTON_Y_ORIGIN;
-	_shareButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
-	[_shareButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON)]; // Left inset is the negative of image width.
-	[_shareButton setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
-		
-	NSString* formattedValue = [NSNumber formatMyNumber:commentsCount ceiling:[NSNumber numberWithInt:1000]];
+	[_activityIndicator stopAnimating];
+    _activityIndicator.hidden = YES;
+	
+	[self updateViewsCount:viewsCount];
+	_viewCounter.hidden = NO;
+    
+	[UIView commitAnimations];
+}
 
-	buttonSize = [self getButtonSizeForLabel:formattedValue  iconName:@"comment-sm-icon.png"];
+- (void) updateViewsCount:(NSNumber*) viewsCount
+{
+    NSString* formattedValue = [NSNumber formatMyNumber:viewsCount ceiling:[NSNumber numberWithInt:10000000]];
+    
+	CGSize buttonSize = [self getButtonSizeForLabel:formattedValue iconName:@"view-sm-icon.png"];
+	CGPoint buttonOrigin;
+    buttonOrigin.x = PADDING_IN_BETWEEN_BUTTONS; 
+	buttonOrigin.y = BUTTON_Y_ORIGIN;
+    
+	[_viewCounter setTitle:formattedValue forState:UIControlStateNormal];
+	_viewCounter.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
+	[_viewCounter setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON - 2)]; // Left inset is the negative of image width.
+	[_viewCounter setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
+}
+
+- (void) updateLikesCount:(NSNumber*) likesCount liked: (BOOL)isLiked
+{
+    NSString* formattedValue = [NSNumber formatMyNumber:likesCount ceiling:[NSNumber numberWithInt:1000]]; 
+    
+	CGSize buttonSize = [self getButtonSizeForLabel:formattedValue iconName:@"likes-sm-icon.png"];
+    CGPoint buttonOrigin = _commentButton.frame.origin;
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
-	[_commentButton setTitle:formattedValue forState:UIControlStateNormal] ;
-	_commentButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
-	[_commentButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON)]; // Left inset is the negative of image width.
-	[_commentButton setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
-
-	formattedValue = [NSNumber formatMyNumber:likesCount ceiling:[NSNumber numberWithInt:1000]]; 
-
-	buttonSize = [self getButtonSizeForLabel:formattedValue iconName:@"likes-sm-icon.png"];
-	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
-	buttonOrigin.y = BUTTON_Y_ORIGIN;
+    
+    _isLiked = isLiked;
 	[_likeButton setTitle:formattedValue forState:UIControlStateNormal] ;
 	if (_isLiked){
 		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-red.png"] forState:UIControlStateNormal]; 
@@ -199,27 +202,26 @@
 		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-like.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
+    
 	[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
 	_likeButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
 	[_likeButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON)]; // Left inset is the negative of image width.
-		
-	[_activityIndicator stopAnimating];
-	[_activityIndicator removeFromSuperview];
-		
-	formattedValue = [NSNumber formatMyNumber:viewsCount ceiling:[NSNumber numberWithInt:10000000]];
-
-	buttonSize = [self getButtonSizeForLabel:formattedValue iconName:@"view-sm-icon.png"];
-	buttonOrigin.x = PADDING_IN_BETWEEN_BUTTONS; 
-	buttonOrigin.y = BUTTON_Y_ORIGIN;
-
-	[_viewCounter setTitle:formattedValue forState:UIControlStateNormal];
-	_viewCounter.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
-	[_viewCounter setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON - 2)]; // Left inset is the negative of image width.
-	[_viewCounter setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
-	_viewCounter.hidden = NO;
-	[UIView commitAnimations];
 }
 
+- (void) updateCommentsCount: (NSNumber*) commentsCount
+{
+    NSString* formattedValue = [NSNumber formatMyNumber:commentsCount ceiling:[NSNumber numberWithInt:1000]];
+    
+	CGSize buttonSize = [self getButtonSizeForLabel:formattedValue  iconName:@"comment-sm-icon.png"];
+	CGPoint buttonOrigin = _shareButton.frame.origin;
+    buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
+	buttonOrigin.y = BUTTON_Y_ORIGIN;
+    
+	[_commentButton setTitle:formattedValue forState:UIControlStateNormal] ;
+	_commentButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
+	[_commentButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON)]; // Left inset is the negative of image width.
+	[_commentButton setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
+}
 
 -(void)setButtonLabel:(NSString*)labelString 
 		withImageForNormalState:(NSString*)bgImage 
@@ -269,8 +271,7 @@
 
 -(void)commentButtonPressed:(id)sender
 {
-    //newCommentMarker.hidden = YES;
-	[_socializeDelegate commentButtonTouched:sender];
+    [_socializeDelegate commentButtonTouched:sender];
 }	
 
 -(void)likeButtonPressed:(id)sender

@@ -35,9 +35,12 @@
 }
 
 - (id)initWithFrame:(CGRect)frame;
-- (void) updateCountsWithViewsCount:(NSNumber*) viewsCount withLikesCount: (NSNumber*) likesCount withCommentsCount: (NSNumber*) commentsCount;
+- (void) updateCountsWithViewsCount:(NSNumber*) viewsCount withLikesCount: (NSNumber*) likesCount isLiked: (BOOL)liked withCommentsCount: (NSNumber*) commentsCount;
+- (void) updateViewsCount:(NSNumber*) viewsCount;
+- (void) updateLikesCount:(NSNumber*) likesCount liked: (BOOL)isLiked;
+- (void) updateCommentsCount: (NSNumber*) commentsCount;
 
 @property (nonatomic, assign) id<SocializeActionViewDelegate> delegate;
-@property (nonatomic, assign) BOOL isLiked;
+@property (nonatomic, readonly) BOOL isLiked;
 
 @end
