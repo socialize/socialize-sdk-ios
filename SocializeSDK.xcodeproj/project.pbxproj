@@ -38,6 +38,8 @@
 		16A5B337139CF24100F3EF75 /* action-bar-icon-comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A5B336139CF24100F3EF75 /* action-bar-icon-comments.png */; };
 		16A5B33A139CF69E00F3EF75 /* DemoEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B339139CF69D00F3EF75 /* DemoEntry.m */; };
 		16A5B33B139CFE6C00F3EF75 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DABE1378824800B11B78 /* libSocialize.a */; };
+		16A5B33F139D102500F3EF75 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B33D139D102400F3EF75 /* CommentsViewController.m */; };
+		16A5B340139D102500F3EF75 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16A5B33E139D102400F3EF75 /* CommentsViewController.xib */; };
 		16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		16E2C4381398C40E007C91ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
 		16E2C4391398C40E007C91ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
@@ -164,6 +166,9 @@
 		16A5B336139CF24100F3EF75 /* action-bar-icon-comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-comments.png"; sourceTree = "<group>"; };
 		16A5B338139CF69D00F3EF75 /* DemoEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoEntry.h; sourceTree = "<group>"; };
 		16A5B339139CF69D00F3EF75 /* DemoEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoEntry.m; sourceTree = "<group>"; };
+		16A5B33C139D102300F3EF75 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		16A5B33D139D102400F3EF75 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
+		16A5B33E139D102400F3EF75 /* CommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
 		16E2C4351398C40E007C91ED /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E2C43C1398C40F007C91ED /* SampleSdkApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleSdkApp-Info.plist"; sourceTree = "<group>"; };
 		16E2C43E1398C40F007C91ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -319,6 +324,9 @@
 				16E2C4521398D1C2007C91ED /* SocializeActionView.m */,
 				16E2C4431398C40F007C91ED /* SampleSdkAppAppDelegate.h */,
 				16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */,
+				16A5B33C139D102300F3EF75 /* CommentsViewController.h */,
+				16A5B33D139D102400F3EF75 /* CommentsViewController.m */,
+				16A5B33E139D102400F3EF75 /* CommentsViewController.xib */,
 				16E2C4461398C40F007C91ED /* MainWindow.xib */,
 				16E2C43B1398C40F007C91ED /* Supporting Files */,
 			);
@@ -765,6 +773,7 @@
 				16A5B333139CF18500F3EF75 /* action-bar-icon-liked.png in Resources */,
 				16A5B335139CF1D100F3EF75 /* view-sm-icon.png in Resources */,
 				16A5B337139CF24100F3EF75 /* action-bar-icon-comments.png in Resources */,
+				16A5B340139D102500F3EF75 /* CommentsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,6 +826,7 @@
 				16E2C4571398D45A007C91ED /* EntryViewController.m in Sources */,
 				16E2C46F13991239007C91ED /* NSNumber+Additions.m in Sources */,
 				16A5B33A139CF69E00F3EF75 /* DemoEntry.m in Sources */,
+				16A5B33F139D102500F3EF75 /* CommentsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

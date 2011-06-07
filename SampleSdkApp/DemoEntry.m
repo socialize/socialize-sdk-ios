@@ -23,10 +23,6 @@
     {
         self.socializeEntry = sEntry;
         self.entryContext = eContext;
-        
-        int temp = _entry.views;
-        temp = _entry.likes;
-        temp = _entry.comments;
     }
     
     return self;
