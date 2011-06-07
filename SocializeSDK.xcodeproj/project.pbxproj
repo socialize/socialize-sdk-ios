@@ -419,7 +419,6 @@
 		5CC3DAB1137881B900B11B78 = {
 			isa = PBXGroup;
 			children = (
-				5CC3DABE1378824800B11B78 /* libSocialize.a */,
 				5CC3DAC31378824800B11B78 /* Socialize */,
 				5CC3DAEE1378859000B11B78 /* unitTests */,
 				16E2C43A1398C40E007C91ED /* SampleSdkApp */,
@@ -504,6 +503,7 @@
 		5CEB6CE113858BAA00462EFF /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				5CC3DABE1378824800B11B78 /* libSocialize.a */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
