@@ -12,19 +12,37 @@
 
 @interface EntryViewController() 
     -(void) initSocialize;
+    -(void) showCommentsController;
+    -(void) hideCommentsController;
+    -(void) destroyCommentController;
+
     @property (nonatomic, retain) SocializeActionView* socializeActionPanel;
     @property (nonatomic, retain) UIWebView* webView;
+    @property (nonatomic, retain) DemoEntry* entry;
 @end
 
 @implementation EntryViewController
 
 @synthesize socializeActionPanel = _socializeActionPanel;
 @synthesize webView = _webView;
+@synthesize entry = _entry;
+
+-(id) initWithEntry: (DemoEntry*) entry
+{
+    self = [super init];
+    if(self != nil)
+    {
+        self.entry = entry;
+    }
+    return self;
+}
 
 - (void)dealloc
 {
     [_socializeActionPanel release]; _socializeActionPanel = nil;
+    [_commentsNavigationController release];  _commentsNavigationController = nil;
     [_webView release]; _webView = nil;
+    [_entry release]; _entry = nil;
     [super dealloc];
 }
 
@@ -46,20 +64,20 @@
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 	self.view.autoresizesSubviews = YES;
 	self.view.backgroundColor = [UIColor whiteColor];
-	
-	
-	UIWebView *newWebView = [[UIWebView alloc] init];
-	
-	self.webView = newWebView;
-	[newWebView release];
     
-	self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);	
+    UIWebView* webView = [[UIWebView alloc] initWithFrame: CGRectMake(0,
+                                                                0, 
+                                                                self.view.bounds.size.width,
+                                                                self.view.bounds.size.height - ACTION_PANE_HEIGHT)
+                    ];
+    self.webView = webView;
+    [webView release]; webView = nil;
 	
-	[self.view addSubview: self.webView];
+	NSString* entryContextToShow = [NSString stringWithFormat:@"<html><center>%@</center></html>", self.entry.entryContext];
+    [self.webView loadHTMLString:entryContextToShow baseURL:nil];   
     
 	self.webView.delegate = self;
-	self.webView.scalesPageToFit = YES;
-	self.webView.dataDetectorTypes = UIDataDetectorTypeLink;
+    [self.view addSubview: self.webView];
 
 	//initialize socialize related classes
 	[self initSocialize];   
@@ -74,20 +92,26 @@
 
 -(void) initSocialize
 {       
-    self.socializeActionPanel = [[SocializeActionView alloc] initWithFrame:
+    SocializeActionView* socializeActionPanel = [[SocializeActionView alloc] initWithFrame:
                                  CGRectMake(0,
                                             self.view.bounds.size.height - ACTION_PANE_HEIGHT, 
                                             self.view.bounds.size.height,
                                             ACTION_PANE_HEIGHT)
                                  ];
+    self.socializeActionPanel = socializeActionPanel;
+    [socializeActionPanel release]; socializeActionPanel = nil;
+    
     self.socializeActionPanel.opaque = NO;
     self.socializeActionPanel.alpha = 0.9;
     self.socializeActionPanel.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin);
     self.socializeActionPanel.autoresizesSubviews = YES;
     self.socializeActionPanel.delegate = self;
     
-    //Demo value
-    [self.socializeActionPanel updateCountsWithViewsCount:[NSNumber numberWithInt:100] withLikesCount:[NSNumber numberWithInt:5] withCommentsCount:[NSNumber numberWithInt:3]];
+    [self.socializeActionPanel updateCountsWithViewsCount:[NSNumber numberWithInt:self.entry.socializeEntry.views]
+                                           withLikesCount:[NSNumber numberWithInt:self.entry.socializeEntry.likes] 
+                                                  isLiked: NO 
+                                        withCommentsCount:[NSNumber numberWithInt:self.entry.socializeEntry.comments]
+     ];
     
     [self.view addSubview:self.socializeActionPanel];
         
@@ -97,6 +121,95 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return NO;
+}
+
+#pragma mark - SocializeActionViewDelegate
+
+-(void)commentButtonTouched:(id)sender
+{
+    [self showCommentsController];
+}   
+
+-(void)likeButtonTouched:(id)sender
+{
+    
+}
+
+-(void)shareButtonTouched:(id)sender
+{
+    
+}
+
+#pragma mark - show comments controller
+
+-(void)showCommentsController
+{
+	
+	CommentsViewController* commentsController = [[CommentsViewController alloc] 
+                          initWithNibName:@"CommentsViewController"
+                          bundle:nil];
+	
+    commentsController.title = @"Comments";
+    
+	UIButton * cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [cancelButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    [cancelButton setTitle:@"Close" forState:UIControlStateNormal];
+    cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+    
+    CGSize buttonSize = [cancelButton.titleLabel.text sizeWithFont:cancelButton.titleLabel.font constrainedToSize:CGSizeMake(100, 29)];
+    cancelButton.bounds = CGRectMake(0, 0, buttonSize.width+20, 29);
+    
+    [cancelButton addTarget:self action:@selector(hideCommentsController) forControlEvents:UIControlEventTouchUpInside];
+    
+	UIBarButtonItem * rightCloseItem = [[UIBarButtonItem alloc]initWithCustomView:cancelButton];
+	commentsController.navigationItem.rightBarButtonItem = rightCloseItem;	
+	[rightCloseItem release];
+   
+    _commentsNavigationController = [[UINavigationController alloc] 
+                                    initWithRootViewController:commentsController];
+
+    [commentsController release]; commentsController = nil;
+    
+    _commentsNavigationController.wantsFullScreenLayout = YES;
+    
+    CGRect windowFrame = self.view.window.frame;
+    CGRect navFrame = CGRectMake(0, windowFrame.size.height, windowFrame.size.width, windowFrame.size.height);
+    _commentsNavigationController.view.frame = navFrame;
+    _commentsNavigationController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    _commentsNavigationController.navigationBar.tintColor = [UIColor blackColor];
+    
+    [self.view.window addSubview:_commentsNavigationController.view];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDelegate:self];
+    //[UIView setAnimationDidStopSelector:@selector(prepare)];
+    [UIView setAnimationDuration:0.4];
+    _commentsNavigationController.view.frame = CGRectMake(0, 0, navFrame.size.width, navFrame.size.height);
+    [UIView commitAnimations];
+}
+
+-(void)hideCommentsController
+{
+	CGRect windowFrame = self.view.window.frame;
+	CGRect navFrame = CGRectMake(0, windowFrame.size.height, windowFrame.size.width, windowFrame.size.height);
+	
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(destroyCommentController)];
+	[UIView setAnimationDuration:0.4];
+	_commentsNavigationController.view.frame = navFrame;
+	[UIView commitAnimations];
+}
+
+//-(void)prepare{
+//	//[commentsController startFetchingComments];
+//}
+
+-(void)destroyCommentController
+{
+    [_commentsNavigationController.view removeFromSuperview];    
+    [_commentsNavigationController release];  _commentsNavigationController = nil;
 }
 
 @end

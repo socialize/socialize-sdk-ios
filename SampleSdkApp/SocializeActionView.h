@@ -10,9 +10,9 @@
 
 @protocol SocializeActionViewDelegate <NSObject>
 
-//-(void)commentButtonTouched:(Entry*)entry;
-//-(void)likeButtonTouched:(Entry*)entry;
-//-(void)shareButtonTouched:(Entry*)entry;
+-(void)commentButtonTouched:(id)sender;
+-(void)likeButtonTouched:(id)sender;
+-(void)shareButtonTouched:(id)sender;
 
 @end
 
@@ -22,25 +22,24 @@
 @private
 	UIButton*	_commentButton;
 	UIButton*	_likeButton;
-	UIButton*	_shareButton;
 	UIButton*	_viewCounter;
 	
 	UIFont*		_buttonLabelFont;
     
-    UIImageView* _newCommentMarker;
 	UIActivityIndicatorView*  _activityIndicator;
 	
 	BOOL		_isLiked;
-	BOOL		_hasNewComment;
-	
-//	Entry					 *entry;
+
 	id<SocializeActionViewDelegate>   _socializeDelegate;
 }
 
 - (id)initWithFrame:(CGRect)frame;
-- (void) updateCountsWithViewsCount:(NSNumber*) viewsCount withLikesCount: (NSNumber*) likesCount withCommentsCount: (NSNumber*) commentsCount;
+- (void) updateCountsWithViewsCount:(NSNumber*) viewsCount withLikesCount: (NSNumber*) likesCount isLiked: (BOOL)liked withCommentsCount: (NSNumber*) commentsCount;
+- (void) updateViewsCount:(NSNumber*) viewsCount;
+- (void) updateLikesCount:(NSNumber*) likesCount liked: (BOOL)isLiked;
+- (void) updateCommentsCount: (NSNumber*) commentsCount;
 
 @property (nonatomic, assign) id<SocializeActionViewDelegate> delegate;
-@property (nonatomic, assign) BOOL isLiked;
+@property (nonatomic, readonly) BOOL isLiked;
 
 @end
