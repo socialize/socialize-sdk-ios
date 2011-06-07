@@ -61,7 +61,12 @@
 
 -(IBAction) sendBtnPressed: (id) sender
 {
+    [_commentText resignFirstResponder];
     
+    // add send code here
+    //
+    _commentText.text = @"";
+    [_commentsTable reloadData];
 }
 
 #pragma mark - Table view data source
