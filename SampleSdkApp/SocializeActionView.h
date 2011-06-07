@@ -22,7 +22,6 @@
 @private
 	UIButton*	_commentButton;
 	UIButton*	_likeButton;
-	UIButton*	_shareButton;
 	UIButton*	_viewCounter;
 	
 	UIFont*		_buttonLabelFont;

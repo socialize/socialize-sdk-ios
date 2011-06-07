@@ -67,19 +67,9 @@
 	CGPoint buttonOrigin;
 	CGSize buttonSize;
 
-	_shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	buttonSize = [self getButtonSizeForLabel:@"Share" iconName:@"action-bar-icon-share.png"];
 	buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
-	
-	[self setButtonLabel:@"Share" 
-			withImageForNormalState: @"action-bar-button-black.png" 
-			withImageForHightlightedState:@"action-bar-button-black-hover.png"
-			withIconName:@"action-bar-icon-share.png"
-			atOrigin:buttonOrigin
-			onButton:_shareButton
-			withSelector:@selector(shareButtonPressed:)];
-	[self addSubview:_shareButton];
 	
 	_commentButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	buttonSize = [self getButtonSizeForLabel:nil iconName:@"comment-sm-icon.png"];
@@ -213,8 +203,8 @@
     NSString* formattedValue = [NSNumber formatMyNumber:commentsCount ceiling:[NSNumber numberWithInt:1000]];
     
 	CGSize buttonSize = [self getButtonSizeForLabel:formattedValue  iconName:@"comment-sm-icon.png"];
-	CGPoint buttonOrigin = _shareButton.frame.origin;
-    buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
+    CGPoint buttonOrigin;
+    buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
     
 	[_commentButton setTitle:formattedValue forState:UIControlStateNormal] ;
@@ -298,7 +288,6 @@
 {
     [_commentButton release]; _commentButton = nil;
 	[_likeButton release]; _likeButton = nil;
-	[_shareButton release]; _shareButton = nil;
 	[_viewCounter release]; _viewCounter = nil;
     [_buttonLabelFont release]; _buttonLabelFont = nil;
     [_activityIndicator release]; _activityIndicator = nil;
