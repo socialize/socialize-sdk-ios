@@ -10,20 +10,22 @@
 #import <UIKit/UIKit.h>
 #import "SBJson.h"
 
-
-
-@implementation SocializeRequest
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
 
-static NSString* kUserAgent = @"Socialize";
-static NSString* kStringBoundary = @"3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f";
+static NSString* const kUserAgent = @"Socialize";
+static NSString* const kStringBoundary = @"3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f";
 static const int kGeneralErrorCode = 10000;
 
 static const NSTimeInterval kTimeoutInterval = 180.0;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+@interface SocializeRequest()
+
+@end
+
+
+
+@implementation SocializeRequest
 
 @synthesize delegate = _delegate,
 url = _url,
@@ -38,7 +40,8 @@ responseText = _responseText;
 + (SocializeRequest *)getRequestWithParams:(NSMutableDictionary *) params
                          httpMethod:(NSString *) httpMethod
                            delegate:(id<SocializeRequestDelegate>) delegate
-                         requestURL:(NSString *) url {
+                         requestURL:(NSString *) url 
+{
     SocializeRequest* request = [[[SocializeRequest alloc] init] autorelease];
     request.delegate = delegate;
     request.url = url;
@@ -55,7 +58,7 @@ responseText = _responseText;
 
 + (NSString *)serializeURL:(NSString *)baseUrl
                     params:(NSDictionary *)params {
-    return [self serializeURL:baseUrl params:params httpMethod:@"GET"];
+    return [SocializeRequest serializeURL:baseUrl params:params httpMethod:@"GET"];
 }
 
 /**

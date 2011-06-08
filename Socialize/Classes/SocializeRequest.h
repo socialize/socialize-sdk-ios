@@ -25,12 +25,15 @@ typedef enum
 
 @interface SocializeRequest : NSObject 
 {
+
+@private
     id<SocializeRequestDelegate> _delegate;
     NSString*                   _url;
     NSString*                   _httpMethod;
     NSMutableDictionary*        _params;
     NSURLConnection*            _connection;
     NSMutableData*              _responseText;
+
 }
 
 @property(nonatomic,assign) id<SocializeRequestDelegate> delegate;

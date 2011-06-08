@@ -33,16 +33,27 @@ static NSString* kRestserverBaseURL = @"http://api.dev.appmakr.com/method/";
 static NSString* kSDK = @"ios";
 static NSString* kSDKVersion = @"1";
 
+@interface SocializeProvider()
+    - (void)openUrl:(NSString *)url
+             params:(NSMutableDictionary *)params
+         httpMethod:(NSString *)httpMethod
+           delegate:(id<SocializeRequestDelegate>)delegate;
+    
+    - (NSDictionary*)parseURLParams:(NSString *)query;
+@end
+
 @implementation SocializeProvider
 
 @synthesize accessToken = _accessToken,
 expirationDate = _expirationDate,
 sessionDelegate = _sessionDelegate;
 
+#pragma mark - Life flow
 /**
  * Initialize the Facebook object with application ID.
  */
-- (id)initWithAppId:(NSString *)app_id {
+- (id)initWithAppId:(NSString *)app_id 
+{
     self = [super init];
     if (self) {
         [_appId release];
@@ -54,7 +65,8 @@ sessionDelegate = _sessionDelegate;
 /**
  * Override NSObject : free the space
  */
-- (void)dealloc {
+- (void)dealloc 
+{
     [_accessToken release];
     [_expirationDate release];
     [_request release];
@@ -62,6 +74,8 @@ sessionDelegate = _sessionDelegate;
     [_permissions release];
     [super dealloc];
 }
+
+#pragma mark - work methods
 
 /**
  * A private helper function for sending HTTP requests.
@@ -79,7 +93,8 @@ sessionDelegate = _sessionDelegate;
 - (void)openUrl:(NSString *)url
          params:(NSMutableDictionary *)params
      httpMethod:(NSString *)httpMethod
-       delegate:(id<SocializeRequestDelegate>)delegate {
+       delegate:(id<SocializeRequestDelegate>)delegate 
+{
     [params setValue:@"json" forKey:@"format"];
     [params setValue:kSDK forKey:@"sdk"];
     [params setValue:kSDKVersion forKey:@"sdk_version"];
@@ -98,7 +113,8 @@ sessionDelegate = _sessionDelegate;
 /**
  * A private function for parsing URL parameters.
  */
-- (NSDictionary*)parseURLParams:(NSString *)query {
+- (NSDictionary*)parseURLParams:(NSString *)query 
+{
 	NSArray *pairs = [query componentsSeparatedByString:@"&"];
 	NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
 	for (NSString *pair in pairs) {
@@ -153,7 +169,8 @@ sessionDelegate = _sessionDelegate;
  *            Callback interface for notifying the calling application when
  *            the application has logged out
  */
-- (void)logout:(id<SocializeProviderDelegate>)delegate {
+- (void)logout:(id<SocializeProviderDelegate>)delegate 
+{
     
     _sessionDelegate = delegate;
     
@@ -196,7 +213,8 @@ sessionDelegate = _sessionDelegate;
  *            the request has received response
  */
 - (void)requestWithParams:(NSMutableDictionary *)params
-              andDelegate:(id <SocializeRequestDelegate>)delegate {
+              andDelegate:(id <SocializeRequestDelegate>)delegate
+{
     if ([params objectForKey:@"method"] == nil) {
         NSLog(@"API Method must be specified");
         return;
@@ -231,7 +249,7 @@ sessionDelegate = _sessionDelegate;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-//SocializeRequestDelegate
+#pragma mark - SocializeRequestDelegate
 
 /**
  * Handle the auth.ExpireSession api call failure
