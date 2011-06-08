@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1657EF65139F677100E488CC /* SocializeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 1657EF63139F677000E488CC /* SocializeProvider.h */; };
+		1657EF66139F677100E488CC /* SocializeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF64139F677000E488CC /* SocializeProvider.m */; };
 		16A5B30D139CBFC900F3EF75 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A5B2F3139CBFC900F3EF75 /* JSON.h */; };
 		16A5B30E139CBFC900F3EF75 /* NSObject+SBJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A5B2F4139CBFC900F3EF75 /* NSObject+SBJson.h */; };
 		16A5B30F139CBFC900F3EF75 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B2F5139CBFC900F3EF75 /* NSObject+SBJson.m */; };
@@ -136,6 +138,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1657EF63139F677000E488CC /* SocializeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProvider.h; path = Classes/SocializeProvider.h; sourceTree = "<group>"; };
+		1657EF64139F677000E488CC /* SocializeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProvider.m; path = Classes/SocializeProvider.m; sourceTree = "<group>"; };
 		16A5B2F3139CBFC900F3EF75 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = Libraries/SBJson/JSON.h; sourceTree = SOURCE_ROOT; };
 		16A5B2F4139CBFC900F3EF75 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJson.h"; path = "Libraries/SBJson/NSObject+SBJson.h"; sourceTree = SOURCE_ROOT; };
 		16A5B2F5139CBFC900F3EF75 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SBJson.m"; path = "Libraries/SBJson/NSObject+SBJson.m"; sourceTree = SOURCE_ROOT; };
@@ -403,6 +407,8 @@
 				5C21C0D31396DA0400CF2B9F /* SocializeActivityService.m */,
 				5C21C0DA1396E77200CF2B9F /* SocializeResponse.h */,
 				5C21C0DB1396E77300CF2B9F /* SocializeResponse.m */,
+				1657EF63139F677000E488CC /* SocializeProvider.h */,
+				1657EF64139F677000E488CC /* SocializeProvider.m */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
@@ -670,6 +676,7 @@
 				16A5B321139CBFC900F3EF75 /* SBJsonTokeniser.h in Headers */,
 				16A5B323139CBFC900F3EF75 /* SBJsonUTF8Stream.h in Headers */,
 				16A5B325139CBFC900F3EF75 /* SBJsonWriter.h in Headers */,
+				1657EF65139F677100E488CC /* SocializeProvider.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,6 +877,7 @@
 				16A5B322139CBFC900F3EF75 /* SBJsonTokeniser.m in Sources */,
 				16A5B324139CBFC900F3EF75 /* SBJsonUTF8Stream.m in Sources */,
 				16A5B326139CBFC900F3EF75 /* SBJsonWriter.m in Sources */,
+				1657EF66139F677100E488CC /* SocializeProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
