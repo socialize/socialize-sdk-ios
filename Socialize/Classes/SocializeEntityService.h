@@ -11,7 +11,7 @@
 #import "SocializeEntity.h"
 
 
-@interface SocializeEntityService : SocializeService 
+@interface SocializeEntityService : NSObject 
 {
     
 }

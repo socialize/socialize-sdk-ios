@@ -11,7 +11,7 @@
 #import "SocializeRequest.h"
 #import "SocializeActivity.h"
 
-@interface SocializeActivityService : SocializeService 
+@interface SocializeActivityService : NSObject 
 {
     
 }
