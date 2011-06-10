@@ -31,14 +31,17 @@
 
 @implementation NSString(UrlSerialization)
 
-+ (NSString *)serializeURL:(NSString *)baseUrl
-                    params:(NSDictionary *)params {
++ (NSString *)serializeURL:(NSString *)baseUrl params:(NSDictionary *)params 
+{
     return [NSString serializeURL:baseUrl params:params httpMethod:@"GET"];
 }
 
 + (NSString*)serializeURL:(NSString *)baseUrl
                    params:(NSDictionary *)params
-               httpMethod:(NSString *)httpMethod {
+               httpMethod:(NSString *)httpMethod 
+{
+    if(baseUrl == nil)
+        return nil;
     
     NSURL* parsedURL = [NSURL URLWithString:baseUrl];
     NSString* queryPrefix = parsedURL.query ? @"&" : @"?";
