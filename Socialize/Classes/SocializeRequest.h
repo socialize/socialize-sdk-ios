@@ -8,14 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum 
-{
-    SocializeRequestMethodGET = 0,
-    SocializeRequestMethodPUT = 1,
-    SocializeRequestMethodPOST = 2
-    
-} SocializeRequestMethod;
-
 /*
  *Your application should implement this delegate
  */
@@ -43,12 +35,7 @@ typedef enum
 @property(nonatomic,assign) NSURLConnection             *connection;
 @property(nonatomic,assign) NSMutableData               *responseText;
 
-+ (NSString*)serializeURL:(NSString *)baseUrl
-                   params:(NSDictionary *)params;
 
-+ (NSString*)serializeURL:(NSString *)baseUrl
-                   params:(NSDictionary *)params
-               httpMethod:(NSString *)httpMethod;
 
 + (SocializeRequest*)getRequestWithParams:(NSMutableDictionary *) params
                         httpMethod:(NSString *) httpMethod

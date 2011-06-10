@@ -29,7 +29,6 @@
 #import "SocializeRequest.h"
 
 static NSString* kRestserverBaseURL = @"http://api.dev.appmakr.com/method/";
-//static NSString* kLogin = @"oauth";
 static NSString* kSDK = @"ios";
 static NSString* kSDKVersion = @"1";
 
@@ -116,9 +115,7 @@ sessionDelegate = _sessionDelegate;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-//public
-
-
+//public1
 
 /**
  * @param application_id

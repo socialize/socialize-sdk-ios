@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1657EF65139F677100E488CC /* SocializeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 1657EF63139F677000E488CC /* SocializeProvider.h */; };
 		1657EF66139F677100E488CC /* SocializeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF64139F677000E488CC /* SocializeProvider.m */; };
+		1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9613A2000600E488CC /* SocializeRequestTests.m */; };
+		1657EF9B13A2170A00E488CC /* NSString+UrlSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */; };
+		1657EF9C13A2170A00E488CC /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
 		16A5B30D139CBFC900F3EF75 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A5B2F3139CBFC900F3EF75 /* JSON.h */; };
 		16A5B30E139CBFC900F3EF75 /* NSObject+SBJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A5B2F4139CBFC900F3EF75 /* NSObject+SBJson.h */; };
 		16A5B30F139CBFC900F3EF75 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B2F5139CBFC900F3EF75 /* NSObject+SBJson.m */; };
@@ -140,6 +143,10 @@
 /* Begin PBXFileReference section */
 		1657EF63139F677000E488CC /* SocializeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProvider.h; path = Classes/SocializeProvider.h; sourceTree = "<group>"; };
 		1657EF64139F677000E488CC /* SocializeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProvider.m; path = Classes/SocializeProvider.m; sourceTree = "<group>"; };
+		1657EF9513A2000600E488CC /* SocializeRequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequestTests.h; path = "Test Cases/SocializeRequestTests.h"; sourceTree = "<group>"; };
+		1657EF9613A2000600E488CC /* SocializeRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRequestTests.m; path = "Test Cases/SocializeRequestTests.m"; sourceTree = "<group>"; };
+		1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+UrlSerialization.h"; path = "Classes/NSString+UrlSerialization.h"; sourceTree = "<group>"; };
+		1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+UrlSerialization.m"; path = "Classes/NSString+UrlSerialization.m"; sourceTree = "<group>"; };
 		16A5B2F3139CBFC900F3EF75 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = Libraries/SBJson/JSON.h; sourceTree = SOURCE_ROOT; };
 		16A5B2F4139CBFC900F3EF75 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJson.h"; path = "Libraries/SBJson/NSObject+SBJson.h"; sourceTree = SOURCE_ROOT; };
 		16A5B2F5139CBFC900F3EF75 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SBJson.m"; path = "Libraries/SBJson/NSObject+SBJson.m"; sourceTree = SOURCE_ROOT; };
@@ -298,6 +305,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1657EF9413A1FFBA00E488CC /* Request Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1657EF9513A2000600E488CC /* SocializeRequestTests.h */,
+				1657EF9613A2000600E488CC /* SocializeRequestTests.m */,
+			);
+			name = "Request Tests";
+			sourceTree = "<group>";
+		};
+		1657EF9813A216B500E488CC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */,
+				1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		16E2C3D1139778FE007C91ED /* SocializeObjects */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +411,7 @@
 		5C9004331395963A007361F6 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1657EF9813A216B500E488CC /* Utils */,
 				5C9004351395968F007361F6 /* Infrastructure */,
 				5CFCBE341385947800EF5073 /* Parsers */,
 			);
@@ -499,6 +525,7 @@
 		5CD488221386B91B00E60C4C /* Test Files */ = {
 			isa = PBXGroup;
 			children = (
+				1657EF9413A1FFBA00E488CC /* Request Tests */,
 				5CFCBE3F1385B60D00EF5073 /* Configuration Tests */,
 				5CFCBE381385953F00EF5073 /* Parser Tests */,
 				5CFCBE371385952600EF5073 /* Factory Tests */,
@@ -677,6 +704,7 @@
 				16A5B323139CBFC900F3EF75 /* SBJsonUTF8Stream.h in Headers */,
 				16A5B325139CBFC900F3EF75 /* SBJsonWriter.h in Headers */,
 				1657EF65139F677100E488CC /* SocializeProvider.h in Headers */,
+				1657EF9B13A2170A00E488CC /* NSString+UrlSerialization.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,6 +906,7 @@
 				16A5B324139CBFC900F3EF75 /* SBJsonUTF8Stream.m in Sources */,
 				16A5B326139CBFC900F3EF75 /* SBJsonWriter.m in Sources */,
 				1657EF66139F677100E488CC /* SocializeProvider.m in Sources */,
+				1657EF9C13A2170A00E488CC /* NSString+UrlSerialization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,6 +919,7 @@
 				9A4D2989139401B60065C0CB /* SocializeConfigurationTests.m in Sources */,
 				9A4D29A0139404F90065C0CB /* SocializeObjectParserTests.m in Sources */,
 				9A4D29A1139404FF0065C0CB /* SocializePOOCObjectFactoryTests.m in Sources */,
+				1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
