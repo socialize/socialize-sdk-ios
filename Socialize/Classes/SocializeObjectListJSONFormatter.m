@@ -56,11 +56,11 @@
 {
     NSArray *  socializeObjectArray = (NSArray *) [JSONString objectFromJSONString];
    
-    for (NSDictionary * socializeObjectDictionary in socializeObjectArray)
-    {
-        id<SocializeObject> parsedObject = [_factory
-        
-    }
+//    for (NSDictionary * socializeObjectDictionary in socializeObjectArray)
+//    {
+//        id<SocializeObject> parsedObject = [_factory 
+//        
+//    }
     
 }
 

@@ -137,7 +137,7 @@
     
     SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init]autorelease];
     
-    GHAssertThrows([myTestFactory createObject:@"hello"], @"Factory did not throw exception for a non existant prototype");
+    GHAssertThrows([myTestFactory createObjectForProtocolName:@"hello"], @"Factory did not throw exception for a non existant prototype");
     
 }
 
@@ -154,7 +154,7 @@
         
         Class expectedClass = NSClassFromString(prototypeClassName);
         
-        id actualObject = [theTestFactory createObject:protocolName];
+        id actualObject = [theTestFactory createObjectForProtocol:NSProtocolFromString(protocolName)];
         
         Class actualClass = [actualObject class];
         

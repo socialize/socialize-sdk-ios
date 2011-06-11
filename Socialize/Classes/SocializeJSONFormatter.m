@@ -38,11 +38,6 @@
     [super dealloc];
 }
 
-- (id)init 
-{
-    return [self initWithFactory:nil];
-}
-
 -(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory
 {
     self = [super init];
@@ -52,7 +47,4 @@
     }
     return self;
 }
-
-
-
 @end

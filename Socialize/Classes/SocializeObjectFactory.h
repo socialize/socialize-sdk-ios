@@ -16,7 +16,13 @@
 }
 
 -(id)initializeWithConfiguration:(SocializeConfiguration*)configuration;
--(id)createObject:(NSString *)protocolName;
--(void)addPrototype:(Class)socializeObjectPrototype forKey:(NSString *)protocolName;
+//-(id)createObjectFromString:(NSString *)stringRepresentation;
+//-(id)createObjectFromString:(NSString *)stringRepresentation forProtocol:(Protocol *)protocol;
+//-(id)createObjectFromDictionary:(NSDictionary *)dictionaryRepresentation forProtocol:(Protocol *)protocol;
+
+-(id)createObjectForProtocolName:(NSString *)protocolName;
 -(id)createObjectForProtocol:(Protocol *)protocol;
+
+-(void)addPrototype:(Class)socializeObjectPrototype forKey:(NSString *)protocolName;
+
 @end

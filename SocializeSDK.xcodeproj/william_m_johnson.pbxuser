@@ -1,5 +1,11 @@
 // !$*UTF8*$!
 {
+	16E2C4341398C40E007C91ED /* SampleSdkApp */ = {
+		activeExec = 0;
+		executables = (
+			9A4D178B13A30B3800D3F66D /* SampleSdkApp */,
+		);
+	};
 	5CC3DAB3137881B900B11B78 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 9A2C2009137908A700FD8FD1 /* unitTests */;
@@ -7,6 +13,7 @@
 		codeSenseManager = 9A2C201A137908AF00FD8FD1 /* Code sense */;
 		executables = (
 			9A2C2009137908A700FD8FD1 /* unitTests */,
+			9A4D178B13A30B3800D3F66D /* SampleSdkApp */,
 		);
 		perUserDictionary = {
 			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
@@ -31,8 +38,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 327404377;
-			PBXWorkspaceStateSaveDate = 327404377;
+			PBXPerProjectTemplateStateSaveDate = 329452344;
+			PBXWorkspaceStateSaveDate = 329452344;
 		};
 		sourceControlManager = 9A2C2019137908AF00FD8FD1 /* Source Control */;
 		userBuildSettings = {
@@ -87,5 +94,32 @@
 	9A2C201A137908AF00FD8FD1 /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
+	};
+	9A4D178B13A30B3800D3F66D /* SampleSdkApp */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = SampleSdkApp;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
 	};
 }

@@ -21,15 +21,15 @@
     
 }
 
--(NSString *)toJSONStringFromObject:(id<SocializeObject>)fromObject
-{
-    
-    NSMutableDictionary *  socializeObjectDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
-    [self toDictionary:socializeObjectDictionary fromObject:fromObject];
-    
-    return  [socializeObjectDictionary JSONString];
-    
-}
+//-(NSString *)toJSONStringFromObject:(id<SocializeObject>)fromObject
+//{
+//    
+//    NSMutableDictionary *  socializeObjectDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
+//    [self toDictionary:socializeObjectDictionary fromObject:fromObject];
+//    
+//    return  [socializeObjectDictionary JSONString];
+//    
+//}
 
 
 #pragma mark template method implementations
@@ -46,14 +46,9 @@
 
 #pragma mark primitive method implementations
 -(void)doToObject:(id<SocializeObject>)toObject fromDictionary:(NSDictionary *)JSONDictionary
-{
-    
-    
-}
+{}
 
 -(void)doToDictionary:(NSMutableDictionary *)dictionary fromObject:(id<SocializeObject>) fromObject
-{
-    
-}
+{}
 
 @end

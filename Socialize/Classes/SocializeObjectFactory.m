@@ -103,7 +103,25 @@
     [prototypeDictionary setObject:prototypeClass forKey:prototypeProtocolName];
 }
 
--(id)createObject:(NSString *)prototypeProtocolName
+#pragma mark Object creation methods
+//-(id)createObjectFromString:(NSString *)stringRepresentation forProtocol:(Protocol *)protocol
+//{
+//    
+//    
+//    return nil;
+//}
+//
+//-(id)createObjectFromDictionary:(NSDictionary *)dictionaryRepresentation forProtocol:(Protocol *)protocol
+//{
+//    id<SocializeObject> socializeObject = [self createObjectForProtocol:protocol];
+//    
+//    
+//    return socializeObject;
+//    
+//}
+//
+
+-(id)createObjectForProtocolName:(NSString *)prototypeProtocolName
 {
     Class classToCreate = (Class) [prototypeDictionary objectForKey:prototypeProtocolName];
     NSAssert(classToCreate!=nil, @"%@ - prototype does not exist for this key. Please add prototype to the Factory", 
@@ -119,9 +137,8 @@
 }
 
 
--(id)createObjectForProtocol:(Protocol *)protocol{
-    return [self createObject:[protocol description]];
+-(id)createObjectForProtocol:(Protocol *)protocol
+{
+    return [self createObjectForProtocolName:NSStringFromProtocol(protocol)];
 }
-
-
 @end

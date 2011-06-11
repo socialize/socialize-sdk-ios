@@ -47,7 +47,7 @@
     
     id mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
     
-    [[mockEntity expect]setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
+    //[[mockEntity expect]setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
     [[mockEntity expect]setKey:[JSONDictionaryToParse objectForKey:@"key"]];
     [[mockEntity expect]setName:[JSONDictionaryToParse objectForKey:@"name"]];
     [[mockEntity expect]setViews:[[JSONDictionaryToParse objectForKey:@"views"]intValue]];

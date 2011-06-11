@@ -17,7 +17,7 @@
 }
 
 -(void)toObject:(id<SocializeObject>)toObject fromJSONString:(NSString *)JSONString;
--(NSString *)toJSONStringFromObject:(id<SocializeObject>) fromObject;
+//-(NSString *)toJSONStringFromObject:(id<SocializeObject>) fromObject;
 
 //Template Methods
 -(void)toObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary;
