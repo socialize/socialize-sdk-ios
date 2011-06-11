@@ -29,7 +29,6 @@
 #import "SocializeRequest.h"
 
 static NSString* kRestserverBaseURL = @"http://api.dev.appmakr.com/method/";
-//static NSString* kLogin = @"oauth";
 static NSString* kSDK = @"ios";
 static NSString* kSDKVersion = @"1";
 
@@ -50,19 +49,6 @@ sessionDelegate = _sessionDelegate;
 
 #pragma mark - Life flow
 /**
- * Initialize the Facebook object with application ID.
- */
-- (id)initWithAppId:(NSString *)app_id 
-{
-    self = [super init];
-    if (self) {
-        [_appId release];
-        _appId = [app_id copy];
-    }
-    return self;
-}
-
-/**
  * Override NSObject : free the space
  */
 - (void)dealloc 
@@ -70,7 +56,6 @@ sessionDelegate = _sessionDelegate;
     [_accessToken release];
     [_expirationDate release];
     [_request release];
-    [_appId release];
     [_permissions release];
     [super dealloc];
 }
@@ -130,9 +115,7 @@ sessionDelegate = _sessionDelegate;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-//public
-
-
+//public1
 
 /**
  * @param application_id
@@ -156,54 +139,11 @@ sessionDelegate = _sessionDelegate;
 }
 
 /**
- * Invalidate the current user session by removing the access token in
- * memory, clearing the browser cookie, and calling auth.expireSession
- * through the API.
- *
- * Note that this method dosen't unauthorize the application --
- * it just invalidates the access token. To unauthorize the application,
- * the user must remove the app in the app settings page under the privacy
- * settings screen on facebook.com.
- *
- * @param delegate
- *            Callback interface for notifying the calling application when
- *            the application has logged out
- */
-- (void)logout:(id<SocializeProviderDelegate>)delegate 
-{
-    
-    _sessionDelegate = delegate;
-    
-    NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
-    [self requestWithMethodName:@"auth.expireSession"
-                      andParams:params andHttpMethod:@"GET"
-                    andDelegate:nil];
-    
-    [params release];
-    [_accessToken release];
-    _accessToken = nil;
-    [_expirationDate release];
-    _expirationDate = nil;
-    
-    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSArray* facebookCookies = [cookies cookiesForURL:
-                                [NSURL URLWithString:@"http://login.facebook.com"]];
-    
-    for (NSHTTPCookie* cookie in facebookCookies) {
-        [cookies deleteCookie:cookie];
-    }
-    
-    if ([self.sessionDelegate respondsToSelector:@selector(socializeDidLogout)]) {
-        [_sessionDelegate socializeDidLogout];
-    }
-}
-
-/**
- * Make a request to Facebook's REST API with the given
+ * Make a request to Socialize's REST API with the given
  * parameters. One of the parameter keys must be "method" and its value
  * should be a valid REST server API method.
  *
- * See http://developers.facebook.com/docs/reference/rest/
+ * See http://www.dev.getsocialize.com/docs/v1/
  *
  * @param parameters
  *            Key-value pairs of parameters to the request. Refer to the

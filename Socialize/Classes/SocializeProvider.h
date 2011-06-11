@@ -43,7 +43,6 @@
     NSDate              *_expirationDate;
     id<SocializeProviderDelegate> _sessionDelegate;
     SocializeRequest*  _request;
-    NSString*          _appId;
     NSArray*           _permissions;
 
 }
@@ -52,16 +51,11 @@
 @property(nonatomic, copy) NSDate* expirationDate;
 @property(nonatomic, assign) id<SocializeProviderDelegate> sessionDelegate;
 
-- (id)initWithAppId:(NSString *)app_id;
-
-
 - (void)authenticate:(NSString *)udid
    callbackurlString:(NSString*)urlString 
 thidPartyAccessToken:(NSString*)thirdPartyAccessToken  
             delegate:(id<SocializeProviderDelegate>)delegate;
 
-
-- (void)logout:(id<SocializeProviderDelegate>)delegate;
 
 - (void)requestWithParams:(NSMutableDictionary *)params
               andDelegate:(id <SocializeRequestDelegate>)delegate;
