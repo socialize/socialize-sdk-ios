@@ -12,12 +12,19 @@
 
 #import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
-
 #import "SocializeObjectFactory.h"
-@interface SocializeObjectParserTests : GHTestCase 
+
+@interface SocializeObjectFormatterTests : GHTestCase 
 {
   
-    SocializeObjectFactory * _factory;
-}
+    SocializeObjectFactory * _factory;  //possibly mock this.
+}  
+
+- (void)setUpClass;
+- (void)tearDownClass;
+
+//Helper methods: put these in a unitTestHelper Category for Formatters
+
+-(NSString *)helperGetJSONStringFromFile:(NSString *)fileName;
 
 @end

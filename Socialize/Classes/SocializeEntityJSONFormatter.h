@@ -17,6 +17,6 @@
 
 
 -(void)toEntity:(id<SocializeEntity>)toEntity fromDictionary:(NSDictionary *)JSONString;
--(NSDictionary *)fromEntity:(id<SocializeEntity>)fromEntity;
 
+-(void)toDictionary:(NSMutableDictionary *)JSONDictionary  fromEntity:(id<SocializeEntity>)fromEntity;
 @end

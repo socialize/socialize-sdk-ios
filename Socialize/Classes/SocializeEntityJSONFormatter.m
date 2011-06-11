@@ -15,43 +15,36 @@
 
 -(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {
+    id<SocializeEntity> toEntity = (id<SocializeEntity>)toObject;
  
-    [self toEntity:(id<SocializeEntity>)toObject fromDictionary:JSONDictionary];
+    [toEntity setKey:[JSONDictionary objectForKey:@"key"]];
+    [toEntity setName:[JSONDictionary objectForKey:@"name"]];
+    [toEntity setViews:[[JSONDictionary objectForKey:@"views"]intValue]];
+    [toEntity setLikes:[[JSONDictionary objectForKey:@"likes"]intValue]];
+    [toEntity setComments:[[JSONDictionary objectForKey:@"comments"]intValue]];  
+    [toEntity setShares:[[JSONDictionary objectForKey:@"shares"]intValue]]; 
+    
 }
 
--(NSDictionary *)doFromObject:(id<SocializeObject>) fromObject
+-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
 {
-    
-    return [self fromEntity:(id<SocializeEntity>)fromObject];
+     id<SocializeEntity> fromEntity = (id<SocializeEntity>)fromObject;
+    [JSONFormatDictionary setObject:[fromEntity key] forKey:@"key"];
+    [JSONFormatDictionary setObject:[fromEntity name] forKey:@"name"];
 }
 
 -(void)toEntity:(id<SocializeEntity>)toEntity fromDictionary:(NSDictionary *)JSONDictionary
 {
     
-    [toEntity setKey:[JSONDictionary objectForKey:@"Key"]];
-    [toEntity setName:[JSONDictionary objectForKey:@"Name"]];
-    [toEntity setViews:[[JSONDictionary objectForKey:@"Views"]intValue]];
-    [toEntity setLikes:[[JSONDictionary objectForKey:@"Likes"]intValue]];
-    [toEntity setComments:[[JSONDictionary objectForKey:@"Comments"]intValue]];  
-    [toEntity setShares:[[JSONDictionary objectForKey:@"Shares"]intValue]]; 
+    [self toObject:toEntity fromDictionary:JSONDictionary];
+    
 }
 
-
--(NSDictionary *)fromEntity:(id<SocializeEntity>) fromObject
+-(void)toDictionary:(NSMutableDictionary *)JSONFormatDictionary  fromEntity:(id<SocializeEntity>)fromEntity
 {
     
-    NSMutableDictionary * JSONFormatDictionary = [NSMutableDictionary dictionaryWithCapacity:10];
+    [self toDictionary:JSONFormatDictionary fromObject:fromEntity];
     
-    [JSONFormatDictionary setObject:[fromObject key] forKey:@"Key"];
-    [JSONFormatDictionary setObject:[fromObject name] forKey:@"Name"];
-    [JSONFormatDictionary setObject:[NSNumber numberWithInt:[fromObject views]] forKey:@"Views"];
-    [JSONFormatDictionary setObject:[NSNumber numberWithInt:[fromObject likes]] forKey:@"Likes"];
-    [JSONFormatDictionary setObject:[NSNumber numberWithInt:[fromObject comments]] forKey:@"Comments"];
-    [JSONFormatDictionary setObject:[NSNumber numberWithInt:[fromObject shares]] forKey:@"Shares"];
-    
-    return JSONFormatDictionary;
 }
-
-
 
 @end

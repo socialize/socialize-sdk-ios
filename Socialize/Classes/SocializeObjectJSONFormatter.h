@@ -7,27 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "SocializeJSONFormatter.h"
 
 @protocol SocializeObject;
-@class  SocializeObjectFactory;
 
-@interface SocializeObjectJSONFormatter : NSObject 
+@interface SocializeObjectJSONFormatter : SocializeJSONFormatter
 {
-    @protected
-        SocializeObjectFactory * _factory;
+    
 }
--(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory;
 
-//-(void)toObject:(id<SocializeObject>) toObject fromJSONString:(NSString *)JSONDictionary;
-//-(NSString *)fromObjectToJSONString:(id<SocializeObject>) fromObject;
+-(void)toObject:(id<SocializeObject>)toObject fromJSONString:(NSString *)JSONString;
+-(NSString *)toJSONStringFromObject:(id<SocializeObject>) fromObject;
 
 //Template Methods
 -(void)toObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary;
--(NSDictionary *)fromObject:(id<SocializeObject>) fromObject;
+-(void)toDictionary:(NSMutableDictionary *)dictionary fromObject:(id<SocializeObject>) fromObject;
 
 
 //Primitive methods
 -(void)doToObject:(id<SocializeObject>)toObject fromDictionary:(NSDictionary *)JSONDictionary;
--(NSDictionary *)doFromObject:(id<SocializeObject>) fromObject;
+-(void)doToDictionary:(NSMutableDictionary *)dictionary fromObject:(id<SocializeObject>) fromObject;
 @end

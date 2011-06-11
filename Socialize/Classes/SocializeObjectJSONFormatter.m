@@ -7,35 +7,30 @@
 //
 
 #import "SocializeObjectJSONFormatter.h"
+#import "SocializeObject.h"
+#import "JSONKit.h"
 
 
 @implementation SocializeObjectJSONFormatter
 
--(void)dealloc
+-(void)toObject:(id<SocializeObject>)toObject fromJSONString:(NSString *)JSONString
 {
+
+    NSDictionary *  socializeObjectDictionary = (NSDictionary *) [JSONString objectFromJSONString];
+    [self toObject:toObject fromDictionary:socializeObjectDictionary];
     
-    [_factory release];
-    [super dealloc];
 }
 
-- (id)init {
-    self = [super init];
-    if (self) 
-    {
+-(NSString *)toJSONStringFromObject:(id<SocializeObject>)fromObject
+{
     
-    }
-    return self;
+    NSMutableDictionary *  socializeObjectDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
+    [self toDictionary:socializeObjectDictionary fromObject:fromObject];
+    
+    return  [socializeObjectDictionary JSONString];
+    
 }
 
--(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory
-{
-    self = [super init];
-    if (self) 
-    {
-        _factory = [theObjectFactory retain];
-    }
-    return self;
-}
 
 #pragma mark template method implementations
 -(void)toObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
@@ -43,10 +38,9 @@
     [self doToObject:toObject fromDictionary:JSONDictionary];
 }
 
--(NSDictionary *)fromObject:(id<SocializeObject>) fromObject
+-(void)toDictionary:(NSMutableDictionary *)dictionary fromObject:(id<SocializeObject>) fromObject
 {
-    
-    return [self doFromObject:fromObject];
+    [self doToDictionary:dictionary fromObject:fromObject];
 }
 
 
@@ -57,10 +51,9 @@
     
 }
 
--(NSDictionary *)doFromObject:(id<SocializeObject>) fromObject
+-(void)doToDictionary:(NSMutableDictionary *)dictionary fromObject:(id<SocializeObject>) fromObject
 {
     
-    return  nil;
 }
 
 @end
