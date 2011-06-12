@@ -82,8 +82,8 @@
 		5C30698213A156F4007335FF /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B30A139CBFC900F3EF75 /* SBJsonUTF8Stream.m */; };
 		5C30698313A156F4007335FF /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B30C139CBFC900F3EF75 /* SBJsonWriter.m */; };
 		5C3069B713A2ABEC007335FF /* SocializeEntityFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3069B613A2ABEB007335FF /* SocializeEntityFormatterTests.m */; };
-		5C3069BE13A2B396007335FF /* SocializeJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C3069BC13A2B395007335FF /* SocializeJSONFormatter.h */; };
-		5C3069BF13A2B396007335FF /* SocializeJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3069BD13A2B396007335FF /* SocializeJSONFormatter.m */; };
+		5C3069BE13A2B396007335FF /* SocializeObjectFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C3069BC13A2B395007335FF /* SocializeObjectFormatter.h */; };
+		5C3069BF13A2B396007335FF /* SocializeObjectFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3069BD13A2B396007335FF /* SocializeObjectFormatter.m */; };
 		5C54DE6113830F9800090269 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C54DE6013830F9800090269 /* libOCMock.a */; };
 		5C6EC7971379CF7D0073AE65 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DABE1378824800B11B78 /* libSocialize.a */; };
 		5CC3DAC21378824800B11B78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
@@ -228,8 +228,8 @@
 		5C30695913A10F62007335FF /* JSON-RequestAndResponse-TestFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "JSON-RequestAndResponse-TestFiles"; path = "Resources/JSON-RequestAndResponse-TestFiles"; sourceTree = "<group>"; };
 		5C3069B513A2ABEB007335FF /* SocializeEntityFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEntityFormatterTests.h; path = "Test Cases/SocializeEntityFormatterTests.h"; sourceTree = "<group>"; };
 		5C3069B613A2ABEB007335FF /* SocializeEntityFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeEntityFormatterTests.m; path = "Test Cases/SocializeEntityFormatterTests.m"; sourceTree = "<group>"; };
-		5C3069BC13A2B395007335FF /* SocializeJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeJSONFormatter.h; path = Classes/SocializeJSONFormatter.h; sourceTree = "<group>"; };
-		5C3069BD13A2B396007335FF /* SocializeJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeJSONFormatter.m; path = Classes/SocializeJSONFormatter.m; sourceTree = "<group>"; };
+		5C3069BC13A2B395007335FF /* SocializeObjectFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeObjectFormatter.h; path = Classes/SocializeObjectFormatter.h; sourceTree = "<group>"; };
+		5C3069BD13A2B396007335FF /* SocializeObjectFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeObjectFormatter.m; path = Classes/SocializeObjectFormatter.m; sourceTree = "<group>"; };
 		5C54DE6013830F9800090269 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = unitTests/Libraries/libOCMock.a; sourceTree = "<group>"; };
 		5C54DE64138326EA00090269 /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Headers; path = unitTests/Libraries/Headers; sourceTree = "<group>"; };
 		5CC3DABE1378824800B11B78 /* libSocialize.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSocialize.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -574,8 +574,8 @@
 		5CFCBE36138594E800EF5073 /* SocializeObjectParsers */ = {
 			isa = PBXGroup;
 			children = (
-				5C3069BC13A2B395007335FF /* SocializeJSONFormatter.h */,
-				5C3069BD13A2B396007335FF /* SocializeJSONFormatter.m */,
+				5C3069BC13A2B395007335FF /* SocializeObjectFormatter.h */,
+				5C3069BD13A2B396007335FF /* SocializeObjectFormatter.m */,
 				84B8F3D51396EF4D00C95F41 /* SocializeObjectJSONFormatter.h */,
 				84B8F3D41396EF4D00C95F41 /* SocializeObjectJSONFormatter.m */,
 				84B8F3D01396EF4100C95F41 /* SocializeEntityJSONFormatter.h */,
@@ -729,7 +729,7 @@
 				16A5B323139CBFC900F3EF75 /* SBJsonUTF8Stream.h in Headers */,
 				16A5B325139CBFC900F3EF75 /* SBJsonWriter.h in Headers */,
 				1657EF65139F677100E488CC /* SocializeProvider.h in Headers */,
-				5C3069BE13A2B396007335FF /* SocializeJSONFormatter.h in Headers */,
+				5C3069BE13A2B396007335FF /* SocializeObjectFormatter.h in Headers */,
 				1657EF9B13A2170A00E488CC /* NSString+UrlSerialization.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -920,7 +920,7 @@
 				84B8F3D11396EF4100C95F41 /* SocializeEntityJSONFormatter.m in Sources */,
 				84B8F3D61396EF4D00C95F41 /* SocializeObjectJSONFormatter.m in Sources */,
 				1657EF66139F677100E488CC /* SocializeProvider.m in Sources */,
-				5C3069BF13A2B396007335FF /* SocializeJSONFormatter.m in Sources */,
+				5C3069BF13A2B396007335FF /* SocializeObjectFormatter.m in Sources */,
 				1657EF9C13A2170A00E488CC /* NSString+UrlSerialization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

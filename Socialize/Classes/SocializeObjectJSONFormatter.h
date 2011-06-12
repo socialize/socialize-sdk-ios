@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SocializeJSONFormatter.h"
+#import "SocializeObjectFormatter.h"
 
 @protocol SocializeObject;
 
-@interface SocializeObjectJSONFormatter : SocializeJSONFormatter
+@interface SocializeObjectJSONFormatter : SocializeObjectFormatter
 {
     
 }

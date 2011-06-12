@@ -1,5 +1,5 @@
 /*
- * SocializeJSONFormatter.m
+ * SocializeJSONFormatter.h
  * SocializeSDK
  *
  * Created on 6/10/11.
@@ -25,26 +25,21 @@
  * THE SOFTWARE.
  */
 
-#import "SocializeJSONFormatter.h"
-#import "SocializeObjectFactory.h"
+#import <Foundation/Foundation.h>
 
+@class  SocializeObjectFactory;
 
-@implementation SocializeJSONFormatter
-
--(void)dealloc
+@interface SocializeObjectFormatter : NSObject 
 {
-    
-    [_factory release];
-    [super dealloc];
+
+    @protected
+        SocializeObjectFactory * _factory;
+
 }
 
--(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory
-{
-    self = [super init];
-    if (self) 
-    {
-        _factory = [theObjectFactory retain];
-    }
-    return self;
-}
+-(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory;
+//-(void)toObject:(id<SocializeObject>)toObject fromString:(NSString *)JSONString;
+//-(NSString *)toStringFromObject:(id<SocializeObject>) fromObject;
+
+
 @end

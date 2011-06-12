@@ -106,20 +106,30 @@
 #pragma mark Object creation methods
 //-(id)createObjectFromString:(NSString *)stringRepresentation forProtocol:(Protocol *)protocol
 //{
-//    
-//    
-//    return nil;
-//}
+//    //Note: Don't try to convert format String and pass to function below.  Because we want the formatter
+//    //To handle the string.  This keeps the JSON parsing implementation out of the factory.
 //
+//    //  id<SocializeObject> socializeObject = [self createObjectForProtocol:protocol];
+//  
+//    //Look-up formatter in formatter dictionary 
+//        
+//    return socializeObject;
+//}
+
 //-(id)createObjectFromDictionary:(NSDictionary *)dictionaryRepresentation forProtocol:(Protocol *)protocol
 //{
 //    id<SocializeObject> socializeObject = [self createObjectForProtocol:protocol];
 //    
-//    
+//    //Look-up formatter in formatter dictionary
 //    return socializeObject;
 //    
 //}
-//
+
+//-(NSString *)createStringRepresentationOfObject:(id<SocializeObject>)socializeObject
+//{
+//    return  nil;
+//    
+//}
 
 -(id)createObjectForProtocolName:(NSString *)prototypeProtocolName
 {

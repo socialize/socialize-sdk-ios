@@ -9,16 +9,22 @@
 #import <Foundation/Foundation.h>
 
 @class SocializeConfiguration;
+@protocol SocializeObject;
+
 @interface SocializeObjectFactory : NSObject 
 {
     @protected
         NSMutableDictionary * prototypeDictionary; 
+        NSMutableDictionary * fomatterDictionary;
 }
 
 -(id)initializeWithConfiguration:(SocializeConfiguration*)configuration;
 //-(id)createObjectFromString:(NSString *)stringRepresentation;
 //-(id)createObjectFromString:(NSString *)stringRepresentation forProtocol:(Protocol *)protocol;
 //-(id)createObjectFromDictionary:(NSDictionary *)dictionaryRepresentation forProtocol:(Protocol *)protocol;
+//
+//-(NSString *)createStringRepresentationOfObject:(id<SocializeObject>)socializeObject;
+
 
 -(id)createObjectForProtocolName:(NSString *)protocolName;
 -(id)createObjectForProtocol:(Protocol *)protocol;
