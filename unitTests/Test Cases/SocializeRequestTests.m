@@ -27,14 +27,30 @@
  */
 
 #import "SocializeRequestTests.h"
-
+#import <GHUnitIOS/GHMockNSURLConnection.h>
 
 @implementation SocializeRequestTests
 
-- (void)testMath {
-    
-    GHAssertTrue((1+1)==2, @"Compiler isn't feeling w0ell today :-(" );
-    
+- (void)testMock {
+    [self prepare];
+    GHMockNSURLConnection *connection = [[GHMockNSURLConnection alloc] initWithRequest:nil delegate:self];	
+    [connection receiveHTTPResponseWithStatusCode:204 headers:nil afterDelay:0.1];
+    [connection receiveData:nil afterDelay:0.2];
+    [connection finishAfterDelay:0.3];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    GHAssertEquals([(NSHTTPURLResponse *)response statusCode], 204, nil);
+    GHAssertEqualObjects([(NSHTTPURLResponse *)response allHeaderFields], nil, nil);
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+	GHAssertEqualObjects(data, nil, nil);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testMock)];
 }
 
 

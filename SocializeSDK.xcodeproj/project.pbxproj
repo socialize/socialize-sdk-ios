@@ -10,6 +10,7 @@
 		163636BC13A6056400403879 /* NSMutableData+PostBody.h in Headers */ = {isa = PBXBuildFile; fileRef = 163636BA13A6056400403879 /* NSMutableData+PostBody.h */; };
 		163636BD13A6056400403879 /* NSMutableData+PostBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 163636BB13A6056400403879 /* NSMutableData+PostBody.m */; };
 		163636C113A607FA00403879 /* PostBodyGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = 163636C013A607FA00403879 /* PostBodyGeneration.m */; };
+		163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
 		1657EF65139F677100E488CC /* SocializeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 1657EF63139F677000E488CC /* SocializeProvider.h */; };
 		1657EF66139F677100E488CC /* SocializeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF64139F677000E488CC /* SocializeProvider.m */; };
 		1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9613A2000600E488CC /* SocializeRequestTests.m */; };
@@ -123,7 +124,6 @@
 		9A4D2998139401FC0065C0CB /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4D2992139401F70065C0CB /* SocializeConfigurationInfo.plist */; };
 		9A4D2999139402020065C0CB /* UnitTest-SocializeConfigurationInfo-EMPTY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4D2993139401F70065C0CB /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */; };
 		9A4D299A139402020065C0CB /* UnitTest-SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4D2994139401F70065C0CB /* UnitTest-SocializeConfigurationInfo.plist */; };
-		9A4D299D1394032C0065C0CB /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4D299C1394032B0065C0CB /* GHUnitIOS.framework */; };
 		9A4D29A0139404F90065C0CB /* SocializeObjectFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D298B139401C70065C0CB /* SocializeObjectFormatterTests.m */; };
 		9A4D29A1139404FF0065C0CB /* SocializePOOCObjectFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D298F139401E40065C0CB /* SocializePOOCObjectFactoryTests.m */; };
 		9A4D29A4139408710065C0CB /* SocializeObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29A2139408710065C0CB /* SocializeObjectFactory.h */; };
@@ -152,6 +152,7 @@
 		163636BB13A6056400403879 /* NSMutableData+PostBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableData+PostBody.m"; path = "Classes/NSMutableData+PostBody.m"; sourceTree = "<group>"; };
 		163636BF13A607FA00403879 /* PostBodyGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostBodyGeneration.h; path = "Test Cases/PostBodyGeneration.h"; sourceTree = "<group>"; };
 		163636C013A607FA00403879 /* PostBodyGeneration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostBodyGeneration.m; path = "Test Cases/PostBodyGeneration.m"; sourceTree = "<group>"; };
+		163636FB13A6431400403879 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		1657EF63139F677000E488CC /* SocializeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProvider.h; path = Classes/SocializeProvider.h; sourceTree = "<group>"; };
 		1657EF64139F677000E488CC /* SocializeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProvider.m; path = Classes/SocializeProvider.m; sourceTree = "<group>"; };
 		1657EF9513A2000600E488CC /* SocializeRequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequestTests.h; path = "Test Cases/SocializeRequestTests.h"; sourceTree = "<group>"; };
@@ -282,7 +283,6 @@
 		9A4D2992139401F70065C0CB /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SocializeConfigurationInfo.plist; path = Resources/SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
 		9A4D2993139401F70065C0CB /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UnitTest-SocializeConfigurationInfo-EMPTY.plist"; path = "Resources/UnitTest-SocializeConfigurationInfo-EMPTY.plist"; sourceTree = "<group>"; };
 		9A4D2994139401F70065C0CB /* UnitTest-SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UnitTest-SocializeConfigurationInfo.plist"; path = "Resources/UnitTest-SocializeConfigurationInfo.plist"; sourceTree = "<group>"; };
-		9A4D299C1394032B0065C0CB /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		9A4D29A2139408710065C0CB /* SocializeObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeObjectFactory.h; path = Classes/SocializeObjectFactory.h; sourceTree = "<group>"; };
 		9A4D29A3139408710065C0CB /* SocializeObjectFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeObjectFactory.m; path = Classes/SocializeObjectFactory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -311,12 +311,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A4D299D1394032C0065C0CB /* GHUnitIOS.framework in Frameworks */,
 				5C54DE6113830F9800090269 /* libOCMock.a in Frameworks */,
 				5C6EC7971379CF7D0073AE65 /* libSocialize.a in Frameworks */,
 				5CC3DB121378889E00B11B78 /* CoreGraphics.framework in Frameworks */,
 				5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */,
 				5CC3DAEC1378859000B11B78 /* Foundation.framework in Frameworks */,
+				163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,7 +505,7 @@
 			children = (
 				5C54DE64138326EA00090269 /* Headers */,
 				5C54DE6013830F9800090269 /* libOCMock.a */,
-				9A4D299C1394032B0065C0CB /* GHUnitIOS.framework */,
+				163636FB13A6431400403879 /* GHUnitIOS.framework */,
 				5CC3DB101378889E00B11B78 /* CoreGraphics.framework */,
 				5CC3DB111378889E00B11B78 /* UIKit.framework */,
 				5CC3DAC11378824800B11B78 /* Foundation.framework */,

@@ -32,10 +32,8 @@
 //#import "application_headers" as required
 
 
-@interface SocializeRequestTests : GHTestCase {
+@interface SocializeRequestTests : GHAsyncTestCase {
     
 }
-
-- (void)testMath;              // simple standalone test
 
 @end
