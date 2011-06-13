@@ -21,9 +21,10 @@ static const int kGeneralErrorCode = 10000;
 static const NSTimeInterval kTimeoutInterval = 180.0;
 
 @interface SocializeRequest()
-    - (id)formError:(NSInteger)code userInfo:(NSDictionary *) errorData;
-    - (id)parseJsonResponse:(NSData *)data error:(NSError **)error;
+    //- (id)formError:(NSInteger)code userInfo:(NSDictionary *) errorData;
+    //- (id)parseJsonResponse:(NSData *)data error:(NSError **)error;
     - (void)failWithError:(NSError *)error;
+    - (void)handleResponseData:(NSData *)data;
 @end
 
 @implementation SocializeRequest
@@ -57,70 +58,70 @@ responseText = _responseText;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // private
 
-/**
- * Formulate the NSError
- */
-- (id)formError:(NSInteger)code userInfo:(NSDictionary *) errorData 
-{
-    return [NSError errorWithDomain:@"socializeErrDomain" code:code userInfo:errorData];
-}
-
-/**
- * parse the response data
- */
-- (id)parseJsonResponse:(NSData *)data error:(NSError **)error 
-{
-    
-    NSString* responseString = [[[NSString alloc] initWithData:data
-                                                      encoding:NSUTF8StringEncoding]
-                                autorelease];
-    SBJsonParser *jsonParser = [[SBJsonParser new] autorelease];
-    if ([responseString isEqualToString:@"true"]) {
-        return [NSDictionary dictionaryWithObject:@"true" forKey:@"result"];
-    } else if ([responseString isEqualToString:@"false"]) {
-        if (error != nil) {
-            *error = [self formError:kGeneralErrorCode
-                            userInfo:[NSDictionary
-                                      dictionaryWithObject:@"This operation can not be completed"
-                                      forKey:@"error_msg"]];
-        }
-        return nil;
-    }
-    
-    
-    id result = [jsonParser objectWithString:responseString];
-    
-    if (![result isKindOfClass:[NSArray class]]) {
-        if ([result objectForKey:@"error"] != nil) {
-            if (error != nil) {
-                *error = [self formError:kGeneralErrorCode
-                                userInfo:result];
-            }
-            return nil;
-        }
-        
-        if ([result objectForKey:@"error_code"] != nil) {
-            if (error != nil) {
-                *error = [self formError:[[result objectForKey:@"error_code"] intValue] userInfo:result];
-            }
-            return nil;
-        }
-        
-        if ([result objectForKey:@"error_msg"] != nil) {
-            if (error != nil) {
-                *error = [self formError:kGeneralErrorCode userInfo:result];
-            }
-        }
-        
-        if ([result objectForKey:@"error_reason"] != nil) {
-            if (error != nil) {
-                *error = [self formError:kGeneralErrorCode userInfo:result];
-            }
-        }
-    }
-    
-    return result;
-}
+///**
+// * Formulate the NSError
+// */
+//- (id)formError:(NSInteger)code userInfo:(NSDictionary *) errorData 
+//{
+//    return [NSError errorWithDomain:@"socializeErrDomain" code:code userInfo:errorData];
+//}
+//
+///**
+// * parse the response data
+// */
+//- (id)parseJsonResponse:(NSData *)data error:(NSError **)error 
+//{
+//    
+//    NSString* responseString = [[[NSString alloc] initWithData:data
+//                                                      encoding:NSUTF8StringEncoding]
+//                                autorelease];
+//    SBJsonParser *jsonParser = [[SBJsonParser new] autorelease];
+//    if ([responseString isEqualToString:@"true"]) {
+//        return [NSDictionary dictionaryWithObject:@"true" forKey:@"result"];
+//    } else if ([responseString isEqualToString:@"false"]) {
+//        if (error != nil) {
+//            *error = [self formError:kGeneralErrorCode
+//                            userInfo:[NSDictionary
+//                                      dictionaryWithObject:@"This operation can not be completed"
+//                                      forKey:@"error_msg"]];
+//        }
+//        return nil;
+//    }
+//    
+//    
+//    id result = [jsonParser objectWithString:responseString];
+//    
+//    if (![result isKindOfClass:[NSArray class]]) {
+//        if ([result objectForKey:@"error"] != nil) {
+//            if (error != nil) {
+//                *error = [self formError:kGeneralErrorCode
+//                                userInfo:result];
+//            }
+//            return nil;
+//        }
+//        
+//        if ([result objectForKey:@"error_code"] != nil) {
+//            if (error != nil) {
+//                *error = [self formError:[[result objectForKey:@"error_code"] intValue] userInfo:result];
+//            }
+//            return nil;
+//        }
+//        
+//        if ([result objectForKey:@"error_msg"] != nil) {
+//            if (error != nil) {
+//                *error = [self formError:kGeneralErrorCode userInfo:result];
+//            }
+//        }
+//        
+//        if ([result objectForKey:@"error_reason"] != nil) {
+//            if (error != nil) {
+//                *error = [self formError:kGeneralErrorCode userInfo:result];
+//            }
+//        }
+//    }
+//    
+//    return result;
+//}
 
 /*
  * private helper function: call the delegate function when the request fail with Error
@@ -141,17 +142,17 @@ responseText = _responseText;
         [_delegate request:self didLoadRawResponse:data];
     }
     
-    if ([_delegate respondsToSelector:@selector(request:didLoad:)] ||
-        [_delegate respondsToSelector:@selector(request:didFailWithError:)]) {
-        NSError* error = nil;
-        id result = [self parseJsonResponse:data error:&error];
-        if (error) {
-            [self failWithError:error];
-        } else if ([_delegate respondsToSelector:@selector(request:didLoad:)]) {
-            [_delegate request:self didLoad:(result == nil ? data : result)];
-        }
-        
-    }
+//    if ([_delegate respondsToSelector:@selector(request:didLoad:)] ||
+//        [_delegate respondsToSelector:@selector(request:didFailWithError:)]) {
+//        NSError* error = nil;
+//        id result = [self parseJsonResponse:data error:&error];
+//        if (error) {
+//            [self failWithError:error];
+//        } else if ([_delegate respondsToSelector:@selector(request:didLoad:)]) {
+//            [_delegate request:self didLoad:(result == nil ? data : result)];
+//        }
+//        
+//    }
     
 }
 
@@ -169,15 +170,10 @@ responseText = _responseText;
 }
 
 /**
- * make the Facebook request
+ * make the Socialize request
  */
 - (void)connect
 {   
-    if ([_delegate respondsToSelector:@selector(requestLoading:)]) 
-    {
-        [_delegate requestLoading:self];
-    }
-    
     NSString* url = [NSString serializeURL:_url params:_params httpMethod:_httpMethod];
     NSMutableURLRequest* request =
     [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
@@ -196,7 +192,14 @@ responseText = _responseText;
         [request setHTTPBody:[NSMutableData generatePostBodyWithParams:_params]];
     }
     
-    _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    if ([_delegate respondsToSelector:@selector(requestLoading:)]) 
+    {
+        _connection = [_delegate requestLoading:request];
+    }
+    else
+    {
+        _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];   
+    }
 }
 
 /**

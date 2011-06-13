@@ -57,9 +57,10 @@
 @optional
 
 /**
- * Called just before the request is sent to the server.
+ * Called just before the request is sent to the server. In this method your application should create and return connection instance. 
+ * Implement this method only if you need implement custom behaviour of connection instance.
  */
-- (void)requestLoading:(SocializeRequest *)request;
+- (NSURLConnection*)requestLoading:(NSMutableURLRequest *)request;
 
 /**
  * Called when the server responds and begins to send back data.
@@ -77,7 +78,7 @@
  * The resulting object may be a dictionary, an array, a string, or a number, depending
  * on thee format of the API response.
  */
-- (void)request:(SocializeRequest *)request didLoad:(id)result;
+//- (void)request:(SocializeRequest *)request didLoad:(id)result;
 
 /**
  * Called when a request returns a response.
