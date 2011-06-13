@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		163636BC13A6056400403879 /* NSMutableData+PostBody.h in Headers */ = {isa = PBXBuildFile; fileRef = 163636BA13A6056400403879 /* NSMutableData+PostBody.h */; };
+		163636BD13A6056400403879 /* NSMutableData+PostBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 163636BB13A6056400403879 /* NSMutableData+PostBody.m */; };
+		163636C113A607FA00403879 /* PostBodyGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = 163636C013A607FA00403879 /* PostBodyGeneration.m */; };
 		1657EF65139F677100E488CC /* SocializeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 1657EF63139F677000E488CC /* SocializeProvider.h */; };
 		1657EF66139F677100E488CC /* SocializeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF64139F677000E488CC /* SocializeProvider.m */; };
 		1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9613A2000600E488CC /* SocializeRequestTests.m */; };
@@ -145,6 +148,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		163636BA13A6056400403879 /* NSMutableData+PostBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableData+PostBody.h"; path = "Classes/NSMutableData+PostBody.h"; sourceTree = "<group>"; };
+		163636BB13A6056400403879 /* NSMutableData+PostBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableData+PostBody.m"; path = "Classes/NSMutableData+PostBody.m"; sourceTree = "<group>"; };
+		163636BF13A607FA00403879 /* PostBodyGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostBodyGeneration.h; path = "Test Cases/PostBodyGeneration.h"; sourceTree = "<group>"; };
+		163636C013A607FA00403879 /* PostBodyGeneration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostBodyGeneration.m; path = "Test Cases/PostBodyGeneration.m"; sourceTree = "<group>"; };
 		1657EF63139F677000E488CC /* SocializeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProvider.h; path = Classes/SocializeProvider.h; sourceTree = "<group>"; };
 		1657EF64139F677000E488CC /* SocializeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProvider.m; path = Classes/SocializeProvider.m; sourceTree = "<group>"; };
 		1657EF9513A2000600E488CC /* SocializeRequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequestTests.h; path = "Test Cases/SocializeRequestTests.h"; sourceTree = "<group>"; };
@@ -330,6 +337,8 @@
 			children = (
 				1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */,
 				1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */,
+				163636BA13A6056400403879 /* NSMutableData+PostBody.h */,
+				163636BB13A6056400403879 /* NSMutableData+PostBody.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -339,6 +348,8 @@
 			children = (
 				1657EF9E13A226F700E488CC /* UrlSerializationTests.h */,
 				1657EF9F13A226F700E488CC /* UrlSerializationTests.m */,
+				163636BF13A607FA00403879 /* PostBodyGeneration.h */,
+				163636C013A607FA00403879 /* PostBodyGeneration.m */,
 			);
 			name = "Utils Tests";
 			sourceTree = "<group>";
@@ -731,6 +742,7 @@
 				1657EF65139F677100E488CC /* SocializeProvider.h in Headers */,
 				5C3069BE13A2B396007335FF /* SocializeObjectFormatter.h in Headers */,
 				1657EF9B13A2170A00E488CC /* NSString+UrlSerialization.h in Headers */,
+				163636BC13A6056400403879 /* NSMutableData+PostBody.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,6 +934,7 @@
 				1657EF66139F677100E488CC /* SocializeProvider.m in Sources */,
 				5C3069BF13A2B396007335FF /* SocializeObjectFormatter.m in Sources */,
 				1657EF9C13A2170A00E488CC /* NSString+UrlSerialization.m in Sources */,
+				163636BD13A6056400403879 /* NSMutableData+PostBody.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,6 +963,7 @@
 				5C3069B713A2ABEC007335FF /* SocializeEntityFormatterTests.m in Sources */,
 				1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */,
 				1657EFA113A22A9E00E488CC /* UrlSerializationTests.m in Sources */,
+				163636C113A607FA00403879 /* PostBodyGeneration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,22 +9,22 @@
 #import "SocializeRequest.h"
 #import <UIKit/UIKit.h>
 #import "NSString+UrlSerialization.h"
+#import "NSMutableData+PostBody.h"
 #import "SBJson.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
 
 static NSString* const kUserAgent = @"Socialize";
-static NSString* const kStringBoundary = @"3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f";
 static const int kGeneralErrorCode = 10000;
 
 static const NSTimeInterval kTimeoutInterval = 180.0;
 
 @interface SocializeRequest()
-
+    - (id)formError:(NSInteger)code userInfo:(NSDictionary *) errorData;
+    - (id)parseJsonResponse:(NSData *)data error:(NSError **)error;
+    - (void)failWithError:(NSError *)error;
 @end
-
-
 
 @implementation SocializeRequest
 
@@ -57,84 +57,19 @@ responseText = _responseText;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // private
 
-
-/**
- * Body append for POST method
- */
-- (void)utfAppendBody:(NSMutableData *)body data:(NSString *)data {
-    [body appendData:[data dataUsingEncoding:NSUTF8StringEncoding]];
-}
-
-/**
- * Generate body for POST method
- */
-- (NSMutableData *)generatePostBody {
-    NSMutableData *body = [NSMutableData data];
-    NSString *endLine = [NSString stringWithFormat:@"\r\n--%@\r\n", kStringBoundary];
-    NSMutableDictionary *dataDictionary = [NSMutableDictionary dictionary];
-    
-    [self utfAppendBody:body data:[NSString stringWithFormat:@"--%@\r\n", kStringBoundary]];
-    
-    for (id key in [_params keyEnumerator]) {
-        
-        if (([[_params valueForKey:key] isKindOfClass:[UIImage class]])
-            ||([[_params valueForKey:key] isKindOfClass:[NSData class]])) {
-            
-            [dataDictionary setObject:[_params valueForKey:key] forKey:key];
-            continue;
-            
-        }
-        
-        [self utfAppendBody:body
-                       data:[NSString
-                             stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",
-                             key]];
-        [self utfAppendBody:body data:[_params valueForKey:key]];
-        
-        [self utfAppendBody:body data:endLine];
-    }
-    
-    if ([dataDictionary count] > 0) {
-        for (id key in dataDictionary) {
-            NSObject *dataParam = [dataDictionary valueForKey:key];
-            if ([dataParam isKindOfClass:[UIImage class]]) {
-                NSData* imageData = UIImagePNGRepresentation((UIImage*)dataParam);
-                [self utfAppendBody:body
-                               data:[NSString stringWithFormat:
-                                     @"Content-Disposition: form-data; filename=\"%@\"\r\n", key]];
-                [self utfAppendBody:body
-                               data:[NSString stringWithString:@"Content-Type: image/png\r\n\r\n"]];
-                [body appendData:imageData];
-            } else {
-                NSAssert([dataParam isKindOfClass:[NSData class]],
-                         @"dataParam must be a UIImage or NSData");
-                [self utfAppendBody:body
-                               data:[NSString stringWithFormat:
-                                     @"Content-Disposition: form-data; filename=\"%@\"\r\n", key]];
-                [self utfAppendBody:body
-                               data:[NSString stringWithString:@"Content-Type: content/unknown\r\n\r\n"]];
-                [body appendData:(NSData*)dataParam];
-            }
-            [self utfAppendBody:body data:endLine];
-            
-        }
-    }
-    
-    return body;
-}
-
 /**
  * Formulate the NSError
  */
-- (id)formError:(NSInteger)code userInfo:(NSDictionary *) errorData {
-    return [NSError errorWithDomain:@"facebookErrDomain" code:code userInfo:errorData];
-    
+- (id)formError:(NSInteger)code userInfo:(NSDictionary *) errorData 
+{
+    return [NSError errorWithDomain:@"socializeErrDomain" code:code userInfo:errorData];
 }
 
 /**
  * parse the response data
  */
-- (id)parseJsonResponse:(NSData *)data error:(NSError **)error {
+- (id)parseJsonResponse:(NSData *)data error:(NSError **)error 
+{
     
     NSString* responseString = [[[NSString alloc] initWithData:data
                                                       encoding:NSUTF8StringEncoding]
@@ -185,13 +120,13 @@ responseText = _responseText;
     }
     
     return result;
-    
 }
 
 /*
  * private helper function: call the delegate function when the request fail with Error
  */
-- (void)failWithError:(NSError *)error {
+- (void)failWithError:(NSError *)error 
+{
     if ([_delegate respondsToSelector:@selector(request:didFailWithError:)]) {
         [_delegate request:self didFailWithError:error];
     }
@@ -200,7 +135,8 @@ responseText = _responseText;
 /*
  * private helper function: handle the response data
  */
-- (void)handleResponseData:(NSData *)data {
+- (void)handleResponseData:(NSData *)data 
+{
     if ([_delegate respondsToSelector:@selector(request:didLoadRawResponse:)]) {
         [_delegate request:self didLoadRawResponse:data];
     }
@@ -227,16 +163,18 @@ responseText = _responseText;
 /**
  * @return boolean - whether this request is processing
  */
-- (BOOL)loading {
+- (BOOL)loading 
+{
     return !!_connection;
 }
 
 /**
  * make the Facebook request
  */
-- (void)connect {
-    
-    if ([_delegate respondsToSelector:@selector(requestLoading:)]) {
+- (void)connect
+{   
+    if ([_delegate respondsToSelector:@selector(requestLoading:)]) 
+    {
         [_delegate requestLoading:self];
     }
     
@@ -249,22 +187,23 @@ responseText = _responseText;
     
     
     [request setHTTPMethod:self.httpMethod];
-    if ([self.httpMethod isEqualToString: @"POST"]) {
+    if ([self.httpMethod isEqualToString: @"POST"]) 
+    {
         NSString* contentType = [NSString
                                  stringWithFormat:@"multipart/form-data; boundary=%@", kStringBoundary];
         [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
         
-        [request setHTTPBody:[self generatePostBody]];
+        [request setHTTPBody:[NSMutableData generatePostBodyWithParams:_params]];
     }
     
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
 }
 
 /**
  * Free internal structure
  */
-- (void)dealloc {
+- (void)dealloc 
+{
     [_connection cancel];
     [_connection release];
     [_responseText release];
@@ -277,7 +216,8 @@ responseText = _responseText;
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // NSURLConnectionDelegate
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response 
+{
     _responseText = [[NSMutableData alloc] init];
     
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
@@ -286,16 +226,19 @@ responseText = _responseText;
     }
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data 
+{
     [_responseText appendData:data];
 }
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection
-                  willCacheResponse:(NSCachedURLResponse*)cachedResponse {
+                  willCacheResponse:(NSCachedURLResponse*)cachedResponse
+{
     return nil;
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
     [self handleResponseData:_responseText];
     
     [_responseText release];
@@ -304,7 +247,8 @@ responseText = _responseText;
     _connection = nil;
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error 
+{
     [self failWithError:error];
     
     [_responseText release];
@@ -312,6 +256,5 @@ responseText = _responseText;
     [_connection release];
     _connection = nil;
 }
-
 
 @end
