@@ -37,8 +37,6 @@ static NSString* kSDKVersion = @"1";
              params:(NSMutableDictionary *)params
          httpMethod:(NSString *)httpMethod
            delegate:(id<SocializeRequestDelegate>)delegate;
-    
-    - (NSDictionary*)parseURLParams:(NSString *)query;
 @end
 
 @implementation SocializeProvider
@@ -48,9 +46,7 @@ expirationDate = _expirationDate,
 sessionDelegate = _sessionDelegate;
 
 #pragma mark - Life flow
-/**
- * Override NSObject : free the space
- */
+
 - (void)dealloc 
 {
     [_accessToken release];
@@ -95,47 +91,24 @@ sessionDelegate = _sessionDelegate;
     [_request connect];
 }
 
-/**
- * A private function for parsing URL parameters.
- */
-- (NSDictionary*)parseURLParams:(NSString *)query 
-{
-	NSArray *pairs = [query componentsSeparatedByString:@"&"];
-	NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
-	for (NSString *pair in pairs) {
-		NSArray *kv = [pair componentsSeparatedByString:@"="];
-		NSString *val =
-        [[kv objectAtIndex:1]
-         stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-		[params setObject:val forKey:[kv objectAtIndex:0]];
-	}
-    return params;
-}
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-//public1
+//public
 
-/**
- * @param application_id
- *            The Socialize application id, e.g. "350685531728".
- * @param permissions
- *            A list of permission required for this application: e.g.
- *            permissions, then pass in an empty String array.
- * @param delegate
- *            Callback interface for notifying the calling application when
- *            the user has logged in.
- */
-- (void)authenticate:(NSString *)udid callbackurlString:(NSString*)urlString thidPartyAccessToken:(NSString*)thirdPartyAccessToken  
+- (void)authenticate:(NSString *)udid
             delegate:(id<SocializeProviderDelegate>)delegate
 {
-    
-    //  [_permissions release];
-    // _permissions = [permissions retain];
-    
     _sessionDelegate = delegate;
-    //  [self authorizeWithFBAppAuth:YES safariAuth:YES];
+    // TODO::
+    // add call to Socialize Web to get access token
+}
+
+- (void)authenticateWithThirdPartyAccessToken:(NSString*)thirdPartyAccessToken
+                           andExpirationDate:(NSDate*) date
+                                    delegate:(id<SocializeProviderDelegate>)delegate
+{
+    _sessionDelegate = delegate;
+    self.accessToken = thirdPartyAccessToken;
+    self.expirationDate = date;
 }
 
 /**
@@ -172,7 +145,8 @@ sessionDelegate = _sessionDelegate;
 - (void)requestWithMethodName:(NSString *)methodName
                     andParams:(NSMutableDictionary *)params
                 andHttpMethod:(NSString *)httpMethod
-                  andDelegate:(id <SocializeRequestDelegate>)delegate {
+                  andDelegate:(id <SocializeRequestDelegate>)delegate 
+{
     NSString * fullURL = [kRestserverBaseURL stringByAppendingString:methodName];
     [self openUrl:fullURL params:params httpMethod:httpMethod delegate:delegate];
 }
@@ -184,18 +158,6 @@ sessionDelegate = _sessionDelegate;
 - (BOOL)isSessionValid {
     return (self.accessToken != nil && self.expirationDate != nil
             && NSOrderedDescending == [self.expirationDate compare:[NSDate date]]);
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-#pragma mark - SocializeRequestDelegate
-
-/**
- * Handle the auth.ExpireSession api call failure
- */
-- (void)request:(SocializeRequest*)request didFailWithError:(NSError*)error{
-    NSLog(@"Failed to expire the session");
 }
 
 @end

@@ -52,10 +52,11 @@
 @property(nonatomic, assign) id<SocializeProviderDelegate> sessionDelegate;
 
 - (void)authenticate:(NSString *)udid
-   callbackurlString:(NSString*)urlString 
-thidPartyAccessToken:(NSString*)thirdPartyAccessToken  
             delegate:(id<SocializeProviderDelegate>)delegate;
 
+- (void)authenticateWithThirdPartyAccessToken:(NSString*)thirdPartyAccessToken  
+                        andExpirationDate:(NSDate*) date
+                                 delegate:(id<SocializeProviderDelegate>)delegate;
 
 - (void)requestWithParams:(NSMutableDictionary *)params
               andDelegate:(id <SocializeRequestDelegate>)delegate;

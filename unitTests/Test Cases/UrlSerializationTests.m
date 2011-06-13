@@ -126,4 +126,9 @@
     GHAssertTrue(nil == [NSString serializeURL:nil params:nil httpMethod:@"GET"], @"Should be nil");
 }
 
+//-(void) testParseUrlParams
+//{
+//    NSDictionary* actualResult =  [NSString parseURLParams:@"http:////test.service.com/method?parameter_key_2=parameter_value_2&parameter_key_1=parameter_value_1"];
+//}
+
 @end

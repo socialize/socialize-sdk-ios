@@ -36,4 +36,6 @@
 + (NSString*)serializeURL:(NSString *)baseUrl
                    params:(NSDictionary *)params
                httpMethod:(NSString *)httpMethod;
+
+//+ (NSDictionary*)parseURLParams:(NSString *)query;
 @end
