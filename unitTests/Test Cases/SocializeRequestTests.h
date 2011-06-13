@@ -29,11 +29,14 @@
 
 #import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
-//#import "application_headers" as required
+#import "SocializeRequest.h"
+#import <GHUnitIOS/GHMockNSURLConnection.h>
 
 
-@interface SocializeRequestTests : GHAsyncTestCase {
-    
+@interface SocializeRequestTests : GHAsyncTestCase<SocializeRequestDelegate> {
+    SocializeRequest* _request;
+    GHMockNSURLConnection *_connection;
+    NSError* _expectedError; 
 }
 
 @end

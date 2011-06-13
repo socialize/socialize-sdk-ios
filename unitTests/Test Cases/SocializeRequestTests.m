@@ -31,26 +31,83 @@
 
 @implementation SocializeRequestTests
 
-- (void)testMock {
+- (void)testSuccessGetRequest {
     [self prepare];
-    GHMockNSURLConnection *connection = [[GHMockNSURLConnection alloc] initWithRequest:nil delegate:self];	
-    [connection receiveHTTPResponseWithStatusCode:204 headers:nil afterDelay:0.1];
-    [connection receiveData:nil afterDelay:0.2];
-    [connection finishAfterDelay:0.3];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   @"parameter_value_1", @"parameter_key_1",
+                                   @"parameter_value_2", @"parameter_key_2",
+                                   nil];
+    
+    _request = [SocializeRequest getRequestWithParams:params httpMethod:@"GET" delegate:self requestURL:@"www.google.com"];
+    
+    _connection = [[GHMockNSURLConnection alloc] initWithRequest:nil delegate:_request startImmediately:NO];	
+    [_connection receiveHTTPResponseWithStatusCode:204 headers:nil afterDelay:0.1];
+    [_connection receiveData:[NSData data] afterDelay:0.2];
+    [_connection finishAfterDelay:0.4];
+    
+    [_request connect];
+    
+    GHAssertTrue([_request loading], nil);
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:3.0];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+- (void)testSuccessPostRequest {
+    [self prepare];
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   @"parameter_value_1", @"parameter_key_1",
+                                   @"parameter_value_2", @"parameter_key_2",
+                                   [[[UIImage alloc] init] autorelease], @"parameter_key_3",
+                                   [[[NSData alloc] init] autorelease], @"parameter_key_4",
+                                   nil];
+    
+    _request = [SocializeRequest getRequestWithParams:params httpMethod:@"POST" delegate:self requestURL:@"www.google.com"];
+    
+    _connection = [[GHMockNSURLConnection alloc] initWithRequest:nil delegate:_request startImmediately:NO];	
+    [_connection receiveHTTPResponseWithStatusCode:204 headers:nil afterDelay:0.1];
+    [_connection receiveData:[NSData data] afterDelay:0.2];
+    [_connection finishAfterDelay:0.4];
+    
+    [_request connect];
+    
+    GHAssertTrue([_request loading], nil);
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:3.0];
+}
+
+- (void)testFaildGetRequest {
+    [self prepare];
+    _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"GET" delegate:self requestURL:@"www.google.com"];
+    
+    _connection = [[GHMockNSURLConnection alloc] initWithRequest:nil delegate:_request startImmediately:NO];	
+    [_connection receiveHTTPResponseWithStatusCode:204 headers:nil afterDelay:0.1];
+    _expectedError = [NSError errorWithDomain:@"Socialize" code:404 userInfo:nil];
+    [_connection failWithError:_expectedError afterDelay:0.2];
+    
+    [_request connect];  
+    [self waitForStatus:kGHUnitWaitStatusFailure timeout:2.0];
+}
+
+- (id)requestLoading:(NSMutableURLRequest *)request
+{
+    return _connection;
+}
+
+- (void)request:(SocializeRequest *)request didReceiveResponse:(NSURLResponse *)response
+{
     GHAssertEquals([(NSHTTPURLResponse *)response statusCode], 204, nil);
-    GHAssertEqualObjects([(NSHTTPURLResponse *)response allHeaderFields], nil, nil);
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	GHAssertEqualObjects(data, nil, nil);
+- (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
+{
+    GHAssertEqualObjects(_expectedError, error, nil);
+    [self notify:kGHUnitWaitStatusFailure forSelector:@selector(testFaildGetRequest)];
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testMock)];
+- (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
+{
+    GHAssertEqualObjects(data, [NSData data], nil);
+    [self notify:kGHUnitWaitStatusSuccess];
 }
 
 

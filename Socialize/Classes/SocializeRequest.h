@@ -32,8 +32,8 @@
 @property(nonatomic,copy)   NSString                    *url;
 @property(nonatomic,copy)   NSString                    *httpMethod;
 @property(nonatomic,retain) NSMutableDictionary         *params;
-@property(nonatomic,assign) NSURLConnection             *connection;
-@property(nonatomic,assign) NSMutableData               *responseText;
+@property(nonatomic,retain) NSURLConnection             *connection;
+@property(nonatomic,retain) NSMutableData               *responseText;
 
 
 
@@ -60,7 +60,7 @@
  * Called just before the request is sent to the server. In this method your application should create and return connection instance. 
  * Implement this method only if you need implement custom behaviour of connection instance.
  */
-- (NSURLConnection*)requestLoading:(NSMutableURLRequest *)request;
+- (id)requestLoading:(NSMutableURLRequest *)request;
 
 /**
  * Called when the server responds and begins to send back data.

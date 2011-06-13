@@ -83,7 +83,7 @@
                                    @"parameter_value_1", @"parameter_key_1",
                                    @"parameter_value_2", @"parameter_key_2",
                                    [[[UIImage alloc] init] autorelease], @"parameter_key_3",
-                                   [[[NSData alloc] init] autorelease], @"parameter_key_3",
+                                   [[[NSData alloc] init] autorelease], @"parameter_key_4",
                                    nil];
     
     NSString* urlPrefix = @"http:////test.service.com/method";
@@ -100,7 +100,7 @@
                                    @"parameter_value_1", @"parameter_key_1",
                                    @"parameter_value_2", @"parameter_key_2",
                                    [[[UIImage alloc] init] autorelease], @"parameter_key_3",
-                                   [[[NSData alloc] init] autorelease], @"parameter_key_3",
+                                   [[[NSData alloc] init] autorelease], @"parameter_key_4",
                                    nil];
     
     NSString* urlPrefix = @"http:////test.service.com/method";
