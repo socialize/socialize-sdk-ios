@@ -11,6 +11,7 @@
 		163636BD13A6056400403879 /* NSMutableData+PostBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 163636BB13A6056400403879 /* NSMutableData+PostBody.m */; };
 		163636C113A607FA00403879 /* PostBodyGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = 163636C013A607FA00403879 /* PostBodyGeneration.m */; };
 		163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
+		1636370813A76ED000403879 /* SocializeProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636370713A76ECF00403879 /* SocializeProviderTests.m */; };
 		1657EF65139F677100E488CC /* SocializeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 1657EF63139F677000E488CC /* SocializeProvider.h */; };
 		1657EF66139F677100E488CC /* SocializeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF64139F677000E488CC /* SocializeProvider.m */; };
 		1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9613A2000600E488CC /* SocializeRequestTests.m */; };
@@ -153,6 +154,8 @@
 		163636BF13A607FA00403879 /* PostBodyGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostBodyGeneration.h; path = "Test Cases/PostBodyGeneration.h"; sourceTree = "<group>"; };
 		163636C013A607FA00403879 /* PostBodyGeneration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostBodyGeneration.m; path = "Test Cases/PostBodyGeneration.m"; sourceTree = "<group>"; };
 		163636FB13A6431400403879 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
+		1636370613A76ECF00403879 /* SocializeProviderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProviderTests.h; path = "Test Cases/SocializeProviderTests.h"; sourceTree = "<group>"; };
+		1636370713A76ECF00403879 /* SocializeProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProviderTests.m; path = "Test Cases/SocializeProviderTests.m"; sourceTree = "<group>"; };
 		1657EF63139F677000E488CC /* SocializeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProvider.h; path = Classes/SocializeProvider.h; sourceTree = "<group>"; };
 		1657EF64139F677000E488CC /* SocializeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProvider.m; path = Classes/SocializeProvider.m; sourceTree = "<group>"; };
 		1657EF9513A2000600E488CC /* SocializeRequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequestTests.h; path = "Test Cases/SocializeRequestTests.h"; sourceTree = "<group>"; };
@@ -323,13 +326,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1657EF9413A1FFBA00E488CC /* Request Tests */ = {
+		1657EF9413A1FFBA00E488CC /* Infrastructure Tests */ = {
 			isa = PBXGroup;
 			children = (
 				1657EF9513A2000600E488CC /* SocializeRequestTests.h */,
 				1657EF9613A2000600E488CC /* SocializeRequestTests.m */,
+				1636370613A76ECF00403879 /* SocializeProviderTests.h */,
+				1636370713A76ECF00403879 /* SocializeProviderTests.m */,
 			);
-			name = "Request Tests";
+			name = "Infrastructure Tests";
 			sourceTree = "<group>";
 		};
 		1657EF9813A216B500E488CC /* Utils */ = {
@@ -557,7 +562,7 @@
 			isa = PBXGroup;
 			children = (
 				1657EF9D13A226A800E488CC /* Utils Tests */,
-				1657EF9413A1FFBA00E488CC /* Request Tests */,
+				1657EF9413A1FFBA00E488CC /* Infrastructure Tests */,
 				5CFCBE3F1385B60D00EF5073 /* Configuration Tests */,
 				5CFCBE381385953F00EF5073 /* Parser Tests */,
 				5CFCBE371385952600EF5073 /* Factory Tests */,
@@ -964,6 +969,7 @@
 				1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */,
 				1657EFA113A22A9E00E488CC /* UrlSerializationTests.m in Sources */,
 				163636C113A607FA00403879 /* PostBodyGeneration.m in Sources */,
+				1636370813A76ED000403879 /* SocializeProviderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

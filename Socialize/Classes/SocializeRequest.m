@@ -91,9 +91,9 @@ responseText = _responseText;
  */
 - (void)connect
 {   
-    NSString* url = [NSString serializeURL:_url params:_params httpMethod:_httpMethod];
+    self.url = [NSString serializeURL:_url params:_params httpMethod:_httpMethod];
     NSMutableURLRequest* request =
-    [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
+    [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url]
                             cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                         timeoutInterval:kTimeoutInterval];
     [request setValue:kUserAgent forHTTPHeaderField:@"User-Agent"];
