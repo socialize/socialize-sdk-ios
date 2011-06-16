@@ -79,7 +79,7 @@
     
     
     NSMutableDictionary * objectDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
-    [entityFormatter toDictionary:objectDictionary fromEntity:mockEntity];
+    [entityFormatter toDictionary:objectDictionary fromObject:mockEntity];
     
     [mockEntity verify];
     

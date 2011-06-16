@@ -38,8 +38,5 @@
 }
 
 -(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory;
-//-(void)toObject:(id<SocializeObject>)toObject fromString:(NSString *)JSONString;
-//-(NSString *)toStringFromObject:(id<SocializeObject>) fromObject;
-
 
 @end

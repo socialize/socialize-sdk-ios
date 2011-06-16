@@ -33,17 +33,4 @@
     [JSONFormatDictionary setObject:[fromEntity name] forKey:@"name"];
 }
 
-//-(void)toEntity:(id<SocializeEntity>)toEntity fromDictionary:(NSDictionary *)JSONDictionary
-//{
-//    
-//    [self toObject:toEntity fromDictionary:JSONDictionary];
-//    
-//}
-//
--(void)toDictionary:(NSMutableDictionary *)JSONFormatDictionary  fromEntity:(id<SocializeEntity>)fromEntity
-{
-    
-    [self toDictionary:JSONFormatDictionary fromObject:fromEntity];
-    
-}
 @end

@@ -12,11 +12,5 @@
 
 @interface SocializeEntityJSONFormatter : SocializeObjectJSONFormatter 
 {
-    
 }
-
-
-//-(void)toEntity:(id<SocializeEntity>)toEntity fromDictionary:(NSDictionary *)JSONString;
-
--(void)toDictionary:(NSMutableDictionary *)JSONDictionary  fromEntity:(id<SocializeEntity>)fromEntity;
 @end
