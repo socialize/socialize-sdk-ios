@@ -1,5 +1,5 @@
 /*
- * SocializeCommentsService.h
+ * SocializeCommentJSONFormatter.h
  * SocializeSDK
  *
  * Created on 6/17/11.
@@ -26,32 +26,12 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "SocializeRequest.h"
-
-@class SocializeCommentsService;
-@class SocializeProvider;
-@class SocializeCommentJSONFormatter;
-
-@protocol SocializeComment;
-
-@protocol SocializeCommentsServiceDelegate <NSObject>
-    -(void) receiveCommentById: (SocializeCommentsService*)service comment: (id<SocializeComment>) comment;
-@end
 
 
-@interface SocializeCommentsService : NSObject<SocializeRequestDelegate> {
-
-@private
-    id<SocializeCommentsServiceDelegate> _delegate;
-    SocializeProvider*  _provider;
-    SocializeCommentJSONFormatter* _commentFormater;
+@interface SocializeCommentJSONFormatter : NSObject {
+    
 }
 
-@property (nonatomic, assign) id<SocializeCommentsServiceDelegate> delegate;
-@property (nonatomic, assign) SocializeProvider* provider;
-@property (nonatomic, retain) SocializeCommentJSONFormatter* commentFormater;
-
--(void) getCommentById: (int) commentId;
--(void) getCommentsList: (NSArray*) commentsId;
+-(NSString*) commentIdsToJsonString: (NSArray*) commentsId;
 
 @end

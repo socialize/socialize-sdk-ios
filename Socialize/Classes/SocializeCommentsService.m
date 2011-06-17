@@ -28,18 +28,22 @@
 #import "SocializeCommentsService.h"
 #import "SocializeComment.h"
 #import "SocializeProvider.h"
+#import "SocializeCommentJSONFormatter.h"
 
 #define COMMENT_METHOD @"comment/"
+#define COMMENTS_LIST_METHOD @"comment/list/"
 
 @implementation SocializeCommentsService
 
 @synthesize delegate = _delegate;
 @synthesize provider = _provider;
+@synthesize commentFormater = _commentFormater;
 
 -(void) dealloc
 {
     self.delegate = nil;
     self.provider = nil;
+    [_commentFormater release]; _commentFormater = nil;
     [super dealloc];
 }
 
@@ -49,6 +53,17 @@
                                    [NSNumber numberWithInt:commentId], @"id",
                                    nil];
     [_provider requestWithMethodName:COMMENT_METHOD andParams:params andHttpMethod:@"GET" andDelegate:self];
+}
+
+-(void) getCommentsList: (NSArray*) commentsId
+{
+    NSString* jsonParams = [_commentFormater commentIdsToJsonString: commentsId];
+    NSData* jsonData =  [NSData dataWithBytes:[jsonParams UTF8String] length:[jsonParams length]];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   jsonData, @"jsonData",
+                                   nil];
+    
+    [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
 }
 
 #pragma mark - Socialize requst delegate

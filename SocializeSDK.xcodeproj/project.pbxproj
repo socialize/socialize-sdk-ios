@@ -15,6 +15,8 @@
 		1636372F13AB289500403879 /* SocializeCommentsServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */; };
 		1636373213AB28DD00403879 /* SocializeCommentsService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1636373013AB28D900403879 /* SocializeCommentsService.h */; };
 		1636373313AB28DD00403879 /* SocializeCommentsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636373113AB28DA00403879 /* SocializeCommentsService.m */; };
+		1636373613AB5D8E00403879 /* SocializeCommentJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1636373413AB5D8E00403879 /* SocializeCommentJSONFormatter.h */; };
+		1636373713AB5D8E00403879 /* SocializeCommentJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636373513AB5D8E00403879 /* SocializeCommentJSONFormatter.m */; };
 		1657EF65139F677100E488CC /* SocializeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 1657EF63139F677000E488CC /* SocializeProvider.h */; };
 		1657EF66139F677100E488CC /* SocializeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF64139F677000E488CC /* SocializeProvider.m */; };
 		1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9613A2000600E488CC /* SocializeRequestTests.m */; };
@@ -163,6 +165,8 @@
 		1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsServiceTests.m; path = "Test Cases/SocializeCommentsServiceTests.m"; sourceTree = "<group>"; };
 		1636373013AB28D900403879 /* SocializeCommentsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsService.h; path = Classes/SocializeCommentsService.h; sourceTree = "<group>"; };
 		1636373113AB28DA00403879 /* SocializeCommentsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsService.m; path = Classes/SocializeCommentsService.m; sourceTree = "<group>"; };
+		1636373413AB5D8E00403879 /* SocializeCommentJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentJSONFormatter.h; path = Classes/SocializeCommentJSONFormatter.h; sourceTree = "<group>"; };
+		1636373513AB5D8E00403879 /* SocializeCommentJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentJSONFormatter.m; path = Classes/SocializeCommentJSONFormatter.m; sourceTree = "<group>"; };
 		1657EF63139F677000E488CC /* SocializeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProvider.h; path = Classes/SocializeProvider.h; sourceTree = "<group>"; };
 		1657EF64139F677000E488CC /* SocializeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProvider.m; path = Classes/SocializeProvider.m; sourceTree = "<group>"; };
 		1657EF9513A2000600E488CC /* SocializeRequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequestTests.h; path = "Test Cases/SocializeRequestTests.h"; sourceTree = "<group>"; };
@@ -607,6 +611,8 @@
 				84B8F3D41396EF4D00C95F41 /* SocializeObjectJSONFormatter.m */,
 				84B8F3D01396EF4100C95F41 /* SocializeEntityJSONFormatter.h */,
 				84B8F3CF1396EF4100C95F41 /* SocializeEntityJSONFormatter.m */,
+				1636373413AB5D8E00403879 /* SocializeCommentJSONFormatter.h */,
+				1636373513AB5D8E00403879 /* SocializeCommentJSONFormatter.m */,
 			);
 			name = SocializeObjectParsers;
 			sourceTree = "<group>";
@@ -760,6 +766,7 @@
 				1657EF9B13A2170A00E488CC /* NSString+UrlSerialization.h in Headers */,
 				163636BC13A6056400403879 /* NSMutableData+PostBody.h in Headers */,
 				1636373213AB28DD00403879 /* SocializeCommentsService.h in Headers */,
+				1636373613AB5D8E00403879 /* SocializeCommentJSONFormatter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -953,6 +960,7 @@
 				1657EF9C13A2170A00E488CC /* NSString+UrlSerialization.m in Sources */,
 				163636BD13A6056400403879 /* NSMutableData+PostBody.m in Sources */,
 				1636373313AB28DD00403879 /* SocializeCommentsService.m in Sources */,
+				1636373713AB5D8E00403879 /* SocializeCommentJSONFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
