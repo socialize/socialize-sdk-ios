@@ -35,4 +35,14 @@
     return nil;
 }
 
+-(NSString*) commentsFromDictionary: (NSDictionary*) comments
+{
+    return nil;
+}
+
+-(NSString*) entryKeyToJsonString: (NSString*)entryKey
+{
+    return nil;
+}
+
 @end

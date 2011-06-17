@@ -32,6 +32,9 @@
 
 #define COMMENT_METHOD @"comment/"
 #define COMMENTS_LIST_METHOD @"comment/list/"
+@interface SocializeCommentsService()
+    -(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
+@end
 
 @implementation SocializeCommentsService
 
@@ -58,13 +61,28 @@
 -(void) getCommentsList: (NSArray*) commentsId
 {
     NSString* jsonParams = [_commentFormater commentIdsToJsonString: commentsId];
-    NSData* jsonData =  [NSData dataWithBytes:[jsonParams UTF8String] length:[jsonParams length]];
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   jsonData, @"jsonData",
-                                   nil];
-    
+    NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
+
     [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
 }
+
+-(void) getCommentList: (NSString*) entryKey
+{
+    NSString* jsonParams = [_commentFormater entryKeyToJsonString: entryKey];
+    NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
+    
+    [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+}
+
+-(void) postComments:(NSDictionary*)comments
+{
+    NSString* jsonParams = [_commentFormater commentsFromDictionary: comments];
+    NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
+    
+    [_provider requestWithMethodName: COMMENT_METHOD andParams:params andHttpMethod:@"PUT" andDelegate:self];
+}
+
+
 
 #pragma mark - Socialize requst delegate
 
@@ -81,6 +99,16 @@
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
 {
     // TODO:: add implementation
+}
+
+#pragma mark - Helper methods
+
+-(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest
+{
+    NSData* jsonData =  [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
+    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   jsonData, @"jsonData",
+                                   nil];
 }
 
 @end

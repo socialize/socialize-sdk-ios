@@ -38,8 +38,10 @@ static const int singleCommentId = 1;
 
 @interface SocializeCommentsServiceTests()
     -(NSMutableDictionary*) dictionaryFromJSON: (NSString*) jsonRequstString;
-    - (id) MockProviderForGetListOfCommon: (NSString *) jsonRequstString; 
+    - (id) MockProviderForGetListOfCommon: (NSString *) jsonRequstString method: (NSString *)method httpMethod: (NSString*) httpMethod;
     - (id) MockCommentFormaterFotGetListOfComments: (NSArray *) ids jsonRequstString: (NSString *) jsonRequstString;
+    - (id) MockCommentFormaterFotGetListOfCommentsByKey: (NSString*) entryKey jsonRequstString: (NSString *) jsonRequstString;
+    - (id) MockCommentFormaterFotPostComments:params jsonRequstString: jsonRequstString;
 @end
 
 @implementation SocializeCommentsServiceTests
@@ -65,16 +67,17 @@ static const int singleCommentId = 1;
     [[mockProvider expect] requestWithMethodName:@"comment/" andParams:params andHttpMethod:@"GET" andDelegate:_service];
     
     _service.provider = mockProvider;   
+    
     [_service getCommentById: singleCommentId];
     
     [mockProvider verify];
 }
 
 
--(void) testGetListOfComments
+-(void) testGetListOfCommentsById
 {
     NSString* jsonRequstString = @"{/'ids/': [1,2]}";
-    id mockProvider = [self MockProviderForGetListOfCommon: jsonRequstString];
+    id mockProvider = [self MockProviderForGetListOfCommon: jsonRequstString method: @"comment/list/" httpMethod:@"POST"];
     
     _service.provider = mockProvider; 
     
@@ -88,24 +91,40 @@ static const int singleCommentId = 1;
     [mockCommentJsonFormater verify];
 }
 
+-(void) testGetListOfCommentsByEntityKey
+{
+    NSString* jsonRequstString = @"{/'key/': /'http://www.example.com/interesting-story/'}";
+    id mockProvider = [self MockProviderForGetListOfCommon: jsonRequstString method: @"comment/list/" httpMethod:@"POST"];
+    
+    _service.provider = mockProvider; 
+    
+    NSString* entryKey = @"http://www.example.com/interesting-story/";
+    id mockCommentJsonFormater = [self MockCommentFormaterFotGetListOfCommentsByKey:entryKey jsonRequstString: jsonRequstString];   
+    _service.commentFormater = mockCommentJsonFormater;
+    
+    [_service getCommentList:entryKey];
+    
+    [mockProvider verify];
+    [mockCommentJsonFormater verify];
+}
+
 -(void) testCreateCommentForExistingEntity
-{
-
-}
-
--(void) testCreateCommentForNotExistingEntity
-{
+{   
+    NSString* jsonRequstString = @"[ {/'entity/': /'http://www.example.com/interesting-story//', /'text/': /'this was a great story/'}]";
+    id mockProvider = [self MockProviderForGetListOfCommon: jsonRequstString method: @"comment/" httpMethod:@"PUT"];
+    _service.provider = mockProvider;    
     
-}
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"this was a great story", @"http://www.example.com/interesting-story/",
+                            nil];
 
--(void) testCreateArrayOfComments
-{
+    id mockCommentJsonFormater = [self MockCommentFormaterFotPostComments:params jsonRequstString: jsonRequstString];   
+    _service.commentFormater = mockCommentJsonFormater;
     
-}
-
--(void) testFailToCreateCommentDueEntityNotExist
-{
+    [_service postComments:params];
     
+    [mockProvider verify];
+    [mockCommentJsonFormater verify];
 }
 
 #pragma mark helper methods
@@ -118,10 +137,10 @@ static const int singleCommentId = 1;
             nil];
 }
 
-- (id) MockProviderForGetListOfCommon: (NSString *) jsonRequstString  
+- (id) MockProviderForGetListOfCommon: (NSString *) jsonRequstString method: (NSString *)method httpMethod: (NSString*) httpMethod
 {
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:@"comment/list/" andParams:[self dictionaryFromJSON:jsonRequstString] andHttpMethod:@"POST" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:method andParams:[self dictionaryFromJSON:jsonRequstString] andHttpMethod:httpMethod andDelegate:_service];
     return mockProvider;
 }
 
@@ -130,6 +149,22 @@ static const int singleCommentId = 1;
     id mockCommentJsonFormater = [OCMockObject mockForClass:[SocializeCommentJSONFormatter class]];
     [[[mockCommentJsonFormater stub] andReturn:jsonRequstString] commentIdsToJsonString:ids];
            
+    return mockCommentJsonFormater;
+}
+
+-(id) MockCommentFormaterFotGetListOfCommentsByKey: (NSString*) entryKey jsonRequstString: (NSString *) jsonRequstString 
+{
+    id mockCommentJsonFormater = [OCMockObject mockForClass:[SocializeCommentJSONFormatter class]];
+    [[[mockCommentJsonFormater stub] andReturn:jsonRequstString] entryKeyToJsonString:entryKey];
+    
+    return mockCommentJsonFormater;
+}
+
+-(id) MockCommentFormaterFotPostComments:params jsonRequstString: jsonRequstString
+{
+    id mockCommentJsonFormater = [OCMockObject mockForClass:[SocializeCommentJSONFormatter class]];
+    [[[mockCommentJsonFormater stub] andReturn:jsonRequstString] commentsFromDictionary:params];
+    
     return mockCommentJsonFormater;
 }
 

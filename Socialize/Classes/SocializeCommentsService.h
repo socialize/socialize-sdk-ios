@@ -53,5 +53,7 @@
 
 -(void) getCommentById: (int) commentId;
 -(void) getCommentsList: (NSArray*) commentsId;
+-(void) getCommentList: (NSString*) entryKey;
+-(void) postComments:(NSDictionary*)comments;
 
 @end
