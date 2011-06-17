@@ -45,4 +45,9 @@
     return nil;
 }
 
+-(id)fromJsonToObject: (NSString*) jsonString
+{
+    return nil;
+}
+
 @end

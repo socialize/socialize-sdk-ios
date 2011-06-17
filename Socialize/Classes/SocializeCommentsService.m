@@ -88,20 +88,32 @@
 
 - (void)request:(SocializeRequest *)request didReceiveResponse:(NSURLResponse *)response
 {
-    // TODO:: add implementation
+    // TODO:: add implementation notify that call success. 
 }
 
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
-    if([_delegate respondsToSelector:@selector(didFailService:withError:)])
-    {
-        [_delegate didFailService:self withError:error];
-    }
+    [_delegate didFailService:self withError:error];
 }
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
 {
-    // TODO:: add implementation
+    // TODO:: convert data to json
+    id returnObject = [_commentFormater fromJsonToObject: nil];
+    if([returnObject class] == [NSArray class])
+    {
+        [_delegate receivedComment: self comment:(SocializeComment*)returnObject];    
+    }
+    else if([returnObject class] == [SocializeComment class])
+    {
+        [_delegate receivedComments:self comments:(NSArray*)returnObject];
+    }
+    else
+    {
+        [_delegate didFailService:self withError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+    }
+        
+        
 }
 
 #pragma mark - Helper methods
