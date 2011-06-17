@@ -48,14 +48,16 @@ static const int singleCommentId = 1;
 
 -(void) setUpClass
 {
-    // TODO:: change init steps
     _service = [[SocializeCommentsService alloc] init];
+    _testError = [NSError errorWithDomain:@"" code: 402 userInfo:nil];
 }
 
 -(void) tearDownClass
 {
     [_service release]; _service = nil;
 }
+
+#pragma mark - Requests test
 
 -(void) testSendGetCommentById
 {
@@ -125,6 +127,29 @@ static const int singleCommentId = 1;
     
     [mockProvider verify];
     [mockCommentJsonFormater verify];
+}
+
+#pragma mark response tests
+-(void) testServiceFailed
+{
+    [_service request:nil didFailWithError:_testError];
+}
+
+#pragma mark Socialize comment service delegate
+
+-(void) receivedComment: (SocializeCommentsService*)service comment: (id<SocializeComment>) comment
+{
+    
+}
+
+-(void) receivedComments: (SocializeCommentsService*)service comments: (NSArray*) comments
+{
+    
+}
+
+-(void) didFailService:(SocializeCommentsService*)service withError: (NSError *)error;
+{
+    GHAssertEqualObjects(_testError, error, nil);
 }
 
 #pragma mark helper methods

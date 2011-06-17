@@ -93,7 +93,10 @@
 
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
-    // TODO:: add implementation    
+    if([_delegate respondsToSelector:@selector(didFailService:withError:)])
+    {
+        [_delegate didFailService:self withError:error];
+    }
 }
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data

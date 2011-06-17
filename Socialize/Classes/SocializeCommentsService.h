@@ -35,7 +35,9 @@
 @protocol SocializeComment;
 
 @protocol SocializeCommentsServiceDelegate <NSObject>
-    -(void) receiveCommentById: (SocializeCommentsService*)service comment: (id<SocializeComment>) comment;
+    -(void) receivedComment: (SocializeCommentsService*)service comment: (id<SocializeComment>) comment;
+    -(void) receivedComments: (SocializeCommentsService*)service comments: (NSArray*) comments;
+    -(void) didFailService:(SocializeCommentsService*)service withError: (NSError *)error;
 @end
 
 
