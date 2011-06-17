@@ -12,6 +12,9 @@
 		163636C113A607FA00403879 /* PostBodyGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = 163636C013A607FA00403879 /* PostBodyGeneration.m */; };
 		163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
 		1636370813A76ED000403879 /* SocializeProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636370713A76ECF00403879 /* SocializeProviderTests.m */; };
+		1636372F13AB289500403879 /* SocializeCommentsServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */; };
+		1636373213AB28DD00403879 /* SocializeCommentsService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1636373013AB28D900403879 /* SocializeCommentsService.h */; };
+		1636373313AB28DD00403879 /* SocializeCommentsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636373113AB28DA00403879 /* SocializeCommentsService.m */; };
 		1657EF65139F677100E488CC /* SocializeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 1657EF63139F677000E488CC /* SocializeProvider.h */; };
 		1657EF66139F677100E488CC /* SocializeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF64139F677000E488CC /* SocializeProvider.m */; };
 		1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9613A2000600E488CC /* SocializeRequestTests.m */; };
@@ -156,6 +159,10 @@
 		163636FB13A6431400403879 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		1636370613A76ECF00403879 /* SocializeProviderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProviderTests.h; path = "Test Cases/SocializeProviderTests.h"; sourceTree = "<group>"; };
 		1636370713A76ECF00403879 /* SocializeProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProviderTests.m; path = "Test Cases/SocializeProviderTests.m"; sourceTree = "<group>"; };
+		1636372D13AB289500403879 /* SocializeCommentsServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsServiceTests.h; path = "Test Cases/SocializeCommentsServiceTests.h"; sourceTree = "<group>"; };
+		1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsServiceTests.m; path = "Test Cases/SocializeCommentsServiceTests.m"; sourceTree = "<group>"; };
+		1636373013AB28D900403879 /* SocializeCommentsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsService.h; path = Classes/SocializeCommentsService.h; sourceTree = "<group>"; };
+		1636373113AB28DA00403879 /* SocializeCommentsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsService.m; path = Classes/SocializeCommentsService.m; sourceTree = "<group>"; };
 		1657EF63139F677000E488CC /* SocializeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProvider.h; path = Classes/SocializeProvider.h; sourceTree = "<group>"; };
 		1657EF64139F677000E488CC /* SocializeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProvider.m; path = Classes/SocializeProvider.m; sourceTree = "<group>"; };
 		1657EF9513A2000600E488CC /* SocializeRequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequestTests.h; path = "Test Cases/SocializeRequestTests.h"; sourceTree = "<group>"; };
@@ -333,6 +340,8 @@
 				1657EF9613A2000600E488CC /* SocializeRequestTests.m */,
 				1636370613A76ECF00403879 /* SocializeProviderTests.h */,
 				1636370713A76ECF00403879 /* SocializeProviderTests.m */,
+				1636372D13AB289500403879 /* SocializeCommentsServiceTests.h */,
+				1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */,
 			);
 			name = "Infrastructure Tests";
 			sourceTree = "<group>";
@@ -471,6 +480,8 @@
 				5C21C0DB1396E77300CF2B9F /* SocializeResponse.m */,
 				1657EF63139F677000E488CC /* SocializeProvider.h */,
 				1657EF64139F677000E488CC /* SocializeProvider.m */,
+				1636373013AB28D900403879 /* SocializeCommentsService.h */,
+				1636373113AB28DA00403879 /* SocializeCommentsService.m */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
@@ -748,6 +759,7 @@
 				5C3069BE13A2B396007335FF /* SocializeObjectFormatter.h in Headers */,
 				1657EF9B13A2170A00E488CC /* NSString+UrlSerialization.h in Headers */,
 				163636BC13A6056400403879 /* NSMutableData+PostBody.h in Headers */,
+				1636373213AB28DD00403879 /* SocializeCommentsService.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,6 +952,7 @@
 				5C3069BF13A2B396007335FF /* SocializeObjectFormatter.m in Sources */,
 				1657EF9C13A2170A00E488CC /* NSString+UrlSerialization.m in Sources */,
 				163636BD13A6056400403879 /* NSMutableData+PostBody.m in Sources */,
+				1636373313AB28DD00403879 /* SocializeCommentsService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -970,6 +983,7 @@
 				1657EFA113A22A9E00E488CC /* UrlSerializationTests.m in Sources */,
 				163636C113A607FA00403879 /* PostBodyGeneration.m in Sources */,
 				1636370813A76ED000403879 /* SocializeProviderTests.m in Sources */,
+				1636372F13AB289500403879 /* SocializeCommentsServiceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
