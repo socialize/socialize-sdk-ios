@@ -48,7 +48,6 @@
 
 -(void)verifySupportForProtocol:(Protocol *)protocolToTest
 {
-    
     //TODO: Create logic here for unsupported protocols.
 }
 

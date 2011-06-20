@@ -10,16 +10,19 @@
 #import <UIKit/UIKit.h>
 #import "NSString+UrlSerialization.h"
 #import "NSMutableData+PostBody.h"
+#import "SBJson.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
 
 static NSString* const kUserAgent = @"Socialize";
 static const NSTimeInterval kTimeoutInterval = 180.0;
+static const int kGeneralErrorCode = 10000;
+
 
 @interface SocializeRequest()
-    - (void)failWithError:(NSError *)error;
-    - (void)handleResponseData:(NSData *)data;
+- (void)failWithError:(NSError *)error;
+- (void)handleResponseData:(NSData *)data;
 @end
 
 @implementation SocializeRequest
@@ -54,22 +57,103 @@ responseText = _responseText;
 // private
 
 /*
- * private helper function: call the delegate function when the request fail with Error
+ * private helper function: call the delegate function when the request
+ *                          fails with error
  */
-- (void)failWithError:(NSError *)error 
-{
+- (void)failWithError:(NSError *)error {
     if ([_delegate respondsToSelector:@selector(request:didFailWithError:)]) {
         [_delegate request:self didFailWithError:error];
     }
 }
 
+
+
+/**
+ * Formulate the NSError
+ */
+- (id)formError:(NSInteger)code userInfo:(NSDictionary *) errorData {
+    return [NSError errorWithDomain:@"facebookErrDomain" code:code userInfo:errorData];
+}
+
+/**
+ * parse the response data
+ */
+- (id)parseJsonResponse:(NSData *)data error:(NSError **)error {
+    
+    NSString* responseString = [[[NSString alloc] initWithData:data
+                                                      encoding:NSUTF8StringEncoding]
+                                autorelease];
+    SBJsonParser *jsonParser = [[SBJsonParser new] autorelease];
+    if ([responseString isEqualToString:@"true"]) {
+        return [NSDictionary dictionaryWithObject:@"true" forKey:@"result"];
+    } else if ([responseString isEqualToString:@"false"]) {
+        if (error != nil) {
+            *error = [self formError:kGeneralErrorCode
+                            userInfo:[NSDictionary
+                                      dictionaryWithObject:@"This operation can not be completed"
+                                      forKey:@"error_msg"]];
+        }
+        return nil;
+    }
+    
+    
+    id result = [jsonParser objectWithString:responseString];
+    
+    if (![result isKindOfClass:[NSArray class]]) {
+        if ([result objectForKey:@"error"] != nil) {
+            if (error != nil) {
+                *error = [self formError:kGeneralErrorCode
+                                userInfo:result];
+            }
+            return nil;
+        }
+        
+        if ([result objectForKey:@"error_code"] != nil) {
+            if (error != nil) {
+                *error = [self formError:[[result objectForKey:@"error_code"] intValue] userInfo:result];
+            }
+            return nil;
+        }
+        
+        if ([result objectForKey:@"error_msg"] != nil) {
+            if (error != nil) {
+                *error = [self formError:kGeneralErrorCode userInfo:result];
+            }
+        }
+        
+        if ([result objectForKey:@"error_reason"] != nil) {
+            if (error != nil) {
+                *error = [self formError:kGeneralErrorCode userInfo:result];
+            }
+        }
+    }
+    
+    return result;
+    
+}
+
+
 /*
  * private helper function: handle the response data
  */
-- (void)handleResponseData:(NSData *)data 
-{
-    if ([_delegate respondsToSelector:@selector(request:didLoadRawResponse:)]) {
+- (void)handleResponseData:(NSData *)data {
+    if ([_delegate respondsToSelector:
+         @selector(request:didLoadRawResponse:)]) {
         [_delegate request:self didLoadRawResponse:data];
+    }
+    
+    if ([_delegate respondsToSelector:@selector(request:didLoad:)] ||
+        [_delegate respondsToSelector:
+         @selector(request:didFailWithError:)]) {
+          NSError* error = nil;
+          id result = [self parseJsonResponse:data error:&error];
+            
+        if (error) {
+            [self failWithError:error];
+        } else if ([_delegate respondsToSelector:
+                    @selector(request:didLoad:)]) {
+            [_delegate request:self didLoad:(result == nil ? data : result)];
+        }
     }
 }
 

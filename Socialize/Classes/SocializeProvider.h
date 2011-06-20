@@ -44,7 +44,6 @@
     id<SocializeProviderDelegate> _sessionDelegate;
     SocializeRequest*  _request;
     NSArray*           _permissions;
-
 }
 
 @property(nonatomic, copy) NSString* accessToken;

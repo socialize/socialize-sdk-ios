@@ -78,7 +78,7 @@
  * The resulting object may be a dictionary, an array, a string, or a number, depending
  * on thee format of the API response.
  */
-//- (void)request:(SocializeRequest *)request didLoad:(id)result;
+- (void)request:(SocializeRequest *)request didLoad:(id)result;
 
 /**
  * Called when a request returns a response.

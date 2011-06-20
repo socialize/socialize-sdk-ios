@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SocializeService.h"
 #import "SocializeRequest.h"
 #import "SocializeActivity.h"
 

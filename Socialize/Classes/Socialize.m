@@ -7,11 +7,43 @@
 //
 
 #import "Socialize.h"
+#import "NSObject+AssociatedObjects.h"
+
 
 @implementation Socialize
-
 
 - (void)dealloc {
     [super dealloc];
 }
+
+-(void)authenticateWithApiKey:(NSString*)apiKey 
+          apiSecret:(NSString*)apiSecret
+               udid:(NSString*)udid
+            delegate:(id<SocializeAuthenticationDelegate>)delegate
+         {
+    _authService = [[SocializeAuthenticateService alloc] init];
+   [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret udid:udid delegate:delegate]; 
+}
+
+-(void)authenticateWithApiKey:(NSString*)apiKey 
+                            apiSecret:(NSString*)apiSecret 
+                                 udid:(NSString*)udid
+                  thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
+                     thirdPartyUserId:(NSString*)thirdPartyUserId
+                       thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+                             delegate:(id<SocializeAuthenticationDelegate>)delegate
+                           {
+                               
+    _authService = [[SocializeAuthenticateService alloc] init];
+                               
+    [_authService  authenticateWithApiKey:apiKey 
+                           apiSecret:apiSecret
+                                udid:udid
+                           thirdPartyAuthToken:thirdPartyAuthToken
+                           thirdPartyUserId:thirdPartyUserId
+                           thirdPartyName:thirdPartyName
+                                delegate:delegate];
+
+}
+
 @end

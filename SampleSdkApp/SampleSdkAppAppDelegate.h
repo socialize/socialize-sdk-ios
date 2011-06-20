@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "EntryViewController.h"
+#import "SocializeCommonDefinitions.h"
 
-@interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate> {
+@interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate, SocializeAuthenticationDelegate> {
 @private
     EntryViewController* entryController;
 }

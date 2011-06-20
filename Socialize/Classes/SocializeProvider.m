@@ -27,13 +27,20 @@
 
 #import "SocializeProvider.h"
 #import "SocializeRequest.h"
+//#import "OAPointAboutASIFormDataRequest.h"
+#import "OAHMAC_SHA1SignatureProvider.h"
+//#import "NSDictionary_JSONExtensions.h"
+//#import "DataStore.h"
+//#import "CJSONDeserializer.h"
+//#import "NSDictionary_JSONExtensions.h"
 
-static NSString* kRestserverBaseURL = @"http://api.dev.appmakr.com/method/";
+
+static NSString* kRestserverBaseURL = @"http://dev.getsocialize.com/socialize/v1/";
 static NSString* kSDK = @"ios";
 static NSString* kSDKVersion = @"1";
 
 @interface SocializeProvider()
-    - (void)openUrl:(NSString *)url
+- (void)openUrl:(NSString *)url
              params:(NSMutableDictionary *)params
          httpMethod:(NSString *)httpMethod
            delegate:(id<SocializeRequestDelegate>)delegate;
@@ -150,6 +157,7 @@ sessionDelegate = _sessionDelegate;
     NSString * fullURL = [kRestserverBaseURL stringByAppendingString:methodName];
     [self openUrl:fullURL params:params httpMethod:httpMethod delegate:delegate];
 }
+
 
 
 /**

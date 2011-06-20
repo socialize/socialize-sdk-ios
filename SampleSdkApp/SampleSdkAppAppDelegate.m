@@ -8,6 +8,9 @@
 
 #import "SampleSdkAppAppDelegate.h"
 #import "DemoEntry.h"
+#import "Socialize.h"
+
+
 
 @implementation SampleSdkAppAppDelegate
 
@@ -52,6 +55,19 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    //OAConsumer *consumer = [[OAConsumer alloc] initWithKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" secret:@"b7364905-cdc6-46d3-85ad-06516b128819"];
+
+    Socialize* soc = [[Socialize alloc] init];
+    [soc authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" delegate:self];
+}
+
+-(void)didAuthenticate{
+//    NSLog(@"%@", accessToken);
+    return;
+}
+
+-(void)didNotAuthenticate:(NSError*)error{
+    NSLog(@"%@", error);
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
