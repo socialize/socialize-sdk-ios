@@ -134,8 +134,6 @@
 		6DF5995F13ABB33A000D125A /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5993113ABB33A000D125A /* OAToken.m */; };
 		6DF5996013ABB33A000D125A /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5993113ABB33A000D125A /* OAToken.m */; };
 		6DF5996113ABB33A000D125A /* OAuthConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DF5993213ABB33A000D125A /* OAuthConsumer.h */; };
-		6DF5996513ABEAB9000D125A /* SocializeAuthTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DF5996313ABEAB9000D125A /* SocializeAuthTests.h */; };
-		6DF5996613ABEAB9000D125A /* SocializeAuthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5996413ABEAB9000D125A /* SocializeAuthTests.m */; };
 		6DF5996713AEE34D000D125A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D295B1393FE530065C0CB /* JSONKit.m */; };
 		84B8F3D11396EF4100C95F41 /* SocializeEntityJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8F3CF1396EF4100C95F41 /* SocializeEntityJSONFormatter.m */; };
 		84B8F3D21396EF4100C95F41 /* SocializeEntityJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B8F3D01396EF4100C95F41 /* SocializeEntityJSONFormatter.h */; };
@@ -168,6 +166,7 @@
 		9A4D29A1139404FF0065C0CB /* SocializePOOCObjectFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D298F139401E40065C0CB /* SocializePOOCObjectFactoryTests.m */; };
 		9A4D29A4139408710065C0CB /* SocializeObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29A2139408710065C0CB /* SocializeObjectFactory.h */; };
 		9A4D29A5139408710065C0CB /* SocializeObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29A3139408710065C0CB /* SocializeObjectFactory.m */; };
+		9A68EB1413AFF79000E38356 /* SocializeAuthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF5996413ABEAB9000D125A /* SocializeAuthTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -870,7 +869,6 @@
 				6DF5995D13ABB33A000D125A /* OASignatureProviding.h in Headers */,
 				6DF5995E13ABB33A000D125A /* OAToken.h in Headers */,
 				6DF5996113ABB33A000D125A /* OAuthConsumer.h in Headers */,
-				6DF5996513ABEAB9000D125A /* SocializeAuthTests.h in Headers */,
 				1636373213AB28DD00403879 /* SocializeCommentsService.h in Headers */,
 				1636373613AB5D8E00403879 /* SocializeCommentJSONFormatter.h in Headers */,
 				16F449CA13AF4DCE003BE655 /* SocializeUserJSONFormatter.h in Headers */,
@@ -1099,7 +1097,6 @@
 				6DF5995813ABB33A000D125A /* OARequestParameter.m in Sources */,
 				6DF5995B13ABB33A000D125A /* OAServiceTicket.m in Sources */,
 				6DF5995F13ABB33A000D125A /* OAToken.m in Sources */,
-				6DF5996613ABEAB9000D125A /* SocializeAuthTests.m in Sources */,
 				1636373313AB28DD00403879 /* SocializeCommentsService.m in Sources */,
 				1636373713AB5D8E00403879 /* SocializeCommentJSONFormatter.m in Sources */,
 				16F449CB13AF4DCE003BE655 /* SocializeUserJSONFormatter.m in Sources */,
@@ -1126,6 +1123,7 @@
 				16F449BE13AF2974003BE655 /* SocializeCommentFormaterTests.m in Sources */,
 				16F449DA13AF8358003BE655 /* SocializeApplicationJSONFormatterTests.m in Sources */,
 				16F449DD13AF8B37003BE655 /* SocializeUserJSONFormatterTests.m in Sources */,
+				9A68EB1413AFF79000E38356 /* SocializeAuthTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
