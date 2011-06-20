@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "NSString+UrlSerialization.h"
 #import "NSMutableData+PostBody.h"
-#import "SBJson.h"
+//#import "SBJson.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
@@ -80,7 +80,7 @@ responseText = _responseText;
  */
 - (id)parseJsonResponse:(NSData *)data error:(NSError **)error {
     
-    NSString* responseString = [[[NSString alloc] initWithData:data
+ /*   NSString* responseString = [[[NSString alloc] initWithData:data
                                                       encoding:NSUTF8StringEncoding]
                                 autorelease];
     SBJsonParser *jsonParser = [[SBJsonParser new] autorelease];
@@ -127,8 +127,9 @@ responseText = _responseText;
             }
         }
     }
+  */
     
-    return result;
+    return nil;
     
 }
 
