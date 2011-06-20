@@ -11,4 +11,11 @@
 
 @implementation SocializeUser
 
+@synthesize firstName = _firstName;
+@synthesize lastName =  _lastName;
+@synthesize userName = _userName;
+@synthesize smallImageUrl = _smallInageUrl;
+@synthesize city = _city;
+@synthesize state = _state;
+
 @end

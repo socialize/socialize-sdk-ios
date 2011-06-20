@@ -1,5 +1,5 @@
 /*
- * SocializeUserJSONFormatter.m
+ * SocializeUserJSONFormatterTests.h
  * SocializeSDK
  *
  * Created on 6/20/11.
@@ -23,29 +23,17 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ * See Also: http://gabriel.github.com/gh-unit/
  */
 
-#import "SocializeUserJSONFormatter.h"
-#import "SocializeUser.h"
+
+#import <GHUnitIOS/GHUnit.h>
+#import <UIKit/UIKit.h>
+#import "SocializeObjectFormatterTests.h"
 
 
-@implementation SocializeUserJSONFormatter
-
--(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
-{
-    id<SocializeUser> toUser = (id<SocializeUser>)toObject;
-     
-    [toUser setObjectID: [[JSONDictionary valueForKey:@"id"]intValue]];
-    [toUser setFirstName:[JSONDictionary valueForKey:@"first_name"]];
-    [toUser setLastName:[JSONDictionary valueForKey:@"last_name"]];
-    [toUser setUserName:[JSONDictionary valueForKey:@"username"]];
-    [toUser setSmallImageUrl:[JSONDictionary valueForKey:@"small_image_uri"]];
-    [toUser setCity:[JSONDictionary valueForKey:@"city"]];
-    [toUser setState:[JSONDictionary valueForKey:@"state"]];
+@interface SocializeUserJSONFormatterTests : SocializeObjectFormatterTests {
+    
 }
-
-//-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
-//{
-//}
 
 @end
