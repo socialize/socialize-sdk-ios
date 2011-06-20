@@ -38,5 +38,6 @@
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
                              delegate:(id<SocializeAuthenticationDelegate>)delegate;
 
+-(BOOL)isAuthenticated;
 
 @end

@@ -14,7 +14,6 @@
 
 
 @interface SocializeAuthenticateService : NSObject<SocializeRequestDelegate> {
-    
     id<SocializeAuthenticationDelegate>     _delegate;
     SocializeProvider*                      _provider;
 }
@@ -34,5 +33,6 @@
 
 +(BOOL)isAuthenticated;
 
+@property (nonatomic, assign) SocializeProvider* provider;
 
 @end

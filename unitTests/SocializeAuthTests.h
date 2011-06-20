@@ -9,9 +9,11 @@
 #import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
 
+#import "SocializeAuthenticateService.h"
 
-@interface SocializeAuthTests : GHTestCase {
-    
+@interface SocializeAuthTests : GHTestCase<SocializeAuthenticationDelegate> {
+    SocializeAuthenticateService* _service;
+    NSError*                      _testError;
 }
 
 @end

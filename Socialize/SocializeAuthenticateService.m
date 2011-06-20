@@ -22,6 +22,7 @@
 @end
 
 @implementation SocializeAuthenticateService
+@synthesize provider = _provider;
 
 -(id)init{
     self = [super init];
@@ -34,8 +35,6 @@
 -(void)dealloc{
     [_provider release];
 }
-
-//OAConsumer *consumer = [[OAConsumer alloc] initWithKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" secret:@"b7364905-cdc6-46d3-85ad-06516b128819"];
 
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret

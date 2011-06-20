@@ -45,4 +45,8 @@
 
 }
 
+-(BOOL)isAuthenticated{
+    return [SocializeAuthenticateService isAuthenticated];
+}
+
 @end
