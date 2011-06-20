@@ -30,6 +30,7 @@
 
 
 @implementation SocializeObjectFormatter
+@synthesize objectFactory = _factory;
 
 -(void)dealloc
 {

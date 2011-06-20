@@ -30,6 +30,7 @@
 #import "SocializeComment.h"
 #import "SocializeProvider.h"
 #import "SocializeCommentJSONFormatter.h"
+#import "SocializeObjectFactory.h"
 
 #define COMMENT_METHOD @"comment/"
 #define COMMENTS_LIST_METHOD @"comment/list/"
@@ -42,6 +43,7 @@
 
 @interface SocializeCommentsService()
     -(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
+    -(void) parseCommentsList: (NSArray*) commentsJsonData;
 @end
 
 @implementation SocializeCommentsService
@@ -113,22 +115,38 @@
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
 {
-    // TODO:: convert data to json
-//    id returnObject = [_commentFormater fromJsonToObject: nil];
-//    if([returnObject class] == [NSArray class])
-//    {
-//        [_delegate receivedComment: self comment:(SocializeComment*)returnObject];    
-//    }
-//    else if([returnObject class] == [SocializeComment class])
-//    {
-//        [_delegate receivedComments:self comments:(NSArray*)returnObject];
-//    }
-//    else
-//    {
-//        [_delegate didFailService:self withError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
-//    }
-        
-        
+    NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    
+    id responseObject = [responseString objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
+    
+    if([responseObject class] == [NSDictionary class])
+    {
+        id<SocializeComment> comment = [_commentFormater.objectFactory createObjectForProtocolName: @"SocializeComment"];
+        [_commentFormater toObject:comment fromDictionary:responseObject];
+        [_delegate receivedComment: self comment:comment];    
+    }
+    else if([responseObject class] == [NSArray class])
+    {
+        [self parseCommentsList: responseObject];
+    }
+    else
+    {
+        [_delegate didFailService:self withError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+    }       
+}
+
+-(void) parseCommentsList: (NSArray*) commentsJsonData
+{
+    NSMutableArray* comments = [NSMutableArray arrayWithCapacity:[commentsJsonData count]];
+    [commentsJsonData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+     {
+         id<SocializeComment> comment = [_commentFormater.objectFactory createObjectForProtocolName: @"SocializeComment"];
+         [_commentFormater toObject:comment fromDictionary:obj];
+         [comments addObject:comment];
+     }
+    ];
+    
+    [_delegate receivedComments:self comments:comments];
 }
 
 #pragma mark - Helper methods
