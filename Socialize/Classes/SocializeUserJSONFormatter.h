@@ -1,8 +1,8 @@
 /*
- * SocializeCommentJSONFormatter.h
+ * SocializeUserJSONFormatter.h
  * SocializeSDK
  *
- * Created on 6/17/11.
+ * Created on 6/20/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -27,15 +27,11 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeObjectJSONFormatter.h"
+#import "SocializeUser.h"
 
-
-@interface SocializeCommentJSONFormatter : SocializeObjectJSONFormatter {
+@interface SocializeUserJSONFormatter : SocializeObjectJSONFormatter
+{
     
 }
-
--(NSString*) commentIdsToJsonString: (NSArray*) commentsId;
--(NSString*) commentsFromDictionary: (NSDictionary*) comments;
--(NSString*) entryKeyToJsonString: (NSString*)entryKey;
--(id)fromJsonToObject: (NSString*) jsonString;
 
 @end

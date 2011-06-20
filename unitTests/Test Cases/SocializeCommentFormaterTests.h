@@ -1,8 +1,8 @@
 /*
- * SocializeCommentJSONFormatter.h
+ * SocializeCommentFormaterTests.h
  * SocializeSDK
  *
- * Created on 6/17/11.
+ * Created on 6/20/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -23,19 +23,18 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ * See Also: http://gabriel.github.com/gh-unit/
  */
 
-#import <Foundation/Foundation.h>
-#import "SocializeObjectJSONFormatter.h"
 
+#import <GHUnitIOS/GHUnit.h>
+#import <UIKit/UIKit.h>
+#import "SocializeCommentJSONFormatter.h"
+#import "SocializeObjectFormatterTests.h"
 
-@interface SocializeCommentJSONFormatter : SocializeObjectJSONFormatter {
-    
+@interface SocializeCommentFormaterTests : SocializeObjectFormatterTests
+{
+    SocializeCommentJSONFormatter* _commentFormater;
 }
-
--(NSString*) commentIdsToJsonString: (NSArray*) commentsId;
--(NSString*) commentsFromDictionary: (NSDictionary*) comments;
--(NSString*) entryKeyToJsonString: (NSString*)entryKey;
--(id)fromJsonToObject: (NSString*) jsonString;
 
 @end

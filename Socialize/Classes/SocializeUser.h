@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "SocializeObject.h"
 
-@protocol SocializeUser
+@protocol SocializeUser<SocializeObject>
 
 @end
 
-@interface SocializeUser : SocializeObject 
+@interface SocializeUser : SocializeObject<SocializeUser> 
 {
     
 }

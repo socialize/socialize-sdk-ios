@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SocializeObject.h"
 
-@protocol  SocializeApplication
+@protocol  SocializeApplication<SocializeObject>
 
 -(NSString * )name;
 -(void)setName:(NSString *)name;

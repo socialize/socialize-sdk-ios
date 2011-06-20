@@ -1,8 +1,8 @@
 /*
- * SocializeCommentJSONFormatter.h
+ * SocializeApplicationJSONFormatter.m
  * SocializeSDK
  *
- * Created on 6/17/11.
+ * Created on 6/20/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -25,17 +25,29 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-#import "SocializeObjectJSONFormatter.h"
+#import "SocializeApplicationJSONFormatter.h"
 
 
-@interface SocializeCommentJSONFormatter : SocializeObjectJSONFormatter {
+@implementation SocializeApplicationJSONFormatter
+
+-(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
+{
+//    id<SocializeEntity> toEntity = (id<SocializeEntity>)toObject;
+//    
+//    [toEntity setKey:[JSONDictionary objectForKey:@"key"]];
+//    [toEntity setName:[JSONDictionary objectForKey:@"name"]];
+//    [toEntity setViews:[[JSONDictionary objectForKey:@"views"]intValue]];
+//    [toEntity setLikes:[[JSONDictionary objectForKey:@"likes"]intValue]];
+//    [toEntity setComments:[[JSONDictionary objectForKey:@"comments"]intValue]];  
+//    [toEntity setShares:[[JSONDictionary objectForKey:@"shares"]intValue]]; 
     
 }
 
--(NSString*) commentIdsToJsonString: (NSArray*) commentsId;
--(NSString*) commentsFromDictionary: (NSDictionary*) comments;
--(NSString*) entryKeyToJsonString: (NSString*)entryKey;
--(id)fromJsonToObject: (NSString*) jsonString;
+-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
+{
+//    id<SocializeEntity> fromEntity = (id<SocializeEntity>)fromObject;
+//    [JSONFormatDictionary setObject:[fromEntity key] forKey:@"key"];
+//    [JSONFormatDictionary setObject:[fromEntity name] forKey:@"name"];
+}
 
 @end
