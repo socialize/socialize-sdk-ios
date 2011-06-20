@@ -34,6 +34,7 @@
 
 -(void)dealloc{
     [_provider release];
+    [super dealloc];
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey 
