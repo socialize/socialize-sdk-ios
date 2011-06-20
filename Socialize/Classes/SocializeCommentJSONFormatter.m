@@ -38,13 +38,24 @@
 #define ENTITY_KEY @"entity"
 #define COMMENT_KEY @"text"
 
-@interface SocializeCommentJSONFormatter()
-@end
-
 @implementation SocializeCommentJSONFormatter
 
+@synthesize appFormatter = _appFormatter;
+@synthesize userFormatter = _userFormatter;
+@synthesize entityFormatter = _entityFormatter;
 
 #pragma mark Socialize object json formatter
+-(id) initWithFactory:(SocializeObjectFactory *)theObjectFactory
+{
+    self = [super initWithFactory:theObjectFactory];
+    if(self != nil)
+    {
+        _entityFormatter = [[SocializeEntityJSONFormatter alloc] initWithFactory:_factory];
+        _appFormatter = [[SocializeApplicationJSONFormatter alloc] initWithFactory:_factory];
+        _userFormatter = [[SocializeUserJSONFormatter alloc] initWithFactory:_factory];
+    }
+    return self;
+}
 
 -(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {
@@ -53,30 +64,25 @@
     [comment setObjectID: [[JSONDictionary valueForKey:@"id"]intValue]];
     [comment setText:[JSONDictionary valueForKey:@"text"]];
     
-    NSDateFormatter* df = [[NSDataDetector alloc] init];
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ssZZZ"];
     [comment setDate:[df dateFromString:[JSONDictionary valueForKey:@"date"]]];
     [df release]; df = nil;
     
     [comment setLat:[[JSONDictionary valueForKey:@"lat"]floatValue]];
     [comment setLng:[[JSONDictionary valueForKey:@"lng"]floatValue]];
     
-    SocializeEntityJSONFormatter* entityFormatter = [[SocializeEntityJSONFormatter alloc] initWithFactory:_factory];
     id<SocializeEntity> entity = [_factory createObjectForProtocolName:@"SocializeEntity"];
-    [entityFormatter toObject:entity fromDictionary:[JSONDictionary valueForKey:@"entity"]];
+    [_entityFormatter toObject:entity fromDictionary:[JSONDictionary valueForKey:@"entity"]];
     [comment setEntity:entity];
-    [entityFormatter release]; entityFormatter = nil;
     
-    SocializeApplicationJSONFormatter* appFormatter = [[SocializeApplicationJSONFormatter alloc] initWithFactory:_factory];
     id<SocializeApplication> app = [_factory createObjectForProtocolName:@"SocializeApplication"];
-    [appFormatter toObject:app fromDictionary:[JSONDictionary valueForKey:@"application"]];
+    [_appFormatter toObject:app fromDictionary:[JSONDictionary valueForKey:@"application"]];
     [comment setApplication:app];
-    [appFormatter release]; appFormatter = nil;
-    
-    SocializeUserJSONFormatter* userFormatter = [[SocializeUserJSONFormatter alloc] initWithFactory:_factory];
+   
     id<SocializeUser> user = [_factory createObjectForProtocolName:@"SocializeUser"];
-    [userFormatter toObject:user fromDictionary:[JSONDictionary valueForKey:@"user"]];
+    [_userFormatter toObject:user fromDictionary:[JSONDictionary valueForKey:@"user"]];
     [comment setUser:user];
-    [userFormatter release]; userFormatter = nil;
 }
 
 @end

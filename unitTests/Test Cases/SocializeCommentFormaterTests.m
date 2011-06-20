@@ -26,16 +26,20 @@
  * See Also: http://gabriel.github.com/gh-unit/
  */
 
+#import <OCMock/OCMock.h>
 #import "SocializeCommentFormaterTests.h"
-#import "SocializeObjectFactory.h"
-
+#import "SocializeEntityJSONFormatter.h"
+#import "JSONKit.h"
+#import "SocializeComment.h"
+#import "SocializeApplicationJSONFormatter.h"
+#import "SocializeUserJSONFormatter.h"
 
 @implementation SocializeCommentFormaterTests
 
 -(void) setUpClass
 {
     [super setUpClass];
-    _commentFormater = [[SocializeCommentJSONFormatter alloc] initWithFactory:[[SocializeObjectFormatter new]autorelease]];
+    _commentFormater = [[SocializeCommentJSONFormatter alloc] init];
 }
 
 -(void) tearDownClass
@@ -44,40 +48,44 @@
     [super tearDownClass];
 }
 
-//- (void)testCommentIdsToJsonString 
-//{
-//  
-//    NSArray* ids = [NSArray arrayWithObjects: [NSNumber numberWithInt:1], [NSNumber numberWithInt:2], nil];
-//    NSString* expectedResult = @"{\"ids\":[1,2]}";
-//        
-//    NSString* actualResult =  [_commentFormater   commentIdsToJsonString:ids];
-//    GHAssertEqualStrings(expectedResult, actualResult, nil);                        
-//}
-//
-//-(void) testEntryKeyToJsonString
-//{
-//    NSString* expectedResult = @"{\"key\":\"http://www.example.com/interesting-story/\"}";
-//    NSString* entryKey = @"http://www.example.com/interesting-story/";
-//    
-//    NSString* actualResult = [_commentFormater  entryKeyToJsonString: entryKey];
-//    GHAssertEqualStrings(expectedResult, actualResult, nil);                        
-//}
-//
-//-(void) testCommentsFromDictionary
-//{
-//    NSString* expectedResult = @"[{\"entity\":\"http://www.example.com/interesting-story/\",\"text\":\"this was a great story\"}]";   
-//    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-//                            @"this was a great story", @"http://www.example.com/interesting-story/",
-//                            nil];
-//    
-//    NSString* actualResult = [_commentFormater commentsFromDictionary:params];
-//    GHAssertEqualStrings(expectedResult, actualResult, nil);                       
-//}
-//
-//-(void) testFromJsonToSingleComment
-//{
-//    NSString* imputJsonString = [self helperGetJSONStringFromFile: @"comment_single_response.json"];
-//    [_commentFormater fromJsonToObject:imputJsonString];
-//}
+-(void)testComment
+{
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"comment_single_response.json"];
+    NSDictionary * JSONDictionaryToParse =(NSDictionary *)[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
+    
+    id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
+    
+    [[mockComment expect] setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
+    [[mockComment expect] setText:[JSONDictionaryToParse objectForKey:@"text"]];
+    [[mockComment expect] setLat:[[JSONDictionaryToParse valueForKey:@"lat"]floatValue]];
+    [[mockComment expect] setLng:[[JSONDictionaryToParse valueForKey:@"lng"]floatValue]];
+    
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ssZZZ"];
+    [[mockComment expect] setDate:[df dateFromString:[JSONDictionaryToParse valueForKey:@"date"]]];
+    [df release]; df = nil;
+    
+    id mockEntityFormater = [OCMockObject mockForClass:[SocializeEntityJSONFormatter class]];
+    [[mockEntityFormater stub] toObject:OCMOCK_ANY fromDictionary:[JSONDictionaryToParse objectForKey:@"entity"]];
+    [[mockComment expect] setEntity:OCMOCK_ANY];
+    
+    id mockApplicationFormater = [OCMockObject mockForClass:[SocializeApplicationJSONFormatter class]];
+    [[mockApplicationFormater stub] toObject:OCMOCK_ANY fromDictionary:[JSONDictionaryToParse objectForKey:@"application"]];
+    [[mockComment expect] setApplication:OCMOCK_ANY];
+    
+    id mockUserFormater = [OCMockObject mockForClass:[SocializeUserJSONFormatter class]];
+    [[mockUserFormater stub] toObject:OCMOCK_ANY fromDictionary:[JSONDictionaryToParse objectForKey:@"user"]];
+    [[mockComment expect] setUser:OCMOCK_ANY];
+    
+    SocializeCommentJSONFormatter * commentFormatter = [[[SocializeCommentJSONFormatter alloc]initWithFactory:_factory] autorelease];
+    commentFormatter.entityFormatter = mockEntityFormater;
+    commentFormatter.appFormatter = mockApplicationFormater;
+    
+    [commentFormatter toObject:mockComment fromDictionary:JSONDictionaryToParse];
+    [mockComment verify];    
+    
+}
+
+
 
 @end
