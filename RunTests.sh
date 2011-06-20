@@ -58,7 +58,7 @@ fi
 
 eval "lcov --test-name \"Socialize iOS SDK\" --output-file \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info --capture --directory \"$CONFIGURATION_TEMP_DIR\"/Socialize.build/Objects-normal/i386/"
 
-eval "lcov --extract \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info \"*/Socialize*\" --output-file \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage.info"
+eval "lcov --extract \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info \"*/Socialize*/Classes*\" --output-file \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage.info"
 
 eval "rm -rf \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info"
 
