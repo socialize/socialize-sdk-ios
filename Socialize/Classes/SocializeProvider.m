@@ -50,7 +50,8 @@ static NSString* kSDKVersion = @"1";
 
 @synthesize accessToken = _accessToken,
 expirationDate = _expirationDate,
-sessionDelegate = _sessionDelegate;
+sessionDelegate = _sessionDelegate,
+request = _request;
 
 #pragma mark - Life flow
 
@@ -59,7 +60,6 @@ sessionDelegate = _sessionDelegate;
     [_accessToken release];
     [_expirationDate release];
     [_request release];
-    [_permissions release];
     [super dealloc];
 }
 

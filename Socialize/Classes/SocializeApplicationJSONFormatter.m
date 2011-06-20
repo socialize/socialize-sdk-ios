@@ -1,8 +1,8 @@
 /*
- * SocializeJSONFormatter.m
+ * SocializeApplicationJSONFormatter.m
  * SocializeSDK
  *
- * Created on 6/10/11.
+ * Created on 6/20/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -25,27 +25,21 @@
  * THE SOFTWARE.
  */
 
-#import "SocializeObjectFormatter.h"
-#import "SocializeObjectFactory.h"
+#import "SocializeApplicationJSONFormatter.h"
 
 
-@implementation SocializeObjectFormatter
-@synthesize objectFactory = _factory;
+@implementation SocializeApplicationJSONFormatter
 
--(void)dealloc
+-(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {
+    id<SocializeApplication> toApplication = (id<SocializeApplication>)toObject;
     
-    [_factory release];
-    [super dealloc];
+    [toApplication setObjectID: [[JSONDictionary valueForKey:@"id"]intValue]];
+    [toApplication setName:[JSONDictionary valueForKey:@"name"]];   
 }
 
--(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory
-{
-    self = [super init];
-    if (self) 
-    {
-        _factory = [theObjectFactory retain];
-    }
-    return self;
-}
+//-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
+//{
+//}
+
 @end

@@ -1,8 +1,8 @@
 /*
- * SocializeJSONFormatter.m
+ * SocializeUserJSONFormatterTests.h
  * SocializeSDK
  *
- * Created on 6/10/11.
+ * Created on 6/20/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -23,29 +23,17 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ * See Also: http://gabriel.github.com/gh-unit/
  */
 
-#import "SocializeObjectFormatter.h"
-#import "SocializeObjectFactory.h"
+
+#import <GHUnitIOS/GHUnit.h>
+#import <UIKit/UIKit.h>
+#import "SocializeObjectFormatterTests.h"
 
 
-@implementation SocializeObjectFormatter
-@synthesize objectFactory = _factory;
-
--(void)dealloc
-{
+@interface SocializeUserJSONFormatterTests : SocializeObjectFormatterTests {
     
-    [_factory release];
-    [super dealloc];
 }
 
--(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory
-{
-    self = [super init];
-    if (self) 
-    {
-        _factory = [theObjectFactory retain];
-    }
-    return self;
-}
 @end

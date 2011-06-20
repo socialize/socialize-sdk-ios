@@ -1,8 +1,8 @@
 /*
- * SocializeJSONFormatter.m
+ * SocializeCommentJSONFormatter.h
  * SocializeSDK
  *
- * Created on 6/10/11.
+ * Created on 6/17/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -25,27 +25,24 @@
  * THE SOFTWARE.
  */
 
-#import "SocializeObjectFormatter.h"
-#import "SocializeObjectFactory.h"
+#import <Foundation/Foundation.h>
+#import "SocializeObjectJSONFormatter.h"
 
+@class SocializeEntityJSONFormatter;
+@class SocializeApplicationJSONFormatter;
+@class SocializeUserJSONFormatter;
 
-@implementation SocializeObjectFormatter
-@synthesize objectFactory = _factory;
-
--(void)dealloc
-{
-    
-    [_factory release];
-    [super dealloc];
+@interface SocializeCommentJSONFormatter : SocializeObjectJSONFormatter {
+@private
+    SocializeEntityJSONFormatter* _entityFormatter;
+    SocializeApplicationJSONFormatter* _appFormatter;
+    SocializeUserJSONFormatter* _userFormatter;
 }
 
--(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory
-{
-    self = [super init];
-    if (self) 
-    {
-        _factory = [theObjectFactory retain];
-    }
-    return self;
-}
+@property (nonatomic, retain) SocializeEntityJSONFormatter* entityFormatter;
+@property (nonatomic, retain) SocializeApplicationJSONFormatter* appFormatter;
+@property (nonatomic, retain) SocializeUserJSONFormatter* userFormatter;
+
+-(id) initWithFactory:(SocializeObjectFactory *)theObjectFactory;
+
 @end

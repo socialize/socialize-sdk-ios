@@ -4,12 +4,16 @@
 <dict>
 	<key>Prototypes</key>
 	<dict>
-		<key>SocializeEntity</key>
-		<string>SocializeEntity</string>
+		<key>SocializeUser</key>
+		<string>SocializeUser</string>
+		<key>SocializeApplication</key>
+		<string>SocializeApplication</string>
 		<key>SocializeActivity</key>
 		<string>SocializeActivity</string>
 		<key>SocializeComment</key>
 		<string>SocializeComment</string>
+		<key>SocializeEntity</key>
+		<string>SocializeEntity</string>
 	</dict>
 </dict>
 </plist>

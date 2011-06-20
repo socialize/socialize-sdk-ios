@@ -1,8 +1,8 @@
 /*
- * SocializeJSONFormatter.h
+ * SocializeCommentsService.h
  * SocializeSDK
  *
- * Created on 6/10/11.
+ * Created on 6/17/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -26,19 +26,37 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "SocializeRequest.h"
 
-@class  SocializeObjectFactory;
+@class SocializeCommentsService;
+@class SocializeProvider;
+@class SocializeCommentJSONFormatter;
 
-@interface SocializeObjectFormatter : NSObject 
-{
+@protocol SocializeComment;
 
-    @protected
-        SocializeObjectFactory * _factory;
+@protocol SocializeCommentsServiceDelegate <NSObject>
+@required
+    -(void) receivedComment: (SocializeCommentsService*)service comment: (id<SocializeComment>) comment;
+    -(void) receivedComments: (SocializeCommentsService*)service comments: (NSArray*) comments;
+    -(void) didFailService:(SocializeCommentsService*)service withError: (NSError *)error;
+@end
 
+
+@interface SocializeCommentsService : NSObject<SocializeRequestDelegate> {
+
+@private
+    id<SocializeCommentsServiceDelegate> _delegate;
+    SocializeProvider*  _provider;
+    SocializeCommentJSONFormatter* _commentFormater;
 }
 
-@property (nonatomic, readonly) SocializeObjectFactory* objectFactory;
+@property (nonatomic, assign) id<SocializeCommentsServiceDelegate> delegate;
+@property (nonatomic, assign) SocializeProvider* provider;
+@property (nonatomic, retain) SocializeCommentJSONFormatter* commentFormater;
 
--(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory;
+-(void) getCommentById: (int) commentId;
+-(void) getCommentsList: (NSArray*) commentsId;
+-(void) getCommentList: (NSString*) entryKey;
+-(void) postComments:(NSDictionary*)comments;
 
 @end

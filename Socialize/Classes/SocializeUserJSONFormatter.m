@@ -1,8 +1,8 @@
 /*
- * SocializeJSONFormatter.m
+ * SocializeUserJSONFormatter.m
  * SocializeSDK
  *
- * Created on 6/10/11.
+ * Created on 6/20/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -25,27 +25,27 @@
  * THE SOFTWARE.
  */
 
-#import "SocializeObjectFormatter.h"
-#import "SocializeObjectFactory.h"
+#import "SocializeUserJSONFormatter.h"
+#import "SocializeUser.h"
 
 
-@implementation SocializeObjectFormatter
-@synthesize objectFactory = _factory;
+@implementation SocializeUserJSONFormatter
 
--(void)dealloc
+-(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {
-    
-    [_factory release];
-    [super dealloc];
+    id<SocializeUser> toUser = (id<SocializeUser>)toObject;
+     
+    [toUser setObjectID: [[JSONDictionary valueForKey:@"id"]intValue]];
+    [toUser setFirstName:[JSONDictionary valueForKey:@"first_name"]];
+    [toUser setLastName:[JSONDictionary valueForKey:@"last_name"]];
+    [toUser setUserName:[JSONDictionary valueForKey:@"username"]];
+    [toUser setSmallImageUrl:[JSONDictionary valueForKey:@"small_image_uri"]];
+    [toUser setCity:[JSONDictionary valueForKey:@"city"]];
+    [toUser setState:[JSONDictionary valueForKey:@"state"]];
 }
 
--(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory
-{
-    self = [super init];
-    if (self) 
-    {
-        _factory = [theObjectFactory retain];
-    }
-    return self;
-}
+//-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
+//{
+//}
+
 @end

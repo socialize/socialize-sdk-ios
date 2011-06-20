@@ -21,17 +21,6 @@
     
 }
 
-//-(NSString *)toJSONStringFromObject:(id<SocializeObject>)fromObject
-//{
-//    
-//    NSMutableDictionary *  socializeObjectDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
-//    [self toDictionary:socializeObjectDictionary fromObject:fromObject];
-//    
-//    return  [socializeObjectDictionary JSONString];
-//    
-//}
-
-
 #pragma mark template method implementations
 -(void)toObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {

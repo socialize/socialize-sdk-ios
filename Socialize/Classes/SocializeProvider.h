@@ -43,12 +43,12 @@
     NSDate              *_expirationDate;
     id<SocializeProviderDelegate> _sessionDelegate;
     SocializeRequest*  _request;
-    NSArray*           _permissions;
 }
 
 @property(nonatomic, copy) NSString* accessToken;
 @property(nonatomic, copy) NSDate* expirationDate;
 @property(nonatomic, assign) id<SocializeProviderDelegate> sessionDelegate;
+@property(nonatomic, readonly) SocializeRequest* request;
 
 - (void)authenticate:(NSString *)udid
             delegate:(id<SocializeProviderDelegate>)delegate;
