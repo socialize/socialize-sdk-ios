@@ -70,6 +70,7 @@
 		16F449CB13AF4DCE003BE655 /* SocializeUserJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449C913AF4DCD003BE655 /* SocializeUserJSONFormatter.m */; };
 		16F449CE13AF536F003BE655 /* SocializeApplicationJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 16F449CC13AF536E003BE655 /* SocializeApplicationJSONFormatter.h */; };
 		16F449CF13AF536F003BE655 /* SocializeApplicationJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449CD13AF536F003BE655 /* SocializeApplicationJSONFormatter.m */; };
+		16F449DA13AF8358003BE655 /* SocializeApplicationJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449D913AF8356003BE655 /* SocializeApplicationJSONFormatterTests.m */; };
 		5C21C0C41396BF8300CF2B9F /* SocializeGetRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0BE1396BF8300CF2B9F /* SocializeGetRequest.h */; };
 		5C21C0C51396BF8300CF2B9F /* SocializeGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0BF1396BF8300CF2B9F /* SocializeGetRequest.m */; };
 		5C21C0C61396BF8300CF2B9F /* SocializeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */; };
@@ -246,6 +247,8 @@
 		16F449C913AF4DCD003BE655 /* SocializeUserJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserJSONFormatter.m; path = Classes/SocializeUserJSONFormatter.m; sourceTree = "<group>"; };
 		16F449CC13AF536E003BE655 /* SocializeApplicationJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeApplicationJSONFormatter.h; path = Classes/SocializeApplicationJSONFormatter.h; sourceTree = "<group>"; };
 		16F449CD13AF536F003BE655 /* SocializeApplicationJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeApplicationJSONFormatter.m; path = Classes/SocializeApplicationJSONFormatter.m; sourceTree = "<group>"; };
+		16F449D813AF8356003BE655 /* SocializeApplicationJSONFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeApplicationJSONFormatterTests.h; path = "Test Cases/SocializeApplicationJSONFormatterTests.h"; sourceTree = "<group>"; };
+		16F449D913AF8356003BE655 /* SocializeApplicationJSONFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeApplicationJSONFormatterTests.m; path = "Test Cases/SocializeApplicationJSONFormatterTests.m"; sourceTree = "<group>"; };
 		5C21C0BE1396BF8300CF2B9F /* SocializeGetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeGetRequest.h; path = Classes/SocializeGetRequest.h; sourceTree = "<group>"; };
 		5C21C0BF1396BF8300CF2B9F /* SocializeGetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeGetRequest.m; path = Classes/SocializeGetRequest.m; sourceTree = "<group>"; };
 		5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequest.h; path = Classes/SocializeRequest.h; sourceTree = "<group>"; };
@@ -650,6 +653,8 @@
 				5C3069B613A2ABEB007335FF /* SocializeEntityFormatterTests.m */,
 				16F449BC13AF2974003BE655 /* SocializeCommentFormaterTests.h */,
 				16F449BD13AF2974003BE655 /* SocializeCommentFormaterTests.m */,
+				16F449D813AF8356003BE655 /* SocializeApplicationJSONFormatterTests.h */,
+				16F449D913AF8356003BE655 /* SocializeApplicationJSONFormatterTests.m */,
 			);
 			name = "Parser Tests";
 			sourceTree = "<group>";
@@ -1014,6 +1019,7 @@
 				1636370813A76ED000403879 /* SocializeProviderTests.m in Sources */,
 				1636372F13AB289500403879 /* SocializeCommentsServiceTests.m in Sources */,
 				16F449BE13AF2974003BE655 /* SocializeCommentFormaterTests.m in Sources */,
+				16F449DA13AF8358003BE655 /* SocializeApplicationJSONFormatterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

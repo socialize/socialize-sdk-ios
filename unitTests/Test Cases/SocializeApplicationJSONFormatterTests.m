@@ -23,23 +23,28 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ * See Also: http://gabriel.github.com/gh-unit/
  */
 
+#import <OCMock/OCMock.h>
+#import "SocializeApplicationJSONFormatterTests.h"
 #import "SocializeApplicationJSONFormatter.h"
+#import "SocializeApplication.h"
 
+@implementation SocializeApplicationJSONFormatterTests
 
-@implementation SocializeApplicationJSONFormatter
-
--(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
+- (void)testToApplication
 {
-    id<SocializeApplication> toApplication = (id<SocializeApplication>)toObject;
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt: 123], @"id", @"test application", @"name", nil];
+    id mockApplication = [OCMockObject mockForProtocol:@protocol(SocializeApplication)];
     
-    [toApplication setObjectID: [[JSONDictionary valueForKey:@"id"]intValue]];
-    [toApplication setName:[JSONDictionary valueForKey:@"name"]];   
+    [[mockApplication expect] setObjectID:[[params objectForKey:@"id"]intValue]];
+    [[mockApplication expect] setName:[params objectForKey:@"name"]];
+    
+    SocializeApplicationJSONFormatter* formatter = [[[SocializeApplicationJSONFormatter alloc]initWithFactory:_factory] autorelease];
+    [formatter toObject:mockApplication fromDictionary:params];
+    [mockApplication verify];
 }
 
-//-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
-//{
-//}
 
 @end

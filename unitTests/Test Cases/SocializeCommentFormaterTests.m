@@ -70,19 +70,23 @@
     [[mockComment expect] setEntity:OCMOCK_ANY];
     
     id mockApplicationFormater = [OCMockObject mockForClass:[SocializeApplicationJSONFormatter class]];
-    [[mockApplicationFormater stub] toObject:OCMOCK_ANY fromDictionary:[JSONDictionaryToParse objectForKey:@"application"]];
+    [[mockApplicationFormater expect] toObject:OCMOCK_ANY fromDictionary:[JSONDictionaryToParse objectForKey:@"application"]];
     [[mockComment expect] setApplication:OCMOCK_ANY];
     
     id mockUserFormater = [OCMockObject mockForClass:[SocializeUserJSONFormatter class]];
-    [[mockUserFormater stub] toObject:OCMOCK_ANY fromDictionary:[JSONDictionaryToParse objectForKey:@"user"]];
+    [[mockUserFormater expect] toObject:OCMOCK_ANY fromDictionary:[JSONDictionaryToParse objectForKey:@"user"]];
     [[mockComment expect] setUser:OCMOCK_ANY];
     
     SocializeCommentJSONFormatter * commentFormatter = [[[SocializeCommentJSONFormatter alloc]initWithFactory:_factory] autorelease];
     commentFormatter.entityFormatter = mockEntityFormater;
     commentFormatter.appFormatter = mockApplicationFormater;
+    commentFormatter.userFormatter = mockUserFormater;
     
     [commentFormatter toObject:mockComment fromDictionary:JSONDictionaryToParse];
     [mockComment verify];    
+    [mockApplicationFormater verify];
+    [mockUserFormater verify];
+    [mockEntityFormater verify];
     
 }
 

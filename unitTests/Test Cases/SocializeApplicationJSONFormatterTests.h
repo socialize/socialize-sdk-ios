@@ -1,5 +1,5 @@
 /*
- * SocializeApplicationJSONFormatter.m
+ * SocializeApplicationJSONFormatter.h
  * SocializeSDK
  *
  * Created on 6/20/11.
@@ -23,23 +23,17 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ * See Also: http://gabriel.github.com/gh-unit/
  */
 
-#import "SocializeApplicationJSONFormatter.h"
+
+#import <GHUnitIOS/GHUnit.h>
+#import <UIKit/UIKit.h>
+#import "SocializeObjectFormatterTests.h"
 
 
-@implementation SocializeApplicationJSONFormatter
-
--(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
-{
-    id<SocializeApplication> toApplication = (id<SocializeApplication>)toObject;
+@interface SocializeApplicationJSONFormatterTests : SocializeObjectFormatterTests {
     
-    [toApplication setObjectID: [[JSONDictionary valueForKey:@"id"]intValue]];
-    [toApplication setName:[JSONDictionary valueForKey:@"name"]];   
 }
-
-//-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
-//{
-//}
 
 @end
