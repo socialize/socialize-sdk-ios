@@ -33,9 +33,4 @@
     
 }
 
--(NSString*) commentIdsToJsonString: (NSArray*) commentsId;
--(NSString*) commentsFromDictionary: (NSDictionary*) comments;
--(NSString*) entryKeyToJsonString: (NSString*)entryKey;
--(id)fromJsonToObject: (NSString*) jsonString;
-
 @end

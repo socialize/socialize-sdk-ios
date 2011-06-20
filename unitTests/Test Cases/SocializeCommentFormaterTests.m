@@ -44,40 +44,40 @@
     [super tearDownClass];
 }
 
-- (void)testCommentIdsToJsonString 
-{
-  
-    NSArray* ids = [NSArray arrayWithObjects: [NSNumber numberWithInt:1], [NSNumber numberWithInt:2], nil];
-    NSString* expectedResult = @"{\"ids\":[1,2]}";
-        
-    NSString* actualResult =  [_commentFormater   commentIdsToJsonString:ids];
-    GHAssertEqualStrings(expectedResult, actualResult, nil);                        
-}
-
--(void) testEntryKeyToJsonString
-{
-    NSString* expectedResult = @"{\"key\":\"http://www.example.com/interesting-story/\"}";
-    NSString* entryKey = @"http://www.example.com/interesting-story/";
-    
-    NSString* actualResult = [_commentFormater  entryKeyToJsonString: entryKey];
-    GHAssertEqualStrings(expectedResult, actualResult, nil);                        
-}
-
--(void) testCommentsFromDictionary
-{
-    NSString* expectedResult = @"[{\"entity\":\"http://www.example.com/interesting-story/\",\"text\":\"this was a great story\"}]";   
-    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"this was a great story", @"http://www.example.com/interesting-story/",
-                            nil];
-    
-    NSString* actualResult = [_commentFormater commentsFromDictionary:params];
-    GHAssertEqualStrings(expectedResult, actualResult, nil);                       
-}
-
--(void) testFromJsonToSingleComment
-{
-    NSString* imputJsonString = [self helperGetJSONStringFromFile: @"comment_single_response.json"];
-    [_commentFormater fromJsonToObject:imputJsonString];
-}
+//- (void)testCommentIdsToJsonString 
+//{
+//  
+//    NSArray* ids = [NSArray arrayWithObjects: [NSNumber numberWithInt:1], [NSNumber numberWithInt:2], nil];
+//    NSString* expectedResult = @"{\"ids\":[1,2]}";
+//        
+//    NSString* actualResult =  [_commentFormater   commentIdsToJsonString:ids];
+//    GHAssertEqualStrings(expectedResult, actualResult, nil);                        
+//}
+//
+//-(void) testEntryKeyToJsonString
+//{
+//    NSString* expectedResult = @"{\"key\":\"http://www.example.com/interesting-story/\"}";
+//    NSString* entryKey = @"http://www.example.com/interesting-story/";
+//    
+//    NSString* actualResult = [_commentFormater  entryKeyToJsonString: entryKey];
+//    GHAssertEqualStrings(expectedResult, actualResult, nil);                        
+//}
+//
+//-(void) testCommentsFromDictionary
+//{
+//    NSString* expectedResult = @"[{\"entity\":\"http://www.example.com/interesting-story/\",\"text\":\"this was a great story\"}]";   
+//    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+//                            @"this was a great story", @"http://www.example.com/interesting-story/",
+//                            nil];
+//    
+//    NSString* actualResult = [_commentFormater commentsFromDictionary:params];
+//    GHAssertEqualStrings(expectedResult, actualResult, nil);                       
+//}
+//
+//-(void) testFromJsonToSingleComment
+//{
+//    NSString* imputJsonString = [self helperGetJSONStringFromFile: @"comment_single_response.json"];
+//    [_commentFormater fromJsonToObject:imputJsonString];
+//}
 
 @end

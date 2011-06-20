@@ -25,6 +25,7 @@
  * THE SOFTWARE.
  */
 
+#import "JSONKit.h"
 #import "SocializeCommentsService.h"
 #import "SocializeComment.h"
 #import "SocializeProvider.h"
@@ -32,6 +33,13 @@
 
 #define COMMENT_METHOD @"comment/"
 #define COMMENTS_LIST_METHOD @"comment/list/"
+
+#define IDS_KEY @"ids"
+#define ENTRY_KEY @"key"
+#define ENTITY_KEY @"entity"
+#define COMMENT_KEY @"text"
+
+
 @interface SocializeCommentsService()
     -(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
 @end
@@ -60,7 +68,7 @@
 
 -(void) getCommentsList: (NSArray*) commentsId
 {
-    NSString* jsonParams = [_commentFormater commentIdsToJsonString: commentsId];
+    NSString* jsonParams = [[NSDictionary dictionaryWithObjectsAndKeys:commentsId, IDS_KEY, nil] JSONString]; 
     NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
 
     [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
@@ -68,16 +76,23 @@
 
 -(void) getCommentList: (NSString*) entryKey
 {
-    NSString* jsonParams = [_commentFormater entryKeyToJsonString: entryKey];
+    NSString* jsonParams = [[NSDictionary dictionaryWithObjectsAndKeys:entryKey, ENTRY_KEY, nil] JSONString];
     NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
     
     [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
 }
 
 -(void) postComments:(NSDictionary*)comments
-{
-    NSString* jsonParams = [_commentFormater commentsFromDictionary: comments];
-    NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
+{   
+    NSMutableArray* jsonArray = [[NSMutableArray alloc] initWithCapacity:[comments count]];
+    [comments enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
+     {
+         NSDictionary* value = [NSDictionary dictionaryWithObjectsAndKeys:key, ENTITY_KEY,  obj, COMMENT_KEY, nil];
+         [jsonArray addObject:value];
+     }
+     ];
+    
+    NSMutableDictionary* params = [self genereteParamsFromJsonString:[jsonArray JSONString]];
     
     [_provider requestWithMethodName: COMMENT_METHOD andParams:params andHttpMethod:@"PUT" andDelegate:self];
 }
@@ -99,19 +114,19 @@
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
 {
     // TODO:: convert data to json
-    id returnObject = [_commentFormater fromJsonToObject: nil];
-    if([returnObject class] == [NSArray class])
-    {
-        [_delegate receivedComment: self comment:(SocializeComment*)returnObject];    
-    }
-    else if([returnObject class] == [SocializeComment class])
-    {
-        [_delegate receivedComments:self comments:(NSArray*)returnObject];
-    }
-    else
-    {
-        [_delegate didFailService:self withError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
-    }
+//    id returnObject = [_commentFormater fromJsonToObject: nil];
+//    if([returnObject class] == [NSArray class])
+//    {
+//        [_delegate receivedComment: self comment:(SocializeComment*)returnObject];    
+//    }
+//    else if([returnObject class] == [SocializeComment class])
+//    {
+//        [_delegate receivedComments:self comments:(NSArray*)returnObject];
+//    }
+//    else
+//    {
+//        [_delegate didFailService:self withError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+//    }
         
         
 }

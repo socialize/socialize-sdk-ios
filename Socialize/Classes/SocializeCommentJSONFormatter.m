@@ -43,47 +43,6 @@
 
 @implementation SocializeCommentJSONFormatter
 
--(NSString*) commentIdsToJsonString: (NSArray*) commentsId
-{
-    NSDictionary* jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:commentsId, IDS_KEY, nil];
-    return [jsonDictionary JSONString];
-}
-
--(NSString*) commentsFromDictionary: (NSDictionary*) comments
-{
-    NSMutableArray* jsonArray = [[NSMutableArray alloc] initWithCapacity:[comments count]];
-    [comments enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
-     {
-         NSDictionary* value = [NSDictionary dictionaryWithObjectsAndKeys:key, ENTITY_KEY,  obj, COMMENT_KEY, nil];
-         [jsonArray addObject:value];
-     }
-    ];
-    return [jsonArray JSONString];    
-}
-
--(NSString*) entryKeyToJsonString: (NSString*)entryKey
-{
-    NSDictionary* jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:entryKey, ENTRY_KEY, nil];
-    return [jsonDictionary JSONString];
-}
-
--(id)fromJsonToObject: (NSString*) jsonString
-{
-    id jsonResponse =[jsonString objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
-
-    if([jsonResponse class] == [NSDictionary class])
-    {
-        id<SocializeComment> comment = [_factory createObjectForProtocolName:@"SocializeComment"];
-        [self toObject:comment fromDictionary:(NSDictionary*)jsonResponse];
-        return comment;
-    }
-    else if([jsonResponse class] == [NSArray class])
-    {
-        
-    }
-
-    return nil;
-}
 
 #pragma mark Socialize object json formatter
 
