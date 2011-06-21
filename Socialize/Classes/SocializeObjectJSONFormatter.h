@@ -20,6 +20,7 @@
 //Template Methods
 -(void)toObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary;
 -(void)toDictionary:(NSMutableDictionary *)dictionary fromObject:(id<SocializeObject>) fromObject;
+-(NSString*) toStringfromObject:(id<SocializeObject>) fromObject;
 
 
 //Primitive methods

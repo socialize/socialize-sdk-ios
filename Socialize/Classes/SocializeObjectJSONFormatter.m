@@ -21,6 +21,16 @@
     
 }
 
+-(NSString*) toStringfromObject:(id<SocializeObject>) fromObject
+{
+    NSMutableDictionary* objectDictionaty = [[NSMutableDictionary alloc] init];
+    [self toDictionary:objectDictionaty fromObject:fromObject];
+    NSString* stringRepresentation = [objectDictionaty JSONString];
+    [objectDictionaty release]; objectDictionaty = nil;
+    
+    return stringRepresentation;
+}
+
 #pragma mark template method implementations
 -(void)toObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {

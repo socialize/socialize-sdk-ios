@@ -31,6 +31,7 @@
 #import "SocializeComment.h"
 #import "SocializeProvider.h"
 #import "SocializeCommentJSONFormatter.h"
+#import "SocializeObjectFactory.h"
 
 #import <Foundation/Foundation.h>
 
@@ -39,13 +40,16 @@ static const int singleCommentId = 1;
 @interface SocializeCommentsServiceTests()
     -(NSMutableDictionary*) dictionaryFromJSON: (NSString*) jsonRequstString;
     - (id) MockProviderForGetListOfCommon: (NSString *) jsonRequstString method: (NSString *)method httpMethod: (NSString*) httpMethod;
+    -(NSString *)helperGetJSONStringFromFile:(NSString *)fileName;
 @end
 
 @implementation SocializeCommentsServiceTests
 
 -(void) setUpClass
-{
-    _service = [[SocializeCommentsService alloc] init];
+{  
+    SocializeObjectFactory* factory = [[SocializeObjectFactory new] autorelease] ;
+    _service = [[SocializeCommentsService alloc] initWithProvider:nil objectFactory:factory delegate:self];
+    
     _testError = [NSError errorWithDomain:@"" code: 402 userInfo:nil];
 }
 
@@ -120,16 +124,34 @@ static const int singleCommentId = 1;
     [_service request:nil didFailWithError:_testError];
 }
 
+-(void) testServiceReceiveSingleComment
+{
+    NSString* jsonResponse = [self helperGetJSONStringFromFile:@"comment_single_response.json"];
+    NSData* jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+    [_service request:nil didLoadRawResponse:jsonData];
+}
+
+-(void) testServiceReceiveCommentsList
+{
+    NSString* jsonResponse = [self helperGetJSONStringFromFile:@"comment_list_response.json"];
+    NSData* jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+    [_service request:nil didLoadRawResponse:jsonData];
+}
+
 #pragma mark Socialize comment service delegate
 
 -(void) receivedComment: (SocializeCommentsService*)service comment: (id<SocializeComment>) comment
-{
-    
+{ 
+    GHAssertEquals(comment.objectID, 1, nil);
+    GHAssertEqualStrings(comment.entity.key, @"http://www.example.com/interesting-story/", nil);
+    GHAssertEqualStrings(comment.application.name, @"My App", nil);
+    GHAssertEqualStrings(comment.user.userName, @"msocialize", nil);
+    GHAssertEqualStrings(comment.text, @"this was a great story", nil);
 }
 
 -(void) receivedComments: (SocializeCommentsService*)service comments: (NSArray*) comments
 {
-    
+    GHAssertTrue(comments.count == 2, nil);
 }
 
 -(void) didFailService:(SocializeCommentsService*)service withError: (NSError *)error;
@@ -152,6 +174,18 @@ static const int singleCommentId = 1;
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
     [[mockProvider expect] requestWithMethodName:method andParams:[self dictionaryFromJSON:jsonRequstString] andHttpMethod:httpMethod andDelegate:_service];
     return mockProvider;
+}
+
+-(NSString *)helperGetJSONStringFromFile:(NSString *)fileName
+{
+    NSString * JSONFilePath = [[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"%@/%@",@"JSON-RequestAndResponse-TestFiles", fileName ] ofType:nil];
+    
+    
+    NSString * JSONString = [NSString stringWithContentsOfFile:JSONFilePath 
+                                                      encoding:NSUTF8StringEncoding 
+                                                         error:nil];
+    
+    return  JSONString;
 }
 
 @end

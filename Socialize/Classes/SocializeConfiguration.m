@@ -9,6 +9,7 @@
 #import "SocializeConfiguration.h"
 
 NSString * const kSocializeModuleConfigurationPrototypesKey = @"Prototypes";
+NSString * const kSocializeModuleConfigurationFormatterKey = @"Formatters";
 
 @interface SocializeConfiguration ()
 

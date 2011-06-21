@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * const kSocializeModuleConfigurationPrototypesKey;
+extern NSString * const kSocializeModuleConfigurationFormatterKey;
 
 @interface SocializeConfiguration : NSObject 
 {
