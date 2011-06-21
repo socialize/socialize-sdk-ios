@@ -35,6 +35,7 @@
 -(void)dealloc
 {
     [super dealloc];
+    [_factory release];
 }
 
 -(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory
@@ -42,7 +43,7 @@
     self = [super init];
     if (self) 
     {
-        _factory = theObjectFactory;
+        _factory = [theObjectFactory retain];
     }
     return self;
 }
