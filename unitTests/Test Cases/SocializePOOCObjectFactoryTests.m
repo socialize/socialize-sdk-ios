@@ -82,6 +82,34 @@
    
 }
 
+-(void)testCreateObjectFromString
+{
+    NSString* jsonApplication = @"{\"id\":123,\"name\":\"test application\"}";
+    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init] autorelease];
+    
+    id<SocializeApplication> actualResult = [myTestFactory createObjectFromString:jsonApplication forProtocol:@protocol(SocializeApplication)];
+    
+    GHAssertTrue(actualResult.objectID == 123, nil);
+    GHAssertEqualStrings(actualResult.name, @"test application", nil);
+}
+
+-(void)testCreateStringFromObject
+{
+    NSString* expectedResult = @"{\"id\":123,\"name\":\"test application\"}";
+    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init]autorelease];
+    
+    id mockSocializeApplication = [OCMockObject mockForProtocol:@protocol(SocializeApplication)];
+
+    int ID = 123;
+    [[[mockSocializeApplication stub] andReturnValue:OCMOCK_VALUE(ID)]objectID];
+    [[[mockSocializeApplication stub] andReturn:@"test application"]name];
+    
+    NSString* actualResult = [myTestFactory createStringRepresentationOfObject:mockSocializeApplication];
+
+    GHAssertEqualStrings(expectedResult, actualResult, nil);
+}
+
+
 -(void)testCreateFactoryWithNilOrEmptyConfiguration
 {
 

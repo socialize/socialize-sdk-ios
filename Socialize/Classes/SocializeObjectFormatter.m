@@ -34,8 +34,6 @@
 
 -(void)dealloc
 {
-    
-    [_factory release];
     [super dealloc];
 }
 
@@ -44,7 +42,7 @@
     self = [super init];
     if (self) 
     {
-        _factory = [theObjectFactory retain];
+        _factory = theObjectFactory;
     }
     return self;
 }
