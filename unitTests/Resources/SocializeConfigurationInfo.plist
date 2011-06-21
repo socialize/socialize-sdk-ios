@@ -19,7 +19,7 @@
 	<dict>
 		<key>SocializeUser</key>
 		<string>SocializeUserJSONFormatter</string>
-		<key>SocializeEntry</key>
+		<key>SocializeEntity</key>
 		<string>SocializeEntityJSONFormatter</string>
 		<key>SocializeComment</key>
 		<string>SocializeCommentJSONFormatter</string>

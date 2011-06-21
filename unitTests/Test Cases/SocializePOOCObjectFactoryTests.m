@@ -14,6 +14,8 @@
 
 @interface SocializePOOCObjectFactoryTests ()
 -(id)helperCreateMockConfigurationWithPrototypeConfiguration:(NSDictionary *)prototypeConfiguration;
+-(id)helperCreateMockConfigurationWithPrototypeConfiguration:(NSDictionary *)prototypeConfiguration 
+                                      formatterConfiguration: (NSDictionary*) formatterConfiguration;
 -(void)helperTestThatPrototypesExistsForPrototypeConfiguration:(NSDictionary *)prototypeConfiguration 
                                                      inFactory:(SocializePOOCObjectFactory *)theTestFactory;
 @end
@@ -54,7 +56,13 @@
                                           @"SocializeEntity", @"SocializeEntity",
                                           nil];
     
-    id mockConfiguration = [self helperCreateMockConfigurationWithPrototypeConfiguration:prototypeConfiguration];   
+    NSDictionary * formatterConfiguration = [NSDictionary dictionaryWithObjectsAndKeys:
+                                             @"SocializeCommentJSONFormatter",@"SocializeComment", 
+                                             @"SocializeEntityJSONFormatter", @"SocializeEntity",
+                                             nil];
+    
+    
+    id mockConfiguration = [self helperCreateMockConfigurationWithPrototypeConfiguration:prototypeConfiguration formatterConfiguration:formatterConfiguration];   
     
     SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]initializeWithConfiguration:mockConfiguration]autorelease];
     
@@ -168,19 +176,18 @@
 
 -(id)helperCreateMockConfigurationWithPrototypeConfiguration:(NSDictionary *)prototypeConfiguration
 {
+    return [self helperCreateMockConfigurationWithPrototypeConfiguration: prototypeConfiguration formatterConfiguration: nil];
+}
+
+-(id)helperCreateMockConfigurationWithPrototypeConfiguration:(NSDictionary *)prototypeConfiguration 
+                                      formatterConfiguration: (NSDictionary*) formatterConfiguration
+{
     id mockConfiguration = [OCMockObject mockForClass:[SocializeConfiguration class]];
     
-    NSDictionary * configurationDictionary = nil;
-    
-    if ( prototypeConfiguration != nil ) 
-    {
-        configurationDictionary = [NSDictionary dictionaryWithObjectsAndKeys:prototypeConfiguration, kSocializeModuleConfigurationPrototypesKey, nil];
-    }
-    else
-    {
-        configurationDictionary = [[[NSDictionary alloc]init]autorelease];
-        
-    }
+    NSDictionary * configurationDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                              (prototypeConfiguration != nil) ? prototypeConfiguration : [[[NSDictionary alloc]init]autorelease], kSocializeModuleConfigurationPrototypesKey,
+                                              (formatterConfiguration != nil) ? formatterConfiguration : [[[NSDictionary alloc]init]autorelease], kSocializeModuleConfigurationFormatterKey,
+                                              nil];
     
     [[[mockConfiguration stub] andReturn:configurationDictionary] configurationInfo];
     

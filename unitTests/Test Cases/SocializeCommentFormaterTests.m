@@ -65,29 +65,14 @@
     [[mockComment expect] setDate:[df dateFromString:[JSONDictionaryToParse valueForKey:@"date"]]];
     [df release]; df = nil;
     
-    id mockEntityFormater = [OCMockObject mockForClass:[SocializeEntityJSONFormatter class]];
-    [[mockEntityFormater stub] toObject:OCMOCK_ANY fromDictionary:[JSONDictionaryToParse objectForKey:@"entity"]];
-    [[mockComment expect] setEntity:OCMOCK_ANY];
-    
-    id mockApplicationFormater = [OCMockObject mockForClass:[SocializeApplicationJSONFormatter class]];
-    [[mockApplicationFormater expect] toObject:OCMOCK_ANY fromDictionary:[JSONDictionaryToParse objectForKey:@"application"]];
+    [[mockComment expect] setEntity:OCMOCK_ANY];  
     [[mockComment expect] setApplication:OCMOCK_ANY];
-    
-    id mockUserFormater = [OCMockObject mockForClass:[SocializeUserJSONFormatter class]];
-    [[mockUserFormater expect] toObject:OCMOCK_ANY fromDictionary:[JSONDictionaryToParse objectForKey:@"user"]];
     [[mockComment expect] setUser:OCMOCK_ANY];
     
     SocializeCommentJSONFormatter * commentFormatter = [[[SocializeCommentJSONFormatter alloc]initWithFactory:_factory] autorelease];
-    commentFormatter.entityFormatter = mockEntityFormater;
-    commentFormatter.appFormatter = mockApplicationFormater;
-    commentFormatter.userFormatter = mockUserFormater;
     
     [commentFormatter toObject:mockComment fromDictionary:JSONDictionaryToParse];
-    [mockComment verify];    
-    [mockApplicationFormater verify];
-    [mockUserFormater verify];
-    [mockEntityFormater verify];
-    
+    [mockComment verify];        
 }
 
 

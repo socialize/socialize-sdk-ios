@@ -40,22 +40,7 @@
 
 @implementation SocializeCommentJSONFormatter
 
-@synthesize appFormatter = _appFormatter;
-@synthesize userFormatter = _userFormatter;
-@synthesize entityFormatter = _entityFormatter;
-
 #pragma mark Socialize object json formatter
--(id) initWithFactory:(SocializeObjectFactory *)theObjectFactory
-{
-    self = [super initWithFactory:theObjectFactory];
-    if(self != nil)
-    {
-        _entityFormatter = [[SocializeEntityJSONFormatter alloc] initWithFactory:_factory];
-        _appFormatter = [[SocializeApplicationJSONFormatter alloc] initWithFactory:_factory];
-        _userFormatter = [[SocializeUserJSONFormatter alloc] initWithFactory:_factory];
-    }
-    return self;
-}
 
 -(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {
@@ -72,17 +57,11 @@
     [comment setLat:[[JSONDictionary valueForKey:@"lat"]floatValue]];
     [comment setLng:[[JSONDictionary valueForKey:@"lng"]floatValue]];
     
-    id<SocializeEntity> entity = [_factory createObjectForProtocolName:@"SocializeEntity"];
-    [_entityFormatter toObject:entity fromDictionary:[JSONDictionary valueForKey:@"entity"]];
-    [comment setEntity:entity];
+    [comment setEntity:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"entity"] forProtocol:@protocol(SocializeEntity)]];
     
-    id<SocializeApplication> app = [_factory createObjectForProtocolName:@"SocializeApplication"];
-    [_appFormatter toObject:app fromDictionary:[JSONDictionary valueForKey:@"application"]];
-    [comment setApplication:app];
-   
-    id<SocializeUser> user = [_factory createObjectForProtocolName:@"SocializeUser"];
-    [_userFormatter toObject:user fromDictionary:[JSONDictionary valueForKey:@"user"]];
-    [comment setUser:user];
+    [comment setApplication:[_factory createObjectFromDictionary: [JSONDictionary valueForKey:@"application"] forProtocol:@protocol(SocializeApplication)]];
+
+    [comment setUser:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"user"] forProtocol:@protocol(SocializeUser)]];
 }
 
 @end
