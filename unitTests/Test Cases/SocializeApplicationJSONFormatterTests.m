@@ -46,5 +46,33 @@
     [mockApplication verify];
 }
 
+- (void)testToApplicationFromString
+{
+    NSString* jsonApplication = @"{\"id\":123,\"name\":\"test application\"}";
+    
+    id mockApplication = [OCMockObject mockForProtocol:@protocol(SocializeApplication)];
+    
+    [[mockApplication expect] setObjectID:123];
+    [[mockApplication expect] setName:@"test application"];
+    
+    SocializeApplicationJSONFormatter* formatter = [[[SocializeApplicationJSONFormatter alloc]initWithFactory:_factory] autorelease];
+    [formatter toObject:mockApplication fromJSONString:jsonApplication];
+    [mockApplication verify];
+}
+
+- (void)testToStringFromApplication
+{
+    NSString* jsonApplicationExpected = @"{\"id\":123,\"name\":\"test application\"}";
+    
+    id mockApplication = [OCMockObject mockForProtocol:@protocol(SocializeApplication)];
+    
+    int ID = 123;
+    [[[mockApplication stub] andReturnValue:OCMOCK_VALUE(ID)] objectID];
+    [[[mockApplication stub] andReturn:@"test application"] name];
+    
+    SocializeObjectJSONFormatter* formatter = [[[SocializeApplicationJSONFormatter alloc]initWithFactory:_factory] autorelease];
+    GHAssertEqualStrings(jsonApplicationExpected, [formatter toStringfromObject:mockApplication], nil);
+
+}
 
 @end

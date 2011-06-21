@@ -38,8 +38,12 @@
     [toApplication setName:[JSONDictionary valueForKey:@"name"]];   
 }
 
-//-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
-//{
-//}
+-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
+{
+    id<SocializeApplication> fromApplication = (id<SocializeApplication>)fromObject;
+    
+    [JSONFormatDictionary setObject:[NSNumber numberWithInt:fromApplication.objectID] forKey:@"id"];
+    [JSONFormatDictionary setObject:fromApplication.name forKey:@"name"];
+}
 
 @end
