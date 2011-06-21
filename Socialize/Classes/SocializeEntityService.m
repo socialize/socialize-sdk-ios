@@ -19,7 +19,6 @@
 -(void)listEntitiesWithKeys:(NSArray *)entityKeysArray
 {
     
-
 }
 
 -(void)createEntity:(id<SocializeEntity>)entity

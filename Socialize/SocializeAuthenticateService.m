@@ -18,10 +18,12 @@
 @interface SocializeAuthenticateService()
 -(NSString*)getSocializeId;
 -(NSString*)getSocializeToken;
+-(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
 -(void)persistUserInfo:(NSDictionary*)dictionary;
 @end
 
 @implementation SocializeAuthenticateService
+
 @synthesize provider = _provider;
 
 -(id)init{
@@ -36,6 +38,17 @@
     [_provider release];
 }
 
+
+-(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest
+{
+    NSData* jsonData =  [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
+    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
+            jsonData, @"jsonData",
+            nil];
+}
+
+#define AUTHENTICATE_METHOD @"authenticate/"
+
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret
                udid:(NSString*)udid
@@ -43,33 +56,19 @@
          {
              
     _delegate = delegate;
-    
-    NSURL *url = [NSURL URLWithString:@"http://www.dev.getsocialize.com/v1/authenticate/"];
-    OAConsumer *consumer = [[OAConsumer alloc] initWithKey:apiKey secret:apiSecret];
-
-    OAMutableURLRequest *req = [[OAMutableURLRequest alloc] initWithURL:url consumer:consumer token:nil realm:nil signatureProvider:nil];
-    NSString* jsonString = [NSString stringWithFormat:@"payload={\"udid\":\"%@\"}", udid];
-
-    [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
-    [req setHTTPMethod:@"POST"];
-    [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [req prepare];
-     
-    OAAsynchronousDataFetcher *fetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:req
-                                                                                           delegate:self
-                                                                                  didFinishSelector:@selector(tokenRequestTicket:didFinishWithData:)
-                                                                                    didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
+    NSString* payloadJson = [[NSDictionary dictionaryWithObjectsAndKeys:udid, @"udid", nil] JSONString];
+    NSString* jsonParams = [NSString stringWithFormat:@"payload=%@", payloadJson];//[[NSDictionary dictionaryWithObjectsAndKeys:payloadJson, @"payload", nil] JSONString];
              
-    [fetcher start];
+    NSLog(@"jsonParams %@", jsonParams);
+             
+    NSMutableDictionary* paramsDict = [[NSMutableDictionary alloc] init];
+    [paramsDict setObject:udid forKey:@"udid"];
+    [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict andHttpMethod:@"POST" andDelegate:self];
 }
 
-- (void)tokenRequestModifyRequest:(OAMutableURLRequest *)oRequest
-{
+- (void)tokenRequestModifyRequest:(OAMutableURLRequest *)oRequest{
 	// Subclass to add custom paramaters and headers
 }
-
-#define kPROVIDER_NAME @"SOCIALIZE"
-#define kPROVIDER_PREFIX @"AUTH"
 
 +(BOOL)isAuthenticated {
     OAToken *authToken = [[[OAToken alloc ]initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX] autorelease];
@@ -83,16 +82,19 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (userDefaults){
         NSString* userId = [dictionary objectForKey:@"id"]; 
-       // NSString* userId = [dictionary objectForKey:@"user"]; 
-        [userDefaults setObject:userId forKey:kSOCIALIZE_USERID_KEY];
+        // NSString* userId = [dictionary objectForKey:@"user"]; 
+        if ((userId != nil) && ((id)userId != [NSNull null]))
+            [userDefaults setObject:userId forKey:kSOCIALIZE_USERID_KEY];
         
         NSString* username = [dictionary objectForKey:@"username"]; 
         // NSString* userId = [dictionary objectForKey:@"user"]; 
-        [userDefaults setObject:username forKey:kSOCIALIZE_USERNAME_KEY];
+        if ((username != nil) && ((id)username != [NSNull null]))
+            [userDefaults setObject:username forKey:kSOCIALIZE_USERNAME_KEY];
 
         NSString* smallImageUri = [dictionary objectForKey:@"small_image_uri"]; 
-        // NSString* userId = [dictionary objectForKey:@"user"]; 
-        [userDefaults setObject:smallImageUri forKey:kSOCIALIZE_USERIMAGEURI_KEY];
+        
+        if ((smallImageUri != nil) && ((id)smallImageUri != [NSNull null]))
+            [userDefaults setObject:smallImageUri forKey:kSOCIALIZE_USERIMAGEURI_KEY];
         
         [userDefaults synchronize];
     }
@@ -112,37 +114,6 @@
         return nil;
 }
 
-- (void)tokenRequestTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data 
-{
-	NSLog(@"tokenRequestTicket Response Body: %@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
-	if (ticket.didSucceed) 
-	{
-        OAToken *requestToken;
-		NSString *responseBody = [[NSString alloc] initWithData:data
-													   encoding:NSUTF8StringEncoding];
-		requestToken = [[OAToken alloc] initWithHTTPResponseBody:responseBody];
-        [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
-        
-        JSONDecoder *jsonKitDecoder = [JSONDecoder decoder];
-        id jsonObject = [jsonKitDecoder objectWithData:data];
-        
-        if ([jsonObject isKindOfClass:[NSDictionary class]]){
-            [self persistUserInfo:[jsonObject objectForKey:@"user"]];
-        }
-        
- 		[responseBody release];
-	}
-    else
-        [_delegate didNotAuthenticate:nil];
-}
-
-- (void)tokenRequestTicket:(OAServiceTicket *)ticket didFailWithError:(NSError*)error
-{
-    [_delegate didNotAuthenticate:error];
-    NSLog(@"Socialize Authentication Failed");
-}
-
-
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                             apiSecret:(NSString*)apiSecret 
                                  udid:(NSString*)udid
@@ -151,25 +122,16 @@
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
                              delegate:(id<SocializeAuthenticationDelegate>)delegate
                            {
+   _delegate = delegate;
+   NSString* payloadJson = [[NSDictionary dictionaryWithObjectsAndKeys:udid, @"udid", 
+                             thirdPartyUserId,  @"socialize_id", 
+                             1/* auth type is for facebook*/ , @"auth_type",
+                             thirdPartyAuthToken, @"auth_token",
+                             [self getSocializeId], @"auth_id" , nil] JSONString];
                                
-       _delegate = delegate;
-       
-       NSURL *url = [NSURL URLWithString:@"http://www.dev.getsocialize.com/v1/authenticate/"];
-       OAConsumer *consumer = [[OAConsumer alloc] initWithKey:apiKey secret:apiSecret];
-       
-       NSString* jsonString = [NSString stringWithFormat:@"payload={\"udid\":\"%@\",\"socialize_id\":\"%@\",\"auth_type\":\"%@\", \"auth_token\":\"%@\", \"auth_id\":%@}", udid, [self getSocializeId], @"1", thirdPartyAuthToken, thirdPartyUserId];
-       OAMutableURLRequest *req = [[OAMutableURLRequest alloc] initWithURL:url consumer:consumer token:nil realm:nil signatureProvider:nil];
-       
-       [req setHTTPMethod:@"POST"];
-       [req setHTTPBody:[(NSString*)jsonString dataUsingEncoding:NSUTF8StringEncoding]];
-       [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-       [req prepare];
-       
-       OAAsynchronousDataFetcher *fetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:req
-                                                                                             delegate:self
-                                                                                    didFinishSelector:@selector(tokenRequestTicket:didFinishWithData:)
-                                                                                      didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
-       [fetcher start];	
+   NSString* jsonParams = [[NSDictionary dictionaryWithObjectsAndKeys:payloadJson, @"payload", nil] JSONString];
+   NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
+   [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
 }
 
 
@@ -177,7 +139,7 @@
  * Called when an error prevents the request from completing successfully.
  */
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error{
-    [_delegate didNotAuthenticate:error];
+   [_delegate didNotAuthenticate:error];
 }
 
 /**
@@ -195,9 +157,23 @@
     
 }
 
-
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data{
+    OAToken *requestToken;
+
+    NSString *responseBody = [[NSString alloc] initWithData:data
+                                                   encoding:NSUTF8StringEncoding];
     
+    requestToken = [[OAToken alloc] initWithHTTPResponseBody:responseBody];
+    [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
+    
+    JSONDecoder *jsonKitDecoder = [JSONDecoder decoder];
+    id jsonObject = [jsonKitDecoder objectWithData:data];
+    
+    if ([jsonObject isKindOfClass:[NSDictionary class]]){
+        [self persistUserInfo:[jsonObject objectForKey:@"user"]];
+    }
+    
+    [responseBody release];
 }
 
 @end

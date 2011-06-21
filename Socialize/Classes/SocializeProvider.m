@@ -27,15 +27,11 @@
 
 #import "SocializeProvider.h"
 #import "SocializeRequest.h"
-//#import "OAPointAboutASIFormDataRequest.h"
+#import "SocializeCommonDefinitions.h"
 #import "OAHMAC_SHA1SignatureProvider.h"
-//#import "NSDictionary_JSONExtensions.h"
-//#import "DataStore.h"
-//#import "CJSONDeserializer.h"
-//#import "NSDictionary_JSONExtensions.h"
 
 
-static NSString* kRestserverBaseURL = @"http://dev.getsocialize.com/socialize/v1/";
+static NSString* kRestserverBaseURL = @"http://www.dev.getsocialize.com/v1/";
 static NSString* kSDK = @"ios";
 static NSString* kSDKVersion = @"1";
 
@@ -83,13 +79,6 @@ request = _request;
      httpMethod:(NSString *)httpMethod
        delegate:(id<SocializeRequestDelegate>)delegate 
 {
-    [params setValue:@"json" forKey:@"format"];
-    [params setValue:kSDK forKey:@"sdk"];
-    [params setValue:kSDKVersion forKey:@"sdk_version"];
-    if ([self isSessionValid]) {
-        [params setValue:self.accessToken forKey:@"access_token"];
-    }
-    
     [_request release];
     _request = [[SocializeRequest getRequestWithParams:params
                                             httpMethod:httpMethod
@@ -106,7 +95,6 @@ request = _request;
 {
     _sessionDelegate = delegate;
     // TODO::
-    // add call to Socialize Web to get access token
 }
 
 - (void)authenticateWithThirdPartyAccessToken:(NSString*)thirdPartyAccessToken
@@ -136,7 +124,7 @@ request = _request;
               andDelegate:(id <SocializeRequestDelegate>)delegate
 {
     if ([params objectForKey:@"method"] == nil) {
-        NSLog(@"API Method must be specified");
+        //NSLog(@"API Method must be specified");
         return;
     }
     
@@ -154,7 +142,7 @@ request = _request;
                 andHttpMethod:(NSString *)httpMethod
                   andDelegate:(id <SocializeRequestDelegate>)delegate 
 {
-    NSString * fullURL = [kRestserverBaseURL stringByAppendingString:methodName];
+    NSString *fullURL = [kRestserverBaseURL stringByAppendingString:methodName];
     [self openUrl:fullURL params:params httpMethod:httpMethod delegate:delegate];
 }
 

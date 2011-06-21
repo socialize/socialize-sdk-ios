@@ -23,7 +23,7 @@
     NSString*                   _url;
     NSString*                   _httpMethod;
     NSMutableDictionary*        _params;
-    NSURLConnection*            _connection;
+//    NSURLConnection*            _connection;
     NSMutableData*              _responseText;
 
 }
