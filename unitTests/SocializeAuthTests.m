@@ -10,6 +10,7 @@
 #import "SocializeAuthenticateService.h"
 #import "SocializeProvider.h"
 #import <OCMock/OCMock.h>
+#import "Socialize.h"
 
 
 @implementation SocializeAuthTests
@@ -77,6 +78,19 @@
     [mockProvider verify];
 }
 
+-(void)testOAtoken{
+
+    OAToken *authToken = [[[OAToken alloc ] initWithKey:@"somekkey" secret:@"somesecret"] autorelease];
+    [authToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
+    
+    Socialize* socializeObject = [[Socialize alloc] init]; 
+    BOOL isTrue = [socializeObject isAuthenticated];
+    GHAssertTrue(isTrue  == YES,@"should be authenticated");
+}
+
+-(void)testIsAuthenticated{
+
+}
 
 -(void)didAuthenticate{
     return;
