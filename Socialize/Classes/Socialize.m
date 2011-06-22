@@ -12,6 +12,7 @@
 @implementation Socialize
 
 - (void)dealloc {
+    [_authService release]; _authService = nil;
     [super dealloc];
 }
 

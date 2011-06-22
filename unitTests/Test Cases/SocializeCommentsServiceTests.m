@@ -113,7 +113,7 @@ static const int singleCommentId = 1;
                             @"this was a great story", @"http://www.example.com/interesting-story/",
                             nil];
    
-    [_service postComments:params];
+    [_service createComments:params];
     
     [mockProvider verify];
 }

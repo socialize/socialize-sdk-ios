@@ -97,7 +97,7 @@
     [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
 }
 
--(void) postComments:(NSDictionary*)comments
+-(void) createComments:(NSDictionary*)comments
 {   
     NSMutableArray* jsonArray = [[NSMutableArray alloc] initWithCapacity:[comments count]];
     [comments enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
