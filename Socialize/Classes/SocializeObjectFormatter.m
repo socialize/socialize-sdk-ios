@@ -34,9 +34,8 @@
 
 -(void)dealloc
 {
-    
-    [_factory release];
     [super dealloc];
+    [_factory release];
 }
 
 -(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory

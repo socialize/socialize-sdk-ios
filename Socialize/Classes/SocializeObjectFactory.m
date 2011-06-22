@@ -9,6 +9,7 @@
 #import "SocializeObjectFactory.h"
 #import "SocializeActivity.h"
 #import "SocializeConfiguration.h"
+#import "SocializeObjectJSONFormatter.h"
 
 
 @interface SocializeObjectFactory()
@@ -54,6 +55,7 @@
 - (void)dealloc 
 {
     [prototypeDictionary release];
+    [formatterDictionary release];
     [super dealloc];
 }
 
@@ -72,6 +74,7 @@
     if (self) 
     {
         prototypeDictionary = [[NSMutableDictionary dictionaryWithCapacity:10]retain]; 
+        formatterDictionary = [[NSMutableDictionary dictionaryWithCapacity:10]retain];
         [self configureFactory:configuration];
     }
     return self;
@@ -93,6 +96,22 @@
         Class prototypeClass = NSClassFromString(prototypeClassName);
         [self  addPrototype:prototypeClass forKey:prototypeProtocolName];
     }
+    
+    NSDictionary* formatters = (NSDictionary *)[[configuration configurationInfo]objectForKey:kSocializeModuleConfigurationFormatterKey];
+    NSAssert((formatters!=nil && ([formatters count] >0)), @"Formatters configuration is nil or Empty");
+    
+    NSString * formatterClassName = nil;
+    for (NSString * prototypeProtocolName in [formatters allKeys]) 
+    {
+        formatterClassName = (NSString *)[formatters objectForKey:prototypeProtocolName]; 
+        
+        Class formatterClass = NSClassFromString(formatterClassName);
+        NSAssert([formatterClass isSubclassOfClass:[SocializeObjectJSONFormatter class]], @"class does not subclass of formattor factory");
+        
+        id formatterObject = [[formatterClass alloc]initWithFactory:self];
+        [formatterDictionary setObject:formatterObject forKey:prototypeProtocolName];
+        [formatterObject release]; formatterObject = nil;
+    }
 }
 
 -(void)addPrototype:(Class)prototypeClass forKey:(NSString *)prototypeProtocolName
@@ -103,32 +122,51 @@
 }
 
 #pragma mark Object creation methods
-//-(id)createObjectFromString:(NSString *)stringRepresentation forProtocol:(Protocol *)protocol
-//{
-//    //Note: Don't try to convert format String and pass to function below.  Because we want the formatter
-//    //To handle the string.  This keeps the JSON parsing implementation out of the factory.
-//
-//    //  id<SocializeObject> socializeObject = [self createObjectForProtocol:protocol];
-//  
-//    //Look-up formatter in formatter dictionary 
-//        
-//    return socializeObject;
-//}
+-(id)createObjectFromString:(NSString *)stringRepresentation forProtocol:(Protocol *)protocol
+{
+    //Note: Don't try to convert format String and pass to function below.  Because we want the formatter
+    //To handle the string.  This keeps the JSON parsing implementation out of the factory.
 
-//-(id)createObjectFromDictionary:(NSDictionary *)dictionaryRepresentation forProtocol:(Protocol *)protocol
-//{
-//    id<SocializeObject> socializeObject = [self createObjectForProtocol:protocol];
-//    
-//    //Look-up formatter in formatter dictionary
-//    return socializeObject;
-//    
-//}
+    id<SocializeObject> socializeObject = [self createObjectForProtocol:protocol];
+    
+    SocializeObjectJSONFormatter * soFormatter = [formatterDictionary objectForKey:NSStringFromProtocol(protocol)];
+    NSAssert(soFormatter!=nil, @"%@ - formatter does not exist for this key. Please add formatter to the Factory", 
+             NSStringFromProtocol(protocol));
 
-//-(NSString *)createStringRepresentationOfObject:(id<SocializeObject>)socializeObject
-//{
-//    return  nil;
-//    
-//}
+    [soFormatter toObject:socializeObject fromJSONString:stringRepresentation];
+        
+    return socializeObject;
+}
+
+-(id)createObjectFromDictionary:(NSDictionary *)dictionaryRepresentation forProtocol:(Protocol *)protocol
+{
+    id<SocializeObject> socializeObject = [self createObjectForProtocol:protocol];
+    
+    SocializeObjectJSONFormatter * soFormatter = [formatterDictionary objectForKey:NSStringFromProtocol(protocol)];
+    NSAssert(soFormatter!=nil, @"%@ - formatter does not exist for this key. Please add formatter to the Factory", 
+             NSStringFromProtocol(protocol));
+    
+    [soFormatter toObject:socializeObject fromDictionary:dictionaryRepresentation];
+    
+    return socializeObject;
+}
+
+-(NSString *)createStringRepresentationOfObject:(id<SocializeObject>)socializeObject
+{
+    NSString* result = nil;
+
+    for (NSString * prototypeProtocolName in [formatterDictionary allKeys]) 
+    {
+       if([socializeObject conformsToProtocol:NSProtocolFromString(prototypeProtocolName)])
+       {
+           result = [[formatterDictionary objectForKey:prototypeProtocolName] toStringfromObject:socializeObject];
+           break;
+       }
+    }
+    
+    return  result;
+    
+}
 
 -(id)createObjectForProtocolName:(NSString *)prototypeProtocolName
 {

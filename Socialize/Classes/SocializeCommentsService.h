@@ -30,7 +30,7 @@
 
 @class SocializeCommentsService;
 @class SocializeProvider;
-@class SocializeCommentJSONFormatter;
+@class SocializeObjectFactory;
 
 @protocol SocializeComment;
 
@@ -47,12 +47,14 @@
 @private
     id<SocializeCommentsServiceDelegate> _delegate;
     SocializeProvider*  _provider;
-    SocializeCommentJSONFormatter* _commentFormater;
+    SocializeObjectFactory* _objectCreator;
 }
 
 @property (nonatomic, assign) id<SocializeCommentsServiceDelegate> delegate;
 @property (nonatomic, assign) SocializeProvider* provider;
-@property (nonatomic, retain) SocializeCommentJSONFormatter* commentFormater;
+@property (nonatomic, assign) SocializeObjectFactory* objectCreator;
+
+-(id) initWithProvider: (SocializeProvider*)provider objectFactory: (SocializeObjectFactory*) objectFactory delegate: (id<SocializeCommentsServiceDelegate>) delegate;
 
 -(void) getCommentById: (int) commentId;
 -(void) getCommentsList: (NSArray*) commentsId;

@@ -36,6 +36,7 @@
 
 -(void)dealloc{
     [_provider release];
+<<<<<<< HEAD:Socialize/SocializeAuthenticateService.m
     _provider = nil;
     [super dealloc];
 }
@@ -47,6 +48,9 @@
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:
             jsonData, @"jsonData",
             nil];
+=======
+    [super dealloc];
+>>>>>>> eb00a19a0db0e7e798d479a956d9c8c9afa29a38:Socialize/Classes/SocializeAuthenticateService.m
 }
 
 #define AUTHENTICATE_METHOD @"authenticate/"

@@ -4,16 +4,27 @@
 <dict>
 	<key>Prototypes</key>
 	<dict>
-		<key>SocializeUser</key>
-		<string>SocializeUser</string>
-		<key>SocializeApplication</key>
-		<string>SocializeApplication</string>
 		<key>SocializeActivity</key>
 		<string>SocializeActivity</string>
+		<key>SocializeApplication</key>
+		<string>SocializeApplication</string>
 		<key>SocializeComment</key>
 		<string>SocializeComment</string>
 		<key>SocializeEntity</key>
 		<string>SocializeEntity</string>
+		<key>SocializeUser</key>
+		<string>SocializeUser</string>
+	</dict>
+	<key>Formatters</key>
+	<dict>
+		<key>SocializeUser</key>
+		<string>SocializeUserJSONFormatter</string>
+		<key>SocializeEntity</key>
+		<string>SocializeEntityJSONFormatter</string>
+		<key>SocializeComment</key>
+		<string>SocializeCommentJSONFormatter</string>
+		<key>SocializeApplication</key>
+		<string>SocializeApplicationJSONFormatter</string>
 	</dict>
 </dict>
 </plist>

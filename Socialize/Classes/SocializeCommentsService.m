@@ -50,13 +50,26 @@
 
 @synthesize delegate = _delegate;
 @synthesize provider = _provider;
-@synthesize commentFormater = _commentFormater;
+@synthesize objectCreator = _objectCreator;
+
+-(id) initWithProvider: (SocializeProvider*) provider objectFactory: (SocializeObjectFactory*) objectFactory delegate: (id<SocializeCommentsServiceDelegate>) delegate
+{
+    self = [super init];
+    if(self != nil)
+    {
+        self.provider = provider;
+        self.objectCreator = objectFactory;
+        self.delegate = delegate;
+    }
+    
+    return self;
+}
 
 -(void) dealloc
 {
     self.delegate = nil;
     self.provider = nil;
-    [_commentFormater release]; _commentFormater = nil;
+    [_objectCreator release]; _objectCreator = nil;
     [super dealloc];
 }
 
@@ -103,10 +116,10 @@
 
 #pragma mark - Socialize requst delegate
 
-- (void)request:(SocializeRequest *)request didReceiveResponse:(NSURLResponse *)response
-{
-    // TODO:: add implementation notify that call success. 
-}
+//- (void)request:(SocializeRequest *)request didReceiveResponse:(NSURLResponse *)response
+//{
+//    // TODO:: add implementation notify that call success. 
+//}
 
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
@@ -119,13 +132,12 @@
     
     id responseObject = [responseString objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
-    if([responseObject class] == [NSDictionary class])
+    if([responseObject isKindOfClass: [NSDictionary class]])
     {
-        id<SocializeComment> comment = [_commentFormater.objectFactory createObjectForProtocolName: @"SocializeComment"];
-        [_commentFormater toObject:comment fromDictionary:responseObject];
+        id<SocializeComment> comment = [_objectCreator createObjectFromDictionary:responseObject forProtocol:@protocol(SocializeComment)];
         [_delegate receivedComment: self comment:comment];    
     }
-    else if([responseObject class] == [NSArray class])
+    else if([responseObject isKindOfClass: [NSArray class]])
     {
         [self parseCommentsList: responseObject];
     }
@@ -140,8 +152,7 @@
     NSMutableArray* comments = [NSMutableArray arrayWithCapacity:[commentsJsonData count]];
     [commentsJsonData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
      {
-         id<SocializeComment> comment = [_commentFormater.objectFactory createObjectForProtocolName: @"SocializeComment"];
-         [_commentFormater toObject:comment fromDictionary:obj];
+         id<SocializeComment> comment = [_objectCreator createObjectFromDictionary:obj forProtocol:@protocol(SocializeComment)];
          [comments addObject:comment];
      }
     ];

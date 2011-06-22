@@ -33,16 +33,6 @@
 @class SocializeUserJSONFormatter;
 
 @interface SocializeCommentJSONFormatter : SocializeObjectJSONFormatter {
-@private
-    SocializeEntityJSONFormatter* _entityFormatter;
-    SocializeApplicationJSONFormatter* _appFormatter;
-    SocializeUserJSONFormatter* _userFormatter;
 }
-
-@property (nonatomic, retain) SocializeEntityJSONFormatter* entityFormatter;
-@property (nonatomic, retain) SocializeApplicationJSONFormatter* appFormatter;
-@property (nonatomic, retain) SocializeUserJSONFormatter* userFormatter;
-
--(id) initWithFactory:(SocializeObjectFactory *)theObjectFactory;
 
 @end
