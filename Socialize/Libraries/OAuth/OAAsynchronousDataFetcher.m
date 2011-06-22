@@ -51,6 +51,8 @@
 	
 	if (connection)
 		[connection release];
+    
+    NSLog(@"[request HTTPMethod] %@", [request HTTPMethod]);
 	
 	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     

@@ -33,9 +33,8 @@
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
                              delegate:(id<SocializeAuthenticationDelegate>)delegate
                            {
-                               
+
     _authService = [[SocializeAuthenticateService alloc] init];
-                               
     [_authService  authenticateWithApiKey:apiKey 
                            apiSecret:apiSecret
                                 udid:udid
@@ -43,7 +42,6 @@
                            thirdPartyUserId:thirdPartyUserId
                            thirdPartyName:thirdPartyName
                                 delegate:delegate];
-
 }
 
 -(BOOL)isAuthenticated{

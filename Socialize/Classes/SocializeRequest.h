@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OAConsumer.h"
+#import "OAAsynchronousDataFetcher.h"
 
 /*
  *Your application should implement this delegate
@@ -23,9 +25,14 @@
     NSString*                   _url;
     NSString*                   _httpMethod;
     NSMutableDictionary*        _params;
-    NSURLConnection*            _connection;
+//    NSURLConnection*            _connection;
     NSMutableData*              _responseText;
-
+    
+    
+    OAToken                     *_token;
+    OAConsumer                  *_consumer;
+    OAMutableURLRequest         *_request;
+    OAAsynchronousDataFetcher   *_dataFetcher;
 }
 
 @property(nonatomic,assign) id<SocializeRequestDelegate> delegate;
@@ -34,8 +41,10 @@
 @property(nonatomic,retain) NSMutableDictionary         *params;
 @property(nonatomic,retain) NSURLConnection             *connection;
 @property(nonatomic,retain) NSMutableData               *responseText;
-
-
+@property(nonatomic,retain) OAToken                     *token;
+@property(nonatomic,retain) OAConsumer                  *consumer;
+@property(nonatomic,retain) OAMutableURLRequest         *request;
+@property(nonatomic,retain) OAAsynchronousDataFetcher   *dataFetcher;
 
 + (SocializeRequest*)getRequestWithParams:(NSMutableDictionary *) params
                         httpMethod:(NSString *) httpMethod
