@@ -80,14 +80,6 @@
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:30.0];
 }
 
-- (void)testFaildGetRequest {
-    [self prepare];
-    _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"GET" delegate:self requestURL:@"invalidparam"];
-    [_request retain];
-    
-    [_request connect];  
-    [self waitForStatus:kGHUnitWaitStatusFailure timeout:30.0];
-}
 */
 
 /*-(void)testOAInterfaceForRequests1{
@@ -100,6 +92,26 @@
     [mockProvider verify];
 }
 */
+
+
+- (void)testFaildGetRequest {
+    [self prepare];
+    _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"GET" delegate:self requestURL:@"invalidparam"];
+  //  [_request retain];
+    
+    [_request connect];  
+    [self waitForStatus:kGHUnitWaitStatusFailure timeout:30.0];
+}
+
+
+- (void)testFaildPOSTRequest {
+    [self prepare];
+    _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"POST" delegate:self requestURL:@"invalidparam"];
+//    [_request retain];
+    
+    [_request connect];  
+    [self waitForStatus:kGHUnitWaitStatusFailure timeout:30.0];
+}
 
 
 -(void)testOAInterfaceForRequests2{
