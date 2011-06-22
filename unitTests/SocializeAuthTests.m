@@ -16,33 +16,33 @@
 
 -(void) setUpClass
 {
+    [super setUpClass];
     _service = [[SocializeAuthenticateService alloc] init];
     _testError = [NSError errorWithDomain:@"" code: 402 userInfo:nil];
 }
 
 -(void) tearDownClass
 {
-    [_service release]; _service = nil;
+    //[_service release]; 
+    _service = nil;
+    [super tearDownClass];
 }
 
 -(void)testAuthTests{
     
-  /*  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   [NSNumber numberWithInt:1234], @"id",
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   @"someid", @"udid",
                                    nil];
     
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
-    
-    _service.provider = mockProvider;   
+    [[mockProvider expect] requestWithMethodName:@"authenticate/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
+    _service.provider = mockProvider;
+
     [_service authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" delegate:self];
     [mockProvider verify];
-   */
 }
 
-
 -(void)didAuthenticate{
-    //    NSLog(@"%@", accessToken);
     return;
 }
 

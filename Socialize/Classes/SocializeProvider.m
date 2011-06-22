@@ -32,8 +32,8 @@
 
 
 static NSString* kRestserverBaseURL = @"http://www.dev.getsocialize.com/v1/";
-static NSString* kSDK = @"ios";
-static NSString* kSDKVersion = @"1";
+//static NSString* kSDK = @"ios";
+//static NSString* kSDKVersion = @"1";
 
 @interface SocializeProvider()
 - (void)openUrl:(NSString *)url

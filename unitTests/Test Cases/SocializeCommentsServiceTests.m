@@ -37,8 +37,8 @@
 static const int singleCommentId = 1;
 
 @interface SocializeCommentsServiceTests()
-    -(NSMutableDictionary*) dictionaryFromJSON: (NSString*) jsonRequstString;
-    - (id) MockProviderForGetListOfCommon: (NSString *) jsonRequstString method: (NSString *)method httpMethod: (NSString*) httpMethod;
+-(NSMutableDictionary*) dictionaryFromJSON: (NSString*) jsonRequstString;
+- (id) MockProviderForGetListOfCommon: (NSString *) jsonRequstString method: (NSString *)method httpMethod: (NSString*) httpMethod;
 @end
 
 @implementation SocializeCommentsServiceTests
@@ -110,7 +110,6 @@ static const int singleCommentId = 1;
                             nil];
    
     [_service postComments:params];
-    
     [mockProvider verify];
 }
 

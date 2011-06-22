@@ -30,12 +30,12 @@
 #import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
 #import "SocializeRequest.h"
-#import <GHUnitIOS/GHMockNSURLConnection.h>
+//#import <GHUnitIOS/GHMockNSURLConnection.h>
 
 
 @interface SocializeRequestTests : GHAsyncTestCase<SocializeRequestDelegate> {
     SocializeRequest* _request;
-    GHMockNSURLConnection *_connection;
+//    GHMockNSURLConnection *_connection;
     NSError* _expectedError; 
 }
 

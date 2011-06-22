@@ -28,9 +28,11 @@
 
 #import "SocializeRequestTests.h"
 #import <GHUnitIOS/GHMockNSURLConnection.h>
+#import "OAAsynchronousDataFetcher.h"
+#import <OCMock/OCMock.h>
 
 @implementation SocializeRequestTests
-
+/*
 - (void)testSuccessGetRequest {
     [self prepare];
     
@@ -51,64 +53,89 @@
     GHAssertTrue([_request loading], nil);
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:3.0];
 }
+*/
 
-- (void)testSuccessPostRequest {
-    [self prepare];
-    
+
+-(void)testRequestCreation{
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    @"parameter_value_1", @"parameter_key_1",
                                    @"parameter_value_2", @"parameter_key_2",
-                                   [[[UIImage alloc] init] autorelease], @"parameter_key_3",
-                                   [[[NSData alloc] init] autorelease], @"parameter_key_4",
+                                   nil];
+
+    _request = [SocializeRequest getRequestWithParams:params httpMethod:@"GET" delegate:self requestURL:@"www.google.com"];
+    GHAssertEqualStrings(@"GET", _request.httpMethod, @"should be equal");
+    GHAssertEqualStrings(@"www.google.com?parameter_key_2=parameter_value_2&parameter_key_1=parameter_value_1", _request.url, @"should be equal");
+}
+
+/*
+- (void)testSuccessPostRequest {
+    [self prepare];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   @"hello_there", @"udid",
                                    nil];
     
-    _request = [SocializeRequest getRequestWithParams:params httpMethod:@"POST" delegate:self requestURL:@"www.google.com"];
-    
-    _connection = [[GHMockNSURLConnection alloc] initWithRequest:nil delegate:_request startImmediately:NO];	
-    [_connection receiveHTTPResponseWithStatusCode:204 headers:nil afterDelay:0.1];
-    [_connection receiveData:[NSData data] afterDelay:0.2];
-    [_connection finishAfterDelay:0.4];
-    
+    _request = [SocializeRequest getRequestWithParams:params httpMethod:@"POST" delegate:self requestURL:@"http://www.dev.getsocialize.com/v1/authenticate/"];
+    [_request retain];
     [_request connect];
-    
-    GHAssertTrue([_request loading], nil);
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:3.0];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:30.0];
 }
 
 - (void)testFaildGetRequest {
     [self prepare];
-    _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"GET" delegate:self requestURL:@"www.google.com"];
-    
-    _connection = [[GHMockNSURLConnection alloc] initWithRequest:nil delegate:_request startImmediately:NO];	
-    [_connection receiveHTTPResponseWithStatusCode:204 headers:nil afterDelay:0.1];
-    _expectedError = [NSError errorWithDomain:@"Socialize" code:404 userInfo:nil];
-    [_connection failWithError:_expectedError afterDelay:0.2];
+    _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"GET" delegate:self requestURL:@"invalidparam"];
+    [_request retain];
     
     [_request connect];  
-    [self waitForStatus:kGHUnitWaitStatusFailure timeout:2.0];
+    [self waitForStatus:kGHUnitWaitStatusFailure timeout:30.0];
+}
+*/
+
+/*-(void)testOAInterfaceForRequests1{
+
+    id mockProvider = [OCMockObject mockForClass:[OAAsynchronousDataFetcher class]];
+    [[mockProvider expect] start];
+    [self prepare];
+    _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"GET" delegate:self requestURL:@"invalidparam"];
+    [_request connect];
+    [mockProvider verify];
+}
+*/
+
+
+-(void)testOAInterfaceForRequests2{
+    
+    id mockRequest = [OCMockObject mockForClass:[OAMutableURLRequest class]];
+    [[mockRequest expect] setHTTPMethod:@"GET"];
+    [[mockRequest expect] prepare];
+    _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"GET" delegate:self requestURL:@"invalidparam"];
+    _request.request = mockRequest;
+    [_request connect];
+    [mockRequest verify];
+
 }
 
 - (id)requestLoading:(NSMutableURLRequest *)request
 {
-    return _connection;
+    return nil;
 }
 
 - (void)request:(SocializeRequest *)request didReceiveResponse:(NSURLResponse *)response
 {
-    GHAssertEquals([(NSHTTPURLResponse *)response statusCode], 204, nil);
+    
 }
 
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
-    GHAssertEqualObjects(_expectedError, error, nil);
-    [self notify:kGHUnitWaitStatusFailure forSelector:@selector(testFaildGetRequest)];
+    // GHAssertEqualObjects(_expectedError, error, nil);
+    [self notify:kGHUnitWaitStatusFailure];
 }
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
 {
-    GHAssertEqualObjects(data, [NSData data], nil);
+    NSString *responseBody = [[NSString alloc] initWithData:data
+                                                   encoding:NSUTF8StringEncoding];
+    NSLog(@"responseBody %@", responseBody);
     [self notify:kGHUnitWaitStatusSuccess];
 }
-
 
 @end

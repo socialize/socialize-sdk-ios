@@ -36,6 +36,8 @@
 
 -(void)dealloc{
     [_provider release];
+    _provider = nil;
+    [super dealloc];
 }
 
 
