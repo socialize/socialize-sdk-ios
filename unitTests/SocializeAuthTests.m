@@ -11,6 +11,8 @@
 #import "SocializeProvider.h"
 #import <OCMock/OCMock.h>
 #import "Socialize.h"
+#import "NSMutableData+PostBody.h"
+#import "SocializeCommonDefinitions.h"
 
 
 @implementation SocializeAuthTests
@@ -89,10 +91,23 @@
 }
 
 -(void)testIsAuthenticated{
+    [self prepare];
+//    _service.delegate = self;
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthenticationDelegate)];
+    _service.delegate = mockDelegate;
+    [[mockDelegate expect] didAuthenticate];
 
+    NSString* reponseString =@"{\"oauth_token_secret\": \"f0e68570-00a4-4516-af27-b61a23099ad4\", \"oauth_token\": \"7ef9831c-5e23-4060-b197-4df5481a381d\", \"user\": {\"username\": \"User3920508\", \"id\": 3920508, \"small_image_uri\": null}}";
+    
+    NSData *data = [reponseString dataUsingEncoding:NSUTF8StringEncoding];
+    [_service request:nil didLoadRawResponse:data];
+    [mockDelegate verify];
+
+   // [self waitForStatus:kGHUnitWaitStatusSuccess timeout:30.0];
 }
 
 -(void)didAuthenticate{
+   // [self notify:kGHUnitWaitStatusSuccess];
     return;
 }
 

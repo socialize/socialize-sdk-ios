@@ -123,7 +123,6 @@
     _request.request = mockRequest;
     [_request connect];
     [mockRequest verify];
-
 }
 
 - (id)requestLoading:(NSMutableURLRequest *)request
