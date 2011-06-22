@@ -105,6 +105,8 @@
 -(NSString*)getSocializeId{
     NSUserDefaults* userPreferences = [NSUserDefaults standardUserDefaults];
     NSString* userJSONObject = [userPreferences valueForKey:kSOCIALIZE_USERID_KEY];
+    if (!userJSONObject)
+        return @"";
     return userJSONObject;
 }
 
@@ -125,15 +127,15 @@
                              delegate:(id<SocializeAuthenticationDelegate>)delegate
                            {
    _delegate = delegate;
-   NSString* payloadJson = [[NSDictionary dictionaryWithObjectsAndKeys:udid, @"udid", 
-                             thirdPartyUserId,  @"socialize_id", 
-                             1/* auth type is for facebook*/ , @"auth_type",
+   NSMutableDictionary* dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:udid, @"udid", 
+                             [self getSocializeId],  @"socialize_id", 
+                             @"1"/* auth type is for facebook*/ , @"auth_type",
                              thirdPartyAuthToken, @"auth_token",
-                             [self getSocializeId], @"auth_id" , nil] JSONString];
+                             thirdPartyUserId, @"auth_id" , nil] ;
                                
-   NSString* jsonParams = [[NSDictionary dictionaryWithObjectsAndKeys:payloadJson, @"payload", nil] JSONString];
-   NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
-   [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+//   NSString* jsonParams = [[NSDictionary dictionaryWithObjectsAndKeys:payloadJson, @"payload", nil] JSONString];
+  // NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
+   [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:dictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
 
