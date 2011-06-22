@@ -54,8 +54,8 @@
 
 - (void)dealloc 
 {
-    [prototypeDictionary release];
-    [formatterDictionary release];
+    [prototypeDictionary release]; prototypeDictionary = nil;
+    [formatterDictionary release]; formatterDictionary = nil;
     [super dealloc];
 }
 

@@ -30,12 +30,12 @@
 
 
 @implementation SocializeObjectFormatter
-@synthesize objectFactory = _factory;
+//@synthesize objectFactory = _factory;
 
 -(void)dealloc
 {
     [super dealloc];
-    [_factory release];
+    _factory = nil;
 }
 
 -(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory
@@ -43,7 +43,7 @@
     self = [super init];
     if (self) 
     {
-        _factory = [theObjectFactory retain];
+        _factory = theObjectFactory;
     }
     return self;
 }

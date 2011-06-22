@@ -69,7 +69,7 @@
 {
     self.delegate = nil;
     self.provider = nil;
-    [_objectCreator release]; _objectCreator = nil;
+    self.objectCreator = nil;
     [super dealloc];
 }
 

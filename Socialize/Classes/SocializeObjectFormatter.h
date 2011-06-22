@@ -37,7 +37,7 @@
 
 }
 
-@property (nonatomic, readonly) SocializeObjectFactory* objectFactory;
+//@property (nonatomic, readonly) SocializeObjectFactory* objectFactory;
 
 -(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory;
 
