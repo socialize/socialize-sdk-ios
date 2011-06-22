@@ -28,7 +28,7 @@
     [super tearDownClass];
 }
 
--(void)testAuthTests{
+-(void)testAuthParams{
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    @"someid", @"udid",
@@ -41,6 +41,42 @@
     [_service authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" delegate:self];
     [mockProvider verify];
 }
+
+-(NSString*)getSocializeId{
+    NSUserDefaults* userPreferences = [NSUserDefaults standardUserDefaults];
+    NSString* userJSONObject = [userPreferences valueForKey:kSOCIALIZE_USERID_KEY];
+    if (!userJSONObject)
+        return @"";
+    return userJSONObject;
+}
+
+-(void)testAuthAnonymousParams{
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"someid", @"udid", 
+                                       [self getSocializeId] ,  @"socialize_id", 
+                                       @"1"/* auth type is for facebook*/ , @"auth_type",
+                                       @"another token", @"auth_token",
+                                       @"anotheruserid", @"auth_id" , nil] ;
+    
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    
+    [[mockProvider expect] requestWithMethodName:@"authenticate/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
+    _service.provider = mockProvider;
+    
+    //[_service authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" //delegate:self];
+    
+     [_service  authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" 
+            apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" 
+            udid:@"someid"
+            thirdPartyAuthToken:@"another token"
+            thirdPartyUserId:@"anotheruserid"
+                        thirdPartyName:FacebookAuth
+                                delegate:self];
+    
+    
+    [mockProvider verify];
+}
+
 
 -(void)didAuthenticate{
     return;
