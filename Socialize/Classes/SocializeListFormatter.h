@@ -14,6 +14,7 @@
     
 }
 
+-(id)toObjectfromString:(NSString *)JSONString forProtocol:(Protocol *)protocol;
 //-(void)toObjectArray:(NSMutableArray *)objectList fromString:(NSString *)JSONString;
 //-(void)toObjectArray:(NSMutableArray *)objectList fromDictionaryArray:(NSArray *)arrayOfDictionaries;
 

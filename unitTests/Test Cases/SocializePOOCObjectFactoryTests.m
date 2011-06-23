@@ -145,23 +145,23 @@
 -(void)testCreateStringRepresentationOfArray
 {
     
-   id mockSocializeObject1 = [OCMockObject mockForProtocol:@protocol(SocializeObject)];
-   id mockSocializeObject2 = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
-   
-//    NSDictionary * dictionary1 = [NSDictionary dictionaryWithObject:@"mockSocializeObject1Key" forKey:@"key"];
-//    NSDictionary * dictionary2 = [NSDictionary dictionaryWithObject:@"mockSocializeObject2Key" forKey:@"key"];
+//   id mockSocializeObject1 = [OCMockObject niceMockForProtocol:@protocol(SocializeObject)];
+//   id mockSocializeObject2 = [OCMockObject niceMockForProtocol:@protocol(SocializeEntity)];
+//   
+////    NSDictionary * dictionary1 = [NSDictionary dictionaryWithObject:@"mockSocializeObject1Key" forKey:@"key"];
+////    NSDictionary * dictionary2 = [NSDictionary dictionaryWithObject:@"mockSocializeObject2Key" forKey:@"key"];
+////    
+//    int intValue = 2;
 //    
-    int intValue = 2;
-    
-    
-   NSArray * entitiesArray = [NSArray arrayWithObjects:mockSocializeObject1, mockSocializeObject2,[NSNumber numberWithInt:intValue] ,nil];
-    
-    
-    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init]autorelease];
-    
-    [myTestFactory createStringRepresentationOfArray:entitiesArray];
-    
-   // NSString * expectedString = [[NSArray arrayWithObjects:dictionary1,dictionary2,[NSNumber numberWithInt:intValue] ,nil]JSONString];
+//    
+//   NSArray * entitiesArray = [NSArray arrayWithObjects:mockSocializeObject1, mockSocializeObject2,[NSNumber numberWithInt:intValue] ,nil];
+//    
+//    
+//    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init]autorelease];
+//    
+//    [myTestFactory createStringRepresentationOfArray:entitiesArray];
+//    
+//   NSString * expectedString = [[NSArray arrayWithObjects:dictionary1,dictionary2,[NSNumber numberWithInt:intValue] ,nil]JSONString];
 //    
 //    GHAssertEqualStrings(expectedString, actualString,@"Strings not equal");
 }

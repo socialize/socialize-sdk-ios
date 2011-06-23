@@ -7,17 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EntryViewController.h"
+#import "EntityViewController.h"
 #import "SocializeCommonDefinitions.h"
 #import "Socialize.h"
 
 @interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate, SocializeAuthenticationDelegate> {
 @private
-    EntryViewController* entryController;
+    EntityViewController* entryController;
     Socialize*           socialize;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) EntryViewController* entryController;
+@property (nonatomic, retain) EntityViewController* entryController;
 
 @end

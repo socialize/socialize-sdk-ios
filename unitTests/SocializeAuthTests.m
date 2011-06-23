@@ -34,7 +34,7 @@
 -(void)testAuthParams{
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   @"someid", @"udid",
+                                   @"{\"udid\":\"someid\"}",@"jsonData",
                                    nil];
     
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
@@ -55,7 +55,7 @@
 
 -(void)testAuthAnonymousParams{
     
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"someid", @"udid", 
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"{\"udid\":\"someid\"}",@"jsonData",
                                        [self getSocializeId] ,  @"socialize_id", 
                                        @"1"/* auth type is for facebook*/ , @"auth_type",
                                        @"another token", @"auth_token",

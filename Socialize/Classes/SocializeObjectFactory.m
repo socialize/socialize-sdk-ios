@@ -131,15 +131,18 @@
     //Note: Don't try to convert format String and pass to function below.  Because we want the formatter
     //To handle the string.  This keeps the Representation (JSON, XML, etc.) parsing implementation out of the factory.
 
-    id<SocializeObject> socializeObject = [self createObjectForProtocol:protocol];
-    
-    SocializeObjectFormatter * soFormatter = [formatterDictionary objectForKey:NSStringFromProtocol(protocol)];
-    NSAssert(soFormatter!=nil, @"%@ - formatter does not exist for this key. Please add formatter to the Factory", 
-             NSStringFromProtocol(protocol));
+//    id<SocializeObject> socializeObject = [self createObjectForProtocol:protocol];
+//    
+//    SocializeObjectFormatter * soFormatter = [formatterDictionary objectForKey:NSStringFromProtocol(protocol)];
+//    NSAssert(soFormatter!=nil, @"%@ - formatter does not exist for this key. Please add formatter to the Factory", 
+//             NSStringFromProtocol(protocol));
+//
+//    [soFormatter toObject:socializeObject fromString:stringRepresentation];
+//        
 
-    [soFormatter toObject:socializeObject fromString:stringRepresentation];
-        
-    return socializeObject;
+    SocializeListFormatter * soListFormatter = [[[SocializeListFormatter alloc]initWithFactory:self]autorelease]; 
+    return [soListFormatter toObjectfromString:stringRepresentation forProtocol:protocol];
+    //return socializeObject;
 }
 
 -(id)createObjectFromDictionary:(NSDictionary *)dictionaryRepresentation forProtocol:(Protocol *)protocol
@@ -158,8 +161,8 @@
 -(NSString *)createStringRepresentationOfArray:(NSArray *)objectArray
 {
     //Doing this now just to get this working, but the list formatter should be created/added the same way as other formatters.
-    //    SocializeListFormatter * soListFormatter = [[[SocializeListFormatter alloc]initWithFactory:self]autorelease]; 
-    //    return [soListFormatter toRepresentationStringfromArray:objectArray];
+        SocializeListFormatter * soListFormatter = [[[SocializeListFormatter alloc]initWithFactory:self]autorelease]; 
+        return [soListFormatter toRepresentationStringfromArray:objectArray];
 
     return @"";
 }

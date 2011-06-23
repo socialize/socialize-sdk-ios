@@ -51,12 +51,16 @@
              
     _delegate = delegate;
     NSString* payloadJson = [[NSDictionary dictionaryWithObjectsAndKeys:udid, @"udid", nil] JSONString];
-    NSString* jsonParams = [NSString stringWithFormat:@"payload=%@", payloadJson];//[[NSDictionary dictionaryWithObjectsAndKeys:payloadJson, @"payload", nil] JSONString];
+    //NSString* jsonParams = [NSString stringWithFormat:@"payload=%@", payloadJson];//[[NSDictionary dictionaryWithObjectsAndKeys:payloadJson, @"payload", nil] JSONString];
+    //NSData* jsonData =  [NSData dataWithBytes:[payloadJson UTF8String] length:[payloadJson length]];
+    //NSLog(@"jsonParams %@", jsonParams);
              
-    NSLog(@"jsonParams %@", jsonParams);
-             
-    NSMutableDictionary* paramsDict = [[NSMutableDictionary alloc] init];
-    [paramsDict setObject:udid forKey:@"udid"];
+    //NSMutableDictionary* paramsDict = [[NSMutableDictionary alloc] init];
+   
+  NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                                payloadJson, @"jsonData",
+                                                nil];
+             // [paramsDict setObject:udid forKey:@"udid"];
     [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict andHttpMethod:@"POST" andDelegate:self];
 }
 
@@ -118,8 +122,10 @@
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
                              delegate:(id<SocializeAuthenticationDelegate>)delegate
                            {
+                               
+                
    _delegate = delegate;
-   NSMutableDictionary* dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:udid, @"udid", 
+   NSMutableDictionary* dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"{\"udid\":\"%@\"}",udid],@"jsonData", 
                              [self getSocializeId],  @"socialize_id", 
                              @"1"/* auth type is for facebook*/ , @"auth_type",
                              thirdPartyAuthToken, @"auth_token",

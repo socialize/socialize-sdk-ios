@@ -11,6 +11,7 @@
 
 @implementation Socialize
 @synthesize commentService = _commentsService;
+@synthesize entityService = _entityService;
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
@@ -29,6 +30,8 @@
         _provider = [[SocializeProvider alloc] init];
         _authService = [[SocializeAuthenticateService alloc] initWithProvider:_provider];
         _commentsService = [[SocializeCommentsService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
+        
+        _entityService = [[SocializeEntityService alloc]initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
     }
     return self;
 }

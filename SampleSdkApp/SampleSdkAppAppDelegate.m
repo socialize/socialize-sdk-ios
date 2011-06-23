@@ -22,7 +22,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     socialize = [[Socialize alloc] init];
-    self.entryController = [[EntryViewController alloc] initWithEntry:[DemoEntry createDemoEntryWithText:@"This is demo entry"] andService: socialize];
+    self.entryController = [[EntityViewController alloc] initWithEntry:[DemoEntry createDemoEntryWithText:@"This is demo entry"] andService: socialize];
     [self.window addSubview:self.entryController.view];
     
     [self.window makeKeyAndVisible];

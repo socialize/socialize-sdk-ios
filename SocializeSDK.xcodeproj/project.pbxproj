@@ -42,7 +42,7 @@
 		16E2C4451398C40F007C91ED /* SampleSdkAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */; };
 		16E2C4481398C40F007C91ED /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C4461398C40F007C91ED /* MainWindow.xib */; };
 		16E2C4541398D1C2007C91ED /* SocializeActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4521398D1C2007C91ED /* SocializeActionView.m */; };
-		16E2C4571398D45A007C91ED /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4561398D45A007C91ED /* EntryViewController.m */; };
+		16E2C4571398D45A007C91ED /* EntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4561398D45A007C91ED /* EntityViewController.m */; };
 		16E2C4621398F6E3007C91ED /* action-bar-button-black-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C4591398F6E3007C91ED /* action-bar-button-black-hover.png */; };
 		16E2C4631398F6E3007C91ED /* action-bar-button-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C45A1398F6E3007C91ED /* action-bar-button-black.png */; };
 		16E2C4641398F6E3007C91ED /* action-bar-button-red-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C45B1398F6E3007C91ED /* action-bar-button-red-hover.png */; };
@@ -161,6 +161,8 @@
 		9A6C09A613B244BE00780951 /* SocializeListFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C09A413B244BE00780951 /* SocializeListFormatter.m */; };
 		9A6C09A913B2507B00780951 /* SocializeListFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C09A813B2507B00780951 /* SocializeListFormatterTests.m */; };
 		9A6C09AC13B2941F00780951 /* SocializeEntityServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C09AB13B2941F00780951 /* SocializeEntityServiceTests.m */; };
+		9ACDB2E813B392CD0097C122 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4D29841393FFCD0065C0CB /* SocializeConfigurationInfo.plist */; };
+		9ACDB2EC13B3953C0097C122 /* EntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ACDB2EB13B3953C0097C122 /* EntityViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,8 +224,8 @@
 		16E2C4471398C40F007C91ED /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		16E2C4511398D1C2007C91ED /* SocializeActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeActionView.h; sourceTree = "<group>"; };
 		16E2C4521398D1C2007C91ED /* SocializeActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeActionView.m; sourceTree = "<group>"; };
-		16E2C4551398D45A007C91ED /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryViewController.h; sourceTree = "<group>"; };
-		16E2C4561398D45A007C91ED /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryViewController.m; sourceTree = "<group>"; };
+		16E2C4551398D45A007C91ED /* EntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityViewController.h; sourceTree = "<group>"; };
+		16E2C4561398D45A007C91ED /* EntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityViewController.m; sourceTree = "<group>"; };
 		16E2C4591398F6E3007C91ED /* action-bar-button-black-hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-black-hover.png"; sourceTree = "<group>"; };
 		16E2C45A1398F6E3007C91ED /* action-bar-button-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-black.png"; sourceTree = "<group>"; };
 		16E2C45B1398F6E3007C91ED /* action-bar-button-red-hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-red-hover.png"; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 		9A6C09A813B2507B00780951 /* SocializeListFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeListFormatterTests.m; path = "Test Cases/SocializeListFormatterTests.m"; sourceTree = "<group>"; };
 		9A6C09AA13B2941F00780951 /* SocializeEntityServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEntityServiceTests.h; path = "Test Cases/SocializeEntityServiceTests.h"; sourceTree = "<group>"; };
 		9A6C09AB13B2941F00780951 /* SocializeEntityServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeEntityServiceTests.m; path = "Test Cases/SocializeEntityServiceTests.m"; sourceTree = "<group>"; };
+		9ACDB2EB13B3953C0097C122 /* EntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntityViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -456,12 +459,11 @@
 				16A5B339139CF69D00F3EF75 /* DemoEntry.m */,
 				16E2C46D13991239007C91ED /* NSNumber+Additions.h */,
 				16E2C46E13991239007C91ED /* NSNumber+Additions.m */,
-				16E2C4551398D45A007C91ED /* EntryViewController.h */,
-				16E2C4561398D45A007C91ED /* EntryViewController.m */,
+				16E2C4551398D45A007C91ED /* EntityViewController.h */,
+				16E2C4561398D45A007C91ED /* EntityViewController.m */,
+				9ACDB2EB13B3953C0097C122 /* EntityViewController.xib */,
 				16E2C4511398D1C2007C91ED /* SocializeActionView.h */,
 				16E2C4521398D1C2007C91ED /* SocializeActionView.m */,
-				16E2C4431398C40F007C91ED /* SampleSdkAppAppDelegate.h */,
-				16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */,
 				16A5B33C139D102300F3EF75 /* CommentsViewController.h */,
 				16A5B33D139D102400F3EF75 /* CommentsViewController.m */,
 				16A5B359139E128A00F3EF75 /* CommetsTableView.h */,
@@ -476,6 +478,8 @@
 		16E2C43B1398C40F007C91ED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				16E2C4431398C40F007C91ED /* SampleSdkAppAppDelegate.h */,
+				16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */,
 				16E2C43C1398C40F007C91ED /* SampleSdkApp-Info.plist */,
 				16E2C43D1398C40F007C91ED /* InfoPlist.strings */,
 				16E2C4401398C40F007C91ED /* SampleSdkApp-Prefix.pch */,
@@ -989,6 +993,8 @@
 				16A5B335139CF1D100F3EF75 /* view-sm-icon.png in Resources */,
 				16A5B337139CF24100F3EF75 /* action-bar-icon-comments.png in Resources */,
 				16A5B340139D102500F3EF75 /* CommentsViewController.xib in Resources */,
+				9ACDB2E813B392CD0097C122 /* SocializeConfigurationInfo.plist in Resources */,
+				9ACDB2EC13B3953C0097C122 /* EntityViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1039,7 +1045,7 @@
 				16E2C4421398C40F007C91ED /* main.m in Sources */,
 				16E2C4451398C40F007C91ED /* SampleSdkAppAppDelegate.m in Sources */,
 				16E2C4541398D1C2007C91ED /* SocializeActionView.m in Sources */,
-				16E2C4571398D45A007C91ED /* EntryViewController.m in Sources */,
+				16E2C4571398D45A007C91ED /* EntityViewController.m in Sources */,
 				16E2C46F13991239007C91ED /* NSNumber+Additions.m in Sources */,
 				16A5B33A139CF69E00F3EF75 /* DemoEntry.m in Sources */,
 				16A5B33F139D102500F3EF75 /* CommentsViewController.m in Sources */,

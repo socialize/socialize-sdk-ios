@@ -14,7 +14,7 @@
 #import "Socialize.h"
 #import "SocializeCommonDefinitions.h"
 
-@interface EntryViewController : UIViewController<UIWebViewDelegate, SocializeActionViewDelegate> {
+@interface EntityViewController : UIViewController<UIWebViewDelegate,UITextFieldDelegate, SocializeEntityServiceDelegate, SocializeActionViewDelegate> {
     
 @private
     SocializeActionView* _socializeActionPanel;
@@ -23,8 +23,16 @@
     
     DemoEntry* _entry;
     Socialize* _service;
+    
+    IBOutlet UITextField * keyField;
+    IBOutlet UITextField * nameField;
+    IBOutlet UITextView  * resultsView;
+    IBOutlet UIButton    * createButton;
+    
 }
 
 -(id) initWithEntry: (DemoEntry*) entry andService: (Socialize*) service;
 
+
+-(IBAction)createNew:(id)button;
 @end

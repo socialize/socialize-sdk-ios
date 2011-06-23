@@ -47,7 +47,7 @@
 
 @implementation SocializeEntityService
 
-//@synthesize delegate = _delegate;
+@synthesize delegate = _delegate;
 
 -(void) dealloc
 {
@@ -128,7 +128,7 @@
     
     if([entityResponse conformsToProtocol:@protocol(SocializeObject)])
     {
-       // [_delegate entityService:self didReceiveEntity:(id<SocializeEntity>)entityResponse];
+        [_delegate entityService:self didReceiveEntity:(id<SocializeEntity>)entityResponse];
     }
     else if([entityResponse isKindOfClass: [NSArray class]])
     {
@@ -136,7 +136,7 @@
     }
     else
     {
-       // [_delegate entityService:self didFailWithError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+        [_delegate entityService:self didFailWithError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
     }       
 
 }
@@ -145,7 +145,8 @@
 
 -(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest
 {
-    NSData* jsonData =  [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
+    //NSData* jsonData =  [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
+    NSString * jsonData = jsonRequest;
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:
             jsonData, @"jsonData",
             nil];

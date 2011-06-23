@@ -27,6 +27,53 @@
 //}
 
 //Template Methods
+-(id)toListFromArray:(NSArray *)itemArray forProtocol:(Protocol *)protocol
+{
+    NSMutableArray * array = [NSMutableArray arrayWithCapacity:10];
+    
+    for(id item in itemArray)
+    {
+        
+        if ([item isKindOfClass:[NSArray class]]) 
+        {
+            [array addObject:[self toListFromArray:(NSArray *)item forProtocol:protocol]];  
+        }
+        else if([item isKindOfClass:[NSDictionary class]])
+        {
+            
+            [array addObject:[_factory createObjectFromDictionary:(NSDictionary*)item  forProtocol:protocol]];
+            
+        }
+        else
+        {
+            
+            [array addObject:item];
+        }
+        
+    }
+    
+    return  array;
+    
+}
+
+-(id)toObjectfromString:(NSString *)JSONString forProtocol:(Protocol *)protocol
+{
+    id collectionObject = [JSONString objectFromJSONString];
+    
+    if ([collectionObject isKindOfClass:[NSArray class]]) 
+    {
+        return [self toListFromArray:(NSArray *)collectionObject forProtocol:protocol];   
+    }
+    else if([collectionObject isKindOfClass:[NSDictionary class]])
+    {
+        
+        return [_factory createObjectFromDictionary:(NSDictionary*)collectionObject forProtocol:protocol];
+        
+    }
+    
+    return  nil;
+}
+
 
 -(void)toRepresentationArray:(NSMutableArray *)JSONArray fromArray:(NSArray *)objectArray
 {

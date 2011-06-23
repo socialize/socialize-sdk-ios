@@ -43,6 +43,7 @@
         SocializeObjectFactory* _objectCreator;
     
 }
+@property (nonatomic, assign) id<SocializeEntityServiceDelegate> delegate;
 //-(void)entityWithKey:(NSString *)keyOfEntity;
 //-(void)listEntitiesWithKeys:(NSArray *)entityKeysArray;
 -(void)createEntities:(NSArray *)entities;
@@ -57,8 +58,8 @@
 
 @protocol SocializeEntityServiceDelegate
 
-//-(void) entityService:(SocializeEntityService *)entityService didReceiveEntity:(id<SocializeEntity>)entityObject;
+-(void) entityService:(SocializeEntityService *)entityService didReceiveEntity:(id<SocializeEntity>)entityObject;
 -(void) entityService:(SocializeEntityService *)entityService didReceiveListOfEntities:(NSArray *)entityList;
-//-(void) entityService:(SocializeEntityService *)entityService didFailWithError:(NSError *)error;
+-(void) entityService:(SocializeEntityService *)entityService didFailWithError:(NSError *)error;
 
 @end
