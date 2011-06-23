@@ -72,8 +72,7 @@
 {
     [_commentText resignFirstResponder];
     
-    NSMutableDictionary *commentsToPost = [NSMutableDictionary dictionaryWithObjectsAndKeys: _commentText.text, _entityKey, nil];
-    [_service createCommentsForExistingEntities:commentsToPost];
+    [_service createCommentForEntityWithKey:_entityKey comment:_commentText.text];
     _commentText.text = @"";
 }
 

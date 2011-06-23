@@ -88,20 +88,29 @@
     [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"GET" andDelegate:self];
 }
 
--(void) createCommentsForExistingEntities:(NSDictionary*)comments
-{   
-    NSMutableArray* params = [[NSMutableArray alloc] initWithCapacity:[comments count]];
-    [comments enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
-     {
-         NSDictionary* value = [NSDictionary dictionaryWithObjectsAndKeys:key, ENTITY_KEY,  obj, COMMENT_KEY, nil];
-         [params addObject:value];
-     }
-     ];
+-(void) createCommentForEntityWithKey: (NSString*) entityKey comment: (NSString*) comment
+{
+    NSArray *params = [NSArray arrayWithObjects:
+                       [NSDictionary dictionaryWithObjectsAndKeys:entityKey, ENTITY_KEY, comment, COMMENT_KEY, nil],
+                      nil];
     
     [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
 }
 
-
+-(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment createNew: (BOOL) new
+{
+    if(new)
+    {
+        NSDictionary* newEntity = [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil];
+        NSArray *params = [NSArray arrayWithObjects:
+                       [NSDictionary dictionaryWithObjectsAndKeys:newEntity, ENTITY_KEY, comment, COMMENT_KEY, nil],
+                       nil];
+    
+        [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+    }
+    else
+        [self createCommentForEntityWithKey:entity.key comment:comment];
+}
 
 #pragma mark - Socialize request delegate
 
