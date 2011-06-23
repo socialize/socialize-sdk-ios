@@ -74,6 +74,42 @@
     [_entityService createEntityWithKey:@"Foo" andName:@"Bar"];
     
 }
+//DuplicateCode
+-(void)testSingleCreateEntity
+{
+    id mockEntity = [OCMockObject niceMockForProtocol:@protocol(SocializeEntity)];
+    
+    [[mockEntity expect]setKey:@"Foo"];
+    [[mockEntity expect]setName:@"Bar"];
+    [[[mockfactory expect]andReturn:mockEntity]createObjectForProtocol:@protocol(SocializeEntity)];
+    
+    NSString* entityJSONString = @"{\"key\":\"Foo\",\"name\":\"Bar\"}";
+    
+    [[[mockfactory expect]andReturn:entityJSONString]createStringRepresentationOfArray:[NSArray arrayWithObject:mockEntity]];
+    
+    NSString* entityJSONStringResponse =  @"[{\"key\":\"Foo\",\"name\":\"Bar\"}]";
+    NSData* entityJSONDataResponse = [entityJSONStringResponse  dataUsingEncoding:NSUTF8StringEncoding];
+    
+    void (^testBlock)(NSInvocation *) = ^(NSInvocation *invocation) 
+    {
+        [_entityService request:nil didLoadRawResponse:entityJSONDataResponse];
+    };
+    
+
+    [[[mockfactory expect]andReturn:mockEntity]createObjectFromString:entityJSONStringResponse forProtocol:@protocol(SocializeEntity)];
+    
+    NSMutableDictionary* params = [_entityService genereteParamsFromJsonString:entityJSONString];
+    [[[mockProvider expect]
+      andDo:testBlock]
+     requestWithMethodName:@"entity/" andParams:params andHttpMethod:@"POST" andDelegate:_entityService];
+    
+    
+    [[mockDelegate expect]entityService:_entityService didReceiveEntity:mockEntity];
+    
+    [_entityService createEntityWithKey:@"Foo" andName:@"Bar"];
+    
+}
+
 
 
 @end

@@ -145,22 +145,28 @@
 -(void)testCreateStringRepresentationOfArray
 {
     
-//   id mockSocializeObject1 = [OCMockObject niceMockForProtocol:@protocol(SocializeObject)];
-//   id mockSocializeObject2 = [OCMockObject niceMockForProtocol:@protocol(SocializeEntity)];
-//   
-////    NSDictionary * dictionary1 = [NSDictionary dictionaryWithObject:@"mockSocializeObject1Key" forKey:@"key"];
-////    NSDictionary * dictionary2 = [NSDictionary dictionaryWithObject:@"mockSocializeObject2Key" forKey:@"key"];
-////    
-//    int intValue = 2;
+   id mockSocializeObject1 = [OCMockObject niceMockForProtocol:@protocol(SocializeEntity)];
+   id mockSocializeObject2 = [OCMockObject niceMockForProtocol:@protocol(SocializeEntity)];
+   
+//    NSDictionary * dictionary1 = [NSDictionary dictionaryWithObject:@"mockSocializeObject1Key" forKey:@"key"];
+//    NSDictionary * dictionary2 = [NSDictionary dictionaryWithObject:@"mockSocializeObject2Key" forKey:@"key"];
 //    
-//    
-//   NSArray * entitiesArray = [NSArray arrayWithObjects:mockSocializeObject1, mockSocializeObject2,[NSNumber numberWithInt:intValue] ,nil];
-//    
-//    
-//    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init]autorelease];
-//    
-//    [myTestFactory createStringRepresentationOfArray:entitiesArray];
-//    
+    int intValue = 2;
+    
+    
+    [[[mockSocializeObject1 expect]andReturn:@"mockSocializeObject1Key"]key];
+    [[[mockSocializeObject1 expect]andReturn:@"mockSocializeObject1Name"]name];
+    
+    [[[mockSocializeObject2 expect]andReturn:@"mockSocializeObject2Key"]key];
+    [[[mockSocializeObject2 expect]andReturn:@"mockSocializeObject2Name"]name];
+    
+    NSArray * entitiesArray = [NSArray arrayWithObjects:mockSocializeObject1, mockSocializeObject2,[NSNumber numberWithInt:intValue] ,nil];
+    
+    
+    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init]autorelease];
+    
+    [myTestFactory createStringRepresentationOfArray:entitiesArray];
+    
 //   NSString * expectedString = [[NSArray arrayWithObjects:dictionary1,dictionary2,[NSNumber numberWithInt:intValue] ,nil]JSONString];
 //    
 //    GHAssertEqualStrings(expectedString, actualString,@"Strings not equal");
