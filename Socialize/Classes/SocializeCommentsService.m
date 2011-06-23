@@ -114,7 +114,7 @@
 
 
 
-#pragma mark - Socialize requst delegate
+#pragma mark - Socialize request delegate
 
 //- (void)request:(SocializeRequest *)request didReceiveResponse:(NSURLResponse *)response
 //{

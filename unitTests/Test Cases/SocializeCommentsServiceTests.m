@@ -114,7 +114,6 @@ static const int singleCommentId = 1;
                             nil];
    
     [_service postComments:params];
-    
     [mockProvider verify];
 }
 

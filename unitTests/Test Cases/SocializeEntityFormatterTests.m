@@ -60,7 +60,6 @@
     
     [entityFormatter toObject:mockEntity fromString:JSONStringToParse];
     [mockEntity verify];    
-    
 }
 
 -(void)testFromEntity
@@ -72,11 +71,10 @@
     NSString * expectedNameFieldValue =(NSString *)[[JSONArrayParse objectAtIndex:0]objectForKey:@"name"];
     
     id mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
-    [[[mockEntity expect]andReturn:expectedKeyFieldValue]key];
-    [[[mockEntity expect]andReturn:expectedNameFieldValue]name];
+    [[[mockEntity expect] andReturn:expectedKeyFieldValue] key];
+    [[[mockEntity expect] andReturn:expectedNameFieldValue] name];
     
     SocializeEntityJSONFormatter * entityFormatter = [[[SocializeEntityJSONFormatter alloc]initWithFactory:_factory] autorelease];
-    
     
     NSMutableDictionary * objectDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
     [entityFormatter toDictionary:objectDictionary fromObject:mockEntity];

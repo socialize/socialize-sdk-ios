@@ -94,7 +94,7 @@
     GHAssertEqualStrings(actualResult.name, @"test application", nil);
 }
 
--(id)testCreateObjectFromDictionary
+-(void)testCreateObjectFromDictionary
 {
     
     NSDictionary * jsonApplication = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:123], @"id", @"test application", @"name", nil];

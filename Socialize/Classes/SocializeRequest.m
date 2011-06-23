@@ -10,12 +10,17 @@
 #import <UIKit/UIKit.h>
 #import "NSString+UrlSerialization.h"
 #import "NSMutableData+PostBody.h"
-//#import "SBJson.h"
+#import "OAAsynchronousDataFetcher.h"
+#import "OAConsumer.h"
+#import "OAServiceTicket.h"
+#import "SocializeCommonDefinitions.h"
+#import "JSONKit.h"
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
 
-static NSString* const kUserAgent = @"Socialize";
+static NSString* const kUserAgent = @"Socialize v1.0/iOS";
 static const NSTimeInterval kTimeoutInterval = 180.0;
 static const int kGeneralErrorCode = 10000;
 
@@ -32,15 +37,20 @@ url = _url,
 httpMethod = _httpMethod,
 params = _params,
 connection = _connection,
-responseText = _responseText;
+responseText = _responseText,
+token = _token,
+consumer = _consumer,
+request = _request,
+dataFetcher = _dataFetcher
+;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
 
 + (SocializeRequest *)getRequestWithParams:(NSMutableDictionary *) params
-                         httpMethod:(NSString *) httpMethod
-                           delegate:(id<SocializeRequestDelegate>) delegate
-                         requestURL:(NSString *) url 
+                                httpMethod:(NSString *) httpMethod
+                                  delegate:(id<SocializeRequestDelegate>) delegate
+                                requestURL:(NSString *) url 
 {
     SocializeRequest* request = [[[SocializeRequest alloc] init] autorelease];
     request.delegate = delegate;
@@ -49,6 +59,20 @@ responseText = _responseText;
     request.params = params;
     request.connection = nil;
     request.responseText = nil;
+    
+    
+    request.token =  [[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX ];
+    request.consumer = [[OAConsumer alloc] initWithKey:kSOCIALIZE_API_KEY secret:kSOCIALIZE_API_SECRET];
+    request.request = [[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:request.url] consumer:request.consumer token:request.token realm:nil signatureProvider:nil];
+    
+    request.dataFetcher = [[OAAsynchronousDataFetcher alloc] initWithRequest:request.request delegate:request
+                                                           didFinishSelector:@selector(tokenRequestTicket:didFinishWithData:)
+                                                             didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
+    
+    if ([request.httpMethod isEqualToString:@"GET"])
+        request.url = [NSString serializeURL:request.url params:request.params httpMethod:request.httpMethod];
+    
+    
     
     return request;
 }
@@ -67,70 +91,18 @@ responseText = _responseText;
 }
 
 
-
 /**
  * Formulate the NSError
  */
 - (id)formError:(NSInteger)code userInfo:(NSDictionary *) errorData {
-    return [NSError errorWithDomain:@"facebookErrDomain" code:code userInfo:errorData];
+    return [NSError errorWithDomain:@"Socialize" code:code userInfo:errorData];
 }
 
 /**
  * parse the response data
  */
 - (id)parseJsonResponse:(NSData *)data error:(NSError **)error {
-    
- /*   NSString* responseString = [[[NSString alloc] initWithData:data
-                                                      encoding:NSUTF8StringEncoding]
-                                autorelease];
-    SBJsonParser *jsonParser = [[SBJsonParser new] autorelease];
-    if ([responseString isEqualToString:@"true"]) {
-        return [NSDictionary dictionaryWithObject:@"true" forKey:@"result"];
-    } else if ([responseString isEqualToString:@"false"]) {
-        if (error != nil) {
-            *error = [self formError:kGeneralErrorCode
-                            userInfo:[NSDictionary
-                                      dictionaryWithObject:@"This operation can not be completed"
-                                      forKey:@"error_msg"]];
-        }
-        return nil;
-    }
-    
-    
-    id result = [jsonParser objectWithString:responseString];
-    
-    if (![result isKindOfClass:[NSArray class]]) {
-        if ([result objectForKey:@"error"] != nil) {
-            if (error != nil) {
-                *error = [self formError:kGeneralErrorCode
-                                userInfo:result];
-            }
-            return nil;
-        }
-        
-        if ([result objectForKey:@"error_code"] != nil) {
-            if (error != nil) {
-                *error = [self formError:[[result objectForKey:@"error_code"] intValue] userInfo:result];
-            }
-            return nil;
-        }
-        
-        if ([result objectForKey:@"error_msg"] != nil) {
-            if (error != nil) {
-                *error = [self formError:kGeneralErrorCode userInfo:result];
-            }
-        }
-        
-        if ([result objectForKey:@"error_reason"] != nil) {
-            if (error != nil) {
-                *error = [self formError:kGeneralErrorCode userInfo:result];
-            }
-        }
-    }
-  */
-    
     return nil;
-    
 }
 
 
@@ -142,22 +114,7 @@ responseText = _responseText;
          @selector(request:didLoadRawResponse:)]) {
         [_delegate request:self didLoadRawResponse:data];
     }
-    
-    if ([_delegate respondsToSelector:@selector(request:didLoad:)] ||
-        [_delegate respondsToSelector:
-         @selector(request:didFailWithError:)]) {
-          NSError* error = nil;
-          id result = [self parseJsonResponse:data error:&error];
-            
-        if (error) {
-            [self failWithError:error];
-        } else if ([_delegate respondsToSelector:
-                    @selector(request:didLoad:)]) {
-            [_delegate request:self didLoad:(result == nil ? data : result)];
-        }
-    }
 }
-
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -176,33 +133,15 @@ responseText = _responseText;
  */
 - (void)connect
 {   
-    self.url = [NSString serializeURL:_url params:_params httpMethod:_httpMethod];
-    NSMutableURLRequest* request =
-    [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url]
-                            cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-                        timeoutInterval:kTimeoutInterval];
-    [request setValue:kUserAgent forHTTPHeaderField:@"User-Agent"];
-    
-    
-    [request setHTTPMethod:self.httpMethod];
-    if ([self.httpMethod isEqualToString: @"POST"]) 
-    {
-        NSString* contentType = [NSString
-                                 stringWithFormat:@"multipart/form-data; boundary=%@", kStringBoundary];
-        [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
-        
-        [request setHTTPBody:[NSMutableData generatePostBodyWithParams:_params]];
+    [self.request setHTTPMethod:self.httpMethod];
+    if ([self.httpMethod isEqualToString: @"POST"]) {
+        NSString * stringValue = [_params JSONString];
+        NSString* jsonParams = [NSString stringWithFormat:@"payload=%@", stringValue];
+        NSLog(@"jsonParams  %@", jsonParams);
+        [self.request setHTTPBody:[jsonParams dataUsingEncoding:NSUTF8StringEncoding]];
     }
-    
-    if ([_delegate respondsToSelector:@selector(requestLoading:)]) 
-    {
-        self.connection = [_delegate requestLoading:request];
-        [_connection start];
-    }
-    else
-    {
-        _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];   
-    }
+    [self.request prepare];
+    [self.dataFetcher start];
 }
 
 /**
@@ -210,8 +149,10 @@ responseText = _responseText;
  */
 - (void)dealloc 
 {
-    [_connection cancel];
-    [_connection release]; _connection = nil;
+    [_token release]; _token = nil;
+    [_consumer release]; _consumer = nil;
+    [_request release]; _request = nil;
+    [_dataFetcher release]; _dataFetcher = nil;
     [_responseText release]; _responseText = nil;
     [_url release]; _url = nil;
     [_httpMethod release]; _httpMethod = nil;
@@ -219,48 +160,17 @@ responseText = _responseText;
     [super dealloc];
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
-// NSURLConnectionDelegate
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response 
-{
-    _responseText = [[NSMutableData alloc] init];
-    
-    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-    if ([_delegate respondsToSelector:@selector(request:didReceiveResponse:)]) {
-        [_delegate request:self didReceiveResponse:httpResponse];
-    }
+- (void)tokenRequestTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
+    NSString *responseBody = [[NSString alloc] initWithData:data
+                                                   encoding:NSUTF8StringEncoding];
+    NSLog(@"responseBody %@", responseBody);
+	if (ticket.didSucceed) 
+        [self handleResponseData:data];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data 
-{
-    [_responseText appendData:data];
-}
-
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
-                  willCacheResponse:(NSCachedURLResponse*)cachedResponse
-{
-    return nil;
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    [self handleResponseData:_responseText];
-    
-    [_responseText release];
-    _responseText = nil;
-    [_connection release];
-    _connection = nil;
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error 
-{
-    [self failWithError:error];
-    
-    [_responseText release];
-    _responseText = nil;
-    [_connection release];
-    _connection = nil;
+- (void)tokenRequestTicket:(OAServiceTicket *)ticket didFailWithError:(NSError*)error{
+    [self  failWithError:error];
 }
 
 @end

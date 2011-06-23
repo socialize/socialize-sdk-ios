@@ -84,6 +84,11 @@
 		5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		5CD4882D1386C42300E60C4C /* profile_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CD4882C1386C42300E60C4C /* profile_functions.c */; };
 		5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */; };
+		6D49742F13B2127300463D23 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68EB1813AFF99600E38356 /* NSMutableURLRequest+Parameters.m */; };
+		6D49743013B2127300463D23 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68EB1A13AFF99600E38356 /* NSString+URLEncoding.m */; };
+		6D49743213B212D700463D23 /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68EB1C13AFF99600E38356 /* NSURL+Base.m */; };
+		6D4EFCA913B1585800EE19BA /* NSMutableData+PostBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 163636BB13A6056400403879 /* NSMutableData+PostBody.m */; };
+		6DEFF42713B01B4000AE962A /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
 		6DF5947613A93436000D125A /* SocializeCommonDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DF5947413A93434000D125A /* SocializeCommonDefinitions.h */; };
 		6DF5996713AEE34D000D125A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D295B1393FE530065C0CB /* JSONKit.m */; };
 		84B8F3D11396EF4100C95F41 /* SocializeEntityJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8F3CF1396EF4100C95F41 /* SocializeEntityJSONFormatter.m */; };
@@ -1040,6 +1045,11 @@
 				16A5B33F139D102500F3EF75 /* CommentsViewController.m in Sources */,
 				16A5B35B139E128C00F3EF75 /* CommetsTableView.m in Sources */,
 				6DF5996713AEE34D000D125A /* JSONKit.m in Sources */,
+				6DEFF42713B01B4000AE962A /* NSString+UrlSerialization.m in Sources */,
+				6D4EFCA913B1585800EE19BA /* NSMutableData+PostBody.m in Sources */,
+				6D49742F13B2127300463D23 /* NSMutableURLRequest+Parameters.m in Sources */,
+				6D49743013B2127300463D23 /* NSString+URLEncoding.m in Sources */,
+				6D49743213B212D700463D23 /* NSURL+Base.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1310,7 +1320,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: pointabout";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"",
@@ -1326,7 +1336,7 @@
 				GCC_PREFIX_HEADER = "unitTests/unitTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1343,10 +1353,11 @@
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-lgcov",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "542E5F91-FA04-4A6B-BEB8-1CCD67D816FD";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1370,7 +1381,7 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "unitTests/unitTests-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1388,8 +1399,8 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-all_load",
 					"-lgcov",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
