@@ -72,10 +72,9 @@
 {
     [_commentText resignFirstResponder];
     
-    // add send code here
-    //
+    NSMutableDictionary *commentsToPost = [NSMutableDictionary dictionaryWithObjectsAndKeys: _commentText.text, _entityKey, nil];
+    [_service createCommentsForExistingEntities:commentsToPost];
     _commentText.text = @"";
-    [_commentsTable reloadData];
 }
 
 #pragma mark - Table view data source
