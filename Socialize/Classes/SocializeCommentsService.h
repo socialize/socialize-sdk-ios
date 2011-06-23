@@ -27,20 +27,13 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeRequest.h"
+#import "SocializeCommonDefinitions.h"
 
 @class SocializeCommentsService;
 @class SocializeProvider;
 @class SocializeObjectFactory;
 
 @protocol SocializeComment;
-
-@protocol SocializeCommentsServiceDelegate <NSObject>
-@required
-    -(void) receivedComment: (SocializeCommentsService*)service comment: (id<SocializeComment>) comment;
-    -(void) receivedComments: (SocializeCommentsService*)service comments: (NSArray*) comments;
-    -(void) didFailService:(SocializeCommentsService*)service withError: (NSError *)error;
-@end
-
 
 @interface SocializeCommentsService : NSObject<SocializeRequestDelegate> {
 

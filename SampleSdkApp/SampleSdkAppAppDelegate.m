@@ -6,6 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import "SampleSdkAppAppDelegate.h"
 #import "DemoEntry.h"
 #import "Socialize.h"
@@ -20,7 +21,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.entryController = [[EntryViewController alloc] initWithEntry:[DemoEntry createDemoEntryWithText:@"This is demo entry"]];
+    socialize = [[Socialize alloc] init];
+    self.entryController = [[EntryViewController alloc] initWithEntry:[DemoEntry createDemoEntryWithText:@"This is demo entry"] andService: socialize];
     [self.window addSubview:self.entryController.view];
     
     [self.window makeKeyAndVisible];
@@ -55,19 +57,21 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-    //OAConsumer *consumer = [[OAConsumer alloc] initWithKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" secret:@"b7364905-cdc6-46d3-85ad-06516b128819"];
-
-    Socialize* soc = [[Socialize alloc] init];
-    [soc authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" delegate:self];
+    [socialize authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" delegate:self];
+    entryController.view.userInteractionEnabled = NO;
 }
 
--(void)didAuthenticate{
-//    NSLog(@"%@", accessToken);
+-(void)didAuthenticate
+{
+    entryController.view.userInteractionEnabled = YES;
+    // TODO:: send create entity request from here
     return;
 }
 
--(void)didNotAuthenticate:(NSError*)error{
+-(void)didNotAuthenticate:(NSError*)error
+{
     NSLog(@"%@", error);
+    //entryController.view.userInteractionEnabled = YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -83,6 +87,7 @@
 {
     [entryController  release];
     [_window release];
+    [socialize release];
     [super dealloc];
 }
 

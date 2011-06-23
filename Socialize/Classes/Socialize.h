@@ -47,4 +47,6 @@
 
 -(BOOL)isAuthenticated;
 
+@property (nonatomic, readonly) SocializeCommentsService* commentService;
+
 @end

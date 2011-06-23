@@ -10,6 +10,7 @@
 
 
 @implementation Socialize
+@synthesize commentService = _commentsService;
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;

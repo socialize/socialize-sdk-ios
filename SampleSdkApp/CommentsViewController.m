@@ -14,6 +14,8 @@
 @synthesize commentText = _commentText;
 @synthesize sendButton = _sendButton;
 @synthesize commentsTable = _commentsTable;
+@synthesize commentService = _service;
+@synthesize entityKey = _entityKey;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +28,10 @@
 
 - (void)dealloc
 {
+    [_commentText release]; _commentText = nil;
+    [_sendButton release]; _sendButton = nil;
+    [_commentsTable release]; _commentsTable = nil;
+    _service = nil;
     [super dealloc];
 }
 
@@ -42,14 +48,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    _service.delegate = self;
+    [_service getCommentList:_entityKey];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    _service.delegate = nil;
+    self.commentsTable = nil;
+    self.sendButton = nil;
+    self.commentText = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -87,6 +96,25 @@
 		[_commentText resignFirstResponder];
 	}
 	[super touchesBegan:touches withEvent:event];
+}
+
+#pragma  mark   - Socialize comment service
+
+-(void) receivedComment: (SocializeCommentsService*)service comment: (id<SocializeComment>) comment
+{
+    //TODO:: save response
+    [_commentsTable reloadData];
+}
+
+-(void) receivedComments: (SocializeCommentsService*)service comments: (NSArray*) comments
+{
+    //TODO:: save response
+    [_commentsTable reloadData];    
+}
+
+-(void) didFailService:(SocializeCommentsService*)service withError: (NSError *)error
+{
+    NSLog(@"%@", error);
 }
 
 @end

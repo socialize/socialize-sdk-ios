@@ -11,6 +11,9 @@
 #import "CommentsViewController.h"
 #import "DemoEntry.h"
 
+#import "Socialize.h"
+#import "SocializeCommonDefinitions.h"
+
 @interface EntryViewController : UIViewController<UIWebViewDelegate, SocializeActionViewDelegate> {
     
 @private
@@ -19,8 +22,9 @@
     UIWebView* _webView;
     
     DemoEntry* _entry;
+    Socialize* _service;
 }
 
--(id) initWithEntry: (DemoEntry*) entry;
+-(id) initWithEntry: (DemoEntry*) entry andService: (Socialize*) service;
 
 @end

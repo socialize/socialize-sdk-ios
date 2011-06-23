@@ -27,12 +27,13 @@
 @synthesize webView = _webView;
 @synthesize entry = _entry;
 
--(id) initWithEntry: (DemoEntry*) entry
+-(id) initWithEntry: (DemoEntry*) entry andService: (Socialize*) service
 {
     self = [super init];
     if(self != nil)
     {
         self.entry = entry;
+        _service = service;
     }
     return self;
 }
@@ -43,6 +44,7 @@
     [_commentsNavigationController release];  _commentsNavigationController = nil;
     [_webView release]; _webView = nil;
     [_entry release]; _entry = nil;
+    _service = nil;
     [super dealloc];
 }
 
@@ -150,6 +152,8 @@
                           bundle:nil];
 	
     commentsController.title = @"Comments";
+    commentsController.entityKey = _entry.socializeEntry.key;
+    commentsController.commentService = _service.commentService;
     
 	UIButton * cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
