@@ -53,7 +53,7 @@
 {
     _delegate = nil;
     _provider = nil;
-    [_objectCreator release]; _objectCreator = nil;
+    _objectCreator = nil;
     [super dealloc];
 }
 
@@ -63,7 +63,7 @@
     if(self != nil)
     {
         _provider = provider;
-        _objectCreator = [objectFactory retain];
+        _objectCreator = objectFactory;
         _delegate = delegate;
     }
     
