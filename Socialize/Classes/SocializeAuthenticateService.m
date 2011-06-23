@@ -27,16 +27,17 @@
 @synthesize provider = _provider;
 @synthesize delegate = _delegate;
 
--(id)init{
+-(id) initWithProvider:(SocializeProvider*) provider
+{
     self = [super init];
-    if(self != nil){
-        _provider = [[SocializeProvider alloc] init];
+    if(self != nil)
+    {
+        _provider = provider;
     }
     return self;
 }
 
 -(void)dealloc{
-    [_provider release];
     _provider = nil;
     [super dealloc];
 }

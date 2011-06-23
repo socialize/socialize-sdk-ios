@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeProvider.h"
+#import "SocializeObjectFactory.h"
 #import "SocializeRequest.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeAuthenticateService.h"
+#import "SocializeCommentsService.h"
+
 
 //**************************************************************************************************//
 //This is a general facade of the SDK`s API. Through it a third party developers could use the API. //
@@ -21,9 +24,13 @@
 
 @interface Socialize : NSObject 
 {
-    SocializeProvider               *_provider;
-    SocializeAuthenticateService    *_authService;
-    ThirdPartyAuthName              _type; 
+    @private
+        SocializeObjectFactory* _objectFactory;
+        SocializeProvider               *_provider;
+    
+        SocializeAuthenticateService    *_authService;
+        SocializeCommentsService        *_commentsService;
+        ThirdPartyAuthName              _type;
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret    
