@@ -12,16 +12,19 @@
 
 #import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
+#import <OCMock/OCMock.h>
 #import "SocializeObjectFactory.h"
+#import "JSONKit.h"
 
 @interface SocializeObjectFormatterTests : GHTestCase 
 {
   
-    SocializeObjectFactory * _factory;  //possibly mock this.
+    SocializeObjectFactory * _factory;  //We should mock this.
 }  
 
 - (void)setUpClass;
 - (void)tearDownClass;
+- (id)mockFactory;
 
 //Helper methods: put these in a unitTestHelper Category for Formatters
 

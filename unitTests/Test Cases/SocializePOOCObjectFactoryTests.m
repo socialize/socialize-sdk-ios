@@ -11,6 +11,7 @@
 #import "SocializeObject.h"
 #import "SocializePOOCObjectFactory.h"
 #import "SocializeConfiguration.h"
+#import "JSONKit.h"
 
 @interface SocializePOOCObjectFactoryTests ()
 -(id)helperCreateMockConfigurationWithPrototypeConfiguration:(NSDictionary *)prototypeConfiguration;
@@ -93,7 +94,22 @@
     GHAssertEqualStrings(actualResult.name, @"test application", nil);
 }
 
--(void)testCreateStringFromObject
+-(id)testCreateObjectFromDictionary
+{
+    
+    NSDictionary * jsonApplication = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:123], @"id", @"test application", @"name", nil];
+    
+    ;
+    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init] autorelease];
+    
+    id<SocializeApplication> actualResult = [myTestFactory createObjectFromDictionary:jsonApplication forProtocol:@protocol(SocializeApplication)];
+    
+    GHAssertTrue(actualResult.objectID == 123, nil);
+    GHAssertEqualStrings(actualResult.name, @"test application", nil);
+    
+}
+
+-(void)testCreateStringRepresentationOfObject
 {
     NSString* expectedResult = @"{\"id\":123,\"name\":\"test application\"}";
     SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init]autorelease];
@@ -108,6 +124,48 @@
 
     GHAssertEqualStrings(expectedResult, actualResult, nil);
 }
+
+-(void)testCreateDictionaryRepresentationOfObject
+{
+    NSDictionary * expectedResult = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:123], @"id", @"test application", @"name", nil];
+    
+    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init]autorelease];
+    
+    id mockSocializeApplication = [OCMockObject mockForProtocol:@protocol(SocializeApplication)];
+    
+    int ID = 123;
+    [[[mockSocializeApplication stub] andReturnValue:OCMOCK_VALUE(ID)]objectID];
+    [[[mockSocializeApplication stub] andReturn:@"test application"]name];
+    
+    NSDictionary* actualResult = [myTestFactory createDictionaryRepresentationOfObject:mockSocializeApplication];
+    
+   GHAssertEqualObjects(expectedResult, actualResult, nil);
+}
+
+-(void)testCreateStringRepresentationOfArray
+{
+    
+   id mockSocializeObject1 = [OCMockObject mockForProtocol:@protocol(SocializeObject)];
+   id mockSocializeObject2 = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
+   
+//    NSDictionary * dictionary1 = [NSDictionary dictionaryWithObject:@"mockSocializeObject1Key" forKey:@"key"];
+//    NSDictionary * dictionary2 = [NSDictionary dictionaryWithObject:@"mockSocializeObject2Key" forKey:@"key"];
+//    
+    int intValue = 2;
+    
+    
+   NSArray * entitiesArray = [NSArray arrayWithObjects:mockSocializeObject1, mockSocializeObject2,[NSNumber numberWithInt:intValue] ,nil];
+    
+    
+    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]init]autorelease];
+    
+    [myTestFactory createStringRepresentationOfArray:entitiesArray];
+    
+   // NSString * expectedString = [[NSArray arrayWithObjects:dictionary1,dictionary2,[NSNumber numberWithInt:intValue] ,nil]JSONString];
+//    
+//    GHAssertEqualStrings(expectedString, actualString,@"Strings not equal");
+}
+
 
 
 -(void)testCreateFactoryWithNilOrEmptyConfiguration
