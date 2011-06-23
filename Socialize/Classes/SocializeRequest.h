@@ -35,6 +35,7 @@
     OAAsynchronousDataFetcher   *_dataFetcher;
 }
 
+@property (nonatomic, readonly) NSString * userAgentString;
 @property(nonatomic,assign) id<SocializeRequestDelegate> delegate;
 @property(nonatomic,copy)   NSString                    *url;
 @property(nonatomic,copy)   NSString                    *httpMethod;
@@ -50,6 +51,8 @@
                         httpMethod:(NSString *) httpMethod
                           delegate:(id<SocializeRequestDelegate>)delegate
                         requestURL:(NSString *) url;
+
++ (NSString *)userAgentString;
 - (BOOL) loading;
 
 - (void) connect;

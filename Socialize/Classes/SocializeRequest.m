@@ -44,6 +44,20 @@ request = _request,
 dataFetcher = _dataFetcher
 ;
 
++ (NSString *)userAgentString
+{
+    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.0",[[UIDevice currentDevice]       
+                                                                                         model],
+                               [[UIDevice currentDevice]systemVersion]];
+    return  userAgentStr;
+
+}
+
+-(NSString *)userAgentString
+{
+   return [SocializeRequest userAgentString];
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
 
@@ -134,7 +148,9 @@ dataFetcher = _dataFetcher
 - (void)connect
 {   
     [self.request setHTTPMethod:self.httpMethod];
-    if ([self.httpMethod isEqualToString: @"POST"]) {
+    [self.request addValue:[self userAgentString] forHTTPHeaderField:@"User-Agent"];
+    if ([self.httpMethod isEqualToString: @"POST"]) 
+    {
         NSString * stringValue = (NSString *) [_params objectForKey:@"jsonData"];
         //NSString * stringValue = [_params  JSONString];
         NSString* jsonParams = [NSString stringWithFormat:@"payload=%@", stringValue];
