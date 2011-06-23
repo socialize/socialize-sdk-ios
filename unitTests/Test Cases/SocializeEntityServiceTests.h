@@ -1,8 +1,8 @@
 /*
- * SocializeJSONFormatter.h
+ * SocializeEntityServiceTests.h
  * SocializeSDK
  *
- * Created on 6/10/11.
+ * Created on 6/17/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -23,40 +23,24 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ * See Also: http://gabriel.github.com/gh-unit/
  */
 
 #import <Foundation/Foundation.h>
-#import "SocializeObject.h"
+#import <UIKit/UIKit.h>
+#import <GHUnitIOS/GHUnit.h>
+#import <OCMock/OCMock.h>
+#import "SocializeEntityService.h"
 
-@class  SocializeObjectFactory;
 
 
-//This probably should be a protocol as well.
-@interface SocializeObjectFormatter : NSObject 
+
+@interface SocializeEntityServiceTests : GHTestCase  
 {
-
-    @protected
-        SocializeObjectFactory * _factory;
-
+    id mockfactory;
+    id mockProvider;
+    id mockDelegate;
+    SocializeEntityService * _entityService;
 }
-
-//@property (nonatomic, readonly) SocializeObjectFactory* objectFactory;
-
--(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory;
-
--(void)toObject:(id<SocializeObject>)toObject fromString:(NSString *)stringRepresentation;
-
-//Template Methods
--(void)toObject:(id<SocializeObject>)toObject fromDictionary:(NSDictionary *)dictionaryRepresentation;
-
--(void)toDictionary:(NSMutableDictionary *)dictionaryRepresentation fromObject:(id<SocializeObject>) fromObject;
-
--(NSString*)toStringfromObject:(id<SocializeObject>) fromObject;
-
-
-//Primitive methods
--(void)doToObject:(id<SocializeObject>)toObject fromDictionary:(NSDictionary *)dictionaryRepresentation;
-
--(void)doToDictionary:(NSMutableDictionary *)dictionaryRepresentation fromObject:(id<SocializeObject>) fromObject;
 
 @end

@@ -25,6 +25,7 @@
 @implementation SocializeAuthenticateService
 
 @synthesize provider = _provider;
+@synthesize delegate = _delegate;
 
 -(id)init{
     self = [super init];
@@ -105,6 +106,8 @@
 -(NSString*)getSocializeId{
     NSUserDefaults* userPreferences = [NSUserDefaults standardUserDefaults];
     NSString* userJSONObject = [userPreferences valueForKey:kSOCIALIZE_USERID_KEY];
+    if (!userJSONObject)
+        return @"";
     return userJSONObject;
 }
 
@@ -125,15 +128,15 @@
                              delegate:(id<SocializeAuthenticationDelegate>)delegate
                            {
    _delegate = delegate;
-   NSString* payloadJson = [[NSDictionary dictionaryWithObjectsAndKeys:udid, @"udid", 
-                             thirdPartyUserId,  @"socialize_id", 
-                             1/* auth type is for facebook*/ , @"auth_type",
+   NSMutableDictionary* dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:udid, @"udid", 
+                             [self getSocializeId],  @"socialize_id", 
+                             @"1"/* auth type is for facebook*/ , @"auth_type",
                              thirdPartyAuthToken, @"auth_token",
-                             [self getSocializeId], @"auth_id" , nil] JSONString];
+                             thirdPartyUserId, @"auth_id" , nil] ;
                                
-   NSString* jsonParams = [[NSDictionary dictionaryWithObjectsAndKeys:payloadJson, @"payload", nil] JSONString];
-   NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
-   [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+//   NSString* jsonParams = [[NSDictionary dictionaryWithObjectsAndKeys:payloadJson, @"payload", nil] JSONString];
+  // NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
+   [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:dictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
 
@@ -165,16 +168,26 @@
     NSString *responseBody = [[NSString alloc] initWithData:data
                                                    encoding:NSUTF8StringEncoding];
     
-    requestToken = [[OAToken alloc] initWithHTTPResponseBody:responseBody];
-    [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
     
     JSONDecoder *jsonKitDecoder = [JSONDecoder decoder];
     id jsonObject = [jsonKitDecoder objectWithData:data];
     
     if ([jsonObject isKindOfClass:[NSDictionary class]]){
+        
+        NSString* token_secret = [jsonObject objectForKey:@"oauth_token_secret"];
+        NSString* token = [jsonObject objectForKey:@"oauth_token"];
+        
+        if (token_secret && token){
+            requestToken = [[OAToken alloc] initWithKey:token secret:token_secret];
+            [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
+            [_delegate didAuthenticate];
+        }
+
         [self persistUserInfo:[jsonObject objectForKey:@"user"]];
     }
     
+//    if (requestToken.key)
+
     [responseBody release];
 }
 

@@ -58,7 +58,7 @@
     
     SocializeEntityJSONFormatter * entityFormatter = [[[SocializeEntityJSONFormatter alloc]initWithFactory:_factory] autorelease];
     
-    [entityFormatter toObject:mockEntity fromJSONString:JSONStringToParse];
+    [entityFormatter toObject:mockEntity fromString:JSONStringToParse];
     [mockEntity verify];    
 }
 

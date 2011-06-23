@@ -86,7 +86,7 @@
     NSString* jsonParams = [[NSDictionary dictionaryWithObjectsAndKeys:commentsId, IDS_KEY, nil] JSONString]; 
     NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
 
-    [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+    [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
 }
 
 -(void) getCommentList: (NSString*) entryKey
@@ -114,7 +114,7 @@
 
 
 
-#pragma mark - Socialize requst delegate
+#pragma mark - Socialize request delegate
 
 //- (void)request:(SocializeRequest *)request didReceiveResponse:(NSURLResponse *)response
 //{

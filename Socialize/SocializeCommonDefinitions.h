@@ -31,8 +31,10 @@ typedef enum {
 -(void)didNotAuthenticate:(NSError*)error;
 @end
 
-
-@protocol SocializeLikeDelegate
+@protocol SocializeLikeServiceDelegate <NSObject>
 -(void)didLikeEntity;
 -(void)didUnlikeEntity;
+-(void)didFailService:(NSObject*)service error:(NSError*)error;
 @end
+
+

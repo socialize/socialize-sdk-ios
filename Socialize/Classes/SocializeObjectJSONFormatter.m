@@ -13,7 +13,7 @@
 
 @implementation SocializeObjectJSONFormatter
 
--(void)toObject:(id<SocializeObject>)toObject fromJSONString:(NSString *)JSONString
+-(void)toObject:(id<SocializeObject>)toObject fromString:(NSString *)JSONString
 {
 
     NSDictionary *  socializeObjectDictionary = (NSDictionary *) [JSONString objectFromJSONString];
