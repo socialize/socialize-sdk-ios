@@ -18,7 +18,6 @@
 @interface SocializeAuthenticateService()
 -(NSString*)getSocializeId;
 -(NSString*)getSocializeToken;
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
 -(void)persistUserInfo:(NSDictionary*)dictionary;
 @end
 
@@ -40,15 +39,6 @@
 -(void)dealloc{
     _provider = nil;
     [super dealloc];
-}
-
-
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest
-{
-    NSData* jsonData =  [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
-    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            jsonData, @"jsonData",
-            nil];
 }
 
 #define AUTHENTICATE_METHOD @"authenticate/"
@@ -135,8 +125,6 @@
                              thirdPartyAuthToken, @"auth_token",
                              thirdPartyUserId, @"auth_id" , nil] ;
                                
-//   NSString* jsonParams = [[NSDictionary dictionaryWithObjectsAndKeys:payloadJson, @"payload", nil] JSONString];
-  // NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
    [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:dictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
