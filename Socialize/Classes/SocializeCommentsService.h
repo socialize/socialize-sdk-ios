@@ -52,6 +52,12 @@
 -(void) getCommentById: (int) commentId;
 -(void) getCommentsList: (NSArray*) commentsId;
 -(void) getCommentList: (NSString*) entryKey;
+
+//@params comments = {"entity key", "comment text" }
+//Example:
+//     NSDictionary* comments = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                  @"this was a great story", @"http://www.example.com/interesting-story/",
+//                             nil];
 -(void) createCommentsForExistingEntities: (NSDictionary*)comments;
 
 @end
