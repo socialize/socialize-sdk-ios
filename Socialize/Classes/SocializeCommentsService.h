@@ -34,6 +34,7 @@
 @class SocializeObjectFactory;
 
 @protocol SocializeComment;
+@protocol SocializeEntity;
 
 @interface SocializeCommentsService : NSObject<SocializeRequestDelegate> {
 
@@ -53,11 +54,8 @@
 -(void) getCommentsList: (NSArray*) commentsId;
 -(void) getCommentList: (NSString*) entryKey;
 
-//@params comments = {"entity key", "comment text" }
-//Example:
-//     NSDictionary* comments = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                  @"this was a great story", @"http://www.example.com/interesting-story/",
-//                             nil];
--(void) createCommentsForExistingEntities: (NSDictionary*)comments;
+-(void) createCommentForEntityWithKey: (NSString*) entityKey comment: (NSString*) comment;
+-(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment createNew: (BOOL) new;
+
 
 @end

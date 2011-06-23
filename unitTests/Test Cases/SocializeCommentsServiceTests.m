@@ -102,24 +102,46 @@ static const int singleCommentId = 1;
     [mockProvider verify];
 }
 
--(void) testCreateCommentForExistingEntity
+-(void) testCreateCommentForExisting
 {   
-    NSMutableArray* mockArray = [NSMutableArray arrayWithObjects:
-                                    [NSDictionary dictionaryWithObjectsAndKeys:
-                                        @"http://www.example.com/interesting-story/",@"entity",
-                                        @"this was a great story", @"text", nil], 
-                                 nil];
+    
+    NSArray *params = [NSArray arrayWithObjects:
+                       [NSDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"entity", @"this was a great story", @"text", nil],
+                       nil];
+    
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
+    
+    _service.provider = mockProvider;    
+    
+    SocializeEntity *entity = [[SocializeEntity new] autorelease];  
+    entity.key = @"http://www.example.com/interesting-story/";
+    entity.name = @"example";
+    [_service createCommentForEntity:entity comment:@"this was a great story" createNew:NO];
+    
+    [mockProvider verify];
+}
+
+-(void) testCreateCommentForNew
+{   
+    SocializeEntity *entity = [[SocializeEntity new] autorelease];  
+    entity.key = @"http://www.example.com/interesting-story/";
+    entity.name = @"example";
+    
+    NSArray* mockArray = [NSArray arrayWithObjects:
+                                     [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil],@"entity",
+                                      @"this was a great story", @"text", nil], 
+                                     nil];
+    
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
     [[mockProvider expect] requestWithMethodName:@"comment/" andParams:mockArray andHttpMethod:@"POST" andDelegate:_service];
     
     _service.provider = mockProvider;    
     
-    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"this was a great story", @"http://www.example.com/interesting-story/",
-                            nil];
-   
-    [_service createCommentsForExistingEntities:params];
 
+    [_service createCommentForEntity:entity comment:@"this was a great story" createNew:YES];
+    
     [mockProvider verify];
 }
 
