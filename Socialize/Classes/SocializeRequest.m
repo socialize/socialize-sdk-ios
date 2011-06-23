@@ -47,7 +47,7 @@ dataFetcher = _dataFetcher
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
 
-+ (SocializeRequest *)getRequestWithParams:(NSMutableDictionary *) params
++ (SocializeRequest *)getRequestWithParams:(id) params
                                 httpMethod:(NSString *) httpMethod
                                   delegate:(id<SocializeRequestDelegate>) delegate
                                 requestURL:(NSString *) url 
@@ -70,7 +70,7 @@ dataFetcher = _dataFetcher
                                                              didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
     
     if ([request.httpMethod isEqualToString:@"GET"])
-        request.url = [NSString serializeURL:request.url params:request.params httpMethod:request.httpMethod];
+        request.url = [NSString serializeURL:request.url params:(NSDictionary*)request.params httpMethod:request.httpMethod];
     
     
     

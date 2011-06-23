@@ -24,7 +24,7 @@
     id<SocializeRequestDelegate> _delegate;
     NSString*                   _url;
     NSString*                   _httpMethod;
-    NSMutableDictionary*        _params;
+    id                          _params;
 //    NSURLConnection*            _connection;
     NSMutableData*              _responseText;
     
@@ -38,7 +38,7 @@
 @property(nonatomic,assign) id<SocializeRequestDelegate> delegate;
 @property(nonatomic,copy)   NSString                    *url;
 @property(nonatomic,copy)   NSString                    *httpMethod;
-@property(nonatomic,retain) NSMutableDictionary         *params;
+@property(nonatomic,retain) id                          params;
 @property(nonatomic,retain) NSURLConnection             *connection;
 @property(nonatomic,retain) NSMutableData               *responseText;
 @property(nonatomic,retain) OAToken                     *token;

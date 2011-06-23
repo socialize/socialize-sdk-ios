@@ -75,7 +75,7 @@ request = _request;
  *            the request has received response
  */
 - (void)openUrl:(NSString *)url
-         params:(NSMutableDictionary *)params
+         params:(id)params
      httpMethod:(NSString *)httpMethod
        delegate:(id<SocializeRequestDelegate>)delegate 
 {
@@ -138,7 +138,7 @@ request = _request;
 }
 
 - (void)requestWithMethodName:(NSString *)methodName
-                    andParams:(NSMutableDictionary *)params
+                    andParams:(id)params
                 andHttpMethod:(NSString *)httpMethod
                   andDelegate:(id <SocializeRequestDelegate>)delegate 
 {
