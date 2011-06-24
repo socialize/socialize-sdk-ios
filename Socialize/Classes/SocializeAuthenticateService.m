@@ -158,7 +158,7 @@
 }
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data{
-    OAToken *requestToken;
+
 
     NSString *responseBody = [[NSString alloc] initWithData:data
                                                    encoding:NSUTF8StringEncoding];
@@ -173,8 +173,9 @@
         NSString* token = [jsonObject objectForKey:@"oauth_token"];
         
         if (token_secret && token){
-            requestToken = [[OAToken alloc] initWithKey:token secret:token_secret];
+            OAToken *requestToken = [[OAToken alloc] initWithKey:token secret:token_secret];
             [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
+            [request release]; request = nil;
             [_delegate didAuthenticate];
         }
 
