@@ -163,8 +163,8 @@
 }
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data{
-    OAToken *requestToken;
 
+    OAToken *requestToken;
     NSString *responseBody = [[NSString alloc] initWithData:data
                                                    encoding:NSUTF8StringEncoding];
     
@@ -182,12 +182,14 @@
             [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
             [_delegate didAuthenticate];
         }
+        else{
+            [_delegate didNotAuthenticate:[NSError errorWithDomain:@"Authentication" code: 600 userInfo:nil]];
+        }
+            
 
         [self persistUserInfo:[jsonObject objectForKey:@"user"]];
     }
     
-//    if (requestToken.key)
-
     [responseBody release];
 }
 

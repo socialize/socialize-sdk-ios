@@ -39,10 +39,10 @@
     @private
         NSString * _key;
         NSString * _name;
-        int _views; 
-        int _likes;
-        int _comments;
-        int _shares;
+        int        _views; 
+        int        _likes;
+        int        _comments;
+        int        _shares;
 }
 
 @property (nonatomic, retain) NSString * key;

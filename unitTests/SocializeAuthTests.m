@@ -92,7 +92,6 @@
 
 -(void)testIsAuthenticated{
     [self prepare];
-//    _service.delegate = self;
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthenticationDelegate)];
     _service.delegate = mockDelegate;
     [[mockDelegate expect] didAuthenticate];

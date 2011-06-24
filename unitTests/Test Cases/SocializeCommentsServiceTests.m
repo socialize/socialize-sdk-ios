@@ -76,7 +76,6 @@ static const int singleCommentId = 1;
     [mockProvider verify];
 }
 
-
 -(void) testGetListOfCommentsById
 {
     NSString* jsonRequstString = @"{\"ids\":[1,2]}";
