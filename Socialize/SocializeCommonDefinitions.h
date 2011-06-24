@@ -32,10 +32,10 @@ typedef enum {
 @end
 
 @protocol SocializeLikeServiceDelegate <NSObject>
--(void)receivedLikes:(id)delegate likes:(NSArray*)likes;
--(void)didLikeEntity;
--(void)didUnlikeEntity;
+
 -(void)didFailService:(id)service error:(NSError*)error;
+-(void)didSucceed:(id)service data:(id)data;
+
 @end
 
 @class SocializeCommentsService;

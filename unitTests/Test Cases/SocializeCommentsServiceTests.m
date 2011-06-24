@@ -137,7 +137,6 @@ static const int singleCommentId = 1;
     [[mockProvider expect] requestWithMethodName:@"comment/" andParams:mockArray andHttpMethod:@"POST" andDelegate:_service];
     
     _service.provider = mockProvider;    
-    
 
     [_service createCommentForEntity:entity comment:@"this was a great story" createNew:YES];
     

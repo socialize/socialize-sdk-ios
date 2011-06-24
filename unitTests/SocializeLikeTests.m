@@ -45,8 +45,6 @@
     [mockProvider verify];
 }
 
-
-
 -(void) testDeleteAlike
 {
     NSInteger alikeId = 54;
@@ -72,33 +70,31 @@
                                    nil];
 
     [[mockProvider expect] requestWithMethodName:@"likes/" andParams:params andHttpMethod:@"GET" andDelegate:_service];
-    [_service getLikes:@"www.123.com"];
+    [_service getLikesForEntityKey:@"www.123.com"];
     [mockProvider verify];
 }
 
-
-/*
--(void) testPostOfLikes
-{
+-(void)testpostLikeForEntity{
+    
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
     _service.provider = mockProvider;
     
+    SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
+    SocializeEntity* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeEntity)]; 
     
-    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
-    [_service getLikes:@"www.123.com"];
+    mockEntity.key = @"www.123.com";
+
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   [mockEntity key], @"entity",
+                                   nil];
+
+    [[mockProvider expect] requestWithMethodName:@"likes/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
+    [_service postLikeForEntity:mockEntity];
     [mockProvider verify];
 }
- */
 
--(void)receivedLikes:(id)delegate likes:(NSArray*)likes{
-    
-}
 
--(void)didLikeEntity{
-    
-}
-
--(void)didUnlikeEntity{
+-(void)didSucceed:(id)service data:(id)data{
     
 }
 

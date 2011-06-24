@@ -122,7 +122,6 @@
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
                              delegate:(id<SocializeAuthenticationDelegate>)delegate
                            {
-                               
                 
    _delegate = delegate;
    NSMutableDictionary* dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"{\"udid\":\"%@\"}",udid],@"jsonData", 
@@ -176,11 +175,9 @@
             [request release]; request = nil;
             [_delegate didAuthenticate];
         }
-        else{
+        else
             [_delegate didNotAuthenticate:[NSError errorWithDomain:@"Authentication" code: 600 userInfo:nil]];
-        }
             
-
         [self persistUserInfo:[jsonObject objectForKey:@"user"]];
     }
     

@@ -58,41 +58,50 @@
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
 {
     NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    DLog(@"LikeService didLoadRawReponse  %@", responseString);
+    
     id responseObject = [responseString objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
-    if([responseObject isKindOfClass: [NSDictionary class]])
-       [_delegate didLikeEntity];    
+    if([responseObject isKindOfClass:[NSDictionary class]])
+        [self parseLikes:responseObject];
     else if([responseObject isKindOfClass: [NSArray class]])
        [self parseLikes:responseObject];
     else
-       [_delegate didFailService:self error:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
-}
-    
--(void)parseLikes:(NSArray*)likesJsonData
-{
-    NSMutableArray* likes = [NSMutableArray arrayWithCapacity:[likesJsonData count]];
-    [likesJsonData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
-     {
-        id<SocializeLike> like = [_objectCreator createObjectFromDictionary:obj forProtocol:@protocol(SocializeLike)];
-        [likes addObject:like];
-     }
-     ];
-    
-    [_delegate receivedLikes:self likes:likes];
+       [_delegate didSucceed:self data:nil];
 }
 
--(void)postLikes:(NSArray*)array
+-(void)parseLikes:(id)likesJsonData
 {
-    NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
-    for(id entity in array){
-        if ([entity isKindOfClass:[NSString class]]){
-            [params setObject:entity forKey:@"entity"];
-        }
-        else if ([entity conformsToProtocol:@protocol(SocializeEntity)]){
-            [params setObject:[entity key]  forKey:@"entity"];
-        }
+    NSMutableArray* likes = nil;// = [NSMutableArray arrayWithCapacity:[likesJsonData count]];
+    if ([likesJsonData isKindOfClass:[NSDictionary class]]){
+        NSMutableArray* likes = [NSMutableArray array];
+        id<SocializeLike> like = [_objectCreator createObjectFromDictionary:likesJsonData forProtocol:@protocol(SocializeLike)];
+        [likes addObject:like];
     }
-    [_provider requestWithMethodName:LIKES_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+    else if ([likesJsonData isKindOfClass:[NSArray class]]){
+        NSMutableArray* likes = [NSMutableArray arrayWithCapacity:[likesJsonData count]];
+        [likesJsonData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+         {
+             id<SocializeLike> like = [_objectCreator createObjectFromDictionary:obj forProtocol:@protocol(SocializeLike)];
+             [likes addObject:like];
+         }
+         ];
+    }
+    
+    [_delegate didSucceed:self data:likes];
+}
+
+-(void)postLikeForEntity:(id<SocializeEntity>)entity{
+    if ([entity conformsToProtocol:@protocol(SocializeEntity)])
+         [self postLikeForEntityKey:[entity key]];
+}
+
+-(void)postLikeForEntityKey:(NSString*)key{
+    if (key && [key length]){
+        NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
+        [params setObject:key  forKey:@"entity"];
+        [_provider requestWithMethodName:LIKES_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+    }
 }
 
 -(void)deleteLike:(NSInteger)likeId{
@@ -101,7 +110,7 @@
     [params setObject:[NSNumber numberWithInteger:likeId] forKey:@"id"];
     NSString* updatedResource = [NSString stringWithFormat:@"%@%d/", LIKE_METHOD, likeId]; 
     [_provider requestWithMethodName:updatedResource andParams:params andHttpMethod:@"DELETE" andDelegate:self];
-    
+
 }
 
 -(void)getLike:(NSInteger)likeId{
@@ -113,23 +122,18 @@
 
 }
 
-- (void)getLikes:(NSString*)key, ... {
+-(void)getLikesForEntityKey:(NSString*)key{
     
     NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
-    //  NSInteger eachObject;
-    //  va_list argumentList;
-    if (key) // The first argument isn't part of the varargs list,
-    {                                   // so we'll handle it separately.
+    if (key)
         [params setObject:key forKey:@"key"];
-    }
-    
-    /*  va_start(argumentList, key); // Start scanning for arguments after firstObject.
-    while ((eachObject = (NSInteger)va_arg(argumentList, NSInteger))){
-        [params setObject:[NSNumber numberWithInteger:eachObject] forKey:@"id"];
-    }
-    */
-    // va_end(argumentList);
     [_provider requestWithMethodName:@"likes/" andParams:params andHttpMethod:@"GET" andDelegate:self];
+
+}
+
+-(void)getLikesForEntity:(id<SocializeEntity>)entity{
+    if ([entity conformsToProtocol:@protocol(SocializeEntity)])
+        [self getLikesForEntityKey:[entity key]];
 }
 
 @end

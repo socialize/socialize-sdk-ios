@@ -13,6 +13,7 @@
 @class SocializeObjectFactory;
 
 @protocol SocializeLikeServiceDelegate;
+@protocol SocializeEntity;
 
 @interface SocializeLikeService : NSObject<SocializeRequestDelegate> {
     
@@ -27,9 +28,11 @@
 @property (nonatomic, assign) SocializeObjectFactory           *objectCreator;
 
 -(id) initWithProvider: (SocializeProvider*)provider objectFactory: (SocializeObjectFactory*) objectFactory delegate: (id<SocializeLikeServiceDelegate>) delegate;
--(void)getLikes:(NSString*)key, ...;
+-(void)getLikesForEntityKey:(NSString*)key;
+-(void)getLikesForEntity:(id<SocializeEntity>)entity;
 -(void)getLike:(NSInteger)likeId;
 -(void)deleteLike:(NSInteger)likeId;
--(void)postLikes:(NSArray*)array;// array of entities or a string
+-(void)postLikeForEntityKey:(NSString*)key;
+-(void)postLikeForEntity:(id<SocializeEntity>)entity;
 
 @end
