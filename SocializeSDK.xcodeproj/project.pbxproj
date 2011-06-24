@@ -469,6 +469,8 @@
 				16A5B359139E128A00F3EF75 /* CommetsTableView.h */,
 				16A5B35A139E128B00F3EF75 /* CommetsTableView.m */,
 				16A5B33E139D102400F3EF75 /* CommentsViewController.xib */,
+				16E2C4431398C40F007C91ED /* SampleSdkAppAppDelegate.h */,
+				16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */,
 				16E2C4461398C40F007C91ED /* MainWindow.xib */,
 				16E2C43B1398C40F007C91ED /* Supporting Files */,
 			);
@@ -478,8 +480,6 @@
 		16E2C43B1398C40F007C91ED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				16E2C4431398C40F007C91ED /* SampleSdkAppAppDelegate.h */,
-				16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */,
 				16E2C43C1398C40F007C91ED /* SampleSdkApp-Info.plist */,
 				16E2C43D1398C40F007C91ED /* InfoPlist.strings */,
 				16E2C4401398C40F007C91ED /* SampleSdkApp-Prefix.pch */,
