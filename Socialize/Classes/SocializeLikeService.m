@@ -116,19 +116,19 @@
 - (void)getLikes:(NSString*)key, ... {
     
     NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
- //  NSInteger eachObject;
- //  va_list argumentList;
+    //  NSInteger eachObject;
+    //  va_list argumentList;
     if (key) // The first argument isn't part of the varargs list,
     {                                   // so we'll handle it separately.
         [params setObject:key forKey:@"key"];
     }
     
-  /*  va_start(argumentList, key); // Start scanning for arguments after firstObject.
+    /*  va_start(argumentList, key); // Start scanning for arguments after firstObject.
     while ((eachObject = (NSInteger)va_arg(argumentList, NSInteger))){
         [params setObject:[NSNumber numberWithInteger:eachObject] forKey:@"id"];
     }
     */
-   // va_end(argumentList);
+    // va_end(argumentList);
     [_provider requestWithMethodName:@"likes/" andParams:params andHttpMethod:@"GET" andDelegate:self];
 }
 
