@@ -34,12 +34,11 @@
 #import "SocializeObjectFactory.h"
 
 #import <Foundation/Foundation.h>
+#import "JSONKit.h"
 
 static const int singleCommentId = 1;
 
 @interface SocializeCommentsServiceTests()
-    -(NSMutableDictionary*) dictionaryFromJSON: (NSString*) jsonRequstString;
-    - (id) MockProviderForGetListOfCommon: (NSString *) jsonRequstString method: (NSString *)method httpMethod: (NSString*) httpMethod;
     -(NSString *)helperGetJSONStringFromFile:(NSString *)fileName;
 @end
 
@@ -61,13 +60,9 @@ static const int singleCommentId = 1;
 #pragma mark - Requests test
 
 -(void) testSendGetCommentById
-{
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   [NSNumber numberWithInt:singleCommentId], @"id",
-                                   nil];
-    
+{    
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:params andHttpMethod:@"GET" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:[NSString stringWithFormat:@"comment/%d/",singleCommentId] andParams:nil andHttpMethod:@"GET" andDelegate:_service];
     
     _service.provider = mockProvider;   
     
@@ -77,13 +72,15 @@ static const int singleCommentId = 1;
 }
 
 -(void) testGetListOfCommentsById
-{
-    NSString* jsonRequstString = @"{\"ids\":[1,2]}";
-    id mockProvider = [self MockProviderForGetListOfCommon: jsonRequstString method: @"comment/list/" httpMethod:@"POST"];
-    
+{    
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+     NSArray* ids = [NSArray arrayWithObjects: [NSNumber numberWithInt:1], [NSNumber numberWithInt:2], nil];  
+    [[mockProvider expect] requestWithMethodName:@"comment/" 
+                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:ids, @"ids", nil] 
+                                   andHttpMethod:@"GET" 
+                                     andDelegate:_service];
     _service.provider = mockProvider; 
-    
-    NSArray* ids = [NSArray arrayWithObjects: [NSNumber numberWithInt:1], [NSNumber numberWithInt:2], nil];   
+ 
     [_service getCommentsList: ids];
     
     [mockProvider verify];
@@ -91,9 +88,11 @@ static const int singleCommentId = 1;
 
 -(void) testGetListOfCommentsByEntityKey
 {
-    NSString* jsonRequstString = @"{\"key\":\"http://www.example.com/interesting-story/\"}";
-    id mockProvider = [self MockProviderForGetListOfCommon: jsonRequstString method: @"comment/list/" httpMethod:@"POST"];
-    
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    [[mockProvider expect] requestWithMethodName:@"comment/" 
+                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"key", nil] 
+                                   andHttpMethod:@"GET" 
+                                     andDelegate:_service];
     _service.provider = mockProvider; 
     
     NSString* entryKey = @"http://www.example.com/interesting-story/";
@@ -102,17 +101,46 @@ static const int singleCommentId = 1;
     [mockProvider verify];
 }
 
--(void) testCreateCommentForExistingEntity
+-(void) testCreateCommentForExisting
 {   
-    NSString* jsonRequstString = @"[{\"entity\":\"http://www.example.com/interesting-story/\",\"text\":\"this was a great story\"}]";
-    id mockProvider = [self MockProviderForGetListOfCommon: jsonRequstString method: @"comment/" httpMethod:@"PUT"];
+    
+    NSArray *params = [NSArray arrayWithObjects:
+                       [NSDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"entity", @"this was a great story", @"text", nil],
+                       nil];
+    
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
+    
     _service.provider = mockProvider;    
     
-    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"this was a great story", @"http://www.example.com/interesting-story/",
-                            nil];
-   
-    [_service postComments:params];
+    SocializeEntity *entity = [[SocializeEntity new] autorelease];  
+    entity.key = @"http://www.example.com/interesting-story/";
+    entity.name = @"example";
+    [_service createCommentForEntity:entity comment:@"this was a great story" createNew:NO];
+    
+    [mockProvider verify];
+}
+
+-(void) testCreateCommentForNew
+{   
+    SocializeEntity *entity = [[SocializeEntity new] autorelease];  
+    entity.key = @"http://www.example.com/interesting-story/";
+    entity.name = @"example";
+    
+    NSArray* mockArray = [NSArray arrayWithObjects:
+                                     [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil],@"entity",
+                                      @"this was a great story", @"text", nil], 
+                                     nil];
+    
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:mockArray andHttpMethod:@"POST" andDelegate:_service];
+    
+    _service.provider = mockProvider;    
+    
+
+    [_service createCommentForEntity:entity comment:@"this was a great story" createNew:YES];
+    
     [mockProvider verify];
 }
 
@@ -159,20 +187,6 @@ static const int singleCommentId = 1;
 
 #pragma mark helper methods
 
--(NSMutableDictionary*) dictionaryFromJSON: (NSString*) jsonRequstString
-{
-    NSData* jsonData = [NSData dataWithBytes:[jsonRequstString UTF8String] length:[ jsonRequstString length]];
-    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            jsonData, @"jsonData",
-            nil];
-}
-
-- (id) MockProviderForGetListOfCommon: (NSString *) jsonRequstString method: (NSString *)method httpMethod: (NSString*) httpMethod
-{
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:method andParams:[self dictionaryFromJSON:jsonRequstString] andHttpMethod:httpMethod andDelegate:_service];
-    return mockProvider;
-}
 
 -(NSString *)helperGetJSONStringFromFile:(NSString *)fileName
 {

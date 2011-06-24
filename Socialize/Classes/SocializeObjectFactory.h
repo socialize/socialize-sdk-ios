@@ -24,6 +24,8 @@
 -(id)createObjectFromDictionary:(NSDictionary *)dictionaryRepresentation forProtocol:(Protocol *)protocol;
 
 -(NSString *)createStringRepresentationOfObject:(id<SocializeObject>)socializeObject;
+-(NSDictionary *)createDictionaryRepresentationOfObject:(id<SocializeObject>)socializeObject;
+-(NSString *)createStringRepresentationOfArray:(NSArray *)objectArray;
 
 -(id)createObjectForProtocolName:(NSString *)protocolName;
 -(id)createObjectForProtocol:(Protocol *)protocol;

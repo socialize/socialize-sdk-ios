@@ -30,12 +30,12 @@
 
 
 @implementation SocializeObjectFormatter
-@synthesize objectFactory = _factory;
+//@synthesize objectFactory = _factory;
 
 -(void)dealloc
 {
     [super dealloc];
-    [_factory release];
+    _factory = nil;
 }
 
 -(id)initWithFactory:(SocializeObjectFactory *) theObjectFactory
@@ -43,8 +43,44 @@
     self = [super init];
     if (self) 
     {
-        _factory = [theObjectFactory retain];
+        _factory = theObjectFactory;
     }
     return self;
 }
+
+
+-(void)toObject:(id<SocializeObject>)toObject fromString:(NSString *)stringRepresentation
+{
+    
+}
+
+//Template Methods
+-(void)toObject:(id<SocializeObject>)toObject fromDictionary:(NSDictionary *)dictionaryRepresentation
+{
+    
+}
+
+-(void)toDictionary:(NSMutableDictionary *)dictionaryRepresentation fromObject:(id<SocializeObject>) fromObject
+{
+    
+}
+
+-(NSString*)toStringfromObject:(id<SocializeObject>) fromObject
+{
+    
+    return  nil;
+}
+
+
+//Primitive methods
+-(void)doToObject:(id<SocializeObject>)toObject fromDictionary:(NSDictionary *)dictionaryRepresentation
+{
+    
+}
+
+-(void)doToDictionary:(NSMutableDictionary *)dictionaryRepresentation fromObject:(id<SocializeObject>) fromObject
+{
+    
+}
+
 @end

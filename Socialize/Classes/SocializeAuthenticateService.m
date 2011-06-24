@@ -18,7 +18,6 @@
 @interface SocializeAuthenticateService()
 -(NSString*)getSocializeId;
 -(NSString*)getSocializeToken;
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
 -(void)persistUserInfo:(NSDictionary*)dictionary;
 @end
 
@@ -27,27 +26,19 @@
 @synthesize provider = _provider;
 @synthesize delegate = _delegate;
 
--(id)init{
+-(id) initWithProvider:(SocializeProvider*) provider
+{
     self = [super init];
-    if(self != nil){
-        _provider = [[SocializeProvider alloc] init];
+    if(self != nil)
+    {
+        _provider = provider;
     }
     return self;
 }
 
 -(void)dealloc{
-    [_provider release];
     _provider = nil;
     [super dealloc];
-}
-
-
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest
-{
-    NSData* jsonData =  [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
-    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            jsonData, @"jsonData",
-            nil];
 }
 
 #define AUTHENTICATE_METHOD @"authenticate/"
@@ -60,12 +51,16 @@
              
     _delegate = delegate;
     NSString* payloadJson = [[NSDictionary dictionaryWithObjectsAndKeys:udid, @"udid", nil] JSONString];
-    NSString* jsonParams = [NSString stringWithFormat:@"payload=%@", payloadJson];//[[NSDictionary dictionaryWithObjectsAndKeys:payloadJson, @"payload", nil] JSONString];
+    //NSString* jsonParams = [NSString stringWithFormat:@"payload=%@", payloadJson];//[[NSDictionary dictionaryWithObjectsAndKeys:payloadJson, @"payload", nil] JSONString];
+    //NSData* jsonData =  [NSData dataWithBytes:[payloadJson UTF8String] length:[payloadJson length]];
+    //NSLog(@"jsonParams %@", jsonParams);
              
-    NSLog(@"jsonParams %@", jsonParams);
-             
-    NSMutableDictionary* paramsDict = [[NSMutableDictionary alloc] init];
-    [paramsDict setObject:udid forKey:@"udid"];
+    //NSMutableDictionary* paramsDict = [[NSMutableDictionary alloc] init];
+   
+  NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                                payloadJson, @"jsonData",
+                                                nil];
+             // [paramsDict setObject:udid forKey:@"udid"];
     [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict andHttpMethod:@"POST" andDelegate:self];
 }
 
@@ -127,15 +122,15 @@
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
                              delegate:(id<SocializeAuthenticationDelegate>)delegate
                            {
+                               
+                
    _delegate = delegate;
-   NSMutableDictionary* dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:udid, @"udid", 
+   NSMutableDictionary* dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"{\"udid\":\"%@\"}",udid],@"jsonData", 
                              [self getSocializeId],  @"socialize_id", 
                              @"1"/* auth type is for facebook*/ , @"auth_type",
                              thirdPartyAuthToken, @"auth_token",
                              thirdPartyUserId, @"auth_id" , nil] ;
                                
-//   NSString* jsonParams = [[NSDictionary dictionaryWithObjectsAndKeys:payloadJson, @"payload", nil] JSONString];
-  // NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
    [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:dictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
@@ -163,8 +158,6 @@
 }
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data{
-
-    OAToken *requestToken;
     NSString *responseBody = [[NSString alloc] initWithData:data
                                                    encoding:NSUTF8StringEncoding];
     
@@ -178,8 +171,9 @@
         NSString* token = [jsonObject objectForKey:@"oauth_token"];
         
         if (token_secret && token){
-            requestToken = [[OAToken alloc] initWithKey:token secret:token_secret];
+            OAToken *requestToken = [[OAToken alloc] initWithKey:token secret:token_secret];
             [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
+            [request release]; request = nil;
             [_delegate didAuthenticate];
         }
         else{

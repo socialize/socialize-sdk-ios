@@ -15,15 +15,15 @@
 {   
 }
 
--(void)toObject:(id<SocializeObject>)toObject fromJSONString:(NSString *)JSONString;
-
-//Template Methods
--(void)toObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary;
--(void)toDictionary:(NSMutableDictionary *)dictionary fromObject:(id<SocializeObject>) fromObject;
--(NSString*) toStringfromObject:(id<SocializeObject>) fromObject;
-
-
-//Primitive methods
--(void)doToObject:(id<SocializeObject>)toObject fromDictionary:(NSDictionary *)JSONDictionary;
--(void)doToDictionary:(NSMutableDictionary *)dictionary fromObject:(id<SocializeObject>) fromObject;
+//-(void)toObject:(id<SocializeObject>)toObject fromJSONString:(NSString *)JSONString;
+//
+////Template Methods
+//-(void)toObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary;
+//-(void)toDictionary:(NSMutableDictionary *)dictionary fromObject:(id<SocializeObject>) fromObject;
+//-(NSString*) toStringfromObject:(id<SocializeObject>) fromObject;
+//
+//
+////Primitive methods
+//-(void)doToObject:(id<SocializeObject>)toObject fromDictionary:(NSDictionary *)JSONDictionary;
+//-(void)doToDictionary:(NSMutableDictionary *)dictionary fromObject:(id<SocializeObject>) fromObject;
 @end

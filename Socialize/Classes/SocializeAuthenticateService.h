@@ -18,6 +18,8 @@
     SocializeProvider*                      _provider;
 }
 
+-(id) initWithProvider:(SocializeProvider*) provider;
+
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                     apiSecret:(NSString*)apiSecret
                          udid:(NSString*)udid

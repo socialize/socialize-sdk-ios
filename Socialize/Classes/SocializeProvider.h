@@ -57,11 +57,11 @@
                         andExpirationDate:(NSDate*) date
                                  delegate:(id<SocializeProviderDelegate>)delegate;
 
-- (void)requestWithParams:(NSMutableDictionary *)params
+- (void)requestWithParams:(id)params
               andDelegate:(id <SocializeRequestDelegate>)delegate;
 
 - (void)requestWithMethodName:(NSString *)methodName
-                    andParams:(NSMutableDictionary *)params
+                    andParams:(id)params
                 andHttpMethod:(NSString *)httpMethod
                   andDelegate:(id <SocializeRequestDelegate>)delegate;
 

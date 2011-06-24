@@ -56,7 +56,7 @@
     [[mockApplication expect] setName:@"test application"];
     
     SocializeApplicationJSONFormatter* formatter = [[[SocializeApplicationJSONFormatter alloc]initWithFactory:_factory] autorelease];
-    [formatter toObject:mockApplication fromJSONString:jsonApplication];
+    [formatter toObject:mockApplication fromString:jsonApplication];
     [mockApplication verify];
 }
 

@@ -24,7 +24,7 @@
     id<SocializeRequestDelegate> _delegate;
     NSString*                   _url;
     NSString*                   _httpMethod;
-    NSMutableDictionary*        _params;
+    id                          _params;
 //    NSURLConnection*            _connection;
     NSMutableData*              _responseText;
     
@@ -35,10 +35,11 @@
     OAAsynchronousDataFetcher   *_dataFetcher;
 }
 
+@property (nonatomic, readonly) NSString * userAgentString;
 @property(nonatomic,assign) id<SocializeRequestDelegate> delegate;
 @property(nonatomic,copy)   NSString                    *url;
 @property(nonatomic,copy)   NSString                    *httpMethod;
-@property(nonatomic,retain) NSMutableDictionary         *params;
+@property(nonatomic,retain) id                          params;
 @property(nonatomic,retain) NSURLConnection             *connection;
 @property(nonatomic,retain) NSMutableData               *responseText;
 @property(nonatomic,retain) OAToken                     *token;
@@ -50,6 +51,8 @@
                         httpMethod:(NSString *) httpMethod
                           delegate:(id<SocializeRequestDelegate>)delegate
                         requestURL:(NSString *) url;
+
++ (NSString *)userAgentString;
 - (BOOL) loading;
 
 - (void) connect;

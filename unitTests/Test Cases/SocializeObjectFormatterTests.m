@@ -28,6 +28,11 @@
     [_factory release];   
 }
 
+-(id)mockFactory
+{
+    id mockFactory = [OCMockObject mockForClass:[SocializeObjectFactory class]];
+    return  mockFactory;
+}
 
 //Put this in a unitTestHelper Category for Formatters
 -(NSString *)helperGetJSONStringFromFile:(NSString *)fileName

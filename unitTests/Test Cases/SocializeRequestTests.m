@@ -114,10 +114,15 @@
 }
 
 
--(void)testOAInterfaceForRequests2{
-    
+-(void)testOAInterfaceForRequests2
+{
+
+    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.0",[[UIDevice currentDevice]       
+                                                                                         model],
+                               [[UIDevice currentDevice]systemVersion]];
     id mockRequest = [OCMockObject mockForClass:[OAMutableURLRequest class]];
     [[mockRequest expect] setHTTPMethod:@"GET"];
+    [[mockRequest expect] addValue:userAgentStr forHTTPHeaderField:@"User-Agent"];
     [[mockRequest expect] prepare];
     _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"GET" delegate:self requestURL:@"invalidparam"];
     _request.request = mockRequest;

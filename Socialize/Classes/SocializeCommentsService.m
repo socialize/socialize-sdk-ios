@@ -32,8 +32,7 @@
 #import "SocializeCommentJSONFormatter.h"
 #import "SocializeObjectFactory.h"
 
-#define COMMENT_METHOD @"comment/"
-#define COMMENTS_LIST_METHOD @"comment/list/"
+#define COMMENTS_LIST_METHOD @"comment/"
 
 #define IDS_KEY @"ids"
 #define ENTRY_KEY @"key"
@@ -42,7 +41,6 @@
 
 
 @interface SocializeCommentsService()
-    -(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
     -(void) parseCommentsList: (NSArray*) commentsJsonData;
 @end
 
@@ -69,50 +67,50 @@
 {
     self.delegate = nil;
     self.provider = nil;
-    [_objectCreator release]; _objectCreator = nil;
+    self.objectCreator = nil;
     [super dealloc];
 }
 
 -(void) getCommentById: (int) commentId
 {
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   [NSNumber numberWithInt:commentId], @"id",
-                                   nil];
-    [_provider requestWithMethodName:COMMENT_METHOD andParams:params andHttpMethod:@"GET" andDelegate:self];
+    [_provider requestWithMethodName:[NSString stringWithFormat:@"comment/%d/",commentId] andParams:nil andHttpMethod:@"GET" andDelegate:self];
 }
 
 -(void) getCommentsList: (NSArray*) commentsId
 {
-    NSString* jsonParams = [[NSDictionary dictionaryWithObjectsAndKeys:commentsId, IDS_KEY, nil] JSONString]; 
-    NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
-
-    [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:commentsId, IDS_KEY, nil];
+    [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"GET" andDelegate:self];
 }
 
 -(void) getCommentList: (NSString*) entryKey
 {
-    NSString* jsonParams = [[NSDictionary dictionaryWithObjectsAndKeys:entryKey, ENTRY_KEY, nil] JSONString];
-    NSMutableDictionary* params = [self genereteParamsFromJsonString:jsonParams];
-    
-    [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entryKey, ENTRY_KEY, nil];   
+    [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"GET" andDelegate:self];
 }
 
--(void) postComments:(NSDictionary*)comments
-{   
-    NSMutableArray* jsonArray = [[NSMutableArray alloc] initWithCapacity:[comments count]];
-    [comments enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
-     {
-         NSDictionary* value = [NSDictionary dictionaryWithObjectsAndKeys:key, ENTITY_KEY,  obj, COMMENT_KEY, nil];
-         [jsonArray addObject:value];
-     }
-     ];
+-(void) createCommentForEntityWithKey: (NSString*) entityKey comment: (NSString*) comment
+{
+    NSArray *params = [NSArray arrayWithObjects:
+                       [NSDictionary dictionaryWithObjectsAndKeys:entityKey, ENTITY_KEY, comment, COMMENT_KEY, nil],
+                      nil];
     
-    NSMutableDictionary* params = [self genereteParamsFromJsonString:[jsonArray JSONString]];
-    
-    [_provider requestWithMethodName: COMMENT_METHOD andParams:params andHttpMethod:@"PUT" andDelegate:self];
+    [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
 }
 
-
+-(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment createNew: (BOOL) new
+{
+    if(new)
+    {
+        NSDictionary* newEntity = [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil];
+        NSArray *params = [NSArray arrayWithObjects:
+                       [NSDictionary dictionaryWithObjectsAndKeys:newEntity, ENTITY_KEY, comment, COMMENT_KEY, nil],
+                       nil];
+    
+        [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+    }
+    else
+        [self createCommentForEntityWithKey:entity.key comment:comment];
+}
 
 #pragma mark - Socialize request delegate
 
@@ -158,16 +156,6 @@
     ];
     
     [_delegate receivedComments:self comments:comments];
-}
-
-#pragma mark - Helper methods
-
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest
-{
-    NSData* jsonData =  [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
-    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   jsonData, @"jsonData",
-                                   nil];
 }
 
 @end

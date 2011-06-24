@@ -44,10 +44,24 @@ request = _request,
 dataFetcher = _dataFetcher
 ;
 
++ (NSString *)userAgentString
+{
+    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.0",[[UIDevice currentDevice]       
+                                                                                         model],
+                               [[UIDevice currentDevice]systemVersion]];
+    return  userAgentStr;
+
+}
+
+-(NSString *)userAgentString
+{
+   return [SocializeRequest userAgentString];
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
 
-+ (SocializeRequest *)getRequestWithParams:(NSMutableDictionary *) params
++ (SocializeRequest *)getRequestWithParams:(id) params
                                 httpMethod:(NSString *) httpMethod
                                   delegate:(id<SocializeRequestDelegate>) delegate
                                 requestURL:(NSString *) url 
@@ -70,7 +84,7 @@ dataFetcher = _dataFetcher
                                                              didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
     
     if ([request.httpMethod isEqualToString:@"GET"])
-        request.url = [NSString serializeURL:request.url params:request.params httpMethod:request.httpMethod];
+        request.url = [NSString serializeURL:request.url params:(NSDictionary*)request.params httpMethod:request.httpMethod];
     
     
     
@@ -134,8 +148,11 @@ dataFetcher = _dataFetcher
 - (void)connect
 {   
     [self.request setHTTPMethod:self.httpMethod];
-    if ([self.httpMethod isEqualToString: @"POST"]) {
-        NSString * stringValue = [_params JSONString];
+    [self.request addValue:[self userAgentString] forHTTPHeaderField:@"User-Agent"];
+    if ([self.httpMethod isEqualToString: @"POST"]) 
+    {
+        NSString * stringValue = (NSString *) [_params objectForKey:@"jsonData"];
+        //NSString * stringValue = [_params  JSONString];
         NSString* jsonParams = [NSString stringWithFormat:@"payload=%@", stringValue];
         NSLog(@"jsonParams  %@", jsonParams);
         [self.request setHTTPBody:[jsonParams dataUsingEncoding:NSUTF8StringEncoding]];

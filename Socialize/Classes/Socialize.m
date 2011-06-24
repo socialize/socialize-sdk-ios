@@ -10,17 +10,37 @@
 
 
 @implementation Socialize
+@synthesize commentService = _commentsService;
+@synthesize entityService = _entityService;
 
 - (void)dealloc {
+    [_objectFactory release]; _objectFactory = nil;
+    [_provider release]; _provider = nil;
+    [_authService release]; _authService = nil;
+    [_commentsService release]; _commentsService = nil;
     [super dealloc];
+}
+
+-(id) init
+{
+    self = [super init];
+    if(self != nil)
+    {
+        _objectFactory = [[SocializeObjectFactory alloc]init];
+        _provider = [[SocializeProvider alloc] init];
+        _authService = [[SocializeAuthenticateService alloc] initWithProvider:_provider];
+        _commentsService = [[SocializeCommentsService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
+        
+        _entityService = [[SocializeEntityService alloc]initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
+    }
+    return self;
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret
                udid:(NSString*)udid
             delegate:(id<SocializeAuthenticationDelegate>)delegate
-         {
-    _authService = [[SocializeAuthenticateService alloc] init];
+{
    [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret udid:udid delegate:delegate]; 
 }
 
@@ -31,9 +51,8 @@
                      thirdPartyUserId:(NSString*)thirdPartyUserId
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
                              delegate:(id<SocializeAuthenticationDelegate>)delegate
-                           {
+{
 
-    _authService = [[SocializeAuthenticateService alloc] init];
     [_authService  authenticateWithApiKey:apiKey 
                            apiSecret:apiSecret
                                 udid:udid
