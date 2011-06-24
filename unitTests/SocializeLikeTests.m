@@ -26,7 +26,7 @@
 
 -(void) tearDownClass
 {
-    [_service release]; _service = nil;
+   // [_service release]; _service = nil;
 }
 
 -(void) testGetAlike
