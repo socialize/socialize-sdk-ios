@@ -413,6 +413,8 @@
 		1657EF9413A1FFBA00E488CC /* Infrastructure Tests */ = {
 			isa = PBXGroup;
 			children = (
+				6DF5996213ABE843000D125A /* Auth Tests */,
+				6D49744113B404DF00463D23 /* Like tests */,
 				1657EF9513A2000600E488CC /* SocializeRequestTests.h */,
 				1657EF9613A2000600E488CC /* SocializeRequestTests.m */,
 				1636370613A76ECF00403879 /* SocializeProviderTests.h */,
@@ -660,8 +662,6 @@
 		5CD488221386B91B00E60C4C /* Test Files */ = {
 			isa = PBXGroup;
 			children = (
-				6D49744113B404DF00463D23 /* Like tests */,
-				6DF5996213ABE843000D125A /* Auth Tests */,
 				1657EF9D13A226A800E488CC /* Utils Tests */,
 				1657EF9413A1FFBA00E488CC /* Infrastructure Tests */,
 				5CFCBE3F1385B60D00EF5073 /* Configuration Tests */,
