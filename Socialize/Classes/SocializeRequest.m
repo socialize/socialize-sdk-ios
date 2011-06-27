@@ -151,8 +151,10 @@ dataFetcher = _dataFetcher
     [self.request addValue:[self userAgentString] forHTTPHeaderField:@"User-Agent"];
     if ([self.httpMethod isEqualToString: @"POST"]) 
     {
-        //NSString * stringValue = (NSString *) [_params objectForKey:@"jsonData"];
-        NSString * stringValue = [_params  JSONString];
+        NSString * stringValue = (NSString *) [_params objectForKey:@"jsonData"]; // TEMPORARY SOLUTION!!!!
+        if(stringValue == nil)   
+            stringValue = [_params  JSONString];
+        
         NSString* jsonParams = [NSString stringWithFormat:@"payload=%@", stringValue];
         NSLog(@"jsonParams  %@", jsonParams);
         [self.request setHTTPBody:[jsonParams dataUsingEncoding:NSUTF8StringEncoding]];

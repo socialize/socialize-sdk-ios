@@ -50,12 +50,14 @@
          {
              
     _delegate = delegate;             
-    NSMutableDictionary* paramsDict = [[NSMutableDictionary alloc] init];
+//    NSMutableDictionary* paramsDict = [[NSMutableDictionary alloc] init];
+//   [paramsDict setObject:udid forKey:@"udid"];
    
-//  NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-//                                                payloadJson, @"jsonData",
-//                                                nil];
-    [paramsDict setObject:udid forKey:@"udid"];
+    NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", udid];
+    NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                                payloadJson, @"jsonData",
+                                                nil];
+
     [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict andHttpMethod:@"POST" andDelegate:self];
 }
 
@@ -119,19 +121,19 @@
                            {
                 
    _delegate = delegate;
-//   NSMutableDictionary* dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"{\"udid\":\"%@\"}",udid],@"jsonData", 
-//                             [self getSocializeId],  @"socialize_id", 
-//                             @"1"/* auth type is for facebook*/ , @"auth_type",
-//                             thirdPartyAuthToken, @"auth_token",
-//                             thirdPartyUserId, @"auth_id" , nil] ;
+   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"{\"udid\":\"%@\"}",udid],@"jsonData", 
+                             [self getSocializeId],  @"socialize_id", 
+                             @"1"/* auth type is for facebook*/ , @"auth_type",
+                             thirdPartyAuthToken, @"auth_token",
+                             thirdPartyUserId, @"auth_id" , nil] ;
                             
-   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  udid, @"udid",
-                                  [self getSocializeId],  @"socialize_id",
-                                  @"1"/* auth type is for facebook*/ , @"auth_type",
-                                  thirdPartyAuthToken, @"auth_token",
-                                  thirdPartyUserId, @"auth_id",
-                                  nil];
+//   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+//                                  udid, @"udid",
+//                                  [self getSocializeId],  @"socialize_id",
+//                                  @"1"/* auth type is for facebook*/ , @"auth_type",
+//                                  thirdPartyAuthToken, @"auth_token",
+//                                  thirdPartyUserId, @"auth_id",
+//                                  nil];
                                
    [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
 }
