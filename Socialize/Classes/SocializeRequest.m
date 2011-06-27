@@ -151,7 +151,10 @@ dataFetcher = _dataFetcher
     [self.request addValue:[self userAgentString] forHTTPHeaderField:@"User-Agent"];
     if ([self.httpMethod isEqualToString: @"POST"]) 
     {
-        NSString * stringValue = (NSString *) [_params objectForKey:@"jsonData"]; // TEMPORARY SOLUTION!!!!
+        NSString * stringValue = nil;
+        if([_params respondsToSelector:@selector(objectForKey:)])
+            stringValue = (NSString *) [_params objectForKey:@"jsonData"]; // TEMPORARY SOLUTION!!!!
+
         if(stringValue == nil)   
             stringValue = [_params  JSONString];
         
