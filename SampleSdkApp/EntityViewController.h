@@ -14,7 +14,7 @@
 #import "Socialize.h"
 #import "SocializeCommonDefinitions.h"
 
-@interface EntityViewController : UIViewController<UIWebViewDelegate,UITextFieldDelegate, SocializeEntityServiceDelegate, SocializeActionViewDelegate> {
+@interface EntityViewController : UIViewController<UIWebViewDelegate,UITextFieldDelegate, SocializeEntityServiceDelegate, SocializeActionViewDelegate, SocializeLikeServiceDelegate> {
     
 @private
     SocializeActionView* _socializeActionPanel;
@@ -28,6 +28,7 @@
     IBOutlet UITextField * nameField;
     IBOutlet UITextView  * resultsView;
     IBOutlet UIButton    * createButton;
+    id<SocializeEntity> _entity;
     
 }
 

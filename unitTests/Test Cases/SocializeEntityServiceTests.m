@@ -105,9 +105,7 @@
     
     
     [[mockDelegate expect]entityService:_entityService didReceiveEntity:mockEntity];
-    
     [_entityService createEntityWithKey:@"Foo" andName:@"Bar"];
-    
 }
 
 

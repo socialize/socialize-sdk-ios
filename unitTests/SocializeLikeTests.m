@@ -12,8 +12,12 @@
 #import "Socialize.h"
 #import "NSMutableData+PostBody.h"
 #import "SocializeCommonDefinitions.h"
-
 #import "SocializeObjectFactory.h"
+
+
+@interface SocializeLikeTests() 
+-(NSString *)helperGetJSONStringFromFile:(NSString *)fileName;
+@end
 
 @implementation SocializeLikeTests
 
@@ -69,7 +73,7 @@
                                    @"www.123.com", @"key",
                                    nil];
 
-    [[mockProvider expect] requestWithMethodName:@"likes/" andParams:params andHttpMethod:@"GET" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params andHttpMethod:@"GET" andDelegate:_service];
     [_service getLikesForEntityKey:@"www.123.com"];
     [mockProvider verify];
 }
@@ -84,13 +88,43 @@
     
     mockEntity.key = @"www.123.com";
 
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   [mockEntity key], @"entity",
-                                   nil];
+    NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:mockEntity.key, @"entity", nil];
+    NSArray *params = [NSArray arrayWithObjects:entityParam, 
+                       nil];
 
-    [[mockProvider expect] requestWithMethodName:@"likes/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
+
     [_service postLikeForEntity:mockEntity];
     [mockProvider verify];
+}
+
+-(void)testGetLikesCallback{
+
+/*
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"like_single_response.json"];
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeLikeServiceDelegate)];
+    _service.delegate = mockDelegate;
+    
+    SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
+    SocializeLike* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeLike)]; 
+
+    [[mockDelegate expect] didSucceed:_service data:];
+    
+    [_service request:nil didLoadRawResponse:mockDelegate];
+    [mockDelegate verify];
+*/
+
+}
+
+-(NSString *)helperGetJSONStringFromFile:(NSString *)fileName
+{
+    NSString * JSONFilePath = [[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"%@/%@",@"JSON-RequestAndResponse-TestFiles", fileName ] ofType:nil];
+    
+    NSString * JSONString = [NSString stringWithContentsOfFile:JSONFilePath 
+                                                      encoding:NSUTF8StringEncoding 
+                                                         error:nil];
+    
+    return  JSONString;
 }
 
 

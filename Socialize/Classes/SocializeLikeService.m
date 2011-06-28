@@ -14,12 +14,16 @@
 #import "SocializeProvider.h"
 #import "SocializeEntity.h"
 
+
+
 @interface SocializeLikeService()
 -(void)parseLikes:(NSArray*)likesJsonData;
+-(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
 @end
 
 #define LIKE_METHOD @"like/"
-#define LIKES_METHOD @"likes/"
+#define ENTRY_KEY @"key"
+#define ENTITY_KEY @"entity"
 
 @implementation SocializeLikeService
 
@@ -72,7 +76,7 @@
 
 -(void)parseLikes:(id)likesJsonData
 {
-    NSMutableArray* likes = nil;// = [NSMutableArray arrayWithCapacity:[likesJsonData count]];
+    NSMutableArray* likes = nil;
     if ([likesJsonData isKindOfClass:[NSDictionary class]]){
         NSMutableArray* likes = [NSMutableArray array];
         id<SocializeLike> like = [_objectCreator createObjectFromDictionary:likesJsonData forProtocol:@protocol(SocializeLike)];
@@ -92,23 +96,25 @@
 }
 
 -(void)postLikeForEntity:(id<SocializeEntity>)entity{
-    if ([entity conformsToProtocol:@protocol(SocializeEntity)])
-         [self postLikeForEntityKey:[entity key]];
+    DLog(@"entity %@", entity);
+    [self postLikeForEntityKey:[entity key]];
 }
 
 -(void)postLikeForEntityKey:(NSString*)key{
-    if (key && [key length]){
-        NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
-        [params setObject:key  forKey:@"entity"];
-        [_provider requestWithMethodName:LIKES_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+
+    if (key && [key length]){   
+        NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity", nil];
+        NSArray *params = [NSArray arrayWithObjects:entityParam, 
+                           nil];
+        [_provider requestWithMethodName:LIKE_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
     }
 }
 
 -(void)deleteLike:(NSInteger)likeId{
 
-    NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
+    NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease];
     [params setObject:[NSNumber numberWithInteger:likeId] forKey:@"id"];
-    NSString* updatedResource = [NSString stringWithFormat:@"%@%d/", LIKE_METHOD, likeId]; 
+    NSString* updatedResource = [NSString stringWithFormat:@"%@%d/", LIKE_METHOD, likeId];
     [_provider requestWithMethodName:updatedResource andParams:params andHttpMethod:@"DELETE" andDelegate:self];
 
 }
@@ -127,7 +133,7 @@
     NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
     if (key)
         [params setObject:key forKey:@"key"];
-    [_provider requestWithMethodName:@"likes/" andParams:params andHttpMethod:@"GET" andDelegate:self];
+    [_provider requestWithMethodName:LIKE_METHOD andParams:params andHttpMethod:@"GET" andDelegate:self];
 
 }
 
@@ -136,4 +142,11 @@
         [self getLikesForEntityKey:[entity key]];
 }
 
+-(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest
+{
+    NSString* jsonData = jsonRequest;
+    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
+            jsonData, @"jsonData",
+            nil];
+}
 @end

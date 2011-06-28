@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Formatters</key>
+	<dict>
+		<key>SocializeApplication</key>
+		<string>SocializeApplicationJSONFormatter</string>
+		<key>SocializeComment</key>
+		<string>SocializeCommentJSONFormatter</string>
+		<key>SocializeEntity</key>
+		<string>SocializeEntityJSONFormatter</string>
+		<key>SocializeUser</key>
+		<string>SocializeUserJSONFormatter</string>
+		<key>SocializeLike</key>
+		<string>SocializeLikeJSONFormatter</string>
+	</dict>
 	<key>Prototypes</key>
 	<dict>
 		<key>SocializeActivity</key>
@@ -14,17 +27,8 @@
 		<string>SocializeEntity</string>
 		<key>SocializeUser</key>
 		<string>SocializeUser</string>
-	</dict>
-	<key>Formatters</key>
-	<dict>
-		<key>SocializeUser</key>
-		<string>SocializeUserJSONFormatter</string>
-		<key>SocializeEntity</key>
-		<string>SocializeEntityJSONFormatter</string>
-		<key>SocializeComment</key>
-		<string>SocializeCommentJSONFormatter</string>
-		<key>SocializeApplication</key>
-		<string>SocializeApplicationJSONFormatter</string>
+		<key>SocializeLike</key>
+		<string>SocializeLike</string>
 	</dict>
 </dict>
 </plist>

@@ -17,10 +17,7 @@
 
 @synthesize  lat = _lat;
 @synthesize  lng = _lng;
-
-
-
-
+@synthesize  date = _date;
 
 
 

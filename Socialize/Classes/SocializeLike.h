@@ -32,6 +32,9 @@
 -(float_t)lng;
 -(void)setLng:(float_t)lng;
 
+-(NSDate *)date;
+-(void)setDate:(NSDate *)date;
+
 @end
 
 
@@ -43,6 +46,7 @@
     id<SocializeUser>        _user;
     float_t                  _lat;
     float_t                  _lng;
+    NSDate*                  _date;
 }
 
 @property (nonatomic, retain) id<SocializeApplication> application;
@@ -51,5 +55,6 @@
 
 @property (nonatomic, assign) float_t           lat;
 @property (nonatomic, assign) float_t           lng;
+@property (nonatomic, retain) NSDate*           date;
 
 @end

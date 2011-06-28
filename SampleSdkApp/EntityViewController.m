@@ -35,6 +35,7 @@
         self.entry = entry;
         _service = service;
         _service.entityService.delegate = self;
+        _service.likeService.delegate = self;
     }
     return self;
 }
@@ -155,12 +156,13 @@
 
 -(void)likeButtonTouched:(id)sender
 {
-    
+    if (_entity)
+        [_service.likeService postLikeForEntity:_entity];
 }
 
 -(void)shareButtonTouched:(id)sender
 {
-    
+    [_service.entityService createEntityWithKey:keyField.text andName:nameField.text];
 }
 
 
@@ -244,28 +246,43 @@
 //}
 -(void) entityService:(SocializeEntityService *)entityService didReceiveListOfEntities:(NSArray *)entityList
 {
+    _entity = (id<SocializeEntity>)[entityList lastObject];
     
-    id<SocializeEntity> entity = (id<SocializeEntity>)[entityList lastObject];
+    [_entity retain];
     
-    resultsView.text = [NSString stringWithFormat:@"%@\n%key=%@, name=%@", resultsView.text, entity.key, entity.name];
+    resultsView.text = [NSString stringWithFormat:@"%@\n%key=%@, name=%@", resultsView.text, _entity.key, _entity.name];
 }
 
 -(void) entityService:(SocializeEntityService *)entityService didFailWithError:(NSError *)error
 {
-    
-    resultsView.text = @"Error";
+   resultsView.text = @"Error";
 }
 
 -(void) entityService:(SocializeEntityService *)entityService didReceiveEntity:(id<SocializeEntity>)entityObject
 {
-    
     resultsView.text = [NSString stringWithFormat:@"%@\n%key=%i, name=%i", resultsView.text, entityObject.key, entityObject.name];
-    
 }
+
+#pragma mark like service delegate
+-(void)didFailService:(id)service error:(NSError*)error{
+    DLog(@"like error %@", error);
+}
+
+-(void)didSucceed:(id)service data:(id)data{
+    DLog(@"like didSucceed %@", data);
+}
+#pragma mark -
+
+
+
 -(void)destroyCommentController
 {
     [_commentsNavigationController.view removeFromSuperview];    
     [_commentsNavigationController release];  _commentsNavigationController = nil;
 }
+
+
+
+
 
 @end

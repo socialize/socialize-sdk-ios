@@ -14,9 +14,10 @@
 #import "SocializeAuthenticateService.h"
 #import "SocializeCommentsService.h"
 #import "SocializeEntityService.h"
+#import "SocializeLikeService.h"
 
 //**************************************************************************************************//
-//This is a general facade of the SDK`s API. Through it a third party developers could use the API. //
+//This is a general facade of the   SDK`s API. Through it a third party developers could use the API. //
 //**************************************************************************************************//
 
 
@@ -25,13 +26,15 @@
 @interface Socialize : NSObject 
 {
     @private
-        SocializeObjectFactory* _objectFactory;
-        SocializeProvider               *_provider;
+    SocializeObjectFactory          *_objectFactory;
+    SocializeProvider               *_provider;
+
+    SocializeAuthenticateService    *_authService;
+    SocializeCommentsService        *_commentsService;
+    SocializeEntityService          *_entityService;
+    ThirdPartyAuthName              _type;
     
-        SocializeAuthenticateService    *_authService;
-        SocializeCommentsService        *_commentsService;
-        SocializeEntityService          *_entityService;
-        ThirdPartyAuthName              _type;
+    SocializeLikeService            *_likeService;
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret    
@@ -48,6 +51,8 @@
 
 -(BOOL)isAuthenticated;
 
-@property (nonatomic, readonly) SocializeCommentsService* commentService;
+@property (nonatomic, readonly) SocializeCommentsService*  commentService;
 @property (nonatomic, readonly) SocializeEntityService *   entityService;
+@property (nonatomic, readonly) SocializeLikeService *     likeService;
+
 @end

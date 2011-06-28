@@ -12,12 +12,14 @@
 @implementation Socialize
 @synthesize commentService = _commentsService;
 @synthesize entityService = _entityService;
+@synthesize likeService = _likeService;
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
     [_provider release]; _provider = nil;
     [_authService release]; _authService = nil;
     [_commentsService release]; _commentsService = nil;
+    [_likeService release]; _likeService = nil;
     [super dealloc];
 }
 
@@ -30,6 +32,7 @@
         _provider = [[SocializeProvider alloc] init];
         _authService = [[SocializeAuthenticateService alloc] initWithProvider:_provider];
         _commentsService = [[SocializeCommentsService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
+        _likeService = [[SocializeLikeService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
         
         _entityService = [[SocializeEntityService alloc]initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
     }

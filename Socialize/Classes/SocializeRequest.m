@@ -28,6 +28,7 @@ static const int kGeneralErrorCode = 10000;
 @interface SocializeRequest()
 - (void)failWithError:(NSError *)error;
 - (void)handleResponseData:(NSData *)data;
+-(void)produceHTMLOutput:(NSString*)outputString;
 @end
 
 @implementation SocializeRequest
@@ -159,7 +160,7 @@ dataFetcher = _dataFetcher
             stringValue = [_params  JSONString];
         
         NSString* jsonParams = [NSString stringWithFormat:@"payload=%@", stringValue];
-        NSLog(@"jsonParams  %@", jsonParams);
+        DLog(@"jsonParams  %@", jsonParams);
         [self.request setHTTPBody:[jsonParams dataUsingEncoding:NSUTF8StringEncoding]];
     }
     [self.request prepare];
@@ -186,9 +187,26 @@ dataFetcher = _dataFetcher
 - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
     NSString *responseBody = [[NSString alloc] initWithData:data
                                                    encoding:NSUTF8StringEncoding];
-    NSLog(@"responseBody %@", responseBody);
+    DLog(@"responseBody %@", responseBody);
+#ifdef DEBUG
+    [self produceHTMLOutput:responseBody];
+#endif
 	if (ticket.didSucceed) 
         [self handleResponseData:data];
+
+}
+
+-(void)produceHTMLOutput:(NSString*)outputString{
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents directory
+    
+    NSError *error;
+    BOOL succeed = [outputString writeToFile:[documentsDirectory stringByAppendingPathComponent:@"error.html"]
+                              atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    if (!succeed){
+        // Handle error here
+    }
 }
 
 - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFailWithError:(NSError*)error{
