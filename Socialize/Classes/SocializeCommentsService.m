@@ -132,8 +132,15 @@
     
     if([responseObject isKindOfClass: [NSDictionary class]])
     {
-        id<SocializeComment> comment = [_objectCreator createObjectFromDictionary:responseObject forProtocol:@protocol(SocializeComment)];
-        [_delegate receivedComment: self comment:comment];    
+        if([responseObject objectForKey:@"comments"]) // temporary solution for supporting last changes in response format
+        {
+            [self parseCommentsList: [responseObject objectForKey:@"comments"]];
+            
+        }else
+        {
+            id<SocializeComment> comment = [_objectCreator createObjectFromDictionary:responseObject forProtocol:@protocol(SocializeComment)];
+            [_delegate receivedComment: self comment:comment];    
+        }
     }
     else if([responseObject isKindOfClass: [NSArray class]])
     {
@@ -142,7 +149,7 @@
     else
     {
         [_delegate didFailService:self withError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
-    }       
+    }
 }
 
 -(void) parseCommentsList: (NSArray*) commentsJsonData

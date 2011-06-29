@@ -21,7 +21,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        _comments = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;
 }
@@ -31,6 +31,7 @@
     [_commentText release]; _commentText = nil;
     [_sendButton release]; _sendButton = nil;
     [_commentsTable release]; _commentsTable = nil;
+    [_comments release]; _comments = nil;
     _service = nil;
     [super dealloc];
 }
@@ -78,14 +79,30 @@
 
 #pragma mark - Table view data source
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    // Return the number of rows in the section.
+    return [_comments count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    cell.textLabel.text = [[_comments objectAtIndex:indexPath.row] text];
+    
+    return cell;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event { 
@@ -100,13 +117,13 @@
 
 -(void) receivedComment: (SocializeCommentsService*)service comment: (id<SocializeComment>) comment
 {
-    //TODO:: save response
+    [_comments addObject:comment];
     [_commentsTable reloadData];
 }
 
 -(void) receivedComments: (SocializeCommentsService*)service comments: (NSArray*) comments
 {
-    //TODO:: save response
+    [_comments addObjectsFromArray:comments];
     [_commentsTable reloadData];    
 }
 

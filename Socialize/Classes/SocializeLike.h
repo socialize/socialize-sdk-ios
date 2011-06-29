@@ -44,6 +44,7 @@
     id<SocializeApplication> _application;
     id<SocializeEntity>      _entity;
     id<SocializeUser>        _user;
+
     float_t                  _lat;
     float_t                  _lng;
     NSDate*                  _date;

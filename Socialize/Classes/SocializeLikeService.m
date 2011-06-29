@@ -24,6 +24,7 @@
 #define LIKE_METHOD @"like/"
 #define ENTRY_KEY @"key"
 #define ENTITY_KEY @"entity"
+#define LIKES_METHOD @"like/"
 
 @implementation SocializeLikeService
 

@@ -8,24 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import "SampleSdkAppAppDelegate.h"
-#import "DemoEntry.h"
+#import "DemoEntity.h"
 #import "Socialize.h"
-
 
 
 @implementation SampleSdkAppAppDelegate
 
 
 @synthesize window=_window;
-@synthesize entryController;
+@synthesize entityListViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    socialize = [[Socialize alloc] init];
-    self.entryController = [[EntityViewController alloc] initWithEntry:[DemoEntry createDemoEntryWithText:@"This is demo entry"] andService: socialize];
-    [self.window addSubview:self.entryController.view];
-    
+    socialize = [[Socialize alloc] init];   
+
+    entityListViewController = [[EntityListViewController alloc] initWithStyle: UITableViewStylePlain andService: socialize];
+    rootController = [[UINavigationController alloc] initWithRootViewController:entityListViewController];
+
+    [self.window addSubview:rootController.view];
     [self.window makeKeyAndVisible];
+
     return YES;
 }
 
@@ -60,15 +62,13 @@
     if([socialize isAuthenticated])
         return;
     
-    [socialize authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"testttttt" delegate:self];
-    entryController.view.userInteractionEnabled = NO;
+    [socialize authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" delegate:self];
+    rootController.view.userInteractionEnabled = NO;
 }
 
 -(void)didAuthenticate
 {
-    entryController.view.userInteractionEnabled = YES;
-    // TODO:: send create entity request from here
-    return;
+    rootController.view.userInteractionEnabled = YES;
 }
 
 -(void)didNotAuthenticate:(NSError*)error
@@ -88,7 +88,8 @@
 
 - (void)dealloc
 {
-    [entryController  release];
+    [rootController  release];
+    [entityListViewController release];
     [_window release];
     [socialize release];
     [super dealloc];

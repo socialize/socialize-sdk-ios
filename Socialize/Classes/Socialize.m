@@ -32,9 +32,8 @@
         _provider = [[SocializeProvider alloc] init];
         _authService = [[SocializeAuthenticateService alloc] initWithProvider:_provider];
         _commentsService = [[SocializeCommentsService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
-        _likeService = [[SocializeLikeService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
-        
         _entityService = [[SocializeEntityService alloc]initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
+        _likeService  = [[SocializeLikeService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
     }
     return self;
 }

@@ -18,6 +18,7 @@
     
     SocializeCommentsService* _service;
     NSString* _entityKey;
+    NSMutableArray* _comments;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField* commentText;
