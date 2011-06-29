@@ -27,11 +27,11 @@
 -(id<SocializeUser>)user;
 -(void)setUser:(id<SocializeUser>)user;
 
--(float_t)lat;
--(void)setLat:(float_t)lat;
+-(NSNumber*)lat;
+-(void)setLat:(NSNumber*)lat;
 
--(float_t)lng;
--(void)setLng:(float_t)lng;
+-(NSNumber*)lng;
+-(void)setLng:(NSNumber*)lng;
 
 
 -(NSDate *)date;
@@ -45,8 +45,8 @@
         id<SocializeApplication> _application;
         id<SocializeEntity>      _entity;
         id<SocializeUser>        _user;
-        float_t           _lat;
-        float_t           _lng;
+        NSNumber*           _lat;
+        NSNumber*           _lng;
         NSDate*           _date;
         
 }
@@ -55,8 +55,8 @@
 @property (nonatomic, retain) id<SocializeEntity>      entity;
 @property (nonatomic, retain) id<SocializeUser>        user;
 
-@property (nonatomic, assign) float_t           lat;
-@property (nonatomic, assign) float_t           lng;
+@property (nonatomic, assign) NSNumber*           lat;
+@property (nonatomic, assign) NSNumber*           lng;
 @property (nonatomic, retain) NSDate*           date;
 
 @end
