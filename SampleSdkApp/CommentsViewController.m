@@ -100,9 +100,6 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    ///
-    NSLog(@"%@", [[_comments objectAtIndex:indexPath.row] text]);
-    ///
     cell.textLabel.text = [[_comments objectAtIndex:indexPath.row] text];
     
     return cell;

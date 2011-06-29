@@ -14,6 +14,7 @@
 #import "SocializeAuthenticateService.h"
 #import "SocializeCommentsService.h"
 #import "SocializeEntityService.h"
+#import "SocializeLikeService.h"
 
 //**************************************************************************************************//
 //This is a general facade of the SDK`s API. Through it a third party developers could use the API. //
@@ -31,6 +32,7 @@
         SocializeAuthenticateService    *_authService;
         SocializeCommentsService        *_commentsService;
         SocializeEntityService          *_entityService;
+        SocializeLikeService            *_likeService;
         ThirdPartyAuthName              _type;
 }
 
@@ -50,4 +52,6 @@
 
 @property (nonatomic, readonly) SocializeCommentsService* commentService;
 @property (nonatomic, readonly) SocializeEntityService *   entityService;
+@property (nonatomic, readonly) SocializeLikeService* likeService;
+
 @end

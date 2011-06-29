@@ -13,9 +13,10 @@
 
 #import "Socialize.h"
 #import "SocializeCommonDefinitions.h"
+#import "SocializeLike.h"
 
-@interface EntityViewController : UIViewController<UIWebViewDelegate,UITextFieldDelegate, SocializeActionViewDelegate> {
-    
+@interface EntityViewController : UIViewController<UIWebViewDelegate,UITextFieldDelegate, SocializeActionViewDelegate, SocializeLikeServiceDelegate>
+{    
 @private
     SocializeActionView* _socializeActionPanel;
     UINavigationController* _commentsNavigationController;
@@ -23,6 +24,7 @@
     
     DemoEntity* _entity;
     Socialize* _service;
+    id<SocializeLike> _likeObject;
 }
 
 -(id) initWithEntry: (DemoEntity*) entry andService: (Socialize*) service;

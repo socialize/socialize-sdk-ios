@@ -34,6 +34,7 @@
     {
         self.entry = entry;
         _service = service;
+        _service.likeService.delegate = self;
     }
     return self;
 }
@@ -144,7 +145,14 @@
 
 -(void)likeButtonTouched:(id)sender
 {
-    
+    if([_socializeActionPanel isLiked])
+    {
+        [_service.likeService deleteLike: _likeObject.objectID]; 
+    }
+    else
+    {
+        [_service.likeService postLikeForEntityKey: _entity.socializeEntry.key];
+    }
 }
 
 -(void)shareButtonTouched:(id)sender
@@ -224,6 +232,22 @@
 {
     [_commentsNavigationController.view removeFromSuperview];    
     [_commentsNavigationController release];  _commentsNavigationController = nil;
+}
+
+#pragma mark - Socialize like service delegate
+
+-(void)didFailService:(id)service error:(NSError*)error
+{
+    NSLog(@"Failed with error -- %@", error);
+}
+
+-(void)didSucceed:(id)service data:(id)data
+{
+    _likeObject = data;
+    if([_socializeActionPanel isLiked])
+        [_socializeActionPanel updateLikesCount: [NSNumber numberWithInt: _likeObject.entity.likes] liked:NO];
+    else
+        [_socializeActionPanel updateLikesCount: [NSNumber numberWithInt: _likeObject.entity.likes] liked:YES];
 }
 
 @end

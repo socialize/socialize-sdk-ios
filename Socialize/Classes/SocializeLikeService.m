@@ -19,7 +19,7 @@
 @end
 
 #define LIKE_METHOD @"like/"
-#define LIKES_METHOD @"likes/"
+#define LIKES_METHOD @"like/"
 
 @implementation SocializeLikeService
 
