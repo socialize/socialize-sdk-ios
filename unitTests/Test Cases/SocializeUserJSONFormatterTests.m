@@ -36,7 +36,7 @@
 
 - (void)testToUser
 {
-    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"comment_single_response.json"];
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/comment_single_response.json"];
     NSDictionary * JSONDictionaryToParse =(NSDictionary *)[[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines]objectForKey:@"user"];
     
     id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];

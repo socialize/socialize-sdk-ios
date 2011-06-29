@@ -50,7 +50,7 @@
 
 -(void)testComment
 {
-    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"comment_single_response.json"];
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/comment_single_response.json"];
     NSDictionary * JSONDictionaryToParse =(NSDictionary *)[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
     id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];

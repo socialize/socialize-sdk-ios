@@ -1,7 +1,9 @@
 [
     { 
         'entity': 'http://www.example.com/interesting-story/',
-        'text': 'this was a great story'
+    },
+    { 
+        'entity': 'http://www.example.com/interesting-story/',
     },
     {
         'entity': {
@@ -11,6 +13,5 @@
     },
     { 
         'entity': 'http://www.example.com/interesting-story/',
-        'text': 'I did not think the story was that great'
     },
 ]

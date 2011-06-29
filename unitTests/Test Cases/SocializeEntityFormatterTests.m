@@ -42,7 +42,7 @@
 
 -(void)testToEntity
 {
-    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"entity_single_response.json"];
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/entity_single_response.json"];
     NSDictionary * JSONDictionaryToParse =(NSDictionary *)[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
     id mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
@@ -64,7 +64,7 @@
 
 -(void)testFromEntity
 {
-    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"entity_create.json"];
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"requests/entity_create.json"];
     NSArray * JSONArrayParse =(NSArray *)[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
     NSString * expectedKeyFieldValue =(NSString *)[[JSONArrayParse objectAtIndex:0]objectForKey:@"key"];

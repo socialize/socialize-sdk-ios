@@ -1,0 +1,24 @@
+[
+    { 
+        'entity': 'http://www.example.com/interesting-story/',
+        'text': 'this was a great story',
+        'medium': 1
+    },
+    { 
+        'entity': 'http://www.example.com/interesting-story/',
+        'text': 'this was a great story',
+        'medium': 2
+    },
+    {
+        'entity': {
+            'key': 'http://www.example.com/another-story/',
+            'name': 'Another Interesting Story',
+        },
+        'medium': 2
+    },
+    { 
+        'entity': 'http://www.example.com/interesting-story/',
+        'text': 'I did not think the story was that great',
+        'medium': 3
+    },
+]
