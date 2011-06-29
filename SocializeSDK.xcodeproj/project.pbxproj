@@ -29,7 +29,7 @@
 		16A5B333139CF18500F3EF75 /* action-bar-icon-liked.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A5B332139CF18500F3EF75 /* action-bar-icon-liked.png */; };
 		16A5B335139CF1D100F3EF75 /* view-sm-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A5B334139CF1D000F3EF75 /* view-sm-icon.png */; };
 		16A5B337139CF24100F3EF75 /* action-bar-icon-comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A5B336139CF24100F3EF75 /* action-bar-icon-comments.png */; };
-		16A5B33A139CF69E00F3EF75 /* DemoEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B339139CF69D00F3EF75 /* DemoEntry.m */; };
+		16A5B33A139CF69E00F3EF75 /* DemoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B339139CF69D00F3EF75 /* DemoEntity.m */; };
 		16A5B33B139CFE6C00F3EF75 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DABE1378824800B11B78 /* libSocialize.a */; };
 		16A5B33F139D102500F3EF75 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B33D139D102400F3EF75 /* CommentsViewController.m */; };
 		16A5B340139D102500F3EF75 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16A5B33E139D102400F3EF75 /* CommentsViewController.xib */; };
@@ -63,6 +63,8 @@
 		16F449DD13AF8B37003BE655 /* SocializeUserJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */; };
 		16FCABD113B885CC0034499F /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
 		16FCABD313B885D10034499F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C54DE6013830F9800090269 /* libOCMock.a */; };
+		16FCABD713BB0E340034499F /* EntityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FCABD513BB0E330034499F /* EntityListViewController.m */; };
+		16FCABD813BB0E340034499F /* EntityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16FCABD613BB0E340034499F /* EntityListViewController.xib */; };
 		5C21C0C41396BF8300CF2B9F /* SocializeGetRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0BE1396BF8300CF2B9F /* SocializeGetRequest.h */; };
 		5C21C0C51396BF8300CF2B9F /* SocializeGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0BF1396BF8300CF2B9F /* SocializeGetRequest.m */; };
 		5C21C0C61396BF8300CF2B9F /* SocializeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */; };
@@ -215,8 +217,8 @@
 		16A5B332139CF18500F3EF75 /* action-bar-icon-liked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-liked.png"; sourceTree = "<group>"; };
 		16A5B334139CF1D000F3EF75 /* view-sm-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view-sm-icon.png"; sourceTree = "<group>"; };
 		16A5B336139CF24100F3EF75 /* action-bar-icon-comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-comments.png"; sourceTree = "<group>"; };
-		16A5B338139CF69D00F3EF75 /* DemoEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoEntry.h; sourceTree = "<group>"; };
-		16A5B339139CF69D00F3EF75 /* DemoEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoEntry.m; sourceTree = "<group>"; };
+		16A5B338139CF69D00F3EF75 /* DemoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoEntity.h; sourceTree = "<group>"; };
+		16A5B339139CF69D00F3EF75 /* DemoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoEntity.m; sourceTree = "<group>"; };
 		16A5B33C139D102300F3EF75 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
 		16A5B33D139D102400F3EF75 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
 		16A5B33E139D102400F3EF75 /* CommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
@@ -256,6 +258,9 @@
 		16F449D913AF8356003BE655 /* SocializeApplicationJSONFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeApplicationJSONFormatterTests.m; path = "Test Cases/SocializeApplicationJSONFormatterTests.m"; sourceTree = "<group>"; };
 		16F449DB13AF8B35003BE655 /* SocializeUserJSONFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUserJSONFormatterTests.h; path = "Test Cases/SocializeUserJSONFormatterTests.h"; sourceTree = "<group>"; };
 		16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserJSONFormatterTests.m; path = "Test Cases/SocializeUserJSONFormatterTests.m"; sourceTree = "<group>"; };
+		16FCABD413BB0E330034499F /* EntityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityListViewController.h; sourceTree = "<group>"; };
+		16FCABD513BB0E330034499F /* EntityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityListViewController.m; sourceTree = "<group>"; };
+		16FCABD613BB0E340034499F /* EntityListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntityListViewController.xib; sourceTree = "<group>"; };
 		5C21C0BE1396BF8300CF2B9F /* SocializeGetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeGetRequest.h; path = Classes/SocializeGetRequest.h; sourceTree = "<group>"; };
 		5C21C0BF1396BF8300CF2B9F /* SocializeGetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeGetRequest.m; path = Classes/SocializeGetRequest.m; sourceTree = "<group>"; };
 		5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequest.h; path = Classes/SocializeRequest.h; sourceTree = "<group>"; };
@@ -475,8 +480,11 @@
 			isa = PBXGroup;
 			children = (
 				16E2C4581398F6E3007C91ED /* socialize_resources */,
-				16A5B338139CF69D00F3EF75 /* DemoEntry.h */,
-				16A5B339139CF69D00F3EF75 /* DemoEntry.m */,
+				16FCABD413BB0E330034499F /* EntityListViewController.h */,
+				16FCABD513BB0E330034499F /* EntityListViewController.m */,
+				16FCABD613BB0E340034499F /* EntityListViewController.xib */,
+				16A5B338139CF69D00F3EF75 /* DemoEntity.h */,
+				16A5B339139CF69D00F3EF75 /* DemoEntity.m */,
 				16E2C46D13991239007C91ED /* NSNumber+Additions.h */,
 				16E2C46E13991239007C91ED /* NSNumber+Additions.m */,
 				16E2C4551398D45A007C91ED /* EntityViewController.h */,
@@ -1028,6 +1036,7 @@
 				16A5B340139D102500F3EF75 /* CommentsViewController.xib in Resources */,
 				9ACDB2E813B392CD0097C122 /* SocializeConfigurationInfo.plist in Resources */,
 				9ACDB2EC13B3953C0097C122 /* EntityViewController.xib in Resources */,
+				16FCABD813BB0E340034499F /* EntityListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1080,7 +1089,7 @@
 				16E2C4541398D1C2007C91ED /* SocializeActionView.m in Sources */,
 				16E2C4571398D45A007C91ED /* EntityViewController.m in Sources */,
 				16E2C46F13991239007C91ED /* NSNumber+Additions.m in Sources */,
-				16A5B33A139CF69E00F3EF75 /* DemoEntry.m in Sources */,
+				16A5B33A139CF69E00F3EF75 /* DemoEntity.m in Sources */,
 				16A5B33F139D102500F3EF75 /* CommentsViewController.m in Sources */,
 				16A5B35B139E128C00F3EF75 /* CommetsTableView.m in Sources */,
 				6DF5996713AEE34D000D125A /* JSONKit.m in Sources */,
@@ -1089,6 +1098,7 @@
 				168B7F2713B2291D00D85D73 /* NSString+URLEncoding.m in Sources */,
 				168B7F2913B2294700D85D73 /* NSURL+Base.m in Sources */,
 				168B7F2A13B2294B00D85D73 /* NSMutableURLRequest+Parameters.m in Sources */,
+				16FCABD713BB0E340034499F /* EntityListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

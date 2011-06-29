@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "SocializeEntity.h"
 
-@interface DemoEntry : NSObject {
+@interface DemoEntity : NSObject {
     SocializeEntity* _entry;
     NSString* _entryContext;
 }
 
 -(id) initWithSocializeEntry: (SocializeEntity*) sEntry entryContext: (NSString*) eContext;
-+(DemoEntry*) createDemoEntryWithText: (NSString*) text;
++(DemoEntity*) createDemoEntryWithText: (NSString*) text;
 
 @property (nonatomic, retain) SocializeEntity* socializeEntry;
 @property (nonatomic, retain) NSString* entryContext;

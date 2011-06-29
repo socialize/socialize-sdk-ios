@@ -54,8 +54,8 @@
     [comment setDate:[df dateFromString:[JSONDictionary valueForKey:@"date"]]];
     [df release]; df = nil;
     
-    [comment setLat:[[JSONDictionary valueForKey:@"lat"]floatValue]];
-    [comment setLng:[[JSONDictionary valueForKey:@"lng"]floatValue]];
+    [comment setLat:[JSONDictionary valueForKey:@"lat"]];
+    [comment setLng:[JSONDictionary valueForKey:@"lng"]];
     
     [comment setEntity:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"entity"] forProtocol:@protocol(SocializeEntity)]];
     

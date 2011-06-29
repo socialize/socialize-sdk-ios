@@ -6,11 +6,11 @@
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "DemoEntry.h"
+#import "DemoEntity.h"
 
 #define DEMO_KEY @"http:////www.google.com"
 
-@implementation DemoEntry
+@implementation DemoEntity
 
 @synthesize socializeEntry = _entry;
 @synthesize entryContext = _entryContext;
@@ -35,7 +35,7 @@
     [super dealloc];
 }
 
-+(DemoEntry*) createDemoEntryWithText: (NSString*) text
++(DemoEntity*) createDemoEntryWithText: (NSString*) text
 {
     SocializeEntity* entry = [[SocializeEntity alloc] init];
     entry.key = DEMO_KEY;
@@ -44,7 +44,7 @@
     entry.likes = 7;
     entry.comments = 0;
     
-    DemoEntry* demoEntry = [[[DemoEntry alloc] initWithSocializeEntry:entry entryContext:text] autorelease];
+    DemoEntity* demoEntry = [[[DemoEntity alloc] initWithSocializeEntry:entry entryContext:text] autorelease];
     
     [entry release];
     return demoEntry;

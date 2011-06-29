@@ -114,7 +114,7 @@
 
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
-    //[_delegate entityService:self didFailWithError:error];
+    [_delegate entityService:self didFailWithError:error];
 }
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
