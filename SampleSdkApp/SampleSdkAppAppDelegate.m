@@ -22,7 +22,7 @@
 {
     socialize = [[Socialize alloc] init];   
 
-    entityListViewController = [[EntityListViewController alloc] initWithStyle: UITableViewStylePlain];
+    entityListViewController = [[EntityListViewController alloc] initWithStyle: UITableViewStylePlain andService: socialize];
     rootController = [[UINavigationController alloc] initWithRootViewController:entityListViewController];
 
     [self.window addSubview:rootController.view];

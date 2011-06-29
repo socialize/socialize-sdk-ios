@@ -26,30 +26,61 @@
  */
 
 #import "EntityListViewController.h"
+#import "Socialize.h"
 
 @interface EntityListViewController()
-
+    -(void) addNewEntity;
 @end
 
 @implementation EntityListViewController
 
+@synthesize service = _service;
+
+#pragma mark - UIAlertView delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1) //enter pressed 
+    {
+        
+    }
+}
+
 #pragma mark -
 
 -(void) addNewEntity
-{
+{    
+    UIAlertView *prompt = [[UIAlertView alloc] initWithTitle:@"Entity key and name" 
+                                                     message:@"\n\n\n" // IMPORTANT
+                                                    delegate:self 
+                                           cancelButtonTitle:@"Cancel" 
+                                           otherButtonTitles:@"Enter", nil];
     
+    [prompt addSubview:entityKey];
+    [prompt addSubview:entityName];
+    
+    
+    [prompt show];
+    [prompt release];
+    
+    // set cursor and show keyboard
+    [entityKey becomeFirstResponder];
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithStyle:(UITableViewStyle)style andService: (Socialize*) service
 {
     self = [super initWithStyle:style];
     if (self) {
+        self.service = service;
     }
     return self;
 }
 
 - (void)dealloc
 {
+    self.service = nil;
+    [entityKey release]; entityKey = nil;
+    [entityName release]; entityName = nil;
     [super dealloc];
 }
 
@@ -70,13 +101,15 @@
     UIBarButtonItem* addBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewEntity)];
     
     self.navigationItem.rightBarButtonItem = addBtn;
-//    [addBtn release]; addBtn = nil;
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [addBtn release]; addBtn = nil;
+    
+    entityKey = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 50.0, 260.0, 25.0)]; 
+    [entityKey setBackgroundColor:[UIColor whiteColor]];
+    [entityKey setPlaceholder:@"key"];
+    
+    entityName = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 85.0, 260.0, 25.0)]; 
+    [entityName setBackgroundColor:[UIColor whiteColor]];
+    [entityName setPlaceholder:@"name"];
 }
 
 - (void)viewDidUnload

@@ -27,11 +27,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class Socialize;
 
-@interface EntityListViewController : UITableViewController {
+@interface EntityListViewController : UITableViewController <UIAlertViewDelegate>
+{
+@private
+    Socialize* _service;
     
+    UITextField *entityKey;
+    UITextField *entityName;
 }
 
--(void) addNewEntity;
+- (id)initWithStyle:(UITableViewStyle)style andService: (Socialize*) service;
+
+@property (nonatomic, assign) Socialize* service;
 
 @end
