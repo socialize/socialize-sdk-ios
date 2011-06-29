@@ -17,6 +17,7 @@
 -(void)doToObject:(id<SocializeObject>)toObject fromDictionary:(NSDictionary *)JSONDictionary
 {
     id<SocializeLike> like = (id<SocializeLike>)toObject;
+    [like setObjectID: [[JSONDictionary valueForKey:@"id"]intValue]];
 
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ssZZZ"];
@@ -29,8 +30,19 @@
     
     [like setUser:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"user"] forProtocol:@protocol(SocializeUser)]];
     
-    [like setLat:[[JSONDictionary valueForKey:@"lat"]floatValue]];
-    [like setLng:[[JSONDictionary valueForKey:@"lng"]floatValue]];
+    NSNumber* latNumber = [JSONDictionary valueForKey:@"lat"];
+    NSNumber* lngNumber = [JSONDictionary valueForKey:@"lng"];
+    
+    if (latNumber && (![latNumber isEqual:[NSNull null]]))
+        [like setLat:[latNumber floatValue]];
+    else
+        [like setLat:0];
+    
+    if (lngNumber && (![lngNumber isEqual:[NSNull null]]))
+        [like setLng:[lngNumber floatValue]];
+    else
+        [like setLng:0];
+        
 
 }
 @end

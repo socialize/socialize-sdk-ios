@@ -40,13 +40,10 @@
         }
         else if([item isKindOfClass:[NSDictionary class]])
         {
-            
             [array addObject:[_factory createObjectFromDictionary:(NSDictionary*)item  forProtocol:protocol]];
-            
         }
         else
         {
-            
             [array addObject:item];
         }
         

@@ -34,7 +34,9 @@ typedef enum {
 @protocol SocializeLikeServiceDelegate <NSObject>
 
 -(void)didFailService:(id)service error:(NSError*)error;
--(void)didSucceed:(id)service data:(id)data;
+-(void)didPostLike:(id)service like:(id)data;
+-(void)didDeleteLike:(id)service like:(id)data;
+-(void)didFetchLike:(id)service like:(id)data;
 
 @end
 

@@ -7,6 +7,8 @@
 //
 
 #import "EntityViewController.h"
+#import "SocializeCommonDefinitions.h"
+#import "SocializeLike.h"
 
 #define ACTION_PANE_HEIGHT 44
 
@@ -156,8 +158,13 @@
 
 -(void)likeButtonTouched:(id)sender
 {
-    if (_entity)
-        [_service.likeService postLikeForEntity:_entity];
+    if (_entity){
+        if (!self.socializeActionPanel.isLiked)
+            [_service.likeService postLikeForEntity:_entity];
+        else if (_myLike){
+            [_service.likeService deleteLike:_myLike];
+        }
+    }
 }
 
 -(void)shareButtonTouched:(id)sender
@@ -165,15 +172,15 @@
     [_service.entityService createEntityWithKey:keyField.text andName:nameField.text];
 }
 
-
 -(IBAction)createNew:(id)button
 {
-//    UIAlertView * view = [[[UIAlertView alloc]initWithTitle:@"Bang" message:@"BANG!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
-//    
-//    [view show];
-
     [_service.entityService createEntityWithKey:keyField.text andName:nameField.text];
-    
+    [self touchesEnded:nil withEvent:nil];
+}
+
+-(IBAction)getLikes:(id)button
+{
+    [_service.likeService getLikesForEntityKey:keyField.text];
     [self touchesEnded:nil withEvent:nil];
 }
 
@@ -181,7 +188,6 @@
 
 -(void)showCommentsController
 {
-	
 	CommentsViewController* commentsController = [[CommentsViewController alloc] 
                           initWithNibName:@"CommentsViewController"
                           bundle:nil];
@@ -268,21 +274,44 @@
     DLog(@"like error %@", error);
 }
 
--(void)didSucceed:(id)service data:(id)data{
-    DLog(@"like didSucceed %@", data);
+-(void)didPostLike:(id)service like:(id)data{
+    if (data != nil){
+        NSArray* likes = data;
+        _myLike = [likes objectAtIndex:0];
+        [_myLike retain];
+        if (_myLike != nil)
+            [self.socializeActionPanel updateLikesCount:[NSNumber numberWithFloat:[_myLike.entity likes]]  liked:YES]; 
+    }
 }
+
+-(void)didDeleteLike:(id)service like:(id)data{
+    [self.socializeActionPanel updateIsLiked:NO];
+    [_myLike release]; _myLike = nil;
+}
+
+-(void)didFetchLike:(id)service like:(id)data{
+    
+    NSArray* dataFetced = data; 
+    NSString *tmpString = [NSString string];
+    for (id<SocializeLike> like in dataFetced){
+        NSString* newString = [NSString stringWithFormat:@"\n %@ Like By user %@", [[like user] userName] ] ;
+        tmpString = [tmpString stringByAppendingString:newString];
+    }
+    
+	UIAlertView *alert = [[UIAlertView alloc] init];
+	[alert setTitle:@"Like Results"];
+	[alert setMessage:tmpString];
+	[alert setDelegate:self];
+	[alert show];
+	[alert release];
+}
+
 #pragma mark -
-
-
 
 -(void)destroyCommentController
 {
     [_commentsNavigationController.view removeFromSuperview];    
     [_commentsNavigationController release];  _commentsNavigationController = nil;
 }
-
-
-
-
 
 @end

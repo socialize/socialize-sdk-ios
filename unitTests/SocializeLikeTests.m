@@ -13,6 +13,7 @@
 #import "NSMutableData+PostBody.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeObjectFactory.h"
+#import "SocializeLike.h"
 
 
 @interface SocializeLikeTests() 
@@ -30,7 +31,7 @@
 
 -(void) tearDownClass
 {
-   // [_service release]; _service = nil;
+    [_service release]; _service = nil;
 }
 
 -(void) testGetAlike
@@ -52,16 +53,21 @@
 -(void) testDeleteAlike
 {
     NSInteger alikeId = 54;
+    SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
+    id<SocializeLike> mockLike = [objectCreator createObjectForProtocol:@protocol(SocializeLike)]; 
+
+    [mockLike setObjectID:alikeId];
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    [NSNumber numberWithInt:alikeId], @"id",
                                    nil];
     
     id mockProvider =[OCMockObject mockForClass:[SocializeProvider class]];
+
     _service.provider = mockProvider; 
     
     NSString* newMethodName = [NSString stringWithFormat:@"like/%d/", alikeId];
     [[mockProvider expect] requestWithMethodName:newMethodName andParams:params andHttpMethod:@"DELETE" andDelegate:_service];
-    [_service deleteLike:alikeId];
+    [_service deleteLike: mockLike];
     [mockProvider verify];
 }
 
@@ -99,20 +105,17 @@
 }
 
 -(void)testGetLikesCallback{
+    
+    SocializeRequest* _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"POST" delegate:self requestURL:@"invalidparam"];
 
-/*
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"like_single_response.json"];
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeLikeServiceDelegate)];
     _service.delegate = mockDelegate;
     
-    SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
-    SocializeLike* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeLike)]; 
-
-    [[mockDelegate expect] didSucceed:_service data:];
+    [[mockDelegate expect] didPostLike:_service like:OCMOCK_ANY];
     
-    [_service request:nil didLoadRawResponse:mockDelegate];
+    [_service request:_request didLoadRawResponse:[JSONStringToParse dataUsingEncoding:NSUTF8StringEncoding]];
     [mockDelegate verify];
-*/
 
 }
 
@@ -128,8 +131,16 @@
 }
 
 
--(void)didSucceed:(id)service data:(id)data{
-    
+-(void)didPostLike:(id)service like:(id)data{
+
+}
+
+-(void)didDeleteLike:(id)service like:(id)data{
+
+}
+
+-(void)didFetchLike:(id)service like:(id)data{
+
 }
 
 -(void)didFailService:(id)service error:(NSError*)error{

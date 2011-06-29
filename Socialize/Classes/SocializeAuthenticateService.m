@@ -182,7 +182,7 @@
             [_delegate didAuthenticate];
         }
         else
-            [_delegate didNotAuthenticate:[NSError errorWithDomain:@"Authentication" code: 600 userInfo:nil]];
+            [_delegate didNotAuthenticate:[NSError errorWithDomain:@"Socialize" code: 600 userInfo:nil]];
             
         [self persistUserInfo:[jsonObject objectForKey:@"user"]];
     }

@@ -17,7 +17,7 @@
 
 
 @interface SocializeLikeService()
--(void)parseLikes:(NSArray*)likesJsonData;
+-(NSArray*)parseLikes:(id)likesJsonData;
 -(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
 @end
 
@@ -49,10 +49,10 @@
 {
     self.delegate = nil;
     self.provider = nil;
+    
     [_objectCreator release]; _objectCreator = nil;
     [super dealloc];
 }
-
 
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
@@ -62,28 +62,35 @@
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
 {
     NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    DLog(@"LikeService didLoadRawReponse  %@", responseString);
     
     id responseObject = [responseString objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
-    if([responseObject isKindOfClass:[NSDictionary class]])
-        [self parseLikes:responseObject];
-    else if([responseObject isKindOfClass: [NSArray class]])
-       [self parseLikes:responseObject];
-    else
-       [_delegate didSucceed:self data:nil];
+    if ([request.httpMethod isEqualToString:@"DELETE"]){
+        [_delegate didDeleteLike:self like:nil];
+    }
+    else  if ([request.httpMethod  isEqualToString:@"GET"]){
+        NSArray* likes = [self parseLikes:responseObject];
+        [_delegate didFetchLike:self like:likes];
+    }
+    else if ([request.httpMethod  isEqualToString:@"POST"]){
+        NSArray* likes = [self parseLikes:responseObject];
+        [_delegate didPostLike:self like:likes];
+    }
 }
 
--(void)parseLikes:(id)likesJsonData
+-(NSArray*)parseLikes:(id)likesJsonData
 {
     NSMutableArray* likes = nil;
     if ([likesJsonData isKindOfClass:[NSDictionary class]]){
-        NSMutableArray* likes = [NSMutableArray array];
+
+        likes = [NSMutableArray array];
         id<SocializeLike> like = [_objectCreator createObjectFromDictionary:likesJsonData forProtocol:@protocol(SocializeLike)];
         [likes addObject:like];
+        
     }
     else if ([likesJsonData isKindOfClass:[NSArray class]]){
-        NSMutableArray* likes = [NSMutableArray arrayWithCapacity:[likesJsonData count]];
+        
+        likes = [NSMutableArray arrayWithCapacity:[likesJsonData count]];
         [likesJsonData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
          {
              id<SocializeLike> like = [_objectCreator createObjectFromDictionary:obj forProtocol:@protocol(SocializeLike)];
@@ -92,7 +99,7 @@
          ];
     }
     
-    [_delegate didSucceed:self data:likes];
+    return likes;
 }
 
 -(void)postLikeForEntity:(id<SocializeEntity>)entity{
@@ -110,18 +117,18 @@
     }
 }
 
--(void)deleteLike:(NSInteger)likeId{
-
-    NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease];
-    [params setObject:[NSNumber numberWithInteger:likeId] forKey:@"id"];
-    NSString* updatedResource = [NSString stringWithFormat:@"%@%d/", LIKE_METHOD, likeId];
-    [_provider requestWithMethodName:updatedResource andParams:params andHttpMethod:@"DELETE" andDelegate:self];
-
+-(void)deleteLike:(id<SocializeLike>)like{
+    if ([like conformsToProtocol:@protocol(SocializeLike)]){
+        NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease];
+        [params setObject:[NSNumber numberWithInteger:[like objectID]] forKey:@"id"];
+        NSString* updatedResource = [NSString stringWithFormat:@"%@%d/", LIKE_METHOD, [like objectID]];
+        [_provider requestWithMethodName:updatedResource andParams:params andHttpMethod:@"DELETE" andDelegate:self];
+    }
 }
 
 -(void)getLike:(NSInteger)likeId{
     
-    NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
+    NSMutableDictionary*  params = [[[NSMutableDictionary alloc] init] autorelease]; 
     [params setObject:[NSNumber numberWithInteger:likeId] forKey:@"id"];
     NSString* updatedResource = [NSString stringWithFormat:@"%@%d/", LIKE_METHOD, likeId]; 
     [_provider requestWithMethodName:updatedResource andParams:params andHttpMethod:@"GET" andDelegate:self];

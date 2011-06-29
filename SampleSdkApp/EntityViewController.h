@@ -17,23 +17,22 @@
 @interface EntityViewController : UIViewController<UIWebViewDelegate,UITextFieldDelegate, SocializeEntityServiceDelegate, SocializeActionViewDelegate, SocializeLikeServiceDelegate> {
     
 @private
-    SocializeActionView* _socializeActionPanel;
-    UINavigationController* _commentsNavigationController;
-    UIWebView* _webView;
+    SocializeActionView         *_socializeActionPanel;
+    UINavigationController      *_commentsNavigationController;
+    UIWebView                   *_webView;
     
-    DemoEntry* _entry;
-    Socialize* _service;
+    DemoEntry                   *_entry;
+    Socialize                   *_service;
     
-    IBOutlet UITextField * keyField;
-    IBOutlet UITextField * nameField;
-    IBOutlet UITextView  * resultsView;
-    IBOutlet UIButton    * createButton;
-    id<SocializeEntity> _entity;
-    
+    IBOutlet UITextField        *keyField;
+    IBOutlet UITextField        *nameField;
+    IBOutlet UITextView         *resultsView;
+    IBOutlet UIButton           *createButton;
+    id<SocializeEntity>         _entity;
+    id<SocializeLike>           _myLike;
 }
 
 -(id) initWithEntry: (DemoEntry*) entry andService: (Socialize*) service;
-
-
 -(IBAction)createNew:(id)button;
+
 @end
