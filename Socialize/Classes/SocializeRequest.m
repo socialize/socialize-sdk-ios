@@ -189,6 +189,8 @@ dataFetcher = _dataFetcher
     NSLog(@"responseBody %@", responseBody);
 	if (ticket.didSucceed) 
         [self handleResponseData:data];
+    else
+        [self  failWithError:[NSError errorWithDomain:responseBody code:400 userInfo:nil]];
 }
 
 - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFailWithError:(NSError*)error{
