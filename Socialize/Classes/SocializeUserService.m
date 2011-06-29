@@ -91,9 +91,7 @@
    [self.delegate userService:self didReceiveUser:(id<SocializeUser>)objectResponse];
 }
 -(void)doDidReceiveReceiveListOfObjects:(NSArray *)objectResponse
-{
-    [self.delegate userService:self didReceiveListOfUsers:objectResponse];
-}
+{ [self.delegate userService:self didReceiveListOfUsers:objectResponse]; }
 
 -(void)doDidFailWithError:(NSError *)error
 {

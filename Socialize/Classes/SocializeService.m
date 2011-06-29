@@ -120,24 +120,16 @@
 }
 
 -(void)doDidReceiveSocializeObject:(id<SocializeObject>)objectResponse
-{
-    
-}
+{}
 -(void)doDidReceiveReceiveListOfObjects:(NSArray *)objectResponse
-{
-    
-}
+{}
 
 -(void)doDidFailWithError:(NSError *)error
-{
-    
-}
+{}
 
 
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest
+-(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonData
 {
-    //NSData* jsonData =  [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
-    NSString * jsonData = jsonRequest;
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:
             jsonData, @"jsonData",
             nil];
