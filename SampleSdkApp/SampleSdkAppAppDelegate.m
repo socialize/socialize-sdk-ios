@@ -12,25 +12,22 @@
 #import "Socialize.h"
 
 
-
 @implementation SampleSdkAppAppDelegate
 
 
 @synthesize window=_window;
-@synthesize entityController;
+@synthesize entityListViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    socialize = [[Socialize alloc] init];
-    entityController = [[EntityViewController alloc] initWithEntry:[DemoEntity createDemoEntryWithText:@"This is demo entry"] andService: socialize];
+    socialize = [[Socialize alloc] init];   
 
-    CGRect frame = entityController.view.frame;
-    frame.origin.y += 20;
-    entityController.view.frame = frame;
-    
-    [self.window addSubview:self.entityController.view];
-    
+    entityListViewController = [[EntityListViewController alloc] initWithStyle: UITableViewStylePlain];
+    rootController = [[UINavigationController alloc] initWithRootViewController:entityListViewController];
+
+    [self.window addSubview:rootController.view];
     [self.window makeKeyAndVisible];
+
     return YES;
 }
 
@@ -66,14 +63,12 @@
         return;
     
     [socialize authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" delegate:self];
-    entityController.view.userInteractionEnabled = NO;
+    rootController.view.userInteractionEnabled = NO;
 }
 
 -(void)didAuthenticate
 {
-    entityController.view.userInteractionEnabled = YES;
-    // TODO:: send create entity request from here
-    return;
+    rootController.view.userInteractionEnabled = YES;
 }
 
 -(void)didNotAuthenticate:(NSError*)error
@@ -93,7 +88,8 @@
 
 - (void)dealloc
 {
-    [entityController  release];
+    [rootController  release];
+    [entityListViewController release];
     [_window release];
     [socialize release];
     [super dealloc];
