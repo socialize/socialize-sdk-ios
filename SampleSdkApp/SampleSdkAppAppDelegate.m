@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SampleSdkAppAppDelegate.h"
-#import "DemoEntry.h"
+#import "DemoEntity.h"
 #import "Socialize.h"
 
 
@@ -17,13 +17,18 @@
 
 
 @synthesize window=_window;
-@synthesize entryController;
+@synthesize entityController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     socialize = [[Socialize alloc] init];
-    self.entryController = [[EntityViewController alloc] initWithEntry:[DemoEntry createDemoEntryWithText:@"This is demo entry"] andService: socialize];
-    [self.window addSubview:self.entryController.view];
+    entityController = [[EntityViewController alloc] initWithEntry:[DemoEntity createDemoEntryWithText:@"This is demo entry"] andService: socialize];
+
+    CGRect frame = entityController.view.frame;
+    frame.origin.y += 20;
+    entityController.view.frame = frame;
+    
+    [self.window addSubview:self.entityController.view];
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -61,12 +66,12 @@
         return;
     
     [socialize authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" delegate:self];
-    entryController.view.userInteractionEnabled = NO;
+    entityController.view.userInteractionEnabled = NO;
 }
 
 -(void)didAuthenticate
 {
-    entryController.view.userInteractionEnabled = YES;
+    entityController.view.userInteractionEnabled = YES;
     // TODO:: send create entity request from here
     return;
 }
@@ -88,7 +93,7 @@
 
 - (void)dealloc
 {
-    [entryController  release];
+    [entityController  release];
     [_window release];
     [socialize release];
     [super dealloc];

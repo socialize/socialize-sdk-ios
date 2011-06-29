@@ -29,7 +29,7 @@
 		16A5B333139CF18500F3EF75 /* action-bar-icon-liked.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A5B332139CF18500F3EF75 /* action-bar-icon-liked.png */; };
 		16A5B335139CF1D100F3EF75 /* view-sm-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A5B334139CF1D000F3EF75 /* view-sm-icon.png */; };
 		16A5B337139CF24100F3EF75 /* action-bar-icon-comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A5B336139CF24100F3EF75 /* action-bar-icon-comments.png */; };
-		16A5B33A139CF69E00F3EF75 /* DemoEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B339139CF69D00F3EF75 /* DemoEntry.m */; };
+		16A5B33A139CF69E00F3EF75 /* DemoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B339139CF69D00F3EF75 /* DemoEntity.m */; };
 		16A5B33B139CFE6C00F3EF75 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DABE1378824800B11B78 /* libSocialize.a */; };
 		16A5B33F139D102500F3EF75 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A5B33D139D102400F3EF75 /* CommentsViewController.m */; };
 		16A5B340139D102500F3EF75 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16A5B33E139D102400F3EF75 /* CommentsViewController.xib */; };
@@ -215,8 +215,8 @@
 		16A5B332139CF18500F3EF75 /* action-bar-icon-liked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-liked.png"; sourceTree = "<group>"; };
 		16A5B334139CF1D000F3EF75 /* view-sm-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view-sm-icon.png"; sourceTree = "<group>"; };
 		16A5B336139CF24100F3EF75 /* action-bar-icon-comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-comments.png"; sourceTree = "<group>"; };
-		16A5B338139CF69D00F3EF75 /* DemoEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoEntry.h; sourceTree = "<group>"; };
-		16A5B339139CF69D00F3EF75 /* DemoEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoEntry.m; sourceTree = "<group>"; };
+		16A5B338139CF69D00F3EF75 /* DemoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DemoEntity.h; sourceTree = "<group>"; };
+		16A5B339139CF69D00F3EF75 /* DemoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoEntity.m; sourceTree = "<group>"; };
 		16A5B33C139D102300F3EF75 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
 		16A5B33D139D102400F3EF75 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
 		16A5B33E139D102400F3EF75 /* CommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
@@ -475,8 +475,8 @@
 			isa = PBXGroup;
 			children = (
 				16E2C4581398F6E3007C91ED /* socialize_resources */,
-				16A5B338139CF69D00F3EF75 /* DemoEntry.h */,
-				16A5B339139CF69D00F3EF75 /* DemoEntry.m */,
+				16A5B338139CF69D00F3EF75 /* DemoEntity.h */,
+				16A5B339139CF69D00F3EF75 /* DemoEntity.m */,
 				16E2C46D13991239007C91ED /* NSNumber+Additions.h */,
 				16E2C46E13991239007C91ED /* NSNumber+Additions.m */,
 				16E2C4551398D45A007C91ED /* EntityViewController.h */,
@@ -1080,7 +1080,7 @@
 				16E2C4541398D1C2007C91ED /* SocializeActionView.m in Sources */,
 				16E2C4571398D45A007C91ED /* EntityViewController.m in Sources */,
 				16E2C46F13991239007C91ED /* NSNumber+Additions.m in Sources */,
-				16A5B33A139CF69E00F3EF75 /* DemoEntry.m in Sources */,
+				16A5B33A139CF69E00F3EF75 /* DemoEntity.m in Sources */,
 				16A5B33F139D102500F3EF75 /* CommentsViewController.m in Sources */,
 				16A5B35B139E128C00F3EF75 /* CommetsTableView.m in Sources */,
 				6DF5996713AEE34D000D125A /* JSONKit.m in Sources */,

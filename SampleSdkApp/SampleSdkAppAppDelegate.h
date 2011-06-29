@@ -13,11 +13,11 @@
 
 @interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate, SocializeAuthenticationDelegate> {
 @private
-    EntityViewController* entryController;
+    EntityViewController* entityController;
     Socialize*           socialize;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) EntityViewController* entryController;
+@property (nonatomic, retain) EntityViewController* entityController;
 
 @end
