@@ -12,6 +12,7 @@
 
 -(void)commentButtonTouched:(id)sender;
 -(void)likeButtonTouched:(id)sender;
+-(void)likeListButtonTouched:(id)sender;
 -(void)shareButtonTouched:(id)sender;
 
 @end
@@ -23,7 +24,9 @@
 	UIButton*	_commentButton;
 	UIButton*	_likeButton;
 	UIButton*	_viewCounter;
+	UIButton*	_likeListButton;
 	
+    
 	UIFont*		_buttonLabelFont;
     
 	UIActivityIndicatorView*  _activityIndicator;

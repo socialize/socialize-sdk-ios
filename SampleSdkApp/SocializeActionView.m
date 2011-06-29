@@ -37,11 +37,10 @@
 		onButton:(UIButton*)button
 		withSelector:(SEL)selector;
 -(CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName;
-
 -(void)commentButtonPressed:(id)sender;
 -(void)likeButtonPressed:(id)sender;
 -(void)shareButtonPressed:(id)sender;
-
+-(void)configureListButton:(UIButton*)button;
 @end
 
 @implementation SocializeActionView
@@ -60,6 +59,14 @@
 		[self setupButtons];
 	}
     return self;
+}
+
+
+-(void)configureListButton:(UIButton*)button{
+	[button.titleLabel setFont:_buttonLabelFont];
+	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	button.titleLabel.shadowColor = [UIColor blackColor]; 
+	button.titleLabel.shadowOffset = CGSizeMake(0, -1); 
 }
 
 -(void)setupButtons 
@@ -101,6 +108,23 @@
 
 	[self addSubview:_likeButton];
     
+    _likeListButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	buttonSize = [self getButtonSizeForLabel:@"Like List" iconName:@"action-bar-icon-like.png"];
+	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
+	buttonOrigin.y = BUTTON_Y_ORIGIN; 
+    _likeListButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
+
+	[self setButtonLabel:@"Like List" 
+            withImageForNormalState: @"action-bar-button-black.png" 
+            withImageForHightlightedState:@"action-bar-button-black-hover.png"
+            withIconName:@"action-bar-icon-like.png"
+                atOrigin:buttonOrigin
+                onButton:_likeListButton
+            withSelector:@selector(likeListButtonPressed:)];
+    
+    [self configureListButton:_likeListButton];
+	[self addSubview:_likeListButton];
+    
  	_viewCounter = [UIButton buttonWithType:UIButtonTypeCustom];
 	_viewCounter.userInteractionEnabled = NO;
 	_viewCounter.hidden = YES;
@@ -121,6 +145,7 @@
 	[self addSubview:_activityIndicator];
 	[_activityIndicator startAnimating];
 }
+
 
 - (CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName 
 {
@@ -285,6 +310,11 @@
 -(void)likeButtonPressed:(id)sender
 {
 	[_socializeDelegate likeButtonTouched:sender];
+}
+
+-(void)likeListButtonPressed:(id)sender
+{
+	[_socializeDelegate likeListButtonTouched:sender];
 }
 
 -(void)shareButtonPressed:(id)sender

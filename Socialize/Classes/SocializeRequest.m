@@ -87,7 +87,7 @@ dataFetcher = _dataFetcher
     if ([request.httpMethod isEqualToString:@"GET"])
         request.url = [NSString serializeURL:request.url params:(NSDictionary*)request.params httpMethod:request.httpMethod];
     
-    
+    DLog(@"Request.url  %@",request.url);
     
     return request;
 }

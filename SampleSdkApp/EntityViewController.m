@@ -10,6 +10,8 @@
 #import "SocializeCommonDefinitions.h"
 #import "SocializeLike.h"
 #import "SocializeEntity.h"
+#import "LikeListViewController.h"
+
 
 #define ACTION_PANE_HEIGHT 44
 
@@ -149,23 +151,24 @@
 
 -(void)likeButtonTouched:(id)sender
 {
-    if([_socializeActionPanel isLiked])
-    {
+    if([_socializeActionPanel isLiked]) {
         [_service.likeService deleteLike: _myLike]; 
     }
-    else
-    {
+    else {
         [_service.likeService postLikeForEntityKey: _entity.socializeEntry.key];
     }
 }
 
--(void)shareButtonTouched:(id)sender
-{
+-(void)likeListButtonTouched:(id)sender {
+    LikeListViewController* controller = [[[LikeListViewController alloc] initWithNibName:@"LikeListViewController" bundle:nil andService:_service andEntityKey:@"test"] autorelease];
+    [[self navigationController] pushViewController:controller animated:YES];
+}
+
+-(void)shareButtonTouched:(id)sender {
     [_service.entityService createEntityWithKey:keyField.text andName:nameField.text];
 }
 
--(IBAction)createNew:(id)button
-{
+-(IBAction)createNew:(id)button {
     [_service.entityService createEntityWithKey:keyField.text andName:nameField.text];
     [self touchesEnded:nil withEvent:nil];
 }
@@ -239,10 +242,6 @@
 	[UIView commitAnimations];
 }
 
-//-(void)prepare{
-//	//[commentsController startFetchingComments];
-//}
-
 -(void) entityService:(SocializeEntityService *)entityService didReceiveEntity:(id<SocializeEntity>)entityObject{
 
 }
@@ -255,9 +254,8 @@
 }
 
 -(void) entityService:(SocializeEntityService *)entityService didFailWithError:(NSError *)error{
-
+    
 }
-
 
 -(void)destroyCommentController
 {
