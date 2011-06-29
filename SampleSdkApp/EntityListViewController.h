@@ -26,16 +26,18 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "SocializeCommonDefinitions.h"
+#import "Socialize.h"
 
-@class Socialize;
 
-@interface EntityListViewController : UITableViewController <UIAlertViewDelegate>
+@interface EntityListViewController : UITableViewController <UIAlertViewDelegate, SocializeEntityServiceDelegate>
 {
 @private
     Socialize* _service;
+    NSMutableArray* _entities;
     
-    UITextField *entityKey;
-    UITextField *entityName;
+    UITextField *_entityKey;
+    UITextField *_entityName;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style andService: (Socialize*) service;

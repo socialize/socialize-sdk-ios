@@ -26,7 +26,6 @@
  */
 
 #import "EntityListViewController.h"
-#import "Socialize.h"
 
 @interface EntityListViewController()
     -(void) addNewEntity;
@@ -36,14 +35,37 @@
 
 @synthesize service = _service;
 
+#pragma mark - Socialize Entity Service Delegate
+
+-(void) entityService:(SocializeEntityService *)entityService didReceiveEntity:(id<SocializeEntity>)entityObject
+{
+    [_entities addObject:entityObject];
+    [self.tableView reloadData];
+}
+
+-(void) entityService:(SocializeEntityService *)entityService didReceiveListOfEntities:(NSArray *)entityList
+{
+    [_entities addObjectsFromArray:entityList];
+    [self.tableView reloadData];
+}
+
+-(void) entityService:(SocializeEntityService *)entityService didFailWithError:(NSError *)error
+{
+    NSLog(@"Failed with error -- %@", error);
+}
+
+
 #pragma mark - UIAlertView delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex == 1) //enter pressed 
     {
-        
+        [_service.entityService createEntityWithKey:_entityKey.text andName:_entityName.text];
     }
+    
+    _entityKey.text = @"";
+    _entityName.text = @"";
 }
 
 #pragma mark -
@@ -56,15 +78,15 @@
                                            cancelButtonTitle:@"Cancel" 
                                            otherButtonTitles:@"Enter", nil];
     
-    [prompt addSubview:entityKey];
-    [prompt addSubview:entityName];
+    [prompt addSubview:_entityKey];
+    [prompt addSubview:_entityName];
     
     
     [prompt show];
     [prompt release];
     
     // set cursor and show keyboard
-    [entityKey becomeFirstResponder];
+    [_entityKey becomeFirstResponder];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style andService: (Socialize*) service
@@ -72,6 +94,8 @@
     self = [super initWithStyle:style];
     if (self) {
         self.service = service;
+        self.service.entityService.delegate = self;
+        _entities = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;
 }
@@ -79,8 +103,9 @@
 - (void)dealloc
 {
     self.service = nil;
-    [entityKey release]; entityKey = nil;
-    [entityName release]; entityName = nil;
+    [_entities release]; _entities = nil;
+    [_entityKey release]; _entityKey = nil;
+    [_entityName release]; _entityName = nil;
     [super dealloc];
 }
 
@@ -103,60 +128,33 @@
     self.navigationItem.rightBarButtonItem = addBtn;
     [addBtn release]; addBtn = nil;
     
-    entityKey = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 50.0, 260.0, 25.0)]; 
-    [entityKey setBackgroundColor:[UIColor whiteColor]];
-    [entityKey setPlaceholder:@"key"];
+    _entityKey = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 50.0, 260.0, 25.0)]; 
+    [_entityKey setBackgroundColor:[UIColor whiteColor]];
+    [_entityKey setPlaceholder:@"key"];
     
-    entityName = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 85.0, 260.0, 25.0)]; 
-    [entityName setBackgroundColor:[UIColor whiteColor]];
-    [entityName setPlaceholder:@"name"];
+    _entityName = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 85.0, 260.0, 25.0)]; 
+    [_entityName setBackgroundColor:[UIColor whiteColor]];
+    [_entityName setPlaceholder:@"name"];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 0;
+    return [_entities count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -168,7 +166,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Configure the cell...
+    cell.textLabel.text = [[_entities objectAtIndex:indexPath.row] name];
     
     return cell;
 }
