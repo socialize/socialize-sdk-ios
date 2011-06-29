@@ -151,21 +151,21 @@ static const int singleCommentId = 1;
 
 -(void) testServiceReceiveSingleComment
 {
-    NSString* jsonResponse = [self helperGetJSONStringFromFile:@"comment_single_response.json"];
+    NSString* jsonResponse = [self helperGetJSONStringFromFile:@"responses/comment_single_response.json"];
     NSData* jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
     [_service request:nil didLoadRawResponse:jsonData];
 }
 
 -(void) testServiceReceiveCommentsList
 {
-    NSString* jsonResponse = [self helperGetJSONStringFromFile:@"comment_list_response.json"];
+    NSString* jsonResponse = [self helperGetJSONStringFromFile:@"responses/comment_list_response.json"];
     NSData* jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
     [_service request:nil didLoadRawResponse:jsonData];
 }
 
 #pragma mark Socialize comment service delegate
 
--(void) receivedComment: (SocializeCommentsService*)service comment: (id<SocializeComment>) comment
+-(void) receivedComment: (SocializeCommentsService*)service comment:(id<SocializeComment>)comment
 { 
     GHAssertEquals(comment.objectID, 1, nil);
     GHAssertEqualStrings(comment.entity.key, @"http://www.example.com/interesting-story/", nil);

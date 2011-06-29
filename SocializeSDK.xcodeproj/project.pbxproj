@@ -174,6 +174,11 @@
 		9A6C09A613B244BE00780951 /* SocializeListFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C09A413B244BE00780951 /* SocializeListFormatter.m */; };
 		9A6C09A913B2507B00780951 /* SocializeListFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C09A813B2507B00780951 /* SocializeListFormatterTests.m */; };
 		9A6C09AC13B2941F00780951 /* SocializeEntityServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C09AB13B2941F00780951 /* SocializeEntityServiceTests.m */; };
+		9ABB68B913BA6920001882D1 /* SocializeUserServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB68B813BA6920001882D1 /* SocializeUserServiceTests.m */; };
+		9ABB68BC13BA78A4001882D1 /* SocializeService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9ABB68BA13BA78A3001882D1 /* SocializeService.h */; };
+		9ABB68BD13BA78A4001882D1 /* SocializeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB68BB13BA78A4001882D1 /* SocializeService.m */; };
+		9AC0259913BB8253004AB147 /* SocializeUserService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC0259713BB8253004AB147 /* SocializeUserService.h */; };
+		9AC0259A13BB8253004AB147 /* SocializeUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0259813BB8253004AB147 /* SocializeUserService.m */; };
 		9ACDB2E813B392CD0097C122 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4D29841393FFCD0065C0CB /* SocializeConfigurationInfo.plist */; };
 		9ACDB2EC13B3953C0097C122 /* EntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ACDB2EB13B3953C0097C122 /* EntityViewController.xib */; };
 /* End PBXBuildFile section */
@@ -381,6 +386,12 @@
 		9A6C09A813B2507B00780951 /* SocializeListFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeListFormatterTests.m; path = "Test Cases/SocializeListFormatterTests.m"; sourceTree = "<group>"; };
 		9A6C09AA13B2941F00780951 /* SocializeEntityServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEntityServiceTests.h; path = "Test Cases/SocializeEntityServiceTests.h"; sourceTree = "<group>"; };
 		9A6C09AB13B2941F00780951 /* SocializeEntityServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeEntityServiceTests.m; path = "Test Cases/SocializeEntityServiceTests.m"; sourceTree = "<group>"; };
+		9ABB68B713BA6920001882D1 /* SocializeUserServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUserServiceTests.h; path = "Test Cases/SocializeUserServiceTests.h"; sourceTree = "<group>"; };
+		9ABB68B813BA6920001882D1 /* SocializeUserServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserServiceTests.m; path = "Test Cases/SocializeUserServiceTests.m"; sourceTree = "<group>"; };
+		9ABB68BA13BA78A3001882D1 /* SocializeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeService.h; path = Classes/SocializeService.h; sourceTree = "<group>"; };
+		9ABB68BB13BA78A4001882D1 /* SocializeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeService.m; path = Classes/SocializeService.m; sourceTree = "<group>"; };
+		9AC0259713BB8253004AB147 /* SocializeUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUserService.h; path = Classes/SocializeUserService.h; sourceTree = "<group>"; };
+		9AC0259813BB8253004AB147 /* SocializeUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserService.m; path = Classes/SocializeUserService.m; sourceTree = "<group>"; };
 		9ACDB2EB13B3953C0097C122 /* EntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntityViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -435,6 +446,8 @@
 				1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */,
 				9A6C09AA13B2941F00780951 /* SocializeEntityServiceTests.h */,
 				9A6C09AB13B2941F00780951 /* SocializeEntityServiceTests.m */,
+				9ABB68B713BA6920001882D1 /* SocializeUserServiceTests.h */,
+				9ABB68B813BA6920001882D1 /* SocializeUserServiceTests.m */,
 			);
 			name = "Infrastructure Tests";
 			sourceTree = "<group>";
@@ -587,6 +600,10 @@
 				6DF5947413A93434000D125A /* SocializeCommonDefinitions.h */,
 				1636373013AB28D900403879 /* SocializeCommentsService.h */,
 				1636373113AB28DA00403879 /* SocializeCommentsService.m */,
+				9AC0259713BB8253004AB147 /* SocializeUserService.h */,
+				9AC0259813BB8253004AB147 /* SocializeUserService.m */,
+				9ABB68BA13BA78A3001882D1 /* SocializeService.h */,
+				9ABB68BB13BA78A4001882D1 /* SocializeService.m */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
@@ -937,6 +954,8 @@
 				6D49744413B4052600463D23 /* SocializeLikeTests.h in Headers */,
 				9A6C09A513B244BE00780951 /* SocializeListFormatter.h in Headers */,
 				6D554A0213B8E9CD004EA053 /* SocializeLikeJSONFormatter.h in Headers */,
+				9ABB68BC13BA78A4001882D1 /* SocializeService.h in Headers */,
+				9AC0259913BB8253004AB147 /* SocializeUserService.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1164,6 +1183,8 @@
 				6D49744513B4052600463D23 /* SocializeLikeTests.m in Sources */,
 				9A6C09A613B244BE00780951 /* SocializeListFormatter.m in Sources */,
 				6D554A0313B8E9CD004EA053 /* SocializeLikeJSONFormatter.m in Sources */,
+				9ABB68BD13BA78A4001882D1 /* SocializeService.m in Sources */,
+				9AC0259A13BB8253004AB147 /* SocializeUserService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1190,6 +1211,7 @@
 				9A6C09A913B2507B00780951 /* SocializeListFormatterTests.m in Sources */,
 				9A6C09AC13B2941F00780951 /* SocializeEntityServiceTests.m in Sources */,
 				6D554A0B13B928BF004EA053 /* SocializeLikeFormatterTests.m in Sources */,
+				9ABB68B913BA6920001882D1 /* SocializeUserServiceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

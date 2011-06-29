@@ -17,5 +17,6 @@
 @synthesize smallImageUrl = _smallInageUrl;
 @synthesize city = _city;
 @synthesize state = _state;
+@synthesize description;
 
 @end

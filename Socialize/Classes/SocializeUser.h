@@ -31,6 +31,9 @@
 -(void) setState: (NSString*) state;
 -(NSString*) state;
 
+-(void) setDescription: (NSString*)description;
+-(NSString*)description;
+
 @end
 
 @interface SocializeUser : SocializeObject<SocializeUser> 
@@ -42,6 +45,8 @@
         NSString* _smallInageUrl;
         NSString* _city;
         NSString* _state;
+    
+        NSString* _description;
 }
 
 @property (nonatomic, retain) NSString* firstName;
@@ -50,5 +55,6 @@
 @property (nonatomic, retain) NSString* smallImageUrl;
 @property (nonatomic, retain) NSString* city;
 @property (nonatomic, retain) NSString* state;
+@property (nonatomic, retain) NSString* description;
 
 @end
