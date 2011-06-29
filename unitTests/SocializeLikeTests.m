@@ -88,7 +88,7 @@
                                    [mockEntity key], @"entity",
                                    nil];
 
-    [[mockProvider expect] requestWithMethodName:@"likes/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
     [_service postLikeForEntity:mockEntity];
     [mockProvider verify];
 }

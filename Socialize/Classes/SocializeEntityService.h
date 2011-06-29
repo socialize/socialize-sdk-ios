@@ -57,6 +57,7 @@
 @end
 
 @protocol SocializeEntityServiceDelegate
+@required
 
 -(void) entityService:(SocializeEntityService *)entityService didReceiveEntity:(id<SocializeEntity>)entityObject;
 -(void) entityService:(SocializeEntityService *)entityService didReceiveListOfEntities:(NSArray *)entityList;

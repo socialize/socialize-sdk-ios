@@ -18,23 +18,23 @@
 
     @property (nonatomic, retain) SocializeActionView* socializeActionPanel;
     @property (nonatomic, retain) UIWebView* webView;
-    @property (nonatomic, retain) DemoEntry* entry;
+    @property (nonatomic, retain) DemoEntity* entry;
 @end
 
 @implementation EntityViewController
 
 @synthesize socializeActionPanel = _socializeActionPanel;
 @synthesize webView = _webView;
-@synthesize entry = _entry;
+@synthesize entry = _entity;
 
--(id) initWithEntry: (DemoEntry*) entry andService: (Socialize*) service
+-(id) initWithEntry: (DemoEntity*) entry andService: (Socialize*) service
 {
     self = [super init];
     if(self != nil)
     {
         self.entry = entry;
         _service = service;
-        _service.entityService.delegate = self;
+        _service.likeService.delegate = self;
     }
     return self;
 }
@@ -44,7 +44,7 @@
     [_socializeActionPanel release]; _socializeActionPanel = nil;
     [_commentsNavigationController release];  _commentsNavigationController = nil;
     [_webView release]; _webView = nil;
-    [_entry release]; _entry = nil;
+    [_entity release]; _entity = nil;
     _service = nil;
     [super dealloc];
 }
@@ -64,27 +64,30 @@
 {
     [super viewDidLoad];
     
-//	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-//	self.view.autoresizesSubviews = YES;
-//	self.view.backgroundColor = [UIColor whiteColor];
+	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+	self.view.autoresizesSubviews = YES;
+	self.view.backgroundColor = [UIColor whiteColor];
     
-//    UIWebView* webView = [[UIWebView alloc] initWithFrame: CGRectMake(0,
-//                                                                0, 
-//                                                                self.view.bounds.size.width,
-//                                                                self.view.bounds.size.height)
-//                    ];
+    CGRect size = self.view.frame;
+    
+    UIWebView* webView = [[UIWebView alloc] initWithFrame: CGRectMake(0,
+                                                                0, 
+                                                                self.view.frame.size.width,
+                                                                self.view.frame.size.height)
+                    ];
+    
+    size = self.view.frame;
 
-//    UIWebView* webView = [[UIWebView alloc] initWithFrame: self.view.bounds];
-//                          
-//    webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin);
-//    self.webView = webView;
-//    [webView release]; webView = nil;
-//	
-//	NSString* entryContextToShow = [NSString stringWithFormat:@"<html><center>%@</center></html>", self.entry.entryContext];
-//    [self.webView loadHTMLString:entryContextToShow baseURL:nil];   
-//    
-//	self.webView.delegate = self;
-//    [self.view addSubview: self.webView];
+                          
+    webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin);
+    self.webView = webView;
+    [webView release]; webView = nil;
+	
+	NSString* entryContextToShow = [NSString stringWithFormat:@"<html><center>%@</center></html>", self.entry.entryContext];
+    [self.webView loadHTMLString:entryContextToShow baseURL:nil];   
+    
+	self.webView.delegate = self;
+    [self.view addSubview: self.webView];
 
 	//initialize socialize related classes
 	[self initSocialize];   
@@ -98,29 +101,22 @@
 }
 
 -(void) initSocialize
-{       
-    CGRect size = self.view.bounds;
-    
-//    SocializeActionView* socializeActionPanel = [[SocializeActionView alloc] initWithFrame:
-//                                 CGRectMake(0,
-//                                            self.view.bounds.size.height - ACTION_PANE_HEIGHT, 
-//                                            self.view.bounds.size.width,
-//                                            ACTION_PANE_HEIGHT)
-//                                 ];
+{          
     SocializeActionView* socializeActionPanel = [[SocializeActionView alloc] initWithFrame:
-                                                 CGRectMake(0,
-                                                            size.size.height - ACTION_PANE_HEIGHT, 
-                                                            size.size.width,
-                                                            ACTION_PANE_HEIGHT)];
+                                 CGRectMake(0,
+                                            self.view.bounds.size.height - ACTION_PANE_HEIGHT, 
+                                            self.view.bounds.size.width,
+                                            ACTION_PANE_HEIGHT)
+                                 ];
                                                  
     self.socializeActionPanel = socializeActionPanel;
     [socializeActionPanel release]; socializeActionPanel = nil;
     
     self.socializeActionPanel.opaque = NO;
     self.socializeActionPanel.alpha = 0.9;
-    //self.socializeActionPanel.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin);
     
-    self.socializeActionPanel.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin);    self.socializeActionPanel.autoresizesSubviews = YES;
+    self.socializeActionPanel.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin);    
+    self.socializeActionPanel.autoresizesSubviews = YES;
     self.socializeActionPanel.delegate = self;
     
     [self.socializeActionPanel updateCountsWithViewsCount:[NSNumber numberWithInt:self.entry.socializeEntry.views]
@@ -139,13 +135,7 @@
     return NO;
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
-    [keyField resignFirstResponder];
-    [nameField resignFirstResponder];
-    [resultsView resignFirstResponder];
-}
+
 #pragma mark - SocializeActionViewDelegate
 
 -(void)commentButtonTouched:(id)sender
@@ -155,24 +145,19 @@
 
 -(void)likeButtonTouched:(id)sender
 {
-    
+    if([_socializeActionPanel isLiked])
+    {
+        [_service.likeService deleteLike: _likeObject.objectID]; 
+    }
+    else
+    {
+        [_service.likeService postLikeForEntityKey: _entity.socializeEntry.key];
+    }
 }
 
 -(void)shareButtonTouched:(id)sender
 {
     
-}
-
-
--(IBAction)createNew:(id)button
-{
-//    UIAlertView * view = [[[UIAlertView alloc]initWithTitle:@"Bang" message:@"BANG!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
-//    
-//    [view show];
-
-    [_service.entityService createEntityWithKey:keyField.text andName:nameField.text];
-    
-    [self touchesEnded:nil withEvent:nil];
 }
 
 #pragma mark - show comments controller
@@ -185,7 +170,7 @@
                           bundle:nil];
 	
     commentsController.title = @"Comments";
-    commentsController.entityKey = _entry.socializeEntry.key;
+    commentsController.entityKey = _entity.socializeEntry.key;
     commentsController.commentService = _service.commentService;
     
 	UIButton * cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -242,30 +227,27 @@
 //-(void)prepare{
 //	//[commentsController startFetchingComments];
 //}
--(void) entityService:(SocializeEntityService *)entityService didReceiveListOfEntities:(NSArray *)entityList
-{
-    
-    id<SocializeEntity> entity = (id<SocializeEntity>)[entityList lastObject];
-    
-    resultsView.text = [NSString stringWithFormat:@"%@\n%key=%@, name=%@", resultsView.text, entity.key, entity.name];
-}
 
--(void) entityService:(SocializeEntityService *)entityService didFailWithError:(NSError *)error
-{
-    
-    resultsView.text = @"Error";
-}
-
--(void) entityService:(SocializeEntityService *)entityService didReceiveEntity:(id<SocializeEntity>)entityObject
-{
-    
-    resultsView.text = [NSString stringWithFormat:@"%@\n%key=%i, name=%i", resultsView.text, entityObject.key, entityObject.name];
-    
-}
 -(void)destroyCommentController
 {
     [_commentsNavigationController.view removeFromSuperview];    
     [_commentsNavigationController release];  _commentsNavigationController = nil;
+}
+
+#pragma mark - Socialize like service delegate
+
+-(void)didFailService:(id)service error:(NSError*)error
+{
+    NSLog(@"Failed with error -- %@", error);
+}
+
+-(void)didSucceed:(id)service data:(id)data
+{
+    _likeObject = data;
+    if([_socializeActionPanel isLiked])
+        [_socializeActionPanel updateLikesCount: [NSNumber numberWithInt: _likeObject.entity.likes] liked:NO];
+    else
+        [_socializeActionPanel updateLikesCount: [NSNumber numberWithInt: _likeObject.entity.likes] liked:YES];
 }
 
 @end

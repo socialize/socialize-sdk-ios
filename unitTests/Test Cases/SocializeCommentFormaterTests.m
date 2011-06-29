@@ -57,8 +57,8 @@
     
     [[mockComment expect] setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
     [[mockComment expect] setText:[JSONDictionaryToParse objectForKey:@"text"]];
-    [[mockComment expect] setLat:[[JSONDictionaryToParse valueForKey:@"lat"]floatValue]];
-    [[mockComment expect] setLng:[[JSONDictionaryToParse valueForKey:@"lng"]floatValue]];
+    [[mockComment expect] setLat:[JSONDictionaryToParse valueForKey:@"lat"]];
+    [[mockComment expect] setLng:[JSONDictionaryToParse valueForKey:@"lng"]];
     
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ssZZZ"];
