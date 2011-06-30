@@ -105,22 +105,6 @@ dataFetcher = _dataFetcher
     }
 }
 
-
-/**
- * Formulate the NSError
- */
-- (id)formError:(NSInteger)code userInfo:(NSDictionary *) errorData {
-    return [NSError errorWithDomain:@"Socialize" code:code userInfo:errorData];
-}
-
-/**
- * parse the response data
- */
-- (id)parseJsonResponse:(NSData *)data error:(NSError **)error {
-    return nil;
-}
-
-
 /*
  * private helper function: handle the response data
  */
