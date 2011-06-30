@@ -26,9 +26,10 @@ static const int kGeneralErrorCode = 10000;
 
 
 @interface SocializeRequest()
-- (void)failWithError:(NSError *)error;
-- (void)handleResponseData:(NSData *)data;
+-(void)failWithError:(NSError *)error;
+-(void)handleResponseData:(NSData *)data;
 -(void)produceHTMLOutput:(NSString*)outputString;
+-(NSArray*) formatUrlParams;
 @end
 
 @implementation SocializeRequest
@@ -83,10 +84,7 @@ dataFetcher = _dataFetcher
     request.dataFetcher = [[OAAsynchronousDataFetcher alloc] initWithRequest:request.request delegate:request
                                                            didFinishSelector:@selector(tokenRequestTicket:didFinishWithData:)
                                                              didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
-    
-    if ([request.httpMethod isEqualToString:@"GET"])
-        request.url = [NSString serializeURL:request.url params:(NSDictionary*)request.params httpMethod:request.httpMethod];
-    
+       
     DLog(@"Request.url  %@",request.url);
     
     return request;
@@ -127,6 +125,20 @@ dataFetcher = _dataFetcher
     return !!_connection;
 }
 
+-(NSArray*) formatUrlParams
+{
+    NSMutableArray* getParams = [[[NSMutableArray alloc] initWithCapacity:[_params count]] autorelease];
+    [_params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
+     {
+         OARequestParameter* p = [[OARequestParameter alloc] initWithName:key value:obj];
+         [getParams addObject:p];
+         [p release];
+     }
+    ];
+    
+    return getParams;
+}
+
 /**
  * make the Socialize request
  */
@@ -147,6 +159,11 @@ dataFetcher = _dataFetcher
         DLog(@"jsonParams  %@", jsonParams);
         [self.request setHTTPBody:[jsonParams dataUsingEncoding:NSUTF8StringEncoding]];
     }
+    else if([self.httpMethod isEqualToString: @"GET"])
+    {
+        [self.request setParameters:[self formatUrlParams]];
+    }
+    
     [self.request prepare];
     [self.dataFetcher start];
 }

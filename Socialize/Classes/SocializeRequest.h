@@ -10,11 +10,6 @@
 #import "OAConsumer.h"
 #import "OAAsynchronousDataFetcher.h"
 
-/*
- *Your application should implement this delegate
- */
-
-
 @protocol SocializeRequestDelegate;
 
 @interface SocializeRequest : NSObject 
@@ -25,9 +20,7 @@
     NSString*                   _url;
     NSString*                   _httpMethod;
     id                          _params;
-//    NSURLConnection*            _connection;
-    NSMutableData*              _responseText;
-    
+    NSMutableData*              _responseText;    
     
     OAToken                     *_token;
     OAConsumer                  *_consumer;

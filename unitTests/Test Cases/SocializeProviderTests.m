@@ -67,12 +67,10 @@
                                    nil];
     
     [provider requestWithParams:params andDelegate:self];
-    
-    NSLog(@"provider.request.url  %@", provider.request.url);
-    
+       
     NSString* expectedRequestUrl = @"http://www.dev.getsocialize.com/v1/comment?parameter_key_2=parameter_value_2&parameter_key_1=parameter_value_1";
-    
-    GHAssertEqualStrings(expectedRequestUrl, provider.request.url, nil);
+    NSString* actualRequestUrl = [NSString stringWithFormat:@"%@",[provider.request.request URL]];
+    GHAssertEqualStrings(actualRequestUrl, expectedRequestUrl, nil);
 }
 
 -(void) testRequestWithoutAPIMethod
@@ -113,7 +111,8 @@
 
     NSString* expectedRequestUrl = @"http://www.dev.getsocialize.com/v1/comment?parameter_key_2=parameter_value_2&parameter_key_1=parameter_value_1";
     
-    GHAssertEqualStrings(expectedRequestUrl, provider.request.url, nil);
+    NSString* actualRequestUrl = [NSString stringWithFormat:@"%@",[provider.request.request URL]];
+    GHAssertEqualStrings(actualRequestUrl, expectedRequestUrl, nil);
 }
 
 -(void) testRequestWithParamsAndPostMethod

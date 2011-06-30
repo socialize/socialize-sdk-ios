@@ -64,7 +64,8 @@
 
     _request = [SocializeRequest getRequestWithParams:params httpMethod:@"GET" delegate:self requestURL:@"www.google.com"];
     GHAssertEqualStrings(@"GET", _request.httpMethod, @"should be equal");
-    GHAssertEqualStrings(@"www.google.com?parameter_key_2=parameter_value_2&parameter_key_1=parameter_value_1", _request.url, @"should be equal");
+    NSString* expectedRes = [NSString stringWithFormat:@"%@", [_request.request URL]];
+    GHAssertEqualStrings(@"www.google.com",expectedRes, @"should be equal");
 }
 
 /*
@@ -123,6 +124,7 @@
     id mockRequest = [OCMockObject mockForClass:[OAMutableURLRequest class]];
     [[mockRequest expect] setHTTPMethod:@"GET"];
     [[mockRequest expect] addValue:userAgentStr forHTTPHeaderField:@"User-Agent"];
+    [[mockRequest expect] setParameters:[NSMutableArray arrayWithCapacity:0]];
     [[mockRequest expect] prepare];
     _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"GET" delegate:self requestURL:@"invalidparam"];
     _request.request = mockRequest;
