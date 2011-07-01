@@ -60,3 +60,14 @@ typedef enum {
 -(void) viewService:(SocializeViewService *)viewService didFailWithError:(NSError *)error;
 
 @end
+
+
+@class SocializeShareService;
+@protocol SocializeShare;
+@protocol SocializeShareServiceDelegate
+
+-(void) shareService:(SocializeShareService *)shareService didReceiveShare:(id<SocializeShare>)shareObject;
+-(void) shareService:(SocializeShareService *)shareService didReceiveListOfShare:(NSArray *)shareList;
+-(void) shareService:(SocializeShareService *)shareService didFailWithError:(NSError *)error;
+
+@end
