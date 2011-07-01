@@ -178,7 +178,7 @@
         if (token_secret && token){
             OAToken *requestToken = [[OAToken alloc] initWithKey:token secret:token_secret];
             [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
-            [request release]; request = nil;
+            [requestToken release]; requestToken = nil;
             [_delegate didAuthenticate];
         }
         else
