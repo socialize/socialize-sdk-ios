@@ -79,7 +79,7 @@ request = _request;
      httpMethod:(NSString *)httpMethod
        delegate:(id<SocializeRequestDelegate>)delegate 
 {
-    [_request release];
+    [_request release]; _request = nil;
     _request = [[SocializeRequest getRequestWithParams:params
                                             httpMethod:httpMethod
                                               delegate:delegate
