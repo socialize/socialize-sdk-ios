@@ -30,7 +30,7 @@
 
 @synthesize socializeActionPanel = _socializeActionPanel;
 @synthesize webView = _webView;
-@synthesize entry = _entity;
+@synthesize entry = _entry;
 
 -(id) initWithEntry: (DemoEntity*) entry andService: (Socialize*) service
 {
@@ -50,7 +50,7 @@
     [_socializeActionPanel release]; _socializeActionPanel = nil;
     [_commentsNavigationController release];  _commentsNavigationController = nil;
     [_webView release]; _webView = nil;
-    [_entity release]; _entity = nil;
+ //   [_entity release]; _entity = nil;
     _service = nil;
     [super dealloc];
 }
@@ -97,6 +97,9 @@
 
 	//initialize socialize related classes
 	[self initSocialize];   
+    
+    
+    [_service.viewService createViewForEntityKey:@"test"];
 }
 
 - (void)viewDidUnload
@@ -151,12 +154,10 @@
 
 -(void)likeButtonTouched:(id)sender
 {
-    if([_socializeActionPanel isLiked]) {
-        [_service.likeService deleteLike: _myLike]; 
-    }
-    else {
-        [_service.likeService postLikeForEntityKey: _entity.socializeEntry.key];
-    }
+    if([_socializeActionPanel isLiked]) 
+       [_service.likeService deleteLike: _myLike]; 
+    else 
+       [_service.likeService postLikeForEntityKey: @"test"/*self.entry.socializeEntry.key*/];
 }
 
 -(void)likeListButtonTouched:(id)sender {
@@ -188,7 +189,7 @@
                           bundle:nil];
 	
     commentsController.title = @"Comments";
-    commentsController.entityKey = _entity.socializeEntry.key;
+    commentsController.entityKey = self.entry.socializeEntry.key;
     commentsController.commentService = _service.commentService;
     
 	UIButton * cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];

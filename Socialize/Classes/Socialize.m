@@ -8,11 +8,11 @@
 
 #import "Socialize.h"
 
-
 @implementation Socialize
 @synthesize commentService = _commentsService;
 @synthesize entityService = _entityService;
 @synthesize likeService = _likeService;
+@synthesize viewService = _viewService;
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
@@ -20,6 +20,8 @@
     [_authService release]; _authService = nil;
     [_commentsService release]; _commentsService = nil;
     [_likeService release]; _likeService = nil;
+    [_viewService release]; _viewService = nil;
+
     [super dealloc];
 }
 
@@ -34,6 +36,7 @@
         _commentsService = [[SocializeCommentsService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
         _entityService = [[SocializeEntityService alloc]initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
         _likeService  = [[SocializeLikeService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
+        _viewService  = [[SocializeViewService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
     }
     return self;
 }

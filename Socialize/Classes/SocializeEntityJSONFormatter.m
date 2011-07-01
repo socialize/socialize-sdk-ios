@@ -28,7 +28,7 @@
 
 -(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
 {
-     id<SocializeEntity> fromEntity = (id<SocializeEntity>)fromObject;
+    id<SocializeEntity> fromEntity = (id<SocializeEntity>)fromObject;
     [JSONFormatDictionary setObject:[fromEntity key] forKey:@"key"];
     [JSONFormatDictionary setObject:[fromEntity name] forKey:@"name"];
 }

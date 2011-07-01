@@ -108,7 +108,7 @@
     
     SocializeRequest* _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"POST" delegate:self requestURL:@"invalidparam"];
 
-    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"like_single_response.json"];
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/like_single_response.json"];
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeLikeServiceDelegate)];
     _service.delegate = mockDelegate;
     

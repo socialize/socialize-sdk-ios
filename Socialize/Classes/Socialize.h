@@ -15,8 +15,9 @@
 #import "SocializeCommentsService.h"
 #import "SocializeEntityService.h"
 #import "SocializeLikeService.h"
+#import "SocializeViewService.h"
 
-//**************************************************************************************************//
+//********************x******************************************************************************//
 //This is a general facade of the   SDK`s API. Through it a third party developers could use the API. //
 //**************************************************************************************************//
 
@@ -35,6 +36,7 @@
     ThirdPartyAuthName              _type;
     
     SocializeLikeService            *_likeService;
+    SocializeViewService            *_viewService;
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret    
@@ -54,5 +56,6 @@
 @property (nonatomic, readonly) SocializeCommentsService*  commentService;
 @property (nonatomic, readonly) SocializeEntityService *   entityService;
 @property (nonatomic, readonly) SocializeLikeService *     likeService;
+@property (nonatomic, readonly) SocializeViewService *     viewService;
 
 @end

@@ -4,19 +4,23 @@
 <dict>
 	<key>Formatters</key>
 	<dict>
-		<key>SocializeLike</key>
-		<string>SocializeLikeJSONFormatter</string>
+		<key>SocializeView</key>
+		<string>SocializeViewJSONFormatter</string>
 		<key>SocializeApplication</key>
 		<string>SocializeApplicationJSONFormatter</string>
 		<key>SocializeComment</key>
 		<string>SocializeCommentJSONFormatter</string>
 		<key>SocializeEntity</key>
 		<string>SocializeEntityJSONFormatter</string>
+		<key>SocializeLike</key>
+		<string>SocializeLikeJSONFormatter</string>
 		<key>SocializeUser</key>
 		<string>SocializeUserJSONFormatter</string>
 	</dict>
 	<key>Prototypes</key>
 	<dict>
+		<key>SocializeView</key>
+		<string>SocializeView</string>
 		<key>SocializeActivity</key>
 		<string>SocializeActivity</string>
 		<key>SocializeApplication</key>
@@ -25,10 +29,10 @@
 		<string>SocializeComment</string>
 		<key>SocializeEntity</key>
 		<string>SocializeEntity</string>
-		<key>SocializeUser</key>
-		<string>SocializeUser</string>
 		<key>SocializeLike</key>
 		<string>SocializeLike</string>
+		<key>SocializeUser</key>
+		<string>SocializeUser</string>
 	</dict>
 </dict>
 </plist>

@@ -22,7 +22,6 @@
     id<SocializeLikeServiceDelegate> _delegate;
     SocializeProvider                *_provider;
     SocializeObjectFactory           *_objectCreator;
-    
 }
 
 @property (nonatomic, assign) id<SocializeLikeServiceDelegate> delegate;

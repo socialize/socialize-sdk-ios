@@ -121,6 +121,7 @@
 
 -(void)doDidReceiveSocializeObject:(id<SocializeObject>)objectResponse
 {}
+
 -(void)doDidReceiveReceiveListOfObjects:(NSArray *)objectResponse
 {}
 

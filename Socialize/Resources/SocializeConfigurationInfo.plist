@@ -10,25 +10,29 @@
 		<string>SocializeCommentJSONFormatter</string>
 		<key>SocializeEntity</key>
 		<string>SocializeEntityJSONFormatter</string>
-		<key>SocializeUser</key>
-		<string>SocializeUserJSONFormatter</string>
 		<key>SocializeLike</key>
 		<string>SocializeLikeJSONFormatter</string>
+		<key>SocializeUser</key>
+		<string>SocializeUserJSONFormatter</string>
+		<key>SocializeView</key>
+		<string>SocializeViewJSONFormatter</string>
 	</dict>
 	<key>Prototypes</key>
 	<dict>
 		<key>SocializeActivity</key>
 		<string>SocializeActivity</string>
+		<key>SocializeView</key>
+		<string>SocializeView</string>
 		<key>SocializeApplication</key>
 		<string>SocializeApplication</string>
 		<key>SocializeComment</key>
 		<string>SocializeComment</string>
 		<key>SocializeEntity</key>
 		<string>SocializeEntity</string>
-		<key>SocializeUser</key>
-		<string>SocializeUser</string>
 		<key>SocializeLike</key>
 		<string>SocializeLike</string>
+		<key>SocializeUser</key>
+		<string>SocializeUser</string>
 	</dict>
 </dict>
 </plist>

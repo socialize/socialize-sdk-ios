@@ -91,6 +91,13 @@
 		5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		5CD4882D1386C42300E60C4C /* profile_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CD4882C1386C42300E60C4C /* profile_functions.c */; };
 		5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */; };
+		6D144CFD13BCE75D001D8E0A /* SocializeViewService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D144CFB13BCE75D001D8E0A /* SocializeViewService.h */; };
+		6D144CFE13BCE75D001D8E0A /* SocializeViewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D144CFC13BCE75D001D8E0A /* SocializeViewService.m */; };
+		6D144D0213BCE8AE001D8E0A /* SocializeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D144D0013BCE8AD001D8E0A /* SocializeView.h */; };
+		6D144D0313BCE8AE001D8E0A /* SocializeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D144D0113BCE8AD001D8E0A /* SocializeView.m */; };
+		6D144D0613BD1021001D8E0A /* SocializeViewJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D144D0413BD100C001D8E0A /* SocializeViewJSONFormatter.h */; };
+		6D144D0713BD1021001D8E0A /* SocializeViewJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D144D0513BD1012001D8E0A /* SocializeViewJSONFormatter.m */; };
+		6D144D0A13BD28F5001D8E0A /* SocializeViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D144D0913BD28F3001D8E0A /* SocializeViewTests.m */; };
 		6D49743B13B2588700463D23 /* SocializeLikeService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743913B2586200463D23 /* SocializeLikeService.h */; };
 		6D49743C13B2588700463D23 /* SocializeLikeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49743A13B2586C00463D23 /* SocializeLikeService.m */; };
 		6D49743F13B295A400463D23 /* SocializeLike.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743D13B2958D00463D23 /* SocializeLike.h */; };
@@ -101,6 +108,7 @@
 		6D554A0213B8E9CD004EA053 /* SocializeLikeJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D554A0013B8E9CC004EA053 /* SocializeLikeJSONFormatter.h */; };
 		6D554A0313B8E9CD004EA053 /* SocializeLikeJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D554A0113B8E9CC004EA053 /* SocializeLikeJSONFormatter.m */; };
 		6D554A0B13B928BF004EA053 /* SocializeLikeFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D554A0813B927F6004EA053 /* SocializeLikeFormatterTests.m */; };
+		6D9A0BA013BD310A00AE949C /* SocializeViewFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0B9F13BD310A00AE949C /* SocializeViewFormatterTests.m */; };
 		6DA1527313BBD2B700FA098D /* LikeListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DA1527013BBD2B000FA098D /* LikeListViewController.h */; };
 		6DA1527713BBDF8100FA098D /* LikeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1527113BBD2B200FA098D /* LikeListViewController.m */; };
 		6DA1527813BBDF8500FA098D /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DA1527213BBD2B400FA098D /* LikeListViewController.xib */; };
@@ -302,6 +310,14 @@
 		5CC3DB111378889E00B11B78 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		5CD4882C1386C42300E60C4C /* profile_functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = profile_functions.c; sourceTree = "<group>"; };
 		5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
+		6D144CFB13BCE75D001D8E0A /* SocializeViewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeViewService.h; path = Classes/SocializeViewService.h; sourceTree = "<group>"; };
+		6D144CFC13BCE75D001D8E0A /* SocializeViewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeViewService.m; path = Classes/SocializeViewService.m; sourceTree = "<group>"; };
+		6D144D0013BCE8AD001D8E0A /* SocializeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeView.h; path = Classes/SocializeView.h; sourceTree = "<group>"; };
+		6D144D0113BCE8AD001D8E0A /* SocializeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeView.m; path = Classes/SocializeView.m; sourceTree = "<group>"; };
+		6D144D0413BD100C001D8E0A /* SocializeViewJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeViewJSONFormatter.h; path = Classes/SocializeViewJSONFormatter.h; sourceTree = "<group>"; };
+		6D144D0513BD1012001D8E0A /* SocializeViewJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeViewJSONFormatter.m; path = Classes/SocializeViewJSONFormatter.m; sourceTree = "<group>"; };
+		6D144D0813BD28F2001D8E0A /* SocializeViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeViewTests.h; path = "Test Cases/SocializeViewTests.h"; sourceTree = "<group>"; };
+		6D144D0913BD28F3001D8E0A /* SocializeViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeViewTests.m; path = "Test Cases/SocializeViewTests.m"; sourceTree = "<group>"; };
 		6D49743913B2586200463D23 /* SocializeLikeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeService.h; path = Classes/SocializeLikeService.h; sourceTree = "<group>"; };
 		6D49743A13B2586C00463D23 /* SocializeLikeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeService.m; path = Classes/SocializeLikeService.m; sourceTree = "<group>"; };
 		6D49743D13B2958D00463D23 /* SocializeLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLike.h; path = Classes/SocializeLike.h; sourceTree = "<group>"; };
@@ -312,6 +328,8 @@
 		6D554A0113B8E9CC004EA053 /* SocializeLikeJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeLikeJSONFormatter.m; sourceTree = "<group>"; };
 		6D554A0713B927F2004EA053 /* SocializeLikeFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeLikeFormatterTests.h; sourceTree = "<group>"; };
 		6D554A0813B927F6004EA053 /* SocializeLikeFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeLikeFormatterTests.m; sourceTree = "<group>"; };
+		6D9A0B9E13BD310A00AE949C /* SocializeViewFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeViewFormatterTests.h; path = "Test Cases/SocializeViewFormatterTests.h"; sourceTree = "<group>"; };
+		6D9A0B9F13BD310A00AE949C /* SocializeViewFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeViewFormatterTests.m; path = "Test Cases/SocializeViewFormatterTests.m"; sourceTree = "<group>"; };
 		6DA1527013BBD2B000FA098D /* LikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeListViewController.h; sourceTree = "<group>"; };
 		6DA1527113BBD2B200FA098D /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeListViewController.m; sourceTree = "<group>"; };
 		6DA1527213BBD2B400FA098D /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
@@ -454,6 +472,8 @@
 				9A6C09AB13B2941F00780951 /* SocializeEntityServiceTests.m */,
 				9ABB68B713BA6920001882D1 /* SocializeUserServiceTests.h */,
 				9ABB68B813BA6920001882D1 /* SocializeUserServiceTests.m */,
+				6D144D0813BD28F2001D8E0A /* SocializeViewTests.h */,
+				6D144D0913BD28F3001D8E0A /* SocializeViewTests.m */,
 			);
 			name = "Infrastructure Tests";
 			sourceTree = "<group>";
@@ -498,6 +518,8 @@
 				9A4D29761393FEDD0065C0CB /* SocializeUser.m */,
 				6D49743D13B2958D00463D23 /* SocializeLike.h */,
 				6D49743E13B2959500463D23 /* SocializeLike.m */,
+				6D144D0013BCE8AD001D8E0A /* SocializeView.h */,
+				6D144D0113BCE8AD001D8E0A /* SocializeView.m */,
 			);
 			name = SocializeObjects;
 			sourceTree = "<group>";
@@ -613,6 +635,8 @@
 				9AC0259813BB8253004AB147 /* SocializeUserService.m */,
 				9ABB68BA13BA78A3001882D1 /* SocializeService.h */,
 				9ABB68BB13BA78A4001882D1 /* SocializeService.m */,
+				6D144CFB13BCE75D001D8E0A /* SocializeViewService.h */,
+				6D144CFC13BCE75D001D8E0A /* SocializeViewService.m */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
@@ -747,6 +771,8 @@
 				9A6C09A413B244BE00780951 /* SocializeListFormatter.m */,
 				6D554A0013B8E9CC004EA053 /* SocializeLikeJSONFormatter.h */,
 				6D554A0113B8E9CC004EA053 /* SocializeLikeJSONFormatter.m */,
+				6D144D0413BD100C001D8E0A /* SocializeViewJSONFormatter.h */,
+				6D144D0513BD1012001D8E0A /* SocializeViewJSONFormatter.m */,
 			);
 			name = SocializeObjectParsers;
 			sourceTree = "<group>";
@@ -763,6 +789,8 @@
 		5CFCBE381385953F00EF5073 /* Parser Tests */ = {
 			isa = PBXGroup;
 			children = (
+				6D9A0B9E13BD310A00AE949C /* SocializeViewFormatterTests.h */,
+				6D9A0B9F13BD310A00AE949C /* SocializeViewFormatterTests.m */,
 				9A4D298A139401C70065C0CB /* SocializeObjectFormatterTests.h */,
 				9A4D298B139401C70065C0CB /* SocializeObjectFormatterTests.m */,
 				5C3069B513A2ABEB007335FF /* SocializeEntityFormatterTests.h */,
@@ -966,6 +994,9 @@
 				9ABB68BC13BA78A4001882D1 /* SocializeService.h in Headers */,
 				9AC0259913BB8253004AB147 /* SocializeUserService.h in Headers */,
 				6DA1527313BBD2B700FA098D /* LikeListViewController.h in Headers */,
+				6D144CFD13BCE75D001D8E0A /* SocializeViewService.h in Headers */,
+				6D144D0213BCE8AE001D8E0A /* SocializeView.h in Headers */,
+				6D144D0613BD1021001D8E0A /* SocializeViewJSONFormatter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1197,6 +1228,9 @@
 				6D554A0313B8E9CD004EA053 /* SocializeLikeJSONFormatter.m in Sources */,
 				9ABB68BD13BA78A4001882D1 /* SocializeService.m in Sources */,
 				9AC0259A13BB8253004AB147 /* SocializeUserService.m in Sources */,
+				6D144CFE13BCE75D001D8E0A /* SocializeViewService.m in Sources */,
+				6D144D0313BCE8AE001D8E0A /* SocializeView.m in Sources */,
+				6D144D0713BD1021001D8E0A /* SocializeViewJSONFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1224,6 +1258,8 @@
 				9A6C09AC13B2941F00780951 /* SocializeEntityServiceTests.m in Sources */,
 				6D554A0B13B928BF004EA053 /* SocializeLikeFormatterTests.m in Sources */,
 				9ABB68B913BA6920001882D1 /* SocializeUserServiceTests.m in Sources */,
+				6D144D0A13BD28F5001D8E0A /* SocializeViewTests.m in Sources */,
+				6D9A0BA013BD310A00AE949C /* SocializeViewFormatterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

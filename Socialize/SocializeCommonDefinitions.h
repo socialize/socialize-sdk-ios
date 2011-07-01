@@ -49,3 +49,14 @@ typedef enum {
 -(void) receivedComments: (SocializeCommentsService*)service comments: (NSArray*) comments;
 -(void) didFailService:(SocializeCommentsService*)service withError: (NSError *)error;
 @end
+
+
+@class SocializeViewService;
+@protocol SocializeView;
+@protocol SocializeViewServiceDelegate
+
+-(void) viewService:(SocializeViewService *)viewService didReceiveView:(id<SocializeView>)viewObject;
+-(void) viewService:(SocializeViewService *)viewService didReceiveListOfViews:(NSArray *)viewList;
+-(void) viewService:(SocializeViewService *)viewService didFailWithError:(NSError *)error;
+
+@end
