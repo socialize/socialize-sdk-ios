@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		162BBF6F13C1A62C0060893E /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162BBF6D13C1A62C0060893E /* UserProfileViewController.m */; };
+		162BBF7013C1A62C0060893E /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 162BBF6E13C1A62C0060893E /* UserProfileViewController.xib */; };
 		163636BC13A6056400403879 /* NSMutableData+PostBody.h in Headers */ = {isa = PBXBuildFile; fileRef = 163636BA13A6056400403879 /* NSMutableData+PostBody.h */; };
 		163636BD13A6056400403879 /* NSMutableData+PostBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 163636BB13A6056400403879 /* NSMutableData+PostBody.m */; };
 		163636C113A607FA00403879 /* PostBodyGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = 163636C013A607FA00403879 /* PostBodyGeneration.m */; };
@@ -221,6 +223,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		162BBF6C13C1A62B0060893E /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		162BBF6D13C1A62C0060893E /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
+		162BBF6E13C1A62C0060893E /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		163636BA13A6056400403879 /* NSMutableData+PostBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableData+PostBody.h"; path = "Classes/NSMutableData+PostBody.h"; sourceTree = "<group>"; };
 		163636BB13A6056400403879 /* NSMutableData+PostBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableData+PostBody.m"; path = "Classes/NSMutableData+PostBody.m"; sourceTree = "<group>"; };
 		163636BF13A607FA00403879 /* PostBodyGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostBodyGeneration.h; path = "Test Cases/PostBodyGeneration.h"; sourceTree = "<group>"; };
@@ -575,6 +580,9 @@
 				6DA1527013BBD2B000FA098D /* LikeListViewController.h */,
 				6DA1527113BBD2B200FA098D /* LikeListViewController.m */,
 				6DA1527213BBD2B400FA098D /* LikeListViewController.xib */,
+				162BBF6C13C1A62B0060893E /* UserProfileViewController.h */,
+				162BBF6D13C1A62C0060893E /* UserProfileViewController.m */,
+				162BBF6E13C1A62C0060893E /* UserProfileViewController.xib */,
 			);
 			path = SampleSdkApp;
 			sourceTree = "<group>";
@@ -1143,6 +1151,7 @@
 				9ACDB2EC13B3953C0097C122 /* EntityViewController.xib in Resources */,
 				16FCABD813BB0E340034499F /* EntityListViewController.xib in Resources */,
 				6DA1527813BBDF8500FA098D /* LikeListViewController.xib in Resources */,
+				162BBF7013C1A62C0060893E /* UserProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1206,6 +1215,7 @@
 				168B7F2A13B2294B00D85D73 /* NSMutableURLRequest+Parameters.m in Sources */,
 				16FCABD713BB0E340034499F /* EntityListViewController.m in Sources */,
 				6DA1527713BBDF8100FA098D /* LikeListViewController.m in Sources */,
+				162BBF6F13C1A62C0060893E /* UserProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
