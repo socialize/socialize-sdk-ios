@@ -27,9 +27,11 @@
 
 #import "EntityListViewController.h"
 #import "EntityViewController.h"
+#import "UserProfileViewController.h"
 
 @interface EntityListViewController()
     -(void) addNewEntity;
+    -(void) showProfileInfo;
 @end
 
 @implementation EntityListViewController
@@ -90,6 +92,15 @@
     [_entityKey becomeFirstResponder];
 }
 
+-(void) showProfileInfo
+{
+    UserProfileViewController* userViewContorller = [[UserProfileViewController alloc] initWithNibName:@"UserProfileViewController" bundle:nil];
+
+    [self presentModalViewController:userViewContorller animated:YES];
+    
+    [userViewContorller release]; userViewContorller = nil;
+}
+
 - (id)initWithStyle:(UITableViewStyle)style andService: (Socialize*) service
 {
     self = [super initWithStyle:style];
@@ -130,6 +141,11 @@
     
     self.navigationItem.rightBarButtonItem = addBtn;
     [addBtn release]; addBtn = nil;
+    
+    UIBarButtonItem* profileBtn = [[UIBarButtonItem alloc] initWithTitle:@"Profile" style:UIBarButtonItemStyleBordered target:self action:@selector(showProfileInfo)];
+
+    self.navigationItem.leftBarButtonItem = profileBtn;
+    [profileBtn release]; profileBtn = nil;
     
     _entityKey = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 50.0, 260.0, 25.0)]; 
     [_entityKey setBackgroundColor:[UIColor whiteColor]];

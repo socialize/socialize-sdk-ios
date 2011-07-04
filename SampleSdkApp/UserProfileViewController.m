@@ -80,10 +80,11 @@
     self.state = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+#pragma mark - actions handlers
+
+-(IBAction)doneBtnAction
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

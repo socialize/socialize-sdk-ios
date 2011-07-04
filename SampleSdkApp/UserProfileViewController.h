@@ -44,4 +44,6 @@
 @property (nonatomic, retain) IBOutlet UILabel* city;
 @property (nonatomic, retain) IBOutlet UILabel* state;
 
+-(IBAction)doneBtnAction; 
+
 @end
