@@ -94,7 +94,7 @@
 
 -(void) showProfileInfo
 {
-    UserProfileViewController* userViewContorller = [[UserProfileViewController alloc] initWithNibName:@"UserProfileViewController" bundle:nil];
+    UserProfileViewController* userViewContorller = [[UserProfileViewController alloc] initWithNibName:@"UserProfileViewController" bundle:nil service: self.service];
 
     [self presentModalViewController:userViewContorller animated:YES];
     

@@ -36,12 +36,15 @@
 @synthesize lastName;
 @synthesize city;
 @synthesize state;
+@synthesize service;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil service: (Socialize*) socService
 {
+    NSAssert(socService, @"Could not be nil");
+     
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.service = socService;
     }
     return self;
 }
@@ -54,6 +57,7 @@
     [lastName release]; lastName = nil;
     [city release]; city = nil;
     [state release]; state = nil;
+    self.service = nil;
     [super dealloc];
 }
 
@@ -67,6 +71,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.service.userService.delegate = self;
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    [self.service.userService userWithId: [[defaults objectForKey:kSOCIALIZE_USERID_KEY] intValue]];
+    [super viewDidAppear:animated];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    self.service.userService.delegate = nil;
+    [super viewDidDisappear:animated];
 }
 
 - (void)viewDidUnload
@@ -85,6 +103,49 @@
 -(IBAction)doneBtnAction
 {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - Socialize user service delegate
+
+-(void) userService:(SocializeUserService *)userService didReceiveUser:(id<SocializeUser>)userObject
+{
+    if((id)userObject.smallImageUrl != [NSNull null])
+    {
+        NSData* imageFromService = [NSData dataWithContentsOfURL:[NSURL URLWithString:userObject.smallImageUrl]];
+        self.userPicture.image = [UIImage imageWithData:imageFromService];
+    }
+    
+    if((id)userObject.userName != [NSNull null])
+        self.userName.text = userObject.userName;
+    
+    if((id)userObject.firstName != [NSNull null])
+        self.firstName.text = userObject.firstName;
+
+    if((id)userObject.lastName != [NSNull null])
+        self.lastName.text = userObject.lastName;
+
+    if((id)userObject.city != [NSNull null])
+        self.city.text = userObject.city;
+
+    if((id)userObject.state != [NSNull null])
+        self.state.text = userObject.state;
+}
+
+-(void) userService:(SocializeUserService *)userService didReceiveListOfUsers:(NSArray *)userList
+{
+    [userList enumerateObjectsUsingBlock:^(id userObject, NSUInteger idx, BOOL *stop)
+     {
+         if([userObject conformsToProtocol:@protocol(SocializeUser)])
+         {
+             [self userService:userService didReceiveUser:userObject];
+         }
+     }
+    ];
+}
+
+-(void) userService:(SocializeUserService *)userService didFailWithError:(NSError *)error
+{
+    NSLog(@"UserProfileViewController error occurred--- %@", error);
 }
 
 @end

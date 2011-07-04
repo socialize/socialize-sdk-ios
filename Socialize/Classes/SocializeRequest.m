@@ -130,9 +130,11 @@ dataFetcher = _dataFetcher
     NSMutableArray* getParams = [[[NSMutableArray alloc] initWithCapacity:[_params count]] autorelease];
     [_params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
      {
-         OARequestParameter* p = [[OARequestParameter alloc] initWithName:key value:obj];
+         NSString* value = [[NSString alloc]initWithFormat:@"%@", obj];
+         OARequestParameter* p = [[OARequestParameter alloc] initWithName:key value:value];
          [getParams addObject:p];
          [p release];
+         [value release];
      }
     ];
     

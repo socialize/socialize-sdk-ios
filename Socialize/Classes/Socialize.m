@@ -13,6 +13,7 @@
 @synthesize entityService = _entityService;
 @synthesize likeService = _likeService;
 @synthesize viewService = _viewService;
+@synthesize userService = _userService;
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
@@ -21,7 +22,8 @@
     [_commentsService release]; _commentsService = nil;
     [_likeService release]; _likeService = nil;
     [_viewService release]; _viewService = nil;
-
+    [_userService release]; _userService = nil;
+    
     [super dealloc];
 }
 
@@ -37,6 +39,7 @@
         _entityService = [[SocializeEntityService alloc]initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
         _likeService  = [[SocializeLikeService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
         _viewService  = [[SocializeViewService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
+        _userService = [[SocializeUserService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
     }
     return self;
 }

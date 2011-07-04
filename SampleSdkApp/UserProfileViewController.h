@@ -26,16 +26,21 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "SocializeCommonDefinitions.h"
+#import "Socialize.h"
 
-
-@interface UserProfileViewController : UIViewController {
+@interface UserProfileViewController : UIViewController<SocializeUserServiceDelegate> {
     IBOutlet UIImageView* userPicture;
     IBOutlet UILabel* userName;
     IBOutlet UILabel* firstName;
     IBOutlet UILabel* lastName;
     IBOutlet UILabel* city;
     IBOutlet UILabel* state;
+    
+    Socialize* service;
 }
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil service: (Socialize*) socService;
 
 @property (nonatomic, retain) IBOutlet UIImageView* userPicture;
 @property (nonatomic, retain) IBOutlet UILabel* userName;
@@ -43,7 +48,8 @@
 @property (nonatomic, retain) IBOutlet UILabel* lastName;
 @property (nonatomic, retain) IBOutlet UILabel* city;
 @property (nonatomic, retain) IBOutlet UILabel* state;
+@property (nonatomic, assign) Socialize* service;
 
--(IBAction)doneBtnAction; 
+-(IBAction)doneBtnAction;
 
 @end
