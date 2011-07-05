@@ -186,12 +186,13 @@ dataFetcher = _dataFetcher
 
 
 - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
+#ifdef DEBUG
     NSString *responseBody = [[NSString alloc] initWithData:data
                                                    encoding:NSUTF8StringEncoding];
     DLog(@"responseBody %@", responseBody);
-#ifdef DEBUG
     [self produceHTMLOutput:responseBody];
 #endif
+    
     if (ticket.response.statusCode == 200)
         [self handleResponseData:data];
     else
