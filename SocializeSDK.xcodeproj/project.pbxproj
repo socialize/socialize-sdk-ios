@@ -1051,6 +1051,7 @@
 				16E2C4311398C40E007C91ED /* Sources */,
 				16E2C4321398C40E007C91ED /* Frameworks */,
 				16E2C4331398C40E007C91ED /* Resources */,
+				162BBF9213C346210060893E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1178,6 +1179,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		162BBF9213C346210060893E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh BuildSampleApp.sh";
+			shellScript = "";
+		};
 		9A51D73E137909CE00FD273B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
