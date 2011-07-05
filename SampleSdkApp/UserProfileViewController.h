@@ -36,6 +36,7 @@
     IBOutlet UILabel* lastName;
     IBOutlet UILabel* city;
     IBOutlet UILabel* state;
+    IBOutlet UIActivityIndicatorView* progressView;
     
     Socialize* service;
 }
@@ -48,6 +49,7 @@
 @property (nonatomic, retain) IBOutlet UILabel* lastName;
 @property (nonatomic, retain) IBOutlet UILabel* city;
 @property (nonatomic, retain) IBOutlet UILabel* state;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView* progressView;
 @property (nonatomic, assign) Socialize* service;
 
 -(IBAction)doneBtnAction;

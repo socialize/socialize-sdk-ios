@@ -62,7 +62,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if(buttonIndex == 1) //enter pressed 
+    if(buttonIndex == 1 && _entityKey.text != @"" && _entityName.text != @"") //enter pressed 
     {
         [_service.entityService createEntityWithKey:_entityKey.text andName:_entityName.text];
     }
@@ -150,10 +150,12 @@
     _entityKey = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 50.0, 260.0, 25.0)]; 
     [_entityKey setBackgroundColor:[UIColor whiteColor]];
     [_entityKey setPlaceholder:@"key"];
+    _entityKey.text = @"";
     
     _entityName = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 85.0, 260.0, 25.0)]; 
     [_entityName setBackgroundColor:[UIColor whiteColor]];
     [_entityName setPlaceholder:@"name"];
+    _entityName.text = @"";
 }
 
 - (void)viewDidUnload

@@ -27,6 +27,9 @@
 
 #import "UserProfileViewController.h"
 
+@interface UserProfileViewController()
+    -(void)showUserInfo: (BOOL)value;
+@end
 
 @implementation UserProfileViewController
 
@@ -37,6 +40,7 @@
 @synthesize city;
 @synthesize state;
 @synthesize service;
+@synthesize progressView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil service: (Socialize*) socService
 {
@@ -57,6 +61,7 @@
     [lastName release]; lastName = nil;
     [city release]; city = nil;
     [state release]; state = nil;
+    [progressView release]; progressView = nil;
     self.service = nil;
     [super dealloc];
 }
@@ -70,11 +75,15 @@
 
 - (void)viewDidLoad
 {
+    [self showUserInfo:NO];
     [super viewDidLoad];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    [self showUserInfo:NO];
+    [self.progressView startAnimating];
+    
     self.service.userService.delegate = self;
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     [self.service.userService userWithId: [[defaults objectForKey:kSOCIALIZE_USERID_KEY] intValue]];
@@ -98,6 +107,16 @@
     self.state = nil;
 }
 
+-(void)showUserInfo: (BOOL)value
+{
+    self.userPicture.hidden = !value;
+    self.userName.hidden = !value;
+    self.firstName.hidden = !value;
+    self.lastName.hidden = !value;
+    self.city.hidden = !value;
+    self.state.hidden = !value;
+}
+
 #pragma mark - actions handlers
 
 -(IBAction)doneBtnAction
@@ -109,6 +128,10 @@
 
 -(void) userService:(SocializeUserService *)userService didReceiveUser:(id<SocializeUser>)userObject
 {
+    [self.progressView stopAnimating];
+    self.progressView.hidden = YES;
+    [self showUserInfo:YES];
+    
     if((id)userObject.smallImageUrl != [NSNull null])
     {
         NSData* imageFromService = [NSData dataWithContentsOfURL:[NSURL URLWithString:userObject.smallImageUrl]];
@@ -145,7 +168,15 @@
 
 -(void) userService:(SocializeUserService *)userService didFailWithError:(NSError *)error
 {
+    self.progressView.hidden = YES;
+    [self showUserInfo:YES];
+    
     NSLog(@"UserProfileViewController error occurred--- %@", error);
+    
+    UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"User service failed" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];    
+    
+    [msg show];
+    [msg release];
 }
 
 @end
