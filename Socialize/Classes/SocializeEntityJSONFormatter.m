@@ -13,9 +13,10 @@
 
 @implementation SocializeEntityJSONFormatter
 
--(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
+-(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)FullJSONDictionary
 {
     id<SocializeEntity> toEntity = (id<SocializeEntity>)toObject;
+    NSDictionary* JSONDictionary = [[FullJSONDictionary objectForKey:@"items"] objectAtIndex:0]; //TODO:: TEMPORARY SOLUTION 
  
     [toEntity setKey:[JSONDictionary objectForKey:@"key"]];
     [toEntity setName:[JSONDictionary objectForKey:@"name"]];
