@@ -106,7 +106,6 @@
     self = [super initWithStyle:style];
     if (self) {
         self.service = service;
-        self.service.entityService.delegate = self;
         _entities = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;
@@ -163,6 +162,17 @@
     [super viewDidUnload];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.service.entityService.delegate = self;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    self.service.entityService.delegate = nil;
+    [super viewWillDisappear:animated];
+}
 
 #pragma mark - Table view data source
 

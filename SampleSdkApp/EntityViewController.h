@@ -15,26 +15,19 @@
 #import "SocializeCommonDefinitions.h"
 #import "SocializeLike.h"
 
-@interface EntityViewController : UIViewController<UIWebViewDelegate,UITextFieldDelegate, SocializeEntityServiceDelegate, SocializeActionViewDelegate, SocializeLikeServiceDelegate> {
+@interface EntityViewController : UIViewController<UIWebViewDelegate,UITextFieldDelegate, SocializeActionViewDelegate, SocializeLikeServiceDelegate> {
     
 @private
     SocializeActionView         *_socializeActionPanel;
     UINavigationController      *_commentsNavigationController;
     UIWebView                   *_webView;
     
-    DemoEntity                  *_entry;
+    DemoEntity                  *_entity;
     Socialize                   *_service;
     
-    IBOutlet UITextField        *keyField;
-    IBOutlet UITextField        *nameField;
-    IBOutlet UITextView         *resultsView;
-    IBOutlet UIButton           *createButton;
     id<SocializeLike>           _myLike;
-    id<SocializeEntity>         _anotherEntity;
-
 }
 
--(id) initWithEntry: (DemoEntity*) entry andService: (Socialize*) service;
--(IBAction)createNew:(id)button;
+-(id) initWithEntry: (DemoEntity*) entity andService: (Socialize*) service;
 
 @end

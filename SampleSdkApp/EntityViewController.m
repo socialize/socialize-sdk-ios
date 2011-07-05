@@ -19,28 +19,27 @@
     -(void) initSocialize;
     -(void) showCommentsController;
     -(void) hideCommentsController;
-    -(void) destroyCommentController;
 
     @property (nonatomic, retain) SocializeActionView* socializeActionPanel;
     @property (nonatomic, retain) UIWebView* webView;
-    @property (nonatomic, retain) DemoEntity* entry;
+    @property (nonatomic, retain) DemoEntity* entity;
+    @property (nonatomic, assign) Socialize* service;
 @end
 
 @implementation EntityViewController
 
 @synthesize socializeActionPanel = _socializeActionPanel;
 @synthesize webView = _webView;
-@synthesize entry = _entry;
+@synthesize entity = _entity;
+@synthesize service = _service;
 
--(id) initWithEntry: (DemoEntity*) entry andService: (Socialize*) service
+-(id) initWithEntry: (DemoEntity*) entity andService: (Socialize*) service
 {
     self = [super init];
     if(self != nil)
     {
-        self.entry = entry;
-        _service = service;
-        _service.entityService.delegate = self;
-        _service.likeService.delegate = self;
+        self.entity = entity;
+        self.service = service;
     }
     return self;
 }
@@ -50,8 +49,7 @@
     [_socializeActionPanel release]; _socializeActionPanel = nil;
     [_commentsNavigationController release];  _commentsNavigationController = nil;
     [_webView release]; _webView = nil;
- //   [_entity release]; _entity = nil;
-    _service = nil;
+    self.service = nil;
     [super dealloc];
 }
 
@@ -89,7 +87,7 @@
     self.webView = webView;
     [webView release]; webView = nil;
 	
-	NSString* entryContextToShow = [NSString stringWithFormat:@"<html><center>%@</center></html>", self.entry.entryContext];
+	NSString* entryContextToShow = [NSString stringWithFormat:@"<html><center>%@</center></html>", self.entity.entryContext];
     [self.webView loadHTMLString:entryContextToShow baseURL:nil];   
     
 	self.webView.delegate = self;
@@ -97,9 +95,6 @@
 
 	//initialize socialize related classes
 	[self initSocialize];   
-    
-    
-    [_service.viewService createViewForEntityKey:@"test"];
 }
 
 - (void)viewDidUnload
@@ -107,6 +102,18 @@
     [super viewDidUnload];
     self.webView = nil;
     self.socializeActionPanel = nil;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+     _service.likeService.delegate = self;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    _service.likeService.delegate = nil;
+    [super viewWillDisappear:animated];
 }
 
 -(void) initSocialize
@@ -128,10 +135,10 @@
     self.socializeActionPanel.autoresizesSubviews = YES;
     self.socializeActionPanel.delegate = self;
     
-    [self.socializeActionPanel updateCountsWithViewsCount:[NSNumber numberWithInt:self.entry.socializeEntry.views]
-                                           withLikesCount:[NSNumber numberWithInt:self.entry.socializeEntry.likes] 
+    [self.socializeActionPanel updateCountsWithViewsCount:[NSNumber numberWithInt:self.entity.socializeEntry.views]
+                                           withLikesCount:[NSNumber numberWithInt:self.entity.socializeEntry.likes] 
                                                   isLiked: NO 
-                                        withCommentsCount:[NSNumber numberWithInt:self.entry.socializeEntry.comments]
+                                        withCommentsCount:[NSNumber numberWithInt:self.entity.socializeEntry.comments]
      ];
     
     [self.view addSubview:self.socializeActionPanel];
@@ -157,28 +164,17 @@
     if([_socializeActionPanel isLiked]) 
        [_service.likeService deleteLike: _myLike]; 
     else 
-       [_service.likeService postLikeForEntityKey: @"test"/*self.entry.socializeEntry.key*/];
+       [_service.likeService postLikeForEntityKey: self.entity.socializeEntry.key];
 }
 
 -(void)likeListButtonTouched:(id)sender {
-    LikeListViewController* controller = [[[LikeListViewController alloc] initWithNibName:@"LikeListViewController" bundle:nil andService:_service andEntityKey:@"test"] autorelease];
+    LikeListViewController* controller = [[[LikeListViewController alloc] initWithNibName:@"LikeListViewController" bundle:nil andService:_service andEntityKey:self.entity.socializeEntry.key] autorelease];
     [[self navigationController] pushViewController:controller animated:YES];
 }
 
 -(void)shareButtonTouched:(id)sender {
-    [_service.entityService createEntityWithKey:keyField.text andName:nameField.text];
 }
 
--(IBAction)createNew:(id)button {
-    [_service.entityService createEntityWithKey:keyField.text andName:nameField.text];
-    [self touchesEnded:nil withEvent:nil];
-}
-
--(IBAction)getLikes:(id)button
-{
-    [_service.likeService getLikesForEntityKey:keyField.text];
-    [self touchesEnded:nil withEvent:nil];
-}
 
 #pragma mark - show comments controller
 
@@ -189,7 +185,7 @@
                           bundle:nil];
 	
     commentsController.title = @"Comments";
-    commentsController.entityKey = self.entry.socializeEntry.key;
+    commentsController.entityKey = self.entity.socializeEntry.key;
     commentsController.commentService = _service.commentService;
     
 	UIButton * cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -243,31 +239,11 @@
 	[UIView commitAnimations];
 }
 
--(void) entityService:(SocializeEntityService *)entityService didReceiveEntity:(id<SocializeEntity>)entityObject{
-
-}
-
--(void) entityService:(SocializeEntityService *)entityService didReceiveListOfEntities:(NSArray *)entityList
-{
-    _anotherEntity = (id<SocializeEntity>)[entityList lastObject];
-    [_anotherEntity retain];
-    resultsView.text = [NSString stringWithFormat:@"%@\n%key=%@, name=%@", resultsView.text, _anotherEntity.key, _anotherEntity.name];
-}
-
--(void) entityService:(SocializeEntityService *)entityService didFailWithError:(NSError *)error{
-    
-}
-
--(void)destroyCommentController
-{
-   resultsView.text = @"Error";
-}
-
 #pragma mark - Socialize like service delegate
 
 -(void)didFailService:(id)service error:(NSError*)error
 {
-    resultsView.text = [NSString stringWithFormat:@"%@\n%key=%i, name=%i", resultsView.text, _anotherEntity.key, _anotherEntity.name];
+    NSLog(@"Service failed %@", error);
 }
 
 
@@ -302,9 +278,4 @@
 	[alert show];
 	[alert release];
 }
-
-#pragma mark -
-
-
-
 @end

@@ -21,7 +21,6 @@
     if (self) {
         _entityKey = [entityKey retain];
         self.service = service;
-        self.service.likeService.delegate = self;
 //        _likes = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;
@@ -50,21 +49,18 @@
     // Do any additional setup after loading the view from its nib.
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    
+     
+    self.service.likeService.delegate = self;
     [_service.likeService getLikesForEntityKey:_entityKey];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    
+    self.service.likeService.delegate = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view data source
