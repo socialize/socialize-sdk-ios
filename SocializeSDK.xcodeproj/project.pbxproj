@@ -41,6 +41,7 @@
 		166BCF9C13C4695800D4926A /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BCF9A13C4695700D4926A /* AuthenticationViewController.m */; };
 		166BCF9D13C4695800D4926A /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166BCF9B13C4695700D4926A /* AuthenticationViewController.xib */; };
 		166BCFA013C46B7500D4926A /* FBLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BCF9F13C46B7500D4926A /* FBLoginButton.m */; };
+		166BCFA213C470E000D4926A /* FBConnect.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 166BCFA113C470E000D4926A /* FBConnect.bundle */; };
 		168B7F2713B2291D00D85D73 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68EB1A13AFF99600E38356 /* NSString+URLEncoding.m */; };
 		168B7F2913B2294700D85D73 /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68EB1C13AFF99600E38356 /* NSURL+Base.m */; };
 		168B7F2A13B2294B00D85D73 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68EB1813AFF99600E38356 /* NSMutableURLRequest+Parameters.m */; };
@@ -295,6 +296,7 @@
 		166BCF9B13C4695700D4926A /* AuthenticationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
 		166BCF9E13C46B7500D4926A /* FBLoginButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginButton.h; sourceTree = "<group>"; };
 		166BCF9F13C46B7500D4926A /* FBLoginButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginButton.m; sourceTree = "<group>"; };
+		166BCFA113C470E000D4926A /* FBConnect.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBConnect.bundle; sourceTree = "<group>"; };
 		16A5B332139CF18500F3EF75 /* action-bar-icon-liked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-liked.png"; sourceTree = "<group>"; };
 		16A5B334139CF1D000F3EF75 /* view-sm-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view-sm-icon.png"; sourceTree = "<group>"; };
 		16A5B336139CF24100F3EF75 /* action-bar-icon-comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-comments.png"; sourceTree = "<group>"; };
@@ -578,13 +580,14 @@
 		166BCF6F13C44D1B00D4926A /* FacebookSdk */ = {
 			isa = PBXGroup;
 			children = (
+				166BCF7413C44D1B00D4926A /* FBDialog.bundle */,
+				166BCFA113C470E000D4926A /* FBConnect.bundle */,
 				166BCF7013C44D1B00D4926A /* Facebook.h */,
 				166BCF7113C44D1B00D4926A /* Facebook.m */,
 				166BCF7213C44D1B00D4926A /* facebook_ios_sdk_Prefix.pch */,
 				166BCF7313C44D1B00D4926A /* FBConnect.h */,
 				166BCF9E13C46B7500D4926A /* FBLoginButton.h */,
 				166BCF9F13C46B7500D4926A /* FBLoginButton.m */,
-				166BCF7413C44D1B00D4926A /* FBDialog.bundle */,
 				166BCF7513C44D1B00D4926A /* FBDialog.h */,
 				166BCF7613C44D1B00D4926A /* FBDialog.m */,
 				166BCF7713C44D1B00D4926A /* FBLoginDialog.h */,
@@ -1252,6 +1255,7 @@
 				166BCF8A13C44D1B00D4926A /* FBDialog.bundle in Resources */,
 				166BCF9813C4629500D4926A /* SettingsViewController.xib in Resources */,
 				166BCF9D13C4695800D4926A /* AuthenticationViewController.xib in Resources */,
+				166BCFA213C470E000D4926A /* FBConnect.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,6 +28,7 @@
 #import "SettingsViewController.h"
 #import "Socialize.h"
 #import "UserProfileViewController.h"
+#import "AuthenticationViewController.h"
 
 @interface SettingsViewController()
     -(void) doneAction;
@@ -140,6 +141,12 @@
         UserProfileViewController *userProfileController = [[UserProfileViewController alloc] initWithNibName:@"UserProfileViewController" bundle:nil service:self.service];
         [self.navigationController pushViewController:userProfileController animated:YES];
         [userProfileController release];
+    }
+    if(cellTitle == @"Authentication")
+    {
+        AuthenticationViewController *authController = [[AuthenticationViewController alloc] initWithNibName:@"AuthenticationViewController" bundle:nil service:self.service];
+        [self.navigationController pushViewController:authController animated:YES];
+        [authController release];
     }
 }
 

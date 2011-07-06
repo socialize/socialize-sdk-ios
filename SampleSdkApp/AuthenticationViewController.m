@@ -29,18 +29,21 @@
 
 
 @implementation AuthenticationViewController
+@synthesize service;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil service: (Socialize*) socService
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.service = socService;
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [fbButton release]; fbButton = nil;
+    self.service = nil;
     [super dealloc];
 }
 
@@ -57,6 +60,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [fbButton updateImage];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -73,4 +77,14 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - Custom actions
+
+-(IBAction)fbButtonClick:(id)sender
+{
+    if (fbButton.isLoggedIn) {
+       // [self logout];
+    } else {
+        //[self login];
+    }
+}
 @end

@@ -27,9 +27,17 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FBLoginButton.h"
+#import "Socialize.h"
 
 @interface AuthenticationViewController : UIViewController {
-    
+    IBOutlet FBLoginButton* fbButton;
+    Socialize* service;
 }
+
+@property (nonatomic, assign) Socialize* service;
+
+-(IBAction)fbButtonClick:(id)sender;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil  service:(Socialize*) socService;
 
 @end
