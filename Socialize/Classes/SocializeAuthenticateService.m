@@ -190,4 +190,19 @@
     [responseBody release];
 }
 
+-(void)removeAuthenticationInfo
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* key = [NSString stringWithFormat:@"OAUTH_%@_%@_KEY", kPROVIDER_PREFIX, kPROVIDER_NAME];
+    NSString* secret = [NSString stringWithFormat:@"OAUTH_%@_%@_SECRET", kPROVIDER_PREFIX, kPROVIDER_NAME];
+    
+    if ([defaults objectForKey:key] && [defaults objectForKey:secret]) 
+    {
+        [defaults removeObjectForKey:key];
+        [defaults removeObjectForKey:secret];
+    }
+    
+    [defaults synchronize];
+}
+
 @end

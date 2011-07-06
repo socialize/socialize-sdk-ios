@@ -28,6 +28,7 @@
 #import "AuthenticationViewController.h"
 #import "SampleSdkAppAppDelegate.h"
 
+#define FACEBOOK_AUTH_TYPE 1
 
 @implementation AuthenticationViewController
 @synthesize service;
@@ -107,6 +108,8 @@
     [defaults synchronize];
     fbButton.isLoggedIn = YES;
     [fbButton updateImage];
+    
+//    [self.service authenticateWithApiKey:@"" apiSecret:@"" udid:@"someid" thirdPartyAuthToken:faceBook.accessToken thirdPartyUserId:@"115622641859087" thirdPartyName:FACEBOOK_AUTH_TYPE delegate:nil];
 }
 
 /**

@@ -53,6 +53,7 @@
                              delegate:(id<SocializeAuthenticationDelegate>)delegate;
 
 -(BOOL)isAuthenticated;
+-(void)removeAuthenticationInfo;
 
 @property (nonatomic, readonly) SocializeCommentsService*  commentService;
 @property (nonatomic, readonly) SocializeEntityService *   entityService;

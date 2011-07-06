@@ -74,4 +74,8 @@
     return [SocializeAuthenticateService isAuthenticated];
 }
 
+-(void)removeAuthenticationInfo
+{
+    [_authService removeAuthenticationInfo];
+}
 @end

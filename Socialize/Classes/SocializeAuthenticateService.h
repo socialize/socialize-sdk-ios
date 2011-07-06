@@ -35,6 +35,8 @@
 
 +(BOOL)isAuthenticated;
 
+-(void)removeAuthenticationInfo;
+
 @property (nonatomic, assign) SocializeProvider* provider;
 @property (nonatomic, assign) id<SocializeAuthenticationDelegate> delegate;
 
