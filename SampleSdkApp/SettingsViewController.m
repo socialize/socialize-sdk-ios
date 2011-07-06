@@ -27,6 +27,7 @@
 
 #import "SettingsViewController.h"
 #import "Socialize.h"
+#import "UserProfileViewController.h"
 
 @interface SettingsViewController()
     -(void) doneAction;
@@ -39,7 +40,7 @@
 {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        self.service = service;
+        self.service = socService;
     }
     return self;
 }
@@ -133,14 +134,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    NSString* cellTitle = [self.tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    if(cellTitle == @"Profile information")
+    {
+        UserProfileViewController *userProfileController = [[UserProfileViewController alloc] initWithNibName:@"UserProfileViewController" bundle:nil service:self.service];
+        [self.navigationController pushViewController:userProfileController animated:YES];
+        [userProfileController release];
+    }
 }
 
 #pragma mark - custom actions
