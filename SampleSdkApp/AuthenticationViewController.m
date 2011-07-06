@@ -26,16 +26,19 @@
  */
 
 #import "AuthenticationViewController.h"
+#import "SampleSdkAppAppDelegate.h"
 
 
 @implementation AuthenticationViewController
 @synthesize service;
+@synthesize faceBook;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil service: (Socialize*) socService
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.service = socService;
+        self.faceBook = [(SampleSdkAppAppDelegate*)[UIApplication sharedApplication].delegate facebook];
     }
     return self;
 }
@@ -44,6 +47,7 @@
 {
     [fbButton release]; fbButton = nil;
     self.service = nil;
+    self.faceBook = nil;
     [super dealloc];
 }
 
@@ -60,21 +64,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:kFACEBOOK_ACCESS_TOKEN_KEY] 
+        && [defaults objectForKey:kFACEBOOK_EXPIRATION_DATE_KEY]) {
+        faceBook.accessToken = [defaults objectForKey:kFACEBOOK_ACCESS_TOKEN_KEY];
+        faceBook.expirationDate = [defaults objectForKey:kFACEBOOK_EXPIRATION_DATE_KEY];
+        fbButton.isLoggedIn = YES;
+    }
+    else
+        fbButton.isLoggedIn = NO;
+    
     [fbButton updateImage];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Custom actions
@@ -82,9 +88,38 @@
 -(IBAction)fbButtonClick:(id)sender
 {
     if (fbButton.isLoggedIn) {
-       // [self logout];
+        [faceBook logout:self];
     } else {
-        //[self login];
+        [faceBook authorize:nil delegate:self];
     }
 }
+
+#pragma mark - Facebook delegate
+
+/**
+ * Called when the user successfully logged in.
+ */
+- (void)fbDidLogin
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[faceBook accessToken] forKey:kFACEBOOK_ACCESS_TOKEN_KEY];
+    [defaults setObject:[faceBook expirationDate] forKey:kFACEBOOK_EXPIRATION_DATE_KEY];
+    [defaults synchronize];
+    fbButton.isLoggedIn = YES;
+    [fbButton updateImage];
+}
+
+/**
+ * Called when the user logged out.
+ */
+- (void)fbDidLogout
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:kFACEBOOK_ACCESS_TOKEN_KEY];
+    [defaults removeObjectForKey:kFACEBOOK_EXPIRATION_DATE_KEY];
+    [defaults synchronize];
+    fbButton.isLoggedIn = NO;
+    [fbButton updateImage];
+}
+
 @end

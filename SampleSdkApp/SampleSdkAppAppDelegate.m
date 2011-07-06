@@ -102,6 +102,11 @@ static NSString* kAppId = @"115622641859087";
     [super dealloc];
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [facebook handleOpenURL:url];
+}
+
+
 #pragma mark - Facebook session delegete
 
 /**

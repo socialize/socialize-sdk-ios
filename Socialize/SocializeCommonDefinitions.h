@@ -21,6 +21,8 @@
 #define kPROVIDER_NAME          @"SOCIALIZE"
 #define kPROVIDER_PREFIX        @"AUTH"
 
+#define kFACEBOOK_ACCESS_TOKEN_KEY @"FBAccessTokenKey"
+#define kFACEBOOK_EXPIRATION_DATE_KEY @"FBExpirationDateKey"
 
 typedef enum {
     FacebookAuth

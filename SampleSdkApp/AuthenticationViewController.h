@@ -28,14 +28,18 @@
 #import <UIKit/UIKit.h>
 
 #import "FBLoginButton.h"
+#import "SocializeCommonDefinitions.h"
 #import "Socialize.h"
+#import "Facebook.h"
 
-@interface AuthenticationViewController : UIViewController {
+@interface AuthenticationViewController : UIViewController<FBSessionDelegate> {
     IBOutlet FBLoginButton* fbButton;
     Socialize* service;
+    Facebook* faceBook;
 }
 
 @property (nonatomic, assign) Socialize* service;
+@property (nonatomic, assign) Facebook* faceBook;
 
 -(IBAction)fbButtonClick:(id)sender;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil  service:(Socialize*) socService;
