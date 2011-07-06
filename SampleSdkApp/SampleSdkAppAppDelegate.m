@@ -106,31 +106,4 @@ static NSString* kAppId = @"115622641859087";
     return [facebook handleOpenURL:url];
 }
 
-
-#pragma mark - Facebook session delegete
-
-/**
- * Called when the user successfully logged in.
- */
-- (void)fbDidLogin
-{
-    
-}
-
-/**
- * Called when the user dismissed the dialog without logging in.
- */
-- (void)fbDidNotLogin:(BOOL)cancelled
-{
-    
-}
-
-/**
- * Called when the user logged out.
- */
-- (void)fbDidLogout
-{
-    
-}
-
 @end
