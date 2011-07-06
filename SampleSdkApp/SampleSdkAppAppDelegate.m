@@ -11,16 +11,23 @@
 #import "DemoEntity.h"
 #import "Socialize.h"
 
+// Your Facebook APP Id must be set before running this example
+// See http://www.facebook.com/developers/createapp.php
+// Also, your application must bind to the fb[app_id]:// URL
+// scheme (substitue [app_id] for your real Facebook app id).
+static NSString* kAppId = @"115622641859087";
 
 @implementation SampleSdkAppAppDelegate
 
 
 @synthesize window=_window;
 @synthesize entityListViewController;
+@synthesize facebook;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    socialize = [[Socialize alloc] init];   
+    socialize = [[Socialize alloc] init];  
+    facebook = [[Facebook alloc] initWithAppId:kAppId];
 
     entityListViewController = [[EntityListViewController alloc] initWithStyle: UITableViewStylePlain andService: socialize];
     rootController = [[UINavigationController alloc] initWithRootViewController:entityListViewController];
@@ -93,6 +100,32 @@
     [_window release];
     [socialize release];
     [super dealloc];
+}
+
+#pragma mark - Facebook session delegete
+
+/**
+ * Called when the user successfully logged in.
+ */
+- (void)fbDidLogin
+{
+    
+}
+
+/**
+ * Called when the user dismissed the dialog without logging in.
+ */
+- (void)fbDidNotLogin:(BOOL)cancelled
+{
+    
+}
+
+/**
+ * Called when the user logged out.
+ */
+- (void)fbDidLogout
+{
+    
 }
 
 @end
