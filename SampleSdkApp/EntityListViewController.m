@@ -27,11 +27,12 @@
 
 #import "EntityListViewController.h"
 #import "EntityViewController.h"
-#import "UserProfileViewController.h"
+#import "SettingsViewController.h"
+
 
 @interface EntityListViewController()
     -(void) addNewEntity;
-    -(void) showProfileInfo;
+    -(void) showSettingsInfo;
 @end
 
 @implementation EntityListViewController
@@ -92,13 +93,15 @@
     [_entityKey becomeFirstResponder];
 }
 
--(void) showProfileInfo
+-(void) showSettingsInfo
 {
-    UserProfileViewController* userViewContorller = [[UserProfileViewController alloc] initWithNibName:@"UserProfileViewController" bundle:nil service: self.service];
-
-    [self presentModalViewController:userViewContorller animated:YES];
+    SettingsViewController* settingsViewController = [[SettingsViewController alloc] initWithService:self.service];
+    UINavigationController* settingsNavController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
     
-    [userViewContorller release]; userViewContorller = nil;
+    [self presentModalViewController:settingsNavController animated:YES];
+    
+    [settingsNavController release]; settingsNavController = nil;
+    [settingsViewController release]; settingsViewController = nil;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style andService: (Socialize*) service
@@ -141,10 +144,10 @@
     self.navigationItem.rightBarButtonItem = addBtn;
     [addBtn release]; addBtn = nil;
     
-    UIBarButtonItem* profileBtn = [[UIBarButtonItem alloc] initWithTitle:@"Profile" style:UIBarButtonItemStyleBordered target:self action:@selector(showProfileInfo)];
+    UIBarButtonItem* settingsBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showSettingsInfo)];
 
-    self.navigationItem.leftBarButtonItem = profileBtn;
-    [profileBtn release]; profileBtn = nil;
+    self.navigationItem.leftBarButtonItem = settingsBtn;
+    [settingsBtn release]; settingsBtn = nil;
     
     _entityKey = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 50.0, 260.0, 25.0)]; 
     [_entityKey setBackgroundColor:[UIColor whiteColor]];
