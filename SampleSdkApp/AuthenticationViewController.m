@@ -109,7 +109,8 @@
     fbButton.isLoggedIn = YES;
     [fbButton updateImage];
     
-//    [self.service authenticateWithApiKey:@"" apiSecret:@"" udid:@"someid" thirdPartyAuthToken:faceBook.accessToken thirdPartyUserId:@"115622641859087" thirdPartyName:FACEBOOK_AUTH_TYPE delegate:nil];
+    [self.service removeAuthenticationInfo];
+    [self.service authenticateWithApiKey:@"" apiSecret:@"" udid:@"someid" thirdPartyAuthToken:faceBook.accessToken thirdPartyUserId:@"115622641859087" thirdPartyName:FACEBOOK_AUTH_TYPE delegate:nil];
 }
 
 /**
@@ -123,6 +124,10 @@
     [defaults synchronize];
     fbButton.isLoggedIn = NO;
     [fbButton updateImage];
+    [self.service removeAuthenticationInfo];
+    //Temporary solution
+    //TODO:: change this
+    [self.service  authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" delegate:nil];
 }
 
 @end

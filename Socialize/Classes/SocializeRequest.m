@@ -175,6 +175,8 @@ dataFetcher = _dataFetcher
  */
 - (void)dealloc 
 {
+    [_dataFetcher cancel];
+    
     [_token release]; _token = nil;
     [_consumer release]; _consumer = nil;
     [_request release]; _request = nil;
@@ -199,7 +201,6 @@ dataFetcher = _dataFetcher
         [self handleResponseData:data];
     else
         [self failWithError:[NSError errorWithDomain:@"SocializeSDK" code:ticket.response.statusCode userInfo:nil]];
-
 }
 
 -(void)produceHTMLOutput:(NSString*)outputString{

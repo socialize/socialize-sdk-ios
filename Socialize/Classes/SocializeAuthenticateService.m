@@ -121,7 +121,8 @@
                            {
                 
    _delegate = delegate;
-   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"{\"udid\":\"%@\"}",udid],@"jsonData", 
+   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                             udid,@"udid", 
                              [self getSocializeId],  @"socialize_id", 
                              @"1"/* auth type is for facebook*/ , @"auth_type",
                              thirdPartyAuthToken, @"auth_token",
