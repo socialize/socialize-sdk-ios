@@ -38,6 +38,8 @@
 		166BCF9313C44D1B00D4926A /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BCF8813C44D1B00D4926A /* SBJsonWriter.m */; };
 		166BCF9713C4629500D4926A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BCF9513C4629500D4926A /* SettingsViewController.m */; };
 		166BCF9813C4629500D4926A /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166BCF9613C4629500D4926A /* SettingsViewController.xib */; };
+		166BCF9C13C4695800D4926A /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BCF9A13C4695700D4926A /* AuthenticationViewController.m */; };
+		166BCF9D13C4695800D4926A /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166BCF9B13C4695700D4926A /* AuthenticationViewController.xib */; };
 		168B7F2713B2291D00D85D73 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68EB1A13AFF99600E38356 /* NSString+URLEncoding.m */; };
 		168B7F2913B2294700D85D73 /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68EB1C13AFF99600E38356 /* NSURL+Base.m */; };
 		168B7F2A13B2294B00D85D73 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68EB1813AFF99600E38356 /* NSMutableURLRequest+Parameters.m */; };
@@ -287,6 +289,9 @@
 		166BCF9413C4629500D4926A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		166BCF9513C4629500D4926A /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		166BCF9613C4629500D4926A /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		166BCF9913C4695700D4926A /* AuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationViewController.h; sourceTree = "<group>"; };
+		166BCF9A13C4695700D4926A /* AuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationViewController.m; sourceTree = "<group>"; };
+		166BCF9B13C4695700D4926A /* AuthenticationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
 		16A5B332139CF18500F3EF75 /* action-bar-icon-liked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-liked.png"; sourceTree = "<group>"; };
 		16A5B334139CF1D000F3EF75 /* view-sm-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view-sm-icon.png"; sourceTree = "<group>"; };
 		16A5B336139CF24100F3EF75 /* action-bar-icon-comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-comments.png"; sourceTree = "<group>"; };
@@ -666,6 +671,9 @@
 				166BCF9413C4629500D4926A /* SettingsViewController.h */,
 				166BCF9513C4629500D4926A /* SettingsViewController.m */,
 				166BCF9613C4629500D4926A /* SettingsViewController.xib */,
+				166BCF9913C4695700D4926A /* AuthenticationViewController.h */,
+				166BCF9A13C4695700D4926A /* AuthenticationViewController.m */,
+				166BCF9B13C4695700D4926A /* AuthenticationViewController.xib */,
 			);
 			path = SampleSdkApp;
 			sourceTree = "<group>";
@@ -1238,6 +1246,7 @@
 				162BBF7013C1A62C0060893E /* UserProfileViewController.xib in Resources */,
 				166BCF8A13C44D1B00D4926A /* FBDialog.bundle in Resources */,
 				166BCF9813C4629500D4926A /* SettingsViewController.xib in Resources */,
+				166BCF9D13C4695800D4926A /* AuthenticationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1326,6 +1335,7 @@
 				166BCF9213C44D1B00D4926A /* SBJsonParser.m in Sources */,
 				166BCF9313C44D1B00D4926A /* SBJsonWriter.m in Sources */,
 				166BCF9713C4629500D4926A /* SettingsViewController.m in Sources */,
+				166BCF9C13C4695800D4926A /* AuthenticationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
