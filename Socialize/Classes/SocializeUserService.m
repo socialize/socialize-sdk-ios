@@ -26,6 +26,7 @@
  */
 
 #import "SocializeUserService.h"
+#import "SocializeCommonDefinitions.h"
 
 
 #define USER_GET_ENDPOINT     @"user/"
@@ -67,7 +68,11 @@
 
 -(void) currentUser
 {
-    [self usersWithIds:nil];
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults objectForKey:kSOCIALIZE_USERID_KEY])
+    {
+         [self userWithId: [[defaults objectForKey:kSOCIALIZE_USERID_KEY] intValue]];
+    }
 }
 
 -(void) updateUser:(id<SocializeUser>)user

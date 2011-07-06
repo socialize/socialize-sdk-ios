@@ -85,8 +85,7 @@
     [self.progressView startAnimating];
     
     self.service.userService.delegate = self;
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    [self.service.userService userWithId: [[defaults objectForKey:kSOCIALIZE_USERID_KEY] intValue]];
+    [self.service.userService currentUser];
     [super viewDidAppear:animated];
 }
 
