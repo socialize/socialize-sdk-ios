@@ -38,7 +38,7 @@
     IBOutlet UILabel* state;
     IBOutlet UIActivityIndicatorView* progressView;
     
-    Socialize* service;
+    Socialize* _service;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil service: (Socialize*) socService;

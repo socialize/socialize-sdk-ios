@@ -77,7 +77,7 @@
 
 -(void)ExecuteGetRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)requestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
 {
-    [_provider requestWithMethodName:endPoint andParams:requestParameters   expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
+    [_provider requestWithMethodName:endPoint andParams:requestParameters   expectedJSONFormat:expectedFormat andHttpMethod:@"GET" andDelegate:self];
 }
 
 -(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)postRequestObject expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
@@ -89,7 +89,7 @@
 
 -(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat 
 {
-    [_provider requestWithMethodName:endPoint andParams:postRequestParameters expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
+    [_provider requestWithMethodName:endPoint andParams:postRequestParameters expectedJSONFormat:expectedFormat andHttpMethod:@"POST" andDelegate:self];
 }
 
 #pragma mark - Socialize requst delegate

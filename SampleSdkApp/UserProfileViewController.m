@@ -39,7 +39,7 @@
 @synthesize lastName;
 @synthesize city;
 @synthesize state;
-@synthesize service;
+@synthesize service = _service;
 @synthesize progressView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil service: (Socialize*) socService
@@ -123,9 +123,9 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-#pragma mark - Socialize user service delegate
+#pragma mark - Socialize service delegate
 
--(void) userService:(SocializeUserService *)userService didReceiveUser:(id<SocializeUser>)userObject
+-(void) userService:(SocializeService *)userService didReceiveUser:(id<SocializeUser>)userObject
 {
     [self.progressView stopAnimating];
     self.progressView.hidden = YES;
@@ -153,19 +153,18 @@
         self.state.text = userObject.state;
 }
 
--(void) userService:(SocializeUserService *)userService didReceiveListOfUsers:(NSArray *)userList
+
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object
 {
-    [userList enumerateObjectsUsingBlock:^(id userObject, NSUInteger idx, BOOL *stop)
-     {
-         if([userObject conformsToProtocol:@protocol(SocializeUser)])
-         {
-             [self userService:userService didReceiveUser:userObject];
-         }
-     }
-    ];
+    DLog(@"didDelete %@", object);
 }
 
--(void) userService:(SocializeUserService *)userService didFailWithError:(NSError *)error
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object
+{
+    DLog(@"didUpdate %@", object);
+}
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error
 {
     self.progressView.hidden = YES;
     [self showUserInfo:YES];
@@ -178,31 +177,30 @@
     [msg release];
 }
 
-#pragma mark - Socialize service delegate
-
--(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object
-{
-    
-}
-
--(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object
-{
-    
-}
-
--(void)service:(SocializeService*)service didFail:(NSError*)error
-{
-    
-}
-
 -(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList
 {
-    
+    DLog(@"didCreateWithElements %@", dataArray);
+    [dataArray enumerateObjectsUsingBlock:^(id userObject, NSUInteger idx, BOOL *stop)
+     {
+         if([userObject conformsToProtocol:@protocol(SocializeUser)])
+         {
+             [self userService:service didReceiveUser:userObject];
+         }
+     }
+    ];
 }
 
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList
 {
-    
+    DLog(@"didFetchElements");
+    [dataArray enumerateObjectsUsingBlock:^(id userObject, NSUInteger idx, BOOL *stop)
+     {
+         if([userObject conformsToProtocol:@protocol(SocializeUser)])
+         {
+             [self userService:service didReceiveUser:userObject];
+         }
+     }
+    ];
 }
 
 @end
