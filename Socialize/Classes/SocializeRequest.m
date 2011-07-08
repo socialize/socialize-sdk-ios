@@ -192,7 +192,7 @@ expectedJSONFormat = _expectedJSONFormat;
     if (ticket.response.statusCode == 200)
         [self handleResponseData:data];
     else
-        [self failWithError:[NSError errorWithDomain:@"SocializeSDK" code:ticket.response.statusCode userInfo:nil]];
+        [self failWithError:[NSError errorWithDomain:@"Socialize" code:ticket.response.statusCode userInfo:nil]];
 }
 
 -(void)produceHTMLOutput:(NSString*)outputString{

@@ -66,7 +66,7 @@
     _service.provider = mockProvider; 
     
     NSString* newMethodName = [NSString stringWithFormat:@"like/%d/", alikeId];
-    [[mockProvider expect] requestWithMethodName:newMethodName andParams:params  expectedJSONFormat:SocializeDictionary andHttpMethod:@"DELETE" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:newMethodName andParams:params  expectedJSONFormat:SocializeAny andHttpMethod:@"DELETE" andDelegate:_service];
     [_service deleteLike: mockLike];
     [mockProvider verify];
 }
