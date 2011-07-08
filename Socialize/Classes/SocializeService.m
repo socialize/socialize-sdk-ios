@@ -94,10 +94,6 @@
 
 #pragma mark - Socialize requst delegate
 
-//- (void)request:(SocializeRequest *)request didReceiveResponse:(NSURLResponse *)response
-//{
-//    // TODO:: add implementation notify that call success. 
-//}
 
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
