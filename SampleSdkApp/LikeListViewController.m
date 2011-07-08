@@ -108,20 +108,24 @@
 
 #pragma mark Socialize Like delegate
 
--(void)didPostLike:(id)service like:(id)data{
-    
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
+    NSLog(@"didDelete %@", object);
 }
 
--(void)didDeleteLike:(id)service like:(id)data{
-    
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
+    NSLog(@"didUpdate %@", object);
 }
 
--(void)didFetchLike:(id)service like:(id)data{
-    _likes = [data retain];
+-(void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"didFail %@", error);
 }
 
--(void)didFailService:(id)service error:(NSError*)error{
-    
+-(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didCreateWithElements %@", dataArray);
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didFetchElements %@", dataArray);
 }
 
 #pragma mark -

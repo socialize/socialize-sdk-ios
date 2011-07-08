@@ -10,8 +10,8 @@
 #import "JSONKit.h"
 
 @interface SocializeShareService()
--(NSArray*)parseShares:(id)shareJsonData;
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
+//-(NSArray*)parseShares:(id)shareJsonData;
+//-(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
 @end
 
 
@@ -21,33 +21,13 @@
 
 @implementation SocializeShareService
 
-@synthesize delegate = _delegate;
-@synthesize provider = _provider;
-@synthesize objectCreator = _objectCreator;
 
-
--(id) initWithProvider: (SocializeProvider*) provider objectFactory: (SocializeObjectFactory*) objectFactory delegate: (id<SocializeShareServiceDelegate>) delegate
-{
-    self = [super init];
-    if(self != nil)
-    {
-        self.provider = provider;
-        self.objectCreator = objectFactory;
-        self.delegate = delegate;
-    }
-    
-    return self;
-}
 
 -(void) dealloc
 {
-    self.delegate = nil;
-    self.provider = nil;
-    
-    [_objectCreator release]; _objectCreator = nil;
     [super dealloc];
 }
-
+/*
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
 //    [_delegate viewService:self didFailWithError:error];
@@ -91,7 +71,10 @@
     }
     
     return likes;
-}
+
+ 
+    }
+ */
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(ShareMedium)medium  text:(NSString*)text{
     DLog(@"entity %@", entity);
@@ -104,16 +87,8 @@
         NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity", text, @"text", [NSNumber numberWithInt:medium], @"medium" , nil];
         NSArray *params = [NSArray arrayWithObjects:entityParam, 
                            nil];
-        [_provider requestWithMethodName:SHARE_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+        [_provider requestWithMethodName:SHARE_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
     }
-}
-
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest
-{
-    NSString* jsonData = jsonRequest;
-    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            jsonData, @"jsonData",
-            nil];
 }
 
 

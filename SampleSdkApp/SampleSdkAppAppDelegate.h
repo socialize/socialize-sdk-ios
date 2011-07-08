@@ -11,7 +11,7 @@
 #import "SocializeCommonDefinitions.h"
 #import "Socialize.h"
 
-@interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate, SocializeAuthenticationDelegate> {
+@interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate, SocializeAuthenticationDelegate, SocializeServiceDelegate> {
 @private
     Socialize*           socialize;
     UINavigationController* rootController;

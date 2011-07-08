@@ -29,34 +29,30 @@
 #import <Foundation/Foundation.h>
 #import "SocializeEntity.h"
 #import "SocializeRequest.h"
+#import "SocializeService.h"
 
 @class SocializeProvider;
 @class SocializeObjectFactory;
 
 @protocol SocializeEntityServiceDelegate;
 
-@interface SocializeEntityService : NSObject<SocializeRequestDelegate> 
+@interface SocializeEntityService : SocializeService
 {
     @private    
-        id<SocializeEntityServiceDelegate> _delegate;
-        SocializeProvider*  _provider;
-        SocializeObjectFactory* _objectCreator;
     
 }
-@property (nonatomic, assign) id<SocializeEntityServiceDelegate> delegate;
+//@property (nonatomic, assign) id<SocializeEntityServiceDelegate> delegate;
 //-(void)entityWithKey:(NSString *)keyOfEntity;
 //-(void)listEntitiesWithKeys:(NSArray *)entityKeysArray;
--(void)createEntities:(NSArray *)entities;
--(void)createEntity:(id<SocializeEntity>)entity;
+-(void)createEntities:(NSArray *)entities expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
+-(void)createEntity:(id<SocializeEntity>)entity ;
 -(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity;
 
--(id) initWithProvider: (SocializeProvider*)provider objectFactory: (SocializeObjectFactory*) objectFactory delegate: (id<SocializeEntityServiceDelegate>) delegate;
 
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
 
 @end
 
-@protocol SocializeEntityServiceDelegate
+/*@protocol SocializeEntityServiceDelegate
 @required
 
 -(void) entityService:(SocializeEntityService *)entityService didReceiveEntity:(id<SocializeEntity>)entityObject;
@@ -64,3 +60,4 @@
 -(void) entityService:(SocializeEntityService *)entityService didFailWithError:(NSError *)error;
 
 @end
+ */

@@ -32,11 +32,11 @@
 #define USER_POST_ENDPOINT    @"user/"
 
 @interface SocializeUserService ()
--(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs;
+-(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
 @end 
 @implementation SocializeUserService
 
--(id<SocializeUserServiceDelegate>) delegate
+/*-(id<SocializeUserServiceDelegate>) delegate
 {
     
     return  (id<SocializeUserServiceDelegate>) super.delegate;
@@ -47,32 +47,31 @@
     
     super.delegate = userServiceDelegate;
 }
-
+*/
 -(Protocol *)ProtocolType
 {
     return  @protocol(SocializeUser);
 }
 
 
--(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs
+-(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
 {
-    
-    [self ExecuteGetRequestAtEndPoint:USER_GET_ENDPOINT  WithParams:dictionaryUserKeyValuePairs];
+    [self ExecuteGetRequestAtEndPoint:USER_GET_ENDPOINT  WithParams:dictionaryUserKeyValuePairs expectedResponseFormat:expectedFormat ];
 }
 
 -(void) userWithId:(int)userId
 {
-    [self usersWithIds:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:userId] forKey:@"id"]];
+    [self usersWithIds:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:userId] forKey:@"id"] expectedResponseFormat:SocializeDictionary];
 }
 
 -(void) currentUser
 {
-    [self usersWithIds:nil];
+    [self usersWithIds:nil expectedResponseFormat:SocializeDictionary];
 }
 
 -(void) updateUser:(id<SocializeUser>)user
 {
-    [self ExecutePostRequestAtEndPoint:USER_POST_ENDPOINT WithObject:user];
+    [self ExecutePostRequestAtEndPoint:USER_POST_ENDPOINT WithObject:user expectedResponseFormat:SocializeDictionary];
 }
 
 //-(void) createUserWithFirstname:(NSString *)firstName lastName:(NSString *)lastName description:(NSString *) description location:(NSString *) location
@@ -88,14 +87,16 @@
 
 -(void)doDidReceiveSocializeObject:(id<SocializeObject>)objectResponse
 {
-   [self.delegate userService:self didReceiveUser:(id<SocializeUser>)objectResponse];
+ //  [self.delegate userService:self didReceiveUser:(id<SocializeUser>)objectResponse];
 }
 -(void)doDidReceiveReceiveListOfObjects:(NSArray *)objectResponse
-{ [self.delegate userService:self didReceiveListOfUsers:objectResponse]; }
+{ 
+//    [self.delegate userService:self didReceiveListOfUsers:objectResponse]; 
+}
 
 -(void)doDidFailWithError:(NSError *)error
 {
-    [self.delegate userService:self didFailWithError:error];
+  //  [self.delegate userService:self didFailWithError:error];
 }
 
 @end

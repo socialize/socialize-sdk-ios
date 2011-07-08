@@ -29,27 +29,38 @@
 #import "SocializeObjectFactory.h"
 #import "SocializeProvider.h"
 
+
+@class SocializeService;
+@protocol SocializeServiceDelegate 
+
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object;
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object;
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error;
+-(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList;
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList;
+
+@end
+
 @interface SocializeService : NSObject <SocializeRequestDelegate>
 {
       @protected    
         SocializeProvider*  _provider;
         SocializeObjectFactory* _objectCreator;
-        id _delegate;
+        id<SocializeServiceDelegate> _delegate;
 }
 @property (nonatomic, readonly) Protocol * ProtocolType;
-@property (nonatomic, assign) id delegate;
+@property (nonatomic, assign) id<SocializeServiceDelegate> delegate;
+@property (nonatomic, retain) id provider;
 
--(id) initWithProvider: (SocializeProvider*) provider objectFactory:(SocializeObjectFactory*) objectFactory delegate:(id) delegate;
-
-
-
+-(id) initWithProvider: (SocializeProvider*) provider objectFactory:(SocializeObjectFactory*) objectFactory delegate:(id<SocializeServiceDelegate>) delegate;
 
 //The methods below should be private methods put in a Private Headers file.
 //-(id<SocializeObject>)newObject;
 //-(id<SocializeObject>)newObjectForProtocol:(Protocol *)protocol;
--(void)ExecuteGetRequestAtEndPoint: (NSString *)endPoint  WithParams:(id)requestParameters;
--(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)postRequestObject;
--(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters;
+-(void)ExecuteGetRequestAtEndPoint: (NSString *)endPoint  WithParams:(id)requestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
+-(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)postRequestObject expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
+-(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
 
 -(NSMutableDictionary*)genereteParamsFromJsonString:(NSString*)jsonRequest;
 

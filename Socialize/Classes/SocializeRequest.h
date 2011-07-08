@@ -10,6 +10,15 @@
 #import "OAConsumer.h"
 #import "OAAsynchronousDataFetcher.h"
 
+
+typedef enum {
+    SocializeDictionary,
+    SocializeList,
+    SocializeDictionaryWIthListAndErrors,
+} ExpectedResponseFormat;
+
+
+
 @protocol SocializeRequestDelegate;
 
 @interface SocializeRequest : NSObject 
@@ -26,10 +35,14 @@
     OAConsumer                  *_consumer;
     OAMutableURLRequest         *_request;
     OAAsynchronousDataFetcher   *_dataFetcher;
+    //ExpectedResponseFormat      _expectedCallbackFormat;// what the sdk client is expecting
+    ExpectedResponseFormat      _expectedJSONFormat;// what the SDK is expecting from the API
 }
 
 @property (nonatomic, readonly) NSString * userAgentString;
 @property(nonatomic,assign) id<SocializeRequestDelegate> delegate;
+//@property(nonatomic,assign) ExpectedResponseFormat      expectedCallbackFormat;
+@property(nonatomic,assign) ExpectedResponseFormat      expectedJSONFormat;
 @property(nonatomic,copy)   NSString                    *url;
 @property(nonatomic,copy)   NSString                    *httpMethod;
 @property(nonatomic,retain) id                          params;
@@ -41,6 +54,7 @@
 @property(nonatomic,retain) OAAsynchronousDataFetcher   *dataFetcher;
 
 + (SocializeRequest*)getRequestWithParams:(NSMutableDictionary *) params
+                       expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
                         httpMethod:(NSString *) httpMethod
                           delegate:(id<SocializeRequestDelegate>)delegate
                         requestURL:(NSString *) url;

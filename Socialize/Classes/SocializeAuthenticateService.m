@@ -58,7 +58,7 @@
                                                 payloadJson, @"jsonData",
                                                 nil];
 
-    [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict andHttpMethod:@"POST" andDelegate:self];
+    [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
 - (void)tokenRequestModifyRequest:(OAMutableURLRequest *)oRequest{
@@ -135,7 +135,7 @@
 //                                  thirdPartyUserId, @"auth_id",
 //                                  nil];
                                
-   [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+   [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:params  expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
 

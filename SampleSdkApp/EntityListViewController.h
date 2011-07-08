@@ -30,7 +30,7 @@
 #import "Socialize.h"
 
 
-@interface EntityListViewController : UITableViewController <UIAlertViewDelegate, SocializeEntityServiceDelegate>
+@interface EntityListViewController : UITableViewController <UIAlertViewDelegate, SocializeServiceDelegate>
 {
 @private
     Socialize* _service;

@@ -55,7 +55,12 @@
 
 -(id)toObjectfromString:(NSString *)JSONString forProtocol:(Protocol *)protocol
 {
-    id collectionObject = [JSONString objectFromJSONString];
+    id collectionObject = nil;
+
+    if (![JSONString isKindOfClass:[NSArray class]])
+        collectionObject = [JSONString objectFromJSONString];
+    else
+        collectionObject = JSONString;
     
     if ([collectionObject isKindOfClass:[NSArray class]]) 
     {

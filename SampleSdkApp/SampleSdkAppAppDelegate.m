@@ -10,6 +10,7 @@
 #import "SampleSdkAppAppDelegate.h"
 #import "DemoEntity.h"
 #import "Socialize.h"
+#import "SocializeLike.h"
 
 
 @implementation SampleSdkAppAppDelegate
@@ -59,22 +60,48 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-    if([socialize isAuthenticated])
-        return;
+    socialize.likeService.delegate = self;
+    if([socialize isAuthenticated]){
+       [socialize.likeService postLikeForEntityKey:@"test"];
+       return;
+    }
     
-    [socialize authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" delegate:self];
+    [socialize authenticateWithApiKey:@"5f461d4b-999c-430d-a2b2-2df35ff3a9ba" apiSecret:@"90aa0fb5-1995-4771-9ed9-f3c4479a9aaa" udid:@"someid" delegate:self];
     rootController.view.userInteractionEnabled = NO;
 }
 
 -(void)didAuthenticate
 {
     rootController.view.userInteractionEnabled = YES;
+    [socialize.likeService postLikeForEntityKey:@"test"];
+
 }
 
 -(void)didNotAuthenticate:(NSError*)error
 {
     NSLog(@"%@", error);
     //entryController.view.userInteractionEnabled = YES;
+}
+
+
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
+    NSLog(@"didDelete %@", object);
+}
+
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
+    NSLog(@"didUpdate %@", object);
+}
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"didFail %@", error);
+}
+
+-(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didCreateWithElements %@  errorList %@  and  error count %d", dataArray, errorList, [errorList count]);
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didFetchElements %@", dataArray);
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

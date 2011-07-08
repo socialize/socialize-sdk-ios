@@ -15,7 +15,7 @@
 #import "SocializeCommonDefinitions.h"
 #import "SocializeLike.h"
 
-@interface EntityViewController : UIViewController<UIWebViewDelegate,UITextFieldDelegate, SocializeEntityServiceDelegate, SocializeActionViewDelegate, SocializeLikeServiceDelegate> {
+@interface EntityViewController : UIViewController<UIWebViewDelegate,UITextFieldDelegate, SocializeActionViewDelegate, SocializeServiceDelegate> {
     
 @private
     SocializeActionView         *_socializeActionPanel;

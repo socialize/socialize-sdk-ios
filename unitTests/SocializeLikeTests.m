@@ -45,7 +45,7 @@
     _service.provider = mockProvider; 
     
     NSString* newMethodName = [NSString stringWithFormat:@"like/%d/", alikeId];
-    [[mockProvider expect] requestWithMethodName:newMethodName andParams:params andHttpMethod:@"GET" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:newMethodName andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_service];
     [_service getLike:alikeId];
     [mockProvider verify];
 }
@@ -66,7 +66,7 @@
     _service.provider = mockProvider; 
     
     NSString* newMethodName = [NSString stringWithFormat:@"like/%d/", alikeId];
-    [[mockProvider expect] requestWithMethodName:newMethodName andParams:params andHttpMethod:@"DELETE" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:newMethodName andParams:params  expectedJSONFormat:SocializeDictionary andHttpMethod:@"DELETE" andDelegate:_service];
     [_service deleteLike: mockLike];
     [mockProvider verify];
 }
@@ -79,7 +79,7 @@
                                    @"www.123.com", @"key",
                                    nil];
 
-    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params andHttpMethod:@"GET" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_service];
     [_service getLikesForEntityKey:@"www.123.com"];
     [mockProvider verify];
 }
@@ -98,7 +98,7 @@
     NSArray *params = [NSArray arrayWithObjects:entityParam, 
                        nil];
 
-    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
 
     [_service postLikeForEntity:mockEntity];
     [mockProvider verify];
@@ -106,17 +106,16 @@
 
 -(void)testGetLikesCallback{
     
-    SocializeRequest* _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"POST" delegate:self requestURL:@"invalidparam"];
+    SocializeRequest* _request = [SocializeRequest getRequestWithParams:nil expectedJSONFormat:SocializeDictionary httpMethod:@"GET"  delegate:self requestURL:@"invalidparam"];
 
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/like_single_response.json"];
-    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeLikeServiceDelegate)];
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
     _service.delegate = mockDelegate;
     
-    [[mockDelegate expect] didPostLike:_service like:OCMOCK_ANY];
+    [[mockDelegate expect] service:_service didFetchElements:OCMOCK_ANY andErrorList:nil];
     
     [_service request:_request didLoadRawResponse:[JSONStringToParse dataUsingEncoding:NSUTF8StringEncoding]];
     [mockDelegate verify];
-
 }
 
 -(NSString *)helperGetJSONStringFromFile:(NSString *)fileName
@@ -131,20 +130,29 @@
 }
 
 
--(void)didPostLike:(id)service like:(id)data{
 
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
+    NSLog(@"didDelete %@", object);
 }
 
--(void)didDeleteLike:(id)service like:(id)data{
-
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
+    NSLog(@"didUpdate %@", object);
 }
 
--(void)didFetchLike:(id)service like:(id)data{
-
+-(void)service:(SocializeService*)service didFetch:(id<SocializeObject>)object{
+    NSLog(@"didFetch %@", object);
 }
 
--(void)didFailService:(id)service error:(NSError*)error{
-    
+-(void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"didFail %@", error);
+}
+
+-(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didCreateWithElements %@", dataArray);
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didFetchElements %@", dataArray);
 }
 
 @end
