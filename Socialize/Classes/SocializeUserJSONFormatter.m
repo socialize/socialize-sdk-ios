@@ -54,7 +54,7 @@
         [toUser setViews:[[stats valueForKey:@"views"]intValue]];
         [toUser setLikes:[[stats valueForKey:@"likes"]intValue]];
         [toUser setComments:[[stats valueForKey:@"comments"]intValue]];
-        [toUser setShare:[[stats valueForKey:@"share"]intValue]];
+        [toUser setShare:[[stats valueForKey:@"shares"]intValue]];
     }
 }
 
