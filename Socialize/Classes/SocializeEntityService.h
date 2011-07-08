@@ -42,7 +42,7 @@
 //TODO:: add implementation
 //-(void)entityWithKey:(NSString *)keyOfEntity;
 //-(void)listEntitiesWithKeys:(NSArray *)entityKeysArray;
--(void)createEntities:(NSArray *)entities expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
+-(void)createEntities:(NSArray *)entities;
 -(void)createEntity:(id<SocializeEntity>)entity ;
 -(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity;
 

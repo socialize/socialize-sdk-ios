@@ -13,121 +13,91 @@
 
 @implementation SocializeEntityServiceTests
 
+-(NSString *)helperGetJSONStringFromFile:(NSString *)fileName
+{
+    NSString * JSONFilePath = [[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"%@/%@",@"JSON-RequestAndResponse-TestFiles", fileName ] ofType:nil];
+    
+    NSString * JSONString = [NSString stringWithContentsOfFile:JSONFilePath 
+                                                      encoding:NSUTF8StringEncoding 
+                                                         error:nil];
+    
+    return  JSONString;
+}
 
 // Run before each test method
 - (void)setUp 
 { 
     
-    mockfactory  = [OCMockObject mockForClass:[SocializeObjectFactory class]];
-    mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
-    
-    _entityService = [[SocializeEntityService alloc] initWithProvider:mockProvider 
-                                                        objectFactory:mockfactory 
-                                                             delegate:mockDelegate];
+    _mockFactory = [OCMockObject niceMockForClass:[SocializeObjectFactory class]];   
+    _entityService = [[SocializeEntityService alloc] initWithProvider:nil 
+                                                        objectFactory:_mockFactory 
+                                                             delegate:nil];
     
 }
 
 // Run after each test method
 - (void)tearDown 
 {
-    
-    [_entityService release];
-    
+    [_entityService release]; _entityService = nil;
 }
 
-
-/*
--(void)testCreateEntity
+- (id) createMockEntiry: (NSString *) entityKey entityName: (NSString *) entityName
 {
     id mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
-  //  id mockRequest = [OCMockObject mockForClass:[SocializeRequest class]];
-    
-    SocializeRequest*     request = [SocializeRequest getRequestWithParams:nil
-                                                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
-                                                                  httpMethod:@"POST"
-                                                                    delegate:nil
-                                                                  requestURL:nil];
-  
-    
-    [[mockEntity expect] setKey:@"Foo"];
-    [[mockEntity expect] setName:@"Bar"];
-    
-    [[[mockfactory expect] andReturn:mockEntity] createObjectForProtocol:@protocol(SocializeEntity)];
-    
-    NSString* entityJSONString = @"{\"errors\":[], \"items\":[{\"key\":\"Foo\",\"name\":\"Bar\"}]}";
-    
-    [[[mockfactory expect] andReturn:entityJSONString] createStringRepresentationOfArray:[NSArray arrayWithObject:mockEntity]];
-   // [[[mockRequest expect] andReturn:@"POST"] httpMethod];
-   // [[[mockRequest expect] andReturn:SocializeDictionaryWIthListAndErrors] expectedJSONFormat];
 
-    NSString* entityJSONStringResponse =  @"{\"errors\":[], \"items\":[{\"key\":\"Foo\",\"name\":\"Bar\"}]}";
-    NSData* entityJSONDataResponse = [entityJSONStringResponse  dataUsingEncoding:NSUTF8StringEncoding];
+    [[mockEntity expect]setKey:entityKey];
+    [[mockEntity expect]setName:entityName];
     
-    void (^testBlock)(NSInvocation *) = ^(NSInvocation *invocation) 
-    {
-        [_entityService request:request didLoadRawResponse:entityJSONDataResponse];
-    };
-    
-    id mockEntity2 = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
-    
-    NSArray * entityArray = [NSArray arrayWithObjects:mockEntity, mockEntity2, nil];
-
-    [[[mockfactory expect] andReturn:entityArray] createObjectFromString:OCMOCK_ANY forProtocol:OCMOCK_ANY];
-
-    NSMutableDictionary* params = [_entityService genereteParamsFromJsonString:entityJSONString];
-    
-    [[[mockProvider expect] andDo:testBlock]
-      requestWithMethodName:@"entity/" 
-        andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors 
-        andHttpMethod:@"POST" 
-        andDelegate:_entityService];
-    
-    [[mockDelegate expect] service:_entityService didCreateWithElements:OCMOCK_ANY andErrorList:nil];
-    
-    [_entityService createEntityWithKey:@"Foo" andName:@"Bar"];
-
-  //  [mockfactory verify];
-    [mockDelegate verify];
+    return mockEntity;
 }
-
-//DuplicateCode
-
--(void)testSingleCreateEntity
+- (void) configurateMockFactoryForCreateEntityWithKey: (id) mockEntity
 {
-    id mockEntity = [OCMockObject niceMockForProtocol:@protocol(SocializeEntity)];
-    
-    [[mockEntity expect] setKey:@"Foo"];
-    [[mockEntity expect] setName:@"Bar"];
-    [[[mockfactory expect] andReturn:mockEntity] createObjectForProtocol:@protocol(SocializeEntity)];
-    
-    NSString* entityJSONString = @"{\"key\":\"Foo\",\"name\":\"Bar\"}";
-    
-    [[[mockfactory expect] andReturn:entityJSONString] createStringRepresentationOfArray:[NSArray arrayWithObject:mockEntity]];
-    
-    NSString* entityJSONStringResponse =  @"[{\"key\":\"Foo\",\"name\":\"Bar\"}]";
-    NSData* entityJSONDataResponse = [entityJSONStringResponse  dataUsingEncoding:NSUTF8StringEncoding];
-    
-    void (^testBlock)(NSInvocation *) = ^(NSInvocation *invocation) 
-    {
-        [_entityService request:nil didLoadRawResponse:entityJSONDataResponse];
-    };
-    
-
-    [[[mockfactory expect]andReturn:mockEntity]createObjectFromString:OCMOCK_ANY forProtocol:@protocol(SocializeEntity)];
-    
-    NSMutableDictionary* params = [_entityService genereteParamsFromJsonString:entityJSONString];
-
-    [[[mockProvider expect]
-      andDo:testBlock]
-     requestWithMethodName:@"entity/" andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_entityService];
-    
-//  [[mockDelegate expect]entityService:_entityService didReceiveEntity:mockEntity];
-    [[mockDelegate expect] service:_entityService didCreateWithElements:OCMOCK_ANY andErrorList:nil];
-    [_entityService createEntityWithKey:@"Foo" andName:@"Bar"];
-    [mockDelegate verify];
-
+    NSArray* entitis = [NSArray arrayWithObject:mockEntity];    
+    [[[_mockFactory stub] andReturn:mockEntity]createObjectForProtocol:@protocol(SocializeEntity)];
+    [[[_mockFactory stub] andReturn:@"some_request"]createStringRepresentationOfArray:entitis];
 }
- */
+
+- (id) createMockProvider 
+{
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    [[mockProvider expect] requestWithMethodName:@"entity/" andParams:OCMOCK_ANY expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_entityService];
+    
+    return mockProvider;
+}
+
+-(void)testCreateEntityWithKey
+{
+    NSString* entityKey = @"www.google.com";
+    NSString* entityName = @"google";
+    
+    id mockEntity = [self createMockEntiry: entityKey entityName: entityName];
+    [self configurateMockFactoryForCreateEntityWithKey: mockEntity];
+ 
+    id mockProvider = [self createMockProvider];
+    _entityService.provider = mockProvider;
+    
+    [_entityService createEntityWithKey:entityKey andName:entityName];
+    
+    [mockProvider verify];
+    [mockEntity verify];
+    [_mockFactory verify];
+}
+
+-(void)testCreateEntityCallback{
+    
+    SocializeRequest* _request = [SocializeRequest getRequestWithParams:nil expectedJSONFormat:SocializeDictionary httpMethod:@"POST"  delegate:nil requestURL:@"invalidparam"];
+    
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/entity_single_response.json"];
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
+    [[mockDelegate expect] service:_entityService didCreateWithElements:OCMOCK_ANY andErrorList:nil];
+
+    _entityService.delegate = mockDelegate;
+
+    id mockEntity = [OCMockObject niceMockForProtocol:@protocol(SocializeEntity)];
+    [[[_mockFactory stub]andReturn:mockEntity]createObjectFromString:JSONStringToParse forProtocol:@protocol(SocializeEntity)]; 
+    
+    [_entityService request:_request didLoadRawResponse:[JSONStringToParse dataUsingEncoding:NSUTF8StringEncoding]];
+    [mockDelegate verify];
+}
 
 @end

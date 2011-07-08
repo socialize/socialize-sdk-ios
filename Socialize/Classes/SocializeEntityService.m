@@ -75,9 +75,10 @@
     NSMutableDictionary* params = [self genereteParamsFromJsonString:stringRepresentation];
     [_provider requestWithMethodName:ENTITY_CREATE_ENDPOINT andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
 }
+
 -(void)createEntity:(id<SocializeEntity>)entity
 {
-    [self createEntities:[NSArray arrayWithObject:entity] expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+    [self createEntities:[NSArray arrayWithObject:entity]];
 }
 
 -(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity
@@ -88,6 +89,11 @@
     entity.name = nameOfEntity;
    
     [self createEntity:entity];
+}
+
+-(void)createEntities:(NSArray *)entities
+{
+    [self createEntities:entities expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
 
 @end

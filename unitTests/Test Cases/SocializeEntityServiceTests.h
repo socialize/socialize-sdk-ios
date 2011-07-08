@@ -37,10 +37,8 @@
 
 @interface SocializeEntityServiceTests : GHTestCase  
 {
-    id mockfactory;
-    id mockProvider;
-    id mockDelegate;
     SocializeEntityService * _entityService;
+    id _mockFactory;
 }
 
 @end
