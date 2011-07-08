@@ -35,18 +35,15 @@ typedef enum {
     OAConsumer                  *_consumer;
     OAMutableURLRequest         *_request;
     OAAsynchronousDataFetcher   *_dataFetcher;
-    //ExpectedResponseFormat      _expectedCallbackFormat;// what the sdk client is expecting
     ExpectedResponseFormat      _expectedJSONFormat;// what the SDK is expecting from the API
 }
 
 @property (nonatomic, readonly) NSString * userAgentString;
 @property(nonatomic,assign) id<SocializeRequestDelegate> delegate;
-//@property(nonatomic,assign) ExpectedResponseFormat      expectedCallbackFormat;
 @property(nonatomic,assign) ExpectedResponseFormat      expectedJSONFormat;
 @property(nonatomic,copy)   NSString                    *url;
 @property(nonatomic,copy)   NSString                    *httpMethod;
 @property(nonatomic,retain) id                          params;
-@property(nonatomic,retain) NSURLConnection             *connection;
 @property(nonatomic,retain) NSMutableData               *responseText;
 @property(nonatomic,retain) OAToken                     *token;
 @property(nonatomic,retain) OAConsumer                  *consumer;
@@ -60,7 +57,6 @@ typedef enum {
                         requestURL:(NSString *) url;
 
 + (NSString *)userAgentString;
-- (BOOL) loading;
 
 - (void) connect;
 

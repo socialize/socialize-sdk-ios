@@ -178,4 +178,31 @@
     [msg release];
 }
 
+#pragma mark - Socialize service delegate
+
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object
+{
+    
+}
+
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object
+{
+    
+}
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error
+{
+    
+}
+
+-(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList
+{
+    
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList
+{
+    
+}
+
 @end

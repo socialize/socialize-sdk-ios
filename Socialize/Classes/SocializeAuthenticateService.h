@@ -20,7 +20,7 @@
 
 -(id) initWithProvider:(SocializeProvider*) provider;
 
--(void)authenticateWithApiKey:(NSString*)apiKey 
+-(void)authenticateWithApiKey:(NSString*)apiKey  //TODO:: remove apiKey and secret from params list
                     apiSecret:(NSString*)apiSecret
                          udid:(NSString*)udid
                     delegate:(id<SocializeAuthenticationDelegate>)delegate;

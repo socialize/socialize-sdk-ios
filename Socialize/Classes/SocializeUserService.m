@@ -33,22 +33,10 @@
 #define USER_POST_ENDPOINT    @"user/"
 
 @interface SocializeUserService ()
--(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
+    -(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
 @end 
 @implementation SocializeUserService
 
-/*-(id<SocializeUserServiceDelegate>) delegate
-{
-    
-    return  (id<SocializeUserServiceDelegate>) super.delegate;
-}
-
--(void)setDelegate:(id<SocializeUserServiceDelegate>)userServiceDelegate
-{
-    
-    super.delegate = userServiceDelegate;
-}
-*/
 -(Protocol *)ProtocolType
 {
     return  @protocol(SocializeUser);
@@ -89,19 +77,5 @@
 //    [self updateUser:user];
 //    
 //}
-
--(void)doDidReceiveSocializeObject:(id<SocializeObject>)objectResponse
-{
- //  [self.delegate userService:self didReceiveUser:(id<SocializeUser>)objectResponse];
-}
--(void)doDidReceiveReceiveListOfObjects:(NSArray *)objectResponse
-{ 
-//    [self.delegate userService:self didReceiveListOfUsers:objectResponse]; 
-}
-
--(void)doDidFailWithError:(NSError *)error
-{
-  //  [self.delegate userService:self didFailWithError:error];
-}
 
 @end

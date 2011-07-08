@@ -25,7 +25,6 @@
  * THE SOFTWARE.
  */
 
-#import "JSONKit.h"
 #import "SocializeCommentsService.h"
 #import "SocializeComment.h"
 #import "SocializeProvider.h"
@@ -39,21 +38,12 @@
 #define ENTITY_KEY @"entity"
 #define COMMENT_KEY @"text"
 
-
-@interface SocializeCommentsService()
-///    -(void) parseCommentsList: (NSArray*) commentsJsonData;
-@end
-
 @implementation SocializeCommentsService
-
-
 
 -(void) dealloc
 {
     [super dealloc];
 }
-
-
 
 -(void) getCommentById: (int) commentId
 {
@@ -95,59 +85,5 @@
     else
         [self createCommentForEntityWithKey:entity.key comment:comment];
 }
-
-#pragma mark - Socialize request delegate
-
-//- (void)request:(SocializeRequest *)request didReceiveResponse:(NSURLResponse *)response
-//{
-//    // TODO:: add implementation notify that call success. 
-//}
-/*
-- (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
-{
-    [_delegate didFailService:self withError:error];
-}
-
-- (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
-{
-    NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    
-    id responseObject = [responseString objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
-    
-    if([responseObject isKindOfClass: [NSDictionary class]])
-    {
-        if([responseObject objectForKey:@"comments"]) // temporary solution for supporting last changes in response format
-        {
-            [self parseCommentsList: [responseObject objectForKey:@"comments"]];
-            
-        }else
-        {
-            id<SocializeComment> comment = [_objectCreator createObjectFromDictionary:responseObject forProtocol:@protocol(SocializeComment)];
-            [_delegate receivedComment: self comment:comment];    
-        }
-    }
-    else if([responseObject isKindOfClass: [NSArray class]])
-    {
-        [self parseCommentsList: responseObject];
-    }
-    else
-    {
-        [_delegate didFailService:self withError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
-    }
-}
-
--(void) parseCommentsList: (NSArray*) commentsJsonData
-{
-    NSMutableArray* comments = [NSMutableArray arrayWithCapacity:[commentsJsonData count]];
-    [commentsJsonData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
-     {
-         id<SocializeComment> comment = [_objectCreator createObjectFromDictionary:obj forProtocol:@protocol(SocializeComment)];
-         [comments addObject:comment];
-     }
-    ];
-    
-    [_delegate receivedComments:self comments:comments];
-}
- */
 
 @end

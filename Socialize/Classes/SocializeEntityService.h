@@ -37,27 +37,13 @@
 @protocol SocializeEntityServiceDelegate;
 
 @interface SocializeEntityService : SocializeService
-{
-    @private    
-    
+{   
 }
-//@property (nonatomic, assign) id<SocializeEntityServiceDelegate> delegate;
+//TODO:: add implementation
 //-(void)entityWithKey:(NSString *)keyOfEntity;
 //-(void)listEntitiesWithKeys:(NSArray *)entityKeysArray;
 -(void)createEntities:(NSArray *)entities expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
 -(void)createEntity:(id<SocializeEntity>)entity ;
 -(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity;
 
-
-
 @end
-
-/*@protocol SocializeEntityServiceDelegate
-@required
-
--(void) entityService:(SocializeEntityService *)entityService didReceiveEntity:(id<SocializeEntity>)entityObject;
--(void) entityService:(SocializeEntityService *)entityService didReceiveListOfEntities:(NSArray *)entityList;
--(void) entityService:(SocializeEntityService *)entityService didFailWithError:(NSError *)error;
-
-@end
- */

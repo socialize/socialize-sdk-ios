@@ -57,8 +57,6 @@
     return  @protocol(SocializeEntity);
 }
 
-
-
 //-(void)entityWithKey:(NSString *)keyOfEntity
 //{
 //    
@@ -91,42 +89,5 @@
    
     [self createEntity:entity];
 }
-
-#pragma mark - Socialize requst delegate
-
-//- (void)request:(SocializeRequest *)request didReceiveResponse:(NSURLResponse *)response
-//{
-//    // TODO:: add implementation notify that call success. 
-//}
-/*
-- (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
-{
-    [_delegate entityService:self didFailWithError:error];
-}
-
-- (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
-{
-    
-    //Move the following lines to the base  SocializeService Class, because it's the same for all objects.
-    NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    
-    id entityResponse = [_objectCreator createObjectFromString:responseString forProtocol:@protocol(SocializeEntity)]; 
-    
-    
-    if([entityResponse conformsToProtocol:@protocol(SocializeObject)])
-    {
-        [_delegate entityService:self didReceiveEntity:(id<SocializeEntity>)entityResponse];
-    }
-    else if([entityResponse isKindOfClass: [NSArray class]])
-    {
-        [_delegate entityService:self didReceiveListOfEntities:(NSArray *)entityResponse];  
-    }
-    else
-    {
-        [_delegate entityService:self didFailWithError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
-    }       
-
-}
-*/
 
 @end

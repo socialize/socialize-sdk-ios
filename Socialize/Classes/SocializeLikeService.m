@@ -7,7 +7,6 @@
 //
 
 #import "SocializeLikeService.h"
-#import "JSONKit.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeLike.h"
 #import "SocializeObjectFactory.h"
@@ -15,16 +14,14 @@
 #import "SocializeEntity.h"
 
 
-
-@interface SocializeLikeService()
--(NSArray*)parseLikes:(id)likesJsonData;
-//-(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
-@end
-
 #define LIKE_METHOD @"like/"
 #define ENTRY_KEY @"key"
 #define ENTITY_KEY @"entity"
 #define LIKES_METHOD @"like/"
+
+
+@interface SocializeLikeService()
+@end
 
 @implementation SocializeLikeService
 
@@ -34,60 +31,10 @@
 {
     [super dealloc];
 }
-
-/*- (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
-{
-    [_delegate didFailService:self error:error];
-}
-
-- (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
-{
-    NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    
-    id responseObject = [responseString objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
-    
-    if ([request.httpMethod isEqualToString:@"DELETE"]){
-        [_delegate didDeleteLike:self like:nil];
-    }
-    else  if ([request.httpMethod  isEqualToString:@"GET"]){
-        NSArray* likes = [self parseLikes:responseObject];
-        [_delegate didFetchLike:self like:likes];
-    }
-    else if ([request.httpMethod  isEqualToString:@"POST"]){
-        NSArray* likes = [self parseLikes:responseObject];
-        [_delegate didPostLike:self like:likes];
-    }
-}
- */
  
 -(Protocol *)ProtocolType
 {
     return  @protocol(SocializeLike);
-}
-
-
--(NSArray*)parseLikes:(id)likesJsonData
-{
-    NSMutableArray* likes = nil;
-    if ([likesJsonData isKindOfClass:[NSDictionary class]]){
-
-        likes = [NSMutableArray array];
-        id<SocializeLike> like = [_objectCreator createObjectFromDictionary:likesJsonData forProtocol:@protocol(SocializeLike)];
-        [likes addObject:like];
-        
-    }
-    else if ([likesJsonData isKindOfClass:[NSArray class]]){
-        
-        likes = [NSMutableArray arrayWithCapacity:[likesJsonData count]];
-        [likesJsonData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
-         {
-             id<SocializeLike> like = [_objectCreator createObjectFromDictionary:obj forProtocol:@protocol(SocializeLike)];
-             [likes addObject:like];
-         }
-         ];
-    }
-    
-    return likes;
 }
 
 -(void)postLikeForEntity:(id<SocializeEntity>)entity{

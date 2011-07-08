@@ -29,7 +29,7 @@
 #import "SocializeCommonDefinitions.h"
 #import "Socialize.h"
 
-@interface UserProfileViewController : UIViewController<SocializeUserServiceDelegate> {
+@interface UserProfileViewController : UIViewController<SocializeServiceDelegate> {
     IBOutlet UIImageView* userPicture;
     IBOutlet UILabel* userName;
     IBOutlet UILabel* firstName;

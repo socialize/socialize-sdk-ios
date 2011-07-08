@@ -308,6 +308,4 @@
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
     NSLog(@"didFetchElements %@", dataArray);
 }
-
->>>>>>> development
 @end

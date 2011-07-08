@@ -32,11 +32,9 @@
 
 
 static NSString* kRestserverBaseURL = @"http://dev.getsocialize.com/v1/";
-//static NSString* kSDK = @"ios";
-//static NSString* kSDKVersion = @"1";
 
 @interface SocializeProvider()
-- (void)openUrl:(NSString *)url
+    - (void)openUrl:(NSString *)url
              params:(NSMutableDictionary *)params
 expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
          httpMethod:(NSString *)httpMethod
@@ -97,7 +95,7 @@ expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
             delegate:(id<SocializeProviderDelegate>)delegate
 {
     _sessionDelegate = delegate;
-    // TODO::
+    // TODO:: remove if not used
 }
 
 - (void)authenticateWithThirdPartyAccessToken:(NSString*)thirdPartyAccessToken
@@ -129,7 +127,7 @@ expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
 
 {
     if ([params objectForKey:@"method"] == nil) {
-        //NSLog(@"API Method must be specified");
+        DLog(@"API Method must be specified");
         return;
     }
     
@@ -158,7 +156,7 @@ expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
 /**
  * @return boolean - whether this object has an non-expired session token
  */
-- (BOOL)isSessionValid {
+- (BOOL)isSessionValid { //TODO:: remove this if not used
     return (self.accessToken != nil && self.expirationDate != nil
             && NSOrderedDescending == [self.expirationDate compare:[NSDate date]]);
 }

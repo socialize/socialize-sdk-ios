@@ -26,10 +26,10 @@ static const int kGeneralErrorCode = 10000;
 
 
 @interface SocializeRequest()
--(void)failWithError:(NSError *)error;
--(void)handleResponseData:(NSData *)data;
--(void)produceHTMLOutput:(NSString*)outputString;
--(NSArray*) formatUrlParams;
+    -(void)failWithError:(NSError *)error;
+    -(void)handleResponseData:(NSData *)data;
+    -(void)produceHTMLOutput:(NSString*)outputString;
+    -(NSArray*) formatUrlParams;
 @end
 
 @implementation SocializeRequest
@@ -38,16 +38,12 @@ static const int kGeneralErrorCode = 10000;
 url = _url,
 httpMethod = _httpMethod,
 params = _params,
-connection = _connection,
 responseText = _responseText,
 token = _token,
 consumer = _consumer,
 request = _request,
 dataFetcher = _dataFetcher,
-//expectedCallbackFormat = _expectedCallbackFormat,
-expectedJSONFormat = _expectedJSONFormat
-
-;
+expectedJSONFormat = _expectedJSONFormat;
 
 + (NSString *)userAgentString
 {
@@ -77,7 +73,6 @@ expectedJSONFormat = _expectedJSONFormat
     request.url = url;
     request.httpMethod = httpMethod;
     request.params = params;
-    request.connection = nil;
     request.responseText = nil;
     request.expectedJSONFormat  = expectedJSONFormat;
     
@@ -121,14 +116,6 @@ expectedJSONFormat = _expectedJSONFormat
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // public
-
-/**
- * @return boolean - whether this request is processing
- */
-- (BOOL)loading 
-{
-    return !!_connection;
-}
 
 -(NSArray*) formatUrlParams
 {
@@ -216,7 +203,7 @@ expectedJSONFormat = _expectedJSONFormat
     NSError *error;
     BOOL succeed = [outputString writeToFile:[documentsDirectory stringByAppendingPathComponent:@"error.html"]
                               atomically:YES encoding:NSUTF8StringEncoding error:&error];
-    if (!succeed){
+    if (!succeed){ // TODO:: add error handling
         // Handle error here
     }
 }

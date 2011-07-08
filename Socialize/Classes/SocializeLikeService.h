@@ -13,7 +13,6 @@
 @class SocializeProvider;
 @class SocializeObjectFactory;
 
-//@protocol SocializeLikeServiceDelegate;
 @protocol SocializeEntity;
 @protocol SocializeLike;
 
