@@ -32,7 +32,7 @@
 #import "SocializeCommentsService.h"
 
 
-@interface SocializeCommentsServiceTests : GHTestCase <SocializeCommentsServiceDelegate> {
+@interface SocializeCommentsServiceTests : GHTestCase <SocializeServiceDelegate> {
     SocializeCommentsService* _service;
     NSError* _testError;
 }

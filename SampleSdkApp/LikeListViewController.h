@@ -11,7 +11,7 @@
 #import "Socialize.h"
 
 
-@interface LikeListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SocializeLikeServiceDelegate> {
+@interface LikeListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SocializeServiceDelegate> {
 
     UITableView     *_tableView;
     Socialize       *_service;

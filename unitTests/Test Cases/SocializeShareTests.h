@@ -13,7 +13,7 @@
 #import "SocializeShareService.h"
 
 
-@interface SocializeShareTests : GHTestCase<SocializeShareServiceDelegate, SocializeRequestDelegate> {
+@interface SocializeShareTests : GHTestCase<SocializeServiceDelegate> {
     SocializeShareService   *_service;
     NSError                 *_testError;
 }

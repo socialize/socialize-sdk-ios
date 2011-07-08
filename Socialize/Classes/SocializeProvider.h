@@ -26,7 +26,7 @@
  */
 
 #import <Foundation/Foundation.h>
-
+#import "SocializeRequest.h"
 
 @protocol SocializeObject;
 
@@ -58,10 +58,12 @@
                                  delegate:(id<SocializeProviderDelegate>)delegate;
 
 - (void)requestWithParams:(id)params
-              andDelegate:(id <SocializeRequestDelegate>)delegate;
+              andDelegate:(id <SocializeRequestDelegate>)delegate
+       expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat;
 
 - (void)requestWithMethodName:(NSString *)methodName
                     andParams:(id)params
+           expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
                 andHttpMethod:(NSString *)httpMethod
                   andDelegate:(id <SocializeRequestDelegate>)delegate;
 

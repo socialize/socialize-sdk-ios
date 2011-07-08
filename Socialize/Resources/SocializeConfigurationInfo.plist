@@ -4,16 +4,18 @@
 <dict>
 	<key>Formatters</key>
 	<dict>
-		<key>SocializeShare</key>
-		<string>SocializeShareJSONFormatter</string>
 		<key>SocializeApplication</key>
 		<string>SocializeApplicationJSONFormatter</string>
+		<key>SocializeError</key>
+		<string>SocializeErrorFormatter</string>
 		<key>SocializeComment</key>
 		<string>SocializeCommentJSONFormatter</string>
 		<key>SocializeEntity</key>
 		<string>SocializeEntityJSONFormatter</string>
 		<key>SocializeLike</key>
 		<string>SocializeLikeJSONFormatter</string>
+		<key>SocializeShare</key>
+		<string>SocializeShareJSONFormatter</string>
 		<key>SocializeUser</key>
 		<string>SocializeUserJSONFormatter</string>
 		<key>SocializeView</key>
@@ -21,8 +23,8 @@
 	</dict>
 	<key>Prototypes</key>
 	<dict>
-		<key>SocializeShare</key>
-		<string>SocializeShare</string>
+		<key>SocializeError</key>
+		<string>SocializeError</string>
 		<key>SocializeActivity</key>
 		<string>SocializeActivity</string>
 		<key>SocializeApplication</key>
@@ -33,6 +35,8 @@
 		<string>SocializeEntity</string>
 		<key>SocializeLike</key>
 		<string>SocializeLike</string>
+		<key>SocializeShare</key>
+		<string>SocializeShare</string>
 		<key>SocializeUser</key>
 		<string>SocializeUser</string>
 		<key>SocializeView</key>

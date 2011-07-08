@@ -10,8 +10,8 @@
 #import "JSONKit.h"
 
 @interface SocializeViewService()
--(NSArray*)parseViews:(id)likesJsonData;
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
+//-(NSArray*)parseViews:(id)likesJsonData;
+//-(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
 @end
 
 #define VIEW_METHOD @"view/"
@@ -20,32 +20,12 @@
 
 @implementation SocializeViewService
 
-@synthesize delegate = _delegate;
-@synthesize provider = _provider;
-@synthesize objectCreator = _objectCreator;
-
--(id) initWithProvider: (SocializeProvider*) provider objectFactory: (SocializeObjectFactory*) objectFactory delegate: (id<SocializeViewServiceDelegate>) delegate
-{
-    self = [super init];
-    if(self != nil)
-    {
-        self.provider = provider;
-        self.objectCreator = objectFactory;
-        self.delegate = delegate;
-    }
-    
-    return self;
-}
 
 -(void) dealloc
 {
-    self.delegate = nil;
-    self.provider = nil;
-    
-    [_objectCreator release]; _objectCreator = nil;
     [super dealloc];
 }
-
+/*
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
     [_delegate viewService:self didFailWithError:error];
@@ -89,6 +69,7 @@
     
     return likes;
 }
+ */
 
 -(void)createViewForEntity:(id<SocializeEntity>)entity{
     DLog(@"entity %@", entity);
@@ -101,16 +82,8 @@
         NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity", nil];
         NSArray *params = [NSArray arrayWithObjects:entityParam, 
                            nil];
-        [_provider requestWithMethodName:VIEW_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+        [_provider requestWithMethodName:VIEW_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
     }
-}
-
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest
-{
-    NSString* jsonData = jsonRequest;
-    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            jsonData, @"jsonData",
-            nil];
 }
 
 @end

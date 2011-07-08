@@ -214,5 +214,35 @@
     
     [demoEntity release];
 }
+#pragma mark -
+
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
+    NSLog(@"didCreate %@", object);
+}
+
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
+    NSLog(@"didDelete %@", object);
+}
+
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
+    NSLog(@"didUpdate %@", object);
+}
+
+-(void)service:(SocializeService*)service didFetch:(id<SocializeObject>)object{
+    NSLog(@"didFetch %@", object);
+}
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"didFail %@", error);
+}
+
+-(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didCreateWithElements %@", dataArray);
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didFetchElements %@", dataArray);
+}
+
 
 @end

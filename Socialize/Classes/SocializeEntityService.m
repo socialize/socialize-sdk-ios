@@ -42,33 +42,21 @@
 
 
 @interface SocializeEntityService()
-//-(NSMutableDictionary*) genereteParamsFromJsonString:(NSString*)jsonRequest;
 @end
 
 @implementation SocializeEntityService
 
-@synthesize delegate = _delegate;
 
 -(void) dealloc
 {
-    _delegate = nil;
-    _provider = nil;
-    _objectCreator = nil;
     [super dealloc];
 }
 
--(id) initWithProvider: (SocializeProvider*) provider objectFactory: (SocializeObjectFactory*) objectFactory delegate:(id<SocializeEntityServiceDelegate>) delegate
+-(Protocol *)ProtocolType
 {
-    self = [super init];
-    if(self != nil)
-    {
-        _provider = provider;
-        _objectCreator = objectFactory;
-        _delegate = delegate;
-    }
-    
-    return self;
+    return  @protocol(SocializeEntity);
 }
+
 
 
 //-(void)entityWithKey:(NSString *)keyOfEntity
@@ -83,17 +71,16 @@
 //    [_provider requestWithMethodName:ENTITY_LIST_ENDPOINT andParams:params andHttpMethod:@"POST" andDelegate:self];
 //}
 
--(void)createEntities:(NSArray *)entities
+-(void)createEntities:(NSArray *)entities expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
 {
     NSString * stringRepresentation =  [_objectCreator createStringRepresentationOfArray:entities]; 
     NSMutableDictionary* params = [self genereteParamsFromJsonString:stringRepresentation];
-    [_provider requestWithMethodName:ENTITY_CREATE_ENDPOINT andParams:params andHttpMethod:@"POST" andDelegate:self];
+    [_provider requestWithMethodName:ENTITY_CREATE_ENDPOINT andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
 }
 -(void)createEntity:(id<SocializeEntity>)entity
 {
-    [self createEntities:[NSArray arrayWithObject:entity]];
+    [self createEntities:[NSArray arrayWithObject:entity] expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
-
 
 -(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity
 {
@@ -111,7 +98,7 @@
 //{
 //    // TODO:: add implementation notify that call success. 
 //}
-
+/*
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
     [_delegate entityService:self didFailWithError:error];
@@ -140,17 +127,6 @@
     }       
 
 }
-
-#pragma mark - Helper methods
-
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest
-{
-    //NSData* jsonData =  [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
-    NSString * jsonData = jsonRequest;
-    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            jsonData, @"jsonData",
-            nil];
-}
-
+*/
 
 @end

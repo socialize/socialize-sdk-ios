@@ -41,51 +41,35 @@
 
 
 @interface SocializeCommentsService()
-    -(void) parseCommentsList: (NSArray*) commentsJsonData;
+///    -(void) parseCommentsList: (NSArray*) commentsJsonData;
 @end
 
 @implementation SocializeCommentsService
 
-@synthesize delegate = _delegate;
-@synthesize provider = _provider;
-@synthesize objectCreator = _objectCreator;
 
--(id) initWithProvider: (SocializeProvider*) provider objectFactory: (SocializeObjectFactory*) objectFactory delegate: (id<SocializeCommentsServiceDelegate>) delegate
-{
-    self = [super init];
-    if(self != nil)
-    {
-        self.provider = provider;
-        self.objectCreator = objectFactory;
-        self.delegate = delegate;
-    }
-    
-    return self;
-}
 
 -(void) dealloc
 {
-    self.delegate = nil;
-    self.provider = nil;
-    self.objectCreator = nil;
     [super dealloc];
 }
 
+
+
 -(void) getCommentById: (int) commentId
 {
-    [_provider requestWithMethodName:[NSString stringWithFormat:@"comment/%d/",commentId] andParams:nil andHttpMethod:@"GET" andDelegate:self];
+    [_provider requestWithMethodName:[NSString stringWithFormat:@"comment/%d/",commentId] andParams:nil expectedJSONFormat:SocializeDictionary andHttpMethod:@"GET" andDelegate:self];
 }
 
 -(void) getCommentsList: (NSArray*) commentsId
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:commentsId, IDS_KEY, nil];
-    [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"GET" andDelegate:self];
+    [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
 }
 
 -(void) getCommentList: (NSString*) entryKey
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entryKey, ENTRY_KEY, nil];   
-    [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"GET" andDelegate:self];
+    [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
 }
 
 -(void) createCommentForEntityWithKey: (NSString*) entityKey comment: (NSString*) comment
@@ -94,7 +78,7 @@
                        [NSDictionary dictionaryWithObjectsAndKeys:entityKey, ENTITY_KEY, comment, COMMENT_KEY, nil],
                       nil];
     
-    [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+    [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
 }
 
 -(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment createNew: (BOOL) new
@@ -106,7 +90,7 @@
                        [NSDictionary dictionaryWithObjectsAndKeys:newEntity, ENTITY_KEY, comment, COMMENT_KEY, nil],
                        nil];
     
-        [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+        [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
     }
     else
         [self createCommentForEntityWithKey:entity.key comment:comment];
@@ -118,7 +102,7 @@
 //{
 //    // TODO:: add implementation notify that call success. 
 //}
-
+/*
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
     [_delegate didFailService:self withError:error];
@@ -164,5 +148,6 @@
     
     [_delegate receivedComments:self comments:comments];
 }
+ */
 
 @end

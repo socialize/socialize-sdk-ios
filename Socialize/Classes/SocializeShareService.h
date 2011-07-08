@@ -12,6 +12,7 @@
 #import "SocializeProvider.h"
 #import "SocializeEntity.h"
 #import "SocializeRequest.h"
+#import "SocializeService.h"
 
 typedef enum {
     Facebook = 1,
@@ -20,19 +21,14 @@ typedef enum {
 } ShareMedium;
 
 
-@interface SocializeShareService : NSObject<SocializeRequestDelegate> {
-    @private
-    id<SocializeShareServiceDelegate> _delegate;
-    SocializeProvider                *_provider;
-    SocializeObjectFactory           *_objectCreator;
+@interface SocializeShareService : SocializeService {
+
+
 }
 
-@property (nonatomic, assign) id<SocializeShareServiceDelegate> delegate;
-@property (nonatomic, retain) SocializeProvider                *provider;
-@property (nonatomic, retain) SocializeObjectFactory           *objectCreator;
 
 -(void)createShareForEntityKey:(NSString*)key medium:(ShareMedium)medium  text:(NSString*)text;
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(ShareMedium)medium  text:(NSString*)text;
--(id) initWithProvider: (SocializeProvider*) provider objectFactory: (SocializeObjectFactory*) objectFactory delegate: (id<SocializeShareServiceDelegate>)delegate;
+
 
 @end

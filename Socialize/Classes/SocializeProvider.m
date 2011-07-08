@@ -31,13 +31,14 @@
 #import "OAHMAC_SHA1SignatureProvider.h"
 
 
-static NSString* kRestserverBaseURL = @"http://www.dev.getsocialize.com/v1/";
+static NSString* kRestserverBaseURL = @"http://dev.getsocialize.com/v1/";
 //static NSString* kSDK = @"ios";
 //static NSString* kSDKVersion = @"1";
 
 @interface SocializeProvider()
 - (void)openUrl:(NSString *)url
              params:(NSMutableDictionary *)params
+expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
          httpMethod:(NSString *)httpMethod
            delegate:(id<SocializeRequestDelegate>)delegate;
 @end
@@ -76,11 +77,13 @@ request = _request;
  */
 - (void)openUrl:(NSString *)url
          params:(id)params
+expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
      httpMethod:(NSString *)httpMethod
        delegate:(id<SocializeRequestDelegate>)delegate 
 {
     [_request release]; _request = nil;
     _request = [[SocializeRequest getRequestWithParams:params
+                                    expectedJSONFormat:expectedJSONFormat
                                             httpMethod:httpMethod
                                               delegate:delegate
                                             requestURL:url] retain];
@@ -122,6 +125,8 @@ request = _request;
  */
 - (void)requestWithParams:(NSMutableDictionary *)params
               andDelegate:(id <SocializeRequestDelegate>)delegate
+       expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
+
 {
     if ([params objectForKey:@"method"] == nil) {
         //NSLog(@"API Method must be specified");
@@ -133,17 +138,19 @@ request = _request;
     
     [self requestWithMethodName:methodName
                       andParams:params
+             expectedJSONFormat:expectedJSONFormat
                   andHttpMethod:@"GET"
                     andDelegate:delegate];
 }
 
 - (void)requestWithMethodName:(NSString *)methodName
                     andParams:(id)params
+                expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
                 andHttpMethod:(NSString *)httpMethod
                   andDelegate:(id <SocializeRequestDelegate>)delegate 
 {
     NSString *fullURL = [kRestserverBaseURL stringByAppendingString:methodName];
-    [self openUrl:fullURL params:params httpMethod:httpMethod delegate:delegate];
+    [self openUrl:fullURL params:params expectedJSONFormat:expectedJSONFormat httpMethod:httpMethod delegate:delegate];
 }
 
 

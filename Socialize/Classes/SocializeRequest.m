@@ -43,7 +43,10 @@ responseText = _responseText,
 token = _token,
 consumer = _consumer,
 request = _request,
-dataFetcher = _dataFetcher
+dataFetcher = _dataFetcher,
+//expectedCallbackFormat = _expectedCallbackFormat,
+expectedJSONFormat = _expectedJSONFormat
+
 ;
 
 + (NSString *)userAgentString
@@ -64,6 +67,7 @@ dataFetcher = _dataFetcher
 // class public
 
 + (SocializeRequest *)getRequestWithParams:(id) params
+                        expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
                                 httpMethod:(NSString *) httpMethod
                                   delegate:(id<SocializeRequestDelegate>) delegate
                                 requestURL:(NSString *) url 
@@ -75,6 +79,7 @@ dataFetcher = _dataFetcher
     request.params = params;
     request.connection = nil;
     request.responseText = nil;
+    request.expectedJSONFormat  = expectedJSONFormat;
     
     
     request.token =  [[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX ];

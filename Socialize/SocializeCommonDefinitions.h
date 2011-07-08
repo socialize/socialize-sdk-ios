@@ -15,8 +15,13 @@
 
 #define kSOCIALIZE_TOKEN_KEY         @"SOCIALIZE_TOKEN"
 
-#define kSOCIALIZE_API_KEY      @"98e76bb9-c707-45a4-acf2-029cca3bf216"         
-#define kSOCIALIZE_API_SECRET   @"b7364905-cdc6-46d3-85ad-06516b128819"
+#define kSOCIALIZE_API_KEY      @"98e76bb9-c707-45a4-acf2-029cca3bf216"     //dev    
+#define kSOCIALIZE_API_SECRET   @"b7364905-cdc6-46d3-85ad-06516b128819"     // dev
+//#define kSOCIALIZE_API_KEY      @"5f461d4b-999c-430d-a2b2-2df35ff3a9ba"    // stage     
+//#define kSOCIALIZE_API_SECRET   @"90aa0fb5-1995-4771-9ed9-f3c4479a9aaa"    // stage
+
+
+
 
 #define kPROVIDER_NAME          @"SOCIALIZE"
 #define kPROVIDER_PREFIX        @"AUTH"
@@ -33,6 +38,8 @@ typedef enum {
 -(void)didNotAuthenticate:(NSError*)error;
 @end
 
+
+/*
 @protocol SocializeLikeServiceDelegate <NSObject>
 
 -(void)didFailService:(id)service error:(NSError*)error;
@@ -73,3 +80,4 @@ typedef enum {
 -(void) shareService:(SocializeShareService *)shareService didFailWithError:(NSError *)error;
 
 @end
+ */

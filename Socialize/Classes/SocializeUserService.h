@@ -30,14 +30,13 @@
 #import "SocializeUser.h"
 #import "SocializeRequest.h"
 
-@protocol SocializeUserServiceDelegate;
+//@protocol SocializeUserServiceDelegate;
 
 @interface SocializeUserService : SocializeService  
 {
     
 }
 
-@property (nonatomic, assign) id<SocializeUserServiceDelegate> delegate;
 
 //-(void) usersWithIds:(NSArray *)arrayOfUserIDs;
 -(void) userWithId:(int)userId;
@@ -49,10 +48,3 @@
 @end
 
 
-@protocol SocializeUserServiceDelegate
-
--(void) userService:(SocializeUserService *)userService didReceiveUser:(id<SocializeUser>)userObject;
--(void) userService:(SocializeUserService *)userService didReceiveListOfUsers:(NSArray *)userList;
--(void) userService:(SocializeUserService *)userService didFailWithError:(NSError *)error;
-
-@end

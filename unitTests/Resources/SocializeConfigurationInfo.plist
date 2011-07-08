@@ -18,6 +18,8 @@
 		<string>SocializeViewJSONFormatter</string>
 		<key>SocializeShare</key>
 		<string>SocializeShareJSONFormatter</string>
+		<key>SocializeError</key>
+		<string>SocializeErrorFormatter</string>
 	</dict>
 	<key>Prototypes</key>
 	<dict>
@@ -37,6 +39,8 @@
 		<string>SocializeUser</string>
 		<key>SocializeView</key>
 		<string>SocializeView</string>
+		<key>SocializeError</key>
+		<string>SocializeError</string>
 	</dict>
 </dict>
 </plist>

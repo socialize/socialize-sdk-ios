@@ -12,7 +12,7 @@
 #import "Socialize.h"
 #import "Facebook.h"
 
-@interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate, SocializeAuthenticationDelegate> {
+@interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate, SocializeAuthenticationDelegate, SocializeServiceDelegate> {
 @private
     Socialize*           socialize;
     Facebook *           facebook;

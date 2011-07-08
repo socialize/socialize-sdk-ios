@@ -13,7 +13,7 @@
 #import "SocializeViewService.h"
 
 @class SocializeViewService;
-@interface SocializeViewTests : GHTestCase<SocializeViewServiceDelegate, SocializeRequestDelegate> {
+@interface SocializeViewTests : GHTestCase<SocializeServiceDelegate, SocializeRequestDelegate> {
     SocializeViewService    *_service;
     NSError                 *_testError;
 }

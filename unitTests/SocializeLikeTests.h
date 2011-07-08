@@ -10,10 +10,11 @@
 #import <UIKit/UIKit.h>
 #import "SocializeCommonDefinitions.h"
 #import "SocializeRequest.h"
+#import "SocializeService.h"
 
 
 @class SocializeLikeService;
-@interface SocializeLikeTests : GHTestCase<SocializeLikeServiceDelegate, SocializeRequestDelegate> {
+@interface SocializeLikeTests : GHTestCase<SocializeServiceDelegate, SocializeRequestDelegate> {
     
     SocializeLikeService    *_service;
     NSError                 *_testError;

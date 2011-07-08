@@ -28,6 +28,7 @@
 #import <Foundation/Foundation.h>
 #import "SocializeRequest.h"
 #import "SocializeCommonDefinitions.h"
+#import "SocializeService.h"
 
 @class SocializeCommentsService;
 @class SocializeProvider;
@@ -36,19 +37,11 @@
 @protocol SocializeComment;
 @protocol SocializeEntity;
 
-@interface SocializeCommentsService : NSObject<SocializeRequestDelegate> {
+@interface SocializeCommentsService : SocializeService {
 
-@private
-    id<SocializeCommentsServiceDelegate> _delegate;
-    SocializeProvider*  _provider;
-    SocializeObjectFactory* _objectCreator;
 }
 
-@property (nonatomic, assign) id<SocializeCommentsServiceDelegate> delegate;
-@property (nonatomic, assign) SocializeProvider* provider;
-@property (nonatomic, assign) SocializeObjectFactory* objectCreator;
 
--(id) initWithProvider: (SocializeProvider*)provider objectFactory: (SocializeObjectFactory*) objectFactory delegate: (id<SocializeCommentsServiceDelegate>) delegate;
 
 -(void) getCommentById: (int) commentId;
 -(void) getCommentsList: (NSArray*) commentsId;
