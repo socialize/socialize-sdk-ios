@@ -68,8 +68,9 @@
     
     [provider requestWithParams:params andDelegate:self expectedJSONFormat:SocializeDictionaryWIthListAndErrors];
        
-    NSString* expectedRequestUrl = @"http://www.dev.getsocialize.com/v1/comment?parameter_key_2=parameter_value_2&parameter_key_1=parameter_value_1";
+    NSString* expectedRequestUrl = [NSString stringWithFormat:@"%@%@", kRestserverBaseURL, @"comment?parameter_key_2=parameter_value_2&parameter_key_1=parameter_value_1"];
     NSString* actualRequestUrl = [NSString stringWithFormat:@"%@",[provider.request.request URL]];
+
     GHAssertEqualStrings(actualRequestUrl, expectedRequestUrl, nil);
 }
 
@@ -109,7 +110,7 @@
     [provider requestWithMethodName:@"comment" andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
     NSLog(@"provider.request.url  %@", provider.request.url);
 
-    NSString* expectedRequestUrl = @"http://www.dev.getsocialize.com/v1/comment?parameter_key_2=parameter_value_2&parameter_key_1=parameter_value_1";
+    NSString* expectedRequestUrl = [NSString stringWithFormat:@"%@%@", kRestserverBaseURL, @"comment?parameter_key_2=parameter_value_2&parameter_key_1=parameter_value_1"];
     
     NSString* actualRequestUrl = [NSString stringWithFormat:@"%@",[provider.request.request URL]];
     GHAssertEqualStrings(actualRequestUrl, expectedRequestUrl, nil);
@@ -132,7 +133,7 @@
     
     [provider requestWithMethodName:@"comment" andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
     
-    NSString* expectedRequestUrl = @"http://www.dev.getsocialize.com/v1/comment";
+    NSString* expectedRequestUrl = [NSString stringWithFormat:@"%@%@", kRestserverBaseURL, @"comment"];
     NSLog(@"provider.request.url  %@", provider.request.url);
 
     GHAssertEqualStrings(expectedRequestUrl, provider.request.url, nil);

@@ -28,6 +28,8 @@
 #import <Foundation/Foundation.h>
 #import "SocializeRequest.h"
 
+extern NSString* const kRestserverBaseURL;
+
 @protocol SocializeObject;
 
 
