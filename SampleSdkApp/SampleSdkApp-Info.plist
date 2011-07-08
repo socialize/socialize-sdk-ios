@@ -12,6 +12,17 @@
 	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>com.socialize.${PRODUCT_NAME:rfc1034identifier}</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb115622641859087</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

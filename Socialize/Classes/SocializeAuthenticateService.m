@@ -49,20 +49,13 @@
             delegate:(id<SocializeAuthenticationDelegate>)delegate
          {
              
-    _delegate = delegate;             
-//    NSMutableDictionary* paramsDict = [[NSMutableDictionary alloc] init];
-//   [paramsDict setObject:udid forKey:@"udid"];
-   
+    _delegate = delegate;                
     NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", udid];
     NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                 payloadJson, @"jsonData",
                                                 nil];
 
-    [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict andHttpMethod:@"POST" andDelegate:self];
-}
-
-- (void)tokenRequestModifyRequest:(OAMutableURLRequest *)oRequest{
-	// Subclass to add custom paramaters and headers
+    [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
 +(BOOL)isAuthenticated {
@@ -77,12 +70,10 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (userDefaults){
         NSString* userId = [dictionary objectForKey:@"id"]; 
-        // NSString* userId = [dictionary objectForKey:@"user"]; 
         if ((userId != nil) && ((id)userId != [NSNull null]))
             [userDefaults setObject:userId forKey:kSOCIALIZE_USERID_KEY];
         
         NSString* username = [dictionary objectForKey:@"username"]; 
-        // NSString* userId = [dictionary objectForKey:@"user"]; 
         if ((username != nil) && ((id)username != [NSNull null]))
             [userDefaults setObject:username forKey:kSOCIALIZE_USERNAME_KEY];
 
@@ -111,7 +102,7 @@
         return nil;
 }
 
--(void)authenticateWithApiKey:(NSString*)apiKey 
+-(void)authenticateWithApiKey:(NSString*)apiKey
                             apiSecret:(NSString*)apiSecret 
                                  udid:(NSString*)udid
                   thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
@@ -121,21 +112,14 @@
                            {
                 
    _delegate = delegate;
-   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"{\"udid\":\"%@\"}",udid],@"jsonData", 
+   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
+                             udid,@"udid", 
                              [self getSocializeId],  @"socialize_id", 
-                             @"1"/* auth type is for facebook*/ , @"auth_type",
+                             @"1"/* auth type is for facebook*/ , @"auth_type", //TODO:: should be changed
                              thirdPartyAuthToken, @"auth_token",
-                             thirdPartyUserId, @"auth_id" , nil] ;
-                            
-//   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-//                                  udid, @"udid",
-//                                  [self getSocializeId],  @"socialize_id",
-//                                  @"1"/* auth type is for facebook*/ , @"auth_type",
-//                                  thirdPartyAuthToken, @"auth_token",
-//                                  thirdPartyUserId, @"auth_id",
-//                                  nil];
+                             thirdPartyUserId, @"auth_id" , nil] ;                        
                                
-   [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:params andHttpMethod:@"POST" andDelegate:self];
+   [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:params  expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
 
@@ -153,13 +137,6 @@
  * The resulting object may be a dictionary, an array, a string, or a number,
  * depending on the format of the API response.
  */
-
-/**
- * Called when the server responds and begins to send back data.
- */
-- (void)request:(SocializeRequest *)request didReceiveResponse:(NSURLResponse *)response{
-    
-}
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data{
 
@@ -188,6 +165,21 @@
     }
     
     [responseBody release];
+}
+
+-(void)removeAuthenticationInfo
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* key = [NSString stringWithFormat:@"OAUTH_%@_%@_KEY", kPROVIDER_PREFIX, kPROVIDER_NAME];
+    NSString* secret = [NSString stringWithFormat:@"OAUTH_%@_%@_SECRET", kPROVIDER_PREFIX, kPROVIDER_NAME];
+    
+    if ([defaults objectForKey:key] && [defaults objectForKey:secret]) 
+    {
+        [defaults removeObjectForKey:key];
+        [defaults removeObjectForKey:secret];
+    }
+    
+    [defaults synchronize];
 }
 
 @end

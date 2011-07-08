@@ -42,6 +42,20 @@
     [toUser setSmallImageUrl:[JSONDictionary valueForKey:@"small_image_uri"]];
     [toUser setCity:[JSONDictionary valueForKey:@"city"]];
     [toUser setState:[JSONDictionary valueForKey:@"state"]];
+    
+    [toUser setDescription:[JSONDictionary valueForKey:@"description"]];
+    [toUser setLocation:[JSONDictionary valueForKey:@"location"]];
+    [toUser setMedium_image_uri:[JSONDictionary valueForKey:@"medium_image_uri"]];
+    [toUser setLarge_image_uri:[JSONDictionary valueForKey:@"large_image_uri"]];
+
+    NSDictionary* stats = [JSONDictionary valueForKey:@"stats"];
+    if(stats != nil)
+    {
+        [toUser setViews:[[stats valueForKey:@"views"]intValue]];
+        [toUser setLikes:[[stats valueForKey:@"likes"]intValue]];
+        [toUser setComments:[[stats valueForKey:@"comments"]intValue]];
+        [toUser setShare:[[stats valueForKey:@"shares"]intValue]];
+    }
 }
 
 //-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject

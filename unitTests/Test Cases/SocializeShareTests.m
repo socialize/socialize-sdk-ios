@@ -56,36 +56,46 @@
     //NSArray *params = [NSArray arrayWithObjects:entityParam, 
       //                 nil];
     
-    [[mockProvider expect] requestWithMethodName:@"share/" andParams:OCMOCK_ANY andHttpMethod:@"POST" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:@"share/" andParams:OCMOCK_ANY expectedJSONFormat:SocializeDictionaryWIthListAndErrors  andHttpMethod:@"POST" andDelegate:_service];
     
     [_service createShareForEntity:mockEntity  medium:medium  text:@"text"];
     [mockProvider verify];
 }
-
+/*
 -(void)testCreateViewCallback{
     
-    SocializeRequest* _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"POST" delegate:self requestURL:@"whatever"];
+    SocializeRequest* _request = [SocializeRequest getRequestWithParams:nil expectedCallbackFormat:SocializeDictionary expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"POST" delegate:self requestURL:@"whatever"];
     
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/share_single_response.json"];
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeShareServiceDelegate)];
     _service.delegate = mockDelegate;
     
-    [[mockDelegate expect] shareService:_service didReceiveShare:OCMOCK_ANY];
+//    [[mockDelegate expect] shareService:_service didReceiveShare:OCMOCK_ANY];
     
     [_service request:_request didLoadRawResponse:[JSONStringToParse dataUsingEncoding:NSUTF8StringEncoding]];
 //    [mockDelegate verify];
 }
+*/
 
--(void) shareService:(SocializeShareService *)shareService didReceiveShare:(id<SocializeShare>)viewObject{
-    
+
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
+    NSLog(@"didDelete %@", object);
 }
 
--(void) shareService:(SocializeShareService *)shareService didReceiveListOfShare:(NSArray *)viewList{
-    
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
+    NSLog(@"didUpdate %@", object);
 }
 
--(void) shareService:(SocializeShareService *)shareService didFailWithError:(NSError *)error{
-    
+-(void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"didFail %@", error);
+}
+
+-(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didCreateWithElements %@", dataArray);
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didFetchElements %@", dataArray);
 }
 
 @end

@@ -27,40 +27,23 @@
 
 #import "EntityListViewController.h"
 #import "EntityViewController.h"
+#import "SettingsViewController.h"
+
 
 @interface EntityListViewController()
     -(void) addNewEntity;
+    -(void) showSettingsInfo;
 @end
 
 @implementation EntityListViewController
 
 @synthesize service = _service;
 
-#pragma mark - Socialize Entity Service Delegate
-
--(void) entityService:(SocializeEntityService *)entityService didReceiveEntity:(id<SocializeEntity>)entityObject
-{
-    [_entities addObject:entityObject];
-    [self.tableView reloadData];
-}
-
--(void) entityService:(SocializeEntityService *)entityService didReceiveListOfEntities:(NSArray *)entityList
-{
-    [_entities addObjectsFromArray:entityList];
-    [self.tableView reloadData];
-}
-
--(void) entityService:(SocializeEntityService *)entityService didFailWithError:(NSError *)error
-{
-    NSLog(@"Failed with error -- %@", error);
-}
-
-
 #pragma mark - UIAlertView delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if(buttonIndex == 1) //enter pressed 
+    if(buttonIndex == 1 && _entityKey.text != @"" && _entityName.text != @"") //enter pressed 
     {
         [_service.entityService createEntityWithKey:_entityKey.text andName:_entityName.text];
     }
@@ -90,12 +73,22 @@
     [_entityKey becomeFirstResponder];
 }
 
+-(void) showSettingsInfo
+{
+    SettingsViewController* settingsViewController = [[SettingsViewController alloc] initWithService:self.service];
+    UINavigationController* settingsNavController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    
+    [self presentModalViewController:settingsNavController animated:YES];
+    
+    [settingsNavController release]; settingsNavController = nil;
+    [settingsViewController release]; settingsViewController = nil;
+}
+
 - (id)initWithStyle:(UITableViewStyle)style andService: (Socialize*) service
 {
     self = [super initWithStyle:style];
     if (self) {
         self.service = service;
-        self.service.entityService.delegate = self;
         _entities = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;
@@ -131,13 +124,20 @@
     self.navigationItem.rightBarButtonItem = addBtn;
     [addBtn release]; addBtn = nil;
     
+    UIBarButtonItem* settingsBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showSettingsInfo)];
+
+    self.navigationItem.leftBarButtonItem = settingsBtn;
+    [settingsBtn release]; settingsBtn = nil;
+    
     _entityKey = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 50.0, 260.0, 25.0)]; 
     [_entityKey setBackgroundColor:[UIColor whiteColor]];
     [_entityKey setPlaceholder:@"key"];
+    _entityKey.text = @"";
     
     _entityName = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 85.0, 260.0, 25.0)]; 
     [_entityName setBackgroundColor:[UIColor whiteColor]];
     [_entityName setPlaceholder:@"name"];
+    _entityName.text = @"";
 }
 
 - (void)viewDidUnload
@@ -145,6 +145,17 @@
     [super viewDidUnload];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.service.entityService.delegate = self;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    self.service.entityService.delegate = nil;
+    [super viewWillDisappear:animated];
+}
 
 #pragma mark - Table view data source
 
@@ -183,5 +194,42 @@
     
     [demoEntity release];
 }
+#pragma mark - Service delegete
+
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
+    DLog(@"didCreate %@", object);
+    
+    [_entities addObject:object];
+    [self.tableView reloadData];
+}
+
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
+    DLog(@"didDelete %@", object);
+}
+
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
+    DLog(@"didUpdate %@", object);
+}
+
+-(void)service:(SocializeService*)service didFetch:(id<SocializeObject>)object{
+    DLog(@"didFetch %@", object);
+}
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"didFail %@", error);
+}
+
+-(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    DLog(@"didCreateWithElements %@", dataArray);
+    NSLog(@"and errors %@", errorList);
+    
+    [_entities addObjectsFromArray:dataArray];
+    [self.tableView reloadData];
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    DLog(@"didFetchElements %@", dataArray);
+}
+
 
 @end

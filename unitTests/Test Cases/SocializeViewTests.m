@@ -42,7 +42,7 @@
     NSArray *params = [NSArray arrayWithObjects:entityParam, 
                        nil];
     
-    [[mockProvider expect] requestWithMethodName:@"view/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:@"view/" andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
     
     [_service createViewForEntity:mockEntity];
     [mockProvider verify];
@@ -50,13 +50,13 @@
 
 -(void)testCreateViewCallback{
     
-    SocializeRequest* _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"POST" delegate:self requestURL:@"whatever"];
+    SocializeRequest* _request = [SocializeRequest getRequestWithParams:nil expectedJSONFormat:SocializeDictionary httpMethod:@"POST"  delegate:self requestURL:@"whatever"];
     
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/view_single_response.json"];
-    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeViewServiceDelegate)];
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
     _service.delegate = mockDelegate;
     
-    [[mockDelegate expect] viewService:_service didReceiveView:OCMOCK_ANY];
+    [[mockDelegate expect] service:_service didCreateWithElements:OCMOCK_ANY andErrorList:nil];
     
     [_service request:_request didLoadRawResponse:[JSONStringToParse dataUsingEncoding:NSUTF8StringEncoding]];
     [mockDelegate verify];
@@ -73,15 +73,31 @@
     return  JSONString;
 }
 
--(void) viewService:(SocializeViewService *)viewService didReceiveView:(id<SocializeView>)viewObject{
-    
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
+    NSLog(@"didCreate %@", object);
 }
 
--(void) viewService:(SocializeViewService *)viewService didReceiveListOfViews:(NSArray *)viewList{
-    
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
+    NSLog(@"didDelete %@", object);
 }
 
--(void) viewService:(SocializeViewService *)viewService didFailWithError:(NSError *)error{
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
+    NSLog(@"didUpdate %@", object);
+}
 
+-(void)service:(SocializeService*)service didFetch:(id<SocializeObject>)object{
+    NSLog(@"didFetch %@", object);
+}
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"didFail %@", error);
+}
+
+-(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didCreateWithElements %@", dataArray);
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didFetchElements %@", dataArray);
 }
 @end

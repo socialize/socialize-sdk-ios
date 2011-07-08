@@ -42,34 +42,20 @@
 
 
 @interface SocializeEntityService()
-//-(NSMutableDictionary*) genereteParamsFromJsonString:(NSString*)jsonRequest;
 @end
 
 @implementation SocializeEntityService
 
-@synthesize delegate = _delegate;
 
 -(void) dealloc
 {
-    _delegate = nil;
-    _provider = nil;
-    _objectCreator = nil;
     [super dealloc];
 }
 
--(id) initWithProvider: (SocializeProvider*) provider objectFactory: (SocializeObjectFactory*) objectFactory delegate:(id<SocializeEntityServiceDelegate>) delegate
+-(Protocol *)ProtocolType
 {
-    self = [super init];
-    if(self != nil)
-    {
-        _provider = provider;
-        _objectCreator = objectFactory;
-        _delegate = delegate;
-    }
-    
-    return self;
+    return  @protocol(SocializeEntity);
 }
-
 
 //-(void)entityWithKey:(NSString *)keyOfEntity
 //{
@@ -83,17 +69,17 @@
 //    [_provider requestWithMethodName:ENTITY_LIST_ENDPOINT andParams:params andHttpMethod:@"POST" andDelegate:self];
 //}
 
--(void)createEntities:(NSArray *)entities
+-(void)createEntities:(NSArray *)entities expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
 {
     NSString * stringRepresentation =  [_objectCreator createStringRepresentationOfArray:entities]; 
     NSMutableDictionary* params = [self genereteParamsFromJsonString:stringRepresentation];
-    [_provider requestWithMethodName:ENTITY_CREATE_ENDPOINT andParams:params andHttpMethod:@"POST" andDelegate:self];
+    [_provider requestWithMethodName:ENTITY_CREATE_ENDPOINT andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
 }
+
 -(void)createEntity:(id<SocializeEntity>)entity
 {
     [self createEntities:[NSArray arrayWithObject:entity]];
 }
-
 
 -(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity
 {
@@ -105,52 +91,9 @@
     [self createEntity:entity];
 }
 
-#pragma mark - Socialize requst delegate
-
-//- (void)request:(SocializeRequest *)request didReceiveResponse:(NSURLResponse *)response
-//{
-//    // TODO:: add implementation notify that call success. 
-//}
-
-- (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
+-(void)createEntities:(NSArray *)entities
 {
-    [_delegate entityService:self didFailWithError:error];
+    [self createEntities:entities expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
-
-- (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
-{
-    
-    //Move the following lines to the base  SocializeService Class, because it's the same for all objects.
-    NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    
-    id entityResponse = [_objectCreator createObjectFromString:responseString forProtocol:@protocol(SocializeEntity)]; 
-    
-    
-    if([entityResponse conformsToProtocol:@protocol(SocializeObject)])
-    {
-        [_delegate entityService:self didReceiveEntity:(id<SocializeEntity>)entityResponse];
-    }
-    else if([entityResponse isKindOfClass: [NSArray class]])
-    {
-        [_delegate entityService:self didReceiveListOfEntities:(NSArray *)entityResponse];  
-    }
-    else
-    {
-        [_delegate entityService:self didFailWithError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
-    }       
-
-}
-
-#pragma mark - Helper methods
-
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest
-{
-    //NSData* jsonData =  [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
-    NSString * jsonData = jsonRequest;
-    return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            jsonData, @"jsonData",
-            nil];
-}
-
 
 @end

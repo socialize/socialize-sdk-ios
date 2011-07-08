@@ -62,7 +62,7 @@
                                    @"parameter_value_2", @"parameter_key_2",
                                    nil];
 
-    _request = [SocializeRequest getRequestWithParams:params httpMethod:@"GET" delegate:self requestURL:@"www.google.com"];
+    _request = [SocializeRequest getRequestWithParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:self requestURL:@"www.google.com"];
     GHAssertEqualStrings(@"GET", _request.httpMethod, @"should be equal");
     NSString* expectedRes = [NSString stringWithFormat:@"%@", [_request.request URL]];
     GHAssertEqualStrings(@"www.google.com",expectedRes, @"should be equal");
@@ -97,7 +97,7 @@
 
 - (void)testFaildGetRequest {
     [self prepare];
-    _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"GET" delegate:self requestURL:@"invalidparam"];
+    _request = [SocializeRequest getRequestWithParams:nil expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET"  delegate:self requestURL:@"invalidparam"];
   //  [_request retain];
     
     [_request connect];  
@@ -107,7 +107,7 @@
 
 - (void)testFaildPOSTRequest {
     [self prepare];
-    _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"POST" delegate:self requestURL:@"invalidparam"];
+    _request = [SocializeRequest getRequestWithParams:nil  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"POST"  delegate:self requestURL:@"invalidparam"];
 //    [_request retain];
     
     [_request connect];  
@@ -126,7 +126,7 @@
     [[mockRequest expect] addValue:userAgentStr forHTTPHeaderField:@"User-Agent"];
     [[mockRequest expect] setParameters:[NSMutableArray arrayWithCapacity:0]];
     [[mockRequest expect] prepare];
-    _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"GET" delegate:self requestURL:@"invalidparam"];
+    _request = [SocializeRequest getRequestWithParams:nil  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:self  requestURL:@"invalidparam"];
     _request.request = mockRequest;
     [_request connect];
     [mockRequest verify];

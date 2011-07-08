@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Socialize.h"
 
-@interface CommentsViewController : UIViewController<UITableViewDataSource, SocializeCommentsServiceDelegate> {
+@interface CommentsViewController : UIViewController<UITableViewDataSource, SocializeServiceDelegate> {
 
 @private
     UITextField* _commentText;

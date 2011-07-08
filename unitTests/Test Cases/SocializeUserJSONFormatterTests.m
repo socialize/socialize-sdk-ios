@@ -36,18 +36,26 @@
 
 - (void)testToUser
 {
-    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/comment_single_response.json"];
-    NSDictionary * JSONDictionaryToParse =(NSDictionary *)[[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines]objectForKey:@"user"];
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/user_response.json"];
+    NSDictionary * JSONDictionaryToParse =(NSDictionary *)[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
-    id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
+    id mockUser = [OCMockObject niceMockForProtocol:@protocol(SocializeUser)];
     
-    [[mockUser expect]setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
+    [[mockUser expect] setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
     [[mockUser expect] setFirstName:[JSONDictionaryToParse objectForKey:@"first_name"]];
     [[mockUser expect] setLastName:[JSONDictionaryToParse objectForKey:@"last_name"]];
     [[mockUser expect] setUserName:[JSONDictionaryToParse objectForKey:@"username"]];
+    [[mockUser expect] setDescription:[JSONDictionaryToParse objectForKey:@"description"]];
+    [[mockUser expect] setLocation:[JSONDictionaryToParse objectForKey:@"location"]];
     [[mockUser expect] setSmallImageUrl:[JSONDictionaryToParse objectForKey:@"small_image_uri"]];
-    [[mockUser expect] setCity:[JSONDictionaryToParse objectForKey:@"city"]];
-    [[mockUser expect] setState:[JSONDictionaryToParse objectForKey:@"state"]];
+    [[mockUser expect] setMedium_image_uri:[JSONDictionaryToParse objectForKey:@"medium_image_uri"]];
+    [[mockUser expect] setLarge_image_uri:[JSONDictionaryToParse objectForKey:@"large_image_uri"]];
+
+    NSDictionary* stats = [JSONDictionaryToParse objectForKey:@"stats"];
+    [[mockUser expect] setViews:[[stats objectForKey:@"views"]intValue]];
+    [[mockUser expect] setLikes:[[stats objectForKey:@"likes"]intValue]];
+    [[mockUser expect] setComments:[[stats objectForKey:@"comments"]intValue]];
+    [[mockUser expect] setShare:[[stats objectForKey:@"shares"]intValue]];
       
     SocializeUserJSONFormatter * userFormatter = [[[SocializeUserJSONFormatter alloc]initWithFactory:_factory] autorelease];
     

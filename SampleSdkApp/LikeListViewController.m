@@ -21,7 +21,6 @@
     if (self) {
         _entityKey = [entityKey retain];
         self.service = service;
-        self.service.likeService.delegate = self;
 //        _likes = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;
@@ -50,21 +49,18 @@
     // Do any additional setup after loading the view from its nib.
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    
+     
+    self.service.likeService.delegate = self;
     [_service.likeService getLikesForEntityKey:_entityKey];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    
+    self.service.likeService.delegate = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view data source
@@ -108,20 +104,24 @@
 
 #pragma mark Socialize Like delegate
 
--(void)didPostLike:(id)service like:(id)data{
-    
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
+    NSLog(@"didDelete %@", object);
 }
 
--(void)didDeleteLike:(id)service like:(id)data{
-    
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
+    NSLog(@"didUpdate %@", object);
 }
 
--(void)didFetchLike:(id)service like:(id)data{
-    _likes = [data retain];
+-(void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"didFail %@", error);
 }
 
--(void)didFailService:(id)service error:(NSError*)error{
-    
+-(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didCreateWithElements %@", dataArray);
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didFetchElements %@", dataArray);
 }
 
 #pragma mark -

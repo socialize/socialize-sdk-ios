@@ -26,10 +26,10 @@ static const int kGeneralErrorCode = 10000;
 
 
 @interface SocializeRequest()
--(void)failWithError:(NSError *)error;
--(void)handleResponseData:(NSData *)data;
--(void)produceHTMLOutput:(NSString*)outputString;
--(NSArray*) formatUrlParams;
+    -(void)failWithError:(NSError *)error;
+    -(void)handleResponseData:(NSData *)data;
+    -(void)produceHTMLOutput:(NSString*)outputString;
+    -(NSArray*) formatUrlParams;
 @end
 
 @implementation SocializeRequest
@@ -38,13 +38,12 @@ static const int kGeneralErrorCode = 10000;
 url = _url,
 httpMethod = _httpMethod,
 params = _params,
-connection = _connection,
 responseText = _responseText,
 token = _token,
 consumer = _consumer,
 request = _request,
-dataFetcher = _dataFetcher
-;
+dataFetcher = _dataFetcher,
+expectedJSONFormat = _expectedJSONFormat;
 
 + (NSString *)userAgentString
 {
@@ -64,6 +63,7 @@ dataFetcher = _dataFetcher
 // class public
 
 + (SocializeRequest *)getRequestWithParams:(id) params
+                        expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
                                 httpMethod:(NSString *) httpMethod
                                   delegate:(id<SocializeRequestDelegate>) delegate
                                 requestURL:(NSString *) url 
@@ -73,8 +73,8 @@ dataFetcher = _dataFetcher
     request.url = url;
     request.httpMethod = httpMethod;
     request.params = params;
-    request.connection = nil;
     request.responseText = nil;
+    request.expectedJSONFormat  = expectedJSONFormat;
     
     
     request.token =  [[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX ];
@@ -117,22 +117,16 @@ dataFetcher = _dataFetcher
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // public
 
-/**
- * @return boolean - whether this request is processing
- */
-- (BOOL)loading 
-{
-    return !!_connection;
-}
-
 -(NSArray*) formatUrlParams
 {
     NSMutableArray* getParams = [[[NSMutableArray alloc] initWithCapacity:[_params count]] autorelease];
     [_params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
      {
-         OARequestParameter* p = [[OARequestParameter alloc] initWithName:key value:obj];
+         NSString* value = [[NSString alloc]initWithFormat:@"%@", obj];
+         OARequestParameter* p = [[OARequestParameter alloc] initWithName:key value:value];
          [getParams addObject:p];
          [p release];
+         [value release];
      }
     ];
     
@@ -173,6 +167,8 @@ dataFetcher = _dataFetcher
  */
 - (void)dealloc 
 {
+    [_dataFetcher cancel];
+    
     [_token release]; _token = nil;
     [_consumer release]; _consumer = nil;
     [_request release]; _request = nil;
@@ -197,7 +193,6 @@ dataFetcher = _dataFetcher
         [self handleResponseData:data];
     else
         [self failWithError:[NSError errorWithDomain:@"SocializeSDK" code:ticket.response.statusCode userInfo:nil]];
-
 }
 
 -(void)produceHTMLOutput:(NSString*)outputString{
@@ -208,7 +203,7 @@ dataFetcher = _dataFetcher
     NSError *error;
     BOOL succeed = [outputString writeToFile:[documentsDirectory stringByAppendingPathComponent:@"error.html"]
                               atomically:YES encoding:NSUTF8StringEncoding error:&error];
-    if (!succeed){
+    if (!succeed){ // TODO:: add error handling
         // Handle error here
     }
 }

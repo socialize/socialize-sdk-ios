@@ -113,23 +113,41 @@
 	[super touchesBegan:touches withEvent:event];
 }
 
-#pragma  mark   - Socialize comment service
+#pragma  mark   - Socialize service delegate
 
--(void) receivedComment: (SocializeCommentsService*)service comment: (id<SocializeComment>) comment
-{
-    [_comments addObject:comment];
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
+    NSLog(@"didCreate %@", object);
+    [_comments addObject:object];
     [_commentsTable reloadData];
 }
 
--(void) receivedComments: (SocializeCommentsService*)service comments: (NSArray*) comments
-{
-    [_comments addObjectsFromArray:comments];
-    [_commentsTable reloadData];    
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
+    NSLog(@"didDelete %@", object);
 }
 
--(void) didFailService:(SocializeCommentsService*)service withError: (NSError *)error
-{
-    NSLog(@"%@", error);
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
+    NSLog(@"didUpdate %@", object);
 }
+
+-(void)service:(SocializeService*)service didFetch:(id<SocializeObject>)object{
+    NSLog(@"didFetch %@", object);
+}
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"didFail %@", error);
+}
+
+-(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didCreateWithElements %@", dataArray);
+    [_comments addObjectsFromArray:dataArray];
+    [_commentsTable reloadData]; 
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didFetchElements %@", dataArray);
+    [_comments addObjectsFromArray:dataArray];
+    [_commentsTable reloadData]; 
+}
+
 
 @end

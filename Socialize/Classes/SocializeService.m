@@ -26,25 +26,33 @@
  */
 
 #import "SocializeService.h"
+#import "JSONKit.h"
+#import "SocializeError.h"
+
+
+@interface SocializeService()
+-(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList;
+@end
+
 
 
 @implementation SocializeService
 
-@synthesize delegate = _delegate;
+@synthesize delegate = _delegate, provider = _provider; 
 
 -(Protocol *)ProtocolType
 {
     return  @protocol(SocializeObject);
 }
 -(void) dealloc
-{   _provider = nil;
+{   self.provider = nil;
     _objectCreator = nil;
     [super dealloc];
 }
 
 
 
--(id) initWithProvider: (SocializeProvider*) provider objectFactory: (SocializeObjectFactory*) objectFactory delegate:(id) delegate
+-(id) initWithProvider: (SocializeProvider*) provider objectFactory: (SocializeObjectFactory*) objectFactory delegate:(id<SocializeServiceDelegate>) delegate
 {
     self = [super init];
     if(self != nil)
@@ -67,55 +75,124 @@
 //    return [_objectCreator createObjectForProtocol:protocol];
 //}
 
--(void)ExecuteGetRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)requestParameters;
+-(void)ExecuteGetRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)requestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
 {
-    [_provider requestWithMethodName:endPoint andParams:requestParameters andHttpMethod:@"GET" andDelegate:self];
+    [_provider requestWithMethodName:endPoint andParams:requestParameters   expectedJSONFormat:expectedFormat andHttpMethod:@"GET" andDelegate:self];
 }
 
--(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)postRequestObject;
+-(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)postRequestObject expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
 {
     NSString * stringRepresentation =  [_objectCreator createStringRepresentationOfObject:postRequestObject]; 
     NSMutableDictionary* params = [self genereteParamsFromJsonString:stringRepresentation];
-    [self ExecutePostRequestAtEndPoint:endPoint  WithParams:params];
+    [self ExecutePostRequestAtEndPoint:endPoint WithParams:params expectedResponseFormat:expectedFormat];
 }
 
--(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters;
+-(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat 
 {
-    
-    [_provider requestWithMethodName:endPoint andParams:postRequestParameters andHttpMethod:@"POST" andDelegate:self];
+    [_provider requestWithMethodName:endPoint andParams:postRequestParameters expectedJSONFormat:expectedFormat andHttpMethod:@"POST" andDelegate:self];
 }
 
 #pragma mark - Socialize requst delegate
 
-//- (void)request:(SocializeRequest *)request didReceiveResponse:(NSURLResponse *)response
-//{
-//    // TODO:: add implementation notify that call success. 
-//}
 
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
-     [self doDidFailWithError:error];
+//     [self doDidFailWithError:error];
+}
+
+-(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList {
+
+    NSMutableArray* array = nil;// = [NSMutableArray array];
+    NSMutableArray* errorArray = nil;
+    if (![objectList isKindOfClass:[NSArray class]]){
+        array = [NSMutableArray array];
+        [array addObject:objectList];
+    }
+    else{
+        array = objectList;
+    }
+    
+    if (![errorList count])
+        errorArray = nil;
+    else
+        errorArray = errorList;
+
+    if ([request.httpMethod isEqualToString:@"POST"])
+        [self.delegate service:self didCreateWithElements:array andErrorList:errorArray];
+    else if ([request.httpMethod isEqualToString:@"GET"])
+        [self.delegate service:self didFetchElements:array andErrorList:errorArray];
+    else if ([request.httpMethod isEqualToString:@"DELETE"])
+        [self.delegate service:self didDelete:nil];
+    else if ([request.httpMethod isEqualToString:@"PUT"])
+        [self.delegate service:self didUpdate:objectList];
+
 }
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
 {
     //Move the following lines to the base  SocializeService Class, because it's the same for all objects.
     NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    DLog(@"responseString  ----->  %@ <------ ", responseString);
     
-    id objectResponse = [_objectCreator createObjectFromString:responseString forProtocol:[self ProtocolType]]; 
-    
-    
-    if([objectResponse conformsToProtocol:@protocol(SocializeObject)])
-    {
-        [self doDidReceiveSocializeObject:(id<SocializeObject>)objectResponse];
+    if(request.expectedJSONFormat == SocializeDictionaryWIthListAndErrors){
+        
+        // if it is the response form {errors:"",items:""}
+        JSONDecoder *jsonKitDecoder = [JSONDecoder decoder];
+        id jsonObject = [jsonKitDecoder objectWithData:data];
+        if (![jsonObject isKindOfClass:[NSDictionary class]]){
+            // the return object was not what was supposed to be, soo erroring out.
+            [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+            return;
+        }
+        
+        NSString* errors = [jsonObject objectForKey:@"errors"];
+        NSString* items = [jsonObject objectForKey:@"items"];
+        
+        if (!errors || !items){
+            // we should atleast have elements for erors and items in them.
+            [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+        }
+
+        id objectResponse = [_objectCreator createObjectFromString:items forProtocol:[self ProtocolType]]; 
+        id errorResponse = [_objectCreator createObjectFromString:errors forProtocol:@protocol(SocializeError)]; 
+        
+        if([objectResponse isKindOfClass: [NSArray class]]){ 
+            
+            if ([objectResponse count]){
+                if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]])
+                    [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponse];
+                else
+                    [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+            }
+            else
+                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+        }
+        else 
+            [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
     }
-    else if([objectResponse isKindOfClass: [NSArray class]])
-    {
-        [self doDidReceiveReceiveListOfObjects:(NSArray *)objectResponse];  
+    else if (request.expectedJSONFormat == SocializeDictionary){
+        id objectResponse = [_objectCreator createObjectFromString:responseString forProtocol:[self ProtocolType]]; 
+        if ([objectResponse conformsToProtocol:[self ProtocolType]])
+            [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
+        else
+            [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
     }
-    else
-    {
-        [self doDidFailWithError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+    else if (request.expectedJSONFormat == SocializeList){
+        //  NSString* items = [_objectCreator createObjectFromString:responseString forProtocol:[self ProtocolType]];
+        id objectResponse = [_objectCreator createObjectFromString:responseString forProtocol:[self ProtocolType]]; 
+
+        if([objectResponse isKindOfClass: [NSArray class]]){ 
+            if ([objectResponse count]){
+                if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]])
+                    [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
+                else
+                    [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+            }
+            else
+                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+        }
+        else 
+            [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
     }
 }
 

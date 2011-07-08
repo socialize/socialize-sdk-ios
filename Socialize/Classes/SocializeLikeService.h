@@ -8,27 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeRequest.h"
+#import "SocializeService.h"
 
 @class SocializeProvider;
 @class SocializeObjectFactory;
 
-@protocol SocializeLikeServiceDelegate;
 @protocol SocializeEntity;
 @protocol SocializeLike;
 
-@interface SocializeLikeService : NSObject<SocializeRequestDelegate> {
+@interface SocializeLikeService : SocializeService{
     
-@private
-    id<SocializeLikeServiceDelegate> _delegate;
-    SocializeProvider                *_provider;
-    SocializeObjectFactory           *_objectCreator;
 }
 
-@property (nonatomic, assign) id<SocializeLikeServiceDelegate> delegate;
-@property (nonatomic, retain) SocializeProvider                *provider;
-@property (nonatomic, retain) SocializeObjectFactory           *objectCreator;
 
--(id) initWithProvider: (SocializeProvider*)provider objectFactory: (SocializeObjectFactory*) objectFactory delegate: (id<SocializeLikeServiceDelegate>) delegate;
 -(void)getLikesForEntityKey:(NSString*)key;
 -(void)getLikesForEntity:(id<SocializeEntity>)entity;
 -(void)getLike:(NSInteger)likeId;

@@ -30,29 +30,20 @@
 #import "SocializeUser.h"
 #import "SocializeRequest.h"
 
-@protocol SocializeUserServiceDelegate;
-
 @interface SocializeUserService : SocializeService  
 {
     
 }
 
-@property (nonatomic, assign) id<SocializeUserServiceDelegate> delegate;
-
+//TODO:: add implementation
 //-(void) usersWithIds:(NSArray *)arrayOfUserIDs;
+//-(void) createUserWithFirstname:(NSString *)firstName lastName:(NSString *)lastName description:(NSString *) description location:(NSString *) location
+//                        picture:(NSData *)pictureData;
+
 -(void) userWithId:(int)userId;
 -(void) currentUser;
 -(void) updateUser:(id<SocializeUser>)user;
-//-(void) createUserWithFirstname:(NSString *)firstName lastName:(NSString *)lastName description:(NSString *) description location:(NSString *) location
-//                        picture:(NSData *)pictureData;
-    
-@end
-
-
-@protocol SocializeUserServiceDelegate
-
--(void) userService:(SocializeUserService *)userService didReceiveUser:(id<SocializeUser>)userObject;
--(void) userService:(SocializeUserService *)userService didReceiveListOfUsers:(NSArray *)userList;
--(void) userService:(SocializeUserService *)userService didFailWithError:(NSError *)error;
 
 @end
+
+

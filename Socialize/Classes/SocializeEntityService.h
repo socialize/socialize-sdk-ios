@@ -29,38 +29,21 @@
 #import <Foundation/Foundation.h>
 #import "SocializeEntity.h"
 #import "SocializeRequest.h"
+#import "SocializeService.h"
 
 @class SocializeProvider;
 @class SocializeObjectFactory;
 
 @protocol SocializeEntityServiceDelegate;
 
-@interface SocializeEntityService : NSObject<SocializeRequestDelegate> 
-{
-    @private    
-        id<SocializeEntityServiceDelegate> _delegate;
-        SocializeProvider*  _provider;
-        SocializeObjectFactory* _objectCreator;
-    
+@interface SocializeEntityService : SocializeService
+{   
 }
-@property (nonatomic, assign) id<SocializeEntityServiceDelegate> delegate;
+//TODO:: add implementation
 //-(void)entityWithKey:(NSString *)keyOfEntity;
 //-(void)listEntitiesWithKeys:(NSArray *)entityKeysArray;
 -(void)createEntities:(NSArray *)entities;
--(void)createEntity:(id<SocializeEntity>)entity;
+-(void)createEntity:(id<SocializeEntity>)entity ;
 -(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity;
-
--(id) initWithProvider: (SocializeProvider*)provider objectFactory: (SocializeObjectFactory*) objectFactory delegate: (id<SocializeEntityServiceDelegate>) delegate;
-
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonRequest;
-
-@end
-
-@protocol SocializeEntityServiceDelegate
-@required
-
--(void) entityService:(SocializeEntityService *)entityService didReceiveEntity:(id<SocializeEntity>)entityObject;
--(void) entityService:(SocializeEntityService *)entityService didReceiveListOfEntities:(NSArray *)entityList;
--(void) entityService:(SocializeEntityService *)entityService didFailWithError:(NSError *)error;
 
 @end

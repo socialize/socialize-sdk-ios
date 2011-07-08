@@ -62,7 +62,7 @@ static const int singleCommentId = 1;
 -(void) testSendGetCommentById
 {    
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:[NSString stringWithFormat:@"comment/%d/",singleCommentId] andParams:nil andHttpMethod:@"GET" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:[NSString stringWithFormat:@"comment/%d/",singleCommentId] andParams:nil  expectedJSONFormat:SocializeDictionary andHttpMethod:@"GET" andDelegate:_service];
     
     _service.provider = mockProvider;   
     
@@ -76,7 +76,8 @@ static const int singleCommentId = 1;
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
      NSArray* ids = [NSArray arrayWithObjects: [NSNumber numberWithInt:1], [NSNumber numberWithInt:2], nil];  
     [[mockProvider expect] requestWithMethodName:@"comment/" 
-                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:ids, @"ids", nil] 
+                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:ids, @"ids", nil]
+      expectedJSONFormat:SocializeDictionaryWIthListAndErrors
                                    andHttpMethod:@"GET" 
                                      andDelegate:_service];
     _service.provider = mockProvider; 
@@ -90,7 +91,8 @@ static const int singleCommentId = 1;
 {
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
     [[mockProvider expect] requestWithMethodName:@"comment/" 
-                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"key", nil] 
+                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"key", nil]
+      expectedJSONFormat:SocializeDictionaryWIthListAndErrors
                                    andHttpMethod:@"GET" 
                                      andDelegate:_service];
     _service.provider = mockProvider; 
@@ -109,7 +111,7 @@ static const int singleCommentId = 1;
                        nil];
     
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:params andHttpMethod:@"POST" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
     
     _service.provider = mockProvider;    
     
@@ -134,7 +136,7 @@ static const int singleCommentId = 1;
                                      nil];
     
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:mockArray andHttpMethod:@"POST" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:mockArray  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
     
     _service.provider = mockProvider;    
 
@@ -197,6 +199,33 @@ static const int singleCommentId = 1;
                                                          error:nil];
     
     return  JSONString;
+}
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
+    NSLog(@"didCreate %@", object);
+}
+
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
+    NSLog(@"didDelete %@", object);
+}
+
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
+    NSLog(@"didUpdate %@", object);
+}
+
+-(void)service:(SocializeService*)service didFetch:(id<SocializeObject>)object{
+    NSLog(@"didFetch %@", object);
+}
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"didFail %@", error);
+}
+
+-(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didCreateWithElements %@", dataArray);
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
+    NSLog(@"didFetchElements %@", dataArray);
 }
 
 @end

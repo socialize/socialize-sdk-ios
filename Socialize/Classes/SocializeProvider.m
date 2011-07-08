@@ -31,13 +31,12 @@
 #import "OAHMAC_SHA1SignatureProvider.h"
 
 
-static NSString* kRestserverBaseURL = @"http://www.dev.getsocialize.com/v1/";
-//static NSString* kSDK = @"ios";
-//static NSString* kSDKVersion = @"1";
+NSString* const kRestserverBaseURL = @"http://dev.getsocialize.com/v1/";
 
 @interface SocializeProvider()
-- (void)openUrl:(NSString *)url
+    - (void)openUrl:(NSString *)url
              params:(NSMutableDictionary *)params
+expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
          httpMethod:(NSString *)httpMethod
            delegate:(id<SocializeRequestDelegate>)delegate;
 @end
@@ -76,11 +75,13 @@ request = _request;
  */
 - (void)openUrl:(NSString *)url
          params:(id)params
+expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
      httpMethod:(NSString *)httpMethod
        delegate:(id<SocializeRequestDelegate>)delegate 
 {
     [_request release]; _request = nil;
     _request = [[SocializeRequest getRequestWithParams:params
+                                    expectedJSONFormat:expectedJSONFormat
                                             httpMethod:httpMethod
                                               delegate:delegate
                                             requestURL:url] retain];
@@ -94,7 +95,7 @@ request = _request;
             delegate:(id<SocializeProviderDelegate>)delegate
 {
     _sessionDelegate = delegate;
-    // TODO::
+    // TODO:: remove if not used
 }
 
 - (void)authenticateWithThirdPartyAccessToken:(NSString*)thirdPartyAccessToken
@@ -122,9 +123,11 @@ request = _request;
  */
 - (void)requestWithParams:(NSMutableDictionary *)params
               andDelegate:(id <SocializeRequestDelegate>)delegate
+       expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
+
 {
     if ([params objectForKey:@"method"] == nil) {
-        //NSLog(@"API Method must be specified");
+        DLog(@"API Method must be specified");
         return;
     }
     
@@ -133,17 +136,19 @@ request = _request;
     
     [self requestWithMethodName:methodName
                       andParams:params
+             expectedJSONFormat:expectedJSONFormat
                   andHttpMethod:@"GET"
                     andDelegate:delegate];
 }
 
 - (void)requestWithMethodName:(NSString *)methodName
                     andParams:(id)params
+                expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
                 andHttpMethod:(NSString *)httpMethod
                   andDelegate:(id <SocializeRequestDelegate>)delegate 
 {
     NSString *fullURL = [kRestserverBaseURL stringByAppendingString:methodName];
-    [self openUrl:fullURL params:params httpMethod:httpMethod delegate:delegate];
+    [self openUrl:fullURL params:params expectedJSONFormat:expectedJSONFormat httpMethod:httpMethod delegate:delegate];
 }
 
 
@@ -151,7 +156,7 @@ request = _request;
 /**
  * @return boolean - whether this object has an non-expired session token
  */
-- (BOOL)isSessionValid {
+- (BOOL)isSessionValid { //TODO:: remove this if not used
     return (self.accessToken != nil && self.expirationDate != nil
             && NSOrderedDescending == [self.expirationDate compare:[NSDate date]]);
 }
