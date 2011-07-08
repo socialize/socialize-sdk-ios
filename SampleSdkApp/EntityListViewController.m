@@ -39,26 +39,6 @@
 
 @synthesize service = _service;
 
-#pragma mark - Socialize Entity Service Delegate
-
--(void) entityService:(SocializeEntityService *)entityService didReceiveEntity:(id<SocializeEntity>)entityObject
-{
-    [_entities addObject:entityObject];
-    [self.tableView reloadData];
-}
-
--(void) entityService:(SocializeEntityService *)entityService didReceiveListOfEntities:(NSArray *)entityList
-{
-    [_entities addObjectsFromArray:entityList];
-    [self.tableView reloadData];
-}
-
--(void) entityService:(SocializeEntityService *)entityService didFailWithError:(NSError *)error
-{
-    NSLog(@"Failed with error -- %@", error);
-}
-
-
 #pragma mark - UIAlertView delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -214,22 +194,25 @@
     
     [demoEntity release];
 }
-#pragma mark -
+#pragma mark - Service delegete
 
 -(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
-    NSLog(@"didCreate %@", object);
+    DLog(@"didCreate %@", object);
+    
+    [_entities addObject:object];
+    [self.tableView reloadData];
 }
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
-    NSLog(@"didDelete %@", object);
+    DLog(@"didDelete %@", object);
 }
 
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
-    NSLog(@"didUpdate %@", object);
+    DLog(@"didUpdate %@", object);
 }
 
 -(void)service:(SocializeService*)service didFetch:(id<SocializeObject>)object{
-    NSLog(@"didFetch %@", object);
+    DLog(@"didFetch %@", object);
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error{
@@ -237,11 +220,15 @@
 }
 
 -(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
-    NSLog(@"didCreateWithElements %@", dataArray);
+    DLog(@"didCreateWithElements %@", dataArray);
+    NSLog(@"and errors %@", errorList);
+    
+    [_entities addObjectsFromArray:dataArray];
+    [self.tableView reloadData];
 }
 
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
-    NSLog(@"didFetchElements %@", dataArray);
+    DLog(@"didFetchElements %@", dataArray);
 }
 
 

@@ -239,46 +239,7 @@
 	[UIView commitAnimations];
 }
 
-#pragma mark - Socialize like service delegate
-
--(void)didFailService:(id)service error:(NSError*)error
-{
-    NSLog(@"Service failed %@", error);
-}
-
-
--(void)didPostLike:(id)service like:(id)data{
-    if (data != nil){
-        NSArray* likes = data;
-        _myLike = [likes objectAtIndex:0];
-        [_myLike retain];
-        if (_myLike != nil)
-            [self.socializeActionPanel updateLikesCount:[NSNumber numberWithFloat:[_myLike.entity likes]]  liked:YES]; 
-    }
-}
-
--(void)didDeleteLike:(id)service like:(id)data{
-    [self.socializeActionPanel updateIsLiked:NO];
-    [_myLike release]; _myLike = nil;
-}
-
--(void)didFetchLike:(id)service like:(id)data{
-    
-    NSArray* dataFetced = data; 
-    NSString *tmpString = [NSString string];
-    for (id<SocializeLike> like in dataFetced){
-        NSString* newString = [NSString stringWithFormat:@"\n %@ Like By user %@", [[like user] userName] ] ;
-        tmpString = [tmpString stringByAppendingString:newString];
-    }
-    
-	UIAlertView *alert = [[UIAlertView alloc] init];
-	[alert setTitle:@"Like Results"];
-	[alert setMessage:tmpString];
-	[alert setDelegate:self];
-	[alert show];
-	[alert release];
-}
-#pragma mark -
+#pragma mark - Socialize Service delegate
 
 
 -(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
@@ -287,6 +248,9 @@
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
     NSLog(@"didDelete %@", object);
+    
+    [self.socializeActionPanel updateIsLiked:NO];
+    [_myLike release]; _myLike = nil;
 }
 
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
@@ -303,9 +267,31 @@
 
 -(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
     NSLog(@"didCreateWithElements %@", dataArray);
+    
+    if (dataArray != nil){
+        NSArray* likes = dataArray;
+        _myLike = [likes objectAtIndex:0];
+        [_myLike retain];
+        if (_myLike != nil)
+            [self.socializeActionPanel updateLikesCount:[NSNumber numberWithFloat:[_myLike.entity likes]]  liked:YES]; 
+    }
 }
 
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
     NSLog(@"didFetchElements %@", dataArray);
+    
+    NSArray* dataFetced = dataArray; 
+    NSString *tmpString = [NSString string];
+    for (id<SocializeLike> like in dataFetced){
+        NSString* newString = [NSString stringWithFormat:@"\n %@ Like By user %@", [[like user] userName] ] ;
+        tmpString = [tmpString stringByAppendingString:newString];
+    }
+    
+	UIAlertView *alert = [[UIAlertView alloc] init];
+	[alert setTitle:@"Like Results"];
+	[alert setMessage:tmpString];
+	[alert setDelegate:self];
+	[alert show];
+	[alert release];
 }
 @end

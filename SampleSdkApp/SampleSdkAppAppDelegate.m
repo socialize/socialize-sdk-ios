@@ -77,35 +77,12 @@ static NSString* kAppId = @"115622641859087";
 -(void)didAuthenticate
 {
     rootController.view.userInteractionEnabled = YES;
-    [socialize.likeService postLikeForEntityKey:@"test"];
-
 }
 
 -(void)didNotAuthenticate:(NSError*)error
 {
     NSLog(@"%@", error);
     //entryController.view.userInteractionEnabled = YES;
-}
-
-
--(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
-    NSLog(@"didDelete %@", object);
-}
-
--(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
-    NSLog(@"didUpdate %@", object);
-}
-
--(void)service:(SocializeService*)service didFail:(NSError*)error{
-    NSLog(@"didFail %@", error);
-}
-
--(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
-    NSLog(@"didCreateWithElements %@  errorList %@  and  error count %d", dataArray, errorList, [errorList count]);
-}
-
--(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
-    NSLog(@"didFetchElements %@", dataArray);
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
