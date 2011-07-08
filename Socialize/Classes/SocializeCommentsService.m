@@ -45,6 +45,11 @@
     [super dealloc];
 }
 
+-(Protocol *)ProtocolType
+{
+    return  @protocol(SocializeComment);
+}
+
 -(void) getCommentById: (int) commentId
 {
     [_provider requestWithMethodName:[NSString stringWithFormat:@"comment/%d/",commentId] andParams:nil expectedJSONFormat:SocializeDictionary andHttpMethod:@"GET" andDelegate:self];

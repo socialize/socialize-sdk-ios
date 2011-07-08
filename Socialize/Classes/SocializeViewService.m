@@ -20,6 +20,11 @@
     [super dealloc];
 }
 
+-(Protocol *)ProtocolType
+{
+    return  @protocol(SocializeView);
+}
+
 -(void)createViewForEntity:(id<SocializeEntity>)entity{
     DLog(@"entity %@", entity);
     [self createViewForEntityKey:[entity key]];
