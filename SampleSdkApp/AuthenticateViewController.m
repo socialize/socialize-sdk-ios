@@ -65,7 +65,11 @@
 //        return;
     // removing the previous auth tokens
     [socialize removeAuthenticationInfo];
-    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text udid:@"someid" delegate:self];
+    
+    //#define kSOCIALIZE_API_KEY          // stage     
+    //#define kSOCIALIZE_API_SECRET       // stage
+    
+    [socialize authenticateWithApiKey:@"90aa0fb5-1995-4771-9ed9-f3c4479a9aaa"/*_keyField.text*/ apiSecret:@"5f461d4b-999c-430d-a2b2-2df35ff3a9ba"/*_secretField.text*/ udid:@"someid" delegate:self];
 }
 
 #pragma mark Authentication delegate
