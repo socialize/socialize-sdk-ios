@@ -12,6 +12,7 @@
 @implementation AuthenticateViewController
 @synthesize keyField = _keyField;
 @synthesize secretField = _secretField;
+@synthesize entityListViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

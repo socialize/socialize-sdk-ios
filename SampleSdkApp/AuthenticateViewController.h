@@ -20,7 +20,7 @@
 
 @property (retain,nonatomic) IBOutlet UITextField*   keyField;
 @property (retain,nonatomic) IBOutlet UITextField*   secretField;
-
+@property (nonatomic, readonly) EntityListViewController* entityListViewController;
 
 -(IBAction)authenticate:(id)sender;
 

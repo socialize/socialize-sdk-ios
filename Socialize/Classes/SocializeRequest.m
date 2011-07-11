@@ -81,7 +81,8 @@ expectedJSONFormat = _expectedJSONFormat;
                                   delegate:(id<SocializeRequestDelegate>) delegate
                                 requestURL:(NSString *) url 
 {
-    SocializeRequest* request = [[[SocializeRequest alloc] init] autorelease];
+    //We will release object in network responce section. After complete of execution of user delegates;
+    SocializeRequest* request = [[SocializeRequest alloc] init]; 
     request.delegate = delegate;
     request.url = url;
     request.httpMethod = httpMethod;
@@ -206,6 +207,8 @@ expectedJSONFormat = _expectedJSONFormat;
         [self handleResponseData:data];
     else
         [self failWithError:[NSError errorWithDomain:@"Socialize" code:ticket.response.statusCode userInfo:nil]];
+    
+    [self release];
 }
 
 -(void)produceHTMLOutput:(NSString*)outputString{
@@ -223,6 +226,7 @@ expectedJSONFormat = _expectedJSONFormat;
 
 - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFailWithError:(NSError*)error{
     [self  failWithError:error];
+    [self release];
 }
 
 @end
