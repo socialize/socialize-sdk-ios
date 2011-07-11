@@ -57,7 +57,7 @@
     self = [super init];
     if(self != nil)
     {
-        _provider = provider;
+        self.provider = provider;
         _objectCreator = objectFactory;
         self.delegate = delegate;
     }

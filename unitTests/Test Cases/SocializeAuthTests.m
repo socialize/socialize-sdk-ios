@@ -11,7 +11,6 @@
 #import "SocializeProvider.h"
 #import <OCMock/OCMock.h>
 #import "Socialize.h"
-#import "NSMutableData+PostBody.h"
 #import "SocializeCommonDefinitions.h"
 
 

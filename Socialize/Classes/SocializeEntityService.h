@@ -39,8 +39,8 @@
 @interface SocializeEntityService : SocializeService
 {   
 }
-//TODO:: add implementation
-//-(void)entityWithKey:(NSString *)keyOfEntity;
+
+-(void)entityWithKey:(NSString *)keyOfEntity;
 //-(void)listEntitiesWithKeys:(NSArray *)entityKeysArray;
 -(void)createEntities:(NSArray *)entities;
 -(void)createEntity:(id<SocializeEntity>)entity ;

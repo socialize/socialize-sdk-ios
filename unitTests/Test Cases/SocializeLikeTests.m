@@ -10,7 +10,6 @@
 #import "SocializeLikeService.h"
 #import <OCMock/OCMock.h>
 #import "Socialize.h"
-#import "NSMutableData+PostBody.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeObjectFactory.h"
 #import "SocializeLike.h"

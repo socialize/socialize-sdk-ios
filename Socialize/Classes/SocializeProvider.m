@@ -79,12 +79,11 @@ expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
      httpMethod:(NSString *)httpMethod
        delegate:(id<SocializeRequestDelegate>)delegate 
 {
-    [_request release]; _request = nil;
-    _request = [[SocializeRequest getRequestWithParams:params
+    _request = [SocializeRequest getRequestWithParams:params
                                     expectedJSONFormat:expectedJSONFormat
                                             httpMethod:httpMethod
                                               delegate:delegate
-                                            requestURL:url] retain];
+                                            requestURL:url];
     [_request connect];
 }
 
