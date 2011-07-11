@@ -30,6 +30,8 @@ static const int kGeneralErrorCode = 10000;
     -(void)handleResponseData:(NSData *)data;
     -(void)produceHTMLOutput:(NSString*)outputString;
     -(NSArray*) formatUrlParams;
+    +(NSString*)consumerKey;
+    +(NSString*)consumerSecret;
 @end
 
 @implementation SocializeRequest
@@ -62,6 +64,17 @@ expectedJSONFormat = _expectedJSONFormat;
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
 
+
++(NSString*)consumerKey{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults valueForKey:kSOCIALIZE_API_KEY_KEY];
+}
+
++(NSString*)consumerSecret{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults valueForKey:kSOCIALIZE_API_SECRET_KEY];
+}
+
 + (SocializeRequest *)getRequestWithParams:(id) params
                         expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
                                 httpMethod:(NSString *) httpMethod
@@ -78,7 +91,7 @@ expectedJSONFormat = _expectedJSONFormat;
     
     
     request.token =  [[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX ];
-    request.consumer = [[OAConsumer alloc] initWithKey:kSOCIALIZE_API_KEY secret:kSOCIALIZE_API_SECRET];
+    request.consumer = [[OAConsumer alloc] initWithKey:[self consumerKey] secret:[self consumerSecret]];
     request.request = [[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:request.url] consumer:request.consumer token:request.token realm:nil signatureProvider:nil];
     
     request.dataFetcher = [[OAAsynchronousDataFetcher alloc] initWithRequest:request.request delegate:request

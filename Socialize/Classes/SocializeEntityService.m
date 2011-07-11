@@ -81,6 +81,15 @@
     [self createEntities:[NSArray arrayWithObject:entity]];
 }
 
+
+-(void)fetchEntity:(NSString*)key
+{
+    NSMutableDictionary*  params = [[[NSMutableDictionary alloc] init] autorelease]; 
+    [params setObject:key forKey:@"id"];
+    NSString* updatedResource = [NSString stringWithFormat:@"%@%@/", ENTITY_KEY, key]; 
+    [_provider requestWithMethodName:updatedResource andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
+}
+
 -(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity
 {
     id<SocializeEntity> entity = (id<SocializeEntity>)[_objectCreator createObjectForProtocol:@protocol(SocializeEntity)];

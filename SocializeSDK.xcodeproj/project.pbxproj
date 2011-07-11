@@ -126,6 +126,9 @@
 		6D205A3E13C3DB9100D0645E /* SocializeErrorFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D205A3C13C3DB6300D0645E /* SocializeErrorFormatter.h */; };
 		6D205A3F13C3DB9100D0645E /* SocializeErrorFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D205A3D13C3DB7000D0645E /* SocializeErrorFormatter.m */; };
 		6D205A4113C5060900D0645E /* SocializeShareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D205A2D13BE58D500D0645E /* SocializeShareTests.m */; };
+		6D2C76D313CA7CF300AC9112 /* AuthenticateViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D2C76D013CA7CEB00AC9112 /* AuthenticateViewController.h */; };
+		6D2C76D713CA8E3D00AC9112 /* AuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C76D113CA7CED00AC9112 /* AuthenticateViewController.m */; };
+		6D2C76D813CA8E4A00AC9112 /* AuthenticateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D2C76D213CA7CEF00AC9112 /* AuthenticateViewController.xib */; };
 		6D49743B13B2588700463D23 /* SocializeLikeService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743913B2586200463D23 /* SocializeLikeService.h */; };
 		6D49743C13B2588700463D23 /* SocializeLikeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49743A13B2586C00463D23 /* SocializeLikeService.m */; };
 		6D49743F13B295A400463D23 /* SocializeLike.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743D13B2958D00463D23 /* SocializeLike.h */; };
@@ -394,6 +397,9 @@
 		6D205A3913C3D77C00D0645E /* SocializeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeError.m; path = Classes/SocializeError.m; sourceTree = "<group>"; };
 		6D205A3C13C3DB6300D0645E /* SocializeErrorFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeErrorFormatter.h; path = Classes/SocializeErrorFormatter.h; sourceTree = "<group>"; };
 		6D205A3D13C3DB7000D0645E /* SocializeErrorFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeErrorFormatter.m; path = Classes/SocializeErrorFormatter.m; sourceTree = "<group>"; };
+		6D2C76D013CA7CEB00AC9112 /* AuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticateViewController.h; sourceTree = "<group>"; };
+		6D2C76D113CA7CED00AC9112 /* AuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticateViewController.m; sourceTree = "<group>"; };
+		6D2C76D213CA7CEF00AC9112 /* AuthenticateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenticateViewController.xib; sourceTree = "<group>"; };
 		6D49743913B2586200463D23 /* SocializeLikeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeService.h; path = Classes/SocializeLikeService.h; sourceTree = "<group>"; };
 		6D49743A13B2586C00463D23 /* SocializeLikeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeService.m; path = Classes/SocializeLikeService.m; sourceTree = "<group>"; };
 		6D49743D13B2958D00463D23 /* SocializeLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLike.h; path = Classes/SocializeLike.h; sourceTree = "<group>"; };
@@ -683,6 +689,9 @@
 				166BCF9913C4695700D4926A /* AuthenticationViewController.h */,
 				166BCF9A13C4695700D4926A /* AuthenticationViewController.m */,
 				166BCF9B13C4695700D4926A /* AuthenticationViewController.xib */,
+				6D2C76D013CA7CEB00AC9112 /* AuthenticateViewController.h */,
+				6D2C76D113CA7CED00AC9112 /* AuthenticateViewController.m */,
+				6D2C76D213CA7CEF00AC9112 /* AuthenticateViewController.xib */,
 			);
 			path = SampleSdkApp;
 			sourceTree = "<group>";
@@ -1135,6 +1144,7 @@
 				6D205A3E13C3DB9100D0645E /* SocializeErrorFormatter.h in Headers */,
 				1670BE5213C6EB45000CC441 /* SocializeCommonDefinitions.h in Headers */,
 				1670BE5413C6EB81000CC441 /* SocializeLikeJSONFormatter.h in Headers */,
+				6D2C76D313CA7CF300AC9112 /* AuthenticateViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1254,6 +1264,7 @@
 				166BCF9813C4629500D4926A /* SettingsViewController.xib in Resources */,
 				166BCF9D13C4695800D4926A /* AuthenticationViewController.xib in Resources */,
 				166BCFA213C470E000D4926A /* FBConnect.bundle in Resources */,
+				6D2C76D813CA8E4A00AC9112 /* AuthenticateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1344,6 +1355,7 @@
 				166BCF9713C4629500D4926A /* SettingsViewController.m in Sources */,
 				166BCF9C13C4695800D4926A /* AuthenticationViewController.m in Sources */,
 				166BCFA013C46B7500D4926A /* FBLoginButton.m in Sources */,
+				6D2C76D713CA8E3D00AC9112 /* AuthenticateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
