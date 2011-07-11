@@ -9,6 +9,7 @@
 #import "SocializeUserServiceTests.h"
 #import "SocializeObjectFactory.h"
 #import "SocializeProvider.h"
+#import "SocializeCommonDefinitions.h"
 
 
 @implementation SocializeUserServiceTests
@@ -22,7 +23,7 @@
     mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
     
     _userService = [[SocializeUserService alloc] initWithProvider:mockProvider 
-                                                        objectFactory:mockfactory 
+                                                    objectFactory:mockfactory 
                                                              delegate:mockDelegate];
     
 }
@@ -35,204 +36,70 @@
     
 }
 
+-(void)testCheckProtocolType
+{
+    id expectedProtocol = @protocol(SocializeUser);
+    id actualProtocol = [_userService ProtocolType];
+    GHAssertEqualObjects(expectedProtocol, actualProtocol, nil);
+}
 
 //Too much repeated code!!!! I am just trying to get this done.  Logic is correct (for right now) but needs to be refactored!!!!
 
-//-(void)testGetUserWithID
-//{
-//    
-//    
-//    NSString* dumbyString = @"BLAHHHHHHH";
-//    NSData * dumbyData = [dumbyString dataUsingEncoding:NSUTF8StringEncoding];
-//    
-//    void (^testBlock)(NSInvocation *) = ^(NSInvocation *invocation) 
-//    {
-//        [_userService request:nil didLoadRawResponse:dumbyData];
-//    };
-//    
-//    
-//    int userId = 1234;
-//    NSDictionary * userIdDictionary = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:userId] forKey:@"id"];
-//    [[[mockProvider expect]andDo:testBlock]
-//     requestWithMethodName:@"user/" andParams:userIdDictionary expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_userService];
-//    
-//    id mockUser2 = [OCMockObject niceMockForClass:[SocializeUser class]];
-//    [[[mockfactory expect]andReturn:mockUser2]createObjectFromString:dumbyString forProtocol:@protocol(SocializeUser)];
-//    BOOL yes = YES;
-//    [[[mockUser2 expect]andReturnValue:OCMOCK_VALUE(yes)]conformsToProtocol:@protocol(SocializeObject)];
-//    
-/////    [[mockDelegate expect] userService:_userService didReceiveUser:mockUser2];
-//    [_userService userWithId:userId];
-//    
-//    [mockDelegate verify];
-//    [mockfactory verify];
-//    [mockProvider verify];
-//    [mockUser2 verify];
-//        
-//}
+-(void)testGetUserWithID
+{
+    int userId = 1234;
+    NSDictionary * userIdDictionary = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:userId] forKey:@"id"];
+    [[mockProvider expect]
+     requestWithMethodName:@"user/" andParams:userIdDictionary expectedJSONFormat:SocializeDictionary andHttpMethod:@"GET" andDelegate:_userService];
 
-//TODO:: fix it
-//-(void)testGetCurrentUser
-//{
-//    
-//    NSString* dumbyString = @"BLAHHHHHHH";
-//    NSData * dumbyData = [dumbyString dataUsingEncoding:NSUTF8StringEncoding];
-//    
-//    void (^testBlock)(NSInvocation *) = ^(NSInvocation *invocation) 
-//    {
-//        [_userService request:nil didLoadRawResponse:dumbyData];
-//    };
-//    
-//    
-//    [[[mockProvider expect]andDo:testBlock]
-//     requestWithMethodName:@"user/" andParams:nil expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_userService];
-//    
-//    id mockUser2 = [OCMockObject niceMockForClass:[SocializeUser class]];
-//    [[[mockfactory expect]andReturn:mockUser2]createObjectFromString:dumbyString forProtocol:@protocol(SocializeUser)];
-//    
-//    BOOL yes = YES;
-//    [[[mockUser2 expect]andReturnValue:OCMOCK_VALUE(yes)]conformsToProtocol:@protocol(SocializeObject)];
-//    
-////    [[mockDelegate expect] userService:_userService didReceiveUser:mockUser2];
-//    [_userService currentUser];
-//    
-//    [mockDelegate verify];
-//    [mockfactory verify];
-//    [mockProvider verify];
-//    [mockUser2 verify];
-//    
-//}
+    [_userService userWithId:userId];
+    
+    [mockProvider verify];
+        
+}
 
-//DuplicateCode
-//-(void)testUpdateUser
-//{
-//    
-//    id mockUser = [OCMockObject mockForClass:[SocializeUser class]];
-//
-//    
-//    NSString * requestDataString = @"fooSchnickens";
-//    
-//    [[[mockfactory expect]andReturn:requestDataString]createStringRepresentationOfObject:mockUser];
-//    
-//    NSDictionary * requestDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-//                                        requestDataString, @"jsonData",
-//   
-//                                        nil];
-//    
-//    NSString* dumbyString = @"BLAHHHHHHH";
-//    NSData * dumbyData = [dumbyString dataUsingEncoding:NSUTF8StringEncoding];
-//    
-//    
-//    id mockUser2 = [OCMockObject niceMockForClass:[SocializeUser class]];
-//    [[[mockfactory expect]andReturn:mockUser2]createObjectFromString:dumbyString forProtocol:@protocol(SocializeUser)];
-//    
-//    void (^testBlock)(NSInvocation *) = ^(NSInvocation *invocation) 
-//    {
-//        [_userService request:nil didLoadRawResponse:dumbyData];
-//    };
-//    
-//    
-//    [[[mockProvider expect]andDo:testBlock]
-//     requestWithMethodName:@"user/" andParams:requestDictionary expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_userService];
-//    
-//    BOOL yes = YES;
-//    [[[mockUser2 expect]andReturnValue:OCMOCK_VALUE(yes)]conformsToProtocol:@protocol(SocializeObject)];
-//    
-//    [[mockDelegate expect] service:_userService didUpdate:OCMOCK_ANY];
-//    [_userService updateUser:mockUser];
-//    
-//    [mockDelegate verify];
-//    [mockfactory verify];
-//    [mockProvider verify];
-//    [mockUser verify];
-//    [mockUser2 verify];
-//    
-//    
-//}
-
-//TODO:: fix it
-//-(void)testFailUserServiceParseUserObjectResponse
-//{
-//    
-//    id mockUser = [OCMockObject mockForClass:[SocializeUser class]];
-//    
-//    SocializeRequest*    request = [SocializeRequest getRequestWithParams:nil
-//                                                        expectedJSONFormat:SocializeDictionary
-//                                                                httpMethod:@"POST"
-//                                                                  delegate:nil
-//                                                                requestURL:nil];
-//
-//    NSString * requestDataString = @"fooSchnickens";
-//    
-//    [[[mockfactory expect]andReturn:requestDataString]createStringRepresentationOfObject:mockUser];
-//    
-//    NSDictionary * requestDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-//                                        requestDataString, @"jsonData",
-//                                        
-//                                        nil];
-//    
-//    NSString* dumbyString = @"BLAHHHHHHH";
-//    NSData * dumbyData = [dumbyString dataUsingEncoding:NSUTF8StringEncoding];
-//    
-//    NSObject * badObject = [[NSObject new]autorelease];
-//    [[[mockfactory expect]andReturn:badObject]createObjectFromString:dumbyString forProtocol:@protocol(SocializeUser)];
-//    
-//    void (^testBlock)(NSInvocation *) = ^(NSInvocation *invocation) 
-//    {
-//        [_userService request:request didLoadRawResponse:dumbyData];
-//    };
-//    
-//    
-//    [[[mockProvider expect]andDo:testBlock]
-//     requestWithMethodName:@"user/" andParams:requestDictionary expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_userService];
-//    
-//    [[mockDelegate expect] service:_userService didFail:OCMOCK_ANY];
-//    [_userService updateUser:mockUser];
-//    
-//    [mockDelegate verify];
-//    [mockfactory verify];
-//    [mockProvider verify];
-//    [mockUser verify];
-//}
-
-//TODO:: fix it
-//
-//-(void)testFailUserServiceRequest
-//{
-//    
-//    id mockUser = [OCMockObject mockForClass:[SocializeUser class]];
-//    
-//    
-//    NSString * requestDataString = @"fooSchnickens";
-//    
-//    [[[mockfactory expect]andReturn:requestDataString]createStringRepresentationOfObject:mockUser];
-//    
-//    NSDictionary * requestDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-//                                        requestDataString, @"jsonData",
-//                                        
-//                                        nil];
-//    
-//    NSError * mockError = [[NSError new] autorelease];
-//    void (^testBlock)(NSInvocation *) = ^(NSInvocation *invocation) 
-//    {
-//        [_userService request:nil didFailWithError:mockError];
-//    };
-//    
-//    
-//    [[[mockProvider expect]andDo:testBlock]
-//     requestWithMethodName:@"user/" andParams:requestDictionary expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_userService];
-//    
-//    [[mockDelegate expect] service:_userService didFail:OCMOCK_ANY];
-//    [_userService updateUser:mockUser];
-//    
-//    [mockDelegate verify];
-//    [mockfactory verify];
-//    [mockProvider verify];
-//    [mockUser verify];
-//}
-//
+-(void)testGetCurrentUser
+{
+    NSUserDefaults* def = [NSUserDefaults standardUserDefaults];
+    int userId = 1234;
+    [def setObject: [NSNumber numberWithInt:userId] forKey:kSOCIALIZE_USERID_KEY];
+    [def synchronize];
 
 
+    NSDictionary * userIdDictionary = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:userId] forKey:@"id"];
+    [[mockProvider expect]
+     requestWithMethodName:@"user/" andParams:userIdDictionary expectedJSONFormat:SocializeDictionary andHttpMethod:@"GET" andDelegate:_userService];
+    
+    [_userService currentUser];
+    
+    [def removeObjectForKey:kSOCIALIZE_USERID_KEY];
+    [def synchronize];
+}
+
+-(void)testUpdateUser
+{
+    
+    id mockUser = [OCMockObject mockForClass:[SocializeUser class]];
+
+    
+    NSString * requestDataString = @"fooSchnickens";
+    
+    [[[mockfactory expect]andReturn:requestDataString]createStringRepresentationOfObject:mockUser];
+    
+    NSDictionary * requestDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                        requestDataString, @"jsonData",
+   
+                                        nil];
+    
+    [[mockProvider expect]
+     requestWithMethodName:@"user/" andParams:requestDictionary expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:_userService];
+    
+    
+    [_userService updateUser:mockUser];
+    
+    [mockfactory verify];
+    [mockProvider verify];    
+}
 
 
 @end
