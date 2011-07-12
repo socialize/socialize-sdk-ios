@@ -44,7 +44,7 @@
 
 
 -(void) getCommentById: (int) commentId;
--(void) getCommentsList: (NSArray*) commentsId;
+-(void) getCommentsList: (NSArray*) commentsId andKeys: (NSArray*)keys;
 -(void) getCommentList: (NSString*) entryKey;
 
 -(void) createCommentForEntityWithKey: (NSString*) entityKey comment: (NSString*) comment;
