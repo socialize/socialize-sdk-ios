@@ -84,6 +84,29 @@
     [settingsViewController release]; settingsViewController = nil;
 }
 
+-(void) loadPreviousEntities
+{
+    NSArray* entitiesKeys = [[NSArray alloc] initWithContentsOfFile:@"Entities.plist"];
+    if(entitiesKeys)
+    {
+        for(NSString* key in entitiesKeys)
+        {
+            [_service.entityService entityWithKey:key];            
+        }
+    }
+    [entitiesKeys release];
+}
+
+-(void) saveEntitiesKeys
+{
+    NSMutableArray* entitiesKeys = [NSMutableArray arrayWithCapacity:[_entities count]];
+    for(SocializeEntity* entity in _entities)
+    {
+        [entitiesKeys addObject:entity.key];
+    }
+    [entitiesKeys writeToFile:@"Entities.plist" atomically:YES];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style andService: (Socialize*) service
 {
     self = [super initWithStyle:style];
@@ -138,6 +161,8 @@
     [_entityName setBackgroundColor:[UIColor whiteColor]];
     [_entityName setPlaceholder:@"name"];
     _entityName.text = @"";
+    
+    [self loadPreviousEntities];
 }
 
 - (void)viewDidUnload
@@ -229,6 +254,10 @@
 
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
     DLog(@"didFetchElements %@", dataArray);
+    NSLog(@"and errors %@", errorList);
+    
+    [_entities addObjectsFromArray:dataArray];
+    [self.tableView reloadData];
 }
 
 

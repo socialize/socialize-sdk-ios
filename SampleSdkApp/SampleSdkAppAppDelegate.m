@@ -22,7 +22,7 @@ static NSString* kAppId = @"115622641859087";
 
 
 @synthesize window=_window;
-@synthesize entityListViewController;
+@synthesize authenticationViewController;
 @synthesize facebook;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -30,8 +30,9 @@ static NSString* kAppId = @"115622641859087";
     socialize = [[Socialize alloc] init];  
     facebook = [[Facebook alloc] initWithAppId:kAppId];
 
-    entityListViewController = [[EntityListViewController alloc] initWithStyle: UITableViewStylePlain andService: socialize];
-    rootController = [[UINavigationController alloc] initWithRootViewController:entityListViewController];
+//    entityListViewController = [[EntityListViewController alloc] initWithStyle: UITableViewStylePlain andService: socialize];
+    authenticationViewController = [[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil];
+    rootController = [[UINavigationController alloc] initWithRootViewController:authenticationViewController];
 
     [self.window addSubview:rootController.view];
     [self.window makeKeyAndVisible];
@@ -49,10 +50,7 @@ static NSString* kAppId = @"115622641859087";
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    /*
-     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-     If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-     */
+    [authenticationViewController.entityListViewController saveEntitiesKeys];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -67,11 +65,12 @@ static NSString* kAppId = @"115622641859087";
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-    if([socialize isAuthenticated])
+/*    if([socialize isAuthenticated])
         return;
      
     [socialize authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" delegate:self];
     rootController.view.userInteractionEnabled = NO;
+ */
 }
 
 -(void)didAuthenticate
@@ -87,19 +86,15 @@ static NSString* kAppId = @"115622641859087";
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    /*
-     Called when the application is about to terminate.
-     Save data if appropriate.
-     See also applicationDidEnterBackground:.
-     */
+    [authenticationViewController.entityListViewController saveEntitiesKeys];
 }
 
 - (void)dealloc
 {
     [rootController  release];
-    [entityListViewController release];
+    [authenticationViewController release];
     [_window release];
-    [socialize release];
+    //[socialize release];
     [super dealloc];
 }
 
