@@ -173,7 +173,7 @@
                     [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
             }
             else
-                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+                [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponse];
         }
         else 
             [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
