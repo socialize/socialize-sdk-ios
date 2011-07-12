@@ -116,17 +116,30 @@ expectedJSONFormat = _expectedJSONFormat;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // public
+-(void) addParameter: (id)parameter withKey: (NSString*) key toCollection: (NSMutableArray*) collection
+{
+    NSString* value = [[NSString alloc]initWithFormat:@"%@", parameter];
+    OARequestParameter* p = [[OARequestParameter alloc] initWithName:key value:value];
+    [collection addObject:p];
+    [p release];
+    [value release];
+}
 
 -(NSArray*) formatUrlParams
 {
     NSMutableArray* getParams = [[[NSMutableArray alloc] initWithCapacity:[_params count]] autorelease];
     [_params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
      {
-         NSString* value = [[NSString alloc]initWithFormat:@"%@", obj];
-         OARequestParameter* p = [[OARequestParameter alloc] initWithName:key value:value];
-         [getParams addObject:p];
-         [p release];
-         [value release];
+         if([obj isKindOfClass: [NSArray class]])
+         {
+                for(id item in obj)
+                {
+                    [self addParameter:item withKey:key toCollection:getParams];
+                }
+         }else
+         {
+             [self addParameter:obj withKey:key toCollection:getParams];
+         }
      }
     ];
     

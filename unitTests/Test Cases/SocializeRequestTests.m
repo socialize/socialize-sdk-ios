@@ -32,29 +32,22 @@
 #import <OCMock/OCMock.h>
 
 @implementation SocializeRequestTests
-/*
-- (void)testSuccessGetRequest {
-    [self prepare];
-    
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   @"parameter_value_1", @"parameter_key_1",
-                                   @"parameter_value_2", @"parameter_key_2",
-                                   nil];
-    
-    _request = [SocializeRequest getRequestWithParams:params httpMethod:@"GET" delegate:self requestURL:@"www.google.com"];
-    
-    _connection = [[GHMockNSURLConnection alloc] initWithRequest:nil delegate:_request startImmediately:NO];	
-    [_connection receiveHTTPResponseWithStatusCode:204 headers:nil afterDelay:0.1];
-    [_connection receiveData:[NSData data] afterDelay:0.2];
-    [_connection finishAfterDelay:0.4];
-    
-    [_request connect];
-    
-    GHAssertTrue([_request loading], nil);
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:3.0];
-}
-*/
 
+-(BOOL) compareParams: (NSArray*)actual and: (NSArray*)expected
+{
+    if([actual count] != [expected count])
+        return NO;
+    
+    for(int i = 0; i< [actual count]; i++)
+    {
+        if([[actual objectAtIndex:i] name] == [[expected objectAtIndex:i] name] && [[actual objectAtIndex:i] value] == [[expected objectAtIndex:i] value])
+        {
+            return NO;
+        }
+    }
+    return YES;
+}
+//////////////////////////////////////////////////////////////////
 
 -(void)testRequestCreation{
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -68,37 +61,31 @@
     GHAssertEqualStrings(@"www.google.com",expectedRes, @"should be equal");
 }
 
-/*
-- (void)testSuccessPostRequest {
-    [self prepare];
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   @"hello_there", @"udid",
-                                   nil];
+
+
+-(void)testRequestForMultipleIds
+{
+    NSArray *ids = [NSArray arrayWithObjects:[NSNumber numberWithInt:1],[NSNumber numberWithInt:2],[NSNumber numberWithInt:3], nil];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:ids,@"id", nil];   
+          
+    _request = [SocializeRequest getRequestWithParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:nil requestURL:@"some_service"];
+    _request.dataFetcher = [OCMockObject niceMockForClass: [OAAsynchronousDataFetcher class]];
+    [_request connect];
     
-    _request = [SocializeRequest getRequestWithParams:params httpMethod:@"POST" delegate:self requestURL:@"http://www.dev.getsocialize.com/v1/authenticate/"];
-    [_request retain];
-    [_request connect];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:30.0];
+    NSArray* oaRequestParamsActual = [_request.request parameters];
+    
+    OARequestParameter* p1 = [OARequestParameter requestParameterWithName:@"id" value:@"1"];
+    OARequestParameter* p2 = [OARequestParameter requestParameterWithName:@"id" value:@"2"];
+    OARequestParameter* p3 = [OARequestParameter requestParameterWithName:@"id" value:@"3"];
+    NSArray* oaRequestParamsExpected = [NSArray arrayWithObjects:p1, p2, p3, nil];
+    
+    GHAssertTrue([self compareParams: oaRequestParamsActual and: oaRequestParamsExpected], nil);
 }
-
-*/
-
-/*-(void)testOAInterfaceForRequests1{
-
-    id mockProvider = [OCMockObject mockForClass:[OAAsynchronousDataFetcher class]];
-    [[mockProvider expect] start];
-    [self prepare];
-    _request = [SocializeRequest getRequestWithParams:nil httpMethod:@"GET" delegate:self requestURL:@"invalidparam"];
-    [_request connect];
-    [mockProvider verify];
-}
-*/
 
 
 - (void)testFaildGetRequest {
     [self prepare];
     _request = [SocializeRequest getRequestWithParams:nil expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET"  delegate:self requestURL:@"invalidparam"];
-  //  [_request retain];
     
     [_request connect];  
     [self waitForStatus:kGHUnitWaitStatusFailure timeout:30.0];
@@ -108,7 +95,6 @@
 - (void)testFaildPOSTRequest {
     [self prepare];
     _request = [SocializeRequest getRequestWithParams:nil  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"POST"  delegate:self requestURL:@"invalidparam"];
-//    [_request retain];
     
     [_request connect];  
     [self waitForStatus:kGHUnitWaitStatusFailure timeout:30.0];
@@ -144,7 +130,6 @@
 
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
-    // GHAssertEqualObjects(_expectedError, error, nil);
     [self notify:kGHUnitWaitStatusFailure];
 }
 
