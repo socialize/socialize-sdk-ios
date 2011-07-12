@@ -20,6 +20,7 @@ typedef enum {
 
 
 @protocol SocializeRequestDelegate;
+@class OAServiceTicket;
 
 @interface SocializeRequest : NSObject 
 {
@@ -62,6 +63,10 @@ typedef enum {
 
 @end
 
+@interface SocializeRequest(ResponseHandlers)
+    - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data;
+    - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFailWithError:(NSError*)error;
+@end
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*

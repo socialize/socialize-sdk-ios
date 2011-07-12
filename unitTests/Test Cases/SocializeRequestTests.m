@@ -29,9 +29,11 @@
 #import "SocializeRequestTests.h"
 #import <GHUnitIOS/GHMockNSURLConnection.h>
 #import "OAAsynchronousDataFetcher.h"
+#import "OAServiceTicket.h"
 #import <OCMock/OCMock.h>
 
 @implementation SocializeRequestTests
+@synthesize expectedError = _expectedError;
 
 -(BOOL) compareParams: (NSArray*)actual and: (NSArray*)expected
 {
@@ -82,6 +84,28 @@
     GHAssertTrue([self compareParams: oaRequestParamsActual and: oaRequestParamsExpected], nil);
 }
 
+-(void)testRequestForMultipleIdsAndKeys
+{
+    NSArray *ids = [NSArray arrayWithObjects:[NSNumber numberWithInt:1],[NSNumber numberWithInt:2],[NSNumber numberWithInt:3], nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"url_1",@"url_2", nil];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:ids,@"id", keys, @"key", nil];   
+    
+    _request = [SocializeRequest getRequestWithParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:nil requestURL:@"some_service"];
+    _request.dataFetcher = [OCMockObject niceMockForClass: [OAAsynchronousDataFetcher class]];
+    [_request connect];
+    
+    NSArray* oaRequestParamsActual = [_request.request parameters];
+    
+    OARequestParameter* p1 = [OARequestParameter requestParameterWithName:@"id" value:@"1"];
+    OARequestParameter* p2 = [OARequestParameter requestParameterWithName:@"id" value:@"2"];
+    OARequestParameter* p3 = [OARequestParameter requestParameterWithName:@"id" value:@"3"];
+    OARequestParameter* p4 = [OARequestParameter requestParameterWithName:@"key" value:@"url_1"];
+    OARequestParameter* p5 = [OARequestParameter requestParameterWithName:@"key" value:@"url_2"];
+    NSArray* oaRequestParamsExpected = [NSArray arrayWithObjects:p1, p2, p3, p4, p5, nil];
+    
+    GHAssertTrue([self compareParams: oaRequestParamsActual and: oaRequestParamsExpected], nil);
+}
+
 
 - (void)testFaildGetRequest {
     [self prepare];
@@ -116,6 +140,45 @@
     _request.request = mockRequest;
     [_request connect];
     [mockRequest verify];
+}
+
+-(void)testTokenRequestResponceFailed
+{
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeRequestDelegate)];
+
+    _request = [SocializeRequest getRequestWithParams:nil  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:mockDelegate requestURL:@"invalidparam"];
+    
+    id mockResponse = [OCMockObject mockForClass:[NSHTTPURLResponse class]];
+    int code = 404;
+    [[[mockResponse stub]andReturnValue:OCMOCK_VALUE(code)]statusCode];
+    
+    self.expectedError = [NSError errorWithDomain:@"SocializeSDK" code:code userInfo:nil];
+    [[mockDelegate expect]request:OCMOCK_ANY didFailWithError:OCMOCK_ANY];
+    
+    OAServiceTicket* tiket = [[OAServiceTicket alloc] initWithRequest: nil response: mockResponse didSucceed: YES];
+    [_request tokenRequestTicket:tiket didFinishWithData:nil];
+    [mockDelegate verify];
+    [mockResponse verify];
+}
+
+-(void)testTokenRequestResponceSuccess
+{
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeRequestDelegate)];
+    
+    _request = [SocializeRequest getRequestWithParams:nil  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:mockDelegate requestURL:@"invalidparam"];
+    
+    id mockResponse = [OCMockObject mockForClass:[NSHTTPURLResponse class]];
+    int code = 200;
+    [[[mockResponse stub]andReturnValue:OCMOCK_VALUE(code)]statusCode];
+    
+    self.expectedError = [NSError errorWithDomain:@"SocializeSDK" code:code userInfo:nil];
+    NSData* data = [NSData data];
+    [[mockDelegate expect]request:OCMOCK_ANY didLoadRawResponse:data];
+    
+    OAServiceTicket* tiket = [[OAServiceTicket alloc] initWithRequest: nil response: mockResponse didSucceed: YES];
+    [_request tokenRequestTicket:tiket didFinishWithData:data];
+    [mockDelegate verify];
+    [mockResponse verify];
 }
 
 - (id)requestLoading:(NSMutableURLRequest *)request
