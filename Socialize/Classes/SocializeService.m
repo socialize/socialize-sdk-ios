@@ -57,7 +57,7 @@
     self = [super init];
     if(self != nil)
     {
-        _provider = provider;
+        self.provider = provider;
         _objectCreator = objectFactory;
         self.delegate = delegate;
     }
@@ -102,14 +102,19 @@
 
 -(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList {
 
-    NSMutableArray* array = nil;// = [NSMutableArray array];
+    NSMutableArray* array = nil;
     NSMutableArray* errorArray = nil;
-    if (![objectList isKindOfClass:[NSArray class]]){
+    
+    if ([objectList isKindOfClass:[NSArray class]]){
+        array = objectList;
+    }
+    else if (objectList != nil){
         array = [NSMutableArray array];
         [array addObject:objectList];
     }
-    else{
-        array = objectList;
+    else {
+        array = nil;
+        errorArray = nil;
     }
     
     if (![errorList count])
@@ -134,7 +139,10 @@
     NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     DLog(@"responseString  ----->  %@ <------ ", responseString);
     
-    if(request.expectedJSONFormat == SocializeDictionaryWIthListAndErrors){
+    if(request.expectedJSONFormat == SocializeAny){
+        [self invokeAppropriateCallback:request objectList:nil errorList:nil];
+    }
+    else if(request.expectedJSONFormat == SocializeDictionaryWIthListAndErrors){
         
         // if it is the response form {errors:"",items:""}
         JSONDecoder *jsonKitDecoder = [JSONDecoder decoder];
@@ -165,7 +173,7 @@
                     [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
             }
             else
-                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+                [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponse];
         }
         else 
             [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
@@ -194,6 +202,7 @@
         else 
             [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
     }
+    
 }
 
 -(void)doDidReceiveSocializeObject:(id<SocializeObject>)objectResponse

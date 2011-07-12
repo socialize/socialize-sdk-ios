@@ -41,6 +41,8 @@
 }
 
 - (id)initWithStyle:(UITableViewStyle)style andService: (Socialize*) service;
+-(void) loadPreviousEntities;
+-(void) saveEntitiesKeys;
 
 @property (nonatomic, assign) Socialize* service;
 

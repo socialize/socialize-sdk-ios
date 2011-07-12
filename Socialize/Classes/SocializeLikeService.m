@@ -57,7 +57,7 @@
         NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease];
         [params setObject:[NSNumber numberWithInteger:[like objectID]] forKey:@"id"];
         NSString* updatedResource = [NSString stringWithFormat:@"%@%d/", LIKE_METHOD, [like objectID]];
-        [_provider requestWithMethodName:updatedResource andParams:params  expectedJSONFormat:SocializeDictionary andHttpMethod:@"DELETE" andDelegate:self];
+        [_provider requestWithMethodName:updatedResource andParams:params  expectedJSONFormat:SocializeAny andHttpMethod:@"DELETE" andDelegate:self];
     }
 }
 

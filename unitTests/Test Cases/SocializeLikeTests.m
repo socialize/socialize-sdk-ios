@@ -10,7 +10,6 @@
 #import "SocializeLikeService.h"
 #import <OCMock/OCMock.h>
 #import "Socialize.h"
-#import "NSMutableData+PostBody.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeObjectFactory.h"
 #import "SocializeLike.h"
@@ -66,7 +65,7 @@
     _service.provider = mockProvider; 
     
     NSString* newMethodName = [NSString stringWithFormat:@"like/%d/", alikeId];
-    [[mockProvider expect] requestWithMethodName:newMethodName andParams:params  expectedJSONFormat:SocializeDictionary andHttpMethod:@"DELETE" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:newMethodName andParams:params  expectedJSONFormat:SocializeAny andHttpMethod:@"DELETE" andDelegate:_service];
     [_service deleteLike: mockLike];
     [mockProvider verify];
 }

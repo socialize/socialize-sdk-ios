@@ -9,7 +9,6 @@
 #import "SocializeRequest.h"
 #import <UIKit/UIKit.h>
 #import "NSString+UrlSerialization.h"
-#import "NSMutableData+PostBody.h"
 #import "OAAsynchronousDataFetcher.h"
 #import "OAConsumer.h"
 #import "OAServiceTicket.h"
@@ -30,6 +29,8 @@ static const int kGeneralErrorCode = 10000;
     -(void)handleResponseData:(NSData *)data;
     -(void)produceHTMLOutput:(NSString*)outputString;
     -(NSArray*) formatUrlParams;
+    +(NSString*)consumerKey;
+    +(NSString*)consumerSecret;
 @end
 
 @implementation SocializeRequest
@@ -62,13 +63,25 @@ expectedJSONFormat = _expectedJSONFormat;
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
 
+
++(NSString*)consumerKey{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults valueForKey:kSOCIALIZE_API_KEY_KEY];
+}
+
++(NSString*)consumerSecret{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults valueForKey:kSOCIALIZE_API_SECRET_KEY];
+}
+
 + (SocializeRequest *)getRequestWithParams:(id) params
                         expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
                                 httpMethod:(NSString *) httpMethod
                                   delegate:(id<SocializeRequestDelegate>) delegate
                                 requestURL:(NSString *) url 
 {
-    SocializeRequest* request = [[[SocializeRequest alloc] init] autorelease];
+    //We will release object in network responce section. After complete of execution of user delegates;
+    SocializeRequest* request = [[SocializeRequest alloc] init]; 
     request.delegate = delegate;
     request.url = url;
     request.httpMethod = httpMethod;
@@ -78,7 +91,7 @@ expectedJSONFormat = _expectedJSONFormat;
     
     
     request.token =  [[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX ];
-    request.consumer = [[OAConsumer alloc] initWithKey:kSOCIALIZE_API_KEY secret:kSOCIALIZE_API_SECRET];
+    request.consumer = [[OAConsumer alloc] initWithKey:[self consumerKey] secret:[self consumerSecret]];
     request.request = [[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:request.url] consumer:request.consumer token:request.token realm:nil signatureProvider:nil];
     
     request.dataFetcher = [[OAAsynchronousDataFetcher alloc] initWithRequest:request.request delegate:request
@@ -205,7 +218,9 @@ expectedJSONFormat = _expectedJSONFormat;
     if ([ticket.response statusCode] == 200)
         [self handleResponseData:data];
     else
-        [self failWithError:[NSError errorWithDomain:@"SocializeSDK" code:ticket.response.statusCode userInfo:nil]];
+        [self failWithError:[NSError errorWithDomain:@"Socialize" code:ticket.response.statusCode userInfo:nil]];
+    
+    [self release];
 }
 
 -(void)produceHTMLOutput:(NSString*)outputString{
@@ -223,6 +238,7 @@ expectedJSONFormat = _expectedJSONFormat;
 
 - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFailWithError:(NSError*)error{
     [self  failWithError:error];
+    [self release];
 }
 
 @end

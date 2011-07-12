@@ -19,6 +19,7 @@
 -(NSString*)getSocializeId;
 -(NSString*)getSocializeToken;
 -(void)persistUserInfo:(NSDictionary*)dictionary;
+-(void)persistConsumerInfo:(NSString*)apiKey andApiSecret:(NSString*)apiSecret;
 @end
 
 @implementation SocializeAuthenticateService
@@ -54,7 +55,7 @@
     NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                 payloadJson, @"jsonData",
                                                 nil];
-
+    [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
     [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
@@ -64,6 +65,15 @@
         return YES;
     else
         return NO;
+}
+
+-(void)persistConsumerInfo:(NSString*)apiKey andApiSecret:(NSString*)apiSecret{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if (userDefaults){
+        [userDefaults setObject:apiKey forKey:kSOCIALIZE_API_KEY_KEY];
+        [userDefaults setObject:apiSecret forKey:kSOCIALIZE_API_SECRET_KEY];
+        [userDefaults synchronize];
+    }
 }
 
 -(void)persistUserInfo:(NSDictionary*)dictionary{
@@ -110,7 +120,6 @@
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
                              delegate:(id<SocializeAuthenticationDelegate>)delegate
                            {
-                
    _delegate = delegate;
    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
                              udid,@"udid", 
@@ -119,7 +128,8 @@
                              thirdPartyAuthToken, @"auth_token",
                              thirdPartyUserId, @"auth_id" , nil] ;                        
                                
-   [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:params  expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
+   [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
+   [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
 

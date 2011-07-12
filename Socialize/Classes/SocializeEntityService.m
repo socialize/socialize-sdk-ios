@@ -57,17 +57,11 @@
     return  @protocol(SocializeEntity);
 }
 
-//-(void)entityWithKey:(NSString *)keyOfEntity
-//{
-//    
-//}
-
-//-(void)listEntitiesWithKeys:(NSArray *)entityKeysArray
-//{
-//    NSString * stringRepresentation =  [_objectCreator createStringRepresentationOfArray:entityKeysArray]; 
-//    NSMutableDictionary* params = [self genereteParamsFromJsonString:stringRepresentation];
-//    [_provider requestWithMethodName:ENTITY_LIST_ENDPOINT andParams:params andHttpMethod:@"POST" andDelegate:self];
-//}
+-(void)entityWithKey:(NSString *)keyOfEntity
+{
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:keyOfEntity,ENTRY_KEY, nil];
+    [_provider requestWithMethodName:ENTITY_GET_ENDPOINT andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self]; 
+}
 
 -(void)createEntities:(NSArray *)entities expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
 {
@@ -80,6 +74,15 @@
 {
     [self createEntities:[NSArray arrayWithObject:entity]];
 }
+
+
+//-(void)fetchEntity:(NSString*)key
+//{
+//    NSMutableDictionary*  params = [[[NSMutableDictionary alloc] init] autorelease]; 
+//    [params setObject:key forKey:@"id"];
+//    NSString* updatedResource = [NSString stringWithFormat:@"%@%@/", ENTITY_KEY, key]; 
+//    [_provider requestWithMethodName:updatedResource andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
+//}
 
 -(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity
 {

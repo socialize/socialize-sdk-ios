@@ -73,9 +73,6 @@
     return  JSONString;
 }
 
--(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
-    NSLog(@"didCreate %@", object);
-}
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
     NSLog(@"didDelete %@", object);
