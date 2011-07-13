@@ -50,7 +50,6 @@
 //@property (nonatomic, readonly) SocializeUserService*      userService;
 
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret    
-               udid:(NSString*)udid
   delegate:(id<SocializeAuthenticationDelegate>)delegate;
 
 /*-(void)authenticateWithApiKey:(NSString*)apiKey 

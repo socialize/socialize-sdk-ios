@@ -63,7 +63,7 @@
 
 -(IBAction)authenticate:(id)sender{
     [socialize removeAuthenticationInfo];
-    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text udid:@"someid" delegate:self];
+    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text delegate:self];
 }
 
 -(IBAction)textFieldReturn:(id)sender

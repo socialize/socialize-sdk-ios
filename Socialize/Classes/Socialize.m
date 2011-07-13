@@ -47,7 +47,6 @@
 #pragma mark authentication info
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret
-               udid:(NSString*)udid
             delegate:(id<SocializeAuthenticationDelegate>)delegate
 {
     _authService.delegate = delegate;
