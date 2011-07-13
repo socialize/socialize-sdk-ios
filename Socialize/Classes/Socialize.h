@@ -67,6 +67,6 @@
 -(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
 
 /** like related stuff **/
--(void)likeEntityWithKey:(NSString*)key;
+-(void)likeEntityWithKey:(NSString*)key andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 -(void)unlikeEntity:(id<SocializeLike>)like;
 @end
