@@ -51,7 +51,7 @@
             delegate:(id<SocializeAuthenticationDelegate>)delegate
 {
     _authService.delegate = delegate;
-   [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret udid:udid ]; 
+   [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret]; 
 }
 
 
@@ -86,11 +86,13 @@
 
 
 #pragma mark like related stuff
--(void)likeEntityWithKey:(NSString*)key{
-    [_likeService postLikeForEntityKey:key]; 
+-(void)likeEntityWithKey:(NSString*)key andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat
+{
+    [_likeService postLikeForEntityKey:key andLongitude:lng latitude:lat]; 
 }
 
--(void)unlikeEntity:(id<SocializeLike>)like{
+-(void)unlikeEntity:(id<SocializeLike>)like
+{
     [_likeService deleteLike:like]; 
 }
 

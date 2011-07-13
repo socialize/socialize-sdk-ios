@@ -12,7 +12,7 @@
 #import "OAMutableURLRequest.h"
 #import "OADataFetcher.h"
 #import "OAAsynchronousDataFetcher.h"
-
+#import <UIKit/UIKit.h>
 #import "JSONKit.h"
 
 @interface SocializeAuthenticateService()
@@ -47,10 +47,9 @@
 
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret
-               udid:(NSString*)udid
          {
              
-    NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", udid];
+    NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [UIDevice currentDevice].uniqueIdentifier];
     NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                 payloadJson, @"jsonData",
                                                 nil];
@@ -113,13 +112,12 @@
 
 -(void)authenticateWithApiKey:(NSString*)apiKey
                             apiSecret:(NSString*)apiSecret 
-                                 udid:(NSString*)udid
                   thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
                      thirdPartyUserId:(NSString*)thirdPartyUserId
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
-                           {
-   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
-                             udid,@"udid", 
+{
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
+                             [UIDevice currentDevice].uniqueIdentifier,@"udid", 
                              [self getSocializeId],  @"socialize_id", 
                              @"1"/* auth type is for facebook*/ , @"auth_type", //TODO:: should be changed
                              thirdPartyAuthToken, @"auth_token",

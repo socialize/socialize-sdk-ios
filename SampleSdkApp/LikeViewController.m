@@ -46,7 +46,7 @@
     if (_like)
         [self.socialize unlikeEntity:_like];
     else
-        [self.socialize likeEntityWithKey:_entityEntryField.text];
+        [self.socialize likeEntityWithKey:_entityEntryField.text andLongitude:nil latitude:nil];
 }
 
 #pragma mark - View lifecycle

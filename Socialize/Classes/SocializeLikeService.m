@@ -37,15 +37,23 @@
     return  @protocol(SocializeLike);
 }
 
--(void)postLikeForEntity:(id<SocializeEntity>)entity{
+-(void)postLikeForEntity:(id<SocializeEntity>)entity andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat
+{
     DLog(@"entity %@", entity);
-    [self postLikeForEntityKey:[entity key]];
+    [self postLikeForEntityKey:[entity key] andLongitude:lng latitude:lat];
 }
 
--(void)postLikeForEntityKey:(NSString*)key{
-
+-(void)postLikeForEntityKey:(NSString*)key andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat
+{
     if (key && [key length]){   
-        NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity", nil];
+        NSDictionary* entityParam = nil;
+        if (lng!= nil && lat != nil)
+        {
+            entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity", lng, @"lng", lat, @"lat", nil];
+        }
+        else
+            entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity", nil];
+        
         NSArray *params = [NSArray arrayWithObjects:entityParam, 
                            nil];
         [_provider requestWithMethodName:LIKE_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];

@@ -99,7 +99,29 @@
 
     [[mockProvider expect] requestWithMethodName:@"like/" andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
 
-    [_service postLikeForEntity:mockEntity];
+    [_service postLikeForEntity:mockEntity andLongitude:nil latitude:nil];
+    [mockProvider verify];
+}
+
+-(void)testpostLikeForEntityWithGeo{
+    
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    _service.provider = mockProvider;
+    
+    SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
+    SocializeEntity* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeEntity)]; 
+    
+    mockEntity.key = @"www.123.com";
+    NSNumber* lng = [NSNumber numberWithFloat:-122.397850];
+    NSNumber* lat = [NSNumber numberWithFloat:37.786521];
+    
+    NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:mockEntity.key, @"entity", lng, @"lng", lat, @"lat", nil];
+    NSArray *params = [NSArray arrayWithObjects:entityParam, 
+                       nil];
+    
+    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
+    
+    [_service postLikeForEntity:mockEntity andLongitude:lng latitude:lat];
     [mockProvider verify];
 }
 
