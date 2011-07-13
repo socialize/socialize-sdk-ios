@@ -41,6 +41,7 @@
 		16E2C4631398F6E3007C91ED /* action-bar-button-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C45A1398F6E3007C91ED /* action-bar-button-black.png */; };
 		16E2C4691398F6E3007C91ED /* action-bar-notification-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C4601398F6E3007C91ED /* action-bar-notification-icon.png */; };
 		16E2C46C1399000C007C91ED /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C46B1399000C007C91ED /* action-bar-bg.png */; };
+		16F21EE013CDDE5000911977 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		16F449BE13AF2974003BE655 /* SocializeCommentFormaterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449BD13AF2974003BE655 /* SocializeCommentFormaterTests.m */; };
 		16F449CA13AF4DCE003BE655 /* SocializeUserJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 16F449C813AF4DCD003BE655 /* SocializeUserJSONFormatter.h */; };
 		16F449CB13AF4DCE003BE655 /* SocializeUserJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449C913AF4DCD003BE655 /* SocializeUserJSONFormatter.m */; };
@@ -406,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CC3DAC21378824800B11B78 /* Foundation.framework in Frameworks */,
+				16F21EE013CDDE5000911977 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

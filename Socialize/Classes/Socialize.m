@@ -51,7 +51,7 @@
             delegate:(id<SocializeAuthenticationDelegate>)delegate
 {
     _authService.delegate = delegate;
-   [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret udid:udid ]; 
+   [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret]; 
 }
 
 
