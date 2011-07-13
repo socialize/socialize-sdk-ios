@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.socialize = [[Socialize alloc] initWithDelegate:self];
+        _socialize = [[Socialize alloc] initWithDelegate:self];
     }
     return self;
 }
