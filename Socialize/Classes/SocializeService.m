@@ -97,7 +97,9 @@
 
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
-//     [self doDidFailWithError:error];
+     //[self doDidFailWithError:error];
+    [_delegate service:self didFail:error]; 
+    
 }
 
 -(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList {

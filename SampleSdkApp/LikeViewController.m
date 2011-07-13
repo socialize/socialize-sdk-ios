@@ -42,6 +42,7 @@
 }
 
 -(IBAction)buttonTouched:(id)sender{
+    [self.view setUserInteractionEnabled:NO];
     if (_like)
         [self.socialize unlikeEntity:_like];
     else
@@ -76,6 +77,7 @@
     [self.likeBtn setTitle:@"Like" forState:UIControlStateNormal];
     [self.likeBtn setTitle:@"Like" forState:UIControlStateHighlighted];
     [_like release] ; _like = nil;
+    [self.view setUserInteractionEnabled:YES];
 }
 
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
@@ -83,6 +85,7 @@
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error{
+    [self.view setUserInteractionEnabled:YES];
     DLog(@"%@", error);
     UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"Like service failed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];
@@ -99,6 +102,7 @@
             [_like  retain];
         }
     }
+    [self.view setUserInteractionEnabled:YES];
 }
 
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{

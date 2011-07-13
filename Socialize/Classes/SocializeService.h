@@ -32,7 +32,7 @@
 
 @class SocializeService;
 @protocol SocializeServiceDelegate 
-
+@required
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object;
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object;
 
