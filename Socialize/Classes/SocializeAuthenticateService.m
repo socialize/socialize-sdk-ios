@@ -27,12 +27,13 @@
 @synthesize provider = _provider;
 @synthesize delegate = _delegate;
 
--(id) initWithProvider:(SocializeProvider*) provider
+-(id) initWithProvider:(SocializeProvider*) provider delegate:(id<SocializeAuthenticationDelegate>)delegate
 {
     self = [super init];
     if(self != nil)
     {
         _provider = provider;
+        _delegate = delegate;
     }
     return self;
 }
@@ -47,10 +48,8 @@
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret
                udid:(NSString*)udid
-            delegate:(id<SocializeAuthenticationDelegate>)delegate
          {
              
-    _delegate = delegate;                
     NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", udid];
     NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                 payloadJson, @"jsonData",
@@ -118,9 +117,7 @@
                   thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
                      thirdPartyUserId:(NSString*)thirdPartyUserId
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
-                             delegate:(id<SocializeAuthenticationDelegate>)delegate
                            {
-   _delegate = delegate;
    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
                              udid,@"udid", 
                              [self getSocializeId],  @"socialize_id", 

@@ -8,29 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import "SampleSdkAppAppDelegate.h"
-#import "DemoEntity.h"
 #import "Socialize.h"
 #import "SocializeLike.h"
 
-// Your Facebook APP Id must be set before running this example
-// See http://www.facebook.com/developers/createapp.php
-// Also, your application must bind to the fb[app_id]:// URL
-// scheme (substitue [app_id] for your real Facebook app id).
-static NSString* kAppId = @"115622641859087";
+//static NSString* kAppId = @"115622641859087";
 
 @implementation SampleSdkAppAppDelegate
 
 
 @synthesize window=_window;
 @synthesize authenticationViewController;
-@synthesize facebook;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    socialize = [[Socialize alloc] init];  
-    facebook = [[Facebook alloc] initWithAppId:kAppId];
 
-//    entityListViewController = [[EntityListViewController alloc] initWithStyle: UITableViewStylePlain andService: socialize];
     authenticationViewController = [[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil];
     rootController = [[UINavigationController alloc] initWithRootViewController:authenticationViewController];
 
@@ -48,11 +39,6 @@ static NSString* kAppId = @"115622641859087";
      */
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    [authenticationViewController.entityListViewController saveEntitiesKeys];
-}
-
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     /*
@@ -65,28 +51,11 @@ static NSString* kAppId = @"115622641859087";
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-/*    if([socialize isAuthenticated])
-        return;
-     
-    [socialize authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" delegate:self];
-    rootController.view.userInteractionEnabled = NO;
- */
-}
-
--(void)didAuthenticate
-{
-    rootController.view.userInteractionEnabled = YES;
-}
-
--(void)didNotAuthenticate:(NSError*)error
-{
-    NSLog(@"%@", error);
-    //entryController.view.userInteractionEnabled = YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [authenticationViewController.entityListViewController saveEntitiesKeys];
+
 }
 
 - (void)dealloc
@@ -94,12 +63,8 @@ static NSString* kAppId = @"115622641859087";
     [rootController  release];
     [authenticationViewController release];
     [_window release];
-    //[socialize release];
     [super dealloc];
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return [facebook handleOpenURL:url];
-}
 
 @end

@@ -18,20 +18,18 @@
     SocializeProvider*                      _provider;
 }
 
--(id) initWithProvider:(SocializeProvider*) provider;
+-(id) initWithProvider:(SocializeProvider*) provider delegate:(id<SocializeAuthenticationDelegate>)delegate;
 
 -(void)authenticateWithApiKey:(NSString*)apiKey  //TODO:: remove apiKey and secret from params list
                     apiSecret:(NSString*)apiSecret
-                         udid:(NSString*)udid
-                    delegate:(id<SocializeAuthenticationDelegate>)delegate;
+                         udid:(NSString*)udid;
 
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                             apiSecret:(NSString*)apiSecret 
                                  udid:(NSString*)udid
                   thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
                      thirdPartyUserId:(NSString*)thirdPartyUserId
-                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
-                            delegate:(id<SocializeAuthenticationDelegate>)delegate;
+                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
 
 +(BOOL)isAuthenticated;
 
