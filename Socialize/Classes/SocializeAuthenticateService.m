@@ -55,7 +55,7 @@
                                                 payloadJson, @"jsonData",
                                                 nil];
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-    [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
+    [_provider secureRequestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
 +(BOOL)isAuthenticated {
@@ -126,7 +126,7 @@
                              thirdPartyUserId, @"auth_id" , nil] ;                        
                                
    [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-   [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
+   [_provider secureRequestWithMethodName:AUTHENTICATE_METHOD andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
 

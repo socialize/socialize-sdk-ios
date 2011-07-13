@@ -94,9 +94,12 @@ expectedJSONFormat = _expectedJSONFormat;
     request.consumer = [[OAConsumer alloc] initWithKey:[self consumerKey] secret:[self consumerSecret]];
     request.request = [[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:request.url] consumer:request.consumer token:request.token realm:nil signatureProvider:nil];
     
-    request.dataFetcher = [[OAAsynchronousDataFetcher alloc] initWithRequest:request.request delegate:request
+    request.dataFetcher = [[SocializeDataFetcher alloc] initWithRequest:request.request delegate:request
                                                            didFinishSelector:@selector(tokenRequestTicket:didFinishWithData:)
                                                              didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
+    
+    NSArray* hosts = [[[NSArray alloc] initWithObjects: @"stage.getsocialize.com", @"dev.getsocialize.com", nil] autorelease]; 
+    request.dataFetcher.trustedHosts = hosts;
        
     DLog(@"Request.url  %@",request.url);
     

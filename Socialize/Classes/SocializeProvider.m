@@ -32,6 +32,7 @@
 
 
 NSString* const kRestserverBaseURL = @"http://stage.getsocialize.com/v1/";
+NSString* const kSecureRestserverBaseURL = @"https://stage.getsocialize.com/v1/";
 
 @interface SocializeProvider()
     - (void)openUrl:(NSString *)url
@@ -151,6 +152,15 @@ expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
 }
 
 
+- (void)secureRequestWithMethodName:(NSString *)methodName
+                    andParams:(id)params
+           expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
+                andHttpMethod:(NSString *)httpMethod
+                  andDelegate:(id <SocializeRequestDelegate>)delegate 
+{
+    NSString *fullURL = [kSecureRestserverBaseURL stringByAppendingString:methodName];
+    [self openUrl:fullURL params:params expectedJSONFormat:expectedJSONFormat httpMethod:httpMethod delegate:delegate];
+}
 
 /**
  * @return boolean - whether this object has an non-expired session token

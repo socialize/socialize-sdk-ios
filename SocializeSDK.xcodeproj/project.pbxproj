@@ -90,6 +90,8 @@
 		6D2C76D813CA8E4A00AC9112 /* AuthenticateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D2C76D213CA7CEF00AC9112 /* AuthenticateViewController.xib */; };
 		6D2C773013CCF11500AC9112 /* LikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2C772E13CCF0E000AC9112 /* LikeViewController.m */; };
 		6D2C773113CCF11500AC9112 /* LikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D2C772F13CCF0FE00AC9112 /* LikeViewController.xib */; };
+		6D31962413CDE72F00154B1F /* SocializeDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */; };
+		6D31962513CDE72F00154B1F /* SocializeDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */; };
 		6D49743B13B2588700463D23 /* SocializeLikeService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743913B2586200463D23 /* SocializeLikeService.h */; };
 		6D49743C13B2588700463D23 /* SocializeLikeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49743A13B2586C00463D23 /* SocializeLikeService.m */; };
 		6D49743F13B295A400463D23 /* SocializeLike.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743D13B2958D00463D23 /* SocializeLike.h */; };
@@ -293,6 +295,8 @@
 		6D2C772D13CCF0D500AC9112 /* LikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeViewController.h; sourceTree = "<group>"; };
 		6D2C772E13CCF0E000AC9112 /* LikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeViewController.m; sourceTree = "<group>"; };
 		6D2C772F13CCF0FE00AC9112 /* LikeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeViewController.xib; sourceTree = "<group>"; };
+		6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDataFetcher.h; path = Classes/SocializeDataFetcher.h; sourceTree = "<group>"; };
+		6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDataFetcher.m; path = Classes/SocializeDataFetcher.m; sourceTree = "<group>"; };
 		6D49743913B2586200463D23 /* SocializeLikeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeService.h; path = Classes/SocializeLikeService.h; sourceTree = "<group>"; };
 		6D49743A13B2586C00463D23 /* SocializeLikeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeService.m; path = Classes/SocializeLikeService.m; sourceTree = "<group>"; };
 		6D49743D13B2958D00463D23 /* SocializeLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLike.h; path = Classes/SocializeLike.h; sourceTree = "<group>"; };
@@ -581,6 +585,8 @@
 				6D144CFC13BCE75D001D8E0A /* SocializeViewService.m */,
 				6D9A0BA913BE20CC00AE949C /* SocializeShareService.h */,
 				6D9A0BAA13BE20D000AE949C /* SocializeShareService.m */,
+				6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */,
+				6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
@@ -949,6 +955,7 @@
 				1670BE5213C6EB45000CC441 /* SocializeCommonDefinitions.h in Headers */,
 				1670BE5413C6EB81000CC441 /* SocializeLikeJSONFormatter.h in Headers */,
 				6D2C76D313CA7CF300AC9112 /* AuthenticateViewController.h in Headers */,
+				6D31962413CDE72F00154B1F /* SocializeDataFetcher.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1179,6 +1186,7 @@
 				6D205A3B13C3D77D00D0645E /* SocializeError.m in Sources */,
 				6D205A3F13C3DB9100D0645E /* SocializeErrorFormatter.m in Sources */,
 				1670BE5613C6EB88000CC441 /* SocializeLikeJSONFormatter.m in Sources */,
+				6D31962513CDE72F00154B1F /* SocializeDataFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
