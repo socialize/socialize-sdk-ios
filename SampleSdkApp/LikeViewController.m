@@ -42,6 +42,9 @@
 }
 
 -(IBAction)buttonTouched:(id)sender{
+    if([_entityEntryField.text isEqualToString:@""])
+        return;
+    
     [self.view setUserInteractionEnabled:NO];
     if (_like)
         [self.socialize unlikeEntity:_like];
