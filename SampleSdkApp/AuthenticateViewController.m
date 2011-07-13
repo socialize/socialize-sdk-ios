@@ -28,6 +28,8 @@
 {
     self.keyField = nil;
     self.secretField = nil;
+    [socialize release];
+    [likeViewController release];
     [super dealloc];
 }
 
@@ -50,19 +52,29 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.keyField = nil;
+    self.secretField = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return NO;
 }
 
 -(IBAction)authenticate:(id)sender{
     [socialize removeAuthenticationInfo];
-    [socialize authenticateWithApiKey:@"90aa0fb5-1995-4771-9ed9-f3c4479a9aaa" apiSecret:@"5f461d4b-999c-430d-a2b2-2df35ff3a9ba" udid:@"someid" delegate:self];
+    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text udid:@"someid" delegate:self];
+}
+
+-(IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
+} 
+
+-(IBAction)backgroundTouched:(id)sender
+{
+    [_keyField resignFirstResponder];
+    [_secretField resignFirstResponder];
 }
 
 #pragma mark Authentication delegate

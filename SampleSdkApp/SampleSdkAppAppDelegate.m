@@ -11,8 +11,6 @@
 #import "Socialize.h"
 #import "SocializeLike.h"
 
-//static NSString* kAppId = @"115622641859087";
-
 @implementation SampleSdkAppAppDelegate
 
 

@@ -12,7 +12,7 @@
 
 
 @implementation LikeViewController
-@synthesize txtField, button , socialize = _socialize;
+@synthesize entityEntryField = _entityEntryField, likeBtn = _likeBtn , socialize = _socialize;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +27,9 @@
 - (void)dealloc
 {
     self.socialize = nil;
+    self.entityEntryField = nil;
+    self.likeBtn = nil;
+    [_like release]; _like = nil; 
     [super dealloc];
 }
 
@@ -42,7 +45,7 @@
     if (_like)
         [self.socialize unlikeEntity:_like];
     else
-        [self.socialize likeEntityWithKey:txtField.text];
+        [self.socialize likeEntityWithKey:_entityEntryField.text];
 }
 
 #pragma mark - View lifecycle
@@ -57,22 +60,21 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.entityEntryField  = nil;
+    self.likeBtn = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return NO;
 }
 
 
 #pragma mark - Socialize Service delegate
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
-    [self.button setTitle:@"Like" forState:UIControlStateNormal];
-    [self.button setTitle:@"Like" forState:UIControlStateHighlighted];
+    [self.likeBtn setTitle:@"Like" forState:UIControlStateNormal];
+    [self.likeBtn setTitle:@"Like" forState:UIControlStateHighlighted];
     [_like release] ; _like = nil;
 }
 
@@ -81,14 +83,17 @@
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error{
-    
+    DLog(@"%@", error);
+    UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"Like service failed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [msg show];
+    [msg release];
 }
 
 -(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
     if (dataArray && [dataArray count]){
         // we have some data
-        [self.button setTitle:@"Unlike" forState:UIControlStateNormal];
-        [self.button setTitle:@"Unlike" forState:UIControlStateHighlighted];
+        [self.likeBtn setTitle:@"Unlike" forState:UIControlStateNormal];
+        [self.likeBtn setTitle:@"Unlike" forState:UIControlStateHighlighted];
         if ([[dataArray objectAtIndex:0]  conformsToProtocol:@protocol(SocializeLike) ]){
             _like = [dataArray objectAtIndex:0];
             [_like  retain];

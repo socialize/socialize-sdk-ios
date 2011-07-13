@@ -24,5 +24,7 @@
 @property (retain, nonatomic) LikeViewController* likeViewController;
 
 -(IBAction)authenticate:(id)sender;
+- (IBAction)textFieldReturn:(id)sender;
+- (IBAction)backgroundTouched:(id)sender;
 
 @end

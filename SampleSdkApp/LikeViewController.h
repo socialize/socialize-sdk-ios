@@ -12,14 +12,14 @@
 
 @interface LikeViewController : UIViewController<SocializeServiceDelegate> {
     
-    UITextField*        txtField;
-    UIButton*           button;
+    UITextField*        _entityEntryField;
+    UIButton*           _likeBtn;
     Socialize*          _socialize;
     id<SocializeLike>   _like;
 }
 
-@property (retain, nonatomic) IBOutlet UITextField* txtField;
-@property (retain, nonatomic) IBOutlet UIButton* button;
+@property (retain, nonatomic) IBOutlet UITextField* entityEntryField;
+@property (retain, nonatomic) IBOutlet UIButton* likeBtn;
 @property (retain, nonatomic) Socialize* socialize;
 
 -(IBAction)buttonTouched:(id)sender;
