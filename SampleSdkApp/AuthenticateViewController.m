@@ -87,7 +87,7 @@
 
 -(void)didNotAuthenticate:(NSError*)error
 {
-    DLog(@"%@", error);
+///    NSLog(@"  error ")
     UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"Authentication failed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];
     [msg release];

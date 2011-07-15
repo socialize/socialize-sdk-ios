@@ -39,7 +39,6 @@
 
 -(void)postLikeForEntity:(id<SocializeEntity>)entity andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat
 {
-    DLog(@"entity %@", entity);
     [self postLikeForEntityKey:[entity key] andLongitude:lng latitude:lat];
 }
 

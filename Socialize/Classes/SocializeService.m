@@ -139,7 +139,6 @@
 {
     //Move the following lines to the base  SocializeService Class, because it's the same for all objects.
     NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    DLog(@"responseString  ----->  %@ <------ ", responseString);
     
     if(request.expectedJSONFormat == SocializeAny){
         [self invokeAppropriateCallback:request objectList:nil errorList:nil];

@@ -60,7 +60,6 @@
 		5C21C0D41396DA0500CF2B9F /* SocializeActivityService.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0D21396DA0400CF2B9F /* SocializeActivityService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C21C0D51396DA0500CF2B9F /* SocializeActivityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0D31396DA0400CF2B9F /* SocializeActivityService.m */; };
 		5C30695A13A10F62007335FF /* JSON-RequestAndResponse-TestFiles in Resources */ = {isa = PBXBuildFile; fileRef = 5C30695913A10F62007335FF /* JSON-RequestAndResponse-TestFiles */; };
-		5C30695E13A14A13007335FF /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D295B1393FE530065C0CB /* JSONKit.m */; };
 		5C3069B713A2ABEC007335FF /* SocializeEntityFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3069B613A2ABEB007335FF /* SocializeEntityFormatterTests.m */; };
 		5C3069BE13A2B396007335FF /* SocializeObjectFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C3069BC13A2B395007335FF /* SocializeObjectFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C3069BF13A2B396007335FF /* SocializeObjectFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3069BD13A2B396007335FF /* SocializeObjectFormatter.m */; };
@@ -93,6 +92,8 @@
 		6D2C773113CCF11500AC9112 /* LikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D2C772F13CCF0FE00AC9112 /* LikeViewController.xib */; };
 		6D31962413CDE72F00154B1F /* SocializeDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D31962513CDE72F00154B1F /* SocializeDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */; };
+		6D3197F213CFB28100154B1F /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D3197F013CFB28100154B1F /* JSONKit.h */; };
+		6D3197F313CFB28100154B1F /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3197F113CFB28100154B1F /* JSONKit.m */; };
 		6D49743B13B2588700463D23 /* SocializeLikeService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743913B2586200463D23 /* SocializeLikeService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D49743C13B2588700463D23 /* SocializeLikeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49743A13B2586C00463D23 /* SocializeLikeService.m */; };
 		6D49743F13B295A400463D23 /* SocializeLike.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743D13B2958D00463D23 /* SocializeLike.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -105,7 +106,6 @@
 		6D9A0BAB13BE20D300AE949C /* SocializeShareService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D9A0BA913BE20CC00AE949C /* SocializeShareService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D9A0BAC13BE20D300AE949C /* SocializeShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0BAA13BE20D000AE949C /* SocializeShareService.m */; };
 		6DEFF42713B01B4000AE962A /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
-		6DF5996713AEE34D000D125A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D295B1393FE530065C0CB /* JSONKit.m */; };
 		84B8F3D11396EF4100C95F41 /* SocializeEntityJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8F3CF1396EF4100C95F41 /* SocializeEntityJSONFormatter.m */; };
 		84B8F3D21396EF4100C95F41 /* SocializeEntityJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 84B8F3D01396EF4100C95F41 /* SocializeEntityJSONFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84B8F3D61396EF4D00C95F41 /* SocializeObjectJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B8F3D41396EF4D00C95F41 /* SocializeObjectJSONFormatter.m */; };
@@ -298,6 +298,8 @@
 		6D2C772F13CCF0FE00AC9112 /* LikeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeViewController.xib; sourceTree = "<group>"; };
 		6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDataFetcher.h; path = Classes/SocializeDataFetcher.h; sourceTree = "<group>"; };
 		6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDataFetcher.m; path = Classes/SocializeDataFetcher.m; sourceTree = "<group>"; };
+		6D3197F013CFB28100154B1F /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = Libraries/JSON/JSONKit.h; sourceTree = "<group>"; };
+		6D3197F113CFB28100154B1F /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = Libraries/JSON/JSONKit.m; sourceTree = "<group>"; };
 		6D49743913B2586200463D23 /* SocializeLikeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeService.h; path = Classes/SocializeLikeService.h; sourceTree = "<group>"; };
 		6D49743A13B2586C00463D23 /* SocializeLikeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeService.m; path = Classes/SocializeLikeService.m; sourceTree = "<group>"; };
 		6D49743D13B2958D00463D23 /* SocializeLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLike.h; path = Classes/SocializeLike.h; sourceTree = "<group>"; };
@@ -314,8 +316,6 @@
 		84B8F3D01396EF4100C95F41 /* SocializeEntityJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEntityJSONFormatter.h; path = Classes/SocializeEntityJSONFormatter.h; sourceTree = "<group>"; };
 		84B8F3D41396EF4D00C95F41 /* SocializeObjectJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeObjectJSONFormatter.m; path = Classes/SocializeObjectJSONFormatter.m; sourceTree = "<group>"; };
 		84B8F3D51396EF4D00C95F41 /* SocializeObjectJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeObjectJSONFormatter.h; path = Classes/SocializeObjectJSONFormatter.h; sourceTree = "<group>"; };
-		9A4D295A1393FE530065C0CB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = Libraries/JSONKit.h; sourceTree = SOURCE_ROOT; };
-		9A4D295B1393FE530065C0CB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = Libraries/JSONKit.m; sourceTree = SOURCE_ROOT; };
 		9A4D295E1393FE7A0065C0CB /* SocializeConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeConfiguration.h; path = Classes/SocializeConfiguration.h; sourceTree = "<group>"; };
 		9A4D295F1393FE7A0065C0CB /* SocializeConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeConfiguration.m; path = Classes/SocializeConfiguration.m; sourceTree = "<group>"; };
 		9A4D29631393FE9F0065C0CB /* SocializePOOCObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePOOCObjectFactory.h; path = Classes/SocializePOOCObjectFactory.h; sourceTree = "<group>"; };
@@ -596,8 +596,8 @@
 		5CC0AD2A138ADA2A00A4A384 /* JSON Parser */ = {
 			isa = PBXGroup;
 			children = (
-				9A4D295A1393FE530065C0CB /* JSONKit.h */,
-				9A4D295B1393FE530065C0CB /* JSONKit.m */,
+				6D3197F013CFB28100154B1F /* JSONKit.h */,
+				6D3197F113CFB28100154B1F /* JSONKit.m */,
 			);
 			name = "JSON Parser";
 			sourceTree = "<group>";
@@ -958,6 +958,7 @@
 				1670BE5413C6EB81000CC441 /* SocializeLikeJSONFormatter.h in Headers */,
 				6D2C76D313CA7CF300AC9112 /* AuthenticateViewController.h in Headers */,
 				6D31962413CDE72F00154B1F /* SocializeDataFetcher.h in Headers */,
+				6D3197F213CFB28100154B1F /* JSONKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -991,7 +992,7 @@
 				5CC3DABB1378824700B11B78 /* Frameworks */,
 				5CC3DABC1378824700B11B78 /* Headers */,
 				9A4D2985139400060065C0CB /* Resources */,
-				6D31966C13CE6BDA00154B1F /* ShellScript */,
+				6D31966C13CE6BDA00154B1F /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -1100,18 +1101,19 @@
 			shellPath = "/bin/sh BuildSampleApp.sh";
 			shellScript = "";
 		};
-		6D31966C13CE6BDA00154B1F /* ShellScript */ = {
+		6D31966C13CE6BDA00154B1F /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -rf ${TARGET_BUILD_DIR}/ output/";
+			shellScript = "";
 		};
 		9A51D73E137909CE00FD273B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1136,7 +1138,6 @@
 			files = (
 				16E2C4421398C40F007C91ED /* main.m in Sources */,
 				16E2C4451398C40F007C91ED /* SampleSdkAppAppDelegate.m in Sources */,
-				6DF5996713AEE34D000D125A /* JSONKit.m in Sources */,
 				6DEFF42713B01B4000AE962A /* NSString+UrlSerialization.m in Sources */,
 				168B7F2713B2291D00D85D73 /* NSString+URLEncoding.m in Sources */,
 				168B7F2913B2294700D85D73 /* NSURL+Base.m in Sources */,
@@ -1203,6 +1204,7 @@
 				6D205A3F13C3DB9100D0645E /* SocializeErrorFormatter.m in Sources */,
 				1670BE5613C6EB88000CC441 /* SocializeLikeJSONFormatter.m in Sources */,
 				6D31962513CDE72F00154B1F /* SocializeDataFetcher.m in Sources */,
+				6D3197F313CFB28100154B1F /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1215,7 +1217,6 @@
 				9A4D2989139401B60065C0CB /* SocializeConfigurationTests.m in Sources */,
 				9A4D29A0139404F90065C0CB /* SocializeObjectFormatterTests.m in Sources */,
 				9A4D29A1139404FF0065C0CB /* SocializePOOCObjectFactoryTests.m in Sources */,
-				5C30695E13A14A13007335FF /* JSONKit.m in Sources */,
 				5C3069B713A2ABEC007335FF /* SocializeEntityFormatterTests.m in Sources */,
 				1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */,
 				1657EFA113A22A9E00E488CC /* UrlSerializationTests.m in Sources */,
@@ -1358,7 +1359,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = 4.2;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
 					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
@@ -1373,7 +1374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = 4.2;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
 					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
@@ -1403,7 +1404,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -1435,7 +1436,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;

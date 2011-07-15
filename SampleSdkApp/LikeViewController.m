@@ -89,7 +89,6 @@
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error{
     [self.view setUserInteractionEnabled:YES];
-    DLog(@"%@", error);
     UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"Like service failed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];
     [msg release];

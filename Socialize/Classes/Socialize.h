@@ -33,33 +33,15 @@
     SocializeProvider               *_provider;
 
     SocializeAuthenticateService    *_authService;
-//    ThirdPartyAuthName              _type;
-    
     SocializeLikeService            *_likeService;
-//    SocializeViewService            *_viewService;
-//    SocializeUserService            *_userService;
-//    SocializeCommentsService        *_commentsService;
-//    SocializeEntityService          *_entityService;
 }
 
 @property (nonatomic, readonly) SocializeLikeService *     likeService;
 
-//@property (nonatomic, readonly) SocializeCommentsService*  commentService;
-//@property (nonatomic, readonly) SocializeEntityService *   entityService;
-//@property (nonatomic, readonly) SocializeViewService *     viewService;
-//@property (nonatomic, readonly) SocializeUserService*      userService;
 
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret    
   delegate:(id<SocializeAuthenticationDelegate>)delegate;
 
-/*-(void)authenticateWithApiKey:(NSString*)apiKey 
-                            apiSecret:(NSString*)apiSecret 
-                                 udid:(NSString*)udid
-                  thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
-                     thirdPartyUserId:(NSString*)thirdPartyUserId
-                       thirdPartyName:(ThirdPartyAuthName)thirdPartyName
-                             delegate:(id<SocializeAuthenticationDelegate>)delegate;
-*/
 
 -(BOOL)isAuthenticated;
 -(void)removeAuthenticationInfo;

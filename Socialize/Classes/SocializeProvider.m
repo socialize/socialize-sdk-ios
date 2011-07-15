@@ -31,8 +31,8 @@
 #import "OAHMAC_SHA1SignatureProvider.h"
 
 
-NSString* const kRestserverBaseURL = @"http://stage.getsocialize.com/v1/";
-NSString* const kSecureRestserverBaseURL = @"https://stage.getsocialize.com/v1/";
+NSString* const kRestserverBaseURL = @"http://www.getsocialize.com/v1/";
+NSString* const kSecureRestserverBaseURL = @"http://www.getsocialize.com/v1/";
 
 @interface SocializeProvider()
     - (void)openUrl:(NSString *)url
@@ -127,7 +127,6 @@ expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
 
 {
     if ([params objectForKey:@"method"] == nil) {
-        DLog(@"API Method must be specified");
         return;
     }
     
