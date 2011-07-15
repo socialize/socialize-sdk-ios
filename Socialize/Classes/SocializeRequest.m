@@ -94,11 +94,13 @@ expectedJSONFormat = _expectedJSONFormat;
     request.consumer = [[OAConsumer alloc] initWithKey:[self consumerKey] secret:[self consumerSecret]];
     request.request = [[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:request.url] consumer:request.consumer token:request.token realm:nil signatureProvider:nil];
     
-    request.dataFetcher = [[OAAsynchronousDataFetcher alloc] initWithRequest:request.request delegate:request
+    request.dataFetcher = [[SocializeDataFetcher alloc] initWithRequest:request.request delegate:request
                                                            didFinishSelector:@selector(tokenRequestTicket:didFinishWithData:)
                                                              didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
+    
+    NSArray* hosts = [[[NSArray alloc] initWithObjects: @"getsocialize.com", @"stage.getsocialize.com", @"dev.getsocialize.com", nil] autorelease]; 
+    request.dataFetcher.trustedHosts = hosts;
        
-    DLog(@"Request.url  %@",request.url);
     
     return request;
 }
@@ -176,7 +178,6 @@ expectedJSONFormat = _expectedJSONFormat;
             stringValue = [_params  JSONString];
         
         NSString* jsonParams = [NSString stringWithFormat:@"payload=%@", stringValue];
-        DLog(@"jsonParams  %@", jsonParams);
         [self.request setHTTPBody:[jsonParams dataUsingEncoding:NSUTF8StringEncoding]];
     }
     else if([self.httpMethod isEqualToString: @"GET"])
@@ -211,7 +212,6 @@ expectedJSONFormat = _expectedJSONFormat;
 #ifdef DEBUG
     NSString *responseBody = [[NSString alloc] initWithData:data
                                                    encoding:NSUTF8StringEncoding];
-    DLog(@"responseBody %@", responseBody);
     [self produceHTMLOutput:responseBody];
 #endif
     

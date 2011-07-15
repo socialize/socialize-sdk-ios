@@ -52,6 +52,7 @@ extern NSString* const kRestserverBaseURL;
 @property(nonatomic, assign) id<SocializeProviderDelegate> sessionDelegate;
 @property(nonatomic, readonly) SocializeRequest* request;
 
+
 - (void)authenticate:(NSString *)udid
             delegate:(id<SocializeProviderDelegate>)delegate;
 
@@ -68,6 +69,13 @@ extern NSString* const kRestserverBaseURL;
            expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
                 andHttpMethod:(NSString *)httpMethod
                   andDelegate:(id <SocializeRequestDelegate>)delegate;
+
+
+- (void)secureRequestWithMethodName:(NSString *)methodName
+                          andParams:(id)params
+                 expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
+                      andHttpMethod:(NSString *)httpMethod
+                        andDelegate:(id <SocializeRequestDelegate>)delegate; // use https
 
 - (BOOL)isSessionValid;
 

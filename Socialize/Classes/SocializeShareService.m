@@ -24,7 +24,6 @@
 }
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(ShareMedium)medium  text:(NSString*)text{
-    DLog(@"entity %@", entity);
     [self createShareForEntityKey:[entity key] medium:medium text:text];
 }
 

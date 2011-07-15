@@ -97,7 +97,9 @@
 
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
 {
-//     [self doDidFailWithError:error];
+     //[self doDidFailWithError:error];
+    [_delegate service:self didFail:error]; 
+    
 }
 
 -(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList {
@@ -137,7 +139,6 @@
 {
     //Move the following lines to the base  SocializeService Class, because it's the same for all objects.
     NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    DLog(@"responseString  ----->  %@ <------ ", responseString);
     
     if(request.expectedJSONFormat == SocializeAny){
         [self invokeAppropriateCallback:request objectList:nil errorList:nil];

@@ -10,19 +10,14 @@
 #import "AuthenticateViewController.h"
 #import "SocializeCommonDefinitions.h"
 #import "Socialize.h"
-#import "Facebook.h"
 
-@interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate, SocializeAuthenticationDelegate> {
+@interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate> {
 @private
-    Socialize*                      socialize;
-    Facebook *                      facebook;
     UINavigationController*         rootController;
-    AuthenticateViewController*   authenticationViewController;
+    AuthenticateViewController*     authenticationViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet AuthenticateViewController *authenticationViewController;
-//@property (nonatomic, retain) EntityListViewController* entityListViewController;
-@property (nonatomic, retain) Facebook* facebook;
 
 @end

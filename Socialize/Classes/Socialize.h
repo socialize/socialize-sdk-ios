@@ -17,6 +17,8 @@
 #import "SocializeLikeService.h"
 #import "SocializeViewService.h"
 #import "SocializeUserService.h"
+#import "SocializeCommonDefinitions.h"
+
 //********************x******************************************************************************//
 //This is a general facade of the   SDK`s API. Through it a third party developers could use the API. //
 //**************************************************************************************************//
@@ -31,34 +33,21 @@
     SocializeProvider               *_provider;
 
     SocializeAuthenticateService    *_authService;
-    SocializeCommentsService        *_commentsService;
-    SocializeEntityService          *_entityService;
-    ThirdPartyAuthName              _type;
-    
     SocializeLikeService            *_likeService;
-    SocializeViewService            *_viewService;
-    SocializeUserService            *_userService;
 }
 
+@property (nonatomic, readonly) SocializeLikeService *     likeService;
+
+
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret    
-               udid:(NSString*)udid
   delegate:(id<SocializeAuthenticationDelegate>)delegate;
 
--(void)authenticateWithApiKey:(NSString*)apiKey 
-                            apiSecret:(NSString*)apiSecret 
-                                 udid:(NSString*)udid
-                  thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
-                     thirdPartyUserId:(NSString*)thirdPartyUserId
-                       thirdPartyName:(ThirdPartyAuthName)thirdPartyName
-                             delegate:(id<SocializeAuthenticationDelegate>)delegate;
 
 -(BOOL)isAuthenticated;
 -(void)removeAuthenticationInfo;
+-(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
 
-@property (nonatomic, readonly) SocializeCommentsService*  commentService;
-@property (nonatomic, readonly) SocializeEntityService *   entityService;
-@property (nonatomic, readonly) SocializeLikeService *     likeService;
-@property (nonatomic, readonly) SocializeViewService *     viewService;
-@property (nonatomic, readonly) SocializeUserService*      userService;
-
+/** like related stuff **/
+-(void)likeEntityWithKey:(NSString*)key andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat;
+-(void)unlikeEntity:(id<SocializeLike>)like;
 @end
