@@ -81,6 +81,12 @@
     [self.likeBtn setTitle:@"Like" forState:UIControlStateHighlighted];
     [_like release] ; _like = nil;
     [self.view setUserInteractionEnabled:YES];
+    
+    
+    UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Entry unliked" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [msg show];
+    [msg release];
+
 }
 
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
@@ -102,6 +108,12 @@
         if ([[dataArray objectAtIndex:0]  conformsToProtocol:@protocol(SocializeLike) ]){
             _like = [dataArray objectAtIndex:0];
             [_like  retain];
+            
+            
+            UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Entry liked" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [msg show];
+            [msg release];
+
         }
     }
     [self.view setUserInteractionEnabled:YES];
