@@ -12,7 +12,7 @@
 #import "OAMutableURLRequest.h"
 #import "OADataFetcher.h"
 #import "OAAsynchronousDataFetcher.h"
-
+#import <UIKit/UIKit.h>
 #import "JSONKit.h"
 
 @interface SocializeAuthenticateService()
@@ -27,12 +27,13 @@
 @synthesize provider = _provider;
 @synthesize delegate = _delegate;
 
--(id) initWithProvider:(SocializeProvider*) provider
+-(id) initWithProvider:(SocializeProvider*) provider delegate:(id<SocializeAuthenticationDelegate>)delegate
 {
     self = [super init];
     if(self != nil)
     {
         _provider = provider;
+        _delegate = delegate;
     }
     return self;
 }
@@ -46,17 +47,14 @@
 
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret
-               udid:(NSString*)udid
-            delegate:(id<SocializeAuthenticationDelegate>)delegate
          {
              
-    _delegate = delegate;                
-    NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", udid];
+    NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [UIDevice currentDevice].uniqueIdentifier];
     NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                 payloadJson, @"jsonData",
                                                 nil];
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-    [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
+    [_provider secureRequestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
 +(BOOL)isAuthenticated {
@@ -114,22 +112,19 @@
 
 -(void)authenticateWithApiKey:(NSString*)apiKey
                             apiSecret:(NSString*)apiSecret 
-                                 udid:(NSString*)udid
                   thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
                      thirdPartyUserId:(NSString*)thirdPartyUserId
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
-                             delegate:(id<SocializeAuthenticationDelegate>)delegate
-                           {
-   _delegate = delegate;
-   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
-                             udid,@"udid", 
+{
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
+                             [UIDevice currentDevice].uniqueIdentifier,@"udid", 
                              [self getSocializeId],  @"socialize_id", 
                              @"1"/* auth type is for facebook*/ , @"auth_type", //TODO:: should be changed
                              thirdPartyAuthToken, @"auth_token",
                              thirdPartyUserId, @"auth_id" , nil] ;                        
                                
    [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-   [_provider requestWithMethodName:AUTHENTICATE_METHOD andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
+   [_provider secureRequestWithMethodName:AUTHENTICATE_METHOD andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
 

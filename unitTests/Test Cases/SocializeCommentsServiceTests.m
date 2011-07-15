@@ -62,7 +62,11 @@ static const int singleCommentId = 1;
 -(void) testSendGetCommentById
 {    
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:[NSString stringWithFormat:@"comment/%d/",singleCommentId] andParams:nil  expectedJSONFormat:SocializeDictionary andHttpMethod:@"GET" andDelegate:_service];
+    [[mockProvider expect] requestWithMethodName:@"comment/" 
+                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObject: [NSNumber numberWithInt:singleCommentId]], @"id", nil] 
+                              expectedJSONFormat:SocializeDictionaryWIthListAndErrors 
+                                   andHttpMethod:@"GET" 
+                                     andDelegate:_service];
     
     _service.provider = mockProvider;   
     
@@ -74,17 +78,23 @@ static const int singleCommentId = 1;
 -(void) testGetListOfCommentsById
 {    
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-     NSArray* ids = [NSArray arrayWithObjects: [NSNumber numberWithInt:1], [NSNumber numberWithInt:2], nil];  
+    NSArray* ids = [NSArray arrayWithObjects: [NSNumber numberWithInt:1], [NSNumber numberWithInt:2], nil];
+    NSArray* keys = [NSArray arrayWithObjects: @"url_for_test", @"enother_url", nil];
     [[mockProvider expect] requestWithMethodName:@"comment/" 
-                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:ids, @"ids", nil]
+                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:ids, @"id", keys, @"key", nil]
       expectedJSONFormat:SocializeDictionaryWIthListAndErrors
                                    andHttpMethod:@"GET" 
                                      andDelegate:_service];
     _service.provider = mockProvider; 
  
-    [_service getCommentsList: ids];
+    [_service getCommentsList: ids andKeys:keys];
     
     [mockProvider verify];
+}
+
+-(void) testGetListOfCommentsWithEmptyParams
+{
+    GHAssertThrows([_service getCommentsList:nil andKeys:nil], nil);
 }
 
 -(void) testGetListOfCommentsByEntityKey

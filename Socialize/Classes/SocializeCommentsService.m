@@ -33,7 +33,7 @@
 
 #define COMMENTS_LIST_METHOD @"comment/"
 
-#define IDS_KEY @"ids"
+#define ID_KEY @"id"
 #define ENTRY_KEY @"key"
 #define ENTITY_KEY @"entity"
 #define COMMENT_KEY @"text"
@@ -52,12 +52,20 @@
 
 -(void) getCommentById: (int) commentId
 {
-    [_provider requestWithMethodName:[NSString stringWithFormat:@"comment/%d/",commentId] andParams:nil expectedJSONFormat:SocializeDictionary andHttpMethod:@"GET" andDelegate:self];
+    [self getCommentsList:[NSArray arrayWithObject:[NSNumber numberWithInt:commentId]] andKeys:nil];
 }
 
--(void) getCommentsList: (NSArray*) commentsId
+-(void) getCommentsList: (NSArray*) commentsId andKeys: (NSArray*)keys
 {
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:commentsId, IDS_KEY, nil];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithCapacity:2];
+    if(commentsId!=nil && [commentsId count] != 0)
+        [params setObject:commentsId forKey:ID_KEY];
+    
+    if(keys!=nil && [keys count] != 0)
+        [params setObject:keys forKey:ENTRY_KEY];
+    
+    NSAssert([params count] != 0, @"User should provide commet ids or keys");
+    
     [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
 }
 

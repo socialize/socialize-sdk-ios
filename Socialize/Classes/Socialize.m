@@ -7,51 +7,54 @@
 //
 
 #import "Socialize.h"
-
 @implementation Socialize
-@synthesize commentService = _commentsService;
-@synthesize entityService = _entityService;
 @synthesize likeService = _likeService;
-@synthesize viewService = _viewService;
-@synthesize userService = _userService;
+//@synthesize viewService = _viewService;
+//@synthesize userService = _userService;
+//@synthesize commentService = _commentsService;
+//@synthesize entityService = _entityService;
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
     [_provider release]; _provider = nil;
     [_authService release]; _authService = nil;
-    [_commentsService release]; _commentsService = nil;
     [_likeService release]; _likeService = nil;
-    [_viewService release]; _viewService = nil;
-    [_userService release]; _userService = nil;
+//    [_viewService release]; _viewService = nil;
+//    [_userService release]; _userService = nil;
+//    [_commentsService release]; _commentsService = nil;
     
     [super dealloc];
 }
 
--(id) init
+-(id) initWithDelegate:(id<SocializeServiceDelegate>)delegate
 {
     self = [super init];
     if(self != nil)
     {
         _objectFactory = [[SocializeObjectFactory alloc]init];
         _provider = [[SocializeProvider alloc] init];
-        _authService = [[SocializeAuthenticateService alloc] initWithProvider:_provider];
-        _commentsService = [[SocializeCommentsService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
-        _entityService = [[SocializeEntityService alloc]initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
-        _likeService  = [[SocializeLikeService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
-        _viewService  = [[SocializeViewService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
-        _userService = [[SocializeUserService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:nil];
+        _authService = [[SocializeAuthenticateService alloc] initWithProvider:_provider delegate:nil];
+        _likeService  = [[SocializeLikeService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
+        //       _viewService  = [[SocializeViewService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
+        //        _userService = [[SocializeUserService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
+        //        _commentsService = [[SocializeCommentsService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
+        //        _entityService = [[SocializeEntityService alloc]initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
     }
     return self;
 }
 
+
+#pragma mark authentication info
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret
-               udid:(NSString*)udid
             delegate:(id<SocializeAuthenticationDelegate>)delegate
 {
-   [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret udid:udid delegate:delegate]; 
+    _authService.delegate = delegate;
+   [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret]; 
 }
 
+
+/*
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                             apiSecret:(NSString*)apiSecret 
                                  udid:(NSString*)udid
@@ -60,15 +63,16 @@
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
                              delegate:(id<SocializeAuthenticationDelegate>)delegate
 {
-
+    _authService.delegate = delegate;
     [_authService  authenticateWithApiKey:apiKey 
                            apiSecret:apiSecret
                                 udid:udid
                            thirdPartyAuthToken:thirdPartyAuthToken
                            thirdPartyUserId:thirdPartyUserId
                            thirdPartyName:thirdPartyName
-                                delegate:delegate];
+                                ];
 }
+ */
 
 -(BOOL)isAuthenticated{
     return [SocializeAuthenticateService isAuthenticated];
@@ -78,4 +82,17 @@
 {
     [_authService removeAuthenticationInfo];
 }
+
+
+#pragma mark like related stuff
+-(void)likeEntityWithKey:(NSString*)key andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat
+{
+    [_likeService postLikeForEntityKey:key andLongitude:lng latitude:lat]; 
+}
+
+-(void)unlikeEntity:(id<SocializeLike>)like
+{
+    [_likeService deleteLike:like]; 
+}
+
 @end

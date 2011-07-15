@@ -12,13 +12,13 @@
 @implementation AuthenticateViewController
 @synthesize keyField = _keyField;
 @synthesize secretField = _secretField;
-@synthesize entityListViewController;
+@synthesize likeViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        socialize = [[Socialize alloc] init];  
+        socialize = [[Socialize alloc] initWithDelegate:nil];  
         // Custom initialization
     }
     return self;
@@ -28,6 +28,8 @@
 {
     self.keyField = nil;
     self.secretField = nil;
+    [socialize release];
+    [likeViewController release];
     [super dealloc];
 }
 
@@ -50,46 +52,45 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.keyField = nil;
+    self.secretField = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return NO;
 }
 
 -(IBAction)authenticate:(id)sender{
-
-//    if([socialize isAuthenticated])
-//        return;
-    // removing the previous auth tokens
     [socialize removeAuthenticationInfo];
-    
-    //#define kSOCIALIZE_API_KEY          // stage     
-    //#define kSOCIALIZE_API_SECRET       // stage
-    
-    [socialize authenticateWithApiKey:@"90aa0fb5-1995-4771-9ed9-f3c4479a9aaa"/*_keyField.text*/ apiSecret:@"5f461d4b-999c-430d-a2b2-2df35ff3a9ba"/*_secretField.text*/ udid:@"someid" delegate:self];
+    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text delegate:self];
+}
+
+-(IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
+} 
+
+-(IBAction)backgroundTouched:(id)sender
+{
+    [_keyField resignFirstResponder];
+    [_secretField resignFirstResponder];
 }
 
 #pragma mark Authentication delegate
 
 -(void)didAuthenticate
 {
-    entityListViewController = [[[EntityListViewController alloc] initWithStyle: UITableViewStylePlain andService: socialize] autorelease];
-
-    [self.navigationController pushViewController:entityListViewController animated:YES];
+    self.likeViewController = [[[LikeViewController alloc] initWithNibName:@"LikeViewController" bundle:nil] autorelease];
+    [self.navigationController pushViewController:likeViewController animated:YES];
 }
 
 -(void)didNotAuthenticate:(NSError*)error
 {
-    NSLog(@"%@", error);
-    UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"Authentication failed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];    
-    
+///    NSLog(@"  error ")
+    UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"Authentication failed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];
     [msg release];
 }
 
-#pragma mark -
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "OAConsumer.h"
-#import "OAAsynchronousDataFetcher.h"
+#import "SocializeDataFetcher.h"
 
 
 typedef enum {
@@ -20,6 +20,7 @@ typedef enum {
 
 
 @protocol SocializeRequestDelegate;
+@class OAServiceTicket;
 
 @interface SocializeRequest : NSObject 
 {
@@ -34,7 +35,7 @@ typedef enum {
     OAToken                     *_token;
     OAConsumer                  *_consumer;
     OAMutableURLRequest         *_request;
-    OAAsynchronousDataFetcher   *_dataFetcher;
+    SocializeDataFetcher        *_dataFetcher;
     ExpectedResponseFormat      _expectedJSONFormat;// what the SDK is expecting from the API
 }
 
@@ -48,7 +49,7 @@ typedef enum {
 @property(nonatomic,retain) OAToken                     *token;
 @property(nonatomic,retain) OAConsumer                  *consumer;
 @property(nonatomic,retain) OAMutableURLRequest         *request;
-@property(nonatomic,retain) OAAsynchronousDataFetcher   *dataFetcher;
+@property(nonatomic,retain) SocializeDataFetcher        *dataFetcher;
 
 + (SocializeRequest*)getRequestWithParams:(NSMutableDictionary *) params
                        expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
@@ -62,6 +63,10 @@ typedef enum {
 
 @end
 
+@interface SocializeRequest(ResponseHandlers)
+    - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data;
+    - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFailWithError:(NSError*)error;
+@end
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*

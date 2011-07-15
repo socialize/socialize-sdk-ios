@@ -134,8 +134,8 @@
 //    id<SocializeObject> socializeObject = [self createObjectForProtocol:protocol];
 //    
 //    SocializeObjectFormatter * soFormatter = [formatterDictionary objectForKey:NSStringFromProtocol(protocol)];
-//    NSAssert(soFormatter!=nil, @"%@ - formatter does not exist for this key. Please add formatter to the Factory", 
-//             NSStringFromProtocol(protocol));
+  //  NSAssert(soFormatter!=nil, @"%@ - formatter does not exist for this key. Please add formatter to the Factory", 
+    //         NSStringFromProtocol(protocol));
 //
 //    [soFormatter toObject:socializeObject fromString:stringRepresentation];
 //        

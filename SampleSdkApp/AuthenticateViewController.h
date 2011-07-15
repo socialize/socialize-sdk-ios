@@ -7,22 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EntityListViewController.h"
+#import "Socialize.h"
+#import "LikeViewController.h"
 
 @interface AuthenticateViewController : UIViewController<SocializeAuthenticationDelegate> {
     
-    Socialize*           socialize;
+    Socialize*              socialize;
     IBOutlet UITextField*   _keyField;
     IBOutlet UITextField*   _secretField;
     
-    EntityListViewController* entityListViewController;
+    LikeViewController*     likeViewController;
 }
 
 @property (retain,nonatomic) IBOutlet UITextField*   keyField;
 @property (retain,nonatomic) IBOutlet UITextField*   secretField;
-@property (nonatomic, readonly) EntityListViewController* entityListViewController;
+@property (retain, nonatomic) LikeViewController* likeViewController;
 
 -(IBAction)authenticate:(id)sender;
-
+- (IBAction)textFieldReturn:(id)sender;
+- (IBAction)backgroundTouched:(id)sender;
 
 @end

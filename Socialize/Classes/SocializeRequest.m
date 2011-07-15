@@ -94,11 +94,13 @@ expectedJSONFormat = _expectedJSONFormat;
     request.consumer = [[OAConsumer alloc] initWithKey:[self consumerKey] secret:[self consumerSecret]];
     request.request = [[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:request.url] consumer:request.consumer token:request.token realm:nil signatureProvider:nil];
     
-    request.dataFetcher = [[OAAsynchronousDataFetcher alloc] initWithRequest:request.request delegate:request
+    request.dataFetcher = [[SocializeDataFetcher alloc] initWithRequest:request.request delegate:request
                                                            didFinishSelector:@selector(tokenRequestTicket:didFinishWithData:)
                                                              didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
+    
+    NSArray* hosts = [[[NSArray alloc] initWithObjects: @"getsocialize.com", @"stage.getsocialize.com", @"dev.getsocialize.com", nil] autorelease]; 
+    request.dataFetcher.trustedHosts = hosts;
        
-    DLog(@"Request.url  %@",request.url);
     
     return request;
 }
@@ -129,17 +131,30 @@ expectedJSONFormat = _expectedJSONFormat;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // public
+-(void) addParameter: (id)parameter withKey: (NSString*) key toCollection: (NSMutableArray*) collection
+{
+    NSString* value = [[NSString alloc]initWithFormat:@"%@", parameter];
+    OARequestParameter* p = [[OARequestParameter alloc] initWithName:key value:value];
+    [collection addObject:p];
+    [p release];
+    [value release];
+}
 
 -(NSArray*) formatUrlParams
 {
     NSMutableArray* getParams = [[[NSMutableArray alloc] initWithCapacity:[_params count]] autorelease];
     [_params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
      {
-         NSString* value = [[NSString alloc]initWithFormat:@"%@", obj];
-         OARequestParameter* p = [[OARequestParameter alloc] initWithName:key value:value];
-         [getParams addObject:p];
-         [p release];
-         [value release];
+         if([obj isKindOfClass: [NSArray class]])
+         {
+                for(id item in obj)
+                {
+                    [self addParameter:item withKey:key toCollection:getParams];
+                }
+         }else
+         {
+             [self addParameter:obj withKey:key toCollection:getParams];
+         }
      }
     ];
     
@@ -163,7 +178,6 @@ expectedJSONFormat = _expectedJSONFormat;
             stringValue = [_params  JSONString];
         
         NSString* jsonParams = [NSString stringWithFormat:@"payload=%@", stringValue];
-        DLog(@"jsonParams  %@", jsonParams);
         [self.request setHTTPBody:[jsonParams dataUsingEncoding:NSUTF8StringEncoding]];
     }
     else if([self.httpMethod isEqualToString: @"GET"])
@@ -198,11 +212,10 @@ expectedJSONFormat = _expectedJSONFormat;
 #ifdef DEBUG
     NSString *responseBody = [[NSString alloc] initWithData:data
                                                    encoding:NSUTF8StringEncoding];
-    DLog(@"responseBody %@", responseBody);
     [self produceHTMLOutput:responseBody];
 #endif
     
-    if (ticket.response.statusCode == 200)
+    if ([ticket.response statusCode] == 200)
         [self handleResponseData:data];
     else
         [self failWithError:[NSError errorWithDomain:@"Socialize" code:ticket.response.statusCode userInfo:nil]];

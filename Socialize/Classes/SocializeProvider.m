@@ -31,7 +31,8 @@
 #import "OAHMAC_SHA1SignatureProvider.h"
 
 
-NSString* const kRestserverBaseURL = @"http://stage.getsocialize.com/v1/";
+NSString* const kRestserverBaseURL = @"http://www.getsocialize.com/v1/";
+NSString* const kSecureRestserverBaseURL = @"http://www.getsocialize.com/v1/";
 
 @interface SocializeProvider()
     - (void)openUrl:(NSString *)url
@@ -126,7 +127,6 @@ expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
 
 {
     if ([params objectForKey:@"method"] == nil) {
-        DLog(@"API Method must be specified");
         return;
     }
     
@@ -151,6 +151,15 @@ expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
 }
 
 
+- (void)secureRequestWithMethodName:(NSString *)methodName
+                    andParams:(id)params
+           expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
+                andHttpMethod:(NSString *)httpMethod
+                  andDelegate:(id <SocializeRequestDelegate>)delegate 
+{
+    NSString *fullURL = [kSecureRestserverBaseURL stringByAppendingString:methodName];
+    [self openUrl:fullURL params:params expectedJSONFormat:expectedJSONFormat httpMethod:httpMethod delegate:delegate];
+}
 
 /**
  * @return boolean - whether this object has an non-expired session token

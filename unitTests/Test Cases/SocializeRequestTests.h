@@ -39,4 +39,5 @@
     NSError* _expectedError; 
 }
 
+@property (nonatomic, retain) NSError* expectedError;
 @end
