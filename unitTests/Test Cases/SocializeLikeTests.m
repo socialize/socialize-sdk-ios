@@ -133,7 +133,7 @@
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
     _service.delegate = mockDelegate;
     
-    [[mockDelegate expect] service:_service didFetchElements:OCMOCK_ANY andErrorList:nil];
+    [[mockDelegate expect] service:_service didFetchElements:OCMOCK_ANY];
     
     [_service request:_request didLoadRawResponse:[JSONStringToParse dataUsingEncoding:NSUTF8StringEncoding]];
     [mockDelegate verify];
@@ -168,11 +168,11 @@
     NSLog(@"didFail %@", error);
 }
 
--(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
-    NSLog(@"didCreateWithElements %@", dataArray);
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)objectCreated{
+    NSLog(@"didCreateWithElements %@", objectCreated);
 }
 
--(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
     NSLog(@"didFetchElements %@", dataArray);
 }
 

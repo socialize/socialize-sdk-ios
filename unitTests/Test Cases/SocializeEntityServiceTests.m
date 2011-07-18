@@ -103,7 +103,7 @@
     
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/entity_single_response.json"];
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
-    [[mockDelegate expect] service:_entityService didCreateWithElements:OCMOCK_ANY andErrorList:nil];
+    [[mockDelegate expect] service:_entityService didCreate:OCMOCK_ANY];
 
     _entityService.delegate = mockDelegate;
 

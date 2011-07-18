@@ -100,26 +100,24 @@
     [msg release];
 }
 
--(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
-    if (dataArray && [dataArray count]){
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)like{
         // we have some data
+    if ([like conformsToProtocol:@protocol(SocializeLike)]){
+
         [self.likeBtn setTitle:@"Unlike" forState:UIControlStateNormal];
         [self.likeBtn setTitle:@"Unlike" forState:UIControlStateHighlighted];
-        if ([[dataArray objectAtIndex:0]  conformsToProtocol:@protocol(SocializeLike) ]){
-            _like = [dataArray objectAtIndex:0];
+            _like = (id<SocializeLike>)like;
             [_like  retain];
-            
             
             UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Entry liked" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [msg show];
             [msg release];
 
-        }
     }
     [self.view setUserInteractionEnabled:YES];
 }
 
--(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
 
 }
 

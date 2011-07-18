@@ -230,11 +230,7 @@ static const int singleCommentId = 1;
     NSLog(@"didFail %@", error);
 }
 
--(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList{
-    NSLog(@"didCreateWithElements %@", dataArray);
-}
-
--(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList{
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
     NSLog(@"didFetchElements %@", dataArray);
 }
 

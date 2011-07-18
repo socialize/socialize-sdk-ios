@@ -124,10 +124,15 @@
     else
         errorArray = errorList;
 
-    if ([request.httpMethod isEqualToString:@"POST"])
-        [self.delegate service:self didCreateWithElements:array andErrorList:errorArray];
+    if ([request.httpMethod isEqualToString:@"POST"]){
+        if ([array count])
+            [self.delegate service:self didCreate:[array objectAtIndex:0]];
+        else
+            [self.delegate service:self didCreate:nil];
+    }
+            
     else if ([request.httpMethod isEqualToString:@"GET"])
-        [self.delegate service:self didFetchElements:array andErrorList:errorArray];
+        [self.delegate service:self didFetchElements:array];
     else if ([request.httpMethod isEqualToString:@"DELETE"])
         [self.delegate service:self didDelete:nil];
     else if ([request.httpMethod isEqualToString:@"PUT"])
@@ -203,7 +208,6 @@
         else 
             [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
     }
-    
 }
 
 -(void)doDidReceiveSocializeObject:(id<SocializeObject>)objectResponse

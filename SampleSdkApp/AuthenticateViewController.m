@@ -93,4 +93,24 @@
     [msg release];
 }
 
+
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
+
+}
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
+
+}
+
+// creating multiple likes or comments would invoke this callback
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
+
+}
+
+// getting/retrieving comments or likes would invoke this callback
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
+
+}
+
+
+
 @end

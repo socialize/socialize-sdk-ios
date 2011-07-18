@@ -108,7 +108,7 @@
     return;
 }
 
--(void)didNotAuthenticate:(NSError*)error{
+-(void)service:(SocializeService *)service didFail:(NSError *)error{
     NSLog(@"%@", error);
 }
 
