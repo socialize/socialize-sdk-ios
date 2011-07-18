@@ -18,7 +18,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        socialize = [[Socialize alloc] initWithDelegate:nil];  
+        socialize = [[Socialize alloc] initWithDelegate:self];  
         // Custom initialization
     }
     return self;
@@ -63,7 +63,7 @@
 
 -(IBAction)authenticate:(id)sender{
     [socialize removeAuthenticationInfo];
-    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text delegate:self];
+    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text ];
 }
 
 -(IBAction)textFieldReturn:(id)sender
@@ -85,7 +85,7 @@
     [self.navigationController pushViewController:likeViewController animated:YES];
 }
 
--(void)didNotAuthenticate:(NSError*)error
+-(void)service:(SocializeService*)service didFail:(NSError*)error
 {
 ///    NSLog(@"  error ")
     UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"Authentication failed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];

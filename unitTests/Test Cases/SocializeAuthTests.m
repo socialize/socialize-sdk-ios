@@ -90,7 +90,7 @@
 -(void)testIsAuthenticated{
 
     [self prepare];
-    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthenticationDelegate)];
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
     _service.delegate = mockDelegate;
     [[mockDelegate expect] didAuthenticate];
 
@@ -111,6 +111,5 @@
 -(void)didNotAuthenticate:(NSError*)error{
     NSLog(@"%@", error);
 }
-
 
 @end

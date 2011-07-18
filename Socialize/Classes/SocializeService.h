@@ -31,6 +31,8 @@
 
 
 @class SocializeService;
+
+
 @protocol SocializeServiceDelegate 
 @optional
 // for example unlike would result in this callback
@@ -44,13 +46,15 @@
 // getting/retrieving comments or likes would invoke this callback
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList;
 
+-(void)didAuthenticate;
+
 @end
 
 @interface SocializeService : NSObject <SocializeRequestDelegate>
 {
       @protected    
-        SocializeProvider*  _provider;
-        SocializeObjectFactory* _objectCreator;
+        SocializeProvider*           _provider;
+        SocializeObjectFactory*      _objectCreator;
         id<SocializeServiceDelegate> _delegate;
 }
 @property (nonatomic, readonly) Protocol * ProtocolType;

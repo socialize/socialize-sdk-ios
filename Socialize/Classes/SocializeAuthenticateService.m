@@ -24,22 +24,8 @@
 
 @implementation SocializeAuthenticateService
 
-@synthesize provider = _provider;
-@synthesize delegate = _delegate;
-
--(id) initWithProvider:(SocializeProvider*) provider delegate:(id<SocializeAuthenticationDelegate>)delegate
-{
-    self = [super init];
-    if(self != nil)
-    {
-        _provider = provider;
-        _delegate = delegate;
-    }
-    return self;
-}
 
 -(void)dealloc{
-    _provider = nil;
     [super dealloc];
 }
 
@@ -132,7 +118,8 @@
  * Called when an error prevents the request from completing successfully.
  */
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error{
-   [_delegate didNotAuthenticate:error];
+//   [_delegate didNotAuthenticate:error];
+    [_delegate service:self didFail:error];
 }
 
 /**
@@ -164,7 +151,7 @@
             [_delegate didAuthenticate];
         }
         else
-            [_delegate didNotAuthenticate:[NSError errorWithDomain:@"Socialize" code: 600 userInfo:nil]];
+            [_delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
             
         [self persistUserInfo:[jsonObject objectForKey:@"user"]];
     }

@@ -39,8 +39,7 @@
 @property (nonatomic, readonly) SocializeLikeService *     likeService;
 
 
--(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret    
-  delegate:(id<SocializeAuthenticationDelegate>)delegate;
+-(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret    ;
 
 
 -(BOOL)isAuthenticated;

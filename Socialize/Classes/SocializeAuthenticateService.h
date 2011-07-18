@@ -11,14 +11,11 @@
 #import "SocializeProvider.h"
 #import "SocializeRequest.h"
 #import "SocializeCommonDefinitions.h"
+#import "SocializeService.h"
 
+@interface SocializeAuthenticateService : SocializeService {
 
-@interface SocializeAuthenticateService : NSObject<SocializeRequestDelegate> {
-    id<SocializeAuthenticationDelegate>     _delegate;
-    SocializeProvider*                      _provider;
 }
-
--(id) initWithProvider:(SocializeProvider*) provider delegate:(id<SocializeAuthenticationDelegate>)delegate;
 
 -(void)authenticateWithApiKey:(NSString*)apiKey  
                     apiSecret:(NSString*)apiSecret;
@@ -30,10 +27,6 @@
                         thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
 
 +(BOOL)isAuthenticated;
-
 -(void)removeAuthenticationInfo;
-
-@property (nonatomic, assign) SocializeProvider* provider;
-@property (nonatomic, assign) id<SocializeAuthenticationDelegate> delegate;
 
 @end

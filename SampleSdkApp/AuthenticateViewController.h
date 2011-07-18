@@ -10,7 +10,7 @@
 #import "Socialize.h"
 #import "LikeViewController.h"
 
-@interface AuthenticateViewController : UIViewController<SocializeAuthenticationDelegate> {
+@interface AuthenticateViewController : UIViewController<SocializeServiceDelegate> {
     
     Socialize*              socialize;
     IBOutlet UITextField*   _keyField;

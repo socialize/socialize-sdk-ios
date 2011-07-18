@@ -33,11 +33,11 @@
     {
         _objectFactory = [[SocializeObjectFactory alloc]init];
         _provider = [[SocializeProvider alloc] init];
-        _authService = [[SocializeAuthenticateService alloc] initWithProvider:_provider delegate:nil];
+        _authService = [[SocializeAuthenticateService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
         _likeService  = [[SocializeLikeService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
         //       _viewService  = [[SocializeViewService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
         //        _userService = [[SocializeUserService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
-        //        _commentsService = [[SocializeCommentsService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
+       //         _commentsService = [[SocializeCommentsService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
         //        _entityService = [[SocializeEntityService alloc]initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
     }
     return self;
@@ -47,9 +47,8 @@
 #pragma mark authentication info
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret
-            delegate:(id<SocializeAuthenticationDelegate>)delegate
 {
-    _authService.delegate = delegate;
+//    _authService.delegate = delegate;
    [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret]; 
 }
 
@@ -83,8 +82,8 @@
     [_authService removeAuthenticationInfo];
 }
 
-
 #pragma mark like related stuff
+
 -(void)likeEntityWithKey:(NSString*)key andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat
 {
     [_likeService postLikeForEntityKey:key andLongitude:lng latitude:lat]; 
