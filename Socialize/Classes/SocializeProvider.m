@@ -31,8 +31,8 @@
 #import "OAHMAC_SHA1SignatureProvider.h"
 
 
-NSString* const kRestserverBaseURL = @"http://api.getsocialize.com/v1/";
-NSString* const kSecureRestserverBaseURL = @"http://api.getsocialize.com/v1/";
+NSString* const kRestserverBaseURL = @"http://dev.getsocialize.com/v1/";
+NSString* const kSecureRestserverBaseURL = @"https://dev.getsocialize.com/v1/";
 
 @interface SocializeProvider()
     - (void)openUrl:(NSString *)url
