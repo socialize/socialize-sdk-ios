@@ -41,14 +41,13 @@
 
 }
 
-
-
+/**** Getting Comments *****/
 -(void) getCommentById: (int) commentId;
 -(void) getCommentsList: (NSArray*) commentsId andKeys: (NSArray*)keys;
--(void) getCommentList: (NSString*) entryKey;
+-(void) getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last;
 
+/**** Comment Creation *****/
 -(void) createCommentForEntityWithKey: (NSString*) entityKey comment: (NSString*) comment;
--(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment createNew: (BOOL) new;
-
+-(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment;
 
 @end

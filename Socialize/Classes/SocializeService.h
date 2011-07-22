@@ -31,7 +31,10 @@
 
 
 @class SocializeService;
+
+
 @protocol SocializeServiceDelegate 
+
 @optional
 // for example unlike would result in this callback
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object;
@@ -39,18 +42,19 @@
 -(void)service:(SocializeService*)service didFail:(NSError*)error;
 
 // creating multiple likes or comments would invoke this callback
--(void)service:(SocializeService*)service didCreateWithElements:(NSArray*)dataArray andErrorList:(id)errorList;
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object;
 
 // getting/retrieving comments or likes would invoke this callback
--(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray andErrorList:(id)errorList;
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray;
 
+-(void)didAuthenticate;
 @end
 
 @interface SocializeService : NSObject <SocializeRequestDelegate>
 {
       @protected    
-        SocializeProvider*  _provider;
-        SocializeObjectFactory* _objectCreator;
+        SocializeProvider*           _provider;
+        SocializeObjectFactory*      _objectCreator;
         id<SocializeServiceDelegate> _delegate;
 }
 @property (nonatomic, readonly) Protocol * ProtocolType;

@@ -16,7 +16,6 @@
 #define kSOCIALIZE_TOKEN_KEY         @"SOCIALIZE_TOKEN"
 
 
-
 #define kSOCIALIZE_API_KEY_KEY     @"SOCIALIZE_API_KEY"
 #define kSOCIALIZE_API_SECRET_KEY  @"SOCIALIZE_API_SECRET"
 
@@ -31,7 +30,8 @@ typedef enum {
     FacebookAuth = 1
 } ThirdPartyAuthName;
 
-@protocol SocializeAuthenticationDelegate
+/*@protocol SocializeAuthenticationDelegate
     -(void)didAuthenticate;
     -(void)didNotAuthenticate:(NSError*)error;
 @end
+*/

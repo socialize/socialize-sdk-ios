@@ -47,11 +47,9 @@
     if (key && [key length]){   
         NSDictionary* entityParam = nil;
         if (lng!= nil && lat != nil)
-        {
-            entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity", lng, @"lng", lat, @"lat", nil];
-        }
+            entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity_key", lng, @"lng", lat, @"lat", nil];
         else
-            entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity", nil];
+            entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity_key", nil];
         
         NSArray *params = [NSArray arrayWithObjects:entityParam, 
                            nil];
@@ -76,18 +74,22 @@
     [_provider requestWithMethodName:updatedResource andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
 }
 
--(void)getLikesForEntityKey:(NSString*)key{
+-(void)getLikesForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last{
     
     NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
     if (key)
-        [params setObject:key forKey:@"key"];
+        [params setObject:key forKey:@"entity_key"];
+    if (first && last){
+        [params setObject:first forKey:@"first"];
+        [params setObject:last forKey:@"last"];
+    }
+    
     [_provider requestWithMethodName:LIKE_METHOD andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
-
 }
 
--(void)getLikesForEntity:(id<SocializeEntity>)entity{
+-(void)getLikesForEntity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last{
     if ([entity conformsToProtocol:@protocol(SocializeEntity)])
-        [self getLikesForEntityKey:[entity key]];
+        [self getLikesForEntityKey:[entity key] first:first last:last];
 }
 
 @end

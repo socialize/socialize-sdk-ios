@@ -88,7 +88,7 @@
     NSString* entityKey = @"www.google.com";
     
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entityKey,@"key", nil];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entityKey,@"entity_key", nil];
     [[mockProvider expect] requestWithMethodName:@"entity/" andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_entityService];
 
     _entityService.provider = mockProvider;
@@ -103,7 +103,7 @@
     
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/entity_single_response.json"];
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
-    [[mockDelegate expect] service:_entityService didCreateWithElements:OCMOCK_ANY andErrorList:nil];
+    [[mockDelegate expect] service:_entityService didCreate:OCMOCK_ANY];
 
     _entityService.delegate = mockDelegate;
 

@@ -32,7 +32,7 @@
 
 
 NSString* const kRestserverBaseURL = @"http://api.getsocialize.com/v1/";
-NSString* const kSecureRestserverBaseURL = @"http://api.getsocialize.com/v1/";
+NSString* const kSecureRestserverBaseURL = @"https://api.getsocialize.com/v1/";
 
 @interface SocializeProvider()
     - (void)openUrl:(NSString *)url

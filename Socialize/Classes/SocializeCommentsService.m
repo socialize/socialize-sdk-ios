@@ -35,7 +35,7 @@
 
 #define ID_KEY @"id"
 #define ENTRY_KEY @"key"
-#define ENTITY_KEY @"entity"
+#define ENTITY_KEY @"entity_key"
 #define COMMENT_KEY @"text"
 
 @implementation SocializeCommentsService
@@ -69,13 +69,26 @@
     [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
 }
 
--(void) getCommentList: (NSString*) entryKey
+/*-(void) getCommentList: (NSString*) entryKey
 {
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entryKey, ENTRY_KEY, nil];   
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entryKey, ENTITY_KEY, nil];   
     [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
 }
+*/
 
--(void) createCommentForEntityWithKey: (NSString*) entityKey comment: (NSString*) comment
+-(void) getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last{
+    NSMutableDictionary* params;
+
+    if (!first || !last)
+        params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entryKey, ENTITY_KEY, nil];
+    else 
+        params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entryKey, ENTITY_KEY, first, @"first", last, @"last", nil];
+        
+    [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
+
+}
+
+-(void) createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*)comment
 {
     NSArray *params = [NSArray arrayWithObjects:
                        [NSDictionary dictionaryWithObjectsAndKeys:entityKey, ENTITY_KEY, comment, COMMENT_KEY, nil],
@@ -84,9 +97,9 @@
     [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
 }
 
--(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment createNew: (BOOL) new
+-(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment
 {
-    if(new)
+    if(entity.name)
     {
         NSDictionary* newEntity = [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil];
         NSArray *params = [NSArray arrayWithObjects:

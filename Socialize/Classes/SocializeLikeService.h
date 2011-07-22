@@ -21,10 +21,12 @@
 }
 
 
--(void)getLikesForEntityKey:(NSString*)key;
--(void)getLikesForEntity:(id<SocializeEntity>)entity;
+-(void)getLikesForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last;
+-(void)getLikesForEntity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last;
 -(void)getLike:(NSInteger)likeId;
+
 -(void)deleteLike:(id<SocializeLike>)like;
+
 -(void)postLikeForEntityKey:(NSString*)key andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat; 
 -(void)postLikeForEntity:(id<SocializeEntity>)entity andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 

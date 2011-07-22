@@ -24,6 +24,12 @@
 //**************************************************************************************************//
 
 
+/***************************************************************************************************
+                                            NOTE
+Every thing in socialize revolves around the concept of “Entity”. An entity be liked, unliked, commented on etc. 
+In Socialize an entity can only be a url. So when creating an entity always remember to input the key for the entity as a url 
+otherwise you will get a failure.  
+*/
 
 
 @interface Socialize : NSObject 
@@ -34,20 +40,42 @@
 
     SocializeAuthenticateService    *_authService;
     SocializeLikeService            *_likeService;
+    SocializeCommentsService        *_commentsService;
+    SocializeEntityService          *_entityService;
+    SocializeViewService            *_viewService;
 }
 
-@property (nonatomic, readonly) SocializeLikeService *     likeService;
+@property (nonatomic, retain) SocializeAuthenticateService    *authService;
+@property (nonatomic, retain) SocializeLikeService            *likeService;
+@property (nonatomic, retain) SocializeCommentsService        *commentsService;
+@property (nonatomic, retain) SocializeEntityService          *entityService;
+@property (nonatomic, retain) SocializeViewService            *viewService;
 
+-(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
+-(void)setDelegate:(id<SocializeServiceDelegate>)delegate;
+/* local in memory object creation */
+-(id)createObjectForProtocol:(Protocol *)protocol;
 
--(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret    
-  delegate:(id<SocializeAuthenticationDelegate>)delegate;
-
-
+/*** Authentication related info ***/
+-(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret;
 -(BOOL)isAuthenticated;
 -(void)removeAuthenticationInfo;
--(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
 
 /** like related stuff **/
--(void)likeEntityWithKey:(NSString*)key andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat;
+-(void)likeEntityWithKey:(NSString*)url longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
 -(void)unlikeEntity:(id<SocializeLike>)like;
+-(void)getLikesForEntityKey:(NSString*)url  first:(NSNumber*)first last:(NSNumber*)last;
+
+/* comments */
+-(void) getCommentById: (int) commentId;
+-(void) getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last;
+
+-(void) createCommentForEntityWithKey: (NSString*) url comment: (NSString*) comment;
+-(void) createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment;
+
+/* Entity methods*/
+-(void)getEntityByKey:(NSString *)url;
+
+/* View methods*/
+-(void)viewEntity:(id<SocializeEntity>)entity;
 @end

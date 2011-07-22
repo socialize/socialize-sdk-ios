@@ -1,8 +1,8 @@
 /*
- * SocializeEntityService.h
+ * EntityListViewController.h
  * SocializeSDK
  *
- * Created on 6/17/11.
+ * Created on 6/29/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -25,24 +25,23 @@
  * THE SOFTWARE.
  */
 
+#import <UIKit/UIKit.h>
+#import "SocializeCommonDefinitions.h"
+#import "Socialize.h"
 
-#import <Foundation/Foundation.h>
-#import "SocializeEntity.h"
-#import "SocializeRequest.h"
-#import "SocializeService.h"
 
-@class SocializeProvider;
-@class SocializeObjectFactory;
-
-@protocol SocializeEntityServiceDelegate;
-
-@interface SocializeEntityService : SocializeService
-{   
+@interface EntityListViewController : UITableViewController <UIAlertViewDelegate, SocializeServiceDelegate>
+{
+@private
+    Socialize* _service;
+    NSMutableArray* _entities;
+    
+    UITextField *_entityKey;
+    UITextField *_entityName;
 }
 
--(void)entityWithKey:(NSString *)keyOfEntity;
-//-(void)listEntitiesWithKeys:(NSArray *)entityKeysArray;
--(void)createEntities:(NSArray *)entities;
--(void)createEntity:(id<SocializeEntity>)entity ;
--(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity;
+- (id)initWithStyle:(UITableViewStyle)style andService: (Socialize*) service;
+
+@property (nonatomic, assign) Socialize* service;
+
 @end

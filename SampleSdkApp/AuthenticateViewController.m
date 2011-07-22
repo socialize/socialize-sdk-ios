@@ -8,17 +8,17 @@
 
 #import "AuthenticateViewController.h"
 #import "Socialize.h"
+#import "EntityListViewController.h"
 
 @implementation AuthenticateViewController
 @synthesize keyField = _keyField;
 @synthesize secretField = _secretField;
-@synthesize likeViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        socialize = [[Socialize alloc] initWithDelegate:nil];  
+        socialize = [[Socialize alloc] initWithDelegate:self];  
         // Custom initialization
     }
     return self;
@@ -29,7 +29,6 @@
     self.keyField = nil;
     self.secretField = nil;
     [socialize release];
-    [likeViewController release];
     [super dealloc];
 }
 
@@ -63,7 +62,7 @@
 
 -(IBAction)authenticate:(id)sender{
     [socialize removeAuthenticationInfo];
-    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text delegate:self];
+    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text ];
 }
 
 -(IBAction)textFieldReturn:(id)sender
@@ -81,16 +80,32 @@
 
 -(void)didAuthenticate
 {
-    self.likeViewController = [[[LikeViewController alloc] initWithNibName:@"LikeViewController" bundle:nil] autorelease];
-    [self.navigationController pushViewController:likeViewController animated:YES];
+    EntityListViewController *listController = [[EntityListViewController alloc] initWithStyle:UITableViewStylePlain andService:socialize];
+    [self.navigationController pushViewController:listController animated:YES];
 }
 
--(void)didNotAuthenticate:(NSError*)error
+-(void)service:(SocializeService*)service didFail:(NSError*)error
 {
-///    NSLog(@"  error ")
     UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"Authentication failed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];
     [msg release];
 }
 
+-(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
+
+}
+
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
+    
+}
+
+// creating multiple likes or comments would invoke this callback
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
+
+}
+
+// getting/retrieving comments or likes would invoke this callback
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
+
+}
 @end

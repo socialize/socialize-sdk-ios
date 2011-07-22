@@ -1,8 +1,8 @@
 /*
- * SocializeEntityService.h
+ * UserProfileViewController.h
  * SocializeSDK
  *
- * Created on 6/17/11.
+ * Created on 7/4/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -25,24 +25,33 @@
  * THE SOFTWARE.
  */
 
+#import <UIKit/UIKit.h>
+#import "SocializeCommonDefinitions.h"
+#import "Socialize.h"
 
-#import <Foundation/Foundation.h>
-#import "SocializeEntity.h"
-#import "SocializeRequest.h"
-#import "SocializeService.h"
-
-@class SocializeProvider;
-@class SocializeObjectFactory;
-
-@protocol SocializeEntityServiceDelegate;
-
-@interface SocializeEntityService : SocializeService
-{   
+@interface UserProfileViewController : UIViewController<SocializeServiceDelegate> {
+    IBOutlet UIImageView* userPicture;
+    IBOutlet UILabel* userName;
+    IBOutlet UILabel* firstName;
+    IBOutlet UILabel* lastName;
+    IBOutlet UILabel* city;
+    IBOutlet UILabel* state;
+    IBOutlet UIActivityIndicatorView* progressView;
+    
+    Socialize* _service;
 }
 
--(void)entityWithKey:(NSString *)keyOfEntity;
-//-(void)listEntitiesWithKeys:(NSArray *)entityKeysArray;
--(void)createEntities:(NSArray *)entities;
--(void)createEntity:(id<SocializeEntity>)entity ;
--(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil service: (Socialize*) socService;
+
+@property (nonatomic, retain) IBOutlet UIImageView* userPicture;
+@property (nonatomic, retain) IBOutlet UILabel* userName;
+@property (nonatomic, retain) IBOutlet UILabel* firstName;
+@property (nonatomic, retain) IBOutlet UILabel* lastName;
+@property (nonatomic, retain) IBOutlet UILabel* city;
+@property (nonatomic, retain) IBOutlet UILabel* state;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView* progressView;
+@property (nonatomic, assign) Socialize* service;
+
+-(IBAction)doneBtnAction;
+
 @end
