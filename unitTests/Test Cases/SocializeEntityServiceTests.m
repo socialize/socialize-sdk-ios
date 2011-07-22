@@ -88,7 +88,7 @@
     NSString* entityKey = @"www.google.com";
     
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entityKey,@"key", nil];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entityKey,@"entity_key", nil];
     [[mockProvider expect] requestWithMethodName:@"entity/" andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_entityService];
 
     _entityService.provider = mockProvider;

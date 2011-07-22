@@ -8,11 +8,11 @@
 
 #import "AuthenticateViewController.h"
 #import "Socialize.h"
+#import "EntityListViewController.h"
 
 @implementation AuthenticateViewController
 @synthesize keyField = _keyField;
 @synthesize secretField = _secretField;
-@synthesize likeViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,7 +29,6 @@
     self.keyField = nil;
     self.secretField = nil;
     [socialize release];
-    [likeViewController release];
     [super dealloc];
 }
 
@@ -81,24 +80,23 @@
 
 -(void)didAuthenticate
 {
-    self.likeViewController = [[[LikeViewController alloc] initWithNibName:@"LikeViewController" bundle:nil] autorelease];
-    [self.navigationController pushViewController:likeViewController animated:YES];
+    EntityListViewController *listController = [[EntityListViewController alloc] initWithStyle:UITableViewStylePlain andService:socialize];
+    [self.navigationController pushViewController:listController animated:YES];
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
 {
-///    NSLog(@"  error ")
     UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"Authentication failed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];
     [msg release];
 }
 
-
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
 
 }
--(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
 
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
+    
 }
 
 // creating multiple likes or comments would invoke this callback
@@ -110,7 +108,4 @@
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
 
 }
-
-
-
 @end

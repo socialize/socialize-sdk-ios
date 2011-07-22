@@ -148,9 +148,10 @@
             OAToken *requestToken = [[OAToken alloc] initWithKey:token secret:token_secret];
             [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
             [requestToken release]; requestToken = nil;
-            [_delegate didAuthenticate];
+            if (([((NSObject*)_delegate) respondsToSelector:@selector(didAuthenticate)]) )
+                [_delegate didAuthenticate];
         }
-        else
+        else if (([((NSObject*)_delegate) respondsToSelector:@selector(service:didFail:)]) ) 
             [_delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
             
         [self persistUserInfo:[jsonObject objectForKey:@"user"]];

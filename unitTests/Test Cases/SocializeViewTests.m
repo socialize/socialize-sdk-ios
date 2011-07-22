@@ -38,7 +38,7 @@
     
     mockEntity.key = @"www.123.com";
     
-    NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:mockEntity.key, @"entity", nil];
+    NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:mockEntity.key, @"entity_key", nil];
     NSArray *params = [NSArray arrayWithObjects:entityParam, 
                        nil];
     

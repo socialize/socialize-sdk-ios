@@ -36,6 +36,8 @@
 #import <Foundation/Foundation.h>
 #import "JSONKit.h"
 
+
+#define ENTITY @"entity_key"
 static const int singleCommentId = 1;
 
 @interface SocializeCommentsServiceTests()
@@ -82,7 +84,7 @@ static const int singleCommentId = 1;
     NSArray* keys = [NSArray arrayWithObjects: @"url_for_test", @"enother_url", nil];
     [[mockProvider expect] requestWithMethodName:@"comment/" 
                                        andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:ids, @"id", keys, @"key", nil]
-      expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                              expectedJSONFormat:SocializeDictionaryWIthListAndErrors
                                    andHttpMethod:@"GET" 
                                      andDelegate:_service];
     _service.provider = mockProvider; 
@@ -101,37 +103,36 @@ static const int singleCommentId = 1;
 {
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
     [[mockProvider expect] requestWithMethodName:@"comment/" 
-                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"key", nil]
+                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"entity_key", nil]
       expectedJSONFormat:SocializeDictionaryWIthListAndErrors
                                    andHttpMethod:@"GET" 
                                      andDelegate:_service];
     _service.provider = mockProvider; 
-    
     NSString* entryKey = @"http://www.example.com/interesting-story/";
-    [_service getCommentList:entryKey];
+    [_service getCommentList:entryKey first:nil last:nil];
     
     [mockProvider verify];
 }
 
--(void) testCreateCommentForExisting
+-(void) testGetCommentListWithPageInfo
 {   
-    
-    NSArray *params = [NSArray arrayWithObjects:
-                       [NSDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"entity", @"this was a great story", @"text", nil],
-                       nil];
+    NSNumber* first = [NSNumber numberWithInt:2]; 
+    NSNumber* last = [NSNumber numberWithInt:800]; 
     
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
     
-    _service.provider = mockProvider;    
-    
-    SocializeEntity *entity = [[SocializeEntity new] autorelease];  
-    entity.key = @"http://www.example.com/interesting-story/";
-    entity.name = @"example";
-    [_service createCommentForEntity:entity comment:@"this was a great story" createNew:NO];
+    [[mockProvider expect] requestWithMethodName:@"comment/" 
+                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"entity_key", first, @"first", last, @"last", nil]
+                              expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                   andHttpMethod:@"GET" 
+                                     andDelegate:_service];
+    _service.provider = mockProvider; 
+    NSString* entryKey = @"http://www.example.com/interesting-story/";
+    [_service getCommentList:entryKey first:first last:last];
     
     [mockProvider verify];
 }
+
 
 -(void) testCreateCommentForNew
 {   
@@ -141,7 +142,7 @@ static const int singleCommentId = 1;
     
     NSArray* mockArray = [NSArray arrayWithObjects:
                                      [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil],@"entity",
+                                        [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil],ENTITY,
                                       @"this was a great story", @"text", nil], 
                                      nil];
     
@@ -149,8 +150,7 @@ static const int singleCommentId = 1;
     [[mockProvider expect] requestWithMethodName:@"comment/" andParams:mockArray  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
     
     _service.provider = mockProvider;    
-
-    [_service createCommentForEntity:entity comment:@"this was a great story" createNew:YES];
+    [_service createCommentForEntity:entity comment:@"this was a great story"];
     
     [mockProvider verify];
 }

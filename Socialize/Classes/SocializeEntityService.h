@@ -45,5 +45,4 @@
 -(void)createEntities:(NSArray *)entities;
 -(void)createEntity:(id<SocializeEntity>)entity ;
 -(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity;
-
 @end

@@ -15,6 +15,8 @@
 #import "SocializeLike.h"
 
 
+#define ENTITY @"entity_key"
+
 @interface SocializeLikeTests() 
 -(NSString *)helperGetJSONStringFromFile:(NSString *)fileName;
 @end
@@ -72,16 +74,36 @@
 
 -(void) testGetListOfLikes
 {
+    NSNumber* first = [NSNumber numberWithInt:1];
+    NSNumber* last = [NSNumber numberWithInt:100];
+    
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
     _service.provider = mockProvider;
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   @"www.123.com", @"key",
+                                   @"www.123.com", @"entity_key", first, @"first", last, @"last",
                                    nil];
 
     [[mockProvider expect] requestWithMethodName:@"like/" andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_service];
-    [_service getLikesForEntityKey:@"www.123.com"];
+
+    [_service getLikesForEntityKey:@"www.123.com" first:first last:last];
     [mockProvider verify];
 }
+
+-(void) testGetListOfLikesWithNilPageIndicators
+{
+    
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    _service.provider = mockProvider;
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   @"www.123.com", @"entity_key", 
+                                   nil];
+    
+    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_service];
+    
+    [_service getLikesForEntityKey:@"www.123.com" first:nil last:nil];
+    [mockProvider verify];
+}
+
 
 -(void)testpostLikeForEntity{
     
@@ -93,7 +115,7 @@
     
     mockEntity.key = @"www.123.com";
 
-    NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:mockEntity.key, @"entity", nil];
+    NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:mockEntity.key, ENTITY, nil];
     NSArray *params = [NSArray arrayWithObjects:entityParam, 
                        nil];
 
@@ -115,7 +137,7 @@
     NSNumber* lng = [NSNumber numberWithFloat:-122.397850];
     NSNumber* lat = [NSNumber numberWithFloat:37.786521];
     
-    NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:mockEntity.key, @"entity", lng, @"lng", lat, @"lat", nil];
+    NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:mockEntity.key, ENTITY, lng, @"lng", lat, @"lat", nil];
     NSArray *params = [NSArray arrayWithObjects:entityParam, 
                        nil];
     

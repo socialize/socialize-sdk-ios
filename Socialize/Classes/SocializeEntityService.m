@@ -36,7 +36,7 @@
 #define ENTITY_LIST_ENDPOINT    @"entity/list/"
 
 #define IDS_KEY @"ids"
-#define ENTRY_KEY @"key"
+#define ENTRY_KEY @"entity_key"
 #define ENTITY_KEY @"entity"
 #define COMMENT_KEY @"text"
 
@@ -75,15 +75,6 @@
     [self createEntities:[NSArray arrayWithObject:entity]];
 }
 
-
-//-(void)fetchEntity:(NSString*)key
-//{
-//    NSMutableDictionary*  params = [[[NSMutableDictionary alloc] init] autorelease]; 
-//    [params setObject:key forKey:@"id"];
-//    NSString* updatedResource = [NSString stringWithFormat:@"%@%@/", ENTITY_KEY, key]; 
-//    [_provider requestWithMethodName:updatedResource andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
-//}
-
 -(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity
 {
     id<SocializeEntity> entity = (id<SocializeEntity>)[_objectCreator createObjectForProtocol:@protocol(SocializeEntity)];
@@ -94,8 +85,7 @@
     [self createEntity:entity];
 }
 
--(void)createEntities:(NSArray *)entities
-{
+-(void)createEntities:(NSArray *)entities{
     [self createEntities:entities expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
 

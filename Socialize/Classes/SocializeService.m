@@ -95,11 +95,9 @@
 #pragma mark - Socialize requst delegate
 
 
-- (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error
-{
+- (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error {
      //[self doDidFailWithError:error];
     [_delegate service:self didFail:error]; 
-    
 }
 
 -(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList {
@@ -107,9 +105,8 @@
     NSMutableArray* array = nil;
     NSMutableArray* errorArray = nil;
     
-    if ([objectList isKindOfClass:[NSArray class]]){
+    if ([objectList isKindOfClass:[NSArray class]])
         array = objectList;
-    }
     else if (objectList != nil){
         array = [NSMutableArray array];
         [array addObject:objectList];
@@ -124,20 +121,19 @@
     else
         errorArray = errorList;
 
+    DLog(@"SocializeService delegate %@", self.delegate);
     if ([request.httpMethod isEqualToString:@"POST"]){
         if ([array count])
             [self.delegate service:self didCreate:[array objectAtIndex:0]];
         else
             [self.delegate service:self didCreate:nil];
     }
-            
     else if ([request.httpMethod isEqualToString:@"GET"])
         [self.delegate service:self didFetchElements:array];
     else if ([request.httpMethod isEqualToString:@"DELETE"])
         [self.delegate service:self didDelete:nil];
     else if ([request.httpMethod isEqualToString:@"PUT"])
         [self.delegate service:self didUpdate:objectList];
-
 }
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
@@ -145,9 +141,8 @@
     //Move the following lines to the base  SocializeService Class, because it's the same for all objects.
     NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     
-    if(request.expectedJSONFormat == SocializeAny){
+    if(request.expectedJSONFormat == SocializeAny)
         [self invokeAppropriateCallback:request objectList:nil errorList:nil];
-    }
     else if(request.expectedJSONFormat == SocializeDictionaryWIthListAndErrors){
         
         // if it is the response form {errors:"",items:""}
@@ -165,13 +160,21 @@
         if (!errors || !items){
             // we should atleast have elements for erors and items in them.
             [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+            return;
         }
 
         id objectResponse = [_objectCreator createObjectFromString:items forProtocol:[self ProtocolType]]; 
         id errorResponse = [_objectCreator createObjectFromString:errors forProtocol:@protocol(SocializeError)]; 
         
+        if ([errorResponse isKindOfClass: [NSArray class]]){
+            if ([errorResponse count]){
+                NSLog(@" errorResponse  %@",errorResponse );
+                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+                return;
+            }
+        }
+        
         if([objectResponse isKindOfClass: [NSArray class]]){ 
-            
             if ([objectResponse count]){
                 if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]])
                     [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponse];

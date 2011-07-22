@@ -32,7 +32,7 @@
 -(void)createViewForEntityKey:(NSString*)key{
     
     if (key && [key length]){   
-        NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity", nil];
+        NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity_key", nil];
         NSArray *params = [NSArray arrayWithObjects:entityParam, 
                            nil];
         [_provider requestWithMethodName:VIEW_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];

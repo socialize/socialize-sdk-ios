@@ -8,20 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Socialize.h"
-#import "LikeViewController.h"
 
 @interface AuthenticateViewController : UIViewController<SocializeServiceDelegate> {
     
     Socialize*              socialize;
     IBOutlet UITextField*   _keyField;
     IBOutlet UITextField*   _secretField;
-    
-    LikeViewController*     likeViewController;
 }
 
 @property (retain,nonatomic) IBOutlet UITextField*   keyField;
 @property (retain,nonatomic) IBOutlet UITextField*   secretField;
-@property (retain, nonatomic) LikeViewController* likeViewController;
 
 -(IBAction)authenticate:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
