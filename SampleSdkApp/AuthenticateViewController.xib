@@ -176,6 +176,24 @@
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
 					</object>
+					<object class="IBUILabel" id="732731583">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{22, 212}, {103, 21}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">7</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<string key="IBUIText"/>
+						<reference key="IBUIFont" ref="595796506"/>
+						<reference key="IBUITextColor" ref="13101086"/>
+						<nil key="IBUIHighlightedColor"/>
+						<int key="IBUIBaselineAdjustment">1</int>
+						<float key="IBUIMinimumFontSize">10</float>
+					</object>
 				</object>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
@@ -253,6 +271,14 @@
 					</object>
 					<int key="connectionID">14</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">resultLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="732731583"/>
+					</object>
+					<int key="connectionID">16</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -273,6 +299,7 @@
 							<reference ref="310954288"/>
 							<reference ref="861983637"/>
 							<reference ref="668038263"/>
+							<reference ref="732731583"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -301,16 +328,25 @@
 						<int key="objectID">7</int>
 						<reference key="object" ref="668038263"/>
 						<reference key="parent" ref="191373211"/>
+						<string key="objectName">secret</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
 						<reference key="object" ref="861983637"/>
 						<reference key="parent" ref="191373211"/>
+						<string key="objectName">authenticate</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">5</int>
 						<reference key="object" ref="310954288"/>
 						<reference key="parent" ref="191373211"/>
+						<string key="objectName">key</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">15</int>
+						<reference key="object" ref="732731583"/>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">resultLabel</string>
 					</object>
 				</object>
 			</object>
@@ -323,6 +359,7 @@
 					<string>1.CustomClassName</string>
 					<string>1.IBEditorWindowLastContentRect</string>
 					<string>1.IBPluginDependency</string>
+					<string>15.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
@@ -335,6 +372,7 @@
 					<string>UIResponder</string>
 					<string>UIControl</string>
 					<string>{{556, 412}, {320, 480}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -355,7 +393,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">14</int>
+			<int key="maxID">16</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -409,6 +447,7 @@
 							<string>_keyField</string>
 							<string>_secretField</string>
 							<string>keyField</string>
+							<string>resultLabel</string>
 							<string>secretField</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -416,6 +455,7 @@
 							<string>UITextField</string>
 							<string>UITextField</string>
 							<string>UITextField</string>
+							<string>UILabel</string>
 							<string>UITextField</string>
 						</object>
 					</object>
@@ -426,6 +466,7 @@
 							<string>_keyField</string>
 							<string>_secretField</string>
 							<string>keyField</string>
+							<string>resultLabel</string>
 							<string>secretField</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -441,6 +482,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">keyField</string>
 								<string key="candidateClassName">UITextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">resultLabel</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">secretField</string>

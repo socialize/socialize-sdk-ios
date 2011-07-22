@@ -13,6 +13,8 @@
 @implementation AuthenticateViewController
 @synthesize keyField = _keyField;
 @synthesize secretField = _secretField;
+@synthesize resultLabel = _resultLabel;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,6 +63,7 @@
 }
 
 -(IBAction)authenticate:(id)sender{
+    
     [socialize removeAuthenticationInfo];
     [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text ];
 }
@@ -80,12 +83,14 @@
 
 -(void)didAuthenticate
 {
+    self.resultLabel.text = @"success";
     EntityListViewController *listController = [[EntityListViewController alloc] initWithStyle:UITableViewStylePlain andService:socialize];
     [self.navigationController pushViewController:listController animated:YES];
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
 {
+    self.resultLabel.text = @"failed";
     UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"Authentication failed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];
     [msg release];

@@ -14,13 +14,15 @@
     Socialize*              socialize;
     IBOutlet UITextField*   _keyField;
     IBOutlet UITextField*   _secretField;
+    UILabel*       _resultLabel;
 }
 
 @property (retain,nonatomic) IBOutlet UITextField*   keyField;
 @property (retain,nonatomic) IBOutlet UITextField*   secretField;
+@property (retain,nonatomic) IBOutlet UILabel*       resultLabel;
 
 -(IBAction)authenticate:(id)sender;
-- (IBAction)textFieldReturn:(id)sender;
-- (IBAction)backgroundTouched:(id)sender;
+-(IBAction)textFieldReturn:(id)sender;
+-(IBAction)backgroundTouched:(id)sender;
 
 @end
