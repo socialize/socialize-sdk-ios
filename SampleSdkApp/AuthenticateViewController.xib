@@ -79,6 +79,9 @@
 						<reference key="NSNextKeyView" ref="717633518"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
+						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
+							<string key="IBUIAccessibilityLabel">key</string>
+						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<string key="IBUIText"/>
@@ -129,6 +132,9 @@
 						<reference key="NSNextKeyView" ref="861983637"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
+						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
+							<string key="IBUIAccessibilityLabel">secret</string>
+						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<string key="IBUIText"/>
@@ -148,11 +154,13 @@
 					<object class="IBUIButton" id="861983637">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{149, 205}, {151, 37}}</string>
+						<string key="NSFrame">{{149, 312}, {151, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
+						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
+							<string key="IBUIAccessibilityLabel">authenticate</string>
+						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
@@ -176,7 +184,7 @@
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
 					</object>
-					<object class="IBUILabel" id="732731583">
+					<object class="IBUILabel" id="923875229">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{22, 212}, {103, 21}}</string>
@@ -186,6 +194,9 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
+							<string key="IBUIAccessibilityLabel">resultLabel</string>
+						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText"/>
 						<reference key="IBUIFont" ref="595796506"/>
@@ -275,7 +286,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">resultLabel</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="732731583"/>
+						<reference key="destination" ref="923875229"/>
 					</object>
 					<int key="connectionID">16</int>
 				</object>
@@ -297,9 +308,9 @@
 							<reference ref="139440939"/>
 							<reference ref="717633518"/>
 							<reference ref="310954288"/>
-							<reference ref="861983637"/>
 							<reference ref="668038263"/>
-							<reference ref="732731583"/>
+							<reference ref="923875229"/>
+							<reference ref="861983637"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -328,7 +339,6 @@
 						<int key="objectID">7</int>
 						<reference key="object" ref="668038263"/>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">secret</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
@@ -340,13 +350,11 @@
 						<int key="objectID">5</int>
 						<reference key="object" ref="310954288"/>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">key</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
-						<reference key="object" ref="732731583"/>
+						<reference key="object" ref="923875229"/>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">resultLabel</string>
 					</object>
 				</object>
 			</object>
