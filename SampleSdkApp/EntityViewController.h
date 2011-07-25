@@ -24,6 +24,7 @@
     
     Socialize                   *_service;
     id<SocializeLike>           _myLike;
+    id <SocializeView>          _myView;
 }
 
 @property (retain, nonatomic)  id<SocializeEntity> entity;

@@ -23,7 +23,8 @@
 @property (nonatomic, retain) SocializeActionView* socializeActionPanel;
 @property (nonatomic, retain) UIWebView*           webView;
 @property (nonatomic, assign) Socialize*           service;
-
+@property (nonatomic, retain) id<SocializeLike>    like;
+@property (nonatomic, retain) id<SocializeView>    viewSoc;
 @end
 
 @implementation EntityViewController
@@ -32,6 +33,8 @@
 @synthesize webView = _webView;
 @synthesize entity = _entity;
 @synthesize service = _service;
+@synthesize like = _myLike;
+@synthesize viewSoc = _myView;
 
 -(id) initWithEntry: (id<SocializeEntity>) entity andService: (Socialize*) service
 {
@@ -50,6 +53,8 @@
     [_commentsNavigationController release];  _commentsNavigationController = nil;
     [_webView release]; _webView = nil;
     self.service = nil;
+    self.like = nil;
+    self.viewSoc = nil;
     [super dealloc];
 }
 
@@ -100,7 +105,7 @@
     [_webView loadHTMLString:@"<body> <h2> The entity is the unit around which Socialize revolves</h2> <Br>An entity is always upon a URL, which can have assocated views(see bottom left count and which can have likes and comments (see bottom right buttons/counters)) </body> " baseURL:nil];
 
 	//initialize socialize related classes
-	[self initActionViews];   
+	[self initActionViews]; 
 }
 
 - (void)viewDidUnload
@@ -116,7 +121,8 @@
     [_service setDelegate:self];
     [_service getEntityByKey:_entity.key];
 
-    [self.service viewEntity:_entity];
+    if(self.viewSoc == nil)
+        [self.service viewEntity:_entity];
 
 }
 
@@ -163,7 +169,7 @@
 
 -(void)likeButtonTouched:(id)sender {
     if([_socializeActionPanel isLiked]) 
-       [_service unlikeEntity:_myLike]; 
+       [_service unlikeEntity:self.like]; 
     else 
        [_service likeEntityWithKey:self.entity.key longitude:nil latitude:nil];
 }
@@ -245,15 +251,14 @@
 
     DLog(@"didCreate %@", object);
     if ([object conformsToProtocol:@protocol(SocializeLike)]){
-        _myLike = (id<SocializeLike>)object;
-        [_myLike retain];
-        if (_myLike != nil)
-            [self.socializeActionPanel updateLikesCount:[NSNumber numberWithFloat:[_myLike.entity likes]]  liked:YES];
+        self.like = (id<SocializeLike>)object;
+        if (self.like != nil)
+            [self.socializeActionPanel updateLikesCount:[NSNumber numberWithFloat:[self.like.entity likes]]  liked:YES];
     }
     else if ([object conformsToProtocol:@protocol(SocializeView)]){
-        id <SocializeView> _myView = (id<SocializeView>)object;
-        if (_myView != nil){
-            [self.socializeActionPanel updateViewsCount:[NSNumber numberWithFloat:[_myView.entity views]]];
+        self.viewSoc  = (id<SocializeView>)object;
+        if (self.viewSoc != nil){
+            [self.socializeActionPanel updateViewsCount:[NSNumber numberWithFloat:[self.viewSoc.entity views]]];
         }
     }
 }
@@ -261,7 +266,7 @@
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
     DLog(@"didDelete %@", object);
     [self.socializeActionPanel updateIsLiked:NO];
-    [_myLike release]; _myLike = nil;
+    self.like = nil;
 }
 
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
