@@ -235,6 +235,8 @@
 	[UIView setAnimationDuration:0.4];
 	_commentsNavigationController.view.frame = navFrame;
 	[UIView commitAnimations];
+    
+    [_service getEntityByKey:_entity.key];
 }
 
 #pragma mark - Socialize Service delegate
