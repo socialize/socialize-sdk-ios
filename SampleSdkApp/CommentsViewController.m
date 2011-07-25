@@ -50,7 +50,7 @@
 {
     [super viewDidLoad];
     _service = [[Socialize alloc] initWithDelegate:self]; 
-    [_service getCommentList:_entityKey first:[NSNumber numberWithInt:1] last:[NSNumber numberWithInt:4]];
+    [_service getCommentList:_entityKey first:nil last:nil];
 }
 
 - (void)viewDidUnload

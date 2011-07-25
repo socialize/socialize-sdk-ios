@@ -535,6 +535,8 @@
 		16E2C43A1398C40E007C91ED /* SampleSdkApp */ = {
 			isa = PBXGroup;
 			children = (
+				16E2C4581398F6E3007C91ED /* socialize_resources */,
+				16E2C43B1398C40F007C91ED /* Supporting Files */,
 				6DFD546413D91B0500336836 /* Supporting Views */,
 				6D2C76D013CA7CEB00AC9112 /* AuthenticateViewController.h */,
 				6D2C76D113CA7CED00AC9112 /* AuthenticateViewController.m */,
@@ -551,8 +553,6 @@
 				6DEEC95C13D50E570066CFA2 /* LikeListViewController.h */,
 				6DEEC95D13D50E570066CFA2 /* LikeListViewController.m */,
 				6DEEC95E13D50E570066CFA2 /* LikeListViewController.xib */,
-				16E2C43B1398C40F007C91ED /* Supporting Files */,
-				16E2C4581398F6E3007C91ED /* socialize_resources */,
 				16E2C4431398C40F007C91ED /* SampleSdkAppAppDelegate.h */,
 				16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */,
 				16E2C4461398C40F007C91ED /* MainWindow.xib */,
