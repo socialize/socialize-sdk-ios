@@ -103,6 +103,7 @@
 		16B48DD713DEEE4400EE0A92 /* SocializeViewJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D144D0413BD100C001D8E0A /* SocializeViewJSONFormatter.h */; };
 		16B48DD813DEEE4400EE0A92 /* SocializeShareJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D9A0BA513BE1EA000AE949C /* SocializeShareJSONFormatter.h */; };
 		16B48DD913DEEE4400EE0A92 /* SocializeErrorFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D205A3C13C3DB6300D0645E /* SocializeErrorFormatter.h */; };
+		16B48DE713DEFA7300EE0A92 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4D29841393FFCD0065C0CB /* SocializeConfigurationInfo.plist */; };
 		16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		16E2C4381398C40E007C91ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
 		16E2C4391398C40E007C91ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
@@ -1096,6 +1097,7 @@
 				6DEEC96B13D50E570066CFA2 /* LikeListViewController.xib in Resources */,
 				6DEEC9BF13D6238F0066CFA2 /* urls.plist in Resources */,
 				6DFD545313D63B0C00336836 /* CommentsViewController.xib in Resources */,
+				16B48DE713DEFA7300EE0A92 /* SocializeConfigurationInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1688,6 +1690,7 @@
 				16B48DA813DEEAD100EE0A92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize-IOS" */ = {
 			isa = XCConfigurationList;
@@ -1696,6 +1699,7 @@
 				16B48DAD13DEEBE200EE0A92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		16E2C44B1398C40F007C91ED /* Build configuration list for PBXNativeTarget "SampleSdkApp" */ = {
 			isa = XCConfigurationList;
