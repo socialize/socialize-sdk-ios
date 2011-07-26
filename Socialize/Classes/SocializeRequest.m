@@ -14,6 +14,7 @@
 #import "OAServiceTicket.h"
 #import "SocializeCommonDefinitions.h"
 #import "JSONKit.h"
+#import <Foundation/NSURLResponse.h>
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -214,11 +215,12 @@ expectedJSONFormat = _expectedJSONFormat;
                                                    encoding:NSUTF8StringEncoding];
     [self produceHTMLOutput:responseBody];
 #endif
-    
-    if ([ticket.response statusCode] == 200)
+
+    NSHTTPURLResponse* response = (NSHTTPURLResponse*)ticket.response;
+    if (response.statusCode == 200)
         [self handleResponseData:data];
     else
-        [self failWithError:[NSError errorWithDomain:@"Socialize" code:ticket.response.statusCode userInfo:nil]];
+        [self failWithError:[NSError errorWithDomain:@"Socialize" code:response.statusCode userInfo:nil]];
     
     [self release];
 }
