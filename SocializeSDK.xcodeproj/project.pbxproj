@@ -6,6 +6,35 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		16B48DA513DEEAD100EE0A92 /* Cleanup Socialize-IOS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 16B48DA613DEEAD100EE0A92 /* Build configuration list for PBXAggregateTarget "Cleanup Socialize-IOS" */;
+			buildPhases = (
+				16B48DA913DEEB8F00EE0A92 /* Cleanup */,
+			);
+			dependencies = (
+			);
+			name = "Cleanup Socialize-IOS";
+			productName = "Cleanup Socialize-IOS";
+		};
+		16B48DAA13DEEBE100EE0A92 /* Socialize-IOS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize-IOS" */;
+			buildPhases = (
+				16B48DB013DEEC0E00EE0A92 /* Build static lib */,
+				16B48DB113DEECAB00EE0A92 /* Build universal lib */,
+				16B48DB213DEED3600EE0A92 /* Copy Headers */,
+				16B48DDA13DEEE7900EE0A92 /* Copy Resources */,
+			);
+			dependencies = (
+				16B48DAF13DEEC0900EE0A92 /* PBXTargetDependency */,
+			);
+			name = "Socialize-IOS";
+			productName = "Socialize-IOS";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
 		1636370813A76ED000403879 /* SocializeProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636370713A76ECF00403879 /* SocializeProviderTests.m */; };
@@ -35,6 +64,45 @@
 		16B48D0613DECD7100EE0A92 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1673D69113DEA5CA00A86589 /* libOAuth.a */; };
 		16B48D2413DECF4000EE0A92 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B48D2313DECF4000EE0A92 /* libJSONKit.a */; };
 		16B48D2513DECF4000EE0A92 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B48D2313DECF4000EE0A92 /* libJSONKit.a */; };
+		16B48DB313DEEDC300EE0A92 /* NSString+UrlSerialization.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */; };
+		16B48DB413DEEDDF00EE0A92 /* SocializeLikeService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D49743913B2586200463D23 /* SocializeLikeService.h */; };
+		16B48DB513DEEDF200EE0A92 /* SocializeAuthenticateService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9A68EB5813AFFA3900E38356 /* SocializeAuthenticateService.h */; };
+		16B48DB613DEEE0D00EE0A92 /* SocializeRequest.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */; };
+		16B48DB713DEEE0D00EE0A92 /* Socialize.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C21396BF8300CF2B9F /* Socialize.h */; };
+		16B48DB813DEEE0D00EE0A92 /* SocializeEntityService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0CE1396D9A800CF2B9F /* SocializeEntityService.h */; };
+		16B48DB913DEEE0D00EE0A92 /* SocializeCommonDefinitions.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */; };
+		16B48DBA13DEEE0D00EE0A92 /* SocializeActivityService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0D21396DA0400CF2B9F /* SocializeActivityService.h */; };
+		16B48DBB13DEEE0D00EE0A92 /* SocializeProvider.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1657EF63139F677000E488CC /* SocializeProvider.h */; };
+		16B48DBC13DEEE0D00EE0A92 /* SocializeCommentsService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1636373013AB28D900403879 /* SocializeCommentsService.h */; };
+		16B48DBD13DEEE0D00EE0A92 /* SocializeUserService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9AC0259713BB8253004AB147 /* SocializeUserService.h */; };
+		16B48DBE13DEEE0D00EE0A92 /* SocializeService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9ABB68BA13BA78A3001882D1 /* SocializeService.h */; };
+		16B48DBF13DEEE0D00EE0A92 /* SocializeViewService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D144CFB13BCE75D001D8E0A /* SocializeViewService.h */; };
+		16B48DC013DEEE0D00EE0A92 /* SocializeShareService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D9A0BA913BE20CC00AE949C /* SocializeShareService.h */; };
+		16B48DC113DEEE0D00EE0A92 /* SocializeDataFetcher.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */; };
+		16B48DC213DEEE1400EE0A92 /* SocializeConfiguration.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9A4D295E1393FE7A0065C0CB /* SocializeConfiguration.h */; };
+		16B48DC313DEEE4400EE0A92 /* SocializeActivity.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9A4D296B1393FED80065C0CB /* SocializeActivity.h */; };
+		16B48DC413DEEE4400EE0A92 /* SocializeApplication.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9A4D296D1393FED90065C0CB /* SocializeApplication.h */; };
+		16B48DC513DEEE4400EE0A92 /* SocializeComment.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9A4D296F1393FEDA0065C0CB /* SocializeComment.h */; };
+		16B48DC613DEEE4400EE0A92 /* SocializeEntity.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29711393FEDB0065C0CB /* SocializeEntity.h */; };
+		16B48DC713DEEE4400EE0A92 /* SocializeObject.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29731393FEDC0065C0CB /* SocializeObject.h */; };
+		16B48DC813DEEE4400EE0A92 /* SocializeUser.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29751393FEDC0065C0CB /* SocializeUser.h */; };
+		16B48DC913DEEE4400EE0A92 /* SocializeLike.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D49743D13B2958D00463D23 /* SocializeLike.h */; };
+		16B48DCA13DEEE4400EE0A92 /* SocializeView.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D144D0013BCE8AD001D8E0A /* SocializeView.h */; };
+		16B48DCB13DEEE4400EE0A92 /* SocializeShare.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D9A0BA113BE1BA600AE949C /* SocializeShare.h */; };
+		16B48DCC13DEEE4400EE0A92 /* SocializeError.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D205A3813C3D77C00D0645E /* SocializeError.h */; };
+		16B48DCD13DEEE4400EE0A92 /* SocializePOOCObjectFactory.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29631393FE9F0065C0CB /* SocializePOOCObjectFactory.h */; };
+		16B48DCE13DEEE4400EE0A92 /* SocializeObjectFactory.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29A2139408710065C0CB /* SocializeObjectFactory.h */; };
+		16B48DCF13DEEE4400EE0A92 /* SocializeObjectFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 5C3069BC13A2B395007335FF /* SocializeObjectFormatter.h */; };
+		16B48DD013DEEE4400EE0A92 /* SocializeApplicationJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16F449CC13AF536E003BE655 /* SocializeApplicationJSONFormatter.h */; };
+		16B48DD113DEEE4400EE0A92 /* SocializeObjectJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 84B8F3D51396EF4D00C95F41 /* SocializeObjectJSONFormatter.h */; };
+		16B48DD213DEEE4400EE0A92 /* SocializeEntityJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 84B8F3D01396EF4100C95F41 /* SocializeEntityJSONFormatter.h */; };
+		16B48DD313DEEE4400EE0A92 /* SocializeCommentJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1636373413AB5D8E00403879 /* SocializeCommentJSONFormatter.h */; };
+		16B48DD413DEEE4400EE0A92 /* SocializeUserJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16F449C813AF4DCD003BE655 /* SocializeUserJSONFormatter.h */; };
+		16B48DD513DEEE4400EE0A92 /* SocializeListFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9A6C09A313B244BD00780951 /* SocializeListFormatter.h */; };
+		16B48DD613DEEE4400EE0A92 /* SocializeLikeJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1670BE5313C6EB81000CC441 /* SocializeLikeJSONFormatter.h */; };
+		16B48DD713DEEE4400EE0A92 /* SocializeViewJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D144D0413BD100C001D8E0A /* SocializeViewJSONFormatter.h */; };
+		16B48DD813DEEE4400EE0A92 /* SocializeShareJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D9A0BA513BE1EA000AE949C /* SocializeShareJSONFormatter.h */; };
+		16B48DD913DEEE4400EE0A92 /* SocializeErrorFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D205A3C13C3DB6300D0645E /* SocializeErrorFormatter.h */; };
 		16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		16E2C4381398C40E007C91ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
 		16E2C4391398C40E007C91ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
@@ -160,6 +228,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		16B48DAE13DEEC0900EE0A92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CC3DAB3137881B900B11B78 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16B48DA513DEEAD100EE0A92;
+			remoteInfo = "Cleanup Socialize-IOS";
+		};
 		16E2C44D1398C4F8007C91ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5CC3DAB3137881B900B11B78 /* Project object */;
@@ -175,6 +250,58 @@
 			remoteInfo = Socialize;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		16B48DB213DEED3600EE0A92 /* Copy Headers */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal/${PRODUCT_NAME}.framework/Headers";
+			dstSubfolderSpec = 0;
+			files = (
+				16B48DB413DEEDDF00EE0A92 /* SocializeLikeService.h in Copy Headers */,
+				16B48DB313DEEDC300EE0A92 /* NSString+UrlSerialization.h in Copy Headers */,
+				16B48DB513DEEDF200EE0A92 /* SocializeAuthenticateService.h in Copy Headers */,
+				16B48DB613DEEE0D00EE0A92 /* SocializeRequest.h in Copy Headers */,
+				16B48DB713DEEE0D00EE0A92 /* Socialize.h in Copy Headers */,
+				16B48DB813DEEE0D00EE0A92 /* SocializeEntityService.h in Copy Headers */,
+				16B48DB913DEEE0D00EE0A92 /* SocializeCommonDefinitions.h in Copy Headers */,
+				16B48DBA13DEEE0D00EE0A92 /* SocializeActivityService.h in Copy Headers */,
+				16B48DBB13DEEE0D00EE0A92 /* SocializeProvider.h in Copy Headers */,
+				16B48DBC13DEEE0D00EE0A92 /* SocializeCommentsService.h in Copy Headers */,
+				16B48DBD13DEEE0D00EE0A92 /* SocializeUserService.h in Copy Headers */,
+				16B48DBE13DEEE0D00EE0A92 /* SocializeService.h in Copy Headers */,
+				16B48DBF13DEEE0D00EE0A92 /* SocializeViewService.h in Copy Headers */,
+				16B48DC013DEEE0D00EE0A92 /* SocializeShareService.h in Copy Headers */,
+				16B48DC113DEEE0D00EE0A92 /* SocializeDataFetcher.h in Copy Headers */,
+				16B48DC213DEEE1400EE0A92 /* SocializeConfiguration.h in Copy Headers */,
+				16B48DC313DEEE4400EE0A92 /* SocializeActivity.h in Copy Headers */,
+				16B48DC413DEEE4400EE0A92 /* SocializeApplication.h in Copy Headers */,
+				16B48DC513DEEE4400EE0A92 /* SocializeComment.h in Copy Headers */,
+				16B48DC613DEEE4400EE0A92 /* SocializeEntity.h in Copy Headers */,
+				16B48DC713DEEE4400EE0A92 /* SocializeObject.h in Copy Headers */,
+				16B48DC813DEEE4400EE0A92 /* SocializeUser.h in Copy Headers */,
+				16B48DC913DEEE4400EE0A92 /* SocializeLike.h in Copy Headers */,
+				16B48DCA13DEEE4400EE0A92 /* SocializeView.h in Copy Headers */,
+				16B48DCB13DEEE4400EE0A92 /* SocializeShare.h in Copy Headers */,
+				16B48DCC13DEEE4400EE0A92 /* SocializeError.h in Copy Headers */,
+				16B48DCD13DEEE4400EE0A92 /* SocializePOOCObjectFactory.h in Copy Headers */,
+				16B48DCE13DEEE4400EE0A92 /* SocializeObjectFactory.h in Copy Headers */,
+				16B48DCF13DEEE4400EE0A92 /* SocializeObjectFormatter.h in Copy Headers */,
+				16B48DD013DEEE4400EE0A92 /* SocializeApplicationJSONFormatter.h in Copy Headers */,
+				16B48DD113DEEE4400EE0A92 /* SocializeObjectJSONFormatter.h in Copy Headers */,
+				16B48DD213DEEE4400EE0A92 /* SocializeEntityJSONFormatter.h in Copy Headers */,
+				16B48DD313DEEE4400EE0A92 /* SocializeCommentJSONFormatter.h in Copy Headers */,
+				16B48DD413DEEE4400EE0A92 /* SocializeUserJSONFormatter.h in Copy Headers */,
+				16B48DD513DEEE4400EE0A92 /* SocializeListFormatter.h in Copy Headers */,
+				16B48DD613DEEE4400EE0A92 /* SocializeLikeJSONFormatter.h in Copy Headers */,
+				16B48DD713DEEE4400EE0A92 /* SocializeViewJSONFormatter.h in Copy Headers */,
+				16B48DD813DEEE4400EE0A92 /* SocializeShareJSONFormatter.h in Copy Headers */,
+				16B48DD913DEEE4400EE0A92 /* SocializeErrorFormatter.h in Copy Headers */,
+			);
+			name = "Copy Headers";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		163636FB13A6431400403879 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
@@ -947,6 +1074,8 @@
 				5CC3DABD1378824700B11B78 /* Socialize */,
 				5CC3DAE81378859000B11B78 /* unitTests */,
 				16E2C4341398C40E007C91ED /* SampleSdkApp */,
+				16B48DA513DEEAD100EE0A92 /* Cleanup Socialize-IOS */,
+				16B48DAA13DEEBE100EE0A92 /* Socialize-IOS */,
 			);
 		};
 /* End PBXProject section */
@@ -1007,6 +1136,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh BuildSampleApp.sh";
 			shellScript = "";
+		};
+		16B48DA913DEEB8F00EE0A92 /* Cleanup */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Cleanup;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Paths\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${PROJECT_NAME}-iOS.framework\"\n\n# Cleanup\nrm -rf \"${FRAMEWORK}\" &>/dev/null\n\nexit 0";
+		};
+		16B48DB013DEEC0E00EE0A92 /* Build static lib */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build static lib";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphonesimulator4.3 -target Socialize -configuration ${CONFIGURATION} build\nxcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphoneos4.3 -target Socialize -configuration ${CONFIGURATION} build";
+		};
+		16B48DB113DEECAB00EE0A92 /* Build universal lib */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build universal lib";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Paths\nSIMULATOR_LIBRARY_PATH=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphonesimulator/libSocialize.a\"\nDEVICE_LIBRARY_PATH=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneos/libSocialize.a\"\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}\"\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}.framework\"\n\n# Create framework directory structure.\nrm -rf \"${FRAMEWORK}\" &>/dev/null\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Headers\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Resources\"\n\n# Generate universal binary from desktop, device, and simulator builds.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\"\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/Versions/A\"\ncd \"${FRAMEWORK}\"\nln -sf \"A\" \"Versions/Current\"\nln -sf \"Versions/Current/Headers\" \"Headers\"\nln -sf \"Versions/Current/Resources\" \"Resources\"\nln -sf \"Versions/Current/${PRODUCT_NAME}\" \"${PRODUCT_NAME}\"";
+		};
+		16B48DDA13DEEE7900EE0A92 /* Copy Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Paths\nPROJECT_RESOURCE_DIR=\"${PROJECT_DIR}/Socialize/Resources\"\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}.framework\"\nRESOURCE_DIR=\"${FRAMEWORK}/Resources\"\n\nrsync -azp \"${PROJECT_RESOURCE_DIR}/\" \"${RESOURCE_DIR}/\"";
 		};
 		6D31966C13CE6BDA00154B1F /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1136,6 +1321,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		16B48DAF13DEEC0900EE0A92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16B48DA513DEEAD100EE0A92 /* Cleanup Socialize-IOS */;
+			targetProxy = 16B48DAE13DEEC0900EE0A92 /* PBXContainerItemProxy */;
+		};
 		16E2C44E1398C4F8007C91ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5CC3DABD1378824700B11B78 /* Socialize */;
@@ -1176,6 +1366,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		16B48DA713DEEAD100EE0A92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		16B48DA813DEEAD100EE0A92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		16B48DAC13DEEBE200EE0A92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		16B48DAD13DEEBE200EE0A92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		16E2C4491398C40F007C91ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1257,6 +1475,10 @@
 		5CC3DAB8137881BA00B11B78 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = 4.2;
 				HEADER_SEARCH_PATHS = (
@@ -1272,6 +1494,10 @@
 		5CC3DAB9137881BA00B11B78 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					armv6,
+					armv7,
+				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = 4.2;
 				HEADER_SEARCH_PATHS = (
@@ -1455,6 +1681,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		16B48DA613DEEAD100EE0A92 /* Build configuration list for PBXAggregateTarget "Cleanup Socialize-IOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16B48DA713DEEAD100EE0A92 /* Debug */,
+				16B48DA813DEEAD100EE0A92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize-IOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16B48DAC13DEEBE200EE0A92 /* Debug */,
+				16B48DAD13DEEBE200EE0A92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		16E2C44B1398C40F007C91ED /* Build configuration list for PBXNativeTarget "SampleSdkApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
