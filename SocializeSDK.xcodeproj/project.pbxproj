@@ -27,6 +27,7 @@
 		1670BE5C13C6EBDD000CC441 /* SocializeLikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5B13C6EBDD000CC441 /* SocializeLikeTests.m */; };
 		1670BE5F13C6EBF5000CC441 /* SocializeLikeFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5E13C6EBF5000CC441 /* SocializeLikeFormatterTests.m */; };
 		1670BE6213C6EC04000CC441 /* SocializeShareFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE6113C6EC04000CC441 /* SocializeShareFormatterTests.m */; };
+		1673D69013DEA40E00A86589 /* OCMock in Resources */ = {isa = PBXBuildFile; fileRef = 1673D68F13DEA40E00A86589 /* OCMock */; };
 		168B7F2713B2291D00D85D73 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68EB1A13AFF99600E38356 /* NSString+URLEncoding.m */; };
 		168B7F2913B2294700D85D73 /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68EB1C13AFF99600E38356 /* NSURL+Base.m */; };
 		168B7F2A13B2294B00D85D73 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68EB1813AFF99600E38356 /* NSMutableURLRequest+Parameters.m */; };
@@ -241,6 +242,7 @@
 		1670BE5E13C6EBF5000CC441 /* SocializeLikeFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeFormatterTests.m; path = "Test Cases/SocializeLikeFormatterTests.m"; sourceTree = "<group>"; };
 		1670BE6013C6EC04000CC441 /* SocializeShareFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeShareFormatterTests.h; path = "Test Cases/SocializeShareFormatterTests.h"; sourceTree = "<group>"; };
 		1670BE6113C6EC04000CC441 /* SocializeShareFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeShareFormatterTests.m; path = "Test Cases/SocializeShareFormatterTests.m"; sourceTree = "<group>"; };
+		1673D68F13DEA40E00A86589 /* OCMock */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OCMock; path = unitTests/Libraries/OCMock; sourceTree = "<group>"; };
 		16E2C4351398C40E007C91ED /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E2C43C1398C40F007C91ED /* SampleSdkApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleSdkApp-Info.plist"; sourceTree = "<group>"; };
 		16E2C43E1398C40F007C91ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -276,7 +278,6 @@
 		5C3069BC13A2B395007335FF /* SocializeObjectFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeObjectFormatter.h; path = Classes/SocializeObjectFormatter.h; sourceTree = "<group>"; };
 		5C3069BD13A2B396007335FF /* SocializeObjectFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeObjectFormatter.m; path = Classes/SocializeObjectFormatter.m; sourceTree = "<group>"; };
 		5C54DE6013830F9800090269 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = unitTests/Libraries/libOCMock.a; sourceTree = "<group>"; };
-		5C54DE64138326EA00090269 /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Headers; path = unitTests/Libraries/Headers; sourceTree = "<group>"; };
 		5CC3DABE1378824800B11B78 /* libSocialize.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSocialize.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC3DAC11378824800B11B78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5CC3DAC51378824800B11B78 /* Socialize-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Socialize-Prefix.pch"; sourceTree = "<group>"; };
@@ -669,7 +670,7 @@
 		5CC3DAC01378824800B11B78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5C54DE64138326EA00090269 /* Headers */,
+				1673D68F13DEA40E00A86589 /* OCMock */,
 				5C54DE6013830F9800090269 /* libOCMock.a */,
 				163636FB13A6431400403879 /* GHUnitIOS.framework */,
 				5CC3DB101378889E00B11B78 /* CoreGraphics.framework */,
@@ -1135,6 +1136,7 @@
 				9A4D2999139402020065C0CB /* UnitTest-SocializeConfigurationInfo-EMPTY.plist in Resources */,
 				9A4D299A139402020065C0CB /* UnitTest-SocializeConfigurationInfo.plist in Resources */,
 				5C30695A13A10F62007335FF /* JSON-RequestAndResponse-TestFiles in Resources */,
+				1673D69013DEA40E00A86589 /* OCMock in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1430,7 +1432,7 @@
 				GCC_VERSION = 4.2;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
-					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
+					"\"$(SRCROOT)\"/unitTests/Libraries/**",
 					"\"$(SRCROOT)\"/Socialize",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -1445,7 +1447,7 @@
 				GCC_VERSION = 4.2;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
-					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
+					"\"$(SRCROOT)\"/unitTests/Libraries/**",
 					"\"$(SRCROOT)\"/Socialize",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -1546,7 +1548,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
-					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
+					"\"$(SRCROOT)\"/unitTests/Libraries/**",
 					"\"$(SRCROOT)\"/Socialize",
 				);
 				INFOPLIST_FILE = "unitTests/unitTests-Info.plist";
@@ -1591,7 +1593,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
-					"\"$(SRCROOT)\"/unitTests/Libraries/Headers",
+					"\"$(SRCROOT)\"/unitTests/Libraries/**",
 					"\"$(SRCROOT)\"/Socialize",
 				);
 				INFOPLIST_FILE = "unitTests/unitTests-Info.plist";
