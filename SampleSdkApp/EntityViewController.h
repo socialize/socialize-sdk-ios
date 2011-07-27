@@ -1,34 +1,27 @@
 //
-//  EntryViewController.h
+//  EntityViewController.h
 //  SocializeSDK
 //
-//  Created by Sergey Popenko on 6/3/11.
+//  Created by Fawad Haider on 7/26/11.
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "SocializeActionView.h"
-#import "CommentsViewController.h"
-///#import "DemoEntity.h"
-
 #import "Socialize.h"
-#import "SocializeCommonDefinitions.h"
-#import "SocializeLike.h"
+#import "LoadingView.h"
 
-@interface EntityViewController : UIViewController<UIWebViewDelegate,UITextFieldDelegate, SocializeActionViewDelegate, SocializeServiceDelegate> {
+
+@interface EntityViewController : UIViewController<SocializeServiceDelegate> {
     
-@private
-    SocializeActionView         *_socializeActionPanel;
-    UINavigationController      *_commentsNavigationController;
-    UIWebView                   *_webView;
-    
-    Socialize                   *_service;
-    id<SocializeLike>           _myLike;
-    id <SocializeView>          _myView;
+    IBOutlet UITextField* getEntityTextField;
+    IBOutlet UITextField* createEntityTextField;
+    Socialize*            _socialize;
+    LoadingView*          _loadingView;
+
 }
 
-@property (retain, nonatomic)  id<SocializeEntity> entity;
+-(IBAction)getEntity;
+//-(IBAction)createEntity;
 
--(id) initWithEntry: (id<SocializeEntity>) entity andService:(Socialize*)service;
 
 @end

@@ -8,7 +8,7 @@
 
 #import "AuthenticateViewController.h"
 #import "Socialize.h"
-#import "EntityListViewController.h"
+#import "TestListController.h"
 
 @implementation AuthenticateViewController
 @synthesize keyField = _keyField;
@@ -84,7 +84,7 @@
 -(void)didAuthenticate
 {
     self.resultLabel.text = @"success";
-    EntityListViewController *listController = [[EntityListViewController alloc] initWithStyle:UITableViewStylePlain andService:socialize];
+    TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil /*andService:socialize*/];
     [self.navigationController pushViewController:listController animated:YES];
 }
 
