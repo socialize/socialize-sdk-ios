@@ -14,6 +14,7 @@
 @synthesize keyField = _keyField;
 @synthesize secretField = _secretField;
 @synthesize resultLabel = _resultLabel;
+@synthesize socialize;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

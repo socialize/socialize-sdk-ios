@@ -46,13 +46,8 @@
 		1670BE5F13C6EBF5000CC441 /* SocializeLikeFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5E13C6EBF5000CC441 /* SocializeLikeFormatterTests.m */; };
 		1670BE6213C6EC04000CC441 /* SocializeShareFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE6113C6EC04000CC441 /* SocializeShareFormatterTests.m */; };
 		1673D69013DEA40E00A86589 /* OCMock in Resources */ = {isa = PBXBuildFile; fileRef = 1673D68F13DEA40E00A86589 /* OCMock */; };
-		1673D69413DEA5D300A86589 /* OAuthConsumer in Resources */ = {isa = PBXBuildFile; fileRef = 1673D69313DEA5D300A86589 /* OAuthConsumer */; };
 		16A5B33B139CFE6C00F3EF75 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DABE1378824800B11B78 /* libSocialize.a */; };
 		16B48D0313DEC0B700EE0A92 /* SocializeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFD546613D94BBB00336836 /* SocializeTests.m */; };
-		16B48D0513DECCC800EE0A92 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1673D69113DEA5CA00A86589 /* libOAuth.a */; };
-		16B48D0613DECD7100EE0A92 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1673D69113DEA5CA00A86589 /* libOAuth.a */; };
-		16B48D2413DECF4000EE0A92 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B48D2313DECF4000EE0A92 /* libJSONKit.a */; };
-		16B48D2513DECF4000EE0A92 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B48D2313DECF4000EE0A92 /* libJSONKit.a */; };
 		16B48DB313DEEDC300EE0A92 /* NSString+UrlSerialization.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */; };
 		16B48DB413DEEDDF00EE0A92 /* SocializeLikeService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D49743913B2586200463D23 /* SocializeLikeService.h */; };
 		16B48DB513DEEDF200EE0A92 /* SocializeAuthenticateService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 9A68EB5813AFFA3900E38356 /* SocializeAuthenticateService.h */; };
@@ -107,6 +102,12 @@
 		16E969EA13E0173F000DC537 /* EntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F03513DF972100B16454 /* EntityViewController.m */; };
 		16E969EB13E0175B000DC537 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F03A13DFC76B00B16454 /* LoadingView.m */; };
 		16E969EC13E01C4C000DC537 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4D29841393FFCD0065C0CB /* SocializeConfigurationInfo.plist */; };
+		16E96A1C13E0418F000DC537 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E96A1B13E0418F000DC537 /* libfacebook_ios_sdk.a */; };
+		16ECF48513E0501700E0BF5E /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E96A1B13E0418F000DC537 /* libfacebook_ios_sdk.a */; };
+		16ECF48A13E0504600E0BF5E /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ECF48913E0504600E0BF5E /* libJSONKit.a */; };
+		16ECF48B13E0504600E0BF5E /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ECF48913E0504600E0BF5E /* libJSONKit.a */; };
+		16ECF49E13E0505A00E0BF5E /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ECF48D13E0505A00E0BF5E /* libOAuth.a */; };
+		16ECF49F13E0505A00E0BF5E /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ECF48D13E0505A00E0BF5E /* libOAuth.a */; };
 		16F21EE013CDDE5000911977 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		16F449BE13AF2974003BE655 /* SocializeCommentFormaterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449BD13AF2974003BE655 /* SocializeCommentFormaterTests.m */; };
 		16F449CA13AF4DCE003BE655 /* SocializeUserJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 16F449C813AF4DCD003BE655 /* SocializeUserJSONFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -312,10 +313,6 @@
 		1670BE6013C6EC04000CC441 /* SocializeShareFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeShareFormatterTests.h; path = "Test Cases/SocializeShareFormatterTests.h"; sourceTree = "<group>"; };
 		1670BE6113C6EC04000CC441 /* SocializeShareFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeShareFormatterTests.m; path = "Test Cases/SocializeShareFormatterTests.m"; sourceTree = "<group>"; };
 		1673D68F13DEA40E00A86589 /* OCMock */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OCMock; path = unitTests/Libraries/OCMock; sourceTree = "<group>"; };
-		1673D69113DEA5CA00A86589 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth.a; path = Socialize/Libraries/OAuth/libOAuth.a; sourceTree = "<group>"; };
-		1673D69313DEA5D300A86589 /* OAuthConsumer */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OAuthConsumer; path = Socialize/Libraries/OAuth/OAuthConsumer; sourceTree = "<group>"; };
-		16B48D2313DECF4000EE0A92 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = Socialize/Libraries/JSON/libJSONKit.a; sourceTree = "<group>"; };
-		16B48D2613DECF6200EE0A92 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = Socialize/Libraries/JSON/JSONKit.h; sourceTree = "<group>"; };
 		16E2C4351398C40E007C91ED /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E2C43C1398C40F007C91ED /* SampleSdkApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleSdkApp-Info.plist"; sourceTree = "<group>"; };
 		16E2C43E1398C40F007C91ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -327,6 +324,30 @@
 		16E2C45A1398F6E3007C91ED /* action-bar-button-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-black.png"; sourceTree = "<group>"; };
 		16E2C4601398F6E3007C91ED /* action-bar-notification-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-notification-icon.png"; sourceTree = "<group>"; };
 		16E2C46B1399000C007C91ED /* action-bar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-bg.png"; sourceTree = "<group>"; };
+		16E96A1613E0418F000DC537 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
+		16E96A1713E0418F000DC537 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
+		16E96A1813E0418F000DC537 /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDialog.h; sourceTree = "<group>"; };
+		16E96A1913E0418F000DC537 /* FBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginDialog.h; sourceTree = "<group>"; };
+		16E96A1A13E0418F000DC537 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRequest.h; sourceTree = "<group>"; };
+		16E96A1B13E0418F000DC537 /* libfacebook_ios_sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfacebook_ios_sdk.a; sourceTree = "<group>"; };
+		16ECF48813E0504600E0BF5E /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		16ECF48913E0504600E0BF5E /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libJSONKit.a; sourceTree = "<group>"; };
+		16ECF48D13E0505A00E0BF5E /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOAuth.a; sourceTree = "<group>"; };
+		16ECF48F13E0505A00E0BF5E /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
+		16ECF49013E0505A00E0BF5E /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		16ECF49113E0505A00E0BF5E /* NSURL+Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Base.h"; sourceTree = "<group>"; };
+		16ECF49213E0505A00E0BF5E /* OAAsynchronousDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAAsynchronousDataFetcher.h; sourceTree = "<group>"; };
+		16ECF49313E0505A00E0BF5E /* OAConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAConsumer.h; sourceTree = "<group>"; };
+		16ECF49413E0505A00E0BF5E /* OADataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OADataFetcher.h; sourceTree = "<group>"; };
+		16ECF49513E0505A00E0BF5E /* OAHMAC_SHA1SignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAHMAC_SHA1SignatureProvider.h; sourceTree = "<group>"; };
+		16ECF49613E0505A00E0BF5E /* OAMutableURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAMutableURLRequest.h; sourceTree = "<group>"; };
+		16ECF49713E0505A00E0BF5E /* OAPlaintextSignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAPlaintextSignatureProvider.h; sourceTree = "<group>"; };
+		16ECF49813E0505A00E0BF5E /* OARequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OARequestParameter.h; sourceTree = "<group>"; };
+		16ECF49913E0505A00E0BF5E /* OAServiceTicket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAServiceTicket.h; sourceTree = "<group>"; };
+		16ECF49A13E0505A00E0BF5E /* OASignatureProviding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OASignatureProviding.h; sourceTree = "<group>"; };
+		16ECF49B13E0505A00E0BF5E /* OAToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken.h; sourceTree = "<group>"; };
+		16ECF49C13E0505A00E0BF5E /* OAToken_KeychainExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken_KeychainExtensions.h; sourceTree = "<group>"; };
+		16ECF49D13E0505A00E0BF5E /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
 		16F449BC13AF2974003BE655 /* SocializeCommentFormaterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentFormaterTests.h; path = "Test Cases/SocializeCommentFormaterTests.h"; sourceTree = "<group>"; };
 		16F449BD13AF2974003BE655 /* SocializeCommentFormaterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentFormaterTests.m; path = "Test Cases/SocializeCommentFormaterTests.m"; sourceTree = "<group>"; };
 		16F449C813AF4DCD003BE655 /* SocializeUserJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUserJSONFormatter.h; path = Classes/SocializeUserJSONFormatter.h; sourceTree = "<group>"; };
@@ -465,8 +486,9 @@
 				16E2C4381398C40E007C91ED /* Foundation.framework in Frameworks */,
 				16E2C4391398C40E007C91ED /* CoreGraphics.framework in Frameworks */,
 				16FCABD113B885CC0034499F /* GHUnitIOS.framework in Frameworks */,
-				16B48D0613DECD7100EE0A92 /* libOAuth.a in Frameworks */,
-				16B48D2513DECF4000EE0A92 /* libJSONKit.a in Frameworks */,
+				16E96A1C13E0418F000DC537 /* libfacebook_ios_sdk.a in Frameworks */,
+				16ECF48B13E0504600E0BF5E /* libJSONKit.a in Frameworks */,
+				16ECF49F13E0505A00E0BF5E /* libOAuth.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,8 +511,9 @@
 				5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */,
 				5CC3DAEC1378859000B11B78 /* Foundation.framework in Frameworks */,
 				163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */,
-				16B48D0513DECCC800EE0A92 /* libOAuth.a in Frameworks */,
-				16B48D2413DECF4000EE0A92 /* libJSONKit.a in Frameworks */,
+				16ECF48513E0501700E0BF5E /* libfacebook_ios_sdk.a in Frameworks */,
+				16ECF48A13E0504600E0BF5E /* libJSONKit.a in Frameworks */,
+				16ECF49E13E0505A00E0BF5E /* libOAuth.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +635,70 @@
 			path = socialize_resources;
 			sourceTree = "<group>";
 		};
+		16E96A1413E0418F000DC537 /* FacebookSDK */ = {
+			isa = PBXGroup;
+			children = (
+				16E96A1513E0418F000DC537 /* Headers */,
+				16E96A1B13E0418F000DC537 /* libfacebook_ios_sdk.a */,
+			);
+			name = FacebookSDK;
+			path = Socialize/Libraries/FacebookSDK;
+			sourceTree = "<group>";
+		};
+		16E96A1513E0418F000DC537 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				16E96A1613E0418F000DC537 /* Facebook.h */,
+				16E96A1713E0418F000DC537 /* FBConnect.h */,
+				16E96A1813E0418F000DC537 /* FBDialog.h */,
+				16E96A1913E0418F000DC537 /* FBLoginDialog.h */,
+				16E96A1A13E0418F000DC537 /* FBRequest.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		16ECF48713E0504600E0BF5E /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				16ECF48813E0504600E0BF5E /* JSONKit.h */,
+				16ECF48913E0504600E0BF5E /* libJSONKit.a */,
+			);
+			name = JSON;
+			path = Socialize/Libraries/FacebookSDK/JSON;
+			sourceTree = "<group>";
+		};
+		16ECF48C13E0505A00E0BF5E /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				16ECF48D13E0505A00E0BF5E /* libOAuth.a */,
+				16ECF48E13E0505A00E0BF5E /* OAuthConsumer */,
+			);
+			name = OAuth;
+			path = Socialize/Libraries/OAuth;
+			sourceTree = "<group>";
+		};
+		16ECF48E13E0505A00E0BF5E /* OAuthConsumer */ = {
+			isa = PBXGroup;
+			children = (
+				16ECF48F13E0505A00E0BF5E /* NSMutableURLRequest+Parameters.h */,
+				16ECF49013E0505A00E0BF5E /* NSString+URLEncoding.h */,
+				16ECF49113E0505A00E0BF5E /* NSURL+Base.h */,
+				16ECF49213E0505A00E0BF5E /* OAAsynchronousDataFetcher.h */,
+				16ECF49313E0505A00E0BF5E /* OAConsumer.h */,
+				16ECF49413E0505A00E0BF5E /* OADataFetcher.h */,
+				16ECF49513E0505A00E0BF5E /* OAHMAC_SHA1SignatureProvider.h */,
+				16ECF49613E0505A00E0BF5E /* OAMutableURLRequest.h */,
+				16ECF49713E0505A00E0BF5E /* OAPlaintextSignatureProvider.h */,
+				16ECF49813E0505A00E0BF5E /* OARequestParameter.h */,
+				16ECF49913E0505A00E0BF5E /* OAServiceTicket.h */,
+				16ECF49A13E0505A00E0BF5E /* OASignatureProviding.h */,
+				16ECF49B13E0505A00E0BF5E /* OAToken.h */,
+				16ECF49C13E0505A00E0BF5E /* OAToken_KeychainExtensions.h */,
+				16ECF49D13E0505A00E0BF5E /* OAuthConsumer.h */,
+			);
+			path = OAuthConsumer;
+			sourceTree = "<group>";
+		};
 		5C6AAC62137C3F5500AF0219 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -689,12 +776,11 @@
 		5CC3DAC01378824800B11B78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1673D69313DEA5D300A86589 /* OAuthConsumer */,
+				16ECF48C13E0505A00E0BF5E /* OAuth */,
+				16ECF48713E0504600E0BF5E /* JSON */,
+				16E96A1413E0418F000DC537 /* FacebookSDK */,
 				1673D68F13DEA40E00A86589 /* OCMock */,
 				5C54DE6013830F9800090269 /* libOCMock.a */,
-				1673D69113DEA5CA00A86589 /* libOAuth.a */,
-				16B48D2313DECF4000EE0A92 /* libJSONKit.a */,
-				16B48D2613DECF6200EE0A92 /* JSONKit.h */,
 				6D97F03C13DFC91500B16454 /* QuartzCore.framework */,
 				163636FB13A6431400403879 /* GHUnitIOS.framework */,
 				5CC3DB101378889E00B11B78 /* CoreGraphics.framework */,
@@ -1080,7 +1166,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A4D29861394002A0065C0CB /* SocializeConfigurationInfo.plist in Resources */,
-				1673D69413DEA5D300A86589 /* OAuthConsumer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1363,6 +1448,8 @@
 					"\"$(SRCROOT)/unitTests/Libraries\"",
 					"\"$(SRCROOT)/Socialize/Libraries/OAuth\"",
 					"\"$(SRCROOT)/Socialize/Libraries/JSON\"",
+					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK\"",
+					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK/JSON\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lgcov",
@@ -1399,6 +1486,8 @@
 					"\"$(SRCROOT)/unitTests/Libraries\"",
 					"\"$(SRCROOT)/Socialize/Libraries/OAuth\"",
 					"\"$(SRCROOT)/Socialize/Libraries/JSON\"",
+					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK\"",
+					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK/JSON\"",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
@@ -1556,6 +1645,8 @@
 					"\"$(SRCROOT)/unitTests/Libraries\"",
 					"\"$(SRCROOT)/Socialize/Libraries/OAuth\"",
 					"\"$(SRCROOT)/Socialize/Libraries/JSON\"",
+					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK\"",
+					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK/JSON\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1603,6 +1694,8 @@
 					"\"$(SRCROOT)/unitTests/Libraries\"",
 					"\"$(SRCROOT)/Socialize/Libraries/OAuth\"",
 					"\"$(SRCROOT)/Socialize/Libraries/JSON\"",
+					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK\"",
+					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK/JSON\"",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (

@@ -70,7 +70,7 @@
      [_service  authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" 
             apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" 
             thirdPartyAuthToken:@"another token"
-            thirdPartyUserId:@"anotheruserid"
+            thirdPartyAppId:@"anotheruserid"
                         thirdPartyName:FacebookAuth];
     
     

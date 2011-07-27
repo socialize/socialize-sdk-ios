@@ -20,6 +20,7 @@
 @property (retain,nonatomic) IBOutlet UITextField*   keyField;
 @property (retain,nonatomic) IBOutlet UITextField*   secretField;
 @property (retain,nonatomic) IBOutlet UILabel*       resultLabel;
+@property (nonatomic, readonly) Socialize* socialize;
 
 -(IBAction)authenticate:(id)sender;
 -(IBAction)textFieldReturn:(id)sender;

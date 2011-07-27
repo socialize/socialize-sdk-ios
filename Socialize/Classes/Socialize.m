@@ -62,25 +62,28 @@
     _viewService.delegate = delegate;
 }
 
-/*
+
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                             apiSecret:(NSString*)apiSecret 
-                                 udid:(NSString*)udid
                   thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
-                     thirdPartyUserId:(NSString*)thirdPartyUserId
+                     thirdPartyAppId:(NSString*)thirdPartyAppId
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
-                             delegate:(id<SocializeAuthenticationDelegate>)delegate
 {
-    _authService.delegate = delegate;
     [_authService  authenticateWithApiKey:apiKey 
                            apiSecret:apiSecret
-                                udid:udid
                            thirdPartyAuthToken:thirdPartyAuthToken
-                           thirdPartyUserId:thirdPartyUserId
+                           thirdPartyAppId:thirdPartyAppId
                            thirdPartyName:thirdPartyName
-                                ];
+    ];
 }
-*/
+
+
+-(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret
+              thirdPartyAppId:(NSString*)thirdPartyAppId 
+               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+{
+    [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:thirdPartyAppId thirdPartyName:thirdPartyName];
+}
 
 -(BOOL)isAuthenticated{
     return [SocializeAuthenticateService isAuthenticated];

@@ -56,6 +56,11 @@
 
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    return [authenticationViewController.socialize.authService handleOpenURL: url];
+}
+
 - (void)dealloc
 {
     [rootController  release];

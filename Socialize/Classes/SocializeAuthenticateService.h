@@ -12,10 +12,17 @@
 #import "SocializeRequest.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeService.h"
+#import "FBConnect.h"
 
-@interface SocializeAuthenticateService : SocializeService {
-
+@interface SocializeAuthenticateService : SocializeService<FBSessionDelegate> {
+    @private
+    Facebook *facebook;
+    NSString* _apiKey;
+    NSString* _apiSecret;
+    NSString* _thirdPartyAppId;
 }
+
+@property (nonatomic, retain) Facebook *facebook;
 
 -(void)authenticateWithApiKey:(NSString*)apiKey  
                     apiSecret:(NSString*)apiSecret;
@@ -23,10 +30,16 @@
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                             apiSecret:(NSString*)apiSecret 
                   thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
-                     thirdPartyUserId:(NSString*)thirdPartyUserId
+                     thirdPartyAppId:(NSString*)thirdPartyAppId
                         thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
+
+-(void)authenticateWithApiKey:(NSString*)apiKey 
+                    apiSecret:(NSString*)apiSecret 
+              thirdPartyAppId:(NSString*)thirdPartyAppId 
+               thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
 
 +(BOOL)isAuthenticated;
 -(void)removeAuthenticationInfo;
+-(BOOL)handleOpenURL:(NSURL *)url;
 
 @end

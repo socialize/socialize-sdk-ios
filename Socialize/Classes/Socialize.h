@@ -58,6 +58,15 @@ otherwise you will get a failure.
 
 /*** Authentication related info ***/
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret;
+-(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret
+              thirdPartyAppId:(NSString*)thirdPartyAppId 
+               thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
+-(void)authenticateWithApiKey:(NSString*)apiKey 
+                    apiSecret:(NSString*)apiSecret 
+          thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
+              thirdPartyAppId:(NSString*)thirdPartyAppId
+               thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
+
 -(BOOL)isAuthenticated;
 -(void)removeAuthenticationInfo;
 

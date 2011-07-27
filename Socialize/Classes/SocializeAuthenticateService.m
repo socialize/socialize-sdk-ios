@@ -20,12 +20,23 @@
 -(NSString*)getSocializeToken;
 -(void)persistUserInfo:(NSDictionary*)dictionary;
 -(void)persistConsumerInfo:(NSString*)apiKey andApiSecret:(NSString*)apiSecret;
+
+@property (nonatomic, retain) NSString* apiKey;
+@property (nonatomic, retain) NSString* apiSecret;
+@property (nonatomic, retain) NSString* thirdPartyAppId;
 @end
 
 @implementation SocializeAuthenticateService
 
+@synthesize facebook;
+@synthesize apiKey = _apiKey;
+@synthesize apiSecret = _apiSecret;
+@synthesize thirdPartyAppId = _thirdPartyAppId;
 
--(void)dealloc{
+
+-(void)dealloc
+{
+    self.facebook  = nil;
     [super dealloc];
 }
 
@@ -58,6 +69,8 @@
         [userDefaults setObject:apiSecret forKey:kSOCIALIZE_API_SECRET_KEY];
         [userDefaults synchronize];
     }
+    self.apiSecret = apiSecret;
+    self.apiKey = apiKey;
 }
 
 -(void)persistUserInfo:(NSDictionary*)dictionary{
@@ -99,7 +112,7 @@
 -(void)authenticateWithApiKey:(NSString*)apiKey
                             apiSecret:(NSString*)apiSecret 
                   thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
-                     thirdPartyUserId:(NSString*)thirdPartyUserId
+                     thirdPartyAppId:(NSString*)thirdPartyAppId
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
@@ -107,12 +120,31 @@
                              [self getSocializeId],  @"socialize_id", 
                              @"1"/* auth type is for facebook*/ , @"auth_type", //TODO:: should be changed
                              thirdPartyAuthToken, @"auth_token",
-                             thirdPartyUserId, @"auth_id" , nil] ;                        
+                             thirdPartyAppId, @"auth_id" , nil] ;                        
                                
    [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
+   self.thirdPartyAppId = thirdPartyAppId;
    [_provider secureRequestWithMethodName:AUTHENTICATE_METHOD andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
+-(void)authenticateWithApiKey:(NSString*)apiKey 
+                    apiSecret:(NSString*)apiSecret 
+              thirdPartyAppId:(NSString*)thirdPartyAppId 
+               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+{
+    facebook = [[Facebook alloc] initWithAppId:thirdPartyAppId];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"] 
+        && [defaults objectForKey:@"FBExpirationDateKey"]) {
+        self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+        self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    }
+    
+    if (![self.facebook isSessionValid]) {
+        [self.facebook authorize:nil delegate:self];
+    }
+}
 
 /**
  * Called when an error prevents the request from completing successfully.
@@ -172,6 +204,45 @@
         [defaults removeObjectForKey:secret];
     }
     
+    [defaults synchronize];
+}
+
+-(BOOL)handleOpenURL:(NSURL *)url 
+{    
+    return [self.facebook handleOpenURL:url]; 
+}
+
+#pragma mark - Facebook delegate
+
+/**
+ * Called when the user successfully logged in.
+ */
+- (void)fbDidLogin
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKey"];
+    [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+    [self authenticateWithApiKey:self.apiKey apiSecret:self.apiSecret thirdPartyAuthToken:self.facebook.accessToken thirdPartyAppId:self.thirdPartyAppId thirdPartyName:FacebookAuth];
+}
+
+/**
+ * Called when the user dismissed the dialog without logging in.
+ */
+- (void)fbDidNotLogin:(BOOL)cancelled
+{
+    if(cancelled)
+        [_delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+}
+
+/**
+ * Called when the user logged out.
+ */
+- (void)fbDidLogout
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"FBAccessTokenKey"];
+    [defaults removeObjectForKey:@"FBExpirationDateKey"];
     [defaults synchronize];
 }
 
