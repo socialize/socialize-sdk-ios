@@ -23,6 +23,7 @@
 @property (nonatomic, readonly) Socialize* socialize;
 
 -(IBAction)authenticate:(id)sender;
+-(IBAction)authenticateViaFacebook:(id)sender;
 -(IBAction)textFieldReturn:(id)sender;
 -(IBAction)backgroundTouched:(id)sender;
 

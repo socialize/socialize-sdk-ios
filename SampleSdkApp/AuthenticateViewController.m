@@ -69,6 +69,11 @@
     [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text ];
 }
 
+-(IBAction)authenticateViaFacebook:(id)sender
+{
+    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text thirdPartyAppId:@"115622641859087" thirdPartyName:FacebookAuth];
+}
+
 -(IBAction)textFieldReturn:(id)sender
 {
     [sender resignFirstResponder];
