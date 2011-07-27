@@ -7,17 +7,6 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		16B48DA513DEEAD100EE0A92 /* Cleanup Socialize-IOS */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 16B48DA613DEEAD100EE0A92 /* Build configuration list for PBXAggregateTarget "Cleanup Socialize-IOS" */;
-			buildPhases = (
-				16B48DA913DEEB8F00EE0A92 /* Cleanup */,
-			);
-			dependencies = (
-			);
-			name = "Cleanup Socialize-IOS";
-			productName = "Cleanup Socialize-IOS";
-		};
 		16B48DAA13DEEBE100EE0A92 /* Socialize-IOS */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize-IOS" */;
@@ -26,9 +15,9 @@
 				16B48DB113DEECAB00EE0A92 /* Build universal lib */,
 				16B48DB213DEED3600EE0A92 /* Copy Headers */,
 				16B48DDA13DEEE7900EE0A92 /* Copy Resources */,
+				1611C72213DFFADD00BB5D68 /* Zip output */,
 			);
 			dependencies = (
-				16B48DAF13DEEC0900EE0A92 /* PBXTargetDependency */,
 			);
 			name = "Socialize-IOS";
 			productName = "Socialize-IOS";
@@ -229,13 +218,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		16B48DAE13DEEC0900EE0A92 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5CC3DAB3137881B900B11B78 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 16B48DA513DEEAD100EE0A92;
-			remoteInfo = "Cleanup Socialize-IOS";
-		};
 		16E2C44D1398C4F8007C91ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5CC3DAB3137881B900B11B78 /* Project object */;
@@ -1075,7 +1057,6 @@
 				5CC3DABD1378824700B11B78 /* Socialize */,
 				5CC3DAE81378859000B11B78 /* unitTests */,
 				16E2C4341398C40E007C91ED /* SampleSdkApp */,
-				16B48DA513DEEAD100EE0A92 /* Cleanup Socialize-IOS */,
 				16B48DAA13DEEBE100EE0A92 /* Socialize-IOS */,
 			);
 		};
@@ -1126,6 +1107,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1611C72213DFFADD00BB5D68 /* Zip output */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Zip output";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Paths\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\n\ncd \"${UNIVERSAL_LIBRARY_DIR}\"\nzip -r -u \"${PROJECT_DIR}/build/${CONFIGURATION}-SocializeIOS.zip\" \"${PRODUCT_NAME}.embeddedframework/\"";
+		};
 		162BBF9213C346210060893E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1139,20 +1134,6 @@
 			shellPath = "/bin/sh BuildSampleApp.sh";
 			shellScript = "";
 		};
-		16B48DA913DEEB8F00EE0A92 /* Cleanup */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Cleanup;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Paths\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${PROJECT_NAME}-iOS.framework\"\n\n# Cleanup\nrm -rf \"${FRAMEWORK}\" &>/dev/null\n\nexit 0";
-		};
 		16B48DB013DEEC0E00EE0A92 /* Build static lib */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1165,7 +1146,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "xcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphonesimulator4.3 -target Socialize -configuration ${CONFIGURATION} build\nxcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphoneos4.3 -target Socialize -configuration ${CONFIGURATION} build";
+			shellScript = "# Paths\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\n\n# Cleanup\nrm -rfd \"${UNIVERSAL_LIBRARY_DIR}\" &>/dev/null\n\nxcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphonesimulator4.3 -target Socialize -configuration ${CONFIGURATION} build\nxcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphoneos4.3 -target Socialize -configuration ${CONFIGURATION} build";
 		};
 		16B48DB113DEECAB00EE0A92 /* Build universal lib */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1323,11 +1304,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		16B48DAF13DEEC0900EE0A92 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 16B48DA513DEEAD100EE0A92 /* Cleanup Socialize-IOS */;
-			targetProxy = 16B48DAE13DEEC0900EE0A92 /* PBXContainerItemProxy */;
-		};
 		16E2C44E1398C4F8007C91ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5CC3DABD1378824700B11B78 /* Socialize */;
@@ -1368,20 +1344,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		16B48DA713DEEAD100EE0A92 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		16B48DA813DEEAD100EE0A92 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		16B48DAC13DEEBE200EE0A92 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1683,15 +1645,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		16B48DA613DEEAD100EE0A92 /* Build configuration list for PBXAggregateTarget "Cleanup Socialize-IOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				16B48DA713DEEAD100EE0A92 /* Debug */,
-				16B48DA813DEEAD100EE0A92 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize-IOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
