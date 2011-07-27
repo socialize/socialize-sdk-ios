@@ -256,7 +256,7 @@
 		16B48DB213DEED3600EE0A92 /* Copy Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal/${PRODUCT_NAME}.framework/Headers";
+			dstPath = "${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal/${PRODUCT_NAME}.embeddedframework/${PRODUCT_NAME}.framework/Headers";
 			dstSubfolderSpec = 0;
 			files = (
 				16B48DB413DEEDDF00EE0A92 /* SocializeLikeService.h in Copy Headers */,
@@ -1179,7 +1179,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Paths\nSIMULATOR_LIBRARY_PATH=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphonesimulator/libSocialize.a\"\nDEVICE_LIBRARY_PATH=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneos/libSocialize.a\"\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}\"\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}.framework\"\n\n# Create framework directory structure.\nrm -rf \"${FRAMEWORK}\" &>/dev/null\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Headers\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Resources\"\n\n# Generate universal binary from desktop, device, and simulator builds.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\"\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/Versions/A\"\ncd \"${FRAMEWORK}\"\nln -sf \"A\" \"Versions/Current\"\nln -sf \"Versions/Current/Headers\" \"Headers\"\nln -sf \"Versions/Current/Resources\" \"Resources\"\nln -sf \"Versions/Current/${PRODUCT_NAME}\" \"${PRODUCT_NAME}\"";
+			shellScript = "# Paths\nSIMULATOR_LIBRARY_PATH=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphonesimulator/libSocialize.a\"\nDEVICE_LIBRARY_PATH=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneos/libSocialize.a\"\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}\"\nEMBEDDEDFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\n\n# Create framework directory structure.\nrm -rf \"${EMBEDDEDFRAMEWORK}\" &>/dev/null\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\"\nmkdir -p \"${EMBEDDEDFRAMEWORK}/Resources\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Headers\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Resources\"\n\n# Generate universal binary from desktop, device, and simulator builds.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\"\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/Versions/A\"\ncd \"${FRAMEWORK}\"\nln -sf \"A\" \"Versions/Current\"\nln -sf \"Versions/Current/Headers\" \"Headers\"\nln -sf \"Versions/Current/Resources\" \"Resources\"\nln -sf \"Versions/Current/${PRODUCT_NAME}\" \"${PRODUCT_NAME}\"";
 		};
 		16B48DDA13DEEE7900EE0A92 /* Copy Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1193,7 +1193,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Paths\nPROJECT_RESOURCE_DIR=\"${PROJECT_DIR}/Socialize/Resources\"\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}.framework\"\nRESOURCE_DIR=\"${FRAMEWORK}/Resources\"\n\nrsync -azp \"${PROJECT_RESOURCE_DIR}/\" \"${RESOURCE_DIR}/\"";
+			shellScript = "# Functions\n\n## List files in the specified directory, storing to the specified array.\n#\n# @param $1 The path to list\n# @param $2 The name of the array to fill\n#\n##\nlist_files ()\n{\n    filelist=$(ls \"$1\")\n    while read line\n    do\n    eval \"$2[\\${#$2[*]}]=\\\"\\$line\\\"\"\n    done <<< \"$filelist\"\n}\n\n# Paths\nPROJECT_RESOURCE_DIR=\"${PROJECT_DIR}/Socialize/Resources\"\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\nEMBEDDEDFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\nRESOURCE_DIR=\"${FRAMEWORK}/Resources\"\n\nrsync -azp \"${PROJECT_RESOURCE_DIR}/\" \"${RESOURCE_DIR}/\"\n\ndeclare -a UFW_FILE_LIST\nlist_files \"${RESOURCE_DIR}\" UFW_FILE_LIST\nfor filename in \"${UFW_FILE_LIST[@]}\"\ndo\nif [[ \"${filename}\" != \"Info.plist\" ]] && [[ ! \"${filename}\" =~ .*\\.lproj$ ]]\nthen\n        echo ln -sf \"${RESOURCE_DIR}/${filename}\" \"${EMBEDDEDFRAMEWORK}/Resources/${filename}\"\n        ln -sf \"${RESOURCE_DIR}/${filename}\" \"${EMBEDDEDFRAMEWORK}/Resources/${filename}\"\nfi\ndone";
 		};
 		6D31966C13CE6BDA00154B1F /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
