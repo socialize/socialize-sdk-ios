@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>testGetEntity</key>
+	<string>Test get an Entity</string>
+	<key>testCreateEntity</key>
+	<string>Test create an Entity </string>
+	<key>testCreateComment</key>
+	<string>Test create a comment</string>
+	<key>item 4</key>
+	<string>Test get a comment</string>
+	<key>item 5</key>
+	<string>Test get comments for an entity</string>
+	<key>item 6</key>
+	<string>Test like/unlike</string>
+	<key>item 7</key>
+	<string>Test create a view</string>
+</dict>
+</plist>
