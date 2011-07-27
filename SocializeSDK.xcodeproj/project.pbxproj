@@ -1131,8 +1131,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/bin/sh BuildSampleApp.sh";
-			shellScript = "";
+			shellPath = /bin/sh;
+			shellScript = "# If we aren't running from the command line, then exit\nif [ \"$GHUNIT_CLI\" = \"\" ] && [ \"$GHUNIT_AUTORUN\" = \"\" ]; then\nexit 0\nfi\n\nmkdir -p \"$BUILD_DIR/test-appzipped/\"\nmkdir -p \"$BUILD_DIR/test-appzipped/Binary\"\nmkdir Payload\n\ncp -r \"$BUILD_DIR/${CONFIGURATION}-iphoneos/\" Payload/\n\nzip -r \"$BUILD_DIR/test-appzipped/Binary\"/SampleSdkApp.app.dSYM.zip Payload/SampleSdkApp.app.dSYM\n\nrm -rf Payload/SampleSdkApp.app.dSYM\ncp -f \"${PROJECT_DIR}\"/Icon.png iTunesArtwork\nzip -r \"$BUILD_DIR/test-appzipped/\"/SampleSdkApp.ipa Payload iTunesArtwork\n\nmv \"$BUILD_DIR/test-appzipped/\"/SampleSdkApp.ipa \"$BUILD_DIR/test-appzipped/Binary\"/\n\nrm -rf iTunesArtwork\nrm -rf Payload";
 		};
 		16B48DB013DEEC0E00EE0A92 /* Build static lib */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1146,7 +1146,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Paths\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\n\n# Cleanup\nrm -rfd \"${UNIVERSAL_LIBRARY_DIR}\" &>/dev/null\n\nxcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphonesimulator4.3 -target Socialize -configuration ${CONFIGURATION} build\nxcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphoneos4.3 -target Socialize -configuration ${CONFIGURATION} build";
+			shellScript = "xcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphonesimulator4.3 -target Socialize -configuration ${CONFIGURATION} build\nxcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphoneos4.3 -target Socialize -configuration ${CONFIGURATION} build";
 		};
 		16B48DB113DEECAB00EE0A92 /* Build universal lib */ = {
 			isa = PBXShellScriptBuildPhase;
