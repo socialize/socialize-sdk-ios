@@ -1,5 +1,5 @@
 //
-//  OAHMAC_SHA1SignatureProvider.m
+//  OAuthConsumer.h
 //  OAuthConsumer
 //
 //  Created by Jon Crosby on 10/19/07.
@@ -23,36 +23,17 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-
-#import "OAHMAC_SHA1SignatureProvider.h"
-#import <CommonCrypto/CommonHMAC.h>
-
-#include "Base64Transcoder.h"
-
-@implementation OAHMAC_SHA1SignatureProvider
-
-- (NSString *)name 
-{
-    return @"HMAC-SHA1";
-}
-
-- (NSString *)signClearText:(NSString *)text withSecret:(NSString *)secret 
-{
-    NSData *secretData = [secret dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *clearTextData = [text dataUsingEncoding:NSUTF8StringEncoding];
-    unsigned char result[20];
-	CCHmac(kCCHmacAlgSHA1, [secretData bytes], [secretData length], [clearTextData bytes], [clearTextData length], result);
-    
-    //Base64 Encoding
-    
-    char base64Result[32];
-    size_t theResultLength = 32;
-    Base64EncodeData(result, 20, base64Result, &theResultLength);
-    NSData *theData = [NSData dataWithBytes:base64Result length:theResultLength];
-    
-    NSString *base64EncodedResult = [[NSString alloc] initWithData:theData encoding:NSUTF8StringEncoding];
-    
-    return [base64EncodedResult autorelease];
-}
-
-@end
+#import <Foundation/Foundation.h>
+#import <OAuthConsumer/OAToken.h>
+#import <OAuthConsumer/OAConsumer.h>
+#import <OAuthConsumer/OAMutableURLRequest.h>
+#import <OAuthConsumer/NSString+URLEncoding.h>
+#import <OAuthConsumer/NSMutableURLRequest+Parameters.h>
+#import <OAuthConsumer/NSURL+Base.h>
+#import <OAuthConsumer/OASignatureProviding.h>
+#import <OAuthConsumer/OAHMAC_SHA1SignatureProvider.h>
+#import <OAuthConsumer/OAPlaintextSignatureProvider.h>
+#import <OAuthConsumer/OARequestParameter.h>
+#import <OAuthConsumer/OAServiceTicket.h>
+#import <OAuthConsumer/OADataFetcher.h>
+#import <OAuthConsumer/OAAsynchronousDataFetcher.h>

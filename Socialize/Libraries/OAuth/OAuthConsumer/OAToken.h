@@ -1,5 +1,5 @@
 //
-//  OAMutableURLRequest.h
+//  OAToken.h
 //  OAuthConsumer
 //
 //  Created by Jon Crosby on 10/19/07.
@@ -23,47 +23,23 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-
 #import <Foundation/Foundation.h>
-#import "OAConsumer.h"
-#import "OAToken.h"
-#import "OAHMAC_SHA1SignatureProvider.h"
-#import "OASignatureProviding.h"
-#import "NSMutableURLRequest+Parameters.h"
-#import "NSURL+Base.h"
 
-
-@interface OAMutableURLRequest : NSMutableURLRequest {
+@interface OAToken : NSObject {
+	NSString *pin;							//added for the Twitter OAuth implementation
+	
 @protected
-    OAConsumer *consumer;
-    OAToken *token;
-    NSString *realm;
-    NSString *signature;
-    id<OASignatureProviding> signatureProvider;
-    NSString *nonce;
-    NSString *timestamp;
-	NSMutableDictionary *extraOAuthParameters;
-	BOOL didPrepare;
+	NSString *key;
+	NSString *secret;
 }
-@property(readonly) NSString *signature;
-@property(readonly) NSString *nonce;
+@property(retain) NSString *pin;			//added for the Twitter OAuth implementation
 
-- (id)initWithURL:(NSURL *)aUrl
-		 consumer:(OAConsumer *)aConsumer
-			token:(OAToken *)aToken
-            realm:(NSString *)aRealm
-signatureProvider:(id<OASignatureProviding, NSObject>)aProvider;
+@property(retain) NSString *key;
+@property(retain) NSString *secret;
 
-- (id)initWithURL:(NSURL *)aUrl
-		 consumer:(OAConsumer *)aConsumer
-			token:(OAToken *)aToken
-            realm:(NSString *)aRealm
-signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
-            nonce:(NSString *)aNonce
-        timestamp:(NSString *)aTimestamp;
-
-- (void)prepare;
-
-- (void)setOAuthParameterName:(NSString*)parameterName withValue:(NSString*)parameterValue;
+- (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret;
+- (id)initWithUserDefaultsUsingServiceProviderName:(NSString *)provider prefix:(NSString *)prefix;
+- (id)initWithHTTPResponseBody:(NSString *)body;
+- (int)storeInUserDefaultsWithServiceProviderName:(NSString *)provider prefix:(NSString *)prefix;
 
 @end

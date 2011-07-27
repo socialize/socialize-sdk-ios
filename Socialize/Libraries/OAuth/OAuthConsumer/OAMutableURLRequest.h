@@ -1,5 +1,5 @@
 //
-//  OARequestParameter.m
+//  OAMutableURLRequest.h
 //  OAuthConsumer
 //
 //  Created by Jon Crosby on 10/19/07.
@@ -24,47 +24,42 @@
 //  THE SOFTWARE.
 
 
-#import "OARequestParameter.h"
+#import <Foundation/Foundation.h>
+#import "OAConsumer.h"
+#import "OAToken.h"
+#import "OAHMAC_SHA1SignatureProvider.h"
+#import "OASignatureProviding.h"
+#import "NSMutableURLRequest+Parameters.h"
+#import "NSURL+Base.h"
 
 
-@implementation OARequestParameter
-@synthesize name, value;
-
-+ (id)requestParameterWithName:(NSString *)aName value:(NSString *)aValue 
-{
-	return [[[OARequestParameter alloc] initWithName:aName value:aValue] autorelease];
+@interface OAMutableURLRequest : NSMutableURLRequest {
+@protected
+    OAConsumer *consumer;
+    OAToken *token;
+    NSString *realm;
+    NSString *signature;
+    id<OASignatureProviding> signatureProvider;
+    NSString *nonce;
+    NSString *timestamp;
 }
+@property(readonly) NSString *signature;
+@property(readonly) NSString *nonce;
 
-- (id)initWithName:(NSString *)aName value:(NSString *)aValue 
-{
-    if ((self = [super init]))
-	{
-		self.name = aName;
-		self.value = aValue;
-	}
-    return self;
-}
+- (id)initWithURL:(NSURL *)aUrl
+		 consumer:(OAConsumer *)aConsumer
+			token:(OAToken *)aToken
+            realm:(NSString *)aRealm
+signatureProvider:(id<OASignatureProviding, NSObject>)aProvider;
 
-- (void)dealloc
-{
-	[name release];
-	[value release];
-	[super dealloc];
-}
+- (id)initWithURL:(NSURL *)aUrl
+		 consumer:(OAConsumer *)aConsumer
+			token:(OAToken *)aToken
+            realm:(NSString *)aRealm
+signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
+            nonce:(NSString *)aNonce
+        timestamp:(NSString *)aTimestamp;
 
-- (NSString *)URLEncodedName 
-{
-	return [self.name URLEncodedString];
-}
-
-- (NSString *)URLEncodedValue 
-{
-    return [self.value URLEncodedString];
-}
-
-- (NSString *)URLEncodedNameValuePair 
-{
-    return [NSString stringWithFormat:@"%@=%@", [self URLEncodedName], [self URLEncodedValue]];
-}
+- (void)prepare;
 
 @end
