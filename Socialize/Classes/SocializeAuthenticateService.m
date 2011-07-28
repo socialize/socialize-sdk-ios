@@ -123,7 +123,6 @@
                              thirdPartyAppId, @"auth_id" , nil] ;                        
                                
    [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-   self.thirdPartyAppId = thirdPartyAppId;
    [_provider secureRequestWithMethodName:AUTHENTICATE_METHOD andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
 }
 
@@ -132,7 +131,11 @@
               thirdPartyAppId:(NSString*)thirdPartyAppId 
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName
 {
-    facebook = [[Facebook alloc] initWithAppId:thirdPartyAppId];
+    self.thirdPartyAppId = thirdPartyAppId;
+    
+    Facebook* fb = [[Facebook alloc] initWithAppId:thirdPartyAppId];
+    self.facebook = fb;
+    [fb release]; fb = nil; 
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"FBAccessTokenKey"] 
@@ -143,6 +146,10 @@
     
     if (![self.facebook isSessionValid]) {
         [self.facebook authorize:nil delegate:self];
+    }
+    else
+    {
+        [self authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:self.facebook.accessToken thirdPartyAppId:thirdPartyAppId thirdPartyName:thirdPartyName];
     }
 }
 
