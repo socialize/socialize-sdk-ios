@@ -14,15 +14,26 @@
 #import "SocializeService.h"
 #import "FBConnect.h"
 
+@class SocializeAuthenticateService;
+
+@interface FacebookAuthenticator : NSObject<FBSessionDelegate> {
+@private
+    Facebook* facebook;
+    NSString* apiKey;
+    NSString* apiSecret;
+    NSString* thirdPartyAppId;
+    SocializeAuthenticateService* service;
+}
+-(id) initWithFramework: (Facebook*) fb apiKey: (NSString*) key apiSecret: (NSString*) secret appId: (NSString*)appId service: (SocializeAuthenticateService*) authService;
+-(void) performAuthentication;
+-(BOOL) handleOpenURL:(NSURL *)url;
+
+@end
+
 @interface SocializeAuthenticateService : SocializeService<FBSessionDelegate> {
     @private
-    Facebook *facebook;
-    NSString* _apiKey;
-    NSString* _apiSecret;
-    NSString* _thirdPartyAppId;
+    FacebookAuthenticator* fbAuth;
 }
-
-@property (nonatomic, retain) Facebook *facebook;
 
 -(void)authenticateWithApiKey:(NSString*)apiKey  
                     apiSecret:(NSString*)apiSecret;
