@@ -27,6 +27,8 @@
 /* Begin PBXBuildFile section */
 		162B26E413E2C14800591AEB /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 162B26E313E2C14800591AEB /* libJSONKit.a */; };
 		162B26E513E2C14800591AEB /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 162B26E313E2C14800591AEB /* libJSONKit.a */; };
+		162B26EC13E2C3BD00591AEB /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 162B26EA13E2C3BD00591AEB /* SocializeConfigurationInfo.plist */; };
+		162B26ED13E2C3BD00591AEB /* Socialize-IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162B26EB13E2C3BD00591AEB /* Socialize-IOS.framework */; };
 		163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
 		1636370813A76ED000403879 /* SocializeProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636370713A76ECF00403879 /* SocializeProviderTests.m */; };
 		1636372F13AB289500403879 /* SocializeCommentsServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */; };
@@ -48,7 +50,6 @@
 		1670BE5F13C6EBF5000CC441 /* SocializeLikeFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5E13C6EBF5000CC441 /* SocializeLikeFormatterTests.m */; };
 		1670BE6213C6EC04000CC441 /* SocializeShareFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE6113C6EC04000CC441 /* SocializeShareFormatterTests.m */; };
 		1673D69013DEA40E00A86589 /* OCMock in Resources */ = {isa = PBXBuildFile; fileRef = 1673D68F13DEA40E00A86589 /* OCMock */; };
-		16A5B33B139CFE6C00F3EF75 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DABE1378824800B11B78 /* libSocialize.a */; };
 		16B48D0313DEC0B700EE0A92 /* SocializeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFD546613D94BBB00336836 /* SocializeTests.m */; };
 		16B48DB313DEEDC300EE0A92 /* NSString+UrlSerialization.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */; };
 		16B48DB413DEEDDF00EE0A92 /* SocializeLikeService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D49743913B2586200463D23 /* SocializeLikeService.h */; };
@@ -103,7 +104,6 @@
 		16E969E913E01734000DC537 /* TestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F02E13DF82EF00B16454 /* TestListController.m */; };
 		16E969EA13E0173F000DC537 /* EntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F03513DF972100B16454 /* EntityViewController.m */; };
 		16E969EB13E0175B000DC537 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F03A13DFC76B00B16454 /* LoadingView.m */; };
-		16E969EC13E01C4C000DC537 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4D29841393FFCD0065C0CB /* SocializeConfigurationInfo.plist */; };
 		16E96A1C13E0418F000DC537 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E96A1B13E0418F000DC537 /* libfacebook_ios_sdk.a */; };
 		16ECF48513E0501700E0BF5E /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E96A1B13E0418F000DC537 /* libfacebook_ios_sdk.a */; };
 		16ECF49E13E0505A00E0BF5E /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ECF48D13E0505A00E0BF5E /* libOAuth.a */; };
@@ -215,12 +215,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		16E2C44D1398C4F8007C91ED /* PBXContainerItemProxy */ = {
+		162B26EE13E2C56000591AEB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5CC3DAB3137881B900B11B78 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5CC3DABD1378824700B11B78;
-			remoteInfo = Socialize;
+			remoteGlobalIDString = 16B48DAA13DEEBE100EE0A92;
+			remoteInfo = "Socialize-IOS";
 		};
 		5C6EC7941379CF150073AE65 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -286,6 +286,8 @@
 /* Begin PBXFileReference section */
 		162B26E213E2C14800591AEB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		162B26E313E2C14800591AEB /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libJSONKit.a; sourceTree = "<group>"; };
+		162B26EA13E2C3BD00591AEB /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
+		162B26EB13E2C3BD00591AEB /* Socialize-IOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "Socialize-IOS.framework"; sourceTree = "<group>"; };
 		163636FB13A6431400403879 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		1636370613A76ECF00403879 /* SocializeProviderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProviderTests.h; path = "Test Cases/SocializeProviderTests.h"; sourceTree = "<group>"; };
 		1636370713A76ECF00403879 /* SocializeProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProviderTests.m; path = "Test Cases/SocializeProviderTests.m"; sourceTree = "<group>"; };
@@ -481,7 +483,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D97F03D13DFC91500B16454 /* QuartzCore.framework in Frameworks */,
-				16A5B33B139CFE6C00F3EF75 /* libSocialize.a in Frameworks */,
 				16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */,
 				16E2C4381398C40E007C91ED /* Foundation.framework in Frameworks */,
 				16E2C4391398C40E007C91ED /* CoreGraphics.framework in Frameworks */,
@@ -489,6 +490,7 @@
 				16E96A1C13E0418F000DC537 /* libfacebook_ios_sdk.a in Frameworks */,
 				16ECF49F13E0505A00E0BF5E /* libOAuth.a in Frameworks */,
 				162B26E513E2C14800591AEB /* libJSONKit.a in Frameworks */,
+				162B26ED13E2C3BD00591AEB /* Socialize-IOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +530,24 @@
 			);
 			name = JSON;
 			path = Socialize/Libraries/JSON;
+			sourceTree = "<group>";
+		};
+		162B26E813E2C3BD00591AEB /* Socialize-IOS.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				162B26E913E2C3BD00591AEB /* Resources */,
+				162B26EB13E2C3BD00591AEB /* Socialize-IOS.framework */,
+			);
+			name = "Socialize-IOS.embeddedframework";
+			path = "build/Socialize-IOS.embeddedframework";
+			sourceTree = "<group>";
+		};
+		162B26E913E2C3BD00591AEB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				162B26EA13E2C3BD00591AEB /* SocializeConfigurationInfo.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		1657EF9413A1FFBA00E488CC /* Infrastructure Tests */ = {
@@ -776,6 +796,7 @@
 		5CC3DAC01378824800B11B78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				162B26E813E2C3BD00591AEB /* Socialize-IOS.embeddedframework */,
 				162B26E113E2C14800591AEB /* JSON */,
 				16ECF48C13E0505A00E0BF5E /* OAuth */,
 				16E96A1413E0418F000DC537 /* FacebookSDK */,
@@ -1056,7 +1077,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				16E2C44E1398C4F8007C91ED /* PBXTargetDependency */,
+				162B26EF13E2C56000591AEB /* PBXTargetDependency */,
 			);
 			name = SampleSdkApp;
 			productName = SampleSdkApp;
@@ -1144,7 +1165,7 @@
 				6D97F03113DF82F200B16454 /* TestListController.xib in Resources */,
 				6D97F03313DF8ABA00B16454 /* tests.plist in Resources */,
 				6D97F03813DF972900B16454 /* EntityViewController.xib in Resources */,
-				16E969EC13E01C4C000DC537 /* SocializeConfigurationInfo.plist in Resources */,
+				162B26EC13E2C3BD00591AEB /* SocializeConfigurationInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1365,10 +1386,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		16E2C44E1398C4F8007C91ED /* PBXTargetDependency */ = {
+		162B26EF13E2C56000591AEB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5CC3DABD1378824700B11B78 /* Socialize */;
-			targetProxy = 16E2C44D1398C4F8007C91ED /* PBXContainerItemProxy */;
+			target = 16B48DAA13DEEBE100EE0A92 /* Socialize-IOS */;
+			targetProxy = 162B26EE13E2C56000591AEB /* PBXContainerItemProxy */;
 		};
 		5C6EC7951379CF150073AE65 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1430,6 +1451,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/unitTests/Frameworks\"",
+					"\"$(SRCROOT)/build/Socialize-IOS.embeddedframework\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1449,11 +1471,10 @@
 					"\"$(SRCROOT)/Socialize/Libraries/OAuth\"",
 					"\"$(SRCROOT)/Socialize/Libraries/JSON\"",
 					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK\"",
-					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK/JSON\"",
 				);
 				OTHER_LDFLAGS = (
-					"-lgcov",
 					"-ObjC",
+					"-lgcov",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "542E5F91-FA04-4A6B-BEB8-1CCD67D816FD";
@@ -1472,6 +1493,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/unitTests/Frameworks\"",
+					"\"$(SRCROOT)/build/Socialize-IOS.embeddedframework\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1487,12 +1509,11 @@
 					"\"$(SRCROOT)/Socialize/Libraries/OAuth\"",
 					"\"$(SRCROOT)/Socialize/Libraries/JSON\"",
 					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK\"",
-					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK/JSON\"",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
-					"-lgcov",
 					"-ObjC",
+					"-lgcov",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "542E5F91-FA04-4A6B-BEB8-1CCD67D816FD";
@@ -1646,7 +1667,6 @@
 					"\"$(SRCROOT)/Socialize/Libraries/OAuth\"",
 					"\"$(SRCROOT)/Socialize/Libraries/JSON\"",
 					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK\"",
-					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK/JSON\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1695,7 +1715,6 @@
 					"\"$(SRCROOT)/Socialize/Libraries/OAuth\"",
 					"\"$(SRCROOT)/Socialize/Libraries/JSON\"",
 					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK\"",
-					"\"$(SRCROOT)/Socialize/Libraries/FacebookSDK/JSON\"",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
