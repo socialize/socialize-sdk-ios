@@ -12,6 +12,7 @@
 #import "TestCreateCommentViewController.h"
 #import "TestFetchCommentsViewController.h"
 #import "TestLikeViewController.h"
+#import "TestViewCreationViewController.h"
 
 
 @implementation TestListController
@@ -101,7 +102,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UIViewController* controller;
+    UIViewController* controller = nil;
 
     switch(indexPath.row){
         case 0:
@@ -126,6 +127,8 @@
             break;
 
         case 4:
+            controller = [[TestViewCreationViewController alloc] initWithNibName:@"TestViewCreationViewController" bundle:nil];
+            [self.navigationController pushViewController:controller animated:YES];
             break;
         case 5:
             break;
@@ -133,7 +136,7 @@
             controller = [[TestLikeViewController alloc] initWithNibName:@"TestLikeViewController" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
-    }
+    }    
 }
 
 #pragma mark - Service delegete
