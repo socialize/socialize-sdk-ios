@@ -75,15 +75,17 @@ otherwise you will get a failure.
 -(void)unlikeEntity:(id<SocializeLike>)like;
 -(void)getLikesForEntityKey:(NSString*)url  first:(NSNumber*)first last:(NSNumber*)last;
 
-/* comments */
--(void) getCommentById: (int) commentId;
--(void) getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last;
-
--(void) createCommentForEntityWithKey: (NSString*) url comment: (NSString*) comment;
--(void) createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment;
-
 /* Entity methods*/
 -(void)getEntityByKey:(NSString *)url;
+-(void)createEntityWithUrl:(NSString*)entityKey andName:(NSString*)name;
+
+/* comments */
+-(void)getCommentById: (int) commentId;
+-(void)getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last;
+
+-(void)createCommentForEntityWithKey:(NSString*)url comment:(NSString*)comment;
+-(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment;
+
 
 /* View methods*/
 -(void)viewEntity:(id<SocializeEntity>)entity;

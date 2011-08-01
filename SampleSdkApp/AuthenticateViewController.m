@@ -104,11 +104,9 @@
 }
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
-
 }
 
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
-    
 }
 
 // creating multiple likes or comments would invoke this callback

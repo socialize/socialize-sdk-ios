@@ -2,19 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>testGetEntity</key>
-	<string>Test get an Entity</string>
-	<key>testCreateEntity</key>
-	<string>Test create an Entity </string>
-	<key>testCreateComment</key>
+	<key>item 0</key>
+	<string>Test get an Entity </string>
+	<key>item 1</key>
+	<string>Test create an Entity</string>
+	<key>item 2</key>
 	<string>Test create a comment</string>
+	<key>item 3</key>
+	<string>test get comments for an entity</string>
 	<key>item 4</key>
-	<string>Test get a comment</string>
+	<string>Test create a view</string>
 	<key>item 5</key>
-	<string>Test get comments for an entity</string>
+	<string>Test get a comment</string>
 	<key>item 6</key>
 	<string>Test like/unlike</string>
-	<key>item 7</key>
-	<string>Test create a view</string>
 </dict>
 </plist>

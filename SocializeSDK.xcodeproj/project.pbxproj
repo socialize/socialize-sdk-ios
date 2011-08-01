@@ -102,7 +102,6 @@
 		16E2C46C1399000C007C91ED /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C46B1399000C007C91ED /* action-bar-bg.png */; };
 		16E969E813E01724000DC537 /* AuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F02913DF81A000B16454 /* AuthenticateViewController.m */; };
 		16E969E913E01734000DC537 /* TestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F02E13DF82EF00B16454 /* TestListController.m */; };
-		16E969EA13E0173F000DC537 /* EntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F03513DF972100B16454 /* EntityViewController.m */; };
 		16E969EB13E0175B000DC537 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F03A13DFC76B00B16454 /* LoadingView.m */; };
 		16E96A1C13E0418F000DC537 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E96A1B13E0418F000DC537 /* libfacebook_ios_sdk.a */; };
 		16ECF48513E0501700E0BF5E /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E96A1B13E0418F000DC537 /* libfacebook_ios_sdk.a */; };
@@ -157,10 +156,19 @@
 		6D49743C13B2588700463D23 /* SocializeLikeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49743A13B2586C00463D23 /* SocializeLikeService.m */; };
 		6D49743F13B295A400463D23 /* SocializeLike.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743D13B2958D00463D23 /* SocializeLike.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D49744013B295A400463D23 /* SocializeLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49743E13B2959500463D23 /* SocializeLike.m */; };
+		6D56115413E340B7004E8E8C /* TestCreateEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D56114F13E340B3004E8E8C /* TestCreateEntityViewController.m */; };
+		6D56115513E340B7004E8E8C /* TestCreateEntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D56115013E340B4004E8E8C /* TestCreateEntityViewController.xib */; };
+		6D56115613E340B7004E8E8C /* TestGetEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D56115213E340B5004E8E8C /* TestGetEntityViewController.m */; };
+		6D56115713E340B7004E8E8C /* TestGetEntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D56115313E340B6004E8E8C /* TestGetEntityViewController.xib */; };
+		6D56116113E361AA004E8E8C /* TestCreateCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D56115F13E361A1004E8E8C /* TestCreateCommentViewController.m */; };
+		6D56116213E361AA004E8E8C /* TestCreateCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D56116013E361A4004E8E8C /* TestCreateCommentViewController.xib */; };
+		6D56116613E37DAB004E8E8C /* TestFetchCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D56116413E37D99004E8E8C /* TestFetchCommentsViewController.m */; };
+		6D56116713E37DAB004E8E8C /* TestFetchCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D56116513E37DA0004E8E8C /* TestFetchCommentsViewController.xib */; };
+		6D56116B13E645D5004E8E8C /* TestLikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D56116913E645BA004E8E8C /* TestLikeViewController.m */; };
+		6D56116C13E645D5004E8E8C /* TestLikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D56116A13E645C5004E8E8C /* TestLikeViewController.xib */; };
 		6D97F02C13DF81A100B16454 /* AuthenticateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D97F02A13DF81A100B16454 /* AuthenticateViewController.xib */; };
 		6D97F03113DF82F200B16454 /* TestListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D97F02F13DF82F000B16454 /* TestListController.xib */; };
 		6D97F03313DF8ABA00B16454 /* tests.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D97F03213DF8ABA00B16454 /* tests.plist */; };
-		6D97F03813DF972900B16454 /* EntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D97F03613DF972400B16454 /* EntityViewController.xib */; };
 		6D97F03D13DFC91500B16454 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D97F03C13DFC91500B16454 /* QuartzCore.framework */; };
 		6D9A0BA013BD310A00AE949C /* SocializeViewFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0B9F13BD310A00AE949C /* SocializeViewFormatterTests.m */; };
 		6D9A0BA313BE1BA700AE949C /* SocializeShare.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D9A0BA113BE1BA600AE949C /* SocializeShare.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -405,6 +413,21 @@
 		6D49743A13B2586C00463D23 /* SocializeLikeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeService.m; path = Classes/SocializeLikeService.m; sourceTree = "<group>"; };
 		6D49743D13B2958D00463D23 /* SocializeLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLike.h; path = Classes/SocializeLike.h; sourceTree = "<group>"; };
 		6D49743E13B2959500463D23 /* SocializeLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLike.m; path = Classes/SocializeLike.m; sourceTree = "<group>"; };
+		6D56114E13E340B3004E8E8C /* TestCreateEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCreateEntityViewController.h; sourceTree = "<group>"; };
+		6D56114F13E340B3004E8E8C /* TestCreateEntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCreateEntityViewController.m; sourceTree = "<group>"; };
+		6D56115013E340B4004E8E8C /* TestCreateEntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCreateEntityViewController.xib; sourceTree = "<group>"; };
+		6D56115113E340B4004E8E8C /* TestGetEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGetEntityViewController.h; sourceTree = "<group>"; };
+		6D56115213E340B5004E8E8C /* TestGetEntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGetEntityViewController.m; sourceTree = "<group>"; };
+		6D56115313E340B6004E8E8C /* TestGetEntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestGetEntityViewController.xib; sourceTree = "<group>"; };
+		6D56115E13E3619F004E8E8C /* TestCreateCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCreateCommentViewController.h; sourceTree = "<group>"; };
+		6D56115F13E361A1004E8E8C /* TestCreateCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCreateCommentViewController.m; sourceTree = "<group>"; };
+		6D56116013E361A4004E8E8C /* TestCreateCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCreateCommentViewController.xib; sourceTree = "<group>"; };
+		6D56116313E37D95004E8E8C /* TestFetchCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFetchCommentsViewController.h; sourceTree = "<group>"; };
+		6D56116413E37D99004E8E8C /* TestFetchCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFetchCommentsViewController.m; sourceTree = "<group>"; };
+		6D56116513E37DA0004E8E8C /* TestFetchCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestFetchCommentsViewController.xib; sourceTree = "<group>"; };
+		6D56116813E645B7004E8E8C /* TestLikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLikeViewController.h; sourceTree = "<group>"; };
+		6D56116913E645BA004E8E8C /* TestLikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLikeViewController.m; sourceTree = "<group>"; };
+		6D56116A13E645C5004E8E8C /* TestLikeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestLikeViewController.xib; sourceTree = "<group>"; };
 		6D97F02813DF81A000B16454 /* AuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticateViewController.h; sourceTree = "<group>"; };
 		6D97F02913DF81A000B16454 /* AuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticateViewController.m; sourceTree = "<group>"; };
 		6D97F02A13DF81A100B16454 /* AuthenticateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenticateViewController.xib; sourceTree = "<group>"; };
@@ -412,9 +435,6 @@
 		6D97F02E13DF82EF00B16454 /* TestListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestListController.m; sourceTree = "<group>"; };
 		6D97F02F13DF82F000B16454 /* TestListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestListController.xib; sourceTree = "<group>"; };
 		6D97F03213DF8ABA00B16454 /* tests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tests.plist; sourceTree = "<group>"; };
-		6D97F03413DF971F00B16454 /* EntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityViewController.h; sourceTree = "<group>"; };
-		6D97F03513DF972100B16454 /* EntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityViewController.m; sourceTree = "<group>"; };
-		6D97F03613DF972400B16454 /* EntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntityViewController.xib; sourceTree = "<group>"; };
 		6D97F03913DFC76B00B16454 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		6D97F03A13DFC76B00B16454 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		6D97F03C13DFC91500B16454 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -626,6 +646,12 @@
 				16E2C4581398F6E3007C91ED /* socialize_resources */,
 				16E2C43B1398C40F007C91ED /* Supporting Files */,
 				6DFD546413D91B0500336836 /* Supporting Views */,
+				6D56114E13E340B3004E8E8C /* TestCreateEntityViewController.h */,
+				6D56114F13E340B3004E8E8C /* TestCreateEntityViewController.m */,
+				6D56115013E340B4004E8E8C /* TestCreateEntityViewController.xib */,
+				6D56115113E340B4004E8E8C /* TestGetEntityViewController.h */,
+				6D56115213E340B5004E8E8C /* TestGetEntityViewController.m */,
+				6D56115313E340B6004E8E8C /* TestGetEntityViewController.xib */,
 				6D97F02813DF81A000B16454 /* AuthenticateViewController.h */,
 				6D97F02913DF81A000B16454 /* AuthenticateViewController.m */,
 				6D97F02A13DF81A100B16454 /* AuthenticateViewController.xib */,
@@ -635,9 +661,15 @@
 				6D97F02D13DF82EE00B16454 /* TestListController.h */,
 				6D97F02E13DF82EF00B16454 /* TestListController.m */,
 				6D97F02F13DF82F000B16454 /* TestListController.xib */,
-				6D97F03413DF971F00B16454 /* EntityViewController.h */,
-				6D97F03513DF972100B16454 /* EntityViewController.m */,
-				6D97F03613DF972400B16454 /* EntityViewController.xib */,
+				6D56115E13E3619F004E8E8C /* TestCreateCommentViewController.h */,
+				6D56115F13E361A1004E8E8C /* TestCreateCommentViewController.m */,
+				6D56116013E361A4004E8E8C /* TestCreateCommentViewController.xib */,
+				6D56116313E37D95004E8E8C /* TestFetchCommentsViewController.h */,
+				6D56116413E37D99004E8E8C /* TestFetchCommentsViewController.m */,
+				6D56116513E37DA0004E8E8C /* TestFetchCommentsViewController.xib */,
+				6D56116813E645B7004E8E8C /* TestLikeViewController.h */,
+				6D56116913E645BA004E8E8C /* TestLikeViewController.m */,
+				6D56116A13E645C5004E8E8C /* TestLikeViewController.xib */,
 			);
 			path = SampleSdkApp;
 			sourceTree = "<group>";
@@ -1164,8 +1196,12 @@
 				6D97F02C13DF81A100B16454 /* AuthenticateViewController.xib in Resources */,
 				6D97F03113DF82F200B16454 /* TestListController.xib in Resources */,
 				6D97F03313DF8ABA00B16454 /* tests.plist in Resources */,
-				6D97F03813DF972900B16454 /* EntityViewController.xib in Resources */,
 				162B26EC13E2C3BD00591AEB /* SocializeConfigurationInfo.plist in Resources */,
+				6D56115513E340B7004E8E8C /* TestCreateEntityViewController.xib in Resources */,
+				6D56115713E340B7004E8E8C /* TestGetEntityViewController.xib in Resources */,
+				6D56116213E361AA004E8E8C /* TestCreateCommentViewController.xib in Resources */,
+				6D56116713E37DAB004E8E8C /* TestFetchCommentsViewController.xib in Resources */,
+				6D56116C13E645D5004E8E8C /* TestLikeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1302,8 +1338,12 @@
 				6DEFF42713B01B4000AE962A /* NSString+UrlSerialization.m in Sources */,
 				16E969E813E01724000DC537 /* AuthenticateViewController.m in Sources */,
 				16E969E913E01734000DC537 /* TestListController.m in Sources */,
-				16E969EA13E0173F000DC537 /* EntityViewController.m in Sources */,
 				16E969EB13E0175B000DC537 /* LoadingView.m in Sources */,
+				6D56115413E340B7004E8E8C /* TestCreateEntityViewController.m in Sources */,
+				6D56115613E340B7004E8E8C /* TestGetEntityViewController.m in Sources */,
+				6D56116113E361AA004E8E8C /* TestCreateCommentViewController.m in Sources */,
+				6D56116613E37DAB004E8E8C /* TestFetchCommentsViewController.m in Sources */,
+				6D56116B13E645D5004E8E8C /* TestLikeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

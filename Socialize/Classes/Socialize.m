@@ -139,6 +139,10 @@
     [_entityService entityWithKey:entitykey];
 }
 
+-(void)createEntityWithUrl:(NSString*)entityKey andName:(NSString*)name{
+    [_entityService createEntityWithKey:entityKey andName:name];
+}
+
 #pragma view related stuff
 
 -(void)viewEntity:(id<SocializeEntity>)entity{

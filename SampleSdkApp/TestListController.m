@@ -7,7 +7,11 @@
 //
 
 #import "TestListController.h"
-#import "EntityViewController.h"
+#import "TestGetEntityViewController.h"
+#import "TestCreateEntityViewController.h"
+#import "TestCreateCommentViewController.h"
+#import "TestFetchCommentsViewController.h"
+#import "TestLikeViewController.h"
 
 
 @implementation TestListController
@@ -97,25 +101,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    EntityViewController* controller;// = [[EntityViewController alloc ] initWithNibName:@"EntityViewController" bundle:nil];
- //   [self.navigationController pushViewController:controller animated:YES];
+    UIViewController* controller;
+
     switch(indexPath.row){
         case 0:
             // create a test view controller
-            controller = [[EntityViewController alloc ] initWithNibName:@"EntityViewController" bundle:nil];
+            controller = [[TestGetEntityViewController alloc ] initWithNibName:@"TestGetEntityViewController" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
+        
         case 1:
-            //
+            controller = [[TestCreateEntityViewController alloc] initWithNibName:@"TestCreateEntityViewController" bundle:nil];
+            [self.navigationController pushViewController:controller animated:YES];
             break;
+
         case 2:
-            //
+            controller = [[TestCreateCommentViewController alloc] initWithNibName:@"TestCreateCommentViewController" bundle:nil];
+            [self.navigationController pushViewController:controller animated:YES];
             break;
+
         case 3:
-            //
+            controller = [[TestFetchCommentsViewController alloc] initWithNibName:@"TestFetchCommentsViewController" bundle:nil];
+            [self.navigationController pushViewController:controller animated:YES];
             break;
+
         case 4:
-            //
+            controller = [[TestLikeViewController alloc] initWithNibName:@"TestLikeViewController" bundle:nil];
+            [self.navigationController pushViewController:controller animated:YES];
             break;
         case 5:
             //
