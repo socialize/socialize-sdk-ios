@@ -61,6 +61,7 @@ otherwise you will get a failure.
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret
               thirdPartyAppId:(NSString*)thirdPartyAppId 
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
+
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                     apiSecret:(NSString*)apiSecret 
           thirdPartyAuthToken:(NSString*)thirdPartyAuthToken

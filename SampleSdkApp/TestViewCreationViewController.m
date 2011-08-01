@@ -7,7 +7,7 @@
 //
 
 #import "TestViewCreationViewController.h"
-
+#import "SocializeEntity.h"
 #define SUCCESS @"success"
 #define FAIL @"fail"
 
@@ -42,7 +42,7 @@
 {
     _loadingView = [LoadingView loadingViewInView:self.view]; 
     id<SocializeEntity> entity = (id<SocializeEntity>)[_socialize createObjectForProtocol: @protocol(SocializeEntity)];
-    entity.key = entityTextField.text;
+    [entity setKey:entityTextField.text];
     [_socialize viewEntity:entity];
 }
 

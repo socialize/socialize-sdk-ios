@@ -18,7 +18,7 @@
 {
 
 }
-
++ (id)loadingViewInView:(UIView *)aSuperview withMessage:(NSString*)message;
 + (id)loadingViewInView:(UIView *)aSuperview;
 - (void)removeView;
 

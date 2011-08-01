@@ -65,12 +65,14 @@
 
 -(IBAction)authenticate:(id)sender{
     
+    _loadingView = [LoadingView loadingViewInView:self.view withMessage:@"Authenticating"]; 
     [socialize removeAuthenticationInfo];
-    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text ];
+    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text];
 }
 
 -(IBAction)authenticateViaFacebook:(id)sender
 {
+    _loadingView = [LoadingView loadingViewInView:self.view withMessage:@"Authenticating"]; 
     [socialize removeAuthenticationInfo];
     [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text thirdPartyAppId:@"115622641859087" thirdPartyName:FacebookAuth];
 }
@@ -90,6 +92,7 @@
 
 -(void)didAuthenticate
 {
+    [_loadingView removeView];
     self.resultLabel.text = @"success";
     TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil /*andService:socialize*/];
     [self.navigationController pushViewController:listController animated:YES];
@@ -97,6 +100,7 @@
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
 {
+    [_loadingView removeView];
     self.resultLabel.text = @"failed";
     UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"Authentication failed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];

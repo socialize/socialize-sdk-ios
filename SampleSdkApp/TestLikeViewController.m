@@ -85,7 +85,7 @@
     id<SocializeLike> like = [self isLiked: entityTextField.text];
     if(!like)
     {
-        _loadingView = [LoadingView loadingViewInView:self.view]; 
+        _loadingView = [LoadingView loadingViewInView:self.view withMessage:@"Liking"]; 
         [_socialize likeEntityWithKey:entityTextField.text longitude:nil latitude:nil];
     }
 }
@@ -93,8 +93,10 @@
 -(IBAction)toggleUnlike
 {
     id<SocializeLike> like = [self isLiked: entityTextField.text];
-    if(like)
+    if(like){
+        _loadingView = [LoadingView loadingViewInView:self.view withMessage:@"unliking"]; 
         [_socialize unlikeEntity:like];    
+    }
 }
 
 #pragma socialize service delegate
@@ -112,22 +114,20 @@
     msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"no entity found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];
     [msg release];
-    
-    // setting up labels
 }
 
 -(IBAction)backgroundTouched{
     [entityTextField resignFirstResponder];
 }
 
-
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
     [entityTextField resignFirstResponder];
-    
     [_likes removeObject:[self isLiked:entityTextField.text]];
-    [_socialize getEntityByKey:entityTextField.text];
-    
     [_loadingView removeView]; _loadingView = nil;
+    resultsView.hidden = YES;
+    unlikeButton.enabled = NO;
+    successLabel.text = SUCCESS;
+    
 }
 
 // getting/retrieving comments or likes would invoke this callback
@@ -140,22 +140,13 @@
         id<SocializeLike> like = (id<SocializeLike>)object;
         successLabel.text = SUCCESS;
         resultsView.hidden = NO;
+        unlikeButton.enabled = YES;
         keyLabel.text = like.entity.key;
         nameLabel.text = like.entity.name;
         commentsLabel.text = [NSString stringWithFormat:@"%d", like.entity.comments];
         likesLabel.text = [NSString stringWithFormat:@"%d", like.entity.likes];
         sharesLabel.text = [NSString stringWithFormat:@"%d", like.entity.shares];
         [_likes addObject:[like retain]];
-    }else if([object conformsToProtocol:@protocol(SocializeEntity)])
-    {
-        id<SocializeEntity> entity = (id<SocializeEntity>)object;
-        successLabel.text = SUCCESS;
-        resultsView.hidden = NO;
-        keyLabel.text = entity.key;
-        nameLabel.text = entity.name;
-        commentsLabel.text = [NSString stringWithFormat:@"%d", entity.comments];
-        likesLabel.text = [NSString stringWithFormat:@"%d", entity.likes];
-        sharesLabel.text = [NSString stringWithFormat:@"%d", entity.shares];
     }
     else{
         resultsView.hidden = YES;
@@ -163,6 +154,7 @@
     }
 }
 
+/*
 // getting/retrieving comments or likes would invoke this callback
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
 {
@@ -186,5 +178,6 @@
     }
 
 }
+*/
 
 @end

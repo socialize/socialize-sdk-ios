@@ -43,6 +43,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    resultsView.hidden = YES;
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -69,7 +71,6 @@
     
     [entityField resignFirstResponder];
     [commentField resignFirstResponder];
-    
     [_loadingView removeView]; 
     
     UIAlertView *msg;
@@ -77,6 +78,7 @@
     [msg show];
     [msg release];
     resultsView.hidden = YES;
+    successLabel.text = FAIL;
 }
 
 // creating multiple likes or comments would invoke this callback

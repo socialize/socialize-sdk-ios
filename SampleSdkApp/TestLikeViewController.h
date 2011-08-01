@@ -14,8 +14,9 @@
 @interface TestLikeViewController : UIViewController<SocializeServiceDelegate> {
 
     /*get entity*/
-    
+    IBOutlet UIButton*    unlikeButton;
     IBOutlet UITextField* entityTextField;
+
     BOOL                  _isLiked;
     Socialize*            _socialize;
     LoadingView*          _loadingView;

@@ -84,7 +84,6 @@
 -(void)service:(SocializeService*)service didFail:(NSError*)error{
 
     [getEntityTextField resignFirstResponder];
-    
     [_loadingView removeView]; 
     successLabel.text = FAIL;
 

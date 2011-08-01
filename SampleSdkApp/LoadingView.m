@@ -149,6 +149,74 @@ CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 	return loadingView;
 }
 
+
++ (id)loadingViewInView:(UIView *)aSuperview withMessage:(NSString*)message
+{
+	LoadingView *loadingView =
+    [[[LoadingView alloc] initWithFrame:[aSuperview bounds]] autorelease];
+	if (!loadingView)
+	{
+		return nil;
+	}
+	
+	loadingView.opaque = NO;
+	loadingView.autoresizingMask =
+    UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	[aSuperview addSubview:loadingView];
+    
+	const CGFloat DEFAULT_LABEL_WIDTH = 280.0;
+	const CGFloat DEFAULT_LABEL_HEIGHT = 50.0;
+	CGRect labelFrame = CGRectMake(0, 0, DEFAULT_LABEL_WIDTH, DEFAULT_LABEL_HEIGHT);
+	UILabel *loadingLabel =
+    [[[UILabel alloc]
+      initWithFrame:labelFrame]
+     autorelease];
+	loadingLabel.text = message;
+	loadingLabel.textColor = [UIColor whiteColor];
+	loadingLabel.backgroundColor = [UIColor clearColor];
+	loadingLabel.textAlignment = UITextAlignmentCenter;
+	loadingLabel.font = [UIFont boldSystemFontOfSize:[UIFont labelFontSize]];
+	loadingLabel.autoresizingMask =
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleBottomMargin;
+	
+	[loadingView addSubview:loadingLabel];
+	UIActivityIndicatorView *activityIndicatorView =
+    [[[UIActivityIndicatorView alloc]
+      initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge]
+     autorelease];
+	[loadingView addSubview:activityIndicatorView];
+	activityIndicatorView.autoresizingMask =
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleBottomMargin;
+	[activityIndicatorView startAnimating];
+	
+	CGFloat totalHeight =
+    loadingLabel.frame.size.height +
+    activityIndicatorView.frame.size.height;
+	labelFrame.origin.x = floor(0.5 * (loadingView.frame.size.width - DEFAULT_LABEL_WIDTH));
+	labelFrame.origin.y = floor(0.5 * (loadingView.frame.size.height - totalHeight));
+	loadingLabel.frame = labelFrame;
+	
+	CGRect activityIndicatorRect = activityIndicatorView.frame;
+	activityIndicatorRect.origin.x =
+    0.5 * (loadingView.frame.size.width - activityIndicatorRect.size.width);
+	activityIndicatorRect.origin.y =
+    loadingLabel.frame.origin.y + loadingLabel.frame.size.height;
+	activityIndicatorView.frame = activityIndicatorRect;
+	
+	// Set up the fade-in animation
+	CATransition *animation = [CATransition animation];
+	[animation setType:kCATransitionFade];
+	[[aSuperview layer] addAnimation:animation forKey:@"layerAnimation"];
+	
+	return loadingView;
+}
+
 //
 // removeView
 //

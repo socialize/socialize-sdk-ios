@@ -55,6 +55,7 @@
     // Do any additional setup after loading the view from its nib.
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    self.navigationItem.title = @"Tests";
 }
 
 - (void)viewDidUnload
