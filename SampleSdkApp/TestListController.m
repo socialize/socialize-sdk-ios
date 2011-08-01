@@ -126,11 +126,12 @@
             break;
 
         case 4:
-            controller = [[TestLikeViewController alloc] initWithNibName:@"TestLikeViewController" bundle:nil];
-            [self.navigationController pushViewController:controller animated:YES];
             break;
         case 5:
-            //
+            break;
+        case 6:
+            controller = [[TestLikeViewController alloc] initWithNibName:@"TestLikeViewController" bundle:nil];
+            [self.navigationController pushViewController:controller animated:YES];
             break;
     }
 }

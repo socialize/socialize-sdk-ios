@@ -15,10 +15,11 @@
 
     /*get entity*/
     
-    IBOutlet UITextField* getEntityTextField;
+    IBOutlet UITextField* entityTextField;
     BOOL                  _isLiked;
     Socialize*            _socialize;
     LoadingView*          _loadingView;
+    NSMutableArray*       _likes;
     
     /*info view */
     
@@ -32,4 +33,5 @@
     
 }
 -(IBAction)toggleLike;
+-(IBAction)toggleUnlike;
 @end
