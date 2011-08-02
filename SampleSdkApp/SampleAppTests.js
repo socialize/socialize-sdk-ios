@@ -65,7 +65,6 @@ test("GetEntity", function(target, app) {
 	getEntityButton.waitForInvalid();
 });
 
-
 test("CreateEntity", function(target, app) {
     // check navigation bar
 	mainWindow = app.mainWindow();
@@ -110,7 +109,6 @@ test("CreateEntity", function(target, app) {
 	createButton.waitForInvalid();
 });
 
-
 test("CreateComment", function(target, app) {
     // check navigation bar
 	mainWindow = app.mainWindow();
@@ -154,7 +152,6 @@ test("CreateComment", function(target, app) {
  	navBar.buttons()["Tests"].tap();
 	createButton.waitForInvalid();
 });
-
 
 test("GetComments", function(target, app) {
     // check navigation bar

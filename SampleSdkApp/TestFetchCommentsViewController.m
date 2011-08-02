@@ -113,10 +113,10 @@
 
 #pragma Socialize Service callbacks
 -(void)service:(SocializeService*)service didFail:(NSError*)error{
+
     [hiddenButton removeFromSuperview];
     [hiddenButton release];
     hiddenButton = nil;
-
     
     [_textField resignFirstResponder];
     [_loadingView removeView]; 
@@ -127,13 +127,11 @@
     [msg release];
     
     resultTextField.text = FAIL;
-
-//    resultsView.hidden = YES;
 }
-
 
 // getting/retrieving comments or likes would invoke this callback
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
+
     [hiddenButton removeFromSuperview];
     [hiddenButton release];
     hiddenButton = nil;
