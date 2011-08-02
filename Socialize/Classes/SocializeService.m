@@ -97,7 +97,8 @@
 
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error {
      //[self doDidFailWithError:error];
-    [_delegate service:self didFail:error]; 
+    if([self.delegate respondsToSelector:@selector(service:didFail:)])
+        [self.delegate service:self didFail:error];    
 }
 
 -(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList {
@@ -124,15 +125,17 @@
     DLog(@"SocializeService delegate %@", self.delegate);
     if ([request.httpMethod isEqualToString:@"POST"]){
         if ([array count])
-            [self.delegate service:self didCreate:[array objectAtIndex:0]];
+            if([self.delegate respondsToSelector:@selector(service:didCreate:)])
+                [self.delegate service:self didCreate:[array objectAtIndex:0]];
         else
-            [self.delegate service:self didCreate:nil];
+            if([self.delegate respondsToSelector:@selector(service:didCreate:)])
+                [self.delegate service:self didCreate:nil];
     }
-    else if ([request.httpMethod isEqualToString:@"GET"])
+    else if ([request.httpMethod isEqualToString:@"GET"] && [self.delegate respondsToSelector:@selector(service:didFetchElements:)])
         [self.delegate service:self didFetchElements:array];
-    else if ([request.httpMethod isEqualToString:@"DELETE"])
+    else if ([request.httpMethod isEqualToString:@"DELETE"] && [self.delegate respondsToSelector:@selector(service:didDelete:)])
         [self.delegate service:self didDelete:nil];
-    else if ([request.httpMethod isEqualToString:@"PUT"])
+    else if ([request.httpMethod isEqualToString:@"PUT"] && [self.delegate respondsToSelector:@selector(service:didUpdate:)])
         [self.delegate service:self didUpdate:objectList];
 }
 
@@ -148,9 +151,11 @@
         // if it is the response form {errors:"",items:""}
         JSONDecoder *jsonKitDecoder = [JSONDecoder decoder];
         id jsonObject = [jsonKitDecoder objectWithData:data];
-        if (![jsonObject isKindOfClass:[NSDictionary class]]){
+        if (![jsonObject isKindOfClass:[NSDictionary class]])
+        {
             // the return object was not what was supposed to be, soo erroring out.
-            [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+            if([self.delegate respondsToSelector:@selector(service:didFail:)])
+                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
             return;
         }
         
@@ -159,7 +164,8 @@
         
         if (!errors || !items){
             // we should atleast have elements for erors and items in them.
-            [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+            if([self.delegate respondsToSelector:@selector(service:didFail:)])
+                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
             return;
         }
 
@@ -169,7 +175,8 @@
         if ([errorResponse isKindOfClass: [NSArray class]]){
             if ([errorResponse count]){
                 NSLog(@" errorResponse  %@",errorResponse );
-                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+                if([self.delegate respondsToSelector:@selector(service:didFail:)])
+                    [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
                 return;
             }
         }
@@ -178,21 +185,24 @@
             if ([objectResponse count]){
                 if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]])
                     [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponse];
-                else
-                    [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+                else 
+                    if([self.delegate respondsToSelector:@selector(service:didFail:)])
+                        [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
             }
             else
                 [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponse];
         }
-        else 
-            [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+        else
+            if([self.delegate respondsToSelector:@selector(service:didFail:)])
+                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
     }
     else if (request.expectedJSONFormat == SocializeDictionary){
         id objectResponse = [_objectCreator createObjectFromString:responseString forProtocol:[self ProtocolType]]; 
         if ([objectResponse conformsToProtocol:[self ProtocolType]])
             [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
         else
-            [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+            if([self.delegate respondsToSelector:@selector(service:didFail:)])
+                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
     }
     else if (request.expectedJSONFormat == SocializeList){
         //  NSString* items = [_objectCreator createObjectFromString:responseString forProtocol:[self ProtocolType]];
@@ -203,13 +213,16 @@
                 if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]])
                     [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
                 else
-                    [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+                    if([self.delegate respondsToSelector:@selector(service:didFail:)])
+                        [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
             }
             else
-                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+                if([self.delegate respondsToSelector:@selector(service:didFail:)])
+                    [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
         }
-        else 
-            [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+        else
+            if([self.delegate respondsToSelector:@selector(service:didFail:)])
+                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
     }
 }
 

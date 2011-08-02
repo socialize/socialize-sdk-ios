@@ -33,7 +33,7 @@
 @class SocializeService;
 
 
-@protocol SocializeServiceDelegate 
+@protocol SocializeServiceDelegate <NSObject>
 
 @optional
 // for example unlike would result in this callback
