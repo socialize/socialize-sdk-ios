@@ -17,13 +17,17 @@
     
     /*info view */
     IBOutlet UIView*        resultsView;
-    IBOutlet UILabel*       successLabel;
+//    IBOutlet UILabel*       successLabel;
     IBOutlet UILabel*       keyLabel;
     IBOutlet UILabel*       nameLabel;
     IBOutlet UILabel*       commentsLabel;
     
     IBOutlet UITextField*   entityField;
     IBOutlet UITextField*   commentField;
+    
+    IBOutlet UITextField* resultTextField;
+    UIButton* hiddenButton;
+
     
 }
 -(IBAction)createComment;

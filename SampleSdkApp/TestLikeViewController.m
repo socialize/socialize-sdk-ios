@@ -56,6 +56,10 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    hiddenButton = [[UIButton alloc] init]; 
+    hiddenButton.hidden = YES;
+    hiddenButton.accessibilityLabel = @"hiddenButton";
+    [self.view addSubview:hiddenButton];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -82,6 +86,12 @@
 #pragma mark IBActions
 
 -(IBAction)toggleLike{
+    if (!hiddenButton){
+        hiddenButton = [[UIButton alloc] init]; 
+        hiddenButton.hidden = YES;
+        hiddenButton.accessibilityLabel = @"hiddenButton";
+        [self.view addSubview:hiddenButton];
+    }
     id<SocializeLike> like = [self isLiked: entityTextField.text];
     if(!like)
     {
@@ -92,6 +102,13 @@
 
 -(IBAction)toggleUnlike
 {
+    if (!hiddenButton){
+        hiddenButton = [[UIButton alloc] init]; 
+        hiddenButton.hidden = YES;
+        hiddenButton.accessibilityLabel = @"hiddenButton";
+        [self.view addSubview:hiddenButton];
+    }
+
     id<SocializeLike> like = [self isLiked: entityTextField.text];
     if(like){
         _loadingView = [LoadingView loadingViewInView:self.view withMessage:@"unliking"]; 
@@ -106,9 +123,14 @@
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error{
+
+    [hiddenButton removeFromSuperview];
+    [hiddenButton release];
+    hiddenButton = nil;
+
     [entityTextField resignFirstResponder];
     [_loadingView removeView]; _loadingView = nil; 
-    successLabel.text = FAIL;
+    resultTextField.text = FAIL;
     
     UIAlertView *msg;
     msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"no entity found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -121,24 +143,33 @@
 }
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
+    [hiddenButton removeFromSuperview];
+    [hiddenButton release];
+    hiddenButton = nil;
+
     [entityTextField resignFirstResponder];
     [_likes removeObject:[self isLiked:entityTextField.text]];
     [_loadingView removeView]; _loadingView = nil;
     resultsView.hidden = YES;
     unlikeButton.enabled = NO;
-    successLabel.text = SUCCESS;
+    resultTextField.text = SUCCESS;
     
 }
 
 // getting/retrieving comments or likes would invoke this callback
 -(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
+
+    [hiddenButton removeFromSuperview];
+    [hiddenButton release];
+    hiddenButton = nil;
+  
     [entityTextField resignFirstResponder];
     [_loadingView removeView]; _loadingView = nil;
     
     // we have to verify the contents are of type SocializeEntity 
     if ([object conformsToProtocol:@protocol(SocializeLike)]){
         id<SocializeLike> like = (id<SocializeLike>)object;
-        successLabel.text = SUCCESS;
+        resultTextField.text = SUCCESS;
         resultsView.hidden = NO;
         unlikeButton.enabled = YES;
         keyLabel.text = like.entity.key;
@@ -150,7 +181,7 @@
     }
     else{
         resultsView.hidden = YES;
-        successLabel.text = FAIL;
+        resultTextField.text = FAIL;
     }
 }
 

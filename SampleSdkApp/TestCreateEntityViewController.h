@@ -30,6 +30,9 @@
     IBOutlet UILabel*     commentsLabel;
     IBOutlet UILabel*     likesLabel;
     IBOutlet UILabel*     sharesLabel;
+    
+    IBOutlet UITextField* resultTextField;
+    UIButton* hiddenButton;
 
 }
 

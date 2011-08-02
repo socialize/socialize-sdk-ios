@@ -28,6 +28,10 @@
     IBOutlet UILabel*     likesLabel;
     IBOutlet UILabel*     sharesLabel;
     IBOutlet UILabel*     viewsLabel;
+    
+    IBOutlet UITextField*  resultTextField;
+    UIButton*              hiddenButton;
+
 }
 
 -(IBAction)createView;

@@ -55,6 +55,7 @@
     // Do any additional setup after loading the view from its nib.
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.accessibilityLabel = @"tableView";
     self.navigationItem.title = @"Tests";
 }
 
@@ -131,8 +132,10 @@
             controller = [[TestViewCreationViewController alloc] initWithNibName:@"TestViewCreationViewController" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
+
         case 5:
             break;
+
         case 6:
             controller = [[TestLikeViewController alloc] initWithNibName:@"TestLikeViewController" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];

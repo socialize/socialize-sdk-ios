@@ -44,6 +44,12 @@
     [super viewDidLoad];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    
+    hiddenButton = [[UIButton alloc] init]; 
+    hiddenButton.hidden = YES;
+    hiddenButton.accessibilityLabel = @"hiddenButton";
+    [self.view addSubview:hiddenButton];
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -61,6 +67,13 @@
 }
 
 -(IBAction)getComments{
+    if (!hiddenButton){
+        hiddenButton = [[UIButton alloc] init]; 
+        hiddenButton.hidden = YES;
+        hiddenButton.accessibilityLabel = @"hiddenButton";
+        [self.view addSubview:hiddenButton];
+    }
+
     _loadingView = [LoadingView loadingViewInView:self.view]; 
     [_socialize getCommentList:_textField.text first:nil last:nil];
 }
@@ -98,9 +111,12 @@
     
 }
 
-
 #pragma Socialize Service callbacks
 -(void)service:(SocializeService*)service didFail:(NSError*)error{
+    [hiddenButton removeFromSuperview];
+    [hiddenButton release];
+    hiddenButton = nil;
+
     
     [_textField resignFirstResponder];
     [_loadingView removeView]; 
@@ -109,13 +125,19 @@
     msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"cannot get comments" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];
     [msg release];
+    
+    resultTextField.text = FAIL;
+
 //    resultsView.hidden = YES;
 }
 
 
 // getting/retrieving comments or likes would invoke this callback
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
-    
+    [hiddenButton removeFromSuperview];
+    [hiddenButton release];
+    hiddenButton = nil;
+
     [_textField resignFirstResponder];
     [_loadingView removeView]; 
     
@@ -124,6 +146,7 @@
         _comments = [dataArray retain];
         [_tableView reloadData];
     }
+    resultTextField.text = SUCCESS;
 }
 
 @end

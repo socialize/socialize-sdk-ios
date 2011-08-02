@@ -47,6 +47,14 @@
 {
     [super viewDidLoad];
     resultsView.hidden = YES;
+    hiddenButton = [[UIButton alloc] init]; 
+    hiddenButton.hidden = YES;
+    hiddenButton.accessibilityLabel = @"hiddenButton";
+    [self.view addSubview:hiddenButton];
+    // resultTextField.text = SUCCESS;
+    // resultTextField.accessibilityValue = SUCCESS;
+
+    // resultTextField.hidden = YES;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -66,6 +74,13 @@
 #pragma mark IBActions
 
 -(IBAction)getEntity{
+    if (!hiddenButton){
+        hiddenButton = [[UIButton alloc] init]; 
+        hiddenButton.hidden = YES;
+        hiddenButton.accessibilityLabel = @"hiddenButton";
+        [self.view addSubview:hiddenButton];
+    }
+        
     _loadingView = [LoadingView loadingViewInView:self.view]; 
     [_socialize getEntityByKey:getEntityTextField.text];
 }
@@ -82,10 +97,17 @@
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error{
+    
+    [hiddenButton removeFromSuperview];
+    [hiddenButton release];
+    hiddenButton = nil;
+    
+    resultTextField.text = FAIL;
+    resultsView.hidden = YES;
+    resultTextField.accessibilityValue = FAIL;
 
     [getEntityTextField resignFirstResponder];
     [_loadingView removeView]; 
-    successLabel.text = FAIL;
 
     UIAlertView *msg;
     msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"no entity found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -102,6 +124,11 @@
 // getting/retrieving comments or likes would invoke this callback
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
 
+    [hiddenButton removeFromSuperview];
+    [hiddenButton release];
+    hiddenButton = nil;
+
+    resultTextField.hidden = NO;
     [getEntityTextField resignFirstResponder];
     [_loadingView removeView]; 
 
@@ -110,7 +137,8 @@
         id<SocializeObject> object = [dataArray objectAtIndex:0];
         if ([object conformsToProtocol:@protocol(SocializeEntity)]){
             id<SocializeEntity> entity = (id<SocializeEntity>)object;
-            successLabel.text = SUCCESS;
+            resultTextField.text = SUCCESS;
+            resultTextField.accessibilityValue = SUCCESS;
             resultsView.hidden = NO;
             keyLabel.text = entity.key;
             nameLabel.text = entity.name;
@@ -120,8 +148,9 @@
         }
     }
     else{
-        resultsView.hidden = NO;
-        successLabel.text = FAIL;
+        resultTextField.text = FAIL;
+        resultsView.hidden = YES;
+        resultTextField.accessibilityValue = FAIL;
     }
 }
 

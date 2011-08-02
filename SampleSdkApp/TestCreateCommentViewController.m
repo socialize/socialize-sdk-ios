@@ -45,6 +45,11 @@
     [super viewDidLoad];
     resultsView.hidden = YES;
 
+    hiddenButton = [[UIButton alloc] init]; 
+    hiddenButton.hidden = YES;
+    hiddenButton.accessibilityLabel = @"hiddenButton";
+    [self.view addSubview:hiddenButton];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -62,13 +67,25 @@
 }
 
 -(IBAction)createComment{
+    if (!hiddenButton){
+        hiddenButton = [[UIButton alloc] init]; 
+        hiddenButton.hidden = YES;
+        hiddenButton.accessibilityLabel = @"hiddenButton";
+        [self.view addSubview:hiddenButton];
+    }
+
     _loadingView = [LoadingView loadingViewInView:self.view]; 
     [_socialize createCommentForEntityWithKey:entityField.text comment:commentField.text];
 }
 
 #pragma Socialize Service callbacks
 -(void)service:(SocializeService*)service didFail:(NSError*)error{
-    
+
+    [hiddenButton removeFromSuperview];
+    [hiddenButton release];
+    hiddenButton = nil;
+
+    resultTextField.text = FAIL;
     [entityField resignFirstResponder];
     [commentField resignFirstResponder];
     [_loadingView removeView]; 
@@ -78,27 +95,32 @@
     [msg show];
     [msg release];
     resultsView.hidden = YES;
-    successLabel.text = FAIL;
 }
 
 // creating multiple likes or comments would invoke this callback
 -(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
-    
+
+    [hiddenButton removeFromSuperview];
+    [hiddenButton release];
+    hiddenButton = nil;
+
     [entityField resignFirstResponder];
     [commentField resignFirstResponder];
     
     [_loadingView removeView]; 
     if ([object conformsToProtocol:@protocol(SocializeComment)]){
+
         id<SocializeComment> comment = (id<SocializeComment>)object;
+        resultTextField.text = SUCCESS;
         resultsView.hidden = NO;
-        successLabel.text = SUCCESS;
         keyLabel.text = [[comment entity] key];   
         nameLabel.text = [[comment entity] name];
         commentsLabel.text = [comment text];
+
     }
     else{
+        resultTextField.text = FAIL;
         resultsView.hidden = YES;
-        successLabel.text = FAIL;
     }
 }
 

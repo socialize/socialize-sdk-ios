@@ -18,6 +18,10 @@
     
     NSArray*                  _comments;
     Socialize*                _socialize;
+    
+    IBOutlet UITextField*     resultTextField;
+    UIButton*                 hiddenButton;
+
 }
 
 -(IBAction)getComments;   

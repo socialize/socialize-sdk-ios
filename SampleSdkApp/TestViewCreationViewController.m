@@ -60,6 +60,10 @@
 {
     [super viewDidLoad];
     resultsView.hidden =  YES; 
+    hiddenButton = [[UIButton alloc] init]; 
+    hiddenButton.hidden = YES;
+    hiddenButton.accessibilityLabel = @"hiddenButton";
+    [self.view addSubview:hiddenButton];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -112,7 +116,6 @@
         resultsView.hidden = YES;
         successLabel.text = FAIL;
     }
-
 }
 
 @end

@@ -25,12 +25,15 @@
     /*info view */
     
     IBOutlet UIView*      resultsView;
-    IBOutlet UILabel*     successLabel;
     IBOutlet UILabel*     keyLabel;
     IBOutlet UILabel*     nameLabel;
     IBOutlet UILabel*     commentsLabel;
     IBOutlet UILabel*     likesLabel;
     IBOutlet UILabel*     sharesLabel;
+    
+    IBOutlet UITextField* resultTextField;
+    UIButton*             hiddenButton;
+
     
 }
 -(IBAction)toggleLike;

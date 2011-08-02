@@ -44,6 +44,12 @@
 {
     [super viewDidLoad];
     resultsView.hidden = YES;
+    
+    hiddenButton = [[UIButton alloc] init]; 
+    hiddenButton.hidden = YES;
+    hiddenButton.accessibilityLabel = @"hiddenButton";
+    [self.view addSubview:hiddenButton];
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -63,6 +69,14 @@
 #pragma mark entity creation
 
 -(IBAction)createEntity{
+
+    if (!hiddenButton){
+        hiddenButton = [[UIButton alloc] init]; 
+        hiddenButton.hidden = YES;
+        hiddenButton.accessibilityLabel = @"hiddenButton";
+        [self.view addSubview:hiddenButton];
+    }
+
     _loadingView = [LoadingView loadingViewInView:self.view]; 
     [_socialize createEntityWithUrl:createEntityUrlTextField.text andName:createEntityNameTextField.text];
 }
@@ -76,6 +90,12 @@
 #pragma Socialize Service callbacks
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error{
+    
+    resultTextField.text = FAIL;
+
+    [hiddenButton removeFromSuperview];
+    [hiddenButton release];
+    hiddenButton = nil;
     
     [createEntityUrlTextField resignFirstResponder];
     [createEntityNameTextField resignFirstResponder];
@@ -91,6 +111,11 @@
 
 // creating multiple likes or comments would invoke this callback
 -(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
+    
+    [hiddenButton removeFromSuperview];
+    [hiddenButton release];
+    hiddenButton = nil;
+
 
     [createEntityUrlTextField resignFirstResponder];
     [createEntityNameTextField resignFirstResponder];
@@ -105,10 +130,12 @@
         commentsLabel.text = [NSString stringWithFormat:@"%d", entity.comments];
         likesLabel.text = [NSString stringWithFormat:@"%d", entity.likes];
         sharesLabel.text = [NSString stringWithFormat:@"%d", entity.shares];
+        resultTextField.text = SUCCESS;
+
     }
     else{
+        resultTextField.text = FAIL;
         resultsView.hidden = YES;
-        successLabel.text = FAIL;
     }
 }
 
