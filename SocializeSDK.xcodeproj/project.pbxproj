@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		16B48DAA13DEEBE100EE0A92 /* Socialize-IOS */ = {
+		16B48DAA13DEEBE100EE0A92 /* Socialize-iOS */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize-IOS" */;
+			buildConfigurationList = 16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize-iOS" */;
 			buildPhases = (
 				16B48DB013DEEC0E00EE0A92 /* Build static lib */,
 				16B48DB113DEECAB00EE0A92 /* Build universal lib */,
@@ -19,7 +19,7 @@
 			);
 			dependencies = (
 			);
-			name = "Socialize-IOS";
+			name = "Socialize-iOS";
 			productName = "Socialize-IOS";
 		};
 /* End PBXAggregateTarget section */
@@ -1185,7 +1185,7 @@
 				5CC3DABD1378824700B11B78 /* Socialize */,
 				5CC3DAE81378859000B11B78 /* unitTests */,
 				16E2C4341398C40E007C91ED /* SampleSdkApp */,
-				16B48DAA13DEEBE100EE0A92 /* Socialize-IOS */,
+				16B48DAA13DEEBE100EE0A92 /* Socialize-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -1250,7 +1250,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Paths\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build\"\n\ncd \"${UNIVERSAL_LIBRARY_DIR}\"\nzip -r -u \"${PROJECT_DIR}/build/${CONFIGURATION}-SocializeIOS.zip\" \"${PRODUCT_NAME}.embeddedframework/\"";
+			shellScript = "# Paths\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build\"\n\ncd \"${UNIVERSAL_LIBRARY_DIR}\"\nzip -r -u \"${PROJECT_DIR}/build/${CONFIGURATION}-Socialize_iOS.zip\" \"${PRODUCT_NAME}.embeddedframework/\"";
 		};
 		162BBF9213C346210060893E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1438,7 +1438,7 @@
 /* Begin PBXTargetDependency section */
 		162B26EF13E2C56000591AEB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 16B48DAA13DEEBE100EE0A92 /* Socialize-IOS */;
+			target = 16B48DAA13DEEBE100EE0A92 /* Socialize-iOS */;
 			targetProxy = 162B26EE13E2C56000591AEB /* PBXContainerItemProxy */;
 		};
 		5C6EC7951379CF150073AE65 /* PBXTargetDependency */ = {
@@ -1783,7 +1783,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize-IOS" */ = {
+		16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				16B48DAC13DEEBE200EE0A92 /* Debug */,
