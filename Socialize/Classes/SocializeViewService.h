@@ -19,7 +19,7 @@
 
 }
 
--(void)createViewForEntityKey:(NSString*)key;
--(void)createViewForEntity:(id<SocializeEntity>)entity;
+-(void)createViewForEntityKey:(NSString*)key longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
+-(void)createViewForEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 
 @end

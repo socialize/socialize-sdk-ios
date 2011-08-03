@@ -145,8 +145,8 @@
 
 #pragma view related stuff
 
--(void)viewEntity:(id<SocializeEntity>)entity{
-    [_viewService createViewForEntity:entity];
+-(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat{
+    [_viewService createViewForEntity:entity longitude:lng latitude:lat];
 }
 
 @end

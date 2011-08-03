@@ -89,5 +89,5 @@ otherwise you will get a failure.
 
 
 /* View methods*/
--(void)viewEntity:(id<SocializeEntity>)entity;
+-(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 @end
