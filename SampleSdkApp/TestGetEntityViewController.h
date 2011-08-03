@@ -29,7 +29,7 @@
     IBOutlet UILabel*     sharesLabel;
     
     IBOutlet UITextField* resultTextField;
-    UIButton*    hiddenButton;
+    UIButton*             hiddenButton;
 }
 
 @property (retain, nonatomic) UILabel*   getEntityResultLabel;

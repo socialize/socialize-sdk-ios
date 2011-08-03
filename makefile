@@ -9,12 +9,13 @@ clean:
 	rm -rfd build
 test:
 # build embedded framework
-	#xcodebuild -target Socialize-IOS -configuration Distribution -sdk iphoneos clean build	
+	xcodebuild -target Socialize-iOS -configuration Distribution -sdk iphoneos clean build	
 
 # run unit tests
 	WRITE_JUNIT_XML=YES GHUNIT_CLI=1 xcodebuild -target unitTests -configuration Debug -sdk iphonesimulator build
 
 # build sample application
+	#xcodebuild -target Socialize-IOS -configuration Distribution -sdk iphoneos clean build	
 	xcodebuild -target SampleSdkApp -configuration Distribution -sdk iphoneos PROVISIONING_PROFILE="542E5F91-FA04-4A6B-BEB8-1CCD67D816FD" CODE_SIGN_IDENTITY="iPhone Distribution: pointabout" build
 
 # zip sources

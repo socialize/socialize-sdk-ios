@@ -93,8 +93,7 @@
         [self.view addSubview:hiddenButton];
     }
     id<SocializeLike> like = [self isLiked: entityTextField.text];
-    if(!like)
-    {
+    if(!like) {
         _loadingView = [LoadingView loadingViewInView:self.view withMessage:@"Liking"]; 
         [_socialize likeEntityWithKey:entityTextField.text longitude:nil latitude:nil];
     }
@@ -184,31 +183,5 @@
         resultTextField.text = FAIL;
     }
 }
-
-/*
-// getting/retrieving comments or likes would invoke this callback
--(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
-{
-    [entityTextField resignFirstResponder];
-    [_loadingView removeView]; _loadingView = nil;
-    
-    if([[dataArray objectAtIndex:0] conformsToProtocol:@protocol(SocializeEntity)])
-    {
-        id<SocializeEntity> entity = (id<SocializeEntity>)[dataArray objectAtIndex:0];
-        successLabel.text = SUCCESS;
-        resultsView.hidden = NO;
-        keyLabel.text = entity.key;
-        nameLabel.text = entity.name;
-        commentsLabel.text = [NSString stringWithFormat:@"%d", entity.comments];
-        likesLabel.text = [NSString stringWithFormat:@"%d", entity.likes];
-        sharesLabel.text = [NSString stringWithFormat:@"%d", entity.shares];
-    }
-    else{
-        resultsView.hidden = YES;
-        successLabel.text = FAIL;
-    }
-
-}
-*/
 
 @end

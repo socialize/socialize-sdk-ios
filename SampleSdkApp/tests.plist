@@ -9,12 +9,12 @@
 	<key>item 2</key>
 	<string>Test create a comment</string>
 	<key>item 3</key>
-	<string>test get comments for an entity</string>
+	<string>Test get comments for an entity</string>
 	<key>item 4</key>
-	<string>Test create a view</string>
-	<key>item 5</key>
-	<string>Test get a comment</string>
-	<key>item 6</key>
 	<string>Test like/unlike</string>
+	<key>item 5</key>
+	<string>Test getting a list of likes</string>
+	<key>item 6</key>
+	<string>Test create view</string>
 </dict>
 </plist>

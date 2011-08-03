@@ -154,6 +154,8 @@
 		6D205A4113C5060900D0645E /* SocializeShareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D205A2D13BE58D500D0645E /* SocializeShareTests.m */; };
 		6D31962413CDE72F00154B1F /* SocializeDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D31962513CDE72F00154B1F /* SocializeDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */; };
+		6D45310513E8862200286BEC /* LikeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D45310313E8862100286BEC /* LikeListViewController.m */; };
+		6D45310613E8862200286BEC /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D45310413E8862100286BEC /* LikeListViewController.xib */; };
 		6D49743B13B2588700463D23 /* SocializeLikeService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743913B2586200463D23 /* SocializeLikeService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D49743C13B2588700463D23 /* SocializeLikeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49743A13B2586C00463D23 /* SocializeLikeService.m */; };
 		6D49743F13B295A400463D23 /* SocializeLike.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743D13B2958D00463D23 /* SocializeLike.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -414,6 +416,9 @@
 		6D205A3D13C3DB7000D0645E /* SocializeErrorFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeErrorFormatter.m; path = Classes/SocializeErrorFormatter.m; sourceTree = "<group>"; };
 		6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDataFetcher.h; path = Classes/SocializeDataFetcher.h; sourceTree = "<group>"; };
 		6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDataFetcher.m; path = Classes/SocializeDataFetcher.m; sourceTree = "<group>"; };
+		6D45310213E8862100286BEC /* LikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeListViewController.h; sourceTree = "<group>"; };
+		6D45310313E8862100286BEC /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeListViewController.m; sourceTree = "<group>"; };
+		6D45310413E8862100286BEC /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
 		6D49743913B2586200463D23 /* SocializeLikeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeService.h; path = Classes/SocializeLikeService.h; sourceTree = "<group>"; };
 		6D49743A13B2586C00463D23 /* SocializeLikeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeService.m; path = Classes/SocializeLikeService.m; sourceTree = "<group>"; };
 		6D49743D13B2958D00463D23 /* SocializeLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLike.h; path = Classes/SocializeLike.h; sourceTree = "<group>"; };
@@ -651,6 +656,9 @@
 				16E2C4581398F6E3007C91ED /* socialize_resources */,
 				16E2C43B1398C40F007C91ED /* Supporting Files */,
 				6DFD546413D91B0500336836 /* Supporting Views */,
+				6D45310213E8862100286BEC /* LikeListViewController.h */,
+				6D45310313E8862100286BEC /* LikeListViewController.m */,
+				6D45310413E8862100286BEC /* LikeListViewController.xib */,
 				6D56114E13E340B3004E8E8C /* TestCreateEntityViewController.h */,
 				6D56114F13E340B3004E8E8C /* TestCreateEntityViewController.m */,
 				6D56115013E340B4004E8E8C /* TestCreateEntityViewController.xib */,
@@ -1211,6 +1219,7 @@
 				6D56116713E37DAB004E8E8C /* TestFetchCommentsViewController.xib in Resources */,
 				6D56116C13E645D5004E8E8C /* TestLikeViewController.xib in Resources */,
 				16C5EF8213E6B8A800F2EA87 /* TestViewCreationViewController.xib in Resources */,
+				6D45310613E8862200286BEC /* LikeListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1354,6 +1363,7 @@
 				6D56116613E37DAB004E8E8C /* TestFetchCommentsViewController.m in Sources */,
 				6D56116B13E645D5004E8E8C /* TestLikeViewController.m in Sources */,
 				16C5EF8113E6B8A800F2EA87 /* TestViewCreationViewController.m in Sources */,
+				6D45310513E8862200286BEC /* LikeListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -47,6 +47,7 @@
 {
     [super viewDidLoad];
     resultsView.hidden = YES;
+
     hiddenButton = [[UIButton alloc] init]; 
     hiddenButton.hidden = YES;
     hiddenButton.accessibilityLabel = @"hiddenButton";

@@ -12,6 +12,7 @@
 #import "TestCreateCommentViewController.h"
 #import "TestFetchCommentsViewController.h"
 #import "TestLikeViewController.h"
+#import "LikeListViewController.h"
 #import "TestViewCreationViewController.h"
 
 
@@ -26,8 +27,8 @@
         // Custom initialization
         NSString *path = [[NSBundle mainBundle] pathForResource:
                           @"tests" ofType:@"plist"];
+
         NSMutableDictionary *myDic = [[NSDictionary alloc] initWithContentsOfFile: path];
-        NSLog(@"myDic %@", myDic);
         _testList = [[NSMutableArray alloc] initWithArray:[myDic allValues]];
 
     }
@@ -129,17 +130,20 @@
             break;
 
         case 4:
-            controller = [[TestViewCreationViewController alloc] initWithNibName:@"TestViewCreationViewController" bundle:nil];
+            controller = [[TestLikeViewController alloc] initWithNibName:@"TestLikeViewController" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
 
         case 5:
-            break;
-
-        case 6:
-            controller = [[TestLikeViewController alloc] initWithNibName:@"TestLikeViewController" bundle:nil];
+            controller = [[LikeListViewController alloc] initWithNibName:@"LikeListViewController" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
+            
+        case 6:
+            controller = [[TestViewCreationViewController alloc] initWithNibName:@"TestViewCreationViewController" bundle:nil];
+            [self.navigationController pushViewController:controller animated:YES];
+            break;
+
     }    
 }
 

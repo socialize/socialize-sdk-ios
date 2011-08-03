@@ -122,7 +122,6 @@
     else
         errorArray = errorList;
 
-    DLog(@"SocializeService delegate %@", self.delegate);
     if ([request.httpMethod isEqualToString:@"POST"]){
         if ([array count])
             if([self.delegate respondsToSelector:@selector(service:didCreate:)])
@@ -146,6 +145,7 @@
     
     if(request.expectedJSONFormat == SocializeAny)
         [self invokeAppropriateCallback:request objectList:nil errorList:nil];
+    
     else if(request.expectedJSONFormat == SocializeDictionaryWIthListAndErrors){
         
         // if it is the response form {errors:"",items:""}
