@@ -47,7 +47,7 @@
 -(void) getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last;
 
 /**** Comment Creation *****/
--(void) createCommentForEntityWithKey: (NSString*) entityKey comment: (NSString*) comment;
--(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment;
+-(void) createCommentForEntityWithKey: (NSString*) entityKey comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
+-(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
 
 @end

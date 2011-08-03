@@ -125,12 +125,12 @@
     [_commentsService getCommentList:entryKey first:first last:last];
 }
 
--(void)createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*) comment{
-    [_commentsService createCommentForEntityWithKey:entityKey comment:comment];
+-(void)createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat{
+    [_commentsService createCommentForEntityWithKey:entityKey comment:comment longitude: lng latitude: lat];
 }
 
--(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment{
-    [_commentsService createCommentForEntity:entity comment:comment];
+-(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat{
+    [_commentsService createCommentForEntity:entity comment:comment longitude: lng latitude: lat];
 }
 
 #pragma entity related stuff

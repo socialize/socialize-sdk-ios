@@ -84,8 +84,8 @@ otherwise you will get a failure.
 -(void)getCommentById: (int) commentId;
 -(void)getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last;
 
--(void)createCommentForEntityWithKey:(NSString*)url comment:(NSString*)comment;
--(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment;
+-(void)createCommentForEntityWithKey:(NSString*)url comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
+-(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
 
 
 /* View methods*/

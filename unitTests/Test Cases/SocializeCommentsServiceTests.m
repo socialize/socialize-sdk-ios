@@ -150,7 +150,48 @@ static const int singleCommentId = 1;
     [[mockProvider expect] requestWithMethodName:@"comment/" andParams:mockArray  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
     
     _service.provider = mockProvider;    
-    [_service createCommentForEntity:entity comment:@"this was a great story"];
+    [_service createCommentForEntity:entity comment:@"this was a great story" longitude:nil latitude:nil];
+    
+    [mockProvider verify];
+}
+
+-(void) testCreateCommentForNewWithGeo
+{   
+    SocializeEntity *entity = [[SocializeEntity new] autorelease];  
+    entity.key = @"http://www.example.com/interesting-story/";
+    entity.name = @"example";
+    
+    NSArray* mockArray = [NSArray arrayWithObject:
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil],ENTITY, @"this was a great story", @"text",                             [NSNumber numberWithFloat:1.2], @"lng",[NSNumber numberWithFloat:1.1], @"lat", nil]];
+    
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:mockArray  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
+    
+    _service.provider = mockProvider;    
+    [_service createCommentForEntity:entity comment:@"this was a great story" longitude:[NSNumber numberWithFloat:1.2] latitude:[NSNumber numberWithFloat:1.1]];
+    
+    [mockProvider verify];
+}
+
+-(void) testCreateCommentWithGeo
+{
+    NSArray* mockArray = [NSArray arrayWithObjects:
+                            [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                             @"http://www.example.com/interesting-story/",ENTITY,
+                             @"this was a great story", @"text",
+                             [NSNumber numberWithFloat:1.2], @"lng",
+                             [NSNumber numberWithFloat:1.1], @"lat",                             
+                             nil],
+                          nil];
+    
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:mockArray  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
+    
+    _service.provider = mockProvider;    
+    [_service createCommentForEntityWithKey: @"http://www.example.com/interesting-story/"
+                                    comment: @"this was a great story" 
+                                  longitude: [NSNumber numberWithFloat:1.2] 
+                                   latitude: [NSNumber numberWithFloat:1.1]];
     
     [mockProvider verify];
 }
