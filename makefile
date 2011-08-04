@@ -20,3 +20,8 @@ test:
 
 # zip sources
 	zip -r -u ./build/iosproject.zip ./ --exclude="*build*" --exclude="*.git*" --exclude="*.svn*"
+
+doc:
+	cd "./Socialize";\
+	ls; \
+	appledoc ./DocSettings.plist

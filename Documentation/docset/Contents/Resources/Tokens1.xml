@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/Socialize.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/Socialize</TokenIdentifier>
+			<Abstract>                                            NOTE
+Every thing in socialize revolves around the concept of “Entity”. An entity be liked, unliked, commented on etc.
+In Socialize an entity can only be a url. So when creating an entity always remember to input the key for the entity as a url
+otherwise you will get a failure.</Abstract>
+			<DeclaredIn>Socialize.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Socialize/authenticateWithApiKey:apiSecret:</TokenIdentifier>
+			<Abstract> Authentication related info *</Abstract>
+			<DeclaredIn>Socialize.h</DeclaredIn>			
+			
+			<Declaration>- (void)authenticateWithApiKey:(NSString *)apiKey apiSecret:(NSString *)apiSecret</Declaration>
+			
+			
+			<Anchor>//api/name/authenticateWithApiKey:apiSecret:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Socialize/likeEntityWithKey:longitude:latitude:</TokenIdentifier>
+			<Abstract>like related stuff *</Abstract>
+			<DeclaredIn>Socialize.h</DeclaredIn>			
+			
+			<Declaration>- (void)likeEntityWithKey:(NSString *)url longitude:(NSNumber *)lng latitude:(NSNumber *)lat</Declaration>
+			
+			
+			<Anchor>//api/name/likeEntityWithKey:longitude:latitude:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

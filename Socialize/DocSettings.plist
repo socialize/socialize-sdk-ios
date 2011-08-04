@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>--company-id</key>
+	<string>com.socialize</string>
+	<key>--ignore</key>
+	<array>
+		<string>Libraries</string>
+		<string>Resources</string>
+		<string>Templates</string>
+	</array>
+	<key>--keep-intermediate-files</key>
+	<true/>
+	<key>--keep-undocumented-members</key>
+	<false/>
+	<key>--keep-undocumented-objects</key>
+	<false/>
+	<key>--logformat</key>
+	<integer>1</integer>
+	<key>--output</key>
+	<string>../Documentation</string>
+	<key>--print-settings</key>
+	<true/>
+	<key>--project-company</key>
+	<string>Socialize Inc</string>
+	<key>--project-name</key>
+	<string>Socialize iOS SDK</string>
+	<key>--repeat-first-par</key>
+	<false/>
+	<key>--templates</key>
+	<string>./Templates</string>
+	<key>--verbose</key>
+	<integer>3</integer>
+	<key>--input</key>
+	<array>
+		<string>./Classes/Socialize.h</string>
+	</array>
+</dict>
+</plist>
