@@ -1,0 +1,71 @@
+{
+    "errors": [],
+    "items": [
+        {
+            "application": {
+                "id": 196113,
+                "name": "Socialize Android Sample App"
+            },
+            "date": "2011-08-04 20:49:03+0000",
+            "entity": {
+                "comments": 10,
+                "key": "http://entity1.com",
+                "likes": 1,
+                "name": "First Entity",
+                "shares": 1,
+                "views": 0
+            },
+            "id": 4141,
+            "lat": 61.19176929977056,
+            "lng": 21.9808265746936,
+            "medium": {
+                "id": 1,
+                "medium": "Twitter"
+            },
+            "share_location": 1,
+            "text": "POST SHARE on Twitter",
+            "user": {
+                "city": null,
+                "first_name": null,
+                "id": 5162463,
+                "last_name": null,
+                "small_image_uri": null,
+                "state": null,
+                "username": "User5162463"
+            }
+        },
+        {
+            "application": {
+                "id": 196113,
+                "name": "Socialize Android Sample App"
+            },
+            "date": "2011-08-04 20:49:03+0000",
+            "entity": {
+                "comments": 0,
+                "key": "http://entity2.com",
+                "likes": 1,
+                "name": "Second Entity",
+                "shares": 1,
+                "views": 0
+            },
+            "id": 4142,
+            "lat": 7.212234419975996,
+            "lng": 34.98987965867644,
+            "medium": {
+                "id": 2,
+                "medium": "Facebook"
+            },
+            "share_location": 1,
+            "text": "POST SHARE on Facebook",
+            "user": {
+                "city": null,
+                "first_name": null,
+                "id": 5162463,
+                "last_name": null,
+                "small_image_uri": null,
+                "state": null,
+                "username": "User5162463"
+            }
+        }
+    ]
+}

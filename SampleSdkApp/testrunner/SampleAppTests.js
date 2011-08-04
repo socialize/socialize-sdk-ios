@@ -1,6 +1,6 @@
 #import "tuneup.js"
 //#import "comments.json"
-
+#import "config.js"
 target = UIATarget.localTarget();
 app = target.frontMostApp();
 
@@ -12,9 +12,12 @@ test("Authenticate", function(target, app) {
 	var buttons = mainWindow.buttons();
 	var statictext = mainWindow.staticTexts();
  	UIALogger.logMessage("before authenticate");
+ 	//UIALogger.logMessage("KEY="+consumer_key);
+//	textfields["key"].setValue("90aa0fb5-1995-4771-9ed9-f3c4479a9aaa");
+//	textfields["secret"].setValue("5f461d4b-999c-430d-a2b2-2df35ff3a9ba");
 
-	textfields["key"].setValue("90aa0fb5-1995-4771-9ed9-f3c4479a9aaa");
-	textfields["secret"].setValue("5f461d4b-999c-430d-a2b2-2df35ff3a9ba");
+	textfields["key"].setValue(consumer_key);
+	textfields["secret"].setValue(consumer_secret);
 	var authButton = buttons["authenticate"];
 
  	UIALogger.logMessage("after authenticate");
@@ -50,7 +53,7 @@ test("GetEntity", function(target, app) {
 	
  	UIALogger.logMessage("hidden button" + hiddenButton);
 
-	getEntityTextField.setValue("http://www.bbc.co.uk");
+	getEntityTextField.setValue("http://entity1.com");
 	getEntityButton.tap();
 	
 	hiddenButton.waitForInvalid();
@@ -93,7 +96,7 @@ test("CreateEntity", function(target, app) {
 	
  	UIALogger.logMessage("hidden button" + hiddenButton);
 
-	getEntityTextField.setValue("http://www.hello.uk");
+	getEntityTextField.setValue("http://entity3.com");
 	nameTextField.setValue("tests");
 	createButton.tap();
 	
@@ -137,7 +140,7 @@ test("CreateComment", function(target, app) {
 	
  	UIALogger.logMessage("hidden button" + hiddenButton);
 
-	getEntityTextField.setValue("http://www.hello.uk");
+	getEntityTextField.setValue("http://entity3.com");
 	commentTextField.setValue("a new test comment");
 	createButton.tap();
 	
@@ -176,7 +179,7 @@ test("GetComments", function(target, app) {
 	
  	UIALogger.logMessage("hidden button" + hiddenButton);
 
-	getEntityTextField.setValue("http://www.bbc.co.uk");
+	getEntityTextField.setValue("http://entity1.com");
 	getCommentsButton.tap();
 	
 	hiddenButton.waitForInvalid();
@@ -198,7 +201,7 @@ test("like", function(target, app) {
 
 	var tableViews = mainWindow.tableViews();
 	var tableView = tableViews[0];
-	var cell = tableView.cells()[6]; 
+	var cell = tableView.cells()[4]; 
 
 	cell.tap();
 	cell.waitForInvalid();
@@ -213,7 +216,7 @@ test("like", function(target, app) {
 	
  	UIALogger.logMessage("hidden button" + hiddenButton);
 
-	getEntityTextField.setValue("http://www.bbc.co.uk");
+	getEntityTextField.setValue("http://entity3.com");
 	likeButton.tap();
 	
 	hiddenButton.waitForInvalid();
@@ -238,7 +241,7 @@ test("unlike", function(target, app) {
 	
  	UIALogger.logMessage("hidden button" + hiddenButton);
 
-	getEntityTextField.setValue("http://www.bbc.co.uk");
+	getEntityTextField.setValue("entity3.com");
 	likeButton.tap();
 	
 	hiddenButton.waitForInvalid();
@@ -252,3 +255,4 @@ test("unlike", function(target, app) {
  	navBar.buttons()["Tests"].tap();
 	likeButton.waitForInvalid();
 });
+
