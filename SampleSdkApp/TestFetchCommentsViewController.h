@@ -14,6 +14,7 @@
     
     IBOutlet UITextField*     _textField;
     IBOutlet UITableView*     _tableView;
+    IBOutlet UIButton*        _fetchButton;
     LoadingView*              _loadingView;
     
     NSArray*                  _comments;

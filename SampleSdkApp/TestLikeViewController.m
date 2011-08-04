@@ -8,6 +8,7 @@
 
 #import "TestLikeViewController.h"
 #import "SocializeLike.h"
+#import "UIButton+Socialize.h"
 
 #define SUCCESS @"success"
 #define FAIL @"fail"
@@ -49,7 +50,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Create a like/unlike";
+
     resultsView.hidden = YES;
+    
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    [unlikeButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK]; 
+    [likeButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -167,10 +175,13 @@
     
     // we have to verify the contents are of type SocializeEntity 
     if ([object conformsToProtocol:@protocol(SocializeLike)]){
+
         id<SocializeLike> like = (id<SocializeLike>)object;
         resultTextField.text = SUCCESS;
+        
         resultsView.hidden = NO;
         unlikeButton.enabled = YES;
+        
         keyLabel.text = like.entity.key;
         nameLabel.text = like.entity.name;
         commentsLabel.text = [NSString stringWithFormat:@"%d", like.entity.comments];

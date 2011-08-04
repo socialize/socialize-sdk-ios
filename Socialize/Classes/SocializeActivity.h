@@ -12,7 +12,9 @@
 #import "SocializeApplication.h"
 #import "SocializeUser.h"
 
-
+/**
+ in progress
+ */
 @protocol SocializeActivity <SocializeObject>
 
 @required

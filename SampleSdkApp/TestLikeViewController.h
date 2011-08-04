@@ -15,6 +15,7 @@
 
     /*get entity*/
     IBOutlet UIButton*    unlikeButton;
+    IBOutlet UIButton*    likeButton;
     IBOutlet UITextField* entityTextField;
 
     BOOL                  _isLiked;

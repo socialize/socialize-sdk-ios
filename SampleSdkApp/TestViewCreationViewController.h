@@ -15,6 +15,8 @@
     /*get entity*/
     
     IBOutlet UITextField* entityTextField;
+    IBOutlet UIButton*    createButton;
+
     Socialize*            _socialize;
     LoadingView*          _loadingView;
     

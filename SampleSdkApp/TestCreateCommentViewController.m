@@ -9,7 +9,7 @@
 #import "TestCreateCommentViewController.h"
 #import "SocializeService.h"
 #import "SocializeComment.h"
-
+#import "UIButton+Socialize.h"
 #define SUCCESS @"success"
 #define FAIL @"fail"
 
@@ -43,8 +43,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    resultsView.hidden = YES;
+    self.navigationItem.title = @"Create Comment";
 
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    [createButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    
+    resultsView.hidden = YES;
     hiddenButton = [[UIButton alloc] init]; 
     hiddenButton.hidden = YES;
     hiddenButton.accessibilityLabel = @"hiddenButton";
@@ -66,8 +70,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(IBAction)createComment{
-    if (!hiddenButton){
+-(IBAction)createComment {
+    if (!hiddenButton) {
         hiddenButton = [[UIButton alloc] init]; 
         hiddenButton.hidden = YES;
         hiddenButton.accessibilityLabel = @"hiddenButton";
@@ -119,6 +123,7 @@
 
     }
     else{
+    
         resultTextField.text = FAIL;
         resultsView.hidden = YES;
     }

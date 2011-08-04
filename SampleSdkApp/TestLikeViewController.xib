@@ -343,7 +343,6 @@
 								<string key="NSFrame">{{143, 115}, {121, 21}}</string>
 								<reference key="NSSuperview" ref="839531515"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -412,7 +411,6 @@
 						<string key="NSFrame">{{15, 57}, {285, 31}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -556,6 +554,14 @@
 						<reference key="destination" ref="643936202"/>
 					</object>
 					<int key="connectionID">46</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">likeButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="786943583"/>
+					</object>
+					<int key="connectionID">47</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -766,7 +772,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">46</int>
+			<int key="maxID">47</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -813,6 +819,7 @@
 							<string>commentsLabel</string>
 							<string>entityTextField</string>
 							<string>keyLabel</string>
+							<string>likeButton</string>
 							<string>likesLabel</string>
 							<string>nameLabel</string>
 							<string>resultTextField</string>
@@ -825,6 +832,7 @@
 							<string>UILabel</string>
 							<string>UITextField</string>
 							<string>UILabel</string>
+							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UITextField</string>
@@ -840,6 +848,7 @@
 							<string>commentsLabel</string>
 							<string>entityTextField</string>
 							<string>keyLabel</string>
+							<string>likeButton</string>
 							<string>likesLabel</string>
 							<string>nameLabel</string>
 							<string>resultTextField</string>
@@ -860,6 +869,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">keyLabel</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">likeButton</string>
+								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">likesLabel</string>

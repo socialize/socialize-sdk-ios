@@ -8,6 +8,7 @@
 
 #import "TestFetchCommentsViewController.h"
 #import "Socialize.h"
+#import "UIButton+Socialize.h"
 
 #define SUCCESS @"success"
 #define FAIL @"fail"
@@ -42,6 +43,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Fetch Comment";
+    
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    [_fetchButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    _tableView.backgroundColor = [UIColor lightGrayColor];
+
     _tableView.delegate = self;
     _tableView.dataSource = self;
     

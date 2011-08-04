@@ -12,7 +12,9 @@
 #import "SocializeUser.h"
 #import "SocializeEntity.h"
 
-
+/**
+ In progress
+ */
 @protocol SocializeLike <SocializeObject>
 
 @required
@@ -36,7 +38,6 @@
 -(void)setDate:(NSDate *)date;
 
 @end
-
 
 @interface SocializeLike : SocializeObject <SocializeLike>
 {

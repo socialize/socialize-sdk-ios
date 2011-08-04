@@ -7,7 +7,7 @@
 //
 
 #import "TestCreateEntityViewController.h"
-
+#import "UIButton+Socialize.h"
 
 @implementation TestCreateEntityViewController
 @synthesize  createEntityResultLabel;
@@ -43,12 +43,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Create Entity";
+
     resultsView.hidden = YES;
-    
     hiddenButton = [[UIButton alloc] init]; 
     hiddenButton.hidden = YES;
     hiddenButton.accessibilityLabel = @"hiddenButton";
     [self.view addSubview:hiddenButton];
+
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    [createButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
 
     // Do any additional setup after loading the view from its nib.
 }
@@ -115,7 +119,6 @@
     [hiddenButton removeFromSuperview];
     [hiddenButton release];
     hiddenButton = nil;
-
 
     [createEntityUrlTextField resignFirstResponder];
     [createEntityNameTextField resignFirstResponder];

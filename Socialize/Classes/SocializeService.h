@@ -32,7 +32,9 @@
 
 @class SocializeService;
 
-
+/**
+ Some protocol
+ */
 @protocol SocializeServiceDelegate <NSObject>
 
 @optional

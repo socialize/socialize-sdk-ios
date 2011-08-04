@@ -17,7 +17,8 @@
     
     /*info view */
     IBOutlet UIView*        resultsView;
-//    IBOutlet UILabel*       successLabel;
+    IBOutlet UIButton*      createButton;
+    
     IBOutlet UILabel*       keyLabel;
     IBOutlet UILabel*       nameLabel;
     IBOutlet UILabel*       commentsLabel;
@@ -26,7 +27,7 @@
     IBOutlet UITextField*   commentField;
     
     IBOutlet UITextField* resultTextField;
-    UIButton* hiddenButton;
+    UIButton*             hiddenButton;
 
     
 }

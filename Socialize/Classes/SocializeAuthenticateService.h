@@ -30,6 +30,9 @@
 
 @end
 
+/**
+in progress
+ */
 @interface SocializeAuthenticateService : SocializeService<FBSessionDelegate> {
     @private
     FacebookAuthenticator* fbAuth;

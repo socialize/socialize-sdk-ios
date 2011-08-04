@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "SocializeObject.h"
 
+/**
+ In progress
+ */
 @protocol SocializeEntity <SocializeObject>
 
 @required
@@ -32,7 +35,6 @@
 -(void)setShares:(int)shares;
 
 @end
-
 
 @interface SocializeEntity : SocializeObject <SocializeEntity>
 {
