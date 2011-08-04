@@ -59,7 +59,7 @@ otherwise you will get a failure.
     SocializeEntityService          *_entityService;
     SocializeViewService            *_viewService;
 }
-/**Get access to the authentication service.*/
+/**Get access to the authentication service via <SocializeAuthenticateService>.*/
 @property (nonatomic, retain) SocializeAuthenticateService    *authService;
 /**Get access to the like service.*/
 @property (nonatomic, retain) SocializeLikeService            *likeService;
@@ -73,30 +73,27 @@ otherwise you will get a failure.
 /** @name Initialization */
 
 /**
- Initialize Socialize service.
- @param delegate Callback delegate.
+ Initialize Socialize service with <SocializeServiceDelegate> callback.
+ 
+ @param delegate Implemented by user callback delegate which responds to the  <SocializeServiceDelegate> protocol.
  */
 -(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
 
 /**
- Set callback delegate to the service.
- @param delegate Callback delegate.
+ Set callback delegate which responds to protocol <SocializeServiceDelegate> to the service.
+ @param delegate Implemented by user callback delegate which responds to the  <SocializeServiceDelegate> protocol.
  */
 -(void)setDelegate:(id<SocializeServiceDelegate>)delegate;
 
 /** @name  Local in memory object creation */
 
 /**
- Create local socialize object which respond to the specific protocol.
+ Create local socialize object which responds to the specific protocol.
  
  For example you could create local instanse of comment class:
         id<SocializeComment> comment = [service createObjectForProtocol:@protocol(SocializeComment)];
  
- @param protocol Protocol of Socialize object. For exampele <SocializeComment>.
- @see SocializeEntity
- @see SocializeLike
- @see SocializeComment
- @see SocializeView
+ @param protocol Protocol of Socialize object: <SocializeEntity> ,  <SocializeLike> , <SocializeComment> , <SocializeView>
  */
 -(id)createObjectForProtocol:(Protocol *)protocol;
 
@@ -105,28 +102,28 @@ otherwise you will get a failure.
 /**
  Authenticate with API key and API secret.
  
- This method is used to perfor anonymous authentication. It means that uses could not performe any action with his profile. 
- Find information how to get API key and secert on [Socialize.](http://www.getsocialize.com/)
+ This method is used to perform anonymous authentication. It means that uses could not do any action with his profile.  
+ Find information how to get API key and secret on [Socialize.](http://www.getsocialize.com/)
  
- @param apiKey API access key
- @param apiSecret API access secret
+ @param apiKey API access key.
+ @param apiSecret API access secret.
  @see authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:
  @see authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:
  */
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret;
 
 /**
- Third party authentication.
+ Third party authentication via SDK service.
  
  Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.
  
- Find information how to get API key and secert on [Socialize.](http://www.getsocialize.com/)
- 
- @param apiKey API access key
- @param apiSecret API access secret
- @param thirdPartyAppId Extern service application id
- @param thirdPartyName third party authentication name
- @warning In current SDK version only Facebook authentication is available.
+ Find information how to get API key and secret on [Socialize.](http://www.getsocialize.com/)
+
+ @param apiKey API access key.
+ @param apiSecret API access secret.
+ @param thirdPartyAppId Extern service application id.
+ @param thirdPartyName Third party authentication name. Current verion of SDK suports only FacebookAuth value.
+ @warning *Note:* In current SDK version only Facebook authentication is available.
  
  @see authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:
  @see authenticateWithApiKey:apiSecret:
@@ -142,11 +139,11 @@ otherwise you will get a failure.
  
  Find information how to get API key and secert on [Socialize.](http://www.getsocialize.com/)
  
- @param apiKey API access key
- @param apiSecret API access secret
- @param thirdPartyAuthToken external service's access token
- @param thirdPartyAppId Extern service application id
- @param thirdPartyName third party authentication name
+ @param apiKey API access key.
+ @param apiSecret API access secret.
+ @param thirdPartyAuthToken External service's access token.
+ @param thirdPartyAppId External service application id.
+ @param thirdPartyName Third party authentication name.
  @warning In current SDK version only Facebook authentication is available.
  
  @see authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:
@@ -161,7 +158,7 @@ otherwise you will get a failure.
 /**
  Check if authentication credentials still valid.
  
- @return YES if valid and NO if access token was expired
+ @return YES if valid and NO if access token was expired.
  */
 -(BOOL)isAuthenticated;
 

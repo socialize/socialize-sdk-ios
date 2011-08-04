@@ -52,9 +52,6 @@
 -(void)didAuthenticate;
 @end
 
-/**
- Service class
-*/
 @interface SocializeService : NSObject <SocializeRequestDelegate>
 {
       @protected    

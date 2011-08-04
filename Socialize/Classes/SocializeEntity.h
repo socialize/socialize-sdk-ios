@@ -36,7 +36,6 @@
 
 @end
 
-
 @interface SocializeEntity : SocializeObject <SocializeEntity>
 {
     @private

@@ -24,6 +24,7 @@
 		<string>./Classes/SocializeLike.h</string>
 		<string>./Classes/SocializeComment.h</string>
 		<string>./Classes/SocializeView.h</string>
+		<string>./Classes/SocializeActivity.h</string>
 	</array>
 	<key>--keep-intermediate-files</key>
 	<true/>
