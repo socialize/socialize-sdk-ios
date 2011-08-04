@@ -79,7 +79,7 @@
     }
 
     _loadingView = [LoadingView loadingViewInView:self.view]; 
-    [_socialize createCommentForEntityWithKey:entityField.text comment:commentField.text];
+    [_socialize createCommentForEntityWithKey:entityField.text comment:commentField.text longitude:nil latitude:nil];
 }
 
 #pragma Socialize Service callbacks

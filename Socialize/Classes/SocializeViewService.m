@@ -25,16 +25,22 @@
     return  @protocol(SocializeView);
 }
 
--(void)createViewForEntity:(id<SocializeEntity>)entity{
-    [self createViewForEntityKey:[entity key]];
+-(void)createViewForEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat{
+    [self createViewForEntityKey:[entity key] longitude:lng latitude:lat];
 }
 
--(void)createViewForEntityKey:(NSString*)key{
+-(void)createViewForEntityKey:(NSString*)key longitude:(NSNumber*)lng latitude: (NSNumber*)lat{
     
     if (key && [key length]){   
-        NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity_key", nil];
-        NSArray *params = [NSArray arrayWithObjects:entityParam, 
-                           nil];
+        NSMutableDictionary* entityParam = [NSMutableDictionary dictionaryWithObjectsAndKeys:key, @"entity_key", nil];
+        
+        if (lng!= nil && lat != nil)
+        {
+            [entityParam setObject:lng forKey:@"lng"];
+            [entityParam setObject:lat forKey:@"lat"];
+        }
+        
+        NSArray *params = [NSArray arrayWithObject:entityParam];
         [_provider requestWithMethodName:VIEW_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
     }
 }

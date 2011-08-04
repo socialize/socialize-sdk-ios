@@ -125,12 +125,12 @@
     [_commentsService getCommentList:entryKey first:first last:last];
 }
 
--(void)createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*) comment{
-    [_commentsService createCommentForEntityWithKey:entityKey comment:comment];
+-(void)createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat{
+    [_commentsService createCommentForEntityWithKey:entityKey comment:comment longitude: lng latitude: lat];
 }
 
--(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment{
-    [_commentsService createCommentForEntity:entity comment:comment];
+-(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat{
+    [_commentsService createCommentForEntity:entity comment:comment longitude: lng latitude: lat];
 }
 
 #pragma entity related stuff
@@ -145,8 +145,8 @@
 
 #pragma view related stuff
 
--(void)viewEntity:(id<SocializeEntity>)entity{
-    [_viewService createViewForEntity:entity];
+-(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat{
+    [_viewService createViewForEntity:entity longitude:lng latitude:lat];
 }
 
 @end

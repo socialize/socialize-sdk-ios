@@ -13,7 +13,9 @@
 #import "SocializeUser.h"
 
 
-
+/**
+ In progress
+ */
 @protocol SocializeView <SocializeObject>
 
 @required

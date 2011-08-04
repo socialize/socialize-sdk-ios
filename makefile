@@ -21,3 +21,8 @@ test:
 # zip sources
 	cp -r ./build/Socialize-iOS.embeddedframework ./ 
 	zip -r -u ./build/iosproject.zip ./ --exclude="*build*" --exclude="*.git*" --exclude="*.svn*"
+
+doc:
+	cd "./Socialize";\
+	ls; \
+	appledoc ./DocSettings.plist
