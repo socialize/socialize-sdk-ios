@@ -1,4 +1,0 @@
-Documentation set was installed to Xcode!
-
-Path: /Users/spopen/Library/Developer/Shared/Documentation/DocSets/com.socialize.Socialize-iOS-SDK.docset
-Time: 2011-08-04 11:33:13 +0300
