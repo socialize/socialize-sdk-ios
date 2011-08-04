@@ -8,6 +8,8 @@
 
 #import "TestViewCreationViewController.h"
 #import "SocializeEntity.h"
+#import "UIButton+Socialize.h"
+
 #define SUCCESS @"success"
 #define FAIL @"fail"
 
@@ -59,6 +61,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    [createButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    
     resultsView.hidden =  YES; 
     hiddenButton = [[UIButton alloc] init]; 
     hiddenButton.hidden = YES;
@@ -85,7 +90,6 @@
 -(void)service:(SocializeService*)service didFail:(NSError*)error
 {
     [entityTextField resignFirstResponder];
-    
     [_loadingView removeView]; 
     successLabel.text = FAIL;
     
@@ -105,8 +109,10 @@
         id<SocializeView> view = (id<SocializeView>)object;
         successLabel.text = SUCCESS;
         resultsView.hidden = NO;
+        
         keyLabel.text = view.entity.key;
         nameLabel.text = view.entity.name;
+        
         commentsLabel.text = [NSString stringWithFormat:@"%d", view.entity.comments];
         likesLabel.text = [NSString stringWithFormat:@"%d", view.entity.likes];
         sharesLabel.text = [NSString stringWithFormat:@"%d", view.entity.shares];

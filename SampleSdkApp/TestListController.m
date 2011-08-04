@@ -14,6 +14,7 @@
 #import "TestLikeViewController.h"
 #import "LikeListViewController.h"
 #import "TestViewCreationViewController.h"
+#import "AuthenticateViewController.h"
 
 
 @implementation TestListController
@@ -56,8 +57,25 @@
     // Do any additional setup after loading the view from its nib.
     _tableView.delegate = self;
     _tableView.dataSource = self;
+
     _tableView.accessibilityLabel = @"tableView";
+    
+    _tableView.backgroundColor = [UIColor lightGrayColor];
     self.navigationItem.title = @"Tests";
+    
+    //removing the previous authentication view controller
+    
+    NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray: self.navigationController.viewControllers];
+    UIViewController* viewControllerToRemove = nil;
+    
+    for (id object in allViewControllers) {
+        if ([object isKindOfClass:[AuthenticateViewController class]])
+            viewControllerToRemove = object;
+    }
+    if (viewControllerToRemove){
+        [allViewControllers removeObjectIdenticalTo: viewControllerToRemove];
+        self.navigationController.viewControllers = allViewControllers;
+    }
 }
 
 - (void)viewDidUnload

@@ -17,7 +17,7 @@
     IBOutlet UILabel*     createEntityResultLabel;
     IBOutlet UITextField* createEntityUrlTextField;
     IBOutlet UITextField* createEntityNameTextField;
-    
+    IBOutlet UIButton*    createButton;
     
     Socialize*            _socialize;
     LoadingView*          _loadingView;
@@ -32,7 +32,7 @@
     IBOutlet UILabel*     sharesLabel;
     
     IBOutlet UITextField* resultTextField;
-    UIButton* hiddenButton;
+    UIButton*             hiddenButton;
 
 }
 

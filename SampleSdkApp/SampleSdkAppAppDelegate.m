@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "SampleSdkAppAppDelegate.h"
 #import "Socialize.h"
-#import "SocializeLike.h"
+#import "TestListController.h"
+
+#include <AvailabilityMacros.h>
+//#import "SocializeLike.h"
 
 @implementation SampleSdkAppAppDelegate
 
@@ -19,13 +22,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    UIViewController* rootViewController = nil;
+    if (rootViewController)
+        rootViewController = authenticationViewController =  [[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil];
+    else
+        rootViewController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil];
 
-    authenticationViewController = [[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil];
-    rootController = [[UINavigationController alloc] initWithRootViewController:authenticationViewController];
-
-    [self.window addSubview:rootController.view];
-    [self.window makeKeyAndVisible];
-
+    rootController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     return YES;
 }
 
@@ -68,6 +71,5 @@
     [_window release];
     [super dealloc];
 }
-
 
 @end

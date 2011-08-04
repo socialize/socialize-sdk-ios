@@ -8,7 +8,7 @@
 
 #import "LikeListViewController.h"
 #import "SocializeLike.h"
-
+#import "UIButton+Socialize.h"
 @implementation LikeListViewController
 
 
@@ -44,7 +44,12 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    [getLikesButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    
+    
     // Do any additional setup after loading the view from its nib.
+    _tableView.backgroundColor = [UIColor lightGrayColor];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     
@@ -130,6 +135,13 @@
     [hiddenButton removeFromSuperview];
     [hiddenButton release];
     hiddenButton = nil;
+
+    [_loadingView removeView]; 
+    
+    UIAlertView *msg;
+    msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"cannot get likes" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [msg show];
+    [msg release];
 
 }
 

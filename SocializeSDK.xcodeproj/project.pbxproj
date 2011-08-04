@@ -156,6 +156,13 @@
 		6D31962513CDE72F00154B1F /* SocializeDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */; };
 		6D45310513E8862200286BEC /* LikeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D45310313E8862100286BEC /* LikeListViewController.m */; };
 		6D45310613E8862200286BEC /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D45310413E8862100286BEC /* LikeListViewController.xib */; };
+		6D45319013E9C10000286BEC /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D45318F13E9C10000286BEC /* UIButton+Socialize.m */; };
+		6D45319313E9C18800286BEC /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D45319213E9C18700286BEC /* UILabel-Additions.m */; };
+		6D45319913E9C3E800286BEC /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D45319413E9C3E800286BEC /* background.png */; };
+		6D45319A13E9C3E800286BEC /* socialize-navbar-button-dark-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D45319513E9C3E800286BEC /* socialize-navbar-button-dark-active.png */; };
+		6D45319B13E9C3E800286BEC /* socialize-navbar-button-dark-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D45319613E9C3E800286BEC /* socialize-navbar-button-dark-active@2x.png */; };
+		6D45319C13E9C3E800286BEC /* socialize-navbar-button-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D45319713E9C3E800286BEC /* socialize-navbar-button-dark.png */; };
+		6D45319D13E9C3E800286BEC /* socialize-navbar-button-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D45319813E9C3E800286BEC /* socialize-navbar-button-dark@2x.png */; };
 		6D49743B13B2588700463D23 /* SocializeLikeService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743913B2586200463D23 /* SocializeLikeService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D49743C13B2588700463D23 /* SocializeLikeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49743A13B2586C00463D23 /* SocializeLikeService.m */; };
 		6D49743F13B295A400463D23 /* SocializeLike.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743D13B2958D00463D23 /* SocializeLike.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -419,6 +426,15 @@
 		6D45310213E8862100286BEC /* LikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeListViewController.h; sourceTree = "<group>"; };
 		6D45310313E8862100286BEC /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeListViewController.m; sourceTree = "<group>"; };
 		6D45310413E8862100286BEC /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
+		6D45318E13E9C10000286BEC /* UIButton+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Socialize.h"; sourceTree = "<group>"; };
+		6D45318F13E9C10000286BEC /* UIButton+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Socialize.m"; sourceTree = "<group>"; };
+		6D45319113E9C18700286BEC /* UILabel-Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel-Additions.h"; sourceTree = "<group>"; };
+		6D45319213E9C18700286BEC /* UILabel-Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel-Additions.m"; sourceTree = "<group>"; };
+		6D45319413E9C3E800286BEC /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		6D45319513E9C3E800286BEC /* socialize-navbar-button-dark-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-dark-active.png"; sourceTree = "<group>"; };
+		6D45319613E9C3E800286BEC /* socialize-navbar-button-dark-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-dark-active@2x.png"; sourceTree = "<group>"; };
+		6D45319713E9C3E800286BEC /* socialize-navbar-button-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-dark.png"; sourceTree = "<group>"; };
+		6D45319813E9C3E800286BEC /* socialize-navbar-button-dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-dark@2x.png"; sourceTree = "<group>"; };
 		6D49743913B2586200463D23 /* SocializeLikeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeService.h; path = Classes/SocializeLikeService.h; sourceTree = "<group>"; };
 		6D49743A13B2586C00463D23 /* SocializeLikeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeService.m; path = Classes/SocializeLikeService.m; sourceTree = "<group>"; };
 		6D49743D13B2958D00463D23 /* SocializeLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLike.h; path = Classes/SocializeLike.h; sourceTree = "<group>"; };
@@ -706,6 +722,11 @@
 		16E2C4581398F6E3007C91ED /* socialize_resources */ = {
 			isa = PBXGroup;
 			children = (
+				6D45319413E9C3E800286BEC /* background.png */,
+				6D45319513E9C3E800286BEC /* socialize-navbar-button-dark-active.png */,
+				6D45319613E9C3E800286BEC /* socialize-navbar-button-dark-active@2x.png */,
+				6D45319713E9C3E800286BEC /* socialize-navbar-button-dark.png */,
+				6D45319813E9C3E800286BEC /* socialize-navbar-button-dark@2x.png */,
 				16E2C45A1398F6E3007C91ED /* action-bar-button-black.png */,
 				16E2C46B1399000C007C91ED /* action-bar-bg.png */,
 				16E2C4601398F6E3007C91ED /* action-bar-notification-icon.png */,
@@ -1025,6 +1046,10 @@
 		6DFD546413D91B0500336836 /* Supporting Views */ = {
 			isa = PBXGroup;
 			children = (
+				6D45319113E9C18700286BEC /* UILabel-Additions.h */,
+				6D45319213E9C18700286BEC /* UILabel-Additions.m */,
+				6D45318E13E9C10000286BEC /* UIButton+Socialize.h */,
+				6D45318F13E9C10000286BEC /* UIButton+Socialize.m */,
 				6D97F03913DFC76B00B16454 /* LoadingView.h */,
 				6D97F03A13DFC76B00B16454 /* LoadingView.m */,
 			);
@@ -1220,6 +1245,11 @@
 				6D56116C13E645D5004E8E8C /* TestLikeViewController.xib in Resources */,
 				16C5EF8213E6B8A800F2EA87 /* TestViewCreationViewController.xib in Resources */,
 				6D45310613E8862200286BEC /* LikeListViewController.xib in Resources */,
+				6D45319913E9C3E800286BEC /* background.png in Resources */,
+				6D45319A13E9C3E800286BEC /* socialize-navbar-button-dark-active.png in Resources */,
+				6D45319B13E9C3E800286BEC /* socialize-navbar-button-dark-active@2x.png in Resources */,
+				6D45319C13E9C3E800286BEC /* socialize-navbar-button-dark.png in Resources */,
+				6D45319D13E9C3E800286BEC /* socialize-navbar-button-dark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1364,6 +1394,8 @@
 				6D56116B13E645D5004E8E8C /* TestLikeViewController.m in Sources */,
 				16C5EF8113E6B8A800F2EA87 /* TestViewCreationViewController.m in Sources */,
 				6D45310513E8862200286BEC /* LikeListViewController.m in Sources */,
+				6D45319013E9C10000286BEC /* UIButton+Socialize.m in Sources */,
+				6D45319313E9C18800286BEC /* UILabel-Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -227,7 +227,6 @@
 								<string key="NSFrame">{{143, 68}, {121, 21}}</string>
 								<reference key="NSSuperview" ref="335846813"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -493,6 +492,14 @@
 					</object>
 					<int key="connectionID">33</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">createButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="662078092"/>
+					</object>
+					<int key="connectionID">34</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -514,10 +521,10 @@
 							<reference ref="403274580"/>
 							<reference ref="651123943"/>
 							<reference ref="47279329"/>
-							<reference ref="662078092"/>
 							<reference ref="239095328"/>
 							<reference ref="356855114"/>
 							<reference ref="735624903"/>
+							<reference ref="662078092"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -684,7 +691,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">33</int>
+			<int key="maxID">34</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -709,6 +716,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>commentField</string>
 							<string>commentsLabel</string>
+							<string>createButton</string>
 							<string>entityField</string>
 							<string>keyLabel</string>
 							<string>nameLabel</string>
@@ -719,6 +727,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UITextField</string>
 							<string>UILabel</string>
+							<string>UIButton</string>
 							<string>UITextField</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
@@ -732,6 +741,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>commentField</string>
 							<string>commentsLabel</string>
+							<string>createButton</string>
 							<string>entityField</string>
 							<string>keyLabel</string>
 							<string>nameLabel</string>
@@ -747,6 +757,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">commentsLabel</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">createButton</string>
+								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">entityField</string>

@@ -20,8 +20,9 @@
 
     IBOutlet UITextField* resultTextField;
     IBOutlet UITextField* entityField;
+    IBOutlet UIButton*    getLikesButton;
+    
     UIButton*             hiddenButton;
-
     LoadingView*          _loadingView;
 }
 

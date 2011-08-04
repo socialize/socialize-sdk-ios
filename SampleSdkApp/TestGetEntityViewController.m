@@ -8,6 +8,7 @@
 
 #import "TestGetEntityViewController.h"
 #import "LoadingView.h"
+#import "UIButton+Socialize.h"
 
 #define SUCCESS @"success"
 #define FAIL @"fail"
@@ -52,11 +53,10 @@
     hiddenButton.hidden = YES;
     hiddenButton.accessibilityLabel = @"hiddenButton";
     [self.view addSubview:hiddenButton];
-    // resultTextField.text = SUCCESS;
-    // resultTextField.accessibilityValue = SUCCESS;
 
-    // resultTextField.hidden = YES;
-    // Do any additional setup after loading the view from its nib.
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    [getButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK ];
+    
 }
 
 - (void)viewDidUnload

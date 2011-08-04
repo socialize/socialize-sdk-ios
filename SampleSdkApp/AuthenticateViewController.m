@@ -9,6 +9,8 @@
 #import "AuthenticateViewController.h"
 #import "Socialize.h"
 #import "TestListController.h"
+#import "UIButton+Socialize.h"
+
 
 @implementation AuthenticateViewController
 @synthesize keyField = _keyField;
@@ -22,6 +24,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         socialize = [[Socialize alloc] initWithDelegate:self];  
+
         // Custom initialization
     }
     return self;
@@ -48,7 +51,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [_authenticateButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    [_thirdpartyAuthentication configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.navigationItem.title = @"Authenticate";
 }
 
 - (void)viewDidUnload
@@ -63,11 +70,12 @@
     return NO;
 }
 
--(IBAction)authenticate:(id)sender{
+-(IBAction)authenticate:(id)sender {
     
     _loadingView = [LoadingView loadingViewInView:self.view withMessage:@"Authenticating"]; 
     [socialize removeAuthenticationInfo];
     [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text];
+
 }
 
 -(IBAction)authenticateViaFacebook:(id)sender
@@ -90,22 +98,25 @@
 
 #pragma mark Authentication delegate
 
--(void)didAuthenticate
-{
+-(void)didAuthenticate {
+    
     [_loadingView removeView];
     self.resultLabel.text = @"success";
-    TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil /*andService:socialize*/];
+    TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil];
     [self.navigationController pushViewController:listController animated:YES];
+    
 }
 
--(void)service:(SocializeService*)service didFail:(NSError*)error
-{
+-(void)service:(SocializeService*)service didFail:(NSError*)error {
+    
     [_loadingView removeView];
     self.resultLabel.text = @"failed";
     UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"Authentication failed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];
     [msg release];
+
 }
+
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
 

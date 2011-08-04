@@ -13,10 +13,14 @@
 @interface AuthenticateViewController : UIViewController<SocializeServiceDelegate> {
     
     Socialize*              socialize;
-    IBOutlet UITextField*   _keyField;
-    IBOutlet UITextField*   _secretField;
     UILabel*                _resultLabel;
     LoadingView*            _loadingView;
+    
+    IBOutlet UITextField*   _keyField;
+    IBOutlet UITextField*   _secretField;
+
+    IBOutlet UIButton*      _authenticateButton;
+    IBOutlet UIButton*      _thirdpartyAuthentication;
 }
 
 @property (retain,nonatomic) IBOutlet UITextField*   keyField;

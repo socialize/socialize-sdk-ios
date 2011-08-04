@@ -51,7 +51,7 @@
 						<string key="NSFrame">{{0, 134}, {320, 326}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<object class="NSColor" key="IBUIBackgroundColor" id="407573309">
+						<object class="NSColor" key="IBUIBackgroundColor" id="293623626">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
@@ -65,7 +65,7 @@
 						<float key="IBUISectionHeaderHeight">22</float>
 						<float key="IBUISectionFooterHeight">22</float>
 					</object>
-					<object class="IBUIButton" id="477854096">
+					<object class="IBUIButton" id="805771733">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{228, 38}, {72, 35}}</string>
@@ -85,7 +85,7 @@
 						</object>
 						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">Get</string>
-						<reference key="IBUIHighlightedTitleColor" ref="407573309"/>
+						<reference key="IBUIHighlightedTitleColor" ref="293623626"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
@@ -95,13 +95,13 @@
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
 					</object>
-					<object class="IBUITextField" id="734572992">
+					<object class="IBUITextField" id="884769352">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 40}, {176, 31}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="477854096"/>
+						<reference key="NSNextKeyView" ref="805771733"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -114,7 +114,7 @@
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MAA</bytes>
-							<object class="NSColorSpace" key="NSCustomColorSpace" id="207875757">
+							<object class="NSColorSpace" key="NSCustomColorSpace" id="782690989">
 								<int key="NSID">2</int>
 							</object>
 						</object>
@@ -129,25 +129,25 @@
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 					</object>
-					<object class="IBUILabel" id="642288077">
+					<object class="IBUILabel" id="702829716">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 7}, {249, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="734572992"/>
+						<reference key="NSNextKeyView" ref="884769352"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Please enter the url for the entity</string>
-						<object class="NSFont" key="IBUIFont" id="703825665">
+						<object class="NSFont" key="IBUIFont" id="770279106">
 							<string key="NSName">Helvetica</string>
 							<double key="NSSize">17</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<object class="NSColor" key="IBUITextColor" id="914926730">
+						<object class="NSColor" key="IBUITextColor" id="670144304">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
@@ -155,13 +155,13 @@
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
 					</object>
-					<object class="IBUILabel" id="877888571">
+					<object class="IBUILabel" id="470256199">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 89}, {51, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1071388434"/>
+						<reference key="NSNextKeyView" ref="653966674"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -171,13 +171,13 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Result</string>
-						<reference key="IBUIFont" ref="703825665"/>
-						<reference key="IBUITextColor" ref="914926730"/>
+						<reference key="IBUIFont" ref="770279106"/>
+						<reference key="IBUITextColor" ref="670144304"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
 					</object>
-					<object class="IBUITextField" id="1071388434">
+					<object class="IBUITextField" id="653966674">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{79, 79}, {117, 31}}</string>
@@ -196,7 +196,7 @@
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MAA</bytes>
-							<reference key="NSCustomColorSpace" ref="207875757"/>
+							<reference key="NSCustomColorSpace" ref="782690989"/>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
@@ -212,7 +212,7 @@
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
-					<reference key="NSCustomColorSpace" ref="207875757"/>
+					<reference key="NSCustomColorSpace" ref="782690989"/>
 				</object>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -240,7 +240,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">getLikes</string>
-						<reference key="source" ref="477854096"/>
+						<reference key="source" ref="805771733"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -250,7 +250,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">entityField</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="734572992"/>
+						<reference key="destination" ref="884769352"/>
 					</object>
 					<int key="connectionID">12</int>
 				</object>
@@ -258,9 +258,17 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">resultTextField</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="1071388434"/>
+						<reference key="destination" ref="653966674"/>
 					</object>
 					<int key="connectionID">13</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">getLikesButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="805771733"/>
+					</object>
+					<int key="connectionID">14</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -278,11 +286,11 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="29688387"/>
-							<reference ref="477854096"/>
-							<reference ref="734572992"/>
-							<reference ref="642288077"/>
-							<reference ref="877888571"/>
-							<reference ref="1071388434"/>
+							<reference ref="805771733"/>
+							<reference ref="884769352"/>
+							<reference ref="702829716"/>
+							<reference ref="470256199"/>
+							<reference ref="653966674"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -304,27 +312,27 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
-						<reference key="object" ref="477854096"/>
+						<reference key="object" ref="805771733"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">7</int>
-						<reference key="object" ref="734572992"/>
+						<reference key="object" ref="884769352"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
-						<reference key="object" ref="642288077"/>
+						<reference key="object" ref="702829716"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">9</int>
-						<reference key="object" ref="877888571"/>
+						<reference key="object" ref="470256199"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">10</int>
-						<reference key="object" ref="1071388434"/>
+						<reference key="object" ref="653966674"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</object>
@@ -370,7 +378,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">13</int>
+			<int key="maxID">14</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -394,12 +402,14 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>entityField</string>
+							<string>getLikesButton</string>
 							<string>resultTextField</string>
 							<string>tableView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UITextField</string>
+							<string>UIButton</string>
 							<string>UITextField</string>
 							<string>UITableView</string>
 						</object>
@@ -409,6 +419,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>entityField</string>
+							<string>getLikesButton</string>
 							<string>resultTextField</string>
 							<string>tableView</string>
 						</object>
@@ -417,6 +428,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">entityField</string>
 								<string key="candidateClassName">UITextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">getLikesButton</string>
+								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">resultTextField</string>
