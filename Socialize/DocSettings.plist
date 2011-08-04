@@ -4,11 +4,26 @@
 <dict>
 	<key>--company-id</key>
 	<string>com.socialize</string>
+	<key>--explicit-crossref</key>
+	<true/>
 	<key>--ignore</key>
 	<array>
 		<string>Libraries</string>
 		<string>Resources</string>
 		<string>Templates</string>
+		<string>.m</string>
+	</array>
+	<key>--input</key>
+	<array>
+		<string>./Classes/Socialize.h</string>
+		<string>./Classes/SocializeCommonDefinitions.h</string>
+		<string>./Classes/SocializeAuthenticateService.h</string>
+		<string>./Classes/SocializeService.h</string>
+		<string>./Classes/SocializeObject.h</string>
+		<string>./Classes/SocializeEntity.h</string>
+		<string>./Classes/SocializeLike.h</string>
+		<string>./Classes/SocializeComment.h</string>
+		<string>./Classes/SocializeView.h</string>
 	</array>
 	<key>--keep-intermediate-files</key>
 	<true/>
@@ -32,9 +47,5 @@
 	<string>./Templates</string>
 	<key>--verbose</key>
 	<integer>3</integer>
-	<key>--input</key>
-	<array>
-		<string>./Classes/Socialize.h</string>
-	</array>
 </dict>
 </plist>

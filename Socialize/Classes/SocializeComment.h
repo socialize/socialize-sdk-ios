@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "SocializeActivity.h"
 
-
+/**
+ In progress
+ */
 @protocol SocializeComment <SocializeActivity>
 
 -(NSString *)text;

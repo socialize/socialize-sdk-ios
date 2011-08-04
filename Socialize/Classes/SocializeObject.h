@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ In progress
+ */
 @protocol SocializeObject <NSObject>
 
 -(int) objectID;
 -(void) setObjectID:(int)objectID;
 
 @end
+
 
 @interface SocializeObject : NSObject <SocializeObject>
 {

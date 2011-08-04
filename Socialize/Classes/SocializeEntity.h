@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "SocializeObject.h"
 
+/**
+ In progress
+ */
 @protocol SocializeEntity <SocializeObject>
 
 @required

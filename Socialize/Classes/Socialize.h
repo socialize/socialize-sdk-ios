@@ -1,10 +1,29 @@
-//
-//  SocializeService.h
-//  SocializeSDK
-//
-//  Created by William Johnson on 5/31/11.
-//  Copyright 2011 Socialize, Inc. All rights reserved.
-//
+/*
+ * SocializeService.h
+ * SocializeSDK
+ *
+ * Created on 6/17/11.
+ * 
+ * Copyright (c) 2011 Socialize, Inc.
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 #import <Foundation/Foundation.h>
 #import "SocializeProvider.h"
@@ -19,14 +38,10 @@
 #import "SocializeUserService.h"
 #import "SocializeCommonDefinitions.h"
 
-//********************x******************************************************************************//
-//This is a general facade of the   SDK`s API. Through it a third party developers could use the API. //
-//**************************************************************************************************//
-
-
-/***************************************************************************************************
-                                            NOTE
-Every thing in socialize revolves around the concept of “Entity”. An entity be liked, unliked, commented on etc. 
+/**
+This is a general facade of the   SDK`s API. Through it a third party developers could use the API.
+ 
+@warning *Note:* Every thing in socialize revolves around the concept of “Entity”. An entity could be liked, unliked, commented on etc. 
 In Socialize an entity can only be a url. So when creating an entity always remember to input the key for the entity as a url 
 otherwise you will get a failure.  
 */
@@ -44,50 +59,136 @@ otherwise you will get a failure.
     SocializeEntityService          *_entityService;
     SocializeViewService            *_viewService;
 }
-
+/**Get access to the authentication service.*/
 @property (nonatomic, retain) SocializeAuthenticateService    *authService;
+/**Get access to the like service.*/
 @property (nonatomic, retain) SocializeLikeService            *likeService;
+/**Get access to the comment service.*/
 @property (nonatomic, retain) SocializeCommentsService        *commentsService;
+/**Get access to the entity service.*/
 @property (nonatomic, retain) SocializeEntityService          *entityService;
+/**Get access to the view service.*/
 @property (nonatomic, retain) SocializeViewService            *viewService;
 
+/** @name Initialization */
+
+/**
+ Initialize Socialize service.
+ @param delegate Callback delegate.
+ */
 -(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
+
+/**
+ Set callback delegate to the service.
+ @param delegate Callback delegate.
+ */
 -(void)setDelegate:(id<SocializeServiceDelegate>)delegate;
-/* local in memory object creation */
+
+/** @name  Local in memory object creation */
+
+/**
+ Create local socialize object which respond to the specific protocol.
+ 
+ For example you could create local instanse of comment class:
+        id<SocializeComment> comment = [service createObjectForProtocol:@protocol(SocializeComment)];
+ 
+ @param protocol Protocol of Socialize object. For exampele <SocializeComment>.
+ @see SocializeEntity
+ @see SocializeLike
+ @see SocializeComment
+ @see SocializeView
+ */
 -(id)createObjectForProtocol:(Protocol *)protocol;
 
-/*** Authentication related info ***/
+/** @name Authentication stuff*/
+
+/**
+ Authenticate with API key and API secret.
+ 
+ This method is used to perfor anonymous authentication. It means that uses could not performe any action with his profile. 
+ Find information how to get API key and secert on [Socialize.](http://www.getsocialize.com/)
+ 
+ @param apiKey API access key
+ @param apiSecret API access secret
+ @see authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:
+ @see authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:
+ */
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret;
+
+/**
+ Third party authentication.
+ 
+ Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.
+ 
+ Find information how to get API key and secert on [Socialize.](http://www.getsocialize.com/)
+ 
+ @param apiKey API access key
+ @param apiSecret API access secret
+ @param thirdPartyAppId Extern service application id
+ @param thirdPartyName third party authentication name
+ @warning In current SDK version only Facebook authentication is available.
+ 
+ @see authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:
+ @see authenticateWithApiKey:apiSecret:
+ */
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret
               thirdPartyAppId:(NSString*)thirdPartyAppId 
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
 
+/**
+ Third party authentication.
+ 
+ Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.
+ 
+ Find information how to get API key and secert on [Socialize.](http://www.getsocialize.com/)
+ 
+ @param apiKey API access key
+ @param apiSecret API access secret
+ @param thirdPartyAuthToken external service's access token
+ @param thirdPartyAppId Extern service application id
+ @param thirdPartyName third party authentication name
+ @warning In current SDK version only Facebook authentication is available.
+ 
+ @see authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:
+ @see authenticateWithApiKey:apiSecret:
+ */
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                     apiSecret:(NSString*)apiSecret 
           thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
               thirdPartyAppId:(NSString*)thirdPartyAppId
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
 
+/**
+ Check if authentication credentials still valid.
+ 
+ @return YES if valid and NO if access token was expired
+ */
 -(BOOL)isAuthenticated;
+
+/**
+ Remove old authentication information.
+ 
+ If user would like to re-authenticate he has to remove previous authentication information.
+ */
 -(void)removeAuthenticationInfo;
 
-/** like related stuff **/
+/** @name Like stuff*/
+
 -(void)likeEntityWithKey:(NSString*)url longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
 -(void)unlikeEntity:(id<SocializeLike>)like;
 -(void)getLikesForEntityKey:(NSString*)url  first:(NSNumber*)first last:(NSNumber*)last;
 
-/* Entity methods*/
+/** @name Entity stuff*/
+
 -(void)getEntityByKey:(NSString *)url;
 -(void)createEntityWithUrl:(NSString*)entityKey andName:(NSString*)name;
 
-/* comments */
+/** @name Comment stuff */
 -(void)getCommentById: (int) commentId;
 -(void)getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last;
-
 -(void)createCommentForEntityWithKey:(NSString*)url comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
 -(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
 
-
-/* View methods*/
+/** @name View stuff */
 -(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 @end

@@ -26,12 +26,10 @@
 #define kFACEBOOK_ACCESS_TOKEN_KEY @"FBAccessTokenKey"
 #define kFACEBOOK_EXPIRATION_DATE_KEY @"FBExpirationDateKey"
 
+/**
+ Third party authentication type.
+ */
 typedef enum {
     FacebookAuth = 1
 } ThirdPartyAuthName;
 
-/*@protocol SocializeAuthenticationDelegate
-    -(void)didAuthenticate;
-    -(void)didNotAuthenticate:(NSError*)error;
-@end
-*/

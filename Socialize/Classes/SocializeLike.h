@@ -12,7 +12,9 @@
 #import "SocializeUser.h"
 #import "SocializeEntity.h"
 
-
+/**
+ In progress
+ */
 @protocol SocializeLike <SocializeObject>
 
 @required

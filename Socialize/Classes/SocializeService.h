@@ -32,7 +32,9 @@
 
 @class SocializeService;
 
-
+/**
+ Some protocol
+ */
 @protocol SocializeServiceDelegate <NSObject>
 
 @optional
@@ -50,6 +52,9 @@
 -(void)didAuthenticate;
 @end
 
+/**
+ Service class
+*/
 @interface SocializeService : NSObject <SocializeRequestDelegate>
 {
       @protected    
