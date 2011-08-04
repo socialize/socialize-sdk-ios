@@ -43,6 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Fetch Comment";
     
     self.view.backgroundColor = [UIColor lightGrayColor];
     [_fetchButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];

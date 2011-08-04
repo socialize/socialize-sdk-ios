@@ -61,6 +61,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Test create a view";
+
     self.view.backgroundColor = [UIColor lightGrayColor];
     [createButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
     

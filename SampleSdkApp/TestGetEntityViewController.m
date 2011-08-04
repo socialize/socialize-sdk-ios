@@ -47,6 +47,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Get Entity";
     resultsView.hidden = YES;
 
     hiddenButton = [[UIButton alloc] init]; 

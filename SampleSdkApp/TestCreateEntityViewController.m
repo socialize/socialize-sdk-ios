@@ -43,7 +43,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.navigationItem.title = @"Create Entity";
+
     resultsView.hidden = YES;
     hiddenButton = [[UIButton alloc] init]; 
     hiddenButton.hidden = YES;

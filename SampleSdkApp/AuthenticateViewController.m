@@ -34,7 +34,6 @@
 {
     self.keyField = nil;
     self.secretField = nil;
-    [socialize release];
     [super dealloc];
 }
 

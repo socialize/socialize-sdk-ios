@@ -18,17 +18,24 @@
 
 
 @synthesize window=_window;
-@synthesize authenticationViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     UIViewController* rootViewController = nil;
-    if (rootViewController)
-        rootViewController = authenticationViewController =  [[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil];
+    
+    _socialize = [[Socialize alloc] initWithDelegate:self];
+    
+    
+    // we check the authentication here.
+    if ([_socialize isAuthenticated])
+        rootViewController = [[[TestListController alloc] initWithNibName:@"TestListController" bundle:nil] autorelease];
     else
-        rootViewController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil];
-
+        rootViewController = [[[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil] autorelease];
+    
+ 
     rootController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+    [self.window addSubview:rootController.view];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
@@ -61,13 +68,12 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
-    return [authenticationViewController.socialize.authService handleOpenURL: url];
+    return [_socialize.authService handleOpenURL: url];
 }
 
 - (void)dealloc
 {
     [rootController  release];
-    [authenticationViewController release];
     [_window release];
     [super dealloc];
 }

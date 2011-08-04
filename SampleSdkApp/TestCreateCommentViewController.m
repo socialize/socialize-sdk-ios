@@ -43,6 +43,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Create Comment";
+
     self.view.backgroundColor = [UIColor lightGrayColor];
     [createButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
     
