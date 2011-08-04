@@ -11,6 +11,7 @@
 #import "SocializeProvider.h"
 #import <OCMock/OCMock.h>
 #import "Socialize.h"
+#import "FBConnect.h"
 #import "SocializeCommonDefinitions.h"
 
 
@@ -70,7 +71,7 @@
      [_service  authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" 
             apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" 
             thirdPartyAuthToken:@"another token"
-            thirdPartyUserId:@"anotheruserid"
+            thirdPartyAppId:@"anotheruserid"
                         thirdPartyName:FacebookAuth];
     
     
@@ -110,6 +111,124 @@
 
 -(void)service:(SocializeService *)service didFail:(NSError *)error{
     NSLog(@"%@", error);
+}
+
+
+-(void) testPerformFacebookAuthenticationFirstTime
+{
+    NSString* apiKey = @"apiKey";
+    NSString* apiSecret = @"apiSecret";
+    NSString* appId = @"appId";
+    
+    id fbMock = [OCMockObject mockForClass: [Facebook class]];
+    BOOL key = NO; 
+    [[[fbMock stub]andReturnValue:OCMOCK_VALUE(key)]isSessionValid];
+    
+    FacebookAuthenticator* fbAuth = [[[FacebookAuthenticator alloc] initWithFramework:fbMock apiKey:apiKey apiSecret:apiSecret appId:appId service:nil]autorelease];
+    
+    [[fbMock expect]authorize: nil delegate:fbAuth];
+    [fbAuth performAuthentication];
+    
+    [fbMock verify];
+}
+
+-(void) testPerformFacebookAuthenticationSecondTimeWithValidSessionInfo
+{
+    NSString* apiKey = @"apiKey";
+    NSString* apiSecret = @"apiSecret";
+    NSString* appId = @"appId";
+    NSString* token = @"Token";
+    NSDate* date =[NSDate date];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:token forKey:@"FBAccessTokenKey"];
+    [defaults setObject:date forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+    
+    id fbMock = [OCMockObject mockForClass: [Facebook class]];
+    BOOL key = YES; 
+    [[[fbMock stub]andReturnValue:OCMOCK_VALUE(key)]isSessionValid];
+    [[[fbMock stub]andReturn:token]accessToken];
+    [[fbMock expect] setAccessToken: token];
+    [[fbMock expect] setExpirationDate: date];
+    
+    
+    id serviceMock = [OCMockObject mockForClass: [SocializeAuthenticateService class]];
+    [[serviceMock expect]  authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:token thirdPartyAppId:appId thirdPartyName:FacebookAuth];
+    
+    FacebookAuthenticator* fbAuth = [[[FacebookAuthenticator alloc] initWithFramework:fbMock apiKey:apiKey apiSecret:apiSecret appId:appId service:serviceMock]autorelease];
+    
+    [fbAuth performAuthentication];
+    
+    [fbMock verify];
+    [serviceMock verify];
+    
+    [defaults removeObjectForKey:@"FBAccessTokenKey"];
+    [defaults removeObjectForKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+}
+
+-(void) testHandleURL
+{
+    id mockFb = [OCMockObject mockForClass: [Facebook class]];
+    [[mockFb expect] handleOpenURL:nil];
+    FacebookAuthenticator* fbAuth = [[[FacebookAuthenticator alloc] initWithFramework:mockFb apiKey:@"" apiSecret:@"" appId:@"" service:nil]autorelease];
+    [fbAuth handleOpenURL:nil];
+    
+    [mockFb verify];
+}
+
+-(void) testDidFbLogin
+{
+    NSString* apiKey = @"apiKey";
+    NSString* apiSecret = @"apiSecret";
+    NSString* appId = @"appId";
+    NSString* token = @"Token";
+    NSDate* date =[NSDate date];
+    
+    
+    id fbMock = [OCMockObject mockForClass: [Facebook class]];
+    [[[fbMock stub]andReturn:token]accessToken];
+    [[[fbMock stub]andReturn:date]expirationDate];
+    
+    
+    id serviceMock = [OCMockObject mockForClass: [SocializeAuthenticateService class]];
+    [[serviceMock expect]  authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:token thirdPartyAppId:appId thirdPartyName:FacebookAuth];
+    
+    FacebookAuthenticator* fbAuth = [[[FacebookAuthenticator alloc] initWithFramework:fbMock apiKey:apiKey apiSecret:apiSecret appId:appId service:serviceMock]autorelease];
+    
+    [fbAuth fbDidLogin];
+    
+    [fbMock verify];
+    [serviceMock verify];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"FBAccessTokenKey"];
+    [defaults removeObjectForKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+}
+
+-(void) testDidFbLogout
+{
+    FacebookAuthenticator* fbAuth = [[[FacebookAuthenticator alloc] initWithFramework:nil apiKey:@"" apiSecret:@"" appId:@"" service:nil]autorelease];
+    
+    [fbAuth fbDidLogout];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    GHAssertFalse(([defaults objectForKey:@"FBAccessTokenKey"] && [defaults objectForKey:@"FBExpirationDateKey"]), nil);
+ 
+}
+
+-(void) testfbDidNotLogin
+{
+    id serviceMock = [OCMockObject mockForClass: [SocializeAuthenticateService class]];
+    [[serviceMock expect] request:nil didFailWithError:OCMOCK_ANY];
+
+    FacebookAuthenticator* fbAuth = [[[FacebookAuthenticator alloc] initWithFramework:nil apiKey:@"" apiSecret:@"" appId:@"" service:serviceMock]autorelease];
+    
+    [fbAuth fbDidNotLogin: YES];
+    
+    [serviceMock verify];
 }
 
 @end

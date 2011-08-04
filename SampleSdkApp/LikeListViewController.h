@@ -9,19 +9,23 @@
 #import <UIKit/UIKit.h>
 #import "SocializeCommonDefinitions.h"
 #import "Socialize.h"
-
+#import "LoadingView.h"
 
 @interface LikeListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SocializeServiceDelegate> {
 
-    UITableView     *_tableView;
-    Socialize       *_service;
-    NSArray         *_likes;
-    NSString        *_entityKey;
+    UITableView         *_tableView;
+    Socialize           *_socialize;
+    NSArray             *_likes;
+    NSString            *_entityKey;
+
+    IBOutlet UITextField* resultTextField;
+    IBOutlet UITextField* entityField;
+    IBOutlet UIButton*    getLikesButton;
+    
+    UIButton*             hiddenButton;
+    LoadingView*          _loadingView;
 }
 
 @property (retain,nonatomic) IBOutlet UITableView* tableView;
-@property (nonatomic, assign) Socialize* service;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andService: (Socialize*) service andEntityKey:(NSString*)entityKey;
-
+-(IBAction)getLikes;
 @end

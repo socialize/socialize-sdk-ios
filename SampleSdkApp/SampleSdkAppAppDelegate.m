@@ -9,23 +9,33 @@
 #import <Foundation/Foundation.h>
 #import "SampleSdkAppAppDelegate.h"
 #import "Socialize.h"
-#import "SocializeLike.h"
+#import "TestListController.h"
+
+#include <AvailabilityMacros.h>
+//#import "SocializeLike.h"
 
 @implementation SampleSdkAppAppDelegate
 
 
 @synthesize window=_window;
-@synthesize authenticationViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
-    authenticationViewController = [[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil];
-    rootController = [[UINavigationController alloc] initWithRootViewController:authenticationViewController];
-
+    UIViewController* rootViewController = nil;
+    
+    _socialize = [[Socialize alloc] initWithDelegate:self];
+    
+    
+    // we check the authentication here.
+    if ([_socialize isAuthenticated])
+        rootViewController = [[[TestListController alloc] initWithNibName:@"TestListController" bundle:nil] autorelease];
+    else
+        rootViewController = [[[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil] autorelease];
+    
+ 
+    rootController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     [self.window addSubview:rootController.view];
     [self.window makeKeyAndVisible];
-
     return YES;
 }
 
@@ -56,13 +66,16 @@
 
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    return [_socialize.authService handleOpenURL: url];
+}
+
 - (void)dealloc
 {
     [rootController  release];
-    [authenticationViewController release];
     [_window release];
     [super dealloc];
 }
-
 
 @end

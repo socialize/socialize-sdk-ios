@@ -8,16 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "AuthenticateViewController.h"
-#import "SocializeCommonDefinitions.h"
 #import "Socialize.h"
 
-@interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate> {
+@interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate, SocializeServiceDelegate> {
 @private
     UINavigationController*         rootController;
-    AuthenticateViewController*     authenticationViewController;
+    Socialize*                      _socialize;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet AuthenticateViewController *authenticationViewController;
+//@property (nonatomic, retain) IBOutlet AuthenticateViewController *authenticationViewController;
 
 @end

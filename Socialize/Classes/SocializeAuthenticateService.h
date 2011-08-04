@@ -12,9 +12,27 @@
 #import "SocializeRequest.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeService.h"
+#import "FBConnect.h"
 
-@interface SocializeAuthenticateService : SocializeService {
+@class SocializeAuthenticateService;
 
+@interface FacebookAuthenticator : NSObject<FBSessionDelegate> {
+@private
+    Facebook* facebook;
+    NSString* apiKey;
+    NSString* apiSecret;
+    NSString* thirdPartyAppId;
+    SocializeAuthenticateService* service;
+}
+-(id) initWithFramework: (Facebook*) fb apiKey: (NSString*) key apiSecret: (NSString*) secret appId: (NSString*)appId service: (SocializeAuthenticateService*) authService;
+-(void) performAuthentication;
+-(BOOL) handleOpenURL:(NSURL *)url;
+
+@end
+
+@interface SocializeAuthenticateService : SocializeService<FBSessionDelegate> {
+    @private
+    FacebookAuthenticator* fbAuth;
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey  
@@ -23,10 +41,16 @@
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                             apiSecret:(NSString*)apiSecret 
                   thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
-                     thirdPartyUserId:(NSString*)thirdPartyUserId
+                     thirdPartyAppId:(NSString*)thirdPartyAppId
                         thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
+
+-(void)authenticateWithApiKey:(NSString*)apiKey 
+                    apiSecret:(NSString*)apiSecret 
+              thirdPartyAppId:(NSString*)thirdPartyAppId 
+               thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
 
 +(BOOL)isAuthenticated;
 -(void)removeAuthenticationInfo;
+-(BOOL)handleOpenURL:(NSURL *)url;
 
 @end

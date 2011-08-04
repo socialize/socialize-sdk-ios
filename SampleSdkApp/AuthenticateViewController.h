@@ -8,19 +8,29 @@
 
 #import <UIKit/UIKit.h>
 #import "Socialize.h"
+#import "LoadingView.h"
 
 @interface AuthenticateViewController : UIViewController<SocializeServiceDelegate> {
     
     Socialize*              socialize;
+    UILabel*                _resultLabel;
+    LoadingView*            _loadingView;
+    
     IBOutlet UITextField*   _keyField;
     IBOutlet UITextField*   _secretField;
+
+    IBOutlet UIButton*      _authenticateButton;
+    IBOutlet UIButton*      _thirdpartyAuthentication;
 }
 
 @property (retain,nonatomic) IBOutlet UITextField*   keyField;
 @property (retain,nonatomic) IBOutlet UITextField*   secretField;
+@property (retain,nonatomic) IBOutlet UILabel*       resultLabel;
+@property (nonatomic, readonly) Socialize* socialize;
 
 -(IBAction)authenticate:(id)sender;
-- (IBAction)textFieldReturn:(id)sender;
-- (IBAction)backgroundTouched:(id)sender;
+-(IBAction)authenticateViaFacebook:(id)sender;
+-(IBAction)textFieldReturn:(id)sender;
+-(IBAction)backgroundTouched:(id)sender;
 
 @end

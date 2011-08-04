@@ -8,27 +8,25 @@
 
 #import "LikeListViewController.h"
 #import "SocializeLike.h"
-
+#import "UIButton+Socialize.h"
 @implementation LikeListViewController
 
 
-@synthesize  tableView = _tableView, service = _service;
+@synthesize  tableView = _tableView;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andService: (Socialize*) service andEntityKey:(NSString*)entityKey
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _entityKey = [entityKey retain];
-        self.service = service;
-        self.title = @"Users Liking the url";
+        _socialize = [[Socialize alloc] initWithDelegate:self];
+        self.title = @"Users Liking the entity";
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [_entityKey release];
     [_likes release];
     [super dealloc];
 }
@@ -45,17 +43,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    [getLikesButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    
     
     // Do any additional setup after loading the view from its nib.
+    _tableView.backgroundColor = [UIColor lightGrayColor];
     _tableView.dataSource = self;
     _tableView.delegate = self;
-     
-    [self.service setDelegate:self];
+    
+    hiddenButton = [[UIButton alloc] init]; 
+    hiddenButton.hidden = YES;
+    hiddenButton.accessibilityLabel = @"hiddenButton";
+
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [self.service setDelegate:self];
-    [_service getLikesForEntityKey:_entityKey first:[NSNumber numberWithInt:1] last:[NSNumber numberWithInt:10]];
 }
 
 - (void)viewDidUnload
@@ -91,37 +95,68 @@
     }
     
     id<SocializeLike> like = [_likes objectAtIndex:indexPath.row];
-    DLog(@"SocializeLike user name %@", [[like user] userName]);
     cell.textLabel.text = [[like user] userName];
 
     return cell;
 }
 
-#pragma mark - Table view delegate
+#pragma mark IB actions
+-(IBAction)getLikes{
+    
+    if (!hiddenButton){
+        hiddenButton = [[UIButton alloc] init]; 
+        hiddenButton.hidden = YES;
+        hiddenButton.accessibilityLabel = @"hiddenButton";
+        [self.view addSubview:hiddenButton];
+    }
+    
+    _loadingView = [LoadingView loadingViewInView:self.view]; 
+    [_socialize getLikesForEntityKey:entityField.text first:nil last:nil];
+}
+#pragma mark -
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+#pragma mark - Table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
 }
 
 #pragma mark Socialize Like delegate
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
-    DLog(@"didDelete %@", object);
+
 }
 
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
-    DLog(@"didUpdate %@", object);
+
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error{
-    DLog(@"didFail %@", error);
+
+    [hiddenButton removeFromSuperview];
+    [hiddenButton release];
+    hiddenButton = nil;
+
+    [_loadingView removeView]; 
+    
+    UIAlertView *msg;
+    msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"cannot get likes" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [msg show];
+    [msg release];
+
 }
 
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
-    DLog(@"didFetchElements %@", dataArray);
+
+    [hiddenButton removeFromSuperview];
+    [hiddenButton release];
+    hiddenButton = nil;
+    
+    [entityField resignFirstResponder];
+    
+    [_loadingView removeView]; 
     _likes = [dataArray retain];
     [self.tableView reloadData];
 }
+#pragma mark -
 
 @end
