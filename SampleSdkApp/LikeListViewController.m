@@ -20,7 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _socialize = [[Socialize alloc] initWithDelegate:self];
-        self.title = @"Users Liking the url";
+        self.title = @"Users Liking the entity";
     }
     return self;
 }
@@ -43,7 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.view.backgroundColor = [UIColor lightGrayColor];
     [getLikesButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
     

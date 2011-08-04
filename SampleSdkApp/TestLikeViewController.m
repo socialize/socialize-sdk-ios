@@ -50,6 +50,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Create a like/unlike";
+
     resultsView.hidden = YES;
     
     self.view.backgroundColor = [UIColor lightGrayColor];
