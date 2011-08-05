@@ -49,7 +49,7 @@
 /**
  Fetch comment by comment id.
  
- Successfull call of this method invoks <[SocializeServiceDelegate service:didFetchElements:]> method.
+ Successful call of this method invokes <[SocializeServiceDelegate service:didFetchElements:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
  @param commentId Unique id of comment object
@@ -67,7 +67,7 @@
 /**
  Fetch list of comments.
  
- Successfull call of this method invoks <[SocializeServiceDelegate service:didFetchElements:]> method.
+ Successful call of this method invokes <[SocializeServiceDelegate service:didFetchElements:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
  Parameters first and last (OPTIONAL) : specify range to do pagination by entity’s key. First is included, and last is excluded.
@@ -93,7 +93,7 @@
 /**
  Create comment for entity.
  
- Successfull call of this method invoks <[SocializeServiceDelegate service:didCreate:]> method.
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
  @param entityKey URL to the entity.
@@ -107,7 +107,7 @@
 /**
  Create comment for entity.
  
- Successfull call of this method invoks <[SocializeServiceDelegate service:didCreate:]> method.
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
  @param entity <SocializeEntity> for which user is going to create a comment.

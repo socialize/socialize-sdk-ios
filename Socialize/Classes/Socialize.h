@@ -67,7 +67,7 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeCommentsService        *commentsService;
 /**Get access to the entity service.*/
 @property (nonatomic, retain) SocializeEntityService          *entityService;
-/**Get access to the view service.*/
+/**Get access to the view service via <SocializeViewService>.*/
 @property (nonatomic, retain) SocializeViewService            *viewService;
 
 /** @name Initialization */
@@ -185,7 +185,7 @@ otherwise you will get a failure.
 /**
  Fetch comment by comment id.
  
- Successfull call of this method invoks <[SocializeServiceDelegate service:didFetchElements:]> method.
+ Successful call of this method invokes <[SocializeServiceDelegate service:didFetchElements:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
  @param commentId Unique id of comment object
@@ -195,7 +195,7 @@ otherwise you will get a failure.
 /**
  Fetch list of comments.
  
- Successfull call of this method invoks <[SocializeServiceDelegate service:didFetchElements:]> method.
+ Successful call of this method invokes <[SocializeServiceDelegate service:didFetchElements:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
  Parameters first and last (OPTIONAL) : specify range to do pagination by entity’s key. First is included, and last is excluded.
@@ -219,7 +219,7 @@ otherwise you will get a failure.
 /**
  Create comment for entity.
  
- Successfull call of this method invoks <[SocializeServiceDelegate service:didCreate:]> method.
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
  @param url URL to the entity.
@@ -233,7 +233,7 @@ otherwise you will get a failure.
 /**
  Create comment for entity.
  
- Successfull call of this method invoks <[SocializeServiceDelegate service:didCreate:]> method.
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
  @param entity <SocializeEntity> for which user is going to create a comment.
@@ -245,5 +245,16 @@ otherwise you will get a failure.
 -(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
 
 /** @name View stuff */
+
+/**
+ This method creates view for entity.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param entity <SocializeEntity> object which should be marked as viewed.
+ @param lng Longitude *float* value. Could be nil. (OPTIONAL)
+ @param lat Latitude  *float* value. Could be nil. (OPTIONAL)
+ */
 -(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 @end
