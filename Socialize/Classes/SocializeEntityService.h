@@ -34,15 +34,55 @@
 @class SocializeProvider;
 @class SocializeObjectFactory;
 
-@protocol SocializeEntityServiceDelegate;
-
+/**
+  Socialize entity service is the entity creation and fetch engine.
+ */
 @interface SocializeEntityService : SocializeService
 {   
 }
 
+/**@name Fetch entity*/
+
+/**
+ Fetch entity by key.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didFetchElements:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param keyOfEntity URL of entity
+ */
 -(void)entityWithKey:(NSString *)keyOfEntity;
-//-(void)listEntitiesWithKeys:(NSArray *)entityKeysArray;
+
+/**@name Create entity*/
+
+/**
+ Create entities.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param entities An array of <SocializeEntity> objects.
+ */
 -(void)createEntities:(NSArray *)entities;
+
+/**
+ Create entity.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param entity entity object which responded to <SocializeEntity> protocol.
+ */
 -(void)createEntity:(id<SocializeEntity>)entity ;
+
+/**
+ Create entity.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param keyOfEntity URL of entity
+ @param nameOfEntity Name of entity
+ */
 -(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity;
 @end

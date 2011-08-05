@@ -1,0 +1,61 @@
+{
+    "errors": [],
+    "items": [
+        {
+            "application": {
+                "id": 196113,
+                "name": "Socialize Android Sample App"
+            },
+            "date": "2011-08-04 20:49:03+0000",
+            "entity": {
+                "comments": 10,
+                "key": "http://entity1.com",
+                "likes": 1,
+                "name": "First Entity",
+                "shares": 1,
+                "views": 1
+            },
+            "id": 1795685,
+            "lat": 22.682566157271577,
+            "lng": 43.45428183092441,
+            "share_location": 1,
+            "user": {
+                "city": null,
+                "first_name": null,
+                "id": 5162463,
+                "last_name": null,
+                "small_image_uri": null,
+                "state": null,
+                "username": "User5162463"
+            }
+        },
+        {
+            "application": {
+                "id": 196113,
+                "name": "Socialize Android Sample App"
+            },
+            "date": "2011-08-04 20:49:03+0000",
+            "entity": {
+                "comments": 0,
+                "key": "http://entity2.com",
+                "likes": 1,
+                "name": "Second Entity",
+                "shares": 1,
+                "views": 1
+            },
+            "id": 1795686,
+            "lat": 59.13804097872364,
+            "lng": 35.51155710371409,
+            "share_location": 1,
+            "user": {
+                "city": null,
+                "first_name": null,
+                "id": 5162463,
+                "last_name": null,
+                "small_image_uri": null,
+                "state": null,
+                "username": "User5162463"
+            }
+        }
+    ]
+}

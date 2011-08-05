@@ -37,17 +37,85 @@
 @protocol SocializeComment;
 @protocol SocializeEntity;
 
+/**
+ Socialize comment service is the comment creation and fetch engine.
+ */
 @interface SocializeCommentsService : SocializeService {
 
 }
 
-/**** Getting Comments *****/
+/**@name Getting Comments*/
+
+/**
+ Fetch comment by comment id.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didFetchElements:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param commentId Unique id of comment object
+ */
 -(void) getCommentById: (int) commentId;
+
+/**
+ Fetch list of comments.
+ 
+ @param commentsId The array of comment ids.
+ @param keys The array of entity keys.
+ */
 -(void) getCommentsList: (NSArray*) commentsId andKeys: (NSArray*)keys;
+
+/**
+ Fetch list of comments.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didFetchElements:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ Parameters first and last (OPTIONAL) : specify range to do pagination by entity’s key. First is included, and last is excluded.
+ 
+ Default values:
+ first = 0
+ last = 100
+ 
+ @warning *Note:*
+ Each request is limited to 100 items.
+ If first = 0, last = 50, the API returns comments 0-49.
+ If last - first > 100, then last is truncated to equal first + 100. For example, if first = 100, last = 250, then last is changed to last = 200.
+ If only last = 150 is passed, then last is truncated to 100. If last = 25, then results 0...24 are returned.
+ 
+ @param entryKey URL to the entity.
+ @param first First comment. Could be nil. (OPTIONAL)
+ @param last Last comment. Could be nil. (OPTIONAL)
+ */
 -(void) getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last;
 
-/**** Comment Creation *****/
+/**@name Comment Creation*/
+
+/**
+ Create comment for entity.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param entityKey URL to the entity.
+ @param comment Text of the comment.
+ @param lng Longitude *float* value. Could be nil. (OPTIONAL)
+ @param lat Latitude  *float* value. Could be nil. (OPTIONAL)
+ @see createCommentForEntity:comment:longitude:latitude:;
+ */
 -(void) createCommentForEntityWithKey: (NSString*) entityKey comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
+
+/**
+ Create comment for entity.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param entity <SocializeEntity> for which user is going to create a comment.
+ @param comment Text of the comment.
+ @param lng Longitude *float* value. Could be nil. (OPTIONAL)
+ @param lat Latitude  *float* value. Could be nil. (OPTIONAL)
+ @see createCommentForEntityWithKey:comment:longitude:latitude:
+ */
 -(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
 
 @end
