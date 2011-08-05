@@ -31,7 +31,7 @@
 @end
 
 /**
-Socialize authentication service is authentication engine. It performs anonymously and third party authentication.
+Socialize authentication service is the authentication engine. It performs anonymously and third party authentication.
  */
 @interface SocializeAuthenticateService : SocializeService<FBSessionDelegate> {
     @private

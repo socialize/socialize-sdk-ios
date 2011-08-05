@@ -18,6 +18,7 @@
 		<string>./Classes/Socialize.h</string>
 		<string>./Classes/SocializeCommonDefinitions.h</string>
 		<string>./Classes/SocializeAuthenticateService.h</string>
+		<string>./Classes/SocializeCommentsService.h</string>
 		<string>./Classes/SocializeService.h</string>
 		<string>./Classes/SocializeObject.h</string>
 		<string>./Classes/SocializeEntity.h</string>
