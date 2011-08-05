@@ -65,7 +65,7 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeLikeService            *likeService;
 /**Get access to the comment service via <SocializeCommentsService>.*/
 @property (nonatomic, retain) SocializeCommentsService        *commentsService;
-/**Get access to the entity service.*/
+/**Get access to the entity service via <SocializeEntityService>.*/
 @property (nonatomic, retain) SocializeEntityService          *entityService;
 /**Get access to the view service via <SocializeViewService>.*/
 @property (nonatomic, retain) SocializeViewService            *viewService;
@@ -177,7 +177,25 @@ otherwise you will get a failure.
 
 /** @name Entity stuff*/
 
+/**
+ Fetch entity by key.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didFetchElements:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param url URL of entity
+ */
 -(void)getEntityByKey:(NSString *)url;
+
+/**
+ Create entity.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param entityKey URL of entity
+ @param name Name of entity
+ */
 -(void)createEntityWithUrl:(NSString*)entityKey andName:(NSString*)name;
 
 /** @name Comment stuff */
