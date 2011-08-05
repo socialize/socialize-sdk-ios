@@ -63,7 +63,7 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeAuthenticateService    *authService;
 /**Get access to the like service.*/
 @property (nonatomic, retain) SocializeLikeService            *likeService;
-/**Get access to the comment service.*/
+/**Get access to the comment service via <SocializeCommentsService>.*/
 @property (nonatomic, retain) SocializeCommentsService        *commentsService;
 /**Get access to the entity service.*/
 @property (nonatomic, retain) SocializeEntityService          *entityService;
