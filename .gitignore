@@ -10,3 +10,6 @@ SocializeSDK.xcodeproj/project.xcworkspace/xcuserdata/fawad.xcuserdatad/UserInte
 SocializeSDK.xcodeproj/xcuserdata/fawad.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
 output
 build
+Documentation/docset/
+Documentation/html/
+docset-installed.txt
