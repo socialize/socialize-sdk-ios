@@ -28,6 +28,10 @@
 		<string>./Classes/SocializeComment.h</string>
 		<string>./Classes/SocializeView.h</string>
 		<string>./Classes/SocializeActivity.h</string>
+		<string>./Classes/SocializeApplication.h</string>
+		<string>./Classes/SocializeUser.h</string>
+		<string>./Classes/SocializeShare.h</string>
+		<string>./Classes/SocializeError.h</string>
 	</array>
 	<key>--keep-intermediate-files</key>
 	<true/>

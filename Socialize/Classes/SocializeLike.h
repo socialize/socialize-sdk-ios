@@ -13,11 +13,12 @@
 #import "SocializeEntity.h"
 
 /**
- In progress
+ Protocol for socialize like representation.
  */
 @protocol SocializeLike <SocializeActivity>
 @end
 
+/**Private implenetation of <SocializeLike> protocol*/
 @interface SocializeLike : SocializeActivity <SocializeLike>
 {
 }

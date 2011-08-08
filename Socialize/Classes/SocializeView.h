@@ -14,12 +14,12 @@
 
 
 /**
- In progress
+ Protocol for socialize view representation.
  */
 @protocol SocializeView <SocializeActivity>
 @end
 
-
+/**Private implementation of <SocializeView> protocol*/
 @interface SocializeView : SocializeActivity<SocializeView> {
 }
 
