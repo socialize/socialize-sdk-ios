@@ -77,13 +77,19 @@
 	
 	<option value="//api/name/getEntityByKey:">&nbsp;&nbsp;&nbsp;&nbsp;- getEntityByKey:</option>
 	
+	<option value="//api/name/getLikesForEntityKey:first:last:">&nbsp;&nbsp;&nbsp;&nbsp;- getLikesForEntityKey:first:last:</option>
+	
 	<option value="//api/name/initWithDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDelegate:</option>
 	
 	<option value="//api/name/isAuthenticated">&nbsp;&nbsp;&nbsp;&nbsp;- isAuthenticated</option>
 	
+	<option value="//api/name/likeEntityWithKey:longitude:latitude:">&nbsp;&nbsp;&nbsp;&nbsp;- likeEntityWithKey:longitude:latitude:</option>
+	
 	<option value="//api/name/removeAuthenticationInfo">&nbsp;&nbsp;&nbsp;&nbsp;- removeAuthenticationInfo</option>
 	
 	<option value="//api/name/setDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;- setDelegate:</option>
+	
+	<option value="//api/name/unlikeEntity:">&nbsp;&nbsp;&nbsp;&nbsp;- unlikeEntity:</option>
 	
 	<option value="//api/name/viewEntity:longitude:latitude:">&nbsp;&nbsp;&nbsp;&nbsp;- viewEntity:longitude:latitude:</option>
 	
@@ -108,6 +114,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Local in memory object creation">Local in memory object creation</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Authentication stuff">Authentication stuff</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Like stuff">Like stuff</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Entity stuff">Entity stuff</a></span></li>
 	
@@ -161,13 +169,19 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getEntityByKey:">getEntityByKey:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getLikesForEntityKey:first:last:">getLikesForEntityKey:first:last:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDelegate:">initWithDelegate:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAuthenticated">isAuthenticated</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/likeEntityWithKey:longitude:latitude:">likeEntityWithKey:longitude:latitude:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeAuthenticationInfo">removeAuthenticationInfo</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setDelegate:">setDelegate:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/unlikeEntity:">unlikeEntity:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/viewEntity:longitude:latitude:">viewEntity:longitude:latitude:</a></span></li>
 	
@@ -236,7 +250,7 @@ otherwise you will get a failure.</p></div>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/likeService">&nbsp;&nbsp;likeService</a></code>
-		<span class="tooltip"><p>Get access to the like service.</p></span>
+		<span class="tooltip"><p>Get access to the like service via <a href="../Classes/SocializeLikeService.html">SocializeLikeService</a>.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -338,6 +352,35 @@ otherwise you will get a failure.</p></div>
 	<span class="tooltip">
 		<code><a href="#//api/name/removeAuthenticationInfo">&ndash;&nbsp;removeAuthenticationInfo</a></code>
 		<span class="tooltip"><p>Remove old authentication information.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Like stuff" name="task_Like stuff"></a>
+						<h3 class="subsubtitle task-title">Like stuff</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/likeEntityWithKey:longitude:latitude:">&ndash;&nbsp;likeEntityWithKey:longitude:latitude:</a></code>
+		<span class="tooltip"><p>Like the entity.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/unlikeEntity:">&ndash;&nbsp;unlikeEntity:</a></code>
+		<span class="tooltip"><p>Unlike the entity.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getLikesForEntityKey:first:last:">&ndash;&nbsp;getLikesForEntityKey:first:last:</a></code>
+		<span class="tooltip"><p>Get list of &lsquo;likes&rsquo; for entity.</p></span>
 	</span>
 	
 	
@@ -536,7 +579,7 @@ otherwise you will get a failure.</p></div>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get access to the like service.</p>
+		<p>Get access to the like service via <a href="../Classes/SocializeLikeService.html">SocializeLikeService</a>.</p>
 	</div>		
 	
 	
@@ -1260,6 +1303,60 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/getLikesForEntityKey:first:last:" title="getLikesForEntityKey:first:last:"></a>
+	<h3 class="subsubtitle method-title">getLikesForEntityKey:first:last:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get list of &lsquo;likes&rsquo; for entity.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)getLikesForEntityKey:(NSString *)<em>url</em> first:(NSNumber *)<em>first</em> last:(NSNumber *)<em>last</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>url</em></dt>
+			<dd><p>Entity URL.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>first</em></dt>
+			<dd><p>The first like object to get. (OPTIONAL)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>last</em></dt>
+			<dd><p>The last like object to get. (OPTIONAL)</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/initWithDelegate:" title="initWithDelegate:"></a>
 	<h3 class="subsubtitle method-title">initWithDelegate:</h3>
 	
@@ -1343,6 +1440,66 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/likeEntityWithKey:longitude:latitude:" title="likeEntityWithKey:longitude:latitude:"></a>
+	<h3 class="subsubtitle method-title">likeEntityWithKey:longitude:latitude:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Like the entity.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)likeEntityWithKey:(NSString *)<em>url</em> longitude:(NSNumber *)<em>lng</em> latitude:(NSNumber *)<em>lat</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>url</em></dt>
+			<dd><p>Entyty URL.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>lng</em></dt>
+			<dd><p>Longitude. (OPTIONAL)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>lat</em></dt>
+			<dd><p>Latitude. (OPTIONAL)</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didCreate:">[SocializeServiceDelegate service:didCreate:]</a> method.
+In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/removeAuthenticationInfo" title="removeAuthenticationInfo"></a>
 	<h3 class="subsubtitle method-title">removeAuthenticationInfo</h3>
 	
@@ -1410,6 +1567,56 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/unlikeEntity:" title="unlikeEntity:"></a>
+	<h3 class="subsubtitle method-title">unlikeEntity:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Unlike the entity.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)unlikeEntity:(id&lt;SocializeLike&gt;)<em>like</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>like</em></dt>
+			<dd><p><a href="../Classes/SocializeLike.html">SocializeLike</a> object.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didDelete:">[SocializeServiceDelegate service:didDelete:]</a> method.
+In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+	</div>
 	
 	
 	

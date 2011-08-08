@@ -61,7 +61,7 @@ otherwise you will get a failure.
 }
 /**Get access to the authentication service via <SocializeAuthenticateService>.*/
 @property (nonatomic, retain) SocializeAuthenticateService    *authService;
-/**Get access to the like service.*/
+/**Get access to the like service via <SocializeLikeService>. */
 @property (nonatomic, retain) SocializeLikeService            *likeService;
 /**Get access to the comment service via <SocializeCommentsService>.*/
 @property (nonatomic, retain) SocializeCommentsService        *commentsService;
@@ -171,8 +171,35 @@ otherwise you will get a failure.
 
 /** @name Like stuff*/
 
+/**
+ Like the entity.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param url Entyty URL.
+ @param lng Longitude. (OPTIONAL)
+ @param lat Latitude. (OPTIONAL)
+ */
 -(void)likeEntityWithKey:(NSString*)url longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
+
+/**
+ Unlike the entity.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didDelete:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param like <SocializeLike> object.
+ */
 -(void)unlikeEntity:(id<SocializeLike>)like;
+
+/**
+ Get list of 'likes' for entity.
+ 
+ @param url Entity URL.
+ @param first The first like object to get. (OPTIONAL)
+ @param last The last like object to get. (OPTIONAL)
+ */
 -(void)getLikesForEntityKey:(NSString*)url  first:(NSNumber*)first last:(NSNumber*)last;
 
 /** @name Entity stuff*/

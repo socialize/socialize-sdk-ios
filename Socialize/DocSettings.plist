@@ -23,6 +23,7 @@
 		<string>./Classes/SocializeCommentsService.h</string>
 		<string>./Classes/SocializeViewService.h</string>
 		<string>./Classes/SocializeEntityService.h</string>
+		<string>./Classes/SocializeLikeService.h</string>
 		<string>./Classes/SocializeService.h</string>
 		<string>./Classes/SocializeObject.h</string>
 		<string>./Classes/SocializeEntity.h</string>
