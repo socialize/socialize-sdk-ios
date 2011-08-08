@@ -25,15 +25,15 @@
 
 -(void)testToView
 {
-    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"view_single_response.json"];
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/view_single_response.json"];
     NSDictionary * JSONDictionaryToParse =(NSDictionary *)[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
     
     id mockView = [OCMockObject mockForProtocol:@protocol(SocializeView)];
     
     [[mockView expect] setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
-    [[mockView expect] setLat:[((NSNumber*)[JSONDictionaryToParse objectForKey:@"lat"]) floatValue]];
-    [[mockView expect] setLng:[((NSNumber*)[JSONDictionaryToParse objectForKey:@"lng"]) floatValue]];
+    [[mockView expect] setLat:((NSNumber*)[JSONDictionaryToParse objectForKey:@"lat"])];
+    [[mockView expect] setLng:((NSNumber*)[JSONDictionaryToParse objectForKey:@"lng"])];
     [[mockView expect] setApplication:OCMOCK_ANY];
     [[mockView expect] setUser:OCMOCK_ANY];
     [[mockView expect] setEntity:OCMOCK_ANY];

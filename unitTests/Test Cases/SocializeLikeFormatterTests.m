@@ -30,8 +30,8 @@
     id mockLike = [OCMockObject mockForProtocol:@protocol(SocializeLike)];
 
     [[mockLike expect] setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
-    [[mockLike expect] setLat:[((NSNumber*)[JSONDictionaryToParse objectForKey:@"lat"]) floatValue]];
-    [[mockLike expect] setLng:[((NSNumber*)[JSONDictionaryToParse objectForKey:@"lng"]) floatValue]];
+    [[mockLike expect] setLat:((NSNumber*)[JSONDictionaryToParse objectForKey:@"lat"])];
+    [[mockLike expect] setLng:((NSNumber*)[JSONDictionaryToParse objectForKey:@"lng"])];
     [[mockLike expect] setApplication:OCMOCK_ANY];
     [[mockLike expect] setUser:OCMOCK_ANY];
     [[mockLike expect] setEntity:OCMOCK_ANY];
