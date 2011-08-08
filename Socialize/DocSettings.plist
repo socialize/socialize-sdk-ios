@@ -13,6 +13,8 @@
 		<string>Templates</string>
 		<string>.m</string>
 	</array>
+	<key>--index-desc</key>
+	<string>../Documentation/GettingStartedGuide/GettingStartedGuide.html</string>
 	<key>--input</key>
 	<array>
 		<string>./Classes/Socialize.h</string>
