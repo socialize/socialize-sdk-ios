@@ -51,6 +51,9 @@
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret
 {
+   if ([SocializeAuthenticateService isAuthenticated])
+       [_authService removeAuthenticationInfo];
+    
    [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret]; 
 }
 
@@ -69,6 +72,9 @@
                      thirdPartyAppId:(NSString*)thirdPartyAppId
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
 {
+    if ([SocializeAuthenticateService isAuthenticated])
+        [_authService removeAuthenticationInfo];
+    
     [_authService  authenticateWithApiKey:apiKey 
                            apiSecret:apiSecret
                            thirdPartyAuthToken:thirdPartyAuthToken
@@ -82,6 +88,9 @@
               thirdPartyAppId:(NSString*)thirdPartyAppId 
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName
 {
+    if ([SocializeAuthenticateService isAuthenticated])
+        [_authService removeAuthenticationInfo];
+    
     [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:thirdPartyAppId thirdPartyName:thirdPartyName];
 }
 
