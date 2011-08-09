@@ -26,3 +26,4 @@ doc:
 	cd "./Socialize";\
 	ls; \
 	appledoc ./DocSettings.plist
+	cp -r ./Documentation/GettingStartedGuide/images/ ./Documentation/html/images/

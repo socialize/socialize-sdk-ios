@@ -21,16 +21,18 @@
 
     IBOutlet UIButton*      _authenticateButton;
     IBOutlet UIButton*      _thirdpartyAuthentication;
+    IBOutlet UIButton*      _emptyCacheButton;
 }
 
 @property (retain,nonatomic) IBOutlet UITextField*   keyField;
 @property (retain,nonatomic) IBOutlet UITextField*   secretField;
 @property (retain,nonatomic) IBOutlet UILabel*       resultLabel;
-@property (nonatomic, readonly) Socialize* socialize;
+@property (nonatomic, readonly) Socialize*           socialize;
 
 -(IBAction)authenticate:(id)sender;
 -(IBAction)authenticateViaFacebook:(id)sender;
 -(IBAction)textFieldReturn:(id)sender;
 -(IBAction)backgroundTouched:(id)sender;
+-(IBAction)emptyCache:(id)sender;
 
 @end

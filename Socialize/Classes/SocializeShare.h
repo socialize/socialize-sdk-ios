@@ -9,16 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "SocializeComment.h"
 
-
+/**Protocol for socialize share object representation.*/
 @protocol SocializeShare <SocializeComment>
+/**Get share type.*/
 -(NSInteger)medium;
+
+/**
+ Set share type.
+ @param medium Share type.
+ */
 -(void)setMedium:(NSInteger)medium;
 @end
 
+/**Private implementation of <SocializeShare> protocol*/
 @interface SocializeShare : SocializeComment<SocializeShare> {
     NSInteger _medium;
 }
 
+/**Share type*/
 @property (nonatomic, assign) NSInteger medium;
 
 @end

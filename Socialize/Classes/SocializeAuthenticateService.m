@@ -33,14 +33,18 @@
 
 #define AUTHENTICATE_METHOD @"authenticate/"
 
--(void)authenticateWithApiKey:(NSString*)apiKey 
-          apiSecret:(NSString*)apiSecret
-         {
+-(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret{
+
+    if([SocializeAuthenticateService isAuthenticated]){
+        [self.delegate performSelector:@selector(didAuthenticate) withObject:nil];
+        return;
+    } 
              
     NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [UIDevice currentDevice].uniqueIdentifier];
     NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                 payloadJson, @"jsonData",
                                                 nil];
+
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
     [_provider secureRequestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
 }

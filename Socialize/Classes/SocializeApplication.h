@@ -9,18 +9,27 @@
 #import <Foundation/Foundation.h>
 #import "SocializeObject.h"
 
+/**
+ Protocol for socialize application representation.
+ */
 @protocol  SocializeApplication<SocializeObject>
-
+/**Get application name*/
 -(NSString * )name;
+/**
+ Set application name.
+ @param name Application name.
+ */
 -(void)setName:(NSString *)name;
 
 @end
 
 
+/** Private implementation of <SocializeApplication> protocol*/
 @interface SocializeApplication : SocializeObject <SocializeApplication>
 {
     NSString * _name;
 }
 
+/**Set\get application name.*/
 @property(nonatomic, retain) NSString * name;
 @end

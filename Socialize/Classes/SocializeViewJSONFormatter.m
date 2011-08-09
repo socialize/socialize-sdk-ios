@@ -30,19 +30,8 @@
     
     [view setUser:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"user"] forProtocol:@protocol(SocializeUser)]];
     
-    NSNumber* latNumber = [JSONDictionary valueForKey:@"lat"];
-    NSNumber* lngNumber = [JSONDictionary valueForKey:@"lng"];
-    
-    if (latNumber && (![latNumber isEqual:[NSNull null]]))
-        [view setLat:[latNumber floatValue]];
-    else
-        [view setLat:0];
-    
-    if (lngNumber && (![lngNumber isEqual:[NSNull null]]))
-        [view setLng:[lngNumber floatValue]];
-    else
-        [view setLng:0];
-    
+    [view setLat: [JSONDictionary valueForKey:@"lat"]];
+    [view setLng: [JSONDictionary valueForKey:@"lng"]];
 }
 
 @end

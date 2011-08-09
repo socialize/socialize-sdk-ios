@@ -1,0 +1,712 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SocializeAuthenticateService Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Socialize iOS SDK </a></h1>
+				<a id="developerHome" href="../index.html">Socialize Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SocializeAuthenticateService Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/isAuthenticated">&nbsp;&nbsp;&nbsp;&nbsp;+ isAuthenticated</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/authenticateWithApiKey:apiSecret:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithApiKey:apiSecret:</option>
+	
+	<option value="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</option>
+	
+	<option value="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</option>
+	
+	<option value="//api/name/handleOpenURL:">&nbsp;&nbsp;&nbsp;&nbsp;- handleOpenURL:</option>
+	
+	<option value="//api/name/removeAuthenticationInfo">&nbsp;&nbsp;&nbsp;&nbsp;- removeAuthenticationInfo</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Anonymous authentication">Anonymous authentication</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Third party authentication">Third party authentication</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Other methods">Other methods</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAuthenticated">isAuthenticated</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithApiKey:apiSecret:">authenticateWithApiKey:apiSecret:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:">authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/handleOpenURL:">handleOpenURL:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeAuthenticationInfo">removeAuthenticationInfo</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SocializeAuthenticateService Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SocializeAuthenticateService Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">SocializeService : NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">FBSessionDelegate</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SocializeAuthenticateService.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Socialize authentication service is the authentication engine. It performs anonymously and third party authentication.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Anonymous authentication" name="task_Anonymous authentication"></a>
+						<h3 class="subsubtitle task-title">Anonymous authentication</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authenticateWithApiKey:apiSecret:">&ndash;&nbsp;authenticateWithApiKey:apiSecret:</a></code>
+		<span class="tooltip"><p>Authenticate with API key and API secret.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Third party authentication" name="task_Third party authentication"></a>
+						<h3 class="subsubtitle task-title">Third party authentication</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:">&ndash;&nbsp;authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</a></code>
+		<span class="tooltip"><p>Third party authentication.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">&ndash;&nbsp;authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</a></code>
+		<span class="tooltip"><p>Third party authentication via SDK service.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Other methods" name="task_Other methods"></a>
+						<h3 class="subsubtitle task-title">Other methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isAuthenticated">+&nbsp;isAuthenticated</a></code>
+		<span class="tooltip"><p>Check if authentication credentials still valid.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeAuthenticationInfo">&ndash;&nbsp;removeAuthenticationInfo</a></code>
+		<span class="tooltip"><p>Remove old authentication information.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/handleOpenURL:">&ndash;&nbsp;handleOpenURL:</a></code>
+		<span class="tooltip"><p>This method is used for Facebook authentication.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/isAuthenticated" title="isAuthenticated"></a>
+	<h3 class="subsubtitle method-title">isAuthenticated</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Check if authentication credentials still valid.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isAuthenticated</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if valid and NO if access token was expired.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeAuthenticateService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/authenticateWithApiKey:apiSecret:" title="authenticateWithApiKey:apiSecret:"></a>
+	<h3 class="subsubtitle method-title">authenticateWithApiKey:apiSecret:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Authenticate with API key and API secret.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)authenticateWithApiKey:(NSString *)<em>apiKey</em> apiSecret:(NSString *)<em>apiSecret</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>apiKey</em></dt>
+			<dd><p>API access key.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>apiSecret</em></dt>
+			<dd><p>API access secret.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method is used to perform anonymous authentication. It means that uses could not do any action with his profile.
+Find information how to get API key and secret on <a href="http://www.getsocialize.com/">Socialize.</a></p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">&ndash; authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</a></p></code></li>
+			
+			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:">&ndash; authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeAuthenticateService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:" title="authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:"></a>
+	<h3 class="subsubtitle method-title">authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Third party authentication via SDK service.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)authenticateWithApiKey:(NSString *)<em>apiKey</em> apiSecret:(NSString *)<em>apiSecret</em> thirdPartyAppId:(NSString *)<em>thirdPartyAppId</em> thirdPartyName:(ThirdPartyAuthName)<em>thirdPartyName</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>apiKey</em></dt>
+			<dd><p>API access key.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>apiSecret</em></dt>
+			<dd><p>API access secret.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>thirdPartyAppId</em></dt>
+			<dd><p>Extern service application id.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>thirdPartyName</em></dt>
+			<dd><p>Third party authentication name. Current verion of SDK suports only FacebookAuth value.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.</p>
+
+<p>Find information how to get API key and secret on <a href="http://www.getsocialize.com/">Socialize.</a></p><div class="warning"><p><strong>Note:</strong> In current SDK version only Facebook authentication is available.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:">&ndash; authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</a></p></code></li>
+			
+			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:">&ndash; authenticateWithApiKey:apiSecret:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeAuthenticateService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:" title="authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:"></a>
+	<h3 class="subsubtitle method-title">authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Third party authentication.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)authenticateWithApiKey:(NSString *)<em>apiKey</em> apiSecret:(NSString *)<em>apiSecret</em> thirdPartyAuthToken:(NSString *)<em>thirdPartyAuthToken</em> thirdPartyAppId:(NSString *)<em>thirdPartyAppId</em> thirdPartyName:(ThirdPartyAuthName)<em>thirdPartyName</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>apiKey</em></dt>
+			<dd><p>API access key.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>apiSecret</em></dt>
+			<dd><p>API access secret.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>thirdPartyAuthToken</em></dt>
+			<dd><p>External service&rsquo;s access token.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>thirdPartyAppId</em></dt>
+			<dd><p>External service application id.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>thirdPartyName</em></dt>
+			<dd><p>Third party authentication name.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.</p>
+
+<p>Find information how to get API key and secert on <a href="http://www.getsocialize.com/">Socialize.</a></p><div class="warning"><p>In current SDK version only Facebook authentication is available.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">&ndash; authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</a></p></code></li>
+			
+			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:">&ndash; authenticateWithApiKey:apiSecret:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeAuthenticateService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/handleOpenURL:" title="handleOpenURL:"></a>
+	<h3 class="subsubtitle method-title">handleOpenURL:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method is used for Facebook authentication.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)handleOpenURL:(NSURL *)<em>url</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>url</em></dt>
+			<dd><p>Unique URL to the user application.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Make call to this method from your application delegate.</p>
+
+<pre><code>    - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+    {
+        return [socialize.authService handleOpenURL: url];
+    }
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeAuthenticateService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeAuthenticationInfo" title="removeAuthenticationInfo"></a>
+	<h3 class="subsubtitle method-title">removeAuthenticationInfo</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Remove old authentication information.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)removeAuthenticationInfo</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If user would like to re-authenticate he has to remove previous authentication information.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeAuthenticateService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 Socialize Inc. All rights reserved. (Last updated: 2011-08-08)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>

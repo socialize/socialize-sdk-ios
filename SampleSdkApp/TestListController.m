@@ -65,7 +65,7 @@
     
     //removing the previous authentication view controller
     
-    NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray: self.navigationController.viewControllers];
+/*    NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray: self.navigationController.viewControllers];
     UIViewController* viewControllerToRemove = nil;
     
     for (id object in allViewControllers) {
@@ -76,6 +76,7 @@
         [allViewControllers removeObjectIdenticalTo: viewControllerToRemove];
         self.navigationController.viewControllers = allViewControllers;
     }
+ */
 }
 
 - (void)viewDidUnload

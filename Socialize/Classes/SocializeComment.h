@@ -10,20 +10,27 @@
 #import "SocializeActivity.h"
 
 /**
- In progress
+ Protocol for sosialize comment representation.
  */
 @protocol SocializeComment <SocializeActivity>
 
+/**Get comment text*/
 -(NSString *)text;
+/**
+ Set comment text
+ @param text Comment text for an entity.
+ */
 -(void)setText:(NSString *)text;
 
 @end
 
+/**Private implementation of <SocializeComment> protocol.*/
 @interface SocializeComment : SocializeActivity <SocializeComment>
 {
    NSString * _text;
 }
 
+/**Comment text*/
 @property (nonatomic, retain) NSString * text;
 
 @end

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SocializeObject.h"
 
+/**Protocol for socialize user representation.*/
 @protocol SocializeUser<SocializeObject>
 
 @required
@@ -57,6 +58,7 @@
 
 @end
 
+/**Private implementation of <SocializeUser> protocol*/
 @interface SocializeUser : SocializeObject<SocializeUser> 
 {
     @private

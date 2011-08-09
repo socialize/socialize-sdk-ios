@@ -53,6 +53,8 @@
     
     [_authenticateButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
     [_thirdpartyAuthentication configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
+    [_emptyCacheButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
+
     self.view.backgroundColor = [UIColor lightGrayColor];
     self.navigationItem.title = @"Authenticate";
 }
@@ -72,7 +74,6 @@
 -(IBAction)authenticate:(id)sender {
     
     _loadingView = [LoadingView loadingViewInView:self.view withMessage:@"Authenticating"]; 
-    [socialize removeAuthenticationInfo];
     [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text];
 
 }
@@ -80,9 +81,14 @@
 -(IBAction)authenticateViaFacebook:(id)sender
 {
     _loadingView = [LoadingView loadingViewInView:self.view withMessage:@"Authenticating"]; 
-    [socialize removeAuthenticationInfo];
+//    [socialize removeAuthenticationInfo];
     [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text thirdPartyAppId:@"115622641859087" thirdPartyName:FacebookAuth];
 }
+
+-(IBAction)emptyCache:(id)sender{
+    [socialize removeAuthenticationInfo];
+}
+
 
 -(IBAction)textFieldReturn:(id)sender
 {

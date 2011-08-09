@@ -13,34 +13,84 @@
 #import "SocializeUser.h"
 
 /**
- in progress
+ Base protocol for any Socialize activity such as comment, view, like.
  */
 @protocol SocializeActivity <SocializeObject>
 
 @required
 
-//This style is used to surpress GCC warnings for derived classes.
+/**@name Application*/
+
+/**
+ Get <SocializeApplication>.
+ */
 -(id<SocializeApplication>)application;
+/**
+ Set <SocializeApplication>
+ @param application Socialize application object.
+ */
 -(void)setApplication:(id<SocializeApplication>)application;
 
+/**@name Entity*/
+/**
+ Get <SocializeEntity>.
+ */
 -(id<SocializeEntity>)entity;
+
+/**
+ Set entity object.
+ @param entity <SocializeEntity> for activity.
+ */
 -(void)setEntity:(id<SocializeEntity>)entity;
 
+/**@name User*/
+/**
+ Get <SocializeUser>.
+ */
 -(id<SocializeUser>)user;
+/**
+ Set <SocializeUser>.
+ @param user Socialize user object.
+ */
 -(void)setUser:(id<SocializeUser>)user;
 
+/**Activity*/
+/**
+ Get latitude of activity.
+ */
 -(NSNumber*)lat;
+
+/**
+ Set latitude for activity.
+ @param lat Latitude.
+ */
 -(void)setLat:(NSNumber*)lat;
 
+/**
+ Get longitude of activity.
+ */
 -(NSNumber*)lng;
+
+/**
+ Set longitude for activity.
+ @param lng Longitude.
+ */
 -(void)setLng:(NSNumber*)lng;
 
-
+/**
+ Get activity's date.
+ */
 -(NSDate *)date;
+
+/**
+ Set date for activity.
+ @param date Date of activity.
+ */
 -(void)setDate:(NSDate *)date;
 
 @end
 
+/**Private implementation of <SocializeActivity> protocol*/
 @interface SocializeActivity : SocializeObject <SocializeActivity>
 {
     @private
@@ -53,12 +103,18 @@
         
 }
 
+/** Set\get <SocializeApplication> object.*/
 @property (nonatomic, retain) id<SocializeApplication> application;
+/** Set\get <SocializeEntity> object.*/
 @property (nonatomic, retain) id<SocializeEntity>      entity;
+/** Set\get <SocializeUser> object.*/
 @property (nonatomic, retain) id<SocializeUser>        user;
 
+/** Set\get latitude of activity.*/
 @property (nonatomic, assign) NSNumber*           lat;
+/** Set\get logitude of activity.*/
 @property (nonatomic, assign) NSNumber*           lng;
+/** Set\get date of activity.*/
 @property (nonatomic, retain) NSDate*           date;
 
 @end

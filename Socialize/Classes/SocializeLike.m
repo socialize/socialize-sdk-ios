@@ -10,15 +10,4 @@
 
 
 @implementation SocializeLike
-
-@synthesize  application = _application;
-@synthesize  entity = _entity;
-@synthesize  user = _user;
-
-@synthesize  lat = _lat;
-@synthesize  lng = _lng;
-@synthesize  date = _date;
-
-
-
 @end
