@@ -38,6 +38,8 @@ def print_json(item, fname=None):
 
     else:
         print '\t**generate outfile:',fname
+        fname = 'output/existing-data/'+fname
+        
         f = open(fname, 'w')
         f.write(simplejson.dumps(item,sort_keys=True, indent=4))
         f.close()    
@@ -167,9 +169,8 @@ def main(key,secret,url):
 if __name__ == "__main__":
     args = sys.argv
     if not len(args)==4:
-        print '\tpython api-cleanup-ios.py f04f5af0-5be0-4ae6-a1f1-8d418c0d7e6b 7a9a2b20-d4de-4d46-9c0b-f1653f0f1089 http://stage.getsocialize.com/v1'
-        print '\tpython api-cleanup-ios.py 90aa0fb5-1995-4771-9ed9-f3c4479a9aaa 5f461d4b-999c-430d-a2b2-2df35ff3a9ba http://stage.getsocialize.com/v1'
-       
+        print '\tpython api-cleanup-ios.py 6d2def4e-960d-458d-ba16-947ebc573f04 bae4ad58-4bcc-4374-a72a-82649690ddb9 http://stage.getsocialize.com/v1'
+         
         print '\tusage: python api-cleanup-ios.py <consumer-key> <consumer-secret> <http://api.socialize.com/v1>'
         sys.exit(2)
     elif not args[3].startswith('http://'):

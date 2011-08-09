@@ -1,3 +1,3 @@
-consumer_key='f04f5af0-5be0-4ae6-a1f1-8d418c0d7e6b'
-consumer_secret='7a9a2b20-d4de-4d46-9c0b-f1653f0f1089'
+consumer_key='6d2def4e-960d-458d-ba16-947ebc573f04'
+consumer_secret='bae4ad58-4bcc-4374-a72a-82649690ddb9'
 url='http://stage.getsocialize.com/v1'
