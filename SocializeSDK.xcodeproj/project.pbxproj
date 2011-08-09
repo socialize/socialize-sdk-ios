@@ -554,11 +554,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C54DE6113830F9800090269 /* libOCMock.a in Frameworks */,
-				5C6EC7971379CF7D0073AE65 /* libSocialize.a in Frameworks */,
 				5CC3DB121378889E00B11B78 /* CoreGraphics.framework in Frameworks */,
 				5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */,
 				5CC3DAEC1378859000B11B78 /* Foundation.framework in Frameworks */,
 				163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */,
+				5C6EC7971379CF7D0073AE65 /* libSocialize.a in Frameworks */,
 				16ECF48513E0501700E0BF5E /* libfacebook_ios_sdk.a in Frameworks */,
 				16ECF49E13E0505A00E0BF5E /* libOAuth.a in Frameworks */,
 				162B26E413E2C14800591AEB /* libJSONKit.a in Frameworks */,
@@ -1165,7 +1165,6 @@
 				5CC3DABB1378824700B11B78 /* Frameworks */,
 				5CC3DABC1378824700B11B78 /* Headers */,
 				9A4D2985139400060065C0CB /* Resources */,
-				6D31966C13CE6BDA00154B1F /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -1183,7 +1182,7 @@
 				5CC3DAE51378859000B11B78 /* Sources */,
 				5CC3DAE61378859000B11B78 /* Frameworks */,
 				5CC3DAE71378859000B11B78 /* Resources */,
-				9A51D73E137909CE00FD273B /* ShellScript */,
+				6DE0950213F1BFDB0066D507 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1346,23 +1345,9 @@
 			shellPath = /bin/sh;
 			shellScript = "# Functions\n\n## List files in the specified directory, storing to the specified array.\n#\n# @param $1 The path to list\n# @param $2 The name of the array to fill\n#\n##\nlist_files ()\n{\n    filelist=$(ls \"$1\")\n    while read line\n    do\n    eval \"$2[\\${#$2[*]}]=\\\"\\$line\\\"\"\n    done <<< \"$filelist\"\n}\n\n# Paths\nPROJECT_RESOURCE_DIR=\"${PROJECT_DIR}/Socialize/Resources\"\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\nEMBEDDEDFRAMEWORK=\"${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\nRESOURCE_DIR=\"${FRAMEWORK}/Resources\"\n\nrsync -azp \"${PROJECT_RESOURCE_DIR}/\" \"${RESOURCE_DIR}/\"\n\ndeclare -a UFW_FILE_LIST\nlist_files \"${RESOURCE_DIR}\" UFW_FILE_LIST\nfor filename in \"${UFW_FILE_LIST[@]}\"\ndo\nif [[ \"${filename}\" != \"Info.plist\" ]] && [[ ! \"${filename}\" =~ .*\\.lproj$ ]]\nthen\n        echo ln -sf \"${RESOURCE_DIR}/${filename}\" \"${EMBEDDEDFRAMEWORK}/Resources/${filename}\"\n        ln -sf \"${RESOURCE_DIR}/${filename}\" \"${EMBEDDEDFRAMEWORK}/Resources/${filename}\"\nfi\ndone";
 		};
-		6D31966C13CE6BDA00154B1F /* Run Script */ = {
+		6DE0950213F1BFDB0066D507 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "";
-		};
-		9A51D73E137909CE00FD273B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
@@ -1372,7 +1357,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh RunTests.sh";
 			shellScript = "";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1671,7 +1655,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -1704,7 +1688,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -1742,7 +1726,7 @@
 				GCC_PREFIX_HEADER = "unitTests/unitTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1790,7 +1774,7 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "unitTests/unitTests-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
