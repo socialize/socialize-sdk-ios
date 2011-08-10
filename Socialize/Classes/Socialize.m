@@ -8,6 +8,7 @@
 
 #import "Socialize.h"
 #import "SocializeCommentsService.h"
+#import "SocializeConfiguration.h"
 
 @implementation Socialize
 
@@ -35,7 +36,11 @@
     if(self != nil)
     {
         _objectFactory = [[SocializeObjectFactory alloc]init];
-        _provider = [[SocializeProvider alloc] init];
+        SocializeConfiguration* configurationLoader = [[SocializeConfiguration alloc]init];
+        NSDictionary* configuration = [configurationLoader.configurationInfo objectForKey:@"URLs"];
+        _provider = [[SocializeProvider alloc] initWithServerURL:[configuration objectForKey:@"RestserverBaseURL"]andSecureServerURL:[configuration objectForKey:@"SecureRestserverBaseURL"]];
+        [configurationLoader release];
+        
         _authService = [[SocializeAuthenticateService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
         _likeService  = [[SocializeLikeService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
         _commentsService = [[SocializeCommentsService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];

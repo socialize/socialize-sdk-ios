@@ -33,7 +33,9 @@
 
 
 @interface SocializeProviderTests : GHTestCase<SocializeRequestDelegate> {
-    
+    @private
+    NSString* kRestserverBaseURL;
+    NSString* kSecureRestserverBaseURL;
 }
 
 @end

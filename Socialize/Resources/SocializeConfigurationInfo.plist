@@ -6,12 +6,12 @@
 	<dict>
 		<key>SocializeApplication</key>
 		<string>SocializeApplicationJSONFormatter</string>
-		<key>SocializeError</key>
-		<string>SocializeErrorFormatter</string>
 		<key>SocializeComment</key>
 		<string>SocializeCommentJSONFormatter</string>
 		<key>SocializeEntity</key>
 		<string>SocializeEntityJSONFormatter</string>
+		<key>SocializeError</key>
+		<string>SocializeErrorFormatter</string>
 		<key>SocializeLike</key>
 		<string>SocializeLikeJSONFormatter</string>
 		<key>SocializeShare</key>
@@ -23,8 +23,6 @@
 	</dict>
 	<key>Prototypes</key>
 	<dict>
-		<key>SocializeError</key>
-		<string>SocializeError</string>
 		<key>SocializeActivity</key>
 		<string>SocializeActivity</string>
 		<key>SocializeApplication</key>
@@ -33,6 +31,8 @@
 		<string>SocializeComment</string>
 		<key>SocializeEntity</key>
 		<string>SocializeEntity</string>
+		<key>SocializeError</key>
+		<string>SocializeError</string>
 		<key>SocializeLike</key>
 		<string>SocializeLike</string>
 		<key>SocializeShare</key>
@@ -41,6 +41,13 @@
 		<string>SocializeUser</string>
 		<key>SocializeView</key>
 		<string>SocializeView</string>
+	</dict>
+	<key>URLs</key>
+	<dict>
+		<key>RestserverBaseURL</key>
+		<string>http://api.getsocialize.com/v1/</string>
+		<key>SecureRestserverBaseURL</key>
+		<string>https://api.getsocialize.com/v1/</string>
 	</dict>
 </dict>
 </plist>

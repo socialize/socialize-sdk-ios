@@ -27,9 +27,22 @@
  */
 
 #import "SocializeProviderTests.h"
+#import "SocializeConfiguration.h"
 #import "SocializeProvider.h"
 
 @implementation SocializeProviderTests
+
+-(void)setUpClass
+{
+    SocializeConfiguration* configurationLoader = [[SocializeConfiguration alloc]init];
+    kRestserverBaseURL = [[(NSDictionary*)[configurationLoader.configurationInfo objectForKey:@"URLs"] objectForKey: @"RestserverBaseURL"] copy];
+    kSecureRestserverBaseURL = [[(NSDictionary*)[configurationLoader.configurationInfo objectForKey:@"URLs"] objectForKey: @"SecureRestserverBaseURL"] copy];
+    [configurationLoader release];
+}
+-(void)tearDownClass
+{
+    [kRestserverBaseURL release]; kRestserverBaseURL = nil;
+}
 
 - (id)requestLoading:(NSMutableURLRequest *)request
 {
@@ -53,7 +66,7 @@
 
 -(void) testRequestWithParams
 {
-    SocializeProvider* provider = [[[SocializeProvider alloc] init] autorelease];
+    SocializeProvider* provider = [[[SocializeProvider alloc] initWithServerURL:kRestserverBaseURL andSecureServerURL:kSecureRestserverBaseURL] autorelease];
     
     NSString* accessToken = @"accessTokenForSocialize";
     NSDate* expirationDate = [NSDate dateWithTimeIntervalSinceNow:10];
@@ -76,7 +89,7 @@
 
 -(void) testRequestWithoutAPIMethod
 {
-    SocializeProvider* provider = [[[SocializeProvider alloc] init] autorelease];
+    SocializeProvider* provider = [[[SocializeProvider alloc] initWithServerURL:kRestserverBaseURL andSecureServerURL:kSecureRestserverBaseURL] autorelease];
     
     NSString* accessToken = @"accessTokenForSocialize";
     NSDate* expirationDate = [NSDate dateWithTimeIntervalSinceNow:10];
@@ -95,7 +108,7 @@
 
 -(void) testRequestWithParamsAndGetMethod
 {
-    SocializeProvider* provider = [[[SocializeProvider alloc] init] autorelease];
+    SocializeProvider* provider = [[[SocializeProvider alloc] initWithServerURL:kRestserverBaseURL andSecureServerURL:kSecureRestserverBaseURL] autorelease];
     
     NSString* accessToken = @"accessTokenForSocialize";
     NSDate* expirationDate = [NSDate dateWithTimeIntervalSinceNow:10];
@@ -118,7 +131,7 @@
 
 -(void) testRequestWithParamsAndPostMethod
 {
-    SocializeProvider* provider = [[[SocializeProvider alloc] init] autorelease];
+    SocializeProvider* provider = [[[SocializeProvider alloc] initWithServerURL:kRestserverBaseURL andSecureServerURL:kSecureRestserverBaseURL] autorelease];
     
     NSString* accessToken = @"accessTokenForSocialize";
     NSDate* expirationDate = [NSDate dateWithTimeIntervalSinceNow:10];
