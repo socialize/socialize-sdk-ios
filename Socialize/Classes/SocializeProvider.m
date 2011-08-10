@@ -28,11 +28,8 @@
 #import "SocializeProvider.h"
 #import "SocializeRequest.h"
 #import "SocializeCommonDefinitions.h"
+#import "SocializeConfiguration.h"
 #import "OAHMAC_SHA1SignatureProvider.h"
-
-
-NSString* const kRestserverBaseURL = @"http://api.getsocialize.com/v1/";
-NSString* const kSecureRestserverBaseURL = @"https://api.getsocialize.com/v1/";
 
 @interface SocializeProvider()
     - (void)openUrl:(NSString *)url
@@ -51,11 +48,24 @@ request = _request;
 
 #pragma mark - Life flow
 
+-(id)initWithServerURL: (NSString*)url andSecureServerURL: (NSString*) surl
+{
+    self = [super init];
+    if(self)
+    {
+        _restserverBaseURL = [url retain];
+        _secureRestserverBaseURL = [surl retain];
+    }
+    return self;
+}
+
 - (void)dealloc 
 {
     [_accessToken release];
     [_expirationDate release];
     [_request release];
+    [_restserverBaseURL release];
+    [_secureRestserverBaseURL release];
     [super dealloc];
 }
 
@@ -146,7 +156,7 @@ expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
                 andHttpMethod:(NSString *)httpMethod
                   andDelegate:(id <SocializeRequestDelegate>)delegate 
 {
-    NSString *fullURL = [kRestserverBaseURL stringByAppendingString:methodName];
+    NSString *fullURL = [_restserverBaseURL stringByAppendingString:methodName];
     [self openUrl:fullURL params:params expectedJSONFormat:expectedJSONFormat httpMethod:httpMethod delegate:delegate];
 }
 
@@ -157,7 +167,7 @@ expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
                 andHttpMethod:(NSString *)httpMethod
                   andDelegate:(id <SocializeRequestDelegate>)delegate 
 {
-    NSString *fullURL = [kSecureRestserverBaseURL stringByAppendingString:methodName];
+    NSString *fullURL = [_secureRestserverBaseURL stringByAppendingString:methodName];
     [self openUrl:fullURL params:params expectedJSONFormat:expectedJSONFormat httpMethod:httpMethod delegate:delegate];
 }
 

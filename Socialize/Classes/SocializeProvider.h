@@ -28,8 +28,6 @@
 #import <Foundation/Foundation.h>
 #import "SocializeRequest.h"
 
-extern NSString* const kRestserverBaseURL;
-
 @protocol SocializeObject;
 
 
@@ -45,6 +43,8 @@ extern NSString* const kRestserverBaseURL;
     NSDate              *_expirationDate;
     id<SocializeProviderDelegate> _sessionDelegate;
     SocializeRequest*  _request;
+    NSString* _restserverBaseURL;
+    NSString* _secureRestserverBaseURL;
 }
 
 @property(nonatomic, copy) NSString* accessToken;
@@ -59,6 +59,8 @@ extern NSString* const kRestserverBaseURL;
 - (void)authenticateWithThirdPartyAccessToken:(NSString*)thirdPartyAccessToken  
                         andExpirationDate:(NSDate*) date
                                  delegate:(id<SocializeProviderDelegate>)delegate;
+
+-(id)initWithServerURL: (NSString*)url andSecureServerURL: (NSString*) surl;
 
 - (void)requestWithParams:(id)params
               andDelegate:(id <SocializeRequestDelegate>)delegate

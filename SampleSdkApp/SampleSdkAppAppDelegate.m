@@ -65,7 +65,8 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
-    return [_socialize.authService handleOpenURL: url];
+    AuthenticateViewController* auth = [rootController.viewControllers objectAtIndex:0];
+    return [auth.socialize.authService handleOpenURL: url];
 }
 
 - (void)dealloc

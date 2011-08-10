@@ -48,10 +48,15 @@ dataFetcher = _dataFetcher,
 expectedJSONFormat = _expectedJSONFormat;
 
 + (NSString *)userAgentString
-{
-    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.0",[[UIDevice currentDevice]       
-                                                                                         model],
-                               [[UIDevice currentDevice]systemVersion]];
+{   
+    NSString   *language = [[NSLocale currentLocale] objectForKey: NSLocaleLanguageCode];
+    NSString   *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
+    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.0; %@_%@; BundleID/%@;",
+                               [[UIDevice currentDevice]systemVersion],
+                               [[UIDevice currentDevice]model],
+                               language,
+                               countryCode,
+                               [[NSBundle mainBundle] bundleIdentifier]];
     return  userAgentStr;
 
 }
