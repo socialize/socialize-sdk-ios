@@ -56,7 +56,9 @@ def print_json(item, fname=None):
 
     else:
         print '\t**generate outfile:',fname
-        fname = 'output/existing-data/'+fname
+        fname = 'existing-data/'+fname
+        if not os.path.exists('existing-data/'):
+            os.makedirs(dir)
         
         f = open(fname, 'w')
         f.write(simplejson.dumps(item,sort_keys=True, indent=4))
