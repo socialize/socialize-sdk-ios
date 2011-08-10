@@ -5,7 +5,7 @@
 
 
 //#import "SampleAppTests.js"
-#import "SampleAppSpec.js"
+import "SampleAppSpec.js"
 
 
 jasmine.getEnv().addReporter(new jasmine.UIAutomation.Reporter());

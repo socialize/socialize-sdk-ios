@@ -14,7 +14,10 @@ describe("First page should let user authenticate", function() {
 
     it("user should able to authenticate by tap on button", function() {
  	    UIALogger.logMessage("before authenticate");
-    	mainWindow = app.mainWindow();
+    	UIATarget.localTarget().pushTimeout(1);
+        mainWindow = app.mainWindow();
+        UIATarget.localTarget().popTimeout();
+        
 	    var textfields = mainWindow.textFields();
         textfields["key"].setValue(consumer_key);
 	    textfields["secret"].setValue(consumer_secret); 

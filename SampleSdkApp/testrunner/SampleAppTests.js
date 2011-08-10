@@ -4,6 +4,7 @@
 
 
 target = UIATarget.localTarget();
+UIATarget.localTarget().setTimeout(3);  // set time out = 0 for faster response
 app = target.frontMostApp();
 
 test("Authenticate", function(target, app) {
