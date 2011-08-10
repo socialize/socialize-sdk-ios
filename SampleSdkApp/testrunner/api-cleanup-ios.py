@@ -4,6 +4,24 @@ import random as rand
 import os
 import sys
 import getopt
+import plistlib as pl
+
+def modify_conf_plist(config_filepath , url):
+    print "##" * 10
+    print "## modify config plist"
+    print "##" * 10 
+
+    f = open(config_filepath, 'r')    
+    socializeConf = pl.readPlist(f)
+    socializeConf['URLs']['RestserverBaseURL'] = url
+    socializeConf['URLs']['SecureRestserverBaseURL'] = url
+    f.close()
+    f = open(config_filepath, 'w')
+    pl.writePlist(socializeConf, f)
+    f.close
+
+    
+
 
 def create_conf(key,secret,url):
     f = open('config.js','wr')
@@ -182,4 +200,7 @@ if __name__ == "__main__":
     secret = args[2]
     url = args[3]
     
+    config_filepath = '../../Socialize/Resources/SocializeConfigurationInfo.plist'
+    modify_conf_plist(config_filepath, url)
+    f= open(config_filepath,'r')        
     sys.exit(main(key,secret,url))
