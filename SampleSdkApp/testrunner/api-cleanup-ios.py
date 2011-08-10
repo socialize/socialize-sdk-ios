@@ -187,8 +187,6 @@ def main(key,secret,url):
 if __name__ == "__main__":
     args = sys.argv
     if not len(args)==4:
-        print '\tpython api-cleanup-ios.py 6d2def4e-960d-458d-ba16-947ebc573f04 bae4ad58-4bcc-4374-a72a-82649690ddb9 http://stage.getsocialize.com/v1'
-         
         print '\tusage: python api-cleanup-ios.py <consumer-key> <consumer-secret> <http://api.socialize.com/v1>'
         sys.exit(2)
     elif not args[3].startswith('http://'):
@@ -201,6 +199,10 @@ if __name__ == "__main__":
     url = args[3]
     
     config_filepath = '../../Socialize/Resources/SocializeConfigurationInfo.plist'
+    
     modify_conf_plist(config_filepath, url)
-    f= open(config_filepath,'r')        
+
     sys.exit(main(key,secret,url))
+
+
+
