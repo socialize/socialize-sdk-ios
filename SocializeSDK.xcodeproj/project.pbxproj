@@ -135,7 +135,8 @@
 		5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		5CD4882D1386C42300E60C4C /* profile_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CD4882C1386C42300E60C4C /* profile_functions.c */; };
 		5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */; };
-		6D03BAF013F44ACC00A69384 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D03BADF13F44ACC00A69384 /* libOAuth.a */; };
+		6D03BB0313F4544A00A69384 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D03BAF213F4544A00A69384 /* libOAuth.a */; };
+		6D03BB0413F4544A00A69384 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D03BAF213F4544A00A69384 /* libOAuth.a */; };
 		6D144CFD13BCE75D001D8E0A /* SocializeViewService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D144CFB13BCE75D001D8E0A /* SocializeViewService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D144CFE13BCE75D001D8E0A /* SocializeViewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D144CFC13BCE75D001D8E0A /* SocializeViewService.m */; };
 		6D144D0213BCE8AE001D8E0A /* SocializeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D144D0013BCE8AD001D8E0A /* SocializeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -405,22 +406,22 @@
 		5CC3DB111378889E00B11B78 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		5CD4882C1386C42300E60C4C /* profile_functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = profile_functions.c; sourceTree = "<group>"; };
 		5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
-		6D03BADF13F44ACC00A69384 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOAuth.a; sourceTree = "<group>"; };
-		6D03BAE113F44ACC00A69384 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
-		6D03BAE213F44ACC00A69384 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
-		6D03BAE313F44ACC00A69384 /* NSURL+Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Base.h"; sourceTree = "<group>"; };
-		6D03BAE413F44ACC00A69384 /* OAAsynchronousDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAAsynchronousDataFetcher.h; sourceTree = "<group>"; };
-		6D03BAE513F44ACC00A69384 /* OAConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAConsumer.h; sourceTree = "<group>"; };
-		6D03BAE613F44ACC00A69384 /* OADataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OADataFetcher.h; sourceTree = "<group>"; };
-		6D03BAE713F44ACC00A69384 /* OAHMAC_SHA1SignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAHMAC_SHA1SignatureProvider.h; sourceTree = "<group>"; };
-		6D03BAE813F44ACC00A69384 /* OAMutableURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAMutableURLRequest.h; sourceTree = "<group>"; };
-		6D03BAE913F44ACC00A69384 /* OAPlaintextSignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAPlaintextSignatureProvider.h; sourceTree = "<group>"; };
-		6D03BAEA13F44ACC00A69384 /* OARequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OARequestParameter.h; sourceTree = "<group>"; };
-		6D03BAEB13F44ACC00A69384 /* OAServiceTicket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAServiceTicket.h; sourceTree = "<group>"; };
-		6D03BAEC13F44ACC00A69384 /* OASignatureProviding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OASignatureProviding.h; sourceTree = "<group>"; };
-		6D03BAED13F44ACC00A69384 /* OAToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken.h; sourceTree = "<group>"; };
-		6D03BAEE13F44ACC00A69384 /* OAToken_KeychainExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken_KeychainExtensions.h; sourceTree = "<group>"; };
-		6D03BAEF13F44ACC00A69384 /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
+		6D03BAF213F4544A00A69384 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOAuth.a; sourceTree = "<group>"; };
+		6D03BAF413F4544A00A69384 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
+		6D03BAF513F4544A00A69384 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		6D03BAF613F4544A00A69384 /* NSURL+Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Base.h"; sourceTree = "<group>"; };
+		6D03BAF713F4544A00A69384 /* OAAsynchronousDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAAsynchronousDataFetcher.h; sourceTree = "<group>"; };
+		6D03BAF813F4544A00A69384 /* OAConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAConsumer.h; sourceTree = "<group>"; };
+		6D03BAF913F4544A00A69384 /* OADataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OADataFetcher.h; sourceTree = "<group>"; };
+		6D03BAFA13F4544A00A69384 /* OAHMAC_SHA1SignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAHMAC_SHA1SignatureProvider.h; sourceTree = "<group>"; };
+		6D03BAFB13F4544A00A69384 /* OAMutableURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAMutableURLRequest.h; sourceTree = "<group>"; };
+		6D03BAFC13F4544A00A69384 /* OAPlaintextSignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAPlaintextSignatureProvider.h; sourceTree = "<group>"; };
+		6D03BAFD13F4544A00A69384 /* OARequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OARequestParameter.h; sourceTree = "<group>"; };
+		6D03BAFE13F4544A00A69384 /* OAServiceTicket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAServiceTicket.h; sourceTree = "<group>"; };
+		6D03BAFF13F4544A00A69384 /* OASignatureProviding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OASignatureProviding.h; sourceTree = "<group>"; };
+		6D03BB0013F4544A00A69384 /* OAToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken.h; sourceTree = "<group>"; };
+		6D03BB0113F4544A00A69384 /* OAToken_KeychainExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken_KeychainExtensions.h; sourceTree = "<group>"; };
+		6D03BB0213F4544A00A69384 /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
 		6D144CFB13BCE75D001D8E0A /* SocializeViewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeViewService.h; path = Classes/SocializeViewService.h; sourceTree = "<group>"; };
 		6D144CFC13BCE75D001D8E0A /* SocializeViewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeViewService.m; path = Classes/SocializeViewService.m; sourceTree = "<group>"; };
 		6D144D0013BCE8AD001D8E0A /* SocializeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeView.h; path = Classes/SocializeView.h; sourceTree = "<group>"; };
@@ -572,7 +573,7 @@
 				16FCABD113B885CC0034499F /* GHUnitIOS.framework in Frameworks */,
 				162B26E513E2C14800591AEB /* libJSONKit.a in Frameworks */,
 				162B26ED13E2C3BD00591AEB /* Socialize-IOS.framework in Frameworks */,
-				6D03BAF013F44ACC00A69384 /* libOAuth.a in Frameworks */,
+				6D03BB0413F4544A00A69384 /* libOAuth.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,6 +597,7 @@
 				163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */,
 				5C6EC7971379CF7D0073AE65 /* libSocialize.a in Frameworks */,
 				162B26E413E2C14800591AEB /* libJSONKit.a in Frameworks */,
+				6D03BB0313F4544A00A69384 /* libOAuth.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -845,7 +847,7 @@
 		5CC3DAC01378824800B11B78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6D03BADE13F44ACC00A69384 /* OAuth */,
+				6D03BAF113F4544A00A69384 /* OAuth */,
 				162B26E813E2C3BD00591AEB /* Socialize-IOS.embeddedframework */,
 				162B26E113E2C14800591AEB /* JSON */,
 				1673D68F13DEA40E00A86589 /* OCMock */,
@@ -1005,34 +1007,34 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		6D03BADE13F44ACC00A69384 /* OAuth */ = {
+		6D03BAF113F4544A00A69384 /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
-				6D03BADF13F44ACC00A69384 /* libOAuth.a */,
-				6D03BAE013F44ACC00A69384 /* OAuthConsumer */,
+				6D03BAF213F4544A00A69384 /* libOAuth.a */,
+				6D03BAF313F4544A00A69384 /* OAuthConsumer */,
 			);
 			name = OAuth;
 			path = Socialize/Libraries/OAuth;
 			sourceTree = "<group>";
 		};
-		6D03BAE013F44ACC00A69384 /* OAuthConsumer */ = {
+		6D03BAF313F4544A00A69384 /* OAuthConsumer */ = {
 			isa = PBXGroup;
 			children = (
-				6D03BAE113F44ACC00A69384 /* NSMutableURLRequest+Parameters.h */,
-				6D03BAE213F44ACC00A69384 /* NSString+URLEncoding.h */,
-				6D03BAE313F44ACC00A69384 /* NSURL+Base.h */,
-				6D03BAE413F44ACC00A69384 /* OAAsynchronousDataFetcher.h */,
-				6D03BAE513F44ACC00A69384 /* OAConsumer.h */,
-				6D03BAE613F44ACC00A69384 /* OADataFetcher.h */,
-				6D03BAE713F44ACC00A69384 /* OAHMAC_SHA1SignatureProvider.h */,
-				6D03BAE813F44ACC00A69384 /* OAMutableURLRequest.h */,
-				6D03BAE913F44ACC00A69384 /* OAPlaintextSignatureProvider.h */,
-				6D03BAEA13F44ACC00A69384 /* OARequestParameter.h */,
-				6D03BAEB13F44ACC00A69384 /* OAServiceTicket.h */,
-				6D03BAEC13F44ACC00A69384 /* OASignatureProviding.h */,
-				6D03BAED13F44ACC00A69384 /* OAToken.h */,
-				6D03BAEE13F44ACC00A69384 /* OAToken_KeychainExtensions.h */,
-				6D03BAEF13F44ACC00A69384 /* OAuthConsumer.h */,
+				6D03BAF413F4544A00A69384 /* NSMutableURLRequest+Parameters.h */,
+				6D03BAF513F4544A00A69384 /* NSString+URLEncoding.h */,
+				6D03BAF613F4544A00A69384 /* NSURL+Base.h */,
+				6D03BAF713F4544A00A69384 /* OAAsynchronousDataFetcher.h */,
+				6D03BAF813F4544A00A69384 /* OAConsumer.h */,
+				6D03BAF913F4544A00A69384 /* OADataFetcher.h */,
+				6D03BAFA13F4544A00A69384 /* OAHMAC_SHA1SignatureProvider.h */,
+				6D03BAFB13F4544A00A69384 /* OAMutableURLRequest.h */,
+				6D03BAFC13F4544A00A69384 /* OAPlaintextSignatureProvider.h */,
+				6D03BAFD13F4544A00A69384 /* OARequestParameter.h */,
+				6D03BAFE13F4544A00A69384 /* OAServiceTicket.h */,
+				6D03BAFF13F4544A00A69384 /* OASignatureProviding.h */,
+				6D03BB0013F4544A00A69384 /* OAToken.h */,
+				6D03BB0113F4544A00A69384 /* OAToken_KeychainExtensions.h */,
+				6D03BB0213F4544A00A69384 /* OAuthConsumer.h */,
 			);
 			path = OAuthConsumer;
 			sourceTree = "<group>";
