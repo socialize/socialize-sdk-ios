@@ -90,6 +90,13 @@
 		16B48DD713DEEE4400EE0A92 /* SocializeViewJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D144D0413BD100C001D8E0A /* SocializeViewJSONFormatter.h */; };
 		16B48DD813DEEE4400EE0A92 /* SocializeShareJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D9A0BA513BE1EA000AE949C /* SocializeShareJSONFormatter.h */; };
 		16B48DD913DEEE4400EE0A92 /* SocializeErrorFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D205A3C13C3DB6300D0645E /* SocializeErrorFormatter.h */; };
+		16C330C713F3B83D004EA34D /* CommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16C330C613F3B83D004EA34D /* CommentDetailsViewController.xib */; };
+		16C330CA13F3B852004EA34D /* CommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C330C813F3B852004EA34D /* CommentDetailsViewController.h */; };
+		16C330CB13F3B852004EA34D /* CommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C330C913F3B852004EA34D /* CommentDetailsViewController.m */; };
+		16C330DA13F3BD29004EA34D /* CommentDetailsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C330D613F3BD29004EA34D /* CommentDetailsView.h */; };
+		16C330DB13F3BD29004EA34D /* CommentDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C330D713F3BD29004EA34D /* CommentDetailsView.m */; };
+		16C330DC13F3BD29004EA34D /* CommentMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C330D813F3BD29004EA34D /* CommentMapView.h */; };
+		16C330DD13F3BD29004EA34D /* CommentMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C330D913F3BD29004EA34D /* CommentMapView.m */; };
 		16C5EF8113E6B8A800F2EA87 /* TestViewCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C5EF7F13E6B8A800F2EA87 /* TestViewCreationViewController.m */; };
 		16C5EF8213E6B8A800F2EA87 /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16C5EF8013E6B8A800F2EA87 /* TestViewCreationViewController.xib */; };
 		16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
@@ -336,6 +343,13 @@
 		1670BE6013C6EC04000CC441 /* SocializeShareFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeShareFormatterTests.h; path = "Test Cases/SocializeShareFormatterTests.h"; sourceTree = "<group>"; };
 		1670BE6113C6EC04000CC441 /* SocializeShareFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeShareFormatterTests.m; path = "Test Cases/SocializeShareFormatterTests.m"; sourceTree = "<group>"; };
 		1673D68F13DEA40E00A86589 /* OCMock */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OCMock; path = unitTests/Libraries/OCMock; sourceTree = "<group>"; };
+		16C330C613F3B83D004EA34D /* CommentDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentDetailsViewController.xib; path = Resources/CommentDetailsViewController.xib; sourceTree = "<group>"; };
+		16C330C813F3B852004EA34D /* CommentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailsViewController.h; path = Classes/CommentDetailsViewController.h; sourceTree = "<group>"; };
+		16C330C913F3B852004EA34D /* CommentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsViewController.m; path = Classes/CommentDetailsViewController.m; sourceTree = "<group>"; };
+		16C330D613F3BD29004EA34D /* CommentDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailsView.h; path = Classes/CommentDetailsView.h; sourceTree = "<group>"; };
+		16C330D713F3BD29004EA34D /* CommentDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsView.m; path = Classes/CommentDetailsView.m; sourceTree = "<group>"; };
+		16C330D813F3BD29004EA34D /* CommentMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentMapView.h; path = Classes/CommentMapView.h; sourceTree = "<group>"; };
+		16C330D913F3BD29004EA34D /* CommentMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentMapView.m; path = Classes/CommentMapView.m; sourceTree = "<group>"; };
 		16C5EF7E13E6B8A700F2EA87 /* TestViewCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewCreationViewController.h; sourceTree = "<group>"; };
 		16C5EF7F13E6B8A800F2EA87 /* TestViewCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewCreationViewController.m; sourceTree = "<group>"; };
 		16C5EF8013E6B8A800F2EA87 /* TestViewCreationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewCreationViewController.xib; sourceTree = "<group>"; };
@@ -639,6 +653,19 @@
 			name = "Utils Tests";
 			sourceTree = "<group>";
 		};
+		16C330BD13F3B75C004EA34D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				16C330D613F3BD29004EA34D /* CommentDetailsView.h */,
+				16C330D713F3BD29004EA34D /* CommentDetailsView.m */,
+				16C330D813F3BD29004EA34D /* CommentMapView.h */,
+				16C330D913F3BD29004EA34D /* CommentMapView.m */,
+				16C330C813F3B852004EA34D /* CommentDetailsViewController.h */,
+				16C330C913F3B852004EA34D /* CommentDetailsViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		16E2C3D1139778FE007C91ED /* SocializeObjects */ = {
 			isa = PBXGroup;
 			children = (
@@ -883,6 +910,7 @@
 		5CC3DAC31378824800B11B78 /* Socialize */ = {
 			isa = PBXGroup;
 			children = (
+				16C330BD13F3B75C004EA34D /* Controllers */,
 				5C9004331395963A007361F6 /* Services */,
 				9A3095B51384F04100292DC6 /* Configuration */,
 				5C6AAC62137C3F5500AF0219 /* Models */,
@@ -1080,6 +1108,7 @@
 			isa = PBXGroup;
 			children = (
 				9A4D29841393FFCD0065C0CB /* SocializeConfigurationInfo.plist */,
+				16C330C613F3B83D004EA34D /* CommentDetailsViewController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1132,6 +1161,9 @@
 				1670BE5413C6EB81000CC441 /* SocializeLikeJSONFormatter.h in Headers */,
 				6D31962413CDE72F00154B1F /* SocializeDataFetcher.h in Headers */,
 				6DFD546713D94BBF00336836 /* SocializeTests.h in Headers */,
+				16C330CA13F3B852004EA34D /* CommentDetailsViewController.h in Headers */,
+				16C330DA13F3BD29004EA34D /* CommentDetailsView.h in Headers */,
+				16C330DC13F3BD29004EA34D /* CommentMapView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1270,6 +1302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A4D29861394002A0065C0CB /* SocializeConfigurationInfo.plist in Resources */,
+				16C330C713F3B83D004EA34D /* CommentDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1425,6 +1458,9 @@
 				6D205A3F13C3DB9100D0645E /* SocializeErrorFormatter.m in Sources */,
 				1670BE5613C6EB88000CC441 /* SocializeLikeJSONFormatter.m in Sources */,
 				6D31962513CDE72F00154B1F /* SocializeDataFetcher.m in Sources */,
+				16C330CB13F3B852004EA34D /* CommentDetailsViewController.m in Sources */,
+				16C330DB13F3BD29004EA34D /* CommentDetailsView.m in Sources */,
+				16C330DD13F3BD29004EA34D /* CommentMapView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
