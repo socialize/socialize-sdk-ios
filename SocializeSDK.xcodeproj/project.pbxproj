@@ -102,6 +102,16 @@
 		16C330E213F3C315004EA34D /* CommentDetailsView.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16C330D613F3BD29004EA34D /* CommentDetailsView.h */; };
 		16C330E313F3C315004EA34D /* CommentMapView.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16C330D813F3BD29004EA34D /* CommentMapView.h */; };
 		16C330E413F3C315004EA34D /* CommentDetailsViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16C330C813F3B852004EA34D /* CommentDetailsViewController.h */; };
+		16C330EF13F3C6E8004EA34D /* socialize-cell-image-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C330E513F3C6E7004EA34D /* socialize-cell-image-default.png */; };
+		16C330F013F3C6E8004EA34D /* socialize-cell-image-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C330E613F3C6E7004EA34D /* socialize-cell-image-default@2x.png */; };
+		16C330F113F3C6E8004EA34D /* socialize-comment-detail-bottom-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C330E713F3C6E7004EA34D /* socialize-comment-detail-bottom-shadow-background.png */; };
+		16C330F213F3C6E8004EA34D /* socialize-comment-detail-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C330E813F3C6E7004EA34D /* socialize-comment-detail-bottom-shadow-background@2x.png */; };
+		16C330F313F3C6E8004EA34D /* socialize-comment-details-icon-geo-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C330E913F3C6E7004EA34D /* socialize-comment-details-icon-geo-disabled.png */; };
+		16C330F413F3C6E8004EA34D /* socialize-comment-details-icon-geo-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C330EA13F3C6E8004EA34D /* socialize-comment-details-icon-geo-disabled@2x.png */; };
+		16C330F513F3C6E8004EA34D /* socialize-comment-details-icon-geo-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C330EB13F3C6E8004EA34D /* socialize-comment-details-icon-geo-enabled.png */; };
+		16C330F613F3C6E8004EA34D /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C330EC13F3C6E8004EA34D /* socialize-comment-details-icon-geo-enabled@2x.png */; };
+		16C330F713F3C6E8004EA34D /* socialize-comment-user-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C330ED13F3C6E8004EA34D /* socialize-comment-user-background.png */; };
+		16C330F813F3C6E8004EA34D /* socialize-comment-user-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C330EE13F3C6E8004EA34D /* socialize-comment-user-background@2x.png */; };
 		16C5EF8113E6B8A800F2EA87 /* TestViewCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C5EF7F13E6B8A800F2EA87 /* TestViewCreationViewController.m */; };
 		16C5EF8213E6B8A800F2EA87 /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16C5EF8013E6B8A800F2EA87 /* TestViewCreationViewController.xib */; };
 		16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
@@ -360,6 +370,16 @@
 		16C330D913F3BD29004EA34D /* CommentMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentMapView.m; path = Classes/CommentMapView.m; sourceTree = "<group>"; };
 		16C330DE13F3C1FC004EA34D /* CommentDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentDetailsViewController.xib; path = "build/Socialize-iOS.embeddedframework/Resources/CommentDetailsViewController.xib"; sourceTree = SOURCE_ROOT; };
 		16C330E013F3C2D1004EA34D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		16C330E513F3C6E7004EA34D /* socialize-cell-image-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-cell-image-default.png"; path = "Resources/socialize-cell-image-default.png"; sourceTree = "<group>"; };
+		16C330E613F3C6E7004EA34D /* socialize-cell-image-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-cell-image-default@2x.png"; path = "Resources/socialize-cell-image-default@2x.png"; sourceTree = "<group>"; };
+		16C330E713F3C6E7004EA34D /* socialize-comment-detail-bottom-shadow-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-detail-bottom-shadow-background.png"; path = "Resources/socialize-comment-detail-bottom-shadow-background.png"; sourceTree = "<group>"; };
+		16C330E813F3C6E7004EA34D /* socialize-comment-detail-bottom-shadow-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-detail-bottom-shadow-background@2x.png"; path = "Resources/socialize-comment-detail-bottom-shadow-background@2x.png"; sourceTree = "<group>"; };
+		16C330E913F3C6E7004EA34D /* socialize-comment-details-icon-geo-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-details-icon-geo-disabled.png"; path = "Resources/socialize-comment-details-icon-geo-disabled.png"; sourceTree = "<group>"; };
+		16C330EA13F3C6E8004EA34D /* socialize-comment-details-icon-geo-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-details-icon-geo-disabled@2x.png"; path = "Resources/socialize-comment-details-icon-geo-disabled@2x.png"; sourceTree = "<group>"; };
+		16C330EB13F3C6E8004EA34D /* socialize-comment-details-icon-geo-enabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-details-icon-geo-enabled.png"; path = "Resources/socialize-comment-details-icon-geo-enabled.png"; sourceTree = "<group>"; };
+		16C330EC13F3C6E8004EA34D /* socialize-comment-details-icon-geo-enabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-details-icon-geo-enabled@2x.png"; path = "Resources/socialize-comment-details-icon-geo-enabled@2x.png"; sourceTree = "<group>"; };
+		16C330ED13F3C6E8004EA34D /* socialize-comment-user-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-user-background.png"; path = "Resources/socialize-comment-user-background.png"; sourceTree = "<group>"; };
+		16C330EE13F3C6E8004EA34D /* socialize-comment-user-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-user-background@2x.png"; path = "Resources/socialize-comment-user-background@2x.png"; sourceTree = "<group>"; };
 		16C5EF7E13E6B8A700F2EA87 /* TestViewCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewCreationViewController.h; sourceTree = "<group>"; };
 		16C5EF7F13E6B8A800F2EA87 /* TestViewCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewCreationViewController.m; sourceTree = "<group>"; };
 		16C5EF8013E6B8A800F2EA87 /* TestViewCreationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewCreationViewController.xib; sourceTree = "<group>"; };
@@ -1120,6 +1140,16 @@
 		9A4D29831393FF720065C0CB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				16C330E513F3C6E7004EA34D /* socialize-cell-image-default.png */,
+				16C330E613F3C6E7004EA34D /* socialize-cell-image-default@2x.png */,
+				16C330E713F3C6E7004EA34D /* socialize-comment-detail-bottom-shadow-background.png */,
+				16C330E813F3C6E7004EA34D /* socialize-comment-detail-bottom-shadow-background@2x.png */,
+				16C330E913F3C6E7004EA34D /* socialize-comment-details-icon-geo-disabled.png */,
+				16C330EA13F3C6E8004EA34D /* socialize-comment-details-icon-geo-disabled@2x.png */,
+				16C330EB13F3C6E8004EA34D /* socialize-comment-details-icon-geo-enabled.png */,
+				16C330EC13F3C6E8004EA34D /* socialize-comment-details-icon-geo-enabled@2x.png */,
+				16C330ED13F3C6E8004EA34D /* socialize-comment-user-background.png */,
+				16C330EE13F3C6E8004EA34D /* socialize-comment-user-background@2x.png */,
 				9A4D29841393FFCD0065C0CB /* SocializeConfigurationInfo.plist */,
 				16C330C613F3B83D004EA34D /* CommentDetailsViewController.xib */,
 			);
@@ -1317,6 +1347,16 @@
 			files = (
 				9A4D29861394002A0065C0CB /* SocializeConfigurationInfo.plist in Resources */,
 				16C330C713F3B83D004EA34D /* CommentDetailsViewController.xib in Resources */,
+				16C330EF13F3C6E8004EA34D /* socialize-cell-image-default.png in Resources */,
+				16C330F013F3C6E8004EA34D /* socialize-cell-image-default@2x.png in Resources */,
+				16C330F113F3C6E8004EA34D /* socialize-comment-detail-bottom-shadow-background.png in Resources */,
+				16C330F213F3C6E8004EA34D /* socialize-comment-detail-bottom-shadow-background@2x.png in Resources */,
+				16C330F313F3C6E8004EA34D /* socialize-comment-details-icon-geo-disabled.png in Resources */,
+				16C330F413F3C6E8004EA34D /* socialize-comment-details-icon-geo-disabled@2x.png in Resources */,
+				16C330F513F3C6E8004EA34D /* socialize-comment-details-icon-geo-enabled.png in Resources */,
+				16C330F613F3C6E8004EA34D /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */,
+				16C330F713F3C6E8004EA34D /* socialize-comment-user-background.png in Resources */,
+				16C330F813F3C6E8004EA34D /* socialize-comment-user-background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

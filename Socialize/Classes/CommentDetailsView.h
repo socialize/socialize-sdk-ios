@@ -11,6 +11,7 @@
 @class CommentMapView;
 
 @interface CommentDetailsView : UIScrollView <UIWebViewDelegate> {
+@private
     IBOutlet UIWebView* commentMessage;
     IBOutlet CommentMapView* mapOfUserLocation;
     IBOutlet UIImageView* navImage;
