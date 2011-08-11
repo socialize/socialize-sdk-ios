@@ -293,7 +293,7 @@ BOOL SocializeFBIsDeviceIPad() {
 // NSObject
 
 - (id)init {
-  if (self = [super initWithFrame:CGRectZero]) {
+  if ((self = [super initWithFrame:CGRectZero])) {
     _delegate = nil;
     _loadingURL = nil;
     _orientation = UIDeviceOrientationUnknown;
