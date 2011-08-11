@@ -15,6 +15,11 @@
 
 @interface CommentDetailsView()
     -(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height;
+    -(void) configurateProfileImage;
+    -(void) moveSubview: (UIView*) subView onValue: (CGFloat) value;
+    -(CGFloat) desideSize;
+    -(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height;
+
 @end
 
 @implementation CommentDetailsView
