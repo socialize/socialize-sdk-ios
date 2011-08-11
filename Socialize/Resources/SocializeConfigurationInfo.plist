@@ -45,9 +45,9 @@
 	<key>URLs</key>
 	<dict>
 		<key>RestserverBaseURL</key>
-		<string>http://api.getsocialize.com/v1</string>
+		<string>http://api.getsocialize.com/v1/</string>
 		<key>SecureRestserverBaseURL</key>
-		<string>https://api.getsocialize.com/v1</string>
+		<string>https://api.getsocialize.com/v1/</string>
 	</dict>
 </dict>
 </plist>

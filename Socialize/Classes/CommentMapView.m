@@ -7,7 +7,6 @@
 //
 
 #import "CommentMapView.h"
-//#import "UIView+RoundedCorner.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface GeoLocationMarker : NSObject<MKAnnotation> {
@@ -74,11 +73,5 @@
     
     [self addAnnotation: annotation];
     [annotation release];
-}
-
--(void)layoutSubviews
-{
-    
- //   [self setRoundedCornerOnHierarchy:5];
 }
 @end
