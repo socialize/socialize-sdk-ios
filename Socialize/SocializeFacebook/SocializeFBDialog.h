@@ -1,3 +1,7 @@
+/***
+ Symbols renamed to avoid collision in third party developers projects which might have an older version or a version of facebook SDK which might not work with Socialize SDK 
+ */
+
 /*
  * Copyright 2010 Facebook
  *
@@ -17,7 +21,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@protocol FBDialogDelegate;
+@protocol SocializeFBDialogDelegate;
 
 /**
  * Do not use this interface directly, instead, use dialog in Facebook.h
@@ -25,8 +29,8 @@
  * Facebook dialog interface for start the facebook webView UIServer Dialog.
  */
 
-@interface FBDialog : UIView <UIWebViewDelegate> {
-  id<FBDialogDelegate> _delegate;
+@interface SocializeFBDialog : UIView <UIWebViewDelegate> {
+  id<SocializeFBDialogDelegate> _delegate;
   NSMutableDictionary *_params;
   NSString * _serverURL;
   NSURL* _loadingURL;
@@ -45,7 +49,7 @@
 /**
  * The delegate.
  */
-@property(nonatomic,assign) id<FBDialogDelegate> delegate;
+@property(nonatomic,assign) id<SocializeFBDialogDelegate> delegate;
 
 /**
  * The parameters.
@@ -61,7 +65,7 @@
 
 - (id)initWithURL: (NSString *) loadingURL
            params: (NSMutableDictionary *) params
-         delegate: (id <FBDialogDelegate>) delegate;
+         delegate: (id <SocializeFBDialogDelegate>) delegate;
 
 /**
  * Displays the view with an animation.
@@ -123,14 +127,14 @@
 /*
  *Your application should implement this delegate
  */
-@protocol FBDialogDelegate <NSObject>
+@protocol SocializeFBDialogDelegate <NSObject>
 
 @optional
 
 /**
  * Called when the dialog succeeds and is about to be dismissed.
  */
-- (void)dialogDidComplete:(FBDialog *)dialog;
+- (void)dialogDidComplete:(SocializeFBDialog *)dialog;
 
 /**
  * Called when the dialog succeeds with a returning url.
@@ -145,12 +149,12 @@
 /**
  * Called when the dialog is cancelled and is about to be dismissed.
  */
-- (void)dialogDidNotComplete:(FBDialog *)dialog;
+- (void)dialogDidNotComplete:(SocializeFBDialog *)dialog;
 
 /**
  * Called when dialog failed to load due to an error.
  */
-- (void)dialog:(FBDialog*)dialog didFailWithError:(NSError *)error;
+- (void)dialog:(SocializeFBDialog*)dialog didFailWithError:(NSError *)error;
 
 /**
  * Asks if a link touched by a user should be opened in an external browser.
@@ -162,6 +166,6 @@
  * should hold onto the URL and once you have received their acknowledgement open the URL yourself
  * using [[UIApplication sharedApplication] openURL:].
  */
-- (BOOL)dialog:(FBDialog*)dialog shouldOpenURLInExternalBrowser:(NSURL *)url;
+- (BOOL)dialog:(SocializeFBDialog*)dialog shouldOpenURLInExternalBrowser:(NSURL *)url;
 
 @end

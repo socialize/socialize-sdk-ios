@@ -12,19 +12,19 @@
 #import "SocializeRequest.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeService.h"
-#import "FBConnect.h"
+#import "SocializeFBConnect.h"
 
 @class SocializeAuthenticateService;
 
-@interface FacebookAuthenticator : NSObject<FBSessionDelegate> {
+@interface FacebookAuthenticator : NSObject<SocializeFBSessionDelegate> {
 @private
-    Facebook* facebook;
+    SocializeFacebook* facebook;
     NSString* apiKey;
     NSString* apiSecret;
     NSString* thirdPartyAppId;
     SocializeAuthenticateService* service;
 }
--(id) initWithFramework: (Facebook*) fb apiKey: (NSString*) key apiSecret: (NSString*) secret appId: (NSString*)appId service: (SocializeAuthenticateService*) authService;
+-(id) initWithFramework: (SocializeFacebook*) fb apiKey: (NSString*) key apiSecret: (NSString*) secret appId: (NSString*)appId service: (SocializeAuthenticateService*) authService;
 -(void) performAuthentication;
 -(BOOL) handleOpenURL:(NSURL *)url;
 
@@ -33,7 +33,7 @@
 /**
 Socialize authentication service is the authentication engine. It performs anonymously and third party authentication.
  */
-@interface SocializeAuthenticateService : SocializeService<FBSessionDelegate> {
+@interface SocializeAuthenticateService : SocializeService<SocializeFBSessionDelegate> {
     @private
     FacebookAuthenticator* fbAuth;
 }

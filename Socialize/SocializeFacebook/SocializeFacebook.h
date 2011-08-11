@@ -1,3 +1,7 @@
+/***
+ Symbols renamed to avoid collision in third party developers projects which might have an older version or a version of facebook SDK which might not work with Socialize SDK 
+ */
+
 /*
  * Copyright 2010 Facebook
  *
@@ -14,10 +18,10 @@
  * limitations under the License.
  */
 
-#import "FBLoginDialog.h"
-#import "FBRequest.h"
+#import "SocializeFBLoginDialog.h"
+#import "SocializeFBRequest.h"
 
-@protocol FBSessionDelegate;
+@protocol SocializeFBSessionDelegate;
 
 /**
  * Main Facebook interface for interacting with the Facebook developer API.
@@ -25,13 +29,13 @@
  * and Graph APIs, and start user interface interactions (such as
  * pop-ups promoting for credentials, permissions, stream posts, etc.)
  */
-@interface Facebook : NSObject<FBLoginDialogDelegate>{
+@interface SocializeFacebook : NSObject<SocializeFBLoginDialogDelegate>{
   NSString* _accessToken;
   NSDate* _expirationDate;
-  id<FBSessionDelegate> _sessionDelegate;
-  FBRequest* _request;
-  FBDialog* _loginDialog;
-  FBDialog* _fbDialog;
+  id<SocializeFBSessionDelegate> _sessionDelegate;
+  SocializeFBRequest* _request;
+  SocializeFBDialog* _loginDialog;
+  SocializeFBDialog* _fbDialog;
   NSString* _appId;
   NSString* _localAppId;
   NSArray* _permissions;
@@ -39,48 +43,48 @@
 
 @property(nonatomic, copy) NSString* accessToken;
 @property(nonatomic, copy) NSDate* expirationDate;
-@property(nonatomic, assign) id<FBSessionDelegate> sessionDelegate;
+@property(nonatomic, assign) id<SocializeFBSessionDelegate> sessionDelegate;
 @property(nonatomic, copy) NSString* localAppId;
 
 - (id)initWithAppId:(NSString *)app_id;
 
 - (void)authorize:(NSArray *)permissions
-         delegate:(id<FBSessionDelegate>)delegate;
+         delegate:(id<SocializeFBSessionDelegate>)delegate;
 
 - (void)authorize:(NSArray *)permissions
-         delegate:(id<FBSessionDelegate>)delegate
+         delegate:(id<SocializeFBSessionDelegate>)delegate
        localAppId:(NSString *)localAppId;
 
 - (BOOL)handleOpenURL:(NSURL *)url;
 
-- (void)logout:(id<FBSessionDelegate>)delegate;
+- (void)logout:(id<SocializeFBSessionDelegate>)delegate;
 
-- (FBRequest*)requestWithParams:(NSMutableDictionary *)params
-                    andDelegate:(id <FBRequestDelegate>)delegate;
+- (SocializeFBRequest*)requestWithParams:(NSMutableDictionary *)params
+                    andDelegate:(id <SocializeFBRequestDelegate>)delegate;
 
-- (FBRequest*)requestWithMethodName:(NSString *)methodName
+- (SocializeFBRequest*)requestWithMethodName:(NSString *)methodName
                           andParams:(NSMutableDictionary *)params
                       andHttpMethod:(NSString *)httpMethod
-                        andDelegate:(id <FBRequestDelegate>)delegate;
+                        andDelegate:(id <SocializeFBRequestDelegate>)delegate;
 
-- (FBRequest*)requestWithGraphPath:(NSString *)graphPath
-                       andDelegate:(id <FBRequestDelegate>)delegate;
+- (SocializeFBRequest*)requestWithGraphPath:(NSString *)graphPath
+                       andDelegate:(id <SocializeFBRequestDelegate>)delegate;
 
-- (FBRequest*)requestWithGraphPath:(NSString *)graphPath
+- (SocializeFBRequest*)requestWithGraphPath:(NSString *)graphPath
                          andParams:(NSMutableDictionary *)params
-                       andDelegate:(id <FBRequestDelegate>)delegate;
+                       andDelegate:(id <SocializeFBRequestDelegate>)delegate;
 
-- (FBRequest*)requestWithGraphPath:(NSString *)graphPath
+- (SocializeFBRequest*)requestWithGraphPath:(NSString *)graphPath
                          andParams:(NSMutableDictionary *)params
                      andHttpMethod:(NSString *)httpMethod
-                       andDelegate:(id <FBRequestDelegate>)delegate;
+                       andDelegate:(id <SocializeFBRequestDelegate>)delegate;
 
 - (void)dialog:(NSString *)action
-   andDelegate:(id<FBDialogDelegate>)delegate;
+   andDelegate:(id<SocializeFBDialogDelegate>)delegate;
 
 - (void)dialog:(NSString *)action
      andParams:(NSMutableDictionary *)params
-   andDelegate:(id <FBDialogDelegate>)delegate;
+   andDelegate:(id <SocializeFBDialogDelegate>)delegate;
 
 - (BOOL)isSessionValid;
 
@@ -91,7 +95,7 @@
 /**
  * Your application should implement this delegate to receive session callbacks.
  */
-@protocol FBSessionDelegate <NSObject>
+@protocol SocializeFBSessionDelegate <NSObject>
 
 @optional
 
