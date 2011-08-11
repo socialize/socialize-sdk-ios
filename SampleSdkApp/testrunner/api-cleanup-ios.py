@@ -4,6 +4,24 @@ import random as rand
 import os
 import sys
 import getopt
+import plistlib as pl
+
+def modify_conf_plist(config_filepath , url):
+    print "##" * 10
+    print "## modify config plist"
+    print "##" * 10 
+
+    f = open(config_filepath, 'r')    
+    socializeConf = pl.readPlist(f)
+    socializeConf['URLs']['RestserverBaseURL'] = url
+    socializeConf['URLs']['SecureRestserverBaseURL'] = url
+    f.close()
+    f = open(config_filepath, 'w')
+    pl.writePlist(socializeConf, f)
+    f.close
+
+    
+
 
 def create_conf(key,secret,url):
     f = open('config.js','wr')
@@ -38,7 +56,9 @@ def print_json(item, fname=None):
 
     else:
         print '\t**generate outfile:',fname
-        fname = 'output/existing-data/'+fname
+        fname = 'existing-data/'+fname
+        if not os.path.exists('existing-data/'):
+            os.makedirs(dir)
         
         f = open(fname, 'w')
         f.write(simplejson.dumps(item,sort_keys=True, indent=4))
@@ -169,8 +189,6 @@ def main(key,secret,url):
 if __name__ == "__main__":
     args = sys.argv
     if not len(args)==4:
-        print '\tpython api-cleanup-ios.py 6d2def4e-960d-458d-ba16-947ebc573f04 bae4ad58-4bcc-4374-a72a-82649690ddb9 http://stage.getsocialize.com/v1'
-         
         print '\tusage: python api-cleanup-ios.py <consumer-key> <consumer-secret> <http://api.socialize.com/v1>'
         sys.exit(2)
     elif not args[3].startswith('http://'):
@@ -182,4 +200,11 @@ if __name__ == "__main__":
     secret = args[2]
     url = args[3]
     
+    config_filepath = '../../Socialize/Resources/SocializeConfigurationInfo.plist'
+    
+    modify_conf_plist(config_filepath, url)
+
     sys.exit(main(key,secret,url))
+
+
+
