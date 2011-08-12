@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">10J869</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1305</string>
+		<string key="IBDocument.SystemVersion">10J3210</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1306</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">300</string>
+			<string key="NS.object.0">301</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBUIView</string>
@@ -80,7 +80,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">socialize_resources/socialize-comment-location-bar-background.png</string>
+									<string key="NSResourceName">resources/socialize-comment-location-bar-background.png</string>
 								</object>
 							</object>
 							<object class="IBUILabel" id="239884168">
@@ -135,11 +135,14 @@
 								</object>
 								<reference key="IBUIHighlightedTitleShadowColor" ref="24603512"/>
 								<reference key="IBUINormalTitleShadowColor" ref="24603512"/>
-								<object class="NSCustomResource" key="IBUIHighlightedImage" id="221198158">
+								<object class="NSCustomResource" key="IBUIHighlightedImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">resources/socialize-comment-location-enabled.png</string>
+								</object>
+								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">socialize_resources/socialize-comment-location-enabled.png</string>
 								</object>
-								<reference key="IBUINormalImage" ref="221198158"/>
 							</object>
 						</array>
 						<string key="NSFrame">{{0, 207}, {320, 39}}</string>
@@ -167,7 +170,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">socialize_resources/socialize-comment-detail-bottom-shadow-background.png</string>
+									<string key="NSResourceName">resources/socialize-comment-detail-bottom-shadow-background.png</string>
 								</object>
 							</object>
 							<object class="IBMKMapView" id="720065813">
@@ -191,6 +194,7 @@
 								<string key="NSFrame">{{38, 149}, {239, 47}}</string>
 								<reference key="NSSuperview" ref="730674798"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -443,24 +447,8 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">MasterController</string>
-					<string key="superclassName">PointAboutViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MasterController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PointAboutViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PointAboutViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">PostCommentViewController</string>
-					<string key="superclassName">MasterController</string>
+					<string key="superclassName">UITableViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="activateLocationButtonPressed:">id</string>
 						<string key="doNotShareLocationButtonPressed:">id</string>
@@ -520,10 +508,11 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="socialize_resources/socialize-comment-detail-bottom-shadow-background.png">{16, 16}</string>
-			<string key="socialize_resources/socialize-comment-location-bar-background.png">{16, 16}</string>
+			<string key="resources/socialize-comment-detail-bottom-shadow-background.png">{16, 16}</string>
+			<string key="resources/socialize-comment-location-bar-background.png">{16, 16}</string>
+			<string key="resources/socialize-comment-location-enabled.png">{16, 16}</string>
 			<string key="socialize_resources/socialize-comment-location-enabled.png">{16, 16}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">300</string>
+		<string key="IBCocoaTouchPluginVersion">301</string>
 	</data>
 </archive>

@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">10K549</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1305</string>
-		<string key="IBDocument.AppKitVersion">1038.36</string>
+		<string key="IBDocument.SystemVersion">10J3210</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1306</string>
+		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">300</string>
+			<string key="NS.object.0">301</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -63,7 +63,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">socialize-comment-user-background.png</string>
+									<string key="NSResourceName">resources/socialize-comment-user-background.png</string>
 								</object>
 							</object>
 							<object class="IBUIImageView" id="247648669">
@@ -77,7 +77,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">socialize-comment-detail-bottom-shadow-background.png</string>
+									<string key="NSResourceName">resources/socialize-comment-detail-bottom-shadow-background.png</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="120941526">
@@ -114,7 +114,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">socialize-cell-image-default.png</string>
+									<string key="NSResourceName">Resources/socialize-cell-image-default.png</string>
 								</object>
 							</object>
 							<object class="IBUIImageView" id="448777953">
@@ -133,7 +133,6 @@
 								<string key="NSFrame">{{60, 364}, {240, 21}}</string>
 								<reference key="NSSuperview" ref="642631657"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -424,7 +423,7 @@
 						<int key="objectID">67</int>
 						<reference key="object" ref="896510442"/>
 						<reference key="parent" ref="642631657"/>
-						<string key="objectName">Image View - /socialize_resources/socialize-comment-user-background.png</string>
+						<string key="objectName">Image View - /resources/socialize-comment-user-background.png</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">69</int>
@@ -651,9 +650,9 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>socialize-cell-image-default.png</string>
-				<string>socialize-comment-detail-bottom-shadow-background.png</string>
-				<string>socialize-comment-user-background.png</string>
+				<string>Resources/socialize-cell-image-default.png</string>
+				<string>Resources/socialize-comment-detail-bottom-shadow-background.png</string>
+				<string>Resources/socialize-comment-user-background.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
@@ -662,6 +661,6 @@
 				<string>{16, 16}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">300</string>
+		<string key="IBCocoaTouchPluginVersion">301</string>
 	</data>
 </archive>
