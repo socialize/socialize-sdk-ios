@@ -48,6 +48,57 @@
 		1670BE5F13C6EBF5000CC441 /* SocializeLikeFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5E13C6EBF5000CC441 /* SocializeLikeFormatterTests.m */; };
 		1670BE6213C6EC04000CC441 /* SocializeShareFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE6113C6EC04000CC441 /* SocializeShareFormatterTests.m */; };
 		1673D69013DEA40E00A86589 /* OCMock in Resources */ = {isa = PBXBuildFile; fileRef = 1673D68F13DEA40E00A86589 /* OCMock */; };
+		1681BD9013F555DC00EC6042 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1681BD7813F555DC00EC6042 /* FBDialog.bundle */; };
+		1681BD9113F555DC00EC6042 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BD7A13F555DC00EC6042 /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BD9213F555DC00EC6042 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BD7B13F555DC00EC6042 /* NSObject+SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BD9313F555DC00EC6042 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BD7C13F555DC00EC6042 /* NSObject+SBJSON.m */; };
+		1681BD9413F555DC00EC6042 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BD7D13F555DC00EC6042 /* NSString+SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BD9513F555DC00EC6042 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BD7E13F555DC00EC6042 /* NSString+SBJSON.m */; };
+		1681BD9613F555DC00EC6042 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BD7F13F555DC00EC6042 /* SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BD9713F555DC00EC6042 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BD8013F555DC00EC6042 /* SBJSON.m */; };
+		1681BD9813F555DC00EC6042 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8113F555DC00EC6042 /* SBJsonBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BD9913F555DC00EC6042 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BD8213F555DC00EC6042 /* SBJsonBase.m */; };
+		1681BD9A13F555DC00EC6042 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8313F555DC00EC6042 /* SBJsonParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BD9B13F555DC00EC6042 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BD8413F555DC00EC6042 /* SBJsonParser.m */; };
+		1681BD9C13F555DC00EC6042 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8513F555DC00EC6042 /* SBJsonWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BD9D13F555DC00EC6042 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BD8613F555DC00EC6042 /* SBJsonWriter.m */; };
+		1681BD9E13F555DC00EC6042 /* SocializeFacebook.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8713F555DC00EC6042 /* SocializeFacebook.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BD9F13F555DC00EC6042 /* SocializeFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BD8813F555DC00EC6042 /* SocializeFacebook.m */; };
+		1681BDA013F555DC00EC6042 /* SocializeFBConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8913F555DC00EC6042 /* SocializeFBConnect.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BDA113F555DC00EC6042 /* SocializeFBDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8A13F555DC00EC6042 /* SocializeFBDialog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BDA213F555DC00EC6042 /* SocializeFBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BD8B13F555DC00EC6042 /* SocializeFBDialog.m */; };
+		1681BDA313F555DC00EC6042 /* SocializeFBLoginDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8C13F555DC00EC6042 /* SocializeFBLoginDialog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BDA413F555DC00EC6042 /* SocializeFBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BD8D13F555DC00EC6042 /* SocializeFBLoginDialog.m */; };
+		1681BDA513F555DC00EC6042 /* SocializeFBRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8E13F555DC00EC6042 /* SocializeFBRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BDA613F555DC00EC6042 /* SocializeFBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BD8F13F555DC00EC6042 /* SocializeFBRequest.m */; };
+		1681BDA713F5560100EC6042 /* JSON.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BD7A13F555DC00EC6042 /* JSON.h */; };
+		1681BDA813F5560100EC6042 /* NSObject+SBJSON.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BD7B13F555DC00EC6042 /* NSObject+SBJSON.h */; };
+		1681BDA913F5560100EC6042 /* NSString+SBJSON.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BD7D13F555DC00EC6042 /* NSString+SBJSON.h */; };
+		1681BDAA13F5560100EC6042 /* SBJSON.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BD7F13F555DC00EC6042 /* SBJSON.h */; };
+		1681BDAB13F5560100EC6042 /* SBJsonBase.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8113F555DC00EC6042 /* SBJsonBase.h */; };
+		1681BDAC13F5560100EC6042 /* SBJsonParser.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8313F555DC00EC6042 /* SBJsonParser.h */; };
+		1681BDAD13F5560100EC6042 /* SBJsonWriter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8513F555DC00EC6042 /* SBJsonWriter.h */; };
+		1681BDAE13F5560100EC6042 /* SocializeFacebook.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8713F555DC00EC6042 /* SocializeFacebook.h */; };
+		1681BDAF13F5560100EC6042 /* SocializeFBConnect.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8913F555DC00EC6042 /* SocializeFBConnect.h */; };
+		1681BDB013F5560100EC6042 /* SocializeFBDialog.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8A13F555DC00EC6042 /* SocializeFBDialog.h */; };
+		1681BDB113F5560100EC6042 /* SocializeFBLoginDialog.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8C13F555DC00EC6042 /* SocializeFBLoginDialog.h */; };
+		1681BDB213F5560100EC6042 /* SocializeFBRequest.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BD8E13F555DC00EC6042 /* SocializeFBRequest.h */; };
+		1681BDB313F5567300EC6042 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C330E013F3C2D1004EA34D /* MapKit.framework */; };
+		1681BDB513F55B9A00EC6042 /* appbuildrAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BDB413F55B9A00EC6042 /* appbuildrAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BDB813F55BAC00EC6042 /* AppMakrLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BDB613F55BAC00EC6042 /* AppMakrLoadingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BDB913F55BAC00EC6042 /* AppMakrLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BDB713F55BAC00EC6042 /* AppMakrLoadingView.m */; };
+		1681BDBC13F55BBB00EC6042 /* AppMakrLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BDBA13F55BBB00EC6042 /* AppMakrLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BDBD13F55BBB00EC6042 /* AppMakrLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BDBB13F55BBB00EC6042 /* AppMakrLocation.m */; };
+		1681BDC013F55BCB00EC6042 /* PostCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BDC113F55BCB00EC6042 /* PostCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */; };
+		1681BDC313F55BDB00EC6042 /* PostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1681BDC213F55BDB00EC6042 /* PostCommentViewController.xib */; };
+		1681BDC413F55BED00EC6042 /* PostCommentViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */; };
+		1681BDC513F55BED00EC6042 /* AppMakrLocation.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BDBA13F55BBB00EC6042 /* AppMakrLocation.h */; };
+		1681BDC613F55BED00EC6042 /* AppMakrLoadingView.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BDB613F55BAC00EC6042 /* AppMakrLoadingView.h */; };
+		1681BDC713F55BED00EC6042 /* appbuildrAppDelegate.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BDB413F55B9A00EC6042 /* appbuildrAppDelegate.h */; };
+		1681BDC913F55D3200EC6042 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1681BDC813F55D3200EC6042 /* CoreLocation.framework */; };
+		1681BDCA13F55D3600EC6042 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1681BDC813F55D3200EC6042 /* CoreLocation.framework */; };
+		1681BDCB13F55E2400EC6042 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D97F03C13DFC91500B16454 /* QuartzCore.framework */; };
 		16B48D0313DEC0B700EE0A92 /* SocializeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFD546613D94BBB00336836 /* SocializeTests.m */; };
 		16B48DB313DEEDC300EE0A92 /* NSString+UrlSerialization.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */; };
 		16B48DB413DEEDDF00EE0A92 /* SocializeLikeService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D49743913B2586200463D23 /* SocializeLikeService.h */; };
@@ -136,6 +187,8 @@
 		16E969E813E01724000DC537 /* AuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F02913DF81A000B16454 /* AuthenticateViewController.m */; };
 		16E969E913E01734000DC537 /* TestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F02E13DF82EF00B16454 /* TestListController.m */; };
 		16E969EB13E0175B000DC537 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F03A13DFC76B00B16454 /* LoadingView.m */; };
+		16ECF49E13E0505A00E0BF5E /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ECF48D13E0505A00E0BF5E /* libOAuth.a */; };
+		16ECF49F13E0505A00E0BF5E /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ECF48D13E0505A00E0BF5E /* libOAuth.a */; };
 		16F21EE013CDDE5000911977 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		16F449BE13AF2974003BE655 /* SocializeCommentFormaterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449BD13AF2974003BE655 /* SocializeCommentFormaterTests.m */; };
 		16F449CA13AF4DCE003BE655 /* SocializeUserJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 16F449C813AF4DCD003BE655 /* SocializeUserJSONFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -166,16 +219,6 @@
 		5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		5CD4882D1386C42300E60C4C /* profile_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CD4882C1386C42300E60C4C /* profile_functions.c */; };
 		5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */; };
-		6D03BB0413F4544A00A69384 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D03BAF213F4544A00A69384 /* libOAuth.a */; };
-		6D03BB2B13F4932F00A69384 /* PostCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D03BB2813F4932D00A69384 /* PostCommentViewController.h */; };
-		6D03BB2C13F4932F00A69384 /* PostCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03BB2913F4932E00A69384 /* PostCommentViewController.m */; };
-		6D03BB2D13F4932F00A69384 /* PostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D03BB2A13F4932E00A69384 /* PostCommentViewController.xib */; };
-		6D03BB3113F494E500A69384 /* AppMakrLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D03BB2F13F494E300A69384 /* AppMakrLocation.h */; };
-		6D03BB3213F494E500A69384 /* AppMakrLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03BB3013F494E400A69384 /* AppMakrLocation.m */; };
-		6D03BB3613F495FB00A69384 /* appbuildrAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D03BB3313F495F800A69384 /* appbuildrAppDelegate.h */; };
-		6D03BB3713F495FB00A69384 /* AppMakrLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D03BB3413F495F800A69384 /* AppMakrLoadingView.h */; };
-		6D03BB3813F495FB00A69384 /* AppMakrLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03BB3513F495F900A69384 /* AppMakrLoadingView.m */; };
-		6D03BB4213F49C0C00A69384 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D03BB4113F49C0B00A69384 /* CoreLocation.framework */; };
 		6D144CFD13BCE75D001D8E0A /* SocializeViewService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D144CFB13BCE75D001D8E0A /* SocializeViewService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D144CFE13BCE75D001D8E0A /* SocializeViewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D144CFC13BCE75D001D8E0A /* SocializeViewService.m */; };
 		6D144D0213BCE8AE001D8E0A /* SocializeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D144D0013BCE8AD001D8E0A /* SocializeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -225,29 +268,6 @@
 		6D9A0BA813BE1EA300AE949C /* SocializeShareJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0BA613BE1EA100AE949C /* SocializeShareJSONFormatter.m */; };
 		6D9A0BAB13BE20D300AE949C /* SocializeShareService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D9A0BA913BE20CC00AE949C /* SocializeShareService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D9A0BAC13BE20D300AE949C /* SocializeShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0BAA13BE20D000AE949C /* SocializeShareService.m */; };
-		6DB9A66713F420410013DC34 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6DB9A64F13F420410013DC34 /* FBDialog.bundle */; };
-		6DB9A66813F420410013DC34 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DB9A65113F420410013DC34 /* JSON.h */; };
-		6DB9A66913F420410013DC34 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DB9A65213F420410013DC34 /* NSObject+SBJSON.h */; };
-		6DB9A66A13F420410013DC34 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB9A65313F420410013DC34 /* NSObject+SBJSON.m */; };
-		6DB9A66B13F420410013DC34 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DB9A65413F420410013DC34 /* NSString+SBJSON.h */; };
-		6DB9A66C13F420410013DC34 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB9A65513F420410013DC34 /* NSString+SBJSON.m */; };
-		6DB9A66D13F420410013DC34 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DB9A65613F420410013DC34 /* SBJSON.h */; };
-		6DB9A66E13F420410013DC34 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB9A65713F420410013DC34 /* SBJSON.m */; };
-		6DB9A66F13F420410013DC34 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DB9A65813F420410013DC34 /* SBJsonBase.h */; };
-		6DB9A67013F420410013DC34 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB9A65913F420410013DC34 /* SBJsonBase.m */; };
-		6DB9A67113F420410013DC34 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DB9A65A13F420410013DC34 /* SBJsonParser.h */; };
-		6DB9A67213F420410013DC34 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB9A65B13F420410013DC34 /* SBJsonParser.m */; };
-		6DB9A67313F420410013DC34 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DB9A65C13F420410013DC34 /* SBJsonWriter.h */; };
-		6DB9A67413F420410013DC34 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB9A65D13F420410013DC34 /* SBJsonWriter.m */; };
-		6DB9A67513F420410013DC34 /* SocializeFacebook.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DB9A65E13F420410013DC34 /* SocializeFacebook.h */; };
-		6DB9A67613F420410013DC34 /* SocializeFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB9A65F13F420410013DC34 /* SocializeFacebook.m */; };
-		6DB9A67713F420410013DC34 /* SocializeFBConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DB9A66013F420410013DC34 /* SocializeFBConnect.h */; };
-		6DB9A67813F420410013DC34 /* SocializeFBDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DB9A66113F420410013DC34 /* SocializeFBDialog.h */; };
-		6DB9A67913F420410013DC34 /* SocializeFBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB9A66213F420410013DC34 /* SocializeFBDialog.m */; };
-		6DB9A67A13F420410013DC34 /* SocializeFBLoginDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DB9A66313F420410013DC34 /* SocializeFBLoginDialog.h */; };
-		6DB9A67B13F420410013DC34 /* SocializeFBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB9A66413F420410013DC34 /* SocializeFBLoginDialog.m */; };
-		6DB9A67C13F420410013DC34 /* SocializeFBRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DB9A66513F420410013DC34 /* SocializeFBRequest.h */; };
-		6DB9A67D13F420410013DC34 /* SocializeFBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB9A66613F420410013DC34 /* SocializeFBRequest.m */; };
 		6DEEC9BF13D6238F0066CFA2 /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DEEC9BE13D6238F0066CFA2 /* urls.plist */; };
 		6DEFF42713B01B4000AE962A /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
 		6DFD546713D94BBF00336836 /* SocializeTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DFD546513D94BB800336836 /* SocializeTests.h */; };
@@ -359,6 +379,22 @@
 				16C330E213F3C315004EA34D /* CommentDetailsView.h in Copy Headers */,
 				16C330E313F3C315004EA34D /* CommentMapView.h in Copy Headers */,
 				16C330E413F3C315004EA34D /* CommentDetailsViewController.h in Copy Headers */,
+				1681BDA713F5560100EC6042 /* JSON.h in Copy Headers */,
+				1681BDA813F5560100EC6042 /* NSObject+SBJSON.h in Copy Headers */,
+				1681BDA913F5560100EC6042 /* NSString+SBJSON.h in Copy Headers */,
+				1681BDAA13F5560100EC6042 /* SBJSON.h in Copy Headers */,
+				1681BDAB13F5560100EC6042 /* SBJsonBase.h in Copy Headers */,
+				1681BDAC13F5560100EC6042 /* SBJsonParser.h in Copy Headers */,
+				1681BDAD13F5560100EC6042 /* SBJsonWriter.h in Copy Headers */,
+				1681BDAE13F5560100EC6042 /* SocializeFacebook.h in Copy Headers */,
+				1681BDAF13F5560100EC6042 /* SocializeFBConnect.h in Copy Headers */,
+				1681BDB013F5560100EC6042 /* SocializeFBDialog.h in Copy Headers */,
+				1681BDB113F5560100EC6042 /* SocializeFBLoginDialog.h in Copy Headers */,
+				1681BDB213F5560100EC6042 /* SocializeFBRequest.h in Copy Headers */,
+				1681BDC413F55BED00EC6042 /* PostCommentViewController.h in Copy Headers */,
+				1681BDC513F55BED00EC6042 /* AppMakrLocation.h in Copy Headers */,
+				1681BDC613F55BED00EC6042 /* AppMakrLoadingView.h in Copy Headers */,
+				1681BDC713F55BED00EC6042 /* appbuildrAppDelegate.h in Copy Headers */,
 			);
 			name = "Copy Headers";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,6 +433,38 @@
 		1670BE6013C6EC04000CC441 /* SocializeShareFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeShareFormatterTests.h; path = "Test Cases/SocializeShareFormatterTests.h"; sourceTree = "<group>"; };
 		1670BE6113C6EC04000CC441 /* SocializeShareFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeShareFormatterTests.m; path = "Test Cases/SocializeShareFormatterTests.m"; sourceTree = "<group>"; };
 		1673D68F13DEA40E00A86589 /* OCMock */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OCMock; path = unitTests/Libraries/OCMock; sourceTree = "<group>"; };
+		1681BD7813F555DC00EC6042 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = SocializeFacebook/FBDialog.bundle; sourceTree = "<group>"; };
+		1681BD7A13F555DC00EC6042 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		1681BD7B13F555DC00EC6042 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		1681BD7C13F555DC00EC6042 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		1681BD7D13F555DC00EC6042 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		1681BD7E13F555DC00EC6042 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		1681BD7F13F555DC00EC6042 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		1681BD8013F555DC00EC6042 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		1681BD8113F555DC00EC6042 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		1681BD8213F555DC00EC6042 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		1681BD8313F555DC00EC6042 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		1681BD8413F555DC00EC6042 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		1681BD8513F555DC00EC6042 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		1681BD8613F555DC00EC6042 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		1681BD8713F555DC00EC6042 /* SocializeFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebook.h; path = SocializeFacebook/SocializeFacebook.h; sourceTree = "<group>"; };
+		1681BD8813F555DC00EC6042 /* SocializeFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebook.m; path = SocializeFacebook/SocializeFacebook.m; sourceTree = "<group>"; };
+		1681BD8913F555DC00EC6042 /* SocializeFBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFBConnect.h; path = SocializeFacebook/SocializeFBConnect.h; sourceTree = "<group>"; };
+		1681BD8A13F555DC00EC6042 /* SocializeFBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFBDialog.h; path = SocializeFacebook/SocializeFBDialog.h; sourceTree = "<group>"; };
+		1681BD8B13F555DC00EC6042 /* SocializeFBDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFBDialog.m; path = SocializeFacebook/SocializeFBDialog.m; sourceTree = "<group>"; };
+		1681BD8C13F555DC00EC6042 /* SocializeFBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFBLoginDialog.h; path = SocializeFacebook/SocializeFBLoginDialog.h; sourceTree = "<group>"; };
+		1681BD8D13F555DC00EC6042 /* SocializeFBLoginDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFBLoginDialog.m; path = SocializeFacebook/SocializeFBLoginDialog.m; sourceTree = "<group>"; };
+		1681BD8E13F555DC00EC6042 /* SocializeFBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFBRequest.h; path = SocializeFacebook/SocializeFBRequest.h; sourceTree = "<group>"; };
+		1681BD8F13F555DC00EC6042 /* SocializeFBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFBRequest.m; path = SocializeFacebook/SocializeFBRequest.m; sourceTree = "<group>"; };
+		1681BDB413F55B9A00EC6042 /* appbuildrAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = appbuildrAppDelegate.h; path = Classes/appbuildrAppDelegate.h; sourceTree = "<group>"; };
+		1681BDB613F55BAC00EC6042 /* AppMakrLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppMakrLoadingView.h; path = Classes/AppMakrLoadingView.h; sourceTree = "<group>"; };
+		1681BDB713F55BAC00EC6042 /* AppMakrLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppMakrLoadingView.m; path = Classes/AppMakrLoadingView.m; sourceTree = "<group>"; };
+		1681BDBA13F55BBB00EC6042 /* AppMakrLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppMakrLocation.h; path = Classes/AppMakrLocation.h; sourceTree = "<group>"; };
+		1681BDBB13F55BBB00EC6042 /* AppMakrLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppMakrLocation.m; path = Classes/AppMakrLocation.m; sourceTree = "<group>"; };
+		1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostCommentViewController.h; path = Classes/PostCommentViewController.h; sourceTree = "<group>"; };
+		1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostCommentViewController.m; path = Classes/PostCommentViewController.m; sourceTree = "<group>"; };
+		1681BDC213F55BDB00EC6042 /* PostCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostCommentViewController.xib; path = Resources/PostCommentViewController.xib; sourceTree = "<group>"; };
+		1681BDC813F55D3200EC6042 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		16C330C613F3B83D004EA34D /* CommentDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentDetailsViewController.xib; path = Resources/CommentDetailsViewController.xib; sourceTree = "<group>"; };
 		16C330C813F3B852004EA34D /* CommentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailsViewController.h; path = Classes/CommentDetailsViewController.h; sourceTree = "<group>"; };
 		16C330C913F3B852004EA34D /* CommentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsViewController.m; path = Classes/CommentDetailsViewController.m; sourceTree = "<group>"; };
@@ -441,6 +509,22 @@
 		16E2C45A1398F6E3007C91ED /* action-bar-button-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-black.png"; sourceTree = "<group>"; };
 		16E2C4601398F6E3007C91ED /* action-bar-notification-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-notification-icon.png"; sourceTree = "<group>"; };
 		16E2C46B1399000C007C91ED /* action-bar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-bg.png"; sourceTree = "<group>"; };
+		16ECF48D13E0505A00E0BF5E /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOAuth.a; sourceTree = "<group>"; };
+		16ECF48F13E0505A00E0BF5E /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
+		16ECF49013E0505A00E0BF5E /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		16ECF49113E0505A00E0BF5E /* NSURL+Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Base.h"; sourceTree = "<group>"; };
+		16ECF49213E0505A00E0BF5E /* OAAsynchronousDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAAsynchronousDataFetcher.h; sourceTree = "<group>"; };
+		16ECF49313E0505A00E0BF5E /* OAConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAConsumer.h; sourceTree = "<group>"; };
+		16ECF49413E0505A00E0BF5E /* OADataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OADataFetcher.h; sourceTree = "<group>"; };
+		16ECF49513E0505A00E0BF5E /* OAHMAC_SHA1SignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAHMAC_SHA1SignatureProvider.h; sourceTree = "<group>"; };
+		16ECF49613E0505A00E0BF5E /* OAMutableURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAMutableURLRequest.h; sourceTree = "<group>"; };
+		16ECF49713E0505A00E0BF5E /* OAPlaintextSignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAPlaintextSignatureProvider.h; sourceTree = "<group>"; };
+		16ECF49813E0505A00E0BF5E /* OARequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OARequestParameter.h; sourceTree = "<group>"; };
+		16ECF49913E0505A00E0BF5E /* OAServiceTicket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAServiceTicket.h; sourceTree = "<group>"; };
+		16ECF49A13E0505A00E0BF5E /* OASignatureProviding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OASignatureProviding.h; sourceTree = "<group>"; };
+		16ECF49B13E0505A00E0BF5E /* OAToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken.h; sourceTree = "<group>"; };
+		16ECF49C13E0505A00E0BF5E /* OAToken_KeychainExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken_KeychainExtensions.h; sourceTree = "<group>"; };
+		16ECF49D13E0505A00E0BF5E /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
 		16F449BC13AF2974003BE655 /* SocializeCommentFormaterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentFormaterTests.h; path = "Test Cases/SocializeCommentFormaterTests.h"; sourceTree = "<group>"; };
 		16F449BD13AF2974003BE655 /* SocializeCommentFormaterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentFormaterTests.m; path = "Test Cases/SocializeCommentFormaterTests.m"; sourceTree = "<group>"; };
 		16F449C813AF4DCD003BE655 /* SocializeUserJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUserJSONFormatter.h; path = Classes/SocializeUserJSONFormatter.h; sourceTree = "<group>"; };
@@ -476,31 +560,6 @@
 		5CC3DB111378889E00B11B78 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		5CD4882C1386C42300E60C4C /* profile_functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = profile_functions.c; sourceTree = "<group>"; };
 		5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
-		6D03BAF213F4544A00A69384 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOAuth.a; sourceTree = "<group>"; };
-		6D03BAF413F4544A00A69384 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
-		6D03BAF513F4544A00A69384 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
-		6D03BAF613F4544A00A69384 /* NSURL+Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Base.h"; sourceTree = "<group>"; };
-		6D03BAF713F4544A00A69384 /* OAAsynchronousDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAAsynchronousDataFetcher.h; sourceTree = "<group>"; };
-		6D03BAF813F4544A00A69384 /* OAConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAConsumer.h; sourceTree = "<group>"; };
-		6D03BAF913F4544A00A69384 /* OADataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OADataFetcher.h; sourceTree = "<group>"; };
-		6D03BAFA13F4544A00A69384 /* OAHMAC_SHA1SignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAHMAC_SHA1SignatureProvider.h; sourceTree = "<group>"; };
-		6D03BAFB13F4544A00A69384 /* OAMutableURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAMutableURLRequest.h; sourceTree = "<group>"; };
-		6D03BAFC13F4544A00A69384 /* OAPlaintextSignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAPlaintextSignatureProvider.h; sourceTree = "<group>"; };
-		6D03BAFD13F4544A00A69384 /* OARequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OARequestParameter.h; sourceTree = "<group>"; };
-		6D03BAFE13F4544A00A69384 /* OAServiceTicket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAServiceTicket.h; sourceTree = "<group>"; };
-		6D03BAFF13F4544A00A69384 /* OASignatureProviding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OASignatureProviding.h; sourceTree = "<group>"; };
-		6D03BB0013F4544A00A69384 /* OAToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken.h; sourceTree = "<group>"; };
-		6D03BB0113F4544A00A69384 /* OAToken_KeychainExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken_KeychainExtensions.h; sourceTree = "<group>"; };
-		6D03BB0213F4544A00A69384 /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
-		6D03BB2813F4932D00A69384 /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCommentViewController.h; sourceTree = "<group>"; };
-		6D03BB2913F4932E00A69384 /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommentViewController.m; sourceTree = "<group>"; };
-		6D03BB2A13F4932E00A69384 /* PostCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCommentViewController.xib; sourceTree = "<group>"; };
-		6D03BB2F13F494E300A69384 /* AppMakrLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMakrLocation.h; sourceTree = "<group>"; };
-		6D03BB3013F494E400A69384 /* AppMakrLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMakrLocation.m; sourceTree = "<group>"; };
-		6D03BB3313F495F800A69384 /* appbuildrAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appbuildrAppDelegate.h; sourceTree = "<group>"; };
-		6D03BB3413F495F800A69384 /* AppMakrLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMakrLoadingView.h; sourceTree = "<group>"; };
-		6D03BB3513F495F900A69384 /* AppMakrLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMakrLoadingView.m; sourceTree = "<group>"; };
-		6D03BB4113F49C0B00A69384 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6D144CFB13BCE75D001D8E0A /* SocializeViewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeViewService.h; path = Classes/SocializeViewService.h; sourceTree = "<group>"; };
 		6D144CFC13BCE75D001D8E0A /* SocializeViewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeViewService.m; path = Classes/SocializeViewService.m; sourceTree = "<group>"; };
 		6D144D0013BCE8AD001D8E0A /* SocializeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeView.h; path = Classes/SocializeView.h; sourceTree = "<group>"; };
@@ -566,29 +625,6 @@
 		6D9A0BA613BE1EA100AE949C /* SocializeShareJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeShareJSONFormatter.m; path = Classes/SocializeShareJSONFormatter.m; sourceTree = "<group>"; };
 		6D9A0BA913BE20CC00AE949C /* SocializeShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeShareService.h; path = Classes/SocializeShareService.h; sourceTree = "<group>"; };
 		6D9A0BAA13BE20D000AE949C /* SocializeShareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeShareService.m; path = Classes/SocializeShareService.m; sourceTree = "<group>"; };
-		6DB9A64F13F420410013DC34 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = SocializeFacebook/FBDialog.bundle; sourceTree = "<group>"; };
-		6DB9A65113F420410013DC34 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		6DB9A65213F420410013DC34 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
-		6DB9A65313F420410013DC34 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
-		6DB9A65413F420410013DC34 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
-		6DB9A65513F420410013DC34 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
-		6DB9A65613F420410013DC34 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		6DB9A65713F420410013DC34 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
-		6DB9A65813F420410013DC34 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
-		6DB9A65913F420410013DC34 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
-		6DB9A65A13F420410013DC34 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		6DB9A65B13F420410013DC34 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
-		6DB9A65C13F420410013DC34 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		6DB9A65D13F420410013DC34 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		6DB9A65E13F420410013DC34 /* SocializeFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebook.h; path = SocializeFacebook/SocializeFacebook.h; sourceTree = "<group>"; };
-		6DB9A65F13F420410013DC34 /* SocializeFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebook.m; path = SocializeFacebook/SocializeFacebook.m; sourceTree = "<group>"; };
-		6DB9A66013F420410013DC34 /* SocializeFBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFBConnect.h; path = SocializeFacebook/SocializeFBConnect.h; sourceTree = "<group>"; };
-		6DB9A66113F420410013DC34 /* SocializeFBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFBDialog.h; path = SocializeFacebook/SocializeFBDialog.h; sourceTree = "<group>"; };
-		6DB9A66213F420410013DC34 /* SocializeFBDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFBDialog.m; path = SocializeFacebook/SocializeFBDialog.m; sourceTree = "<group>"; };
-		6DB9A66313F420410013DC34 /* SocializeFBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFBLoginDialog.h; path = SocializeFacebook/SocializeFBLoginDialog.h; sourceTree = "<group>"; };
-		6DB9A66413F420410013DC34 /* SocializeFBLoginDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFBLoginDialog.m; path = SocializeFacebook/SocializeFBLoginDialog.m; sourceTree = "<group>"; };
-		6DB9A66513F420410013DC34 /* SocializeFBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFBRequest.h; path = SocializeFacebook/SocializeFBRequest.h; sourceTree = "<group>"; };
-		6DB9A66613F420410013DC34 /* SocializeFBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFBRequest.m; path = SocializeFacebook/SocializeFBRequest.m; sourceTree = "<group>"; };
 		6DEEC9BE13D6238F0066CFA2 /* urls.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = urls.plist; sourceTree = "<group>"; };
 		6DFD546513D94BB800336836 /* SocializeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeTests.h; path = "Test Cases/SocializeTests.h"; sourceTree = "<group>"; };
 		6DFD546613D94BBB00336836 /* SocializeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeTests.m; path = "Test Cases/SocializeTests.m"; sourceTree = "<group>"; };
@@ -645,15 +681,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D03BB4213F49C0C00A69384 /* CoreLocation.framework in Frameworks */,
+				1681BDC913F55D3200EC6042 /* CoreLocation.framework in Frameworks */,
 				16C330E113F3C2D1004EA34D /* MapKit.framework in Frameworks */,
 				6D97F03D13DFC91500B16454 /* QuartzCore.framework in Frameworks */,
 				16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */,
 				16E2C4381398C40E007C91ED /* Foundation.framework in Frameworks */,
 				16E2C4391398C40E007C91ED /* CoreGraphics.framework in Frameworks */,
 				16FCABD113B885CC0034499F /* GHUnitIOS.framework in Frameworks */,
+				16ECF49F13E0505A00E0BF5E /* libOAuth.a in Frameworks */,
 				162B26E513E2C14800591AEB /* libJSONKit.a in Frameworks */,
-				6D03BB0413F4544A00A69384 /* libOAuth.a in Frameworks */,
+				16C3311413F3D1E8004EA34D /* Socialize-iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,7 +713,11 @@
 				5CC3DAEC1378859000B11B78 /* Foundation.framework in Frameworks */,
 				163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */,
 				5C6EC7971379CF7D0073AE65 /* libSocialize.a in Frameworks */,
+				16ECF49E13E0505A00E0BF5E /* libOAuth.a in Frameworks */,
 				162B26E413E2C14800591AEB /* libJSONKit.a in Frameworks */,
+				1681BDB313F5567300EC6042 /* MapKit.framework in Frameworks */,
+				1681BDCA13F55D3600EC6042 /* CoreLocation.framework in Frameworks */,
+				1681BDCB13F55E2400EC6042 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,17 +777,55 @@
 			name = "Utils Tests";
 			sourceTree = "<group>";
 		};
+		1681BD7613F555CA00EC6042 /* facebook */ = {
+			isa = PBXGroup;
+			children = (
+				1681BD7813F555DC00EC6042 /* FBDialog.bundle */,
+				1681BD7913F555DC00EC6042 /* JSON */,
+				1681BD8713F555DC00EC6042 /* SocializeFacebook.h */,
+				1681BD8813F555DC00EC6042 /* SocializeFacebook.m */,
+				1681BD8913F555DC00EC6042 /* SocializeFBConnect.h */,
+				1681BD8A13F555DC00EC6042 /* SocializeFBDialog.h */,
+				1681BD8B13F555DC00EC6042 /* SocializeFBDialog.m */,
+				1681BD8C13F555DC00EC6042 /* SocializeFBLoginDialog.h */,
+				1681BD8D13F555DC00EC6042 /* SocializeFBLoginDialog.m */,
+				1681BD8E13F555DC00EC6042 /* SocializeFBRequest.h */,
+				1681BD8F13F555DC00EC6042 /* SocializeFBRequest.m */,
+			);
+			name = facebook;
+			sourceTree = "<group>";
+		};
+		1681BD7913F555DC00EC6042 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				1681BD7A13F555DC00EC6042 /* JSON.h */,
+				1681BD7B13F555DC00EC6042 /* NSObject+SBJSON.h */,
+				1681BD7C13F555DC00EC6042 /* NSObject+SBJSON.m */,
+				1681BD7D13F555DC00EC6042 /* NSString+SBJSON.h */,
+				1681BD7E13F555DC00EC6042 /* NSString+SBJSON.m */,
+				1681BD7F13F555DC00EC6042 /* SBJSON.h */,
+				1681BD8013F555DC00EC6042 /* SBJSON.m */,
+				1681BD8113F555DC00EC6042 /* SBJsonBase.h */,
+				1681BD8213F555DC00EC6042 /* SBJsonBase.m */,
+				1681BD8313F555DC00EC6042 /* SBJsonParser.h */,
+				1681BD8413F555DC00EC6042 /* SBJsonParser.m */,
+				1681BD8513F555DC00EC6042 /* SBJsonWriter.h */,
+				1681BD8613F555DC00EC6042 /* SBJsonWriter.m */,
+			);
+			name = JSON;
+			path = SocializeFacebook/JSON;
+			sourceTree = "<group>";
+		};
 		16C330BD13F3B75C004EA34D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6D03BB3313F495F800A69384 /* appbuildrAppDelegate.h */,
-				6D03BB3413F495F800A69384 /* AppMakrLoadingView.h */,
-				6D03BB3513F495F900A69384 /* AppMakrLoadingView.m */,
-				6D03BB2F13F494E300A69384 /* AppMakrLocation.h */,
-				6D03BB3013F494E400A69384 /* AppMakrLocation.m */,
-				6D03BB2813F4932D00A69384 /* PostCommentViewController.h */,
-				6D03BB2913F4932E00A69384 /* PostCommentViewController.m */,
-				6D03BB2A13F4932E00A69384 /* PostCommentViewController.xib */,
+				1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */,
+				1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */,
+				1681BDBA13F55BBB00EC6042 /* AppMakrLocation.h */,
+				1681BDBB13F55BBB00EC6042 /* AppMakrLocation.m */,
+				1681BDB613F55BAC00EC6042 /* AppMakrLoadingView.h */,
+				1681BDB713F55BAC00EC6042 /* AppMakrLoadingView.m */,
+				1681BDB413F55B9A00EC6042 /* appbuildrAppDelegate.h */,
 				16C330D613F3BD29004EA34D /* CommentDetailsView.h */,
 				16C330D713F3BD29004EA34D /* CommentDetailsView.m */,
 				16C330D813F3BD29004EA34D /* CommentMapView.h */,
@@ -852,6 +931,38 @@
 			path = socialize_resources;
 			sourceTree = "<group>";
 		};
+		16ECF48C13E0505A00E0BF5E /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				16ECF48D13E0505A00E0BF5E /* libOAuth.a */,
+				16ECF48E13E0505A00E0BF5E /* OAuthConsumer */,
+			);
+			name = OAuth;
+			path = Socialize/Libraries/OAuth;
+			sourceTree = "<group>";
+		};
+		16ECF48E13E0505A00E0BF5E /* OAuthConsumer */ = {
+			isa = PBXGroup;
+			children = (
+				16ECF48F13E0505A00E0BF5E /* NSMutableURLRequest+Parameters.h */,
+				16ECF49013E0505A00E0BF5E /* NSString+URLEncoding.h */,
+				16ECF49113E0505A00E0BF5E /* NSURL+Base.h */,
+				16ECF49213E0505A00E0BF5E /* OAAsynchronousDataFetcher.h */,
+				16ECF49313E0505A00E0BF5E /* OAConsumer.h */,
+				16ECF49413E0505A00E0BF5E /* OADataFetcher.h */,
+				16ECF49513E0505A00E0BF5E /* OAHMAC_SHA1SignatureProvider.h */,
+				16ECF49613E0505A00E0BF5E /* OAMutableURLRequest.h */,
+				16ECF49713E0505A00E0BF5E /* OAPlaintextSignatureProvider.h */,
+				16ECF49813E0505A00E0BF5E /* OARequestParameter.h */,
+				16ECF49913E0505A00E0BF5E /* OAServiceTicket.h */,
+				16ECF49A13E0505A00E0BF5E /* OASignatureProviding.h */,
+				16ECF49B13E0505A00E0BF5E /* OAToken.h */,
+				16ECF49C13E0505A00E0BF5E /* OAToken_KeychainExtensions.h */,
+				16ECF49D13E0505A00E0BF5E /* OAuthConsumer.h */,
+			);
+			path = OAuthConsumer;
+			sourceTree = "<group>";
+		};
 		5C6AAC62137C3F5500AF0219 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -930,6 +1041,7 @@
 			isa = PBXGroup;
 			children = (
 				6D03BAF113F4544A00A69384 /* OAuth */,
+				16C330F913F3D1E8004EA34D /* Socialize-iOS.embeddedframework */,
 				162B26E113E2C14800591AEB /* JSON */,
 				1673D68F13DEA40E00A86589 /* OCMock */,
 				5C54DE6013830F9800090269 /* libOCMock.a */,
@@ -947,8 +1059,8 @@
 		5CC3DAC31378824800B11B78 /* Socialize */ = {
 			isa = PBXGroup;
 			children = (
+				1681BD7613F555CA00EC6042 /* facebook */,
 				16C330BD13F3B75C004EA34D /* Controllers */,
-				6DB9A64E13F41F590013DC34 /* facebook */,
 				5C9004331395963A007361F6 /* Services */,
 				9A3095B51384F04100292DC6 /* Configuration */,
 				5C6AAC62137C3F5500AF0219 /* Models */,
@@ -1091,38 +1203,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		6D03BAF113F4544A00A69384 /* OAuth */ = {
-			isa = PBXGroup;
-			children = (
-				6D03BAF213F4544A00A69384 /* libOAuth.a */,
-				6D03BAF313F4544A00A69384 /* OAuthConsumer */,
-			);
-			name = OAuth;
-			path = Socialize/Libraries/OAuth;
-			sourceTree = "<group>";
-		};
-		6D03BAF313F4544A00A69384 /* OAuthConsumer */ = {
-			isa = PBXGroup;
-			children = (
-				6D03BAF413F4544A00A69384 /* NSMutableURLRequest+Parameters.h */,
-				6D03BAF513F4544A00A69384 /* NSString+URLEncoding.h */,
-				6D03BAF613F4544A00A69384 /* NSURL+Base.h */,
-				6D03BAF713F4544A00A69384 /* OAAsynchronousDataFetcher.h */,
-				6D03BAF813F4544A00A69384 /* OAConsumer.h */,
-				6D03BAF913F4544A00A69384 /* OADataFetcher.h */,
-				6D03BAFA13F4544A00A69384 /* OAHMAC_SHA1SignatureProvider.h */,
-				6D03BAFB13F4544A00A69384 /* OAMutableURLRequest.h */,
-				6D03BAFC13F4544A00A69384 /* OAPlaintextSignatureProvider.h */,
-				6D03BAFD13F4544A00A69384 /* OARequestParameter.h */,
-				6D03BAFE13F4544A00A69384 /* OAServiceTicket.h */,
-				6D03BAFF13F4544A00A69384 /* OASignatureProviding.h */,
-				6D03BB0013F4544A00A69384 /* OAToken.h */,
-				6D03BB0113F4544A00A69384 /* OAToken_KeychainExtensions.h */,
-				6D03BB0213F4544A00A69384 /* OAuthConsumer.h */,
-			);
-			path = OAuthConsumer;
-			sourceTree = "<group>";
-		};
 		6D49744113B404DF00463D23 /* Like tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1130,45 +1210,6 @@
 				1670BE5B13C6EBDD000CC441 /* SocializeLikeTests.m */,
 			);
 			name = "Like tests";
-			sourceTree = "<group>";
-		};
-		6DB9A64E13F41F590013DC34 /* facebook */ = {
-			isa = PBXGroup;
-			children = (
-				6DB9A64F13F420410013DC34 /* FBDialog.bundle */,
-				6DB9A65013F420410013DC34 /* JSON */,
-				6DB9A65E13F420410013DC34 /* SocializeFacebook.h */,
-				6DB9A65F13F420410013DC34 /* SocializeFacebook.m */,
-				6DB9A66013F420410013DC34 /* SocializeFBConnect.h */,
-				6DB9A66113F420410013DC34 /* SocializeFBDialog.h */,
-				6DB9A66213F420410013DC34 /* SocializeFBDialog.m */,
-				6DB9A66313F420410013DC34 /* SocializeFBLoginDialog.h */,
-				6DB9A66413F420410013DC34 /* SocializeFBLoginDialog.m */,
-				6DB9A66513F420410013DC34 /* SocializeFBRequest.h */,
-				6DB9A66613F420410013DC34 /* SocializeFBRequest.m */,
-			);
-			name = facebook;
-			sourceTree = "<group>";
-		};
-		6DB9A65013F420410013DC34 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				6DB9A65113F420410013DC34 /* JSON.h */,
-				6DB9A65213F420410013DC34 /* NSObject+SBJSON.h */,
-				6DB9A65313F420410013DC34 /* NSObject+SBJSON.m */,
-				6DB9A65413F420410013DC34 /* NSString+SBJSON.h */,
-				6DB9A65513F420410013DC34 /* NSString+SBJSON.m */,
-				6DB9A65613F420410013DC34 /* SBJSON.h */,
-				6DB9A65713F420410013DC34 /* SBJSON.m */,
-				6DB9A65813F420410013DC34 /* SBJsonBase.h */,
-				6DB9A65913F420410013DC34 /* SBJsonBase.m */,
-				6DB9A65A13F420410013DC34 /* SBJsonParser.h */,
-				6DB9A65B13F420410013DC34 /* SBJsonParser.m */,
-				6DB9A65C13F420410013DC34 /* SBJsonWriter.h */,
-				6DB9A65D13F420410013DC34 /* SBJsonWriter.m */,
-			);
-			name = JSON;
-			path = SocializeFacebook/JSON;
 			sourceTree = "<group>";
 		};
 		6DF5996213ABE843000D125A /* Auth Tests */ = {
@@ -1216,6 +1257,7 @@
 		9A4D29831393FF720065C0CB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1681BDC213F55BDB00EC6042 /* PostCommentViewController.xib */,
 				16C330E513F3C6E7004EA34D /* socialize-cell-image-default.png */,
 				16C330E613F3C6E7004EA34D /* socialize-cell-image-default@2x.png */,
 				16C330E713F3C6E7004EA34D /* socialize-comment-detail-bottom-shadow-background.png */,
@@ -1283,22 +1325,22 @@
 				16C330CA13F3B852004EA34D /* CommentDetailsViewController.h in Headers */,
 				16C330DA13F3BD29004EA34D /* CommentDetailsView.h in Headers */,
 				16C330DC13F3BD29004EA34D /* CommentMapView.h in Headers */,
-				6DB9A66813F420410013DC34 /* JSON.h in Headers */,
-				6DB9A66913F420410013DC34 /* NSObject+SBJSON.h in Headers */,
-				6DB9A66B13F420410013DC34 /* NSString+SBJSON.h in Headers */,
-				6DB9A66D13F420410013DC34 /* SBJSON.h in Headers */,
-				6DB9A66F13F420410013DC34 /* SBJsonBase.h in Headers */,
-				6DB9A67113F420410013DC34 /* SBJsonParser.h in Headers */,
-				6DB9A67313F420410013DC34 /* SBJsonWriter.h in Headers */,
-				6DB9A67513F420410013DC34 /* SocializeFacebook.h in Headers */,
-				6DB9A67713F420410013DC34 /* SocializeFBConnect.h in Headers */,
-				6DB9A67813F420410013DC34 /* SocializeFBDialog.h in Headers */,
-				6DB9A67A13F420410013DC34 /* SocializeFBLoginDialog.h in Headers */,
-				6DB9A67C13F420410013DC34 /* SocializeFBRequest.h in Headers */,
-				6D03BB2B13F4932F00A69384 /* PostCommentViewController.h in Headers */,
-				6D03BB3113F494E500A69384 /* AppMakrLocation.h in Headers */,
-				6D03BB3613F495FB00A69384 /* appbuildrAppDelegate.h in Headers */,
-				6D03BB3713F495FB00A69384 /* AppMakrLoadingView.h in Headers */,
+				1681BD9113F555DC00EC6042 /* JSON.h in Headers */,
+				1681BD9213F555DC00EC6042 /* NSObject+SBJSON.h in Headers */,
+				1681BD9413F555DC00EC6042 /* NSString+SBJSON.h in Headers */,
+				1681BD9613F555DC00EC6042 /* SBJSON.h in Headers */,
+				1681BD9813F555DC00EC6042 /* SBJsonBase.h in Headers */,
+				1681BD9A13F555DC00EC6042 /* SBJsonParser.h in Headers */,
+				1681BD9C13F555DC00EC6042 /* SBJsonWriter.h in Headers */,
+				1681BD9E13F555DC00EC6042 /* SocializeFacebook.h in Headers */,
+				1681BDA013F555DC00EC6042 /* SocializeFBConnect.h in Headers */,
+				1681BDA113F555DC00EC6042 /* SocializeFBDialog.h in Headers */,
+				1681BDA313F555DC00EC6042 /* SocializeFBLoginDialog.h in Headers */,
+				1681BDA513F555DC00EC6042 /* SocializeFBRequest.h in Headers */,
+				1681BDB513F55B9A00EC6042 /* appbuildrAppDelegate.h in Headers */,
+				1681BDB813F55BAC00EC6042 /* AppMakrLoadingView.h in Headers */,
+				1681BDBC13F55BBB00EC6042 /* AppMakrLocation.h in Headers */,
+				1681BDC013F55BCB00EC6042 /* PostCommentViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1375,7 +1417,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				de,
 			);
 			mainGroup = 5CC3DAB1137881B900B11B78;
 			productRefGroup = 5CC3DABF1378824800B11B78 /* Products */;
@@ -1460,8 +1501,8 @@
 				16C330F613F3C6E8004EA34D /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */,
 				16C330F713F3C6E8004EA34D /* socialize-comment-user-background.png in Resources */,
 				16C330F813F3C6E8004EA34D /* socialize-comment-user-background@2x.png in Resources */,
-				6DB9A66713F420410013DC34 /* FBDialog.bundle in Resources */,
-				6D03BB2D13F4932F00A69384 /* PostCommentViewController.xib in Resources */,
+				1681BD9013F555DC00EC6042 /* FBDialog.bundle in Resources */,
+				1681BDC313F55BDB00EC6042 /* PostCommentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1493,7 +1534,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# If we aren't running from the command line, then exit\n#if [ \"$GHUNIT_CLI\" = \"\" ] && [ \"$GHUNIT_AUTORUN\" = \"\" ]; then\n#exit 0\n#fi\n\nmkdir -p \"$BUILD_DIR/test-appzipped/\"\nmkdir -p \"$BUILD_DIR/test-appzipped/Binary\"\nmkdir Payload\n\ncp -r \"$BUILD_DIR/${CONFIGURATION}-iphoneos/\" Payload/\n\nzip -r \"$BUILD_DIR/test-appzipped/Binary\"/SampleSdkApp.app.dSYM.zip Payload/SampleSdkApp.app.dSYM\n\nrm -rf Payload/SampleSdkApp.app.dSYM\ncp -f \"${PROJECT_DIR}\"/Icon.png iTunesArtwork\nzip -r \"$BUILD_DIR/test-appzipped/\"/SampleSdkApp.ipa Payload iTunesArtwork\n\nmv \"$BUILD_DIR/test-appzipped/\"/SampleSdkApp.ipa \"$BUILD_DIR/test-appzipped/Binary\"/\n\nrm -rf iTunesArtwork\nrm -rf Payload";
+			shellScript = "# If we aren't running from the command line, then exit\nif [ \"$GHUNIT_CLI\" = \"\" ] && [ \"$GHUNIT_AUTORUN\" = \"\" ]; then\nexit 0\nfi\n\nmkdir -p \"$BUILD_DIR/test-appzipped/\"\nmkdir -p \"$BUILD_DIR/test-appzipped/Binary\"\nmkdir Payload\n\ncp -r \"$BUILD_DIR/${CONFIGURATION}-iphoneos/\" Payload/\n\nzip -r \"$BUILD_DIR/test-appzipped/Binary\"/SampleSdkApp.app.dSYM.zip Payload/SampleSdkApp.app.dSYM\n\nrm -rf Payload/SampleSdkApp.app.dSYM\ncp -f \"${PROJECT_DIR}\"/Icon.png iTunesArtwork\nzip -r \"$BUILD_DIR/test-appzipped/\"/SampleSdkApp.ipa Payload iTunesArtwork\n\nmv \"$BUILD_DIR/test-appzipped/\"/SampleSdkApp.ipa \"$BUILD_DIR/test-appzipped/Binary\"/\n\nrm -rf iTunesArtwork\nrm -rf Payload";
 		};
 		16B48DB013DEEC0E00EE0A92 /* Build static lib */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1521,7 +1562,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Paths\nSIMULATOR_LIBRARY_PATH=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphonesimulator/libSocialize.a\"\nDEVICE_LIBRARY_PATH=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneos/libSocialize.a\"\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}\"\nEMBEDDEDFRAMEWORK=\"${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\n\n# Create framework directory structure.\nrm -rf \"${EMBEDDEDFRAMEWORK}\" &>/dev/null\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\"\nmkdir -p \"${EMBEDDEDFRAMEWORK}/Resources\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Headers\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Resources\"\n\n# Generate universal binary from desktop, device, and simulator builds.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\"\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/Versions/A\"\ncd \"${FRAMEWORK}\"\nln -sf \"A\" \"Versions/Current\"\nln -sf \"Versions/Current/Headers\" \"Headers\"\nln -sf \"Versions/Current/Resources\" \"Resources\"\nln -sf \"Versions/Current/${PRODUCT_NAME}\" \"${PRODUCT_NAME}\"";
+			shellScript = "# Paths\nSIMULATOR_LIBRARY_PATH=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphonesimulator/libSocialize.a\"\nDEVICE_LIBRARY_PATH=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneos/libSocialize.a\"\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}\"\nEMBEDDEDFRAMEWORK=\"${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\n\n# Create framework directory structure.\nrm -rf \"${EMBEDDEDFRAMEWORK}\" &>/dev/null\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\"\n#mkdir -p \"${EMBEDDEDFRAMEWORK}/Resources\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Headers\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Resources\"\n\n# Generate universal binary from desktop, device, and simulator builds.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\"\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/Versions/A\"\ncd \"${FRAMEWORK}\"\nln -sf \"A\" \"Versions/Current\"\nln -sf \"Versions/Current/Headers\" \"Headers\"\nln -sf \"Versions/Current/Resources\" \"Resources\"\nln -sf \"Versions/Current/${PRODUCT_NAME}\" \"${PRODUCT_NAME}\"\n\ncd \"${EMBEDDEDFRAMEWORK}\"\nln -sf \"${FRAMEWORK}/Versions/Current/Resources\" \"Resources\"";
 		};
 		16B48DDA13DEEE7900EE0A92 /* Copy Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1535,7 +1576,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Functions\n\n## List files in the specified directory, storing to the specified array.\n#\n# @param $1 The path to list\n# @param $2 The name of the array to fill\n#\n##\nlist_files ()\n{\n    filelist=$(ls \"$1\")\n    while read line\n    do\n    eval \"$2[\\${#$2[*]}]=\\\"\\$line\\\"\"\n    done <<< \"$filelist\"\n}\n\n# Paths\nPROJECT_RESOURCE_DIR=\"${PROJECT_DIR}/Socialize/Resources\"\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\nEMBEDDEDFRAMEWORK=\"${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\nRESOURCE_DIR=\"${FRAMEWORK}/Resources\"\n\nrsync -azp \"${PROJECT_RESOURCE_DIR}/\" \"${RESOURCE_DIR}/\"\n\ndeclare -a UFW_FILE_LIST\nlist_files \"${RESOURCE_DIR}\" UFW_FILE_LIST\nfor filename in \"${UFW_FILE_LIST[@]}\"\ndo\nif [[ \"${filename}\" != \"Info.plist\" ]] && [[ ! \"${filename}\" =~ .*\\.lproj$ ]]\nthen\n        echo ln -sf \"${RESOURCE_DIR}/${filename}\" \"${EMBEDDEDFRAMEWORK}/Resources/${filename}\"\n        ln -sf \"${RESOURCE_DIR}/${filename}\" \"${EMBEDDEDFRAMEWORK}/Resources/${filename}\"\nfi\ndone";
+			shellScript = "# Functions\n\n## List files in the specified directory, storing to the specified array.\n#\n# @param $1 The path to list\n# @param $2 The name of the array to fill\n#\n##\nlist_files ()\n{\n    filelist=$(ls \"$1\")\n    while read line\n    do\n    eval \"$2[\\${#$2[*]}]=\\\"\\$line\\\"\"\n    done <<< \"$filelist\"\n}\n\n# Paths\nPROJECT_RESOURCE_DIR=\"${PROJECT_DIR}/Socialize/Resources\"\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\nEMBEDDEDFRAMEWORK=\"${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\nRESOURCE_DIR=\"${FRAMEWORK}/Resources\"\n\nrsync -azp \"${PROJECT_RESOURCE_DIR}/\" \"${RESOURCE_DIR}/\"\n\n#declare -a UFW_FILE_LIST\n#list_files \"${RESOURCE_DIR}\" UFW_FILE_LIST\n#for filename in \"${UFW_FILE_LIST[@]}\"\n#do\n#if [[ \"${filename}\" != \"Info.plist\" ]] && [[ ! \"${filename}\" =~ .*\\.lproj$ ]]\n#then\n#        echo ln -sf \"${RESOURCE_DIR}/${filename}\" \"${EMBEDDEDFRAMEWORK}/Resources/${filename}\"\n#        ln -sf \"${RESOURCE_DIR}/${filename}\" \"${EMBEDDEDFRAMEWORK}/Resources/${filename}\"\n#fi\n#done";
 		};
 		6DE0950213F1BFDB0066D507 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1620,19 +1661,19 @@
 				16C330CB13F3B852004EA34D /* CommentDetailsViewController.m in Sources */,
 				16C330DB13F3BD29004EA34D /* CommentDetailsView.m in Sources */,
 				16C330DD13F3BD29004EA34D /* CommentMapView.m in Sources */,
-				6DB9A66A13F420410013DC34 /* NSObject+SBJSON.m in Sources */,
-				6DB9A66C13F420410013DC34 /* NSString+SBJSON.m in Sources */,
-				6DB9A66E13F420410013DC34 /* SBJSON.m in Sources */,
-				6DB9A67013F420410013DC34 /* SBJsonBase.m in Sources */,
-				6DB9A67213F420410013DC34 /* SBJsonParser.m in Sources */,
-				6DB9A67413F420410013DC34 /* SBJsonWriter.m in Sources */,
-				6DB9A67613F420410013DC34 /* SocializeFacebook.m in Sources */,
-				6DB9A67913F420410013DC34 /* SocializeFBDialog.m in Sources */,
-				6DB9A67B13F420410013DC34 /* SocializeFBLoginDialog.m in Sources */,
-				6DB9A67D13F420410013DC34 /* SocializeFBRequest.m in Sources */,
-				6D03BB2C13F4932F00A69384 /* PostCommentViewController.m in Sources */,
-				6D03BB3213F494E500A69384 /* AppMakrLocation.m in Sources */,
-				6D03BB3813F495FB00A69384 /* AppMakrLoadingView.m in Sources */,
+				1681BD9313F555DC00EC6042 /* NSObject+SBJSON.m in Sources */,
+				1681BD9513F555DC00EC6042 /* NSString+SBJSON.m in Sources */,
+				1681BD9713F555DC00EC6042 /* SBJSON.m in Sources */,
+				1681BD9913F555DC00EC6042 /* SBJsonBase.m in Sources */,
+				1681BD9B13F555DC00EC6042 /* SBJsonParser.m in Sources */,
+				1681BD9D13F555DC00EC6042 /* SBJsonWriter.m in Sources */,
+				1681BD9F13F555DC00EC6042 /* SocializeFacebook.m in Sources */,
+				1681BDA213F555DC00EC6042 /* SocializeFBDialog.m in Sources */,
+				1681BDA413F555DC00EC6042 /* SocializeFBLoginDialog.m in Sources */,
+				1681BDA613F555DC00EC6042 /* SocializeFBRequest.m in Sources */,
+				1681BDB913F55BAC00EC6042 /* AppMakrLoadingView.m in Sources */,
+				1681BDBD13F55BBB00EC6042 /* AppMakrLocation.m in Sources */,
+				1681BDC113F55BCB00EC6042 /* PostCommentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
