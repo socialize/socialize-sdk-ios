@@ -167,8 +167,16 @@
 		5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		5CD4882D1386C42300E60C4C /* profile_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CD4882C1386C42300E60C4C /* profile_functions.c */; };
 		5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */; };
-		6D03BB0313F4544A00A69384 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D03BAF213F4544A00A69384 /* libOAuth.a */; };
 		6D03BB0413F4544A00A69384 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D03BAF213F4544A00A69384 /* libOAuth.a */; };
+		6D03BB2B13F4932F00A69384 /* PostCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D03BB2813F4932D00A69384 /* PostCommentViewController.h */; };
+		6D03BB2C13F4932F00A69384 /* PostCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03BB2913F4932E00A69384 /* PostCommentViewController.m */; };
+		6D03BB2D13F4932F00A69384 /* PostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D03BB2A13F4932E00A69384 /* PostCommentViewController.xib */; };
+		6D03BB3113F494E500A69384 /* AppMakrLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D03BB2F13F494E300A69384 /* AppMakrLocation.h */; };
+		6D03BB3213F494E500A69384 /* AppMakrLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03BB3013F494E400A69384 /* AppMakrLocation.m */; };
+		6D03BB3613F495FB00A69384 /* appbuildrAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D03BB3313F495F800A69384 /* appbuildrAppDelegate.h */; };
+		6D03BB3713F495FB00A69384 /* AppMakrLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D03BB3413F495F800A69384 /* AppMakrLoadingView.h */; };
+		6D03BB3813F495FB00A69384 /* AppMakrLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D03BB3513F495F900A69384 /* AppMakrLoadingView.m */; };
+		6D03BB4213F49C0C00A69384 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D03BB4113F49C0B00A69384 /* CoreLocation.framework */; };
 		6D144CFD13BCE75D001D8E0A /* SocializeViewService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D144CFB13BCE75D001D8E0A /* SocializeViewService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D144CFE13BCE75D001D8E0A /* SocializeViewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D144CFC13BCE75D001D8E0A /* SocializeViewService.m */; };
 		6D144D0213BCE8AE001D8E0A /* SocializeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D144D0013BCE8AD001D8E0A /* SocializeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -486,6 +494,15 @@
 		6D03BB0013F4544A00A69384 /* OAToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken.h; sourceTree = "<group>"; };
 		6D03BB0113F4544A00A69384 /* OAToken_KeychainExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken_KeychainExtensions.h; sourceTree = "<group>"; };
 		6D03BB0213F4544A00A69384 /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
+		6D03BB2813F4932D00A69384 /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCommentViewController.h; sourceTree = "<group>"; };
+		6D03BB2913F4932E00A69384 /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommentViewController.m; sourceTree = "<group>"; };
+		6D03BB2A13F4932E00A69384 /* PostCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCommentViewController.xib; sourceTree = "<group>"; };
+		6D03BB2F13F494E300A69384 /* AppMakrLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMakrLocation.h; sourceTree = "<group>"; };
+		6D03BB3013F494E400A69384 /* AppMakrLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMakrLocation.m; sourceTree = "<group>"; };
+		6D03BB3313F495F800A69384 /* appbuildrAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appbuildrAppDelegate.h; sourceTree = "<group>"; };
+		6D03BB3413F495F800A69384 /* AppMakrLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMakrLoadingView.h; sourceTree = "<group>"; };
+		6D03BB3513F495F900A69384 /* AppMakrLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMakrLoadingView.m; sourceTree = "<group>"; };
+		6D03BB4113F49C0B00A69384 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6D144CFB13BCE75D001D8E0A /* SocializeViewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeViewService.h; path = Classes/SocializeViewService.h; sourceTree = "<group>"; };
 		6D144CFC13BCE75D001D8E0A /* SocializeViewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeViewService.m; path = Classes/SocializeViewService.m; sourceTree = "<group>"; };
 		6D144D0013BCE8AD001D8E0A /* SocializeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeView.h; path = Classes/SocializeView.h; sourceTree = "<group>"; };
@@ -630,6 +647,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D03BB4213F49C0C00A69384 /* CoreLocation.framework in Frameworks */,
 				16C330E113F3C2D1004EA34D /* MapKit.framework in Frameworks */,
 				6D97F03D13DFC91500B16454 /* QuartzCore.framework in Frameworks */,
 				16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */,
@@ -725,6 +743,14 @@
 		16C330BD13F3B75C004EA34D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6D03BB3313F495F800A69384 /* appbuildrAppDelegate.h */,
+				6D03BB3413F495F800A69384 /* AppMakrLoadingView.h */,
+				6D03BB3513F495F900A69384 /* AppMakrLoadingView.m */,
+				6D03BB2F13F494E300A69384 /* AppMakrLocation.h */,
+				6D03BB3013F494E400A69384 /* AppMakrLocation.m */,
+				6D03BB2813F4932D00A69384 /* PostCommentViewController.h */,
+				6D03BB2913F4932E00A69384 /* PostCommentViewController.m */,
+				6D03BB2A13F4932E00A69384 /* PostCommentViewController.xib */,
 				16C330D613F3BD29004EA34D /* CommentDetailsView.h */,
 				16C330D713F3BD29004EA34D /* CommentDetailsView.m */,
 				16C330D813F3BD29004EA34D /* CommentMapView.h */,
@@ -915,6 +941,7 @@
 		5CC3DAB1137881B900B11B78 = {
 			isa = PBXGroup;
 			children = (
+				6D03BB4113F49C0B00A69384 /* CoreLocation.framework */,
 				5CC3DAC31378824800B11B78 /* Socialize */,
 				5CC3DAEE1378859000B11B78 /* unitTests */,
 				16E2C43A1398C40E007C91ED /* SampleSdkApp */,
@@ -1302,6 +1329,10 @@
 				6DB9A67813F420410013DC34 /* SocializeFBDialog.h in Headers */,
 				6DB9A67A13F420410013DC34 /* SocializeFBLoginDialog.h in Headers */,
 				6DB9A67C13F420410013DC34 /* SocializeFBRequest.h in Headers */,
+				6D03BB2B13F4932F00A69384 /* PostCommentViewController.h in Headers */,
+				6D03BB3113F494E500A69384 /* AppMakrLocation.h in Headers */,
+				6D03BB3613F495FB00A69384 /* appbuildrAppDelegate.h in Headers */,
+				6D03BB3713F495FB00A69384 /* AppMakrLoadingView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1464,6 +1495,7 @@
 				16C330F713F3C6E8004EA34D /* socialize-comment-user-background.png in Resources */,
 				16C330F813F3C6E8004EA34D /* socialize-comment-user-background@2x.png in Resources */,
 				6DB9A66713F420410013DC34 /* FBDialog.bundle in Resources */,
+				6D03BB2D13F4932F00A69384 /* PostCommentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1632,6 +1664,9 @@
 				6DB9A67913F420410013DC34 /* SocializeFBDialog.m in Sources */,
 				6DB9A67B13F420410013DC34 /* SocializeFBLoginDialog.m in Sources */,
 				6DB9A67D13F420410013DC34 /* SocializeFBRequest.m in Sources */,
+				6D03BB2C13F4932F00A69384 /* PostCommentViewController.m in Sources */,
+				6D03BB3213F494E500A69384 /* AppMakrLocation.m in Sources */,
+				6D03BB3813F495FB00A69384 /* AppMakrLoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

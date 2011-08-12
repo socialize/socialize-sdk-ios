@@ -16,8 +16,8 @@
 {
     @private
         //URLDownload *profileImageDownloader;
-//        MKReverseGeocoder *geoCoder;
-//        IBOutlet CommentDetailsView* commentDetailsView;
+        //MKReverseGeocoder *geoCoder;
+        //IBOutlet CommentDetailsView* commentDetailsView;
         //EntryComment* entryComment;
 }
 
