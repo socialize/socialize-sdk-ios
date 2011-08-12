@@ -14,12 +14,11 @@
 #define GEO_LABLE_OFSSET 9
 
 @interface CommentDetailsView()
-    -(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height;
-    -(void) configurateProfileImage;
-    -(void) moveSubview: (UIView*) subView onValue: (CGFloat) value;
-    -(CGFloat) desideSize;
-    -(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height;
-
+-(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height;
+-(void) configurateProfileImage;
+-(void) moveSubview: (UIView*) subView onValue: (CGFloat) value;
+-(CGFloat) desideSize;
+-(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height;
 @end
 
 @implementation CommentDetailsView

@@ -121,7 +121,6 @@
 		16C3311113F3D1E8004EA34D /* socialize-comment-user-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C3310413F3D1E8004EA34D /* socialize-comment-user-background.png */; };
 		16C3311213F3D1E8004EA34D /* socialize-comment-user-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C3310513F3D1E8004EA34D /* socialize-comment-user-background@2x.png */; };
 		16C3311313F3D1E8004EA34D /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16C3310613F3D1E8004EA34D /* SocializeConfigurationInfo.plist */; };
-		16C3311413F3D1E8004EA34D /* Socialize-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C3310713F3D1E8004EA34D /* Socialize-iOS.framework */; };
 		16C5EF8113E6B8A800F2EA87 /* TestViewCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C5EF7F13E6B8A800F2EA87 /* TestViewCreationViewController.m */; };
 		16C5EF8213E6B8A800F2EA87 /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16C5EF8013E6B8A800F2EA87 /* TestViewCreationViewController.xib */; };
 		16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
@@ -428,7 +427,6 @@
 		16C3310413F3D1E8004EA34D /* socialize-comment-user-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-user-background.png"; sourceTree = "<group>"; };
 		16C3310513F3D1E8004EA34D /* socialize-comment-user-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-user-background@2x.png"; sourceTree = "<group>"; };
 		16C3310613F3D1E8004EA34D /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
-		16C3310713F3D1E8004EA34D /* Socialize-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "Socialize-iOS.framework"; sourceTree = "<group>"; };
 		16C5EF7E13E6B8A700F2EA87 /* TestViewCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewCreationViewController.h; sourceTree = "<group>"; };
 		16C5EF7F13E6B8A800F2EA87 /* TestViewCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewCreationViewController.m; sourceTree = "<group>"; };
 		16C5EF8013E6B8A800F2EA87 /* TestViewCreationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewCreationViewController.xib; sourceTree = "<group>"; };
@@ -655,7 +653,6 @@
 				16E2C4391398C40E007C91ED /* CoreGraphics.framework in Frameworks */,
 				16FCABD113B885CC0034499F /* GHUnitIOS.framework in Frameworks */,
 				162B26E513E2C14800591AEB /* libJSONKit.a in Frameworks */,
-				162B26ED13E2C3BD00591AEB /* Socialize-IOS.framework in Frameworks */,
 				6D03BB0413F4544A00A69384 /* libOAuth.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -680,7 +677,6 @@
 				163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */,
 				5C6EC7971379CF7D0073AE65 /* libSocialize.a in Frameworks */,
 				162B26E413E2C14800591AEB /* libJSONKit.a in Frameworks */,
-				6D03BB0313F4544A00A69384 /* libOAuth.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,35 +755,6 @@
 				16C330C913F3B852004EA34D /* CommentDetailsViewController.m */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		16C330F913F3D1E8004EA34D /* Socialize-iOS.embeddedframework */ = {
-			isa = PBXGroup;
-			children = (
-				16C330FA13F3D1E8004EA34D /* Resources */,
-				16C3310713F3D1E8004EA34D /* Socialize-iOS.framework */,
-			);
-			name = "Socialize-iOS.embeddedframework";
-			path = "build/Socialize-iOS.embeddedframework";
-			sourceTree = "<group>";
-		};
-		16C330FA13F3D1E8004EA34D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				16C330FB13F3D1E8004EA34D /* CommentDetailsViewController.xib */,
-				16C330FC13F3D1E8004EA34D /* socialize-cell-image-default.png */,
-				16C330FD13F3D1E8004EA34D /* socialize-cell-image-default@2x.png */,
-				16C330FE13F3D1E8004EA34D /* socialize-comment-detail-bottom-shadow-background.png */,
-				16C330FF13F3D1E8004EA34D /* socialize-comment-detail-bottom-shadow-background@2x.png */,
-				16C3310013F3D1E8004EA34D /* socialize-comment-details-icon-geo-disabled.png */,
-				16C3310113F3D1E8004EA34D /* socialize-comment-details-icon-geo-disabled@2x.png */,
-				16C3310213F3D1E8004EA34D /* socialize-comment-details-icon-geo-enabled.png */,
-				16C3310313F3D1E8004EA34D /* socialize-comment-details-icon-geo-enabled@2x.png */,
-				16C3310413F3D1E8004EA34D /* socialize-comment-user-background.png */,
-				16C3310513F3D1E8004EA34D /* socialize-comment-user-background@2x.png */,
-				16C3310613F3D1E8004EA34D /* SocializeConfigurationInfo.plist */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		16E2C3D1139778FE007C91ED /* SocializeObjects */ = {
@@ -941,7 +908,6 @@
 		5CC3DAB1137881B900B11B78 = {
 			isa = PBXGroup;
 			children = (
-				6D03BB4113F49C0B00A69384 /* CoreLocation.framework */,
 				5CC3DAC31378824800B11B78 /* Socialize */,
 				5CC3DAEE1378859000B11B78 /* unitTests */,
 				16E2C43A1398C40E007C91ED /* SampleSdkApp */,
@@ -964,10 +930,10 @@
 			isa = PBXGroup;
 			children = (
 				6D03BAF113F4544A00A69384 /* OAuth */,
-				162B26E813E2C3BD00591AEB /* Socialize-IOS.embeddedframework */,
 				162B26E113E2C14800591AEB /* JSON */,
 				1673D68F13DEA40E00A86589 /* OCMock */,
 				5C54DE6013830F9800090269 /* libOCMock.a */,
+				6D03BB4113F49C0B00A69384 /* CoreLocation.framework */,
 				16C330E013F3C2D1004EA34D /* MapKit.framework */,
 				6D97F03C13DFC91500B16454 /* QuartzCore.framework */,
 				163636FB13A6431400403879 /* GHUnitIOS.framework */,
