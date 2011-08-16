@@ -125,7 +125,7 @@
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName
 {
     
-    Facebook* fb = [[Facebook alloc] initWithAppId:thirdPartyAppId];
+    SocializeFacebook* fb = [[SocializeFacebook alloc] initWithAppId:thirdPartyAppId];
 
     [fbAuth release]; fbAuth = nil;
     fbAuth = [[FacebookAuthenticator alloc] initWithFramework:fb apiKey:apiKey apiSecret:apiSecret appId:thirdPartyAppId service:self];
@@ -208,7 +208,7 @@
 #pragma mark - Facebook authenticator
 
 @interface FacebookAuthenticator()
-    @property (nonatomic, retain) Facebook* facebook;
+    @property (nonatomic, retain) SocializeFacebook* facebook;
     @property (nonatomic, retain) NSString* apiKey;
     @property (nonatomic, retain) NSString* apiSecret;
     @property (nonatomic, retain) NSString* thirdPartyAppId;
@@ -228,7 +228,7 @@
     [super dealloc];
 }
 
--(id) initWithFramework: (Facebook*) fb 
+-(id) initWithFramework: (SocializeFacebook*) fb 
                  apiKey: (NSString*) key 
               apiSecret: (NSString*) secret
                   appId: (NSString*)appId 

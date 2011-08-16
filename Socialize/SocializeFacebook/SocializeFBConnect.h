@@ -1,3 +1,7 @@
+/***
+ Symbols renamed to avoid collision in third party developers projects which might have an older version or a version of facebook SDK which might not work with Socialize SDK 
+ */
+
 /*
  * Copyright 2010 Facebook
  *
@@ -15,8 +19,8 @@
  */
 
 
-#include "Facebook.h"
-#include "FBDialog.h"
-#include "FBLoginDialog.h"
-#include "FBRequest.h"
-//#include "SBJSON.h"
+#include "SocializeFacebook.h"
+#include "SocializeFBDialog.h"
+#include "SocializeFBLoginDialog.h"
+#include "SocializeFBRequest.h"
+#include "SBJSON.h"

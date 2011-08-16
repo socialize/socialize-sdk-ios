@@ -11,7 +11,7 @@
 #import "SocializeProvider.h"
 #import <OCMock/OCMock.h>
 #import "Socialize.h"
-#import "FBConnect.h"
+#import "SocializeFBConnect.h"
 #import "SocializeCommonDefinitions.h"
 
 
@@ -72,10 +72,8 @@
     
     [[mockProvider expect] secureRequestWithMethodName:@"authenticate/" andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:_service];
     _service.provider = mockProvider;
-    
-    //[_service authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" udid:@"someid" //delegate:self];
-    
-     [_service  authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" 
+        
+    [_service  authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" 
             apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" 
             thirdPartyAuthToken:@"another token"
             thirdPartyAppId:@"anotheruserid"
@@ -127,7 +125,7 @@
     NSString* apiSecret = @"apiSecret";
     NSString* appId = @"appId";
     
-    id fbMock = [OCMockObject mockForClass: [Facebook class]];
+    id fbMock = [OCMockObject mockForClass: [SocializeFacebook class]];
     BOOL key = NO; 
     [[[fbMock stub]andReturnValue:OCMOCK_VALUE(key)]isSessionValid];
     
@@ -152,7 +150,7 @@
     [defaults setObject:date forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
     
-    id fbMock = [OCMockObject mockForClass: [Facebook class]];
+    id fbMock = [OCMockObject mockForClass: [SocializeFacebook class]];
     BOOL key = YES; 
     [[[fbMock stub]andReturnValue:OCMOCK_VALUE(key)]isSessionValid];
     [[[fbMock stub]andReturn:token]accessToken];
@@ -177,7 +175,7 @@
 
 -(void) testHandleURL
 {
-    id mockFb = [OCMockObject mockForClass: [Facebook class]];
+    id mockFb = [OCMockObject mockForClass: [SocializeFacebook class]];
     [[mockFb expect] handleOpenURL:nil];
     FacebookAuthenticator* fbAuth = [[[FacebookAuthenticator alloc] initWithFramework:mockFb apiKey:@"" apiSecret:@"" appId:@"" service:nil]autorelease];
     [fbAuth handleOpenURL:nil];
@@ -194,7 +192,7 @@
     NSDate* date =[NSDate date];
     
     
-    id fbMock = [OCMockObject mockForClass: [Facebook class]];
+    id fbMock = [OCMockObject mockForClass: [SocializeFacebook class]];
     [[[fbMock stub]andReturn:token]accessToken];
     [[[fbMock stub]andReturn:date]expirationDate];
     

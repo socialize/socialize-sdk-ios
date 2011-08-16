@@ -31,7 +31,7 @@ const BOOL shouldAllowSelfSignedCert = YES;
 
 /*- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)space {
     if([[space authenticationMethod] isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        if(shouldAllowSelfSignedCert) {
+        if(shouldAllowSelf SignedCert) {
             return YES; // Self-signed cert will be accepted
         } else {
             return NO;  // Self-signed cert will be rejected

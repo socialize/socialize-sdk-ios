@@ -1,3 +1,7 @@
+/***
+ Symbols renamed to avoid collision in third party developers projects which might have an older version or a version of facebook SDK which might not work with Socialize SDK 
+ */
+
 /*
  * Copyright 2010 Facebook
  *
@@ -15,9 +19,9 @@
  */
 
 
-#import "FBDialog.h"
+#import "SocializeFBDialog.h"
 
-@protocol FBLoginDialogDelegate;
+@protocol SocializeFBLoginDialogDelegate;
 
 /**
  * Do not use this interface directly, instead, use authorize in Facebook.h
@@ -26,18 +30,18 @@
  * It start pop-ups prompting for credentials and permissions.
  */
 
-@interface FBLoginDialog : FBDialog {
-  id<FBLoginDialogDelegate> _loginDelegate;
+@interface SocializeFBLoginDialog : SocializeFBDialog {
+  id<SocializeFBLoginDialogDelegate> _loginDelegate;
 }
 
 -(id) initWithURL:(NSString *) loginURL
       loginParams:(NSMutableDictionary *) params
-      delegate:(id <FBLoginDialogDelegate>) delegate;
+      delegate:(id <SocializeFBLoginDialogDelegate>) delegate;
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-@protocol FBLoginDialogDelegate <NSObject>
+@protocol SocializeFBLoginDialogDelegate <NSObject>
 
 - (void)fbDialogLogin:(NSString*)token expirationDate:(NSDate*)expirationDate;
 
