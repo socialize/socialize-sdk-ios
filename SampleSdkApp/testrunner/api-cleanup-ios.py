@@ -24,7 +24,7 @@ def modify_conf_plist(config_filepath , url):
 
 
 def create_conf(key,secret,url):
-    f = open('config.js','wr')
+    f = open('testscript/config.js','wr')
     
     text = 'consumer_key=\'%s\''%key
     text+= '\nconsumer_secret=\'%s\''%secret
@@ -87,13 +87,13 @@ def make_request(client, req_url, method, data, outfile=None):
         
 def main(key,secret,url):
     sig = oauth.SignatureMethod_HMAC_SHA1()    
-    auth_url = '/authenticate/'
-    purge_url = '/all_data/'
-    entity_url = '/entity/'
-    comment_url= '/comment/'
-    share_url='/share/'
-    like_url='/like/'
-    view_url='/view/'
+    auth_url = 'authenticate/'
+    purge_url = 'all_data/'
+    entity_url = 'entity/'
+    comment_url= 'comment/'
+    share_url='share/'
+    like_url='like/'
+    view_url='view/'
     udid = '1234566788'
 
 #    key='f04f5af0-5be0-4ae6-a1f1-8d418c0d7e6b'
@@ -189,12 +189,12 @@ def main(key,secret,url):
 if __name__ == "__main__":
     args = sys.argv
     if not len(args)==4:
-        print '\tusage: python api-cleanup-ios.py <consumer-key> <consumer-secret> <http://api.socialize.com/v1>'
+        print '\tusage: python api-cleanup-ios.py <consumer-key> <consumer-secret> <http://api.socialize.com/v1/>'
         sys.exit(2)
     elif not args[3].startswith('http://'):
-        print '\tinvalid format for <http://api.socialize.com/v1>'
+        print '\tinvalid format for <http://api.socialize.com/v1/>'
         sys.exit(2)                              
-    #python sdk-cleanup.py f04f5af0-5be0-4ae6-a1f1-8d418c0d7e6b 7a9a2b20-d4de-4d46-9c0b-f1653f0f1089 http://stage.getsocialize.com/v1
+    #python sdk-cleanup.py f04f5af0-5be0-4ae6-a1f1-8d418c0d7e6b 7a9a2b20-d4de-4d46-9c0b-f1653f0f1089 http://stage.getsocialize.com/v1/
 
     key = args[1]
     secret = args[2]
