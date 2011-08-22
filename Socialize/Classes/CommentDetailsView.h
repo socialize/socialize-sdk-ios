@@ -12,16 +12,16 @@
 
 @interface CommentDetailsView : UIScrollView <UIWebViewDelegate> {
 @private
-    IBOutlet UIWebView* commentMessage;
-    IBOutlet CommentMapView* mapOfUserLocation;
-    IBOutlet UIImageView* navImage;
-    IBOutlet UILabel* positionLable;
-    IBOutlet UIButton* profileNameButton;
-    IBOutlet UILabel* profileNameLable;
-    IBOutlet UIImageView* profileImage;
-    IBOutlet UIImageView* shadowBackground;
+    IBOutlet UIWebView*         commentMessage;
+    IBOutlet CommentMapView*    mapOfUserLocation;
+    IBOutlet UIImageView*       navImage;
+    IBOutlet UILabel*           positionLable;
+    IBOutlet UIButton*          profileNameButton;
+    IBOutlet UILabel*           profileNameLable;
+    IBOutlet UIImageView*       profileImage;
+    IBOutlet UIImageView*       shadowBackground;
     
-    BOOL showMap;
+    BOOL                        showMap;
 }
 
 @property (nonatomic, retain) IBOutlet UIWebView* commentMessage; 

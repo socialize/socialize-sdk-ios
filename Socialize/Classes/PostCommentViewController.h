@@ -17,7 +17,7 @@
 
 @protocol PostCommentViewControllerDelegate;
 
-@interface PostCommentViewController : UITableViewController <UITextViewDelegate, MKMapViewDelegate, MKReverseGeocoderDelegate >
+@interface PostCommentViewController : UIViewController <UITextViewDelegate, MKMapViewDelegate, MKReverseGeocoderDelegate >
 {
 
     NSString    *userLocationText;
