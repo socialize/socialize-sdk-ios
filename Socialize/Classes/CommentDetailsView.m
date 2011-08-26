@@ -108,7 +108,6 @@
     }
     
     CGFloat newHeight = [self desideSize];
-    
     if(newHeight > self.frame.size.height){
         
         CGRect selfFrame = self.frame;

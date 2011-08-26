@@ -10,16 +10,16 @@
 #import "UIButton+Socialize.h"
 #import "CommentMapView.h"
 #import "AppMakrLocation.h"
+#import "Socialize.h"
+#import "LoadingView.h"
 
 @interface PostCommentViewController ()
 
 -(void)setShareLocation:(BOOL)enableLocation;
 -(void)setUserLocationTextLabel;
-
 -(void)sendButtonPressed:(id)button;
 -(void)closeButtonPressed:(id)button;
 -(void)configureDoNotShareLocationButton;
-
 
 @property(nonatomic, retain) NSString * userLocationText;
 
@@ -33,13 +33,13 @@
 @synthesize doNotShareLocationButton;
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
-@synthesize delegate;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
-    {
+    if (self) {
+        _socialize = [[Socialize alloc ] initWithDelegate:self];
+        _entityUrlString = [entityUrlString retain];
     }
     return self;
 }
@@ -66,64 +66,54 @@
 -(void)setUserLocationTextLabel
 {
     
-    if (shareLocation) 
-    {
+    if (shareLocation) {
         
         self.locationText.text = self.userLocationText;
         self.locationText.font = [UIFont fontWithName:@"Helvetica" size:12.0];
         self.locationText.textColor = [UIColor colorWithRed:(35.0/255) green:(130.0/255) blue:(210.0/255) alpha:1];
+        
     }
-    else
-    {
+    else {
+
         self.locationText.text = @"Location will not be shared.";
         self.locationText.font = [UIFont fontWithName:@"Helvetica-Oblique" size:12.0];
         self.locationText.textColor = [UIColor colorWithRed:(167.0/255) green:(167.0/255) blue:(167.0/255) alpha:1];
 
     }
-        
- 
 }
 
--(void)setShareLocation:(BOOL)enableLocation
-{
+-(void)setShareLocation:(BOOL)enableLocation {
     
-    
-    if (enableLocation) 
-    {
+    if (enableLocation) {
         
         if (![AppMakrLocation applicationIsAuthorizedToUseLocationServices])
         {
-            UIAlertView * locationNotEnabledAlert = [[[UIAlertView alloc]initWithTitle:nil 
+            UIAlertView * locationNotEnabledAlert = [[[UIAlertView alloc] initWithTitle:nil 
                                                       message:@"Please Turn On Location Services in Settings to Allow This Application to Share Your Location." 
                                                                              delegate:nil 
                                                                     cancelButtonTitle:@"OK" 
-                                                                    otherButtonTitles:nil]autorelease];
+                                                                    otherButtonTitles:nil] autorelease];
             
             [locationNotEnabledAlert show];
             
             return;
         }
        
-        [activateLocationButton setImage:[UIImage imageNamed:@"socialize_resources/socialize-comment-location-enabled.png"] forState:UIControlStateNormal];
-        [activateLocationButton setImage:[UIImage imageNamed:@"socialize_resources/socialize-comment-location-enabled.png"] forState:UIControlStateHighlighted];
+        [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateNormal];
+        [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateHighlighted];
         
     }
     else
     {
                 
-        [activateLocationButton setImage:[UIImage imageNamed:@"socialize_resources/socialize-comment-location-disabled.png"] forState:UIControlStateNormal];
-        
-        [activateLocationButton setImage:[UIImage imageNamed:@"socialize_resources/socialize-comment-location-disabled.png"] forState:UIControlStateHighlighted];
+        [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-disabled.png"] forState:UIControlStateNormal];
+        [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-disabled.png"] forState:UIControlStateHighlighted];
         
     }
     
     shareLocation = enableLocation;
     [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithBool:shareLocation] forKey:@"post_comment_share_location"];
-   
     [self setUserLocationTextLabel];
-    
-    
-    
 }
 
 -(IBAction)activateLocationButtonPressed:(id)sender
@@ -139,7 +129,6 @@
         }
         else
         {
-            
             [commentTextView becomeFirstResponder];
             keyboardIsVisible = YES;
         }
@@ -162,40 +151,49 @@
 }
 
 #pragma mark - navigation bar button actions
--(void)sendButtonPressed:(id)button
-{
-  [self.delegate postCommentController:self 
-                 sendComment:commentTextView.text 
-                 location:mapOfUserLocation.userLocation.location 
-                 shareLocation:shareLocation];
+-(void)sendButtonPressed:(id)button {
 
+    NSNumber* latitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.latitude];
+    NSNumber* longitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.longitude];
+    
+    _loadingIndicatorView = [LoadingView loadingViewInView:commentTextView]; 
+    [_socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:longitude latitude:latitude];
 }
 
--(void)closeButtonPressed:(id)button
-{
+#pragma mark SocializeServiceDelegate
+
+-(void)service:(SocializeService *)service didFail:(NSError *)error{
+
+    [_loadingIndicatorView removeView]; _loadingIndicatorView = nil;
+    UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [msg show];
+    [msg release];
     
-    [self.delegate postCommentControllerCancell:self];
+}
+
+-(void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object{
+    
+    [_loadingIndicatorView removeView];_loadingIndicatorView = nil;
+    [self dismissModalViewControllerAnimated:YES];
+    
+}
+
+#pragma mark -
+-(void)closeButtonPressed:(id)button {
+//    [self navigationController] ;
+//    [self.delegate postCommentControllerCancell:self];
+    [_loadingIndicatorView removeView];_loadingIndicatorView = nil;
+    [self dismissModalViewControllerAnimated:YES];
+
 }
 
 #pragma mark - UITextViewDelegate callbacks
 
--(void)textViewDidChange:(UITextView *)textView
-{
+-(void)textViewDidChange:(UITextView *)textView {
     if ([commentTextView.text length] > 0) 
-    {
       self.navigationItem.rightBarButtonItem.enabled = YES;     
-    }
     else
-    {
-        
       self.navigationItem.rightBarButtonItem.enabled = NO;
-    }
-      
-}
-#pragma mark - Master Controller overrides
-- (void)retainActivityIndicatorMiddleOfView 
-{
-	_loadingIndicatorView = [AppMakrLoadingView loadingViewInView:commentTextView];
 }
 
 #pragma mark - View lifecycle
@@ -214,7 +212,6 @@
     self.navigationItem.leftBarButtonItem = leftButtonItem;
     [leftButtonItem release];
     
-    
     UIButton * sendButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Send"];
     [sendButton addTarget:self action:@selector(sendButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -223,7 +220,6 @@
     rightButtonItem.enabled = NO;
     self.navigationItem.rightBarButtonItem = rightButtonItem;
     [rightButtonItem release];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -232,8 +228,6 @@
     
     [self.commentTextView becomeFirstResponder];
     keyboardIsVisible = YES;
-    
-    
     
     if ([AppMakrLocation applicationIsAuthorizedToUseLocationServices])
     {
@@ -256,8 +250,8 @@
     MKUserLocation * userLocation = mapOfUserLocation.userLocation;
     CLLocation * newLocation = userLocation.location;
     
-    if (newLocation) 
-    {
+    if (newLocation) {
+        
         MKCoordinateSpan span;
         span.latitudeDelta = 0.0025;
         span.longitudeDelta = 0.0025;
@@ -269,23 +263,20 @@
         geoCoder.delegate = self;
         [geoCoder start];
     }
-    
-   
 }
 
 -(void)configureDoNotShareLocationButton
 {
     NSString * normalImageURI = nil;
     NSString * highlightImageURI = nil;
-    normalImageURI = @"socialize_resources/socialize-comment-button.png";
-    highlightImageURI = @"socialize_resources/socialize-comment-button-active.png";
+    
+    normalImageURI = @"socialize-comment-button.png";
+    highlightImageURI = @"socialize-comment-button-active.png";
     
     UIImage * normalImage = [[UIImage imageNamed:normalImageURI]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
 	
     UIImage * highlightImage = [[UIImage imageNamed:highlightImageURI]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
     
-    
-	
     [self.doNotShareLocationButton setBackgroundImage:normalImage forState:UIControlStateNormal];
 	[self.doNotShareLocationButton setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
     
@@ -322,23 +313,17 @@
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
+    
     MKPlacemark * myPlacemark = placemark;
     NSString * state = myPlacemark.administrativeArea;
     NSString * city =  myPlacemark.locality;
     NSString * neighborhood = myPlacemark.subLocality;
   
-    
     if (neighborhood && ([neighborhood length] > 0))
-    {
        self.userLocationText = [NSString stringWithFormat:@"%@, %@", neighborhood,city];
-    
-    }
     else if (city && ([city length]>0))
-    {
-        
        self.userLocationText = [NSString stringWithFormat:@"%@, %@", city,state];
-    }
-    
+
     [self setUserLocationTextLabel];
   
     geocoder.delegate = nil;

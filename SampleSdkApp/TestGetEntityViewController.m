@@ -56,7 +56,7 @@
     [self.view addSubview:hiddenButton];
 
     self.view.backgroundColor = [UIColor lightGrayColor];
-    [getButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK ];
+    [getButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK ];
     
 }
 

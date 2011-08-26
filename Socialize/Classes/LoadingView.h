@@ -14,7 +14,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppMakrLoadingView : UIView
+@interface LoadingView : UIView
 {
 	NSTimeInterval minDuration;
 	NSDate* timestamp;

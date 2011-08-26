@@ -10,18 +10,17 @@
 #import <MapKit/MapKit.h>
 
 @class CommentDetailsView;
-//@protocol SocializeComment;
+@protocol SocializeComment;
 
-@interface CommentDetailsViewController : UIViewController//<MKReverseGeocoderDelegate> 
+@interface CommentDetailsViewController : UIViewController<MKReverseGeocoderDelegate> 
 {
     @private
-        //URLDownload *profileImageDownloader;
-        //MKReverseGeocoder *geoCoder;
-        //IBOutlet CommentDetailsView* commentDetailsView;
-        //EntryComment* entryComment;
+        MKReverseGeocoder*      geoCoder;
+        CommentDetailsView*     commentDetailsView;
+        id<SocializeComment>    comment;
 }
 
-@property (nonatomic, retain) IBOutlet CommentDetailsView* commentDetailsView;
-//@property (nonatomic, retain) EntryComment* entryComment;
+@property (nonatomic, retain) IBOutlet CommentDetailsView*     commentDetailsView;
+@property (nonatomic, retain) IBOutlet id<SocializeComment>    comment;
 
 @end

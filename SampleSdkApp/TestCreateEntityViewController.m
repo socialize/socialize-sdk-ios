@@ -52,7 +52,7 @@
     [self.view addSubview:hiddenButton];
 
     self.view.backgroundColor = [UIColor lightGrayColor];
-    [createButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    [createButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
 
     // Do any additional setup after loading the view from its nib.
 }
@@ -125,6 +125,7 @@
     
     [_loadingView removeView]; 
     if ([object conformsToProtocol:@protocol(SocializeEntity)]){
+
         id<SocializeEntity> entity = (id<SocializeEntity>)object;
         resultsView.hidden = NO;
         successLabel.text = SUCCESS;

@@ -55,8 +55,8 @@
     resultsView.hidden = YES;
     
     self.view.backgroundColor = [UIColor lightGrayColor];
-    [unlikeButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK]; 
-    [likeButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    [unlikeButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK]; 
+    [likeButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -102,7 +102,7 @@
     }
     id<SocializeLike> like = [self isLiked: entityTextField.text];
     if(!like) {
-        _loadingView = [LoadingView loadingViewInView:self.view withMessage:@"Liking"]; 
+        _loadingView = [LoadingView loadingViewInView:self.view/* withMessage:@"Liking"*/]; 
         [_socialize likeEntityWithKey:entityTextField.text longitude:nil latitude:nil];
     }
 }
@@ -118,7 +118,7 @@
 
     id<SocializeLike> like = [self isLiked: entityTextField.text];
     if(like){
-        _loadingView = [LoadingView loadingViewInView:self.view withMessage:@"unliking"]; 
+        _loadingView = [LoadingView loadingViewInView:self.view /*withMessage:@"unliking"*/]; 
         [_socialize unlikeEntity:like];    
     }
 }

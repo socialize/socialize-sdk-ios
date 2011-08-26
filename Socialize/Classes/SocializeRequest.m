@@ -87,7 +87,7 @@ expectedJSONFormat = _expectedJSONFormat;
                                 requestURL:(NSString *) url 
 {
     //We will release object in network responce section. After complete of execution of user delegates;
-    SocializeRequest* request = [[SocializeRequest alloc] init]; 
+    SocializeRequest* request = [[SocializeRequest alloc] init] ; 
     request.delegate = delegate;
     request.url = url;
     request.httpMethod = httpMethod;

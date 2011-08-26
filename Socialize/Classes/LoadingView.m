@@ -12,7 +12,7 @@
 //  appreciated but not required.
 //
 
-#import "AppMakrLoadingView.h"
+#import "LoadingView.h"
 #import <QuartzCore/QuartzCore.h>
 
 //
@@ -68,7 +68,7 @@ static CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 	return path;
 }
 
-@implementation AppMakrLoadingView
+@implementation LoadingView
 
 @synthesize minDuration;
 @synthesize timestamp;
@@ -87,8 +87,8 @@ static CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 //
 + (id)loadingViewInView:(UIView *)aSuperview
 {
-	AppMakrLoadingView *loadingView =
-	[[[AppMakrLoadingView alloc] initWithFrame:[aSuperview bounds]] autorelease];
+	LoadingView *loadingView =
+	[[[LoadingView alloc] initWithFrame:[aSuperview bounds]] autorelease];
 	
 	if (!loadingView)
 	{
@@ -132,8 +132,8 @@ static CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 //loading in view for our socialize stuff
 + (id)loadingViewInView:(UIView *)aSuperview withFrame:(CGRect)myrect andString:(NSString*)message
 {
-	AppMakrLoadingView *loadingView =
-	[[[AppMakrLoadingView alloc] initWithFrame:myrect] autorelease];
+	LoadingView *loadingView =
+	[[[LoadingView alloc] initWithFrame:myrect] autorelease];
 	if (!loadingView)
 	{
 		return nil;

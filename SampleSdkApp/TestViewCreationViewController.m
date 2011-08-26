@@ -64,7 +64,7 @@
     self.navigationItem.title = @"Test create a view";
 
     self.view.backgroundColor = [UIColor lightGrayColor];
-    [createButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    [createButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
     
     resultsView.hidden =  YES; 
     hiddenButton = [[UIButton alloc] init]; 

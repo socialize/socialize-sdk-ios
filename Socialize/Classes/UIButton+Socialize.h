@@ -6,6 +6,7 @@
 //  Copyright 2011 pointabout. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
 typedef enum 
@@ -18,7 +19,10 @@ typedef enum
 @interface UIButton (Socialize)
 
 -(void)configureWithTitle:(NSString *)title type:(AMSocializeButtonType)type;
+-(void)configureWithoutResizingWithTitle:(NSString *)title type:(AMSocializeButtonType)type;
 -(void)configureWithType:(AMSocializeButtonType)type;
+-(void)configureWithoutResizingWithType:(AMSocializeButtonType)type;
+
 
 +(UIButton *)redSocializeNavBarButton;
 +(UIButton *)redSocializeNavBarButtonWithTitle:(NSString *)title;

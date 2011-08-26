@@ -23,8 +23,6 @@
     return size;
 }
 
-
-
 // empty placeholders 
 + (void)beginAnimations:(NSString *)animationID context:(void *)context{
 

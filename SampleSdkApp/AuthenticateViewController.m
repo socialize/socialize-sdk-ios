@@ -51,9 +51,9 @@
 {
     [super viewDidLoad];
     
-    [_authenticateButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
-    [_thirdpartyAuthentication configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
-    [_emptyCacheButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
+    [_authenticateButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    [_thirdpartyAuthentication configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
+    [_emptyCacheButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
 
     self.view.backgroundColor = [UIColor lightGrayColor];
     self.navigationItem.title = @"Authenticate";
@@ -73,15 +73,14 @@
 
 -(IBAction)authenticate:(id)sender {
     
-    _loadingView = [LoadingView loadingViewInView:self.view withMessage:@"Authenticating"]; 
+    _loadingView = [LoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 
     [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text];
 
 }
 
 -(IBAction)authenticateViaFacebook:(id)sender
 {
-    _loadingView = [LoadingView loadingViewInView:self.view withMessage:@"Authenticating"]; 
-//    [socialize removeAuthenticationInfo];
+    _loadingView = [LoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 
     [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text thirdPartyAppId:@"115622641859087" thirdPartyName:FacebookAuth];
 }
 
@@ -122,22 +121,21 @@
 
 }
 
-
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
-
+    
 }
 
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object{
-
+    
 }
 
 // creating multiple likes or comments would invoke this callback
 -(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
-
+    
 }
 
 // getting/retrieving comments or likes would invoke this callback
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
-
+    
 }
 @end

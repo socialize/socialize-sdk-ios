@@ -313,13 +313,12 @@
 {
 	[_socializeDelegate likeListButtonTouched:sender];
 }
- 
 
 -(void)shareButtonPressed:(id)sender
 {
 	//[_socializeDelegate shareButtonTouched:sender];
 }
- */
+*/
 
 #pragma -
 - (void)drawRect:(CGRect)rect 

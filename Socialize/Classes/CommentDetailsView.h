@@ -35,5 +35,7 @@
 @property (nonatomic, assign) BOOL showMap;
 
 -(void) updateProfileImage: (UIImage* )image;
+-(void) configurateProfileImage;
+
 
 @end

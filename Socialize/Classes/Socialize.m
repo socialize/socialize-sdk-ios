@@ -20,7 +20,7 @@
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
-    [_provider release]; _provider = nil;
+    //[_provider release]; _provider = nil;
     [_authService release]; _authService = nil;
     [_likeService release]; _likeService = nil;
     [_commentsService release]; _commentsService = nil;
