@@ -184,7 +184,7 @@
 		5CD4882D1386C42300E60C4C /* profile_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CD4882C1386C42300E60C4C /* profile_functions.c */; };
 		5CFA263C1379D84F003675B8 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */; };
 		6D133A7114041AC600E16BA4 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D133A7014041AC600E16BA4 /* CommentsTableViewCell.xib */; };
-		6D133A7614041BBA00E16BA4 /* CommentsTableFooterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D133A7414041BBA00E16BA4 /* CommentsTableFooterView.h */; };
+		6D133A7614041BBA00E16BA4 /* CommentsTableFooterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D133A7414041BBA00E16BA4 /* CommentsTableFooterView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D133A7714041BBA00E16BA4 /* CommentsTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D133A7514041BBA00E16BA4 /* CommentsTableFooterView.m */; };
 		6D144CFD13BCE75D001D8E0A /* SocializeViewService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D144CFB13BCE75D001D8E0A /* SocializeViewService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D144CFE13BCE75D001D8E0A /* SocializeViewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D144CFC13BCE75D001D8E0A /* SocializeViewService.m */; };
@@ -202,29 +202,27 @@
 		6D31962413CDE72F00154B1F /* SocializeDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D31962513CDE72F00154B1F /* SocializeDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */; };
 		6D44A37913FC3456004B3A46 /* SocializeActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A37813FC3456004B3A46 /* SocializeActionTests.m */; };
-		6D44A3B813FC62D6004B3A46 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A3B613FC62D6004B3A46 /* JSONKit.h */; };
-		6D44A3B913FC62D6004B3A46 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D44A3B713FC62D6004B3A46 /* libJSONKit.a */; };
 		6D44A64013FC6E9D004B3A46 /* socialize-navbar-button-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A63E13FC6E79004B3A46 /* socialize-navbar-button-dark.png */; };
 		6D44A64213FC6E9D004B3A46 /* socialize-navbar-button-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A63F13FC6E82004B3A46 /* socialize-navbar-button-dark@2x.png */; };
 		6D44A79313FDDBE7004B3A46 /* SocializeActionViewForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A79213FDDBE6004B3A46 /* SocializeActionViewForTest.m */; };
 		6D44A79813FED3AC004B3A46 /* UIFontForTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A79613FED3A7004B3A46 /* UIFontForTest.h */; };
 		6D44A79913FED3AC004B3A46 /* UIFontForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A79713FED3A9004B3A46 /* UIFontForTest.m */; };
 		6D44A7B91402BCDD004B3A46 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6742ED13F9AFD800140AA3 /* libSocialize.a */; };
-		6D44A7C71402BF6E004B3A46 /* SocializeActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A7C51402BF6E004B3A46 /* SocializeActionView.h */; };
+		6D44A7C71402BF6E004B3A46 /* SocializeActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A7C51402BF6E004B3A46 /* SocializeActionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D44A7C81402BF6E004B3A46 /* SocializeActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A7C61402BF6E004B3A46 /* SocializeActionView.m */; };
-		6D44A7D31402D20E004B3A46 /* NSNumber+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A7D11402D20A004B3A46 /* NSNumber+Additions.h */; };
+		6D44A7D31402D20E004B3A46 /* NSNumber+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A7D11402D20A004B3A46 /* NSNumber+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D44A7D41402D20E004B3A46 /* NSNumber+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A7D21402D20C004B3A46 /* NSNumber+Additions.m */; };
 		6D44A8B41402F7E6004B3A46 /* NSNumber+Additions.h in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A7D11402D20A004B3A46 /* NSNumber+Additions.h */; };
 		6D44A8E514030198004B3A46 /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A8E314030196004B3A46 /* action-bar-bg.png */; };
 		6D44A8E714030198004B3A46 /* action-bar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A8E414030197004B3A46 /* action-bar-bg@2x.png */; };
-		6D44A8FE14032982004B3A46 /* SocializeCommentsTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */; };
+		6D44A8FE14032982004B3A46 /* SocializeCommentsTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D44A8FF14032982004B3A46 /* SocializeCommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */; };
 		6D44A902140329CB004B3A46 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
-		6D44A90A140419B6004B3A46 /* CommentsTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A90414041848004B3A46 /* CommentsTableViewCell.h */; };
+		6D44A90A140419B6004B3A46 /* CommentsTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A90414041848004B3A46 /* CommentsTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D44A90B140419B6004B3A46 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A90514041851004B3A46 /* CommentsTableViewCell.m */; };
-		6D44A90D140419B6004B3A46 /* NSDateAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A9061404186C004B3A46 /* NSDateAdditions.h */; };
+		6D44A90D140419B6004B3A46 /* NSDateAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A9061404186C004B3A46 /* NSDateAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D44A90E140419B6004B3A46 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A9071404189C004B3A46 /* NSDateAdditions.m */; };
-		6D44A910140419B6004B3A46 /* TableBGInfoView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A908140418E0004B3A46 /* TableBGInfoView.h */; };
+		6D44A910140419B6004B3A46 /* TableBGInfoView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A908140418E0004B3A46 /* TableBGInfoView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D44A911140419B6004B3A46 /* TableBGInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A90914041939004B3A46 /* TableBGInfoView.m */; };
 		6D45310513E8862200286BEC /* LikeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D45310313E8862100286BEC /* LikeListViewController.m */; };
 		6D45310613E8862200286BEC /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D45310413E8862100286BEC /* LikeListViewController.xib */; };
@@ -277,7 +275,7 @@
 		6D67435413F9EEC300140AA3 /* action-bar-button-black-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67433413F9EEC200140AA3 /* action-bar-button-black-hover.png */; };
 		6D7343E013F5CD4B0076A8E6 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D7343D013F5CD4B0076A8E6 /* SocializeConfigurationInfo.plist */; };
 		6D7343E313F5CD710076A8E6 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D7343E213F5CD710076A8E6 /* SocializeConfigurationInfo.plist */; };
-		6D8984431407CA6B00482F1E /* HtmlPageCreator.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8984411407CA6B00482F1E /* HtmlPageCreator.h */; };
+		6D8984431407CA6B00482F1E /* HtmlPageCreator.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8984411407CA6B00482F1E /* HtmlPageCreator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D8984441407CA6B00482F1E /* HtmlPageCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8984421407CA6B00482F1E /* HtmlPageCreator.m */; };
 		6D8984471407CD1900482F1E /* comment_template_clear.htm in Resources */ = {isa = PBXBuildFile; fileRef = 6D8984461407CD1900482F1E /* comment_template_clear.htm */; };
 		6D8984A514083E7F00482F1E /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D89844E14083E7F00482F1E /* action-bar-bg.png */; };
@@ -367,6 +365,38 @@
 		6D8984F914083E7F00482F1E /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D8984A214083E7F00482F1E /* SocializeCommentsTableViewController.xib */; };
 		6D8984FA14083E7F00482F1E /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D8984A314083E7F00482F1E /* SocializeConfigurationInfo.plist */; };
 		6D8984FB14083E7F00482F1E /* Socialize-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8984A414083E7F00482F1E /* Socialize-iOS.framework */; };
+		6D8985A61408510300482F1E /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8985921408510300482F1E /* JSONKit.h */; };
+		6D8985A91408510300482F1E /* NSMutableURLRequest+Parameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8985971408510300482F1E /* NSMutableURLRequest+Parameters.h */; };
+		6D8985AA1408510300482F1E /* NSString+URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8985981408510300482F1E /* NSString+URLEncoding.h */; };
+		6D8985AB1408510300482F1E /* NSURL+Base.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8985991408510300482F1E /* NSURL+Base.h */; };
+		6D8985AC1408510300482F1E /* OAAsynchronousDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D89859A1408510300482F1E /* OAAsynchronousDataFetcher.h */; };
+		6D8985AD1408510300482F1E /* OAConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D89859B1408510300482F1E /* OAConsumer.h */; };
+		6D8985AE1408510300482F1E /* OADataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D89859C1408510300482F1E /* OADataFetcher.h */; };
+		6D8985AF1408510300482F1E /* OAHMAC_SHA1SignatureProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D89859D1408510300482F1E /* OAHMAC_SHA1SignatureProvider.h */; };
+		6D8985B01408510300482F1E /* OAMutableURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D89859E1408510300482F1E /* OAMutableURLRequest.h */; };
+		6D8985B11408510300482F1E /* OAPlaintextSignatureProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D89859F1408510300482F1E /* OAPlaintextSignatureProvider.h */; };
+		6D8985B21408510300482F1E /* OARequestParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8985A01408510300482F1E /* OARequestParameter.h */; };
+		6D8985B31408510300482F1E /* OAServiceTicket.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8985A11408510300482F1E /* OAServiceTicket.h */; };
+		6D8985B41408510300482F1E /* OASignatureProviding.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8985A21408510300482F1E /* OASignatureProviding.h */; };
+		6D8985B51408510300482F1E /* OAToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8985A31408510300482F1E /* OAToken.h */; };
+		6D8985B61408510300482F1E /* OAToken_KeychainExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8985A41408510300482F1E /* OAToken_KeychainExtensions.h */; };
+		6D8985B71408510300482F1E /* OAuthConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8985A51408510300482F1E /* OAuthConsumer.h */; };
+		6D8985C21408531F00482F1E /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8985931408510300482F1E /* libJSONKit.a */; };
+		6D8985C31408532400482F1E /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8985951408510300482F1E /* libOAuth.a */; };
+		6D89863C1408565100482F1E /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8985931408510300482F1E /* libJSONKit.a */; };
+		6D89863D1408565500482F1E /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8985951408510300482F1E /* libOAuth.a */; };
+		6D89885414085B0700482F1E /* SocializeCommentsTableViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */; };
+		6D89890B14085F1000482F1E /* NSDateAdditions.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D44A9061404186C004B3A46 /* NSDateAdditions.h */; };
+		6D89890C14085F1000482F1E /* HtmlPageCreator.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D8984411407CA6B00482F1E /* HtmlPageCreator.h */; };
+		6D89890D14085F1000482F1E /* NSNumber+Additions.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D44A7D11402D20A004B3A46 /* NSNumber+Additions.h */; };
+		6D89890E14085F1000482F1E /* SocializeActionView.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D44A7C51402BF6E004B3A46 /* SocializeActionView.h */; };
+		6D89890F14085F1000482F1E /* TableBGInfoView.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D44A908140418E0004B3A46 /* TableBGInfoView.h */; };
+		6D89891014085F1000482F1E /* LoadingView.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D8D234B140725500026185F /* LoadingView.h */; };
+		6D89891114085F1000482F1E /* UINavigationBarBackground.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D8D224B1405980F0026185F /* UINavigationBarBackground.h */; };
+		6D89891214085F1000482F1E /* UIButton+Socialize.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6DDBEA6914057B4A00E41FC0 /* UIButton+Socialize.h */; };
+		6D89891314085F1000482F1E /* UILabel-Additions.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6DDBEA6B14057B4F00E41FC0 /* UILabel-Additions.h */; };
+		6D89891414085F1000482F1E /* CommentsTableFooterView.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D133A7414041BBA00E16BA4 /* CommentsTableFooterView.h */; };
+		6D89891514085F1000482F1E /* CommentsTableViewCell.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D44A90414041848004B3A46 /* CommentsTableViewCell.h */; };
 		6D8D221214057FD70026185F /* socialize-navbar-button-green-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D220A14057FAA0026185F /* socialize-navbar-button-green-active.png */; };
 		6D8D221414057FD70026185F /* socialize-navbar-button-green-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D220B14057FAB0026185F /* socialize-navbar-button-green-active@2x.png */; };
 		6D8D221614057FD70026185F /* socialize-navbar-button-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D220C14057FAD0026185F /* socialize-navbar-button-green.png */; };
@@ -385,11 +415,11 @@
 		6D8D2245140596A20026185F /* socialize-navbar-button-blue-bg-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D22341405962F0026185F /* socialize-navbar-button-blue-bg-normal@2x.png */; };
 		6D8D2247140596A20026185F /* socialize-navbar-button-dark-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D2235140596530026185F /* socialize-navbar-button-dark-active.png */; };
 		6D8D2249140596A20026185F /* socialize-navbar-button-dark-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D2236140596790026185F /* socialize-navbar-button-dark-active@2x.png */; };
-		6D8D224D140598160026185F /* UINavigationBarBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8D224B1405980F0026185F /* UINavigationBarBackground.h */; };
+		6D8D224D140598160026185F /* UINavigationBarBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8D224B1405980F0026185F /* UINavigationBarBackground.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D8D224E140598160026185F /* UINavigationBarBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D224C140598110026185F /* UINavigationBarBackground.m */; };
 		6D8D225114059CA20026185F /* socialize-navbar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D224F14059C920026185F /* socialize-navbar-bg.png */; };
 		6D8D225314059CA20026185F /* socialize-navbar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D225014059C960026185F /* socialize-navbar-bg@2x.png */; };
-		6D8D234D1407256E0026185F /* LoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8D234B140725500026185F /* LoadingView.h */; };
+		6D8D234D1407256E0026185F /* LoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D8D234B140725500026185F /* LoadingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D8D234E1407256E0026185F /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D234C140725570026185F /* LoadingView.m */; };
 		6D97F02C13DF81A100B16454 /* AuthenticateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D97F02A13DF81A100B16454 /* AuthenticateViewController.xib */; };
 		6D97F03113DF82F200B16454 /* TestListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D97F02F13DF82F000B16454 /* TestListController.xib */; };
@@ -428,9 +458,9 @@
 		6DDBEA611405709B00E41FC0 /* comments-cell-bg-borders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA5E1405709900E41FC0 /* comments-cell-bg-borders@2x.png */; };
 		6DDBEA65140573E100E41FC0 /* socialize-nocomments-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA63140573DE00E41FC0 /* socialize-nocomments-icon.png */; };
 		6DDBEA67140573E100E41FC0 /* socialize-nocomments-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA64140573DF00E41FC0 /* socialize-nocomments-icon@2x.png */; };
-		6DDBEA6D14057B6000E41FC0 /* UIButton+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DDBEA6914057B4A00E41FC0 /* UIButton+Socialize.h */; };
+		6DDBEA6D14057B6000E41FC0 /* UIButton+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DDBEA6914057B4A00E41FC0 /* UIButton+Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DDBEA6E14057B6000E41FC0 /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBEA6A14057B4B00E41FC0 /* UIButton+Socialize.m */; };
-		6DDBEA6F14057B6000E41FC0 /* UILabel-Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DDBEA6B14057B4F00E41FC0 /* UILabel-Additions.h */; };
+		6DDBEA6F14057B6000E41FC0 /* UILabel-Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DDBEA6B14057B4F00E41FC0 /* UILabel-Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DDBEA7014057B6000E41FC0 /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBEA6C14057B5700E41FC0 /* UILabel-Additions.m */; };
 		6DEEC9BF13D6238F0066CFA2 /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DEEC9BE13D6238F0066CFA2 /* urls.plist */; };
 		6DEFF42713B01B4000AE962A /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
@@ -499,6 +529,18 @@
 			dstPath = "${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework/${PRODUCT_NAME}.framework/Headers";
 			dstSubfolderSpec = 0;
 			files = (
+				6D89890B14085F1000482F1E /* NSDateAdditions.h in Copy Headers */,
+				6D89890C14085F1000482F1E /* HtmlPageCreator.h in Copy Headers */,
+				6D89890D14085F1000482F1E /* NSNumber+Additions.h in Copy Headers */,
+				6D89890E14085F1000482F1E /* SocializeActionView.h in Copy Headers */,
+				6D89890F14085F1000482F1E /* TableBGInfoView.h in Copy Headers */,
+				6D89891014085F1000482F1E /* LoadingView.h in Copy Headers */,
+				6D89891114085F1000482F1E /* UINavigationBarBackground.h in Copy Headers */,
+				6D89891214085F1000482F1E /* UIButton+Socialize.h in Copy Headers */,
+				6D89891314085F1000482F1E /* UILabel-Additions.h in Copy Headers */,
+				6D89891414085F1000482F1E /* CommentsTableFooterView.h in Copy Headers */,
+				6D89891514085F1000482F1E /* CommentsTableViewCell.h in Copy Headers */,
+				6D89885414085B0700482F1E /* SocializeCommentsTableViewController.h in Copy Headers */,
 				16B48DB413DEEDDF00EE0A92 /* SocializeLikeService.h in Copy Headers */,
 				16B48DB313DEEDC300EE0A92 /* NSString+UrlSerialization.h in Copy Headers */,
 				16B48DB513DEEDF200EE0A92 /* SocializeAuthenticateService.h in Copy Headers */,
@@ -693,8 +735,6 @@
 		6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDataFetcher.m; path = Classes/SocializeDataFetcher.m; sourceTree = "<group>"; };
 		6D44A37713FC3456004B3A46 /* SocializeActionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActionTests.h; path = "Test Cases/SocializeActionTests.h"; sourceTree = "<group>"; };
 		6D44A37813FC3456004B3A46 /* SocializeActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActionTests.m; path = "Test Cases/SocializeActionTests.m"; sourceTree = "<group>"; };
-		6D44A3B613FC62D6004B3A46 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		6D44A3B713FC62D6004B3A46 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libJSONKit.a; sourceTree = "<group>"; };
 		6D44A63E13FC6E79004B3A46 /* socialize-navbar-button-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-dark.png"; path = "Resources/socialize-navbar-button-dark.png"; sourceTree = "<group>"; };
 		6D44A63F13FC6E82004B3A46 /* socialize-navbar-button-dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-dark@2x.png"; path = "Resources/socialize-navbar-button-dark@2x.png"; sourceTree = "<group>"; };
 		6D44A79113FDDBE6004B3A46 /* SocializeActionViewForTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActionViewForTest.h; path = "Test Cases/SocializeActionViewForTest.h"; sourceTree = "<group>"; };
@@ -864,6 +904,24 @@
 		6D8984A214083E7F00482F1E /* SocializeCommentsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeCommentsTableViewController.xib; sourceTree = "<group>"; };
 		6D8984A314083E7F00482F1E /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
 		6D8984A414083E7F00482F1E /* Socialize-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "Socialize-iOS.framework"; sourceTree = "<group>"; };
+		6D8985921408510300482F1E /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		6D8985931408510300482F1E /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libJSONKit.a; sourceTree = "<group>"; };
+		6D8985951408510300482F1E /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOAuth.a; sourceTree = "<group>"; };
+		6D8985971408510300482F1E /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
+		6D8985981408510300482F1E /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		6D8985991408510300482F1E /* NSURL+Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Base.h"; sourceTree = "<group>"; };
+		6D89859A1408510300482F1E /* OAAsynchronousDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAAsynchronousDataFetcher.h; sourceTree = "<group>"; };
+		6D89859B1408510300482F1E /* OAConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAConsumer.h; sourceTree = "<group>"; };
+		6D89859C1408510300482F1E /* OADataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OADataFetcher.h; sourceTree = "<group>"; };
+		6D89859D1408510300482F1E /* OAHMAC_SHA1SignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAHMAC_SHA1SignatureProvider.h; sourceTree = "<group>"; };
+		6D89859E1408510300482F1E /* OAMutableURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAMutableURLRequest.h; sourceTree = "<group>"; };
+		6D89859F1408510300482F1E /* OAPlaintextSignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAPlaintextSignatureProvider.h; sourceTree = "<group>"; };
+		6D8985A01408510300482F1E /* OARequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OARequestParameter.h; sourceTree = "<group>"; };
+		6D8985A11408510300482F1E /* OAServiceTicket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAServiceTicket.h; sourceTree = "<group>"; };
+		6D8985A21408510300482F1E /* OASignatureProviding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OASignatureProviding.h; sourceTree = "<group>"; };
+		6D8985A31408510300482F1E /* OAToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken.h; sourceTree = "<group>"; };
+		6D8985A41408510300482F1E /* OAToken_KeychainExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken_KeychainExtensions.h; sourceTree = "<group>"; };
+		6D8985A51408510300482F1E /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
 		6D8D220A14057FAA0026185F /* socialize-navbar-button-green-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-green-active.png"; path = "Resources/socialize-navbar-button-green-active.png"; sourceTree = "<group>"; };
 		6D8D220B14057FAB0026185F /* socialize-navbar-button-green-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-green-active@2x.png"; path = "Resources/socialize-navbar-button-green-active@2x.png"; sourceTree = "<group>"; };
 		6D8D220C14057FAD0026185F /* socialize-navbar-button-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-green.png"; path = "Resources/socialize-navbar-button-green.png"; sourceTree = "<group>"; };
@@ -997,6 +1055,8 @@
 				16FCABD113B885CC0034499F /* GHUnitIOS.framework in Frameworks */,
 				16ECF49F13E0505A00E0BF5E /* libOAuth.a in Frameworks */,
 				6D8984FB14083E7F00482F1E /* Socialize-iOS.framework in Frameworks */,
+				6D8985C21408531F00482F1E /* libJSONKit.a in Frameworks */,
+				6D8985C31408532400482F1E /* libOAuth.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,7 +1066,6 @@
 			files = (
 				5CC3DAC21378824800B11B78 /* Foundation.framework in Frameworks */,
 				16F21EE013CDDE5000911977 /* UIKit.framework in Frameworks */,
-				6D44A3B913FC62D6004B3A46 /* libJSONKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1024,6 +1083,8 @@
 				1681BDB313F5567300EC6042 /* MapKit.framework in Frameworks */,
 				1681BDCA13F55D3600EC6042 /* CoreLocation.framework in Frameworks */,
 				1681BDCB13F55E2400EC6042 /* QuartzCore.framework in Frameworks */,
+				6D89863C1408565100482F1E /* libJSONKit.a in Frameworks */,
+				6D89863D1408565500482F1E /* libOAuth.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1290,8 +1351,9 @@
 		5CC3DAC01378824800B11B78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D8985911408510300482F1E /* JSON */,
+				6D8985941408510300482F1E /* OAuth */,
 				6D89844C14083E7F00482F1E /* Socialize-iOS.embeddedframework */,
-				6D44A3B513FC62D6004B3A46 /* JSON */,
 				1673D68F13DEA40E00A86589 /* OCMock */,
 				5C54DE6013830F9800090269 /* libOCMock.a */,
 				16C330E013F3C2D1004EA34D /* MapKit.framework */,
@@ -1465,16 +1527,6 @@
 			name = "UI tests";
 			sourceTree = "<group>";
 		};
-		6D44A3B513FC62D6004B3A46 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				6D44A3B613FC62D6004B3A46 /* JSONKit.h */,
-				6D44A3B713FC62D6004B3A46 /* libJSONKit.a */,
-			);
-			name = JSON;
-			path = Socialize/Libraries/JSON;
-			sourceTree = "<group>";
-		};
 		6D49744113B404DF00463D23 /* Like tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1637,6 +1689,48 @@
 				6D8984A314083E7F00482F1E /* SocializeConfigurationInfo.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		6D8985911408510300482F1E /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				6D8985921408510300482F1E /* JSONKit.h */,
+				6D8985931408510300482F1E /* libJSONKit.a */,
+			);
+			name = JSON;
+			path = Socialize/Libraries/JSON;
+			sourceTree = "<group>";
+		};
+		6D8985941408510300482F1E /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				6D8985951408510300482F1E /* libOAuth.a */,
+				6D8985961408510300482F1E /* OAuthConsumer */,
+			);
+			name = OAuth;
+			path = Socialize/Libraries/OAuth;
+			sourceTree = "<group>";
+		};
+		6D8985961408510300482F1E /* OAuthConsumer */ = {
+			isa = PBXGroup;
+			children = (
+				6D8985971408510300482F1E /* NSMutableURLRequest+Parameters.h */,
+				6D8985981408510300482F1E /* NSString+URLEncoding.h */,
+				6D8985991408510300482F1E /* NSURL+Base.h */,
+				6D89859A1408510300482F1E /* OAAsynchronousDataFetcher.h */,
+				6D89859B1408510300482F1E /* OAConsumer.h */,
+				6D89859C1408510300482F1E /* OADataFetcher.h */,
+				6D89859D1408510300482F1E /* OAHMAC_SHA1SignatureProvider.h */,
+				6D89859E1408510300482F1E /* OAMutableURLRequest.h */,
+				6D89859F1408510300482F1E /* OAPlaintextSignatureProvider.h */,
+				6D8985A01408510300482F1E /* OARequestParameter.h */,
+				6D8985A11408510300482F1E /* OAServiceTicket.h */,
+				6D8985A21408510300482F1E /* OASignatureProviding.h */,
+				6D8985A31408510300482F1E /* OAToken.h */,
+				6D8985A41408510300482F1E /* OAToken_KeychainExtensions.h */,
+				6D8985A51408510300482F1E /* OAuthConsumer.h */,
+			);
+			path = OAuthConsumer;
 			sourceTree = "<group>";
 		};
 		6DF5996213ABE843000D125A /* Auth Tests */ = {
@@ -1831,22 +1925,37 @@
 				1681BDA113F555DC00EC6042 /* SocializeFBDialog.h in Headers */,
 				1681BDA313F555DC00EC6042 /* SocializeFBLoginDialog.h in Headers */,
 				1681BDA513F555DC00EC6042 /* SocializeFBRequest.h in Headers */,
+				6D44A8FE14032982004B3A46 /* SocializeCommentsTableViewController.h in Headers */,
+				6D44A7C71402BF6E004B3A46 /* SocializeActionView.h in Headers */,
+				6D44A910140419B6004B3A46 /* TableBGInfoView.h in Headers */,
+				6DDBEA6D14057B6000E41FC0 /* UIButton+Socialize.h in Headers */,
+				6D133A7614041BBA00E16BA4 /* CommentsTableFooterView.h in Headers */,
+				6D8D234D1407256E0026185F /* LoadingView.h in Headers */,
+				6D44A90D140419B6004B3A46 /* NSDateAdditions.h in Headers */,
+				6D8D224D140598160026185F /* UINavigationBarBackground.h in Headers */,
+				6D44A7D31402D20E004B3A46 /* NSNumber+Additions.h in Headers */,
+				6D44A90A140419B6004B3A46 /* CommentsTableViewCell.h in Headers */,
+				6D8984431407CA6B00482F1E /* HtmlPageCreator.h in Headers */,
+				6DDBEA6F14057B6000E41FC0 /* UILabel-Additions.h in Headers */,
 				1681BDBC13F55BBB00EC6042 /* AppMakrLocation.h in Headers */,
 				1681BDC013F55BCB00EC6042 /* PostCommentViewController.h in Headers */,
-				6D44A3B813FC62D6004B3A46 /* JSONKit.h in Headers */,
 				6D44A79813FED3AC004B3A46 /* UIFontForTest.h in Headers */,
-				6D44A7C71402BF6E004B3A46 /* SocializeActionView.h in Headers */,
-				6D44A7D31402D20E004B3A46 /* NSNumber+Additions.h in Headers */,
-				6D44A8FE14032982004B3A46 /* SocializeCommentsTableViewController.h in Headers */,
-				6D44A90A140419B6004B3A46 /* CommentsTableViewCell.h in Headers */,
-				6D44A90D140419B6004B3A46 /* NSDateAdditions.h in Headers */,
-				6D44A910140419B6004B3A46 /* TableBGInfoView.h in Headers */,
-				6D133A7614041BBA00E16BA4 /* CommentsTableFooterView.h in Headers */,
-				6DDBEA6D14057B6000E41FC0 /* UIButton+Socialize.h in Headers */,
-				6DDBEA6F14057B6000E41FC0 /* UILabel-Additions.h in Headers */,
-				6D8D224D140598160026185F /* UINavigationBarBackground.h in Headers */,
-				6D8D234D1407256E0026185F /* LoadingView.h in Headers */,
-				6D8984431407CA6B00482F1E /* HtmlPageCreator.h in Headers */,
+				6D8985A61408510300482F1E /* JSONKit.h in Headers */,
+				6D8985A91408510300482F1E /* NSMutableURLRequest+Parameters.h in Headers */,
+				6D8985AA1408510300482F1E /* NSString+URLEncoding.h in Headers */,
+				6D8985AB1408510300482F1E /* NSURL+Base.h in Headers */,
+				6D8985AC1408510300482F1E /* OAAsynchronousDataFetcher.h in Headers */,
+				6D8985AD1408510300482F1E /* OAConsumer.h in Headers */,
+				6D8985AE1408510300482F1E /* OADataFetcher.h in Headers */,
+				6D8985AF1408510300482F1E /* OAHMAC_SHA1SignatureProvider.h in Headers */,
+				6D8985B01408510300482F1E /* OAMutableURLRequest.h in Headers */,
+				6D8985B11408510300482F1E /* OAPlaintextSignatureProvider.h in Headers */,
+				6D8985B21408510300482F1E /* OARequestParameter.h in Headers */,
+				6D8985B31408510300482F1E /* OAServiceTicket.h in Headers */,
+				6D8985B41408510300482F1E /* OASignatureProviding.h in Headers */,
+				6D8985B51408510300482F1E /* OAToken.h in Headers */,
+				6D8985B61408510300482F1E /* OAToken_KeychainExtensions.h in Headers */,
+				6D8985B71408510300482F1E /* OAuthConsumer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
