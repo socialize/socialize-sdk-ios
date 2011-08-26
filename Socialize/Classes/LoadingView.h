@@ -5,7 +5,7 @@
 //  Created by Matt Gallagher on 12/04/09.
 //  Copyright Matt Gallagher 2009. All rights reserved.
 // 
-//  Permission is given to use this source code file, free of charge, in any
+//  Permission is given to use this source code file without charge in any
 //  project, commercial or otherwise, entirely at your risk, with the condition
 //  that any redistribution (in part or whole) of source code must retain
 //  this copyright and permission notice. Attribution in compiled projects is
@@ -16,10 +16,14 @@
 
 @interface LoadingView : UIView
 {
-
+	NSTimeInterval minDuration;
+	NSDate* timestamp;
 }
-+ (id)loadingViewInView:(UIView *)aSuperview withMessage:(NSString*)message;
+
+@property NSTimeInterval minDuration;
+@property (retain) NSDate* timestamp;
+
 + (id)loadingViewInView:(UIView *)aSuperview;
 - (void)removeView;
-
++ (id)loadingViewInView:(UIView *)aSuperview withFrame:(CGRect)myrect andString:(NSString*)message;
 @end

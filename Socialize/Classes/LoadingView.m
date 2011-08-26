@@ -5,7 +5,7 @@
 //  Created by Matt Gallagher on 12/04/09.
 //  Copyright Matt Gallagher 2009. All rights reserved.
 // 
-//  Permission is given to use this source code file, free of charge, in any
+//  Permission is given to use this source code file without charge in any
 //  project, commercial or otherwise, entirely at your risk, with the condition
 //  that any redistribution (in part or whole) of source code must retain
 //  this copyright and permission notice. Attribution in compiled projects is
@@ -20,48 +20,48 @@
 //
 // Creates a CGPathRect with a round rect of the given radius.
 //
-CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
+static CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 {
 	//
 	// Create the boundary path
 	//
 	CGMutablePathRef path = CGPathCreateMutable();
 	CGPathMoveToPoint(path, NULL,
-		rect.origin.x,
-		rect.origin.y + rect.size.height - cornerRadius);
-
+					  rect.origin.x,
+					  rect.origin.y + rect.size.height - cornerRadius);
+	
 	// Top left corner
 	CGPathAddArcToPoint(path, NULL,
-		rect.origin.x,
-		rect.origin.y,
-		rect.origin.x + rect.size.width,
-		rect.origin.y,
-		cornerRadius);
-
+						rect.origin.x,
+						rect.origin.y,
+						rect.origin.x + rect.size.width,
+						rect.origin.y,
+						cornerRadius);
+	
 	// Top right corner
 	CGPathAddArcToPoint(path, NULL,
-		rect.origin.x + rect.size.width,
-		rect.origin.y,
-		rect.origin.x + rect.size.width,
-		rect.origin.y + rect.size.height,
-		cornerRadius);
-
+						rect.origin.x + rect.size.width,
+						rect.origin.y,
+						rect.origin.x + rect.size.width,
+						rect.origin.y + rect.size.height,
+						cornerRadius);
+	
 	// Bottom right corner
 	CGPathAddArcToPoint(path, NULL,
-		rect.origin.x + rect.size.width,
-		rect.origin.y + rect.size.height,
-		rect.origin.x,
-		rect.origin.y + rect.size.height,
-		cornerRadius);
-
+						rect.origin.x + rect.size.width,
+						rect.origin.y + rect.size.height,
+						rect.origin.x,
+						rect.origin.y + rect.size.height,
+						cornerRadius);
+	
 	// Bottom left corner
 	CGPathAddArcToPoint(path, NULL,
-		rect.origin.x,
-		rect.origin.y + rect.size.height,
-		rect.origin.x,
-		rect.origin.y,
-		cornerRadius);
-
+						rect.origin.x,
+						rect.origin.y + rect.size.height,
+						rect.origin.x,
+						rect.origin.y,
+						cornerRadius);
+	
 	// Close the path at the rounded rect
 	CGPathCloseSubpath(path);
 	
@@ -69,6 +69,9 @@ CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 }
 
 @implementation LoadingView
+
+@synthesize minDuration;
+@synthesize timestamp;
 
 //
 // loadingViewInView:
@@ -85,7 +88,8 @@ CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 + (id)loadingViewInView:(UIView *)aSuperview
 {
 	LoadingView *loadingView =
-		[[[LoadingView alloc] initWithFrame:[aSuperview bounds]] autorelease];
+	[[[LoadingView alloc] initWithFrame:[aSuperview bounds]] autorelease];
+	
 	if (!loadingView)
 	{
 		return nil;
@@ -93,67 +97,43 @@ CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 	
 	loadingView.opaque = NO;
 	loadingView.autoresizingMask =
-		UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[aSuperview addSubview:loadingView];
-
-	const CGFloat DEFAULT_LABEL_WIDTH = 280.0;
-	const CGFloat DEFAULT_LABEL_HEIGHT = 50.0;
-	CGRect labelFrame = CGRectMake(0, 0, DEFAULT_LABEL_WIDTH, DEFAULT_LABEL_HEIGHT);
-	UILabel *loadingLabel =
-		[[[UILabel alloc]
-			initWithFrame:labelFrame]
-		autorelease];
-	loadingLabel.text = NSLocalizedString(@"Loading...", nil);
-	loadingLabel.textColor = [UIColor whiteColor];
-	loadingLabel.backgroundColor = [UIColor clearColor];
-	loadingLabel.textAlignment = UITextAlignmentCenter;
-	loadingLabel.font = [UIFont boldSystemFontOfSize:[UIFont labelFontSize]];
-	loadingLabel.autoresizingMask =
-		UIViewAutoresizingFlexibleLeftMargin |
-		UIViewAutoresizingFlexibleRightMargin |
-		UIViewAutoresizingFlexibleTopMargin |
-		UIViewAutoresizingFlexibleBottomMargin;
 	
-	[loadingView addSubview:loadingLabel];
 	UIActivityIndicatorView *activityIndicatorView =
-		[[[UIActivityIndicatorView alloc]
-			initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge]
-		autorelease];
+	[[[UIActivityIndicatorView alloc]
+	  initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge]
+	 autorelease];
 	[loadingView addSubview:activityIndicatorView];
 	activityIndicatorView.autoresizingMask =
-		UIViewAutoresizingFlexibleLeftMargin |
-		UIViewAutoresizingFlexibleRightMargin |
-		UIViewAutoresizingFlexibleTopMargin |
-		UIViewAutoresizingFlexibleBottomMargin;
+	UIViewAutoresizingFlexibleLeftMargin |
+	UIViewAutoresizingFlexibleRightMargin |
+	UIViewAutoresizingFlexibleTopMargin |
+	UIViewAutoresizingFlexibleBottomMargin;
 	[activityIndicatorView startAnimating];
-	
-	CGFloat totalHeight =
-		loadingLabel.frame.size.height +
-		activityIndicatorView.frame.size.height;
-	labelFrame.origin.x = floor(0.5 * (loadingView.frame.size.width - DEFAULT_LABEL_WIDTH));
-	labelFrame.origin.y = floor(0.5 * (loadingView.frame.size.height - totalHeight));
-	loadingLabel.frame = labelFrame;
 	
 	CGRect activityIndicatorRect = activityIndicatorView.frame;
 	activityIndicatorRect.origin.x =
-		0.5 * (loadingView.frame.size.width - activityIndicatorRect.size.width);
+	0.5 * (loadingView.frame.size.width - activityIndicatorRect.size.width);
 	activityIndicatorRect.origin.y =
-		loadingLabel.frame.origin.y + loadingLabel.frame.size.height;
+	0.5 * (loadingView.frame.size.height - activityIndicatorRect.size.height);
 	activityIndicatorView.frame = activityIndicatorRect;
 	
 	// Set up the fade-in animation
 	CATransition *animation = [CATransition animation];
+	animation.duration = 0.18;
 	[animation setType:kCATransitionFade];
 	[[aSuperview layer] addAnimation:animation forKey:@"layerAnimation"];
 	
+	loadingView.timestamp = [NSDate date];
 	return loadingView;
 }
 
-
-+ (id)loadingViewInView:(UIView *)aSuperview withMessage:(NSString*)message
+//loading in view for our socialize stuff
++ (id)loadingViewInView:(UIView *)aSuperview withFrame:(CGRect)myrect andString:(NSString*)message
 {
 	LoadingView *loadingView =
-    [[[LoadingView alloc] initWithFrame:[aSuperview bounds]] autorelease];
+	[[[LoadingView alloc] initWithFrame:myrect] autorelease];
 	if (!loadingView)
 	{
 		return nil;
@@ -161,52 +141,52 @@ CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 	
 	loadingView.opaque = NO;
 	loadingView.autoresizingMask =
-    UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[aSuperview addSubview:loadingView];
-    
-	const CGFloat DEFAULT_LABEL_WIDTH = 280.0;
-	const CGFloat DEFAULT_LABEL_HEIGHT = 50.0;
+	
+	const CGFloat DEFAULT_LABEL_WIDTH = 0.0;
+	const CGFloat DEFAULT_LABEL_HEIGHT = 0.0;
 	CGRect labelFrame = CGRectMake(0, 0, DEFAULT_LABEL_WIDTH, DEFAULT_LABEL_HEIGHT);
 	UILabel *loadingLabel =
-    [[[UILabel alloc]
-      initWithFrame:labelFrame]
-     autorelease];
+	[[[UILabel alloc]
+	  initWithFrame:labelFrame]
+	 autorelease];
 	loadingLabel.text = message;
 	loadingLabel.textColor = [UIColor whiteColor];
 	loadingLabel.backgroundColor = [UIColor clearColor];
 	loadingLabel.textAlignment = UITextAlignmentCenter;
 	loadingLabel.font = [UIFont boldSystemFontOfSize:[UIFont labelFontSize]];
 	loadingLabel.autoresizingMask =
-    UIViewAutoresizingFlexibleLeftMargin |
-    UIViewAutoresizingFlexibleRightMargin |
-    UIViewAutoresizingFlexibleTopMargin |
-    UIViewAutoresizingFlexibleBottomMargin;
+	UIViewAutoresizingFlexibleLeftMargin |
+	UIViewAutoresizingFlexibleRightMargin |
+	UIViewAutoresizingFlexibleTopMargin |
+	UIViewAutoresizingFlexibleBottomMargin;
 	
 	[loadingView addSubview:loadingLabel];
 	UIActivityIndicatorView *activityIndicatorView =
-    [[[UIActivityIndicatorView alloc]
-      initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge]
-     autorelease];
+	[[[UIActivityIndicatorView alloc]
+	  initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge]
+	 autorelease];
 	[loadingView addSubview:activityIndicatorView];
 	activityIndicatorView.autoresizingMask =
-    UIViewAutoresizingFlexibleLeftMargin |
-    UIViewAutoresizingFlexibleRightMargin |
-    UIViewAutoresizingFlexibleTopMargin |
-    UIViewAutoresizingFlexibleBottomMargin;
+	UIViewAutoresizingFlexibleLeftMargin |
+	UIViewAutoresizingFlexibleRightMargin |
+	UIViewAutoresizingFlexibleTopMargin |
+	UIViewAutoresizingFlexibleBottomMargin;
 	[activityIndicatorView startAnimating];
 	
 	CGFloat totalHeight =
-    loadingLabel.frame.size.height +
-    activityIndicatorView.frame.size.height;
+	loadingLabel.frame.size.height +
+	activityIndicatorView.frame.size.height;
 	labelFrame.origin.x = floor(0.5 * (loadingView.frame.size.width - DEFAULT_LABEL_WIDTH));
 	labelFrame.origin.y = floor(0.5 * (loadingView.frame.size.height - totalHeight));
 	loadingLabel.frame = labelFrame;
 	
 	CGRect activityIndicatorRect = activityIndicatorView.frame;
 	activityIndicatorRect.origin.x =
-    0.5 * (loadingView.frame.size.width - activityIndicatorRect.size.width);
+	0.5 * (loadingView.frame.size.width - activityIndicatorRect.size.width);
 	activityIndicatorRect.origin.y =
-    loadingLabel.frame.origin.y + loadingLabel.frame.size.height;
+	loadingLabel.frame.origin.y + loadingLabel.frame.size.height;
 	activityIndicatorView.frame = activityIndicatorRect;
 	
 	// Set up the fade-in animation
@@ -214,8 +194,10 @@ CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 	[animation setType:kCATransitionFade];
 	[[aSuperview layer] addAnimation:animation forKey:@"layerAnimation"];
 	
+	loadingView.timestamp = [NSDate date];
 	return loadingView;
 }
+
 
 //
 // removeView
@@ -227,9 +209,10 @@ CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 {
 	UIView *aSuperview = [self superview];
 	[super removeFromSuperview];
-
+	
 	// Set up the animation
 	CATransition *animation = [CATransition animation];
+	animation.duration = 0.18;
 	[animation setType:kCATransitionFade];
 	
 	[[aSuperview layer] addAnimation:animation forKey:@"layerAnimation"];
@@ -240,30 +223,41 @@ CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 //
 // Draw the view.
 //
+
+#define kINNER_RECT_HEIGHT  100
+#define kINNER_RECT_WIDTH	100
+
+
 - (void)drawRect:(CGRect)rect
 {
-	rect.size.height -= 1;
-	rect.size.width -= 1;
 	
-	const CGFloat RECT_PADDING = 8.0;
+	const CGFloat RECT_PADDING = 0.0;
 	rect = CGRectInset(rect, RECT_PADDING, RECT_PADDING);
 	
-	const CGFloat ROUND_RECT_CORNER_RADIUS = 5.0;
-	CGPathRef roundRectPath = NewPathWithRoundRect(rect, ROUND_RECT_CORNER_RADIUS);
+	CGRect innerRect;
+	innerRect.origin.x = floor(0.5 * (rect.size.width - kINNER_RECT_WIDTH));
+	innerRect.origin.y = floor(0.5 * (rect.size.height - kINNER_RECT_HEIGHT));
+	
+	innerRect.size = CGSizeMake(kINNER_RECT_WIDTH, kINNER_RECT_HEIGHT);
+	
+	CGPathRef backgroundRectPath = NewPathWithRoundRect(rect, 0);
+	CGPathRef innerRectPath  = NewPathWithRoundRect(innerRect, 8);
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
-
-	const CGFloat BACKGROUND_OPACITY = 0.85;
-	CGContextSetRGBFillColor(context, 0, 0, 0, BACKGROUND_OPACITY);
-	CGContextAddPath(context, roundRectPath);
-	CGContextFillPath(context);
-
-	const CGFloat STROKE_OPACITY = 0.25;
-	CGContextSetRGBStrokeColor(context, 1, 1, 1, STROKE_OPACITY);
-	CGContextAddPath(context, roundRectPath);
-	CGContextStrokePath(context);
+	CGFloat BACKGROUND_OPACITY;
 	
-	CGPathRelease(roundRectPath);
+	BACKGROUND_OPACITY = 0.60;
+	CGContextSetRGBFillColor(context, 0, 0, 0, BACKGROUND_OPACITY);
+	CGContextAddPath(context, backgroundRectPath);
+	CGContextFillPath(context);
+	
+	BACKGROUND_OPACITY = 0.85;
+	CGContextSetRGBFillColor(context, 0, 0, 0, BACKGROUND_OPACITY);
+	CGContextAddPath(context, innerRectPath);
+	CGContextFillPath(context);
+	
+	CGPathRelease(backgroundRectPath);
+	CGPathRelease(innerRectPath);
 }
 
 //
@@ -273,6 +267,8 @@ CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 //
 - (void)dealloc
 {
+	if (timestamp)
+		[timestamp release];
     [super dealloc];
 }
 

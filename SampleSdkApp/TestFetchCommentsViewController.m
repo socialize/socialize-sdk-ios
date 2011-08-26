@@ -9,6 +9,8 @@
 #import "TestFetchCommentsViewController.h"
 #import "Socialize.h"
 #import "UIButton+Socialize.h"
+#import "CommentDetailsViewController.h"
+#import "SocializeCommentsTableViewController.h"
 
 #define SUCCESS @"success"
 #define FAIL @"fail"
@@ -46,7 +48,7 @@
     self.navigationItem.title = @"Fetch Comment";
     
     self.view.backgroundColor = [UIColor lightGrayColor];
-    [_fetchButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    [_fetchButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
     _tableView.backgroundColor = [UIColor lightGrayColor];
 
     _tableView.delegate = self;
@@ -80,9 +82,10 @@
         hiddenButton.accessibilityLabel = @"hiddenButton";
         [self.view addSubview:hiddenButton];
     }
-
-    _loadingView = [LoadingView loadingViewInView:self.view]; 
-    [_socialize getCommentList:_textField.text first:nil last:nil];
+    
+    SocializeCommentsTableViewController* commentsController = [[[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString:_textField.text] autorelease];
+    
+    [self.navigationController pushViewController:commentsController animated:YES];
 }
 
 #pragma mark - Table view data source
@@ -115,7 +118,10 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    CommentDetailsViewController* cdView = [[CommentDetailsViewController alloc] init];
+    [self.navigationController pushViewController:cdView animated:YES];
+    [cdView release];
 }
 
 #pragma Socialize Service callbacks

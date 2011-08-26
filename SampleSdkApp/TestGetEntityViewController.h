@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Socialize.h"
 #import "LoadingView.h"
-
+#import "SocializeActionView.h"
 
 @interface TestGetEntityViewController : UIViewController<SocializeServiceDelegate> {
     
@@ -18,6 +18,7 @@
     IBOutlet UITextField* getEntityTextField;
     Socialize*            _socialize;
     LoadingView*          _loadingView;
+    SocializeActionView*  _actionView;
     
     /*info view */
     
@@ -31,6 +32,7 @@
     
     IBOutlet UITextField* resultTextField;
     UIButton*             hiddenButton;
+    
 }
 
 @property (retain, nonatomic) UILabel*   getEntityResultLabel;

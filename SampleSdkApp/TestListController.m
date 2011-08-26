@@ -15,7 +15,7 @@
 #import "LikeListViewController.h"
 #import "TestViewCreationViewController.h"
 #import "AuthenticateViewController.h"
-
+#import "PostCommentViewController.h"
 
 @implementation TestListController
 
@@ -160,6 +160,11 @@
             
         case 6:
             controller = [[TestViewCreationViewController alloc] initWithNibName:@"TestViewCreationViewController" bundle:nil];
+            [self.navigationController pushViewController:controller animated:YES];
+            break;
+            
+        case 7:
+            controller = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
 

@@ -27,7 +27,8 @@
 #define PADDING_BETWEEN_TEXT_ICON 2
 
 @interface SocializeActionView()
-
+-(CGSize)getSizeOfString:(NSString*)string withFont:(UIFont*)font;
+-(void)instantiateButtons;
 -(void)setupButtons;
 -(void)setButtonLabel:(NSString*)labelString 
 		withImageForNormalState:(NSString*)bgImage 
@@ -37,40 +38,54 @@
 		onButton:(UIButton*)button
 		withSelector:(SEL)selector;
 -(CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName;
--(void)commentButtonPressed:(id)sender;
--(void)likeButtonPressed:(id)sender;
--(void)shareButtonPressed:(id)sender;
--(void)configureListButton:(UIButton*)button;
 @end
 
 @implementation SocializeActionView
 
 @synthesize delegate = _socializeDelegate;
 @synthesize isLiked = _isLiked;
-
+//@synthesize commentButton = _commentButton, likeButton = _likeButton, viewButton = _viewCounter, activityIndicator = _activityIndicator, buttonLabelFont = _buttonLabelFont;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-		_buttonLabelFont = [[UIFont boldSystemFontOfSize:11.0f] retain];
+
         self.delegate = nil;
-	
+        [self instantiateButtons];
 		[self setupButtons];
+        
 	}
     return self;
 }
 
+- (id)initWithFrame:(CGRect)frame labelButtonFont:(UIFont*)labelFont likeButton:(UIButton*)likeButton viewButton:(UIButton*)viewButton commentButton:(UIButton*)commentButton activityIndicator:(UIActivityIndicatorView*)activityIndicator{
 
--(void)configureListButton:(UIButton*)button{
-	[button.titleLabel setFont:_buttonLabelFont];
-	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-	button.titleLabel.shadowColor = [UIColor blackColor]; 
-	button.titleLabel.shadowOffset = CGSizeMake(0, -1); 
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        self.delegate = nil;
+        _buttonLabelFont = [labelFont retain];
+        _commentButton = [commentButton retain];
+        _likeButton = [likeButton retain];
+        _viewCounter = [viewButton retain];
+        _activityIndicator = [activityIndicator retain];
+		[self setupButtons];
+	}   
+    return self;
+
 }
 
--(void)setupButtons 
-{
+-(void)instantiateButtons{
+    _buttonLabelFont = [[UIFont boldSystemFontOfSize:11.0f] retain];
+    _commentButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _likeButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _viewCounter = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _activityIndicator = [[UIActivityIndicatorView alloc] init];
+}
+
+-(void)setupButtons {
+    
 	CGPoint buttonOrigin;
 	CGSize buttonSize;
 
@@ -78,11 +93,10 @@
 	buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
 	
-	_commentButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	buttonSize = [self getButtonSizeForLabel:nil iconName:@"comment-sm-icon.png"];
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
-	
+ 
 	[self setButtonLabel:nil 
 			withImageForNormalState: @"action-bar-button-black.png" 
 			withImageForHightlightedState:@"action-bar-button-black-hover.png"
@@ -90,10 +104,9 @@
 			atOrigin:buttonOrigin
 			onButton:_commentButton
 			withSelector:@selector(commentButtonPressed:)];
-	
+    
 	[self addSubview:_commentButton];
 
-	_likeButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	buttonSize = [self getButtonSizeForLabel:nil iconName:@"action-bar-icon-like.png"];
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN; 
@@ -107,25 +120,7 @@
 		  withSelector:@selector(likeButtonPressed:)];
 
 	[self addSubview:_likeButton];
-    
-    _likeListButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	buttonSize = [self getButtonSizeForLabel:@"Like List" iconName:@"action-bar-icon-like.png"];
-	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
-	buttonOrigin.y = BUTTON_Y_ORIGIN; 
-    _likeListButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
-
-	[self setButtonLabel:@"Like List" 
-            withImageForNormalState: @"action-bar-button-black.png" 
-            withImageForHightlightedState:@"action-bar-button-black-hover.png"
-            withIconName:@"action-bar-icon-like.png"
-                atOrigin:buttonOrigin
-                onButton:_likeListButton
-            withSelector:@selector(likeListButtonPressed:)];
-    
-    [self configureListButton:_likeListButton];
-	[self addSubview:_likeListButton];
-    
- 	_viewCounter = [UIButton buttonWithType:UIButtonTypeCustom];
+        
 	_viewCounter.userInteractionEnabled = NO;
 	_viewCounter.hidden = YES;
 
@@ -141,20 +136,22 @@
 			withSelector:nil];
 	[self addSubview:_viewCounter];
 	
-	_activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(buttonOrigin.x, buttonOrigin.y + 5, 20, 20)];
+    _activityIndicator.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y + 5, 20, 20);
 	[self addSubview:_activityIndicator];
 	[_activityIndicator startAnimating];
 }
 
+-(CGSize)getSizeOfString:(NSString*)string withFont:(UIFont*)font{
+    return [string sizeWithFont:font];
+}
 
 - (CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName 
 {
-	if ([labelString length] <= 0)
-	{
+	if ([labelString length] <= 0) {
 		return CGSizeZero;
 	}
 	
-	CGSize labelSize = [labelString sizeWithFont:_buttonLabelFont];
+	CGSize labelSize = [self getSizeOfString:labelString withFont:_buttonLabelFont];
 	if (iconName)
 		labelSize = CGSizeMake(labelSize.width + (2 * BUTTON_PADDINGS) + PADDING_BETWEEN_TEXT_ICON + 5 + ICON_WIDTH, BUTTON_HEIGHT);
 	else
@@ -209,7 +206,6 @@
 		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-like.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
-//    [self setNeedsDisplay];
 }
 
 - (void) updateLikesCount:(NSNumber*) likesCount liked: (BOOL)isLiked
@@ -241,10 +237,9 @@
 	[_likeButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON)]; // Left inset is the negative of image width.
 }
 
-- (void) updateCommentsCount: (NSNumber*) commentsCount
+- (void) updateCommentsCount:(NSNumber*) commentsCount
 {
     NSString* formattedValue = [NSNumber formatMyNumber:commentsCount ceiling:[NSNumber numberWithInt:1000]];
-    
 	CGSize buttonSize = [self getButtonSizeForLabel:formattedValue  iconName:@"comment-sm-icon.png"];
     CGPoint buttonOrigin;
     buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
@@ -270,6 +265,7 @@
 		button.frame =  CGRectMake(frameOrigin.x, frameOrigin.y , buttonSize.width , buttonSize.height);
 	else
 		button.frame =  CGRectMake(frameOrigin.x, frameOrigin.y , buttonSize.width , buttonSize.height);
+ 
 	
 	UIImage* imageForNormalState = [[UIImage imageNamed:bgImage] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 	UIImage* imageForHighlightedState = [[UIImage imageNamed:bgHighlightedImage] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
@@ -291,6 +287,7 @@
 	button.titleLabel.shadowColor = [UIColor blackColor]; 
 	button.titleLabel.shadowOffset = CGSizeMake(0, -1); 
 	[button setImageEdgeInsets:UIEdgeInsetsMake(0, 0.0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
+    
 	if (labelString){
 		[button setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
 		[button setTitle:labelString forState:UIControlStateNormal];
@@ -312,7 +309,7 @@
 	[_socializeDelegate likeButtonTouched:sender];
 }
 
--(void)likeListButtonPressed:(id)sender
+/*-(void)likeListButtonPressed:(id)sender
 {
 	[_socializeDelegate likeListButtonTouched:sender];
 }
@@ -321,19 +318,21 @@
 {
 	//[_socializeDelegate shareButtonTouched:sender];
 }
+*/
 
 #pragma -
 - (void)drawRect:(CGRect)rect 
 {	
 	[super drawRect:rect];
-	[[[UIImage imageNamed:@"action-bar-bg.png"] stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5] 
+    UIImage* backgroundImage = [UIImage imageNamed:@"action-bar-bg.png"];
+	[[backgroundImage stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5] 
 			drawInRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
 					blendMode:kCGBlendModeMultiply alpha:1.0];
 }
 
 
 - (void)dealloc 
-{
+{    
     [_commentButton release]; _commentButton = nil;
 	[_likeButton release]; _likeButton = nil;
 	[_viewCounter release]; _viewCounter = nil;

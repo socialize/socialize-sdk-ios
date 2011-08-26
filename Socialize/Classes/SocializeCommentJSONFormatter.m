@@ -54,8 +54,14 @@
     [comment setDate:[df dateFromString:[JSONDictionary valueForKey:@"date"]]];
     [df release]; df = nil;
     
-    [comment setLat:[JSONDictionary valueForKey:@"lat"]];
-    [comment setLng:[JSONDictionary valueForKey:@"lng"]];
+    NSNumber* lat = [JSONDictionary valueForKey:@"lat"];
+    NSNumber* lng = [JSONDictionary valueForKey:@"lng"];
+    
+    if ([lat isKindOfClass:[NSNumber class]])
+        [comment setLat:lat];
+        
+    if ([lng isKindOfClass:[NSNumber class]])
+        [comment setLng:lng];
     
     [comment setEntity:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"entity"] forProtocol:@protocol(SocializeEntity)]];
     
