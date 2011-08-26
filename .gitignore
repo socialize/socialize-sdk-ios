@@ -16,3 +16,4 @@ Socialize-iOS.embeddedframework
 *.swp
 *.xcuserdatad
 SampleSdkApp/testrunner/Automation Results.plist
+SampleSdkApp/testrunner/sampleApp_instruments.trace
