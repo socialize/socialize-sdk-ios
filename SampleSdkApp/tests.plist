@@ -16,5 +16,7 @@
 	<string>Test getting a list of likes</string>
 	<key>item 6</key>
 	<string>Test create view</string>
+	<key>item 7</key>
+	<string>Test create comment view controller</string>
 </dict>
 </plist>

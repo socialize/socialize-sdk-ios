@@ -46,7 +46,7 @@
     self.navigationItem.title = @"Create Comment";
 
     self.view.backgroundColor = [UIColor lightGrayColor];
-    [createButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    [createButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
     
     resultsView.hidden = YES;
     hiddenButton = [[UIButton alloc] init]; 
@@ -79,7 +79,7 @@
     }
 
     _loadingView = [LoadingView loadingViewInView:self.view]; 
-    [_socialize createCommentForEntityWithKey:entityField.text comment:commentField.text];
+    [_socialize createCommentForEntityWithKey:entityField.text comment:commentField.text longitude:nil latitude:nil];
 }
 
 #pragma Socialize Service callbacks

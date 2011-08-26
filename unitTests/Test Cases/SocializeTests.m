@@ -27,7 +27,7 @@
 
 -(void) testAuthentcation
 {
-    id mockService = [OCMockObject mockForClass:[SocializeAuthenticateService class]];
+    id mockService = [OCMockObject niceMockForClass:[SocializeAuthenticateService class]];
     _service.authService = mockService;
     
     SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];

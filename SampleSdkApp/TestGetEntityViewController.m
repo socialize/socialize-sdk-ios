@@ -56,7 +56,7 @@
     [self.view addSubview:hiddenButton];
 
     self.view.backgroundColor = [UIColor lightGrayColor];
-    [getButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK ];
+    [getButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK ];
     
 }
 
@@ -123,6 +123,8 @@
     [getEntityTextField resignFirstResponder];
 }
 
+#define ACTION_PANE_HEIGHT 44
+
 // getting/retrieving comments or likes would invoke this callback
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
 
@@ -138,6 +140,7 @@
     if ([dataArray count]){
         id<SocializeObject> object = [dataArray objectAtIndex:0];
         if ([object conformsToProtocol:@protocol(SocializeEntity)]){
+            
             id<SocializeEntity> entity = (id<SocializeEntity>)object;
             resultTextField.text = SUCCESS;
             resultTextField.accessibilityValue = SUCCESS;
@@ -147,6 +150,14 @@
             commentsLabel.text = [NSString stringWithFormat:@"%d", entity.comments];
             likesLabel.text = [NSString stringWithFormat:@"%d", entity.likes];
             sharesLabel.text = [NSString stringWithFormat:@"%d", entity.shares];
+            
+            /*initialize and update the socialize action view*/
+            if (!_actionView){
+                _actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - ACTION_PANE_HEIGHT, self.view.bounds.size.height,  ACTION_PANE_HEIGHT)];
+                [self.view addSubview:_actionView];
+            }
+
+            [_actionView updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:NO withCommentsCount:[NSNumber numberWithInt:entity.comments]];
         }
     }
     else{

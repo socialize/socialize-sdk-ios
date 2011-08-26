@@ -45,7 +45,7 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor lightGrayColor];
-    [getLikesButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    [getLikesButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
     
     
     // Do any additional setup after loading the view from its nib.

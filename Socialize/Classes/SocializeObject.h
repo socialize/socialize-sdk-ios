@@ -8,19 +8,34 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Base protocol for every Socialize object.
+ */
 @protocol SocializeObject <NSObject>
 
+/**
+ Get unique object id.
+ */
 -(int) objectID;
+
+/**
+ Set unique obejct id.
+ @param objectID test
+ */
 -(void) setObjectID:(int)objectID;
 
 @end
 
+/**
+ Private implementation of SocializeObject protocaol.
+ */
 @interface SocializeObject : NSObject <SocializeObject>
 {
     @private 
         int _objectID;
 }
 
+/**Set/get object unique identificator*/
 @property(nonatomic, assign) int objectID;
 
 @end

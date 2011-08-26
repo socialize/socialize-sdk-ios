@@ -15,7 +15,7 @@
 #import "LikeListViewController.h"
 #import "TestViewCreationViewController.h"
 #import "AuthenticateViewController.h"
-
+#import "PostCommentViewController.h"
 
 @implementation TestListController
 
@@ -65,7 +65,7 @@
     
     //removing the previous authentication view controller
     
-    NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray: self.navigationController.viewControllers];
+/*    NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray: self.navigationController.viewControllers];
     UIViewController* viewControllerToRemove = nil;
     
     for (id object in allViewControllers) {
@@ -76,6 +76,7 @@
         [allViewControllers removeObjectIdenticalTo: viewControllerToRemove];
         self.navigationController.viewControllers = allViewControllers;
     }
+ */
 }
 
 - (void)viewDidUnload
@@ -159,6 +160,11 @@
             
         case 6:
             controller = [[TestViewCreationViewController alloc] initWithNibName:@"TestViewCreationViewController" bundle:nil];
+            [self.navigationController pushViewController:controller animated:YES];
+            break;
+            
+        case 7:
+            controller = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
 

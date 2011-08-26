@@ -79,8 +79,8 @@
 {
     id<SocializeEntity> entity = (id<SocializeEntity>)[_objectCreator createObjectForProtocol:@protocol(SocializeEntity)];
    
-    entity.key = keyOfEntity;
-    entity.name = nameOfEntity;
+    [entity setKey:keyOfEntity];
+    [entity setName:nameOfEntity];
    
     [self createEntity:entity];
 }

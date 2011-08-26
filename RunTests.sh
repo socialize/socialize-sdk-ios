@@ -35,9 +35,8 @@ fi
 RUN_CMD="\"$TEST_TARGET_EXECUTABLE_PATH\" -RegisterForSystemEvents"
 
 echo "Running: $RUN_CMD"
-eval $RUN_CMD
+eval $RUN_CMD 
 RETVAL=$?
-
 unset DYLD_ROOT_PATH
 unset DYLD_FRAMEWORK_PATH
 unset IPHONE_SIMULATOR_ROOT

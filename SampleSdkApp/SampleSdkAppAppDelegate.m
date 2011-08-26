@@ -27,10 +27,7 @@
     
     
     // we check the authentication here.
-    if ([_socialize isAuthenticated])
-        rootViewController = [[[TestListController alloc] initWithNibName:@"TestListController" bundle:nil] autorelease];
-    else
-        rootViewController = [[[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil] autorelease];
+    rootViewController = [[[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil] autorelease];
     
  
     rootController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
@@ -68,7 +65,8 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
-    return [_socialize.authService handleOpenURL: url];
+    AuthenticateViewController* auth = [rootController.viewControllers objectAtIndex:0];
+    return [auth.socialize.authService handleOpenURL: url];
 }
 
 - (void)dealloc

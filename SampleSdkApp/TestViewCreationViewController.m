@@ -45,7 +45,7 @@
     _loadingView = [LoadingView loadingViewInView:self.view]; 
     id<SocializeEntity> entity = (id<SocializeEntity>)[_socialize createObjectForProtocol: @protocol(SocializeEntity)];
     [entity setKey:entityTextField.text];
-    [_socialize viewEntity:entity];
+    [_socialize viewEntity:entity longitude:nil latitude:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,7 +64,7 @@
     self.navigationItem.title = @"Test create a view";
 
     self.view.backgroundColor = [UIColor lightGrayColor];
-    [createButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    [createButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
     
     resultsView.hidden =  YES; 
     hiddenButton = [[UIButton alloc] init]; 

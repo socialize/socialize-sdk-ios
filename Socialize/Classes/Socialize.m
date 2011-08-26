@@ -8,6 +8,7 @@
 
 #import "Socialize.h"
 #import "SocializeCommentsService.h"
+#import "SocializeConfiguration.h"
 
 @implementation Socialize
 
@@ -19,7 +20,7 @@
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
-    [_provider release]; _provider = nil;
+    //[_provider release]; _provider = nil;
     [_authService release]; _authService = nil;
     [_likeService release]; _likeService = nil;
     [_commentsService release]; _commentsService = nil;
@@ -35,7 +36,11 @@
     if(self != nil)
     {
         _objectFactory = [[SocializeObjectFactory alloc]init];
-        _provider = [[SocializeProvider alloc] init];
+        SocializeConfiguration* configurationLoader = [[SocializeConfiguration alloc]init];
+        NSDictionary* configuration = [configurationLoader.configurationInfo objectForKey:@"URLs"];
+        _provider = [[SocializeProvider alloc] initWithServerURL:[configuration objectForKey:@"RestserverBaseURL"]andSecureServerURL:[configuration objectForKey:@"SecureRestserverBaseURL"]];
+        [configurationLoader release];
+        
         _authService = [[SocializeAuthenticateService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
         _likeService  = [[SocializeLikeService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
         _commentsService = [[SocializeCommentsService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
@@ -51,6 +56,9 @@
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret
 {
+   if ([SocializeAuthenticateService isAuthenticated])
+       [_authService removeAuthenticationInfo];
+    
    [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret]; 
 }
 
@@ -69,6 +77,9 @@
                      thirdPartyAppId:(NSString*)thirdPartyAppId
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
 {
+    if ([SocializeAuthenticateService isAuthenticated])
+        [_authService removeAuthenticationInfo];
+    
     [_authService  authenticateWithApiKey:apiKey 
                            apiSecret:apiSecret
                            thirdPartyAuthToken:thirdPartyAuthToken
@@ -82,6 +93,9 @@
               thirdPartyAppId:(NSString*)thirdPartyAppId 
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName
 {
+    if ([SocializeAuthenticateService isAuthenticated])
+        [_authService removeAuthenticationInfo];
+    
     [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:thirdPartyAppId thirdPartyName:thirdPartyName];
 }
 
@@ -125,12 +139,12 @@
     [_commentsService getCommentList:entryKey first:first last:last];
 }
 
--(void)createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*) comment{
-    [_commentsService createCommentForEntityWithKey:entityKey comment:comment];
+-(void)createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat{
+    [_commentsService createCommentForEntityWithKey:entityKey comment:comment longitude: lng latitude: lat];
 }
 
--(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment{
-    [_commentsService createCommentForEntity:entity comment:comment];
+-(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat{
+    [_commentsService createCommentForEntity:entity comment:comment longitude: lng latitude: lat];
 }
 
 #pragma entity related stuff
@@ -145,8 +159,8 @@
 
 #pragma view related stuff
 
--(void)viewEntity:(id<SocializeEntity>)entity{
-    [_viewService createViewForEntity:entity];
+-(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat{
+    [_viewService createViewForEntity:entity longitude:lng latitude:lat];
 }
 
 @end

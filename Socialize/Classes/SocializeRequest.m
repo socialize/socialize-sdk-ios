@@ -48,10 +48,15 @@ dataFetcher = _dataFetcher,
 expectedJSONFormat = _expectedJSONFormat;
 
 + (NSString *)userAgentString
-{
-    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.0",[[UIDevice currentDevice]       
-                                                                                         model],
-                               [[UIDevice currentDevice]systemVersion]];
+{   
+    NSString   *language = [[NSLocale currentLocale] objectForKey: NSLocaleLanguageCode];
+    NSString   *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
+    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.0; %@_%@; BundleID/%@;",
+                               [[UIDevice currentDevice]systemVersion],
+                               [[UIDevice currentDevice]model],
+                               language,
+                               countryCode,
+                               [[NSBundle mainBundle] bundleIdentifier]];
     return  userAgentStr;
 
 }
@@ -82,7 +87,7 @@ expectedJSONFormat = _expectedJSONFormat;
                                 requestURL:(NSString *) url 
 {
     //We will release object in network responce section. After complete of execution of user delegates;
-    SocializeRequest* request = [[SocializeRequest alloc] init]; 
+    SocializeRequest* request = [[SocializeRequest alloc] init] ; 
     request.delegate = delegate;
     request.url = url;
     request.httpMethod = httpMethod;

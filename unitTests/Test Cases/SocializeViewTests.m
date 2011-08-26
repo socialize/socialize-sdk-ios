@@ -28,7 +28,7 @@
     [_service release]; _service = nil;
 }
 
--(void)testpostLikeForEntity{
+-(void)testcreateViewForEntity{
     
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
     _service.provider = mockProvider;
@@ -44,7 +44,27 @@
     
     [[mockProvider expect] requestWithMethodName:@"view/" andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
     
-    [_service createViewForEntity:mockEntity];
+    [_service createViewForEntity:mockEntity longitude:nil latitude: nil];
+    [mockProvider verify];
+}
+
+-(void)testcreateViewForEntityWithGeo{
+    
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    _service.provider = mockProvider;
+    
+    SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
+    SocializeEntity* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeEntity)]; 
+    
+    mockEntity.key = @"www.123.com";
+    
+    NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:mockEntity.key, @"entity_key", [NSNumber numberWithFloat: 1.2], @"lng", [NSNumber numberWithFloat: 1.2], @"lat", nil];
+    NSArray *params = [NSArray arrayWithObjects:entityParam, 
+                       nil];
+    
+    [[mockProvider expect] requestWithMethodName:@"view/" andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
+    
+    [_service createViewForEntity:mockEntity longitude:[NSNumber numberWithFloat: 1.2] latitude: [NSNumber numberWithFloat: 1.2]];
     [mockProvider verify];
 }
 

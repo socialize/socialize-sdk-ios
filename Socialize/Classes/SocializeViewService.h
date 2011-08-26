@@ -15,11 +15,37 @@
 #import "SocializeProvider.h"
 #import "SocializeService.h"
 
+/**
+ Socialize view service is the view creation engine.
+ */
 @interface SocializeViewService : SocializeService {
 
 }
 
--(void)createViewForEntityKey:(NSString*)key;
--(void)createViewForEntity:(id<SocializeEntity>)entity;
+/**@name Create view*/
+
+/**
+ This method creates view for entity.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param key Entity's URL which should be marked as viewed.
+ @param lng Longitude *float* value. Could be nil. (OPTIONAL)
+ @param lat Latitude  *float* value. Could be nil. (OPTIONAL)
+ */
+-(void)createViewForEntityKey:(NSString*)key longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
+
+/**
+ This method creates view for entity.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param entity <SocializeEntity> object which should be marked as viewed.
+ @param lng Longitude *float* value. Could be nil. (OPTIONAL)
+ @param lat Latitude  *float* value. Could be nil. (OPTIONAL)
+ */
+-(void)createViewForEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 
 @end
