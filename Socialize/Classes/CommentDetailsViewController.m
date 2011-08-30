@@ -216,7 +216,7 @@
     //temp value
 //    BOOL commentHasLocation = (self.comment.lat != nil && (NSNull*)self.comment.lat != [NSNull null]);
     
-    [self showShareLocation:NO /*commentHasLocation*/];
+    [self showShareLocation:self.comment.lat != nil];
 
 /*  if([entryComment.userImageURL length]>0)
     {
