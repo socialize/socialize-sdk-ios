@@ -82,30 +82,12 @@
 
 -(void)setupCommentGeoLocation
 {
-    NSNumber* testLat = comment.lat;
-    NSNumber* testLng = comment.lng;
-
-    if ([comment.lat isKindOfClass:[NSNumber class]]){
-        NSLog(@"%@ is the testLat", testLat);
-        NSLog(@"%@ is the testLng", testLng);
-    }
     
-/*    
-    CLLocationCoordinate2D centerPoint;
-    if ([testLat isKindOfClass:[NSNumber class]])
-        centerPoint.latitude = [testLat doubleValue];
-    
-    if ([testLng isKindOfClass:[NSNumber class]])
-        centerPoint.longitude = [testLng doubleValue];
-*/
-
-/*
-    if ([testLat respondsToSelector:@selector(doubleValue)] && [testLng respondsToSelector:@selector(doubleValue)] ){
-        centerPoint.latitude = [testLat doubleValue];
-        centerPoint.longitude = [testLng doubleValue];
-    }
+    CLLocationCoordinate2D centerPoint = {[self.comment.lat doubleValue], 
+        [self.comment.lng doubleValue]};     
     
     MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(kSpanDeltaLatitude, kSpanDeltaLongitude);
+    
     [commentDetailsView.mapOfUserLocation setFitLocation: centerPoint withSpan: coordinateSpan];
     [commentDetailsView.mapOfUserLocation setAnnotationOnPoint: centerPoint];
     
@@ -113,7 +95,6 @@
     self.geoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:centerPoint];
     self.geoCoder.delegate = self;
     [self.geoCoder start];
-*/
 }
 
 -(void)showShareLocation:(BOOL)hasLocation
