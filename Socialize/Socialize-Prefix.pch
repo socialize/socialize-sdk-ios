@@ -6,10 +6,8 @@
     #import <Foundation/Foundation.h>
 #endif
 
-
 #ifdef DEBUG
-#    define DLog(...) NSLog(__VA_ARGS__)
+#define DebugLog( s, ... ) NSLog( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 #else
-#    define DLog(...) /* */
+#define DebugLog( s, ... ) 
 #endif
-#define ALog(...) NSLog(__VA_ARGS__)

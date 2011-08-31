@@ -13,8 +13,7 @@
 #import "UIButton+Socialize.h"
 #import "UILabel-Additions.h"
 #import "HtmlPageCreator.h"
-//#import "UIView+RoundedCorner.h"
-//#import "URLDownload.h"
+#import "URLDownload.h"
 
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
@@ -44,6 +43,7 @@
 @synthesize commentDetailsView;
 @synthesize comment;
 @synthesize geoCoder;
+@synthesize profileImageDownloader;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -116,7 +116,7 @@
 
 #pragma mark - View lifecycle
 
-/*- (void) updateProfileImage:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)tag 
+- (void) updateProfileImage:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)tag 
 {
 	if (data!= nil) 
 	{
@@ -124,7 +124,6 @@
 		[commentDetailsView updateProfileImage: profileImage];
 	}
 }
-*/
 
 -(void) showComment
 {   
@@ -185,27 +184,24 @@
     self.geoCoder.delegate = nil;
     [self.geoCoder cancel];
     
-  //    [self.profileImageDownloader cancelDownload];
-  //    self.profileImageDownloader = nil;
+    [self.profileImageDownloader cancelDownload];
+    self.profileImageDownloader = nil;
 
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //temp value
-//    BOOL commentHasLocation = (self.comment.lat != nil && (NSNull*)self.comment.lat != [NSNull null]);
-    
     [self showShareLocation:self.comment.lat != nil];
 
-/*  if([entryComment.userImageURL length]>0)
+    
+    if(self.comment.user.smallImageUrl != nil && [self.comment.user.smallImageUrl length]>0)
     {
-        profileImageDownloader = [[URLDownload alloc] initWithURL:entryComment.userImageURL sender:self 
+        URLDownload* imageLoader = [[URLDownload alloc] initWithURL:self.comment.user.smallImageUrl sender:self 
                                                       selector:@selector(updateProfileImage:urldownload:tag:) 
                                                       tag:nil];
+        self.profileImageDownloader = imageLoader;
     }
-*/
 }
 
 - (void)viewDidUnload
