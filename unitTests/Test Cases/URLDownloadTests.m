@@ -27,11 +27,35 @@
  */
 
 #import "URLDownloadTests.h"
+#import "URLDownload.h"
+#import "URLDownloadOperation.h"
+#import <OCMock/OCMock.h>
 
+#define URL @"some_image_url"
 
 @implementation URLDownloadTests
 
-- (void)tesA {
+- (void) updateProfileImage:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)tag
+{
+    
+}
+
+- (void)testDownloadUrl
+{
+    id mockDownloadOperation = [OCMockObject mockForClass: [URLDownloadOperation class]];
+    OperationFactoryBlock testFactotyBlockForOperation =  ^ URLDownloadOperation* (id target, SEL method, id object){
+        return  mockDownloadOperation;
+    };
+
+    id mockDownloadQueue = [OCMockObject mockForClass: [NSOperationQueue class]];
+    [[mockDownloadQueue expect]addOperation: mockDownloadOperation];
+    
+    URLDownload* loader = [[URLDownload alloc] initWithURL:URL sender:self selector:@selector(updateProfileImage:urldownload:tag:) tag:nil downloadQueue:mockDownloadQueue operationFactory: testFactotyBlockForOperation];
+    
+    [mockDownloadQueue verify];
+    [mockDownloadOperation verify];
+    
+    [loader release];
 }
 
 

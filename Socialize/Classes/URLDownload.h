@@ -8,6 +8,8 @@
 
 #import "URLDownloadOperation.h"
 
+typedef URLDownloadOperation*(^OperationFactoryBlock)(id target, SEL method, id object);
+
 @interface URLDownload : NSObject
 {
 @private
@@ -30,7 +32,7 @@
 + (NSOperationQueue *)downloadQueue;
 
 - (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(NSObject *)downloadTag;
-- (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(NSObject *)downloadTag downloadQueue:(NSOperationQueue*)queue;
+- (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(NSObject *)downloadTag downloadQueue:(NSOperationQueue*)queue operationFactory:(OperationFactoryBlock) factoryBlock;
 
 - (void) cancelDownload;
 

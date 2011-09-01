@@ -8,6 +8,7 @@
 
 #import "URLDownload.h"
 #import "URLDownloadOperation.h"
+
 @implementation URLDownload
 
 @synthesize urlData;
@@ -21,8 +22,9 @@
 - (void) dealloc {
 	self.urlForDownload = nil;
     self.objectIdentifier = nil;
+    self.downloadQueue = nil;
+    self.urlData = nil;
     [operation release]; operation = nil;
-    [urlData release]; operation = nil;
 	[super dealloc];
 }
 
@@ -46,20 +48,30 @@
 
 - (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(NSObject *)downloadTag 
 {
-    return [self initWithURL:url sender:caller selector:Selector tag:downloadTag downloadQueue:[URLDownload downloadQueue]];
+    OperationFactoryBlock factory = ^ URLDownloadOperation* (id target, SEL method, id object){
+        return  [[[URLDownloadOperation alloc] initWithTarget:self selector:@selector(startDownload:) object:url] autorelease];
+    };
+    return [self initWithURL:url sender:caller selector:Selector tag:downloadTag downloadQueue:[URLDownload downloadQueue] operationFactory: factory];
 }
 
-- (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(NSObject *)downloadTag downloadQueue:(NSOperationQueue*)queue
+- (id) initWithURL:(NSString *)url 
+            sender:(NSObject *)caller 
+          selector:(SEL)Selector
+               tag:(NSObject *)downloadTag 
+     downloadQueue:(NSOperationQueue*)queue
+    operationFactory:(OperationFactoryBlock) factoryBlock
+    
 {
     self = [super init];
     if(self)
     {
         self.urlForDownload = url; 
-        requestedObject = caller;
-        notificationSelector = Selector;
         self.objectIdentifier = downloadTag;
+        self.downloadQueue = queue;
+        self.requestedObject = caller;
+        notificationSelector = Selector;
 	
-        operation = [[URLDownloadOperation alloc] initWithTarget:self selector:@selector(startDownload:) object:url];
+        operation = [factoryBlock(self, @selector(startDownload:), url) retain];
         [self.downloadQueue addOperation:operation]; 
 	}
 	return self;    
