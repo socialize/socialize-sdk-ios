@@ -99,4 +99,22 @@
     
 }
 
+-(void) testCreateStaticQueue
+{
+    GHAssertNotNil([URLDownload downloadQueue], nil);
+}
+
+-(void) testCancelDownload
+{
+    URLDownload* loader = [[[URLDownload alloc] init] autorelease];
+    
+    id mockDwnQueue = [OCMockObject mockForClass: [NSOperationQueue class]];
+    [[mockDwnQueue expect]cancelAllOperations];
+    loader.downloadQueue = mockDwnQueue;
+    
+    [loader cancelDownload];
+    
+    [mockDwnQueue verify];
+}
+
 @end
