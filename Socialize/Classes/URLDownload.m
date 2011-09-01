@@ -15,6 +15,7 @@
 @synthesize operation;
 @synthesize urlForDownload;
 @synthesize requestedObject;
+@synthesize downloadQueue;
 
 
 - (void) dealloc {
@@ -39,20 +40,29 @@
     @synchronized(self)
     {
         requestedObject =  nil;
-        [[URLDownload downloadQueue] cancelAllOperations];
+        [self.downloadQueue cancelAllOperations];
     }
 }
 
-- (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(NSObject *)downloadTag {
-	self.urlForDownload = url; 
-	requestedObject = caller;
-	notificationSelector = Selector;
-	self.objectIdentifier = downloadTag;
+- (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(NSObject *)downloadTag 
+{
+    return [self initWithURL:url sender:caller selector:Selector tag:downloadTag downloadQueue:[URLDownload downloadQueue]];
+}
+
+- (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(NSObject *)downloadTag downloadQueue:(NSOperationQueue*)queue
+{
+    self = [super init];
+    if(self)
+    {
+        self.urlForDownload = url; 
+        requestedObject = caller;
+        notificationSelector = Selector;
+        self.objectIdentifier = downloadTag;
 	
-	operation = [[URLDownloadOperation alloc] initWithTarget:self selector:@selector(startDownload:) object:url];
-	[[URLDownload downloadQueue] addOperation:operation]; 
-	
-	return self;
+        operation = [[URLDownloadOperation alloc] initWithTarget:self selector:@selector(startDownload:) object:url];
+        [self.downloadQueue addOperation:operation]; 
+	}
+	return self;    
 }
 
 -(void)startDownload:(NSString *)url
@@ -86,6 +96,7 @@
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 }
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	[self performSelectorOnMainThread:@selector(dataSendback) withObject:nil waitUntilDone:YES];
 }

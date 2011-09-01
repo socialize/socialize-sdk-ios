@@ -8,13 +8,16 @@
 
 #import "URLDownloadOperation.h"
 
-@interface URLDownload : NSObject {
-    NSString        *urlForDownload;
+@interface URLDownload : NSObject
+{
+@private
+    NSString *urlForDownload;
 	NSObject *requestedObject;
 	SEL notificationSelector;
 	NSObject *objectIdentifier;
 	NSMutableData *urlData;
 	URLDownloadOperation * operation;
+    NSOperationQueue* downloadQueue;
 }
 
 @property(nonatomic, retain) NSString* urlForDownload;
@@ -22,9 +25,13 @@
 @property(nonatomic, assign) NSObject* requestedObject;
 @property(nonatomic, retain) NSMutableData *urlData;
 @property(nonatomic, readonly) URLDownloadOperation * operation;
+@property(nonatomic, retain) NSOperationQueue * downloadQueue;
 
 + (NSOperationQueue *)downloadQueue;
+
 - (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(NSObject *)downloadTag;
+- (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(NSObject *)downloadTag downloadQueue:(NSOperationQueue*)queue;
+
 - (void) cancelDownload;
 
 @end
