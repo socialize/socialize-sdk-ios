@@ -9,6 +9,11 @@
 #import "URLDownload.h"
 #import "URLDownloadOperation.h"
 
+
+@interface URLDownload()
+    -(void)startDownload:(NSURLConnection *)downloadConnection;
+@end
+
 @implementation URLDownload
 
 @synthesize urlData;
@@ -48,9 +53,14 @@
 
 - (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(NSObject *)downloadTag 
 {
-    OperationFactoryBlock factory = ^ URLDownloadOperation* (id target, SEL method, id object){
-        return  [[[URLDownloadOperation alloc] initWithTarget:self selector:@selector(startDownload:) object:url] autorelease];
+    OperationFactoryBlock factory = ^ URLDownloadOperation* (id target, SEL method, id object)
+    {
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
+        NSURLConnection* downloadConnection = [[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO] autorelease];
+        
+        return  [[[URLDownloadOperation alloc] initWithTarget:self selector:@selector(startDownload:) object:downloadConnection] autorelease];
     };
+    
     return [self initWithURL:url sender:caller selector:Selector tag:downloadTag downloadQueue:[URLDownload downloadQueue] operationFactory: factory];
 }
 
@@ -70,22 +80,20 @@
         self.downloadQueue = queue;
         self.requestedObject = caller;
         notificationSelector = Selector;
-	
-        operation = [factoryBlock(self, @selector(startDownload:), url) retain];
+        
+        if(factoryBlock)
+            operation = [factoryBlock(self, @selector(startDownload:), url) retain];
         [self.downloadQueue addOperation:operation]; 
 	}
 	return self;    
 }
 
--(void)startDownload:(NSString *)url
+-(void)startDownload:(NSURLConnection *)downloadConnection
 {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
-	NSURLConnection* downloadConnection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
-	operation.urlConnection = downloadConnection;
-	
-	if (!downloadConnection) {
+	if (![downloadConnection isEqual:nil]) {
 		DebugLog(@"failed to create a connection for the downloader");
-	}  
+	}
+    [downloadConnection start];
 	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
 }
 
@@ -106,9 +114,6 @@
 	[self.urlData appendData:data];
 }
 
--(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-}
-
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	[self performSelectorOnMainThread:@selector(dataSendback) withObject:nil waitUntilDone:YES];
 }
@@ -116,8 +121,8 @@
 -(void)dataSendback {
     @synchronized(self)
     {
-        [operation release];
-        operation = nil;
+        [operation release];operation = nil;
+        
         NSMethodSignature *signature;
         if ([requestedObject respondsToSelector:@selector(class)])
             signature = [[requestedObject class] instanceMethodSignatureForSelector:notificationSelector];

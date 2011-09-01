@@ -50,7 +50,7 @@
 
 -(void)testCanncelOperation
 {
-    URLDownloadOperation* operation = [[URLDownloadOperation alloc] initWithTarget:self selector:@selector(fakeUrlSelector:) object:nil];
+    URLDownloadOperation* operation = [[URLDownloadOperation alloc] initWithTarget:self selector:@selector(fakeUrlSelector:) connection:nil];
     
     id mockConnection = [self prepareMockConnectionForTest];
     operation.urlConnection = mockConnection;

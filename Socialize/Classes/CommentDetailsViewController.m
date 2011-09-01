@@ -202,12 +202,6 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return NO;
-}
-
 #pragma mark - touche events
 
 -(UIBarButtonItem*) initLeftNavigationButtonWithCaption: (NSString*) caption

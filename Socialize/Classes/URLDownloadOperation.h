@@ -13,7 +13,8 @@
 
 	NSURLConnection * urlConnection;
 }
-@property(assign) NSURLConnection * urlConnection;
+@property(retain, nonatomic) NSURLConnection * urlConnection;
 
+-(id) initWithTarget:(id)target selector:(SEL)sel connection:(NSURLConnection*)connection;
 -(void) cancel;
 @end

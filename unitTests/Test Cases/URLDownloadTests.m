@@ -35,9 +35,21 @@
 
 @implementation URLDownloadTests
 
-- (void) updateProfileImage:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)tag
+- (void) urlDownloadCompleteWithSuccess:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)tag
 {
+    GHAssertNotNil(urldownload, nil);
+    GHAssertNil(tag, nil);
     
+    GHAssertTrue([data isEqual:[NSData data]], nil);
+    
+}
+
+- (void) urlDownloadCompleteWithError:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)tag
+{
+    GHAssertNotNil(urldownload, nil);
+    GHAssertNil(tag, nil);
+
+    GHAssertNil(data, nil);    
 }
 
 - (void)testDownloadUrl
@@ -50,7 +62,7 @@
     id mockDownloadQueue = [OCMockObject mockForClass: [NSOperationQueue class]];
     [[mockDownloadQueue expect]addOperation: mockDownloadOperation];
     
-    URLDownload* loader = [[URLDownload alloc] initWithURL:URL sender:self selector:@selector(updateProfileImage:urldownload:tag:) tag:nil downloadQueue:mockDownloadQueue operationFactory: testFactotyBlockForOperation];
+    URLDownload* loader = [[URLDownload alloc] initWithURL:URL sender:self selector:@selector(urlDownloadCompleteWithSuccess:urldownload:tag:) tag:nil downloadQueue:mockDownloadQueue operationFactory: testFactotyBlockForOperation];
     
     [mockDownloadQueue verify];
     [mockDownloadOperation verify];
@@ -58,5 +70,33 @@
     [loader release];
 }
 
+-(void)testStartDownload
+{
+    URLDownload* loader = [[[URLDownload alloc] init] autorelease];
+    id mockConnection = [OCMockObject mockForClass: [NSURLConnection class]];
+    [(NSURLConnection*)[mockConnection expect] start];
+    
+    [loader performSelector:@selector(startDownload:)withObject: mockConnection];
+    [mockConnection verify];
+}
+
+-(void)testCompleteLoadWithSuccess
+{
+    URLDownload* loader = [[URLDownload alloc] initWithURL:URL sender:self selector:@selector(urlDownloadCompleteWithSuccess:urldownload:tag:) tag:nil downloadQueue:nil operationFactory: nil];
+    
+    [loader connection:nil didReceiveData:[NSData data]];
+    [loader connectionDidFinishLoading:nil];
+    [loader release];
+    
+}
+
+-(void)testCompleteLoadWithError
+{
+    URLDownload* loader = [[URLDownload alloc] initWithURL:URL sender:self selector:@selector(urlDownloadCompleteWithError:urldownload:tag:) tag:nil downloadQueue:nil operationFactory: nil];
+  
+    [loader connection:nil didFailWithError:[NSError errorWithDomain:@"test" code:401 userInfo:nil]];
+    [loader release];
+    
+}
 
 @end
