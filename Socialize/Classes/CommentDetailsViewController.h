@@ -13,6 +13,8 @@
 @class URLDownload;
 @protocol SocializeComment;
 
+typedef URLDownload*(^LoaderFactory)(NSString* url, id sender, SEL selector, id tag);
+
 @interface CommentDetailsViewController : UIViewController<MKReverseGeocoderDelegate> 
 {
     @private
@@ -20,10 +22,12 @@
         CommentDetailsView*     commentDetailsView;
         id<SocializeComment>    comment;
         URLDownload*            profileImageDownloader;
+        LoaderFactory           loaderFactory;
 }
 
 @property (nonatomic, retain) IBOutlet CommentDetailsView*     commentDetailsView;
 @property (nonatomic, retain) id<SocializeComment>    comment;
 @property (nonatomic, retain) URLDownload* profileImageDownloader;
+@property (nonatomic, retain) LoaderFactory loaderFactory;
 
 @end

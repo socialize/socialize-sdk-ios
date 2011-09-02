@@ -45,6 +45,9 @@
 		1666BD36140E4F2800518811 /* URLDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD32140E4F2700518811 /* URLDownloadOperation.m */; };
 		1666BD39140E509800518811 /* URLDownloadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD38140E509800518811 /* URLDownloadTests.m */; };
 		1666BD3A140F9B9800518811 /* URLDownloadOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD2C140E481500518811 /* URLDownloadOperationTests.m */; };
+		1666BD3D1410C3D400518811 /* CommentDetailsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD3C1410C3C000518811 /* CommentDetailsViewControllerTests.m */; };
+		1666BD3E14110BD900518811 /* socialize-comment-details-icon-geo-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431C13F9EEBB00140AA3 /* socialize-comment-details-icon-geo-disabled.png */; };
+		1666BD3F14110D3F00518811 /* comment_template_clear.htm in Resources */ = {isa = PBXBuildFile; fileRef = 6D8984461407CD1900482F1E /* comment_template_clear.htm */; };
 		1670BE5213C6EB45000CC441 /* SocializeCommonDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1670BE5413C6EB81000CC441 /* SocializeLikeJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1670BE5313C6EB81000CC441 /* SocializeLikeJSONFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1670BE5613C6EB88000CC441 /* SocializeLikeJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5513C6EB88000CC441 /* SocializeLikeJSONFormatter.m */; };
@@ -636,6 +639,8 @@
 		1666BD32140E4F2700518811 /* URLDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLDownloadOperation.m; path = Classes/URLDownloadOperation.m; sourceTree = "<group>"; };
 		1666BD37140E509800518811 /* URLDownloadTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLDownloadTests.h; path = "Test Cases/URLDownloadTests.h"; sourceTree = "<group>"; };
 		1666BD38140E509800518811 /* URLDownloadTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLDownloadTests.m; path = "Test Cases/URLDownloadTests.m"; sourceTree = "<group>"; };
+		1666BD3B1410C3BF00518811 /* CommentDetailsViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailsViewControllerTests.h; path = "Test Cases/CommentDetailsViewControllerTests.h"; sourceTree = "<group>"; };
+		1666BD3C1410C3C000518811 /* CommentDetailsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsViewControllerTests.m; path = "Test Cases/CommentDetailsViewControllerTests.m"; sourceTree = "<group>"; };
 		1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommonDefinitions.h; path = Classes/SocializeCommonDefinitions.h; sourceTree = "<group>"; };
 		1670BE5313C6EB81000CC441 /* SocializeLikeJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeJSONFormatter.h; path = Classes/SocializeLikeJSONFormatter.h; sourceTree = "<group>"; };
 		1670BE5513C6EB88000CC441 /* SocializeLikeJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeJSONFormatter.m; path = Classes/SocializeLikeJSONFormatter.m; sourceTree = "<group>"; };
@@ -1553,6 +1558,8 @@
 				6D44A79213FDDBE6004B3A46 /* SocializeActionViewForTest.m */,
 				6D44A79613FED3A7004B3A46 /* UIFontForTest.h */,
 				6D44A79713FED3A9004B3A46 /* UIFontForTest.m */,
+				1666BD3B1410C3BF00518811 /* CommentDetailsViewControllerTests.h */,
+				1666BD3C1410C3C000518811 /* CommentDetailsViewControllerTests.m */,
 			);
 			name = "UI tests";
 			sourceTree = "<group>";
@@ -2198,6 +2205,8 @@
 				5C30695A13A10F62007335FF /* JSON-RequestAndResponse-TestFiles in Resources */,
 				1673D69013DEA40E00A86589 /* OCMock in Resources */,
 				6D7343E313F5CD710076A8E6 /* SocializeConfigurationInfo.plist in Resources */,
+				1666BD3E14110BD900518811 /* socialize-comment-details-icon-geo-disabled.png in Resources */,
+				1666BD3F14110D3F00518811 /* comment_template_clear.htm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2510,6 +2519,7 @@
 				6D44A79313FDDBE7004B3A46 /* SocializeActionViewForTest.m in Sources */,
 				1666BD39140E509800518811 /* URLDownloadTests.m in Sources */,
 				1666BD3A140F9B9800518811 /* URLDownloadOperationTests.m in Sources */,
+				1666BD3D1410C3D400518811 /* CommentDetailsViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

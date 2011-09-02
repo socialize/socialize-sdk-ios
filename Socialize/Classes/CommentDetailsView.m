@@ -13,12 +13,16 @@
 #define VIEW_OFSET_SIZE 20
 #define GEO_LABLE_OFSSET 9
 
+#define kSpanDeltaLatitude    0.0025
+#define kSpanDeltaLongitude   0.0025
+
 @interface CommentDetailsView()
 -(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height;
 -(void) configurateProfileImage;
 -(void) moveSubview: (UIView*) subView onValue: (CGFloat) value;
 -(CGFloat) desideSize;
 -(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height;
+-(void) configurateProfileImage;
 @end
 
 @implementation CommentDetailsView
@@ -41,6 +45,14 @@
         self.autoresizesSubviews = NO;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.backgroundColor = [UIColor colorWithRed:65/ 255.f green:77/ 255.f blue:86/ 255.f alpha:1.0];
+        
+        
+        self.profileNameLable.textColor = [UIColor colorWithRed:217/ 255.f green:225/ 255.f blue:232/ 255.f alpha:1.0];
+        self.profileNameLable.layer.shadowOpacity = 0.9;   
+        self.profileNameLable.layer.shadowRadius = 1.0;
+        self.profileNameLable.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.profileNameLable.layer.shadowOffset = CGSizeMake(0.0, -1.0);
+        self.profileNameLable.layer.masksToBounds = NO;   
     }
     return self;
 }
@@ -63,10 +75,54 @@
     [shadowView release];
 }
 
+-(void)configurateView
+{
+    [self configurateProfileImage];
+    [self.mapOfUserLocation configurate];
+}
+
 -(void) updateProfileImage: (UIImage* )image
 {
     self.profileImage.image = image;
     [self configurateProfileImage];
+}
+
+-(void) updateLocationText: (NSString*)text
+{
+    self.positionLable.text = text;
+    self.positionLable.textColor = [UIColor whiteColor];
+    self.positionLable.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.positionLable.layer.shadowOffset = CGSizeMake(0.0, 1.0);
+    self.positionLable.layer.masksToBounds = NO;
+}
+
+-(void) updateLocationText: (NSString*)text color: (UIColor*) color font: (UIFont*) font
+{
+    self.positionLable.text = text;
+    self.positionLable.textColor = color;
+    self.positionLable.font = font;
+}
+
+-(void) updateNavigationImage: (UIImage*)image
+{
+    self.navImage.image = image;
+}
+
+-(void) updateUserName: (NSString*)name
+{
+    self.profileNameLable.text = name;
+}
+
+-(void) updateGeoLocation: (CLLocationCoordinate2D) location
+{
+    MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(kSpanDeltaLatitude, kSpanDeltaLongitude);
+    [self.mapOfUserLocation setFitLocation: location withSpan: coordinateSpan];
+    [self.mapOfUserLocation setAnnotationOnPoint: location];
+}
+
+-(void) updateCommentMsg: (NSString*)comment
+{
+    [self.commentMessage loadHTMLString:comment baseURL:nil];
 }
 
 -(void) moveSubview: (UIView*) subView onValue: (CGFloat) value 
