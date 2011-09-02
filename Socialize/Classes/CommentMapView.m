@@ -41,22 +41,6 @@
     [shadowView release];
 }
 
--(id)init{
-    if ((self = [super init])){
-        return self;
-    }  
-    return nil;
-}
-
-- (id)initWithCoder:(NSCoder *)decoder
-{
-    if ((self = [super initWithCoder:decoder])){
-        return self;
-    }
-    return nil;
-}
-
-
 -(void) setFitLocation: (CLLocationCoordinate2D) location withSpan: (MKCoordinateSpan) span
 {
     MKCoordinateRegion region;

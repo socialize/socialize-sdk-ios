@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @class CommentMapView;
 
@@ -35,7 +36,12 @@
 @property (nonatomic, assign) BOOL showMap;
 
 -(void) updateProfileImage: (UIImage* )image;
--(void) configurateProfileImage;
+-(void) updateLocationText: (NSString*)text;
+-(void) updateLocationText: (NSString*)text color: (UIColor*) color font: (UIFont*) font;
+-(void) updateNavigationImage: (UIImage*)image;
+-(void) updateUserName: (NSString*)name;
+-(void) updateGeoLocation: (CLLocationCoordinate2D)location;
+-(void) configurateView;
 
 
 @end
