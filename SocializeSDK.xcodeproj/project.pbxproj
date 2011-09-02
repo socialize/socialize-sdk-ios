@@ -46,6 +46,8 @@
 		1666BD39140E509800518811 /* URLDownloadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD38140E509800518811 /* URLDownloadTests.m */; };
 		1666BD3A140F9B9800518811 /* URLDownloadOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD2C140E481500518811 /* URLDownloadOperationTests.m */; };
 		1666BD3D1410C3D400518811 /* CommentDetailsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD3C1410C3C000518811 /* CommentDetailsViewControllerTests.m */; };
+		1666BD3E14110BD900518811 /* socialize-comment-details-icon-geo-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431C13F9EEBB00140AA3 /* socialize-comment-details-icon-geo-disabled.png */; };
+		1666BD3F14110D3F00518811 /* comment_template_clear.htm in Resources */ = {isa = PBXBuildFile; fileRef = 6D8984461407CD1900482F1E /* comment_template_clear.htm */; };
 		1670BE5213C6EB45000CC441 /* SocializeCommonDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1670BE5413C6EB81000CC441 /* SocializeLikeJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1670BE5313C6EB81000CC441 /* SocializeLikeJSONFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1670BE5613C6EB88000CC441 /* SocializeLikeJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5513C6EB88000CC441 /* SocializeLikeJSONFormatter.m */; };
@@ -2203,6 +2205,8 @@
 				5C30695A13A10F62007335FF /* JSON-RequestAndResponse-TestFiles in Resources */,
 				1673D69013DEA40E00A86589 /* OCMock in Resources */,
 				6D7343E313F5CD710076A8E6 /* SocializeConfigurationInfo.plist in Resources */,
+				1666BD3E14110BD900518811 /* socialize-comment-details-icon-geo-disabled.png in Resources */,
+				1666BD3F14110D3F00518811 /* comment_template_clear.htm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

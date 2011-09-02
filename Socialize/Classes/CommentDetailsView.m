@@ -120,6 +120,11 @@
     [self.mapOfUserLocation setAnnotationOnPoint: location];
 }
 
+-(void) updateCommentMsg: (NSString*)comment
+{
+    [self.commentMessage loadHTMLString:comment baseURL:nil];
+}
+
 -(void) moveSubview: (UIView*) subView onValue: (CGFloat) value 
 {
     CGRect viewFrame = subView.frame;

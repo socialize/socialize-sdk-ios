@@ -41,6 +41,7 @@
 -(void) updateNavigationImage: (UIImage*)image;
 -(void) updateUserName: (NSString*)name;
 -(void) updateGeoLocation: (CLLocationCoordinate2D)location;
+-(void) updateCommentMsg: (NSString*)comment;
 -(void) configurateView;
 
 

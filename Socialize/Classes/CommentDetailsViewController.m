@@ -129,13 +129,12 @@
                                  forTag: @"COMMENT_TEXT"];    
         }
         
-        [commentDetailsView.commentMessage loadHTMLString:htmlCreator.html baseURL:nil];
-        
+        [commentDetailsView updateCommentMsg:htmlCreator.html];
     }
     else
     {
         NSLog(@"Could not create dynamic html for comment");
-        [commentDetailsView.commentMessage loadHTMLString:comment.text baseURL:nil];
+        [commentDetailsView updateCommentMsg:comment.text];
     }
     
     [htmlCreator release];
