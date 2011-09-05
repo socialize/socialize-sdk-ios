@@ -53,12 +53,13 @@
 
 - (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(NSObject *)downloadTag 
 {
+    __block URLDownload* blockSelf = self;
     OperationFactoryBlock factory = ^ URLDownloadOperation* (id target, SEL method, id object)
     {
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
-        NSURLConnection* downloadConnection = [[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO] autorelease];
+        NSURLConnection* downloadConnection = [[[NSURLConnection alloc] initWithRequest:request delegate:blockSelf startImmediately:NO] autorelease];
         
-        return  [[[URLDownloadOperation alloc] initWithTarget:self selector:@selector(startDownload:) object:downloadConnection] autorelease];
+        return  [[[URLDownloadOperation alloc] initWithTarget:blockSelf selector:@selector(startDownload:) object:downloadConnection] autorelease];
     };
     
     return [self initWithURL:url sender:caller selector:Selector tag:downloadTag downloadQueue:[URLDownload downloadQueue] operationFactory: factory];

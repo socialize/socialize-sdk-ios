@@ -52,7 +52,8 @@
     [toUser setFirstName: TYPE_CHECK([JSONDictionary valueForKey:@"first_name"])];
     [toUser setLastName: TYPE_CHECK([JSONDictionary valueForKey:@"last_name"])];
     [toUser setUserName: TYPE_CHECK([JSONDictionary valueForKey:@"username"])];
-    [toUser setSmallImageUrl:TYPE_CHECK([JSONDictionary valueForKey:@"small_image_uri"])];
+    //[toUser setSmallImageUrl:TYPE_CHECK([JSONDictionary valueForKey:@"small_image_uri"])];
+    [toUser setSmallImageUrl:@"http://cs10114.vkontakte.ru/u2549662/a_8e686e61.jpg"];
     [toUser setCity: TYPE_CHECK([JSONDictionary valueForKey:@"city"])];
     [toUser setState: TYPE_CHECK([JSONDictionary valueForKey:@"state"])];
     

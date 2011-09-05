@@ -146,12 +146,14 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self)
     {
+        __block CommentDetailsViewController* blockSelf = self;
         LoaderFactory lFactory = ^ URLDownload* (NSString* url, id sender, SEL selector, id tag)
         {
-            return [[[URLDownload alloc] initWithURL:self.comment.user.smallImageUrl sender:self 
+            return [[[URLDownload alloc] initWithURL:blockSelf->comment.user.smallImageUrl sender:blockSelf 
                                                                   selector:@selector(updateProfileImage:urldownload:tag:) 
                                                                   tag:nil]
                     autorelease];
+            return nil;
         };
         self.loaderFactory = [[lFactory copy] autorelease];
     }
