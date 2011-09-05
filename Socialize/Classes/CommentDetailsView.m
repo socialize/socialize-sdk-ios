@@ -96,11 +96,11 @@
     self.positionLable.layer.masksToBounds = NO;
 }
 
--(void) updateLocationText: (NSString*)text color: (UIColor*) color font: (UIFont*) font
+-(void) updateLocationText: (NSString*)text color: (UIColor*) color fontName: (NSString*) font fontSize: (CGFloat)size
 {
     self.positionLable.text = text;
     self.positionLable.textColor = color;
-    self.positionLable.font = font;
+    self.positionLable.font = [UIFont fontWithName:font size:size];
 }
 
 -(void) updateNavigationImage: (UIImage*)image

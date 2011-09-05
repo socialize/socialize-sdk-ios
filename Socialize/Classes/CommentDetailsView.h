@@ -37,7 +37,7 @@
 
 -(void) updateProfileImage: (UIImage* )image;
 -(void) updateLocationText: (NSString*)text;
--(void) updateLocationText: (NSString*)text color: (UIColor*) color font: (UIFont*) font;
+-(void) updateLocationText: (NSString*)text color: (UIColor*) color fontName: (NSString*) font fontSize: (CGFloat)size;
 -(void) updateNavigationImage: (UIImage*)image;
 -(void) updateUserName: (NSString*)name;
 -(void) updateGeoLocation: (CLLocationCoordinate2D)location;

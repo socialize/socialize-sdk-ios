@@ -90,7 +90,8 @@
     {
         [commentDetailsView updateLocationText: NO_LOCATION_MSG 
                                          color: [UIColor colorWithRed:127/ 255.f green:139/ 255.f blue:147/ 255.f alpha:1.0] 
-                                          font: [UIFont fontWithName:@"Helvetica-Oblique" size:12]];
+                                          fontName:@"Helvetica-Oblique" 
+                                          fontSize:12];
         [commentDetailsView updateNavigationImage:[UIImage imageNamed:@"socialize-comment-details-icon-geo-disabled.png"]]; 
     }  
 }
