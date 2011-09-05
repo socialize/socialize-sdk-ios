@@ -73,7 +73,9 @@
     [commentDetailsView updateGeoLocation: centerPoint];
     
     // this creates a MKReverseGeocoder to find a placemark using the found coordinates
-    self.geoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:centerPoint];
+    MKReverseGeocoder* geo = [[MKReverseGeocoder alloc] initWithCoordinate:centerPoint];
+    self.geoCoder = geo;
+    [geo release]; geo = nil;
     self.geoCoder.delegate = self;
     [self.geoCoder start];
 }
@@ -212,18 +214,14 @@
     {
         [commentDetailsView updateLocationText:[NSString stringWithFormat:@"%@, %@", city,state]];
     }
-
-    [geocoder autorelease];
-}
+ }
 //
 //// this delegate is called when the reversegeocoder fails to find a placemark
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error
 {
     NSLog(@"reverseGeocoder:%@ didFailWithError:%@", geocoder, error);
     
-    [commentDetailsView updateLocationText: NO_CITY_MSG];
-    
-    [geocoder autorelease];
+    [commentDetailsView updateLocationText: NO_CITY_MSG];   
 }
 
 @end

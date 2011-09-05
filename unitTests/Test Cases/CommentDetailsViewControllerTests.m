@@ -97,29 +97,63 @@
     GHAssertNotNULL(commentDetails, @"Notice View Controller should not be NULL"); 
 } 
 
-//-(void) testShowComment
-//{
-//    id mockComment = [self  mockCommentWithDate:[NSDate date] lat:nil lng:nil profileUrl:nil];
-//    commentDetails.comment = mockComment;
-//    
-//     id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
-//    [[mockDeteailView expect] setShowMap: NO];
-//    [[mockDeteailView expect] updateLocationText: @"No location associated with this comment." color:[UIColor colorWithRed:127/ 255.f green:139/ 255.f blue:147/ 255.f alpha:1.0] fontName:@"Helvetica-Oblique" fontSize:12];
-//   
-//    [[mockDeteailView expect] updateNavigationImage: [UIImage imageNamed:@"socialize-comment-details-icon-geo-disabled.png"]];
-//    [[mockDeteailView expect] updateUserName:TEST_USER_NAME];
-//    [[mockDeteailView expect] configurateView];
-//    [[mockDeteailView expect] updateCommentMsg:[self showComment:mockComment]];
-//        
-//     commentDetails.commentDetailsView = mockDeteailView;
-//    
-//    [commentDetails viewDidLoad]; 
-//    [commentDetails viewWillAppear:YES];
-//    
-//    [mockComment verify];
-//    [mockDeteailView verify];
-//    
-//    [commentDetails viewWillDisappear:YES];
-//}
+-(void) testShowComment
+{
+    id mockComment = [self  mockCommentWithDate:[NSDate date] lat:nil lng:nil profileUrl:nil];
+    commentDetails.comment = mockComment;
+    
+     id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
+    [[mockDeteailView expect] setShowMap: NO];
+    [[mockDeteailView expect] updateLocationText: @"No location associated with this comment." color:[UIColor colorWithRed:127/ 255.f green:139/ 255.f blue:147/ 255.f alpha:1.0] fontName:@"Helvetica-Oblique" fontSize:12];
+   
+    [[mockDeteailView expect] updateNavigationImage: [UIImage imageNamed:@"socialize-comment-details-icon-geo-disabled.png"]];
+    [[mockDeteailView expect] updateUserName:TEST_USER_NAME];
+    [[mockDeteailView expect] configurateView];
+    [[mockDeteailView expect] updateCommentMsg:[self showComment:mockComment]];
+        
+     commentDetails.commentDetailsView = mockDeteailView;
+    
+    [commentDetails viewDidLoad]; 
+    [commentDetails viewWillAppear:YES];
+    
+    [mockComment verify];
+    [mockDeteailView verify];
+    
+    [commentDetails viewWillDisappear:YES];
+}
+
+-(void) testReverseGeocoderWithNeighborhood
+{
+    id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
+    [[mockDeteailView expect]updateLocationText:@"Neighborhood, City"];
+    commentDetails.commentDetailsView = mockDeteailView;
+
+    
+    id mockMKPlacemark = [OCMockObject mockForClass: [MKPlacemark class]];
+    [[[mockMKPlacemark expect]andReturn:@""]administrativeArea];
+    [[[mockMKPlacemark expect]andReturn:@"City"]locality];
+    [[[mockMKPlacemark expect]andReturn:@"Neighborhood"]subLocality];
+    [commentDetails reverseGeocoder: nil didFindPlacemark: mockMKPlacemark];
+    
+    [mockMKPlacemark verify];
+    [mockDeteailView verify];
+}
+
+-(void) testReverseGeocoderWith
+{
+    id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
+    [[mockDeteailView expect]updateLocationText:@"City, State"];
+    commentDetails.commentDetailsView = mockDeteailView;
+    
+    
+    id mockMKPlacemark = [OCMockObject mockForClass: [MKPlacemark class]];
+    [[[mockMKPlacemark expect]andReturn:@"State"]administrativeArea];
+    [[[mockMKPlacemark expect]andReturn:@"City"]locality];
+    [[[mockMKPlacemark expect]andReturn:@""]subLocality];
+    [commentDetails reverseGeocoder: nil didFindPlacemark: mockMKPlacemark];
+    
+    [mockMKPlacemark verify];
+    [mockDeteailView verify];
+}
 
 @end
