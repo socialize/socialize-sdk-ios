@@ -32,6 +32,7 @@
 #import "CommentDetailsView.h"
 #import <OCMock/OCMock.h>
 #import "HtmlPageCreator.h"
+#import "URLDownload.h"
 
 #define TEST_COMMENT @"test comment"
 #define TEST_USER_NAME @"test_user"
@@ -122,6 +123,42 @@
     [commentDetails viewWillDisappear:YES];
 }
 
+-(void) testShowCommentWithGeo
+{
+    NSNumber* lat = [NSNumber numberWithDouble:1.1];
+    NSNumber* lng = [NSNumber numberWithDouble:0.2];
+    NSString* profileUrl = @"UserPicture";
+    
+    id mockComment = [self  mockCommentWithDate:[NSDate date] lat:lat lng:lng profileUrl:profileUrl];
+    commentDetails.comment = mockComment;
+    
+    id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
+    [[mockDeteailView expect] setShowMap: YES];
+    
+    CLLocationCoordinate2D centerPoint = {[lat doubleValue], [lng doubleValue]};        
+    [[mockDeteailView expect] updateGeoLocation: centerPoint];
+    
+    [[mockDeteailView expect] updateNavigationImage: [UIImage imageNamed:@"socialize-comment-details-icon-geo-enabled.png"]];
+    [[mockDeteailView expect] updateUserName:TEST_USER_NAME];
+    [[mockDeteailView expect] configurateView];
+    [[mockDeteailView expect] updateCommentMsg:[self showComment:mockComment]];
+    
+    commentDetails.commentDetailsView = mockDeteailView;
+    
+    commentDetails.loaderFactory = [[^URLDownload*(NSString* url, id sender, SEL selector, id tag){
+        GHAssertEqualStrings(profileUrl, url, nil);
+        return nil;
+    } copy]autorelease];
+    
+    [commentDetails viewDidLoad]; 
+    [commentDetails viewWillAppear:YES];
+    
+    [mockComment verify];
+    [mockDeteailView verify];
+    
+    [commentDetails viewWillDisappear:YES];
+}
+
 -(void) testReverseGeocoderWithNeighborhood
 {
     id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
@@ -139,7 +176,7 @@
     [mockDeteailView verify];
 }
 
--(void) testReverseGeocoderWith
+-(void) testReverseGeocoder
 {
     id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
     [[mockDeteailView expect]updateLocationText:@"City, State"];
@@ -154,6 +191,33 @@
     
     [mockMKPlacemark verify];
     [mockDeteailView verify];
+}
+
+-(void) testReverseGeocoderDidFail
+{
+    id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
+    [[mockDeteailView expect]updateLocationText:@"Could not locate the place name."];
+    commentDetails.commentDetailsView = mockDeteailView;    
+    
+    [commentDetails reverseGeocoder: nil didFailWithError:nil];
+    
+    [mockDeteailView verify];
+}
+
+-(void) testUpdateProfileImage
+{
+    id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
+    [[mockDeteailView expect]updateProfileImage:OCMOCK_ANY];
+    commentDetails.commentDetailsView = mockDeteailView; 
+    
+    NSMethodSignature *signature = [[commentDetails class] instanceMethodSignatureForSelector:@selector(updateProfileImage:urldownload:tag:)];
+
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+    [invocation setSelector:@selector(updateProfileImage:urldownload:tag:)];
+    NSData* imageData =[NSData data];
+    [invocation setArgument:&imageData atIndex:2];
+    [invocation setTarget:commentDetails];
+    [invocation invoke];
 }
 
 @end

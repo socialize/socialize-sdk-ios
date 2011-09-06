@@ -29,7 +29,6 @@
 @interface CommentDetailsViewController()
 
 @property(nonatomic, retain) MKReverseGeocoder *geoCoder;
-//-(UIBarButtonItem*) initLeftNavigationButtonWithCaption: (NSString*) caption;
 -(void) showComment;
 -(void) setupCommentGeoLocation;
 -(void) showShareLocation:(BOOL)hasLocation;
