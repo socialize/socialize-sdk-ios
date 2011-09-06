@@ -44,5 +44,4 @@
 -(void) updateCommentMsg: (NSString*)comment;
 -(void) configurateView;
 
-
 @end

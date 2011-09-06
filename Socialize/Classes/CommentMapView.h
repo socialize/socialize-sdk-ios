@@ -17,4 +17,6 @@
 -(void) setAnnotationOnPoint: (CLLocationCoordinate2D) centerPoint;
 -(void) configurate;
 
++(MKCoordinateSpan) coordinateSpan;
+
 @end

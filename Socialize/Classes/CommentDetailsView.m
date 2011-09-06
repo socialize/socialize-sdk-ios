@@ -13,16 +13,12 @@
 #define VIEW_OFSET_SIZE 20
 #define GEO_LABLE_OFSSET 9
 
-#define kSpanDeltaLatitude    0.0025
-#define kSpanDeltaLongitude   0.0025
-
 @interface CommentDetailsView()
 -(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height;
 -(void) configurateProfileImage;
 -(void) moveSubview: (UIView*) subView onValue: (CGFloat) value;
 -(CGFloat) desideSize;
 -(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height;
--(void) configurateProfileImage;
 @end
 
 @implementation CommentDetailsView
@@ -57,22 +53,27 @@
     return self;
 }
 
--(void) configurateProfileImage
+-(void) addShadowForView:(UIView*)view
 {
-    self.profileImage.layer.cornerRadius = 3.0;
-    self.profileImage.layer.masksToBounds = YES;
-    self.profileImage.layer.borderWidth = 1.0;
-    
     UIView* shadowView = [[UIView alloc] init];
     shadowView.layer.cornerRadius = 3.0;
     shadowView.layer.shadowColor = [UIColor colorWithRed:22/ 255.f green:28/ 255.f blue:31/ 255.f alpha:1.0].CGColor;
     shadowView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
     shadowView.layer.shadowOpacity = 0.9f;
     shadowView.layer.shadowRadius = 3.0f;
-    [shadowView addSubview:self.profileImage];
+    [shadowView addSubview:view];
     
     [self addSubview:shadowView];
     [shadowView release];
+}
+
+-(void) configurateProfileImage
+{
+    self.profileImage.layer.cornerRadius = 3.0;
+    self.profileImage.layer.masksToBounds = YES;
+    self.profileImage.layer.borderWidth = 1.0;
+    
+    [self addShadowForView:self.profileImage];
 }
 
 -(void)configurateView
@@ -115,8 +116,7 @@
 
 -(void) updateGeoLocation: (CLLocationCoordinate2D) location
 {
-    MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake(kSpanDeltaLatitude, kSpanDeltaLongitude);
-    [self.mapOfUserLocation setFitLocation: location withSpan: coordinateSpan];
+    [self.mapOfUserLocation setFitLocation: location withSpan: [CommentMapView coordinateSpan]];
     [self.mapOfUserLocation setAnnotationOnPoint: location];
 }
 
