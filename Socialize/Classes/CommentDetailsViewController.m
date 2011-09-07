@@ -14,6 +14,7 @@
 #import "UILabel-Additions.h"
 #import "HtmlPageCreator.h"
 #import "URLDownload.h"
+#import "NSString+PlaceMark.h"
 
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
@@ -200,20 +201,8 @@
 #pragma mark - geo coordinates
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark
 {   
-    NSString * state = placemark.administrativeArea;
-    NSString * city =  placemark.locality;
-    NSString * neighborhood = placemark.subLocality;
-    
-    
-    if (neighborhood && ([neighborhood length] > 0))
-    {   
-        [commentDetailsView updateLocationText: [NSString stringWithFormat:@"%@, %@", neighborhood,city]];
-    }
-    else if (city && ([city length]>0))
-    {
-        [commentDetailsView updateLocationText:[NSString stringWithFormat:@"%@, %@", city,state]];
-    }
- }
+    [commentDetailsView updateLocationText:[NSString stringWithPlacemark:placemark]];
+}
 //
 //// this delegate is called when the reversegeocoder fails to find a placemark
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error

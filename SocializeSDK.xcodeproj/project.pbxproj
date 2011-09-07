@@ -152,6 +152,9 @@
 		16C5EF8213E6B8A800F2EA87 /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16C5EF8013E6B8A800F2EA87 /* TestViewCreationViewController.xib */; };
 		16D247661416093A008A550D /* CommentDetailsViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D247651416093A008A550D /* CommentDetailsViewTests.m */; };
 		16D2476914163162008A550D /* CommentDetailsViewForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2476814163161008A550D /* CommentDetailsViewForTest.m */; };
+		16D247741417906F008A550D /* NSString+PlaceMark.h in Headers */ = {isa = PBXBuildFile; fileRef = 16D247721417906E008A550D /* NSString+PlaceMark.h */; };
+		16D247751417906F008A550D /* NSString+PlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D247731417906E008A550D /* NSString+PlaceMark.m */; };
+		16D2477814179446008A550D /* StringWithPlacemarkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2477714179446008A550D /* StringWithPlacemarkTest.m */; };
 		16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		16E2C4381398C40E007C91ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
 		16E2C4391398C40E007C91ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
@@ -693,6 +696,10 @@
 		16D247651416093A008A550D /* CommentDetailsViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsViewTests.m; path = "Test Cases/CommentDetailsViewTests.m"; sourceTree = "<group>"; };
 		16D2476714163161008A550D /* CommentDetailsViewForTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailsViewForTest.h; path = "Test Cases/CommentDetailsViewForTest.h"; sourceTree = "<group>"; };
 		16D2476814163161008A550D /* CommentDetailsViewForTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsViewForTest.m; path = "Test Cases/CommentDetailsViewForTest.m"; sourceTree = "<group>"; };
+		16D247721417906E008A550D /* NSString+PlaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PlaceMark.h"; sourceTree = "<group>"; };
+		16D247731417906E008A550D /* NSString+PlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PlaceMark.m"; sourceTree = "<group>"; };
+		16D2477614179446008A550D /* StringWithPlacemarkTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringWithPlacemarkTest.h; path = "Test Cases/StringWithPlacemarkTest.h"; sourceTree = "<group>"; };
+		16D2477714179446008A550D /* StringWithPlacemarkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StringWithPlacemarkTest.m; path = "Test Cases/StringWithPlacemarkTest.m"; sourceTree = "<group>"; };
 		16E2C4351398C40E007C91ED /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E2C43C1398C40F007C91ED /* SampleSdkApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleSdkApp-Info.plist"; sourceTree = "<group>"; };
 		16E2C43E1398C40F007C91ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1158,6 +1165,8 @@
 				1666BD2C140E481500518811 /* URLDownloadOperationTests.m */,
 				1666BD37140E509800518811 /* URLDownloadTests.h */,
 				1666BD38140E509800518811 /* URLDownloadTests.m */,
+				16D2477614179446008A550D /* StringWithPlacemarkTest.h */,
+				16D2477714179446008A550D /* StringWithPlacemarkTest.m */,
 			);
 			name = "Utils Tests";
 			sourceTree = "<group>";
@@ -1630,6 +1639,8 @@
 				6D8984421407CA6B00482F1E /* HtmlPageCreator.m */,
 				6D44A7D11402D20A004B3A46 /* NSNumber+Additions.h */,
 				6D44A7D21402D20C004B3A46 /* NSNumber+Additions.m */,
+				16D247721417906E008A550D /* NSString+PlaceMark.h */,
+				16D247731417906E008A550D /* NSString+PlaceMark.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -2005,6 +2016,7 @@
 				1666BD33140E4F2800518811 /* URLDownload.h in Headers */,
 				1666BD35140E4F2800518811 /* URLDownloadOperation.h in Headers */,
 				16FDF4DF1414BA0A00EAA064 /* CommentDetailsViewController.h in Headers */,
+				16D247741417906F008A550D /* NSString+PlaceMark.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2492,6 +2504,7 @@
 				1666BD34140E4F2800518811 /* URLDownload.m in Sources */,
 				1666BD36140E4F2800518811 /* URLDownloadOperation.m in Sources */,
 				16FDF4E01414BA0A00EAA064 /* CommentDetailsViewController.m in Sources */,
+				16D247751417906F008A550D /* NSString+PlaceMark.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2530,6 +2543,7 @@
 				1666BD3D1410C3D400518811 /* CommentDetailsViewControllerTests.m in Sources */,
 				16D247661416093A008A550D /* CommentDetailsViewTests.m in Sources */,
 				16D2476914163162008A550D /* CommentDetailsViewForTest.m in Sources */,
+				16D2477814179446008A550D /* StringWithPlacemarkTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

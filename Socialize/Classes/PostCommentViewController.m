@@ -12,6 +12,7 @@
 #import "AppMakrLocation.h"
 #import "Socialize.h"
 #import "LoadingView.h"
+#import "NSString+PlaceMark.h"
 
 @interface PostCommentViewController ()
 
@@ -38,7 +39,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _socialize = [[Socialize alloc ] initWithDelegate:self];
+        _socialize = [[Socialize alloc ] initWithDelegate:self]; //TODO:: send as a parametr
         _entityUrlString = [entityUrlString retain];
     }
     return self;
@@ -65,7 +66,7 @@
 #pragma Location enable/disable button callbacks
 -(void)setUserLocationTextLabel
 {
-    
+    //TODO:: send text as a parametr 
     if (shareLocation) {
         
         self.locationText.text = self.userLocationText;
@@ -86,6 +87,7 @@
     
     if (enableLocation) {
         
+        //TODO:: move this in separate method due to unit testing.
         if (![AppMakrLocation applicationIsAuthorizedToUseLocationServices])
         {
             UIAlertView * locationNotEnabledAlert = [[[UIAlertView alloc] initWithTitle:nil 
@@ -156,7 +158,7 @@
     NSNumber* latitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.latitude];
     NSNumber* longitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.longitude];
     
-    _loadingIndicatorView = [LoadingView loadingViewInView:commentTextView]; 
+    _loadingIndicatorView = [LoadingView loadingViewInView:commentTextView]; //TODO:: probably it should be pushed in separate method
     [_socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:longitude latitude:latitude];
 }
 
@@ -165,6 +167,7 @@
 -(void)service:(SocializeService *)service didFail:(NSError *)error{
 
     [_loadingIndicatorView removeView]; _loadingIndicatorView = nil;
+    //TODO:: decide what to do with allert.
     UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];
     [msg release];
@@ -180,8 +183,6 @@
 
 #pragma mark -
 -(void)closeButtonPressed:(id)button {
-//    [self navigationController] ;
-//    [self.delegate postCommentControllerCancell:self];
     [_loadingIndicatorView removeView];_loadingIndicatorView = nil;
     [self dismissModalViewControllerAnimated:YES];
 
@@ -239,7 +240,7 @@
         [self setShareLocation:NO];
     }
     
-    //We should change the following implementation "Do not Share"
+    //TODO:: We should change the following implementation "Do not Share"
     CGRect frame = self.doNotShareLocationButton.frame;
     [self.doNotShareLocationButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];  
     self.doNotShareLocationButton.frame = frame;
@@ -254,7 +255,7 @@
         
         MKCoordinateSpan span;
         span.latitudeDelta = 0.0025;
-        span.longitudeDelta = 0.0025;
+        span.longitudeDelta = 0.0025; //TODO:: Reomove thise one. Instead use Map class method
         
         [mapOfUserLocation setFitLocation:newLocation.coordinate withSpan: span];
        
@@ -313,17 +314,8 @@
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
+    self.userLocationText = [NSString stringWithPlacemark:placemark];
     
-    MKPlacemark * myPlacemark = placemark;
-    NSString * state = myPlacemark.administrativeArea;
-    NSString * city =  myPlacemark.locality;
-    NSString * neighborhood = myPlacemark.subLocality;
-  
-    if (neighborhood && ([neighborhood length] > 0))
-       self.userLocationText = [NSString stringWithFormat:@"%@, %@", neighborhood,city];
-    else if (city && ([city length]>0))
-       self.userLocationText = [NSString stringWithFormat:@"%@, %@", city,state];
-
     [self setUserLocationTextLabel];
   
     geocoder.delegate = nil;

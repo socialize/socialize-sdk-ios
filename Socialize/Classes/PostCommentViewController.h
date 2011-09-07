@@ -13,8 +13,6 @@
 
 @class CommentMapView;
 
-//@protocol PostCommentViewControllerDelegate;
-
 @interface PostCommentViewController : UIViewController <UITextViewDelegate, MKMapViewDelegate, MKReverseGeocoderDelegate, SocializeServiceDelegate >
 {
 
@@ -28,7 +26,6 @@
     BOOL            shareLocation;
     BOOL            keyboardIsVisible;
 
-//  id<PostCommentViewControllerDelegate  delegate; 
     LoadingView*                          _loadingIndicatorView;
     Socialize*                            _socialize;
     NSString*                             _entityUrlString;
@@ -39,7 +36,6 @@
 @property(nonatomic, retain) IBOutlet UIButton      *doNotShareLocationButton;
 @property(nonatomic, retain) IBOutlet UIButton      *activateLocationButton;
 @property(nonatomic, retain) IBOutlet CommentMapView *mapOfUserLocation;
-//@property(nonatomic, assign) id<PostCommentViewControllerDelegate> delegate; 
 
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
@@ -47,12 +43,3 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString;
 
 @end
-
-/*
-@protocol PostCommentViewControllerDelegate 
-
--(void)postCommentController:(PostCommentViewController*) controller sendComment:(NSString*)commentText location:(CLLocation *)commentLocation shareLocation:(BOOL)shareLocation;
-
--(void)postCommentControllerCancell:(PostCommentViewController*) controller; 
-@end
- */
