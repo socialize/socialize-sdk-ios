@@ -15,10 +15,10 @@
 
 @interface PostCommentViewController : UIViewController <UITextViewDelegate, MKMapViewDelegate, MKReverseGeocoderDelegate, SocializeServiceDelegate >
 {
-
+@private
     NSString    *userLocationText;
     UITextView  *commentTextView;
-    UILabel     *locationText;
+    UILabel     *locationText; 
     UIButton    *doNotShareLocationButton;
     UIButton    *activateLocationButton;
     CommentMapView *mapOfUserLocation;
@@ -36,6 +36,7 @@
 @property(nonatomic, retain) IBOutlet UIButton      *doNotShareLocationButton;
 @property(nonatomic, retain) IBOutlet UIButton      *activateLocationButton;
 @property(nonatomic, retain) IBOutlet CommentMapView *mapOfUserLocation;
+@property(nonatomic, retain) Socialize* socialize;
 
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;

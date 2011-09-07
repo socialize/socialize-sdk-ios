@@ -34,12 +34,13 @@
 @synthesize doNotShareLocationButton;
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
+@synthesize socialize = _socialize;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _socialize = [[Socialize alloc ] initWithDelegate:self]; //TODO:: send as a parametr
+        _socialize = [[Socialize alloc ] initWithDelegate:self];
         _entityUrlString = [entityUrlString retain];
     }
     return self;
@@ -52,6 +53,10 @@
     [activateLocationButton release];
     [mapOfUserLocation release];
     [userLocationText release];
+    [locationText release];
+    [_loadingIndicatorView release];
+    [_socialize release];
+    [_entityUrlString release];
     [super dealloc];
 }
 
@@ -223,6 +228,21 @@
     [rightButtonItem release];
 }
 
+-(void)updateViewWithNewLocation: (MKUserLocation*)userLocation
+{
+    CLLocation * newLocation = userLocation.location;
+    
+    if (newLocation) {
+        
+        [mapOfUserLocation setFitLocation: newLocation.coordinate withSpan: [CommentMapView coordinateSpan]];    
+        
+        // this creates a MKReverseGeocoder to find a placemark using the found coordinates
+        MKReverseGeocoder *geoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
+        geoCoder.delegate = self;
+        [geoCoder start];
+    }
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -240,43 +260,16 @@
         [self setShareLocation:NO];
     }
     
-    //TODO:: We should change the following implementation "Do not Share"
-    CGRect frame = self.doNotShareLocationButton.frame;
-    [self.doNotShareLocationButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];  
-    self.doNotShareLocationButton.frame = frame;
-    [self configureDoNotShareLocationButton];
-    
+    [self configureDoNotShareLocationButton];    
     [mapOfUserLocation configurate];
     
-    MKUserLocation * userLocation = mapOfUserLocation.userLocation;
-    CLLocation * newLocation = userLocation.location;
-    
-    if (newLocation) {
-        
-        MKCoordinateSpan span;
-        span.latitudeDelta = 0.0025;
-        span.longitudeDelta = 0.0025; //TODO:: Reomove thise one. Instead use Map class method
-        
-        [mapOfUserLocation setFitLocation:newLocation.coordinate withSpan: span];
-       
-        // this creates a MKReverseGeocoder to find a placemark using the found coordinates
-        MKReverseGeocoder *geoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
-        geoCoder.delegate = self;
-        [geoCoder start];
-    }
+    [self updateViewWithNewLocation: mapOfUserLocation.userLocation];
 }
 
 -(void)configureDoNotShareLocationButton
-{
-    NSString * normalImageURI = nil;
-    NSString * highlightImageURI = nil;
-    
-    normalImageURI = @"socialize-comment-button.png";
-    highlightImageURI = @"socialize-comment-button-active.png";
-    
-    UIImage * normalImage = [[UIImage imageNamed:normalImageURI]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
-	
-    UIImage * highlightImage = [[UIImage imageNamed:highlightImageURI]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
+{   
+    UIImage * normalImage = [[UIImage imageNamed:@"socialize-comment-button.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
+    UIImage * highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
     
     [self.doNotShareLocationButton setBackgroundImage:normalImage forState:UIControlStateNormal];
 	[self.doNotShareLocationButton setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
@@ -288,6 +281,12 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    self.commentTextView = nil;
+    self.locationText = nil;
+    self.doNotShareLocationButton = nil;
+    self.activateLocationButton = nil;
+   self.mapOfUserLocation = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -297,20 +296,7 @@
 
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    CLLocation * newLocation = userLocation.location;
-    if (newLocation) 
-    {
-        MKCoordinateSpan span;
-        span.latitudeDelta = 0.0025;
-        span.longitudeDelta = 0.0025;
-        
-        [mapOfUserLocation setFitLocation:newLocation.coordinate withSpan: span];
-    
-        // this creates a MKReverseGeocoder to find a placemark using the found coordinates
-        MKReverseGeocoder *geoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
-        geoCoder.delegate = self;
-        [geoCoder start];
-    }
+    [self updateViewWithNewLocation:userLocation];
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {

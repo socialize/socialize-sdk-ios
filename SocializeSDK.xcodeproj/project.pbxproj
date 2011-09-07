@@ -155,6 +155,7 @@
 		16D247741417906F008A550D /* NSString+PlaceMark.h in Headers */ = {isa = PBXBuildFile; fileRef = 16D247721417906E008A550D /* NSString+PlaceMark.h */; };
 		16D247751417906F008A550D /* NSString+PlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D247731417906E008A550D /* NSString+PlaceMark.m */; };
 		16D2477814179446008A550D /* StringWithPlacemarkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2477714179446008A550D /* StringWithPlacemarkTest.m */; };
+		16D2478B1417A986008A550D /* PostCommentViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */; };
 		16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		16E2C4381398C40E007C91ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
 		16E2C4391398C40E007C91ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
@@ -700,6 +701,8 @@
 		16D247731417906E008A550D /* NSString+PlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PlaceMark.m"; sourceTree = "<group>"; };
 		16D2477614179446008A550D /* StringWithPlacemarkTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringWithPlacemarkTest.h; path = "Test Cases/StringWithPlacemarkTest.h"; sourceTree = "<group>"; };
 		16D2477714179446008A550D /* StringWithPlacemarkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StringWithPlacemarkTest.m; path = "Test Cases/StringWithPlacemarkTest.m"; sourceTree = "<group>"; };
+		16D247891417A984008A550D /* PostCommentViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostCommentViewControllerTests.h; path = "Test Cases/PostCommentViewControllerTests.h"; sourceTree = "<group>"; };
+		16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostCommentViewControllerTests.m; path = "Test Cases/PostCommentViewControllerTests.m"; sourceTree = "<group>"; };
 		16E2C4351398C40E007C91ED /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E2C43C1398C40F007C91ED /* SampleSdkApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleSdkApp-Info.plist"; sourceTree = "<group>"; };
 		16E2C43E1398C40F007C91ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1577,6 +1580,8 @@
 				16D247651416093A008A550D /* CommentDetailsViewTests.m */,
 				16D2476714163161008A550D /* CommentDetailsViewForTest.h */,
 				16D2476814163161008A550D /* CommentDetailsViewForTest.m */,
+				16D247891417A984008A550D /* PostCommentViewControllerTests.h */,
+				16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */,
 			);
 			name = "UI tests";
 			sourceTree = "<group>";
@@ -2544,6 +2549,7 @@
 				16D247661416093A008A550D /* CommentDetailsViewTests.m in Sources */,
 				16D2476914163162008A550D /* CommentDetailsViewForTest.m in Sources */,
 				16D2477814179446008A550D /* StringWithPlacemarkTest.m in Sources */,
+				16D2478B1417A986008A550D /* PostCommentViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
