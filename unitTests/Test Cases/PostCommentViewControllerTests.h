@@ -33,7 +33,7 @@
 @class PostCommentViewController;
 
 @interface PostCommentViewControllerTests : GHTestCase {
-    PostCommentViewController* postCommentConteoller;
+    PostCommentViewController* postCommentController;
 }
 
 @end
