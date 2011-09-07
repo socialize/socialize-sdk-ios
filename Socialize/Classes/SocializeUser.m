@@ -27,4 +27,5 @@
 @synthesize comments = _comments;
 @synthesize share = _share;
 
+@synthesize thirdPartyAuth = _thirdPartyAuth;
 @end

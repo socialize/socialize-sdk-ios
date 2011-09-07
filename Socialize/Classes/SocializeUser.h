@@ -56,6 +56,9 @@
 -(void)setShare: (int) share;
 -(int)share;
 
+-(void)setThirdPartyAuth:(NSArray*)auth;
+-(NSArray*)thirdPartyAuth;
+
 @end
 
 /**Private implementation of <SocializeUser> protocol*/
@@ -78,6 +81,8 @@
         int _likes;
         int _comments;
         int _share;
+    
+        NSArray* _thirdPartyAuth;
 }
 
 @property (nonatomic, retain) NSString* firstName;
@@ -97,5 +102,5 @@
 @property (nonatomic, assign) int comments;
 @property (nonatomic, assign) int share;
 
-
+@property (nonatomic, retain) NSArray* thirdPartyAuth;
 @end

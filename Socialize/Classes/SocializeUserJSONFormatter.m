@@ -69,6 +69,8 @@
         [toUser setComments:[[stats valueForKey:@"comments"]intValue]];
         [toUser setShare:[[stats valueForKey:@"shares"]intValue]];
     }
+    
+    [toUser setThirdPartyAuth:TYPE_CHECK([JSONDictionary valueForKey:@"third_party_auth"])];
 }
 
 //-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
