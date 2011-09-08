@@ -156,6 +156,8 @@
 		16D247751417906F008A550D /* NSString+PlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D247731417906E008A550D /* NSString+PlaceMark.m */; };
 		16D2477814179446008A550D /* StringWithPlacemarkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2477714179446008A550D /* StringWithPlacemarkTest.m */; };
 		16D2478B1417A986008A550D /* PostCommentViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */; };
+		16D2479C1418D669008A550D /* ImagesCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 16D2479A1418D667008A550D /* ImagesCache.h */; };
+		16D2479D1418D669008A550D /* ImagesCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2479B1418D668008A550D /* ImagesCache.m */; };
 		16E2C4371398C40E007C91ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		16E2C4381398C40E007C91ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
 		16E2C4391398C40E007C91ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
@@ -703,6 +705,8 @@
 		16D2477714179446008A550D /* StringWithPlacemarkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StringWithPlacemarkTest.m; path = "Test Cases/StringWithPlacemarkTest.m"; sourceTree = "<group>"; };
 		16D247891417A984008A550D /* PostCommentViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostCommentViewControllerTests.h; path = "Test Cases/PostCommentViewControllerTests.h"; sourceTree = "<group>"; };
 		16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostCommentViewControllerTests.m; path = "Test Cases/PostCommentViewControllerTests.m"; sourceTree = "<group>"; };
+		16D2479A1418D667008A550D /* ImagesCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagesCache.h; path = Classes/ImagesCache.h; sourceTree = "<group>"; };
+		16D2479B1418D668008A550D /* ImagesCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagesCache.m; path = Classes/ImagesCache.m; sourceTree = "<group>"; };
 		16E2C4351398C40E007C91ED /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E2C43C1398C40F007C91ED /* SampleSdkApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleSdkApp-Info.plist"; sourceTree = "<group>"; };
 		16E2C43E1398C40F007C91ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1646,6 +1650,8 @@
 				6D44A7D21402D20C004B3A46 /* NSNumber+Additions.m */,
 				16D247721417906E008A550D /* NSString+PlaceMark.h */,
 				16D247731417906E008A550D /* NSString+PlaceMark.m */,
+				16D2479A1418D667008A550D /* ImagesCache.h */,
+				16D2479B1418D668008A550D /* ImagesCache.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -2022,6 +2028,7 @@
 				1666BD35140E4F2800518811 /* URLDownloadOperation.h in Headers */,
 				16FDF4DF1414BA0A00EAA064 /* CommentDetailsViewController.h in Headers */,
 				16D247741417906F008A550D /* NSString+PlaceMark.h in Headers */,
+				16D2479C1418D669008A550D /* ImagesCache.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2510,6 +2517,7 @@
 				1666BD36140E4F2800518811 /* URLDownloadOperation.m in Sources */,
 				16FDF4E01414BA0A00EAA064 /* CommentDetailsViewController.m in Sources */,
 				16D247751417906F008A550D /* NSString+PlaceMark.m in Sources */,
+				16D2479D1418D669008A550D /* ImagesCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

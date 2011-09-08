@@ -91,9 +91,6 @@
 
 -(void)startDownload:(NSURLConnection *)downloadConnection
 {
-	if (![downloadConnection isEqual:nil]) {
-		DebugLog(@"failed to create a connection for the downloader");
-	}
     [downloadConnection start];
 	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
 }
@@ -116,6 +113,7 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"%@", @"OK");
 	[self performSelectorOnMainThread:@selector(dataSendback) withObject:nil waitUntilDone:YES];
 }
 

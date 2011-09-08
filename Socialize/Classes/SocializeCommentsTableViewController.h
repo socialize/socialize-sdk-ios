@@ -13,6 +13,7 @@
 #import "PostCommentViewController.h"
 #import "Socialize.h"
 #import "LoadingView.h"
+#import "ImagesCache.h"
 
 /*
 @protocol SocializeCommentsDelegate 
@@ -47,6 +48,7 @@
     
     SocializeEntity*              _entity;
     Socialize*                    _socialize;
+    ImagesCache*                  _cache;
 }
 
 @property (retain, nonatomic) IBOutlet UITableView  *_tableView;

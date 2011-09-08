@@ -65,6 +65,16 @@
         _entity = [[SocializeEntity alloc] init];
         _entity.key = entryUrlString;
         _socialize = [[Socialize alloc] initWithDelegate:self]; 
+        
+        CompleteBlock completeAction = [[^(ImagesCache* cache)
+        {
+            if (!_arrayOfComments)
+                return;
+            
+            [_tableView reloadData];
+        } copy]autorelease];
+        _cache = [[ImagesCache alloc] initWithCompleteBlock:completeAction];
+        
 	}
     return self;
 }
@@ -135,7 +145,7 @@
 - (void) viewWillDisappear:(BOOL)animated{
 
 	[super viewWillDisappear:animated];
-
+    [_cache clearCache];
 }
 
 
@@ -288,6 +298,21 @@
         locationPinFrame = CGRectMake(xPinCoordinate, locationPinFrame.origin.y, locationPinFrame.size.width, locationPinFrame.size.height);
         
         cell.locationPin.frame = locationPinFrame;
+        
+        UIImage * profileImage =(UIImage *)[_cache imageFromCache:entryComment.user.smallImageUrl];
+		
+		if (profileImage) 
+		{
+			cell.userProfileImage.image = profileImage;
+		}
+		else
+		{
+            cell.userProfileImage.image = [UIImage imageNamed:@"socialize-cell-image-default.png"];
+			if (([entryComment.user.smallImageUrl length] > 0))
+			{ 
+                [_cache loadImageFromUrl: entryComment.user.smallImageUrl];
+			}
+		}
 	}
 	else {
 		if (_isLoading){
@@ -310,24 +335,6 @@
 	}
 	return cell;
 }
-
-/*
-- (void) updateProfileImage:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)tag {
-	
-	if (!_arrayOfComments)
-		return;
-	
-	if (data!= nil) 
-	{
-		NSString * url = (NSString *)tag;
-		DebugLog(@"Activity table cell URL: %@", url);
-		UIImage *profileImage = [UIImage imageWithData:data];
-        [pendingUrlDownloads removeObject:urldownload];
-		[urldownload release];
-		[_tableView reloadData];
-	}
-}
-*/
 
 // Individual rows can opt out of having the -editing property set for them. If not implemented, all rows are assumed to be editable.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -408,6 +415,7 @@
 
 #pragma mark -
 - (void)dealloc {
+    [_cache release];
     [_socialize release];
 	[informationView release];
 	[_entity release];
