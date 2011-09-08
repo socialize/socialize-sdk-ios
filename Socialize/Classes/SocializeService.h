@@ -28,6 +28,7 @@
 #import "SocializeRequest.h"
 #import "SocializeObjectFactory.h"
 #import "SocializeProvider.h"
+#import "SocializeUser.h"
 
 
 @class SocializeService;
@@ -94,8 +95,9 @@ This protocol is used as a callback delegate for all socialize services.
 
 /**
  It is called after success authentication.
+ @param user Object of <SocializeUser> protocol.
  */
--(void)didAuthenticate;
+-(void)didAuthenticate:(id<SocializeUser>)user;
 @end
 
 @interface SocializeService : NSObject <SocializeRequestDelegate>

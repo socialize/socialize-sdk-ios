@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeObject.h"
+#import "SocializeCommonDefinitions.h"
+
 
 /**Protocol for socialize user representation.*/
 @protocol SocializeUser<SocializeObject>
@@ -59,6 +61,8 @@
 -(void)setThirdPartyAuth:(NSArray*)auth;
 -(NSArray*)thirdPartyAuth;
 
+-(NSNumber*)userIdForThirdPartyAuth:(ThirdPartyAuthName) auth;
+
 @end
 
 /**Private implementation of <SocializeUser> protocol*/
@@ -103,4 +107,7 @@
 @property (nonatomic, assign) int share;
 
 @property (nonatomic, retain) NSArray* thirdPartyAuth;
+
+-(NSNumber*)userIdForThirdPartyAuth:(ThirdPartyAuthName) auth;
+
 @end

@@ -102,7 +102,10 @@
 
 #pragma mark Authentication delegate
 
--(void)didAuthenticate {
+-(void)didAuthenticate:(id<SocializeUser>)user {
+    
+    NSLog(@"%@", [user userIdForThirdPartyAuth: FacebookAuth]);
+    NSLog(@"%@", [socialize.authService receiveFacebookAuthToken]);
     
     [_loadingView removeView];
     self.resultLabel.text = @"success";

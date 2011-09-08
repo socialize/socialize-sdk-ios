@@ -28,4 +28,26 @@
 @synthesize share = _share;
 
 @synthesize thirdPartyAuth = _thirdPartyAuth;
+
+-(NSNumber*)detectUserIdWithTag: (NSString*) tag
+{
+    NSNumber* result = nil;
+    for(NSDictionary* info in _thirdPartyAuth)
+    {
+        if([[info objectForKey:@"auth_type"] isEqual:tag])
+            result = [info objectForKey:@"auth_id"];
+    }
+    return [[result copy] autorelease];
+}
+
+-(NSNumber*)userIdForThirdPartyAuth:(ThirdPartyAuthName) auth
+{
+    NSNumber* userId = nil;
+    switch (auth) {
+        case FacebookAuth:
+            userId = [self detectUserIdWithTag: @"FaceBook"];
+            break;
+    }
+    return userId;
+}
 @end
