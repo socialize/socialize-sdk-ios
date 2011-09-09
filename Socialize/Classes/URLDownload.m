@@ -51,7 +51,7 @@
     }
 }
 
-- (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(NSObject *)downloadTag 
+- (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(id)downloadTag 
 {
     __block URLDownload* blockSelf = self;
     OperationFactoryBlock factory = ^ URLDownloadOperation* (id target, SEL method, id object)
@@ -68,7 +68,7 @@
 - (id) initWithURL:(NSString *)url 
             sender:(NSObject *)caller 
           selector:(SEL)Selector
-               tag:(NSObject *)downloadTag 
+               tag:(id)downloadTag 
      downloadQueue:(NSOperationQueue*)queue
     operationFactory:(OperationFactoryBlock) factoryBlock
     

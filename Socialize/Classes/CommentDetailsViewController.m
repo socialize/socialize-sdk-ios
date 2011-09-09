@@ -16,6 +16,7 @@
 #import "URLDownload.h"
 #import "NSString+PlaceMark.h"
 #import "ImagesCache.h"
+#import "ImageLoader.h"
 
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
@@ -51,6 +52,7 @@
     [geoCoder release]; geoCoder = nil;
     [commentDetailsView release]; commentDetailsView = nil;
     [comment release]; comment = nil;
+    [cache release];
     [super dealloc];
 }
 
@@ -136,18 +138,21 @@
 
 -(void)updateProfileImage
 {
-    CompleteBlock compete = [[^(ImagesCache* imgs){
-        [commentDetailsView updateProfileImage: [imgs imageFromCache:self.comment.user.smallImageUrl]];
-    }copy] autorelease];
-    cache.completeAction = compete;
-    
     if(self.comment.user.smallImageUrl != nil && [self.comment.user.smallImageUrl length]>0)
     {
         UIImage* image = [cache imageFromCache:self.comment.user.smallImageUrl];
         if(image)
+        {
             [commentDetailsView updateProfileImage: image];
+        }
         else
-            [cache loadImageFromUrl:self.comment.user.smallImageUrl];
+        {
+            CompleteBlock complete = [[^(ImagesCache* imgs){
+                [commentDetailsView updateProfileImage: [imgs imageFromCache:self.comment.user.smallImageUrl]];
+            }copy] autorelease];
+            
+            [cache loadImageFromUrl:self.comment.user.smallImageUrl withLoader:[UrlImageLoader class] andCompleteAction:complete];
+        }
     }
 }
 

@@ -27,23 +27,21 @@
 
 #import "ImagesCache.h"
 #import "URLDownload.h"
+#import "ImageLoader.h"
 
 @interface ImagesCache()
-- (void) updateProfileImage:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)url;
+    - (void) completeLoadHandler:(NSData *)data url:(NSObject *)url;
 @end
 
 @implementation ImagesCache
 
-@synthesize completeAction;
-
--(id)initWithCompleteBlock:(CompleteBlock) block
+-(id)init
 {
     self = [super init];
     if(self)
     {
-        completeAction = [block retain];
         imagesDictionary = [[NSMutableDictionary alloc]initWithCapacity:20];
-		pendingUrlDownloads = [[NSMutableArray alloc]initWithCapacity:20];
+		pendingUrlDownloads = [[NSMutableDictionary alloc]initWithCapacity:20];
     }
     return self;
 }
@@ -51,7 +49,6 @@
 -(void) dealloc
 {
     [self stopOperations];
-    [completeAction release]; completeAction = nil;
     [imagesDictionary release]; imagesDictionary = nil;
     [pendingUrlDownloads release]; pendingUrlDownloads = nil;
     [super dealloc];
@@ -62,20 +59,37 @@
     return (UIImage *)[imagesDictionary objectForKey:url];
 }
 
--(void)loadImageFromUrl:(NSString*)url
+-(CompleteLoadBlock)createCompleteBlock: (CompleteBlock)cAction
 {
-    URLDownload* urlDownload =	[[URLDownload alloc] initWithURL:url sender:self 
-                                                       selector:@selector(updateProfileImage:urldownload:tag:) 
-                                                            tag:url];
+    __block ImagesCache* blockSelf = self;
+    return [[^(NSString* url, NSData* data)
+    {
+        [blockSelf completeLoadHandler:data url: url];
+        if(cAction)
+            cAction(blockSelf);
+    }copy]autorelease];
+}
+
+-(void)loadImageFromUrl:(NSString*)url withLoader:(Class)loader andCompleteAction:(CompleteBlock)cAction
+{
+    if([pendingUrlDownloads objectForKey:url])
+        return;
     
-    [pendingUrlDownloads addObject:urlDownload];
+    NSAssert([loader conformsToProtocol:@protocol(ImageLoaderProtocol)], @"Image Loader should conform to the ImageLoaderProtocol");    
+    id loaderInstance = [[loader alloc] init];
+    
+    [pendingUrlDownloads setObject:loaderInstance forKey:url];
+    [loaderInstance startWithUrl:url andCompleteBlock:[self createCompleteBlock:cAction]];
+    [loaderInstance release];
 }
 
 -(void)stopOperations
 {
-    for(URLDownload* pendingDownload in pendingUrlDownloads){
-        [pendingDownload cancelDownload];
-    }
+    [pendingUrlDownloads enumerateKeysAndObjectsUsingBlock:^(id url, id loader, BOOL *stop)
+    {
+        [loader cancelDownload];
+    }];
+    
     [pendingUrlDownloads removeAllObjects];
 }
 
@@ -84,17 +98,13 @@
     [imagesDictionary removeAllObjects];
 }
 
-- (void) updateProfileImage:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)url 
+- (void) completeLoadHandler:(NSData *)data url:(NSObject *)url
 {
-	if (data!= nil) 
+    if (data!= nil) 
 	{		
 		UIImage *profileImage = [UIImage imageWithData:data];
-        [pendingUrlDownloads removeObject:urldownload];       
-		[urldownload release];
+        [pendingUrlDownloads removeObjectForKey:url];       
 		[imagesDictionary setObject:profileImage forKey:url];
-        
-        if(completeAction)
-            completeAction(self);
 	}
 }
 

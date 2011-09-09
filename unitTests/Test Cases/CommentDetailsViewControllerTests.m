@@ -204,20 +204,4 @@
     [mockDeteailView verify];
 }
 
--(void) testUpdateProfileImage
-{
-    id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
-    [[mockDeteailView expect]updateProfileImage:OCMOCK_ANY];
-    commentDetails.commentDetailsView = mockDeteailView; 
-    
-    NSMethodSignature *signature = [[commentDetails class] instanceMethodSignatureForSelector:@selector(updateProfileImage:urldownload:tag:)];
-
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-    [invocation setSelector:@selector(updateProfileImage:urldownload:tag:)];
-    NSData* imageData =[NSData data];
-    [invocation setArgument:&imageData atIndex:2];
-    [invocation setTarget:commentDetails];
-    [invocation invoke];
-}
-
 @end

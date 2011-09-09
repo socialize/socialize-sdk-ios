@@ -16,6 +16,7 @@
 #import <QuartzCore/CALayer.h>
 #import "SocializeComment.h"
 #import "UINavigationBarBackground.h"
+#import "ImageLoader.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor \
 	colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
@@ -66,7 +67,7 @@
         _entity.key = entryUrlString;
         _socialize = [[Socialize alloc] initWithDelegate:self]; 
         
-        _cache = [[ImagesCache alloc] initWithCompleteBlock:nil];
+        _cache = [[ImagesCache alloc] init];
         
 	}
     return self;
@@ -106,15 +107,6 @@
     [super viewWillAppear:animated];
     [_socialize getCommentList:_entity.key first:nil last:nil]; 
     _loadingView = [LoadingView loadingViewInView:self.view];
-    
-    CompleteBlock completeAction = [[^(ImagesCache* cache)
-                                     {
-                                         if (!_arrayOfComments)
-                                             return;
-                                         
-                                         [_tableView reloadData];
-                                     } copy]autorelease];
-    _cache.completeAction = completeAction;
 }
 
 #pragma mark SocializeService Delegate
@@ -306,7 +298,15 @@
             cell.userProfileImage.image = [UIImage imageNamed:@"socialize-cell-image-default.png"];
 			if (([entryComment.user.smallImageUrl length] > 0))
 			{ 
-                [_cache loadImageFromUrl: entryComment.user.smallImageUrl];
+                
+                CompleteBlock completeAction = [[^(ImagesCache* cache)
+                                                 {
+                                                     if (!_arrayOfComments)
+                                                         return;
+                                                     
+                                                     [_tableView reloadData];
+                                                 } copy]autorelease];
+                [_cache loadImageFromUrl: entryComment.user.smallImageUrl withLoader:[UrlImageLoader class] andCompleteAction:completeAction];
 			}
 		}
 	}

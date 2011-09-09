@@ -1,8 +1,8 @@
 /*
- * ImagesCache.h
+ * ImageLoader.h
  * SocializeSDK
  *
- * Created on 9/8/11.
+ * Created on 9/9/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -26,21 +26,21 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
-@class ImagesCache;
+typedef void (^CompleteLoadBlock)(NSString* url, NSData* data);
 
-typedef void (^CompleteBlock)(ImagesCache* cache);
+@protocol ImageLoaderProtocol <NSObject>
+@required
+-(void) startWithUrl:(NSString*)url andCompleteBlock:(CompleteLoadBlock)block;
+-(void) cancelDownload;
+@end
 
-@interface ImagesCache : NSObject {
-@private
-    NSMutableDictionary             *imagesDictionary;
-    NSMutableDictionary             *pendingUrlDownloads;
+@class URLDownload;
+@interface UrlImageLoader : NSObject<ImageLoaderProtocol> 
+{   
+    URLDownload* urlDownload; 
 }
-
--(UIImage*)imageFromCache: (NSString*)url;
--(void)loadImageFromUrl:(NSString*)url withLoader:(Class)loader andCompleteAction:(CompleteBlock)cAction;
--(void)stopOperations;
--(void)clearCache;
+-(void) startWithUrl:(NSString*)url andCompleteBlock:(CompleteLoadBlock)block;
+-(void) cancelDownload;
 
 @end

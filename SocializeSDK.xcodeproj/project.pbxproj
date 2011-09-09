@@ -101,6 +101,9 @@
 		1681BDC913F55D3200EC6042 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1681BDC813F55D3200EC6042 /* CoreLocation.framework */; };
 		1681BDCA13F55D3600EC6042 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1681BDC813F55D3200EC6042 /* CoreLocation.framework */; };
 		1681BDCB13F55E2400EC6042 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D97F03C13DFC91500B16454 /* QuartzCore.framework */; };
+		16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A82A031419F37400193CA7 /* ImagesCacheTests.m */; };
+		16A82A0C1419FA9500193CA7 /* ImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A82A0A1419FA9500193CA7 /* ImageLoader.h */; };
+		16A82A0D1419FA9500193CA7 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A82A0B1419FA9500193CA7 /* ImageLoader.m */; };
 		16B48D0313DEC0B700EE0A92 /* SocializeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFD546613D94BBB00336836 /* SocializeTests.m */; };
 		16B48DB313DEEDC300EE0A92 /* NSString+UrlSerialization.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */; };
 		16B48DB413DEEDDF00EE0A92 /* SocializeLikeService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D49743913B2586200463D23 /* SocializeLikeService.h */; };
@@ -687,6 +690,10 @@
 		1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostCommentViewController.h; path = Classes/PostCommentViewController.h; sourceTree = "<group>"; };
 		1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostCommentViewController.m; path = Classes/PostCommentViewController.m; sourceTree = "<group>"; };
 		1681BDC813F55D3200EC6042 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		16A82A021419F37400193CA7 /* ImagesCacheTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagesCacheTests.h; path = "Test Cases/ImagesCacheTests.h"; sourceTree = "<group>"; };
+		16A82A031419F37400193CA7 /* ImagesCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagesCacheTests.m; path = "Test Cases/ImagesCacheTests.m"; sourceTree = "<group>"; };
+		16A82A0A1419FA9500193CA7 /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoader.h; path = Classes/ImageLoader.h; sourceTree = "<group>"; };
+		16A82A0B1419FA9500193CA7 /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageLoader.m; path = Classes/ImageLoader.m; sourceTree = "<group>"; };
 		16C330D613F3BD29004EA34D /* CommentDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailsView.h; path = Classes/CommentDetailsView.h; sourceTree = "<group>"; };
 		16C330D713F3BD29004EA34D /* CommentDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsView.m; path = Classes/CommentDetailsView.m; sourceTree = "<group>"; };
 		16C330D813F3BD29004EA34D /* CommentMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentMapView.h; path = Classes/CommentMapView.h; sourceTree = "<group>"; };
@@ -1174,6 +1181,8 @@
 				1666BD38140E509800518811 /* URLDownloadTests.m */,
 				16D2477614179446008A550D /* StringWithPlacemarkTest.h */,
 				16D2477714179446008A550D /* StringWithPlacemarkTest.m */,
+				16A82A021419F37400193CA7 /* ImagesCacheTests.h */,
+				16A82A031419F37400193CA7 /* ImagesCacheTests.m */,
 			);
 			name = "Utils Tests";
 			sourceTree = "<group>";
@@ -1652,6 +1661,8 @@
 				16D247731417906E008A550D /* NSString+PlaceMark.m */,
 				16D2479A1418D667008A550D /* ImagesCache.h */,
 				16D2479B1418D668008A550D /* ImagesCache.m */,
+				16A82A0A1419FA9500193CA7 /* ImageLoader.h */,
+				16A82A0B1419FA9500193CA7 /* ImageLoader.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -2029,6 +2040,7 @@
 				16FDF4DF1414BA0A00EAA064 /* CommentDetailsViewController.h in Headers */,
 				16D247741417906F008A550D /* NSString+PlaceMark.h in Headers */,
 				16D2479C1418D669008A550D /* ImagesCache.h in Headers */,
+				16A82A0C1419FA9500193CA7 /* ImageLoader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2518,6 +2530,7 @@
 				16FDF4E01414BA0A00EAA064 /* CommentDetailsViewController.m in Sources */,
 				16D247751417906F008A550D /* NSString+PlaceMark.m in Sources */,
 				16D2479D1418D669008A550D /* ImagesCache.m in Sources */,
+				16A82A0D1419FA9500193CA7 /* ImageLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2558,6 +2571,7 @@
 				16D2476914163162008A550D /* CommentDetailsViewForTest.m in Sources */,
 				16D2477814179446008A550D /* StringWithPlacemarkTest.m in Sources */,
 				16D2478B1417A986008A550D /* PostCommentViewControllerTests.m in Sources */,
+				16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

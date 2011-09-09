@@ -1,8 +1,8 @@
 /*
- * ImagesCache.h
+ * ImagesCacheTests.h
  * SocializeSDK
  *
- * Created on 9/8/11.
+ * Created on 9/9/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -23,24 +23,17 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ * See Also: http://gabriel.github.com/gh-unit/
  */
 
-#import <Foundation/Foundation.h>
+
+#import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
+//#import "application_headers" as required
 
-@class ImagesCache;
 
-typedef void (^CompleteBlock)(ImagesCache* cache);
-
-@interface ImagesCache : NSObject {
-@private
-    NSMutableDictionary             *imagesDictionary;
-    NSMutableDictionary             *pendingUrlDownloads;
+@interface ImagesCacheTests : GHTestCase {
+    
 }
-
--(UIImage*)imageFromCache: (NSString*)url;
--(void)loadImageFromUrl:(NSString*)url withLoader:(Class)loader andCompleteAction:(CompleteBlock)cAction;
--(void)stopOperations;
--(void)clearCache;
 
 @end

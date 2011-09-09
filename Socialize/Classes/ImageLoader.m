@@ -1,8 +1,8 @@
 /*
- * ImagesCache.h
+ * ImageLoader.m
  * SocializeSDK
  *
- * Created on 9/8/11.
+ * Created on 9/9/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -25,22 +25,39 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import "ImageLoader.h"
+#import "URLDownload.h"
 
-@class ImagesCache;
+@interface UrlImageLoader()
+    - (void) completeLoadHandler:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)tag;
+@end
 
-typedef void (^CompleteBlock)(ImagesCache* cache);
+@implementation UrlImageLoader
 
-@interface ImagesCache : NSObject {
-@private
-    NSMutableDictionary             *imagesDictionary;
-    NSMutableDictionary             *pendingUrlDownloads;
+-(void)dealloc
+{
+    [urlDownload release];
+    [super dealloc];
 }
 
--(UIImage*)imageFromCache: (NSString*)url;
--(void)loadImageFromUrl:(NSString*)url withLoader:(Class)loader andCompleteAction:(CompleteBlock)cAction;
--(void)stopOperations;
--(void)clearCache;
+- (void) completeLoadHandler:(NSData *)data urldownload:(URLDownload *)urldownload tag:(id)tag
+{
+    CompleteLoadBlock callback = (CompleteLoadBlock)tag;
+    callback(urldownload.urlForDownload, data);
+    //[urlDownload release]; urlDownload = nil;
+}
+
+-(void) startWithUrl:(NSString*)url andCompleteBlock:(CompleteLoadBlock)block
+{
+    NSAssert(urlDownload == nil, @"Operation has already been started!");
+    urlDownload = [[URLDownload alloc] initWithURL:url sender:self 
+                                                           selector:@selector(completeLoadHandler:urldownload:tag:) 
+                                                                tag:block];
+}
+
+-(void) cancelDownload
+{
+    [urlDownload cancelDownload];
+}
 
 @end

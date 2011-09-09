@@ -53,14 +53,7 @@
     [toUser setFirstName: TYPE_CHECK([JSONDictionary valueForKey:@"first_name"])];
     [toUser setLastName: TYPE_CHECK([JSONDictionary valueForKey:@"last_name"])];
     [toUser setUserName: TYPE_CHECK([JSONDictionary valueForKey:@"username"])];
-    //[toUser setSmallImageUrl:TYPE_CHECK([JSONDictionary valueForKey:@"small_image_uri"])];
-    
-    NSArray* images = [NSArray arrayWithObjects:
-                       @"http://www.getsocialize.com/static/images/socialize/new/socialize_logo.png",
-                       @"http://t1.gstatic.com/images?q=tbn:ANd9GcRNj_iJDUtWCfR7z6q9-y1IJEycn4XLDqFtVxFIDkdiXvASoV5ZsQ",
-                       @"http://t2.gstatic.com/images?q=tbn:ANd9GcS8DqbTwIvhQPEdwXtWyeu_lwyeh2S1oFEIMHVkrX8lFtXty9d2kw",
-                       nil];
-    [toUser setSmallImageUrl:[images objectAtIndex:arc4random() % 3]];
+    [toUser setSmallImageUrl:TYPE_CHECK([JSONDictionary valueForKey:@"small_image_uri"])];
     [toUser setCity: TYPE_CHECK([JSONDictionary valueForKey:@"city"])];
     [toUser setState: TYPE_CHECK([JSONDictionary valueForKey:@"state"])];
     
