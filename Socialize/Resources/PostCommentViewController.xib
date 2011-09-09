@@ -4,8 +4,7 @@
 		<int key="IBDocument.SystemTarget">1056</int>
 		<string key="IBDocument.SystemVersion">10J3210</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1306</string>
-		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<string key="IBDocument.AppKitVersocialize_resourcessocialize_resourcessocialize_resourcesxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">301</string>
@@ -141,7 +140,7 @@
 								</object>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">socialize_resources/socialize-comment-location-enabled.png</string>
+									<string key="NSResourceName">socialize-comment-location-enabled.png</string>
 								</object>
 							</object>
 						</array>
@@ -511,7 +510,7 @@
 			<string key="socialize-comment-detail-bottom-shadow-background.png">{2, 213}</string>
 			<string key="socialize-comment-location-bar-background.png">{1, 39}</string>
 			<string key="socialize-comment-location-enabled.png">{24, 25}</string>
-			<string key="socialize_resources/socialize-comment-location-enabled.png">{16, 16}</string>
+			<string key="socialize-comment-location-enabled.png">{16, 16}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">301</string>
 	</data>

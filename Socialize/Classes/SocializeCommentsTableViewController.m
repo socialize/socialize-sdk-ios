@@ -160,13 +160,14 @@
 -(IBAction)addCommentButtonPressed:(id)sender {
 
     PostCommentViewController * pcViewController = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" bundle:nil entityUrlString:_entity.key];
-    
+        
     UIImage * socializeNavBarBackground = [UIImage imageNamed:@"socialize-navbar-bg.png"];
     UINavigationController * pcNavController = [[UINavigationController alloc] initWithRootViewController:pcViewController];
     [pcNavController.navigationBar setBackgroundImage:socializeNavBarBackground];
     [pcViewController release];
 
     [self presentModalViewController:pcNavController animated:YES];
+    [pcNavController release];
 }
 
 #pragma mark -
