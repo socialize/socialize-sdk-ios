@@ -66,14 +66,7 @@
         _entity.key = entryUrlString;
         _socialize = [[Socialize alloc] initWithDelegate:self]; 
         
-        CompleteBlock completeAction = [[^(ImagesCache* cache)
-        {
-            if (!_arrayOfComments)
-                return;
-            
-            [_tableView reloadData];
-        } copy]autorelease];
-        _cache = [[ImagesCache alloc] initWithCompleteBlock:completeAction];
+        _cache = [[ImagesCache alloc] initWithCompleteBlock:nil];
         
 	}
     return self;
@@ -113,6 +106,15 @@
     [super viewWillAppear:animated];
     [_socialize getCommentList:_entity.key first:nil last:nil]; 
     _loadingView = [LoadingView loadingViewInView:self.view];
+    
+    CompleteBlock completeAction = [[^(ImagesCache* cache)
+                                     {
+                                         if (!_arrayOfComments)
+                                             return;
+                                         
+                                         [_tableView reloadData];
+                                     } copy]autorelease];
+    _cache.completeAction = completeAction;
 }
 
 #pragma mark SocializeService Delegate
@@ -141,13 +143,10 @@
 }
 #pragma mark -
 
-
-- (void) viewWillDisappear:(BOOL)animated{
-
-	[super viewWillDisappear:animated];
-    [_cache clearCache];
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
 }
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -234,15 +233,12 @@
         CommentDetailsViewController* details = [[CommentDetailsViewController alloc] init];
         details.title = [NSString stringWithFormat: @"%d of %d", indexPath.row + 1, [_arrayOfComments count]];
         details.comment = entryComment;
-        
-/*      UIBarButtonItem * backLeftItem = [self createLeftNavigationButtonWithCaption:@"Comments"];
-        details.navigationItem.leftBarButtonItem = backLeftItem;	
-        [backLeftItem release];
-*/
-    
+
+        [_cache stopOperations];
+        details.cache = _cache;
+           
         [self.navigationController pushViewController:details animated:YES];
         [details release];
-
     }
 }
 

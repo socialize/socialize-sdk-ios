@@ -34,13 +34,17 @@ typedef void (^CompleteBlock)(ImagesCache* cache);
 @interface ImagesCache : NSObject {
 @private
     CompleteBlock completeAction;
-    NSMutableDictionary             *userImageDictionary;
+    NSMutableDictionary             *imagesDictionary;
     NSMutableArray                  *pendingUrlDownloads;
 }
+
+@property (nonatomic, retain) CompleteBlock completeAction;
 
 -(id)initWithCompleteBlock:(CompleteBlock) block;
 -(UIImage*)imageFromCache: (NSString*)url;
 -(void)loadImageFromUrl:(NSString*)url;
+-(void)stopOperations;
 -(void)clearCache;
+
 
 @end

@@ -34,13 +34,15 @@
 
 @implementation ImagesCache
 
+@synthesize completeAction;
+
 -(id)initWithCompleteBlock:(CompleteBlock) block
 {
     self = [super init];
     if(self)
     {
         completeAction = [block retain];
-        userImageDictionary = [[NSMutableDictionary alloc]initWithCapacity:20];
+        imagesDictionary = [[NSMutableDictionary alloc]initWithCapacity:20];
 		pendingUrlDownloads = [[NSMutableArray alloc]initWithCapacity:20];
     }
     return self;
@@ -48,15 +50,16 @@
 
 -(void) dealloc
 {
+    [self stopOperations];
     [completeAction release]; completeAction = nil;
-    [userImageDictionary release]; userImageDictionary = nil;
+    [imagesDictionary release]; imagesDictionary = nil;
     [pendingUrlDownloads release]; pendingUrlDownloads = nil;
     [super dealloc];
 }
 
 -(UIImage*)imageFromCache: (NSString*)url
 {
-    return (UIImage *)[userImageDictionary objectForKey:url];
+    return (UIImage *)[imagesDictionary objectForKey:url];
 }
 
 -(void)loadImageFromUrl:(NSString*)url
@@ -68,16 +71,18 @@
     [pendingUrlDownloads addObject:urlDownload];
 }
 
--(void)clearCache
+-(void)stopOperations
 {
     for(URLDownload* pendingDownload in pendingUrlDownloads){
-        pendingDownload.requestedObject = nil;
         [pendingDownload cancelDownload];
     }
     [pendingUrlDownloads removeAllObjects];
-    [userImageDictionary removeAllObjects];
 }
 
+-(void)clearCache
+{
+    [imagesDictionary removeAllObjects];
+}
 
 - (void) updateProfileImage:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)url 
 {
@@ -86,9 +91,10 @@
 		UIImage *profileImage = [UIImage imageWithData:data];
         [pendingUrlDownloads removeObject:urldownload];       
 		[urldownload release];
-		[userImageDictionary setObject:profileImage forKey:url];
+		[imagesDictionary setObject:profileImage forKey:url];
         
-        completeAction(self);
+        if(completeAction)
+            completeAction(self);
 	}
 }
 

@@ -15,6 +15,7 @@
 #import "HtmlPageCreator.h"
 #import "URLDownload.h"
 #import "NSString+PlaceMark.h"
+#import "ImagesCache.h"
 
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
@@ -33,7 +34,6 @@
 -(void) showComment;
 -(void) setupCommentGeoLocation;
 -(void) showShareLocation:(BOOL)hasLocation;
--(void) updateProfileImage:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)tag;
 
 @end
 
@@ -44,13 +44,13 @@
 @synthesize geoCoder;
 @synthesize profileImageDownloader;
 @synthesize loaderFactory;
+@synthesize cache;
 
 - (void)dealloc
 {
     [geoCoder release]; geoCoder = nil;
     [commentDetailsView release]; commentDetailsView = nil;
     [comment release]; comment = nil;
-    self.loaderFactory = nil;
     [super dealloc];
 }
 
@@ -100,15 +100,6 @@
 
 #pragma mark - View lifecycle
 
-- (void) updateProfileImage:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)tag 
-{
-	if (data!= nil) 
-	{
-		UIImage *profileImage = [UIImage imageWithData:data];
-		[commentDetailsView updateProfileImage: profileImage];
-	}
-}
-
 -(void) showComment
 {   
     HtmlPageCreator* htmlCreator = [[HtmlPageCreator alloc]init];
@@ -143,27 +134,26 @@
     [htmlCreator release];
 }
 
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(void)updateProfileImage
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if(self)
+    CompleteBlock compete = [[^(ImagesCache* imgs){
+        [commentDetailsView updateProfileImage: [imgs imageFromCache:self.comment.user.smallImageUrl]];
+    }copy] autorelease];
+    cache.completeAction = compete;
+    
+    if(self.comment.user.smallImageUrl != nil && [self.comment.user.smallImageUrl length]>0)
     {
-        __block CommentDetailsViewController* blockSelf = self;
-        LoaderFactory lFactory = ^ URLDownload* (NSString* url, id sender, SEL selector, id tag)
-        {
-            return [[[URLDownload alloc] initWithURL:blockSelf->comment.user.smallImageUrl sender:blockSelf 
-                                                                  selector:@selector(updateProfileImage:urldownload:tag:) 
-                                                                  tag:nil]
-                    autorelease];
-            return nil;
-        };
-        self.loaderFactory = [[lFactory copy] autorelease];
+        UIImage* image = [cache imageFromCache:self.comment.user.smallImageUrl];
+        if(image)
+            [commentDetailsView updateProfileImage: image];
+        else
+            [cache loadImageFromUrl:self.comment.user.smallImageUrl];
     }
-    return self;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 { 
+    [self updateProfileImage];
     [self.commentDetailsView updateUserName:comment.user.userName];
     [self showComment];
     [self.commentDetailsView configurateView];
@@ -173,22 +163,16 @@
 {   
     self.geoCoder.delegate = nil;
     [self.geoCoder cancel];
+    [cache stopOperations];
     
     [self.profileImageDownloader cancelDownload];
     self.profileImageDownloader = nil;
-
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self showShareLocation:self.comment.lat != nil];
-
-    
-    if(self.comment.user.smallImageUrl != nil && [self.comment.user.smallImageUrl length]>0)
-    {
-        self.profileImageDownloader = loaderFactory(self.comment.user.smallImageUrl, self, @selector(updateProfileImage:urldownload:tag:), nil);
-    }
 }
 
 - (void)viewDidUnload

@@ -12,6 +12,7 @@
 @class CommentDetailsView;
 @class URLDownload;
 @protocol SocializeComment;
+@class ImagesCache;
 
 typedef URLDownload*(^LoaderFactory)(NSString* url, id sender, SEL selector, id tag);
 
@@ -21,13 +22,13 @@ typedef URLDownload*(^LoaderFactory)(NSString* url, id sender, SEL selector, id 
         MKReverseGeocoder*      geoCoder;
         CommentDetailsView*     commentDetailsView;
         id<SocializeComment>    comment;
-        URLDownload*            profileImageDownloader;
-        LoaderFactory           loaderFactory;
+        ImagesCache*            cache;
 }
 
 @property (nonatomic, retain) IBOutlet CommentDetailsView*     commentDetailsView;
 @property (nonatomic, retain) id<SocializeComment>    comment;
 @property (nonatomic, retain) URLDownload* profileImageDownloader;
 @property (nonatomic, retain) LoaderFactory loaderFactory;
+@property (nonatomic, retain) ImagesCache*  cache;
 
 @end
