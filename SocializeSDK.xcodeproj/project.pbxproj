@@ -104,6 +104,8 @@
 		16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A82A031419F37400193CA7 /* ImagesCacheTests.m */; };
 		16A82A0C1419FA9500193CA7 /* ImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A82A0A1419FA9500193CA7 /* ImageLoader.h */; };
 		16A82A0D1419FA9500193CA7 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A82A0B1419FA9500193CA7 /* ImageLoader.m */; };
+		16A82A25141DE17E00193CA7 /* action-bar-icon-like.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67432E13F9EEC000140AA3 /* action-bar-icon-like.png */; };
+		16A82A29141DE79D00193CA7 /* ImageLoaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A82A28141DE79D00193CA7 /* ImageLoaderTests.m */; };
 		16B48D0313DEC0B700EE0A92 /* SocializeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFD546613D94BBB00336836 /* SocializeTests.m */; };
 		16B48DB313DEEDC300EE0A92 /* NSString+UrlSerialization.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */; };
 		16B48DB413DEEDDF00EE0A92 /* SocializeLikeService.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D49743913B2586200463D23 /* SocializeLikeService.h */; };
@@ -694,6 +696,8 @@
 		16A82A031419F37400193CA7 /* ImagesCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagesCacheTests.m; path = "Test Cases/ImagesCacheTests.m"; sourceTree = "<group>"; };
 		16A82A0A1419FA9500193CA7 /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoader.h; path = Classes/ImageLoader.h; sourceTree = "<group>"; };
 		16A82A0B1419FA9500193CA7 /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageLoader.m; path = Classes/ImageLoader.m; sourceTree = "<group>"; };
+		16A82A27141DE79D00193CA7 /* ImageLoaderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoaderTests.h; path = "Test Cases/ImageLoaderTests.h"; sourceTree = "<group>"; };
+		16A82A28141DE79D00193CA7 /* ImageLoaderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageLoaderTests.m; path = "Test Cases/ImageLoaderTests.m"; sourceTree = "<group>"; };
 		16C330D613F3BD29004EA34D /* CommentDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailsView.h; path = Classes/CommentDetailsView.h; sourceTree = "<group>"; };
 		16C330D713F3BD29004EA34D /* CommentDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsView.m; path = Classes/CommentDetailsView.m; sourceTree = "<group>"; };
 		16C330D813F3BD29004EA34D /* CommentMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentMapView.h; path = Classes/CommentMapView.h; sourceTree = "<group>"; };
@@ -1183,6 +1187,8 @@
 				16D2477714179446008A550D /* StringWithPlacemarkTest.m */,
 				16A82A021419F37400193CA7 /* ImagesCacheTests.h */,
 				16A82A031419F37400193CA7 /* ImagesCacheTests.m */,
+				16A82A27141DE79D00193CA7 /* ImageLoaderTests.h */,
+				16A82A28141DE79D00193CA7 /* ImageLoaderTests.m */,
 			);
 			name = "Utils Tests";
 			sourceTree = "<group>";
@@ -2251,6 +2257,7 @@
 				6D7343E313F5CD710076A8E6 /* SocializeConfigurationInfo.plist in Resources */,
 				1666BD3E14110BD900518811 /* socialize-comment-details-icon-geo-disabled.png in Resources */,
 				1666BD3F14110D3F00518811 /* comment_template_clear.htm in Resources */,
+				16A82A25141DE17E00193CA7 /* action-bar-icon-like.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2572,6 +2579,7 @@
 				16D2477814179446008A550D /* StringWithPlacemarkTest.m in Sources */,
 				16D2478B1417A986008A550D /* PostCommentViewControllerTests.m in Sources */,
 				16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */,
+				16A82A29141DE79D00193CA7 /* ImageLoaderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

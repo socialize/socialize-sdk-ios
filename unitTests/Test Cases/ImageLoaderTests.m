@@ -1,8 +1,8 @@
 /*
- * ImagesCacheTests.h
+ * ImageLoaderTests.m
  * SocializeSDK
  *
- * Created on 9/9/11.
+ * Created on 9/12/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -26,12 +26,34 @@
  * See Also: http://gabriel.github.com/gh-unit/
  */
 
+#import "ImageLoaderTests.h"
+#import "ImageLoader.h"
+#import "URLDownload.h"
+#import <OCMock/OCMock.h>
 
-#import <GHUnitIOS/GHUnit.h>
-#import <UIKit/UIKit.h>
+@implementation ImageLoaderTests
 
-@interface ImagesCacheTests : GHTestCase {
-
+-(void)testConformProtocol
+{
+    UrlImageLoader* loader = [[[UrlImageLoader alloc] init] autorelease];
+    GHAssertTrue([loader conformsToProtocol: @protocol(ImageLoaderProtocol)], nil);
 }
 
+-(void)testCancelLoad
+{
+    UrlImageLoader* loader = [[[UrlImageLoader alloc] init] autorelease];
+    
+    id mockImpl = [OCMockObject mockForClass: [URLDownload class]];
+    [[mockImpl expect] cancelDownload];
+    loader.urlDownload = mockImpl;
+    
+    [loader cancelDownload];
+    
+    [mockImpl verify];
+}
+
+-(void)testStartLoad
+{
+//    UrlImageLoader* loader = [[[UrlImageLoader alloc] init] autorelease];    
+}
 @end

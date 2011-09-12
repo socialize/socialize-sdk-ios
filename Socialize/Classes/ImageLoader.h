@@ -43,4 +43,6 @@ typedef void (^CompleteLoadBlock)(NSString* url, NSData* data);
 -(void) startWithUrl:(NSString*)url andCompleteBlock:(CompleteLoadBlock)block;
 -(void) cancelDownload;
 
+@property(nonatomic, retain) URLDownload* urlDownload; 
+
 @end

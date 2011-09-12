@@ -27,10 +27,74 @@
  */
 
 #import "ImagesCacheTests.h"
+#import "ImagesCache.h"
+#import "ImageLoader.h"
+#import "OCMock/OCMock.h"
 
+#define TEST_URL @"TestImageUrl"
+
+@interface TestLoader :  GHTestCase<ImageLoaderProtocol>
+{
+}
+-(void) startWithUrl:(NSString*)url andCompleteBlock:(CompleteLoadBlock)block;
+-(void) cancelDownload;
+@end
+
+@implementation TestLoader
+
+-(void) startWithUrl:(NSString*)url andCompleteBlock:(CompleteLoadBlock)block
+{
+    GHAssertEqualStrings(TEST_URL, url, nil);
+    GHAssertNotNil(block, nil);
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"action-bar-icon-like" ofType:@"png"];  
+    NSData *testImageData = [NSData dataWithContentsOfFile:filePath];  
+    block(url,testImageData);
+}
+
+-(void) cancelDownload
+{
+    
+}
+@end
 
 @implementation ImagesCacheTests
 
+-(void)testGetImageFromEmptyCache
+{
+    ImagesCache* cache = [[[ImagesCache alloc] init] autorelease];
+    GHAssertNil([cache imageFromCache:@"My Test Image URL"], nil);
+}
 
+-(void)testloadImageFromUrl
+{
+    ImagesCache* cache = [[[ImagesCache alloc] init] autorelease];
+        
+    [cache loadImageFromUrl:TEST_URL withLoader:[TestLoader class] andCompleteAction:^(ImagesCache* cache){
+    
+    }];
+    
+    GHAssertNotNil([cache imageFromCache: TEST_URL], nil);
+    
+    GHAssertTrue([cache imagesCount] == 1,nil);
+    [cache clearCache];
+    GHAssertTrue([cache imagesCount] == 0,nil);
+}
+
+-(void)testloadImageFromUrlWithBadLoader
+{
+    ImagesCache* cache = [[[ImagesCache alloc] init] autorelease];
+    
+    GHAssertThrows([cache loadImageFromUrl:TEST_URL withLoader:[NSObject class] andCompleteAction:^(ImagesCache* cache){
+        
+    }], nil);
+}
+
+-(void)testCancelDownload
+{
+    ImagesCache* cache = [[[ImagesCache alloc] init] autorelease];
+    [cache stopOperations];
+    GHAssertTrue([cache pendingCount] == 0, nil);
+}
 
 @end

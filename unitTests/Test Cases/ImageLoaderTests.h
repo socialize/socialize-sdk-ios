@@ -1,8 +1,8 @@
 /*
- * ImagesCacheTests.h
+ * ImageLoaderTests.h
  * SocializeSDK
  *
- * Created on 9/9/11.
+ * Created on 9/12/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -30,8 +30,9 @@
 #import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
 
-@interface ImagesCacheTests : GHTestCase {
 
+@interface ImageLoaderTests : GHTestCase {
+    
 }
 
 @end

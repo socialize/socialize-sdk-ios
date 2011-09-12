@@ -42,5 +42,7 @@ typedef void (^CompleteBlock)(ImagesCache* cache);
 -(void)loadImageFromUrl:(NSString*)url withLoader:(Class)loader andCompleteAction:(CompleteBlock)cAction;
 -(void)stopOperations;
 -(void)clearCache;
+-(int)imagesCount;
+-(int)pendingCount;
 
 @end

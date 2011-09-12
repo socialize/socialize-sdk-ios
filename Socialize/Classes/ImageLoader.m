@@ -32,7 +32,9 @@
     - (void) completeLoadHandler:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)tag;
 @end
 
+
 @implementation UrlImageLoader
+@synthesize urlDownload;
 
 -(void)dealloc
 {
@@ -44,7 +46,6 @@
 {
     CompleteLoadBlock callback = (CompleteLoadBlock)tag;
     callback(urldownload.urlForDownload, data);
-    //[urlDownload release]; urlDownload = nil;
 }
 
 -(void) startWithUrl:(NSString*)url andCompleteBlock:(CompleteLoadBlock)block

@@ -108,4 +108,13 @@
 	}
 }
 
+-(int)imagesCount
+{
+    return [imagesDictionary count];
+}
+
+-(int)pendingCount
+{
+    return [pendingUrlDownloads count];
+}
 @end
