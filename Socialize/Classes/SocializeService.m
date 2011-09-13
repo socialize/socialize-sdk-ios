@@ -32,6 +32,7 @@
 
 @interface SocializeService()
 -(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList;
+-(void) dispatch:(SocializeRequest *)request didLoadRawResponse:(NSData *)data;
 @end
 
 
@@ -45,8 +46,10 @@
     return  @protocol(SocializeObject);
 }
 -(void) dealloc
-{   self.provider = nil;
+{   
+    self.provider = nil;
     _objectCreator = nil;
+    self.delegate = nil;
     [super dealloc];
 }
 
@@ -65,18 +68,9 @@
     return self;
 }
 
-//-(id<SocializeObject>)newObject
-//{
-//    return [self newObjectForProtocol:self.ProtocolType];
-//}
-//
-//-(id<SocializeObject>)newObjectForProtocol:(Protocol *)protocol
-//{
-//    return [_objectCreator createObjectForProtocol:protocol];
-//}
-
 -(void)ExecuteGetRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)requestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
 {
+    [_delegate retain];// Take ownership
     [_provider requestWithMethodName:endPoint andParams:requestParameters   expectedJSONFormat:expectedFormat andHttpMethod:@"GET" andDelegate:self];
 }
 
@@ -89,7 +83,20 @@
 
 -(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat 
 {
+    [_delegate retain];// Take ownership
     [_provider requestWithMethodName:endPoint andParams:postRequestParameters expectedJSONFormat:expectedFormat andHttpMethod:@"POST" andDelegate:self];
+}
+
+-(void)ExecuteSecurePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat 
+{
+    [_delegate retain];// Take ownership
+    [_provider secureRequestWithMethodName:endPoint andParams:postRequestParameters expectedJSONFormat:expectedFormat andHttpMethod:@"POST" andDelegate:self];
+}
+
+-(void)ExecuteDeleteRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)deleteRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
+{
+    [_delegate retain];// Take ownership
+    [_provider requestWithMethodName:endPoint andParams:deleteRequestParameters  expectedJSONFormat:SocializeAny andHttpMethod:@"DELETE" andDelegate:self];
 }
 
 #pragma mark - Socialize requst delegate
@@ -99,6 +106,8 @@
      //[self doDidFailWithError:error];
     if([self.delegate respondsToSelector:@selector(service:didFail:)])
         [self.delegate service:self didFail:error];    
+    
+    [self freeDelegate];
 }
 
 -(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList {
@@ -138,7 +147,7 @@
         [self.delegate service:self didUpdate:objectList];
 }
 
-- (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
+-(void) dispatch:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
 {
     //Move the following lines to the base  SocializeService Class, because it's the same for all objects.
     NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
@@ -168,7 +177,7 @@
                 [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
             return;
         }
-
+        
         id objectResponse = [_objectCreator createObjectFromString:items forProtocol:[self ProtocolType]]; 
         id errorResponse = [_objectCreator createObjectFromString:errors forProtocol:@protocol(SocializeError)]; 
         
@@ -207,7 +216,7 @@
     else if (request.expectedJSONFormat == SocializeList){
         //  NSString* items = [_objectCreator createObjectFromString:responseString forProtocol:[self ProtocolType]];
         id objectResponse = [_objectCreator createObjectFromString:responseString forProtocol:[self ProtocolType]]; 
-
+        
         if([objectResponse isKindOfClass: [NSArray class]]){ 
             if ([objectResponse count]){
                 if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]])
@@ -224,6 +233,17 @@
             if([self.delegate respondsToSelector:@selector(service:didFail:)])
                 [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
     }
+}
+
+-(void)freeDelegate
+{
+    [_delegate release];//Release ownership 
+}
+
+- (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
+{
+    [self dispatch:request didLoadRawResponse:data];
+    [self freeDelegate];
 }
 
 -(void)doDidReceiveSocializeObject:(id<SocializeObject>)objectResponse

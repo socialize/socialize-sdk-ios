@@ -41,7 +41,7 @@
         }
         
         NSArray *params = [NSArray arrayWithObject:entityParam];
-        [_provider requestWithMethodName:VIEW_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
+        [self ExecutePostRequestAtEndPoint:VIEW_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
     }
 }
 

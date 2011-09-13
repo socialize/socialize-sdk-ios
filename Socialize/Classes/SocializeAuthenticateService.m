@@ -40,7 +40,7 @@
                                                 nil];
 
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-    [_provider secureRequestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
+    [self ExecuteSecurePostRequestAtEndPoint:AUTHENTICATE_METHOD WithParams:paramsDict expectedResponseFormat:SocializeDictionary];
 }
 
 +(BOOL)isAuthenticated {
@@ -110,7 +110,7 @@
                              thirdPartyAppId, @"auth_id" , nil] ;                        
                                
    [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-   [_provider secureRequestWithMethodName:AUTHENTICATE_METHOD andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
+   [self ExecuteSecurePostRequestAtEndPoint:AUTHENTICATE_METHOD WithParams:params expectedResponseFormat:SocializeDictionary];
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey 
@@ -173,6 +173,7 @@
     }
     
     [responseBody release];
+    [self freeDelegate];
 }
 
 -(void)removeAuthenticationInfo
