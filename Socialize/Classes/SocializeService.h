@@ -28,6 +28,7 @@
 #import "SocializeRequest.h"
 #import "SocializeObjectFactory.h"
 #import "SocializeProvider.h"
+#import "SocializeUser.h"
 
 
 @class SocializeService;
@@ -94,8 +95,9 @@ This protocol is used as a callback delegate for all socialize services.
 
 /**
  It is called after success authentication.
+ @param user Object of <SocializeUser> protocol.
  */
--(void)didAuthenticate;
+-(void)didAuthenticate:(id<SocializeUser>)user;
 @end
 
 @interface SocializeService : NSObject <SocializeRequestDelegate>
@@ -112,13 +114,14 @@ This protocol is used as a callback delegate for all socialize services.
 -(id) initWithProvider: (SocializeProvider*) provider objectFactory:(SocializeObjectFactory*) objectFactory delegate:(id<SocializeServiceDelegate>) delegate;
 
 //The methods below should be private methods put in a Private Headers file.
-//-(id<SocializeObject>)newObject;
-//-(id<SocializeObject>)newObjectForProtocol:(Protocol *)protocol;
 -(void)ExecuteGetRequestAtEndPoint: (NSString *)endPoint  WithParams:(id)requestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
 -(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)postRequestObject expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
 -(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
+-(void)ExecuteDeleteRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)deleteRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
+-(void)ExecuteSecurePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
 
 -(NSMutableDictionary*)genereteParamsFromJsonString:(NSString*)jsonRequest;
+-(void)freeDelegate;
 
 //Primitive methods
 -(void)doDidReceiveSocializeObject:(id<SocializeObject>)objectResponse;

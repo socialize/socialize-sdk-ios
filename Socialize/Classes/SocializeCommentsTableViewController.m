@@ -16,6 +16,7 @@
 #import <QuartzCore/CALayer.h>
 #import "SocializeComment.h"
 #import "UINavigationBarBackground.h"
+#import "ImageLoader.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor \
 	colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
@@ -65,6 +66,9 @@
         _entity = [[SocializeEntity alloc] init];
         _entity.key = entryUrlString;
         _socialize = [[Socialize alloc] initWithDelegate:self]; 
+        
+        _cache = [[ImagesCache alloc] init];
+        
 	}
     return self;
 }
@@ -131,13 +135,10 @@
 }
 #pragma mark -
 
-
-- (void) viewWillDisappear:(BOOL)animated{
-
-	[super viewWillDisappear:animated];
-
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
 }
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -159,13 +160,14 @@
 -(IBAction)addCommentButtonPressed:(id)sender {
 
     PostCommentViewController * pcViewController = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" bundle:nil entityUrlString:_entity.key];
-    
+        
     UIImage * socializeNavBarBackground = [UIImage imageNamed:@"socialize-navbar-bg.png"];
     UINavigationController * pcNavController = [[UINavigationController alloc] initWithRootViewController:pcViewController];
     [pcNavController.navigationBar setBackgroundImage:socializeNavBarBackground];
     [pcViewController release];
 
     [self presentModalViewController:pcNavController animated:YES];
+    [pcNavController release];
 }
 
 #pragma mark -
@@ -224,15 +226,12 @@
         CommentDetailsViewController* details = [[CommentDetailsViewController alloc] init];
         details.title = [NSString stringWithFormat: @"%d of %d", indexPath.row + 1, [_arrayOfComments count]];
         details.comment = entryComment;
-        
-/*      UIBarButtonItem * backLeftItem = [self createLeftNavigationButtonWithCaption:@"Comments"];
-        details.navigationItem.leftBarButtonItem = backLeftItem;	
-        [backLeftItem release];
-*/
-    
+
+        [_cache stopOperations];
+        details.cache = _cache;
+           
         [self.navigationController pushViewController:details animated:YES];
         [details release];
-
     }
 }
 
@@ -288,6 +287,29 @@
         locationPinFrame = CGRectMake(xPinCoordinate, locationPinFrame.origin.y, locationPinFrame.size.width, locationPinFrame.size.height);
         
         cell.locationPin.frame = locationPinFrame;
+        
+        UIImage * profileImage =(UIImage *)[_cache imageFromCache:entryComment.user.smallImageUrl];
+		
+		if (profileImage) 
+		{
+			cell.userProfileImage.image = profileImage;
+		}
+		else
+		{
+            cell.userProfileImage.image = [UIImage imageNamed:@"socialize-cell-image-default.png"];
+			if (([entryComment.user.smallImageUrl length] > 0))
+			{ 
+                
+                CompleteBlock completeAction = [[^(ImagesCache* cache)
+                                                 {
+                                                     if (!_arrayOfComments)
+                                                         return;
+                                                     
+                                                     [_tableView reloadData];
+                                                 } copy]autorelease];
+                [_cache loadImageFromUrl: entryComment.user.smallImageUrl withLoader:[UrlImageLoader class] andCompleteAction:completeAction];
+			}
+		}
 	}
 	else {
 		if (_isLoading){
@@ -310,24 +332,6 @@
 	}
 	return cell;
 }
-
-/*
-- (void) updateProfileImage:(NSData *)data urldownload:(URLDownload *)urldownload tag:(NSObject *)tag {
-	
-	if (!_arrayOfComments)
-		return;
-	
-	if (data!= nil) 
-	{
-		NSString * url = (NSString *)tag;
-		DebugLog(@"Activity table cell URL: %@", url);
-		UIImage *profileImage = [UIImage imageWithData:data];
-        [pendingUrlDownloads removeObject:urldownload];
-		[urldownload release];
-		[_tableView reloadData];
-	}
-}
-*/
 
 // Individual rows can opt out of having the -editing property set for them. If not implemented, all rows are assumed to be editable.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -408,6 +412,7 @@
 
 #pragma mark -
 - (void)dealloc {
+    [_cache release];
     [_socialize release];
 	[informationView release];
 	[_entity release];

@@ -12,6 +12,7 @@
 #import "AppMakrLocation.h"
 #import "Socialize.h"
 #import "LoadingView.h"
+#import "NSString+PlaceMark.h"
 
 @interface PostCommentViewController ()
 
@@ -20,6 +21,8 @@
 -(void)sendButtonPressed:(id)button;
 -(void)closeButtonPressed:(id)button;
 -(void)configureDoNotShareLocationButton;
+-(void)updateViewWithNewLocation: (MKUserLocation*)userLocation;
+-(BOOL) shouldShareLocationOnStart;
 
 @property(nonatomic, retain) NSString * userLocationText;
 
@@ -33,6 +36,7 @@
 @synthesize doNotShareLocationButton;
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
+@synthesize socialize = _socialize;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString
 {
@@ -51,6 +55,10 @@
     [activateLocationButton release];
     [mapOfUserLocation release];
     [userLocationText release];
+    [locationText release];
+    [_loadingIndicatorView release];
+    [_socialize release];
+    [_entityUrlString release];
     [super dealloc];
 }
 
@@ -63,9 +71,38 @@
 }
 
 #pragma Location enable/disable button callbacks
+
+-(BOOL) shouldShareLocationOnStart
+{
+    if ([AppMakrLocation applicationIsAuthorizedToUseLocationServices])
+    {
+        NSNumber * shareLocationBoolean = (NSNumber *)[[NSUserDefaults standardUserDefaults]valueForKey:@"post_comment_share_location"];
+        return  (shareLocationBoolean !=nil)?[shareLocationBoolean boolValue]:YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+
+-(void)updateViewWithNewLocation: (MKUserLocation*)userLocation
+{
+    CLLocation * newLocation = userLocation.location;
+    
+    if (newLocation) {
+        
+        [mapOfUserLocation setFitLocation: newLocation.coordinate withSpan: [CommentMapView coordinateSpan]];    
+        
+        // this creates a MKReverseGeocoder to find a placemark using the found coordinates
+        MKReverseGeocoder *geoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
+        geoCoder.delegate = self;
+        [geoCoder start];
+    }
+}
+
 -(void)setUserLocationTextLabel
 {
-    
+    //TODO:: send text as a parametr 
     if (shareLocation) {
         
         self.locationText.text = self.userLocationText;
@@ -84,8 +121,10 @@
 
 -(void)setShareLocation:(BOOL)enableLocation {
     
-    if (enableLocation) {
+    shareLocation = enableLocation;
+    if (shareLocation) {
         
+        //TODO:: move this in separate method due to unit testing.
         if (![AppMakrLocation applicationIsAuthorizedToUseLocationServices])
         {
             UIAlertView * locationNotEnabledAlert = [[[UIAlertView alloc] initWithTitle:nil 
@@ -111,8 +150,8 @@
         
     }
     
-    shareLocation = enableLocation;
-    [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithBool:shareLocation] forKey:@"post_comment_share_location"];
+
+
     [self setUserLocationTextLabel];
 }
 
@@ -156,7 +195,7 @@
     NSNumber* latitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.latitude];
     NSNumber* longitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.longitude];
     
-    _loadingIndicatorView = [LoadingView loadingViewInView:commentTextView]; 
+    _loadingIndicatorView = [LoadingView loadingViewInView:commentTextView]; //TODO:: probably it should be pushed in separate method
     [_socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:longitude latitude:latitude];
 }
 
@@ -165,6 +204,7 @@
 -(void)service:(SocializeService *)service didFail:(NSError *)error{
 
     [_loadingIndicatorView removeView]; _loadingIndicatorView = nil;
+    //TODO:: decide what to do with allert.
     UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];
     [msg release];
@@ -180,8 +220,6 @@
 
 #pragma mark -
 -(void)closeButtonPressed:(id)button {
-//    [self navigationController] ;
-//    [self.delegate postCommentControllerCancell:self];
     [_loadingIndicatorView removeView];_loadingIndicatorView = nil;
     [self dismissModalViewControllerAnimated:YES];
 
@@ -216,8 +254,8 @@
     [sendButton addTarget:self action:@selector(sendButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem * rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:sendButton];
-    
     rightButtonItem.enabled = NO;
+    
     self.navigationItem.rightBarButtonItem = rightButtonItem;
     [rightButtonItem release];
 }
@@ -229,57 +267,27 @@
     [self.commentTextView becomeFirstResponder];
     keyboardIsVisible = YES;
     
-    if ([AppMakrLocation applicationIsAuthorizedToUseLocationServices])
-    {
-        NSNumber * shareLocationBoolean = (NSNumber *)[[NSUserDefaults standardUserDefaults]valueForKey:@"post_comment_share_location"];
-        [self setShareLocation: (shareLocationBoolean !=nil)?[shareLocationBoolean boolValue]:YES];
-    }
-    else
-    {
-        [self setShareLocation:NO];
-    }
-    
-    //We should change the following implementation "Do not Share"
-    CGRect frame = self.doNotShareLocationButton.frame;
-    [self.doNotShareLocationButton configureWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];  
-    self.doNotShareLocationButton.frame = frame;
-    [self configureDoNotShareLocationButton];
+    [self setShareLocation:[self shouldShareLocationOnStart]];
     
     [mapOfUserLocation configurate];
-    
-    MKUserLocation * userLocation = mapOfUserLocation.userLocation;
-    CLLocation * newLocation = userLocation.location;
-    
-    if (newLocation) {
-        
-        MKCoordinateSpan span;
-        span.latitudeDelta = 0.0025;
-        span.longitudeDelta = 0.0025;
-        
-        [mapOfUserLocation setFitLocation:newLocation.coordinate withSpan: span];
-       
-        // this creates a MKReverseGeocoder to find a placemark using the found coordinates
-        MKReverseGeocoder *geoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
-        geoCoder.delegate = self;
-        [geoCoder start];
-    }
+    [self configureDoNotShareLocationButton];       
+    [self updateViewWithNewLocation: mapOfUserLocation.userLocation];
 }
 
 -(void)configureDoNotShareLocationButton
-{
-    NSString * normalImageURI = nil;
-    NSString * highlightImageURI = nil;
-    
-    normalImageURI = @"socialize-comment-button.png";
-    highlightImageURI = @"socialize-comment-button-active.png";
-    
-    UIImage * normalImage = [[UIImage imageNamed:normalImageURI]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
-	
-    UIImage * highlightImage = [[UIImage imageNamed:highlightImageURI]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
+{   
+    UIImage * normalImage = [[UIImage imageNamed:@"socialize-comment-button.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
+    UIImage * highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
     
     [self.doNotShareLocationButton setBackgroundImage:normalImage forState:UIControlStateNormal];
 	[self.doNotShareLocationButton setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
     
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithBool:shareLocation] forKey:@"post_comment_share_location"];
 }
 
 - (void)viewDidUnload
@@ -287,6 +295,12 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    self.commentTextView = nil;
+    self.locationText = nil;
+    self.doNotShareLocationButton = nil;
+    self.activateLocationButton = nil;
+    self.mapOfUserLocation = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -296,34 +310,12 @@
 
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    CLLocation * newLocation = userLocation.location;
-    if (newLocation) 
-    {
-        MKCoordinateSpan span;
-        span.latitudeDelta = 0.0025;
-        span.longitudeDelta = 0.0025;
-        
-        [mapOfUserLocation setFitLocation:newLocation.coordinate withSpan: span];
-    
-        // this creates a MKReverseGeocoder to find a placemark using the found coordinates
-        MKReverseGeocoder *geoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
-        geoCoder.delegate = self;
-        [geoCoder start];
-    }
+    [self updateViewWithNewLocation:userLocation];
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
+    self.userLocationText = [NSString stringWithPlacemark:placemark];
     
-    MKPlacemark * myPlacemark = placemark;
-    NSString * state = myPlacemark.administrativeArea;
-    NSString * city =  myPlacemark.locality;
-    NSString * neighborhood = myPlacemark.subLocality;
-  
-    if (neighborhood && ([neighborhood length] > 0))
-       self.userLocationText = [NSString stringWithFormat:@"%@, %@", neighborhood,city];
-    else if (city && ([city length]>0))
-       self.userLocationText = [NSString stringWithFormat:@"%@, %@", city,state];
-
     [self setUserLocationTextLabel];
   
     geocoder.delegate = nil;

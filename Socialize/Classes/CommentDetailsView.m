@@ -41,8 +41,30 @@
         self.autoresizesSubviews = NO;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.backgroundColor = [UIColor colorWithRed:65/ 255.f green:77/ 255.f blue:86/ 255.f alpha:1.0];
+        
+        
+        self.profileNameLable.textColor = [UIColor colorWithRed:217/ 255.f green:225/ 255.f blue:232/ 255.f alpha:1.0];
+        self.profileNameLable.layer.shadowOpacity = 0.9;   
+        self.profileNameLable.layer.shadowRadius = 1.0;
+        self.profileNameLable.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.profileNameLable.layer.shadowOffset = CGSizeMake(0.0, -1.0);
+        self.profileNameLable.layer.masksToBounds = NO;   
     }
     return self;
+}
+
+-(void) addShadowForView:(UIView*)view
+{
+    UIView* shadowView = [[UIView alloc] init];
+    shadowView.layer.cornerRadius = 3.0;
+    shadowView.layer.shadowColor = [UIColor colorWithRed:22/ 255.f green:28/ 255.f blue:31/ 255.f alpha:1.0].CGColor;
+    shadowView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    shadowView.layer.shadowOpacity = 0.9f;
+    shadowView.layer.shadowRadius = 3.0f;
+    [shadowView addSubview:view];
+    
+    [self addSubview:shadowView];
+    [shadowView release];
 }
 
 -(void) configurateProfileImage
@@ -51,22 +73,56 @@
     self.profileImage.layer.masksToBounds = YES;
     self.profileImage.layer.borderWidth = 1.0;
     
-    UIView* shadowView = [[UIView alloc] init];
-    shadowView.layer.cornerRadius = 3.0;
-    shadowView.layer.shadowColor = [UIColor colorWithRed:22/ 255.f green:28/ 255.f blue:31/ 255.f alpha:1.0].CGColor;
-    shadowView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    shadowView.layer.shadowOpacity = 0.9f;
-    shadowView.layer.shadowRadius = 3.0f;
-    [shadowView addSubview:self.profileImage];
-    
-    [self addSubview:shadowView];
-    [shadowView release];
+    [self addShadowForView:self.profileImage];
+}
+
+-(void)configurateView
+{
+    [self configurateProfileImage];
+    [self.mapOfUserLocation configurate];
 }
 
 -(void) updateProfileImage: (UIImage* )image
 {
     self.profileImage.image = image;
     [self configurateProfileImage];
+}
+
+-(void) updateLocationText: (NSString*)text
+{
+    self.positionLable.text = text;
+    self.positionLable.textColor = [UIColor whiteColor];
+    self.positionLable.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.positionLable.layer.shadowOffset = CGSizeMake(0.0, 1.0);
+    self.positionLable.layer.masksToBounds = NO;
+}
+
+-(void) updateLocationText: (NSString*)text color: (UIColor*) color fontName: (NSString*) font fontSize: (CGFloat)size
+{
+    self.positionLable.text = text;
+    self.positionLable.textColor = color;
+    self.positionLable.font = [UIFont fontWithName:font size:size];
+}
+
+-(void) updateNavigationImage: (UIImage*)image
+{
+    self.navImage.image = image;
+}
+
+-(void) updateUserName: (NSString*)name
+{
+    self.profileNameLable.text = name;
+}
+
+-(void) updateGeoLocation: (CLLocationCoordinate2D) location
+{
+    [self.mapOfUserLocation setFitLocation: location withSpan: [CommentMapView coordinateSpan]];
+    [self.mapOfUserLocation setAnnotationOnPoint: location];
+}
+
+-(void) updateCommentMsg: (NSString*)comment
+{
+    [self.commentMessage loadHTMLString:comment baseURL:nil];
 }
 
 -(void) moveSubview: (UIView*) subView onValue: (CGFloat) value 

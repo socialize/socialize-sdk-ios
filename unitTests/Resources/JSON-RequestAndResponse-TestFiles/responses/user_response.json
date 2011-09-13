@@ -14,6 +14,12 @@
         "likes": 37,
         "comments": 13,
         "shares": 24
-
-    }
+    },
+    "third_party_auth":
+    [
+        {
+            "auth_type": "Facebook",
+            "auth_id": 123123123
+        }
+    ]
 }

@@ -61,22 +61,6 @@
     [_service createShareForEntity:mockEntity  medium:medium  text:@"text"];
     [mockProvider verify];
 }
-/*
--(void)testCreateViewCallback{
-    
-    SocializeRequest* _request = [SocializeRequest getRequestWithParams:nil expectedCallbackFormat:SocializeDictionary expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"POST" delegate:self requestURL:@"whatever"];
-    
-    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/share_single_response.json"];
-    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeShareServiceDelegate)];
-    _service.delegate = mockDelegate;
-    
-//    [[mockDelegate expect] shareService:_service didReceiveShare:OCMOCK_ANY];
-    
-    [_service request:_request didLoadRawResponse:[JSONStringToParse dataUsingEncoding:NSUTF8StringEncoding]];
-//    [mockDelegate verify];
-}
-*/
-
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
     NSLog(@"didDelete %@", object);

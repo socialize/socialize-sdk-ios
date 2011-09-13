@@ -27,28 +27,42 @@
 
 #import "SocializeUserJSONFormatter.h"
 #import "SocializeUser.h"
+#include <stdlib.h>
 
+#define TYPE_CHECK(value) [self nullCheck:(value)]
+
+@interface SocializeUserJSONFormatter()
+    -(id)nullCheck:(id)value;
+@end
 
 @implementation SocializeUserJSONFormatter
+
+-(id)nullCheck:(id)value
+{
+    if([value isEqual:[NSNull null]])
+        return nil;
+    else 
+        return value;
+}
 
 -(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {
     id<SocializeUser> toUser = (id<SocializeUser>)toObject;
      
     [toUser setObjectID: [[JSONDictionary valueForKey:@"id"]intValue]];
-    [toUser setFirstName:[JSONDictionary valueForKey:@"first_name"]];
-    [toUser setLastName:[JSONDictionary valueForKey:@"last_name"]];
-    [toUser setUserName:[JSONDictionary valueForKey:@"username"]];
-    [toUser setSmallImageUrl:[JSONDictionary valueForKey:@"small_image_uri"]];
-    [toUser setCity:[JSONDictionary valueForKey:@"city"]];
-    [toUser setState:[JSONDictionary valueForKey:@"state"]];
+    [toUser setFirstName: TYPE_CHECK([JSONDictionary valueForKey:@"first_name"])];
+    [toUser setLastName: TYPE_CHECK([JSONDictionary valueForKey:@"last_name"])];
+    [toUser setUserName: TYPE_CHECK([JSONDictionary valueForKey:@"username"])];
+    [toUser setSmallImageUrl:TYPE_CHECK([JSONDictionary valueForKey:@"small_image_uri"])];   
+    [toUser setCity: TYPE_CHECK([JSONDictionary valueForKey:@"city"])];
+    [toUser setState: TYPE_CHECK([JSONDictionary valueForKey:@"state"])];
     
-    [toUser setDescription:[JSONDictionary valueForKey:@"description"]];
-    [toUser setLocation:[JSONDictionary valueForKey:@"location"]];
-    [toUser setMedium_image_uri:[JSONDictionary valueForKey:@"medium_image_uri"]];
-    [toUser setLarge_image_uri:[JSONDictionary valueForKey:@"large_image_uri"]];
+    [toUser setDescription: TYPE_CHECK([JSONDictionary valueForKey:@"description"])];
+    [toUser setLocation: TYPE_CHECK([JSONDictionary valueForKey:@"location"])];
+    [toUser setMedium_image_uri: TYPE_CHECK([JSONDictionary valueForKey:@"medium_image_uri"])];
+    [toUser setLarge_image_uri: TYPE_CHECK([JSONDictionary valueForKey:@"large_image_uri"])];
 
-    NSDictionary* stats = [JSONDictionary valueForKey:@"stats"];
+    NSDictionary* stats = TYPE_CHECK([JSONDictionary valueForKey:@"stats"]);
     if(stats != nil)
     {
         [toUser setViews:[[stats valueForKey:@"views"]intValue]];
@@ -56,6 +70,8 @@
         [toUser setComments:[[stats valueForKey:@"comments"]intValue]];
         [toUser setShare:[[stats valueForKey:@"shares"]intValue]];
     }
+    
+    [toUser setThirdPartyAuth:TYPE_CHECK([JSONDictionary valueForKey:@"third_party_auth"])];
 }
 
 //-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject

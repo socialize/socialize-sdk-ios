@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SocializeUser.h"
 
 #define kSOCIALIZE_USERID_KEY        @"SOCIALIZE_USER_ID"
 #define kSOCIALIZE_USERNAME_KEY      @"SOCIALIZE_USER_NAME"
@@ -29,7 +28,7 @@
 /** 
  Third party authentication type 
 */
-typedef enum {
+typedef enum ThirdPartyAuthName {
     FacebookAuth = 1
 } ThirdPartyAuthName;
 

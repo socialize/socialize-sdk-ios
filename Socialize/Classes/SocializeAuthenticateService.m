@@ -33,20 +33,14 @@
 
 #define AUTHENTICATE_METHOD @"authenticate/"
 
--(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret{
-
-    if([SocializeAuthenticateService isAuthenticated]){
-        [self.delegate performSelector:@selector(didAuthenticate) withObject:nil];
-        return;
-    } 
-             
+-(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret{            
     NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [UIDevice currentDevice].uniqueIdentifier];
     NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                 payloadJson, @"jsonData",
                                                 nil];
 
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-    [_provider secureRequestWithMethodName:AUTHENTICATE_METHOD andParams:paramsDict expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
+    [self ExecuteSecurePostRequestAtEndPoint:AUTHENTICATE_METHOD WithParams:paramsDict expectedResponseFormat:SocializeDictionary];
 }
 
 +(BOOL)isAuthenticated {
@@ -116,7 +110,7 @@
                              thirdPartyAppId, @"auth_id" , nil] ;                        
                                
    [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-   [_provider secureRequestWithMethodName:AUTHENTICATE_METHOD andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:self];
+   [self ExecuteSecurePostRequestAtEndPoint:AUTHENTICATE_METHOD WithParams:params expectedResponseFormat:SocializeDictionary];
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey 
@@ -168,8 +162,9 @@
             OAToken *requestToken = [[OAToken alloc] initWithKey:token secret:token_secret];
             [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
             [requestToken release]; requestToken = nil;
-            if (([((NSObject*)_delegate) respondsToSelector:@selector(didAuthenticate)]) )
-                [_delegate didAuthenticate];
+            id<SocializeUser> user = [_objectCreator createObjectFromDictionary:[jsonObject objectForKey:@"user"] forProtocol:@protocol(SocializeUser)];
+            if (([((NSObject*)_delegate) respondsToSelector:@selector(didAuthenticate:)]) )
+                [_delegate didAuthenticate:user];
         }
         else if (([((NSObject*)_delegate) respondsToSelector:@selector(service:didFail:)]) ) 
             [_delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
@@ -178,6 +173,7 @@
     }
     
     [responseBody release];
+    [self freeDelegate];
 }
 
 -(void)removeAuthenticationInfo
@@ -200,6 +196,11 @@
     return [fbAuth handleOpenURL:url]; 
 }
 
+-(NSString*)receiveFacebookAuthToken
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"FBAccessTokenKey"];
+}
 
 
 @end

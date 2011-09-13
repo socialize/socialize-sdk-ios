@@ -105,7 +105,7 @@
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
     [[mockDelegate expect] service:_entityService didCreate:OCMOCK_ANY];
 
-    _entityService.delegate = mockDelegate;
+    _entityService.delegate = [mockDelegate retain];
 
     id mockEntity = [OCMockObject niceMockForProtocol:@protocol(SocializeEntity)];
     [[[_mockFactory stub]andReturn:mockEntity]createObjectFromString:JSONStringToParse forProtocol:@protocol(SocializeEntity)]; 

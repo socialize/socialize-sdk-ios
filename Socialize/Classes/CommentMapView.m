@@ -9,6 +9,9 @@
 #import "CommentMapView.h"
 #import <QuartzCore/QuartzCore.h>
 
+#define kSpanDeltaLatitude    0.0025
+#define kSpanDeltaLongitude   0.0025
+
 @interface GeoLocationMarker : NSObject<MKAnnotation> {
     CLLocationCoordinate2D coordinate;   
 }
@@ -41,22 +44,6 @@
     [shadowView release];
 }
 
--(id)init{
-    if ((self = [super init])){
-        return self;
-    }  
-    return nil;
-}
-
-- (id)initWithCoder:(NSCoder *)decoder
-{
-    if ((self = [super initWithCoder:decoder])){
-        return self;
-    }
-    return nil;
-}
-
-
 -(void) setFitLocation: (CLLocationCoordinate2D) location withSpan: (MKCoordinateSpan) span
 {
     MKCoordinateRegion region;
@@ -74,4 +61,10 @@
     [self addAnnotation: annotation];
     [annotation release];
 }
+
++(MKCoordinateSpan) coordinateSpan
+{
+    return MKCoordinateSpanMake(kSpanDeltaLatitude, kSpanDeltaLongitude);
+}
+
 @end

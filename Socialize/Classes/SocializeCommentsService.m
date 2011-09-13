@@ -66,15 +66,8 @@
     
     NSAssert([params count] != 0, @"User should provide commet ids or keys");
     
-    [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
+    [self ExecuteGetRequestAtEndPoint:COMMENTS_LIST_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
-
-/*-(void) getCommentList: (NSString*) entryKey
-{
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entryKey, ENTITY_KEY, nil];   
-    [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
-}
-*/
 
 -(void) getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last{
     NSMutableDictionary* params;
@@ -84,7 +77,7 @@
     else 
         params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entryKey, ENTITY_KEY, first, @"first", last, @"last", nil];
         
-    [_provider requestWithMethodName:COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
+    [self ExecuteGetRequestAtEndPoint:COMMENTS_LIST_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 
 }
 
@@ -98,7 +91,7 @@
     }
     
     NSArray *params = [NSArray arrayWithObject:commentDictionary];
-    [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
+    [self ExecutePostRequestAtEndPoint:COMMENTS_LIST_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
 
 -(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat
@@ -114,7 +107,7 @@
         }
         
         NSArray *params = [NSArray arrayWithObject: commentDictionary];
-        [_provider requestWithMethodName: COMMENTS_LIST_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
+        [self ExecutePostRequestAtEndPoint:COMMENTS_LIST_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
     }
     else
         [self createCommentForEntityWithKey:entity.key comment:comment longitude:lng latitude:lat];

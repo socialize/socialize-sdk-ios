@@ -56,6 +56,9 @@
     [[mockUser expect] setLikes:[[stats objectForKey:@"likes"]intValue]];
     [[mockUser expect] setComments:[[stats objectForKey:@"comments"]intValue]];
     [[mockUser expect] setShare:[[stats objectForKey:@"shares"]intValue]];
+    
+    [[mockUser expect] setThirdPartyAuth: [JSONDictionaryToParse objectForKey:@"third_party_auth"]];
+    
       
     SocializeUserJSONFormatter * userFormatter = [[[SocializeUserJSONFormatter alloc]initWithFactory:_factory] autorelease];
     

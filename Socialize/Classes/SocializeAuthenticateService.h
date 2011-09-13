@@ -128,4 +128,11 @@ Socialize authentication service is the authentication engine. It performs anony
  */
 -(BOOL)handleOpenURL:(NSURL *)url;
 
+/**
+ Allows get facebook authentication token
+ 
+ @return facebook authentication toke
+ */
+-(NSString*)receiveFacebookAuthToken;
+
 @end

@@ -111,9 +111,9 @@
 @property (nonatomic, retain) id<SocializeUser>        user;
 
 /** Set\get latitude of activity.*/
-@property (nonatomic, assign) NSNumber*           lat;
+@property (nonatomic, retain) NSNumber*           lat;
 /** Set\get logitude of activity.*/
-@property (nonatomic, assign) NSNumber*           lng;
+@property (nonatomic, retain) NSNumber*           lng;
 /** Set\get date of activity.*/
 @property (nonatomic, retain) NSDate*           date;
 

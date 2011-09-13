@@ -38,13 +38,7 @@
                                    nil];
     
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    if ([SocializeAuthenticateService isAuthenticated]){
-        id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
-        _service.delegate = mockDelegate;
-        [[mockDelegate expect] didAuthenticate];
-    }
-    else
-        [[mockProvider expect] secureRequestWithMethodName:@"authenticate/" andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:_service];
+    [[mockProvider expect] secureRequestWithMethodName:@"authenticate/" andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:_service];
         
     _service.provider = mockProvider;
 
@@ -97,8 +91,8 @@
 
     [self prepare];
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
-    _service.delegate = mockDelegate;
-    [[mockDelegate expect] didAuthenticate];
+    _service.delegate = [mockDelegate retain];
+    [[mockDelegate expect] didAuthenticate:nil];
 
     NSString* reponseString =@"{\"oauth_token_secret\": \"f0e68570-00a4-4516-af27-b61a23099ad4\", \"oauth_token\": \"7ef9831c-5e23-4060-b197-4df5481a381d\", \"user\": {\"username\": \"User3920508\", \"id\": 3920508, \"small_image_uri\": null}}";
     
@@ -109,7 +103,7 @@
    // [self waitForStatus:kGHUnitWaitStatusSuccess timeout:30.0];
 }
 
--(void)didAuthenticate{
+-(void)didAuthenticate: (id<SocializeUser>)user{
    // [self notify:kGHUnitWaitStatusSuccess];
     return;
 }
