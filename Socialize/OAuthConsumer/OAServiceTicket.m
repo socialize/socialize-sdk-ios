@@ -1,8 +1,8 @@
 //
-//  OAMutableURLRequest.h
+//  OAServiceTicket.m
 //  OAuthConsumer
 //
-//  Created by Jon Crosby on 10/19/07.
+//  Created by Jon Crosby on 11/5/07.
 //  Copyright 2007 Kaboomerang LLC. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,42 +24,28 @@
 //  THE SOFTWARE.
 
 
-#import <Foundation/Foundation.h>
-#import "OAConsumer.h"
-#import "OAToken.h"
-#import "OAHMAC_SHA1SignatureProvider.h"
-#import "OASignatureProviding.h"
-#import "NSMutableURLRequest+Parameters.h"
-#import "NSURL+Base.h"
+#import "OAServiceTicket.h"
 
 
-@interface OAMutableURLRequest : NSMutableURLRequest {
-@protected
-    OAConsumer *consumer;
-    OAToken *token;
-    NSString *realm;
-    NSString *signature;
-    id<OASignatureProviding> signatureProvider;
-    NSString *nonce;
-    NSString *timestamp;
+@implementation OAServiceTicket
+@synthesize request, response, didSucceed;
+
+- (id)initWithRequest:(OAMutableURLRequest *)aRequest response:(NSURLResponse *)aResponse didSucceed:(BOOL)success 
+{
+    if (self = [super init])
+	{
+		self.request = aRequest;
+		self.response = aResponse;
+		self.didSucceed = success;
+	}
+    return self;
 }
-@property(readonly) NSString *signature;
-@property(readonly) NSString *nonce;
 
-- (id)initWithURL:(NSURL *)aUrl
-		 consumer:(OAConsumer *)aConsumer
-			token:(OAToken *)aToken
-            realm:(NSString *)aRealm
-signatureProvider:(id<OASignatureProviding, NSObject>)aProvider;
-
-- (id)initWithURL:(NSURL *)aUrl
-		 consumer:(OAConsumer *)aConsumer
-			token:(OAToken *)aToken
-            realm:(NSString *)aRealm
-signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
-            nonce:(NSString *)aNonce
-        timestamp:(NSString *)aTimestamp;
-
-- (void)prepare;
+- (void)dealloc
+{
+	[request release];
+	[response release];
+	[super dealloc];
+}
 
 @end
