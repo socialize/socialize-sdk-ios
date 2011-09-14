@@ -392,6 +392,7 @@
 		6DFB000C141FE2CA0030DE32 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFB5141FE2CA0030DE32 /* SocializeCommentsTableViewController.xib */; };
 		6DFB000D141FE2CA0030DE32 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFB6141FE2CA0030DE32 /* SocializeConfigurationInfo.plist */; };
 		6DFB000E141FE2CA0030DE32 /* Socialize-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFBFFB7141FE2CA0030DE32 /* Socialize-iOS.framework */; };
+		6DFB0012141FF9460030DE32 /* CommentsTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB0011141FF9450030DE32 /* CommentsTableViewTests.m */; };
 		6DFBFE71141FDDCC0030DE32 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBFE55141FDDCC0030DE32 /* Base64Transcoder.c */; };
 		6DFBFE72141FDDCC0030DE32 /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DFBFE56141FDDCC0030DE32 /* Base64Transcoder.h */; };
 		6DFBFE73141FDDCC0030DE32 /* NSMutableURLRequest+Parameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DFBFE57141FDDCC0030DE32 /* NSMutableURLRequest+Parameters.h */; };
@@ -803,8 +804,8 @@
 		6D44A7D21402D20C004B3A46 /* NSNumber+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+Additions.m"; path = "Classes/NSNumber+Additions.m"; sourceTree = "<group>"; };
 		6D44A8E314030196004B3A46 /* action-bar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-bar-bg.png"; path = "Resources/action-bar-bg.png"; sourceTree = "<group>"; };
 		6D44A8E414030197004B3A46 /* action-bar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-bar-bg@2x.png"; path = "Resources/action-bar-bg@2x.png"; sourceTree = "<group>"; };
-		6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsTableViewController.h; path = Classes/SocializeCommentsTableViewController.h; sourceTree = "<group>"; };
-		6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsTableViewController.m; path = Classes/SocializeCommentsTableViewController.m; sourceTree = "<group>"; };
+		6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsTableViewController.h; path = ../Socialize/Classes/SocializeCommentsTableViewController.h; sourceTree = "<group>"; };
+		6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsTableViewController.m; path = ../Socialize/Classes/SocializeCommentsTableViewController.m; sourceTree = "<group>"; };
 		6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeCommentsTableViewController.xib; path = Resources/SocializeCommentsTableViewController.xib; sourceTree = "<group>"; };
 		6D44A90414041848004B3A46 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsTableViewCell.h; path = Classes/CommentsTableViewCell.h; sourceTree = "<group>"; };
 		6D44A90514041851004B3A46 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsTableViewCell.m; path = Classes/CommentsTableViewCell.m; sourceTree = "<group>"; };
@@ -944,6 +945,8 @@
 		6DDBEA6B14057B4F00E41FC0 /* UILabel-Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel-Additions.h"; path = "Classes/UILabel-Additions.h"; sourceTree = "<group>"; };
 		6DDBEA6C14057B5700E41FC0 /* UILabel-Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel-Additions.m"; path = "Classes/UILabel-Additions.m"; sourceTree = "<group>"; };
 		6DEEC9BE13D6238F0066CFA2 /* urls.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = urls.plist; sourceTree = "<group>"; };
+		6DFB0010141FF9430030DE32 /* CommentsTableViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsTableViewTests.h; path = "Test Cases/CommentsTableViewTests.h"; sourceTree = "<group>"; };
+		6DFB0011141FF9450030DE32 /* CommentsTableViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsTableViewTests.m; path = "Test Cases/CommentsTableViewTests.m"; sourceTree = "<group>"; };
 		6DFBFE55141FDDCC0030DE32 /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
 		6DFBFE56141FDDCC0030DE32 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
 		6DFBFE57141FDDCC0030DE32 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableURLRequest+Parameters.h"; path = "Socialize/OAuthConsumer/NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
@@ -1261,8 +1264,6 @@
 			children = (
 				1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */,
 				1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */,
-				6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */,
-				6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */,
 				16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */,
 				16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */,
 			);
@@ -1613,6 +1614,10 @@
 				16D2476814163161008A550D /* CommentDetailsViewForTest.m */,
 				16D247891417A984008A550D /* PostCommentViewControllerTests.h */,
 				16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */,
+				6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */,
+				6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */,
+				6DFB0010141FF9430030DE32 /* CommentsTableViewTests.h */,
+				6DFB0011141FF9450030DE32 /* CommentsTableViewTests.m */,
 			);
 			name = "UI tests";
 			sourceTree = "<group>";
@@ -2627,6 +2632,7 @@
 				16D2478B1417A986008A550D /* PostCommentViewControllerTests.m in Sources */,
 				16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */,
 				16A82A29141DE79D00193CA7 /* ImageLoaderTests.m in Sources */,
+				6DFB0012141FF9460030DE32 /* CommentsTableViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

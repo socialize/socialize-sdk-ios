@@ -25,18 +25,18 @@
 
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
--(void)setupNavBar;
--(UIView*)prepareCommentsNavBarsLeftView;
--(UIBarButtonItem*)createLeftNavigationButtonWithCaption:(NSString*)caption;
-
 @end
 
 @implementation SocializeCommentsTableViewController
 
-@synthesize _tableView;
+@synthesize tableView = _tableView;
+@synthesize socialize = _socialize;
+@synthesize cache = _cache;
+
 @synthesize brushedMetalBackground;
 @synthesize backgroundView;
 @synthesize roundedContainerView;
+
 @synthesize noCommentsIconView;
 @synthesize topToolBar;
 @synthesize commentsCell;
@@ -53,60 +53,24 @@
 		_commentDateFormatter = [[NSDateFormatter alloc] init];
 		[_commentDateFormatter setDateFormat:@"hh:mm:ss zzz"];
         
-		/*container frame inits*/
-		CGRect containerFrame = CGRectMake(0, 0, 140, 140);
-		TableBGInfoView * containerView = [[[TableBGInfoView alloc] initWithFrame:containerFrame bgImageName:@"socialize-nocomments-icon.png"] autorelease];
-		containerView.hidden = YES;
-		containerView.center = _tableView.center;
-		[_tableView addSubview:containerView];
-
-		informationView = containerView;
-		informationView.errorLabel.text = @"No comments to show.";
-        
+        /*Socialize inits*/
         _entity = [[SocializeEntity alloc] init];
         _entity.key = entryUrlString;
         _socialize = [[Socialize alloc] initWithDelegate:self]; 
         
+        /* cache for the images*/
         _cache = [[ImagesCache alloc] init];
         
 	}
     return self;
 }
 
-- (UIView*)prepareCommentsNavBarsLeftView {
-    
-	NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"commentsNavBarLeftItemView" owner:self options:nil];
-	UIView* myview = [nibViews objectAtIndex: 0];
-	return myview;
-
-}
-
--(void)setupNavBar{
-
-    UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"Comments" style: UIBarButtonItemStyleBordered target:nil action:nil];
-    self.navigationItem.backBarButtonItem = backButton;
-    [backButton release];
-    
-    UIButton * cancelButton = [UIButton redSocializeNavBarButtonWithTitle:@"Close"];
-	NSMutableArray* navButtonItems = [NSMutableArray arrayWithCapacity:3];
-
- 	UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithCustomView:[self prepareCommentsNavBarsLeftView]];
-	UIBarButtonItem* rightCancelItem = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
-	UIBarButtonItem* fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-	fixedSpace.width = 130;
-
-	[navButtonItems addObject:leftItem];
-	[navButtonItems addObject:fixedSpace];
-	[navButtonItems addObject:rightCancelItem];
-    self.topToolBar.tintColor = [UIColor blackColor];
-	
-	[self.topToolBar setItems:navButtonItems];
-}
-
 - (void) viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
     [_socialize getCommentList:_entity.key first:nil last:nil]; 
     _loadingView = [LoadingView loadingViewInView:self.view];
+    
 }
 
 #pragma mark SocializeService Delegate
@@ -114,7 +78,7 @@
 -(void)service:(SocializeService *)service didFail:(NSError *)error{
 
     _isLoading = NO;
-    [self._tableView reloadData];
+    [self.tableView reloadData];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Failed!", @"") 
                                                     message: [error localizedDescription]
                                                    delegate: nil 
@@ -130,20 +94,25 @@
     _isLoading = NO;
     _arrayOfComments = [dataArray retain];
     [_loadingView removeView];
-    [self._tableView reloadData];
+    [self.tableView reloadData];
     
 }
 #pragma mark -
-
--(void) viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 
     [super viewDidLoad];
+    
+    /*container frame inits*/
+    CGRect containerFrame = CGRectMake(0, 0, 140, 140);
+    TableBGInfoView * containerView = [[[TableBGInfoView alloc] initWithFrame:containerFrame bgImageName:@"socialize-nocomments-icon.png"] autorelease];
+    containerView.hidden = YES;
+    containerView.center = _tableView.center;
+    [_tableView addSubview:containerView];
+    
+    informationView = containerView;
+    informationView.errorLabel.text = @"No comments to show.";
     
     _tableView.scrollsToTop = YES;
     _tableView.autoresizesSubviews = YES;
@@ -205,15 +174,6 @@
 
 -(NSString*)getDateString:(NSDate*)startdate {
 	return [NSDate getTimeElapsedString:startdate]; 
-}
-
--(UIBarButtonItem*) createLeftNavigationButtonWithCaption: (NSString*) caption {
-
-    UIButton *backButton = [UIButton blackSocializeNavBarBackButtonWithTitle:caption]; 
-    [backButton addTarget:self action:@selector(backToCommentsList:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem * backLeftItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    return backLeftItem;
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -385,7 +345,6 @@
     // e.g. self.myOutlet = nil;
 }
 
-
 - (void)addNoCommentsBackground{
 	informationView.errorLabel.hidden = NO;
 	informationView.noActivityImageView.hidden = NO;
@@ -397,18 +356,11 @@
 	informationView.noActivityImageView.hidden = YES;
 	informationView.hidden = YES;
 }
-#pragma mark TextView Delegate 
 
+#pragma mark TextView Delegate 
 - (void)textViewDidChange:(UITextView *)textView {
 	
 }
-
-#pragma mark PostCommentViewController Delegate
-
-
-
-#pragma mark FooterAnimateDelegate
-
 
 #pragma mark -
 - (void)dealloc {

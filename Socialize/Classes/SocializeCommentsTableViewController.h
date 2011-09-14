@@ -51,7 +51,7 @@
     ImagesCache*                  _cache;
 }
 
-@property (retain, nonatomic) IBOutlet UITableView  *_tableView;
+@property (retain, nonatomic) IBOutlet UITableView  *tableView;
 @property (retain, nonatomic) IBOutlet UIToolbar    *topToolBar;
 @property (retain, nonatomic) IBOutlet UIImageView	*brushedMetalBackground;
 @property (retain, nonatomic) IBOutlet UIView		*backgroundView;
@@ -60,6 +60,8 @@
 
 @property (nonatomic, assign) IBOutlet CommentsTableViewCell     *commentsCell;
 @property (retain, nonatomic) IBOutlet CommentsTableFooterView   *footerView;
+@property (retain, nonatomic) Socialize                 *socialize;
+@property (retain, nonatomic) ImagesCache               *cache;
 
 -(IBAction)addCommentButtonPressed:(id)sender;
 
