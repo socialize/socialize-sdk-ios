@@ -186,11 +186,15 @@
 #pragma mark - navigation bar button actions
 -(void)sendButtonPressed:(id)button {
 
-    NSNumber* latitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.latitude];
-    NSNumber* longitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.longitude];
-    
     _loadingIndicatorView = [LoadingView loadingViewInView:commentTextView]; //TODO:: probably it should be pushed in separate method
-    [_socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:longitude latitude:latitude];
+    if(shareLocation)
+    {
+        NSNumber* latitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.latitude];
+        NSNumber* longitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.longitude];        
+        [_socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:longitude latitude:latitude];
+    }
+    else
+        [_socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:nil latitude:nil];
 }
 
 -(void)closeButtonPressed:(id)button {
