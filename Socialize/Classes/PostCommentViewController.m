@@ -13,18 +13,17 @@
 #import "Socialize.h"
 #import "LoadingView.h"
 #import "NSString+PlaceMark.h"
+#import "UIKeyboardListener.h"
 
 @interface PostCommentViewController ()
 
 -(void)setShareLocation:(BOOL)enableLocation;
--(void)setUserLocationTextLabel;
+-(void)setUserLocationTextLabel:(NSString*) userLoaction;
 -(void)sendButtonPressed:(id)button;
 -(void)closeButtonPressed:(id)button;
 -(void)configureDoNotShareLocationButton;
 -(void)updateViewWithNewLocation: (MKUserLocation*)userLocation;
--(BOOL) shouldShareLocationOnStart;
-
-@property(nonatomic, retain) NSString * userLocationText;
+-(BOOL)shouldShareLocationOnStart;
 
 @end 
 
@@ -32,7 +31,6 @@
 
 @synthesize commentTextView;
 @synthesize locationText;
-@synthesize userLocationText;
 @synthesize doNotShareLocationButton;
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
@@ -44,6 +42,7 @@
     if (self) {
         _socialize = [[Socialize alloc ] initWithDelegate:self];
         _entityUrlString = [entityUrlString retain];
+        kbListener = [[UIKeyboardListener alloc] initWithVisibleKeyboard:NO];
     }
     return self;
 }
@@ -54,25 +53,17 @@
     [doNotShareLocationButton release];
     [activateLocationButton release];
     [mapOfUserLocation release];
-    [userLocationText release];
     [locationText release];
     [_loadingIndicatorView release];
     [_socialize release];
     [_entityUrlString release];
+    [kbListener release];
     [super dealloc];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma Location enable/disable button callbacks
 
--(BOOL) shouldShareLocationOnStart
+-(BOOL)shouldShareLocationOnStart
 {
     if ([AppMakrLocation applicationIsAuthorizedToUseLocationServices])
     {
@@ -100,12 +91,11 @@
     }
 }
 
--(void)setUserLocationTextLabel
+-(void)setUserLocationTextLabel:(NSString*) userLoaction
 {
-    //TODO:: send text as a parametr 
     if (shareLocation) {
         
-        self.locationText.text = self.userLocationText;
+        self.locationText.text = userLoaction;
         self.locationText.font = [UIFont fontWithName:@"Helvetica" size:12.0];
         self.locationText.textColor = [UIColor colorWithRed:(35.0/255) green:(130.0/255) blue:(210.0/255) alpha:1];
         
@@ -117,6 +107,16 @@
         self.locationText.textColor = [UIColor colorWithRed:(167.0/255) green:(167.0/255) blue:(167.0/255) alpha:1];
 
     }
+}
+
+-(void)configureDoNotShareLocationButton
+{   
+    UIImage * normalImage = [[UIImage imageNamed:@"socialize-comment-button.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
+    UIImage * highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
+    
+    [self.doNotShareLocationButton setBackgroundImage:normalImage forState:UIControlStateNormal];
+	[self.doNotShareLocationButton setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
+    
 }
 
 -(void)setShareLocation:(BOOL)enableLocation {
@@ -152,41 +152,35 @@
     
 
 
-    [self setUserLocationTextLabel];
+    [self setUserLocationTextLabel: nil];
 }
+
+#pragma mark - Buttons actions
 
 -(IBAction)activateLocationButtonPressed:(id)sender
 {
     if (shareLocation)
     {
-        if (keyboardIsVisible) 
+        if (kbListener.isVisible) 
         {
             
-            [commentTextView resignFirstResponder];
-            keyboardIsVisible = FALSE;
-          
+            [commentTextView resignFirstResponder];          
         }
         else
         {
             [commentTextView becomeFirstResponder];
-            keyboardIsVisible = YES;
-        }
-            
-       
+        }            
     }
     else
     {
-        
         [self setShareLocation:YES];
     }
 }
 
 -(IBAction)doNotShareLocationButtonPressed:(id)sender
-{
-   
+{  
     [self setShareLocation:NO];
     [commentTextView becomeFirstResponder];
-    keyboardIsVisible = YES;
 }
 
 #pragma mark - navigation bar button actions
@@ -199,7 +193,13 @@
     [_socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:longitude latitude:latitude];
 }
 
-#pragma mark SocializeServiceDelegate
+-(void)closeButtonPressed:(id)button {
+    [_loadingIndicatorView removeView];_loadingIndicatorView = nil;
+    [self dismissModalViewControllerAnimated:YES];
+    
+}
+
+#pragma mark - SocializeServiceDelegate
 
 -(void)service:(SocializeService *)service didFail:(NSError *)error{
 
@@ -216,13 +216,6 @@
     [_loadingIndicatorView removeView];_loadingIndicatorView = nil;
     [self dismissModalViewControllerAnimated:YES];
     
-}
-
-#pragma mark -
--(void)closeButtonPressed:(id)button {
-    [_loadingIndicatorView removeView];_loadingIndicatorView = nil;
-    [self dismissModalViewControllerAnimated:YES];
-
 }
 
 #pragma mark - UITextViewDelegate callbacks
@@ -264,24 +257,12 @@
 {
     [super viewWillAppear:animated];
     
-    [self.commentTextView becomeFirstResponder];
-    keyboardIsVisible = YES;
-    
+    [self.commentTextView becomeFirstResponder];    
     [self setShareLocation:[self shouldShareLocationOnStart]];
     
     [mapOfUserLocation configurate];
     [self configureDoNotShareLocationButton];       
     [self updateViewWithNewLocation: mapOfUserLocation.userLocation];
-}
-
--(void)configureDoNotShareLocationButton
-{   
-    UIImage * normalImage = [[UIImage imageNamed:@"socialize-comment-button.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
-    UIImage * highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
-    
-    [self.doNotShareLocationButton setBackgroundImage:normalImage forState:UIControlStateNormal];
-	[self.doNotShareLocationButton setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
-    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -308,15 +289,16 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - Map View Delegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     [self updateViewWithNewLocation:userLocation];
 }
 
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
-    self.userLocationText = [NSString stringWithPlacemark:placemark];
-    
-    [self setUserLocationTextLabel];
+#pragma mark - Reverse geo coder delegate
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark 
+{   
+    [self setUserLocationTextLabel: [NSString stringWithPlacemark:placemark]];
   
     geocoder.delegate = nil;
     [geocoder autorelease];

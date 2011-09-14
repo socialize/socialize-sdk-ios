@@ -12,23 +12,23 @@
 #import "Socialize.h"
 
 @class CommentMapView;
+@class UIKeyboardListener;
 
 @interface PostCommentViewController : UIViewController <UITextViewDelegate, MKMapViewDelegate, MKReverseGeocoderDelegate, SocializeServiceDelegate >
 {
 @private
-    NSString    *userLocationText;
-    UITextView  *commentTextView;
-    UILabel     *locationText; 
-    UIButton    *doNotShareLocationButton;
-    UIButton    *activateLocationButton;
-    CommentMapView *mapOfUserLocation;
+    BOOL        shareLocation;
+    UIKeyboardListener* kbListener;
     
-    BOOL            shareLocation;
-    BOOL            keyboardIsVisible;
-
-    LoadingView*                          _loadingIndicatorView;
-    Socialize*                            _socialize;
-    NSString*                             _entityUrlString;
+    Socialize*  _socialize;
+    NSString*   _entityUrlString;
+    
+    UITextView* commentTextView;
+    UILabel*    locationText; 
+    UIButton*   doNotShareLocationButton;
+    UIButton*   activateLocationButton;
+    CommentMapView* mapOfUserLocation;
+    LoadingView*  _loadingIndicatorView;
 }
 
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;
