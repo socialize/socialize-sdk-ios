@@ -533,6 +533,130 @@
 		9ABB68BD13BA78A4001882D1 /* SocializeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB68BB13BA78A4001882D1 /* SocializeService.m */; };
 		9AC0259913BB8253004AB147 /* SocializeUserService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC0259713BB8253004AB147 /* SocializeUserService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9AC0259A13BB8253004AB147 /* SocializeUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0259813BB8253004AB147 /* SocializeUserService.m */; };
+		AACBBD5C14215FDD008F0A50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4411398C40F007C91ED /* main.m */; };
+		AACBBD5D14215FDD008F0A50 /* SampleSdkAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */; };
+		AACBBD5E14215FDD008F0A50 /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
+		AACBBD5F14215FDD008F0A50 /* AuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F02913DF81A000B16454 /* AuthenticateViewController.m */; };
+		AACBBD6014215FDD008F0A50 /* TestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D97F02E13DF82EF00B16454 /* TestListController.m */; };
+		AACBBD6114215FDD008F0A50 /* TestCreateEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D56114F13E340B3004E8E8C /* TestCreateEntityViewController.m */; };
+		AACBBD6214215FDD008F0A50 /* TestGetEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D56115213E340B5004E8E8C /* TestGetEntityViewController.m */; };
+		AACBBD6314215FDD008F0A50 /* TestCreateCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D56115F13E361A1004E8E8C /* TestCreateCommentViewController.m */; };
+		AACBBD6414215FDD008F0A50 /* TestFetchCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D56116413E37D99004E8E8C /* TestFetchCommentsViewController.m */; };
+		AACBBD6514215FDD008F0A50 /* TestLikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D56116913E645BA004E8E8C /* TestLikeViewController.m */; };
+		AACBBD6614215FDD008F0A50 /* TestViewCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C5EF7F13E6B8A800F2EA87 /* TestViewCreationViewController.m */; };
+		AACBBD6714215FDD008F0A50 /* LikeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D45310313E8862100286BEC /* LikeListViewController.m */; };
+		AACBBD6914215FDD008F0A50 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1681BDC813F55D3200EC6042 /* CoreLocation.framework */; };
+		AACBBD6A14215FDD008F0A50 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C330E013F3C2D1004EA34D /* MapKit.framework */; };
+		AACBBD6B14215FDD008F0A50 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D97F03C13DFC91500B16454 /* QuartzCore.framework */; };
+		AACBBD6C14215FDD008F0A50 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
+		AACBBD6D14215FDD008F0A50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
+		AACBBD6E14215FDD008F0A50 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
+		AACBBD6F14215FDD008F0A50 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
+		AACBBD7014215FDD008F0A50 /* Socialize-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFBFFB7141FE2CA0030DE32 /* Socialize-iOS.framework */; };
+		AACBBD7214215FDD008F0A50 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C43D1398C40F007C91ED /* InfoPlist.strings */; };
+		AACBBD7314215FDD008F0A50 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E2C4461398C40F007C91ED /* MainWindow.xib */; };
+		AACBBD7414215FDD008F0A50 /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DEEC9BE13D6238F0066CFA2 /* urls.plist */; };
+		AACBBD7514215FDD008F0A50 /* AuthenticateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D97F02A13DF81A100B16454 /* AuthenticateViewController.xib */; };
+		AACBBD7614215FDD008F0A50 /* TestListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D97F02F13DF82F000B16454 /* TestListController.xib */; };
+		AACBBD7714215FDD008F0A50 /* tests.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D97F03213DF8ABA00B16454 /* tests.plist */; };
+		AACBBD7814215FDD008F0A50 /* TestCreateEntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D56115013E340B4004E8E8C /* TestCreateEntityViewController.xib */; };
+		AACBBD7914215FDD008F0A50 /* TestGetEntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D56115313E340B6004E8E8C /* TestGetEntityViewController.xib */; };
+		AACBBD7A14215FDD008F0A50 /* TestCreateCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D56116013E361A4004E8E8C /* TestCreateCommentViewController.xib */; };
+		AACBBD7B14215FDD008F0A50 /* TestFetchCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D56116513E37DA0004E8E8C /* TestFetchCommentsViewController.xib */; };
+		AACBBD7C14215FDD008F0A50 /* TestLikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D56116A13E645C5004E8E8C /* TestLikeViewController.xib */; };
+		AACBBD7D14215FDD008F0A50 /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16C5EF8013E6B8A800F2EA87 /* TestViewCreationViewController.xib */; };
+		AACBBD7E14215FDD008F0A50 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D45310413E8862100286BEC /* LikeListViewController.xib */; };
+		AACBBD7F14215FDD008F0A50 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D45319413E9C3E800286BEC /* background.png */; };
+		AACBBD8014215FDD008F0A50 /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF61141FE2CA0030DE32 /* action-bar-bg.png */; };
+		AACBBD8114215FDD008F0A50 /* action-bar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF62141FE2CA0030DE32 /* action-bar-bg@2x.png */; };
+		AACBBD8214215FDD008F0A50 /* action-bar-button-black-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF63141FE2CA0030DE32 /* action-bar-button-black-hover.png */; };
+		AACBBD8314215FDD008F0A50 /* action-bar-button-black-hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF64141FE2CA0030DE32 /* action-bar-button-black-hover@2x.png */; };
+		AACBBD8414215FDD008F0A50 /* action-bar-button-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF65141FE2CA0030DE32 /* action-bar-button-black.png */; };
+		AACBBD8514215FDD008F0A50 /* action-bar-button-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF66141FE2CA0030DE32 /* action-bar-button-black@2x.png */; };
+		AACBBD8614215FDD008F0A50 /* action-bar-icon-comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF67141FE2CA0030DE32 /* action-bar-icon-comments.png */; };
+		AACBBD8714215FDD008F0A50 /* action-bar-icon-comments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF68141FE2CA0030DE32 /* action-bar-icon-comments@2x.png */; };
+		AACBBD8814215FDD008F0A50 /* action-bar-icon-like.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF69141FE2CA0030DE32 /* action-bar-icon-like.png */; };
+		AACBBD8914215FDD008F0A50 /* action-bar-icon-like@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF6A141FE2CA0030DE32 /* action-bar-icon-like@2x.png */; };
+		AACBBD8A14215FDD008F0A50 /* action-bar-icon-liked.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF6B141FE2CA0030DE32 /* action-bar-icon-liked.png */; };
+		AACBBD8B14215FDD008F0A50 /* action-bar-icon-liked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF6C141FE2CA0030DE32 /* action-bar-icon-liked@2x.png */; };
+		AACBBD8C14215FDD008F0A50 /* action-bar-icon-share.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF6D141FE2CA0030DE32 /* action-bar-icon-share.png */; };
+		AACBBD8D14215FDD008F0A50 /* action-bar-icon-share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF6E141FE2CA0030DE32 /* action-bar-icon-share@2x.png */; };
+		AACBBD8E14215FDD008F0A50 /* action-bar-icon-views.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF6F141FE2CA0030DE32 /* action-bar-icon-views.png */; };
+		AACBBD8F14215FDD008F0A50 /* action-bar-icon-views@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF70141FE2CA0030DE32 /* action-bar-icon-views@2x.png */; };
+		AACBBD9014215FDD008F0A50 /* comment-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF71141FE2CA0030DE32 /* comment-bg.png */; };
+		AACBBD9114215FDD008F0A50 /* comment-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF72141FE2CA0030DE32 /* comment-bg@2x.png */; };
+		AACBBD9214215FDD008F0A50 /* comment-sm-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF73141FE2CA0030DE32 /* comment-sm-icon.png */; };
+		AACBBD9314215FDD008F0A50 /* comment-sm-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF74141FE2CA0030DE32 /* comment-sm-icon@2x.png */; };
+		AACBBD9414215FDD008F0A50 /* comment_template_clear.htm in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF75141FE2CA0030DE32 /* comment_template_clear.htm */; };
+		AACBBD9514215FDD008F0A50 /* CommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF76141FE2CA0030DE32 /* CommentDetailsViewController.xib */; };
+		AACBBD9614215FDD008F0A50 /* comments-cell-bg-borders.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF77141FE2CA0030DE32 /* comments-cell-bg-borders.png */; };
+		AACBBD9714215FDD008F0A50 /* comments-cell-bg-borders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF78141FE2CA0030DE32 /* comments-cell-bg-borders@2x.png */; };
+		AACBBD9814215FDD008F0A50 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF79141FE2CA0030DE32 /* CommentsTableViewCell.xib */; };
+		AACBBD9914215FDD008F0A50 /* PostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF7A141FE2CA0030DE32 /* PostCommentViewController.xib */; };
+		AACBBD9A14215FDD008F0A50 /* socialize-cell-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF7B141FE2CA0030DE32 /* socialize-cell-arrow.png */; };
+		AACBBD9B14215FDD008F0A50 /* socialize-cell-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF7C141FE2CA0030DE32 /* socialize-cell-arrow@2x.png */; };
+		AACBBD9C14215FDD008F0A50 /* socialize-cell-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF7D141FE2CA0030DE32 /* socialize-cell-bg.png */; };
+		AACBBD9D14215FDD008F0A50 /* socialize-cell-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF7E141FE2CA0030DE32 /* socialize-cell-bg@2x.png */; };
+		AACBBD9E14215FDD008F0A50 /* socialize-cell-image-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF7F141FE2CA0030DE32 /* socialize-cell-image-bg.png */; };
+		AACBBD9F14215FDD008F0A50 /* socialize-cell-image-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF80141FE2CA0030DE32 /* socialize-cell-image-bg@2x.png */; };
+		AACBBDA014215FDD008F0A50 /* socialize-cell-image-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF81141FE2CA0030DE32 /* socialize-cell-image-default.png */; };
+		AACBBDA114215FDD008F0A50 /* socialize-cell-image-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF82141FE2CA0030DE32 /* socialize-cell-image-default@2x.png */; };
+		AACBBDA214215FDD008F0A50 /* socialize-cell-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF83141FE2CA0030DE32 /* socialize-cell-image.png */; };
+		AACBBDA314215FDD008F0A50 /* socialize-cell-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF84141FE2CA0030DE32 /* socialize-cell-image@2x.png */; };
+		AACBBDA414215FDD008F0A50 /* socialize-cell-selected-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF85141FE2CA0030DE32 /* socialize-cell-selected-bg.png */; };
+		AACBBDA514215FDD008F0A50 /* socialize-cell-selected-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF86141FE2CA0030DE32 /* socialize-cell-selected-bg@2x.png */; };
+		AACBBDA614215FDD008F0A50 /* socialize-comment-background-text-input.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF87141FE2CA0030DE32 /* socialize-comment-background-text-input.png */; };
+		AACBBDA714215FDD008F0A50 /* socialize-comment-background-text-input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF88141FE2CA0030DE32 /* socialize-comment-background-text-input@2x.png */; };
+		AACBBDA814215FDD008F0A50 /* socialize-comment-button-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF89141FE2CA0030DE32 /* socialize-comment-button-active.png */; };
+		AACBBDA914215FDD008F0A50 /* socialize-comment-button-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF8A141FE2CA0030DE32 /* socialize-comment-button-active@2x.png */; };
+		AACBBDAA14215FDD008F0A50 /* socialize-comment-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF8B141FE2CA0030DE32 /* socialize-comment-button.png */; };
+		AACBBDAB14215FDD008F0A50 /* socialize-comment-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF8C141FE2CA0030DE32 /* socialize-comment-button@2x.png */; };
+		AACBBDAC14215FDD008F0A50 /* socialize-comment-detail-bottom-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF8D141FE2CA0030DE32 /* socialize-comment-detail-bottom-shadow-background.png */; };
+		AACBBDAD14215FDD008F0A50 /* socialize-comment-detail-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF8E141FE2CA0030DE32 /* socialize-comment-detail-bottom-shadow-background@2x.png */; };
+		AACBBDAE14215FDD008F0A50 /* socialize-comment-details-icon-geo-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF8F141FE2CA0030DE32 /* socialize-comment-details-icon-geo-disabled.png */; };
+		AACBBDAF14215FDD008F0A50 /* socialize-comment-details-icon-geo-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF90141FE2CA0030DE32 /* socialize-comment-details-icon-geo-disabled@2x.png */; };
+		AACBBDB014215FDD008F0A50 /* socialize-comment-details-icon-geo-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF91141FE2CA0030DE32 /* socialize-comment-details-icon-geo-enabled.png */; };
+		AACBBDB114215FDD008F0A50 /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF92141FE2CA0030DE32 /* socialize-comment-details-icon-geo-enabled@2x.png */; };
+		AACBBDB214215FDD008F0A50 /* socialize-comment-list-view-location-pin-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF93141FE2CA0030DE32 /* socialize-comment-list-view-location-pin-icon.png */; };
+		AACBBDB314215FDD008F0A50 /* socialize-comment-list-view-location-pin-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF94141FE2CA0030DE32 /* socialize-comment-list-view-location-pin-icon@2x.png */; };
+		AACBBDB414215FDD008F0A50 /* socialize-comment-location-bar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF95141FE2CA0030DE32 /* socialize-comment-location-bar-background.png */; };
+		AACBBDB514215FDD008F0A50 /* socialize-comment-location-bar-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF96141FE2CA0030DE32 /* socialize-comment-location-bar-background@2x.png */; };
+		AACBBDB614215FDD008F0A50 /* socialize-comment-location-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF97141FE2CA0030DE32 /* socialize-comment-location-disabled.png */; };
+		AACBBDB714215FDD008F0A50 /* socialize-comment-location-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF98141FE2CA0030DE32 /* socialize-comment-location-disabled@2x.png */; };
+		AACBBDB814215FDD008F0A50 /* socialize-comment-location-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF99141FE2CA0030DE32 /* socialize-comment-location-enabled.png */; };
+		AACBBDB914215FDD008F0A50 /* socialize-comment-location-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF9A141FE2CA0030DE32 /* socialize-comment-location-enabled@2x.png */; };
+		AACBBDBA14215FDD008F0A50 /* socialize-comment-user-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF9B141FE2CA0030DE32 /* socialize-comment-user-background.png */; };
+		AACBBDBB14215FDD008F0A50 /* socialize-comment-user-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF9C141FE2CA0030DE32 /* socialize-comment-user-background@2x.png */; };
+		AACBBDBC14215FDD008F0A50 /* socialize-navbar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF9D141FE2CA0030DE32 /* socialize-navbar-bg.png */; };
+		AACBBDBD14215FDD008F0A50 /* socialize-navbar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF9E141FE2CA0030DE32 /* socialize-navbar-bg@2x.png */; };
+		AACBBDBE14215FDD008F0A50 /* socialize-navbar-button-back-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFF9F141FE2CA0030DE32 /* socialize-navbar-button-back-pressed.png */; };
+		AACBBDBF14215FDD008F0A50 /* socialize-navbar-button-back-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFA0141FE2CA0030DE32 /* socialize-navbar-button-back-pressed@2x.png */; };
+		AACBBDC014215FDD008F0A50 /* socialize-navbar-button-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFA1141FE2CA0030DE32 /* socialize-navbar-button-back.png */; };
+		AACBBDC114215FDD008F0A50 /* socialize-navbar-button-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFA2141FE2CA0030DE32 /* socialize-navbar-button-back@2x.png */; };
+		AACBBDC214215FDD008F0A50 /* socialize-navbar-button-blue-bg-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFA3141FE2CA0030DE32 /* socialize-navbar-button-blue-bg-highlighted.png */; };
+		AACBBDC314215FDD008F0A50 /* socialize-navbar-button-blue-bg-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFA4141FE2CA0030DE32 /* socialize-navbar-button-blue-bg-highlighted@2x.png */; };
+		AACBBDC414215FDD008F0A50 /* socialize-navbar-button-blue-bg-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFA5141FE2CA0030DE32 /* socialize-navbar-button-blue-bg-normal.png */; };
+		AACBBDC514215FDD008F0A50 /* socialize-navbar-button-blue-bg-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFA6141FE2CA0030DE32 /* socialize-navbar-button-blue-bg-normal@2x.png */; };
+		AACBBDC614215FDD008F0A50 /* socialize-navbar-button-dark-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFA7141FE2CA0030DE32 /* socialize-navbar-button-dark-active.png */; };
+		AACBBDC714215FDD008F0A50 /* socialize-navbar-button-dark-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFA8141FE2CA0030DE32 /* socialize-navbar-button-dark-active@2x.png */; };
+		AACBBDC814215FDD008F0A50 /* socialize-navbar-button-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFA9141FE2CA0030DE32 /* socialize-navbar-button-dark.png */; };
+		AACBBDC914215FDD008F0A50 /* socialize-navbar-button-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFAA141FE2CA0030DE32 /* socialize-navbar-button-dark@2x.png */; };
+		AACBBDCA14215FDD008F0A50 /* socialize-navbar-button-green-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFAB141FE2CA0030DE32 /* socialize-navbar-button-green-active.png */; };
+		AACBBDCB14215FDD008F0A50 /* socialize-navbar-button-green-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFAC141FE2CA0030DE32 /* socialize-navbar-button-green-active@2x.png */; };
+		AACBBDCC14215FDD008F0A50 /* socialize-navbar-button-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFAD141FE2CA0030DE32 /* socialize-navbar-button-green.png */; };
+		AACBBDCD14215FDD008F0A50 /* socialize-navbar-button-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFAE141FE2CA0030DE32 /* socialize-navbar-button-green@2x.png */; };
+		AACBBDCE14215FDD008F0A50 /* socialize-navbar-button-red-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFAF141FE2CA0030DE32 /* socialize-navbar-button-red-active.png */; };
+		AACBBDCF14215FDD008F0A50 /* socialize-navbar-button-red-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFB0141FE2CA0030DE32 /* socialize-navbar-button-red-active@2x.png */; };
+		AACBBDD014215FDD008F0A50 /* socialize-navbar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFB1141FE2CA0030DE32 /* socialize-navbar-button-red.png */; };
+		AACBBDD114215FDD008F0A50 /* socialize-navbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFB2141FE2CA0030DE32 /* socialize-navbar-button-red@2x.png */; };
+		AACBBDD214215FDD008F0A50 /* socialize-nocomments-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFB3141FE2CA0030DE32 /* socialize-nocomments-icon.png */; };
+		AACBBDD314215FDD008F0A50 /* socialize-nocomments-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFB4141FE2CA0030DE32 /* socialize-nocomments-icon@2x.png */; };
+		AACBBDD414215FDD008F0A50 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFB5141FE2CA0030DE32 /* SocializeCommentsTableViewController.xib */; };
+		AACBBDD514215FDD008F0A50 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFB6141FE2CA0030DE32 /* SocializeConfigurationInfo.plist */; };
+		AACBBDDC14216069008F0A50 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D1A871421342100E118A0 /* libKIF.a */; };
+		AACBBDE014216497008F0A50 /* SampleKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = AACBBDDF14216497008F0A50 /* SampleKIFTestController.m */; };
+		AACBBDE3142164CF008F0A50 /* KIFTestScenario+SampleAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleAdditions.m */; };
+		AACBBDE614216530008F0A50 /* KIFTestStep+SampleAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AACBBDE514216530008F0A50 /* KIFTestStep+SampleAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -556,6 +680,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = AAB07268139719AC008AF393;
 			remoteInfo = KIF;
+		};
+		AACBBD5A14215FDD008F0A50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CC3DAB3137881B900B11B78 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16B48DAA13DEEBE100EE0A92;
+			remoteInfo = "Socialize-IOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1115,6 +1246,14 @@
 		9AC0259713BB8253004AB147 /* SocializeUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUserService.h; path = Classes/SocializeUserService.h; sourceTree = "<group>"; };
 		9AC0259813BB8253004AB147 /* SocializeUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserService.m; path = Classes/SocializeUserService.m; sourceTree = "<group>"; };
 		AA2D1A7F1421342100E118A0 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = SampleSdkApp/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
+		AA75A06E14216B210032C88F /* SampleSdkApp-Integration-Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Integration-Tests-Prefix.pch"; sourceTree = "<group>"; };
+		AACBBDDA14215FDD008F0A50 /* SampleSdkApp Integration Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SampleSdkApp Integration Tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AACBBDDE14216497008F0A50 /* SampleKIFTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleKIFTestController.h; sourceTree = "<group>"; };
+		AACBBDDF14216497008F0A50 /* SampleKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleKIFTestController.m; sourceTree = "<group>"; };
+		AACBBDE1142164CE008F0A50 /* KIFTestScenario+SampleAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestScenario+SampleAdditions.h"; sourceTree = "<group>"; };
+		AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestScenario+SampleAdditions.m"; sourceTree = "<group>"; };
+		AACBBDE414216530008F0A50 /* KIFTestStep+SampleAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestStep+SampleAdditions.h"; sourceTree = "<group>"; };
+		AACBBDE514216530008F0A50 /* KIFTestStep+SampleAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestStep+SampleAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1155,6 +1294,22 @@
 				1681BDB313F5567300EC6042 /* MapKit.framework in Frameworks */,
 				1681BDCA13F55D3600EC6042 /* CoreLocation.framework in Frameworks */,
 				1681BDCB13F55E2400EC6042 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AACBBD6814215FDD008F0A50 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBDDC14216069008F0A50 /* libKIF.a in Frameworks */,
+				AACBBD6914215FDD008F0A50 /* CoreLocation.framework in Frameworks */,
+				AACBBD6A14215FDD008F0A50 /* MapKit.framework in Frameworks */,
+				AACBBD6B14215FDD008F0A50 /* QuartzCore.framework in Frameworks */,
+				AACBBD6C14215FDD008F0A50 /* UIKit.framework in Frameworks */,
+				AACBBD6D14215FDD008F0A50 /* Foundation.framework in Frameworks */,
+				AACBBD6E14215FDD008F0A50 /* CoreGraphics.framework in Frameworks */,
+				AACBBD6F14215FDD008F0A50 /* GHUnitIOS.framework in Frameworks */,
+				AACBBD7014215FDD008F0A50 /* Socialize-iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1307,6 +1462,7 @@
 		16E2C43A1398C40E007C91ED /* SampleSdkApp */ = {
 			isa = PBXGroup;
 			children = (
+				AACBBDDD14216332008F0A50 /* KIF */,
 				16E2C4581398F6E3007C91ED /* socialize_resources */,
 				16E2C43B1398C40F007C91ED /* Supporting Files */,
 				6DFD546413D91B0500336836 /* Supporting Views */,
@@ -1347,6 +1503,7 @@
 		16E2C43B1398C40F007C91ED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AA75A06E14216B210032C88F /* SampleSdkApp-Integration-Tests-Prefix.pch */,
 				6D97F03213DF8ABA00B16454 /* tests.plist */,
 				16E2C43C1398C40F007C91ED /* SampleSdkApp-Info.plist */,
 				16E2C43D1398C40F007C91ED /* InfoPlist.strings */,
@@ -1437,6 +1594,7 @@
 			children = (
 				5CC3DAE91378859000B11B78 /* unitTests.app */,
 				16E2C4351398C40E007C91ED /* SampleSdkApp.app */,
+				AACBBDDA14215FDD008F0A50 /* SampleSdkApp Integration Tests.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1997,6 +2155,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		AACBBDDD14216332008F0A50 /* KIF */ = {
+			isa = PBXGroup;
+			children = (
+				AACBBDDE14216497008F0A50 /* SampleKIFTestController.h */,
+				AACBBDDF14216497008F0A50 /* SampleKIFTestController.m */,
+				AACBBDE1142164CE008F0A50 /* KIFTestScenario+SampleAdditions.h */,
+				AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleAdditions.m */,
+				AACBBDE414216530008F0A50 /* KIFTestStep+SampleAdditions.h */,
+				AACBBDE514216530008F0A50 /* KIFTestStep+SampleAdditions.m */,
+			);
+			name = KIF;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2159,12 +2330,32 @@
 			productReference = 5CC3DAE91378859000B11B78 /* unitTests.app */;
 			productType = "com.apple.product-type.application";
 		};
+		AACBBD5814215FDD008F0A50 /* SampleSdkApp Integration Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AACBBDD714215FDD008F0A50 /* Build configuration list for PBXNativeTarget "SampleSdkApp Integration Tests" */;
+			buildPhases = (
+				AACBBD5B14215FDD008F0A50 /* Sources */,
+				AACBBD6814215FDD008F0A50 /* Frameworks */,
+				AACBBD7114215FDD008F0A50 /* Resources */,
+				AACBBDD614215FDD008F0A50 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AACBBD5914215FDD008F0A50 /* PBXTargetDependency */,
+			);
+			name = "SampleSdkApp Integration Tests";
+			productName = SampleSdkApp;
+			productReference = AACBBDDA14215FDD008F0A50 /* SampleSdkApp Integration Tests.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		5CC3DAB3137881B900B11B78 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0410;
 				ORGANIZATIONNAME = "Socialize, Inc.";
 			};
 			buildConfigurationList = 5CC3DAB6137881B900B11B78 /* Build configuration list for PBXProject "SocializeSDK" */;
@@ -2189,6 +2380,7 @@
 				5CC3DAE81378859000B11B78 /* unitTests */,
 				16E2C4341398C40E007C91ED /* SampleSdkApp */,
 				16B48DAA13DEEBE100EE0A92 /* Socialize-iOS */,
+				AACBBD5814215FDD008F0A50 /* SampleSdkApp Integration Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -2422,6 +2614,113 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AACBBD7114215FDD008F0A50 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBD7214215FDD008F0A50 /* InfoPlist.strings in Resources */,
+				AACBBD7314215FDD008F0A50 /* MainWindow.xib in Resources */,
+				AACBBD7414215FDD008F0A50 /* urls.plist in Resources */,
+				AACBBD7514215FDD008F0A50 /* AuthenticateViewController.xib in Resources */,
+				AACBBD7614215FDD008F0A50 /* TestListController.xib in Resources */,
+				AACBBD7714215FDD008F0A50 /* tests.plist in Resources */,
+				AACBBD7814215FDD008F0A50 /* TestCreateEntityViewController.xib in Resources */,
+				AACBBD7914215FDD008F0A50 /* TestGetEntityViewController.xib in Resources */,
+				AACBBD7A14215FDD008F0A50 /* TestCreateCommentViewController.xib in Resources */,
+				AACBBD7B14215FDD008F0A50 /* TestFetchCommentsViewController.xib in Resources */,
+				AACBBD7C14215FDD008F0A50 /* TestLikeViewController.xib in Resources */,
+				AACBBD7D14215FDD008F0A50 /* TestViewCreationViewController.xib in Resources */,
+				AACBBD7E14215FDD008F0A50 /* LikeListViewController.xib in Resources */,
+				AACBBD7F14215FDD008F0A50 /* background.png in Resources */,
+				AACBBD8014215FDD008F0A50 /* action-bar-bg.png in Resources */,
+				AACBBD8114215FDD008F0A50 /* action-bar-bg@2x.png in Resources */,
+				AACBBD8214215FDD008F0A50 /* action-bar-button-black-hover.png in Resources */,
+				AACBBD8314215FDD008F0A50 /* action-bar-button-black-hover@2x.png in Resources */,
+				AACBBD8414215FDD008F0A50 /* action-bar-button-black.png in Resources */,
+				AACBBD8514215FDD008F0A50 /* action-bar-button-black@2x.png in Resources */,
+				AACBBD8614215FDD008F0A50 /* action-bar-icon-comments.png in Resources */,
+				AACBBD8714215FDD008F0A50 /* action-bar-icon-comments@2x.png in Resources */,
+				AACBBD8814215FDD008F0A50 /* action-bar-icon-like.png in Resources */,
+				AACBBD8914215FDD008F0A50 /* action-bar-icon-like@2x.png in Resources */,
+				AACBBD8A14215FDD008F0A50 /* action-bar-icon-liked.png in Resources */,
+				AACBBD8B14215FDD008F0A50 /* action-bar-icon-liked@2x.png in Resources */,
+				AACBBD8C14215FDD008F0A50 /* action-bar-icon-share.png in Resources */,
+				AACBBD8D14215FDD008F0A50 /* action-bar-icon-share@2x.png in Resources */,
+				AACBBD8E14215FDD008F0A50 /* action-bar-icon-views.png in Resources */,
+				AACBBD8F14215FDD008F0A50 /* action-bar-icon-views@2x.png in Resources */,
+				AACBBD9014215FDD008F0A50 /* comment-bg.png in Resources */,
+				AACBBD9114215FDD008F0A50 /* comment-bg@2x.png in Resources */,
+				AACBBD9214215FDD008F0A50 /* comment-sm-icon.png in Resources */,
+				AACBBD9314215FDD008F0A50 /* comment-sm-icon@2x.png in Resources */,
+				AACBBD9414215FDD008F0A50 /* comment_template_clear.htm in Resources */,
+				AACBBD9514215FDD008F0A50 /* CommentDetailsViewController.xib in Resources */,
+				AACBBD9614215FDD008F0A50 /* comments-cell-bg-borders.png in Resources */,
+				AACBBD9714215FDD008F0A50 /* comments-cell-bg-borders@2x.png in Resources */,
+				AACBBD9814215FDD008F0A50 /* CommentsTableViewCell.xib in Resources */,
+				AACBBD9914215FDD008F0A50 /* PostCommentViewController.xib in Resources */,
+				AACBBD9A14215FDD008F0A50 /* socialize-cell-arrow.png in Resources */,
+				AACBBD9B14215FDD008F0A50 /* socialize-cell-arrow@2x.png in Resources */,
+				AACBBD9C14215FDD008F0A50 /* socialize-cell-bg.png in Resources */,
+				AACBBD9D14215FDD008F0A50 /* socialize-cell-bg@2x.png in Resources */,
+				AACBBD9E14215FDD008F0A50 /* socialize-cell-image-bg.png in Resources */,
+				AACBBD9F14215FDD008F0A50 /* socialize-cell-image-bg@2x.png in Resources */,
+				AACBBDA014215FDD008F0A50 /* socialize-cell-image-default.png in Resources */,
+				AACBBDA114215FDD008F0A50 /* socialize-cell-image-default@2x.png in Resources */,
+				AACBBDA214215FDD008F0A50 /* socialize-cell-image.png in Resources */,
+				AACBBDA314215FDD008F0A50 /* socialize-cell-image@2x.png in Resources */,
+				AACBBDA414215FDD008F0A50 /* socialize-cell-selected-bg.png in Resources */,
+				AACBBDA514215FDD008F0A50 /* socialize-cell-selected-bg@2x.png in Resources */,
+				AACBBDA614215FDD008F0A50 /* socialize-comment-background-text-input.png in Resources */,
+				AACBBDA714215FDD008F0A50 /* socialize-comment-background-text-input@2x.png in Resources */,
+				AACBBDA814215FDD008F0A50 /* socialize-comment-button-active.png in Resources */,
+				AACBBDA914215FDD008F0A50 /* socialize-comment-button-active@2x.png in Resources */,
+				AACBBDAA14215FDD008F0A50 /* socialize-comment-button.png in Resources */,
+				AACBBDAB14215FDD008F0A50 /* socialize-comment-button@2x.png in Resources */,
+				AACBBDAC14215FDD008F0A50 /* socialize-comment-detail-bottom-shadow-background.png in Resources */,
+				AACBBDAD14215FDD008F0A50 /* socialize-comment-detail-bottom-shadow-background@2x.png in Resources */,
+				AACBBDAE14215FDD008F0A50 /* socialize-comment-details-icon-geo-disabled.png in Resources */,
+				AACBBDAF14215FDD008F0A50 /* socialize-comment-details-icon-geo-disabled@2x.png in Resources */,
+				AACBBDB014215FDD008F0A50 /* socialize-comment-details-icon-geo-enabled.png in Resources */,
+				AACBBDB114215FDD008F0A50 /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */,
+				AACBBDB214215FDD008F0A50 /* socialize-comment-list-view-location-pin-icon.png in Resources */,
+				AACBBDB314215FDD008F0A50 /* socialize-comment-list-view-location-pin-icon@2x.png in Resources */,
+				AACBBDB414215FDD008F0A50 /* socialize-comment-location-bar-background.png in Resources */,
+				AACBBDB514215FDD008F0A50 /* socialize-comment-location-bar-background@2x.png in Resources */,
+				AACBBDB614215FDD008F0A50 /* socialize-comment-location-disabled.png in Resources */,
+				AACBBDB714215FDD008F0A50 /* socialize-comment-location-disabled@2x.png in Resources */,
+				AACBBDB814215FDD008F0A50 /* socialize-comment-location-enabled.png in Resources */,
+				AACBBDB914215FDD008F0A50 /* socialize-comment-location-enabled@2x.png in Resources */,
+				AACBBDBA14215FDD008F0A50 /* socialize-comment-user-background.png in Resources */,
+				AACBBDBB14215FDD008F0A50 /* socialize-comment-user-background@2x.png in Resources */,
+				AACBBDBC14215FDD008F0A50 /* socialize-navbar-bg.png in Resources */,
+				AACBBDBD14215FDD008F0A50 /* socialize-navbar-bg@2x.png in Resources */,
+				AACBBDBE14215FDD008F0A50 /* socialize-navbar-button-back-pressed.png in Resources */,
+				AACBBDBF14215FDD008F0A50 /* socialize-navbar-button-back-pressed@2x.png in Resources */,
+				AACBBDC014215FDD008F0A50 /* socialize-navbar-button-back.png in Resources */,
+				AACBBDC114215FDD008F0A50 /* socialize-navbar-button-back@2x.png in Resources */,
+				AACBBDC214215FDD008F0A50 /* socialize-navbar-button-blue-bg-highlighted.png in Resources */,
+				AACBBDC314215FDD008F0A50 /* socialize-navbar-button-blue-bg-highlighted@2x.png in Resources */,
+				AACBBDC414215FDD008F0A50 /* socialize-navbar-button-blue-bg-normal.png in Resources */,
+				AACBBDC514215FDD008F0A50 /* socialize-navbar-button-blue-bg-normal@2x.png in Resources */,
+				AACBBDC614215FDD008F0A50 /* socialize-navbar-button-dark-active.png in Resources */,
+				AACBBDC714215FDD008F0A50 /* socialize-navbar-button-dark-active@2x.png in Resources */,
+				AACBBDC814215FDD008F0A50 /* socialize-navbar-button-dark.png in Resources */,
+				AACBBDC914215FDD008F0A50 /* socialize-navbar-button-dark@2x.png in Resources */,
+				AACBBDCA14215FDD008F0A50 /* socialize-navbar-button-green-active.png in Resources */,
+				AACBBDCB14215FDD008F0A50 /* socialize-navbar-button-green-active@2x.png in Resources */,
+				AACBBDCC14215FDD008F0A50 /* socialize-navbar-button-green.png in Resources */,
+				AACBBDCD14215FDD008F0A50 /* socialize-navbar-button-green@2x.png in Resources */,
+				AACBBDCE14215FDD008F0A50 /* socialize-navbar-button-red-active.png in Resources */,
+				AACBBDCF14215FDD008F0A50 /* socialize-navbar-button-red-active@2x.png in Resources */,
+				AACBBDD014215FDD008F0A50 /* socialize-navbar-button-red.png in Resources */,
+				AACBBDD114215FDD008F0A50 /* socialize-navbar-button-red@2x.png in Resources */,
+				AACBBDD214215FDD008F0A50 /* socialize-nocomments-icon.png in Resources */,
+				AACBBDD314215FDD008F0A50 /* socialize-nocomments-icon@2x.png in Resources */,
+				AACBBDD414215FDD008F0A50 /* SocializeCommentsTableViewController.xib in Resources */,
+				AACBBDD514215FDD008F0A50 /* SocializeConfigurationInfo.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -2506,6 +2805,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh RunTests.sh";
 			shellScript = "";
+		};
+		AACBBDD614215FDD008F0A50 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# If we aren't running from the command line, then exit\nif [ \"$GHUNIT_CLI\" = \"\" ] && [ \"$GHUNIT_AUTORUN\" = \"\" ]; then\nexit 0\nfi\n\nmkdir -p \"$BUILD_DIR/test-appzipped/\"\nmkdir -p \"$BUILD_DIR/test-appzipped/Binary\"\nmkdir Payload\n\ncp -r \"$BUILD_DIR/${CONFIGURATION}-iphoneos/\" Payload/\n\nzip -r \"$BUILD_DIR/test-appzipped/Binary\"/SampleSdkApp.app.dSYM.zip Payload/SampleSdkApp.app.dSYM\n\nrm -rf Payload/SampleSdkApp.app.dSYM\ncp -f \"${PROJECT_DIR}\"/Icon.png iTunesArtwork\nzip -r \"$BUILD_DIR/test-appzipped/\"/SampleSdkApp.ipa Payload iTunesArtwork\n\nmv \"$BUILD_DIR/test-appzipped/\"/SampleSdkApp.ipa \"$BUILD_DIR/test-appzipped/Binary\"/\n\nrm -rf iTunesArtwork\nrm -rf Payload ";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2663,6 +2975,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AACBBD5B14215FDD008F0A50 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBD5C14215FDD008F0A50 /* main.m in Sources */,
+				AACBBD5D14215FDD008F0A50 /* SampleSdkAppAppDelegate.m in Sources */,
+				AACBBD5E14215FDD008F0A50 /* NSString+UrlSerialization.m in Sources */,
+				AACBBD5F14215FDD008F0A50 /* AuthenticateViewController.m in Sources */,
+				AACBBD6014215FDD008F0A50 /* TestListController.m in Sources */,
+				AACBBD6114215FDD008F0A50 /* TestCreateEntityViewController.m in Sources */,
+				AACBBD6214215FDD008F0A50 /* TestGetEntityViewController.m in Sources */,
+				AACBBD6314215FDD008F0A50 /* TestCreateCommentViewController.m in Sources */,
+				AACBBD6414215FDD008F0A50 /* TestFetchCommentsViewController.m in Sources */,
+				AACBBD6514215FDD008F0A50 /* TestLikeViewController.m in Sources */,
+				AACBBD6614215FDD008F0A50 /* TestViewCreationViewController.m in Sources */,
+				AACBBD6714215FDD008F0A50 /* LikeListViewController.m in Sources */,
+				AACBBDE014216497008F0A50 /* SampleKIFTestController.m in Sources */,
+				AACBBDE3142164CF008F0A50 /* KIFTestScenario+SampleAdditions.m in Sources */,
+				AACBBDE614216530008F0A50 /* KIFTestStep+SampleAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2675,6 +3009,11 @@
 			isa = PBXTargetDependency;
 			target = 5CC3DABD1378824700B11B78 /* Socialize */;
 			targetProxy = 5C6EC7941379CF150073AE65 /* PBXContainerItemProxy */;
+		};
+		AACBBD5914215FDD008F0A50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16B48DAA13DEEBE100EE0A92 /* Socialize-iOS */;
+			targetProxy = AACBBD5A14215FDD008F0A50 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3008,6 +3347,108 @@
 			};
 			name = Release;
 		};
+		AACBBDD814215FDD008F0A50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: pointabout";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/unitTests/Frameworks\"",
+					"\"$(SRCROOT)/build/Socialize-IOS.embeddedframework\"",
+					"\"$(SRCROOT)/build/Socialize-iOS.embeddedframework\"",
+					"\"$(SRCROOT)/Socialize-iOS.embeddedframework\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleSdkApp/SampleSdkApp-Integration-Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"RUN_KIF_TESTS=1",
+					"DEBUG=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Libraries/**",
+					"\"$(SRCROOT)\"/Socialize/**",
+					"$(SRCROOT)/SampleSdkApp/KIF/**",
+				);
+				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/unitTests/Libraries\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lgcov",
+					"-all_load",
+				);
+				PRODUCT_NAME = "SampleSdkApp Integration Tests";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "542E5F91-FA04-4A6B-BEB8-1CCD67D816FD";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AACBBDD914215FDD008F0A50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: pointabout";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/unitTests/Frameworks\"",
+					"\"$(SRCROOT)/build/Socialize-IOS.embeddedframework\"",
+					"\"$(SRCROOT)/build/Socialize-iOS.embeddedframework\"",
+					"\"$(SRCROOT)/Socialize-iOS.embeddedframework\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleSdkApp/SampleSdkApp-Integration-Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"RUN_KIF_TESTS=1",
+				);
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Libraries/**",
+					"\"$(SRCROOT)\"/Socialize/**",
+					"$(SRCROOT)/SampleSdkApp/KIF/**",
+				);
+				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/unitTests/Libraries\"",
+				);
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lgcov",
+					"-all_load",
+				);
+				PRODUCT_NAME = "SampleSdkApp Integration Tests";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "542E5F91-FA04-4A6B-BEB8-1CCD67D816FD";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3052,6 +3493,15 @@
 			buildConfigurations = (
 				5CC3DB091378859000B11B78 /* Debug */,
 				5CC3DB0A1378859000B11B78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AACBBDD714215FDD008F0A50 /* Build configuration list for PBXNativeTarget "SampleSdkApp Integration Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AACBBDD814215FDD008F0A50 /* Debug */,
+				AACBBDD914215FDD008F0A50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
