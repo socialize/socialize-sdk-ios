@@ -60,14 +60,15 @@
 -(void)entityWithKey:(NSString *)keyOfEntity
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:keyOfEntity,ENTRY_KEY, nil];
-    [_provider requestWithMethodName:ENTITY_GET_ENDPOINT andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self]; 
+    [self ExecuteGetRequestAtEndPoint:ENTITY_GET_ENDPOINT WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
 
 -(void)createEntities:(NSArray *)entities expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
 {
     NSString * stringRepresentation =  [_objectCreator createStringRepresentationOfArray:entities]; 
     NSMutableDictionary* params = [self genereteParamsFromJsonString:stringRepresentation];
-    [_provider requestWithMethodName:ENTITY_CREATE_ENDPOINT andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
+   
+    [self ExecutePostRequestAtEndPoint:ENTITY_CREATE_ENDPOINT WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
 
 -(void)createEntity:(id<SocializeEntity>)entity

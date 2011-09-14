@@ -1,5 +1,5 @@
 //
-//  OAToken.h
+//  OAConsumer.m
 //  OAuthConsumer
 //
 //  Created by Jon Crosby on 10/19/07.
@@ -23,23 +23,29 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "OAConsumer.h"
 
-@interface OAToken : NSObject {
-	NSString *pin;							//added for the Twitter OAuth implementation
-	
-@protected
-	NSString *key;
-	NSString *secret;
+
+@implementation OAConsumer
+@synthesize key, secret;
+
+#pragma mark init
+
+- (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret 
+{
+	if (self = [super init])
+	{
+		self.key = aKey;
+		self.secret = aSecret;
+	}
+	return self;
 }
-@property(retain) NSString *pin;			//added for the Twitter OAuth implementation
 
-@property(retain) NSString *key;
-@property(retain) NSString *secret;
-
-- (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret;
-- (id)initWithUserDefaultsUsingServiceProviderName:(NSString *)provider prefix:(NSString *)prefix;
-- (id)initWithHTTPResponseBody:(NSString *)body;
-- (int)storeInUserDefaultsWithServiceProviderName:(NSString *)provider prefix:(NSString *)prefix;
+- (void)dealloc
+{
+	[key release];
+	[secret release];
+	[super dealloc];
+}
 
 @end

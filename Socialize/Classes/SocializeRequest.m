@@ -177,14 +177,15 @@ expectedJSONFormat = _expectedJSONFormat;
     if ([self.httpMethod isEqualToString: @"POST"]) 
     {
         NSString * stringValue = nil;
+        NSMutableArray* params = [NSMutableArray array];
         if([_params respondsToSelector:@selector(objectForKey:)])
             stringValue = (NSString *) [_params objectForKey:@"jsonData"]; // TEMPORARY SOLUTION!!!!
 
         if(stringValue == nil)   
             stringValue = [_params  JSONString];
         
-        NSString* jsonParams = [NSString stringWithFormat:@"payload=%@", stringValue];
-        [self.request setHTTPBody:[jsonParams dataUsingEncoding:NSUTF8StringEncoding]];
+        [self addParameter:stringValue withKey:@"payload" toCollection: params];
+        [self.request setParameters:params];
     }
     else if([self.httpMethod isEqualToString: @"GET"])
     {

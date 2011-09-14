@@ -79,6 +79,7 @@
     
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
     _service.provider = mockProvider;
+    _service.delegate = nil;
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    @"www.123.com", @"entity_key", first, @"first", last, @"last",
                                    nil];
@@ -153,7 +154,7 @@
 
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/like_single_response.json"];
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
-    _service.delegate = mockDelegate;
+    _service.delegate = [mockDelegate retain];
     
     [[mockDelegate expect] service:_service didFetchElements:OCMOCK_ANY];
     

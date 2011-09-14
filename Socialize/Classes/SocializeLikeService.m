@@ -53,7 +53,7 @@
         
         NSArray *params = [NSArray arrayWithObjects:entityParam, 
                            nil];
-        [_provider requestWithMethodName:LIKE_METHOD andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:self];
+        [self ExecutePostRequestAtEndPoint:LIKE_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
     }
 }
 
@@ -62,7 +62,7 @@
         NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease];
         [params setObject:[NSNumber numberWithInteger:[like objectID]] forKey:@"id"];
         NSString* updatedResource = [NSString stringWithFormat:@"%@%d/", LIKE_METHOD, [like objectID]];
-        [_provider requestWithMethodName:updatedResource andParams:params  expectedJSONFormat:SocializeAny andHttpMethod:@"DELETE" andDelegate:self];
+        [self ExecuteDeleteRequestAtEndPoint:updatedResource WithParams:params expectedResponseFormat:SocializeAny];
     }
 }
 
@@ -71,7 +71,7 @@
     NSMutableDictionary*  params = [[[NSMutableDictionary alloc] init] autorelease]; 
     [params setObject:[NSNumber numberWithInteger:likeId] forKey:@"id"];
     NSString* updatedResource = [NSString stringWithFormat:@"%@%d/", LIKE_METHOD, likeId]; 
-    [_provider requestWithMethodName:updatedResource andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
+    [self ExecuteGetRequestAtEndPoint:updatedResource WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
 
 -(void)getLikesForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last{
@@ -83,8 +83,7 @@
         [params setObject:first forKey:@"first"];
         [params setObject:last forKey:@"last"];
     }
-    
-    [_provider requestWithMethodName:LIKE_METHOD andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:self];
+    [self ExecuteGetRequestAtEndPoint:LIKE_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
 
 -(void)getLikesForEntity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last{

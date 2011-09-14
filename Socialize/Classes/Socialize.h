@@ -51,8 +51,6 @@ otherwise you will get a failure.
 {
     @private
     SocializeObjectFactory          *_objectFactory;
-    SocializeProvider               *_provider;
-
     SocializeAuthenticateService    *_authService;
     SocializeLikeService            *_likeService;
     SocializeCommentsService        *_commentsService;

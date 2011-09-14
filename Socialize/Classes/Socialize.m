@@ -20,7 +20,6 @@
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
-    //[_provider release]; _provider = nil;
     [_authService release]; _authService = nil;
     [_likeService release]; _likeService = nil;
     [_commentsService release]; _commentsService = nil;
@@ -38,7 +37,8 @@
         _objectFactory = [[SocializeObjectFactory alloc]init];
         SocializeConfiguration* configurationLoader = [[SocializeConfiguration alloc]init];
         NSDictionary* configuration = [configurationLoader.configurationInfo objectForKey:@"URLs"];
-        _provider = [[SocializeProvider alloc] initWithServerURL:[configuration objectForKey:@"RestserverBaseURL"]andSecureServerURL:[configuration objectForKey:@"SecureRestserverBaseURL"]];
+        SocializeProvider* _provider = [[SocializeProvider alloc] initWithServerURL:[configuration objectForKey:@"RestserverBaseURL"]andSecureServerURL:[configuration objectForKey:@"SecureRestserverBaseURL"]];
+        
         [configurationLoader release];
         
         _authService = [[SocializeAuthenticateService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
@@ -47,6 +47,7 @@
         _entityService = [[SocializeEntityService alloc]initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
         _viewService  = [[SocializeViewService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
         //        _userService = [[SocializeUserService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
+        [_provider release];
     }
     return self;
 }

@@ -63,7 +63,6 @@ request = _request;
 {
     [_accessToken release];
     [_expirationDate release];
-    [_request release];
     [_restserverBaseURL release];
     [_secureRestserverBaseURL release];
     [super dealloc];

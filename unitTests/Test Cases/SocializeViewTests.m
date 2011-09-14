@@ -32,6 +32,7 @@
     
     id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
     _service.provider = mockProvider;
+    _service.delegate = nil;
     
     SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
     SocializeEntity* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeEntity)]; 
@@ -74,7 +75,7 @@
     
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/view_single_response.json"];
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
-    _service.delegate = mockDelegate;
+    _service.delegate = [mockDelegate retain];
     
     [[mockDelegate expect] service:_service didCreate:OCMOCK_ANY];
     
