@@ -30,13 +30,14 @@
 #import "GHTestViewModel.h"
 
 @interface GHUnitIPhoneTestViewController : UIViewController <GHTestRunnerDelegate> {
-  UITextView *textView_;
-
-  GHTestNode *testNode_;
-  
-  GHTestRunner *runner_;
+    UITextView *textView_;
+    
+    GHTestNode *testNode_;
+    
+    GHTestRunner *runner_;
 }
 
 - (void)setTest:(id<GHTest>)test;
 
 @end
+
