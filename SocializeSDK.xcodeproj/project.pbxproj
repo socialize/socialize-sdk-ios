@@ -113,6 +113,7 @@
 		169BC7AD1421CDE3007ED41E /* UILabel+FormatedText.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 169BC7A41420D602007ED41E /* UILabel+FormatedText.h */; };
 		169BC7AE1421CDF8007ED41E /* CommentDetailsViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */; };
 		169BC7B11421DA7F007ED41E /* PostCommentViewControllerForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7B01421DA7F007ED41E /* PostCommentViewControllerForTest.m */; };
+		169BC7BE1421F87D007ED41E /* InputBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7BD1421F87D007ED41E /* InputBox.m */; };
 		16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A82A031419F37400193CA7 /* ImagesCacheTests.m */; };
 		16A82A0C1419FA9500193CA7 /* ImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A82A0A1419FA9500193CA7 /* ImageLoader.h */; };
 		16A82A0D1419FA9500193CA7 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A82A0B1419FA9500193CA7 /* ImageLoader.m */; };
@@ -729,6 +730,8 @@
 		169BC7A51420D602007ED41E /* UILabel+FormatedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+FormatedText.m"; path = "Classes/UILabel+FormatedText.m"; sourceTree = "<group>"; };
 		169BC7AF1421DA7F007ED41E /* PostCommentViewControllerForTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostCommentViewControllerForTest.h; path = "Test Cases/PostCommentViewControllerForTest.h"; sourceTree = "<group>"; };
 		169BC7B01421DA7F007ED41E /* PostCommentViewControllerForTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostCommentViewControllerForTest.m; path = "Test Cases/PostCommentViewControllerForTest.m"; sourceTree = "<group>"; };
+		169BC7BC1421F87D007ED41E /* InputBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputBox.h; sourceTree = "<group>"; };
+		169BC7BD1421F87D007ED41E /* InputBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputBox.m; sourceTree = "<group>"; };
 		16A82A021419F37400193CA7 /* ImagesCacheTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagesCacheTests.h; path = "Test Cases/ImagesCacheTests.h"; sourceTree = "<group>"; };
 		16A82A031419F37400193CA7 /* ImagesCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagesCacheTests.m; path = "Test Cases/ImagesCacheTests.m"; sourceTree = "<group>"; };
 		16A82A0A1419FA9500193CA7 /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoader.h; path = Classes/ImageLoader.h; sourceTree = "<group>"; };
@@ -1468,6 +1471,8 @@
 				16C5EF7E13E6B8A700F2EA87 /* TestViewCreationViewController.h */,
 				16C5EF7F13E6B8A800F2EA87 /* TestViewCreationViewController.m */,
 				16C5EF8013E6B8A800F2EA87 /* TestViewCreationViewController.xib */,
+				169BC7BC1421F87D007ED41E /* InputBox.h */,
+				169BC7BD1421F87D007ED41E /* InputBox.m */,
 			);
 			path = SampleSdkApp;
 			sourceTree = "<group>";
@@ -2540,6 +2545,7 @@
 				6D56116B13E645D5004E8E8C /* TestLikeViewController.m in Sources */,
 				16C5EF8113E6B8A800F2EA87 /* TestViewCreationViewController.m in Sources */,
 				6D45310513E8862200286BEC /* LikeListViewController.m in Sources */,
+				169BC7BE1421F87D007ED41E /* InputBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

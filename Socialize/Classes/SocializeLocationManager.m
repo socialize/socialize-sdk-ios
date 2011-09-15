@@ -94,9 +94,9 @@
     self.currentLocationDescription  = [NSString stringWithPlacemark:placemark];
     onFoundblock(_currentLocationDescription);
     [onFoundblock release]; onFoundblock = nil;
-    
+     
     geocoder.delegate = nil;
-    [geocoder release]; geoCoder = nil;
+    [geocoder autorelease]; geoCoder = nil;
 }
 
 // this delegate is called when the reversegeocoder fails to find a placemark
@@ -108,6 +108,6 @@
     [onFoundblock release]; onFoundblock = nil;
     
     geocoder.delegate = nil;
-    [geocoder release]; geoCoder = nil;
+    [geocoder autorelease]; geoCoder = nil;
 }
 @end

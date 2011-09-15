@@ -18,6 +18,7 @@
 #import "PostCommentViewController.h"
 #import "UIKeyboardListener.h"
 #import "SocializeLocationManager.h"
+#import "InputBox.h"
 
 @implementation TestListController
 
@@ -49,6 +50,13 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+-(NSString*) getEntityKey
+{
+    InputBox* input = [[InputBox alloc] init];
+    [input showInputMessageWithTitle:@"Enter entity URL" andPlaceholder:@"Full URL"];
+    return input.inputMsg;
 }
 
 #pragma mark - View lifecycle
@@ -165,9 +173,13 @@
             [self.navigationController pushViewController:controller animated:YES];
             break;
             
-        case 7:      
-            [self presentModalViewController:[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:@"" andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]] animated:YES];
+        case 7:
+        {
+            NSString* url = [self getEntityKey];
+            if(url)
+                [self presentModalViewController:[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:url andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]] animated:YES];
             break;
+        }
 
     }    
 }
