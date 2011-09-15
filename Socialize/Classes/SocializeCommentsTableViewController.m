@@ -17,6 +17,8 @@
 #import "SocializeComment.h"
 #import "UINavigationBarBackground.h"
 #import "ImageLoader.h"
+#import "UIKeyboardListener.h"
+#import "SocializeLocationManager.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor \
 	colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
@@ -159,7 +161,13 @@
 
 -(IBAction)addCommentButtonPressed:(id)sender {
 
-    PostCommentViewController * pcViewController = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" bundle:nil entityUrlString:_entity.key];
+    PostCommentViewController * pcViewController = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" 
+                                                                                               bundle:nil 
+                                                                                      entityUrlString:_entity.key
+                                                                                     keyboardListener:[UIKeyboardListener createWithVisibleKeyboard:NO] 
+                                                                                      locationManager:[SocializeLocationManager create]
+                                                    
+                                                    ];
         
     UIImage * socializeNavBarBackground = [UIImage imageNamed:@"socialize-navbar-bg.png"];
     UINavigationController * pcNavController = [[UINavigationController alloc] initWithRootViewController:pcViewController];

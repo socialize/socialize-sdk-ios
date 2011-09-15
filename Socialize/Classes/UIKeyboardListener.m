@@ -35,6 +35,11 @@
 
 @implementation UIKeyboardListener
 
++(UIKeyboardListener*)createWithVisibleKeyboard: (BOOL) visible
+{
+    return [[[UIKeyboardListener alloc] initWithVisibleKeyboard:visible] autorelease];
+}
+
 -(id)initWithVisibleKeyboard: (BOOL) visible
 {
     self = [super init];

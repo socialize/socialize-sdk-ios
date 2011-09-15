@@ -1,5 +1,5 @@
 /*
- * UIKeyboardListener.h
+ * UILable+FormatedText.m
  * SocializeSDK
  *
  * Created on 9/14/11.
@@ -25,18 +25,16 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import "UILabel+FormatedText.h"
 
 
-@interface UIKeyboardListener : NSObject {
-@private
-    BOOL _visible;
+@implementation UILabel (UILabel_FormatedText)
 
+-(void)text:(NSString*)text withFontName:(NSString*)fontName withFontSize:(double) size withColor: (UIColor*) color
+{
+    self.text = text;
+    self.font = [UIFont fontWithName:fontName size:size];
+    self.textColor = color;
 }
-@property (nonatomic, readonly, getter=isVisible) BOOL visible;
-
--(id)initWithVisibleKeyboard: (BOOL) visible;
-+(UIKeyboardListener*)createWithVisibleKeyboard: (BOOL) visible;
-
 
 @end

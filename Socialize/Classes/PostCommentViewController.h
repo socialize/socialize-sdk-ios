@@ -13,11 +13,12 @@
 
 @class CommentMapView;
 @class UIKeyboardListener;
+@class SocializeLocationManager;
 
-@interface PostCommentViewController : UIViewController <UITextViewDelegate, MKMapViewDelegate, MKReverseGeocoderDelegate, SocializeServiceDelegate >
+@interface PostCommentViewController : UIViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate >
 {
 @private
-    BOOL        shareLocation;
+    SocializeLocationManager* locationManager;
     UIKeyboardListener* kbListener;
     
     Socialize*  _socialize;
@@ -41,6 +42,6 @@
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString keyboardListener:(UIKeyboardListener*)kb locationManager:(SocializeLocationManager*) lManager;
 
 @end

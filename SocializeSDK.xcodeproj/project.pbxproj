@@ -101,6 +101,17 @@
 		1681BDC913F55D3200EC6042 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1681BDC813F55D3200EC6042 /* CoreLocation.framework */; };
 		1681BDCA13F55D3600EC6042 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1681BDC813F55D3200EC6042 /* CoreLocation.framework */; };
 		1681BDCB13F55E2400EC6042 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D97F03C13DFC91500B16454 /* QuartzCore.framework */; };
+		169BC7A11420CD94007ED41E /* SocializeLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 169BC79F1420CD94007ED41E /* SocializeLocationManager.h */; };
+		169BC7A21420CD94007ED41E /* SocializeLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7A01420CD94007ED41E /* SocializeLocationManager.m */; };
+		169BC7A61420D602007ED41E /* UILabel+FormatedText.h in Headers */ = {isa = PBXBuildFile; fileRef = 169BC7A41420D602007ED41E /* UILabel+FormatedText.h */; };
+		169BC7A71420D602007ED41E /* UILabel+FormatedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7A51420D602007ED41E /* UILabel+FormatedText.m */; };
+		169BC7A81421CDE3007ED41E /* NSString+PlaceMark.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16D247721417906E008A550D /* NSString+PlaceMark.h */; };
+		169BC7A91421CDE3007ED41E /* ImagesCache.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16D2479A1418D667008A550D /* ImagesCache.h */; };
+		169BC7AA1421CDE3007ED41E /* ImageLoader.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16A82A0A1419FA9500193CA7 /* ImageLoader.h */; };
+		169BC7AB1421CDE3007ED41E /* UIKeyboardListener.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16DAC9971420C0EE0011CD5F /* UIKeyboardListener.h */; };
+		169BC7AC1421CDE3007ED41E /* SocializeLocationManager.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 169BC79F1420CD94007ED41E /* SocializeLocationManager.h */; };
+		169BC7AD1421CDE3007ED41E /* UILabel+FormatedText.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 169BC7A41420D602007ED41E /* UILabel+FormatedText.h */; };
+		169BC7AE1421CDF8007ED41E /* CommentDetailsViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */; };
 		16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A82A031419F37400193CA7 /* ImagesCacheTests.m */; };
 		16A82A0C1419FA9500193CA7 /* ImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A82A0A1419FA9500193CA7 /* ImageLoader.h */; };
 		16A82A0D1419FA9500193CA7 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A82A0B1419FA9500193CA7 /* ImageLoader.m */; };
@@ -630,6 +641,13 @@
 				1681BDB213F5560100EC6042 /* SocializeFBRequest.h in Copy Headers */,
 				1681BDC413F55BED00EC6042 /* PostCommentViewController.h in Copy Headers */,
 				1681BDC513F55BED00EC6042 /* AppMakrLocation.h in Copy Headers */,
+				169BC7A81421CDE3007ED41E /* NSString+PlaceMark.h in Copy Headers */,
+				169BC7A91421CDE3007ED41E /* ImagesCache.h in Copy Headers */,
+				169BC7AA1421CDE3007ED41E /* ImageLoader.h in Copy Headers */,
+				169BC7AB1421CDE3007ED41E /* UIKeyboardListener.h in Copy Headers */,
+				169BC7AC1421CDE3007ED41E /* SocializeLocationManager.h in Copy Headers */,
+				169BC7AD1421CDE3007ED41E /* UILabel+FormatedText.h in Copy Headers */,
+				169BC7AE1421CDF8007ED41E /* CommentDetailsViewController.h in Copy Headers */,
 			);
 			name = "Copy Headers";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,6 +722,10 @@
 		1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostCommentViewController.h; path = Classes/PostCommentViewController.h; sourceTree = "<group>"; };
 		1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostCommentViewController.m; path = Classes/PostCommentViewController.m; sourceTree = "<group>"; };
 		1681BDC813F55D3200EC6042 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		169BC79F1420CD94007ED41E /* SocializeLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLocationManager.h; path = Classes/SocializeLocationManager.h; sourceTree = "<group>"; };
+		169BC7A01420CD94007ED41E /* SocializeLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLocationManager.m; path = Classes/SocializeLocationManager.m; sourceTree = "<group>"; };
+		169BC7A41420D602007ED41E /* UILabel+FormatedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+FormatedText.h"; path = "Classes/UILabel+FormatedText.h"; sourceTree = "<group>"; };
+		169BC7A51420D602007ED41E /* UILabel+FormatedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+FormatedText.m"; path = "Classes/UILabel+FormatedText.m"; sourceTree = "<group>"; };
 		16A82A021419F37400193CA7 /* ImagesCacheTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagesCacheTests.h; path = "Test Cases/ImagesCacheTests.h"; sourceTree = "<group>"; };
 		16A82A031419F37400193CA7 /* ImagesCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagesCacheTests.m; path = "Test Cases/ImagesCacheTests.m"; sourceTree = "<group>"; };
 		16A82A0A1419FA9500193CA7 /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoader.h; path = Classes/ImageLoader.h; sourceTree = "<group>"; };
@@ -1796,6 +1818,10 @@
 				16A82A0B1419FA9500193CA7 /* ImageLoader.m */,
 				16DAC9971420C0EE0011CD5F /* UIKeyboardListener.h */,
 				16DAC9981420C0EE0011CD5F /* UIKeyboardListener.m */,
+				169BC79F1420CD94007ED41E /* SocializeLocationManager.h */,
+				169BC7A01420CD94007ED41E /* SocializeLocationManager.m */,
+				169BC7A41420D602007ED41E /* UILabel+FormatedText.h */,
+				169BC7A51420D602007ED41E /* UILabel+FormatedText.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -2094,6 +2120,8 @@
 				6DFBFE8C141FDDCC0030DE32 /* OAuthConsumer.h in Headers */,
 				6DFBFE91141FDE660030DE32 /* JSONKit.h in Headers */,
 				16DAC9991420C0EE0011CD5F /* UIKeyboardListener.h in Headers */,
+				169BC7A11420CD94007ED41E /* SocializeLocationManager.h in Headers */,
+				169BC7A61420D602007ED41E /* UILabel+FormatedText.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2601,6 +2629,8 @@
 				6DFBFE8B141FDDCC0030DE32 /* OAToken.m in Sources */,
 				6DFBFE92141FDE660030DE32 /* JSONKit.m in Sources */,
 				16DAC99A1420C0EE0011CD5F /* UIKeyboardListener.m in Sources */,
+				169BC7A21420CD94007ED41E /* SocializeLocationManager.m in Sources */,
+				169BC7A71420D602007ED41E /* UILabel+FormatedText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

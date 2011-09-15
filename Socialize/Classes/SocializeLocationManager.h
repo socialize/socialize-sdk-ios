@@ -1,5 +1,5 @@
 /*
- * UIKeyboardListener.h
+ * SocializeLocationManager.h
  * SocializeSDK
  *
  * Created on 9/14/11.
@@ -26,17 +26,24 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
+typedef void (^OnFoundCallbackBlock)(NSString* location);
 
-@interface UIKeyboardListener : NSObject {
+@interface SocializeLocationManager : NSObject<MKReverseGeocoderDelegate> {
 @private
-    BOOL _visible;
-
+    BOOL _shareLocation;
+    NSString* _currentLocationDescription;
+    OnFoundCallbackBlock onFoundblock;
+    MKReverseGeocoder *geoCoder;
 }
-@property (nonatomic, readonly, getter=isVisible) BOOL visible;
 
--(id)initWithVisibleKeyboard: (BOOL) visible;
-+(UIKeyboardListener*)createWithVisibleKeyboard: (BOOL) visible;
+@property (nonatomic, assign) BOOL shouldShareLocation;
+@property (nonatomic, retain) NSString* currentLocationDescription;
 
+-(void)findLocationDescriptionWithCoordinate: (CLLocationCoordinate2D) coordinate  andWithBlock:(OnFoundCallbackBlock)block;
+-(BOOL)applicationIsAuthorizedToUseLocationServices;
+
++(SocializeLocationManager*)create;
 
 @end
