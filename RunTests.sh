@@ -1,14 +1,13 @@
-#!/bin/sh
+#!/bin/ksh
 
 #set -o errexit
 
-# If we aren't running from the command line, then exit
-if [ "$GHUNIT_CLI" = "" ] && [ "$GHUNIT_AUTORUN" = "" ]; then
+if [ "$GHUNIT_UI_CLI" = "" ] && [ "$GHUNIT_AUTORUN" = "" ]; then
   exit 0
 fi
 
-export DYLD_ROOT_PATH="$SDKROOT"
-export DYLD_FRAMEWORK_PATH="$CONFIGURATION_BUILD_DIR"
+#export DYLD_ROOT_PATH="$SDKROOT"
+#export DYLD_FRAMEWORK_PATH="$CONFIGURATION_BUILD_DIR"
 export IPHONE_SIMULATOR_ROOT="$SDKROOT"
 
 export NSDebugEnabled=YES
@@ -17,10 +16,11 @@ export NSDeallocateZombies=NO
 export NSHangOnUncaughtException=YES
 export NSAutoreleaseFreedObjectCheckEnabled=YES
 
-export DYLD_FRAMEWORK_PATH="$CONFIGURATION_BUILD_DIR"
 
 TEST_TARGET_EXECUTABLE_PATH="$TARGET_BUILD_DIR/$EXECUTABLE_PATH"
+SIMULATOR_PATH="/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app/Contents/MacOS/iPhone Simulator"
 
+KILL_SIMULATOR="killall -m -KILL \"iPhone Simulator\""
 if [ ! -e "$TEST_TARGET_EXECUTABLE_PATH" ]; then
   echo ""
   echo "  ------------------------------------------------------------------------"
@@ -32,11 +32,26 @@ if [ ! -e "$TEST_TARGET_EXECUTABLE_PATH" ]; then
   exit 1
 fi
 
-RUN_CMD="\"$TEST_TARGET_EXECUTABLE_PATH\" -RegisterForSystemEvents"
-
-echo "Running: $RUN_CMD"
-eval $RUN_CMD 
+eval $KILL_SIMULATOR
+eval "killall unitTests"
+failure_regex="test failures: (.*)"
+FAILURES="1"
+#execute the simulatory and run the application and unit tests, read the 
+#standard out and kill the simulator when the tests are done
+"$SIMULATOR_PATH" -SimulateRestart NO -SimulateApplication "$TEST_TARGET_EXECUTABLE_PATH" | while read line
+do
+    echo $line
+    if [[ $line =~ $failure_regex ]]; then
+        FAILURES=${BASH_REMATCH[1]}
+        eval $KILL_SIMULATOR
+        exit $FAILURES
+    fi
+done
 RETVAL=$?
+if [[ "$RETVAL" != "0" ]]; then
+    echo "$RETVAL unit tests failed, exiting..."
+    exit 10
+fi
 unset DYLD_ROOT_PATH
 unset DYLD_FRAMEWORK_PATH
 unset IPHONE_SIMULATOR_ROOT

@@ -12,23 +12,24 @@
 #import "Socialize.h"
 
 @class CommentMapView;
+@class UIKeyboardListener;
+@class SocializeLocationManager;
 
-@interface PostCommentViewController : UIViewController <UITextViewDelegate, MKMapViewDelegate, MKReverseGeocoderDelegate, SocializeServiceDelegate >
+@interface PostCommentViewController : UIViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate >
 {
 @private
-    NSString    *userLocationText;
-    UITextView  *commentTextView;
-    UILabel     *locationText; 
-    UIButton    *doNotShareLocationButton;
-    UIButton    *activateLocationButton;
-    CommentMapView *mapOfUserLocation;
+    SocializeLocationManager* locationManager;
+    UIKeyboardListener* kbListener;
     
-    BOOL            shareLocation;
-    BOOL            keyboardIsVisible;
-
-    LoadingView*                          _loadingIndicatorView;
-    Socialize*                            _socialize;
-    NSString*                             _entityUrlString;
+    Socialize*  _socialize;
+    NSString*   _entityUrlString;
+    
+    UITextView* commentTextView;
+    UILabel*    locationText; 
+    UIButton*   doNotShareLocationButton;
+    UIButton*   activateLocationButton;
+    CommentMapView* mapOfUserLocation;
+    LoadingView*  _loadingIndicatorView;
 }
 
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;
@@ -41,6 +42,8 @@
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString keyboardListener:(UIKeyboardListener*)kb locationManager:(SocializeLocationManager*) lManager;
+
++(UINavigationController*)createAndShowPostViewControllerWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar;
 
 @end

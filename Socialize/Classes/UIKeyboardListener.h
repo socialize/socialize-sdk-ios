@@ -1,8 +1,8 @@
 /*
- * PostCommentViewControllerTests.h
+ * UIKeyboardListener.h
  * SocializeSDK
  *
- * Created on 9/7/11.
+ * Created on 9/14/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -23,14 +23,20 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- * See Also: http://gabriel.github.com/gh-unit/
  */
 
+#import <Foundation/Foundation.h>
 
-#import <GHUnitIOS/GHUnit.h>
-#import <UIKit/UIKit.h>
 
-@interface PostCommentViewControllerTests : GHTestCase {
+@interface UIKeyboardListener : NSObject {
+@private
+    BOOL _visible;
+
 }
+@property (nonatomic, readonly, getter=isVisible) BOOL visible;
+
+-(id)initWithVisibleKeyboard: (BOOL) visible;
++(UIKeyboardListener*)createWithVisibleKeyboard: (BOOL) visible;
+
 
 @end
