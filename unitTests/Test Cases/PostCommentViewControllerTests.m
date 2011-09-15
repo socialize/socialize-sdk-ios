@@ -27,31 +27,44 @@
  */
 
 #import "PostCommentViewControllerTests.h"
-#import "PostCommentViewController.h"
+#import "PostCommentViewControllerForTest.h"
+#import "CommentMapView.h"
 #import <OCMock/OCMock.h>
 
 #define TEST_URL @"test_entity_url"
 
 @implementation PostCommentViewControllerTests
 
--(void) setUpClass
+// By default NO, but if you have a UI test or test dependent on running on the main thread return YES
+- (BOOL)shouldRunOnMainThread
 {
-//    postCommentController = [[PostCommentViewController alloc] initWithNibName:nil bundle:nil entityUrlString:TEST_URL];
-//    
-//    id mockSocialize = [OCMockObject mockForClass: [Socialize class]];
-//    [[mockSocialize expect]createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:OCMOCK_ANY latitude:OCMOCK_ANY];
-//    postCommentController.socialize = mockSocialize;
+    return YES;
 }
 
--(void) tearDownClass
+-(void)testInit
 {
-    [postCommentController release];
+    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
+    [controller viewDidLoad];
+    [controller viewDidAppear:YES];
+
+    GHAssertNotNil(controller.view, nil);
+    GHAssertEqualStrings(controller.title, @"New Comment", nil);
+    GHAssertNotNil(controller.navigationItem.leftBarButtonItem, nil);
+    GHAssertNotNil(controller.navigationItem.rightBarButtonItem, nil);
+    
+    [[(id)controller.commentTextView expect]becomeFirstResponder];
+    [[(id)controller.mapOfUserLocation expect]configurate];
+    
+    [controller viewDidUnload];
+    [controller verify];
+    
+    [controller release];
 }
 
--(void)tesInitWith
+-(void)testCreateMethod
 {
-//    id postController = [OCMockObject partialMockForObject:postCommentController];
-//    BOOL value = YES;
-//    [[[postController expect]andReturn:OCMOCK_VALUE(value)]shouldShareLocationOnStart];
+    UINavigationController* controller = [PostCommentViewControllerForTest createAndShowPostViewControllerWithEntityUrl:TEST_URL andImageForNavBar:nil];
+    GHAssertNotNil(controller, nil);
 }
+
 @end

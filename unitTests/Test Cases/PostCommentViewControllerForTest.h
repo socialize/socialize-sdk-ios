@@ -31,5 +31,6 @@
 @interface PostCommentViewControllerForTest : PostCommentViewController {
     
 }
-
+-(id) initWithEntityUrlString:(NSString*)url keyboardListener:(UIKeyboardListener*) kb locationManager:(SocializeLocationManager *)lm;
+-(void) verify;
 @end

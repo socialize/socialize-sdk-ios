@@ -282,11 +282,6 @@
     [self updateViewWithNewLocation: mapOfUserLocation.userLocation.location];
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];

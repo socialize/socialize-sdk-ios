@@ -26,10 +26,35 @@
  */
 
 #import "PostCommentViewControllerForTest.h"
+#import "CommentMapView.h"
+#import <OCMock/OCMock.h>
 
 
 
 @implementation PostCommentViewControllerForTest
+
+-(id) initWithEntityUrlString:(NSString*)url keyboardListener:(UIKeyboardListener*) kb locationManager:(SocializeLocationManager *)lm
+{
+    self = [super initWithNibName:nil bundle:nil entityUrlString:url keyboardListener:kb locationManager:lm];
+    if(self)
+    {
+        self.commentTextView = [OCMockObject niceMockForClass: [UITextView class]];
+        self.locationText = [OCMockObject niceMockForClass: [UILabel class]];
+        self.doNotShareLocationButton = [OCMockObject niceMockForClass: [UIButton class]];
+        self.activateLocationButton = [OCMockObject niceMockForClass: [UIButton class]];
+        self.mapOfUserLocation = [OCMockObject niceMockForClass: [CommentMapView class]];
+    }
+    return self;
+}
+
+-(void) verify
+{
+    [(id)self.commentTextView verify];
+    [(id)self.locationText verify];
+    [(id)self.doNotShareLocationButton verify];
+    [(id)self.activateLocationButton verify];
+    [(id)self.mapOfUserLocation verify];
+}
 
 -(void) startLoadAnimation
 {
