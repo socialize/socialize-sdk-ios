@@ -112,6 +112,7 @@
 		169BC7AC1421CDE3007ED41E /* SocializeLocationManager.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 169BC79F1420CD94007ED41E /* SocializeLocationManager.h */; };
 		169BC7AD1421CDE3007ED41E /* UILabel+FormatedText.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 169BC7A41420D602007ED41E /* UILabel+FormatedText.h */; };
 		169BC7AE1421CDF8007ED41E /* CommentDetailsViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */; };
+		169BC7B11421DA7F007ED41E /* PostCommentViewControllerForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7B01421DA7F007ED41E /* PostCommentViewControllerForTest.m */; };
 		16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A82A031419F37400193CA7 /* ImagesCacheTests.m */; };
 		16A82A0C1419FA9500193CA7 /* ImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A82A0A1419FA9500193CA7 /* ImageLoader.h */; };
 		16A82A0D1419FA9500193CA7 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A82A0B1419FA9500193CA7 /* ImageLoader.m */; };
@@ -726,6 +727,8 @@
 		169BC7A01420CD94007ED41E /* SocializeLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLocationManager.m; path = Classes/SocializeLocationManager.m; sourceTree = "<group>"; };
 		169BC7A41420D602007ED41E /* UILabel+FormatedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+FormatedText.h"; path = "Classes/UILabel+FormatedText.h"; sourceTree = "<group>"; };
 		169BC7A51420D602007ED41E /* UILabel+FormatedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+FormatedText.m"; path = "Classes/UILabel+FormatedText.m"; sourceTree = "<group>"; };
+		169BC7AF1421DA7F007ED41E /* PostCommentViewControllerForTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostCommentViewControllerForTest.h; path = "Test Cases/PostCommentViewControllerForTest.h"; sourceTree = "<group>"; };
+		169BC7B01421DA7F007ED41E /* PostCommentViewControllerForTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostCommentViewControllerForTest.m; path = "Test Cases/PostCommentViewControllerForTest.m"; sourceTree = "<group>"; };
 		16A82A021419F37400193CA7 /* ImagesCacheTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagesCacheTests.h; path = "Test Cases/ImagesCacheTests.h"; sourceTree = "<group>"; };
 		16A82A031419F37400193CA7 /* ImagesCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagesCacheTests.m; path = "Test Cases/ImagesCacheTests.m"; sourceTree = "<group>"; };
 		16A82A0A1419FA9500193CA7 /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoader.h; path = Classes/ImageLoader.h; sourceTree = "<group>"; };
@@ -1748,6 +1751,8 @@
 				16D2476814163161008A550D /* CommentDetailsViewForTest.m */,
 				16D247891417A984008A550D /* PostCommentViewControllerTests.h */,
 				16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */,
+				169BC7AF1421DA7F007ED41E /* PostCommentViewControllerForTest.h */,
+				169BC7B01421DA7F007ED41E /* PostCommentViewControllerForTest.m */,
 			);
 			name = "UI tests";
 			sourceTree = "<group>";
@@ -2673,6 +2678,7 @@
 				16D2478B1417A986008A550D /* PostCommentViewControllerTests.m in Sources */,
 				16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */,
 				16A82A29141DE79D00193CA7 /* ImageLoaderTests.m in Sources */,
+				169BC7B11421DA7F007ED41E /* PostCommentViewControllerForTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

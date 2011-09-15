@@ -159,23 +159,10 @@
 
 #pragma mark tableFooterViewDelegate
 
--(IBAction)addCommentButtonPressed:(id)sender {
-
-    PostCommentViewController * pcViewController = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" 
-                                                                                               bundle:nil 
-                                                                                      entityUrlString:_entity.key
-                                                                                     keyboardListener:[UIKeyboardListener createWithVisibleKeyboard:NO] 
-                                                                                      locationManager:[SocializeLocationManager create]
-                                                    
-                                                    ];
-        
-    UIImage * socializeNavBarBackground = [UIImage imageNamed:@"socialize-navbar-bg.png"];
-    UINavigationController * pcNavController = [[UINavigationController alloc] initWithRootViewController:pcViewController];
-    [pcNavController.navigationBar setBackgroundImage:socializeNavBarBackground];
-    [pcViewController release];
-
+-(IBAction)addCommentButtonPressed:(id)sender 
+{
+    UINavigationController * pcNavController =[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:_entity.key andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
     [self presentModalViewController:pcNavController animated:YES];
-    [pcNavController release];
 }
 
 #pragma mark -
@@ -410,14 +397,6 @@
 - (void)textViewDidChange:(UITextView *)textView {
 	
 }
-
-#pragma mark PostCommentViewController Delegate
-
-
-
-#pragma mark FooterAnimateDelegate
-
-
 #pragma mark -
 - (void)dealloc {
     [_cache release];

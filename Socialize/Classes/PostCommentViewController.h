@@ -44,4 +44,6 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString keyboardListener:(UIKeyboardListener*)kb locationManager:(SocializeLocationManager*) lManager;
 
++(UINavigationController*)createAndShowPostViewControllerWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar;
+
 @end

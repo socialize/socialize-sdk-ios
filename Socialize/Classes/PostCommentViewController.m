@@ -14,6 +14,7 @@
 #import "UIKeyboardListener.h"
 #import "SocializeLocationManager.h"
 #import "UILabel+FormatedText.h"
+#import "UINavigationBarBackground.h"
 
 @interface PostCommentViewController ()
 
@@ -24,6 +25,8 @@
 -(void)configureDoNotShareLocationButton;
 -(void)updateViewWithNewLocation: (CLLocation*)userLocation;
 -(void) showAllertWithText: (NSString*)allertMsg;
+-(void) startLoadAnimation;
+-(void) stopLoadAnimation;
 
 @end 
 
@@ -35,6 +38,24 @@
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
 @synthesize socialize = _socialize;
+
++(UINavigationController*)createAndShowPostViewControllerWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar
+{
+    PostCommentViewController * pcViewController = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" 
+                                                                                               bundle:nil 
+                                                                                      entityUrlString:url
+                                                                                     keyboardListener:[UIKeyboardListener createWithVisibleKeyboard:NO] 
+                                                                                      locationManager:[SocializeLocationManager create]
+                                                    
+                                                    ];
+    
+    UIImage * socializeNavBarBackground = imageForBar;
+    UINavigationController * pcNavController = [[[UINavigationController alloc] initWithRootViewController:pcViewController] autorelease];
+    [pcNavController.navigationBar setBackgroundImage:socializeNavBarBackground];
+    [pcViewController release];
+
+    return pcNavController;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil 
                bundle:(NSBundle *)nibBundleOrNil 
@@ -70,12 +91,14 @@
 #pragma Location enable/disable button callbacks
 -(void) startLoadAnimation
 {
-    _loadingIndicatorView = [LoadingView loadingViewInView:commentTextView]; //TODO:: probably it should be pushed in separate method
+    _loadingIndicatorView = [LoadingView loadingViewInView:commentTextView];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 -(void) stopLoadAnimation
 {
     [_loadingIndicatorView removeView];_loadingIndicatorView = nil;
+    self.navigationItem.rightBarButtonItem.enabled = YES; 
 }
 
 -(void) showAllertWithText: (NSString*)allertMsg
@@ -181,7 +204,6 @@
 
 #pragma mark - navigation bar button actions
 -(void)sendButtonPressed:(id)button {
-
     [self startLoadAnimation];
     if(locationManager.shouldShareLocation)
     {

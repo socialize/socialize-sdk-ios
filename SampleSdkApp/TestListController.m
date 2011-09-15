@@ -16,6 +16,8 @@
 #import "TestViewCreationViewController.h"
 #import "AuthenticateViewController.h"
 #import "PostCommentViewController.h"
+#import "UIKeyboardListener.h"
+#import "SocializeLocationManager.h"
 
 @implementation TestListController
 
@@ -163,9 +165,8 @@
             [self.navigationController pushViewController:controller animated:YES];
             break;
             
-        case 7:
-            controller = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" bundle:nil];
-            [self.navigationController pushViewController:controller animated:YES];
+        case 7:      
+            [self presentModalViewController:[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:@"" andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]] animated:YES];
             break;
 
     }    
