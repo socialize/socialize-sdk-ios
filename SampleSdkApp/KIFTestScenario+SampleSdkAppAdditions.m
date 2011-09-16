@@ -13,9 +13,7 @@
 + (id)scenarioToAuthenticate;
 {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a user can successfully log in."];
-    [scenario addStep:[KIFTestStep stepToReset]];
     [scenario addStepsFromArray:[KIFTestStep stepsToAuthenticate]];
-    
     return scenario;
 }
 
@@ -30,6 +28,8 @@
 + (id)scenarioToCreateEntity;
 {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"entity create scenario."];
+    [scenario addStep:[KIFTestStep stepToReset]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntity]];
     return scenario;
 }
 @end

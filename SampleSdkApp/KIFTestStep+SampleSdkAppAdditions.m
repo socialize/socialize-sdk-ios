@@ -7,7 +7,7 @@
 //
 
 #import "KIFTestStep+SampleSdkAppAdditions.h"
-
+#import "SampleSdkAppAppDelegate.h"
 @implementation KIFTestStep (SampleSdkAppAdditions)
 
 + (id)stepToReset;
@@ -15,10 +15,11 @@
     return [KIFTestStep stepWithDescription:@"Reset the application state." executionBlock:^(KIFTestStep *step, NSError **error) {
         BOOL successfulReset = YES;
         
+        SampleSdkAppAppDelegate* appDelegate = (SampleSdkAppAppDelegate *)[UIApplication sharedApplication].delegate;
+        UIViewController *testListController = [appDelegate.rootController.viewControllers objectAtIndex:1];
+        [appDelegate.rootController popToViewController:testListController animated:NO];
         // Do the actual reset for your app. Set successfulReset = NO if it fails.
-        
         KIFTestCondition(successfulReset, error, @"Failed to reset the application.");
-        
         return KIFTestStepResultSuccess;
     }];
 }
@@ -37,8 +38,17 @@
 + (NSArray*)stepsToCreateEntity;
 {
     NSMutableArray *steps = [NSMutableArray array];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:1 inSection:0];
+    [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Test create an Entity" atIndexPath:path]];
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Create Entity"]];    
+    int randomNum = arc4random() % 999999999999;
+    NSString *randomString = [NSString stringWithFormat:@"http://www.example.com/%i", randomNum];
+    [steps addObject:[KIFTestStep stepToEnterText:randomString intoViewWithAccessibilityLabel:@"entityField"]];
+    [steps addObject:[KIFTestStep stepToEnterText:@"Google" intoViewWithAccessibilityLabel:@"nameField"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"createButton"]];
     return steps;
 }
+
 + (NSArray*)stepsToGetEntity;
 {
     NSMutableArray *steps = [NSMutableArray array];
