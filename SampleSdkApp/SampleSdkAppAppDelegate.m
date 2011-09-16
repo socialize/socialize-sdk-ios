@@ -21,7 +21,7 @@
 @implementation SampleSdkAppAppDelegate
 
 
-@synthesize window=_window;
+@synthesize window=_window, rootController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -42,7 +42,10 @@
     [[SampleSdkAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
         // Exit after the tests complete so that CI knows we're done
         int failureCount = [[SampleSdkAppKIFTestController sharedInstance] failureCount];
-        exit(failureCount);
+        NSLog(@"failure count %i", failureCount);
+        if( getenv("KIF_CLI") ) {
+            exit(failureCount);
+        }
     }];
 #endif
     

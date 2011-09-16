@@ -18,7 +18,7 @@ OUTFILE="/tmp/KIF-$$.out"
 
 echo "OUTFILE is $OUTFILE"
 
-"$THISDIR/waxsim" -f "iphone" "$SRCDIR/build/Release-iphonesimulator/SampleSdkApp Integration Tests.app" >"$OUTFILE" 2>&1
+KIF_CLI=1 "$THISDIR/waxsim" -f "iphone" "$SRCDIR/build/Release-iphonesimulator/SampleSdkApp Integration Tests.app" >"$OUTFILE" 2>&1
 
 cat "$OUTFILE"
 
