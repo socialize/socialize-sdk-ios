@@ -23,7 +23,10 @@ clean:
 	rm -rfd build
 test: build
 # run unit tests
-	WRITE_JUNIT_XML=YES GHUNIT_CLI=1 xcodebuild -target unitTests -configuration Debug -sdk iphonesimulator build
+	WRITE_JUNIT_XML=YES GHUNIT_UI_CLI=1 xcodebuild -target unitTests -configuration Debug -sdk iphonesimulator build
+
+integration-tests:
+	./util/run-integration-tests.sh
 
 doc:
 	cd "./Socialize";\

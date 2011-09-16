@@ -1,8 +1,8 @@
 /*
- * PostCommentViewControllerTests.h
+ * SocializeLocationManager.h
  * SocializeSDK
  *
- * Created on 9/7/11.
+ * Created on 9/14/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -23,14 +23,27 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- * See Also: http://gabriel.github.com/gh-unit/
  */
 
+#import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
-#import <GHUnitIOS/GHUnit.h>
-#import <UIKit/UIKit.h>
+typedef void (^OnFoundCallbackBlock)(NSString* location);
 
-@interface PostCommentViewControllerTests : GHTestCase {
+@interface SocializeLocationManager : NSObject<MKReverseGeocoderDelegate> {
+@private
+    BOOL _shareLocation;
+    NSString* _currentLocationDescription;
+    OnFoundCallbackBlock onFoundblock;
+    MKReverseGeocoder *geoCoder;
 }
+
+@property (nonatomic, assign) BOOL shouldShareLocation;
+@property (nonatomic, retain) NSString* currentLocationDescription;
+
+-(void)findLocationDescriptionWithCoordinate: (CLLocationCoordinate2D) coordinate  andWithBlock:(OnFoundCallbackBlock)block;
+-(BOOL)applicationIsAuthorizedToUseLocationServices;
+
++(SocializeLocationManager*)create;
 
 @end

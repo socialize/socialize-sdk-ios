@@ -10,14 +10,18 @@
 #import "SampleSdkAppAppDelegate.h"
 #import "Socialize.h"
 #import "TestListController.h"
-
 #include <AvailabilityMacros.h>
+
+#if RUN_KIF_TESTS
+#import "SampleSdkAppKIFTestController.h"
+#endif
+
 //#import "SocializeLike.h"
 
 @implementation SampleSdkAppAppDelegate
 
 
-@synthesize window=_window;
+@synthesize window=_window, rootController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -33,6 +37,18 @@
     rootController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     [self.window addSubview:rootController.view];
     [self.window makeKeyAndVisible];
+    
+#if RUN_KIF_TESTS
+    [[SampleSdkAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
+        // Exit after the tests complete so that CI knows we're done
+        int failureCount = [[SampleSdkAppKIFTestController sharedInstance] failureCount];
+        NSLog(@"failure count %i", failureCount);
+        if( getenv("KIF_CLI") ) {
+            exit(failureCount);
+        }
+    }];
+#endif
+    
     return YES;
 }
 

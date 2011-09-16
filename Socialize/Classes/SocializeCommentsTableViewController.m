@@ -17,6 +17,8 @@
 #import "SocializeComment.h"
 #import "UINavigationBarBackground.h"
 #import "ImageLoader.h"
+#import "UIKeyboardListener.h"
+#import "SocializeLocationManager.h"
 
 
 @interface SocializeCommentsTableViewController()
@@ -128,6 +130,7 @@
 
 #pragma mark tableFooterViewDelegate
 
+<<<<<<< HEAD
 -(PostCommentViewController*)postCommentControllerInstance{
     return [[[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" bundle:nil entityUrlString:_entity.key] autorelease];
 }
@@ -140,6 +143,11 @@
     UINavigationController *pcNavController = [[UINavigationController alloc] initWithRootViewController:pcViewController];
     [pcNavController.navigationBar setBackgroundImage:socializeNavBarBackground];
 
+=======
+-(IBAction)addCommentButtonPressed:(id)sender 
+{
+    UINavigationController * pcNavController =[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:_entity.key andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
+>>>>>>> 15f1e0d888c7ae0949b1812091bb2778bfab8ee1
     [self presentModalViewController:pcNavController animated:YES];
 }
 
@@ -353,7 +361,10 @@
 - (void)textViewDidChange:(UITextView *)textView {
 	
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 15f1e0d888c7ae0949b1812091bb2778bfab8ee1
 #pragma mark -
 - (void)dealloc {
     [_cache release];

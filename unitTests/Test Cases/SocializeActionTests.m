@@ -64,7 +64,7 @@
     id commentButton = [OCMockObject niceMockForClass:[UIButton class]];
 
     //    UIFont * labelFont = [[UIFontForTest alloc] init];
-    id labelFont = [OCMockObject niceMockForClass:[UIFont class]];
+    id labelFont = [UIFont systemFontOfSize:14];
     id activityIndicator = [OCMockObject niceMockForClass:[UIActivityIndicatorView class]];
 
     [[commentButton expect] setBackgroundImage:OCMOCK_ANY forState:UIControlStateNormal];
@@ -149,7 +149,6 @@
 }
 
 -(void)testCommentDelegate{
-    
     id likeButton = [OCMockObject niceMockForClass:[UIButton class]];
     id viewButton = [OCMockObject niceMockForClass:[UIButton class]];
     id commentButton = [OCMockObject niceMockForClass:[UIButton class]];
