@@ -6,9 +6,9 @@
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "KIFTestStep+SampleAdditions.h"
+#import "KIFTestStep+SampleSdkAppAdditions.h"
 
-@implementation KIFTestStep (SampleAdditions1)
+@implementation KIFTestStep (SampleSdkAppAdditions)
 
 + (id)stepToReset;
 {

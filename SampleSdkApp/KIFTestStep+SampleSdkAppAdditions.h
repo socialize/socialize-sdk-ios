@@ -8,7 +8,7 @@
 
 #import "KIFTestStep.h"
 
-@interface KIFTestStep (SampleAdditions1)
+@interface KIFTestStep (SampleSdkAppAdditions)
 
 + (id)stepToReset;
 + (NSArray*)stepsToAuthenticate;

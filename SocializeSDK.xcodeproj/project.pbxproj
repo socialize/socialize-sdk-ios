@@ -672,9 +672,9 @@
 		AAFE11D114228E6C00A142D9 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DAC93914209E6B0011CD5F /* SocializeCommentsTableViewController.xib */; };
 		AAFE11D214228E6C00A142D9 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16DAC93A14209E6B0011CD5F /* SocializeConfigurationInfo.plist */; };
 		AAFE11D914228EA700A142D9 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D1A871421342100E118A0 /* libKIF.a */; };
-		AAFE11DA14228FBE00A142D9 /* SampleKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = AACBBDDF14216497008F0A50 /* SampleKIFTestController.m */; };
-		AAFE11DB14228FC700A142D9 /* KIFTestScenario+SampleAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleAdditions.m */; };
-		AAFE11DC14228FC900A142D9 /* KIFTestStep+SampleAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AACBBDE514216530008F0A50 /* KIFTestStep+SampleAdditions.m */; };
+		AAFE11DA14228FBE00A142D9 /* SampleSdkAppKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = AACBBDDF14216497008F0A50 /* SampleSdkAppKIFTestController.m */; };
+		AAFE11DB14228FC700A142D9 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleSdkAppAdditions.m */; };
+		AAFE11DC14228FC900A142D9 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AACBBDE514216530008F0A50 /* KIFTestStep+SampleSdkAppAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1291,12 +1291,12 @@
 		9AC0259813BB8253004AB147 /* SocializeUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserService.m; path = Classes/SocializeUserService.m; sourceTree = "<group>"; };
 		AA2D1A7F1421342100E118A0 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = SampleSdkApp/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
 		AA75A06E14216B210032C88F /* SampleSdkApp-Integration-Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Integration-Tests-Prefix.pch"; sourceTree = "<group>"; };
-		AACBBDDE14216497008F0A50 /* SampleKIFTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleKIFTestController.h; sourceTree = "<group>"; };
-		AACBBDDF14216497008F0A50 /* SampleKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleKIFTestController.m; sourceTree = "<group>"; };
-		AACBBDE1142164CE008F0A50 /* KIFTestScenario+SampleAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestScenario+SampleAdditions.h"; sourceTree = "<group>"; };
-		AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestScenario+SampleAdditions.m"; sourceTree = "<group>"; };
-		AACBBDE414216530008F0A50 /* KIFTestStep+SampleAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestStep+SampleAdditions.h"; sourceTree = "<group>"; };
-		AACBBDE514216530008F0A50 /* KIFTestStep+SampleAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestStep+SampleAdditions.m"; sourceTree = "<group>"; };
+		AACBBDDE14216497008F0A50 /* SampleSdkAppKIFTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleSdkAppKIFTestController.h; sourceTree = "<group>"; };
+		AACBBDDF14216497008F0A50 /* SampleSdkAppKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppKIFTestController.m; sourceTree = "<group>"; };
+		AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleSdkAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestScenario+SampleSdkAppAdditions.m"; sourceTree = "<group>"; };
+		AACBBDE414216530008F0A50 /* KIFTestStep+SampleSdkAppAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestStep+SampleSdkAppAdditions.h"; sourceTree = "<group>"; };
+		AACBBDE514216530008F0A50 /* KIFTestStep+SampleSdkAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestStep+SampleSdkAppAdditions.m"; sourceTree = "<group>"; };
+		AAEA93B71422C51500994AF5 /* KIFTestScenario+SampleSdkAppAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestScenario+SampleSdkAppAdditions.h"; sourceTree = "<group>"; };
 		AAFE11D714228E6C00A142D9 /* SampleSdkApp Integration Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SampleSdkApp Integration Tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -2214,12 +2214,12 @@
 		AACBBDDD14216332008F0A50 /* KIF */ = {
 			isa = PBXGroup;
 			children = (
-				AACBBDDE14216497008F0A50 /* SampleKIFTestController.h */,
-				AACBBDDF14216497008F0A50 /* SampleKIFTestController.m */,
-				AACBBDE1142164CE008F0A50 /* KIFTestScenario+SampleAdditions.h */,
-				AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleAdditions.m */,
-				AACBBDE414216530008F0A50 /* KIFTestStep+SampleAdditions.h */,
-				AACBBDE514216530008F0A50 /* KIFTestStep+SampleAdditions.m */,
+				AACBBDDE14216497008F0A50 /* SampleSdkAppKIFTestController.h */,
+				AACBBDDF14216497008F0A50 /* SampleSdkAppKIFTestController.m */,
+				AAEA93B71422C51500994AF5 /* KIFTestScenario+SampleSdkAppAdditions.h */,
+				AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleSdkAppAdditions.m */,
+				AACBBDE414216530008F0A50 /* KIFTestStep+SampleSdkAppAdditions.h */,
+				AACBBDE514216530008F0A50 /* KIFTestStep+SampleSdkAppAdditions.m */,
 			);
 			name = KIF;
 			sourceTree = "<group>";
@@ -3059,9 +3059,9 @@
 				AAFE116214228E6C00A142D9 /* TestViewCreationViewController.m in Sources */,
 				AAFE116314228E6C00A142D9 /* LikeListViewController.m in Sources */,
 				AAFE116414228E6C00A142D9 /* InputBox.m in Sources */,
-				AAFE11DA14228FBE00A142D9 /* SampleKIFTestController.m in Sources */,
-				AAFE11DB14228FC700A142D9 /* KIFTestScenario+SampleAdditions.m in Sources */,
-				AAFE11DC14228FC900A142D9 /* KIFTestStep+SampleAdditions.m in Sources */,
+				AAFE11DA14228FBE00A142D9 /* SampleSdkAppKIFTestController.m in Sources */,
+				AAFE11DB14228FC700A142D9 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */,
+				AAFE11DC14228FC900A142D9 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

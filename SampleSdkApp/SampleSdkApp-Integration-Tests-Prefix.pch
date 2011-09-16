@@ -12,8 +12,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #import "KIFTestController.h"
-#import "KIFTestStep+SampleAdditions.h"
-#import "KIFTestScenario+SampleAdditions.h"
+#import "KIFTestStep+SampleSdkAppAdditions.h"
+#import "KIFTestScenario+SampleSdkAppAdditions.h"
 
 #endif
 

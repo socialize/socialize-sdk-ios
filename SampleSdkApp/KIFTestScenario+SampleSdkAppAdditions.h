@@ -8,7 +8,7 @@
 
 #import "KIFTestScenario.h"
 
-@interface KIFTestScenario (SampleAdditions)
+@interface KIFTestScenario (SampleSdkAppAdditions)
 
 + (id)scenarioToAuthenticate;
 

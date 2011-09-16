@@ -6,9 +6,9 @@
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "KIFTestScenario+SampleAdditions.h"
+#import "KIFTestScenario+SampleSdkAppAdditions.h"
 
-@implementation KIFTestScenario (SampleAdditions)
+@implementation KIFTestScenario (SampleSdkAppAdditions)
 
 + (id)scenarioToAuthenticate;
 {

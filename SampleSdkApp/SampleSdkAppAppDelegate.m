@@ -13,7 +13,7 @@
 #include <AvailabilityMacros.h>
 
 #if RUN_KIF_TESTS
-#import "SampleKIFTestController.h"
+#import "SampleSdkAppKIFTestController.h"
 #endif
 
 //#import "SocializeLike.h"
@@ -39,9 +39,9 @@
     [self.window makeKeyAndVisible];
     
 #if RUN_KIF_TESTS
-    [[SampleKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
+    [[SampleSdkAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
         // Exit after the tests complete so that CI knows we're done
-        exit([[SampleKIFTestController sharedInstance] failureCount]);
+        exit([[SampleSdkAppKIFTestController sharedInstance] failureCount]);
     }];
 #endif
     

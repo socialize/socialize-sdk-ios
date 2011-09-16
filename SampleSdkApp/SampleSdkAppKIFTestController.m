@@ -6,9 +6,9 @@
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "SampleKIFTestController.h"
+#import "SampleSdkAppKIFTestController.h"
 
-@implementation SampleKIFTestController
+@implementation SampleSdkAppKIFTestController
 
 - (void)initializeScenarios;
 {

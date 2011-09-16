@@ -8,6 +8,6 @@
 
 #import "KIFTestController.h"
 
-@interface SampleKIFTestController : KIFTestController
+@interface SampleSdkAppKIFTestController : KIFTestController
 
 @end
