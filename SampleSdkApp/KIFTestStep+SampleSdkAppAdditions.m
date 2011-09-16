@@ -34,4 +34,18 @@
     return steps;
 }
 
++ (NSArray*)stepsToCreateEntity;
+{
+    NSMutableArray *steps = [NSMutableArray array];
+    
+    // Tap the "I already have an account" button
+//    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Test create and Entity"]];
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Test get an Entity" atIndexPath:path]];
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Get Entity"]];
+    
+    return steps;
+}
+
 @end

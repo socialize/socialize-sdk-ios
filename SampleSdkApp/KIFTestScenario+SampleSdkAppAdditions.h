@@ -11,5 +11,5 @@
 @interface KIFTestScenario (SampleSdkAppAdditions)
 
 + (id)scenarioToAuthenticate;
-
++ (id)scenarioToCreateEntity;
 @end

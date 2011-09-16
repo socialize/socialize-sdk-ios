@@ -12,5 +12,6 @@
 
 + (id)stepToReset;
 + (NSArray*)stepsToAuthenticate;
++ (NSArray*)stepsToCreateEntity;
 
 @end
