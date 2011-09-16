@@ -19,7 +19,7 @@
 @interface PostCommentViewController ()
 
 -(void)setShareLocation:(BOOL)enableLocation;
--(void)setUserLocationTextLabel;
+-(void)setUserLocationTextLabelForShareState:(BOOL)share; 
 -(void)sendButtonPressed:(id)button;
 -(void)closeButtonPressed:(id)button;
 -(void)configureDoNotShareLocationButton;
@@ -119,14 +119,14 @@
         [mapOfUserLocation setFitLocation: userLocation.coordinate withSpan: [CommentMapView coordinateSpan]];  
         [locationManager findLocationDescriptionWithCoordinate: userLocation.coordinate andWithBlock:^(NSString* userLocationString)
          {
-             [self setUserLocationTextLabel];
+             [self setUserLocationTextLabelForShareState:locationManager.shouldShareLocation];
          }];
     }
 }
 
--(void)setUserLocationTextLabel 
+-(void)setUserLocationTextLabelForShareState:(BOOL)share 
 {
-    if (locationManager.shouldShareLocation) {
+    if (share) {
         [self.locationText text: locationManager.currentLocationDescription 
                    withFontName: @"Helvetica" 
                    withFontSize: 12.0 
@@ -172,7 +172,7 @@
         [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-disabled.png"] forState:UIControlStateHighlighted];   
     }
     
-    [self setUserLocationTextLabel];
+    [self setUserLocationTextLabelForShareState: enableLocation];
 }
 
 #pragma mark - Buttons actions
