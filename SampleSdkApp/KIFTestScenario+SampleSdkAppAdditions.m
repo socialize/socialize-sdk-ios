@@ -19,13 +19,17 @@
     return scenario;
 }
 
-+ (id)scenarioToCreateEntity;
++ (id)scenarioToGetEntity;
 {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Tests that an entity can be created."];
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"entity get scenario."];
     [scenario addStep:[KIFTestStep stepToReset]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntity]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToGetEntity]];
     
     return scenario;
 }
-
++ (id)scenarioToCreateEntity;
+{
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"entity create scenario."];
+    return scenario;
+}
 @end

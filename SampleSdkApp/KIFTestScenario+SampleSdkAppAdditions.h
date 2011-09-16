@@ -12,4 +12,5 @@
 
 + (id)scenarioToAuthenticate;
 + (id)scenarioToCreateEntity;
++ (id)scenarioToGetEntity;
 @end

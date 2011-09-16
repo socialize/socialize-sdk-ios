@@ -13,7 +13,9 @@
 - (void)initializeScenarios;
 {
     [self addScenario:[KIFTestScenario scenarioToAuthenticate]];
-    [self addScenario:[KIFTestScenario scenarioToCreateEntity]];
+    [self addScenario:[KIFTestScenario scenarioToGetEntity]];
+    //[self addScenario:[KIFTestScenario scenarioToCreateEntity]];
+
     // Add additional scenarios you want to test here
 }
 

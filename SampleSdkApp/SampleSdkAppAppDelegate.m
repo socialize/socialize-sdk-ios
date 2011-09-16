@@ -41,7 +41,7 @@
 #if RUN_KIF_TESTS
     [[SampleSdkAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
         // Exit after the tests complete so that CI knows we're done
-        exit([[SampleSdkAppKIFTestController sharedInstance] failureCount]);
+        [[SampleSdkAppKIFTestController sharedInstance] failureCount];
     }];
 #endif
     

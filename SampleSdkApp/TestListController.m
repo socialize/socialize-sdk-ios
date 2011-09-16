@@ -126,7 +126,16 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
+    
     cell.textLabel.text = [_testList objectAtIndex:indexPath.row];
+    cell.textLabel.accessibilityLabel = [_testList objectAtIndex:indexPath.row];
+    cell.textLabel.isAccessibilityElement = YES;
+    /*
+    cell.isAccessibilityElement = YES;
+    cell.accessibilityLabel = [_testList objectAtIndex:indexPath.row];
+     */
+    NSLog(@" row: %@ and label: %@#", indexPath, [_testList objectAtIndex:indexPath.row]);
+
     return cell;
 }
 
