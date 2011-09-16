@@ -22,10 +22,7 @@
 
 
 @interface SocializeCommentsTableViewController()
-
 -(NSString*)getDateString:(NSDate*)date;
--(PostCommentViewController*)postCommentControllerInstance;
-
 @end
 
 @implementation SocializeCommentsTableViewController
@@ -130,8 +127,9 @@
 
 #pragma mark tableFooterViewDelegate
 
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 -(PostCommentViewController*)postCommentControllerInstance{
+
     return [[[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" bundle:nil entityUrlString:_entity.key] autorelease];
 }
 
@@ -144,10 +142,11 @@
     [pcNavController.navigationBar setBackgroundImage:socializeNavBarBackground];
 
 =======
+ */
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
     UINavigationController * pcNavController =[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:_entity.key andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
->>>>>>> 15f1e0d888c7ae0949b1812091bb2778bfab8ee1
+//>>>>>>> 15f1e0d888c7ae0949b1812091bb2778bfab8ee1
     [self presentModalViewController:pcNavController animated:YES];
 }
 
@@ -357,15 +356,6 @@
 	informationView.hidden = YES;
 }
 
-#pragma mark TextView Delegate 
-- (void)textViewDidChange:(UITextView *)textView {
-	
-}
-<<<<<<< HEAD
-
-=======
->>>>>>> 15f1e0d888c7ae0949b1812091bb2778bfab8ee1
-#pragma mark -
 - (void)dealloc {
     [_cache release];
     [_socialize release];
