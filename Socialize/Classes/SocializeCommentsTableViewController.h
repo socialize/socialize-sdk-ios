@@ -26,7 +26,7 @@
 
 @class CommentsTableViewCell;
 
-@interface SocializeCommentsTableViewController : UIViewController<UITableViewDataSource, SocializeServiceDelegate> 
+@interface SocializeCommentsTableViewController : UIViewController<UITableViewDataSource, SocializeServiceDelegate, UITableViewDelegate> 
 {
 
 	IBOutlet UITableView*   _tableView;
@@ -62,11 +62,15 @@
 @property (retain, nonatomic) IBOutlet CommentsTableFooterView   *footerView;
 @property (retain, nonatomic) Socialize                 *socialize;
 @property (retain, nonatomic) ImagesCache               *cache;
+@property (retain, nonatomic) NSArray                   *arrayOfComments;
+@property (assign, nonatomic) BOOL                      isLoading;
+@property (retain, nonatomic) TableBGInfoView           *informationView;
+
 
 -(IBAction)addCommentButtonPressed:(id)sender;
-
 -(void)addNoCommentsBackground;
 -(void)removeNoCommentsBackground;
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entryUrlString:(NSString*) entryUrlString;
+
 @end

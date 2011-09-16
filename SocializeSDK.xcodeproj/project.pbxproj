@@ -393,6 +393,7 @@
 		6DFB000D141FE2CA0030DE32 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DFBFFB6141FE2CA0030DE32 /* SocializeConfigurationInfo.plist */; };
 		6DFB000E141FE2CA0030DE32 /* Socialize-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFBFFB7141FE2CA0030DE32 /* Socialize-iOS.framework */; };
 		6DFB0012141FF9460030DE32 /* CommentsTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB0011141FF9450030DE32 /* CommentsTableViewTests.m */; };
+		6DFB001414213A3A0030DE32 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
 		6DFBFE71141FDDCC0030DE32 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBFE55141FDDCC0030DE32 /* Base64Transcoder.c */; };
 		6DFBFE72141FDDCC0030DE32 /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DFBFE56141FDDCC0030DE32 /* Base64Transcoder.h */; };
 		6DFBFE73141FDDCC0030DE32 /* NSMutableURLRequest+Parameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DFBFE57141FDDCC0030DE32 /* NSMutableURLRequest+Parameters.h */; };
@@ -2296,6 +2297,7 @@
 				1666BD3E14110BD900518811 /* socialize-comment-details-icon-geo-disabled.png in Resources */,
 				1666BD3F14110D3F00518811 /* comment_template_clear.htm in Resources */,
 				16A82A25141DE17E00193CA7 /* action-bar-icon-like.png in Resources */,
+				6DFB001414213A3A0030DE32 /* SocializeCommentsTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

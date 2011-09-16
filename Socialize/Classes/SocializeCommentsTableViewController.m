@@ -18,13 +18,12 @@
 #import "UINavigationBarBackground.h"
 #import "ImageLoader.h"
 
-#define UIColorFromRGB(rgbValue) [UIColor \
-	colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
-		green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
-			blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface SocializeCommentsTableViewController()
+
 -(NSString*)getDateString:(NSDate*)date;
+-(PostCommentViewController*)postCommentControllerInstance;
+
 @end
 
 @implementation SocializeCommentsTableViewController
@@ -32,10 +31,13 @@
 @synthesize tableView = _tableView;
 @synthesize socialize = _socialize;
 @synthesize cache = _cache;
+@synthesize arrayOfComments = _arrayOfComments;
+@synthesize isLoading = _isLoading;
 
 @synthesize brushedMetalBackground;
 @synthesize backgroundView;
 @synthesize roundedContainerView;
+@synthesize informationView;
 
 @synthesize noCommentsIconView;
 @synthesize topToolBar;
@@ -126,17 +128,19 @@
 
 #pragma mark tableFooterViewDelegate
 
--(IBAction)addCommentButtonPressed:(id)sender {
+-(PostCommentViewController*)postCommentControllerInstance{
+    return [[[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" bundle:nil entityUrlString:_entity.key] autorelease];
+}
 
-    PostCommentViewController * pcViewController = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" bundle:nil entityUrlString:_entity.key];
-        
+-(IBAction)addCommentButtonPressed:(id)sender {
+    
+    PostCommentViewController* pcViewController = [self postCommentControllerInstance];
+    
     UIImage * socializeNavBarBackground = [UIImage imageNamed:@"socialize-navbar-bg.png"];
-    UINavigationController * pcNavController = [[UINavigationController alloc] initWithRootViewController:pcViewController];
+    UINavigationController *pcNavController = [[UINavigationController alloc] initWithRootViewController:pcViewController];
     [pcNavController.navigationBar setBackgroundImage:socializeNavBarBackground];
-    [pcViewController release];
 
     [self presentModalViewController:pcNavController animated:YES];
-    [pcNavController release];
 }
 
 #pragma mark -
@@ -145,18 +149,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
-}
-
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-
-	if (anim == [self.view.layer animationForKey:@"transform.scaleOut"]){
-		[self.view.layer removeAnimationForKey:@"transform.scaleOut"];
-		[self autorelease];
-	}
-	
-	[self.view.layer removeAnimationForKey:@"transform.scaleOut"];
-	[self.view removeFromSuperview];
-	[self autorelease];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -180,7 +172,7 @@
     
     if ([_arrayOfComments count]){
 
-       [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         SocializeComment* entryComment = ((SocializeComment*)[_arrayOfComments objectAtIndex:indexPath.row]);
         
         CommentDetailsViewController* details = [[CommentDetailsViewController alloc] init];
@@ -329,8 +321,8 @@
 
  // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -366,7 +358,6 @@
 - (void)dealloc {
     [_cache release];
     [_socialize release];
-	[informationView release];
 	[_entity release];
 	[_arrayOfComments release];
 	[_commentDateFormatter release];
