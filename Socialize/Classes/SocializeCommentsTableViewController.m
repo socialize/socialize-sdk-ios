@@ -123,7 +123,7 @@
 	_tableView.backgroundView = imageBackgroundView; 
 	[imageBackgroundView release];
     
-    self._tableView.accessibilityLabel = @"Comments Table View";
+    self.tableView.accessibilityLabel = @"Comments Table View";
 }
 
 #pragma mark tableFooterViewDelegate
