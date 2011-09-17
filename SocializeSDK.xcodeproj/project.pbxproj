@@ -552,6 +552,8 @@
 		9ABB68BD13BA78A4001882D1 /* SocializeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB68BB13BA78A4001882D1 /* SocializeService.m */; };
 		9AC0259913BB8253004AB147 /* SocializeUserService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC0259713BB8253004AB147 /* SocializeUserService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9AC0259A13BB8253004AB147 /* SocializeUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0259813BB8253004AB147 /* SocializeUserService.m */; };
+		AAA37E371423E44A00803E24 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E361423E44A00803E24 /* StringHelper.m */; };
+		AAA37E3A1423E49900803E24 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E391423E49900803E24 /* DataHelper.m */; };
 		AAFE115814228E6C00A142D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4411398C40F007C91ED /* main.m */; };
 		AAFE115914228E6C00A142D9 /* SampleSdkAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */; };
 		AAFE115A14228E6C00A142D9 /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
@@ -1295,6 +1297,10 @@
 		9AC0259813BB8253004AB147 /* SocializeUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserService.m; path = Classes/SocializeUserService.m; sourceTree = "<group>"; };
 		AA2D1A7F1421342100E118A0 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = SampleSdkApp/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
 		AA75A06E14216B210032C88F /* SampleSdkApp-Integration-Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Integration-Tests-Prefix.pch"; sourceTree = "<group>"; };
+		AAA37E351423E44A00803E24 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
+		AAA37E361423E44A00803E24 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
+		AAA37E381423E49900803E24 /* DataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHelper.h; sourceTree = "<group>"; };
+		AAA37E391423E49900803E24 /* DataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHelper.m; sourceTree = "<group>"; };
 		AACBBDDE14216497008F0A50 /* SampleSdkAppKIFTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleSdkAppKIFTestController.h; sourceTree = "<group>"; };
 		AACBBDDF14216497008F0A50 /* SampleSdkAppKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppKIFTestController.m; sourceTree = "<group>"; };
 		AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleSdkAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestScenario+SampleSdkAppAdditions.m"; sourceTree = "<group>"; };
@@ -1611,6 +1617,7 @@
 		16E2C43A1398C40E007C91ED /* SampleSdkApp */ = {
 			isa = PBXGroup;
 			children = (
+				AAA37E301423E22100803E24 /* Additions */,
 				AACBBDDD14216332008F0A50 /* KIF */,
 				16E2C4581398F6E3007C91ED /* socialize_resources */,
 				16E2C43B1398C40F007C91ED /* Supporting Files */,
@@ -2215,6 +2222,17 @@
 				AA2D1A871421342100E118A0 /* libKIF.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AAA37E301423E22100803E24 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				AAA37E381423E49900803E24 /* DataHelper.h */,
+				AAA37E391423E49900803E24 /* DataHelper.m */,
+				AAA37E351423E44A00803E24 /* StringHelper.h */,
+				AAA37E361423E44A00803E24 /* StringHelper.m */,
+			);
+			name = Additions;
 			sourceTree = "<group>";
 		};
 		AACBBDDD14216332008F0A50 /* KIF */ = {
@@ -3070,6 +3088,8 @@
 				AAFE11DA14228FBE00A142D9 /* SampleSdkAppKIFTestController.m in Sources */,
 				AAFE11DB14228FC700A142D9 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */,
 				AAFE11DC14228FC900A142D9 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
+				AAA37E371423E44A00803E24 /* StringHelper.m in Sources */,
+				AAA37E3A1423E49900803E24 /* DataHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3270,7 +3290,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/unitTests/Frameworks\"",
 					"\"$(SRCROOT)/build/Socialize-iOS.embeddedframework\"",
-					"\"$(SRCROOT)/Socialize-iOS.embeddedframework\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -3307,7 +3326,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/unitTests/Frameworks\"",
 					"\"$(SRCROOT)/build/Socialize-iOS.embeddedframework\"",
-					"\"$(SRCROOT)/Socialize-iOS.embeddedframework\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
@@ -3441,7 +3459,6 @@
 					"\"$(SRCROOT)/unitTests/Frameworks\"",
 					"\"$(SRCROOT)/build/Socialize-IOS.embeddedframework\"",
 					"\"$(SRCROOT)/build/Socialize-iOS.embeddedframework\"",
-					"\"$(SRCROOT)/Socialize-iOS.embeddedframework\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3492,7 +3509,6 @@
 					"\"$(SRCROOT)/unitTests/Frameworks\"",
 					"\"$(SRCROOT)/build/Socialize-IOS.embeddedframework\"",
 					"\"$(SRCROOT)/build/Socialize-iOS.embeddedframework\"",
-					"\"$(SRCROOT)/Socialize-iOS.embeddedframework\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

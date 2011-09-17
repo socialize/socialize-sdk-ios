@@ -39,6 +39,7 @@
         _inputField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 50.0, 260.0, 25.0)]; 
         [_inputField setBackgroundColor:[UIColor whiteColor]];
         _inputField.text = @"";   
+        _inputField.accessibilityLabel = @"Input Field";
         lock = [[NSCondition alloc] init];
     }
     return self;

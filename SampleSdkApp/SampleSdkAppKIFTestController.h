@@ -10,4 +10,6 @@
 
 @interface SampleSdkAppKIFTestController : KIFTestController
 
++ (NSString*)testURL:(NSString*)suffix;
+
 @end

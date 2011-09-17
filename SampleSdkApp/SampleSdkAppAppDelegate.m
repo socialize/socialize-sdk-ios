@@ -23,6 +23,10 @@
 
 @synthesize window=_window, rootController;
 
++ (id)sharedDelegate {
+    return [[UIApplication sharedApplication] delegate];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     UIViewController* rootViewController = nil;

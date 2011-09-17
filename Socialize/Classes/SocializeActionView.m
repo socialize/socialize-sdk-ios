@@ -54,7 +54,7 @@
         self.delegate = nil;
         [self instantiateButtons];
 		[self setupButtons];
-        
+        self.accessibilityLabel = @"Socialize Action View";
 	}
     return self;
 }
@@ -71,6 +71,7 @@
         _viewCounter = [viewButton retain];
         _activityIndicator = [activityIndicator retain];
 		[self setupButtons];
+        self.accessibilityLabel = @"Socialize Action View";
 	}   
     return self;
 

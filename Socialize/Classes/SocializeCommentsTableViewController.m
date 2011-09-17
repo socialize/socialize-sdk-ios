@@ -122,7 +122,8 @@
 	UIImageView * imageBackgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
 	_tableView.backgroundView = imageBackgroundView; 
 	[imageBackgroundView release];
-
+    
+    self._tableView.accessibilityLabel = @"Comments Table View";
 }
 
 #pragma mark tableFooterViewDelegate
@@ -214,7 +215,7 @@
         // Grab a pointer to the custom cell.
         cell = commentsCell;
         self.commentsCell = nil;
-
+        cell.accessibilityLabel = @"Comment Cell";
     }
 	
 	if ([_arrayOfComments count]) {
