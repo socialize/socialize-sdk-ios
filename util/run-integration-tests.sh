@@ -8,6 +8,17 @@ killall "iPhone Simulator"
 set -o errexit
 set -o verbose
 
+function cleanup() {
+  if [ -n "$simPID" ]; then
+    kill $simPID
+  fi
+  if [ -n "$tailPID" ]; then
+    kill $tailPID
+  fi
+  killall "iPhone Simulator"
+}
+trap cleanup INT TERM EXIT
+
 # Build the "Integration Tests" target to run in the simulator
 cd "$SRCDIR" && xcodebuild -target "SampleSdkApp Integration Tests" -configuration Distribution -sdk iphonesimulator build
 
@@ -18,11 +29,15 @@ OUTFILE="/tmp/KIF-$$.out"
 
 echo "OUTFILE is $OUTFILE"
 
-KIF_CLI=1 "$THISDIR/waxsim" -f "iphone" "$SRCDIR/build/Release-iphonesimulator/SampleSdkApp Integration Tests.app" >"$OUTFILE" 2>&1
+# pipe from waxsim to tee does not work
+KIF_CLI=1 "$THISDIR/waxsim" -f "iphone" "$SRCDIR/build/Release-iphonesimulator/SampleSdkApp Integration Tests.app" >"$OUTFILE" 2>&1 &
+simPID=$!
 
-cat "$OUTFILE"
+tail -f "$OUTFILE" &
+tailPID=$!
 
-killall "iPhone Simulator"
+echo "waiting for $simPID"
+wait $simPID
 
 # WaxSim hides the return value from the app, so to determine success we search for a "no failures" line
 grep -q "TESTING FINISHED: 0 failures" "$OUTFILE"
