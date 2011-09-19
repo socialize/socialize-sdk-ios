@@ -29,10 +29,7 @@ static NSString *SampleSdkAppKIFTestControllerRunID = nil;
     [self addScenario:[KIFTestScenario scenarioToGetComments]];
     [self addScenario:[KIFTestScenario scenarioToLikeAndUnlikeEntity]];
     [self addScenario:[KIFTestScenario scenarioToViewEntity]];
-    
-    // FIXME the sample app behaves erratically during this test
-//    [self addScenario:[KIFTestScenario scenarioToTestCreateCommentViewController]];
-    
+    [self addScenario:[KIFTestScenario scenarioToTestCreateCommentViewController]];
     
     // Add additional scenarios you want to test here
 }
