@@ -9,12 +9,11 @@ set -o errexit
 set -o verbose
 
 function cleanup() {
-  if [ -n "$simPID" ]; then
-    kill $simPID
-  fi
-  if [ -n "$tailPID" ]; then
-    kill $tailPID
-  fi
+  for pid in $simPID $tailPID; do
+    if [ -n "$simPID" ] && kill -0 $pid; then
+      kill $simPID || true
+    fi
+  done
   killall "iPhone Simulator"
 }
 trap cleanup INT TERM EXIT
