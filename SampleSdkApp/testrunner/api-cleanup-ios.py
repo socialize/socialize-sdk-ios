@@ -18,10 +18,6 @@ def modify_conf_plist(config_filepath , url):
     f.close()
     f = open(config_filepath, 'w')
     pl.writePlist(socializeConf, f)
-    f.close
-
-    
-
 
 def create_conf(key,secret,url):
     f = open('testscript/config.js','wr')
@@ -31,7 +27,7 @@ def create_conf(key,secret,url):
     text+= '\nurl=\'%s\'\n'%url
     print text
     f.write(text)
-
+    f.close()
 
 def gen_comment(entity_key,i):
     text = 'POST comment #%i'%(i)
@@ -66,7 +62,9 @@ def print_json(item, fname=None):
 
 def remove(fname):
     try:
+        fname = 'existing-data/'+fname
         os.remove(fname)
+        
         print '\t %s DELETED'%fname
     except OSError:
         print '\tfile not found', fname  
@@ -111,7 +109,10 @@ def main(key,secret,url):
     consumer = oauth.Consumer( key, secret)
     client = oauth.Client( consumer) 
     payload = simplejson.dumps({ 'payload': { 'udid': udid}})
+
     auth_resp = client.request(auth_url ,'POST', body='payload='+simplejson.dumps({'udid':udid}))
+    
+    
     auth_cont = simplejson.loads(auth_resp[1])
     oauth_secret= auth_cont['oauth_token_secret']
     oauth_token= auth_cont['oauth_token']
