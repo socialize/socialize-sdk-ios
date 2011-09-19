@@ -73,8 +73,15 @@
     
     shouldKeepRunning = YES;        // global
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
-    while (shouldKeepRunning && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
+    // FIXME -- KIF is hiccupping on the manual runloop spin
+#if RUN_KIF_TESTS
+    while (shouldKeepRunning) {
+        [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    }
+#else
+    while (shouldKeepRunning && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+#endif
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

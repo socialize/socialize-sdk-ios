@@ -554,6 +554,7 @@
 		9ABB68BD13BA78A4001882D1 /* SocializeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB68BB13BA78A4001882D1 /* SocializeService.m */; };
 		9AC0259913BB8253004AB147 /* SocializeUserService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC0259713BB8253004AB147 /* SocializeUserService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9AC0259A13BB8253004AB147 /* SocializeUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0259813BB8253004AB147 /* SocializeUserService.m */; };
+		AA3698001427ABED0010CF0B /* TestShowSmallUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8318514272D5B00BFE24E /* TestShowSmallUserInfo.m */; };
 		AAA37E371423E44A00803E24 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E361423E44A00803E24 /* StringHelper.m */; };
 		AAA37E3A1423E49900803E24 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E391423E49900803E24 /* DataHelper.m */; };
 		AAFE115814228E6C00A142D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4411398C40F007C91ED /* main.m */; };
@@ -3100,6 +3101,7 @@
 				AAFE11DC14228FC900A142D9 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
 				AAA37E371423E44A00803E24 /* StringHelper.m in Sources */,
 				AAA37E3A1423E49900803E24 /* DataHelper.m in Sources */,
+				AA3698001427ABED0010CF0B /* TestShowSmallUserInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
