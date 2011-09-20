@@ -15,7 +15,6 @@
 				16B48DB113DEECAB00EE0A92 /* Build universal lib */,
 				16B48DB213DEED3600EE0A92 /* Copy Headers */,
 				16B48DDA13DEEE7900EE0A92 /* Copy Resources */,
-				1611C72213DFFADD00BB5D68 /* Zip output */,
 			);
 			dependencies = (
 			);
@@ -2822,20 +2821,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1611C72213DFFADD00BB5D68 /* Zip output */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Zip output";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Paths\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build\"\n\ncd \"${UNIVERSAL_LIBRARY_DIR}\"\nzip -r -u \"${PROJECT_DIR}/build/${CONFIGURATION}-Socialize_iOS.zip\" \"${PRODUCT_NAME}.embeddedframework/\"\n\n";
-		};
 		162BBF9213C346210060893E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
