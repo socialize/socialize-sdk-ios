@@ -285,6 +285,8 @@
 		16FCABD113B885CC0034499F /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
 		16FDF4DF1414BA0A00EAA064 /* CommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */; };
 		16FDF4E01414BA0A00EAA064 /* CommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */; };
+		182C52EA142927C500133D56 /* SomeTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 182C52E8142927C500133D56 /* SomeTest.h */; };
+		182C52EB142927C500133D56 /* SomeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 182C52E9142927C500133D56 /* SomeTest.m */; };
 		18A3C3A7141FD00000003172 /* SocializeUnitTestApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */; };
 		18A3C3A8141FD00000003172 /* SocializeUnitTestApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */; };
 		5C21C0C61396BF8300CF2B9F /* SocializeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1013,6 +1015,8 @@
 		16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserJSONFormatterTests.m; path = "Test Cases/SocializeUserJSONFormatterTests.m"; sourceTree = "<group>"; };
 		16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailsViewController.h; path = Classes/CommentDetailsViewController.h; sourceTree = "<group>"; };
 		16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsViewController.m; path = Classes/CommentDetailsViewController.m; sourceTree = "<group>"; };
+		182C52E8142927C500133D56 /* SomeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeTest.h; sourceTree = "<group>"; };
+		182C52E9142927C500133D56 /* SomeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeTest.m; sourceTree = "<group>"; };
 		18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUnitTestApplication.h; sourceTree = "<group>"; };
 		18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUnitTestApplication.m; sourceTree = "<group>"; };
 		5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequest.h; path = Classes/SocializeRequest.h; sourceTree = "<group>"; };
@@ -1609,6 +1613,7 @@
 		16E2C43A1398C40E007C91ED /* SampleSdkApp */ = {
 			isa = PBXGroup;
 			children = (
+				182C52E7142926F300133D56 /* ghunit */,
 				AACBBDDD14216332008F0A50 /* KIF */,
 				16E2C4581398F6E3007C91ED /* socialize_resources */,
 				16E2C43B1398C40F007C91ED /* Supporting Files */,
@@ -1669,6 +1674,15 @@
 				6D45319413E9C3E800286BEC /* background.png */,
 			);
 			path = socialize_resources;
+			sourceTree = "<group>";
+		};
+		182C52E7142926F300133D56 /* ghunit */ = {
+			isa = PBXGroup;
+			children = (
+				182C52E8142927C500133D56 /* SomeTest.h */,
+				182C52E9142927C500133D56 /* SomeTest.m */,
+			);
+			name = ghunit;
 			sourceTree = "<group>";
 		};
 		5C6AAC62137C3F5500AF0219 /* Models */ = {
@@ -2328,6 +2342,7 @@
 				16DAC9991420C0EE0011CD5F /* UIKeyboardListener.h in Headers */,
 				169BC7A11420CD94007ED41E /* SocializeLocationManager.h in Headers */,
 				169BC7A61420D602007ED41E /* UILabel+FormatedText.h in Headers */,
+				182C52EA142927C500133D56 /* SomeTest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2996,6 +3011,7 @@
 				16DAC99A1420C0EE0011CD5F /* UIKeyboardListener.m in Sources */,
 				169BC7A21420CD94007ED41E /* SocializeLocationManager.m in Sources */,
 				169BC7A71420D602007ED41E /* UILabel+FormatedText.m in Sources */,
+				182C52EB142927C500133D56 /* SomeTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
