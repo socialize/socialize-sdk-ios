@@ -36,3 +36,9 @@ doc:
 mytest:
 	xcodebuild -target Socialize-iOS -configuration Distribution -sdk iphoneos clean build
 	WRITE_JUNIT_XML=YES GHUNIT_CLI=1 xcodebuild -target unitTests -configuration Debug -sdk iphonesimulator build
+
+sphinx_doc:
+	export LANG=en_US.UTF-8;\
+	export LC_ALL=en_US.UTF-8;\
+	export LC_CTYPE=en_US.UTF-8;\
+	ant -buildfile ./sphinx_doc.xml
