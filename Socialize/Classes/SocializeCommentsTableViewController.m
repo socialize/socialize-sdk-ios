@@ -104,7 +104,8 @@
 - (void)viewDidLoad {
 
     [super viewDidLoad];
-    
+
+    self.title = @"Comments List";
     /*container frame inits*/
     CGRect containerFrame = CGRectMake(0, 0, 140, 140);
     TableBGInfoView * containerView = [[[TableBGInfoView alloc] initWithFrame:containerFrame bgImageName:@"socialize-nocomments-icon.png"] autorelease];
@@ -128,26 +129,9 @@
 
 #pragma mark tableFooterViewDelegate
 
-/*<<<<<<< HEAD
--(PostCommentViewController*)postCommentControllerInstance{
-
-    return [[[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" bundle:nil entityUrlString:_entity.key] autorelease];
-}
-
--(IBAction)addCommentButtonPressed:(id)sender {
-    
-    PostCommentViewController* pcViewController = [self postCommentControllerInstance];
-    
-    UIImage * socializeNavBarBackground = [UIImage imageNamed:@"socialize-navbar-bg.png"];
-    UINavigationController *pcNavController = [[UINavigationController alloc] initWithRootViewController:pcViewController];
-    [pcNavController.navigationBar setBackgroundImage:socializeNavBarBackground];
-
-=======
- */
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
     UINavigationController * pcNavController =[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:_entity.key andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
-//>>>>>>> 15f1e0d888c7ae0949b1812091bb2778bfab8ee1
     [self presentModalViewController:pcNavController animated:YES];
 }
 
