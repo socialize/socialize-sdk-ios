@@ -4,8 +4,7 @@ default: build buildsample test package
 	#
 package:
     # zip sources
-	cp -r ./build/Socialize-iOS.embeddedframework ./ 
-	zip -r -u ./build/iosproject.zip ./ --exclude="*build*" --exclude="*.git*" --exclude="*.svn*"
+	./util/package.sh
      
 build:
   	# build embedded framework
