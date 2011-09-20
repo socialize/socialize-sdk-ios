@@ -555,6 +555,7 @@
 		9AC0259913BB8253004AB147 /* SocializeUserService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC0259713BB8253004AB147 /* SocializeUserService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9AC0259A13BB8253004AB147 /* SocializeUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0259813BB8253004AB147 /* SocializeUserService.m */; };
 		AA3698001427ABED0010CF0B /* TestShowSmallUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8318514272D5B00BFE24E /* TestShowSmallUserInfo.m */; };
+		AA36981814281C190010CF0B /* TestShowSmallUserInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D8318614272D5B00BFE24E /* TestShowSmallUserInfo.xib */; };
 		AAA37E371423E44A00803E24 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E361423E44A00803E24 /* StringHelper.m */; };
 		AAA37E3A1423E49900803E24 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E391423E49900803E24 /* DataHelper.m */; };
 		AAFE115814228E6C00A142D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4411398C40F007C91ED /* main.m */; };
@@ -2814,6 +2815,7 @@
 				AAFE11D014228E6C00A142D9 /* socialize-nocomments-icon@2x.png in Resources */,
 				AAFE11D114228E6C00A142D9 /* SocializeCommentsTableViewController.xib in Resources */,
 				AAFE11D214228E6C00A142D9 /* SocializeConfigurationInfo.plist in Resources */,
+				AA36981814281C190010CF0B /* TestShowSmallUserInfo.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
