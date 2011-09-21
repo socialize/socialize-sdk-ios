@@ -45,7 +45,7 @@
 #if RUN_GHUNIT_TESTS
     int retVal = [GHTestRunner run];
     printf("return value from test runner is: %d\n", retVal);
-    NSAssert(retVal == 0, @"There were %i failures during logic integration tests.", retVal);
+    NSAssert1(retVal == 0, @"There were %i failures during logic integration tests.", retVal);
 #endif
 #if RUN_KIF_TESTS
     [[SampleSdkAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
