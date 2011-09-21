@@ -1,0 +1,198 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SDK User Guide (Recommended for users who want to build there own UI) &mdash; Socialize iOS SDK v0.5.0 documentation</title>
+    <link rel="stylesheet" href="static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+    <link rel="top" title="Socialize iOS SDK v0.5.0 documentation" href="index.html" />
+    <link rel="prev" title="Socialize UI" href="socialize_ui.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="socialize_ui.html" title="Socialize UI"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Socialize iOS SDK v0.5.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sdk-user-guide-recommended-for-users-who-want-to-build-there-own-ui">
+<h1>SDK User Guide (Recommended for users who want to build there own UI)<a class="headerlink" href="#sdk-user-guide-recommended-for-users-who-want-to-build-there-own-ui" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The Socialize SDK provides a simple set of classes and methods built upon the <a class="reference external" href="http://www.getsocialize.com/docs/v1/">Socialize REST API</a></p>
+<p>App developers can elect to use either the pre-defined user interface controls provided in the Socialize UI
+framework, or &#8220;roll their own&#8221; using direct SDK calls.</p>
+<p>ALL calls to the Socialize SDK are <em>asynchronous</em>, meaning that your application will not &#8220;block&#8221; while
+waiting for a response from the Socialize server.</p>
+<p>You are notified of the outcome of calls to the Socialize service via a <em>SocializeServiceDelegate</em>
+passed into each call to the Socialize SDK.</p>
+<p>The main class through which you will be interacting would be Socialize. You can authenticate, comment, like/unlike via Socialize instance and are detailed in the following section.</p>
+</div>
+<div class="section" id="initializing-socialize">
+<h2>Initializing Socialize<a class="headerlink" href="#initializing-socialize" title="Permalink to this headline">¶</a></h2>
+<p>To start using the SDK. You need to create and initialize Socialize class and implement the SocializeServiceDelegate.</p>
+<script src="https://gist.github.com/1204490.js?file=Init.m"></script></div>
+<div class="section" id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
+<p>Every call against the Socialize SDK MUST be authenticated.</p>
+<p>On the first successful call to &#8220;authenticate&#8221; the credentials are automatically cached in the
+application so subsequent calls are much faster.</p>
+<div class="section" id="authenticating-with-facebook">
+<h3>Authenticating with Facebook<a class="headerlink" href="#authenticating-with-facebook" title="Permalink to this headline">¶</a></h3>
+<p>We recommend authenticating with 3rd parties (e.g. Facebook) as this provides a better user experience
+and ensures that user profiles and IDs are retained across app sessions and installs.</p>
+<p>There are 2 variants to achieve the same result. If you already have authenticated with facebook then you can pass the facebook access token to SocializeSDK or you can have the SocializeSDK perform facebook authentication for you.</p>
+<script src="https://gist.github.com/1204490.js?file=FacebookAuthentication.m"></script></div>
+<div class="section" id="authenticating-with-twitter">
+<h3>Authenticating with Twitter<a class="headerlink" href="#authenticating-with-twitter" title="Permalink to this headline">¶</a></h3>
+<p><em>Coming Soon!</em></p>
+</div>
+<div class="section" id="anonymous-authentication">
+<h3>Anonymous Authentication<a class="headerlink" href="#anonymous-authentication" title="Permalink to this headline">¶</a></h3>
+<p>We recommend authenticating with 3rd parties (e.g. Facebook) as this provides a better user experience
+and ensures that user profiles and IDs are retained across app sessions and installs, however if you just
+want anonymous authentication, simply call the <strong>authenticate</strong> method:</p>
+<script src="https://gist.github.com/1229170.js?file=Authentication.m"></script></div>
+</div>
+<div class="section" id="entities">
+<h2>Entities<a class="headerlink" href="#entities" title="Permalink to this headline">¶</a></h2>
+<p>An entity is a single item of content in your app</p>
+<p>Throughout the documentation and the code snippets we refer to an &#8220;entity&#8221;.  This is simply a
+generic term for something that can be view, shared, liked or commented on.  Generally this will
+correspond to a single item of content in your app.</p>
+<p><strong>NOTE: Entities MUST be URLs!</strong></p>
+<p>Entities in Socialize MUST be represented by an HTTP URL.  It is <strong>strongly recommended</strong> that a
+<em>real</em> URL be used (i.e. one that corresponds to an active web page) however if this is not possible
+because your content is not web based you can simply create a URL from key that uniquely identifies
+your entity.</p>
+<p>For example:</p>
+<pre class="literal-block">
+<strong>http://www.getsocialize.com (valid URL preferred)</strong>
+
+<a class="reference external" href="http://myuniqekey">http://myuniqekey</a> (Not a <em>real</em> URL, but will still work)
+</pre>
+<div class="section" id="creating-an-entity">
+<h3>Creating an Entity<a class="headerlink" href="#creating-an-entity" title="Permalink to this headline">¶</a></h3>
+<p>An entity consists of a <strong>key</strong> (URL) and a <strong>name</strong>.  The name should be descriptive and help you identify the
+entity when viewing reports on the Socialize dashboard.</p>
+<p>Creating an entity explicitly in this manner is <strong>optional but recommended</strong>.  If you simply post a
+comment,view,share or like against a URL that does not currently exist, it will be automatically created
+for you, but will not have a <em>name</em> associated with it.</p>
+<p>To create an entity, simply invoke the <strong>createEntity</strong> message:</p>
+<script src="https://gist.github.com/1204490.js?file=CreateEntity.m"></script></div>
+<div class="section" id="retrieving-entity-data">
+<h3>Retrieving Entity data<a class="headerlink" href="#retrieving-entity-data" title="Permalink to this headline">¶</a></h3>
+<p>An existing entity can be retrieved via the <strong>getEntity</strong> method.  Entities obtained in this way will also
+provide aggregate data on comments, likes, shares and views.  Refer to the <a class="reference external" href="http://www.getsocialize.com/docs/v1/#entity-object">Entity object structure in the API Docs</a>.
+for more detail on these aggregate values.</p>
+<script src="https://gist.github.com/1204768.js?file=GetEntity.m"></script></div>
+</div>
+<div class="section" id="view">
+<h2>View<a class="headerlink" href="#view" title="Permalink to this headline">¶</a></h2>
+<p>A &#8216;view&#8217; is simply an event that records when a user views an entity.  Views are reported on the Socialize
+dashboard and provide an excellent way for you to determine which content items in your app are getting the
+most interest.</p>
+<div class="section" id="creating-a-view">
+<h3>Creating a &#8216;View&#8217;<a class="headerlink" href="#creating-a-view" title="Permalink to this headline">¶</a></h3>
+<p>To create a view, simply call the <strong>viewEntity</strong> method:</p>
+<script src="https://gist.github.com/1204490.js?file=PostAView.m"></script></div>
+</div>
+<div class="section" id="like">
+<h2>Like<a class="headerlink" href="#like" title="Permalink to this headline">¶</a></h2>
+<p>A &#8216;like&#8217; represents a user&#8217;s vote for an entity.  Likes are a way for you to determine which content items
+in your app are the most popular, and what is of most interest to your users.</p>
+<div class="section" id="creating-a-like">
+<h3>Creating a &#8216;Like&#8217;<a class="headerlink" href="#creating-a-like" title="Permalink to this headline">¶</a></h3>
+<p>To create a view, simply call the <strong>like</strong> method:</p>
+<script src="https://gist.github.com/1204490.js?file=PostLike.m"></script></div>
+<div class="section" id="removing-a-like">
+<h3>Removing a &#8216;Like&#8217;<a class="headerlink" href="#removing-a-like" title="Permalink to this headline">¶</a></h3>
+<p>Removing a like (i.e. an &#8216;unlike&#8217;) is done via the <strong>unlike</strong> method.  In order to remove a like, you will
+need the ID of the like.  This is returned from the initial call to <strong>like</strong></p>
+<script src="https://gist.github.com/1204490.js?file=Unlike.m"></script></div>
+</div>
+<div class="section" id="comment">
+<h2>Comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h2>
+<p>Comments are a great way to build engagement in your app, and users love making comments!</p>
+<div class="section" id="creating-a-comment">
+<h3>Creating a Comment<a class="headerlink" href="#creating-a-comment" title="Permalink to this headline">¶</a></h3>
+<p>To create a comment on an entity, use the <strong>createCommentForEntityWithKey:::</strong> method:</p>
+<script src="https://gist.github.com/1204490.js?file=Comment.m"></script></div>
+<div class="section" id="listing-comments">
+<h3>Listing Comments<a class="headerlink" href="#listing-comments" title="Permalink to this headline">¶</a></h3>
+<p>To list all comments for an entity use the <strong>getCommentList</strong> method.</p>
+<script src="https://gist.github.com/1204490.js?file=GetComments.m"></script></div>
+</div>
+<div class="section" id="share">
+<h2>Share<a class="headerlink" href="#share" title="Permalink to this headline">¶</a></h2>
+<p>Coming Soon!</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialize_ui.html">Socialize UI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">SDK User Guide (Recommended for users who want to build there own UI)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initializing-socialize">Initializing Socialize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#entities">Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view">View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#like">Like</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comment">Comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#share">Share</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="socialize_ui.html" title="Socialize UI"
+             >previous</a></li>
+        <li><a href="index.html">Socialize iOS SDK v0.5.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Socialize Inc.
+    </div>
+  </body>
+</html>
