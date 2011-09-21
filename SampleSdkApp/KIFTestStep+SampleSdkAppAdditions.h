@@ -10,8 +10,20 @@
 
 @interface KIFTestStep (SampleSdkAppAdditions)
 
-+ (id)stepToReset;
++ (id)stepToReturnToList;
 + (NSArray*)stepsToAuthenticate;
-+ (NSArray*)stepsToCreateEntity;
-+ (NSArray*)stepsToGetEntity;
++ (NSArray*)stepsToCreateEntityWithURL:(NSString*)url name:(NSString*)name;
++ (NSArray*)stepsToCreateEntityWithRandomURL;
++ (NSArray*)stepsToGetEntityWithURL:(NSString*)url;
++ (NSArray*)stepsToCreateCommentForEntity:(NSString*)entity comment:(NSString*)comment;
++ (NSArray*)stepsToGetCommentsForEntity:(NSString*)entity;
++ (NSArray*)stepsToLikeEntity:(NSString*)entity;
++ (NSArray*)stepsToVerifyLikesForEntity:(NSString*)entity areAtCount:(NSInteger)count;
++ (NSArray*)stepsToUnlikeEntity:(NSString*)entity;
++ (NSArray*)stepsToWaitForActionCompleted;
++ (NSArray*)stepsToViewEntityWithURL:(NSString*)url;
++ (NSArray*)stepsToVerifyViewsForEntity:(NSString*)entity areAtCount:(NSInteger)count;
++ (NSArray*)stepsToCreateCommentWithControllerForEntity:(NSString*)entity comment:(NSString*)comment;
++ (NSArray*)stepsToVerifyCommentExistsForEntity:(NSString*)entity comment:(NSString*)comment;
+
 @end

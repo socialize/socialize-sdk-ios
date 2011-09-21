@@ -11,7 +11,7 @@
 
 #import "SocializeAuthenticateService.h"
 
-@interface SocializeAuthTests : GHAsyncTestCase<SocializeServiceDelegate> {
+@interface SocializeAuthTests : GHTestCase<SocializeServiceDelegate> {
     SocializeAuthenticateService* _service;
     NSError*                      _testError;
 }

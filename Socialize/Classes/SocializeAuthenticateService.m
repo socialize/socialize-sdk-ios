@@ -132,7 +132,6 @@
  * Called when an error prevents the request from completing successfully.
  */
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error{
-//   [_delegate didNotAuthenticate:error];
     [_delegate service:self didFail:error];
 }
 
@@ -145,7 +144,6 @@
  */
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data{
-
     NSString *responseBody = [[NSString alloc] initWithData:data
                                                    encoding:NSUTF8StringEncoding];
     
@@ -178,6 +176,7 @@
 
 -(void)removeAuthenticationInfo
 {
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString* key = [NSString stringWithFormat:@"OAUTH_%@_%@_KEY", kPROVIDER_PREFIX, kPROVIDER_NAME];
     NSString* secret = [NSString stringWithFormat:@"OAUTH_%@_%@_SECRET", kPROVIDER_PREFIX, kPROVIDER_NAME];

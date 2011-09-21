@@ -93,7 +93,7 @@
 {
     [entityTextField resignFirstResponder];
     [_loadingView removeView]; 
-    successLabel.text = FAIL;
+    successLabel.text = successLabel.accessibilityValue = FAIL;
     
     UIAlertView *msg;
     msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"no entity found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -109,7 +109,7 @@
     
     if ([object conformsToProtocol:@protocol(SocializeView)]){
         id<SocializeView> view = (id<SocializeView>)object;
-        successLabel.text = SUCCESS;
+        successLabel.text = successLabel.accessibilityValue = SUCCESS;
         resultsView.hidden = NO;
         
         keyLabel.text = view.entity.key;
@@ -122,7 +122,7 @@
     }
     else{
         resultsView.hidden = YES;
-        successLabel.text = FAIL;
+        successLabel.text = successLabel.accessibilityValue = FAIL;
     }
 }
 

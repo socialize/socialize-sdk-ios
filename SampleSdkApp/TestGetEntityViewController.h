@@ -28,6 +28,7 @@
     IBOutlet UILabel*     commentsLabel;
     IBOutlet UILabel*     likesLabel;
     IBOutlet UILabel*     sharesLabel;
+    IBOutlet UILabel*     viewsLabel;
     IBOutlet UIButton*    getButton;
     
     IBOutlet UITextField* resultTextField;

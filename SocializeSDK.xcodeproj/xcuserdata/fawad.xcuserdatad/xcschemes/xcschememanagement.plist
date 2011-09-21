@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>SampleSdkApp Integration Tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>SampleSdkApp.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -53,6 +58,11 @@
 			<true/>
 		</dict>
 		<key>6D31967913CF79A700154B1F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AAFE115414228E6C00A142D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

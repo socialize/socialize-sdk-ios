@@ -85,6 +85,7 @@
     
     SocializeCommentsTableViewController* commentsController = [[[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString:_textField.text] autorelease];
     
+    
     [self.navigationController pushViewController:commentsController animated:YES];
 }
 

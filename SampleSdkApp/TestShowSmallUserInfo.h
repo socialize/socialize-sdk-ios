@@ -1,8 +1,8 @@
 /*
- * SocializeRequestTests.h
+ * TestShowSmallUserInfo.h
  * SocializeSDK
  *
- * Created on 6/10/11.
+ * Created on 9/19/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -23,21 +23,23 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- * See Also: http://gabriel.github.com/gh-unit/
  */
 
-
-#import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
-#import "SocializeRequest.h"
-//#import <GHUnitIOS/GHMockNSURLConnection.h>
 
-
-@interface SocializeRequestTests : GHTestCase<SocializeRequestDelegate> {
-    SocializeRequest* _request;
-//    GHMockNSURLConnection *_connection;
-    NSError* _expectedError; 
+@class SocializeUser;
+@interface TestShowSmallUserInfo : UIViewController {
+    @private
+    SocializeUser* user;
+    
+    IBOutlet UILabel* userName;
+    IBOutlet UILabel* fbUserId;
 }
 
-@property (nonatomic, retain) NSError* expectedError;
+@property(nonatomic, retain) SocializeUser* user;
+@property(nonatomic, retain) IBOutlet UILabel* userName;
+@property(nonatomic, retain) IBOutlet UILabel* fbUserId;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUserInfo: (SocializeUser*) userInfo;
+
 @end

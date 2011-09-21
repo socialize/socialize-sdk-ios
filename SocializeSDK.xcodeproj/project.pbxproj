@@ -15,7 +15,6 @@
 				16B48DB113DEECAB00EE0A92 /* Build universal lib */,
 				16B48DB213DEED3600EE0A92 /* Copy Headers */,
 				16B48DDA13DEEE7900EE0A92 /* Copy Resources */,
-				1611C72213DFFADD00BB5D68 /* Zip output */,
 			);
 			dependencies = (
 			);
@@ -112,7 +111,6 @@
 		169BC7AC1421CDE3007ED41E /* SocializeLocationManager.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 169BC79F1420CD94007ED41E /* SocializeLocationManager.h */; };
 		169BC7AD1421CDE3007ED41E /* UILabel+FormatedText.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 169BC7A41420D602007ED41E /* UILabel+FormatedText.h */; };
 		169BC7AE1421CDF8007ED41E /* CommentDetailsViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */; };
-		169BC7B11421DA7F007ED41E /* PostCommentViewControllerForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7B01421DA7F007ED41E /* PostCommentViewControllerForTest.m */; };
 		169BC7BE1421F87D007ED41E /* InputBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7BD1421F87D007ED41E /* InputBox.m */; };
 		16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A82A031419F37400193CA7 /* ImagesCacheTests.m */; };
 		16A82A0C1419FA9500193CA7 /* ImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A82A0A1419FA9500193CA7 /* ImageLoader.h */; };
@@ -176,6 +174,8 @@
 		16D2478B1417A986008A550D /* PostCommentViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */; };
 		16D2479C1418D669008A550D /* ImagesCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 16D2479A1418D667008A550D /* ImagesCache.h */; };
 		16D2479D1418D669008A550D /* ImagesCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2479B1418D668008A550D /* ImagesCache.m */; };
+		16D8318714272D5B00BFE24E /* TestShowSmallUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8318514272D5B00BFE24E /* TestShowSmallUserInfo.m */; };
+		16D8318814272D5B00BFE24E /* TestShowSmallUserInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D8318614272D5B00BFE24E /* TestShowSmallUserInfo.xib */; };
 		16DAC93C14209E6B0011CD5F /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DAC8E514209E6B0011CD5F /* action-bar-bg.png */; };
 		16DAC93D14209E6B0011CD5F /* action-bar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DAC8E614209E6B0011CD5F /* action-bar-bg@2x.png */; };
 		16DAC93E14209E6B0011CD5F /* action-bar-button-black-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DAC8E714209E6B0011CD5F /* action-bar-button-black-hover.png */; };
@@ -285,10 +285,11 @@
 		16FCABD113B885CC0034499F /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
 		16FDF4DF1414BA0A00EAA064 /* CommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */; };
 		16FDF4E01414BA0A00EAA064 /* CommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */; };
-		182C52EA142927C500133D56 /* SomeTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 182C52E8142927C500133D56 /* SomeTest.h */; };
-		182C52EB142927C500133D56 /* SomeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 182C52E9142927C500133D56 /* SomeTest.m */; };
+		182C52EA142927C500133D56 /* AuthTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 182C52E8142927C500133D56 /* AuthTest.h */; };
+		182C52EB142927C500133D56 /* AuthTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 182C52E9142927C500133D56 /* AuthTest.m */; };
 		18A3C3A7141FD00000003172 /* SocializeUnitTestApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */; };
 		18A3C3A8141FD00000003172 /* SocializeUnitTestApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */; };
+		18EF23C61429B1D400BC6123 /* SocializeAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF23C51429B1D400BC6123 /* SocializeAsyncTestCase.m */; };
 		5C21C0C61396BF8300CF2B9F /* SocializeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C21C0C71396BF8300CF2B9F /* SocializeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */; };
 		5C21C0C81396BF8300CF2B9F /* Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C21396BF8300CF2B9F /* Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -327,6 +328,7 @@
 		6D205A4113C5060900D0645E /* SocializeShareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D205A2D13BE58D500D0645E /* SocializeShareTests.m */; };
 		6D31962413CDE72F00154B1F /* SocializeDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D31962513CDE72F00154B1F /* SocializeDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */; };
+		6D3F84B71424046D00825DFC /* PostCommentViewControllerForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F84B61424046D00825DFC /* PostCommentViewControllerForTest.m */; };
 		6D44A37913FC3456004B3A46 /* SocializeActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A37813FC3456004B3A46 /* SocializeActionTests.m */; };
 		6D44A64013FC6E9D004B3A46 /* socialize-navbar-button-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A63E13FC6E79004B3A46 /* socialize-navbar-button-dark.png */; };
 		6D44A64213FC6E9D004B3A46 /* socialize-navbar-button-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A63F13FC6E82004B3A46 /* socialize-navbar-button-dark@2x.png */; };
@@ -483,6 +485,8 @@
 		6DDBEA7014057B6000E41FC0 /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBEA6C14057B5700E41FC0 /* UILabel-Additions.m */; };
 		6DEEC9BF13D6238F0066CFA2 /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DEEC9BE13D6238F0066CFA2 /* urls.plist */; };
 		6DEFF42713B01B4000AE962A /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
+		6DFB0012141FF9460030DE32 /* CommentsTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB0011141FF9450030DE32 /* CommentsTableViewTests.m */; };
+		6DFB001414213A3A0030DE32 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
 		6DFBFE71141FDDCC0030DE32 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBFE55141FDDCC0030DE32 /* Base64Transcoder.c */; };
 		6DFBFE72141FDDCC0030DE32 /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DFBFE56141FDDCC0030DE32 /* Base64Transcoder.h */; };
 		6DFBFE73141FDDCC0030DE32 /* NSMutableURLRequest+Parameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DFBFE57141FDDCC0030DE32 /* NSMutableURLRequest+Parameters.h */; };
@@ -552,6 +556,10 @@
 		9ABB68BD13BA78A4001882D1 /* SocializeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB68BB13BA78A4001882D1 /* SocializeService.m */; };
 		9AC0259913BB8253004AB147 /* SocializeUserService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC0259713BB8253004AB147 /* SocializeUserService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9AC0259A13BB8253004AB147 /* SocializeUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0259813BB8253004AB147 /* SocializeUserService.m */; };
+		AA3698001427ABED0010CF0B /* TestShowSmallUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8318514272D5B00BFE24E /* TestShowSmallUserInfo.m */; };
+		AA36981814281C190010CF0B /* TestShowSmallUserInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D8318614272D5B00BFE24E /* TestShowSmallUserInfo.xib */; };
+		AAA37E371423E44A00803E24 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E361423E44A00803E24 /* StringHelper.m */; };
+		AAA37E3A1423E49900803E24 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E391423E49900803E24 /* DataHelper.m */; };
 		AAFE115814228E6C00A142D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4411398C40F007C91ED /* main.m */; };
 		AAFE115914228E6C00A142D9 /* SampleSdkAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */; };
 		AAFE115A14228E6C00A142D9 /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
@@ -708,19 +716,12 @@
 			remoteGlobalIDString = 16B48DAA13DEEBE100EE0A92;
 			remoteInfo = "Socialize-IOS";
 		};
-		AAFE11DD1422924400A142D9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA2D1A7F1421342100E118A0 /* KIF.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = AAB07267139719AC008AF393;
-			remoteInfo = KIF;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		16B48DB213DEED3600EE0A92 /* Copy Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework/${PRODUCT_NAME}.framework/Headers";
 			dstSubfolderSpec = 0;
 			files = (
@@ -876,8 +877,6 @@
 		169BC7A01420CD94007ED41E /* SocializeLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLocationManager.m; path = Classes/SocializeLocationManager.m; sourceTree = "<group>"; };
 		169BC7A41420D602007ED41E /* UILabel+FormatedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+FormatedText.h"; path = "Classes/UILabel+FormatedText.h"; sourceTree = "<group>"; };
 		169BC7A51420D602007ED41E /* UILabel+FormatedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+FormatedText.m"; path = "Classes/UILabel+FormatedText.m"; sourceTree = "<group>"; };
-		169BC7AF1421DA7F007ED41E /* PostCommentViewControllerForTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostCommentViewControllerForTest.h; path = "Test Cases/PostCommentViewControllerForTest.h"; sourceTree = "<group>"; };
-		169BC7B01421DA7F007ED41E /* PostCommentViewControllerForTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostCommentViewControllerForTest.m; path = "Test Cases/PostCommentViewControllerForTest.m"; sourceTree = "<group>"; };
 		169BC7BC1421F87D007ED41E /* InputBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputBox.h; sourceTree = "<group>"; };
 		169BC7BD1421F87D007ED41E /* InputBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputBox.m; sourceTree = "<group>"; };
 		16A82A021419F37400193CA7 /* ImagesCacheTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagesCacheTests.h; path = "Test Cases/ImagesCacheTests.h"; sourceTree = "<group>"; };
@@ -906,6 +905,9 @@
 		16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostCommentViewControllerTests.m; path = "Test Cases/PostCommentViewControllerTests.m"; sourceTree = "<group>"; };
 		16D2479A1418D667008A550D /* ImagesCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagesCache.h; path = Classes/ImagesCache.h; sourceTree = "<group>"; };
 		16D2479B1418D668008A550D /* ImagesCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagesCache.m; path = Classes/ImagesCache.m; sourceTree = "<group>"; };
+		16D8318414272D5B00BFE24E /* TestShowSmallUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShowSmallUserInfo.h; sourceTree = "<group>"; };
+		16D8318514272D5B00BFE24E /* TestShowSmallUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShowSmallUserInfo.m; sourceTree = "<group>"; };
+		16D8318614272D5B00BFE24E /* TestShowSmallUserInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestShowSmallUserInfo.xib; sourceTree = "<group>"; };
 		16DAC8E514209E6B0011CD5F /* action-bar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-bg.png"; sourceTree = "<group>"; };
 		16DAC8E614209E6B0011CD5F /* action-bar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-bg@2x.png"; sourceTree = "<group>"; };
 		16DAC8E714209E6B0011CD5F /* action-bar-button-black-hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-black-hover.png"; sourceTree = "<group>"; };
@@ -1015,10 +1017,12 @@
 		16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserJSONFormatterTests.m; path = "Test Cases/SocializeUserJSONFormatterTests.m"; sourceTree = "<group>"; };
 		16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailsViewController.h; path = Classes/CommentDetailsViewController.h; sourceTree = "<group>"; };
 		16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsViewController.m; path = Classes/CommentDetailsViewController.m; sourceTree = "<group>"; };
-		182C52E8142927C500133D56 /* SomeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeTest.h; sourceTree = "<group>"; };
-		182C52E9142927C500133D56 /* SomeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeTest.m; sourceTree = "<group>"; };
+		182C52E8142927C500133D56 /* AuthTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthTest.h; sourceTree = "<group>"; };
+		182C52E9142927C500133D56 /* AuthTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthTest.m; sourceTree = "<group>"; };
 		18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUnitTestApplication.h; sourceTree = "<group>"; };
 		18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUnitTestApplication.m; sourceTree = "<group>"; };
+		18EF23C41429B1D400BC6123 /* SocializeAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SocializeAsyncTestCase.h; sourceTree = "<group>"; };
+		18EF23C51429B1D400BC6123 /* SocializeAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAsyncTestCase.m; sourceTree = "<group>"; };
 		5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequest.h; path = Classes/SocializeRequest.h; sourceTree = "<group>"; };
 		5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRequest.m; path = Classes/SocializeRequest.m; sourceTree = "<group>"; };
 		5C21C0C21396BF8300CF2B9F /* Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Socialize.h; path = Classes/Socialize.h; sourceTree = "<group>"; };
@@ -1062,6 +1066,8 @@
 		6D205A3D13C3DB7000D0645E /* SocializeErrorFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeErrorFormatter.m; path = Classes/SocializeErrorFormatter.m; sourceTree = "<group>"; };
 		6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDataFetcher.h; path = Classes/SocializeDataFetcher.h; sourceTree = "<group>"; };
 		6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDataFetcher.m; path = Classes/SocializeDataFetcher.m; sourceTree = "<group>"; };
+		6D3F84B51424046D00825DFC /* PostCommentViewControllerForTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostCommentViewControllerForTest.h; path = "Test Cases/PostCommentViewControllerForTest.h"; sourceTree = "<group>"; };
+		6D3F84B61424046D00825DFC /* PostCommentViewControllerForTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostCommentViewControllerForTest.m; path = "Test Cases/PostCommentViewControllerForTest.m"; sourceTree = "<group>"; };
 		6D44A37713FC3456004B3A46 /* SocializeActionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActionTests.h; path = "Test Cases/SocializeActionTests.h"; sourceTree = "<group>"; };
 		6D44A37813FC3456004B3A46 /* SocializeActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActionTests.m; path = "Test Cases/SocializeActionTests.m"; sourceTree = "<group>"; };
 		6D44A63E13FC6E79004B3A46 /* socialize-navbar-button-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-dark.png"; path = "Resources/socialize-navbar-button-dark.png"; sourceTree = "<group>"; };
@@ -1076,8 +1082,8 @@
 		6D44A7D21402D20C004B3A46 /* NSNumber+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+Additions.m"; path = "Classes/NSNumber+Additions.m"; sourceTree = "<group>"; };
 		6D44A8E314030196004B3A46 /* action-bar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-bar-bg.png"; path = "Resources/action-bar-bg.png"; sourceTree = "<group>"; };
 		6D44A8E414030197004B3A46 /* action-bar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-bar-bg@2x.png"; path = "Resources/action-bar-bg@2x.png"; sourceTree = "<group>"; };
-		6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsTableViewController.h; path = Classes/SocializeCommentsTableViewController.h; sourceTree = "<group>"; };
-		6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsTableViewController.m; path = Classes/SocializeCommentsTableViewController.m; sourceTree = "<group>"; };
+		6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsTableViewController.h; path = ../Socialize/Classes/SocializeCommentsTableViewController.h; sourceTree = "<group>"; };
+		6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsTableViewController.m; path = ../Socialize/Classes/SocializeCommentsTableViewController.m; sourceTree = "<group>"; };
 		6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeCommentsTableViewController.xib; path = Resources/SocializeCommentsTableViewController.xib; sourceTree = "<group>"; };
 		6D44A90414041848004B3A46 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsTableViewCell.h; path = Classes/CommentsTableViewCell.h; sourceTree = "<group>"; };
 		6D44A90514041851004B3A46 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsTableViewCell.m; path = Classes/CommentsTableViewCell.m; sourceTree = "<group>"; };
@@ -1217,6 +1223,8 @@
 		6DDBEA6B14057B4F00E41FC0 /* UILabel-Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel-Additions.h"; path = "Classes/UILabel-Additions.h"; sourceTree = "<group>"; };
 		6DDBEA6C14057B5700E41FC0 /* UILabel-Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel-Additions.m"; path = "Classes/UILabel-Additions.m"; sourceTree = "<group>"; };
 		6DEEC9BE13D6238F0066CFA2 /* urls.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = urls.plist; sourceTree = "<group>"; };
+		6DFB0010141FF9430030DE32 /* CommentsTableViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsTableViewTests.h; path = "Test Cases/CommentsTableViewTests.h"; sourceTree = "<group>"; };
+		6DFB0011141FF9450030DE32 /* CommentsTableViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsTableViewTests.m; path = "Test Cases/CommentsTableViewTests.m"; sourceTree = "<group>"; };
 		6DFBFE55141FDDCC0030DE32 /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
 		6DFBFE56141FDDCC0030DE32 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
 		6DFBFE57141FDDCC0030DE32 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableURLRequest+Parameters.h"; path = "Socialize/OAuthConsumer/NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
@@ -1295,6 +1303,10 @@
 		9AC0259813BB8253004AB147 /* SocializeUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserService.m; path = Classes/SocializeUserService.m; sourceTree = "<group>"; };
 		AA2D1A7F1421342100E118A0 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = SampleSdkApp/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
 		AA75A06E14216B210032C88F /* SampleSdkApp-Integration-Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Integration-Tests-Prefix.pch"; sourceTree = "<group>"; };
+		AAA37E351423E44A00803E24 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
+		AAA37E361423E44A00803E24 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
+		AAA37E381423E49900803E24 /* DataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHelper.h; sourceTree = "<group>"; };
+		AAA37E391423E49900803E24 /* DataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHelper.m; sourceTree = "<group>"; };
 		AACBBDDE14216497008F0A50 /* SampleSdkAppKIFTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleSdkAppKIFTestController.h; sourceTree = "<group>"; };
 		AACBBDDF14216497008F0A50 /* SampleSdkAppKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppKIFTestController.m; sourceTree = "<group>"; };
 		AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleSdkAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestScenario+SampleSdkAppAdditions.m"; sourceTree = "<group>"; };
@@ -1472,8 +1484,6 @@
 			children = (
 				1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */,
 				1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */,
-				6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */,
-				6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */,
 				16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */,
 				16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */,
 			);
@@ -1614,6 +1624,7 @@
 			isa = PBXGroup;
 			children = (
 				182C52E7142926F300133D56 /* ghunit */,
+				AAA37E301423E22100803E24 /* Additions */,
 				AACBBDDD14216332008F0A50 /* KIF */,
 				16E2C4581398F6E3007C91ED /* socialize_resources */,
 				16E2C43B1398C40F007C91ED /* Supporting Files */,
@@ -1650,6 +1661,9 @@
 				16C5EF8013E6B8A800F2EA87 /* TestViewCreationViewController.xib */,
 				169BC7BC1421F87D007ED41E /* InputBox.h */,
 				169BC7BD1421F87D007ED41E /* InputBox.m */,
+				16D8318414272D5B00BFE24E /* TestShowSmallUserInfo.h */,
+				16D8318514272D5B00BFE24E /* TestShowSmallUserInfo.m */,
+				16D8318614272D5B00BFE24E /* TestShowSmallUserInfo.xib */,
 			);
 			path = SampleSdkApp;
 			sourceTree = "<group>";
@@ -1679,8 +1693,10 @@
 		182C52E7142926F300133D56 /* ghunit */ = {
 			isa = PBXGroup;
 			children = (
-				182C52E8142927C500133D56 /* SomeTest.h */,
-				182C52E9142927C500133D56 /* SomeTest.m */,
+				182C52E8142927C500133D56 /* AuthTest.h */,
+				182C52E9142927C500133D56 /* AuthTest.m */,
+				18EF23C41429B1D400BC6123 /* SocializeAsyncTestCase.h */,
+				18EF23C51429B1D400BC6123 /* SocializeAsyncTestCase.m */,
 			);
 			name = ghunit;
 			sourceTree = "<group>";
@@ -1931,6 +1947,8 @@
 		6D44A37613FC342D004B3A46 /* UI tests */ = {
 			isa = PBXGroup;
 			children = (
+				6D3F84B51424046D00825DFC /* PostCommentViewControllerForTest.h */,
+				6D3F84B61424046D00825DFC /* PostCommentViewControllerForTest.m */,
 				6D44A37713FC3456004B3A46 /* SocializeActionTests.h */,
 				6D44A37813FC3456004B3A46 /* SocializeActionTests.m */,
 				6D44A79113FDDBE6004B3A46 /* SocializeActionViewForTest.h */,
@@ -1945,8 +1963,10 @@
 				16D2476814163161008A550D /* CommentDetailsViewForTest.m */,
 				16D247891417A984008A550D /* PostCommentViewControllerTests.h */,
 				16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */,
-				169BC7AF1421DA7F007ED41E /* PostCommentViewControllerForTest.h */,
-				169BC7B01421DA7F007ED41E /* PostCommentViewControllerForTest.m */,
+				6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */,
+				6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */,
+				6DFB0010141FF9430030DE32 /* CommentsTableViewTests.h */,
+				6DFB0011141FF9450030DE32 /* CommentsTableViewTests.m */,
 			);
 			name = "UI tests";
 			sourceTree = "<group>";
@@ -2225,6 +2245,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		AAA37E301423E22100803E24 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				AAA37E381423E49900803E24 /* DataHelper.h */,
+				AAA37E391423E49900803E24 /* DataHelper.m */,
+				AAA37E351423E44A00803E24 /* StringHelper.h */,
+				AAA37E361423E44A00803E24 /* StringHelper.m */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
 		AACBBDDD14216332008F0A50 /* KIF */ = {
 			isa = PBXGroup;
 			children = (
@@ -2342,7 +2373,7 @@
 				16DAC9991420C0EE0011CD5F /* UIKeyboardListener.h in Headers */,
 				169BC7A11420CD94007ED41E /* SocializeLocationManager.h in Headers */,
 				169BC7A61420D602007ED41E /* UILabel+FormatedText.h in Headers */,
-				182C52EA142927C500133D56 /* SomeTest.h in Headers */,
+				182C52EA142927C500133D56 /* AuthTest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2417,7 +2448,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				AAFE11DE1422924400A142D9 /* PBXTargetDependency */,
 				AAFE115514228E6C00A142D9 /* PBXTargetDependency */,
 			);
 			name = "SampleSdkApp Integration Tests";
@@ -2576,6 +2606,7 @@
 				16DAC98F14209E6B0011CD5F /* socialize-nocomments-icon@2x.png in Resources */,
 				16DAC99014209E6B0011CD5F /* SocializeCommentsTableViewController.xib in Resources */,
 				16DAC99114209E6B0011CD5F /* SocializeConfigurationInfo.plist in Resources */,
+				16D8318814272D5B00BFE24E /* TestShowSmallUserInfo.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2592,6 +2623,7 @@
 				1666BD3E14110BD900518811 /* socialize-comment-details-icon-geo-disabled.png in Resources */,
 				1666BD3F14110D3F00518811 /* comment_template_clear.htm in Resources */,
 				16A82A25141DE17E00193CA7 /* action-bar-icon-like.png in Resources */,
+				6DFB001414213A3A0030DE32 /* SocializeCommentsTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2794,26 +2826,13 @@
 				AAFE11D014228E6C00A142D9 /* socialize-nocomments-icon@2x.png in Resources */,
 				AAFE11D114228E6C00A142D9 /* SocializeCommentsTableViewController.xib in Resources */,
 				AAFE11D214228E6C00A142D9 /* SocializeConfigurationInfo.plist in Resources */,
+				AA36981814281C190010CF0B /* TestShowSmallUserInfo.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1611C72213DFFADD00BB5D68 /* Zip output */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Zip output";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Paths\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build\"\n\ncd \"${UNIVERSAL_LIBRARY_DIR}\"\nzip -r -u \"${PROJECT_DIR}/build/${CONFIGURATION}-Socialize_iOS.zip\" \"${PRODUCT_NAME}.embeddedframework/\"\n\n";
-		};
 		162BBF9213C346210060893E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2915,6 +2934,7 @@
 				16C5EF8113E6B8A800F2EA87 /* TestViewCreationViewController.m in Sources */,
 				6D45310513E8862200286BEC /* LikeListViewController.m in Sources */,
 				169BC7BE1421F87D007ED41E /* InputBox.m in Sources */,
+				16D8318714272D5B00BFE24E /* TestShowSmallUserInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3011,7 +3031,7 @@
 				16DAC99A1420C0EE0011CD5F /* UIKeyboardListener.m in Sources */,
 				169BC7A21420CD94007ED41E /* SocializeLocationManager.m in Sources */,
 				169BC7A71420D602007ED41E /* UILabel+FormatedText.m in Sources */,
-				182C52EB142927C500133D56 /* SomeTest.m in Sources */,
+				182C52EB142927C500133D56 /* AuthTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3054,7 +3074,8 @@
 				16D2478B1417A986008A550D /* PostCommentViewControllerTests.m in Sources */,
 				16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */,
 				16A82A29141DE79D00193CA7 /* ImageLoaderTests.m in Sources */,
-				169BC7B11421DA7F007ED41E /* PostCommentViewControllerForTest.m in Sources */,
+				6DFB0012141FF9460030DE32 /* CommentsTableViewTests.m in Sources */,
+				6D3F84B71424046D00825DFC /* PostCommentViewControllerForTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3078,6 +3099,10 @@
 				AAFE11DA14228FBE00A142D9 /* SampleSdkAppKIFTestController.m in Sources */,
 				AAFE11DB14228FC700A142D9 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */,
 				AAFE11DC14228FC900A142D9 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
+				AAA37E371423E44A00803E24 /* StringHelper.m in Sources */,
+				AAA37E3A1423E49900803E24 /* DataHelper.m in Sources */,
+				AA3698001427ABED0010CF0B /* TestShowSmallUserInfo.m in Sources */,
+				18EF23C61429B1D400BC6123 /* SocializeAsyncTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3098,11 +3123,6 @@
 			isa = PBXTargetDependency;
 			target = 16B48DAA13DEEBE100EE0A92 /* Socialize-iOS */;
 			targetProxy = AAFE115614228E6C00A142D9 /* PBXContainerItemProxy */;
-		};
-		AAFE11DE1422924400A142D9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = KIF;
-			targetProxy = AAFE11DD1422924400A142D9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3178,6 +3198,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/unitTests/Libraries\"",
+					"\"$(SRCROOT)/SampleSdkApp/KIF/build/Release-iphonesimulator\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -3216,6 +3237,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/unitTests/Libraries\"",
+					"\"$(SRCROOT)/SampleSdkApp/KIF/build/Release-iphonesimulator\"",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
@@ -3278,7 +3300,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/unitTests/Frameworks\"",
 					"\"$(SRCROOT)/build/Socialize-iOS.embeddedframework\"",
-					"\"$(SRCROOT)/Socialize-iOS.embeddedframework\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -3315,7 +3336,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/unitTests/Frameworks\"",
 					"\"$(SRCROOT)/build/Socialize-iOS.embeddedframework\"",
-					"\"$(SRCROOT)/Socialize-iOS.embeddedframework\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
@@ -3449,7 +3469,6 @@
 					"\"$(SRCROOT)/unitTests/Frameworks\"",
 					"\"$(SRCROOT)/build/Socialize-IOS.embeddedframework\"",
 					"\"$(SRCROOT)/build/Socialize-iOS.embeddedframework\"",
-					"\"$(SRCROOT)/Socialize-iOS.embeddedframework\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3457,6 +3476,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SampleSdkApp/SampleSdkApp-Integration-Tests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					"RUN_GHUNIT_TESTS=1",
 					"RUN_KIF_TESTS=1",
 					DEBUG,
 				);
@@ -3500,12 +3520,14 @@
 					"\"$(SRCROOT)/unitTests/Frameworks\"",
 					"\"$(SRCROOT)/build/Socialize-IOS.embeddedframework\"",
 					"\"$(SRCROOT)/build/Socialize-iOS.embeddedframework\"",
-					"\"$(SRCROOT)/Socialize-iOS.embeddedframework\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SampleSdkApp/SampleSdkApp-Integration-Tests-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = "RUN_KIF_TESTS=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"RUN_GHUNIT_TESTS=1",
+					"RUN_KIF_TESTS=1",
+				);
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

@@ -39,6 +39,7 @@
         _inputField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 50.0, 260.0, 25.0)]; 
         [_inputField setBackgroundColor:[UIColor whiteColor]];
         _inputField.text = @"";   
+        _inputField.accessibilityLabel = @"Input Field";
         lock = [[NSCondition alloc] init];
     }
     return self;
@@ -72,8 +73,15 @@
     
     shouldKeepRunning = YES;        // global
     NSRunLoop *theRL = [NSRunLoop currentRunLoop];
-    while (shouldKeepRunning && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
     
+    // FIXME -- KIF is hiccupping on the manual runloop spin
+#if RUN_KIF_TESTS
+    while (shouldKeepRunning) {
+        [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    }
+#else
+    while (shouldKeepRunning && [theRL runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
+#endif
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

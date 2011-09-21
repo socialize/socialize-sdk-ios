@@ -11,7 +11,7 @@
 #import "Socialize.h"
 #import "TestListController.h"
 #include <AvailabilityMacros.h>
-
+#import <GHUnitIOS/GHUnit.h>
 #if RUN_KIF_TESTS
 #import "SampleSdkAppKIFTestController.h"
 #endif
@@ -22,6 +22,10 @@
 
 
 @synthesize window=_window, rootController;
+
++ (id)sharedDelegate {
+    return [[UIApplication sharedApplication] delegate];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -38,6 +42,11 @@
     [self.window addSubview:rootController.view];
     [self.window makeKeyAndVisible];
     
+#if RUN_GHUNIT_TESTS
+    int retVal = [GHTestRunner run];
+    printf("return value from test runner is: %d\n", retVal);
+    NSAssert(retVal == 0, @"There were %i failures during logic integration tests.", retVal);
+#endif
 #if RUN_KIF_TESTS
     [[SampleSdkAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
         // Exit after the tests complete so that CI knows we're done

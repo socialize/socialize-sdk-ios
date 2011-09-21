@@ -1,14 +1,14 @@
 //
-//  SomeTest.m
+//  SocializeTestCase.m
 //  SocializeSDK
 //
 //  Created by Isaac Mosquera on 9/20/11.
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "SomeTest.h"
+#import "SocializeAsyncTestCase.h"
 
-@implementation SomeTest
+@implementation SocializeAsyncTestCase
 
 - (id)init
 {
@@ -20,4 +20,9 @@
     return self;
 }
 
+
+- (void)waitForStatus:(NSInteger)status {
+    [self prepare];
+    [self waitForStatus:status timeout:1.0];
+}
 @end

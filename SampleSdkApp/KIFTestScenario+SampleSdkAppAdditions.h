@@ -13,4 +13,10 @@
 + (id)scenarioToAuthenticate;
 + (id)scenarioToCreateEntity;
 + (id)scenarioToGetEntity;
++ (id)scenarioToCreateComment;
++ (id)scenarioToGetComments;
++ (id)scenarioToLikeAndUnlikeEntity;
++ (id)scenarioToViewEntity;
++ (id)scenarioToTestCreateCommentViewController;
+
 @end

@@ -16,11 +16,14 @@
 #import "TestViewCreationViewController.h"
 #import "AuthenticateViewController.h"
 #import "PostCommentViewController.h"
+#import "TestShowSmallUserInfo.h"
 #import "UIKeyboardListener.h"
 #import "SocializeLocationManager.h"
 #import "InputBox.h"
 
 @implementation TestListController
+
+@synthesize user = _user;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,6 +44,7 @@
 
 - (void)dealloc
 {
+    [_user release];
     [super dealloc];
 }
 
@@ -183,6 +187,10 @@
                 [self presentModalViewController:[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:url andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]] animated:YES];
             break;
         }
+        case 8:
+            controller = [[TestShowSmallUserInfo alloc]initWithNibName:@"TestShowSmallUserInfo" bundle:nil andUserInfo:self.user];
+            [self.navigationController pushViewController:controller animated:YES];
+            break;
 
     }    
 }

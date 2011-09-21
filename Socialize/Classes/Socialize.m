@@ -59,7 +59,7 @@
 {
    if ([SocializeAuthenticateService isAuthenticated])
        [_authService removeAuthenticationInfo];
-    
+
    [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret]; 
 }
 
