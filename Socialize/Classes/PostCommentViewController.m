@@ -118,8 +118,7 @@
     if (alertView == self.facebookAuthQuestionDialog) {
         
         if (buttonIndex == 1) {
-            // FIXME -- grab these from our defines
-            [_socialize authenticateWithApiKey:@"976421bd-0bc9-44c8-a170-bd12376123a3" apiSecret:@"2bf36ced-b9ab-4c5b-b054-8ca975d39c14" thirdPartyAppId:@"115622641859087" thirdPartyName:FacebookAuth];
+            [_socialize authenticateWithFacebook];
         } else {
             [self.anonymousAuthQuestionDialog show];
         }
