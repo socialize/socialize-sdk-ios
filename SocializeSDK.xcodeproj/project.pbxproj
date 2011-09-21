@@ -157,6 +157,8 @@
 		16B48DD713DEEE4400EE0A92 /* SocializeViewJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D144D0413BD100C001D8E0A /* SocializeViewJSONFormatter.h */; };
 		16B48DD813DEEE4400EE0A92 /* SocializeShareJSONFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D9A0BA513BE1EA000AE949C /* SocializeShareJSONFormatter.h */; };
 		16B48DD913DEEE4400EE0A92 /* SocializeErrorFormatter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6D205A3C13C3DB6300D0645E /* SocializeErrorFormatter.h */; };
+		16BC8196142A217900D90C26 /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16BC8195142A217900D90C26 /* SocializeApiInfo.plist */; };
+		16BC8197142A217900D90C26 /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16BC8195142A217900D90C26 /* SocializeApiInfo.plist */; };
 		16C330DA13F3BD29004EA34D /* CommentDetailsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C330D613F3BD29004EA34D /* CommentDetailsView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16C330DB13F3BD29004EA34D /* CommentDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C330D713F3BD29004EA34D /* CommentDetailsView.m */; };
 		16C330DC13F3BD29004EA34D /* CommentMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C330D813F3BD29004EA34D /* CommentMapView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -889,6 +891,7 @@
 		16A82A0B1419FA9500193CA7 /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageLoader.m; path = Classes/ImageLoader.m; sourceTree = "<group>"; };
 		16A82A27141DE79D00193CA7 /* ImageLoaderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoaderTests.h; path = "Test Cases/ImageLoaderTests.h"; sourceTree = "<group>"; };
 		16A82A28141DE79D00193CA7 /* ImageLoaderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageLoaderTests.m; path = "Test Cases/ImageLoaderTests.m"; sourceTree = "<group>"; };
+		16BC8195142A217900D90C26 /* SocializeApiInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeApiInfo.plist; sourceTree = "<group>"; };
 		16C330D613F3BD29004EA34D /* CommentDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailsView.h; path = Classes/CommentDetailsView.h; sourceTree = "<group>"; };
 		16C330D713F3BD29004EA34D /* CommentDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsView.m; path = Classes/CommentDetailsView.m; sourceTree = "<group>"; };
 		16C330D813F3BD29004EA34D /* CommentMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentMapView.h; path = Classes/CommentMapView.h; sourceTree = "<group>"; };
@@ -1677,6 +1680,7 @@
 				16E2C4401398C40F007C91ED /* SampleSdkApp-Prefix.pch */,
 				16E2C4411398C40F007C91ED /* main.m */,
 				6DEEC9BE13D6238F0066CFA2 /* urls.plist */,
+				16BC8195142A217900D90C26 /* SocializeApiInfo.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2595,6 +2599,7 @@
 				16DAC99014209E6B0011CD5F /* SocializeCommentsTableViewController.xib in Resources */,
 				16DAC99114209E6B0011CD5F /* SocializeConfigurationInfo.plist in Resources */,
 				16D8318814272D5B00BFE24E /* TestShowSmallUserInfo.xib in Resources */,
+				16BC8196142A217900D90C26 /* SocializeApiInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2815,6 +2820,7 @@
 				AAFE11D114228E6C00A142D9 /* SocializeCommentsTableViewController.xib in Resources */,
 				AAFE11D214228E6C00A142D9 /* SocializeConfigurationInfo.plist in Resources */,
 				AA36981814281C190010CF0B /* TestShowSmallUserInfo.xib in Resources */,
+				16BC8197142A217900D90C26 /* SocializeApiInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

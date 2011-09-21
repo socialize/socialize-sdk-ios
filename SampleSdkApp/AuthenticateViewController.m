@@ -11,6 +11,9 @@
 #import "TestListController.h"
 #import "UIButton+Socialize.h"
 
+@interface AuthenticateViewController()
+-(NSDictionary*)authInfoFromConfig;
+@end
 
 @implementation AuthenticateViewController
 @synthesize keyField = _keyField;
@@ -57,6 +60,12 @@
 
     self.view.backgroundColor = [UIColor lightGrayColor];
     self.navigationItem.title = @"Authenticate";
+    
+    NSDictionary* apiInfo = [self authInfoFromConfig];
+    self.keyField.text = [apiInfo objectForKey:@"key"];
+    self.secretField.text = [apiInfo objectForKey:@"secret"];
+    
+    [Socialize storeSocializeApiKey: [apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
 }
 
 - (void)viewDidUnload
@@ -69,6 +78,14 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return NO;
+}
+
+-(NSDictionary*)authInfoFromConfig
+{
+    NSBundle * bundle =  [NSBundle bundleForClass:[self class]];
+    NSString * configPath = [bundle pathForResource:@"SocializeApiInfo" ofType:@"plist"];
+    NSDictionary * configurationDictionary = [[[NSDictionary alloc]initWithContentsOfFile:configPath] autorelease];
+    return  [configurationDictionary objectForKey:@"Socialize API info"];
 }
 
 -(IBAction)authenticate:(id)sender {
