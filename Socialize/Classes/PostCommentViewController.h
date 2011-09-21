@@ -46,6 +46,7 @@
 
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
+- (void)createComment;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString keyboardListener:(UIKeyboardListener*)kb locationManager:(SocializeLocationManager*) lManager;
 

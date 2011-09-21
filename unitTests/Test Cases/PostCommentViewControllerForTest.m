@@ -29,8 +29,6 @@
 #import "CommentMapView.h"
 #import <OCMock/OCMock.h>
 
-
-
 @implementation PostCommentViewControllerForTest
 
 -(id) initWithEntityUrlString:(NSString*)url keyboardListener:(UIKeyboardListener*) kb locationManager:(SocializeLocationManager *)lm
@@ -67,6 +65,10 @@
 -(void) showAllertWithText: (NSString*)allertMsg
 {
     
+}
+
+- (void)authenticateViaFacebook {
+    [self createComment];
 }
 
 @end
