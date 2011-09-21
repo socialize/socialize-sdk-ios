@@ -27,6 +27,9 @@
 -(void) showAllertWithText: (NSString*)allertMsg;
 -(void) startLoadAnimation;
 -(void) stopLoadAnimation;
+-(void)createComment;
+-(void)authenticateViaFacebook;
+
 
 @end 
 
@@ -38,6 +41,8 @@
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
 @synthesize socialize = _socialize;
+@synthesize anonymousAuthQuestionDialog = _anonymousAuthQuestionDialog;
+@synthesize facebookAuthQuestionDialog = _facebookAuthQuestionDialog;
 
 +(UINavigationController*)createAndShowPostViewControllerWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar
 {
@@ -85,7 +90,47 @@
     [_entityUrlString release];
     [kbListener release];
     [locationManager release];
+    [_anonymousAuthQuestionDialog release];
+    [_facebookAuthQuestionDialog release];
+
     [super dealloc];
+}
+
+- (UIAlertView*)facebookAuthQuestionDialog {
+    if (_facebookAuthQuestionDialog == nil) {
+        _facebookAuthQuestionDialog = [[UIAlertView alloc]
+                                       initWithTitle:@"Facebook?" message:@"You are not authenticated with Facebook. Authenticate with Facebook now?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    }
+    
+    return _facebookAuthQuestionDialog;
+}
+
+- (UIAlertView*)anonymousAuthQuestionDialog {
+    if (_anonymousAuthQuestionDialog == nil) {
+        _anonymousAuthQuestionDialog = [[UIAlertView alloc]
+                                       initWithTitle:@"Anonymous?" message:@"Comment Will Be Posted Anonymously" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    }
+    
+    return _anonymousAuthQuestionDialog;
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (alertView == self.facebookAuthQuestionDialog) {
+        
+        if (buttonIndex == 1) {
+            // FIXME -- grab these from our defines
+            [_socialize authenticateWithApiKey:@"976421bd-0bc9-44c8-a170-bd12376123a3" apiSecret:@"2bf36ced-b9ab-4c5b-b054-8ca975d39c14" thirdPartyAppId:@"115622641859087" thirdPartyName:FacebookAuth];
+        } else {
+            [self.anonymousAuthQuestionDialog show];
+        }
+    } else if (alertView == self.anonymousAuthQuestionDialog) {
+        if (buttonIndex == 1) {
+            [self createComment];
+        } else {
+            [self stopLoadAnimation];
+            [self dismissModalViewControllerAnimated:YES];
+        }
+    }
 }
 
 #pragma Location enable/disable button callbacks
@@ -202,9 +247,7 @@
     [commentTextView becomeFirstResponder];
 }
 
-#pragma mark - navigation bar button actions
--(void)sendButtonPressed:(id)button {
-    [self startLoadAnimation];
+- (void)createComment {
     if(locationManager.shouldShareLocation)
     {
         NSNumber* latitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.latitude];
@@ -213,6 +256,21 @@
     }
     else
         [_socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:nil latitude:nil];
+}
+
+- (void)authenticateViaFacebook {
+    [self.facebookAuthQuestionDialog show];
+}
+
+#pragma mark - navigation bar button actions
+-(void)sendButtonPressed:(id)button {
+    [self startLoadAnimation];
+    
+    if (![SocializeAuthenticateService isAuthenticatedWithFacebook]) {
+        [self authenticateViaFacebook];
+    } else {
+        [self createComment];
+    }
 }
 
 -(void)closeButtonPressed:(id)button {
@@ -234,6 +292,12 @@
     [self stopLoadAnimation];
     [self dismissModalViewControllerAnimated:YES];
 }
+
+-(void)didAuthenticate:(id<SocializeUser>)user {
+    [self stopLoadAnimation];
+    [self createComment];
+}
+
 
 #pragma mark - UITextViewDelegate callbacks
 
@@ -293,6 +357,8 @@
     self.doNotShareLocationButton = nil;
     self.activateLocationButton = nil;
     self.mapOfUserLocation = nil;
+    self.anonymousAuthQuestionDialog = nil;
+    self.facebookAuthQuestionDialog = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

@@ -27,6 +27,9 @@
 -(id) initWithFramework: (SocializeFacebook*) fb apiKey: (NSString*) key apiSecret: (NSString*) secret appId: (NSString*)appId service: (SocializeAuthenticateService*) authService;
 -(void) performAuthentication;
 -(BOOL) handleOpenURL:(NSURL *)url;
++ (BOOL)hasValidToken;
++ (BOOL)handleOpenURL:(NSURL*)url;
+- (void)logout;
 
 @end
 
@@ -110,6 +113,13 @@ Socialize authentication service is the authentication engine. It performs anony
 +(BOOL)isAuthenticated;
 
 /**
+ Check if authentication credentials still valid /and/ that this is a facebook authentication.
+ 
+ @return YES if credentials are valid and facebook was used for authentication, and NO otherwise
+ */
++ (BOOL)isAuthenticatedWithFacebook;
+
+/**
  Remove old authentication information.
  
  If user would like to re-authenticate he has to remove previous authentication information.
@@ -127,6 +137,13 @@ Socialize authentication service is the authentication engine. It performs anony
  @param url Unique URL to the user application.
  */
 -(BOOL)handleOpenURL:(NSURL *)url;
+
+/**
+ This is a class method version of above, intended to make it easier for the user to
+ plug socialize into their application
+ @param url Unique URL to the user application.
+ */
++(BOOL)handleOpenURL:(NSURL *)url;
 
 /**
  Allows get facebook authentication token

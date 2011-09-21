@@ -12,6 +12,7 @@
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"
+#define SOCIALIZE_FACEBOOK_APP_ID @"socialize_facebook_app_id"
 
 @implementation Socialize
 
@@ -63,6 +64,12 @@
     [defaults synchronize];
 }
 
++(void)storeFacebookAppId:(NSString*)facebookAppId {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:facebookAppId forKey:SOCIALIZE_FACEBOOK_APP_ID];
+    [defaults synchronize];
+}
+
 +(NSString*) apiKey
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -75,8 +82,19 @@
     return [defaults valueForKey:SOCIALIZE_API_SECRET];
 }
 
++(NSString*) facebookAppId
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults valueForKey:SOCIALIZE_FACEBOOK_APP_ID];
+}
+
 
 #pragma mark authentication info
+
++(BOOL)handleOpenURL:(NSURL *)url {
+    return [SocializeAuthenticateService handleOpenURL:url];
+}
+
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret
 {
@@ -94,6 +112,17 @@
     _viewService.delegate = delegate;
 }
 
+-(void)authenticateWithFacebook {
+    NSString *apiKey = [Socialize apiKey];
+    NSString *apiSecret = [Socialize apiSecret];
+    NSString *facebookAppId = [Socialize facebookAppId];
+    
+    NSAssert(apiKey != nil, @"Missing api key. API key must be configured before using socialize.");
+    NSAssert(apiSecret != nil, @"Missing api secret. API secret must be configured before using socialize.");
+    NSAssert(facebookAppId != nil, @"Missing facebook app id. Facebook app id is required to authenticate with facebook.");
+    
+    [self authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:facebookAppId thirdPartyName:FacebookAuth];
+}
 
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                             apiSecret:(NSString*)apiSecret 

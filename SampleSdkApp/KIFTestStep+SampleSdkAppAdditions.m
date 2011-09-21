@@ -106,11 +106,14 @@
     [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Test create comment view controller" atIndexPath:path]];
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Enter"]];
     [steps addObject:[KIFTestStep stepToEnterText:entity intoViewWithAccessibilityLabel:@"Input Field"]];
-    [steps addObject:[KIFTestStep stepToWaitForTimeInterval:1 description:@"WTF"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Enter"]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToEnterText:comment intoViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Facebook?"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"No"]];
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Anonymous?"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Ok"]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Tests"]];
     return steps;
 }

@@ -86,6 +86,13 @@ otherwise you will get a failure.
 +(void)storeSocializeApiKey:(NSString*) key andSecret: (NSString*)secret;
 
 /**
+ Save facebook app id to the user defaults.
+ 
+ @param facebookAppId Facebook App Id
+ */
++(void)storeFacebookAppId:(NSString*)facebookAppID;
+
+/**
  Provide access to the Socialize API key.
  
  @return API key NSString value.
@@ -118,6 +125,21 @@ otherwise you will get a failure.
 -(id)createObjectForProtocol:(Protocol *)protocol;
 
 /** @name Authentication stuff*/
+
+/**
+ Any applications using third party authentication must call this method from their
+ application delegate's method. An example is below.
+ 
+ - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    // Run any application-specific url handling
+ 
+    // This is necessary for completion of Socialize third party authorization
+    [Socialize handleOpenURL:url];
+ }
+
+ @param url Unique URL to the user application.
+ */
++(BOOL)handleOpenURL:(NSURL *)url;
 
 /**
  Authenticate with API key and API secret.
@@ -157,6 +179,21 @@ otherwise you will get a failure.
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret
               thirdPartyAppId:(NSString*)thirdPartyAppId 
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
+
+/**
+ Facebook authentication via SDK service.
+ 
+ This is a convenience method for facebook authentication (without an existing token).
+ 
+ Successful call of this method invokes <SocializeServiceDelegate> didAuthenticate: method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+  
+ @see authenticateWithApiKey:thirdPartyAppId:thirdPartyName:
+ @see storeSocializeApiKey:andSecret:
+ @see storeFacebookAppId
+ */
+-(void)authenticateWithFacebook;
+
 
 /**
  Third party authentication.
