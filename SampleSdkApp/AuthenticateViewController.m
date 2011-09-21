@@ -66,6 +66,7 @@
     self.secretField.text = [apiInfo objectForKey:@"secret"];
     
     [Socialize storeSocializeApiKey: [apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
+    [Socialize storeFacebookAppId:@"115622641859087"];
 }
 
 - (void)viewDidUnload
@@ -98,7 +99,8 @@
 -(IBAction)authenticateViaFacebook:(id)sender
 {
     _loadingView = [LoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 
-    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text thirdPartyAppId:@"115622641859087" thirdPartyName:FacebookAuth];
+//   [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text thirdPartyAppId:@"115622641859087" thirdPartyName:FacebookAuth];
+    [socialize authenticateWithFacebook];
 }
 
 -(IBAction)emptyCache:(id)sender{
