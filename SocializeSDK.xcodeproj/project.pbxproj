@@ -710,6 +710,13 @@
 			remoteGlobalIDString = AAB07268139719AC008AF393;
 			remoteInfo = KIF;
 		};
+		AAE033F0142A99FF0028F9AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA2D1A7F1421342100E118A0 /* KIF.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AAB07267139719AC008AF393;
+			remoteInfo = KIF;
+		};
 		AAFE115614228E6C00A142D9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5CC3DAB3137881B900B11B78 /* Project object */;
@@ -2450,6 +2457,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AAE033F1142A99FF0028F9AB /* PBXTargetDependency */,
 				AAFE115514228E6C00A142D9 /* PBXTargetDependency */,
 			);
 			name = "SampleSdkApp Integration Tests";
@@ -3122,6 +3130,11 @@
 			isa = PBXTargetDependency;
 			target = 5CC3DABD1378824700B11B78 /* Socialize */;
 			targetProxy = 5C6EC7941379CF150073AE65 /* PBXContainerItemProxy */;
+		};
+		AAE033F1142A99FF0028F9AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KIF;
+			targetProxy = AAE033F0142A99FF0028F9AB /* PBXContainerItemProxy */;
 		};
 		AAFE115514228E6C00A142D9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
