@@ -78,6 +78,28 @@ otherwise you will get a failure.
 -(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
 
 /**
+ Save API information to the user defaults.
+ 
+ @param key Socialize API key.
+ @param secret Socialize API secret.
+ */
++(void)storeSocializeApiKey:(NSString*) key andSecret: (NSString*)secret;
+
+/**
+ Provide access to the Socialize API key.
+ 
+ @return API key NSString value.
+ */
++(NSString*) apiKey;
+
+/**
+ Provide access to the Socialize API secret.
+ 
+ @return API secret NSString value.
+ */
++(NSString*) apiSecret;
+
+/**
  Set callback delegate which responds to protocol <SocializeServiceDelegate> to the service.
  @param delegate Implemented by user callback delegate which responds to the  <SocializeServiceDelegate> protocol.
  */
