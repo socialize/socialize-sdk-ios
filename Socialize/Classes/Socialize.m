@@ -10,6 +10,9 @@
 #import "SocializeCommentsService.h"
 #import "SocializeConfiguration.h"
 
+#define SOCIALIZE_API_KEY @"socialize_api_key"
+#define SOCIALIZE_API_SECRET @"socialize_api_secret"
+
 @implementation Socialize
 
 @synthesize authService = _authService;
@@ -50,6 +53,26 @@
         [_provider release];
     }
     return self;
+}
+
++(void)storeSocializeApiKey:(NSString*) key andSecret: (NSString*)secret;
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:key forKey:SOCIALIZE_API_KEY];
+    [defaults setValue:secret forKey:SOCIALIZE_API_SECRET];
+    [defaults synchronize];
+}
+
++(NSString*) apiKey
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults valueForKey:SOCIALIZE_API_KEY];
+}
+
++(NSString*) apiSecret
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults valueForKey:SOCIALIZE_API_SECRET];
 }
 
 
