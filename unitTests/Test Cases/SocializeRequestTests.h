@@ -33,7 +33,7 @@
 //#import <GHUnitIOS/GHMockNSURLConnection.h>
 
 
-@interface SocializeRequestTests : GHTestCase<SocializeRequestDelegate> {
+@interface SocializeRequestTests : GHAsyncTestCase<SocializeRequestDelegate> {
     SocializeRequest* _request;
 //    GHMockNSURLConnection *_connection;
     NSError* _expectedError; 
