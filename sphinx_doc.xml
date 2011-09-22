@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="socialize-sdk" default="sphinx">
+		
+	<target name="check-paths">
+	
+		<property environment="env"/> 
+		
+		<echo>${env.PATH}</echo>
+		
+		<condition property="sphinx.available"> 
+			<or> 
+				<available file="sphinx-build" filepath="${env.PATH}"/> 
+			</or> 
+		</condition> 
+		
+	</target>
+	
+	<!-- Python is required on target system for this to work!-->
+	<target name="sphinx" description="Uses sphinx to generate SDK documentation" if="sphinx.available" depends="check-paths">
+		
+		<delete dir="build/docs/static"/>
+		<delete dir="build/docs/user_guide" verbose="true"/>
+		<mkdir dir="build/docs/user_guide"/>
+
+		<exec executable="sphinx-build" failonerror="true" dir="${basedir}">
+	       	<arg value="-a"/>
+	        <arg value="-E"/>
+			<arg value="Documentation/sphinx/source"/>
+			<arg value="build/docs/user_guide"/>
+		</exec>
+		
+		<!-- Manually rename folders and references with underscore -->
+		<replaceregexp flags="g" match="_static" replace="static">
+			<fileset dir="build/docs/user_guide" includes="**/*.html **/*.js **/*.css"/>
+		</replaceregexp>
+		
+		<replaceregexp flags="g" match="_images" replace="images">
+			<fileset dir="build/docs/user_guide" includes="**/*.html **/*.js **/*.css"/>
+		</replaceregexp>
+		
+		<replaceregexp flags="g" match="_sources" replace="sources">
+			<fileset dir="build/docs/user_guide" includes="**/*.html **/*.js **/*.css"/>
+		</replaceregexp>
+
+		<move file="build/docs/user_guide/_static" tofile="build/docs/user_guide/static" verbose="true"/>
+		<move file="build/docs/user_guide/_images" tofile="build/docs/user_guide/images" verbose="true"/>
+		<move file="build/docs/user_guide/_sources" tofile="build/docs/user_guide/sources" verbose="true"/>
+		
+		<copy 
+			file="Documentation/sphinx/source/_static/nature.css" 
+			todir="build/docs/user_guide/static" 
+			verbose="true" 
+			failonerror="true" 
+			overwrite="true"/>
+	</target>
+</project>
