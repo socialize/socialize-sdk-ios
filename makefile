@@ -31,7 +31,6 @@ doc:
 	cd "./Socialize";\
 	ls; \
 	appledoc ./DocSettings.plist
-	cp -r ./Documentation/GettingStartedGuide/images/ ./Documentation/html/images/
 mytest:
 	xcodebuild -target Socialize-iOS -configuration Distribution -sdk iphoneos clean build
 	WRITE_JUNIT_XML=YES GHUNIT_CLI=1 xcodebuild -target unitTests -configuration Debug -sdk iphonesimulator build

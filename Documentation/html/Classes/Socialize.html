@@ -53,6 +53,19 @@
 	
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/apiKey">&nbsp;&nbsp;&nbsp;&nbsp;+ apiKey</option>
+	
+	<option value="//api/name/apiSecret">&nbsp;&nbsp;&nbsp;&nbsp;+ apiSecret</option>
+	
+	<option value="//api/name/handleOpenURL:">&nbsp;&nbsp;&nbsp;&nbsp;+ handleOpenURL:</option>
+	
+	<option value="//api/name/storeFacebookAppId:">&nbsp;&nbsp;&nbsp;&nbsp;+ storeFacebookAppId:</option>
+	
+	<option value="//api/name/storeSocializeApiKey:andSecret:">&nbsp;&nbsp;&nbsp;&nbsp;+ storeSocializeApiKey:andSecret:</option>
+	
+	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
@@ -62,6 +75,8 @@
 	<option value="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</option>
 	
 	<option value="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</option>
+	
+	<option value="//api/name/authenticateWithFacebook">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithFacebook</option>
 	
 	<option value="//api/name/createCommentForEntity:comment:longitude:latitude:">&nbsp;&nbsp;&nbsp;&nbsp;- createCommentForEntity:comment:longitude:latitude:</option>
 	
@@ -145,6 +160,20 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/apiKey">apiKey</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/apiSecret">apiSecret</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/handleOpenURL:">handleOpenURL:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/storeFacebookAppId:">storeFacebookAppId:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/storeSocializeApiKey:andSecret:">storeSocializeApiKey:andSecret:</a></span></li>
+	
+</ul></li>
+
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
@@ -154,6 +183,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:">authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithFacebook">authenticateWithFacebook</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createCommentForEntity:comment:longitude:latitude:">createCommentForEntity:comment:longitude:latitude:</a></span></li>
 	
@@ -292,6 +323,34 @@ otherwise you will get a failure.</p></div>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/storeSocializeApiKey:andSecret:">+&nbsp;storeSocializeApiKey:andSecret:</a></code>
+		<span class="tooltip"><p>Save API information to the user defaults.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/storeFacebookAppId:">+&nbsp;storeFacebookAppId:</a></code>
+		<span class="tooltip"><p>Save facebook app id to the user defaults.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/apiKey">+&nbsp;apiKey</a></code>
+		<span class="tooltip"><p>Provide access to the Socialize API key.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/apiSecret">+&nbsp;apiSecret</a></code>
+		<span class="tooltip"><p>Provide access to the Socialize API secret.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/setDelegate:">&ndash;&nbsp;setDelegate:</a></code>
 		<span class="tooltip"><p>Set callback delegate which responds to protocol <a href="../Protocols/SocializeServiceDelegate.html">SocializeServiceDelegate</a> to the service.</p></span>
 	</span>
@@ -322,6 +381,14 @@ otherwise you will get a failure.</p></div>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
+		<code><a href="#//api/name/handleOpenURL:">+&nbsp;handleOpenURL:</a></code>
+		<span class="tooltip"><p>Any applications using third party authentication must call this method from their
+application delegate&rsquo;s method. An example is below.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/authenticateWithApiKey:apiSecret:">&ndash;&nbsp;authenticateWithApiKey:apiSecret:</a></code>
 		<span class="tooltip"><p>Authenticate with API key and API secret.</p></span>
 	</span>
@@ -331,6 +398,13 @@ otherwise you will get a failure.</p></div>
 	<span class="tooltip">
 		<code><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">&ndash;&nbsp;authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</a></code>
 		<span class="tooltip"><p>Third party authentication via SDK service.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authenticateWithFacebook">&ndash;&nbsp;authenticateWithFacebook</a></code>
+		<span class="tooltip"><p>Facebook authentication via SDK service.</p></span>
 	</span>
 	
 	
@@ -644,6 +718,241 @@ otherwise you will get a failure.</p></div>
 					
 					
 					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/apiKey" title="apiKey"></a>
+	<h3 class="subsubtitle method-title">apiKey</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Provide access to the Socialize API key.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSString *)apiKey</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>API key NSString value.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/apiSecret" title="apiSecret"></a>
+	<h3 class="subsubtitle method-title">apiSecret</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Provide access to the Socialize API secret.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSString *)apiSecret</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>API secret NSString value.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/handleOpenURL:" title="handleOpenURL:"></a>
+	<h3 class="subsubtitle method-title">handleOpenURL:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Any applications using third party authentication must call this method from their
+application delegate&rsquo;s method. An example is below.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (BOOL)handleOpenURL:(NSURL *)<em>url</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>url</em></dt>
+			<dd><p>Unique URL to the user application.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<ul>
+<li><p>(BOOL)application:(UIApplication <strong>)application openURL:(NSURL </strong>)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+  // Run any application-specific url handling</p>
+
+<p>  // This is necessary for completion of Socialize third party authorization
+  [Socialize handleOpenURL:url];
+}</p></li>
+</ul>
+
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/storeFacebookAppId:" title="storeFacebookAppId:"></a>
+	<h3 class="subsubtitle method-title">storeFacebookAppId:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Save facebook app id to the user defaults.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)storeFacebookAppId:(NSString *)<em>facebookAppID</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>facebookAppID</em></dt>
+			<dd><p>Facebook App Id</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/storeSocializeApiKey:andSecret:" title="storeSocializeApiKey:andSecret:"></a>
+	<h3 class="subsubtitle method-title">storeSocializeApiKey:andSecret:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Save API information to the user defaults.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)storeSocializeApiKey:(NSString *)<em>key</em> andSecret:(NSString *)<em>secret</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Socialize API key.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>secret</em></dt>
+			<dd><p>Socialize API secret.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
 					
 					
 					<div class="section section-methods">
@@ -870,6 +1179,61 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">&ndash; authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</a></p></code></li>
 			
 			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:">&ndash; authenticateWithApiKey:apiSecret:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/authenticateWithFacebook" title="authenticateWithFacebook"></a>
+	<h3 class="subsubtitle method-title">authenticateWithFacebook</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Facebook authentication via SDK service.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)authenticateWithFacebook</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This is a convenience method for facebook authentication (without an existing token).</p>
+
+<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html">SocializeServiceDelegate</a> didAuthenticate: method.
+In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:">&ndash; authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</a></p></code></li>
+			
+			<li><code><p><a href="#//api/name/storeSocializeApiKey:andSecret:">+ storeSocializeApiKey:andSecret:</a></p></code></li>
+			
+			<li><code><p><a href="#//api/name/storeFacebookAppId:">+ storeFacebookAppId:</a></p></code></li>
 			
 		</ul>
 	</div>
@@ -1714,7 +2078,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 Socialize Inc. All rights reserved. (Last updated: 2011-08-09)</span><br />
+						<p><span class="copyright">&copy; 2011 Socialize Inc. All rights reserved. (Last updated: 2011-09-22)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
 						

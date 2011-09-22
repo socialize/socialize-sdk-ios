@@ -88,7 +88,7 @@ otherwise you will get a failure.
 /**
  Save facebook app id to the user defaults.
  
- @param facebookAppId Facebook App Id
+ @param facebookAppID Facebook App Id
  */
 +(void)storeFacebookAppId:(NSString*)facebookAppID;
 
@@ -188,9 +188,9 @@ otherwise you will get a failure.
  Successful call of this method invokes <SocializeServiceDelegate> didAuthenticate: method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
   
- @see authenticateWithApiKey:thirdPartyAppId:thirdPartyName:
+ @see authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:
  @see storeSocializeApiKey:andSecret:
- @see storeFacebookAppId
+ @see storeFacebookAppId:
  */
 -(void)authenticateWithFacebook;
 
