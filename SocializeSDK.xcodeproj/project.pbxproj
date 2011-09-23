@@ -24,6 +24,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		160630F4142CB17B003B5AC7 /* SocializeUnitTestApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */; };
 		163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
 		1636370813A76ED000403879 /* SocializeProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636370713A76ECF00403879 /* SocializeProviderTests.m */; };
 		1636372F13AB289500403879 /* SocializeCommentsServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */; };
@@ -288,7 +289,6 @@
 		16FDF4DF1414BA0A00EAA064 /* CommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */; };
 		16FDF4E01414BA0A00EAA064 /* CommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */; };
 		18A3C3A7141FD00000003172 /* SocializeUnitTestApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */; };
-		18A3C3A8141FD00000003172 /* SocializeUnitTestApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */; };
 		18E62568142A886500DAE948 /* SocializeAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF23C51429B1D400BC6123 /* SocializeAsyncTestCase.m */; };
 		18EF23C61429B1D400BC6123 /* SocializeAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF23C51429B1D400BC6123 /* SocializeAsyncTestCase.m */; };
 		5C21C0C61396BF8300CF2B9F /* SocializeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -3026,7 +3026,6 @@
 				16D247751417906F008A550D /* NSString+PlaceMark.m in Sources */,
 				16D2479D1418D669008A550D /* ImagesCache.m in Sources */,
 				16A82A0D1419FA9500193CA7 /* ImageLoader.m in Sources */,
-				18A3C3A8141FD00000003172 /* SocializeUnitTestApplication.m in Sources */,
 				6DFBFE71141FDDCC0030DE32 /* Base64Transcoder.c in Sources */,
 				6DFBFE74141FDDCC0030DE32 /* NSMutableURLRequest+Parameters.m in Sources */,
 				6DFBFE76141FDDCC0030DE32 /* NSString+URLEncoding.m in Sources */,
@@ -3088,6 +3087,7 @@
 				16A82A29141DE79D00193CA7 /* ImageLoaderTests.m in Sources */,
 				6DFB0012141FF9460030DE32 /* CommentsTableViewTests.m in Sources */,
 				6D3F84B71424046D00825DFC /* PostCommentViewControllerForTest.m in Sources */,
+				160630F4142CB17B003B5AC7 /* SocializeUnitTestApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

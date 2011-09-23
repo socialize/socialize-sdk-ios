@@ -611,8 +611,8 @@ static size_t _JKArrayInstanceSize = 0UL;
 {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; // Though technically not required, the run time environment at +load time may be less than ideal.
 
-  _JKArrayClass        = objc_getClass("JKArray");
-  _JKMutableArrayClass = objc_getClass("JKMutableArray");
+  _JKArrayClass        = objc_getClass("SocializeJKArray");
+  _JKMutableArrayClass = objc_getClass("SocializeJKMutableArray");
   _JKArrayInstanceSize = jk_max(16UL, class_getInstanceSize(_JKArrayClass));
 
   [pool release]; pool = NULL;
@@ -752,7 +752,7 @@ static void _JKArrayRemoveObjectAtIndex(JKArray *array, NSUInteger objectIndex) 
 {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; // Though technically not required, the run time environment at +load time may be less than ideal.
   
-  Class JKMutableArrayClass = objc_getClass("JKMutableArray"); Class JKArrayClass = objc_getClass("JKArray");
+  Class JKMutableArrayClass = objc_getClass("SocializeJKMutableArray"); Class JKArrayClass = objc_getClass("SocializeJKArray");
   
   // We swizzle the methods from JKArray in to this class (JKArrayDictionary).
   
@@ -883,8 +883,8 @@ static size_t _JKDictionaryInstanceSize = 0UL;
 {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; // Though technically not required, the run time environment at +load time may be less than ideal.
 
-  _JKDictionaryClass        = objc_getClass("JKDictionary");
-  _JKMutableDictionaryClass = objc_getClass("JKMutableDictionary");
+  _JKDictionaryClass        = objc_getClass("SocializeJKDictionary");
+  _JKMutableDictionaryClass = objc_getClass("SocializeJKMutableDictionary");
   _JKDictionaryInstanceSize = jk_max(16UL, class_getInstanceSize(_JKDictionaryClass));
 
   [pool release]; pool = NULL;
@@ -1100,7 +1100,7 @@ static NSUInteger _JKDictionaryGetKeysAndObjects(JKDictionary *dictionary, NSUIn
 {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; // Though technically not required, the run time environment at +load time may be less than ideal.
   
-  Class JKMutableDictionaryClass = objc_getClass("JKMutableDictionary"), JKDictionaryClass = objc_getClass("JKDictionary");
+  Class JKMutableDictionaryClass = objc_getClass("SocializeJKMutableDictionary"), JKDictionaryClass = objc_getClass("SocializeJKDictionary");
   
   // We swizzle the methods from JKDictionary in to this class (JKMutableDictionary).
   

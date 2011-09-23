@@ -11,3 +11,31 @@
 #else
 #define DebugLog( s, ... ) 
 #endif
+
+
+#define JSONDecoder SocializeJSONDecoder 
+#define JSONKitDeserializing SocializeJSONKitDeserializing
+#define JSONKitSerializing SocializeJSONKitSerializing
+
+#define JKArray SocializeJKArray
+#define JKDictionaryEnumerator SocializeJKDictionaryEnumerator
+#define JKDictionary SocializeJKDictionary
+#define JKMutableDictionary SocializeJKMutableDictionary
+#define JKSerializer SocializeJKSerializer
+#define JKMutableArray SocializeJKMutableArray
+
+#define OAAsynchronousDataFetcher SocializeOAAsynchronousDataFetcher
+#define OAConsumer SocializeOAConsumer
+#define OADataFetcher SocializeOADataFetcher
+#define OAHMAC_SHA1SignatureProvider SocializeOAHMAC_SHA1SignatureProvider
+#define OAMutableURLRequest SocializeOAMutableURLRequest
+#define OAMutableURLRequest SocializeOAMutableURLRequest
+#define OAPlaintextSignatureProvider SocializeOAPlaintextSignatureProvider
+#define OARequestParameter SocializeOARequestParameter
+#define OAServiceTicket SocializeOAServiceTicket
+#define OAToken SocializeOAToken
+
+#define EstimateBas64EncodedDataSize SocializeEstimateBas64EncodedDataSize
+#define EstimateBas64DecodedDataSize SocializeEstimateBas64DecodedDataSize
+#define Base64EncodeData SocializeBase64EncodeData
+#define Base64DecodeData SocializeBase64DecodeData
