@@ -1,0 +1,13 @@
+//
+//  SocializeLike.m
+//  SocializeSDK
+//
+//  Created by Fawad Haider on 6/22/11.
+//  Copyright 2011 Socialize, Inc. All rights reserved.
+//
+
+#import "SocializeLike.h"
+
+
+@implementation SocializeLike
+@end

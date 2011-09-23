@@ -1,0 +1,667 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SocializeServiceDelegate Protocol Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Socialize iOS SDK </a></h1>
+				<a id="developerHome" href="../index.html">Socialize Inc</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SocializeServiceDelegate Protocol Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/didAuthenticate">&nbsp;&nbsp;&nbsp;&nbsp;- didAuthenticate</option>
+	
+	<option value="//api/name/service:didCreate:">&nbsp;&nbsp;&nbsp;&nbsp;- service:didCreate:</option>
+	
+	<option value="//api/name/service:didDelete:">&nbsp;&nbsp;&nbsp;&nbsp;- service:didDelete:</option>
+	
+	<option value="//api/name/service:didFail:">&nbsp;&nbsp;&nbsp;&nbsp;- service:didFail:</option>
+	
+	<option value="//api/name/service:didFetchElements:">&nbsp;&nbsp;&nbsp;&nbsp;- service:didFetchElements:</option>
+	
+	<option value="//api/name/service:didUpdate:">&nbsp;&nbsp;&nbsp;&nbsp;- service:didUpdate:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Delete callback">Delete callback</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Update callback">Update callback</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Fail callback">Fail callback</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Create callback">Create callback</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Fetch callback">Fetch callback</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Authentication callback">Authentication callback</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didAuthenticate">didAuthenticate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/service:didCreate:">service:didCreate:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/service:didDelete:">service:didDelete:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/service:didFail:">service:didFail:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/service:didFetchElements:">service:didFetchElements:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/service:didUpdate:">service:didUpdate:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SocializeServiceDelegate Protocol Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SocializeServiceDelegate Protocol Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SocializeService.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>This protocol is used as a callback delegate for all socialize services.</p><div class="warning"><p><strong>Note:</strong> Should be implemented by user.</p></div>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Delete callback" name="task_Delete callback"></a>
+						<h3 class="subsubtitle task-title">Delete callback</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/service:didDelete:">&ndash;&nbsp;service:didDelete:</a></code>
+		<span class="tooltip"><p>It is called from Socialize service after success DELETE request.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Update callback" name="task_Update callback"></a>
+						<h3 class="subsubtitle task-title">Update callback</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/service:didUpdate:">&ndash;&nbsp;service:didUpdate:</a></code>
+		<span class="tooltip"><p>It is called from Socialize service after success PUT request.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Fail callback" name="task_Fail callback"></a>
+						<h3 class="subsubtitle task-title">Fail callback</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/service:didFail:">&ndash;&nbsp;service:didFail:</a></code>
+		<span class="tooltip"><p>It is called in case of any errors of socialize services.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Create callback" name="task_Create callback"></a>
+						<h3 class="subsubtitle task-title">Create callback</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/service:didCreate:">&ndash;&nbsp;service:didCreate:</a></code>
+		<span class="tooltip"><p>Creating multiple likes or comments would invoke this callback.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Fetch callback" name="task_Fetch callback"></a>
+						<h3 class="subsubtitle task-title">Fetch callback</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/service:didFetchElements:">&ndash;&nbsp;service:didFetchElements:</a></code>
+		<span class="tooltip"><p>Getting/retrieving comments or likes would invoke this callback</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Authentication callback" name="task_Authentication callback"></a>
+						<h3 class="subsubtitle task-title">Authentication callback</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didAuthenticate">&ndash;&nbsp;didAuthenticate</a></code>
+		<span class="tooltip"><p>It is called after success authentication.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/didAuthenticate" title="didAuthenticate"></a>
+	<h3 class="subsubtitle method-title">didAuthenticate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>It is called after success authentication.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)didAuthenticate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/service:didCreate:" title="service:didCreate:"></a>
+	<h3 class="subsubtitle method-title">service:didCreate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creating multiple likes or comments would invoke this callback.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)service:(SocializeService *)<em>service</em> didCreate:(id&lt;SocializeObject&gt;)<em>object</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>service</em></dt>
+			<dd><p><a href="../Classes/Socialize.html">Socialize</a> service which performed operation.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>Successfully created <a href="../Classes/SocializeObject.html">SocializeObject</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<div class="warning"><p><strong>Note:</strong> User should convert object to expected protocol type. For example <a href="../Classes/SocializeComment.html">SocializeComment</a> or <a href="../Classes/SocializeLike.html">SocializeLike</a></p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/service:didDelete:" title="service:didDelete:"></a>
+	<h3 class="subsubtitle method-title">service:didDelete:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>It is called from Socialize service after success DELETE request.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)service:(SocializeService *)<em>service</em> didDelete:(id&lt;SocializeObject&gt;)<em>object</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>service</em></dt>
+			<dd><p><a href="../Classes/Socialize.html">Socialize</a> service which performed operation.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>Should be nil.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Typical this callback is called after delete like for entity request.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/service:didFail:" title="service:didFail:"></a>
+	<h3 class="subsubtitle method-title">service:didFail:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>It is called in case of any errors of socialize services.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)service:(SocializeService *)<em>service</em> didFail:(NSError *)<em>error</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>service</em></dt>
+			<dd><p><a href="../Classes/Socialize.html">Socialize</a> service which performed operation.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error description.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/service:didFetchElements:" title="service:didFetchElements:"></a>
+	<h3 class="subsubtitle method-title">service:didFetchElements:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Getting/retrieving comments or likes would invoke this callback</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)service:(SocializeService *)<em>service</em> didFetchElements:(NSArray *)<em>dataArray</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>service</em></dt>
+			<dd><p><a href="../Classes/Socialize.html">Socialize</a> service which performed operation.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dataArray</em></dt>
+			<dd><p>Array of objects. Every object responds to the <a href="../Classes/SocializeObject.html">SocializeObject</a> protocol.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<div class="warning"><p><strong>Note:</strong> User should convert object to expected protocol type. For example <a href="../Classes/SocializeComment.html">SocializeComment</a> or <a href="../Classes/SocializeLike.html">SocializeLike</a></p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/service:didUpdate:" title="service:didUpdate:"></a>
+	<h3 class="subsubtitle method-title">service:didUpdate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>It is called from Socialize service after success PUT request.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)service:(SocializeService *)<em>service</em> didUpdate:(id&lt;SocializeObject&gt;)<em>object</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>service</em></dt>
+			<dd><p><a href="../Classes/Socialize.html">Socialize</a> service which performed operation.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>Represented updated <a href="../Classes/SocializeObject.html">SocializeObject</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Typical this callback is called after changes in user profile.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 Socialize Inc. All rights reserved. (Last updated: 2011-08-09)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>

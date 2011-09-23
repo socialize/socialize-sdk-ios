@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/pointabout_appmakr/!svn/ver/3682/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests
+END
+like_create.json
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/like_create.json
+END
+view_retrieve_list.json
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/view_retrieve_list.json
+END
+entity_retrieve_list.json
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/entity_retrieve_list.json
+END
+like_retrieve_list_by_ids.json
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/like_retrieve_list_by_ids.json
+END
+like_retrieve_list.json
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/like_retrieve_list.json
+END
+share_create.json
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/share_create.json
+END
+comment_create.json
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/pointabout_appmakr/!svn/ver/3682/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/comment_create.json
+END
+share_retrieve_list_by_ids.json
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/share_retrieve_list_by_ids.json
+END
+comment_retrieve_list_by_ids.json
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/comment_retrieve_list_by_ids.json
+END
+view_create.json
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/view_create.json
+END
+entity_create.json
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/entity_create.json
+END
+user_create.json
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/user_create.json
+END
+share_retrieve_list.json
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/share_retrieve_list.json
+END
+comment_retrieve_list.json
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/comment_retrieve_list.json
+END
+view_retrieve_list_by_ids.json
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/pointabout_appmakr/!svn/ver/3672/appmakr/branches/multiplatform-level-2/socialize/v1/api_examples/requests/view_retrieve_list_by_ids.json
+END
