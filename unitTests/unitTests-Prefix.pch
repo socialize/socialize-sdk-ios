@@ -34,6 +34,7 @@
 #define OARequestParameter SocializeOARequestParameter
 #define OAServiceTicket SocializeOAServiceTicket
 #define OAToken SocializeOAToken
+#define OASignatureProviding SocializeOASignatureProviding
 
 #define EstimateBas64EncodedDataSize SocializeEstimateBas64EncodedDataSize
 #define EstimateBas64DecodedDataSize SocializeEstimateBas64DecodedDataSize
