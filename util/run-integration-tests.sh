@@ -9,9 +9,10 @@ set -o errexit
 set -o verbose
 
 function cleanup() {
+  set +o errexit
   for pid in $simPID $tailPID; do
     if [ -n "$simPID" ] && kill -0 $pid; then
-      kill $simPID || true
+      kill $simPID
     fi
   done
   killall "iPhone Simulator"
