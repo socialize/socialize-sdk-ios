@@ -559,6 +559,7 @@
 		9AC0259A13BB8253004AB147 /* SocializeUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0259813BB8253004AB147 /* SocializeUserService.m */; };
 		AA3698001427ABED0010CF0B /* TestShowSmallUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D8318514272D5B00BFE24E /* TestShowSmallUserInfo.m */; };
 		AA36981814281C190010CF0B /* TestShowSmallUserInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D8318614272D5B00BFE24E /* TestShowSmallUserInfo.xib */; };
+		AA62FFD3142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA62FFD2142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist */; };
 		AAA37E371423E44A00803E24 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E361423E44A00803E24 /* StringHelper.m */; };
 		AAA37E3A1423E49900803E24 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E391423E49900803E24 /* DataHelper.m */; };
 		AAFE115814228E6C00A142D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4411398C40F007C91ED /* main.m */; };
@@ -1311,6 +1312,7 @@
 		9AC0259713BB8253004AB147 /* SocializeUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUserService.h; path = Classes/SocializeUserService.h; sourceTree = "<group>"; };
 		9AC0259813BB8253004AB147 /* SocializeUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserService.m; path = Classes/SocializeUserService.m; sourceTree = "<group>"; };
 		AA2D1A7F1421342100E118A0 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = SampleSdkApp/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
+		AA62FFD2142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleSdkApp Integration Tests-Info.plist"; sourceTree = "<group>"; };
 		AA75A06E14216B210032C88F /* SampleSdkApp-Integration-Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Integration-Tests-Prefix.pch"; sourceTree = "<group>"; };
 		AAA37E351423E44A00803E24 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
 		AAA37E361423E44A00803E24 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
@@ -1680,6 +1682,7 @@
 		16E2C43B1398C40F007C91ED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AA62FFD2142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist */,
 				AA75A06E14216B210032C88F /* SampleSdkApp-Integration-Tests-Prefix.pch */,
 				6D97F03213DF8ABA00B16454 /* tests.plist */,
 				16E2C43C1398C40F007C91ED /* SampleSdkApp-Info.plist */,
@@ -2839,6 +2842,7 @@
 				AAFE11D214228E6C00A142D9 /* SocializeConfigurationInfo.plist in Resources */,
 				AA36981814281C190010CF0B /* TestShowSmallUserInfo.xib in Resources */,
 				16BC8197142A217900D90C26 /* SocializeApiInfo.plist in Resources */,
+				AA62FFD3142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3507,7 +3511,7 @@
 					"\"$(SRCROOT)\"/Socialize/**",
 					"$(SRCROOT)/SampleSdkApp/KIF/**",
 				);
-				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp-Info.plist";
+				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp Integration Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3554,7 +3558,7 @@
 					"\"$(SRCROOT)\"/Socialize/**",
 					"$(SRCROOT)/SampleSdkApp/KIF/**",
 				);
-				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp-Info.plist";
+				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp Integration Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

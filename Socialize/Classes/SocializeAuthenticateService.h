@@ -22,9 +22,11 @@
     NSString* apiKey;
     NSString* apiSecret;
     NSString* thirdPartyAppId;
+    NSString* thirdPartyLocalAppId;
     SocializeAuthenticateService* service;
 }
 -(id) initWithFramework: (SocializeFacebook*) fb apiKey: (NSString*) key apiSecret: (NSString*) secret appId: (NSString*)appId service: (SocializeAuthenticateService*) authService;
+-(id) initWithFramework: (SocializeFacebook*) fb apiKey: (NSString*) key apiSecret: (NSString*) secret appId: (NSString*)appId localAppId: (NSString*)localAppId service: (SocializeAuthenticateService*) authService;
 -(void) performAuthentication;
 -(BOOL) handleOpenURL:(NSURL *)url;
 + (BOOL)hasValidToken;
@@ -83,6 +85,16 @@ Socialize authentication service is the authentication engine. It performs anony
                         thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
 
 /**
+ Convenience method
+ 
+ @see authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:
+ */
+-(void)authenticateWithApiKey:(NSString*)apiKey 
+                    apiSecret:(NSString*)apiSecret 
+              thirdPartyAppId:(NSString*)thirdPartyAppId 
+               thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
+
+/**
  Third party authentication via SDK service.
  
  Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.
@@ -92,6 +104,7 @@ Socialize authentication service is the authentication engine. It performs anony
  @param apiKey API access key.
  @param apiSecret API access secret.
  @param thirdPartyAppId Extern service application id.
+ @param thirdPartyLocalAppId Extern service local application id.
  @param thirdPartyName Third party authentication name. Current verion of SDK suports only FacebookAuth value.
  @warning *Note:* In current SDK version only Facebook authentication is available.
  
@@ -101,6 +114,7 @@ Socialize authentication service is the authentication engine. It performs anony
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                     apiSecret:(NSString*)apiSecret 
               thirdPartyAppId:(NSString*)thirdPartyAppId 
+         thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
 
 /**@name Other methods*/

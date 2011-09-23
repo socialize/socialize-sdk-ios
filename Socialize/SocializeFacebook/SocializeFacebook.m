@@ -139,6 +139,8 @@ static NSString* kSDKVersion = @"2";
 
   NSString *loginDialogURL = [kDialogBaseURL stringByAppendingString:kLogin];
 
+    
+    
   if (_permissions != nil) {
     NSString* scope = [_permissions componentsJoinedByString:@","];
     [params setValue:scope forKey:@"scope"];

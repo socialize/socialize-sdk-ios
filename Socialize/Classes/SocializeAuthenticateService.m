@@ -120,17 +120,31 @@
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                     apiSecret:(NSString*)apiSecret 
               thirdPartyAppId:(NSString*)thirdPartyAppId 
+         thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName
 {
     
     SocializeFacebook* fb = [[SocializeFacebook alloc] initWithAppId:thirdPartyAppId];
 
     [fbAuth release]; fbAuth = nil;
-    fbAuth = [[FacebookAuthenticator alloc] initWithFramework:fb apiKey:apiKey apiSecret:apiSecret appId:thirdPartyAppId service:self];
+    fbAuth = [[FacebookAuthenticator alloc] initWithFramework:fb apiKey:apiKey apiSecret:apiSecret appId:thirdPartyAppId localAppId:thirdPartyLocalAppId service:self];
     [fb release]; fb = nil; 
     
     [fbAuth performAuthentication];
 }
+
+-(void)authenticateWithApiKey:(NSString*)apiKey 
+                    apiSecret:(NSString*)apiSecret 
+              thirdPartyAppId:(NSString*)thirdPartyAppId 
+               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+{
+    [self authenticateWithApiKey:apiKey
+                       apiSecret:apiSecret
+                 thirdPartyAppId:thirdPartyAppId
+            thirdPartyLocalAppId:nil
+                  thirdPartyName:thirdPartyName];
+}
+
 
 /**
  * Called when an error prevents the request from completing successfully.
@@ -225,6 +239,7 @@
     @property (nonatomic, retain) NSString* apiKey;
     @property (nonatomic, retain) NSString* apiSecret;
     @property (nonatomic, retain) NSString* thirdPartyAppId;
+    @property (nonatomic, retain) NSString* thirdPartyLocalAppId;
     @property (nonatomic, assign) SocializeAuthenticateService* service;
 
 + (void)setLastUsedAuthenticator:(FacebookAuthenticator*)newAuthenticator;
@@ -238,6 +253,7 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
 @synthesize apiKey;
 @synthesize apiSecret;
 @synthesize thirdPartyAppId;
+@synthesize thirdPartyLocalAppId;
 @synthesize service;
 
 -(void)dealloc
@@ -252,6 +268,16 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
                   appId: (NSString*)appId 
                 service: (SocializeAuthenticateService*) authService
 {
+    return [self initWithFramework:fb apiKey:key apiSecret:secret appId:appId localAppId:nil service:authService];
+}
+
+-(id) initWithFramework: (SocializeFacebook*) fb 
+                 apiKey: (NSString*) key 
+              apiSecret: (NSString*) secret
+                  appId: (NSString*)appId 
+                  localAppId: (NSString*)localAppId 
+                service: (SocializeAuthenticateService*) authService
+{
     self = [super init];
     if(self)
     {
@@ -259,6 +285,7 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
         self.apiKey = key;
         self.apiSecret = secret;
         self.thirdPartyAppId = appId;
+        self.thirdPartyLocalAppId = localAppId;
         self.service = authService;
     }
     
@@ -287,7 +314,7 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
 
         // Store this authenticator for later retrieval from static class method handleOpenURL:
         [FacebookAuthenticator setLastUsedAuthenticator:self];
-        [self.facebook authorize:nil delegate:self];
+        [self.facebook authorize:nil delegate:self localAppId:self.thirdPartyLocalAppId];
     }
     else
     {

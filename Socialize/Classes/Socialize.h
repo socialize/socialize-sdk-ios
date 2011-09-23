@@ -93,6 +93,13 @@ otherwise you will get a failure.
 +(void)storeFacebookAppId:(NSString*)facebookAppID;
 
 /**
+ Save facebook local app id to the user defaults.
+ 
+ @param facebookLocalAppID Facebook App Id
+ */
++(void)storeFacebookLocalAppId:(NSString*)facebookLocalAppID;
+
+/**
  Provide access to the Socialize API key.
  
  @return API key NSString value.
@@ -105,6 +112,20 @@ otherwise you will get a failure.
  @return API secret NSString value.
  */
 +(NSString*) apiSecret;
+
+/**
+ Provide access to the facebook app id
+ 
+ @return Facebook app id
+ */
++(NSString*) facebookAppId;
+
+/**
+ Provide access to the facebook local app id (used if you have multiple apps with the same facebook app id, e.g. paid and free)
+ 
+ @return Local Facebook app id
+ */
++(NSString*) facebookLocalAppId;
 
 /**
  Set callback delegate which responds to protocol <SocializeServiceDelegate> to the service.
@@ -156,6 +177,32 @@ otherwise you will get a failure.
  @see authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:
  */
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret;
+
+/**
+ Third party authentication via SDK service.
+ 
+ Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.
+ 
+ Find information how to get API key and secret on [Socialize.](http://www.getsocialize.com/)
+ 
+ Successful call of this method invokes <SocializeServiceDelegate> didAuthenticate: method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param apiKey API access key.
+ @param apiSecret API access secret.
+ @param thirdPartyAppId Extern service application id.
+ @param thirdPartyLocalAppId Extern service local application id.
+ @param thirdPartyName Third party authentication name. Current verion of SDK suports only FacebookAuth value.
+ @warning *Note:* In current SDK version only Facebook authentication is available.
+ 
+ @see authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:
+ @see authenticateWithApiKey:apiSecret:
+ */
+-(void)authenticateWithApiKey:(NSString*)apiKey
+                    apiSecret:(NSString*)apiSecret
+              thirdPartyAppId:(NSString*)thirdPartyAppId 
+         thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
+               thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
 
 /**
  Third party authentication via SDK service.
