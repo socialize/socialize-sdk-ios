@@ -17,26 +17,27 @@
 #import "SocializeComment.h"
 #import "UINavigationBarBackground.h"
 #import "ImageLoader.h"
+#import "UIKeyboardListener.h"
+#import "SocializeLocationManager.h"
 
-#define UIColorFromRGB(rgbValue) [UIColor \
-	colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
-		green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
-			blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
--(void)setupNavBar;
--(UIView*)prepareCommentsNavBarsLeftView;
--(UIBarButtonItem*)createLeftNavigationButtonWithCaption:(NSString*)caption;
-
 @end
 
 @implementation SocializeCommentsTableViewController
 
-@synthesize _tableView;
+@synthesize tableView = _tableView;
+@synthesize socialize = _socialize;
+@synthesize cache = _cache;
+@synthesize arrayOfComments = _arrayOfComments;
+@synthesize isLoading = _isLoading;
+
 @synthesize brushedMetalBackground;
 @synthesize backgroundView;
 @synthesize roundedContainerView;
+@synthesize informationView;
+
 @synthesize noCommentsIconView;
 @synthesize topToolBar;
 @synthesize commentsCell;
@@ -53,60 +54,24 @@
 		_commentDateFormatter = [[NSDateFormatter alloc] init];
 		[_commentDateFormatter setDateFormat:@"hh:mm:ss zzz"];
         
-		/*container frame inits*/
-		CGRect containerFrame = CGRectMake(0, 0, 140, 140);
-		TableBGInfoView * containerView = [[[TableBGInfoView alloc] initWithFrame:containerFrame bgImageName:@"socialize-nocomments-icon.png"] autorelease];
-		containerView.hidden = YES;
-		containerView.center = _tableView.center;
-		[_tableView addSubview:containerView];
-
-		informationView = containerView;
-		informationView.errorLabel.text = @"No comments to show.";
-        
+        /*Socialize inits*/
         _entity = [[SocializeEntity alloc] init];
         _entity.key = entryUrlString;
         _socialize = [[Socialize alloc] initWithDelegate:self]; 
         
+        /* cache for the images*/
         _cache = [[ImagesCache alloc] init];
         
 	}
     return self;
 }
 
-- (UIView*)prepareCommentsNavBarsLeftView {
-    
-	NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"commentsNavBarLeftItemView" owner:self options:nil];
-	UIView* myview = [nibViews objectAtIndex: 0];
-	return myview;
-
-}
-
--(void)setupNavBar{
-
-    UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"Comments" style: UIBarButtonItemStyleBordered target:nil action:nil];
-    self.navigationItem.backBarButtonItem = backButton;
-    [backButton release];
-    
-    UIButton * cancelButton = [UIButton redSocializeNavBarButtonWithTitle:@"Close"];
-	NSMutableArray* navButtonItems = [NSMutableArray arrayWithCapacity:3];
-
- 	UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithCustomView:[self prepareCommentsNavBarsLeftView]];
-	UIBarButtonItem* rightCancelItem = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
-	UIBarButtonItem* fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-	fixedSpace.width = 130;
-
-	[navButtonItems addObject:leftItem];
-	[navButtonItems addObject:fixedSpace];
-	[navButtonItems addObject:rightCancelItem];
-    self.topToolBar.tintColor = [UIColor blackColor];
-	
-	[self.topToolBar setItems:navButtonItems];
-}
-
 - (void) viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
     [_socialize getCommentList:_entity.key first:nil last:nil]; 
     _loadingView = [LoadingView loadingViewInView:self.view];
+    
 }
 
 #pragma mark SocializeService Delegate
@@ -114,7 +79,7 @@
 -(void)service:(SocializeService *)service didFail:(NSError *)error{
 
     _isLoading = NO;
-    [self._tableView reloadData];
+    [self.tableView reloadData];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Failed!", @"") 
                                                     message: [error localizedDescription]
                                                    delegate: nil 
@@ -130,20 +95,26 @@
     _isLoading = NO;
     _arrayOfComments = [dataArray retain];
     [_loadingView removeView];
-    [self._tableView reloadData];
+    [self.tableView reloadData];
     
 }
 #pragma mark -
-
--(void) viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 
     [super viewDidLoad];
+
+    self.title = @"Comments List";
+    /*container frame inits*/
+    CGRect containerFrame = CGRectMake(0, 0, 140, 140);
+    TableBGInfoView * containerView = [[[TableBGInfoView alloc] initWithFrame:containerFrame bgImageName:@"socialize-nocomments-icon.png"] autorelease];
+    containerView.hidden = YES;
+    containerView.center = _tableView.center;
+    [_tableView addSubview:containerView];
+    
+    informationView = containerView;
+    informationView.errorLabel.text = @"No comments to show.";
     
     _tableView.scrollsToTop = YES;
     _tableView.autoresizesSubviews = YES;
@@ -152,22 +123,16 @@
 	UIImageView * imageBackgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
 	_tableView.backgroundView = imageBackgroundView; 
 	[imageBackgroundView release];
-
+    
+    self.tableView.accessibilityLabel = @"Comments Table View";
 }
 
 #pragma mark tableFooterViewDelegate
 
--(IBAction)addCommentButtonPressed:(id)sender {
-
-    PostCommentViewController * pcViewController = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" bundle:nil entityUrlString:_entity.key];
-        
-    UIImage * socializeNavBarBackground = [UIImage imageNamed:@"socialize-navbar-bg.png"];
-    UINavigationController * pcNavController = [[UINavigationController alloc] initWithRootViewController:pcViewController];
-    [pcNavController.navigationBar setBackgroundImage:socializeNavBarBackground];
-    [pcViewController release];
-
+-(IBAction)addCommentButtonPressed:(id)sender 
+{
+    UINavigationController * pcNavController =[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:_entity.key andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
     [self presentModalViewController:pcNavController animated:YES];
-    [pcNavController release];
 }
 
 #pragma mark -
@@ -176,18 +141,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
-}
-
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-
-	if (anim == [self.view.layer animationForKey:@"transform.scaleOut"]){
-		[self.view.layer removeAnimationForKey:@"transform.scaleOut"];
-		[self autorelease];
-	}
-	
-	[self.view.layer removeAnimationForKey:@"transform.scaleOut"];
-	[self.view removeFromSuperview];
-	[self autorelease];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -207,20 +160,11 @@
 	return [NSDate getTimeElapsedString:startdate]; 
 }
 
--(UIBarButtonItem*) createLeftNavigationButtonWithCaption: (NSString*) caption {
-
-    UIButton *backButton = [UIButton blackSocializeNavBarBackButtonWithTitle:caption]; 
-    [backButton addTarget:self action:@selector(backToCommentsList:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem * backLeftItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    return backLeftItem;
-    
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if ([_arrayOfComments count]){
 
-       [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         SocializeComment* entryComment = ((SocializeComment*)[_arrayOfComments objectAtIndex:indexPath.row]);
         
         CommentDetailsViewController* details = [[CommentDetailsViewController alloc] init];
@@ -255,7 +199,7 @@
         // Grab a pointer to the custom cell.
         cell = commentsCell;
         self.commentsCell = nil;
-
+        cell.accessibilityLabel = @"Comment Cell";
     }
 	
 	if ([_arrayOfComments count]) {
@@ -369,8 +313,8 @@
 
  // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -385,7 +329,6 @@
     // e.g. self.myOutlet = nil;
 }
 
-
 - (void)addNoCommentsBackground{
 	informationView.errorLabel.hidden = NO;
 	informationView.noActivityImageView.hidden = NO;
@@ -397,24 +340,10 @@
 	informationView.noActivityImageView.hidden = YES;
 	informationView.hidden = YES;
 }
-#pragma mark TextView Delegate 
 
-- (void)textViewDidChange:(UITextView *)textView {
-	
-}
-
-#pragma mark PostCommentViewController Delegate
-
-
-
-#pragma mark FooterAnimateDelegate
-
-
-#pragma mark -
 - (void)dealloc {
     [_cache release];
     [_socialize release];
-	[informationView release];
 	[_entity release];
 	[_arrayOfComments release];
 	[_commentDateFormatter release];

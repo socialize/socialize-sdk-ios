@@ -10,14 +10,22 @@
 #import "SampleSdkAppAppDelegate.h"
 #import "Socialize.h"
 #import "TestListController.h"
-
 #include <AvailabilityMacros.h>
+#import <GHUnitIOS/GHUnit.h>
+#if RUN_KIF_TESTS
+#import "SampleSdkAppKIFTestController.h"
+#endif
+
 //#import "SocializeLike.h"
 
 @implementation SampleSdkAppAppDelegate
 
 
-@synthesize window=_window;
+@synthesize window=_window, rootController;
+
++ (id)sharedDelegate {
+    return [[UIApplication sharedApplication] delegate];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -33,6 +41,23 @@
     rootController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     [self.window addSubview:rootController.view];
     [self.window makeKeyAndVisible];
+    
+#if RUN_GHUNIT_TESTS
+    int retVal = [GHTestRunner run];
+    printf("return value from test runner is: %d\n", retVal);
+    NSAssert1(retVal == 0, @"There were %i failures during logic integration tests.", retVal);
+#endif
+#if RUN_KIF_TESTS
+    [[SampleSdkAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
+        // Exit after the tests complete so that CI knows we're done
+        int failureCount = [[SampleSdkAppKIFTestController sharedInstance] failureCount];
+        NSLog(@"failure count %i", failureCount);
+        if( getenv("KIF_CLI") ) {
+            exit(failureCount);
+        }
+    }];
+#endif
+    
     return YES;
 }
 
@@ -65,8 +90,9 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
-    AuthenticateViewController* auth = [rootController.viewControllers objectAtIndex:0];
-    return [auth.socialize.authService handleOpenURL: url];
+//    AuthenticateViewController* auth = [rootController.viewControllers objectAtIndex:0];
+//    return [auth.socialize.authService handleOpenURL: url];
+    return [Socialize handleOpenURL:url];
 }
 
 - (void)dealloc

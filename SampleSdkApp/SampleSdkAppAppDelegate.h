@@ -17,6 +17,8 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet UINavigationController *rootController;
 //@property (nonatomic, retain) IBOutlet AuthenticateViewController *authenticationViewController;
++ (id)sharedDelegate;
 
 @end

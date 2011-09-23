@@ -57,7 +57,7 @@ want anonymous authentication, simply call the **authenticate** method:
 
 .. raw:: html
 
-	<script src="https://gist.github.com/1204490.js?file=Authentication.m"></script>
+        <script src="https://gist.github.com/1229170.js?file=Authentication.m"></script>
 	
 Entities
 --------

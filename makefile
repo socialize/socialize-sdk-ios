@@ -4,8 +4,7 @@ default: build buildsample test package
 	#
 package:
     # zip sources
-	cp -r ./build/Socialize-iOS.embeddedframework ./ 
-	zip -r -u ./build/iosproject.zip ./ --exclude="*build*" --exclude="*.git*" --exclude="*.svn*"
+	./util/package.sh
      
 build:
   	# build embedded framework
@@ -23,13 +22,21 @@ clean:
 	rm -rfd build
 test: build
 # run unit tests
-	WRITE_JUNIT_XML=YES GHUNIT_CLI=1 xcodebuild -target unitTests -configuration Debug -sdk iphonesimulator build
+	WRITE_JUNIT_XML=YES GHUNIT_UI_CLI=1 xcodebuild -target unitTests -configuration Debug -sdk iphonesimulator build
+
+integration-tests:
+	./util/run-integration-tests.sh
 
 doc:
 	cd "./Socialize";\
 	ls; \
 	appledoc ./DocSettings.plist
-	cp -r ./Documentation/GettingStartedGuide/images/ ./Documentation/html/images/
 mytest:
 	xcodebuild -target Socialize-iOS -configuration Distribution -sdk iphoneos clean build
 	WRITE_JUNIT_XML=YES GHUNIT_CLI=1 xcodebuild -target unitTests -configuration Debug -sdk iphonesimulator build
+
+sphinx_doc:
+	export LANG=en_US.UTF-8;\
+	export LC_ALL=en_US.UTF-8;\
+	export LC_CTYPE=en_US.UTF-8;\
+	ant -buildfile ./sphinx_doc.xml

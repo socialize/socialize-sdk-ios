@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>item 0</key>
-	<string>Test get an Entity </string>
+	<string>Test get an Entity</string>
 	<key>item 1</key>
 	<string>Test create an Entity</string>
 	<key>item 2</key>
@@ -18,5 +18,7 @@
 	<string>Test create view</string>
 	<key>item 7</key>
 	<string>Test create comment view controller</string>
+	<key>item 8</key>
+	<string>Test small user info after authentication</string>
 </dict>
 </plist>

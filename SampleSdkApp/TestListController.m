@@ -16,8 +16,14 @@
 #import "TestViewCreationViewController.h"
 #import "AuthenticateViewController.h"
 #import "PostCommentViewController.h"
+#import "TestShowSmallUserInfo.h"
+#import "UIKeyboardListener.h"
+#import "SocializeLocationManager.h"
+#import "InputBox.h"
 
 @implementation TestListController
+
+@synthesize user = _user;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +44,7 @@
 
 - (void)dealloc
 {
+    [_user release];
     [super dealloc];
 }
 
@@ -47,6 +54,13 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+-(NSString*) getEntityKey
+{
+    InputBox* input = [[InputBox alloc] init];
+    [input showInputMessageWithTitle:@"Enter entity URL" andPlaceholder:@"Full URL"];
+    return input.inputMsg;
 }
 
 #pragma mark - View lifecycle
@@ -116,7 +130,10 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
+    
     cell.textLabel.text = [_testList objectAtIndex:indexPath.row];
+    cell.textLabel.accessibilityLabel = [_testList objectAtIndex:indexPath.row];
+    cell.textLabel.isAccessibilityElement = YES;
     return cell;
 }
 
@@ -164,7 +181,14 @@
             break;
             
         case 7:
-            controller = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" bundle:nil];
+        {
+            NSString* url = [self getEntityKey];
+            if(url)
+                [self presentModalViewController:[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:url andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]] animated:YES];
+            break;
+        }
+        case 8:
+            controller = [[TestShowSmallUserInfo alloc]initWithNibName:@"TestShowSmallUserInfo" bundle:nil andUserInfo:self.user];
             [self.navigationController pushViewController:controller animated:YES];
             break;
 

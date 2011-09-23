@@ -11,6 +11,9 @@
 #import "TestListController.h"
 #import "UIButton+Socialize.h"
 
+@interface AuthenticateViewController()
+-(NSDictionary*)authInfoFromConfig;
+@end
 
 @implementation AuthenticateViewController
 @synthesize keyField = _keyField;
@@ -57,6 +60,13 @@
 
     self.view.backgroundColor = [UIColor lightGrayColor];
     self.navigationItem.title = @"Authenticate";
+    
+    NSDictionary* apiInfo = [self authInfoFromConfig];
+    self.keyField.text = [apiInfo objectForKey:@"key"];
+    self.secretField.text = [apiInfo objectForKey:@"secret"];
+    
+    [Socialize storeSocializeApiKey: [apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
+    [Socialize storeFacebookAppId:@"115622641859087"];
 }
 
 - (void)viewDidUnload
@@ -71,6 +81,14 @@
     return NO;
 }
 
+-(NSDictionary*)authInfoFromConfig
+{
+    NSBundle * bundle =  [NSBundle bundleForClass:[self class]];
+    NSString * configPath = [bundle pathForResource:@"SocializeApiInfo" ofType:@"plist"];
+    NSDictionary * configurationDictionary = [[[NSDictionary alloc]initWithContentsOfFile:configPath] autorelease];
+    return  [configurationDictionary objectForKey:@"Socialize API info"];
+}
+
 -(IBAction)authenticate:(id)sender {
     
     _loadingView = [LoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 
@@ -81,7 +99,8 @@
 -(IBAction)authenticateViaFacebook:(id)sender
 {
     _loadingView = [LoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 
-    [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text thirdPartyAppId:@"115622641859087" thirdPartyName:FacebookAuth];
+//   [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text thirdPartyAppId:@"115622641859087" thirdPartyName:FacebookAuth];
+    [socialize authenticateWithFacebook];
 }
 
 -(IBAction)emptyCache:(id)sender{
@@ -110,6 +129,7 @@
     [_loadingView removeView];
     self.resultLabel.text = @"success";
     TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil];
+    listController.user = user;
     [self.navigationController pushViewController:listController animated:YES];
     
 }

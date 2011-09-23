@@ -147,10 +147,11 @@
             resultsView.hidden = NO;
             keyLabel.text = entity.key;
             nameLabel.text = entity.name;
-            commentsLabel.text = [NSString stringWithFormat:@"%d", entity.comments];
-            likesLabel.text = [NSString stringWithFormat:@"%d", entity.likes];
-            sharesLabel.text = [NSString stringWithFormat:@"%d", entity.shares];
-            
+            commentsLabel.text = commentsLabel.accessibilityValue = [NSString stringWithFormat:@"%d", entity.comments];
+            likesLabel.text = likesLabel.accessibilityValue = [NSString stringWithFormat:@"%d", entity.likes];
+            sharesLabel.text = sharesLabel.accessibilityValue = [NSString stringWithFormat:@"%d", entity.shares];
+            viewsLabel.text = viewsLabel.accessibilityValue = [NSString stringWithFormat:@"%d", entity.views];
+
             /*initialize and update the socialize action view*/
             if (!_actionView){
                 _actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - ACTION_PANE_HEIGHT, self.view.bounds.size.height,  ACTION_PANE_HEIGHT)];

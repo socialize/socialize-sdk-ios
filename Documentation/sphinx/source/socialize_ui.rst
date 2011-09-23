@@ -10,7 +10,13 @@ these views yourself!
 
 Initialize the Socialize UI System
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To incorporate the Socialize UI views into your app you need to be authenticated. 
+To incorporate the Socialize UI views into your app you need to be authenticated.
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1229170.js?file=Authentication.m"></script>
+        
+In the next release we will add anonymous authentication in the UI stuff.
 
 
 Socialize Comment View
@@ -22,9 +28,6 @@ of comments associated with an entity (URL).
 .. image:: images/new_comment.png	
 .. image:: images/comment_detail.png	
 
-Currently this supports only anonymous users, but future releases will incorporate 
-additional authentication systems such as Facebook and Twitter.
-
 Displaying the Comment View
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -32,7 +35,7 @@ When you want to launch the comment view, simply instantiate and push the commen
 
 .. raw:: html
 
-	<script src="https://gist.github.com/1204768.js?file=CommentUI.m"></script>
+        <script src="https://gist.github.com/1229173.js?file=CommentUI.m"></script>
 
 
 Socialize Action Bar

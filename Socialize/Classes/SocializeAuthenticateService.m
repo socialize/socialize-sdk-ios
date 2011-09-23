@@ -51,6 +51,10 @@
         return NO;
 }
 
++ (BOOL)isAuthenticatedWithFacebook {
+    return [self isAuthenticated] && [FacebookAuthenticator hasValidToken];
+}
+
 -(void)persistConsumerInfo:(NSString*)apiKey andApiSecret:(NSString*)apiSecret{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (userDefaults){
@@ -132,7 +136,6 @@
  * Called when an error prevents the request from completing successfully.
  */
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error{
-//   [_delegate didNotAuthenticate:error];
     [_delegate service:self didFail:error];
 }
 
@@ -145,7 +148,6 @@
  */
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data{
-
     NSString *responseBody = [[NSString alloc] initWithData:data
                                                    encoding:NSUTF8StringEncoding];
     
@@ -178,6 +180,7 @@
 
 -(void)removeAuthenticationInfo
 {
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString* key = [NSString stringWithFormat:@"OAUTH_%@_%@_KEY", kPROVIDER_PREFIX, kPROVIDER_NAME];
     NSString* secret = [NSString stringWithFormat:@"OAUTH_%@_%@_SECRET", kPROVIDER_PREFIX, kPROVIDER_NAME];
@@ -187,8 +190,17 @@
         [defaults removeObjectForKey:key];
         [defaults removeObjectForKey:secret];
     }
-    
-    [defaults synchronize];
+
+    // Remove local facebook authentication info
+    [defaults removeObjectForKey:@"FBAccessTokenKey"];
+    [defaults removeObjectForKey:@"FBExpirationDateKey"];
+
+    [defaults synchronize];    
+}
+
++(BOOL)handleOpenURL:(NSURL *)url 
+{    
+    return [FacebookAuthenticator handleOpenURL:url]; 
 }
 
 -(BOOL)handleOpenURL:(NSURL *)url 
@@ -214,7 +226,12 @@
     @property (nonatomic, retain) NSString* apiSecret;
     @property (nonatomic, retain) NSString* thirdPartyAppId;
     @property (nonatomic, assign) SocializeAuthenticateService* service;
+
++ (void)setLastUsedAuthenticator:(FacebookAuthenticator*)newAuthenticator;
+
 @end
+
+static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
 
 @implementation FacebookAuthenticator
 @synthesize facebook;
@@ -248,16 +265,28 @@
     return self;
 }
 
--(void) performAuthentication
-{
++ (BOOL)hasValidToken {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"FBAccessTokenKey"] != nil &&
+        [[defaults objectForKey:@"FBExpirationDateKey"] timeIntervalSinceNow] > 0;
+}
+
+- (void)copyDefaultsToFacebookObject {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"FBAccessTokenKey"] 
         && [defaults objectForKey:@"FBExpirationDateKey"]) {
         self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
         self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
     }
-    
+}
+
+-(void) performAuthentication
+{
+    [self copyDefaultsToFacebookObject];
     if (![self.facebook isSessionValid]) {
+
+        // Store this authenticator for later retrieval from static class method handleOpenURL:
+        [FacebookAuthenticator setLastUsedAuthenticator:self];
         [self.facebook authorize:nil delegate:self];
     }
     else
@@ -267,6 +296,10 @@
 
 }
 
+- (void)logout {
+    [self copyDefaultsToFacebookObject];
+    [self.facebook logout:self];
+}
 
 #pragma mark - Facebook delegate
 
@@ -280,6 +313,8 @@
     [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
     [service authenticateWithApiKey:self.apiKey apiSecret:self.apiSecret thirdPartyAuthToken:self.facebook.accessToken thirdPartyAppId:self.thirdPartyAppId thirdPartyName:FacebookAuth];
+    
+    [FacebookAuthenticator setLastUsedAuthenticator:nil];
 }
 
 /**
@@ -290,6 +325,8 @@
     NSLog(@"User cancelled authentication");
     if(cancelled)
         [service request:nil didFailWithError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+    
+    [FacebookAuthenticator setLastUsedAuthenticator:nil];
 }
 
 /**
@@ -301,6 +338,16 @@
     [defaults removeObjectForKey:@"FBAccessTokenKey"];
     [defaults removeObjectForKey:@"FBExpirationDateKey"];
     [defaults synchronize];
+}
+
++ (void)setLastUsedAuthenticator:(FacebookAuthenticator*)newAuthenticator {
+    [newAuthenticator retain];
+    [FacebookAuthenticatorLastUsedAuthenticator release];
+    FacebookAuthenticatorLastUsedAuthenticator = newAuthenticator;
+}
+
++ (BOOL)handleOpenURL:(NSURL*)url {
+    return [FacebookAuthenticatorLastUsedAuthenticator handleOpenURL:url];
 }
 
 -(BOOL) handleOpenURL:(NSURL *)url

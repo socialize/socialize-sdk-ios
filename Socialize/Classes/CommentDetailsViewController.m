@@ -63,14 +63,19 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+- (id)initWithNibName:(NSString*)nibName bundle:(NSBundle *)nibBundleOrNil{
+    if ((self = [super initWithNibName:nibName bundle:nibBundleOrNil])) {
+        NSLog(@"bundle found");
+    }
+    return self;
+}
 #pragma mark user location
 
 -(void)setupCommentGeoLocation
 {
     CLLocationCoordinate2D centerPoint = {[self.comment.lat doubleValue], 
         [self.comment.lng doubleValue]};     
-    
-
     
     [commentDetailsView updateGeoLocation: centerPoint];
     

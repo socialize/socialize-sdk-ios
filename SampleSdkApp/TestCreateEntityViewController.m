@@ -85,7 +85,7 @@
     [_socialize createEntityWithUrl:createEntityUrlTextField.text andName:createEntityNameTextField.text];
 }
 
--(IBAction)backgroundTouched{
+-(IBAction)backgroundTouched{   
     [createEntityUrlTextField resignFirstResponder];
     [createEntityNameTextField resignFirstResponder];
 }

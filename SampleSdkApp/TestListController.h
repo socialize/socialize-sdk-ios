@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
+@class SocializeUser;
 
 @interface TestListController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
     
     NSArray*                _testList;
     IBOutlet UITableView*   _tableView;
-
+    SocializeUser*          _user;
 }
+
+@property(nonatomic, retain) SocializeUser* user;
 
 @end

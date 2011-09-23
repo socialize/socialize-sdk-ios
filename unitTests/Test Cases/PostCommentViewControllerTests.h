@@ -30,10 +30,7 @@
 #import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
 
-@class PostCommentViewController;
-
 @interface PostCommentViewControllerTests : GHTestCase {
-    PostCommentViewController* postCommentController;
 }
 
 @end

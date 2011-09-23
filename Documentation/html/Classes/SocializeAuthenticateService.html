@@ -42,7 +42,11 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
+	<option value="//api/name/handleOpenURL:">&nbsp;&nbsp;&nbsp;&nbsp;+ handleOpenURL:</option>
+	
 	<option value="//api/name/isAuthenticated">&nbsp;&nbsp;&nbsp;&nbsp;+ isAuthenticated</option>
+	
+	<option value="//api/name/isAuthenticatedWithFacebook">&nbsp;&nbsp;&nbsp;&nbsp;+ isAuthenticatedWithFacebook</option>
 	
 	
 	
@@ -56,6 +60,8 @@
 	<option value="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</option>
 	
 	<option value="//api/name/handleOpenURL:">&nbsp;&nbsp;&nbsp;&nbsp;- handleOpenURL:</option>
+	
+	<option value="//api/name/receiveFacebookAuthToken">&nbsp;&nbsp;&nbsp;&nbsp;- receiveFacebookAuthToken</option>
 	
 	<option value="//api/name/removeAuthenticationInfo">&nbsp;&nbsp;&nbsp;&nbsp;- removeAuthenticationInfo</option>
 	
@@ -91,7 +97,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/handleOpenURL:">handleOpenURL:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAuthenticated">isAuthenticated</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAuthenticatedWithFacebook">isAuthenticatedWithFacebook</a></span></li>
 	
 </ul></li>
 
@@ -106,6 +116,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:">authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/handleOpenURL:">handleOpenURL:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiveFacebookAuthToken">receiveFacebookAuthToken</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeAuthenticationInfo">removeAuthenticationInfo</a></span></li>
 	
@@ -136,7 +148,7 @@
 	<td class="specification-value">SocializeService : NSObject</td>
 </tr><tr>
 	<td class="specification-title">Conforms to</td>
-	<td class="specification-value">FBSessionDelegate</td>
+	<td class="specification-value">SocializeFBSessionDelegate</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
 	<td class="specification-value">SocializeAuthenticateService.h</td>
@@ -211,6 +223,13 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/isAuthenticatedWithFacebook">+&nbsp;isAuthenticatedWithFacebook</a></code>
+		<span class="tooltip"><p>Check if authentication credentials still valid /and/ that this is a facebook authentication.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/removeAuthenticationInfo">&ndash;&nbsp;removeAuthenticationInfo</a></code>
 		<span class="tooltip"><p>Remove old authentication information.</p></span>
 	</span>
@@ -220,6 +239,21 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/handleOpenURL:">&ndash;&nbsp;handleOpenURL:</a></code>
 		<span class="tooltip"><p>This method is used for Facebook authentication.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/handleOpenURL:">+&nbsp;handleOpenURL:</a></code>
+		<span class="tooltip"><p>This is a class method version of above, intended to make it easier for the user to
+plug socialize into their application</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receiveFacebookAuthToken">&ndash;&nbsp;receiveFacebookAuthToken</a></code>
+		<span class="tooltip"><p>Allows get facebook authentication token</p></span>
 	</span>
 	
 	
@@ -237,6 +271,51 @@
 					<div class="section section-methods">
 						<a title="Class Methods" name="class_methods"></a>
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/handleOpenURL:" title="handleOpenURL:"></a>
+	<h3 class="subsubtitle method-title">handleOpenURL:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This is a class method version of above, intended to make it easier for the user to
+plug socialize into their application</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (BOOL)handleOpenURL:(NSURL *)<em>url</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>url</em></dt>
+			<dd><p>Unique URL to the user application.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeAuthenticateService.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/isAuthenticated" title="isAuthenticated"></a>
@@ -257,6 +336,45 @@
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
 		<p>YES if valid and NO if access token was expired.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeAuthenticateService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isAuthenticatedWithFacebook" title="isAuthenticatedWithFacebook"></a>
+	<h3 class="subsubtitle method-title">isAuthenticatedWithFacebook</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Check if authentication credentials still valid /and/ that this is a facebook authentication.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isAuthenticatedWithFacebook</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if credentials are valid and facebook was used for authentication, and NO otherwise</p>
 	</div>
 	
 	
@@ -566,6 +684,45 @@ Find information how to get API key and secret on <a href="http://www.getsociali
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/receiveFacebookAuthToken" title="receiveFacebookAuthToken"></a>
+	<h3 class="subsubtitle method-title">receiveFacebookAuthToken</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Allows get facebook authentication token</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)receiveFacebookAuthToken</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>facebook authentication toke</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeAuthenticateService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/removeAuthenticationInfo" title="removeAuthenticationInfo"></a>
 	<h3 class="subsubtitle method-title">removeAuthenticationInfo</h3>
 	
@@ -617,7 +774,7 @@ Find information how to get API key and secret on <a href="http://www.getsociali
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 Socialize Inc. All rights reserved. (Last updated: 2011-08-09)</span><br />
+						<p><span class="copyright">&copy; 2011 Socialize Inc. All rights reserved. (Last updated: 2011-09-22)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
 						
