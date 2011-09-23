@@ -125,7 +125,7 @@
     
     FacebookAuthenticator* fbAuth = [[[FacebookAuthenticator alloc] initWithFramework:fbMock apiKey:apiKey apiSecret:apiSecret appId:appId service:nil]autorelease];
     
-    [[fbMock expect]authorize: nil delegate:fbAuth];
+    [[fbMock expect]authorize: nil delegate:fbAuth localAppId:nil];
     [fbAuth performAuthentication];
     
     [fbMock verify];
