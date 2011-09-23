@@ -13,7 +13,6 @@ Installing the SDK
 ------------------
 
 - Install the embedded static framework to your application. To do this just drag and drop Socialize-IOS.embeddedframework from project root (i.e. socialize-sdk-ios folder) to your framework section.
-- Add third party libraries with headers: JSONKit, OAuthConsumer to your solution if you did not have them before. These libraries can be found either in the socialize-sdk-ios/Socialize/Libraries/ folder or downloaded from the internet.
 
 - Add CoreGraphics.framework to your application target.
 - Add CoreLocation.framework to your application target.
