@@ -101,6 +101,7 @@
 		1681BDC913F55D3200EC6042 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1681BDC813F55D3200EC6042 /* CoreLocation.framework */; };
 		1681BDCA13F55D3600EC6042 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1681BDC813F55D3200EC6042 /* CoreLocation.framework */; };
 		1681BDCB13F55E2400EC6042 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D97F03C13DFC91500B16454 /* QuartzCore.framework */; };
+		1690969F143066270000D6CA /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1690969E143066270000D6CA /* libKIF.a */; };
 		169BC7A11420CD94007ED41E /* SocializeLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 169BC79F1420CD94007ED41E /* SocializeLocationManager.h */; };
 		169BC7A21420CD94007ED41E /* SocializeLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7A01420CD94007ED41E /* SocializeLocationManager.m */; };
 		169BC7A61420D602007ED41E /* UILabel+FormatedText.h in Headers */ = {isa = PBXBuildFile; fileRef = 169BC7A41420D602007ED41E /* UILabel+FormatedText.h */; };
@@ -683,7 +684,6 @@
 		AAFE11D014228E6C00A142D9 /* socialize-nocomments-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DAC93814209E6B0011CD5F /* socialize-nocomments-icon@2x.png */; };
 		AAFE11D114228E6C00A142D9 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16DAC93914209E6B0011CD5F /* SocializeCommentsTableViewController.xib */; };
 		AAFE11D214228E6C00A142D9 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16DAC93A14209E6B0011CD5F /* SocializeConfigurationInfo.plist */; };
-		AAFE11D914228EA700A142D9 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D1A871421342100E118A0 /* libKIF.a */; };
 		AAFE11DA14228FBE00A142D9 /* SampleSdkAppKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = AACBBDDF14216497008F0A50 /* SampleSdkAppKIFTestController.m */; };
 		AAFE11DB14228FC700A142D9 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleSdkAppAdditions.m */; };
 		AAFE11DC14228FC900A142D9 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AACBBDE514216530008F0A50 /* KIFTestStep+SampleSdkAppAdditions.m */; };
@@ -703,20 +703,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5CC3DABD1378824700B11B78;
 			remoteInfo = Socialize;
-		};
-		AA2D1A861421342100E118A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA2D1A7F1421342100E118A0 /* KIF.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AAB07268139719AC008AF393;
-			remoteInfo = KIF;
-		};
-		AAE033F0142A99FF0028F9AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA2D1A7F1421342100E118A0 /* KIF.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = AAB07267139719AC008AF393;
-			remoteInfo = KIF;
 		};
 		AAFE115614228E6C00A142D9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -882,6 +868,7 @@
 		1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostCommentViewController.h; path = Classes/PostCommentViewController.h; sourceTree = "<group>"; };
 		1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostCommentViewController.m; path = Classes/PostCommentViewController.m; sourceTree = "<group>"; };
 		1681BDC813F55D3200EC6042 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1690969E143066270000D6CA /* libKIF.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libKIF.a; sourceTree = SOURCE_ROOT; };
 		169BC79F1420CD94007ED41E /* SocializeLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLocationManager.h; path = Classes/SocializeLocationManager.h; sourceTree = "<group>"; };
 		169BC7A01420CD94007ED41E /* SocializeLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLocationManager.m; path = Classes/SocializeLocationManager.m; sourceTree = "<group>"; };
 		169BC7A41420D602007ED41E /* UILabel+FormatedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+FormatedText.h"; path = "Classes/UILabel+FormatedText.h"; sourceTree = "<group>"; };
@@ -1311,7 +1298,6 @@
 		9ABB68BB13BA78A4001882D1 /* SocializeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeService.m; path = Classes/SocializeService.m; sourceTree = "<group>"; };
 		9AC0259713BB8253004AB147 /* SocializeUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUserService.h; path = Classes/SocializeUserService.h; sourceTree = "<group>"; };
 		9AC0259813BB8253004AB147 /* SocializeUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserService.m; path = Classes/SocializeUserService.m; sourceTree = "<group>"; };
-		AA2D1A7F1421342100E118A0 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = SampleSdkApp/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
 		AA62FFD2142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleSdkApp Integration Tests-Info.plist"; sourceTree = "<group>"; };
 		AA75A06E14216B210032C88F /* SampleSdkApp-Integration-Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Integration-Tests-Prefix.pch"; sourceTree = "<group>"; };
 		AAA37E351423E44A00803E24 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
@@ -1372,7 +1358,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAFE11D914228EA700A142D9 /* libKIF.a in Frameworks */,
+				1690969F143066270000D6CA /* libKIF.a in Frameworks */,
 				AAFE116614228E6C00A142D9 /* CoreLocation.framework in Frameworks */,
 				AAFE116714228E6C00A142D9 /* MapKit.framework in Frameworks */,
 				AAFE116814228E6C00A142D9 /* QuartzCore.framework in Frameworks */,
@@ -1770,7 +1756,6 @@
 		5CC3DAB1137881B900B11B78 = {
 			isa = PBXGroup;
 			children = (
-				AA2D1A7F1421342100E118A0 /* KIF.xcodeproj */,
 				6DFBFE52141FDC890030DE32 /* ThirdPartyLibs */,
 				5CC3DAC31378824800B11B78 /* Socialize */,
 				5CC3DAEE1378859000B11B78 /* unitTests */,
@@ -1794,6 +1779,7 @@
 		5CC3DAC01378824800B11B78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1690969E143066270000D6CA /* libKIF.a */,
 				16DAC8E314209E6B0011CD5F /* Socialize-iOS.embeddedframework */,
 				1673D68F13DEA40E00A86589 /* OCMock */,
 				5C54DE6013830F9800090269 /* libOCMock.a */,
@@ -2250,14 +2236,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		AA2D1A801421342100E118A0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AA2D1A871421342100E118A0 /* libKIF.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		AAA37E301423E22100803E24 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -2460,7 +2438,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				AAE033F1142A99FF0028F9AB /* PBXTargetDependency */,
 				AAFE115514228E6C00A142D9 /* PBXTargetDependency */,
 			);
 			name = "SampleSdkApp Integration Tests";
@@ -2487,12 +2464,6 @@
 			mainGroup = 5CC3DAB1137881B900B11B78;
 			productRefGroup = 5CC3DABF1378824800B11B78 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = AA2D1A801421342100E118A0 /* Products */;
-					ProjectRef = AA2D1A7F1421342100E118A0 /* KIF.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				5CC3DABD1378824700B11B78 /* Socialize */,
@@ -2503,16 +2474,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		AA2D1A871421342100E118A0 /* libKIF.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libKIF.a;
-			remoteRef = AA2D1A861421342100E118A0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		16E2C4331398C40E007C91ED /* Resources */ = {
@@ -3135,11 +3096,6 @@
 			target = 5CC3DABD1378824700B11B78 /* Socialize */;
 			targetProxy = 5C6EC7941379CF150073AE65 /* PBXContainerItemProxy */;
 		};
-		AAE033F1142A99FF0028F9AB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = KIF;
-			targetProxy = AAE033F0142A99FF0028F9AB /* PBXContainerItemProxy */;
-		};
 		AAFE115514228E6C00A142D9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 16B48DAA13DEEBE100EE0A92 /* Socialize-iOS */;
@@ -3516,6 +3472,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/unitTests/Libraries\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -3563,6 +3520,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/unitTests/Libraries\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
