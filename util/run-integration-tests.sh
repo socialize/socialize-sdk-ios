@@ -2,11 +2,16 @@
 
 THISDIR=$(dirname $0)
 SRCDIR="$THISDIR/.."
+XCODE_ENVIRONMENT="${SRCDIR}/build/SampleSdkApp Integration Tests-env"
 
 killall "iPhone Simulator"
 
+[ -e "${XCODE_ENVIRONMENT}" ] || { echo "Can't find ${XCODE_ENVIRONMENT}. You must run dump-xcode-environment.sh from the xcode target."; exit 1; }
+source "${XCODE_ENVIRONMENT}"
+
 set -o errexit
 set -o verbose
+
 
 function cleanup() {
   set +o errexit
@@ -20,7 +25,7 @@ function cleanup() {
 trap cleanup INT TERM EXIT
 
 # Build the "Integration Tests" target to run in the simulator
-cd "$SRCDIR" && xcodebuild -target "SampleSdkApp Integration Tests" -configuration Distribution -sdk iphonesimulator build
+cd "$SRCDIR" && xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme 'SampleSdkApp Integration Tests' -configuration Release -sdk iphonesimulator build
 
 # Run the app we just built in the simulator and send its output to a file
 # /path/to/MyApp.app should be the relative or absolute path to the application bundle that was built in the previous step
@@ -30,7 +35,7 @@ OUTFILE="/tmp/KIF-$$.out"
 echo "OUTFILE is $OUTFILE"
 
 # pipe from waxsim to tee does not work
-KIF_CLI=1 "$THISDIR/waxsim" -f "iphone" "$SRCDIR/build/Release-iphonesimulator/SampleSdkApp Integration Tests.app" >"$OUTFILE" 2>&1 &
+KIF_CLI=1 "$THISDIR/waxsim" -f "iphone" "$CONFIGURATION_BUILD_DIR/SampleSdkApp Integration Tests.app" >"$OUTFILE" 2>&1 &
 simPID=$!
 
 tail -f "$OUTFILE" &

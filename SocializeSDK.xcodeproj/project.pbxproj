@@ -2434,6 +2434,7 @@
 				AAFE116514228E6C00A142D9 /* Frameworks */,
 				AAFE116E14228E6C00A142D9 /* Resources */,
 				AAFE11D314228E6C00A142D9 /* ShellScript */,
+				AABF6AFE14312A5200DAB37F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2877,6 +2878,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh RunTests.sh";
 			shellScript = "";
+		};
+		AABF6AFE14312A5200DAB37F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/util/dump-xcode-env.sh";
 		};
 		AAFE11D314228E6C00A142D9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3439,7 +3453,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: pointabout";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3480,7 +3494,7 @@
 					"-lgcov",
 				);
 				PRODUCT_NAME = "SampleSdkApp Integration Tests";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "542E5F91-FA04-4A6B-BEB8-1CCD67D816FD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
