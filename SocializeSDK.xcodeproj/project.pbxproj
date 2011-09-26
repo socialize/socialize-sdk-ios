@@ -1079,8 +1079,8 @@
 		6D44A7D21402D20C004B3A46 /* NSNumber+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+Additions.m"; path = "Classes/NSNumber+Additions.m"; sourceTree = "<group>"; };
 		6D44A8E314030196004B3A46 /* action-bar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-bar-bg.png"; path = "Resources/action-bar-bg.png"; sourceTree = "<group>"; };
 		6D44A8E414030197004B3A46 /* action-bar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-bar-bg@2x.png"; path = "Resources/action-bar-bg@2x.png"; sourceTree = "<group>"; };
-		6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsTableViewController.h; path = ../Socialize/Classes/SocializeCommentsTableViewController.h; sourceTree = "<group>"; };
-		6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsTableViewController.m; path = ../Socialize/Classes/SocializeCommentsTableViewController.m; sourceTree = "<group>"; };
+		6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsTableViewController.h; path = Classes/SocializeCommentsTableViewController.h; sourceTree = "<group>"; };
+		6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsTableViewController.m; path = Classes/SocializeCommentsTableViewController.m; sourceTree = "<group>"; };
 		6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeCommentsTableViewController.xib; path = Resources/SocializeCommentsTableViewController.xib; sourceTree = "<group>"; };
 		6D44A90414041848004B3A46 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsTableViewCell.h; path = Classes/CommentsTableViewCell.h; sourceTree = "<group>"; };
 		6D44A90514041851004B3A46 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsTableViewCell.m; path = Classes/CommentsTableViewCell.m; sourceTree = "<group>"; };
@@ -1483,6 +1483,8 @@
 				1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */,
 				16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */,
 				16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */,
+				6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */,
+				6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1962,8 +1964,6 @@
 				16D2476814163161008A550D /* CommentDetailsViewForTest.m */,
 				16D247891417A984008A550D /* PostCommentViewControllerTests.h */,
 				16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */,
-				6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */,
-				6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */,
 				6DFB0010141FF9430030DE32 /* CommentsTableViewTests.h */,
 				6DFB0011141FF9450030DE32 /* CommentsTableViewTests.m */,
 			);
