@@ -2,7 +2,7 @@
 default: build buildsample test package
  	# do all the dependencies above
 	#
-package:
+package: build
     # zip sources
 	./util/package.sh
      
