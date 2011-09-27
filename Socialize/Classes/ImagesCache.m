@@ -36,7 +36,14 @@
 
 @implementation ImagesCache
 
-SYNTHESIZE_SINGLETON_FOR_CLASS(ImagesCache);
+static ImagesCache *sharedImagesCache;
+
++ (ImagesCache*)sharedImagesCache {
+    if (sharedImagesCache == nil) {
+        sharedImagesCache = [[ImagesCache alloc] init];
+    }
+    return sharedImagesCache;
+}
 
 +(Class)defaultImageLoader {
     return [UrlImageLoader class];
