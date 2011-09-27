@@ -6,9 +6,6 @@ XCODE_ENVIRONMENT="${SRCDIR}/build/SampleSdkApp Integration Tests-env"
 
 killall "iPhone Simulator"
 
-[ -e "${XCODE_ENVIRONMENT}" ] || { echo "Can't find ${XCODE_ENVIRONMENT}. You must run dump-xcode-environment.sh from the xcode target."; exit 1; }
-source "${XCODE_ENVIRONMENT}"
-
 set -o errexit
 set -o verbose
 
@@ -26,6 +23,9 @@ trap cleanup INT TERM EXIT
 
 # Build the "Integration Tests" target to run in the simulator
 cd "$SRCDIR" && xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme 'SampleSdkApp Integration Tests' -configuration Release -sdk iphonesimulator build
+
+[ -e "${XCODE_ENVIRONMENT}" ] || { echo "Can't find ${XCODE_ENVIRONMENT}. You must run dump-xcode-environment.sh from the xcode target."; exit 1; }
+source "${XCODE_ENVIRONMENT}"
 
 # Run the app we just built in the simulator and send its output to a file
 # /path/to/MyApp.app should be the relative or absolute path to the application bundle that was built in the previous step

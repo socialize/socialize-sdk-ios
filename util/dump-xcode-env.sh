@@ -5,4 +5,4 @@
 OUTDIR="${PROJECT_DIR}/build"
 mkdir -p "$OUTDIR"
 
-set | egrep -v 'SHELLOPTS|PPID|UID' > "${OUTDIR}/${PRODUCT_NAME}-env"
+set | egrep -v 'SHELLOPTS|PPID|UID|BASH_VERSINFO' > "${OUTDIR}/${PRODUCT_NAME}-env"
