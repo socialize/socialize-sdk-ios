@@ -28,12 +28,19 @@
 #import "ImagesCache.h"
 #import "URLDownload.h"
 #import "ImageLoader.h"
+#import "SynthesizeSingleton.h"
 
 @interface ImagesCache()
     - (void) completeLoadHandler:(NSData *)data url:(NSObject *)url;
 @end
 
 @implementation ImagesCache
+
+SYNTHESIZE_SINGLETON_FOR_CLASS(ImagesCache);
+
++(Class)defaultImageLoader {
+    return [UrlImageLoader class];
+}
 
 -(id)init
 {
@@ -68,6 +75,11 @@
         if(cAction)
             cAction(blockSelf);
     }copy]autorelease];
+}
+
+-(void)loadImageFromUrl:(NSString*)url completeAction:(CompleteBlock)cAction
+{
+    [self loadImageFromUrl:url withLoader:[ImagesCache defaultImageLoader] andCompleteAction:cAction];
 }
 
 -(void)loadImageFromUrl:(NSString*)url withLoader:(Class)loader andCompleteAction:(CompleteBlock)cAction

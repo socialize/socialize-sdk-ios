@@ -173,6 +173,10 @@
 {
 }
 
+-(id<SocializeUser>)authenticatedUser {
+    return _authService.authenticatedUser;
+}
+
 -(BOOL)isAuthenticated{
     return [SocializeAuthenticateService isAuthenticated];
 }

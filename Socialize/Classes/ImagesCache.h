@@ -38,7 +38,14 @@ typedef void (^CompleteBlock)(ImagesCache* cache);
     NSMutableDictionary             *pendingUrlDownloads;
 }
 
+/* This loader will be used implicitly if no custom loader is specified */
++(Class)defaultImageLoader;
+
+/* Singleton cache */
++(ImagesCache*)sharedImagesCache;
+
 -(UIImage*)imageFromCache: (NSString*)url;
+-(void)loadImageFromUrl:(NSString*)url completeAction:(CompleteBlock)cAction;
 -(void)loadImageFromUrl:(NSString*)url withLoader:(Class)loader andCompleteAction:(CompleteBlock)cAction;
 -(void)stopOperations;
 -(void)clearCache;

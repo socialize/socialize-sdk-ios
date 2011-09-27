@@ -563,6 +563,10 @@
 		AA62FFD3142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA62FFD2142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist */; };
 		AAA37E371423E44A00803E24 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E361423E44A00803E24 /* StringHelper.m */; };
 		AAA37E3A1423E49900803E24 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E391423E49900803E24 /* DataHelper.m */; };
+		AABF6AAF1430F78000DAB37F /* ProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF6AAC1430F78000DAB37F /* ProfileViewController.h */; };
+		AABF6AB01430F78000DAB37F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF6AAD1430F78000DAB37F /* ProfileViewController.m */; };
+		AABF6AB31430FFC300DAB37F /* SynthesizeSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF6AB21430FFC300DAB37F /* SynthesizeSingleton.h */; };
+		AABF6B0E14313E8400DAB37F /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABF6B0D14313E8400DAB37F /* ProfileViewController.xib */; };
 		AAFE115814228E6C00A142D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4411398C40F007C91ED /* main.m */; };
 		AAFE115914228E6C00A142D9 /* SampleSdkAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */; };
 		AAFE115A14228E6C00A142D9 /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
@@ -1304,6 +1308,10 @@
 		AAA37E361423E44A00803E24 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
 		AAA37E381423E49900803E24 /* DataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHelper.h; sourceTree = "<group>"; };
 		AAA37E391423E49900803E24 /* DataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHelper.m; sourceTree = "<group>"; };
+		AABF6AAC1430F78000DAB37F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		AABF6AAD1430F78000DAB37F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		AABF6AB21430FFC300DAB37F /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		AABF6B0D14313E8400DAB37F /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileViewController.xib; path = Resources/ProfileViewController.xib; sourceTree = "<group>"; };
 		AACBBDDE14216497008F0A50 /* SampleSdkAppKIFTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleSdkAppKIFTestController.h; sourceTree = "<group>"; };
 		AACBBDDF14216497008F0A50 /* SampleSdkAppKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppKIFTestController.m; sourceTree = "<group>"; };
 		AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleSdkAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestScenario+SampleSdkAppAdditions.m"; sourceTree = "<group>"; };
@@ -1485,6 +1493,8 @@
 				16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */,
 				6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */,
 				6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */,
+				AABF6AAC1430F78000DAB37F /* ProfileViewController.h */,
+				AABF6AAD1430F78000DAB37F /* ProfileViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -2022,6 +2032,7 @@
 			isa = PBXGroup;
 			children = (
 				1666BD21140E11CF00518811 /* Downloaders */,
+				AABF6AB21430FFC300DAB37F /* SynthesizeSingleton.h */,
 				6D44A9061404186C004B3A46 /* NSDateAdditions.h */,
 				6D44A9071404189C004B3A46 /* NSDateAdditions.m */,
 				6D8984411407CA6B00482F1E /* HtmlPageCreator.h */,
@@ -2146,6 +2157,7 @@
 		9A4D29831393FF720065C0CB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AABF6B0D14313E8400DAB37F /* ProfileViewController.xib */,
 				6D8984461407CD1900482F1E /* comment_template_clear.htm */,
 				6D8D224F14059C920026185F /* socialize-navbar-bg.png */,
 				6D8D225014059C960026185F /* socialize-navbar-bg@2x.png */,
@@ -2364,6 +2376,8 @@
 				16DAC9991420C0EE0011CD5F /* UIKeyboardListener.h in Headers */,
 				169BC7A11420CD94007ED41E /* SocializeLocationManager.h in Headers */,
 				169BC7A61420D602007ED41E /* UILabel+FormatedText.h in Headers */,
+				AABF6AAF1430F78000DAB37F /* ProfileViewController.h in Headers */,
+				AABF6AB31430FFC300DAB37F /* SynthesizeSingleton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2695,6 +2709,7 @@
 				6D8D225114059CA20026185F /* socialize-navbar-bg.png in Resources */,
 				6D8D225314059CA20026185F /* socialize-navbar-bg@2x.png in Resources */,
 				6D8984471407CD1900482F1E /* comment_template_clear.htm in Resources */,
+				AABF6B0E14313E8400DAB37F /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3022,6 +3037,7 @@
 				16DAC99A1420C0EE0011CD5F /* UIKeyboardListener.m in Sources */,
 				169BC7A21420CD94007ED41E /* SocializeLocationManager.m in Sources */,
 				169BC7A71420D602007ED41E /* UILabel+FormatedText.m in Sources */,
+				AABF6AB01430F78000DAB37F /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

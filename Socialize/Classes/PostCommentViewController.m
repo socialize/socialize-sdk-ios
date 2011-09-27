@@ -15,6 +15,7 @@
 #import "SocializeLocationManager.h"
 #import "UILabel+FormatedText.h"
 #import "UINavigationBarBackground.h"
+#import "ProfileViewController.h"
 
 @interface PostCommentViewController ()
 
@@ -292,9 +293,31 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+- (void)showProfile {
+    ProfileViewController *profile = [[[ProfileViewController alloc] init] autorelease];
+    profile.user = [_socialize authenticatedUser];
+    profile.delegate = self;
+    
+    UINavigationController *navigationController = [[[UINavigationController alloc]
+                                                     initWithRootViewController:profile]
+                                                    autorelease];
+    
+    [self presentModalViewController:navigationController animated:YES];
+}
+
+- (void)profileViewControllerDidSave:(ProfileViewController *)profileViewController {
+    [self dismissModalViewControllerAnimated:YES];
+    [self createComment];
+}
+
+- (void)profileViewControllerDidCancel:(ProfileViewController *)profileViewController {
+    [self dismissModalViewControllerAnimated:YES];
+    [self createComment];
+}
+
 -(void)didAuthenticate:(id<SocializeUser>)user {
     [self stopLoadAnimation];
-    [self createComment];
+    [self showProfile];
 }
 
 

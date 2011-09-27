@@ -10,12 +10,13 @@
 #import <MapKit/MapKit.h>
 #import "LoadingView.h"
 #import "Socialize.h"
+#import "ProfileViewController.h"
 
 @class CommentMapView;
 @class UIKeyboardListener;
 @class SocializeLocationManager;
 
-@interface PostCommentViewController : UIViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate, UIAlertViewDelegate >
+@interface PostCommentViewController : UIViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate, UIAlertViewDelegate, ProfileViewControllerDelegate >
 {
 @private
     SocializeLocationManager* locationManager;

@@ -276,6 +276,11 @@ otherwise you will get a failure.
 -(BOOL)isAuthenticated;
 
 /**
+ @return A SocializeUser object for the currently authenticated user
+ */
+-(id<SocializeUser>)authenticatedUser;
+
+/**
  Remove old authentication information.
  
  If user would like to re-authenticate he has to remove previous authentication information.
