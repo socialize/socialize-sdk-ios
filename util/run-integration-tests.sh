@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 THISDIR=$(dirname $0)
 SRCDIR="$THISDIR/.."
