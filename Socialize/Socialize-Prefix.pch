@@ -43,3 +43,8 @@
 #define EstimateBas64DecodedDataSize SocializeEstimateBas64DecodedDataSize
 #define Base64EncodeData SocializeBase64EncodeData
 #define Base64DecodeData SocializeBase64DecodeData
+
+#define SBJSON SocializeSBJSON
+#define SBJsonBase SocializeSBJsonBase
+#define SBJsonParser SocializeSBJsonParser
+

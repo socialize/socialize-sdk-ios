@@ -678,7 +678,6 @@
 		AA3D69561432ADEF00DA77AC /* socialize-sectionheader-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694C1432ADEF00DA77AC /* socialize-sectionheader-bg.png */; };
 		AA3D69571432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694D1432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png */; };
 		AA3D6989143396F900DA77AC /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA3D6988143396F900DA77AC /* SocializeConfigurationInfo.plist */; };
-		AA62FFD3142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA62FFD2142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist */; };
 		AAA37E371423E44A00803E24 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E361423E44A00803E24 /* StringHelper.m */; };
 		AAA37E3A1423E49900803E24 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E391423E49900803E24 /* DataHelper.m */; };
 		AABF6B0E14313E8400DAB37F /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABF6B0D14313E8400DAB37F /* ProfileViewController.xib */; };
@@ -2826,7 +2825,6 @@
 				AAFE117C14228E6C00A142D9 /* background.png in Resources */,
 				AA36981814281C190010CF0B /* TestShowSmallUserInfo.xib in Resources */,
 				16BC8197142A217900D90C26 /* SocializeApiInfo.plist in Resources */,
-				AA62FFD3142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist in Resources */,
 				160754F914330A26002E5A38 /* action-bar-bg.png in Resources */,
 				160754FB14330A26002E5A38 /* action-bar-bg@2x.png in Resources */,
 				160754FD14330A26002E5A38 /* action-bar-button-black-hover.png in Resources */,
