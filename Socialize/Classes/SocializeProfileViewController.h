@@ -11,7 +11,7 @@
 
 @protocol ProfileViewControllerDelegate;
 
-@interface ProfileViewController : UIViewController
+@interface SocializeProfileViewController : UIViewController
 @property (nonatomic, retain) UIBarButtonItem *doneButton;
 @property (nonatomic, retain) UIBarButtonItem *editButton;
 @property (nonatomic, assign) id<ProfileViewControllerDelegate> delegate;
@@ -24,6 +24,6 @@
 @end
 
 @protocol ProfileViewControllerDelegate
-- (void)profileViewControllerDidCancel:(ProfileViewController*)profileViewController;
-- (void)profileViewControllerDidSave:(ProfileViewController*)profileViewController;
+- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController;
+- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController;
 @end

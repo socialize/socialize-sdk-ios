@@ -6,7 +6,7 @@
 //  Copyright 2011 pointabout. All rights reserved.
 //
 
-#import "CommentDetailsViewController.h"
+#import "SocializeCommentDetailsViewController.h"
 #import "SocializeComment.h"
 #import "CommentDetailsView.h"
 #import "CommentMapView.h"
@@ -29,7 +29,7 @@
 #define kCenterPointLongitude -122.417908
 
 
-@interface CommentDetailsViewController()
+@interface SocializeCommentDetailsViewController()
 
 @property(nonatomic, retain) MKReverseGeocoder *geoCoder;
 -(void) showComment;
@@ -38,7 +38,7 @@
 
 @end
 
-@implementation CommentDetailsViewController
+@implementation SocializeCommentDetailsViewController
 
 @synthesize commentDetailsView;
 @synthesize comment;

@@ -10,7 +10,7 @@
 #import "SocializeService.h"
 #import "CommentsTableFooterView.h"
 #import "TableBGInfoView.h"
-#import "PostCommentViewController.h"
+#import "SocializePostCommentViewController.h"
 #import "Socialize.h"
 #import "LoadingView.h"
 #import "ImagesCache.h"

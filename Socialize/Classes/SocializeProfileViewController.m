@@ -6,12 +6,12 @@
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "ProfileViewController.h"
+#import "SocializeProfileViewController.h"
 #import "ImagesCache.h"
 #import "UINavigationBarBackground.h"
 #import "UIButton+Socialize.h"
 
-@implementation ProfileViewController
+@implementation SocializeProfileViewController
 @synthesize delegate = delegate_;
 @synthesize doneButton = doneButton_;
 @synthesize editButton = editButton_;

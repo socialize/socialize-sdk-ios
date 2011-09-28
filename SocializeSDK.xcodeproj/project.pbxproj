@@ -28,9 +28,9 @@
 		160754841432F8FC002E5A38 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 160754831432F8FC002E5A38 /* libKIF.a */; };
 		160754871432FB7C002E5A38 /* NSString+PlaceMark.h in Headers */ = {isa = PBXBuildFile; fileRef = 160754851432FB7C002E5A38 /* NSString+PlaceMark.h */; };
 		160754881432FB7C002E5A38 /* NSString+PlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 160754861432FB7C002E5A38 /* NSString+PlaceMark.m */; };
-		1607548B1432FBA4002E5A38 /* ProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 160754891432FBA4002E5A38 /* ProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1607548C1432FBA4002E5A38 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607548A1432FBA4002E5A38 /* ProfileViewController.m */; };
-		1607548D1432FBA8002E5A38 /* ProfileViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 160754891432FBA4002E5A38 /* ProfileViewController.h */; };
+		1607548B1432FBA4002E5A38 /* SocializeProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 160754891432FBA4002E5A38 /* SocializeProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1607548C1432FBA4002E5A38 /* SocializeProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607548A1432FBA4002E5A38 /* SocializeProfileViewController.m */; };
+		1607548D1432FBA8002E5A38 /* SocializeProfileViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 160754891432FBA4002E5A38 /* SocializeProfileViewController.h */; };
 		1607548F1432FBF4002E5A38 /* SynthesizeSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 1607548E1432FBF4002E5A38 /* SynthesizeSingleton.h */; };
 		16075492143302E4002E5A38 /* SocializeBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16075490143302E4002E5A38 /* SocializeBaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16075493143302E4002E5A38 /* SocializeBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16075491143302E4002E5A38 /* SocializeBaseViewController.m */; };
@@ -291,9 +291,9 @@
 		1681BDB313F5567300EC6042 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C330E013F3C2D1004EA34D /* MapKit.framework */; };
 		1681BDBC13F55BBB00EC6042 /* AppMakrLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BDBA13F55BBB00EC6042 /* AppMakrLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1681BDBD13F55BBB00EC6042 /* AppMakrLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BDBB13F55BBB00EC6042 /* AppMakrLocation.m */; };
-		1681BDC013F55BCB00EC6042 /* PostCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1681BDC113F55BCB00EC6042 /* PostCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */; };
-		1681BDC413F55BED00EC6042 /* PostCommentViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */; };
+		1681BDC013F55BCB00EC6042 /* SocializePostCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BDBE13F55BCB00EC6042 /* SocializePostCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1681BDC113F55BCB00EC6042 /* SocializePostCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BDBF13F55BCB00EC6042 /* SocializePostCommentViewController.m */; };
+		1681BDC413F55BED00EC6042 /* SocializePostCommentViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BDBE13F55BCB00EC6042 /* SocializePostCommentViewController.h */; };
 		1681BDC513F55BED00EC6042 /* AppMakrLocation.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 1681BDBA13F55BBB00EC6042 /* AppMakrLocation.h */; };
 		1681BDC913F55D3200EC6042 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1681BDC813F55D3200EC6042 /* CoreLocation.framework */; };
 		1681BDCA13F55D3600EC6042 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1681BDC813F55D3200EC6042 /* CoreLocation.framework */; };
@@ -307,7 +307,7 @@
 		169BC7AB1421CDE3007ED41E /* UIKeyboardListener.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16DAC9971420C0EE0011CD5F /* UIKeyboardListener.h */; };
 		169BC7AC1421CDE3007ED41E /* SocializeLocationManager.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 169BC79F1420CD94007ED41E /* SocializeLocationManager.h */; };
 		169BC7AD1421CDE3007ED41E /* UILabel+FormatedText.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 169BC7A41420D602007ED41E /* UILabel+FormatedText.h */; };
-		169BC7AE1421CDF8007ED41E /* CommentDetailsViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */; };
+		169BC7AE1421CDF8007ED41E /* SocializeCommentDetailsViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* SocializeCommentDetailsViewController.h */; };
 		169BC7BE1421F87D007ED41E /* InputBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7BD1421F87D007ED41E /* InputBox.m */; };
 		16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A82A031419F37400193CA7 /* ImagesCacheTests.m */; };
 		16A82A0C1419FA9500193CA7 /* ImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 16A82A0A1419FA9500193CA7 /* ImageLoader.h */; };
@@ -393,8 +393,8 @@
 		16F449DA13AF8358003BE655 /* SocializeApplicationJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449D913AF8356003BE655 /* SocializeApplicationJSONFormatterTests.m */; };
 		16F449DD13AF8B37003BE655 /* SocializeUserJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */; };
 		16FCABD113B885CC0034499F /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
-		16FDF4DF1414BA0A00EAA064 /* CommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		16FDF4E01414BA0A00EAA064 /* CommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */; };
+		16FDF4DF1414BA0A00EAA064 /* SocializeCommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* SocializeCommentDetailsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		16FDF4E01414BA0A00EAA064 /* SocializeCommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */; };
 		18029E131432B815002BDEC7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18029E121432B815002BDEC7 /* CoreLocation.framework */; };
 		18A3C3A7141FD00000003172 /* SocializeUnitTestApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */; };
 		18E62568142A886500DAE948 /* SocializeAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF23C51429B1D400BC6123 /* SocializeAsyncTestCase.m */; };
@@ -478,8 +478,8 @@
 		6D56116713E37DAB004E8E8C /* TestFetchCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D56116513E37DA0004E8E8C /* TestFetchCommentsViewController.xib */; };
 		6D56116B13E645D5004E8E8C /* TestLikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D56116913E645BA004E8E8C /* TestLikeViewController.m */; };
 		6D56116C13E645D5004E8E8C /* TestLikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D56116A13E645C5004E8E8C /* TestLikeViewController.xib */; };
-		6D67433513F9EEC300140AA3 /* CommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431513F9EEBA00140AA3 /* CommentDetailsViewController.xib */; };
-		6D67433613F9EEC300140AA3 /* PostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431613F9EEBA00140AA3 /* PostCommentViewController.xib */; };
+		6D67433513F9EEC300140AA3 /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431513F9EEBA00140AA3 /* SocializeCommentDetailsViewController.xib */; };
+		6D67433613F9EEC300140AA3 /* SocializePostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431613F9EEBA00140AA3 /* SocializePostCommentViewController.xib */; };
 		6D67433713F9EEC300140AA3 /* socialize-comment-user-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431713F9EEBA00140AA3 /* socialize-comment-user-background@2x.png */; };
 		6D67433813F9EEC300140AA3 /* socialize-comment-user-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431813F9EEBA00140AA3 /* socialize-comment-user-background.png */; };
 		6D67433913F9EEC300140AA3 /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431913F9EEBA00140AA3 /* socialize-comment-details-icon-geo-enabled@2x.png */; };
@@ -678,9 +678,11 @@
 		AA3D69561432ADEF00DA77AC /* socialize-sectionheader-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694C1432ADEF00DA77AC /* socialize-sectionheader-bg.png */; };
 		AA3D69571432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694D1432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png */; };
 		AA3D6989143396F900DA77AC /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA3D6988143396F900DA77AC /* SocializeConfigurationInfo.plist */; };
+		AA3D69931433AB2600DA77AC /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA3D6988143396F900DA77AC /* SocializeConfigurationInfo.plist */; };
+		AA3D69951433AB3400DA77AC /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA3D6988143396F900DA77AC /* SocializeConfigurationInfo.plist */; };
 		AAA37E371423E44A00803E24 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E361423E44A00803E24 /* StringHelper.m */; };
 		AAA37E3A1423E49900803E24 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E391423E49900803E24 /* DataHelper.m */; };
-		AABF6B0E14313E8400DAB37F /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABF6B0D14313E8400DAB37F /* ProfileViewController.xib */; };
+		AABF6B0E14313E8400DAB37F /* SocializeProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABF6B0D14313E8400DAB37F /* SocializeProfileViewController.xib */; };
 		AAFE115814228E6C00A142D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4411398C40F007C91ED /* main.m */; };
 		AAFE115914228E6C00A142D9 /* SampleSdkAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */; };
 		AAFE115A14228E6C00A142D9 /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
@@ -803,15 +805,15 @@
 				16B48DD913DEEE4400EE0A92 /* SocializeErrorFormatter.h in Copy Headers */,
 				16C330E213F3C315004EA34D /* CommentDetailsView.h in Copy Headers */,
 				16C330E313F3C315004EA34D /* CommentMapView.h in Copy Headers */,
-				1681BDC413F55BED00EC6042 /* PostCommentViewController.h in Copy Headers */,
+				1681BDC413F55BED00EC6042 /* SocializePostCommentViewController.h in Copy Headers */,
 				1681BDC513F55BED00EC6042 /* AppMakrLocation.h in Copy Headers */,
 				169BC7A91421CDE3007ED41E /* ImagesCache.h in Copy Headers */,
 				169BC7AA1421CDE3007ED41E /* ImageLoader.h in Copy Headers */,
 				169BC7AB1421CDE3007ED41E /* UIKeyboardListener.h in Copy Headers */,
 				169BC7AC1421CDE3007ED41E /* SocializeLocationManager.h in Copy Headers */,
 				169BC7AD1421CDE3007ED41E /* UILabel+FormatedText.h in Copy Headers */,
-				169BC7AE1421CDF8007ED41E /* CommentDetailsViewController.h in Copy Headers */,
-				1607548D1432FBA8002E5A38 /* ProfileViewController.h in Copy Headers */,
+				169BC7AE1421CDF8007ED41E /* SocializeCommentDetailsViewController.h in Copy Headers */,
+				1607548D1432FBA8002E5A38 /* SocializeProfileViewController.h in Copy Headers */,
 				160755BC143337E0002E5A38 /* SocializeBaseViewController.h in Copy Headers */,
 				1607588514333E5C002E5A38 /* SocializeFacebook.h in Copy Headers */,
 				1607588614333E5C002E5A38 /* SocializeFBConnect.h in Copy Headers */,
@@ -828,8 +830,8 @@
 		160754831432F8FC002E5A38 /* libKIF.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libKIF.a; sourceTree = SOURCE_ROOT; };
 		160754851432FB7C002E5A38 /* NSString+PlaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+PlaceMark.h"; path = "Classes/NSString+PlaceMark.h"; sourceTree = "<group>"; };
 		160754861432FB7C002E5A38 /* NSString+PlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+PlaceMark.m"; path = "Classes/NSString+PlaceMark.m"; sourceTree = "<group>"; };
-		160754891432FBA4002E5A38 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Classes/ProfileViewController.h; sourceTree = "<group>"; };
-		1607548A1432FBA4002E5A38 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Classes/ProfileViewController.m; sourceTree = "<group>"; };
+		160754891432FBA4002E5A38 /* SocializeProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileViewController.h; path = Classes/SocializeProfileViewController.h; sourceTree = "<group>"; };
+		1607548A1432FBA4002E5A38 /* SocializeProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileViewController.m; path = Classes/SocializeProfileViewController.m; sourceTree = "<group>"; };
 		1607548E1432FBF4002E5A38 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = Classes/SynthesizeSingleton.h; sourceTree = "<group>"; };
 		16075490143302E4002E5A38 /* SocializeBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBaseViewController.h; path = Classes/SocializeBaseViewController.h; sourceTree = "<group>"; };
 		16075491143302E4002E5A38 /* SocializeBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBaseViewController.m; path = Classes/SocializeBaseViewController.m; sourceTree = "<group>"; };
@@ -995,8 +997,8 @@
 		1681BD8F13F555DC00EC6042 /* SocializeFBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFBRequest.m; path = SocializeFacebook/SocializeFBRequest.m; sourceTree = "<group>"; };
 		1681BDBA13F55BBB00EC6042 /* AppMakrLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppMakrLocation.h; path = Classes/AppMakrLocation.h; sourceTree = "<group>"; };
 		1681BDBB13F55BBB00EC6042 /* AppMakrLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppMakrLocation.m; path = Classes/AppMakrLocation.m; sourceTree = "<group>"; };
-		1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostCommentViewController.h; path = Classes/PostCommentViewController.h; sourceTree = "<group>"; };
-		1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostCommentViewController.m; path = Classes/PostCommentViewController.m; sourceTree = "<group>"; };
+		1681BDBE13F55BCB00EC6042 /* SocializePostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePostCommentViewController.h; path = Classes/SocializePostCommentViewController.h; sourceTree = "<group>"; };
+		1681BDBF13F55BCB00EC6042 /* SocializePostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializePostCommentViewController.m; path = Classes/SocializePostCommentViewController.m; sourceTree = "<group>"; };
 		1681BDC813F55D3200EC6042 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		169BC79F1420CD94007ED41E /* SocializeLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLocationManager.h; path = Classes/SocializeLocationManager.h; sourceTree = "<group>"; };
 		169BC7A01420CD94007ED41E /* SocializeLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLocationManager.m; path = Classes/SocializeLocationManager.m; sourceTree = "<group>"; };
@@ -1052,8 +1054,8 @@
 		16F449D913AF8356003BE655 /* SocializeApplicationJSONFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeApplicationJSONFormatterTests.m; path = "Test Cases/SocializeApplicationJSONFormatterTests.m"; sourceTree = "<group>"; };
 		16F449DB13AF8B35003BE655 /* SocializeUserJSONFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUserJSONFormatterTests.h; path = "Test Cases/SocializeUserJSONFormatterTests.h"; sourceTree = "<group>"; };
 		16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserJSONFormatterTests.m; path = "Test Cases/SocializeUserJSONFormatterTests.m"; sourceTree = "<group>"; };
-		16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailsViewController.h; path = Classes/CommentDetailsViewController.h; sourceTree = "<group>"; };
-		16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsViewController.m; path = Classes/CommentDetailsViewController.m; sourceTree = "<group>"; };
+		16FDF4DD1414BA0A00EAA064 /* SocializeCommentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentDetailsViewController.h; path = Classes/SocializeCommentDetailsViewController.h; sourceTree = "<group>"; };
+		16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentDetailsViewController.m; path = Classes/SocializeCommentDetailsViewController.m; sourceTree = "<group>"; };
 		18029E121432B815002BDEC7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		182C52E8142927C500133D56 /* AuthTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthTest.h; sourceTree = "<group>"; };
 		182C52E9142927C500133D56 /* AuthTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthTest.m; sourceTree = "<group>"; };
@@ -1153,8 +1155,8 @@
 		6D56116913E645BA004E8E8C /* TestLikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLikeViewController.m; sourceTree = "<group>"; };
 		6D56116A13E645C5004E8E8C /* TestLikeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestLikeViewController.xib; sourceTree = "<group>"; };
 		6D6742ED13F9AFD800140AA3 /* libSocialize.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSocialize.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D67431513F9EEBA00140AA3 /* CommentDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentDetailsViewController.xib; path = Resources/CommentDetailsViewController.xib; sourceTree = "<group>"; };
-		6D67431613F9EEBA00140AA3 /* PostCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostCommentViewController.xib; path = Resources/PostCommentViewController.xib; sourceTree = "<group>"; };
+		6D67431513F9EEBA00140AA3 /* SocializeCommentDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeCommentDetailsViewController.xib; path = Resources/SocializeCommentDetailsViewController.xib; sourceTree = "<group>"; };
+		6D67431613F9EEBA00140AA3 /* SocializePostCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializePostCommentViewController.xib; path = Resources/SocializePostCommentViewController.xib; sourceTree = "<group>"; };
 		6D67431713F9EEBA00140AA3 /* socialize-comment-user-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-user-background@2x.png"; path = "Resources/socialize-comment-user-background@2x.png"; sourceTree = "<group>"; };
 		6D67431813F9EEBA00140AA3 /* socialize-comment-user-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-user-background.png"; path = "Resources/socialize-comment-user-background.png"; sourceTree = "<group>"; };
 		6D67431913F9EEBA00140AA3 /* socialize-comment-details-icon-geo-enabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-details-icon-geo-enabled@2x.png"; path = "Resources/socialize-comment-details-icon-geo-enabled@2x.png"; sourceTree = "<group>"; };
@@ -1356,7 +1358,7 @@
 		AAA37E361423E44A00803E24 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
 		AAA37E381423E49900803E24 /* DataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHelper.h; sourceTree = "<group>"; };
 		AAA37E391423E49900803E24 /* DataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHelper.m; sourceTree = "<group>"; };
-		AABF6B0D14313E8400DAB37F /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileViewController.xib; path = Resources/ProfileViewController.xib; sourceTree = "<group>"; };
+		AABF6B0D14313E8400DAB37F /* SocializeProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileViewController.xib; path = Resources/SocializeProfileViewController.xib; sourceTree = "<group>"; };
 		AACBBDDE14216497008F0A50 /* SampleSdkAppKIFTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleSdkAppKIFTestController.h; sourceTree = "<group>"; };
 		AACBBDDF14216497008F0A50 /* SampleSdkAppKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppKIFTestController.m; sourceTree = "<group>"; };
 		AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleSdkAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestScenario+SampleSdkAppAdditions.m"; sourceTree = "<group>"; };
@@ -1648,12 +1650,12 @@
 			children = (
 				16075490143302E4002E5A38 /* SocializeBaseViewController.h */,
 				16075491143302E4002E5A38 /* SocializeBaseViewController.m */,
-				160754891432FBA4002E5A38 /* ProfileViewController.h */,
-				1607548A1432FBA4002E5A38 /* ProfileViewController.m */,
-				1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */,
-				1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */,
-				16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */,
-				16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */,
+				160754891432FBA4002E5A38 /* SocializeProfileViewController.h */,
+				1607548A1432FBA4002E5A38 /* SocializeProfileViewController.m */,
+				1681BDBE13F55BCB00EC6042 /* SocializePostCommentViewController.h */,
+				1681BDBF13F55BCB00EC6042 /* SocializePostCommentViewController.m */,
+				16FDF4DD1414BA0A00EAA064 /* SocializeCommentDetailsViewController.h */,
+				16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */,
 				6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */,
 				6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */,
 			);
@@ -2227,7 +2229,7 @@
 				AA3D694B1432ADEF00DA77AC /* socialize-profileimage-large-default@2x.png */,
 				AA3D694C1432ADEF00DA77AC /* socialize-sectionheader-bg.png */,
 				AA3D694D1432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png */,
-				AABF6B0D14313E8400DAB37F /* ProfileViewController.xib */,
+				AABF6B0D14313E8400DAB37F /* SocializeProfileViewController.xib */,
 				6D8984461407CD1900482F1E /* comment_template_clear.htm */,
 				6D8D224F14059C920026185F /* socialize-navbar-bg.png */,
 				6D8D225014059C960026185F /* socialize-navbar-bg@2x.png */,
@@ -2249,8 +2251,8 @@
 				6D8D220F14057FBB0026185F /* socialize-navbar-button-red-active@2x.png */,
 				6D8D221014057FC20026185F /* socialize-navbar-button-red.png */,
 				6D8D221114057FCB0026185F /* socialize-navbar-button-red@2x.png */,
-				6D67431513F9EEBA00140AA3 /* CommentDetailsViewController.xib */,
-				6D67431613F9EEBA00140AA3 /* PostCommentViewController.xib */,
+				6D67431513F9EEBA00140AA3 /* SocializeCommentDetailsViewController.xib */,
+				6D67431613F9EEBA00140AA3 /* SocializePostCommentViewController.xib */,
 				6D133A7014041AC600E16BA4 /* CommentsTableViewCell.xib */,
 				6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */,
 				6DDBEA63140573DE00E41FC0 /* socialize-nocomments-icon.png */,
@@ -2428,12 +2430,12 @@
 				6D8984431407CA6B00482F1E /* HtmlPageCreator.h in Headers */,
 				6DDBEA6F14057B6000E41FC0 /* UILabel-Additions.h in Headers */,
 				1681BDBC13F55BBB00EC6042 /* AppMakrLocation.h in Headers */,
-				1681BDC013F55BCB00EC6042 /* PostCommentViewController.h in Headers */,
+				1681BDC013F55BCB00EC6042 /* SocializePostCommentViewController.h in Headers */,
 				6D44A79813FED3AC004B3A46 /* UIFontForTest.h in Headers */,
 				1666BD2D140E481500518811 /* URLDownloadOperationTests.h in Headers */,
 				1666BD33140E4F2800518811 /* URLDownload.h in Headers */,
 				1666BD35140E4F2800518811 /* URLDownloadOperation.h in Headers */,
-				16FDF4DF1414BA0A00EAA064 /* CommentDetailsViewController.h in Headers */,
+				16FDF4DF1414BA0A00EAA064 /* SocializeCommentDetailsViewController.h in Headers */,
 				16D2479C1418D669008A550D /* ImagesCache.h in Headers */,
 				16A82A0C1419FA9500193CA7 /* ImageLoader.h in Headers */,
 				18A3C3A7141FD00000003172 /* SocializeUnitTestApplication.h in Headers */,
@@ -2446,7 +2448,7 @@
 				169BC7A11420CD94007ED41E /* SocializeLocationManager.h in Headers */,
 				169BC7A61420D602007ED41E /* UILabel+FormatedText.h in Headers */,
 				160754871432FB7C002E5A38 /* NSString+PlaceMark.h in Headers */,
-				1607548B1432FBA4002E5A38 /* ProfileViewController.h in Headers */,
+				1607548B1432FBA4002E5A38 /* SocializeProfileViewController.h in Headers */,
 				1607548F1432FBF4002E5A38 /* SynthesizeSingleton.h in Headers */,
 				16075492143302E4002E5A38 /* SocializeBaseViewController.h in Headers */,
 			);
@@ -2566,6 +2568,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA3D69931433AB2600DA77AC /* SocializeConfigurationInfo.plist in Resources */,
 				16E2C43F1398C40F007C91ED /* InfoPlist.strings in Resources */,
 				16E2C4481398C40F007C91ED /* MainWindow.xib in Resources */,
 				6DEEC9BF13D6238F0066CFA2 /* urls.plist in Resources */,
@@ -2705,8 +2708,8 @@
 				6D44A8B41402F7E6004B3A46 /* NSNumber+Additions.h in Resources */,
 				1681BD9013F555DC00EC6042 /* FBDialog.bundle in Resources */,
 				6D7343E013F5CD4B0076A8E6 /* SocializeConfigurationInfo.plist in Resources */,
-				6D67433513F9EEC300140AA3 /* CommentDetailsViewController.xib in Resources */,
-				6D67433613F9EEC300140AA3 /* PostCommentViewController.xib in Resources */,
+				6D67433513F9EEC300140AA3 /* SocializeCommentDetailsViewController.xib in Resources */,
+				6D67433613F9EEC300140AA3 /* SocializePostCommentViewController.xib in Resources */,
 				6D67433713F9EEC300140AA3 /* socialize-comment-user-background@2x.png in Resources */,
 				6D67433813F9EEC300140AA3 /* socialize-comment-user-background.png in Resources */,
 				6D67433913F9EEC300140AA3 /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */,
@@ -2790,7 +2793,7 @@
 				6D8D225114059CA20026185F /* socialize-navbar-bg.png in Resources */,
 				6D8D225314059CA20026185F /* socialize-navbar-bg@2x.png in Resources */,
 				6D8984471407CD1900482F1E /* comment_template_clear.htm in Resources */,
-				AABF6B0E14313E8400DAB37F /* ProfileViewController.xib in Resources */,
+				AABF6B0E14313E8400DAB37F /* SocializeProfileViewController.xib in Resources */,
 				AA3D694E1432ADEF00DA77AC /* background_brushed_metal@2x.png in Resources */,
 				AA3D694F1432ADEF00DA77AC /* socialize-activity-bg.png in Resources */,
 				AA3D69501432ADEF00DA77AC /* socialize-activity-bg@2x.png in Resources */,
@@ -2921,6 +2924,7 @@
 				160755B314330A26002E5A38 /* socialize-sectionheader-bg.png in Resources */,
 				160755B514330A26002E5A38 /* socialize-sectionheader-bg@2x.png in Resources */,
 				160755B714330A26002E5A38 /* SocializeCommentsTableViewController.xib in Resources */,
+				AA3D69951433AB3400DA77AC /* SocializeConfigurationInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3101,7 +3105,7 @@
 				1681BDA413F555DC00EC6042 /* SocializeFBLoginDialog.m in Sources */,
 				1681BDA613F555DC00EC6042 /* SocializeFBRequest.m in Sources */,
 				1681BDBD13F55BBB00EC6042 /* AppMakrLocation.m in Sources */,
-				1681BDC113F55BCB00EC6042 /* PostCommentViewController.m in Sources */,
+				1681BDC113F55BCB00EC6042 /* SocializePostCommentViewController.m in Sources */,
 				6D44A79913FED3AC004B3A46 /* UIFontForTest.m in Sources */,
 				6D44A7C81402BF6E004B3A46 /* SocializeActionView.m in Sources */,
 				6D44A7D41402D20E004B3A46 /* NSNumber+Additions.m in Sources */,
@@ -3117,7 +3121,7 @@
 				6D8984441407CA6B00482F1E /* HtmlPageCreator.m in Sources */,
 				1666BD34140E4F2800518811 /* URLDownload.m in Sources */,
 				1666BD36140E4F2800518811 /* URLDownloadOperation.m in Sources */,
-				16FDF4E01414BA0A00EAA064 /* CommentDetailsViewController.m in Sources */,
+				16FDF4E01414BA0A00EAA064 /* SocializeCommentDetailsViewController.m in Sources */,
 				16D2479D1418D669008A550D /* ImagesCache.m in Sources */,
 				16A82A0D1419FA9500193CA7 /* ImageLoader.m in Sources */,
 				6DFBFE71141FDDCC0030DE32 /* Base64Transcoder.c in Sources */,
@@ -3138,7 +3142,7 @@
 				169BC7A21420CD94007ED41E /* SocializeLocationManager.m in Sources */,
 				169BC7A71420D602007ED41E /* UILabel+FormatedText.m in Sources */,
 				160754881432FB7C002E5A38 /* NSString+PlaceMark.m in Sources */,
-				1607548C1432FBA4002E5A38 /* ProfileViewController.m in Sources */,
+				1607548C1432FBA4002E5A38 /* SocializeProfileViewController.m in Sources */,
 				16075493143302E4002E5A38 /* SocializeBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
