@@ -141,7 +141,7 @@
 
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
-    UINavigationController * pcNavController =[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:_entity.key andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
+    UINavigationController * pcNavController =[PostCommentViewController  createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:_entity.key andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
     [self presentModalViewController:pcNavController animated:YES];
 }
 

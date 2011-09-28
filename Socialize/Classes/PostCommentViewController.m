@@ -41,7 +41,7 @@
 @synthesize anonymousAuthQuestionDialog = _anonymousAuthQuestionDialog;
 @synthesize facebookAuthQuestionDialog = _facebookAuthQuestionDialog;
 
-+(UINavigationController*)createAndShowPostViewControllerWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar
++(UINavigationController*)createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar
 {
     PostCommentViewController * pcViewController = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" 
                                                                                                bundle:nil 

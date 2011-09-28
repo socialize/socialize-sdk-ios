@@ -13,6 +13,7 @@
 #import "Socialize.h"
 #import "SocializeFBConnect.h"
 #import "SocializeCommonDefinitions.h"
+#import "OAuthConsumer.h"
 
 
 @implementation SocializeAuthTests

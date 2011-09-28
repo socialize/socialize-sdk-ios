@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OAConsumer.h"
-#import "SocializeDataFetcher.h"
+
 
 
 typedef enum {
@@ -21,6 +20,10 @@ typedef enum {
 
 @protocol SocializeRequestDelegate;
 @class OAServiceTicket;
+@class OAToken;
+@class OAConsumer;
+@class OAMutableURLRequest;
+@class SocializeDataFetcher;
 
 @interface SocializeRequest : NSObject 
 {

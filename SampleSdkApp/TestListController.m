@@ -184,7 +184,7 @@
         {
             NSString* url = [self getEntityKey];
             if(url)
-                [self presentModalViewController:[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:url andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]] animated:YES];
+                [self presentModalViewController:[PostCommentViewController  createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:url andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]] animated:YES];
             break;
         }
         case 8:
