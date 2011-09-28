@@ -676,8 +676,6 @@
 		AABB794C1433D61F00D0FDF9 /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB788D1433D61F00D0FDF9 /* SocializeCommentDetailsViewController.xib */; };
 		AABB794D1433D61F00D0FDF9 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB788E1433D61F00D0FDF9 /* SocializeCommentsTableViewController.xib */; };
 		AABB794E1433D61F00D0FDF9 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB788E1433D61F00D0FDF9 /* SocializeCommentsTableViewController.xib */; };
-		AABB794F1433D61F00D0FDF9 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AABB788F1433D61F00D0FDF9 /* SocializeConfigurationInfo.plist */; };
-		AABB79501433D61F00D0FDF9 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AABB788F1433D61F00D0FDF9 /* SocializeConfigurationInfo.plist */; };
 		AABB79511433D61F00D0FDF9 /* SocializePostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB78901433D61F00D0FDF9 /* SocializePostCommentViewController.xib */; };
 		AABB79521433D61F00D0FDF9 /* SocializePostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB78901433D61F00D0FDF9 /* SocializePostCommentViewController.xib */; };
 		AABB79531433D61F00D0FDF9 /* SocializeProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB78911433D61F00D0FDF9 /* SocializeProfileViewController.xib */; };
@@ -2570,7 +2568,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA3D69931433AB2600DA77AC /* SocializeConfigurationInfo.plist in Resources */,
 				16E2C43F1398C40F007C91ED /* InfoPlist.strings in Resources */,
 				16E2C4481398C40F007C91ED /* MainWindow.xib in Resources */,
 				6DEEC9BF13D6238F0066CFA2 /* urls.plist in Resources */,
@@ -2681,9 +2678,9 @@
 				AABB79491433D61F00D0FDF9 /* socialize-sectionheader-bg@2x.png in Resources */,
 				AABB794B1433D61F00D0FDF9 /* SocializeCommentDetailsViewController.xib in Resources */,
 				AABB794D1433D61F00D0FDF9 /* SocializeCommentsTableViewController.xib in Resources */,
-				AABB794F1433D61F00D0FDF9 /* SocializeConfigurationInfo.plist in Resources */,
 				AABB79511433D61F00D0FDF9 /* SocializePostCommentViewController.xib in Resources */,
 				AABB79531433D61F00D0FDF9 /* SocializeProfileViewController.xib in Resources */,
+				AA3D69931433AB2600DA77AC /* SocializeConfigurationInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2926,7 +2923,6 @@
 				AABB794A1433D61F00D0FDF9 /* socialize-sectionheader-bg@2x.png in Resources */,
 				AABB794C1433D61F00D0FDF9 /* SocializeCommentDetailsViewController.xib in Resources */,
 				AABB794E1433D61F00D0FDF9 /* SocializeCommentsTableViewController.xib in Resources */,
-				AABB79501433D61F00D0FDF9 /* SocializeConfigurationInfo.plist in Resources */,
 				AABB79521433D61F00D0FDF9 /* SocializePostCommentViewController.xib in Resources */,
 				AABB79541433D61F00D0FDF9 /* SocializeProfileViewController.xib in Resources */,
 			);
