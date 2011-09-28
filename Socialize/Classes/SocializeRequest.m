@@ -7,10 +7,11 @@
 //
 
 #import "SocializeRequest.h"
+#import "OAConsumer.h"
+#import "SocializeDataFetcher.h"
 #import <UIKit/UIKit.h>
 #import "NSString+UrlSerialization.h"
 #import "OAAsynchronousDataFetcher.h"
-#import "OAConsumer.h"
 #import "OAServiceTicket.h"
 #import "SocializeCommonDefinitions.h"
 #import "JSONKit.h"
