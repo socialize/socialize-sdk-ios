@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "SocializeBaseViewController.h"
 
 @class CommentDetailsView;
 @class URLDownload;
@@ -16,7 +17,7 @@
 
 typedef URLDownload*(^LoaderFactory)(NSString* url, id sender, SEL selector, id tag);
 
-@interface CommentDetailsViewController : UIViewController<MKReverseGeocoderDelegate> 
+@interface CommentDetailsViewController : SocializeBaseViewController<MKReverseGeocoderDelegate> 
 {
     @private
         MKReverseGeocoder*      geoCoder;

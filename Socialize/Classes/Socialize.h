@@ -39,7 +39,7 @@
 /**
 This is a general facade of the   SDK`s API. Through it a third party developers could use the API.
  
-@warning *Note:* Every thing in socialize revolves around the concept of ‚ÄúEntity‚Äù. An entity could be liked, unliked, commented on etc. 
+@warning *Note:* Every thing in socialize revolves around the concept of “Entity”. An entity could be liked, unliked, commented on etc. 
 In Socialize an entity can only be a url. So when creating an entity always remember to input the key for the entity as a url 
 otherwise you will get a failure.  
 */
@@ -179,7 +179,7 @@ otherwise you will get a failure.
 /**
  Third party authentication via SDK service.
  
- Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user‚Äôs profile.
+ Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.
  
  Find information how to get API key and secret on [Socialize.](http://www.getsocialize.com/)
  
@@ -205,7 +205,7 @@ otherwise you will get a failure.
 /**
  Third party authentication via SDK service.
  
- Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user‚Äôs profile.
+ Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.
  
  Find information how to get API key and secret on [Socialize.](http://www.getsocialize.com/)
  
@@ -239,11 +239,26 @@ otherwise you will get a failure.
  */
 -(void)authenticateWithFacebook;
 
+/**
+ Authenticate with API key and API secret that were saved in the user defaults.
+ 
+ This method is used to perform anonymous authentication. It means that uses could not do any action with his profile.  
+ Find information how to get API key and secret on [Socialize.](http://www.getsocialize.com/)
+ 
+ Successful call of this method invokes <SocializeServiceDelegate> didAuthenticate: method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @see authenticateWithApiKey:apiSecret:
+ @see authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:
+ @see authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:
+ @see storeSocializeApiKey:andSecret:
+ */
+-(void)authenticateAnonymously;
 
 /**
  Third party authentication.
  
- Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user‚Äôs profile.
+ Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.
  
  Find information how to get API key and secert on [Socialize.](http://www.getsocialize.com/)
  
@@ -277,6 +292,13 @@ otherwise you will get a failure.
  @return A SocializeUser object for the currently authenticated user
  */
 -(id<SocializeUser>)authenticatedUser;
+
+/**
+ Check if authentication credentials still valid /and/ that this is a facebook authentication.
+ 
+ @return YES if credentials are valid and facebook was used for authentication, and NO otherwise
+ */
+-(BOOL)isAuthenticatedWithFacebook;
 
 /**
  Remove old authentication information.
@@ -359,7 +381,7 @@ otherwise you will get a failure.
  Successful call of this method invokes <[SocializeServiceDelegate service:didFetchElements:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
- Parameters first and last (OPTIONAL) : specify range to do pagination by entity‚Äôs key. First is included, and last is excluded.
+ Parameters first and last (OPTIONAL) : specify range to do pagination by entity’s key. First is included, and last is excluded.
  
  Default values:
     first = 0

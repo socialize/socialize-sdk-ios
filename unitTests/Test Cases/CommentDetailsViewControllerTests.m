@@ -86,6 +86,7 @@
 -(void)setUpClass
 {
     commentDetails = [[CommentDetailsViewController alloc] initWithNibName:@"CommentDetailsViewController" bundle:nil];
+    [Socialize storeSocializeApiKey:@"12341234" andSecret: @"12341234"];
 }
 
 -(void)tearDownClass

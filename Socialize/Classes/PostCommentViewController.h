@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "LoadingView.h"
+
+#import "SocializeBaseViewController.h"
 #import "Socialize.h"
 #import "ProfileViewController.h"
 
@@ -16,13 +17,12 @@
 @class UIKeyboardListener;
 @class SocializeLocationManager;
 
-@interface PostCommentViewController : UIViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate, UIAlertViewDelegate, ProfileViewControllerDelegate >
+@interface PostCommentViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate, UIAlertViewDelegate, ProfileViewControllerDelegate >
 {
 @private
     SocializeLocationManager* locationManager;
     UIKeyboardListener* kbListener;
     
-    Socialize*  _socialize;
     NSString*   _entityUrlString;
     
     UITextView* commentTextView;
@@ -30,7 +30,7 @@
     UIButton*   doNotShareLocationButton;
     UIButton*   activateLocationButton;
     CommentMapView* mapOfUserLocation;
-    LoadingView*  _loadingIndicatorView;
+
     
     UIAlertView *_facebookAuthQuestionDialog;
     UIAlertView *_anonymousAuthQuestionDialog;
@@ -41,7 +41,6 @@
 @property(nonatomic, retain) IBOutlet UIButton      *doNotShareLocationButton;
 @property(nonatomic, retain) IBOutlet UIButton      *activateLocationButton;
 @property(nonatomic, retain) IBOutlet CommentMapView *mapOfUserLocation;
-@property(nonatomic, retain) Socialize* socialize;
 @property(nonatomic, retain) UIAlertView *facebookAuthQuestionDialog;
 @property(nonatomic, retain) UIAlertView *anonymousAuthQuestionDialog;
 

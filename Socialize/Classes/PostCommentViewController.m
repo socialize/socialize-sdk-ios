@@ -25,9 +25,6 @@
 -(void)closeButtonPressed:(id)button;
 -(void)configureDoNotShareLocationButton;
 -(void)updateViewWithNewLocation: (CLLocation*)userLocation;
--(void) showAllertWithText: (NSString*)allertMsg;
--(void) startLoadAnimation;
--(void) stopLoadAnimation;
 -(void)createComment;
 -(void)authenticateViaFacebook;
 
@@ -41,7 +38,6 @@
 @synthesize doNotShareLocationButton;
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
-@synthesize socialize = _socialize;
 @synthesize anonymousAuthQuestionDialog = _anonymousAuthQuestionDialog;
 @synthesize facebookAuthQuestionDialog = _facebookAuthQuestionDialog;
 
@@ -71,7 +67,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _socialize = [[Socialize alloc ] initWithDelegate:self];
         _entityUrlString = [entityUrlString retain];
         kbListener = [kb retain];
         locationManager = [lManager retain];
@@ -86,8 +81,6 @@
     [activateLocationButton release];
     [mapOfUserLocation release];
     [locationText release];
-    //[_loadingIndicatorView release]; TODO:: check with profile
-    [_socialize release];
     [_entityUrlString release];
     [kbListener release];
     [locationManager release];
@@ -119,7 +112,7 @@
     if (alertView == self.facebookAuthQuestionDialog) {
         
         if (buttonIndex == 1) {
-            [_socialize authenticateWithFacebook];
+            [self.socialize authenticateWithFacebook];
         } else {
             [self.anonymousAuthQuestionDialog show];
         }
@@ -134,28 +127,19 @@
 }
 
 #pragma Location enable/disable button callbacks
--(void) startLoadAnimation
+-(void) startLoadAnimationForView: (UIView*) view
 {
-    _loadingIndicatorView = [LoadingView loadingViewInView:commentTextView];
+    [super startLoadAnimationForView:view];
     self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 -(void) stopLoadAnimation
 {
-    [_loadingIndicatorView removeView];_loadingIndicatorView = nil;
+    [super  stopLoadAnimation];
     self.navigationItem.rightBarButtonItem.enabled = YES; 
 }
 
--(void) showAllertWithText: (NSString*)allertMsg
-{
-    UIAlertView * allert = [[[UIAlertView alloc] initWithTitle:nil 
-                                                                        message:allertMsg 
-                                                                       delegate:nil 
-                                                              cancelButtonTitle:@"OK" 
-                                                              otherButtonTitles:nil] autorelease];
-    
-    [allert show];
-}
+
 
 -(void)updateViewWithNewLocation: (CLLocation*)userLocation
 {   
@@ -203,7 +187,7 @@
     if (enableLocation) {
         if (![locationManager applicationIsAuthorizedToUseLocationServices])
         {
-            [self showAllertWithText:@"Please Turn On Location Services in Settings to Allow This Application to Share Your Location."];
+            [self showAllertWithText:@"Please Turn On Location Services in Settings to Allow This Application to Share Your Location." andTitle:nil];
             return;
         }
        
@@ -252,10 +236,10 @@
     {
         NSNumber* latitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.latitude];
         NSNumber* longitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.longitude];        
-        [_socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:longitude latitude:latitude];
+        [self.socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:longitude latitude:latitude];
     }
     else
-        [_socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:nil latitude:nil];
+        [self.socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:nil latitude:nil];
 }
 
 - (void)authenticateViaFacebook {
@@ -264,9 +248,9 @@
 
 #pragma mark - navigation bar button actions
 -(void)sendButtonPressed:(id)button {
-    [self startLoadAnimation];
+    [self startLoadAnimationForView:commentTextView];
     
-    if (![SocializeAuthenticateService isAuthenticatedWithFacebook]) {
+    if (![self.socialize isAuthenticatedWithFacebook]) {
         [self authenticateViaFacebook];
     } else {
         [self createComment];
@@ -281,21 +265,14 @@
 
 #pragma mark - SocializeServiceDelegate
 
--(void)service:(SocializeService *)service didFail:(NSError *)error{
-
-    [self stopLoadAnimation];
-    [self showAllertWithText:[error localizedDescription]];
-}
-
--(void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object{
-    
+-(void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object{   
     [self stopLoadAnimation];
     [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)showProfile {
     ProfileViewController *profile = [[[ProfileViewController alloc] init] autorelease];
-    profile.user = [_socialize authenticatedUser];
+    profile.user = [self.socialize authenticatedUser];
     profile.delegate = self;
     
     UINavigationController *navigationController = [[[UINavigationController alloc]
@@ -315,11 +292,32 @@
     [self createComment];
 }
 
--(void)didAuthenticate:(id<SocializeUser>)user {
-    [self stopLoadAnimation];
-    [self showProfile];
+-(void)service:(SocializeService *)service didFail:(NSError *)error
+{
+    if([service isKindOfClass:[SocializeAuthenticateService class]])
+    {
+        [super service:service didFail:error];
+    }
+    else
+    {   
+        [self stopLoadAnimation];
+        [self showAllertWithText:[error localizedDescription] andTitle:@"Post comment"];  
+    }
 }
 
+-(void)didAuthenticate:(id<SocializeUser>)user {
+    if (![SocializeAuthenticateService isAuthenticatedWithFacebook]) {
+        [super didAuthenticate:user];//complete anonymous authentication
+    } else {
+        [self stopLoadAnimation];
+        [self showProfile];
+    }
+}
+
+-(void)afterAnonymouslyLoginAction
+{
+    //Do not remove.
+}
 
 #pragma mark - UITextViewDelegate callbacks
 

@@ -137,6 +137,17 @@
     [self authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:facebookAppId thirdPartyLocalAppId:facebookLocalAppId thirdPartyName:FacebookAuth];
 }
 
+-(void)authenticateAnonymously
+{
+    NSString *apiKey = [Socialize apiKey];
+    NSString *apiSecret = [Socialize apiSecret];
+    
+    NSAssert(apiKey != nil, @"Missing api key. API key must be configured before using socialize. [Socialize storeApiKey:Secret]");
+    NSAssert(apiSecret != nil, @"Missing api secret. API secret must be configured before using socialize.[Socialize storeApiKey:Secret]");
+    
+    [self authenticateWithApiKey:apiKey apiSecret:apiSecret];
+}
+
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                     apiSecret:(NSString*)apiSecret 
           thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
@@ -179,6 +190,11 @@
 
 -(BOOL)isAuthenticated{
     return [SocializeAuthenticateService isAuthenticated];
+}
+
+-(BOOL)isAuthenticatedWithFacebook
+{
+    return [SocializeAuthenticateService isAuthenticatedWithFacebook];
 }
 
 -(void)removeAuthenticationInfo{

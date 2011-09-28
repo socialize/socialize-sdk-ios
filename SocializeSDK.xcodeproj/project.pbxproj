@@ -32,6 +32,8 @@
 		1607548C1432FBA4002E5A38 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607548A1432FBA4002E5A38 /* ProfileViewController.m */; };
 		1607548D1432FBA8002E5A38 /* ProfileViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 160754891432FBA4002E5A38 /* ProfileViewController.h */; };
 		1607548F1432FBF4002E5A38 /* SynthesizeSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 1607548E1432FBF4002E5A38 /* SynthesizeSingleton.h */; };
+		16075492143302E4002E5A38 /* SocializeBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16075490143302E4002E5A38 /* SocializeBaseViewController.h */; };
+		16075493143302E4002E5A38 /* SocializeBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16075491143302E4002E5A38 /* SocializeBaseViewController.m */; };
 		163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
 		1636370813A76ED000403879 /* SocializeProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636370713A76ECF00403879 /* SocializeProviderTests.m */; };
 		1636372F13AB289500403879 /* SocializeCommentsServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */; };
@@ -698,6 +700,8 @@
 		160754891432FBA4002E5A38 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Classes/ProfileViewController.h; sourceTree = "<group>"; };
 		1607548A1432FBA4002E5A38 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Classes/ProfileViewController.m; sourceTree = "<group>"; };
 		1607548E1432FBF4002E5A38 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = Classes/SynthesizeSingleton.h; sourceTree = "<group>"; };
+		16075490143302E4002E5A38 /* SocializeBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBaseViewController.h; path = Classes/SocializeBaseViewController.h; sourceTree = "<group>"; };
+		16075491143302E4002E5A38 /* SocializeBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBaseViewController.m; path = Classes/SocializeBaseViewController.m; sourceTree = "<group>"; };
 		163636FB13A6431400403879 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		1636370613A76ECF00403879 /* SocializeProviderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProviderTests.h; path = "Test Cases/SocializeProviderTests.h"; sourceTree = "<group>"; };
 		1636370713A76ECF00403879 /* SocializeProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProviderTests.m; path = "Test Cases/SocializeProviderTests.m"; sourceTree = "<group>"; };
@@ -1385,6 +1389,8 @@
 		16C330BD13F3B75C004EA34D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				16075490143302E4002E5A38 /* SocializeBaseViewController.h */,
+				16075491143302E4002E5A38 /* SocializeBaseViewController.m */,
 				160754891432FBA4002E5A38 /* ProfileViewController.h */,
 				1607548A1432FBA4002E5A38 /* ProfileViewController.m */,
 				1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */,
@@ -2288,6 +2294,7 @@
 				160754871432FB7C002E5A38 /* NSString+PlaceMark.h in Headers */,
 				1607548B1432FBA4002E5A38 /* ProfileViewController.h in Headers */,
 				1607548F1432FBF4002E5A38 /* SynthesizeSingleton.h in Headers */,
+				16075492143302E4002E5A38 /* SocializeBaseViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2786,6 +2793,7 @@
 				169BC7A71420D602007ED41E /* UILabel+FormatedText.m in Sources */,
 				160754881432FB7C002E5A38 /* NSString+PlaceMark.m in Sources */,
 				1607548C1432FBA4002E5A38 /* ProfileViewController.m in Sources */,
+				16075493143302E4002E5A38 /* SocializeBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

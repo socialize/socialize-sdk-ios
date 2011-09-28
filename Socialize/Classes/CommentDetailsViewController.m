@@ -70,6 +70,13 @@
     }
     return self;
 }
+
+#pragma mark base class methods
+-(void) afterAnonymouslyLoginAction
+{
+    // Do not remove.
+}
+
 #pragma mark user location
 
 -(void)setupCommentGeoLocation
