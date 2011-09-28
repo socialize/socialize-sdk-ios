@@ -179,11 +179,14 @@
         }
         
         id objectResponse = [_objectCreator createObjectFromString:items forProtocol:[self ProtocolType]]; 
-        id errorResponse = [_objectCreator createObjectFromString:errors forProtocol:@protocol(SocializeError)]; 
+        id errorResponses = [_objectCreator createObjectFromString:errors forProtocol:@protocol(SocializeError)]; 
         
-        if ([errorResponse isKindOfClass: [NSArray class]]){
-            if ([errorResponse count]){
-                NSLog(@" errorResponse  %@",errorResponse );
+        if ([errorResponses isKindOfClass: [NSArray class]]){
+            if ([errorResponses count]){
+
+                for (SocializeError *errorResp in errorResponses) {
+                    NSLog(@" errorResponse  %@", errorResp.error );
+                }
                 if([self.delegate respondsToSelector:@selector(service:didFail:)])
                     [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
                 return;
@@ -193,13 +196,13 @@
         if([objectResponse isKindOfClass: [NSArray class]]){ 
             if ([objectResponse count]){
                 if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]])
-                    [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponse];
+                    [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponses];
                 else 
                     if([self.delegate respondsToSelector:@selector(service:didFail:)])
                         [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
             }
             else
-                [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponse];
+                [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponses];
         }
         else
             if([self.delegate respondsToSelector:@selector(service:didFail:)])
