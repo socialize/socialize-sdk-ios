@@ -26,6 +26,12 @@
 /* Begin PBXBuildFile section */
 		160630F4142CB17B003B5AC7 /* SocializeUnitTestApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */; };
 		160754841432F8FC002E5A38 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 160754831432F8FC002E5A38 /* libKIF.a */; };
+		160754871432FB7C002E5A38 /* NSString+PlaceMark.h in Headers */ = {isa = PBXBuildFile; fileRef = 160754851432FB7C002E5A38 /* NSString+PlaceMark.h */; };
+		160754881432FB7C002E5A38 /* NSString+PlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 160754861432FB7C002E5A38 /* NSString+PlaceMark.m */; };
+		1607548B1432FBA4002E5A38 /* ProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 160754891432FBA4002E5A38 /* ProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1607548C1432FBA4002E5A38 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607548A1432FBA4002E5A38 /* ProfileViewController.m */; };
+		1607548D1432FBA8002E5A38 /* ProfileViewController.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 160754891432FBA4002E5A38 /* ProfileViewController.h */; };
+		1607548F1432FBF4002E5A38 /* SynthesizeSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 1607548E1432FBF4002E5A38 /* SynthesizeSingleton.h */; };
 		163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
 		1636370813A76ED000403879 /* SocializeProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636370713A76ECF00403879 /* SocializeProviderTests.m */; };
 		1636372F13AB289500403879 /* SocializeCommentsServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */; };
@@ -106,7 +112,6 @@
 		169BC7A21420CD94007ED41E /* SocializeLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7A01420CD94007ED41E /* SocializeLocationManager.m */; };
 		169BC7A61420D602007ED41E /* UILabel+FormatedText.h in Headers */ = {isa = PBXBuildFile; fileRef = 169BC7A41420D602007ED41E /* UILabel+FormatedText.h */; };
 		169BC7A71420D602007ED41E /* UILabel+FormatedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7A51420D602007ED41E /* UILabel+FormatedText.m */; };
-		169BC7A81421CDE3007ED41E /* NSString+PlaceMark.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16D247721417906E008A550D /* NSString+PlaceMark.h */; };
 		169BC7A91421CDE3007ED41E /* ImagesCache.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16D2479A1418D667008A550D /* ImagesCache.h */; };
 		169BC7AA1421CDE3007ED41E /* ImageLoader.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16A82A0A1419FA9500193CA7 /* ImageLoader.h */; };
 		169BC7AB1421CDE3007ED41E /* UIKeyboardListener.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 16DAC9971420C0EE0011CD5F /* UIKeyboardListener.h */; };
@@ -172,8 +177,6 @@
 		16C5EF8213E6B8A800F2EA87 /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16C5EF8013E6B8A800F2EA87 /* TestViewCreationViewController.xib */; };
 		16D247661416093A008A550D /* CommentDetailsViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D247651416093A008A550D /* CommentDetailsViewTests.m */; };
 		16D2476914163162008A550D /* CommentDetailsViewForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2476814163161008A550D /* CommentDetailsViewForTest.m */; };
-		16D247741417906F008A550D /* NSString+PlaceMark.h in Headers */ = {isa = PBXBuildFile; fileRef = 16D247721417906E008A550D /* NSString+PlaceMark.h */; };
-		16D247751417906F008A550D /* NSString+PlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D247731417906E008A550D /* NSString+PlaceMark.m */; };
 		16D2477814179446008A550D /* StringWithPlacemarkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2477714179446008A550D /* StringWithPlacemarkTest.m */; };
 		16D2478B1417A986008A550D /* PostCommentViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */; };
 		16D2479C1418D669008A550D /* ImagesCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 16D2479A1418D667008A550D /* ImagesCache.h */; };
@@ -200,7 +203,7 @@
 		16F449DA13AF8358003BE655 /* SocializeApplicationJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449D913AF8356003BE655 /* SocializeApplicationJSONFormatterTests.m */; };
 		16F449DD13AF8B37003BE655 /* SocializeUserJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */; };
 		16FCABD113B885CC0034499F /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
-		16FDF4DF1414BA0A00EAA064 /* CommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */; };
+		16FDF4DF1414BA0A00EAA064 /* CommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16FDF4E01414BA0A00EAA064 /* CommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */; };
 		18029E131432B815002BDEC7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18029E121432B815002BDEC7 /* CoreLocation.framework */; };
 		18029E6F1432B8CB002BDEC7 /* Socialize-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18029E6E1432B8C4002BDEC7 /* Socialize-iOS.framework */; };
@@ -513,9 +516,6 @@
 		AA62FFD3142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA62FFD2142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist */; };
 		AAA37E371423E44A00803E24 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E361423E44A00803E24 /* StringHelper.m */; };
 		AAA37E3A1423E49900803E24 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA37E391423E49900803E24 /* DataHelper.m */; };
-		AABF6AAF1430F78000DAB37F /* ProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF6AAC1430F78000DAB37F /* ProfileViewController.h */; };
-		AABF6AB01430F78000DAB37F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF6AAD1430F78000DAB37F /* ProfileViewController.m */; };
-		AABF6AB31430FFC300DAB37F /* SynthesizeSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF6AB21430FFC300DAB37F /* SynthesizeSingleton.h */; };
 		AABF6B0E14313E8400DAB37F /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABF6B0D14313E8400DAB37F /* ProfileViewController.xib */; };
 		AAFE115814228E6C00A142D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4411398C40F007C91ED /* main.m */; };
 		AAFE115914228E6C00A142D9 /* SampleSdkAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */; };
@@ -678,13 +678,13 @@
 				1681BDB213F5560100EC6042 /* SocializeFBRequest.h in Copy Headers */,
 				1681BDC413F55BED00EC6042 /* PostCommentViewController.h in Copy Headers */,
 				1681BDC513F55BED00EC6042 /* AppMakrLocation.h in Copy Headers */,
-				169BC7A81421CDE3007ED41E /* NSString+PlaceMark.h in Copy Headers */,
 				169BC7A91421CDE3007ED41E /* ImagesCache.h in Copy Headers */,
 				169BC7AA1421CDE3007ED41E /* ImageLoader.h in Copy Headers */,
 				169BC7AB1421CDE3007ED41E /* UIKeyboardListener.h in Copy Headers */,
 				169BC7AC1421CDE3007ED41E /* SocializeLocationManager.h in Copy Headers */,
 				169BC7AD1421CDE3007ED41E /* UILabel+FormatedText.h in Copy Headers */,
 				169BC7AE1421CDF8007ED41E /* CommentDetailsViewController.h in Copy Headers */,
+				1607548D1432FBA8002E5A38 /* ProfileViewController.h in Copy Headers */,
 			);
 			name = "Copy Headers";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -693,6 +693,11 @@
 
 /* Begin PBXFileReference section */
 		160754831432F8FC002E5A38 /* libKIF.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libKIF.a; sourceTree = SOURCE_ROOT; };
+		160754851432FB7C002E5A38 /* NSString+PlaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+PlaceMark.h"; path = "Classes/NSString+PlaceMark.h"; sourceTree = "<group>"; };
+		160754861432FB7C002E5A38 /* NSString+PlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+PlaceMark.m"; path = "Classes/NSString+PlaceMark.m"; sourceTree = "<group>"; };
+		160754891432FBA4002E5A38 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Classes/ProfileViewController.h; sourceTree = "<group>"; };
+		1607548A1432FBA4002E5A38 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Classes/ProfileViewController.m; sourceTree = "<group>"; };
+		1607548E1432FBF4002E5A38 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = Classes/SynthesizeSingleton.h; sourceTree = "<group>"; };
 		163636FB13A6431400403879 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		1636370613A76ECF00403879 /* SocializeProviderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProviderTests.h; path = "Test Cases/SocializeProviderTests.h"; sourceTree = "<group>"; };
 		1636370713A76ECF00403879 /* SocializeProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProviderTests.m; path = "Test Cases/SocializeProviderTests.m"; sourceTree = "<group>"; };
@@ -785,8 +790,6 @@
 		16D247651416093A008A550D /* CommentDetailsViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsViewTests.m; path = "Test Cases/CommentDetailsViewTests.m"; sourceTree = "<group>"; };
 		16D2476714163161008A550D /* CommentDetailsViewForTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailsViewForTest.h; path = "Test Cases/CommentDetailsViewForTest.h"; sourceTree = "<group>"; };
 		16D2476814163161008A550D /* CommentDetailsViewForTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsViewForTest.m; path = "Test Cases/CommentDetailsViewForTest.m"; sourceTree = "<group>"; };
-		16D247721417906E008A550D /* NSString+PlaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PlaceMark.h"; sourceTree = "<group>"; };
-		16D247731417906E008A550D /* NSString+PlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PlaceMark.m"; sourceTree = "<group>"; };
 		16D2477614179446008A550D /* StringWithPlacemarkTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringWithPlacemarkTest.h; path = "Test Cases/StringWithPlacemarkTest.h"; sourceTree = "<group>"; };
 		16D2477714179446008A550D /* StringWithPlacemarkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StringWithPlacemarkTest.m; path = "Test Cases/StringWithPlacemarkTest.m"; sourceTree = "<group>"; };
 		16D247891417A984008A550D /* PostCommentViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostCommentViewControllerTests.h; path = "Test Cases/PostCommentViewControllerTests.h"; sourceTree = "<group>"; };
@@ -1207,9 +1210,6 @@
 		AAA37E361423E44A00803E24 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
 		AAA37E381423E49900803E24 /* DataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHelper.h; sourceTree = "<group>"; };
 		AAA37E391423E49900803E24 /* DataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHelper.m; sourceTree = "<group>"; };
-		AABF6AAC1430F78000DAB37F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		AABF6AAD1430F78000DAB37F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		AABF6AB21430FFC300DAB37F /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		AABF6B0D14313E8400DAB37F /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileViewController.xib; path = Resources/ProfileViewController.xib; sourceTree = "<group>"; };
 		AACBBDDE14216497008F0A50 /* SampleSdkAppKIFTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleSdkAppKIFTestController.h; sourceTree = "<group>"; };
 		AACBBDDF14216497008F0A50 /* SampleSdkAppKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppKIFTestController.m; sourceTree = "<group>"; };
@@ -1385,14 +1385,14 @@
 		16C330BD13F3B75C004EA34D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				160754891432FBA4002E5A38 /* ProfileViewController.h */,
+				1607548A1432FBA4002E5A38 /* ProfileViewController.m */,
 				1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */,
 				1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */,
 				16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */,
 				16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */,
 				6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */,
 				6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */,
-				AABF6AAC1430F78000DAB37F /* ProfileViewController.h */,
-				AABF6AAD1430F78000DAB37F /* ProfileViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1932,15 +1932,15 @@
 			isa = PBXGroup;
 			children = (
 				1666BD21140E11CF00518811 /* Downloaders */,
-				AABF6AB21430FFC300DAB37F /* SynthesizeSingleton.h */,
+				1607548E1432FBF4002E5A38 /* SynthesizeSingleton.h */,
+				160754851432FB7C002E5A38 /* NSString+PlaceMark.h */,
+				160754861432FB7C002E5A38 /* NSString+PlaceMark.m */,
 				6D44A9061404186C004B3A46 /* NSDateAdditions.h */,
 				6D44A9071404189C004B3A46 /* NSDateAdditions.m */,
 				6D8984411407CA6B00482F1E /* HtmlPageCreator.h */,
 				6D8984421407CA6B00482F1E /* HtmlPageCreator.m */,
 				6D44A7D11402D20A004B3A46 /* NSNumber+Additions.h */,
 				6D44A7D21402D20C004B3A46 /* NSNumber+Additions.m */,
-				16D247721417906E008A550D /* NSString+PlaceMark.h */,
-				16D247731417906E008A550D /* NSString+PlaceMark.m */,
 				16D2479A1418D667008A550D /* ImagesCache.h */,
 				16D2479B1418D668008A550D /* ImagesCache.m */,
 				16A82A0A1419FA9500193CA7 /* ImageLoader.h */,
@@ -2274,7 +2274,6 @@
 				1666BD33140E4F2800518811 /* URLDownload.h in Headers */,
 				1666BD35140E4F2800518811 /* URLDownloadOperation.h in Headers */,
 				16FDF4DF1414BA0A00EAA064 /* CommentDetailsViewController.h in Headers */,
-				16D247741417906F008A550D /* NSString+PlaceMark.h in Headers */,
 				16D2479C1418D669008A550D /* ImagesCache.h in Headers */,
 				16A82A0C1419FA9500193CA7 /* ImageLoader.h in Headers */,
 				18A3C3A7141FD00000003172 /* SocializeUnitTestApplication.h in Headers */,
@@ -2286,8 +2285,9 @@
 				16DAC9991420C0EE0011CD5F /* UIKeyboardListener.h in Headers */,
 				169BC7A11420CD94007ED41E /* SocializeLocationManager.h in Headers */,
 				169BC7A61420D602007ED41E /* UILabel+FormatedText.h in Headers */,
-				AABF6AAF1430F78000DAB37F /* ProfileViewController.h in Headers */,
-				AABF6AB31430FFC300DAB37F /* SynthesizeSingleton.h in Headers */,
+				160754871432FB7C002E5A38 /* NSString+PlaceMark.h in Headers */,
+				1607548B1432FBA4002E5A38 /* ProfileViewController.h in Headers */,
+				1607548F1432FBF4002E5A38 /* SynthesizeSingleton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2765,7 +2765,6 @@
 				1666BD34140E4F2800518811 /* URLDownload.m in Sources */,
 				1666BD36140E4F2800518811 /* URLDownloadOperation.m in Sources */,
 				16FDF4E01414BA0A00EAA064 /* CommentDetailsViewController.m in Sources */,
-				16D247751417906F008A550D /* NSString+PlaceMark.m in Sources */,
 				16D2479D1418D669008A550D /* ImagesCache.m in Sources */,
 				16A82A0D1419FA9500193CA7 /* ImageLoader.m in Sources */,
 				6DFBFE71141FDDCC0030DE32 /* Base64Transcoder.c in Sources */,
@@ -2785,7 +2784,8 @@
 				16DAC99A1420C0EE0011CD5F /* UIKeyboardListener.m in Sources */,
 				169BC7A21420CD94007ED41E /* SocializeLocationManager.m in Sources */,
 				169BC7A71420D602007ED41E /* UILabel+FormatedText.m in Sources */,
-				AABF6AB01430F78000DAB37F /* ProfileViewController.m in Sources */,
+				160754881432FB7C002E5A38 /* NSString+PlaceMark.m in Sources */,
+				1607548C1432FBA4002E5A38 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

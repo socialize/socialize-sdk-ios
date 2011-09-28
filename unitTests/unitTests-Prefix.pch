@@ -35,6 +35,9 @@
 #define OAServiceTicket SocializeOAServiceTicket
 #define OAToken SocializeOAToken
 #define OASignatureProviding SocializeOASignatureProviding
+#define OAParameterAdditions SocializeOAParameterAdditions
+#define OAURLEncodingAdditions SocializeOAURLEncodingAdditions
+#define OABaseAdditions SocializeOABaseAdditions
 
 #define EstimateBas64EncodedDataSize SocializeEstimateBas64EncodedDataSize
 #define EstimateBas64DecodedDataSize SocializeEstimateBas64DecodedDataSize
