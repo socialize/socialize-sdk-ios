@@ -1355,15 +1355,15 @@
 		AA3D694C1432ADEF00DA77AC /* socialize-sectionheader-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-sectionheader-bg.png"; path = "Resources/socialize-sectionheader-bg.png"; sourceTree = "<group>"; };
 		AA3D694D1432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-sectionheader-bg@2x.png"; path = "Resources/socialize-sectionheader-bg@2x.png"; sourceTree = "<group>"; };
 		AA3D6988143396F900DA77AC /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
-		AA3D69B41433C2C900DA77AC /* SocializeCommentDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializeCommentDetailsViewController.xib; path = "build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializeCommentDetailsViewController.xib"; sourceTree = "<group>"; };
-		AA3D69B51433C2C900DA77AC /* SocializeCommentsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializeCommentsTableViewController.xib; path = "build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializeCommentsTableViewController.xib"; sourceTree = "<group>"; };
-		AA3D69B61433C2C900DA77AC /* SocializePostCommentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializePostCommentViewController.xib; path = "build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializePostCommentViewController.xib"; sourceTree = "<group>"; };
-		AA3D69B71433C2CA00DA77AC /* SocializeProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializeProfileViewController.xib; path = "build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializeProfileViewController.xib"; sourceTree = "<group>"; };
-		AA3D69BC1433C31200DA77AC /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CommentsTableViewCell.xib; path = "build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/CommentsTableViewCell.xib"; sourceTree = "<group>"; };
-		AA3D69BD1433C31200DA77AC /* SocializeCommentDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializeCommentDetailsViewController.xib; path = "build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializeCommentDetailsViewController.xib"; sourceTree = "<group>"; };
-		AA3D69BE1433C31300DA77AC /* SocializeCommentsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializeCommentsTableViewController.xib; path = "build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializeCommentsTableViewController.xib"; sourceTree = "<group>"; };
-		AA3D69BF1433C31300DA77AC /* SocializePostCommentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializePostCommentViewController.xib; path = "build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializePostCommentViewController.xib"; sourceTree = "<group>"; };
-		AA3D69C01433C31300DA77AC /* SocializeProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializeProfileViewController.xib; path = "build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializeProfileViewController.xib"; sourceTree = "<group>"; };
+		AA3D69B41433C2C900DA77AC /* SocializeCommentDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializeCommentDetailsViewController.xib; path = "../../build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializeCommentDetailsViewController.xib"; sourceTree = "<group>"; };
+		AA3D69B51433C2C900DA77AC /* SocializeCommentsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializeCommentsTableViewController.xib; path = "../../build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializeCommentsTableViewController.xib"; sourceTree = "<group>"; };
+		AA3D69B61433C2C900DA77AC /* SocializePostCommentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializePostCommentViewController.xib; path = "../../build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializePostCommentViewController.xib"; sourceTree = "<group>"; };
+		AA3D69B71433C2CA00DA77AC /* SocializeProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializeProfileViewController.xib; path = "../../build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializeProfileViewController.xib"; sourceTree = "<group>"; };
+		AA3D69BC1433C31200DA77AC /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CommentsTableViewCell.xib; path = "../../build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/CommentsTableViewCell.xib"; sourceTree = "<group>"; };
+		AA3D69BD1433C31200DA77AC /* SocializeCommentDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializeCommentDetailsViewController.xib; path = "../../build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializeCommentDetailsViewController.xib"; sourceTree = "<group>"; };
+		AA3D69BE1433C31300DA77AC /* SocializeCommentsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializeCommentsTableViewController.xib; path = "../../build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializeCommentsTableViewController.xib"; sourceTree = "<group>"; };
+		AA3D69BF1433C31300DA77AC /* SocializePostCommentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializePostCommentViewController.xib; path = "../../build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializePostCommentViewController.xib"; sourceTree = "<group>"; };
+		AA3D69C01433C31300DA77AC /* SocializeProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SocializeProfileViewController.xib; path = "../../build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/SocializeProfileViewController.xib"; sourceTree = "<group>"; };
 		AA62FFD2142BF4EA00605764 /* SampleSdkApp Integration Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleSdkApp Integration Tests-Info.plist"; sourceTree = "<group>"; };
 		AA75A06E14216B210032C88F /* SampleSdkApp-Integration-Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Integration-Tests-Prefix.pch"; sourceTree = "<group>"; };
 		AAA37E351423E44A00803E24 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
@@ -1769,6 +1769,15 @@
 		16E2C4581398F6E3007C91ED /* socialize_resources */ = {
 			isa = PBXGroup;
 			children = (
+				AA3D69BC1433C31200DA77AC /* CommentsTableViewCell.xib */,
+				AA3D69BD1433C31200DA77AC /* SocializeCommentDetailsViewController.xib */,
+				AA3D69BE1433C31300DA77AC /* SocializeCommentsTableViewController.xib */,
+				AA3D69BF1433C31300DA77AC /* SocializePostCommentViewController.xib */,
+				AA3D69C01433C31300DA77AC /* SocializeProfileViewController.xib */,
+				AA3D69B41433C2C900DA77AC /* SocializeCommentDetailsViewController.xib */,
+				AA3D69B51433C2C900DA77AC /* SocializeCommentsTableViewController.xib */,
+				AA3D69B61433C2C900DA77AC /* SocializePostCommentViewController.xib */,
+				AA3D69B71433C2CA00DA77AC /* SocializeProfileViewController.xib */,
 				6D45319413E9C3E800286BEC /* background.png */,
 			);
 			path = socialize_resources;
@@ -1841,15 +1850,6 @@
 		5CC3DAB1137881B900B11B78 = {
 			isa = PBXGroup;
 			children = (
-				AA3D69BC1433C31200DA77AC /* CommentsTableViewCell.xib */,
-				AA3D69BD1433C31200DA77AC /* SocializeCommentDetailsViewController.xib */,
-				AA3D69BE1433C31300DA77AC /* SocializeCommentsTableViewController.xib */,
-				AA3D69BF1433C31300DA77AC /* SocializePostCommentViewController.xib */,
-				AA3D69C01433C31300DA77AC /* SocializeProfileViewController.xib */,
-				AA3D69B41433C2C900DA77AC /* SocializeCommentDetailsViewController.xib */,
-				AA3D69B51433C2C900DA77AC /* SocializeCommentsTableViewController.xib */,
-				AA3D69B61433C2C900DA77AC /* SocializePostCommentViewController.xib */,
-				AA3D69B71433C2CA00DA77AC /* SocializeProfileViewController.xib */,
 				6DFBFE52141FDC890030DE32 /* ThirdPartyLibs */,
 				5CC3DAC31378824800B11B78 /* Socialize */,
 				5CC3DAEE1378859000B11B78 /* unitTests */,
