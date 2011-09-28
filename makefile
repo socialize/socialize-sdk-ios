@@ -6,7 +6,7 @@ package: build
     # zip sources
 	./util/package.sh
      
-build:
+build: 
   	# build embedded framework
 	xcodebuild -target Socialize-iOS -configuration Distribution -sdk iphoneos build
 

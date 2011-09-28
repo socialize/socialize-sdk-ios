@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeCommonDefinitions.h"
-#import "SocializeProvider.h"
-#import "SocializeRequest.h"
-#import "SocializeCommonDefinitions.h"
 #import "SocializeService.h"
 #import "SocializeFBConnect.h"
 
