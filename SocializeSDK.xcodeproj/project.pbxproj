@@ -25,6 +25,7 @@
 
 /* Begin PBXBuildFile section */
 		160630F4142CB17B003B5AC7 /* SocializeUnitTestApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */; };
+		160754841432F8FC002E5A38 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 160754831432F8FC002E5A38 /* libKIF.a */; };
 		163636FC13A6431400403879 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163636FB13A6431400403879 /* GHUnitIOS.framework */; };
 		1636370813A76ED000403879 /* SocializeProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636370713A76ECF00403879 /* SocializeProviderTests.m */; };
 		1636372F13AB289500403879 /* SocializeCommentsServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */; };
@@ -202,7 +203,6 @@
 		16FDF4DF1414BA0A00EAA064 /* CommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */; };
 		16FDF4E01414BA0A00EAA064 /* CommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */; };
 		18029E131432B815002BDEC7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18029E121432B815002BDEC7 /* CoreLocation.framework */; };
-		18029E141432B81E002BDEC7 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18029E0E1432B7F2002BDEC7 /* libKIF.a */; };
 		18029E6F1432B8CB002BDEC7 /* Socialize-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18029E6E1432B8C4002BDEC7 /* Socialize-iOS.framework */; };
 		1859B1D11432A6EB005874B9 /* OAuthConsumer.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6DFBFE70141FDDCC0030DE32 /* OAuthConsumer.h */; };
 		1859B1D21432A6FE005874B9 /* OAAsynchronousDataFetcher.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 6DFBFE5D141FDDCC0030DE32 /* OAAsynchronousDataFetcher.h */; };
@@ -517,7 +517,6 @@
 		AABF6AB01430F78000DAB37F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF6AAD1430F78000DAB37F /* ProfileViewController.m */; };
 		AABF6AB31430FFC300DAB37F /* SynthesizeSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF6AB21430FFC300DAB37F /* SynthesizeSingleton.h */; };
 		AABF6B0E14313E8400DAB37F /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABF6B0D14313E8400DAB37F /* ProfileViewController.xib */; };
-		AADC15EE14328E0E00379A6F /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AADC15ED14328E0E00379A6F /* ProfileViewController.xib */; };
 		AAFE115814228E6C00A142D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4411398C40F007C91ED /* main.m */; };
 		AAFE115914228E6C00A142D9 /* SampleSdkAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E2C4441398C40F007C91ED /* SampleSdkAppAppDelegate.m */; };
 		AAFE115A14228E6C00A142D9 /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
@@ -563,20 +562,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 16B48DAA13DEEBE100EE0A92;
 			remoteInfo = "Socialize-IOS";
-		};
-		18029E0D1432B7F2002BDEC7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18029E061432B7F2002BDEC7 /* KIF.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AAB07268139719AC008AF393;
-			remoteInfo = KIF;
-		};
-		18029E101432B805002BDEC7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18029E061432B7F2002BDEC7 /* KIF.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = AAB07267139719AC008AF393;
-			remoteInfo = KIF;
 		};
 		5C6EC7941379CF150073AE65 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -707,6 +692,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		160754831432F8FC002E5A38 /* libKIF.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libKIF.a; sourceTree = SOURCE_ROOT; };
 		163636FB13A6431400403879 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = unitTests/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		1636370613A76ECF00403879 /* SocializeProviderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProviderTests.h; path = "Test Cases/SocializeProviderTests.h"; sourceTree = "<group>"; };
 		1636370713A76ECF00403879 /* SocializeProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProviderTests.m; path = "Test Cases/SocializeProviderTests.m"; sourceTree = "<group>"; };
@@ -774,7 +760,6 @@
 		1681BDBE13F55BCB00EC6042 /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostCommentViewController.h; path = Classes/PostCommentViewController.h; sourceTree = "<group>"; };
 		1681BDBF13F55BCB00EC6042 /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostCommentViewController.m; path = Classes/PostCommentViewController.m; sourceTree = "<group>"; };
 		1681BDC813F55D3200EC6042 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		1690969E143066270000D6CA /* libKIF.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libKIF.a; sourceTree = SOURCE_ROOT; };
 		169BC79F1420CD94007ED41E /* SocializeLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLocationManager.h; path = Classes/SocializeLocationManager.h; sourceTree = "<group>"; };
 		169BC7A01420CD94007ED41E /* SocializeLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLocationManager.m; path = Classes/SocializeLocationManager.m; sourceTree = "<group>"; };
 		169BC7A41420D602007ED41E /* UILabel+FormatedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+FormatedText.h"; path = "Classes/UILabel+FormatedText.h"; sourceTree = "<group>"; };
@@ -833,7 +818,6 @@
 		16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserJSONFormatterTests.m; path = "Test Cases/SocializeUserJSONFormatterTests.m"; sourceTree = "<group>"; };
 		16FDF4DD1414BA0A00EAA064 /* CommentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDetailsViewController.h; path = Classes/CommentDetailsViewController.h; sourceTree = "<group>"; };
 		16FDF4DE1414BA0A00EAA064 /* CommentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDetailsViewController.m; path = Classes/CommentDetailsViewController.m; sourceTree = "<group>"; };
-		18029E061432B7F2002BDEC7 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = SampleSdkApp/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
 		18029E121432B815002BDEC7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		18029E171432B8C4002BDEC7 /* action-bar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-bg.png"; sourceTree = "<group>"; };
 		18029E181432B8C4002BDEC7 /* action-bar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-bg@2x.png"; sourceTree = "<group>"; };
@@ -1232,7 +1216,6 @@
 		AACBBDE2142164CF008F0A50 /* KIFTestScenario+SampleSdkAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestScenario+SampleSdkAppAdditions.m"; sourceTree = "<group>"; };
 		AACBBDE414216530008F0A50 /* KIFTestStep+SampleSdkAppAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestStep+SampleSdkAppAdditions.h"; sourceTree = "<group>"; };
 		AACBBDE514216530008F0A50 /* KIFTestStep+SampleSdkAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestStep+SampleSdkAppAdditions.m"; sourceTree = "<group>"; };
-		AADC15ED14328E0E00379A6F /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProfileViewController.xib; path = "build/Socialize-iOS.embeddedframework/Socialize-iOS.framework/Versions/A/Resources/ProfileViewController.xib"; sourceTree = "<group>"; };
 		AAEA93B71422C51500994AF5 /* KIFTestScenario+SampleSdkAppAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestScenario+SampleSdkAppAdditions.h"; sourceTree = "<group>"; };
 		AAFE11D714228E6C00A142D9 /* SampleSdkApp Integration Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SampleSdkApp Integration Tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1281,7 +1264,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18029E141432B81E002BDEC7 /* libKIF.a in Frameworks */,
+				160754841432F8FC002E5A38 /* libKIF.a in Frameworks */,
 				18029E131432B815002BDEC7 /* CoreLocation.framework in Frameworks */,
 				18029E6F1432B8CB002BDEC7 /* Socialize-iOS.framework in Frameworks */,
 				AAFE116714228E6C00A142D9 /* MapKit.framework in Frameworks */,
@@ -1513,14 +1496,6 @@
 			path = socialize_resources;
 			sourceTree = "<group>";
 		};
-		18029E071432B7F2002BDEC7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				18029E0E1432B7F2002BDEC7 /* libKIF.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		18029E151432B8C4002BDEC7 /* Socialize-iOS.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
@@ -1692,8 +1667,6 @@
 		5CC3DAB1137881B900B11B78 = {
 			isa = PBXGroup;
 			children = (
-				18029E061432B7F2002BDEC7 /* KIF.xcodeproj */,
-				AADC15ED14328E0E00379A6F /* ProfileViewController.xib */,
 				6DFBFE52141FDC890030DE32 /* ThirdPartyLibs */,
 				5CC3DAC31378824800B11B78 /* Socialize */,
 				5CC3DAEE1378859000B11B78 /* unitTests */,
@@ -1717,8 +1690,8 @@
 		5CC3DAC01378824800B11B78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				160754831432F8FC002E5A38 /* libKIF.a */,
 				18029E151432B8C4002BDEC7 /* Socialize-iOS.embeddedframework */,
-				1690969E143066270000D6CA /* libKIF.a */,
 				1673D68F13DEA40E00A86589 /* OCMock */,
 				5C54DE6013830F9800090269 /* libOCMock.a */,
 				18029E121432B815002BDEC7 /* CoreLocation.framework */,
@@ -2390,7 +2363,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				18029E111432B805002BDEC7 /* PBXTargetDependency */,
 				AAFE115514228E6C00A142D9 /* PBXTargetDependency */,
 			);
 			name = "SampleSdkApp Integration Tests";
@@ -2417,12 +2389,6 @@
 			mainGroup = 5CC3DAB1137881B900B11B78;
 			productRefGroup = 5CC3DABF1378824800B11B78 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 18029E071432B7F2002BDEC7 /* Products */;
-					ProjectRef = 18029E061432B7F2002BDEC7 /* KIF.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				5CC3DABD1378824700B11B78 /* Socialize */,
@@ -2434,22 +2400,11 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		18029E0E1432B7F2002BDEC7 /* libKIF.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libKIF.a;
-			remoteRef = 18029E0D1432B7F2002BDEC7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		16E2C4331398C40E007C91ED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AADC15EE14328E0E00379A6F /* ProfileViewController.xib in Resources */,
 				16E2C43F1398C40F007C91ED /* InfoPlist.strings in Resources */,
 				16E2C4481398C40F007C91ED /* MainWindow.xib in Resources */,
 				6DEEC9BF13D6238F0066CFA2 /* urls.plist in Resources */,
@@ -2913,11 +2868,6 @@
 			isa = PBXTargetDependency;
 			target = 16B48DAA13DEEBE100EE0A92 /* Socialize-iOS */;
 			targetProxy = 162B26EE13E2C56000591AEB /* PBXContainerItemProxy */;
-		};
-		18029E111432B805002BDEC7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = KIF;
-			targetProxy = 18029E101432B805002BDEC7 /* PBXContainerItemProxy */;
 		};
 		5C6EC7951379CF150073AE65 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
