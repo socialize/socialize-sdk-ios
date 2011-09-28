@@ -43,7 +43,7 @@
 
 +(UINavigationController*)createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar
 {
-    SocializePostCommentViewController * pcViewController = [[SocializePostCommentViewController alloc] initWithNibName:@"PostCommentViewController" 
+    SocializePostCommentViewController * pcViewController = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializePostCommentViewController" 
                                                                                                bundle:nil 
                                                                                       entityUrlString:url
                                                                                      keyboardListener:[UIKeyboardListener createWithVisibleKeyboard:NO] 

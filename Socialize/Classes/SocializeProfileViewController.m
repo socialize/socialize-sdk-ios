@@ -35,7 +35,7 @@
 }
 
 - (id)init {
-    return [super initWithNibName:@"ProfileViewController" bundle:nil];
+    return [super initWithNibName:@"SocializeProfileViewController" bundle:nil];
 }
 
 - (UIBarButtonItem*)doneButton {
