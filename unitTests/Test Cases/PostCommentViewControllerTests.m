@@ -86,7 +86,7 @@
 
 -(void)testCreateMethod
 {
-    UINavigationController* controller = [PostCommentViewControllerForTest createAndShowPostViewControllerWithEntityUrl:TEST_URL andImageForNavBar:nil];
+    UINavigationController* controller = [PostCommentViewControllerForTest createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:TEST_URL andImageForNavBar:nil];
     GHAssertNotNil(controller, nil);
 }
 
