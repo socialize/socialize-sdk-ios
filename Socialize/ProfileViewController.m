@@ -8,20 +8,27 @@
 
 #import "ProfileViewController.h"
 #import "ImagesCache.h"
+#import "UINavigationBarBackground.h"
+#import "UIButton+Socialize.h"
 
 @implementation ProfileViewController
 @synthesize delegate = delegate_;
-@synthesize cancelButton = cancelButton_;
-@synthesize saveButton = saveButton_;
+@synthesize doneButton = doneButton_;
+@synthesize editButton = editButton_;
 @synthesize user = user_;
-@synthesize nameLabel = nameLabel_;
+@synthesize userNameLabel = userNameLabel_;
+@synthesize userDescriptionLabel = userDescriptionLabel_;
+@synthesize userLocationLabel = userLocationLabel_;
 @synthesize profileImage = profileImage_;
+@synthesize profileImageActivityIndicator = profileImageActivityIndicator_;
 
 - (void)dealloc {
-    self.cancelButton = nil;
-    self.saveButton = nil;
+    self.doneButton = nil;
+    self.editButton = nil;
     self.user = nil;
-    self.nameLabel = nil;
+    self.userNameLabel = nil;
+    self.userDescriptionLabel = nil;
+    self.userLocationLabel = nil;
     self.profileImage = nil;
     
     [super dealloc];
@@ -31,29 +38,29 @@
     return [super initWithNibName:@"ProfileViewController" bundle:nil];
 }
 
-- (UIBarButtonItem*)cancelButton {
-    if (cancelButton_ == nil) {
-        cancelButton_ = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
-                                                         style:UIBarButtonItemStyleBordered
-                                                        target:self action:@selector(cancelButtonPressed:)];
+- (UIBarButtonItem*)doneButton {
+    if (doneButton_ == nil) {
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Done"];
+        [button addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        doneButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
-    return cancelButton_;
+    return doneButton_;
 }
 
-- (UIBarButtonItem*)saveButton {
-    if (saveButton_ == nil) {
-        saveButton_ = [[UIBarButtonItem alloc] initWithTitle:@"Save"
-                                                         style:UIBarButtonItemStyleBordered
-                                                        target:self action:@selector(saveButtonPressed:)];
+- (UIBarButtonItem*)editButton {
+    if (editButton_ == nil) {
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Edit"];
+        [button addTarget:self action:@selector(editButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        editButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
-    return saveButton_;
+    return editButton_;
 }
 
-- (void)saveButtonPressed:(UIBarButtonItem*)saveButton {
+- (void)editButtonPressed:(UIBarButtonItem*)button {
     [self.delegate profileViewControllerDidSave:self];
 }
 
-- (void)cancelButtonPressed:(UIBarButtonItem*)cancelButton {
+- (void)doneButtonPressed:(UIBarButtonItem*)button {
     [self.delegate profileViewControllerDidCancel:self];
 }
 
@@ -67,27 +74,47 @@
 
 #pragma mark - View lifecycle
 
+- (UIImage*)defaultProfileImage {
+    return [UIImage imageNamed:@"socialize-profileimage-large-default.png"];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = self.cancelButton;
-    self.navigationItem.rightBarButtonItem = self.saveButton;
+    self.navigationItem.leftBarButtonItem = self.doneButton;
+    self.navigationItem.rightBarButtonItem = self.editButton;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
+
+    self.profileImage.image = [self defaultProfileImage];
 
     if (self.user != nil) {
-        self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.firstName, self.user.lastName];
         
+        // Configure labels
+        self.userNameLabel.text = self.user.userName;
+        if (self.user.firstName != nil && self.user.lastName != nil) {
+            self.userDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.firstName, self.user.lastName];
+        }
+        
+        // Configure the profile image
         NSString *url = self.user.smallImageUrl;
         
         if (url != nil) {
             UIImage *existing = [[ImagesCache sharedImagesCache] imageFromCache:url];
-            if (existing) {
+            if (existing != nil) {
                 self.profileImage.image = existing;
             } else {
                 CompleteBlock complete = [[^(ImagesCache* imgs){
-                    self.profileImage.image = [imgs imageFromCache:url];
-                }copy] autorelease];
+                    UIImage *loadedImage = [imgs imageFromCache:url];
+                    if (loadedImage != nil) {
+                        self.profileImage.image = loadedImage;
+                    } else {
+                        self.profileImage.image = [self defaultProfileImage];
+                    }
+                    [self.profileImageActivityIndicator stopAnimating];
+                } copy] autorelease];
                 
+                [self.profileImageActivityIndicator startAnimating];
                 [[ImagesCache sharedImagesCache] loadImageFromUrl:url
                                                    completeAction:complete];
             }
@@ -100,9 +127,11 @@
     [super viewDidUnload];
     
     // Release any retained subviews of the main view.
-    self.cancelButton = nil;
-    self.saveButton = nil;
-    self.nameLabel = nil;
+    self.doneButton = nil;
+    self.editButton = nil;
+    self.userNameLabel = nil;
+    self.userDescriptionLabel = nil;
+    self.userLocationLabel = nil;
     self.profileImage = nil;
 }
 
