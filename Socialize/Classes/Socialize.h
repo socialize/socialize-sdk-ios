@@ -26,9 +26,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "SocializeProvider.h"
 #import "SocializeObjectFactory.h"
-#import "SocializeRequest.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeAuthenticateService.h"
 #import "SocializeCommentsService.h"

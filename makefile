@@ -2,11 +2,11 @@
 default: build buildsample test package
  	# do all the dependencies above
 	#
-package:
+package: build
     # zip sources
 	./util/package.sh
      
-build:
+build: 
   	# build embedded framework
 	xcodebuild -target Socialize-iOS -configuration Distribution -sdk iphoneos build
 
