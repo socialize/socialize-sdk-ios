@@ -105,7 +105,7 @@ expectedJSONFormat = _expectedJSONFormat;
                                                            didFinishSelector:@selector(tokenRequestTicket:didFinishWithData:)
                                                              didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
     
-    NSArray* hosts = [[[NSArray alloc] initWithObjects: @"getsocialize.com", @"stage.getsocialize.com", @"dev.getsocialize.com", nil] autorelease]; 
+    NSArray* hosts = [[[NSArray alloc] initWithObjects: @"stage.api.getsocialize.com", @"getsocialize.com", @"stage.getsocialize.com", @"dev.getsocialize.com", nil] autorelease]; 
     request.dataFetcher.trustedHosts = hosts;
        
     
