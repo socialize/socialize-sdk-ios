@@ -17,7 +17,7 @@
 
 typedef URLDownload*(^LoaderFactory)(NSString* url, id sender, SEL selector, id tag);
 
-@interface CommentDetailsViewController : SocializeBaseViewController<MKReverseGeocoderDelegate> 
+@interface SocializeCommentDetailsViewController : SocializeBaseViewController<MKReverseGeocoderDelegate> 
 {
     @private
         MKReverseGeocoder*      geoCoder;

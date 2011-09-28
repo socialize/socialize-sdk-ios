@@ -6,7 +6,7 @@
 //  Copyright 2011 pointabout. All rights reserved.
 //
 #import <QuartzCore/QuartzCore.h>
-#import "PostCommentViewController.h"
+#import "SocializePostCommentViewController.h"
 #import "UIButton+Socialize.h"
 #import "CommentMapView.h"
 #import "Socialize.h"
@@ -15,9 +15,9 @@
 #import "SocializeLocationManager.h"
 #import "UILabel+FormatedText.h"
 #import "UINavigationBarBackground.h"
-#import "ProfileViewController.h"
+#import "SocializeProfileViewController.h"
 
-@interface PostCommentViewController ()
+@interface SocializePostCommentViewController ()
 
 -(void)setShareLocation:(BOOL)enableLocation;
 -(void)setUserLocationTextLabelForShareState:(BOOL)share; 
@@ -31,7 +31,7 @@
 
 @end 
 
-@implementation PostCommentViewController
+@implementation SocializePostCommentViewController
 
 @synthesize commentTextView;
 @synthesize locationText;
@@ -43,7 +43,7 @@
 
 +(UINavigationController*)createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar
 {
-    PostCommentViewController * pcViewController = [[PostCommentViewController alloc] initWithNibName:@"PostCommentViewController" 
+    SocializePostCommentViewController * pcViewController = [[SocializePostCommentViewController alloc] initWithNibName:@"PostCommentViewController" 
                                                                                                bundle:nil 
                                                                                       entityUrlString:url
                                                                                      keyboardListener:[UIKeyboardListener createWithVisibleKeyboard:NO] 
@@ -271,7 +271,7 @@
 }
 
 - (void)showProfile {
-    ProfileViewController *profile = [[[ProfileViewController alloc] init] autorelease];
+    SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
     profile.user = [self.socialize authenticatedUser];
     profile.delegate = self;
     
@@ -282,12 +282,12 @@
     [self presentModalViewController:navigationController animated:YES];
 }
 
-- (void)profileViewControllerDidSave:(ProfileViewController *)profileViewController {
+- (void)profileViewControllerDidSave:(SocializeProfileViewController *)profileViewController {
     [self dismissModalViewControllerAnimated:YES];
     [self createComment];
 }
 
-- (void)profileViewControllerDidCancel:(ProfileViewController *)profileViewController {
+- (void)profileViewControllerDidCancel:(SocializeProfileViewController *)profileViewController {
     [self dismissModalViewControllerAnimated:YES];
     [self createComment];
 }

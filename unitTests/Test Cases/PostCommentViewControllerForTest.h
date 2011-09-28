@@ -26,9 +26,9 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "PostCommentViewController.h"
+#import "SocializePostCommentViewController.h"
 
-@interface PostCommentViewControllerForTest : PostCommentViewController {
+@interface PostCommentViewControllerForTest : SocializePostCommentViewController {
     
 }
 -(id) initWithEntityUrlString:(NSString*)url keyboardListener:(UIKeyboardListener*) kb locationManager:(SocializeLocationManager *)lm;

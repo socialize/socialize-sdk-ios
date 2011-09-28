@@ -27,7 +27,7 @@
  */
 
 #import "CommentDetailsViewControllerTests.h"
-#import "CommentDetailsViewController.h"
+#import "SocializeCommentDetailsViewController.h"
 #import "SocializeComment.h"
 #import "CommentDetailsView.h"
 #import <OCMock/OCMock.h>
@@ -85,7 +85,7 @@
 
 -(void)setUpClass
 {
-    commentDetails = [[CommentDetailsViewController alloc] initWithNibName:@"CommentDetailsViewController" bundle:nil];
+    commentDetails = [[SocializeCommentDetailsViewController alloc] initWithNibName:@"CommentDetailsViewController" bundle:nil];
     [Socialize storeSocializeApiKey:@"12341234" andSecret: @"12341234"];
 }
 

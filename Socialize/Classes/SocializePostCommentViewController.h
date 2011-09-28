@@ -11,13 +11,13 @@
 
 #import "SocializeBaseViewController.h"
 #import "Socialize.h"
-#import "ProfileViewController.h"
+#import "SocializeProfileViewController.h"
 
 @class CommentMapView;
 @class UIKeyboardListener;
 @class SocializeLocationManager;
 
-@interface PostCommentViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate, UIAlertViewDelegate, ProfileViewControllerDelegate >
+@interface SocializePostCommentViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate, UIAlertViewDelegate, ProfileViewControllerDelegate >
 {
 @private
     SocializeLocationManager* locationManager;

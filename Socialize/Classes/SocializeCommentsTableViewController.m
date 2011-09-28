@@ -9,8 +9,8 @@
 #import "SocializeCommentsTableViewController.h"
 #import "CommentsTableViewCell.h"
 #import "NSDateAdditions.h"
-#import "CommentDetailsViewController.h"
-#import "PostCommentViewController.h"
+#import "SocializeCommentDetailsViewController.h"
+#import "SocializePostCommentViewController.h"
 #import "UILabel-Additions.h"
 #import "UIButton+Socialize.h"
 #import <QuartzCore/CALayer.h>
@@ -141,7 +141,7 @@
 
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
-    UINavigationController * pcNavController =[PostCommentViewController  createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:_entity.key andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
+    UINavigationController * pcNavController =[SocializePostCommentViewController  createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:_entity.key andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
     [self presentModalViewController:pcNavController animated:YES];
 }
 
@@ -177,7 +177,7 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         SocializeComment* entryComment = ((SocializeComment*)[_arrayOfComments objectAtIndex:indexPath.row]);
         
-        CommentDetailsViewController* details = [[CommentDetailsViewController alloc] init];
+        SocializeCommentDetailsViewController* details = [[SocializeCommentDetailsViewController alloc] init];
         details.title = [NSString stringWithFormat: @"%d of %d", indexPath.row + 1, [_arrayOfComments count]];
         details.comment = entryComment;
 

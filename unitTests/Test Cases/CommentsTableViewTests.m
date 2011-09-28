@@ -19,7 +19,7 @@
 -(void) setUpClass
 {
       listView = [[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString: TEST_URL];
-    postCommentController = [OCMockObject niceMockForClass:[PostCommentViewController class]];
+    postCommentController = [OCMockObject niceMockForClass:[SocializePostCommentViewController class]];
 }
 
 -(void) tearDownClass

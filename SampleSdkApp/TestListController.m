@@ -15,7 +15,7 @@
 #import "LikeListViewController.h"
 #import "TestViewCreationViewController.h"
 #import "AuthenticateViewController.h"
-#import "PostCommentViewController.h"
+#import "SocializePostCommentViewController.h"
 #import "TestShowSmallUserInfo.h"
 #import "UIKeyboardListener.h"
 #import "SocializeLocationManager.h"
@@ -184,7 +184,7 @@
         {
             NSString* url = [self getEntityKey];
             if(url)
-                [self presentModalViewController:[PostCommentViewController  createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:url andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]] animated:YES];
+                [self presentModalViewController:[SocializePostCommentViewController  createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:url andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]] animated:YES];
             break;
         }
         case 8:
