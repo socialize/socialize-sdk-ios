@@ -51,3 +51,5 @@ if __name__ == '__main__':
     update_plist(api_config, apiupdate)
   except IOError, e:
     print 'Update failed for %s -- %s' % (socialize_config, e)
+
+  print 'Successfully updated %s and %s' % (socialize_config, api_config)
