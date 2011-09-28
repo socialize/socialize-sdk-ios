@@ -12,12 +12,15 @@
 @protocol ProfileViewControllerDelegate;
 
 @interface ProfileViewController : UIViewController
-@property (nonatomic, retain) UIBarButtonItem *cancelButton;
-@property (nonatomic, retain) UIBarButtonItem *saveButton;
+@property (nonatomic, retain) UIBarButtonItem *doneButton;
+@property (nonatomic, retain) UIBarButtonItem *editButton;
 @property (nonatomic, assign) id<ProfileViewControllerDelegate> delegate;
 @property (nonatomic, retain) id<SocializeUser> user;
 @property (nonatomic, retain) IBOutlet UIImageView *profileImage;
-@property (nonatomic, retain) IBOutlet UILabel *nameLabel;
+@property (nonatomic, retain) IBOutlet UILabel *userNameLabel;
+@property (nonatomic, retain) IBOutlet UILabel *userDescriptionLabel;
+@property (nonatomic, retain) IBOutlet UILabel *userLocationLabel;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *profileImageActivityIndicator;
 @end
 
 @protocol ProfileViewControllerDelegate
