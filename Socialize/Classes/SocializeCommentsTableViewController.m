@@ -82,13 +82,15 @@
         [self stopLoadAnimation];
         _isLoading = NO;
         [self.tableView reloadData];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Failed!", @"") 
-                                                    message: [error localizedDescription]
-                                                   delegate: nil 
-                                          cancelButtonTitle: NSLocalizedString(@"OK", @"")
-                                          otherButtonTitles: nil];
-        [alert show];	
-        [alert release];
+        if ( ![[error localizedDescription] isEqualToString:@"Entity does not exist."] ) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Failed!", @"") 
+                                                        message: [error localizedDescription]
+                                                       delegate: nil 
+                                              cancelButtonTitle: NSLocalizedString(@"OK", @"")
+                                              otherButtonTitles: nil];
+            [alert show];	
+            [alert release];
+        }
     }
 }
 

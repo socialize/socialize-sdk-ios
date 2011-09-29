@@ -57,6 +57,15 @@
     [mockTable verify]; 
 }
 
+
+-(void)testDidFail {
+    id mockError = [OCMockObject mockForClass:[NSError class]];
+    
+    [[[mockError expect] andReturn:@"Entity does not exist."] localizedDescription];
+    [listView service:nil didFail:mockError];
+    [mockError verify];
+}
+
 -(void)testViewDidLoad{
     
     id mockTable = [OCMockObject niceMockForClass:[UITableView class]];

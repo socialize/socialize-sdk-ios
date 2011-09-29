@@ -185,10 +185,12 @@
             if ([errorResponses count]){
 
                 for (SocializeError *errorResp in errorResponses) {
-                    NSLog(@" errorResponse  %@", errorResp.error );
+                    NSLog(@"Error: %@", errorResp.error );
+                    if([self.delegate respondsToSelector:@selector(service:didFail:)])  {
+                        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorResp.error forKey:NSLocalizedDescriptionKey];
+                        [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:userInfo]];
+                    }
                 }
-                if([self.delegate respondsToSelector:@selector(service:didFail:)])
-                    [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
                 return;
             }
         }
