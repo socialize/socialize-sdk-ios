@@ -1,8 +1,8 @@
 /*
- * SocializeUserJSONFormatterTests.m
+ * SocializeFullUserJSONFormatterTests.m
  * SocializeSDK
  *
- * Created on 6/20/11.
+ * Created on 9/29/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -26,37 +26,48 @@
  * See Also: http://gabriel.github.com/gh-unit/
  */
 
-#import <OCMock/OCMock.h>
-#import "SocializeUserJSONFormatterTests.h"
-#import "SocializeUser.h"
-#import "SocializeUserJSONFormatter.h"
+#import "SocializeFullUserJSONFormatterTests.h"
+#import "SocializeFullUserJSONFormatter.h"
+#import "SocializeFullUser.h"
 #import "JSONKit.h"
 
-@implementation SocializeUserJSONFormatterTests
+#import <OCMock/OCMock.h>
+
+@implementation SocializeFullUserJSONFormatterTests
 
 - (void)testToUser
 {
-    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/user_small_response.json"];
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/user_response.json"];
     NSDictionary * JSONDictionaryToParse =(NSDictionary *)[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
-    id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
+    id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
     
     [[mockUser expect] setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
     [[mockUser expect] setFirstName:[JSONDictionaryToParse objectForKey:@"first_name"]];
     [[mockUser expect] setLastName:[JSONDictionaryToParse objectForKey:@"last_name"]];
     [[mockUser expect] setUserName:[JSONDictionaryToParse objectForKey:@"username"]];
+    [[mockUser expect] setDescription:[JSONDictionaryToParse objectForKey:@"description"]];
+    [[mockUser expect] setLocation:[JSONDictionaryToParse objectForKey:@"location"]];
+    [[mockUser expect] setSex:[JSONDictionaryToParse objectForKey:@"sex"]];
+    
+    [[mockUser expect] setMeta:[JSONDictionaryToParse objectForKey:@"meta"]];
     [[mockUser expect] setSmallImageUrl:[JSONDictionaryToParse objectForKey:@"small_image_uri"]];
-    [[mockUser expect] setCity:[JSONDictionaryToParse objectForKey:@"city"]];
-    [[mockUser expect] setState:[JSONDictionaryToParse objectForKey:@"state"]];
-    [[mockUser expect] setMeta:[JSONDictionaryToParse objectForKey:@"meta"]];   
+    [[mockUser expect] setMedium_image_uri:[JSONDictionaryToParse objectForKey:@"medium_image_uri"]];
+    [[mockUser expect] setLarge_image_uri:[JSONDictionaryToParse objectForKey:@"large_image_uri"]];
+    
+    NSDictionary* stats = [JSONDictionaryToParse objectForKey:@"stats"];
+    [[mockUser expect] setViews:[[stats objectForKey:@"views"]intValue]];
+    [[mockUser expect] setLikes:[[stats objectForKey:@"likes"]intValue]];
+    [[mockUser expect] setComments:[[stats objectForKey:@"comments"]intValue]];
+    [[mockUser expect] setShare:[[stats objectForKey:@"shares"]intValue]];
+    
     [[mockUser expect] setThirdPartyAuth: [JSONDictionaryToParse objectForKey:@"third_party_auth"]];
     
-      
-    SocializeUserJSONFormatter * userFormatter = [[[SocializeUserJSONFormatter alloc]initWithFactory:_factory] autorelease];
+    
+    SocializeFullUserJSONFormatter * userFormatter = [[[SocializeFullUserJSONFormatter alloc]initWithFactory:_factory] autorelease];
     
     [userFormatter toObject:mockUser fromDictionary:JSONDictionaryToParse];
     [mockUser verify];  
 }
-
 
 @end

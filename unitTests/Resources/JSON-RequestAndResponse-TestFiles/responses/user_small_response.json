@@ -1,0 +1,17 @@
+{
+    "id": 1,
+    "first_name": "Mr.",
+    "last_name": "Socialize",
+    "username": "Mr. Socialize",
+    "small_image_uri": "http://appmakr-clientimages.s3.amazonaws.com/06500890098.png",
+    "city": "San Francisco",
+    "state": "CA",
+    "meta": "meta info",
+    "third_party_auth":
+    [
+        {
+            "auth_type": "Facebook",
+            "auth_id": 123123123
+        }
+    ]
+}
