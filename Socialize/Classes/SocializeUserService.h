@@ -41,6 +41,7 @@
 //                        picture:(NSData *)pictureData;
 
 -(void) userWithId:(int)userId;
+-(void) usersWithIds:(NSArray*)ids;
 -(void) currentUser;
 -(void) updateUser:(id<SocializeUser>)user;
 

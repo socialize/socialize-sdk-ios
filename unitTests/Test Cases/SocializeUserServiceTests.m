@@ -48,7 +48,7 @@
 -(void)testGetUserWithID
 {
     int userId = 1234;
-    NSDictionary * userIdDictionary = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:userId] forKey:@"id"];
+    NSDictionary * userIdDictionary = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:[NSNumber numberWithInt:userId]] forKey:@"id"];
     [[mockProvider expect]
      requestWithMethodName:@"user/" andParams:userIdDictionary expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_userService];
 
@@ -75,7 +75,8 @@
         [userDefaults synchronize];
     }
     NSNumber* userId = [userDictionary objectForKey:@"id"];
-    NSDictionary * userIdDictionary = [NSDictionary dictionaryWithObject:userId forKey:@"id"];
+    NSArray* ids = [NSArray arrayWithObject:userId];
+    NSDictionary * userIdDictionary = [NSDictionary dictionaryWithObject:ids forKey:@"id"];
     [[mockProvider expect]
      requestWithMethodName:@"user/" andParams:userIdDictionary expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_userService];
        

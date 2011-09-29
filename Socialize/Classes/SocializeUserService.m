@@ -32,9 +32,6 @@
 #define USER_GET_ENDPOINT     @"user/"
 #define USER_POST_ENDPOINT    @"user/"
 
-@interface SocializeUserService ()
-    -(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs;
-@end 
 @implementation SocializeUserService
 
 -(Protocol *)ProtocolType
@@ -43,14 +40,15 @@
 }
 
 
--(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs
+-(void) usersWithIds:(NSArray*)ids
 {
-    [self ExecuteGetRequestAtEndPoint:USER_GET_ENDPOINT  WithParams:dictionaryUserKeyValuePairs expectedResponseFormat:SocializeDictionaryWIthListAndErrors ];
+    NSDictionary* params = [NSDictionary dictionaryWithObject:ids forKey:@"id"];
+    [self ExecuteGetRequestAtEndPoint:USER_GET_ENDPOINT WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
 
 -(void) userWithId:(int)userId
 {
-    [self usersWithIds:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:userId] forKey:@"id"]];
+    [self usersWithIds:[NSArray arrayWithObjects:[NSNumber numberWithInt:userId], nil]];
 }
 
 -(void) currentUser
