@@ -22,6 +22,7 @@
 @synthesize commentsService = _commentsService;
 @synthesize entityService = _entityService;
 @synthesize viewService = _viewService;
+@synthesize userService = _userService;
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
@@ -30,6 +31,7 @@
     [_commentsService release]; _commentsService = nil;
     [_entityService release]; _entityService = nil;
     [_viewService release]; _viewService = nil;
+    [_userService release]; _userService = nil;
     
     [super dealloc];
 }
@@ -51,7 +53,7 @@
         _commentsService = [[SocializeCommentsService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
         _entityService = [[SocializeEntityService alloc]initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
         _viewService  = [[SocializeViewService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
-        //        _userService = [[SocializeUserService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
+        _userService = [[SocializeUserService alloc] initWithProvider:_provider objectFactory:_objectFactory delegate:delegate];
         [_provider release];
     }
     return self;

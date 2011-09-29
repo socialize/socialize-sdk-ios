@@ -35,6 +35,7 @@
 #import "SocializeViewService.h"
 #import "SocializeUserService.h"
 #import "SocializeCommonDefinitions.h"
+#import "SocializeUserService.h"
 
 /**
 This is a general facade of the   SDK`s API. Through it a third party developers could use the API.
@@ -54,6 +55,7 @@ otherwise you will get a failure.
     SocializeCommentsService        *_commentsService;
     SocializeEntityService          *_entityService;
     SocializeViewService            *_viewService;
+    SocializeUserService            *_userService;
 }
 /**Get access to the authentication service via <SocializeAuthenticateService>.*/
 @property (nonatomic, retain) SocializeAuthenticateService    *authService;
@@ -65,6 +67,8 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeEntityService          *entityService;
 /**Get access to the view service via <SocializeViewService>.*/
 @property (nonatomic, retain) SocializeViewService            *viewService;
+/**Get access to the user service via <SocializeViewService>.*/
+@property (nonatomic, retain) SocializeUserService            *userService;
 
 /** @name Initialization */
 

@@ -62,7 +62,7 @@
 {
     NSUserDefaults* def = [NSUserDefaults standardUserDefaults];
     int userId = 1234;
-    [def setObject: [NSNumber numberWithInt:userId] forKey:kSOCIALIZE_USERID_KEY];
+    //[def setObject: [NSNumber numberWithInt:userId] forKey:kSOCIALIZE_USERID_KEY];
     [def synchronize];
 
 
@@ -72,7 +72,7 @@
     
     [_userService currentUser];
     
-    [def removeObjectForKey:kSOCIALIZE_USERID_KEY];
+    //[def removeObjectForKey:kSOCIALIZE_USERID_KEY];
     [def synchronize];
 }
 

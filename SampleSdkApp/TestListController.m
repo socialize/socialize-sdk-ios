@@ -23,8 +23,6 @@
 
 @implementation TestListController
 
-@synthesize user = _user;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -44,7 +42,6 @@
 
 - (void)dealloc
 {
-    [_user release];
     [super dealloc];
 }
 
@@ -188,7 +185,7 @@
             break;
         }
         case 8:
-            controller = [[TestShowSmallUserInfo alloc]initWithNibName:@"TestShowSmallUserInfo" bundle:nil andUserInfo:self.user];
+            controller = [[TestShowSmallUserInfo alloc]initWithNibName:@"TestShowSmallUserInfo" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
 

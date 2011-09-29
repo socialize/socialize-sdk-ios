@@ -241,7 +241,7 @@
 		6D205A3E13C3DB9100D0645E /* SocializeErrorFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D205A3C13C3DB6300D0645E /* SocializeErrorFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D205A3F13C3DB9100D0645E /* SocializeErrorFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D205A3D13C3DB7000D0645E /* SocializeErrorFormatter.m */; };
 		6D205A4113C5060900D0645E /* SocializeShareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D205A2D13BE58D500D0645E /* SocializeShareTests.m */; };
-		6D31962413CDE72F00154B1F /* SocializeDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D31962413CDE72F00154B1F /* SocializeDataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */; settings = {ATTRIBUTES = (); }; };
 		6D31962513CDE72F00154B1F /* SocializeDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */; };
 		6D3F84B71424046D00825DFC /* PostCommentViewControllerForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F84B61424046D00825DFC /* PostCommentViewControllerForTest.m */; };
 		6D44A37913FC3456004B3A46 /* SocializeActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A37813FC3456004B3A46 /* SocializeActionTests.m */; };

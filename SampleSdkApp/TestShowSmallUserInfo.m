@@ -31,22 +31,20 @@
 
 @implementation TestShowSmallUserInfo
 
-@synthesize user;
 @synthesize userName;
 @synthesize fbUserId;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUserInfo: (SocializeUser*) userInfo
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.user = userInfo;
+        _socialize = [[Socialize alloc] initWithDelegate:self];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [user release];
     [userName release];
     [fbUserId release];
     [super dealloc];
@@ -64,16 +62,13 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.userName.text = user.userName;
-    NSNumber* fbId = [user userIdForThirdPartyAuth:FacebookAuth];
-    if(fbId)
-        self.fbUserId.text = [NSString stringWithFormat:@"%d", fbId];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    _loadingView = [LoadingView loadingViewInView:self.view]; 
+    [_socialize.userService currentUser];
 }
 
 - (void)viewDidUnload
@@ -87,6 +82,30 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+#pragma mark Socialize service delegate
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error
+{
+    [_loadingView removeView];
+
+    UIAlertView *msg;
+    msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:[NSString stringWithFormat: @"cannot get profile %@", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [msg show];
+    [msg release];
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
+{
+    [_loadingView removeView];
+    id<SocializeUser> user = [dataArray objectAtIndex:0];
+    self.userName.text = user.userName;
+    
+    NSNumber* fbId = [user userIdForThirdPartyAuth:FacebookAuth];
+    if(fbId)
+        self.fbUserId.text = [NSString stringWithFormat:@"%d", fbId];
 }
 
 @end

@@ -26,20 +26,22 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "Socialize.h"
+#import "LoadingView.h"
 
 @class SocializeUser;
-@interface TestShowSmallUserInfo : UIViewController {
+@interface TestShowSmallUserInfo : UIViewController<SocializeServiceDelegate> {
     @private
-    SocializeUser* user;
+    LoadingView*            _loadingView;
+    Socialize*              _socialize;
     
     IBOutlet UILabel* userName;
     IBOutlet UILabel* fbUserId;
 }
 
-@property(nonatomic, retain) SocializeUser* user;
 @property(nonatomic, retain) IBOutlet UILabel* userName;
 @property(nonatomic, retain) IBOutlet UILabel* fbUserId;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUserInfo: (SocializeUser*) userInfo;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 
 @end

@@ -133,7 +133,6 @@
     [_loadingView removeView];
     self.resultLabel.text = @"success";
     TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil];
-    listController.user = user;
     [self.navigationController pushViewController:listController animated:YES];
     
 }

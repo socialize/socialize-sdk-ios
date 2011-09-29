@@ -16,7 +16,6 @@
 #import "JSONKit.h"
 
 @interface SocializeAuthenticateService()
--(NSString*)getSocializeId;
 -(NSString*)getSocializeToken;
 -(void)persistUserInfo:(NSDictionary*)dictionary;
 -(void)persistConsumerInfo:(NSString*)apiKey andApiSecret:(NSString*)apiSecret;
@@ -74,14 +73,6 @@
     }
 }
 
--(NSString*)getSocializeId{
-    NSUserDefaults* userPreferences = [NSUserDefaults standardUserDefaults];
-    NSString* userJSONObject = [userPreferences valueForKey:kSOCIALIZE_USERID_KEY];
-    if (!userJSONObject)
-        return @"";
-    return userJSONObject;
-}
-
 -(NSString*)getSocializeToken{
     OAToken *authToken = [[[OAToken alloc ]initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX] autorelease];
     if (authToken.key)
@@ -98,7 +89,6 @@
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
                              [UIDevice currentDevice].uniqueIdentifier,@"udid", 
-                             [self getSocializeId],  @"socialize_id", 
                              @"1"/* auth type is for facebook*/ , @"auth_type", //TODO:: should be changed
                              thirdPartyAuthToken, @"auth_token",
                              thirdPartyAppId, @"auth_id" , nil] ;                        

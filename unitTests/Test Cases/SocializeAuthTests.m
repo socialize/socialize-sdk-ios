@@ -47,18 +47,9 @@
     [mockProvider verify];
 }
 
--(NSString*)getSocializeId{
-    NSUserDefaults* userPreferences = [NSUserDefaults standardUserDefaults];
-    NSString* userJSONObject = [userPreferences valueForKey:kSOCIALIZE_USERID_KEY];
-    if (!userJSONObject)
-        return @"";
-    return userJSONObject;
-}
-
 -(void)testAuthAnonymousParams{
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UIDevice currentDevice].uniqueIdentifier,@"udid",
-                                       [self getSocializeId] ,  @"socialize_id", 
                                        @"1"/* auth type is for facebook*/ , @"auth_type",
                                        @"another token", @"auth_token",
                                        @"anotheruserid", @"auth_id" , nil] ;

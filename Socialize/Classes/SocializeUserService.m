@@ -33,7 +33,7 @@
 #define USER_POST_ENDPOINT    @"user/"
 
 @interface SocializeUserService ()
-    -(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
+    -(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs;
 @end 
 @implementation SocializeUserService
 
@@ -43,22 +43,23 @@
 }
 
 
--(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
+-(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs
 {
-    [self ExecuteGetRequestAtEndPoint:USER_GET_ENDPOINT  WithParams:dictionaryUserKeyValuePairs expectedResponseFormat:expectedFormat ];
+    [self ExecuteGetRequestAtEndPoint:USER_GET_ENDPOINT  WithParams:dictionaryUserKeyValuePairs expectedResponseFormat:SocializeDictionaryWIthListAndErrors ];
 }
 
 -(void) userWithId:(int)userId
 {
-    [self usersWithIds:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:userId] forKey:@"id"] expectedResponseFormat:SocializeDictionary];
+    [self usersWithIds:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:userId] forKey:@"id"]];
 }
 
 -(void) currentUser
-{
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    if([defaults objectForKey:kSOCIALIZE_USERID_KEY])
-    {
-         [self userWithId: [[defaults objectForKey:kSOCIALIZE_USERID_KEY] intValue]];
+{   
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
+    if (userData != nil) {
+        NSDictionary *info = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+        id<SocializeUser> user = [_objectCreator createObjectFromDictionary:info forProtocol:@protocol(SocializeUser)];
+        [self userWithId: user.objectID];
     }
 }
 
