@@ -43,5 +43,6 @@
 @property(nonatomic, retain) IBOutlet UILabel* fbUserId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
+-(void)update:(id<SocializeFullUser>)user;
 
 @end

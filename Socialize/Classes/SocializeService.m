@@ -87,6 +87,13 @@
     [_provider requestWithMethodName:endPoint andParams:postRequestParameters expectedJSONFormat:expectedFormat andHttpMethod:@"POST" andDelegate:self];
 }
 
+-(void)ExecutePutRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)putRequestObject expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
+{
+    [_delegate retain];// Take ownership
+    NSDictionary * dictionaryRepresentation =  [_objectCreator createDictionaryRepresentationOfObject:putRequestObject]; 
+    [_provider requestWithMethodName:endPoint andParams:dictionaryRepresentation expectedJSONFormat:expectedFormat andHttpMethod:@"PUT" andDelegate:self];
+}
+
 -(void)ExecuteSecurePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat 
 {
     [_delegate retain];// Take ownership

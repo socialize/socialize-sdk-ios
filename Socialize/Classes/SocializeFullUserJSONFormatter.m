@@ -59,8 +59,31 @@
     [toUser setThirdPartyAuth:TYPE_CHECK([JSONDictionary valueForKey:@"third_party_auth"])];
 }
 
-//-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
-//{
-//}
+-(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
+{
+    id<SocializeFullUser> fromFullUser = (id<SocializeFullUser>)fromObject;
+    if([fromFullUser firstName])
+        [JSONFormatDictionary setObject:[fromFullUser firstName] forKey:@"first_name"];
+    if([fromFullUser lastName])
+        [JSONFormatDictionary setObject:[fromFullUser lastName] forKey:@"last_name"];
+    
+    if([fromFullUser userName])
+        [JSONFormatDictionary setObject:[fromFullUser userName] forKey:@"username"];
+    
+    if([fromFullUser description])
+        [JSONFormatDictionary setObject:[fromFullUser description] forKey:@"description"];
+    
+    if([fromFullUser location])
+        [JSONFormatDictionary setObject:[fromFullUser location] forKey:@"location"];
+
+    if([fromFullUser smallImageUrl])
+        [JSONFormatDictionary setObject:[fromFullUser smallImageUrl] forKey:@"picture"];
+    
+    if([fromFullUser sex])
+        [JSONFormatDictionary setObject:[fromFullUser sex] forKey:@"sex"];
+    
+    if([fromFullUser meta])
+        [JSONFormatDictionary setObject:[fromFullUser meta] forKey:@"meta"];
+}
 
 @end

@@ -61,10 +61,10 @@
     }
 }
 
-//-(void) updateUser:(id<SocializeFullUser>)user
-//{
-//    [self ExecutePostRequestAtEndPoint:USER_POST_ENDPOINT WithObject:user expectedResponseFormat:SocializeDictionary];
-//}
+-(void) updateUser:(id<SocializeFullUser>)user
+{
+    [self ExecutePutRequestAtEndPoint:USER_POST_ENDPOINT WithObject:user expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+}
 
 
 @end

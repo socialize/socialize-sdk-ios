@@ -175,7 +175,7 @@ expectedJSONFormat = _expectedJSONFormat;
 {   
     [self.request setHTTPMethod:self.httpMethod];
     [self.request addValue:[self userAgentString] forHTTPHeaderField:@"User-Agent"];
-    if ([self.httpMethod isEqualToString: @"POST"]) 
+    if ([self.httpMethod isEqualToString: @"POST"] || [self.httpMethod isEqualToString: @"PUT"]) 
     {
         NSString * stringValue = nil;
         NSMutableArray* params = [NSMutableArray array];

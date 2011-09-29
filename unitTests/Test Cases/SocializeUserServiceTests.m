@@ -91,30 +91,30 @@
     [userDefaults synchronize];
 }
 
--(void)testUpdateUser
-{
-    
-    id mockUser = [OCMockObject mockForClass:[SocializeUser class]];
-
-    
-    NSString * requestDataString = @"fooSchnickens";
-    
-    [[[mockfactory expect]andReturn:requestDataString]createStringRepresentationOfObject:mockUser];
-    
-    NSDictionary * requestDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                        requestDataString, @"jsonData",
-   
-                                        nil];
-    
-    [[mockProvider expect]
-     requestWithMethodName:@"user/" andParams:requestDictionary expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:_userService];
-    
-    
-    [_userService updateUser:mockUser];
-    
-    [mockfactory verify];
-    [mockProvider verify];    
-}
+//-(void)testUpdateUser
+//{
+//    
+//    id mockUser = [OCMockObject mockForClass:[SocializeUser class]];
+//
+//    
+//    NSString * requestDataString = @"fooSchnickens";
+//    
+//    [[[mockfactory expect]andReturn:requestDataString]createStringRepresentationOfObject:mockUser];
+//    
+//    NSDictionary * requestDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+//                                        requestDataString, @"jsonData",
+//   
+//                                        nil];
+//    
+//    [[mockProvider expect]
+//     requestWithMethodName:@"user/" andParams:requestDictionary expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:_userService];
+//    
+//    
+//    [_userService updateUser:mockUser];
+//    
+//    [mockfactory verify];
+//    [mockProvider verify];    
+//}
 
 
 @end

@@ -106,6 +106,16 @@
     NSNumber* fbId = [user userIdForThirdPartyAuth:FacebookAuth];
     if(fbId)
         self.fbUserId.text = [NSString stringWithFormat:@"%d", fbId];
+    
+    ///
+    [self performSelectorOnMainThread:@selector(update:) withObject:user waitUntilDone:NO];
+    ///
+}
+
+-(void)update:(id<SocializeFullUser>)user
+{
+    // FIXME crach the system.
+    //[_socialize.userService updateUser:user];
 }
 
 @end
