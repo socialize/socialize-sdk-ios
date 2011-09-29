@@ -8,19 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "SocializeUser.h"
+#import "SocializeProfileEditViewController.h"
+#import "LoadingView.h"
 
 @protocol ProfileViewControllerDelegate;
 
-@interface SocializeProfileViewController : UIViewController
+@interface SocializeProfileViewController : UIViewController <UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate>
 @property (nonatomic, retain) UIBarButtonItem *doneButton;
 @property (nonatomic, retain) UIBarButtonItem *editButton;
 @property (nonatomic, assign) id<ProfileViewControllerDelegate> delegate;
 @property (nonatomic, retain) id<SocializeUser> user;
-@property (nonatomic, retain) IBOutlet UIImageView *profileImage;
+@property (nonatomic, retain) IBOutlet UIImageView *profileImageView;
 @property (nonatomic, retain) IBOutlet UILabel *userNameLabel;
 @property (nonatomic, retain) IBOutlet UILabel *userDescriptionLabel;
 @property (nonatomic, retain) IBOutlet UILabel *userLocationLabel;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *profileImageActivityIndicator;
+@property (nonatomic, retain) SocializeProfileEditViewController *profileEditViewController;
+@property (nonatomic, retain) LoadingView *loadingView;
 @end
 
 @protocol ProfileViewControllerDelegate
