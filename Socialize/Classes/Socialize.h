@@ -444,4 +444,7 @@ otherwise you will get a failure.
  @param lat Latitude  *float* value. Could be nil. (OPTIONAL)
  */
 -(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
+
+-(void)currentUser;
+-(void)userWithId:(int)userId;
 @end

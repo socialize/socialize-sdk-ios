@@ -259,4 +259,16 @@
     [_viewService createViewForEntity:entity longitude:lng latitude:lat];
 }
 
+#pragma user related stuff
+-(void)currentUser
+{
+    [_userService currentUser];
+}
+
+-(void)userWithId:(int)userId
+{
+    [_userService userWithId:userId];
+}
+
+
 @end

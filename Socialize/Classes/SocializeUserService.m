@@ -61,20 +61,10 @@
     }
 }
 
--(void) updateUser:(id<SocializeUser>)user
-{
-    [self ExecutePostRequestAtEndPoint:USER_POST_ENDPOINT WithObject:user expectedResponseFormat:SocializeDictionary];
-}
-
-//-(void) createUserWithFirstname:(NSString *)firstName lastName:(NSString *)lastName description:(NSString *) description location:(NSString *) location
-//                        picture:(NSData *)pictureData
+//-(void) updateUser:(id<SocializeFullUser>)user
 //{
-//    id<SocializeUser> user = (id<SocializeUser>)[self newObject];
-//    user.firstName = firstName;
-//    user.lastName = lastName;
-//    user.description = description;
-//    [self updateUser:user];
-//    
+//    [self ExecutePostRequestAtEndPoint:USER_POST_ENDPOINT WithObject:user expectedResponseFormat:SocializeDictionary];
 //}
+
 
 @end

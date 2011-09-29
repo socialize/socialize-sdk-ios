@@ -35,15 +35,10 @@
     
 }
 
-//TODO:: add implementation
-//-(void) usersWithIds:(NSArray *)arrayOfUserIDs;
-//-(void) createUserWithFirstname:(NSString *)firstName lastName:(NSString *)lastName description:(NSString *) description location:(NSString *) location
-//                        picture:(NSData *)pictureData;
-
 -(void) userWithId:(int)userId;
 -(void) usersWithIds:(NSArray*)ids;
 -(void) currentUser;
--(void) updateUser:(id<SocializeUser>)user;
+//-(void) updateUser:(id<SocializeFullUser>)user;
 
 @end
 

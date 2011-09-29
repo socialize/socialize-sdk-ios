@@ -68,7 +68,7 @@
 {
     [super viewDidLoad];
     _loadingView = [LoadingView loadingViewInView:self.view]; 
-    [_socialize.userService currentUser];
+    [_socialize currentUser];
 }
 
 - (void)viewDidUnload
