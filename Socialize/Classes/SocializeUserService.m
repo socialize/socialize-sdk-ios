@@ -39,7 +39,7 @@
 
 -(Protocol *)ProtocolType
 {
-    return  @protocol(SocializeUser);
+    return  @protocol(SocializeFullUser);
 }
 
 

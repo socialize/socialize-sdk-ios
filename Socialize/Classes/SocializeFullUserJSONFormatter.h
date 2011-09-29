@@ -1,8 +1,8 @@
 /*
- * SocializeUserService.h
+ * SocializeFullUserJSONFormatter.h
  * SocializeSDK
  *
- * Created on 6/17/11.
+ * Created on 9/29/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -26,24 +26,10 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "SocializeService.h"
-#import "SocializeFullUser.h"
-#import "SocializeRequest.h"
+#import "SocializeObjectJSONFormatter.h"
 
-@interface SocializeUserService : SocializeService  
-{
+@interface SocializeFullUserJSONFormatter : SocializeObjectJSONFormatter {
     
 }
 
-//TODO:: add implementation
-//-(void) usersWithIds:(NSArray *)arrayOfUserIDs;
-//-(void) createUserWithFirstname:(NSString *)firstName lastName:(NSString *)lastName description:(NSString *) description location:(NSString *) location
-//                        picture:(NSData *)pictureData;
-
--(void) userWithId:(int)userId;
--(void) currentUser;
--(void) updateUser:(id<SocializeUser>)user;
-
 @end
-
-

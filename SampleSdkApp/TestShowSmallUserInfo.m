@@ -100,7 +100,7 @@
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
 {
     [_loadingView removeView];
-    id<SocializeUser> user = [dataArray objectAtIndex:0];
+    id<SocializeFullUser> user = [dataArray objectAtIndex:0];
     self.userName.text = user.userName;
     
     NSNumber* fbId = [user userIdForThirdPartyAuth:FacebookAuth];

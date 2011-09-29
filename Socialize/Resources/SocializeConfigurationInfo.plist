@@ -18,6 +18,8 @@
 		<string>SocializeShareJSONFormatter</string>
 		<key>SocializeUser</key>
 		<string>SocializeUserJSONFormatter</string>
+		<key>SocializeFullUser</key>
+		<string>SocializeFullUserJSONFormatter</string>
 		<key>SocializeView</key>
 		<string>SocializeViewJSONFormatter</string>
 	</dict>
@@ -39,6 +41,8 @@
 		<string>SocializeShare</string>
 		<key>SocializeUser</key>
 		<string>SocializeUser</string>
+		<key>SocializeFullUser</key>
+		<string>SocializeFullUser</string>
 		<key>SocializeView</key>
 		<string>SocializeView</string>
 	</dict>

@@ -1,8 +1,8 @@
 /*
- * SocializeUserService.h
+ * SocializeFullUser.m
  * SocializeSDK
  *
- * Created on 6/17/11.
+ * Created on 9/29/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -25,25 +25,48 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-#import "SocializeService.h"
 #import "SocializeFullUser.h"
-#import "SocializeRequest.h"
 
-@interface SocializeUserService : SocializeService  
+
+@implementation SocializeFullUser
+
+@synthesize firstName = _firstName;
+@synthesize lastName =  _lastName;
+@synthesize userName = _userName;
+@synthesize smallImageUrl = _smallInageUrl;
+@synthesize description = _description;
+@synthesize location = _location;
+@synthesize medium_image_uri = _medium_image_uri;
+@synthesize large_image_uri = _large_image_uri;
+@synthesize sex = _sex;
+@synthesize meta = _meta;
+
+@synthesize views = _views;
+@synthesize likes = _likes;
+@synthesize comments = _comments;
+@synthesize share = _share;
+
+@synthesize thirdPartyAuth = _thirdPartyAuth;
+
+-(NSNumber*)detectUserIdWithTag: (NSString*) tag
 {
-    
+    NSNumber* result = nil;
+    for(NSDictionary* info in _thirdPartyAuth)
+    {
+        if([[info objectForKey:@"auth_type"] isEqual:tag])
+            result = [info objectForKey:@"auth_id"];
+    }
+    return [[result copy] autorelease];
 }
 
-//TODO:: add implementation
-//-(void) usersWithIds:(NSArray *)arrayOfUserIDs;
-//-(void) createUserWithFirstname:(NSString *)firstName lastName:(NSString *)lastName description:(NSString *) description location:(NSString *) location
-//                        picture:(NSData *)pictureData;
-
--(void) userWithId:(int)userId;
--(void) currentUser;
--(void) updateUser:(id<SocializeUser>)user;
-
+-(NSNumber*)userIdForThirdPartyAuth:(ThirdPartyAuthName) auth
+{
+    NSNumber* userId = nil;
+    switch (auth) {
+        case FacebookAuth:
+            userId = [self detectUserIdWithTag: @"FaceBook"];
+            break;
+    }
+    return userId;
+}
 @end
-
-

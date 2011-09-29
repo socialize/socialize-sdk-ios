@@ -1,8 +1,8 @@
 /*
- * SocializeUserJSONFormatter.m
+ * SocializeFullUserJSONFormatter.m
  * SocializeSDK
  *
- * Created on 6/20/11.
+ * Created on 9/29/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -25,25 +25,37 @@
  * THE SOFTWARE.
  */
 
-#import "SocializeUserJSONFormatter.h"
-#import "SocializeUser.h"
-#include <stdlib.h>
+#import "SocializeFullUserJSONFormatter.h"
+#import "SocializeFullUser.h"
 
-
-@implementation SocializeUserJSONFormatter
+@implementation SocializeFullUserJSONFormatter
 
 -(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {
-    id<SocializeUser> toUser = (id<SocializeUser>)toObject;
-     
+    id<SocializeFullUser> toUser = (id<SocializeFullUser>)toObject;
+    
     [toUser setObjectID: [[JSONDictionary valueForKey:@"id"]intValue]];
     [toUser setFirstName: TYPE_CHECK([JSONDictionary valueForKey:@"first_name"])];
     [toUser setLastName: TYPE_CHECK([JSONDictionary valueForKey:@"last_name"])];
     [toUser setUserName: TYPE_CHECK([JSONDictionary valueForKey:@"username"])];
+    
+    [toUser setDescription: TYPE_CHECK([JSONDictionary valueForKey:@"description"])];
+    [toUser setSex:TYPE_CHECK([JSONDictionary valueForKey:@"sex"])];
+    [toUser setLocation: TYPE_CHECK([JSONDictionary valueForKey:@"location"])];
     [toUser setSmallImageUrl:TYPE_CHECK([JSONDictionary valueForKey:@"small_image_uri"])];   
-    [toUser setCity: TYPE_CHECK([JSONDictionary valueForKey:@"city"])];
-    [toUser setState: TYPE_CHECK([JSONDictionary valueForKey:@"state"])];
+    [toUser setMedium_image_uri: TYPE_CHECK([JSONDictionary valueForKey:@"medium_image_uri"])];
+    [toUser setLarge_image_uri: TYPE_CHECK([JSONDictionary valueForKey:@"large_image_uri"])];
     [toUser setMeta:TYPE_CHECK([JSONDictionary valueForKey:@"meta"])];
+    
+    NSDictionary* stats = TYPE_CHECK([JSONDictionary valueForKey:@"stats"]);
+    if(stats != nil)
+    {
+        [toUser setViews:[[stats valueForKey:@"views"]intValue]];
+        [toUser setLikes:[[stats valueForKey:@"likes"]intValue]];
+        [toUser setComments:[[stats valueForKey:@"comments"]intValue]];
+        [toUser setShare:[[stats valueForKey:@"shares"]intValue]];
+    }
+    
     [toUser setThirdPartyAuth:TYPE_CHECK([JSONDictionary valueForKey:@"third_party_auth"])];
 }
 
