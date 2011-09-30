@@ -8,7 +8,7 @@ package: build
      
 build: 
   	# build embedded framework
-	xcodebuild -target Socialize-iOS -configuration Distribution -sdk iphoneos build
+	xcodebuild -project SocializeSDK.xcodeproj -target Socialize-iOS -configuration Distribution -sdk iphoneos build
 
 buildsample:
 	#building sample
