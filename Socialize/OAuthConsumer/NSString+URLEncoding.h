@@ -28,7 +28,7 @@
 
 @interface NSString (OAURLEncodingAdditions)
 
-- (NSString *)URLEncodedString;
+- (NSString *)SocializeURLEncodedString;
 - (NSString *)URLDecodedString;
 
 @end

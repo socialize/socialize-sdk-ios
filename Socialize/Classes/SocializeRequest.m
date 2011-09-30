@@ -186,11 +186,11 @@ expectedJSONFormat = _expectedJSONFormat;
             stringValue = [_params  JSONString];
         
         [self addParameter:stringValue withKey:@"payload" toCollection: params];
-        [self.request setParameters:params];
+        [self.request setSocializeParameters:params];
     }
     else if([self.httpMethod isEqualToString: @"GET"])
     {
-        [self.request setParameters:[self formatUrlParams]];
+        [self.request setSocializeParameters:[self formatUrlParams]];
     }
     
     [self.request prepare];
