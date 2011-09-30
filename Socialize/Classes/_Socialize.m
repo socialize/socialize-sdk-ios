@@ -289,5 +289,9 @@
     [_userService userWithId:userId];
 }
 
+-(void)updateUserProfile:(id<SocializeFullUser>)user
+{
+    [_userService updateUser:user];
+}
 
 @end

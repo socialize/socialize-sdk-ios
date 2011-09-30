@@ -47,6 +47,8 @@
 {
     [userName release];
     [fbUserId release];
+    [_socialize release];
+    [_user release];
     [super dealloc];
 }
 
@@ -89,7 +91,7 @@
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
 {
-    [_loadingView removeView];
+    [_loadingView removeView];_loadingView = nil;
 
     UIAlertView *msg;
     msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:[NSString stringWithFormat: @"cannot get profile %@", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -99,23 +101,27 @@
 
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
 {
-    [_loadingView removeView];
-    id<SocializeFullUser> user = [dataArray objectAtIndex:0];
-    self.userName.text = user.userName;
+    [_loadingView removeView];_loadingView = nil;
     
-    NSNumber* fbId = [user userIdForThirdPartyAuth:FacebookAuth];
+    _user = [[dataArray objectAtIndex:0] retain];
+    self.userName.text = _user.userName;
+    
+    NSNumber* fbId = [_user userIdForThirdPartyAuth:FacebookAuth];
     if(fbId)
         self.fbUserId.text = [NSString stringWithFormat:@"%d", fbId];
-    
-    ///
-    [self performSelectorOnMainThread:@selector(update:) withObject:user waitUntilDone:NO];
-    ///
 }
 
--(void)update:(id<SocializeFullUser>)user
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object
 {
-    // FIXME crach the system.
-    //[_socialize.userService updateUser:user];
+    
+}
+
+-(IBAction)updateBtn
+{
+    _loadingView = [LoadingView loadingViewInView:self.view]; 
+    
+    _user.userName = @"Sergey";
+    [_socialize updateUserProfile:_user];    
 }
 
 @end
