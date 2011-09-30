@@ -8,7 +8,8 @@
 
 #import "SocializeTests.h"
 #import <OCMock/OCMock.h>
-
+#import "SocializeAuthenticateService.h"
+#import "SocializeLikeService.h"
 
 @implementation SocializeTests
 

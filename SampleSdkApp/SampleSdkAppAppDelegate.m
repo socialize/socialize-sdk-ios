@@ -9,10 +9,14 @@
 
 #import <Foundation/Foundation.h>
 #import "SampleSdkAppAppDelegate.h"
-#import "Socialize.h"
+#import <Socialize-iOS/Socialize.h>
 #import "TestListController.h"
 #include <AvailabilityMacros.h>
+
+#if RUN_GHUNIT_TESTS
 #import <GHUnitIOS/GHUnit.h>
+#endif
+
 #if RUN_KIF_TESTS
 #import "SampleSdkAppKIFTestController.h"
 #endif

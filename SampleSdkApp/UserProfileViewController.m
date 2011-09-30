@@ -91,7 +91,8 @@
 
 -(void)viewDidDisappear:(BOOL)animated
 {
-    self.service.userService.delegate = nil;
+    // FIXME can't use services directly in sample app
+//    self.service.userService.delegate = nil;
     [super viewDidDisappear:animated];
 }
 

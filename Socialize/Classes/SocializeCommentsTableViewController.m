@@ -19,7 +19,9 @@
 #import "ImageLoader.h"
 #import "UIKeyboardListener.h"
 #import "SocializeLocationManager.h"
-
+#import "SocializeAuthenticateService.h"
+#import "ImagesCache.h"
+#import "TableBGInfoView.h"
 
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;

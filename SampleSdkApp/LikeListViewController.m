@@ -7,7 +7,7 @@
 //
 
 #import "LikeListViewController.h"
-#import "SocializeLike.h"
+#import <Socialize-iOS/Socialize.h>
 #import "UIButton+Socialize.h"
 @implementation LikeListViewController
 

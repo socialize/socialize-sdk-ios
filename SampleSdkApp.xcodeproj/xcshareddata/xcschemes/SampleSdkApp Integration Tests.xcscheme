@@ -13,10 +13,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AAFE115414228E6C00A142D9"
+               BlueprintIdentifier = "AA2DA2261435437400C62B97"
                BuildableName = "SampleSdkApp Integration Tests.app"
                BlueprintName = "SampleSdkApp Integration Tests"
-               ReferencedContainer = "container:SocializeSDK.xcodeproj">
+               ReferencedContainer = "container:SampleSdkApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -38,10 +38,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AAFE115414228E6C00A142D9"
+            BlueprintIdentifier = "AA2DA2261435437400C62B97"
             BuildableName = "SampleSdkApp Integration Tests.app"
             BlueprintName = "SampleSdkApp Integration Tests"
-            ReferencedContainer = "container:SocializeSDK.xcodeproj">
+            ReferencedContainer = "container:SampleSdkApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AAFE115414228E6C00A142D9"
+            BlueprintIdentifier = "AA2DA2261435437400C62B97"
             BuildableName = "SampleSdkApp Integration Tests.app"
             BlueprintName = "SampleSdkApp Integration Tests"
-            ReferencedContainer = "container:SocializeSDK.xcodeproj">
+            ReferencedContainer = "container:SampleSdkApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

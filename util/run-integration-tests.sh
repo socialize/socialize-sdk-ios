@@ -23,7 +23,7 @@ trap cleanup INT TERM EXIT
 
 # Build the "Integration Tests" target to run in the simulator
 WORKSPACE=socialize-sdk-ios.xcworkspace
-cd "$SRCDIR" && xcodebuild -workspace $WORKSPACE -scheme 'Command-line Integration Test Runner' -configuration Release -sdk iphonesimulator build
+cd "$SRCDIR" && xcodebuild -workspace $WORKSPACE -scheme 'SampleSdkApp Integration Tests' -configuration Release -sdk iphonesimulator build
 
 [ -e "${XCODE_ENVIRONMENT}" ] || { echo "Can't find ${XCODE_ENVIRONMENT}. You must run dump-xcode-environment.sh from the xcode target."; exit 1; }
 source "${XCODE_ENVIRONMENT}"

@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SampleSdkApp/KIF/KIF.xcodeproj">
+      location = "container:SocializeSDK.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:SocializeSDK.xcodeproj">
+      location = "group:Frameworks/KIF/KIF.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SampleSdkApp.xcodeproj">
    </FileRef>
 </Workspace>

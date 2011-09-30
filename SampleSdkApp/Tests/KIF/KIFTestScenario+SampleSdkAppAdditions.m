@@ -7,7 +7,8 @@
 //
 
 #import "KIFTestScenario+SampleSdkAppAdditions.h"
-
+#import "KIFTestStep+SampleSdkAppAdditions.h"
+#import "SampleSdkAppKIFTestController.h"
 @implementation KIFTestScenario (SampleSdkAppAdditions)
 
 + (id)scenarioToAuthenticate {

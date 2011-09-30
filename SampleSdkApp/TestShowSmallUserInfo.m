@@ -26,7 +26,7 @@
  */
 
 #import "TestShowSmallUserInfo.h"
-#import "SocializeUser.h"
+#import <Socialize-iOS/Socialize.h>
 
 
 @implementation TestShowSmallUserInfo

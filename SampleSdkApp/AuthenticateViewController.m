@@ -7,7 +7,7 @@
 //
 
 #import "AuthenticateViewController.h"
-#import "Socialize.h"
+#import <Socialize-iOS/Socialize.h>
 #import "TestListController.h"
 #import "UIButton+Socialize.h"
 
@@ -128,7 +128,7 @@
 -(void)didAuthenticate:(id<SocializeUser>)user {
     
     NSLog(@"%@", [user userIdForThirdPartyAuth: FacebookAuth]);
-    NSLog(@"%@", [socialize.authService receiveFacebookAuthToken]);
+//    NSLog(@"%@", [socialize.authService receiveFacebookAuthToken]);
     
     [_loadingView removeView];
     self.resultLabel.text = @"success";

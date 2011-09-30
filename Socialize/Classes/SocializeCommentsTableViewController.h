@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SocializeService.h"
-#import "CommentsTableFooterView.h"
-#import "TableBGInfoView.h"
-#import "SocializePostCommentViewController.h"
-#import "Socialize.h"
-#import "LoadingView.h"
-#import "ImagesCache.h"
+#import "SocializeServiceDelegate.h"
+#import "_Socialize.h"
 #import "SocializeBaseViewController.h"
+
+@class CommentsTableFooterView;
+@class TableBGInfoView;
+@class ImagesCache;
+
 /*
 @protocol SocializeCommentsDelegate 
 

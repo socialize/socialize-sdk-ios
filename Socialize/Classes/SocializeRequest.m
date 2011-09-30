@@ -16,7 +16,7 @@
 #import "SocializeCommonDefinitions.h"
 #import "JSONKit.h"
 #import <Foundation/NSURLResponse.h>
-
+#import "SocializePrivateDefinitions.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global

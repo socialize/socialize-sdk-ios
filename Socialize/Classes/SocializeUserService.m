@@ -26,7 +26,7 @@
  */
 
 #import "SocializeUserService.h"
-#import "SocializeCommonDefinitions.h"
+#import "SocializePrivateDefinitions.h"
 
 
 #define USER_GET_ENDPOINT     @"user/"

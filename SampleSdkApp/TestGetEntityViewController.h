@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Socialize.h"
+#import <Socialize-iOS/Socialize.h>
 #import "LoadingView.h"
-#import "SocializeActionView.h"
 
 @interface TestGetEntityViewController : UIViewController<SocializeServiceDelegate> {
     

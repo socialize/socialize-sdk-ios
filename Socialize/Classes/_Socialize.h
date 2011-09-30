@@ -26,16 +26,18 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "SocializeObjectFactory.h"
+
+#import "SocializeObjects.h"
 #import "SocializeCommonDefinitions.h"
-#import "SocializeAuthenticateService.h"
-#import "SocializeCommentsService.h"
-#import "SocializeEntityService.h"
-#import "SocializeLikeService.h"
-#import "SocializeViewService.h"
-#import "SocializeUserService.h"
-#import "SocializeCommonDefinitions.h"
-#import "SocializeUserService.h"
+#import "SocializeServiceDelegate.h"
+
+@class SocializeObjectFactory;
+@class SocializeAuthenticateService;
+@class SocializeLikeService;
+@class SocializeCommentsService;
+@class SocializeEntityService;
+@class SocializeViewService;
+@class SocializeUserService;
 
 /**
 This is a general facade of the   SDK`s API. Through it a third party developers could use the API.

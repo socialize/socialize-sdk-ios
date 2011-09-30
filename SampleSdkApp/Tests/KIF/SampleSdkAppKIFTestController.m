@@ -7,6 +7,8 @@
 //
 
 #import "SampleSdkAppKIFTestController.h"
+#import "KIFTestScenario+SampleSdkAppAdditions.h"
+#import "StringHelper.h"
 
 static NSString *UUIDString() {
     CFUUIDRef	uuidObj = CFUUIDCreate(nil);

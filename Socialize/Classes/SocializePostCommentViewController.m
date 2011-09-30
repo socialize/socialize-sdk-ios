@@ -9,13 +9,14 @@
 #import "SocializePostCommentViewController.h"
 #import "UIButton+Socialize.h"
 #import "CommentMapView.h"
-#import "Socialize.h"
+#import "_Socialize.h"
 #import "LoadingView.h"
 #import "UIKeyboardListener.h"
 #import "SocializeLocationManager.h"
 #import "UILabel+FormatedText.h"
 #import "UINavigationBarBackground.h"
 #import "SocializeProfileViewController.h"
+#import "SocializeAuthenticateService.h"
 
 @interface SocializePostCommentViewController ()
 

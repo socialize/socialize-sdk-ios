@@ -10,7 +10,8 @@
 #import "SocializeCommentsTableViewController.h"
 #import "CommentsTableViewCell.h"
 #import <OCMock/OCMock.h>
-
+#import "SocializePostCommentViewController.h"
+#import "TableBGInfoView.h"
 
 @implementation CommentsTableViewTests
 

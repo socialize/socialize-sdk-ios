@@ -7,8 +7,7 @@
 //
 
 #import "TestCreateCommentViewController.h"
-#import "SocializeService.h"
-#import "SocializeComment.h"
+#import <Socialize-iOS/Socialize.h>
 #import "UIButton+Socialize.h"
 #define SUCCESS @"success"
 #define FAIL @"fail"

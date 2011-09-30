@@ -6,9 +6,18 @@
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "Socialize.h"
-#import "SocializeCommentsService.h"
+#import "_Socialize.h"
+
 #import "SocializeConfiguration.h"
+#import "SocializeCommentsService.h"
+#import "SocializeLikeService.h"
+#import "SocializeAuthenticateService.h"
+#import "SocializeEntityService.h"
+#import "SocializeActivityService.h"
+#import "SocializeCommentsService.h"
+#import "SocializeUserService.h"
+#import "SocializeViewService.h"
+#import "SocializeShareService.h"
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"

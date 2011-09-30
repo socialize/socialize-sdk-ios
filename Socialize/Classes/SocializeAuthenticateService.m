@@ -14,6 +14,7 @@
 #import "OAAsynchronousDataFetcher.h"
 #import <UIKit/UIKit.h>
 #import "JSONKit.h"
+#import "SocializePrivateDefinitions.h"
 
 @interface SocializeAuthenticateService()
 -(NSString*)getSocializeToken;
