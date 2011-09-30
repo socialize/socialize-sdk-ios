@@ -112,6 +112,10 @@
     return [defaults valueForKey:SOCIALIZE_FACEBOOK_LOCAL_APP_ID];
 }
 
+-(NSString*) receiveFacebookAuthToken {
+    return [_authService receiveFacebookAuthToken];
+}
+
 #pragma mark authentication info
 
 +(BOOL)handleOpenURL:(NSURL *)url {

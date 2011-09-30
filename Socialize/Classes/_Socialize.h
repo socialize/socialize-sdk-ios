@@ -132,6 +132,13 @@ otherwise you will get a failure.
 +(NSString*) facebookLocalAppId;
 
 /**
+ Provide access to the facebook authorization token after facebook authentication
+ 
+ @return Facebook authorization token
+ */
+-(NSString*) receiveFacebookAuthToken;
+
+/**
  Set callback delegate which responds to protocol <SocializeServiceDelegate> to the service.
  @param delegate Implemented by user callback delegate which responds to the  <SocializeServiceDelegate> protocol.
  */
