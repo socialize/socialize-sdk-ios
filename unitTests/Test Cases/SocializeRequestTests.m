@@ -42,7 +42,7 @@
     
     for(int i = 0; i< [actual count]; i++)
     {
-        if([[actual objectAtIndex:i] name] == [[expected objectAtIndex:i] name] && [(SocializeOARequestParameter*)[actual objectAtIndex:i] value] == [(SocializeOARequestParameter*)[expected objectAtIndex:i] value])
+        if([[actual objectAtIndex:i] name] == [[expected objectAtIndex:i] name] && [[actual objectAtIndex:i] value] == [[expected objectAtIndex:i] value])
         {
             return NO;
         }

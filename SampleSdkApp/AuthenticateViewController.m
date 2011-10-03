@@ -54,9 +54,9 @@
 {
     [super viewDidLoad];
     
-//    [_authenticateButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
-//    [_thirdpartyAuthentication configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
-//    [_emptyCacheButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
+    [_authenticateButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+    [_thirdpartyAuthentication configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
+    [_emptyCacheButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
 
     self.view.backgroundColor = [UIColor lightGrayColor];
     self.navigationItem.title = @"Authenticate";
