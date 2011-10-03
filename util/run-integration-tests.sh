@@ -36,7 +36,7 @@ OUTFILE="/tmp/KIF-$$.out"
 echo "OUTFILE is $OUTFILE"
 
 # pipe from waxsim to tee does not work
-KIF_CLI=1 "$THISDIR/waxsim" -f "iphone" "$CONFIGURATION_BUILD_DIR/SampleSdkApp Integration Tests.app" >"$OUTFILE" 2>&1 &
+KIF_CLI=1 "$THISDIR/waxsim" -s 4.3 -f "iphone" "$CONFIGURATION_BUILD_DIR/SampleSdkApp Integration Tests.app" >"$OUTFILE" 2>&1 &
 simPID=$!
 
 tail -f "$OUTFILE" &
