@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 THISDIR=$(dirname $0)
 SRCDIR="$THISDIR/.."
@@ -14,7 +14,7 @@ function cleanup() {
   set +o errexit
   for pid in $simPID $tailPID; do
     if [ -n "$simPID" ] && kill -0 $pid; then
-      kill $simPID
+      kill $simPID > /dev/null 2>&1 
     fi
   done
   killall "iPhone Simulator"
@@ -36,7 +36,7 @@ OUTFILE="/tmp/KIF-$$.out"
 echo "OUTFILE is $OUTFILE"
 
 # pipe from waxsim to tee does not work
-KIF_CLI=1 "$THISDIR/waxsim" -s 4.3 -f "iphone" "$CONFIGURATION_BUILD_DIR/SampleSdkApp Integration Tests.app" >"$OUTFILE" 2>&1 &
+KIF_CLI=1 "$THISDIR/waxsim" -f "iphone" "$CONFIGURATION_BUILD_DIR/SampleSdkApp Integration Tests.app" >"$OUTFILE" 2>&1 &
 simPID=$!
 
 tail -f "$OUTFILE" &

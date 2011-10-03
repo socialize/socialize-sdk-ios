@@ -64,7 +64,6 @@
 
 - (NSString *)URLEncodedNameValuePair 
 {
-    NSLog(@"BEFORE PARAM ENCODED");
     return [NSString stringWithFormat:@"%@=%@", [self URLEncodedName], [self URLEncodedValue]];
 }
 
