@@ -347,7 +347,7 @@
 		AAAFE93D1435633300851C73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE93B1435633300851C73 /* CoreLocation.framework */; };
 		AAAFE93E1435633300851C73 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE93C1435633300851C73 /* MapKit.framework */; };
 		AAAFE947143564B100851C73 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE945143564B100851C73 /* GHUnitIOS.framework */; };
-		AAAFE948143564B100851C73 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE946143564B100851C73 /* libOCMock.a */; };
+		AAB2DEE6143A796300C3C1F5 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB2DEE5143A796300C3C1F5 /* libOCMock.a */; };
 		AABB7D831433F32800D0FDF9 /* SocializeEditValueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB7D7B1433F32800D0FDF9 /* SocializeEditValueTableViewCell.m */; };
 		AABB7D851433F32800D0FDF9 /* SocializeProfileEditTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB7D7D1433F32800D0FDF9 /* SocializeProfileEditTableViewCell.m */; };
 		AABB7D871433F32800D0FDF9 /* SocializeProfileEditValueController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB7D7F1433F32800D0FDF9 /* SocializeProfileEditValueController.m */; };
@@ -840,7 +840,7 @@
 		AAAFE93B1435633300851C73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AAAFE93C1435633300851C73 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AAAFE945143564B100851C73 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
-		AAAFE946143564B100851C73 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = Frameworks/libOCMock.a; sourceTree = "<group>"; };
+		AAB2DEE5143A796300C3C1F5 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libOCMock.a; path = "Frameworks/OCMock/Source/build/Release-iphoneos/libOCMock.a"; sourceTree = "<group>"; };
 		AABB7D7A1433F32800D0FDF9 /* SocializeEditValueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeEditValueTableViewCell.h; sourceTree = "<group>"; };
 		AABB7D7B1433F32800D0FDF9 /* SocializeEditValueTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeEditValueTableViewCell.m; sourceTree = "<group>"; };
 		AABB7D7C1433F32800D0FDF9 /* SocializeProfileEditTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeProfileEditTableViewCell.h; sourceTree = "<group>"; };
@@ -876,8 +876,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB2DEE6143A796300C3C1F5 /* libOCMock.a in Frameworks */,
 				AAAFE947143564B100851C73 /* GHUnitIOS.framework in Frameworks */,
-				AAAFE948143564B100851C73 /* libOCMock.a in Frameworks */,
 				6D44A7B91402BCDD004B3A46 /* libSocialize.a in Frameworks */,
 				5CC3DB121378889E00B11B78 /* CoreGraphics.framework in Frameworks */,
 				5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */,
@@ -1122,7 +1122,6 @@
 			isa = PBXGroup;
 			children = (
 				AAAFE945143564B100851C73 /* GHUnitIOS.framework */,
-				AAAFE946143564B100851C73 /* libOCMock.a */,
 				AAAFE86214355F1B00851C73 /* SampleSdkApp */,
 				6DFBFE52141FDC890030DE32 /* ThirdPartyLibs */,
 				5CC3DAC31378824800B11B78 /* Socialize */,
@@ -1145,6 +1144,7 @@
 		5CC3DAC01378824800B11B78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAB2DEE5143A796300C3C1F5 /* libOCMock.a */,
 				AAAFE93B1435633300851C73 /* CoreLocation.framework */,
 				AAAFE93C1435633300851C73 /* MapKit.framework */,
 				AAAFE936143562CA00851C73 /* QuartzCore.framework */,
@@ -2394,7 +2394,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/socialize\"/**",
-					"\"$(PROJECT_DIR)/Frameworks\"/**",
+					"\"$(CONFIGURATION_BUILD_DIR)/Headers\"/**",
 				);
 				INFOPLIST_FILE = "unitTests/unitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -2437,7 +2437,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/socialize\"/**",
-					"\"$(PROJECT_DIR)/Frameworks\"/**",
+					"\"$(CONFIGURATION_BUILD_DIR)/Headers\"/**",
 				);
 				INFOPLIST_FILE = "unitTests/unitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
