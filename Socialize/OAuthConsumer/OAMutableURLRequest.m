@@ -213,7 +213,6 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
     for (OARequestParameter *param in [self socializeParameters]) {
         [parameterPairs addObject:[param URLEncodedNameValuePair]];
         [param URLEncodedNameValuePair];
-        NSLog(@"param encoded is: %@", [param URLEncodedNameValuePair] );
     }
     
     NSArray *sortedPairs = [parameterPairs sortedArrayUsingSelector:@selector(compare:)];

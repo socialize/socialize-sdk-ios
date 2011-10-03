@@ -186,6 +186,10 @@
             controller = [[TestShowSmallUserInfo alloc]initWithNibName:@"TestShowSmallUserInfo" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
+        case 9:
+            controller = [[SocializeProfileViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
+            break;
 
     }    
 }

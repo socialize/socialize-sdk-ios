@@ -89,6 +89,14 @@
 		16F449DA13AF8358003BE655 /* SocializeApplicationJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449D913AF8356003BE655 /* SocializeApplicationJSONFormatterTests.m */; };
 		16F449DD13AF8B37003BE655 /* SocializeUserJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */; };
 		16FDF4E01414BA0A00EAA064 /* SocializeCommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */; };
+		18926060143A7D64006DE6B8 /* SocializeProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABF6B0D14313E8400DAB37F /* SocializeProfileViewController.xib */; };
+		18926061143A7EC7006DE6B8 /* socialize-profileimage-large-default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694A1432ADEF00DA77AC /* socialize-profileimage-large-default.png */; };
+		18926062143A7EEB006DE6B8 /* background_brushed_metal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69441432ADEF00DA77AC /* background_brushed_metal@2x.png */; };
+		18926063143A7EF9006DE6B8 /* socialize-profileimage-large-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69481432ADEF00DA77AC /* socialize-profileimage-large-bg.png */; };
+		18926064143A7EF9006DE6B8 /* socialize-profileimage-large-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69491432ADEF00DA77AC /* socialize-profileimage-large-bg@2x.png */; };
+		18926065143A7F02006DE6B8 /* socialize-sectionheader-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694C1432ADEF00DA77AC /* socialize-sectionheader-bg.png */; };
+		18926066143A7F02006DE6B8 /* socialize-sectionheader-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694D1432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png */; };
+		18926067143A7F5D006DE6B8 /* socialize-location-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69471432ADEF00DA77AC /* socialize-location-icon.png */; };
 		5C21C0C71396BF8300CF2B9F /* SocializeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */; };
 		5C21C0C91396BF8300CF2B9F /* _Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C31396BF8300CF2B9F /* _Socialize.m */; };
 		5C21C0D11396D9A800CF2B9F /* SocializeEntityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0CF1396D9A800CF2B9F /* SocializeEntityService.m */; };
@@ -1932,8 +1940,11 @@
 				AAAFE8D714355F1B00851C73 /* AuthenticateViewController.xib in Resources */,
 				AAAFE8DC14355F1B00851C73 /* InfoPlist.strings in Resources */,
 				AAAFE8DD14355F1B00851C73 /* MainWindow.xib in Resources */,
+				18926060143A7D64006DE6B8 /* SocializeProfileViewController.xib in Resources */,
 				AAAFE8E214355F1B00851C73 /* LikeListViewController.xib in Resources */,
 				AAAFE8E914355F1B00851C73 /* SocializeApiInfo.plist in Resources */,
+				18926061143A7EC7006DE6B8 /* socialize-profileimage-large-default.png in Resources */,
+				18926062143A7EEB006DE6B8 /* background_brushed_metal@2x.png in Resources */,
 				AAAFE8EB14355F1B00851C73 /* SocializeConfigurationInfo.plist in Resources */,
 				AAAFE8EE14355F1B00851C73 /* TestCreateCommentViewController.xib in Resources */,
 				AAAFE8F014355F1B00851C73 /* TestCreateEntityViewController.xib in Resources */,
@@ -1942,6 +1953,11 @@
 				AAAFE8F614355F1B00851C73 /* TestLikeViewController.xib in Resources */,
 				AAAFE8F814355F1B00851C73 /* TestListController.xib in Resources */,
 				AAAFE91914355F1B00851C73 /* tests.plist in Resources */,
+				18926063143A7EF9006DE6B8 /* socialize-profileimage-large-bg.png in Resources */,
+				18926067143A7F5D006DE6B8 /* socialize-location-icon.png in Resources */,
+				18926064143A7EF9006DE6B8 /* socialize-profileimage-large-bg@2x.png in Resources */,
+				18926065143A7F02006DE6B8 /* socialize-sectionheader-bg.png in Resources */,
+				18926066143A7F02006DE6B8 /* socialize-sectionheader-bg@2x.png in Resources */,
 				AAAFE91B14355F1B00851C73 /* TestShowSmallUserInfo.xib in Resources */,
 				AAAFE91D14355F1B00851C73 /* TestViewCreationViewController.xib in Resources */,
 				AAAFE92014355F1B00851C73 /* urls.plist in Resources */,
@@ -2302,7 +2318,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -2336,7 +2352,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
