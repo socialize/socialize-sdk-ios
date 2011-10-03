@@ -235,7 +235,7 @@
 {
     PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
 
-    id mockBtn = [OCMockObject mockForClass: [UIBarButtonItem class]];
+    id mockBtn = [OCMockObject niceMockForClass: [UIBarButtonItem class]];
     [[mockBtn expect] setEnabled:YES];
     controller.navigationItem.rightBarButtonItem = mockBtn;
   
@@ -255,7 +255,7 @@
 {
     PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
     
-    id mockBtn = [OCMockObject mockForClass: [UIBarButtonItem class]];
+    id mockBtn = [OCMockObject niceMockForClass: [UIBarButtonItem class]];
     [[mockBtn expect] setEnabled:NO];
     controller.navigationItem.rightBarButtonItem = mockBtn;
     
