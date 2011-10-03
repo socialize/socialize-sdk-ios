@@ -7,7 +7,6 @@
 //
 
 #import "URLDownloadOperation.h"
-
 typedef URLDownloadOperation*(^OperationFactoryBlock)(id target, SEL method, id object);
 
 @interface URLDownload : NSObject

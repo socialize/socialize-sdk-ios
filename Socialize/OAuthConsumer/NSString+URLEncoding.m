@@ -35,7 +35,6 @@
                                                                            NULL,
 																		   CFSTR("!*'();:@&=+$,/?%#[]"),
                                                                            kCFStringEncodingUTF8);
-    NSLog(@"returning result %@", result);
     [result autorelease];
 	return result;
 }

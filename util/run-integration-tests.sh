@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 THISDIR=$(dirname $0)
 SRCDIR="$THISDIR/.."
@@ -14,7 +14,7 @@ function cleanup() {
   set +o errexit
   for pid in $simPID $tailPID; do
     if [ -n "$simPID" ] && kill -0 $pid; then
-      kill $simPID
+      kill $simPID > /dev/null 2>&1 
     fi
   done
   killall "iPhone Simulator"
