@@ -12,7 +12,6 @@
 			buildConfigurationList = 16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize-iOS" */;
 			buildPhases = (
 				16B48DB013DEEC0E00EE0A92 /* Build static lib */,
-				16B48DB213DEED3600EE0A92 /* Copy Headers */,
 				16B48DB113DEECAB00EE0A92 /* Build universal lib */,
 				16B48DDA13DEEE7900EE0A92 /* Copy Resources */,
 			);
@@ -377,19 +376,6 @@
 			remoteInfo = Socialize;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		16B48DB213DEED3600EE0A92 /* Copy Headers */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "${PROJECT_DIR}/build/public-headers";
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			name = "Copy Headers";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		160754851432FB7C002E5A38 /* NSString+PlaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+PlaceMark.h"; path = "Classes/NSString+PlaceMark.h"; sourceTree = "<group>"; };
@@ -840,7 +826,7 @@
 		AAAFE93B1435633300851C73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AAAFE93C1435633300851C73 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AAAFE945143564B100851C73 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
-		AAB2DEE5143A796300C3C1F5 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libOCMock.a; path = "Frameworks/OCMock/Source/build/Release-iphoneos/libOCMock.a"; sourceTree = "<group>"; };
+		AAB2DEE5143A796300C3C1F5 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = "Frameworks/OCMock/Source/build/Release-iphoneos/libOCMock.a"; sourceTree = "<group>"; };
 		AABB7D7A1433F32800D0FDF9 /* SocializeEditValueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeEditValueTableViewCell.h; sourceTree = "<group>"; };
 		AABB7D7B1433F32800D0FDF9 /* SocializeEditValueTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeEditValueTableViewCell.m; sourceTree = "<group>"; };
 		AABB7D7C1433F32800D0FDF9 /* SocializeProfileEditTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeProfileEditTableViewCell.h; sourceTree = "<group>"; };
@@ -1980,7 +1966,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "xcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphonesimulator -target Socialize -configuration ${CONFIGURATION} build\nxcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphoneos -target Socialize -configuration ${CONFIGURATION} build";
+			shellScript = "WORKSPACE=\"socialize-sdk-ios.xcworkspace\"\nxcodebuild -workspace \"$WORKSPACE\" -sdk iphonesimulator -scheme Socialize -configuration ${CONFIGURATION} build\nxcodebuild -workspace \"$WORKSPACE\" -sdk iphoneos -scheme Socialize -configuration ${CONFIGURATION} build";
 		};
 		16B48DB113DEECAB00EE0A92 /* Build universal lib */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1994,7 +1980,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Paths\nSIMULATOR_LIBRARY_PATH=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphonesimulator/libSocialize.a\"\nDEVICE_LIBRARY_PATH=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneos/libSocialize.a\"\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}\"\nEMBEDDEDFRAMEWORK=\"${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\n\n# Create framework directory structure.\nrm -rf \"${EMBEDDEDFRAMEWORK}\" &>/dev/null\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\"\n#mkdir -p \"${EMBEDDEDFRAMEWORK}/Resources\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Headers\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Resources\"\n\n# Generate universal binary from desktop, device, and simulator builds.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\"\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/Versions/A\"\ncd \"${FRAMEWORK}\"\nln -sf \"A\" \"Versions/Current\"\nln -sf \"Versions/Current/Headers\" \"Headers\"\nln -sf \"Versions/Current/Resources\" \"Resources\"\nln -sf \"Versions/Current/${PRODUCT_NAME}\" \"${PRODUCT_NAME}\"\n\n# Copy public headers into framework\ncp -R \"${CONFIGURATION_BUILD_DIR}/socialize-public-headers/Socialize-iOS/.\" \"Headers\"\n\ncd \"${EMBEDDEDFRAMEWORK}\"\nln -sf \"${FRAMEWORK}/Versions/Current/Resources\" \"Resources\"";
+			shellScript = "# Paths\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/libSocialize.a\"\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/libSocialize.a\"\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}\"\nEMBEDDEDFRAMEWORK=\"${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\n\n# Create framework directory structure.\nrm -rf \"${EMBEDDEDFRAMEWORK}\" &>/dev/null\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\"\n#mkdir -p \"${EMBEDDEDFRAMEWORK}/Resources\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Headers\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Resources\"\n\n# Generate universal binary from desktop, device, and simulator builds.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\"\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/Versions/A\"\ncd \"${FRAMEWORK}\"\nln -sf \"A\" \"Versions/Current\"\nln -sf \"Versions/Current/Headers\" \"Headers\"\nln -sf \"Versions/Current/Resources\" \"Resources\"\nln -sf \"Versions/Current/${PRODUCT_NAME}\" \"${PRODUCT_NAME}\"\n\n# Copy public headers into framework\necho \"Copying headers from ${CONFIGURATION_BUILD_DIR}/socialize-public-headers/Socialize-iOS/. to Headers in $PWD\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/socialize-public-headers/Socialize-iOS/.\" \"Headers\"\n\ncd \"${EMBEDDEDFRAMEWORK}\"\nln -sf \"${FRAMEWORK}/Versions/Current/Resources\" \"Resources\"";
+			showEnvVarsInLog = 0;
 		};
 		16B48DDA13DEEE7900EE0A92 /* Copy Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2008,7 +1995,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Functions\n\n## List files in the specified directory, storing to the specified array.\n#\n# @param $1 The path to list\n# @param $2 The name of the array to fill\n#\n##\nlist_files ()\n{\n    filelist=$(ls \"$1\")\n    while read line\n    do\n    eval \"$2[\\${#$2[*]}]=\\\"\\$line\\\"\"\n    done <<< \"$filelist\"\n}\n\n# Paths\nPROJECT_RESOURCE_DIR=\"${PROJECT_DIR}/Socialize/Resources\"\nUNIVERSAL_LIBRARY_DIR=\"${PROJECT_DIR}/build/${CONFIGURATION}-iphoneuniversal\"\nEMBEDDEDFRAMEWORK=\"${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\nRESOURCE_DIR=\"${FRAMEWORK}/Resources\"\n\nrsync -azp \"${PROJECT_RESOURCE_DIR}/\" \"${RESOURCE_DIR}/\"\n\n#declare -a UFW_FILE_LIST\n#list_files \"${RESOURCE_DIR}\" UFW_FILE_LIST\n#for filename in \"${UFW_FILE_LIST[@]}\"\n#do\n#if [[ \"${filename}\" != \"Info.plist\" ]] && [[ ! \"${filename}\" =~ .*\\.lproj$ ]]\n#then\n#        echo ln -sf \"${RESOURCE_DIR}/${filename}\" \"${EMBEDDEDFRAMEWORK}/Resources/${filename}\"\n#        ln -sf \"${RESOURCE_DIR}/${filename}\" \"${EMBEDDEDFRAMEWORK}/Resources/${filename}\"\n#fi\n#done";
+			shellScript = "# Functions\n\n## List files in the specified directory, storing to the specified array.\n#\n# @param $1 The path to list\n# @param $2 The name of the array to fill\n#\n##\nlist_files ()\n{\n    filelist=$(ls \"$1\")\n    while read line\n    do\n    eval \"$2[\\${#$2[*]}]=\\\"\\$line\\\"\"\n    done <<< \"$filelist\"\n}\n\n# Paths\nPROJECT_RESOURCE_DIR=\"${PROJECT_DIR}/Socialize/Resources\"\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\nEMBEDDEDFRAMEWORK=\"${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\nRESOURCE_DIR=\"${FRAMEWORK}/Resources\"\n\nrsync -azp \"${PROJECT_RESOURCE_DIR}/\" \"${RESOURCE_DIR}/\"\n\n#declare -a UFW_FILE_LIST\n#list_files \"${RESOURCE_DIR}\" UFW_FILE_LIST\n#for filename in \"${UFW_FILE_LIST[@]}\"\n#do\n#if [[ \"${filename}\" != \"Info.plist\" ]] && [[ ! \"${filename}\" =~ .*\\.lproj$ ]]\n#then\n#        echo ln -sf \"${RESOURCE_DIR}/${filename}\" \"${EMBEDDEDFRAMEWORK}/Resources/${filename}\"\n#        ln -sf \"${RESOURCE_DIR}/${filename}\" \"${EMBEDDEDFRAMEWORK}/Resources/${filename}\"\n#fi\n#done";
 		};
 		6DE0950213F1BFDB0066D507 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
