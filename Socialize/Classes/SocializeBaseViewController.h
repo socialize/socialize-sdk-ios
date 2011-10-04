@@ -27,7 +27,8 @@
 
 #import <UIKit/UIKit.h>
 #import "_Socialize.h"
-#import "LoadingView.h"
+
+@class LoadingView;
 
 @interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate> {
     @private 

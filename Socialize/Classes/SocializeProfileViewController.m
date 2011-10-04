@@ -10,6 +10,7 @@
 #import "ImagesCache.h"
 #import "UINavigationBarBackground.h"
 #import "UIButton+Socialize.h"
+#import "LoadingView.h"
 
 @interface SocializeProfileViewController ()
 -(void)showEditController;

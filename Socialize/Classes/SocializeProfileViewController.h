@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "SocializeUser.h"
 #import "SocializeProfileEditViewController.h"
-#import "LoadingView.h"
 
+@class LoadingView;
 @protocol ProfileViewControllerDelegate;
 
 @interface SocializeProfileViewController : UIViewController <UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate>
