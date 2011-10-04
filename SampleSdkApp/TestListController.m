@@ -33,6 +33,7 @@
 
         NSMutableDictionary *myDic = [[NSDictionary alloc] initWithContentsOfFile: path];
         _testList = [[NSMutableArray alloc] initWithArray:[myDic allValues]];
+        [myDic release];
 
     }
     return self;
