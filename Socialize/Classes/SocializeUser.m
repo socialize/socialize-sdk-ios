@@ -42,4 +42,17 @@
     }
     return userId;
 }
+
+-(void)dealloc
+{
+    [_firstName release];
+    [_lastName release];
+    [_userName release];
+    [_smallInageUrl release];
+    [_city release];
+    [_state release];
+    [_meta release];
+    [super dealloc];
+}
+
 @end

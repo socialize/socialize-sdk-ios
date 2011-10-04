@@ -13,6 +13,10 @@
 
 @synthesize text = _text;
 
-
+-(void)dealloc
+{
+    [_text release];
+    [super dealloc];
+}
 
 @end
