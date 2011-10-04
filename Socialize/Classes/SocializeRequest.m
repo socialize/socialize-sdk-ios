@@ -193,10 +193,7 @@ expectedJSONFormat = _expectedJSONFormat;
         [self.request setSocializeParameters:[self formatUrlParams]];
     }
     
-    //[self.request prepare];
-    
-    NSDictionary* headers = [self.request allHTTPHeaderFields];
-    NSLog(@"%@", headers);
+    [self.request prepare];
     
     [self.dataFetcher start];
 }
