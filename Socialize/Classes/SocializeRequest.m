@@ -88,7 +88,7 @@ expectedJSONFormat = _expectedJSONFormat;
                                 requestURL:(NSString *) url 
 {
     //We will release object in network responce section. After complete of execution of user delegates;
-    SocializeRequest* request = [[SocializeRequest alloc] init] ; 
+    SocializeRequest* request = [[SocializeRequest alloc] init]; 
     request.delegate = delegate;
     request.url = url;
     request.httpMethod = httpMethod;
@@ -97,13 +97,13 @@ expectedJSONFormat = _expectedJSONFormat;
     request.expectedJSONFormat  = expectedJSONFormat;
     
     
-    request.token =  [[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX ];
-    request.consumer = [[OAConsumer alloc] initWithKey:[self consumerKey] secret:[self consumerSecret]];
-    request.request = [[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:request.url] consumer:request.consumer token:request.token realm:nil signatureProvider:nil];
+    request.token =  [[[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX ]autorelease];
+    request.consumer = [[[OAConsumer alloc] initWithKey:[self consumerKey] secret:[self consumerSecret]] autorelease];
+    request.request = [[[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:request.url] consumer:request.consumer token:request.token realm:nil signatureProvider:nil] autorelease];
     
-    request.dataFetcher = [[SocializeDataFetcher alloc] initWithRequest:request.request delegate:request
+    request.dataFetcher = [[[SocializeDataFetcher alloc] initWithRequest:request.request delegate:request
                                                            didFinishSelector:@selector(tokenRequestTicket:didFinishWithData:)
-                                                             didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
+                                                             didFailSelector:@selector(tokenRequestTicket:didFailWithError:)]autorelease];
     
     NSArray* hosts = [[[NSArray alloc] initWithObjects: @"stage.api.getsocialize.com", @"getsocialize.com", @"stage.getsocialize.com", @"dev.getsocialize.com", nil] autorelease]; 
     request.dataFetcher.trustedHosts = hosts;
