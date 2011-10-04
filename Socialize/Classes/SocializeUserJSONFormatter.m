@@ -29,21 +29,8 @@
 #import "SocializeUser.h"
 #include <stdlib.h>
 
-#define TYPE_CHECK(value) [self nullCheck:(value)]
-
-@interface SocializeUserJSONFormatter()
-    -(id)nullCheck:(id)value;
-@end
 
 @implementation SocializeUserJSONFormatter
-
--(id)nullCheck:(id)value
-{
-    if([value isEqual:[NSNull null]])
-        return nil;
-    else 
-        return value;
-}
 
 -(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {
@@ -56,21 +43,7 @@
     [toUser setSmallImageUrl:TYPE_CHECK([JSONDictionary valueForKey:@"small_image_uri"])];   
     [toUser setCity: TYPE_CHECK([JSONDictionary valueForKey:@"city"])];
     [toUser setState: TYPE_CHECK([JSONDictionary valueForKey:@"state"])];
-    
-    [toUser setDescription: TYPE_CHECK([JSONDictionary valueForKey:@"description"])];
-    [toUser setLocation: TYPE_CHECK([JSONDictionary valueForKey:@"location"])];
-    [toUser setMedium_image_uri: TYPE_CHECK([JSONDictionary valueForKey:@"medium_image_uri"])];
-    [toUser setLarge_image_uri: TYPE_CHECK([JSONDictionary valueForKey:@"large_image_uri"])];
-
-    NSDictionary* stats = TYPE_CHECK([JSONDictionary valueForKey:@"stats"]);
-    if(stats != nil)
-    {
-        [toUser setViews:[[stats valueForKey:@"views"]intValue]];
-        [toUser setLikes:[[stats valueForKey:@"likes"]intValue]];
-        [toUser setComments:[[stats valueForKey:@"comments"]intValue]];
-        [toUser setShare:[[stats valueForKey:@"shares"]intValue]];
-    }
-    
+    [toUser setMeta:TYPE_CHECK([JSONDictionary valueForKey:@"meta"])];
     [toUser setThirdPartyAuth:TYPE_CHECK([JSONDictionary valueForKey:@"third_party_auth"])];
 }
 

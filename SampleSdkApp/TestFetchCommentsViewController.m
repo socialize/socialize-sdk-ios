@@ -7,10 +7,8 @@
 //
 
 #import "TestFetchCommentsViewController.h"
-#import "Socialize.h"
+#import <Socialize-iOS/Socialize.h>
 #import "UIButton+Socialize.h"
-#import "CommentDetailsViewController.h"
-#import "SocializeCommentsTableViewController.h"
 
 #define SUCCESS @"success"
 #define FAIL @"fail"
@@ -120,7 +118,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    CommentDetailsViewController* cdView = [[CommentDetailsViewController alloc] init];
+    SocializeCommentDetailsViewController* cdView = [[SocializeCommentDetailsViewController alloc] init];
     [self.navigationController pushViewController:cdView animated:YES];
     [cdView release];
 }

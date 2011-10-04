@@ -9,8 +9,8 @@
 #import "SocializeCommentsTableViewController.h"
 #import "CommentsTableViewCell.h"
 #import "NSDateAdditions.h"
-#import "CommentDetailsViewController.h"
-#import "PostCommentViewController.h"
+#import "SocializeCommentDetailsViewController.h"
+#import "SocializePostCommentViewController.h"
 #import "UILabel-Additions.h"
 #import "UIButton+Socialize.h"
 #import <QuartzCore/CALayer.h>
@@ -19,7 +19,9 @@
 #import "ImageLoader.h"
 #import "UIKeyboardListener.h"
 #import "SocializeLocationManager.h"
-
+#import "SocializeAuthenticateService.h"
+#import "ImagesCache.h"
+#import "TableBGInfoView.h"
 
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
@@ -28,7 +30,6 @@
 @implementation SocializeCommentsTableViewController
 
 @synthesize tableView = _tableView;
-@synthesize socialize = _socialize;
 @synthesize cache = _cache;
 @synthesize arrayOfComments = _arrayOfComments;
 @synthesize isLoading = _isLoading;
@@ -49,15 +50,14 @@
 
 		_errorLoading = NO;
 		_isLoading = YES;
-		self.view.clipsToBounds = YES;
+
 
 		_commentDateFormatter = [[NSDateFormatter alloc] init];
 		[_commentDateFormatter setDateFormat:@"hh:mm:ss zzz"];
         
         /*Socialize inits*/
-        _entity = [[SocializeEntity alloc] init];
+        _entity = [[self.socialize createObjectForProtocol: @protocol(SocializeEntity)]retain];
         _entity.key = entryUrlString;
-        _socialize = [[Socialize alloc] initWithDelegate:self]; 
         
         /* cache for the images*/
         _cache = [[ImagesCache alloc] init];
@@ -68,36 +68,49 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     
-    [super viewWillAppear:animated];
-    [_socialize getCommentList:_entity.key first:nil last:nil]; 
-    _loadingView = [LoadingView loadingViewInView:self.view];
-    
+    [super viewWillAppear:animated];   
 }
 
 #pragma mark SocializeService Delegate
 
 -(void)service:(SocializeService *)service didFail:(NSError *)error{
 
-    _isLoading = NO;
-    [self.tableView reloadData];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Failed!", @"") 
-                                                    message: [error localizedDescription]
-                                                   delegate: nil 
-                                          cancelButtonTitle: NSLocalizedString(@"OK", @"")
-                                          otherButtonTitles: nil];
-    [alert show];	
-    [alert release];
-    [_loadingView removeView];
+    if ([service isKindOfClass:[SocializeAuthenticateService class]])
+    {
+        [super service:service didFail:error];
+    }
+    else
+    {
+        [self stopLoadAnimation];
+        _isLoading = NO;
+        [self.tableView reloadData];
+        if ( ![[error localizedDescription] isEqualToString:@"Entity does not exist."] ) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Failed!", @"") 
+                                                        message: [error localizedDescription]
+                                                       delegate: nil 
+                                              cancelButtonTitle: NSLocalizedString(@"OK", @"")
+                                              otherButtonTitles: nil];
+            [alert show];	
+            [alert release];
+        }
+    }
 }
 
 -(void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray{
  
     _isLoading = NO;
     _arrayOfComments = [dataArray retain];
-    [_loadingView removeView];
+    [self stopLoadAnimation];
     [self.tableView reloadData];
     
 }
+
+-(void)afterAnonymouslyLoginAction
+{
+    [self startLoadAnimationForView:self.view];
+    [self.socialize getCommentList:_entity.key first:nil last:nil]; 
+}
+
 #pragma mark -
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -125,13 +138,14 @@
 	[imageBackgroundView release];
     
     self.tableView.accessibilityLabel = @"Comments Table View";
+	self.view.clipsToBounds = YES;
 }
 
 #pragma mark tableFooterViewDelegate
 
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
-    UINavigationController * pcNavController =[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:_entity.key andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
+    UINavigationController * pcNavController =[SocializePostCommentViewController  createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:_entity.key andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
     [self presentModalViewController:pcNavController animated:YES];
 }
 
@@ -167,7 +181,7 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         SocializeComment* entryComment = ((SocializeComment*)[_arrayOfComments objectAtIndex:indexPath.row]);
         
-        CommentDetailsViewController* details = [[CommentDetailsViewController alloc] init];
+        SocializeCommentDetailsViewController* details = [[SocializeCommentDetailsViewController alloc] init];
         details.title = [NSString stringWithFormat: @"%d of %d", indexPath.row + 1, [_arrayOfComments count]];
         details.comment = entryComment;
 
@@ -343,7 +357,6 @@
 
 - (void)dealloc {
     [_cache release];
-    [_socialize release];
 	[_entity release];
 	[_arrayOfComments release];
 	[_commentDateFormatter release];

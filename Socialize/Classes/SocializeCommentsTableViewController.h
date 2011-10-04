@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SocializeService.h"
-#import "CommentsTableFooterView.h"
-#import "TableBGInfoView.h"
-#import "PostCommentViewController.h"
-#import "Socialize.h"
-#import "LoadingView.h"
-#import "ImagesCache.h"
+#import "SocializeServiceDelegate.h"
+#import "_Socialize.h"
+#import "SocializeBaseViewController.h"
+
+@class CommentsTableFooterView;
+@class TableBGInfoView;
+@class ImagesCache;
 
 /*
 @protocol SocializeCommentsDelegate 
@@ -26,7 +26,7 @@
 
 @class CommentsTableViewCell;
 
-@interface SocializeCommentsTableViewController : UIViewController<UITableViewDataSource, SocializeServiceDelegate, UITableViewDelegate> 
+@interface SocializeCommentsTableViewController : SocializeBaseViewController<UITableViewDataSource, SocializeServiceDelegate, UITableViewDelegate> 
 {
 
 	IBOutlet UITableView*   _tableView;
@@ -37,7 +37,6 @@
 	
 	BOOL				_isLoading;
 	BOOL				_errorLoading;
-    LoadingView*        _loadingView;
     
 	NSArray*            _arrayOfComments;
 	NSDateFormatter*    _commentDateFormatter;
@@ -47,7 +46,6 @@
     CommentsTableViewCell*        commentsCell;
     
     SocializeEntity*              _entity;
-    Socialize*                    _socialize;
     ImagesCache*                  _cache;
 }
 
@@ -60,7 +58,6 @@
 
 @property (nonatomic, assign) IBOutlet CommentsTableViewCell     *commentsCell;
 @property (retain, nonatomic) IBOutlet CommentsTableFooterView   *footerView;
-@property (retain, nonatomic) Socialize                 *socialize;
 @property (retain, nonatomic) ImagesCache               *cache;
 @property (retain, nonatomic) NSArray                   *arrayOfComments;
 @property (assign, nonatomic) BOOL                      isLoading;

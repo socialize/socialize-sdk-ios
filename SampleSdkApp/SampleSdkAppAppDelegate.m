@@ -1,3 +1,4 @@
+
 //
 //  SampleSdkAppAppDelegate.m
 //  SampleSdkApp
@@ -8,10 +9,14 @@
 
 #import <Foundation/Foundation.h>
 #import "SampleSdkAppAppDelegate.h"
-#import "Socialize.h"
+#import <Socialize-iOS/Socialize.h>
 #import "TestListController.h"
 #include <AvailabilityMacros.h>
+
+#if RUN_GHUNIT_TESTS
 #import <GHUnitIOS/GHUnit.h>
+#endif
+
 #if RUN_KIF_TESTS
 #import "SampleSdkAppKIFTestController.h"
 #endif
@@ -33,10 +38,8 @@
     
     _socialize = [[Socialize alloc] initWithDelegate:self];
     
-    
     // we check the authentication here.
     rootViewController = [[[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil] autorelease];
-    
  
     rootController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     [self.window addSubview:rootController.view];

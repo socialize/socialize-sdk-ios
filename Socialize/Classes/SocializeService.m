@@ -87,6 +87,13 @@
     [_provider requestWithMethodName:endPoint andParams:postRequestParameters expectedJSONFormat:expectedFormat andHttpMethod:@"POST" andDelegate:self];
 }
 
+-(void)ExecutePutRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)putRequestObject expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
+{
+    [_delegate retain];// Take ownership
+    NSDictionary * dictionaryRepresentation =  [_objectCreator createDictionaryRepresentationOfObject:putRequestObject]; 
+    [_provider requestWithMethodName:endPoint andParams:dictionaryRepresentation expectedJSONFormat:expectedFormat andHttpMethod:@"PUT" andDelegate:self];
+}
+
 -(void)ExecuteSecurePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat 
 {
     [_delegate retain];// Take ownership
@@ -179,13 +186,18 @@
         }
         
         id objectResponse = [_objectCreator createObjectFromString:items forProtocol:[self ProtocolType]]; 
-        id errorResponse = [_objectCreator createObjectFromString:errors forProtocol:@protocol(SocializeError)]; 
+        id errorResponses = [_objectCreator createObjectFromString:errors forProtocol:@protocol(SocializeError)]; 
         
-        if ([errorResponse isKindOfClass: [NSArray class]]){
-            if ([errorResponse count]){
-                NSLog(@" errorResponse  %@",errorResponse );
-                if([self.delegate respondsToSelector:@selector(service:didFail:)])
-                    [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+        if ([errorResponses isKindOfClass: [NSArray class]]){
+            if ([errorResponses count]){
+
+                for (SocializeError *errorResp in errorResponses) {
+                    NSLog(@"Error: %@", errorResp.error );
+                    if([self.delegate respondsToSelector:@selector(service:didFail:)])  {
+                        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorResp.error forKey:NSLocalizedDescriptionKey];
+                        [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:userInfo]];
+                    }
+                }
                 return;
             }
         }
@@ -193,13 +205,13 @@
         if([objectResponse isKindOfClass: [NSArray class]]){ 
             if ([objectResponse count]){
                 if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]])
-                    [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponse];
+                    [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponses];
                 else 
                     if([self.delegate respondsToSelector:@selector(service:didFail:)])
                         [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
             }
             else
-                [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponse];
+                [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponses];
         }
         else
             if([self.delegate respondsToSelector:@selector(service:didFail:)])

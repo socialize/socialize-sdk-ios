@@ -42,7 +42,7 @@
     
     for(int i = 0; i< [actual count]; i++)
     {
-        if([[actual objectAtIndex:i] name] == [[expected objectAtIndex:i] name] && [[actual objectAtIndex:i] value] == [[expected objectAtIndex:i] value])
+        if([[actual objectAtIndex:i] name] == [[expected objectAtIndex:i] name] && [(SocializeOARequestParameter*)[actual objectAtIndex:i] value] == [(SocializeOARequestParameter*)[expected objectAtIndex:i] value])
         {
             return NO;
         }
@@ -74,7 +74,7 @@
     _request.dataFetcher = [OCMockObject niceMockForClass: [OAAsynchronousDataFetcher class]];
     [_request connect];
     
-    NSArray* oaRequestParamsActual = [_request.request parameters];
+    NSArray* oaRequestParamsActual = [_request.request socializeParameters];
     
     OARequestParameter* p1 = [OARequestParameter requestParameterWithName:@"id" value:@"1"];
     OARequestParameter* p2 = [OARequestParameter requestParameterWithName:@"id" value:@"2"];
@@ -94,7 +94,7 @@
     _request.dataFetcher = [OCMockObject niceMockForClass: [OAAsynchronousDataFetcher class]];
     [_request connect];
     
-    NSArray* oaRequestParamsActual = [_request.request parameters];
+    NSArray* oaRequestParamsActual = [_request.request socializeParameters];
     
     OARequestParameter* p1 = [OARequestParameter requestParameterWithName:@"id" value:@"1"];
     OARequestParameter* p2 = [OARequestParameter requestParameterWithName:@"id" value:@"2"];
@@ -138,7 +138,7 @@
     id mockRequest = [OCMockObject mockForClass:[OAMutableURLRequest class]];
     [[mockRequest expect] setHTTPMethod:@"GET"];
     [[mockRequest expect] addValue:userAgentStr forHTTPHeaderField:@"User-Agent"];
-    [[mockRequest expect] setParameters:[NSMutableArray arrayWithCapacity:0]];
+    [[mockRequest expect] setSocializeParameters:[NSMutableArray arrayWithCapacity:0]];
     [[mockRequest expect] prepare];
     _request = [SocializeRequest getRequestWithParams:nil  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:self  requestURL:@"invalidparam"];
     _request.request = mockRequest;

@@ -7,7 +7,7 @@
 //
 
 #import "TestViewCreationViewController.h"
-#import "SocializeEntity.h"
+#import <Socialize-iOS/Socialize.h>
 #import "UIButton+Socialize.h"
 
 #define SUCCESS @"success"

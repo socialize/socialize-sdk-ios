@@ -46,7 +46,7 @@
 
 -(void)tearDownClass
 {
-    [commentView release]; nil;
+    [commentView release]; commentView = nil;
 }
 
 -(void)testUpdateProfileImage

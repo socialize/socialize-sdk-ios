@@ -7,7 +7,7 @@
 //
 
 #import "AuthenticateViewController.h"
-#import "Socialize.h"
+#import <Socialize-iOS/Socialize.h>
 #import "TestListController.h"
 #import "UIButton+Socialize.h"
 
@@ -54,9 +54,9 @@
 {
     [super viewDidLoad];
     
-    [_authenticateButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
-    [_thirdpartyAuthentication configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
-    [_emptyCacheButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
+//    [_authenticateButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+//    [_thirdpartyAuthentication configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
+//    [_emptyCacheButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
 
     self.view.backgroundColor = [UIColor lightGrayColor];
     self.navigationItem.title = @"Authenticate";
@@ -67,6 +67,10 @@
     
     [Socialize storeSocializeApiKey: [apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
     [Socialize storeFacebookAppId:@"115622641859087"];
+#if RUN_KIF_TESTS
+    [Socialize storeFacebookLocalAppId:@"itest"];
+#endif
+    
 }
 
 - (void)viewDidUnload
@@ -124,12 +128,11 @@
 -(void)didAuthenticate:(id<SocializeUser>)user {
     
     NSLog(@"%@", [user userIdForThirdPartyAuth: FacebookAuth]);
-    NSLog(@"%@", [socialize.authService receiveFacebookAuthToken]);
+//    NSLog(@"%@", [socialize.authService receiveFacebookAuthToken]);
     
     [_loadingView removeView];
     self.resultLabel.text = @"success";
     TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil];
-    listController.user = user;
     [self.navigationController pushViewController:listController animated:YES];
     
 }

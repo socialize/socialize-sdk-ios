@@ -11,9 +11,13 @@
 
 @protocol SocializeObject;
 
+#define TYPE_CHECK(value) [self nullCheck:(value)]
+
 @interface SocializeObjectJSONFormatter : SocializeObjectFormatter
 {   
 }
+
+-(id)nullCheck:(id)value;
 
 //-(void)toObject:(id<SocializeObject>)toObject fromJSONString:(NSString *)JSONString;
 //

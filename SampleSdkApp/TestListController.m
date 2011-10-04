@@ -15,15 +15,11 @@
 #import "LikeListViewController.h"
 #import "TestViewCreationViewController.h"
 #import "AuthenticateViewController.h"
-#import "PostCommentViewController.h"
+#import <Socialize-iOS/Socialize.h>
 #import "TestShowSmallUserInfo.h"
-#import "UIKeyboardListener.h"
-#import "SocializeLocationManager.h"
 #import "InputBox.h"
 
 @implementation TestListController
-
-@synthesize user = _user;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,7 +40,6 @@
 
 - (void)dealloc
 {
-    [_user release];
     [super dealloc];
 }
 
@@ -184,11 +179,11 @@
         {
             NSString* url = [self getEntityKey];
             if(url)
-                [self presentModalViewController:[PostCommentViewController  createAndShowPostViewControllerWithEntityUrl:url andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]] animated:YES];
+                [self presentModalViewController:[SocializePostCommentViewController  createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:url andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]] animated:YES];
             break;
         }
         case 8:
-            controller = [[TestShowSmallUserInfo alloc]initWithNibName:@"TestShowSmallUserInfo" bundle:nil andUserInfo:self.user];
+            controller = [[TestShowSmallUserInfo alloc]initWithNibName:@"TestShowSmallUserInfo" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
 

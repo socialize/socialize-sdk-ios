@@ -30,10 +30,10 @@
 #import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
 
-@class CommentDetailsViewController;
+@class SocializeCommentDetailsViewController;
 
 @interface CommentDetailsViewControllerTests : GHTestCase {
-    CommentDetailsViewController* commentDetails;
+    SocializeCommentDetailsViewController* commentDetails;
 }
 
 @end

@@ -15,9 +15,6 @@
     
     NSArray*                _testList;
     IBOutlet UITableView*   _tableView;
-    SocializeUser*          _user;
 }
-
-@property(nonatomic, retain) SocializeUser* user;
 
 @end

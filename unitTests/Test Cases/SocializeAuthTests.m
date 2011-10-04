@@ -13,6 +13,8 @@
 #import "Socialize.h"
 #import "SocializeFBConnect.h"
 #import "SocializeCommonDefinitions.h"
+#import "SocializePrivateDefinitions.h"
+#import "OAuthConsumer.h"
 
 
 @implementation SocializeAuthTests
@@ -46,18 +48,9 @@
     [mockProvider verify];
 }
 
--(NSString*)getSocializeId{
-    NSUserDefaults* userPreferences = [NSUserDefaults standardUserDefaults];
-    NSString* userJSONObject = [userPreferences valueForKey:kSOCIALIZE_USERID_KEY];
-    if (!userJSONObject)
-        return @"";
-    return userJSONObject;
-}
-
 -(void)testAuthAnonymousParams{
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UIDevice currentDevice].uniqueIdentifier,@"udid",
-                                       [self getSocializeId] ,  @"socialize_id", 
                                        @"1"/* auth type is for facebook*/ , @"auth_type",
                                        @"another token", @"auth_token",
                                        @"anotheruserid", @"auth_id" , nil] ;
@@ -125,7 +118,7 @@
     
     FacebookAuthenticator* fbAuth = [[[FacebookAuthenticator alloc] initWithFramework:fbMock apiKey:apiKey apiSecret:apiSecret appId:appId service:nil]autorelease];
     
-    [[fbMock expect]authorize: nil delegate:fbAuth];
+    [[fbMock expect]authorize: nil delegate:fbAuth localAppId:nil];
     [fbAuth performAuthentication];
     
     [fbMock verify];

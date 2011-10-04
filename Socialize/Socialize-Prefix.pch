@@ -35,8 +35,21 @@
 #define OAServiceTicket SocializeOAServiceTicket
 #define OAToken SocializeOAToken
 #define OASignatureProviding SocializeOASignatureProviding
+#define OAParameterAdditions SocializeOAParameterAdditions
+#define OAURLEncodingAdditions SocializeOAURLEncodingAdditions
+#define OABaseAdditions SocializeOABaseAdditions
 
 #define EstimateBas64EncodedDataSize SocializeEstimateBas64EncodedDataSize
 #define EstimateBas64DecodedDataSize SocializeEstimateBas64DecodedDataSize
 #define Base64EncodeData SocializeBase64EncodeData
 #define Base64DecodeData SocializeBase64DecodeData
+
+#define NSObject_SBJSON SocializeNSObject_SBJSON
+#define NSString_SBJSON SocializeNSString_SBJSON
+#define SBJSON SocializeSBJSON
+#define SBJsonBase SocializeSBJsonBase
+#define SBJsonParser SocializeSBJsonParser
+#define Private SocializePrivate
+#define SBJsonWriter SocializeSBJsonWriter
+#define SBProxyForJson SocializeSBProxyForJson
+#define SBJSONErrorDomain SocializeSBJSONErrorDomain

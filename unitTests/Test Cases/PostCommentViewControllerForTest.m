@@ -54,17 +54,12 @@
     [(id)self.mapOfUserLocation verify];
 }
 
--(void) startLoadAnimation
+-(void) startLoadAnimationForView: (UIView*) view;
 {
 }
 
 -(void) stopLoadAnimation
 {
-}
-
--(void) showAllertWithText: (NSString*)allertMsg
-{
-    
 }
 
 - (void)authenticateViaFacebook {

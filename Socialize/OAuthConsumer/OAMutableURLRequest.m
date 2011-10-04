@@ -145,15 +145,15 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
 	// TODO: if later RSA-SHA1 support is added then a little code redesign is needed
     signature = [signatureProvider signClearText:[self _signatureBaseString]
                                       withSecret:[NSString stringWithFormat:@"%@&%@",
-												  [consumer.secret URLEncodedString],
-                                                  [token.secret URLEncodedString]]];
+												  [consumer.secret SocializeURLEncodedString],
+                                                  [token.secret SocializeURLEncodedString]]];
     
     // set OAuth headers
     NSString *oauthToken;
     if ([token.key isEqualToString:@""])
         oauthToken = @""; // not used on Request Token transactions
     else
-        oauthToken = [NSString stringWithFormat:@"oauth_token=\"%@\", ", [token.key URLEncodedString]];
+        oauthToken = [NSString stringWithFormat:@"oauth_token=\"%@\", ", [token.key SocializeURLEncodedString]];
 	
 	NSMutableString *extraParameters = [NSMutableString string];
 	
@@ -161,16 +161,16 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
 	for(NSString *parameterName in [[extraOAuthParameters allKeys] sortedArrayUsingSelector:@selector(compare:)])
 	{
 		[extraParameters appendFormat:@", %@=\"%@\"",
-		 [parameterName URLEncodedString],
-		 [[extraOAuthParameters objectForKey:parameterName] URLEncodedString]];
+		 [parameterName SocializeURLEncodedString],
+		 [[extraOAuthParameters objectForKey:parameterName] SocializeURLEncodedString]];
 	}	
     
     NSString *oauthHeader = [NSString stringWithFormat:@"OAuth realm=\"%@\", oauth_consumer_key=\"%@\", %@oauth_signature_method=\"%@\", oauth_signature=\"%@\", oauth_timestamp=\"%@\", oauth_nonce=\"%@\", oauth_version=\"1.0\"%@",
-                             [realm URLEncodedString],
-                             [consumer.key URLEncodedString],
+                             [realm SocializeURLEncodedString],
+                             [consumer.key SocializeURLEncodedString],
                              oauthToken,
-                             [[signatureProvider name] URLEncodedString],
-                             [signature URLEncodedString],
+                             [[signatureProvider name] SocializeURLEncodedString],
+                             [signature SocializeURLEncodedString],
                              timestamp,
                              nonce,
 							 extraParameters];
@@ -198,7 +198,7 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
 {
     // OAuth Spec, Section 9.1.1 "Normalize Request Parameters"
     // build a sorted array of both request parameters and OAuth header parameters
-    NSMutableArray *parameterPairs = [NSMutableArray  arrayWithCapacity:(6 + [[self parameters] count])]; // 6 being the number of OAuth params in the Signature Base String
+    NSMutableArray *parameterPairs = [NSMutableArray  arrayWithCapacity:(6 + [[self socializeParameters] count])]; // 6 being the number of OAuth params in the Signature Base String
     
 	[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_consumer_key" value:consumer.key] URLEncodedNameValuePair]];
 	[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_signature_method" value:[signatureProvider name]] URLEncodedNameValuePair]];
@@ -210,8 +210,10 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
         [parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_token" value:token.key] URLEncodedNameValuePair]];
     }
     
-    for (OARequestParameter *param in [self parameters]) {
+    for (OARequestParameter *param in [self socializeParameters]) {
         [parameterPairs addObject:[param URLEncodedNameValuePair]];
+        [param URLEncodedNameValuePair];
+        NSLog(@"param encoded is: %@", [param URLEncodedNameValuePair] );
     }
     
     NSArray *sortedPairs = [parameterPairs sortedArrayUsingSelector:@selector(compare:)];
@@ -220,8 +222,8 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
     // OAuth Spec, Section 9.1.2 "Concatenate Request Elements"
     NSString *ret = [NSString stringWithFormat:@"%@&%@&%@",
 					 [self HTTPMethod],
-					 [[[self URL] URLStringWithoutQuery] URLEncodedString],
-					 [normalizedRequestParameters URLEncodedString]];
+					 [[[self URL] SocializeURLStringWithoutQuery] SocializeURLEncodedString],
+					 [normalizedRequestParameters SocializeURLEncodedString]];
 	
 	return ret;
 }

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Socialize.h"
+#import <Socialize-iOS/Socialize.h>
 #import "LoadingView.h"
 
 

@@ -11,6 +11,15 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+
+#if RUN_KIF_TESTS
+#import "SampleSdkAppKIFTestController.h"
+#import "KIFTestStep+SampleSdkAppAdditions.h"
+#import "KIFTestScenario+SampleSdkAppAdditions.h"
+#endif
+
+#import "StringHelper.h"
+
 #endif
 
 

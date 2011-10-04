@@ -26,56 +26,45 @@
  */
 
 #import "SocializeUserService.h"
-#import "SocializeCommonDefinitions.h"
+#import "SocializePrivateDefinitions.h"
 
 
 #define USER_GET_ENDPOINT     @"user/"
 #define USER_POST_ENDPOINT    @"user/"
 
-@interface SocializeUserService ()
-    -(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
-@end 
 @implementation SocializeUserService
 
 -(Protocol *)ProtocolType
 {
-    return  @protocol(SocializeUser);
+    return  @protocol(SocializeFullUser);
 }
 
 
--(void) usersWithIds:(NSDictionary*)dictionaryUserKeyValuePairs expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
+-(void) usersWithIds:(NSArray*)ids
 {
-    [self ExecuteGetRequestAtEndPoint:USER_GET_ENDPOINT  WithParams:dictionaryUserKeyValuePairs expectedResponseFormat:expectedFormat ];
+    NSDictionary* params = [NSDictionary dictionaryWithObject:ids forKey:@"id"];
+    [self ExecuteGetRequestAtEndPoint:USER_GET_ENDPOINT WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
 
 -(void) userWithId:(int)userId
 {
-    [self usersWithIds:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:userId] forKey:@"id"] expectedResponseFormat:SocializeDictionary];
+    [self usersWithIds:[NSArray arrayWithObjects:[NSNumber numberWithInt:userId], nil]];
 }
 
 -(void) currentUser
-{
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    if([defaults objectForKey:kSOCIALIZE_USERID_KEY])
-    {
-         [self userWithId: [[defaults objectForKey:kSOCIALIZE_USERID_KEY] intValue]];
+{   
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
+    if (userData != nil) {
+        NSDictionary *info = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+        id<SocializeUser> user = [_objectCreator createObjectFromDictionary:info forProtocol:@protocol(SocializeUser)];
+        [self userWithId: user.objectID];
     }
 }
 
--(void) updateUser:(id<SocializeUser>)user
+-(void) updateUser:(id<SocializeFullUser>)user
 {
-    [self ExecutePostRequestAtEndPoint:USER_POST_ENDPOINT WithObject:user expectedResponseFormat:SocializeDictionary];
+    [self ExecutePutRequestAtEndPoint:USER_POST_ENDPOINT WithObject:user expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
 
-//-(void) createUserWithFirstname:(NSString *)firstName lastName:(NSString *)lastName description:(NSString *) description location:(NSString *) location
-//                        picture:(NSData *)pictureData
-//{
-//    id<SocializeUser> user = (id<SocializeUser>)[self newObject];
-//    user.firstName = firstName;
-//    user.lastName = lastName;
-//    user.description = description;
-//    [self updateUser:user];
-//    
-//}
 
 @end

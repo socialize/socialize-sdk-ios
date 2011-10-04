@@ -28,7 +28,7 @@
 
 @implementation NSMutableURLRequest (OAParameterAdditions)
 
-- (NSArray *)parameters 
+- (NSArray *)socializeParameters 
 {
     NSString *encodedParameters;
 	BOOL shouldfree = NO;
@@ -63,7 +63,7 @@
     return [requestParameters autorelease];
 }
 
-- (void)setParameters:(NSArray *)parameters 
+- (void)setSocializeParameters:(NSArray *)parameters 
 {
     NSMutableString *encodedParameterPairs = [NSMutableString stringWithCapacity:256];
     
@@ -78,7 +78,7 @@
     }
     
     if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"])
-        [self setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [[self URL] URLStringWithoutQuery], encodedParameterPairs]]];
+        [self setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [[self URL] SocializeURLStringWithoutQuery], encodedParameterPairs]]];
     else 
 	{
         // POST, PUT

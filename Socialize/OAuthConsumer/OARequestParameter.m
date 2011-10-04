@@ -54,12 +54,12 @@
 
 - (NSString *)URLEncodedName 
 {
-	return [self.name URLEncodedString];
+	return [self.name SocializeURLEncodedString];
 }
 
 - (NSString *)URLEncodedValue 
 {
-    return [self.value URLEncodedString];
+    return [self.value SocializeURLEncodedString];
 }
 
 - (NSString *)URLEncodedNameValuePair 

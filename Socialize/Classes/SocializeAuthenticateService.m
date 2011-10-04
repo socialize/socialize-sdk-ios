@@ -14,19 +14,20 @@
 #import "OAAsynchronousDataFetcher.h"
 #import <UIKit/UIKit.h>
 #import "JSONKit.h"
+#import "SocializePrivateDefinitions.h"
 
 @interface SocializeAuthenticateService()
--(NSString*)getSocializeId;
 -(NSString*)getSocializeToken;
 -(void)persistUserInfo:(NSDictionary*)dictionary;
 -(void)persistConsumerInfo:(NSString*)apiKey andApiSecret:(NSString*)apiSecret;
-
 @end
 
 @implementation SocializeAuthenticateService
+@synthesize authenticatedUser = _authenticatedUser;
 
 -(void)dealloc
 {
+    self.authenticatedUser = nil;
     [fbAuth release]; fbAuth = nil;
     [super dealloc];
 }
@@ -67,29 +68,10 @@
 -(void)persistUserInfo:(NSDictionary*)dictionary{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (userDefaults){
-        NSString* userId = [dictionary objectForKey:@"id"]; 
-        if ((userId != nil) && ((id)userId != [NSNull null]))
-            [userDefaults setObject:userId forKey:kSOCIALIZE_USERID_KEY];
-        
-        NSString* username = [dictionary objectForKey:@"username"]; 
-        if ((username != nil) && ((id)username != [NSNull null]))
-            [userDefaults setObject:username forKey:kSOCIALIZE_USERNAME_KEY];
-
-        NSString* smallImageUri = [dictionary objectForKey:@"small_image_uri"]; 
-        
-        if ((smallImageUri != nil) && ((id)smallImageUri != [NSNull null]))
-            [userDefaults setObject:smallImageUri forKey:kSOCIALIZE_USERIMAGEURI_KEY];
-        
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dictionary];
+        [userDefaults setObject:data forKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
         [userDefaults synchronize];
     }
-}
-
--(NSString*)getSocializeId{
-    NSUserDefaults* userPreferences = [NSUserDefaults standardUserDefaults];
-    NSString* userJSONObject = [userPreferences valueForKey:kSOCIALIZE_USERID_KEY];
-    if (!userJSONObject)
-        return @"";
-    return userJSONObject;
 }
 
 -(NSString*)getSocializeToken{
@@ -108,7 +90,6 @@
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
                              [UIDevice currentDevice].uniqueIdentifier,@"udid", 
-                             [self getSocializeId],  @"socialize_id", 
                              @"1"/* auth type is for facebook*/ , @"auth_type", //TODO:: should be changed
                              thirdPartyAuthToken, @"auth_token",
                              thirdPartyAppId, @"auth_id" , nil] ;                        
@@ -120,17 +101,30 @@
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                     apiSecret:(NSString*)apiSecret 
               thirdPartyAppId:(NSString*)thirdPartyAppId 
+         thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName
 {
-    
     SocializeFacebook* fb = [[SocializeFacebook alloc] initWithAppId:thirdPartyAppId];
 
     [fbAuth release]; fbAuth = nil;
-    fbAuth = [[FacebookAuthenticator alloc] initWithFramework:fb apiKey:apiKey apiSecret:apiSecret appId:thirdPartyAppId service:self];
+    fbAuth = [[FacebookAuthenticator alloc] initWithFramework:fb apiKey:apiKey apiSecret:apiSecret appId:thirdPartyAppId localAppId:thirdPartyLocalAppId service:self];
     [fb release]; fb = nil; 
     
     [fbAuth performAuthentication];
 }
+
+-(void)authenticateWithApiKey:(NSString*)apiKey 
+                    apiSecret:(NSString*)apiSecret 
+              thirdPartyAppId:(NSString*)thirdPartyAppId 
+               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+{
+    [self authenticateWithApiKey:apiKey
+                       apiSecret:apiSecret
+                 thirdPartyAppId:thirdPartyAppId
+            thirdPartyLocalAppId:nil
+                  thirdPartyName:thirdPartyName];
+}
+
 
 /**
  * Called when an error prevents the request from completing successfully.
@@ -165,13 +159,16 @@
             [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
             [requestToken release]; requestToken = nil;
             id<SocializeUser> user = [_objectCreator createObjectFromDictionary:[jsonObject objectForKey:@"user"] forProtocol:@protocol(SocializeUser)];
+            self.authenticatedUser = user;
+            [self persistUserInfo:[jsonObject objectForKey:@"user"]];
+            
             if (([((NSObject*)_delegate) respondsToSelector:@selector(didAuthenticate:)]) )
                 [_delegate didAuthenticate:user];
         }
-        else if (([((NSObject*)_delegate) respondsToSelector:@selector(service:didFail:)]) ) 
+        else if (([((NSObject*)_delegate) respondsToSelector:@selector(service:didFail:)]) ) {
             [_delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+        }
             
-        [self persistUserInfo:[jsonObject objectForKey:@"user"]];
     }
     
     [responseBody release];
@@ -194,8 +191,32 @@
     // Remove local facebook authentication info
     [defaults removeObjectForKey:@"FBAccessTokenKey"];
     [defaults removeObjectForKey:@"FBExpirationDateKey"];
+    
+    // Remove persisted local user data
+    [defaults removeObjectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
+    
+    [defaults synchronize]; 
+    
+    self.authenticatedUser = nil;
+}
 
-    [defaults synchronize];    
+- (id<SocializeUser>)authenticatedUser {
+    // Immediately return if already resident
+    if (_authenticatedUser != nil) {
+        return _authenticatedUser;
+    }
+    
+    // Also search persistent storage
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
+    if (userData != nil) {
+        NSDictionary *info = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+        id<SocializeUser> user = [_objectCreator createObjectFromDictionary:info forProtocol:@protocol(SocializeUser)];
+        _authenticatedUser = [user retain];
+        return _authenticatedUser;
+    }
+    
+    // Not available
+    return nil;
 }
 
 +(BOOL)handleOpenURL:(NSURL *)url 
@@ -225,6 +246,7 @@
     @property (nonatomic, retain) NSString* apiKey;
     @property (nonatomic, retain) NSString* apiSecret;
     @property (nonatomic, retain) NSString* thirdPartyAppId;
+    @property (nonatomic, retain) NSString* thirdPartyLocalAppId;
     @property (nonatomic, assign) SocializeAuthenticateService* service;
 
 + (void)setLastUsedAuthenticator:(FacebookAuthenticator*)newAuthenticator;
@@ -238,6 +260,7 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
 @synthesize apiKey;
 @synthesize apiSecret;
 @synthesize thirdPartyAppId;
+@synthesize thirdPartyLocalAppId;
 @synthesize service;
 
 -(void)dealloc
@@ -252,6 +275,16 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
                   appId: (NSString*)appId 
                 service: (SocializeAuthenticateService*) authService
 {
+    return [self initWithFramework:fb apiKey:key apiSecret:secret appId:appId localAppId:nil service:authService];
+}
+
+-(id) initWithFramework: (SocializeFacebook*) fb 
+                 apiKey: (NSString*) key 
+              apiSecret: (NSString*) secret
+                  appId: (NSString*)appId 
+                  localAppId: (NSString*)localAppId 
+                service: (SocializeAuthenticateService*) authService
+{
     self = [super init];
     if(self)
     {
@@ -259,6 +292,7 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
         self.apiKey = key;
         self.apiSecret = secret;
         self.thirdPartyAppId = appId;
+        self.thirdPartyLocalAppId = localAppId;
         self.service = authService;
     }
     
@@ -287,7 +321,7 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
 
         // Store this authenticator for later retrieval from static class method handleOpenURL:
         [FacebookAuthenticator setLastUsedAuthenticator:self];
-        [self.facebook authorize:nil delegate:self];
+        [self.facebook authorize:nil delegate:self localAppId:self.thirdPartyLocalAppId];
     }
     else
     {

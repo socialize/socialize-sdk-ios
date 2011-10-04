@@ -63,6 +63,12 @@
     [[(id)controller.activateLocationButton expect]setImage:OCMOCK_ANY forState:UIControlStateNormal];
     [[(id)controller.activateLocationButton expect]setImage:OCMOCK_ANY forState:UIControlStateHighlighted];
     
+    id mockSocialize = [OCMockObject mockForClass: [Socialize class]];
+    BOOL retValue = YES;
+    [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)] isAuthenticated];
+    
+    controller.socialize =  mockSocialize;
+    
     [controller viewDidLoad];
     [controller viewWillAppear:YES];
 
@@ -72,6 +78,7 @@
     GHAssertNotNil(controller.navigationItem.rightBarButtonItem, nil);
     
     [controller verify];
+    [mockSocialize verify];
     
     [controller viewDidUnload];
     [controller release];
@@ -79,7 +86,7 @@
 
 -(void)testCreateMethod
 {
-    UINavigationController* controller = [PostCommentViewControllerForTest createAndShowPostViewControllerWithEntityUrl:TEST_URL andImageForNavBar:nil];
+    UINavigationController* controller = [PostCommentViewControllerForTest createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:TEST_URL andImageForNavBar:nil];
     GHAssertNotNil(controller, nil);
 }
 
@@ -182,6 +189,8 @@
     
     id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     [[mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:OCMOCK_ANY latitude:OCMOCK_ANY];
+    BOOL retValue = YES;
+    [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticatedWithFacebook];
     
     PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
     controller.socialize = mockSocialize;
@@ -201,6 +210,8 @@
     
     id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     [[mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:nil latitude:nil];
+    BOOL retValue = YES;
+    [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticatedWithFacebook];
     
     PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
     controller.socialize = mockSocialize;
@@ -224,7 +235,7 @@
 {
     PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
 
-    id mockBtn = [OCMockObject mockForClass: [UIBarButtonItem class]];
+    id mockBtn = [OCMockObject niceMockForClass: [UIBarButtonItem class]];
     [[mockBtn expect] setEnabled:YES];
     controller.navigationItem.rightBarButtonItem = mockBtn;
   
@@ -244,7 +255,7 @@
 {
     PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
     
-    id mockBtn = [OCMockObject mockForClass: [UIBarButtonItem class]];
+    id mockBtn = [OCMockObject niceMockForClass: [UIBarButtonItem class]];
     [[mockBtn expect] setEnabled:NO];
     controller.navigationItem.rightBarButtonItem = mockBtn;
     

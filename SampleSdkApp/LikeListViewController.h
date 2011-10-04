@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SocializeCommonDefinitions.h"
-#import "Socialize.h"
+#import <Socialize-iOS/Socialize.h>
 #import "LoadingView.h"
 
 @interface LikeListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SocializeServiceDelegate> {

@@ -13,6 +13,14 @@
 
 @implementation SocializeObjectJSONFormatter
 
+-(id)nullCheck:(id)value
+{
+    if([value isEqual:[NSNull null]])
+        return nil;
+    else 
+        return value;
+}
+
 -(void)toObject:(id<SocializeObject>)toObject fromString:(NSString *)JSONString
 {
 

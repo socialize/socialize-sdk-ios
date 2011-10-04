@@ -7,15 +7,16 @@
 //
 
 #import "SocializeRequest.h"
+#import "OAConsumer.h"
+#import "SocializeDataFetcher.h"
 #import <UIKit/UIKit.h>
 #import "NSString+UrlSerialization.h"
 #import "OAAsynchronousDataFetcher.h"
-#import "OAConsumer.h"
 #import "OAServiceTicket.h"
 #import "SocializeCommonDefinitions.h"
 #import "JSONKit.h"
 #import <Foundation/NSURLResponse.h>
-
+#import "SocializePrivateDefinitions.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
@@ -104,7 +105,7 @@ expectedJSONFormat = _expectedJSONFormat;
                                                            didFinishSelector:@selector(tokenRequestTicket:didFinishWithData:)
                                                              didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
     
-    NSArray* hosts = [[[NSArray alloc] initWithObjects: @"getsocialize.com", @"stage.getsocialize.com", @"dev.getsocialize.com", nil] autorelease]; 
+    NSArray* hosts = [[[NSArray alloc] initWithObjects: @"stage.api.getsocialize.com", @"getsocialize.com", @"stage.getsocialize.com", @"dev.getsocialize.com", nil] autorelease]; 
     request.dataFetcher.trustedHosts = hosts;
        
     
@@ -174,7 +175,7 @@ expectedJSONFormat = _expectedJSONFormat;
 {   
     [self.request setHTTPMethod:self.httpMethod];
     [self.request addValue:[self userAgentString] forHTTPHeaderField:@"User-Agent"];
-    if ([self.httpMethod isEqualToString: @"POST"]) 
+    if ([self.httpMethod isEqualToString: @"POST"] || [self.httpMethod isEqualToString: @"PUT"]) 
     {
         NSString * stringValue = nil;
         NSMutableArray* params = [NSMutableArray array];
@@ -185,11 +186,11 @@ expectedJSONFormat = _expectedJSONFormat;
             stringValue = [_params  JSONString];
         
         [self addParameter:stringValue withKey:@"payload" toCollection: params];
-        [self.request setParameters:params];
+        [self.request setSocializeParameters:params];
     }
     else if([self.httpMethod isEqualToString: @"GET"])
     {
-        [self.request setParameters:[self formatUrlParams]];
+        [self.request setSocializeParameters:[self formatUrlParams]];
     }
     
     [self.request prepare];
