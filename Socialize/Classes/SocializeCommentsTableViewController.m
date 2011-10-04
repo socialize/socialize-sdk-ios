@@ -99,6 +99,7 @@
 -(void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray{
  
     _isLoading = NO;
+    [_arrayOfComments release]; _arrayOfComments = nil;
     _arrayOfComments = [dataArray retain];
     [self stopLoadAnimation];
     [self.tableView reloadData];
