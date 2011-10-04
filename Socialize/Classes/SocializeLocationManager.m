@@ -85,6 +85,7 @@
     [geoCoder cancel];
     [geoCoder release];
     [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithBool:_shareLocation] forKey:@"post_comment_share_location"];
+    [_currentLocationDescription release];
     [super dealloc];
 }
 

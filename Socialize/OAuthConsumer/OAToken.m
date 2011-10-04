@@ -78,7 +78,10 @@
 		NSString *theKey = [[NSUserDefaults standardUserDefaults] stringForKey:[NSString stringWithFormat:@"OAUTH_%@_%@_KEY", prefix, provider]];
 		NSString *theSecret = [[NSUserDefaults standardUserDefaults] stringForKey:[NSString stringWithFormat:@"OAUTH_%@_%@_SECRET", prefix, provider]];
 		if (theKey == NULL || theSecret == NULL)
+        {   
+            [self release];
 			return(nil);
+        }
 		self.key = theKey;
 		self.secret = theSecret;
 	}

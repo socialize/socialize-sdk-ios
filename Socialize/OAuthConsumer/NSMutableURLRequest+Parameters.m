@@ -33,11 +33,11 @@
     NSString *encodedParameters;
 	BOOL shouldfree = NO;
     
-    if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"]) 
+    if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"] || [[self HTTPMethod] isEqualToString:@"PUT"]) 
         encodedParameters = [[self URL] query];
 	else 
 	{
-        // POST, PUT
+        // POST
 		shouldfree = YES;
         encodedParameters = [[NSString alloc] initWithData:[self HTTPBody] encoding:NSASCIIStringEncoding];
     }
@@ -77,11 +77,12 @@
         position++;
     }
     
-    if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"])
+    // hack to make PUT to act like GET until the servers are fixed
+    if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"] || [[self HTTPMethod] isEqualToString:@"PUT"])
         [self setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [[self URL] SocializeURLStringWithoutQuery], encodedParameterPairs]]];
     else 
 	{
-        // POST, PUT
+        // POST
         NSData *postData = [encodedParameterPairs dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
         [self setHTTPBody:postData];
         [self setValue:[NSString stringWithFormat:@"%d", [postData length]] forHTTPHeaderField:@"Content-Length"];

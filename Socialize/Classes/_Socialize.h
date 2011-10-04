@@ -456,4 +456,5 @@ otherwise you will get a failure.
 
 -(void)currentUser;
 -(void)userWithId:(int)userId;
+-(void)updateUserProfile:(id<SocializeFullUser>)user;
 @end

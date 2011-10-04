@@ -50,6 +50,7 @@
 -(void)ExecuteGetRequestAtEndPoint: (NSString *)endPoint  WithParams:(id)requestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
 -(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)postRequestObject expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
 -(void)ExecutePutRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)putRequestObject expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
+-(void)ExecutePutRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)putRequestParams expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
 -(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
 -(void)ExecuteDeleteRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)deleteRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
 -(void)ExecuteSecurePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;

@@ -19,4 +19,15 @@
 @synthesize  lng = _lng;
 @synthesize  date = _date;
 
+-(void)dealloc
+{
+    [_application release];
+    [_entity release];
+    [_user release];
+    [_lat release];
+    [_lng release];
+    [_date release];
+    [super dealloc];
+}
+
 @end

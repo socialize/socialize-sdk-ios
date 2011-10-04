@@ -69,4 +69,21 @@
     }
     return userId;
 }
+
+-(void) dealloc
+{
+    [_firstName release];
+    [_lastName release];
+    [_userName release];
+    [_smallInageUrl release];
+    [_description release];
+    [_location release];
+    [_medium_image_uri release];
+    [_large_image_uri release];
+    [_sex release];
+    [_meta release];
+    [_thirdPartyAuth release];
+    [super dealloc];
+}
+
 @end

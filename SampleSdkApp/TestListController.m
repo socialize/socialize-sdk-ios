@@ -33,6 +33,7 @@
 
         NSMutableDictionary *myDic = [[NSDictionary alloc] initWithContentsOfFile: path];
         _testList = [[NSMutableArray alloc] initWithArray:[myDic allValues]];
+        [myDic release];
 
     }
     return self;
@@ -53,7 +54,7 @@
 
 -(NSString*) getEntityKey
 {
-    InputBox* input = [[InputBox alloc] init];
+    InputBox* input = [[InputBox new]autorelease];
     [input showInputMessageWithTitle:@"Enter entity URL" andPlaceholder:@"Full URL"];
     return input.inputMsg;
 }

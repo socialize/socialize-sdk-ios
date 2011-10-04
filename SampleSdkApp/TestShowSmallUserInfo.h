@@ -34,6 +34,7 @@
     @private
     LoadingView*            _loadingView;
     Socialize*              _socialize;
+    id<SocializeFullUser>   _user;
     
     IBOutlet UILabel* userName;
     IBOutlet UILabel* fbUserId;
@@ -43,6 +44,7 @@
 @property(nonatomic, retain) IBOutlet UILabel* fbUserId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
--(void)update:(id<SocializeFullUser>)user;
+
+-(IBAction)updateBtn;
 
 @end

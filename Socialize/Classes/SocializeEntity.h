@@ -74,9 +74,9 @@
 }
 
 /**Entity key*/
-@property (nonatomic, retain) NSString * key;
+@property (nonatomic, copy) NSString * key;
 /**Entity name*/
-@property (nonatomic, retain) NSString * name;
+@property (nonatomic, copy) NSString * name;
 /**Views' count*/
 @property (nonatomic, assign) int views; 
 /**Likes' count*/

@@ -58,14 +58,14 @@
         NSArray* _thirdPartyAuth;
 }
 
-@property (nonatomic, retain) NSString* firstName;
-@property (nonatomic, retain) NSString* lastName;
-@property (nonatomic, retain) NSString* userName;
-@property (nonatomic, retain) NSString* smallImageUrl;
-@property (nonatomic, retain) NSString* city;
-@property (nonatomic, retain) NSString* state;
-@property (nonatomic, retain) NSString* meta;
-@property (nonatomic, retain) NSArray* thirdPartyAuth;
+@property (nonatomic, copy) NSString* firstName;
+@property (nonatomic, copy) NSString* lastName;
+@property (nonatomic, copy) NSString* userName;
+@property (nonatomic, copy) NSString* smallImageUrl;
+@property (nonatomic, copy) NSString* city;
+@property (nonatomic, copy) NSString* state;
+@property (nonatomic, copy) NSString* meta;
+@property (nonatomic, copy) NSArray* thirdPartyAuth;
 
 -(NSNumber*)userIdForThirdPartyAuth:(ThirdPartyAuthName) auth;
 

@@ -19,4 +19,11 @@
 @synthesize  comments = _comments;
 @synthesize  shares = _shares;
 
+-(void)dealloc
+{
+    [_key release];
+    [_name release];
+    [super dealloc];
+}
+
 @end

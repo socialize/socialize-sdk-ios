@@ -31,6 +31,7 @@
 
 #define USER_GET_ENDPOINT     @"user/"
 #define USER_POST_ENDPOINT    @"user/"
+#define USER_PUT_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%@", userid]
 
 @implementation SocializeUserService
 
@@ -63,7 +64,8 @@
 
 -(void) updateUser:(id<SocializeFullUser>)user
 {
-    [self ExecutePutRequestAtEndPoint:USER_POST_ENDPOINT WithObject:user expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+    NSString* test = [NSString stringWithFormat:@"user/%d/", user.objectID];
+    [self ExecutePutRequestAtEndPoint:test WithObject:user expectedResponseFormat:SocializeDictionary];
 }
 
 
