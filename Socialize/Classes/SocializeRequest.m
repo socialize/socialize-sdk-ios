@@ -175,7 +175,7 @@ expectedJSONFormat = _expectedJSONFormat;
 {   
     [self.request setHTTPMethod:self.httpMethod];
     [self.request addValue:[self userAgentString] forHTTPHeaderField:@"User-Agent"];
-    if ([self.httpMethod isEqualToString: @"POST"] || [self.httpMethod isEqualToString: @"PUT"]) 
+    if ([self.httpMethod isEqualToString: @"POST"] || [self.httpMethod isEqualToString:@"PUT"]) 
     {
         NSString * stringValue = nil;
         NSMutableArray* params = [NSMutableArray array];
@@ -188,7 +188,7 @@ expectedJSONFormat = _expectedJSONFormat;
         [self addParameter:stringValue withKey:@"payload" toCollection: params];
         [self.request setSocializeParameters:params];
     }
-    else if([self.httpMethod isEqualToString: @"GET"])
+    else if([self.httpMethod isEqualToString: @"GET"] || [self.httpMethod isEqualToString:@"PUT"])
     {
         [self.request setSocializeParameters:[self formatUrlParams]];
     }
