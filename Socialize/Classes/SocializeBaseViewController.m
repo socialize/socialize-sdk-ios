@@ -26,7 +26,7 @@
  */
 
 #import "SocializeBaseViewController.h"
-
+#import "LoadingView.h"
 
 @implementation SocializeBaseViewController
 
