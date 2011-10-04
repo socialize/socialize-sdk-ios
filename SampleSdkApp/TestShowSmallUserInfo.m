@@ -113,7 +113,7 @@
 
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object
 {
-    
+    [_loadingView removeView];_loadingView = nil;
 }
 
 -(IBAction)updateBtn
