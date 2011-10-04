@@ -187,7 +187,7 @@
         commentsLabel.text = [NSString stringWithFormat:@"%d", like.entity.comments];
         likesLabel.text = [NSString stringWithFormat:@"%d", like.entity.likes];
         sharesLabel.text = [NSString stringWithFormat:@"%d", like.entity.shares];
-        [_likes addObject:[like retain]];
+        [_likes addObject:like];
     }
     else{
         resultsView.hidden = YES;
