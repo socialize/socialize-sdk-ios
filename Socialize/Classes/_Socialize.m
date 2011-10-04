@@ -140,6 +140,8 @@
 }
 
 -(void)authenticateWithFacebook {
+    NSLog(@"inside authenticateWithFacebook");
+    
     NSString *apiKey = [Socialize apiKey];
     NSString *apiSecret = [Socialize apiSecret];
     NSString *facebookAppId = [Socialize facebookAppId];
@@ -197,6 +199,10 @@
               thirdPartyAppId:(NSString*)thirdPartyAppId 
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName
 {
+    if ([SocializeAuthenticateService isAuthenticated])
+        [_authService removeAuthenticationInfo];
+    
+    [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:thirdPartyAppId thirdPartyName:thirdPartyName];
 }
 
 -(id<SocializeUser>)authenticatedUser {
