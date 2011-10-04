@@ -824,7 +824,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "xcodebuild -project SocializeSDK.xcodeproj -sdk iphonesimulator4.3 -target Socialize-iOS -configuration ${CONFIGURATION} build";
+			shellScript = "xcodebuild -workspace socialize-sdk-ios.xcworkspace -sdk iphonesimulator4.3 -scheme Socialize-iOS -configuration ${CONFIGURATION} build";
 			showEnvVarsInLog = 0;
 		};
 		AA2DA2CE1435461700C62B97 /* ShellScript */ = {
