@@ -52,6 +52,7 @@
     [_city release];
     [_state release];
     [_meta release];
+    [_thirdPartyAuth release];
     [super dealloc];
 }
 

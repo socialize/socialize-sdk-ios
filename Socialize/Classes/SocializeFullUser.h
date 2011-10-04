@@ -123,7 +123,7 @@
 @property (nonatomic, assign) int comments;
 @property (nonatomic, assign) int share;
 
-@property (nonatomic, retain) NSArray* thirdPartyAuth;
+@property (nonatomic, copy) NSArray* thirdPartyAuth;
 
 -(NSNumber*)userIdForThirdPartyAuth:(ThirdPartyAuthName) auth;
 

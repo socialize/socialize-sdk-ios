@@ -65,7 +65,7 @@
 @property (nonatomic, copy) NSString* city;
 @property (nonatomic, copy) NSString* state;
 @property (nonatomic, copy) NSString* meta;
-@property (nonatomic, retain) NSArray* thirdPartyAuth;
+@property (nonatomic, copy) NSArray* thirdPartyAuth;
 
 -(NSNumber*)userIdForThirdPartyAuth:(ThirdPartyAuthName) auth;
 
