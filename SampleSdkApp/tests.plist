@@ -22,5 +22,7 @@
 	<string>Test small user info after authentication</string>
 	<key>item 9</key>
 	<string>Test User Profile</string>
+	<key>item 10</key>
+	<string>Test Socialize Action Bar</string>
 </dict>
 </plist>

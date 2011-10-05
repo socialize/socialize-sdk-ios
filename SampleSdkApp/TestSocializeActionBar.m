@@ -29,18 +29,22 @@
 
 
 @implementation TestSocializeActionBar
+@synthesize entityView;
+@synthesize entityUrl;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(id) initWithEntityUrl:(NSString*)url
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    self = [super init];
+    if(self)
+    {
+        self.entityUrl = url;
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [entityView release];
     [super dealloc];
 }
 
@@ -57,7 +61,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self.entityView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.entityUrl]]];
 }
 
 - (void)viewDidUnload
@@ -65,6 +69,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    self.entityView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -17,6 +17,7 @@
 #import "AuthenticateViewController.h"
 #import <Socialize-iOS/Socialize.h>
 #import "TestShowSmallUserInfo.h"
+#import "TestSocializeActionBar.h"
 #import "InputBox.h"
 
 @implementation TestListController
@@ -191,6 +192,16 @@
             controller = [[SocializeProfileViewController alloc] init];
             [self.navigationController pushViewController:controller animated:YES];
             break;
+        case 10:
+        {
+            NSString* url = [self getEntityKey];
+            if(url)
+            {
+                controller = [[TestSocializeActionBar alloc] initWithEntityUrl:url];
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+            break;
+        }
 
     }    
 }

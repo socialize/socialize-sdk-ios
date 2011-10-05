@@ -29,7 +29,13 @@
 
 
 @interface TestSocializeActionBar : UIViewController {
-    
+    NSString* entityUrl;
+    IBOutlet UIWebView* entityView;
 }
+
+@property(nonatomic, retain) IBOutlet UIWebView* entityView;
+@property(nonatomic, retain) NSString* entityUrl;
+
+-(id) initWithEntityUrl:(NSString*)url;
 
 @end
