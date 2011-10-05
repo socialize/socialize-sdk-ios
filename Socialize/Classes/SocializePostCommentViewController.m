@@ -273,7 +273,6 @@
 
 - (void)showProfile {
     SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
-    profile.user = [self.socialize authenticatedUser];
     profile.delegate = self;
     
     UINavigationController *navigationController = [[[UINavigationController alloc]

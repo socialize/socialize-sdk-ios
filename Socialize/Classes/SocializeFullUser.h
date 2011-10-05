@@ -85,7 +85,7 @@
 @end
 
 /**Private implementation of <SocializeUser> protocol*/
-@interface SocializeFullUser : SocializeObject<SocializeFullUser> 
+@interface SocializeFullUser : SocializeObject<SocializeFullUser, NSCopying> 
 {
 @private
     NSString* _firstName;

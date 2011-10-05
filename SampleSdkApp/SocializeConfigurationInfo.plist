@@ -12,14 +12,14 @@
 		<string>SocializeEntityJSONFormatter</string>
 		<key>SocializeError</key>
 		<string>SocializeErrorFormatter</string>
+		<key>SocializeFullUser</key>
+		<string>SocializeFullUserJSONFormatter</string>
 		<key>SocializeLike</key>
 		<string>SocializeLikeJSONFormatter</string>
 		<key>SocializeShare</key>
 		<string>SocializeShareJSONFormatter</string>
 		<key>SocializeUser</key>
 		<string>SocializeUserJSONFormatter</string>
-		<key>SocializeFullUser</key>
-		<string>SocializeFullUserJSONFormatter</string>
 		<key>SocializeView</key>
 		<string>SocializeViewJSONFormatter</string>
 	</dict>
@@ -35,23 +35,23 @@
 		<string>SocializeEntity</string>
 		<key>SocializeError</key>
 		<string>SocializeError</string>
+		<key>SocializeFullUser</key>
+		<string>SocializeFullUser</string>
 		<key>SocializeLike</key>
 		<string>SocializeLike</string>
 		<key>SocializeShare</key>
 		<string>SocializeShare</string>
 		<key>SocializeUser</key>
 		<string>SocializeUser</string>
-		<key>SocializeFullUser</key>
-		<string>SocializeFullUser</string>
 		<key>SocializeView</key>
 		<string>SocializeView</string>
 	</dict>
 	<key>URLs</key>
 	<dict>
 		<key>RestserverBaseURL</key>
-		<string>http://api.getsocialize.com/v1/</string>
+		<string>http://stage.api.getsocialize.com/v1/</string>
 		<key>SecureRestserverBaseURL</key>
-		<string>https://api.getsocialize.com/v1/</string>
+		<string>https://stage.api.getsocialize.com/v1/</string>
 	</dict>
 </dict>
 </plist>

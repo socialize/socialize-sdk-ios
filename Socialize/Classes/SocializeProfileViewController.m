@@ -13,6 +13,7 @@
 #import "LoadingView.h"
 @interface SocializeProfileViewController ()
 -(void)showEditController;
+-(void)hideEditController;
 @end
 
 @implementation SocializeProfileViewController
@@ -27,6 +28,7 @@
 @synthesize profileImageActivityIndicator = profileImageActivityIndicator_;
 @synthesize profileEditViewController = socializeProfileEditViewController_;
 @synthesize loadingView = loadingView_;
+@synthesize socialize = socialize_;
 
 - (void)dealloc {
     self.doneButton = nil;
@@ -43,6 +45,14 @@
 
 - (id)init {
     return [super initWithNibName:@"SocializeProfileViewController" bundle:nil];
+}
+
+- (Socialize*)socialize {
+    if (socialize_ == nil) {
+        socialize_ = [[Socialize alloc] initWithDelegate:self];
+    }
+    
+    return socialize_;
 }
 
 - (UIBarButtonItem*)doneButton {
@@ -99,6 +109,75 @@
     return [UIImage imageNamed:@"socialize-profileimage-large-default.png"];
 }
 
+- (void)configureViewsForUser:(id<SocializeFullUser>)user {
+    
+    // Configure labels
+    self.userNameLabel.text = user.userName;
+    if (user.firstName != nil && user.lastName != nil) {
+        self.userDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+    }
+    
+    // Configure the profile image
+    NSString *url = user.smallImageUrl;
+    
+    if (url != nil) {
+        UIImage *existing = [[ImagesCache sharedImagesCache] imageFromCache:url];
+        if (existing != nil) {
+            self.profileImageView.image = existing;
+        } else {
+            CompleteBlock complete = [[^(ImagesCache* imgs){
+                UIImage *loadedImage = [imgs imageFromCache:url];
+                if (loadedImage != nil) {
+                    self.profileImageView.image = loadedImage;
+                } else {
+                    self.profileImageView.image = [self defaultProfileImage];
+                }
+                [self.profileImageActivityIndicator stopAnimating];
+            } copy] autorelease];
+            
+            [self.profileImageActivityIndicator startAnimating];
+            [[ImagesCache sharedImagesCache] loadImageFromUrl:url
+                                               completeAction:complete];
+        }
+    }
+}
+
+- (void)startLoading {
+    self.loadingView = [LoadingView loadingViewInView:self.view];
+}
+
+- (void)stopLoading {
+    [self.loadingView removeView]; self.loadingView = nil;
+}
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error
+{
+    [self stopLoading];
+    
+    UIAlertView *msg;
+    msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:[NSString stringWithFormat: @"cannot get profile %@", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [msg show];
+    [msg release];
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
+{
+    [self stopLoading];
+    
+    id<SocializeFullUser> user = [[dataArray objectAtIndex:0] retain];
+    NSAssert([user conformsToProtocol:@protocol(SocializeFullUser)], @"Not a socialize user");
+    self.user = user;
+    [self configureViewsForUser:self.user];
+}
+
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object
+{
+    [self stopLoading];
+    self.user = (id<SocializeFullUser>)object;
+    [self configureViewsForUser:self.user];
+    [self hideEditController];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -110,36 +189,10 @@
     self.profileImageView.image = [self defaultProfileImage];
 
     if (self.user != nil) {
-        
-        // Configure labels
-        self.userNameLabel.text = self.user.userName;
-        if (self.user.firstName != nil && self.user.lastName != nil) {
-            self.userDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.firstName, self.user.lastName];
-        }
-        
-        // Configure the profile image
-        NSString *url = self.user.smallImageUrl;
-        
-        if (url != nil) {
-            UIImage *existing = [[ImagesCache sharedImagesCache] imageFromCache:url];
-            if (existing != nil) {
-                self.profileImageView.image = existing;
-            } else {
-                CompleteBlock complete = [[^(ImagesCache* imgs){
-                    UIImage *loadedImage = [imgs imageFromCache:url];
-                    if (loadedImage != nil) {
-                        self.profileImageView.image = loadedImage;
-                    } else {
-                        self.profileImageView.image = [self defaultProfileImage];
-                    }
-                    [self.profileImageActivityIndicator stopAnimating];
-                } copy] autorelease];
-                
-                [self.profileImageActivityIndicator startAnimating];
-                [[ImagesCache sharedImagesCache] loadImageFromUrl:url
-                                                   completeAction:complete];
-            }
-        }
+        [self configureViewsForUser:self.user];
+    } else {
+        [self startLoading];
+        [self.socialize getCurrentUser];
     }
 }
 
@@ -251,8 +304,7 @@
 
 -(void)hideEditController
 {
-    [self.loadingView removeView];
-	self.loadingView = nil;
+    [self stopLoading];
 	CGRect windowFrame = self.view.window.frame;
 	CGRect navFrame = CGRectMake(0,windowFrame.size.height, windowFrame.size.width, windowFrame.size.height);
     
@@ -274,7 +326,8 @@
 	self.loadingView = [LoadingView loadingViewInView:self.profileEditViewController.navigationController.view];
 	self.profileEditViewController.navigationItem.rightBarButtonItem.enabled = NO;
     
-	UIImage* newProfileImage = self.profileEditViewController.profileImage;
+    
+    /*
 	if (newProfileImage)
 	{
 		self.profileImageView.image = newProfileImage;
@@ -282,18 +335,20 @@
 	else 
 	{
 		self.profileImageView.image = [UIImage imageNamed:@"socialize_resources/socialize-profileimage-large-default.png"];
-	}
+	}*/
     
-//	NSString* firstName = [self.profileEditViewController.keyValueDictionary valueForKey:@"first name"];
-//	NSString* lastName = [self.profileEditViewController.keyValueDictionary valueForKey:@"last name"];
-//	NSString* description = [self.profileEditViewController.keyValueDictionary valueForKey:@"bio"];
+    id<SocializeFullUser> userCopy = [(id)self.user copy];
     
-    /*
-	[self.theService postToProfileFirstName:firstName
-								   lastName:lastName 
-								description:description 
-									  image:newProfileImage];
-	*/
+	[userCopy setFirstName:[self.profileEditViewController.keyValueDictionary valueForKey:@"first name"]];
+	[userCopy setLastName:[self.profileEditViewController.keyValueDictionary valueForKey:@"last name"]];
+	[userCopy setDescription:[self.profileEditViewController.keyValueDictionary valueForKey:@"bio"]];
+
+    [self.socialize updateUserProfile:userCopy profileImage:nil];
+
+//FIXME reenable profile image once puts are back in [#19262347]
+//    UIImage* newProfileImage = self.profileEditViewController.profileImage;
+//    [self.socialize updateUserProfile:userCopy profileImage:newProfileImage];
+    
 }
 
 -(void)editVCCancel:(id)button

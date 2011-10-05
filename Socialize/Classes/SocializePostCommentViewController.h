@@ -17,7 +17,7 @@
 @class UIKeyboardListener;
 @class SocializeLocationManager;
 
-@interface SocializePostCommentViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate, UIAlertViewDelegate, ProfileViewControllerDelegate >
+@interface SocializePostCommentViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate, UIAlertViewDelegate, SocializeProfileViewControllerDelegate >
 {
 @private
     SocializeLocationManager* locationManager;

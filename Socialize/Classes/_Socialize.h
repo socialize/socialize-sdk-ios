@@ -38,6 +38,7 @@
 @class SocializeEntityService;
 @class SocializeViewService;
 @class SocializeUserService;
+@class UIImage;
 
 /**
 This is a general facade of the   SDK`s API. Through it a third party developers could use the API.
@@ -454,7 +455,8 @@ otherwise you will get a failure.
  */
 -(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 
--(void)currentUser;
--(void)userWithId:(int)userId;
+-(void)getCurrentUser;
+-(void)getUserWithId:(int)userId;
 -(void)updateUserProfile:(id<SocializeFullUser>)user;
+-(void)updateUserProfile:(id<SocializeFullUser>)user profileImage:(UIImage*)profileImage;
 @end

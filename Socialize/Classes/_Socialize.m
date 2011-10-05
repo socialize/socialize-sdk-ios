@@ -279,19 +279,25 @@
 }
 
 #pragma user related stuff
--(void)currentUser
+-(void)getCurrentUser
 {
-    [_userService currentUser];
+    [_userService getCurrentUser];
 }
 
--(void)userWithId:(int)userId
+-(void)getUserWithId:(int)userId
 {
-    [_userService userWithId:userId];
+    [_userService getUserWithId:userId];
 }
 
 -(void)updateUserProfile:(id<SocializeFullUser>)user
 {
     [_userService updateUser:user];
 }
+
+-(void)updateUserProfile:(id<SocializeFullUser>)user profileImage:(id)profileImage
+{
+    [_userService updateUser:user profileImage:profileImage];
+}
+
 
 @end

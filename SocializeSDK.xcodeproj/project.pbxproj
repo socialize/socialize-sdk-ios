@@ -271,6 +271,10 @@
 		AA3D69551432ADEF00DA77AC /* socialize-profileimage-large-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694B1432ADEF00DA77AC /* socialize-profileimage-large-default@2x.png */; };
 		AA3D69561432ADEF00DA77AC /* socialize-sectionheader-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694C1432ADEF00DA77AC /* socialize-sectionheader-bg.png */; };
 		AA3D69571432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694D1432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png */; };
+		AA6FD45E143BCB7400EA9017 /* UIImage+Network.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6FD45C143BCB7300EA9017 /* UIImage+Network.h */; };
+		AA6FD45F143BCB7400EA9017 /* UIImage+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6FD45D143BCB7300EA9017 /* UIImage+Network.m */; };
+		AA6FD463143BCD9000EA9017 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6FD461143BCD8F00EA9017 /* NSData+Base64.h */; };
+		AA6FD464143BCD9000EA9017 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6FD462143BCD9000EA9017 /* NSData+Base64.m */; };
 		AAAFE5C81435564200851C73 /* Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2DA21614353D7100C62B97 /* Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAFE5CA143556DA00851C73 /* SocializeActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A7C51402BF6E004B3A46 /* SocializeActionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAFE5CB143556FC00851C73 /* SocializeProfileEditViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABB7D801433F32800D0FDF9 /* SocializeProfileEditViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -855,6 +859,10 @@
 		AA3D694B1432ADEF00DA77AC /* socialize-profileimage-large-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-profileimage-large-default@2x.png"; path = "Resources/socialize-profileimage-large-default@2x.png"; sourceTree = "<group>"; };
 		AA3D694C1432ADEF00DA77AC /* socialize-sectionheader-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-sectionheader-bg.png"; path = "Resources/socialize-sectionheader-bg.png"; sourceTree = "<group>"; };
 		AA3D694D1432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-sectionheader-bg@2x.png"; path = "Resources/socialize-sectionheader-bg@2x.png"; sourceTree = "<group>"; };
+		AA6FD45C143BCB7300EA9017 /* UIImage+Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Network.h"; sourceTree = "<group>"; };
+		AA6FD45D143BCB7300EA9017 /* UIImage+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Network.m"; sourceTree = "<group>"; };
+		AA6FD461143BCD8F00EA9017 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		AA6FD462143BCD9000EA9017 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		AAAFE5E414355BF900851C73 /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAFE86314355F1B00851C73 /* AuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticateViewController.h; sourceTree = "<group>"; };
 		AAAFE86414355F1B00851C73 /* AuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticateViewController.m; sourceTree = "<group>"; };
@@ -1473,6 +1481,10 @@
 			children = (
 				AABB7D8B1433F33300D0FDF9 /* UIImage+Resize.h */,
 				AABB7D8C1433F33300D0FDF9 /* UIImage+Resize.m */,
+				AA6FD45C143BCB7300EA9017 /* UIImage+Network.h */,
+				AA6FD45D143BCB7300EA9017 /* UIImage+Network.m */,
+				AA6FD461143BCD8F00EA9017 /* NSData+Base64.h */,
+				AA6FD462143BCD9000EA9017 /* NSData+Base64.m */,
 				1666BD21140E11CF00518811 /* Downloaders */,
 				1607548E1432FBF4002E5A38 /* SynthesizeSingleton.h */,
 				160754851432FB7C002E5A38 /* NSString+PlaceMark.h */,
@@ -1798,6 +1810,8 @@
 				AAAFE5DD143557B900851C73 /* _Socialize.h in Headers */,
 				AAAFE5DE1435583D00851C73 /* SocializeCommonDefinitions.h in Headers */,
 				AAAFE5DF1435584700851C73 /* SocializeServiceDelegate.h in Headers */,
+				AA6FD45E143BCB7400EA9017 /* UIImage+Network.h in Headers */,
+				AA6FD463143BCD9000EA9017 /* NSData+Base64.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2306,6 +2320,8 @@
 				AABB7D8E1433F33300D0FDF9 /* UIImage+Resize.m in Sources */,
 				166ACED814346A8100B28AF6 /* SocializeFullUserJSONFormatter.m in Sources */,
 				166ACEDC14346B6500B28AF6 /* SocializeFullUser.m in Sources */,
+				AA6FD45F143BCB7400EA9017 /* UIImage+Network.m in Sources */,
+				AA6FD464143BCD9000EA9017 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
