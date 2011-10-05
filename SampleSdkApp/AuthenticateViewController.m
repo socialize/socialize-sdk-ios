@@ -100,6 +100,12 @@
 
 }
 
+-(IBAction)noAuthentication:(id)sender {
+    TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil];
+    [self.navigationController pushViewController:listController animated:YES];
+
+}
+
 -(IBAction)authenticateViaFacebook:(id)sender
 {
     _loadingView = [LoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 

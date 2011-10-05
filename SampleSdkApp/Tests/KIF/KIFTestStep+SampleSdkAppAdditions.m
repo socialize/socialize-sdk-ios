@@ -25,6 +25,13 @@
     }];
 }
 
++ (NSArray*)stepsToNoAuth
+{
+    NSMutableArray *steps = [NSMutableArray array];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"emptycache"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"noauth"]]; 
+    return steps;
+}
 + (NSArray*)stepsToAuthenticate;
 {
     NSMutableArray *steps = [NSMutableArray array];
