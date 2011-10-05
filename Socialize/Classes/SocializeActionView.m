@@ -27,7 +27,6 @@
 #define PADDING_BETWEEN_TEXT_ICON 2
 
 @interface SocializeActionView()
--(CGSize)getSizeOfString:(NSString*)string withFont:(UIFont*)font;
 -(void)instantiateButtons;
 -(void)setupButtons;
 -(void)setButtonLabel:(NSString*)labelString 
@@ -55,6 +54,7 @@
         [self instantiateButtons];
 		[self setupButtons];
         self.accessibilityLabel = @"Socialize Action View";
+        self.backgroundColor = [UIColor whiteColor];
 	}
     return self;
 }
@@ -142,17 +142,13 @@
 	[_activityIndicator startAnimating];
 }
 
--(CGSize)getSizeOfString:(NSString*)string withFont:(UIFont*)font{
-    return [string sizeWithFont:font];
-}
-
 - (CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName 
 {
 	if ([labelString length] <= 0) {
 		return CGSizeZero;
 	}
 	
-	CGSize labelSize = [self getSizeOfString:labelString withFont:_buttonLabelFont];
+	CGSize labelSize = [labelString sizeWithFont:_buttonLabelFont];
 	if (iconName)
 		labelSize = CGSizeMake(labelSize.width + (2 * BUTTON_PADDINGS) + PADDING_BETWEEN_TEXT_ICON + 5 + ICON_WIDTH, BUTTON_HEIGHT);
 	else
@@ -325,10 +321,14 @@
 - (void)drawRect:(CGRect)rect 
 {	
 	[super drawRect:rect];
-    UIImage* backgroundImage = [UIImage imageNamed:@"action-bar-bg.png"];
-	[[backgroundImage stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5] 
-			drawInRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
-					blendMode:kCGBlendModeMultiply alpha:1.0];
+//    UIImage* backgroundImage = [UIImage imageNamed:@"action-bar-bg.png"];
+//	[[backgroundImage stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5] 
+//			drawInRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
+//					blendMode:kCGBlendModeMultiply alpha:1.0];
+    
+	[[[UIImage imageNamed:@"action-bar-bg.png"] stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5] 
+     drawInRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
+     blendMode:kCGBlendModeMultiply alpha:1.0];
 }
 
 
