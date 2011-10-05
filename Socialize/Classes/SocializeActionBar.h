@@ -1,5 +1,5 @@
 /*
- * TestSocializeActionBar.h
+ * SocializeActionBar.h
  * SocializeSDK
  *
  * Created on 10/5/11.
@@ -26,18 +26,25 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "SocializeBaseViewController.h"
+#import "SocializeActionView.h"
 
-@class SocializeActionBar;
+@class SocializeCommentsTableViewController;
 
-@interface TestSocializeActionBar : UIViewController {
+@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate> {
+    @private
+    CGRect viewRect;
     NSString* entityUrl;
-    IBOutlet UIWebView* entityView;
-    SocializeActionBar* bar;
+    SocializeCommentsTableViewController* commentsController;
+    UINavigationController* nc;
+    
+    UIViewController* parentViewController;
 }
 
-@property(nonatomic, retain) IBOutlet UIWebView* entityView;
-@property(nonatomic, retain) NSString* entityUrl;
+@property(nonatomic, retain) UIViewController* parentViewController;
 
--(id) initWithEntityUrl:(NSString*)url;
+-(id)initWithParantViewSize:(CGSize)parentViewSize andEntiryUrl:(NSString*)url;
+
++(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url;
 
 @end

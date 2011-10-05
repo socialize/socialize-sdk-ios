@@ -34,6 +34,8 @@
 		1636373713AB5D8E00403879 /* SocializeCommentJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636373513AB5D8E00403879 /* SocializeCommentJSONFormatter.m */; };
 		1638A58F143C469200C125B5 /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638A58D143C469100C125B5 /* TestSocializeActionBar.m */; };
 		1638A590143C469200C125B5 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1638A58E143C469100C125B5 /* TestSocializeActionBar.xib */; };
+		1638A59A143C4F3800C125B5 /* SocializeActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 1638A598143C4F3800C125B5 /* SocializeActionBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1638A59B143C4F3800C125B5 /* SocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638A599143C4F3800C125B5 /* SocializeActionBar.m */; };
 		1657EF66139F677100E488CC /* SocializeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF64139F677000E488CC /* SocializeProvider.m */; };
 		1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9613A2000600E488CC /* SocializeRequestTests.m */; };
 		1657EF9C13A2170A00E488CC /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
@@ -515,6 +517,8 @@
 		1638A58C143C469100C125B5 /* TestSocializeActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSocializeActionBar.h; sourceTree = "<group>"; };
 		1638A58D143C469100C125B5 /* TestSocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSocializeActionBar.m; sourceTree = "<group>"; };
 		1638A58E143C469100C125B5 /* TestSocializeActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSocializeActionBar.xib; sourceTree = "<group>"; };
+		1638A598143C4F3800C125B5 /* SocializeActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActionBar.h; path = Classes/SocializeActionBar.h; sourceTree = "<group>"; };
+		1638A599143C4F3800C125B5 /* SocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActionBar.m; path = Classes/SocializeActionBar.m; sourceTree = "<group>"; };
 		1657EF63139F677000E488CC /* SocializeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProvider.h; path = Classes/SocializeProvider.h; sourceTree = "<group>"; };
 		1657EF64139F677000E488CC /* SocializeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProvider.m; path = Classes/SocializeProvider.m; sourceTree = "<group>"; };
 		1657EF9513A2000600E488CC /* SocializeRequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequestTests.h; path = "Test Cases/SocializeRequestTests.h"; sourceTree = "<group>"; };
@@ -1138,6 +1142,8 @@
 				16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */,
 				6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */,
 				6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */,
+				1638A598143C4F3800C125B5 /* SocializeActionBar.h */,
+				1638A599143C4F3800C125B5 /* SocializeActionBar.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1828,6 +1834,7 @@
 				AAAFE5DD143557B900851C73 /* _Socialize.h in Headers */,
 				AAAFE5DE1435583D00851C73 /* SocializeCommonDefinitions.h in Headers */,
 				AAAFE5DF1435584700851C73 /* SocializeServiceDelegate.h in Headers */,
+				1638A59A143C4F3800C125B5 /* SocializeActionBar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2344,6 +2351,7 @@
 				AABB7D8E1433F33300D0FDF9 /* UIImage+Resize.m in Sources */,
 				166ACED814346A8100B28AF6 /* SocializeFullUserJSONFormatter.m in Sources */,
 				166ACEDC14346B6500B28AF6 /* SocializeFullUser.m in Sources */,
+				1638A59B143C4F3800C125B5 /* SocializeActionBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

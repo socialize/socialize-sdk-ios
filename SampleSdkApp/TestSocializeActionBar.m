@@ -26,7 +26,8 @@
  */
 
 #import "TestSocializeActionBar.h"
-
+#import "SocializeActionBar.h"
+#import "SocializeCommentsTableViewController.h"
 
 @implementation TestSocializeActionBar
 @synthesize entityView;
@@ -45,6 +46,7 @@
 - (void)dealloc
 {
     [entityView release];
+    [bar release];
     [super dealloc];
 }
 
@@ -62,6 +64,7 @@
 {
     [super viewDidLoad];
     [self.entityView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.entityUrl]]];
+    bar = [[SocializeActionBar createWithParentController:self andUrl:self.entityUrl] retain];
 }
 
 - (void)viewDidUnload
