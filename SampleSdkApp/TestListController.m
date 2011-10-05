@@ -189,10 +189,8 @@
             break;
         case 9:
         {
-            Socialize* socialize = [[Socialize alloc] initWithDelegate:self];
-            SocializeUser *user = [socialize authenticatedUser];
             SocializeProfileViewController *profileController = [[SocializeProfileViewController alloc] init];
-            profileController.user = user;
+            profileController.delegate = self;
             [self.navigationController pushViewController:profileController animated:YES];
             [profileController release];
             break;
