@@ -13,4 +13,10 @@
 
 @synthesize objectID = _objectID;
 
+- (id)copyWithZone:(NSZone *)zone {
+    SocializeObject *copy = [[self class] allocWithZone:zone];
+    copy.objectID = self.objectID;
+    return copy;
+}
+
 @end

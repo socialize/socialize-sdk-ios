@@ -203,4 +203,11 @@
 
 #pragma mark - Service delegete
 
+- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

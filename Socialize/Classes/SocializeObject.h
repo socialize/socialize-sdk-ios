@@ -29,7 +29,7 @@
 /**
  Private implementation of SocializeObject protocaol.
  */
-@interface SocializeObject : NSObject <SocializeObject>
+@interface SocializeObject : NSObject <SocializeObject, NSCopying>
 {
     @private 
         int _objectID;

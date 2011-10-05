@@ -70,6 +70,27 @@
     return userId;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+    SocializeFullUser *copy = [super copyWithZone:zone];
+    copy.firstName = self.firstName;
+    copy.lastName = self.lastName;
+    copy.userName = self.userName;
+    copy.smallImageUrl = self.smallImageUrl;
+    copy.description = self.description;
+    copy.location = self.location;
+    copy.medium_image_uri = self.medium_image_uri;
+    copy.large_image_uri = self.large_image_uri;
+    copy.sex = self.sex;
+    copy.meta = self.meta;
+    copy.thirdPartyAuth = self.thirdPartyAuth;
+    copy.views = self.views;
+    copy.comments = self.comments;
+    copy.likes = self.likes;
+    copy.share = self.share;
+    
+    return copy;
+}
+
 -(void) dealloc
 {
     [_firstName release];

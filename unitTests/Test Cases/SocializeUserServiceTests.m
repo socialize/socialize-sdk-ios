@@ -53,7 +53,7 @@
     [[mockProvider expect]
      requestWithMethodName:@"user/" andParams:userIdDictionary expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_userService];
 
-    [_userService userWithId:userId];
+    [_userService getUserWithId:userId];
     
     [mockProvider verify];
         

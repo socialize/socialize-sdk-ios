@@ -30,15 +30,18 @@
 #import "SocializeFullUser.h"
 #import "SocializeRequest.h"
 
+@class UIImage;
+
 @interface SocializeUserService : SocializeService  
 {
     
 }
 
--(void) userWithId:(int)userId;
--(void) usersWithIds:(NSArray*)ids;
--(void) currentUser;
+-(void) getUserWithId:(int)userId;
+-(void) getUsersWithIds:(NSArray*)ids;
+-(void) getCurrentUser;
 -(void) updateUser:(id<SocializeFullUser>)user;
+-(void) updateUser:(id<SocializeFullUser>)user profileImage:(UIImage*)image;
 
 @end
 

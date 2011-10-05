@@ -13,7 +13,6 @@
 @class SocializeUser;
 
 @interface TestListController : UIViewController<SocializeServiceDelegate, UITableViewDelegate, UITableViewDataSource> {
-    
     NSArray*                _testList;
     IBOutlet UITableView*   _tableView;
 }

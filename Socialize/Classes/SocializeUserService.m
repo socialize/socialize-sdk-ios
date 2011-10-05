@@ -27,7 +27,8 @@
 
 #import "SocializeUserService.h"
 #import "SocializePrivateDefinitions.h"
-
+#import "UIImage+Network.h"
+#import "JSONKit.h"
 
 #define USER_GET_ENDPOINT     @"user/"
 #define USER_POST_ENDPOINT    @"user/"
@@ -41,32 +42,45 @@
 }
 
 
--(void) usersWithIds:(NSArray*)ids
+-(void) getUsersWithIds:(NSArray*)ids
 {
     NSDictionary* params = [NSDictionary dictionaryWithObject:ids forKey:@"id"];
     [self ExecuteGetRequestAtEndPoint:USER_GET_ENDPOINT WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
 }
 
--(void) userWithId:(int)userId
+-(void) getUserWithId:(int)userId
 {
-    [self usersWithIds:[NSArray arrayWithObjects:[NSNumber numberWithInt:userId], nil]];
+    [self getUsersWithIds:[NSArray arrayWithObjects:[NSNumber numberWithInt:userId], nil]];
 }
 
--(void) currentUser
+-(void) getCurrentUser
 {   
     NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
-    if (userData != nil) {
-        NSDictionary *info = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
-        id<SocializeUser> user = [_objectCreator createObjectFromDictionary:info forProtocol:@protocol(SocializeUser)];
-        [self userWithId: user.objectID];
-    }
+    NSAssert(userData != nil, @"Tried to get current user without authenticating first");
+    NSDictionary *info = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+    id<SocializeUser> user = [_objectCreator createObjectFromDictionary:info forProtocol:@protocol(SocializeUser)];
+    [self getUserWithId: user.objectID];
 }
 
 -(void) updateUser:(id<SocializeFullUser>)user
 {
-    NSString* test = [NSString stringWithFormat:@"user/%d/", user.objectID];
-    [self ExecutePutRequestAtEndPoint:test WithObject:user expectedResponseFormat:SocializeDictionary];
+    [self updateUser:user profileImage:nil];
 }
 
+-(void) updateUser:(id<SocializeFullUser>)user profileImage:(UIImage*)image {
+    NSString* test = [NSString stringWithFormat:@"user/%d/", user.objectID];
+    
+    NSMutableDictionary * jsonParams =  [[[_objectCreator createDictionaryRepresentationOfObject:user] mutableCopy] autorelease];
+    if (image != nil) {
+        NSString *imageb64 = [image base64PNGRepresentation];
+        if (imageb64 != nil) {
+            [jsonParams setObject:[image base64PNGRepresentation] forKey:@"picture"];
+        }
+    }
+
+    NSString *json = [jsonParams JSONString];
+    NSMutableDictionary* params = [self genereteParamsFromJsonString:json];
+    [self ExecutePutRequestAtEndPoint:test WithParams:params expectedResponseFormat:SocializeDictionary];
+}
 
 @end
