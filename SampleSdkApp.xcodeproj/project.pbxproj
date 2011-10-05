@@ -388,7 +388,6 @@
 		AA2D9E5E14352BC100C62B97 = {
 			isa = PBXGroup;
 			children = (
-				1892605E143A7BE2006DE6B8 /* SocializeProfileViewController.xib */,
 				AAAFE78314355CF700851C73 /* SampleSdkApp */,
 				AA2D9E6C14352BC100C62B97 /* Frameworks */,
 				AA2D9E6A14352BC100C62B97 /* Products */,
@@ -798,6 +797,7 @@
 				AAAFE5BB143553BA00851C73 /* SocializeProfileEditTableViewImageCell.xib in Resources */,
 				AAAFE5BC143553BA00851C73 /* SocializeProfileEditValueController.xib in Resources */,
 				AAAFE5BD143553BA00851C73 /* SocializeProfileEditViewController.xib in Resources */,
+				AAAFE5BE143553BA00851C73 /* SocializeProfileViewController.xib in Resources */,
 				AAAFE80114355CF800851C73 /* AuthenticateViewController.xib in Resources */,
 				AAAFE80614355CF800851C73 /* InfoPlist.strings in Resources */,
 				AAAFE80714355CF800851C73 /* MainWindow.xib in Resources */,
@@ -811,7 +811,6 @@
 				AAAFE82814355CF800851C73 /* TestLikeViewController.xib in Resources */,
 				AAAFE82A14355CF800851C73 /* TestListController.xib in Resources */,
 				AAAFE84B14355CF800851C73 /* tests.plist in Resources */,
-				AAAFE5BE143553BA00851C73 /* SocializeProfileViewController.xib in Resources */,
 				AAAFE84D14355CF800851C73 /* TestShowSmallUserInfo.xib in Resources */,
 				AAAFE84F14355CF800851C73 /* TestViewCreationViewController.xib in Resources */,
 				AAAFE85214355CF800851C73 /* urls.plist in Resources */,
@@ -835,7 +834,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "xcodebuild -project SocializeSDK.xcodeproj -sdk iphonesimulator -target Socialize-iOS -configuration ${CONFIGURATION} build";
+			shellScript = "xcodebuild -workspace socialize-sdk-ios.xcworkspace -sdk iphonesimulator4.3 -scheme Socialize-iOS -configuration ${CONFIGURATION} build";
 			showEnvVarsInLog = 0;
 		};
 		AA2DA2CE1435461700C62B97 /* ShellScript */ = {

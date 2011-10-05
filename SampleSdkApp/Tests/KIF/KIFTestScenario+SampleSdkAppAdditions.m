@@ -11,6 +11,21 @@
 #import "SampleSdkAppKIFTestController.h"
 @implementation KIFTestScenario (SampleSdkAppAdditions)
 
++ (id)scenarioToTestCreateCommentViewControllerWithAutoAuth {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that test that socialize UI views work even when not logged in."];
+    [scenario addStepsFromArray:[KIFTestStep stepsToNoAuth]];
+    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
+    NSString *commentString = [NSString stringWithFormat:@"Comment from %s", _cmd];
+    [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentWithControllerForEntity:url comment:commentString]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyCommentExistsForEntity:url comment:commentString]];
+    
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Comments List"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Fetch Comment"]];   
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Tests"]];   
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Authenticate"]];   
+    return scenario;
+
+}
 + (id)scenarioToAuthenticate {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a user can successfully log in."];
     [scenario addStepsFromArray:[KIFTestStep stepsToAuthenticate]];
@@ -79,16 +94,6 @@
     return scenario;
 }
 
-+ (id)scenarioToTestCreateCommentViewController {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a comment can created through the socialize comment creation controller."];
-    
-    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntityWithURL:url name:nil]];
-    NSString *commentString = [NSString stringWithFormat:@"Comment from %s", _cmd];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentWithControllerForEntity:url comment:commentString]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyCommentExistsForEntity:url comment:commentString]];
-    return scenario;
-}
 
 
 @end

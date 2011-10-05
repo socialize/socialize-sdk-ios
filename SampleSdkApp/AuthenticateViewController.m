@@ -54,9 +54,9 @@
 {
     [super viewDidLoad];
     
-    [_authenticateButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
-    [_thirdpartyAuthentication configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
-    [_emptyCacheButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
+//    [_authenticateButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];
+//    [_thirdpartyAuthentication configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
+//    [_emptyCacheButton configureWithoutResizingWithType:AMSOCIALIZE_BUTTON_TYPE_BLACK];    
 
     self.view.backgroundColor = [UIColor lightGrayColor];
     self.navigationItem.title = @"Authenticate";
@@ -97,6 +97,12 @@
     
     _loadingView = [LoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 
     [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text];
+
+}
+
+-(IBAction)noAuthentication:(id)sender {
+    TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil];
+    [self.navigationController pushViewController:listController animated:YES];
 
 }
 

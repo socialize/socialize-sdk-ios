@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <Socialize-iOS/Socialize.h>
 
 @class SocializeUser;
 
-@interface TestListController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
-    
+@interface TestListController : UIViewController<SocializeServiceDelegate, UITableViewDelegate, UITableViewDataSource> {
     NSArray*                _testList;
     IBOutlet UITableView*   _tableView;
 }

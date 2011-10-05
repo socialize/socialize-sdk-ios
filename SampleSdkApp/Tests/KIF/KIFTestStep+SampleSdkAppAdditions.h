@@ -11,6 +11,7 @@
 @interface KIFTestStep (SampleSdkAppAdditions)
 
 + (id)stepToReturnToList;
++ (NSArray*)stepsToNoAuth;
 + (NSArray*)stepsToAuthenticate;
 + (NSArray*)stepsToCreateEntityWithURL:(NSString*)url name:(NSString*)name;
 + (NSArray*)stepsToCreateEntityWithRandomURL;

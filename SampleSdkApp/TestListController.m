@@ -32,7 +32,7 @@
         NSString *path = [[NSBundle mainBundle] pathForResource:
                           @"tests" ofType:@"plist"];
 
-        NSMutableDictionary *myDic = [[NSDictionary alloc] initWithContentsOfFile: path];
+        NSMutableDictionary *myDic = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
         _testList = [[NSMutableArray alloc] initWithArray:[myDic allValues]];
         [myDic release];
 
@@ -189,8 +189,13 @@
             [self.navigationController pushViewController:controller animated:YES];
             break;
         case 9:
-            controller = [[SocializeProfileViewController alloc] init];
-            [self.navigationController pushViewController:controller animated:YES];
+        {
+            Socialize* socialize = [[Socialize alloc] initWithDelegate:self];
+            SocializeUser *user = [socialize authenticatedUser];
+            SocializeProfileViewController *profileController = [[SocializeProfileViewController alloc] init];
+            profileController.user = user;
+            [self.navigationController pushViewController:profileController animated:YES];
+            [profileController release];
             break;
         case 10:
         {
@@ -207,5 +212,12 @@
 }
 
 #pragma mark - Service delegete
+
+- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

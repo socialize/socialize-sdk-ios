@@ -9,7 +9,7 @@
 #import "URLDownloadOperation.h"
 typedef URLDownloadOperation*(^OperationFactoryBlock)(id target, SEL method, id object);
 
-@interface URLDownload : NSObject
+@interface URLDownload : NSObject <NSURLConnectionDataDelegate>
 {
 @private
     NSString *urlForDownload;
