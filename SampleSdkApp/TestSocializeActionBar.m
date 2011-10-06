@@ -26,8 +26,7 @@
  */
 
 #import "TestSocializeActionBar.h"
-#import "SocializeActionBar.h"
-#import "SocializeCommentsTableViewController.h"
+#import  <Socialize-iOS/Socialize.h>
 
 @implementation TestSocializeActionBar
 @synthesize entityView;
