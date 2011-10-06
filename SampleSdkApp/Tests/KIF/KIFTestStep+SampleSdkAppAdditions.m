@@ -111,7 +111,7 @@
     [steps addObject:[KIFTestStep stepToReturnToList]];
     NSIndexPath *path = [NSIndexPath indexPathForRow:7 inSection:0];
     [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Test create comment view controller" atIndexPath:path]];
-    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Enter"]];
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Input Field"]];
     [steps addObject:[KIFTestStep stepToEnterText:entity intoViewWithAccessibilityLabel:@"Input Field"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Enter"]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comment Entry"]];
