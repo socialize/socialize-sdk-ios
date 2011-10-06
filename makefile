@@ -8,11 +8,11 @@ package: build
      
 build: 
   	# build embedded framework
-	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme Socialize-iOS -configuration Distribution -sdk iphoneos build
+	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "Socialize Framework" -configuration Distribution -sdk iphoneos build
 
 buildsample:
 	#building sample
-	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme Socialize-iOS -configuration Distribution -sdk iphoneos build	
+	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "Socialize Framework" -configuration Distribution -sdk iphoneos build	
 	#xcodebuild -target SampleSdkApp -configuration Distribution -sdk iphoneos PROVISIONING_PROFILE="542E5F91-FA04-4A6B-BEB8-1CCD67D816FD" CODE_SIGN_IDENTITY="iPhone Distribution: pointabout" build
      
 # If you need to clean a specific target/configuration: $(COMMAND) -target $(TARGET) -configuration DebugOrRelease -sdk $(SDK) clean
@@ -32,7 +32,7 @@ doc:
 	ls; \
 	appledoc ./DocSettings.plist
 mytest:
-	xcodebuild -project SocializeSDK.xcodeproj -target Socialize-iOS -configuration Distribution -sdk iphoneos clean build
+	xcodebuild -project SocializeSDK.xcodeproj -target "Socialize Framework" -configuration Distribution -sdk iphoneos clean build
 	WRITE_JUNIT_XML=YES GHUNIT_CLI=1 xcodebuild -target unitTests -configuration Debug -sdk iphonesimulator build
 
 sphinx_doc:

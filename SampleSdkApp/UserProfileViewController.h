@@ -26,7 +26,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import <Socialize-iOS/Socialize.h>
+#import <Socialize/Socialize.h>
 
 @interface UserProfileViewController : UIViewController<SocializeServiceDelegate> {
     IBOutlet UIImageView* userPicture;

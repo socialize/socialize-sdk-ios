@@ -15,7 +15,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "16B48DAA13DEEBE100EE0A92"
                BuildableName = "Socialize-iOS"
-               BlueprintName = "Socialize-iOS"
+               BlueprintName = "Socialize Framework"
                ReferencedContainer = "container:SocializeSDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

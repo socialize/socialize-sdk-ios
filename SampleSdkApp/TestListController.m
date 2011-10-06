@@ -15,7 +15,7 @@
 #import "LikeListViewController.h"
 #import "TestViewCreationViewController.h"
 #import "AuthenticateViewController.h"
-#import <Socialize-iOS/Socialize.h>
+#import <Socialize/Socialize.h>
 #import "TestShowSmallUserInfo.h"
 #import "TestSocializeActionBar.h"
 #import "InputBox.h"

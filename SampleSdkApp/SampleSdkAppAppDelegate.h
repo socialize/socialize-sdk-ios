@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AuthenticateViewController.h"
-#import <Socialize-iOS/Socialize.h>
+#import <Socialize/Socialize.h>
 
 @interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate, SocializeServiceDelegate> {
 @private

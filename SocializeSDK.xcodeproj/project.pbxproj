@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		16B48DAA13DEEBE100EE0A92 /* Socialize-iOS */ = {
+		16B48DAA13DEEBE100EE0A92 /* Socialize Framework */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize-iOS" */;
+			buildConfigurationList = 16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize Framework" */;
 			buildPhases = (
 				16B48DB013DEEC0E00EE0A92 /* Build static lib */,
 				16B48DB113DEECAB00EE0A92 /* Build universal lib */,
@@ -17,7 +17,7 @@
 			);
 			dependencies = (
 			);
-			name = "Socialize-iOS";
+			name = "Socialize Framework";
 			productName = "Socialize-IOS";
 		};
 /* End PBXAggregateTarget section */
@@ -392,7 +392,7 @@
 		1638C521143DC96A00538659 /* SocializeActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActionBar.h; path = Classes/SocializeActionBar.h; sourceTree = "<group>"; };
 		1638C522143DC96A00538659 /* SocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActionBar.m; path = Classes/SocializeActionBar.m; sourceTree = "<group>"; };
 		1638C526143DC98E00538659 /* TestSocializeActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSocializeActionBar.h; sourceTree = "<group>"; };
-		1638C527143DC98E00538659 /* TestSocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSocializeActionBar.m; sourceTree = "<group>"; };
+		1638C527143DC98E00538659 /* TestSocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestSocializeActionBar.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1638C528143DC98E00538659 /* TestSocializeActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSocializeActionBar.xib; sourceTree = "<group>"; };
 		1657EF63139F677000E488CC /* SocializeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProvider.h; path = Classes/SocializeProvider.h; sourceTree = "<group>"; };
 		1657EF64139F677000E488CC /* SocializeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProvider.m; path = Classes/SocializeProvider.m; sourceTree = "<group>"; };
@@ -761,21 +761,21 @@
 		AA3D694C1432ADEF00DA77AC /* socialize-sectionheader-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-sectionheader-bg.png"; path = "Resources/socialize-sectionheader-bg.png"; sourceTree = "<group>"; };
 		AA3D694D1432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-sectionheader-bg@2x.png"; path = "Resources/socialize-sectionheader-bg@2x.png"; sourceTree = "<group>"; };
 		AAAFE5E414355BF900851C73 /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAAFE86314355F1B00851C73 /* AuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticateViewController.h; sourceTree = "<group>"; };
-		AAAFE86414355F1B00851C73 /* AuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticateViewController.m; sourceTree = "<group>"; };
+		AAAFE86314355F1B00851C73 /* AuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AuthenticateViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE86414355F1B00851C73 /* AuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AuthenticateViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE86514355F1B00851C73 /* AuthenticateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenticateViewController.xib; sourceTree = "<group>"; };
 		AAAFE86814355F1B00851C73 /* CommetsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommetsTableView.h; sourceTree = "<group>"; };
 		AAAFE86914355F1B00851C73 /* CommetsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommetsTableView.m; sourceTree = "<group>"; };
 		AAAFE86A14355F1B00851C73 /* DataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHelper.h; sourceTree = "<group>"; };
 		AAAFE86B14355F1B00851C73 /* DataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHelper.m; sourceTree = "<group>"; };
-		AAAFE86C14355F1B00851C73 /* DemoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoEntity.h; sourceTree = "<group>"; };
+		AAAFE86C14355F1B00851C73 /* DemoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DemoEntity.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE86D14355F1B00851C73 /* DemoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoEntity.m; sourceTree = "<group>"; };
 		AAAFE86F14355F1B00851C73 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAAFE87114355F1B00851C73 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		AAAFE87214355F1B00851C73 /* InputBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputBox.h; sourceTree = "<group>"; };
 		AAAFE87314355F1B00851C73 /* InputBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputBox.m; sourceTree = "<group>"; };
-		AAAFE87814355F1B00851C73 /* LikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeListViewController.h; sourceTree = "<group>"; };
-		AAAFE87914355F1B00851C73 /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeListViewController.m; sourceTree = "<group>"; };
+		AAAFE87814355F1B00851C73 /* LikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LikeListViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE87914355F1B00851C73 /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LikeListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE87A14355F1B00851C73 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
 		AAAFE87B14355F1B00851C73 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		AAAFE87C14355F1B00851C73 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
@@ -784,43 +784,43 @@
 		AAAFE87F14355F1B00851C73 /* SampleSdkApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleSdkApp-Info.plist"; sourceTree = "<group>"; };
 		AAAFE88014355F1B00851C73 /* SampleSdkApp-Integration-Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Integration-Tests-Prefix.pch"; sourceTree = "<group>"; };
 		AAAFE88114355F1B00851C73 /* SampleSdkApp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Prefix.pch"; sourceTree = "<group>"; };
-		AAAFE88214355F1B00851C73 /* SampleSdkAppAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleSdkAppAppDelegate.h; sourceTree = "<group>"; };
-		AAAFE88314355F1B00851C73 /* SampleSdkAppAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppAppDelegate.m; sourceTree = "<group>"; };
+		AAAFE88214355F1B00851C73 /* SampleSdkAppAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SampleSdkAppAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE88314355F1B00851C73 /* SampleSdkAppAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SampleSdkAppAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE88714355F1B00851C73 /* SocializeApiInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeApiInfo.plist; sourceTree = "<group>"; };
 		AAAFE88A14355F1B00851C73 /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
 		AAAFE88B14355F1B00851C73 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
 		AAAFE88C14355F1B00851C73 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
-		AAAFE88D14355F1B00851C73 /* TestCreateCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCreateCommentViewController.h; sourceTree = "<group>"; };
-		AAAFE88E14355F1B00851C73 /* TestCreateCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCreateCommentViewController.m; sourceTree = "<group>"; };
+		AAAFE88D14355F1B00851C73 /* TestCreateCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestCreateCommentViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE88E14355F1B00851C73 /* TestCreateCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestCreateCommentViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE88F14355F1B00851C73 /* TestCreateCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCreateCommentViewController.xib; sourceTree = "<group>"; };
-		AAAFE89014355F1B00851C73 /* TestCreateEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCreateEntityViewController.h; sourceTree = "<group>"; };
+		AAAFE89014355F1B00851C73 /* TestCreateEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestCreateEntityViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE89114355F1B00851C73 /* TestCreateEntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCreateEntityViewController.m; sourceTree = "<group>"; };
 		AAAFE89214355F1B00851C73 /* TestCreateEntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCreateEntityViewController.xib; sourceTree = "<group>"; };
-		AAAFE89314355F1B00851C73 /* TestFetchCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFetchCommentsViewController.h; sourceTree = "<group>"; };
-		AAAFE89414355F1B00851C73 /* TestFetchCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFetchCommentsViewController.m; sourceTree = "<group>"; };
+		AAAFE89314355F1B00851C73 /* TestFetchCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestFetchCommentsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE89414355F1B00851C73 /* TestFetchCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestFetchCommentsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE89514355F1B00851C73 /* TestFetchCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestFetchCommentsViewController.xib; sourceTree = "<group>"; };
-		AAAFE89614355F1B00851C73 /* TestGetEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGetEntityViewController.h; sourceTree = "<group>"; };
+		AAAFE89614355F1B00851C73 /* TestGetEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestGetEntityViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE89714355F1B00851C73 /* TestGetEntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGetEntityViewController.m; sourceTree = "<group>"; };
 		AAAFE89814355F1B00851C73 /* TestGetEntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestGetEntityViewController.xib; sourceTree = "<group>"; };
-		AAAFE89914355F1B00851C73 /* TestLikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLikeViewController.h; sourceTree = "<group>"; };
-		AAAFE89A14355F1B00851C73 /* TestLikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLikeViewController.m; sourceTree = "<group>"; };
+		AAAFE89914355F1B00851C73 /* TestLikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestLikeViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE89A14355F1B00851C73 /* TestLikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestLikeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE89B14355F1B00851C73 /* TestLikeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestLikeViewController.xib; sourceTree = "<group>"; };
-		AAAFE89C14355F1B00851C73 /* TestListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestListController.h; sourceTree = "<group>"; };
-		AAAFE89D14355F1B00851C73 /* TestListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestListController.m; sourceTree = "<group>"; };
+		AAAFE89C14355F1B00851C73 /* TestListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestListController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE89D14355F1B00851C73 /* TestListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestListController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE89E14355F1B00851C73 /* TestListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestListController.xib; sourceTree = "<group>"; };
 		AAAFE8C714355F1B00851C73 /* tests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tests.plist; sourceTree = "<group>"; };
-		AAAFE8C814355F1B00851C73 /* TestShowSmallUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShowSmallUserInfo.h; sourceTree = "<group>"; };
-		AAAFE8C914355F1B00851C73 /* TestShowSmallUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShowSmallUserInfo.m; sourceTree = "<group>"; };
+		AAAFE8C814355F1B00851C73 /* TestShowSmallUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestShowSmallUserInfo.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE8C914355F1B00851C73 /* TestShowSmallUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestShowSmallUserInfo.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE8CA14355F1B00851C73 /* TestShowSmallUserInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestShowSmallUserInfo.xib; sourceTree = "<group>"; };
-		AAAFE8CB14355F1B00851C73 /* TestViewCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewCreationViewController.h; sourceTree = "<group>"; };
-		AAAFE8CC14355F1B00851C73 /* TestViewCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewCreationViewController.m; sourceTree = "<group>"; };
+		AAAFE8CB14355F1B00851C73 /* TestViewCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestViewCreationViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE8CC14355F1B00851C73 /* TestViewCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestViewCreationViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE8CD14355F1B00851C73 /* TestViewCreationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewCreationViewController.xib; sourceTree = "<group>"; };
 		AAAFE8CE14355F1B00851C73 /* UIButton+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Socialize.h"; sourceTree = "<group>"; };
 		AAAFE8CF14355F1B00851C73 /* UIButton+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Socialize.m"; sourceTree = "<group>"; };
 		AAAFE8D014355F1B00851C73 /* UILabel-Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel-Additions.h"; sourceTree = "<group>"; };
 		AAAFE8D114355F1B00851C73 /* UILabel-Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel-Additions.m"; sourceTree = "<group>"; };
 		AAAFE8D214355F1B00851C73 /* urls.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = urls.plist; sourceTree = "<group>"; };
-		AAAFE8D314355F1B00851C73 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		AAAFE8D314355F1B00851C73 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = UserProfileViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE8D414355F1B00851C73 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		AAAFE8D514355F1B00851C73 /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		AAAFE936143562CA00851C73 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1792,7 +1792,7 @@
 			targets = (
 				5CC3DABD1378824700B11B78 /* Socialize */,
 				5CC3DAE81378859000B11B78 /* unitTests */,
-				16B48DAA13DEEBE100EE0A92 /* Socialize-iOS */,
+				16B48DAA13DEEBE100EE0A92 /* Socialize Framework */,
 				AAAFE5E314355BF900851C73 /* SampleSdkApp */,
 			);
 		};
@@ -1967,6 +1967,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "WORKSPACE=\"socialize-sdk-ios.xcworkspace\"\nxcodebuild -workspace \"$WORKSPACE\" -sdk iphonesimulator -scheme Socialize -configuration ${CONFIGURATION} build\nxcodebuild -workspace \"$WORKSPACE\" -sdk iphoneos -scheme Socialize -configuration ${CONFIGURATION} build";
+			showEnvVarsInLog = 0;
 		};
 		16B48DB113DEECAB00EE0A92 /* Build universal lib */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1980,7 +1981,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Paths\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/libSocialize.a\"\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/libSocialize.a\"\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}\"\nEMBEDDEDFRAMEWORK=\"${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\n\n# Create framework directory structure.\nrm -rf \"${EMBEDDEDFRAMEWORK}\" &>/dev/null\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\"\n#mkdir -p \"${EMBEDDEDFRAMEWORK}/Resources\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Headers\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Resources\"\n\n# Generate universal binary from desktop, device, and simulator builds.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\"\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/Versions/A\"\ncd \"${FRAMEWORK}\"\nln -sf \"A\" \"Versions/Current\"\nln -sf \"Versions/Current/Headers\" \"Headers\"\nln -sf \"Versions/Current/Resources\" \"Resources\"\nln -sf \"Versions/Current/${PRODUCT_NAME}\" \"${PRODUCT_NAME}\"\n\n# Copy public headers into framework\necho \"Copying headers from ${CONFIGURATION_BUILD_DIR}/socialize-public-headers/Socialize-iOS/. to Headers in $PWD\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/socialize-public-headers/Socialize-iOS/.\" \"Headers\"\n\ncd \"${EMBEDDEDFRAMEWORK}\"\nln -sf \"${FRAMEWORK}/Versions/Current/Resources\" \"Resources\"";
+			shellScript = "# Paths\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/libSocialize.a\"\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/libSocialize.a\"\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}\"\nEMBEDDEDFRAMEWORK=\"${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\n\n# Create framework directory structure.\nrm -rf \"${EMBEDDEDFRAMEWORK}\" &>/dev/null\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\"\n#mkdir -p \"${EMBEDDEDFRAMEWORK}/Resources\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Headers\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Resources\"\n\n# Generate universal binary from desktop, device, and simulator builds.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\"\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/Versions/A\"\ncd \"${FRAMEWORK}\"\nln -sf \"A\" \"Versions/Current\"\nln -sf \"Versions/Current/Headers\" \"Headers\"\nln -sf \"Versions/Current/Resources\" \"Resources\"\nln -sf \"Versions/Current/${PRODUCT_NAME}\" \"${PRODUCT_NAME}\"\n\n# Copy public headers into framework\necho \"Copying headers from ${CONFIGURATION_BUILD_DIR}/socialize-public-headers/Socialize-iOS/. to Headers in $PWD\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/socialize-public-headers/${PRODUCT_NAME}/.\" \"Headers\"\n\ncd \"${EMBEDDEDFRAMEWORK}\"\nln -sf \"${FRAMEWORK}/Versions/Current/Resources\" \"Resources\"";
 			showEnvVarsInLog = 0;
 		};
 		16B48DDA13DEEE7900EE0A92 /* Copy Resources */ = {
@@ -2238,14 +2239,14 @@
 		16B48DAC13DEEBE200EE0A92 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Socialize;
 			};
 			name = Debug;
 		};
 		16B48DAD13DEEBE200EE0A92 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Socialize;
 			};
 			name = Release;
 		};
@@ -2296,7 +2297,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/unitTests/Frameworks\"",
-					"\"$(SRCROOT)/build/Socialize-iOS.embeddedframework\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -2318,7 +2318,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "socialize-public-headers/Socialize-iOS";
+				PUBLIC_HEADERS_FOLDER_PATH = "socialize-public-headers/Socialize";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2332,7 +2332,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/unitTests/Frameworks\"",
-					"\"$(SRCROOT)/build/Socialize-iOS.embeddedframework\"",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
@@ -2351,7 +2350,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "socialize-public-headers/Socialize-iOS";
+				PUBLIC_HEADERS_FOLDER_PATH = "socialize-public-headers/Socialize";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -2519,7 +2518,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize-iOS" */ = {
+		16B48DAB13DEEBE200EE0A92 /* Build configuration list for PBXAggregateTarget "Socialize Framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				16B48DAC13DEEBE200EE0A92 /* Debug */,
