@@ -46,6 +46,7 @@
 - (void)dealloc
 {
     [entityView release];
+    [entityUrl release];
     [bar release];
     [super dealloc];
 }

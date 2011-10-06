@@ -35,10 +35,6 @@
 
 #define ACTION_PANE_HEIGHT 44
 
-@interface SocializeActionBar()
-    -(void)closeButtonPressed;
-@end
-
 @implementation SocializeActionBar
 
 @synthesize parentViewController;
@@ -58,16 +54,27 @@
     {
         viewRect = CGRectMake(0, parentViewSize.height - ACTION_PANE_HEIGHT, parentViewSize.width,  ACTION_PANE_HEIGHT);
         entityUrl = [url copy];
-
-        
     }
     return self;
 }
+
+//-(id)initWithParantViewSize:(CGSize)parentViewSize andEntiry:(id<SocializeEntity>)entity
+//{
+//    self = [super init];
+//    if(self)
+//    {
+//        viewRect = CGRectMake(0, parentViewSize.height - ACTION_PANE_HEIGHT, parentViewSize.width,  ACTION_PANE_HEIGHT);
+//        //entityUrl = [url copy];
+//    }
+//    return self;
+//}
 
 - (void)dealloc
 {
     [entityUrl release];
     [(SocializeActionView*)self.view setDelegate: nil];
+    [comentsNavController release];
+    self.parentViewController = nil;
     [super dealloc];
 }
 
@@ -96,22 +103,7 @@
 {
     [super viewDidLoad];
 
-    
-    commentsController = [[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString:entityUrl];
-
-   
-    UIButton * sendButton = [UIButton redSocializeNavBarButtonWithTitle:@"Close"];
-    [sendButton addTarget:self action:@selector(closeButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem * rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:sendButton];
-    
-    commentsController.navigationItem.rightBarButtonItem = rightButtonItem;
-    [rightButtonItem release];
-    
-    commentsController.navigationItem.leftBarButtonItem = nil;
-
-    nc = [[UINavigationController alloc]initWithRootViewController:commentsController]; 
-    [nc.navigationBar setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
+    comentsNavController = [[SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:entityUrl] retain];
 }
 
 
@@ -184,18 +176,12 @@
 
 -(void)commentButtonTouched:(id)sender
 {
-    [self.parentViewController presentModalViewController:nc animated:YES];
+    [self.parentViewController presentModalViewController:comentsNavController animated:YES];
 }
 
 -(void)likeButtonTouched:(id)sender
 {
     
 }
-
--(void)closeButtonPressed
-{
-    [self.parentViewController dismissModalViewControllerAnimated:YES];
-}
-
 
 @end

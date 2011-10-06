@@ -36,17 +36,14 @@
     @private
     CGRect viewRect;
     NSString* entityUrl;
-    SocializeCommentsTableViewController* commentsController;
-    UINavigationController* nc;
+    UIViewController* comentsNavController;
     
     UIViewController* parentViewController;
     id<SocializeView> entityView;
 }
 
-@property(nonatomic, retain) UIViewController* parentViewController;
-
--(id)initWithParantViewSize:(CGSize)parentViewSize andEntiryUrl:(NSString*)url;
-
+@property(nonatomic, assign) UIViewController* parentViewController;
 +(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url;
 
+-(id)initWithParantViewSize:(CGSize)parentViewSize andEntiryUrl:(NSString*)url;
 @end

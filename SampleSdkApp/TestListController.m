@@ -201,6 +201,7 @@
             {
                 controller = [[TestSocializeActionBar alloc] initWithEntityUrl:url];
                 [self.navigationController pushViewController:controller animated:YES];
+                [controller release];
             }
             break;
         }
