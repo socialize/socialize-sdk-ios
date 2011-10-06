@@ -359,6 +359,7 @@
 		AABB7D971433F38B00D0FDF9 /* SocializeProfileEditValueController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D921433F38B00D0FDF9 /* SocializeProfileEditValueController.xib */; };
 		AABB7D981433F38B00D0FDF9 /* SocializeProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */; };
 		AABF6B0E14313E8400DAB37F /* SocializeProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABF6B0D14313E8400DAB37F /* SocializeProfileViewController.xib */; };
+		AAC9F8BB143CF056006CF3E6 /* SocializeProfileViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC9F8BA143CF056006CF3E6 /* SocializeProfileViewControllerTests.m */; };
 		AADC2B66143B8A25009F2EC6 /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D8F1433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib */; };
 		AADC2B67143B8A25009F2EC6 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */; };
 		AADC2B68143B8A25009F2EC6 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */; };
@@ -956,6 +957,8 @@
 		AABB7D921433F38B00D0FDF9 /* SocializeProfileEditValueController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditValueController.xib; path = Resources/SocializeProfileEditValueController.xib; sourceTree = "<group>"; };
 		AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditViewController.xib; path = Resources/SocializeProfileEditViewController.xib; sourceTree = "<group>"; };
 		AABF6B0D14313E8400DAB37F /* SocializeProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileViewController.xib; path = Resources/SocializeProfileViewController.xib; sourceTree = "<group>"; };
+		AAC9F8B9143CF056006CF3E6 /* SocializeProfileViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileViewControllerTests.h; path = "Test Cases/SocializeProfileViewControllerTests.h"; sourceTree = "<group>"; };
+		AAC9F8BA143CF056006CF3E6 /* SocializeProfileViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileViewControllerTests.m; path = "Test Cases/SocializeProfileViewControllerTests.m"; sourceTree = "<group>"; };
 		AADBD1661435143800DBA47A /* SocializeServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeServiceDelegate.h; sourceTree = "<group>"; };
 		AADBD16B143514D200DBA47A /* SocializeObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeObjects.h; sourceTree = "<group>"; };
 		AADBD16D1435185A00DBA47A /* SocializePrivateDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializePrivateDefinitions.h; sourceTree = "<group>"; };
@@ -1435,6 +1438,8 @@
 				16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */,
 				6DFB0010141FF9430030DE32 /* CommentsTableViewTests.h */,
 				6DFB0011141FF9450030DE32 /* CommentsTableViewTests.m */,
+				AAC9F8B9143CF056006CF3E6 /* SocializeProfileViewControllerTests.h */,
+				AAC9F8BA143CF056006CF3E6 /* SocializeProfileViewControllerTests.m */,
 			);
 			name = "UI tests";
 			sourceTree = "<group>";
@@ -1827,6 +1832,8 @@
 				1638A59A143C4F3800C125B5 /* SocializeActionBar.h in Headers */,
 				AA6FD45E143BCB7400EA9017 /* UIImage+Network.h in Headers */,
 				AA6FD463143BCD9000EA9017 /* NSData+Base64.h in Headers */,
+				AA6FD45E143BCB7400EA9017 /* UIImage+Network.h in Headers */,
+				AA6FD463143BCD9000EA9017 /* NSData+Base64.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2169,109 +2176,6 @@
 				AAAFE91D14355F1B00851C73 /* TestViewCreationViewController.xib in Resources */,
 				AAAFE92014355F1B00851C73 /* urls.plist in Resources */,
 				AAAFE92214355F1B00851C73 /* UserProfileViewController.xib in Resources */,
-				16EF7FF314399F8F003BB3E5 /* SocializeEditValueTableViewCell.xib in Resources */,
-				16EF7FF414399F8F003BB3E5 /* SocializeProfileEditTableViewCell.xib in Resources */,
-				16EF7FF514399F8F003BB3E5 /* SocializeProfileEditTableViewImageCell.xib in Resources */,
-				16EF7FF614399F8F003BB3E5 /* SocializeProfileEditValueController.xib in Resources */,
-				16EF7FF714399F8F003BB3E5 /* SocializeProfileEditViewController.xib in Resources */,
-				16EF7FF814399F8F003BB3E5 /* background_brushed_metal@2x.png in Resources */,
-				16EF7FF914399F8F003BB3E5 /* socialize-activity-bg.png in Resources */,
-				16EF7FFA14399F8F003BB3E5 /* socialize-activity-bg@2x.png in Resources */,
-				16EF7FFB14399F8F003BB3E5 /* socialize-location-icon.png in Resources */,
-				16EF7FFC14399F8F003BB3E5 /* socialize-profileimage-large-bg.png in Resources */,
-				16EF7FFD14399F8F003BB3E5 /* socialize-profileimage-large-bg@2x.png in Resources */,
-				16EF7FFE14399F8F003BB3E5 /* socialize-profileimage-large-default.png in Resources */,
-				16EF7FFF14399F8F003BB3E5 /* socialize-profileimage-large-default@2x.png in Resources */,
-				16EF800014399F8F003BB3E5 /* socialize-sectionheader-bg.png in Resources */,
-				16EF800114399F8F003BB3E5 /* socialize-sectionheader-bg@2x.png in Resources */,
-				16EF800214399F8F003BB3E5 /* SocializeProfileViewController.xib in Resources */,
-				16EF800314399F8F003BB3E5 /* comment_template_clear.htm in Resources */,
-				16EF800414399F8F003BB3E5 /* socialize-navbar-bg.png in Resources */,
-				16EF800514399F8F003BB3E5 /* socialize-navbar-bg@2x.png in Resources */,
-				16EF800614399F8F003BB3E5 /* socialize-navbar-button-back-pressed.png in Resources */,
-				16EF800714399F8F003BB3E5 /* socialize-navbar-button-back-pressed@2x.png in Resources */,
-				16EF800814399F8F003BB3E5 /* socialize-navbar-button-back.png in Resources */,
-				16EF800914399F8F003BB3E5 /* socialize-navbar-button-back@2x.png in Resources */,
-				16EF800A14399F8F003BB3E5 /* socialize-navbar-button-blue-bg-highlighted.png in Resources */,
-				16EF800B14399F8F003BB3E5 /* socialize-navbar-button-blue-bg-highlighted@2x.png in Resources */,
-				16EF800C14399F8F003BB3E5 /* socialize-navbar-button-blue-bg-normal.png in Resources */,
-				16EF800D14399F8F003BB3E5 /* socialize-navbar-button-blue-bg-normal@2x.png in Resources */,
-				16EF800E14399F8F003BB3E5 /* socialize-navbar-button-dark-active.png in Resources */,
-				16EF800F14399F8F003BB3E5 /* socialize-navbar-button-dark-active@2x.png in Resources */,
-				16EF801014399F8F003BB3E5 /* socialize-navbar-button-green-active.png in Resources */,
-				16EF801114399F8F003BB3E5 /* socialize-navbar-button-dark.png in Resources */,
-				16EF801214399F8F003BB3E5 /* socialize-navbar-button-green-active@2x.png in Resources */,
-				16EF801314399F8F003BB3E5 /* socialize-navbar-button-green.png in Resources */,
-				16EF801414399F8F003BB3E5 /* socialize-navbar-button-green@2x.png in Resources */,
-				16EF801514399F8F003BB3E5 /* socialize-navbar-button-red-active.png in Resources */,
-				16EF801614399F8F003BB3E5 /* socialize-navbar-button-red-active@2x.png in Resources */,
-				16EF801714399F8F003BB3E5 /* socialize-navbar-button-red.png in Resources */,
-				16EF801814399F8F003BB3E5 /* socialize-navbar-button-red@2x.png in Resources */,
-				16EF801914399F8F003BB3E5 /* SocializeCommentDetailsViewController.xib in Resources */,
-				16EF801A14399F8F003BB3E5 /* SocializePostCommentViewController.xib in Resources */,
-				16EF801B14399F8F003BB3E5 /* CommentsTableViewCell.xib in Resources */,
-				16EF801C14399F8F003BB3E5 /* SocializeCommentsTableViewController.xib in Resources */,
-				16EF801D14399F8F003BB3E5 /* socialize-nocomments-icon.png in Resources */,
-				16EF801E14399F8F003BB3E5 /* socialize-nocomments-icon@2x.png in Resources */,
-				16EF801F14399F8F003BB3E5 /* comments-cell-bg-borders.png in Resources */,
-				16EF802014399F8F003BB3E5 /* comments-cell-bg-borders@2x.png in Resources */,
-				16EF802114399F8F003BB3E5 /* comment-bg.png in Resources */,
-				16EF802214399F8F003BB3E5 /* comment-bg@2x.png in Resources */,
-				16EF802314399F8F003BB3E5 /* socialize-cell-arrow.png in Resources */,
-				16EF802414399F8F003BB3E5 /* socialize-cell-arrow@2x.png in Resources */,
-				16EF802514399F8F003BB3E5 /* socialize-cell-bg.png in Resources */,
-				16EF802614399F8F003BB3E5 /* socialize-cell-bg@2x.png in Resources */,
-				16EF802714399F8F003BB3E5 /* socialize-cell-image-bg.png in Resources */,
-				16EF802814399F8F003BB3E5 /* socialize-cell-image-bg@2x.png in Resources */,
-				16EF802914399F8F003BB3E5 /* socialize-cell-image.png in Resources */,
-				16EF802A14399F8F003BB3E5 /* socialize-cell-image@2x.png in Resources */,
-				16EF802B14399F8F003BB3E5 /* socialize-cell-selected-bg.png in Resources */,
-				16EF802C14399F8F003BB3E5 /* socialize-cell-selected-bg@2x.png in Resources */,
-				16EF802D14399F8F003BB3E5 /* socialize-comment-background-text-input.png in Resources */,
-				16EF802E14399F8F003BB3E5 /* socialize-comment-background-text-input@2x.png in Resources */,
-				16EF802F14399F8F003BB3E5 /* socialize-comment-button-active.png in Resources */,
-				16EF803014399F8F003BB3E5 /* socialize-comment-button-active@2x.png in Resources */,
-				16EF803114399F8F003BB3E5 /* socialize-comment-button.png in Resources */,
-				16EF803214399F8F003BB3E5 /* socialize-comment-button@2x.png in Resources */,
-				16EF803314399F8F003BB3E5 /* socialize-comment-list-view-location-pin-icon.png in Resources */,
-				16EF803414399F8F003BB3E5 /* socialize-comment-list-view-location-pin-icon@2x.png in Resources */,
-				16EF803514399F8F003BB3E5 /* socialize-comment-location-disabled.png in Resources */,
-				16EF803614399F8F003BB3E5 /* socialize-comment-location-disabled@2x.png in Resources */,
-				16EF803714399F8F003BB3E5 /* action-bar-bg.png in Resources */,
-				16EF803814399F8F003BB3E5 /* action-bar-bg@2x.png in Resources */,
-				16EF803914399F8F003BB3E5 /* socialize-navbar-button-dark@2x.png in Resources */,
-				16EF803A14399F8F003BB3E5 /* socialize-comment-user-background@2x.png in Resources */,
-				16EF803B14399F8F003BB3E5 /* socialize-comment-user-background.png in Resources */,
-				16EF803C14399F8F003BB3E5 /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */,
-				16EF803D14399F8F003BB3E5 /* socialize-comment-details-icon-geo-enabled.png in Resources */,
-				16EF803E14399F8F003BB3E5 /* socialize-comment-details-icon-geo-disabled@2x.png in Resources */,
-				16EF803F14399F8F003BB3E5 /* socialize-comment-details-icon-geo-disabled.png in Resources */,
-				16EF804014399F8F003BB3E5 /* socialize-comment-detail-bottom-shadow-background@2x.png in Resources */,
-				16EF804114399F8F003BB3E5 /* socialize-comment-detail-bottom-shadow-background.png in Resources */,
-				16EF804214399F8F003BB3E5 /* socialize-cell-image-default@2x.png in Resources */,
-				16EF804314399F8F003BB3E5 /* socialize-cell-image-default.png in Resources */,
-				16EF804414399F8F003BB3E5 /* socialize-comment-location-enabled@2x.png in Resources */,
-				16EF804514399F8F003BB3E5 /* socialize-comment-location-enabled.png in Resources */,
-				16EF804614399F8F003BB3E5 /* socialize-comment-location-bar-background@2x.png in Resources */,
-				16EF804714399F8F003BB3E5 /* socialize-comment-location-bar-background.png in Resources */,
-				16EF804814399F8F003BB3E5 /* comment-sm-icon@2x.png in Resources */,
-				16EF804914399F8F003BB3E5 /* comment-sm-icon.png in Resources */,
-				16EF804A14399F8F003BB3E5 /* action-bar-icon-views@2x.png in Resources */,
-				16EF804B14399F8F003BB3E5 /* action-bar-icon-views.png in Resources */,
-				16EF804C14399F8F003BB3E5 /* action-bar-icon-share@2x.png in Resources */,
-				16EF804D14399F8F003BB3E5 /* action-bar-icon-share.png in Resources */,
-				16EF804E14399F8F003BB3E5 /* action-bar-icon-liked@2x.png in Resources */,
-				16EF804F14399F8F003BB3E5 /* action-bar-icon-liked.png in Resources */,
-				16EF805014399F8F003BB3E5 /* action-bar-icon-like@2x.png in Resources */,
-				16EF805114399F8F003BB3E5 /* action-bar-icon-like.png in Resources */,
-				16EF805214399F8F003BB3E5 /* action-bar-icon-comments@2x.png in Resources */,
-				16EF805314399F8F003BB3E5 /* action-bar-icon-comments.png in Resources */,
-				16EF805414399F8F003BB3E5 /* action-bar-button-black@2x.png in Resources */,
-				16EF805514399F8F003BB3E5 /* action-bar-button-black.png in Resources */,
-				16EF805614399F8F003BB3E5 /* action-bar-button-black-hover@2x.png in Resources */,
-				16EF805714399F8F003BB3E5 /* action-bar-button-black-hover.png in Resources */,
-				16EF805814399F8F003BB3E5 /* SocializeConfigurationInfo.plist in Resources */,
-				1638A590143C469200C125B5 /* TestSocializeActionBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2438,6 +2342,8 @@
 				AABB7D8E1433F33300D0FDF9 /* UIImage+Resize.m in Sources */,
 				166ACED814346A8100B28AF6 /* SocializeFullUserJSONFormatter.m in Sources */,
 				166ACEDC14346B6500B28AF6 /* SocializeFullUser.m in Sources */,
+				AA6FD45F143BCB7400EA9017 /* UIImage+Network.m in Sources */,
+				AA6FD464143BCD9000EA9017 /* NSData+Base64.m in Sources */,
 				1638A59B143C4F3800C125B5 /* SocializeActionBar.m in Sources */,
 				AA6FD45F143BCB7400EA9017 /* UIImage+Network.m in Sources */,
 				AA6FD464143BCD9000EA9017 /* NSData+Base64.m in Sources */,
@@ -2487,6 +2393,7 @@
 				6D3F84B71424046D00825DFC /* PostCommentViewControllerForTest.m in Sources */,
 				160630F4142CB17B003B5AC7 /* SocializeUnitTestApplication.m in Sources */,
 				166ACEDF14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m in Sources */,
+				AAC9F8BB143CF056006CF3E6 /* SocializeProfileViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,8 @@
 
 @class SocializeUser;
 
-@interface TestListController : UIViewController<SocializeServiceDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface TestListController : UIViewController<SocializeServiceDelegate, SocializeProfileViewControllerDelegate,
+                                UITableViewDelegate, UITableViewDataSource> {
     NSArray*                _testList;
     IBOutlet UITableView*   _tableView;
 }

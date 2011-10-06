@@ -190,12 +190,8 @@
             break;
         case 9:
         {
-//            Socialize* socialize = [[Socialize alloc] initWithDelegate:self];
-//            id<SocializeUser> user = [socialize authenticatedUser];
-//            SocializeProfileViewController *profileController = [[SocializeProfileViewController alloc] init];
-//            //profileController.user = user;
-//            [self.navigationController pushViewController:profileController animated:YES];
-//            [profileController release];
+            UIViewController *profile = [SocializeProfileViewController currentUserProfileWithDelegate:self];
+            [self.navigationController presentModalViewController:profile animated:YES];
             break;
         }
         case 10:
@@ -215,10 +211,10 @@
 #pragma mark - Service delegete
 
 - (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 - (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 @end

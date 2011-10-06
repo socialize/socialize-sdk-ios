@@ -981,6 +981,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks/SymbolCollisionTestLibs\"",
 				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "SampleSdkApp Integration Tests";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1002,6 +1006,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks/SymbolCollisionTestLibs\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
 				);
 				PRODUCT_NAME = "SampleSdkApp Integration Tests";
 				WRAPPER_EXTENSION = app;

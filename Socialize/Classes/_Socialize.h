@@ -72,6 +72,8 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeViewService            *viewService;
 /**Get access to the user service via <SocializeViewService>.*/
 @property (nonatomic, retain) SocializeUserService            *userService;
+/**Current delegate*/
+@property (nonatomic, assign) id<SocializeServiceDelegate> delegate;
 
 /** @name Initialization */
 
