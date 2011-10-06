@@ -27,6 +27,8 @@
 
 #import "SocializeBaseViewController.h"
 #import "LoadingView.h"
+#import "UINavigationBarBackground.h"
+
 
 @implementation SocializeBaseViewController
 
@@ -83,6 +85,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     if(![self.socialize isAuthenticated])
     {
         [self startLoadAnimationForView: self.view];
@@ -90,8 +93,14 @@
     }
     else
         [self afterAnonymouslyLoginAction];
+    
+    [self.navigationController.navigationBar resetBackground:1234];
+
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self.navigationController.navigationBar resetBackground:1234];
+}
 
 - (void)viewDidUnload
 {
