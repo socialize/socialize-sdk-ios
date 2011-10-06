@@ -120,7 +120,7 @@
 		  onButton:_likeButton
 		  withSelector:@selector(likeButtonPressed:)];
 
-	[self addSubview:_likeButton];
+	//[self addSubview:_likeButton];
         
 	_viewCounter.userInteractionEnabled = NO;
 	_viewCounter.hidden = YES;
