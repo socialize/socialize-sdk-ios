@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SocializeServiceDelegate.h"
-#import "Socialize.h"
+#import "_Socialize.h"
 #import "SocializeBaseViewController.h"
 
 @class CommentsTableFooterView;

@@ -6,7 +6,7 @@
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import <Socialize-iOS/Socialize-iOS.h>
+#import <Socialize-iOS/Socialize.h>
 #import "AuthTest.h"
 @implementation AuthTest
 

@@ -6,7 +6,7 @@
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "Socialize.h"
+#import "_Socialize.h"
 #import "SocializeCommentDetailsViewController.h"
 #import "SocializeCommentsTableViewController.h"
 #import "SocializePostCommentViewController.h"

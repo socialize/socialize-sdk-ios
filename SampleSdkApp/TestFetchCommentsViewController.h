@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Socialize-iOS/Socialize-iOS.h>
+#import <Socialize-iOS/Socialize.h>
 #import "LoadingView.h"
 
 @interface TestFetchCommentsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SocializeServiceDelegate> {

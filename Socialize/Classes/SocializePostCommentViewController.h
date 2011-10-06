@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 
 #import "SocializeBaseViewController.h"
-#import "Socialize.h"
+#import "_Socialize.h"
 #import "SocializeProfileViewController.h"
 
 @class CommentMapView;

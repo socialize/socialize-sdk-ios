@@ -7,7 +7,7 @@
 //
 
 #import "AuthenticateViewController.h"
-#import <Socialize-iOS/Socialize-iOS.h>
+#import <Socialize-iOS/Socialize.h>
 #import "TestListController.h"
 #import "UIButton+Socialize.h"
 
