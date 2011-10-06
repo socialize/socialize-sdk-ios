@@ -29,8 +29,6 @@
 @synthesize profileEditViewController = profileEditViewController_;
 @synthesize loadingView = loadingView_;
 @synthesize socialize = socialize_;
-<<<<<<< HEAD
-=======
 @synthesize navigationControllerForEdit = navigationControllerForEdit_;
 
 + (UIViewController*)socializeProfileViewControllerWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
@@ -45,7 +43,6 @@
 + (UIViewController*)currentUserProfileWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
     return [self socializeProfileViewControllerWithDelegate:delegate];
 }
->>>>>>> d8efb84fe8027bcf4fbf22500f436a704a54073a
 
 - (void)dealloc {
     self.doneButton = nil;

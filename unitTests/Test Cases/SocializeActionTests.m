@@ -64,7 +64,7 @@
     id commentButton = [OCMockObject niceMockForClass:[UIButton class]];
 
     //    UIFont * labelFont = [[UIFontForTest alloc] init];
-    id labelFont = [UIFont systemFontOfSize:14];
+    UIFont* labelFont = [UIFont boldSystemFontOfSize:11.0f];
     id activityIndicator = [OCMockObject niceMockForClass:[UIActivityIndicatorView class]];
 
     [[commentButton expect] setBackgroundImage:OCMOCK_ANY forState:UIControlStateNormal];
@@ -88,7 +88,7 @@
     id viewButton = [OCMockObject niceMockForClass:[UIButton class]];
     id commentButton = [OCMockObject niceMockForClass:[UIButton class]];
     
-    id labelFont = [OCMockObject niceMockForClass:[UIFont class]];
+    UIFont* labelFont = [UIFont boldSystemFontOfSize:11.0f];
     id activityIndicator = [OCMockObject niceMockForClass:[UIActivityIndicatorView class]];
     
     SocializeActionViewForTest* actionView = [[SocializeActionViewForTest alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT) labelButtonFont:labelFont likeButton:likeButton viewButton:viewButton commentButton:commentButton activityIndicator:activityIndicator];
@@ -116,7 +116,7 @@
     id viewButton = [OCMockObject niceMockForClass:[UIButton class]];
     id commentButton = [OCMockObject niceMockForClass:[UIButton class]];
     
-    id labelFont = [OCMockObject niceMockForClass:[UIFont class]];
+    UIFont* labelFont = [UIFont boldSystemFontOfSize:11.0f];
     id activityIndicator = [OCMockObject niceMockForClass:[UIActivityIndicatorView class]];
     
     SocializeActionViewForTest* actionView = [[SocializeActionViewForTest alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT) labelButtonFont:labelFont likeButton:likeButton viewButton:viewButton commentButton:commentButton activityIndicator:activityIndicator];
@@ -130,16 +130,9 @@
 }
 
 -(void)testLikeDelegate{
-    
-    id likeButton = [OCMockObject niceMockForClass:[UIButton class]];
-    id viewButton = [OCMockObject niceMockForClass:[UIButton class]];
-    id commentButton = [OCMockObject niceMockForClass:[UIButton class]];
-    
-    id labelFont = [OCMockObject niceMockForClass:[UIFont class]];
-    id activityIndicator = [OCMockObject niceMockForClass:[UIActivityIndicatorView class]];
     id mockDelegate = [OCMockObject niceMockForProtocol:@protocol(SocializeActionViewDelegate)];
     
-    SocializeActionViewForTest* actionView = [[SocializeActionViewForTest alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT) labelButtonFont:labelFont likeButton:likeButton viewButton:viewButton commentButton:commentButton activityIndicator:activityIndicator];
+    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT)];
     
     actionView.delegate = mockDelegate;
     [[mockDelegate expect] likeButtonTouched:OCMOCK_ANY];
@@ -149,22 +142,15 @@
 }
 
 -(void)testCommentDelegate{
-    id likeButton = [OCMockObject niceMockForClass:[UIButton class]];
-    id viewButton = [OCMockObject niceMockForClass:[UIButton class]];
-    id commentButton = [OCMockObject niceMockForClass:[UIButton class]];
-    
-    id labelFont = [OCMockObject niceMockForClass:[UIFont class]];
-    id activityIndicator = [OCMockObject niceMockForClass:[UIActivityIndicatorView class]];
     id mockDelegate = [OCMockObject niceMockForProtocol:@protocol(SocializeActionViewDelegate)];
     
-    SocializeActionViewForTest* actionView = [[SocializeActionViewForTest alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT) labelButtonFont:labelFont likeButton:likeButton viewButton:viewButton commentButton:commentButton activityIndicator:activityIndicator];
+    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT)];
     
     actionView.delegate = mockDelegate;
     [[mockDelegate expect] commentButtonTouched:OCMOCK_ANY];
     
     [actionView commentButtonPressed:nil];
     [mockDelegate verify];
-
 }
 #pragma mark-
 
