@@ -9,7 +9,7 @@
 #import "SocializePostCommentViewController.h"
 #import "UIButton+Socialize.h"
 #import "CommentMapView.h"
-#import "_Socialize.h"
+#import "Socialize.h"
 #import "LoadingView.h"
 #import "UIKeyboardListener.h"
 #import "SocializeLocationManager.h"

@@ -93,7 +93,7 @@
 		16F449DD13AF8B37003BE655 /* SocializeUserJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */; };
 		16FDF4E01414BA0A00EAA064 /* SocializeCommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */; };
 		5C21C0C71396BF8300CF2B9F /* SocializeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */; };
-		5C21C0C91396BF8300CF2B9F /* _Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C31396BF8300CF2B9F /* _Socialize.m */; };
+		5C21C0C91396BF8300CF2B9F /* Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C31396BF8300CF2B9F /* Socialize.m */; };
 		5C21C0D11396D9A800CF2B9F /* SocializeEntityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0CF1396D9A800CF2B9F /* SocializeEntityService.m */; };
 		5C21C0D51396DA0500CF2B9F /* SocializeActivityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0D31396DA0400CF2B9F /* SocializeActivityService.m */; };
 		5C30695A13A10F62007335FF /* JSON-RequestAndResponse-TestFiles in Resources */ = {isa = PBXBuildFile; fileRef = 5C30695913A10F62007335FF /* JSON-RequestAndResponse-TestFiles */; };
@@ -274,7 +274,7 @@
 		AA3D69551432ADEF00DA77AC /* socialize-profileimage-large-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694B1432ADEF00DA77AC /* socialize-profileimage-large-default@2x.png */; };
 		AA3D69561432ADEF00DA77AC /* socialize-sectionheader-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694C1432ADEF00DA77AC /* socialize-sectionheader-bg.png */; };
 		AA3D69571432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694D1432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png */; };
-		AAAFE5C81435564200851C73 /* Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2DA21614353D7100C62B97 /* Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA4C731B143E601700B86506 /* Socialize-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = AA4C731A143E601700B86506 /* Socialize-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAFE5CA143556DA00851C73 /* SocializeActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A7C51402BF6E004B3A46 /* SocializeActionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAFE5CB143556FC00851C73 /* SocializeProfileEditViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABB7D801433F32800D0FDF9 /* SocializeProfileEditViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAFE5CC143556FC00851C73 /* SocializeBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16075490143302E4002E5A38 /* SocializeBaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -294,7 +294,7 @@
 		AAAFE5DA1435578E00851C73 /* SocializeShare.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D9A0BA113BE1BA600AE949C /* SocializeShare.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAFE5DB1435578E00851C73 /* SocializeError.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D205A3813C3D77C00D0645E /* SocializeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAFE5DC1435578E00851C73 /* SocializeObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = AADBD16B143514D200DBA47A /* SocializeObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5DD143557B900851C73 /* _Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C21396BF8300CF2B9F /* _Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAFE5DD143557B900851C73 /* Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C21396BF8300CF2B9F /* Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAFE5DE1435583D00851C73 /* SocializeCommonDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAFE5DF1435584700851C73 /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AADBD1661435143800DBA47A /* SocializeServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAFE5E614355BF900851C73 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
@@ -376,10 +376,10 @@
 /* Begin PBXFileReference section */
 		160754851432FB7C002E5A38 /* NSString+PlaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+PlaceMark.h"; path = "Classes/NSString+PlaceMark.h"; sourceTree = "<group>"; };
 		160754861432FB7C002E5A38 /* NSString+PlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+PlaceMark.m"; path = "Classes/NSString+PlaceMark.m"; sourceTree = "<group>"; };
-		160754891432FBA4002E5A38 /* SocializeProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileViewController.h; path = Classes/SocializeProfileViewController.h; sourceTree = "<group>"; };
+		160754891432FBA4002E5A38 /* SocializeProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SocializeProfileViewController.h; path = Classes/SocializeProfileViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1607548A1432FBA4002E5A38 /* SocializeProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileViewController.m; path = Classes/SocializeProfileViewController.m; sourceTree = "<group>"; };
 		1607548E1432FBF4002E5A38 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = Classes/SynthesizeSingleton.h; sourceTree = "<group>"; };
-		16075490143302E4002E5A38 /* SocializeBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBaseViewController.h; path = Classes/SocializeBaseViewController.h; sourceTree = "<group>"; };
+		16075490143302E4002E5A38 /* SocializeBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SocializeBaseViewController.h; path = Classes/SocializeBaseViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		16075491143302E4002E5A38 /* SocializeBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBaseViewController.m; path = Classes/SocializeBaseViewController.m; sourceTree = "<group>"; };
 		1636370613A76ECF00403879 /* SocializeProviderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProviderTests.h; path = "Test Cases/SocializeProviderTests.h"; sourceTree = "<group>"; };
 		1636370713A76ECF00403879 /* SocializeProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProviderTests.m; path = "Test Cases/SocializeProviderTests.m"; sourceTree = "<group>"; };
@@ -454,8 +454,8 @@
 		1681BD8F13F555DC00EC6042 /* SocializeFBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFBRequest.m; path = SocializeFacebook/SocializeFBRequest.m; sourceTree = "<group>"; };
 		1681BDBA13F55BBB00EC6042 /* AppMakrLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppMakrLocation.h; path = Classes/AppMakrLocation.h; sourceTree = "<group>"; };
 		1681BDBB13F55BBB00EC6042 /* AppMakrLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppMakrLocation.m; path = Classes/AppMakrLocation.m; sourceTree = "<group>"; };
-		1681BDBE13F55BCB00EC6042 /* SocializePostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePostCommentViewController.h; path = Classes/SocializePostCommentViewController.h; sourceTree = "<group>"; };
-		1681BDBF13F55BCB00EC6042 /* SocializePostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializePostCommentViewController.m; path = Classes/SocializePostCommentViewController.m; sourceTree = "<group>"; };
+		1681BDBE13F55BCB00EC6042 /* SocializePostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SocializePostCommentViewController.h; path = Classes/SocializePostCommentViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1681BDBF13F55BCB00EC6042 /* SocializePostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SocializePostCommentViewController.m; path = Classes/SocializePostCommentViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1681BDC813F55D3200EC6042 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		169BC79F1420CD94007ED41E /* SocializeLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLocationManager.h; path = Classes/SocializeLocationManager.h; sourceTree = "<group>"; };
 		169BC7A01420CD94007ED41E /* SocializeLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLocationManager.m; path = Classes/SocializeLocationManager.m; sourceTree = "<group>"; };
@@ -501,8 +501,8 @@
 		18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUnitTestApplication.m; sourceTree = "<group>"; };
 		5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequest.h; path = Classes/SocializeRequest.h; sourceTree = "<group>"; };
 		5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRequest.m; path = Classes/SocializeRequest.m; sourceTree = "<group>"; };
-		5C21C0C21396BF8300CF2B9F /* _Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _Socialize.h; path = Classes/_Socialize.h; sourceTree = "<group>"; };
-		5C21C0C31396BF8300CF2B9F /* _Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _Socialize.m; path = Classes/_Socialize.m; sourceTree = "<group>"; };
+		5C21C0C21396BF8300CF2B9F /* Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Socialize.h; path = Classes/Socialize.h; sourceTree = "<group>"; };
+		5C21C0C31396BF8300CF2B9F /* Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = Socialize.m; path = Classes/Socialize.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5C21C0CE1396D9A800CF2B9F /* SocializeEntityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEntityService.h; path = Classes/SocializeEntityService.h; sourceTree = "<group>"; };
 		5C21C0CF1396D9A800CF2B9F /* SocializeEntityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeEntityService.m; path = Classes/SocializeEntityService.m; sourceTree = "<group>"; };
 		5C21C0D21396DA0400CF2B9F /* SocializeActivityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityService.h; path = Classes/SocializeActivityService.h; sourceTree = "<group>"; };
@@ -557,7 +557,7 @@
 		6D44A7D21402D20C004B3A46 /* NSNumber+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+Additions.m"; path = "Classes/NSNumber+Additions.m"; sourceTree = "<group>"; };
 		6D44A8E314030196004B3A46 /* action-bar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-bar-bg.png"; path = "Resources/action-bar-bg.png"; sourceTree = "<group>"; };
 		6D44A8E414030197004B3A46 /* action-bar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-bar-bg@2x.png"; path = "Resources/action-bar-bg@2x.png"; sourceTree = "<group>"; };
-		6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsTableViewController.h; path = Classes/SocializeCommentsTableViewController.h; sourceTree = "<group>"; };
+		6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SocializeCommentsTableViewController.h; path = Classes/SocializeCommentsTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsTableViewController.m; path = Classes/SocializeCommentsTableViewController.m; sourceTree = "<group>"; };
 		6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeCommentsTableViewController.xib; path = Resources/SocializeCommentsTableViewController.xib; sourceTree = "<group>"; };
 		6D44A90414041848004B3A46 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsTableViewCell.h; path = Classes/CommentsTableViewCell.h; sourceTree = "<group>"; };
@@ -749,7 +749,6 @@
 		9ABB68BB13BA78A4001882D1 /* SocializeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeService.m; path = Classes/SocializeService.m; sourceTree = "<group>"; };
 		9AC0259713BB8253004AB147 /* SocializeUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUserService.h; path = Classes/SocializeUserService.h; sourceTree = "<group>"; };
 		9AC0259813BB8253004AB147 /* SocializeUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserService.m; path = Classes/SocializeUserService.m; sourceTree = "<group>"; };
-		AA2DA21614353D7100C62B97 /* Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socialize.h; sourceTree = "<group>"; };
 		AA3D69441432ADEF00DA77AC /* background_brushed_metal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background_brushed_metal@2x.png"; path = "Resources/background_brushed_metal@2x.png"; sourceTree = "<group>"; };
 		AA3D69451432ADEF00DA77AC /* socialize-activity-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-bg.png"; path = "Resources/socialize-activity-bg.png"; sourceTree = "<group>"; };
 		AA3D69461432ADEF00DA77AC /* socialize-activity-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-bg@2x.png"; path = "Resources/socialize-activity-bg@2x.png"; sourceTree = "<group>"; };
@@ -760,22 +759,23 @@
 		AA3D694B1432ADEF00DA77AC /* socialize-profileimage-large-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-profileimage-large-default@2x.png"; path = "Resources/socialize-profileimage-large-default@2x.png"; sourceTree = "<group>"; };
 		AA3D694C1432ADEF00DA77AC /* socialize-sectionheader-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-sectionheader-bg.png"; path = "Resources/socialize-sectionheader-bg.png"; sourceTree = "<group>"; };
 		AA3D694D1432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-sectionheader-bg@2x.png"; path = "Resources/socialize-sectionheader-bg@2x.png"; sourceTree = "<group>"; };
+		AA4C731A143E601700B86506 /* Socialize-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Socialize-iOS.h"; sourceTree = "<group>"; };
 		AAAFE5E414355BF900851C73 /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAAFE86314355F1B00851C73 /* AuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticateViewController.h; sourceTree = "<group>"; };
-		AAAFE86414355F1B00851C73 /* AuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticateViewController.m; sourceTree = "<group>"; };
+		AAAFE86314355F1B00851C73 /* AuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AuthenticateViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE86414355F1B00851C73 /* AuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AuthenticateViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE86514355F1B00851C73 /* AuthenticateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenticateViewController.xib; sourceTree = "<group>"; };
 		AAAFE86814355F1B00851C73 /* CommetsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommetsTableView.h; sourceTree = "<group>"; };
 		AAAFE86914355F1B00851C73 /* CommetsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommetsTableView.m; sourceTree = "<group>"; };
 		AAAFE86A14355F1B00851C73 /* DataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHelper.h; sourceTree = "<group>"; };
 		AAAFE86B14355F1B00851C73 /* DataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHelper.m; sourceTree = "<group>"; };
-		AAAFE86C14355F1B00851C73 /* DemoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoEntity.h; sourceTree = "<group>"; };
+		AAAFE86C14355F1B00851C73 /* DemoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DemoEntity.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE86D14355F1B00851C73 /* DemoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoEntity.m; sourceTree = "<group>"; };
 		AAAFE86F14355F1B00851C73 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAAFE87114355F1B00851C73 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		AAAFE87214355F1B00851C73 /* InputBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputBox.h; sourceTree = "<group>"; };
 		AAAFE87314355F1B00851C73 /* InputBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputBox.m; sourceTree = "<group>"; };
-		AAAFE87814355F1B00851C73 /* LikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeListViewController.h; sourceTree = "<group>"; };
-		AAAFE87914355F1B00851C73 /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeListViewController.m; sourceTree = "<group>"; };
+		AAAFE87814355F1B00851C73 /* LikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LikeListViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE87914355F1B00851C73 /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LikeListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE87A14355F1B00851C73 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
 		AAAFE87B14355F1B00851C73 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		AAAFE87C14355F1B00851C73 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
@@ -784,43 +784,43 @@
 		AAAFE87F14355F1B00851C73 /* SampleSdkApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleSdkApp-Info.plist"; sourceTree = "<group>"; };
 		AAAFE88014355F1B00851C73 /* SampleSdkApp-Integration-Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Integration-Tests-Prefix.pch"; sourceTree = "<group>"; };
 		AAAFE88114355F1B00851C73 /* SampleSdkApp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Prefix.pch"; sourceTree = "<group>"; };
-		AAAFE88214355F1B00851C73 /* SampleSdkAppAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleSdkAppAppDelegate.h; sourceTree = "<group>"; };
-		AAAFE88314355F1B00851C73 /* SampleSdkAppAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppAppDelegate.m; sourceTree = "<group>"; };
+		AAAFE88214355F1B00851C73 /* SampleSdkAppAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SampleSdkAppAppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE88314355F1B00851C73 /* SampleSdkAppAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SampleSdkAppAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE88714355F1B00851C73 /* SocializeApiInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeApiInfo.plist; sourceTree = "<group>"; };
 		AAAFE88A14355F1B00851C73 /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
 		AAAFE88B14355F1B00851C73 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
 		AAAFE88C14355F1B00851C73 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
-		AAAFE88D14355F1B00851C73 /* TestCreateCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCreateCommentViewController.h; sourceTree = "<group>"; };
-		AAAFE88E14355F1B00851C73 /* TestCreateCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCreateCommentViewController.m; sourceTree = "<group>"; };
+		AAAFE88D14355F1B00851C73 /* TestCreateCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestCreateCommentViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE88E14355F1B00851C73 /* TestCreateCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestCreateCommentViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE88F14355F1B00851C73 /* TestCreateCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCreateCommentViewController.xib; sourceTree = "<group>"; };
-		AAAFE89014355F1B00851C73 /* TestCreateEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCreateEntityViewController.h; sourceTree = "<group>"; };
+		AAAFE89014355F1B00851C73 /* TestCreateEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestCreateEntityViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE89114355F1B00851C73 /* TestCreateEntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCreateEntityViewController.m; sourceTree = "<group>"; };
 		AAAFE89214355F1B00851C73 /* TestCreateEntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCreateEntityViewController.xib; sourceTree = "<group>"; };
-		AAAFE89314355F1B00851C73 /* TestFetchCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFetchCommentsViewController.h; sourceTree = "<group>"; };
-		AAAFE89414355F1B00851C73 /* TestFetchCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFetchCommentsViewController.m; sourceTree = "<group>"; };
+		AAAFE89314355F1B00851C73 /* TestFetchCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestFetchCommentsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE89414355F1B00851C73 /* TestFetchCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestFetchCommentsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE89514355F1B00851C73 /* TestFetchCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestFetchCommentsViewController.xib; sourceTree = "<group>"; };
-		AAAFE89614355F1B00851C73 /* TestGetEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGetEntityViewController.h; sourceTree = "<group>"; };
+		AAAFE89614355F1B00851C73 /* TestGetEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestGetEntityViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE89714355F1B00851C73 /* TestGetEntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGetEntityViewController.m; sourceTree = "<group>"; };
 		AAAFE89814355F1B00851C73 /* TestGetEntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestGetEntityViewController.xib; sourceTree = "<group>"; };
-		AAAFE89914355F1B00851C73 /* TestLikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLikeViewController.h; sourceTree = "<group>"; };
-		AAAFE89A14355F1B00851C73 /* TestLikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLikeViewController.m; sourceTree = "<group>"; };
+		AAAFE89914355F1B00851C73 /* TestLikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestLikeViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE89A14355F1B00851C73 /* TestLikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestLikeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE89B14355F1B00851C73 /* TestLikeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestLikeViewController.xib; sourceTree = "<group>"; };
-		AAAFE89C14355F1B00851C73 /* TestListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestListController.h; sourceTree = "<group>"; };
-		AAAFE89D14355F1B00851C73 /* TestListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestListController.m; sourceTree = "<group>"; };
+		AAAFE89C14355F1B00851C73 /* TestListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestListController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE89D14355F1B00851C73 /* TestListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestListController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE89E14355F1B00851C73 /* TestListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestListController.xib; sourceTree = "<group>"; };
 		AAAFE8C714355F1B00851C73 /* tests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tests.plist; sourceTree = "<group>"; };
-		AAAFE8C814355F1B00851C73 /* TestShowSmallUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShowSmallUserInfo.h; sourceTree = "<group>"; };
-		AAAFE8C914355F1B00851C73 /* TestShowSmallUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShowSmallUserInfo.m; sourceTree = "<group>"; };
+		AAAFE8C814355F1B00851C73 /* TestShowSmallUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestShowSmallUserInfo.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE8C914355F1B00851C73 /* TestShowSmallUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestShowSmallUserInfo.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE8CA14355F1B00851C73 /* TestShowSmallUserInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestShowSmallUserInfo.xib; sourceTree = "<group>"; };
-		AAAFE8CB14355F1B00851C73 /* TestViewCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewCreationViewController.h; sourceTree = "<group>"; };
-		AAAFE8CC14355F1B00851C73 /* TestViewCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewCreationViewController.m; sourceTree = "<group>"; };
+		AAAFE8CB14355F1B00851C73 /* TestViewCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestViewCreationViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAAFE8CC14355F1B00851C73 /* TestViewCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestViewCreationViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE8CD14355F1B00851C73 /* TestViewCreationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewCreationViewController.xib; sourceTree = "<group>"; };
 		AAAFE8CE14355F1B00851C73 /* UIButton+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Socialize.h"; sourceTree = "<group>"; };
 		AAAFE8CF14355F1B00851C73 /* UIButton+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Socialize.m"; sourceTree = "<group>"; };
 		AAAFE8D014355F1B00851C73 /* UILabel-Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel-Additions.h"; sourceTree = "<group>"; };
 		AAAFE8D114355F1B00851C73 /* UILabel-Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel-Additions.m"; sourceTree = "<group>"; };
 		AAAFE8D214355F1B00851C73 /* urls.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = urls.plist; sourceTree = "<group>"; };
-		AAAFE8D314355F1B00851C73 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		AAAFE8D314355F1B00851C73 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = UserProfileViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE8D414355F1B00851C73 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		AAAFE8D514355F1B00851C73 /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		AAAFE936143562CA00851C73 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1080,8 +1080,8 @@
 				9A68EB5913AFFA3900E38356 /* SocializeAuthenticateService.m */,
 				5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */,
 				5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */,
-				5C21C0C21396BF8300CF2B9F /* _Socialize.h */,
-				5C21C0C31396BF8300CF2B9F /* _Socialize.m */,
+				5C21C0C21396BF8300CF2B9F /* Socialize.h */,
+				5C21C0C31396BF8300CF2B9F /* Socialize.m */,
 				5C21C0CE1396D9A800CF2B9F /* SocializeEntityService.h */,
 				5C21C0CF1396D9A800CF2B9F /* SocializeEntityService.m */,
 				1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */,
@@ -1150,7 +1150,7 @@
 		5CC3DAC31378824800B11B78 /* Socialize */ = {
 			isa = PBXGroup;
 			children = (
-				AA2DA21614353D7100C62B97 /* Socialize.h */,
+				AA4C731A143E601700B86506 /* Socialize-iOS.h */,
 				6D89844914083B5B00482F1E /* UI */,
 				1681BD7613F555CA00EC6042 /* facebook */,
 				5C9004331395963A007361F6 /* Services */,
@@ -1684,7 +1684,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAAFE5C81435564200851C73 /* Socialize.h in Headers */,
 				AAAFE5CA143556DA00851C73 /* SocializeActionView.h in Headers */,
 				AAAFE5CB143556FC00851C73 /* SocializeProfileEditViewController.h in Headers */,
 				AAAFE5CC143556FC00851C73 /* SocializeBaseViewController.h in Headers */,
@@ -1704,10 +1703,11 @@
 				AAAFE5DA1435578E00851C73 /* SocializeShare.h in Headers */,
 				AAAFE5DB1435578E00851C73 /* SocializeError.h in Headers */,
 				AAAFE5DC1435578E00851C73 /* SocializeObjects.h in Headers */,
-				AAAFE5DD143557B900851C73 /* _Socialize.h in Headers */,
+				AAAFE5DD143557B900851C73 /* Socialize.h in Headers */,
 				AAAFE5DE1435583D00851C73 /* SocializeCommonDefinitions.h in Headers */,
 				AAAFE5DF1435584700851C73 /* SocializeServiceDelegate.h in Headers */,
 				1638C523143DC96A00538659 /* SocializeActionBar.h in Headers */,
+				AA4C731B143E601700B86506 /* Socialize-iOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2027,7 +2027,7 @@
 				9A4D29821393FEDD0065C0CB /* SocializeUser.m in Sources */,
 				9A4D29A5139408710065C0CB /* SocializeObjectFactory.m in Sources */,
 				5C21C0C71396BF8300CF2B9F /* SocializeRequest.m in Sources */,
-				5C21C0C91396BF8300CF2B9F /* _Socialize.m in Sources */,
+				5C21C0C91396BF8300CF2B9F /* Socialize.m in Sources */,
 				5C21C0D11396D9A800CF2B9F /* SocializeEntityService.m in Sources */,
 				5C21C0D51396DA0500CF2B9F /* SocializeActivityService.m in Sources */,
 				84B8F3D11396EF4100C95F41 /* SocializeEntityJSONFormatter.m in Sources */,

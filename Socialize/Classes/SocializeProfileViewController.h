@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SocializeFullUser.h"
 #import "SocializeProfileEditViewController.h"
-#import "_Socialize.h"
+#import "Socialize.h"
 
 @class LoadingView;
 @protocol SocializeProfileViewControllerDelegate;

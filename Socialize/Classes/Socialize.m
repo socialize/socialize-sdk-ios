@@ -6,7 +6,7 @@
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "_Socialize.h"
+#import "Socialize.h"
 
 #import "SocializeConfiguration.h"
 #import "SocializeCommentsService.h"

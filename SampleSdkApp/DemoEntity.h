@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Socialize-iOS/Socialize.h>
+#import <Socialize-iOS/Socialize-iOS.h>
 
 @interface DemoEntity : NSObject {
     SocializeEntity* _entry;

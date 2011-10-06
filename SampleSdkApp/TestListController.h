@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <Socialize-iOS/Socialize.h>
+#import <Socialize-iOS/Socialize-iOS.h>
 
 @class SocializeUser;
 
