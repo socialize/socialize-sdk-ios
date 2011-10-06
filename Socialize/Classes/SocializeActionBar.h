@@ -31,19 +31,21 @@
 
 @class SocializeCommentsTableViewController;
 @protocol SocializeView;
+@protocol SocializeEntity;
 
 @interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate> {
     @private
     CGRect viewRect;
-    NSString* entityUrl;
-    UIViewController* comentsNavController;
-    
+    UIViewController* comentsNavController;   
     UIViewController* parentViewController;
+    
     id<SocializeView> entityView;
+    id<SocializeEntity> entity;
 }
 
 @property(nonatomic, assign) UIViewController* parentViewController;
 +(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url;
 
 -(id)initWithParantViewSize:(CGSize)parentViewSize andEntiryUrl:(NSString*)url;
+-(id)initWithParantViewSize:(CGSize)parentViewSize andEntiry:(id<SocializeEntity>)entity;
 @end

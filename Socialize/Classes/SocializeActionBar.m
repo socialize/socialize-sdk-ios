@@ -32,6 +32,7 @@
 #import "UIButton+Socialize.h"
 #import "UINavigationBarBackground.h"
 #import "SocializeView.h"
+#import "SocializeEntity.h"
 
 #define ACTION_PANE_HEIGHT 44
 
@@ -53,25 +54,26 @@
     if(self)
     {
         viewRect = CGRectMake(0, parentViewSize.height - ACTION_PANE_HEIGHT, parentViewSize.width,  ACTION_PANE_HEIGHT);
-        entityUrl = [url copy];
+        entity = [[self.socialize createObjectForProtocol:@protocol(SocializeEntity)] retain];
+        [entity setKey:url];
     }
     return self;
 }
 
-//-(id)initWithParantViewSize:(CGSize)parentViewSize andEntiry:(id<SocializeEntity>)entity
-//{
-//    self = [super init];
-//    if(self)
-//    {
-//        viewRect = CGRectMake(0, parentViewSize.height - ACTION_PANE_HEIGHT, parentViewSize.width,  ACTION_PANE_HEIGHT);
-//        //entityUrl = [url copy];
-//    }
-//    return self;
-//}
+-(id)initWithParantViewSize:(CGSize)parentViewSize andEntiry:(id<SocializeEntity>)socEntity
+{
+    self = [super init];
+    if(self)
+    {
+        viewRect = CGRectMake(0, parentViewSize.height - ACTION_PANE_HEIGHT, parentViewSize.width,  ACTION_PANE_HEIGHT);
+        entity = [socEntity retain];
+    }
+    return self;
+}
 
 - (void)dealloc
 {
-    [entityUrl release];
+    [entity release];
     [(SocializeActionView*)self.view setDelegate: nil];
     [comentsNavController release];
     self.parentViewController = nil;
@@ -103,7 +105,7 @@
 {
     [super viewDidLoad];
 
-    comentsNavController = [[SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:entityUrl] retain];
+    comentsNavController = [[SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:[entity key]] retain];
 }
 
 
@@ -126,8 +128,8 @@
         id<SocializeObject> object = [dataArray objectAtIndex:0];
         if ([object conformsToProtocol:@protocol(SocializeEntity)])
         {
-            
-            id<SocializeEntity> entity = (id<SocializeEntity>)object;          
+            [entity release];
+            entity = [(id<SocializeEntity>)object retain];          
             [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:NO withCommentsCount:[NSNumber numberWithInt:entity.comments]];
             
             if(entityView == nil)
@@ -140,7 +142,7 @@
 {
     if([object conformsToProtocol:@protocol(SocializeView)])
     {
-        entityView = (id<SocializeView>)object;
+        entityView = [(id<SocializeView>)object retain];
         [(SocializeActionView*)self.view updateViewsCount:[NSNumber numberWithInt:entityView.entity.views]];
     } 
 }
@@ -169,7 +171,7 @@
 
 -(void)afterAnonymouslyLoginAction
 {
-    [self.socialize getEntityByKey:entityUrl];
+    [self.socialize getEntityByKey:[entity key]];
 }
 
 #pragma Socialize Action view delefate
