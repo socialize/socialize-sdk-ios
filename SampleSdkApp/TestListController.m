@@ -190,13 +190,14 @@
             break;
         case 9:
         {
-            Socialize* socialize = [[Socialize alloc] initWithDelegate:self];
-            SocializeUser *user = [socialize authenticatedUser];
-            SocializeProfileViewController *profileController = [[SocializeProfileViewController alloc] init];
-            profileController.user = user;
-            [self.navigationController pushViewController:profileController animated:YES];
-            [profileController release];
+//            Socialize* socialize = [[Socialize alloc] initWithDelegate:self];
+//            id<SocializeUser> user = [socialize authenticatedUser];
+//            SocializeProfileViewController *profileController = [[SocializeProfileViewController alloc] init];
+//            //profileController.user = user;
+//            [self.navigationController pushViewController:profileController animated:YES];
+//            [profileController release];
             break;
+        }
         case 10:
         {
             NSString* url = [self getEntityKey];
