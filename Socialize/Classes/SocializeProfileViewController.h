@@ -27,6 +27,8 @@
 @property (nonatomic, retain) SocializeProfileEditViewController *profileEditViewController;
 @property (nonatomic, retain) LoadingView *loadingView;
 @property (nonatomic, retain) Socialize *socialize;
+@property (nonatomic, retain) UINavigationController *navigationControllerForEdit;
+-(void)editVCSave:(id)button;
 @end
 
 @protocol SocializeProfileViewControllerDelegate
