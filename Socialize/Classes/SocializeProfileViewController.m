@@ -305,7 +305,8 @@
 	
 	[self.view.window addSubview:self.navigationControllerForEdit.view];
 	
-	
+	self.profileEditViewController.profileImage = self.profileImageView.image;
+    
 	CGRect newNavFrame = CGRectMake(0, 0, navFrame.size.width, navFrame.size.height);
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDelegate:self];
