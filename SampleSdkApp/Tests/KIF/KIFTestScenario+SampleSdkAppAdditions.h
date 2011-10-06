@@ -17,6 +17,6 @@
 + (id)scenarioToGetComments;
 + (id)scenarioToLikeAndUnlikeEntity;
 + (id)scenarioToViewEntity;
-+ (id)scenarioToTestCreateCommentViewControllerWithAutoAuth;
-
++ (id)scenarioToTestCommentsViewControllerWithAutoAuth;
++ (id)scenarioToShowActionBar;
 @end

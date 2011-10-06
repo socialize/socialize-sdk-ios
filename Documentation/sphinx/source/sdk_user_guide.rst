@@ -1,5 +1,5 @@
 =============================================
-SDK User Guide (Recommended for users who want to build there own UI)
+SDK User Guide
 =============================================
 
 Introduction

@@ -11,7 +11,7 @@
 #import "SampleSdkAppKIFTestController.h"
 @implementation KIFTestScenario (SampleSdkAppAdditions)
 
-+ (id)scenarioToTestCreateCommentViewControllerWithAutoAuth {
++ (id)scenarioToTestCommentsViewControllerWithAutoAuth {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that test that socialize UI views work even when not logged in."];
     [scenario addStepsFromArray:[KIFTestStep stepsToNoAuth]];
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
@@ -20,12 +20,20 @@
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyCommentExistsForEntity:url comment:commentString]];
     
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Comments List"]];
-    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Fetch Comment"]];   
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];   
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Tests"]];   
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Authenticate"]];   
     return scenario;
 
 }
+
+
++ (id)scenarioToShowActionBar {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test the Socialize Action Bar"];
+    [scenario addStepsFromArray:[KIFTestStep stepsToShowActionBar]];
+    return scenario;
+}
+
 + (id)scenarioToAuthenticate {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a user can successfully log in."];
     [scenario addStepsFromArray:[KIFTestStep stepsToAuthenticate]];
@@ -85,7 +93,6 @@
 
 + (id)scenarioToViewEntity {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that an entity can be viewed"];
-    
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
     [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntityWithURL:url name:nil]];
     [scenario addStepsFromArray:[KIFTestStep stepsToViewEntityWithURL:url]];

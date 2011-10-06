@@ -8,6 +8,13 @@
 
 #import "KIFTestStep+SampleSdkAppAdditions.h"
 #import "SampleSdkAppAppDelegate.h"
+#import "CGGeometry-KIFAdditions.h"
+#import "UIAccessibilityElement-KIFAdditions.h"
+#import "UIApplication-KIFAdditions.h"
+#import "UIScrollView-KIFAdditions.h"
+#import "UITouch-KIFAdditions.h"
+#import "UIView-KIFAdditions.h"
+#import "UIWindow-KIFAdditions.h"
 
 @implementation KIFTestStep (SampleSdkAppAdditions)
 
@@ -43,6 +50,16 @@
     return steps;
 }
 
++ (NSArray*)stepsToShowActionBar {
+    NSMutableArray *steps = [NSMutableArray array];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:10 inSection:0];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Input Field"]];
+    [steps addObject:[KIFTestStep stepToEnterText:[KIFTestStep getRandomURL] intoViewWithAccessibilityLabel:@"Input Field"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Enter"]];
+    return steps;
+}
 + (NSArray*)stepsToWaitForActionCompleted {
     NSMutableArray *steps = [NSMutableArray array];
 
@@ -69,10 +86,15 @@
     return steps;
 }
 
-+ (NSArray*)stepsToCreateEntityWithRandomURL;
++(NSString*)getRandomURL;
 {
     int randomNum = arc4random() % 999999999999;
     NSString *randomString = [NSString stringWithFormat:@"http://www.example.com/%i", randomNum];
+    return randomString;
+}
++ (NSArray*)stepsToCreateEntityWithRandomURL;
+{
+    NSString *randomString = [KIFTestStep getRandomURL];
     return [self stepsToCreateEntityWithURL:randomString name:nil];;
 }
 
@@ -144,7 +166,7 @@
     [steps addObject:[KIFTestStep stepToReturnToList]];
     [steps addObjectsFromArray:[self stepsToGetCommentsForEntity:entity]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comment Cell"]];
-    [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
+    [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Comments Table View" atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:comment]];
     
     return steps;
@@ -219,5 +241,25 @@
     return steps;
 }
 
++ (id)stepToScrollAndTapRowInTableViewWithAccessibilityLabel:(NSString*)tableViewLabel atIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *description = [NSString stringWithFormat:@"Step to tap row %d in tableView with label %@", [indexPath row], tableViewLabel];
+    return [KIFTestStep stepWithDescription:description executionBlock:^(KIFTestStep *step, NSError **error) {
+        UIAccessibilityElement *element = [[UIApplication sharedApplication] accessibilityElementWithLabel:tableViewLabel];
+        KIFTestCondition(element, error, @"View with label %@ not found", tableViewLabel);
+        UITableView *tableView = (UITableView*)[UIAccessibilityElement viewContainingAccessibilityElement:element];
+        
+        KIFTestCondition([tableView isKindOfClass:[UITableView class]], error, @"Specified view is not a UITableView");
+        
+        KIFTestCondition(tableView, error, @"Table view with label %@ not found", tableViewLabel);
+        
+        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        CGRect cellFrame = [cell.contentView convertRect:[cell.contentView frame] toView:tableView];
+        [tableView tapAtPoint:CGPointCenteredInRect(cellFrame)];
+        
+        return KIFTestStepResultSuccess;
+    }];
+}
 
 @end
