@@ -189,10 +189,8 @@
             break;
         case 9:
         {
-            SocializeProfileViewController *profileController = [[SocializeProfileViewController alloc] init];
-            profileController.delegate = self;
-            [self.navigationController pushViewController:profileController animated:YES];
-            [profileController release];
+            UIViewController *profile = [SocializeProfileViewController currentUserProfileWithDelegate:self];
+            [self.navigationController presentModalViewController:profile animated:YES];
             break;
         }
 
@@ -202,10 +200,10 @@
 #pragma mark - Service delegete
 
 - (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 - (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 @end

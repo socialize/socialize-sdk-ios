@@ -31,6 +31,19 @@
 @synthesize socialize = socialize_;
 @synthesize navigationControllerForEdit = navigationControllerForEdit_;
 
++ (UIViewController*)socializeProfileViewControllerWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
+    SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
+    profile.delegate = delegate;
+    UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
+    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:profile] autorelease];
+    [nav.navigationBar setBackgroundImage:navImage];
+    return nav;
+}
+
++ (UIViewController*)currentUserProfileWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
+    return [self socializeProfileViewControllerWithDelegate:delegate];
+}
+
 - (void)dealloc {
     self.doneButton = nil;
     self.editButton = nil;

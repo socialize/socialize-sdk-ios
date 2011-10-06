@@ -120,7 +120,7 @@
 {
     _loadingView = [LoadingView loadingViewInView:self.view]; 
     
-    _user.userName = @"Sergey";
+    [_user setUserName:@"Sergey"];
     [_socialize updateUserProfile:_user];    
 }
 
