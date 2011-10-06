@@ -30,6 +30,8 @@
 #import "SocializeAuthenticateService.h"
 #import "SocializeCommentsTableViewController.h"
 #import "UIButton+Socialize.h"
+#import "UINavigationBarBackground.h"
+#import "SocializeView.h"
 
 #define ACTION_PANE_HEIGHT 44
 
@@ -89,8 +91,6 @@
     [actionView release];
 }
 
-
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
@@ -100,7 +100,7 @@
     commentsController = [[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString:entityUrl];
 
    
-    UIButton * sendButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Close"];
+    UIButton * sendButton = [UIButton redSocializeNavBarButtonWithTitle:@"Close"];
     [sendButton addTarget:self action:@selector(closeButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem * rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:sendButton];
@@ -110,9 +110,8 @@
     
     commentsController.navigationItem.leftBarButtonItem = nil;
 
-    nc = [[UINavigationController alloc]initWithRootViewController:commentsController];  
-    
-    [self.socialize getEntityByKey:entityUrl];
+    nc = [[UINavigationController alloc]initWithRootViewController:commentsController]; 
+    [nc.navigationBar setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
 }
 
 
@@ -133,13 +132,25 @@
 {
     if ([dataArray count]){
         id<SocializeObject> object = [dataArray objectAtIndex:0];
-        if ([object conformsToProtocol:@protocol(SocializeEntity)]){
+        if ([object conformsToProtocol:@protocol(SocializeEntity)])
+        {
             
             id<SocializeEntity> entity = (id<SocializeEntity>)object;          
             [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:NO withCommentsCount:[NSNumber numberWithInt:entity.comments]];
+            
+            if(entityView == nil)
+                [self.socialize viewEntity:entity longitude:nil latitude:nil];
         }
-    }
-    
+    }    
+}
+
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object
+{
+    if([object conformsToProtocol:@protocol(SocializeView)])
+    {
+        entityView = (id<SocializeView>)object;
+        [(SocializeActionView*)self.view updateViewsCount:[NSNumber numberWithInt:entityView.entity.views]];
+    } 
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
@@ -162,6 +173,11 @@
 
 -(void) stopLoadAnimation
 {
+}
+
+-(void)afterAnonymouslyLoginAction
+{
+    [self.socialize getEntityByKey:entityUrl];
 }
 
 #pragma Socialize Action view delefate

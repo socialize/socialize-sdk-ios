@@ -30,6 +30,7 @@
 #import "SocializeActionView.h"
 
 @class SocializeCommentsTableViewController;
+@protocol SocializeView;
 
 @interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate> {
     @private
@@ -39,6 +40,7 @@
     UINavigationController* nc;
     
     UIViewController* parentViewController;
+    id<SocializeView> entityView;
 }
 
 @property(nonatomic, retain) UIViewController* parentViewController;

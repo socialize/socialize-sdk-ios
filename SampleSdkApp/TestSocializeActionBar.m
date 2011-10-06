@@ -59,6 +59,11 @@
 }
 
 #pragma mark - View lifecycle
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [bar viewWillAppear:animated];
+}
 
 - (void)viewDidLoad
 {
