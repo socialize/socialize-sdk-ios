@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1638A595143C46C300C125B5 /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638A593143C46C300C125B5 /* TestSocializeActionBar.m */; };
-		1638A596143C46C300C125B5 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1638A594143C46C300C125B5 /* TestSocializeActionBar.xib */; };
+		1638C52E143DC9A500538659 /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638C52C143DC9A500538659 /* TestSocializeActionBar.m */; };
+		1638C52F143DC9A500538659 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1638C52D143DC9A500538659 /* TestSocializeActionBar.xib */; };
 		AA2DA2421435437400C62B97 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA2241435420300C62B97 /* MapKit.framework */; };
 		AA2DA2431435437400C62B97 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA222143541F700C62B97 /* CoreLocation.framework */; };
 		AA2DA2441435437400C62B97 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA220143541E100C62B97 /* QuartzCore.framework */; };
@@ -167,10 +167,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1638A592143C46C300C125B5 /* TestSocializeActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSocializeActionBar.h; sourceTree = "<group>"; };
-		1638A593143C46C300C125B5 /* TestSocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSocializeActionBar.m; sourceTree = "<group>"; };
-		1638A594143C46C300C125B5 /* TestSocializeActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSocializeActionBar.xib; sourceTree = "<group>"; };
-		1892605E143A7BE2006DE6B8 /* SocializeProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileViewController.xib; path = Socialize/Resources/SocializeProfileViewController.xib; sourceTree = "<group>"; };
+		1638C52B143DC9A500538659 /* TestSocializeActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSocializeActionBar.h; sourceTree = "<group>"; };
+		1638C52C143DC9A500538659 /* TestSocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSocializeActionBar.m; sourceTree = "<group>"; };
+		1638C52D143DC9A500538659 /* TestSocializeActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSocializeActionBar.xib; sourceTree = "<group>"; };
 		AA2D9E6D14352BC100C62B97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA2D9E6F14352BC100C62B97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -545,10 +544,10 @@
 		AAAFE78314355CF700851C73 /* SampleSdkApp */ = {
 			isa = PBXGroup;
 			children = (
+				1638C52B143DC9A500538659 /* TestSocializeActionBar.h */,
+				1638C52C143DC9A500538659 /* TestSocializeActionBar.m */,
+				1638C52D143DC9A500538659 /* TestSocializeActionBar.xib */,
 				AAAFE924143561F300851C73 /* Tests */,
-				1638A592143C46C300C125B5 /* TestSocializeActionBar.h */,
-				1638A593143C46C300C125B5 /* TestSocializeActionBar.m */,
-				1638A594143C46C300C125B5 /* TestSocializeActionBar.xib */,
 				AAAFE78414355CF700851C73 /* AuthenticateViewController.h */,
 				AAAFE78514355CF700851C73 /* AuthenticateViewController.m */,
 				AAAFE78614355CF700851C73 /* AuthenticateViewController.xib */,
@@ -815,7 +814,7 @@
 				AAAFE84F14355CF800851C73 /* TestViewCreationViewController.xib in Resources */,
 				AAAFE85214355CF800851C73 /* urls.plist in Resources */,
 				AAAFE85414355CF800851C73 /* UserProfileViewController.xib in Resources */,
-				1638A596143C46C300C125B5 /* TestSocializeActionBar.xib in Resources */,
+				1638C52F143DC9A500538659 /* TestSocializeActionBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,7 +881,7 @@
 				AAAFE931143561F400851C73 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */,
 				AAAFE932143561F400851C73 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
 				AAAFE9351435628000851C73 /* SampleSdkAppKIFTestController.m in Sources */,
-				1638A595143C46C300C125B5 /* TestSocializeActionBar.m in Sources */,
+				1638C52E143DC9A500538659 /* TestSocializeActionBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -981,10 +980,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks/SymbolCollisionTestLibs\"",
 				);
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-				);
 				PRODUCT_NAME = "SampleSdkApp Integration Tests";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1006,10 +1001,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks/SymbolCollisionTestLibs\"",
-				);
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
 				);
 				PRODUCT_NAME = "SampleSdkApp Integration Tests";
 				WRAPPER_EXTENSION = app;
