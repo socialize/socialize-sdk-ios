@@ -142,8 +142,19 @@
         {
             self.entity = (id<SocializeEntity>)object;          
             [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:entityLike!=nil withCommentsCount:[NSNumber numberWithInt:entity.comments]];
-            
-
+        }
+        if ([object conformsToProtocol:@protocol(SocializeLike)])
+        {
+            [dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+            {
+                id<SocializeLike> like = (id<SocializeLike>)obj;
+                if(like.user.objectID == self.socialize.authenticatedUser.objectID)
+                {
+                    self.entityLike = like;
+                    [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:self.entityLike.entity.likes] liked:YES];
+                    *stop = YES;
+                }
+            }];
         }
     }    
 }
@@ -188,6 +199,14 @@
     }
 }
 
+-(void)didAuthenticate:(id<SocializeUser>)user
+{
+    [super didAuthenticate:user];
+    //remove like status because we do not know it for new user yet.
+    self.entityLike = nil;
+    [(SocializeActionView*)self.view updateIsLiked:NO];
+}
+
 #pragma mark Socialize base class method
 -(void) startLoadAnimationForView: (UIView*) view;
 {
@@ -202,8 +221,8 @@
     [self.socialize getEntityByKey:[entity key]];
     if(entityView == nil)
         [self.socialize viewEntity:entity longitude:nil latitude:nil];
-    
-    
+    if(entityLike == nil)
+        [self.socialize getLikesForEntityKey:[entity key] first:nil last:nil];
 }
 
 #pragma Socialize Action view delefate
