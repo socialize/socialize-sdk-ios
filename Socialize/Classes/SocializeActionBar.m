@@ -132,8 +132,7 @@
             entity = [(id<SocializeEntity>)object retain];          
             [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:NO withCommentsCount:[NSNumber numberWithInt:entity.comments]];
             
-            if(entityView == nil)
-                [self.socialize viewEntity:entity longitude:nil latitude:nil];
+
         }
     }    
 }
@@ -149,14 +148,15 @@
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
 {
+    [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:0] withLikesCount:[NSNumber numberWithInt:0] isLiked:NO withCommentsCount:[NSNumber numberWithInt:0]];
     if([service isKindOfClass:[SocializeAuthenticateService class]])
     {
         [super service:service didFail:error];
     }
     else
-    {   
-        [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:0] withLikesCount:[NSNumber numberWithInt:0] isLiked:NO withCommentsCount:[NSNumber numberWithInt:0]];
-        [self showAllertWithText:[error localizedDescription] andTitle:@"Get entiry failed"];  
+    {       
+        if(![[error localizedDescription] isEqualToString:@"Entity does not exist."])
+            [self showAllertWithText:[error localizedDescription] andTitle:@"Get entiry failed"];  
     }
 }
 
@@ -172,6 +172,8 @@
 -(void)afterAnonymouslyLoginAction
 {
     [self.socialize getEntityByKey:[entity key]];
+    if(entityView == nil)
+        [self.socialize viewEntity:entity longitude:nil latitude:nil];
 }
 
 #pragma Socialize Action view delefate
