@@ -120,7 +120,7 @@
 		  onButton:_likeButton
 		  withSelector:@selector(likeButtonPressed:)];
 
-	//[self addSubview:_likeButton];
+	[self addSubview:_likeButton];
         
 	_viewCounter.userInteractionEnabled = NO;
 	_viewCounter.hidden = YES;
@@ -294,6 +294,17 @@
 		[button setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0)]; // Left inset is the negative of image width.
 }
 
+- (void)lockButtons
+{
+    _likeButton.enabled = NO;
+    _commentButton.enabled = NO;    
+}
+- (void)unlockButtons
+{
+    _likeButton.enabled = YES;
+    _commentButton.enabled = YES;
+}
+
 #pragma mark Socialize Delegate
 
 -(void)commentButtonPressed:(id)sender
@@ -320,12 +331,7 @@
 #pragma -
 - (void)drawRect:(CGRect)rect 
 {	
-	[super drawRect:rect];
-//    UIImage* backgroundImage = [UIImage imageNamed:@"action-bar-bg.png"];
-//	[[backgroundImage stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5] 
-//			drawInRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
-//					blendMode:kCGBlendModeMultiply alpha:1.0];
-    
+	[super drawRect:rect];   
 	[[[UIImage imageNamed:@"action-bar-bg.png"] stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5] 
      drawInRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
      blendMode:kCGBlendModeMultiply alpha:1.0];

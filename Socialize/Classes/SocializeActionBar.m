@@ -28,6 +28,7 @@
 #import "SocializeActionBar.h"
 #import "SocializeActionView.h"
 #import "SocializeAuthenticateService.h"
+#import "SocializeLikeService.h"
 #import "SocializeCommentsTableViewController.h"
 #import "UIButton+Socialize.h"
 #import "UINavigationBarBackground.h"
@@ -36,9 +37,18 @@
 
 #define ACTION_PANE_HEIGHT 44
 
+@interface SocializeActionBar()
+@property(nonatomic, retain) id<SocializeLike> entityLike;
+@property(nonatomic, retain) id<SocializeView> entityView;
+@property(nonatomic, retain) id<SocializeEntity> entity;
+@end
+
 @implementation SocializeActionBar
 
 @synthesize parentViewController;
+@synthesize entity;
+@synthesize entityLike;
+@synthesize entityView;
 
 +(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url
 {
@@ -54,7 +64,7 @@
     if(self)
     {
         viewRect = CGRectMake(0, parentViewSize.height - ACTION_PANE_HEIGHT, parentViewSize.width,  ACTION_PANE_HEIGHT);
-        entity = [[self.socialize createObjectForProtocol:@protocol(SocializeEntity)] retain];
+        self.entity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
         [entity setKey:url];
     }
     return self;
@@ -66,7 +76,7 @@
     if(self)
     {
         viewRect = CGRectMake(0, parentViewSize.height - ACTION_PANE_HEIGHT, parentViewSize.width,  ACTION_PANE_HEIGHT);
-        entity = [socEntity retain];
+        self.entity = socEntity;
     }
     return self;
 }
@@ -74,6 +84,8 @@
 - (void)dealloc
 {
     [entity release];
+    [entityView release];
+    [entityLike release];
     [(SocializeActionView*)self.view setDelegate: nil];
     [comentsNavController release];
     self.parentViewController = nil;
@@ -128,21 +140,34 @@
         id<SocializeObject> object = [dataArray objectAtIndex:0];
         if ([object conformsToProtocol:@protocol(SocializeEntity)])
         {
-            [entity release];
-            entity = [(id<SocializeEntity>)object retain];          
-            [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:NO withCommentsCount:[NSNumber numberWithInt:entity.comments]];
+            self.entity = (id<SocializeEntity>)object;          
+            [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:entityLike!=nil withCommentsCount:[NSNumber numberWithInt:entity.comments]];
             
 
         }
     }    
 }
 
+-(void)service:(SocializeService *)service didDelete:(id<SocializeObject>)object
+{
+    [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes-1] liked:NO];
+    self.entityLike = nil;
+    [(SocializeActionView*)self.view unlockButtons];
+    
+}
+
 -(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object
 {
     if([object conformsToProtocol:@protocol(SocializeView)])
     {
-        entityView = [(id<SocializeView>)object retain];
+        self.entityView = (id<SocializeView>)object;
         [(SocializeActionView*)self.view updateViewsCount:[NSNumber numberWithInt:entityView.entity.views]];
+    }
+    if([object conformsToProtocol:@protocol(SocializeLike)])
+    {
+        self.entityLike = (id<SocializeLike>)object;
+        [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes] liked:YES];
+        [(SocializeActionView*)self.view unlockButtons];
     } 
 }
 
@@ -156,7 +181,10 @@
     else
     {       
         if(![[error localizedDescription] isEqualToString:@"Entity does not exist."])
-            [self showAllertWithText:[error localizedDescription] andTitle:@"Get entiry failed"];  
+            [self showAllertWithText:[error localizedDescription] andTitle:@"Get entiry failed"];
+        
+        if([service isKindOfClass:[SocializeLikeService class]])
+            [(SocializeActionView*)self.view unlockButtons];
     }
 }
 
@@ -174,6 +202,8 @@
     [self.socialize getEntityByKey:[entity key]];
     if(entityView == nil)
         [self.socialize viewEntity:entity longitude:nil latitude:nil];
+    
+    
 }
 
 #pragma Socialize Action view delefate
@@ -185,7 +215,12 @@
 
 -(void)likeButtonTouched:(id)sender
 {
+    [(SocializeActionView*)self.view lockButtons];
     
+    if(entityLike)
+        [self.socialize unlikeEntity: entityLike];
+    else
+        [self.socialize likeEntityWithKey:[entity key] longitude:nil latitude:nil];
 }
 
 @end

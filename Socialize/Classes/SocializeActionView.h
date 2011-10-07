@@ -42,6 +42,8 @@
 - (void)updateLikesCount:(NSNumber*) likesCount liked: (BOOL)isLiked;
 - (void)updateCommentsCount: (NSNumber*) commentsCount;
 - (void)updateIsLiked: (BOOL)isLiked;
+- (void)lockButtons;
+- (void)unlockButtons;
 
 @property (nonatomic, assign) id<SocializeActionViewDelegate> delegate;
 @property (nonatomic, readonly) BOOL isLiked;

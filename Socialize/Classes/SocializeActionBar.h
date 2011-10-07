@@ -32,6 +32,7 @@
 @class SocializeCommentsTableViewController;
 @protocol SocializeView;
 @protocol SocializeEntity;
+@protocol SocializeLike;
 
 @interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate> {
     @private
@@ -41,6 +42,7 @@
     
     id<SocializeView> entityView;
     id<SocializeEntity> entity;
+    id<SocializeLike> entityLike;
 }
 
 @property(nonatomic, assign) UIViewController* parentViewController;
