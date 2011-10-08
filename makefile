@@ -40,3 +40,6 @@ sphinx_doc:
 	export LC_ALL=en_US.UTF-8;\
 	export LC_CTYPE=en_US.UTF-8;\
 	ant -buildfile ./sphinx_doc.xml
+
+sample-debug:
+	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "SampleSdkApp" -configuration Debug -sdk iphonesimulator build	
