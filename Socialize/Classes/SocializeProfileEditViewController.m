@@ -43,7 +43,7 @@
 	self.title = @"Edit Profile";
 	self.tableView.separatorColor = [UIColor blackColor];
 	self.tableView.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
-
+    self.tableView.accessibilityLabel = @"edit profile";
     UIColor *tableBackgroundColor = [UIColor colorWithRed:50/255.0f green:58/255.0f blue:67/255.0f alpha:1.0];
     self.tableView.backgroundColor = tableBackgroundColor;
 
@@ -86,8 +86,6 @@
 	self.navigationItem.rightBarButtonItem.enabled = YES;
 	
 	NSIndexPath * indexPath = self.editValueViewController.indexPath;
-	
-	DebugLog(@"Index path section=%i, row=%i", indexPath.section, indexPath.row);
 	
 	[self.keyValueDictionary setObject:self.editValueViewController.editValueField.text 
 								 forKey:[keysToEdit objectAtIndex:indexPath.row]];
