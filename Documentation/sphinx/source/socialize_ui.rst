@@ -14,7 +14,7 @@ To incorporate the Socialize UI views into your app you need to be authenticated
 
 .. raw:: html
 
-       <script src="https://gist.github.com/1266132.js?file=appDelegate.m"></script>
+    <script src="https://gist.github.com/1274157.js?file=appDelegate.m"></script>
 
 In the next release we will add anonymous authentication in the UI stuff.
 

@@ -13,6 +13,7 @@
 + (id)scenarioToAuthenticate;
 + (id)scenarioToCreateEntity;
 + (id)scenarioToGetEntity;
++ (id)scenarioToTestUserProfile;
 + (id)scenarioToCreateComment;
 + (id)scenarioToGetComments;
 + (id)scenarioToLikeAndUnlikeEntity;

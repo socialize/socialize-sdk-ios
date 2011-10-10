@@ -1224,7 +1224,6 @@
 		5CC3DAB1137881B900B11B78 = {
 			isa = PBXGroup;
 			children = (
-				AAAFE945143564B100851C73 /* GHUnitIOS.framework */,
 				AAAFE86214355F1B00851C73 /* SampleSdkApp */,
 				6DFBFE52141FDC890030DE32 /* ThirdPartyLibs */,
 				5CC3DAC31378824800B11B78 /* Socialize */,
@@ -1247,6 +1246,7 @@
 		5CC3DAC01378824800B11B78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAAFE945143564B100851C73 /* GHUnitIOS.framework */,
 				AAB2DEE5143A796300C3C1F5 /* libOCMock.a */,
 				AAAFE93B1435633300851C73 /* CoreLocation.framework */,
 				AAAFE93C1435633300851C73 /* MapKit.framework */,

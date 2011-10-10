@@ -114,6 +114,7 @@
     }
     
 	self.editValueField.placeholder = self.title;
+    self.editValueField.accessibilityLabel = self.title;
 	self.editValueField.text = self.valueToEdit;
 	[self.editValueField becomeFirstResponder];
 	
