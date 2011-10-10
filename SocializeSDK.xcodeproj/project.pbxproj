@@ -141,7 +141,6 @@
 		1636372F13AB289500403879 /* SocializeCommentsServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */; };
 		1636373313AB28DD00403879 /* SocializeCommentsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636373113AB28DA00403879 /* SocializeCommentsService.m */; };
 		1636373713AB5D8E00403879 /* SocializeCommentJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636373513AB5D8E00403879 /* SocializeCommentJSONFormatter.m */; };
-		1638C523143DC96A00538659 /* SocializeActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 1638C521143DC96A00538659 /* SocializeActionBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1638C524143DC96A00538659 /* SocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638C522143DC96A00538659 /* SocializeActionBar.m */; };
 		1638C529143DC98E00538659 /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638C527143DC98E00538659 /* TestSocializeActionBar.m */; };
 		1638C52A143DC98E00538659 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1638C528143DC98E00538659 /* TestSocializeActionBar.xib */; };
@@ -165,19 +164,10 @@
 		1670BE5F13C6EBF5000CC441 /* SocializeLikeFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5E13C6EBF5000CC441 /* SocializeLikeFormatterTests.m */; };
 		1670BE6213C6EC04000CC441 /* SocializeShareFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE6113C6EC04000CC441 /* SocializeShareFormatterTests.m */; };
 		167E10971443141E004E4C1B /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 167E10961443141E004E4C1B /* libprofile_rt.dylib */; };
-		167E11B7144324E4004E4C1B /* Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11B6144324E4004E4C1B /* Socialize.h */; };
-		167E11BA14432570004E4C1B /* SocializeEditValueTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11B814432570004E4C1B /* SocializeEditValueTableViewCell.h */; };
 		167E11BB14432570004E4C1B /* SocializeEditValueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 167E11B914432570004E4C1B /* SocializeEditValueTableViewCell.m */; };
-		167E11BD144325A7004E4C1B /* SocializeObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11BC144325A7004E4C1B /* SocializeObjects.h */; };
-		167E11BF144325D2004E4C1B /* SocializePrivateDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11BE144325D2004E4C1B /* SocializePrivateDefinitions.h */; };
-		167E11C6144325F9004E4C1B /* SocializeProfileEditTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C0144325F9004E4C1B /* SocializeProfileEditTableViewCell.h */; };
 		167E11C7144325F9004E4C1B /* SocializeProfileEditTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 167E11C1144325F9004E4C1B /* SocializeProfileEditTableViewCell.m */; };
-		167E11C8144325F9004E4C1B /* SocializeProfileEditValueController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C2144325F9004E4C1B /* SocializeProfileEditValueController.h */; };
 		167E11C9144325F9004E4C1B /* SocializeProfileEditValueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167E11C3144325F9004E4C1B /* SocializeProfileEditValueController.m */; };
-		167E11CA144325F9004E4C1B /* SocializeProfileEditViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C4144325F9004E4C1B /* SocializeProfileEditViewController.h */; };
 		167E11CB144325F9004E4C1B /* SocializeProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167E11C5144325F9004E4C1B /* SocializeProfileEditViewController.m */; };
-		167E11CD1443261E004E4C1B /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11CC1443261E004E4C1B /* SocializeServiceDelegate.h */; };
-		167E11D01443265C004E4C1B /* UIImage+Resize.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11CE1443265C004E4C1B /* UIImage+Resize.h */; };
 		167E11D11443265C004E4C1B /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 167E11CF1443265C004E4C1B /* UIImage+Resize.m */; };
 		1681BD9013F555DC00EC6042 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1681BD7813F555DC00EC6042 /* FBDialog.bundle */; };
 		1681BD9313F555DC00EC6042 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 1681BD7C13F555DC00EC6042 /* NSObject+SBJSON.m */; };
@@ -399,25 +389,6 @@
 		AA3D69551432ADEF00DA77AC /* socialize-profileimage-large-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694B1432ADEF00DA77AC /* socialize-profileimage-large-default@2x.png */; };
 		AA3D69561432ADEF00DA77AC /* socialize-sectionheader-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694C1432ADEF00DA77AC /* socialize-sectionheader-bg.png */; };
 		AA3D69571432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694D1432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png */; };
-		AAAFE5CA143556DA00851C73 /* SocializeActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A7C51402BF6E004B3A46 /* SocializeActionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5CC143556FC00851C73 /* SocializeBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16075490143302E4002E5A38 /* SocializeBaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5CD143556FC00851C73 /* SocializeProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 160754891432FBA4002E5A38 /* SocializeProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5CE143556FC00851C73 /* SocializePostCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BDBE13F55BCB00EC6042 /* SocializePostCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5CF143556FC00851C73 /* SocializeCommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* SocializeCommentDetailsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5D0143556FC00851C73 /* SocializeCommentsTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5D11435578E00851C73 /* SocializeActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D296B1393FED80065C0CB /* SocializeActivity.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5D21435578E00851C73 /* SocializeApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D296D1393FED90065C0CB /* SocializeApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5D31435578E00851C73 /* SocializeComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D296F1393FEDA0065C0CB /* SocializeComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5D41435578E00851C73 /* SocializeEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29711393FEDB0065C0CB /* SocializeEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5D51435578E00851C73 /* SocializeObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29731393FEDC0065C0CB /* SocializeObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5D61435578E00851C73 /* SocializeUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D29751393FEDC0065C0CB /* SocializeUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5D71435578E00851C73 /* SocializeFullUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 166ACED914346B6400B28AF6 /* SocializeFullUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5D81435578E00851C73 /* SocializeLike.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D49743D13B2958D00463D23 /* SocializeLike.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5D91435578E00851C73 /* SocializeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D144D0013BCE8AD001D8E0A /* SocializeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5DA1435578E00851C73 /* SocializeShare.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D9A0BA113BE1BA600AE949C /* SocializeShare.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5DB1435578E00851C73 /* SocializeError.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D205A3813C3D77C00D0645E /* SocializeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5DD143557B900851C73 /* _Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C21C0C21396BF8300CF2B9F /* _Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAAFE5DE1435583D00851C73 /* SocializeCommonDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAFE5E614355BF900851C73 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		AAAFE5E714355BF900851C73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
 		AAAFE5E814355BF900851C73 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
@@ -1806,45 +1777,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		5CC3DABC1378824700B11B78 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AAAFE5CA143556DA00851C73 /* SocializeActionView.h in Headers */,
-				AAAFE5CC143556FC00851C73 /* SocializeBaseViewController.h in Headers */,
-				AAAFE5CD143556FC00851C73 /* SocializeProfileViewController.h in Headers */,
-				AAAFE5CE143556FC00851C73 /* SocializePostCommentViewController.h in Headers */,
-				AAAFE5CF143556FC00851C73 /* SocializeCommentDetailsViewController.h in Headers */,
-				AAAFE5D0143556FC00851C73 /* SocializeCommentsTableViewController.h in Headers */,
-				AAAFE5D11435578E00851C73 /* SocializeActivity.h in Headers */,
-				AAAFE5D21435578E00851C73 /* SocializeApplication.h in Headers */,
-				AAAFE5D31435578E00851C73 /* SocializeComment.h in Headers */,
-				AAAFE5D41435578E00851C73 /* SocializeEntity.h in Headers */,
-				AAAFE5D51435578E00851C73 /* SocializeObject.h in Headers */,
-				AAAFE5D61435578E00851C73 /* SocializeUser.h in Headers */,
-				AAAFE5D71435578E00851C73 /* SocializeFullUser.h in Headers */,
-				AAAFE5D81435578E00851C73 /* SocializeLike.h in Headers */,
-				AAAFE5D91435578E00851C73 /* SocializeView.h in Headers */,
-				AAAFE5DA1435578E00851C73 /* SocializeShare.h in Headers */,
-				AAAFE5DB1435578E00851C73 /* SocializeError.h in Headers */,
-				AAAFE5DD143557B900851C73 /* _Socialize.h in Headers */,
-				AAAFE5DE1435583D00851C73 /* SocializeCommonDefinitions.h in Headers */,
-				1638C523143DC96A00538659 /* SocializeActionBar.h in Headers */,
-				167E11B7144324E4004E4C1B /* Socialize.h in Headers */,
-				167E11BA14432570004E4C1B /* SocializeEditValueTableViewCell.h in Headers */,
-				167E11BD144325A7004E4C1B /* SocializeObjects.h in Headers */,
-				167E11BF144325D2004E4C1B /* SocializePrivateDefinitions.h in Headers */,
-				167E11C6144325F9004E4C1B /* SocializeProfileEditTableViewCell.h in Headers */,
-				167E11C8144325F9004E4C1B /* SocializeProfileEditValueController.h in Headers */,
-				167E11CA144325F9004E4C1B /* SocializeProfileEditViewController.h in Headers */,
-				167E11CD1443261E004E4C1B /* SocializeServiceDelegate.h in Headers */,
-				167E11D01443265C004E4C1B /* UIImage+Resize.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		5CC3DABD1378824700B11B78 /* Socialize */ = {
 			isa = PBXNativeTarget;
@@ -1852,8 +1784,9 @@
 			buildPhases = (
 				5CC3DABA1378824700B11B78 /* Sources */,
 				5CC3DABB1378824700B11B78 /* Frameworks */,
-				5CC3DABC1378824700B11B78 /* Headers */,
+				AA4031B214437EBA00E139EA /* Export Public Headers */,
 				9A4D2985139400060065C0CB /* Resources */,
+				AAB8F4751443713900441515 /* Dump Xcode Environment */,
 			);
 			buildRules = (
 			);
@@ -2223,7 +2156,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Paths\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/libSocialize.a\"\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/libSocialize.a\"\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}\"\nEMBEDDEDFRAMEWORK=\"${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\n\n# Create framework directory structure.\nrm -rf \"${EMBEDDEDFRAMEWORK}\" &>/dev/null\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\"\n#mkdir -p \"${EMBEDDEDFRAMEWORK}/Resources\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Headers\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Resources\"\n\n# Generate universal binary from desktop, device, and simulator builds.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\"\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/Versions/A\"\ncd \"${FRAMEWORK}\"\nln -sf \"A\" \"Versions/Current\"\nln -sf \"Versions/Current/Headers\" \"Headers\"\nln -sf \"Versions/Current/Resources\" \"Resources\"\nln -sf \"Versions/Current/${PRODUCT_NAME}\" \"${PRODUCT_NAME}\"\n\n# Copy public headers into framework\necho \"Copying headers from ${CONFIGURATION_BUILD_DIR}/socialize-public-headers/Socialize-iOS/. to Headers in $PWD\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/socialize-public-headers/${PRODUCT_NAME}/.\" \"Headers\"\n\ncd \"${EMBEDDEDFRAMEWORK}\"\nln -sf \"${FRAMEWORK}/Versions/Current/Resources\" \"Resources\"";
+			shellScript = "# Paths\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/libSocialize.a\"\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/libSocialize.a\"\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}\"\nEMBEDDEDFRAMEWORK=\"${PROJECT_DIR}/build/${PRODUCT_NAME}.embeddedframework\"\nFRAMEWORK=\"${EMBEDDEDFRAMEWORK}/${PRODUCT_NAME}.framework\"\n\n# Create framework directory structure.\nrm -rf \"${EMBEDDEDFRAMEWORK}\" &>/dev/null\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\"\n#mkdir -p \"${EMBEDDEDFRAMEWORK}/Resources\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Headers\"\nmkdir -p \"${FRAMEWORK}/Versions/A/Resources\"\n\n# Generate universal binary from desktop, device, and simulator builds.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\"\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/Versions/A\"\ncd \"${FRAMEWORK}\"\nln -sf \"A\" \"Versions/Current\"\nln -sf \"Versions/Current/Headers\" \"Headers\"\nln -sf \"Versions/Current/Resources\" \"Resources\"\nln -sf \"Versions/Current/${PRODUCT_NAME}\" \"${PRODUCT_NAME}\"\n\n# Copy public headers into framework\nHEADERS=\"${CONFIGURATION_BUILD_DIR}/socialize-public-headers/Socialize\"\necho \"Copying headers from ${HEADERS}\"\ncp -R \"${HEADERS}/.\" \"Headers\"\n\ncd \"${EMBEDDEDFRAMEWORK}\"\nln -sf \"${FRAMEWORK}/Versions/Current/Resources\" \"Resources\"";
 			showEnvVarsInLog = 0;
 		};
 		16B48DDA13DEEE7900EE0A92 /* Copy Resources */ = {
@@ -2252,6 +2185,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh RunTests.sh";
 			shellScript = "";
+		};
+		AA4031B214437EBA00E139EA /* Export Public Headers */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Export Public Headers";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./util/export-public-headers.sh";
+			showEnvVarsInLog = 0;
+		};
+		AAB8F4751443713900441515 /* Dump Xcode Environment */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Dump Xcode Environment";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/util/dump-xcode-env.sh";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
