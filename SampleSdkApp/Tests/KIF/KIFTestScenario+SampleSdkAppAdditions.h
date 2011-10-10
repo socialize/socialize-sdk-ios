@@ -13,10 +13,11 @@
 + (id)scenarioToAuthenticate;
 + (id)scenarioToCreateEntity;
 + (id)scenarioToGetEntity;
++ (id)scenarioToTestUserProfile;
 + (id)scenarioToCreateComment;
 + (id)scenarioToGetComments;
 + (id)scenarioToLikeAndUnlikeEntity;
 + (id)scenarioToViewEntity;
-+ (id)scenarioToTestCreateCommentViewController;
-
++ (id)scenarioToTestCommentsViewControllerWithAutoAuth;
++ (id)scenarioToShowActionBar;
 @end

@@ -55,22 +55,26 @@ BOOL useBackgroundImage = NO;
 	if(image == nil){ //might be called with NULL argument
 		return;
 	}
-	if( [self viewWithTag: 1234] ) {
-		//there is already a tag with this view so we're exiting this function.
-		return;
-	}
-	
-	UIImageView *aTabBarBackground = [[UIImageView alloc]initWithImage:image];
-	aTabBarBackground.frame = CGRectMake(0, 0, 320, self.frame.size.height);
-    
-	self.translucent = NO;
-	aTabBarBackground.tag = bgTag;
-	aTabBarBackground.autoresizingMask = UIViewAutoresizingFlexibleHeight; // Resizes image during rotation
-    
-	[self addSubview:aTabBarBackground];
-	[self sendSubviewToBack:aTabBarBackground];
-	[aTabBarBackground release];
 
+    if ([UINavigationBar instancesRespondToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
+        [self setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    } else {
+        if( [self viewWithTag: 1234] ) {
+            //there is already a tag with this view so we're exiting this function.
+            return;
+        }
+        
+        UIImageView *aTabBarBackground = [[UIImageView alloc]initWithImage:image];
+        aTabBarBackground.frame = CGRectMake(0, 0, 320, self.frame.size.height);
+        
+        self.translucent = NO;
+        aTabBarBackground.tag = bgTag;
+        aTabBarBackground.autoresizingMask = UIViewAutoresizingFlexibleHeight; // Resizes image during rotation
+        
+        [self addSubview:aTabBarBackground];
+        [self sendSubviewToBack:aTabBarBackground];
+        [aTabBarBackground release];
+    }
 }
 
 -(void)removeBackgroundWithTag:(NSInteger)bgTag {

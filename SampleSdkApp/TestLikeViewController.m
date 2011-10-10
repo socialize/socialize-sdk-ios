@@ -7,7 +7,7 @@
 //
 
 #import "TestLikeViewController.h"
-#import <Socialize-iOS/Socialize.h>
+#import <Socialize/Socialize.h>
 #import "UIButton+Socialize.h"
 
 #define SUCCESS @"success"
@@ -187,7 +187,7 @@
         commentsLabel.text = [NSString stringWithFormat:@"%d", like.entity.comments];
         likesLabel.text = [NSString stringWithFormat:@"%d", like.entity.likes];
         sharesLabel.text = [NSString stringWithFormat:@"%d", like.entity.shares];
-        [_likes addObject:[like retain]];
+        [_likes addObject:like];
     }
     else{
         resultsView.hidden = YES;

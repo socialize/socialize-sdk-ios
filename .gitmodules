@@ -3,4 +3,4 @@
 	url = git://github.com/square/KIF.git
 [submodule "Frameworks/OCMock"]
 	path = Frameworks/OCMock
-	url = git@github.com:socialize/ocmock.git
+	url = git://github.com/socialize/ocmock.git

@@ -13,4 +13,11 @@
 
 @synthesize error = _error, payload = _payload;
 
+-(void)dealloc
+{
+    [_error release];
+    [_payload release];
+    [super dealloc];
+}
+
 @end

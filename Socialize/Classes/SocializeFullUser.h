@@ -85,7 +85,7 @@
 @end
 
 /**Private implementation of <SocializeUser> protocol*/
-@interface SocializeFullUser : SocializeObject<SocializeFullUser> 
+@interface SocializeFullUser : SocializeObject<SocializeFullUser, NSCopying> 
 {
 @private
     NSString* _firstName;
@@ -107,23 +107,23 @@
     NSArray* _thirdPartyAuth;
 }
 
-@property (nonatomic, retain) NSString* firstName;
-@property (nonatomic, retain) NSString* lastName;
-@property (nonatomic, retain) NSString* userName;
-@property (nonatomic, retain) NSString* description;
-@property (nonatomic, retain) NSString* sex;
-@property (nonatomic, retain) NSString* location;
-@property (nonatomic, retain) NSString* smallImageUrl;
-@property (nonatomic, retain) NSString* medium_image_uri;
-@property (nonatomic, retain) NSString* large_image_uri;
-@property (nonatomic, retain) NSString* meta;
+@property (nonatomic, copy) NSString* firstName;
+@property (nonatomic, copy) NSString* lastName;
+@property (nonatomic, copy) NSString* userName;
+@property (nonatomic, copy) NSString* description;
+@property (nonatomic, copy) NSString* sex;
+@property (nonatomic, copy) NSString* location;
+@property (nonatomic, copy) NSString* smallImageUrl;
+@property (nonatomic, copy) NSString* medium_image_uri;
+@property (nonatomic, copy) NSString* large_image_uri;
+@property (nonatomic, copy) NSString* meta;
 
 @property (nonatomic, assign) int views;
 @property (nonatomic, assign) int likes;
 @property (nonatomic, assign) int comments;
 @property (nonatomic, assign) int share;
 
-@property (nonatomic, retain) NSArray* thirdPartyAuth;
+@property (nonatomic, copy) NSArray* thirdPartyAuth;
 
 -(NSNumber*)userIdForThirdPartyAuth:(ThirdPartyAuthName) auth;
 

@@ -2,7 +2,7 @@
 BUILD_DIR="./build"
 ZIP_FILE="../socialize_ios.zip"
 PACKAGE_DIR="${BUILD_DIR}/package_dir"
-EMBEDDED_FRAMEWORK="./build/Socialize-iOS.embeddedframework"
+EMBEDDED_FRAMEWORK="./build/Socialize.embeddedframework"
 
 if [ -e $PACKAGE_DIR ]
 then

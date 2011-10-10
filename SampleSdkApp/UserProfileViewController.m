@@ -85,7 +85,7 @@
     [self.progressView startAnimating];
     
     [self.service setDelegate:self];
-    [self.service.userService currentUser];
+    [self.service.userService getCurrentUser];
     [super viewDidAppear:animated];
 }
 

@@ -1,4 +1,4 @@
-//
+	//
 //  SocializeAuthenticateService.m
 //  SocializeSDK
 //
@@ -23,11 +23,10 @@
 @end
 
 @implementation SocializeAuthenticateService
-@synthesize authenticatedUser = _authenticatedUser;
+@synthesize authenticatedUser;
 
 -(void)dealloc
 {
-    self.authenticatedUser = nil;
     [fbAuth release]; fbAuth = nil;
     [super dealloc];
 }
@@ -158,12 +157,10 @@
             OAToken *requestToken = [[OAToken alloc] initWithKey:token secret:token_secret];
             [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
             [requestToken release]; requestToken = nil;
-            id<SocializeUser> user = [_objectCreator createObjectFromDictionary:[jsonObject objectForKey:@"user"] forProtocol:@protocol(SocializeUser)];
-            self.authenticatedUser = user;
             [self persistUserInfo:[jsonObject objectForKey:@"user"]];
             
             if (([((NSObject*)_delegate) respondsToSelector:@selector(didAuthenticate:)]) )
-                [_delegate didAuthenticate:user];
+                [_delegate didAuthenticate:self.authenticatedUser];
         }
         else if (([((NSObject*)_delegate) respondsToSelector:@selector(service:didFail:)]) ) {
             [_delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
@@ -196,23 +193,14 @@
     [defaults removeObjectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
     
     [defaults synchronize]; 
-    
-    self.authenticatedUser = nil;
 }
 
-- (id<SocializeUser>)authenticatedUser {
-    // Immediately return if already resident
-    if (_authenticatedUser != nil) {
-        return _authenticatedUser;
-    }
-    
+- (id<SocializeUser>)authenticatedUser {    
     // Also search persistent storage
     NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
     if (userData != nil) {
         NSDictionary *info = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
-        id<SocializeUser> user = [_objectCreator createObjectFromDictionary:info forProtocol:@protocol(SocializeUser)];
-        _authenticatedUser = [user retain];
-        return _authenticatedUser;
+        return [_objectCreator createObjectFromDictionary:info forProtocol:@protocol(SocializeUser)];;
     }
     
     // Not available

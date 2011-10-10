@@ -32,6 +32,7 @@
 @synthesize entityService = _entityService;
 @synthesize viewService = _viewService;
 @synthesize userService = _userService;
+@synthesize delegate = _delegate;
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
@@ -50,6 +51,7 @@
     self = [super init];
     if(self != nil)
     {
+        _delegate = delegate;
         _objectFactory = [[SocializeObjectFactory alloc]init];
         SocializeConfiguration* configurationLoader = [[SocializeConfiguration alloc]init];
         NSDictionary* configuration = [configurationLoader.configurationInfo objectForKey:@"URLs"];
@@ -132,6 +134,7 @@
 }
 
 -(void)setDelegate:(id<SocializeServiceDelegate>)delegate{
+    _delegate = delegate;
     _authService.delegate = delegate;
     _likeService.delegate = delegate;
     _commentsService.delegate = delegate;
@@ -279,14 +282,24 @@
 }
 
 #pragma user related stuff
--(void)currentUser
+-(void)getCurrentUser
 {
-    [_userService currentUser];
+    [_userService getCurrentUser];
 }
 
--(void)userWithId:(int)userId
+-(void)getUserWithId:(int)userId
 {
-    [_userService userWithId:userId];
+    [_userService getUserWithId:userId];
+}
+
+-(void)updateUserProfile:(id<SocializeFullUser>)user
+{
+    [_userService updateUser:user];
+}
+
+-(void)updateUserProfile:(id<SocializeFullUser>)user profileImage:(id)profileImage
+{
+    [_userService updateUser:user profileImage:profileImage];
 }
 
 

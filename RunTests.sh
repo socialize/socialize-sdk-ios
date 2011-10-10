@@ -56,26 +56,40 @@ unset DYLD_ROOT_PATH
 unset DYLD_FRAMEWORK_PATH
 unset IPHONE_SIMULATOR_ROOT
 
+OUTPUT_DIR="${PROJECT_DIR}/build/"
+
 if [ -n "$WRITE_JUNIT_XML" ]; then
   MY_TMPDIR=`/usr/bin/getconf DARWIN_USER_TEMP_DIR`
   RESULTS_DIR="${MY_TMPDIR}test-results"
 
   if [ -d "$RESULTS_DIR" ]; then
-	`$CP -r "$RESULTS_DIR" "$BUILD_DIR" && rm -r "$RESULTS_DIR"`
+	`$CP -r "$RESULTS_DIR" "$OUTPUT_DIR" && rm -r "$RESULTS_DIR"`
   fi
 fi
 
-if [ ! -e "$BUILD_DIR/test-coverage/" ]; then
-    mkdir -p "$BUILD_DIR/test-coverage/"
+if [ ! -e "$OUTPUT_DIR/test-coverage/" ]; then
+    mkdir -p "$OUTPUT_DIR/test-coverage/"
 
 fi
 
-eval "lcov --test-name \"Socialize iOS SDK\" --output-file \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info --capture --directory \"$CONFIGURATION_TEMP_DIR\"/Socialize.build/Objects-normal/i386/"
+eval "lcov --test-name \"Socialize iOS SDK\" --output-file \"$OUTPUT_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info --capture --directory \"$CONFIGURATION_TEMP_DIR\"/Socialize.build/Objects-normal/i386/"
 
-eval "lcov --extract \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info \"*/Socialize*/Classes*\" --output-file \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage.info"
+eval "lcov --extract \"$OUTPUT_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info \"*/Socialize*/Classes*\" --output-file \"$OUTPUT_DIR\"/test-coverage/SocializeSDK-iOS-Coverage.info"
 
-eval "rm -rf \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info"
+eval "rm -rf \"$OUTPUT_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info"
 
-eval "genhtml --title \"Socialize SDK iOS\"  --output-directory \"$BUILD_DIR\"/test-coverage \"$BUILD_DIR\"/test-coverage/SocializeSDK-iOS-Coverage.info --legend"
+eval "genhtml --title \"Socialize SDK iOS\"  --output-directory \"$OUTPUT_DIR\"/test-coverage \"$OUTPUT_DIR\"/test-coverage/SocializeSDK-iOS-Coverage.info --legend"
+
+#if [ ! -e "${PROJECT_DIR}/build/test-coverage/" ]; then
+#    mkdir -p "${PROJECT_DIR}/build/test-coverage/"
+#fi
+
+#`$CP -r "$BUILD_DIR/test-coverage/" "${PROJECT_DIR}/build/test-coverage/" && rm -r "$BUILD_DIR/test-coverage/"`
+
+#if [ ! -e "$BUILD_DIR/test-results/" ]; then
+#mkdir -p "$BUILD_DIR/test-results/"
+#fi
+
+#`$CP -r "$BUILD_DIR/test-results/" "${PROJECT_DIR}/build/test-results/" && rm -r "$BUILD_DIR/test-results/"`
 
 exit $RETVAL

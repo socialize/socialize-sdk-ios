@@ -38,10 +38,9 @@ Socialize authentication service is the authentication engine. It performs anony
 @interface SocializeAuthenticateService : SocializeService<SocializeFBSessionDelegate> {
     @private
     FacebookAuthenticator* fbAuth;
-    id<SocializeUser> _authenticatedUser;
 }
 
-@property (nonatomic, retain) id<SocializeUser>authenticatedUser;
+@property (nonatomic, readonly) id<SocializeUser>authenticatedUser;
 
 /**@name Anonymous authentication*/
 /**

@@ -20,6 +20,7 @@
 @synthesize keysToEdit;
 @synthesize keyValueDictionary;
 @synthesize profileImage;
+@synthesize editValueViewController = _editValueViewController;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -42,26 +43,26 @@
 	self.title = @"Edit Profile";
 	self.tableView.separatorColor = [UIColor blackColor];
 	self.tableView.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
-
+    self.tableView.accessibilityLabel = @"edit profile";
     UIColor *tableBackgroundColor = [UIColor colorWithRed:50/255.0f green:58/255.0f blue:67/255.0f alpha:1.0];
     self.tableView.backgroundColor = tableBackgroundColor;
 
 	self.navigationItem.rightBarButtonItem.enabled = NO;
 		
-	editValueViewController = [[SocializeProfileEditValueController alloc] initWithStyle:UITableViewStyleGrouped];
+	self.editValueViewController = [[SocializeProfileEditValueController alloc] initWithStyle:UITableViewStyleGrouped];
 	
     UIButton * cancelButton = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
     [cancelButton addTarget:self action:@selector(editValueCancel:) forControlEvents:UIControlEventTouchUpInside];
     
 	UIBarButtonItem  * editLeftItem = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
-	editValueViewController.navigationItem.leftBarButtonItem = editLeftItem;	
+	self.editValueViewController.navigationItem.leftBarButtonItem = editLeftItem;	
 	[editLeftItem release];
 
     UIButton * saveButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
     [saveButton addTarget:self action:@selector(editValueSave:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem  * editRightItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
-    editValueViewController.navigationItem.rightBarButtonItem = editRightItem;	
+    self.editValueViewController.navigationItem.rightBarButtonItem = editRightItem;	
     [editRightItem release];
 	
     if (keyValueDictionary == nil) 
@@ -84,11 +85,9 @@
 	[self.navigationController popViewControllerAnimated:YES];
 	self.navigationItem.rightBarButtonItem.enabled = YES;
 	
-	NSIndexPath * indexPath = editValueViewController.indexPath;
+	NSIndexPath * indexPath = self.editValueViewController.indexPath;
 	
-	DebugLog(@"Index path section=%i, row=%i", indexPath.section, indexPath.row);
-	
-	[self.keyValueDictionary setObject:editValueViewController.editValueField.text 
+	[self.keyValueDictionary setObject:self.editValueViewController.editValueField.text 
 								 forKey:[keysToEdit objectAtIndex:indexPath.row]];
 	
 	[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
@@ -212,6 +211,9 @@
 	[cell.theImageView.layer setCornerRadius:4];
 	[cell.theImageView.layer setMasksToBounds:YES];
 	
+    // Temporarily disable selection until profile is editable on server [See #19262347]
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
 	return cell;
 	
 	
@@ -400,7 +402,6 @@
 
 #pragma mark -
 #pragma mark Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     // Navigation logic may go here. Create and push another view controller.
@@ -409,7 +410,8 @@
 	cell.selected = NO;
 	if (indexPath.section ==0) 
 	{
-		[self showActionSheet];
+// Temporarily disabled [#19262347]
+//		[self showActionSheet];
 		return;
 	}
 	
@@ -418,16 +420,16 @@
 	[titleText deleteCharactersInRange:NSMakeRange(0, 1)];
 	[titleText insertString:upperCaseCharacter atIndex:0];
 	
-	editValueViewController.title = titleText;
-	editValueViewController.indexPath = indexPath;
+	self.editValueViewController.title = titleText;
+	self.editValueViewController.indexPath = indexPath;
 	
 	 //editValueViewController.editValueField.text = cell.valueLabel.text;
-	editValueViewController.navigationItem.rightBarButtonItem.enabled = NO;
-	editValueViewController.didEdit = NO;
-	editValueViewController.valueToEdit = cell.valueLabel.text;
+	self.editValueViewController.navigationItem.rightBarButtonItem.enabled = NO;
+	self.editValueViewController.didEdit = NO;
+	self.editValueViewController.valueToEdit = cell.valueLabel.text;
 	// ..
     // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:editValueViewController animated:YES];
+    [self.navigationController pushViewController:self.editValueViewController animated:YES];
     
 }
 
@@ -462,7 +464,7 @@
 - (void)dealloc 
 {
 
-	[editValueViewController release]; editValueViewController = nil;
+	[_editValueViewController release]; _editValueViewController = nil;
     [profileEditViewCell release]; profileEditViewCell = nil;
     [cellBackgroundColors release]; cellBackgroundColors = nil;
 	[keyValueDictionary release]; keyValueDictionary = nil;

@@ -15,8 +15,9 @@
 #import "LikeListViewController.h"
 #import "TestViewCreationViewController.h"
 #import "AuthenticateViewController.h"
-#import <Socialize-iOS/Socialize.h>
+#import <Socialize/Socialize.h>
 #import "TestShowSmallUserInfo.h"
+#import "TestSocializeActionBar.h"
 #import "InputBox.h"
 
 @implementation TestListController
@@ -31,8 +32,9 @@
         NSString *path = [[NSBundle mainBundle] pathForResource:
                           @"tests" ofType:@"plist"];
 
-        NSMutableDictionary *myDic = [[NSDictionary alloc] initWithContentsOfFile: path];
+        NSMutableDictionary *myDic = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
         _testList = [[NSMutableArray alloc] initWithArray:[myDic allValues]];
+        [myDic release];
 
     }
     return self;
@@ -53,7 +55,7 @@
 
 -(NSString*) getEntityKey
 {
-    InputBox* input = [[InputBox alloc] init];
+    InputBox* input = [[InputBox new]autorelease];
     [input showInputMessageWithTitle:@"Enter entity URL" andPlaceholder:@"Full URL"];
     return input.inputMsg;
 }
@@ -71,21 +73,7 @@
     
     _tableView.backgroundColor = [UIColor lightGrayColor];
     self.navigationItem.title = @"Tests";
-    
     //removing the previous authentication view controller
-    
-/*    NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray: self.navigationController.viewControllers];
-    UIViewController* viewControllerToRemove = nil;
-    
-    for (id object in allViewControllers) {
-        if ([object isKindOfClass:[AuthenticateViewController class]])
-            viewControllerToRemove = object;
-    }
-    if (viewControllerToRemove){
-        [allViewControllers removeObjectIdenticalTo: viewControllerToRemove];
-        self.navigationController.viewControllers = allViewControllers;
-    }
- */
 }
 
 - (void)viewDidUnload
@@ -186,10 +174,34 @@
             controller = [[TestShowSmallUserInfo alloc]initWithNibName:@"TestShowSmallUserInfo" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
+        case 9:
+        {
+            UIViewController *profile = [SocializeProfileViewController currentUserProfileWithDelegate:self];
+            [self.navigationController presentModalViewController:profile animated:YES];
+            break;
+        }
+        case 10:
+        {
+            NSString* url = [self getEntityKey];
+            if(url)
+            {
+                controller = [[TestSocializeActionBar alloc] initWithEntityUrl:url];
+                [self.navigationController pushViewController:controller animated:YES];
+                [controller release];
+            }
+            break;
+        }
 
     }    
 }
 
 #pragma mark - Service delegete
+
+- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController {
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
 
 @end

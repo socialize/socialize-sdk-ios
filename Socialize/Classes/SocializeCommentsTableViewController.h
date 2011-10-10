@@ -55,6 +55,7 @@
 @property (retain, nonatomic) IBOutlet UIView		*backgroundView;
 @property (retain, nonatomic) IBOutlet UIView		*roundedContainerView;
 @property (retain, nonatomic) IBOutlet UIImageView	*noCommentsIconView;
+@property (retain, nonatomic) UIBarButtonItem	*doneButton;
 
 @property (nonatomic, assign) IBOutlet CommentsTableViewCell     *commentsCell;
 @property (retain, nonatomic) IBOutlet CommentsTableFooterView   *footerView;
@@ -63,6 +64,7 @@
 @property (assign, nonatomic) BOOL                      isLoading;
 @property (retain, nonatomic) TableBGInfoView           *informationView;
 
++ (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName;
 
 -(IBAction)addCommentButtonPressed:(id)sender;
 -(void)addNoCommentsBackground;

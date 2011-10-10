@@ -29,7 +29,6 @@
 #define OADataFetcher SocializeOADataFetcher
 #define OAHMAC_SHA1SignatureProvider SocializeOAHMAC_SHA1SignatureProvider
 #define OAMutableURLRequest SocializeOAMutableURLRequest
-#define OAMutableURLRequest SocializeOAMutableURLRequest
 #define OAPlaintextSignatureProvider SocializeOAPlaintextSignatureProvider
 #define OARequestParameter SocializeOARequestParameter
 #define OAServiceTicket SocializeOAServiceTicket

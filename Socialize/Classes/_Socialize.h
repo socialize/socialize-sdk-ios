@@ -38,11 +38,12 @@
 @class SocializeEntityService;
 @class SocializeViewService;
 @class SocializeUserService;
+@class UIImage;
 
 /**
 This is a general facade of the   SDK`s API. Through it a third party developers could use the API.
  
-@warning *Note:* Every thing in socialize revolves around the concept of “Entity”. An entity could be liked, unliked, commented on etc. 
+@warning *Note:* Every thing in socialize revolves around the concept of "Entity". An entity could be liked, unliked, commented on etc. 
 In Socialize an entity can only be a url. So when creating an entity always remember to input the key for the entity as a url 
 otherwise you will get a failure.  
 */
@@ -71,6 +72,8 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeViewService            *viewService;
 /**Get access to the user service via <SocializeViewService>.*/
 @property (nonatomic, retain) SocializeUserService            *userService;
+/**Current delegate*/
+@property (nonatomic, assign) id<SocializeServiceDelegate> delegate;
 
 /** @name Initialization */
 
@@ -192,7 +195,7 @@ otherwise you will get a failure.
 /**
  Third party authentication via SDK service.
  
- Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.
+ Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user's profile.
  
  Find information how to get API key and secret on [Socialize.](http://www.getsocialize.com/)
  
@@ -218,7 +221,7 @@ otherwise you will get a failure.
 /**
  Third party authentication via SDK service.
  
- Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.
+ Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user's profile.
  
  Find information how to get API key and secret on [Socialize.](http://www.getsocialize.com/)
  
@@ -271,7 +274,7 @@ otherwise you will get a failure.
 /**
  Third party authentication.
  
- Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.
+ Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user's profile.
  
  Find information how to get API key and secert on [Socialize.](http://www.getsocialize.com/)
  
@@ -394,7 +397,7 @@ otherwise you will get a failure.
  Successful call of this method invokes <[SocializeServiceDelegate service:didFetchElements:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
- Parameters first and last (OPTIONAL) : specify range to do pagination by entity’s key. First is included, and last is excluded.
+ Parameters first and last (OPTIONAL) : specify range to do pagination by entity's key. First is included, and last is excluded.
  
  Default values:
     first = 0
@@ -454,6 +457,8 @@ otherwise you will get a failure.
  */
 -(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 
--(void)currentUser;
--(void)userWithId:(int)userId;
+-(void)getCurrentUser;
+-(void)getUserWithId:(int)userId;
+-(void)updateUserProfile:(id<SocializeFullUser>)user;
+-(void)updateUserProfile:(id<SocializeFullUser>)user profileImage:(UIImage*)profileImage;
 @end

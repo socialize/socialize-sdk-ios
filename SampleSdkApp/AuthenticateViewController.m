@@ -7,7 +7,7 @@
 //
 
 #import "AuthenticateViewController.h"
-#import <Socialize-iOS/Socialize.h>
+#import <Socialize/Socialize.h>
 #import "TestListController.h"
 #import "UIButton+Socialize.h"
 
@@ -97,6 +97,12 @@
     
     _loadingView = [LoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 
     [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text];
+
+}
+
+-(IBAction)noAuthentication:(id)sender {
+    TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil];
+    [self.navigationController pushViewController:listController animated:YES];
 
 }
 

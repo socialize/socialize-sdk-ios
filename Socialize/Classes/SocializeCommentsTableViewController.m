@@ -43,6 +43,16 @@
 @synthesize topToolBar;
 @synthesize commentsCell;
 @synthesize footerView;
+@synthesize doneButton = _doneButton;
+
++ (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName {
+    SocializeCommentsTableViewController* commentsController = [[[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString:entityName] autorelease];
+    UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
+    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:commentsController] autorelease];
+    [nav.navigationBar setBackgroundImage:navImage];
+    return nav;
+
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entryUrlString:(NSString*) entryUrlString {
     
@@ -69,6 +79,19 @@
 - (void) viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];   
+}
+
+- (UIBarButtonItem*)doneButton {
+    if (_doneButton == nil) {
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Done"];
+        [button addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        _doneButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    }
+    return _doneButton;
+}
+
+- (void)doneButtonPressed:(id)button {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark SocializeService Delegate
@@ -99,6 +122,7 @@
 -(void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray{
  
     _isLoading = NO;
+    [_arrayOfComments release]; _arrayOfComments = nil;
     _arrayOfComments = [dataArray retain];
     [self stopLoadAnimation];
     [self.tableView reloadData];
@@ -114,8 +138,7 @@
 #pragma mark -
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-
+- (void)viewDidLoad {   
     [super viewDidLoad];
 
     self.title = @"Comments List";
@@ -139,6 +162,8 @@
     
     self.tableView.accessibilityLabel = @"Comments Table View";
 	self.view.clipsToBounds = YES;
+    
+    self.navigationItem.leftBarButtonItem = self.doneButton;
 }
 
 #pragma mark tableFooterViewDelegate
@@ -202,7 +227,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)newTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
 	static NSString *MyIdentifier = @"socializecommentcell";
 	CommentsTableViewCell *cell = (CommentsTableViewCell*)[newTableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	
@@ -311,12 +335,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 	
-	return 80;
+	return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
 	
-	return 80;
+	return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {

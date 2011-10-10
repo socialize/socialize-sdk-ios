@@ -36,8 +36,8 @@
 }
 
 /**Error description*/
-@property (nonatomic, retain) NSString* error;
+@property (nonatomic, copy) NSString* error;
 /**Request description*/
-@property (nonatomic, retain) NSString* payload;
+@property (nonatomic, copy) NSString* payload;
 
 @end

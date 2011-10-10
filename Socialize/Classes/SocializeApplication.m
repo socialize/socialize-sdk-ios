@@ -13,4 +13,10 @@
 
 @synthesize name = _name;
 
+-(void)dealloc
+{
+    [_name release];
+    [super dealloc];
+}
+
 @end

@@ -20,7 +20,6 @@
 	NSArray						*keysToEdit;
 	NSMutableDictionary		   *keyValueDictionary;
 	SocializeProfileEditTableViewCell   *profileEditViewCell;
-	SocializeProfileEditValueController *editValueViewController;
 	UIImage					*profileImage;
 	UIImagePickerController *imagePicker;
 	NSArray					*cellBackgroundColors;
@@ -31,6 +30,7 @@
 @property (nonatomic, retain) NSArray * keysToEdit;
 @property (nonatomic, retain) NSMutableDictionary * keyValueDictionary;
 @property (nonatomic, readonly) UIImage * profileImage;
+@property (nonatomic, retain) SocializeProfileEditValueController *editValueViewController;
 
 -(void)setProfileImage:(UIImage *) profileImage;
 -(void)updateDidFailWithError:(NSError *)error;

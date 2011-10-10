@@ -13,6 +13,7 @@
 #import "LoadingView.h"
 @interface SocializeProfileViewController ()
 -(void)showEditController;
+-(void)hideEditController;
 @end
 
 @implementation SocializeProfileViewController
@@ -25,8 +26,23 @@
 @synthesize userLocationLabel = userLocationLabel_;
 @synthesize profileImageView = profileImageView_;
 @synthesize profileImageActivityIndicator = profileImageActivityIndicator_;
-@synthesize profileEditViewController = socializeProfileEditViewController_;
+@synthesize profileEditViewController = profileEditViewController_;
 @synthesize loadingView = loadingView_;
+@synthesize socialize = socialize_;
+@synthesize navigationControllerForEdit = navigationControllerForEdit_;
+
++ (UIViewController*)socializeProfileViewControllerWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
+    SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
+    profile.delegate = delegate;
+    UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
+    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:profile] autorelease];
+    [nav.navigationBar setBackgroundImage:navImage];
+    return nav;
+}
+
++ (UIViewController*)currentUserProfileWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
+    return [self socializeProfileViewControllerWithDelegate:delegate];
+}
 
 - (void)dealloc {
     self.doneButton = nil;
@@ -37,12 +53,22 @@
     self.userLocationLabel = nil;
     self.profileImageView = nil;
     self.profileEditViewController = nil;
+    self.navigationControllerForEdit = nil;
+    self.socialize = nil;
     
     [super dealloc];
 }
 
 - (id)init {
     return [super initWithNibName:@"SocializeProfileViewController" bundle:nil];
+}
+
+- (Socialize*)socialize {
+    if (socialize_ == nil) {
+        socialize_ = [[Socialize alloc] initWithDelegate:self];
+    }
+    
+    return socialize_;
 }
 
 - (UIBarButtonItem*)doneButton {
@@ -99,6 +125,75 @@
     return [UIImage imageNamed:@"socialize-profileimage-large-default.png"];
 }
 
+- (void)configureViewsForUser:(id<SocializeFullUser>)user {
+    
+    // Configure labels
+    self.userNameLabel.text = user.userName;
+    if (user.firstName != nil && user.lastName != nil) {
+        self.userDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+    }
+    
+    // Configure the profile image
+    NSString *url = user.smallImageUrl;
+    
+    if (url != nil) {
+        UIImage *existing = [[ImagesCache sharedImagesCache] imageFromCache:url];
+        if (existing != nil) {
+            self.profileImageView.image = existing;
+        } else {
+            CompleteBlock complete = [[^(ImagesCache* imgs){
+                UIImage *loadedImage = [imgs imageFromCache:url];
+                if (loadedImage != nil) {
+                    self.profileImageView.image = loadedImage;
+                } else {
+                    self.profileImageView.image = [self defaultProfileImage];
+                }
+                [self.profileImageActivityIndicator stopAnimating];
+            } copy] autorelease];
+            
+            [self.profileImageActivityIndicator startAnimating];
+            [[ImagesCache sharedImagesCache] loadImageFromUrl:url
+                                               completeAction:complete];
+        }
+    }
+}
+
+- (void)startLoading {
+    self.loadingView = [LoadingView loadingViewInView:self.view];
+}
+
+- (void)stopLoading {
+    [self.loadingView removeView]; self.loadingView = nil;
+}
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error
+{
+    [self stopLoading];
+    
+    UIAlertView *msg;
+    msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:[NSString stringWithFormat: @"cannot get profile %@", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [msg show];
+    [msg release];
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
+{
+    [self stopLoading];
+    
+    id<SocializeFullUser> user = [[dataArray objectAtIndex:0] retain];
+    NSAssert([user conformsToProtocol:@protocol(SocializeFullUser)], @"Not a socialize user");
+    self.user = user;
+    [self configureViewsForUser:self.user];
+}
+
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object
+{
+    [self stopLoading];
+    self.user = (id<SocializeFullUser>)object;
+    [self configureViewsForUser:self.user];
+    [self hideEditController];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -110,36 +205,10 @@
     self.profileImageView.image = [self defaultProfileImage];
 
     if (self.user != nil) {
-        
-        // Configure labels
-        self.userNameLabel.text = self.user.userName;
-        if (self.user.firstName != nil && self.user.lastName != nil) {
-            self.userDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.firstName, self.user.lastName];
-        }
-        
-        // Configure the profile image
-        NSString *url = self.user.smallImageUrl;
-        
-        if (url != nil) {
-            UIImage *existing = [[ImagesCache sharedImagesCache] imageFromCache:url];
-            if (existing != nil) {
-                self.profileImageView.image = existing;
-            } else {
-                CompleteBlock complete = [[^(ImagesCache* imgs){
-                    UIImage *loadedImage = [imgs imageFromCache:url];
-                    if (loadedImage != nil) {
-                        self.profileImageView.image = loadedImage;
-                    } else {
-                        self.profileImageView.image = [self defaultProfileImage];
-                    }
-                    [self.profileImageActivityIndicator stopAnimating];
-                } copy] autorelease];
-                
-                [self.profileImageActivityIndicator startAnimating];
-                [[ImagesCache sharedImagesCache] loadImageFromUrl:url
-                                                   completeAction:complete];
-            }
-        }
+        [self configureViewsForUser:self.user];
+    } else {
+        [self startLoading];
+        [self.socialize getCurrentUser];
     }
 }
 
@@ -191,68 +260,79 @@
 	return dictionary;
 }
 
+- (SocializeProfileEditViewController*)profileEditViewController {
+    if (profileEditViewController_ == nil) {
+        profileEditViewController_ = [[SocializeProfileEditViewController alloc]
+                                     initWithStyle:UITableViewStyleGrouped];
+        profileEditViewController_.delegate = self;
+
+        NSMutableDictionary * dictionary = [self valueDictionary];
+        
+        NSArray * keyArray = [NSArray arrayWithObjects:@"first name", @"last name", @"bio", nil];
+        
+        profileEditViewController_.keyValueDictionary = dictionary;
+        profileEditViewController_.keysToEdit = keyArray;
+        
+        profileEditViewController_.navigationItem.rightBarButtonItem.enabled = NO;
+        
+        UIButton * cancelButton = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
+        [cancelButton addTarget:self action:@selector(editVCCancel:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIBarButtonItem * editLeftItem = [[UIBarButtonItem alloc]initWithCustomView:cancelButton];
+        profileEditViewController_.navigationItem.leftBarButtonItem = editLeftItem;	
+        [editLeftItem release];
+        
+        
+        UIButton * saveButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
+        [saveButton addTarget:self action:@selector(editVCSave:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIBarButtonItem  * editRightItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
+        profileEditViewController_.navigationItem.rightBarButtonItem = editRightItem;	
+        [editRightItem release];
+        
+
+    }
+    return profileEditViewController_;
+}
+
+- (UINavigationController*)navigationControllerForEdit {
+    if (navigationControllerForEdit_ == nil) {
+        UIImage * socializeNavBarBackground = [UIImage imageNamed:@"socialize-navbar-bg.png"];
+        
+        navigationControllerForEdit_ = [[UINavigationController alloc] 
+                                        initWithRootViewController:self.profileEditViewController];
+        [navigationControllerForEdit_.navigationBar setBackgroundImage:socializeNavBarBackground];
+        navigationControllerForEdit_.delegate = self;
+        navigationControllerForEdit_.wantsFullScreenLayout = YES;
+    }
+    return navigationControllerForEdit_;
+}
 
 -(void)showEditController
 {
-    self.profileEditViewController = [[[SocializeProfileEditViewController alloc]
-                                       initWithStyle:UITableViewStyleGrouped]
-                                      autorelease];
-    self.profileEditViewController.delegate = self;
 
-	NSMutableDictionary * dictionary = [self valueDictionary];
-	
-	NSArray * keyArray = [NSArray arrayWithObjects:@"first name", @"last name", @"bio", nil];
-	
-	self.profileEditViewController.keyValueDictionary = dictionary;
-	self.profileEditViewController.keysToEdit = keyArray;
-	
-	self.profileEditViewController.navigationItem.rightBarButtonItem.enabled = NO;
-	
-    UIButton * cancelButton = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
-    [cancelButton addTarget:self action:@selector(editVCCancel:) forControlEvents:UIControlEventTouchUpInside];
-    
-	UIBarButtonItem * editLeftItem = [[UIBarButtonItem alloc]initWithCustomView:cancelButton];
-	self.profileEditViewController.navigationItem.leftBarButtonItem = editLeftItem;	
-	[editLeftItem release];
-	
-	
-    UIButton * saveButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
-	[saveButton addTarget:self action:@selector(editVCSave:) forControlEvents:UIControlEventTouchUpInside];
-    
-	UIBarButtonItem  * editRightItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
-	self.profileEditViewController.navigationItem.rightBarButtonItem = editRightItem;	
-	[editRightItem release];
-    
-	UIImage * socializeNavBarBackground = [UIImage imageNamed:@"socialize-navbar-bg.png"];
-	UINavigationController * navController = [[UINavigationController alloc] 
-											  initWithRootViewController:self.profileEditViewController];
-	
-	[navController.navigationBar setBackgroundImage:socializeNavBarBackground];
-	navController.delegate = self;
-	navController.wantsFullScreenLayout = YES;
-	
 	CGRect windowFrame = self.view.window.frame;
 	CGRect navFrame = CGRectMake(0,windowFrame.size.height, windowFrame.size.width, windowFrame.size.height);
-	navController.view.frame = navFrame;
-	navController.navigationBar.tintColor = [UIColor blackColor];
+	self.navigationControllerForEdit.view.frame = navFrame;
+	self.navigationControllerForEdit.navigationBar.tintColor = [UIColor blackColor];
 	
-	[self.view.window addSubview:navController.view];
+	[self.view.window addSubview:self.navigationControllerForEdit.view];
 	
-	
+	self.profileEditViewController.profileImage = self.profileImageView.image;
+    
 	CGRect newNavFrame = CGRectMake(0, 0, navFrame.size.width, navFrame.size.height);
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(prepare)];
 	[UIView setAnimationDuration:0.4];
-	navController.view.frame = newNavFrame;
+	self.navigationControllerForEdit.view.frame = newNavFrame;
 	[UIView commitAnimations];
 }
 
 
 -(void)hideEditController
 {
-    [self.loadingView removeView];
-	self.loadingView = nil;
+    [self stopLoading];
 	CGRect windowFrame = self.view.window.frame;
 	CGRect navFrame = CGRectMake(0,windowFrame.size.height, windowFrame.size.width, windowFrame.size.height);
     
@@ -274,7 +354,8 @@
 	self.loadingView = [LoadingView loadingViewInView:self.profileEditViewController.navigationController.view];
 	self.profileEditViewController.navigationItem.rightBarButtonItem.enabled = NO;
     
-	UIImage* newProfileImage = self.profileEditViewController.profileImage;
+    
+    /*
 	if (newProfileImage)
 	{
 		self.profileImageView.image = newProfileImage;
@@ -282,18 +363,20 @@
 	else 
 	{
 		self.profileImageView.image = [UIImage imageNamed:@"socialize_resources/socialize-profileimage-large-default.png"];
-	}
+	}*/
     
-//	NSString* firstName = [self.profileEditViewController.keyValueDictionary valueForKey:@"first name"];
-//	NSString* lastName = [self.profileEditViewController.keyValueDictionary valueForKey:@"last name"];
-//	NSString* description = [self.profileEditViewController.keyValueDictionary valueForKey:@"bio"];
+    id<SocializeFullUser> userCopy = [(id)self.user copy];
     
-    /*
-	[self.theService postToProfileFirstName:firstName
-								   lastName:lastName 
-								description:description 
-									  image:newProfileImage];
-	*/
+	[userCopy setFirstName:[self.profileEditViewController.keyValueDictionary valueForKey:@"first name"]];
+	[userCopy setLastName:[self.profileEditViewController.keyValueDictionary valueForKey:@"last name"]];
+	[userCopy setDescription:[self.profileEditViewController.keyValueDictionary valueForKey:@"bio"]];
+
+    [self.socialize updateUserProfile:userCopy profileImage:nil];
+
+//FIXME reenable profile image once puts are back in [#19262347]
+//    UIImage* newProfileImage = self.profileEditViewController.profileImage;
+//    [self.socialize updateUserProfile:userCopy profileImage:newProfileImage];
+    
 }
 
 -(void)editVCCancel:(id)button

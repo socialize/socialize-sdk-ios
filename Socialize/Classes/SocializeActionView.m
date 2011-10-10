@@ -27,7 +27,6 @@
 #define PADDING_BETWEEN_TEXT_ICON 2
 
 @interface SocializeActionView()
--(CGSize)getSizeOfString:(NSString*)string withFont:(UIFont*)font;
 -(void)instantiateButtons;
 -(void)setupButtons;
 -(void)setButtonLabel:(NSString*)labelString 
@@ -55,6 +54,7 @@
         [self instantiateButtons];
 		[self setupButtons];
         self.accessibilityLabel = @"Socialize Action View";
+        self.backgroundColor = [UIColor whiteColor];
 	}
     return self;
 }
@@ -83,6 +83,11 @@
     _likeButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
     _viewCounter = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
     _activityIndicator = [[UIActivityIndicatorView alloc] init];
+    
+    _likeButton.accessibilityLabel = @"like button";
+    _viewCounter.accessibilityLabel = @"view counter";
+    _commentButton.accessibilityLabel = @"comment button";
+
 }
 
 -(void)setupButtons {
@@ -142,17 +147,13 @@
 	[_activityIndicator startAnimating];
 }
 
--(CGSize)getSizeOfString:(NSString*)string withFont:(UIFont*)font{
-    return [string sizeWithFont:font];
-}
-
 - (CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName 
 {
 	if ([labelString length] <= 0) {
 		return CGSizeZero;
 	}
 	
-	CGSize labelSize = [self getSizeOfString:labelString withFont:_buttonLabelFont];
+	CGSize labelSize = [labelString sizeWithFont:_buttonLabelFont];
 	if (iconName)
 		labelSize = CGSizeMake(labelSize.width + (2 * BUTTON_PADDINGS) + PADDING_BETWEEN_TEXT_ICON + 5 + ICON_WIDTH, BUTTON_HEIGHT);
 	else
@@ -186,7 +187,9 @@
     buttonOrigin.x = PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
     
+
 	[_viewCounter setTitle:formattedValue forState:UIControlStateNormal];
+//    _viewCounter.accessibilityValue= formattedValue;
 	_viewCounter.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
 	[_viewCounter setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON - 2)]; // Left inset is the negative of image width.
 	[_viewCounter setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
@@ -298,6 +301,17 @@
 		[button setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0)]; // Left inset is the negative of image width.
 }
 
+- (void)lockButtons
+{
+    _likeButton.enabled = NO;
+    _commentButton.enabled = NO;    
+}
+- (void)unlockButtons
+{
+    _likeButton.enabled = YES;
+    _commentButton.enabled = YES;
+}
+
 #pragma mark Socialize Delegate
 
 -(void)commentButtonPressed:(id)sender
@@ -324,11 +338,10 @@
 #pragma -
 - (void)drawRect:(CGRect)rect 
 {	
-	[super drawRect:rect];
-    UIImage* backgroundImage = [UIImage imageNamed:@"action-bar-bg.png"];
-	[[backgroundImage stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5] 
-			drawInRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
-					blendMode:kCGBlendModeMultiply alpha:1.0];
+	[super drawRect:rect];   
+	[[[UIImage imageNamed:@"action-bar-bg.png"] stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5] 
+     drawInRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
+     blendMode:kCGBlendModeMultiply alpha:1.0];
 }
 
 

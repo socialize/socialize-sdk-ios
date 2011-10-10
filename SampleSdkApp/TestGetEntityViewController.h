@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Socialize-iOS/Socialize.h>
+#import <Socialize/Socialize.h>
 #import "LoadingView.h"
 
 @interface TestGetEntityViewController : UIViewController<SocializeServiceDelegate> {
@@ -17,7 +17,7 @@
     IBOutlet UITextField* getEntityTextField;
     Socialize*            _socialize;
     LoadingView*          _loadingView;
-    SocializeActionView*  _actionView;
+//    SocializeActionView*  _actionView;
     
     /*info view */
     

@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SampleSdkAppAppDelegate.h"
-#import <Socialize-iOS/Socialize.h>
+#import <Socialize/Socialize.h>
 #import "TestListController.h"
 #include <AvailabilityMacros.h>
 
@@ -33,7 +33,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{  
     UIViewController* rootViewController = nil;
     
     _socialize = [[Socialize alloc] initWithDelegate:self];
