@@ -2548,10 +2548,7 @@
 					"\"$(SRCROOT)/Socialize/Classes/OAuthConsumer\"",
 					"\"$(SRCROOT)/unitTests/Libraries\"",
 				);
-				OTHER_CFLAGS = (
-					"-fprofile-arcs",
-					"-ftest-coverage",
-				);
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "socialize-public-headers/Socialize";
@@ -2584,10 +2581,7 @@
 					"\"$(SRCROOT)/Socialize/Classes/OAuthConsumer\"",
 					"\"$(SRCROOT)/unitTests/Libraries\"",
 				);
-				OTHER_CFLAGS = (
-					"-fprofile-arcs",
-					"-ftest-coverage",
-				);
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "socialize-public-headers/Socialize";
@@ -2717,10 +2711,13 @@
 				);
 				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/usr/lib\"",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
-					"-lgcov",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -2747,11 +2744,14 @@
 				);
 				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/usr/lib\"",
+				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
-					"-lgcov",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
