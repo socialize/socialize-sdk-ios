@@ -18,9 +18,11 @@
 
 @implementation KIFTestStep (SampleSdkAppAdditions)
 
-+ (id)stepToReturnToList;
++ (NSArray*)stepsToReturnToList;
 {
-    return [KIFTestStep stepWithDescription:@"Reset the application state." executionBlock:^(KIFTestStep *step, NSError **error) {
+    NSMutableArray *steps = [NSMutableArray array];
+
+    [steps addObject:[KIFTestStep stepWithDescription:@"Reset the application state." executionBlock:^(KIFTestStep *step, NSError **error) {
         BOOL successfulReset = YES;
         
         SampleSdkAppAppDelegate* appDelegate = (SampleSdkAppAppDelegate *)[UIApplication sharedApplication].delegate;
@@ -29,7 +31,10 @@
         // Do the actual reset for your app. Set successfulReset = NO if it fails.
         KIFTestCondition(successfulReset, error, @"Failed to reset the application.");
         return KIFTestStepResultSuccess;
-    }];
+    }]];
+    
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];
+    return steps;
 }
 
 + (NSArray*)stepsToNoAuth
@@ -98,9 +103,9 @@
 + (NSArray*)stepsToCreateEntityWithURL:(NSString*)url name:(NSString*)name;
 {
     NSMutableArray *steps = [NSMutableArray array];
-    [steps addObject:[KIFTestStep stepToReturnToList]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     NSIndexPath *path = [NSIndexPath indexPathForRow:1 inSection:0];
-    [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Create Entity"]];    
     [steps addObject:[KIFTestStep stepToEnterText:url intoViewWithAccessibilityLabel:@"entityField"]];
     if (name != nil) {
@@ -127,9 +132,9 @@
 + (NSArray*)stepsToGetEntityWithURL:(NSString*)url;
 {
     NSMutableArray *steps = [NSMutableArray array];
-    [steps addObject:[KIFTestStep stepToReturnToList]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-    [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Get Entity"]];    
     [steps addObject:[KIFTestStep stepToEnterText:url intoViewWithAccessibilityLabel:@"entityField"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"getEntityButton"]];
@@ -141,9 +146,9 @@
 {
     NSMutableArray *steps = [NSMutableArray array];
     
-    [steps addObject:[KIFTestStep stepToReturnToList]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     NSIndexPath *path = [NSIndexPath indexPathForRow:2 inSection:0];
-    [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Create Comment"]];    
     [steps addObject:[KIFTestStep stepToEnterText:entity intoViewWithAccessibilityLabel:@"entityField"]];
     [steps addObject:[KIFTestStep stepToEnterText:comment intoViewWithAccessibilityLabel:@"commentField"]];
@@ -156,9 +161,9 @@
 {
     NSMutableArray *steps = [NSMutableArray array];
     
-    [steps addObject:[KIFTestStep stepToReturnToList]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     NSIndexPath *path = [NSIndexPath indexPathForRow:7 inSection:0];
-    [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Input Field"]];
     [steps addObject:[KIFTestStep stepToEnterText:entity intoViewWithAccessibilityLabel:@"Input Field"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Enter"]];
@@ -177,9 +182,9 @@
 + (NSArray*)stepsToGetCommentsForEntity:(NSString*)entity
 {
     NSMutableArray *steps = [NSMutableArray array];
-    [steps addObject:[KIFTestStep stepToReturnToList]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     NSIndexPath *path = [NSIndexPath indexPathForRow:3 inSection:0];
-    [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Fetch Comment"]];    
     [steps addObject:[KIFTestStep stepToEnterText:entity intoViewWithAccessibilityLabel:@"entityField"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"getCommentsButton"]];
@@ -189,7 +194,7 @@
 
 + (NSArray*)stepsToVerifyCommentExistsForEntity:(NSString*)entity comment:(NSString*)comment {
     NSMutableArray *steps = [NSMutableArray array];
-    [steps addObject:[KIFTestStep stepToReturnToList]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     [steps addObjectsFromArray:[self stepsToGetCommentsForEntity:entity]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comment Cell"]];
     [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"Comments Table View" atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
@@ -202,9 +207,9 @@
 {
     NSMutableArray *steps = [NSMutableArray array];
     
-    [steps addObject:[KIFTestStep stepToReturnToList]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     NSIndexPath *path = [NSIndexPath indexPathForRow:4 inSection:0];
-    [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Create a like/unlike"]];    
     [steps addObject:[KIFTestStep stepToEnterText:entity intoViewWithAccessibilityLabel:@"entityField"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"likeButton"]];
@@ -216,9 +221,9 @@
 {
     NSMutableArray *steps = [NSMutableArray array];
     
-    [steps addObject:[KIFTestStep stepToReturnToList]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     NSIndexPath *path = [NSIndexPath indexPathForRow:4 inSection:0];
-    [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Create a like/unlike"]];    
     [steps addObject:[KIFTestStep stepToEnterText:entity intoViewWithAccessibilityLabel:@"entityField"]];
     
@@ -247,9 +252,9 @@
 + (NSArray*)stepsToViewEntityWithURL:(NSString*)url;
 {
     NSMutableArray *steps = [NSMutableArray array];
-    [steps addObject:[KIFTestStep stepToReturnToList]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     NSIndexPath *path = [NSIndexPath indexPathForRow:6 inSection:0];
-    [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Test create a view"]];
     [steps addObject:[KIFTestStep stepToEnterText:url intoViewWithAccessibilityLabel:@"entityField"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"createViewButton"]];

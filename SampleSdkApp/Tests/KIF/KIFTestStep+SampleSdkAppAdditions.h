@@ -10,7 +10,7 @@
 
 @interface KIFTestStep (SampleSdkAppAdditions)
 
-+ (id)stepToReturnToList;
++ (NSArray*)stepsToReturnToList;
 + (NSArray*)stepsToNoAuth;
 + (NSString *)getRandomURL;
 + (NSArray*)stepsToAuthenticate;
