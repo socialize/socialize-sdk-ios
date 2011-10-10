@@ -687,6 +687,9 @@
 /* Begin PBXProject section */
 		AA2D9E6014352BC100C62B97 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = AA2D9E6314352BC100C62B97 /* Build configuration list for PBXProject "SampleSdkApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -851,7 +854,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "xcodebuild -workspace socialize-sdk-ios.xcworkspace -sdk iphonesimulator4.3 -scheme \"Socialize Framework\" -configuration ${CONFIGURATION} build";
+			shellScript = "make build";
 			showEnvVarsInLog = 0;
 		};
 		AA2DA2CE1435461700C62B97 /* ShellScript */ = {
@@ -992,11 +995,16 @@
 					"DEBUG=1",
 					"RUN_KIF_TESTS=1",
 				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks/KIF/\"/**";
 				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp Integration Tests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks/SymbolCollisionTestLibs\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
 				);
 				PRODUCT_NAME = "SampleSdkApp Integration Tests";
 				WRAPPER_EXTENSION = app;
@@ -1014,11 +1022,16 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SampleSdkApp/SampleSdkApp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "RUN_KIF_TESTS=1";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks/KIF/\"/**";
 				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp Integration Tests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks/SymbolCollisionTestLibs\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
 				);
 				PRODUCT_NAME = "SampleSdkApp Integration Tests";
 				WRAPPER_EXTENSION = app;

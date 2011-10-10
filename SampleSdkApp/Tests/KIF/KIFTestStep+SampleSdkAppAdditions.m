@@ -50,6 +50,30 @@
     return steps;
 }
 
++ (NSArray*)stepsToTestUserProfile {
+    NSMutableArray *steps = [NSMutableArray array];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Edit"]];
+
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Save"]];
+    NSIndexPath *editPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"edit profile" atIndexPath:editPath]];
+    
+    
+    NSString *firstName = @"Test First Name";
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"First name"]]; 
+    [steps addObject:[KIFTestStep stepToEnterText:firstName intoViewWithAccessibilityLabel:@"First name"]]; 
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    //this second "Save" is to save the entire form to the server.  It is need Do Not Remove
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    NSString *firstNameAccessibilityLabel = @"name";
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:firstNameAccessibilityLabel]];
+    [steps addObject:[KIFTestStep stepToCheckAccessibilityLabel:firstNameAccessibilityLabel hasValue:firstName]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
+    return steps;
+}
+
 + (NSArray*)stepsToShowActionBar {
     NSMutableArray *steps = [NSMutableArray array];
     
@@ -58,6 +82,8 @@
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Input Field"]];
     [steps addObject:[KIFTestStep stepToEnterText:[KIFTestStep getRandomURL] intoViewWithAccessibilityLabel:@"Input Field"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Enter"]];
+    [steps addObject:[KIFTestStep stepToCheckAccessibilityLabel:@"view counter" hasValue:@"1"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Tests"]];
     return steps;
 }
 + (NSArray*)stepsToWaitForActionCompleted {
@@ -81,7 +107,7 @@
         [steps addObject:[KIFTestStep stepToEnterText:name intoViewWithAccessibilityLabel:@"nameField"]];
     }
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"createButton"]];
-    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"resultTextField" value:@"success"traits:UIAccessibilityTraitNone]];
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"resultTextField" value:@"success" traits:UIAccessibilityTraitNone]];
 
     return steps;
 }
@@ -224,7 +250,7 @@
     [steps addObject:[KIFTestStep stepToReturnToList]];
     NSIndexPath *path = [NSIndexPath indexPathForRow:6 inSection:0];
     [steps addObject:[KIFTestStep stepToTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
-    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Test create a view"]];    
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Test create a view"]];
     [steps addObject:[KIFTestStep stepToEnterText:url intoViewWithAccessibilityLabel:@"entityField"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"createViewButton"]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"resultTextField" value:@"success"traits:UIAccessibilityTraitNone]];
@@ -239,6 +265,29 @@
     NSString *countString = [NSString stringWithFormat:@"%d", count];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"viewsCount" value:countString traits:UIAccessibilityTraitNone]];
     return steps;
+}
+
++ (id)stepToCheckAccessibilityLabel:(NSString *)label hasValue:(NSString *)hasValue   {
+    NSString *description = [NSString stringWithFormat:@"Check value accessibility label: %@ has value: %@", label, hasValue];
+    return [self stepWithDescription:description executionBlock:^(KIFTestStep *step, NSError **error) {
+        UIAccessibilityElement *element = [[UIApplication sharedApplication] accessibilityElementWithLabel:label];
+        UIView *view = (UIView*)[UIAccessibilityElement viewContainingAccessibilityElement:element];
+        NSString *elementValue = nil;
+        if ([view isKindOfClass:[UIButton class]]) {
+            elementValue = [(UIButton *)view currentTitle];
+        } else {
+            //assume it's a UILabel
+            elementValue = ((UILabel *)view).text;  
+        }
+        if ( [elementValue isEqualToString:hasValue] ) {
+            return KIFTestStepResultSuccess;            
+        } else {
+            NSString *description = [NSString stringWithFormat:@"View with accessibility label \"%@\" has value \"%@\" but expected \"%@\"", label, elementValue, hasValue];
+            *error = [[[NSError alloc] initWithDomain:@"KIFTest" code:KIFTestStepResultFailure 
+                                             userInfo:[NSDictionary dictionaryWithObjectsAndKeys:description, NSLocalizedDescriptionKey, nil]] autorelease];
+            return KIFTestStepResultWait;
+        }
+    }];
 }
 
 + (id)stepToScrollAndTapRowInTableViewWithAccessibilityLabel:(NSString*)tableViewLabel atIndexPath:(NSIndexPath *)indexPath

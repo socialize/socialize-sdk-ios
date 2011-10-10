@@ -33,6 +33,11 @@
     [scenario addStepsFromArray:[KIFTestStep stepsToShowActionBar]];
     return scenario;
 }
++ (id)scenarioToTestUserProfile {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test Socialize User Profiles"];
+    [scenario addStepsFromArray:[KIFTestStep stepsToTestUserProfile]];
+    return scenario;
+}
 
 + (id)scenarioToAuthenticate {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a user can successfully log in."];
