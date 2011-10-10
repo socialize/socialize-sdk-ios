@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Socialize UI &mdash; Socialize iOS SDK v0.5.1 documentation</title>
+    <title>Implementing the UI &mdash; Socialize iOS SDK v0.7.0 documentation</title>
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.5.1',
+        VERSION:     '0.7.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,8 +22,8 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK v0.5.1 documentation" href="index.html" />
-    <link rel="next" title="SDK User Guide (Recommended for users who want to build there own UI)" href="sdk_user_guide.html" />
+    <link rel="top" title="Socialize iOS SDK v0.7.0 documentation" href="index.html" />
+    <link rel="next" title="SDK User Guide" href="sdk_user_guide.html" />
     <link rel="prev" title="Getting Started Guide" href="getting_started.html" /> 
   </head>
   <body>
@@ -31,12 +31,12 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="sdk_user_guide.html" title="SDK User Guide (Recommended for users who want to build there own UI)"
+          <a href="sdk_user_guide.html" title="SDK User Guide"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK v0.5.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK v0.7.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -45,8 +45,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="socialize-ui">
-<h1>Socialize UI<a class="headerlink" href="#socialize-ui" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="implementing-the-ui">
+<h1>Implementing the UI<a class="headerlink" href="#implementing-the-ui" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>As of v0.4.0 of the Socialize SDK we are providing pre-built UI views that can
@@ -55,11 +55,11 @@ these views yourself!</p>
 <div class="section" id="initialize-the-socialize-ui-system">
 <h3>Initialize the Socialize UI System<a class="headerlink" href="#initialize-the-socialize-ui-system" title="Permalink to this headline">¶</a></h3>
 <p>To incorporate the Socialize UI views into your app you need to be authenticated.</p>
-<script src="https://gist.github.com/1229170.js?file=Authentication.m"></script><p>In the next release we will add anonymous authentication in the UI stuff.</p>
+<script src="https://gist.github.com/1274157.js?file=appDelegate.m"></script><p>In the next release we will add anonymous authentication in the UI stuff.</p>
 </div>
 </div>
-<div class="section" id="socialize-comment-view">
-<h2>Socialize Comment View<a class="headerlink" href="#socialize-comment-view" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="comment-view">
+<h2>Comment View<a class="headerlink" href="#comment-view" title="Permalink to this headline">¶</a></h2>
 <p>v0.4.0 of the Socialize SDK introduced the &#8220;Comment View&#8221; which provides the creation and viewing
 of comments associated with an entity (URL).</p>
 <img alt="images/comment_list.png" src="images/comment_list.png" />
@@ -68,7 +68,7 @@ of comments associated with an entity (URL).</p>
 <div class="section" id="displaying-the-comment-view">
 <h3>Displaying the Comment View<a class="headerlink" href="#displaying-the-comment-view" title="Permalink to this headline">¶</a></h3>
 <p>When you want to launch the comment view, simply instantiate and push the commentViewController :</p>
-<script src="https://gist.github.com/1229173.js?file=CommentUI.m"></script></div>
+<script src="https://gist.github.com/1266199.js?file=MyCustomViewController.m"></script></div>
 </div>
 <div class="section" id="socialize-action-bar">
 <h2>Socialize Action Bar<a class="headerlink" href="#socialize-action-bar" title="Permalink to this headline">¶</a></h2>
@@ -85,13 +85,14 @@ of comments associated with an entity (URL).</p>
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Socialize UI</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Implementing the UI</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#socialize-comment-view">Socialize Comment View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comment-view">Comment View</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#socialize-action-bar">Socialize Action Bar</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide (Recommended for users who want to build there own UI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 </ul>
 
         </div>
@@ -102,12 +103,12 @@ of comments associated with an entity (URL).</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="sdk_user_guide.html" title="SDK User Guide (Recommended for users who want to build there own UI)"
+          <a href="sdk_user_guide.html" title="SDK User Guide"
              >next</a></li>
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK v0.5.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK v0.7.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

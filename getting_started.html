@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -5,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started Guide &mdash; Socialize iOS SDK v0.5.1 documentation</title>
+    <title>Getting Started Guide &mdash; Socialize iOS SDK v0.7.0 documentation</title>
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.5.1',
+        VERSION:     '0.7.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,8 +22,8 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK v0.5.1 documentation" href="index.html" />
-    <link rel="next" title="Socialize UI" href="socialize_ui.html" />
+    <link rel="top" title="Socialize iOS SDK v0.7.0 documentation" href="index.html" />
+    <link rel="next" title="Implementing the UI" href="socialize_ui.html" />
     <link rel="prev" title="Socialize iOS SDK" href="index.html" /> 
   </head>
   <body>
@@ -30,12 +31,12 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="socialize_ui.html" title="Socialize UI"
+          <a href="socialize_ui.html" title="Implementing the UI"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK v0.5.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK v0.7.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,8 +53,7 @@
 <li><a class="reference internal" href="#getting-started-guide" id="id1">Getting Started Guide</a><ul>
 <li><a class="reference internal" href="#minimum-requirements" id="id2">Minimum Requirements</a></li>
 <li><a class="reference internal" href="#installing-the-sdk" id="id3">Installing the SDK</a></li>
-<li><a class="reference internal" href="#building-the-sdk" id="id4">Building the SDK</a></li>
-<li><a class="reference internal" href="#next-steps" id="id5">Next Steps...</a></li>
+<li><a class="reference internal" href="#next-steps" id="id4">Next Steps...</a></li>
 </ul>
 </li>
 </ul>
@@ -75,35 +75,17 @@
 <ul>
 <li><p class="first">First of all, you should be sure that Socialize-iOS.framework and resources from the Resources folder were added as the dependence to the correct target.</p>
 </li>
-<li><p class="first">Add <strong>-ObjC</strong>, <strong>-all_load</strong> and <strong>-lgcov</strong> flags to the Other Linker Flags in the build settings of your application target. <em>Please use the flag exactly as it is—the most common mistake here tends to be misspelling or incorrect capitalization.</em></p>
+<li><p class="first">Add <strong>-ObjC</strong> and <strong>-all_load</strong> flag to the Other Linker Flags in the build settings of your application target. <em>Please use the flag exactly as it is—the most common mistake here tends to be misspelling or incorrect capitalization.</em></p>
 <blockquote>
-<div><img alt="images/image00.png" src="images/image00.png" style="width: 700px; height: 550px;" />
+<div><img alt="images/image00.png" src="images/image00.png" style="width: 700px; height: 410px;" />
 </div></blockquote>
 </li>
 </ul>
 </div>
-<div class="section" id="building-the-sdk">
-<h2><a class="toc-backref" href="#id4">Building the SDK</a><a class="headerlink" href="#building-the-sdk" title="Permalink to this headline">¶</a></h2>
-<p>In the case you might need some changes done to the framework, after which you can build the framework using terminal command: &#8220;make build&#8221;. The output of this command’s execution will be the embedded static framework. And to build the sample app use &#8220;build sample&#8221; command.</p>
-<p>To get a successful build you have to change the provision credentials in the make file to your own.</p>
-<ul>
-<li><dl class="first docutils">
-<dt>build sample application</dt>
-<dd><p class="first last">xcodebuild -target SampleSdkApp -configuration Distribution -sdk iphoneos PROVISIONING_PROFILE=&#8221;User provision profile&#8221; CODE_SIGN_IDENTITY=&#8221;iPhone Distribution: user identity&#8221; build*</p>
-</dd>
-</dl>
-</li>
-</ul>
-<p>If you don’t have a valid Apple provision, change the SDK type to the simulator.
-<em>xcodebuild -target SampleSdkApp -configuration Debug -sdk iphonesimulator build</em></p>
-</div>
 <div class="section" id="next-steps">
-<h2><a class="toc-backref" href="#id5">Next Steps...</a><a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
-<p>Once Socialize is installed, you have two options:</p>
-<p>If you want the quickest way to integrate Socialize in your app:</p>
-<p>Go to &#8211;&gt; <a class="reference internal" href="socialize_ui.html"><em>Socialize UI</em></a></p>
-<p>If you want full control over how your social interaction works:</p>
-<p>Go to &#8211;&gt; <a class="reference internal" href="sdk_user_guide.html"><em>SDK User Guide (Recommended for users who want to build there own UI)</em></a></p>
+<h2><a class="toc-backref" href="#id4">Next Steps...</a><a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>Once Socialize is installed, you&#8217;ll want to start adding some user interaction.</p>
+<p>The quickest way to integrate Socialize in your app is by using the packaged UI views.  Get started with the <a class="reference internal" href="socialize_ui.html"><em>Implementing the UI</em></a></p>
 </div>
 </div>
 
@@ -118,12 +100,12 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#minimum-requirements">Minimum Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-the-sdk">Installing the SDK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#building-the-sdk">Building the SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps...</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="socialize_ui.html">Socialize UI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide (Recommended for users who want to build there own UI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialize_ui.html">Implementing the UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 </ul>
 
         </div>
@@ -134,12 +116,12 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="socialize_ui.html" title="Socialize UI"
+          <a href="socialize_ui.html" title="Implementing the UI"
              >next</a></li>
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK v0.5.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK v0.7.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

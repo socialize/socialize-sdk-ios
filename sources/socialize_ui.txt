@@ -1,5 +1,5 @@
 =========================================
-Socialize UI 
+Implementing the UI 
 =========================================
 
 Introduction
@@ -14,12 +14,12 @@ To incorporate the Socialize UI views into your app you need to be authenticated
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1229170.js?file=Authentication.m"></script>
-        
+    <script src="https://gist.github.com/1274157.js?file=appDelegate.m"></script>
+
 In the next release we will add anonymous authentication in the UI stuff.
 
 
-Socialize Comment View
+Comment View
 ----------------------
 v0.4.0 of the Socialize SDK introduced the "Comment View" which provides the creation and viewing 
 of comments associated with an entity (URL).  
@@ -35,8 +35,7 @@ When you want to launch the comment view, simply instantiate and push the commen
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1229173.js?file=CommentUI.m"></script>
-
+        <script src="https://gist.github.com/1266199.js?file=MyCustomViewController.m"></script>
 
 Socialize Action Bar
 --------------------
