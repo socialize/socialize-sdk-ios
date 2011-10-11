@@ -41,5 +41,13 @@ sphinx_doc:
 	export LC_CTYPE=en_US.UTF-8;\
 	ant -buildfile ./sphinx_doc.xml
 
-sample-debug:
+build-sample-debug:
 	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "SampleSdkApp" -configuration Debug -sdk iphonesimulator build	
+
+.PHONY: tags
+tags:
+	ctags -R --language-force=ObjectiveC --extra=f Socialize SampleSdkApp Frameworks
+
+
+debug: build-sample-debug
+	./debug.sh

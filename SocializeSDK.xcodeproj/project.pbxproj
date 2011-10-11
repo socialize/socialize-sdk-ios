@@ -1830,6 +1830,7 @@
 				AAAFE5E014355BF900851C73 /* Sources */,
 				AAAFE5E114355BF900851C73 /* Frameworks */,
 				AAAFE5E214355BF900851C73 /* Resources */,
+				AAE0D28C1444F48C009537DA /* Dump Xcode Environment */,
 			);
 			buildRules = (
 			);
@@ -2209,6 +2210,21 @@
 			showEnvVarsInLog = 0;
 		};
 		AAB8F4751443713900441515 /* Dump Xcode Environment */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Dump Xcode Environment";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/util/dump-xcode-env.sh";
+			showEnvVarsInLog = 0;
+		};
+		AAE0D28C1444F48C009537DA /* Dump Xcode Environment */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
