@@ -1,3 +1,5 @@
+.. include:: feedback_widget.rst
+
 =====================
 Getting Started Guide
 =====================
