@@ -28,13 +28,20 @@
 
     if (self) {
         
-        // Custom initialization
-        NSString *path = [[NSBundle mainBundle] pathForResource:
-                          @"tests" ofType:@"plist"];
-
-        NSMutableDictionary *myDic = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
-        _testList = [[NSMutableArray alloc] initWithArray:[myDic allValues]];
-        [myDic release];
+        _testList = [[NSArray arrayWithObjects:
+                      @"Test get an Entity",
+                      @"Test create an Entity",
+                      @"Test create a comment",
+                      @"Test get comments for an entity",
+                      @"Test like/unlike",
+                      @"Test getting a list of likes",
+                      @"Test create view",
+                      @"Test create comment view controller",
+                      @"Test small user info after authentication",
+                      @"Test User Profile",
+                      @"Test Socialize Action Bar",
+                      nil
+                      ]retain];
 
     }
     return self;

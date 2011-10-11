@@ -421,7 +421,6 @@
 		AAAFE8F614355F1B00851C73 /* TestLikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE89B14355F1B00851C73 /* TestLikeViewController.xib */; };
 		AAAFE8F714355F1B00851C73 /* TestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE89D14355F1B00851C73 /* TestListController.m */; };
 		AAAFE8F814355F1B00851C73 /* TestListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE89E14355F1B00851C73 /* TestListController.xib */; };
-		AAAFE91914355F1B00851C73 /* tests.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE8C714355F1B00851C73 /* tests.plist */; };
 		AAAFE91A14355F1B00851C73 /* TestShowSmallUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE8C914355F1B00851C73 /* TestShowSmallUserInfo.m */; };
 		AAAFE91B14355F1B00851C73 /* TestShowSmallUserInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE8CA14355F1B00851C73 /* TestShowSmallUserInfo.xib */; };
 		AAAFE91C14355F1B00851C73 /* TestViewCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE8CC14355F1B00851C73 /* TestViewCreationViewController.m */; };
@@ -918,7 +917,6 @@
 		AAAFE89C14355F1B00851C73 /* TestListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestListController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE89D14355F1B00851C73 /* TestListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestListController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE89E14355F1B00851C73 /* TestListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestListController.xib; sourceTree = "<group>"; };
-		AAAFE8C714355F1B00851C73 /* tests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tests.plist; sourceTree = "<group>"; };
 		AAAFE8C814355F1B00851C73 /* TestShowSmallUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestShowSmallUserInfo.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE8C914355F1B00851C73 /* TestShowSmallUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestShowSmallUserInfo.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE8CA14355F1B00851C73 /* TestShowSmallUserInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestShowSmallUserInfo.xib; sourceTree = "<group>"; };
@@ -1766,7 +1764,6 @@
 				AAAFE89C14355F1B00851C73 /* TestListController.h */,
 				AAAFE89D14355F1B00851C73 /* TestListController.m */,
 				AAAFE89E14355F1B00851C73 /* TestListController.xib */,
-				AAAFE8C714355F1B00851C73 /* tests.plist */,
 				AAAFE8C814355F1B00851C73 /* TestShowSmallUserInfo.h */,
 				AAAFE8C914355F1B00851C73 /* TestShowSmallUserInfo.m */,
 				AAAFE8CA14355F1B00851C73 /* TestShowSmallUserInfo.xib */,
@@ -2022,7 +2019,6 @@
 				AAAFE8F414355F1B00851C73 /* TestGetEntityViewController.xib in Resources */,
 				AAAFE8F614355F1B00851C73 /* TestLikeViewController.xib in Resources */,
 				AAAFE8F814355F1B00851C73 /* TestListController.xib in Resources */,
-				AAAFE91914355F1B00851C73 /* tests.plist in Resources */,
 				AAAFE91B14355F1B00851C73 /* TestShowSmallUserInfo.xib in Resources */,
 				AAAFE91D14355F1B00851C73 /* TestViewCreationViewController.xib in Resources */,
 				AAAFE92014355F1B00851C73 /* urls.plist in Resources */,
