@@ -1,8 +1,8 @@
 /*
- * SocializeActionBar.h
+ * SocializeActionBarTests.h
  * SocializeSDK
  *
- * Created on 10/5/11.
+ * Created on 10/10/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -23,33 +23,19 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ * See Also: http://gabriel.github.com/gh-unit/
  */
 
+
+#import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
-#import "SocializeBaseViewController.h"
-#import "SocializeActionView.h"
 
-@class SocializeCommentsTableViewController;
-@protocol SocializeView;
-@protocol SocializeEntity;
-@protocol SocializeLike;
+@class SocializeActionBar;
 
-@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate> {
-    @private
-    CGRect viewRect;
-    UIViewController* comentsNavController;   
-    UIViewController* parentViewController;
-    
-    id<SocializeView> entityView;
-    id<SocializeEntity> entity;
-    id<SocializeLike> entityLike;
+@interface SocializeActionBarTests : GHTestCase {
+    SocializeActionBar* actionBar;
+    id mockParantController;
+    id mockParantView;
 }
 
-@property(nonatomic, assign) UIViewController* parentViewController;
-@property(nonatomic, retain) id<SocializeEntity> entity;
-
-+(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url;
-
--(id)initWithParantViewSize:(CGSize)parentViewSize andEntiryUrl:(NSString*)url;
--(id)initWithParantViewSize:(CGSize)parentViewSize andEntiry:(id<SocializeEntity>)entity;
 @end

@@ -40,7 +40,6 @@
 @interface SocializeActionBar()
 @property(nonatomic, retain) id<SocializeLike> entityLike;
 @property(nonatomic, retain) id<SocializeView> entityView;
-@property(nonatomic, retain) id<SocializeEntity> entity;
 @end
 
 @implementation SocializeActionBar
