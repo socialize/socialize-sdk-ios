@@ -39,7 +39,6 @@
 @synthesize doNotShareLocationButton;
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
-@synthesize anonymousAuthQuestionDialog = _anonymousAuthQuestionDialog;
 @synthesize facebookAuthQuestionDialog = _facebookAuthQuestionDialog;
 
 +(UINavigationController*)createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar
@@ -85,14 +84,14 @@
     [_entityUrlString release];
     [kbListener release];
     [locationManager release];
-    [_anonymousAuthQuestionDialog release];
     [_facebookAuthQuestionDialog release];
 
     [super dealloc];
 }
 
 - (UIAlertView*)facebookAuthQuestionDialog {
-    if (_facebookAuthQuestionDialog == nil) {
+    if (_facebookAuthQuestionDialog == nil) 
+    {
         _facebookAuthQuestionDialog = [[UIAlertView alloc]
                                        initWithTitle:@"Facebook?" message:@"You are not authenticated with Facebook. Authenticate with Facebook now?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     }
@@ -100,31 +99,17 @@
     return _facebookAuthQuestionDialog;
 }
 
-- (UIAlertView*)anonymousAuthQuestionDialog {
-    if (_anonymousAuthQuestionDialog == nil) {
-        _anonymousAuthQuestionDialog = [[UIAlertView alloc]
-                                       initWithTitle:@"Anonymous?" message:@"Comment Will Be Posted Anonymously" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
-    }
-    
-    return _anonymousAuthQuestionDialog;
-}
-
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (alertView == self.facebookAuthQuestionDialog) {
-        
-        if (buttonIndex == 1) {
+    if (alertView == self.facebookAuthQuestionDialog) 
+    {   
+        if (buttonIndex == 1)
+        {
             [self.socialize authenticateWithFacebook];
-        } else {
-            [self.anonymousAuthQuestionDialog show];
-        }
-    } else if (alertView == self.anonymousAuthQuestionDialog) {
-        if (buttonIndex == 1) {
+        } else
+        {
             [self createComment];
-        } else {
-            [self stopLoadAnimation];
-            [self dismissModalViewControllerAnimated:YES];
         }
-    }
+    } 
 }
 
 #pragma Location enable/disable button callbacks
@@ -377,7 +362,6 @@
     self.doNotShareLocationButton = nil;
     self.activateLocationButton = nil;
     self.mapOfUserLocation = nil;
-    self.anonymousAuthQuestionDialog = nil;
     self.facebookAuthQuestionDialog = nil;
 }
 

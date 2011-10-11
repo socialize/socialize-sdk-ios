@@ -33,7 +33,6 @@
 
     
     UIAlertView *_facebookAuthQuestionDialog;
-    UIAlertView *_anonymousAuthQuestionDialog;
 }
 
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;
@@ -42,7 +41,6 @@
 @property(nonatomic, retain) IBOutlet UIButton      *activateLocationButton;
 @property(nonatomic, retain) IBOutlet CommentMapView *mapOfUserLocation;
 @property(nonatomic, retain) UIAlertView *facebookAuthQuestionDialog;
-@property(nonatomic, retain) UIAlertView *anonymousAuthQuestionDialog;
 
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
