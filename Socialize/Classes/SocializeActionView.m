@@ -83,6 +83,11 @@
     _likeButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
     _viewCounter = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
     _activityIndicator = [[UIActivityIndicatorView alloc] init];
+    
+    _likeButton.accessibilityLabel = @"like button";
+    _viewCounter.accessibilityLabel = @"view counter";
+    _commentButton.accessibilityLabel = @"comment button";
+
 }
 
 -(void)setupButtons {
@@ -182,7 +187,9 @@
     buttonOrigin.x = PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
     
+
 	[_viewCounter setTitle:formattedValue forState:UIControlStateNormal];
+//    _viewCounter.accessibilityValue= formattedValue;
 	_viewCounter.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
 	[_viewCounter setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON - 2)]; // Left inset is the negative of image width.
 	[_viewCounter setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.

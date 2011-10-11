@@ -14,7 +14,7 @@ To incorporate the Socialize UI views into your app you need to be authenticated
 
 .. raw:: html
 
-       <script src="https://gist.github.com/1266132.js?file=appDelegate.m"></script>
+    <script src="https://gist.github.com/1274157.js?file=appDelegate.m"></script>
 
 In the next release we will add anonymous authentication in the UI stuff.
 
@@ -38,5 +38,14 @@ When you want to launch the comment view, simply instantiate and push the commen
         <script src="https://gist.github.com/1266199.js?file=MyCustomViewController.m"></script>
 
 Socialize Action Bar
---------------------
+----------------------
 *Coming Soon!*
+
+
+Adding Facebook Support
+-------------------------
+To add Facebook support in Socialize you'll just need to let Socialize know your Facebook app id.  You can register or find your Facebook app id here: https://developers.facebook.com/apps
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1276197.js?file=appDelegate.m"></script>
