@@ -236,7 +236,7 @@
 -(void)sendButtonPressed:(id)button {
     [self startLoadAnimationForView:commentTextView];
     
-    if (![self.socialize isAuthenticatedWithFacebook]) {
+    if (![self.socialize isAuthenticatedWithFacebook] && [Socialize facebookAppId] != nil) {
         [self authenticateViaFacebook];
     } else {
         [self createComment];
