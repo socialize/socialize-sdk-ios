@@ -29,12 +29,12 @@
 		CGFloat imageYvalue = 20;
 		CGRect imageFrame = CGRectMake(imageXvalue, imageYvalue, noActivityImage.size.width, noActivityImage.size.height);
 		
-		self.noActivityImageView = [[UIImageView alloc] initWithFrame:imageFrame];
+		self.noActivityImageView = [[[UIImageView alloc] initWithFrame:imageFrame] autorelease];
 		self.noActivityImageView.image = noActivityImage;
 		self.noActivityImageView.hidden = YES;
 		[self addSubview:noActivityImageView];
 		
-		self.errorLabel = [[UILabel alloc] init];
+		self.errorLabel = [[[UILabel alloc] init]autorelease];
 		self.errorLabel.backgroundColor = [UIColor clearColor];
 		self.errorLabel.textColor = [UIColor colorWithWhite:1 alpha:0.40];
 		self.errorLabel.textAlignment = UITextAlignmentCenter;

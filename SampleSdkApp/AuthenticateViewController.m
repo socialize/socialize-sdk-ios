@@ -108,6 +108,7 @@
 -(IBAction)noAuthentication:(id)sender {
     TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil];
     [self.navigationController pushViewController:listController animated:YES];
+    [listController release];
 
 }
 
@@ -145,7 +146,7 @@
     self.resultLabel.text = @"success";
     TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil];
     [self.navigationController pushViewController:listController animated:YES];
-    
+    [listController release];
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error {

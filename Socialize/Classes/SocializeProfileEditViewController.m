@@ -49,7 +49,7 @@
 
 	self.navigationItem.rightBarButtonItem.enabled = NO;
 		
-	self.editValueViewController = [[SocializeProfileEditValueController alloc] initWithStyle:UITableViewStyleGrouped];
+	self.editValueViewController = [[[SocializeProfileEditValueController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
 	
     UIButton * cancelButton = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
     [cancelButton addTarget:self action:@selector(editValueCancel:) forControlEvents:UIControlEventTouchUpInside];
@@ -335,6 +335,7 @@
 	
 	
     [uploadPicActionSheet showInView:self.view.window];
+    [uploadPicActionSheet release];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -421,6 +422,7 @@
 	[titleText insertString:upperCaseCharacter atIndex:0];
 	
 	self.editValueViewController.title = titleText;
+    [titleText release];
 	self.editValueViewController.indexPath = indexPath;
 	
 	 //editValueViewController.editValueField.text = cell.valueLabel.text;

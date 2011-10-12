@@ -180,7 +180,7 @@
 {
     [self stopLoading];
     
-    id<SocializeFullUser> user = [[dataArray objectAtIndex:0] retain];
+    id<SocializeFullUser> user = [dataArray objectAtIndex:0];
     NSAssert([user conformsToProtocol:@protocol(SocializeFullUser)], @"Not a socialize user");
     self.user = user;
     [self configureViewsForUser:self.user];
@@ -372,6 +372,7 @@
 	[userCopy setDescription:[self.profileEditViewController.keyValueDictionary valueForKey:@"bio"]];
 
     [self.socialize updateUserProfile:userCopy profileImage:nil];
+    [userCopy release];
 
 //FIXME reenable profile image once puts are back in [#19262347]
 //    UIImage* newProfileImage = self.profileEditViewController.profileImage;

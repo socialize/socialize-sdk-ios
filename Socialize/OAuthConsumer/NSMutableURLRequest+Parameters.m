@@ -31,15 +31,13 @@
 - (NSArray *)socializeParameters 
 {
     NSString *encodedParameters;
-	BOOL shouldfree = NO;
     
     if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"] || [[self HTTPMethod] isEqualToString:@"PUT"]) 
         encodedParameters = [[self URL] query];
 	else 
 	{
         // POST
-		shouldfree = YES;
-        encodedParameters = [[NSString alloc] initWithData:[self HTTPBody] encoding:NSASCIIStringEncoding];
+        encodedParameters = [[[NSString alloc] initWithData:[self HTTPBody] encoding:NSASCIIStringEncoding] autorelease];
     }
     
     if ((encodedParameters == nil) || ([encodedParameters isEqualToString:@""]))
@@ -56,10 +54,6 @@
         [requestParameters addObject:parameter];
     }
     
-	// Cleanup
-	if (shouldfree)
-		[encodedParameters release];
-	
     return [requestParameters autorelease];
 }
 
