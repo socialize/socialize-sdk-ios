@@ -15,6 +15,7 @@
 #import <UIKit/UIKit.h>
 #import "JSONKit.h"
 #import "SocializePrivateDefinitions.h"
+#import "UIDevice+IdentifierAddition.h"
 
 @interface SocializeAuthenticateService()
 -(NSString*)getSocializeToken;
@@ -34,7 +35,7 @@
 #define AUTHENTICATE_METHOD @"authenticate/"
 
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret{            
-    NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [UIDevice currentDevice].uniqueIdentifier];
+    NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier]];
     NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                 payloadJson, @"jsonData",
                                                 nil];
@@ -88,7 +89,7 @@
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
-                             [UIDevice currentDevice].uniqueIdentifier,@"udid", 
+                             [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid", 
                              @"1"/* auth type is for facebook*/ , @"auth_type", //TODO:: should be changed
                              thirdPartyAuthToken, @"auth_token",
                              thirdPartyAppId, @"auth_id" , nil] ;                        
