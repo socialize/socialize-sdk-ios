@@ -64,11 +64,10 @@
 - (id)init 
 {
     //Change to accept default configuration of default Socialize Objects.
-    return [self initializeWithConfiguration:[[SocializeConfiguration new]autorelease]];
-    
+    return [self initWithConfiguration:[[SocializeConfiguration new]autorelease]];    
 }
 
--(id)initializeWithConfiguration:(SocializeConfiguration*)configuration;
+-(id)initWithConfiguration:(SocializeConfiguration*)configuration;
 {
     self = [super init];
     if (self) 

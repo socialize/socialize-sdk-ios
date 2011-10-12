@@ -219,8 +219,8 @@ expectedJSONFormat = _expectedJSONFormat;
 
 - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
 #ifdef DEBUG
-    NSString *responseBody = [[NSString alloc] initWithData:data
-                                                   encoding:NSUTF8StringEncoding];
+    NSString *responseBody = [[[NSString alloc] initWithData:data
+                                                    encoding:NSUTF8StringEncoding] autorelease];
     [self produceHTMLOutput:responseBody];
 #endif
 

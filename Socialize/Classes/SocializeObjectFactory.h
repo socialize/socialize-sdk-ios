@@ -18,7 +18,7 @@
         NSMutableDictionary * formatterDictionary;
 }
 
--(id)initializeWithConfiguration:(SocializeConfiguration*)configuration;
+-(id)initWithConfiguration:(SocializeConfiguration*)configuration;
 
 -(id)createObjectFromString:(NSString *)stringRepresentation forProtocol:(Protocol *)protocol;
 -(id)createObjectFromDictionary:(NSDictionary *)dictionaryRepresentation forProtocol:(Protocol *)protocol;
