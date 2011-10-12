@@ -70,8 +70,6 @@
 
 -(id)initializeWithConfiguration:(SocializeConfiguration*)configuration;
 {
-    
-    
     self = [super init];
     if (self) 
     {

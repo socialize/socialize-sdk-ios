@@ -37,6 +37,11 @@
 {
     self.keyField = nil;
     self.secretField = nil;
+    [socialize release];
+    [_resultLabel release];
+    [_authenticateButton release];
+    [_thirdpartyAuthentication release];
+    [_emptyCacheButton release];
     [super dealloc];
 }
 

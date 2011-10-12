@@ -35,9 +35,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
     UIViewController* rootViewController = nil;
-    
-    _socialize = [[Socialize alloc] initWithDelegate:self];
-    
+       
     // we check the authentication here.
     rootViewController = [[[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil] autorelease];
  
