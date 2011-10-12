@@ -125,7 +125,6 @@
 -(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList {
 
     NSMutableArray* array = nil;
-    NSMutableArray* errorArray = nil;
     
     if ([objectList isKindOfClass:[NSArray class]])
         array = objectList;
@@ -135,13 +134,7 @@
     }
     else {
         array = nil;
-        errorArray = nil;
     }
-    
-    if (![errorList count])
-        errorArray = nil;
-    else
-        errorArray = errorList;
 
     if ([request.httpMethod isEqualToString:@"POST"]){
         if ([array count])
