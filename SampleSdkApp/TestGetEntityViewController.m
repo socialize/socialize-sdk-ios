@@ -153,12 +153,12 @@
             viewsLabel.text = viewsLabel.accessibilityValue = [NSString stringWithFormat:@"%d", entity.views];
 
             /*initialize and update the socialize action view*/
-//            if (!_actionView){
-//                _actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - ACTION_PANE_HEIGHT, self.view.bounds.size.height,  ACTION_PANE_HEIGHT)];
-//                [self.view addSubview:_actionView];
-//            }
-//
-//            [_actionView updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:NO withCommentsCount:[NSNumber numberWithInt:entity.comments]];
+            if (!_actionView){
+                _actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - ACTION_PANE_HEIGHT, self.view.bounds.size.height,  ACTION_PANE_HEIGHT)];
+                [self.view addSubview:_actionView];
+            }
+
+            [_actionView updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:NO withCommentsCount:[NSNumber numberWithInt:entity.comments]];
         }
     }
     else{
