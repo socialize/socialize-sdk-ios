@@ -45,30 +45,7 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <script type="text/javascript" charset="utf-8">
-  var is_ssl = ("https:" == document.location.protocol);
-  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
-  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-
-<script type="text/javascript" charset="utf-8">
-  var feedback_widget_options = {};
-
-  feedback_widget_options.display = "overlay";
-  feedback_widget_options.company = "socialize";
-  feedback_widget_options.placement = "right";
-  feedback_widget_options.color = "#222";
-  feedback_widget_options.style = "idea";
-  feedback_widget_options.product = "socialize_ios_sdk";
-  feedback_widget_options.tag = "Feedback";
-
-  feedback_widget_options.limit = "3";
-
-  GSFN.feedback_widget.prototype.local_base_url = "http://support.getsocialize.com";
-  GSFN.feedback_widget.prototype.local_ssl_base_url = "http://support.getsocialize.com";
-
-  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
-</script><div class="section" id="implementing-the-ui">
+  <div class="section" id="implementing-the-ui">
 <h1>Implementing the UI<a class="headerlink" href="#implementing-the-ui" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
@@ -97,10 +74,6 @@ of comments associated with an entity (URL).</p>
 <h2>Socialize Action Bar<a class="headerlink" href="#socialize-action-bar" title="Permalink to this headline">¶</a></h2>
 <p><em>Coming Soon!</em></p>
 </div>
-<div class="section" id="adding-facebook-support">
-<h2>Adding Facebook Support<a class="headerlink" href="#adding-facebook-support" title="Permalink to this headline">¶</a></h2>
-<p>To add Facebook support in Socialize you&#8217;ll just need to let Socialize know your Facebook app id.  You can register or find your Facebook app id here: <a class="reference external" href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a></p>
-<script src="https://gist.github.com/1276197.js?file=appDelegate.m"></script></div>
 </div>
 
 
@@ -116,7 +89,6 @@ of comments associated with an entity (URL).</p>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#comment-view">Comment View</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#socialize-action-bar">Socialize Action Bar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-facebook-support">Adding Facebook Support</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
