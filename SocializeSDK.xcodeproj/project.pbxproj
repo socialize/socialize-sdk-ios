@@ -204,6 +204,7 @@
 		16E33BDE14441AA2006E2EB4 /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 167E10961443141E004E4C1B /* libprofile_rt.dylib */; };
 		16E33C091445BFA3006E2EB4 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C061445BFA3006E2EB4 /* NSString+MD5Addition.m */; };
 		16E33C0A1445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C081445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m */; };
+		16E33C161445D2ED006E2EB4 /* SocializeGeocoderAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C151445D2ED006E2EB4 /* SocializeGeocoderAdapter.m */; };
 		16F21EE013CDDE5000911977 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		16F449BE13AF2974003BE655 /* SocializeCommentFormaterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449BD13AF2974003BE655 /* SocializeCommentFormaterTests.m */; };
 		16F449CB13AF4DCE003BE655 /* SocializeUserJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449C913AF4DCD003BE655 /* SocializeUserJSONFormatter.m */; };
@@ -600,6 +601,8 @@
 		16E33C061445BFA3006E2EB4 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5Addition.m"; path = "Classes/NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		16E33C071445BFA3006E2EB4 /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIDevice+IdentifierAddition.h"; path = "Classes/UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
 		16E33C081445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+IdentifierAddition.m"; path = "Classes/UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
+		16E33C141445D2ED006E2EB4 /* SocializeGeocoderAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeGeocoderAdapter.h; path = Classes/SocializeGeocoderAdapter.h; sourceTree = "<group>"; };
+		16E33C151445D2ED006E2EB4 /* SocializeGeocoderAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeGeocoderAdapter.m; path = Classes/SocializeGeocoderAdapter.m; sourceTree = "<group>"; };
 		16F449BC13AF2974003BE655 /* SocializeCommentFormaterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentFormaterTests.h; path = "Test Cases/SocializeCommentFormaterTests.h"; sourceTree = "<group>"; };
 		16F449BD13AF2974003BE655 /* SocializeCommentFormaterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentFormaterTests.m; path = "Test Cases/SocializeCommentFormaterTests.m"; sourceTree = "<group>"; };
 		16F449C813AF4DCD003BE655 /* SocializeUserJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUserJSONFormatter.h; path = Classes/SocializeUserJSONFormatter.h; sourceTree = "<group>"; };
@@ -1030,6 +1033,8 @@
 				16E33C081445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m */,
 				1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */,
 				1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */,
+				16E33C141445D2ED006E2EB4 /* SocializeGeocoderAdapter.h */,
+				16E33C151445D2ED006E2EB4 /* SocializeGeocoderAdapter.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -2356,6 +2361,7 @@
 				167E11D11443265C004E4C1B /* UIImage+Resize.m in Sources */,
 				16E33C091445BFA3006E2EB4 /* NSString+MD5Addition.m in Sources */,
 				16E33C0A1445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m in Sources */,
+				16E33C161445D2ED006E2EB4 /* SocializeGeocoderAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2551,7 +2557,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Socialize/Classes/OAuthConsumer\"",
@@ -2587,7 +2593,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Socialize/Classes/OAuthConsumer\"",
@@ -2722,7 +2728,7 @@
 					"\"$(SRCROOT)\"/unitTests/Libraries/**",
 				);
 				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_DIR)/usr/lib\"",
@@ -2755,7 +2761,7 @@
 					"\"$(SRCROOT)\"/unitTests/Libraries/**",
 				);
 				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_DIR)/usr/lib\"",
