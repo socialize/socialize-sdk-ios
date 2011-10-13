@@ -115,6 +115,7 @@
 		16038A7D143F121D00455B6A /* Socialize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16038A12143F121C00455B6A /* Socialize.framework */; };
 		1638C52E143DC9A500538659 /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638C52C143DC9A500538659 /* TestSocializeActionBar.m */; };
 		1638C52F143DC9A500538659 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1638C52D143DC9A500538659 /* TestSocializeActionBar.xib */; };
+		18CB02C214476E15000F73A6 /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CB02C114476E15000F73A6 /* libprofile_rt.dylib */; };
 		AA2DA2421435437400C62B97 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA2241435420300C62B97 /* MapKit.framework */; };
 		AA2DA2431435437400C62B97 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA222143541F700C62B97 /* CoreLocation.framework */; };
 		AA2DA2441435437400C62B97 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA220143541E100C62B97 /* QuartzCore.framework */; };
@@ -280,6 +281,7 @@
 		1638C52B143DC9A500538659 /* TestSocializeActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSocializeActionBar.h; sourceTree = "<group>"; };
 		1638C52C143DC9A500538659 /* TestSocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestSocializeActionBar.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1638C52D143DC9A500538659 /* TestSocializeActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSocializeActionBar.xib; sourceTree = "<group>"; };
+		18CB02C114476E15000F73A6 /* libprofile_rt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprofile_rt.dylib; path = usr/lib/libprofile_rt.dylib; sourceTree = DEVELOPER_DIR; };
 		AA2D9E6D14352BC100C62B97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA2D9E6F14352BC100C62B97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -372,6 +374,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18CB02C214476E15000F73A6 /* libprofile_rt.dylib in Frameworks */,
 				AAAFE94A1435690B00851C73 /* libOAuth.a in Frameworks */,
 				AAAFE5C1143553D800851C73 /* GHUnitIOS.framework in Frameworks */,
 				AA2DA2421435437400C62B97 /* MapKit.framework in Frameworks */,
@@ -535,6 +538,7 @@
 			children = (
 				160389A6143F121C00455B6A /* Socialize.embeddedframework */,
 				AAAFE9491435690B00851C73 /* libOAuth.a */,
+				18CB02C114476E15000F73A6 /* libprofile_rt.dylib */,
 				AAAFE93F1435640C00851C73 /* libJSONKit.a */,
 				AAAFE9401435640C00851C73 /* libOAuth.a */,
 				AAAFE9411435640C00851C73 /* libSBJson.a */,
@@ -995,6 +999,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks/SymbolCollisionTestLibs\"",
+					"\"$(DEVELOPER_DIR)/usr/lib\"",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -1022,6 +1027,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks/SymbolCollisionTestLibs\"",
+					"\"$(DEVELOPER_DIR)/usr/lib\"",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
