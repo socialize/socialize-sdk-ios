@@ -174,9 +174,6 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
                              timestamp,
                              nonce,
 							 extraParameters];
-    
-    NSLog(@"%@", oauthHeader);
-    NSLog(@"%@", [self _signatureBaseString]);
 	
     [self setValue:oauthHeader forHTTPHeaderField:@"Authorization"];
 }

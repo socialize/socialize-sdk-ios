@@ -27,7 +27,7 @@
 
 #import "SocializeGeocoderAdapter.h"
 
-#if (__IPHONE_OS_VERSION_ >= __IPHONE_5_0)
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >=  __IPHONE_5_0
 
 @implementation SocializeGeocoderAdapter
 
