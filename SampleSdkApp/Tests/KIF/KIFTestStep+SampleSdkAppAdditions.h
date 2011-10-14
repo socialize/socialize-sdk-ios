@@ -15,6 +15,7 @@
 + (NSString *)getRandomURL;
 + (NSArray*)stepsToAuthenticate;
 + (NSArray*)stepsToShowActionBar;
++ (NSArray*)stepsToLikeOnActionBar;
 + (NSArray*)stepsToTestUserProfile;
 + (NSArray*)stepsToCreateEntityWithURL:(NSString*)url name:(NSString*)name;
 + (NSArray*)stepsToCreateEntityWithRandomURL;

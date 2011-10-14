@@ -34,7 +34,7 @@
 
 @interface SocializeActionBarTests : GHTestCase {
     SocializeActionBar* actionBar;
-    id mockParantController;
+    id mockParentController;
     id mockParantView;
 }
 

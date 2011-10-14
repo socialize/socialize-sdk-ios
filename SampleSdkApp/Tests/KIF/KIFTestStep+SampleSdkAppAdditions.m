@@ -88,7 +88,16 @@
     [steps addObject:[KIFTestStep stepToEnterText:[KIFTestStep getRandomURL] intoViewWithAccessibilityLabel:@"Input Field"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Enter"]];
     [steps addObject:[KIFTestStep stepToCheckAccessibilityLabel:@"view counter" hasValue:@"1"]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToLikeOnActionBar]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Tests"]];
+    return steps;
+}
++ (NSArray*)stepsToLikeOnActionBar {
+    NSMutableArray *steps = [NSMutableArray array];
+    
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"like button"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"like button"]];
+    [steps addObject:[KIFTestStep stepToCheckAccessibilityLabel:@"like button" hasValue:@"1"]];
     return steps;
 }
 + (NSArray*)stepsToWaitForActionCompleted {

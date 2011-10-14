@@ -31,6 +31,7 @@
 + (id)scenarioToShowActionBar {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test the Socialize Action Bar"];
     [scenario addStepsFromArray:[KIFTestStep stepsToShowActionBar]];
+
     return scenario;
 }
 + (id)scenarioToTestUserProfile {

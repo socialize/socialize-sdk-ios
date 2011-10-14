@@ -36,15 +36,14 @@
 
 -(void)setUpClass
 {
-    mockParantController = [OCMockObject mockForClass:[UINavigationController class]];
+    mockParentController = [OCMockObject mockForClass:[UINavigationController class]];
     mockParantView = [OCMockObject mockForClass:[UIView class]];
-    [[[mockParantController stub]andReturn:mockParantView] view];
-    [[mockParantView expect]addSubview: OCMOCK_ANY];
+    [[[mockParentController stub]andReturn:mockParantView] view];
 
     CGRect bound = CGRectMake(0,0,320,460);    
     [[[mockParantView stub]andReturnValue:OCMOCK_VALUE(bound)]bounds];
     
-    actionBar = [[SocializeActionBar createWithParentController: mockParantController andUrl:TEST_ENTITY_URL] retain];
+    actionBar = [[SocializeActionBar createWithParentController: mockParentController andUrl:TEST_ENTITY_URL] retain];
 }
 
 -(void)tearDownClass
@@ -54,7 +53,7 @@
 
 -(void)tearDown
 {
-    [mockParantController verify];
+    [mockParentController verify];
     [mockParantView verify];
 }
 

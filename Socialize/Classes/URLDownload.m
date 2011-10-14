@@ -92,7 +92,13 @@
 -(void)startDownload:(NSURLConnection *)downloadConnection
 {
     [downloadConnection start];
-	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+    [self runCurrentLoopForTimeInterval:[NSNumber numberWithInt:10]];
+}
+
+-(void)runCurrentLoopForTimeInterval:(NSNumber *)timeInterval {
+    //this method is here so we can mock out the run loop during tests
+    DebugLog(@"starting run loop for %i seconds", [timeInterval intValue]);
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:[timeInterval intValue]]];    
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {

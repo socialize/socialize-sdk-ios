@@ -52,7 +52,6 @@
 +(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url
 {
     SocializeActionBar* bar = [[[SocializeActionBar alloc] initWithParantViewSize:parentController.view.bounds.size andEntiryUrl:url] autorelease];
-    [parentController.view addSubview:bar.view];
     bar.parentViewController = parentController;
     return bar;
 }
