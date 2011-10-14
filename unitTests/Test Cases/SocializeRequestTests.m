@@ -139,7 +139,6 @@
     [[mockRequest expect] setHTTPMethod:@"GET"];
     [[mockRequest expect] addValue:userAgentStr forHTTPHeaderField:@"User-Agent"];
     [[mockRequest expect] setSocializeParameters:[NSMutableArray arrayWithCapacity:0]];
-    [[mockRequest expect] prepare];
     _request = [SocializeRequest getRequestWithParams:nil  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:self  requestURL:@"invalidparam"];
     _request.request = mockRequest;
     [_request connect];

@@ -15,6 +15,7 @@
 #import "SocializeCommonDefinitions.h"
 #import "SocializePrivateDefinitions.h"
 #import "OAuthConsumer.h"
+#import "UIDevice+IdentifierAddition.h"
 
 
 @implementation SocializeAuthTests
@@ -33,41 +34,40 @@
     [super tearDownClass];
 }
 
--(void)testAuthParams{
+-(void)testAuthParams{   
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [UIDevice currentDevice].uniqueGlobalDeviceIdentifier], @"jsonData",
+                                   nil];
     
-//    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-//                                   [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [UIDevice currentDevice].uniqueIdentifier],@"jsonData",
-//                                   nil];
-//    
-//    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-//    [[mockProvider expect] secureRequestWithMethodName:@"authenticate/" andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:_service];
-//        
-//    _service.provider = mockProvider;
-//
-//    [_service authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819"];
-//    [mockProvider verify];
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    [[mockProvider expect] secureRequestWithMethodName:@"authenticate/" andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:_service];
+        
+    _service.provider = mockProvider;
+
+    [_service authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819"];
+    [mockProvider verify];
 }
 
 -(void)testAuthAnonymousParams{
     
-//    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UIDevice currentDevice].uniqueIdentifier,@"udid",
-//                                       @"1"/* auth type is for facebook*/ , @"auth_type",
-//                                       @"another token", @"auth_token",
-//                                       @"anotheruserid", @"auth_id" , nil] ;
-//    
-//    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-//    
-//    [[mockProvider expect] secureRequestWithMethodName:@"authenticate/" andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:_service];
-//    _service.provider = mockProvider;
-//        
-//    [_service  authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" 
-//            apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" 
-//            thirdPartyAuthToken:@"another token"
-//            thirdPartyAppId:@"anotheruserid"
-//                        thirdPartyName:FacebookAuth];
-//    
-//    
-//    [mockProvider verify];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UIDevice currentDevice].uniqueGlobalDeviceIdentifier,@"udid",
+                                       @"1"/* auth type is for facebook*/ , @"auth_type",
+                                       @"another token", @"auth_token",
+                                       @"anotheruserid", @"auth_id" , nil] ;
+    
+    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    
+    [[mockProvider expect] secureRequestWithMethodName:@"authenticate/" andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:_service];
+    _service.provider = mockProvider;
+        
+    [_service  authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" 
+            apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" 
+            thirdPartyAuthToken:@"another token"
+            thirdPartyAppId:@"anotheruserid"
+                        thirdPartyName:FacebookAuth];
+    
+    
+    [mockProvider verify];
 }
 
 -(void)testOAtoken{
