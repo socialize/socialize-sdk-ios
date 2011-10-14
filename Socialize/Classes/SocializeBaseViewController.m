@@ -131,8 +131,7 @@
 
 -(void)afterAnonymouslyLoginAction
 {
-    [NSException raise:NSInternalInconsistencyException 
-                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];    
+    // Should be implemented in the child classes.
 }
 
 @end

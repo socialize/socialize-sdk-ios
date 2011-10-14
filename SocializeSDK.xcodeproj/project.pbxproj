@@ -2635,7 +2635,7 @@
 					"\"$(CONFIGURATION_BUILD_DIR)/Headers\"/**",
 				);
 				INFOPLIST_FILE = "unitTests/unitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2682,7 +2682,7 @@
 					"\"$(CONFIGURATION_BUILD_DIR)/Headers\"/**",
 				);
 				INFOPLIST_FILE = "unitTests/unitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

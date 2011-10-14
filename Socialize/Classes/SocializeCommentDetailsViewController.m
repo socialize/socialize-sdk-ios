@@ -69,12 +69,6 @@
     return self;
 }
 
-#pragma mark base class methods
--(void) afterAnonymouslyLoginAction
-{
-    // Do not remove.
-}
-
 #pragma mark user location
 
 -(void)setupCommentGeoLocation
@@ -84,7 +78,6 @@
     [commentDetailsView updateGeoLocation: location.coordinate];
     
     __block SocializeGeocoderAdapter* adapter = [[SocializeGeocoderAdapter alloc] init];
-//    NSLog(@"%d", [adapter retainCount]);
     [adapter reverseGeocodeLocation:location completionHandler:^(NSArray*placemarks, NSError *error)
      {
          if(error)
@@ -96,13 +89,9 @@
          {
              [commentDetailsView updateLocationText:[NSString stringWithPlacemark:[placemarks objectAtIndex:0]]];
          }    
-//             NSLog(@"%d", [adapter retainCount]);
-//         [adapter autorelease];
-//             NSLog(@"%d", [adapter retainCount]);
          [adapter autorelease];
      }
     ];
-//    NSLog(@"%d", [adapter retainCount]);
 }
 
 -(void)showShareLocation:(BOOL)hasLocation

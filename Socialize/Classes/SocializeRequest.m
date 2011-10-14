@@ -192,9 +192,7 @@ expectedJSONFormat = _expectedJSONFormat;
     {
         [self.request setSocializeParameters:[self formatUrlParams]];
     }
-    
-    [self.request prepare];
-    
+       
     [self.dataFetcher start];
 }
 
