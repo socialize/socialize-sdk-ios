@@ -27,7 +27,6 @@
 #import <Foundation/Foundation.h>
 #import "SocializeRequest.h"
 #import "SocializeObjectFactory.h"
-#import "SocializeProvider.h"
 #import "SocializeUser.h"
 #import "SocializeServiceDelegate.h"
 
@@ -36,27 +35,18 @@
 @interface SocializeService : NSObject <SocializeRequestDelegate>
 {
       @protected    
-        SocializeProvider*           _provider;
         SocializeObjectFactory*      _objectCreator;
         id<SocializeServiceDelegate> _delegate;
 }
 @property (nonatomic, readonly) Protocol * ProtocolType;
 @property (nonatomic, assign) id<SocializeServiceDelegate> delegate;
-@property (nonatomic, retain) id provider;
 
--(id) initWithProvider: (SocializeProvider*) provider objectFactory:(SocializeObjectFactory*) objectFactory delegate:(id<SocializeServiceDelegate>) delegate;
+-(id) initWithObjectFactory: (SocializeObjectFactory*) objectFactory delegate:(id<SocializeServiceDelegate>) delegate;
 
-//The methods below should be private methods put in a Private Headers file.
--(void)ExecuteGetRequestAtEndPoint: (NSString *)endPoint  WithParams:(id)requestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
--(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)postRequestObject expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
--(void)ExecutePutRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)putRequestObject expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
--(void)ExecutePutRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)putRequestParams expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
--(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
--(void)ExecuteDeleteRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)deleteRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
--(void)ExecuteSecurePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat;
-
--(NSMutableDictionary*)genereteParamsFromJsonString:(NSString*)jsonRequest;
+- (void)executeRequest:(SocializeRequest*)request;
+-(NSMutableDictionary*)generateParamsFromJsonString:(NSString*)jsonRequest;
 -(void)freeDelegate;
+-(void)retainDelegate;
 
 //Primitive methods
 -(void)doDidReceiveSocializeObject:(id<SocializeObject>)objectResponse;

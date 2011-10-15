@@ -17,6 +17,14 @@ typedef enum {
     SocializeAny            //Anything goes...typically for delete
 } ExpectedResponseFormat;
 
+/* This defines which SocializeServiceDelegate callback will be invoked to once the request is completed successfully */
+typedef enum {
+    SocializeRequestOperationTypeInferred,   // The default legacy behavior -- automatically infer callback based on http method and json response
+    SocializeRequestOperationTypeCreate,     // Always invoke didCreate:
+    SocializeRequestOperationTypeUpdate,     // Always invoke didUpdate:
+    SocializeRequestOperationTypeDelete,     // Always invoke didDelete:
+    SocializeRequestOperationTypeList,       // Always invoke didFetchElements:
+} SocializeRequestOperationType;
 
 @protocol SocializeRequestDelegate;
 @class OAServiceTicket;
@@ -30,7 +38,6 @@ typedef enum {
 
 @private
     id<SocializeRequestDelegate> _delegate;
-    NSString*                   _url;
     NSString*                   _httpMethod;
     id                          _params;
     NSMutableData*              _responseText;    
@@ -45,7 +52,7 @@ typedef enum {
 @property (nonatomic, readonly) NSString * userAgentString;
 @property(nonatomic,assign) id<SocializeRequestDelegate> delegate;
 @property(nonatomic,assign) ExpectedResponseFormat      expectedJSONFormat;
-@property(nonatomic,copy)   NSString                    *url;
+@property(nonatomic,copy)   NSString                    *resourcePath;
 @property(nonatomic,copy)   NSString                    *httpMethod;
 @property(nonatomic,retain) id                          params;
 @property(nonatomic,retain) NSMutableData               *responseText;
@@ -53,16 +60,34 @@ typedef enum {
 @property(nonatomic,retain) OAConsumer                  *consumer;
 @property(nonatomic,retain) OAMutableURLRequest         *request;
 @property(nonatomic,retain) SocializeDataFetcher        *dataFetcher;
+@property(nonatomic,assign) SocializeRequestOperationType        operationType;
+@property(nonatomic,assign,getter=isSecure) BOOL        secure;
+@property(nonatomic,copy) NSString        *baseURL;
+@property(nonatomic,copy) NSString        *secureBaseURL;
+@property(nonatomic,assign,getter=isRunning) BOOL        running;
 
-+ (SocializeRequest*)getRequestWithParams:(NSMutableDictionary *) params
-                       expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
-                        httpMethod:(NSString *) httpMethod
-                          delegate:(id<SocializeRequestDelegate>)delegate
-                        requestURL:(NSString *) url;
++ (NSString*)defaultBaseURL;
++ (NSString*)defaultSecureBaseURL;
+
++ (id)requestWithHttpMethod:(NSString *) httpMethod
+               resourcePath:(NSString*)resourcePath
+         expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
+                     params:(id)params;
+
++ (id)secureRequestWithHttpMethod:(NSString *) httpMethod
+                     resourcePath:(NSString*)resourcePath
+               expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
+                           params:(id)params;
+
+- (id)initWithHttpMethod:(NSString *) httpMethod
+            resourcePath:(NSString*)resourcePath
+      expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
+                  params:(id)params;
 
 + (NSString *)userAgentString;
 
 - (void) connect;
+- (void)configureURLRequest;
 
 @end
 

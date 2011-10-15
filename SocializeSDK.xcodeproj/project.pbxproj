@@ -136,14 +136,12 @@
 		160754881432FB7C002E5A38 /* NSString+PlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 160754861432FB7C002E5A38 /* NSString+PlaceMark.m */; };
 		1607548C1432FBA4002E5A38 /* SocializeProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607548A1432FBA4002E5A38 /* SocializeProfileViewController.m */; };
 		16075493143302E4002E5A38 /* SocializeBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16075491143302E4002E5A38 /* SocializeBaseViewController.m */; };
-		1636370813A76ED000403879 /* SocializeProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636370713A76ECF00403879 /* SocializeProviderTests.m */; };
 		1636372F13AB289500403879 /* SocializeCommentsServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */; };
 		1636373313AB28DD00403879 /* SocializeCommentsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636373113AB28DA00403879 /* SocializeCommentsService.m */; };
 		1636373713AB5D8E00403879 /* SocializeCommentJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1636373513AB5D8E00403879 /* SocializeCommentJSONFormatter.m */; };
 		1638C524143DC96A00538659 /* SocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638C522143DC96A00538659 /* SocializeActionBar.m */; };
 		1638C529143DC98E00538659 /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638C527143DC98E00538659 /* TestSocializeActionBar.m */; };
 		1638C52A143DC98E00538659 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1638C528143DC98E00538659 /* TestSocializeActionBar.xib */; };
-		1657EF66139F677100E488CC /* SocializeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF64139F677000E488CC /* SocializeProvider.m */; };
 		1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9613A2000600E488CC /* SocializeRequestTests.m */; };
 		1657EF9C13A2170A00E488CC /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
 		1657EFA113A22A9E00E488CC /* UrlSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9F13A226F700E488CC /* UrlSerializationTests.m */; };
@@ -442,6 +440,9 @@
 		AABB7D981433F38B00D0FDF9 /* SocializeProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */; };
 		AABF6B0E14313E8400DAB37F /* SocializeProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABF6B0D14313E8400DAB37F /* SocializeProfileViewController.xib */; };
 		AAC3BF97144388BD00E665FB /* public-headers in Resources */ = {isa = PBXBuildFile; fileRef = AAC3BF96144388BD00E665FB /* public-headers */; };
+		AAD67925144911DA00C17C4D /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD67922144911DA00C17C4D /* NSData+Base64.m */; };
+		AAD67926144911DA00C17C4D /* UIImage+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD67924144911DA00C17C4D /* UIImage+Network.m */; };
+		AAE8412A1448CBA3006BDA0E /* SocializeService+Testing.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE841291448CBA3006BDA0E /* SocializeService+Testing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -473,8 +474,6 @@
 		1607548E1432FBF4002E5A38 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = Classes/SynthesizeSingleton.h; sourceTree = "<group>"; };
 		16075490143302E4002E5A38 /* SocializeBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBaseViewController.h; path = Classes/SocializeBaseViewController.h; sourceTree = "<group>"; };
 		16075491143302E4002E5A38 /* SocializeBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBaseViewController.m; path = Classes/SocializeBaseViewController.m; sourceTree = "<group>"; };
-		1636370613A76ECF00403879 /* SocializeProviderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProviderTests.h; path = "Test Cases/SocializeProviderTests.h"; sourceTree = "<group>"; };
-		1636370713A76ECF00403879 /* SocializeProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProviderTests.m; path = "Test Cases/SocializeProviderTests.m"; sourceTree = "<group>"; };
 		1636372D13AB289500403879 /* SocializeCommentsServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsServiceTests.h; path = "Test Cases/SocializeCommentsServiceTests.h"; sourceTree = "<group>"; };
 		1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsServiceTests.m; path = "Test Cases/SocializeCommentsServiceTests.m"; sourceTree = "<group>"; };
 		1636373013AB28D900403879 /* SocializeCommentsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsService.h; path = Classes/SocializeCommentsService.h; sourceTree = "<group>"; };
@@ -486,8 +485,6 @@
 		1638C526143DC98E00538659 /* TestSocializeActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSocializeActionBar.h; sourceTree = "<group>"; };
 		1638C527143DC98E00538659 /* TestSocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestSocializeActionBar.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1638C528143DC98E00538659 /* TestSocializeActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSocializeActionBar.xib; sourceTree = "<group>"; };
-		1657EF63139F677000E488CC /* SocializeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProvider.h; path = Classes/SocializeProvider.h; sourceTree = "<group>"; };
-		1657EF64139F677000E488CC /* SocializeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProvider.m; path = Classes/SocializeProvider.m; sourceTree = "<group>"; };
 		1657EF9513A2000600E488CC /* SocializeRequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequestTests.h; path = "Test Cases/SocializeRequestTests.h"; sourceTree = "<group>"; };
 		1657EF9613A2000600E488CC /* SocializeRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRequestTests.m; path = "Test Cases/SocializeRequestTests.m"; sourceTree = "<group>"; };
 		1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+UrlSerialization.h"; path = "Classes/NSString+UrlSerialization.h"; sourceTree = "<group>"; };
@@ -942,6 +939,12 @@
 		AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditViewController.xib; path = Resources/SocializeProfileEditViewController.xib; sourceTree = "<group>"; };
 		AABF6B0D14313E8400DAB37F /* SocializeProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileViewController.xib; path = Resources/SocializeProfileViewController.xib; sourceTree = "<group>"; };
 		AAC3BF96144388BD00E665FB /* public-headers */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "public-headers"; sourceTree = "<group>"; };
+		AAD67921144911DA00C17C4D /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "Classes/NSData+Base64.h"; sourceTree = "<group>"; };
+		AAD67922144911DA00C17C4D /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "Classes/NSData+Base64.m"; sourceTree = "<group>"; };
+		AAD67923144911DA00C17C4D /* UIImage+Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Network.h"; path = "Classes/UIImage+Network.h"; sourceTree = "<group>"; };
+		AAD67924144911DA00C17C4D /* UIImage+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Network.m"; path = "Classes/UIImage+Network.m"; sourceTree = "<group>"; };
+		AAE841281448CBA3006BDA0E /* SocializeService+Testing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SocializeService+Testing.h"; path = "Test Cases/SocializeService+Testing.h"; sourceTree = "<group>"; };
+		AAE841291448CBA3006BDA0E /* SocializeService+Testing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SocializeService+Testing.m"; path = "Test Cases/SocializeService+Testing.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -996,8 +999,6 @@
 				6D49744113B404DF00463D23 /* Like tests */,
 				1657EF9513A2000600E488CC /* SocializeRequestTests.h */,
 				1657EF9613A2000600E488CC /* SocializeRequestTests.m */,
-				1636370613A76ECF00403879 /* SocializeProviderTests.h */,
-				1636370713A76ECF00403879 /* SocializeProviderTests.m */,
 				1636372D13AB289500403879 /* SocializeCommentsServiceTests.h */,
 				1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */,
 				9A6C09AA13B2941F00780951 /* SocializeEntityServiceTests.h */,
@@ -1017,6 +1018,10 @@
 		1657EF9813A216B500E488CC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AAD67921144911DA00C17C4D /* NSData+Base64.h */,
+				AAD67922144911DA00C17C4D /* NSData+Base64.m */,
+				AAD67923144911DA00C17C4D /* UIImage+Network.h */,
+				AAD67924144911DA00C17C4D /* UIImage+Network.m */,
 				1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */,
 				1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */,
 			);
@@ -1186,8 +1191,6 @@
 				1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */,
 				5C21C0D21396DA0400CF2B9F /* SocializeActivityService.h */,
 				5C21C0D31396DA0400CF2B9F /* SocializeActivityService.m */,
-				1657EF63139F677000E488CC /* SocializeProvider.h */,
-				1657EF64139F677000E488CC /* SocializeProvider.m */,
 				1636373013AB28D900403879 /* SocializeCommentsService.h */,
 				1636373113AB28DA00403879 /* SocializeCommentsService.m */,
 				9AC0259713BB8253004AB147 /* SocializeUserService.h */,
@@ -1300,6 +1303,8 @@
 				5CFCBE3F1385B60D00EF5073 /* Configuration Tests */,
 				5CFCBE381385953F00EF5073 /* Parser Tests */,
 				5CFCBE371385952600EF5073 /* Factory Tests */,
+				AAE841281448CBA3006BDA0E /* SocializeService+Testing.h */,
+				AAE841291448CBA3006BDA0E /* SocializeService+Testing.m */,
 			);
 			name = "Test Files";
 			sourceTree = "<group>";
@@ -2259,7 +2264,6 @@
 				5C21C0D51396DA0500CF2B9F /* SocializeActivityService.m in Sources */,
 				84B8F3D11396EF4100C95F41 /* SocializeEntityJSONFormatter.m in Sources */,
 				84B8F3D61396EF4D00C95F41 /* SocializeObjectJSONFormatter.m in Sources */,
-				1657EF66139F677100E488CC /* SocializeProvider.m in Sources */,
 				5C3069BF13A2B396007335FF /* SocializeObjectFormatter.m in Sources */,
 				1657EF9C13A2170A00E488CC /* NSString+UrlSerialization.m in Sources */,
 				1636373313AB28DD00403879 /* SocializeCommentsService.m in Sources */,
@@ -2342,6 +2346,8 @@
 				167E11C9144325F9004E4C1B /* SocializeProfileEditValueController.m in Sources */,
 				167E11CB144325F9004E4C1B /* SocializeProfileEditViewController.m in Sources */,
 				167E11D11443265C004E4C1B /* UIImage+Resize.m in Sources */,
+				AAD67925144911DA00C17C4D /* NSData+Base64.m in Sources */,
+				AAD67926144911DA00C17C4D /* UIImage+Network.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2357,7 +2363,6 @@
 				5C3069B713A2ABEC007335FF /* SocializeEntityFormatterTests.m in Sources */,
 				1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */,
 				1657EFA113A22A9E00E488CC /* UrlSerializationTests.m in Sources */,
-				1636370813A76ED000403879 /* SocializeProviderTests.m in Sources */,
 				1636372F13AB289500403879 /* SocializeCommentsServiceTests.m in Sources */,
 				16F449BE13AF2974003BE655 /* SocializeCommentFormaterTests.m in Sources */,
 				16F449DA13AF8358003BE655 /* SocializeApplicationJSONFormatterTests.m in Sources */,
@@ -2389,6 +2394,7 @@
 				160630F4142CB17B003B5AC7 /* SocializeUnitTestApplication.m in Sources */,
 				166ACEDF14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m in Sources */,
 				167E11D41443293E004E4C1B /* SocializeActionBarTests.m in Sources */,
+				AAE8412A1448CBA3006BDA0E /* SocializeService+Testing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2705,6 +2711,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -2738,6 +2745,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SampleSdkApp/SampleSdkApp-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

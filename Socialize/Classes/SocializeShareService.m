@@ -33,7 +33,12 @@
         NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity", text, @"text", [NSNumber numberWithInt:medium], @"medium" , nil];
         NSArray *params = [NSArray arrayWithObjects:entityParam, 
                            nil];
-        [self ExecutePostRequestAtEndPoint:SHARE_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+        [self executeRequest:
+         [SocializeRequest requestWithHttpMethod:@"POST"
+                                    resourcePath:SHARE_METHOD
+                              expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                          params:params]
+         ];
     }
 }
 

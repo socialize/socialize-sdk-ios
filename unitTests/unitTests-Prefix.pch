@@ -8,11 +8,6 @@
 #warning "This project uses features only available in iPhone SDK 3.0 and later."
 #endif
 
-#ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-    #import <Foundation/Foundation.h>
-#endif
-
 #define JSONDecoder SocializeJSONDecoder 
 #define JSONKitDeserializing SocializeJSONKitDeserializing
 #define JSONKitSerializing SocializeJSONKitSerializing
@@ -53,3 +48,12 @@
 #define SBJsonWriter SocializeSBJsonWriter
 #define SBProxyForJson SocializeSBProxyForJson
 #define SBJSONErrorDomain SocializeSBJSONErrorDomain
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "SocializeService+Testing.h"
+#endif
+
+
+

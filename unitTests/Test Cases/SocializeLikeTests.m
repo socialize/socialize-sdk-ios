@@ -14,7 +14,6 @@
 #import "SocializeObjectFactory.h"
 #import "SocializeLike.h"
 
-
 #define ENTITY @"entity_key"
 
 @interface SocializeLikeTests() 
@@ -26,12 +25,15 @@
 -(void) setUpClass
 {  
     SocializeObjectFactory* factory = [[SocializeObjectFactory new] autorelease];
-    _service = [[SocializeLikeService alloc] initWithProvider:nil objectFactory:factory delegate:self];
+    _service = [[SocializeLikeService alloc] initWithObjectFactory:factory delegate:self];
+    _mockService = [[_service nonRetainingMock] retain];
+
     _testError = [NSError errorWithDomain:@"Socialize" code: 400 userInfo:nil];
 }
 
 -(void) tearDownClass
 {
+    [_mockService release]; _mockService = nil;
     [_service release]; _service = nil;
 }
 
@@ -42,13 +44,12 @@
                                    [NSNumber numberWithInt:alikeId], @"id",
                                    nil];
 
-    id mockProvider =[OCMockObject mockForClass:[SocializeProvider class]];
-    _service.provider = mockProvider; 
-    
     NSString* newMethodName = [NSString stringWithFormat:@"like/%d/", alikeId];
-    [[mockProvider expect] requestWithMethodName:newMethodName andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_service];
-    [_service getLike:alikeId];
-    [mockProvider verify];
+    SocializeRequest *expectedRequest = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:newMethodName expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:params];
+    [[_mockService expect] executeRequest:expectedRequest];
+
+    [_mockService getLike:alikeId];
+    [_mockService verify];
 }
 
 -(void) testDeleteAlike
@@ -62,14 +63,12 @@
                                    [NSNumber numberWithInt:alikeId], @"id",
                                    nil];
     
-    id mockProvider =[OCMockObject mockForClass:[SocializeProvider class]];
-
-    _service.provider = mockProvider; 
-    
     NSString* newMethodName = [NSString stringWithFormat:@"like/%d/", alikeId];
-    [[mockProvider expect] requestWithMethodName:newMethodName andParams:params  expectedJSONFormat:SocializeAny andHttpMethod:@"DELETE" andDelegate:_service];
-    [_service deleteLike: mockLike];
-    [mockProvider verify];
+    SocializeRequest *expectedRequest = [SocializeRequest requestWithHttpMethod:@"DELETE" resourcePath:newMethodName expectedJSONFormat:SocializeAny params:params];
+    [[_mockService expect] executeRequest:expectedRequest];
+
+    [_mockService deleteLike: mockLike];
+    [_mockService verify];
 }
 
 -(void) testGetListOfLikes
@@ -77,39 +76,39 @@
     NSNumber* first = [NSNumber numberWithInt:1];
     NSNumber* last = [NSNumber numberWithInt:100];
     
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    _service.provider = mockProvider;
     _service.delegate = nil;
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    @"www.123.com", @"entity_key", first, @"first", last, @"last",
                                    nil];
 
-    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_service];
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:@"like/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]];
 
-    [_service getLikesForEntityKey:@"www.123.com" first:first last:last];
-    [mockProvider verify];
+    [_mockService getLikesForEntityKey:@"www.123.com" first:first last:last];
+    [_mockService verify];
 }
 
 -(void) testGetListOfLikesWithNilPageIndicators
 {
     
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    _service.provider = mockProvider;
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    @"www.123.com", @"entity_key", 
                                    nil];
     
-    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_service];
-    
-    [_service getLikesForEntityKey:@"www.123.com" first:nil last:nil];
-    [mockProvider verify];
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:@"like/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]];
+
+    [_mockService getLikesForEntityKey:@"www.123.com" first:nil last:nil];
+    [_mockService verify];
 }
 
-
 -(void)testpostLikeForEntity{
-    
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    _service.provider = mockProvider;
     
     SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
     SocializeEntity* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeEntity)]; 
@@ -120,16 +119,17 @@
     NSArray *params = [NSArray arrayWithObjects:entityParam, 
                        nil];
 
-    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:@"like/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]];
 
-    [_service postLikeForEntity:mockEntity andLongitude:nil latitude:nil];
-    [mockProvider verify];
+    [_mockService postLikeForEntity:mockEntity andLongitude:nil latitude:nil];
+    [_mockService verify];
 }
 
 -(void)testpostLikeForEntityWithGeo{
-    
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    _service.provider = mockProvider;
     
     SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
     SocializeEntity* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeEntity)]; 
@@ -142,15 +142,19 @@
     NSArray *params = [NSArray arrayWithObjects:entityParam, 
                        nil];
     
-    [[mockProvider expect] requestWithMethodName:@"like/" andParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
-    
-    [_service postLikeForEntity:mockEntity andLongitude:lng latitude:lat];
-    [mockProvider verify];
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:@"like/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]];
+
+    [_mockService postLikeForEntity:mockEntity andLongitude:lng latitude:lat];
+    [_mockService verify];
 }
 
 -(void)testGetLikesCallback{
-    
-    SocializeRequest* _request = [SocializeRequest getRequestWithParams:nil expectedJSONFormat:SocializeDictionary httpMethod:@"GET"  delegate:self requestURL:@"invalidparam"];
+    SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"invalidparam" expectedJSONFormat:SocializeDictionary params:nil];
+    request.delegate = self;
 
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/like_single_response.json"];
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
@@ -158,7 +162,7 @@
     
     [[mockDelegate expect] service:_service didFetchElements:OCMOCK_ANY];
     
-    [_service request:_request didLoadRawResponse:[JSONStringToParse dataUsingEncoding:NSUTF8StringEncoding]];
+    [_service request:request didLoadRawResponse:[JSONStringToParse dataUsingEncoding:NSUTF8StringEncoding]];
     [mockDelegate verify];
 }
 
@@ -198,5 +202,4 @@
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
     NSLog(@"didFetchElements %@", dataArray);
 }
-
 @end

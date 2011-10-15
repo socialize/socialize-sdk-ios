@@ -10,6 +10,8 @@
 
 extern NSString * const kSocializeModuleConfigurationPrototypesKey;
 extern NSString * const kSocializeModuleConfigurationFormatterKey;
+extern NSString * const kRestserverBaseURL;
+extern NSString * const kSecureRestserverBaseURL;
 
 @interface SocializeConfiguration : NSObject 
 {
@@ -22,9 +24,10 @@ extern NSString * const kSocializeModuleConfigurationFormatterKey;
 -(id)initWithWithConfigurationPath:(NSString *)configurationFilePath;
 
 +(NSString *)defaultConfigurationPath;
-
++(SocializeConfiguration*)sharedConfiguration;
 @property(nonatomic, readonly) NSDictionary * configurationInfo;
 @property(nonatomic, readonly) NSString * configurationFilePath;
 @property(nonatomic, readonly) NSString * defaultConfigurationPath;
-
+@property(nonatomic, copy, readonly) NSString * restserverBaseURL;
+@property(nonatomic, copy, readonly) NSString * secureRestserverBaseURL;
 @end

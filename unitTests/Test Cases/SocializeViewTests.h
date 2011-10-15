@@ -15,6 +15,7 @@
 @class SocializeViewService;
 @interface SocializeViewTests : GHTestCase<SocializeServiceDelegate, SocializeRequestDelegate> {
     SocializeViewService    *_service;
+    id                      _mockService;
     NSError                 *_testError;
 }
 

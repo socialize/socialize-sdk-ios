@@ -34,6 +34,7 @@
 
 @interface SocializeCommentsServiceTests : GHTestCase <SocializeServiceDelegate> {
     SocializeCommentsService* _service;
+    id                        _mockService;
     NSError* _testError;
 }
 

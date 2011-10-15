@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "SocializeCommonDefinitions.h"
 #import "SocializeObjectFactory.h"
-#import "SocializeProvider.h"
 #import "SocializeEntity.h"
 #import "SocializeRequest.h"
 #import "SocializeService.h"

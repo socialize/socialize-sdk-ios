@@ -8,7 +8,6 @@
 
 #import "SocializeAuthenticateService.h"
 #import "SocializeRequest.h"
-#import "SocializeProvider.h"
 #import "OAMutableURLRequest.h"
 #import "OADataFetcher.h"
 #import "OAAsynchronousDataFetcher.h"
@@ -40,7 +39,13 @@
                                                 nil];
 
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-    [self ExecuteSecurePostRequestAtEndPoint:AUTHENTICATE_METHOD WithParams:paramsDict expectedResponseFormat:SocializeDictionary];
+    [self executeRequest:
+     [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                resourcePath:AUTHENTICATE_METHOD
+                          expectedJSONFormat:SocializeDictionary
+                                      params:paramsDict]
+     ];
+
 }
 
 +(BOOL)isAuthenticated {
@@ -93,8 +98,14 @@
                              thirdPartyAuthToken, @"auth_token",
                              thirdPartyAppId, @"auth_id" , nil] ;                        
                                
-   [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-   [self ExecuteSecurePostRequestAtEndPoint:AUTHENTICATE_METHOD WithParams:params expectedResponseFormat:SocializeDictionary];
+    [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
+    [self executeRequest:
+     [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                      resourcePath:AUTHENTICATE_METHOD
+                                expectedJSONFormat:SocializeDictionary
+                                            params:params]
+     ];
+
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey 

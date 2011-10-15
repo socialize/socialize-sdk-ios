@@ -8,7 +8,6 @@
 
 #import "SocializeAuthTests.h"
 #import "SocializeAuthenticateService.h"
-#import "SocializeProvider.h"
 #import <OCMock/OCMock.h>
 #import "Socialize.h"
 #import "SocializeFBConnect.h"
@@ -23,6 +22,7 @@
 {
     [super setUpClass];
     _service = [[SocializeAuthenticateService alloc] init];
+    _mockService = [[_service nonRetainingMock] retain];
     _testError = [NSError errorWithDomain:@"" code: 402 userInfo:nil];
 }
 
@@ -30,6 +30,7 @@
 {
     //[_service release]; 
     _service = nil;
+    [_mockService release]; _mockService = nil;
     [super tearDownClass];
 }
 
@@ -39,13 +40,14 @@
                                    [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [UIDevice currentDevice].uniqueIdentifier],@"jsonData",
                                    nil];
     
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] secureRequestWithMethodName:@"authenticate/" andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:_service];
-        
-    _service.provider = mockProvider;
-
-    [_service authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819"];
-    [mockProvider verify];
+    [[_mockService expect] executeRequest:
+     [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                      resourcePath:@"authenticate/"
+                                expectedJSONFormat:SocializeDictionary
+                                            params:params]];
+    
+    [_mockService authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819"];
+    [_mockService verify];
 }
 
 -(void)testAuthAnonymousParams{
@@ -54,20 +56,21 @@
                                        @"1"/* auth type is for facebook*/ , @"auth_type",
                                        @"another token", @"auth_token",
                                        @"anotheruserid", @"auth_id" , nil] ;
-    
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    
-    [[mockProvider expect] secureRequestWithMethodName:@"authenticate/" andParams:params expectedJSONFormat:SocializeDictionary andHttpMethod:@"POST" andDelegate:_service];
-    _service.provider = mockProvider;
-        
-    [_service  authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" 
+
+    [[_mockService expect] executeRequest:
+     [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                      resourcePath:@"authenticate/"
+                                expectedJSONFormat:SocializeDictionary
+                                            params:params]];
+
+    [_mockService  authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" 
             apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" 
             thirdPartyAuthToken:@"another token"
             thirdPartyAppId:@"anotheruserid"
                         thirdPartyName:FacebookAuth];
     
     
-    [mockProvider verify];
+    [_mockService verify];
 }
 
 -(void)testOAtoken{

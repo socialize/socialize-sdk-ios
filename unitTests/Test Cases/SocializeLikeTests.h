@@ -17,6 +17,7 @@
 @interface SocializeLikeTests : GHTestCase<SocializeServiceDelegate, SocializeRequestDelegate> {
     
     SocializeLikeService    *_service;
+    id                      _mockService;
     NSError                 *_testError;
 }
 

@@ -27,7 +27,6 @@
 
 #import "SocializeCommentsService.h"
 #import "SocializeComment.h"
-#import "SocializeProvider.h"
 #import "SocializeCommentJSONFormatter.h"
 #import "SocializeObjectFactory.h"
 
@@ -66,7 +65,12 @@
     
     NSAssert([params count] != 0, @"User should provide commet ids or keys");
     
-    [self ExecuteGetRequestAtEndPoint:COMMENTS_LIST_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:COMMENTS_LIST_METHOD
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];
 }
 
 -(void) getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last{
@@ -77,8 +81,12 @@
     else 
         params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entryKey, ENTITY_KEY, first, @"first", last, @"last", nil];
         
-    [self ExecuteGetRequestAtEndPoint:COMMENTS_LIST_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
-
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:COMMENTS_LIST_METHOD
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];
 }
 
 -(void) createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat
@@ -91,7 +99,13 @@
     }
     
     NSArray *params = [NSArray arrayWithObject:commentDictionary];
-    [self ExecutePostRequestAtEndPoint:COMMENTS_LIST_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:COMMENTS_LIST_METHOD
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];
+
 }
 
 -(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat
@@ -107,7 +121,12 @@
         }
         
         NSArray *params = [NSArray arrayWithObject: commentDictionary];
-        [self ExecutePostRequestAtEndPoint:COMMENTS_LIST_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+        [self executeRequest:
+         [SocializeRequest requestWithHttpMethod:@"POST"
+                                    resourcePath:COMMENTS_LIST_METHOD
+                              expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                          params:params]
+         ];
     }
     else
         [self createCommentForEntityWithKey:entity.key comment:comment longitude:lng latitude:lat];

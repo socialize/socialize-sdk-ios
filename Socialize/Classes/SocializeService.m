@@ -39,7 +39,7 @@
 
 @implementation SocializeService
 
-@synthesize delegate = _delegate, provider = _provider; 
+@synthesize delegate = _delegate;
 
 -(Protocol *)ProtocolType
 {
@@ -47,7 +47,6 @@
 }
 -(void) dealloc
 {   
-    self.provider = nil;
     _objectCreator = nil;
     self.delegate = nil;
     [super dealloc];
@@ -55,12 +54,11 @@
 
 
 
--(id) initWithProvider: (SocializeProvider*) provider objectFactory: (SocializeObjectFactory*) objectFactory delegate:(id<SocializeServiceDelegate>) delegate
+-(id) initWithObjectFactory: (SocializeObjectFactory*) objectFactory delegate:(id<SocializeServiceDelegate>) delegate
 {
     self = [super init];
     if(self != nil)
     {
-        self.provider = provider;
         _objectCreator = objectFactory;
         self.delegate = delegate;
     }
@@ -68,47 +66,10 @@
     return self;
 }
 
--(void)ExecuteGetRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)requestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
-{
-    [_delegate retain];// Take ownership
-    [_provider requestWithMethodName:endPoint andParams:requestParameters   expectedJSONFormat:expectedFormat andHttpMethod:@"GET" andDelegate:self];
-}
-
--(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)postRequestObject expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
-{
-    NSString * stringRepresentation =  [_objectCreator createStringRepresentationOfObject:postRequestObject]; 
-    NSMutableDictionary* params = [self genereteParamsFromJsonString:stringRepresentation];
-    [self ExecutePostRequestAtEndPoint:endPoint WithParams:params expectedResponseFormat:expectedFormat];
-}
-
--(void)ExecutePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat 
-{
-    [_delegate retain];// Take ownership
-    [_provider requestWithMethodName:endPoint andParams:postRequestParameters expectedJSONFormat:expectedFormat andHttpMethod:@"POST" andDelegate:self];
-}
-
--(void)ExecutePutRequestAtEndPoint:(NSString *)endPoint  WithObject:(id)putRequestObject expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
-{
-    NSDictionary * dictionaryRepresentation =  [_objectCreator createDictionaryRepresentationOfObject:putRequestObject]; 
-    [self ExecutePutRequestAtEndPoint:endPoint WithParams:dictionaryRepresentation expectedResponseFormat:expectedFormat];
-}
-
--(void)ExecutePutRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)putRequestParams expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
-{
-    [_delegate retain];// Take ownership
-    [_provider requestWithMethodName:endPoint andParams:putRequestParams expectedJSONFormat:expectedFormat andHttpMethod:@"PUT" andDelegate:self];
-}
-
--(void)ExecuteSecurePostRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)postRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat 
-{
-    [_delegate retain];// Take ownership
-    [_provider secureRequestWithMethodName:endPoint andParams:postRequestParameters expectedJSONFormat:expectedFormat andHttpMethod:@"POST" andDelegate:self];
-}
-
--(void)ExecuteDeleteRequestAtEndPoint:(NSString *)endPoint  WithParams:(id)deleteRequestParameters expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
-{
-    [_delegate retain];// Take ownership
-    [_provider requestWithMethodName:endPoint andParams:deleteRequestParameters  expectedJSONFormat:SocializeAny andHttpMethod:@"DELETE" andDelegate:self];
+- (void)executeRequest:(SocializeRequest*)request {
+    [self retainDelegate];
+    request.delegate = self;
+    [request connect];
 }
 
 #pragma mark - Socialize requst delegate
@@ -135,21 +96,36 @@
     else {
         array = nil;
     }
+    
+    if (request.operationType == SocializeRequestOperationTypeInferred) {
+        
 
-    if ([request.httpMethod isEqualToString:@"POST"]){
-        if ([array count])
-            if([self.delegate respondsToSelector:@selector(service:didCreate:)])
-                [self.delegate service:self didCreate:[array objectAtIndex:0]];
-        else
-            if([self.delegate respondsToSelector:@selector(service:didCreate:)])
-                [self.delegate service:self didCreate:nil];
+        if ([request.httpMethod isEqualToString:@"POST"]){
+            if ([array count])
+                if([self.delegate respondsToSelector:@selector(service:didCreate:)])
+                    [self.delegate service:self didCreate:[array objectAtIndex:0]];
+            else
+                if([self.delegate respondsToSelector:@selector(service:didCreate:)])
+                    [self.delegate service:self didCreate:nil];
+        }
+        else if ([request.httpMethod isEqualToString:@"GET"] && [self.delegate respondsToSelector:@selector(service:didFetchElements:)])
+            [self.delegate service:self didFetchElements:array];
+        else if ([request.httpMethod isEqualToString:@"DELETE"] && [self.delegate respondsToSelector:@selector(service:didDelete:)])
+            [self.delegate service:self didDelete:nil];
+        else if ([request.httpMethod isEqualToString:@"PUT"] && [self.delegate respondsToSelector:@selector(service:didUpdate:)])
+            [self.delegate service:self didUpdate:objectList];
+    } else {
+        
+        switch (request.operationType) {
+            case SocializeRequestOperationTypeUpdate:
+                if ([self.delegate respondsToSelector:@selector(service:didUpdate:)]) {
+                    [self.delegate service:self didUpdate:objectList];
+                }
+                break;
+            default:
+                NSAssert(NO, @"Unhandled operation type %d", request.operationType);
+        }
     }
-    else if ([request.httpMethod isEqualToString:@"GET"] && [self.delegate respondsToSelector:@selector(service:didFetchElements:)])
-        [self.delegate service:self didFetchElements:array];
-    else if ([request.httpMethod isEqualToString:@"DELETE"] && [self.delegate respondsToSelector:@selector(service:didDelete:)])
-        [self.delegate service:self didDelete:nil];
-    else if ([request.httpMethod isEqualToString:@"PUT"] && [self.delegate respondsToSelector:@selector(service:didUpdate:)])
-        [self.delegate service:self didUpdate:objectList];
 }
 
 -(void) dispatch:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
@@ -245,6 +221,10 @@
     }
 }
 
+-(void)retainDelegate {
+    [_delegate retain];
+}
+
 -(void)freeDelegate
 {
     [_delegate release];//Release ownership 
@@ -266,7 +246,7 @@
 {}
 
 
--(NSMutableDictionary*) genereteParamsFromJsonString: (NSString*) jsonData
+-(NSMutableDictionary*) generateParamsFromJsonString: (NSString*) jsonData
 {
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:
             jsonData, @"jsonData",

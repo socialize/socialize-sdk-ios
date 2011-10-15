@@ -211,9 +211,6 @@
 	[cell.theImageView.layer setCornerRadius:4];
 	[cell.theImageView.layer setMasksToBounds:YES];
 	
-    // Temporarily disable selection until profile is editable on server [See #19262347]
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
 	return cell;
 	
 	
@@ -348,7 +345,7 @@
 	} else if (buttonIndex == 0 ) {
 		imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 	}
-	[actionSheet release];
+//	[actionSheet release];
 	
 	[self presentModalViewController:imagePicker animated:YES];
 }
@@ -403,6 +400,7 @@
 
 #pragma mark -
 #pragma mark Table view delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     // Navigation logic may go here. Create and push another view controller.
@@ -411,8 +409,7 @@
 	cell.selected = NO;
 	if (indexPath.section ==0) 
 	{
-// Temporarily disabled [#19262347]
-//		[self showActionSheet];
+		[self showActionSheet];
 		return;
 	}
 	
