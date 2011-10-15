@@ -115,7 +115,6 @@
 		16038A7D143F121D00455B6A /* Socialize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16038A12143F121C00455B6A /* Socialize.framework */; };
 		1638C52E143DC9A500538659 /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638C52C143DC9A500538659 /* TestSocializeActionBar.m */; };
 		1638C52F143DC9A500538659 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1638C52D143DC9A500538659 /* TestSocializeActionBar.xib */; };
-		18CB02C214476E15000F73A6 /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CB02C114476E15000F73A6 /* libprofile_rt.dylib */; };
 		AA2DA2421435437400C62B97 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA2241435420300C62B97 /* MapKit.framework */; };
 		AA2DA2431435437400C62B97 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA222143541F700C62B97 /* CoreLocation.framework */; };
 		AA2DA2441435437400C62B97 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA220143541E100C62B97 /* QuartzCore.framework */; };
@@ -374,7 +373,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18CB02C214476E15000F73A6 /* libprofile_rt.dylib in Frameworks */,
 				AAAFE94A1435690B00851C73 /* libOAuth.a in Frameworks */,
 				AAAFE5C1143553D800851C73 /* GHUnitIOS.framework in Frameworks */,
 				AA2DA2421435437400C62B97 /* MapKit.framework in Frameworks */,
