@@ -92,8 +92,6 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
-//    AuthenticateViewController* auth = [rootController.viewControllers objectAtIndex:0];
-//    return [auth.socialize.authService handleOpenURL: url];
     return [Socialize handleOpenURL:url];
 }
 

@@ -58,6 +58,9 @@ Adding Facebook Support
 -------------------------
 To add Facebook support in Socialize you'll just need to let Socialize know your Facebook app id.  You can register or find your Facebook app id here: https://developers.facebook.com/apps
 
+To complete the authentication flow, you must also be sure to call [Socialize handleOpenURL:url] from your UIApplicationDelegate's application:handleOpenURL: method. Socialize will take care of handing off the openURL request to the underlying `Facebook iOS SDK <http://developers.facebook.com/docs/reference/iossdk/authentication/>`_
+
 .. raw:: html
 
-        <script src=https://gist.github.com/1276197.js?file=appDelegate.m"></script>
+        <script src="https://gist.github.com/1294195.js?file=appDelegate.m"></script>
+
