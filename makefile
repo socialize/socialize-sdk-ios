@@ -1,15 +1,22 @@
-.PHONY: tags build
+.PHONY: tags framework bundle
+
+BUNDLE_SCHEME=Socialize Bundle
 
 default: build buildsample test package
  	# do all the dependencies above
 	#
-package: build
+package: framework
     # zip sources
 	./util/package.sh
      
-build: 
+framework:
   	# build embedded framework
 	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "Socialize Framework" -configuration Distribution -sdk iphoneos build
+
+bundle:
+	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "${BUNDLE_SCHEME}" -configuration Release -sdk iphoneos build
+	mkdir -p build/Socialize.bundle
+	cp -R build/Socialize-iphoneos.bundle/. build/Socialize.bundle
 
 buildsample:
 	#building sample
@@ -21,7 +28,7 @@ clean:
 	xcodebuild -project SocializeSDK.xcodeproj -alltargets -configuration Debug -sdk iphonesimulator clean
 	xcodebuild -project SocializeSDK.xcodeproj -alltargets -configuration Distribution -sdk iphoneos clean
 	rm -rfd build
-test: build
+test:
 # run unit tests
 	WRITE_JUNIT_XML=YES GHUNIT_UI_CLI=1 xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme unitTests -configuration Debug -sdk iphonesimulator build
 
