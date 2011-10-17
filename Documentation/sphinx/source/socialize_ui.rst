@@ -33,11 +33,11 @@ of comments associated with an entity (URL).
 Displaying the Comment View
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When you want to launch the comment view, simply instantiate and push the commentViewController :
+When you want to launch the comment view, simply instantiate and present the commentViewController :
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1266199.js?file=MyCustomViewController.m"></script>
+        <script src="https://gist.github.com/1293791.js"> </script>
 
 Socialize Action Bar
 ----------------------
