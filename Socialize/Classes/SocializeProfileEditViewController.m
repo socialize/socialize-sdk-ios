@@ -383,19 +383,19 @@
 	return newImage;
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
-{
-	DebugLog(@"image was picked!!!");
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    
+    DebugLog(@"image was picked!!!");
 	
 	self.navigationItem.rightBarButtonItem.enabled = YES;
     //[self.view setNeedsDisplay];
 	[picker dismissModalViewControllerAnimated:YES];
 	
 	[self setProfileImage:[self resizeImage:image]];
-
+    
 	NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 	[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
-
 }
 
 #pragma mark -

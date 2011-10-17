@@ -264,33 +264,6 @@
     if (profileEditViewController_ == nil) {
         profileEditViewController_ = [[SocializeProfileEditViewController alloc]
                                      initWithStyle:UITableViewStyleGrouped];
-        profileEditViewController_.delegate = self;
-
-        NSMutableDictionary * dictionary = [self valueDictionary];
-        
-        NSArray * keyArray = [NSArray arrayWithObjects:@"first name", @"last name", @"bio", nil];
-        
-        profileEditViewController_.keyValueDictionary = dictionary;
-        profileEditViewController_.keysToEdit = keyArray;
-        
-        profileEditViewController_.navigationItem.rightBarButtonItem.enabled = NO;
-        
-        UIButton * cancelButton = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
-        [cancelButton addTarget:self action:@selector(editVCCancel:) forControlEvents:UIControlEventTouchUpInside];
-        
-        UIBarButtonItem * editLeftItem = [[UIBarButtonItem alloc]initWithCustomView:cancelButton];
-        profileEditViewController_.navigationItem.leftBarButtonItem = editLeftItem;	
-        [editLeftItem release];
-        
-        
-        UIButton * saveButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
-        [saveButton addTarget:self action:@selector(editVCSave:) forControlEvents:UIControlEventTouchUpInside];
-        
-        UIBarButtonItem  * editRightItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
-        profileEditViewController_.navigationItem.rightBarButtonItem = editRightItem;	
-        [editRightItem release];
-        
-
     }
     return profileEditViewController_;
 }
@@ -310,6 +283,33 @@
 
 -(void)showEditController
 {
+    self.profileEditViewController.delegate = self;
+    
+    NSMutableDictionary * dictionary = [self valueDictionary];
+    
+    NSArray * keyArray = [NSArray arrayWithObjects:@"first name", @"last name", @"bio", nil];
+    
+    self.profileEditViewController.keyValueDictionary = dictionary;
+    self.profileEditViewController.keysToEdit = keyArray;
+    
+    self.profileEditViewController.navigationItem.rightBarButtonItem.enabled = NO;
+    
+    UIButton * cancelButton = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
+    [cancelButton addTarget:self action:@selector(editVCCancel:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem * editLeftItem = [[UIBarButtonItem alloc]initWithCustomView:cancelButton];
+    profileEditViewController_.navigationItem.leftBarButtonItem = editLeftItem;	
+    [editLeftItem release];
+    
+    
+    UIButton * saveButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
+    [saveButton addTarget:self action:@selector(editVCSave:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem  * editRightItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
+    profileEditViewController_.navigationItem.rightBarButtonItem = editRightItem;	
+    [editRightItem release];
+    
+    
 
 	CGRect windowFrame = self.view.window.frame;
 	CGRect navFrame = CGRectMake(0,windowFrame.size.height, windowFrame.size.width, windowFrame.size.height);

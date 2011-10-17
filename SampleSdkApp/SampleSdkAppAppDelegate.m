@@ -42,6 +42,7 @@
     rootController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     [self.window addSubview:rootController.view];
     [self.window makeKeyAndVisible];
+    
 #if RUN_GHUNIT_TESTS
     int retVal = [GHTestRunner run];
     printf("return value from test runner is: %d\n", retVal);
@@ -57,6 +58,7 @@
         }
     }];
 #endif
+    
     
     return YES;
 }

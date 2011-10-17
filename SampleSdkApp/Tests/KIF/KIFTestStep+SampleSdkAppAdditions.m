@@ -61,10 +61,13 @@
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Edit"]];
 
+    // Tap image
+    NSIndexPath *imagePath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"edit profile" atIndexPath:imagePath]];
+    
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Save"]];
     NSIndexPath *editPath = [NSIndexPath indexPathForRow:0 inSection:1];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"edit profile" atIndexPath:editPath]];
-    
     
     NSString *firstName = @"Test First Name";
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"First name"]]; 

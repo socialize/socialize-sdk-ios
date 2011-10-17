@@ -15,6 +15,8 @@
 		AA2DA2461435437400C62B97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6D14352BC100C62B97 /* UIKit.framework */; };
 		AA2DA2471435437400C62B97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6F14352BC100C62B97 /* Foundation.framework */; };
 		AA2DA2481435437400C62B97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */; };
+		AA3325C9144CD2980033C7FA /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3325C8144CD2980033C7FA /* Smiley.png */; };
+		AA3325E1144CD6490033C7FA /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3325DC144CD5DF0033C7FA /* libOCMock.a */; };
 		AA639E18144A24C000660E26 /* AuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA1144A24BF00660E26 /* AuthenticateViewController.m */; };
 		AA639E19144A24C000660E26 /* AuthenticateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DA2144A24BF00660E26 /* AuthenticateViewController.xib */; };
 		AA639E1A144A24C000660E26 /* CommetsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA4144A24BF00660E26 /* CommetsTableView.m */; };
@@ -338,6 +340,41 @@
 			remoteGlobalIDString = AAB07267139719AC008AF393;
 			remoteInfo = KIF;
 		};
+		AA3325D7144CD5DF0033C7FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = OCMock;
+		};
+		AA3325D9144CD5DF0033C7FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03BF2D3708F1C69500978C59;
+			remoteInfo = OCMockTests;
+		};
+		AA3325DB144CD5DF0033C7FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 033C84AF11F585CB0009B9CD;
+			remoteInfo = OCMockPhoneSim;
+		};
+		AA3325DD144CD5DF0033C7FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03DAC01F11FEB771007AF17B;
+			remoteInfo = OCMockPhoneDevice;
+		};
+		AA3325E2144CD6510033C7FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 033C84AE11F585CB0009B9CD;
+			remoteInfo = OCMockPhoneSim;
+		};
 		AA8636D3144CA0DB00CFA759 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA8636CC144CA0DB00CFA759 /* KIF.xcodeproj */;
@@ -357,6 +394,8 @@
 		AA2DA222143541F700C62B97 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AA2DA2241435420300C62B97 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AA2DA2C61435437400C62B97 /* SampleSdkApp Integration Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SampleSdkApp Integration Tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA3325C8144CD2980033C7FA /* Smiley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Smiley.png; sourceTree = "<group>"; };
+		AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = ../Frameworks/OCMock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		AA639DA0144A24BF00660E26 /* AuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticateViewController.h; sourceTree = "<group>"; };
 		AA639DA1144A24BF00660E26 /* AuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticateViewController.m; sourceTree = "<group>"; };
 		AA639DA2144A24BF00660E26 /* AuthenticateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenticateViewController.xib; sourceTree = "<group>"; };
@@ -546,12 +585,10 @@
 		AA863743144CA22700CFA759 /* SocializeProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeProfileViewController.xib; sourceTree = "<group>"; };
 		AA863744144CA22700CFA759 /* Socialize.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Socialize.framework; sourceTree = "<group>"; };
 		AA863869144CA28300CFA759 /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA86386B144CA28300CFA759 /* SampleSdkApp Integration Tests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SampleSdkApp Integration Tests copy-Info.plist"; path = "/Users/griswold/ios/socialize-sdk-ios/SampleSdkApp/SampleSdkApp Integration Tests copy-Info.plist"; sourceTree = "<absolute>"; };
 		AAAFE5C0143553D800851C73 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		AAAFE93F1435640C00851C73 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = Frameworks/SymbolCollisionTestLibs/libJSONKit.a; sourceTree = "<group>"; };
 		AAAFE9401435640C00851C73 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth.a; path = Frameworks/SymbolCollisionTestLibs/libOAuth.a; sourceTree = "<group>"; };
 		AAAFE9411435640C00851C73 /* libSBJson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSBJson.a; path = Frameworks/SymbolCollisionTestLibs/libSBJson.a; sourceTree = "<group>"; };
-		AAC91747144CB5E0009B6555 /* SampleSdkApp Integration Tests copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SampleSdkApp Integration Tests copy2-Info.plist"; path = "/Users/griswold/ios/socialize-sdk-ios/SampleSdkApp/SampleSdkApp Integration Tests copy2-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -559,6 +596,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA3325E1144CD6490033C7FA /* libOCMock.a in Frameworks */,
 				AA2025B1144CB249006C1F8F /* libKIF.a in Frameworks */,
 				AA8636D7144CA14300CFA759 /* GHUnitIOS.framework in Frameworks */,
 				AA2DA2421435437400C62B97 /* MapKit.framework in Frameworks */,
@@ -596,9 +634,8 @@
 				AA639D9F144A24BF00660E26 /* SampleSdkApp */,
 				AA2D9E6C14352BC100C62B97 /* Frameworks */,
 				AA2D9E6A14352BC100C62B97 /* Products */,
+				AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */,
 				AA8636CC144CA0DB00CFA759 /* KIF.xcodeproj */,
-				AA86386B144CA28300CFA759 /* SampleSdkApp Integration Tests copy-Info.plist */,
-				AAC91747144CB5E0009B6555 /* SampleSdkApp Integration Tests copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -635,7 +672,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AA639D9F144A24BF00660E26 /* SampleSdkApp */ = {
+		AA3325CA144CD2BA0033C7FA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA3325C8144CD2980033C7FA /* Smiley.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		AA3325CB144CD2C90033C7FA /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				AA8636BA144CA0A200CFA759 /* Tests */,
@@ -703,6 +748,26 @@
 				AA639E15144A24BF00660E26 /* UserProfileViewController.h */,
 				AA639E16144A24BF00660E26 /* UserProfileViewController.m */,
 				AA639E17144A24BF00660E26 /* UserProfileViewController.xib */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		AA3325CD144CD5DE0033C7FA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA3325D8144CD5DF0033C7FA /* OCMock.framework */,
+				AA3325DA144CD5DF0033C7FA /* OCMockTests.octest */,
+				AA3325DC144CD5DF0033C7FA /* libOCMock.a */,
+				AA3325DE144CD5DF0033C7FA /* libOCMock.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA639D9F144A24BF00660E26 /* SampleSdkApp */ = {
+			isa = PBXGroup;
+			children = (
+				AA3325CB144CD2C90033C7FA /* Source */,
+				AA3325CA144CD2BA0033C7FA /* Resources */,
 			);
 			name = SampleSdkApp;
 			sourceTree = "<group>";
@@ -897,6 +962,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AA3325E3144CD6510033C7FA /* PBXTargetDependency */,
 				AA2025A6144CB219006C1F8F /* PBXTargetDependency */,
 			);
 			name = "SampleSdkApp Integration Tests";
@@ -947,6 +1013,10 @@
 					ProductGroup = AA8636CD144CA0DB00CFA759 /* Products */;
 					ProjectRef = AA8636CC144CA0DB00CFA759 /* KIF.xcodeproj */;
 				},
+				{
+					ProductGroup = AA3325CD144CD5DE0033C7FA /* Products */;
+					ProjectRef = AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -957,6 +1027,34 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		AA3325D8144CD5DF0033C7FA /* OCMock.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCMock.framework;
+			remoteRef = AA3325D7144CD5DF0033C7FA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA3325DA144CD5DF0033C7FA /* OCMockTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OCMockTests.octest;
+			remoteRef = AA3325D9144CD5DF0033C7FA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA3325DC144CD5DF0033C7FA /* libOCMock.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOCMock.a;
+			remoteRef = AA3325DB144CD5DF0033C7FA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA3325DE144CD5DF0033C7FA /* libOCMock.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOCMock.a;
+			remoteRef = AA3325DD144CD5DF0033C7FA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		AA8636D4144CA0DB00CFA759 /* libKIF.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1093,6 +1191,7 @@
 				AA8637AC144CA22800CFA759 /* SocializeProfileEditValueController.xib in Resources */,
 				AA8637AD144CA22800CFA759 /* SocializeProfileEditViewController.xib in Resources */,
 				AA8637AE144CA22800CFA759 /* SocializeProfileViewController.xib in Resources */,
+				AA3325C9144CD2980033C7FA /* Smiley.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1368,6 +1467,11 @@
 			name = KIF;
 			targetProxy = AA2025B3144CB273006C1F8F /* PBXContainerItemProxy */;
 		};
+		AA3325E3144CD6510033C7FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OCMockPhoneSim;
+			targetProxy = AA3325E2144CD6510033C7FA /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1459,7 +1563,10 @@
 					"DEBUG=1",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Frameworks/KIF/\"/**";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../Frameworks/KIF/\"/**",
+					"\"$(CONFIGURATION_BUILD_DIR)/Headers\"",
+				);
 				INFOPLIST_FILE = "SampleSdkApp Integration Tests-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -1486,7 +1593,10 @@
 					"RUN_KIF_TESTS=1",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Frameworks/KIF/\"/**";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../Frameworks/KIF/\"/**",
+					"\"$(CONFIGURATION_BUILD_DIR)/Headers\"",
+				);
 				INFOPLIST_FILE = "SampleSdkApp Integration Tests-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -1510,7 +1620,10 @@
 				GCC_PREFIX_HEADER = "SampleSdkApp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Frameworks/KIF/\"/**";
+				HEADER_SEARCH_PATHS = (
+					"\"$(CONFIGURATION_BUILD_DIR)/Headers\"",
+					"\"$(SRCROOT)/../Frameworks/KIF/\"/**",
+				);
 				INFOPLIST_FILE = "SampleSdkApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
@@ -1534,7 +1647,10 @@
 				GCC_PREFIX_HEADER = "SampleSdkApp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Frameworks/KIF/\"/**";
+				HEADER_SEARCH_PATHS = (
+					"\"$(CONFIGURATION_BUILD_DIR)/Headers\"",
+					"\"$(SRCROOT)/../Frameworks/KIF/\"/**",
+				);
 				INFOPLIST_FILE = "SampleSdkApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (

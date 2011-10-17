@@ -20,6 +20,10 @@
 #import "TestSocializeActionBar.h"
 #import "InputBox.h"
 
+#if RUN_KIF_TESTS
+#import <OCMock/OCMock.h>
+#endif
+
 @implementation TestListController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -184,6 +188,21 @@
         case 9:
         {
             UIViewController *profile = [SocializeProfileViewController currentUserProfileWithDelegate:self];
+#ifdef RUN_KIF_TESTS
+            UINavigationController *nav = (UINavigationController*)profile;
+            SocializeProfileViewController *pvc = (SocializeProfileViewController*)[[nav viewControllers] objectAtIndex:0];
+            SocializeProfileEditViewController *edit = [[[SocializeProfileEditViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
+            id editMock = [OCMockObject partialMockForObject:edit];
+            //- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+            
+            UIImage *profileImage = [UIImage imageNamed:@"Smiley.png"];
+            [[[editMock expect] andDo:^(NSInvocation* blah){
+                NSDictionary *info = [NSDictionary dictionaryWithObject:profileImage forKey:UIImagePickerControllerEditedImage];
+                [edit imagePickerController:nil didFinishPickingMediaWithInfo:info];
+            }] showActionSheet];
+            
+            pvc.profileEditViewController = editMock;
+#endif
             [self.navigationController presentModalViewController:profile animated:YES];
             break;
         }
