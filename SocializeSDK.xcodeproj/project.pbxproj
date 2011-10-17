@@ -142,6 +142,10 @@
 		1638C524143DC96A00538659 /* SocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638C522143DC96A00538659 /* SocializeActionBar.m */; };
 		1638C529143DC98E00538659 /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638C527143DC98E00538659 /* TestSocializeActionBar.m */; };
 		1638C52A143DC98E00538659 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1638C528143DC98E00538659 /* TestSocializeActionBar.xib */; };
+		16437677144C33D8001EA3E4 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C061445BFA3006E2EB4 /* NSString+MD5Addition.m */; };
+		16437678144C33DB001EA3E4 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C081445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m */; };
+		16437679144C33DF001EA3E4 /* SocializeGeocoderAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C151445D2ED006E2EB4 /* SocializeGeocoderAdapter.m */; };
+		1643768C144C3BC4001EA3E4 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
 		1657EF9713A2000600E488CC /* SocializeRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9613A2000600E488CC /* SocializeRequestTests.m */; };
 		1657EF9C13A2170A00E488CC /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */; };
 		1657EFA113A22A9E00E488CC /* UrlSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1657EF9F13A226F700E488CC /* UrlSerializationTests.m */; };
@@ -198,7 +202,6 @@
 		16D2478B1417A986008A550D /* PostCommentViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */; };
 		16D2479D1418D669008A550D /* ImagesCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2479B1418D668008A550D /* ImagesCache.m */; };
 		16DAC99A1420C0EE0011CD5F /* UIKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DAC9981420C0EE0011CD5F /* UIKeyboardListener.m */; };
-		16E33BDE14441AA2006E2EB4 /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 167E10961443141E004E4C1B /* libprofile_rt.dylib */; };
 		16E33C091445BFA3006E2EB4 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C061445BFA3006E2EB4 /* NSString+MD5Addition.m */; };
 		16E33C0A1445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C081445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m */; };
 		16E33C161445D2ED006E2EB4 /* SocializeGeocoderAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C151445D2ED006E2EB4 /* SocializeGeocoderAdapter.m */; };
@@ -342,7 +345,6 @@
 		6DDBEA6E14057B6000E41FC0 /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBEA6A14057B4B00E41FC0 /* UIButton+Socialize.m */; };
 		6DDBEA7014057B6000E41FC0 /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBEA6C14057B5700E41FC0 /* UILabel-Additions.m */; };
 		6DFB0012141FF9460030DE32 /* CommentsTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFB0011141FF9450030DE32 /* CommentsTableViewTests.m */; };
-		6DFB001414213A3A0030DE32 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
 		6DFBFE71141FDDCC0030DE32 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBFE55141FDDCC0030DE32 /* Base64Transcoder.c */; };
 		6DFBFE74141FDDCC0030DE32 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBFE58141FDDCC0030DE32 /* NSMutableURLRequest+Parameters.m */; };
 		6DFBFE76141FDDCC0030DE32 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBFE5A141FDDCC0030DE32 /* NSString+URLEncoding.m */; };
@@ -659,12 +661,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5C6EC7941379CF150073AE65 /* PBXContainerItemProxy */ = {
+		1643767A144C348A001EA3E4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5CC3DAB3137881B900B11B78 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5CC3DABD1378824700B11B78;
-			remoteInfo = Socialize;
+			remoteGlobalIDString = AABC14D4144A114900088B7D;
+			remoteInfo = "Socialize (Profiling)";
 		};
 		AAAFE939143562E400851C73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2055,7 +2057,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				5C6EC7951379CF150073AE65 /* PBXTargetDependency */,
+				1643767B144C348A001EA3E4 /* PBXTargetDependency */,
 			);
 			name = unitTests;
 			productName = unitTests;
@@ -2081,9 +2083,9 @@
 			productReference = AAAFE5E414355BF900851C73 /* SampleSdkApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AABC14D4144A114900088B7D /* Socialize (Profiling) */ = {
+		AABC14D4144A114900088B7D /* Socialize-Profiling */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AABC15AC144A114900088B7D /* Build configuration list for PBXNativeTarget "Socialize (Profiling)" */;
+			buildConfigurationList = AABC15AC144A114900088B7D /* Build configuration list for PBXNativeTarget "Socialize-Profiling" */;
 			buildPhases = (
 				AABC14D5144A114900088B7D /* Sources */,
 				AABC1539144A114900088B7D /* Frameworks */,
@@ -2095,7 +2097,7 @@
 			);
 			dependencies = (
 			);
-			name = "Socialize (Profiling)";
+			name = "Socialize-Profiling";
 			productName = Socialize;
 			productReference = AABC15AF144A114900088B7D /* libSocialize-profiling.a */;
 			productType = "com.apple.product-type.library.static";
@@ -2122,7 +2124,7 @@
 			projectRoot = "";
 			targets = (
 				5CC3DABD1378824700B11B78 /* Socialize */,
-				AABC14D4144A114900088B7D /* Socialize (Profiling) */,
+				AABC14D4144A114900088B7D /* Socialize-Profiling */,
 				5CC3DAE81378859000B11B78 /* unitTests */,
 				16B48DAA13DEEBE100EE0A92 /* Socialize Framework */,
 				AAAFE5E314355BF900851C73 /* SampleSdkApp */,
@@ -2143,7 +2145,7 @@
 				1666BD3E14110BD900518811 /* socialize-comment-details-icon-geo-disabled.png in Resources */,
 				1666BD3F14110D3F00518811 /* comment_template_clear.htm in Resources */,
 				16A82A25141DE17E00193CA7 /* action-bar-icon-like.png in Resources */,
-				6DFB001414213A3A0030DE32 /* SocializeCommentsTableViewController.xib in Resources */,
+				1643768C144C3BC4001EA3E4 /* SocializeCommentsTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2933,16 +2935,19 @@
 				AABC1536144A114900088B7D /* UIImage+Resize.m in Sources */,
 				AABC1537144A114900088B7D /* NSData+Base64.m in Sources */,
 				AABC1538144A114900088B7D /* UIImage+Network.m in Sources */,
+				16437677144C33D8001EA3E4 /* NSString+MD5Addition.m in Sources */,
+				16437678144C33DB001EA3E4 /* UIDevice+IdentifierAddition.m in Sources */,
+				16437679144C33DF001EA3E4 /* SocializeGeocoderAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5C6EC7951379CF150073AE65 /* PBXTargetDependency */ = {
+		1643767B144C348A001EA3E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5CC3DABD1378824700B11B78 /* Socialize */;
-			targetProxy = 5C6EC7941379CF150073AE65 /* PBXContainerItemProxy */;
+			target = AABC14D4144A114900088B7D /* Socialize-Profiling */;
+			targetProxy = 1643767A144C348A001EA3E4 /* PBXContainerItemProxy */;
 		};
 		AAAFE93A143562E400851C73 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3133,7 +3138,7 @@
 					"\"$(CONFIGURATION_BUILD_DIR)/Headers\"/**",
 				);
 				INFOPLIST_FILE = "unitTests/unitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -3180,7 +3185,7 @@
 					"\"$(CONFIGURATION_BUILD_DIR)/Headers\"/**",
 				);
 				INFOPLIST_FILE = "unitTests/unitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -3227,7 +3232,7 @@
 					"\"$(SRCROOT)\"/unitTests/Libraries/**",
 				);
 				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_DIR)/usr/lib\"",
@@ -3261,7 +3266,7 @@
 					"\"$(SRCROOT)\"/unitTests/Libraries/**",
 				);
 				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_DIR)/usr/lib\"",
@@ -3403,7 +3408,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AABC15AC144A114900088B7D /* Build configuration list for PBXNativeTarget "Socialize (Profiling)" */ = {
+		AABC15AC144A114900088B7D /* Build configuration list for PBXNativeTarget "Socialize-Profiling" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AABC15AD144A114900088B7D /* Debug */,

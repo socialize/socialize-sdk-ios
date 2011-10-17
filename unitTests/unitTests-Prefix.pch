@@ -8,12 +8,6 @@
 #warning "This project uses features only available in iPhone SDK 3.0 and later."
 #endif
 
-#ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-    #import <Foundation/Foundation.h>
-    #import "SocializeService+Testing.h"
-#endif
-
 #define JSONDecoder SocializeJSONDecoder 
 #define JSONKitDeserializing SocializeJSONKitDeserializing
 #define JSONKitSerializing SocializeJSONKitSerializing
@@ -57,3 +51,9 @@
 
 #define MD5Addition SocializeMD5Addition
 #define IdentifierAddition SocializeIdentifierAddition
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "SocializeService+Testing.h"
+#endif
