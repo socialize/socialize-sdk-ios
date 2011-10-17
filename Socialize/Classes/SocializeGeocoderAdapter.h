@@ -1,8 +1,8 @@
 /*
- * SocializeLocationManager.h
+ * SocializeGeocoderAdapter.h
  * SocializeSDK
  *
- * Created on 9/14/11.
+ * Created on 10/12/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -26,18 +26,35 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-@interface SocializeLocationManager : NSObject {
-@private
-    BOOL _shareLocation;
-    NSString* _currentLocationDescription;
+typedef void (^SocializeCompletionHandler)(NSArray *placemarks, NSError *error);
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >=  __IPHONE_5_0
+
+@interface SocializeGeocoderAdapter : NSObject {
+    @private
+    CLGeocoder* geocoder;
+    
 }
 
-@property (nonatomic, assign) BOOL shouldShareLocation;
-@property (nonatomic, retain) NSString* currentLocationDescription;
-
--(BOOL)applicationIsAuthorizedToUseLocationServices;
-
-+(SocializeLocationManager*)create;
+- (void)reverseGeocodeLocation:(CLLocation *)location completionHandler:(CLGeocodeCompletionHandler)completionHandler;
+- (void)cancelGeocode;
 
 @end
+
+#else
+
+@interface SocializeGeocoderAdapter : NSObject<MKReverseGeocoderDelegate> {
+@private
+    MKReverseGeocoder* _geocoder;
+    CLGeocodeCompletionHandler handler;
+}
+
+- (void)reverseGeocodeLocation:(CLLocation *)location completionHandler:(CLGeocodeCompletionHandler)completionHandler;
+- (void)cancelGeocode;
+
+@end
+
+#endif

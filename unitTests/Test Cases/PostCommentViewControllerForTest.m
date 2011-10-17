@@ -33,7 +33,7 @@
 
 -(id) initWithEntityUrlString:(NSString*)url keyboardListener:(UIKeyboardListener*) kb locationManager:(SocializeLocationManager *)lm
 {
-    self = [super initWithNibName:nil bundle:nil entityUrlString:url keyboardListener:kb locationManager:lm];
+    self = [super initWithNibName:nil bundle:nil entityUrlString:url keyboardListener:kb locationManager:lm geocoderInfo:nil];
     if(self)
     {
         self.commentTextView = [OCMockObject niceMockForClass: [UITextView class]];

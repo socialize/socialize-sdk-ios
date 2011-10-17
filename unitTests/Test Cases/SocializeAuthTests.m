@@ -14,6 +14,7 @@
 #import "SocializeCommonDefinitions.h"
 #import "SocializePrivateDefinitions.h"
 #import "OAuthConsumer.h"
+#import "UIDevice+IdentifierAddition.h"
 
 
 @implementation SocializeAuthTests
@@ -34,10 +35,9 @@
     [super tearDownClass];
 }
 
--(void)testAuthParams{
-    
+-(void)testAuthParams{   
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [UIDevice currentDevice].uniqueIdentifier],@"jsonData",
+                                   [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [UIDevice currentDevice].uniqueGlobalDeviceIdentifier], @"jsonData",
                                    nil];
     
     [[_mockService expect] executeRequest:
@@ -52,7 +52,7 @@
 
 -(void)testAuthAnonymousParams{
     
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UIDevice currentDevice].uniqueIdentifier,@"udid",
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UIDevice currentDevice].uniqueGlobalDeviceIdentifier,@"udid",
                                        @"1"/* auth type is for facebook*/ , @"auth_type",
                                        @"another token", @"auth_token",
                                        @"anotheruserid", @"auth_id" , nil] ;
