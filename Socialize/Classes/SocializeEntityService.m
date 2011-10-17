@@ -27,7 +27,6 @@
 
 #import "SocializeEntityService.h"
 #import "SocializeObjectFactory.h"
-#import "SocializeProvider.h"
 #import "SocializeEntity.h"
 
 
@@ -60,15 +59,27 @@
 -(void)entityWithKey:(NSString *)keyOfEntity
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:keyOfEntity,ENTRY_KEY, nil];
-    [self ExecuteGetRequestAtEndPoint:ENTITY_GET_ENDPOINT WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:ENTITY_GET_ENDPOINT
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];
+
 }
 
 -(void)createEntities:(NSArray *)entities expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
 {
     NSString * stringRepresentation =  [_objectCreator createStringRepresentationOfArray:entities]; 
-    NSMutableDictionary* params = [self genereteParamsFromJsonString:stringRepresentation];
+    NSMutableDictionary* params = [self generateParamsFromJsonString:stringRepresentation];
    
-    [self ExecutePostRequestAtEndPoint:ENTITY_CREATE_ENDPOINT WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:ENTITY_CREATE_ENDPOINT
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];
+
 }
 
 -(void)createEntity:(id<SocializeEntity>)entity

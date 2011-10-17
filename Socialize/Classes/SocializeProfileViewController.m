@@ -355,29 +355,16 @@
 	self.profileEditViewController.navigationItem.rightBarButtonItem.enabled = NO;
     
     
-    /*
-	if (newProfileImage)
-	{
-		self.profileImageView.image = newProfileImage;
-	}
-	else 
-	{
-		self.profileImageView.image = [UIImage imageNamed:@"socialize_resources/socialize-profileimage-large-default.png"];
-	}*/
-    
     id<SocializeFullUser> userCopy = [(id)self.user copy];
     
 	[userCopy setFirstName:[self.profileEditViewController.keyValueDictionary valueForKey:@"first name"]];
 	[userCopy setLastName:[self.profileEditViewController.keyValueDictionary valueForKey:@"last name"]];
 	[userCopy setDescription:[self.profileEditViewController.keyValueDictionary valueForKey:@"bio"]];
 
-    [self.socialize updateUserProfile:userCopy profileImage:nil];
-    [userCopy release];
+    UIImage* newProfileImage = self.profileEditViewController.profileImage;
+    [self.socialize updateUserProfile:userCopy profileImage:newProfileImage];
 
-//FIXME reenable profile image once puts are back in [#19262347]
-//    UIImage* newProfileImage = self.profileEditViewController.profileImage;
-//    [self.socialize updateUserProfile:userCopy profileImage:newProfileImage];
-    
+    [userCopy release];
 }
 
 -(void)editVCCancel:(id)button

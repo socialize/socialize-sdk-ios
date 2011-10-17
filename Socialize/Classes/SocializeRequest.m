@@ -17,6 +17,7 @@
 #import "JSONKit.h"
 #import <Foundation/NSURLResponse.h>
 #import "SocializePrivateDefinitions.h"
+#import "SocializeConfiguration.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
@@ -33,12 +34,14 @@ static const int kGeneralErrorCode = 10000;
     -(NSArray*) formatUrlParams;
     +(NSString*)consumerKey;
     +(NSString*)consumerSecret;
+- (void)startRunningIfNecessary;
+
 @end
 
 @implementation SocializeRequest
 
 @synthesize delegate = _delegate,
-url = _url,
+resourcePath = _resource,
 httpMethod = _httpMethod,
 params = _params,
 responseText = _responseText,
@@ -46,7 +49,12 @@ token = _token,
 consumer = _consumer,
 request = _request,
 dataFetcher = _dataFetcher,
-expectedJSONFormat = _expectedJSONFormat;
+expectedJSONFormat = _expectedJSONFormat,
+operationType = _requestType,
+secure = _secure,
+baseURL = _baseURL,
+secureBaseURL = _secureBaseURL,
+running = _running;
 
 + (NSString *)userAgentString
 {   
@@ -70,46 +78,128 @@ expectedJSONFormat = _expectedJSONFormat;
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
 
++ (NSString*)defaultBaseURL {
+    return [[SocializeConfiguration sharedConfiguration] restserverBaseURL];
+}
 
-+(NSString*)consumerKey{
++ (NSString*)defaultSecureBaseURL {
+    return [[SocializeConfiguration sharedConfiguration] secureRestserverBaseURL];
+}
+
++ (NSString*)consumerKey{
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     return [userDefaults valueForKey:kSOCIALIZE_API_KEY_KEY];
 }
 
-+(NSString*)consumerSecret{
++ (NSString*)consumerSecret{
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     return [userDefaults valueForKey:kSOCIALIZE_API_SECRET_KEY];
 }
 
-+ (SocializeRequest *)getRequestWithParams:(id) params
-                        expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
-                                httpMethod:(NSString *) httpMethod
-                                  delegate:(id<SocializeRequestDelegate>) delegate
-                                requestURL:(NSString *) url 
+- (NSString*)baseURL {
+    if (_baseURL == nil) {
+        _baseURL = [[[self class] defaultBaseURL] copy];
+    }
+    
+    return _baseURL;
+}
+
+- (NSString*)secureBaseURL {
+    if (_secureBaseURL == nil) {
+        _secureBaseURL = [[[self class] defaultSecureBaseURL] copy];
+    }
+    
+    return _secureBaseURL;
+}
+
+
+- (NSString*)fullURL:(NSString*)socializeResource {
+    NSString *base = [self baseURL];
+    return [base stringByAppendingString:socializeResource];
+}
+
+- (NSString*)fullSecureURL:(NSString*)socializeResource {
+    NSString *base = [self secureBaseURL];
+    return [base stringByAppendingString:socializeResource];
+}
+
++ (id)requestWithHttpMethod:(NSString *) httpMethod
+               resourcePath:(NSString*)resourcePath
+         expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
+                     params:(id)params
 {
-    //We will release object in network responce section. After complete of execution of user delegates;
-    SocializeRequest* request = [[SocializeRequest alloc] init]; 
-    request.delegate = delegate;
-    request.url = url;
-    request.httpMethod = httpMethod;
-    request.params = params;
-    request.responseText = nil;
-    request.expectedJSONFormat  = expectedJSONFormat;
-    
-    
-    request.token =  [[[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX ]autorelease];
-    request.consumer = [[[OAConsumer alloc] initWithKey:[self consumerKey] secret:[self consumerSecret]] autorelease];
-    request.request = [[[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:request.url] consumer:request.consumer token:request.token realm:nil signatureProvider:nil] autorelease];
-    
-    request.dataFetcher = [[[SocializeDataFetcher alloc] initWithRequest:request.request delegate:request
-                                                           didFinishSelector:@selector(tokenRequestTicket:didFinishWithData:)
-                                                             didFailSelector:@selector(tokenRequestTicket:didFailWithError:)]autorelease];
-    
-    NSArray* hosts = [[[NSArray alloc] initWithObjects: @"stage.api.getsocialize.com", @"getsocialize.com", @"stage.getsocialize.com", @"dev.getsocialize.com", nil] autorelease]; 
-    request.dataFetcher.trustedHosts = hosts;
-       
-    
+    SocializeRequest *request = [[[SocializeRequest alloc]
+                                  initWithHttpMethod:httpMethod
+                                  resourcePath:resourcePath
+                                  expectedJSONFormat:expectedJSONFormat
+                                  params:params]
+                                 autorelease];
     return request;
+}
+
++ (id)secureRequestWithHttpMethod:(NSString *) httpMethod
+               resourcePath:(NSString*)resourcePath
+         expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
+                     params:(id)params
+{
+    SocializeRequest *request = [self requestWithHttpMethod:httpMethod resourcePath:resourcePath expectedJSONFormat:expectedJSONFormat params:params];
+    request.secure = YES;
+    return request;
+}
+
+- (BOOL)isEqual:(SocializeRequest*)other {
+    if (![other isKindOfClass:[self class]])
+        return NO;
+
+    BOOL same =  
+        [other.userAgentString isEqualToString:self.userAgentString]
+    &&  [other.resourcePath isEqualToString:self.resourcePath]
+    &&  [other.httpMethod isEqualToString:self.httpMethod]
+    &&  [other.params isEqual:self.params]
+    &&  [other.baseURL isEqualToString:self.baseURL]
+    &&  [other.secureBaseURL isEqualToString:self.secureBaseURL]
+    &&  other.operationType == self.operationType
+    &&  other.secure == self.secure
+    &&  other.expectedJSONFormat == self.expectedJSONFormat;
+    
+    return same;
+}
+
+/*
++ (id)requestWithHttpMethod:(NSString *) httpMethod
+               resourcePath:(NSString*)resourcePath
+         expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
+                     object:(id<SocializeObject>)object
+              objectFactory:(SocializeObjectFactory*)objectFactory
+{
+    NSString *json =  [objectFactory createStringRepresentationOfObject:object]; 
+    NSMutableDictionary *params = [self generateParamsFromJsonString:json];
+
+    SocializeRequest *request = [[[SocializeRequest alloc]
+                                  initWithHttpMethod:httpMethod
+                                  resourcePath:resourcePath
+                                  expectedJSONFormat:expectedJSONFormat
+                                  params:params]
+                                 autorelease];
+    return request;
+}
+ */
+
+- (id)initWithHttpMethod:(NSString *) httpMethod
+            resourcePath:(NSString*)resourcePath
+      expectedJSONFormat:(ExpectedResponseFormat)expectedJSONFormat
+                  params:(id)params;
+{
+    if ((self = [super init])) {
+        self.resourcePath = resourcePath;
+        self.httpMethod = httpMethod;
+        self.params = params;
+        self.responseText = nil;
+        self.expectedJSONFormat  = expectedJSONFormat;
+        self.operationType = SocializeRequestOperationTypeInferred;
+    }   
+    
+    return self;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -156,11 +246,11 @@ expectedJSONFormat = _expectedJSONFormat;
          {
                 for(id item in obj)
                 {
-                    [self addParameter:item withKey:key toCollection:getParams];
+                    [getParams addObject:[OARequestParameter requestParameterWithName:key value:[item description]]];
                 }
          }else
          {
-             [self addParameter:obj withKey:key toCollection:getParams];
+             [getParams addObject:[OARequestParameter requestParameterWithName:key value:[obj description]]];
          }
      }
     ];
@@ -168,33 +258,68 @@ expectedJSONFormat = _expectedJSONFormat;
     return getParams;
 }
 
-/**
- * make the Socialize request
- */
-- (void)connect
-{   
+- (void)configureURLRequest {
+    if (_secure) {
+        [self.request setURL:[NSURL URLWithString:[self fullSecureURL:self.resourcePath]]];
+    } else {
+        [self.request setURL:[NSURL URLWithString:[self fullURL:self.resourcePath]]];
+    }
+    
     [self.request setHTTPMethod:self.httpMethod];
-    [self.request addValue:[self userAgentString] forHTTPHeaderField:@"User-Agent"];
-    if ([self.httpMethod isEqualToString: @"POST"] || [self.httpMethod isEqualToString:@"PUT"]) 
+    [self.request addValue:[SocializeRequest userAgentString] forHTTPHeaderField:@"User-Agent"];
+    if ([self.httpMethod isEqualToString: @"POST"] || [self.httpMethod isEqualToString: @"PUT"]) 
     {
         NSString * stringValue = nil;
         NSMutableArray* params = [NSMutableArray array];
-        if([_params respondsToSelector:@selector(objectForKey:)])
-            stringValue = (NSString *) [_params objectForKey:@"jsonData"]; // TEMPORARY SOLUTION!!!!
-
-        if(stringValue == nil)   
-            stringValue = [_params  JSONString];
+        if([self.params respondsToSelector:@selector(objectForKey:)])
+            stringValue = (NSString *) [self.params objectForKey:@"jsonData"]; // TEMPORARY SOLUTION!!!!
         
-        [self addParameter:stringValue withKey:@"payload" toCollection: params];
+        if(stringValue == nil)
+            stringValue = [self.params  JSONString];
+        
+        [params addObject:[OARequestParameter requestParameterWithName:@"payload" value:stringValue]];          
         [self.request setSocializeParameters:params];
-    }
-    else if([self.httpMethod isEqualToString: @"GET"] || [self.httpMethod isEqualToString:@"PUT"])
+    }   
+    else if([self.httpMethod isEqualToString: @"GET"])
     {
         [self.request setSocializeParameters:[self formatUrlParams]];
     }
     
     [self.request prepare];
+}
+
+- (OAMutableURLRequest*)request {
+    if (_request == nil) {
+        OAToken *token =  [[[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX] autorelease];
+        OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:[SocializeRequest consumerKey] secret:[SocializeRequest consumerSecret]] autorelease];
+
+        _request = [[OAMutableURLRequest alloc] initWithURL:nil consumer:consumer token:token realm:nil signatureProvider:nil];
+    }
     
+    return _request;
+}
+
+- (SocializeDataFetcher*)dataFetcher {
+    if (_dataFetcher == nil) {
+        _dataFetcher = [[SocializeDataFetcher alloc] initWithRequest:self.request delegate:self
+                                                   didFinishSelector:@selector(tokenRequestTicket:didFinishWithData:)
+                                                     didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
+        _dataFetcher.trustedHosts = [NSArray arrayWithObjects:@"stage.api.getsocialize.com", @"getsocialize.com", @"stage.getsocialize.com", @"dev.getsocialize.com", nil];
+    }
+    
+    return _dataFetcher;
+}
+
+/**
+ * make the Socialize request
+ */
+- (void)connect
+{   
+    if (_running)
+        return;
+
+    [self startRunningIfNecessary];
+    [self configureURLRequest];
     [self.dataFetcher start];
 }
 
@@ -203,6 +328,7 @@ expectedJSONFormat = _expectedJSONFormat;
  */
 - (void)dealloc 
 {
+    // TODO cancelling the datafetcher in dealloc does not make sense (circular reference)
     [_dataFetcher cancel];
     
     [_token release]; _token = nil;
@@ -210,14 +336,34 @@ expectedJSONFormat = _expectedJSONFormat;
     [_request release]; _request = nil;
     [_dataFetcher release]; _dataFetcher = nil;
     [_responseText release]; _responseText = nil;
-    [_url release]; _url = nil;
+    [_resource release]; _resource = nil;
     [_httpMethod release]; _httpMethod = nil;
     [_params release]; _params = nil;
     [super dealloc];
 }
 
+- (void)scheduleRelease {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self release];
+    });
+}
+
+- (void)startRunningIfNecessary {
+    if (!_running) {
+        _running = YES;
+        [self retain];
+    }
+}
+
+- (void)stopRunningIfNecessary {
+    if (_running) {
+        _running = NO;
+        [self scheduleRelease];
+    }
+}
 
 - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
+    [self stopRunningIfNecessary];
 #ifdef DEBUG
     NSString *responseBody = [[[NSString alloc] initWithData:data
                                                     encoding:NSUTF8StringEncoding] autorelease];
@@ -229,8 +375,6 @@ expectedJSONFormat = _expectedJSONFormat;
         [self handleResponseData:data];
     else
         [self failWithError:[NSError errorWithDomain:@"Socialize" code:response.statusCode userInfo:nil]];
-    
-    [self release];
 }
 
 -(void)produceHTMLOutput:(NSString*)outputString{
@@ -247,8 +391,9 @@ expectedJSONFormat = _expectedJSONFormat;
 }
 
 - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFailWithError:(NSError*)error{
+    [self stopRunningIfNecessary];
+    
     [self  failWithError:error];
-    [self release];
 }
 
 @end

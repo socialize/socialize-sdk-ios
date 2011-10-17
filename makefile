@@ -1,3 +1,4 @@
+.PHONY: tags build
 
 default: build buildsample test package
  	# do all the dependencies above
@@ -44,7 +45,6 @@ sphinx_doc:
 build-sample-debug:
 	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "SampleSdkApp" -configuration Debug -sdk iphonesimulator build	
 
-.PHONY: tags
 tags:
 	ctags -R --language-force=ObjectiveC --extra=f Socialize SampleSdkApp Frameworks
 

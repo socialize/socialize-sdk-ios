@@ -8,13 +8,13 @@
 
 #import "SocializeAuthenticateService.h"
 #import "SocializeRequest.h"
-#import "SocializeProvider.h"
 #import "OAMutableURLRequest.h"
 #import "OADataFetcher.h"
 #import "OAAsynchronousDataFetcher.h"
 #import <UIKit/UIKit.h>
 #import "JSONKit.h"
 #import "SocializePrivateDefinitions.h"
+#import "UIDevice+IdentifierAddition.h"
 
 @interface SocializeAuthenticateService()
 -(NSString*)getSocializeToken;
@@ -34,13 +34,19 @@
 #define AUTHENTICATE_METHOD @"authenticate/"
 
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret{            
-    NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [UIDevice currentDevice].uniqueIdentifier];
+    NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier]];
     NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                 payloadJson, @"jsonData",
                                                 nil];
 
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-    [self ExecuteSecurePostRequestAtEndPoint:AUTHENTICATE_METHOD WithParams:paramsDict expectedResponseFormat:SocializeDictionary];
+    [self executeRequest:
+     [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                resourcePath:AUTHENTICATE_METHOD
+                          expectedJSONFormat:SocializeDictionary
+                                      params:paramsDict]
+     ];
+
 }
 
 +(BOOL)isAuthenticated {
@@ -88,13 +94,19 @@
                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
-                             [UIDevice currentDevice].uniqueIdentifier,@"udid", 
+                             [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid", 
                              @"1"/* auth type is for facebook*/ , @"auth_type", //TODO:: should be changed
                              thirdPartyAuthToken, @"auth_token",
                              thirdPartyAppId, @"auth_id" , nil] ;                        
                                
-   [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-   [self ExecuteSecurePostRequestAtEndPoint:AUTHENTICATE_METHOD WithParams:params expectedResponseFormat:SocializeDictionary];
+    [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
+    [self executeRequest:
+     [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                      resourcePath:AUTHENTICATE_METHOD
+                                expectedJSONFormat:SocializeDictionary
+                                            params:params]
+     ];
+
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey 

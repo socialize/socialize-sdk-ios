@@ -32,11 +32,11 @@
 {
     NSString *encodedParameters;
     
-    if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"] || [[self HTTPMethod] isEqualToString:@"PUT"]) 
+    if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"]) 
         encodedParameters = [[self URL] query];
 	else 
 	{
-        // POST
+        // POST, PUT
         encodedParameters = [[[NSString alloc] initWithData:[self HTTPBody] encoding:NSASCIIStringEncoding] autorelease];
     }
     
@@ -71,12 +71,11 @@
         position++;
     }
     
-    // hack to make PUT to act like GET until the servers are fixed
-    if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"] || [[self HTTPMethod] isEqualToString:@"PUT"])
+    if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"])
         [self setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [[self URL] SocializeURLStringWithoutQuery], encodedParameterPairs]]];
     else 
 	{
-        // POST
+        // POST, PUT
         NSData *postData = [encodedParameterPairs dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
         [self setHTTPBody:postData];
         [self setValue:[NSString stringWithFormat:@"%d", [postData length]] forHTTPHeaderField:@"Content-Length"];

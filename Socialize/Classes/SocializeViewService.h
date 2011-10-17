@@ -12,7 +12,6 @@
 #import "SocializeViewService.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeObjectFactory.h"
-#import "SocializeProvider.h"
 #import "SocializeService.h"
 
 /**

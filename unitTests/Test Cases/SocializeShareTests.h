@@ -15,6 +15,7 @@
 
 @interface SocializeShareTests : GHTestCase<SocializeServiceDelegate> {
     SocializeShareService   *_service;
+    id _mockService;
     NSError                 *_testError;
 }
 

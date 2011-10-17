@@ -25,6 +25,8 @@
 
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
+-(UIBarButtonItem*) createLeftNavigationButtonWithCaption: (NSString*) caption;
+-(void)backToCommentsList:(id)sender;
 @end
 
 @implementation SocializeCommentsTableViewController
@@ -40,18 +42,19 @@
 @synthesize informationView;
 
 @synthesize noCommentsIconView;
-@synthesize topToolBar;
 @synthesize commentsCell;
 @synthesize footerView;
 @synthesize doneButton = _doneButton;
+@synthesize brandingButton = _brandingButton;
+
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName {
     SocializeCommentsTableViewController* commentsController = [[[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString:entityName] autorelease];
     UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
     UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:commentsController] autorelease];
     [nav.navigationBar setBackgroundImage:navImage];
+    
     return nav;
-
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entryUrlString:(NSString*) entryUrlString {
@@ -82,12 +85,24 @@
 }
 
 - (UIBarButtonItem*)doneButton {
-    if (_doneButton == nil) {
-        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Done"];
+    if (_doneButton == nil)
+    {
+        UIButton *button = [UIButton redSocializeNavBarButtonWithTitle:@"Close"];
         [button addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         _doneButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
     return _doneButton;
+}
+
+-(UIBarButtonItem*)brandingButton
+{
+    if(_brandingButton == nil)
+    {
+        NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"commentsNavBarLeftItemView" owner:self options:nil];
+        UIView* brandingView = [ nibViews objectAtIndex: 0];
+        _brandingButton = [[UIBarButtonItem alloc] initWithCustomView:brandingView];
+    }
+    return  _brandingButton;
 }
 
 - (void)doneButtonPressed:(id)button {
@@ -141,7 +156,6 @@
 - (void)viewDidLoad {   
     [super viewDidLoad];
 
-    self.title = @"Comments List";
     /*container frame inits*/
     CGRect containerFrame = CGRectMake(0, 0, 140, 140);
     TableBGInfoView * containerView = [[[TableBGInfoView alloc] initWithFrame:containerFrame bgImageName:@"socialize-nocomments-icon.png"] autorelease];
@@ -161,9 +175,11 @@
 	[imageBackgroundView release];
     
     self.tableView.accessibilityLabel = @"Comments Table View";
-	self.view.clipsToBounds = YES;
+	self.view.clipsToBounds = YES;    
+   
     
-    self.navigationItem.leftBarButtonItem = self.doneButton;
+    self.navigationItem.leftBarButtonItem = self.brandingButton;
+    self.navigationItem.rightBarButtonItem = self.doneButton;    
 }
 
 #pragma mark tableFooterViewDelegate
@@ -199,6 +215,14 @@
 	return [NSDate getTimeElapsedString:startdate]; 
 }
 
+-(UIBarButtonItem*) createLeftNavigationButtonWithCaption: (NSString*) caption
+{
+    UIButton *backButton = [UIButton blackSocializeNavBarBackButtonWithTitle:caption]; 
+    [backButton addTarget:self action:@selector(backToCommentsList:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * backLeftItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
+    return backLeftItem;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if ([_arrayOfComments count]){
@@ -212,6 +236,10 @@
 
         [_cache stopOperations];
         details.cache = _cache;
+        
+        UIBarButtonItem * backLeftItem = [self createLeftNavigationButtonWithCaption:@"Comments"];
+        details.navigationItem.leftBarButtonItem = backLeftItem;	
+        [backLeftItem release];
            
         [self.navigationController pushViewController:details animated:YES];
         [details release];
@@ -385,6 +413,8 @@
 	[_arrayOfComments release];
 	[_commentDateFormatter release];
     [footerView release];
+    [_doneButton release];
+    [_brandingButton release];
     [super dealloc];
 }
 

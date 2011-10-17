@@ -38,6 +38,16 @@
 //    //TODO: Create logic here for unsupported classes.
 //}
 
+static SocializeObjectFactory *sharedObjectFactory;
+
++ (SocializeObjectFactory*)sharedObjectFactory {
+    if (sharedObjectFactory == nil) {
+        sharedObjectFactory = [[SocializeObjectFactory alloc] init];
+    }
+    
+    return sharedObjectFactory;
+}
+
 -(void)verifyClass:(Class)classToTest AndProtocol:(Protocol *)protocolToTest
 {
     [self verifySupportForProtocol:protocolToTest];

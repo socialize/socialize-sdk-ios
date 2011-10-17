@@ -129,26 +129,6 @@
     [controller release];
 }
 
--(void)testactivateLocationButtonPressedToActivateSharing
-{
-    id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
-    BOOL falseValue = NO;
-    BOOL trueValue = YES;
-    [[[mockLocationManager stub]andReturnValue:OCMOCK_VALUE(falseValue)]shouldShareLocation];
-    [[mockLocationManager expect]setShouldShareLocation:YES];
-    [[[mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]applicationIsAuthorizedToUseLocationServices];
-    [[[mockLocationManager stub]andReturn:TEST_LOCATION]currentLocationDescription];
-    
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
-    
-    [[(id)controller.locationText expect] text:TEST_LOCATION withFontName: @"Helvetica" withFontSize: 12.0 withColor:OCMOCK_ANY];
-    
-    [controller activateLocationButtonPressed:nil]; 
-    
-    [controller verify];   
-    [controller release];
-}
-
 -(void)testdoNotShareLocationButtonPressed
 {   
     PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
@@ -157,25 +137,6 @@
     [[(id)controller.locationText expect] text:@"Location will not be shared."  withFontName: @"Helvetica-Oblique"  withFontSize: 12.0 withColor:OCMOCK_ANY];
     
     [controller doNotShareLocationButtonPressed:nil]; 
-    
-    [controller verify];   
-    [controller release];
-}
-
--(void)testUpdateUserLocation
-{   
-    id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
-
-    
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
-    CLLocation* location = [[[CLLocation alloc]initWithLatitude:0.01 longitude:0.02] autorelease];
-    id mockLocation = [OCMockObject mockForClass: [MKUserLocation class]];
-    [[[mockLocation stub]andReturn:location]location];
-    
-    [[mockLocationManager expect]findLocationDescriptionWithCoordinate:location.coordinate andWithBlock:OCMOCK_ANY];
-    [[(id)controller.mapOfUserLocation expect]setFitLocation:location.coordinate withSpan: [CommentMapView coordinateSpan]];
-    
-    [controller mapView:nil didUpdateUserLocation:mockLocation]; 
     
     [controller verify];   
     [controller release];

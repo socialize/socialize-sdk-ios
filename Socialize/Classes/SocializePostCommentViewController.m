@@ -17,11 +17,15 @@
 #import "UINavigationBarBackground.h"
 #import "SocializeProfileViewController.h"
 #import "SocializeAuthenticateService.h"
+#import "SocializeGeocoderAdapter.h"
+#import "NSString+PlaceMark.h"
+
+#define NO_CITY_MSG @"Could not locate the place name."
 
 @interface SocializePostCommentViewController ()
 
 -(void)setShareLocation:(BOOL)enableLocation;
--(void)setUserLocationTextLabelForShareState:(BOOL)share; 
+-(void)setUserLocation; 
 -(void)sendButtonPressed:(id)button;
 -(void)closeButtonPressed:(id)button;
 -(void)configureDoNotShareLocationButton;
@@ -48,6 +52,7 @@
                                                                                       entityUrlString:url
                                                                                      keyboardListener:[UIKeyboardListener createWithVisibleKeyboard:NO] 
                                                                                       locationManager:[SocializeLocationManager create]
+                                                                                         geocoderInfo:[SocializeGeocoderAdapter class]
                                                     
                                                     ];
     
@@ -63,13 +68,15 @@
                bundle:(NSBundle *)nibBundleOrNil 
       entityUrlString:(NSString*)entityUrlString 
      keyboardListener:(UIKeyboardListener*)kb 
-      locationManager:(SocializeLocationManager*) lManager   
+      locationManager:(SocializeLocationManager*) lManager
+         geocoderInfo:(Class)geocoderInfo
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _entityUrlString = [entityUrlString retain];
         kbListener = [kb retain];
         locationManager = [lManager retain];
+        _geoCoderInfo = geocoderInfo;
     }
     return self;
 }
@@ -85,6 +92,7 @@
     [kbListener release];
     [locationManager release];
     [_facebookAuthQuestionDialog release];
+    [_geoCoderInfo release];
 
     [super dealloc];
 }
@@ -131,17 +139,31 @@
 {   
     if (userLocation) {
         
-        [mapOfUserLocation setFitLocation: userLocation.coordinate withSpan: [CommentMapView coordinateSpan]];  
-        [locationManager findLocationDescriptionWithCoordinate: userLocation.coordinate andWithBlock:^(NSString* userLocationString)
+        [mapOfUserLocation setFitLocation: userLocation.coordinate withSpan: [CommentMapView coordinateSpan]];
+        
+        __block id geocoder = [[_geoCoderInfo alloc]init];
+        
+        [geocoder reverseGeocodeLocation:userLocation completionHandler:^(NSArray*placemarks, NSError *error)
          {
-             [self setUserLocationTextLabelForShareState:locationManager.shouldShareLocation];
-         }];
+             if(error)
+             {
+                 NSLog(@"reverseGeocoder didFailWithError:%@", error);
+                 locationManager.currentLocationDescription = NO_CITY_MSG;
+             }
+             else
+             {
+                 locationManager.currentLocationDescription = [NSString stringWithPlacemark:[placemarks objectAtIndex:0]];
+             }
+             [self setUserLocation];
+             [geocoder autorelease];
+         }
+         ];
     }
 }
 
--(void)setUserLocationTextLabelForShareState:(BOOL)share 
+-(void)setUserLocation
 {
-    if (share) {
+    if (locationManager.shouldShareLocation) {
         [self.locationText text: locationManager.currentLocationDescription 
                    withFontName: @"Helvetica" 
                    withFontSize: 12.0 
@@ -187,7 +209,7 @@
         [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-disabled.png"] forState:UIControlStateHighlighted];   
     }
     
-    [self setUserLocationTextLabelForShareState: enableLocation];
+    [self setUserLocation];
 }
 
 #pragma mark - Buttons actions
@@ -299,10 +321,6 @@
     }
 }
 
--(void)afterAnonymouslyLoginAction
-{
-    //Do not remove.
-}
 
 #pragma mark - UITextViewDelegate callbacks
 
@@ -354,9 +372,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    
+        
     self.commentTextView = nil;
     self.locationText = nil;
     self.doNotShareLocationButton = nil;

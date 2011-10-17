@@ -72,7 +72,9 @@ if [ ! -e "$OUTPUT_DIR/test-coverage/" ]; then
 
 fi
 
-eval "lcov --test-name \"Socialize iOS SDK\" --output-file \"$OUTPUT_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info --capture --directory \"$CONFIGURATION_TEMP_DIR\"/Socialize.build/Objects-normal/i386/"
+SOCIALIZE_LIB_DIR="Socialize-Profiling.build"
+
+eval "lcov --test-name \"Socialize iOS SDK\" --output-file \"$OUTPUT_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info --capture --directory \"$CONFIGURATION_TEMP_DIR\"/\"$SOCIALIZE_LIB_DIR\"/Objects-normal/i386/"
 
 eval "lcov --extract \"$OUTPUT_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info \"*/Socialize*/Classes*\" --output-file \"$OUTPUT_DIR\"/test-coverage/SocializeSDK-iOS-Coverage.info"
 
@@ -80,16 +82,5 @@ eval "rm -rf \"$OUTPUT_DIR\"/test-coverage/SocializeSDK-iOS-Coverage_tmp.info"
 
 eval "genhtml --title \"Socialize SDK iOS\"  --output-directory \"$OUTPUT_DIR\"/test-coverage \"$OUTPUT_DIR\"/test-coverage/SocializeSDK-iOS-Coverage.info --legend"
 
-#if [ ! -e "${PROJECT_DIR}/build/test-coverage/" ]; then
-#    mkdir -p "${PROJECT_DIR}/build/test-coverage/"
-#fi
-
-#`$CP -r "$BUILD_DIR/test-coverage/" "${PROJECT_DIR}/build/test-coverage/" && rm -r "$BUILD_DIR/test-coverage/"`
-
-#if [ ! -e "$BUILD_DIR/test-results/" ]; then
-#mkdir -p "$BUILD_DIR/test-results/"
-#fi
-
-#`$CP -r "$BUILD_DIR/test-results/" "${PROJECT_DIR}/build/test-results/" && rm -r "$BUILD_DIR/test-results/"`
 
 exit $RETVAL

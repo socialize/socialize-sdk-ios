@@ -30,7 +30,7 @@
     UIButton*   doNotShareLocationButton;
     UIButton*   activateLocationButton;
     CommentMapView* mapOfUserLocation;
-
+    Class _geoCoderInfo;
     
     UIAlertView *_facebookAuthQuestionDialog;
 }
@@ -46,7 +46,7 @@
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
 - (void)createComment;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString keyboardListener:(UIKeyboardListener*)kb locationManager:(SocializeLocationManager*) lManager;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString keyboardListener:(UIKeyboardListener*)kb locationManager:(SocializeLocationManager*) lManager geocoderInfo:(Class)geocoderInfo;
 
 +(UINavigationController*)createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar;
 

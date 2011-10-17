@@ -18,6 +18,8 @@
         NSMutableDictionary * formatterDictionary;
 }
 
++(SocializeObjectFactory*)sharedObjectFactory;
+
 -(id)initWithConfiguration:(SocializeConfiguration*)configuration;
 
 -(id)createObjectFromString:(NSString *)stringRepresentation forProtocol:(Protocol *)protocol;
