@@ -4,13 +4,4 @@
    <FileRef
       location = "container:SocializeSDK.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Frameworks/KIF/KIF.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:SampleSdkApp.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Frameworks/OCMock/Source/OCMock.xcodeproj">
-   </FileRef>
 </Workspace>

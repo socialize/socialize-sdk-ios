@@ -1,0 +1,1582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA2025B1144CB249006C1F8F /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8636D4144CA0DB00CFA759 /* libKIF.a */; };
+		AA2025B2144CB263006C1F8F /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8636D4144CA0DB00CFA759 /* libKIF.a */; };
+		AA2DA2421435437400C62B97 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA2241435420300C62B97 /* MapKit.framework */; };
+		AA2DA2431435437400C62B97 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA222143541F700C62B97 /* CoreLocation.framework */; };
+		AA2DA2441435437400C62B97 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA220143541E100C62B97 /* QuartzCore.framework */; };
+		AA2DA2461435437400C62B97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6D14352BC100C62B97 /* UIKit.framework */; };
+		AA2DA2471435437400C62B97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6F14352BC100C62B97 /* Foundation.framework */; };
+		AA2DA2481435437400C62B97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */; };
+		AA639E18144A24C000660E26 /* AuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA1144A24BF00660E26 /* AuthenticateViewController.m */; };
+		AA639E19144A24C000660E26 /* AuthenticateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DA2144A24BF00660E26 /* AuthenticateViewController.xib */; };
+		AA639E1A144A24C000660E26 /* CommetsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA4144A24BF00660E26 /* CommetsTableView.m */; };
+		AA639E1B144A24C000660E26 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA6144A24BF00660E26 /* DataHelper.m */; };
+		AA639E1C144A24C000660E26 /* DemoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA8144A24BF00660E26 /* DemoEntity.m */; };
+		AA639E1D144A24C000660E26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA639DA9144A24BF00660E26 /* InfoPlist.strings */; };
+		AA639E1E144A24C000660E26 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DAB144A24BF00660E26 /* MainWindow.xib */; };
+		AA639E1F144A24C000660E26 /* InputBox.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DAE144A24BF00660E26 /* InputBox.m */; };
+		AA639E20144A24C000660E26 /* LikeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DB0144A24BF00660E26 /* LikeListViewController.m */; };
+		AA639E21144A24C000660E26 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DB1144A24BF00660E26 /* LikeListViewController.xib */; };
+		AA639E23144A24C000660E26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DB4144A24BF00660E26 /* main.m */; };
+		AA639E26144A24C000660E26 /* SampleSdkAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DBD144A24BF00660E26 /* SampleSdkAppAppDelegate.m */; };
+		AA639E27144A24C000660E26 /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639DBE144A24BF00660E26 /* SocializeApiInfo.plist */; };
+		AA639E28144A24C000660E26 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639DBF144A24BF00660E26 /* SocializeConfigurationInfo.plist */; };
+		AA639E29144A24C000660E26 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC1144A24BF00660E26 /* StringHelper.m */; };
+		AA639E2A144A24C000660E26 /* TestCreateCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC3144A24BF00660E26 /* TestCreateCommentViewController.m */; };
+		AA639E2B144A24C000660E26 /* TestCreateCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DC4144A24BF00660E26 /* TestCreateCommentViewController.xib */; };
+		AA639E2C144A24C000660E26 /* TestCreateEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC6144A24BF00660E26 /* TestCreateEntityViewController.m */; };
+		AA639E2D144A24C000660E26 /* TestCreateEntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DC7144A24BF00660E26 /* TestCreateEntityViewController.xib */; };
+		AA639E2E144A24C000660E26 /* TestFetchCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC9144A24BF00660E26 /* TestFetchCommentsViewController.m */; };
+		AA639E2F144A24C000660E26 /* TestFetchCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DCA144A24BF00660E26 /* TestFetchCommentsViewController.xib */; };
+		AA639E30144A24C000660E26 /* TestGetEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DCC144A24BF00660E26 /* TestGetEntityViewController.m */; };
+		AA639E31144A24C000660E26 /* TestGetEntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DCD144A24BF00660E26 /* TestGetEntityViewController.xib */; };
+		AA639E32144A24C000660E26 /* TestLikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DCF144A24BF00660E26 /* TestLikeViewController.m */; };
+		AA639E33144A24C000660E26 /* TestLikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DD0144A24BF00660E26 /* TestLikeViewController.xib */; };
+		AA639E34144A24C000660E26 /* TestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DD2144A24BF00660E26 /* TestListController.m */; };
+		AA639E35144A24C000660E26 /* TestListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DD3144A24BF00660E26 /* TestListController.xib */; };
+		AA639E5A144A24C000660E26 /* TestShowSmallUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E08144A24BF00660E26 /* TestShowSmallUserInfo.m */; };
+		AA639E5B144A24C000660E26 /* TestShowSmallUserInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E09144A24BF00660E26 /* TestShowSmallUserInfo.xib */; };
+		AA639E5C144A24C000660E26 /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E0B144A24BF00660E26 /* TestSocializeActionBar.m */; };
+		AA639E5D144A24C000660E26 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0C144A24BF00660E26 /* TestSocializeActionBar.xib */; };
+		AA639E5E144A24C000660E26 /* TestViewCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E0E144A24BF00660E26 /* TestViewCreationViewController.m */; };
+		AA639E5F144A24C000660E26 /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0F144A24BF00660E26 /* TestViewCreationViewController.xib */; };
+		AA639E60144A24C000660E26 /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E11144A24BF00660E26 /* UIButton+Socialize.m */; };
+		AA639E61144A24C000660E26 /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E13144A24BF00660E26 /* UILabel-Additions.m */; };
+		AA639E62144A24C000660E26 /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639E14144A24BF00660E26 /* urls.plist */; };
+		AA639E63144A24C000660E26 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E16144A24BF00660E26 /* UserProfileViewController.m */; };
+		AA639E64144A24C000660E26 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E17144A24BF00660E26 /* UserProfileViewController.xib */; };
+		AA8636C7144CA0A200CFA759 /* AuthTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636BD144CA0A200CFA759 /* AuthTest.m */; };
+		AA8636C8144CA0A200CFA759 /* SocializeAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636BF144CA0A200CFA759 /* SocializeAsyncTestCase.m */; };
+		AA8636C9144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C2144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m */; };
+		AA8636CA144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C4144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m */; };
+		AA8636CB144CA0A200CFA759 /* SampleSdkAppKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C6144CA0A200CFA759 /* SampleSdkAppKIFTestController.m */; };
+		AA8636D7144CA14300CFA759 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8636D6144CA14300CFA759 /* GHUnitIOS.framework */; };
+		AA863745144CA22800CFA759 /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636DA144CA22700CFA759 /* action-bar-bg.png */; };
+		AA863746144CA22800CFA759 /* action-bar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636DB144CA22700CFA759 /* action-bar-bg@2x.png */; };
+		AA863747144CA22800CFA759 /* action-bar-button-black-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636DC144CA22700CFA759 /* action-bar-button-black-hover.png */; };
+		AA863748144CA22800CFA759 /* action-bar-button-black-hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636DD144CA22700CFA759 /* action-bar-button-black-hover@2x.png */; };
+		AA863749144CA22800CFA759 /* action-bar-button-black.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636DE144CA22700CFA759 /* action-bar-button-black.png */; };
+		AA86374A144CA22800CFA759 /* action-bar-button-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636DF144CA22700CFA759 /* action-bar-button-black@2x.png */; };
+		AA86374B144CA22800CFA759 /* action-bar-button-red-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E0144CA22700CFA759 /* action-bar-button-red-hover.png */; };
+		AA86374C144CA22800CFA759 /* action-bar-button-red-hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E1144CA22700CFA759 /* action-bar-button-red-hover@2x.png */; };
+		AA86374D144CA22800CFA759 /* action-bar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E2144CA22700CFA759 /* action-bar-button-red.png */; };
+		AA86374E144CA22800CFA759 /* action-bar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E3144CA22700CFA759 /* action-bar-button-red@2x.png */; };
+		AA86374F144CA22800CFA759 /* action-bar-icon-comments.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E4144CA22700CFA759 /* action-bar-icon-comments.png */; };
+		AA863750144CA22800CFA759 /* action-bar-icon-comments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E5144CA22700CFA759 /* action-bar-icon-comments@2x.png */; };
+		AA863751144CA22800CFA759 /* action-bar-icon-like.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E6144CA22700CFA759 /* action-bar-icon-like.png */; };
+		AA863752144CA22800CFA759 /* action-bar-icon-like@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E7144CA22700CFA759 /* action-bar-icon-like@2x.png */; };
+		AA863753144CA22800CFA759 /* action-bar-icon-liked.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E8144CA22700CFA759 /* action-bar-icon-liked.png */; };
+		AA863754144CA22800CFA759 /* action-bar-icon-liked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E9144CA22700CFA759 /* action-bar-icon-liked@2x.png */; };
+		AA863755144CA22800CFA759 /* action-bar-icon-share.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636EA144CA22700CFA759 /* action-bar-icon-share.png */; };
+		AA863756144CA22800CFA759 /* action-bar-icon-share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636EB144CA22700CFA759 /* action-bar-icon-share@2x.png */; };
+		AA863757144CA22800CFA759 /* action-bar-icon-views.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636EC144CA22700CFA759 /* action-bar-icon-views.png */; };
+		AA863758144CA22800CFA759 /* action-bar-icon-views@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636ED144CA22700CFA759 /* action-bar-icon-views@2x.png */; };
+		AA863759144CA22800CFA759 /* background_brushed_metal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636EE144CA22700CFA759 /* background_brushed_metal@2x.png */; };
+		AA86375A144CA22800CFA759 /* comment-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636EF144CA22700CFA759 /* comment-bg.png */; };
+		AA86375B144CA22800CFA759 /* comment-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F0144CA22700CFA759 /* comment-bg@2x.png */; };
+		AA86375C144CA22800CFA759 /* comment-sm-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F1144CA22700CFA759 /* comment-sm-icon.png */; };
+		AA86375D144CA22800CFA759 /* comment-sm-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F2144CA22700CFA759 /* comment-sm-icon@2x.png */; };
+		AA86375E144CA22800CFA759 /* comment_template_clear.htm in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F3144CA22700CFA759 /* comment_template_clear.htm */; };
+		AA86375F144CA22800CFA759 /* comments-cell-bg-borders.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F4144CA22700CFA759 /* comments-cell-bg-borders.png */; };
+		AA863760144CA22800CFA759 /* comments-cell-bg-borders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F5144CA22700CFA759 /* comments-cell-bg-borders@2x.png */; };
+		AA863761144CA22800CFA759 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F6144CA22700CFA759 /* CommentsTableViewCell.xib */; };
+		AA863762144CA22800CFA759 /* socialize-activity-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F7144CA22700CFA759 /* socialize-activity-bg.png */; };
+		AA863763144CA22800CFA759 /* socialize-activity-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F8144CA22700CFA759 /* socialize-activity-bg@2x.png */; };
+		AA863764144CA22800CFA759 /* socialize-cell-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F9144CA22700CFA759 /* socialize-cell-arrow.png */; };
+		AA863765144CA22800CFA759 /* socialize-cell-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636FA144CA22700CFA759 /* socialize-cell-arrow@2x.png */; };
+		AA863766144CA22800CFA759 /* socialize-cell-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636FB144CA22700CFA759 /* socialize-cell-bg.png */; };
+		AA863767144CA22800CFA759 /* socialize-cell-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636FC144CA22700CFA759 /* socialize-cell-bg@2x.png */; };
+		AA863768144CA22800CFA759 /* socialize-cell-image-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636FD144CA22700CFA759 /* socialize-cell-image-bg.png */; };
+		AA863769144CA22800CFA759 /* socialize-cell-image-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636FE144CA22700CFA759 /* socialize-cell-image-bg@2x.png */; };
+		AA86376A144CA22800CFA759 /* socialize-cell-image-default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636FF144CA22700CFA759 /* socialize-cell-image-default.png */; };
+		AA86376B144CA22800CFA759 /* socialize-cell-image-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863700144CA22700CFA759 /* socialize-cell-image-default@2x.png */; };
+		AA86376C144CA22800CFA759 /* socialize-cell-image.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863701144CA22700CFA759 /* socialize-cell-image.png */; };
+		AA86376D144CA22800CFA759 /* socialize-cell-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863702144CA22700CFA759 /* socialize-cell-image@2x.png */; };
+		AA86376E144CA22800CFA759 /* socialize-cell-selected-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863703144CA22700CFA759 /* socialize-cell-selected-bg.png */; };
+		AA86376F144CA22800CFA759 /* socialize-cell-selected-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863704144CA22700CFA759 /* socialize-cell-selected-bg@2x.png */; };
+		AA863770144CA22800CFA759 /* socialize-comment-background-text-input.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863705144CA22700CFA759 /* socialize-comment-background-text-input.png */; };
+		AA863771144CA22800CFA759 /* socialize-comment-background-text-input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863706144CA22700CFA759 /* socialize-comment-background-text-input@2x.png */; };
+		AA863772144CA22800CFA759 /* socialize-comment-button-active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863707144CA22700CFA759 /* socialize-comment-button-active.png */; };
+		AA863773144CA22800CFA759 /* socialize-comment-button-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863708144CA22700CFA759 /* socialize-comment-button-active@2x.png */; };
+		AA863774144CA22800CFA759 /* socialize-comment-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863709144CA22700CFA759 /* socialize-comment-button.png */; };
+		AA863775144CA22800CFA759 /* socialize-comment-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86370A144CA22700CFA759 /* socialize-comment-button@2x.png */; };
+		AA863776144CA22800CFA759 /* socialize-comment-detail-bottom-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86370B144CA22700CFA759 /* socialize-comment-detail-bottom-shadow-background.png */; };
+		AA863777144CA22800CFA759 /* socialize-comment-detail-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86370C144CA22700CFA759 /* socialize-comment-detail-bottom-shadow-background@2x.png */; };
+		AA863778144CA22800CFA759 /* socialize-comment-details-icon-geo-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86370D144CA22700CFA759 /* socialize-comment-details-icon-geo-disabled.png */; };
+		AA863779144CA22800CFA759 /* socialize-comment-details-icon-geo-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86370E144CA22700CFA759 /* socialize-comment-details-icon-geo-disabled@2x.png */; };
+		AA86377A144CA22800CFA759 /* socialize-comment-details-icon-geo-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86370F144CA22700CFA759 /* socialize-comment-details-icon-geo-enabled.png */; };
+		AA86377B144CA22800CFA759 /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863710144CA22700CFA759 /* socialize-comment-details-icon-geo-enabled@2x.png */; };
+		AA86377C144CA22800CFA759 /* socialize-comment-list-view-location-pin-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863711144CA22700CFA759 /* socialize-comment-list-view-location-pin-icon.png */; };
+		AA86377D144CA22800CFA759 /* socialize-comment-list-view-location-pin-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863712144CA22700CFA759 /* socialize-comment-list-view-location-pin-icon@2x.png */; };
+		AA86377E144CA22800CFA759 /* socialize-comment-location-bar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863713144CA22700CFA759 /* socialize-comment-location-bar-background.png */; };
+		AA86377F144CA22800CFA759 /* socialize-comment-location-bar-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863714144CA22700CFA759 /* socialize-comment-location-bar-background@2x.png */; };
+		AA863780144CA22800CFA759 /* socialize-comment-location-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863715144CA22700CFA759 /* socialize-comment-location-disabled.png */; };
+		AA863781144CA22800CFA759 /* socialize-comment-location-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863716144CA22700CFA759 /* socialize-comment-location-disabled@2x.png */; };
+		AA863782144CA22800CFA759 /* socialize-comment-location-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863717144CA22700CFA759 /* socialize-comment-location-enabled.png */; };
+		AA863783144CA22800CFA759 /* socialize-comment-location-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863718144CA22700CFA759 /* socialize-comment-location-enabled@2x.png */; };
+		AA863784144CA22800CFA759 /* socialize-comment-user-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863719144CA22700CFA759 /* socialize-comment-user-background.png */; };
+		AA863785144CA22800CFA759 /* socialize-comment-user-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86371A144CA22700CFA759 /* socialize-comment-user-background@2x.png */; };
+		AA863786144CA22800CFA759 /* socialize-location-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86371B144CA22700CFA759 /* socialize-location-icon.png */; };
+		AA863787144CA22800CFA759 /* socialize-navbar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86371C144CA22700CFA759 /* socialize-navbar-bg.png */; };
+		AA863788144CA22800CFA759 /* socialize-navbar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86371D144CA22700CFA759 /* socialize-navbar-bg@2x.png */; };
+		AA863789144CA22800CFA759 /* socialize-navbar-button-back-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86371E144CA22700CFA759 /* socialize-navbar-button-back-pressed.png */; };
+		AA86378A144CA22800CFA759 /* socialize-navbar-button-back-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86371F144CA22700CFA759 /* socialize-navbar-button-back-pressed@2x.png */; };
+		AA86378B144CA22800CFA759 /* socialize-navbar-button-back.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863720144CA22700CFA759 /* socialize-navbar-button-back.png */; };
+		AA86378C144CA22800CFA759 /* socialize-navbar-button-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863721144CA22700CFA759 /* socialize-navbar-button-back@2x.png */; };
+		AA86378D144CA22800CFA759 /* socialize-navbar-button-blue-bg-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863722144CA22700CFA759 /* socialize-navbar-button-blue-bg-highlighted.png */; };
+		AA86378E144CA22800CFA759 /* socialize-navbar-button-blue-bg-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863723144CA22700CFA759 /* socialize-navbar-button-blue-bg-highlighted@2x.png */; };
+		AA86378F144CA22800CFA759 /* socialize-navbar-button-blue-bg-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863724144CA22700CFA759 /* socialize-navbar-button-blue-bg-normal.png */; };
+		AA863790144CA22800CFA759 /* socialize-navbar-button-blue-bg-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863725144CA22700CFA759 /* socialize-navbar-button-blue-bg-normal@2x.png */; };
+		AA863791144CA22800CFA759 /* socialize-navbar-button-dark-active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863726144CA22700CFA759 /* socialize-navbar-button-dark-active.png */; };
+		AA863792144CA22800CFA759 /* socialize-navbar-button-dark-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863727144CA22700CFA759 /* socialize-navbar-button-dark-active@2x.png */; };
+		AA863793144CA22800CFA759 /* socialize-navbar-button-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863728144CA22700CFA759 /* socialize-navbar-button-dark.png */; };
+		AA863794144CA22800CFA759 /* socialize-navbar-button-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863729144CA22700CFA759 /* socialize-navbar-button-dark@2x.png */; };
+		AA863795144CA22800CFA759 /* socialize-navbar-button-green-active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86372A144CA22700CFA759 /* socialize-navbar-button-green-active.png */; };
+		AA863796144CA22800CFA759 /* socialize-navbar-button-green-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86372B144CA22700CFA759 /* socialize-navbar-button-green-active@2x.png */; };
+		AA863797144CA22800CFA759 /* socialize-navbar-button-green.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86372C144CA22700CFA759 /* socialize-navbar-button-green.png */; };
+		AA863798144CA22800CFA759 /* socialize-navbar-button-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86372D144CA22700CFA759 /* socialize-navbar-button-green@2x.png */; };
+		AA863799144CA22800CFA759 /* socialize-navbar-button-red-active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86372E144CA22700CFA759 /* socialize-navbar-button-red-active.png */; };
+		AA86379A144CA22800CFA759 /* socialize-navbar-button-red-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86372F144CA22700CFA759 /* socialize-navbar-button-red-active@2x.png */; };
+		AA86379B144CA22800CFA759 /* socialize-navbar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863730144CA22700CFA759 /* socialize-navbar-button-red.png */; };
+		AA86379C144CA22800CFA759 /* socialize-navbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863731144CA22700CFA759 /* socialize-navbar-button-red@2x.png */; };
+		AA86379D144CA22800CFA759 /* socialize-nocomments-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863732144CA22700CFA759 /* socialize-nocomments-icon.png */; };
+		AA86379E144CA22800CFA759 /* socialize-nocomments-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863733144CA22700CFA759 /* socialize-nocomments-icon@2x.png */; };
+		AA86379F144CA22800CFA759 /* socialize-profileimage-large-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863734144CA22700CFA759 /* socialize-profileimage-large-bg.png */; };
+		AA8637A0144CA22800CFA759 /* socialize-profileimage-large-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863735144CA22700CFA759 /* socialize-profileimage-large-bg@2x.png */; };
+		AA8637A1144CA22800CFA759 /* socialize-profileimage-large-default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863736144CA22700CFA759 /* socialize-profileimage-large-default.png */; };
+		AA8637A2144CA22800CFA759 /* socialize-profileimage-large-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863737144CA22700CFA759 /* socialize-profileimage-large-default@2x.png */; };
+		AA8637A3144CA22800CFA759 /* socialize-sectionheader-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863738144CA22700CFA759 /* socialize-sectionheader-bg.png */; };
+		AA8637A4144CA22800CFA759 /* socialize-sectionheader-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863739144CA22700CFA759 /* socialize-sectionheader-bg@2x.png */; };
+		AA8637A5144CA22800CFA759 /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA86373A144CA22700CFA759 /* SocializeCommentDetailsViewController.xib */; };
+		AA8637A6144CA22800CFA759 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA86373B144CA22700CFA759 /* SocializeCommentsTableViewController.xib */; };
+		AA8637A8144CA22800CFA759 /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA86373D144CA22700CFA759 /* SocializeEditValueTableViewCell.xib */; };
+		AA8637A9144CA22800CFA759 /* SocializePostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA86373E144CA22700CFA759 /* SocializePostCommentViewController.xib */; };
+		AA8637AA144CA22800CFA759 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA86373F144CA22700CFA759 /* SocializeProfileEditTableViewCell.xib */; };
+		AA8637AB144CA22800CFA759 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA863740144CA22700CFA759 /* SocializeProfileEditTableViewImageCell.xib */; };
+		AA8637AC144CA22800CFA759 /* SocializeProfileEditValueController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA863741144CA22700CFA759 /* SocializeProfileEditValueController.xib */; };
+		AA8637AD144CA22800CFA759 /* SocializeProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA863742144CA22700CFA759 /* SocializeProfileEditViewController.xib */; };
+		AA8637AE144CA22800CFA759 /* SocializeProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA863743144CA22700CFA759 /* SocializeProfileViewController.xib */; };
+		AA8637AF144CA22800CFA759 /* Socialize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA863744144CA22700CFA759 /* Socialize.framework */; };
+		AA8637C5144CA28300CFA759 /* AuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA1144A24BF00660E26 /* AuthenticateViewController.m */; };
+		AA8637C6144CA28300CFA759 /* CommetsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA4144A24BF00660E26 /* CommetsTableView.m */; };
+		AA8637C7144CA28300CFA759 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA6144A24BF00660E26 /* DataHelper.m */; };
+		AA8637C8144CA28300CFA759 /* DemoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA8144A24BF00660E26 /* DemoEntity.m */; };
+		AA8637C9144CA28300CFA759 /* InputBox.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DAE144A24BF00660E26 /* InputBox.m */; };
+		AA8637CA144CA28300CFA759 /* LikeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DB0144A24BF00660E26 /* LikeListViewController.m */; };
+		AA8637CB144CA28300CFA759 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DB4144A24BF00660E26 /* main.m */; };
+		AA8637CC144CA28300CFA759 /* SampleSdkAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DBD144A24BF00660E26 /* SampleSdkAppAppDelegate.m */; };
+		AA8637CD144CA28300CFA759 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC1144A24BF00660E26 /* StringHelper.m */; };
+		AA8637CE144CA28300CFA759 /* TestCreateCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC3144A24BF00660E26 /* TestCreateCommentViewController.m */; };
+		AA8637CF144CA28300CFA759 /* TestCreateEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC6144A24BF00660E26 /* TestCreateEntityViewController.m */; };
+		AA8637D0144CA28300CFA759 /* TestFetchCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC9144A24BF00660E26 /* TestFetchCommentsViewController.m */; };
+		AA8637D1144CA28300CFA759 /* TestGetEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DCC144A24BF00660E26 /* TestGetEntityViewController.m */; };
+		AA8637D2144CA28300CFA759 /* TestLikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DCF144A24BF00660E26 /* TestLikeViewController.m */; };
+		AA8637D3144CA28300CFA759 /* TestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DD2144A24BF00660E26 /* TestListController.m */; };
+		AA8637D4144CA28300CFA759 /* TestShowSmallUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E08144A24BF00660E26 /* TestShowSmallUserInfo.m */; };
+		AA8637D5144CA28300CFA759 /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E0B144A24BF00660E26 /* TestSocializeActionBar.m */; };
+		AA8637D6144CA28300CFA759 /* TestViewCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E0E144A24BF00660E26 /* TestViewCreationViewController.m */; };
+		AA8637D7144CA28300CFA759 /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E11144A24BF00660E26 /* UIButton+Socialize.m */; };
+		AA8637D8144CA28300CFA759 /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E13144A24BF00660E26 /* UILabel-Additions.m */; };
+		AA8637D9144CA28300CFA759 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E16144A24BF00660E26 /* UserProfileViewController.m */; };
+		AA8637DA144CA28300CFA759 /* AuthTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636BD144CA0A200CFA759 /* AuthTest.m */; };
+		AA8637DB144CA28300CFA759 /* SocializeAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636BF144CA0A200CFA759 /* SocializeAsyncTestCase.m */; };
+		AA8637DC144CA28300CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C2144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m */; };
+		AA8637DD144CA28300CFA759 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C4144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m */; };
+		AA8637DE144CA28300CFA759 /* SampleSdkAppKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C6144CA0A200CFA759 /* SampleSdkAppKIFTestController.m */; };
+		AA8637E0144CA28300CFA759 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8636D6144CA14300CFA759 /* GHUnitIOS.framework */; };
+		AA8637E2144CA28300CFA759 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA2241435420300C62B97 /* MapKit.framework */; };
+		AA8637E3144CA28300CFA759 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA222143541F700C62B97 /* CoreLocation.framework */; };
+		AA8637E4144CA28300CFA759 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA220143541E100C62B97 /* QuartzCore.framework */; };
+		AA8637E5144CA28300CFA759 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6D14352BC100C62B97 /* UIKit.framework */; };
+		AA8637E6144CA28300CFA759 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6F14352BC100C62B97 /* Foundation.framework */; };
+		AA8637E7144CA28300CFA759 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */; };
+		AA8637E8144CA28300CFA759 /* Socialize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA863744144CA22700CFA759 /* Socialize.framework */; };
+		AA8637EA144CA28300CFA759 /* AuthenticateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DA2144A24BF00660E26 /* AuthenticateViewController.xib */; };
+		AA8637EB144CA28300CFA759 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA639DA9144A24BF00660E26 /* InfoPlist.strings */; };
+		AA8637EC144CA28300CFA759 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DAB144A24BF00660E26 /* MainWindow.xib */; };
+		AA8637ED144CA28300CFA759 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DB1144A24BF00660E26 /* LikeListViewController.xib */; };
+		AA8637EE144CA28300CFA759 /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639DBE144A24BF00660E26 /* SocializeApiInfo.plist */; };
+		AA8637EF144CA28300CFA759 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639DBF144A24BF00660E26 /* SocializeConfigurationInfo.plist */; };
+		AA8637F0144CA28300CFA759 /* TestCreateCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DC4144A24BF00660E26 /* TestCreateCommentViewController.xib */; };
+		AA8637F1144CA28300CFA759 /* TestCreateEntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DC7144A24BF00660E26 /* TestCreateEntityViewController.xib */; };
+		AA8637F2144CA28300CFA759 /* TestFetchCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DCA144A24BF00660E26 /* TestFetchCommentsViewController.xib */; };
+		AA8637F3144CA28300CFA759 /* TestGetEntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DCD144A24BF00660E26 /* TestGetEntityViewController.xib */; };
+		AA8637F4144CA28300CFA759 /* TestLikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DD0144A24BF00660E26 /* TestLikeViewController.xib */; };
+		AA8637F5144CA28300CFA759 /* TestListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DD3144A24BF00660E26 /* TestListController.xib */; };
+		AA8637F6144CA28300CFA759 /* TestShowSmallUserInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E09144A24BF00660E26 /* TestShowSmallUserInfo.xib */; };
+		AA8637F7144CA28300CFA759 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0C144A24BF00660E26 /* TestSocializeActionBar.xib */; };
+		AA8637F8144CA28300CFA759 /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0F144A24BF00660E26 /* TestViewCreationViewController.xib */; };
+		AA8637F9144CA28300CFA759 /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639E14144A24BF00660E26 /* urls.plist */; };
+		AA8637FA144CA28300CFA759 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E17144A24BF00660E26 /* UserProfileViewController.xib */; };
+		AA8637FB144CA28300CFA759 /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636DA144CA22700CFA759 /* action-bar-bg.png */; };
+		AA8637FC144CA28300CFA759 /* action-bar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636DB144CA22700CFA759 /* action-bar-bg@2x.png */; };
+		AA8637FD144CA28300CFA759 /* action-bar-button-black-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636DC144CA22700CFA759 /* action-bar-button-black-hover.png */; };
+		AA8637FE144CA28300CFA759 /* action-bar-button-black-hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636DD144CA22700CFA759 /* action-bar-button-black-hover@2x.png */; };
+		AA8637FF144CA28300CFA759 /* action-bar-button-black.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636DE144CA22700CFA759 /* action-bar-button-black.png */; };
+		AA863800144CA28300CFA759 /* action-bar-button-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636DF144CA22700CFA759 /* action-bar-button-black@2x.png */; };
+		AA863801144CA28300CFA759 /* action-bar-button-red-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E0144CA22700CFA759 /* action-bar-button-red-hover.png */; };
+		AA863802144CA28300CFA759 /* action-bar-button-red-hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E1144CA22700CFA759 /* action-bar-button-red-hover@2x.png */; };
+		AA863803144CA28300CFA759 /* action-bar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E2144CA22700CFA759 /* action-bar-button-red.png */; };
+		AA863804144CA28300CFA759 /* action-bar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E3144CA22700CFA759 /* action-bar-button-red@2x.png */; };
+		AA863805144CA28300CFA759 /* action-bar-icon-comments.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E4144CA22700CFA759 /* action-bar-icon-comments.png */; };
+		AA863806144CA28300CFA759 /* action-bar-icon-comments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E5144CA22700CFA759 /* action-bar-icon-comments@2x.png */; };
+		AA863807144CA28300CFA759 /* action-bar-icon-like.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E6144CA22700CFA759 /* action-bar-icon-like.png */; };
+		AA863808144CA28300CFA759 /* action-bar-icon-like@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E7144CA22700CFA759 /* action-bar-icon-like@2x.png */; };
+		AA863809144CA28300CFA759 /* action-bar-icon-liked.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E8144CA22700CFA759 /* action-bar-icon-liked.png */; };
+		AA86380A144CA28300CFA759 /* action-bar-icon-liked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636E9144CA22700CFA759 /* action-bar-icon-liked@2x.png */; };
+		AA86380B144CA28300CFA759 /* action-bar-icon-share.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636EA144CA22700CFA759 /* action-bar-icon-share.png */; };
+		AA86380C144CA28300CFA759 /* action-bar-icon-share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636EB144CA22700CFA759 /* action-bar-icon-share@2x.png */; };
+		AA86380D144CA28300CFA759 /* action-bar-icon-views.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636EC144CA22700CFA759 /* action-bar-icon-views.png */; };
+		AA86380E144CA28300CFA759 /* action-bar-icon-views@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636ED144CA22700CFA759 /* action-bar-icon-views@2x.png */; };
+		AA86380F144CA28300CFA759 /* background_brushed_metal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636EE144CA22700CFA759 /* background_brushed_metal@2x.png */; };
+		AA863810144CA28300CFA759 /* comment-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636EF144CA22700CFA759 /* comment-bg.png */; };
+		AA863811144CA28300CFA759 /* comment-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F0144CA22700CFA759 /* comment-bg@2x.png */; };
+		AA863812144CA28300CFA759 /* comment-sm-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F1144CA22700CFA759 /* comment-sm-icon.png */; };
+		AA863813144CA28300CFA759 /* comment-sm-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F2144CA22700CFA759 /* comment-sm-icon@2x.png */; };
+		AA863814144CA28300CFA759 /* comment_template_clear.htm in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F3144CA22700CFA759 /* comment_template_clear.htm */; };
+		AA863815144CA28300CFA759 /* comments-cell-bg-borders.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F4144CA22700CFA759 /* comments-cell-bg-borders.png */; };
+		AA863816144CA28300CFA759 /* comments-cell-bg-borders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F5144CA22700CFA759 /* comments-cell-bg-borders@2x.png */; };
+		AA863817144CA28300CFA759 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F6144CA22700CFA759 /* CommentsTableViewCell.xib */; };
+		AA863818144CA28300CFA759 /* socialize-activity-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F7144CA22700CFA759 /* socialize-activity-bg.png */; };
+		AA863819144CA28300CFA759 /* socialize-activity-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F8144CA22700CFA759 /* socialize-activity-bg@2x.png */; };
+		AA86381A144CA28300CFA759 /* socialize-cell-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636F9144CA22700CFA759 /* socialize-cell-arrow.png */; };
+		AA86381B144CA28300CFA759 /* socialize-cell-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636FA144CA22700CFA759 /* socialize-cell-arrow@2x.png */; };
+		AA86381C144CA28300CFA759 /* socialize-cell-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636FB144CA22700CFA759 /* socialize-cell-bg.png */; };
+		AA86381D144CA28300CFA759 /* socialize-cell-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636FC144CA22700CFA759 /* socialize-cell-bg@2x.png */; };
+		AA86381E144CA28300CFA759 /* socialize-cell-image-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636FD144CA22700CFA759 /* socialize-cell-image-bg.png */; };
+		AA86381F144CA28300CFA759 /* socialize-cell-image-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636FE144CA22700CFA759 /* socialize-cell-image-bg@2x.png */; };
+		AA863820144CA28300CFA759 /* socialize-cell-image-default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8636FF144CA22700CFA759 /* socialize-cell-image-default.png */; };
+		AA863821144CA28300CFA759 /* socialize-cell-image-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863700144CA22700CFA759 /* socialize-cell-image-default@2x.png */; };
+		AA863822144CA28300CFA759 /* socialize-cell-image.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863701144CA22700CFA759 /* socialize-cell-image.png */; };
+		AA863823144CA28300CFA759 /* socialize-cell-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863702144CA22700CFA759 /* socialize-cell-image@2x.png */; };
+		AA863824144CA28300CFA759 /* socialize-cell-selected-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863703144CA22700CFA759 /* socialize-cell-selected-bg.png */; };
+		AA863825144CA28300CFA759 /* socialize-cell-selected-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863704144CA22700CFA759 /* socialize-cell-selected-bg@2x.png */; };
+		AA863826144CA28300CFA759 /* socialize-comment-background-text-input.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863705144CA22700CFA759 /* socialize-comment-background-text-input.png */; };
+		AA863827144CA28300CFA759 /* socialize-comment-background-text-input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863706144CA22700CFA759 /* socialize-comment-background-text-input@2x.png */; };
+		AA863828144CA28300CFA759 /* socialize-comment-button-active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863707144CA22700CFA759 /* socialize-comment-button-active.png */; };
+		AA863829144CA28300CFA759 /* socialize-comment-button-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863708144CA22700CFA759 /* socialize-comment-button-active@2x.png */; };
+		AA86382A144CA28300CFA759 /* socialize-comment-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863709144CA22700CFA759 /* socialize-comment-button.png */; };
+		AA86382B144CA28300CFA759 /* socialize-comment-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86370A144CA22700CFA759 /* socialize-comment-button@2x.png */; };
+		AA86382C144CA28300CFA759 /* socialize-comment-detail-bottom-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86370B144CA22700CFA759 /* socialize-comment-detail-bottom-shadow-background.png */; };
+		AA86382D144CA28300CFA759 /* socialize-comment-detail-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86370C144CA22700CFA759 /* socialize-comment-detail-bottom-shadow-background@2x.png */; };
+		AA86382E144CA28300CFA759 /* socialize-comment-details-icon-geo-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86370D144CA22700CFA759 /* socialize-comment-details-icon-geo-disabled.png */; };
+		AA86382F144CA28300CFA759 /* socialize-comment-details-icon-geo-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86370E144CA22700CFA759 /* socialize-comment-details-icon-geo-disabled@2x.png */; };
+		AA863830144CA28300CFA759 /* socialize-comment-details-icon-geo-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86370F144CA22700CFA759 /* socialize-comment-details-icon-geo-enabled.png */; };
+		AA863831144CA28300CFA759 /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863710144CA22700CFA759 /* socialize-comment-details-icon-geo-enabled@2x.png */; };
+		AA863832144CA28300CFA759 /* socialize-comment-list-view-location-pin-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863711144CA22700CFA759 /* socialize-comment-list-view-location-pin-icon.png */; };
+		AA863833144CA28300CFA759 /* socialize-comment-list-view-location-pin-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863712144CA22700CFA759 /* socialize-comment-list-view-location-pin-icon@2x.png */; };
+		AA863834144CA28300CFA759 /* socialize-comment-location-bar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863713144CA22700CFA759 /* socialize-comment-location-bar-background.png */; };
+		AA863835144CA28300CFA759 /* socialize-comment-location-bar-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863714144CA22700CFA759 /* socialize-comment-location-bar-background@2x.png */; };
+		AA863836144CA28300CFA759 /* socialize-comment-location-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863715144CA22700CFA759 /* socialize-comment-location-disabled.png */; };
+		AA863837144CA28300CFA759 /* socialize-comment-location-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863716144CA22700CFA759 /* socialize-comment-location-disabled@2x.png */; };
+		AA863838144CA28300CFA759 /* socialize-comment-location-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863717144CA22700CFA759 /* socialize-comment-location-enabled.png */; };
+		AA863839144CA28300CFA759 /* socialize-comment-location-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863718144CA22700CFA759 /* socialize-comment-location-enabled@2x.png */; };
+		AA86383A144CA28300CFA759 /* socialize-comment-user-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863719144CA22700CFA759 /* socialize-comment-user-background.png */; };
+		AA86383B144CA28300CFA759 /* socialize-comment-user-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86371A144CA22700CFA759 /* socialize-comment-user-background@2x.png */; };
+		AA86383C144CA28300CFA759 /* socialize-location-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86371B144CA22700CFA759 /* socialize-location-icon.png */; };
+		AA86383D144CA28300CFA759 /* socialize-navbar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86371C144CA22700CFA759 /* socialize-navbar-bg.png */; };
+		AA86383E144CA28300CFA759 /* socialize-navbar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86371D144CA22700CFA759 /* socialize-navbar-bg@2x.png */; };
+		AA86383F144CA28300CFA759 /* socialize-navbar-button-back-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86371E144CA22700CFA759 /* socialize-navbar-button-back-pressed.png */; };
+		AA863840144CA28300CFA759 /* socialize-navbar-button-back-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86371F144CA22700CFA759 /* socialize-navbar-button-back-pressed@2x.png */; };
+		AA863841144CA28300CFA759 /* socialize-navbar-button-back.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863720144CA22700CFA759 /* socialize-navbar-button-back.png */; };
+		AA863842144CA28300CFA759 /* socialize-navbar-button-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863721144CA22700CFA759 /* socialize-navbar-button-back@2x.png */; };
+		AA863843144CA28300CFA759 /* socialize-navbar-button-blue-bg-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863722144CA22700CFA759 /* socialize-navbar-button-blue-bg-highlighted.png */; };
+		AA863844144CA28300CFA759 /* socialize-navbar-button-blue-bg-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863723144CA22700CFA759 /* socialize-navbar-button-blue-bg-highlighted@2x.png */; };
+		AA863845144CA28300CFA759 /* socialize-navbar-button-blue-bg-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863724144CA22700CFA759 /* socialize-navbar-button-blue-bg-normal.png */; };
+		AA863846144CA28300CFA759 /* socialize-navbar-button-blue-bg-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863725144CA22700CFA759 /* socialize-navbar-button-blue-bg-normal@2x.png */; };
+		AA863847144CA28300CFA759 /* socialize-navbar-button-dark-active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863726144CA22700CFA759 /* socialize-navbar-button-dark-active.png */; };
+		AA863848144CA28300CFA759 /* socialize-navbar-button-dark-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863727144CA22700CFA759 /* socialize-navbar-button-dark-active@2x.png */; };
+		AA863849144CA28300CFA759 /* socialize-navbar-button-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863728144CA22700CFA759 /* socialize-navbar-button-dark.png */; };
+		AA86384A144CA28300CFA759 /* socialize-navbar-button-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863729144CA22700CFA759 /* socialize-navbar-button-dark@2x.png */; };
+		AA86384B144CA28300CFA759 /* socialize-navbar-button-green-active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86372A144CA22700CFA759 /* socialize-navbar-button-green-active.png */; };
+		AA86384C144CA28300CFA759 /* socialize-navbar-button-green-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86372B144CA22700CFA759 /* socialize-navbar-button-green-active@2x.png */; };
+		AA86384D144CA28300CFA759 /* socialize-navbar-button-green.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86372C144CA22700CFA759 /* socialize-navbar-button-green.png */; };
+		AA86384E144CA28300CFA759 /* socialize-navbar-button-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86372D144CA22700CFA759 /* socialize-navbar-button-green@2x.png */; };
+		AA86384F144CA28300CFA759 /* socialize-navbar-button-red-active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86372E144CA22700CFA759 /* socialize-navbar-button-red-active.png */; };
+		AA863850144CA28300CFA759 /* socialize-navbar-button-red-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA86372F144CA22700CFA759 /* socialize-navbar-button-red-active@2x.png */; };
+		AA863851144CA28300CFA759 /* socialize-navbar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863730144CA22700CFA759 /* socialize-navbar-button-red.png */; };
+		AA863852144CA28300CFA759 /* socialize-navbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863731144CA22700CFA759 /* socialize-navbar-button-red@2x.png */; };
+		AA863853144CA28300CFA759 /* socialize-nocomments-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863732144CA22700CFA759 /* socialize-nocomments-icon.png */; };
+		AA863854144CA28300CFA759 /* socialize-nocomments-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863733144CA22700CFA759 /* socialize-nocomments-icon@2x.png */; };
+		AA863855144CA28300CFA759 /* socialize-profileimage-large-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863734144CA22700CFA759 /* socialize-profileimage-large-bg.png */; };
+		AA863856144CA28300CFA759 /* socialize-profileimage-large-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863735144CA22700CFA759 /* socialize-profileimage-large-bg@2x.png */; };
+		AA863857144CA28300CFA759 /* socialize-profileimage-large-default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863736144CA22700CFA759 /* socialize-profileimage-large-default.png */; };
+		AA863858144CA28300CFA759 /* socialize-profileimage-large-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863737144CA22700CFA759 /* socialize-profileimage-large-default@2x.png */; };
+		AA863859144CA28300CFA759 /* socialize-sectionheader-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863738144CA22700CFA759 /* socialize-sectionheader-bg.png */; };
+		AA86385A144CA28300CFA759 /* socialize-sectionheader-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA863739144CA22700CFA759 /* socialize-sectionheader-bg@2x.png */; };
+		AA86385B144CA28300CFA759 /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA86373A144CA22700CFA759 /* SocializeCommentDetailsViewController.xib */; };
+		AA86385C144CA28300CFA759 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA86373B144CA22700CFA759 /* SocializeCommentsTableViewController.xib */; };
+		AA86385E144CA28300CFA759 /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA86373D144CA22700CFA759 /* SocializeEditValueTableViewCell.xib */; };
+		AA86385F144CA28300CFA759 /* SocializePostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA86373E144CA22700CFA759 /* SocializePostCommentViewController.xib */; };
+		AA863860144CA28300CFA759 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA86373F144CA22700CFA759 /* SocializeProfileEditTableViewCell.xib */; };
+		AA863861144CA28300CFA759 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA863740144CA22700CFA759 /* SocializeProfileEditTableViewImageCell.xib */; };
+		AA863862144CA28300CFA759 /* SocializeProfileEditValueController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA863741144CA22700CFA759 /* SocializeProfileEditValueController.xib */; };
+		AA863863144CA28300CFA759 /* SocializeProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA863742144CA22700CFA759 /* SocializeProfileEditViewController.xib */; };
+		AA863864144CA28300CFA759 /* SocializeProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA863743144CA22700CFA759 /* SocializeProfileViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA2025A5144CB219006C1F8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA8636CC144CA0DB00CFA759 /* KIF.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AAB07267139719AC008AF393;
+			remoteInfo = KIF;
+		};
+		AA2025B3144CB273006C1F8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA8636CC144CA0DB00CFA759 /* KIF.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AAB07267139719AC008AF393;
+			remoteInfo = KIF;
+		};
+		AA8636D3144CA0DB00CFA759 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA8636CC144CA0DB00CFA759 /* KIF.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAB07268139719AC008AF393;
+			remoteInfo = KIF;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AA2D9E6D14352BC100C62B97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AA2D9E6F14352BC100C62B97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AA2DA1F91435359700C62B97 /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKIF.a; path = "../Frameworks/KIF/build/Release-iphoneos/libKIF.a"; sourceTree = "<group>"; };
+		AA2DA21E143541B300C62B97 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AA2DA220143541E100C62B97 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AA2DA222143541F700C62B97 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AA2DA2241435420300C62B97 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AA2DA2C61435437400C62B97 /* SampleSdkApp Integration Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SampleSdkApp Integration Tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA639DA0144A24BF00660E26 /* AuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticateViewController.h; sourceTree = "<group>"; };
+		AA639DA1144A24BF00660E26 /* AuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticateViewController.m; sourceTree = "<group>"; };
+		AA639DA2144A24BF00660E26 /* AuthenticateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenticateViewController.xib; sourceTree = "<group>"; };
+		AA639DA3144A24BF00660E26 /* CommetsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommetsTableView.h; sourceTree = "<group>"; };
+		AA639DA4144A24BF00660E26 /* CommetsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommetsTableView.m; sourceTree = "<group>"; };
+		AA639DA5144A24BF00660E26 /* DataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHelper.h; sourceTree = "<group>"; };
+		AA639DA6144A24BF00660E26 /* DataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHelper.m; sourceTree = "<group>"; };
+		AA639DA7144A24BF00660E26 /* DemoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoEntity.h; sourceTree = "<group>"; };
+		AA639DA8144A24BF00660E26 /* DemoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoEntity.m; sourceTree = "<group>"; };
+		AA639DAA144A24BF00660E26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AA639DAC144A24BF00660E26 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		AA639DAD144A24BF00660E26 /* InputBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputBox.h; sourceTree = "<group>"; };
+		AA639DAE144A24BF00660E26 /* InputBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputBox.m; sourceTree = "<group>"; };
+		AA639DAF144A24BF00660E26 /* LikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeListViewController.h; sourceTree = "<group>"; };
+		AA639DB0144A24BF00660E26 /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeListViewController.m; sourceTree = "<group>"; };
+		AA639DB1144A24BF00660E26 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
+		AA639DB2144A24BF00660E26 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		AA639DB3144A24BF00660E26 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		AA639DB4144A24BF00660E26 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AA639DB5144A24BF00660E26 /* SampleSdkApp Integration Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleSdkApp Integration Tests-Info.plist"; sourceTree = "<group>"; };
+		AA639DB6144A24BF00660E26 /* SampleSdkApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleSdkApp-Info.plist"; sourceTree = "<group>"; };
+		AA639DB7144A24BF00660E26 /* SampleSdkApp-Integration-Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Integration-Tests-Prefix.pch"; sourceTree = "<group>"; };
+		AA639DB8144A24BF00660E26 /* SampleSdkApp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Prefix.pch"; sourceTree = "<group>"; };
+		AA639DBC144A24BF00660E26 /* SampleSdkAppAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleSdkAppAppDelegate.h; sourceTree = "<group>"; };
+		AA639DBD144A24BF00660E26 /* SampleSdkAppAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppAppDelegate.m; sourceTree = "<group>"; };
+		AA639DBE144A24BF00660E26 /* SocializeApiInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeApiInfo.plist; sourceTree = "<group>"; };
+		AA639DBF144A24BF00660E26 /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
+		AA639DC0144A24BF00660E26 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
+		AA639DC1144A24BF00660E26 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
+		AA639DC2144A24BF00660E26 /* TestCreateCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCreateCommentViewController.h; sourceTree = "<group>"; };
+		AA639DC3144A24BF00660E26 /* TestCreateCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCreateCommentViewController.m; sourceTree = "<group>"; };
+		AA639DC4144A24BF00660E26 /* TestCreateCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCreateCommentViewController.xib; sourceTree = "<group>"; };
+		AA639DC5144A24BF00660E26 /* TestCreateEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCreateEntityViewController.h; sourceTree = "<group>"; };
+		AA639DC6144A24BF00660E26 /* TestCreateEntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCreateEntityViewController.m; sourceTree = "<group>"; };
+		AA639DC7144A24BF00660E26 /* TestCreateEntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCreateEntityViewController.xib; sourceTree = "<group>"; };
+		AA639DC8144A24BF00660E26 /* TestFetchCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFetchCommentsViewController.h; sourceTree = "<group>"; };
+		AA639DC9144A24BF00660E26 /* TestFetchCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFetchCommentsViewController.m; sourceTree = "<group>"; };
+		AA639DCA144A24BF00660E26 /* TestFetchCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestFetchCommentsViewController.xib; sourceTree = "<group>"; };
+		AA639DCB144A24BF00660E26 /* TestGetEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGetEntityViewController.h; sourceTree = "<group>"; };
+		AA639DCC144A24BF00660E26 /* TestGetEntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGetEntityViewController.m; sourceTree = "<group>"; };
+		AA639DCD144A24BF00660E26 /* TestGetEntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestGetEntityViewController.xib; sourceTree = "<group>"; };
+		AA639DCE144A24BF00660E26 /* TestLikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLikeViewController.h; sourceTree = "<group>"; };
+		AA639DCF144A24BF00660E26 /* TestLikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLikeViewController.m; sourceTree = "<group>"; };
+		AA639DD0144A24BF00660E26 /* TestLikeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestLikeViewController.xib; sourceTree = "<group>"; };
+		AA639DD1144A24BF00660E26 /* TestListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestListController.h; sourceTree = "<group>"; };
+		AA639DD2144A24BF00660E26 /* TestListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestListController.m; sourceTree = "<group>"; };
+		AA639DD3144A24BF00660E26 /* TestListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestListController.xib; sourceTree = "<group>"; };
+		AA639E07144A24BF00660E26 /* TestShowSmallUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShowSmallUserInfo.h; sourceTree = "<group>"; };
+		AA639E08144A24BF00660E26 /* TestShowSmallUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShowSmallUserInfo.m; sourceTree = "<group>"; };
+		AA639E09144A24BF00660E26 /* TestShowSmallUserInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestShowSmallUserInfo.xib; sourceTree = "<group>"; };
+		AA639E0A144A24BF00660E26 /* TestSocializeActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSocializeActionBar.h; sourceTree = "<group>"; };
+		AA639E0B144A24BF00660E26 /* TestSocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSocializeActionBar.m; sourceTree = "<group>"; };
+		AA639E0C144A24BF00660E26 /* TestSocializeActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSocializeActionBar.xib; sourceTree = "<group>"; };
+		AA639E0D144A24BF00660E26 /* TestViewCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewCreationViewController.h; sourceTree = "<group>"; };
+		AA639E0E144A24BF00660E26 /* TestViewCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewCreationViewController.m; sourceTree = "<group>"; };
+		AA639E0F144A24BF00660E26 /* TestViewCreationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewCreationViewController.xib; sourceTree = "<group>"; };
+		AA639E10144A24BF00660E26 /* UIButton+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Socialize.h"; sourceTree = "<group>"; };
+		AA639E11144A24BF00660E26 /* UIButton+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Socialize.m"; sourceTree = "<group>"; };
+		AA639E12144A24BF00660E26 /* UILabel-Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel-Additions.h"; sourceTree = "<group>"; };
+		AA639E13144A24BF00660E26 /* UILabel-Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel-Additions.m"; sourceTree = "<group>"; };
+		AA639E14144A24BF00660E26 /* urls.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = urls.plist; sourceTree = "<group>"; };
+		AA639E15144A24BF00660E26 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		AA639E16144A24BF00660E26 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
+		AA639E17144A24BF00660E26 /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
+		AA639E6A144A26BD00660E26 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		AA639F5B144A290400660E26 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		AA639F5E144A290400660E26 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		AA639F5F144A290400660E26 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		AA639F60144A290400660E26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AA8636BC144CA0A200CFA759 /* AuthTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthTest.h; sourceTree = "<group>"; };
+		AA8636BD144CA0A200CFA759 /* AuthTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthTest.m; sourceTree = "<group>"; };
+		AA8636BE144CA0A200CFA759 /* SocializeAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeAsyncTestCase.h; sourceTree = "<group>"; };
+		AA8636BF144CA0A200CFA759 /* SocializeAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAsyncTestCase.m; sourceTree = "<group>"; };
+		AA8636C1144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestScenario+SampleSdkAppAdditions.h"; sourceTree = "<group>"; };
+		AA8636C2144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestScenario+SampleSdkAppAdditions.m"; sourceTree = "<group>"; };
+		AA8636C3144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestStep+SampleSdkAppAdditions.h"; sourceTree = "<group>"; };
+		AA8636C4144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestStep+SampleSdkAppAdditions.m"; sourceTree = "<group>"; };
+		AA8636C5144CA0A200CFA759 /* SampleSdkAppKIFTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleSdkAppKIFTestController.h; sourceTree = "<group>"; };
+		AA8636C6144CA0A200CFA759 /* SampleSdkAppKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppKIFTestController.m; sourceTree = "<group>"; };
+		AA8636CC144CA0DB00CFA759 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = ../Frameworks/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
+		AA8636D6144CA14300CFA759 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = ../Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
+		AA8636DA144CA22700CFA759 /* action-bar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-bg.png"; sourceTree = "<group>"; };
+		AA8636DB144CA22700CFA759 /* action-bar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-bg@2x.png"; sourceTree = "<group>"; };
+		AA8636DC144CA22700CFA759 /* action-bar-button-black-hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-black-hover.png"; sourceTree = "<group>"; };
+		AA8636DD144CA22700CFA759 /* action-bar-button-black-hover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-black-hover@2x.png"; sourceTree = "<group>"; };
+		AA8636DE144CA22700CFA759 /* action-bar-button-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-black.png"; sourceTree = "<group>"; };
+		AA8636DF144CA22700CFA759 /* action-bar-button-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-black@2x.png"; sourceTree = "<group>"; };
+		AA8636E0144CA22700CFA759 /* action-bar-button-red-hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-red-hover.png"; sourceTree = "<group>"; };
+		AA8636E1144CA22700CFA759 /* action-bar-button-red-hover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-red-hover@2x.png"; sourceTree = "<group>"; };
+		AA8636E2144CA22700CFA759 /* action-bar-button-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-red.png"; sourceTree = "<group>"; };
+		AA8636E3144CA22700CFA759 /* action-bar-button-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-red@2x.png"; sourceTree = "<group>"; };
+		AA8636E4144CA22700CFA759 /* action-bar-icon-comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-comments.png"; sourceTree = "<group>"; };
+		AA8636E5144CA22700CFA759 /* action-bar-icon-comments@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-comments@2x.png"; sourceTree = "<group>"; };
+		AA8636E6144CA22700CFA759 /* action-bar-icon-like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-like.png"; sourceTree = "<group>"; };
+		AA8636E7144CA22700CFA759 /* action-bar-icon-like@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-like@2x.png"; sourceTree = "<group>"; };
+		AA8636E8144CA22700CFA759 /* action-bar-icon-liked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-liked.png"; sourceTree = "<group>"; };
+		AA8636E9144CA22700CFA759 /* action-bar-icon-liked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-liked@2x.png"; sourceTree = "<group>"; };
+		AA8636EA144CA22700CFA759 /* action-bar-icon-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-share.png"; sourceTree = "<group>"; };
+		AA8636EB144CA22700CFA759 /* action-bar-icon-share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-share@2x.png"; sourceTree = "<group>"; };
+		AA8636EC144CA22700CFA759 /* action-bar-icon-views.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-views.png"; sourceTree = "<group>"; };
+		AA8636ED144CA22700CFA759 /* action-bar-icon-views@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-icon-views@2x.png"; sourceTree = "<group>"; };
+		AA8636EE144CA22700CFA759 /* background_brushed_metal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_brushed_metal@2x.png"; sourceTree = "<group>"; };
+		AA8636EF144CA22700CFA759 /* comment-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-bg.png"; sourceTree = "<group>"; };
+		AA8636F0144CA22700CFA759 /* comment-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-bg@2x.png"; sourceTree = "<group>"; };
+		AA8636F1144CA22700CFA759 /* comment-sm-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-sm-icon.png"; sourceTree = "<group>"; };
+		AA8636F2144CA22700CFA759 /* comment-sm-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment-sm-icon@2x.png"; sourceTree = "<group>"; };
+		AA8636F3144CA22700CFA759 /* comment_template_clear.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = comment_template_clear.htm; sourceTree = "<group>"; };
+		AA8636F4144CA22700CFA759 /* comments-cell-bg-borders.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comments-cell-bg-borders.png"; sourceTree = "<group>"; };
+		AA8636F5144CA22700CFA759 /* comments-cell-bg-borders@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comments-cell-bg-borders@2x.png"; sourceTree = "<group>"; };
+		AA8636F6144CA22700CFA759 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
+		AA8636F7144CA22700CFA759 /* socialize-activity-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-activity-bg.png"; sourceTree = "<group>"; };
+		AA8636F8144CA22700CFA759 /* socialize-activity-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-activity-bg@2x.png"; sourceTree = "<group>"; };
+		AA8636F9144CA22700CFA759 /* socialize-cell-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-cell-arrow.png"; sourceTree = "<group>"; };
+		AA8636FA144CA22700CFA759 /* socialize-cell-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-cell-arrow@2x.png"; sourceTree = "<group>"; };
+		AA8636FB144CA22700CFA759 /* socialize-cell-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-cell-bg.png"; sourceTree = "<group>"; };
+		AA8636FC144CA22700CFA759 /* socialize-cell-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-cell-bg@2x.png"; sourceTree = "<group>"; };
+		AA8636FD144CA22700CFA759 /* socialize-cell-image-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-cell-image-bg.png"; sourceTree = "<group>"; };
+		AA8636FE144CA22700CFA759 /* socialize-cell-image-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-cell-image-bg@2x.png"; sourceTree = "<group>"; };
+		AA8636FF144CA22700CFA759 /* socialize-cell-image-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-cell-image-default.png"; sourceTree = "<group>"; };
+		AA863700144CA22700CFA759 /* socialize-cell-image-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-cell-image-default@2x.png"; sourceTree = "<group>"; };
+		AA863701144CA22700CFA759 /* socialize-cell-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-cell-image.png"; sourceTree = "<group>"; };
+		AA863702144CA22700CFA759 /* socialize-cell-image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-cell-image@2x.png"; sourceTree = "<group>"; };
+		AA863703144CA22700CFA759 /* socialize-cell-selected-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-cell-selected-bg.png"; sourceTree = "<group>"; };
+		AA863704144CA22700CFA759 /* socialize-cell-selected-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-cell-selected-bg@2x.png"; sourceTree = "<group>"; };
+		AA863705144CA22700CFA759 /* socialize-comment-background-text-input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-background-text-input.png"; sourceTree = "<group>"; };
+		AA863706144CA22700CFA759 /* socialize-comment-background-text-input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-background-text-input@2x.png"; sourceTree = "<group>"; };
+		AA863707144CA22700CFA759 /* socialize-comment-button-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-button-active.png"; sourceTree = "<group>"; };
+		AA863708144CA22700CFA759 /* socialize-comment-button-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-button-active@2x.png"; sourceTree = "<group>"; };
+		AA863709144CA22700CFA759 /* socialize-comment-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-button.png"; sourceTree = "<group>"; };
+		AA86370A144CA22700CFA759 /* socialize-comment-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-button@2x.png"; sourceTree = "<group>"; };
+		AA86370B144CA22700CFA759 /* socialize-comment-detail-bottom-shadow-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-detail-bottom-shadow-background.png"; sourceTree = "<group>"; };
+		AA86370C144CA22700CFA759 /* socialize-comment-detail-bottom-shadow-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-detail-bottom-shadow-background@2x.png"; sourceTree = "<group>"; };
+		AA86370D144CA22700CFA759 /* socialize-comment-details-icon-geo-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-details-icon-geo-disabled.png"; sourceTree = "<group>"; };
+		AA86370E144CA22700CFA759 /* socialize-comment-details-icon-geo-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-details-icon-geo-disabled@2x.png"; sourceTree = "<group>"; };
+		AA86370F144CA22700CFA759 /* socialize-comment-details-icon-geo-enabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-details-icon-geo-enabled.png"; sourceTree = "<group>"; };
+		AA863710144CA22700CFA759 /* socialize-comment-details-icon-geo-enabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-details-icon-geo-enabled@2x.png"; sourceTree = "<group>"; };
+		AA863711144CA22700CFA759 /* socialize-comment-list-view-location-pin-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-list-view-location-pin-icon.png"; sourceTree = "<group>"; };
+		AA863712144CA22700CFA759 /* socialize-comment-list-view-location-pin-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-list-view-location-pin-icon@2x.png"; sourceTree = "<group>"; };
+		AA863713144CA22700CFA759 /* socialize-comment-location-bar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-location-bar-background.png"; sourceTree = "<group>"; };
+		AA863714144CA22700CFA759 /* socialize-comment-location-bar-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-location-bar-background@2x.png"; sourceTree = "<group>"; };
+		AA863715144CA22700CFA759 /* socialize-comment-location-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-location-disabled.png"; sourceTree = "<group>"; };
+		AA863716144CA22700CFA759 /* socialize-comment-location-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-location-disabled@2x.png"; sourceTree = "<group>"; };
+		AA863717144CA22700CFA759 /* socialize-comment-location-enabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-location-enabled.png"; sourceTree = "<group>"; };
+		AA863718144CA22700CFA759 /* socialize-comment-location-enabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-location-enabled@2x.png"; sourceTree = "<group>"; };
+		AA863719144CA22700CFA759 /* socialize-comment-user-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-user-background.png"; sourceTree = "<group>"; };
+		AA86371A144CA22700CFA759 /* socialize-comment-user-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-comment-user-background@2x.png"; sourceTree = "<group>"; };
+		AA86371B144CA22700CFA759 /* socialize-location-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-location-icon.png"; sourceTree = "<group>"; };
+		AA86371C144CA22700CFA759 /* socialize-navbar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-bg.png"; sourceTree = "<group>"; };
+		AA86371D144CA22700CFA759 /* socialize-navbar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-bg@2x.png"; sourceTree = "<group>"; };
+		AA86371E144CA22700CFA759 /* socialize-navbar-button-back-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-back-pressed.png"; sourceTree = "<group>"; };
+		AA86371F144CA22700CFA759 /* socialize-navbar-button-back-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-back-pressed@2x.png"; sourceTree = "<group>"; };
+		AA863720144CA22700CFA759 /* socialize-navbar-button-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-back.png"; sourceTree = "<group>"; };
+		AA863721144CA22700CFA759 /* socialize-navbar-button-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-back@2x.png"; sourceTree = "<group>"; };
+		AA863722144CA22700CFA759 /* socialize-navbar-button-blue-bg-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-blue-bg-highlighted.png"; sourceTree = "<group>"; };
+		AA863723144CA22700CFA759 /* socialize-navbar-button-blue-bg-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-blue-bg-highlighted@2x.png"; sourceTree = "<group>"; };
+		AA863724144CA22700CFA759 /* socialize-navbar-button-blue-bg-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-blue-bg-normal.png"; sourceTree = "<group>"; };
+		AA863725144CA22700CFA759 /* socialize-navbar-button-blue-bg-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-blue-bg-normal@2x.png"; sourceTree = "<group>"; };
+		AA863726144CA22700CFA759 /* socialize-navbar-button-dark-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-dark-active.png"; sourceTree = "<group>"; };
+		AA863727144CA22700CFA759 /* socialize-navbar-button-dark-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-dark-active@2x.png"; sourceTree = "<group>"; };
+		AA863728144CA22700CFA759 /* socialize-navbar-button-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-dark.png"; sourceTree = "<group>"; };
+		AA863729144CA22700CFA759 /* socialize-navbar-button-dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-dark@2x.png"; sourceTree = "<group>"; };
+		AA86372A144CA22700CFA759 /* socialize-navbar-button-green-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-green-active.png"; sourceTree = "<group>"; };
+		AA86372B144CA22700CFA759 /* socialize-navbar-button-green-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-green-active@2x.png"; sourceTree = "<group>"; };
+		AA86372C144CA22700CFA759 /* socialize-navbar-button-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-green.png"; sourceTree = "<group>"; };
+		AA86372D144CA22700CFA759 /* socialize-navbar-button-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-green@2x.png"; sourceTree = "<group>"; };
+		AA86372E144CA22700CFA759 /* socialize-navbar-button-red-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-red-active.png"; sourceTree = "<group>"; };
+		AA86372F144CA22700CFA759 /* socialize-navbar-button-red-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-red-active@2x.png"; sourceTree = "<group>"; };
+		AA863730144CA22700CFA759 /* socialize-navbar-button-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-red.png"; sourceTree = "<group>"; };
+		AA863731144CA22700CFA759 /* socialize-navbar-button-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-navbar-button-red@2x.png"; sourceTree = "<group>"; };
+		AA863732144CA22700CFA759 /* socialize-nocomments-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-nocomments-icon.png"; sourceTree = "<group>"; };
+		AA863733144CA22700CFA759 /* socialize-nocomments-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-nocomments-icon@2x.png"; sourceTree = "<group>"; };
+		AA863734144CA22700CFA759 /* socialize-profileimage-large-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-profileimage-large-bg.png"; sourceTree = "<group>"; };
+		AA863735144CA22700CFA759 /* socialize-profileimage-large-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-profileimage-large-bg@2x.png"; sourceTree = "<group>"; };
+		AA863736144CA22700CFA759 /* socialize-profileimage-large-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-profileimage-large-default.png"; sourceTree = "<group>"; };
+		AA863737144CA22700CFA759 /* socialize-profileimage-large-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-profileimage-large-default@2x.png"; sourceTree = "<group>"; };
+		AA863738144CA22700CFA759 /* socialize-sectionheader-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-sectionheader-bg.png"; sourceTree = "<group>"; };
+		AA863739144CA22700CFA759 /* socialize-sectionheader-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-sectionheader-bg@2x.png"; sourceTree = "<group>"; };
+		AA86373A144CA22700CFA759 /* SocializeCommentDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeCommentDetailsViewController.xib; sourceTree = "<group>"; };
+		AA86373B144CA22700CFA759 /* SocializeCommentsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeCommentsTableViewController.xib; sourceTree = "<group>"; };
+		AA86373C144CA22700CFA759 /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
+		AA86373D144CA22700CFA759 /* SocializeEditValueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeEditValueTableViewCell.xib; sourceTree = "<group>"; };
+		AA86373E144CA22700CFA759 /* SocializePostCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializePostCommentViewController.xib; sourceTree = "<group>"; };
+		AA86373F144CA22700CFA759 /* SocializeProfileEditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeProfileEditTableViewCell.xib; sourceTree = "<group>"; };
+		AA863740144CA22700CFA759 /* SocializeProfileEditTableViewImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeProfileEditTableViewImageCell.xib; sourceTree = "<group>"; };
+		AA863741144CA22700CFA759 /* SocializeProfileEditValueController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeProfileEditValueController.xib; sourceTree = "<group>"; };
+		AA863742144CA22700CFA759 /* SocializeProfileEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeProfileEditViewController.xib; sourceTree = "<group>"; };
+		AA863743144CA22700CFA759 /* SocializeProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeProfileViewController.xib; sourceTree = "<group>"; };
+		AA863744144CA22700CFA759 /* Socialize.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Socialize.framework; sourceTree = "<group>"; };
+		AA863869144CA28300CFA759 /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA86386B144CA28300CFA759 /* SampleSdkApp Integration Tests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SampleSdkApp Integration Tests copy-Info.plist"; path = "/Users/griswold/ios/socialize-sdk-ios/SampleSdkApp/SampleSdkApp Integration Tests copy-Info.plist"; sourceTree = "<absolute>"; };
+		AAAFE5C0143553D800851C73 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
+		AAAFE93F1435640C00851C73 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = Frameworks/SymbolCollisionTestLibs/libJSONKit.a; sourceTree = "<group>"; };
+		AAAFE9401435640C00851C73 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth.a; path = Frameworks/SymbolCollisionTestLibs/libOAuth.a; sourceTree = "<group>"; };
+		AAAFE9411435640C00851C73 /* libSBJson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSBJson.a; path = Frameworks/SymbolCollisionTestLibs/libSBJson.a; sourceTree = "<group>"; };
+		AAC91747144CB5E0009B6555 /* SampleSdkApp Integration Tests copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SampleSdkApp Integration Tests copy2-Info.plist"; path = "/Users/griswold/ios/socialize-sdk-ios/SampleSdkApp/SampleSdkApp Integration Tests copy2-Info.plist"; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA2DA2411435437400C62B97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA2025B1144CB249006C1F8F /* libKIF.a in Frameworks */,
+				AA8636D7144CA14300CFA759 /* GHUnitIOS.framework in Frameworks */,
+				AA2DA2421435437400C62B97 /* MapKit.framework in Frameworks */,
+				AA2DA2431435437400C62B97 /* CoreLocation.framework in Frameworks */,
+				AA2DA2441435437400C62B97 /* QuartzCore.framework in Frameworks */,
+				AA2DA2461435437400C62B97 /* UIKit.framework in Frameworks */,
+				AA2DA2471435437400C62B97 /* Foundation.framework in Frameworks */,
+				AA2DA2481435437400C62B97 /* CoreGraphics.framework in Frameworks */,
+				AA8637AF144CA22800CFA759 /* Socialize.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA8637DF144CA28300CFA759 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA2025B2144CB263006C1F8F /* libKIF.a in Frameworks */,
+				AA8637E0144CA28300CFA759 /* GHUnitIOS.framework in Frameworks */,
+				AA8637E2144CA28300CFA759 /* MapKit.framework in Frameworks */,
+				AA8637E3144CA28300CFA759 /* CoreLocation.framework in Frameworks */,
+				AA8637E4144CA28300CFA759 /* QuartzCore.framework in Frameworks */,
+				AA8637E5144CA28300CFA759 /* UIKit.framework in Frameworks */,
+				AA8637E6144CA28300CFA759 /* Foundation.framework in Frameworks */,
+				AA8637E7144CA28300CFA759 /* CoreGraphics.framework in Frameworks */,
+				AA8637E8144CA28300CFA759 /* Socialize.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA2D9E5E14352BC100C62B97 = {
+			isa = PBXGroup;
+			children = (
+				AA639D9F144A24BF00660E26 /* SampleSdkApp */,
+				AA2D9E6C14352BC100C62B97 /* Frameworks */,
+				AA2D9E6A14352BC100C62B97 /* Products */,
+				AA8636CC144CA0DB00CFA759 /* KIF.xcodeproj */,
+				AA86386B144CA28300CFA759 /* SampleSdkApp Integration Tests copy-Info.plist */,
+				AAC91747144CB5E0009B6555 /* SampleSdkApp Integration Tests copy2-Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		AA2D9E6A14352BC100C62B97 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA2DA2C61435437400C62B97 /* SampleSdkApp Integration Tests.app */,
+				AA863869144CA28300CFA759 /* SampleSdkApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA2D9E6C14352BC100C62B97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA8636D8144CA22700CFA759 /* Socialize.embeddedframework */,
+				AA8636D6144CA14300CFA759 /* GHUnitIOS.framework */,
+				AAAFE93F1435640C00851C73 /* libJSONKit.a */,
+				AAAFE9401435640C00851C73 /* libOAuth.a */,
+				AAAFE9411435640C00851C73 /* libSBJson.a */,
+				AAAFE5C0143553D800851C73 /* GHUnitIOS.framework */,
+				AA2DA1F91435359700C62B97 /* libKIF.a */,
+				AA2D9E6D14352BC100C62B97 /* UIKit.framework */,
+				AA2D9E6F14352BC100C62B97 /* Foundation.framework */,
+				AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */,
+				AA2DA2241435420300C62B97 /* MapKit.framework */,
+				AA2DA222143541F700C62B97 /* CoreLocation.framework */,
+				AA2DA220143541E100C62B97 /* QuartzCore.framework */,
+				AA2DA21E143541B300C62B97 /* CoreLocation.framework */,
+				AA639E6A144A26BD00660E26 /* CoreFoundation.framework */,
+				AA639F5B144A290400660E26 /* Cocoa.framework */,
+				AA639F5D144A290400660E26 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA639D9F144A24BF00660E26 /* SampleSdkApp */ = {
+			isa = PBXGroup;
+			children = (
+				AA8636BA144CA0A200CFA759 /* Tests */,
+				AA639DA0144A24BF00660E26 /* AuthenticateViewController.h */,
+				AA639DA1144A24BF00660E26 /* AuthenticateViewController.m */,
+				AA639DA2144A24BF00660E26 /* AuthenticateViewController.xib */,
+				AA639DA3144A24BF00660E26 /* CommetsTableView.h */,
+				AA639DA4144A24BF00660E26 /* CommetsTableView.m */,
+				AA639DA5144A24BF00660E26 /* DataHelper.h */,
+				AA639DA6144A24BF00660E26 /* DataHelper.m */,
+				AA639DA7144A24BF00660E26 /* DemoEntity.h */,
+				AA639DA8144A24BF00660E26 /* DemoEntity.m */,
+				AA639DA9144A24BF00660E26 /* InfoPlist.strings */,
+				AA639DAB144A24BF00660E26 /* MainWindow.xib */,
+				AA639DAD144A24BF00660E26 /* InputBox.h */,
+				AA639DAE144A24BF00660E26 /* InputBox.m */,
+				AA639DAF144A24BF00660E26 /* LikeListViewController.h */,
+				AA639DB0144A24BF00660E26 /* LikeListViewController.m */,
+				AA639DB1144A24BF00660E26 /* LikeListViewController.xib */,
+				AA639DB2144A24BF00660E26 /* LoadingView.h */,
+				AA639DB3144A24BF00660E26 /* LoadingView.m */,
+				AA639DB4144A24BF00660E26 /* main.m */,
+				AA639DB5144A24BF00660E26 /* SampleSdkApp Integration Tests-Info.plist */,
+				AA639DB6144A24BF00660E26 /* SampleSdkApp-Info.plist */,
+				AA639DB7144A24BF00660E26 /* SampleSdkApp-Integration-Tests-Prefix.pch */,
+				AA639DB8144A24BF00660E26 /* SampleSdkApp-Prefix.pch */,
+				AA639DBC144A24BF00660E26 /* SampleSdkAppAppDelegate.h */,
+				AA639DBD144A24BF00660E26 /* SampleSdkAppAppDelegate.m */,
+				AA639DBE144A24BF00660E26 /* SocializeApiInfo.plist */,
+				AA639DBF144A24BF00660E26 /* SocializeConfigurationInfo.plist */,
+				AA639DC0144A24BF00660E26 /* StringHelper.h */,
+				AA639DC1144A24BF00660E26 /* StringHelper.m */,
+				AA639DC2144A24BF00660E26 /* TestCreateCommentViewController.h */,
+				AA639DC3144A24BF00660E26 /* TestCreateCommentViewController.m */,
+				AA639DC4144A24BF00660E26 /* TestCreateCommentViewController.xib */,
+				AA639DC5144A24BF00660E26 /* TestCreateEntityViewController.h */,
+				AA639DC6144A24BF00660E26 /* TestCreateEntityViewController.m */,
+				AA639DC7144A24BF00660E26 /* TestCreateEntityViewController.xib */,
+				AA639DC8144A24BF00660E26 /* TestFetchCommentsViewController.h */,
+				AA639DC9144A24BF00660E26 /* TestFetchCommentsViewController.m */,
+				AA639DCA144A24BF00660E26 /* TestFetchCommentsViewController.xib */,
+				AA639DCB144A24BF00660E26 /* TestGetEntityViewController.h */,
+				AA639DCC144A24BF00660E26 /* TestGetEntityViewController.m */,
+				AA639DCD144A24BF00660E26 /* TestGetEntityViewController.xib */,
+				AA639DCE144A24BF00660E26 /* TestLikeViewController.h */,
+				AA639DCF144A24BF00660E26 /* TestLikeViewController.m */,
+				AA639DD0144A24BF00660E26 /* TestLikeViewController.xib */,
+				AA639DD1144A24BF00660E26 /* TestListController.h */,
+				AA639DD2144A24BF00660E26 /* TestListController.m */,
+				AA639DD3144A24BF00660E26 /* TestListController.xib */,
+				AA639E07144A24BF00660E26 /* TestShowSmallUserInfo.h */,
+				AA639E08144A24BF00660E26 /* TestShowSmallUserInfo.m */,
+				AA639E09144A24BF00660E26 /* TestShowSmallUserInfo.xib */,
+				AA639E0A144A24BF00660E26 /* TestSocializeActionBar.h */,
+				AA639E0B144A24BF00660E26 /* TestSocializeActionBar.m */,
+				AA639E0C144A24BF00660E26 /* TestSocializeActionBar.xib */,
+				AA639E0D144A24BF00660E26 /* TestViewCreationViewController.h */,
+				AA639E0E144A24BF00660E26 /* TestViewCreationViewController.m */,
+				AA639E0F144A24BF00660E26 /* TestViewCreationViewController.xib */,
+				AA639E10144A24BF00660E26 /* UIButton+Socialize.h */,
+				AA639E11144A24BF00660E26 /* UIButton+Socialize.m */,
+				AA639E12144A24BF00660E26 /* UILabel-Additions.h */,
+				AA639E13144A24BF00660E26 /* UILabel-Additions.m */,
+				AA639E14144A24BF00660E26 /* urls.plist */,
+				AA639E15144A24BF00660E26 /* UserProfileViewController.h */,
+				AA639E16144A24BF00660E26 /* UserProfileViewController.m */,
+				AA639E17144A24BF00660E26 /* UserProfileViewController.xib */,
+			);
+			name = SampleSdkApp;
+			sourceTree = "<group>";
+		};
+		AA639F5D144A290400660E26 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA639F5E144A290400660E26 /* AppKit.framework */,
+				AA639F5F144A290400660E26 /* CoreData.framework */,
+				AA639F60144A290400660E26 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		AA8636BA144CA0A200CFA759 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				AA8636BB144CA0A200CFA759 /* GHUnit */,
+				AA8636C0144CA0A200CFA759 /* KIF */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		AA8636BB144CA0A200CFA759 /* GHUnit */ = {
+			isa = PBXGroup;
+			children = (
+				AA8636BC144CA0A200CFA759 /* AuthTest.h */,
+				AA8636BD144CA0A200CFA759 /* AuthTest.m */,
+				AA8636BE144CA0A200CFA759 /* SocializeAsyncTestCase.h */,
+				AA8636BF144CA0A200CFA759 /* SocializeAsyncTestCase.m */,
+			);
+			path = GHUnit;
+			sourceTree = "<group>";
+		};
+		AA8636C0144CA0A200CFA759 /* KIF */ = {
+			isa = PBXGroup;
+			children = (
+				AA8636C1144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.h */,
+				AA8636C2144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m */,
+				AA8636C3144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.h */,
+				AA8636C4144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m */,
+				AA8636C5144CA0A200CFA759 /* SampleSdkAppKIFTestController.h */,
+				AA8636C6144CA0A200CFA759 /* SampleSdkAppKIFTestController.m */,
+			);
+			path = KIF;
+			sourceTree = "<group>";
+		};
+		AA8636CD144CA0DB00CFA759 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA8636D4144CA0DB00CFA759 /* libKIF.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA8636D8144CA22700CFA759 /* Socialize.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				AA8636D9144CA22700CFA759 /* Resources */,
+				AA863744144CA22700CFA759 /* Socialize.framework */,
+			);
+			name = Socialize.embeddedframework;
+			path = ../build/Socialize.embeddedframework;
+			sourceTree = "<group>";
+		};
+		AA8636D9144CA22700CFA759 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA8636DA144CA22700CFA759 /* action-bar-bg.png */,
+				AA8636DB144CA22700CFA759 /* action-bar-bg@2x.png */,
+				AA8636DC144CA22700CFA759 /* action-bar-button-black-hover.png */,
+				AA8636DD144CA22700CFA759 /* action-bar-button-black-hover@2x.png */,
+				AA8636DE144CA22700CFA759 /* action-bar-button-black.png */,
+				AA8636DF144CA22700CFA759 /* action-bar-button-black@2x.png */,
+				AA8636E0144CA22700CFA759 /* action-bar-button-red-hover.png */,
+				AA8636E1144CA22700CFA759 /* action-bar-button-red-hover@2x.png */,
+				AA8636E2144CA22700CFA759 /* action-bar-button-red.png */,
+				AA8636E3144CA22700CFA759 /* action-bar-button-red@2x.png */,
+				AA8636E4144CA22700CFA759 /* action-bar-icon-comments.png */,
+				AA8636E5144CA22700CFA759 /* action-bar-icon-comments@2x.png */,
+				AA8636E6144CA22700CFA759 /* action-bar-icon-like.png */,
+				AA8636E7144CA22700CFA759 /* action-bar-icon-like@2x.png */,
+				AA8636E8144CA22700CFA759 /* action-bar-icon-liked.png */,
+				AA8636E9144CA22700CFA759 /* action-bar-icon-liked@2x.png */,
+				AA8636EA144CA22700CFA759 /* action-bar-icon-share.png */,
+				AA8636EB144CA22700CFA759 /* action-bar-icon-share@2x.png */,
+				AA8636EC144CA22700CFA759 /* action-bar-icon-views.png */,
+				AA8636ED144CA22700CFA759 /* action-bar-icon-views@2x.png */,
+				AA8636EE144CA22700CFA759 /* background_brushed_metal@2x.png */,
+				AA8636EF144CA22700CFA759 /* comment-bg.png */,
+				AA8636F0144CA22700CFA759 /* comment-bg@2x.png */,
+				AA8636F1144CA22700CFA759 /* comment-sm-icon.png */,
+				AA8636F2144CA22700CFA759 /* comment-sm-icon@2x.png */,
+				AA8636F3144CA22700CFA759 /* comment_template_clear.htm */,
+				AA8636F4144CA22700CFA759 /* comments-cell-bg-borders.png */,
+				AA8636F5144CA22700CFA759 /* comments-cell-bg-borders@2x.png */,
+				AA8636F6144CA22700CFA759 /* CommentsTableViewCell.xib */,
+				AA8636F7144CA22700CFA759 /* socialize-activity-bg.png */,
+				AA8636F8144CA22700CFA759 /* socialize-activity-bg@2x.png */,
+				AA8636F9144CA22700CFA759 /* socialize-cell-arrow.png */,
+				AA8636FA144CA22700CFA759 /* socialize-cell-arrow@2x.png */,
+				AA8636FB144CA22700CFA759 /* socialize-cell-bg.png */,
+				AA8636FC144CA22700CFA759 /* socialize-cell-bg@2x.png */,
+				AA8636FD144CA22700CFA759 /* socialize-cell-image-bg.png */,
+				AA8636FE144CA22700CFA759 /* socialize-cell-image-bg@2x.png */,
+				AA8636FF144CA22700CFA759 /* socialize-cell-image-default.png */,
+				AA863700144CA22700CFA759 /* socialize-cell-image-default@2x.png */,
+				AA863701144CA22700CFA759 /* socialize-cell-image.png */,
+				AA863702144CA22700CFA759 /* socialize-cell-image@2x.png */,
+				AA863703144CA22700CFA759 /* socialize-cell-selected-bg.png */,
+				AA863704144CA22700CFA759 /* socialize-cell-selected-bg@2x.png */,
+				AA863705144CA22700CFA759 /* socialize-comment-background-text-input.png */,
+				AA863706144CA22700CFA759 /* socialize-comment-background-text-input@2x.png */,
+				AA863707144CA22700CFA759 /* socialize-comment-button-active.png */,
+				AA863708144CA22700CFA759 /* socialize-comment-button-active@2x.png */,
+				AA863709144CA22700CFA759 /* socialize-comment-button.png */,
+				AA86370A144CA22700CFA759 /* socialize-comment-button@2x.png */,
+				AA86370B144CA22700CFA759 /* socialize-comment-detail-bottom-shadow-background.png */,
+				AA86370C144CA22700CFA759 /* socialize-comment-detail-bottom-shadow-background@2x.png */,
+				AA86370D144CA22700CFA759 /* socialize-comment-details-icon-geo-disabled.png */,
+				AA86370E144CA22700CFA759 /* socialize-comment-details-icon-geo-disabled@2x.png */,
+				AA86370F144CA22700CFA759 /* socialize-comment-details-icon-geo-enabled.png */,
+				AA863710144CA22700CFA759 /* socialize-comment-details-icon-geo-enabled@2x.png */,
+				AA863711144CA22700CFA759 /* socialize-comment-list-view-location-pin-icon.png */,
+				AA863712144CA22700CFA759 /* socialize-comment-list-view-location-pin-icon@2x.png */,
+				AA863713144CA22700CFA759 /* socialize-comment-location-bar-background.png */,
+				AA863714144CA22700CFA759 /* socialize-comment-location-bar-background@2x.png */,
+				AA863715144CA22700CFA759 /* socialize-comment-location-disabled.png */,
+				AA863716144CA22700CFA759 /* socialize-comment-location-disabled@2x.png */,
+				AA863717144CA22700CFA759 /* socialize-comment-location-enabled.png */,
+				AA863718144CA22700CFA759 /* socialize-comment-location-enabled@2x.png */,
+				AA863719144CA22700CFA759 /* socialize-comment-user-background.png */,
+				AA86371A144CA22700CFA759 /* socialize-comment-user-background@2x.png */,
+				AA86371B144CA22700CFA759 /* socialize-location-icon.png */,
+				AA86371C144CA22700CFA759 /* socialize-navbar-bg.png */,
+				AA86371D144CA22700CFA759 /* socialize-navbar-bg@2x.png */,
+				AA86371E144CA22700CFA759 /* socialize-navbar-button-back-pressed.png */,
+				AA86371F144CA22700CFA759 /* socialize-navbar-button-back-pressed@2x.png */,
+				AA863720144CA22700CFA759 /* socialize-navbar-button-back.png */,
+				AA863721144CA22700CFA759 /* socialize-navbar-button-back@2x.png */,
+				AA863722144CA22700CFA759 /* socialize-navbar-button-blue-bg-highlighted.png */,
+				AA863723144CA22700CFA759 /* socialize-navbar-button-blue-bg-highlighted@2x.png */,
+				AA863724144CA22700CFA759 /* socialize-navbar-button-blue-bg-normal.png */,
+				AA863725144CA22700CFA759 /* socialize-navbar-button-blue-bg-normal@2x.png */,
+				AA863726144CA22700CFA759 /* socialize-navbar-button-dark-active.png */,
+				AA863727144CA22700CFA759 /* socialize-navbar-button-dark-active@2x.png */,
+				AA863728144CA22700CFA759 /* socialize-navbar-button-dark.png */,
+				AA863729144CA22700CFA759 /* socialize-navbar-button-dark@2x.png */,
+				AA86372A144CA22700CFA759 /* socialize-navbar-button-green-active.png */,
+				AA86372B144CA22700CFA759 /* socialize-navbar-button-green-active@2x.png */,
+				AA86372C144CA22700CFA759 /* socialize-navbar-button-green.png */,
+				AA86372D144CA22700CFA759 /* socialize-navbar-button-green@2x.png */,
+				AA86372E144CA22700CFA759 /* socialize-navbar-button-red-active.png */,
+				AA86372F144CA22700CFA759 /* socialize-navbar-button-red-active@2x.png */,
+				AA863730144CA22700CFA759 /* socialize-navbar-button-red.png */,
+				AA863731144CA22700CFA759 /* socialize-navbar-button-red@2x.png */,
+				AA863732144CA22700CFA759 /* socialize-nocomments-icon.png */,
+				AA863733144CA22700CFA759 /* socialize-nocomments-icon@2x.png */,
+				AA863734144CA22700CFA759 /* socialize-profileimage-large-bg.png */,
+				AA863735144CA22700CFA759 /* socialize-profileimage-large-bg@2x.png */,
+				AA863736144CA22700CFA759 /* socialize-profileimage-large-default.png */,
+				AA863737144CA22700CFA759 /* socialize-profileimage-large-default@2x.png */,
+				AA863738144CA22700CFA759 /* socialize-sectionheader-bg.png */,
+				AA863739144CA22700CFA759 /* socialize-sectionheader-bg@2x.png */,
+				AA86373A144CA22700CFA759 /* SocializeCommentDetailsViewController.xib */,
+				AA86373B144CA22700CFA759 /* SocializeCommentsTableViewController.xib */,
+				AA86373C144CA22700CFA759 /* SocializeConfigurationInfo.plist */,
+				AA86373D144CA22700CFA759 /* SocializeEditValueTableViewCell.xib */,
+				AA86373E144CA22700CFA759 /* SocializePostCommentViewController.xib */,
+				AA86373F144CA22700CFA759 /* SocializeProfileEditTableViewCell.xib */,
+				AA863740144CA22700CFA759 /* SocializeProfileEditTableViewImageCell.xib */,
+				AA863741144CA22700CFA759 /* SocializeProfileEditValueController.xib */,
+				AA863742144CA22700CFA759 /* SocializeProfileEditViewController.xib */,
+				AA863743144CA22700CFA759 /* SocializeProfileViewController.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA2DA2261435437400C62B97 /* SampleSdkApp Integration Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA2DA2C31435437400C62B97 /* Build configuration list for PBXNativeTarget "SampleSdkApp Integration Tests" */;
+			buildPhases = (
+				AA171BCE14354CCD0056D65F /* Build Socialize Framework Using xcodebuild */,
+				AA2DA2271435437400C62B97 /* Sources */,
+				AA2DA2411435437400C62B97 /* Frameworks */,
+				AA2DA24B1435437400C62B97 /* Resources */,
+				AA2DA2CE1435461700C62B97 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA2025A6144CB219006C1F8F /* PBXTargetDependency */,
+			);
+			name = "SampleSdkApp Integration Tests";
+			productName = SampleSdkApp;
+			productReference = AA2DA2C61435437400C62B97 /* SampleSdkApp Integration Tests.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA8637C2144CA28300CFA759 /* SampleSdkApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA863866144CA28300CFA759 /* Build configuration list for PBXNativeTarget "SampleSdkApp" */;
+			buildPhases = (
+				AA8637C3144CA28300CFA759 /* Build Socialize Framework Using xcodebuild */,
+				AA8637C4144CA28300CFA759 /* Sources */,
+				AA8637DF144CA28300CFA759 /* Frameworks */,
+				AA8637E9144CA28300CFA759 /* Resources */,
+				AA863865144CA28300CFA759 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA2025B4144CB273006C1F8F /* PBXTargetDependency */,
+			);
+			name = SampleSdkApp;
+			productName = SampleSdkApp;
+			productReference = AA863869144CA28300CFA759 /* SampleSdkApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA2D9E6014352BC100C62B97 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = AA2D9E6314352BC100C62B97 /* Build configuration list for PBXProject "SampleSdkApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AA2D9E5E14352BC100C62B97;
+			productRefGroup = AA2D9E6A14352BC100C62B97 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AA8636CD144CA0DB00CFA759 /* Products */;
+					ProjectRef = AA8636CC144CA0DB00CFA759 /* KIF.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				AA2DA2261435437400C62B97 /* SampleSdkApp Integration Tests */,
+				AA8637C2144CA28300CFA759 /* SampleSdkApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AA8636D4144CA0DB00CFA759 /* libKIF.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKIF.a;
+			remoteRef = AA8636D3144CA0DB00CFA759 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA2DA24B1435437400C62B97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA639E19144A24C000660E26 /* AuthenticateViewController.xib in Resources */,
+				AA639E1D144A24C000660E26 /* InfoPlist.strings in Resources */,
+				AA639E1E144A24C000660E26 /* MainWindow.xib in Resources */,
+				AA639E21144A24C000660E26 /* LikeListViewController.xib in Resources */,
+				AA639E27144A24C000660E26 /* SocializeApiInfo.plist in Resources */,
+				AA639E28144A24C000660E26 /* SocializeConfigurationInfo.plist in Resources */,
+				AA639E2B144A24C000660E26 /* TestCreateCommentViewController.xib in Resources */,
+				AA639E2D144A24C000660E26 /* TestCreateEntityViewController.xib in Resources */,
+				AA639E2F144A24C000660E26 /* TestFetchCommentsViewController.xib in Resources */,
+				AA639E31144A24C000660E26 /* TestGetEntityViewController.xib in Resources */,
+				AA639E33144A24C000660E26 /* TestLikeViewController.xib in Resources */,
+				AA639E35144A24C000660E26 /* TestListController.xib in Resources */,
+				AA639E5B144A24C000660E26 /* TestShowSmallUserInfo.xib in Resources */,
+				AA639E5D144A24C000660E26 /* TestSocializeActionBar.xib in Resources */,
+				AA639E5F144A24C000660E26 /* TestViewCreationViewController.xib in Resources */,
+				AA639E62144A24C000660E26 /* urls.plist in Resources */,
+				AA639E64144A24C000660E26 /* UserProfileViewController.xib in Resources */,
+				AA863745144CA22800CFA759 /* action-bar-bg.png in Resources */,
+				AA863746144CA22800CFA759 /* action-bar-bg@2x.png in Resources */,
+				AA863747144CA22800CFA759 /* action-bar-button-black-hover.png in Resources */,
+				AA863748144CA22800CFA759 /* action-bar-button-black-hover@2x.png in Resources */,
+				AA863749144CA22800CFA759 /* action-bar-button-black.png in Resources */,
+				AA86374A144CA22800CFA759 /* action-bar-button-black@2x.png in Resources */,
+				AA86374B144CA22800CFA759 /* action-bar-button-red-hover.png in Resources */,
+				AA86374C144CA22800CFA759 /* action-bar-button-red-hover@2x.png in Resources */,
+				AA86374D144CA22800CFA759 /* action-bar-button-red.png in Resources */,
+				AA86374E144CA22800CFA759 /* action-bar-button-red@2x.png in Resources */,
+				AA86374F144CA22800CFA759 /* action-bar-icon-comments.png in Resources */,
+				AA863750144CA22800CFA759 /* action-bar-icon-comments@2x.png in Resources */,
+				AA863751144CA22800CFA759 /* action-bar-icon-like.png in Resources */,
+				AA863752144CA22800CFA759 /* action-bar-icon-like@2x.png in Resources */,
+				AA863753144CA22800CFA759 /* action-bar-icon-liked.png in Resources */,
+				AA863754144CA22800CFA759 /* action-bar-icon-liked@2x.png in Resources */,
+				AA863755144CA22800CFA759 /* action-bar-icon-share.png in Resources */,
+				AA863756144CA22800CFA759 /* action-bar-icon-share@2x.png in Resources */,
+				AA863757144CA22800CFA759 /* action-bar-icon-views.png in Resources */,
+				AA863758144CA22800CFA759 /* action-bar-icon-views@2x.png in Resources */,
+				AA863759144CA22800CFA759 /* background_brushed_metal@2x.png in Resources */,
+				AA86375A144CA22800CFA759 /* comment-bg.png in Resources */,
+				AA86375B144CA22800CFA759 /* comment-bg@2x.png in Resources */,
+				AA86375C144CA22800CFA759 /* comment-sm-icon.png in Resources */,
+				AA86375D144CA22800CFA759 /* comment-sm-icon@2x.png in Resources */,
+				AA86375E144CA22800CFA759 /* comment_template_clear.htm in Resources */,
+				AA86375F144CA22800CFA759 /* comments-cell-bg-borders.png in Resources */,
+				AA863760144CA22800CFA759 /* comments-cell-bg-borders@2x.png in Resources */,
+				AA863761144CA22800CFA759 /* CommentsTableViewCell.xib in Resources */,
+				AA863762144CA22800CFA759 /* socialize-activity-bg.png in Resources */,
+				AA863763144CA22800CFA759 /* socialize-activity-bg@2x.png in Resources */,
+				AA863764144CA22800CFA759 /* socialize-cell-arrow.png in Resources */,
+				AA863765144CA22800CFA759 /* socialize-cell-arrow@2x.png in Resources */,
+				AA863766144CA22800CFA759 /* socialize-cell-bg.png in Resources */,
+				AA863767144CA22800CFA759 /* socialize-cell-bg@2x.png in Resources */,
+				AA863768144CA22800CFA759 /* socialize-cell-image-bg.png in Resources */,
+				AA863769144CA22800CFA759 /* socialize-cell-image-bg@2x.png in Resources */,
+				AA86376A144CA22800CFA759 /* socialize-cell-image-default.png in Resources */,
+				AA86376B144CA22800CFA759 /* socialize-cell-image-default@2x.png in Resources */,
+				AA86376C144CA22800CFA759 /* socialize-cell-image.png in Resources */,
+				AA86376D144CA22800CFA759 /* socialize-cell-image@2x.png in Resources */,
+				AA86376E144CA22800CFA759 /* socialize-cell-selected-bg.png in Resources */,
+				AA86376F144CA22800CFA759 /* socialize-cell-selected-bg@2x.png in Resources */,
+				AA863770144CA22800CFA759 /* socialize-comment-background-text-input.png in Resources */,
+				AA863771144CA22800CFA759 /* socialize-comment-background-text-input@2x.png in Resources */,
+				AA863772144CA22800CFA759 /* socialize-comment-button-active.png in Resources */,
+				AA863773144CA22800CFA759 /* socialize-comment-button-active@2x.png in Resources */,
+				AA863774144CA22800CFA759 /* socialize-comment-button.png in Resources */,
+				AA863775144CA22800CFA759 /* socialize-comment-button@2x.png in Resources */,
+				AA863776144CA22800CFA759 /* socialize-comment-detail-bottom-shadow-background.png in Resources */,
+				AA863777144CA22800CFA759 /* socialize-comment-detail-bottom-shadow-background@2x.png in Resources */,
+				AA863778144CA22800CFA759 /* socialize-comment-details-icon-geo-disabled.png in Resources */,
+				AA863779144CA22800CFA759 /* socialize-comment-details-icon-geo-disabled@2x.png in Resources */,
+				AA86377A144CA22800CFA759 /* socialize-comment-details-icon-geo-enabled.png in Resources */,
+				AA86377B144CA22800CFA759 /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */,
+				AA86377C144CA22800CFA759 /* socialize-comment-list-view-location-pin-icon.png in Resources */,
+				AA86377D144CA22800CFA759 /* socialize-comment-list-view-location-pin-icon@2x.png in Resources */,
+				AA86377E144CA22800CFA759 /* socialize-comment-location-bar-background.png in Resources */,
+				AA86377F144CA22800CFA759 /* socialize-comment-location-bar-background@2x.png in Resources */,
+				AA863780144CA22800CFA759 /* socialize-comment-location-disabled.png in Resources */,
+				AA863781144CA22800CFA759 /* socialize-comment-location-disabled@2x.png in Resources */,
+				AA863782144CA22800CFA759 /* socialize-comment-location-enabled.png in Resources */,
+				AA863783144CA22800CFA759 /* socialize-comment-location-enabled@2x.png in Resources */,
+				AA863784144CA22800CFA759 /* socialize-comment-user-background.png in Resources */,
+				AA863785144CA22800CFA759 /* socialize-comment-user-background@2x.png in Resources */,
+				AA863786144CA22800CFA759 /* socialize-location-icon.png in Resources */,
+				AA863787144CA22800CFA759 /* socialize-navbar-bg.png in Resources */,
+				AA863788144CA22800CFA759 /* socialize-navbar-bg@2x.png in Resources */,
+				AA863789144CA22800CFA759 /* socialize-navbar-button-back-pressed.png in Resources */,
+				AA86378A144CA22800CFA759 /* socialize-navbar-button-back-pressed@2x.png in Resources */,
+				AA86378B144CA22800CFA759 /* socialize-navbar-button-back.png in Resources */,
+				AA86378C144CA22800CFA759 /* socialize-navbar-button-back@2x.png in Resources */,
+				AA86378D144CA22800CFA759 /* socialize-navbar-button-blue-bg-highlighted.png in Resources */,
+				AA86378E144CA22800CFA759 /* socialize-navbar-button-blue-bg-highlighted@2x.png in Resources */,
+				AA86378F144CA22800CFA759 /* socialize-navbar-button-blue-bg-normal.png in Resources */,
+				AA863790144CA22800CFA759 /* socialize-navbar-button-blue-bg-normal@2x.png in Resources */,
+				AA863791144CA22800CFA759 /* socialize-navbar-button-dark-active.png in Resources */,
+				AA863792144CA22800CFA759 /* socialize-navbar-button-dark-active@2x.png in Resources */,
+				AA863793144CA22800CFA759 /* socialize-navbar-button-dark.png in Resources */,
+				AA863794144CA22800CFA759 /* socialize-navbar-button-dark@2x.png in Resources */,
+				AA863795144CA22800CFA759 /* socialize-navbar-button-green-active.png in Resources */,
+				AA863796144CA22800CFA759 /* socialize-navbar-button-green-active@2x.png in Resources */,
+				AA863797144CA22800CFA759 /* socialize-navbar-button-green.png in Resources */,
+				AA863798144CA22800CFA759 /* socialize-navbar-button-green@2x.png in Resources */,
+				AA863799144CA22800CFA759 /* socialize-navbar-button-red-active.png in Resources */,
+				AA86379A144CA22800CFA759 /* socialize-navbar-button-red-active@2x.png in Resources */,
+				AA86379B144CA22800CFA759 /* socialize-navbar-button-red.png in Resources */,
+				AA86379C144CA22800CFA759 /* socialize-navbar-button-red@2x.png in Resources */,
+				AA86379D144CA22800CFA759 /* socialize-nocomments-icon.png in Resources */,
+				AA86379E144CA22800CFA759 /* socialize-nocomments-icon@2x.png in Resources */,
+				AA86379F144CA22800CFA759 /* socialize-profileimage-large-bg.png in Resources */,
+				AA8637A0144CA22800CFA759 /* socialize-profileimage-large-bg@2x.png in Resources */,
+				AA8637A1144CA22800CFA759 /* socialize-profileimage-large-default.png in Resources */,
+				AA8637A2144CA22800CFA759 /* socialize-profileimage-large-default@2x.png in Resources */,
+				AA8637A3144CA22800CFA759 /* socialize-sectionheader-bg.png in Resources */,
+				AA8637A4144CA22800CFA759 /* socialize-sectionheader-bg@2x.png in Resources */,
+				AA8637A5144CA22800CFA759 /* SocializeCommentDetailsViewController.xib in Resources */,
+				AA8637A6144CA22800CFA759 /* SocializeCommentsTableViewController.xib in Resources */,
+				AA8637A8144CA22800CFA759 /* SocializeEditValueTableViewCell.xib in Resources */,
+				AA8637A9144CA22800CFA759 /* SocializePostCommentViewController.xib in Resources */,
+				AA8637AA144CA22800CFA759 /* SocializeProfileEditTableViewCell.xib in Resources */,
+				AA8637AB144CA22800CFA759 /* SocializeProfileEditTableViewImageCell.xib in Resources */,
+				AA8637AC144CA22800CFA759 /* SocializeProfileEditValueController.xib in Resources */,
+				AA8637AD144CA22800CFA759 /* SocializeProfileEditViewController.xib in Resources */,
+				AA8637AE144CA22800CFA759 /* SocializeProfileViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA8637E9144CA28300CFA759 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA8637EA144CA28300CFA759 /* AuthenticateViewController.xib in Resources */,
+				AA8637EB144CA28300CFA759 /* InfoPlist.strings in Resources */,
+				AA8637EC144CA28300CFA759 /* MainWindow.xib in Resources */,
+				AA8637ED144CA28300CFA759 /* LikeListViewController.xib in Resources */,
+				AA8637EE144CA28300CFA759 /* SocializeApiInfo.plist in Resources */,
+				AA8637EF144CA28300CFA759 /* SocializeConfigurationInfo.plist in Resources */,
+				AA8637F0144CA28300CFA759 /* TestCreateCommentViewController.xib in Resources */,
+				AA8637F1144CA28300CFA759 /* TestCreateEntityViewController.xib in Resources */,
+				AA8637F2144CA28300CFA759 /* TestFetchCommentsViewController.xib in Resources */,
+				AA8637F3144CA28300CFA759 /* TestGetEntityViewController.xib in Resources */,
+				AA8637F4144CA28300CFA759 /* TestLikeViewController.xib in Resources */,
+				AA8637F5144CA28300CFA759 /* TestListController.xib in Resources */,
+				AA8637F6144CA28300CFA759 /* TestShowSmallUserInfo.xib in Resources */,
+				AA8637F7144CA28300CFA759 /* TestSocializeActionBar.xib in Resources */,
+				AA8637F8144CA28300CFA759 /* TestViewCreationViewController.xib in Resources */,
+				AA8637F9144CA28300CFA759 /* urls.plist in Resources */,
+				AA8637FA144CA28300CFA759 /* UserProfileViewController.xib in Resources */,
+				AA8637FB144CA28300CFA759 /* action-bar-bg.png in Resources */,
+				AA8637FC144CA28300CFA759 /* action-bar-bg@2x.png in Resources */,
+				AA8637FD144CA28300CFA759 /* action-bar-button-black-hover.png in Resources */,
+				AA8637FE144CA28300CFA759 /* action-bar-button-black-hover@2x.png in Resources */,
+				AA8637FF144CA28300CFA759 /* action-bar-button-black.png in Resources */,
+				AA863800144CA28300CFA759 /* action-bar-button-black@2x.png in Resources */,
+				AA863801144CA28300CFA759 /* action-bar-button-red-hover.png in Resources */,
+				AA863802144CA28300CFA759 /* action-bar-button-red-hover@2x.png in Resources */,
+				AA863803144CA28300CFA759 /* action-bar-button-red.png in Resources */,
+				AA863804144CA28300CFA759 /* action-bar-button-red@2x.png in Resources */,
+				AA863805144CA28300CFA759 /* action-bar-icon-comments.png in Resources */,
+				AA863806144CA28300CFA759 /* action-bar-icon-comments@2x.png in Resources */,
+				AA863807144CA28300CFA759 /* action-bar-icon-like.png in Resources */,
+				AA863808144CA28300CFA759 /* action-bar-icon-like@2x.png in Resources */,
+				AA863809144CA28300CFA759 /* action-bar-icon-liked.png in Resources */,
+				AA86380A144CA28300CFA759 /* action-bar-icon-liked@2x.png in Resources */,
+				AA86380B144CA28300CFA759 /* action-bar-icon-share.png in Resources */,
+				AA86380C144CA28300CFA759 /* action-bar-icon-share@2x.png in Resources */,
+				AA86380D144CA28300CFA759 /* action-bar-icon-views.png in Resources */,
+				AA86380E144CA28300CFA759 /* action-bar-icon-views@2x.png in Resources */,
+				AA86380F144CA28300CFA759 /* background_brushed_metal@2x.png in Resources */,
+				AA863810144CA28300CFA759 /* comment-bg.png in Resources */,
+				AA863811144CA28300CFA759 /* comment-bg@2x.png in Resources */,
+				AA863812144CA28300CFA759 /* comment-sm-icon.png in Resources */,
+				AA863813144CA28300CFA759 /* comment-sm-icon@2x.png in Resources */,
+				AA863814144CA28300CFA759 /* comment_template_clear.htm in Resources */,
+				AA863815144CA28300CFA759 /* comments-cell-bg-borders.png in Resources */,
+				AA863816144CA28300CFA759 /* comments-cell-bg-borders@2x.png in Resources */,
+				AA863817144CA28300CFA759 /* CommentsTableViewCell.xib in Resources */,
+				AA863818144CA28300CFA759 /* socialize-activity-bg.png in Resources */,
+				AA863819144CA28300CFA759 /* socialize-activity-bg@2x.png in Resources */,
+				AA86381A144CA28300CFA759 /* socialize-cell-arrow.png in Resources */,
+				AA86381B144CA28300CFA759 /* socialize-cell-arrow@2x.png in Resources */,
+				AA86381C144CA28300CFA759 /* socialize-cell-bg.png in Resources */,
+				AA86381D144CA28300CFA759 /* socialize-cell-bg@2x.png in Resources */,
+				AA86381E144CA28300CFA759 /* socialize-cell-image-bg.png in Resources */,
+				AA86381F144CA28300CFA759 /* socialize-cell-image-bg@2x.png in Resources */,
+				AA863820144CA28300CFA759 /* socialize-cell-image-default.png in Resources */,
+				AA863821144CA28300CFA759 /* socialize-cell-image-default@2x.png in Resources */,
+				AA863822144CA28300CFA759 /* socialize-cell-image.png in Resources */,
+				AA863823144CA28300CFA759 /* socialize-cell-image@2x.png in Resources */,
+				AA863824144CA28300CFA759 /* socialize-cell-selected-bg.png in Resources */,
+				AA863825144CA28300CFA759 /* socialize-cell-selected-bg@2x.png in Resources */,
+				AA863826144CA28300CFA759 /* socialize-comment-background-text-input.png in Resources */,
+				AA863827144CA28300CFA759 /* socialize-comment-background-text-input@2x.png in Resources */,
+				AA863828144CA28300CFA759 /* socialize-comment-button-active.png in Resources */,
+				AA863829144CA28300CFA759 /* socialize-comment-button-active@2x.png in Resources */,
+				AA86382A144CA28300CFA759 /* socialize-comment-button.png in Resources */,
+				AA86382B144CA28300CFA759 /* socialize-comment-button@2x.png in Resources */,
+				AA86382C144CA28300CFA759 /* socialize-comment-detail-bottom-shadow-background.png in Resources */,
+				AA86382D144CA28300CFA759 /* socialize-comment-detail-bottom-shadow-background@2x.png in Resources */,
+				AA86382E144CA28300CFA759 /* socialize-comment-details-icon-geo-disabled.png in Resources */,
+				AA86382F144CA28300CFA759 /* socialize-comment-details-icon-geo-disabled@2x.png in Resources */,
+				AA863830144CA28300CFA759 /* socialize-comment-details-icon-geo-enabled.png in Resources */,
+				AA863831144CA28300CFA759 /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */,
+				AA863832144CA28300CFA759 /* socialize-comment-list-view-location-pin-icon.png in Resources */,
+				AA863833144CA28300CFA759 /* socialize-comment-list-view-location-pin-icon@2x.png in Resources */,
+				AA863834144CA28300CFA759 /* socialize-comment-location-bar-background.png in Resources */,
+				AA863835144CA28300CFA759 /* socialize-comment-location-bar-background@2x.png in Resources */,
+				AA863836144CA28300CFA759 /* socialize-comment-location-disabled.png in Resources */,
+				AA863837144CA28300CFA759 /* socialize-comment-location-disabled@2x.png in Resources */,
+				AA863838144CA28300CFA759 /* socialize-comment-location-enabled.png in Resources */,
+				AA863839144CA28300CFA759 /* socialize-comment-location-enabled@2x.png in Resources */,
+				AA86383A144CA28300CFA759 /* socialize-comment-user-background.png in Resources */,
+				AA86383B144CA28300CFA759 /* socialize-comment-user-background@2x.png in Resources */,
+				AA86383C144CA28300CFA759 /* socialize-location-icon.png in Resources */,
+				AA86383D144CA28300CFA759 /* socialize-navbar-bg.png in Resources */,
+				AA86383E144CA28300CFA759 /* socialize-navbar-bg@2x.png in Resources */,
+				AA86383F144CA28300CFA759 /* socialize-navbar-button-back-pressed.png in Resources */,
+				AA863840144CA28300CFA759 /* socialize-navbar-button-back-pressed@2x.png in Resources */,
+				AA863841144CA28300CFA759 /* socialize-navbar-button-back.png in Resources */,
+				AA863842144CA28300CFA759 /* socialize-navbar-button-back@2x.png in Resources */,
+				AA863843144CA28300CFA759 /* socialize-navbar-button-blue-bg-highlighted.png in Resources */,
+				AA863844144CA28300CFA759 /* socialize-navbar-button-blue-bg-highlighted@2x.png in Resources */,
+				AA863845144CA28300CFA759 /* socialize-navbar-button-blue-bg-normal.png in Resources */,
+				AA863846144CA28300CFA759 /* socialize-navbar-button-blue-bg-normal@2x.png in Resources */,
+				AA863847144CA28300CFA759 /* socialize-navbar-button-dark-active.png in Resources */,
+				AA863848144CA28300CFA759 /* socialize-navbar-button-dark-active@2x.png in Resources */,
+				AA863849144CA28300CFA759 /* socialize-navbar-button-dark.png in Resources */,
+				AA86384A144CA28300CFA759 /* socialize-navbar-button-dark@2x.png in Resources */,
+				AA86384B144CA28300CFA759 /* socialize-navbar-button-green-active.png in Resources */,
+				AA86384C144CA28300CFA759 /* socialize-navbar-button-green-active@2x.png in Resources */,
+				AA86384D144CA28300CFA759 /* socialize-navbar-button-green.png in Resources */,
+				AA86384E144CA28300CFA759 /* socialize-navbar-button-green@2x.png in Resources */,
+				AA86384F144CA28300CFA759 /* socialize-navbar-button-red-active.png in Resources */,
+				AA863850144CA28300CFA759 /* socialize-navbar-button-red-active@2x.png in Resources */,
+				AA863851144CA28300CFA759 /* socialize-navbar-button-red.png in Resources */,
+				AA863852144CA28300CFA759 /* socialize-navbar-button-red@2x.png in Resources */,
+				AA863853144CA28300CFA759 /* socialize-nocomments-icon.png in Resources */,
+				AA863854144CA28300CFA759 /* socialize-nocomments-icon@2x.png in Resources */,
+				AA863855144CA28300CFA759 /* socialize-profileimage-large-bg.png in Resources */,
+				AA863856144CA28300CFA759 /* socialize-profileimage-large-bg@2x.png in Resources */,
+				AA863857144CA28300CFA759 /* socialize-profileimage-large-default.png in Resources */,
+				AA863858144CA28300CFA759 /* socialize-profileimage-large-default@2x.png in Resources */,
+				AA863859144CA28300CFA759 /* socialize-sectionheader-bg.png in Resources */,
+				AA86385A144CA28300CFA759 /* socialize-sectionheader-bg@2x.png in Resources */,
+				AA86385B144CA28300CFA759 /* SocializeCommentDetailsViewController.xib in Resources */,
+				AA86385C144CA28300CFA759 /* SocializeCommentsTableViewController.xib in Resources */,
+				AA86385E144CA28300CFA759 /* SocializeEditValueTableViewCell.xib in Resources */,
+				AA86385F144CA28300CFA759 /* SocializePostCommentViewController.xib in Resources */,
+				AA863860144CA28300CFA759 /* SocializeProfileEditTableViewCell.xib in Resources */,
+				AA863861144CA28300CFA759 /* SocializeProfileEditTableViewImageCell.xib in Resources */,
+				AA863862144CA28300CFA759 /* SocializeProfileEditValueController.xib in Resources */,
+				AA863863144CA28300CFA759 /* SocializeProfileEditViewController.xib in Resources */,
+				AA863864144CA28300CFA759 /* SocializeProfileViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AA171BCE14354CCD0056D65F /* Build Socialize Framework Using xcodebuild */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Socialize Framework Using xcodebuild";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ..\nmake framework";
+			showEnvVarsInLog = 0;
+		};
+		AA2DA2CE1435461700C62B97 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/../util/dump-xcode-env.sh";
+			showEnvVarsInLog = 0;
+		};
+		AA8637C3144CA28300CFA759 /* Build Socialize Framework Using xcodebuild */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Socialize Framework Using xcodebuild";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ..\nmake framework";
+			showEnvVarsInLog = 0;
+		};
+		AA863865144CA28300CFA759 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/../util/dump-xcode-env.sh";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA2DA2271435437400C62B97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA639E18144A24C000660E26 /* AuthenticateViewController.m in Sources */,
+				AA639E1A144A24C000660E26 /* CommetsTableView.m in Sources */,
+				AA639E1B144A24C000660E26 /* DataHelper.m in Sources */,
+				AA639E1C144A24C000660E26 /* DemoEntity.m in Sources */,
+				AA639E1F144A24C000660E26 /* InputBox.m in Sources */,
+				AA639E20144A24C000660E26 /* LikeListViewController.m in Sources */,
+				AA639E23144A24C000660E26 /* main.m in Sources */,
+				AA639E26144A24C000660E26 /* SampleSdkAppAppDelegate.m in Sources */,
+				AA639E29144A24C000660E26 /* StringHelper.m in Sources */,
+				AA639E2A144A24C000660E26 /* TestCreateCommentViewController.m in Sources */,
+				AA639E2C144A24C000660E26 /* TestCreateEntityViewController.m in Sources */,
+				AA639E2E144A24C000660E26 /* TestFetchCommentsViewController.m in Sources */,
+				AA639E30144A24C000660E26 /* TestGetEntityViewController.m in Sources */,
+				AA639E32144A24C000660E26 /* TestLikeViewController.m in Sources */,
+				AA639E34144A24C000660E26 /* TestListController.m in Sources */,
+				AA639E5A144A24C000660E26 /* TestShowSmallUserInfo.m in Sources */,
+				AA639E5C144A24C000660E26 /* TestSocializeActionBar.m in Sources */,
+				AA639E5E144A24C000660E26 /* TestViewCreationViewController.m in Sources */,
+				AA639E60144A24C000660E26 /* UIButton+Socialize.m in Sources */,
+				AA639E61144A24C000660E26 /* UILabel-Additions.m in Sources */,
+				AA639E63144A24C000660E26 /* UserProfileViewController.m in Sources */,
+				AA8636C7144CA0A200CFA759 /* AuthTest.m in Sources */,
+				AA8636C8144CA0A200CFA759 /* SocializeAsyncTestCase.m in Sources */,
+				AA8636C9144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */,
+				AA8636CA144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
+				AA8636CB144CA0A200CFA759 /* SampleSdkAppKIFTestController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA8637C4144CA28300CFA759 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA8637C5144CA28300CFA759 /* AuthenticateViewController.m in Sources */,
+				AA8637C6144CA28300CFA759 /* CommetsTableView.m in Sources */,
+				AA8637C7144CA28300CFA759 /* DataHelper.m in Sources */,
+				AA8637C8144CA28300CFA759 /* DemoEntity.m in Sources */,
+				AA8637C9144CA28300CFA759 /* InputBox.m in Sources */,
+				AA8637CA144CA28300CFA759 /* LikeListViewController.m in Sources */,
+				AA8637CB144CA28300CFA759 /* main.m in Sources */,
+				AA8637CC144CA28300CFA759 /* SampleSdkAppAppDelegate.m in Sources */,
+				AA8637CD144CA28300CFA759 /* StringHelper.m in Sources */,
+				AA8637CE144CA28300CFA759 /* TestCreateCommentViewController.m in Sources */,
+				AA8637CF144CA28300CFA759 /* TestCreateEntityViewController.m in Sources */,
+				AA8637D0144CA28300CFA759 /* TestFetchCommentsViewController.m in Sources */,
+				AA8637D1144CA28300CFA759 /* TestGetEntityViewController.m in Sources */,
+				AA8637D2144CA28300CFA759 /* TestLikeViewController.m in Sources */,
+				AA8637D3144CA28300CFA759 /* TestListController.m in Sources */,
+				AA8637D4144CA28300CFA759 /* TestShowSmallUserInfo.m in Sources */,
+				AA8637D5144CA28300CFA759 /* TestSocializeActionBar.m in Sources */,
+				AA8637D6144CA28300CFA759 /* TestViewCreationViewController.m in Sources */,
+				AA8637D7144CA28300CFA759 /* UIButton+Socialize.m in Sources */,
+				AA8637D8144CA28300CFA759 /* UILabel-Additions.m in Sources */,
+				AA8637D9144CA28300CFA759 /* UserProfileViewController.m in Sources */,
+				AA8637DA144CA28300CFA759 /* AuthTest.m in Sources */,
+				AA8637DB144CA28300CFA759 /* SocializeAsyncTestCase.m in Sources */,
+				AA8637DC144CA28300CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */,
+				AA8637DD144CA28300CFA759 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
+				AA8637DE144CA28300CFA759 /* SampleSdkAppKIFTestController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA2025A6144CB219006C1F8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KIF;
+			targetProxy = AA2025A5144CB219006C1F8F /* PBXContainerItemProxy */;
+		};
+		AA2025B4144CB273006C1F8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KIF;
+			targetProxy = AA2025B3144CB273006C1F8F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AA639DA9144A24BF00660E26 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA639DAA144A24BF00660E26 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AA639DAB144A24BF00660E26 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA639DAC144A24BF00660E26 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AA2D9E8214352BC100C62B97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+					"-lgcov",
+				);
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AA2D9E8314352BC100C62B97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+					"-lgcov",
+				);
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA2DA2C41435437400C62B97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Frameworks\"",
+					"\"$(SRCROOT)/../build/Socialize.embeddedframework\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleSdkApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"RUN_KIF_TESTS=1",
+					"RUN_GHUNIT_TESTS=1",
+					"DEBUG=1",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Frameworks/KIF/\"/**";
+				INFOPLIST_FILE = "SampleSdkApp Integration Tests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "SampleSdkApp Integration Tests";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AA2DA2C51435437400C62B97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Frameworks\"",
+					"\"$(SRCROOT)/../build/Socialize.embeddedframework\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleSdkApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"RUN_GHUNIT_TESTS=1",
+					"RUN_KIF_TESTS=1",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Frameworks/KIF/\"/**";
+				INFOPLIST_FILE = "SampleSdkApp Integration Tests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "SampleSdkApp Integration Tests";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		AA863867144CA28300CFA759 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Frameworks\"",
+					"\"$(SRCROOT)/../build/Socialize.embeddedframework\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleSdkApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Frameworks/KIF/\"/**";
+				INFOPLIST_FILE = "SampleSdkApp-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = SampleSdkApp;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AA863868144CA28300CFA759 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Frameworks\"",
+					"\"$(SRCROOT)/../build/Socialize.embeddedframework\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleSdkApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Frameworks/KIF/\"/**";
+				INFOPLIST_FILE = "SampleSdkApp-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = SampleSdkApp;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA2D9E6314352BC100C62B97 /* Build configuration list for PBXProject "SampleSdkApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA2D9E8214352BC100C62B97 /* Debug */,
+				AA2D9E8314352BC100C62B97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA2DA2C31435437400C62B97 /* Build configuration list for PBXNativeTarget "SampleSdkApp Integration Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA2DA2C41435437400C62B97 /* Debug */,
+				AA2DA2C51435437400C62B97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA863866144CA28300CFA759 /* Build configuration list for PBXNativeTarget "SampleSdkApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA863867144CA28300CFA759 /* Debug */,
+				AA863868144CA28300CFA759 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA2D9E6014352BC100C62B97 /* Project object */;
+}
