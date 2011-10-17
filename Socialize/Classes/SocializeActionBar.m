@@ -53,8 +53,6 @@
 {
     SocializeActionBar* bar = [[[SocializeActionBar alloc] initWithParantViewSize:parentController.view.bounds.size andEntiryUrl:url] autorelease];
     bar.parentViewController = parentController;
-    
-    [parentController addObserver:self forKeyPath:@'viewWillAppear" options:(NSKeyValueObservingOptions)options context:(void *)context
     return bar;
 }
 
@@ -217,7 +215,7 @@
 }
 
 -(void)incrementViewCount {
-    //this is just a convience function
+    //convienence method
     [self viewWillAppear:YES];
 }
 -(void)afterAnonymouslyLoginAction

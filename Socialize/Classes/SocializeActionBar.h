@@ -52,4 +52,5 @@
 
 -(id)initWithParantViewSize:(CGSize)parentViewSize andEntiryUrl:(NSString*)url;
 -(id)initWithParantViewSize:(CGSize)parentViewSize andEntiry:(id<SocializeEntity>)entity;
+-(void)incrementViewCount;
 @end

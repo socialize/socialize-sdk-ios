@@ -62,7 +62,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [bar viewWillAppear:animated];
+    [bar incrementViewCount];
 }
 
 - (void)viewDidLoad

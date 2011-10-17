@@ -41,8 +41,18 @@ When you want to launch the comment view, simply instantiate and push the commen
 
 Socialize Action Bar
 ----------------------
-*Coming Soon!*
 
+First you'll want to instantiate a SocializeActionBar controller and add the view to your view controller:
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1274308.js?file=controller.m"></script>
+
+Once that action bar is in your view you'll want to make a call to increment the view on your entity.  This will send back a view count on the entity as well as refresh the comment counter
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1274308.js?file=viewController.m"></script> 
 
 Adding Facebook Support
 -------------------------
@@ -50,4 +60,4 @@ To add Facebook support in Socialize you'll just need to let Socialize know your
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1276197.js?file=appDelegate.m"></script>
+        <script src=https://gist.github.com/1276197.js?file=appDelegate.m"></script>
