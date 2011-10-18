@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Search &mdash; Socialize iOS SDK v0.8.0 documentation</title>
+    <title>&lt;no title&gt; &mdash; Socialize iOS SDK v0.8.0 documentation</title>
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -21,14 +21,8 @@
     <script type="text/javascript" src="static/jquery.js"></script>
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
-    <script type="text/javascript" src="static/searchtools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK v0.8.0 documentation" href="index.html" />
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-   
-
+    <link rel="top" title="Socialize iOS SDK v0.8.0 documentation" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -43,29 +37,30 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <h1 id="search-documentation">Search</h1>
-  <div id="fallback" class="admonition warning">
-  <script type="text/javascript">$('#fallback').hide();</script>
-  <p>
-    Please activate JavaScript to enable the search
-    functionality.
-  </p>
-  </div>
-  <p>
-    From here you can search these documents. Enter your search
-    words into the box below and click "search". Note that the search
-    function will automatically search for all of the words. Pages
-    containing fewer words won't appear in the result list.
-  </p>
-  <form action="" method="get">
-    <input type="text" name="q" value="" />
-    <input type="submit" value="search" />
-    <span id="search-progress" style="padding-left: 10px"></span>
-  </form>
-  
-  <div id="search-results">
-  
-  </div>
+  <script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "socialize";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#222";
+  feedback_widget_options.style = "idea";
+  feedback_widget_options.product = "socialize_ios_sdk";
+  feedback_widget_options.tag = "Feedback";
+
+  feedback_widget_options.limit = "3";
+
+  GSFN.feedback_widget.prototype.local_base_url = "http://support.getsocialize.com";
+  GSFN.feedback_widget.prototype.local_ssl_base_url = "http://support.getsocialize.com";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
 
           </div>
         </div>

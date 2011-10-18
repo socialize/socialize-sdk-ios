@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Implementing the UI &mdash; Socialize iOS SDK v0.7.5 documentation</title>
+    <title>Implementing the UI &mdash; Socialize iOS SDK v0.8.0 documentation</title>
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.7.5',
+        VERSION:     '0.8.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK v0.7.5 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK v0.8.0 documentation" href="index.html" />
     <link rel="next" title="SDK User Guide" href="sdk_user_guide.html" />
     <link rel="prev" title="Getting Started Guide" href="getting_started.html" /> 
   </head>
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK v0.7.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK v0.8.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -45,7 +45,30 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="implementing-the-ui">
+  <script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "socialize";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#222";
+  feedback_widget_options.style = "idea";
+  feedback_widget_options.product = "socialize_ios_sdk";
+  feedback_widget_options.tag = "Feedback";
+
+  feedback_widget_options.limit = "3";
+
+  GSFN.feedback_widget.prototype.local_base_url = "http://support.getsocialize.com";
+  GSFN.feedback_widget.prototype.local_ssl_base_url = "http://support.getsocialize.com";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script><div class="section" id="implementing-the-ui">
 <h1>Implementing the UI<a class="headerlink" href="#implementing-the-ui" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
@@ -67,13 +90,23 @@ of comments associated with an entity (URL).</p>
 <img alt="images/comment_detail.png" src="images/comment_detail.png" />
 <div class="section" id="displaying-the-comment-view">
 <h3>Displaying the Comment View<a class="headerlink" href="#displaying-the-comment-view" title="Permalink to this headline">¶</a></h3>
-<p>When you want to launch the comment view, simply instantiate and push the commentViewController :</p>
-<script src="https://gist.github.com/1266199.js?file=MyCustomViewController.m"></script></div>
+<p>When you want to launch the comment view, simply instantiate and present the commentViewController :</p>
+<script src="https://gist.github.com/1293791.js"> </script></div>
 </div>
 <div class="section" id="socialize-action-bar">
 <h2>Socialize Action Bar<a class="headerlink" href="#socialize-action-bar" title="Permalink to this headline">¶</a></h2>
-<p><em>Coming Soon!</em></p>
-</div>
+<p>First you&#8217;ll want to instantiate a SocializeActionBar controller and add the view to your view controller:</p>
+<script src="https://gist.github.com/1274308.js?file=controller.m"></script><p>Once that action bar is in your view you&#8217;ll want to make a call to increment the view on your entity.  This will send back a view count on the entity as well as refresh the comment counter</p>
+<script src="https://gist.github.com/1274308.js?file=viewController.m"></script></div>
+<div class="section" id="adding-facebook-support">
+<h2>Adding Facebook Support<a class="headerlink" href="#adding-facebook-support" title="Permalink to this headline">¶</a></h2>
+<p>To add Facebook support in Socialize, you&#8217;ll need to perform three steps:</p>
+<p>Let Socialize know your Facebook app id.  You can register or find your Facebook app id here: <a class="reference external" href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a></p>
+<script src="https://gist.github.com/1294278.js?file=gistfile1.m"></script><p>You must register your app to open with your facebook app id url by adding a URL Types array to your Application&#8217;s &lt;MyApp&gt;-Info.plist.
+The string is a lowercase fb followed by your app id. The example app is configured as below:</p>
+<img alt="images/facebook_urltypes.png" src="images/facebook_urltypes.png" />
+<p>You must also be sure to call [Socialize handleOpenURL:url] from your UIApplicationDelegate&#8217;s application:handleOpenURL: method. Socialize will take care of handing off the openURL request to the underlying <a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>. This completes the authentication flow.</p>
+<script src="https://gist.github.com/1294195.js?file=appDelegate.m"></script></div>
 </div>
 
 
@@ -89,6 +122,7 @@ of comments associated with an entity (URL).</p>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#comment-view">Comment View</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#socialize-action-bar">Socialize Action Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-facebook-support">Adding Facebook Support</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
@@ -108,7 +142,7 @@ of comments associated with an entity (URL).</p>
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK v0.7.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK v0.8.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
