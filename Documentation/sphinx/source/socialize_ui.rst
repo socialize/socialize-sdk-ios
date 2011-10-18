@@ -56,9 +56,20 @@ Once that action bar is in your view you'll want to make a call to increment the
 
 Adding Facebook Support
 -------------------------
-To add Facebook support in Socialize you'll just need to let Socialize know your Facebook app id.  You can register or find your Facebook app id here: https://developers.facebook.com/apps
+To add Facebook support in Socialize, you'll need to perform three steps:
 
-To complete the authentication flow, you must also be sure to call [Socialize handleOpenURL:url] from your UIApplicationDelegate's application:handleOpenURL: method. Socialize will take care of handing off the openURL request to the underlying `Facebook iOS SDK <http://developers.facebook.com/docs/reference/iossdk/authentication/>`_
+Let Socialize know your Facebook app id.  You can register or find your Facebook app id here: https://developers.facebook.com/apps
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1294278.js?file=gistfile1.m"></script>
+
+You must register your app to open with your facebook app id url by adding a URL Types array to your Application's <MyApp>-Info.plist.
+The string is a lowercase fb followed by your app id. The example app is configured as below:
+
+.. image:: images/facebook_urltypes.png	
+
+You must also be sure to call [Socialize handleOpenURL:url] from your UIApplicationDelegate's application:handleOpenURL: method. Socialize will take care of handing off the openURL request to the underlying `Facebook iOS SDK <http://developers.facebook.com/docs/reference/iossdk/authentication/>`_. This completes the authentication flow.
 
 .. raw:: html
 

@@ -109,6 +109,12 @@
 
 }
 
+- (NSString *)getFacebookBaseUrlForAppId:(NSString*)appId localAppId:(NSString*)localAppId {
+    return [NSString stringWithFormat:@"fb%@%@://authorize",
+            appId,
+            localAppId ? localAppId : @""];
+}
+
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                     apiSecret:(NSString*)apiSecret 
               thirdPartyAppId:(NSString*)thirdPartyAppId 
@@ -117,6 +123,8 @@
 {
     SocializeFacebook* fb = [[SocializeFacebook alloc] initWithAppId:thirdPartyAppId];
 
+    NSURL *testURL = [NSURL URLWithString:[self getFacebookBaseUrlForAppId:thirdPartyAppId localAppId:thirdPartyLocalAppId]];
+    NSAssert([[UIApplication sharedApplication] canOpenURL:testURL], @"Socialize -- Can not authenticate with facebook! Please ensure you have registered a facebook URL scheme for your app as described at http://socialize.github.com/socialize-sdk-ios/socialize_ui.html#adding-facebook-support");
     [fbAuth release]; fbAuth = nil;
     fbAuth = [[FacebookAuthenticator alloc] initWithFramework:fb apiKey:apiKey apiSecret:apiSecret appId:thirdPartyAppId localAppId:thirdPartyLocalAppId service:self];
     [fb release]; fb = nil; 
