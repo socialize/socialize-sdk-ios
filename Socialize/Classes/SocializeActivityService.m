@@ -11,34 +11,25 @@
 
 @implementation SocializeActivityService
 
-
--(void)activity:(NSString *)activityEndPoint withId:(uint64_t)activityId
+-(void) getActivityOfCurrentUser;
 {
-    
-    
+    [self getActivityOfCurrentUserWithFirst:nil last:nil];
 }
 
--(void)listActivity:(NSString *)activityEndPoint forEnitity:(id<SocializeEntity>)entity
+-(void) getActivityOfCurrentUserWithFirst:(NSNumber*)first last:(NSNumber*)last
 {
+    NSMutableDictionary* params = nil;
     
-}
+    if (first && last)
+        params = [NSMutableDictionary dictionaryWithObjectsAndKeys: first, @"first", last, @"last", nil];
 
--(void)listActivity:(NSString *)activityEndPoint entityKey:(NSString *)keyOfEntity
-{
     
-    
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:@"activity/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];
 }
-
--(void)listActivity:(NSString *)activityEndPoint withIds:(NSArray *)activityIdsArray
-{
-    
-}
-
--(void)createActivity:(id<SocializeActivity>)activity atEndPoint:(NSString *)endPoint
-{
-    
-    
-}
-
 
 @end

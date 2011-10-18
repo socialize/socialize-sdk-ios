@@ -228,27 +228,6 @@ static const int singleCommentId = 1;
     [_service request:nil didLoadRawResponse:jsonData];
 }
 
-#pragma mark Socialize comment service delegate
-
--(void) receivedComment: (SocializeCommentsService*)service comment:(id<SocializeComment>)comment
-{ 
-    GHAssertEquals(comment.objectID, 1, nil);
-    GHAssertEqualStrings(comment.entity.key, @"http://www.example.com/interesting-story/", nil);
-    GHAssertEqualStrings(comment.application.name, @"My App", nil);
-    GHAssertEqualStrings(comment.user.userName, @"msocialize", nil);
-    GHAssertEqualStrings(comment.text, @"this was a great story", nil);
-}
-
--(void) receivedComments: (SocializeCommentsService*)service comments: (NSArray*) comments
-{
-    GHAssertTrue(comments.count == 2, nil);
-}
-
--(void) didFailService:(SocializeCommentsService*)service withError: (NSError *)error;
-{
-    GHAssertEqualObjects(_testError, error, nil);
-}
-
 #pragma mark helper methods
 
 
