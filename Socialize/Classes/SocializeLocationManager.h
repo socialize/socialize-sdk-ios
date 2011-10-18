@@ -26,22 +26,16 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <MapKit/MapKit.h>
 
-typedef void (^OnFoundCallbackBlock)(NSString* location);
-
-@interface SocializeLocationManager : NSObject<MKReverseGeocoderDelegate> {
+@interface SocializeLocationManager : NSObject {
 @private
     BOOL _shareLocation;
     NSString* _currentLocationDescription;
-    OnFoundCallbackBlock onFoundblock;
-    MKReverseGeocoder *geoCoder;
 }
 
 @property (nonatomic, assign) BOOL shouldShareLocation;
 @property (nonatomic, retain) NSString* currentLocationDescription;
 
--(void)findLocationDescriptionWithCoordinate: (CLLocationCoordinate2D) coordinate  andWithBlock:(OnFoundCallbackBlock)block;
 -(BOOL)applicationIsAuthorizedToUseLocationServices;
 
 +(SocializeLocationManager*)create;

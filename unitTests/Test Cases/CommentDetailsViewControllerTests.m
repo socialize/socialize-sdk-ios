@@ -160,49 +160,4 @@
     [commentDetails viewWillDisappear:YES];
 }
 
--(void) testReverseGeocoderWithNeighborhood
-{
-    id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
-    [[mockDeteailView expect]updateLocationText:@"Neighborhood, City"];
-    commentDetails.commentDetailsView = mockDeteailView;
-
-    
-    id mockMKPlacemark = [OCMockObject mockForClass: [MKPlacemark class]];
-    [[[mockMKPlacemark expect]andReturn:@""]administrativeArea];
-    [[[mockMKPlacemark expect]andReturn:@"City"]locality];
-    [[[mockMKPlacemark expect]andReturn:@"Neighborhood"]subLocality];
-    [commentDetails reverseGeocoder: nil didFindPlacemark: mockMKPlacemark];
-    
-    [mockMKPlacemark verify];
-    [mockDeteailView verify];
-}
-
--(void) testReverseGeocoder
-{
-    id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
-    [[mockDeteailView expect]updateLocationText:@"City, State"];
-    commentDetails.commentDetailsView = mockDeteailView;
-    
-    
-    id mockMKPlacemark = [OCMockObject mockForClass: [MKPlacemark class]];
-    [[[mockMKPlacemark expect]andReturn:@"State"]administrativeArea];
-    [[[mockMKPlacemark expect]andReturn:@"City"]locality];
-    [[[mockMKPlacemark expect]andReturn:@""]subLocality];
-    [commentDetails reverseGeocoder: nil didFindPlacemark: mockMKPlacemark];
-    
-    [mockMKPlacemark verify];
-    [mockDeteailView verify];
-}
-
--(void) testReverseGeocoderDidFail
-{
-    id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
-    [[mockDeteailView expect]updateLocationText:@"Could not locate the place name."];
-    commentDetails.commentDetailsView = mockDeteailView;    
-    
-    [commentDetails reverseGeocoder: nil didFailWithError:nil];
-    
-    [mockDeteailView verify];
-}
-
 @end

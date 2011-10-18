@@ -32,7 +32,7 @@
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation;
 - (BOOL) islocationServicesEnabled;
-+ (AppMakrLocation *)sharedInstance;
+//+ (AppMakrLocation *)sharedInstance;
 + (BOOL) applicationIsAuthorizedToUseLocationServices;
 
 @end

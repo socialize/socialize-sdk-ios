@@ -38,6 +38,16 @@
 //    //TODO: Create logic here for unsupported classes.
 //}
 
+static SocializeObjectFactory *sharedObjectFactory;
+
++ (SocializeObjectFactory*)sharedObjectFactory {
+    if (sharedObjectFactory == nil) {
+        sharedObjectFactory = [[SocializeObjectFactory alloc] init];
+    }
+    
+    return sharedObjectFactory;
+}
+
 -(void)verifyClass:(Class)classToTest AndProtocol:(Protocol *)protocolToTest
 {
     [self verifySupportForProtocol:protocolToTest];
@@ -64,14 +74,11 @@
 - (id)init 
 {
     //Change to accept default configuration of default Socialize Objects.
-    return [self initializeWithConfiguration:[[SocializeConfiguration new]autorelease]];
-    
+    return [self initWithConfiguration:[[SocializeConfiguration new]autorelease]];    
 }
 
--(id)initializeWithConfiguration:(SocializeConfiguration*)configuration;
+-(id)initWithConfiguration:(SocializeConfiguration*)configuration;
 {
-    
-    
     self = [super init];
     if (self) 
     {

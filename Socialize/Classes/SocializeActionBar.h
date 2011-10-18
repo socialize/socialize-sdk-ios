@@ -46,8 +46,11 @@
 }
 
 @property(nonatomic, assign) UIViewController* parentViewController;
+@property(nonatomic, retain) id<SocializeEntity> entity;
+
 +(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url;
 
 -(id)initWithParantViewSize:(CGSize)parentViewSize andEntiryUrl:(NSString*)url;
 -(id)initWithParantViewSize:(CGSize)parentViewSize andEntiry:(id<SocializeEntity>)entity;
+-(void)incrementViewCount;
 @end

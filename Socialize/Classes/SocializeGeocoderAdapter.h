@@ -1,8 +1,8 @@
 /*
- * SocializeProviderTests.h
+ * SocializeGeocoderAdapter.h
  * SocializeSDK
  *
- * Created on 6/14/11.
+ * Created on 10/12/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -23,19 +23,38 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- * See Also: http://gabriel.github.com/gh-unit/
  */
 
+#import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-#import <GHUnitIOS/GHUnit.h>
-#import <UIKit/UIKit.h>
-#import "SocializeRequest.h"
+typedef void (^SocializeCompletionHandler)(NSArray *placemarks, NSError *error);
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >=  __IPHONE_5_0
 
-@interface SocializeProviderTests : GHTestCase<SocializeRequestDelegate> {
+@interface SocializeGeocoderAdapter : NSObject {
     @private
-    NSString* kRestserverBaseURL;
-    NSString* kSecureRestserverBaseURL;
+    CLGeocoder* geocoder;
+    
 }
 
+- (void)reverseGeocodeLocation:(CLLocation *)location completionHandler:(CLGeocodeCompletionHandler)completionHandler;
+- (void)cancelGeocode;
+
 @end
+
+#else
+
+@interface SocializeGeocoderAdapter : NSObject<MKReverseGeocoderDelegate> {
+@private
+    MKReverseGeocoder* _geocoder;
+    CLGeocodeCompletionHandler handler;
+}
+
+- (void)reverseGeocodeLocation:(CLLocation *)location completionHandler:(CLGeocodeCompletionHandler)completionHandler;
+- (void)cancelGeocode;
+
+@end
+
+#endif

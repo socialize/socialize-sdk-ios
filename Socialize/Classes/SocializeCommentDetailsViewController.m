@@ -17,6 +17,7 @@
 #import "NSString+PlaceMark.h"
 #import "ImagesCache.h"
 #import "ImageLoader.h"
+#import "SocializeGeocoderAdapter.h"
 
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
@@ -31,7 +32,6 @@
 
 @interface SocializeCommentDetailsViewController()
 
-@property(nonatomic, retain) MKReverseGeocoder *geoCoder;
 -(void) showComment;
 -(void) setupCommentGeoLocation;
 -(void) showShareLocation:(BOOL)hasLocation;
@@ -42,14 +42,12 @@
 
 @synthesize commentDetailsView;
 @synthesize comment;
-@synthesize geoCoder;
 @synthesize profileImageDownloader;
 @synthesize loaderFactory;
 @synthesize cache;
 
 - (void)dealloc
 {
-    [geoCoder release]; geoCoder = nil;
     [commentDetailsView release]; commentDetailsView = nil;
     [comment release]; comment = nil;
     [cache release];
@@ -71,27 +69,29 @@
     return self;
 }
 
-#pragma mark base class methods
--(void) afterAnonymouslyLoginAction
-{
-    // Do not remove.
-}
-
 #pragma mark user location
 
 -(void)setupCommentGeoLocation
 {
-    CLLocationCoordinate2D centerPoint = {[self.comment.lat doubleValue], 
-        [self.comment.lng doubleValue]};     
+    CLLocation* location = [[[CLLocation alloc]initWithLatitude:[self.comment.lat doubleValue] longitude:[self.comment.lng doubleValue]]autorelease];
     
-    [commentDetailsView updateGeoLocation: centerPoint];
+    [commentDetailsView updateGeoLocation: location.coordinate];
     
-    // this creates a MKReverseGeocoder to find a placemark using the found coordinates
-    MKReverseGeocoder* geo = [[MKReverseGeocoder alloc] initWithCoordinate:centerPoint];
-    self.geoCoder = geo;
-    [geo release]; geo = nil;
-    self.geoCoder.delegate = self;
-    [self.geoCoder start];
+    __block SocializeGeocoderAdapter* adapter = [[SocializeGeocoderAdapter alloc] init];
+    [adapter reverseGeocodeLocation:location completionHandler:^(NSArray*placemarks, NSError *error)
+     {
+         if(error)
+         {
+             NSLog(@"reverseGeocoder didFailWithError:%@", error);
+             [commentDetailsView updateLocationText: NO_CITY_MSG];
+         }
+         else
+         {
+             [commentDetailsView updateLocationText:[NSString stringWithPlacemark:[placemarks objectAtIndex:0]]];
+         }    
+         [adapter autorelease];
+     }
+    ];
 }
 
 -(void)showShareLocation:(BOOL)hasLocation
@@ -178,8 +178,6 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {   
-    self.geoCoder.delegate = nil;
-    [self.geoCoder cancel];
     [cache stopOperations];
     
     [self.profileImageDownloader cancelDownload];
@@ -197,20 +195,6 @@
     [super viewDidUnload];
      // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
-
-#pragma mark - geo coordinates
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark
-{   
-    [commentDetailsView updateLocationText:[NSString stringWithPlacemark:placemark]];
-}
-//
-//// this delegate is called when the reversegeocoder fails to find a placemark
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error
-{
-    NSLog(@"reverseGeocoder:%@ didFailWithError:%@", geocoder, error);
-    
-    [commentDetailsView updateLocationText: NO_CITY_MSG];   
 }
 
 @end

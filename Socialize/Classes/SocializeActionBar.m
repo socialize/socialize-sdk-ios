@@ -40,7 +40,6 @@
 @interface SocializeActionBar()
 @property(nonatomic, retain) id<SocializeLike> entityLike;
 @property(nonatomic, retain) id<SocializeView> entityView;
-@property(nonatomic, retain) id<SocializeEntity> entity;
 @end
 
 @implementation SocializeActionBar
@@ -53,7 +52,6 @@
 +(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url
 {
     SocializeActionBar* bar = [[[SocializeActionBar alloc] initWithParantViewSize:parentController.view.bounds.size andEntiryUrl:url] autorelease];
-    [parentController.view addSubview:bar.view];
     bar.parentViewController = parentController;
     return bar;
 }
@@ -216,6 +214,10 @@
 {
 }
 
+-(void)incrementViewCount {
+    //convienence method
+    [self viewWillAppear:YES];
+}
 -(void)afterAnonymouslyLoginAction
 {
     [self.socialize getEntityByKey:[entity key]];

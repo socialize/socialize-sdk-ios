@@ -73,10 +73,14 @@
 -(void)testStartDownload
 {
     URLDownload* loader = [[[URLDownload alloc] init] autorelease];
+
     id mockConnection = [OCMockObject mockForClass: [NSURLConnection class]];
     [(NSURLConnection*)[mockConnection expect] start];
-    
+    id loaderPartialMock=[OCMockObject partialMockForObject:loader];
+    [[loaderPartialMock expect] runCurrentLoopForTimeInterval:[OCMArg any]];    
+    //perform the method call
     [loader performSelector:@selector(startDownload:)withObject: mockConnection];
+    [loaderPartialMock verify];
     [mockConnection verify];
 }
 

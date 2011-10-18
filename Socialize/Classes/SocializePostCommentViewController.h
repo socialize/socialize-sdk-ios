@@ -30,10 +30,9 @@
     UIButton*   doNotShareLocationButton;
     UIButton*   activateLocationButton;
     CommentMapView* mapOfUserLocation;
-
+    Class _geoCoderInfo;
     
     UIAlertView *_facebookAuthQuestionDialog;
-    UIAlertView *_anonymousAuthQuestionDialog;
 }
 
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;
@@ -42,13 +41,12 @@
 @property(nonatomic, retain) IBOutlet UIButton      *activateLocationButton;
 @property(nonatomic, retain) IBOutlet CommentMapView *mapOfUserLocation;
 @property(nonatomic, retain) UIAlertView *facebookAuthQuestionDialog;
-@property(nonatomic, retain) UIAlertView *anonymousAuthQuestionDialog;
 
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
 - (void)createComment;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString keyboardListener:(UIKeyboardListener*)kb locationManager:(SocializeLocationManager*) lManager;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entityUrlString:(NSString*)entityUrlString keyboardListener:(UIKeyboardListener*)kb locationManager:(SocializeLocationManager*) lManager geocoderInfo:(Class)geocoderInfo;
 
 +(UINavigationController*)createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar;
 

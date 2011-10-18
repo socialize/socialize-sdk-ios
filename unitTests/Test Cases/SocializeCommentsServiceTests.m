@@ -29,7 +29,6 @@
 #import <OCMock/OCMock.h>
 #import "SocializeCommentsServiceTests.h"
 #import "SocializeComment.h"
-#import "SocializeProvider.h"
 #import "SocializeCommentJSONFormatter.h"
 #import "SocializeObjectFactory.h"
 
@@ -48,14 +47,18 @@ static const int singleCommentId = 1;
 
 -(void) setUpClass
 {  
+    NSLog(@"Setting up %@", [self class]);
+
     SocializeObjectFactory* factory = [[SocializeObjectFactory new] autorelease] ;
-    _service = [[SocializeCommentsService alloc] initWithProvider:nil objectFactory:factory delegate:self];
-    
+    _service = [[SocializeCommentsService alloc] initWithObjectFactory:factory delegate:self];
+    _mockService = [[_service nonRetainingMock] retain];
     _testError = [NSError errorWithDomain:@"" code: 402 userInfo:nil];
 }
 
 -(void) tearDownClass
 {
+    NSLog(@"Tearing down %@", [self class]);
+    [_mockService release]; _mockService = nil;
     [_service release]; _service = nil;
 }
 
@@ -63,35 +66,33 @@ static const int singleCommentId = 1;
 
 -(void) testSendGetCommentById
 {    
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:@"comment/" 
-                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObject: [NSNumber numberWithInt:singleCommentId]], @"id", nil] 
-                              expectedJSONFormat:SocializeDictionaryWIthListAndErrors 
-                                   andHttpMethod:@"GET" 
-                                     andDelegate:_service];
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:@"comment/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:[NSMutableDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObject: [NSNumber numberWithInt:singleCommentId]], @"id", nil]
+      ]];
     
-    _service.provider = mockProvider;   
+    [_mockService getCommentById: singleCommentId];
     
-    [_service getCommentById: singleCommentId];
-    
-    [mockProvider verify];
+    [_mockService verify];
 }
 
 -(void) testGetListOfCommentsById
 {    
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
     NSArray* ids = [NSArray arrayWithObjects: [NSNumber numberWithInt:1], [NSNumber numberWithInt:2], nil];
     NSArray* keys = [NSArray arrayWithObjects: @"url_for_test", @"enother_url", nil];
-    [[mockProvider expect] requestWithMethodName:@"comment/" 
-                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:ids, @"id", keys, @"key", nil]
-                              expectedJSONFormat:SocializeDictionaryWIthListAndErrors
-                                   andHttpMethod:@"GET" 
-                                     andDelegate:_service];
-    _service.provider = mockProvider; 
- 
-    [_service getCommentsList: ids andKeys:keys];
     
-    [mockProvider verify];
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:@"comment/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:[NSMutableDictionary dictionaryWithObjectsAndKeys:ids, @"id", keys, @"key", nil]
+      ]];
+ 
+    [_mockService getCommentsList: ids andKeys:keys];
+    
+    [_mockService verify];
 }
 
 -(void) testGetListOfCommentsWithEmptyParams
@@ -101,17 +102,18 @@ static const int singleCommentId = 1;
 
 -(void) testGetListOfCommentsByEntityKey
 {
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:@"comment/" 
-                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"entity_key", nil]
-      expectedJSONFormat:SocializeDictionaryWIthListAndErrors
-                                   andHttpMethod:@"GET" 
-                                     andDelegate:_service];
-    _service.provider = mockProvider; 
-    NSString* entryKey = @"http://www.example.com/interesting-story/";
-    [_service getCommentList:entryKey first:nil last:nil];
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:@"comment/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"entity_key", nil]
+      ]];
     
-    [mockProvider verify];
+
+    NSString* entryKey = @"http://www.example.com/interesting-story/";
+    [_mockService getCommentList:entryKey first:nil last:nil];
+    
+    [_mockService verify];
 }
 
 -(void) testGetCommentListWithPageInfo
@@ -119,18 +121,19 @@ static const int singleCommentId = 1;
     NSNumber* first = [NSNumber numberWithInt:2]; 
     NSNumber* last = [NSNumber numberWithInt:800]; 
     
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:@"comment/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"entity_key", first, @"first", last, @"last", nil]
+      ]];
     
-    [[mockProvider expect] requestWithMethodName:@"comment/" 
-                                       andParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"entity_key", first, @"first", last, @"last", nil]
-                              expectedJSONFormat:SocializeDictionaryWIthListAndErrors
-                                   andHttpMethod:@"GET" 
-                                     andDelegate:_service];
-    _service.provider = mockProvider; 
+    
+
     NSString* entryKey = @"http://www.example.com/interesting-story/";
-    [_service getCommentList:entryKey first:first last:last];
+    [_mockService getCommentList:entryKey first:first last:last];
     
-    [mockProvider verify];
+    [_mockService verify];
 }
 
 
@@ -146,13 +149,16 @@ static const int singleCommentId = 1;
                                       @"this was a great story", @"text", nil], 
                                      nil];
     
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:mockArray  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
-    
-    _service.provider = mockProvider;    
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:@"comment/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:mockArray
+      ]];
+
     [_service createCommentForEntity:entity comment:@"this was a great story" longitude:nil latitude:nil];
     
-    [mockProvider verify];
+    [_mockService verify];
 }
 
 -(void) testCreateCommentForNewWithGeo
@@ -164,13 +170,16 @@ static const int singleCommentId = 1;
     NSArray* mockArray = [NSArray arrayWithObject:
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil],ENTITY, @"this was a great story", @"text",                             [NSNumber numberWithFloat:1.2], @"lng",[NSNumber numberWithFloat:1.1], @"lat", nil]];
     
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:mockArray  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
-    
-    _service.provider = mockProvider;    
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:@"comment/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:mockArray
+      ]];
+
     [_service createCommentForEntity:entity comment:@"this was a great story" longitude:[NSNumber numberWithFloat:1.2] latitude:[NSNumber numberWithFloat:1.1]];
     
-    [mockProvider verify];
+    [_mockService verify];
 }
 
 -(void) testCreateCommentWithGeo
@@ -184,16 +193,19 @@ static const int singleCommentId = 1;
                              nil],
                           nil];
     
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:@"comment/" andParams:mockArray  expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
-    
-    _service.provider = mockProvider;    
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:@"comment/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:mockArray
+      ]];
+
     [_service createCommentForEntityWithKey: @"http://www.example.com/interesting-story/"
                                     comment: @"this was a great story" 
                                   longitude: [NSNumber numberWithFloat:1.2] 
                                    latitude: [NSNumber numberWithFloat:1.1]];
     
-    [mockProvider verify];
+    [_mockService verify];
 }
 
 #pragma mark response tests

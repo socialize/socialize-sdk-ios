@@ -50,12 +50,12 @@
 }
 
 @property (retain, nonatomic) IBOutlet UITableView  *tableView;
-@property (retain, nonatomic) IBOutlet UIToolbar    *topToolBar;
 @property (retain, nonatomic) IBOutlet UIImageView	*brushedMetalBackground;
 @property (retain, nonatomic) IBOutlet UIView		*backgroundView;
 @property (retain, nonatomic) IBOutlet UIView		*roundedContainerView;
 @property (retain, nonatomic) IBOutlet UIImageView	*noCommentsIconView;
 @property (retain, nonatomic) UIBarButtonItem	*doneButton;
+@property (retain, nonatomic) UIBarButtonItem	*brandingButton;
 
 @property (nonatomic, assign) IBOutlet CommentsTableViewCell     *commentsCell;
 @property (retain, nonatomic) IBOutlet CommentsTableFooterView   *footerView;

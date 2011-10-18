@@ -32,7 +32,7 @@ typedef URLDownloadOperation*(^OperationFactoryBlock)(id target, SEL method, id 
 
 - (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(id)downloadTag;
 - (id) initWithURL:(NSString *)url sender:(NSObject *)caller selector:(SEL)Selector tag:(id)downloadTag downloadQueue:(NSOperationQueue*)queue operationFactory:(OperationFactoryBlock) factoryBlock;
-
 - (void) cancelDownload;
+-(void)runCurrentLoopForTimeInterval:(NSNumber *)timeInterval;
 
 @end

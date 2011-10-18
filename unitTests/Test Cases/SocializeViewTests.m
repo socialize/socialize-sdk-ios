@@ -7,7 +7,6 @@
 //
 
 #import "SocializeViewTests.h"
-#import "SocializeProvider.h"
 #import <OCMock/OCMock.h>
 
 @interface SocializeViewTests() 
@@ -19,20 +18,18 @@
 -(void) setUpClass
 {  
     SocializeObjectFactory* factory = [[SocializeObjectFactory new] autorelease];
-    _service = [[SocializeViewService alloc] initWithProvider:nil objectFactory:factory delegate:self];
+    _service = [[SocializeViewService alloc] initWithObjectFactory:factory delegate:self];
+    _mockService = [[OCMockObject partialMockForObject:_service] retain];
     _testError = [NSError errorWithDomain:@"Socialize" code: 400 userInfo:nil];
 }
 
 -(void) tearDownClass
 {
+    [_mockService release]; _mockService = nil;
     [_service release]; _service = nil;
 }
 
 -(void)testcreateViewForEntity{
-    
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    _service.provider = mockProvider;
-    _service.delegate = nil;
     
     SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
     SocializeEntity* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeEntity)]; 
@@ -43,16 +40,18 @@
     NSArray *params = [NSArray arrayWithObjects:entityParam, 
                        nil];
     
-    [[mockProvider expect] requestWithMethodName:@"view/" andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
-    
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:@"view/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];
+
     [_service createViewForEntity:mockEntity longitude:nil latitude: nil];
-    [mockProvider verify];
+    [_mockService verify];
 }
 
 -(void)testcreateViewForEntityWithGeo{
-    
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    _service.provider = mockProvider;
     
     SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
     SocializeEntity* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeEntity)]; 
@@ -63,15 +62,23 @@
     NSArray *params = [NSArray arrayWithObjects:entityParam, 
                        nil];
     
-    [[mockProvider expect] requestWithMethodName:@"view/" andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_service];
-    
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:@"view/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];
+
     [_service createViewForEntity:mockEntity longitude:[NSNumber numberWithFloat: 1.2] latitude: [NSNumber numberWithFloat: 1.2]];
-    [mockProvider verify];
+    [_mockService verify];
 }
 
--(void)testCreateViewCallback{
-    
-    SocializeRequest* _request = [SocializeRequest getRequestWithParams:nil expectedJSONFormat:SocializeDictionary httpMethod:@"POST"  delegate:self requestURL:@"whatever"];
+-(void)testCreateViewCallback{    
+    SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"POST"
+                                                           resourcePath:@"carenot/"
+                                                     expectedJSONFormat:SocializeDictionary
+                                                                 params:nil];
+
     
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/view_single_response.json"];
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
@@ -79,7 +86,7 @@
     
     [[mockDelegate expect] service:_service didCreate:OCMOCK_ANY];
     
-    [_service request:_request didLoadRawResponse:[JSONStringToParse dataUsingEncoding:NSUTF8StringEncoding]];
+    [_service request:request didLoadRawResponse:[JSONStringToParse dataUsingEncoding:NSUTF8StringEncoding]];
     [mockDelegate verify];
 }
 

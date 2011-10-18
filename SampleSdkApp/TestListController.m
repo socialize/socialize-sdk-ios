@@ -20,6 +20,10 @@
 #import "TestSocializeActionBar.h"
 #import "InputBox.h"
 
+#if RUN_KIF_TESTS
+#import <OCMock/OCMock.h>
+#endif
+
 @implementation TestListController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -28,13 +32,20 @@
 
     if (self) {
         
-        // Custom initialization
-        NSString *path = [[NSBundle mainBundle] pathForResource:
-                          @"tests" ofType:@"plist"];
-
-        NSMutableDictionary *myDic = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
-        _testList = [[NSMutableArray alloc] initWithArray:[myDic allValues]];
-        [myDic release];
+        _testList = [[NSArray arrayWithObjects:
+                      @"Test get an Entity",
+                      @"Test create an Entity",
+                      @"Test create a comment",
+                      @"Test get comments for an entity",
+                      @"Test like/unlike",
+                      @"Test getting a list of likes",
+                      @"Test create view",
+                      @"Test create comment view controller",
+                      @"Test small user info after authentication",
+                      @"Test User Profile",
+                      @"Test Socialize Action Bar",
+                      nil
+                      ]retain];
 
     }
     return self;
@@ -177,6 +188,21 @@
         case 9:
         {
             UIViewController *profile = [SocializeProfileViewController currentUserProfileWithDelegate:self];
+#ifdef RUN_KIF_TESTS
+            UINavigationController *nav = (UINavigationController*)profile;
+            SocializeProfileViewController *pvc = (SocializeProfileViewController*)[[nav viewControllers] objectAtIndex:0];
+            SocializeProfileEditViewController *edit = [[[SocializeProfileEditViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
+            id editMock = [OCMockObject partialMockForObject:edit];
+            //- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+            
+            UIImage *profileImage = [UIImage imageNamed:@"Smiley.png"];
+            [[[editMock expect] andDo:^(NSInvocation* blah){
+                NSDictionary *info = [NSDictionary dictionaryWithObject:profileImage forKey:UIImagePickerControllerEditedImage];
+                [edit imagePickerController:nil didFinishPickingMediaWithInfo:info];
+            }] showActionSheet];
+            
+            pvc.profileEditViewController = editMock;
+#endif
             [self.navigationController presentModalViewController:profile animated:YES];
             break;
         }
@@ -187,12 +213,11 @@
             {
                 controller = [[TestSocializeActionBar alloc] initWithEntityUrl:url];
                 [self.navigationController pushViewController:controller animated:YES];
-                [controller release];
             }
             break;
         }
-
     }    
+    [controller release];
 }
 
 #pragma mark - Service delegete
