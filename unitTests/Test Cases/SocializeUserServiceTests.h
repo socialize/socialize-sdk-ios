@@ -36,9 +36,9 @@
 @interface SocializeUserServiceTests : GHTestCase  
 {
     id mockfactory;
-    id mockProvider;
     id mockDelegate;
     SocializeUserService * _userService;
+    id _mockUserService;
 }
 
 @end

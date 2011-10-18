@@ -13,7 +13,6 @@
 @interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate, SocializeServiceDelegate> {
 @private
     UINavigationController*         rootController;
-    Socialize*                      _socialize;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

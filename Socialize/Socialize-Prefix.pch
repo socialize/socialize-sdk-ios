@@ -52,3 +52,6 @@
 #define SBJsonWriter SocializeSBJsonWriter
 #define SBProxyForJson SocializeSBProxyForJson
 #define SBJSONErrorDomain SocializeSBJSONErrorDomain
+
+#define MD5Addition SocializeMD5Addition
+#define IdentifierAddition SocializeIdentifierAddition

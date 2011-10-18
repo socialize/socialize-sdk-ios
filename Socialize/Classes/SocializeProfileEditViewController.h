@@ -34,6 +34,7 @@
 
 -(void)setProfileImage:(UIImage *) profileImage;
 -(void)updateDidFailWithError:(NSError *)error;
+-(void) showActionSheet;
 
 @end
 

@@ -62,14 +62,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [bar viewWillAppear:animated];
+    [bar incrementViewCount];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.entityView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.entityUrl]]];
-//    bar = [[SocializeActionBar createWithParentController:self andUrl:self.entityUrl] retain];
+    bar = [[SocializeActionBar createWithParentController:self andUrl:self.entityUrl] retain];
+    [self.view addSubview:bar.view];
 }
 
 - (void)viewDidUnload

@@ -7,7 +7,6 @@
 //
 
 #import "SocializeShareTests.h"
-#import "SocializeProvider.h"
 #import <OCMock/OCMock.h>
 
 @interface SocializeShareTests()
@@ -19,12 +18,14 @@
 -(void) setUpClass
 {  
     SocializeObjectFactory* factory = [[SocializeObjectFactory new] autorelease];
-    _service = [[SocializeShareService alloc] initWithProvider:nil objectFactory:factory delegate:self];
+    _service = [[SocializeShareService alloc] initWithObjectFactory:factory delegate:self];
+    _mockService = [[_service nonRetainingMock] retain];
     _testError = [NSError errorWithDomain:@"Socialize" code: 400 userInfo:nil];
 }
 
 -(void) tearDownClass
 {
+    [_mockService release]; _mockService = nil;
     [_service release]; _service = nil;
 }
 
@@ -42,9 +43,6 @@
 
 -(void)testCreateShareForEntity{
     
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    _service.provider = mockProvider;
-    
     SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
     SocializeEntity* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeEntity)]; 
     
@@ -52,14 +50,21 @@
     
     ShareMedium medium = Facebook;
     
-    //NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:mockEntity.key, @"entity", nil];
-    //NSArray *params = [NSArray arrayWithObjects:entityParam, 
-      //                 nil];
+    NSArray *expectedParams = [NSArray arrayWithObject:
+                               [NSDictionary dictionaryWithObjectsAndKeys:
+                                mockEntity.key, @"entity",
+                                [NSNumber numberWithInt:1], @"medium",
+                                @"text", @"text",
+                                nil]];
     
-    [[mockProvider expect] requestWithMethodName:@"share/" andParams:OCMOCK_ANY expectedJSONFormat:SocializeDictionaryWIthListAndErrors  andHttpMethod:@"POST" andDelegate:_service];
-    
-    [_service createShareForEntity:mockEntity  medium:medium  text:@"text"];
-    [mockProvider verify];
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:@"share/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:expectedParams]];
+
+    [_mockService createShareForEntity:mockEntity  medium:medium  text:@"text"];
+    [_mockService verify];
 }
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{

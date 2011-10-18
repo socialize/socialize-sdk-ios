@@ -26,7 +26,6 @@
  */
 
 #import "SocializeLocationManager.h"
-#import "NSString+PlaceMark.h"
 #import "AppMakrLocation.h"
 
 @interface SocializeLocationManager() 
@@ -66,15 +65,6 @@
     }
 }
 
--(void)findLocationDescriptionWithCoordinate: (CLLocationCoordinate2D) coordinate  andWithBlock:(OnFoundCallbackBlock)block
-{
-    NSAssert(geoCoder == nil, @"Should be just one instance of geo coder in the same time");
-    onFoundblock = [block copy];
-    geoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:coordinate];
-    geoCoder.delegate = self;
-    [geoCoder start];
-}
-
 -(BOOL)applicationIsAuthorizedToUseLocationServices
 {
     return [AppMakrLocation applicationIsAuthorizedToUseLocationServices];
@@ -82,33 +72,8 @@
 
 -(void)dealloc
 {
-    [geoCoder cancel];
-    [geoCoder release];
     [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithBool:_shareLocation] forKey:@"post_comment_share_location"];
     [_currentLocationDescription release];
     [super dealloc];
-}
-
-#pragma mark - Reverse geo coder delegate
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark 
-{   
-    self.currentLocationDescription  = [NSString stringWithPlacemark:placemark];
-    onFoundblock(_currentLocationDescription);
-    [onFoundblock release]; onFoundblock = nil;
-     
-    geocoder.delegate = nil;
-    [geocoder autorelease]; geoCoder = nil;
-}
-
-// this delegate is called when the reversegeocoder fails to find a placemark
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
-    NSLog(@"reverseGeocoder:%@ didFailWithError:%@", geocoder, error);
-
-    self.currentLocationDescription = @"Could not locate the place name";
-    onFoundblock(_currentLocationDescription);
-    [onFoundblock release]; onFoundblock = nil;
-    
-    geocoder.delegate = nil;
-    [geocoder autorelease]; geoCoder = nil;
 }
 @end

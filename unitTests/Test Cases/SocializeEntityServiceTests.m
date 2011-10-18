@@ -8,7 +8,6 @@
 
 #import "SocializeEntityServiceTests.h"
 #import "SocializeObjectFactory.h"
-#import "SocializeProvider.h"
 #import "SocializeRequest.h"
 
 @implementation SocializeEntityServiceTests
@@ -29,15 +28,16 @@
 { 
     
     _mockFactory = [OCMockObject niceMockForClass:[SocializeObjectFactory class]];   
-    _entityService = [[SocializeEntityService alloc] initWithProvider:nil 
-                                                        objectFactory:_mockFactory 
+    _entityService = [[SocializeEntityService alloc] initWithObjectFactory:_mockFactory 
                                                              delegate:nil];
-    
+    _mockService = [[_entityService nonRetainingMock] retain];
+
 }
 
 // Run after each test method
 - (void)tearDown 
 {
+    [_mockService release]; _mockService = nil;
     [_entityService release]; _entityService = nil;
 }
 
@@ -57,14 +57,6 @@
     [[[_mockFactory stub] andReturn:@"some_request"]createStringRepresentationOfArray:entitis];
 }
 
-- (id) createMockProvider 
-{
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
-    [[mockProvider expect] requestWithMethodName:@"entity/" andParams:OCMOCK_ANY expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"POST" andDelegate:_entityService];
-    
-    return mockProvider;
-}
-
 -(void)testCreateEntityWithKey
 {
     NSString* entityKey = @"www.google.com";
@@ -73,12 +65,17 @@
     id mockEntity = [self createMockEntiry: entityKey entityName: entityName];
     [self configurateMockFactoryForCreateEntityWithKey: mockEntity];
  
-    id mockProvider = [self createMockProvider];
-    _entityService.provider = mockProvider;
+    NSDictionary *expectedDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"some_request", @"jsonData", nil];
+
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:@"entity/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:expectedDictionary]];
     
-    [_entityService createEntityWithKey:entityKey andName:entityName];
+    [_mockService createEntityWithKey:entityKey andName:entityName];
     
-    [mockProvider verify];
+    [_mockService verify];
     [mockEntity verify];
     [_mockFactory verify];
 }
@@ -87,19 +84,21 @@
 {
     NSString* entityKey = @"www.google.com";
     
-    id mockProvider = [OCMockObject mockForClass:[SocializeProvider class]];
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:entityKey,@"entity_key", nil];
-    [[mockProvider expect] requestWithMethodName:@"entity/" andParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors andHttpMethod:@"GET" andDelegate:_entityService];
 
-    _entityService.provider = mockProvider;
-    
+    [[_mockService expect] executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:@"entity/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]];
+
     [_entityService entityWithKey:entityKey];
-    [mockProvider verify];
+    [_mockService verify];
 }
 
 -(void)testCreateEntityCallback{
     
-    SocializeRequest* _request = [SocializeRequest getRequestWithParams:nil expectedJSONFormat:SocializeDictionary httpMethod:@"POST"  delegate:nil requestURL:@"invalidparam"];
+    SocializeRequest *_request = [SocializeRequest requestWithHttpMethod:@"POST" resourcePath:@"nocare/" expectedJSONFormat:SocializeDictionary params:nil];
     
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/entity_single_response.json"];
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];

@@ -57,10 +57,9 @@
                                    @"parameter_value_2", @"parameter_key_2",
                                    nil];
 
-    _request = [SocializeRequest getRequestWithParams:params  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:self requestURL:@"www.google.com"];
+    _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:params];
     GHAssertEqualStrings(@"GET", _request.httpMethod, @"should be equal");
-    NSString* expectedRes = [NSString stringWithFormat:@"%@", [_request.request URL]];
-    GHAssertEqualStrings(@"www.google.com",expectedRes, @"should be equal");
+    GHAssertEqualStrings(@"entity/", _request.resourcePath, @"should be equal");
 }
 
 
@@ -70,7 +69,8 @@
     NSArray *ids = [NSArray arrayWithObjects:[NSNumber numberWithInt:1],[NSNumber numberWithInt:2],[NSNumber numberWithInt:3], nil];
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:ids,@"id", nil];   
           
-    _request = [SocializeRequest getRequestWithParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:nil requestURL:@"some_service"];
+    _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:params];
+
     _request.dataFetcher = [OCMockObject niceMockForClass: [OAAsynchronousDataFetcher class]];
     [_request connect];
     
@@ -90,7 +90,7 @@
     NSArray *keys = [NSArray arrayWithObjects:@"url_1",@"url_2", nil];
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:ids,@"id", keys, @"key", nil];   
     
-    _request = [SocializeRequest getRequestWithParams:params expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:nil requestURL:@"some_service"];
+    _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:params];
     _request.dataFetcher = [OCMockObject niceMockForClass: [OAAsynchronousDataFetcher class]];
     [_request connect];
     
@@ -109,7 +109,9 @@
 
 - (void)testFaildGetRequest {
     [self prepare];
-    _request = [SocializeRequest getRequestWithParams:nil expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET"  delegate:self requestURL:@"invalidparam"];
+    _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:nil];
+    _request.delegate = self;
+    _request.baseURL = @"bad-url";
     
     [_request connect];  
     [self waitForStatus:kGHUnitWaitStatusFailure timeout:30.0];
@@ -118,7 +120,9 @@
 
 - (void)testFaildPOSTRequest {
     [self prepare];
-    _request = [SocializeRequest getRequestWithParams:nil  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"POST"  delegate:self requestURL:@"invalidparam"];
+    _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:nil];
+    _request.delegate = self;
+    _request.baseURL = @"bad-url";
     
     [_request connect];  
     [self waitForStatus:kGHUnitWaitStatusFailure timeout:30.0];
@@ -135,22 +139,36 @@
                                language,
                                countryCode,
                                [[NSBundle mainBundle] bundleIdentifier]];
+    NSURL *expectedURL = [NSURL URLWithString:@"http://api.getsocialize.com/v1/entity/"];
+    
     id mockRequest = [OCMockObject mockForClass:[OAMutableURLRequest class]];
+    [[mockRequest expect] setURL:expectedURL];
     [[mockRequest expect] setHTTPMethod:@"GET"];
     [[mockRequest expect] addValue:userAgentStr forHTTPHeaderField:@"User-Agent"];
     [[mockRequest expect] setSocializeParameters:[NSMutableArray arrayWithCapacity:0]];
     [[mockRequest expect] prepare];
-    _request = [SocializeRequest getRequestWithParams:nil  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:self  requestURL:@"invalidparam"];
+    _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:nil];
     _request.request = mockRequest;
+    [_request configureURLRequest];
+    [mockRequest verify];
+}
+
+-(void)testConfigureURLRequestIsCalled {
+    _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:nil];
+    id mockRequest = [OCMockObject partialMockForObject:_request];
+    [[mockRequest expect] configureURLRequest];
     [_request connect];
     [mockRequest verify];
 }
+
 
 -(void)testTokenRequestResponceFailed
 {
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeRequestDelegate)];
 
-    _request = [SocializeRequest getRequestWithParams:nil  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:mockDelegate requestURL:@"invalidparam"];
+//    _request = [SocializeRequest getRequestWithParams:nil  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:mockDelegate requestURL:@"invalidparam"];
+    _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:nil];
+    _request.delegate = mockDelegate;
     
     id mockResponse = [OCMockObject mockForClass:[NSHTTPURLResponse class]];
     int code = 404;
@@ -160,6 +178,7 @@
     [[mockDelegate expect]request:OCMOCK_ANY didFailWithError:OCMOCK_ANY];
     
     OAServiceTicket* tiket = [[OAServiceTicket alloc] initWithRequest: nil response: mockResponse didSucceed: YES];
+    [tiket retain];
     [_request tokenRequestTicket:tiket didFinishWithData:nil];
     [mockDelegate verify];
     [mockResponse verify];
@@ -169,8 +188,10 @@
 {
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeRequestDelegate)];
     
-    _request = [SocializeRequest getRequestWithParams:nil  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:mockDelegate requestURL:@"invalidparam"];
-    
+//    _request = [SocializeRequest getRequestWithParams:nil  expectedJSONFormat:SocializeDictionaryWIthListAndErrors httpMethod:@"GET" delegate:mockDelegate requestURL:@"invalidparam"];
+    _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:nil];
+    _request.delegate = mockDelegate;
+
     id mockResponse = [OCMockObject mockForClass:[NSHTTPURLResponse class]];
     int code = 200;
     [[[mockResponse stub]andReturnValue:OCMOCK_VALUE(code)]statusCode];

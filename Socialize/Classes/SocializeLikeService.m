@@ -10,7 +10,6 @@
 #import "SocializeCommonDefinitions.h"
 #import "SocializeLike.h"
 #import "SocializeObjectFactory.h"
-#import "SocializeProvider.h"
 #import "SocializeEntity.h"
 
 
@@ -53,7 +52,13 @@
         
         NSArray *params = [NSArray arrayWithObjects:entityParam, 
                            nil];
-        [self ExecutePostRequestAtEndPoint:LIKE_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+        [self executeRequest:
+         [SocializeRequest requestWithHttpMethod:@"POST"
+                                    resourcePath:LIKE_METHOD
+                              expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                          params:params]
+         ];
+
     }
 }
 
@@ -62,7 +67,13 @@
         NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease];
         [params setObject:[NSNumber numberWithInteger:[like objectID]] forKey:@"id"];
         NSString* updatedResource = [NSString stringWithFormat:@"%@%d/", LIKE_METHOD, [like objectID]];
-        [self ExecuteDeleteRequestAtEndPoint:updatedResource WithParams:params expectedResponseFormat:SocializeAny];
+        [self executeRequest:
+         [SocializeRequest requestWithHttpMethod:@"DELETE"
+                                    resourcePath:updatedResource
+                              expectedJSONFormat:SocializeAny
+                                          params:params]
+         ];
+
     }
 }
 
@@ -71,7 +82,13 @@
     NSMutableDictionary*  params = [[[NSMutableDictionary alloc] init] autorelease]; 
     [params setObject:[NSNumber numberWithInteger:likeId] forKey:@"id"];
     NSString* updatedResource = [NSString stringWithFormat:@"%@%d/", LIKE_METHOD, likeId]; 
-    [self ExecuteGetRequestAtEndPoint:updatedResource WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:updatedResource
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];
+
 }
 
 -(void)getLikesForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last{
@@ -83,7 +100,13 @@
         [params setObject:first forKey:@"first"];
         [params setObject:last forKey:@"last"];
     }
-    [self ExecuteGetRequestAtEndPoint:LIKE_METHOD WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:LIKE_METHOD
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];
+
 }
 
 -(void)getLikesForEntity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last{

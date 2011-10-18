@@ -42,14 +42,18 @@ static AppMakrLocation *sharedCLDelegate = nil;
 	NSNotificationCenter * notificationCenter =  [NSNotificationCenter defaultCenter];
 	[notificationCenter postNotification:notification];
 }
-+ (AppMakrLocation *)sharedInstance {
-    @synchronized(self) {
-        if (sharedCLDelegate == nil) {
-            [[self alloc] init]; // assignment not done here
-        }
-    }
-    return sharedCLDelegate;
-}
+
+// check with static analyzer
+
+//+ (AppMakrLocation *)sharedInstance {
+//    @synchronized(self) {
+//        if (sharedCLDelegate == nil) {
+//            [[self alloc] init]; // assignment not done here
+//        }
+//    }
+//    return sharedCLDelegate;
+//}
+
 - (BOOL) islocationServicesEnabled {
 
 	return ( [CLLocationManager locationServicesEnabled] && !receivedLocationError );

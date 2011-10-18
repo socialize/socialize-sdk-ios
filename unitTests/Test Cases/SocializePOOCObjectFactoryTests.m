@@ -65,7 +65,7 @@
     
     id mockConfiguration = [self helperCreateMockConfigurationWithPrototypeConfiguration:prototypeConfiguration formatterConfiguration:formatterConfiguration];   
     
-    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]initializeWithConfiguration:mockConfiguration]autorelease];
+    SocializePOOCObjectFactory * myTestFactory = [[[SocializePOOCObjectFactory alloc]initWithConfiguration:mockConfiguration]autorelease];
     
     [self helperTestThatPrototypesExistsForPrototypeConfiguration:prototypeConfiguration inFactory:myTestFactory];
  
@@ -179,7 +179,7 @@
 
     
     //Configuration is nil
-    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initializeWithConfiguration:nil]autorelease],
+    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initWithConfiguration:nil]autorelease],
                    @"Should throw exception");
 
     
@@ -187,13 +187,13 @@
     id mockConfiguration1 = [OCMockObject mockForClass:[SocializeConfiguration class]];
     [[[mockConfiguration1 stub] andReturn:nil] configurationInfo];
     
-    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initializeWithConfiguration:mockConfiguration1]autorelease],
+    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initWithConfiguration:mockConfiguration1]autorelease],
                    @"Should throw exception");
     
     
     //Configuration NOT nil, ConfigInfo Empty, prototypes nil
     id mockConfiguration2 = [self helperCreateMockConfigurationWithPrototypeConfiguration:nil];
-    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initializeWithConfiguration:mockConfiguration2]autorelease],
+    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initWithConfiguration:mockConfiguration2]autorelease],
                    @"Should throw exception");
     
     
@@ -201,7 +201,7 @@
     id mockConfiguration3 = [self helperCreateMockConfigurationWithPrototypeConfiguration:
                               [[[NSDictionary alloc]init]autorelease]];
     
-    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initializeWithConfiguration:mockConfiguration3]autorelease],
+    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initWithConfiguration:mockConfiguration3]autorelease],
                    @"Should throw exception");
    
 }
@@ -226,7 +226,7 @@
     id mockConfiguration = [self helperCreateMockConfigurationWithPrototypeConfiguration:prototypeDictionary];
     
     
-    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initializeWithConfiguration:mockConfiguration]autorelease],
+    GHAssertThrows([[[SocializePOOCObjectFactory alloc]initWithConfiguration:mockConfiguration]autorelease],
                    @"Should throw exception");
     
 }

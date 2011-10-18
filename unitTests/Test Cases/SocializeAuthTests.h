@@ -13,6 +13,7 @@
 
 @interface SocializeAuthTests : GHAsyncTestCase<SocializeServiceDelegate> {
     SocializeAuthenticateService* _service;
+    id                            _mockService;
     NSError*                      _testError;
 }
 

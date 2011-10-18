@@ -28,7 +28,6 @@
 {
     [entityTextField release];
     [_socialize release];
-    [_loadingView release];
     [resultsView release];
     [successLabel release];
     [keyLabel release];

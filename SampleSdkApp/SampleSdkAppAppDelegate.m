@@ -35,9 +35,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
     UIViewController* rootViewController = nil;
-    
-    _socialize = [[Socialize alloc] initWithDelegate:self];
-    
+       
     // we check the authentication here.
     rootViewController = [[[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil] autorelease];
  
@@ -60,6 +58,7 @@
         }
     }];
 #endif
+    
     
     return YES;
 }
@@ -93,8 +92,6 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
-//    AuthenticateViewController* auth = [rootController.viewControllers objectAtIndex:0];
-//    return [auth.socialize.authService handleOpenURL: url];
     return [Socialize handleOpenURL:url];
 }
 

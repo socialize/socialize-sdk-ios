@@ -31,8 +31,7 @@
 #import "JSONKit.h"
 
 #define USER_GET_ENDPOINT     @"user/"
-#define USER_POST_ENDPOINT    @"user/"
-#define USER_PUT_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%@", userid]
+#define USER_POST_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/", userid]
 
 @implementation SocializeUserService
 
@@ -45,7 +44,12 @@
 -(void) getUsersWithIds:(NSArray*)ids
 {
     NSDictionary* params = [NSDictionary dictionaryWithObject:ids forKey:@"id"];
-    [self ExecuteGetRequestAtEndPoint:USER_GET_ENDPOINT WithParams:params expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:USER_GET_ENDPOINT
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];
 }
 
 -(void) getUserWithId:(int)userId
@@ -68,7 +72,7 @@
 }
 
 -(void) updateUser:(id<SocializeFullUser>)user profileImage:(UIImage*)image {
-    NSString* test = [NSString stringWithFormat:@"user/%d/", user.objectID];
+    NSString* userResource = USER_POST_ENDPOINT(user.objectID);
     
     NSMutableDictionary * jsonParams =  [[[_objectCreator createDictionaryRepresentationOfObject:user] mutableCopy] autorelease];
     if (image != nil) {
@@ -79,8 +83,14 @@
     }
 
     NSString *json = [jsonParams JSONString];
-    NSMutableDictionary* params = [self genereteParamsFromJsonString:json];
-    [self ExecutePutRequestAtEndPoint:test WithParams:params expectedResponseFormat:SocializeDictionary];
+    NSMutableDictionary* params = [self generateParamsFromJsonString:json];
+    SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"POST"
+                                                           resourcePath:userResource
+                                                     expectedJSONFormat:SocializeDictionary
+                                                                 params:params];
+    request.operationType = SocializeRequestOperationTypeUpdate;
+    [self executeRequest:request];
+
 }
 
 @end

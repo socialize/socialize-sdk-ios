@@ -32,7 +32,6 @@
 @private
     OAMutableURLRequest *request;
     NSURLResponse *response;
-    NSURLConnection *connection;
     NSError *error;
     NSData *responseData;
     id delegate;

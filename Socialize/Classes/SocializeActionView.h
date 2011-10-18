@@ -22,7 +22,6 @@
 	UIButton*	_commentButton;
 	UIButton*	_likeButton;
 	UIButton*	_viewCounter;
-	UIButton*	_likeListButton;
 	BOOL		_isLiked;
 	
 	UIFont*		_buttonLabelFont;

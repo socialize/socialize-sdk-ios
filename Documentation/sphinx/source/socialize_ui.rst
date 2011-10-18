@@ -1,3 +1,5 @@
+.. include:: feedback_widget.rst
+
 =========================================
 Implementing the UI 
 =========================================
@@ -31,12 +33,45 @@ of comments associated with an entity (URL).
 Displaying the Comment View
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When you want to launch the comment view, simply instantiate and push the commentViewController :
+When you want to launch the comment view, simply instantiate and present the commentViewController :
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1266199.js?file=MyCustomViewController.m"></script>
+        <script src="https://gist.github.com/1293791.js"> </script>
 
 Socialize Action Bar
---------------------
-*Coming Soon!*
+----------------------
+
+First you'll want to instantiate a SocializeActionBar controller and add the view to your view controller:
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1274308.js?file=controller.m"></script>
+
+Once that action bar is in your view you'll want to make a call to increment the view on your entity.  This will send back a view count on the entity as well as refresh the comment counter
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1274308.js?file=viewController.m"></script> 
+
+Adding Facebook Support
+-------------------------
+To add Facebook support in Socialize, you'll need to perform three steps:
+
+Let Socialize know your Facebook app id.  You can register or find your Facebook app id here: https://developers.facebook.com/apps
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1294278.js?file=gistfile1.m"></script>
+
+You must register your app to open with your facebook app id url by adding a URL Types array to your Application's <MyApp>-Info.plist.
+The string is a lowercase fb followed by your app id. The example app is configured as below:
+
+.. image:: images/facebook_urltypes.png	
+
+You must also be sure to call [Socialize handleOpenURL:url] from your UIApplicationDelegate's application:handleOpenURL: method. Socialize will take care of handing off the openURL request to the underlying `Facebook iOS SDK <http://developers.facebook.com/docs/reference/iossdk/authentication/>`_. This completes the authentication flow.
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1294195.js?file=appDelegate.m"></script>
+

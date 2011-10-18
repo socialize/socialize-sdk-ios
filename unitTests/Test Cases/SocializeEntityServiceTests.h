@@ -39,6 +39,7 @@
 {
     SocializeEntityService * _entityService;
     id _mockFactory;
+    id _mockService;
 }
 
 @end

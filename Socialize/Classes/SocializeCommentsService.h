@@ -31,7 +31,6 @@
 #import "SocializeService.h"
 
 @class SocializeCommentsService;
-@class SocializeProvider;
 @class SocializeObjectFactory;
 
 @protocol SocializeComment;
