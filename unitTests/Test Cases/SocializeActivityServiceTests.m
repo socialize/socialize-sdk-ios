@@ -30,6 +30,7 @@
 #import "SocializeActivityService.h"
 #import "SocializeService+Testing.h"
 #import "SocializeLikeService.h"
+#import "SocializeActivity.h"
 
 @implementation SocializeActivityServiceTests
 
@@ -40,7 +41,7 @@
     [service release];
 }
 
--(void)tearDown
+-(void)tearDownClass
 {
     [_activityService release];
 }
@@ -57,4 +58,23 @@
     [_activityService verify];
 }
 
+-(void)testGetActivityOfUser
+{    
+    [[_activityService expect]executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:@"user/123/activity/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:nil]];
+    id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
+    int identificator = 123;
+    [[[mockUser stub]andReturnValue:OCMOCK_VALUE(identificator)]objectID];
+    [_activityService getActivityOfUser:mockUser];
+    [_activityService verify];
+    [mockUser verify];
+}
+
+-(void) testProtocol
+{
+    GHAssertTrue([_activityService ProtocolType] == @protocol(SocializeActivity), nil);
+}
 @end

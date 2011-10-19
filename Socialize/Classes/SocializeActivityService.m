@@ -38,4 +38,25 @@
      ];
 }
 
+-(void) getActivityOfUser:(id<SocializeUser>)user
+{
+    [self getActivityOfUser:user first:nil last:nil];
+}
+
+-(void) getActivityOfUser:(id<SocializeUser>)user first: (NSNumber*)first last:(NSNumber*)last
+{
+    NSMutableDictionary* params = nil;
+    
+    if (first && last)
+        params = [NSMutableDictionary dictionaryWithObjectsAndKeys: first, @"first", last, @"last", nil];
+    
+    NSString* resourcePath = [NSString stringWithFormat:@"user/%d/activity/", user.objectID];
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:resourcePath
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];   
+}
+
 @end

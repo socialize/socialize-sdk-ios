@@ -124,6 +124,7 @@
 {
      _loadingView = [LoadingView loadingViewInView:self.view]; 
     [socialize getActivityOfCurrentApplication];
+//    [socialize getActivityOfUser: socialize.authenticatedUser];
 }
 
 @end

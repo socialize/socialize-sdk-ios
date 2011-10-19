@@ -467,4 +467,5 @@ otherwise you will get a failure.
 -(void)updateUserProfile:(id<SocializeFullUser>)user profileImage:(UIImage*)profileImage;
 
 -(void)getActivityOfCurrentApplication;
+-(void)getActivityOfUser:(id<SocializeUser>)user;
 @end

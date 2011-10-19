@@ -303,4 +303,9 @@
 {
     [_activityService getActivityOfCurrentApplication];
 }
+
+-(void)getActivityOfUser:(id<SocializeUser>)user
+{
+    [_activityService getActivityOfUser:user];
+}
 @end
