@@ -8,8 +8,35 @@
 
 #import "SocializeActivityService.h"
 #import "SocializeActivity.h"
+@interface SocializeActivityService()
+-(NSString*)resourcePathWithUserId: (int)identificator andActivityType:(SocializeActivityType) type;
+@end
 
 @implementation SocializeActivityService
+
+-(NSString*)resourcePathWithUserId: (int)identificator andActivityType:(SocializeActivityType) type
+{
+    NSString* resourcePath = nil;
+    switch (type) {
+        case SocializeCommentActivity:
+            resourcePath = [NSString stringWithFormat:@"user/%d/comment/", identificator];            
+            break;
+        case SocializeLikeActivity:
+            resourcePath = [NSString stringWithFormat:@"user/%d/like/", identificator];            
+            break;
+        case SocializeShareActivity:
+            resourcePath = [NSString stringWithFormat:@"user/%d/share/", identificator];            
+            break;
+        case SocializeViewActivity:
+            resourcePath = [NSString stringWithFormat:@"user/%d/view/", identificator];            
+            break;
+            
+        default:
+            resourcePath = [NSString stringWithFormat:@"user/%d/activity/", identificator];
+            break;
+    }
+    return resourcePath;
+}
 
 -(Protocol *)ProtocolType
 {
@@ -40,20 +67,20 @@
 
 -(void) getActivityOfUser:(id<SocializeUser>)user
 {
-    [self getActivityOfUser:user first:nil last:nil];
+    [self getActivityOfUser:user first:nil last:nil activity:SocializeAllActivity];
 }
 
--(void) getActivityOfUser:(id<SocializeUser>)user first: (NSNumber*)first last:(NSNumber*)last
+-(void) getActivityOfUser:(id<SocializeUser>)user first: (NSNumber*)first last:(NSNumber*)last activity: (SocializeActivityType) type
 {
     NSMutableDictionary* params = nil;
     
     if (first && last)
         params = [NSMutableDictionary dictionaryWithObjectsAndKeys: first, @"first", last, @"last", nil];
     
-    NSString* resourcePath = [NSString stringWithFormat:@"user/%d/activity/", user.objectID];
+
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
-                                resourcePath:resourcePath
+                                resourcePath:[self resourcePathWithUserId: user.objectID andActivityType: type]
                           expectedJSONFormat:SocializeDictionaryWIthListAndErrors
                                       params:params]
      ];   

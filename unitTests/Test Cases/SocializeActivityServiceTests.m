@@ -46,6 +46,27 @@
     [_activityService release];
 }
 
+-(void)getActivityWithResourcePath:(NSString*) path andType: (SocializeActivityType)type
+{
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:3], @"first", [NSNumber numberWithInt:5], @"last", nil];
+    
+    [[_activityService expect]executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:path
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]];
+    
+    id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
+    int identificator = 123;
+    
+    [[[mockUser stub]andReturnValue:OCMOCK_VALUE(identificator)]objectID];
+    
+    [_activityService getActivityOfUser:mockUser first:[NSNumber numberWithInt:3] last:[NSNumber numberWithInt:5] activity:type];
+    
+    [_activityService verify];
+    [mockUser verify];
+}
+
 -(void)testGetActivityOfCurrentApplication
 {    
     [[_activityService expect]executeRequest:
@@ -55,6 +76,20 @@
                                       params:nil]];
     
     [_activityService getActivityOfCurrentApplication];
+    [_activityService verify];
+}
+
+-(void)testGetActivityOfCurrentApplicationWithPagination
+{   
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:3], @"first", [NSNumber numberWithInt:5], @"last", nil];
+    
+    [[_activityService expect]executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:@"activity/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]];
+    
+    [_activityService getActivityOfCurrentApplicationWithFirst:[NSNumber numberWithInt:3] last:[NSNumber numberWithInt:5]];
     [_activityService verify];
 }
 
@@ -71,6 +106,31 @@
     [_activityService getActivityOfUser:mockUser];
     [_activityService verify];
     [mockUser verify];
+}
+
+-(void)testGetAllActivityOfUserWithPagination
+{    
+    [self getActivityWithResourcePath: @"user/123/activity/" andType: SocializeAllActivity];
+}
+
+-(void)testGetCommentActivityOfUserWithPagination
+{    
+    [self getActivityWithResourcePath: @"user/123/comment/" andType: SocializeCommentActivity];
+}
+
+-(void)testGetLikeActivityOfUserWithPagination
+{    
+    [self getActivityWithResourcePath: @"user/123/like/" andType: SocializeLikeActivity];
+}
+
+-(void)testGetViewActivityOfUserWithPagination
+{    
+    [self getActivityWithResourcePath: @"user/123/view/" andType: SocializeViewActivity];
+}
+
+-(void)testGetShareActivityOfUserWithPagination
+{    
+    [self getActivityWithResourcePath: @"user/123/share/" andType: SocializeShareActivity];
 }
 
 -(void) testProtocol
