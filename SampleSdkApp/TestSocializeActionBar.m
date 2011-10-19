@@ -62,7 +62,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [bar incrementViewCount];
 }
 
 - (void)viewDidLoad
@@ -79,6 +78,7 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     self.entityView = nil;
+    [bar release]; bar = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

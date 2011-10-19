@@ -20,6 +20,7 @@
 #import "TestSocializeActionBar.h"
 #import "InputBox.h"
 #import "TestActivityViewController.h"
+#import "TestTabbedSocializeActionBar.h"
 
 #if RUN_KIF_TESTS
 #import <OCMock/OCMock.h>
@@ -213,7 +214,9 @@
             NSString* url = [self getEntityKey];
             if(url)
             {
-                controller = [[TestSocializeActionBar alloc] initWithEntityUrl:url];
+//                controller = [[TestSocializeActionBar alloc] initWithEntityUrl:url];
+                controller = [[TestTabbedSocializeActionBar alloc] init];
+                [(TestTabbedSocializeActionBar*)controller setEntityUrl:url];
                 [self.navigationController pushViewController:controller animated:YES];
             }
             break;

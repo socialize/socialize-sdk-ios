@@ -35,8 +35,6 @@
 #import "SocializeView.h"
 #import "SocializeEntity.h"
 
-#define ACTION_PANE_HEIGHT 44
-
 @interface SocializeActionBar()
 @property(nonatomic, retain) id<SocializeLike> entityLike;
 @property(nonatomic, retain) id<SocializeView> entityView;
@@ -48,6 +46,7 @@
 @synthesize entity;
 @synthesize entityLike;
 @synthesize entityView;
+@synthesize didFetchEntity = _didFetchEntity;
 
 +(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url
 {
@@ -61,7 +60,6 @@
     self = [super init];
     if(self)
     {
-        viewRect = CGRectMake(0, parentViewSize.height - ACTION_PANE_HEIGHT, parentViewSize.width,  ACTION_PANE_HEIGHT);
         self.entity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
         [entity setKey:url];
     }
@@ -73,7 +71,6 @@
     self = [super init];
     if(self)
     {
-        viewRect = CGRectMake(0, parentViewSize.height - ACTION_PANE_HEIGHT, parentViewSize.width,  ACTION_PANE_HEIGHT);
         self.entity = socEntity;
     }
     return self;
@@ -104,7 +101,7 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:viewRect];
+    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectZero];
     self.view = actionView;
     actionView.delegate = self;
     [actionView release];
@@ -140,6 +137,7 @@
         {
             self.entity = (id<SocializeEntity>)object;          
             [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:entityLike!=nil withCommentsCount:[NSNumber numberWithInt:entity.comments]];
+            self.didFetchEntity = YES;
         }
         if ([object conformsToProtocol:@protocol(SocializeLike)])
         {
@@ -214,17 +212,27 @@
 {
 }
 
--(void)incrementViewCount {
-    //convienence method
-    [self viewWillAppear:YES];
-}
 -(void)afterAnonymouslyLoginAction
 {
-    [self.socialize getEntityByKey:[entity key]];
-    if(entityView == nil)
-        [self.socialize viewEntity:entity longitude:nil latitude:nil];
+    if (!self.didFetchEntity) {
+        [self.socialize getEntityByKey:[entity key]];
+    }
+    [self.socialize viewEntity:entity longitude:nil latitude:nil];
+
     if(entityLike == nil)
         [self.socialize getLikesForEntityKey:[entity key] first:nil last:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+-(void)socializeActionViewWillAppear:(SocializeActionView *)socializeActionView {
+    [socializeActionView startActivityForUpdateViewsCount];
+    [self performAutoAuth];
+}
+
+-(void)socializeActionViewWillDisappear:(SocializeActionView *)socializeActionView {
 }
 
 #pragma Socialize Action view delefate

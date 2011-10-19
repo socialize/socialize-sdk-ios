@@ -323,6 +323,14 @@
 		AA863862144CA28300CFA759 /* SocializeProfileEditValueController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA863741144CA22700CFA759 /* SocializeProfileEditValueController.xib */; };
 		AA863863144CA28300CFA759 /* SocializeProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA863742144CA22700CFA759 /* SocializeProfileEditViewController.xib */; };
 		AA863864144CA28300CFA759 /* SocializeProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA863743144CA22700CFA759 /* SocializeProfileViewController.xib */; };
+		AAD7E301144E54730073308D /* GenericViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E2FC144E54730073308D /* GenericViewController.m */; };
+		AAD7E302144E54730073308D /* GenericViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E2FC144E54730073308D /* GenericViewController.m */; };
+		AAD7E303144E54730073308D /* GenericViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD7E2FD144E54730073308D /* GenericViewController.xib */; };
+		AAD7E304144E54730073308D /* GenericViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD7E2FD144E54730073308D /* GenericViewController.xib */; };
+		AAD7E305144E54730073308D /* TestTabbedSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E2FF144E54730073308D /* TestTabbedSocializeActionBar.m */; };
+		AAD7E306144E54730073308D /* TestTabbedSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E2FF144E54730073308D /* TestTabbedSocializeActionBar.m */; };
+		AAD7E307144E54730073308D /* TestTabbedSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD7E300144E54730073308D /* TestTabbedSocializeActionBar.xib */; };
+		AAD7E308144E54730073308D /* TestTabbedSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD7E300144E54730073308D /* TestTabbedSocializeActionBar.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -589,6 +597,12 @@
 		AAAFE93F1435640C00851C73 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = Frameworks/SymbolCollisionTestLibs/libJSONKit.a; sourceTree = "<group>"; };
 		AAAFE9401435640C00851C73 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth.a; path = Frameworks/SymbolCollisionTestLibs/libOAuth.a; sourceTree = "<group>"; };
 		AAAFE9411435640C00851C73 /* libSBJson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSBJson.a; path = Frameworks/SymbolCollisionTestLibs/libSBJson.a; sourceTree = "<group>"; };
+		AAD7E2FB144E54730073308D /* GenericViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericViewController.h; sourceTree = "<group>"; };
+		AAD7E2FC144E54730073308D /* GenericViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericViewController.m; sourceTree = "<group>"; };
+		AAD7E2FD144E54730073308D /* GenericViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericViewController.xib; sourceTree = "<group>"; };
+		AAD7E2FE144E54730073308D /* TestTabbedSocializeActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTabbedSocializeActionBar.h; sourceTree = "<group>"; };
+		AAD7E2FF144E54730073308D /* TestTabbedSocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTabbedSocializeActionBar.m; sourceTree = "<group>"; };
+		AAD7E300144E54730073308D /* TestTabbedSocializeActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTabbedSocializeActionBar.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -683,6 +697,12 @@
 		AA3325CB144CD2C90033C7FA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				AAD7E2FB144E54730073308D /* GenericViewController.h */,
+				AAD7E2FC144E54730073308D /* GenericViewController.m */,
+				AAD7E2FD144E54730073308D /* GenericViewController.xib */,
+				AAD7E2FE144E54730073308D /* TestTabbedSocializeActionBar.h */,
+				AAD7E2FF144E54730073308D /* TestTabbedSocializeActionBar.m */,
+				AAD7E300144E54730073308D /* TestTabbedSocializeActionBar.xib */,
 				AA8636BA144CA0A200CFA759 /* Tests */,
 				AA639DA0144A24BF00660E26 /* AuthenticateViewController.h */,
 				AA639DA1144A24BF00660E26 /* AuthenticateViewController.m */,
@@ -1192,6 +1212,8 @@
 				AA8637AD144CA22800CFA759 /* SocializeProfileEditViewController.xib in Resources */,
 				AA8637AE144CA22800CFA759 /* SocializeProfileViewController.xib in Resources */,
 				AA3325C9144CD2980033C7FA /* Smiley.png in Resources */,
+				AAD7E303144E54730073308D /* GenericViewController.xib in Resources */,
+				AAD7E307144E54730073308D /* TestTabbedSocializeActionBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1321,6 +1343,8 @@
 				AA863862144CA28300CFA759 /* SocializeProfileEditValueController.xib in Resources */,
 				AA863863144CA28300CFA759 /* SocializeProfileEditViewController.xib in Resources */,
 				AA863864144CA28300CFA759 /* SocializeProfileViewController.xib in Resources */,
+				AAD7E304144E54730073308D /* GenericViewController.xib in Resources */,
+				AAD7E308144E54730073308D /* TestTabbedSocializeActionBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1418,6 +1442,8 @@
 				AA8636C9144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */,
 				AA8636CA144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
 				AA8636CB144CA0A200CFA759 /* SampleSdkAppKIFTestController.m in Sources */,
+				AAD7E301144E54730073308D /* GenericViewController.m in Sources */,
+				AAD7E305144E54730073308D /* TestTabbedSocializeActionBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1451,6 +1477,8 @@
 				AA8637DC144CA28300CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */,
 				AA8637DD144CA28300CFA759 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
 				AA8637DE144CA28300CFA759 /* SampleSdkAppKIFTestController.m in Sources */,
+				AAD7E302144E54730073308D /* GenericViewController.m in Sources */,
+				AAD7E306144E54730073308D /* TestTabbedSocializeActionBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

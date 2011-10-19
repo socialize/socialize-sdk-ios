@@ -26,6 +26,8 @@
 #define COMMENT_INDICATOR_SIZE_HEIGHT 17
 #define PADDING_BETWEEN_TEXT_ICON 2
 
+#define ACTION_PANE_HEIGHT 44
+
 @interface SocializeActionView()
 -(void)instantiateButtons;
 -(void)setupButtons;
@@ -187,12 +189,14 @@
     buttonOrigin.x = PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
     
-
 	[_viewCounter setTitle:formattedValue forState:UIControlStateNormal];
 //    _viewCounter.accessibilityValue= formattedValue;
 	_viewCounter.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
 	[_viewCounter setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON - 2)]; // Left inset is the negative of image width.
 	[_viewCounter setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
+    
+    _viewCounter.hidden = NO;
+    [_activityIndicator stopAnimating];
 }
 
 
@@ -344,6 +348,33 @@
      blendMode:kCGBlendModeMultiply alpha:1.0];
 }
 
+- (void)willMoveToWindow:(UIWindow *)newWindow {
+    [super willMoveToWindow:newWindow];
+    
+    if (newWindow != nil) {
+        self.frame = CGRectMake(0, self.superview.bounds.size.height - ACTION_PANE_HEIGHT, self.superview.bounds.size.width,  ACTION_PANE_HEIGHT);
+        
+        if ([self.delegate respondsToSelector:@selector(socializeActionViewWillAppear:)]) {
+            [self.delegate socializeActionViewWillAppear:self];
+        }
+    } else {
+        if ([self.delegate respondsToSelector:@selector(socializeActionViewWillDisappear:)]) {
+            [self.delegate socializeActionViewWillDisappear:self];
+        }
+
+    }
+}
+
+- (void)didMoveToSuperview {
+//    [super willMoveToSuperview:newSuperview];
+    [super didMoveToSuperview];
+    
+}
+
+- (void)startActivityForUpdateViewsCount {
+    _viewCounter.hidden = YES;
+    [_activityIndicator startAnimating];
+}
 
 - (void)dealloc 
 {    
