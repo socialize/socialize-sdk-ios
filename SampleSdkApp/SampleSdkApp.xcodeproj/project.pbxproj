@@ -376,19 +376,19 @@
 			remoteGlobalIDString = 03DAC01F11FEB771007AF17B;
 			remoteInfo = OCMockPhoneDevice;
 		};
-		AA3325E2144CD6510033C7FA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 033C84AE11F585CB0009B9CD;
-			remoteInfo = OCMockPhoneSim;
-		};
 		AA8636D3144CA0DB00CFA759 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA8636CC144CA0DB00CFA759 /* KIF.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = AAB07268139719AC008AF393;
 			remoteInfo = KIF;
+		};
+		AAD7E353144F54B50073308D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 033C84AE11F585CB0009B9CD;
+			remoteInfo = OCMockPhoneSim;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -974,15 +974,15 @@
 			buildConfigurationList = AA2DA2C31435437400C62B97 /* Build configuration list for PBXNativeTarget "SampleSdkApp Integration Tests" */;
 			buildPhases = (
 				AA171BCE14354CCD0056D65F /* Build Socialize Framework Using xcodebuild */,
+				AA2DA2CE1435461700C62B97 /* ShellScript */,
 				AA2DA2271435437400C62B97 /* Sources */,
 				AA2DA2411435437400C62B97 /* Frameworks */,
 				AA2DA24B1435437400C62B97 /* Resources */,
-				AA2DA2CE1435461700C62B97 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				AA3325E3144CD6510033C7FA /* PBXTargetDependency */,
+				AAD7E354144F54B50073308D /* PBXTargetDependency */,
 				AA2025A6144CB219006C1F8F /* PBXTargetDependency */,
 			);
 			name = "SampleSdkApp Integration Tests";
@@ -1495,10 +1495,10 @@
 			name = KIF;
 			targetProxy = AA2025B3144CB273006C1F8F /* PBXContainerItemProxy */;
 		};
-		AA3325E3144CD6510033C7FA /* PBXTargetDependency */ = {
+		AAD7E354144F54B50073308D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OCMockPhoneSim;
-			targetProxy = AA3325E2144CD6510033C7FA /* PBXContainerItemProxy */;
+			targetProxy = AAD7E353144F54B50073308D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1592,8 +1592,8 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../Frameworks/KIF/\"/**",
-					"\"$(CONFIGURATION_BUILD_DIR)/Headers\"",
+					"$(PROJECT_DIR)/../Frameworks/KIF/**",
+					"$(CONFIGURATION_BUILD_DIR)/Headers",
 				);
 				INFOPLIST_FILE = "SampleSdkApp Integration Tests-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -1622,8 +1622,8 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../Frameworks/KIF/\"/**",
-					"\"$(CONFIGURATION_BUILD_DIR)/Headers\"",
+					"$(PROJECT_DIR)/../Frameworks/KIF/**",
+					"$(CONFIGURATION_BUILD_DIR)/Headers",
 				);
 				INFOPLIST_FILE = "SampleSdkApp Integration Tests-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
