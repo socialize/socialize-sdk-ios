@@ -1,8 +1,8 @@
 /*
- * SocializeActivityServiceTests.m
+ * SocializeActivityJSONFormatter.h
  * SocializeSDK
  *
- * Created on 10/18/11.
+ * Created on 10/19/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -23,38 +23,13 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- * See Also: http://gabriel.github.com/gh-unit/
  */
 
-#import "SocializeActivityServiceTests.h"
-#import "SocializeActivityService.h"
-#import "SocializeService+Testing.h"
-#import "SocializeLikeService.h"
+#import <Foundation/Foundation.h>
+#import "SocializeObjectJSONFormatter.h"
 
-@implementation SocializeActivityServiceTests
-
--(void)setUpClass
-{
-    SocializeActivityService* service = [[SocializeActivityService alloc] init];
-    _activityService = [[service nonRetainingMock] retain];
-    [service release];
-}
-
--(void)tearDown
-{
-    [_activityService release];
-}
-
--(void)testGetActivityOfCurrentApplication
-{    
-    [[_activityService expect]executeRequest:
-     [SocializeRequest requestWithHttpMethod:@"GET"
-                                resourcePath:@"activity/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
-                                      params:nil]];
+@interface SocializeActivityJSONFormatter : SocializeObjectJSONFormatter {
     
-    [_activityService getActivityOfCurrentApplication];
-    [_activityService verify];
 }
 
 @end

@@ -19,6 +19,7 @@
 #import "TestShowSmallUserInfo.h"
 #import "TestSocializeActionBar.h"
 #import "InputBox.h"
+#import "TestActivityViewController.h"
 
 #if RUN_KIF_TESTS
 #import <OCMock/OCMock.h>
@@ -44,6 +45,7 @@
                       @"Test small user info after authentication",
                       @"Test User Profile",
                       @"Test Socialize Action Bar",
+                      @"Test Current user activity",
                       nil
                       ]retain];
 
@@ -216,6 +218,10 @@
             }
             break;
         }
+        case 11:
+            controller = [[TestActivityViewController alloc] initWithNibName:@"TestActivityViewController" bundle:nil];
+            [self.navigationController pushViewController:controller animated:YES];
+            break;
     }    
     [controller release];
 }

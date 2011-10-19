@@ -24,33 +24,29 @@
 
 -(void)testToshare
 {
-    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"share_single_response.json"];
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/share_single_response.json"];
     NSDictionary * JSONDictionaryToParse =(NSDictionary *)[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
-    id mockshare = [OCMockObject mockForProtocol:@protocol(SocializeShare)];
+    id mockShare = [OCMockObject mockForProtocol:@protocol(SocializeShare)];
     
-    [[mockshare expect] setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
-//    [[mockshare expect] setText:[JSONDictionaryToParse objectForKey:@"text"]];
-//    [[mockshare expect] setMedium:[((NSNumber*)[JSONDictionaryToParse objectForKey:@"medium"]) intValue]];
-//    [[mockshare expect] setLat:[JSONDictionaryToParse objectForKey:@"lat"]];
-//   [[mockshare expect] setLng:[JSONDictionaryToParse objectForKey:@"lng"]];
-    [[mockshare expect] setText:OCMOCK_ANY];
-    [[mockshare expect] setMedium:0];
-    [[mockshare expect] setLat:OCMOCK_ANY];
-    [[mockshare expect] setLng:OCMOCK_ANY];
+    [[mockShare expect] setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
+    [[mockShare expect] setLat:((NSNumber*)[JSONDictionaryToParse objectForKey:@"lat"])];
+    [[mockShare expect] setLng:((NSNumber*)[JSONDictionaryToParse objectForKey:@"lng"])];
+    [[mockShare expect] setText:[JSONDictionaryToParse objectForKey:@"text"]];
+    [[mockShare expect] setMedium:[[JSONDictionaryToParse objectForKey:@"medium"]intValue]];
     
-    [[mockshare expect] setApplication:OCMOCK_ANY];
-    [[mockshare expect] setUser:OCMOCK_ANY];
-    [[mockshare expect] setEntity:OCMOCK_ANY];
+    [[mockShare expect] setApplication:OCMOCK_ANY];
+    [[mockShare expect] setUser:OCMOCK_ANY];
+    [[mockShare expect] setEntity:OCMOCK_ANY];
     
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ssZZZ"];
-    [[mockshare expect] setDate:[df dateFromString:[JSONDictionaryToParse valueForKey:@"date"]]];
+    [[mockShare expect] setDate:[df dateFromString:[JSONDictionaryToParse valueForKey:@"date"]]];
     [df release]; df = nil;
     
     SocializeShareJSONFormatter *entityFormatter = [[[SocializeShareJSONFormatter alloc] initWithFactory:_factory] autorelease];
-    [entityFormatter toObject:mockshare fromString:JSONStringToParse];
-    [mockshare verify];
+    [entityFormatter toObject:mockShare fromString:JSONStringToParse];
+    [mockShare verify];
 }
 
 @end

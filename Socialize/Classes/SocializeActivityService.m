@@ -7,16 +7,22 @@
 //
 
 #import "SocializeActivityService.h"
-
+#import "SocializeActivity.h"
 
 @implementation SocializeActivityService
 
--(void) getActivityOfCurrentUser;
+-(Protocol *)ProtocolType
 {
-    [self getActivityOfCurrentUserWithFirst:nil last:nil];
+    return  @protocol(SocializeActivity);
 }
 
--(void) getActivityOfCurrentUserWithFirst:(NSNumber*)first last:(NSNumber*)last
+
+-(void) getActivityOfCurrentApplication;
+{
+    [self getActivityOfCurrentApplicationWithFirst:nil last:nil];
+}
+
+-(void) getActivityOfCurrentApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last
 {
     NSMutableDictionary* params = nil;
     

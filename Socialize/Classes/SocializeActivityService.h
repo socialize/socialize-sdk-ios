@@ -15,8 +15,8 @@
 {
 }
 
--(void) getActivityOfCurrentUser;
--(void) getActivityOfCurrentUserWithFirst:(NSNumber*)first last:(NSNumber*)last;
+-(void) getActivityOfCurrentApplication;
+-(void) getActivityOfCurrentApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last;
 //-(void) getActivityOfUser:(id<SocializeUser>)user;
 //-(void) getActivityOfUser:(id<SocializeUser>)user first: (NSNumber*)first last:(NSNumber*)last;
 

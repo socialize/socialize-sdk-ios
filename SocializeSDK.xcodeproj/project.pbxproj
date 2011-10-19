@@ -212,6 +212,14 @@
 		16D2478B1417A986008A550D /* PostCommentViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */; };
 		16D2479D1418D669008A550D /* ImagesCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2479B1418D668008A550D /* ImagesCache.m */; };
 		16D54786144D836A0010732A /* SocializeActivityServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D54785144D836A0010732A /* SocializeActivityServiceTests.m */; };
+		16D54795144E9A630010732A /* TestActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D54791144E997A0010732A /* TestActivityViewController.m */; };
+		16D54796144E9A630010732A /* TestActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D54792144E997C0010732A /* TestActivityViewController.xib */; };
+		16D54797144E9A640010732A /* TestActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D54791144E997A0010732A /* TestActivityViewController.m */; };
+		16D54798144E9A640010732A /* TestActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D54792144E997C0010732A /* TestActivityViewController.xib */; };
+		16D547A1144EA4340010732A /* SocializeActivityJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 16D5479F144EA4320010732A /* SocializeActivityJSONFormatter.h */; };
+		16D547A2144EA4340010732A /* SocializeActivityJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 16D5479F144EA4320010732A /* SocializeActivityJSONFormatter.h */; };
+		16D547A3144EA4340010732A /* SocializeActivityJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D547A0144EA4330010732A /* SocializeActivityJSONFormatter.m */; };
+		16D547A4144EA4340010732A /* SocializeActivityJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D547A0144EA4330010732A /* SocializeActivityJSONFormatter.m */; };
 		16DAC99A1420C0EE0011CD5F /* UIKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DAC9981420C0EE0011CD5F /* UIKeyboardListener.m */; };
 		16E33C091445BFA3006E2EB4 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C061445BFA3006E2EB4 /* NSString+MD5Addition.m */; };
 		16E33C0A1445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C081445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m */; };
@@ -1192,6 +1200,11 @@
 		16D2479B1418D668008A550D /* ImagesCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagesCache.m; path = Classes/ImagesCache.m; sourceTree = "<group>"; };
 		16D54784144D836A0010732A /* SocializeActivityServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityServiceTests.h; path = "Test Cases/SocializeActivityServiceTests.h"; sourceTree = "<group>"; };
 		16D54785144D836A0010732A /* SocializeActivityServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityServiceTests.m; path = "Test Cases/SocializeActivityServiceTests.m"; sourceTree = "<group>"; };
+		16D54790144E997A0010732A /* TestActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestActivityViewController.h; sourceTree = "<group>"; };
+		16D54791144E997A0010732A /* TestActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestActivityViewController.m; sourceTree = "<group>"; };
+		16D54792144E997C0010732A /* TestActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestActivityViewController.xib; sourceTree = "<group>"; };
+		16D5479F144EA4320010732A /* SocializeActivityJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityJSONFormatter.h; path = Classes/SocializeActivityJSONFormatter.h; sourceTree = "<group>"; };
+		16D547A0144EA4330010732A /* SocializeActivityJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityJSONFormatter.m; path = Classes/SocializeActivityJSONFormatter.m; sourceTree = "<group>"; };
 		16DAC9971420C0EE0011CD5F /* UIKeyboardListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIKeyboardListener.h; path = Classes/UIKeyboardListener.h; sourceTree = "<group>"; };
 		16DAC9981420C0EE0011CD5F /* UIKeyboardListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIKeyboardListener.m; path = Classes/UIKeyboardListener.m; sourceTree = "<group>"; };
 		16E33C051445BFA3006E2EB4 /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5Addition.h"; path = "Classes/NSString+MD5Addition.h"; sourceTree = "<group>"; };
@@ -2026,6 +2039,8 @@
 				6D9A0BA613BE1EA100AE949C /* SocializeShareJSONFormatter.m */,
 				6D205A3C13C3DB6300D0645E /* SocializeErrorFormatter.h */,
 				6D205A3D13C3DB7000D0645E /* SocializeErrorFormatter.m */,
+				16D5479F144EA4320010732A /* SocializeActivityJSONFormatter.h */,
+				16D547A0144EA4330010732A /* SocializeActivityJSONFormatter.m */,
 			);
 			name = SocializeObjectParsers;
 			sourceTree = "<group>";
@@ -2557,6 +2572,9 @@
 				AAAFE8D314355F1B00851C73 /* UserProfileViewController.h */,
 				AAAFE8D414355F1B00851C73 /* UserProfileViewController.m */,
 				AAAFE8D514355F1B00851C73 /* UserProfileViewController.xib */,
+				16D54790144E997A0010732A /* TestActivityViewController.h */,
+				16D54791144E997A0010732A /* TestActivityViewController.m */,
+				16D54792144E997C0010732A /* TestActivityViewController.xib */,
 			);
 			path = SampleSdkApp;
 			sourceTree = "<group>";
@@ -2592,6 +2610,7 @@
 				AA202535144CA8B4006C1F8F /* _Socialize.h in Headers */,
 				AA202537144CA8C9006C1F8F /* SocializeCommonDefinitions.h in Headers */,
 				AA202539144CA8DD006C1F8F /* SocializeServiceDelegate.h in Headers */,
+				16D547A2144EA4340010732A /* SocializeActivityJSONFormatter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2623,6 +2642,7 @@
 				AA202534144CA8B4006C1F8F /* _Socialize.h in Headers */,
 				AA202536144CA8C9006C1F8F /* SocializeCommonDefinitions.h in Headers */,
 				AA202538144CA8DC006C1F8F /* SocializeServiceDelegate.h in Headers */,
+				16D547A1144EA4340010732A /* SocializeActivityJSONFormatter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3204,6 +3224,7 @@
 				AA332687144CD8070033C7FA /* comment-header-icon@2x.png in Resources */,
 				AA332688144CD8070033C7FA /* commentsNavBarLeftItemView.xib in Resources */,
 				AA3CB2C7144CEEAC00AA861A /* Smiley.png in Resources */,
+				16D54798144E9A640010732A /* TestActivityViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3337,6 +3358,7 @@
 				1643769A144C4F4E001EA3E4 /* comment-header-icon@2x.png in Resources */,
 				1643769D144C4F4E001EA3E4 /* commentsNavBarLeftItemView.xib in Resources */,
 				AA3CB2C6144CEEAC00AA861A /* Smiley.png in Resources */,
+				16D54796144E9A630010732A /* TestActivityViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3701,6 +3723,7 @@
 				16E33C091445BFA3006E2EB4 /* NSString+MD5Addition.m in Sources */,
 				16E33C0A1445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m in Sources */,
 				16E33C161445D2ED006E2EB4 /* SocializeGeocoderAdapter.m in Sources */,
+				16D547A3144EA4340010732A /* SocializeActivityJSONFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3789,6 +3812,7 @@
 				AA3326E7144CD9FB0033C7FA /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */,
 				AA3326E8144CD9FB0033C7FA /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
 				AA3326E9144CD9FB0033C7FA /* SampleSdkAppKIFTestController.m in Sources */,
+				16D54797144E9A640010732A /* TestActivityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3817,6 +3841,7 @@
 				AAAFE91F14355F1B00851C73 /* UILabel-Additions.m in Sources */,
 				AAAFE92114355F1B00851C73 /* UserProfileViewController.m in Sources */,
 				1638C529143DC98E00538659 /* TestSocializeActionBar.m in Sources */,
+				16D54795144E9A630010732A /* TestActivityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3926,6 +3951,7 @@
 				16437677144C33D8001EA3E4 /* NSString+MD5Addition.m in Sources */,
 				16437678144C33DB001EA3E4 /* UIDevice+IdentifierAddition.m in Sources */,
 				16437679144C33DF001EA3E4 /* SocializeGeocoderAdapter.m in Sources */,
+				16D547A4144EA4340010732A /* SocializeActivityJSONFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

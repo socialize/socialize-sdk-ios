@@ -1,8 +1,8 @@
 /*
- * SocializeCommentJSONFormatter.m
+ * SocializeActivityJSONFormatter.m
  * SocializeSDK
  *
- * Created on 6/17/11.
+ * Created on 10/19/11.
  * 
  * Copyright (c) 2011 Socialize, Inc.
  * 
@@ -25,29 +25,37 @@
  * THE SOFTWARE.
  */
 
-#import "SocializeCommentJSONFormatter.h"
-#import "JSONKit.h"
-#import "SocializeComment.h"
+#import "SocializeActivityJSONFormatter.h"
 #import "SocializeObjectFactory.h"
-#import "SocializeEntityJSONFormatter.h"
-#import "SocializeApplicationJSONFormatter.h"
-#import "SocializeUserJSONFormatter.h"
+#import "SocializeObjects.h"
 
-#define IDS_KEY @"ids"
-#define ENTRY_KEY @"key"
-#define ENTITY_KEY @"entity"
-#define COMMENT_KEY @"text"
-
-@implementation SocializeCommentJSONFormatter
-
-#pragma mark Socialize object json formatter
+@implementation SocializeActivityJSONFormatter
 
 -(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {
-    id<SocializeComment> comment = (id<SocializeComment>)toObject;    
-    [comment setText:[JSONDictionary valueForKey:@"text"]];
+    id<SocializeActivity> activity = (id<SocializeActivity>)toObject;
     
-    [super doToObject:comment fromDictionary:JSONDictionary];
+    [activity setObjectID: [[JSONDictionary valueForKey:@"id"]intValue]];
+    
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ssZZZ"];
+    [activity setDate:[df dateFromString:[JSONDictionary valueForKey:@"date"]]];
+    [df release]; df = nil;
+    
+    NSNumber* lat = [JSONDictionary valueForKey:@"lat"];
+    NSNumber* lng = [JSONDictionary valueForKey:@"lng"];
+    
+    if ([lat isKindOfClass:[NSNumber class]])
+        [activity setLat:lat];
+    
+    if ([lng isKindOfClass:[NSNumber class]])
+        [activity setLng:lng];
+    
+    [activity setEntity:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"entity"] forProtocol:@protocol(SocializeEntity)]];
+    
+    [activity setApplication:[_factory createObjectFromDictionary: [JSONDictionary valueForKey:@"application"] forProtocol:@protocol(SocializeApplication)]];
+    
+    [activity setUser:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"user"] forProtocol:@protocol(SocializeUser)]];
 }
 
 @end

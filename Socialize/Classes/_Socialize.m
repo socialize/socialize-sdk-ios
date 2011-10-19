@@ -33,6 +33,7 @@
 @synthesize viewService = _viewService;
 @synthesize userService = _userService;
 @synthesize delegate = _delegate;
+@synthesize activityService = _activityService;
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
@@ -42,6 +43,7 @@
     [_entityService release]; _entityService = nil;
     [_viewService release]; _viewService = nil;
     [_userService release]; _userService = nil;
+    [_activityService release]; _activityService = nil;
     
     [super dealloc];
 }
@@ -59,6 +61,7 @@
         _entityService = [[SocializeEntityService alloc]initWithObjectFactory:_objectFactory delegate:delegate];
         _viewService  = [[SocializeViewService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _userService = [[SocializeUserService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
+        _activityService = [[SocializeActivityService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
     }
     return self;
 }
@@ -295,5 +298,9 @@
     [_userService updateUser:user profileImage:profileImage];
 }
 
-
+#pragma activity related stuff
+-(void)getActivityOfCurrentApplication
+{
+    [_activityService getActivityOfCurrentApplication];
+}
 @end

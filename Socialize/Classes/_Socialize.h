@@ -38,6 +38,7 @@
 @class SocializeEntityService;
 @class SocializeViewService;
 @class SocializeUserService;
+@class SocializeActivityService;
 @class UIImage;
 
 /**
@@ -59,6 +60,7 @@ otherwise you will get a failure.
     SocializeEntityService          *_entityService;
     SocializeViewService            *_viewService;
     SocializeUserService            *_userService;
+    SocializeActivityService        *_activityService;
 }
 /**Get access to the authentication service via <SocializeAuthenticateService>.*/
 @property (nonatomic, retain) SocializeAuthenticateService    *authService;
@@ -72,6 +74,8 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeViewService            *viewService;
 /**Get access to the user service via <SocializeViewService>.*/
 @property (nonatomic, retain) SocializeUserService            *userService;
+/**Get access to the activity service via <SocializeActivityService>.*/
+@property (nonatomic, retain) SocializeActivityService        *activityService;
 /**Current delegate*/
 @property (nonatomic, assign) id<SocializeServiceDelegate> delegate;
 
@@ -461,4 +465,6 @@ otherwise you will get a failure.
 -(void)getUserWithId:(int)userId;
 -(void)updateUserProfile:(id<SocializeFullUser>)user;
 -(void)updateUserProfile:(id<SocializeFullUser>)user profileImage:(UIImage*)profileImage;
+
+-(void)getActivityOfCurrentApplication;
 @end
