@@ -51,6 +51,6 @@
 
 +(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url;
 
--(id)initWithParantViewSize:(CGSize)parentViewSize andEntiryUrl:(NSString*)url;
--(id)initWithParantViewSize:(CGSize)parentViewSize andEntiry:(id<SocializeEntity>)entity;
+-(id)initWithEntityUrl:(NSString*)url;
+-(id)initWithEntity:(id<SocializeEntity>)socEntity;
 @end

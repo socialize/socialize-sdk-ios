@@ -348,12 +348,15 @@
      blendMode:kCGBlendModeMultiply alpha:1.0];
 }
 
+- (void)positionInSuperview {
+    self.frame = CGRectMake(0, self.superview.bounds.size.height - ACTION_PANE_HEIGHT, self.superview.bounds.size.width,  ACTION_PANE_HEIGHT);
+}
+
 - (void)willMoveToWindow:(UIWindow *)newWindow {
     [super willMoveToWindow:newWindow];
     
     if (newWindow != nil) {
-        self.frame = CGRectMake(0, self.superview.bounds.size.height - ACTION_PANE_HEIGHT, self.superview.bounds.size.width,  ACTION_PANE_HEIGHT);
-        
+        [self positionInSuperview];
         if ([self.delegate respondsToSelector:@selector(socializeActionViewWillAppear:)]) {
             [self.delegate socializeActionViewWillAppear:self];
         }

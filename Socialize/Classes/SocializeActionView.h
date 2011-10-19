@@ -47,6 +47,7 @@
 - (void)lockButtons;
 - (void)unlockButtons;
 - (void)startActivityForUpdateViewsCount;
+- (void)positionInSuperview;
 
 @property (nonatomic, assign) id<SocializeActionViewDelegate> delegate;
 @property (nonatomic, readonly) BOOL isLiked;

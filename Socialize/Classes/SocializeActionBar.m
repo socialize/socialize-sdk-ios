@@ -50,12 +50,12 @@
 
 +(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url
 {
-    SocializeActionBar* bar = [[[SocializeActionBar alloc] initWithParantViewSize:parentController.view.bounds.size andEntiryUrl:url] autorelease];
+    SocializeActionBar* bar = [[[SocializeActionBar alloc] initWithEntityUrl:url] autorelease];
     bar.parentViewController = parentController;
     return bar;
 }
 
--(id)initWithParantViewSize:(CGSize)parentViewSize andEntiryUrl:(NSString*)url
+-(id)initWithEntityUrl:(NSString*)url
 {
     self = [super init];
     if(self)
@@ -66,7 +66,7 @@
     return self;
 }
 
--(id)initWithParantViewSize:(CGSize)parentViewSize andEntiry:(id<SocializeEntity>)socEntity
+-(id)initWithEntity:(id<SocializeEntity>)socEntity
 {
     self = [super init];
     if(self)
