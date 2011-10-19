@@ -246,8 +246,13 @@
     }
 }
 
--(IBAction)viewProfileButtonTouched:(id)sender {
-    // TODO :  lets view the profile    
+-(IBAction)viewProfileButtonTouched:(UIButton*)sender {
+    // TODO :  lets view the profile
+    SocializeComment *comment = ((SocializeComment*)[_arrayOfComments objectAtIndex:sender.tag]);
+    id<SocializeUser> user = comment.user;
+    
+    UIViewController *profileViewController = [SocializeProfileViewController socializeProfileViewControllerForUser:user delegate:nil];
+    [self presentModalViewController:profileViewController animated:YES];
 }
 
 -(void)backToCommentsList:(id)sender {

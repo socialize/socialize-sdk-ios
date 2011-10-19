@@ -11,6 +11,8 @@
 #import "UINavigationBarBackground.h"
 #import "UIButton+Socialize.h"
 #import "LoadingView.h"
+#import "ImagesCache.h"
+
 @interface SocializeProfileViewController ()
 -(void)showEditController;
 -(void)hideEditController;
@@ -21,6 +23,7 @@
 @synthesize doneButton = doneButton_;
 @synthesize editButton = editButton_;
 @synthesize user = user_;
+@synthesize fullUser = fullUser_;
 @synthesize userNameLabel = userNameLabel_;
 @synthesize userDescriptionLabel = userDescriptionLabel_;
 @synthesize userLocationLabel = userLocationLabel_;
@@ -30,14 +33,20 @@
 @synthesize loadingView = loadingView_;
 @synthesize socialize = socialize_;
 @synthesize navigationControllerForEdit = navigationControllerForEdit_;
+@synthesize imagesCache = imagesCache_;
 
-+ (UIViewController*)socializeProfileViewControllerWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
++ (UIViewController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeProfileViewControllerDelegate>)delegate {
     SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
     profile.delegate = delegate;
+    profile.user = user;
     UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
     UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:profile] autorelease];
     [nav.navigationBar setBackgroundImage:navImage];
     return nav;
+}
+
++ (UIViewController*)socializeProfileViewControllerWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
+    return [self socializeProfileViewControllerForUser:nil delegate:delegate];
 }
 
 + (UIViewController*)currentUserProfileWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
@@ -47,7 +56,7 @@
 - (void)dealloc {
     self.doneButton = nil;
     self.editButton = nil;
-    self.user = nil;
+    self.fullUser = nil;
     self.userNameLabel = nil;
     self.userDescriptionLabel = nil;
     self.userLocationLabel = nil;
@@ -61,6 +70,14 @@
 
 - (id)init {
     return [super initWithNibName:@"SocializeProfileViewController" bundle:nil];
+}
+
+- (ImagesCache*)imagesCache {
+    if (imagesCache_ == nil) {
+        imagesCache_ = [[ImagesCache sharedImagesCache] retain];
+    }
+    
+    return imagesCache_;
 }
 
 - (Socialize*)socialize {
@@ -107,7 +124,11 @@
 }
 
 - (void)doneButtonPressed:(UIBarButtonItem*)button {
-    [self.delegate profileViewControllerDidCancel:self];
+    if (self.delegate != nil) {
+        [self.delegate profileViewControllerDidCancel:self];
+    } else {
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 
@@ -137,7 +158,7 @@
     NSString *url = user.smallImageUrl;
     
     if (url != nil) {
-        UIImage *existing = [[ImagesCache sharedImagesCache] imageFromCache:url];
+        UIImage *existing = [self.imagesCache imageFromCache:url];
         if (existing != nil) {
             self.profileImageView.image = existing;
         } else {
@@ -152,9 +173,16 @@
             } copy] autorelease];
             
             [self.profileImageActivityIndicator startAnimating];
-            [[ImagesCache sharedImagesCache] loadImageFromUrl:url
+            [self.imagesCache loadImageFromUrl:url
                                                completeAction:complete];
         }
+    }
+    
+    BOOL isCurrentUserProfile = (user.objectID == [[self.socialize authenticatedUser] objectID]);
+    if (isCurrentUserProfile) {
+        self.navigationItem.rightBarButtonItem = self.editButton;
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
     }
 }
 
@@ -180,17 +208,17 @@
 {
     [self stopLoading];
     
-    id<SocializeFullUser> user = [dataArray objectAtIndex:0];
-    NSAssert([user conformsToProtocol:@protocol(SocializeFullUser)], @"Not a socialize user");
-    self.user = user;
-    [self configureViewsForUser:self.user];
+    id<SocializeFullUser> fullUser = [dataArray objectAtIndex:0];
+    NSAssert([fullUser conformsToProtocol:@protocol(SocializeFullUser)], @"Not a socialize user");
+    self.fullUser = fullUser;
+    [self configureViewsForUser:self.fullUser];
 }
 
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object
 {
     [self stopLoading];
-    self.user = (id<SocializeFullUser>)object;
-    [self configureViewsForUser:self.user];
+    self.fullUser = (id<SocializeFullUser>)object;
+    [self configureViewsForUser:self.fullUser];
     [self hideEditController];
 }
 
@@ -199,13 +227,15 @@
     [super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem = self.doneButton;
-    self.navigationItem.rightBarButtonItem = self.editButton;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
 
     self.profileImageView.image = [self defaultProfileImage];
 
-    if (self.user != nil) {
-        [self configureViewsForUser:self.user];
+    if (self.fullUser != nil) {
+        [self configureViewsForUser:self.fullUser];
+    } else if (self.user != nil) {
+        [self startLoading];
+        [self.socialize getUserWithId:self.user.objectID];
     } else {
         [self startLoading];
         [self.socialize getCurrentUser];
@@ -242,19 +272,19 @@
 {
 	NSMutableDictionary * dictionary = [[[NSMutableDictionary alloc]initWithCapacity:5]autorelease];
 	
-	if (self.user.firstName != nil) 
+	if (self.fullUser.firstName != nil) 
 	{
-	    [dictionary setObject:self.user.firstName forKey:@"first name"];
+	    [dictionary setObject:self.fullUser.firstName forKey:@"first name"];
 	}
 	
-	if (self.user.lastName != nil) 
+	if (self.fullUser.lastName != nil) 
 	{
-		[dictionary setObject:self.user.lastName forKey:@"last name"];
+		[dictionary setObject:self.fullUser.lastName forKey:@"last name"];
 	}
 	
-	if (self.user.description != nil) 
+	if (self.fullUser.description != nil) 
 	{
-		[dictionary setObject:self.user.description forKey:@"bio"];
+		[dictionary setObject:self.fullUser.description forKey:@"bio"];
 	}
 	
 	return dictionary;
@@ -355,7 +385,7 @@
 	self.profileEditViewController.navigationItem.rightBarButtonItem.enabled = NO;
     
     
-    id<SocializeFullUser> userCopy = [(id)self.user copy];
+    id<SocializeFullUser> userCopy = [(id)self.fullUser copy];
     
 	[userCopy setFirstName:[self.profileEditViewController.keyValueDictionary valueForKey:@"first name"]];
 	[userCopy setLastName:[self.profileEditViewController.keyValueDictionary valueForKey:@"last name"]];

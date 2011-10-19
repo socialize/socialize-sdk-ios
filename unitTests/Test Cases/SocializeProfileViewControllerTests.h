@@ -11,4 +11,5 @@
 
 @interface SocializeProfileViewControllerTests : GHTestCase
 @property (nonatomic, retain) SocializeProfileViewController *profileViewController;
+@property (nonatomic, retain) Socialize *socialize;
 @end
