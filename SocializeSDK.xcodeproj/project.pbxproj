@@ -1492,7 +1492,6 @@
 		AA31817A144A440F008F4D59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AA31817C144A440F008F4D59 /* SocializeResources-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SocializeResources-Prefix.pch"; sourceTree = "<group>"; };
 		AA33268D144CD8070033C7FA /* SampleSdkApp Integration Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SampleSdkApp Integration Tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA332695144CD8080033C7FA /* SampleSdkApp copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SampleSdkApp copy-Info.plist"; path = "/Users/griswold/ios/socialize-sdk-ios/SampleSdkApp copy-Info.plist"; sourceTree = "<absolute>"; };
 		AA3326DA144CD9FB0033C7FA /* AuthTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthTest.h; sourceTree = "<group>"; };
 		AA3326DB144CD9FB0033C7FA /* AuthTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthTest.m; sourceTree = "<group>"; };
 		AA3326DC144CD9FB0033C7FA /* SocializeAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeAsyncTestCase.h; sourceTree = "<group>"; };
@@ -1925,7 +1924,6 @@
 				5CC3DABF1378824800B11B78 /* Products */,
 				AA3326EA144CDA4A0033C7FA /* KIF.xcodeproj */,
 				AA863889144CA42C00CFA759 /* OCMock.xcodeproj */,
-				AA332695144CD8080033C7FA /* SampleSdkApp copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};

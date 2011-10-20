@@ -214,9 +214,9 @@
             NSString* url = [self getEntityKey];
             if(url)
             {
-//                controller = [[TestSocializeActionBar alloc] initWithEntityUrl:url];
-                controller = [[TestTabbedSocializeActionBar alloc] init];
-                [(TestTabbedSocializeActionBar*)controller setEntityUrl:url];
+                controller = [[TestSocializeActionBar alloc] initWithEntityUrl:url];
+//                controller = [[TestTabbedSocializeActionBar alloc] init];
+//                [(TestTabbedSocializeActionBar*)controller setEntityUrl:url];
                 [self.navigationController pushViewController:controller animated:YES];
             }
             break;
