@@ -9,7 +9,7 @@ XCODE_ENVIRONMENT="${SRCDIR}/build/${APPNAME}-env"
 killall "iPhone Simulator" >/dev/null 2>&1
 
 set -o errexit
-set -o verbose
+#set -o verbose
 
 
 function cleanup() {
@@ -47,3 +47,13 @@ wait $simPID
 
 # WaxSim hides the return value from the app, so to determine success we search for a "no failures" line
 grep -q "TESTING FINISHED: 0 failures" "$OUTFILE"
+grepResult=$?
+
+if [ "$grepResult" -ne 0 ]; then
+  echo "$0: Failed to find '0 failures' line in $OUTFILE"
+else
+  echo "$0: KIF Test run succeeded!"
+fi
+
+echo "$0: exiting with code $grepResult"
+exit $grepResult
