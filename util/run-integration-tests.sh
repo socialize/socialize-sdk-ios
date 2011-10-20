@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 THISDIR=$(dirname "$0")
 [[ $THISDIR =~ ^/ ]] || THISDIR=$PWD/$THISDIR
@@ -20,6 +20,8 @@ function cleanup() {
     fi
   done
   killall "iPhone Simulator" >/dev/null 2>&1
+  echo "Cleanup complete"
+  exit 0
 }
 trap cleanup INT TERM EXIT
 
@@ -46,14 +48,31 @@ echo "waiting for $simPID"
 wait $simPID
 
 # WaxSim hides the return value from the app, so to determine success we search for a "no failures" line
-grep -q "TESTING FINISHED: 0 failures" "$OUTFILE"
-grepResult=$?
 
-if [ "$grepResult" -ne 0 ]; then
+set +o errexit
+
+kifLine=$(grep -q "TESTING FINISHED: 0 failures" "$OUTFILE")
+KIFGrepResult=$?
+if [ "$KIFGrepResult" -ne 0 ]; then
   echo "$0: Failed to find '0 failures' line in $OUTFILE"
 else
   echo "$0: KIF Test run succeeded!"
 fi
 
-echo "$0: exiting with code $grepResult"
-exit $grepResult
+ghLine=$(grep -q "GHUNIT TESTS SUCCEEDED" "$OUTFILE")
+GHGrepResult=$?
+if [ "$GHGrepResult" -ne 0 ]; then
+  echo "$0: Failed to find 'GHUNIT TESTS SUCCEEDED' line in $OUTFILE"
+else
+  echo "$0: GHUnit Test run succeeded!"
+fi
+
+if [ $GHGrepResult -ne 0 ] || [ $KIFGrepResult -ne 0 ]; then
+  echo "There was a test failure. Exiting with error!"
+  echo "GHUnit result: $GHGrepResult"
+  echo "KIF result: $KIFGrepResult"
+  exit 1
+fi
+
+echo "$0: All tests succeeded!"
+exit 0
