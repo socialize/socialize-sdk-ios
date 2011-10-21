@@ -14,8 +14,10 @@
 
 -(void)commentButtonTouched:(id)sender;
 -(void)likeButtonTouched:(id)sender;
+-(void)shareButtonTouched: (id) sender;
 -(void)socializeActionViewWillAppear:(SocializeActionView*)socializeActionView;
 -(void)socializeActionViewWillDisappear:(SocializeActionView*)socializeActionView;
+
 @end
 
 
@@ -25,6 +27,7 @@
 	UIButton*	_commentButton;
 	UIButton*	_likeButton;
 	UIButton*	_viewCounter;
+  	UIButton*	_shareButton;
 	BOOL		_isLiked;
 	
 	UIFont*		_buttonLabelFont;
