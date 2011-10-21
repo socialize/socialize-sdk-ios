@@ -34,6 +34,8 @@
 #import "UINavigationBarBackground.h"
 #import "SocializeView.h"
 #import "SocializeEntity.h"
+#import "SocializeShareSheetBuilder.h"
+#import "BlocksKit.h"
 
 @interface SocializeActionBar()
 @property(nonatomic, retain) id<SocializeLike> entityLike;
@@ -250,6 +252,16 @@
         [self.socialize unlikeEntity: entityLike];
     else
         [self.socialize likeEntityWithKey:[entity key] longitude:nil latitude:nil];
+}
+
+-(void)shareButtonTouched: (id) sender
+{    
+    UIActionSheet* shareActionSheet = [UIActionSheet sheetWithTitle:nil];
+    [shareActionSheet addButtonWithTitle:@"Share on Twitter" handler:^{ NSLog(@"Zip!"); }];
+    [shareActionSheet addButtonWithTitle:@"Share on Facebook" handler:^{ NSLog(@"Zap!"); }];
+    [shareActionSheet addButtonWithTitle:@"Share via Email" handler:^{ NSLog(@"Zop!"); }];
+    [shareActionSheet setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
+    [shareActionSheet showInView:self.view.window];
 }
 
 @end

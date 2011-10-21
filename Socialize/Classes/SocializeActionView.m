@@ -345,7 +345,7 @@
 
 -(void)shareButtonPressed:(id)sender
 {
-	//[_socializeDelegate shareButtonTouched:sender];
+	[_socializeDelegate shareButtonTouched:sender];
 }
 
 
