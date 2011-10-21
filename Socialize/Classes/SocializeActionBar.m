@@ -34,7 +34,6 @@
 #import "UINavigationBarBackground.h"
 #import "SocializeView.h"
 #import "SocializeEntity.h"
-#import "SocializeShareSheetBuilder.h"
 #import "BlocksKit.h"
 
 @interface SocializeActionBar()

@@ -314,6 +314,7 @@
 		16C365F414518F1600DD5421 /* UIWebView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658A14518F1600DD5421 /* UIWebView+BlocksKit.m */; };
 		16C365F6145192B900DD5421 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C365F5145192B900DD5421 /* MessageUI.framework */; };
 		16C365F7145192C300DD5421 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C365F5145192B900DD5421 /* MessageUI.framework */; };
+		16C365F814519D4900DD5421 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C365F5145192B900DD5421 /* MessageUI.framework */; };
 		16D247661416093A008A550D /* CommentDetailsViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D247651416093A008A550D /* CommentDetailsViewTests.m */; };
 		16D2476914163162008A550D /* CommentDetailsViewForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2476814163161008A550D /* CommentDetailsViewForTest.m */; };
 		16D2477814179446008A550D /* StringWithPlacemarkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2477714179446008A550D /* StringWithPlacemarkTest.m */; };
@@ -1795,6 +1796,7 @@
 				5CC3DAEC1378859000B11B78 /* Foundation.framework in Frameworks */,
 				1681BDB313F5567300EC6042 /* MapKit.framework in Frameworks */,
 				1681BDCB13F55E2400EC6042 /* QuartzCore.framework in Frameworks */,
+				16C365F814519D4900DD5421 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

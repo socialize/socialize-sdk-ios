@@ -57,3 +57,18 @@
 
 #define MD5Addition SocializeMD5Addition
 #define IdentifierAddition SocializeIdentifierAddition
+
+#define BKDelegate  SocializeBKDelegate
+#define BlocksKit  SocializeBlocksKit
+#define BKMailComposeViewControllerDelegate  SocializeBKMailComposeViewControllerDelegate
+#define BKMessageComposeViewControllerDelegate  SocializeBKMessageComposeViewControllerDelegate
+#define BKCacheDelegate  SocializeBKCacheDelegate
+#define BKInvocationGrabber SocializeBKInvocationGrabber
+#define AssociatedObjects SocializeAssociatedObjects
+#define BlockObservation SocializeBlockObservation
+#define BKObserver SocializeBKObserver
+#define BlocksKitPrivate SocializeBlocksKitPrivate
+#define BKURLConnectionDelegate  SocializeBKURLConnectionDelegate
+#define BKControlWrapper SocializeBKControlWrapper
+#define BlocksKitInternal SocializeBlocksKitInternal
+#define BKWebViewDelegate  SocializeBKWebViewDelegate
