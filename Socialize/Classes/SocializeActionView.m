@@ -72,6 +72,7 @@
         _likeButton = [likeButton retain];
         _viewCounter = [viewButton retain];
         _activityIndicator = [activityIndicator retain];
+        // TODO add share btn
 		[self setupButtons];
         self.accessibilityLabel = @"Socialize Action View";
 	}   
@@ -84,6 +85,7 @@
     _commentButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
     _likeButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
     _viewCounter = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _shareButton = [[UIButton buttonWithType:UIButtonTypeCustom]retain];
     _activityIndicator = [[UIActivityIndicatorView alloc] init];
     
     _likeButton.accessibilityLabel = @"like button";
@@ -101,11 +103,21 @@
 	buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
 	
-	buttonSize = [self getButtonSizeForLabel:nil iconName:@"comment-sm-icon.png"];
+    [self setButtonLabel:@"Share" 
+            withImageForNormalState: @"action-bar-button-black.png" 
+            withImageForHightlightedState:@"action-bar-button-black-hover.png"
+			withIconName:@"action-bar-icon-share.png"
+                atOrigin:buttonOrigin
+                onButton:_shareButton
+			withSelector:@selector(shareButtonPressed:)];
+    
+	[self addSubview:_shareButton];
+    
+	buttonSize = [self getButtonSizeForLabel:@"0" iconName:@"comment-sm-icon.png"];
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
  
-	[self setButtonLabel:nil 
+	[self setButtonLabel:@"0" 
 			withImageForNormalState: @"action-bar-button-black.png" 
 			withImageForHightlightedState:@"action-bar-button-black-hover.png"
 			withIconName:@"action-bar-icon-comments.png"
@@ -115,11 +127,11 @@
     
 	[self addSubview:_commentButton];
 
-	buttonSize = [self getButtonSizeForLabel:nil iconName:@"action-bar-icon-like.png"];
+	buttonSize = [self getButtonSizeForLabel:@"0" iconName:@"action-bar-icon-like.png"];
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN; 
 	
-	[self setButtonLabel:nil 
+	[self setButtonLabel:@"0" 
           withImageForNormalState: @"action-bar-button-black.png" 
 		  withImageForHightlightedState:@"action-bar-button-black-hover.png"
 		  withIconName:@"action-bar-icon-like.png"
@@ -135,7 +147,7 @@
 	buttonOrigin.x = PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
 	
-    [self setButtonLabel:nil 
+    [self setButtonLabel:@"0" 
 		withImageForNormalState: nil 
 		withImageForHightlightedState:nil
 			withIconName:@"action-bar-icon-views.png"
@@ -151,11 +163,13 @@
 
 - (CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName 
 {
-	if ([labelString length] <= 0) {
-		return CGSizeZero;
+	CGSize labelSize;
+	if ([labelString length] <= 0)
+	{
+		labelSize = CGSizeZero;
 	}
 	
-	CGSize labelSize = [labelString sizeWithFont:_buttonLabelFont];
+	labelSize = [labelString sizeWithFont:_buttonLabelFont];
 	if (iconName)
 		labelSize = CGSizeMake(labelSize.width + (2 * BUTTON_PADDINGS) + PADDING_BETWEEN_TEXT_ICON + 5 + ICON_WIDTH, BUTTON_HEIGHT);
 	else
@@ -249,8 +263,8 @@
 {
     NSString* formattedValue = [NSNumber formatMyNumber:commentsCount ceiling:[NSNumber numberWithInt:1000]];
 	CGSize buttonSize = [self getButtonSizeForLabel:formattedValue  iconName:@"comment-sm-icon.png"];
-    CGPoint buttonOrigin;
-    buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
+    CGPoint buttonOrigin = _shareButton.frame.origin;
+	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
     
 	[_commentButton setTitle:formattedValue forState:UIControlStateNormal] ;
@@ -328,16 +342,12 @@
 	[_socializeDelegate likeButtonTouched:sender];
 }
 
-/*-(void)likeListButtonPressed:(id)sender
-{
-	[_socializeDelegate likeListButtonTouched:sender];
-}
 
 -(void)shareButtonPressed:(id)sender
 {
 	//[_socializeDelegate shareButtonTouched:sender];
 }
-*/
+
 
 #pragma -
 - (void)drawRect:(CGRect)rect 
