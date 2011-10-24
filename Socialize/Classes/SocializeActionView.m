@@ -366,6 +366,7 @@
     [super willMoveToWindow:newWindow];
     
     if (newWindow != nil) {
+        [self positionInSuperview];
         if ([self.delegate respondsToSelector:@selector(socializeActionViewWillAppear:)]) {
             [self.delegate socializeActionViewWillAppear:self];
         }
@@ -373,12 +374,14 @@
         if ([self.delegate respondsToSelector:@selector(socializeActionViewWillDisappear:)]) {
             [self.delegate socializeActionViewWillDisappear:self];
         }
+
     }
 }
 
 - (void)didMoveToSuperview {
+//    [super willMoveToSuperview:newSuperview];
     [super didMoveToSuperview];
-    [self positionInSuperview];
+    
 }
 
 - (void)startActivityForUpdateViewsCount {
