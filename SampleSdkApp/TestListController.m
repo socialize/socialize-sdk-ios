@@ -46,6 +46,7 @@
                       @"Test small user info after authentication",
                       @"Test User Profile",
                       @"Test Socialize Action Bar",
+                      @"Test Tabbed Socialize Action Bar",
                       @"Test Current user activity",
                       nil
                       ]retain];
@@ -215,13 +216,21 @@
             if(url)
             {
                 controller = [[TestSocializeActionBar alloc] initWithEntityUrl:url];
-//                controller = [[TestTabbedSocializeActionBar alloc] init];
-//                [(TestTabbedSocializeActionBar*)controller setEntityUrl:url];
                 [self.navigationController pushViewController:controller animated:YES];
             }
             break;
         }
         case 11:
+        {
+            NSString* url = [self getEntityKey];
+            if (url) {
+                controller = [[TestTabbedSocializeActionBar alloc] init];
+                [(TestTabbedSocializeActionBar*)controller setEntityUrl:url];
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+            break;
+        }
+        case 12:
             controller = [[TestActivityViewController alloc] initWithNibName:@"TestActivityViewController" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
