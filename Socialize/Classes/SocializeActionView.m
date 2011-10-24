@@ -45,6 +45,7 @@
 
 @synthesize delegate = _socializeDelegate;
 @synthesize isLiked = _isLiked;
+
 //@synthesize commentButton = _commentButton, likeButton = _likeButton, viewButton = _viewCounter, activityIndicator = _activityIndicator, buttonLabelFont = _buttonLabelFont;
 
 - (id)initWithFrame:(CGRect)frame
@@ -362,11 +363,15 @@
     self.frame = CGRectMake(0, self.superview.bounds.size.height - ACTION_PANE_HEIGHT, self.superview.bounds.size.width,  ACTION_PANE_HEIGHT);
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self positionInSuperview];
+}
+
 - (void)willMoveToWindow:(UIWindow *)newWindow {
     [super willMoveToWindow:newWindow];
     
     if (newWindow != nil) {
-        [self positionInSuperview];
         if ([self.delegate respondsToSelector:@selector(socializeActionViewWillAppear:)]) {
             [self.delegate socializeActionViewWillAppear:self];
         }
@@ -374,14 +379,11 @@
         if ([self.delegate respondsToSelector:@selector(socializeActionViewWillDisappear:)]) {
             [self.delegate socializeActionViewWillDisappear:self];
         }
-
     }
 }
 
 - (void)didMoveToSuperview {
-//    [super willMoveToSuperview:newSuperview];
     [super didMoveToSuperview];
-    
 }
 
 - (void)startActivityForUpdateViewsCount {

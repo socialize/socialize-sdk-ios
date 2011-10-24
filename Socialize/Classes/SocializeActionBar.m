@@ -53,6 +53,7 @@
 @synthesize entityLike;
 @synthesize entityView;
 @synthesize didFetchEntity = _didFetchEntity;
+@synthesize ignoreNextView = _ignoreNextView;
 
 +(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url
 {
@@ -234,6 +235,11 @@
 }
 
 -(void)socializeActionViewWillAppear:(SocializeActionView *)socializeActionView {
+    if (self.ignoreNextView) {
+        self.ignoreNextView = NO;
+        return;
+    }
+    
     [socializeActionView startActivityForUpdateViewsCount];
     [self performAutoAuth];
 }
@@ -245,6 +251,7 @@
 
 -(void)commentButtonTouched:(id)sender
 {
+    self.ignoreNextView = YES;
     [self.parentViewController presentModalViewController:comentsNavController animated:YES];
 }
 

@@ -48,6 +48,7 @@
 @property(nonatomic, assign) UIViewController* parentViewController;
 @property(nonatomic, retain) id<SocializeEntity> entity;
 @property (nonatomic, assign) BOOL didFetchEntity;
+@property (nonatomic, assign) BOOL ignoreNextView;
 
 +(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url;
 
