@@ -42,6 +42,11 @@ When you want to launch the comment view, simply instantiate and present the com
 Socialize Action Bar
 ----------------------
 
+v0.8.0 of the Socialize SDK introduce the "Action Bar", which allows your users to easily
+comment and like/unlike entities
+
+.. image:: images/action_bar.png	
+
 Just instantiate a SocializeActionBar controller and add the view to your view controller:
 
 .. raw:: html
