@@ -18,23 +18,35 @@
 
 @implementation KIFTestStep (SampleSdkAppAdditions)
 
-+ (NSArray*)stepsToReturnToList;
++ (NSArray*)stepsToPopNavigationControllerToIndex:(NSInteger)index
 {
     NSMutableArray *steps = [NSMutableArray array];
-
-    [steps addObject:[KIFTestStep stepWithDescription:@"Reset the application state." executionBlock:^(KIFTestStep *step, NSError **error) {
+    
+    [steps addObject:[KIFTestStep stepWithDescription:[NSString stringWithFormat:@"Reset nav to level %d.", index] executionBlock:^(KIFTestStep *step, NSError **error) {
         BOOL successfulReset = YES;
         
         SampleSdkAppAppDelegate* appDelegate = (SampleSdkAppAppDelegate *)[UIApplication sharedApplication].delegate;
-        UIViewController *testListController = [appDelegate.rootController.viewControllers objectAtIndex:1];
+        UIViewController *testListController = [appDelegate.rootController.viewControllers objectAtIndex:index];
         [appDelegate.rootController popToViewController:testListController animated:NO];
         // Do the actual reset for your app. Set successfulReset = NO if it fails.
         KIFTestCondition(successfulReset, error, @"Failed to reset the application.");
         return KIFTestStepResultSuccess;
     }]];
     
+    return steps;
+}
+
++ (NSArray*)stepsToReturnToList;
+{
+    NSMutableArray *steps = [NSMutableArray array];
+    [steps addObjectsFromArray:[self stepsToPopNavigationControllerToIndex:1]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];
     return steps;
+}
+
++ (NSArray*)stepsToReturnToAuth;
+{
+    return [self stepsToPopNavigationControllerToIndex:0];
 }
 
 + (NSArray*)stepsToNoAuth
@@ -58,6 +70,7 @@
 + (NSArray*)stepsToTestUserProfile {
     NSMutableArray *steps = [NSMutableArray array];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Edit"]];
 
@@ -187,8 +200,8 @@
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Input Field"]];
     [steps addObject:[KIFTestStep stepToEnterText:entity intoViewWithAccessibilityLabel:@"Input Field"]];
-    [steps addObjectsFromArray:[KIFTestStep stepsToCreateComment:comment]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Enter"]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToCreateComment:comment]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Tests"]];
 
     return steps;
@@ -217,7 +230,7 @@
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Fetch Comment"]];    
     [steps addObject:[KIFTestStep stepToEnterText:entity intoViewWithAccessibilityLabel:@"entityField"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"getCommentsButton"]];
-    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comments List"]];
+//    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comments List"]];
     return steps;
 }
 
@@ -359,5 +372,19 @@
         return KIFTestStepResultSuccess;
     }];
 }
+
++ (id)stepToVerifyElementWithAccessibilityLabelDoesNotExist:(NSString*)label {
+    NSString *description = [NSString stringWithFormat:@"Step to test view with label %@ not on screen", label];
+    return [KIFTestStep stepWithDescription:description executionBlock:^(KIFTestStep *step, NSError **error) {
+        UIAccessibilityElement *element = [[UIApplication sharedApplication] accessibilityElementWithLabel:label];
+        KIFTestCondition(element == nil, error, @"Element with label %@ found", label);
+        UIView *view = (UIView*)[UIAccessibilityElement viewContainingAccessibilityElement:element];
+        KIFTestCondition(view == nil, error, @"View with label %@ found", label);
+        
+        return KIFTestStepResultSuccess;
+    }];
+
+}
+
 
 @end

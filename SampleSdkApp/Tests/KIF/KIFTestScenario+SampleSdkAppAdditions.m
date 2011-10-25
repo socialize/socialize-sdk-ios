@@ -11,6 +11,35 @@
 #import "SampleSdkAppKIFTestController.h"
 @implementation KIFTestScenario (SampleSdkAppAdditions)
 
++ (id)scenarioToTestViewOtherProfile {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that another user's profile can be viewed."];
+    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentWithControllerForEntity:url comment:@"comment!"]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToGetCommentsForEntity:url]];
+    [scenario addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"profile button"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"profile button"]];
+    
+    // edit should be here (our profile)
+    [scenario addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Edit"]];
+    
+    // Exit and auth as new user
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Close"]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToReturnToAuth]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToAuthenticate]];
+
+    // View profile as a new user, verify not editable
+    [scenario addStepsFromArray:[KIFTestStep stepsToGetCommentsForEntity:url]];
+    [scenario addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"profile button"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"profile button"]];
+    [scenario addStep:[KIFTestStep stepToVerifyElementWithAccessibilityLabelDoesNotExist:@"Edit"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Close"]];
+    [scenario addStep:[KIFTestStep stepToWaitForTimeInterval:1 description:@"end"]];
+
+    return scenario;
+}
+
 + (id)scenarioToTestCommentsViewControllerWithAutoAuth {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that test that socialize UI views work even when not logged in."];
     [scenario addStepsFromArray:[KIFTestStep stepsToNoAuth]];

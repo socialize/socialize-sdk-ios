@@ -18,4 +18,6 @@
 + (id)scenarioToViewEntity;
 + (id)scenarioToTestCommentsViewControllerWithAutoAuth;
 + (id)scenarioToTestActionBar;
++ (id)scenarioToTestViewOtherProfile;
+
 @end

@@ -11,6 +11,7 @@
 @interface KIFTestStep (SampleSdkAppAdditions)
 
 + (NSArray*)stepsToReturnToList;
++ (NSArray*)stepsToReturnToAuth;
 + (NSArray*)stepsToNoAuth;
 + (NSString *)getRandomURL;
 + (NSArray*)stepsToAuthenticate;
@@ -36,5 +37,6 @@
 + (NSArray*)stepsToVerifyActionBarViewsAtCount:(NSInteger)count;
 + (id)stepToVerifyViewWithAccessibilityLabel:(NSString*)label passesTest:(BOOL (^)(id view))testBlock;
 + (NSArray*)stepsToVerifyActionBarLikesAtCount:(NSInteger)count;
++ (id)stepToVerifyElementWithAccessibilityLabelDoesNotExist:(NSString*)label;
 
 @end
