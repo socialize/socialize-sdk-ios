@@ -82,27 +82,51 @@
     return steps;
 }
 
-+ (NSArray*)stepsToShowActionBar {
++ (NSArray*)stepsToShowTabbedActionBarForURL:(NSString*)url {
     NSMutableArray *steps = [NSMutableArray array];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:10 inSection:0];
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:11 inSection:0];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Input Field"]];
-    [steps addObject:[KIFTestStep stepToEnterText:[KIFTestStep getRandomURL] intoViewWithAccessibilityLabel:@"Input Field"]];
+    [steps addObject:[KIFTestStep stepToEnterText:url intoViewWithAccessibilityLabel:@"Input Field"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Enter"]];
-    [steps addObject:[KIFTestStep stepToCheckAccessibilityLabel:@"view counter" hasValue:@"1"]];
-    [steps addObjectsFromArray:[KIFTestStep stepsToLikeOnActionBar]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Tests"]];
+//    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Tests"]];
     return steps;
 }
+
++ (NSArray*)stepsToVerifyActionBarViewsAtCount:(NSInteger)count {
+    NSMutableArray *steps = [NSMutableArray array];
+    NSString *countString = [NSString stringWithFormat:@"%d", count];
+    [steps addObject:[KIFTestStep stepToCheckAccessibilityLabel:@"view counter" hasValue:countString]];
+    
+    return steps;
+}
+
 + (NSArray*)stepsToLikeOnActionBar {
     NSMutableArray *steps = [NSMutableArray array];
     
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"like button"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"like button"]];
-    [steps addObject:[KIFTestStep stepToCheckAccessibilityLabel:@"like button" hasValue:@"1"]];
     return steps;
 }
+
++ (NSArray*)stepsToCommentOnActionBar {
+    NSMutableArray *steps = [NSMutableArray array];
+    
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"comment button"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"comment button"]];
+    return steps;
+}
+
++ (NSArray*)stepsToVerifyActionBarLikesAtCount:(NSInteger)count {
+    NSMutableArray *steps = [NSMutableArray array];
+    NSString *countString = [NSString stringWithFormat:@"%d", count];
+    [steps addObject:[KIFTestStep stepToCheckAccessibilityLabel:@"like button" hasValue:countString]];
+    
+    return steps;
+}
+
 + (NSArray*)stepsToWaitForActionCompleted {
     NSMutableArray *steps = [NSMutableArray array];
 
@@ -154,21 +178,6 @@
     return steps;
 }
 
-+ (NSArray*)stepsToCreateCommentForEntity:(NSString*)entity comment:(NSString*)comment
-{
-    NSMutableArray *steps = [NSMutableArray array];
-    
-    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
-    NSIndexPath *path = [NSIndexPath indexPathForRow:2 inSection:0];
-    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
-    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Create Comment"]];    
-    [steps addObject:[KIFTestStep stepToEnterText:entity intoViewWithAccessibilityLabel:@"entityField"]];
-    [steps addObject:[KIFTestStep stepToEnterText:comment intoViewWithAccessibilityLabel:@"commentField"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"createButton"]];
-    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"resultTextField" value:@"success"traits:UIAccessibilityTraitNone]];
-    return steps;
-}
-
 + (NSArray*)stepsToCreateCommentWithControllerForEntity:(NSString*)entity comment:(NSString*)comment
 {
     NSMutableArray *steps = [NSMutableArray array];
@@ -178,18 +187,26 @@
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Input Field"]];
     [steps addObject:[KIFTestStep stepToEnterText:entity intoViewWithAccessibilityLabel:@"Input Field"]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToCreateComment:comment]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Enter"]];
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Tests"]];
+
+    return steps;
+}
+
++ (NSArray*)stepsToCreateComment:(NSString*)comment
+{
+    NSMutableArray *steps = [NSMutableArray array];
+    
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToEnterText:comment intoViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Facebook?"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"No"]];
-    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Anonymous?"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Ok"]];
-    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Tests"]];
+//    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Anonymous?"]];
+//    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Ok"]];
     return steps;
 }
-
 
 + (NSArray*)stepsToGetCommentsForEntity:(NSString*)entity
 {
@@ -324,6 +341,21 @@
         CGRect cellFrame = [cell.contentView convertRect:[cell.contentView frame] toView:tableView];
         [tableView tapAtPoint:CGPointCenteredInRect(cellFrame)];
         
+        return KIFTestStepResultSuccess;
+    }];
+}
+
++ (id)stepToVerifyViewWithAccessibilityLabel:(NSString*)label passesTest:(BOOL (^)(id view))testBlock {
+    NSString *description = [NSString stringWithFormat:@"Step to test view with label %@ passes block test", label];
+    return [KIFTestStep stepWithDescription:description executionBlock:^(KIFTestStep *step, NSError **error) {
+        UIAccessibilityElement *element = [[UIApplication sharedApplication] accessibilityElementWithLabel:label];
+        KIFTestCondition(element != nil, error, @"View with label %@ not found", label);
+        UIView *view = (UIView*)[UIAccessibilityElement viewContainingAccessibilityElement:element];
+        KIFTestCondition(view != nil, error, @"View with label %@ not found", label);
+        
+        BOOL result = testBlock(view);
+        KIFTestCondition(result, error, @"View with label %@ did not pass block test!", label);
+
         return KIFTestStepResultSuccess;
     }];
 }

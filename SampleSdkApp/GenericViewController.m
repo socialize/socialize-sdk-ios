@@ -9,6 +9,7 @@
 #import "GenericViewController.h"
 
 @implementation GenericViewController
+@synthesize label = label_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

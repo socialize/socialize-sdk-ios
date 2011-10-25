@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface GenericViewController : UIViewController
-
+@property (nonatomic, retain) IBOutlet UILabel *label;
 @end

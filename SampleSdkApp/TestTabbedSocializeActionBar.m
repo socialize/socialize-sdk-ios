@@ -10,8 +10,10 @@
 
 @implementation TestTabbedSocializeActionBar
 @synthesize tabBarController = _tabBarController;
-@synthesize testSocializeActionBar = _testSocializeActionBar;
 @synthesize entityUrl = _entityUrl;
+@synthesize generic1 = _generic1;
+@synthesize generic2 = _generic2;
+@synthesize actionBar = _actionBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,9 +37,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    self.actionBar = [SocializeActionBar createWithParentController:self andUrl:self.entityUrl];
+    [self.generic1.view addSubview:self.actionBar.view];
+    self.generic1.label.text = @"First controller";
+    self.generic2.label.text = @"Second controller";
     [self.view addSubview:self.tabBarController.view];
-    self.testSocializeActionBar.entityUrl = self.entityUrl;
 }
 
 - (void)viewDidUnload

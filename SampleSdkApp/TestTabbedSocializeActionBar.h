@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-#import "TestSocializeActionBar.h"
+#import "GenericViewController.h"
+#import <Socialize/Socialize.h>
 
 @interface TestTabbedSocializeActionBar : UIViewController
 
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-@property (nonatomic, retain) IBOutlet TestSocializeActionBar *testSocializeActionBar;
+@property (nonatomic, retain) IBOutlet GenericViewController *generic1;
+@property (nonatomic, retain) IBOutlet GenericViewController *generic2;
+@property (nonatomic, retain) IBOutlet SocializeActionBar *actionBar;
+
 @property (nonatomic, copy) NSString *entityUrl;
 
 @end

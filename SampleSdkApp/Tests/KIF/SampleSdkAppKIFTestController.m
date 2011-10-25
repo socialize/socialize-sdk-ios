@@ -26,19 +26,14 @@ static NSString *SampleSdkAppKIFTestControllerRunID = nil;
 {
 //    [self addScenario:[KIFTestScenario scenarioToTestCommentsViewControllerWithAutoAuth]];
     [self addScenario:[KIFTestScenario scenarioToAuthenticate]];
-//    [self addScenario:[KIFTestScenario scenarioToShowActionBar]];
     
     [self addScenario:[KIFTestScenario scenarioToTestUserProfile]];
     [self addScenario:[KIFTestScenario scenarioToCreateEntity]];
     [self addScenario:[KIFTestScenario scenarioToGetEntity]];
     [self addScenario:[KIFTestScenario scenarioToLikeAndUnlikeEntity]];
     [self addScenario:[KIFTestScenario scenarioToViewEntity]];
-    // Add additional scenarios you want to test here
+    [self addScenario:[KIFTestScenario scenarioToTestActionBar]];
     
-    //we should probably delete the following test from the suite since they're no longer needed.
-    //[self addScenario:[KIFTestScenario scenarioToCreateComment]];
-    //[self addScenario:[KIFTestScenario scenarioToGetComments]];
-
 }
 
 + (NSString*)runID {

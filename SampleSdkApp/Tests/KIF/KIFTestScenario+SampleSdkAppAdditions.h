@@ -14,10 +14,8 @@
 + (id)scenarioToCreateEntity;
 + (id)scenarioToGetEntity;
 + (id)scenarioToTestUserProfile;
-+ (id)scenarioToCreateComment;
-+ (id)scenarioToGetComments;
 + (id)scenarioToLikeAndUnlikeEntity;
 + (id)scenarioToViewEntity;
 + (id)scenarioToTestCommentsViewControllerWithAutoAuth;
-+ (id)scenarioToShowActionBar;
++ (id)scenarioToTestActionBar;
 @end

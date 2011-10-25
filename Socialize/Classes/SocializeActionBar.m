@@ -183,6 +183,9 @@
         [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes] liked:YES];
         [(SocializeActionView*)self.view unlockButtons];
     } 
+    
+    // Refresh from server
+    [self.socialize getEntityByKey:[entity key]];
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
@@ -221,10 +224,16 @@
 
 -(void)afterAnonymouslyLoginAction
 {
-    if (!self.didFetchEntity) {
+    if (self.ignoreNextView) {
+        // Refresh now
         [self.socialize getEntityByKey:[entity key]];
+        self.ignoreNextView = NO;
+    } else {
+        // Refresh will happen after the view
+        [self.socialize viewEntity:entity longitude:nil latitude:nil];
     }
-    [self.socialize viewEntity:entity longitude:nil latitude:nil];
+    
+
 
     if(entityLike == nil)
         [self.socialize getLikesForEntityKey:[entity key] first:nil last:nil];
@@ -235,11 +244,6 @@
 }
 
 -(void)socializeActionViewWillAppear:(SocializeActionView *)socializeActionView {
-    if (self.ignoreNextView) {
-        self.ignoreNextView = NO;
-        return;
-    }
-    
     [socializeActionView startActivityForUpdateViewsCount];
     [self performAutoAuth];
 }

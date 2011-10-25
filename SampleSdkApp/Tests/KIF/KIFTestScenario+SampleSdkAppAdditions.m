@@ -24,16 +24,34 @@
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Tests"]];   
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Authenticate"]];   
     return scenario;
-
 }
 
-
-+ (id)scenarioToShowActionBar {
++ (id)scenarioToTestActionBar {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test the Socialize Action Bar"];
-    [scenario addStepsFromArray:[KIFTestStep stepsToShowActionBar]];
+    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToShowTabbedActionBarForURL:url]];
+    [scenario addStep:[KIFTestStep stepToVerifyViewWithAccessibilityLabel:@"Socialize Action View" passesTest:^BOOL(id view) {
+        return CGRectEqualToRect(CGRectMake(0, 343, 320, 44), [view frame]);
+    }]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:1]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Featured"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Action Bar!"]];
+    [scenario addStep:[KIFTestStep stepToWaitForAbsenceOfViewWithAccessibilityLabel:@"In progress"]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
+    
+    [scenario addStepsFromArray:[KIFTestStep stepsToLikeOnActionBar]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarLikesAtCount:1]];
+
+    [scenario addStepsFromArray:[KIFTestStep stepsToCommentOnActionBar]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"add comment button"]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToCreateComment:@"actionbar comment"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Close"]];
+    [scenario addStep:[KIFTestStep stepToCheckAccessibilityLabel:@"comment button" hasValue:@"1"]];
 
     return scenario;
 }
+
+
 + (id)scenarioToTestUserProfile {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test Socialize User Profiles"];
     [scenario addStepsFromArray:[KIFTestStep stepsToTestUserProfile]];
@@ -59,28 +77,6 @@
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
     [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntityWithURL:url name:nil]];
     [scenario addStepsFromArray:[KIFTestStep stepsToGetEntityWithURL:url]];
-    return scenario;
-}
-
-+ (id)scenarioToCreateComment {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a comment can be created."];
-
-    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntityWithURL:url name:nil]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentForEntity:url comment:@"A comment!"]];
-    
-    return scenario;
-}
-
-+ (id)scenarioToGetComments {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a comment can be fetched once created."];
-    
-    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntityWithURL:url name:nil]];
-    NSString *commentString = [NSString stringWithFormat:@"Comment from %s", _cmd];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentForEntity:url comment:commentString]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToGetCommentsForEntity:url]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyCommentExistsForEntity:url comment:commentString]];
     return scenario;
 }
 
