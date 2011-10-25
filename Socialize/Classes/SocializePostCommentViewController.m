@@ -21,6 +21,7 @@
 #import "NSString+PlaceMark.h"
 
 #define NO_CITY_MSG @"Could not locate the place name."
+#define MIN_DISMISS_INTERVAL 0.75
 
 @interface SocializePostCommentViewController ()
 
@@ -268,14 +269,18 @@
 -(void)closeButtonPressed:(id)button {
     [self stopLoadAnimation];
     [self dismissModalViewControllerAnimated:YES];
-    
 }
 
 #pragma mark - SocializeServiceDelegate
 
 -(void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object{   
-    [self stopLoadAnimation];
-    [self dismissModalViewControllerAnimated:YES];
+    // Rapid animated dismissal does not work on iOS5 (but works in iOS4)
+    // Allow previous modal dismisalls to complete. iOS5 added dismissViewControllerAnimated:completion:, which
+    // we would use here if backward compatibility was not required.
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, MIN_DISMISS_INTERVAL * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self stopLoadAnimation];
+        [self dismissModalViewControllerAnimated:YES];
+    });
 }
 
 - (void)showProfile {
@@ -291,11 +296,13 @@
 
 - (void)profileViewControllerDidSave:(SocializeProfileViewController *)profileViewController {
     [self dismissModalViewControllerAnimated:YES];
+    [self startLoadAnimationForView:commentTextView];
     [self createComment];
 }
 
 - (void)profileViewControllerDidCancel:(SocializeProfileViewController *)profileViewController {
     [self dismissModalViewControllerAnimated:YES];
+    [self startLoadAnimationForView:commentTextView];
     [self createComment];
 }
 
