@@ -27,5 +27,9 @@
     "lng": 122.3909500166667,
     "date": "2011-06-16 16:42:11+0000",
     "text": "this was a great story",
-    "medium": 2 
+    "medium": 
+    {
+        "id": 2,
+        "medium": "Facebook"
+    } 
 }

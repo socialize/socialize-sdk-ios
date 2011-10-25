@@ -33,7 +33,7 @@
     [[mockShare expect] setLat:((NSNumber*)[JSONDictionaryToParse objectForKey:@"lat"])];
     [[mockShare expect] setLng:((NSNumber*)[JSONDictionaryToParse objectForKey:@"lng"])];
     [[mockShare expect] setText:[JSONDictionaryToParse objectForKey:@"text"]];
-    [[mockShare expect] setMedium:[[JSONDictionaryToParse objectForKey:@"medium"]intValue]];
+    [[mockShare expect] setMedium:[[[JSONDictionaryToParse objectForKey:@"medium"] objectForKey:@"id"]intValue]];
     
     [[mockShare expect] setApplication:OCMOCK_ANY];
     [[mockShare expect] setUser:OCMOCK_ANY];
