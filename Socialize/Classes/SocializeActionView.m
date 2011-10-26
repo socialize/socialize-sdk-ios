@@ -55,9 +55,10 @@
 
         self.delegate = nil;
         [self instantiateButtons];
-		[self setupButtons];
+        [self setupButtons];
         self.accessibilityLabel = @"Socialize Action View";
         self.backgroundColor = [UIColor whiteColor];
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
 	}
     return self;
 }
@@ -84,9 +85,13 @@
 -(void)instantiateButtons{
     _buttonLabelFont = [[UIFont boldSystemFontOfSize:11.0f] retain];
     _commentButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _commentButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     _likeButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _likeButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     _viewCounter = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _viewCounter.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
     _shareButton = [[UIButton buttonWithType:UIButtonTypeCustom]retain];
+    _shareButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     _activityIndicator = [[UIActivityIndicatorView alloc] init];
     
     _likeButton.accessibilityLabel = @"like button";
@@ -102,7 +107,7 @@
 
     // [#20081405 Hide share]
 //	buttonSize = [self getButtonSizeForLabel:@"Share" iconName:@"action-bar-icon-share.png"];
-//	buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
+//	buttonOrigin.x = self.bounds.size.width - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 //	buttonOrigin.y = BUTTON_Y_ORIGIN;
 //	
 //    [self setButtonLabel:@"Share" 
@@ -117,7 +122,7 @@
 //	[self addSubview:_shareButton];
     
     // [#20081405 Hide share]
-    buttonOrigin.x = ACTION_VIEW_WIDTH; 
+    buttonOrigin.x = self.bounds.size.width; 
 
 	buttonSize = [self getButtonSizeForLabel:@"0" iconName:@"comment-sm-icon.png"];
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
@@ -272,7 +277,8 @@
 
 // [#20081405 Hide share]
 //    CGPoint buttonOrigin = _shareButton.frame.origin;
-    CGPoint buttonOrigin = CGPointMake(ACTION_VIEW_WIDTH, 0);
+    CGPoint buttonOrigin;
+    buttonOrigin.x = self.bounds.size.width;
 
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
