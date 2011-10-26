@@ -42,7 +42,7 @@ When you want to launch the comment view, simply instantiate and present the com
 Socialize Action Bar
 ----------------------
 
-v0.8.0 of the Socialize SDK introduce the "Action Bar", which allows your users to easily
+v0.8.0 of the Socialize SDK introduce the "Action Bar", which lets your users easily
 comment and like/unlike entities
 
 .. image:: images/action_bar.png	
@@ -51,7 +51,7 @@ Just instantiate a SocializeActionBar controller and add the view to your view c
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1274308.js?file=controller.m"></script>
+        <script src="https://gist.github.com/1315113.js"> </script>
 
 Adding Facebook Support
 -------------------------

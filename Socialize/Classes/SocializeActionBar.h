@@ -50,8 +50,8 @@
 @property (nonatomic, assign) BOOL didFetchEntity;
 @property (nonatomic, assign) BOOL ignoreNextView;
 
-+(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url;
++(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
 
--(id)initWithEntityUrl:(NSString*)url;
--(id)initWithEntity:(id<SocializeEntity>)socEntity;
+-(id)initWithEntityUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
+-(id)initWithEntity:(id<SocializeEntity>)socEntity presentModalInController:(UIViewController*)controller;
 @end

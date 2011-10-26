@@ -68,7 +68,7 @@
 {
     [super viewDidLoad];
     [self.entityView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.entityUrl]]];
-    bar = [[SocializeActionBar createWithParentController:self andUrl:self.entityUrl] retain];
+    bar = [[SocializeActionBar actionBarWithUrl:self.entityUrl presentModalInController:self] retain];
     [self.view addSubview:bar.view];
 }
 

@@ -55,30 +55,29 @@
 @synthesize didFetchEntity = _didFetchEntity;
 @synthesize ignoreNextView = _ignoreNextView;
 
-+(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url
++(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller
 {
-    SocializeActionBar* bar = [[[SocializeActionBar alloc] initWithEntityUrl:url] autorelease];
-    bar.parentViewController = parentController;
+    SocializeActionBar* bar = [[[SocializeActionBar alloc] initWithEntityUrl:url presentModalInController:controller] autorelease];
     return bar;
 }
 
--(id)initWithEntityUrl:(NSString*)url
+-(id)initWithEntityUrl:(NSString*)url presentModalInController:(UIViewController*)controller
 {
-    self = [super init];
-    if(self)
-    {
-        self.entity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
-        [entity setKey:url];
+    if ((self = [self initWithEntity:nil presentModalInController:controller])) {
+        id<SocializeEntity> newEntity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
+        [newEntity setKey:url];
+        self.entity = newEntity;
     }
     return self;
 }
 
--(id)initWithEntity:(id<SocializeEntity>)socEntity
+-(id)initWithEntity:(id<SocializeEntity>)socEntity presentModalInController:(UIViewController*)controller
 {
     self = [super init];
     if(self)
     {
         self.entity = socEntity;
+        self.parentViewController = controller;
     }
     return self;
 }

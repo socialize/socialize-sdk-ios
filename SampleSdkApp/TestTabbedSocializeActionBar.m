@@ -38,7 +38,7 @@
 {
     [super viewDidLoad];
     
-    self.actionBar = [SocializeActionBar createWithParentController:self andUrl:self.entityUrl];
+    self.actionBar = [SocializeActionBar actionBarWithUrl:self.entityUrl presentModalInController:self];
     [self.generic1.view addSubview:self.actionBar.view];
     self.generic1.label.text = @"First controller";
     self.generic2.label.text = @"Second controller";
