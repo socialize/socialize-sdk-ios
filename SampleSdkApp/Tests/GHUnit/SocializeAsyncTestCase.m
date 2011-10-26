@@ -23,6 +23,6 @@
 
 - (void)waitForStatus:(NSInteger)status {
     [self prepare];
-    [self waitForStatus:status timeout:1.0];
+    [self waitForStatus:status timeout:5.0];
 }
 @end
