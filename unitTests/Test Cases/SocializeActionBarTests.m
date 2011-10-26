@@ -38,7 +38,7 @@
 {
     UIView *parentView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,320,460)] autorelease];
     
-    actionBar = [[SocializeActionBar createWithParentController: mockParentController andUrl:TEST_ENTITY_URL] retain];
+    actionBar = [[SocializeActionBar actionBarWithUrl:TEST_ENTITY_URL presentModalInController:mockParentController] retain];
     
     [parentView addSubview:actionBar.view];
     [(SocializeActionView*)actionBar.view positionInSuperview];
