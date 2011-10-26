@@ -1,3 +1,103 @@
+Release Notes 0.9.0
+++++++++++++++++++++++++
+
+[feature] add documentation for adding FB ID to the code [ ] 
+
+[feature] add branding to the top of the navigation bar [ ] 
+
+[feature] Action bar should auto increment view [ ] 
+
+[bug] Action bar buttons cannot be pressed [ ] 
+
+[bug] PostCommentViewController does not dismiss self after facebook profile view on iOS5 [ ] 
+
+[bug] ActionBar comment count not updating after post [ ] 
+
+[feature] add documentation for Action Bar [ ] 
+
+[feature] An End User should be able to view another users profile [ ] 
+
+[bug] SocializeActionBar should require parent view controller [ ]
+
+Release Notes 0.8.0
+++++++++++++++++++++++++
+
+Released: Socialize iOS v0.8.0 
+
+[feature] Add like service support to the action bar [ ] 
+
+[feature] remove the second dialog when adding a comment [ ] 
+
+[bug] Fix issues in the SDK and Sample Sdk App which were found by static analyzer. [ ] 
+
+[feature] Add GetSatisfaction widget to documentation [ ] 
+
+[bug] App Crashes if facebook id not defined [ ] 
+
+[bug] Update documentation on presenting SocializeCommentsTableViewController [ ] 
+
+[feature] Re-add posting of profile image once PUTs are fixed [ ] 
+
+[feature] Facebook auth hardening (assertions) and documentation updates [ ] 
+
+[feature] Our SocializeActionBarView should work similar to existing Ad SDKS like Admob [ ]
+
+Release Notes 0.7.1
+++++++++++++++++++++++++
+
+[bug] Release configuration contains incorrect url [ ]
+
+Release Notes 0.7.0
+++++++++++++++++++++++++
+
+[feature] upgrade to iOS5 [ ] 
+
+[bug] remove alert when user pushes 'cancel' on comment entry box. [ ] 
+
+[bug] Find and fix memory allocation issues in the Sample Application. [ ] 
+
+[bug] Find and fix memory allocation issues in the Socialize SDK [ ] 
+
+[feature] apply the existing the UI Profile view from AppMakr [ ] 
+
+[feature] User edit UI actually edits the user's profile [ ] 
+
+[feature] Edit User(Profile) SDK [ ] 
+
+[feature] Socialize action bar [ ui ] 
+
+[bug] remove gcov dependency [ ] 
+
+[bug] UI bug when rendering UICommentsViewController [ ui ] 
+
+[bug] navbar header image in iOS5 don't show [ ] 
+
+[feature] exposed viewcontrollers should provide their own navigation controller since we'll ask users to present us a modal. [ ] 
+
+[bug] Buttons get hidden when using ios4.3 simulator and navigating back and forth [ ]
+
+Release Notes 0.6.0
+++++++++++++++++++++++++
+
+[feature] User can authenticate with Facebook [ i-test needed ] 
+
+[bug] the embedded framework package zip doesn't work because of missing header files [ ] 
+
+[bug] rename SBJSON library from FB to have the socialize prefix [ ] 
+
+[feature] remove alert from comment list view when getting comments for an entity if the entity doesn't exist. [ ] 
+
+[feature] provide better error log messages for raw response method [ ] 
+
+[feature] UI Views should automatically authenticate [ ] 
+
+[feature] Get User (Profile) SDK [ ] 
+
+[feature] User profile view [ ui ] 
+
+[bug] fix embedded framework to include the right headers [ ]
+
+
 Release Notes 0.1.0
 ++++++++++++++++++++++++
 
