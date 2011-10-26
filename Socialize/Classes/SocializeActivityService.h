@@ -7,19 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SocializeRequest.h"
-#import "SocializeActivity.h"
+#import "SocializeService.h"
 
-@interface SocializeActivityService : NSObject 
+typedef enum {
+    SocializeCommentActivity,
+    SocializeLikeActivity,
+    SocializeShareActivity,
+    SocializeViewActivity,
+    SocializeAllActivity
+} SocializeActivityType;
+
+@protocol SocializeUser;
+
+@interface SocializeActivityService : SocializeService 
 {
-    
 }
 
--(void)activity:(NSString *)activityEndPoint withId:(uint64_t)activityId;
--(void)listActivity:(NSString *)activityEndPoint forEnitity:(id<SocializeEntity>)entity;
--(void)listActivity:(NSString *)activityEndPoint entityKey:(NSString *)keyOfEntity;
--(void)listActivity:(NSString *)activityEndPoint withIds:(NSArray *)activityIdsArray;
--(void)createActivity:(id<SocializeActivity>)activity atEndPoint:(NSString *)endPoint;
-
+-(void) getActivityOfCurrentApplication;
+-(void) getActivityOfCurrentApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last;
+-(void) getActivityOfUser:(id<SocializeUser>)user;
+-(void) getActivityOfUser:(id<SocializeUser>)user first: (NSNumber*)first last:(NSNumber*)last activity: (SocializeActivityType) type;
 
 @end

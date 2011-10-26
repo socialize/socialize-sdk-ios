@@ -26,13 +26,10 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "SocializeObjectJSONFormatter.h"
+#import "SocializeActivityJSONFormatter.h"
 
-@class SocializeEntityJSONFormatter;
-@class SocializeApplicationJSONFormatter;
-@class SocializeUserJSONFormatter;
 
-@interface SocializeCommentJSONFormatter : SocializeObjectJSONFormatter {
+@interface SocializeCommentJSONFormatter : SocializeActivityJSONFormatter {
 }
 
 @end

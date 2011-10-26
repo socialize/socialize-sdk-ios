@@ -44,30 +44,10 @@
 
 -(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {
-    id<SocializeComment> comment = (id<SocializeComment>)toObject;
-    
-    [comment setObjectID: [[JSONDictionary valueForKey:@"id"]intValue]];
+    id<SocializeComment> comment = (id<SocializeComment>)toObject;    
     [comment setText:[JSONDictionary valueForKey:@"text"]];
     
-    NSDateFormatter* df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd HH:mm:ssZZZ"];
-    [comment setDate:[df dateFromString:[JSONDictionary valueForKey:@"date"]]];
-    [df release]; df = nil;
-    
-    NSNumber* lat = [JSONDictionary valueForKey:@"lat"];
-    NSNumber* lng = [JSONDictionary valueForKey:@"lng"];
-    
-    if ([lat isKindOfClass:[NSNumber class]])
-        [comment setLat:lat];
-        
-    if ([lng isKindOfClass:[NSNumber class]])
-        [comment setLng:lng];
-    
-    [comment setEntity:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"entity"] forProtocol:@protocol(SocializeEntity)]];
-    
-    [comment setApplication:[_factory createObjectFromDictionary: [JSONDictionary valueForKey:@"application"] forProtocol:@protocol(SocializeApplication)]];
-
-    [comment setUser:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"user"] forProtocol:@protocol(SocializeUser)]];
+    [super doToObject:comment fromDictionary:JSONDictionary];
 }
 
 @end

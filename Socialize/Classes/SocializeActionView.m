@@ -26,6 +26,8 @@
 #define COMMENT_INDICATOR_SIZE_HEIGHT 17
 #define PADDING_BETWEEN_TEXT_ICON 2
 
+#define ACTION_PANE_HEIGHT 44
+
 @interface SocializeActionView()
 -(void)instantiateButtons;
 -(void)setupButtons;
@@ -43,6 +45,7 @@
 
 @synthesize delegate = _socializeDelegate;
 @synthesize isLiked = _isLiked;
+
 //@synthesize commentButton = _commentButton, likeButton = _likeButton, viewButton = _viewCounter, activityIndicator = _activityIndicator, buttonLabelFont = _buttonLabelFont;
 
 - (id)initWithFrame:(CGRect)frame
@@ -70,6 +73,7 @@
         _likeButton = [likeButton retain];
         _viewCounter = [viewButton retain];
         _activityIndicator = [activityIndicator retain];
+        // TODO add share btn
 		[self setupButtons];
         self.accessibilityLabel = @"Socialize Action View";
 	}   
@@ -82,6 +86,7 @@
     _commentButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
     _likeButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
     _viewCounter = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _shareButton = [[UIButton buttonWithType:UIButtonTypeCustom]retain];
     _activityIndicator = [[UIActivityIndicatorView alloc] init];
     
     _likeButton.accessibilityLabel = @"like button";
@@ -95,15 +100,30 @@
 	CGPoint buttonOrigin;
 	CGSize buttonSize;
 
-	buttonSize = [self getButtonSizeForLabel:@"Share" iconName:@"action-bar-icon-share.png"];
-	buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
-	buttonOrigin.y = BUTTON_Y_ORIGIN;
-	
-	buttonSize = [self getButtonSizeForLabel:nil iconName:@"comment-sm-icon.png"];
+    // [#20081405 Hide share]
+//	buttonSize = [self getButtonSizeForLabel:@"Share" iconName:@"action-bar-icon-share.png"];
+//	buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
+//	buttonOrigin.y = BUTTON_Y_ORIGIN;
+//	
+//    [self setButtonLabel:@"Share" 
+//            withImageForNormalState: @"action-bar-button-black.png" 
+//            withImageForHightlightedState:@"action-bar-button-black-hover.png"
+//			withIconName:@"action-bar-icon-share.png"
+//                atOrigin:buttonOrigin
+//                onButton:_shareButton
+//			withSelector:@selector(shareButtonPressed:)];
+    
+    
+//	[self addSubview:_shareButton];
+    
+    // [#20081405 Hide share]
+    buttonOrigin.x = ACTION_VIEW_WIDTH; 
+
+	buttonSize = [self getButtonSizeForLabel:@"0" iconName:@"comment-sm-icon.png"];
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
  
-	[self setButtonLabel:nil 
+	[self setButtonLabel:@"0" 
 			withImageForNormalState: @"action-bar-button-black.png" 
 			withImageForHightlightedState:@"action-bar-button-black-hover.png"
 			withIconName:@"action-bar-icon-comments.png"
@@ -113,11 +133,11 @@
     
 	[self addSubview:_commentButton];
 
-	buttonSize = [self getButtonSizeForLabel:nil iconName:@"action-bar-icon-like.png"];
+	buttonSize = [self getButtonSizeForLabel:@"0" iconName:@"action-bar-icon-like.png"];
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN; 
 	
-	[self setButtonLabel:nil 
+	[self setButtonLabel:@"0" 
           withImageForNormalState: @"action-bar-button-black.png" 
 		  withImageForHightlightedState:@"action-bar-button-black-hover.png"
 		  withIconName:@"action-bar-icon-like.png"
@@ -133,7 +153,7 @@
 	buttonOrigin.x = PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
 	
-    [self setButtonLabel:nil 
+    [self setButtonLabel:@"0" 
 		withImageForNormalState: nil 
 		withImageForHightlightedState:nil
 			withIconName:@"action-bar-icon-views.png"
@@ -149,11 +169,13 @@
 
 - (CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName 
 {
-	if ([labelString length] <= 0) {
-		return CGSizeZero;
+	CGSize labelSize;
+	if ([labelString length] <= 0)
+	{
+		labelSize = CGSizeZero;
 	}
 	
-	CGSize labelSize = [labelString sizeWithFont:_buttonLabelFont];
+	labelSize = [labelString sizeWithFont:_buttonLabelFont];
 	if (iconName)
 		labelSize = CGSizeMake(labelSize.width + (2 * BUTTON_PADDINGS) + PADDING_BETWEEN_TEXT_ICON + 5 + ICON_WIDTH, BUTTON_HEIGHT);
 	else
@@ -187,12 +209,14 @@
     buttonOrigin.x = PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
     
-
 	[_viewCounter setTitle:formattedValue forState:UIControlStateNormal];
 //    _viewCounter.accessibilityValue= formattedValue;
 	_viewCounter.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
 	[_viewCounter setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON - 2)]; // Left inset is the negative of image width.
 	[_viewCounter setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
+    
+    _viewCounter.hidden = NO;
+    [_activityIndicator stopAnimating];
 }
 
 
@@ -245,8 +269,12 @@
 {
     NSString* formattedValue = [NSNumber formatMyNumber:commentsCount ceiling:[NSNumber numberWithInt:1000]];
 	CGSize buttonSize = [self getButtonSizeForLabel:formattedValue  iconName:@"comment-sm-icon.png"];
-    CGPoint buttonOrigin;
-    buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
+
+// [#20081405 Hide share]
+//    CGPoint buttonOrigin = _shareButton.frame.origin;
+    CGPoint buttonOrigin = CGPointMake(ACTION_VIEW_WIDTH, 0);
+
+	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
     
 	[_commentButton setTitle:formattedValue forState:UIControlStateNormal] ;
@@ -324,16 +352,12 @@
 	[_socializeDelegate likeButtonTouched:sender];
 }
 
-/*-(void)likeListButtonPressed:(id)sender
-{
-	[_socializeDelegate likeListButtonTouched:sender];
-}
 
 -(void)shareButtonPressed:(id)sender
 {
-	//[_socializeDelegate shareButtonTouched:sender];
+	[_socializeDelegate shareButtonTouched:sender];
 }
-*/
+
 
 #pragma -
 - (void)drawRect:(CGRect)rect 
@@ -344,6 +368,37 @@
      blendMode:kCGBlendModeMultiply alpha:1.0];
 }
 
+- (void)positionInSuperview {
+    self.frame = CGRectMake(0, self.superview.bounds.size.height - ACTION_PANE_HEIGHT, self.superview.bounds.size.width,  ACTION_PANE_HEIGHT);
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self positionInSuperview];
+}
+
+- (void)willMoveToWindow:(UIWindow *)newWindow {
+    [super willMoveToWindow:newWindow];
+    
+    if (newWindow != nil) {
+        if ([self.delegate respondsToSelector:@selector(socializeActionViewWillAppear:)]) {
+            [self.delegate socializeActionViewWillAppear:self];
+        }
+    } else {
+        if ([self.delegate respondsToSelector:@selector(socializeActionViewWillDisappear:)]) {
+            [self.delegate socializeActionViewWillDisappear:self];
+        }
+    }
+}
+
+- (void)didMoveToSuperview {
+    [super didMoveToSuperview];
+}
+
+- (void)startActivityForUpdateViewsCount {
+    _viewCounter.hidden = YES;
+    [_activityIndicator startAnimating];
+}
 
 - (void)dealloc 
 {    

@@ -20,6 +20,7 @@ Installing the SDK
 - Add CoreLocation.framework to your application target.
 - Add MapKit.framework to your application target.
 - Add QuartzCore.framework to your application target.
+- Add MessageUI.framework to your application target.
 
 *Additional Configuration*
 

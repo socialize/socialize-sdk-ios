@@ -150,12 +150,12 @@ running = _running;
 - (BOOL)isEqual:(SocializeRequest*)other {
     if (![other isKindOfClass:[self class]])
         return NO;
-
+    
     BOOL same =  
         [other.userAgentString isEqualToString:self.userAgentString]
     &&  [other.resourcePath isEqualToString:self.resourcePath]
     &&  [other.httpMethod isEqualToString:self.httpMethod]
-    &&  [other.params isEqual:self.params]
+    &&  ([other.params isEqual:self.params] || (other.params == nil && self.params == nil))
     &&  [other.baseURL isEqualToString:self.baseURL]
     &&  [other.secureBaseURL isEqualToString:self.secureBaseURL]
     &&  other.operationType == self.operationType

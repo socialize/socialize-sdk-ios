@@ -7,38 +7,83 @@
 //
 
 #import "SocializeActivityService.h"
-
+#import "SocializeActivity.h"
+@interface SocializeActivityService()
+-(NSString*)resourcePathWithUserId: (int)identificator andActivityType:(SocializeActivityType) type;
+@end
 
 @implementation SocializeActivityService
 
-
--(void)activity:(NSString *)activityEndPoint withId:(uint64_t)activityId
+-(NSString*)resourcePathWithUserId: (int)identificator andActivityType:(SocializeActivityType) type
 {
-    
-    
+    NSString* resourcePath = nil;
+    switch (type) {
+        case SocializeCommentActivity:
+            resourcePath = [NSString stringWithFormat:@"user/%d/comment/", identificator];            
+            break;
+        case SocializeLikeActivity:
+            resourcePath = [NSString stringWithFormat:@"user/%d/like/", identificator];            
+            break;
+        case SocializeShareActivity:
+            resourcePath = [NSString stringWithFormat:@"user/%d/share/", identificator];            
+            break;
+        case SocializeViewActivity:
+            resourcePath = [NSString stringWithFormat:@"user/%d/view/", identificator];            
+            break;
+            
+        default:
+            resourcePath = [NSString stringWithFormat:@"user/%d/activity/", identificator];
+            break;
+    }
+    return resourcePath;
 }
 
--(void)listActivity:(NSString *)activityEndPoint forEnitity:(id<SocializeEntity>)entity
+-(Protocol *)ProtocolType
 {
-    
+    return  @protocol(SocializeActivity);
 }
 
--(void)listActivity:(NSString *)activityEndPoint entityKey:(NSString *)keyOfEntity
+
+-(void) getActivityOfCurrentApplication;
 {
-    
-    
+    [self getActivityOfCurrentApplicationWithFirst:nil last:nil];
 }
 
--(void)listActivity:(NSString *)activityEndPoint withIds:(NSArray *)activityIdsArray
+-(void) getActivityOfCurrentApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last
 {
+    NSMutableDictionary* params = nil;
     
+    if (first && last)
+        params = [NSMutableDictionary dictionaryWithObjectsAndKeys: first, @"first", last, @"last", nil];
+
+    
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:@"activity/"
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];
 }
 
--(void)createActivity:(id<SocializeActivity>)activity atEndPoint:(NSString *)endPoint
+-(void) getActivityOfUser:(id<SocializeUser>)user
 {
-    
-    
+    [self getActivityOfUser:user first:nil last:nil activity:SocializeAllActivity];
 }
 
+-(void) getActivityOfUser:(id<SocializeUser>)user first: (NSNumber*)first last:(NSNumber*)last activity: (SocializeActivityType) type
+{
+    NSMutableDictionary* params = nil;
+    
+    if (first && last)
+        params = [NSMutableDictionary dictionaryWithObjectsAndKeys: first, @"first", last, @"last", nil];
+    
+
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:[self resourcePathWithUserId: user.objectID andActivityType: type]
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];   
+}
 
 @end

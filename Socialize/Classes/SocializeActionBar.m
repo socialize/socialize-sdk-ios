@@ -34,12 +34,16 @@
 #import "UINavigationBarBackground.h"
 #import "SocializeView.h"
 #import "SocializeEntity.h"
-
-#define ACTION_PANE_HEIGHT 44
+#import "BlocksKit.h"
 
 @interface SocializeActionBar()
 @property(nonatomic, retain) id<SocializeLike> entityLike;
 @property(nonatomic, retain) id<SocializeView> entityView;
+
+-(void) shareViaEmail;
+-(void)launchMailAppOnDevice;
+-(void)displayComposerSheet;
+
 @end
 
 @implementation SocializeActionBar
@@ -48,33 +52,32 @@
 @synthesize entity;
 @synthesize entityLike;
 @synthesize entityView;
+@synthesize didFetchEntity = _didFetchEntity;
+@synthesize ignoreNextView = _ignoreNextView;
 
-+(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url
++(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller
 {
-    SocializeActionBar* bar = [[[SocializeActionBar alloc] initWithParantViewSize:parentController.view.bounds.size andEntiryUrl:url] autorelease];
-    bar.parentViewController = parentController;
+    SocializeActionBar* bar = [[[SocializeActionBar alloc] initWithEntityUrl:url presentModalInController:controller] autorelease];
     return bar;
 }
 
--(id)initWithParantViewSize:(CGSize)parentViewSize andEntiryUrl:(NSString*)url
+-(id)initWithEntityUrl:(NSString*)url presentModalInController:(UIViewController*)controller
 {
-    self = [super init];
-    if(self)
-    {
-        viewRect = CGRectMake(0, parentViewSize.height - ACTION_PANE_HEIGHT, parentViewSize.width,  ACTION_PANE_HEIGHT);
-        self.entity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
-        [entity setKey:url];
+    if ((self = [self initWithEntity:nil presentModalInController:controller])) {
+        id<SocializeEntity> newEntity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
+        [newEntity setKey:url];
+        self.entity = newEntity;
     }
     return self;
 }
 
--(id)initWithParantViewSize:(CGSize)parentViewSize andEntiry:(id<SocializeEntity>)socEntity
+-(id)initWithEntity:(id<SocializeEntity>)socEntity presentModalInController:(UIViewController*)controller
 {
     self = [super init];
     if(self)
     {
-        viewRect = CGRectMake(0, parentViewSize.height - ACTION_PANE_HEIGHT, parentViewSize.width,  ACTION_PANE_HEIGHT);
         self.entity = socEntity;
+        self.parentViewController = controller;
     }
     return self;
 }
@@ -104,7 +107,7 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:viewRect];
+    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectZero];
     self.view = actionView;
     actionView.delegate = self;
     [actionView release];
@@ -140,6 +143,7 @@
         {
             self.entity = (id<SocializeEntity>)object;          
             [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:entityLike!=nil withCommentsCount:[NSNumber numberWithInt:entity.comments]];
+            self.didFetchEntity = YES;
         }
         if ([object conformsToProtocol:@protocol(SocializeLike)])
         {
@@ -178,6 +182,9 @@
         [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes] liked:YES];
         [(SocializeActionView*)self.view unlockButtons];
     } 
+    
+    // Refresh from server
+    [self.socialize getEntityByKey:[entity key]];
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
@@ -214,23 +221,40 @@
 {
 }
 
--(void)incrementViewCount {
-    //convienence method
-    [self viewWillAppear:YES];
-}
 -(void)afterAnonymouslyLoginAction
 {
-    [self.socialize getEntityByKey:[entity key]];
-    if(entityView == nil)
+    if (self.ignoreNextView) {
+        // Refresh now
+        [self.socialize getEntityByKey:[entity key]];
+        self.ignoreNextView = NO;
+    } else {
+        // Refresh will happen after the view
         [self.socialize viewEntity:entity longitude:nil latitude:nil];
+    }
+    
+
+
     if(entityLike == nil)
         [self.socialize getLikesForEntityKey:[entity key] first:nil last:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+-(void)socializeActionViewWillAppear:(SocializeActionView *)socializeActionView {
+    [socializeActionView startActivityForUpdateViewsCount];
+    [self performAutoAuth];
+}
+
+-(void)socializeActionViewWillDisappear:(SocializeActionView *)socializeActionView {
 }
 
 #pragma Socialize Action view delefate
 
 -(void)commentButtonTouched:(id)sender
 {
+    self.ignoreNextView = YES;
     [self.parentViewController presentModalViewController:comentsNavController animated:YES];
 }
 
@@ -242,6 +266,95 @@
         [self.socialize unlikeEntity: entityLike];
     else
         [self.socialize likeEntityWithKey:[entity key] longitude:nil latitude:nil];
+}
+
+-(void)shareButtonTouched: (id) sender
+{    
+    UIActionSheet* shareActionSheet = [UIActionSheet sheetWithTitle:nil];
+    [shareActionSheet addButtonWithTitle:@"Share on Twitter" handler:^{ NSLog(@"Zip!"); }];
+    [shareActionSheet addButtonWithTitle:@"Share on Facebook" handler:^{ NSLog(@"Zap!"); }];
+    [shareActionSheet addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
+    [shareActionSheet setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
+    [shareActionSheet showInView:self.view.window];
+}
+
+#pragma mark Share via email
+
+-(void) shareViaEmail
+{
+    // This sample can run on devices running iPhone OS 2.0 or later  
+	// The MFMailComposeViewController class is only available in iPhone OS 3.0 or later. 
+	// So, we must verify the existence of the above class and provide a workaround for devices running 
+	// earlier versions of the iPhone OS. 
+	// We display an email composition interface if MFMailComposeViewController exists and the device can send emails.
+	// We launch the Mail application on the device, otherwise.
+	
+	Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+	if (mailClass != nil)
+	{
+		// We must always check whether the current device is configured for sending emails
+		if ([mailClass canSendMail])
+		{
+			[self displayComposerSheet];
+		}
+		else
+		{
+			[self launchMailAppOnDevice];
+		}
+	}
+	else
+	{
+		[self launchMailAppOnDevice];
+	}
+}
+
+// Displays an email composition interface inside the application. Populates all the Mail fields. 
+-(void)displayComposerSheet 
+{
+	MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+    picker.completionBlock = ^(MFMailComposeResult result, NSError *error)
+    {
+    // Notifies users about errors associated with the interface
+    switch (result)
+        {
+            case MFMailComposeResultCancelled:
+                NSLog(@"Result: canceled");
+                break;
+            case MFMailComposeResultSaved:
+                NSLog(@"Result: saved");
+                break;
+            case MFMailComposeResultSent:
+                NSLog(@"Result: sent");
+                break;
+            case MFMailComposeResultFailed:
+                NSLog(@"Result: failed with error %@", [error localizedDescription]);
+                break;
+            default:
+                NSLog(@"Result: not sent");
+                break;
+        }
+    };
+	
+	[picker setSubject:@"Share with you my interest!"];
+
+	// Fill out the email body text
+  	NSString *emailBody = [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", entity.name, entity.key];
+	[picker setMessageBody:emailBody isHTML:NO];
+	
+	[self.parentViewController presentModalViewController:picker animated:YES];
+    [picker release];
+}
+
+// Launches the Mail application on the device.
+-(void)launchMailAppOnDevice
+{
+	NSString *recipients = @"mailto:first@example.com&subject=Share with you my interest!";
+	NSString *body = [NSString stringWithFormat: @"&body=I thought you would find this interesting: %@ %@", entity.name, entity.key];
+	
+	NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];
+	email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
 }
 
 @end
