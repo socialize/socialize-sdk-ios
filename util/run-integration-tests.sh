@@ -21,7 +21,6 @@ function cleanup() {
   done
   killall "iPhone Simulator" >/dev/null 2>&1
   echo "Cleanup complete"
-  exit 0
 }
 trap cleanup INT TERM EXIT
 
