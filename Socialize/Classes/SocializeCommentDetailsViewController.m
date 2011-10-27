@@ -61,6 +61,10 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
+}
 
 - (id)initWithNibName:(NSString*)nibName bundle:(NSBundle *)nibBundleOrNil{
     if ((self = [super initWithNibName:nibName bundle:nibBundleOrNil])) {
