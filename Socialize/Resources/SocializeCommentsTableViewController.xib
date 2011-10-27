@@ -63,12 +63,12 @@
 					</object>
 					<object class="IBUIView" id="1013070699">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">-2147483356</int>
+						<int key="NSvFlags">-2147483374</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUIView" id="432471234">
 								<reference key="NSNextResponder" ref="1013070699"/>
-								<int key="NSvFlags">-2147483356</int>
+								<int key="NSvFlags">-2147483383</int>
 								<string key="NSFrame">{{80, 132}, {159, 152}}</string>
 								<reference key="NSSuperview" ref="1013070699"/>
 								<reference key="NSWindow"/>

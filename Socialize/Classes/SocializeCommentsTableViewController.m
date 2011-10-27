@@ -385,6 +385,7 @@
  // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
+    informationView.center = self.tableView.center;
     return YES;
 }
 
