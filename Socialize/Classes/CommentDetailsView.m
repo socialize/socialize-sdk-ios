@@ -18,7 +18,6 @@
 -(void) configurateProfileImage;
 -(void) moveSubview: (UIView*) subView onValue: (CGFloat) value;
 -(CGFloat) desideSize;
--(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height;
 @end
 
 @implementation CommentDetailsView
@@ -38,8 +37,8 @@
     self = [super initWithCoder:decoder];
     if(self)
     {
-        self.autoresizesSubviews = NO;
-        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        //self.autoresizesSubviews = NO;
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
         self.backgroundColor = [UIColor colorWithRed:65/ 255.f green:77/ 255.f blue:86/ 255.f alpha:1.0];
         
         
