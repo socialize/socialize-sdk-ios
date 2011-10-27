@@ -35,6 +35,9 @@
 @property (nonatomic, retain) UINavigationController *navigationControllerForEdit;
 @property (nonatomic, retain) ImagesCache *imagesCache;
 -(void)editVCSave:(id)button;
+- (void)doneButtonPressed:(UIBarButtonItem*)button;
+- (void)editButtonPressed:(UIBarButtonItem*)button;
+
 @end
 
 @protocol SocializeProfileViewControllerDelegate

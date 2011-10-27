@@ -26,7 +26,7 @@
  */
 
 #import "SocializeLocationManager.h"
-#import "AppMakrLocation.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface SocializeLocationManager() 
     -(BOOL)shouldShareLocationOnStart;
@@ -65,9 +65,17 @@
     }
 }
 
--(BOOL)applicationIsAuthorizedToUseLocationServices
-{
-    return [AppMakrLocation applicationIsAuthorizedToUseLocationServices];
+-(BOOL)applicationIsAuthorizedToUseLocationServices;
+{    
+    //This is for backwards compatibilty with 4.0 devices.
+    //Authorization status was not introduced until iOS 4.2
+    if ([[CLLocationManager class] respondsToSelector:@selector(authorizationStatus)]) 
+    {
+        return ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
+    }
+    
+    return [CLLocationManager locationServicesEnabled];
+    
 }
 
 -(void)dealloc

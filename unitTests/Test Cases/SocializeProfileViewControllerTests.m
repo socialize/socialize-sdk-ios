@@ -34,8 +34,16 @@ static NSInteger TestUserObjectID=555;
     fullUser.userName = @"current_user";
     fullUser.objectID = TestUserObjectID;
     fullUser.smallImageUrl = @"http://someimage.jpeg";
+    fullUser.lastName = @"whatever";
+    fullUser.description = @"my description";
     NSArray *elements = [NSArray arrayWithObject:fullUser];
     [self.delegate service:nil didFetchElements:elements];
+}
+
+- (id<SocializeUser>)authenticatedUser {
+    SocializeUser *user = [self createObjectForProtocol:@protocol(SocializeUser)];
+    user.objectID = TestUserObjectID;
+    return user;
 }
 
 - (void)updateUserProfile:(id<SocializeFullUser>)user profileImage:(UIImage *)profileImage {
@@ -62,6 +70,7 @@ static NSInteger TestUserObjectID=555;
 
 - (void)reset {
     self.profileViewController = [[[SocializeProfileViewControllerForTest alloc] init] autorelease];
+
     self.socialize = [[[SocializeForTest alloc] initWithDelegate:self.profileViewController] autorelease];
     self.profileViewController.socialize = self.socialize;
     
@@ -91,6 +100,8 @@ static NSInteger TestUserObjectID=555;
 - (void)testUpdateProfile {
     [self reset];
     [self.profileViewController viewDidLoad];
+    self.profileViewController.navigationControllerForEdit = nil;
+    [self.profileViewController editButtonPressed:nil];
 
     [self.profileViewController.profileEditViewController viewDidLoad];
     [self.profileViewController.profileEditViewController.keyValueDictionary setObject:@"Some" forKey:@"first name"];
@@ -112,6 +123,23 @@ static NSInteger TestUserObjectID=555;
 
     id<SocializeFullUser> fullUser = self.profileViewController.fullUser;
     GHAssertEqualObjects(@"other_user", fullUser.userName, @"Bad username");
+}
+
+- (void)testDoneButton {
+    [self.profileViewController doneButtonPressed:nil];
+}
+
+- (void)testHelpers {
+    SocializeProfileViewController *profile = (SocializeProfileViewController*)[(UINavigationController*)[SocializeProfileViewController currentUserProfileWithDelegate:self] topViewController];
+    GHAssertTrue(profile.delegate == self, @"Bad delegate");
+}
+
+- (void)profileViewControllerDidSave:(SocializeProfileViewController *)profileViewController {
+    
+}
+
+- (void)profileViewControllerDidCancel:(SocializeProfileViewController *)profileViewController {
+    
 }
 
 @end

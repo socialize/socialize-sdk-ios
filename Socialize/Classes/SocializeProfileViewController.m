@@ -107,19 +107,6 @@
 }
 
 - (void)editButtonPressed:(UIBarButtonItem*)button {
-    /*
-    self.profileEditViewController = [[[SocializeProfileEditViewController alloc]
-                                       initWithStyle:UITableViewStyleGrouped]
-                                      autorelease];
-    UINavigationController *newNav = [[[UINavigationController alloc]
-                                       initWithRootViewController:self.profileEditViewController]
-                                      autorelease];
-    [newNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
-
-
-    [self.navigationController presentModalViewController:newNav animated:YES];
-     */
-    
     [self showEditController];
 }
 
@@ -129,15 +116,6 @@
     } else {
         [self dismissModalViewControllerAnimated:YES];
     }
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
@@ -255,14 +233,6 @@
     self.profileImageView = nil;
     self.profileEditViewController = nil;
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-
 
 /*******
  Legacy profile edit stuff -- please make sure most of this moves into SocializeProfileEditViewController
@@ -409,6 +379,7 @@
 
 -(void)profileEditViewController:(SocializeProfileEditViewController*)controller didFinishWithError:(NSError*)error
 {
+    
 }
 
 
