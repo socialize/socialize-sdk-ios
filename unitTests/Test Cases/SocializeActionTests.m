@@ -11,7 +11,7 @@
 #import "SocializeActionViewForTest.h"
 #import "UIFontForTest.h"
 #import <OCMock/OCMock.h>
-
+#import "NSNumber+Additions.h"
 
 @implementation SocializeActionTests
 
@@ -152,6 +152,18 @@
     [actionView commentButtonPressed:nil];
     [mockDelegate verify];
 }
+
+- (void)testFormatting {
+    NSString *kFormat = [NSNumber formatMyNumber:[NSNumber numberWithInt:1000] ceiling:[NSNumber numberWithInt:1000]];
+    GHAssertEqualObjects(kFormat, @"1K+", @"bad format");
+
+    NSString *mFormat = [NSNumber formatMyNumber:[NSNumber numberWithInt:1000000] ceiling:[NSNumber numberWithInt:1000000]];
+    GHAssertEqualObjects(mFormat, @"1M+", @"bad format");
+
+    NSString *gFormat = [NSNumber formatMyNumber:[NSNumber numberWithInt:1000000000] ceiling:[NSNumber numberWithInt:1000000000]];
+    GHAssertEqualObjects(gFormat, @"1G+", @"bad format");
+}
+
 #pragma mark-
 
 @end
