@@ -164,6 +164,16 @@
     GHAssertEqualObjects(gFormat, @"1G+", @"bad format");
 }
 
+/*
+-(void)testLayoutInSuperview
+{
+    GHAssertNotNil(self.actionBar.view, nil);
+    GHAssertTrue(CGRectEqualToRect(self.actionBar.view.frame, CGRectMake(0,416,320,44)), nil);
+    GHAssertTrue([self.actionBar.view isKindOfClass: [SocializeActionView class]] ,nil);
+    GHAssertEqualStrings(self.actionBar.entity.key, TEST_ENTITY_URL, nil);
+}
+ */
+
 #pragma mark-
 
 @end

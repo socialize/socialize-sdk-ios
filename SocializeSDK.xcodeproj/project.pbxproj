@@ -1201,6 +1201,13 @@
 			remoteGlobalIDString = 5CC3DABD1378824700B11B78;
 			remoteInfo = Socialize;
 		};
+		AAD2813F145B63E800D1B885 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA863889144CA42C00CFA759 /* OCMock.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 033C84AE11F585CB0009B9CD;
+			remoteInfo = OCMockPhoneSim;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -3012,6 +3019,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AAD28140145B63E800D1B885 /* PBXTargetDependency */,
 				1643767B144C348A001EA3E4 /* PBXTargetDependency */,
 			);
 			name = unitTests;
@@ -4399,6 +4407,11 @@
 			isa = PBXTargetDependency;
 			target = 5CC3DABD1378824700B11B78 /* Socialize */;
 			targetProxy = AAAFE939143562E400851C73 /* PBXContainerItemProxy */;
+		};
+		AAD28140145B63E800D1B885 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OCMockPhoneSim;
+			targetProxy = AAD2813F145B63E800D1B885 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

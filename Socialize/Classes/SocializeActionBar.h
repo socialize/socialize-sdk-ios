@@ -33,6 +33,7 @@
 @protocol SocializeView;
 @protocol SocializeEntity;
 @protocol SocializeLike;
+@class MFMailComposeViewController;
 
 @interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate> {
     @private
@@ -48,6 +49,8 @@
 @property(nonatomic, assign) UIViewController* parentViewController;
 @property(nonatomic, retain) id<SocializeEntity> entity;
 @property (nonatomic, assign) BOOL ignoreNextView;
+@property (nonatomic, retain) UIActionSheet *shareActionSheet;
+@property (nonatomic, retain) MFMailComposeViewController *shareComposer;
 
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
 

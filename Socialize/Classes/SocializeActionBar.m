@@ -41,7 +41,6 @@
 @property(nonatomic, retain) id<SocializeView> entityView;
 
 -(void) shareViaEmail;
--(void)launchMailAppOnDevice;
 -(void)displayComposerSheet;
 
 @end
@@ -53,6 +52,8 @@
 @synthesize entityLike;
 @synthesize entityView;
 @synthesize ignoreNextView = _ignoreNextView;
+@synthesize shareActionSheet = _shareActionSheet;
+@synthesize shareComposer = _shareComposer;
 
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller
 {
@@ -89,15 +90,10 @@
     [(SocializeActionView*)self.view setDelegate: nil];
     [comentsNavController release];
     self.parentViewController = nil;
-    [super dealloc];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+    self.shareComposer = nil;
+    self.shareActionSheet = nil;
     
-    // Release any cached data, images, etc that aren't in use.
+    [super dealloc];
 }
 
 #pragma mark - View lifecycle
@@ -216,8 +212,6 @@
         // Refresh will happen after the view
         [self.socialize viewEntity:entity longitude:nil latitude:nil];
     }
-    
-
 
     if(entityLike == nil)
         [self.socialize getLikesForEntityKey:[entity key] first:nil last:nil];
@@ -249,93 +243,67 @@
         [self.socialize likeEntityWithKey:[entity key] longitude:nil latitude:nil];
 }
 
+- (UIActionSheet*)shareActionSheet {
+    if (_shareActionSheet == nil) {
+        _shareActionSheet = [[UIActionSheet sheetWithTitle:nil] retain];
+        [_shareActionSheet addButtonWithTitle:@"Share on Twitter" handler:^{ NSLog(@"Zip!"); }];
+        [_shareActionSheet addButtonWithTitle:@"Share on Facebook" handler:^{ NSLog(@"Zap!"); }];
+        [_shareActionSheet addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
+        [_shareActionSheet setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
+    }
+    return _shareActionSheet;
+}
 -(void)shareButtonTouched: (id) sender
 {    
-    UIActionSheet* shareActionSheet = [UIActionSheet sheetWithTitle:nil];
-    [shareActionSheet addButtonWithTitle:@"Share on Twitter" handler:^{ NSLog(@"Zip!"); }];
-    [shareActionSheet addButtonWithTitle:@"Share on Facebook" handler:^{ NSLog(@"Zap!"); }];
-    [shareActionSheet addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
-    [shareActionSheet setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
-    [shareActionSheet showInView:self.view.window];
+    [self.shareActionSheet showInView:self.view.window];
 }
 
 #pragma mark Share via email
 
 -(void) shareViaEmail
 {
-    // This sample can run on devices running iPhone OS 2.0 or later  
-	// The MFMailComposeViewController class is only available in iPhone OS 3.0 or later. 
-	// So, we must verify the existence of the above class and provide a workaround for devices running 
-	// earlier versions of the iPhone OS. 
-	// We display an email composition interface if MFMailComposeViewController exists and the device can send emails.
-	// We launch the Mail application on the device, otherwise.
-	
-	Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
-	if (mailClass != nil)
-	{
-		// We must always check whether the current device is configured for sending emails
-		if ([mailClass canSendMail])
-		{
-			[self displayComposerSheet];
-		}
-		else
-		{
-			[self launchMailAppOnDevice];
-		}
-	}
-	else
-	{
-		[self launchMailAppOnDevice];
-	}
+    [self displayComposerSheet];
+}
+
+- (MFMailComposeViewController*)shareComposer {
+    if (_shareComposer == nil) {
+        _shareComposer = [[MFMailComposeViewController alloc] init];
+        _shareComposer.completionBlock = ^(MFMailComposeResult result, NSError *error)
+        {
+            // Notifies users about errors associated with the interface
+            switch (result)
+            {
+                case MFMailComposeResultCancelled:
+                    NSLog(@"Result: canceled");
+                    break;
+                case MFMailComposeResultSaved:
+                    NSLog(@"Result: saved");
+                    break;
+                case MFMailComposeResultSent:
+                    NSLog(@"Result: sent");
+                    break;
+                case MFMailComposeResultFailed:
+                    NSLog(@"Result: failed with error %@", [error localizedDescription]);
+                    break;
+                default:
+                    NSLog(@"Result: not sent");
+                    break;
+            }
+        };
+        [_shareComposer setSubject:@"Share with you my interest!"];
+    }
+    
+    return _shareComposer;
 }
 
 // Displays an email composition interface inside the application. Populates all the Mail fields. 
 -(void)displayComposerSheet 
 {
-	MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
-    picker.completionBlock = ^(MFMailComposeResult result, NSError *error)
-    {
-    // Notifies users about errors associated with the interface
-    switch (result)
-        {
-            case MFMailComposeResultCancelled:
-                NSLog(@"Result: canceled");
-                break;
-            case MFMailComposeResultSaved:
-                NSLog(@"Result: saved");
-                break;
-            case MFMailComposeResultSent:
-                NSLog(@"Result: sent");
-                break;
-            case MFMailComposeResultFailed:
-                NSLog(@"Result: failed with error %@", [error localizedDescription]);
-                break;
-            default:
-                NSLog(@"Result: not sent");
-                break;
-        }
-    };
-	
-	[picker setSubject:@"Share with you my interest!"];
+    // Fill out the email body text
+    NSString *emailBody = [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", entity.name, entity.key];
+    [self.shareComposer setMessageBody:emailBody isHTML:NO];
 
-	// Fill out the email body text
-  	NSString *emailBody = [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", entity.name, entity.key];
-	[picker setMessageBody:emailBody isHTML:NO];
-	
-	[self.parentViewController presentModalViewController:picker animated:YES];
-    [picker release];
-}
-
-// Launches the Mail application on the device.
--(void)launchMailAppOnDevice
-{
-	NSString *recipients = @"mailto:first@example.com&subject=Share with you my interest!";
-	NSString *body = [NSString stringWithFormat: @"&body=I thought you would find this interesting: %@ %@", entity.name, entity.key];
-	
-	NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];
-	email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+	[self.parentViewController presentModalViewController:self.shareComposer animated:YES];
 }
 
 @end
