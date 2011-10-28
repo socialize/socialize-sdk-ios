@@ -37,7 +37,8 @@
 -(void)setUpClass
 {
     UIView *parentView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,320,460)] autorelease];
-    
+
+    mockParentController = [OCMockObject mockForClass:[UIViewController class]];
     actionBar = [[SocializeActionBar actionBarWithUrl:TEST_ENTITY_URL presentModalInController:mockParentController] retain];
     
     [parentView addSubview:actionBar.view];
@@ -62,4 +63,11 @@
     GHAssertTrue([actionBar.view isKindOfClass: [SocializeActionView class]] ,nil);
     GHAssertEqualStrings(actionBar.entity.key, TEST_ENTITY_URL, nil);
 }
+
+- (void)testModalCommentDisplay {
+    [[mockParentController expect] presentModalViewController:OCMOCK_ANY animated:YES];
+    [actionBar commentButtonTouched:nil];
+    [mockParentController verify];
+}
+
 @end

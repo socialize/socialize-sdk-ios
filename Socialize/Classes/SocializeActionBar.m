@@ -52,7 +52,6 @@
 @synthesize entity;
 @synthesize entityLike;
 @synthesize entityView;
-@synthesize didFetchEntity = _didFetchEntity;
 @synthesize ignoreNextView = _ignoreNextView;
 
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller
@@ -122,19 +121,6 @@
 }
 
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
 {
     if ([dataArray count]){
@@ -143,7 +129,6 @@
         {
             self.entity = (id<SocializeEntity>)object;          
             [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:entityLike!=nil withCommentsCount:[NSNumber numberWithInt:entity.comments]];
-            self.didFetchEntity = YES;
         }
         if ([object conformsToProtocol:@protocol(SocializeLike)])
         {
@@ -236,10 +221,6 @@
 
     if(entityLike == nil)
         [self.socialize getLikesForEntityKey:[entity key] first:nil last:nil];
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
 }
 
 -(void)socializeActionViewWillAppear:(SocializeActionView *)socializeActionView {
