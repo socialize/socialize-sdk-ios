@@ -150,6 +150,15 @@
 
 - (void)testComposerCases {
     /* Tests we don't crash, anyway. Add additional testing if these ever have an effect */
+    
+    // Make sure it's created on the main thread (exception will be thrown if not)
+    
+    if (![NSThread isMainThread]) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            (void)self.actionBar.shareComposer;
+        });
+    }
+    
     self.actionBar.shareComposer.completionBlock(MFMailComposeResultCancelled, nil); // currently noop
     self.actionBar.shareComposer.completionBlock(MFMailComposeResultFailed, nil); // currently noop
     self.actionBar.shareComposer.completionBlock(MFMailComposeResultSaved, nil); // currently noop
