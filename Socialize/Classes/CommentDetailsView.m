@@ -31,6 +31,7 @@
 @synthesize profileNameLable;
 @synthesize profileImage;
 @synthesize shadowBackground;
+@synthesize shadowMapOfUserLocation;
 
 - (id)initWithCoder:(NSCoder *)decoder
 {
@@ -47,7 +48,11 @@
         self.profileNameLable.layer.shadowRadius = 1.0;
         self.profileNameLable.layer.shadowColor = [UIColor blackColor].CGColor;
         self.profileNameLable.layer.shadowOffset = CGSizeMake(0.0, -1.0);
-        self.profileNameLable.layer.masksToBounds = NO;   
+        self.profileNameLable.layer.masksToBounds = NO; 
+        
+        
+        
+
     }
     return self;
 }
@@ -79,6 +84,12 @@
 {
     [self configurateProfileImage];
     [self.mapOfUserLocation configurate];
+    
+    shadowMapOfUserLocation.layer.cornerRadius = 3.0;
+    shadowMapOfUserLocation.layer.shadowColor = [UIColor colorWithRed:22/ 255.f green:28/ 255.f blue:31/ 255.f alpha:1.0].CGColor;
+    shadowMapOfUserLocation.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    shadowMapOfUserLocation.layer.shadowOpacity = 0.9f;
+    shadowMapOfUserLocation.layer.shadowRadius = 3.0f;
 }
 
 -(void) updateProfileImage: (UIImage* )image
@@ -149,13 +160,13 @@
     
     if(showMap){
         [self moveSubview: shadowBackground onValue: commentMessage.frame.origin.y + commentMessage.frame.size.height];
-        [self moveSubview: mapOfUserLocation onValue: commentMessage.frame.origin.y + commentMessage.frame.size.height + VIEW_OFSET_SIZE];
-        [self moveSubview: navImage onValue: mapOfUserLocation.frame.origin.y + mapOfUserLocation.frame.size.height + GEO_LABLE_OFSSET];
-        [self moveSubview: positionLable onValue: mapOfUserLocation.frame.origin.y + mapOfUserLocation.frame.size.height + GEO_LABLE_OFSSET]; 
+        [self moveSubview: shadowMapOfUserLocation onValue: commentMessage.frame.origin.y + commentMessage.frame.size.height + VIEW_OFSET_SIZE];
+        [self moveSubview: navImage onValue: shadowMapOfUserLocation.frame.origin.y + shadowMapOfUserLocation.frame.size.height + GEO_LABLE_OFSSET];
+        [self moveSubview: positionLable onValue: shadowMapOfUserLocation.frame.origin.y + shadowMapOfUserLocation.frame.size.height + GEO_LABLE_OFSSET]; 
     }
     else {
-        [self.mapOfUserLocation removeFromSuperview];
-        self.mapOfUserLocation = nil;
+        [self.shadowMapOfUserLocation removeFromSuperview];
+        self.shadowMapOfUserLocation = nil;
         
         [self moveSubview: shadowBackground onValue: commentMessage.frame.origin.y + commentMessage.frame.size.height];
         [self moveSubview: navImage onValue: commentMessage.frame.origin.y + commentMessage.frame.size.height + VIEW_OFSET_SIZE];
@@ -189,6 +200,7 @@
     [profileNameLable release]; profileNameLable = nil;
     [profileImage release]; profileImage = nil;
     [shadowBackground release]; shadowBackground = nil;
+    [shadowMapOfUserLocation release]; shadowMapOfUserLocation = nil;
     
     [super dealloc];
 }

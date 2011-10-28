@@ -10,7 +10,6 @@
 #import <MapKit/MapKit.h>
 
 @interface CommentMapView : MKMapView {
-    
 }
 
 -(void) setFitLocation: (CLLocationCoordinate2D) location withSpan: (MKCoordinateSpan) span;
