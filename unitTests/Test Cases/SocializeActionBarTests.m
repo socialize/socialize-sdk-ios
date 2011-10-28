@@ -29,37 +29,190 @@
 #import "SocializeActionBarTests.h"
 #import "SocializeActionBar.h"
 #import <OCMock/OCMock.h>
+#import "Socialize.h"
+#import <MessageUI/MessageUI.h>
+#import "MFMailComposeViewController+BlocksKit.h"
+#import "SocializeAuthenticateService.h"
 
 #define TEST_ENTITY_URL @"http://test.com"
 
-@implementation SocializeActionBarTests
+@interface UIView (SocializeActionBarTests)
+- (void)_setViewDelegate:(id)delegate;
+@end
 
--(void)setUpClass
-{
-    UIView *parentView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,320,460)] autorelease];
+@implementation UIView (SocializeActionBarTests)
+- (void)_setViewDelegate:(id)delegate {}
+@end
+
+@interface SocializeActionBar()
+@property(nonatomic, retain) id<SocializeLike> entityLike;
+@property(nonatomic, retain) id<SocializeView> entityView;
+
+-(void) shareViaEmail;
+-(void)launchMailAppOnDevice;
+-(void)displayComposerSheet;
+
+@end
+
+@implementation SocializeActionBarTests
+@synthesize actionBar = actionBar_;
+@synthesize mockParentController = mockParentController_;
+@synthesize parentView = parentView_;
+@synthesize mockSocialize = mockSocialize_;
+@synthesize mockActionView = mockActionView_;
+
+- (void)reset {
+    self.mockParentController = [OCMockObject mockForClass:[UIViewController class]];
     
-    actionBar = [[SocializeActionBar actionBarWithUrl:TEST_ENTITY_URL presentModalInController:mockParentController] retain];
+    self.actionBar = [SocializeActionBar actionBarWithUrl:TEST_ENTITY_URL presentModalInController:self.mockParentController];
+    self.actionBar = [OCMockObject partialMockForObject:self.actionBar];
     
-    [parentView addSubview:actionBar.view];
-    [(SocializeActionView*)actionBar.view positionInSuperview];
+    self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
+    self.actionBar.socialize = self.mockSocialize;
+    
+    // Having troubles expecting (_setViewDelegate:) in OCMock
+//    self.mockActionView = [OCMockObject mockForClass:[SocializeActionView class]];
+//    [[self.mockActionView expect] _setViewDelegate:OCMOCK_ANY];
+    self.mockActionView = [OCMockObject mockForClass:[SocializeActionView class]];
+    [[[(id)self.actionBar stub] andReturn:self.mockActionView] view];
 }
 
--(void)tearDownClass
-{
-    [actionBar release];
+- (void)setUp {
+    [self reset];
 }
 
 -(void)tearDown
 {
-    [mockParentController verify];
-    [mockParantView verify];
+    self.mockParentController = nil;
+    self.actionBar = nil;
 }
 
--(void)testCreateCheck
-{
-    GHAssertNotNil(actionBar.view, nil);
-    GHAssertTrue(CGRectEqualToRect(actionBar.view.frame, CGRectMake(0,416,320,44)), nil);
-    GHAssertTrue([actionBar.view isKindOfClass: [SocializeActionView class]] ,nil);
-    GHAssertEqualStrings(actionBar.entity.key, TEST_ENTITY_URL, nil);
+- (void)testModalCommentDisplay {
+    [[self.mockParentController expect] presentModalViewController:OCMOCK_ANY animated:YES];
+    [self.actionBar commentButtonTouched:nil];
+    [self.mockParentController verify];
 }
+
+- (void)testLikeAndUnlike {
+    GHAssertNil(self.actionBar.entityLike, @"Should be nil");
+    
+    id<SocializeLike> like = [[[SocializeLike alloc] init] autorelease];
+    like.entity = [[[SocializeEntity alloc] init] autorelease];
+    like.entity.likes = 111;
+    
+    [[[self.mockSocialize expect] andDo:^(NSInvocation* invocation) {
+        [self.actionBar service:nil didCreate:like];
+    }] likeEntityWithKey:TEST_ENTITY_URL longitude:nil latitude:nil];
+    
+    [[self.mockActionView expect] lockButtons];
+    [[self.mockActionView expect] updateLikesCount:[NSNumber numberWithInteger:111] liked:YES];
+    [[self.mockActionView expect] unlockButtons];
+    [[self.mockSocialize expect] getEntityByKey:OCMOCK_ANY];
+    [self.actionBar likeButtonTouched:nil];
+    [self.mockSocialize verify];
+    [self.mockActionView verify];
+    
+    GHAssertEquals(self.actionBar.entityLike, like, nil);
+    [[[self.mockSocialize expect] andDo:^(NSInvocation* invocation) {
+        [self.actionBar service:nil didDelete:like];
+    }] unlikeEntity:like];
+    [[self.mockActionView expect] lockButtons];
+    [[self.mockActionView expect] updateLikesCount:[NSNumber numberWithInteger:110] liked:NO];
+    [[self.mockActionView expect] unlockButtons];
+    [self.actionBar likeButtonTouched:nil];
+    GHAssertNil(self.actionBar.entityLike, nil);
+
+    [self.mockSocialize verify];
+    [self.mockActionView verify];
+}
+
+- (void)testShareShowsActionSheet {
+    id mockSheet = [OCMockObject mockForClass:[UIActionSheet class]];
+    self.actionBar.shareActionSheet = mockSheet;
+    id mockWindow = [OCMockObject mockForClass:[UIWindow class]];
+    [[[self.mockActionView expect] andReturn:mockWindow] window];
+    [[mockSheet expect] showInView:mockWindow];
+    [self.actionBar shareButtonTouched:nil];
+    [self.mockActionView verify];
+    [mockSheet verify];
+}
+
+
+- (void)testShareViaEmailShowsComposer {
+    [[self.mockParentController expect]
+      presentModalViewController:[OCMArg checkWithBlock:^(id value) {
+        return [value isKindOfClass:[MFMailComposeViewController class]];
+      }]
+     animated:YES];
+    [self.actionBar performSelectorOnMainThread:@selector(shareViaEmail) withObject:nil waitUntilDone:YES];
+    [self.mockParentController verify];
+}
+
+- (void)testComposerCases {
+    /* Tests we don't crash, anyway. Add additional testing if these ever have an effect */
+    
+    // Make sure it's created on the main thread (exception will be thrown if not)
+    
+    if (![NSThread isMainThread]) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            (void)self.actionBar.shareComposer;
+        });
+    }
+    
+    self.actionBar.shareComposer.completionBlock(MFMailComposeResultCancelled, nil); // currently noop
+    self.actionBar.shareComposer.completionBlock(MFMailComposeResultFailed, nil); // currently noop
+    self.actionBar.shareComposer.completionBlock(MFMailComposeResultSaved, nil); // currently noop
+    self.actionBar.shareComposer.completionBlock(MFMailComposeResultSent, nil); // currently noop
+}
+
+- (void)testShowingViewCausesUpdates {
+    id<SocializeUser> user = [[[SocializeUser alloc] init] autorelease];
+    BOOL no = NO;
+    
+    // Immediately complete authentication
+    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(no)] isAuthenticated];
+    [[[self.mockSocialize expect] andDo:^(NSInvocation *invocation) {
+        [self.actionBar didAuthenticate:user];
+    }] authenticateAnonymously];
+    
+    // Expect animation starts
+    [[self.mockActionView expect] startActivityForUpdateViewsCount];
+    
+    // Force unliked on the view (pre-auth step before user is known)
+    [[self.mockActionView expect] updateIsLiked:NO];
+    
+    // A view should immediately be created on the entity
+    [[self.mockSocialize expect] viewEntity:self.actionBar.entity longitude:nil latitude:nil];
+    
+    // Likes should immediately be retrieved
+    [[self.mockSocialize expect] getLikesForEntityKey:TEST_ENTITY_URL first:nil last:nil];
+    
+    // Kick things off by showing the view
+    [self.actionBar socializeActionViewWillAppear:self.mockActionView];
+    
+    // Verify
+    [self.mockSocialize verify];
+    [self.mockActionView verify];
+}
+
+- (void)testGettingLikesUpdatesView {
+    id mockAuth = [OCMockObject mockForClass:[SocializeAuthenticateService class]];
+    id<SocializeLike> like = [[[SocializeLike alloc] init] autorelease];
+    like.entity = [[[SocializeEntity alloc] init] autorelease];
+    like.entity.likes = 10;
+    
+    // Fake an authenticated user, and place this user in the like response
+    id<SocializeUser> user = [[[SocializeUser alloc] init] autorelease];
+    user.objectID = 555;
+    [[[self.mockSocialize expect] andReturn:user] authenticatedUser];
+    like.user = user;
+    
+    [[self.mockActionView expect] updateLikesCount:[NSNumber numberWithInt:10] liked:YES];
+    [self.actionBar service:mockAuth didFetchElements:[NSArray arrayWithObject:like]];
+    [self.mockSocialize verify];
+    [mockAuth verify];
+    [self.mockActionView verify];
+    GHAssertEquals(self.actionBar.entityLike, like, nil);
+}
+
 @end

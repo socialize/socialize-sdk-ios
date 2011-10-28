@@ -10,6 +10,11 @@
 #import <OCMock/OCMock.h>
 #import "SocializeAuthenticateService.h"
 #import "SocializeLikeService.h"
+#import "SocializeEntityService.h"
+#import "SocializeActivityService.h"
+#import "SocializeCommentsService.h"
+#import "SocializeUserService.h"
+#import "SocializeViewService.h"
 
 @implementation SocializeTests
 
@@ -103,6 +108,161 @@
     GHAssertEqualStrings(apiKey,[Socialize apiKey], nil);
     GHAssertEqualStrings(apiSecret,[Socialize apiSecret], nil);
     
+}
+
+- (void)testAuthenticateWithFacebook {
+    NSString* apiKey = @"0000000-1111101110-1111";
+    NSString* apiSecret = @"11111111-222222-333333";
+
+    [Socialize storeSocializeApiKey:apiKey andSecret:apiSecret];
+    [Socialize storeFacebookAppId:@"1234"];
+    [Socialize storeFacebookLocalAppId:@"abcd"];
+    
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
+    id mockAuthService = [OCMockObject mockForClass:[SocializeAuthenticateService class]];
+    Socialize *socialize = [[Socialize alloc] initWithDelegate:mockDelegate];
+    socialize.authService = mockAuthService;
+
+    [[mockAuthService expect] removeAuthenticationInfo];
+    [[mockAuthService expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"1234" thirdPartyLocalAppId:@"abcd" thirdPartyName:FacebookAuth];
+    [socialize authenticateWithFacebook];
+    [mockAuthService verify];
+    [socialize release];
+}
+
+- (void)testSetDelegate {
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
+    Socialize *socialize = [[Socialize alloc] initWithDelegate:nil];
+    id auth = socialize.authService = [OCMockObject mockForClass:[SocializeAuthenticateService class]];
+    id like = socialize.likeService = [OCMockObject mockForClass:[SocializeLikeService class]];
+    id entity = socialize.entityService = [OCMockObject mockForClass:[SocializeEntityService class]];
+    id activity = socialize.activityService = [OCMockObject mockForClass:[SocializeActivityService class]];
+    id comments = socialize.commentsService = [OCMockObject mockForClass:[SocializeCommentsService class]];
+    id user = socialize.userService = [OCMockObject mockForClass:[SocializeUserService class]];
+    id view = socialize.viewService = [OCMockObject mockForClass:[SocializeViewService class]];
+    
+    [[auth expect] setDelegate:mockDelegate];    
+    [[like expect] setDelegate:mockDelegate];    
+    [[entity expect] setDelegate:mockDelegate];    
+    [[activity expect] setDelegate:mockDelegate];    
+    [[comments expect] setDelegate:mockDelegate];    
+    [[user expect] setDelegate:mockDelegate];    
+    [[view expect] setDelegate:mockDelegate];    
+    [socialize setDelegate:mockDelegate];
+    
+    [auth verify]; [like verify]; [entity verify]; [activity verify]; [comments verify]; [user verify]; [view verify];
+}
+
+- (void)testWrappedFunctions {
+    Socialize *socialize = [[Socialize alloc] initWithDelegate:nil];
+    id like = socialize.likeService = [OCMockObject mockForClass:[SocializeLikeService class]];
+    id comments = socialize.commentsService = [OCMockObject mockForClass:[SocializeCommentsService class]];
+    id entity = socialize.entityService = [OCMockObject mockForClass:[SocializeEntityService class]];
+    id user = socialize.userService = [OCMockObject mockForClass:[SocializeUserService class]];
+    id activity = socialize.activityService = [OCMockObject mockForClass:[SocializeActivityService class]];
+    id view = socialize.viewService = [OCMockObject mockForClass:[SocializeViewService class]];
+
+    id<SocializeLike> likeEntity = [socialize createObjectForProtocol:@protocol(SocializeLike)];
+    [[like expect] deleteLike:likeEntity];
+    [socialize unlikeEntity:likeEntity];
+    [like verify];
+    
+    [[like expect] getLikesForEntityKey:@"key" first:[NSNumber numberWithInt:1] last:[NSNumber numberWithInt:2]];
+    [socialize getLikesForEntityKey:@"key" first:[NSNumber numberWithInt:1] last:[NSNumber numberWithInt:2]];
+    [like verify];
+    
+    [[like expect] postLikeForEntityKey:@"key" andLongitude:nil latitude:nil];
+    [socialize likeEntityWithKey:@"key" longitude:nil latitude:nil];
+    [like verify];
+
+    [[comments expect] getCommentById:1];
+    [socialize getCommentById:1];
+    [comments verify];
+    
+    [[comments expect] getCommentList:@"key" first:nil last:nil];
+    [socialize getCommentList:@"key" first:nil last:nil];
+    [comments verify];
+    
+    [[comments expect] createCommentForEntity:nil comment:nil longitude:nil latitude:nil];
+    [socialize createCommentForEntity:nil comment:nil longitude:nil latitude:nil];
+    [comments verify];
+    
+    [[comments expect] createCommentForEntityWithKey:nil comment:nil longitude:nil latitude:nil];
+    [socialize createCommentForEntityWithKey:nil comment:nil longitude:nil latitude:nil];
+    [comments verify];
+    
+    [[entity expect] createEntityWithKey:@"url" andName:@"name"];
+    [socialize createEntityWithUrl:@"url" andName:@"name"];
+    [entity verify];
+
+    [[entity expect] entityWithKey:@"key"];
+    [socialize getEntityByKey:@"key"];
+    [entity verify];
+    
+    [[user expect] getCurrentUser];
+    [socialize getCurrentUser];
+    [user verify];
+    
+    [[user expect] getUserWithId:1];
+    [socialize getUserWithId:1];
+    [user verify];
+    
+    id<SocializeFullUser> u1 = [[[SocializeFullUser alloc] init] autorelease];
+    UIImage *mockImage = [OCMockObject mockForClass:[UIImage class]];
+    [[user expect] updateUser:u1 profileImage:mockImage];
+    [socialize updateUserProfile:u1 profileImage:mockImage];
+    [user verify];
+    
+    [[user expect] updateUser:u1];
+    [socialize updateUserProfile:u1];
+    [user verify];
+
+    [[activity expect] getActivityOfCurrentApplication];
+    [socialize getActivityOfCurrentApplication];
+    [activity verify];
+    
+    id<SocializeUser> usmall = [socialize createObjectForProtocol:@protocol(SocializeUser)];
+    [[activity expect] getActivityOfUser:usmall];
+    [socialize getActivityOfUser:usmall];
+    [activity verify];
+    
+
+    id<SocializeEntity> viewedEntity = [socialize createObjectForProtocol:@protocol(SocializeEntity)];
+    [[view expect] createViewForEntity:viewedEntity longitude:nil latitude:nil];
+    [socialize viewEntity:viewedEntity longitude:nil latitude:nil];
+    [view verify];
+}
+
+- (void)testAuthWrappers {
+    Socialize *socialize = [[Socialize alloc] initWithDelegate:nil];
+    id auth = socialize.authService = [OCMockObject mockForClass:[SocializeAuthenticateService class]];
+
+    [[auth expect] receiveFacebookAuthToken];
+    [socialize receiveFacebookAuthToken];
+    [auth verify];
+    
+    NSString* apiKey = @"0000000-1111101110-1111";
+    NSString* apiSecret = @"11111111-222222-333333";
+    [Socialize storeSocializeApiKey:apiKey andSecret:apiSecret];
+    
+    [[auth expect] removeAuthenticationInfo];
+    [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret];
+    [socialize authenticateAnonymously];
+    [auth verify];
+    
+    [[auth expect] removeAuthenticationInfo];
+    [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"123" thirdPartyName:FacebookAuth];
+    [socialize authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"123" thirdPartyName:FacebookAuth];
+    [auth verify];
+    
+    [[auth expect] removeAuthenticationInfo];
+    [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:@"token" thirdPartyAppId:@"123" thirdPartyName:FacebookAuth];
+    [socialize authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:@"token" thirdPartyAppId:@"123" thirdPartyName:FacebookAuth];
+    [auth verify];
+    
+    [[auth expect] removeAuthenticationInfo];
+    [socialize removeAuthenticationInfo];
+    [auth verify];
 }
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{

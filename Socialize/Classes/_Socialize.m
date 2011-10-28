@@ -136,6 +136,8 @@
     _commentsService.delegate = delegate;
     _entityService.delegate = delegate;
     _viewService.delegate = delegate;
+    _activityService.delegate = delegate;
+    _userService.delegate = delegate;
 }
 
 -(void)authenticateWithFacebook {
