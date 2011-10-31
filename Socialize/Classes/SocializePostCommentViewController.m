@@ -23,6 +23,9 @@
 #define NO_CITY_MSG @"Could not locate the place name."
 #define MIN_DISMISS_INTERVAL 0.75
 
+#define PORTRAIT_KEYBOARD_HEIGHT 216
+#define LANDSCAPE_KEYBOARD_HEIGHT 162
+
 @interface SocializePostCommentViewController ()
 
 -(void)setShareLocation:(BOOL)enableLocation;
@@ -33,6 +36,7 @@
 -(void)updateViewWithNewLocation: (CLLocation*)userLocation;
 -(void)createComment;
 -(void)authenticateViaFacebook;
+-(void) adjustViewToLayoutWithKeyboardHeigth:(int)keyboardHeigth;
 
 
 @end 
@@ -45,6 +49,8 @@
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
 @synthesize facebookAuthQuestionDialog = _facebookAuthQuestionDialog;
+@synthesize locationViewContainer = _locationViewContainer;
+@synthesize mapContainer = _mapContainer;
 
 +(UINavigationController*)createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar
 {
@@ -94,6 +100,8 @@
     [locationManager release];
     [_facebookAuthQuestionDialog release];
     [_geoCoderInfo release];
+    [_locationViewContainer release];
+    [_mapContainer release];
 
     [super dealloc];
 }
@@ -362,6 +370,9 @@
     
     self.navigationItem.rightBarButtonItem = rightButtonItem;
     [rightButtonItem release];
+    
+    
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -374,6 +385,11 @@
     [mapOfUserLocation configurate];
     [self configureDoNotShareLocationButton];       
     [self updateViewWithNewLocation: mapOfUserLocation.userLocation.location];
+    
+    if(UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation]))
+        [self adjustViewToLayoutWithKeyboardHeigth:PORTRAIT_KEYBOARD_HEIGHT];
+    else
+        [self adjustViewToLayoutWithKeyboardHeigth:LANDSCAPE_KEYBOARD_HEIGHT];
 }
 
 - (void)viewDidUnload
@@ -386,12 +402,41 @@
     self.activateLocationButton = nil;
     self.mapOfUserLocation = nil;
     self.facebookAuthQuestionDialog = nil;
+    self.locationViewContainer = nil;
+    self.mapContainer = nil;
+}
+
+-(void) adjustViewToLayoutWithKeyboardHeigth:(int)keyboardHeigth
+{
+    CGRect commentFrame = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height - self.locationViewContainer.frame.size.height - keyboardHeigth);
+    self.commentTextView.frame = commentFrame;
+    
+    CGRect activateLoactionButtonFrame = self.locationViewContainer.frame;
+    activateLoactionButtonFrame.origin.y = self.commentTextView.frame.origin.y + self.commentTextView.frame.size.height;
+    self.locationViewContainer.frame = activateLoactionButtonFrame;
+    
+    CGRect mapContainerFrame = CGRectMake(0,self.view.frame.size.height - keyboardHeigth, self.view.frame.size.width, keyboardHeigth);
+    
+    self.mapContainer.frame = mapContainerFrame;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    
+    
+    if(UIInterfaceOrientationIsLandscape(interfaceOrientation))
+    {       
+        [self adjustViewToLayoutWithKeyboardHeigth: LANDSCAPE_KEYBOARD_HEIGHT];
+    }
+    else
+    {
+        [self adjustViewToLayoutWithKeyboardHeigth: PORTRAIT_KEYBOARD_HEIGHT];
+    }
+    
+    
+    return YES;
 }
+
 
 #pragma mark - Map View Delegate
 

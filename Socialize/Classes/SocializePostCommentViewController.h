@@ -41,6 +41,8 @@
 @property(nonatomic, retain) IBOutlet UIButton      *activateLocationButton;
 @property(nonatomic, retain) IBOutlet CommentMapView *mapOfUserLocation;
 @property(nonatomic, retain) UIAlertView *facebookAuthQuestionDialog;
+@property(nonatomic, retain) IBOutlet UIView *locationViewContainer;
+@property(nonatomic, retain) IBOutlet UIView *mapContainer;
 
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
