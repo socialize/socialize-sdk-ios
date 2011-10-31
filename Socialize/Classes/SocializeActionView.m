@@ -105,26 +105,22 @@
 	CGPoint buttonOrigin;
 	CGSize buttonSize;
 
-    // [#20081405 Hide share]
-//	buttonSize = [self getButtonSizeForLabel:@"Share" iconName:@"action-bar-icon-share.png"];
-//	buttonOrigin.x = self.bounds.size.width - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
-//	buttonOrigin.y = BUTTON_Y_ORIGIN;
-//	
-//    [self setButtonLabel:@"Share" 
-//            withImageForNormalState: @"action-bar-button-black.png" 
-//            withImageForHightlightedState:@"action-bar-button-black-hover.png"
-//			withIconName:@"action-bar-icon-share.png"
-//                atOrigin:buttonOrigin
-//                onButton:_shareButton
-//			withSelector:@selector(shareButtonPressed:)];
+	buttonSize = [self getButtonSizeForLabel:@"Share" iconName:@"action-bar-icon-share.png"];
+	buttonOrigin.x = self.bounds.size.width - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
+	buttonOrigin.y = BUTTON_Y_ORIGIN;
+	
+    [self setButtonLabel:@"Share" 
+            withImageForNormalState: @"action-bar-button-black.png" 
+            withImageForHightlightedState:@"action-bar-button-black-hover.png"
+			withIconName:@"action-bar-icon-share.png"
+                atOrigin:buttonOrigin
+                onButton:_shareButton
+			withSelector:@selector(shareButtonPressed:)];
     
     
-//	[self addSubview:_shareButton];
+	[self addSubview:_shareButton];
     
-    // [#20081405 Hide share]
-    buttonOrigin.x = self.bounds.size.width; 
-
-	buttonSize = [self getButtonSizeForLabel:@"0" iconName:@"comment-sm-icon.png"];
+    buttonSize = [self getButtonSizeForLabel:@"0" iconName:@"comment-sm-icon.png"];
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
  
@@ -275,10 +271,7 @@
     NSString* formattedValue = [NSNumber formatMyNumber:commentsCount ceiling:[NSNumber numberWithInt:1000]];
 	CGSize buttonSize = [self getButtonSizeForLabel:formattedValue  iconName:@"comment-sm-icon.png"];
 
-// [#20081405 Hide share]
-//    CGPoint buttonOrigin = _shareButton.frame.origin;
-    CGPoint buttonOrigin;
-    buttonOrigin.x = self.bounds.size.width;
+    CGPoint buttonOrigin = _shareButton.frame.origin;
 
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
