@@ -14,13 +14,12 @@ set -o errexit
 
 function cleanup() {
   set +o errexit
-  #for pid in $simPID $tailPID; do
-  for pid in $tailPID; do
+  for pid in $simPID $tailPID; do
     if [ -n "$pid" ] && kill -0 $pid >/dev/null 2>&1; then
       kill $pid > /dev/null 2>&1 
     fi
   done
-  #killall "iPhone Simulator" >/dev/null 2>&1
+  killall "iPhone Simulator" >/dev/null 2>&1
   echo "Cleanup complete"
 }
 trap cleanup INT TERM EXIT
