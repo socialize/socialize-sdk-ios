@@ -19,7 +19,6 @@ function cleanup() {
       kill $pid > /dev/null 2>&1 
     fi
   done
-  killall "iPhone Simulator" >/dev/null 2>&1
   echo "Cleanup complete"
 }
 trap cleanup INT TERM EXIT
