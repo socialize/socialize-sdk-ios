@@ -82,6 +82,7 @@
 - (void) viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];   
+    informationView.center = self.tableView.center;
 }
 
 - (UIBarButtonItem*)doneButton {
