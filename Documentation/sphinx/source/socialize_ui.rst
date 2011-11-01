@@ -18,9 +18,24 @@ To incorporate the Socialize UI views into your app you need to be authenticated
 
     <script src="https://gist.github.com/1274157.js?file=appDelegate.m"></script>
 
-In the next release we will add anonymous authentication in the UI stuff.
+Socialize Action Bar
+----------------------
 
+v0.8.0 of the Socialize SDK introduced the "Action Bar", which lets your users easily
+comment and like/unlike entities
 
+.. image:: images/action_bar.png	
+
+To use the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller:
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1315113.js"> </script>
+
+If you need more detail on installing the action bar please see our `Adding the Socialize Action Bar Video`_.
+
+    .. _Adding the Socialize Action Bar Video: http://vimeo.com/31403049
+ 
 Comment View
 ----------------------
 v0.4.0 of the Socialize SDK introduced the "Comment View" which provides the creation and viewing 
@@ -39,19 +54,6 @@ When you want to launch the comment view, simply instantiate and present the com
 
         <script src="https://gist.github.com/1293791.js"> </script>
 
-Socialize Action Bar
-----------------------
-
-v0.8.0 of the Socialize SDK introduce the "Action Bar", which lets your users easily
-comment and like/unlike entities
-
-.. image:: images/action_bar.png	
-
-Just instantiate a SocializeActionBar controller and add the view to your view controller:
-
-.. raw:: html
-
-        <script src="https://gist.github.com/1315113.js"> </script>
 
 Adding Facebook Support
 -------------------------

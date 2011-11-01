@@ -33,8 +33,13 @@ Installing the SDK
    			:height: 410
 
 
+If you need more detail configuring the SDK in your app please see our `Getting Started Video`_.
+
+    .. _Getting Started Video: http://vimeo.com/31403067
+
+If you're having problems please let us know by clicking on the 'Feedback' tab on the right side of the page.   We're here to help.
+
 Next Steps...
 -------------
-Once Socialize is installed, you'll want to start adding some user interaction. 
 
-The quickest way to integrate Socialize in your app is by using the packaged UI views.  Get started with the :doc:`socialize_ui` 
+Once Socialize is installed, you'll want to start adding some user interaction.  The quickest way to integrate Socialize in your app is by using the packaged UI views.  Get started with the :doc:`socialize_ui` 
