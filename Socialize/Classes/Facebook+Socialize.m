@@ -22,18 +22,9 @@
     NSString *facebookLocalAppId = [Socialize facebookLocalAppId];
     NSAssert(facebookAppId != nil, @"Missing facebook app id. Facebook app id is required to authenticate with facebook.");
     NSURL *testURL = [NSURL URLWithString:[SocializeFacebook baseUrlForAppId:facebookAppId localAppId:facebookLocalAppId]];
-    NSAssert([[UIApplication sharedApplication] canOpenURL:testURL], @"Socialize -- Can not authenticate with facebook! Please ensure you have registered a facebook URL scheme for your app as described at http://socialize.github.com/socialize-sdk-ios/socialize_ui.html#adding-facebook-support");
-}
-
-+ (BOOL)facebookIsUsable {
-    @try {
-        [self verifyFacebookSettings];
+    if (![[UIApplication sharedApplication] canOpenURL:testURL]) {
+        NSLog(@"[Socialize WARNING] Application is not configured to open facebook URL scheme! Please ensure you have configured a facebook URL scheme for your app as described at http://socialize.github.com/socialize-sdk-ios/socialize_ui.html#adding-facebook-support");
     }
-    @catch (id ex) {
-        return NO;
-    }
-    
-    return YES;
 }
 
 + (SocializeFacebook*)facebookFromSettings {
