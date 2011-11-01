@@ -40,8 +40,9 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 
 - (void)removeHandlerForRequest:(SocializeFBRequest*)request {
     NSValue *requestId = [self requestIdentifier:request];
-    NSAssert([self.handlers objectForKey:requestId] != nil, @"Missing key for request %@", request);
-    [self.handlers removeObjectForKey:requestId];
+    if ([self.handlers objectForKey:requestId]) {
+        [self.handlers removeObjectForKey:requestId];
+    }
 }
 
 - (void)copyDefaultsToFacebookObject {
@@ -59,9 +60,7 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
     NSValue *requestId = [self requestIdentifier:request];
     NSAssert([self.handlers objectForKey:requestId] == nil, @"Key for request %@ already exists (should be nil)", requestId);
     
-    if (completion == nil) {
-        [self.handlers setObject:[NSNull null] forKey:requestId];
-    } else {
+    if (completion != nil) {
         [self.handlers setObject:[[completion copy] autorelease] forKey:requestId];
     }
 }
@@ -70,18 +69,14 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
     RequestCompletionBlock completionBlock = [self.handlers objectForKey:[self requestIdentifier:request]];
     [self removeHandlerForRequest:request];
     
-    if (![completionBlock isEqual:[NSNull null]]) {
-        completionBlock(nil, error);
-    }
+    completionBlock(nil, error);
 }
 
 - (void)request:(SocializeFBRequest *)request didLoad:(id)result {
     RequestCompletionBlock completionBlock = [self.handlers objectForKey:[self requestIdentifier:request]];
     [self removeHandlerForRequest:request];
     
-    if (![completionBlock isEqual:[NSNull null]]) {
-        completionBlock(result, nil);
-    }
+    completionBlock(result, nil);
 }
 
 @end
