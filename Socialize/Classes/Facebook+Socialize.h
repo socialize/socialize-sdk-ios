@@ -25,7 +25,6 @@
  */
 + (SocializeFacebook*)facebookFromSettings;
 
-+ (BOOL)facebookIsUsable;
 + (void)verifyFacebookSettings;
 
 @end
