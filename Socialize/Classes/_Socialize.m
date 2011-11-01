@@ -18,6 +18,7 @@
 #import "SocializeUserService.h"
 #import "SocializeViewService.h"
 #import "SocializeShareService.h"
+#import "Facebook+Socialize.h"
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"

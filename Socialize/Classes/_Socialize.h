@@ -40,6 +40,7 @@
 @class SocializeUserService;
 @class SocializeActivityService;
 @class UIImage;
+@class SocializeFacebook;
 
 /**
 This is a general facade of the   SDK`s API. Through it a third party developers could use the API.
