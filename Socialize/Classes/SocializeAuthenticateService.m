@@ -321,7 +321,7 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
 
         // Store this authenticator for later retrieval from static class method handleOpenURL:
         [FacebookAuthenticator setLastUsedAuthenticator:self];
-        [self.facebook authorize:nil delegate:self localAppId:self.thirdPartyLocalAppId];
+        [self.facebook authorize:[NSArray arrayWithObjects:@"publish_stream", nil] delegate:self localAppId:self.thirdPartyLocalAppId];
     }
     else
     {
