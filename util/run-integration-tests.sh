@@ -34,6 +34,9 @@ source "${XCODE_ENVIRONMENT}"
 
 OUTFILE="/tmp/KIF-$$.out"
 
+# Force location enabled ahead of time
+${THISDIR}/simulator-enable-location.py com.pointabout.SampleSdkApp-Integration-Tests
+
 # pipe from waxsim to tee does not work
 touch "$OUTFILE"
 KIF_CLI=1 "$THISDIR/waxsim" -f "iphone" "$CONFIGURATION_BUILD_DIR/${APPNAME}.app" >"$OUTFILE" 2>&1 &
