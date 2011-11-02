@@ -2506,8 +2506,8 @@
 		6D89844914083B5B00482F1E /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				AAD4B41D1460B33000F39D0A /* Cells */,
 				6D89844B14083B8200482F1E /* Utilities */,
+				AAD4B41D1460B33000F39D0A /* Cells */,
 				6D89844A14083B7A00482F1E /* Views */,
 				16C330BD13F3B75C004EA34D /* Controllers */,
 			);

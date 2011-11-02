@@ -28,7 +28,7 @@
 @property (nonatomic, retain) SocializeProfileEditValueController *editValueController;
 @property (nonatomic, assign) IBOutlet SocializeProfileEditTableViewImageCell * profileImageCell;
 @property (nonatomic, assign) IBOutlet SocializeProfileEditTableViewCell * profileTextCell;
-
+@property (nonatomic, retain) UISwitch *facebookSwitch;
 @end
 
 @protocol SocializeProfileEditViewControllerDelegate <NSObject>

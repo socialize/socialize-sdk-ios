@@ -12,6 +12,7 @@
 #import "SocializeProfileEditTableViewCell.h"
 #import "UIButton+Socialize.h"
 #import "SocializeProfileEditValueController.h"
+#import "SocializePrivateDefinitions.h"
 
 typedef enum {
     SocializeProfileEditViewControllerSectionImage,
@@ -46,7 +47,6 @@ static SocializeProfileEditViewControllerPropertiesInfo SocializeProfileEditView
 
 typedef enum {
     SocializeProfileEditViewControllerPermissionsRowFacebook,
-    SocializeProfileEditViewControllerPermissionsRowNumRows,
     SocializeProfileEditViewControllerNumPermissionsRows,
 } SocializeProfileEditViewControllerPermissionsRow;
 
@@ -74,6 +74,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 @synthesize imagePicker = imagePicker_;
 @synthesize uploadPicActionSheet = uploadPicActionSheet_;
 @synthesize editValueController = editValueController_;
+@synthesize facebookSwitch = facebookSwitch_;
 
 - (void)dealloc {
     self.firstName = nil;
@@ -88,6 +89,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.imagePicker = nil;
     self.uploadPicActionSheet = nil;
     self.editValueController = nil;
+    self.facebookSwitch = nil;
     
     [super dealloc];
 }
@@ -227,6 +229,21 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     return SocializeProfileEditViewControllerPropertiesInfoItems[row].storageKeyPath;
 }
 
+- (UISwitch*)facebookSwitch {
+    if (facebookSwitch_ == nil) {
+        facebookSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
+        facebookSwitch_.on = ![[[NSUserDefaults standardUserDefaults] valueForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
+        [facebookSwitch_ addTarget:self action:@selector(facebookSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    return facebookSwitch_;
+}
+
+- (void)facebookSwitchChanged:(UISwitch*)facebookSwitch {
+    NSNumber *dontPostToFacebook = [NSNumber numberWithBool:!facebookSwitch.on];
+    [[NSUserDefaults standardUserDefaults] setObject:dontPostToFacebook forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
@@ -242,17 +259,27 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
             NSString *valueText = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
             [[(SocializeProfileEditTableViewCell*)cell keyLabel] setText:keyText];
             [[(SocializeProfileEditTableViewCell*)cell valueLabel] setText:valueText];
+            [[(SocializeProfileEditTableViewCell*)cell arrowImageView] setHidden:NO];
             break;
             
-        default: {
-            static NSString *CellIdentifier = @"Cell";
-            
-            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if (cell == nil) {
-                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        case SocializeProfileEditViewControllerSectionPermissions:
+            cell = [self getNormalCell];
+            switch (indexPath.row) {
+                case SocializeProfileEditViewControllerPermissionsRowFacebook:
+                    [[(SocializeProfileEditTableViewCell*)cell keyLabel] setText:@"Post to Facebook"];
+                    [[(SocializeProfileEditTableViewCell*)cell valueLabel] setText:nil];
+                    [[(SocializeProfileEditTableViewCell*)cell arrowImageView] setHidden:YES];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.accessoryView = self.facebookSwitch;
+                    break;
+                default:
+                    NSAssert(NO, @"unhandled");
             }
             break;
-        }
+        default:
+            NSAssert(NO, @"unhandled");
+
+
     }
     cell.backgroundColor = [self cellBackgroundColorForIndexPath:indexPath];
     
@@ -365,27 +392,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.editValueController.valueToEdit = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
     self.editValueController.indexPath = indexPath;
     [self.navigationController pushViewController:self.editValueController animated:YES];
-    /*
-
-    SocializeProfileEditTableViewCell *cell =(SocializeProfileEditTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
-
-	NSMutableString * titleText =(NSMutableString *) [(NSString *)[self.keysToEdit objectAtIndex:indexPath.row] mutableCopyWithZone:NULL];
-	NSString * upperCaseCharacter = [[titleText substringToIndex:1]uppercaseString];
-	[titleText deleteCharactersInRange:NSMakeRange(0, 1)];
-	[titleText insertString:upperCaseCharacter atIndex:0];
-	
-	self.editValueViewController.title = titleText;
-    [titleText release];
-	self.editValueViewController.indexPath = indexPath;
-	
-    //editValueViewController.editValueField.text = cell.valueLabel.text;
-	self.editValueViewController.navigationItem.rightBarButtonItem.enabled = NO;
-	self.editValueViewController.didEdit = NO;
-	self.editValueViewController.valueToEdit = cell.valueLabel.text;
-	// ..
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:self.editValueViewController animated:YES];
-*/
 }
 
 @end

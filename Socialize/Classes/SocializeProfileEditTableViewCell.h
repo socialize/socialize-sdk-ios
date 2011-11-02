@@ -14,4 +14,5 @@ extern NSInteger SocializeProfileEditTableViewCellHeight;
 
 @property (nonatomic, retain) IBOutlet UILabel * keyLabel;
 @property (nonatomic, retain) IBOutlet UILabel * valueLabel;
+@property (nonatomic, retain) IBOutlet UIImageView * arrowImageView;
 @end

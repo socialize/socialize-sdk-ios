@@ -14,10 +14,12 @@ NSInteger SocializeProfileEditTableViewCellHeight = 50;
 
 @synthesize keyLabel = keyLabel_;
 @synthesize valueLabel = valueLabel_;
+@synthesize arrowImageView = arrowImageView_;
 
 - (void)dealloc {
     self.keyLabel = nil;
     self.valueLabel = nil;
+    self.arrowImageView = nil;
     
     [super dealloc];
 }
