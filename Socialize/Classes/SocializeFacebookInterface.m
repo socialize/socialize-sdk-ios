@@ -67,16 +67,14 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 
 - (void)request:(SocializeFBRequest *)request didFailWithError:(NSError *)error {
     RequestCompletionBlock completionBlock = [self.handlers objectForKey:[self requestIdentifier:request]];
-    [self removeHandlerForRequest:request];
-    
     completionBlock(nil, error);
+    [self removeHandlerForRequest:request];
 }
 
 - (void)request:(SocializeFBRequest *)request didLoad:(id)result {
-    RequestCompletionBlock completionBlock = [self.handlers objectForKey:[self requestIdentifier:request]];
-    [self removeHandlerForRequest:request];
-    
+    RequestCompletionBlock completionBlock = [self.handlers objectForKey:[self requestIdentifier:request]]; 
     completionBlock(result, nil);
+    [self removeHandlerForRequest:request];
 }
 
 @end

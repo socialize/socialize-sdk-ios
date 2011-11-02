@@ -19,6 +19,8 @@
 #import "SocializeAuthenticateService.h"
 #import "SocializeGeocoderAdapter.h"
 #import "NSString+PlaceMark.h"
+#import "SocializeFacebookInterface.h"
+#import "SocializeShareBuilder.h"
 
 #define NO_CITY_MSG @"Could not locate the place name."
 #define MIN_DISMISS_INTERVAL 0.75
@@ -284,7 +286,15 @@
 -(void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object{   
     // Rapid animated dismissal does not work on iOS5 (but works in iOS4)
     // Allow previous modal dismisalls to complete. iOS5 added dismissViewControllerAnimated:completion:, which
-    // we would use here if backward compatibility was not required.
+    // we would use here if backward compatibility was not required.   
+    if([self.socialize isAuthenticatedWithFacebook])
+    {
+        SocializeShareBuilder* shareBuilder = [[SocializeShareBuilder new] autorelease];
+        shareBuilder.shareProtocol = [[SocializeFacebookInterface new] autorelease];
+        shareBuilder.shareObject = (id<SocializeActivity>)object;
+        [shareBuilder performShareForPath:@"me/feed"];
+    }
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, MIN_DISMISS_INTERVAL * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self stopLoadAnimation];
         [self dismissModalViewControllerAnimated:YES];

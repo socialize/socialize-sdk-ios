@@ -168,6 +168,12 @@
 		166ACED814346A8100B28AF6 /* SocializeFullUserJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ACED614346A8000B28AF6 /* SocializeFullUserJSONFormatter.m */; };
 		166ACEDC14346B6500B28AF6 /* SocializeFullUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ACEDA14346B6500B28AF6 /* SocializeFullUser.m */; };
 		166ACEDF14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ACEDE14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m */; };
+		166DD6F7146168B10017D0E9 /* ShareProviderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 166DD6F6146168B10017D0E9 /* ShareProviderProtocol.h */; };
+		166DD6F8146168B10017D0E9 /* ShareProviderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 166DD6F6146168B10017D0E9 /* ShareProviderProtocol.h */; };
+		166DD6FB1461694A0017D0E9 /* SocializeShareBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 166DD6F9146169490017D0E9 /* SocializeShareBuilder.h */; };
+		166DD6FC1461694A0017D0E9 /* SocializeShareBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 166DD6F9146169490017D0E9 /* SocializeShareBuilder.h */; };
+		166DD6FD1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD6FA146169490017D0E9 /* SocializeShareBuilder.m */; };
+		166DD6FE1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD6FA146169490017D0E9 /* SocializeShareBuilder.m */; };
 		1670BE5613C6EB88000CC441 /* SocializeLikeJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5513C6EB88000CC441 /* SocializeLikeJSONFormatter.m */; };
 		1670BE5913C6EBCC000CC441 /* SocializeAuthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5813C6EBCC000CC441 /* SocializeAuthTests.m */; };
 		1670BE5C13C6EBDD000CC441 /* SocializeLikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5B13C6EBDD000CC441 /* SocializeLikeTests.m */; };
@@ -1268,6 +1274,9 @@
 		166ACEDA14346B6500B28AF6 /* SocializeFullUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFullUser.m; path = Classes/SocializeFullUser.m; sourceTree = "<group>"; };
 		166ACEDD14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFullUserJSONFormatterTests.h; path = "Test Cases/SocializeFullUserJSONFormatterTests.h"; sourceTree = "<group>"; };
 		166ACEDE14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFullUserJSONFormatterTests.m; path = "Test Cases/SocializeFullUserJSONFormatterTests.m"; sourceTree = "<group>"; };
+		166DD6F6146168B10017D0E9 /* ShareProviderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareProviderProtocol.h; path = Classes/ShareProviderProtocol.h; sourceTree = "<group>"; };
+		166DD6F9146169490017D0E9 /* SocializeShareBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeShareBuilder.h; path = Classes/SocializeShareBuilder.h; sourceTree = "<group>"; };
+		166DD6FA146169490017D0E9 /* SocializeShareBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeShareBuilder.m; path = Classes/SocializeShareBuilder.m; sourceTree = "<group>"; };
 		1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommonDefinitions.h; path = Classes/SocializeCommonDefinitions.h; sourceTree = "<group>"; };
 		1670BE5313C6EB81000CC441 /* SocializeLikeJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeJSONFormatter.h; path = Classes/SocializeLikeJSONFormatter.h; sourceTree = "<group>"; };
 		1670BE5513C6EB88000CC441 /* SocializeLikeJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeJSONFormatter.m; path = Classes/SocializeLikeJSONFormatter.m; sourceTree = "<group>"; };
@@ -2185,6 +2194,9 @@
 				6D9A0BAA13BE20D000AE949C /* SocializeShareService.m */,
 				6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */,
 				6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */,
+				166DD6F6146168B10017D0E9 /* ShareProviderProtocol.h */,
+				166DD6F9146169490017D0E9 /* SocializeShareBuilder.h */,
+				166DD6FA146169490017D0E9 /* SocializeShareBuilder.m */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
@@ -2947,6 +2959,8 @@
 				AAEB4A761458E45D00A01F5B /* UIImage+Resize.h in Headers */,
 				AAE9A6EA145F39A6001A9F1D /* Facebook+Socialize.h in Headers */,
 				AAE9A6F0145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */,
+				166DD6F8146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
+				166DD6FC1461694A0017D0E9 /* SocializeShareBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3011,6 +3025,8 @@
 				AAEB4A751458E45D00A01F5B /* UIImage+Resize.h in Headers */,
 				AAE9A6E9145F39A6001A9F1D /* Facebook+Socialize.h in Headers */,
 				AAE9A6EF145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */,
+				166DD6F7146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
+				166DD6FB1461694A0017D0E9 /* SocializeShareBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4151,6 +4167,7 @@
 				AAEB4A771458E45D00A01F5B /* UIImage+Resize.m in Sources */,
 				AAE9A6EB145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAE9A6F1145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */,
+				166DD6FD1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4413,6 +4430,7 @@
 				AAEB4A781458E45D00A01F5B /* UIImage+Resize.m in Sources */,
 				AAE9A6EC145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAE9A6F2145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */,
+				166DD6FE1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

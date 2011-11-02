@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 #import "SocializeFBRequest.h"
+#import "ShareProviderProtocol.h"
 
 @class SocializeFacebook;
 
-@interface SocializeFacebookInterface : NSObject <SocializeFBRequestDelegate>
+@interface SocializeFacebookInterface : NSObject <ShareProviderProtocol, SocializeFBRequestDelegate>
 @property (nonatomic, retain) SocializeFacebook *facebook;
 @property (nonatomic, retain) NSMutableDictionary *handlers;
 

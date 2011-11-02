@@ -108,6 +108,7 @@
     [[self.mockActionView expect] updateLikesCount:[NSNumber numberWithInteger:111] liked:YES];
     [[self.mockActionView expect] unlockButtons];
     [[self.mockSocialize expect] getEntityByKey:OCMOCK_ANY];
+    [[self.mockSocialize expect] isAuthenticatedWithFacebook];
     [self.actionBar likeButtonTouched:nil];
     [self.mockSocialize verify];
     [self.mockActionView verify];

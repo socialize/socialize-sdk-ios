@@ -24,6 +24,7 @@
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"
 #define SOCIALIZE_FACEBOOK_LOCAL_APP_ID @"socialize_facebook_local_app_id"
 #define SOCIALIZE_FACEBOOK_APP_ID @"socialize_facebook_app_id"
+#define SOCIALIZE_APPLICATION_LINK @"socialize_app_link"
 
 @implementation Socialize
 
@@ -87,6 +88,12 @@
     [defaults synchronize];
 }
 
++(void)storeApplicationLink:(NSString*)link {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:link forKey:SOCIALIZE_APPLICATION_LINK];
+    [defaults synchronize];
+}
+
 +(NSString*) apiKey
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -113,6 +120,12 @@
 
 -(NSString*) receiveFacebookAuthToken {
     return [_authService receiveFacebookAuthToken];
+}
+
++(NSString*) applicationLink
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults valueForKey:SOCIALIZE_APPLICATION_LINK];
 }
 
 #pragma mark authentication info

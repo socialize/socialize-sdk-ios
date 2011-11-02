@@ -72,6 +72,7 @@
     
     [Socialize storeSocializeApiKey: [apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
     [Socialize storeFacebookAppId:@"115622641859087"];
+    [Socialize storeApplicationLink:@"http://www.google.com"];
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];
 #endif

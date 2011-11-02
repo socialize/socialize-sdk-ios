@@ -35,12 +35,15 @@
 #import "SocializeView.h"
 #import "SocializeEntity.h"
 #import "BlocksKit.h"
+#import "SocializeShareBuilder.h"
+#import "SocializeFacebookInterface.h"
 
 @interface SocializeActionBar()
 @property(nonatomic, retain) id<SocializeLike> entityLike;
 @property(nonatomic, retain) id<SocializeView> entityView;
 
 -(void) shareViaEmail;
+-(void)shareViaFacebook;
 -(void)displayComposerSheet;
 
 @end
@@ -162,6 +165,14 @@
         self.entityLike = (id<SocializeLike>)object;
         [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes] liked:YES];
         [(SocializeActionView*)self.view unlockButtons];
+        
+        if([self.socialize isAuthenticatedWithFacebook])
+        {
+            SocializeShareBuilder* shareBuilder = [[SocializeShareBuilder new] autorelease];
+            shareBuilder.shareProtocol = [[SocializeFacebookInterface new] autorelease];
+            shareBuilder.shareObject = (id<SocializeActivity>)object;
+            [shareBuilder performShareForPath:@"me/feed"];
+        }    
     } 
     
     // Refresh from server
@@ -246,8 +257,7 @@
 - (UIActionSheet*)shareActionSheet {
     if (_shareActionSheet == nil) {
         _shareActionSheet = [[UIActionSheet sheetWithTitle:nil] retain];
-        [_shareActionSheet addButtonWithTitle:@"Share on Twitter" handler:^{ NSLog(@"Zip!"); }];
-        [_shareActionSheet addButtonWithTitle:@"Share on Facebook" handler:^{ NSLog(@"Zap!"); }];
+        [_shareActionSheet addButtonWithTitle:@"Share on Facebook" handler:^{ [self shareViaFacebook]; }];
         [_shareActionSheet addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
         [_shareActionSheet setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
     }
@@ -256,6 +266,10 @@
 -(void)shareButtonTouched: (id) sender
 {    
     [self.shareActionSheet showInView:self.view.window];
+}
+
+-(void)shareViaFacebook
+{
 }
 
 #pragma mark Share via email

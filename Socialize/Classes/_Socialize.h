@@ -112,6 +112,13 @@ otherwise you will get a failure.
 +(void)storeFacebookLocalAppId:(NSString*)facebookLocalAppID;
 
 /**
+ Save app link to the user defaults.
+ 
+ @param application link(URL)
+ */
++(void)storeApplicationLink:(NSString*)link;
+
+/**
  Provide access to the Socialize API key.
  
  @return API key NSString value.
@@ -138,6 +145,14 @@ otherwise you will get a failure.
  @return Local Facebook app id
  */
 +(NSString*) facebookLocalAppId;
+
+
+/**
+ Provide access to the app link
+ 
+ @return link to the app
+ */
++(NSString*) applicationLink;
 
 /**
  Provide access to the facebook authorization token after facebook authentication
