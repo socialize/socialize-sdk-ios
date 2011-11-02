@@ -7,6 +7,7 @@
 //
 
 #import "SocializeProfileEditValueController.h"
+#import "UIButton+Socialize.h"
 
 
 @implementation SocializeProfileEditValueController
@@ -15,9 +16,45 @@
 @synthesize indexPath;
 @synthesize valueToEdit;
 @synthesize didEdit;
+@synthesize cancelButton = cancelButton_;
+@synthesize saveButton = saveButton_;
+@synthesize delegate = delegate_;
 
 #pragma mark -
 #pragma mark View lifecycle
+
+- (void)dealloc {
+    self.cancelButton = nil;
+    self.saveButton = nil;
+    
+    [super dealloc];
+}
+
+- (UIBarButtonItem*)cancelButton {
+    if (cancelButton_ == nil) {
+        UIButton * actualButton = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
+        [actualButton addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        cancelButton_ = [[UIBarButtonItem alloc] initWithCustomView:actualButton];
+    }
+    return cancelButton_;
+}
+
+- (UIBarButtonItem*)saveButton {
+    if (saveButton_ == nil) {
+        UIButton * actualButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
+        [actualButton addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        saveButton_ = [[UIBarButtonItem alloc] initWithCustomView:actualButton];
+    }
+    return saveButton_;
+}
+
+- (void)saveButtonPressed:(UIButton*)saveButton {
+    [self.delegate profileEditValueControllerDidSave:self];
+}
+
+- (void)cancelButtonPressed:(UIButton*)cancelButton {
+    [self.delegate profileEditValueControllerDidCancel:self];
+}
 
 - (void)viewDidLoad {
 
@@ -33,9 +70,13 @@
 	[headerView release];
 
 	self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.didEdit = NO;
 
     UIColor *tableBackgroundColor = [UIColor colorWithRed:50/255.0f green:58/255.0f blue:67/255.0f alpha:1.0];
     self.tableView.backgroundColor = tableBackgroundColor;
+    self.navigationItem.leftBarButtonItem = self.cancelButton;
+    self.navigationItem.rightBarButtonItem = self.saveButton;
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
 }
 
@@ -194,10 +235,6 @@
     // For example: self.myOutlet = nil;
 }
 
-
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

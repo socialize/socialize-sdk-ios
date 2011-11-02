@@ -1,221 +1,211 @@
 //
-//  ProfileEditViewController.m
-//  appbuildr
+//  SocializeProfileEditViewController.m
+//  SocializeSDK
 //
-//  Created by William Johnson on 1/10/11.
-//  Copyright 2011 pointabout. All rights reserved.
+//  Created by Nathaniel Griswold on 11/1/11.
+//  Copyright (c) 2011 Socialize, Inc. All rights reserved.
 //
-#import <QuartzCore/QuartzCore.h>
-#import "SocializeProfileEditViewController.h"
-#import "SocializeProfileEditTableViewCell.h"
-#import "SocializeProfileEditValueController.h"
-#import "UIImage+Resize.h"
-#import "UIButton+Socialize.h"
 
+#import "SocializeProfileEditViewController.h"
+#import "SocializeProfileEditTableViewImageCell.h"
+#import <QuartzCore/QuartzCore.h>
+#import "SocializeProfileEditTableViewCell.h"
+#import "UIButton+Socialize.h"
+#import "SocializeProfileEditValueController.h"
+
+typedef enum {
+    SocializeProfileEditViewControllerSectionImage,
+    SocializeProfileEditViewControllerSectionProperties,
+    SocializeProfileEditViewControllerSectionPermissions,
+    SocializeProfileEditViewControllerNumSections,
+} SocializeProfileEditViewControllerSection;
+
+typedef enum {
+    SocializeProfileEditViewControllerImageRowProfileImage,
+    SocializeProfileEditViewControllerNumImageRows,
+} SocializeProfileEditViewControllerImageRow;
+
+typedef enum {
+    SocializeProfileEditViewControllerPropertiesRowFirstName,
+    SocializeProfileEditViewControllerPropertiesRowLastName,
+    SocializeProfileEditViewControllerPropertiesRowBio,
+    SocializeProfileEditViewControllerNumPropertiesRows,
+} SocializeProfileEditViewControllerPropertiesRow;
+
+typedef struct {
+    NSString *displayName;
+    NSString *editName;
+    NSString *storageKeyPath;
+} SocializeProfileEditViewControllerPropertiesInfo;
+
+static SocializeProfileEditViewControllerPropertiesInfo SocializeProfileEditViewControllerPropertiesInfoItems[] = {
+    { @"first name", @"First name", @"firstName" },
+    { @"last name", @"Last name", @"lastName" },
+    { @"bio", @"Bio", @"bio" },
+};
+
+typedef enum {
+    SocializeProfileEditViewControllerPermissionsRowFacebook,
+    SocializeProfileEditViewControllerPermissionsRowNumRows,
+    SocializeProfileEditViewControllerNumPermissionsRows,
+} SocializeProfileEditViewControllerPermissionsRow;
+
+typedef struct {
+    NSInteger rowCount;
+} SocializeProfileEditViewControllerSectionInfo;
+
+static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewControllerSectionInfoItems[] = {
+    { SocializeProfileEditViewControllerNumImageRows },
+    { SocializeProfileEditViewControllerNumPropertiesRows },
+    { SocializeProfileEditViewControllerNumPermissionsRows },
+};
 
 @implementation SocializeProfileEditViewController
+@synthesize firstName = firstName_;
+@synthesize lastName = lastName_;
+@synthesize bio = bio_;
+@synthesize profileImageCell = profileImageCell_;
+@synthesize profileImage = profileImage_;
+@synthesize cellBackgroundColors = cellBackgroundColors_;
+@synthesize profileTextCell = profileTextCell;
+@synthesize cancelButton = cancelButton_;
+@synthesize saveButton = saveButton_;
+@synthesize delegate = delegate_;
+@synthesize imagePicker = imagePicker_;
+@synthesize uploadPicActionSheet = uploadPicActionSheet_;
+@synthesize editValueController = editValueController_;
 
-@synthesize delegate;
-@synthesize profileEditViewCell;
-@synthesize keysToEdit;
-@synthesize keyValueDictionary;
-@synthesize profileImage;
-@synthesize editValueViewController = _editValueViewController;
+- (void)dealloc {
+    self.firstName = nil;
+    self.lastName = nil;
+    self.bio = nil;
+    self.profileImageCell = nil;
+    self.profileImage = nil;
+    self.cellBackgroundColors = nil;
+    self.profileTextCell = nil;
+    self.cancelButton = nil;
+    self.saveButton = nil;
+    self.imagePicker = nil;
+    self.uploadPicActionSheet = nil;
+    self.editValueController = nil;
+    
+    [super dealloc];
+}
 
-#pragma mark -
-#pragma mark View lifecycle
-
-- (id)initWithStyle:(UITableViewStyle)style 
+- (id)init
 {
-    if ( (self = [super initWithStyle:UITableViewStyleGrouped]) ) 
-	{
-		imagePicker = [[UIImagePickerController alloc]init];
-		imagePicker.delegate = self;
-		imagePicker.allowsEditing = YES;
+    self = [super initWithNibName:@"SocializeProfileEditViewController" bundle:nil];
+    if (self) {
     }
     return self;
 }
 
+#pragma mark - View lifecycle
 
-- (void)viewDidLoad 
+- (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.title = @"Edit Profile";
-	self.tableView.separatorColor = [UIColor blackColor];
-	self.tableView.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
-    self.tableView.accessibilityLabel = @"edit profile";
-    UIColor *tableBackgroundColor = [UIColor colorWithRed:50/255.0f green:58/255.0f blue:67/255.0f alpha:1.0];
-    self.tableView.backgroundColor = tableBackgroundColor;
-
-	self.navigationItem.rightBarButtonItem.enabled = NO;
-		
-	self.editValueViewController = [[[SocializeProfileEditValueController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
-	
-    UIButton * cancelButton = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
-    [cancelButton addTarget:self action:@selector(editValueCancel:) forControlEvents:UIControlEventTouchUpInside];
     
-	UIBarButtonItem  * editLeftItem = [[UIBarButtonItem alloc] initWithCustomView:cancelButton];
-	self.editValueViewController.navigationItem.leftBarButtonItem = editLeftItem;	
-	[editLeftItem release];
+    self.navigationItem.leftBarButtonItem = self.cancelButton;	
+    self.navigationItem.rightBarButtonItem = self.saveButton;
+}
 
-    UIButton * saveButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
-    [saveButton addTarget:self action:@selector(editValueSave:) forControlEvents:UIControlEventTouchUpInside];
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
     
-    UIBarButtonItem  * editRightItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
-    self.editValueViewController.navigationItem.rightBarButtonItem = editRightItem;	
-    [editRightItem release];
-	
-    if (keyValueDictionary == nil) 
-	{
-		NSMutableDictionary * valueDictionary = [[NSMutableDictionary alloc]initWithCapacity:20];
-		self.keyValueDictionary = valueDictionary;
-		[valueDictionary release];
-	}
-	
-	
-	UIColor *oddBackgroundColor  = [UIColor colorWithRed:44/255.0f green:54/255.0f blue:63/255.0f alpha:1.0];
+    self.cancelButton = nil;
+    self.saveButton = nil;
+}
+
+- (UIBarButtonItem*)cancelButton {
+    if (cancelButton_ == nil) {
+        UIButton * actualButton = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
+        [actualButton addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        cancelButton_ = [[UIBarButtonItem alloc] initWithCustomView:actualButton];
+    }
+    return cancelButton_;
+}
+
+- (void)cancelButtonPressed:(UIButton*)cancelButton {
+    [self.delegate profileEditViewControllerDidCancel:self];
+}
+
+- (void)saveButtonPressed:(UIButton*)saveButton {
+    [self.delegate profileEditViewControllerDidSave:self];
+}
+
+- (UIBarButtonItem*)saveButton {
+    if (saveButton_ == nil) {
+        UIButton * actualButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
+        [actualButton addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        saveButton_ = [[UIBarButtonItem alloc] initWithCustomView:actualButton];
+    }
+    return saveButton_;
+}
+
+- (NSArray*)cellBackgroundColors {
+    if (cellBackgroundColors_ == nil) {
+        cellBackgroundColors_ = [[NSArray arrayWithObjects:
+                                  [UIColor colorWithRed:35/255.0f green:43/255.0f blue:50/255.0f alpha:1.0],
+                                  [UIColor colorWithRed:44/255.0f green:54/255.0f blue:63/255.0f alpha:1.0],
+                                  nil] retain];
+    }
     
-	UIColor *evenBackgroundColor = [UIColor colorWithRed:35/255.0f green:43/255.0f blue:50/255.0f alpha:1.0];
-	cellBackgroundColors = [[NSArray arrayWithObjects:evenBackgroundColor, oddBackgroundColor, nil]retain];
+    return cellBackgroundColors_;
 }
 
+- (UIColor*)cellBackgroundColorForIndexPath:(NSIndexPath*)indexPath {
+    NSInteger offset = 0;
+    for (int i = 0; i < indexPath.section; i++) {
+        offset += SocializeProfileEditViewControllerSectionInfoItems[i].rowCount;
+    }
+    offset += indexPath.row;
+    
+    return [self.cellBackgroundColors objectAtIndex:offset % 2];
+}
 
--(void)editValueSave:(id)button
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	[self.navigationController popViewControllerAnimated:YES];
-	self.navigationItem.rightBarButtonItem.enabled = YES;
-	
-	NSIndexPath * indexPath = self.editValueViewController.indexPath;
-	
-	[self.keyValueDictionary setObject:self.editValueViewController.editValueField.text 
-								 forKey:[keysToEdit objectAtIndex:indexPath.row]];
-	
-	[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    return SocializeProfileEditViewControllerNumSections;
 }
 
--(void)editValueCancel:(id)button
-{
-	[self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-	[self.tableView reloadData];
-}
-
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-*/
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
-
-#pragma mark -
-#pragma mark Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
-{
-    // Return the number of sections.
-    return 2;
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-	
-	switch (section) 
-	{
-		case 0:
-			return 1;
-
-		case 1:
-		default:
-			return [keysToEdit count];
-	}
- 
-}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if (indexPath.section == 0) 
-	  return 65;
+    if (indexPath.section == SocializeProfileEditViewControllerSectionImage) {
+        return SocializeProfileEditTableViewImageCellHeight;
+    }
 	
-	return 50;
+	return SocializeProfileEditTableViewCellHeight;
 }
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//  return @"Hello";	
-//	
-//}
 
--(void)setProfileImage:(UIImage *) theImage
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-		
-	@synchronized(self) 
-	{
-		[profileImage release];
-		profileImage = [theImage retain];
-		
+    return SocializeProfileEditViewControllerSectionInfoItems[section].rowCount;
+}
+
+- (void)configureProfileImageCell {
+    if (self.profileImage) {
+		[profileImageCell_.spinner stopAnimating];
+		profileImageCell_.imageView.image = self.profileImage;
 	}
-	
-	NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-	[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+	else {
+		profileImageCell_.spinner.hidesWhenStopped = YES;
+		[profileImageCell_.spinner startAnimating];
+	}
 }
 
--(SocializeProfileEditTableViewCell *)getProfileImageCell
+- (SocializeProfileEditTableViewImageCell *)profileImageCell
 {
-	
-	static NSString *profileCellIdentifier = @"profile_Image_cell";
-    
-	SocializeProfileEditTableViewCell *cell =(SocializeProfileEditTableViewCell *) [self.tableView dequeueReusableCellWithIdentifier:profileCellIdentifier];
-    
-	if (cell == nil) 
-	{
+	if (profileImageCell_ == nil) {
 		[[NSBundle mainBundle] loadNibNamed:@"SocializeProfileEditTableViewImageCell" owner:self options:nil];
-		cell = profileEditViewCell;
-		self.profileEditViewCell = nil;
-		
+        [profileImageCell_.imageView.layer setCornerRadius:4];
+        [profileImageCell_.imageView.layer setMasksToBounds:YES];
+        [self configureProfileImageCell];
 	}
-	cell.spinner.hidesWhenStopped = YES;	
-	if (self.profileImage) 
-	{
-		
-		[cell.spinner stopAnimating];
-		cell.theImageView.image = self.profileImage;
-		
-	}
-	else 
-	{		
-		cell.spinner.hidesWhenStopped = YES;
-		[cell.spinner startAnimating];
-		
-	}
-
-	[cell.theImageView.layer setCornerRadius:4];
-	[cell.theImageView.layer setMasksToBounds:YES];
-	
-	return cell;
-	
-	
+    
+	return profileImageCell_;
 }
-
 
 -(SocializeProfileEditTableViewCell *)getNormalCell
 {
@@ -224,115 +214,85 @@
 	
 	SocializeProfileEditTableViewCell *cell =(SocializeProfileEditTableViewCell *) [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
-	if (cell == nil) 
-	{
+	if (cell == nil) {
 		[[NSBundle mainBundle] loadNibNamed:@"SocializeProfileEditTableViewCell" owner:self options:nil];
-		cell = profileEditViewCell;
-		self.profileEditViewCell = nil;
-		//cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		
+		cell = self.profileTextCell;
+		self.profileTextCell = nil;
 	}
 	
 	return cell;	
 }
 
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (NSString*)keyPathForPropertiesRow:(SocializeProfileEditViewControllerPropertiesRow)row {
+    return SocializeProfileEditViewControllerPropertiesInfoItems[row].storageKeyPath;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = nil;
+    switch (indexPath.section) {
+        case SocializeProfileEditViewControllerSectionImage:
+            cell = self.profileImageCell;
+            [self configureProfileImageCell];
+            break;
+            
+        case SocializeProfileEditViewControllerSectionProperties:
+            cell = [self getNormalCell];
+            NSString *keyText = SocializeProfileEditViewControllerPropertiesInfoItems[indexPath.row].displayName;
+            NSString *valueText = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
+            [[(SocializeProfileEditTableViewCell*)cell keyLabel] setText:keyText];
+            [[(SocializeProfileEditTableViewCell*)cell valueLabel] setText:valueText];
+            break;
+            
+        default: {
+            static NSString *CellIdentifier = @"Cell";
+            
+            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+            }
+            break;
+        }
+    }
+    cell.backgroundColor = [self cellBackgroundColorForIndexPath:indexPath];
     
-   	
-	SocializeProfileEditTableViewCell *cell = nil;
-	
-	switch (indexPath.section) 
-	{
-		case 0:
-						
-			cell = [self getProfileImageCell];
-			cell.backgroundColor = [cellBackgroundColors objectAtIndex:0];
-			break;
-			
-		case 1:
-		default:
-			cell = [self getNormalCell];
-			cell.keyLabel.text = (NSString *)[self.keysToEdit objectAtIndex:indexPath.row];
-			cell.valueLabel.text = (NSString *)[self.keyValueDictionary objectForKey:cell.keyLabel.text];
-			cell.backgroundColor = [cellBackgroundColors objectAtIndex:(indexPath.row+1)%2];
-			break;
-
-	}
-	
-	// Configure the cell...
-	//UIColor * cellBackgroundColor = [cellBackgroundColors objectAtIndex:indexPath.row%2];
-	//cell.backgroundColor = cellBackgroundColor;
-    
-	return cell;
+    return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (UIActionSheet*)uploadPicActionSheet {
+    if (uploadPicActionSheet_ == nil) {
+        if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+            uploadPicActionSheet_ = [[UIActionSheet alloc] initWithTitle:nil
+                                                                delegate:self 
+                                                       cancelButtonTitle:@"Cancel"
+                                                  destructiveButtonTitle:nil
+                                                       otherButtonTitles:@"Choose From Album",@"Take Picture", nil];
+            
+            
+        } else 	{
+            uploadPicActionSheet_ = [[UIActionSheet alloc] initWithTitle:nil
+                                                                delegate:self 
+                                                       cancelButtonTitle:@"Cancel"
+                                                  destructiveButtonTitle:nil
+                                                       otherButtonTitles:@"Choose From Album",nil];	
+        }
+    }
+    return uploadPicActionSheet_;
 }
-*/
 
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 -(void) showActionSheet
 {
+    [self.uploadPicActionSheet showInView:self.view.window];
+}
 
-	UIActionSheet *uploadPicActionSheet = nil;
-	
-	if( [UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] ) 
-	{
-		uploadPicActionSheet =[[UIActionSheet alloc] initWithTitle:nil
-														  delegate:self 
-												 cancelButtonTitle:@"Cancel"
-											destructiveButtonTitle:nil
-												 otherButtonTitles:@"Choose From Album",@"Take Picture", nil];
-		
-		
-	}
-	else 
-	{
-		uploadPicActionSheet =[[UIActionSheet alloc] initWithTitle:nil
-														  delegate:self 
-												 cancelButtonTitle:@"Cancel"
-											destructiveButtonTitle:nil
-												 otherButtonTitles:@"Choose From Album",nil];	
-	}
-	
-	
-    [uploadPicActionSheet showInView:self.view.window];
-    [uploadPicActionSheet release];
+- (UIImagePickerController*)imagePicker {
+    if (imagePicker_ == nil) {
+        imagePicker_ = [[UIImagePickerController alloc] init];
+        imagePicker_.delegate = self;
+        imagePicker_.allowsEditing = YES;
+    }
+    
+    return imagePicker_;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -340,47 +300,13 @@
 	if( buttonIndex == actionSheet.cancelButtonIndex ) {
 		return;
 	}	
-	if (buttonIndex == 1 ) {
-		imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-	} else if (buttonIndex == 0 ) {
-		imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-	}
-//	[actionSheet release];
-	
-	[self presentModalViewController:imagePicker animated:YES];
-}
-
--(UIImage *) resizeImage:(UIImage *)imageToResize
-{
-	UIImage * newImage = nil;
-	if (imageToResize != nil) 
-	{
-		
-		CGSize biggestSize = CGSizeMake(800,800);
-		
-		
-		if( imageToResize.size.height > biggestSize.height || imageToResize.size.width > biggestSize.width )
-		{
-			
-		    newImage = [imageToResize resizedImageWithContentMode:UIViewContentModeScaleAspectFill
-														   bounds:biggestSize
-											 interpolationQuality:1.0];
-			NSData * newData = UIImageJPEGRepresentation(newImage, .75);
-			if(!newData) 
-			{
-				newImage = [UIImage imageWithData:newData];
-			}
-			
-		}
-		
+	if (buttonIndex == 1) {
+		self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+	} else if (buttonIndex == 0) {
+		self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 	}
 	
-	if (newImage == nil) 
-	{
-		newImage = imageToResize;
-	}
-	
-	return newImage;
+	[self presentModalViewController:self.imagePicker animated:YES];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -392,27 +318,57 @@
     //[self.view setNeedsDisplay];
 	[picker dismissModalViewControllerAnimated:YES];
 	
-	[self setProfileImage:[self resizeImage:image]];
+	[self setProfileImage:image];
     
 	NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 	[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
-#pragma mark -
-#pragma mark Table view delegate
+#pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (SocializeProfileEditValueController*)editValueController {
+    if (editValueController_ == nil) {
+        editValueController_ = [[SocializeProfileEditValueController alloc] initWithStyle:UITableViewStyleGrouped];
+        editValueController_.delegate = self;
+    }
+    return editValueController_;
+}
+
+- (void)profileEditValueControllerDidSave:(SocializeProfileEditValueController *)profileEditValueController
 {
-    // Navigation logic may go here. Create and push another view controller.
-    
-	SocializeProfileEditTableViewCell *cell =(SocializeProfileEditTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
-	cell.selected = NO;
-	if (indexPath.section ==0) 
+	[self.navigationController popViewControllerAnimated:YES];
+	self.navigationItem.rightBarButtonItem.enabled = YES;
+	
+	NSIndexPath * indexPath = self.editValueController.indexPath;
+	
+    NSString *keyPath = [self keyPathForPropertiesRow:indexPath.row];
+    [self setValue:self.editValueController.editValueField.text forKeyPath:keyPath];
+	
+	[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)profileEditValueControllerDidCancel:(SocializeProfileEditValueController *)profileEditValueController
+{
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.section == SocializeProfileEditViewControllerSectionImage) 
 	{
 		[self showActionSheet];
 		return;
 	}
-	
+    
+    NSString *editName = SocializeProfileEditViewControllerPropertiesInfoItems[indexPath.row].editName;
+    self.editValueController.title = editName;
+    self.editValueController.valueToEdit = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
+    self.editValueController.indexPath = indexPath;
+    [self.navigationController pushViewController:self.editValueController animated:YES];
+    /*
+
+    SocializeProfileEditTableViewCell *cell =(SocializeProfileEditTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+
 	NSMutableString * titleText =(NSMutableString *) [(NSString *)[self.keysToEdit objectAtIndex:indexPath.row] mutableCopyWithZone:NULL];
 	NSString * upperCaseCharacter = [[titleText substringToIndex:1]uppercaseString];
 	[titleText deleteCharactersInRange:NSMakeRange(0, 1)];
@@ -422,56 +378,14 @@
     [titleText release];
 	self.editValueViewController.indexPath = indexPath;
 	
-	 //editValueViewController.editValueField.text = cell.valueLabel.text;
+    //editValueViewController.editValueField.text = cell.valueLabel.text;
 	self.editValueViewController.navigationItem.rightBarButtonItem.enabled = NO;
 	self.editValueViewController.didEdit = NO;
 	self.editValueViewController.valueToEdit = cell.valueLabel.text;
 	// ..
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:self.editValueViewController animated:YES];
-    
-}
-
--(void)updateDidFailWithError:(NSError *)error
-{
-
-	UIAlertView * alert = [[[UIAlertView alloc] initWithTitle:@"Update Error" 
-										message:@"Unable to update your profile at this time." 
-										delegate:nil 
-										cancelButtonTitle:@"OK" 
-										otherButtonTitles:nil]autorelease]; 
-	
-	[alert show];
-	
-}
-#pragma mark -
-#pragma mark Memory management
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Relinquish ownership any cached data, images, etc. that aren't in use.
-}
-
-- (void)viewDidUnload {
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
-}
-
-
-- (void)dealloc 
-{
-	[_editValueViewController release]; _editValueViewController = nil;
-    [profileEditViewCell release]; profileEditViewCell = nil;
-    [cellBackgroundColors release]; cellBackgroundColors = nil;
-	[keyValueDictionary release]; keyValueDictionary = nil;
-	[keysToEdit release]; keysToEdit = nil;
-	[profileImage release]; profileImage = nil;
-    [imagePicker setDelegate:nil];
-	[imagePicker release]; imagePicker = nil;
-    [super dealloc];
+*/
 }
 
 @end
-

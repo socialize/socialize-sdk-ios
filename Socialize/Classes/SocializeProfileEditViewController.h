@@ -1,45 +1,39 @@
 //
-//  ProfileEditViewController.h
-//  appbuildr
+//  SocializeProfileEditViewController.h
+//  SocializeSDK
 //
-//  Created by William Johnson on 1/10/11.
-//  Copyright 2011 pointabout. All rights reserved.
+//  Created by Nathaniel Griswold on 11/1/11.
+//  Copyright (c) 2011 Socialize, Inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "SocializeUser.h"
+#import "SocializeProfileEditValueController.h"
 
+@protocol SocializeProfileEditViewControllerDelegate;
+@class SocializeProfileEditTableViewImageCell;
 @class SocializeProfileEditTableViewCell;
 @class SocializeProfileEditValueController;
-@protocol SocializeProfileEditViewControllerDelegate;
 
-@interface SocializeProfileEditViewController : UITableViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate, UIActionSheetDelegate>
-{
-
-	id<SocializeProfileEditViewControllerDelegate> delegate;
-	NSArray						*keysToEdit;
-	NSMutableDictionary		   *keyValueDictionary;
-	SocializeProfileEditTableViewCell   *profileEditViewCell;
-	UIImage					*profileImage;
-	UIImagePickerController *imagePicker;
-	NSArray					*cellBackgroundColors;
-}
-
+@interface SocializeProfileEditViewController : UITableViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SocializeProfileEditValueControllerDelegate>
+@property (nonatomic, copy) NSString *firstName;
+@property (nonatomic, copy) NSString *lastName;
+@property (nonatomic, copy) NSString *bio;
+@property (nonatomic, retain) UIImage *profileImage;
+@property (nonatomic, retain) NSArray *cellBackgroundColors;
+@property (nonatomic, retain) UIBarButtonItem *cancelButton;
+@property (nonatomic, retain) UIBarButtonItem *saveButton;
 @property (nonatomic, assign) id<SocializeProfileEditViewControllerDelegate> delegate;
-@property (nonatomic, assign) IBOutlet SocializeProfileEditTableViewCell * profileEditViewCell;
-@property (nonatomic, retain) NSArray * keysToEdit;
-@property (nonatomic, retain) NSMutableDictionary * keyValueDictionary;
-@property (nonatomic, readonly) UIImage * profileImage;
-@property (nonatomic, retain) SocializeProfileEditValueController *editValueViewController;
-
--(void)setProfileImage:(UIImage *) profileImage;
--(void)updateDidFailWithError:(NSError *)error;
--(void) showActionSheet;
+@property (nonatomic, retain) UIImagePickerController *imagePicker;
+@property (nonatomic, retain) UIActionSheet *uploadPicActionSheet;
+@property (nonatomic, retain) SocializeProfileEditValueController *editValueController;
+@property (nonatomic, assign) IBOutlet SocializeProfileEditTableViewImageCell * profileImageCell;
+@property (nonatomic, assign) IBOutlet SocializeProfileEditTableViewCell * profileTextCell;
 
 @end
 
+@protocol SocializeProfileEditViewControllerDelegate <NSObject>
 
-@protocol  SocializeProfileEditViewControllerDelegate
--(void)profileEditViewController:(SocializeProfileEditViewController*)controller didFinishWithError:(NSError*)error;
--(void)profileEditViewControllerDidCancel:(SocializeProfileEditViewController*)controller;
+- (void)profileEditViewControllerDidSave:(SocializeProfileEditViewController*)profileEditViewController;
+- (void)profileEditViewControllerDidCancel:(SocializeProfileEditViewController*)profileEditViewController;
+
 @end
