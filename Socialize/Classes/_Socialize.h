@@ -123,6 +123,12 @@ otherwise you will get a failure.
 +(void)storeApplicationLink:(NSString*)link;
 
 /**
+ Remove app link from the user defaults.
+ 
+ */
++(void)removeApplicationLink;
+
+/**
  Provide access to the Socialize API key.
  
  @return API key NSString value.

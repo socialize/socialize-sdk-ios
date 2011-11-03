@@ -97,6 +97,12 @@
     [defaults synchronize];
 }
 
++(void)removeApplicationLink{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:SOCIALIZE_APPLICATION_LINK];
+    [defaults synchronize];
+}
+
 +(NSString*) apiKey
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

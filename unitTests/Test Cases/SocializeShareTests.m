@@ -8,6 +8,7 @@
 
 #import "SocializeShareTests.h"
 #import <OCMock/OCMock.h>
+#import "SocializeShare.h"
 
 @interface SocializeShareTests()
 -(NSString *)helperGetJSONStringFromFile:(NSString *)fileName;
@@ -65,6 +66,11 @@
 
     [_mockService createShareForEntity:mockEntity  medium:medium  text:@"text"];
     [_mockService verify];
+}
+
+-(void)testProtocol
+{
+    GHAssertTrue([_service ProtocolType] == @protocol(SocializeShare), nil);
 }
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{

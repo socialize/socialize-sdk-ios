@@ -82,6 +82,8 @@
 
 -(void)performShareForPath:(NSString*)path
 {
+    NSAssert(self.shareObject != nil, @"Could not be nil");
+    NSAssert(self.shareProtocol != nil, @"Could not be nil");
     
     NSMutableDictionary* params;
     if([Socialize applicationLink])
@@ -89,7 +91,10 @@
     else
         params = [NSMutableDictionary new];
     
+
     SEL prepareSelector = NSSelectorFromString([prepareActions objectForKey:[self.shareObject class]]);
+    NSAssert(prepareSelector!= nil, @"This object type does not support");
+    
     [self performSelector:prepareSelector withObject:params];
     
 
