@@ -47,6 +47,7 @@ tailPID=$!
 
 echo "waiting for $simPID"
 wait $simPID
+echo "Simulator run complete!"
 
 # WaxSim hides the return value from the app, so to determine success we search for a "no failures" line
 
