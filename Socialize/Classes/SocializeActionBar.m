@@ -165,15 +165,16 @@
         self.entityLike = (id<SocializeLike>)object;
         [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes] liked:YES];
         [(SocializeActionView*)self.view unlockButtons];
-        
-        if([self.socialize isAuthenticatedWithFacebook])
-        {
-            SocializeShareBuilder* shareBuilder = [[SocializeShareBuilder new] autorelease];
-            shareBuilder.shareProtocol = [[SocializeFacebookInterface new] autorelease];
-            shareBuilder.shareObject = (id<SocializeActivity>)object;
-            [shareBuilder performShareForPath:@"me/feed"];
-        }    
     } 
+    
+    if([self.socialize isAuthenticatedWithFacebook] && ([object conformsToProtocol:@protocol(SocializeLike)] || [object conformsToProtocol:@protocol(SocializeShare)])
+      )
+    {
+        SocializeShareBuilder* shareBuilder = [[SocializeShareBuilder new] autorelease];
+        shareBuilder.shareProtocol = [[SocializeFacebookInterface new] autorelease];
+        shareBuilder.shareObject = (id<SocializeActivity>)object;
+        [shareBuilder performShareForPath:@"me/feed"]; 
+    }
     
     // Refresh from server
     [self.socialize getEntityByKey:[entity key]];
@@ -257,8 +258,12 @@
 - (UIActionSheet*)shareActionSheet {
     if (_shareActionSheet == nil) {
         _shareActionSheet = [[UIActionSheet sheetWithTitle:nil] retain];
-        [_shareActionSheet addButtonWithTitle:@"Share on Facebook" handler:^{ [self shareViaFacebook]; }];
+        
+        if(self.socialize.isAuthenticatedWithFacebook)
+            [_shareActionSheet addButtonWithTitle:@"Share on Facebook" handler:^{ [self shareViaFacebook]; }];
+        
         [_shareActionSheet addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
+        
         [_shareActionSheet setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
     }
     return _shareActionSheet;
@@ -270,6 +275,7 @@
 
 -(void)shareViaFacebook
 {
+    [self.socialize createShareForEntity:self.entity medium:Facebook text:@"Would like to share with you my interest"];
 }
 
 #pragma mark Share via email

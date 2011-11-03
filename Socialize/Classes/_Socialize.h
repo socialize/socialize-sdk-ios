@@ -39,6 +39,7 @@
 @class SocializeViewService;
 @class SocializeUserService;
 @class SocializeActivityService;
+@class SocializeShareService;
 @class UIImage;
 @class SocializeFacebook;
 
@@ -62,6 +63,7 @@ otherwise you will get a failure.
     SocializeViewService            *_viewService;
     SocializeUserService            *_userService;
     SocializeActivityService        *_activityService;
+    SocializeShareService           *_shareService;
 }
 /**Get access to the authentication service via <SocializeAuthenticateService>.*/
 @property (nonatomic, retain) SocializeAuthenticateService    *authService;
@@ -77,6 +79,8 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeUserService            *userService;
 /**Get access to the activity service via <SocializeActivityService>.*/
 @property (nonatomic, retain) SocializeActivityService        *activityService;
+/**Get access to the activity service via <SocializeShareService>.*/
+@property (nonatomic, retain) SocializeShareService           *shareService;
 /**Current delegate*/
 @property (nonatomic, assign) id<SocializeServiceDelegate> delegate;
 
@@ -484,4 +488,6 @@ otherwise you will get a failure.
 
 -(void)getActivityOfCurrentApplication;
 -(void)getActivityOfUser:(id<SocializeUser>)user;
+
+-(void)createShareForEntity:(id<SocializeEntity>)entity medium:(ShareMedium)medium  text:(NSString*)text;
 @end

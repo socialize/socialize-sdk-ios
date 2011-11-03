@@ -36,6 +36,7 @@
 @synthesize userService = _userService;
 @synthesize delegate = _delegate;
 @synthesize activityService = _activityService;
+@synthesize shareService = _shareService;
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
@@ -46,6 +47,7 @@
     [_viewService release]; _viewService = nil;
     [_userService release]; _userService = nil;
     [_activityService release]; _activityService = nil;
+    [_shareService release]; _shareService = nil;
     
     [super dealloc];
 }
@@ -64,6 +66,7 @@
         _viewService  = [[SocializeViewService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _userService = [[SocializeUserService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _activityService = [[SocializeActivityService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
+        _shareService = [[SocializeShareService  alloc] initWithObjectFactory:_objectFactory delegate:delegate];
     }
     return self;
 }
@@ -324,4 +327,13 @@
 {
     [_activityService getActivityOfUser:user];
 }
+
+
+#pragma share service stuff
+
+-(void)createShareForEntity:(id<SocializeEntity>)entity medium:(ShareMedium)medium  text:(NSString*)text
+{
+    [_shareService createShareForEntity:entity medium:medium text:text];
+}
+
 @end

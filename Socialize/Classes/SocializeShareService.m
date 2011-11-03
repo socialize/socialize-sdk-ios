@@ -7,20 +7,19 @@
 //
 
 #import "SocializeShareService.h"
+#import "SocializeShare.h"
 
 @interface SocializeShareService()
 @end
 
 
 #define SHARE_METHOD @"share/"
-#define ENTRY_KEY @"key"
-#define ENTITY_KEY @"entity"
 
 @implementation SocializeShareService
 
--(void) dealloc
+-(Protocol *)ProtocolType
 {
-    [super dealloc];
+    return  @protocol(SocializeShare);
 }
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(ShareMedium)medium  text:(NSString*)text{
@@ -30,7 +29,7 @@
 -(void)createShareForEntityKey:(NSString*)key medium:(ShareMedium)medium  text:(NSString*)text{
     
     if (key && [key length]){   
-        NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity", text, @"text", [NSNumber numberWithInt:medium], @"medium" , nil];
+        NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity_key", text, @"text", [NSNumber numberWithInt:medium], @"medium" , nil];
         NSArray *params = [NSArray arrayWithObjects:entityParam, 
                            nil];
         [self executeRequest:

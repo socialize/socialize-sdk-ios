@@ -13,16 +13,8 @@
 #import "SocializeRequest.h"
 #import "SocializeService.h"
 
-typedef enum {
-    Facebook = 1,
-    Twitter = 2,
-    Other = 3
-} ShareMedium;
-
 
 @interface SocializeShareService : SocializeService {
-
-
 }
 
 
