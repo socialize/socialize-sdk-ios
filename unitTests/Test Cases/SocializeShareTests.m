@@ -52,8 +52,8 @@
     
     NSArray *expectedParams = [NSArray arrayWithObject:
                                [NSDictionary dictionaryWithObjectsAndKeys:
-                                mockEntity.key, @"entity",
-                                [NSNumber numberWithInt:1], @"medium",
+                                mockEntity.key, @"entity_key",
+                                [NSNumber numberWithInt:medium], @"medium",
                                 @"text", @"text",
                                 nil]];
     
