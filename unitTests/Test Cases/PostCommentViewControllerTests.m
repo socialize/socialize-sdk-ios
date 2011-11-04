@@ -35,6 +35,7 @@
 #import "Socialize.h"
 #import <OCMock/OCMock.h>
 #import "CommentsTableViewCell.h"
+#import "SocializeGeocoderAdapter.h"
 
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
@@ -242,6 +243,62 @@
     GHAssertTrue(CGRectEqualToRect(cell.frame, CGRectMake(0, 0, 320, 65)), @"Bad frame");
     
     [cell release];
+}
+
+-(void)testSupportLandscapeRotation
+{
+    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
+    GHAssertTrue([controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft], nil);
+}
+
+-(void)testLandscapeLayout
+{   
+    SocializePostCommentViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializePostCommentViewControllerLandscape" 
+                                                                                                                 bundle:nil 
+                                                                                                        entityUrlString:TEST_URL
+                                                                                                       keyboardListener:nil 
+                                                                                                        locationManager:nil
+                                                                                                           geocoderInfo:[SocializeGeocoderAdapter class]
+                                                             ];
+    
+    [controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight];
+    
+    int keyboardHeigth = 162;
+    int viewWidth = 460;
+    int viewHeight = 320;
+    int aciviticontainerHeight = 39;
+    CGRect expectedCommentFrame = CGRectMake(0,0, viewWidth, viewHeight - aciviticontainerHeight - keyboardHeigth);
+    CGRect expectedActivityLocationFrame = CGRectMake(0, expectedCommentFrame.origin.y + expectedCommentFrame.size.height, viewWidth, aciviticontainerHeight);
+    CGRect expectedMapContainerFrame = CGRectMake(0,viewHeight - keyboardHeigth, viewWidth, keyboardHeigth);
+    
+    GHAssertTrue(CGRectEqualToRect(expectedCommentFrame, controller.commentTextView.frame), nil);
+    GHAssertTrue(CGRectEqualToRect(expectedActivityLocationFrame, controller.locationViewContainer.frame), nil);    
+    GHAssertTrue(CGRectEqualToRect(expectedMapContainerFrame, controller.mapContainer.frame), nil);    
+}
+
+-(void)testPortraitLayout
+{   
+    SocializePostCommentViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializePostCommentViewController" 
+                                                                                                           bundle:nil 
+                                                                                                  entityUrlString:TEST_URL
+                                                                                                 keyboardListener:nil 
+                                                                                                  locationManager:nil
+                                                                                                     geocoderInfo:[SocializeGeocoderAdapter class]
+                                                       ];
+    
+    [controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortrait];
+    
+    int keyboardHeigth = 216;
+    int viewWidth = 320;
+    int viewHeight = 460;
+    int aciviticontainerHeight = 39;
+    CGRect expectedCommentFrame = CGRectMake(0,0, viewWidth, viewHeight - aciviticontainerHeight - keyboardHeigth);
+    CGRect expectedActivityLocationFrame = CGRectMake(0, expectedCommentFrame.origin.y + expectedCommentFrame.size.height, viewWidth, aciviticontainerHeight);
+    CGRect expectedMapContainerFrame = CGRectMake(0,viewHeight - keyboardHeigth, viewWidth, keyboardHeigth);
+    
+    GHAssertTrue(CGRectEqualToRect(expectedCommentFrame, controller.commentTextView.frame), nil);
+    GHAssertTrue(CGRectEqualToRect(expectedActivityLocationFrame, controller.locationViewContainer.frame), nil);    
+    GHAssertTrue(CGRectEqualToRect(expectedMapContainerFrame, controller.mapContainer.frame), nil);    
 }
 
 @end

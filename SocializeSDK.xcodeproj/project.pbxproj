@@ -175,6 +175,8 @@
 		166DD6FD1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD6FA146169490017D0E9 /* SocializeShareBuilder.m */; };
 		166DD6FE1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD6FA146169490017D0E9 /* SocializeShareBuilder.m */; };
 		166DD73A1462B8F20017D0E9 /* SocializeShareBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD7391462B8F10017D0E9 /* SocializeShareBuilderTests.m */; };
+		166DD7561463F4050017D0E9 /* SocializePostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431613F9EEBA00140AA3 /* SocializePostCommentViewController.xib */; };
+		166DD758146421140017D0E9 /* SocializePostCommentViewControllerLandscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166DD757146421130017D0E9 /* SocializePostCommentViewControllerLandscape.xib */; };
 		1670BE5613C6EB88000CC441 /* SocializeLikeJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5513C6EB88000CC441 /* SocializeLikeJSONFormatter.m */; };
 		1670BE5913C6EBCC000CC441 /* SocializeAuthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5813C6EBCC000CC441 /* SocializeAuthTests.m */; };
 		1670BE5C13C6EBDD000CC441 /* SocializeLikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1670BE5B13C6EBDD000CC441 /* SocializeLikeTests.m */; };
@@ -1293,6 +1295,7 @@
 		166DD6FA146169490017D0E9 /* SocializeShareBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeShareBuilder.m; path = Classes/SocializeShareBuilder.m; sourceTree = "<group>"; };
 		166DD7381462B8F10017D0E9 /* SocializeShareBuilderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeShareBuilderTests.h; path = "Test Cases/SocializeShareBuilderTests.h"; sourceTree = "<group>"; };
 		166DD7391462B8F10017D0E9 /* SocializeShareBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeShareBuilderTests.m; path = "Test Cases/SocializeShareBuilderTests.m"; sourceTree = "<group>"; };
+		166DD757146421130017D0E9 /* SocializePostCommentViewControllerLandscape.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializePostCommentViewControllerLandscape.xib; path = "Test Cases/SocializePostCommentViewControllerLandscape.xib"; sourceTree = "<group>"; };
 		1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommonDefinitions.h; path = Classes/SocializeCommonDefinitions.h; sourceTree = "<group>"; };
 		1670BE5313C6EB81000CC441 /* SocializeLikeJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeJSONFormatter.h; path = Classes/SocializeLikeJSONFormatter.h; sourceTree = "<group>"; };
 		1670BE5513C6EB88000CC441 /* SocializeLikeJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeJSONFormatter.m; path = Classes/SocializeLikeJSONFormatter.m; sourceTree = "<group>"; };
@@ -2458,6 +2461,7 @@
 		6D44A37613FC342D004B3A46 /* UI tests */ = {
 			isa = PBXGroup;
 			children = (
+				166DD757146421130017D0E9 /* SocializePostCommentViewControllerLandscape.xib */,
 				AAD7E389144F80320073308D /* SocializeProfileViewControllerTests.h */,
 				AAD7E38A144F80320073308D /* SocializeProfileViewControllerTests.m */,
 				6D3F84B51424046D00825DFC /* PostCommentViewControllerForTest.h */,
@@ -3339,6 +3343,8 @@
 				16A82A25141DE17E00193CA7 /* action-bar-icon-like.png in Resources */,
 				1643768C144C3BC4001EA3E4 /* SocializeCommentsTableViewController.xib in Resources */,
 				164376AE144C656C001EA3E4 /* commentsNavBarLeftItemView.xib in Resources */,
+				166DD7561463F4050017D0E9 /* SocializePostCommentViewController.xib in Resources */,
+				166DD758146421140017D0E9 /* SocializePostCommentViewControllerLandscape.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
