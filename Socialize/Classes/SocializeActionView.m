@@ -52,7 +52,7 @@
     
     [self sendSubviewToBack:self.recommendationsView];
     CGRect recommendationsFrame = self.barView.frame;
-    recommendationsFrame.origin.y -= 30;
+//    recommendationsFrame.origin.y -= 30;
     recommendationsFrame.size = CGSizeMake(RECOMMENDATIONS_WIDTH, RECOMMENDATIONS_HEIGHT);
     self.recommendationsView.frame = recommendationsFrame;
 }

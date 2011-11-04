@@ -159,7 +159,8 @@
     [self.actionView.barView updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes-1] liked:NO];
     self.entityLike = nil;
     [self.actionView.barView unlockButtons];
-    
+    [self.actionView.recommendationsView hide];
+
 }
 
 -(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object
@@ -174,6 +175,7 @@
         self.entityLike = (id<SocializeLike>)object;
         [self.actionView.barView updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes] liked:YES];
         [self.actionView.barView unlockButtons];
+        [self.actionView.recommendationsView show];
     } 
     
     if([self.socialize isAuthenticatedWithFacebook] && ([object conformsToProtocol:@protocol(SocializeLike)] || [object conformsToProtocol:@protocol(SocializeShare)])

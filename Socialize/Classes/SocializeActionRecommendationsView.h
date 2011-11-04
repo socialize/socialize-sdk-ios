@@ -17,6 +17,11 @@
 @interface SocializeActionRecommendationsView : UIView
 @property (nonatomic, retain) UIView *headerView;
 @property (nonatomic, assign) BOOL raised;
+@property (nonatomic, assign) BOOL shown;
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) id<UITableViewDelegate, UITableViewDataSource> delegate;
+
+- (void)show;
+- (void)hide;
+
 @end

@@ -13,6 +13,7 @@
 @synthesize headerView = headerView_;
 @synthesize tableView = tableView_;
 @synthesize delegate = delegate_;
+@synthesize shown = shown_;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -68,6 +69,44 @@
     [UIView commitAnimations];
     self.raised = NO;
 }
+
+- (void)hide {
+    if (!self.shown)
+        return;
+    
+    [UIView beginAnimations:nil context:NULL];
+    if (self.raised) {
+        [UIView setAnimationDuration:0.5];
+    } else {
+        [UIView setAnimationDuration:0.1];
+    }
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    CGRect f = self.frame;
+    if (self.raised) {
+        f.origin.y += RECOMMENDATIONS_RAISE_OFFSET;
+    }
+    f.origin.y += RECOMMENDATIONS_HEADER_HEIGHT;
+    self.frame = f;
+    [UIView commitAnimations];
+    self.shown = NO;
+    self.raised = NO;
+}
+
+- (void)show {
+    if (self.shown)
+        return;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    CGRect f = self.frame;
+    f.origin.y -= RECOMMENDATIONS_HEADER_HEIGHT;
+    self.frame = f;
+    [UIView commitAnimations];
+    self.shown = YES;
+}
+
 
 - (void)toggle {
     if (self.raised) {
