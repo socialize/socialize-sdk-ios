@@ -386,10 +386,10 @@
 
     NSDictionary *dictionary = [self.likeRecommendations objectAtIndex:indexPath.row];
     cell.nameLabel.text = [dictionary objectForKey:@"name"];
-    cell.commentsCount.text = [[dictionary objectForKey:@"comments"] description];
-    cell.likesCount.text = [[dictionary objectForKey:@"likes"] description];
-    cell.sharesCount.text = [[dictionary objectForKey:@"shares"] description];
-    cell.viewsCount.text = [[dictionary objectForKey:@"views"] description];
+    cell.commentsCount.text = [NSString stringWithFormat:@"%@ ", [dictionary objectForKey:@"comments"]];
+    cell.likesCount.text = [NSString stringWithFormat:@"%@ ", [dictionary objectForKey:@"likes"]];
+    cell.sharesCount.text = [NSString stringWithFormat:@"%@ ", [dictionary objectForKey:@"shares"]];
+    cell.viewsCount.text = [NSString stringWithFormat:@"%@ ", [dictionary objectForKey:@"views"]];
     
     return cell;
 }
