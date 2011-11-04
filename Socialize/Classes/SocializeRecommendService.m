@@ -21,7 +21,7 @@ typedef void (^RequestCompletionBlock)(NSDictionary *result, NSError *error);
 }
 -(void) getLikeRecommendation:(SocializeLike *)like  completion:(void (^)(NSDictionary *recommendations, NSError *error))completion {
     
-    NSString *urlString = [NSString stringWithFormat:@"http://interests.getsocialize.com/recommendation/entity/?like_id=%d", like.objectID];
+    NSString *urlString = [NSString stringWithFormat:@"http://dev.api.getsocialize.com/v1/recommendation/entity/?like_id=%d", like.objectID];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     
     [self.handlers setObject:[[completion copy] autorelease] forKey:request];
