@@ -132,7 +132,7 @@
 -(void)testLikeDelegate{
     id mockDelegate = [OCMockObject niceMockForProtocol:@protocol(SocializeActionViewDelegate)];
     
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT)];
+    SocializeActionBarView* actionView = [[SocializeActionBarView alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT)];
     
     actionView.delegate = mockDelegate;
     [[mockDelegate expect] likeButtonTouched:OCMOCK_ANY];
@@ -144,7 +144,7 @@
 -(void)testCommentDelegate{
     id mockDelegate = [OCMockObject niceMockForProtocol:@protocol(SocializeActionViewDelegate)];
     
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT)];
+    SocializeActionBarView* actionView = [[SocializeActionBarView alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT)];
     
     actionView.delegate = mockDelegate;
     [[mockDelegate expect] commentButtonTouched:OCMOCK_ANY];
@@ -175,7 +175,7 @@
  */
 -(void)testAutoresizeMask
 {
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT)];
+    SocializeActionBarView* actionView = [[SocializeActionBarView alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT)];
     GHAssertTrue(actionView.autoresizingMask == (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin), nil);
 }
 #pragma mark-

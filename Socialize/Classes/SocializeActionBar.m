@@ -26,7 +26,7 @@
  */
 
 #import "SocializeActionBar.h"
-#import "SocializeActionView.h"
+#import "SocializeActionBarView.h"
 #import "SocializeAuthenticateService.h"
 #import "SocializeLikeService.h"
 #import "SocializeCommentsTableViewController.h"
@@ -37,6 +37,7 @@
 #import "BlocksKit.h"
 #import "SocializeShareBuilder.h"
 #import "SocializeFacebookInterface.h"
+#import "SocializeActionView.h"
 
 @interface SocializeActionBar()
 @property(nonatomic, retain) id<SocializeLike> entityLike;
@@ -45,7 +46,6 @@
 -(void) shareViaEmail;
 -(void)shareViaFacebook;
 -(void)displayComposerSheet;
-
 @end
 
 @implementation SocializeActionBar
@@ -57,6 +57,8 @@
 @synthesize ignoreNextView = _ignoreNextView;
 @synthesize shareActionSheet = _shareActionSheet;
 @synthesize shareComposer = _shareComposer;
+@synthesize likeRecommendations = likeRecommendations_;
+@synthesize actionView = actionView_;
 
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller
 {
@@ -90,11 +92,13 @@
     [entity release];
     [entityView release];
     [entityLike release];
-    [(SocializeActionView*)self.view setDelegate: nil];
+    [(SocializeActionBarView*)self.view setDelegate: nil];
     [comentsNavController release];
     self.parentViewController = nil;
     self.shareComposer = nil;
     self.shareActionSheet = nil;
+    self.likeRecommendations = nil;
+    self.actionView = nil;
     
     [super dealloc];
 }
@@ -105,10 +109,15 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectZero];
+    self.actionView = [[[SocializeActionView alloc] initWithFrame:CGRectZero] autorelease];
+    self.actionView.delegate = self;
+    self.view = self.actionView;
+    /*
+    SocializeActionBarView* actionView = [[SocializeActionBarView alloc] initWithFrame:CGRectZero];
     self.view = actionView;
     actionView.delegate = self;
     [actionView release];
+     */
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -127,7 +136,7 @@
         if ([object conformsToProtocol:@protocol(SocializeEntity)])
         {
             self.entity = (id<SocializeEntity>)object;          
-            [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:entityLike!=nil withCommentsCount:[NSNumber numberWithInt:entity.comments]];
+            [self.actionView.barView updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:entityLike!=nil withCommentsCount:[NSNumber numberWithInt:entity.comments]];
         }
         if ([object conformsToProtocol:@protocol(SocializeLike)])
         {
@@ -137,7 +146,7 @@
                 if(like.user.objectID == self.socialize.authenticatedUser.objectID)
                 {
                     self.entityLike = like;
-                    [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:self.entityLike.entity.likes] liked:YES];
+                    [self.actionView.barView updateLikesCount:[NSNumber numberWithInt:self.entityLike.entity.likes] liked:YES];
                     *stop = YES;
                 }
             }];
@@ -147,9 +156,9 @@
 
 -(void)service:(SocializeService *)service didDelete:(id<SocializeObject>)object
 {
-    [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes-1] liked:NO];
+    [self.actionView.barView updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes-1] liked:NO];
     self.entityLike = nil;
-    [(SocializeActionView*)self.view unlockButtons];
+    [self.actionView.barView unlockButtons];
     
 }
 
@@ -158,13 +167,13 @@
     if([object conformsToProtocol:@protocol(SocializeView)])
     {
         self.entityView = (id<SocializeView>)object;
-        [(SocializeActionView*)self.view updateViewsCount:[NSNumber numberWithInt:entityView.entity.views]];
+        [self.actionView.barView updateViewsCount:[NSNumber numberWithInt:entityView.entity.views]];
     }
     if([object conformsToProtocol:@protocol(SocializeLike)])
     {
         self.entityLike = (id<SocializeLike>)object;
-        [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes] liked:YES];
-        [(SocializeActionView*)self.view unlockButtons];
+        [self.actionView.barView updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes] liked:YES];
+        [self.actionView.barView unlockButtons];
     } 
     
     if([self.socialize isAuthenticatedWithFacebook] && ([object conformsToProtocol:@protocol(SocializeLike)] || [object conformsToProtocol:@protocol(SocializeShare)])
@@ -182,7 +191,7 @@
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
 {
-    [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:0] withLikesCount:[NSNumber numberWithInt:0] isLiked:NO withCommentsCount:[NSNumber numberWithInt:0]];
+    [self.actionView.barView updateCountsWithViewsCount:[NSNumber numberWithInt:0] withLikesCount:[NSNumber numberWithInt:0] isLiked:NO withCommentsCount:[NSNumber numberWithInt:0]];
     if([service isKindOfClass:[SocializeAuthenticateService class]])
     {
         [super service:service didFail:error];
@@ -193,7 +202,7 @@
             [self showAllertWithText:[error localizedDescription] andTitle:@"Get entiry failed"];
         
         if([service isKindOfClass:[SocializeLikeService class]])
-            [(SocializeActionView*)self.view unlockButtons];
+            [self.actionView.barView unlockButtons];
     }
 }
 
@@ -202,7 +211,7 @@
     [super didAuthenticate:user];
     //remove like status because we do not know it for new user yet.
     self.entityLike = nil;
-    [(SocializeActionView*)self.view updateIsLiked:NO];
+    [self.actionView.barView updateIsLiked:NO];
 }
 
 #pragma mark Socialize base class method
@@ -229,8 +238,8 @@
         [self.socialize getLikesForEntityKey:[entity key] first:nil last:nil];
 }
 
--(void)socializeActionViewWillAppear:(SocializeActionView *)socializeActionView {
-    [socializeActionView startActivityForUpdateViewsCount];
+-(void)socializeActionViewWillAppear:(SocializeActionView *)actionView{
+    [actionView.barView startActivityForUpdateViewsCount];
     [self performAutoAuth];
 }
 
@@ -247,7 +256,7 @@
 
 -(void)likeButtonTouched:(id)sender
 {
-    [(SocializeActionView*)self.view lockButtons];
+    [self.actionView.barView lockButtons];
     
     if(entityLike)
         [self.socialize unlikeEntity: entityLike];
@@ -325,5 +334,30 @@
 
 	[self.parentViewController presentModalViewController:self.shareComposer animated:YES];
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    cell.textLabel.text = @"hi";
+    
+//    id<SocializeLike> like = [_likes objectAtIndex:indexPath.row];
+//    cell.textLabel.text = [[like user] userName];
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 3;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return tableView.frame.size.height / 3;
+}
+
 
 @end

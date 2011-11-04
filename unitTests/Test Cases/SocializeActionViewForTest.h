@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SocializeActionView.h"
 
-@interface SocializeActionViewForTest : SocializeActionView  {
+@interface SocializeActionViewForTest : SocializeActionBarView  {
     
 }
 

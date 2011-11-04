@@ -17,7 +17,7 @@
     IBOutlet UITextField* getEntityTextField;
     Socialize*            _socialize;
     LoadingView*          _loadingView;
-    SocializeActionView*  _actionView;
+    SocializeActionBarView*  _actionView;
     
     /*info view */
     

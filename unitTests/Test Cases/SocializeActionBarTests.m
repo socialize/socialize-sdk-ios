@@ -73,7 +73,7 @@
     // Having troubles expecting (_setViewDelegate:) in OCMock
 //    self.mockActionView = [OCMockObject mockForClass:[SocializeActionView class]];
 //    [[self.mockActionView expect] _setViewDelegate:OCMOCK_ANY];
-    self.mockActionView = [OCMockObject mockForClass:[SocializeActionView class]];
+    self.mockActionView = [OCMockObject mockForClass:[SocializeActionBarView class]];
     [[[(id)self.actionBar stub] andReturn:self.mockActionView] view];
 }
 

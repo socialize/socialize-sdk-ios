@@ -27,6 +27,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SocializeBaseViewController.h"
+#import "SocializeActionBarView.h"
+#import "SocializeActionRecommendationsView.h"
 #import "SocializeActionView.h"
 
 @class SocializeCommentsTableViewController;
@@ -35,7 +37,7 @@
 @protocol SocializeLike;
 @class MFMailComposeViewController;
 
-@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate> {
+@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate, SocializeActionBarViewDelegate, UITableViewDataSource, UITableViewDelegate> {
     @private
     CGRect viewRect;
     UIViewController* comentsNavController;   
@@ -51,6 +53,8 @@
 @property (nonatomic, assign) BOOL ignoreNextView;
 @property (nonatomic, retain) UIActionSheet *shareActionSheet;
 @property (nonatomic, retain) MFMailComposeViewController *shareComposer;
+@property (nonatomic, retain) NSArray *likeRecommendations;
+@property (nonatomic, retain) SocializeActionView *actionView;
 
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
 

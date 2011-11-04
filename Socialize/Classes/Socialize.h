@@ -12,6 +12,6 @@
 #import "SocializePostCommentViewController.h"
 #import "SocializeProfileViewController.h"
 #import "SocializeProfileEditViewController.h"
-#import "SocializeActionView.h"
+#import "SocializeActionBarView.h"
 #import "SocializeActionBar.h"
 #import "SocializeObjects.h"

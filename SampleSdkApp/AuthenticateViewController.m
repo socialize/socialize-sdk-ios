@@ -55,6 +55,8 @@
 
 #pragma mark - View lifecycle
 
+#import "TestSocializeActionBar.h"
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -76,7 +78,10 @@
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];
 #endif
-    
+ 
+    TestSocializeActionBar *barTest = [[TestSocializeActionBar alloc] initWithEntityUrl:@"http://www.google.com"];
+//    [self.navigationController pushViewController:barTest animated:NO];
+    [self.navigationController presentModalViewController:barTest animated:NO];
 }
 
 - (void)viewDidUnload
