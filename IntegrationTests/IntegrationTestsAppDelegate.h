@@ -12,3 +12,4 @@
 @interface IntegrationTestsAppDelegate : GHUnitIOSAppDelegate <UIApplicationDelegate, GHTestRunnerDelegate>
 
 @end
+    
