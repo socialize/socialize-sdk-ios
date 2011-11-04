@@ -1,9 +1,9 @@
 //
-//  GHUnitIPhoneViewController.h
-//  GHUnitIPhone
+//  GHImageDiffView.h
+//  GHUnitIOS
 //
-//  Created by Gabriel Handford on 1/25/09.
-//  Copyright 2009. All rights reserved.
+//  Created by John Boiles on 10/27/11.
+//  Copyright (c) 2011. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,45 +27,23 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHUnitIPhoneView.h"
+#import <UIKit/UIKit.h>
 
-#import "GHUnitIPhoneTableViewDataSource.h"
-#import "GHUnitIPhoneTestViewController.h"
+@interface GHImageDiffView : UIView {
+  UIScrollView *scrollView_;
+  UISegmentedControl *segmentedControl_;
 
-@interface GHUnitIPhoneViewController : UIViewController <UITableViewDelegate, GHTestRunnerDelegate, UISearchBarDelegate> {
-    
-  GHUnitIPhoneView *view_;
-  
-  //! Data source for table view
-  GHUnitIPhoneTableViewDataSource *dataSource_;
-  GHTestSuite *suite_;
-  
-  UIBarButtonItem *runButton_;
-  
-  //! If set then we will no longer auto scroll as tests are run
-  BOOL userDidDrag_;
-  
+  UIImageView *savedImageView_;
+  UIImageView *renderedImageView_;
+  UIImageView *diffImageView_;
 }
 
-@property (retain, nonatomic) GHTestSuite *suite;
+- (void)setSavedImage:(UIImage *)savedImage renderedImage:(UIImage *)renderedImage diffImage:(UIImage *)diffImage;
 
-- (void)reloadTest:(id<GHTest>)test;
+- (void)showSavedImage;
 
-- (void)scrollToTest:(id<GHTest>)test;
-- (void)scrollToBottom;
+- (void)showRenderedImage;
 
-- (void)setStatusText:(NSString *)message;
-
-- (void)runTests;
-
-- (void)cancel;
-
-- (void)reload;
-
-- (void)loadDefaults;
-- (void)saveDefaults;
-
-- (GHUnitIPhoneTableViewDataSource *)dataSource;
+- (void)showDiffImage;
 
 @end
-

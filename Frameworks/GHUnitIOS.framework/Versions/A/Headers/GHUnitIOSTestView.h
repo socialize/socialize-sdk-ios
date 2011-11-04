@@ -1,9 +1,9 @@
 //
-//  GHMockNSHTTPURLResponse.h
-//  GHUnit
+//  GHUnitIOSTestView.h
+//  GHUnitIOS
 //
-//  Created by Gabriel Handford on 4/9/09.
-//  Copyright 2009. All rights reserved.
+//  Created by John Boiles on 8/8/11.
+//  Copyright 2011. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,24 +27,33 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//! @cond DEV
+#import <UIKit/UIKit.h>
+#import "YKUIImageViewControl.h"
 
-#import <Foundation/Foundation.h>
+@class GHUnitIOSTestView;
 
-/*!
- NSHTTPURLResponse for use with mocking.
- Allows us to manually set the status code and headers in the response.
- */
-@interface GHMockNSHTTPURLResponse : NSHTTPURLResponse {
-	NSInteger statusCode_;
-	NSDictionary *headers_;
-}
-
-- (id)initWithStatusCode:(NSInteger)statusCode headers:(NSDictionary *)headers;
-
-- (void)setStatusCode:(NSInteger)code;
-- (void)setHeaders:(NSDictionary *)headers;
-
+@protocol GHUnitIOSTestViewDelegate <NSObject>
+- (void)testViewDidSelectSavedImage:(GHUnitIOSTestView *)testView;
+- (void)testViewDidSelectRenderedImage:(GHUnitIOSTestView *)testView;
+- (void)testViewDidApproveChange:(GHUnitIOSTestView *)testView;
 @end
 
-//! @endcond
+@interface GHUnitIOSTestView : UIScrollView {
+  id<GHUnitIOSTestViewDelegate> controlDelegate_;
+
+  // TODO(johnb): Perhaps hold a scrollview here as subclassing UIViews can be weird.
+
+  YKUIImageViewControl *savedImageView_;
+  YKUIImageViewControl *renderedImageView_;
+
+  UIButton *approveButton_;
+
+  UILabel *textLabel_;
+}
+@property(assign, nonatomic) id<GHUnitIOSTestViewDelegate> controlDelegate;
+
+- (void)setSavedImage:(UIImage *)savedImage renderedImage:(UIImage *)renderedImage text:(NSString *)text;
+
+- (void)setText:(NSString *)text;
+
+@end

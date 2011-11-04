@@ -33,6 +33,7 @@
 #import <GHUnitIOS/GHUnit.h>
 // If you are using the static library and importing header files manually
 //#import "GHUnit.h"
+#import "SocializeUnitTestApplication.h"
 
 // Default exception handler
 void exceptionHandler(NSException *exception) { 
@@ -61,14 +62,19 @@ int main(int argc, char *argv[]) {
    
    For malloc debugging see: http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html
    */
-  
+    
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([SocializeUnitTestApplication class]));
+    }
+     
+
+/*
   NSSetUncaughtExceptionHandler(&exceptionHandler);
   
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
   
   // Register any special test case classes
   //[[GHTesting sharedInstance] registerClassName:@"GHSpecialTestCase"];  
-  
   int retVal = 0;
   // If GHUNIT_CLI is set we are using the command line interface and run the tests
   // Otherwise load the GUI app
@@ -80,4 +86,5 @@ int main(int argc, char *argv[]) {
   }
   [pool release];
   return retVal;
+ */
 }

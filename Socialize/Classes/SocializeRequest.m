@@ -304,7 +304,7 @@ running = _running;
         _dataFetcher = [[SocializeDataFetcher alloc] initWithRequest:self.request delegate:self
                                                    didFinishSelector:@selector(tokenRequestTicket:didFinishWithData:)
                                                      didFailSelector:@selector(tokenRequestTicket:didFailWithError:)];
-        _dataFetcher.trustedHosts = [NSArray arrayWithObjects:@"stage.api.getsocialize.com", @"getsocialize.com", @"stage.getsocialize.com", @"dev.getsocialize.com", nil];
+        _dataFetcher.trustedHosts = [NSArray arrayWithObjects:@"stage.api.getsocialize.com", @"api.getsocialize.com", @"dev.getsocialize.com", nil];
     }
     
     return _dataFetcher;

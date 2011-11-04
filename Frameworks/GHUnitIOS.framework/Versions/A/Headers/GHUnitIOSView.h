@@ -1,6 +1,6 @@
 //
-//  GHUnitIPhoneView.h
-//  GHUnitIPhone
+//  GHUnitIOSView.h
+//  GHUnitIOS
 //
 //  Created by Gabriel Handford on 4/12/10.
 //  Copyright 2010. All rights reserved.
@@ -27,8 +27,13 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface GHUnitIPhoneView : UIView {
+/*
+ Main view for iOS test application.
+ */
+@interface GHUnitIOSView : UIView {
   UISearchBar *searchBar_;
   
   UITableView *tableView_;

@@ -1,8 +1,8 @@
 //
-//  GHUnitIPhoneTestViewController.h
-//  GHUnitIPhone
+//  GHUnitIOSAppDelegate.h
+//  GHUnitIOS
 //
-//  Created by Gabriel Handford on 2/20/09.
+//  Created by Gabriel Handford on 1/25/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,17 +27,16 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestViewModel.h"
+#import <UIKit/UIKit.h>
 
-@interface GHUnitIPhoneTestViewController : UIViewController <GHTestRunnerDelegate> {
-    UITextView *textView_;
-    
-    GHTestNode *testNode_;
-    
-    GHTestRunner *runner_;
+/*!
+ Application delegate for the iOS test application.
+ */
+@interface GHUnitIOSAppDelegate : NSObject <UIApplicationDelegate> {
+  UIWindow *window_;
+  
+  UINavigationController *navigationController_;  
 }
-
-- (void)setTest:(id<GHTest>)test;
 
 @end
 

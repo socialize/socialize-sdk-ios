@@ -1,8 +1,8 @@
 //
-//  GHNSLocale+Mock.h
-//  GHUnit
+//  GHUnitIOSTestViewController.h
+//  GHUnitIOS
 //
-//  Created by Gabriel Handford on 4/13/09.
+//  Created by Gabriel Handford on 2/20/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,37 +27,23 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//! @cond DEV
+#import <UIKit/UIKit.h>
+#import "GHTestViewModel.h"
+#import "GHUnitIOSTestView.h"
+#import "GHImageDiffView.h"
 
-/*!
- Category for overriding the current locale at runtime.
+/*
+ View controller for a test.
+ */
+@interface GHUnitIOSTestViewController : UIViewController <GHTestRunnerDelegate, GHUnitIOSTestViewDelegate> {
+  GHUnitIOSTestView *testView_;
+  GHImageDiffView *imageDiffView_;
 
- @code
- #import "GHNSLocale+Mock.h"
- // This aliases the currentLocale method and with the specified locale identifier
- [NSLocale gh_setLocaleIdentifier:@"en_GB"];
+  GHTestNode *testNode_;
   
- [[NSLocale currentLocale] localeIdentifier] == "en_GB"
- @endcode
- */
-@interface NSLocale(GHMock)
+  GHTestRunner *runner_;
+}
 
-+ (void)gh_setLocaleIdentifier:(NSString *)localeIdentifier;
-
-/*!
- Aliases to currentLocale with locale set from gh_setLocaleIdentifier.
- If not set, defaults to NSLocale with identifier en_US.
- */
-+ (NSLocale *)gh_currentLocale;
-
-+ (void)gh_setPreferredLanguages:(NSArray *)preferredLanguages;
-
-/*!
- Aliases to preferredLanguages set from gh_setPreferredLanguages.
- If not set, defaults to [@"en"].
- */
-+ (NSArray *)gh_preferredLanguages;
+- (void)setTest:(id<GHTest>)test;
 
 @end
-
-//! @endcond

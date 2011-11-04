@@ -25,8 +25,10 @@
 - (void)service:(SocializeService *)request didFail:(NSError *)error {
     NSLog(@"Error happened during auth: %@", [error description]);
 }
+
 -(void)didAuthenticate:(id<SocializeUser>)user {
     NSAssert( [user thirdPartyAuth] != nil, @"Third party auth is nil");
     [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testAuthentication)];
 }
+
 @end

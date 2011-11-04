@@ -10,7 +10,7 @@
 #import <GHUnitIOS/GHTestRunner.h>
 
 
-@interface SocializeUnitTestApplication : GHUnitIPhoneAppDelegate<GHTestRunnerDelegate> {
+@interface SocializeUnitTestApplication : GHUnitIOSAppDelegate<GHTestRunnerDelegate> {
 
 }
 

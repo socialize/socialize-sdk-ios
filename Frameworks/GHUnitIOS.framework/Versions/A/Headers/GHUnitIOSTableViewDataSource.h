@@ -1,6 +1,6 @@
 //
-//  GHUnitIPhoneTableViewDataSource.h
-//  GHUnitIPhone
+//  GHUnitIOSTableViewDataSource.h
+//  GHUnitIOS
 //
 //  Created by Gabriel Handford on 5/5/09.
 //  Copyright 2009. All rights reserved.
@@ -27,9 +27,13 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import <UIKit/UIKit.h>
 #import "GHTestViewModel.h"
 
-@interface GHUnitIPhoneTableViewDataSource : GHTestViewModel <UITableViewDataSource> {
+/*
+ Table view data source for iOS test application.
+ */
+@interface GHUnitIOSTableViewDataSource : GHTestViewModel <UITableViewDataSource> {
   
 }
 
