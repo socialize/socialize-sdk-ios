@@ -30,6 +30,7 @@
 #import "SocializeActionBarView.h"
 #import "SocializeActionRecommendationsView.h"
 #import "SocializeActionView.h"
+#import "SocializeRecommendService.h"
 
 @class SocializeCommentsTableViewController;
 @protocol SocializeView;
@@ -55,6 +56,7 @@
 @property (nonatomic, retain) MFMailComposeViewController *shareComposer;
 @property (nonatomic, retain) NSArray *likeRecommendations;
 @property (nonatomic, retain) SocializeActionView *actionView;
+@property (nonatomic, retain) SocializeRecommendService *recommendService;
 
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
 
