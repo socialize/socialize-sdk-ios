@@ -165,7 +165,7 @@
     [self.actionView.barView updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes-1] liked:NO];
     self.entityLike = nil;
     [self.actionView.barView unlockButtons];
-    [self.actionView.recommendationsView hide];
+    [self.actionView.recommendationsView performSelectorOnMainThread:@selector(hide) withObject:nil waitUntilDone:NO];
 
 }
 
@@ -187,7 +187,7 @@
         }
         self.likeRecommendations = [recommendations objectForKey:@"items"];
         if ([self.likeRecommendations count]) {
-            [self.actionView.recommendationsView.tableView reloadData];
+            [self.actionView.recommendationsView.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
             [self.actionView.recommendationsView performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:NO];
         }
     }];

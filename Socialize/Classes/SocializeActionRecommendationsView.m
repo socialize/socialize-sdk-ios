@@ -79,7 +79,7 @@
     if (self.raised) {
         [UIView setAnimationDuration:0.5];
     } else {
-        [UIView setAnimationDuration:0.1];
+        [UIView setAnimationDuration:0.3];
     }
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     CGRect f = self.frame;
