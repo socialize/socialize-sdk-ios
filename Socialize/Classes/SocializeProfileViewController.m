@@ -61,7 +61,9 @@
     self.userDescriptionLabel = nil;
     self.userLocationLabel = nil;
     self.profileImageView = nil;
+    self.profileEditViewController.delegate = nil;
     self.profileEditViewController = nil;
+    self.navigationControllerForEdit.delegate = nil;
     self.navigationControllerForEdit = nil;
     self.socialize = nil;
     
