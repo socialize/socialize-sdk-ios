@@ -15,7 +15,9 @@
     
 
     SocializeLike* like = [[SocializeLike new] autorelease];
-    NSDictionary *d = [recommendService getLikeRecommendation:like];
-    NSLog(@" my dict is %@", d);
+    like.objectID = 2342;
+    [recommendService getLikeRecommendation:like completion:^(id recommendations, NSError *error) {
+        NSLog(@"completed!");
+    }];
 }
 @end
