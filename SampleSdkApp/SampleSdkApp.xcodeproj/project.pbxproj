@@ -1102,6 +1102,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAD3F2B614620A2E007D2AB7 /* Build configuration list for PBXNativeTarget "IntegrationTests" */;
 			buildPhases = (
+				AADB6A3E1463770A00562E5D /* Build Socialize.framework */,
 				AAD3F2A114620A2E007D2AB7 /* Sources */,
 				AAD3F2A214620A2E007D2AB7 /* Frameworks */,
 				AAD3F2A314620A2E007D2AB7 /* Resources */,
@@ -1576,6 +1577,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "GHUNIT_CLI=1 sh ../util/run-headless-simulator.sh";
+			showEnvVarsInLog = 0;
+		};
+		AADB6A3E1463770A00562E5D /* Build Socialize.framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Socialize.framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ..\nmake framework";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
