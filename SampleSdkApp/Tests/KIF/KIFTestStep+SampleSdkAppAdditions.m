@@ -87,6 +87,7 @@
     [steps addObject:[KIFTestStep stepToEnterText:firstName intoViewWithAccessibilityLabel:@"First name"]]; 
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
     //this second "Save" is to save the entire form to the server.  It is need Do Not Remove
+    [steps addObject:[KIFTestStep stepToWaitForTimeInterval:0.5 description:@"Wait for save button"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
     NSString *firstNameAccessibilityLabel = @"name";
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:firstNameAccessibilityLabel]];
