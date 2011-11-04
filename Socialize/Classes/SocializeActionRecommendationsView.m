@@ -32,6 +32,7 @@
 
         self.tableView.separatorColor = [UIColor darkGrayColor];
 //        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self addSubview:self.tableView];
         // Initialization code
     }
