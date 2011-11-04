@@ -153,6 +153,17 @@
     
 }
 
+-(void)testSupportLandscapeRotation
+{
+    GHAssertTrue([listView shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft], nil);
+}
+
+-(void)testThatInformationViewIsOntheCenterAfterRotation
+{
+    [listView shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft];
+    GHAssertTrue(CGPointEqualToPoint(listView.informationView.center,listView.tableView.center),nil);
+}
+
 /*-(void)testDidSelectIndexAtRowPath{
     
     id navigationControllerMock = [OCMockObject niceMockForClass:[UINavigationController class]];
