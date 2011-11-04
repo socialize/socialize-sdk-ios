@@ -14,5 +14,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *likesCount;
 @property (nonatomic, retain) IBOutlet UILabel *sharesCount;
 @property (nonatomic, retain) IBOutlet UILabel *viewsCount;
+@property (nonatomic, retain) IBOutlet UIImageView *bgImage;
 
 @end

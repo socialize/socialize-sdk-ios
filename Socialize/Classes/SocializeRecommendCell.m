@@ -14,6 +14,7 @@
 @synthesize sharesCount = sharesCount_;
 @synthesize viewsCount = viewsCount_;
 @synthesize likesCount = likesCount_;
+@synthesize bgImage = bgImage_;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -22,6 +23,11 @@
         // Initialization code
     }
     return self;
+}
+
+- (void)awakeFromNib {
+//    self.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"comments-cell-bg-borders.png"]];
+    self.bgImage.image = [[UIImage imageNamed:@"comments-cell-bg-borders.png"]  stretchableImageWithLeftCapWidth:0 topCapHeight:1];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
