@@ -8,7 +8,10 @@
 #import "SocializeService.h"
 #import "SocializeLike.h"
 
-@interface SocializeRecommendService : SocializeService
+@interface SocializeRecommendService : SocializeService {
+    
+}
+@property (nonatomic,retain) NSMutableDictionary *handlers;
 
--(NSDictionary *) getLikeRecommendation:(SocializeLike *)like;
+-(void) getLikeRecommendation:(SocializeLike *)like  completion:(void (^)(NSDictionary *recommendations, NSError *error))completion;
 @end

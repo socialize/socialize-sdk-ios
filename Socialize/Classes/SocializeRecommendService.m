@@ -7,25 +7,36 @@
 //
 
 #import "SocializeRecommendService.h"
+#import "JSONKit.h"
 
 @implementation SocializeRecommendService
 
-    
--(NSDictionary *) getLikeRecommendation:(SocializeLike *)like {
-    NSMutableDictionary *recDict = [[NSMutableDictionary alloc] init];
-    NSMutableArray *entities = [[NSMutableArray alloc] init];
-    
-    [recDict setObject:[NSNumber numberWithInt:like.objectID] forKey:@"like_id"];
-    [recDict setObject:entities forKey:@"entities"];
-    for( int i = 0; i < 4; i++) {
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-        [dict setObject:[NSNumber numberWithInt:i] forKey:@"id"];
-        [dict setObject:[NSString stringWithFormat:@"http://www.google.com/%d", i] forKey:@"key"];
-        [dict setObject:[NSString stringWithFormat:@"title: %d", i] forKey:@"name"];
-        [dict setObject:[NSString stringWithFormat:@"type: %d", i] forKey:@"type"];
-        [entities addObject:dict];
-        [dict release];
+@synthesize handlers = _handlers;
+
+-(id) init {
+    if( self = [super init] ) {
+        self.handlers = [[NSMutableDictionary alloc]init];
     }
-    return [recDict autorelease];
+    return self;
+}
+-(void) getLikeRecommendation:(SocializeLike *)like  completion:(void (^)(NSDictionary *recommendations, NSError *error))completion {
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://interests.getsocialize.com/recommendation/entity/?like_id=%d", like.objectID];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
+    NSURLResponse *response;
+    NSError *error;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSDictionary *jsonResponse = (NSDictionary *)[data objectFromJSONData];
+    NSLog(@" %@ ", jsonResponse);
+    
+    if (completion != nil) {
+        [self.handlers setObject:[[completion copy] autorelease] forKey:request];
+        completion(jsonResponse, error);
+    }
+    
+}
+-(void)dealloc {
+    self.handlers = nil;
 }
 @end
