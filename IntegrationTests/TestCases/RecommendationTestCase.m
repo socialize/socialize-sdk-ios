@@ -15,7 +15,7 @@
     
 
     SocializeLike* like = [[SocializeLike new] autorelease];
-    like.objectID = 2342;
+    like.objectID = 9681;
     [recommendService getLikeRecommendation:like completion:^(id recommendations, NSError *error) {
         NSLog(@"completed!");
     }];

@@ -10,7 +10,7 @@
 #import "JSONKit.h"
 
 @implementation SocializeRecommendService
-
+typedef void (^RequestCompletionBlock)(NSDictionary *result, NSError *error);
 @synthesize handlers = _handlers;
 
 -(id) init {
@@ -24,16 +24,17 @@
     NSString *urlString = [NSString stringWithFormat:@"http://interests.getsocialize.com/recommendation/entity/?like_id=%d", like.objectID];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     
-    NSURLResponse *response;
-    NSError *error;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSDictionary *jsonResponse = (NSDictionary *)[data objectFromJSONData];
-    NSLog(@" %@ ", jsonResponse);
+    [self.handlers setObject:[[completion copy] autorelease] forKey:request];
     
-    if (completion != nil) {
-        [self.handlers setObject:[[completion copy] autorelease] forKey:request];
-        completion(jsonResponse, error);
-    }
+    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse * response, NSData *data, NSError *error) {
+        NSDictionary *jsonResponse = (NSDictionary *)[data objectFromJSONData];
+        NSLog(@"response from server: %@", jsonResponse);
+        if (completion != nil) {
+            RequestCompletionBlock completionBlock = [self.handlers objectForKey:request];
+            completionBlock(jsonResponse, error);
+        }
+    }];
+
     
 }
 -(void)dealloc {
