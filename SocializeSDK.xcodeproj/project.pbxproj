@@ -364,6 +364,12 @@
 		16F449DA13AF8358003BE655 /* SocializeApplicationJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449D913AF8356003BE655 /* SocializeApplicationJSONFormatterTests.m */; };
 		16F449DD13AF8B37003BE655 /* SocializeUserJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */; };
 		16FDF4E01414BA0A00EAA064 /* SocializeCommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */; };
+		18BBB96E1464808D0063BE7E /* SocializeRecommendService.h in Headers */ = {isa = PBXBuildFile; fileRef = 18BBB96C1464808D0063BE7E /* SocializeRecommendService.h */; };
+		18BBB96F1464808D0063BE7E /* SocializeRecommendService.h in Headers */ = {isa = PBXBuildFile; fileRef = 18BBB96C1464808D0063BE7E /* SocializeRecommendService.h */; };
+		18BBB9701464808D0063BE7E /* SocializeRecommendService.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBB96D1464808D0063BE7E /* SocializeRecommendService.m */; };
+		18BBB9711464808D0063BE7E /* SocializeRecommendService.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBB96D1464808D0063BE7E /* SocializeRecommendService.m */; };
+		18BBB9721464808D0063BE7E /* SocializeRecommendService.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBB96D1464808D0063BE7E /* SocializeRecommendService.m */; };
+		18BBB975146482760063BE7E /* RecommendationTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBB974146482760063BE7E /* RecommendationTestCase.m */; };
 		5C21C0C71396BF8300CF2B9F /* SocializeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */; };
 		5C21C0C91396BF8300CF2B9F /* _Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C31396BF8300CF2B9F /* _Socialize.m */; };
 		5C21C0D11396D9A800CF2B9F /* SocializeEntityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0CF1396D9A800CF2B9F /* SocializeEntityService.m */; };
@@ -1460,6 +1466,10 @@
 		18029E121432B815002BDEC7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUnitTestApplication.h; sourceTree = "<group>"; };
 		18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUnitTestApplication.m; sourceTree = "<group>"; };
+		18BBB96C1464808D0063BE7E /* SocializeRecommendService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRecommendService.h; path = Classes/SocializeRecommendService.h; sourceTree = "<group>"; };
+		18BBB96D1464808D0063BE7E /* SocializeRecommendService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRecommendService.m; path = Classes/SocializeRecommendService.m; sourceTree = "<group>"; };
+		18BBB973146482760063BE7E /* RecommendationTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendationTestCase.h; sourceTree = "<group>"; };
+		18BBB974146482760063BE7E /* RecommendationTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendationTestCase.m; sourceTree = "<group>"; };
 		5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequest.h; path = Classes/SocializeRequest.h; sourceTree = "<group>"; };
 		5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRequest.m; path = Classes/SocializeRequest.m; sourceTree = "<group>"; };
 		5C21C0C21396BF8300CF2B9F /* _Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _Socialize.h; path = Classes/_Socialize.h; sourceTree = "<group>"; };
@@ -2242,6 +2252,8 @@
 				166DD6F6146168B10017D0E9 /* ShareProviderProtocol.h */,
 				166DD6F9146169490017D0E9 /* SocializeShareBuilder.h */,
 				166DD6FA146169490017D0E9 /* SocializeShareBuilder.m */,
+				18BBB96C1464808D0063BE7E /* SocializeRecommendService.h */,
+				18BBB96D1464808D0063BE7E /* SocializeRecommendService.m */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
@@ -2858,6 +2870,8 @@
 				AA3E20B51461F329000321BF /* AuthTest.m */,
 				AA3E20B61461F329000321BF /* SocializeAsyncTestCase.h */,
 				AA3E20B71461F329000321BF /* SocializeAsyncTestCase.m */,
+				18BBB973146482760063BE7E /* RecommendationTestCase.h */,
+				18BBB974146482760063BE7E /* RecommendationTestCase.m */,
 			);
 			path = TestCases;
 			sourceTree = "<group>";
@@ -3039,6 +3053,7 @@
 				AAE9A6F0145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */,
 				166DD6F8146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
 				166DD6FC1461694A0017D0E9 /* SocializeShareBuilder.h in Headers */,
+				18BBB96F1464808D0063BE7E /* SocializeRecommendService.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3105,6 +3120,7 @@
 				AAE9A6EF145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */,
 				166DD6F7146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
 				166DD6FB1461694A0017D0E9 /* SocializeShareBuilder.h in Headers */,
+				18BBB96E1464808D0063BE7E /* SocializeRecommendService.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4307,6 +4323,7 @@
 				AAE9A6EB145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAE9A6F1145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */,
 				166DD6FD1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */,
+				18BBB9701464808D0063BE7E /* SocializeRecommendService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4360,6 +4377,7 @@
 				AA6DE805145FBBB40037E48E /* SocializeFacebookInterfaceTests.m in Sources */,
 				166DD73A1462B8F20017D0E9 /* SocializeShareBuilderTests.m in Sources */,
 				AA33A43B1463174700319168 /* profile_functions.c in Sources */,
+				18BBB9721464808D0063BE7E /* SocializeRecommendService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4412,6 +4430,7 @@
 				AA3E20AE1461F057000321BF /* IntegrationTestsAppDelegate.m in Sources */,
 				AA3E20B81461F329000321BF /* AuthTest.m in Sources */,
 				AA3E20B91461F329000321BF /* SocializeAsyncTestCase.m in Sources */,
+				18BBB975146482760063BE7E /* RecommendationTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4580,6 +4599,7 @@
 				AAE9A6EC145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAE9A6F2145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */,
 				166DD6FE1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */,
+				18BBB9711464808D0063BE7E /* SocializeRecommendService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
