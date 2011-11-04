@@ -462,13 +462,13 @@
 
 - (void)dealloc 
 {
-
 	[_editValueViewController release]; _editValueViewController = nil;
     [profileEditViewCell release]; profileEditViewCell = nil;
     [cellBackgroundColors release]; cellBackgroundColors = nil;
 	[keyValueDictionary release]; keyValueDictionary = nil;
 	[keysToEdit release]; keysToEdit = nil;
 	[profileImage release]; profileImage = nil;
+    [imagePicker setDelegate:nil];
 	[imagePicker release]; imagePicker = nil;
     [super dealloc];
 }

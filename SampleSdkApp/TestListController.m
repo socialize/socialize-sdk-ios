@@ -57,6 +57,8 @@
 
 - (void)dealloc
 {
+    _tableView.delegate = nil;
+    [_tableView release];
     [super dealloc];
 }
 

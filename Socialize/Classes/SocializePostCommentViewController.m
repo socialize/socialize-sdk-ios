@@ -100,6 +100,7 @@
     [_entityUrlString release];
     [kbListener release];
     [locationManager release];
+    [_facebookAuthQuestionDialog setDelegate:nil];
     [_facebookAuthQuestionDialog release];
     [_geoCoderInfo release];
     [_locationViewContainer release];

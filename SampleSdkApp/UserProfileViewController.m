@@ -62,6 +62,7 @@
     [city release]; city = nil;
     [state release]; state = nil;
     [progressView release]; progressView = nil;
+    self.service.delegate = nil;
     self.service = nil;
     [super dealloc];
 }
