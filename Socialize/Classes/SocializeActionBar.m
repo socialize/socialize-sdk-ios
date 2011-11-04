@@ -188,7 +188,7 @@
         self.likeRecommendations = [recommendations objectForKey:@"items"];
         if ([self.likeRecommendations count]) {
             [self.actionView.recommendationsView.tableView reloadData];
-            [self.actionView.recommendationsView show];
+            [self.actionView.recommendationsView performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:NO];
         }
     }];
 }
