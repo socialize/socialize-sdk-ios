@@ -34,6 +34,12 @@
 //        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self addSubview:self.tableView];
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setImage:[UIImage imageNamed:@"toolbar_close.png"] forState:UIControlStateNormal];
+        button.frame = CGRectMake(290, 2, 28, 27);
+        [button addTarget:self action:@selector(hide) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:button];
         // Initialization code
     }
     return self;
