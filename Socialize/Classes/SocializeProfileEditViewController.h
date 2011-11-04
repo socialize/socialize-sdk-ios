@@ -29,6 +29,7 @@
 @property (nonatomic, assign) IBOutlet SocializeProfileEditTableViewImageCell * profileImageCell;
 @property (nonatomic, assign) IBOutlet SocializeProfileEditTableViewCell * profileTextCell;
 @property (nonatomic, retain) UISwitch *facebookSwitch;
+@property (nonatomic, retain) NSBundle *bundle;
 @end
 
 @protocol SocializeProfileEditViewControllerDelegate <NSObject>

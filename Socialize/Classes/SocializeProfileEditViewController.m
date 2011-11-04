@@ -75,6 +75,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 @synthesize uploadPicActionSheet = uploadPicActionSheet_;
 @synthesize editValueController = editValueController_;
 @synthesize facebookSwitch = facebookSwitch_;
+@synthesize bundle = bundle_;
 
 - (void)dealloc {
     self.firstName = nil;
@@ -90,6 +91,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.uploadPicActionSheet = nil;
     self.editValueController = nil;
     self.facebookSwitch = nil;
+    self.bundle = nil;
     
     [super dealloc];
 }
@@ -157,13 +159,17 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     return cellBackgroundColors_;
 }
 
-- (UIColor*)cellBackgroundColorForIndexPath:(NSIndexPath*)indexPath {
+- (NSInteger)offsetForIndexPath:(NSIndexPath*)indexPath {
     NSInteger offset = 0;
     for (int i = 0; i < indexPath.section; i++) {
-        offset += SocializeProfileEditViewControllerSectionInfoItems[i].rowCount;
+        offset += [self.tableView numberOfRowsInSection:i];
     }
     offset += indexPath.row;
-    
+    return offset;
+}
+
+- (UIColor*)cellBackgroundColorForIndexPath:(NSIndexPath*)indexPath {
+    NSInteger offset = [self offsetForIndexPath:indexPath];
     return [self.cellBackgroundColors objectAtIndex:offset % 2];
 }
 
@@ -197,13 +203,19 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 	}
 }
 
+- (NSBundle*)bundle {
+    if (bundle_ == nil) {
+        bundle_ = [[NSBundle mainBundle] retain];
+    }
+    return bundle_;
+}
+
 - (SocializeProfileEditTableViewImageCell *)profileImageCell
 {
 	if (profileImageCell_ == nil) {
-		[[NSBundle mainBundle] loadNibNamed:@"SocializeProfileEditTableViewImageCell" owner:self options:nil];
+		[self.bundle loadNibNamed:@"SocializeProfileEditTableViewImageCell" owner:self options:nil];
         [profileImageCell_.imageView.layer setCornerRadius:4];
         [profileImageCell_.imageView.layer setMasksToBounds:YES];
-        [self configureProfileImageCell];
 	}
     
 	return profileImageCell_;
@@ -217,7 +229,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 	SocializeProfileEditTableViewCell *cell =(SocializeProfileEditTableViewCell *) [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
 	if (cell == nil) {
-		[[NSBundle mainBundle] loadNibNamed:@"SocializeProfileEditTableViewCell" owner:self options:nil];
+		[self.bundle loadNibNamed:@"SocializeProfileEditTableViewCell" owner:self options:nil];
 		cell = self.profileTextCell;
 		self.profileTextCell = nil;
 	}
