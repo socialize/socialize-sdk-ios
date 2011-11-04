@@ -16,6 +16,7 @@
 @class CommentMapView;
 @class UIKeyboardListener;
 @class SocializeLocationManager;
+@class SocializeAuthenticationViewController;
 
 @interface SocializePostCommentViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate, UIAlertViewDelegate, SocializeProfileViewControllerDelegate >
 {
@@ -25,6 +26,7 @@
     
     NSString*   _entityUrlString;
     
+
     UITextView* commentTextView;
     UILabel*    locationText; 
     UIButton*   doNotShareLocationButton;
@@ -34,7 +36,7 @@
     
     UIAlertView *_facebookAuthQuestionDialog;
 }
-
+@property(nonatomic, retain) UINavigationController* authViewController;
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;
 @property(nonatomic, retain) IBOutlet UILabel       *locationText;
 @property(nonatomic, retain) IBOutlet UIButton      *doNotShareLocationButton;

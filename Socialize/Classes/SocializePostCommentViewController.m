@@ -19,6 +19,7 @@
 #import "SocializeAuthenticateService.h"
 #import "SocializeGeocoderAdapter.h"
 #import "NSString+PlaceMark.h"
+#import "SocializeAuthenticationViewController.h"
 
 #define NO_CITY_MSG @"Could not locate the place name."
 #define MIN_DISMISS_INTERVAL 0.75
@@ -51,6 +52,7 @@
 @synthesize facebookAuthQuestionDialog = _facebookAuthQuestionDialog;
 @synthesize locationViewContainer = _locationViewContainer;
 @synthesize mapContainer = _mapContainer;
+@synthesize authViewController = _authViewController;
 
 +(UINavigationController*)createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar
 {
@@ -268,7 +270,8 @@
     [self startLoadAnimationForView:commentTextView];
     
     if (![self.socialize isAuthenticatedWithFacebook] && [Socialize facebookAppId] != nil) {
-        [self authenticateViaFacebook];
+        self.authViewController = [SocializeAuthenticationViewController createNavigationControllerForAuthViewController];
+        [self presentModalViewController:self.authViewController animated:YES];
     } else {
         [self createComment];
     }
