@@ -47,6 +47,7 @@
 -(void) shareViaEmail;
 -(void)shareViaFacebook;
 -(void)displayComposerSheet;
+- (void)getRecommendations;
 @end
 
 @implementation SocializeActionBar
@@ -61,6 +62,7 @@
 @synthesize likeRecommendations = likeRecommendations_;
 @synthesize actionView = actionView_;
 @synthesize recommendService = recommendService_;
+@synthesize recommendCell = recommendCell_;
 
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller
 {
@@ -101,6 +103,7 @@
     self.shareActionSheet = nil;
     self.likeRecommendations = nil;
     self.actionView = nil;
+    self.recommendCell = nil;
     
     [super dealloc];
 }
@@ -149,6 +152,7 @@
                 {
                     self.entityLike = like;
                     [self.actionView.barView updateLikesCount:[NSNumber numberWithInt:self.entityLike.entity.likes] liked:YES];
+                    [self getRecommendations];
                     *stop = YES;
                 }
             }];
@@ -173,6 +177,22 @@
     return recommendService_;
 }
 
+- (void)getRecommendations {
+    SocializeLike *fakeLike = [[[SocializeLike alloc] init] autorelease];
+    fakeLike.objectID = 10323;
+    [self.recommendService getLikeRecommendation:fakeLike completion:^(NSDictionary *recommendations, NSError *error) {
+        if (error != nil) {
+            NSLog(@"WARN: GIVING ME SOME BAD RECOMMENDATIONS: %@", error);
+            return;
+        }
+        self.likeRecommendations = [recommendations objectForKey:@"items"];
+        if ([self.likeRecommendations count]) {
+            [self.actionView.recommendationsView.tableView reloadData];
+            [self.actionView.recommendationsView show];
+        }
+    }];
+}
+
 -(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object
 {
     if([object conformsToProtocol:@protocol(SocializeView)])
@@ -185,19 +205,7 @@
         self.entityLike = (id<SocializeLike>)object;
         [self.actionView.barView updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes] liked:YES];
         [self.actionView.barView unlockButtons];
-        SocializeLike *fakeLike = [[[SocializeLike alloc] init] autorelease];
-        fakeLike.objectID = 10323;
-        [self.recommendService getLikeRecommendation:fakeLike completion:^(NSDictionary *recommendations, NSError *error) {
-            if (error != nil) {
-                NSLog(@"WARN: GIVING ME SOME BAD RECOMMENDATIONS: %@", error);
-                return;
-            }
-            self.likeRecommendations = [recommendations objectForKey:@"items"];
-            if ([self.likeRecommendations count]) {
-                [self.actionView.recommendationsView.tableView reloadData];
-                [self.actionView.recommendationsView show];
-            }
-        }];
+        [self getRecommendations];
     } 
     
     if([self.socialize isAuthenticatedWithFacebook] && ([object conformsToProtocol:@protocol(SocializeLike)] || [object conformsToProtocol:@protocol(SocializeShare)])
@@ -359,19 +367,29 @@
 	[self.parentViewController presentModalViewController:self.shareComposer animated:YES];
 }
 
+-(SocializeRecommendCell*)getRecommendCellInTableView:(UITableView*)tableView {
+	static NSString *CellIdentifier = @"SocializeRecommendCell";
+	
+	SocializeRecommendCell *cell =(SocializeRecommendCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	
+	if (cell == nil) {
+		[[NSBundle mainBundle] loadNibNamed:@"SocializeRecommendCell" owner:self options:nil];
+		cell = self.recommendCell;
+		self.recommendCell = nil;
+	}
+	
+	return cell;	
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
+    SocializeRecommendCell *cell = [self getRecommendCellInTableView:tableView];
+
     NSDictionary *dictionary = [self.likeRecommendations objectAtIndex:indexPath.row];
-    cell.textLabel.text = [dictionary objectForKey:@"name"];
-    
-//    id<SocializeLike> like = [_likes objectAtIndex:indexPath.row];
-//    cell.textLabel.text = [[like user] userName];
+    cell.nameLabel.text = [dictionary objectForKey:@"name"];
+    cell.commentsCount.text = [[dictionary objectForKey:@"comments"] description];
+    cell.likesCount.text = [[dictionary objectForKey:@"likes"] description];
+    cell.sharesCount.text = [[dictionary objectForKey:@"shares"] description];
+    cell.viewsCount.text = [[dictionary objectForKey:@"views"] description];
     
     return cell;
 }
@@ -381,7 +399,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return tableView.frame.size.height / 3;
+    return 70;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

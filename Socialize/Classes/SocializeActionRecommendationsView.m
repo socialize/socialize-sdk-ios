@@ -28,8 +28,9 @@
         
         CGRect tableFrame = CGRectMake(0, RECOMMENDATIONS_HEADER_HEIGHT, 320, RECOMMENDATIONS_HEIGHT - RECOMMENDATIONS_HEADER_HEIGHT);
         self.tableView = [[[UITableView alloc] initWithFrame:tableFrame] autorelease];
-        self.tableView.backgroundColor = [UIColor grayColor];
-        self.tableView.separatorColor = [UIColor blackColor];
+        self.tableView.backgroundColor = [UIColor colorWithRed:50/255.0f green:58/255.0f blue:67/255.0f alpha:1.0];
+
+        self.tableView.separatorColor = [UIColor darkGrayColor];
 //        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
         [self addSubview:self.tableView];
         // Initialization code

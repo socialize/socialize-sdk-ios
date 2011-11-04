@@ -31,6 +31,7 @@
 #import "SocializeActionRecommendationsView.h"
 #import "SocializeActionView.h"
 #import "SocializeRecommendService.h"
+#import "SocializeRecommendCell.h"
 
 @class SocializeCommentsTableViewController;
 @protocol SocializeView;
@@ -57,6 +58,7 @@
 @property (nonatomic, retain) NSArray *likeRecommendations;
 @property (nonatomic, retain) SocializeActionView *actionView;
 @property (nonatomic, retain) SocializeRecommendService *recommendService;
+@property (nonatomic, retain) IBOutlet SocializeRecommendCell *recommendCell;
 
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
 

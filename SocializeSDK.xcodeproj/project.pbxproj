@@ -1146,6 +1146,15 @@
 		AABC15B1144A123B00088B7D /* libSocialize-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AABC15AF144A114900088B7D /* libSocialize-profiling.a */; };
 		AABF6B0E14313E8400DAB37F /* SocializeProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABF6B0D14313E8400DAB37F /* SocializeProfileViewController.xib */; };
 		AAC43CB9145B726500F607C8 /* LoadingViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC43CB8145B726500F607C8 /* LoadingViewTests.m */; };
+		AAD0CDF81464989B005CE955 /* SocializeRecommendCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD0CDF61464989B005CE955 /* SocializeRecommendCell.h */; };
+		AAD0CDF91464989B005CE955 /* SocializeRecommendCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD0CDF61464989B005CE955 /* SocializeRecommendCell.h */; };
+		AAD0CDFA1464989B005CE955 /* SocializeRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0CDF71464989B005CE955 /* SocializeRecommendCell.m */; };
+		AAD0CDFB1464989B005CE955 /* SocializeRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD0CDF71464989B005CE955 /* SocializeRecommendCell.m */; };
+		AAD0CE0014649903005CE955 /* SocializeRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD0CDFF14649903005CE955 /* SocializeRecommendCell.xib */; };
+		AAD0CE0114649903005CE955 /* SocializeRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD0CDFF14649903005CE955 /* SocializeRecommendCell.xib */; };
+		AAD0CE0214649903005CE955 /* SocializeRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD0CDFF14649903005CE955 /* SocializeRecommendCell.xib */; };
+		AAD0CE0314649903005CE955 /* SocializeRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD0CDFF14649903005CE955 /* SocializeRecommendCell.xib */; };
+		AAD0CE0414649903005CE955 /* SocializeRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD0CDFF14649903005CE955 /* SocializeRecommendCell.xib */; };
 		AAD67926144911DA00C17C4D /* UIImage+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD67924144911DA00C17C4D /* UIImage+Network.m */; };
 		AAD7E38B144F80320073308D /* SocializeProfileViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E38A144F80320073308D /* SocializeProfileViewControllerTests.m */; };
 		AADB6A9014645EED00562E5D /* SocializeActionRecommendationsView.h in Headers */ = {isa = PBXBuildFile; fileRef = AADB6A8E14645EED00562E5D /* SocializeActionRecommendationsView.h */; };
@@ -1861,6 +1870,9 @@
 		AABF6B0D14313E8400DAB37F /* SocializeProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileViewController.xib; path = Resources/SocializeProfileViewController.xib; sourceTree = "<group>"; };
 		AAC43CB7145B726500F607C8 /* LoadingViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingViewTests.h; path = "Test Cases/LoadingViewTests.h"; sourceTree = "<group>"; };
 		AAC43CB8145B726500F607C8 /* LoadingViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingViewTests.m; path = "Test Cases/LoadingViewTests.m"; sourceTree = "<group>"; };
+		AAD0CDF61464989B005CE955 /* SocializeRecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRecommendCell.h; path = Classes/SocializeRecommendCell.h; sourceTree = "<group>"; };
+		AAD0CDF71464989B005CE955 /* SocializeRecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRecommendCell.m; path = Classes/SocializeRecommendCell.m; sourceTree = "<group>"; };
+		AAD0CDFF14649903005CE955 /* SocializeRecommendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeRecommendCell.xib; path = Classes/SocializeRecommendCell.xib; sourceTree = "<group>"; };
 		AAD67923144911DA00C17C4D /* UIImage+Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Network.h"; path = "Classes/UIImage+Network.h"; sourceTree = "<group>"; };
 		AAD67924144911DA00C17C4D /* UIImage+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Network.m"; path = "Classes/UIImage+Network.m"; sourceTree = "<group>"; };
 		AAD7E389144F80320073308D /* SocializeProfileViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileViewControllerTests.h; path = "Test Cases/SocializeProfileViewControllerTests.h"; sourceTree = "<group>"; };
@@ -2539,6 +2551,7 @@
 			isa = PBXGroup;
 			children = (
 				6D89844B14083B8200482F1E /* Utilities */,
+				AAD0CDEC1464980E005CE955 /* Cells */,
 				6D89844A14083B7A00482F1E /* Views */,
 				16C330BD13F3B75C004EA34D /* Controllers */,
 			);
@@ -3017,6 +3030,16 @@
 			path = SampleSdkApp;
 			sourceTree = "<group>";
 		};
+		AAD0CDEC1464980E005CE955 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AAD0CDF61464989B005CE955 /* SocializeRecommendCell.h */,
+				AAD0CDF71464989B005CE955 /* SocializeRecommendCell.m */,
+				AAD0CDFF14649903005CE955 /* SocializeRecommendCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -3086,6 +3109,7 @@
 				AADB6A9114645EED00562E5D /* SocializeActionRecommendationsView.h in Headers */,
 				AADB6A97146462AB00562E5D /* SocializeActionView.h in Headers */,
 				18BBB96F1464808D0063BE7E /* SocializeRecommendService.h in Headers */,
+				AAD0CDF91464989B005CE955 /* SocializeRecommendCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3155,6 +3179,7 @@
 				AADB6A9014645EED00562E5D /* SocializeActionRecommendationsView.h in Headers */,
 				AADB6A96146462AB00562E5D /* SocializeActionView.h in Headers */,
 				18BBB96E1464808D0063BE7E /* SocializeRecommendService.h in Headers */,
+				AAD0CDF81464989B005CE955 /* SocializeRecommendCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3517,6 +3542,7 @@
 				16C8160814598F7900FFC476 /* SocializeCommentDetailsViewController.xib in Resources */,
 				AADB6AB01464825900562E5D /* toolbar_bg.png in Resources */,
 				AADB6AB51464825900562E5D /* toolbar_close.png in Resources */,
+				AAD0CE0014649903005CE955 /* SocializeRecommendCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3638,6 +3664,7 @@
 				16C8160B14598F7900FFC476 /* SocializeCommentDetailsViewController.xib in Resources */,
 				AADB6AB31464825900562E5D /* toolbar_bg.png in Resources */,
 				AADB6AB81464825900562E5D /* toolbar_close.png in Resources */,
+				AAD0CE0314649903005CE955 /* SocializeRecommendCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3778,6 +3805,7 @@
 				16C8160C14598F7900FFC476 /* SocializeCommentDetailsViewController.xib in Resources */,
 				AADB6AB41464825900562E5D /* toolbar_bg.png in Resources */,
 				AADB6AB91464825900562E5D /* toolbar_close.png in Resources */,
+				AAD0CE0414649903005CE955 /* SocializeRecommendCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3927,6 +3955,7 @@
 				16C8160A14598F7900FFC476 /* SocializeCommentDetailsViewController.xib in Resources */,
 				AADB6AB21464825900562E5D /* toolbar_bg.png in Resources */,
 				AADB6AB71464825900562E5D /* toolbar_close.png in Resources */,
+				AAD0CE0214649903005CE955 /* SocializeRecommendCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4049,6 +4078,7 @@
 				16C8160914598F7900FFC476 /* SocializeCommentDetailsViewController.xib in Resources */,
 				AADB6AB11464825900562E5D /* toolbar_bg.png in Resources */,
 				AADB6AB61464825900562E5D /* toolbar_close.png in Resources */,
+				AAD0CE0114649903005CE955 /* SocializeRecommendCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4370,6 +4400,7 @@
 				AADB6A9214645EED00562E5D /* SocializeActionRecommendationsView.m in Sources */,
 				AADB6A98146462AB00562E5D /* SocializeActionView.m in Sources */,
 				18BBB9701464808D0063BE7E /* SocializeRecommendService.m in Sources */,
+				AAD0CDFA1464989B005CE955 /* SocializeRecommendCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4648,6 +4679,7 @@
 				AADB6A9314645EED00562E5D /* SocializeActionRecommendationsView.m in Sources */,
 				AADB6A99146462AB00562E5D /* SocializeActionView.m in Sources */,
 				18BBB9711464808D0063BE7E /* SocializeRecommendService.m in Sources */,
+				AAD0CDFB1464989B005CE955 /* SocializeRecommendCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
