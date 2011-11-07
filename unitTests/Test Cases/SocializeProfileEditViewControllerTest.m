@@ -247,6 +247,7 @@
 }
 
 - (void)testViewDidLoad {
+    [[self.mockTableView expect] setAccessibilityLabel:@"edit profile"];
     [self.profileEditViewController viewDidLoad];
     GHAssertEquals(self.profileEditViewController.navigationItem.leftBarButtonItem, self.profileEditViewController.cancelButton, @"Bad left button");
     GHAssertEquals(self.profileEditViewController.navigationItem.rightBarButtonItem, self.profileEditViewController.saveButton, @"Bad right button");

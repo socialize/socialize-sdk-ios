@@ -90,6 +90,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 {
     [super viewDidLoad];
     
+    self.tableView.accessibilityLabel = @"edit profile";
     self.navigationItem.leftBarButtonItem = self.cancelButton;	
     self.navigationItem.rightBarButtonItem = self.saveButton;
 }
