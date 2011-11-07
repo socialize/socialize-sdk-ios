@@ -14,24 +14,6 @@
 #import "SocializeProfileEditValueController.h"
 #import "SocializePrivateDefinitions.h"
 
-typedef enum {
-    SocializeProfileEditViewControllerSectionImage,
-    SocializeProfileEditViewControllerSectionProperties,
-    SocializeProfileEditViewControllerSectionPermissions,
-    SocializeProfileEditViewControllerNumSections,
-} SocializeProfileEditViewControllerSection;
-
-typedef enum {
-    SocializeProfileEditViewControllerImageRowProfileImage,
-    SocializeProfileEditViewControllerNumImageRows,
-} SocializeProfileEditViewControllerImageRow;
-
-typedef enum {
-    SocializeProfileEditViewControllerPropertiesRowFirstName,
-    SocializeProfileEditViewControllerPropertiesRowLastName,
-    SocializeProfileEditViewControllerPropertiesRowBio,
-    SocializeProfileEditViewControllerNumPropertiesRows,
-} SocializeProfileEditViewControllerPropertiesRow;
 
 typedef struct {
     NSString *displayName;
@@ -45,10 +27,6 @@ static SocializeProfileEditViewControllerPropertiesInfo SocializeProfileEditView
     { @"bio", @"Bio", @"bio" },
 };
 
-typedef enum {
-    SocializeProfileEditViewControllerPermissionsRowFacebook,
-    SocializeProfileEditViewControllerNumPermissionsRows,
-} SocializeProfileEditViewControllerPermissionsRow;
 
 typedef struct {
     NSInteger rowCount;

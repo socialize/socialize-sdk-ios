@@ -38,3 +38,28 @@
 - (void)profileEditViewControllerDidCancel:(SocializeProfileEditViewController*)profileEditViewController;
 
 @end
+
+typedef enum {
+    SocializeProfileEditViewControllerSectionImage,
+    SocializeProfileEditViewControllerSectionProperties,
+    SocializeProfileEditViewControllerSectionPermissions,
+    SocializeProfileEditViewControllerNumSections,
+} SocializeProfileEditViewControllerSection;
+
+typedef enum {
+    SocializeProfileEditViewControllerImageRowProfileImage,
+    SocializeProfileEditViewControllerNumImageRows,
+} SocializeProfileEditViewControllerImageRow;
+
+typedef enum {
+    SocializeProfileEditViewControllerPropertiesRowFirstName,
+    SocializeProfileEditViewControllerPropertiesRowLastName,
+    SocializeProfileEditViewControllerPropertiesRowBio,
+    SocializeProfileEditViewControllerNumPropertiesRows,
+} SocializeProfileEditViewControllerPropertiesRow;
+
+typedef enum {
+    SocializeProfileEditViewControllerPermissionsRowFacebook,
+    SocializeProfileEditViewControllerNumPermissionsRows,
+} SocializeProfileEditViewControllerPermissionsRow;
+

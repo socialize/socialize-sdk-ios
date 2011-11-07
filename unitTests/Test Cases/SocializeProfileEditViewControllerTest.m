@@ -34,6 +34,14 @@
     [[[(id)self.profileEditViewController stub] andReturn:self.mockTableView] tableView];
     self.mockBundle = [OCMockObject mockForClass:[NSBundle class]];
     self.profileEditViewController.bundle = self.mockBundle;
+    
+    // OCMock can not match primitives =(
+    for (int section = 0; section < SocializeProfileEditViewControllerNumSections; section++) {
+        [[[self.mockTableView stub] andDo:^(NSInvocation *inv) {
+            NSInteger rows = [self.profileEditViewController tableView:self.mockTableView numberOfRowsInSection:section];
+            [inv setReturnValue:&rows];
+        }] numberOfRowsInSection:section];
+    }
 }
 
 - (void)tearDown {
@@ -69,7 +77,7 @@
     [self.profileEditViewController saveButtonPressed:nil];
 }
 
-- (void)testCellProperties {
+- (void)testImageCellProperties {
     id mockCell = [OCMockObject mockForClass:[SocializeProfileEditTableViewImageCell class]];
     [[[self.mockBundle expect] andDo:^(NSInvocation* inv) {
         self.profileEditViewController.profileImageCell = mockCell;
@@ -88,6 +96,28 @@
     [[mockSpinner expect] startAnimating];
     [[mockCell expect] setBackgroundColor:[UIColor colorWithRed:35/255.0f green:43/255.0f blue:50/255.0f alpha:1.0]];
     UITableViewCell *cell = [self.profileEditViewController tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    GHAssertEquals(cell, mockCell, @"Bad cell");
+}
+
+- (void)testTextCellProperties {
+    self.profileEditViewController.firstName = @"Mister";
+    id mockCell = [OCMockObject mockForClass:[SocializeProfileEditTableViewCell class]];
+    [[[self.mockBundle expect] andDo:^(NSInvocation* inv) {
+        self.profileEditViewController.profileTextCell = mockCell;
+    }] loadNibNamed:@"SocializeProfileEditTableViewCell" owner:OCMOCK_ANY options:nil];
+    
+    [[[self.mockTableView expect] andReturn:nil] dequeueReusableCellWithIdentifier:OCMOCK_ANY];
+    id mockKeyLabel = [OCMockObject mockForClass:[UILabel class]];
+    id mockValueLabel = [OCMockObject mockForClass:[UILabel class]];
+    id mockArrowImageView = [OCMockObject mockForClass:[UIImageView class]];
+    [[[mockCell expect] andReturn:mockKeyLabel] keyLabel];
+    [[[mockCell expect] andReturn:mockValueLabel] valueLabel];
+    [[[mockCell expect] andReturn:mockArrowImageView] arrowImageView];
+    [[mockKeyLabel expect] setText:@"first name"];
+    [[mockValueLabel expect] setText:@"Mister"];
+    [[mockArrowImageView expect] setHidden:NO];
+    [[mockCell expect] setBackgroundColor:[UIColor colorWithRed:44/255.0f green:54/255.0f blue:63/255.0f alpha:1.0]];
+    UITableViewCell *cell = [self.profileEditViewController tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPropertiesRowFirstName inSection:SocializeProfileEditViewControllerSectionProperties]];
     GHAssertEquals(cell, mockCell, @"Bad cell");
 }
 
