@@ -627,7 +627,6 @@
 		AA973CA714689C3C00DAE945 /* TestActivityServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestActivityServices.m; sourceTree = "<group>"; };
 		AA973CD61468A0EA00DAE945 /* TestShareServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShareServices.h; sourceTree = "<group>"; };
 		AA973CD71468A0EA00DAE945 /* TestShareServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShareServices.m; sourceTree = "<group>"; };
-		AA973CD91468A14300DAE945 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
 		AA973CDA1468A14300DAE945 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
 		AAAFE5C0143553D800851C73 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		AAAFE93F1435640C00851C73 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = Frameworks/SymbolCollisionTestLibs/libJSONKit.a; sourceTree = "<group>"; };
@@ -1037,7 +1036,6 @@
 		AAD3F2BA14620AD0007D2AB7 /* IntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
-				AA973CD91468A14300DAE945 /* StringHelper.h */,
 				AA973CDA1468A14300DAE945 /* StringHelper.m */,
 				AAD3F2BB14620AD0007D2AB7 /* InfoPlist.strings */,
 				AAD3F2BD14620AD0007D2AB7 /* IntegrationTests-Info.plist */,
