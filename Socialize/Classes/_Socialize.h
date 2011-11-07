@@ -386,6 +386,16 @@ otherwise you will get a failure.
  */
 -(void)getLikesForEntityKey:(NSString*)url  first:(NSNumber*)first last:(NSNumber*)last;
 
+/**
+ Get list of 'views' for entity.
+ 
+ @param url Entity URL.
+ @param first The first view object to get. (OPTIONAL)
+ @param last The last view object to get. (OPTIONAL)
+ */
+// not yet implemented
+//-(void)getViewsForEntityKey:(NSString*)url  first:(NSNumber*)first last:(NSNumber*)last;
+
 /** @name Entity stuff*/
 
 /**
@@ -486,6 +496,7 @@ otherwise you will get a failure.
  @param lat Latitude  *float* value. Could be nil. (OPTIONAL)
  */
 -(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
+-(void)viewEntityWithKey:(NSString*)url longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 
 -(void)getCurrentUser;
 -(void)getUserWithId:(int)userId;
@@ -496,4 +507,5 @@ otherwise you will get a failure.
 -(void)getActivityOfUser:(id<SocializeUser>)user;
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(ShareMedium)medium  text:(NSString*)text;
+-(void)createShareForEntityWithKey:(NSString*)key medium:(ShareMedium)medium  text:(NSString*)text;
 @end

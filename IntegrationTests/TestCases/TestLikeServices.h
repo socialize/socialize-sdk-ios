@@ -7,7 +7,8 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
+#import "SocializeAsyncTestCase.h"
 
-@interface TestLikeServices : GHAsyncTestCase
+@interface TestLikeServices : SocializeAsyncTestCase
 
 @end

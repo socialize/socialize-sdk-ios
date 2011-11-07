@@ -298,9 +298,19 @@
 
 #pragma view related stuff
 
+-(void)viewEntityWithKey:(NSString*)url longitude:(NSNumber*)lng latitude: (NSNumber*)lat {
+    [_viewService createViewForEntityKey:url longitude:lng latitude:lat];
+}
+
 -(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat{
     [_viewService createViewForEntity:entity longitude:lng latitude:lat];
 }
+
+/*
+-(void)getViewsForEntityKey:(NSString*)url  first:(NSNumber*)first last:(NSNumber*)last {
+    [_viewService getViewsForEntityKey:url first:first last:last];
+}
+ */
 
 #pragma user related stuff
 -(void)getCurrentUser
@@ -340,6 +350,10 @@
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(ShareMedium)medium  text:(NSString*)text
 {
     [_shareService createShareForEntity:entity medium:medium text:text];
+}
+
+-(void)createShareForEntityWithKey:(NSString*)key medium:(ShareMedium)medium  text:(NSString*)text {
+    [_shareService createShareForEntityKey:key medium:medium text:text];
 }
 
 @end

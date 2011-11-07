@@ -10,8 +10,17 @@
 
 @implementation TestLikeServices
 
-- (void)testLike {
+- (void)testCreateDeleteLike {
+    NSString *likeURL = [self testURL:[NSString stringWithFormat:@"%s/like", _cmd]];
+    [self createLikeWithURL:likeURL latitude:nil longitude:nil];
     
+    [self getLikesForURL:likeURL];
+    id<SocializeLike> like = [self.fetchedElements objectAtIndex:0];
+    GHAssertEqualObjects(like.entity.key, likeURL, @"Bad key");
+    
+    [self deleteLike:like];
+    [self getLikesForURL:likeURL];
+    GHAssertTrue([self.fetchedElements count] == 0, @"Bad count");
 }
 
 @end

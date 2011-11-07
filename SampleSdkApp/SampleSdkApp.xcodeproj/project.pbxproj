@@ -330,6 +330,7 @@
 		AA8637F8144CA28300CFA759 /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0F144A24BF00660E26 /* TestViewCreationViewController.xib */; };
 		AA8637F9144CA28300CFA759 /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639E14144A24BF00660E26 /* urls.plist */; };
 		AA8637FA144CA28300CFA759 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E17144A24BF00660E26 /* UserProfileViewController.xib */; };
+		AA973CA814689C3C00DAE945 /* TestActivityServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CA714689C3C00DAE945 /* TestActivityServices.m */; };
 		AAD3F2A714620A2E007D2AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6D14352BC100C62B97 /* UIKit.framework */; };
 		AAD3F2A814620A2E007D2AB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6F14352BC100C62B97 /* Foundation.framework */; };
 		AAD3F2A914620A2E007D2AB7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */; };
@@ -620,6 +621,8 @@
 		AA8636CC144CA0DB00CFA759 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = ../Frameworks/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
 		AA8636D6144CA14300CFA759 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = ../Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		AA863869144CA28300CFA759 /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA973CA614689C3C00DAE945 /* TestActivityServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestActivityServices.h; sourceTree = "<group>"; };
+		AA973CA714689C3C00DAE945 /* TestActivityServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestActivityServices.m; sourceTree = "<group>"; };
 		AAAFE5C0143553D800851C73 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		AAAFE93F1435640C00851C73 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = Frameworks/SymbolCollisionTestLibs/libJSONKit.a; sourceTree = "<group>"; };
 		AAAFE9401435640C00851C73 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth.a; path = Frameworks/SymbolCollisionTestLibs/libOAuth.a; sourceTree = "<group>"; };
@@ -1043,6 +1046,8 @@
 		AAD3F2C214620AD0007D2AB7 /* TestCases */ = {
 			isa = PBXGroup;
 			children = (
+				AA973CA614689C3C00DAE945 /* TestActivityServices.h */,
+				AA973CA714689C3C00DAE945 /* TestActivityServices.m */,
 				AAD3F2C314620AD0007D2AB7 /* AuthTest.h */,
 				AAD3F2C414620AD0007D2AB7 /* AuthTest.m */,
 				AAD3F2C514620AD0007D2AB7 /* SocializeAsyncTestCase.h */,
@@ -1674,6 +1679,7 @@
 				AAD3F2CB14620AD0007D2AB7 /* AuthTest.m in Sources */,
 				AAD3F2CC14620AD0007D2AB7 /* SocializeAsyncTestCase.m in Sources */,
 				AA55A7C814620FBA00F8C13F /* TestLikeServices.m in Sources */,
+				AA973CA814689C3C00DAE945 /* TestActivityServices.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

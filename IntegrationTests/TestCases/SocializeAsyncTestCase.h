@@ -7,8 +7,25 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
-@interface SocializeAsyncTestCase : GHAsyncTestCase {
-    
-}
+#import <Socialize/Socialize.h>
+
+@interface SocializeAsyncTestCase : GHAsyncTestCase <SocializeServiceDelegate>
+@property (nonatomic, readonly) NSString *runID;
+@property (nonatomic, retain) Socialize *socialize;
+@property (nonatomic, retain) NSArray *fetchedElements;
+@property (nonatomic, retain) id createdObject;
+@property (nonatomic, retain) id updatedObject;
+@property (nonatomic, retain) id deletedObject;
+
 - (void)waitForStatus:(NSInteger)status;
+- (NSString*)testURL:(NSString*)suffix;
+- (void)createCommentWithURL:(NSString*)url text:(NSString*)text latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude;
+- (void)createShareWithURL:(NSString*)url medium:(ShareMedium)medium text:(NSString*)text;
+- (void)createLikeWithURL:(NSString*)url latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude;
+- (void)createViewWithURL:(NSString*)url latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude;
+- (void)getActivityForCurrentUser;
+- (void)getActivityForApplication;
+- (void)getLikesForURL:(NSString*)url;
+- (void)deleteLike:(id<SocializeLike>)like;
+//- (void)getViewsForURL:(NSString*)url;
 @end

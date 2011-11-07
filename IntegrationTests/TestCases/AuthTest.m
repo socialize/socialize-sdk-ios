@@ -16,6 +16,7 @@
     Socialize *_service = [[Socialize alloc] initWithDelegate:self];
     // The application uses garbage collection, so no autorelease pool is needed.
     // Wait for notify
+    [self prepare];
     [_service authenticateWithApiKey:@"976421bd-0bc9-44c8-a170-bd12376123a3" apiSecret:@"2bf36ced-b9ab-4c5b-b054-8ca975d39c14"];
     [self waitForStatus:kGHUnitWaitStatusSuccess];
     
