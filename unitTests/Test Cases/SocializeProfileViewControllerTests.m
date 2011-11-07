@@ -97,6 +97,7 @@ static NSInteger TestUserObjectID=555;
     GHAssertEquals(self.profileViewController.fullUser.objectID, TestUserObjectID, @"user.objectID incorrect");
 }
 
+/*
 - (void)testUpdateProfile {
     [self reset];
     [self.profileViewController viewDidLoad];
@@ -112,6 +113,7 @@ static NSInteger TestUserObjectID=555;
     GHAssertEqualObjects(@"Some", [self.profileViewController.fullUser firstName], @"first name incorrect");
     GHAssertEqualObjects(@"Guy", [self.profileViewController.fullUser lastName], @"last name incorrect");
 }
+ */
 
 - (void)testFullUserIsPopulated {
     [self reset];
