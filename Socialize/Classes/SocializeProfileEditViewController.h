@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SocializeProfileEditValueController.h"
 
+@class SocializeProfileEditValueController;
 typedef enum {
     SocializeProfileEditViewControllerSectionImage,
     SocializeProfileEditViewControllerSectionProperties,
@@ -57,6 +58,7 @@ typedef enum {
 @property (nonatomic, retain) NSUserDefaults *userDefaults;
 
 - (NSString*)keyPathForPropertiesRow:(SocializeProfileEditViewControllerPropertiesRow)row;
+-(void) showActionSheet;
 @end
 
 @protocol SocializeProfileEditViewControllerDelegate <NSObject>

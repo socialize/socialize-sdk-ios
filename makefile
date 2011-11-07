@@ -11,7 +11,7 @@ package: framework
      
 framework:
   	# build embedded framework
-	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "Socialize Framework" -configuration Distribution -sdk iphoneos build
+	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "Socialize Framework" -configuration Release -sdk iphoneos build
 
 bundle:
 	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "${BUNDLE_SCHEME}" -configuration Release -sdk iphoneos build
@@ -20,13 +20,13 @@ bundle:
 
 buildsample:
 	#building sample
-	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "Socialize Framework" -configuration Distribution -sdk iphoneos build	
+	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "Socialize Framework" -configuration Release -sdk iphoneos build	
 	#xcodebuild -target SampleSdkApp -configuration Distribution -sdk iphoneos PROVISIONING_PROFILE="542E5F91-FA04-4A6B-BEB8-1CCD67D816FD" CODE_SIGN_IDENTITY="iPhone Distribution: pointabout" build
      
 # If you need to clean a specific target/configuration: $(COMMAND) -target $(TARGET) -configuration DebugOrRelease -sdk $(SDK) clean
 clean:
 	xcodebuild -project SocializeSDK.xcodeproj -alltargets -configuration Debug -sdk iphonesimulator clean
-	xcodebuild -project SocializeSDK.xcodeproj -alltargets -configuration Distribution -sdk iphoneos clean
+	xcodebuild -project SocializeSDK.xcodeproj -alltargets -configuration Release -sdk iphoneos clean
 	rm -rfd build
 
 test:

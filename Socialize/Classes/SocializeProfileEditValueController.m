@@ -8,6 +8,7 @@
 
 #import "SocializeProfileEditValueController.h"
 #import "UIButton+Socialize.h"
+#import "SocializeEditValueTableViewCell.h"
 
 
 @implementation SocializeProfileEditValueController

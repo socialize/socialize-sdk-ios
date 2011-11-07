@@ -869,6 +869,10 @@
 		AA3E20BD1461FA94000321BF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C365F5145192B900DD5421 /* MessageUI.framework */; };
 		AA3E20BE1461FA9B000321BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D97F03C13DFC91500B16454 /* QuartzCore.framework */; };
 		AA3E212D1461FAE8000321BF /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D7343D013F5CD4B0076A8E6 /* SocializeConfigurationInfo.plist */; };
+		AA5ACEEF1467C3F200790B3D /* SocializeProfileEditValueController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C2144325F9004E4C1B /* SocializeProfileEditValueController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA5ACEF01467C3F300790B3D /* SocializeProfileEditValueController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C2144325F9004E4C1B /* SocializeProfileEditValueController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA5ACEF11467C43000790B3D /* SocializeProfileEditTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C0144325F9004E4C1B /* SocializeProfileEditTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA5ACEF21467C43100790B3D /* SocializeProfileEditTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C0144325F9004E4C1B /* SocializeProfileEditTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6DE805145FBBB40037E48E /* SocializeFacebookInterfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE804145FBBB40037E48E /* SocializeFacebookInterfaceTests.m */; };
 		AA86389D144CA45E00CFA759 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA863899144CA42C00CFA759 /* libOCMock.a */; };
 		AA9166501463B24700EFBD7E /* SocializeProfileEditViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA91664F1463B24700EFBD7E /* SocializeProfileEditViewControllerTest.m */; };
@@ -1139,10 +1143,8 @@
 		AAC201991460CFD30045FDAB /* UINavigationController+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC201961460CFD30045FDAB /* UINavigationController+Socialize.m */; };
 		AAC2019A1460CFD30045FDAB /* UINavigationController+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC201961460CFD30045FDAB /* UINavigationController+Socialize.m */; };
 		AAC43CB9145B726500F607C8 /* LoadingViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC43CB8145B726500F607C8 /* LoadingViewTests.m */; };
-		AAD4B40E1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD4B40B1460A45000F39D0A /* SocializeProfileEditViewController.h */; };
-		AAD4B40F1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD4B40B1460A45000F39D0A /* SocializeProfileEditViewController.h */; };
-		AAD4B4161460B25100F39D0A /* SocializeProfileEditTableViewImageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD4B4141460B25100F39D0A /* SocializeProfileEditTableViewImageCell.h */; };
-		AAD4B4171460B25100F39D0A /* SocializeProfileEditTableViewImageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD4B4141460B25100F39D0A /* SocializeProfileEditTableViewImageCell.h */; };
+		AAD4B40E1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD4B40B1460A45000F39D0A /* SocializeProfileEditViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAD4B40F1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD4B40B1460A45000F39D0A /* SocializeProfileEditViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAD4B4181460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD4B4151460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m */; };
 		AAD4B4191460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD4B4151460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m */; };
 		AAD4B4201460C19E00F39D0A /* SocializeProfileEditValueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167E11C3144325F9004E4C1B /* SocializeProfileEditValueController.m */; };
@@ -1322,8 +1324,6 @@
 		167E11C1144325F9004E4C1B /* SocializeProfileEditTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileEditTableViewCell.m; path = Classes/SocializeProfileEditTableViewCell.m; sourceTree = "<group>"; };
 		167E11C2144325F9004E4C1B /* SocializeProfileEditValueController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileEditValueController.h; path = Classes/SocializeProfileEditValueController.h; sourceTree = "<group>"; };
 		167E11C3144325F9004E4C1B /* SocializeProfileEditValueController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileEditValueController.m; path = Classes/SocializeProfileEditValueController.m; sourceTree = "<group>"; };
-		167E11C4144325F9004E4C1B /* SocializeProfileEditViewControllerOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileEditViewControllerOld.h; path = Classes/SocializeProfileEditViewControllerOld.h; sourceTree = "<group>"; };
-		167E11C5144325F9004E4C1B /* SocializeProfileEditViewControllerOld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileEditViewControllerOld.m; path = Classes/SocializeProfileEditViewControllerOld.m; sourceTree = "<group>"; };
 		167E11CC1443261E004E4C1B /* SocializeServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeServiceDelegate.h; path = Classes/SocializeServiceDelegate.h; sourceTree = "<group>"; };
 		167E11D21443293E004E4C1B /* SocializeActionBarTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActionBarTests.h; path = "Test Cases/SocializeActionBarTests.h"; sourceTree = "<group>"; };
 		167E11D31443293E004E4C1B /* SocializeActionBarTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActionBarTests.m; path = "Test Cases/SocializeActionBarTests.m"; sourceTree = "<group>"; };
@@ -2087,8 +2087,6 @@
 				AAD4B40C1460A45000F39D0A /* SocializeProfileEditViewController.m */,
 				167E11C2144325F9004E4C1B /* SocializeProfileEditValueController.h */,
 				167E11C3144325F9004E4C1B /* SocializeProfileEditValueController.m */,
-				167E11C4144325F9004E4C1B /* SocializeProfileEditViewControllerOld.h */,
-				167E11C5144325F9004E4C1B /* SocializeProfileEditViewControllerOld.m */,
 				160754891432FBA4002E5A38 /* SocializeProfileViewController.h */,
 				1607548A1432FBA4002E5A38 /* SocializeProfileViewController.m */,
 				1638C521143DC96A00538659 /* SocializeActionBar.h */,
@@ -3063,8 +3061,9 @@
 				166DD6F8146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
 				166DD6FC1461694A0017D0E9 /* SocializeShareBuilder.h in Headers */,
 				AAD4B40F1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */,
-				AAD4B4171460B25100F39D0A /* SocializeProfileEditTableViewImageCell.h in Headers */,
 				AAC201981460CFD30045FDAB /* UINavigationController+Socialize.h in Headers */,
+				AA5ACEF01467C3F300790B3D /* SocializeProfileEditValueController.h in Headers */,
+				AA5ACEF21467C43100790B3D /* SocializeProfileEditTableViewCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3130,8 +3129,9 @@
 				166DD6F7146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
 				166DD6FB1461694A0017D0E9 /* SocializeShareBuilder.h in Headers */,
 				AAD4B40E1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */,
-				AAD4B4161460B25100F39D0A /* SocializeProfileEditTableViewImageCell.h in Headers */,
 				AAC201971460CFD30045FDAB /* UINavigationController+Socialize.h in Headers */,
+				AA5ACEEF1467C3F200790B3D /* SocializeProfileEditValueController.h in Headers */,
+				AA5ACEF11467C43000790B3D /* SocializeProfileEditTableViewCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

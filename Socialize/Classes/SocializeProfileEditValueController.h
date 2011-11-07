@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SocializeEditValueTableViewCell.h"
 
+@class SocializeEditValueTableViewCell;
 @protocol SocializeProfileEditValueControllerDelegate;
 
 @interface SocializeProfileEditValueController : UITableViewController <UITextFieldDelegate>
