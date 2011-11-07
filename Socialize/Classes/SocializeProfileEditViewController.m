@@ -54,6 +54,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 @synthesize editValueController = editValueController_;
 @synthesize facebookSwitch = facebookSwitch_;
 @synthesize bundle = bundle_;
+@synthesize userDefaults = userDefaults_;
 
 - (void)dealloc {
     self.firstName = nil;
@@ -70,6 +71,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.editValueController = nil;
     self.facebookSwitch = nil;
     self.bundle = nil;
+    self.userDefaults = nil;
     
     [super dealloc];
 }
@@ -122,6 +124,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
         UIButton * actualButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
         [actualButton addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         saveButton_ = [[UIBarButtonItem alloc] initWithCustomView:actualButton];
+        saveButton_.enabled = NO;
     }
     return saveButton_;
 }
@@ -172,12 +175,12 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 
 - (void)configureProfileImageCell {
     if (self.profileImage) {
-		[profileImageCell_.spinner stopAnimating];
-		profileImageCell_.imageView.image = self.profileImage;
+		[self.profileImageCell.spinner stopAnimating];
+		self.profileImageCell.imageView.image = self.profileImage;
 	}
 	else {
-		profileImageCell_.spinner.hidesWhenStopped = YES;
-		[profileImageCell_.spinner startAnimating];
+		self.profileImageCell.spinner.hidesWhenStopped = YES;
+		[self.profileImageCell.spinner startAnimating];
 	}
 }
 
@@ -217,6 +220,14 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 
 - (NSString*)keyPathForPropertiesRow:(SocializeProfileEditViewControllerPropertiesRow)row {
     return SocializeProfileEditViewControllerPropertiesInfoItems[row].storageKeyPath;
+}
+
+- (NSUserDefaults*)userDefaults {
+    if (userDefaults_ == nil) {
+        userDefaults_ = [[NSUserDefaults standardUserDefaults] retain];
+    }
+    
+    return userDefaults_;
 }
 
 - (UISwitch*)facebookSwitch {
@@ -276,9 +287,13 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     return cell;
 }
 
+- (BOOL)haveCamera {
+    return [UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera];
+}
+
 - (UIActionSheet*)uploadPicActionSheet {
     if (uploadPicActionSheet_ == nil) {
-        if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+        if ([self haveCamera]) {
             uploadPicActionSheet_ = [[UIActionSheet alloc] initWithTitle:nil
                                                                 delegate:self 
                                                        cancelButtonTitle:@"Cancel"
@@ -356,10 +371,10 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 	[self.navigationController popViewControllerAnimated:YES];
 	self.navigationItem.rightBarButtonItem.enabled = YES;
 	
-	NSIndexPath * indexPath = self.editValueController.indexPath;
+	NSIndexPath * indexPath = profileEditValueController.indexPath;
 	
     NSString *keyPath = [self keyPathForPropertiesRow:indexPath.row];
-    [self setValue:self.editValueController.editValueField.text forKeyPath:keyPath];
+    [self setValue:profileEditValueController.editValueField.text forKeyPath:keyPath];
 	
 	[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
