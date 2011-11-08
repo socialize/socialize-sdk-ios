@@ -4,6 +4,8 @@
 <dict>
 	<key>Socialize API info</key>
 	<dict>
+		<key>facebookToken</key>
+		<string>BAABpKH5ZBZBg8BANSQGGvcd7DGCxJvOU0S1QZCsF3ZBrmlMT9dZCrLGA5oQJ06njmIE1COAgjsmWDJsRwIig30jbhPZCArmdBe4WgY9CZAL9OZBfs1JIQtAf8F0btxVc2baUJZCZBhpgk3LQZDZD</string>
 		<key>key</key>
 		<string>0a3bc7cd-c269-4587-8687-cd02db56d57f</string>
 		<key>secret</key>
