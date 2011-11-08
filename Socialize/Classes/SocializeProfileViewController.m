@@ -12,6 +12,7 @@
 #import "UIButton+Socialize.h"
 #import "LoadingView.h"
 #import "ImagesCache.h"
+#import "UINavigationController+Socialize.h"
 
 @interface SocializeProfileViewController ()
 -(void)showEditController;
@@ -61,7 +62,9 @@
     self.userDescriptionLabel = nil;
     self.userLocationLabel = nil;
     self.profileImageView = nil;
+    self.profileEditViewController.delegate = nil;
     self.profileEditViewController = nil;
+    self.navigationControllerForEdit.delegate = nil;
     self.navigationControllerForEdit = nil;
     self.socialize = nil;
     
@@ -234,157 +237,55 @@
     self.profileEditViewController = nil;
 }
 
-/*******
- Legacy profile edit stuff -- please make sure most of this moves into SocializeProfileEditViewController
- *******/
-
--(NSMutableDictionary *) valueDictionary
-{
-	NSMutableDictionary * dictionary = [[[NSMutableDictionary alloc]initWithCapacity:5]autorelease];
-	
-	if (self.fullUser.firstName != nil) 
-	{
-	    [dictionary setObject:self.fullUser.firstName forKey:@"first name"];
-	}
-	
-	if (self.fullUser.lastName != nil) 
-	{
-		[dictionary setObject:self.fullUser.lastName forKey:@"last name"];
-	}
-	
-	if (self.fullUser.description != nil) 
-	{
-		[dictionary setObject:self.fullUser.description forKey:@"bio"];
-	}
-	
-	return dictionary;
-}
-
 - (SocializeProfileEditViewController*)profileEditViewController {
     if (profileEditViewController_ == nil) {
         profileEditViewController_ = [[SocializeProfileEditViewController alloc]
-                                     initWithStyle:UITableViewStyleGrouped];
+                                      init];
+        profileEditViewController_.delegate = self;
     }
     return profileEditViewController_;
 }
 
-- (UINavigationController*)navigationControllerForEdit {
-    if (navigationControllerForEdit_ == nil) {
-        UIImage * socializeNavBarBackground = [UIImage imageNamed:@"socialize-navbar-bg.png"];
-        
-        navigationControllerForEdit_ = [[UINavigationController alloc] 
-                                        initWithRootViewController:self.profileEditViewController];
-        [navigationControllerForEdit_.navigationBar setBackgroundImage:socializeNavBarBackground];
-        navigationControllerForEdit_.delegate = self;
-        navigationControllerForEdit_.wantsFullScreenLayout = YES;
-    }
-    return navigationControllerForEdit_;
-}
-
 -(void)showEditController
 {
-    self.profileEditViewController.delegate = self;
-    
-    NSMutableDictionary * dictionary = [self valueDictionary];
-    
-    NSArray * keyArray = [NSArray arrayWithObjects:@"first name", @"last name", @"bio", nil];
-    
-    self.profileEditViewController.keyValueDictionary = dictionary;
-    self.profileEditViewController.keysToEdit = keyArray;
-    
-    self.profileEditViewController.navigationItem.rightBarButtonItem.enabled = NO;
-    
-    UIButton * cancelButton = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
-    [cancelButton addTarget:self action:@selector(editVCCancel:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem * editLeftItem = [[UIBarButtonItem alloc]initWithCustomView:cancelButton];
-    profileEditViewController_.navigationItem.leftBarButtonItem = editLeftItem;	
-    [editLeftItem release];
-    
-    
-    UIButton * saveButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
-    [saveButton addTarget:self action:@selector(editVCSave:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem  * editRightItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
-    profileEditViewController_.navigationItem.rightBarButtonItem = editRightItem;	
-    [editRightItem release];
-    
-    
-
-	CGRect windowFrame = self.view.window.frame;
-	CGRect navFrame = CGRectMake(0,windowFrame.size.height, windowFrame.size.width, windowFrame.size.height);
-	self.navigationControllerForEdit.view.frame = navFrame;
-	self.navigationControllerForEdit.navigationBar.tintColor = [UIColor blackColor];
-	
-	[self.view.window addSubview:self.navigationControllerForEdit.view];
-	
-	self.profileEditViewController.profileImage = self.profileImageView.image;
-    
-	CGRect newNavFrame = CGRectMake(0, 0, navFrame.size.width, navFrame.size.height);
-	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDelegate:self];
-	[UIView setAnimationDidStopSelector:@selector(prepare)];
-	[UIView setAnimationDuration:0.4];
-	self.navigationControllerForEdit.view.frame = newNavFrame;
-	[UIView commitAnimations];
+    UINavigationController *nav = [UINavigationController socializeNavigationControllerWithRootViewController:self.profileEditViewController];
+    nav.delegate = self;
+    self.profileEditViewController.profileImage = self.profileImageView.image;
+    self.profileEditViewController.firstName = self.fullUser.firstName;
+    self.profileEditViewController.lastName = self.fullUser.lastName;
+    self.profileEditViewController.bio = [self.fullUser description];
+    [self.navigationController presentModalViewController:nav animated:YES];
 }
 
 
 -(void)hideEditController
 {
     [self stopLoading];
-	CGRect windowFrame = self.view.window.frame;
-	CGRect navFrame = CGRectMake(0,windowFrame.size.height, windowFrame.size.width, windowFrame.size.height);
-    
-	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDelegate:self];
-	[UIView setAnimationDidStopSelector:@selector(destroy)];
-	[UIView setAnimationDuration:0.4];
-	self.profileEditViewController.navigationController.view.frame = navFrame;
-	[UIView commitAnimations];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 - (void)navigationController:(UINavigationController *)localNavigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
+    // This is weird. 1234 is special tag set by our UINavigationBar setBackgroundImage: on iOS pre-5.0
+    // It is used because somehow the background image moves to the front after some controller transitions
     [localNavigationController.navigationBar resetBackground:1234];
 }
 
--(void)editVCSave:(id)button
-{
-	self.loadingView = [LoadingView loadingViewInView:self.profileEditViewController.navigationController.view];
+- (void)profileEditViewControllerDidCancel:(SocializeProfileEditViewController *)profileEditViewController {
+	[self hideEditController];    
+}
+
+- (void)profileEditViewControllerDidSave:(SocializeProfileEditViewController *)profileEditViewController {
+    self.loadingView = [LoadingView loadingViewInView:self.profileEditViewController.navigationController.view];
 	self.profileEditViewController.navigationItem.rightBarButtonItem.enabled = NO;
     
     
     id<SocializeFullUser> userCopy = [(id)self.fullUser copy];
-    
-	[userCopy setFirstName:[self.profileEditViewController.keyValueDictionary valueForKey:@"first name"]];
-	[userCopy setLastName:[self.profileEditViewController.keyValueDictionary valueForKey:@"last name"]];
-	[userCopy setDescription:[self.profileEditViewController.keyValueDictionary valueForKey:@"bio"]];
-
+    userCopy.firstName = self.profileEditViewController.firstName;
+    userCopy.lastName = self.profileEditViewController.lastName;
+    userCopy.description = self.profileEditViewController.bio;
     UIImage* newProfileImage = self.profileEditViewController.profileImage;
     [self.socialize updateUserProfile:userCopy profileImage:newProfileImage];
-
-    [userCopy release];
 }
-
--(void)editVCCancel:(id)button
-{
-	[self hideEditController];
-}
-
--(void)profileEditViewControllerDidCancel:(SocializeProfileEditViewController*)controller;
-{
-	[self hideEditController];
-}
-
--(void)profileEditViewController:(SocializeProfileEditViewController*)controller didFinishWithError:(NSError*)error
-{
-    
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
-}
-
 
 @end

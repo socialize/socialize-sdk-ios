@@ -93,46 +93,5 @@
     return scenario;
 }
 
-+ (id)scenarioToCreateEntity {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"entity create scenario."];
-    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntityWithURL:url name:nil]];
-    return scenario;
-}
-
-+ (id)scenarioToGetEntity {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a an entity can be created and that it exists on the server after creation."];
-
-    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntityWithURL:url name:nil]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToGetEntityWithURL:url]];
-    return scenario;
-}
-
-+ (id)scenarioToLikeAndUnlikeEntity {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that an entity can be liked"];
-    
-    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntityWithURL:url name:nil]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToLikeEntity:url]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyLikesForEntity:url areAtCount:1]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToUnlikeEntity:url]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyLikesForEntity:url areAtCount:0]];
-
-    return scenario;
-}
-
-+ (id)scenarioToViewEntity {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that an entity can be viewed"];
-    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntityWithURL:url name:nil]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToViewEntityWithURL:url]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyViewsForEntity:url areAtCount:1]];
-
-    return scenario;
-}
-
-
-
 
 @end

@@ -173,7 +173,11 @@
     GHAssertEqualStrings(self.actionBar.entity.key, TEST_ENTITY_URL, nil);
 }
  */
-
+-(void)testAutoresizeMask
+{
+    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT)];
+    GHAssertTrue(actionView.autoresizingMask == (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin), nil);
+}
 #pragma mark-
 
 @end

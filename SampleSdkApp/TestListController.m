@@ -57,6 +57,8 @@
 
 - (void)dealloc
 {
+    _tableView.delegate = nil;
+    [_tableView release];
     [super dealloc];
 }
 
@@ -195,17 +197,18 @@
 #ifdef RUN_KIF_TESTS
             UINavigationController *nav = (UINavigationController*)profile;
             SocializeProfileViewController *pvc = (SocializeProfileViewController*)[[nav viewControllers] objectAtIndex:0];
-            SocializeProfileEditViewController *edit = [[[SocializeProfileEditViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
-            id editMock = [OCMockObject partialMockForObject:edit];
-            //- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+            SocializeProfileEditViewController *edit = pvc.profileEditViewController;
+
+            id mockActionSheet = [OCMockObject mockForClass:[UIActionSheet class]];
+             
+            edit.uploadPicActionSheet = mockActionSheet;
             
             UIImage *profileImage = [UIImage imageNamed:@"Smiley.png"];
-            [[[editMock expect] andDo:^(NSInvocation* blah){
+            [[[mockActionSheet expect] andDo:^(NSInvocation* blah){
                 NSDictionary *info = [NSDictionary dictionaryWithObject:profileImage forKey:UIImagePickerControllerEditedImage];
                 [edit imagePickerController:nil didFinishPickingMediaWithInfo:info];
-            }] showActionSheet];
+            }] showInView:OCMOCK_ANY];
             
-            pvc.profileEditViewController = editMock;
 #endif
             [self.navigationController presentModalViewController:profile animated:YES];
             break;

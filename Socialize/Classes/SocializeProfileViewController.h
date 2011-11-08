@@ -34,7 +34,6 @@
 @property (nonatomic, retain) Socialize *socialize;
 @property (nonatomic, retain) UINavigationController *navigationControllerForEdit;
 @property (nonatomic, retain) ImagesCache *imagesCache;
--(void)editVCSave:(id)button;
 - (void)doneButtonPressed:(UIBarButtonItem*)button;
 - (void)editButtonPressed:(UIBarButtonItem*)button;
 

@@ -1,8 +1,8 @@
 //
-//  GHNSObject+Swizzle.h
-//  GHUnit
+//  GHUnitIOSTestViewController.h
+//  GHUnitIOS
 //
-//  Created by Gabriel Handford on 4/13/09.
+//  Created by Gabriel Handford on 2/20/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,14 +27,23 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//! @cond DEV
+#import <UIKit/UIKit.h>
+#import "GHTestViewModel.h"
+#import "GHUnitIOSTestView.h"
+#import "GHImageDiffView.h"
 
-@interface NSObject(GHUSwizzle)
+/*
+ View controller for a test.
+ */
+@interface GHUnitIOSTestViewController : UIViewController <GHTestRunnerDelegate, GHUnitIOSTestViewDelegate> {
+  GHUnitIOSTestView *testView_;
+  GHImageDiffView *imageDiffView_;
 
-+ (void)ghu_swizzleMethod:(SEL)original withMethod:(SEL)alternate;
-+ (void)ghu_swizzleClassMethod:(SEL)original withClassMethod:(SEL)alternate;
+  GHTestNode *testNode_;
+  
+  GHTestRunner *runner_;
+}
+
+- (void)setTest:(id<GHTest>)test;
 
 @end
-
-//! @endcond
-

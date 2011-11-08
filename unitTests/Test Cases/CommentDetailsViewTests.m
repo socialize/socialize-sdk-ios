@@ -147,4 +147,12 @@
     [mockCommentView verify];
 }
 
+
+-(void)testAutoresizeMask
+{
+    CommentDetailsView* view = [[CommentDetailsView alloc] initWithCoder:nil];
+    GHAssertTrue(view.autoresizingMask == (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin), nil);
+    [view release];
+}
+
 @end

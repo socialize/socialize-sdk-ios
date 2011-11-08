@@ -19,6 +19,8 @@
 #import "SocializeAuthenticateService.h"
 #import "SocializeGeocoderAdapter.h"
 #import "NSString+PlaceMark.h"
+#import "SocializeFacebookInterface.h"
+#import "SocializeShareBuilder.h"
 
 #define NO_CITY_MSG @"Could not locate the place name."
 #define MIN_DISMISS_INTERVAL 0.75
@@ -35,7 +37,6 @@
 -(void)configureDoNotShareLocationButton;
 -(void)updateViewWithNewLocation: (CLLocation*)userLocation;
 -(void)createComment;
--(void)authenticateViaFacebook;
 -(void) adjustViewToLayoutWithKeyboardHeigth:(int)keyboardHeigth;
 
 
@@ -48,7 +49,6 @@
 @synthesize doNotShareLocationButton;
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
-@synthesize facebookAuthQuestionDialog = _facebookAuthQuestionDialog;
 @synthesize locationViewContainer = _locationViewContainer;
 @synthesize mapContainer = _mapContainer;
 @synthesize authViewController = _authViewController;
@@ -99,37 +99,12 @@
     [_entityUrlString release];
     [kbListener release];
     [locationManager release];
-    [_facebookAuthQuestionDialog release];
     [_geoCoderInfo release];
     [_locationViewContainer release];
     [_mapContainer release];
 
     [super dealloc];
 }
-
-- (UIAlertView*)facebookAuthQuestionDialog {
-    if (_facebookAuthQuestionDialog == nil) 
-    {
-        _facebookAuthQuestionDialog = [[UIAlertView alloc]
-                                       initWithTitle:@"Facebook?" message:@"You are not authenticated with Facebook. Authenticate with Facebook now?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-    }
-    
-    return _facebookAuthQuestionDialog;
-}
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (alertView == self.facebookAuthQuestionDialog) 
-    {   
-        if (buttonIndex == 1)
-        {
-            [self.socialize authenticateWithFacebook];
-        } else
-        {
-            [self createComment];
-        }
-    } 
-}
-
 #pragma Location enable/disable button callbacks
 -(void) startLoadAnimationForView: (UIView*) view
 {
@@ -260,15 +235,13 @@
         [self.socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:nil latitude:nil];
 }
 
-- (void)authenticateViaFacebook {
-    [self.facebookAuthQuestionDialog show];
-}
 
 #pragma mark - navigation bar button actions
 -(void)sendButtonPressed:(id)button {
     [self startLoadAnimationForView:commentTextView];
     
     if (![self.socialize isAuthenticatedWithFacebook] && [Socialize facebookAppId] != nil) {
+        //TODO: this should be combined to have one call that let's us know wether a user has been auth'd by FB or not
         self.authViewController = [SocializeAuthViewController createNavigationControllerForAuthViewControllerWithDelegate:self];
         [self presentModalViewController:self.authViewController animated:YES];
     } else {
@@ -286,7 +259,16 @@
 -(void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object{   
     // Rapid animated dismissal does not work on iOS5 (but works in iOS4)
     // Allow previous modal dismisalls to complete. iOS5 added dismissViewControllerAnimated:completion:, which
-    // we would use here if backward compatibility was not required.
+    // we would use here if backward compatibility was not required.   
+    if([self.socialize isAuthenticatedWithFacebook])
+    {
+        /* this has been commented out by isaac until we have more granular controls of what does/doesn't get posted to FB 
+        SocializeShareBuilder* shareBuilder = [[SocializeShareBuilder new] autorelease];
+        shareBuilder.shareProtocol = [[SocializeFacebookInterface new] autorelease];
+        shareBuilder.shareObject = (id<SocializeActivity>)object;
+        [shareBuilder performShareForPath:@"me/feed"];*/
+    }
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, MIN_DISMISS_INTERVAL * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self stopLoadAnimation];
         [self dismissModalViewControllerAnimated:YES];
@@ -294,29 +276,6 @@
 }
 -(void)authorizationSkipped {
     [self createComment];
-}
-
-- (void)profileViewControllerDidSave:(SocializeProfileViewController *)profileViewController {
-    [self dismissModalViewControllerAnimated:YES];
-    [self startLoadAnimationForView:commentTextView];
-    [self createComment];
-}
-
-- (void)profileViewControllerDidCancel:(SocializeProfileViewController *)profileViewController {
-    [self dismissModalViewControllerAnimated:YES];
-    [self startLoadAnimationForView:commentTextView];
-    [self createComment];
-}
-
-- (void)showProfile {
-    SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
-    profile.delegate = self;
-    
-    UINavigationController *navigationController = [[[UINavigationController alloc]
-                                                     initWithRootViewController:profile]
-                                                    autorelease];
-    
-    [self presentModalViewController:navigationController animated:YES];
 }
 -(void)service:(SocializeService *)service didFail:(NSError *)error
 {
@@ -332,12 +291,8 @@
 }
 
 -(void)didAuthenticate:(id<SocializeUser>)user {
-    if (![SocializeAuthenticateService isAuthenticatedWithFacebook]) {
-        [super didAuthenticate:user];//complete anonymous authentication
-    } else {
-        [self stopLoadAnimation];
-        [self showProfile];
-    }
+    [self startLoadAnimationForView:commentTextView];
+    [self createComment];
 }
 
 
@@ -405,7 +360,6 @@
     self.doNotShareLocationButton = nil;
     self.activateLocationButton = nil;
     self.mapOfUserLocation = nil;
-    self.facebookAuthQuestionDialog = nil;
     self.locationViewContainer = nil;
     self.mapContainer = nil;
 }

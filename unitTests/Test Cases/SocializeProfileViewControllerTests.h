@@ -9,7 +9,7 @@
 #import <GHUnitIOS/GHUnit.h>
 #import "SocializeProfileViewController.h"
 
-@interface SocializeProfileViewControllerTests : GHTestCase <SocializeProfileViewControllerDelegate>
+@interface SocializeProfileViewControllerTests : GHTestCase
 @property (nonatomic, retain) SocializeProfileViewController *profileViewController;
 @property (nonatomic, retain) Socialize *socialize;
 @end

@@ -1,9 +1,9 @@
 //
-//  GHUnitIPhoneView.h
-//  GHUnitIPhone
+//  GHUnitIOSViewController.h
+//  GHUnitIOS
 //
-//  Created by Gabriel Handford on 4/12/10.
-//  Copyright 2010. All rights reserved.
+//  Created by Gabriel Handford on 1/25/09.
+//  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,26 +27,47 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import "GHUnitIOSView.h"
 
-@interface GHUnitIPhoneView : UIView {
-  UISearchBar *searchBar_;
-  
-  UITableView *tableView_;
-  
-  //! Status label at bottom of the view
-  UILabel *statusLabel_;
- 
-  UISegmentedControl *filterControl_;
+#import "GHUnitIOSTableViewDataSource.h"
+#import "GHUnitIOSTestViewController.h"
+
+/*
+ Main view controller for the iOS test application.
+ */
+@interface GHUnitIOSViewController : UIViewController <UITableViewDelegate, GHTestRunnerDelegate, UISearchBarDelegate> {
     
-  UIToolbar *runToolbar_;  
+  GHUnitIOSView *view_;
+
+  GHUnitIOSTableViewDataSource *dataSource_;
+  GHTestSuite *suite_;
   
-  UIView *footerView_;
+  UIBarButtonItem *runButton_;
+  
+  // If set then we will no longer auto scroll as tests are run
+  BOOL userDidDrag_;
+  
 }
 
-@property (readonly, nonatomic) UILabel *statusLabel;
-@property (readonly, nonatomic) UISegmentedControl *filterControl;
-@property (readonly, nonatomic) UISearchBar *searchBar;
-@property (readonly, nonatomic) UITableView *tableView;
+@property (retain, nonatomic) GHTestSuite *suite;
 
+- (void)reloadTest:(id<GHTest>)test;
+
+- (void)scrollToTest:(id<GHTest>)test;
+- (void)scrollToBottom;
+
+- (void)setStatusText:(NSString *)message;
+
+- (void)runTests;
+
+- (void)cancel;
+
+- (void)reload;
+
+- (void)loadDefaults;
+- (void)saveDefaults;
+
+- (GHUnitIOSTableViewDataSource *)dataSource;
 
 @end
+

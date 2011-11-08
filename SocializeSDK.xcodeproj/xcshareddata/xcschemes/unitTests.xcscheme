@@ -59,7 +59,7 @@
          <EnvironmentVariable
             key = "GHUNIT_UI_CLI"
             value = "YES"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>

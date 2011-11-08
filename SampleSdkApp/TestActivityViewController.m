@@ -123,10 +123,9 @@
 -(IBAction)getActivityBtnTouch
 {
      _loadingView = [LoadingView loadingViewInView:self.view]; 
-//    [#20145661]
 //    [socialize getActivityOfCurrentApplication];
     
-//    [socialize getActivityOfUser: socialize.authenticatedUser];
+    [socialize getActivityOfUser: socialize.authenticatedUser];
 }
 
 @end

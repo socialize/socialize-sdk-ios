@@ -16,3 +16,8 @@ typedef enum ThirdPartyAuthName {
     FacebookAuth = 1
 } ThirdPartyAuthName;
 
+typedef enum {
+    Twitter = 1,
+    Facebook = 2,
+    Other = 3
+} ShareMedium;

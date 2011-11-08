@@ -118,16 +118,6 @@
     return cell;
 }
 
-- (void)showProfile {
-    SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
-    profile.delegate = self;
-    
-    UINavigationController *navigationController = [[[UINavigationController alloc]
-                                                     initWithRootViewController:profile]
-                                                    autorelease];
-    
-    [self presentModalViewController:navigationController animated:YES];
-}
 - (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
     [self profileViewDidFinish];    
 }
@@ -135,21 +125,19 @@
     [self profileViewDidFinish];
 }
 - (void)profileViewDidFinish {
-    [self.delegate didAuthenticate:self.user];
+    SEL didAuthSelector = @selector(didAuthenticate:);
+    if ([self.delegate respondsToSelector:didAuthSelector] ) {
+        [self.delegate didAuthenticate:self.user];
+    }
+    [self dismissModalViewControllerAnimated:YES];
 }
-
--(void)didAuthenticate:(id<SocializeUser>)user {
-    if (![SocializeAuthenticateService isAuthenticatedWithFacebook] 
-        && [self.delegate respondsToSelector:@selector(didAuthenticate:)] ) {
-        [self.delegate didAuthenticate:user];//complete anonymous authentication
-    } else {
+-(void)didAuthenticate:(id<SocializeUser>)user 
+{
+    self.user = user;
+    if ( [SocializeAuthenticateService isAuthenticatedWithFacebook] ) { 
         SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
         profile.delegate = self;
-            
-        UINavigationController *navigationController = [[[UINavigationController alloc]
-                                                             initWithRootViewController:profile]
-                                                            autorelease];
-            [self presentModalViewController:navigationController animated:YES];
+        [self.navigationController pushViewController:profile animated:YES];
     }
 }
 
@@ -172,9 +160,10 @@
 }
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self dismissModalViewControllerAnimated:YES];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 	if(indexPath.section == 0){
         [self.socialize authenticateWithFacebook];
+        [self startLoadAnimationForView:self.view   ];
     }
     
 }

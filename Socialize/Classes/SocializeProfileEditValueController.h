@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SocializeEditValueTableViewCell.h"
+
+@class SocializeEditValueTableViewCell;
+@protocol SocializeProfileEditValueControllerDelegate;
 
 @interface SocializeProfileEditValueController : UITableViewController <UITextFieldDelegate>
 {
@@ -24,5 +26,12 @@
 @property (nonatomic, assign) IBOutlet UITextField * editValueField;
 @property (nonatomic, retain) NSIndexPath * indexPath;
 @property (nonatomic, retain) NSString * valueToEdit;
+@property (nonatomic, retain) UIBarButtonItem *cancelButton;
+@property (nonatomic, retain) UIBarButtonItem *saveButton;
+@property (nonatomic, assign) id<SocializeProfileEditValueControllerDelegate> delegate;
+@end
 
+@protocol SocializeProfileEditValueControllerDelegate <NSObject>
+- (void)profileEditValueControllerDidSave:(SocializeProfileEditValueController*)profileEditValueController;
+- (void)profileEditValueControllerDidCancel:(SocializeProfileEditValueController*)profileEditValueController;
 @end

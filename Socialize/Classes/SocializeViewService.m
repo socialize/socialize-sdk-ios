@@ -51,4 +51,23 @@
     }
 }
 
+/*
+-(void)getViewsForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last{
+    NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
+    if (key)
+        [params setObject:key forKey:@"entity_key"];
+    if (first && last){
+        [params setObject:first forKey:@"first"];
+        [params setObject:last forKey:@"last"];
+    }
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:VIEW_METHOD
+                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                                      params:params]
+     ];
+}
+*/
+
+
 @end

@@ -18,7 +18,7 @@
 @class UIKeyboardListener;
 @class SocializeLocationManager;
 
-@interface SocializePostCommentViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate, UIAlertViewDelegate,SocializeProfileViewControllerDelegate, SocializeAuthViewDelegate>
+@interface SocializePostCommentViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate, UIAlertViewDelegate,SocializeAuthViewDelegate>
 {
 @private
     SocializeLocationManager* locationManager;
@@ -33,8 +33,6 @@
     UIButton*   activateLocationButton;
     CommentMapView* mapOfUserLocation;
     Class _geoCoderInfo;
-    
-    UIAlertView *_facebookAuthQuestionDialog;
 }
 @property(nonatomic, retain) UINavigationController* authViewController;
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;
@@ -42,7 +40,6 @@
 @property(nonatomic, retain) IBOutlet UIButton      *doNotShareLocationButton;
 @property(nonatomic, retain) IBOutlet UIButton      *activateLocationButton;
 @property(nonatomic, retain) IBOutlet CommentMapView *mapOfUserLocation;
-@property(nonatomic, retain) UIAlertView *facebookAuthQuestionDialog;
 @property(nonatomic, retain) IBOutlet UIView *locationViewContainer;
 @property(nonatomic, retain) IBOutlet UIView *mapContainer;
 

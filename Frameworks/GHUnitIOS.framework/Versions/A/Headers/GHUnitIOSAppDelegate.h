@@ -1,8 +1,8 @@
 //
-//  GHMockNSHTTPURLResponse.h
-//  GHUnit
+//  GHUnitIOSAppDelegate.h
+//  GHUnitIOS
 //
-//  Created by Gabriel Handford on 4/9/09.
+//  Created by Gabriel Handford on 1/25/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,24 +27,16 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//! @cond DEV
-
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /*!
- NSHTTPURLResponse for use with mocking.
- Allows us to manually set the status code and headers in the response.
+ Application delegate for the iOS test application.
  */
-@interface GHMockNSHTTPURLResponse : NSHTTPURLResponse {
-	NSInteger statusCode_;
-	NSDictionary *headers_;
+@interface GHUnitIOSAppDelegate : NSObject <UIApplicationDelegate> {
+  UIWindow *window_;
+  
+  UINavigationController *navigationController_;  
 }
-
-- (id)initWithStatusCode:(NSInteger)statusCode headers:(NSDictionary *)headers;
-
-- (void)setStatusCode:(NSInteger)code;
-- (void)setHeaders:(NSDictionary *)headers;
 
 @end
 
-//! @endcond
