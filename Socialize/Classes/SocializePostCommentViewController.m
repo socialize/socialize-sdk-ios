@@ -19,7 +19,6 @@
 #import "SocializeAuthenticateService.h"
 #import "SocializeGeocoderAdapter.h"
 #import "NSString+PlaceMark.h"
-#import "SocializeAuthenticationViewController.h"
 
 #define NO_CITY_MSG @"Could not locate the place name."
 #define MIN_DISMISS_INTERVAL 0.75
@@ -270,7 +269,7 @@
     [self startLoadAnimationForView:commentTextView];
     
     if (![self.socialize isAuthenticatedWithFacebook] && [Socialize facebookAppId] != nil) {
-        self.authViewController = [SocializeAuthenticationViewController createNavigationControllerForAuthViewController];
+        self.authViewController = [SocializeAuthViewController createNavigationControllerForAuthViewControllerWithDelegate:self];
         [self presentModalViewController:self.authViewController animated:YES];
     } else {
         [self createComment];
@@ -293,16 +292,8 @@
         [self dismissModalViewControllerAnimated:YES];
     });
 }
-
-- (void)showProfile {
-    SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
-    profile.delegate = self;
-    
-    UINavigationController *navigationController = [[[UINavigationController alloc]
-                                                     initWithRootViewController:profile]
-                                                    autorelease];
-    
-    [self presentModalViewController:navigationController animated:YES];
+-(void)authorizationSkipped {
+    [self createComment];
 }
 
 - (void)profileViewControllerDidSave:(SocializeProfileViewController *)profileViewController {
@@ -317,6 +308,16 @@
     [self createComment];
 }
 
+- (void)showProfile {
+    SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
+    profile.delegate = self;
+    
+    UINavigationController *navigationController = [[[UINavigationController alloc]
+                                                     initWithRootViewController:profile]
+                                                    autorelease];
+    
+    [self presentModalViewController:navigationController animated:YES];
+}
 -(void)service:(SocializeService *)service didFail:(NSError *)error
 {
     if([service isKindOfClass:[SocializeAuthenticateService class]])

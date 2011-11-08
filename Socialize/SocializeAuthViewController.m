@@ -6,30 +6,43 @@
 //  Copyright 2011 pointabout. All rights reserved.
 //
 
-#import "SocializeAuthenticationViewController.h"
+#import "SocializeAuthViewController.h"
+#import "SocializeAuthenticateService.h"
 #import "UIButton+Socialize.h"
+#import "UINavigationBarBackground.h"
+#import "SocializeUser.h"
 
-@interface  SocializeAuthenticationViewController(private)
+@interface  SocializeAuthViewController()
 -(SocializeAuthTableViewCell *)getAuthorizeTableViewCell;
 -(SocializeAuthInfoTableViewCell*)getAuthorizeInfoTableViewCell;
+-(void)profileViewDidFinish;
+@property (nonatomic, retain) id<SocializeAuthViewDelegate> delegate;
+@property (nonatomic, retain) id<SocializeUser> user;
 @end
 
-@implementation SocializeAuthenticationViewController
+@implementation SocializeAuthViewController
 
 @synthesize tableView;
 //@synthesize socialize;
+@synthesize delegate = _delegate;
+@synthesize user = _user;
 
 
-
-
-
-+(UINavigationController*)createNavigationControllerForAuthViewController
++(UINavigationController*)createNavigationControllerForAuthViewControllerWithDelegate:(id<SocializeAuthViewDelegate>)delegate;
 {
-    SocializeAuthenticationViewController *authController 
-    = [[SocializeAuthenticationViewController alloc] initWithNibName:@"SocializePostCommentViewController" bundle:nil]; 
+    SocializeAuthViewController *authController 
+    = [[SocializeAuthViewController alloc] initWithDelegate:delegate];
                                                                                                               
     UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:authController] autorelease];
+    UIImage *navBarImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
+    [navController.navigationBar setBackgroundImage:navBarImage];
     return navController;
+}
+- (id)initWithDelegate:(id<SocializeAuthViewDelegate>)delegate {
+    if( self = [super initWithNibName:@"SocializeAuthenticationViewController" bundle:nil] ) {
+        self.delegate = delegate;
+    }
+    return self;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -49,9 +62,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIButton * skipButton = [UIButton blackSocializeNavBarButtonWithTitle:@"Skip"];
+    [skipButton addTarget:self action:@selector(skipButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *skipButtonItem = [[UIBarButtonItem alloc] initWithCustomView:skipButton];
+    self.navigationItem.rightBarButtonItem = skipButtonItem;
+    [skipButtonItem release];
+    
     self.view.backgroundColor = [UIColor colorWithRed:50/255.0f green:58/255.0f blue:67/255.0f alpha:1.0];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorColor = [UIColor colorWithRed:25/255.0f green:31/255.0f blue:37/255.0f alpha:1.0];
+}
+
+-(void)skipButtonPressed:(id)button {
+    //[self stopLoadAnimation];
+    
+    if( [self.delegate respondsToSelector:@selector(authorizationSkipped)] ) {
+        [self.delegate authorizationSkipped];
+    }
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -89,6 +118,40 @@
     return cell;
 }
 
+- (void)showProfile {
+    SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
+    profile.delegate = self;
+    
+    UINavigationController *navigationController = [[[UINavigationController alloc]
+                                                     initWithRootViewController:profile]
+                                                    autorelease];
+    
+    [self presentModalViewController:navigationController animated:YES];
+}
+- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
+    [self profileViewDidFinish];    
+}
+- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController {
+    [self profileViewDidFinish];
+}
+- (void)profileViewDidFinish {
+    [self.delegate didAuthenticate:self.user];
+}
+
+-(void)didAuthenticate:(id<SocializeUser>)user {
+    if (![SocializeAuthenticateService isAuthenticatedWithFacebook] 
+        && [self.delegate respondsToSelector:@selector(didAuthenticate:)] ) {
+        [self.delegate didAuthenticate:user];//complete anonymous authentication
+    } else {
+        SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
+        profile.delegate = self;
+            
+        UINavigationController *navigationController = [[[UINavigationController alloc]
+                                                             initWithRootViewController:profile]
+                                                            autorelease];
+            [self presentModalViewController:navigationController animated:YES];
+    }
+}
 
 -(SocializeAuthTableViewCell *)getAuthorizeTableViewCell
 {
@@ -109,10 +172,11 @@
 }
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    [self dismissModalViewControllerAnimated:YES];
 	if(indexPath.section == 0){
         [self.socialize authenticateWithFacebook];
     }
+    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
