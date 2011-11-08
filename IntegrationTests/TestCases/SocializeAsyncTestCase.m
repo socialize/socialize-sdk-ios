@@ -79,6 +79,18 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     [self waitForStatus:status timeout:10.0];
 }
 
+- (void)createEntityWithURL:(NSString*)url name:(NSString*)name {
+    [self prepare];
+    [self.socialize createEntityWithUrl:url andName:name];
+    [self waitForStatus:kGHUnitWaitStatusSuccess];
+}
+
+- (void)getEntityWithURL:(NSString*)url {
+    [self prepare];
+    [self.socialize getEntityByKey:url];
+    [self waitForStatus:kGHUnitWaitStatusSuccess];    
+}
+
 - (void)createCommentWithURL:(NSString*)url text:(NSString*)text latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude {
     [self prepare];
     [self.socialize createCommentForEntityWithKey:url comment:text longitude:longitude latitude:latitude];

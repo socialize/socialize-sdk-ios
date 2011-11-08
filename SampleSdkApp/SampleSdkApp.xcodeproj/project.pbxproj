@@ -333,6 +333,7 @@
 		AA973CA814689C3C00DAE945 /* TestActivityServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CA714689C3C00DAE945 /* TestActivityServices.m */; };
 		AA973CD81468A0EA00DAE945 /* TestShareServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CD71468A0EA00DAE945 /* TestShareServices.m */; };
 		AA973CDB1468A14300DAE945 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CDA1468A14300DAE945 /* StringHelper.m */; };
+		AA973CDE1468A57200DAE945 /* TestEntityServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CDD1468A57200DAE945 /* TestEntityServices.m */; };
 		AAD3F2A714620A2E007D2AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6D14352BC100C62B97 /* UIKit.framework */; };
 		AAD3F2A814620A2E007D2AB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6F14352BC100C62B97 /* Foundation.framework */; };
 		AAD3F2A914620A2E007D2AB7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */; };
@@ -628,6 +629,8 @@
 		AA973CD61468A0EA00DAE945 /* TestShareServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShareServices.h; sourceTree = "<group>"; };
 		AA973CD71468A0EA00DAE945 /* TestShareServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShareServices.m; sourceTree = "<group>"; };
 		AA973CDA1468A14300DAE945 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
+		AA973CDC1468A57200DAE945 /* TestEntityServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEntityServices.h; sourceTree = "<group>"; };
+		AA973CDD1468A57200DAE945 /* TestEntityServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEntityServices.m; sourceTree = "<group>"; };
 		AAAFE5C0143553D800851C73 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		AAAFE93F1435640C00851C73 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = Frameworks/SymbolCollisionTestLibs/libJSONKit.a; sourceTree = "<group>"; };
 		AAAFE9401435640C00851C73 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth.a; path = Frameworks/SymbolCollisionTestLibs/libOAuth.a; sourceTree = "<group>"; };
@@ -1062,6 +1065,8 @@
 				AAD3F2C614620AD0007D2AB7 /* SocializeAsyncTestCase.m */,
 				AA55A7C614620FBA00F8C13F /* TestLikeServices.h */,
 				AA55A7C714620FBA00F8C13F /* TestLikeServices.m */,
+				AA973CDC1468A57200DAE945 /* TestEntityServices.h */,
+				AA973CDD1468A57200DAE945 /* TestEntityServices.m */,
 			);
 			path = TestCases;
 			sourceTree = "<group>";
@@ -1690,6 +1695,7 @@
 				AA973CA814689C3C00DAE945 /* TestActivityServices.m in Sources */,
 				AA973CD81468A0EA00DAE945 /* TestShareServices.m in Sources */,
 				AA973CDB1468A14300DAE945 /* StringHelper.m in Sources */,
+				AA973CDE1468A57200DAE945 /* TestEntityServices.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

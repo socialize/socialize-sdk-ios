@@ -27,5 +27,7 @@
 - (void)getActivityForApplication;
 - (void)getLikesForURL:(NSString*)url;
 - (void)deleteLike:(id<SocializeLike>)like;
+- (void)createEntityWithURL:(NSString*)url name:(NSString*)name;
+- (void)getEntityWithURL:(NSString*)url;
 //- (void)getViewsForURL:(NSString*)url;
 @end
