@@ -887,6 +887,7 @@
 		AA9E0C91144E147900D2C37F /* GenericViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9E0C8C144E076D00D2C37F /* GenericViewController.m */; };
 		AA9E0C92144E148700D2C37F /* GenericViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9E0C8D144E076D00D2C37F /* GenericViewController.xib */; };
 		AA9E0C93144E148700D2C37F /* TestTabbedSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9E0C88144E060B00D2C37F /* TestTabbedSocializeActionBar.xib */; };
+		AAAC19931469B11200A083A6 /* TestFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC19921469B11200A083A6 /* TestFacebookInterface.m */; };
 		AAAFE5E614355BF900851C73 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		AAAFE5E714355BF900851C73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
 		AAAFE5E814355BF900851C73 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
@@ -1779,6 +1780,8 @@
 		AA9E0C8B144E076D00D2C37F /* GenericViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericViewController.h; sourceTree = "<group>"; };
 		AA9E0C8C144E076D00D2C37F /* GenericViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericViewController.m; sourceTree = "<group>"; };
 		AA9E0C8D144E076D00D2C37F /* GenericViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericViewController.xib; sourceTree = "<group>"; };
+		AAAC19911469B11200A083A6 /* TestFacebookInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFacebookInterface.h; sourceTree = "<group>"; };
+		AAAC19921469B11200A083A6 /* TestFacebookInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFacebookInterface.m; sourceTree = "<group>"; };
 		AAAFE5E414355BF900851C73 /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAFE86314355F1B00851C73 /* AuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AuthenticateViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE86414355F1B00851C73 /* AuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AuthenticateViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -2897,6 +2900,8 @@
 				AAE795AD14684F1E00BEAD28 /* TestActivityServices.m */,
 				AA973CC01468A02800DAE945 /* TestShareServices.h */,
 				AA973CC11468A02800DAE945 /* TestShareServices.m */,
+				AAAC19911469B11200A083A6 /* TestFacebookInterface.h */,
+				AAAC19921469B11200A083A6 /* TestFacebookInterface.m */,
 			);
 			path = TestCases;
 			sourceTree = "<group>";
@@ -4479,6 +4484,7 @@
 				AA4132C3146852AE006D906F /* StringHelper.m in Sources */,
 				AA973CC21468A02800DAE945 /* TestShareServices.m in Sources */,
 				AA973CF51468A6AB00DAE945 /* TestEntityServices.m in Sources */,
+				AAAC19931469B11200A083A6 /* TestFacebookInterface.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
