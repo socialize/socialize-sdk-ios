@@ -168,8 +168,8 @@
 		166ACED814346A8100B28AF6 /* SocializeFullUserJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ACED614346A8000B28AF6 /* SocializeFullUserJSONFormatter.m */; };
 		166ACEDC14346B6500B28AF6 /* SocializeFullUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ACEDA14346B6500B28AF6 /* SocializeFullUser.m */; };
 		166ACEDF14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ACEDE14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m */; };
-		166DD6F7146168B10017D0E9 /* ShareProviderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 166DD6F6146168B10017D0E9 /* ShareProviderProtocol.h */; };
-		166DD6F8146168B10017D0E9 /* ShareProviderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 166DD6F6146168B10017D0E9 /* ShareProviderProtocol.h */; };
+		166DD6F7146168B10017D0E9 /* ShareProviderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 166DD6F6146168B10017D0E9 /* ShareProviderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		166DD6F8146168B10017D0E9 /* ShareProviderProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 166DD6F6146168B10017D0E9 /* ShareProviderProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		166DD6FB1461694A0017D0E9 /* SocializeShareBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 166DD6F9146169490017D0E9 /* SocializeShareBuilder.h */; };
 		166DD6FC1461694A0017D0E9 /* SocializeShareBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 166DD6F9146169490017D0E9 /* SocializeShareBuilder.h */; };
 		166DD6FD1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD6FA146169490017D0E9 /* SocializeShareBuilder.m */; };
@@ -1168,8 +1168,8 @@
 		AAE9A6EA145F39A6001A9F1D /* Facebook+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE9A6E7145F39A6001A9F1D /* Facebook+Socialize.h */; };
 		AAE9A6EB145F39A6001A9F1D /* Facebook+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6E8145F39A6001A9F1D /* Facebook+Socialize.m */; };
 		AAE9A6EC145F39A6001A9F1D /* Facebook+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6E8145F39A6001A9F1D /* Facebook+Socialize.m */; };
-		AAE9A6EF145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE9A6ED145F55B3001A9F1D /* SocializeFacebookInterface.h */; };
-		AAE9A6F0145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE9A6ED145F55B3001A9F1D /* SocializeFacebookInterface.h */; };
+		AAE9A6EF145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE9A6ED145F55B3001A9F1D /* SocializeFacebookInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAE9A6F0145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE9A6ED145F55B3001A9F1D /* SocializeFacebookInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE9A6F1145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6EE145F55B3001A9F1D /* SocializeFacebookInterface.m */; };
 		AAE9A6F2145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6EE145F55B3001A9F1D /* SocializeFacebookInterface.m */; };
 		AAEB4A711458E45D00A01F5B /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEB4A6D1458E45D00A01F5B /* NSData+Base64.h */; };

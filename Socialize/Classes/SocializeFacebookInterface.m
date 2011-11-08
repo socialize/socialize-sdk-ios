@@ -12,6 +12,9 @@
 
 typedef void (^RequestCompletionBlock)(id result, NSError *error);
 
+@interface SocializeFacebookInterface () <SocializeFBRequestDelegate>
+@end
+
 @implementation SocializeFacebookInterface
 @synthesize facebook = facebook_;
 @synthesize handlers = handlers_;

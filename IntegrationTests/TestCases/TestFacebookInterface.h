@@ -7,7 +7,7 @@
 //
 
 #import "SocializeAsyncTestCase.h"
-#import "SocializeFacebookInterface.h"
+#import <Socialize/SocializeFacebookInterface.h>
 
 @interface TestFacebookInterface : SocializeAsyncTestCase
 @property (nonatomic, retain) SocializeFacebookInterface *facebookInterface;

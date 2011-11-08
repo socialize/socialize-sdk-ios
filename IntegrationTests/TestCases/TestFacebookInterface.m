@@ -43,7 +43,7 @@
             NSLog(@"Posted comment with id %@!", [response objectForKey:@"id"]);
             [self notify:kGHUnitWaitStatusSuccess];
         } else {
-            NSLog(@"Failed to post comment!");
+            NSLog(@"Failed to post comment! %@", [error userInfo]);
             [self notify:kGHUnitWaitStatusFailure];
         }
     }]; 
