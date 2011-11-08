@@ -62,21 +62,33 @@
     [scenario addStep:[KIFTestStep stepToVerifyViewWithAccessibilityLabel:@"Socialize Action View" passesTest:^BOOL(id view) {
         return CGRectEqualToRect(CGRectMake(0, 343, 320, 44), [view frame]);
     }]];
+    
+    // Swap tabs and make sure views increments
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:1]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Featured"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Action Bar!"]];
     [scenario addStep:[KIFTestStep stepToWaitForAbsenceOfViewWithAccessibilityLabel:@"In progress"]];
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
     
+    // Verify we can like
     [scenario addStepsFromArray:[KIFTestStep stepsToLikeOnActionBar]];
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarLikesAtCount:1]];
 
+    // Make sure post comment shows the comment controller. Make sure views does not increment again
     [scenario addStepsFromArray:[KIFTestStep stepsToCommentOnActionBar]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"add comment button"]];
     [scenario addStepsFromArray:[KIFTestStep stepsToCreateComment:@"actionbar comment"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Close"]];
     [scenario addStep:[KIFTestStep stepToCheckAccessibilityLabel:@"comment button" hasValue:@"1"]];
-
+    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
+    
+    // Verify we can show the in-app MFMailComposer
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share via Email"]];
+    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Share with you my interest!"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Delete Draft"]];
+    
     return scenario;
 }
 
