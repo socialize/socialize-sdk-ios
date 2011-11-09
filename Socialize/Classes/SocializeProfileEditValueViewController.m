@@ -6,12 +6,12 @@
 //  Copyright 2011 pointabout. All rights reserved.
 //
 
-#import "SocializeProfileEditValueController.h"
+#import "SocializeProfileEditValueViewController.h"
 #import "UIButton+Socialize.h"
 #import "SocializeEditValueTableViewCell.h"
 
 
-@implementation SocializeProfileEditValueController
+@implementation SocializeProfileEditValueViewController
 @synthesize editValueCell;
 @synthesize editValueField;
 @synthesize indexPath;
@@ -50,11 +50,11 @@
 }
 
 - (void)saveButtonPressed:(UIButton*)saveButton {
-    [self.delegate profileEditValueControllerDidSave:self];
+    [self.delegate profileEditValueViewControllerDidSave:self];
 }
 
 - (void)cancelButtonPressed:(UIButton*)cancelButton {
-    [self.delegate profileEditValueControllerDidCancel:self];
+    [self.delegate profileEditValueViewControllerDidCancel:self];
 }
 
 - (void)viewDidLoad {

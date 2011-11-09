@@ -320,7 +320,7 @@
 }
 
 - (void)testEditValue {
-    SocializeProfileEditValueController *editValue = self.profileEditViewController.editValueController;
+    SocializeProfileEditValueViewController *editValue = self.profileEditViewController.editValueController;
     GHAssertEquals(editValue.delegate, self.origProfileEditViewController, @"Bad delegate");
 }
 
@@ -339,7 +339,7 @@
 
     // firstName should be set
     NSIndexPath *firstNamePath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPropertiesRowFirstName inSection:SocializeProfileEditViewControllerSectionProperties];
-    id mockEditValue = [OCMockObject mockForClass:[SocializeProfileEditValueController class]];
+    id mockEditValue = [OCMockObject mockForClass:[SocializeProfileEditValueViewController class]];
     [[[mockEditValue expect] andReturn:firstNamePath] indexPath];
     id mockValueField = [OCMockObject mockForClass:[UITextField class]];
     [[[mockEditValue expect] andReturn:mockValueField] editValueField];
@@ -348,7 +348,7 @@
     
     [[self.mockTableView expect] reloadRowsAtIndexPaths:[NSArray arrayWithObject:firstNamePath] withRowAnimation:UITableViewRowAnimationNone];
     
-    [self.profileEditViewController profileEditValueControllerDidSave:mockEditValue];
+    [self.profileEditViewController profileEditValueViewControllerDidSave:mockEditValue];
 }
 
 - (void)testEditValueCancel {
@@ -357,7 +357,7 @@
     [[[(id)self.profileEditViewController expect] andReturn:mockNavigationController] navigationController];
     [[mockNavigationController expect] popViewControllerAnimated:YES];
     
-    [self.profileEditViewController profileEditValueControllerDidCancel:nil];
+    [self.profileEditViewController profileEditValueViewControllerDidCancel:nil];
 }
 
 @end

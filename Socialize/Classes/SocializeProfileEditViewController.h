@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SocializeProfileEditValueController.h"
+#import "SocializeProfileEditValueViewController.h"
 
-@class SocializeProfileEditValueController;
+@class SocializeProfileEditValueViewController;
 typedef enum {
     SocializeProfileEditViewControllerSectionImage,
     SocializeProfileEditViewControllerSectionProperties,
@@ -37,9 +37,9 @@ typedef enum {
 @protocol SocializeProfileEditViewControllerDelegate;
 @class SocializeProfileEditTableViewImageCell;
 @class SocializeProfileEditTableViewCell;
-@class SocializeProfileEditValueController;
+@class SocializeProfileEditValueViewController;
 
-@interface SocializeProfileEditViewController : UITableViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SocializeProfileEditValueControllerDelegate>
+@interface SocializeProfileEditViewController : UITableViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SocializeProfileEditValueViewControllerDelegate>
 @property (nonatomic, copy) NSString *firstName;
 @property (nonatomic, copy) NSString *lastName;
 @property (nonatomic, copy) NSString *bio;
@@ -50,7 +50,7 @@ typedef enum {
 @property (nonatomic, assign) id<SocializeProfileEditViewControllerDelegate> delegate;
 @property (nonatomic, retain) UIImagePickerController *imagePicker;
 @property (nonatomic, retain) UIActionSheet *uploadPicActionSheet;
-@property (nonatomic, retain) SocializeProfileEditValueController *editValueController;
+@property (nonatomic, retain) SocializeProfileEditValueViewController *editValueController;
 @property (nonatomic, assign) IBOutlet SocializeProfileEditTableViewImageCell * profileImageCell;
 @property (nonatomic, assign) IBOutlet SocializeProfileEditTableViewCell * profileTextCell;
 @property (nonatomic, retain) UISwitch *facebookSwitch;

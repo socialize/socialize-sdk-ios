@@ -11,7 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SocializeProfileEditTableViewCell.h"
 #import "UIButton+Socialize.h"
-#import "SocializeProfileEditValueController.h"
+#import "SocializeProfileEditValueViewController.h"
 #import "SocializePrivateDefinitions.h"
 
 
@@ -360,15 +360,15 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 
 #pragma mark - Table view delegate
 
-- (SocializeProfileEditValueController*)editValueController {
+- (SocializeProfileEditValueViewController*)editValueController {
     if (editValueController_ == nil) {
-        editValueController_ = [[SocializeProfileEditValueController alloc] initWithStyle:UITableViewStyleGrouped];
+        editValueController_ = [[SocializeProfileEditValueViewController alloc] initWithStyle:UITableViewStyleGrouped];
         editValueController_.delegate = self;
     }
     return editValueController_;
 }
 
-- (void)profileEditValueControllerDidSave:(SocializeProfileEditValueController *)profileEditValueController
+- (void)profileEditValueViewControllerDidSave:(SocializeProfileEditValueViewController *)profileEditValueController
 {
 	[self.navigationController popViewControllerAnimated:YES];
 	self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -381,7 +381,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 	[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)profileEditValueControllerDidCancel:(SocializeProfileEditValueController *)profileEditValueController
+- (void)profileEditValueViewControllerDidCancel:(SocializeProfileEditValueViewController *)profileEditValueController
 {
 	[self.navigationController popViewControllerAnimated:YES];
 }
