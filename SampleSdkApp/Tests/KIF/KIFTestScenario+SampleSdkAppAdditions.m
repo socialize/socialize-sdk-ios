@@ -94,7 +94,7 @@
     // Verify we can show the in-app MFMailComposer
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share via Email"]];
-    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Share with you my interest!"]];
+    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Send"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Delete Draft"]];
     

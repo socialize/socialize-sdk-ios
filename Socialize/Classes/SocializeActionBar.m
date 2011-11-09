@@ -311,7 +311,6 @@
                     break;
             }
         };
-        [_shareComposer setSubject:@"Share with you my interest!"];
     }
     
     return _shareComposer;
@@ -320,6 +319,12 @@
 // Displays an email composition interface inside the application. Populates all the Mail fields. 
 -(void)displayComposerSheet 
 {
+    NSString *subject = self.entity.name;
+    if ([subject length] == 0) {
+        subject = self.entity.key;
+    }
+    [self.shareComposer setSubject:subject];
+
     // Fill out the email body text
     NSString *emailBody = [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", entity.name, entity.key];
     [self.shareComposer setMessageBody:emailBody isHTML:NO];
