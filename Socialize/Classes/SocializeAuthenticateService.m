@@ -197,10 +197,6 @@
         [defaults removeObjectForKey:secret];
     }
 
-    // Remove local facebook authentication info
-    [defaults removeObjectForKey:@"FBAccessTokenKey"];
-    [defaults removeObjectForKey:@"FBExpirationDateKey"];
-    
     // Remove persisted local user data
     [defaults removeObjectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
     

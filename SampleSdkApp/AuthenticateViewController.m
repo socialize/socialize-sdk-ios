@@ -130,6 +130,9 @@
 
 -(IBAction)emptyCache:(id)sender{
     [socialize removeAuthenticationInfo];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FBAccessTokenKey"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FBExpirationDateKey"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
