@@ -259,9 +259,10 @@
     if (_shareActionSheet == nil) {
         _shareActionSheet = [[UIActionSheet sheetWithTitle:nil] retain];
         
+#if 0
         if(self.socialize.isAuthenticatedWithFacebook)
             [_shareActionSheet addButtonWithTitle:@"Share on Facebook" handler:^{ [self shareViaFacebook]; }];
-        
+#endif   
         [_shareActionSheet addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
         
         [_shareActionSheet setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
