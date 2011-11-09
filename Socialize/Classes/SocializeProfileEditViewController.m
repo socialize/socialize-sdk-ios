@@ -244,6 +244,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     NSNumber *dontPostToFacebook = [NSNumber numberWithBool:!facebookSwitch.on];
     [[NSUserDefaults standardUserDefaults] setObject:dontPostToFacebook forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

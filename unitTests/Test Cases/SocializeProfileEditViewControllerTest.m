@@ -164,14 +164,26 @@
 
 - (void)testFacebookSwitchChanged {
     id mockFacebookSwitch = [OCMockObject mockForClass:[UISwitch class]];
+    
+    // Expect kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY checked from defaults (return NO)
     id mockDefaults = [OCMockObject mockForClass:[NSUserDefaults class]];
     self.profileEditViewController.userDefaults = mockDefaults;
     [[[(id)self.profileEditViewController stub] andReturn:mockFacebookSwitch] facebookSwitch];
     [[[mockDefaults expect] andReturn:[NSNumber numberWithBool:NO]] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+    
+    // Expect toggle on state
     BOOL isOn = YES;
     [[[mockFacebookSwitch expect] andReturnValue:OCMOCK_VALUE(isOn)] isOn];
     [[mockFacebookSwitch expect] setOn:NO];
     [[mockDefaults expect] setObject:[NSNumber numberWithBool:YES] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+
+    // Expect save button enabled
+    id mockNavigationItem = [OCMockObject mockForClass:[UINavigationItem class]];
+    id mockSaveButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    [[[mockNavigationItem expect] andReturn:mockSaveButton] rightBarButtonItem];
+    [[[(id)self.profileEditViewController expect] andReturn:mockNavigationItem] navigationItem];
+    [[mockSaveButton expect] setEnabled:YES];
+
     [self.profileEditViewController facebookSwitchChanged:mockFacebookSwitch];
 }
 
