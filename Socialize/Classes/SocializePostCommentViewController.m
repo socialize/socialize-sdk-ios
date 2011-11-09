@@ -39,7 +39,6 @@
 -(void)createComment;
 -(void) adjustViewToLayoutWithKeyboardHeigth:(int)keyboardHeigth;
 
-
 @end 
 
 @implementation SocializePostCommentViewController
@@ -239,16 +238,20 @@
 #pragma mark - navigation bar button actions
 -(void)sendButtonPressed:(id)button {
     [self startLoadAnimationForView:commentTextView];
-    
     if (![self.socialize isAuthenticatedWithFacebook] && [Socialize facebookAppId] != nil) {
         //TODO: this should be combined to have one call that let's us know wether a user has been auth'd by FB or not
-        self.authViewController = [SocializeAuthViewController createNavigationControllerForAuthViewControllerWithDelegate:self];
         [self presentModalViewController:self.authViewController animated:YES];
     } else {
         [self createComment];
     }
 }
 
+-(UINavigationController *)authViewController{    
+    if(!_authViewController) {
+        _authViewController = [[SocializeAuthViewController createNavigationControllerForAuthViewControllerWithDelegate:self] retain];
+    }
+    return _authViewController;
+}
 -(void)closeButtonPressed:(id)button {
     [self stopLoadAnimation];
     [self dismissModalViewControllerAnimated:YES];

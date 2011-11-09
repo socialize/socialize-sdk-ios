@@ -39,7 +39,7 @@
     return navController;
 }
 - (id)initWithDelegate:(id<SocializeAuthViewDelegate>)delegate {
-    if( self = [super initWithNibName:@"SocializeAuthenticationViewController" bundle:nil] ) {
+    if( self = [super initWithNibName:@"SocializeAuthViewController" bundle:nil] ) {
         self.delegate = delegate;
     }
     return self;
