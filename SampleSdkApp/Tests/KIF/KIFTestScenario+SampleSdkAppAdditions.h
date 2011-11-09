@@ -15,5 +15,6 @@
 + (id)scenarioToTestCommentsViewControllerWithAutoAuth;
 + (id)scenarioToTestActionBar;
 + (id)scenarioToTestViewOtherProfile;
++ (id)scenarioToTestFacebook;
 
 @end
