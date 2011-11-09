@@ -206,6 +206,13 @@
     [mockResponse verify];
 }
 
+-(void)testCompereRequestWithNilParams
+{
+    SocializeRequest* first = [SocializeRequest requestWithHttpMethod:@"" resourcePath:@"" expectedJSONFormat:SocializeDictionary params:nil];
+    SocializeRequest* second = [SocializeRequest requestWithHttpMethod:@"" resourcePath:@"" expectedJSONFormat:SocializeDictionary params:nil];
+    GHAssertEqualObjects(first, second, nil);
+}
+
 - (id)requestLoading:(NSMutableURLRequest *)request
 {
     return nil;

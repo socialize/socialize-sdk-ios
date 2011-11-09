@@ -40,6 +40,7 @@
 -(void) showAllertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoadAnimationForView: (UIView*) view;
 -(void) stopLoadAnimation;
+-(void)performAutoAuth;
 -(void) afterAnonymouslyLoginAction;
 
 @end

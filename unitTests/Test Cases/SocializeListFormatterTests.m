@@ -29,6 +29,7 @@
 #import "SocializeListFormatter.h"
 #import "SocializeListFormatterTests.h"
 #import "SocializeEntity.h"
+#import "SocializeObjects.h"
 #import "JSONKit.h"
 
 
@@ -134,4 +135,41 @@
 
 }
 
+
+-(void)testToObjectFromStringActivity
+{
+    id mockFactory = [self mockFactory];
+    id mockForComment = [OCMockObject mockForProtocol: @protocol(SocializeComment)];
+    [[[mockFactory stub] andReturn:mockForComment] createObjectFromDictionary:OCMOCK_ANY forProtocol:@protocol(SocializeComment)];
+    id mockForLike = [OCMockObject mockForProtocol: @protocol(SocializeComment)];
+    [[[mockFactory stub] andReturn:mockForLike] createObjectFromDictionary:OCMOCK_ANY forProtocol:@protocol(SocializeLike)];
+    id mockForView = [OCMockObject mockForProtocol: @protocol(SocializeView)];
+    [[[mockFactory stub] andReturn:mockForView] createObjectFromDictionary:OCMOCK_ANY forProtocol:@protocol(SocializeView)];
+    id mockForShare = [OCMockObject mockForProtocol: @protocol(SocializeView)];
+    [[[mockFactory stub] andReturn:mockForShare] createObjectFromDictionary:OCMOCK_ANY forProtocol:@protocol(SocializeShare)];
+    id mockForObject = [OCMockObject mockForProtocol: @protocol(SocializeView)];
+    [[[mockFactory stub] andReturn:mockForObject] createObjectFromDictionary:OCMOCK_ANY forProtocol:@protocol(SocializeObject)];
+    
+    SocializeListFormatter* listFormatter = [[[SocializeListFormatter alloc] initWithFactory:mockFactory]autorelease];
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/activity_response.json"];
+    id res = [listFormatter toObjectfromString:JSONStringToParse forProtocol:@protocol(SocializeActivity)];
+    GHAssertTrue([res count] == 5, nil);
+    
+    [mockFactory verify];
+}
+
+-(void)testToObjectFromStringComments
+{
+    id mockFactory = [self mockFactory];
+    id mockForComment = [OCMockObject mockForProtocol: @protocol(SocializeComment)];
+    [[[mockFactory stub] andReturn:mockForComment] createObjectFromDictionary:OCMOCK_ANY forProtocol:@protocol(SocializeComment)];
+    [[[mockFactory stub] andReturn:mockForComment] createObjectFromDictionary:OCMOCK_ANY forProtocol:@protocol(SocializeComment)];
+    
+    SocializeListFormatter* listFormatter = [[[SocializeListFormatter alloc] initWithFactory:mockFactory]autorelease];
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/comment_list_response.json"];
+    id res = [listFormatter toObjectfromString:JSONStringToParse forProtocol:@protocol(SocializeComment)];
+    GHAssertTrue([res count] == 2, nil);
+    
+    [mockFactory verify];
+}
 @end

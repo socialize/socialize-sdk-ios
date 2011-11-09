@@ -24,7 +24,7 @@
 
 -(void)testToLike
 {
-    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"like_single_response.json"];
+    NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/like_single_response.json"];
     NSDictionary * JSONDictionaryToParse =(NSDictionary *)[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
     id mockLike = [OCMockObject mockForProtocol:@protocol(SocializeLike)];

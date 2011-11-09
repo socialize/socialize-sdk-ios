@@ -47,10 +47,11 @@
 
 @property(nonatomic, assign) UIViewController* parentViewController;
 @property(nonatomic, retain) id<SocializeEntity> entity;
+@property (nonatomic, assign) BOOL didFetchEntity;
+@property (nonatomic, assign) BOOL ignoreNextView;
 
-+(SocializeActionBar*)createWithParentController:(UIViewController*)parentController andUrl: (NSString*)url;
++(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
 
--(id)initWithParantViewSize:(CGSize)parentViewSize andEntiryUrl:(NSString*)url;
--(id)initWithParantViewSize:(CGSize)parentViewSize andEntiry:(id<SocializeEntity>)entity;
--(void)incrementViewCount;
+-(id)initWithEntityUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
+-(id)initWithEntity:(id<SocializeEntity>)socEntity presentModalInController:(UIViewController*)controller;
 @end

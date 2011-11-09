@@ -17,30 +17,9 @@
 {
     id<SocializeShare> share = (id<SocializeShare>)toObject;
     
-    [share setObjectID: [[JSONDictionary valueForKey:@"id"]intValue]];
+    [share setMedium:[[[JSONDictionary valueForKey:@"medium"] valueForKey:@"id"] intValue]];
     [share setText:[JSONDictionary valueForKey:@"text"]];
-    
-    NSDateFormatter* df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd HH:mm:ssZZZ"];
-    [share setDate:[df dateFromString:[JSONDictionary valueForKey:@"date"]]];
-    [df release]; df = nil;
-
-    NSNumber* mediumNumber = [JSONDictionary valueForKey:@"medium"];
-    
-    if (mediumNumber && (![mediumNumber isEqual:[NSNull null]]))
-        [share setMedium:[mediumNumber intValue]];
-    else
-        [share setMedium:0];
- 
-        
-    [share setLat:[JSONDictionary valueForKey:@"lat"]];
-    [share setLng:[JSONDictionary valueForKey:@"lng"]];
-    
-    [share setEntity:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"entity"] forProtocol:@protocol(SocializeEntity)]];
-    
-    [share setApplication:[_factory createObjectFromDictionary: [JSONDictionary valueForKey:@"application"] forProtocol:@protocol(SocializeApplication)]];
-    
-    [share setUser:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"user"] forProtocol:@protocol(SocializeUser)]];
+    [super doToObject:share fromDictionary:JSONDictionary];
 }
 
 @end

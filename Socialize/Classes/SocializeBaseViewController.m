@@ -80,12 +80,8 @@
     [_loadingIndicatorView removeView];_loadingIndicatorView = nil;
 }
 
-#pragma mark - View lifecycle
-
-- (void)viewWillAppear:(BOOL)animated
+-(void)performAutoAuth
 {
-    [super viewWillAppear:animated];
-    
     if(![self.socialize isAuthenticated])
     {
         [self startLoadAnimationForView: self.view];
@@ -93,7 +89,14 @@
     }
     else
         [self afterAnonymouslyLoginAction];
-    
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self performAutoAuth];
     [self.navigationController.navigationBar resetBackground:1234];
 
 }

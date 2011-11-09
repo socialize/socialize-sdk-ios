@@ -7,11 +7,9 @@
 //
 
 #import "SocializeObjectFactory.h"
-#import "SocializeActivity.h"
 #import "SocializeConfiguration.h"
 #import "SocializeObjectJSONFormatter.h"
 #import "SocializeListFormatter.h"
-
 
 @interface SocializeObjectFactory()
 

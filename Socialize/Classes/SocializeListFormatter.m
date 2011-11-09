@@ -9,6 +9,7 @@
 #import "SocializeListFormatter.h"
 #import "SocializeObject.h"
 #import "SocializeObjectFactory.h"
+#import "SocializeObjects.h"
 #import "JSONKit.h"
 
 
@@ -25,6 +26,23 @@
 //    
 //    
 //}
+-(Protocol*) detectActivityProtocol: (NSDictionary*)item
+{
+    Protocol* expectedProtocol = nil;
+    NSString* type = [item objectForKey:@"activity_type"];
+    if([type isEqualToString:@"comment"]){
+        expectedProtocol = @protocol(SocializeComment);
+    }else if([type isEqualToString:@"like"]){
+        expectedProtocol = @protocol(SocializeLike);
+    }else if([type isEqualToString:@"share"]){
+        expectedProtocol = @protocol(SocializeShare);
+    }else if([type isEqualToString:@"view"]){
+        expectedProtocol = @protocol(SocializeView);
+    }else{
+        expectedProtocol = @protocol(SocializeObject);
+    }
+    return expectedProtocol;
+}
 
 //Template Methods
 -(id)toListFromArray:(NSArray *)itemArray forProtocol:(Protocol *)protocol
@@ -40,7 +58,10 @@
         }
         else if([item isKindOfClass:[NSDictionary class]])
         {
-            [array addObject:[_factory createObjectFromDictionary:(NSDictionary*)item  forProtocol:protocol]];
+            if(protocol == @protocol(SocializeActivity))
+                [array addObject:[_factory createObjectFromDictionary:(NSDictionary*)item  forProtocol:[self detectActivityProtocol: item]]];
+            else
+                [array addObject:[_factory createObjectFromDictionary:(NSDictionary*)item  forProtocol:protocol]];
         }
         else
         {

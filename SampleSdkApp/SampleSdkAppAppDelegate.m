@@ -45,6 +45,11 @@
     
 #if RUN_GHUNIT_TESTS
     int retVal = [GHTestRunner run];
+    if (retVal == 0) {
+        NSLog(@"GHUNIT TESTS SUCCEEDED");
+    } else {
+        NSLog(@"GHUNIT TESTS FAILED");
+    }
     printf("return value from test runner is: %d\n", retVal);
     NSAssert1(retVal == 0, @"There were %i failures during logic integration tests.", retVal);
 #endif

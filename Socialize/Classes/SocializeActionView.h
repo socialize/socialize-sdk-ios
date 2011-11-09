@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class SocializeActionView;
+
 @protocol SocializeActionViewDelegate <NSObject>
 
 -(void)commentButtonTouched:(id)sender;
 -(void)likeButtonTouched:(id)sender;
+-(void)shareButtonTouched: (id) sender;
+-(void)socializeActionViewWillAppear:(SocializeActionView*)socializeActionView;
+-(void)socializeActionViewWillDisappear:(SocializeActionView*)socializeActionView;
 
 @end
 
@@ -22,6 +27,7 @@
 	UIButton*	_commentButton;
 	UIButton*	_likeButton;
 	UIButton*	_viewCounter;
+  	UIButton*	_shareButton;
 	BOOL		_isLiked;
 	
 	UIFont*		_buttonLabelFont;
@@ -43,6 +49,8 @@
 - (void)updateIsLiked: (BOOL)isLiked;
 - (void)lockButtons;
 - (void)unlockButtons;
+- (void)startActivityForUpdateViewsCount;
+- (void)positionInSuperview;
 
 @property (nonatomic, assign) id<SocializeActionViewDelegate> delegate;
 @property (nonatomic, readonly) BOOL isLiked;
