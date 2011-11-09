@@ -22,6 +22,7 @@
     self.facebookInterface = nil;
 }
 
+#if 0
 - (void)testPostToWall {
     [Socialize storeFacebookAppId:@"115622641859087"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -49,5 +50,6 @@
     }]; 
     [self waitForStatus:kGHUnitWaitStatusSuccess];
 }
+#endif
 
 @end
