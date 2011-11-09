@@ -286,7 +286,7 @@
 #pragma mark - SocializeServiceDelegate
 
 -(void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object{   
-    
+#if 0
     if (![[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue]) {
         if([self.socialize isAuthenticatedWithFacebook])
         {
@@ -296,6 +296,7 @@
             [shareBuilder performShareForPath:@"me/feed"];
         }
     }
+#endif
     
     // Rapid animated dismissal does not work on iOS5 (but works in iOS4)
     // Allow previous modal dismisalls to complete. iOS5 added dismissViewControllerAnimated:completion:, which
