@@ -2,7 +2,7 @@
 
 #set -o errexit
 
-if [ "$RUN_CLI=1" = "" ]; then
+if [ "$RUN_CLI" = "" ]; then
   exit 0
 fi
 
