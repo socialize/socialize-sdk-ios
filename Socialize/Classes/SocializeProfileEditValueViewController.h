@@ -12,15 +12,7 @@
 @protocol SocializeProfileEditValueViewControllerDelegate;
 
 @interface SocializeProfileEditValueViewController : UITableViewController <UITextFieldDelegate>
-{
 
-	SocializeEditValueTableViewCell * editValueCell;
-	UITextField * editValueField;
-	NSIndexPath * indexPath;
-	NSString * valueToEdit;
-	
-	BOOL didEdit;
-}
 @property (nonatomic, assign) BOOL didEdit;
 @property (nonatomic, assign) IBOutlet SocializeEditValueTableViewCell * editValueCell;
 @property (nonatomic, assign) IBOutlet UITextField * editValueField;
@@ -29,6 +21,8 @@
 @property (nonatomic, retain) UIBarButtonItem *cancelButton;
 @property (nonatomic, retain) UIBarButtonItem *saveButton;
 @property (nonatomic, assign) id<SocializeProfileEditValueViewControllerDelegate> delegate;
+@property (nonatomic, retain) NSBundle *bundle;
+@property (nonatomic, retain) UIView *tableHeaderView;
 @end
 
 @protocol SocializeProfileEditValueViewControllerDelegate <NSObject>
