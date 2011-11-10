@@ -61,7 +61,11 @@
 @synthesize mockSocialize = mockSocialize_;
 @synthesize mockActionView = mockActionView_;
 
-- (void)reset {
+- (BOOL)shouldRunOnMainThread {
+    return YES;
+}
+
+- (void)setUp {
     self.mockParentController = [OCMockObject mockForClass:[UIViewController class]];
     
     self.actionBar = [SocializeActionBar actionBarWithUrl:TEST_ENTITY_URL presentModalInController:self.mockParentController];
@@ -70,19 +74,17 @@
     self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     self.actionBar.socialize = self.mockSocialize;
     
-    // Having troubles expecting (_setViewDelegate:) in OCMock
-//    self.mockActionView = [OCMockObject mockForClass:[SocializeActionView class]];
-//    [[self.mockActionView expect] _setViewDelegate:OCMOCK_ANY];
     self.mockActionView = [OCMockObject mockForClass:[SocializeActionView class]];
     [[[(id)self.actionBar stub] andReturn:self.mockActionView] view];
 }
 
-- (void)setUp {
-    [self reset];
-}
-
 -(void)tearDown
 {
+    [(id)self.actionBar verify];
+    [self.mockParentController verify];
+    [self.mockSocialize verify];
+    [self.mockActionView verify];
+    
     self.mockParentController = nil;
     self.actionBar = nil;
 }
@@ -153,13 +155,7 @@
     /* Tests we don't crash, anyway. Add additional testing if these ever have an effect */
     
     // Make sure it's created on the main thread (exception will be thrown if not)
-    
-    if (![NSThread isMainThread]) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            (void)self.actionBar.shareComposer;
-        });
-    }
-    
+
     self.actionBar.shareComposer.completionBlock(MFMailComposeResultCancelled, nil); // currently noop
     self.actionBar.shareComposer.completionBlock(MFMailComposeResultFailed, nil); // currently noop
     self.actionBar.shareComposer.completionBlock(MFMailComposeResultSaved, nil); // currently noop

@@ -34,6 +34,9 @@
 @implementation SocializeBaseViewController
 @synthesize doneButton = doneButton_;
 @synthesize editButton = editButton_;
+@synthesize sendButton = sendButton_;
+@synthesize cancelButton = cancelButton_;
+@synthesize saveButton = saveButton_;
 @synthesize socialize = socialize_;
 
 - (void)dealloc
@@ -63,9 +66,36 @@
     return socialize_;
 }
 
+- (UIBarButtonItem*)saveButton {
+    if (saveButton_ == nil) {
+        UIButton *button = [[UIButton blueSocializeNavBarButtonWithTitle:@"Save"] retain];
+        [button addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        saveButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
+    }
+    return saveButton_;
+}
+
+- (UIBarButtonItem*)cancelButton {
+    if (cancelButton_ == nil) {
+        UIButton *button = [[UIButton redSocializeNavBarButtonWithTitle:@"Cancel"] retain];
+        [button addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        cancelButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
+    }
+    return cancelButton_;
+}
+
+- (UIBarButtonItem*)sendButton {
+    if (doneButton_ == nil) {
+        UIButton *button = [[UIButton blueSocializeNavBarButtonWithTitle:@"Send"] retain];
+        [button addTarget:self action:@selector(sendButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        sendButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
+    }
+    return sendButton_;
+}
+
 - (UIBarButtonItem*)doneButton {
     if (doneButton_ == nil) {
-        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Done"];
+        UIButton *button = [[UIButton blueSocializeNavBarButtonWithTitle:@"Done"] retain];
         [button addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         doneButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
@@ -74,7 +104,7 @@
 
 - (UIBarButtonItem*)editButton {
     if (editButton_ == nil) {
-        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Edit"];
+        UIButton *button = [[UIButton redSocializeNavBarButtonWithTitle:@"Edit"] retain];
         [button addTarget:self action:@selector(editButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         editButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
@@ -114,7 +144,11 @@
 }
 
 - (void)stopLoading {
-    [self stopLoading];
+    [self stopLoadAnimation];
+}
+
+-(BOOL)shouldAutoAuthOnAppear {
+    return YES;
 }
 
 -(void)performAutoAuth
@@ -133,7 +167,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self performAutoAuth];
+    
+    if ([self shouldAutoAuthOnAppear]) {
+        [self performAutoAuth];
+    }
+    
     [self.navigationController.navigationBar resetBackground:1234];
 
 }

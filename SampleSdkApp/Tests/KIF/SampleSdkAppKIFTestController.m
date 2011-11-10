@@ -27,10 +27,12 @@ static NSString *SampleSdkAppKIFTestControllerRunID = nil;
 //    [self addScenario:[KIFTestScenario scenarioToTestCommentsViewControllerWithAutoAuth]];
     [self addScenario:[KIFTestScenario scenarioToAuthenticate]];
 
-//    [self addScenario:[KIFTestScenario scenarioToTestFacebook]];
     [self addScenario:[KIFTestScenario scenarioToTestViewOtherProfile]];
     [self addScenario:[KIFTestScenario scenarioToTestUserProfile]];
     [self addScenario:[KIFTestScenario scenarioToTestActionBar]];
+
+    //    [self addScenario:[KIFTestScenario scenarioToTestFacebook]];
+
 }
 
 + (NSString*)runID {

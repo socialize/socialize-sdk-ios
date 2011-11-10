@@ -22,14 +22,6 @@
 - (void)hideEditController;
 @end
 
-@interface SocializeProfileViewControllerForTest : SocializeProfileViewController
-@end
-
-@implementation SocializeProfileViewControllerForTest
-- (void)startLoading {}
-- (id)view { return nil; }
-@end
-
 @implementation SocializeProfileViewControllerTests
 @synthesize profileViewController = profileViewController_;
 @synthesize origProfileViewController = origProfileViewController_;
@@ -45,12 +37,18 @@
 @synthesize mockProfileImageActivityIndicator = mockProfileImageActivityIndicator_;
 @synthesize mockUserNameLabel = mockUserNameLabel_;
 @synthesize mockUserDescriptionLabel = mockUserDescriptionLabel_;
+@synthesize mockDoneButton = mockDoneButton_;
+@synthesize mockEditButton = mockEditButton_;
+
+- (BOOL)shouldRunOnMainThread {
+    return YES;
+}
 
 -(void) setUp
 {
     [super setUp];
     
-    self.origProfileViewController = [[[SocializeProfileViewControllerForTest alloc] init] autorelease];
+    self.origProfileViewController = [[[SocializeProfileViewController alloc] init] autorelease];
     self.profileViewController = [OCMockObject partialMockForObject:self.origProfileViewController];
     
     self.mockProfileEditViewController = [OCMockObject mockForClass:[SocializeProfileEditViewController class]];
@@ -89,6 +87,12 @@
     
     self.mockUserDescriptionLabel = [OCMockObject mockForClass:[UILabel class]];
     self.profileViewController.userDescriptionLabel = self.mockUserDescriptionLabel;
+    
+    self.mockDoneButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.profileViewController.doneButton = self.mockDoneButton;
+    
+    self.mockEditButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.profileViewController.editButton = self.mockEditButton;
 }
 
 -(void) tearDown
@@ -108,7 +112,9 @@
     [self.mockProfileImageActivityIndicator verify];
     [self.mockUserNameLabel verify];
     [self.mockUserDescriptionLabel verify];
-    
+    [self.mockDoneButton verify];
+    [self.mockEditButton verify];
+
     self.origProfileViewController = nil;
     self.profileViewController = nil;
     self.mockDelegate = nil;
@@ -121,7 +127,10 @@
     self.mockDefaultProfileImage = nil;
     self.mockProfileImageActivityIndicator = nil;
     self.mockUserNameLabel = nil;
-    self.mockUserDescriptionLabel = nil;
+    self.mockUserDescriptionLabel = nil;    
+    self.mockDoneButton = nil;
+    self.mockEditButton = nil;
+
 }
 
 - (void)basicViewDidLoad {
@@ -290,7 +299,10 @@
     [[[mockUser stub] andReturnValue:OCMOCK_VALUE(objectID)] objectID];
     [[[self.mockSocialize stub] andReturn:mockUser] authenticatedUser];
     
-    [[self.mockNavigationItem expect] setRightBarButtonItem:self.profileViewController.editButton];
+    id mockEditButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.profileViewController.editButton = mockEditButton;
+//    [[self.mockNavigationItem expect] setRightBarButtonItem:self.profileViewController.editButton];
+    [[self.mockNavigationItem expect] setRightBarButtonItem:mockEditButton];
     
     [self.profileViewController configureEditButton];
 }

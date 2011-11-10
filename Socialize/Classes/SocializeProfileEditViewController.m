@@ -92,6 +92,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     
     self.tableView.accessibilityLabel = @"edit profile";
     self.navigationItem.leftBarButtonItem = self.cancelButton;	
+    self.saveButton.enabled = NO;
     self.navigationItem.rightBarButtonItem = self.saveButton;
 }
 
@@ -125,7 +126,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
         UIButton * actualButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
         [actualButton addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         saveButton_ = [[UIBarButtonItem alloc] initWithCustomView:actualButton];
-        saveButton_.enabled = NO;
     }
     return saveButton_;
 }
@@ -234,7 +234,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 - (UISwitch*)facebookSwitch {
     if (facebookSwitch_ == nil) {
         facebookSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
-        facebookSwitch_.on = ![[[NSUserDefaults standardUserDefaults] valueForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
+        facebookSwitch_.on = ![[self.userDefaults objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
         [facebookSwitch_ addTarget:self action:@selector(facebookSwitchChanged:) forControlEvents:UIControlEventValueChanged];
     }
     return facebookSwitch_;
@@ -242,8 +242,8 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 
 - (void)facebookSwitchChanged:(UISwitch*)facebookSwitch {
     NSNumber *dontPostToFacebook = [NSNumber numberWithBool:!facebookSwitch.on];
-    [[NSUserDefaults standardUserDefaults] setObject:dontPostToFacebook forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.userDefaults setObject:dontPostToFacebook forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+    [self.userDefaults synchronize];
     self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 

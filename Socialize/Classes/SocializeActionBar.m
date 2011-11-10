@@ -50,7 +50,7 @@
 
 @implementation SocializeActionBar
 
-@synthesize parentViewController;
+@synthesize presentModalInViewController = _presentModalInViewController;
 @synthesize entity;
 @synthesize entityLike;
 @synthesize entityView;
@@ -80,7 +80,7 @@
     if(self)
     {
         self.entity = socEntity;
-        self.parentViewController = controller;
+        self.presentModalInViewController = controller;
     }
     return self;
 }
@@ -90,10 +90,14 @@
     [entity release];
     [entityView release];
     [entityLike release];
-    [(SocializeActionView*)self.view setDelegate: nil];
+    if (self.isViewLoaded) {
+        [(SocializeActionView*)self.view setDelegate: nil];
+    }
     [comentsNavController release];
-    self.parentViewController = nil;
+    self.presentModalInViewController = nil;
+    
     self.shareComposer = nil;
+    
     self.shareActionSheet = nil;
     
     [super dealloc];
@@ -105,7 +109,8 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectZero];
+    [super loadView];
+    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(0, 0, 320, ACTION_PANE_HEIGHT)];
     self.view = actionView;
     actionView.delegate = self;
     [actionView release];
@@ -214,6 +219,10 @@
 {
 }
 
+- (BOOL)shouldAutoAuthOnAppear {
+    return NO;
+}
+
 -(void)afterAnonymouslyLoginAction
 {
     if (self.ignoreNextView) {
@@ -242,7 +251,7 @@
 -(void)commentButtonTouched:(id)sender
 {
     self.ignoreNextView = YES;
-    [self.parentViewController presentModalViewController:comentsNavController animated:YES];
+    [self.presentModalInViewController presentModalViewController:comentsNavController animated:YES];
 }
 
 -(void)likeButtonTouched:(id)sender
@@ -329,7 +338,7 @@
     NSString *emailBody = [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", entity.name, entity.key];
     [self.shareComposer setMessageBody:emailBody isHTML:NO];
 
-	[self.parentViewController presentModalViewController:self.shareComposer animated:YES];
+	[self.presentModalInViewController presentModalViewController:self.shareComposer animated:YES];
 }
 
 @end

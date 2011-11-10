@@ -37,6 +37,9 @@
 @property (nonatomic, retain) Socialize* socialize;
 @property (nonatomic, retain) UIBarButtonItem *doneButton;
 @property (nonatomic, retain) UIBarButtonItem *editButton;
+@property (nonatomic, retain) UIBarButtonItem *sendButton;
+@property (nonatomic, retain) UIBarButtonItem *cancelButton;
+@property (nonatomic, retain) UIBarButtonItem *saveButton;
 
 -(void) showAllertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoading;
@@ -45,6 +48,7 @@
 -(void) stopLoadAnimation;
 -(void)performAutoAuth;
 -(void) afterAnonymouslyLoginAction;
+-(BOOL)shouldAutoAuthOnAppear;
 
 
 @end

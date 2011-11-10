@@ -34,7 +34,7 @@
 -(void)setShareLocation:(BOOL)enableLocation;
 -(void)setUserLocation; 
 -(void)sendButtonPressed:(id)button;
--(void)closeButtonPressed:(id)button;
+-(void)cancelButtonPressed:(id)button;
 -(void)configureDoNotShareLocationButton;
 -(void)updateViewWithNewLocation: (CLLocation*)userLocation;
 -(void)createComment;
@@ -278,7 +278,7 @@
     }
 }
 
--(void)closeButtonPressed:(id)button {
+-(void)cancelButtonPressed:(id)button {
     [self stopLoadAnimation];
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -377,15 +377,10 @@
     
     self.navigationItem.leftBarButtonItem = leftButtonItem;
     [leftButtonItem release];
+    self.navigationItem.leftBarButtonItem = self.cancelButton;
     
-    UIButton * sendButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Send"];
-    [sendButton addTarget:self action:@selector(sendButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem * rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:sendButton];
-    rightButtonItem.enabled = NO;
-    
-    self.navigationItem.rightBarButtonItem = rightButtonItem;
-    [rightButtonItem release];
+    self.sendButton.enabled = NO;
+    self.navigationItem.rightBarButtonItem = self.sendButton;
     
     
 

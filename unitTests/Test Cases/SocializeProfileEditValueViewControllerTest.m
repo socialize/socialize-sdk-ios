@@ -24,6 +24,12 @@
 @synthesize mockNavigationController = mockNavigationController_;
 @synthesize mockTableView = mockTableView_;
 @synthesize mockBundle = mockBundle_;
+@synthesize mockSaveButton = mockSaveButton_;
+@synthesize mockCancelButton = mockCancelButton_;
+
+- (BOOL)shouldRunOnMainThread {
+    return YES;
+}
 
 - (void)setUp {
     self.origProfileEditValueViewController = [[[SocializeProfileEditValueViewController alloc] init] autorelease];
@@ -43,6 +49,12 @@
     
     self.mockBundle = [OCMockObject mockForClass:[NSBundle class]];
     self.profileEditValueViewController.bundle = self.mockBundle;
+    
+    self.mockCancelButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.profileEditValueViewController.cancelButton = self.mockCancelButton;
+    
+    self.mockSaveButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.profileEditValueViewController.saveButton = self.mockSaveButton;
 }
 
 - (void)tearDown {
@@ -50,14 +62,24 @@
     [self.mockDelegate verify];
     [self.mockNavigationController verify];
     [self.mockNavigationItem verify];
+    [self.mockCancelButton verify];
+    [self.mockSaveButton verify];
+    
     
     self.profileEditValueViewController = nil;
     self.origProfileEditValueViewController = nil;
     self.mockDelegate = nil;
+    self.mockNavigationController = nil;
+    self.mockNavigationItem = nil;
+    self.mockCancelButton = nil;
+    self.mockSaveButton = nil;
 }
 
 - (void)testCancelCallsSelector {
+    self.profileEditValueViewController.cancelButton = nil;
+    
     UIButton *cancelButton = (UIButton*)self.profileEditValueViewController.cancelButton.customView;
+
     NSArray *actions = [cancelButton actionsForTarget:self.origProfileEditValueViewController forControlEvent:UIControlEventTouchUpInside];
     SEL s = NSSelectorFromString([actions objectAtIndex:0]);
     GHAssertEquals(@selector(cancelButtonPressed:), s, @"Selector incorrect");
@@ -69,7 +91,10 @@
 }
 
 - (void)testSaveCallsSelector {
+    self.profileEditValueViewController.saveButton = nil;
+    
     UIButton *saveButton = (UIButton*)self.profileEditValueViewController.saveButton.customView;
+
     NSArray *actions = [saveButton actionsForTarget:self.origProfileEditValueViewController forControlEvent:UIControlEventTouchUpInside];
     SEL s = NSSelectorFromString([actions objectAtIndex:0]);
     GHAssertEquals(@selector(saveButtonPressed:), s, @"Selector incorrect");
@@ -104,23 +129,21 @@
     [[self.mockTableView expect] setBackgroundColor:[UIColor colorWithRed:50/255.0f green:58/255.0f blue:67/255.0f alpha:1.0]];
     
     // Expect left is cancel
-    [[self.mockNavigationItem expect] setLeftBarButtonItem:self.profileEditValueViewController.cancelButton];
+    [[self.mockNavigationItem expect] setLeftBarButtonItem:self.mockCancelButton];
     
     // Stub in a mock save button
-    id mockSaveButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
-    [[[(id)self.profileEditValueViewController stub] andReturn:mockSaveButton] saveButton];
-    [[[self.mockNavigationItem stub] andReturn:mockSaveButton] rightBarButtonItem];
+    [[[self.mockNavigationItem stub] andReturn:self.mockSaveButton] rightBarButtonItem];
 
     // Expect right is save, and disabled
-    [[self.mockNavigationItem expect] setRightBarButtonItem:mockSaveButton];
-    [[mockSaveButton expect] setEnabled:NO];
+    [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockSaveButton];
+    [[self.mockSaveButton expect] setEnabled:NO];
     
     // didedit should be NO
     [[(id)self.profileEditValueViewController expect] setDidEdit:NO];
     
     [self.profileEditValueViewController viewDidLoad];
     
-    [mockSaveButton verify];
+    [self.mockSaveButton verify];
 }
 
 - (void)testViewWillAppear {

@@ -31,7 +31,6 @@
 @synthesize profileImageActivityIndicator = profileImageActivityIndicator_;
 @synthesize profileEditViewController = profileEditViewController_;
 @synthesize loadingView = loadingView_;
-@synthesize socialize = socialize_;
 @synthesize navigationControllerForEdit = navigationControllerForEdit_;
 @synthesize imagesCache = imagesCache_;
 @synthesize defaultProfileImage = defaultProfileImage_;

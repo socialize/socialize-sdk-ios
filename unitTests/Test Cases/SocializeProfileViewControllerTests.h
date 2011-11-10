@@ -24,4 +24,6 @@
 @property (nonatomic, retain) id mockProfileImageActivityIndicator;
 @property (nonatomic, retain) id mockUserNameLabel;
 @property (nonatomic, retain) id mockUserDescriptionLabel;
+@property (nonatomic, retain) id mockDoneButton;
+@property (nonatomic, retain) id mockEditButton;
 @end

@@ -39,14 +39,13 @@
     @private
     CGRect viewRect;
     UIViewController* comentsNavController;   
-    UIViewController* parentViewController;
     
     id<SocializeView> entityView;
     id<SocializeEntity> entity;
     id<SocializeLike> entityLike;
 }
 
-@property(nonatomic, assign) UIViewController* parentViewController;
+@property(nonatomic, assign) UIViewController* presentModalInViewController;
 @property(nonatomic, retain) id<SocializeEntity> entity;
 @property (nonatomic, assign) BOOL ignoreNextView;
 @property (nonatomic, retain) UIActionSheet *shareActionSheet;

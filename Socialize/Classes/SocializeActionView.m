@@ -26,8 +26,6 @@
 #define COMMENT_INDICATOR_SIZE_HEIGHT 17
 #define PADDING_BETWEEN_TEXT_ICON 2
 
-#define ACTION_PANE_HEIGHT 44
-
 @interface SocializeActionView()
 -(void)instantiateButtons;
 -(void)setupButtons;

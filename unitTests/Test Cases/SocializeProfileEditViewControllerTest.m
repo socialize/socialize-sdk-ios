@@ -28,6 +28,17 @@
 @synthesize mockDelegate = mockDelegate_;
 @synthesize mockTableView = mockTableView_;
 @synthesize mockBundle = mockBundle_;
+@synthesize mockSaveButton = mockSaveButton_;
+@synthesize mockCancelButton = mockCancelButton_;
+@synthesize mockNavigationItem = mockNavigationItem_;
+@synthesize mockFacebookSwitch = mockFacebookSwitch_;
+@synthesize mockUserDefaults = mockUserDefaults_;
+@synthesize mockActionSheet = mockActionSheet_;
+
+- (BOOL)shouldRunOnMainThread {
+    return YES;
+}
+
 - (void)setUp {
     self.origProfileEditViewController = [[[SocializeProfileEditViewController alloc] init] autorelease];
     self.profileEditViewController = [OCMockObject partialMockForObject:self.origProfileEditViewController];
@@ -40,25 +51,61 @@
     self.profileEditViewController.bundle = self.mockBundle;
     
     // OCMock can not match primitives =(
+    // Iterate and forward all sections calls
     for (int section = 0; section < SocializeProfileEditViewControllerNumSections; section++) {
         [[[self.mockTableView stub] andDo:^(NSInvocation *inv) {
             NSInteger rows = [self.profileEditViewController tableView:self.mockTableView numberOfRowsInSection:section];
             [inv setReturnValue:&rows];
         }] numberOfRowsInSection:section];
     }
+    
+    self.mockCancelButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.profileEditViewController.cancelButton = self.mockCancelButton;
+    
+    self.mockSaveButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.profileEditViewController.saveButton = self.mockSaveButton;
+
+    self.mockNavigationItem = [OCMockObject mockForClass:[UINavigationItem class]];
+    [[[(id)self.profileEditViewController stub] andReturn:self.mockNavigationItem] navigationItem];
+    
+    self.mockFacebookSwitch = [OCMockObject mockForClass:[UISwitch class]];
+    self.profileEditViewController.facebookSwitch = self.mockFacebookSwitch;
+    
+    self.mockUserDefaults = [OCMockObject mockForClass:[NSUserDefaults class]];
+    self.profileEditViewController.userDefaults = self.mockUserDefaults;
+    
+    self.mockActionSheet = [OCMockObject mockForClass:[UIActionSheet class]];
+    self.profileEditViewController.uploadPicActionSheet = self.mockActionSheet;
 }
 
 - (void)tearDown {
-    self.profileEditViewController = nil;
-    self.origProfileEditViewController = nil;
-    self.mockDelegate = nil;
+    [(id)self.profileEditViewController verify];
     [self.mockDelegate verify];
     [self.mockTableView verify];
     [self.mockBundle verify];
+    [self.mockSaveButton verify];
+    [self.mockCancelButton verify];
+    [self.mockNavigationItem verify];
+    [self.mockFacebookSwitch verify];
+    [self.mockUserDefaults verify];
+    [self.mockActionSheet verify];
+
+    self.profileEditViewController = nil;
+    self.origProfileEditViewController = nil;
+    self.mockDelegate = nil;
+    self.mockSaveButton = nil;
+    self.mockCancelButton = nil;
+    self.mockNavigationItem = nil;
+    self.mockFacebookSwitch = nil;
+    self.mockUserDefaults = nil;
+    self.mockActionSheet = nil;
 }
 
 - (void)testCancelCallsSelector {
+    self.profileEditViewController.cancelButton = nil;
+    
     UIButton *cancelButton = (UIButton*)self.profileEditViewController.cancelButton.customView;
+
     NSArray *actions = [cancelButton actionsForTarget:self.origProfileEditViewController forControlEvent:UIControlEventTouchUpInside];
     SEL s = NSSelectorFromString([actions objectAtIndex:0]);
     GHAssertEquals(@selector(cancelButtonPressed:), s, @"Selector incorrect");
@@ -70,7 +117,10 @@
 }
 
 - (void)testSaveCallsSelector {
+    self.profileEditViewController.saveButton = nil;
+    
     UIButton *saveButton = (UIButton*)self.profileEditViewController.saveButton.customView;
+
     NSArray *actions = [saveButton actionsForTarget:self.origProfileEditViewController forControlEvent:UIControlEventTouchUpInside];
     SEL s = NSSelectorFromString([actions objectAtIndex:0]);
     GHAssertEquals(@selector(saveButtonPressed:), s, @"Selector incorrect");
@@ -150,41 +200,40 @@
     GHAssertEqualObjects(path, @"firstName", @"Bad path");
 }
 
-- (void)testFacebookSwitchTarget {
+- (void)testFacebookSwitchStartState {
+    
+    // Reset to default
+    self.profileEditViewController.facebookSwitch = nil;
+    
+    // Enforce defaults
+    [[[self.mockUserDefaults expect] andReturn:[NSNumber numberWithBool:YES]] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+
     UISwitch *sw = self.profileEditViewController.facebookSwitch;
+    
+    // Check target
     NSString *targetString = [[sw actionsForTarget:self.origProfileEditViewController forControlEvent:UIControlEventValueChanged] objectAtIndex:0];
     GHAssertEquals(NSSelectorFromString(targetString), @selector(facebookSwitchChanged:), @"Bad target");
+    
+    // Check on
+    GHAssertTrue(!sw.on, @"Switch should be off");
 }
 
-- (void)testFacebookSwitchStartState {
-    id mockDefaults = [OCMockObject mockForClass:[NSUserDefaults class]];
-    [[[mockDefaults expect] andReturn:[NSNumber numberWithBool:NO]] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
-    GHAssertTrue(self.profileEditViewController.facebookSwitch.on, @"Switch should be on");
-}
-
-- (void)testFacebookSwitchChanged {
-    id mockFacebookSwitch = [OCMockObject mockForClass:[UISwitch class]];
+// Switch is inverted -- called "Post to facebook", the user default is kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY
+- (void)testFacebookSwitchChangedOnToOff {
+    // Return off (new state)
+    BOOL no = NO;
+    [[[self.mockFacebookSwitch expect] andReturnValue:OCMOCK_VALUE(no)] isOn];
     
-    // Expect kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY checked from defaults (return NO)
-    id mockDefaults = [OCMockObject mockForClass:[NSUserDefaults class]];
-    self.profileEditViewController.userDefaults = mockDefaults;
-    [[[(id)self.profileEditViewController stub] andReturn:mockFacebookSwitch] facebookSwitch];
-    [[[mockDefaults expect] andReturn:[NSNumber numberWithBool:NO]] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+    // Expect save button enabled because an edit occured
+    [[[self.mockNavigationItem stub] andReturn:self.mockSaveButton] rightBarButtonItem];
+    [[self.mockSaveButton expect] setEnabled:YES];
     
-    // Expect toggle on state
-    BOOL isOn = YES;
-    [[[mockFacebookSwitch expect] andReturnValue:OCMOCK_VALUE(isOn)] isOn];
-    [[mockFacebookSwitch expect] setOn:NO];
-    [[mockDefaults expect] setObject:[NSNumber numberWithBool:YES] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
-
-    // Expect save button enabled
-    id mockNavigationItem = [OCMockObject mockForClass:[UINavigationItem class]];
-    id mockSaveButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
-    [[[mockNavigationItem expect] andReturn:mockSaveButton] rightBarButtonItem];
-    [[[(id)self.profileEditViewController expect] andReturn:mockNavigationItem] navigationItem];
-    [[mockSaveButton expect] setEnabled:YES];
-
-    [self.profileEditViewController facebookSwitchChanged:mockFacebookSwitch];
+    // Expect defaults updated
+    // Expect defaults go to not posting (ie, switch off)
+    [[self.mockUserDefaults expect] setObject:[NSNumber numberWithBool:YES] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+    [[self.mockUserDefaults expect] synchronize];
+    
+    [self.profileEditViewController facebookSwitchChanged:self.mockFacebookSwitch];
 }
 
 - (void)testFacebookCellConfiguration {
@@ -204,7 +253,7 @@
     [[mockArrowImageView expect] setHidden:YES];
 
     [[mockCell expect] setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [[mockCell expect] setAccessoryView:self.profileEditViewController.facebookSwitch];
+    [[mockCell expect] setAccessoryView:self.mockFacebookSwitch];
     [[mockCell expect] setBackgroundColor:[UIColor colorWithRed:35/255.0f green:43/255.0f blue:50/255.0f alpha:1.0]];
     [[[self.mockTableView expect] andReturn:nil] dequeueReusableCellWithIdentifier:OCMOCK_ANY];
 
@@ -215,6 +264,9 @@
 - (void)testActionSheetNoCamera {
     BOOL haveCamera = NO;
     [[[(id)self.profileEditViewController stub] andReturnValue:OCMOCK_VALUE(haveCamera)] haveCamera];
+    
+    // reset to obtain default
+    self.profileEditViewController.uploadPicActionSheet = nil;
     UIActionSheet *sheet = self.profileEditViewController.uploadPicActionSheet;
     GHAssertEquals([sheet numberOfButtons], 2, @"bad button count");
 }
@@ -222,17 +274,18 @@
 - (void)testActionSheetCamera {
     BOOL haveCamera = YES;
     [[[(id)self.profileEditViewController stub] andReturnValue:OCMOCK_VALUE(haveCamera)] haveCamera];
+    
+    // reset to obtain default
+    self.profileEditViewController.uploadPicActionSheet = nil;
     UIActionSheet *sheet = self.profileEditViewController.uploadPicActionSheet;
     GHAssertEquals([sheet numberOfButtons], 3, @"bad button count");
 }
 
 - (void)testActionSheetShown {
-    id mockSheet = [OCMockObject mockForClass:[UIActionSheet class]];
-    self.profileEditViewController.uploadPicActionSheet = mockSheet;
     NSIndexPath *imagePath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerImageRowProfileImage inSection:SocializeProfileEditViewControllerSectionImage];
     id mockWindow = [OCMockObject mockForClass:[UIWindow class]];
     [[[self.mockTableView expect] andReturn:mockWindow] window];
-    [[mockSheet expect] showInView:mockWindow];
+    [[self.mockActionSheet expect] showInView:mockWindow];
     [self.profileEditViewController tableView:self.mockTableView didSelectRowAtIndexPath:imagePath];
 }
 
@@ -243,27 +296,36 @@
 }
 
 - (void)testPickFromCamera {
+    // nice mock because it is presented modally
     id mockPicker = [OCMockObject niceMockForClass:[UIImagePickerController class]];
     self.profileEditViewController.imagePicker = mockPicker;
+    NSInteger cancelIndex = 2;
+    [[[self.mockActionSheet stub] andReturnValue:OCMOCK_VALUE(cancelIndex)] cancelButtonIndex];
     [[mockPicker expect] setSourceType:UIImagePickerControllerSourceTypeCamera];
     [[(id)self.profileEditViewController expect] presentModalViewController:mockPicker animated:YES];
-    [self.profileEditViewController actionSheet:self.profileEditViewController.uploadPicActionSheet clickedButtonAtIndex:1];
+    [self.profileEditViewController actionSheet:self.mockActionSheet clickedButtonAtIndex:1];
+    [mockPicker verify];
 }
 
 - (void)testPickFromLibrary {
+    // nice mock because it is presented modally
     id mockPicker = [OCMockObject niceMockForClass:[UIImagePickerController class]];
     self.profileEditViewController.imagePicker = mockPicker;
+    NSInteger cancelIndex = 2;
+    [[[self.mockActionSheet stub] andReturnValue:OCMOCK_VALUE(cancelIndex)] cancelButtonIndex];
     [[mockPicker expect] setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     [[(id)self.profileEditViewController expect] presentModalViewController:mockPicker animated:YES];
-    [self.profileEditViewController actionSheet:self.profileEditViewController.uploadPicActionSheet clickedButtonAtIndex:2];
+
+    [self.profileEditViewController actionSheet:self.profileEditViewController.uploadPicActionSheet clickedButtonAtIndex:0];
+    [mockPicker verify];
 }
 
 - (void)testViewDidLoad {
     [[self.mockTableView expect] setAccessibilityLabel:@"edit profile"];
+    [[self.mockSaveButton expect] setEnabled:NO];
+    [[self.mockNavigationItem expect] setLeftBarButtonItem:self.mockCancelButton];
+    [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockSaveButton];
     [self.profileEditViewController viewDidLoad];
-    GHAssertEquals(self.profileEditViewController.navigationItem.leftBarButtonItem, self.profileEditViewController.cancelButton, @"Bad left button");
-    GHAssertEquals(self.profileEditViewController.navigationItem.rightBarButtonItem, self.profileEditViewController.saveButton, @"Bad right button");
-    GHAssertFalse(self.profileEditViewController.saveButton.enabled, @"Should not be enabled");
 }
 
 - (void)testViewDidUnload {
@@ -290,6 +352,7 @@
 }
 
 - (void)testUserDefaults {
+    self.profileEditViewController.userDefaults = nil;
     GHAssertEqualObjects([NSUserDefaults standardUserDefaults], self.profileEditViewController.userDefaults, @"Bad default");    
 }
 
@@ -301,11 +364,8 @@
     [[mockPicker expect] dismissModalViewControllerAnimated:YES];
 
     // Save should enable
-    id mockNavigation = [OCMockObject mockForClass:[UINavigationItem class]];
-    id mockSaveButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
-    [[[mockNavigation expect] andReturn:mockSaveButton] rightBarButtonItem];
-    [[[(id)self.profileEditViewController expect] andReturn:mockNavigation] navigationItem];
-    [[mockSaveButton expect] setEnabled:YES];
+    [[[self.mockNavigationItem expect] andReturn:self.mockSaveButton] rightBarButtonItem];
+    [[self.mockSaveButton expect] setEnabled:YES];
     
     // Image should be set
     UIImage *mockImage = [OCMockObject mockForClass:[UIImage class]];
@@ -326,11 +386,8 @@
 
 - (void)testEditValueSave {
     // Save button should enable
-    id mockNavigationItem = [OCMockObject mockForClass:[UINavigationItem class]];
-    id mockSaveButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
-    [[[mockNavigationItem expect] andReturn:mockSaveButton] rightBarButtonItem];
-    [[[(id)self.profileEditViewController expect] andReturn:mockNavigationItem] navigationItem];
-    [[mockSaveButton expect] setEnabled:YES];
+    [[[self.mockNavigationItem expect] andReturn:self.mockSaveButton] rightBarButtonItem];
+    [[self.mockSaveButton expect] setEnabled:YES];
 
     // Modal should pop
     id mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
