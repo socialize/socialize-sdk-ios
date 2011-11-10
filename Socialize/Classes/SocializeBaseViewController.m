@@ -68,7 +68,7 @@
 
 - (UIBarButtonItem*)saveButton {
     if (saveButton_ == nil) {
-        UIButton *button = [[UIButton blueSocializeNavBarButtonWithTitle:@"Save"] retain];
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
         [button addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         saveButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
@@ -77,7 +77,7 @@
 
 - (UIBarButtonItem*)cancelButton {
     if (cancelButton_ == nil) {
-        UIButton *button = [[UIButton redSocializeNavBarButtonWithTitle:@"Cancel"] retain];
+        UIButton *button = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
         [button addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         cancelButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
@@ -86,7 +86,7 @@
 
 - (UIBarButtonItem*)sendButton {
     if (doneButton_ == nil) {
-        UIButton *button = [[UIButton blueSocializeNavBarButtonWithTitle:@"Send"] retain];
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Send"];
         [button addTarget:self action:@selector(sendButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         sendButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
@@ -95,7 +95,7 @@
 
 - (UIBarButtonItem*)doneButton {
     if (doneButton_ == nil) {
-        UIButton *button = [[UIButton blueSocializeNavBarButtonWithTitle:@"Done"] retain];
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Done"];
         [button addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         doneButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
@@ -104,7 +104,7 @@
 
 - (UIBarButtonItem*)editButton {
     if (editButton_ == nil) {
-        UIButton *button = [[UIButton redSocializeNavBarButtonWithTitle:@"Edit"] retain];
+        UIButton *button = [UIButton redSocializeNavBarButtonWithTitle:@"Edit"];
         [button addTarget:self action:@selector(editButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         editButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
