@@ -79,6 +79,9 @@ BOOL isAuthenticatedWithFacebook = YES;
     NSAssert( [object isKindOfClass:[UINavigationController class]], @"static creation method did not create uinavigation controller" ) ;   
 }
 
+- (void)testCreateSkipButton {
+    [self.authViewController createSkipButton];
+}
 - (void)testViewDidLoad {
     id barButtonMock = [OCMockObject niceMockForClass:[UIBarButtonItem class]];
     
@@ -128,6 +131,18 @@ BOOL isAuthenticatedWithFacebook = YES;
     [self.authViewController tableView:self.mockTableView cellForRowAtIndexPath:path];
 }
 
+- (void)profileViewDelegateWithSelector:(SEL)method {
+    id mockProfileViewController = [OCMockObject mockForClass:[SocializeProfileViewController class]];
+    [[self.partialMockAuthViewController expect] profileViewDidFinish];
+    [self.authViewController performSelector:method withObject:mockProfileViewController];
+}
+- (void)testProfileViewDidCancel {
+    [self profileViewDelegateWithSelector:@selector(profileViewControllerDidCancel:)];
+}
+- (void)testProfileViewDidSave {
+    [self profileViewDelegateWithSelector:@selector(profileViewControllerDidSave:)];    
+}
+    
 - (void) testGetAuthorizeInfoTableViewCell {
 
     //mock the table cell and expect methods

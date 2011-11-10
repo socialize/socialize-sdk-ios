@@ -21,6 +21,7 @@
 #import "NSString+PlaceMark.h"
 #import "SocializeFacebookInterface.h"
 #import "SocializeShareBuilder.h"
+#import "SocializePrivateDefinitions.h"
 
 #define NO_CITY_MSG @"Could not locate the place name."
 #define MIN_DISMISS_INTERVAL 0.75
@@ -260,18 +261,21 @@
 #pragma mark - SocializeServiceDelegate
 
 -(void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object{   
+#if 0
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue]) {
+        if([self.socialize isAuthenticatedWithFacebook])
+        {
+            SocializeShareBuilder* shareBuilder = [[SocializeShareBuilder new] autorelease];
+            shareBuilder.shareProtocol = [[SocializeFacebookInterface new] autorelease];
+            shareBuilder.shareObject = (id<SocializeActivity>)object;
+            [shareBuilder performShareForPath:@"me/feed"];
+        }
+    }
+#endif
+    
     // Rapid animated dismissal does not work on iOS5 (but works in iOS4)
     // Allow previous modal dismisalls to complete. iOS5 added dismissViewControllerAnimated:completion:, which
     // we would use here if backward compatibility was not required.   
-    if([self.socialize isAuthenticatedWithFacebook])
-    {
-        /* this has been commented out by isaac until we have more granular controls of what does/doesn't get posted to FB 
-        SocializeShareBuilder* shareBuilder = [[SocializeShareBuilder new] autorelease];
-        shareBuilder.shareProtocol = [[SocializeFacebookInterface new] autorelease];
-        shareBuilder.shareObject = (id<SocializeActivity>)object;
-        [shareBuilder performShareForPath:@"me/feed"];*/
-    }
-    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, MIN_DISMISS_INTERVAL * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self stopLoadAnimation];
         [self dismissModalViewControllerAnimated:YES];

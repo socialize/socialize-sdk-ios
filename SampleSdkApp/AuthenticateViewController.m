@@ -11,6 +11,8 @@
 #import "TestListController.h"
 #import "UIButton+Socialize.h"
 
+#define TESTING_FACEBOOK_TOKEN @"BAABpKH5ZBZBg8BANSQGGvcd7DGCxJvOU0S1QZCsF3ZBrmlMT9dZCrLGA5oQJ06njmIE1COAgjsmWDJsRwIig30jbhPZCArmdBe4WgY9CZAL9OZBfs1JIQtAf8F0btxVc2baUJZCZBhpgk3LQZDZD"
+
 @interface AuthenticateViewController()
 -(NSDictionary*)authInfoFromConfig;
 @end
@@ -70,7 +72,13 @@
     self.keyField.text = [apiInfo objectForKey:@"key"];
     self.secretField.text = [apiInfo objectForKey:@"secret"];
     
-    [Socialize storeSocializeApiKey: [apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
+    if ([apiInfo objectForKey:@"facebookToken"]) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:[apiInfo objectForKey:@"facebookToken"] forKey:@"FBAccessTokenKey"];
+        [defaults setObject:[NSDate distantFuture] forKey:@"FBExpirationDateKey"];
+        [defaults synchronize];
+    }
+    [Socialize storeSocializeApiKey:[apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
     [Socialize storeFacebookAppId:@"115622641859087"];
     [Socialize storeApplicationLink:@"http://www.google.com"];
 #if RUN_KIF_TESTS
@@ -122,6 +130,9 @@
 
 -(IBAction)emptyCache:(id)sender{
     [socialize removeAuthenticationInfo];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FBAccessTokenKey"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FBExpirationDateKey"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 

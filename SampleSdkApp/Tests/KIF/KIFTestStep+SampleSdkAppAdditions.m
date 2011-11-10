@@ -15,6 +15,7 @@
 #import "UITouch-KIFAdditions.h"
 #import "UIView-KIFAdditions.h"
 #import "UIWindow-KIFAdditions.h"
+#import <Socialize/SocializeFacebookInterface.h>
 
 @implementation KIFTestStep (SampleSdkAppAdditions)
 
@@ -215,8 +216,8 @@
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToEnterText:comment intoViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
-    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Facebook?"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"No"]];
+//    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Facebook?"]];
+//    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"No"]];
 //    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Anonymous?"]];
 //    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Ok"]];
     return steps;
@@ -387,5 +388,33 @@
 
 }
 
++ (id)stepToVerifyFacebookFeedContainsMessage:(NSString*)message {
+    NSString *description = [NSString stringWithFormat:@"Step to find message %@ in facebook feed", message];
+    return [KIFTestStep stepWithDescription:description executionBlock:^(KIFTestStep *step, NSError **error) {
+        SocializeFacebookInterface *fbi = [[[SocializeFacebookInterface alloc] init] autorelease];
+        __block BOOL done = NO;
+        __block KIFTestStepResult result = KIFTestStepResultFailure;
+        
+        [fbi requestWithGraphPath:@"me/feed" params:nil httpMethod:@"GET" completion:^(id response, NSError *error) {
+            if (error == nil) {
+                NSString *fullMessage = [[[response objectForKey:@"data"] objectAtIndex:0] objectForKey:@"message"];
+                if ([fullMessage containsString:message]) {
+                    result = KIFTestStepResultSuccess;
+                }
+            } else {
+                NSLog(@"Failed to get feed -- %@", [error userInfo]);
+            }
+            done = YES;
+        }]; 
+        
+        while (!done) { 
+            CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.3, YES);
+        }
+        NSLog(@"Finished");
+        
+        return result;;
+    }];
+
+}
 
 @end

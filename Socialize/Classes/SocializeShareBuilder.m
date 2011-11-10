@@ -104,7 +104,7 @@
             if(successAction)
                 successAction();   
         } else {
-            DebugLog(@"Failed to post comment!");
+            DebugLog(@"Failed to post comment! (%@)", [error userInfo]);
             if(errorAction)
                 errorAction(error);
         }

@@ -38,5 +38,6 @@
 + (id)stepToVerifyViewWithAccessibilityLabel:(NSString*)label passesTest:(BOOL (^)(id view))testBlock;
 + (NSArray*)stepsToVerifyActionBarLikesAtCount:(NSInteger)count;
 + (id)stepToVerifyElementWithAccessibilityLabelDoesNotExist:(NSString*)label;
++ (id)stepToVerifyFacebookFeedContainsMessage:(NSString*)message;
 
 @end

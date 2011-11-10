@@ -11,6 +11,9 @@
 #import "SocializeFacebook.h"
 #import "Socialize.h"
 
+@interface SocializeFacebookInterface () <SocializeFBRequestDelegate>
+@end
+
 @implementation SocializeFacebookInterfaceTests
 @synthesize facebookInterface = facebookInterface_;
 
@@ -27,7 +30,7 @@
     
     id mockFacebook = [OCMockObject mockForClass:[SocializeFacebook class]];
     id mockRequest = [OCMockObject mockForClass:[SocializeFBRequest class]];
-    [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path" andParams:nil andHttpMethod:@"METHOD" andDelegate:self.facebookInterface];
+    [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path" andParams:[NSMutableDictionary dictionary] andHttpMethod:@"METHOD" andDelegate:self.facebookInterface];
     self.facebookInterface.facebook = mockFacebook;
     
     NSDate *exp = [NSDate date];
@@ -51,7 +54,7 @@
     
     id mockFacebook = [OCMockObject mockForClass:[SocializeFacebook class]];
     id mockRequest = [OCMockObject mockForClass:[SocializeFBRequest class]];
-    [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path" andParams:nil andHttpMethod:@"METHOD" andDelegate:self.facebookInterface];
+    [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path" andParams:[NSMutableDictionary dictionary] andHttpMethod:@"METHOD" andDelegate:self.facebookInterface];
     self.facebookInterface.facebook = mockFacebook;
     
     NSDate *exp = [NSDate date];

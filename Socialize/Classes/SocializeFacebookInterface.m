@@ -1,3 +1,4 @@
+
 //
 //  SocializeFacebookInterface.m
 //  SocializeSDK
@@ -10,6 +11,9 @@
 #import "Facebook+Socialize.h"
 
 typedef void (^RequestCompletionBlock)(id result, NSError *error);
+
+@interface SocializeFacebookInterface () <SocializeFBRequestDelegate>
+@end
 
 @implementation SocializeFacebookInterface
 @synthesize facebook = facebook_;
@@ -56,6 +60,9 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 
 - (void)requestWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params httpMethod:(NSString*)httpMethod completion:(void (^)(id result, NSError *error))completion {
     [self copyDefaultsToFacebookObject];
+    if (params == nil) {
+        params = [NSMutableDictionary dictionary];
+    }
     SocializeFBRequest *request = [self.facebook requestWithGraphPath:graphPath andParams:[[params mutableCopy] autorelease] andHttpMethod:httpMethod andDelegate:self];
     NSValue *requestId = [self requestIdentifier:request];
     NSAssert([self.handlers objectForKey:requestId] == nil, @"Key for request %@ already exists (should be nil)", requestId);

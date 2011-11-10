@@ -11,6 +11,15 @@
 #import "SampleSdkAppKIFTestController.h"
 @implementation KIFTestScenario (SampleSdkAppAdditions)
 
++ (id)scenarioToTestFacebook {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that another user's profile can be viewed."];
+    NSString *comment = [NSString stringWithFormat:@"comment for %@", [SampleSdkAppKIFTestController runID]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentWithControllerForEntity:@"http://www.getsocialize.com" comment:@"comment!"]];
+    [scenario addStep:[KIFTestStep stepToVerifyFacebookFeedContainsMessage:comment]];
+    
+    return scenario;
+}
+
 + (id)scenarioToTestViewOtherProfile {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that another user's profile can be viewed."];
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
@@ -85,7 +94,7 @@
     // Verify we can show the in-app MFMailComposer
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share via Email"]];
-    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Share with you my interest!"]];
+    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Send"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Delete Draft"]];
     
