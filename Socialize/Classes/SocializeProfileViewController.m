@@ -215,7 +215,7 @@
 
 - (UINavigationController*)navigationControllerForEdit {
     if (navigationControllerForEdit_ == nil) {
-        navigationControllerForEdit_ = [[UINavigationController alloc] initWithRootViewController:self.profileEditViewController];
+        navigationControllerForEdit_ = [[UINavigationController socializeNavigationControllerWithRootViewController:self.profileEditViewController] retain];
         navigationControllerForEdit_.delegate = self;
     }
     return navigationControllerForEdit_;
