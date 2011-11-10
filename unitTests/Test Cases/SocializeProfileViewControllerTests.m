@@ -12,6 +12,7 @@
 #import <OCMock/OCMock.h>
 #import "SocializeProfileEditTableViewCell.h"
 #import "ImagesCache.h"
+#import "UINavigationBarBackground.h"
 
 @interface SocializeProfileViewController ()
 - (void)editButtonPressed:(UIBarButtonItem*)button;
@@ -321,6 +322,8 @@
     
     UINavigationController *defaultNavigationControllerForEdit = self.profileViewController.navigationControllerForEdit;
     GHAssertEquals(defaultNavigationControllerForEdit.delegate, self.origProfileViewController, @"delegate not configured");
+    GHAssertNotNil([UIImage imageNamed:@"socialize-navbar-bg.png"], @"image not found");
+    GHAssertEquals([defaultNavigationControllerForEdit.navigationBar backgroundImage], [UIImage imageNamed:@"socialize-navbar-bg.png"], @"bad image");
 }
 
 - (void)testShowEditProfile {
