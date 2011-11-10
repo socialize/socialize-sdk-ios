@@ -370,13 +370,6 @@
 
     self.title = @"New Comment";
     
-    UIButton * closeButton = [UIButton blackSocializeNavBarButtonWithTitle:@"Cancel"];
-    [closeButton addTarget:self action:@selector(closeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem * leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:closeButton];
-    
-    self.navigationItem.leftBarButtonItem = leftButtonItem;
-    [leftButtonItem release];
     self.navigationItem.leftBarButtonItem = self.cancelButton;
     
     self.sendButton.enabled = NO;
