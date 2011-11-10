@@ -384,11 +384,6 @@
 		180EFEAA14609C8700AA957D /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEA814609C8700AA957D /* SocializeAuthViewController.xib */; };
 		180EFEAB14609C8700AA957D /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEA814609C8700AA957D /* SocializeAuthViewController.xib */; };
 		180EFEAC14609C8700AA957D /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEA814609C8700AA957D /* SocializeAuthViewController.xib */; };
-		180EFEAF14609C9700AA957D /* SocializeAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFEAD14609C9700AA957D /* SocializeAuthViewController.h */; };
-		180EFEB014609C9700AA957D /* SocializeAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFEAD14609C9700AA957D /* SocializeAuthViewController.h */; };
-		180EFEB114609C9700AA957D /* SocializeAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFEAE14609C9700AA957D /* SocializeAuthViewController.m */; };
-		180EFEB214609C9700AA957D /* SocializeAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFEAE14609C9700AA957D /* SocializeAuthViewController.m */; };
-		180EFEB414609C9700AA957D /* SocializeAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFEAE14609C9700AA957D /* SocializeAuthViewController.m */; };
 		180EFECB1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEBF1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png */; };
 		180EFECC1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEBF1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png */; };
 		180EFECD1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEBF1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png */; };
@@ -454,6 +449,10 @@
 		1854BE351461A97400A67715 /* socialize-authorize-user-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1854BE2E1461A97400A67715 /* socialize-authorize-user-icon@2x.png */; };
 		1854BE361461A97400A67715 /* socialize-authorize-user-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1854BE2E1461A97400A67715 /* socialize-authorize-user-icon@2x.png */; };
 		18D8EDD1146B162600E9991F /* AuthViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */; };
+		18D8EDD4146B48F700E9991F /* SocializeAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */; };
+		18D8EDD5146B48F700E9991F /* SocializeAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */; };
+		18D8EDD6146B48F700E9991F /* SocializeAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */; };
+		18D8EDD7146B48F700E9991F /* SocializeAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */; };
 		5C21C0C71396BF8300CF2B9F /* SocializeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */; };
 		5C21C0C91396BF8300CF2B9F /* _Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C31396BF8300CF2B9F /* _Socialize.m */; };
 		5C21C0D11396D9A800CF2B9F /* SocializeEntityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0CF1396D9A800CF2B9F /* SocializeEntityService.m */; };
@@ -1571,8 +1570,6 @@
 		180EFEA014609C7800AA957D /* SocializeAuthInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeAuthInfoTableViewCell.h; sourceTree = "<group>"; };
 		180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAuthInfoTableViewCell.m; sourceTree = "<group>"; };
 		180EFEA814609C8700AA957D /* SocializeAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeAuthViewController.xib; sourceTree = "<group>"; };
-		180EFEAD14609C9700AA957D /* SocializeAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeAuthViewController.h; sourceTree = "<group>"; };
-		180EFEAE14609C9700AA957D /* SocializeAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAuthViewController.m; sourceTree = "<group>"; };
 		180EFEBF1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-authenticate-badge-icon.png"; sourceTree = "<group>"; };
 		180EFEC01460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-authenticate-badge-icon@2x.png"; sourceTree = "<group>"; };
 		180EFEC11460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-facebook-disabled-icon.png"; sourceTree = "<group>"; };
@@ -1593,6 +1590,8 @@
 		18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUnitTestApplication.m; sourceTree = "<group>"; };
 		18D8EDCF146B162600E9991F /* AuthViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthViewControllerTests.h; path = "Test Cases/AuthViewControllerTests.h"; sourceTree = "<group>"; };
 		18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthViewControllerTests.m; path = "Test Cases/AuthViewControllerTests.m"; sourceTree = "<group>"; };
+		18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeAuthViewController.h; path = Classes/SocializeAuthViewController.h; sourceTree = "<group>"; };
+		18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeAuthViewController.m; path = Classes/SocializeAuthViewController.m; sourceTree = "<group>"; };
 		5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequest.h; path = Classes/SocializeRequest.h; sourceTree = "<group>"; };
 		5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRequest.m; path = Classes/SocializeRequest.m; sourceTree = "<group>"; };
 		5C21C0C21396BF8300CF2B9F /* _Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _Socialize.h; path = Classes/_Socialize.h; sourceTree = "<group>"; };
@@ -2220,8 +2219,8 @@
 		16C330BD13F3B75C004EA34D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				180EFEAD14609C9700AA957D /* SocializeAuthViewController.h */,
-				180EFEAE14609C9700AA957D /* SocializeAuthViewController.m */,
+				18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */,
+				18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */,
 				167E11C0144325F9004E4C1B /* SocializeProfileEditTableViewCell.h */,
 				167E11C1144325F9004E4C1B /* SocializeProfileEditTableViewCell.m */,
 				AAD4B40B1460A45000F39D0A /* SocializeProfileEditViewController.h */,
@@ -3233,7 +3232,6 @@
 				AAEB4A721458E45D00A01F5B /* NSData+Base64.h in Headers */,
 				180EFE9614609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */,
 				180EFEA314609C7800AA957D /* SocializeAuthInfoTableViewCell.h in Headers */,
-				180EFEB014609C9700AA957D /* SocializeAuthViewController.h in Headers */,
 				AAE9A6EA145F39A6001A9F1D /* Facebook+Socialize.h in Headers */,
 				AAE9A6F0145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */,
 				166DD6F8146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
@@ -3244,6 +3242,7 @@
 				AA5ACEF21467C43100790B3D /* SocializeProfileEditTableViewCell.h in Headers */,
 				AAE7959014684EB100BEAD28 /* TestLikeServices.h in Headers */,
 				AAE795AF14684F1E00BEAD28 /* TestActivityServices.h in Headers */,
+				18D8EDD5146B48F700E9991F /* SocializeAuthViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3306,7 +3305,6 @@
 				AAEB4A711458E45D00A01F5B /* NSData+Base64.h in Headers */,
 				180EFE9514609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */,
 				180EFEA214609C7800AA957D /* SocializeAuthInfoTableViewCell.h in Headers */,
-				180EFEAF14609C9700AA957D /* SocializeAuthViewController.h in Headers */,
 				AAE9A6E9145F39A6001A9F1D /* Facebook+Socialize.h in Headers */,
 				AAE9A6EF145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */,
 				166DD6F7146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
@@ -3317,6 +3315,7 @@
 				AA5ACEF11467C43000790B3D /* SocializeProfileEditTableViewCell.h in Headers */,
 				AAE7958F14684EB100BEAD28 /* TestLikeServices.h in Headers */,
 				AAE795AE14684F1E00BEAD28 /* TestActivityServices.h in Headers */,
+				18D8EDD4146B48F700E9991F /* SocializeAuthViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4591,7 +4590,6 @@
 				AAEB4A731458E45D00A01F5B /* NSData+Base64.m in Sources */,
 				180EFE9714609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */,
 				180EFEA414609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */,
-				180EFEB114609C9700AA957D /* SocializeAuthViewController.m in Sources */,
 				AAE9A6EB145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAE9A6F1145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */,
 				166DD6FD1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */,
@@ -4599,6 +4597,7 @@
 				AAD4B4201460C19E00F39D0A /* SocializeProfileEditValueController.m in Sources */,
 				AAD4B4221460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */,
 				AAC201991460CFD30045FDAB /* UINavigationController+Socialize.m in Sources */,
+				18D8EDD6146B48F700E9991F /* SocializeAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4697,7 +4696,6 @@
 				AA9E0C91144E147900D2C37F /* GenericViewController.m in Sources */,
 				180EFE9A14609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */,
 				180EFEA714609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */,
-				180EFEB414609C9700AA957D /* SocializeAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4878,7 +4876,6 @@
 				AAEB4A741458E45D00A01F5B /* NSData+Base64.m in Sources */,
 				180EFE9814609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */,
 				180EFEA514609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */,
-				180EFEB214609C9700AA957D /* SocializeAuthViewController.m in Sources */,
 				AAE9A6EC145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAE9A6F2145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */,
 				166DD6FE1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */,
@@ -4886,6 +4883,7 @@
 				AAD4B4211460C1A000F39D0A /* SocializeProfileEditValueController.m in Sources */,
 				AAD4B4231460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */,
 				AAC2019A1460CFD30045FDAB /* UINavigationController+Socialize.m in Sources */,
+				18D8EDD7146B48F700E9991F /* SocializeAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

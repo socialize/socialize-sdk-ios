@@ -50,12 +50,12 @@
 @synthesize mockLocationManager = _mockLocationManager;
 - (void)setUp { 
     //MOCK LOCATION MANAGER
-    self.mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];        
+    self.mockLocationManager = [OCMockObject niceMockForClass: [SocializeLocationManager class]];        
     
     self.postCommentViewController = [[SocializePostCommentViewController alloc] initWithNibName:nil bundle:nil entityUrlString:TEST_URL keyboardListener:nil locationManager:self.mockLocationManager geocoderInfo:self.mockLocationManager];
 
     //MOCK SOCIALIZE OBJ
-    self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
+    self.mockSocialize = [OCMockObject niceMockForClass:[Socialize class]];
     self.postCommentViewController.socialize = self.mockSocialize;
 
     
@@ -79,7 +79,7 @@
 
 -(void)testInit
 {
-    id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
+    id mockLocationManager = [OCMockObject niceMockForClass:[SocializeLocationManager class]];
     BOOL trueValue = YES;
     [[[mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
     [[mockLocationManager expect]setShouldShareLocation:YES];
@@ -229,6 +229,7 @@
 
     //MOCK isAuthenticatedWithFacebook
     [[[self.mockSocialize expect] andReturnValue:[NSNumber numberWithBool:NO]] isAuthenticatedWithFacebook];
+    [Socialize storeFacebookAppId:@"1234"];
     
     //perform test
     [self.postCommentViewController performSelector:@selector(sendButtonPressed:)withObject:nil]; 
