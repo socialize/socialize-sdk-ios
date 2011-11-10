@@ -166,6 +166,10 @@
 	[_activityIndicator startAnimating];
 }
 
+- (UIImage*)buttonBackgroundImage:(NSString*)imageName {
+    return [[UIImage imageNamed:imageName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+}
+
 - (CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName 
 {
 	CGSize labelSize;
@@ -222,14 +226,14 @@
 - (void) updateIsLiked: (BOOL)isLiked{
     _isLiked = isLiked;
 	if (_isLiked){
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-red.png"] forState:UIControlStateNormal]; 
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-red-hover.png"] forState: UIControlStateHighlighted]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-red.png"] forState:UIControlStateNormal]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-red-hover.png"] forState: UIControlStateHighlighted]; 
 		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-liked.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
 	else{
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-black.png"] forState:UIControlStateNormal]; 
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-black-hover.png"] forState:UIControlStateHighlighted]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-black.png"] forState:UIControlStateNormal]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-black-hover.png"] forState:UIControlStateHighlighted]; 
 		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-like.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
@@ -247,14 +251,14 @@
     _isLiked = isLiked;
 	[_likeButton setTitle:formattedValue forState:UIControlStateNormal] ;
 	if (_isLiked){
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-red.png"] forState:UIControlStateNormal]; 
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-red-hover.png"] forState: UIControlStateHighlighted]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-red.png"] forState:UIControlStateNormal]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-red-hover.png"] forState: UIControlStateHighlighted]; 
 		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-liked.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
 	else{
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-black.png"] forState:UIControlStateNormal]; 
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-black-hover.png"] forState:UIControlStateHighlighted]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-black.png"] forState:UIControlStateNormal]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-black-hover.png"] forState:UIControlStateHighlighted]; 
 		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-like.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
@@ -296,8 +300,8 @@
 		button.frame =  CGRectMake(frameOrigin.x, frameOrigin.y , buttonSize.width , buttonSize.height);
  
 	
-	UIImage* imageForNormalState = [[UIImage imageNamed:bgImage] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
-	UIImage* imageForHighlightedState = [[UIImage imageNamed:bgHighlightedImage] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+	UIImage* imageForNormalState = [self buttonBackgroundImage:bgImage];;
+	UIImage* imageForHighlightedState = [self buttonBackgroundImage:bgHighlightedImage];
 	
 	[button setBackgroundImage:imageForNormalState forState:UIControlStateNormal]; 
 	[button setBackgroundImage:imageForHighlightedState forState:UIControlStateHighlighted]; 
