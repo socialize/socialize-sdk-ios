@@ -142,7 +142,6 @@
 		1638C529143DC98E00538659 /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638C527143DC98E00538659 /* TestSocializeActionBar.m */; };
 		1638C52A143DC98E00538659 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1638C528143DC98E00538659 /* TestSocializeActionBar.xib */; };
 		16437677144C33D8001EA3E4 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C061445BFA3006E2EB4 /* NSString+MD5Addition.m */; };
-		16437678144C33DB001EA3E4 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C081445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m */; };
 		16437679144C33DF001EA3E4 /* SocializeGeocoderAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C151445D2ED006E2EB4 /* SocializeGeocoderAdapter.m */; };
 		1643768C144C3BC4001EA3E4 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
 		16437695144C4F4E001EA3E4 /* comment-header-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 16437692144C4F4D001EA3E4 /* comment-header-icon.png */; };
@@ -351,7 +350,6 @@
 		16D547A4144EA4340010732A /* SocializeActivityJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D547A0144EA4330010732A /* SocializeActivityJSONFormatter.m */; };
 		16DAC99A1420C0EE0011CD5F /* UIKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DAC9981420C0EE0011CD5F /* UIKeyboardListener.m */; };
 		16E33C091445BFA3006E2EB4 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C061445BFA3006E2EB4 /* NSString+MD5Addition.m */; };
-		16E33C0A1445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C081445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m */; };
 		16E33C161445D2ED006E2EB4 /* SocializeGeocoderAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C151445D2ED006E2EB4 /* SocializeGeocoderAdapter.m */; };
 		16F21EE013CDDE5000911977 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		16F449BE13AF2974003BE655 /* SocializeCommentFormaterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449BD13AF2974003BE655 /* SocializeCommentFormaterTests.m */; };
@@ -839,6 +837,14 @@
 		AA3326F5144CDA850033C7FA /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3326F2144CDA4B0033C7FA /* libKIF.a */; };
 		AA3326F6144CDAAA0033C7FA /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE945143564B100851C73 /* GHUnitIOS.framework */; };
 		AA33A43B1463174700319168 /* profile_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CD4882C1386C42300E60C4C /* profile_functions.c */; };
+		AA369FB7146C50A700E15AA4 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = AA369FB3146C50A700E15AA4 /* NSData+Base64.h */; };
+		AA369FB8146C50A700E15AA4 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = AA369FB3146C50A700E15AA4 /* NSData+Base64.h */; };
+		AA369FB9146C50A700E15AA4 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AA369FB4146C50A700E15AA4 /* NSData+Base64.m */; };
+		AA369FBA146C50A700E15AA4 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AA369FB4146C50A700E15AA4 /* NSData+Base64.m */; };
+		AA369FBB146C50A700E15AA4 /* UIDevice+IdentifierAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = AA369FB5146C50A700E15AA4 /* UIDevice+IdentifierAddition.h */; };
+		AA369FBC146C50A700E15AA4 /* UIDevice+IdentifierAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = AA369FB5146C50A700E15AA4 /* UIDevice+IdentifierAddition.h */; };
+		AA369FBD146C50A700E15AA4 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = AA369FB6146C50A700E15AA4 /* UIDevice+IdentifierAddition.m */; };
+		AA369FBE146C50A700E15AA4 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = AA369FB6146C50A700E15AA4 /* UIDevice+IdentifierAddition.m */; };
 		AA3CB2C4144CE26100AA861A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA863899144CA42C00CFA759 /* libOCMock.a */; };
 		AA3CB2C6144CEEAC00AA861A /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3CB2C5144CEEAC00AA861A /* Smiley.png */; };
 		AA3CB2C7144CEEAC00AA861A /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3CB2C5144CEEAC00AA861A /* Smiley.png */; };
@@ -1173,10 +1179,6 @@
 		AAE9A6F0145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE9A6ED145F55B3001A9F1D /* SocializeFacebookInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE9A6F1145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6EE145F55B3001A9F1D /* SocializeFacebookInterface.m */; };
 		AAE9A6F2145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6EE145F55B3001A9F1D /* SocializeFacebookInterface.m */; };
-		AAEB4A711458E45D00A01F5B /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEB4A6D1458E45D00A01F5B /* NSData+Base64.h */; };
-		AAEB4A721458E45D00A01F5B /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEB4A6D1458E45D00A01F5B /* NSData+Base64.h */; };
-		AAEB4A731458E45D00A01F5B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEB4A6E1458E45D00A01F5B /* NSData+Base64.m */; };
-		AAEB4A741458E45D00A01F5B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEB4A6E1458E45D00A01F5B /* NSData+Base64.m */; };
 		AAEB4A7B1458E88300A01F5B /* SocializeServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */; };
 		AAFD1E57146B997A00FCB8A7 /* SocializeActionBarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 167E11D31443293E004E4C1B /* SocializeActionBarTests.m */; };
 /* End PBXBuildFile section */
@@ -1458,8 +1460,6 @@
 		16DAC9981420C0EE0011CD5F /* UIKeyboardListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIKeyboardListener.m; path = Classes/UIKeyboardListener.m; sourceTree = "<group>"; };
 		16E33C051445BFA3006E2EB4 /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5Addition.h"; path = "Classes/NSString+MD5Addition.h"; sourceTree = "<group>"; };
 		16E33C061445BFA3006E2EB4 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5Addition.m"; path = "Classes/NSString+MD5Addition.m"; sourceTree = "<group>"; };
-		16E33C071445BFA3006E2EB4 /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIDevice+IdentifierAddition.h"; path = "Classes/UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
-		16E33C081445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+IdentifierAddition.m"; path = "Classes/UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
 		16E33C141445D2ED006E2EB4 /* SocializeGeocoderAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeGeocoderAdapter.h; path = Classes/SocializeGeocoderAdapter.h; sourceTree = "<group>"; };
 		16E33C151445D2ED006E2EB4 /* SocializeGeocoderAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeGeocoderAdapter.m; path = Classes/SocializeGeocoderAdapter.m; sourceTree = "<group>"; };
 		16F449BC13AF2974003BE655 /* SocializeCommentFormaterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentFormaterTests.h; path = "Test Cases/SocializeCommentFormaterTests.h"; sourceTree = "<group>"; };
@@ -1741,6 +1741,10 @@
 		AA3326E4144CD9FB0033C7FA /* SampleSdkAppKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppKIFTestController.m; sourceTree = "<group>"; };
 		AA3326EA144CDA4A0033C7FA /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = Frameworks/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
 		AA33A42B14630B8100319168 /* unitTests2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "unitTests2-Info.plist"; path = "/Users/griswold/ios/socialize-sdk-ios/unitTests2-Info.plist"; sourceTree = "<absolute>"; };
+		AA369FB3146C50A700E15AA4 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		AA369FB4146C50A700E15AA4 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		AA369FB5146C50A700E15AA4 /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
+		AA369FB6146C50A700E15AA4 /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
 		AA3CB2C5144CEEAC00AA861A /* Smiley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Smiley.png; sourceTree = "<group>"; };
 		AA3D69441432ADEF00DA77AC /* background_brushed_metal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background_brushed_metal@2x.png"; path = "Resources/background_brushed_metal@2x.png"; sourceTree = "<group>"; };
 		AA3D69451432ADEF00DA77AC /* socialize-activity-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-bg.png"; path = "Resources/socialize-activity-bg.png"; sourceTree = "<group>"; };
@@ -1884,8 +1888,6 @@
 		AAE9A6E8145F39A6001A9F1D /* Facebook+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Facebook+Socialize.m"; path = "Classes/Facebook+Socialize.m"; sourceTree = "<group>"; };
 		AAE9A6ED145F55B3001A9F1D /* SocializeFacebookInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebookInterface.h; path = Classes/SocializeFacebookInterface.h; sourceTree = "<group>"; };
 		AAE9A6EE145F55B3001A9F1D /* SocializeFacebookInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebookInterface.m; path = Classes/SocializeFacebookInterface.m; sourceTree = "<group>"; };
-		AAEB4A6D1458E45D00A01F5B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "Misc/NSData+Base64.h"; sourceTree = "<group>"; };
-		AAEB4A6E1458E45D00A01F5B /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "Misc/NSData+Base64.m"; sourceTree = "<group>"; };
 		AAEB4A791458E88300A01F5B /* SocializeServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeServiceTests.h; path = "Test Cases/SocializeServiceTests.h"; sourceTree = "<group>"; };
 		AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeServiceTests.m; path = "Test Cases/SocializeServiceTests.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2021,14 +2023,10 @@
 		1657EF9813A216B500E488CC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				AAEB4A6D1458E45D00A01F5B /* NSData+Base64.h */,
-				AAEB4A6E1458E45D00A01F5B /* NSData+Base64.m */,
 				AAD67923144911DA00C17C4D /* UIImage+Network.h */,
 				AAD67924144911DA00C17C4D /* UIImage+Network.m */,
 				16E33C051445BFA3006E2EB4 /* NSString+MD5Addition.h */,
 				16E33C061445BFA3006E2EB4 /* NSString+MD5Addition.m */,
-				16E33C071445BFA3006E2EB4 /* UIDevice+IdentifierAddition.h */,
-				16E33C081445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m */,
 				1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */,
 				1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */,
 				16E33C141445D2ED006E2EB4 /* SocializeGeocoderAdapter.h */,
@@ -2617,6 +2615,7 @@
 		6DFBFE52141FDC890030DE32 /* ThirdPartyLibs */ = {
 			isa = PBXGroup;
 			children = (
+				AA369FB2146C50A700E15AA4 /* Misc */,
 				16C3655514518E8C00DD5421 /* BlocksKit */,
 				6DFBFE8E141FDE660030DE32 /* JSONKit */,
 				6DFBFE8D141FDDD80030DE32 /* OAuthConsumer */,
@@ -2871,6 +2870,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		AA369FB2146C50A700E15AA4 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				AA369FB3146C50A700E15AA4 /* NSData+Base64.h */,
+				AA369FB4146C50A700E15AA4 /* NSData+Base64.m */,
+				AA369FB5146C50A700E15AA4 /* UIDevice+IdentifierAddition.h */,
+				AA369FB6146C50A700E15AA4 /* UIDevice+IdentifierAddition.m */,
+			);
+			name = Misc;
+			path = Socialize/Misc;
+			sourceTree = "<group>";
+		};
 		AA3E20A31461F057000321BF /* IntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -3099,7 +3110,6 @@
 				16C365EA14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */,
 				16C365EE14518F1600DD5421 /* UIView+BlocksKit.h in Headers */,
 				16C365F214518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */,
-				AAEB4A721458E45D00A01F5B /* NSData+Base64.h in Headers */,
 				AAE9A6EA145F39A6001A9F1D /* Facebook+Socialize.h in Headers */,
 				AAE9A6F0145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */,
 				166DD6F8146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
@@ -3110,6 +3120,8 @@
 				AA5ACEF21467C43100790B3D /* SocializeProfileEditTableViewCell.h in Headers */,
 				AAE7959014684EB100BEAD28 /* TestLikeServices.h in Headers */,
 				AAE795AF14684F1E00BEAD28 /* TestActivityServices.h in Headers */,
+				AA369FB8146C50A700E15AA4 /* NSData+Base64.h in Headers */,
+				AA369FBC146C50A700E15AA4 /* UIDevice+IdentifierAddition.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3169,7 +3181,6 @@
 				16C365E914518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */,
 				16C365ED14518F1600DD5421 /* UIView+BlocksKit.h in Headers */,
 				16C365F114518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */,
-				AAEB4A711458E45D00A01F5B /* NSData+Base64.h in Headers */,
 				AAE9A6E9145F39A6001A9F1D /* Facebook+Socialize.h in Headers */,
 				AAE9A6EF145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */,
 				166DD6F7146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
@@ -3180,6 +3191,8 @@
 				AA5ACEF11467C43000790B3D /* SocializeProfileEditTableViewCell.h in Headers */,
 				AAE7958F14684EB100BEAD28 /* TestLikeServices.h in Headers */,
 				AAE795AE14684F1E00BEAD28 /* TestActivityServices.h in Headers */,
+				AA369FB7146C50A700E15AA4 /* NSData+Base64.h in Headers */,
+				AA369FBB146C50A700E15AA4 /* UIDevice+IdentifierAddition.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4347,7 +4360,6 @@
 				167E11C7144325F9004E4C1B /* SocializeProfileEditTableViewCell.m in Sources */,
 				AAD67926144911DA00C17C4D /* UIImage+Network.m in Sources */,
 				16E33C091445BFA3006E2EB4 /* NSString+MD5Addition.m in Sources */,
-				16E33C0A1445BFA3006E2EB4 /* UIDevice+IdentifierAddition.m in Sources */,
 				16E33C161445D2ED006E2EB4 /* SocializeGeocoderAdapter.m in Sources */,
 				16D547A3144EA4340010732A /* SocializeActivityJSONFormatter.m in Sources */,
 				16C3658D14518F1600DD5421 /* BKDelegate.m in Sources */,
@@ -4375,7 +4387,6 @@
 				16C365EB14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				16C365EF14518F1600DD5421 /* UIView+BlocksKit.m in Sources */,
 				16C365F314518F1600DD5421 /* UIWebView+BlocksKit.m in Sources */,
-				AAEB4A731458E45D00A01F5B /* NSData+Base64.m in Sources */,
 				AAE9A6EB145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAE9A6F1145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */,
 				166DD6FD1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */,
@@ -4383,6 +4394,8 @@
 				AAD4B4201460C19E00F39D0A /* SocializeProfileEditValueViewController.m in Sources */,
 				AAD4B4221460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */,
 				AAC201991460CFD30045FDAB /* UINavigationController+Socialize.m in Sources */,
+				AA369FB9146C50A700E15AA4 /* NSData+Base64.m in Sources */,
+				AA369FBD146C50A700E15AA4 /* UIDevice+IdentifierAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4630,7 +4643,6 @@
 				AABC1533144A114900088B7D /* SocializeProfileEditTableViewCell.m in Sources */,
 				AABC1538144A114900088B7D /* UIImage+Network.m in Sources */,
 				16437677144C33D8001EA3E4 /* NSString+MD5Addition.m in Sources */,
-				16437678144C33DB001EA3E4 /* UIDevice+IdentifierAddition.m in Sources */,
 				16437679144C33DF001EA3E4 /* SocializeGeocoderAdapter.m in Sources */,
 				16D547A4144EA4340010732A /* SocializeActivityJSONFormatter.m in Sources */,
 				16C3658E14518F1600DD5421 /* BKDelegate.m in Sources */,
@@ -4658,7 +4670,6 @@
 				16C365EC14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				16C365F014518F1600DD5421 /* UIView+BlocksKit.m in Sources */,
 				16C365F414518F1600DD5421 /* UIWebView+BlocksKit.m in Sources */,
-				AAEB4A741458E45D00A01F5B /* NSData+Base64.m in Sources */,
 				AAE9A6EC145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAE9A6F2145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */,
 				166DD6FE1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */,
@@ -4666,6 +4677,8 @@
 				AAD4B4211460C1A000F39D0A /* SocializeProfileEditValueViewController.m in Sources */,
 				AAD4B4231460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */,
 				AAC2019A1460CFD30045FDAB /* UINavigationController+Socialize.m in Sources */,
+				AA369FBA146C50A700E15AA4 /* NSData+Base64.m in Sources */,
+				AA369FBE146C50A700E15AA4 /* UIDevice+IdentifierAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
