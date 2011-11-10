@@ -15,4 +15,5 @@
 @property(nonatomic,retain) id mockAuthTableViewCell;
 @property(nonatomic,retain) id mockTableView;
 @property(nonatomic,retain) id partialMockAuthViewController;
+@property(nonatomic,retain) id mockSocialize;
 @end

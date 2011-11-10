@@ -11,14 +11,17 @@
 
 //THIS REDEFINES THE INTERFACES AS PUBLIC SO WE CAN TEST THEM
 @interface  SocializeAuthViewController(public)
--(SocializeAuthTableViewCell *)getAuthorizeTableViewCell;
--(SocializeAuthInfoTableViewCell*)getAuthorizeInfoTableViewCell;
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
--(UIBarButtonItem *) createSkipButton;
--(void)skipButtonPressed:(id)button;
--(void)profileViewDidFinish;
-@property (nonatomic, retain) id<SocializeAuthViewDelegate> delegate;
-@property (nonatomic, retain) id<SocializeUser> user;
+    -(SocializeAuthTableViewCell *)getAuthorizeTableViewCell;
+    -(SocializeAuthInfoTableViewCell*)getAuthorizeInfoTableViewCell;
+    - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+    -(UIBarButtonItem *) createSkipButton;
+    -(void)skipButtonPressed:(id)button;
+    -(void)profileViewDidFinish;
+    -(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass;
+    -(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName;
+    - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+    @property (nonatomic, retain) id<SocializeAuthViewDelegate> delegate;
+    @property (nonatomic, retain) id<SocializeUser> user;
 @end
 
 
@@ -36,13 +39,17 @@ BOOL isAuthenticatedWithFacebook = YES;
 @synthesize mockAuthTableViewCell = _mockAuthTableViewCell;
 @synthesize mockTableView = _mockTableView;
 @synthesize partialMockAuthViewController = _partialMockAuthViewController;
+@synthesize mockSocialize = _mockSocialize;
+
 - (void)setUp { 
     self.authViewController = [[SocializeAuthViewController alloc] initWithNibName:nil bundle:nil];
     //WE'LL CREATE A PARTIAL MOCK INCASE WE WANT TO SWIZZLE/STUB METHODS OUT IN ONE OF THE TESTS
     self.partialMockAuthViewController = [OCMockObject partialMockForObject:self.authViewController];
     self.mockAuthTableViewCell = [OCMockObject niceMockForClass:[SocializeAuthTableViewCell class]];
     self.mockTableView = [OCMockObject mockForClass:[UITableView class]];
-
+    self.mockSocialize = [OCMockObject niceMockForClass:[Socialize class]];
+    self.authViewController.socialize = self.mockSocialize;
+                          
 }
 // Run after each test method
 - (void)tearDown { 
@@ -50,12 +57,13 @@ BOOL isAuthenticatedWithFacebook = YES;
     [self.partialMockAuthViewController verify];
     [self.mockAuthTableViewCell verify];
     [self.mockTableView verify];
+    [self.mockSocialize verify];
     
     //release all the objects and cleanup memory
     self.authViewController = nil;
     self.partialMockAuthViewController = nil;
     self.mockAuthTableViewCell = nil;
-    self.mockTableView = [OCMockObject mockForClass:[UITableView class]];
+    self.mockSocialize = nil;
 }
 -(void) testSkipButtonPressed {
     id mockButton = [OCMockObject mockForClass:[UIButton class]];
@@ -136,6 +144,26 @@ BOOL isAuthenticatedWithFacebook = YES;
     [[self.partialMockAuthViewController expect] profileViewDidFinish];
     [self.authViewController performSelector:method withObject:mockProfileViewController];
 }
+
+-(void) testDidSelectRowForFB {
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    id mockTableView = [OCMockObject mockForClass:[UITableView class]];
+    [[mockTableView expect] deselectRowAtIndexPath:path animated:YES];
+    [self.authViewController tableView:mockTableView didSelectRowAtIndexPath:path];
+    [mockTableView verify];
+}
+-(void) testGetCellFromNib {
+    NSMutableArray *topLevelViews = [[NSMutableArray alloc] init];
+    id mockCell = [OCMockObject mockForClass:[SocializeAuthInfoTableViewCell class]];
+    [[[mockCell expect] andReturnValue:[NSNumber numberWithBool:YES]] isKindOfClass:[OCMArg any]];
+    [topLevelViews addObject:mockCell];
+    [[[self.partialMockAuthViewController expect] andReturn:topLevelViews] getTopLevelViewsFromNib:@"testnib"];
+    [self.authViewController getCellFromNibNamed:@"testnib" withClass:[SocializeAuthTableViewCell class]];
+    
+    //verify the mock
+    [mockCell verify];
+}
+
 - (void)testProfileViewDidCancel {
     [self profileViewDelegateWithSelector:@selector(profileViewControllerDidCancel:)];
 }

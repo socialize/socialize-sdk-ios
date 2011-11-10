@@ -18,6 +18,7 @@
     -(UIBarButtonItem *) createSkipButton;
     -(void)profileViewDidFinish;
     -(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass;
+    -(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName;
     @property (nonatomic, retain) id<SocializeAuthViewDelegate> delegate;
     @property (nonatomic, retain) id<SocializeUser> user;
 @end
@@ -120,13 +121,17 @@
 -(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass 
 {
     id cell = nil;
-    NSArray *topLevelViews = [[NSBundle mainBundle] loadNibNamed:nibNamed owner:self options:nil];
+    NSArray *topLevelViews = [self getTopLevelViewsFromNib:nibNamed];
     for (id topLevelView in topLevelViews) {
         if ([topLevelView isKindOfClass:klass] ) {
             cell = topLevelView;
         }
     }
     return cell;
+}
+
+-(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName {
+    return [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil];
 }
     
 - (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
@@ -164,10 +169,10 @@
 }
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [aTableView deselectRowAtIndexPath:indexPath animated:YES];
 	if(indexPath.section == 0){
         [self.socialize authenticateWithFacebook];
-        [self startLoadAnimationForView:self.view   ];
+        [self startLoadAnimationForView:self.view];
     }
     
 }
