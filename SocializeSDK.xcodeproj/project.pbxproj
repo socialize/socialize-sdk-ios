@@ -2492,8 +2492,6 @@
 			isa = PBXGroup;
 			children = (
 				166DD757146421130017D0E9 /* SocializePostCommentViewControllerLandscape.xib */,
-				AAD7E389144F80320073308D /* SocializeProfileViewControllerTests.h */,
-				AAD7E38A144F80320073308D /* SocializeProfileViewControllerTests.m */,
 				6D3F84B51424046D00825DFC /* PostCommentViewControllerForTest.h */,
 				6D3F84B61424046D00825DFC /* PostCommentViewControllerForTest.m */,
 				6D44A37713FC3456004B3A46 /* SocializeActionTests.h */,
@@ -2516,6 +2514,8 @@
 				167E11D31443293E004E4C1B /* SocializeActionBarTests.m */,
 				AAC43CB7145B726500F607C8 /* LoadingViewTests.h */,
 				AAC43CB8145B726500F607C8 /* LoadingViewTests.m */,
+				AAD7E389144F80320073308D /* SocializeProfileViewControllerTests.h */,
+				AAD7E38A144F80320073308D /* SocializeProfileViewControllerTests.m */,
 				AA91664E1463B24700EFBD7E /* SocializeProfileEditViewControllerTest.h */,
 				AA91664F1463B24700EFBD7E /* SocializeProfileEditViewControllerTest.m */,
 				AA26DD30146AF87E00AA25BF /* SocializeProfileEditValueViewControllerTest.h */,

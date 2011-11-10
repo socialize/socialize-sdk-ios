@@ -28,24 +28,17 @@
 #import "SocializeBaseViewController.h"
 #import "LoadingView.h"
 #import "UINavigationBarBackground.h"
+#import "UIButton+Socialize.h"
 
 
 @implementation SocializeBaseViewController
-
-@synthesize socialize;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        socialize = [[Socialize alloc] initWithDelegate:self];
-    }
-    return self;
-}
+@synthesize doneButton = doneButton_;
+@synthesize editButton = editButton_;
+@synthesize socialize = socialize_;
 
 - (void)dealloc
 {
-    [socialize release];
+    self.socialize = nil;
     [super dealloc];
 }
 
@@ -57,6 +50,42 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
+}
+
+- (Socialize*)socialize {
+    if (socialize_ == nil) {
+        socialize_ = [[Socialize alloc] initWithDelegate:self];
+    }
+    
+    return socialize_;
+}
+
+- (UIBarButtonItem*)doneButton {
+    if (doneButton_ == nil) {
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Done"];
+        [button addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        doneButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
+    }
+    return doneButton_;
+}
+
+- (UIBarButtonItem*)editButton {
+    if (editButton_ == nil) {
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Edit"];
+        [button addTarget:self action:@selector(editButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        editButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
+    }
+    return editButton_;
+}
+
+- (void)editButtonPressed:(UIBarButtonItem*)button {
+}
+
+- (void)doneButtonPressed:(UIBarButtonItem*)button {
+}
 
 -(void) showAllertWithText: (NSString*)allertMsg andTitle: (NSString*)title
 {
@@ -80,12 +109,20 @@
     [_loadingIndicatorView removeView];_loadingIndicatorView = nil;
 }
 
+- (void)startLoading {
+    [self startLoadAnimationForView:self.view];
+}
+
+- (void)stopLoading {
+    [self stopLoading];
+}
+
 -(void)performAutoAuth
 {
     if(![self.socialize isAuthenticated])
     {
         [self startLoadAnimationForView: self.view];
-        [socialize authenticateAnonymously];
+        [self.socialize authenticateAnonymously];
     }
     else
         [self afterAnonymouslyLoginAction];
@@ -136,5 +173,14 @@
 {
     // Should be implemented in the child classes.
 }
+
+- (void)navigationController:(UINavigationController *)localNavigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    // This is weird. 1234 is special tag set by our UINavigationBar setBackgroundImage: on iOS pre-5.0
+    // It is used because somehow the background image moves to the front after some controller transitions
+    [localNavigationController.navigationBar resetBackground:1234];
+}
+
+
 
 @end

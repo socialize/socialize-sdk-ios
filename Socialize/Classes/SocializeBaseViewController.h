@@ -31,16 +31,20 @@
 
 @interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate> {
     @private 
-    Socialize* socialize;
     LoadingView*  _loadingIndicatorView;
 }
 
 @property (nonatomic, retain) Socialize* socialize;
+@property (nonatomic, retain) UIBarButtonItem *doneButton;
+@property (nonatomic, retain) UIBarButtonItem *editButton;
 
 -(void) showAllertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
+-(void) startLoading;
+-(void) stopLoading;
 -(void) startLoadAnimationForView: (UIView*) view;
 -(void) stopLoadAnimation;
 -(void)performAutoAuth;
 -(void) afterAnonymouslyLoginAction;
+
 
 @end
