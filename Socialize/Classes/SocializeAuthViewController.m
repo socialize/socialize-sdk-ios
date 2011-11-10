@@ -28,11 +28,16 @@
 @implementation SocializeAuthViewController
 
 @synthesize tableView;
-//@synthesize socialize;
 @synthesize delegate = _delegate;
 @synthesize user = _user;
 
 
+-(void) dealloc {
+    self.tableView = nil;
+    self.delegate = nil;
+    self.user = nil;
+    [super dealloc];
+}
 +(UINavigationController*)createNavigationControllerForAuthViewControllerWithDelegate:(id<SocializeAuthViewDelegate>)delegate;
 {
     SocializeAuthViewController *authController 
