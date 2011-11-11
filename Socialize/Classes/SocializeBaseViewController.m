@@ -43,11 +43,13 @@
 @synthesize saveButton = saveButton_;
 @synthesize socialize = socialize_;
 @synthesize facebookAuthQuestionDialog = facebookAuthQuestionDialog_;
+@synthesize postFacebookAuthenticationProfileViewController = postFacebookAuthenticationProfileViewController_;
 
 - (void)dealloc
 {
     self.socialize = nil;
     self.facebookAuthQuestionDialog = nil;
+    self.postFacebookAuthenticationProfileViewController = nil;
     
     [super dealloc];
 }
@@ -68,6 +70,7 @@
     self.cancelButton = nil;
     self.sendButton = nil;
     self.facebookAuthQuestionDialog = nil;
+    self.postFacebookAuthenticationProfileViewController = nil;
 }
 
 - (UITableView*)tableView {
@@ -291,12 +294,19 @@
     }
 }
 
+- (SocializeProfileViewController*)postFacebookAuthenticationProfileViewController {
+    if (postFacebookAuthenticationProfileViewController_ == nil) {
+        postFacebookAuthenticationProfileViewController_ = [[SocializeProfileViewController alloc] init];
+        postFacebookAuthenticationProfileViewController_.delegate = self;
+    }
+    
+    return postFacebookAuthenticationProfileViewController_;
+}
+
 - (void)showProfile {
-    SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
-    profile.delegate = self;
     
     UINavigationController *navigationController = [[[UINavigationController alloc]
-                                                     initWithRootViewController:profile]
+                                                     initWithRootViewController:self.postFacebookAuthenticationProfileViewController]
                                                     autorelease];
     
     [self presentModalViewController:navigationController animated:YES];
@@ -321,11 +331,15 @@
 }
 
 - (void)profileViewControllerDidSave:(SocializeProfileViewController *)profileViewController {
-    [self dismissProfile];
+    if (profileViewController == self.postFacebookAuthenticationProfileViewController) {
+        [self dismissProfile];
+    }
 }
 
 - (void)profileViewControllerDidCancel:(SocializeProfileViewController *)profileViewController {
-    [self dismissProfile];
+    if (profileViewController == self.postFacebookAuthenticationProfileViewController) {
+        [self dismissProfile];
+    }
 }
 
 

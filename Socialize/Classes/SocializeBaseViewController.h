@@ -29,6 +29,7 @@
 #import "_Socialize.h"
 
 @class LoadingView;
+@class SocializeProfileViewController;
 
 @interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate> {
     @private 
@@ -43,6 +44,7 @@
 @property (nonatomic, retain) UIBarButtonItem *cancelButton;
 @property (nonatomic, retain) UIBarButtonItem *saveButton;
 @property(nonatomic, retain) UIAlertView *facebookAuthQuestionDialog;
+@property(nonatomic, retain) SocializeProfileViewController *postFacebookAuthenticationProfileViewController;
 
 -(void) showAllertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoading;
