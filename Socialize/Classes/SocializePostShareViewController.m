@@ -45,12 +45,19 @@
     [super dealloc];
 }
 
+- (BOOL)shouldAutoAuthOnAppear {
+    return NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"New Share";
-    
-    [self authenticateWithFacebook];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self authenticateWithFacebook];    
 }
 
 - (void)createShare {
