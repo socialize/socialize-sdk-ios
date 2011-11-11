@@ -45,6 +45,7 @@
 @property (nonatomic, retain) UIBarButtonItem *saveButton;
 @property(nonatomic, retain) UIAlertView *facebookAuthQuestionDialog;
 @property(nonatomic, retain) SocializeProfileViewController *postFacebookAuthenticationProfileViewController;
+@property (nonatomic, assign) BOOL requestingFacebookFromUser;
 
 -(void) showAllertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoading;
@@ -53,10 +54,10 @@
 -(void) stopLoadAnimation;
 -(void)performAutoAuth;
 -(void) afterAnonymouslyLoginAction;
+-(void)afterFacebookLoginAction;
 -(BOOL)shouldAutoAuthOnAppear;
 - (UIView*)showLoadingInView;
-- (void)afterSuccessfulFacebookAuthentication;
-- (void)afterRejectedFacebookAuthentication;
+- (void)afterUserRejectedFacebookAuthentication;
 - (void)requestFacebookFromUser;
 - (void)authenticateWithFacebook;
 - (void)editButtonPressed:(UIButton*)button;

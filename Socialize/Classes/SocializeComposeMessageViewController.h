@@ -19,8 +19,6 @@
 
 @interface SocializeComposeMessageViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate>
 {
-    NSString*   _entityUrlString;
-    
     UITextView* commentTextView;
     UILabel*    locationText; 
     UIButton*   doNotShareLocationButton;
@@ -29,6 +27,7 @@
     Class _geoCoderInfo;
 }
 
+@property (nonatomic, copy) NSString *entityURL;
 @property(nonatomic, retain) SocializeLocationManager *locationManager;
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;
 @property(nonatomic, retain) IBOutlet UILabel       *locationText;

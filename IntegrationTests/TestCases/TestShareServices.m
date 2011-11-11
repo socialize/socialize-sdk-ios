@@ -12,7 +12,7 @@
 
 - (void)testCreateShare {
     NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", _cmd]];
-    [self createShareWithURL:shareURL medium:Facebook text:@"a share"];
+    [self createShareWithURL:shareURL medium:SocializeShareMediumFacebook text:@"a share"];
 }
 
 @end

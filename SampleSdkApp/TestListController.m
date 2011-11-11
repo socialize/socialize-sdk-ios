@@ -48,6 +48,7 @@
                       @"Test Socialize Action Bar",
                       @"Test Tabbed Socialize Action Bar",
                       @"Test Current user activity",
+                      @"Test Post a Share",
                       nil
                       ]retain];
 
@@ -239,6 +240,16 @@
             controller = [[TestActivityViewController alloc] initWithNibName:@"TestActivityViewController" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
+        case 13:
+        {
+            NSString* url = [self getEntityKey];
+            if(url) {
+                UINavigationController *nav = [SocializePostShareViewController postShareViewControllerInNavigationControllerWithEntityURL:url];
+                [self presentModalViewController:nav animated:YES];
+            }
+            break;
+        }
+
     }    
     [controller release];
 }

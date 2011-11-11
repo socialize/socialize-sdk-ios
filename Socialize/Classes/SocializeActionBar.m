@@ -285,7 +285,7 @@
 
 -(void)shareViaFacebook
 {
-    [self.socialize createShareForEntity:self.entity medium:Facebook text:@"Would like to share with you my interest"];
+    [self.socialize createShareForEntity:self.entity medium:SocializeShareMediumFacebook text:@"Would like to share with you my interest"];
 }
 
 #pragma mark Share via email

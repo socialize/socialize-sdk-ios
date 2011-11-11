@@ -50,14 +50,14 @@
 @synthesize mapContainer = _mapContainer;
 @synthesize locationManager = _locationManager;
 @synthesize kbListener = _kbListener;
-
+@synthesize entityURL = _entityURL;
 - (id)initWithNibName:(NSString *)nibNameOrNil 
                bundle:(NSBundle *)nibBundleOrNil 
       entityUrlString:(NSString*)entityUrlString 
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _entityUrlString = [entityUrlString retain];
+        self.entityURL = entityUrlString;
     }
     return self;
 }
@@ -69,7 +69,7 @@
     [activateLocationButton release];
     [mapOfUserLocation release];
     [locationText release];
-    [_entityUrlString release];
+    [_entityURL release];
     [_kbListener release];
     [_locationManager release];
     [_geoCoderInfo release];
@@ -247,8 +247,6 @@
 {
     [super viewDidLoad];
 
-    self.title = @"Compose";
-    
     self.navigationItem.leftBarButtonItem = self.cancelButton;
     
     self.navigationItem.rightBarButtonItem = self.sendButton;

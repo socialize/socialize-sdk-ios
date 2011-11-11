@@ -49,7 +49,7 @@
     
     mockEntity.key = @"www.123.com";
     
-    ShareMedium medium = Facebook;
+    SocializeShareMedium medium = SocializeShareMediumFacebook;
     
     NSArray *expectedParams = [NSArray arrayWithObject:
                                [NSDictionary dictionaryWithObjectsAndKeys:

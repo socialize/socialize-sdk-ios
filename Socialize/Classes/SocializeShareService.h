@@ -18,8 +18,8 @@
 }
 
 
--(void)createShareForEntityKey:(NSString*)key medium:(ShareMedium)medium  text:(NSString*)text;
--(void)createShareForEntity:(id<SocializeEntity>)entity medium:(ShareMedium)medium  text:(NSString*)text;
+-(void)createShareForEntityKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text;
+-(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text;
 
 
 @end

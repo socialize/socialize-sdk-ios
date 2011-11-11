@@ -16,7 +16,7 @@
     [self createCommentWithURL:commentURL text:@"comment" latitude:nil longitude:nil];
 
     NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", _cmd]];
-    [self createShareWithURL:shareURL medium:Facebook text:@"share"];
+    [self createShareWithURL:shareURL medium:SocializeShareMediumFacebook text:@"share"];
 
     NSString *likeURL = [self testURL:[NSString stringWithFormat:@"%s/like", _cmd]];
     [self createLikeWithURL:likeURL latitude:nil longitude:nil];

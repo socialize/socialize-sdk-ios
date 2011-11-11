@@ -44,6 +44,7 @@
 @synthesize socialize = socialize_;
 @synthesize facebookAuthQuestionDialog = facebookAuthQuestionDialog_;
 @synthesize postFacebookAuthenticationProfileViewController = postFacebookAuthenticationProfileViewController_;
+@synthesize requestingFacebookFromUser = requestingFacebookFromUser_;
 
 - (void)dealloc
 {
@@ -234,6 +235,11 @@
     // Should be implemented in the child classes.
 }
 
+-(void)afterFacebookLoginAction
+{
+    // Should be implemented in the child classes.
+}
+
 - (void)navigationController:(UINavigationController *)localNavigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     // Visual fixup required for legacy navigation background code (pre-iOS 5)
@@ -253,11 +259,7 @@
     return facebookAuthQuestionDialog_;
 }
 
-- (void)afterRejectedFacebookAuthentication {
-    
-}
-
-- (void)afterSuccessfulFacebookAuthentication {
+- (void)afterUserRejectedFacebookAuthentication {
     
 }
 
@@ -267,7 +269,7 @@
         if (buttonIndex == 1) {
             [self authenticateWithFacebook];
         } else {
-            [self afterRejectedFacebookAuthentication];
+            [self afterUserRejectedFacebookAuthentication];
         }
     } 
 }
@@ -290,6 +292,7 @@
     }
 
     if (![self.socialize isAuthenticatedWithFacebook]) {
+        self.requestingFacebookFromUser = YES;
         [self.facebookAuthQuestionDialog show];
     }
 }
@@ -317,28 +320,33 @@
     [self stopLoadAnimation];
     
     if ([self.socialize isAuthenticatedWithFacebook]) {
-        // Complete facebook authentication flow
-        [self showProfile];
+        if (self.requestingFacebookFromUser) {
+            // Complete facebook authentication flow
+            [self showProfile];
+        } else {
+            [self afterFacebookLoginAction];
+        }
     } else {
         // Complete auto auth
         [self afterAnonymouslyLoginAction];
     }
 }
 
-- (void)dismissProfile {
+- (void)dismissFacebookAuthProfile {
+    self.requestingFacebookFromUser = NO;
     [self dismissModalViewControllerAnimated:YES];
-    [self afterSuccessfulFacebookAuthentication];    
+    [self afterFacebookLoginAction];
 }
 
 - (void)profileViewControllerDidSave:(SocializeProfileViewController *)profileViewController {
     if (profileViewController == self.postFacebookAuthenticationProfileViewController) {
-        [self dismissProfile];
+        [self dismissFacebookAuthProfile];
     }
 }
 
 - (void)profileViewControllerDidCancel:(SocializeProfileViewController *)profileViewController {
     if (profileViewController == self.postFacebookAuthenticationProfileViewController) {
-        [self dismissProfile];
+        [self dismissFacebookAuthProfile];
     }
 }
 

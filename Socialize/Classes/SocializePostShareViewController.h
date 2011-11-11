@@ -9,6 +9,12 @@
 #import "SocializeBaseViewController.h"
 #import "SocializeComposeMessageViewController.h"
 
-@interface SocializePostShareViewController : SocializeComposeMessageViewController
+@class SocializeShareBuilder;
 
+@interface SocializePostShareViewController : SocializeComposeMessageViewController
++ (UINavigationController*)postShareViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL;
++ (SocializePostShareViewController*)postShareViewControllerWithEntityURL:(NSString*)entityURL;
+
+@property (nonatomic, retain) id<SocializeActivity> shareObject;
+@property (nonatomic, retain) SocializeShareBuilder *shareBuilder;
 @end
