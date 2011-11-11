@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SocializeProfileEditValueViewController.h"
+#import "SocializeBaseViewController.h"
 
 @class SocializeProfileEditValueViewController;
 typedef enum {
@@ -39,14 +40,12 @@ typedef enum {
 @class SocializeProfileEditTableViewCell;
 @class SocializeProfileEditValueViewController;
 
-@interface SocializeProfileEditViewController : UITableViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SocializeProfileEditValueViewControllerDelegate>
+@interface SocializeProfileEditViewController : SocializeBaseViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SocializeProfileEditValueViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, copy) NSString *firstName;
 @property (nonatomic, copy) NSString *lastName;
 @property (nonatomic, copy) NSString *bio;
 @property (nonatomic, retain) UIImage *profileImage;
 @property (nonatomic, retain) NSArray *cellBackgroundColors;
-@property (nonatomic, retain) UIBarButtonItem *cancelButton;
-@property (nonatomic, retain) UIBarButtonItem *saveButton;
 @property (nonatomic, assign) id<SocializeProfileEditViewControllerDelegate> delegate;
 @property (nonatomic, retain) UIImagePickerController *imagePicker;
 @property (nonatomic, retain) UIActionSheet *uploadPicActionSheet;

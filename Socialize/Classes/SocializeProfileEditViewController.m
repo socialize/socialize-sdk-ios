@@ -46,8 +46,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 @synthesize profileImage = profileImage_;
 @synthesize cellBackgroundColors = cellBackgroundColors_;
 @synthesize profileTextCell = profileTextCell;
-@synthesize cancelButton = cancelButton_;
-@synthesize saveButton = saveButton_;
 @synthesize delegate = delegate_;
 @synthesize imagePicker = imagePicker_;
 @synthesize uploadPicActionSheet = uploadPicActionSheet_;
@@ -64,8 +62,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.profileImage = nil;
     self.cellBackgroundColors = nil;
     self.profileTextCell = nil;
-    self.cancelButton = nil;
-    self.saveButton = nil;
     self.imagePicker = nil;
     self.uploadPicActionSheet = nil;
     self.editValueController = nil;
@@ -100,17 +96,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 {
     [super viewDidUnload];
     
-    self.cancelButton = nil;
-    self.saveButton = nil;
-}
-
-- (UIBarButtonItem*)cancelButton {
-    if (cancelButton_ == nil) {
-        UIButton * actualButton = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
-        [actualButton addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        cancelButton_ = [[UIBarButtonItem alloc] initWithCustomView:actualButton];
-    }
-    return cancelButton_;
+    self.profileImageCell = nil;
 }
 
 - (void)cancelButtonPressed:(UIButton*)cancelButton {
@@ -119,15 +105,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 
 - (void)saveButtonPressed:(UIButton*)saveButton {
     [self.delegate profileEditViewControllerDidSave:self];
-}
-
-- (UIBarButtonItem*)saveButton {
-    if (saveButton_ == nil) {
-        UIButton * actualButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
-        [actualButton addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        saveButton_ = [[UIBarButtonItem alloc] initWithCustomView:actualButton];
-    }
-    return saveButton_;
 }
 
 - (NSArray*)cellBackgroundColors {

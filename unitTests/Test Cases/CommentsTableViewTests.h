@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 
 @class SocializeCommentsTableViewController;
-@class SocializePostCommentViewController;
+@class SocializeComposeMessageViewController;
 
 @interface CommentsTableViewTests : GHTestCase {
     SocializeCommentsTableViewController* listView;

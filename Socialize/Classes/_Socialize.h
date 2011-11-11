@@ -328,6 +328,13 @@ otherwise you will get a failure.
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
 
 /**
+ Check if facebook is configured
+ 
+ @return YES if the app is properly configured for facebook usage
+ */
+- (BOOL)facebookAvailable;
+
+/**
  Check if authentication credentials still valid.
  
  @return YES if valid and NO if access token was expired.

@@ -18,6 +18,6 @@ extern const NSInteger UINavigationBarBackgroundImageTag;
 - (UIImage*)backgroundImage;
 
 -(void)setBackgroundImage:(UIImage*)image withTag:(NSInteger)bgTag;
--(void)resetBackground:(NSInteger)bgTag;
 -(void)removeBackgroundWithTag:(NSInteger)bgTag;
+-(void)resetBackground;
 @end

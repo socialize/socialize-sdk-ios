@@ -55,8 +55,6 @@
 }
 
 - (void)dealloc {
-    self.doneButton = nil;
-    self.editButton = nil;
     self.fullUser = nil;
     self.userNameLabel = nil;
     self.userDescriptionLabel = nil;
@@ -104,8 +102,6 @@
     [super viewDidUnload];
     
     // Release any retained subviews of the main view.
-    self.doneButton = nil;
-    self.editButton = nil;
     self.userNameLabel = nil;
     self.userDescriptionLabel = nil;
     self.userLocationLabel = nil;

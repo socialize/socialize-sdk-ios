@@ -88,7 +88,7 @@
 
 -(void)testCreateMethod
 {
-    UINavigationController* controller = [PostCommentViewControllerForTest createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:TEST_URL andImageForNavBar:nil];
+    UINavigationController* controller = [PostCommentViewControllerForTest postCommentViewControllerInNavigationControllerWithEntityURL:TEST_URL];
     GHAssertNotNil(controller, nil);
 }
 
@@ -256,9 +256,6 @@
     SocializePostCommentViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializePostCommentViewControllerLandscape" 
                                                                                                                  bundle:nil 
                                                                                                         entityUrlString:TEST_URL
-                                                                                                       keyboardListener:nil 
-                                                                                                        locationManager:nil
-                                                                                                           geocoderInfo:[SocializeGeocoderAdapter class]
                                                              ];
     
     [controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight];
@@ -281,9 +278,6 @@
     SocializePostCommentViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializePostCommentViewController" 
                                                                                                            bundle:nil 
                                                                                                   entityUrlString:TEST_URL
-                                                                                                 keyboardListener:nil 
-                                                                                                  locationManager:nil
-                                                                                                     geocoderInfo:[SocializeGeocoderAdapter class]
                                                        ];
     
     [controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortrait];

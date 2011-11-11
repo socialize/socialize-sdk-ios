@@ -17,7 +17,7 @@ BOOL useBackgroundImage = NO;
 - (void)setBackgroundImage:(UIImage*)image
 {
 	[self setBackgroundImage:(UIImage*)image withTag:UINavigationBarBackgroundImageTag];
-	[self resetBackground:UINavigationBarBackgroundImageTag];
+	[self resetBackground];
 }
 
 - (void)showBackgroundImage
@@ -37,7 +37,7 @@ BOOL useBackgroundImage = NO;
 		}
 	}
 
-	[self resetBackground:UINavigationBarBackgroundImageTag];
+	[self resetBackground];
 }
 
 - (void)hideBackgroundImage
@@ -91,8 +91,11 @@ BOOL useBackgroundImage = NO;
 		[view removeFromSuperview];
 	}
 }
--(void)resetBackground:(NSInteger)bgTag {
-	[self sendSubviewToBack:[self viewWithTag:bgTag]];
+
+-(void)resetBackground {
+	[self sendSubviewToBack:[self viewWithTag:UINavigationBarBackgroundImageTag]];
 }
+
+
 @end
 

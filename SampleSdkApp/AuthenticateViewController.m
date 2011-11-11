@@ -84,7 +84,6 @@
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];
 #endif
-    
 }
 
 - (void)viewDidUnload

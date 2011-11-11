@@ -183,8 +183,10 @@
         case 7:
         {
             NSString* url = [self getEntityKey];
-            if(url)
-                [self presentModalViewController:[SocializePostCommentViewController  createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:url andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]] animated:YES];
+            if(url) {
+                UINavigationController *nav = [SocializePostCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:url];
+                [self presentModalViewController:nav animated:YES];
+            }
             break;
         }
         case 8:

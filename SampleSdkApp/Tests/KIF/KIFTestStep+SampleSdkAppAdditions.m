@@ -216,8 +216,10 @@
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToEnterText:comment intoViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
-//    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Facebook?"]];
-//    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"No"]];
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Facebook?"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Yes"]];
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Done"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];	
 //    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Anonymous?"]];
 //    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Ok"]];
     return steps;
