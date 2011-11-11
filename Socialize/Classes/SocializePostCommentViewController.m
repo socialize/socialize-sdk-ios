@@ -48,7 +48,7 @@
         [self.socialize createCommentForEntityWithKey:self.entityURL comment:commentTextView.text longitude:nil latitude:nil];
 }
 
-- (void)afterRejectedFacebookAuthentication {
+- (void)afterUserRejectedFacebookAuthentication {
     [self createComment];
 }
 
