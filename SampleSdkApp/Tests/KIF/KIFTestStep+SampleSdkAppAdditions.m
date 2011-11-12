@@ -209,6 +209,17 @@
     return steps;
 }
 
++ (NSArray*)stepsToCreateShare:(NSString*)comment
+{
+    NSMutableArray *steps = [NSMutableArray array];
+    
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comment Entry"]];
+    [steps addObject:[KIFTestStep stepToEnterText:comment intoViewWithAccessibilityLabel:@"Comment Entry"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
+
+    return steps;
+}
+
 + (NSArray*)stepsToCreateComment:(NSString*)comment
 {
     NSMutableArray *steps = [NSMutableArray array];

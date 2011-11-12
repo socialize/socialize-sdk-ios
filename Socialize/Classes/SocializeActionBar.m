@@ -285,8 +285,9 @@
 
 -(void)shareViaFacebook
 {
+    self.ignoreNextView = YES;
     UINavigationController *shareController = [SocializePostShareViewController postShareViewControllerInNavigationControllerWithEntityURL:self.entity.key];
-    [self.presentModalInViewController presentModalViewController:shareController animated:NO];
+    [self.presentModalInViewController presentModalViewController:shareController animated:YES];
 }
 
 #pragma mark Share via email
