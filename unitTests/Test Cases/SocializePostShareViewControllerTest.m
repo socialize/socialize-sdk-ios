@@ -51,6 +51,7 @@ static NSString *const TestURL = @"http://getsocialize.com";
     [self.mockSocialize verify];
     [self.mockTextView verify];
     
+    [[self.mockSocialize expect] setDelegate:nil];
     self.mockShareObject = nil;
     self.postShareViewController = nil;
     self.origPostShareViewController = nil;
@@ -61,9 +62,14 @@ static NSString *const TestURL = @"http://getsocialize.com";
 
 - (void)testViewDidLoad {
     [[(id)self.postShareViewController expect] setTitle:@"New Share"];
-    [[(id)self.postShareViewController expect] authenticateWithFacebook];
     
     [self.postShareViewController viewDidLoad];
+}
+
+- (void)testViewDidAppearCausesAuth {
+    [[(id)self.postShareViewController expect] authenticateWithFacebook];
+    
+    [self.postShareViewController viewDidAppear:YES];
 }
 
 - (void)testCreateShareWithoutExistingShareObjectCreatesOnSocialize {

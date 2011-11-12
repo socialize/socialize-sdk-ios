@@ -98,6 +98,7 @@
     [self.mockActionView verify];
     [self.mockShareComposer verify];
     
+    [[self.mockSocialize expect] setDelegate:nil];
     self.mockParentController = nil;
     self.mockEntity = nil;
     self.origActionBar = nil;

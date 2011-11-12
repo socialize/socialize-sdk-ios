@@ -18,4 +18,6 @@
     id                                    postCommentController;
 }
 
+@property (nonatomic, retain) id mockSocialize;
+
 @end

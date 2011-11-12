@@ -82,6 +82,7 @@
     [controller verify];
     [mockSocialize verify];
     
+    [[mockSocialize expect] setDelegate:nil];
     [controller viewDidUnload];
     [controller release];
 }
@@ -162,6 +163,8 @@
     
     [controller verify];
     [mockSocialize verify];
+    
+    [[mockSocialize expect] setDelegate:nil];
     [controller release];    
 }
 
@@ -183,6 +186,8 @@
     
     [controller verify];
     [mockSocialize verify];
+    
+    [[mockSocialize expect] setDelegate:nil];
     [controller release];    
 }
 
