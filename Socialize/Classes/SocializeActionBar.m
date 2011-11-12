@@ -37,6 +37,7 @@
 #import "BlocksKit.h"
 #import "SocializeShareBuilder.h"
 #import "SocializeFacebookInterface.h"
+#import "SocializePostShareViewController.h"
 
 @interface SocializeActionBar()
 @property(nonatomic, retain) id<SocializeLike> entityLike;
@@ -268,10 +269,9 @@
     if (_shareActionSheet == nil) {
         _shareActionSheet = [[UIActionSheet sheetWithTitle:nil] retain];
         
-#if 0
-        if(self.socialize.isAuthenticatedWithFacebook)
+        if([self.socialize facebookAvailable])
             [_shareActionSheet addButtonWithTitle:@"Share on Facebook" handler:^{ [self shareViaFacebook]; }];
-#endif   
+
         [_shareActionSheet addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
         
         [_shareActionSheet setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
@@ -285,7 +285,8 @@
 
 -(void)shareViaFacebook
 {
-    [self.socialize createShareForEntity:self.entity medium:SocializeShareMediumFacebook text:@"Would like to share with you my interest"];
+    UINavigationController *shareController = [SocializePostShareViewController postShareViewControllerInNavigationControllerWithEntityURL:self.entity.key];
+    [self.presentModalInViewController presentModalViewController:shareController animated:NO];
 }
 
 #pragma mark Share via email
