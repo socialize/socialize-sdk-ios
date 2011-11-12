@@ -64,8 +64,6 @@
     self.profileEditViewController = nil;
     self.navigationControllerForEdit.delegate = nil;
     self.navigationControllerForEdit = nil;
-    self.socialize.delegate = nil;
-    self.socialize = nil;
     self.imagesCache = nil;
     self.defaultProfileImage = nil;
     

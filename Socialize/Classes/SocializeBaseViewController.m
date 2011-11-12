@@ -48,6 +48,7 @@
 
 - (void)dealloc
 {
+    self.socialize.delegate = nil;
     self.socialize = nil;
     self.facebookAuthQuestionDialog = nil;
     self.postFacebookAuthenticationProfileViewController = nil;
