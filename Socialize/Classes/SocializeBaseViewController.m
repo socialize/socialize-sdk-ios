@@ -75,6 +75,7 @@
     self.sendButton = nil;
     self.facebookAuthQuestionDialog = nil;
     self.postFacebookAuthenticationProfileViewController = nil;
+    self.authViewController = nil;
 }
 
 - (UITableView*)tableView {
