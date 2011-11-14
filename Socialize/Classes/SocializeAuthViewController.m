@@ -177,7 +177,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [aTableView deselectRowAtIndexPath:indexPath animated:YES];
-	if(indexPath.section == 0){
+	if(indexPath.section == SocializeAuthViewControllerSectionAuthTypes){
         [self.socialize authenticateWithFacebook];
         [self startLoadAnimationForView:self.view];
     }
