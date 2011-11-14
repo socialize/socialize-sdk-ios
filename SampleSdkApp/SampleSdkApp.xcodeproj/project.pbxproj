@@ -65,6 +65,9 @@
 		AA639E62144A24C000660E26 /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639E14144A24BF00660E26 /* urls.plist */; };
 		AA639E63144A24C000660E26 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E16144A24BF00660E26 /* UserProfileViewController.m */; };
 		AA639E64144A24C000660E26 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E17144A24BF00660E26 /* UserProfileViewController.xib */; };
+		AA7BDA621471CDC400BE68AB /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7BDA611471CDC400BE68AB /* SocializeAuthViewController.xib */; };
+		AA7BDA631471CDC400BE68AB /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7BDA611471CDC400BE68AB /* SocializeAuthViewController.xib */; };
+		AA7BDA641471CDC400BE68AB /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7BDA611471CDC400BE68AB /* SocializeAuthViewController.xib */; };
 		AA8636C9144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C2144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m */; };
 		AA8636CA144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C4144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m */; };
 		AA8636CB144CA0A200CFA759 /* SampleSdkAppKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C6144CA0A200CFA759 /* SampleSdkAppKIFTestController.m */; };
@@ -629,6 +632,7 @@
 		AA639F5E144A290400660E26 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		AA639F5F144A290400660E26 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		AA639F60144A290400660E26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AA7BDA611471CDC400BE68AB /* SocializeAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthViewController.xib; path = ../Socialize.framework/Versions/A/Resources/SocializeAuthViewController.xib; sourceTree = "<group>"; };
 		AA8636C1144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestScenario+SampleSdkAppAdditions.h"; sourceTree = "<group>"; };
 		AA8636C2144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestScenario+SampleSdkAppAdditions.m"; sourceTree = "<group>"; };
 		AA8636C3144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestStep+SampleSdkAppAdditions.h"; sourceTree = "<group>"; };
@@ -1050,6 +1054,7 @@
 		AAC3984E146B2399004EA344 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AA7BDA611471CDC400BE68AB /* SocializeAuthViewController.xib */,
 				AA430682146DDE2100F9BD7E /* SocializeComposeMessageViewController.xib */,
 				AA430683146DDE2100F9BD7E /* SocializePostShareViewController.xib */,
 				AAC3984F146B2399004EA344 /* action-bar-bg.png */,
@@ -1482,6 +1487,7 @@
 				AAC39A09146B2399004EA344 /* SocializeProfileViewController.xib in Resources */,
 				AA430684146DDE2100F9BD7E /* SocializeComposeMessageViewController.xib in Resources */,
 				AA430687146DDE2100F9BD7E /* SocializePostShareViewController.xib in Resources */,
+				AA7BDA621471CDC400BE68AB /* SocializeAuthViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1621,6 +1627,7 @@
 				AAC39A0A146B2399004EA344 /* SocializeProfileViewController.xib in Resources */,
 				AA430685146DDE2100F9BD7E /* SocializeComposeMessageViewController.xib in Resources */,
 				AA430688146DDE2100F9BD7E /* SocializePostShareViewController.xib in Resources */,
+				AA7BDA631471CDC400BE68AB /* SocializeAuthViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1742,6 +1749,7 @@
 				AAC39A0B146B2399004EA344 /* SocializeProfileViewController.xib in Resources */,
 				AA430686146DDE2100F9BD7E /* SocializeComposeMessageViewController.xib in Resources */,
 				AA430689146DDE2100F9BD7E /* SocializePostShareViewController.xib in Resources */,
+				AA7BDA641471CDC400BE68AB /* SocializeAuthViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
