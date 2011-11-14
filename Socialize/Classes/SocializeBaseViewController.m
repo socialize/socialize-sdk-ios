@@ -30,6 +30,8 @@
 #import "UINavigationBarBackground.h"
 #import "UIButton+Socialize.h"
 #import "SocializeProfileViewController.h"
+#import "SocializeShareBuilder.h"
+#import "SocializeFacebookInterface.h"
 
 @interface SocializeBaseViewController () <SocializeProfileViewControllerDelegate>
 @end
@@ -45,6 +47,8 @@
 @synthesize facebookAuthQuestionDialog = facebookAuthQuestionDialog_;
 @synthesize postFacebookAuthenticationProfileViewController = postFacebookAuthenticationProfileViewController_;
 @synthesize requestingFacebookFromUser = requestingFacebookFromUser_;
+@synthesize shareBuilder = shareBuilder_;
+@synthesize sendActivityToFacebookFeedAlertView = sendActivityToFacebookFeedAlertView_;
 
 - (void)dealloc
 {
@@ -52,6 +56,8 @@
     self.socialize = nil;
     self.facebookAuthQuestionDialog = nil;
     self.postFacebookAuthenticationProfileViewController = nil;
+    self.shareBuilder = nil;
+    self.sendActivityToFacebookFeedAlertView = nil;
     
     [super dealloc];
 }
@@ -73,6 +79,7 @@
     self.sendButton = nil;
     self.facebookAuthQuestionDialog = nil;
     self.postFacebookAuthenticationProfileViewController = nil;
+    self.sendActivityToFacebookFeedAlertView = nil;
 }
 
 - (UITableView*)tableView {
@@ -168,7 +175,9 @@
 #pragma Location enable/disable button callbacks
 -(void) startLoadAnimationForView: (UIView*) view
 {
-    _loadingIndicatorView = [LoadingView loadingViewInView:view];
+    if (_loadingIndicatorView == nil) {
+        _loadingIndicatorView = [LoadingView loadingViewInView:view];
+    }
 }
 
 -(void) stopLoadAnimation
@@ -272,7 +281,14 @@
         } else {
             [self afterUserRejectedFacebookAuthentication];
         }
-    } 
+    }  else if (alertView == self.sendActivityToFacebookFeedAlertView) {
+        if (buttonIndex == alertView.cancelButtonIndex) {
+            [self sendActivityToFacebookFeedCancelled];
+        }
+        if (buttonIndex == alertView.firstOtherButtonIndex) {
+            [self sendActivityToFacebookFeed:self.shareBuilder.shareObject];
+        }
+    }
 }
 
 - (void)authenticateWithFacebook {
@@ -350,6 +366,54 @@
         [self dismissFacebookAuthProfile];
     }
 }
+
+- (UIAlertView*)sendActivityToFacebookFeedAlertView {
+    if (sendActivityToFacebookFeedAlertView_ == nil) {
+        sendActivityToFacebookFeedAlertView_ = [[UIAlertView alloc]
+                                                initWithTitle:@"Facebook Error"
+                                                message:@"There was a Problem Writing to Your Facebook Wall"
+                                                delegate:self
+                                                cancelButtonTitle:@"Dismiss"
+                                                otherButtonTitles:@"Retry", nil];
+    }
+    
+    return sendActivityToFacebookFeedAlertView_;
+}
+
+- (void)sendActivityToFacebookFeedSucceeded {
+    [self stopLoading];
+}
+
+- (void)sendActivityToFacebookFeedFailed:(NSError*)error {
+    [self stopLoading];
+    [self.sendActivityToFacebookFeedAlertView show];
+}
+
+- (void)sendActivityToFacebookFeedCancelled {
+    
+}
+
+- (SocializeShareBuilder*)shareBuilder {
+    if (shareBuilder_ == nil) {
+        shareBuilder_ = [[SocializeShareBuilder alloc] init];
+        shareBuilder_.shareProtocol = [[[SocializeFacebookInterface alloc] init] autorelease];
+        shareBuilder_.successAction = ^{
+            [self sendActivityToFacebookFeedSucceeded];
+        };
+        shareBuilder_.errorAction = ^(NSError *error) {
+            [self sendActivityToFacebookFeedFailed:error];
+        };
+        
+    }
+    return shareBuilder_;
+}
+
+- (void)sendActivityToFacebookFeed:(id<SocializeActivity>)activity {
+    [self startLoading];
+    self.shareBuilder.shareObject = activity;
+    [self.shareBuilder performShareForPath:@"me/feed"];
+}
+
 
 
 @end

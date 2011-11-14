@@ -12,5 +12,8 @@
 @interface SocializePostCommentViewController : SocializeComposeMessageViewController
 + (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL;
 + (SocializePostCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL;
-- (void)createComment;
+- (void)finishCreateComment;
+@property (nonatomic, retain) id<SocializeComment> commentObject;
+@property (nonatomic, retain) IBOutlet UISwitch *facebookSwitch;
+@property (nonatomic, assign) BOOL commentSentToFacebook;
 @end

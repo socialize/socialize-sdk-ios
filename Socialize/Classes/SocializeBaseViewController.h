@@ -28,6 +28,7 @@
 #import <UIKit/UIKit.h>
 #import "_Socialize.h"
 
+@class SocializeShareBuilder;
 @class LoadingView;
 @class SocializeProfileViewController;
 
@@ -46,6 +47,8 @@
 @property(nonatomic, retain) UIAlertView *facebookAuthQuestionDialog;
 @property(nonatomic, retain) SocializeProfileViewController *postFacebookAuthenticationProfileViewController;
 @property (nonatomic, assign) BOOL requestingFacebookFromUser;
+@property (nonatomic, retain) UIAlertView *sendActivityToFacebookFeedAlertView;
+@property (nonatomic, retain) SocializeShareBuilder *shareBuilder;
 
 -(void) showAllertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoading;
@@ -64,4 +67,8 @@
 - (void)doneButtonPressed:(UIButton*)button;
 - (void)sendButtonPressed:(UIButton*)button;
 - (void)cancelButtonPressed:(UIButton*)button;
+- (void)sendActivityToFacebookFeed:(id<SocializeActivity>)activity;
+- (void)sendActivityToFacebookFeedSucceeded;
+- (void)sendActivityToFacebookFeedFailed:(NSError*)error;
+- (void)sendActivityToFacebookFeedCancelled;
 @end

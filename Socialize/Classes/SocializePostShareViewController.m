@@ -10,18 +10,15 @@
 #import "UINavigationController+Socialize.h"
 #import "SocializeLocationManager.h"
 #import "CommentMapView.h"
-#import "SocializeShareBuilder.h"
 #import "SocializeFacebookInterface.h"
 #import "SocializeProfileViewController.h"
 
 @interface SocializePostShareViewController ()
 - (void)createShareOnSocializeServer;
-- (void)createShareOnFacebookServer;
 @end
 
 @implementation SocializePostShareViewController
 @synthesize shareObject = shareObject_;
-@synthesize shareBuilder = shareBuilder_;
 
 + (UINavigationController*)postShareViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL {
     SocializePostShareViewController *postShareViewController = [self postShareViewControllerWithEntityURL:entityURL];
@@ -40,7 +37,6 @@
 
 - (void)dealloc {
     self.shareObject = nil;
-    self.shareBuilder = nil;
     
     [super dealloc];
 }
@@ -65,42 +61,19 @@
         [self createShareOnSocializeServer];
         return;
     }
-    [self createShareOnFacebookServer];
+    [self sendActivityToFacebookFeed:self.shareObject];
 }
 
-- (void)shareComplete {
-    [self stopLoading];
+- (void)sendActivityToFacebookFeedSucceeded {
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)shareFailed:(NSError*)error {
-    [self stopLoading];
-    [self showAllertWithText:[error localizedDescription] andTitle:@"Error Posting Share"];
+- (void)sendActivityToFacebookFeedCancelled {
 }
 
 - (void)createShareOnSocializeServer {
     [self startLoading];
     [self.socialize createShareForEntityWithKey:self.entityURL medium:SocializeShareMediumFacebook text:commentTextView.text];
-}
-
-- (SocializeShareBuilder*)shareBuilder {
-    if (shareBuilder_ == nil) {
-        shareBuilder_ = [[SocializeShareBuilder alloc] init];
-        shareBuilder_.shareProtocol = [[[SocializeFacebookInterface alloc] init] autorelease];
-        shareBuilder_.successAction = ^{
-            [self shareComplete];
-        };
-        shareBuilder_.errorAction = ^(NSError *error) {
-            [self shareFailed:error];
-        };
-
-    }
-    return shareBuilder_;
-}
-
-- (void)createShareOnFacebookServer {
-    self.shareBuilder.shareObject = self.shareObject;
-    [self.shareBuilder performShareForPath:@"me/feed"];
 }
 
 - (void)sendButtonPressed:(UIButton*)button {
@@ -116,7 +89,8 @@
 }
 
 - (void)service:(SocializeService *)service didFail:(NSError *)error {
-    [self shareFailed:error];
+    [self stopLoading];
+    [self showAllertWithText:[error localizedDescription] andTitle:@"Error Posting Share"];
 }
 
 @end

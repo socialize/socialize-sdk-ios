@@ -251,11 +251,7 @@
     
     self.navigationItem.rightBarButtonItem = self.sendButton;
     self.sendButton.enabled = NO;
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+    
     
     // Ensure kb listener initialized the first time the view appears
     (void)self.kbListener;
@@ -271,6 +267,12 @@
         [self adjustViewToLayoutWithKeyboardHeigth:PORTRAIT_KEYBOARD_HEIGHT];
     else
         [self adjustViewToLayoutWithKeyboardHeigth:LANDSCAPE_KEYBOARD_HEIGHT];
+
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidUnload

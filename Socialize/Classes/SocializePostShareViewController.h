@@ -16,5 +16,4 @@
 + (SocializePostShareViewController*)postShareViewControllerWithEntityURL:(NSString*)entityURL;
 
 @property (nonatomic, retain) id<SocializeActivity> shareObject;
-@property (nonatomic, retain) SocializeShareBuilder *shareBuilder;
 @end
