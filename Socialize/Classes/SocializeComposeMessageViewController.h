@@ -12,12 +12,12 @@
 #import "SocializeBaseViewController.h"
 #import "_Socialize.h"
 #import "SocializeProfileViewController.h"
-
+#import "SocializeAuthViewController.h"
 @class CommentMapView;
 @class UIKeyboardListener;
 @class SocializeLocationManager;
 
-@interface SocializeComposeMessageViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate>
+@interface SocializeComposeMessageViewController : SocializeBaseViewController <SocializeAuthViewDelegate, UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate>
 {
     UITextView* commentTextView;
     UILabel*    locationText; 
@@ -26,7 +26,7 @@
     CommentMapView* mapOfUserLocation;
     Class _geoCoderInfo;
 }
-
+@property(nonatomic, retain) UINavigationController* authViewController;
 @property (nonatomic, copy) NSString *entityURL;
 @property(nonatomic, retain) SocializeLocationManager *locationManager;
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;

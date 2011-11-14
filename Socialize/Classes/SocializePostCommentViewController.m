@@ -58,12 +58,18 @@
 
 -(void)sendButtonPressed:(UIButton*)button {
     if (![self.socialize isAuthenticatedWithFacebook]) {
-        [self requestFacebookFromUser];
+        [self presentModalViewController:self.authViewController animated:YES];
     } else {
         [self createComment];
     }
 }
-
+-(void)authorizationSkipped {
+    [self createComment];
+}
+-(void)didAuthenticate:(id<SocializeUser>)user {
+    [self startLoadAnimationForView:commentTextView];
+    [self createComment];
+}
 -(void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object{   
 #if 0
     if (![[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue]) {

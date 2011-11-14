@@ -351,6 +351,95 @@
 		16F449DA13AF8358003BE655 /* SocializeApplicationJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449D913AF8356003BE655 /* SocializeApplicationJSONFormatterTests.m */; };
 		16F449DD13AF8B37003BE655 /* SocializeUserJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */; };
 		16FDF4E01414BA0A00EAA064 /* SocializeCommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */; };
+		180EFE8F14609B6100AA957D /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE8E14609B6100AA957D /* SocializeAuthTableViewCell.xib */; };
+		180EFE9014609B6100AA957D /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE8E14609B6100AA957D /* SocializeAuthTableViewCell.xib */; };
+		180EFE9114609B6100AA957D /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE8E14609B6100AA957D /* SocializeAuthTableViewCell.xib */; };
+		180EFE9514609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */; };
+		180EFE9614609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */; };
+		180EFE9714609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFE9414609C1000AA957D /* SocializeAuthTableViewCell.m */; };
+		180EFE9814609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFE9414609C1000AA957D /* SocializeAuthTableViewCell.m */; };
+		180EFE9C14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE9B14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib */; };
+		180EFE9D14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE9B14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib */; };
+		180EFE9E14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE9B14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib */; };
+		180EFE9F14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE9B14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib */; };
+		180EFEA214609C7800AA957D /* SocializeAuthInfoTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFEA014609C7800AA957D /* SocializeAuthInfoTableViewCell.h */; };
+		180EFEA314609C7800AA957D /* SocializeAuthInfoTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFEA014609C7800AA957D /* SocializeAuthInfoTableViewCell.h */; };
+		180EFEA414609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */; };
+		180EFEA514609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */; };
+		180EFEA914609C8700AA957D /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEA814609C8700AA957D /* SocializeAuthViewController.xib */; };
+		180EFEAA14609C8700AA957D /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEA814609C8700AA957D /* SocializeAuthViewController.xib */; };
+		180EFEAB14609C8700AA957D /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEA814609C8700AA957D /* SocializeAuthViewController.xib */; };
+		180EFEAC14609C8700AA957D /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEA814609C8700AA957D /* SocializeAuthViewController.xib */; };
+		180EFECB1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEBF1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png */; };
+		180EFECC1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEBF1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png */; };
+		180EFECD1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEBF1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png */; };
+		180EFECE1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEBF1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png */; };
+		180EFECF1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC01460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png */; };
+		180EFED01460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC01460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png */; };
+		180EFED11460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC01460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png */; };
+		180EFED21460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC01460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png */; };
+		180EFED31460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC11460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png */; };
+		180EFED41460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC11460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png */; };
+		180EFED51460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC11460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png */; };
+		180EFED61460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC11460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png */; };
+		180EFED71460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC21460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png */; };
+		180EFED81460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC21460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png */; };
+		180EFED91460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC21460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png */; };
+		180EFEDA1460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC21460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png */; };
+		180EFEDB1460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC31460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png */; };
+		180EFEDC1460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC31460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png */; };
+		180EFEDD1460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC31460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png */; };
+		180EFEDE1460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC31460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png */; };
+		180EFEDF1460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC41460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png */; };
+		180EFEE01460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC41460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png */; };
+		180EFEE11460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC41460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png */; };
+		180EFEE21460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC41460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png */; };
+		180EFEE31460AC4600AA957D /* socialize-authorize-top-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC51460AC4600AA957D /* socialize-authorize-top-shadow-background.png */; };
+		180EFEE41460AC4600AA957D /* socialize-authorize-top-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC51460AC4600AA957D /* socialize-authorize-top-shadow-background.png */; };
+		180EFEE51460AC4600AA957D /* socialize-authorize-top-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC51460AC4600AA957D /* socialize-authorize-top-shadow-background.png */; };
+		180EFEE61460AC4600AA957D /* socialize-authorize-top-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC51460AC4600AA957D /* socialize-authorize-top-shadow-background.png */; };
+		180EFEE71460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC61460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png */; };
+		180EFEE81460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC61460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png */; };
+		180EFEE91460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC61460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png */; };
+		180EFEEA1460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC61460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png */; };
+		180EFEEB1460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC71460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png */; };
+		180EFEEC1460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC71460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png */; };
+		180EFEED1460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC71460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png */; };
+		180EFEEE1460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC71460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png */; };
+		180EFEEF1460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC81460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png */; };
+		180EFEF01460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC81460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png */; };
+		180EFEF11460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC81460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png */; };
+		180EFEF21460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC81460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png */; };
+		180EFEF31460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC91460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png */; };
+		180EFEF41460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC91460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png */; };
+		180EFEF51460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC91460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png */; };
+		180EFEF61460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEC91460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png */; };
+		180EFEF71460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFECA1460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png */; };
+		180EFEF81460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFECA1460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png */; };
+		180EFEF91460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFECA1460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png */; };
+		180EFEFA1460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFECA1460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png */; };
+		180EFEFD1460AD8100AA957D /* socialize-activity-call-out-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEFB1460AD8100AA957D /* socialize-activity-call-out-arrow.png */; };
+		180EFEFE1460AD8100AA957D /* socialize-activity-call-out-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEFB1460AD8100AA957D /* socialize-activity-call-out-arrow.png */; };
+		180EFEFF1460AD8100AA957D /* socialize-activity-call-out-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEFB1460AD8100AA957D /* socialize-activity-call-out-arrow.png */; };
+		180EFF001460AD8100AA957D /* socialize-activity-call-out-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEFB1460AD8100AA957D /* socialize-activity-call-out-arrow.png */; };
+		180EFF011460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEFC1460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png */; };
+		180EFF021460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEFC1460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png */; };
+		180EFF031460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEFC1460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png */; };
+		180EFF041460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180EFEFC1460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png */; };
+		1854BE2F1461A97400A67715 /* socialize-authorize-user-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1854BE2D1461A97400A67715 /* socialize-authorize-user-icon.png */; };
+		1854BE301461A97400A67715 /* socialize-authorize-user-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1854BE2D1461A97400A67715 /* socialize-authorize-user-icon.png */; };
+		1854BE311461A97400A67715 /* socialize-authorize-user-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1854BE2D1461A97400A67715 /* socialize-authorize-user-icon.png */; };
+		1854BE321461A97400A67715 /* socialize-authorize-user-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1854BE2D1461A97400A67715 /* socialize-authorize-user-icon.png */; };
+		1854BE331461A97400A67715 /* socialize-authorize-user-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1854BE2E1461A97400A67715 /* socialize-authorize-user-icon@2x.png */; };
+		1854BE341461A97400A67715 /* socialize-authorize-user-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1854BE2E1461A97400A67715 /* socialize-authorize-user-icon@2x.png */; };
+		1854BE351461A97400A67715 /* socialize-authorize-user-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1854BE2E1461A97400A67715 /* socialize-authorize-user-icon@2x.png */; };
+		1854BE361461A97400A67715 /* socialize-authorize-user-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1854BE2E1461A97400A67715 /* socialize-authorize-user-icon@2x.png */; };
+		18C4A86014714DEB00382F89 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE8E14609B6100AA957D /* SocializeAuthTableViewCell.xib */; };
+		18D8EDD1146B162600E9991F /* AuthViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */; };
+		18D8EDD4146B48F700E9991F /* SocializeAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */; };
+		18D8EDD5146B48F700E9991F /* SocializeAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */; };
+		18D8EDD6146B48F700E9991F /* SocializeAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */; };
+		18D8EDD7146B48F700E9991F /* SocializeAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */; };
 		5C21C0C71396BF8300CF2B9F /* SocializeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */; };
 		5C21C0C91396BF8300CF2B9F /* _Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0C31396BF8300CF2B9F /* _Socialize.m */; };
 		5C21C0D11396D9A800CF2B9F /* SocializeEntityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C0CF1396D9A800CF2B9F /* SocializeEntityService.m */; };
@@ -1602,8 +1691,35 @@
 		16FDF4DD1414BA0A00EAA064 /* SocializeCommentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentDetailsViewController.h; path = Classes/SocializeCommentDetailsViewController.h; sourceTree = "<group>"; };
 		16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentDetailsViewController.m; path = Classes/SocializeCommentDetailsViewController.m; sourceTree = "<group>"; };
 		18029E121432B815002BDEC7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		180EFE8E14609B6100AA957D /* SocializeAuthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeAuthTableViewCell.xib; sourceTree = "<group>"; };
+		180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeAuthTableViewCell.h; sourceTree = "<group>"; };
+		180EFE9414609C1000AA957D /* SocializeAuthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAuthTableViewCell.m; sourceTree = "<group>"; };
+		180EFE9B14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeAuthInfoTableViewCell.xib; sourceTree = "<group>"; };
+		180EFEA014609C7800AA957D /* SocializeAuthInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeAuthInfoTableViewCell.h; sourceTree = "<group>"; };
+		180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAuthInfoTableViewCell.m; sourceTree = "<group>"; };
+		180EFEA814609C8700AA957D /* SocializeAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeAuthViewController.xib; sourceTree = "<group>"; };
+		180EFEBF1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-authenticate-badge-icon.png"; sourceTree = "<group>"; };
+		180EFEC01460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-authenticate-badge-icon@2x.png"; sourceTree = "<group>"; };
+		180EFEC11460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-facebook-disabled-icon.png"; sourceTree = "<group>"; };
+		180EFEC21460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-facebook-disabled-icon@2x.png"; sourceTree = "<group>"; };
+		180EFEC31460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-facebook-enabled-icon.png"; sourceTree = "<group>"; };
+		180EFEC41460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-facebook-enabled-icon@2x.png"; sourceTree = "<group>"; };
+		180EFEC51460AC4600AA957D /* socialize-authorize-top-shadow-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-top-shadow-background.png"; sourceTree = "<group>"; };
+		180EFEC61460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-top-shadow-background@2x.png"; sourceTree = "<group>"; };
+		180EFEC71460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-twitter-disabled-icon.png"; sourceTree = "<group>"; };
+		180EFEC81460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-twitter-disabled-icon@2x.png"; sourceTree = "<group>"; };
+		180EFEC91460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-twitter-enabled-icon.png"; sourceTree = "<group>"; };
+		180EFECA1460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-twitter-enabled-icon@2x.png"; sourceTree = "<group>"; };
+		180EFEFB1460AD8100AA957D /* socialize-activity-call-out-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-activity-call-out-arrow.png"; sourceTree = "<group>"; };
+		180EFEFC1460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-activity-call-out-arrow@2x.png"; sourceTree = "<group>"; };
+		1854BE2D1461A97400A67715 /* socialize-authorize-user-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-user-icon.png"; sourceTree = "<group>"; };
+		1854BE2E1461A97400A67715 /* socialize-authorize-user-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "socialize-authorize-user-icon@2x.png"; sourceTree = "<group>"; };
 		18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUnitTestApplication.h; sourceTree = "<group>"; };
 		18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUnitTestApplication.m; sourceTree = "<group>"; };
+		18D8EDCF146B162600E9991F /* AuthViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthViewControllerTests.h; path = "Test Cases/AuthViewControllerTests.h"; sourceTree = "<group>"; };
+		18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthViewControllerTests.m; path = "Test Cases/AuthViewControllerTests.m"; sourceTree = "<group>"; };
+		18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeAuthViewController.h; path = Classes/SocializeAuthViewController.h; sourceTree = "<group>"; };
+		18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeAuthViewController.m; path = Classes/SocializeAuthViewController.m; sourceTree = "<group>"; };
 		5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequest.h; path = Classes/SocializeRequest.h; sourceTree = "<group>"; };
 		5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRequest.m; path = Classes/SocializeRequest.m; sourceTree = "<group>"; };
 		5C21C0C21396BF8300CF2B9F /* _Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _Socialize.h; path = Classes/_Socialize.h; sourceTree = "<group>"; };
@@ -1869,7 +1985,6 @@
 		AA3326E3144CD9FB0033C7FA /* SampleSdkAppKIFTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleSdkAppKIFTestController.h; sourceTree = "<group>"; };
 		AA3326E4144CD9FB0033C7FA /* SampleSdkAppKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppKIFTestController.m; sourceTree = "<group>"; };
 		AA3326EA144CDA4A0033C7FA /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = Frameworks/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
-		AA33A42B14630B8100319168 /* unitTests2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "unitTests2-Info.plist"; path = "/Users/griswold/ios/socialize-sdk-ios/unitTests2-Info.plist"; sourceTree = "<absolute>"; };
 		AA369FB3146C50A700E15AA4 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		AA369FB4146C50A700E15AA4 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		AA369FB5146C50A700E15AA4 /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
@@ -2244,6 +2359,10 @@
 		16C330BD13F3B75C004EA34D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */,
+				18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */,
+				167E11C0144325F9004E4C1B /* SocializeProfileEditTableViewCell.h */,
+				167E11C1144325F9004E4C1B /* SocializeProfileEditTableViewCell.m */,
 				16075490143302E4002E5A38 /* SocializeBaseViewController.h */,
 				16075491143302E4002E5A38 /* SocializeBaseViewController.m */,
 				AAD4B40B1460A45000F39D0A /* SocializeProfileEditViewController.h */,
@@ -2433,7 +2552,6 @@
 				5CC3DABF1378824800B11B78 /* Products */,
 				AA3326EA144CDA4A0033C7FA /* KIF.xcodeproj */,
 				AA863889144CA42C00CFA759 /* OCMock.xcodeproj */,
-				AA33A42B14630B8100319168 /* unitTests2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2635,6 +2753,8 @@
 		6D44A37613FC342D004B3A46 /* UI tests */ = {
 			isa = PBXGroup;
 			children = (
+				18D8EDCF146B162600E9991F /* AuthViewControllerTests.h */,
+				18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */,
 				166DD757146421130017D0E9 /* SocializePostCommentViewControllerLandscape.xib */,
 				6D3F84B51424046D00825DFC /* PostCommentViewControllerForTest.h */,
 				6D3F84B61424046D00825DFC /* PostCommentViewControllerForTest.m */,
@@ -2693,6 +2813,10 @@
 		6D89844A14083B7A00482F1E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */,
+				180EFE9414609C1000AA957D /* SocializeAuthTableViewCell.m */,
+				180EFEA014609C7800AA957D /* SocializeAuthInfoTableViewCell.h */,
+				180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */,
 				6D44A7C51402BF6E004B3A46 /* SocializeActionView.h */,
 				6D44A7C61402BF6E004B3A46 /* SocializeActionView.m */,
 				6D44A908140418E0004B3A46 /* TableBGInfoView.h */,
@@ -2843,6 +2967,25 @@
 		9A4D29831393FF720065C0CB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				180EFEFB1460AD8100AA957D /* socialize-activity-call-out-arrow.png */,
+				180EFEFC1460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png */,
+				180EFEBF1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png */,
+				180EFEC01460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png */,
+				180EFEC11460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png */,
+				180EFEC21460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png */,
+				180EFEC31460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png */,
+				180EFEC41460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png */,
+				180EFEC51460AC4600AA957D /* socialize-authorize-top-shadow-background.png */,
+				180EFEC61460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png */,
+				180EFEC71460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png */,
+				180EFEC81460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png */,
+				180EFEC91460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png */,
+				180EFECA1460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png */,
+				1854BE2D1461A97400A67715 /* socialize-authorize-user-icon.png */,
+				1854BE2E1461A97400A67715 /* socialize-authorize-user-icon@2x.png */,
+				180EFEA814609C8700AA957D /* SocializeAuthViewController.xib */,
+				180EFE9B14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib */,
+				180EFE8E14609B6100AA957D /* SocializeAuthTableViewCell.xib */,
 				16C8160714598F7900FFC476 /* SocializeCommentDetailsViewController.xib */,
 				16C815FB14598F1E00FFC476 /* socialize-comment-top-background.png */,
 				16C815FC14598F1F00FFC476 /* socialize-comment-user-only-background.png */,
@@ -3253,6 +3396,8 @@
 				16C365EA14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */,
 				16C365EE14518F1600DD5421 /* UIView+BlocksKit.h in Headers */,
 				16C365F214518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */,
+				180EFE9614609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */,
+				180EFEA314609C7800AA957D /* SocializeAuthInfoTableViewCell.h in Headers */,
 				AAE9A6EA145F39A6001A9F1D /* Facebook+Socialize.h in Headers */,
 				AAE9A6F0145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */,
 				166DD6F8146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
@@ -3263,6 +3408,7 @@
 				AA5ACEF21467C43100790B3D /* SocializeProfileEditTableViewCell.h in Headers */,
 				AAE7959014684EB100BEAD28 /* TestLikeServices.h in Headers */,
 				AAE795AF14684F1E00BEAD28 /* TestActivityServices.h in Headers */,
+				18D8EDD5146B48F700E9991F /* SocializeAuthViewController.h in Headers */,
 				AA369FB8146C50A700E15AA4 /* NSData+Base64.h in Headers */,
 				AA369FBC146C50A700E15AA4 /* UIDevice+IdentifierAddition.h in Headers */,
 				AA87C5DD146C7E8C00B22EF4 /* SocializePostCommentViewController.h in Headers */,
@@ -3326,6 +3472,8 @@
 				16C365E914518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */,
 				16C365ED14518F1600DD5421 /* UIView+BlocksKit.h in Headers */,
 				16C365F114518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */,
+				180EFE9514609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */,
+				180EFEA214609C7800AA957D /* SocializeAuthInfoTableViewCell.h in Headers */,
 				AAE9A6E9145F39A6001A9F1D /* Facebook+Socialize.h in Headers */,
 				AAE9A6EF145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */,
 				166DD6F7146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
@@ -3336,6 +3484,7 @@
 				AA5ACEF11467C43000790B3D /* SocializeProfileEditTableViewCell.h in Headers */,
 				AAE7958F14684EB100BEAD28 /* TestLikeServices.h in Headers */,
 				AAE795AE14684F1E00BEAD28 /* TestActivityServices.h in Headers */,
+				18D8EDD4146B48F700E9991F /* SocializeAuthViewController.h in Headers */,
 				AA369FB7146C50A700E15AA4 /* NSData+Base64.h in Headers */,
 				AA369FBB146C50A700E15AA4 /* UIDevice+IdentifierAddition.h in Headers */,
 				AA87C5DC146C7E8C00B22EF4 /* SocializePostCommentViewController.h in Headers */,
@@ -3806,6 +3955,25 @@
 				16C815FD14598F1F00FFC476 /* socialize-comment-top-background.png in Resources */,
 				16C8160214598F1F00FFC476 /* socialize-comment-user-only-background.png in Resources */,
 				16C8160814598F7900FFC476 /* SocializeCommentDetailsViewController.xib in Resources */,
+				180EFE8F14609B6100AA957D /* SocializeAuthTableViewCell.xib in Resources */,
+				180EFE9C14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				180EFEA914609C8700AA957D /* SocializeAuthViewController.xib in Resources */,
+				180EFECB1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png in Resources */,
+				180EFECF1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png in Resources */,
+				180EFED31460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png in Resources */,
+				180EFED71460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png in Resources */,
+				180EFEDB1460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png in Resources */,
+				180EFEDF1460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png in Resources */,
+				180EFEE31460AC4600AA957D /* socialize-authorize-top-shadow-background.png in Resources */,
+				180EFEE71460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png in Resources */,
+				180EFEEB1460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png in Resources */,
+				180EFEEF1460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png in Resources */,
+				180EFEF31460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png in Resources */,
+				180EFEF71460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */,
+				180EFEFD1460AD8100AA957D /* socialize-activity-call-out-arrow.png in Resources */,
+				180EFF011460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png in Resources */,
+				1854BE2F1461A97400A67715 /* socialize-authorize-user-icon.png in Resources */,
+				1854BE331461A97400A67715 /* socialize-authorize-user-icon@2x.png in Resources */,
 				AA87C5EB146C9EC600B22EF4 /* SocializePostCommentViewController.xib in Resources */,
 				AA87C5FC146CB65700B22EF4 /* SocializePostShareViewController.xib in Resources */,
 			);
@@ -4067,8 +4235,27 @@
 				16C8160114598F1F00FFC476 /* socialize-comment-top-background.png in Resources */,
 				16C8160614598F1F00FFC476 /* socialize-comment-user-only-background.png in Resources */,
 				16C8160C14598F7900FFC476 /* SocializeCommentDetailsViewController.xib in Resources */,
+				180EFE9F14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				180EFEAC14609C8700AA957D /* SocializeAuthViewController.xib in Resources */,
+				180EFECE1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png in Resources */,
+				180EFED21460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png in Resources */,
+				180EFED61460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png in Resources */,
+				180EFEDA1460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png in Resources */,
+				180EFEDE1460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png in Resources */,
+				180EFEE21460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png in Resources */,
+				180EFEE61460AC4600AA957D /* socialize-authorize-top-shadow-background.png in Resources */,
+				180EFEEA1460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png in Resources */,
+				180EFEEE1460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png in Resources */,
+				180EFEF21460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png in Resources */,
+				180EFEF61460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png in Resources */,
+				180EFEFA1460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */,
+				180EFF001460AD8100AA957D /* socialize-activity-call-out-arrow.png in Resources */,
+				180EFF041460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png in Resources */,
+				1854BE321461A97400A67715 /* socialize-authorize-user-icon.png in Resources */,
+				1854BE361461A97400A67715 /* socialize-authorize-user-icon@2x.png in Resources */,
 				AA87C5F0146C9EC600B22EF4 /* SocializePostCommentViewController.xib in Resources */,
 				AA87C601146CB66100B22EF4 /* SocializePostShareViewController.xib in Resources */,
+				18C4A86014714DEB00382F89 /* SocializeAuthTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4218,6 +4405,25 @@
 				16C815FF14598F1F00FFC476 /* socialize-comment-top-background.png in Resources */,
 				16C8160414598F1F00FFC476 /* socialize-comment-user-only-background.png in Resources */,
 				16C8160A14598F7900FFC476 /* SocializeCommentDetailsViewController.xib in Resources */,
+				180EFE9114609B6100AA957D /* SocializeAuthTableViewCell.xib in Resources */,
+				180EFE9E14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				180EFEAB14609C8700AA957D /* SocializeAuthViewController.xib in Resources */,
+				180EFECD1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png in Resources */,
+				180EFED11460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png in Resources */,
+				180EFED51460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png in Resources */,
+				180EFED91460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png in Resources */,
+				180EFEDD1460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png in Resources */,
+				180EFEE11460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png in Resources */,
+				180EFEE51460AC4600AA957D /* socialize-authorize-top-shadow-background.png in Resources */,
+				180EFEE91460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png in Resources */,
+				180EFEED1460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png in Resources */,
+				180EFEF11460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png in Resources */,
+				180EFEF51460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png in Resources */,
+				180EFEF91460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */,
+				180EFEFF1460AD8100AA957D /* socialize-activity-call-out-arrow.png in Resources */,
+				180EFF031460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png in Resources */,
+				1854BE311461A97400A67715 /* socialize-authorize-user-icon.png in Resources */,
+				1854BE351461A97400A67715 /* socialize-authorize-user-icon@2x.png in Resources */,
 				AA87C5EE146C9EC600B22EF4 /* SocializePostCommentViewController.xib in Resources */,
 				AA87C5FF146CB65F00B22EF4 /* SocializePostShareViewController.xib in Resources */,
 			);
@@ -4340,6 +4546,25 @@
 				16C815FE14598F1F00FFC476 /* socialize-comment-top-background.png in Resources */,
 				16C8160314598F1F00FFC476 /* socialize-comment-user-only-background.png in Resources */,
 				16C8160914598F7900FFC476 /* SocializeCommentDetailsViewController.xib in Resources */,
+				180EFE9014609B6100AA957D /* SocializeAuthTableViewCell.xib in Resources */,
+				180EFE9D14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				180EFEAA14609C8700AA957D /* SocializeAuthViewController.xib in Resources */,
+				180EFECC1460AC4600AA957D /* socialize-authorize-authenticate-badge-icon.png in Resources */,
+				180EFED01460AC4600AA957D /* socialize-authorize-authenticate-badge-icon@2x.png in Resources */,
+				180EFED41460AC4600AA957D /* socialize-authorize-facebook-disabled-icon.png in Resources */,
+				180EFED81460AC4600AA957D /* socialize-authorize-facebook-disabled-icon@2x.png in Resources */,
+				180EFEDC1460AC4600AA957D /* socialize-authorize-facebook-enabled-icon.png in Resources */,
+				180EFEE01460AC4600AA957D /* socialize-authorize-facebook-enabled-icon@2x.png in Resources */,
+				180EFEE41460AC4600AA957D /* socialize-authorize-top-shadow-background.png in Resources */,
+				180EFEE81460AC4600AA957D /* socialize-authorize-top-shadow-background@2x.png in Resources */,
+				180EFEEC1460AC4600AA957D /* socialize-authorize-twitter-disabled-icon.png in Resources */,
+				180EFEF01460AC4600AA957D /* socialize-authorize-twitter-disabled-icon@2x.png in Resources */,
+				180EFEF41460AC4600AA957D /* socialize-authorize-twitter-enabled-icon.png in Resources */,
+				180EFEF81460AC4600AA957D /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */,
+				180EFEFE1460AD8100AA957D /* socialize-activity-call-out-arrow.png in Resources */,
+				180EFF021460AD8100AA957D /* socialize-activity-call-out-arrow@2x.png in Resources */,
+				1854BE301461A97400A67715 /* socialize-authorize-user-icon.png in Resources */,
+				1854BE341461A97400A67715 /* socialize-authorize-user-icon@2x.png in Resources */,
 				AA87C5EC146C9EC600B22EF4 /* SocializePostCommentViewController.xib in Resources */,
 				AA87C5FD146CB65700B22EF4 /* SocializePostShareViewController.xib in Resources */,
 			);
@@ -4652,6 +4877,8 @@
 				16C365EB14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				16C365EF14518F1600DD5421 /* UIView+BlocksKit.m in Sources */,
 				16C365F314518F1600DD5421 /* UIWebView+BlocksKit.m in Sources */,
+				180EFE9714609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */,
+				180EFEA414609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */,
 				AAE9A6EB145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAE9A6F1145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */,
 				166DD6FD1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */,
@@ -4659,6 +4886,7 @@
 				AAD4B4201460C19E00F39D0A /* SocializeProfileEditValueViewController.m in Sources */,
 				AAD4B4221460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */,
 				AAC201991460CFD30045FDAB /* UINavigationController+Socialize.m in Sources */,
+				18D8EDD6146B48F700E9991F /* SocializeAuthViewController.m in Sources */,
 				AA369FB9146C50A700E15AA4 /* NSData+Base64.m in Sources */,
 				AA369FBD146C50A700E15AA4 /* UIDevice+IdentifierAddition.m in Sources */,
 				AA87C5DE146C7E8C00B22EF4 /* SocializePostCommentViewController.m in Sources */,
@@ -4713,6 +4941,7 @@
 				AA6DE805145FBBB40037E48E /* SocializeFacebookInterfaceTests.m in Sources */,
 				166DD73A1462B8F20017D0E9 /* SocializeShareBuilderTests.m in Sources */,
 				AA33A43B1463174700319168 /* profile_functions.c in Sources */,
+				18D8EDD1146B162600E9991F /* AuthViewControllerTests.m in Sources */,
 				AA5D0AEF146B60A200777A6E /* PostCommentViewControllerTests.m in Sources */,
 				AACA15FA146B6F05005E05EE /* SocializeProfileViewControllerTests.m in Sources */,
 				AACA15FE146B7730005E05EE /* SocializeProfileEditViewControllerTest.m in Sources */,
@@ -4938,6 +5167,8 @@
 				16C365EC14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				16C365F014518F1600DD5421 /* UIView+BlocksKit.m in Sources */,
 				16C365F414518F1600DD5421 /* UIWebView+BlocksKit.m in Sources */,
+				180EFE9814609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */,
+				180EFEA514609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */,
 				AAE9A6EC145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAE9A6F2145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */,
 				166DD6FE1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */,
@@ -4945,6 +5176,7 @@
 				AAD4B4211460C1A000F39D0A /* SocializeProfileEditValueViewController.m in Sources */,
 				AAD4B4231460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */,
 				AAC2019A1460CFD30045FDAB /* UINavigationController+Socialize.m in Sources */,
+				18D8EDD7146B48F700E9991F /* SocializeAuthViewController.m in Sources */,
 				AA369FBA146C50A700E15AA4 /* NSData+Base64.m in Sources */,
 				AA369FBE146C50A700E15AA4 /* UIDevice+IdentifierAddition.m in Sources */,
 				AA87C5DF146C7E8C00B22EF4 /* SocializePostCommentViewController.m in Sources */,

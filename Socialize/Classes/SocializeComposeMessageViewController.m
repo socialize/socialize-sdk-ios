@@ -51,6 +51,7 @@
 @synthesize locationManager = _locationManager;
 @synthesize kbListener = _kbListener;
 @synthesize entityURL = _entityURL;
+@synthesize authViewController = _authViewController;
 - (id)initWithNibName:(NSString *)nibNameOrNil 
                bundle:(NSBundle *)nibBundleOrNil 
       entityUrlString:(NSString*)entityUrlString 
@@ -304,6 +305,12 @@
     self.mapContainer.frame = mapContainerFrame;
 }
 
+-(UINavigationController *)authViewController{    
+    if(!_authViewController) {
+        _authViewController = [[SocializeAuthViewController authViewControllerInNavigationController:self] retain];
+    }
+    return _authViewController;
+}
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     

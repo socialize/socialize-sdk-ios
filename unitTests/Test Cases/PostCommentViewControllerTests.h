@@ -31,6 +31,6 @@
 #import <UIKit/UIKit.h>
 
 @interface PostCommentViewControllerTests : GHTestCase {
+    
 }
-
 @end
