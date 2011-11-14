@@ -33,7 +33,4 @@
 @interface PostCommentViewControllerTests : GHTestCase {
     
 }
-
-@property (nonatomic,retain) id mockSocialize;
-@property (nonatomic,retain) id mockLocationManager;
 @end

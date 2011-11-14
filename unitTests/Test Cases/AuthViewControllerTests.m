@@ -191,6 +191,7 @@ BOOL isAuthenticatedWithFacebook = YES;
 - (void)testDidAuthenticate {
     id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
     
+    [[[self.mockSocialize expect] andReturnValue:[NSNumber numberWithBool:YES]] isAuthenticatedWithFacebook]; 
     //create and set the mock navigation controller
     id mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
     [[mockNavigationController expect] pushViewController:[OCMArg any] animated:YES];
