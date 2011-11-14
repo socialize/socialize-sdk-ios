@@ -35,7 +35,7 @@
     @private 
     LoadingView*  _loadingIndicatorView;
 }
-
+@property(nonatomic, retain) UINavigationController* authViewController;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) Socialize *socialize;
 @property (nonatomic, retain) UIBarButtonItem *doneButton;

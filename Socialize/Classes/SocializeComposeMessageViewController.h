@@ -12,7 +12,6 @@
 #import "SocializeBaseViewController.h"
 #import "_Socialize.h"
 #import "SocializeProfileViewController.h"
-
 @class CommentMapView;
 @class UIKeyboardListener;
 @class SocializeLocationManager;

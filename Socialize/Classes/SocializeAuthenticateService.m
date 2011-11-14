@@ -378,7 +378,7 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
 
 + (BOOL)handleOpenURL:(NSURL*)url {
     return [FacebookAuthenticatorLastUsedAuthenticator handleOpenURL:url];
-}
+}   
 
 -(BOOL) handleOpenURL:(NSURL *)url
 {
