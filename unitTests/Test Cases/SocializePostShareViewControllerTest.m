@@ -28,8 +28,12 @@
 
 static NSString *const TestURL = @"http://getsocialize.com";
 
+- (BOOL)shouldRunOnMainThread {
+    return YES;
+}
+
 - (void)setUp {
-    self.origPostShareViewController = [SocializePostShareViewController postShareViewControllerWithEntityURL:TestURL];
+    self.origPostShareViewController = [[[SocializePostShareViewController alloc] initWithNibName:nil bundle:nil entityUrlString:TestURL] autorelease];
     self.postShareViewController = [OCMockObject partialMockForObject:self.origPostShareViewController];
     
     self.mockShareObject = [OCMockObject mockForProtocol:@protocol(SocializeShare)];
@@ -38,7 +42,7 @@ static NSString *const TestURL = @"http://getsocialize.com";
     self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     self.postShareViewController.socialize = self.mockSocialize;
     
-    self.mockTextView = [OCMockObject mockForClass:[UITextView class]];
+    self.mockTextView = [OCMockObject niceMockForClass:[UITextView class]];
     self.postShareViewController.commentTextView = self.mockTextView;
     
     self.mockShareBuilder = [OCMockObject mockForClass:[SocializeShareBuilder class]];
@@ -61,6 +65,9 @@ static NSString *const TestURL = @"http://getsocialize.com";
 
 
 - (void)testViewDidLoad {
+    id niceView = [OCMockObject niceMockForClass:[UIView class]];
+    [[[(id)self.postShareViewController stub] andReturn:niceView] view];
+    
     [[(id)self.postShareViewController expect] setTitle:@"New Share"];
     
     [self.postShareViewController viewDidLoad];
@@ -79,20 +86,13 @@ static NSString *const TestURL = @"http://getsocialize.com";
 }
 
 - (void)testCreateShareWithExistingShareObjectCreatesOnFacebook {
-    [[(id)self.postShareViewController expect] createShareOnFacebookServer];
+    [[(id)self.postShareViewController expect] sendActivityToFacebookFeed:self.mockShareObject];
     [self.postShareViewController createShare];
 }
 
-- (void)testShareFailedActions {
-    [[(id)self.postShareViewController expect] stopLoading];
-    [[(id)self.postShareViewController expect] showAllertWithText:OCMOCK_ANY andTitle:OCMOCK_ANY];
-    [self.postShareViewController shareFailed:nil];
-}
-
-- (void)testShareCompleteActions {
-    [[(id)self.postShareViewController expect] stopLoading];
+- (void)testSendActivityToFacebookFeedSucceeded {
     [[(id)self.postShareViewController expect] dismissModalViewControllerAnimated:YES];
-    [self.postShareViewController shareComplete];
+    [self.postShareViewController sendActivityToFacebookFeedSucceeded];
 }
 
 
@@ -119,7 +119,7 @@ static NSString *const TestURL = @"http://getsocialize.com";
     self.postShareViewController.shareBuilder = nil;
     SocializeShareBuilder *defaultShareBuilder = self.postShareViewController.shareBuilder;
 
-    [[(id)self.postShareViewController expect] shareComplete];
+    [[(id)self.postShareViewController expect] sendActivityToFacebookFeedSucceeded];
     defaultShareBuilder.successAction();
 }
 
@@ -128,22 +128,16 @@ static NSString *const TestURL = @"http://getsocialize.com";
     SocializeShareBuilder *defaultShareBuilder = self.postShareViewController.shareBuilder;
     
     id mockError = [OCMockObject mockForClass:[NSError class]];
-    [[(id)self.postShareViewController expect] shareFailed:mockError];
+    [[(id)self.postShareViewController expect] sendActivityToFacebookFeedFailed:mockError];
     defaultShareBuilder.errorAction(mockError);
 }
-
+/*
 - (void)testCreateShareOnFacebookServer {
     [[self.mockShareBuilder expect] setShareObject:self.mockShareObject];
     [[self.mockShareBuilder expect] performShareForPath:@"me/feed"];
     [self.postShareViewController createShareOnFacebookServer];
     
 }
-
-- (void)testFailingSocializeCausesShareFailed {
-    id mockError = [OCMockObject mockForClass:[NSError class]];
-    [[(id)self.postShareViewController expect] shareFailed:mockError];
-    [self.postShareViewController service:nil didFail:mockError];
-}
-
+ */
 
 @end

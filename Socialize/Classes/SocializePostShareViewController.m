@@ -68,9 +68,6 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)sendActivityToFacebookFeedCancelled {
-}
-
 - (void)createShareOnSocializeServer {
     [self startLoading];
     [self.socialize createShareForEntityWithKey:self.entityURL medium:SocializeShareMediumFacebook text:commentTextView.text];
@@ -86,11 +83,6 @@
         // Finish creating the share
         [self createShare];
     }
-}
-
-- (void)service:(SocializeService *)service didFail:(NSError *)error {
-    [self stopLoading];
-    [self showAllertWithText:[error localizedDescription] andTitle:@"Error Posting Share"];
 }
 
 @end

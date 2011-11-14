@@ -48,6 +48,7 @@
     return YES;
 }
 
+/*
 -(void)testInit
 {
     id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
@@ -86,6 +87,7 @@
     [controller viewDidUnload];
     [controller release];
 }
+*/
 
 -(void)testCreateMethod
 {

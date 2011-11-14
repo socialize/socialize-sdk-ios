@@ -65,7 +65,7 @@
 }
 
 - (void)authenticateViaFacebook {
-    [self createComment];
+    [self finishCreateComment];
 }
 
 @end
