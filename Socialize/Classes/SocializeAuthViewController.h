@@ -16,7 +16,8 @@
 
 typedef enum {
     SocializeAuthViewControllerSectionAuthTypes,
-    SocializeAuthViewControllerSectionAuthInfo
+    SocializeAuthViewControllerSectionAuthInfo,
+    SocializeAuthViewControllerNumSections
 } SocializeAuthViewControllerSection;
 
 typedef enum {
@@ -39,5 +40,5 @@ typedef enum {
 
 @property (nonatomic, retain) IBOutlet UITableView     *tableView;
 - (id)initWithDelegate:(id<SocializeAuthViewDelegate>)delegate;
-+(UINavigationController*)createNavigationControllerForAuthViewControllerWithDelegate:(id<SocializeAuthViewDelegate>)delegate;
++(UINavigationController*)authViewControllerInNavigationController:(id<SocializeAuthViewDelegate>)delegate;
 @end

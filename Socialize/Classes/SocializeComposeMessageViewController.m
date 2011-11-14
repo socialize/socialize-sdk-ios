@@ -307,7 +307,7 @@
 
 -(UINavigationController *)authViewController{    
     if(!_authViewController) {
-        _authViewController = [[SocializeAuthViewController createNavigationControllerForAuthViewControllerWithDelegate:self] retain];
+        _authViewController = [[SocializeAuthViewController authViewControllerInNavigationController:self] retain];
     }
     return _authViewController;
 }

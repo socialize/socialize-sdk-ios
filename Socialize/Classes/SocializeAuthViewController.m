@@ -24,8 +24,11 @@
 @end
 
 
+CGFloat SocializeAuthTableViewRowHeight = 56;
 
 @implementation SocializeAuthViewController
+
+
 
 @synthesize tableView;
 @synthesize delegate = _delegate;
@@ -38,7 +41,7 @@
     self.user = nil;
     [super dealloc];
 }
-+(UINavigationController*)createNavigationControllerForAuthViewControllerWithDelegate:(id<SocializeAuthViewDelegate>)delegate;
++(UINavigationController*)authViewControllerInNavigationController:(id<SocializeAuthViewDelegate>)delegate;
 {
     SocializeAuthViewController *authController 
     = [[SocializeAuthViewController alloc] initWithDelegate:delegate];
@@ -56,12 +59,11 @@
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 2;
+    return SocializeAuthViewControllerNumSections;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return 56;
+    return SocializeAuthTableViewRowHeight;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -100,10 +102,10 @@
     NSInteger noOfRows = 0;
 	switch (section) 
 	{
-		case 0:
+		case SocializeAuthViewControllerSectionAuthTypes:
             noOfRows = 1;
             break;
-        case 1:
+        case SocializeAuthViewControllerSectionAuthInfo:
             noOfRows = 1;
             break;
     }

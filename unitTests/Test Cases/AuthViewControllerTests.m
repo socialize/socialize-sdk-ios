@@ -83,7 +83,7 @@ BOOL isAuthenticatedWithFacebook = YES;
 
 - (void)testCreateWithNavigationController {
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewDelegate)];
-    NSObject *object = [SocializeAuthViewController createNavigationControllerForAuthViewControllerWithDelegate:mockDelegate];
+    NSObject *object = [SocializeAuthViewController authViewControllerInNavigationController:mockDelegate];
     NSAssert( [object isKindOfClass:[UINavigationController class]], @"static creation method did not create uinavigation controller" ) ;   
 }
 
