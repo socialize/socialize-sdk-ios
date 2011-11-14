@@ -98,7 +98,7 @@
 }
 
 + (NSArray*)stepsToShowTabbedActionBarForURL:(NSString*)url {
-    NSMutableArray *steps = [NSMutableArray array];
+    NSMutableArray *steps = [NSMutableArray array]; 
     
     [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:11 inSection:0];
@@ -227,12 +227,8 @@
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToEnterText:comment intoViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
-    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Facebook?"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Yes"]];
-    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Done"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];	
-//    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Anonymous?"]];
-//    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Ok"]];
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"facebook"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Skip"]];
     return steps;
 }
 

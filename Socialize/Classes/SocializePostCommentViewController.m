@@ -63,6 +63,9 @@
         [self createComment];
     }
 }
+-(void)authorizationSkipped {
+    [self createComment];
+}
 -(void)didAuthenticate:(id<SocializeUser>)user {
     [self startLoadAnimationForView:commentTextView];
     [self createComment];
