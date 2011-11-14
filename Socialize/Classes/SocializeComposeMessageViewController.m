@@ -51,6 +51,7 @@
 @synthesize locationManager = _locationManager;
 @synthesize kbListener = _kbListener;
 @synthesize entityURL = _entityURL;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil 
                bundle:(NSBundle *)nibBundleOrNil 
       entityUrlString:(NSString*)entityUrlString 
@@ -305,6 +306,7 @@
     
     self.mapContainer.frame = mapContainerFrame;
 }
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations

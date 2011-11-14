@@ -67,6 +67,16 @@
     return self.facebookSwitch.on && !self.facebookSwitch.hidden;
 }
 
+- (void)dismissSelf {
+    // Double animated dismissal does not work on iOS5 (but works in iOS4)
+    // Allow previous modal dismisalls to complete. iOS5 added dismissViewControllerAnimated:completion:, which
+    // we would use here if backward compatibility was not required.   
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, MIN_MODAL_DISMISS_INTERVAL * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self stopLoadAnimation];
+        [self dismissModalViewControllerAnimated:YES];
+    });
+}
+
 - (void)finishCreateComment {
     
     // Create the comment object if not already created.
@@ -82,7 +92,7 @@
     }
     
     [self stopLoading];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissSelf];
 }
 
 - (void)afterUserRejectedFacebookAuthentication {
@@ -110,7 +120,7 @@
 
 -(void)sendButtonPressed:(UIButton*)button {
     if (![self.socialize isAuthenticatedWithFacebook]) {
-        [self requestFacebookFromUser];
+        [self presentModalViewController:self.authViewController animated:YES];
     } else {
         [self finishCreateComment];
     }
@@ -129,6 +139,17 @@
         self.commentObject = (id<SocializeComment>)object;
         [self finishCreateComment];
     }
+}
+
+- (void)authorizationSkipped {
+    [self finishCreateComment];
+}
+
+-(void)didAuthenticate:(id<SocializeUser>)user {
+    // FIXME [#20995319] auth flow in wrong place
+    // Also, we give the user an opportunity to adjust the facebook switch
+    [self afterFacebookLoginAction];
+    [self finishCreateComment];
 }
 
 @end

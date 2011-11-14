@@ -28,12 +28,13 @@
 #import "SocializeBaseViewController.h"
 #import "LoadingView.h"
 #import "UINavigationBarBackground.h"
+#import "SocializeAuthViewController.h"
 #import "UIButton+Socialize.h"
 #import "SocializeProfileViewController.h"
 #import "SocializeShareBuilder.h"
 #import "SocializeFacebookInterface.h"
 
-@interface SocializeBaseViewController () <SocializeProfileViewControllerDelegate>
+@interface SocializeBaseViewController () <SocializeProfileViewControllerDelegate, SocializeAuthViewDelegate>
 @end
 
 @implementation SocializeBaseViewController
@@ -49,6 +50,7 @@
 @synthesize requestingFacebookFromUser = requestingFacebookFromUser_;
 @synthesize shareBuilder = shareBuilder_;
 @synthesize sendActivityToFacebookFeedAlertView = sendActivityToFacebookFeedAlertView_;
+@synthesize authViewController = authViewController_;
 
 - (void)dealloc
 {
@@ -80,6 +82,7 @@
     self.facebookAuthQuestionDialog = nil;
     self.postFacebookAuthenticationProfileViewController = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
+    self.authViewController = nil;
 }
 
 - (UITableView*)tableView {
@@ -302,7 +305,12 @@
         [self.socialize authenticateWithFacebook];
     }
 }
-
+-(UINavigationController *)authViewController{    
+    if(!authViewController_) {
+        authViewController_ = [[SocializeAuthViewController authViewControllerInNavigationController:self] retain];
+    }
+    return authViewController_;
+}
 - (void)requestFacebookFromUser {
     if (![self.socialize facebookAvailable]) {
         return;
