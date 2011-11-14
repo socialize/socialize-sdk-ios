@@ -39,5 +39,6 @@
 + (NSArray*)stepsToVerifyActionBarLikesAtCount:(NSInteger)count;
 + (id)stepToVerifyElementWithAccessibilityLabelDoesNotExist:(NSString*)label;
 + (id)stepToVerifyFacebookFeedContainsMessage:(NSString*)message;
++ (NSArray*)stepsToCreateShare:(NSString*)comment;
 
 @end

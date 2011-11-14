@@ -11,9 +11,4 @@
 
 @implementation SocializeEditValueTableViewCell
 
-- (void)dealloc {
-    [super dealloc];
-}
-
-
 @end

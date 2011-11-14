@@ -17,7 +17,7 @@ typedef enum ThirdPartyAuthName {
 } ThirdPartyAuthName;
 
 typedef enum {
-    Twitter = 1,
-    Facebook = 2,
-    Other = 3
-} ShareMedium;
+    SocializeShareMediumTwitter = 1,
+    SocializeShareMediumFacebook = 2,
+    SocializeShareMediumOther = 3
+} SocializeShareMedium;

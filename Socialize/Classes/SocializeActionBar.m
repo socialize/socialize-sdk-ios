@@ -37,6 +37,7 @@
 #import "BlocksKit.h"
 #import "SocializeShareBuilder.h"
 #import "SocializeFacebookInterface.h"
+#import "SocializePostShareViewController.h"
 
 @interface SocializeActionBar()
 @property(nonatomic, retain) id<SocializeLike> entityLike;
@@ -50,7 +51,7 @@
 
 @implementation SocializeActionBar
 
-@synthesize parentViewController;
+@synthesize presentModalInViewController = _presentModalInViewController;
 @synthesize entity;
 @synthesize entityLike;
 @synthesize entityView;
@@ -80,7 +81,7 @@
     if(self)
     {
         self.entity = socEntity;
-        self.parentViewController = controller;
+        self.presentModalInViewController = controller;
     }
     return self;
 }
@@ -90,10 +91,14 @@
     [entity release];
     [entityView release];
     [entityLike release];
-    [(SocializeActionView*)self.view setDelegate: nil];
+    if (self.isViewLoaded) {
+        [(SocializeActionView*)self.view setDelegate: nil];
+    }
     [comentsNavController release];
-    self.parentViewController = nil;
+    self.presentModalInViewController = nil;
+    
     self.shareComposer = nil;
+    
     self.shareActionSheet = nil;
     
     [super dealloc];
@@ -105,7 +110,8 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectZero];
+    [super loadView];
+    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(0, 0, 320, ACTION_PANE_HEIGHT)];
     self.view = actionView;
     actionView.delegate = self;
     [actionView release];
@@ -214,6 +220,10 @@
 {
 }
 
+- (BOOL)shouldAutoAuthOnAppear {
+    return NO;
+}
+
 -(void)afterAnonymouslyLoginAction
 {
     if (self.ignoreNextView) {
@@ -242,7 +252,7 @@
 -(void)commentButtonTouched:(id)sender
 {
     self.ignoreNextView = YES;
-    [self.parentViewController presentModalViewController:comentsNavController animated:YES];
+    [self.presentModalInViewController presentModalViewController:comentsNavController animated:YES];
 }
 
 -(void)likeButtonTouched:(id)sender
@@ -259,10 +269,9 @@
     if (_shareActionSheet == nil) {
         _shareActionSheet = [[UIActionSheet sheetWithTitle:nil] retain];
         
-#if 0
-        if(self.socialize.isAuthenticatedWithFacebook)
+        if([self.socialize facebookAvailable])
             [_shareActionSheet addButtonWithTitle:@"Share on Facebook" handler:^{ [self shareViaFacebook]; }];
-#endif   
+
         [_shareActionSheet addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
         
         [_shareActionSheet setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
@@ -276,7 +285,9 @@
 
 -(void)shareViaFacebook
 {
-    [self.socialize createShareForEntity:self.entity medium:Facebook text:@"Would like to share with you my interest"];
+    self.ignoreNextView = YES;
+    UINavigationController *shareController = [SocializePostShareViewController postShareViewControllerInNavigationControllerWithEntityURL:self.entity.key];
+    [self.presentModalInViewController presentModalViewController:shareController animated:YES];
 }
 
 #pragma mark Share via email
@@ -329,7 +340,7 @@
     NSString *emailBody = [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", entity.name, entity.key];
     [self.shareComposer setMessageBody:emailBody isHTML:NO];
 
-	[self.parentViewController presentModalViewController:self.shareComposer animated:YES];
+	[self.presentModalInViewController presentModalViewController:self.shareComposer animated:YES];
 }
 
 @end

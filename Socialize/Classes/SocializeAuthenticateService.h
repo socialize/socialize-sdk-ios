@@ -126,13 +126,6 @@ Socialize authentication service is the authentication engine. It performs anony
 +(BOOL)isAuthenticated;
 
 /**
- Check if authentication credentials still valid /and/ that this is a facebook authentication.
- 
- @return YES if credentials are valid and facebook was used for authentication, and NO otherwise
- */
-+ (BOOL)isAuthenticatedWithFacebook;
-
-/**
  Remove old authentication information.
  
  If user would like to re-authenticate he has to remove previous authentication information.

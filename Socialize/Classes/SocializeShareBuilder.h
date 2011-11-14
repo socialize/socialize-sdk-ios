@@ -44,7 +44,7 @@ typedef void (^OnErrorAction)(NSError*);
 
 @property(nonatomic, retain) id<ShareProviderProtocol> shareProtocol;
 @property(nonatomic, retain) id<SocializeActivity> shareObject;
-@property(nonatomic, retain) OnSuccessAction successAction;
-@property(nonatomic, retain) OnErrorAction errorAction;
+@property(nonatomic, copy) OnSuccessAction successAction;
+@property(nonatomic, copy) OnErrorAction errorAction;
 
 @end

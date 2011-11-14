@@ -328,6 +328,13 @@ otherwise you will get a failure.
                thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
 
 /**
+ Check if facebook is configured
+ 
+ @return YES if the app is properly configured for facebook usage
+ */
+- (BOOL)facebookAvailable;
+
+/**
  Check if authentication credentials still valid.
  
  @return YES if valid and NO if access token was expired.
@@ -506,6 +513,6 @@ otherwise you will get a failure.
 -(void)getActivityOfCurrentApplication;
 -(void)getActivityOfUser:(id<SocializeUser>)user;
 
--(void)createShareForEntity:(id<SocializeEntity>)entity medium:(ShareMedium)medium  text:(NSString*)text;
--(void)createShareForEntityWithKey:(NSString*)key medium:(ShareMedium)medium  text:(NSString*)text;
+-(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text;
+-(void)createShareForEntityWithKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text;
 @end

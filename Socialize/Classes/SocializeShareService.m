@@ -22,11 +22,11 @@
     return  @protocol(SocializeShare);
 }
 
--(void)createShareForEntity:(id<SocializeEntity>)entity medium:(ShareMedium)medium  text:(NSString*)text{
+-(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text{
     [self createShareForEntityKey:[entity key] medium:medium text:text];
 }
 
--(void)createShareForEntityKey:(NSString*)key medium:(ShareMedium)medium  text:(NSString*)text{
+-(void)createShareForEntityKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text{
     
     if (key && [key length]){   
         NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity_key", text, @"text", [NSNumber numberWithInt:medium], @"medium" , nil];

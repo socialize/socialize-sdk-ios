@@ -33,9 +33,11 @@
 
 -(id) initWithEntityUrlString:(NSString*)url keyboardListener:(UIKeyboardListener*) kb locationManager:(SocializeLocationManager *)lm
 {
-    self = [super initWithNibName:nil bundle:nil entityUrlString:url keyboardListener:kb locationManager:lm geocoderInfo:nil];
+    self = [super initWithNibName:nil bundle:nil entityUrlString:url];
     if(self)
     {
+        self.locationManager = lm;
+        self.kbListener = kb;
         self.commentTextView = [OCMockObject niceMockForClass: [UITextView class]];
         self.locationText = [OCMockObject niceMockForClass: [UILabel class]];
         self.doNotShareLocationButton = [OCMockObject niceMockForClass: [UIButton class]];

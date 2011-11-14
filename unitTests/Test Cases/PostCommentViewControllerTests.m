@@ -40,36 +40,7 @@
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
 
-@interface PostCommentViewControllerTests()
-@property (nonatomic,retain) SocializePostCommentViewController *postCommentViewController;
-@end
-
 @implementation PostCommentViewControllerTests
-@synthesize postCommentViewController = _postCommentViewController;
-@synthesize mockSocialize = _mockSocialize;
-@synthesize mockLocationManager = _mockLocationManager;
-- (void)setUp { 
-    //MOCK LOCATION MANAGER
-    self.mockLocationManager = [OCMockObject niceMockForClass: [SocializeLocationManager class]];        
-    
-    self.postCommentViewController = [[SocializePostCommentViewController alloc] initWithNibName:nil bundle:nil entityUrlString:TEST_URL keyboardListener:nil locationManager:self.mockLocationManager geocoderInfo:self.mockLocationManager];
-
-    //MOCK SOCIALIZE OBJ
-    self.mockSocialize = [OCMockObject niceMockForClass:[Socialize class]];
-    self.postCommentViewController.socialize = self.mockSocialize;
-
-    
-}
-// Run after each test method
-- (void)tearDown { 
-    [self.mockSocialize verify];
-    [self.mockLocationManager verify];
-    
-    self.mockSocialize = nil;
-    self.postCommentViewController = nil;
-
-}
-
 
 // By default NO, but if you have a UI test or test dependent on running on the main thread return YES
 - (BOOL)shouldRunOnMainThread
@@ -79,7 +50,7 @@
 
 -(void)testInit
 {
-    id mockLocationManager = [OCMockObject niceMockForClass:[SocializeLocationManager class]];
+    id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
     BOOL trueValue = YES;
     [[[mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
     [[mockLocationManager expect]setShouldShareLocation:YES];
@@ -111,13 +82,14 @@
     [controller verify];
     [mockSocialize verify];
     
+    [[mockSocialize expect] setDelegate:nil];
     [controller viewDidUnload];
     [controller release];
 }
 
 -(void)testCreateMethod
 {
-    UINavigationController* controller = [PostCommentViewControllerForTest createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:TEST_URL andImageForNavBar:nil];
+    UINavigationController* controller = [PostCommentViewControllerForTest postCommentViewControllerInNavigationControllerWithEntityURL:TEST_URL];
     GHAssertNotNil(controller, nil);
 }
 
@@ -191,51 +163,32 @@
     
     [controller verify];
     [mockSocialize verify];
+    
+    [[mockSocialize expect] setDelegate:nil];
     [controller release];    
 }
 
--(void)testAuthorizationSkipped {
-    id partialCommentMock = [OCMockObject partialMockForObject:self.postCommentViewController];
-    [[partialCommentMock expect] createComment];
-    
-    [self.postCommentViewController performSelector:@selector(authorizationSkipped)withObject:nil]; 
-
-    [partialCommentMock verify];
-}
--(void)testButtonTestPressedWithFBAuth {
-    //MOCK CREATE COMMENT METHOD
-    id partialCommentMock = [OCMockObject partialMockForObject:self.postCommentViewController];
-    [[partialCommentMock expect] createComment];
-    
-    //MOCK isAuthenticatedWithFacebook
-    [[[self.mockSocialize expect] andReturnValue:[NSNumber numberWithBool:YES]] isAuthenticatedWithFacebook];
-
-    //perform test
-    [self.postCommentViewController performSelector:@selector(sendButtonPressed:)withObject:nil]; 
-
-    //VERIFY MOCKS
-    [partialCommentMock verify];
-}
--(void)testButtonTestPressed
+-(void)testSendBtnPressed
 {
-    id partialCommentMock = [OCMockObject partialMockForObject:self.postCommentViewController];
+    id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
+    BOOL trueValue = NO;
+    [[[mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
     
-    //MOCK -(UINavigationController *)authViewController
-    id mockNavController = [OCMockObject mockForClass:[UINavigationController class]];
-    [[[partialCommentMock expect] andReturn:mockNavController] authViewController];
+    id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
+    [[mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:nil latitude:nil];
+    BOOL retValue = YES;
+    [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticatedWithFacebook];
     
-    //MOCK PRESENTMODAL METHOD
-    [[partialCommentMock expect] presentModalViewController:mockNavController animated:YES];
-
-    //MOCK isAuthenticatedWithFacebook
-    [[[self.mockSocialize expect] andReturnValue:[NSNumber numberWithBool:NO]] isAuthenticatedWithFacebook];
-    [Socialize storeFacebookAppId:@"1234"];
+    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
+    controller.socialize = mockSocialize;
     
-    //perform test
-    [self.postCommentViewController performSelector:@selector(sendButtonPressed:)withObject:nil]; 
+    [controller performSelector: @selector(sendButtonPressed:)withObject:nil];
     
-    //VERIFY    
-    [partialCommentMock verify];
+    [controller verify];
+    [mockSocialize verify];
+    
+    [[mockSocialize expect] setDelegate:nil];
+    [controller release];    
 }
 
 -(void)testSupportOrientation
@@ -308,9 +261,6 @@
     SocializePostCommentViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializePostCommentViewControllerLandscape" 
                                                                                                                  bundle:nil 
                                                                                                         entityUrlString:TEST_URL
-                                                                                                       keyboardListener:nil 
-                                                                                                        locationManager:nil
-                                                                                                           geocoderInfo:[SocializeGeocoderAdapter class]
                                                              ];
     
     [controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight];
@@ -333,9 +283,6 @@
     SocializePostCommentViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializePostCommentViewController" 
                                                                                                            bundle:nil 
                                                                                                   entityUrlString:TEST_URL
-                                                                                                 keyboardListener:nil 
-                                                                                                  locationManager:nil
-                                                                                                     geocoderInfo:[SocializeGeocoderAdapter class]
                                                        ];
     
     [controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortrait];

@@ -17,4 +17,6 @@
 @property (nonatomic, retain) id mockNavigationController;
 @property (nonatomic, retain) id mockTableView;
 @property (nonatomic, retain) id mockBundle;
+@property (nonatomic, retain) id mockCancelButton;
+@property (nonatomic, retain) id mockSaveButton;
 @end

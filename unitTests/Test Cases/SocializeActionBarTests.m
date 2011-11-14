@@ -35,6 +35,7 @@
 #import "SocializeAuthenticateService.h"
 
 #define TEST_ENTITY_URL @"http://test.com"
+#define TEST_ENTITY_NAME @"TEST_ENTITY_NAME"
 
 @interface UIView (SocializeActionBarTests)
 - (void)_setViewDelegate:(id)delegate;
@@ -56,35 +57,55 @@
 
 @implementation SocializeActionBarTests
 @synthesize actionBar = actionBar_;
+@synthesize origActionBar = origActionBar_;
 @synthesize mockParentController = mockParentController_;
 @synthesize parentView = parentView_;
 @synthesize mockSocialize = mockSocialize_;
 @synthesize mockActionView = mockActionView_;
+@synthesize mockEntity = mockEntity_;
+@synthesize mockShareComposer = mockShareComposer_;
 
-- (void)reset {
+- (BOOL)shouldRunOnMainThread {
+    return YES;
+}
+
+- (void)setUp {
     self.mockParentController = [OCMockObject mockForClass:[UIViewController class]];
     
-    self.actionBar = [SocializeActionBar actionBarWithUrl:TEST_ENTITY_URL presentModalInController:self.mockParentController];
-    self.actionBar = [OCMockObject partialMockForObject:self.actionBar];
+    self.mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
+    [[[self.mockEntity stub] andReturn:TEST_ENTITY_URL] key];
+    [[[self.mockEntity stub] andReturn:TEST_ENTITY_NAME] name];
+
+    self.origActionBar = [[[SocializeActionBar alloc] initWithEntity:self.mockEntity presentModalInController:self.mockParentController] autorelease];
+    self.actionBar = [OCMockObject partialMockForObject:self.origActionBar];
     
     self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     self.actionBar.socialize = self.mockSocialize;
     
-    // Having troubles expecting (_setViewDelegate:) in OCMock
-//    self.mockActionView = [OCMockObject mockForClass:[SocializeActionView class]];
-//    [[self.mockActionView expect] _setViewDelegate:OCMOCK_ANY];
     self.mockActionView = [OCMockObject mockForClass:[SocializeActionView class]];
     [[[(id)self.actionBar stub] andReturn:self.mockActionView] view];
-}
-
-- (void)setUp {
-    [self reset];
+    
+    self.mockShareComposer = [OCMockObject mockForClass:[MFMailComposeViewController class]];
+    self.actionBar.shareComposer = self.mockShareComposer;
 }
 
 -(void)tearDown
 {
+    [self.mockParentController verify];
+    [self.mockEntity verify];
+    [(id)self.actionBar verify];
+    [self.mockSocialize verify];
+    [self.mockActionView verify];
+    [self.mockShareComposer verify];
+    
+    [[self.mockSocialize expect] setDelegate:nil];
     self.mockParentController = nil;
+    self.mockEntity = nil;
+    self.origActionBar = nil;
     self.actionBar = nil;
+    self.mockSocialize = nil;
+    self.mockActionView = nil;
+    self.mockShareComposer = nil;
 }
 
 - (void)testModalCommentDisplay {
@@ -140,32 +161,37 @@
 
 
 - (void)testShareViaEmailShowsComposer {
-    [[self.mockParentController expect]
-      presentModalViewController:[OCMArg checkWithBlock:^(id value) {
-        return [value isKindOfClass:[MFMailComposeViewController class]];
-      }]
-     animated:YES];
-    [self.actionBar performSelectorOnMainThread:@selector(shareViaEmail) withObject:nil waitUntilDone:YES];
-    [self.mockParentController verify];
+    [[self.mockShareComposer expect] setSubject:TEST_ENTITY_NAME];
+    [[self.mockShareComposer expect] setMessageBody:OCMOCK_ANY isHTML:NO];
+    [[self.mockParentController expect] presentModalViewController:self.mockShareComposer animated:YES];
+
+     [self.actionBar shareViaEmail];
 }
 
 - (void)testComposerCases {
+    self.actionBar.shareComposer = nil;
     /* Tests we don't crash, anyway. Add additional testing if these ever have an effect */
     
     // Make sure it's created on the main thread (exception will be thrown if not)
-    
-    if (![NSThread isMainThread]) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            (void)self.actionBar.shareComposer;
-        });
-    }
-    
+
     self.actionBar.shareComposer.completionBlock(MFMailComposeResultCancelled, nil); // currently noop
     self.actionBar.shareComposer.completionBlock(MFMailComposeResultFailed, nil); // currently noop
     self.actionBar.shareComposer.completionBlock(MFMailComposeResultSaved, nil); // currently noop
     self.actionBar.shareComposer.completionBlock(MFMailComposeResultSent, nil); // currently noop
 }
 
+- (void)testShowingView {
+    [[self.mockActionView expect] startActivityForUpdateViewsCount];
+    [[(id)self.actionBar expect] performAutoAuth];
+    [self.actionBar socializeActionViewWillAppear:self.mockActionView];
+}
+
+- (void)testInitialAuth {
+    [[self.mockSocialize expect] viewEntity:self.mockEntity longitude:nil latitude:nil];
+    [[self.mockSocialize expect] getLikesForEntityKey:TEST_ENTITY_URL first:nil last:nil];
+    [self.actionBar afterAnonymouslyLoginAction];
+}
+    /*
 - (void)testShowingViewCausesUpdates {
     id<SocializeUser> user = [[[SocializeUser alloc] init] autorelease];
     BOOL no = NO;
@@ -195,6 +221,7 @@
     [self.mockSocialize verify];
     [self.mockActionView verify];
 }
+ */
 
 - (void)testGettingLikesUpdatesView {
     id mockAuth = [OCMockObject mockForClass:[SocializeAuthenticateService class]];

@@ -46,8 +46,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 @synthesize profileImage = profileImage_;
 @synthesize cellBackgroundColors = cellBackgroundColors_;
 @synthesize profileTextCell = profileTextCell;
-@synthesize cancelButton = cancelButton_;
-@synthesize saveButton = saveButton_;
 @synthesize delegate = delegate_;
 @synthesize imagePicker = imagePicker_;
 @synthesize uploadPicActionSheet = uploadPicActionSheet_;
@@ -64,8 +62,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.profileImage = nil;
     self.cellBackgroundColors = nil;
     self.profileTextCell = nil;
-    self.cancelButton = nil;
-    self.saveButton = nil;
     self.imagePicker = nil;
     self.uploadPicActionSheet = nil;
     self.editValueController = nil;
@@ -92,6 +88,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     
     self.tableView.accessibilityLabel = @"edit profile";
     self.navigationItem.leftBarButtonItem = self.cancelButton;	
+    self.saveButton.enabled = NO;
     self.navigationItem.rightBarButtonItem = self.saveButton;
 }
 
@@ -99,17 +96,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 {
     [super viewDidUnload];
     
-    self.cancelButton = nil;
-    self.saveButton = nil;
-}
-
-- (UIBarButtonItem*)cancelButton {
-    if (cancelButton_ == nil) {
-        UIButton * actualButton = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
-        [actualButton addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        cancelButton_ = [[UIBarButtonItem alloc] initWithCustomView:actualButton];
-    }
-    return cancelButton_;
+    self.profileImageCell = nil;
 }
 
 - (void)cancelButtonPressed:(UIButton*)cancelButton {
@@ -118,16 +105,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 
 - (void)saveButtonPressed:(UIButton*)saveButton {
     [self.delegate profileEditViewControllerDidSave:self];
-}
-
-- (UIBarButtonItem*)saveButton {
-    if (saveButton_ == nil) {
-        UIButton * actualButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
-        [actualButton addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        saveButton_ = [[UIBarButtonItem alloc] initWithCustomView:actualButton];
-        saveButton_.enabled = NO;
-    }
-    return saveButton_;
 }
 
 - (NSArray*)cellBackgroundColors {
@@ -234,7 +211,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 - (UISwitch*)facebookSwitch {
     if (facebookSwitch_ == nil) {
         facebookSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
-        facebookSwitch_.on = ![[[NSUserDefaults standardUserDefaults] valueForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
+        facebookSwitch_.on = ![[self.userDefaults objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
         [facebookSwitch_ addTarget:self action:@selector(facebookSwitchChanged:) forControlEvents:UIControlEventValueChanged];
     }
     return facebookSwitch_;
@@ -242,8 +219,8 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 
 - (void)facebookSwitchChanged:(UISwitch*)facebookSwitch {
     NSNumber *dontPostToFacebook = [NSNumber numberWithBool:!facebookSwitch.on];
-    [[NSUserDefaults standardUserDefaults] setObject:dontPostToFacebook forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.userDefaults setObject:dontPostToFacebook forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+    [self.userDefaults synchronize];
     self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 

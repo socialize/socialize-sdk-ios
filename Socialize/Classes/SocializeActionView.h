@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
+#define ACTION_PANE_HEIGHT 44
+
 @class SocializeActionView;
 
 @protocol SocializeActionViewDelegate <NSObject>

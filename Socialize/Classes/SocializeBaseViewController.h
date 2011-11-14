@@ -27,20 +27,41 @@
 
 #import <UIKit/UIKit.h>
 #import "_Socialize.h"
-@class LoadingView;
 
-@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate> {
+@class LoadingView;
+@class SocializeProfileViewController;
+
+@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate> {
     @private 
-    Socialize* socialize;
     LoadingView*  _loadingIndicatorView;
 }
 
-@property (nonatomic, retain) Socialize* socialize;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) Socialize *socialize;
+@property (nonatomic, retain) UIBarButtonItem *doneButton;
+@property (nonatomic, retain) UIBarButtonItem *editButton;
+@property (nonatomic, retain) UIBarButtonItem *sendButton;
+@property (nonatomic, retain) UIBarButtonItem *cancelButton;
+@property (nonatomic, retain) UIBarButtonItem *saveButton;
+@property(nonatomic, retain) UIAlertView *facebookAuthQuestionDialog;
+@property(nonatomic, retain) SocializeProfileViewController *postFacebookAuthenticationProfileViewController;
+@property (nonatomic, assign) BOOL requestingFacebookFromUser;
 
 -(void) showAllertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
+-(void) startLoading;
+-(void) stopLoading;
 -(void) startLoadAnimationForView: (UIView*) view;
 -(void) stopLoadAnimation;
 -(void)performAutoAuth;
 -(void) afterAnonymouslyLoginAction;
-
+-(void)afterFacebookLoginAction;
+-(BOOL)shouldAutoAuthOnAppear;
+- (UIView*)showLoadingInView;
+- (void)afterUserRejectedFacebookAuthentication;
+- (void)requestFacebookFromUser;
+- (void)authenticateWithFacebook;
+- (void)editButtonPressed:(UIButton*)button;
+- (void)doneButtonPressed:(UIButton*)button;
+- (void)sendButtonPressed:(UIButton*)button;
+- (void)cancelButtonPressed:(UIButton*)button;
 @end

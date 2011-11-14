@@ -155,7 +155,7 @@
 -(void)didAuthenticate:(id<SocializeUser>)user 
 {
     self.user = user;
-    if ( [SocializeAuthenticateService isAuthenticatedWithFacebook] ) { 
+    if ( [self.socialize isAuthenticatedWithFacebook] ) { 
         SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
         profile.delegate = self;
         [self.navigationController pushViewController:profile animated:YES];
@@ -179,7 +179,6 @@
         [self.socialize authenticateWithFacebook];
         [self startLoadAnimationForView:self.view];
     }
-    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     

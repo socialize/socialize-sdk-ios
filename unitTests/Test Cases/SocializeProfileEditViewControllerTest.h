@@ -16,4 +16,11 @@
 @property (nonatomic, retain) id mockDelegate;
 @property (nonatomic, retain) id mockTableView;
 @property (nonatomic, retain) id mockBundle;
+@property (nonatomic, retain) id mockCancelButton;
+@property (nonatomic, retain) id mockSaveButton;
+@property (nonatomic, retain) id mockNavigationItem;
+@property (nonatomic, retain) id mockFacebookSwitch;
+@property (nonatomic, retain) id mockUserDefaults;
+@property (nonatomic, retain) id mockActionSheet;
+
 @end

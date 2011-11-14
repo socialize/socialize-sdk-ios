@@ -14,44 +14,44 @@
 #import "TableBGInfoView.h"
 
 @implementation CommentsTableViewTests
+@synthesize mockSocialize = mockSocialize_;
 
 #define TEST_URL @"test_entity_url"
 
 -(void) setUpClass
 {
       listView = [[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString: TEST_URL];
-    postCommentController = [OCMockObject niceMockForClass:[SocializePostCommentViewController class]];
+    postCommentController = [OCMockObject niceMockForClass:[SocializeComposeMessageViewController class]];
+    self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
+    listView.socialize = self.mockSocialize;
 }
 
 -(void) tearDownClass
 {
+    [[self.mockSocialize expect] setDelegate:nil];
     [listView release];
     //[postCommentController release];
 }
 
 -(void)testViewDidAppear {
     
-    id mockSocialize = [OCMockObject mockForClass: [Socialize class]];
     BOOL retValue = YES;
-    [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticated];
-    [[mockSocialize expect] getCommentList:TEST_URL first:OCMOCK_ANY last:OCMOCK_ANY];
-    listView.socialize = mockSocialize;
+    [[[self.mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticated];
+    [[self.mockSocialize expect] getCommentList:TEST_URL first:OCMOCK_ANY last:OCMOCK_ANY];
     [listView viewWillAppear:YES]; 
     
-    [mockSocialize verify]; 
+    [self.mockSocialize verify]; 
 }
 
 -(void)testServiceSuccess {
     
     id mockTable = [OCMockObject niceMockForClass:[UITableView class]];
-    id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     BOOL retValue = YES;
-    [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticated];
-    [[mockSocialize expect] getCommentList:OCMOCK_ANY first:nil last:nil]; 
+    [[[self.mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticated];
+    [[self.mockSocialize expect] getCommentList:OCMOCK_ANY first:nil last:nil]; 
 
     [[mockTable expect] reloadData];
     listView.tableView = mockTable;
-    listView.socialize = mockSocialize;
     [listView service:OCMOCK_ANY didFetchElements:OCMOCK_ANY];
     [listView viewWillAppear:YES]; 
     
@@ -70,11 +70,9 @@
 -(void)testViewDidLoad{
     
     id mockTable = [OCMockObject niceMockForClass:[UITableView class]];
-    id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     
     [[mockTable expect] setBackgroundView:OCMOCK_ANY];
     listView.tableView = mockTable;
-    listView.socialize = mockSocialize;
     [listView viewDidLoad]; 
     
     [mockTable verify]; 

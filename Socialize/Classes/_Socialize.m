@@ -239,7 +239,32 @@
 
 -(BOOL)isAuthenticatedWithFacebook
 {
-    return [SocializeAuthenticateService isAuthenticatedWithFacebook];
+    if (![self isAuthenticated]) {
+        return NO;
+    }
+    
+    for (NSDictionary *auth in [[self authenticatedUser] thirdPartyAuth]) {
+        if ([[auth objectForKey:@"auth_type"] isEqualToString:@"FaceBook"]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)facebookAvailable {
+    NSString *facebookAppId = [Socialize facebookAppId];
+    NSString *facebookLocalAppId = [Socialize facebookLocalAppId];
+    if (facebookAppId == nil) {
+        return NO;
+    }
+    
+    NSURL *testURL = [NSURL URLWithString:[SocializeFacebook baseUrlForAppId:facebookAppId localAppId:facebookLocalAppId]];
+    if (![[UIApplication sharedApplication] canOpenURL:testURL]) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 -(void)removeAuthenticationInfo{
@@ -347,12 +372,12 @@
 
 #pragma share service stuff
 
--(void)createShareForEntity:(id<SocializeEntity>)entity medium:(ShareMedium)medium  text:(NSString*)text
+-(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text
 {
     [_shareService createShareForEntity:entity medium:medium text:text];
 }
 
--(void)createShareForEntityWithKey:(NSString*)key medium:(ShareMedium)medium  text:(NSString*)text {
+-(void)createShareForEntityWithKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text {
     [_shareService createShareForEntityKey:key medium:medium text:text];
 }
 

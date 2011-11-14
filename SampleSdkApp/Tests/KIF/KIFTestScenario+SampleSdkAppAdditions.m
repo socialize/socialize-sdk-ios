@@ -91,6 +91,12 @@
     [scenario addStep:[KIFTestStep stepToCheckAccessibilityLabel:@"comment button" hasValue:@"1"]];
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
     
+    // Post a share
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share on Facebook"]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToCreateShare:@"actionbar share"]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
+
     // Verify we can show the in-app MFMailComposer
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share via Email"]];
@@ -98,6 +104,7 @@
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Delete Draft"]];
     
+
     return scenario;
 }
 

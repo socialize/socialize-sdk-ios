@@ -98,7 +98,7 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     NSLog(@"Created %@", url);
 }
 
-- (void)createShareWithURL:(NSString*)url medium:(ShareMedium)medium text:(NSString*)text {
+- (void)createShareWithURL:(NSString*)url medium:(SocializeShareMedium)medium text:(NSString*)text {
     [self prepare];
     [self.socialize createShareForEntityWithKey:url medium:medium text:text];
     [self waitForStatus:kGHUnitWaitStatusSuccess];
