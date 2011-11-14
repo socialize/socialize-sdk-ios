@@ -33,7 +33,7 @@ static NSString *const TestURL = @"http://getsocialize.com";
 }
 
 - (void)setUp {
-    self.origPostShareViewController = [[[SocializePostShareViewController alloc] initWithNibName:nil bundle:nil entityUrlString:TestURL] autorelease];
+    self.origPostShareViewController = [SocializePostShareViewController postShareViewControllerWithEntityURL:TestURL];
     self.postShareViewController = [OCMockObject partialMockForObject:self.origPostShareViewController];
     
     self.mockShareObject = [OCMockObject mockForProtocol:@protocol(SocializeShare)];
@@ -131,13 +131,14 @@ static NSString *const TestURL = @"http://getsocialize.com";
     [[(id)self.postShareViewController expect] sendActivityToFacebookFeedFailed:mockError];
     defaultShareBuilder.errorAction(mockError);
 }
-/*
-- (void)testCreateShareOnFacebookServer {
-    [[self.mockShareBuilder expect] setShareObject:self.mockShareObject];
-    [[self.mockShareBuilder expect] performShareForPath:@"me/feed"];
-    [self.postShareViewController createShareOnFacebookServer];
-    
+
+- (void)testSendButtonCreatesShare {
+    [[(id)self.postShareViewController expect] createShare];
+    [self.postShareViewController sendButtonPressed:nil];
 }
- */
+
+- (void)testDoesNoAutoAuthOnAppear {
+    GHAssertFalse([self.postShareViewController shouldAutoAuthOnAppear], nil);
+}
 
 @end
