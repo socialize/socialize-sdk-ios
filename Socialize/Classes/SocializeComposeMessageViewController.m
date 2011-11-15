@@ -169,7 +169,7 @@
     if (enableLocation) {
         if (![self.locationManager applicationIsAuthorizedToUseLocationServices])
         {
-            [self showAllertWithText:@"Please Turn On Location Services in Settings to Allow This Application to Share Your Location." andTitle:nil];
+            [self showAlertWithText:@"Please Turn On Location Services in Settings to Allow This Application to Share Your Location." andTitle:nil];
             return;
         }
        
@@ -229,7 +229,7 @@
     else
     {   
         [self stopLoadAnimation];
-        [self showAllertWithText:[error localizedDescription] andTitle:@"Post comment"];  
+        [self showAlertWithText:[error localizedDescription] andTitle:@"Post comment"];  
     }
 }
 

@@ -101,29 +101,9 @@
     self.mockActionSheet = nil;
 }
 
-- (void)testCancelCallsSelector {
-    self.profileEditViewController.cancelButton = nil;
-    
-    UIButton *cancelButton = (UIButton*)self.profileEditViewController.cancelButton.customView;
-
-    NSArray *actions = [cancelButton actionsForTarget:self.origProfileEditViewController forControlEvent:UIControlEventTouchUpInside];
-    SEL s = NSSelectorFromString([actions objectAtIndex:0]);
-    GHAssertEquals(@selector(cancelButtonPressed:), s, @"Selector incorrect");
-}
-
 - (void)testCancellingCallsDelegate {
     [[self.mockDelegate expect] profileEditViewControllerDidCancel:self.origProfileEditViewController];
     [self.profileEditViewController cancelButtonPressed:nil];
-}
-
-- (void)testSaveCallsSelector {
-    self.profileEditViewController.saveButton = nil;
-    
-    UIButton *saveButton = (UIButton*)self.profileEditViewController.saveButton.customView;
-
-    NSArray *actions = [saveButton actionsForTarget:self.origProfileEditViewController forControlEvent:UIControlEventTouchUpInside];
-    SEL s = NSSelectorFromString([actions objectAtIndex:0]);
-    GHAssertEquals(@selector(saveButtonPressed:), s, @"Selector incorrect");
 }
 
 - (void)testSavingCallsDelegate {

@@ -250,7 +250,7 @@
 -(void)service:(SocializeService*)service didFail:(NSError*)error
 {
     [self stopLoading];
-    [self showAllertWithText:[NSString stringWithFormat: @"cannot get profile %@", [error localizedDescription]] andTitle:@"Error occurred"];
+    [self showAlertWithText:[NSString stringWithFormat: @"cannot get profile %@", [error localizedDescription]] andTitle:@"Error occurred"];
 }
 
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray

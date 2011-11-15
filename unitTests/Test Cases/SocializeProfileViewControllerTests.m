@@ -135,7 +135,7 @@
 }
 
 - (void)basicViewDidLoad {
-    [[self.mockNavigationBar expect] setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
+//    [[self.mockNavigationBar expect] setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.profileViewController.doneButton];
     [[self.mockProfileImageView expect] setImage:self.profileViewController.defaultProfileImage];    
 }
@@ -390,7 +390,7 @@
 
 - (void)testServiceFailure {
     [[(id)self.profileViewController expect] stopLoading];
-    [[(id)self.profileViewController expect] showAllertWithText:OCMOCK_ANY andTitle:OCMOCK_ANY];
+    [[(id)self.profileViewController expect] showAlertWithText:OCMOCK_ANY andTitle:OCMOCK_ANY];
     [self.profileViewController service:nil didFail:nil];
 }
 

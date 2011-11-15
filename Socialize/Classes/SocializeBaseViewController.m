@@ -44,6 +44,7 @@
 @synthesize sendButton = sendButton_;
 @synthesize cancelButton = cancelButton_;
 @synthesize saveButton = saveButton_;
+@synthesize genericAlertView = genericAlertView_;
 @synthesize socialize = socialize_;
 @synthesize facebookAuthQuestionDialog = facebookAuthQuestionDialog_;
 @synthesize postFacebookAuthenticationProfileViewController = postFacebookAuthenticationProfileViewController_;
@@ -54,6 +55,8 @@
 
 - (void)dealloc
 {
+    self.genericAlertView.delegate = nil;
+    self.genericAlertView = nil;
     self.socialize.delegate = nil;
     self.socialize = nil;
     self.facebookAuthQuestionDialog = nil;
@@ -62,12 +65,6 @@
     self.sendActivityToFacebookFeedAlertView = nil;
     
     [super dealloc];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.facebookAuthQuestionDialog = nil;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
 }
 
 - (void)viewDidUnload
@@ -79,6 +76,7 @@
     self.saveButton = nil;
     self.cancelButton = nil;
     self.sendButton = nil;
+    self.genericAlertView = nil;
     self.facebookAuthQuestionDialog = nil;
     self.postFacebookAuthenticationProfileViewController = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
@@ -148,6 +146,9 @@
     return editButton_;
 }
 
+- (void)saveButtonPressed:(UIButton*)button {
+}
+
 - (void)editButtonPressed:(UIButton*)button {
 }
 
@@ -160,15 +161,19 @@
 - (void)cancelButtonPressed:(UIButton*)button {
 }
 
--(void) showAllertWithText: (NSString*)allertMsg andTitle: (NSString*)title
-{
-    UIAlertView * allert = [[[UIAlertView alloc] initWithTitle:title 
-                                                       message:allertMsg 
-                                                      delegate:nil 
-                                             cancelButtonTitle:@"OK" 
-                                             otherButtonTitles:nil] autorelease];
+- (UIAlertView*)genericAlertView {
+    if (genericAlertView_ == nil) {
+        genericAlertView_ = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    }
     
-    [allert show];
+    return genericAlertView_;
+}
+
+-(void) showAlertWithText:(NSString*)alertMessage andTitle:(NSString*)title
+{
+    self.genericAlertView.message = alertMessage;
+    self.genericAlertView.title = title;
+    [self.genericAlertView show];
 }
 
 - (UIView*)showLoadingInView {
@@ -225,22 +230,10 @@
 
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [self.navigationController.navigationBar resetBackground];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-#pragma socialize service delegate
-
 -(void)service:(SocializeService *)service didFail:(NSError *)error
 {
     [self stopLoadAnimation];
-    [self showAllertWithText:[error localizedDescription] andTitle:@"Error"];
+    [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
 }
 
 -(void)afterAnonymouslyLoginAction
@@ -296,7 +289,7 @@
 
 - (void)authenticateWithFacebook {
     if (![self.socialize facebookAvailable]) {
-        [self showAllertWithText:@"Proper facebook configuration is required to use this view" andTitle:@"Facebook not Configured"];
+        [self showAlertWithText:@"Proper facebook configuration is required to use this view" andTitle:@"Facebook not Configured"];
         return;
     }
     

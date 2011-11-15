@@ -1071,6 +1071,7 @@
 		AA51C1481471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
 		AA51C1491471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
 		AA51C14A1471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
+		AA51C14D1471D10700E5C003 /* SocializeBaseViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */; };
 		AA5ACEEF1467C3F200790B3D /* SocializeProfileEditValueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C2144325F9004E4C1B /* SocializeProfileEditValueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5ACEF01467C3F300790B3D /* SocializeProfileEditValueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C2144325F9004E4C1B /* SocializeProfileEditValueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5ACEF11467C43000790B3D /* SocializeProfileEditTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C0144325F9004E4C1B /* SocializeProfileEditTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2016,6 +2017,8 @@
 		AA4132C1146852AE006D906F /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
 		AA4132C2146852AE006D906F /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
 		AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthViewController.xib; path = Resources/SocializeAuthViewController.xib; sourceTree = "<group>"; };
+		AA51C14B1471D10700E5C003 /* SocializeBaseViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBaseViewControllerTests.h; path = "Test Cases/SocializeBaseViewControllerTests.h"; sourceTree = "<group>"; };
+		AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBaseViewControllerTests.m; path = "Test Cases/SocializeBaseViewControllerTests.m"; sourceTree = "<group>"; };
 		AA639F84144A34B600660E26 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		AA639F88144A34B600660E26 /* SocializeResources-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SocializeResources-Info.plist"; sourceTree = "<group>"; };
 		AA639F8A144A34B600660E26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2756,6 +2759,8 @@
 		6D44A37613FC342D004B3A46 /* UI tests */ = {
 			isa = PBXGroup;
 			children = (
+				AA51C14B1471D10700E5C003 /* SocializeBaseViewControllerTests.h */,
+				AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */,
 				18D8EDCF146B162600E9991F /* AuthViewControllerTests.h */,
 				18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */,
 				166DD757146421130017D0E9 /* SocializePostCommentViewControllerLandscape.xib */,
@@ -4955,6 +4960,7 @@
 				AAFD1E57146B997A00FCB8A7 /* SocializeActionBarTests.m in Sources */,
 				AA0CF83D146DC0B300BBCF41 /* SocializePostShareViewControllerTest.m in Sources */,
 				AA2044A11470EA40003A875C /* PostCommentViewControllerTests.m in Sources */,
+				AA51C14D1471D10700E5C003 /* SocializeBaseViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
