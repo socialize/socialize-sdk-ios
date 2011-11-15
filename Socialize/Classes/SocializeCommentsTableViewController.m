@@ -26,6 +26,7 @@
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
 -(UIBarButtonItem*) createLeftNavigationButtonWithCaption: (NSString*) caption;
+-(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 -(void)backToCommentsList:(id)sender;
 @end
 
@@ -250,10 +251,12 @@
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender {
     // TODO :  lets view the profile
     SocializeComment *comment = ((SocializeComment*)[_arrayOfComments objectAtIndex:sender.tag]);
-    id<SocializeUser> user = comment.user;
-    
-    UIViewController *profileViewController = [SocializeProfileViewController socializeProfileViewControllerForUser:user delegate:nil];
+    UIViewController *profileViewController = [self getProfileViewControllerForUser:comment.user];
     [self presentModalViewController:profileViewController animated:YES];
+}
+
+-(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
+    return [SocializeProfileViewController socializeProfileViewControllerForUser:user delegate:nil];
 }
 
 -(void)backToCommentsList:(id)sender {
@@ -357,11 +360,6 @@
 #pragma -
 
 #pragma mark UITableViewDelegate
-// Display customization
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-}
-
 // Variable height support
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return [CommentsTableViewCell getCellHeightForString:((SocializeComment*)[_arrayOfComments objectAtIndex:indexPath.row]).text] + 50;
@@ -377,31 +375,7 @@
 	return 0;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-}
 #pragma mark -
-
-
- // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    informationView.center = self.tableView.center;
-    return YES;
-}
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
 - (void)addNoCommentsBackground{
 	informationView.errorLabel.hidden = NO;
 	informationView.noActivityImageView.hidden = NO;

@@ -19,5 +19,7 @@
 }
 
 @property (nonatomic, retain) id mockSocialize;
+@property (nonatomic, retain) id mockComment;
+@property (nonatomic, retain) id partialMockCommentTableViewController;
 
 @end
