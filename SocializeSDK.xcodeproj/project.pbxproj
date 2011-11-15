@@ -351,22 +351,14 @@
 		16F449DA13AF8358003BE655 /* SocializeApplicationJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449D913AF8356003BE655 /* SocializeApplicationJSONFormatterTests.m */; };
 		16F449DD13AF8B37003BE655 /* SocializeUserJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */; };
 		16FDF4E01414BA0A00EAA064 /* SocializeCommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */; };
-		180EFE8F14609B6100AA957D /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE8E14609B6100AA957D /* SocializeAuthTableViewCell.xib */; };
-		180EFE9014609B6100AA957D /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE8E14609B6100AA957D /* SocializeAuthTableViewCell.xib */; };
-		180EFE9114609B6100AA957D /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE8E14609B6100AA957D /* SocializeAuthTableViewCell.xib */; };
 		180EFE9514609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */; };
 		180EFE9614609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */; };
 		180EFE9714609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFE9414609C1000AA957D /* SocializeAuthTableViewCell.m */; };
 		180EFE9814609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFE9414609C1000AA957D /* SocializeAuthTableViewCell.m */; };
-		180EFE9C14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE9B14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib */; };
-		180EFE9D14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE9B14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib */; };
-		180EFE9E14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE9B14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib */; };
-		180EFE9F14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE9B14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib */; };
 		180EFEA214609C7800AA957D /* SocializeAuthInfoTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFEA014609C7800AA957D /* SocializeAuthInfoTableViewCell.h */; };
 		180EFEA314609C7800AA957D /* SocializeAuthInfoTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFEA014609C7800AA957D /* SocializeAuthInfoTableViewCell.h */; };
 		180EFEA414609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */; };
 		180EFEA514609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */; };
-		18C4A86014714DEB00382F89 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFE8E14609B6100AA957D /* SocializeAuthTableViewCell.xib */; };
 		18D8EDD1146B162600E9991F /* AuthViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */; };
 		18D8EDD4146B48F700E9991F /* SocializeAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */; };
 		18D8EDD5146B48F700E9991F /* SocializeAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */; };
@@ -1448,6 +1440,20 @@
 		AAE9A6F1145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6EE145F55B3001A9F1D /* SocializeFacebookInterface.m */; };
 		AAE9A6F2145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6EE145F55B3001A9F1D /* SocializeFacebookInterface.m */; };
 		AAEB4A7B1458E88300A01F5B /* SocializeServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */; };
+		AAF177301472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */; };
+		AAF177311472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */; };
+		AAF177321472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */; };
+		AAF177331472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */; };
+		AAF177341472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */; };
+		AAF177351472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */; };
+		AAF177361472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */; };
+		AAF177371472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */; };
+		AAF177381472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */; };
+		AAF177391472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */; };
+		AAF1773A1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */; };
+		AAF1773B1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */; };
+		AAF1773C1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */; };
+		AAF1773D1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */; };
 		AAFD1E57146B997A00FCB8A7 /* SocializeActionBarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 167E11D31443293E004E4C1B /* SocializeActionBarTests.m */; };
 /* End PBXBuildFile section */
 
@@ -1743,10 +1749,8 @@
 		16FDF4DD1414BA0A00EAA064 /* SocializeCommentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentDetailsViewController.h; path = Classes/SocializeCommentDetailsViewController.h; sourceTree = "<group>"; };
 		16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentDetailsViewController.m; path = Classes/SocializeCommentDetailsViewController.m; sourceTree = "<group>"; };
 		18029E121432B815002BDEC7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		180EFE8E14609B6100AA957D /* SocializeAuthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeAuthTableViewCell.xib; sourceTree = "<group>"; };
 		180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeAuthTableViewCell.h; sourceTree = "<group>"; };
 		180EFE9414609C1000AA957D /* SocializeAuthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAuthTableViewCell.m; sourceTree = "<group>"; };
-		180EFE9B14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeAuthInfoTableViewCell.xib; sourceTree = "<group>"; };
 		180EFEA014609C7800AA957D /* SocializeAuthInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeAuthInfoTableViewCell.h; sourceTree = "<group>"; };
 		180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAuthInfoTableViewCell.m; sourceTree = "<group>"; };
 		18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUnitTestApplication.h; sourceTree = "<group>"; };
@@ -2194,6 +2198,8 @@
 		AAE9A6EE145F55B3001A9F1D /* SocializeFacebookInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebookInterface.m; path = Classes/SocializeFacebookInterface.m; sourceTree = "<group>"; };
 		AAEB4A791458E88300A01F5B /* SocializeServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeServiceTests.h; path = "Test Cases/SocializeServiceTests.h"; sourceTree = "<group>"; };
 		AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeServiceTests.m; path = "Test Cases/SocializeServiceTests.m"; sourceTree = "<group>"; };
+		AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthInfoTableViewCell.xib; path = Resources/SocializeAuthInfoTableViewCell.xib; sourceTree = "<group>"; };
+		AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthTableViewCell.xib; path = Resources/SocializeAuthTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3023,6 +3029,8 @@
 		9A4D29831393FF720065C0CB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */,
+				AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */,
 				AA8D0A4414720AEA007B53AC /* socialize-activity-call-out-arrow.png */,
 				AA8D0A4514720AEA007B53AC /* socialize-activity-call-out-arrow@2x.png */,
 				AA8D0A4614720AEA007B53AC /* socialize-authorize-authenticate-badge-icon.png */,
@@ -3040,8 +3048,6 @@
 				AA8D0A5214720AEA007B53AC /* socialize-authorize-user-icon.png */,
 				AA8D0A5314720AEA007B53AC /* socialize-authorize-user-icon@2x.png */,
 				AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */,
-				180EFE9B14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib */,
-				180EFE8E14609B6100AA957D /* SocializeAuthTableViewCell.xib */,
 				16C8160714598F7900FFC476 /* SocializeCommentDetailsViewController.xib */,
 				16C815FB14598F1E00FFC476 /* socialize-comment-top-background.png */,
 				16C815FC14598F1F00FFC476 /* socialize-comment-user-only-background.png */,
@@ -3908,6 +3914,8 @@
 				AA8D0AB114720AEA007B53AC /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */,
 				AA8D0AB814720AEA007B53AC /* socialize-authorize-user-icon.png in Resources */,
 				AA8D0ABF14720AEA007B53AC /* socialize-authorize-user-icon@2x.png in Resources */,
+				AAF177321472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				AAF177391472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4028,8 +4036,6 @@
 				16C815FD14598F1F00FFC476 /* socialize-comment-top-background.png in Resources */,
 				16C8160214598F1F00FFC476 /* socialize-comment-user-only-background.png in Resources */,
 				16C8160814598F7900FFC476 /* SocializeCommentDetailsViewController.xib in Resources */,
-				180EFE8F14609B6100AA957D /* SocializeAuthTableViewCell.xib in Resources */,
-				180EFE9C14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */,
 				AA87C5EB146C9EC600B22EF4 /* SocializePostCommentViewController.xib in Resources */,
 				AA87C5FC146CB65700B22EF4 /* SocializePostShareViewController.xib in Resources */,
 				AA51C1441471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */,
@@ -4049,6 +4055,8 @@
 				AA8D0AAF14720AEA007B53AC /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */,
 				AA8D0AB614720AEA007B53AC /* socialize-authorize-user-icon.png in Resources */,
 				AA8D0ABD14720AEA007B53AC /* socialize-authorize-user-icon@2x.png in Resources */,
+				AAF177301472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				AAF177371472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4187,6 +4195,8 @@
 				AA8D0AB314720AEA007B53AC /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */,
 				AA8D0ABA14720AEA007B53AC /* socialize-authorize-user-icon.png in Resources */,
 				AA8D0AC114720AEA007B53AC /* socialize-authorize-user-icon@2x.png in Resources */,
+				AAF177341472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				AAF1773B1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4325,10 +4335,8 @@
 				16C8160114598F1F00FFC476 /* socialize-comment-top-background.png in Resources */,
 				16C8160614598F1F00FFC476 /* socialize-comment-user-only-background.png in Resources */,
 				16C8160C14598F7900FFC476 /* SocializeCommentDetailsViewController.xib in Resources */,
-				180EFE9F14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */,
 				AA87C5F0146C9EC600B22EF4 /* SocializePostCommentViewController.xib in Resources */,
 				AA87C601146CB66100B22EF4 /* SocializePostShareViewController.xib in Resources */,
-				18C4A86014714DEB00382F89 /* SocializeAuthTableViewCell.xib in Resources */,
 				AA51C1491471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */,
 				AA8D0A5914720AEA007B53AC /* socialize-activity-call-out-arrow.png in Resources */,
 				AA8D0A6014720AEA007B53AC /* socialize-activity-call-out-arrow@2x.png in Resources */,
@@ -4346,6 +4354,8 @@
 				AA8D0AB414720AEA007B53AC /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */,
 				AA8D0ABB14720AEA007B53AC /* socialize-authorize-user-icon.png in Resources */,
 				AA8D0AC214720AEA007B53AC /* socialize-authorize-user-icon@2x.png in Resources */,
+				AAF177351472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				AAF1773C1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4374,6 +4384,8 @@
 				AA8D0AB514720AEA007B53AC /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */,
 				AA8D0ABC14720AEA007B53AC /* socialize-authorize-user-icon.png in Resources */,
 				AA8D0AC314720AEA007B53AC /* socialize-authorize-user-icon@2x.png in Resources */,
+				AAF177361472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				AAF1773D1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4512,8 +4524,6 @@
 				16C815FF14598F1F00FFC476 /* socialize-comment-top-background.png in Resources */,
 				16C8160414598F1F00FFC476 /* socialize-comment-user-only-background.png in Resources */,
 				16C8160A14598F7900FFC476 /* SocializeCommentDetailsViewController.xib in Resources */,
-				180EFE9114609B6100AA957D /* SocializeAuthTableViewCell.xib in Resources */,
-				180EFE9E14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */,
 				AA87C5EE146C9EC600B22EF4 /* SocializePostCommentViewController.xib in Resources */,
 				AA87C5FF146CB65F00B22EF4 /* SocializePostShareViewController.xib in Resources */,
 				AA51C1471471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */,
@@ -4533,6 +4543,8 @@
 				AA8D0AB214720AEA007B53AC /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */,
 				AA8D0AB914720AEA007B53AC /* socialize-authorize-user-icon.png in Resources */,
 				AA8D0AC014720AEA007B53AC /* socialize-authorize-user-icon@2x.png in Resources */,
+				AAF177331472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				AAF1773A1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4653,8 +4665,6 @@
 				16C815FE14598F1F00FFC476 /* socialize-comment-top-background.png in Resources */,
 				16C8160314598F1F00FFC476 /* socialize-comment-user-only-background.png in Resources */,
 				16C8160914598F7900FFC476 /* SocializeCommentDetailsViewController.xib in Resources */,
-				180EFE9014609B6100AA957D /* SocializeAuthTableViewCell.xib in Resources */,
-				180EFE9D14609C6100AA957D /* SocializeAuthInfoTableViewCell.xib in Resources */,
 				AA87C5EC146C9EC600B22EF4 /* SocializePostCommentViewController.xib in Resources */,
 				AA87C5FD146CB65700B22EF4 /* SocializePostShareViewController.xib in Resources */,
 				AA51C1451471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */,
@@ -4674,6 +4684,8 @@
 				AA8D0AB014720AEA007B53AC /* socialize-authorize-twitter-enabled-icon@2x.png in Resources */,
 				AA8D0AB714720AEA007B53AC /* socialize-authorize-user-icon.png in Resources */,
 				AA8D0ABE14720AEA007B53AC /* socialize-authorize-user-icon@2x.png in Resources */,
+				AAF177311472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				AAF177381472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
