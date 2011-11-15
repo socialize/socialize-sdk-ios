@@ -25,11 +25,11 @@
  * THE SOFTWARE.
  */
 
-#import "PostCommentViewControllerForTest.h"
+#import "ComposeMessageViewControllerForTest.h"
 #import "CommentMapView.h"
 #import <OCMock/OCMock.h>
 
-@implementation PostCommentViewControllerForTest
+@implementation ComposeMessageViewControllerForTest
 
 -(id) initWithEntityUrlString:(NSString*)url keyboardListener:(UIKeyboardListener*) kb locationManager:(SocializeLocationManager *)lm
 {

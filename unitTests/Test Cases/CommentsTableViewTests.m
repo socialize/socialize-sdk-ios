@@ -237,5 +237,17 @@
     [partialMockController verify]; 
 }
 
+- (void)testCommentCellLayout {
+    CommentsTableViewCell *cell = [[CommentsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    [cell setComment:@"Some Comment"];
+    UILabel *testSummary = [[[UILabel alloc] initWithFrame:CGRectMake(58, 32, 254, 21)] autorelease];
+    cell.summaryLabel = testSummary;
+    [cell layoutSubviews];
+    GHAssertTrue(CGRectEqualToRect(cell.frame, CGRectMake(0, 0, 320, 65)), @"Bad frame");
+    
+    [cell release];
+}
+
+
 
 @end

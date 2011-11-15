@@ -27,7 +27,7 @@
  */
 
 #import "PostCommentViewControllerTests.h"
-#import "PostCommentViewControllerForTest.h"
+#import "ComposeMessageViewControllerForTest.h"
 #import "CommentMapView.h"
 #import "SocializeLocationManager.h"
 #import "UIKeyboardListener.h"
@@ -36,6 +36,7 @@
 #import <OCMock/OCMock.h>
 #import "CommentsTableViewCell.h"
 #import "SocializeGeocoderAdapter.h"
+
 
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
@@ -89,64 +90,6 @@
 }
 */
 
--(void)testCreateMethod
-{
-    UINavigationController* controller = [PostCommentViewControllerForTest postCommentViewControllerInNavigationControllerWithEntityURL:TEST_URL];
-    GHAssertNotNil(controller, nil);
-}
-
--(void)testactivateLocationButtonPressedWithVisibleKB
-{
-    id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
-    BOOL trueValue = YES;
-    [[[mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
-    
-    id mockKbListener = [OCMockObject mockForClass: [UIKeyboardListener class]];
-    [[[mockKbListener stub]andReturnValue:OCMOCK_VALUE(trueValue)]isVisible];
-    
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:mockKbListener locationManager:mockLocationManager];
-    
-    [[(id)controller.commentTextView expect]resignFirstResponder];
-    
-    [controller activateLocationButtonPressed:nil]; 
-   
-    [controller verify];   
-    [controller release];
-}
-
--(void)testactivateLocationButtonPressedWithInvisibleKB
-{
-    id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
-    BOOL trueValue = YES;
-    [[[mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
-    
-    id mockKbListener = [OCMockObject mockForClass: [UIKeyboardListener class]];
-    BOOL falseValue = NO;
-    [[[mockKbListener stub]andReturnValue:OCMOCK_VALUE(falseValue)]isVisible];
-    
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:mockKbListener locationManager:mockLocationManager];
-    
-    [[(id)controller.commentTextView expect]becomeFirstResponder];
-    
-    [controller activateLocationButtonPressed:nil]; 
-    
-    [controller verify];   
-    [controller release];
-}
-
--(void)testdoNotShareLocationButtonPressed
-{   
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
-
-    [[(id)controller.commentTextView expect]becomeFirstResponder];
-    [[(id)controller.locationText expect] text:@"Location will not be shared."  withFontName: @"Helvetica-Oblique"  withFontSize: 12.0 withColor:OCMOCK_ANY];
-    
-    [controller doNotShareLocationButtonPressed:nil]; 
-    
-    [controller verify];   
-    [controller release];
-}
-
 -(void)testSendBtnPressedWithGeo
 {
     id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
@@ -158,7 +101,7 @@
     BOOL retValue = YES;
     [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticatedWithFacebook];
     
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
+    ComposeMessageViewControllerForTest* controller = [[ComposeMessageViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
     controller.socialize = mockSocialize;
     
     [controller performSelector: @selector(sendButtonPressed:)withObject:nil];
@@ -181,7 +124,7 @@
     BOOL retValue = YES;
     [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticatedWithFacebook];
     
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
+    ComposeMessageViewControllerForTest* controller = [[ComposeMessageViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
     controller.socialize = mockSocialize;
     
     [controller performSelector: @selector(sendButtonPressed:)withObject:nil];
@@ -193,17 +136,9 @@
     [controller release];    
 }
 
--(void)testSupportOrientation
-{
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
-    GHAssertTrue([controller shouldAutorotateToInterfaceOrientation: UIInterfaceOrientationPortrait], nil);
-    
-    [controller release];
-}
-
 -(void)testEnableSendBtn
 {
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
+    ComposeMessageViewControllerForTest* controller = [[ComposeMessageViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
 
     id mockBtn = [OCMockObject niceMockForClass: [UIBarButtonItem class]];
     [[mockBtn expect] setEnabled:YES];
@@ -223,7 +158,7 @@
 
 -(void)testDisableSendBtn
 {
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
+    ComposeMessageViewControllerForTest* controller = [[ComposeMessageViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
     
     id mockBtn = [OCMockObject niceMockForClass: [UIBarButtonItem class]];
     [[mockBtn expect] setEnabled:NO];
@@ -239,67 +174,6 @@
     controller.navigationItem.rightBarButtonItem = nil;
     
     [controller release]; 
-}
-
-- (void)testCommentCellLayout {
-    CommentsTableViewCell *cell = [[CommentsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    [cell setComment:@"Some Comment"];
-    UILabel *testSummary = [[[UILabel alloc] initWithFrame:CGRectMake(58, 32, 254, 21)] autorelease];
-    cell.summaryLabel = testSummary;
-    [cell layoutSubviews];
-    GHAssertTrue(CGRectEqualToRect(cell.frame, CGRectMake(0, 0, 320, 65)), @"Bad frame");
-    
-    [cell release];
-}
-
--(void)testSupportLandscapeRotation
-{
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
-    GHAssertTrue([controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft], nil);
-}
-
--(void)testLandscapeLayout
-{   
-    SocializePostCommentViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializePostCommentViewControllerLandscape" 
-                                                                                                                 bundle:nil 
-                                                                                                        entityUrlString:TEST_URL
-                                                             ];
-    
-    [controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight];
-    
-    int keyboardHeigth = 162;
-    int viewWidth = 460;
-    int viewHeight = 320;
-    int aciviticontainerHeight = 39;
-    CGRect expectedCommentFrame = CGRectMake(0,0, viewWidth, viewHeight - aciviticontainerHeight - keyboardHeigth);
-    CGRect expectedActivityLocationFrame = CGRectMake(0, expectedCommentFrame.origin.y + expectedCommentFrame.size.height, viewWidth, aciviticontainerHeight);
-    CGRect expectedMapContainerFrame = CGRectMake(0,viewHeight - keyboardHeigth, viewWidth, keyboardHeigth);
-    
-    GHAssertTrue(CGRectEqualToRect(expectedCommentFrame, controller.commentTextView.frame), nil);
-    GHAssertTrue(CGRectEqualToRect(expectedActivityLocationFrame, controller.locationViewContainer.frame), nil);    
-    GHAssertTrue(CGRectEqualToRect(expectedMapContainerFrame, controller.mapContainer.frame), nil);    
-}
-
--(void)testPortraitLayout
-{   
-    SocializePostCommentViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializePostCommentViewController" 
-                                                                                                           bundle:nil 
-                                                                                                  entityUrlString:TEST_URL
-                                                       ];
-    
-    [controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortrait];
-    
-    int keyboardHeigth = 216;
-    int viewWidth = 320;
-    int viewHeight = 460;
-    int aciviticontainerHeight = 39;
-    CGRect expectedCommentFrame = CGRectMake(0,0, viewWidth, viewHeight - aciviticontainerHeight - keyboardHeigth);
-    CGRect expectedActivityLocationFrame = CGRectMake(0, expectedCommentFrame.origin.y + expectedCommentFrame.size.height, viewWidth, aciviticontainerHeight);
-    CGRect expectedMapContainerFrame = CGRectMake(0,viewHeight - keyboardHeigth, viewWidth, keyboardHeigth);
-    
-    GHAssertTrue(CGRectEqualToRect(expectedCommentFrame, controller.commentTextView.frame), nil);
-    GHAssertTrue(CGRectEqualToRect(expectedActivityLocationFrame, controller.locationViewContainer.frame), nil);    
-    GHAssertTrue(CGRectEqualToRect(expectedMapContainerFrame, controller.mapContainer.frame), nil);    
 }
 
 @end
