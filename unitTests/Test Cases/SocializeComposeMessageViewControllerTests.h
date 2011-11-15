@@ -9,5 +9,4 @@
 #import <GHUnitIOS/GHUnit.h>
 
 @interface SocializeComposeMessageViewControllerTests : GHTestCase
-
 @end
