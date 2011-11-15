@@ -20,7 +20,7 @@
     -(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass;
     -(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName;
     - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
-    @property (nonatomic, retain) id<SocializeAuthViewDelegate> delegate;
+    @property (nonatomic, retain) id<SocializeAuthViewControllerDelegate> delegate;
     @property (nonatomic, retain) id<SocializeUser> user;
 @end
 

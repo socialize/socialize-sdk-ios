@@ -34,7 +34,7 @@
 #import "SocializeShareBuilder.h"
 #import "SocializeFacebookInterface.h"
 
-@interface SocializeBaseViewController () <SocializeProfileViewControllerDelegate, SocializeAuthViewDelegate>
+@interface SocializeBaseViewController () <SocializeProfileViewControllerDelegate, SocializeAuthViewControllerDelegate>
 @end
 
 @implementation SocializeBaseViewController
