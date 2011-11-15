@@ -25,11 +25,7 @@ typedef enum {
     SocializeAuthViewControllerRowTwitter
 } SocializeAuthViewControllerRows;
 
-@protocol SocializeAuthViewDelegate<NSObject>
-@optional
--(void)authorizationSkipped;
--(void)didAuthenticate:(id<SocializeUser>)user;
-@end
+@protocol SocializeAuthViewDelegate;
 
 @interface SocializeAuthViewController : SocializeBaseViewController<SocializeProfileViewControllerDelegate> {
     UITableView                 *tableView;
@@ -41,4 +37,10 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet UITableView     *tableView;
 - (id)initWithDelegate:(id<SocializeAuthViewDelegate>)delegate;
 +(UINavigationController*)authViewControllerInNavigationController:(id<SocializeAuthViewDelegate>)delegate;
+@end
+
+@protocol SocializeAuthViewDelegate<NSObject>
+@optional
+-(void)authorizationSkipped;
+-(void)socializeAuthViewController:(SocializeAuthViewController *)authViewController didAuthenticate:(id<SocializeUser>)user;
 @end

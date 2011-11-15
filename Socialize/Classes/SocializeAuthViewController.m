@@ -148,9 +148,9 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     [self profileViewDidFinish];
 }
 - (void)profileViewDidFinish {
-    SEL didAuthSelector = @selector(didAuthenticate:);
+    SEL didAuthSelector = @selector(socializeAuthViewController:didAuthenticate:);
     if ([self.delegate respondsToSelector:didAuthSelector] ) {
-        [self.delegate didAuthenticate:self.user];
+        [self.delegate socializeAuthViewController:self didAuthenticate:self.user];
     }
     [self dismissModalViewControllerAnimated:YES];
 }
