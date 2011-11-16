@@ -8,12 +8,11 @@
 
 #import <GHUnitIOS/GHUnit.h>
 #import "SocializeComposeMessageViewController.h"
+#import "SocializeBaseViewControllerTests.h"
 
-@interface SocializeComposeMessageViewControllerTests : GHTestCase
+@interface SocializeComposeMessageViewControllerTests : SocializeBaseViewControllerTests
 @property (nonatomic, retain) SocializeComposeMessageViewController *composeMessageViewController;
-@property (nonatomic, retain) SocializeComposeMessageViewController *origComposeMessageViewController;
 @property (nonatomic, retain) id mockView;
-@property (nonatomic, retain) id mockSocialize;
 @property (nonatomic, retain) id mockLocationManager;
 @property (nonatomic, retain) id mockKbListener;
 @property (nonatomic, retain) id mockLocationViewContainer;

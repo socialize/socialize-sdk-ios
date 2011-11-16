@@ -48,7 +48,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.sendButton.enabled = NO;
     self.title = @"New Share";
 }
 

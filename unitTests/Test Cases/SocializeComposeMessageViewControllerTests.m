@@ -7,7 +7,6 @@
 //
 
 #import "SocializeComposeMessageViewControllerTests.h"
-#import "ComposeMessageViewControllerForTest.h"
 #import "CommentMapView.h"
 #import "SocializeLocationManager.h"
 #import "UIKeyboardListener.h"
@@ -26,7 +25,6 @@
 #define TEST_LOCATION @"some_test_loaction_description"
 
 @implementation SocializeComposeMessageViewControllerTests
-@synthesize origComposeMessageViewController = origComposeMessageViewController_;
 @synthesize composeMessageViewController = composeMessageViewController_;
 @synthesize mockView = mockView_;
 @synthesize mockSocialize = mockSocialize_;
@@ -40,22 +38,23 @@
 @synthesize mockActivateLocationButton = mockActivateLocationButton_;
 @synthesize mockMapOfUserLocation = mockMapOfUserLocation_;
 
++ (SocializeBaseViewController*)createController {
+    return [[[SocializeComposeMessageViewController alloc] initWithNibName:nil bundle:nil entityUrlString:TEST_URL] autorelease];
+}
+
 - (BOOL)shouldRunOnMainThread
 {
     return YES;
 }
 
 - (void)setUp {
-    self.origComposeMessageViewController = [[[SocializeComposeMessageViewController alloc] initWithNibName:nil bundle:nil entityUrlString:TEST_URL] autorelease];
-    self.composeMessageViewController = [OCMockObject partialMockForObject:self.origComposeMessageViewController];
+    [super setUp];
+    
+    self.composeMessageViewController = (SocializeComposeMessageViewController*)self.viewController;
 
     self.mockView = [OCMockObject niceMockForClass:[UIView class]];
     [[[(id)self.composeMessageViewController stub] andReturn:self.mockView] view];
     
-    self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
-    [[[self.mockSocialize stub] andReturn:self.composeMessageViewController] delegate];
-    self.composeMessageViewController.socialize = self.mockSocialize;
-
     self.mockLocationManager = [OCMockObject mockForClass:[SocializeLocationManager class]];
     self.composeMessageViewController.locationManager = self.mockLocationManager;
     
@@ -100,7 +99,6 @@
     [self.mockActivateLocationButton verify];
     [self.mockMapOfUserLocation verify];
     
-    self.origComposeMessageViewController = nil;
     self.composeMessageViewController = nil;
     self.mockSocialize = nil;
     self.mockLocationManager = nil;
@@ -117,7 +115,7 @@
 
 -(void)testCreateMethod
 {
-    UINavigationController* controller = [ComposeMessageViewControllerForTest postCommentViewControllerInNavigationControllerWithEntityURL:TEST_URL];
+    UINavigationController* controller = [SocializePostCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:TEST_URL];
     GHAssertNotNil(controller, nil);
 }
 

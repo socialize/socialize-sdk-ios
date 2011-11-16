@@ -386,7 +386,6 @@
 		6D205A3F13C3DB9100D0645E /* SocializeErrorFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D205A3D13C3DB7000D0645E /* SocializeErrorFormatter.m */; };
 		6D205A4113C5060900D0645E /* SocializeShareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D205A2D13BE58D500D0645E /* SocializeShareTests.m */; };
 		6D31962513CDE72F00154B1F /* SocializeDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */; };
-		6D3F84B71424046D00825DFC /* ComposeMessageViewControllerForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F84B61424046D00825DFC /* ComposeMessageViewControllerForTest.m */; };
 		6D44A37913FC3456004B3A46 /* SocializeActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A37813FC3456004B3A46 /* SocializeActionTests.m */; };
 		6D44A64013FC6E9D004B3A46 /* socialize-navbar-button-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A63E13FC6E79004B3A46 /* socialize-navbar-button-dark.png */; };
 		6D44A64213FC6E9D004B3A46 /* socialize-navbar-button-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A63F13FC6E82004B3A46 /* socialize-navbar-button-dark@2x.png */; };
@@ -1799,8 +1798,6 @@
 		6D205A3D13C3DB7000D0645E /* SocializeErrorFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeErrorFormatter.m; path = Classes/SocializeErrorFormatter.m; sourceTree = "<group>"; };
 		6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDataFetcher.h; path = Classes/SocializeDataFetcher.h; sourceTree = "<group>"; };
 		6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDataFetcher.m; path = Classes/SocializeDataFetcher.m; sourceTree = "<group>"; };
-		6D3F84B51424046D00825DFC /* ComposeMessageViewControllerForTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComposeMessageViewControllerForTest.h; path = "Test Cases/ComposeMessageViewControllerForTest.h"; sourceTree = "<group>"; };
-		6D3F84B61424046D00825DFC /* ComposeMessageViewControllerForTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComposeMessageViewControllerForTest.m; path = "Test Cases/ComposeMessageViewControllerForTest.m"; sourceTree = "<group>"; };
 		6D44A37713FC3456004B3A46 /* SocializeActionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActionTests.h; path = "Test Cases/SocializeActionTests.h"; sourceTree = "<group>"; };
 		6D44A37813FC3456004B3A46 /* SocializeActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActionTests.m; path = "Test Cases/SocializeActionTests.m"; sourceTree = "<group>"; };
 		6D44A63E13FC6E79004B3A46 /* socialize-navbar-button-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-dark.png"; path = "Resources/socialize-navbar-button-dark.png"; sourceTree = "<group>"; };
@@ -3120,8 +3117,6 @@
 				16D247891417A984008A550D /* PostCommentViewControllerTests.h */,
 				16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */,
 				166DD757146421130017D0E9 /* SocializeComposeMessageViewControllerLandscape.xib */,
-				6D3F84B51424046D00825DFC /* ComposeMessageViewControllerForTest.h */,
-				6D3F84B61424046D00825DFC /* ComposeMessageViewControllerForTest.m */,
 			);
 			name = "Post Comment";
 			sourceTree = "<group>";
@@ -5148,7 +5143,6 @@
 				16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */,
 				16A82A29141DE79D00193CA7 /* ImageLoaderTests.m in Sources */,
 				6DFB0012141FF9460030DE32 /* CommentsTableViewTests.m in Sources */,
-				6D3F84B71424046D00825DFC /* ComposeMessageViewControllerForTest.m in Sources */,
 				160630F4142CB17B003B5AC7 /* SocializeUnitTestApplication.m in Sources */,
 				166ACEDF14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m in Sources */,
 				AAE8412A1448CBA3006BDA0E /* SocializeService+Testing.m in Sources */,

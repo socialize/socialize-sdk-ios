@@ -11,6 +11,7 @@
 @class SocializeBaseViewController;
 
 @interface SocializeBaseViewControllerTests : GHTestCase
++ (SocializeBaseViewController*)createController;
 @property (nonatomic, retain) SocializeBaseViewController *viewController;
 @property (nonatomic, retain) SocializeBaseViewController *origViewController;
 @property (nonatomic, retain) id mockNavigationController;
@@ -20,5 +21,6 @@
 @property (nonatomic, retain) id mockGenericAlertView;
 @property (nonatomic, retain) id mockDoneButton;
 @property (nonatomic, retain) id mockEditButton;
+@property (nonatomic, retain) id mockSendButton;
 
 @end
