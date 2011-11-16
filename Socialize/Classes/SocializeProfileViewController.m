@@ -74,6 +74,17 @@
     return [super initWithNibName:@"SocializeProfileViewController" bundle:nil];
 }
 
+- (void)getCurrentUser {
+    [self startLoading];
+    [self.socialize getCurrentUser];
+}
+
+- (void)afterAnonymouslyLoginAction {
+    if (self.fullUser == nil && self.user == nil) {
+        [self getCurrentUser];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -90,8 +101,9 @@
         [self.socialize getUserWithId:self.user.objectID];
     } else {
         // no full user or partial user, load for current user
-        [self startLoading];
-        [self.socialize getCurrentUser];
+        if ([self.socialize isAuthenticated]) {
+            [self getCurrentUser];
+        }
     }
 }
 
