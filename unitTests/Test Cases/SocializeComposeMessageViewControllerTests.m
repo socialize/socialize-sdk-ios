@@ -171,7 +171,7 @@
 }
 
 - (void)testLandscapeLayout {
-    SocializeComposeMessageViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializePostCommentViewControllerLandscape" 
+    SocializeComposeMessageViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializeComposeMessageViewControllerLandscape" 
                                                                                                            bundle:nil 
                                                                                                   entityUrlString:TEST_URL
                                                        ];
@@ -193,7 +193,7 @@
 
 -(void)testPortraitLayout
 {   
-    SocializePostCommentViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializePostCommentViewController" 
+    SocializePostCommentViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializeComposeMessageViewController" 
                                                                                                            bundle:nil 
                                                                                                   entityUrlString:TEST_URL
                                                        ];

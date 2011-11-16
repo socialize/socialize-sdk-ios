@@ -1880,7 +1880,7 @@
 		6D8D224C140598110026185F /* UINavigationBarBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UINavigationBarBackground.m; path = Classes/UINavigationBarBackground.m; sourceTree = "<group>"; };
 		6D8D224F14059C920026185F /* socialize-navbar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-bg.png"; path = "Resources/socialize-navbar-bg.png"; sourceTree = "<group>"; };
 		6D8D225014059C960026185F /* socialize-navbar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-bg@2x.png"; path = "Resources/socialize-navbar-bg@2x.png"; sourceTree = "<group>"; };
-		6D8D234B140725500026185F /* SocializeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; name = SocializeLoadingView.h; path = Classes/SocializeLoadingView.h; sourceTree = "<group>"; };
+		6D8D234B140725500026185F /* SocializeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLoadingView.h; path = Classes/SocializeLoadingView.h; sourceTree = "<group>"; };
 		6D8D234C140725570026185F /* SocializeLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLoadingView.m; path = Classes/SocializeLoadingView.m; sourceTree = "<group>"; };
 		6D97F03C13DFC91500B16454 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6D9A0B9E13BD310A00AE949C /* SocializeViewFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeViewFormatterTests.h; path = "Test Cases/SocializeViewFormatterTests.h"; sourceTree = "<group>"; };
@@ -2102,7 +2102,7 @@
 		AAAFE87814355F1B00851C73 /* LikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LikeListViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE87914355F1B00851C73 /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LikeListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE87A14355F1B00851C73 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
-		AAAFE87B14355F1B00851C73 /* SocializeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SocializeLoadingView.h; sourceTree = "<group>"; };
+		AAAFE87B14355F1B00851C73 /* SocializeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeLoadingView.h; sourceTree = "<group>"; };
 		AAAFE87C14355F1B00851C73 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		AAAFE87D14355F1B00851C73 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AAAFE87E14355F1B00851C73 /* UIIntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UIIntegrationTests-Info.plist"; sourceTree = "<group>"; };
