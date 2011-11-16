@@ -88,12 +88,15 @@
 
 -(void)testUpdateUserName
 {
-    id profileLable = [OCMockObject niceMockForClass: [UILabel class]];
-    [[profileLable expect] setText:@"Testuser"];
-    commentView.profileNameLable = profileLable;
-    
-    [commentView updateUserName:@"Testuser"];
-    [profileLable verify];
+    NSString *testName = @"somestring";
+    id mockButton = [OCMockObject mockForClass:[UIButton class]];
+    id mockLabel = [OCMockObject mockForClass:[UILabel class]];
+    [[mockLabel expect] setTitle:testName forState:UIControlStateNormal];
+    [[[mockButton expect] andReturn:mockLabel] titleLabel];
+    commentView.profileNameButton = mockButton;
+    [commentView updateUserName:testName];
+    [mockButton verify];
+    [mockLabel verify];
 }
 
 -(void)testUpdateGeoLocation

@@ -28,7 +28,6 @@
 @synthesize positionLable;
 @synthesize showMap;
 @synthesize profileNameButton;
-@synthesize profileNameLable;
 @synthesize profileImage;
 @synthesize shadowBackground;
 @synthesize shadowMapOfUserLocation;
@@ -43,12 +42,12 @@
         self.backgroundColor = [UIColor colorWithRed:65/ 255.f green:77/ 255.f blue:86/ 255.f alpha:1.0];
         
         
-        self.profileNameLable.textColor = [UIColor colorWithRed:217/ 255.f green:225/ 255.f blue:232/ 255.f alpha:1.0];
-        self.profileNameLable.layer.shadowOpacity = 0.9;   
-        self.profileNameLable.layer.shadowRadius = 1.0;
-        self.profileNameLable.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.profileNameLable.layer.shadowOffset = CGSizeMake(0.0, -1.0);
-        self.profileNameLable.layer.masksToBounds = NO; 
+        self.profileNameButton.titleLabel.textColor = [UIColor colorWithRed:217/ 255.f green:225/ 255.f blue:232/ 255.f alpha:1.0];
+        self.profileNameButton.titleLabel.layer.shadowOpacity = 0.9;   
+        self.profileNameButton.titleLabel.layer.shadowRadius = 1.0;
+        self.profileNameButton.titleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.profileNameButton.titleLabel.layer.shadowOffset = CGSizeMake(0.0, -1.0);
+        self.profileNameButton.titleLabel.layer.masksToBounds = NO; 
         
         
         
@@ -121,7 +120,7 @@
 
 -(void) updateUserName: (NSString*)name
 {
-    self.profileNameLable.text = name;
+    [self.profileNameButton setTitle:name forState:UIControlStateNormal];
 }
 
 -(void) updateGeoLocation: (CLLocationCoordinate2D) location
@@ -149,11 +148,6 @@
 
 -(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height
 {    
-    CGRect profileNameLableFrame = self.profileNameLable.frame;
-    profileNameLableFrame.size = [self.profileNameLable.text sizeWithFont:self.profileNameLable.font];
-    self.profileNameButton.frame = profileNameLableFrame;
-  
-    
     CGRect commentFrame = commentMessage.frame;
     commentFrame.size.height = height;
     commentMessage.frame = commentFrame;
@@ -197,7 +191,6 @@
     [navImage release]; navImage = nil;
     [profileNameButton release]; profileNameButton = nil;
     [positionLable release]; positionLable = nil;
-    [profileNameLable release]; profileNameLable = nil;
     [profileImage release]; profileImage = nil;
     [shadowBackground release]; shadowBackground = nil;
     [shadowMapOfUserLocation release]; shadowMapOfUserLocation = nil;
