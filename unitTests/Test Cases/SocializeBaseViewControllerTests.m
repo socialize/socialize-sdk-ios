@@ -21,6 +21,7 @@
 @synthesize mockDoneButton = mockDoneButton_;
 @synthesize mockEditButton = mockEditButton_;
 @synthesize mockSendButton = mockSendButton_;
+@synthesize mockCancelButton = mockCancelButton_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -61,6 +62,9 @@
     
     self.mockSendButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.viewController.sendButton = self.mockSendButton;
+
+    self.mockCancelButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.viewController.cancelButton = self.mockCancelButton;
 }
 
 -(void) tearDown

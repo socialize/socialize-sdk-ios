@@ -22,4 +22,6 @@
 @property (nonatomic, retain) id mockDoNotShareLocationButton;
 @property (nonatomic, retain) id mockActivateLocationButton;
 @property (nonatomic, retain) id mockMapOfUserLocation;
+
+- (void)prepareForViewDidLoad;
 @end

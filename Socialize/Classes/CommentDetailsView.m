@@ -83,7 +83,7 @@
 -(void)configurateView
 {
     [self configurateProfileImage];
-    [self.mapOfUserLocation configurate];
+    [self.mapOfUserLocation roundCorners];
     
     shadowMapOfUserLocation.layer.cornerRadius = 3.0;
     shadowMapOfUserLocation.layer.shadowColor = [UIColor colorWithRed:22/ 255.f green:28/ 255.f blue:31/ 255.f alpha:1.0].CGColor;

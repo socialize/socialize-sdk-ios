@@ -52,8 +52,6 @@
     
     // super setUp creates self.viewController
     self.postCommentViewController = (SocializePostCommentViewController*)self.viewController;
-    
-    [[[self.mockNavigationItem stub] andReturn:self.mockSendButton] rightBarButtonItem];
 }
 
 - (void)tearDown {

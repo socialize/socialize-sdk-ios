@@ -38,8 +38,6 @@ static NSString *const TestURL = @"http://getsocialize.com";
     // super setUp creates self.viewController
     self.postShareViewController = (SocializePostShareViewController*)self.viewController;
     
-    [[[self.mockNavigationItem stub] andReturn:self.mockSendButton] rightBarButtonItem];
-
     self.mockShareObject = [OCMockObject mockForProtocol:@protocol(SocializeShare)];
     self.postShareViewController.shareObject = self.mockShareObject;
 }
@@ -54,16 +52,13 @@ static NSString *const TestURL = @"http://getsocialize.com";
     self.mockCommentTextView = nil;
 }
 
-/*
 - (void)testViewDidLoad {
-    id niceView = [OCMockObject niceMockForClass:[UIView class]];
-    [[[(id)self.postShareViewController stub] andReturn:niceView] view];
-    
+    [super prepareForViewDidLoad];
+
     [[(id)self.postShareViewController expect] setTitle:@"New Share"];
-    
+
     [self.postShareViewController viewDidLoad];
 }
- */
 
 - (void)testViewDidAppearCausesAuth {
     [[(id)self.postShareViewController expect] authenticateWithFacebook];

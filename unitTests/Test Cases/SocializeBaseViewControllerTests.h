@@ -22,5 +22,6 @@
 @property (nonatomic, retain) id mockDoneButton;
 @property (nonatomic, retain) id mockEditButton;
 @property (nonatomic, retain) id mockSendButton;
+@property (nonatomic, retain) id mockCancelButton;
 
 @end

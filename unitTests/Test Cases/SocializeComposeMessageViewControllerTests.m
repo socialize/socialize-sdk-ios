@@ -82,6 +82,8 @@
     self.mockMapOfUserLocation = [OCMockObject niceMockForClass: [CommentMapView class]];
     self.composeMessageViewController.mapOfUserLocation = self.mockMapOfUserLocation;
 
+    [[[self.mockNavigationItem stub] andReturn:self.mockSendButton] rightBarButtonItem];
+    [[[self.mockNavigationItem stub] andReturn:self.mockCancelButton] leftBarButtonItem];
 }
 
 - (void)tearDown {
@@ -211,6 +213,20 @@
     GHAssertTrue(CGRectEqualToRect(expectedMapContainerFrame, controller.mapContainer.frame), nil);    
 }
 
+- (void)prepareForViewDidLoad {
+    [[self.mockNavigationItem expect] setLeftBarButtonItem:self.mockCancelButton];
+    [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockSendButton];
+    [[self.mockSendButton expect] setEnabled:NO];
+    [[self.mockCancelButton expect] setEnabled:NO];
+    BOOL noValue = NO;
+    [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(noValue)] shouldShareLocation];
+    [[self.mockLocationManager expect] setShouldShareLocation:NO];
+}
+
+- (void)testViewDidLoad {
+    [self prepareForViewDidLoad];
+    [(id)self.composeMessageViewController viewDidLoad];
+}
 
 
 @end

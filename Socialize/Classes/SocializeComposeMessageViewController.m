@@ -31,7 +31,7 @@
 @interface SocializeComposeMessageViewController ()
 
 -(void)setShareLocation:(BOOL)enableLocation;
--(void)setUserLocation; 
+-(void)configureLocationText; 
 -(void)configureDoNotShareLocationButton;
 -(void)updateViewWithNewLocation: (CLLocation*)userLocation;
 -(void) adjustViewToLayoutWithKeyboardHeigth:(int)keyboardHeigth;
@@ -128,14 +128,14 @@
              {
                  self.locationManager.currentLocationDescription = [NSString stringWithPlacemark:[placemarks objectAtIndex:0]];
              }
-             [self setUserLocation];
+             [self configureLocationText];
              [geocoder autorelease];
          }
          ];
     }
 }
 
--(void)setUserLocation
+-(void)configureLocationText
 {
     if (self.locationManager.shouldShareLocation) {
         [self.locationText text: self.locationManager.currentLocationDescription 
@@ -183,7 +183,7 @@
         [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-disabled.png"] forState:UIControlStateHighlighted];   
     }
     
-    [self setUserLocation];
+    [self configureLocationText];
 }
 
 #pragma mark - Buttons actions
@@ -244,6 +244,18 @@
 
 #pragma mark - View lifecycle
 
+- (void)adjustForOrientation:(UIInterfaceOrientation)orientation {
+    if(UIInterfaceOrientationIsLandscape(orientation))
+    {       
+        [self adjustViewToLayoutWithKeyboardHeigth: LANDSCAPE_KEYBOARD_HEIGHT];
+    }
+    else
+    {
+        [self adjustViewToLayoutWithKeyboardHeigth: PORTRAIT_KEYBOARD_HEIGHT];
+    }
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -253,22 +265,20 @@
     self.navigationItem.rightBarButtonItem = self.sendButton;
     self.sendButton.enabled = NO;
     
+    [self.commentTextView becomeFirstResponder];    
     
     // Ensure kb listener initialized the first time the view appears
     (void)self.kbListener;
     
-    [self.commentTextView becomeFirstResponder];    
     [self setShareLocation:self.locationManager.shouldShareLocation];
     
-    [mapOfUserLocation configurate];
+    [self.mapOfUserLocation roundCorners];
     [self configureDoNotShareLocationButton];       
     [self updateViewWithNewLocation: mapOfUserLocation.userLocation.location];
     
-    if(UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation]))
-        [self adjustViewToLayoutWithKeyboardHeigth:PORTRAIT_KEYBOARD_HEIGHT];
-    else
-        [self adjustViewToLayoutWithKeyboardHeigth:LANDSCAPE_KEYBOARD_HEIGHT];
-
+    if (UIDeviceOrientationIsValidInterfaceOrientation([[UIDevice currentDevice] orientation])) {
+        [self adjustForOrientation:(UIInterfaceOrientation)[[UIDevice currentDevice] orientation]];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -307,20 +317,9 @@
     self.mapContainer.frame = mapContainerFrame;
 }
 
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    
-    
-    if(UIInterfaceOrientationIsLandscape(interfaceOrientation))
-    {       
-        [self adjustViewToLayoutWithKeyboardHeigth: LANDSCAPE_KEYBOARD_HEIGHT];
-    }
-    else
-    {
-        [self adjustViewToLayoutWithKeyboardHeigth: PORTRAIT_KEYBOARD_HEIGHT];
-    }
-    
+    [self adjustForOrientation:interfaceOrientation];
     
     return YES;
 }
