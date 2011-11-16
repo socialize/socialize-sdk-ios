@@ -147,4 +147,39 @@
     [self.postCommentViewController textViewDidChange: nil];
 }
 
+- (void)testViewDidUnloadFreesViews {
+    [[(id)self.postCommentViewController expect] setFacebookSwitch:nil];
+    [self.postCommentViewController viewDidUnload];
+}
+
+- (id)mockMKUserLocationWithLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude {
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+    id mockLocation = [OCMockObject mockForClass:[CLLocation class]];
+    [[[mockLocation stub] andReturnValue:OCMOCK_VALUE(coordinate)] coordinate];
+    id mockUserLocation = [OCMockObject mockForClass:[MKUserLocation class]];
+    [[[mockUserLocation stub] andReturn:mockLocation] location];
+
+    return mockUserLocation;
+}
+
+- (void)testFinishCreateCommentCreatesSocializeCommentIfNeeded {
+    NSString *testText = @"testText";
+    
+    CLLocationDegrees latitude = 1.1;
+    CLLocationDegrees longitude = 1.2;
+    NSNumber *latitudeNumber = [NSNumber numberWithFloat:latitude];
+    NSNumber *longitudeNumber = [NSNumber numberWithFloat:longitude];
+    
+    BOOL yesValue = YES;
+    [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(yesValue)] shouldShareLocation];
+    id mockLocation = [self mockMKUserLocationWithLatitude:latitude longitude:longitude];
+    [[[self.mockMapOfUserLocation stub] andReturn:mockLocation] userLocation];
+    [[[self.mockCommentTextView stub] andReturn:testText] text];
+    [[self.mockSendButton expect] setEnabled:NO];
+    [[self.mockCancelButton expect] setEnabled:NO];
+    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:testText longitude:longitudeNumber latitude:latitudeNumber];
+
+    [self.postCommentViewController finishCreateComment];
+}
+
 @end
