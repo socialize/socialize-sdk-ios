@@ -77,7 +77,7 @@
         [self.view addSubview:hiddenButton];
     }
 
-    _loadingView = [LoadingView loadingViewInView:self.view]; 
+    _loadingView = [SocializeLoadingView loadingViewInView:self.view]; 
     [_socialize createCommentForEntityWithKey:entityField.text comment:commentField.text longitude:nil latitude:nil];
 }
 

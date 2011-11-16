@@ -759,8 +759,6 @@
 		AA639DAF144A24BF00660E26 /* LikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeListViewController.h; sourceTree = "<group>"; };
 		AA639DB0144A24BF00660E26 /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeListViewController.m; sourceTree = "<group>"; };
 		AA639DB1144A24BF00660E26 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
-		AA639DB2144A24BF00660E26 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
-		AA639DB3144A24BF00660E26 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		AA639DB4144A24BF00660E26 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AA639DB6144A24BF00660E26 /* SampleSdkApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleSdkApp-Info.plist"; sourceTree = "<group>"; };
 		AA639DB7144A24BF00660E26 /* SampleSdkApp-Integration-Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Integration-Tests-Prefix.pch"; sourceTree = "<group>"; };
@@ -828,6 +826,7 @@
 		AAAFE93F1435640C00851C73 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = Frameworks/SymbolCollisionTestLibs/libJSONKit.a; sourceTree = "<group>"; };
 		AAAFE9401435640C00851C73 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth.a; path = Frameworks/SymbolCollisionTestLibs/libOAuth.a; sourceTree = "<group>"; };
 		AAAFE9411435640C00851C73 /* libSBJson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSBJson.a; path = Frameworks/SymbolCollisionTestLibs/libSBJson.a; sourceTree = "<group>"; };
+		AAC2181A14746F9300F4BE55 /* SocializeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeLoadingView.h; sourceTree = "<group>"; };
 		AAD3F2A514620A2E007D2AB7 /* IntegrationTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntegrationTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD3F2BC14620AD0007D2AB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAD3F2BD14620AD0007D2AB7 /* IntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IntegrationTests-Info.plist"; sourceTree = "<group>"; };
@@ -970,6 +969,7 @@
 		AA3325CB144CD2C90033C7FA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				AAC2181A14746F9300F4BE55 /* SocializeLoadingView.h */,
 				AA8636BA144CA0A200CFA759 /* Tests */,
 				AAD7E367144F59BC0073308D /* TestActivityViewController.h */,
 				AAD7E368144F59BC0073308D /* TestActivityViewController.m */,
@@ -996,8 +996,6 @@
 				AA639DAF144A24BF00660E26 /* LikeListViewController.h */,
 				AA639DB0144A24BF00660E26 /* LikeListViewController.m */,
 				AA639DB1144A24BF00660E26 /* LikeListViewController.xib */,
-				AA639DB2144A24BF00660E26 /* LoadingView.h */,
-				AA639DB3144A24BF00660E26 /* LoadingView.m */,
 				AA639DB4144A24BF00660E26 /* main.m */,
 				AA639DB6144A24BF00660E26 /* SampleSdkApp-Info.plist */,
 				AA639DB7144A24BF00660E26 /* SampleSdkApp-Integration-Tests-Prefix.pch */,

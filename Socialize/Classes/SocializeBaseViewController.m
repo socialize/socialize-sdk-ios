@@ -26,7 +26,7 @@
  */
 
 #import "SocializeBaseViewController.h"
-#import "LoadingView.h"
+#import "SocializeLoadingView.h"
 #import "UINavigationBarBackground.h"
 #import "SocializeAuthViewController.h"
 #import "UIButton+Socialize.h"
@@ -184,7 +184,7 @@
 -(void) startLoadAnimationForView: (UIView*) view
 {
     if (_loadingIndicatorView == nil) {
-        _loadingIndicatorView = [LoadingView loadingViewInView:view];
+        _loadingIndicatorView = [SocializeLoadingView loadingViewInView:view];
     }
 }
 

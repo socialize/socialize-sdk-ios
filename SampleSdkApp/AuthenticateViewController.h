@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Socialize/Socialize.h>
-#import "LoadingView.h"
+#import "SocializeLoadingView.h"
 
 @interface AuthenticateViewController : UIViewController<SocializeServiceDelegate> {
     
     Socialize*              socialize;
     UILabel*                _resultLabel;
-    LoadingView*            _loadingView;
+    SocializeLoadingView*            _loadingView;
     
     IBOutlet UITextField*   _keyField;
     IBOutlet UITextField*   _secretField;

@@ -8,13 +8,13 @@
 
 #import "LoadingViewTests.h"
 #import "OCMock/OCMock.h"
-#import "LoadingView.h"
+#import "SocializeLoadingView.h"
 
 @implementation LoadingViewTests
 
 - (void)testLoadingViewClassHelper {
     UIView *testView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)] autorelease];
-    LoadingView *loadingView = [LoadingView loadingViewInView:testView];
+    SocializeLoadingView *loadingView = [SocializeLoadingView loadingViewInView:testView];
     GHAssertEquals(loadingView.superview, testView, nil);
     GHAssertTrue(CGRectEqualToRect(loadingView.frame, CGRectMake(0, 0, 320, 460)), nil);
 }
@@ -22,7 +22,7 @@
 - (void)testOtherLoadingViewClassHelper {
     UIView *testView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)] autorelease];
     CGRect testRect = CGRectMake(10, 10, 50, 50);
-    LoadingView *loadingView = [LoadingView loadingViewInView:testView withFrame:testRect andString:@"blah"];
+    SocializeLoadingView *loadingView = [SocializeLoadingView loadingViewInView:testView withFrame:testRect andString:@"blah"];
     GHAssertEquals(loadingView.superview, testView, nil);
     GHAssertTrue(CGRectEqualToRect(loadingView.frame, testRect), nil);
 }

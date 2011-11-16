@@ -41,7 +41,7 @@
 
 -(IBAction)createView
 {
-    _loadingView = [LoadingView loadingViewInView:self.view]; 
+    _loadingView = [SocializeLoadingView loadingViewInView:self.view]; 
     id<SocializeEntity> entity = (id<SocializeEntity>)[_socialize createObjectForProtocol: @protocol(SocializeEntity)];
     [entity setKey:entityTextField.text];
     [_socialize viewEntity:entity longitude:nil latitude:nil];

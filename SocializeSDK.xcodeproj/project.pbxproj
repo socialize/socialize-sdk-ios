@@ -459,7 +459,7 @@
 		6D8D224E140598160026185F /* UINavigationBarBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D224C140598110026185F /* UINavigationBarBackground.m */; };
 		6D8D225114059CA20026185F /* socialize-navbar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D224F14059C920026185F /* socialize-navbar-bg.png */; };
 		6D8D225314059CA20026185F /* socialize-navbar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D225014059C960026185F /* socialize-navbar-bg@2x.png */; };
-		6D8D234E1407256E0026185F /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D234C140725570026185F /* LoadingView.m */; };
+		6D8D234E1407256E0026185F /* SocializeLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D234C140725570026185F /* SocializeLoadingView.m */; };
 		6D9A0BA013BD310A00AE949C /* SocializeViewFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0B9F13BD310A00AE949C /* SocializeViewFormatterTests.m */; };
 		6D9A0BA413BE1BA700AE949C /* SocializeShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0BA213BE1BA600AE949C /* SocializeShare.m */; };
 		6D9A0BA813BE1EA300AE949C /* SocializeShareJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0BA613BE1EA100AE949C /* SocializeShareJSONFormatter.m */; };
@@ -1254,7 +1254,7 @@
 		AABC1511144A114900088B7D /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBEA6A14057B4B00E41FC0 /* UIButton+Socialize.m */; };
 		AABC1512144A114900088B7D /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBEA6C14057B5700E41FC0 /* UILabel-Additions.m */; };
 		AABC1513144A114900088B7D /* UINavigationBarBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D224C140598110026185F /* UINavigationBarBackground.m */; };
-		AABC1514144A114900088B7D /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D234C140725570026185F /* LoadingView.m */; };
+		AABC1514144A114900088B7D /* SocializeLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D234C140725570026185F /* SocializeLoadingView.m */; };
 		AABC1515144A114900088B7D /* HtmlPageCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8984421407CA6B00482F1E /* HtmlPageCreator.m */; };
 		AABC1516144A114900088B7D /* URLDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD30140E4F2600518811 /* URLDownload.m */; };
 		AABC1517144A114900088B7D /* URLDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD32140E4F2700518811 /* URLDownloadOperation.m */; };
@@ -1880,8 +1880,8 @@
 		6D8D224C140598110026185F /* UINavigationBarBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UINavigationBarBackground.m; path = Classes/UINavigationBarBackground.m; sourceTree = "<group>"; };
 		6D8D224F14059C920026185F /* socialize-navbar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-bg.png"; path = "Resources/socialize-navbar-bg.png"; sourceTree = "<group>"; };
 		6D8D225014059C960026185F /* socialize-navbar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-bg@2x.png"; path = "Resources/socialize-navbar-bg@2x.png"; sourceTree = "<group>"; };
-		6D8D234B140725500026185F /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingView.h; path = Classes/LoadingView.h; sourceTree = "<group>"; };
-		6D8D234C140725570026185F /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingView.m; path = Classes/LoadingView.m; sourceTree = "<group>"; };
+		6D8D234B140725500026185F /* SocializeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; name = SocializeLoadingView.h; path = Classes/SocializeLoadingView.h; sourceTree = "<group>"; };
+		6D8D234C140725570026185F /* SocializeLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLoadingView.m; path = Classes/SocializeLoadingView.m; sourceTree = "<group>"; };
 		6D97F03C13DFC91500B16454 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6D9A0B9E13BD310A00AE949C /* SocializeViewFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeViewFormatterTests.h; path = "Test Cases/SocializeViewFormatterTests.h"; sourceTree = "<group>"; };
 		6D9A0B9F13BD310A00AE949C /* SocializeViewFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeViewFormatterTests.m; path = "Test Cases/SocializeViewFormatterTests.m"; sourceTree = "<group>"; };
@@ -2102,7 +2102,7 @@
 		AAAFE87814355F1B00851C73 /* LikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LikeListViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE87914355F1B00851C73 /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LikeListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE87A14355F1B00851C73 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
-		AAAFE87B14355F1B00851C73 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		AAAFE87B14355F1B00851C73 /* SocializeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SocializeLoadingView.h; sourceTree = "<group>"; };
 		AAAFE87C14355F1B00851C73 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		AAAFE87D14355F1B00851C73 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AAAFE87E14355F1B00851C73 /* UIIntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UIIntegrationTests-Info.plist"; sourceTree = "<group>"; };
@@ -2777,8 +2777,8 @@
 				169BC7A51420D602007ED41E /* UILabel+FormatedText.m */,
 				AAC201951460CFD30045FDAB /* UINavigationController+Socialize.h */,
 				AAC201961460CFD30045FDAB /* UINavigationController+Socialize.m */,
-				6D8D234B140725500026185F /* LoadingView.h */,
-				6D8D234C140725570026185F /* LoadingView.m */,
+				6D8D234B140725500026185F /* SocializeLoadingView.h */,
+				6D8D234C140725570026185F /* SocializeLoadingView.m */,
 				6D8D224B1405980F0026185F /* UINavigationBarBackground.h */,
 				6D8D224C140598110026185F /* UINavigationBarBackground.m */,
 				6DDBEA6914057B4A00E41FC0 /* UIButton+Socialize.h */,
@@ -3336,7 +3336,7 @@
 				AAAFE87814355F1B00851C73 /* LikeListViewController.h */,
 				AAAFE87914355F1B00851C73 /* LikeListViewController.m */,
 				AAAFE87A14355F1B00851C73 /* LikeListViewController.xib */,
-				AAAFE87B14355F1B00851C73 /* LoadingView.h */,
+				AAAFE87B14355F1B00851C73 /* SocializeLoadingView.h */,
 				AAAFE87C14355F1B00851C73 /* LoadingView.m */,
 				AAAFE88214355F1B00851C73 /* SampleSdkAppAppDelegate.h */,
 				AAAFE88314355F1B00851C73 /* SampleSdkAppAppDelegate.m */,
@@ -5016,7 +5016,7 @@
 				6DDBEA6E14057B6000E41FC0 /* UIButton+Socialize.m in Sources */,
 				6DDBEA7014057B6000E41FC0 /* UILabel-Additions.m in Sources */,
 				6D8D224E140598160026185F /* UINavigationBarBackground.m in Sources */,
-				6D8D234E1407256E0026185F /* LoadingView.m in Sources */,
+				6D8D234E1407256E0026185F /* SocializeLoadingView.m in Sources */,
 				6D8984441407CA6B00482F1E /* HtmlPageCreator.m in Sources */,
 				1666BD34140E4F2800518811 /* URLDownload.m in Sources */,
 				1666BD36140E4F2800518811 /* URLDownloadOperation.m in Sources */,
@@ -5305,7 +5305,7 @@
 				AABC1511144A114900088B7D /* UIButton+Socialize.m in Sources */,
 				AABC1512144A114900088B7D /* UILabel-Additions.m in Sources */,
 				AABC1513144A114900088B7D /* UINavigationBarBackground.m in Sources */,
-				AABC1514144A114900088B7D /* LoadingView.m in Sources */,
+				AABC1514144A114900088B7D /* SocializeLoadingView.m in Sources */,
 				AABC1515144A114900088B7D /* HtmlPageCreator.m in Sources */,
 				AABC1516144A114900088B7D /* URLDownload.m in Sources */,
 				AABC1517144A114900088B7D /* URLDownloadOperation.m in Sources */,

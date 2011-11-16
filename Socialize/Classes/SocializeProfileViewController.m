@@ -10,7 +10,7 @@
 #import "ImagesCache.h"
 #import "UINavigationBarBackground.h"
 #import "UIButton+Socialize.h"
-#import "LoadingView.h"
+#import "SocializeLoadingView.h"
 #import "ImagesCache.h"
 #import "UINavigationController+Socialize.h"
 
@@ -248,7 +248,7 @@
 }
 
 - (void)profileEditViewControllerDidSave:(SocializeProfileEditViewController *)profileEditViewController {
-    self.loadingView = [LoadingView loadingViewInView:self.profileEditViewController.navigationController.view];
+    self.loadingView = [SocializeLoadingView loadingViewInView:self.profileEditViewController.navigationController.view];
 	self.profileEditViewController.navigationItem.rightBarButtonItem.enabled = NO;
     
     id<SocializeFullUser> userCopy = [(id)self.fullUser copy];

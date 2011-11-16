@@ -13,7 +13,7 @@
 #import "SocializeBaseViewController.h"
 
 @class ImagesCache;
-@class LoadingView;
+@class SocializeLoadingView;
 @protocol SocializeProfileViewControllerDelegate;
 
 @interface SocializeProfileViewController : SocializeBaseViewController <UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate, SocializeServiceDelegate>
@@ -29,7 +29,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *userLocationLabel;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *profileImageActivityIndicator;
 @property (nonatomic, retain) SocializeProfileEditViewController *profileEditViewController;
-@property (nonatomic, retain) LoadingView *loadingView;
+@property (nonatomic, retain) SocializeLoadingView *loadingView;
 @property (nonatomic, retain) UINavigationController *navigationControllerForEdit;
 @property (nonatomic, retain) ImagesCache *imagesCache;
 @property (nonatomic, retain) UIImage *defaultProfileImage;

@@ -69,7 +69,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _loadingView = [LoadingView loadingViewInView:self.view]; 
+    _loadingView = [SocializeLoadingView loadingViewInView:self.view]; 
     [_socialize getCurrentUser];
 }
 
@@ -118,7 +118,7 @@
 
 -(IBAction)updateBtn
 {
-    _loadingView = [LoadingView loadingViewInView:self.view]; 
+    _loadingView = [SocializeLoadingView loadingViewInView:self.view]; 
     
     [_user setUserName:@"Sergey"];
     [_socialize updateUserProfile:_user];    

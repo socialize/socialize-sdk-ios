@@ -7,7 +7,7 @@
 //
 
 #import "TestGetEntityViewController.h"
-#import "LoadingView.h"
+#import "SocializeLoadingView.h"
 #import "UIButton+Socialize.h"
 
 #define SUCCESS @"success"
@@ -83,7 +83,7 @@
         [self.view addSubview:hiddenButton];
     }
         
-    _loadingView = [LoadingView loadingViewInView:self.view]; 
+    _loadingView = [SocializeLoadingView loadingViewInView:self.view]; 
     [_socialize getEntityByKey:getEntityTextField.text];
 }
 

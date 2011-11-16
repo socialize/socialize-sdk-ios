@@ -10,7 +10,7 @@
 #import "UIButton+Socialize.h"
 #import "CommentMapView.h"
 #import "_Socialize.h"
-#import "LoadingView.h"
+#import "SocializeLoadingView.h"
 #import "UIKeyboardListener.h"
 #import "SocializeLocationManager.h"
 #import "UILabel+FormatedText.h"
