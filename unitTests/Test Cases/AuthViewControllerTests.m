@@ -20,7 +20,7 @@
     -(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass;
     -(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName;
     - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
-    @property (nonatomic, retain) id<SocializeAuthViewDelegate> delegate;
+    @property (nonatomic, retain) id<SocializeAuthViewControllerDelegate> delegate;
     @property (nonatomic, retain) id<SocializeUser> user;
 @end
 
@@ -68,21 +68,21 @@ BOOL isAuthenticatedWithFacebook = YES;
 -(void) testSkipButtonPressed {
     id mockButton = [OCMockObject mockForClass:[UIButton class]];
     //create and set mock delegate
-    id delegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewDelegate)];
+    id delegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewControllerDelegate)];
     [[delegate expect] authorizationSkipped];
     self.authViewController.delegate = delegate;
     [self.authViewController skipButtonPressed:mockButton];
     [delegate verify];
 }
 - (void) testInitWithDelegate {
-    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewDelegate)];
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewControllerDelegate)];
     SocializeAuthViewController *authController = [[SocializeAuthViewController alloc] initWithDelegate:mockDelegate];
     NSAssert( authController.delegate == mockDelegate, @"The delegate was not set on the init method" );
 }
 
 
 - (void)testCreateWithNavigationController {
-    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewDelegate)];
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewControllerDelegate)];
     NSObject *object = [SocializeAuthViewController authViewControllerInNavigationController:mockDelegate];
     NSAssert( [object isKindOfClass:[UINavigationController class]], @"static creation method did not create uinavigation controller" ) ;   
 }
@@ -206,9 +206,9 @@ BOOL isAuthenticatedWithFacebook = YES;
 }
 - (void)testProfileViewDidFinish {
     self.authViewController.user = [OCMockObject mockForProtocol:@protocol(SocializeUser)];   
-    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewDelegate)];
-    [[[mockDelegate stub] andReturn:[NSNumber numberWithBool:TRUE]] respondsToSelector:@selector(didAuthenticate:)];
-    [[mockDelegate expect] didAuthenticate:self.authViewController.user];
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewControllerDelegate)];
+    [[[mockDelegate stub] andReturn:[NSNumber numberWithBool:TRUE]] respondsToSelector:@selector(socializeAuthViewController:didAuthenticate:)];
+    [[mockDelegate expect] socializeAuthViewController:self.authViewController didAuthenticate:self.authViewController.user];
     self.authViewController.delegate = mockDelegate;
     [self.authViewController profileViewDidFinish];
     

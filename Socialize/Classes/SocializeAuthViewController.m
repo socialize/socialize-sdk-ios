@@ -19,7 +19,7 @@
     -(void)profileViewDidFinish;
     -(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass;
     -(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName;
-    @property (nonatomic, retain) id<SocializeAuthViewDelegate> delegate;
+    @property (nonatomic, retain) id<SocializeAuthViewControllerDelegate> delegate;
     @property (nonatomic, retain) id<SocializeUser> user;
 @end
 
@@ -41,7 +41,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     self.user = nil;
     [super dealloc];
 }
-+(UINavigationController*)authViewControllerInNavigationController:(id<SocializeAuthViewDelegate>)delegate;
++(UINavigationController*)authViewControllerInNavigationController:(id<SocializeAuthViewControllerDelegate>)delegate;
 {
     SocializeAuthViewController *authController 
     = [[SocializeAuthViewController alloc] initWithDelegate:delegate];
@@ -51,7 +51,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     [navController.navigationBar setBackgroundImage:navBarImage];
     return navController;
 }
-- (id)initWithDelegate:(id<SocializeAuthViewDelegate>)delegate {
+- (id)initWithDelegate:(id<SocializeAuthViewControllerDelegate>)delegate {
     if( self = [super initWithNibName:@"SocializeAuthViewController" bundle:nil] ) {
         self.delegate = delegate;
     }
@@ -148,9 +148,9 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     [self profileViewDidFinish];
 }
 - (void)profileViewDidFinish {
-    SEL didAuthSelector = @selector(didAuthenticate:);
+    SEL didAuthSelector = @selector(socializeAuthViewController:didAuthenticate:);
     if ([self.delegate respondsToSelector:didAuthSelector] ) {
-        [self.delegate didAuthenticate:self.user];
+        [self.delegate socializeAuthViewController:self didAuthenticate:self.user];
     }
     [self dismissModalViewControllerAnimated:YES];
 }
