@@ -180,8 +180,10 @@
     self.actionBar.shareComposer.completionBlock(MFMailComposeResultSent, nil); // currently noop
 }
 
-- (void)testShowingView {
+- (void)testShowingViewWhenNotAuthenticated {
     [[self.mockActionView expect] startActivityForUpdateViewsCount];
+    BOOL noValue = NO;
+    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(noValue)] isAuthenticated];
     [[(id)self.actionBar expect] performAutoAuth];
     [self.actionBar socializeActionViewWillAppear:self.mockActionView];
 }

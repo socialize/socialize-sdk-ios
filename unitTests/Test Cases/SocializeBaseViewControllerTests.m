@@ -186,7 +186,7 @@
     GHAssertTrue([self.viewController shouldAutoAuthOnAppear], nil);
 }
 
-- (void)testAutoAuthWhenNotAuthed {
+- (void)testAutoAuthWhenNotAuthedPerformsAuth {
     BOOL no = NO;
     [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(no)] isAuthenticated];
     [[(id)self.viewController expect] startLoading];
@@ -194,11 +194,18 @@
     [self.viewController performAutoAuth];
 }
 
-- (void)testAutoAuthWhenAuthed {
+- (void)testAutoAuthWhenAuthedDoesNothing {
     BOOL yes = YES;
     [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(yes)] isAuthenticated];
-    [[(id)self.viewController expect] afterAnonymouslyLoginAction];
     [self.viewController performAutoAuth];
+}
+
+- (void)testDidAuthenticateAfterAnonymousAuthCallsAfterAnonymouslyLoginAction {
+    [[(id)self.viewController expect] stopLoadAnimation];
+    BOOL no = NO;
+    [[[self.mockSocialize stub] andReturnValue:OCMOCK_VALUE(no)] isAuthenticatedWithFacebook];
+    [[(id)self.viewController expect] afterAnonymouslyLoginAction];
+    [self.viewController didAuthenticate:nil];
 }
 
 - (void)testViewWillAppear {

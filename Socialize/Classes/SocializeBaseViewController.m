@@ -212,8 +212,6 @@
         [self startLoading];
         [self.socialize authenticateAnonymously];
     }
-    else
-        [self afterAnonymouslyLoginAction];
 }
 
 #pragma mark - View lifecycle

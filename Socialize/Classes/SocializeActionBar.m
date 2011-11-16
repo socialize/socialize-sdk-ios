@@ -224,7 +224,7 @@
     return NO;
 }
 
--(void)afterAnonymouslyLoginAction
+-(void)incrementViewsAndRefreshLikesIfEntityNotLiked
 {
     if (self.ignoreNextView) {
         // Refresh now
@@ -239,9 +239,17 @@
         [self.socialize getLikesForEntityKey:[entity key] first:nil last:nil];
 }
 
+- (void)afterAnonymouslyLoginAction {
+    [self incrementViewsAndRefreshLikesIfEntityNotLiked];
+}
+
 -(void)socializeActionViewWillAppear:(SocializeActionView *)socializeActionView {
-    [socializeActionView startActivityForUpdateViewsCount];
-    [self performAutoAuth];
+    [socializeActionView startActivityForUpdateViewsCount];        
+    if (![self.socialize isAuthenticated]) {
+        [self performAutoAuth];
+    } else {
+        [self incrementViewsAndRefreshLikesIfEntityNotLiked];
+    }
 }
 
 -(void)socializeActionViewWillDisappear:(SocializeActionView *)socializeActionView {

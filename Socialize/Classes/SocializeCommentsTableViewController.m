@@ -80,10 +80,19 @@
     return self;
 }
 
+- (void)refreshCommentsList {
+    [self startLoadAnimationForView:self.view];
+    [self.socialize getCommentList:_entity.key first:nil last:nil]; 
+}
+
 - (void) viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];   
     informationView.center = self.tableView.center;
+    
+    if ([self.socialize isAuthenticated]) {
+        [self refreshCommentsList];
+    }
 }
 
 - (UIBarButtonItem*)doneButton {
@@ -148,8 +157,7 @@
 
 -(void)afterAnonymouslyLoginAction
 {
-    [self startLoadAnimationForView:self.view];
-    [self.socialize getCommentList:_entity.key first:nil last:nil]; 
+    [self refreshCommentsList];
 }
 
 #pragma mark -
