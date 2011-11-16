@@ -35,7 +35,7 @@
 -(void) showComment;
 -(void) setupCommentGeoLocation;
 -(void) showShareLocation:(BOOL)hasLocation;
--(SocializeProfileViewController *)getSocializeProfileViewControllerForUser:(id<SocializeUser>)user;
+-(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 @end
 
 @implementation SocializeCommentDetailsViewController
@@ -98,10 +98,11 @@
     ];
 }
 -(IBAction)profileButtonTapped:(id)sender {
-    SocializeProfileViewController *profileViewController = [self getSocializeProfileViewControllerForUser:self.comment.user];
+    SocializeProfileViewController *profileViewController = [self getProfileViewControllerForUser:self.comment.user];
+    profileViewController.navigationItem.leftBarButtonItem = [self createLeftNavigationButtonWithCaption:@"HAH"];
     [self.navigationController pushViewController:(UIViewController *)profileViewController animated:YES];
 }
--(SocializeProfileViewController *)getSocializeProfileViewControllerForUser:(id<SocializeUser>)user {
+-(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
     SocializeProfileViewController *profileViewController = [[SocializeProfileViewController alloc]initWithUser:user delegate:self];
     return profileViewController;
 }

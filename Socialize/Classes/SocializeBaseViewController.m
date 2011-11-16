@@ -52,7 +52,7 @@
 @synthesize shareBuilder = shareBuilder_;
 @synthesize sendActivityToFacebookFeedAlertView = sendActivityToFacebookFeedAlertView_;
 @synthesize authViewController = authViewController_;
-
+@synthesize backButton = backButton_;
 - (void)dealloc
 {
     self.genericAlertView.delegate = nil;
@@ -71,6 +71,7 @@
 {
     [super viewDidUnload];
     
+    self.backButton = nil;
     self.doneButton = nil;
     self.editButton = nil;
     self.saveButton = nil;
@@ -100,7 +101,22 @@
     
     return socialize_;
 }
+- (UIBarButtonItem*)backButton {
+    if (backButton_ == nil) {
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Back"];
+        [button addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        backButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
+    }
+    return backButton_;
+    /*
+    if (saveButton_ == nil) {
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
+        [button addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        saveButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
+    }
+    return saveButton_;*/
 
+}
 - (UIBarButtonItem*)saveButton {
     if (saveButton_ == nil) {
         UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
@@ -126,6 +142,14 @@
         sendButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
     return sendButton_;
+}
+
+-(UIBarButtonItem*) createLeftNavigationButtonWithCaption: (NSString*) caption
+{
+    UIButton *backButton = [UIButton blackSocializeNavBarBackButtonWithTitle:caption]; 
+    [backButton addTarget:self action:@selector(backToCommentsList:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * backLeftItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
+    return backLeftItem;
 }
 
 - (UIBarButtonItem*)doneButton {

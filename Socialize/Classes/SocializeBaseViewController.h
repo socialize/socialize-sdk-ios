@@ -43,6 +43,7 @@
 @property (nonatomic, retain) UIBarButtonItem *editButton;
 @property (nonatomic, retain) UIBarButtonItem *sendButton;
 @property (nonatomic, retain) UIBarButtonItem *cancelButton;
+@property (nonatomic, retain) UIBarButtonItem *backButton;
 @property (nonatomic, retain) UIBarButtonItem *saveButton;
 @property (nonatomic, retain) UIAlertView *genericAlertView;
 @property(nonatomic, retain) UIAlertView *facebookAuthQuestionDialog;
@@ -73,4 +74,5 @@
 - (void)sendActivityToFacebookFeedSucceeded;
 - (void)sendActivityToFacebookFeedFailed:(NSError*)error;
 - (void)sendActivityToFacebookFeedCancelled;
+- (UIBarButtonItem*)createLeftNavigationButtonWithCaption:(NSString*)caption;
 @end

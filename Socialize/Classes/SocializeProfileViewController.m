@@ -83,7 +83,10 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = self.doneButton;
+    //we will show a done button here if there is not left barbutton item already showing
+    if (!self.navigationItem.leftBarButtonItem)
+        self.navigationItem.leftBarButtonItem = self.doneButton;
+
     self.profileImageView.image = [self defaultProfileImage];
     
     if (self.fullUser != nil) {
