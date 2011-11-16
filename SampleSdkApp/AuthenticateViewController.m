@@ -150,7 +150,7 @@
 
 -(void)didAuthenticate:(id<SocializeUser>)user {
     
-    NSLog(@"%@", [user userIdForThirdPartyAuth: FacebookAuth]);
+    NSLog(@"%@", [user userIdForThirdPartyAuth: SocializeThirdPartyAuthTypeFacebook]);
 //    NSLog(@"%@", [socialize.authService receiveFacebookAuthToken]);
     
     [_loadingView removeView];

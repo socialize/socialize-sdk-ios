@@ -175,7 +175,7 @@
     NSAssert(apiSecret != nil, @"Missing api secret. API secret must be configured before using socialize.");
     NSAssert(facebookAppId != nil, @"Missing facebook app id. Facebook app id is required to authenticate with facebook.");
     
-    [self authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:facebookAppId thirdPartyLocalAppId:facebookLocalAppId thirdPartyName:FacebookAuth];
+    [self authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:facebookAppId thirdPartyLocalAppId:facebookLocalAppId thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
 }
 
 -(void)authenticateAnonymously
@@ -193,7 +193,7 @@
                     apiSecret:(NSString*)apiSecret 
           thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
               thirdPartyAppId:(NSString*)thirdPartyAppId
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
     if ([SocializeAuthenticateService isAuthenticated])
         [_authService removeAuthenticationInfo];
@@ -210,7 +210,7 @@
                     apiSecret:(NSString*)apiSecret
               thirdPartyAppId:(NSString*)thirdPartyAppId 
          thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
     if ([SocializeAuthenticateService isAuthenticated])
         [_authService removeAuthenticationInfo];
@@ -221,7 +221,7 @@
 -(void)authenticateWithApiKey:(NSString*)apiKey
                     apiSecret:(NSString*)apiSecret
               thirdPartyAppId:(NSString*)thirdPartyAppId 
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
     if ([SocializeAuthenticateService isAuthenticated])
         [_authService removeAuthenticationInfo];

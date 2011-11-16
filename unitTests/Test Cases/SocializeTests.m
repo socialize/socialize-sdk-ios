@@ -124,7 +124,7 @@
     socialize.authService = mockAuthService;
 
     [[mockAuthService expect] removeAuthenticationInfo];
-    [[mockAuthService expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"1234" thirdPartyLocalAppId:@"abcd" thirdPartyName:FacebookAuth];
+    [[mockAuthService expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"1234" thirdPartyLocalAppId:@"abcd" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     [socialize authenticateWithFacebook];
     [mockAuthService verify];
     [socialize release];
@@ -251,13 +251,13 @@
     [auth verify];
     
     [[auth expect] removeAuthenticationInfo];
-    [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"123" thirdPartyName:FacebookAuth];
-    [socialize authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"123" thirdPartyName:FacebookAuth];
+    [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"123" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
+    [socialize authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"123" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     [auth verify];
     
     [[auth expect] removeAuthenticationInfo];
-    [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:@"token" thirdPartyAppId:@"123" thirdPartyName:FacebookAuth];
-    [socialize authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:@"token" thirdPartyAppId:@"123" thirdPartyName:FacebookAuth];
+    [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:@"token" thirdPartyAppId:@"123" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
+    [socialize authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:@"token" thirdPartyAppId:@"123" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     [auth verify];
     
     [[auth expect] removeAuthenticationInfo];

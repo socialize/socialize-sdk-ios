@@ -12,9 +12,9 @@
 /** 
  Third party authentication type 
 */
-typedef enum ThirdPartyAuthName {
-    FacebookAuth = 1
-} ThirdPartyAuthName;
+typedef enum SocializeThirdPartyAuthType {
+    SocializeThirdPartyAuthTypeFacebook = 1
+} SocializeThirdPartyAuthType;
 
 typedef enum {
     SocializeShareMediumTwitter = 1,

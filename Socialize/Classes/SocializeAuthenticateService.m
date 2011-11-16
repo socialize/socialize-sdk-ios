@@ -92,7 +92,7 @@
                             apiSecret:(NSString*)apiSecret 
                   thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
                      thirdPartyAppId:(NSString*)thirdPartyAppId
-                       thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+                       thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
                              [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid", 
@@ -114,7 +114,7 @@
                     apiSecret:(NSString*)apiSecret 
               thirdPartyAppId:(NSString*)thirdPartyAppId 
          thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
     SocializeFacebook* fb = [SocializeFacebook facebookFromSettings];
 
@@ -127,7 +127,7 @@
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                     apiSecret:(NSString*)apiSecret 
               thirdPartyAppId:(NSString*)thirdPartyAppId 
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
     [self authenticateWithApiKey:apiKey
                        apiSecret:apiSecret
@@ -321,7 +321,7 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
     }
     else
     {
-        [self.service authenticateWithApiKey:self.apiKey apiSecret:self.apiSecret thirdPartyAuthToken:self.facebook.accessToken thirdPartyAppId:self.thirdPartyAppId thirdPartyName:FacebookAuth];
+        [self.service authenticateWithApiKey:self.apiKey apiSecret:self.apiSecret thirdPartyAuthToken:self.facebook.accessToken thirdPartyAppId:self.thirdPartyAppId thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     }
 
 }
@@ -342,7 +342,7 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
     [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKey"];
     [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
-    [service authenticateWithApiKey:self.apiKey apiSecret:self.apiSecret thirdPartyAuthToken:self.facebook.accessToken thirdPartyAppId:self.thirdPartyAppId thirdPartyName:FacebookAuth];
+    [service authenticateWithApiKey:self.apiKey apiSecret:self.apiSecret thirdPartyAuthToken:self.facebook.accessToken thirdPartyAppId:self.thirdPartyAppId thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     
     [FacebookAuthenticator setLastUsedAuthenticator:nil];
 }

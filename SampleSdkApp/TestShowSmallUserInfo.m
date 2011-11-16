@@ -106,7 +106,7 @@
     _user = [[dataArray objectAtIndex:0] retain];
     self.userName.text = _user.userName;
     
-    NSNumber* fbId = [_user userIdForThirdPartyAuth:FacebookAuth];
+    NSNumber* fbId = [_user userIdForThirdPartyAuth:SocializeThirdPartyAuthTypeFacebook];
     if(fbId)
         self.fbUserId.text = [NSString stringWithFormat:@"%d", fbId];
 }
