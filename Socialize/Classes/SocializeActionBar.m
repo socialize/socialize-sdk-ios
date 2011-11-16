@@ -196,7 +196,7 @@
     else
     {       
         if(![[error localizedDescription] isEqualToString:@"Entity does not exist."])
-            [self showAlertWithText:[error localizedDescription] andTitle:@"Get entiry failed"];
+            [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
         
         if([service isKindOfClass:[SocializeLikeService class]])
             [(SocializeActionView*)self.view unlockButtons];
