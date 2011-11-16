@@ -99,23 +99,8 @@
     [self finishCreateComment];
 }
 
-- (void)bobbleView:(UIView*)view yOffset:(CGFloat)yOffset count:(NSInteger)count {
-    if (count > 0) {
-        [UIView animateWithDuration:0.2
-                              delay:0
-                            options:0
-                         animations:^{
-                             CGRect current = view.frame;
-                             view.frame = CGRectMake(current.origin.x, current.origin.y + yOffset, current.size.width, current.size.height);
-                         } completion:^(BOOL done) {
-                             [self bobbleView:view yOffset:-yOffset count:count-1];
-                         }];
-    }
-}
-
 - (void)afterFacebookLoginAction {
     self.facebookSwitch.hidden = NO;
-    [self bobbleView:self.facebookSwitch yOffset:3 count:4];
 }
 
 -(void)sendButtonPressed:(UIButton*)button {
