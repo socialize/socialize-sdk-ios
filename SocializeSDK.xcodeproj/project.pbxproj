@@ -2744,7 +2744,7 @@
 				AA6B6F231472FBEB008E885B /* Profile Edit */,
 				AAF9030E1472FD2F00AB8674 /* Comment Details */,
 				AAF9030D1472FD1900AB8674 /* Comments List */,
-				AAF9030A1472FCCC00AB8674 /* Compose */,
+				AAF9030A1472FCCC00AB8674 /* Compose Message */,
 				AAF903091472FCAE00AB8674 /* Auth */,
 				AAF903081472FC8500AB8674 /* Action Bar */,
 				6D89844B14083B8200482F1E /* Utilities */,
@@ -3404,7 +3404,7 @@
 			name = Auth;
 			sourceTree = "<group>";
 		};
-		AAF9030A1472FCCC00AB8674 /* Compose */ = {
+		AAF9030A1472FCCC00AB8674 /* Compose Message */ = {
 			isa = PBXGroup;
 			children = (
 				6D67431613F9EEBA00140AA3 /* SocializeComposeMessageViewController.xib */,
@@ -3413,7 +3413,7 @@
 				AAF9030C1472FCF100AB8674 /* Comment */,
 				AAF9030B1472FCEA00AB8674 /* Share */,
 			);
-			name = Compose;
+			name = "Compose Message";
 			sourceTree = "<group>";
 		};
 		AAF9030B1472FCEA00AB8674 /* Share */ = {
