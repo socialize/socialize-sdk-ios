@@ -45,7 +45,7 @@
 @property (nonatomic, retain) UIBarButtonItem *cancelButton;
 @property (nonatomic, retain) UIBarButtonItem *saveButton;
 @property (nonatomic, retain) UIAlertView *genericAlertView;
-@property(nonatomic, retain) SocializeProfileViewController *postFacebookAuthenticationProfileViewController;
+@property (nonatomic, retain) SocializeProfileViewController *postFacebookAuthenticationProfileViewController;
 @property (nonatomic, assign) BOOL requestingFacebookFromUser;
 @property (nonatomic, retain) UIAlertView *sendActivityToFacebookFeedAlertView;
 @property (nonatomic, retain) SocializeShareBuilder *shareBuilder;

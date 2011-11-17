@@ -264,7 +264,7 @@
         if (buttonIndex == alertView.cancelButtonIndex) {
             [self sendActivityToFacebookFeedCancelled];
         }
-        if (buttonIndex == alertView.firstOtherButtonIndex) {
+        else if (buttonIndex == alertView.firstOtherButtonIndex) {
             [self sendActivityToFacebookFeed:self.shareBuilder.shareObject];
         }
     }

@@ -199,6 +199,54 @@
     [self.viewController performAutoAuth];
 }
 
+- (void)testAuthenticateWithFacebookNotAvailable {
+    BOOL isFacebookAvailable = NO;
+    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(isFacebookAvailable)] facebookAvailable];
+    [[(id)self.viewController expect] showAlertWithText:OCMOCK_ANY andTitle:OCMOCK_ANY];
+    [self.origViewController authenticateWithFacebook];
+}
+- (void)testAuthenticateWithFacebookAvailable {
+    BOOL isFacebookAvailable = YES;
+    BOOL isAuthenticatedWithFB = NO;
+    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(isFacebookAvailable)] facebookAvailable];
+    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(isAuthenticatedWithFB)] isAuthenticatedWithFacebook];
+    [[self.mockSocialize expect] authenticateWithFacebook];
+    [self.origViewController authenticateWithFacebook];
+}
+- (void) testPostFBAuthProfileViewController {
+    SocializeProfileViewController *profileViewController = self.origViewController.postFacebookAuthenticationProfileViewController;
+    GHAssertEquals([profileViewController delegate], self.origViewController,@"The delegate for the profile view controller was not set properly");
+}
+
+- (void) testDidDismissWithButtonForFBSend {
+    int buttonIndex = 2;
+    
+    //setup mock alert view and expected methods
+    id mockAlertView = [OCMockObject mockForClass:[UIAlertView class]];
+    [[[mockAlertView expect] andReturnInteger:1] cancelButtonIndex];
+    [[[mockAlertView expect] andReturnInteger:buttonIndex] firstOtherButtonIndex];
+    [[[(id)self.viewController expect] andReturn:mockAlertView] sendActivityToFacebookFeedAlertView];
+    
+    //expect activity is cancelled
+    [[(id)self.viewController expect]  sendActivityToFacebookFeed:OCMOCK_ANY];
+    
+    [self.origViewController alertView:mockAlertView didDismissWithButtonIndex:buttonIndex];
+    [mockAlertView verify];
+}
+- (void) testDidDismissWithButtonForFBCancel {
+    int buttonIndex = 1;
+    
+    //setup mock alert view and expected methods
+    id mockAlertView = [OCMockObject mockForClass:[UIAlertView class]];
+    [[[mockAlertView expect] andReturnValue:OCMOCK_VALUE(buttonIndex)] cancelButtonIndex];
+    [[[(id)self.viewController expect] andReturn:mockAlertView] sendActivityToFacebookFeedAlertView];
+     
+    //expect activity is cancelled
+    [[(id)self.viewController expect] sendActivityToFacebookFeedCancelled];
+    
+    [self.origViewController alertView:mockAlertView didDismissWithButtonIndex:buttonIndex];
+    [mockAlertView verify];
+}
 - (void)testDidAuthenticateAfterAnonymousAuthCallsAfterAnonymouslyLoginAction {
     [[(id)self.viewController expect] stopLoadAnimation];
     BOOL no = NO;
