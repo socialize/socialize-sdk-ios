@@ -9,6 +9,7 @@
 #import "SocializePostShareViewControllerTest.h"
 #import "OCMock/OCMock.h"
 #import "SocializeShareBuilder.h"
+#import "UINavigationBarBackground.h"
 
 @interface SocializePostShareViewController ()
 - (void)createShare;
@@ -61,6 +62,7 @@ static NSString *const TestURL = @"http://getsocialize.com";
 }
 
 - (void)testViewDidAppearCausesAuth {
+    [[self.mockNavigationBar expect] resetBackground];
     [[(id)self.postShareViewController expect] authenticateWithFacebook];
     
     [self.postShareViewController viewDidAppear:YES];
