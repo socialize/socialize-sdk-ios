@@ -26,7 +26,7 @@
 
 @implementation CommentMapView
 
--(void) configurate
+-(void) roundCorners
 {
     self.layer.cornerRadius = 9.0f;
     self.layer.masksToBounds = YES;

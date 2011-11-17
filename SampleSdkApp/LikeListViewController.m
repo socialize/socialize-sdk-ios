@@ -112,7 +112,7 @@
         [self.view addSubview:hiddenButton];
     }
     
-    _loadingView = [LoadingView loadingViewInView:self.view]; 
+    _loadingView = [SocializeLoadingView loadingViewInView:self.view]; 
     [_socialize getLikesForEntityKey:entityField.text first:nil last:nil];
 }
 #pragma mark -

@@ -38,26 +38,50 @@
 #import "SocializeShareBuilder.h"
 #import "SocializeFacebookInterface.h"
 #import "SocializePostShareViewController.h"
+#import "SocializeEntityService.h"
 
 @interface SocializeActionBar()
-@property(nonatomic, retain) id<SocializeLike> entityLike;
-@property(nonatomic, retain) id<SocializeView> entityView;
+@property (nonatomic, retain) id<SocializeView> entityView;
+@property (nonatomic, retain) id<SocializeLike> entityLike;
+@property (nonatomic, assign) BOOL finishedAskingServerForExistingLike;
 
 -(void) shareViaEmail;
 -(void)shareViaFacebook;
 -(void)displayComposerSheet;
+-(void)askServerForExistingLike;
+-(void)reloadEntity;
 
 @end
 
 @implementation SocializeActionBar
 
 @synthesize presentModalInViewController = _presentModalInViewController;
-@synthesize entity;
-@synthesize entityLike;
-@synthesize entityView;
-@synthesize ignoreNextView = _ignoreNextView;
-@synthesize shareActionSheet = _shareActionSheet;
-@synthesize shareComposer = _shareComposer;
+@synthesize entity = _entity;
+@synthesize entityLike = entityLike_;
+@synthesize entityView = entityView_;
+@synthesize ignoreNextView = ignoreNextView_;
+@synthesize shareActionSheet = shareActionSheet_;
+@synthesize shareComposer = shareComposer_;
+@synthesize commentsNavController = commentsNavController_;
+@synthesize finishedAskingServerForExistingLike = finishedAskingServerForExistingLike_;
+
+- (void)dealloc
+{
+    self.presentModalInViewController = nil;
+    self.entity = nil;
+    self.entityLike = nil;
+    self.entityView = nil;
+    self.shareActionSheet = nil;
+    self.shareComposer = nil;
+    self.commentsNavController = nil;
+
+    if (self.isViewLoaded) {
+        [(SocializeActionView*)self.view setDelegate: nil];
+    }
+    
+    [super dealloc];
+}
+
 
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller
 {
@@ -86,24 +110,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [entity release];
-    [entityView release];
-    [entityLike release];
-    if (self.isViewLoaded) {
-        [(SocializeActionView*)self.view setDelegate: nil];
-    }
-    [comentsNavController release];
-    self.presentModalInViewController = nil;
-    
-    self.shareComposer = nil;
-    
-    self.shareActionSheet = nil;
-    
-    [super dealloc];
-}
-
 #pragma mark - View lifecycle
 
 
@@ -122,93 +128,7 @@
 {
     [super viewDidLoad];
 
-    comentsNavController = [[SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:[entity key]] retain];
-}
-
-
--(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
-{
-    if ([dataArray count]){
-        id<SocializeObject> object = [dataArray objectAtIndex:0];
-        if ([object conformsToProtocol:@protocol(SocializeEntity)])
-        {
-            self.entity = (id<SocializeEntity>)object;          
-            [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:entityLike!=nil withCommentsCount:[NSNumber numberWithInt:entity.comments]];
-        }
-        if ([object conformsToProtocol:@protocol(SocializeLike)])
-        {
-            [dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
-            {
-                id<SocializeLike> like = (id<SocializeLike>)obj;
-                if(like.user.objectID == self.socialize.authenticatedUser.objectID)
-                {
-                    self.entityLike = like;
-                    [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:self.entityLike.entity.likes] liked:YES];
-                    *stop = YES;
-                }
-            }];
-        }
-    }    
-}
-
--(void)service:(SocializeService *)service didDelete:(id<SocializeObject>)object
-{
-    [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes-1] liked:NO];
-    self.entityLike = nil;
-    [(SocializeActionView*)self.view unlockButtons];
-    
-}
-
--(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object
-{
-    if([object conformsToProtocol:@protocol(SocializeView)])
-    {
-        self.entityView = (id<SocializeView>)object;
-        [(SocializeActionView*)self.view updateViewsCount:[NSNumber numberWithInt:entityView.entity.views]];
-    }
-    if([object conformsToProtocol:@protocol(SocializeLike)])
-    {
-        self.entityLike = (id<SocializeLike>)object;
-        [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes] liked:YES];
-        [(SocializeActionView*)self.view unlockButtons];
-    } 
-    
-    if([self.socialize isAuthenticatedWithFacebook] && ([object conformsToProtocol:@protocol(SocializeLike)] || [object conformsToProtocol:@protocol(SocializeShare)])
-      )
-    {
-        SocializeShareBuilder* shareBuilder = [[SocializeShareBuilder new] autorelease];
-        shareBuilder.shareProtocol = [[SocializeFacebookInterface new] autorelease];
-        shareBuilder.shareObject = (id<SocializeActivity>)object;
-        [shareBuilder performShareForPath:@"me/feed"]; 
-    }
-    
-    // Refresh from server
-    [self.socialize getEntityByKey:[entity key]];
-}
-
--(void)service:(SocializeService*)service didFail:(NSError*)error
-{
-    [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:0] withLikesCount:[NSNumber numberWithInt:0] isLiked:NO withCommentsCount:[NSNumber numberWithInt:0]];
-    if([service isKindOfClass:[SocializeAuthenticateService class]])
-    {
-        [super service:service didFail:error];
-    }
-    else
-    {       
-        if(![[error localizedDescription] isEqualToString:@"Entity does not exist."])
-            [self showAlertWithText:[error localizedDescription] andTitle:@"Get entiry failed"];
-        
-        if([service isKindOfClass:[SocializeLikeService class]])
-            [(SocializeActionView*)self.view unlockButtons];
-    }
-}
-
--(void)didAuthenticate:(id<SocializeUser>)user
-{
-    [super didAuthenticate:user];
-    //remove like status because we do not know it for new user yet.
-    self.entityLike = nil;
-    [(SocializeActionView*)self.view updateIsLiked:NO];
+    self.commentsNavController = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:self.entity.key];
 }
 
 #pragma mark Socialize base class method
@@ -224,24 +144,32 @@
     return NO;
 }
 
--(void)afterAnonymouslyLoginAction
-{
+- (void)appear {
     if (self.ignoreNextView) {
-        // Refresh now
-        [self.socialize getEntityByKey:[entity key]];
         self.ignoreNextView = NO;
-    } else {
-        // Refresh will happen after the view
-        [self.socialize viewEntity:entity longitude:nil latitude:nil];
+        
+        // Normally, we reload the entity after viewing. Since we aren't viewing, reload it now.
+        // FIXME This is only to update comments count, we do not truly have to reload
+        [self reloadEntity];
+        return;
     }
+    [self.socialize viewEntity:self.entity longitude:nil latitude:nil];    
 
-    if(entityLike == nil)
-        [self.socialize getLikesForEntityKey:[entity key] first:nil last:nil];
+    if (!self.finishedAskingServerForExistingLike) {
+        [self askServerForExistingLike];
+    }
+}
+
+- (void)afterAnonymouslyLoginAction {
+    [self appear];
 }
 
 -(void)socializeActionViewWillAppear:(SocializeActionView *)socializeActionView {
-    [socializeActionView startActivityForUpdateViewsCount];
-    [self performAutoAuth];
+    if (![self.socialize isAuthenticated]) {
+        [self performAutoAuth];
+    } else {
+        [self appear];
+    }
 }
 
 -(void)socializeActionViewWillDisappear:(SocializeActionView *)socializeActionView {
@@ -252,32 +180,33 @@
 -(void)commentButtonTouched:(id)sender
 {
     self.ignoreNextView = YES;
-    [self.presentModalInViewController presentModalViewController:comentsNavController animated:YES];
+    [self.presentModalInViewController presentModalViewController:self.commentsNavController animated:YES];
 }
 
 -(void)likeButtonTouched:(id)sender
 {
     [(SocializeActionView*)self.view lockButtons];
     
-    if(entityLike)
-        [self.socialize unlikeEntity: entityLike];
+    if(self.entityLike)
+        [self.socialize unlikeEntity:self.entityLike];
     else
-        [self.socialize likeEntityWithKey:[entity key] longitude:nil latitude:nil];
+        [self.socialize likeEntityWithKey:self.entity.key longitude:nil latitude:nil];
 }
 
 - (UIActionSheet*)shareActionSheet {
-    if (_shareActionSheet == nil) {
-        _shareActionSheet = [[UIActionSheet sheetWithTitle:nil] retain];
+    if (shareActionSheet_ == nil) {
+        shareActionSheet_ = [[UIActionSheet sheetWithTitle:nil] retain];
         
         if([self.socialize facebookAvailable])
-            [_shareActionSheet addButtonWithTitle:@"Share on Facebook" handler:^{ [self shareViaFacebook]; }];
+            [shareActionSheet_ addButtonWithTitle:@"Share on Facebook" handler:^{ [self shareViaFacebook]; }];
 
-        [_shareActionSheet addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
+        [shareActionSheet_ addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
         
-        [_shareActionSheet setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
+        [shareActionSheet_ setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
     }
-    return _shareActionSheet;
+    return shareActionSheet_;
 }
+
 -(void)shareButtonTouched: (id) sender
 {    
     [self.shareActionSheet showInView:self.view.window];
@@ -298,9 +227,9 @@
 }
 
 - (MFMailComposeViewController*)shareComposer {
-    if (_shareComposer == nil) {
-        _shareComposer = [[MFMailComposeViewController alloc] init];
-        _shareComposer.completionBlock = ^(MFMailComposeResult result, NSError *error)
+    if (shareComposer_ == nil) {
+        shareComposer_ = [[MFMailComposeViewController alloc] init];
+        shareComposer_.completionBlock = ^(MFMailComposeResult result, NSError *error)
         {
             // Notifies users about errors associated with the interface
             switch (result)
@@ -324,7 +253,7 @@
         };
     }
     
-    return _shareComposer;
+    return shareComposer_;
 }
 
 // Displays an email composition interface inside the application. Populates all the Mail fields. 
@@ -337,10 +266,123 @@
     [self.shareComposer setSubject:subject];
 
     // Fill out the email body text
-    NSString *emailBody = [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", entity.name, entity.key];
+    NSString *emailBody = [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", self.entity.name, self.entity.key];
     [self.shareComposer setMessageBody:emailBody isHTML:NO];
 
 	[self.presentModalInViewController presentModalViewController:self.shareComposer animated:YES];
 }
+
+- (void)reloadEntity {
+    // Refresh from server
+    [self.socialize getEntityByKey:self.entity.key];
+}
+
+- (void)finishedGettingEntities:(NSArray*)entities {
+    if ([entities count] < 1) {
+        return;
+    }
+    
+    id<SocializeEntity> entity = [entities objectAtIndex:0];
+    self.entity = entity;
+    [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views]
+                                                 withLikesCount:[NSNumber numberWithInt:entity.likes]
+                                                        isLiked:self.entityLike != nil
+                                              withCommentsCount:[NSNumber numberWithInt:entity.comments]];    
+}
+
+- (void)askServerForExistingLike {
+    [self.socialize getLikesForEntityKey:self.entity.key first:nil last:nil];    
+}
+
+- (void)finishedGettingLikes:(NSArray*)likes {
+    self.finishedAskingServerForExistingLike = YES;
+    
+    if ([likes count] < 1) {
+        return;
+    }
+
+    for (id<SocializeLike> like in likes) {
+        if(like.user.objectID == self.socialize.authenticatedUser.objectID) {
+            // Found existing like for authenticated user
+            self.entityLike = like;
+            [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:like.entity.likes] liked:YES];
+            return;
+        }
+    }
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
+{
+    if ([service isKindOfClass:[SocializeLikeService class]]) {
+        [self finishedGettingLikes:dataArray];
+    } else if ([service isKindOfClass:[SocializeEntityService class]]) {
+        [self finishedGettingEntities:dataArray];
+    }
+}
+
+- (void)finishedDeletingLike:(id<SocializeLike>)like {
+    [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:self.entityLike.entity.likes-1] liked:NO];
+    self.entityLike = nil;
+    [(SocializeActionView*)self.view unlockButtons];
+}
+
+-(void)service:(SocializeService *)service didDelete:(id<SocializeObject>)object
+{
+    if([service isKindOfClass:[SocializeLikeService class]]) {
+        [self finishedDeletingLike:(id<SocializeLike>)object];
+    }
+}
+
+- (void)finishedCreatingView:(id<SocializeView>)view {
+    self.entityView = view;
+    [(SocializeActionView*)self.view updateViewsCount:[NSNumber numberWithInt:view.entity.views]];
+}
+
+- (void)finishedCreatingLike:(id<SocializeLike>)like {
+    self.entityLike = like;
+    [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:like.entity.likes] liked:YES];
+    [(SocializeActionView*)self.view unlockButtons];    
+    
+    if ([self.socialize isAuthenticatedWithFacebook]) {
+        [self sendActivityToFacebookFeed:like];            
+    }
+}
+
+- (void)failedCreatingLikeWithError:(NSError*)error {
+    [(SocializeActionView*)self.view unlockButtons];    
+}
+
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object
+{
+    if ([object conformsToProtocol:@protocol(SocializeView)]) {
+        [self finishedCreatingView:(id<SocializeView>)object];
+    } else if ([object conformsToProtocol:@protocol(SocializeLike)]) {
+        [self finishedCreatingLike:(id<SocializeLike>)object];
+    } 
+    
+    [self reloadEntity];
+}
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error
+{
+    [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:0] withLikesCount:[NSNumber numberWithInt:0] isLiked:NO withCommentsCount:[NSNumber numberWithInt:0]];
+    if([service isKindOfClass:[SocializeLikeService class]]) {
+        [self failedCreatingLikeWithError:error];
+    }
+    
+    if(![[error localizedDescription] isEqualToString:@"Entity does not exist."]) {
+        [super service:service didFail:error];
+    }
+}
+
+-(void)didAuthenticate:(id<SocializeUser>)user
+{
+    [super didAuthenticate:user];
+    //remove like status because we do not know it for new user yet.
+    self.entityLike = nil;
+    [(SocializeActionView*)self.view updateIsLiked:NO];
+}
+
+
 
 @end

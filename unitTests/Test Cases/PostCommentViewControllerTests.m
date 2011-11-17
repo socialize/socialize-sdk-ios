@@ -27,7 +27,6 @@
  */
 
 #import "PostCommentViewControllerTests.h"
-#import "ComposeMessageViewControllerForTest.h"
 #import "CommentMapView.h"
 #import "SocializeLocationManager.h"
 #import "UIKeyboardListener.h"
@@ -42,6 +41,22 @@
 #define TEST_LOCATION @"some_test_loaction_description"
 
 @implementation PostCommentViewControllerTests
+@synthesize postCommentViewController = postCommentViewController_;
+
++ (SocializeBaseViewController*)createController {
+    return [SocializePostCommentViewController postCommentViewControllerWithEntityURL:TEST_URL];
+}
+
+- (void)setUp {
+    [super setUp];
+    
+    // super setUp creates self.viewController
+    self.postCommentViewController = (SocializePostCommentViewController*)self.viewController;
+}
+
+- (void)tearDown {
+    [super tearDown];
+}
 
 // By default NO, but if you have a UI test or test dependent on running on the main thread return YES
 - (BOOL)shouldRunOnMainThread
@@ -90,90 +105,81 @@
 }
 */
 
--(void)testSendBtnPressedWithGeo
+-(void)testSendButtonPressedWithGeo
 {
-    id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
     BOOL trueValue = YES;
-    [[[mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
+    [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(trueValue)] shouldShareLocation];
     
-    id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
-    [[mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:OCMOCK_ANY latitude:OCMOCK_ANY];
+    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:OCMOCK_ANY latitude:OCMOCK_ANY];
     BOOL retValue = YES;
-    [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticatedWithFacebook];
+    [[[self.mockSocialize stub] andReturnValue:OCMOCK_VALUE(retValue)] isAuthenticatedWithFacebook];
+    [[self.mockSendButton expect] setEnabled:NO];
     
-    ComposeMessageViewControllerForTest* controller = [[ComposeMessageViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
-    controller.socialize = mockSocialize;
-    
-    [controller performSelector: @selector(sendButtonPressed:)withObject:nil];
-    
-    [controller verify];
-    [mockSocialize verify];
-    
-    [[mockSocialize expect] setDelegate:nil];
-    [controller release];    
+    [self.postCommentViewController performSelector: @selector(sendButtonPressed:)withObject:nil];
 }
 
--(void)testSendBtnPressed
+-(void)testSendButtonPressed
 {
-    id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
     BOOL trueValue = NO;
-    [[[mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
+    [[[self.mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
     
-    id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
-    [[mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:nil latitude:nil];
+    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:nil latitude:nil];
     BOOL retValue = YES;
-    [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticatedWithFacebook];
+    [[[self.mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticatedWithFacebook];
     
-    ComposeMessageViewControllerForTest* controller = [[ComposeMessageViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
-    controller.socialize = mockSocialize;
-    
-    [controller performSelector: @selector(sendButtonPressed:)withObject:nil];
-    
-    [controller verify];
-    [mockSocialize verify];
-    
-    [[mockSocialize expect] setDelegate:nil];
-    [controller release];    
+    [[self.mockSendButton expect] setEnabled:NO];
+
+    [self.postCommentViewController performSelector: @selector(sendButtonPressed:)withObject:nil];
 }
 
--(void)testEnableSendBtn
+-(void)testEnableSendButtonWhenCommentTextPopulated
 {
-    ComposeMessageViewControllerForTest* controller = [[ComposeMessageViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
+    [[[self.mockCommentTextView stub]andReturn: @"Sample text"] text];    
 
-    id mockBtn = [OCMockObject niceMockForClass: [UIBarButtonItem class]];
-    [[mockBtn expect] setEnabled:YES];
-    controller.navigationItem.rightBarButtonItem = mockBtn;
-  
-    [[[(id)controller.commentTextView stub]andReturn: @"Sample text"] text];    
-
-    [controller textViewDidChange: nil];
-    
-    [controller verify];
-    [mockBtn verify];
-    
-    controller.navigationItem.rightBarButtonItem = nil;
-     
-    [controller release]; 
+    [[self.mockSendButton expect] setEnabled:YES];
+    [self.postCommentViewController textViewDidChange: nil];
 }
 
--(void)testDisableSendBtn
+-(void)testDisableSendButtonWhenCommentTextEmpty
 {
-    ComposeMessageViewControllerForTest* controller = [[ComposeMessageViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
+    [[[self.mockCommentTextView stub]andReturn: @""] text];    
+    [[self.mockSendButton expect] setEnabled:NO];
+    [self.postCommentViewController textViewDidChange: nil];
+}
+
+- (void)testViewDidUnloadFreesViews {
+    [[(id)self.postCommentViewController expect] setFacebookSwitch:nil];
+    [self.postCommentViewController viewDidUnload];
+}
+
+- (id)mockMKUserLocationWithLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude {
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+    id mockLocation = [OCMockObject mockForClass:[CLLocation class]];
+    [[[mockLocation stub] andReturnValue:OCMOCK_VALUE(coordinate)] coordinate];
+    id mockUserLocation = [OCMockObject mockForClass:[MKUserLocation class]];
+    [[[mockUserLocation stub] andReturn:mockLocation] location];
+
+    return mockUserLocation;
+}
+
+- (void)testFinishCreateCommentCreatesSocializeCommentIfNeeded {
+    NSString *testText = @"testText";
     
-    id mockBtn = [OCMockObject niceMockForClass: [UIBarButtonItem class]];
-    [[mockBtn expect] setEnabled:NO];
-    controller.navigationItem.rightBarButtonItem = mockBtn;
+    CLLocationDegrees latitude = 1.1;
+    CLLocationDegrees longitude = 1.2;
+    NSNumber *latitudeNumber = [NSNumber numberWithFloat:latitude];
+    NSNumber *longitudeNumber = [NSNumber numberWithFloat:longitude];
     
-    [[[(id)controller.commentTextView stub]andReturn: @""] text];    
-    
-    [controller textViewDidChange: nil];
-    
-    [controller verify];
-    [mockBtn verify];
-    
-    controller.navigationItem.rightBarButtonItem = nil;
-    
-    [controller release]; 
+    BOOL yesValue = YES;
+    [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(yesValue)] shouldShareLocation];
+    id mockLocation = [self mockMKUserLocationWithLatitude:latitude longitude:longitude];
+    [[[self.mockMapOfUserLocation stub] andReturn:mockLocation] userLocation];
+    [[[self.mockCommentTextView stub] andReturn:testText] text];
+    [[self.mockSendButton expect] setEnabled:NO];
+    [[self.mockCancelButton expect] setEnabled:NO];
+    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:testText longitude:longitudeNumber latitude:latitudeNumber];
+
+    [self.postCommentViewController finishCreateComment];
 }
 
 @end

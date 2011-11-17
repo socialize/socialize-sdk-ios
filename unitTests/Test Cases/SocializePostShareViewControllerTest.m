@@ -20,11 +20,7 @@
 
 @implementation SocializePostShareViewControllerTest
 @synthesize postShareViewController = postShareViewController_;
-@synthesize origPostShareViewController = origPostShareViewController_;
 @synthesize mockShareObject = mockShareObject_;
-@synthesize mockSocialize = mockSocialize_;
-@synthesize mockTextView = mockTextView_;
-@synthesize mockShareBuilder = mockShareBuilder_;
 
 static NSString *const TestURL = @"http://getsocialize.com";
 
@@ -32,44 +28,35 @@ static NSString *const TestURL = @"http://getsocialize.com";
     return YES;
 }
 
++ (SocializeBaseViewController*)createController {
+    return [SocializePostShareViewController postShareViewControllerWithEntityURL:TestURL];
+}
+
 - (void)setUp {
-    self.origPostShareViewController = [SocializePostShareViewController postShareViewControllerWithEntityURL:TestURL];
-    self.postShareViewController = [OCMockObject partialMockForObject:self.origPostShareViewController];
+    [super setUp];
+    
+    // super setUp creates self.viewController
+    self.postShareViewController = (SocializePostShareViewController*)self.viewController;
     
     self.mockShareObject = [OCMockObject mockForProtocol:@protocol(SocializeShare)];
     self.postShareViewController.shareObject = self.mockShareObject;
-    
-    self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
-    self.postShareViewController.socialize = self.mockSocialize;
-    
-    self.mockTextView = [OCMockObject niceMockForClass:[UITextView class]];
-    self.postShareViewController.commentTextView = self.mockTextView;
-    
-    self.mockShareBuilder = [OCMockObject mockForClass:[SocializeShareBuilder class]];
-    self.postShareViewController.shareBuilder = self.mockShareBuilder;
 }
 
 - (void)tearDown {
     [(id)self.postShareViewController verify];
     [self.mockShareObject verify];
-    [self.mockSocialize verify];
-    [self.mockTextView verify];
+    [self.mockCommentTextView verify];
     
-    [[self.mockSocialize expect] setDelegate:nil];
     self.mockShareObject = nil;
     self.postShareViewController = nil;
-    self.origPostShareViewController = nil;
-    self.mockSocialize = nil;
-    self.mockTextView = nil;
+    self.mockCommentTextView = nil;
 }
 
-
 - (void)testViewDidLoad {
-    id niceView = [OCMockObject niceMockForClass:[UIView class]];
-    [[[(id)self.postShareViewController stub] andReturn:niceView] view];
-    
+    [super prepareForViewDidLoad];
+
     [[(id)self.postShareViewController expect] setTitle:@"New Share"];
-    
+
     [self.postShareViewController viewDidLoad];
 }
 
@@ -102,7 +89,7 @@ static NSString *const TestURL = @"http://getsocialize.com";
     self.postShareViewController.entityURL = testURL;
     
     [[(id)self.postShareViewController expect] startLoading];
-    [[[self.mockTextView stub] andReturn:testText] text];
+    [[[self.mockCommentTextView stub] andReturn:testText] text];
     [[self.mockSocialize expect] createShareForEntityWithKey:testURL medium:SocializeShareMediumFacebook text:testText];
     
     [self.postShareViewController createShareOnSocializeServer];

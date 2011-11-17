@@ -20,16 +20,22 @@
 @synthesize mockNavigationBar = mockNavigationBar_;
 @synthesize mockDoneButton = mockDoneButton_;
 @synthesize mockEditButton = mockEditButton_;
+@synthesize mockSendButton = mockSendButton_;
+@synthesize mockCancelButton = mockCancelButton_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
+}
+
++ (SocializeBaseViewController*)createController {
+    return [[[SocializeBaseViewController alloc] init] autorelease];
 }
 
 -(void) setUp
 {
     [super setUp];
     
-    self.origViewController = [[[SocializeBaseViewController alloc] init] autorelease];
+    self.origViewController = [[self class] createController];
     self.viewController = [OCMockObject partialMockForObject:self.origViewController];
     
     self.mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
@@ -53,6 +59,12 @@
     
     self.mockEditButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.viewController.editButton = self.mockEditButton;
+    
+    self.mockSendButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.viewController.sendButton = self.mockSendButton;
+
+    self.mockCancelButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.viewController.cancelButton = self.mockCancelButton;
 }
 
 -(void) tearDown
@@ -174,7 +186,7 @@
     GHAssertTrue([self.viewController shouldAutoAuthOnAppear], nil);
 }
 
-- (void)testAutoAuthWhenNotAuthed {
+- (void)testAutoAuthWhenNotAuthedPerformsAuth {
     BOOL no = NO;
     [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(no)] isAuthenticated];
     [[(id)self.viewController expect] startLoading];
@@ -182,11 +194,18 @@
     [self.viewController performAutoAuth];
 }
 
-- (void)testAutoAuthWhenAuthed {
+- (void)testAutoAuthWhenAuthedDoesNothing {
     BOOL yes = YES;
     [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(yes)] isAuthenticated];
-    [[(id)self.viewController expect] afterAnonymouslyLoginAction];
     [self.viewController performAutoAuth];
+}
+
+- (void)testDidAuthenticateAfterAnonymousAuthCallsAfterAnonymouslyLoginAction {
+    [[(id)self.viewController expect] stopLoadAnimation];
+    BOOL no = NO;
+    [[[self.mockSocialize stub] andReturnValue:OCMOCK_VALUE(no)] isAuthenticatedWithFacebook];
+    [[(id)self.viewController expect] afterAnonymouslyLoginAction];
+    [self.viewController didAuthenticate:nil];
 }
 
 - (void)testViewWillAppear {

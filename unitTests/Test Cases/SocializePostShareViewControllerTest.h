@@ -9,12 +9,9 @@
 #import <GHUnitIOS/GHUnit.h>
 
 #import "SocializePostShareViewController.h"
+#import "SocializeComposeMessageViewControllerTests.h"
 
-@interface SocializePostShareViewControllerTest : GHTestCase
+@interface SocializePostShareViewControllerTest : SocializeComposeMessageViewControllerTests
 @property (nonatomic, retain) SocializePostShareViewController *postShareViewController;
-@property (nonatomic, retain) SocializePostShareViewController *origPostShareViewController;
 @property (nonatomic, retain) id mockShareObject;
-@property (nonatomic, retain) id mockSocialize;
-@property (nonatomic, retain) id mockTextView;
-@property (nonatomic, retain) id mockShareBuilder;
 @end

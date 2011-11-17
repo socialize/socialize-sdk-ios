@@ -14,7 +14,7 @@
 
 -(void) setFitLocation: (CLLocationCoordinate2D) location withSpan: (MKCoordinateSpan) span;
 -(void) setAnnotationOnPoint: (CLLocationCoordinate2D) centerPoint;
--(void) configurate;
+-(void) roundCorners;
 
 +(MKCoordinateSpan) coordinateSpan;
 

@@ -135,20 +135,28 @@
 
 }
 
-- (void)basicViewDidLoad {
+- (void)expectBasicViewDidLoad {
+//    [[self.mockNavigationBar expect] setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.profileViewController.doneButton];
     [[self.mockProfileImageView expect] setImage:self.profileViewController.defaultProfileImage];    
 }
 
-- (void)testViewDidLoadWithNoUser {
-    [self basicViewDidLoad];
+- (void)testViewDidLoadWithNoUserWhenAlreadyAuthedGetsCurrentUser {
+    [self expectBasicViewDidLoad];
+    
+    // Not authed
+    BOOL yes = YES;
+    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(yes)] isAuthenticated];
+    
+    // Expect we get full user for current user from server
     [[(id)self.profileViewController expect] startLoading];
     [[self.mockSocialize expect] getCurrentUser];
+    
     [self.profileViewController viewDidLoad];
 }
 
 - (void)testViewDidLoadWithPartialUser {
-    [self basicViewDidLoad];
+    [self expectBasicViewDidLoad];
 
     // Set up a mock partial user
     NSInteger userID = 123;
@@ -162,7 +170,7 @@
 }
 
 - (void)testViewDidLoadWithFullUser {
-    [self basicViewDidLoad];
+    [self expectBasicViewDidLoad];
     
     // Set up a mock full
     id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];

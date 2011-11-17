@@ -32,11 +32,11 @@
     return [[result copy] autorelease];
 }
 
--(NSNumber*)userIdForThirdPartyAuth:(ThirdPartyAuthName) auth
+-(NSNumber*)userIdForThirdPartyAuth:(SocializeThirdPartyAuthType) auth
 {
     NSNumber* userId = nil;
     switch (auth) {
-        case FacebookAuth:
+        case SocializeThirdPartyAuthTypeFacebook:
             userId = [self detectUserIdWithTag: @"FaceBook"];
             break;
     }

@@ -447,8 +447,6 @@
 		AA639E60144A24C000660E26 /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E11144A24BF00660E26 /* UIButton+Socialize.m */; };
 		AA639E61144A24C000660E26 /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E13144A24BF00660E26 /* UILabel-Additions.m */; };
 		AA639E62144A24C000660E26 /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639E14144A24BF00660E26 /* urls.plist */; };
-		AA639E63144A24C000660E26 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E16144A24BF00660E26 /* UserProfileViewController.m */; };
-		AA639E64144A24C000660E26 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E17144A24BF00660E26 /* UserProfileViewController.xib */; };
 		AA8636C9144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C2144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m */; };
 		AA8636CA144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C4144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m */; };
 		AA8636CB144CA0A200CFA759 /* SampleSdkAppKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C6144CA0A200CFA759 /* SampleSdkAppKIFTestController.m */; };
@@ -473,7 +471,6 @@
 		AA8637D6144CA28300CFA759 /* TestViewCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E0E144A24BF00660E26 /* TestViewCreationViewController.m */; };
 		AA8637D7144CA28300CFA759 /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E11144A24BF00660E26 /* UIButton+Socialize.m */; };
 		AA8637D8144CA28300CFA759 /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E13144A24BF00660E26 /* UILabel-Additions.m */; };
-		AA8637D9144CA28300CFA759 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E16144A24BF00660E26 /* UserProfileViewController.m */; };
 		AA8637DC144CA28300CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C2144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m */; };
 		AA8637DD144CA28300CFA759 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C4144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m */; };
 		AA8637DE144CA28300CFA759 /* SampleSdkAppKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8636C6144CA0A200CFA759 /* SampleSdkAppKIFTestController.m */; };
@@ -500,7 +497,6 @@
 		AA8637F7144CA28300CFA759 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0C144A24BF00660E26 /* TestSocializeActionBar.xib */; };
 		AA8637F8144CA28300CFA759 /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0F144A24BF00660E26 /* TestViewCreationViewController.xib */; };
 		AA8637F9144CA28300CFA759 /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639E14144A24BF00660E26 /* urls.plist */; };
-		AA8637FA144CA28300CFA759 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E17144A24BF00660E26 /* UserProfileViewController.xib */; };
 		AA973CA814689C3C00DAE945 /* TestActivityServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CA714689C3C00DAE945 /* TestActivityServices.m */; };
 		AA973CD81468A0EA00DAE945 /* TestShareServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CD71468A0EA00DAE945 /* TestShareServices.m */; };
 		AA973CDB1468A14300DAE945 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CDA1468A14300DAE945 /* StringHelper.m */; };
@@ -763,8 +759,6 @@
 		AA639DAF144A24BF00660E26 /* LikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeListViewController.h; sourceTree = "<group>"; };
 		AA639DB0144A24BF00660E26 /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeListViewController.m; sourceTree = "<group>"; };
 		AA639DB1144A24BF00660E26 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
-		AA639DB2144A24BF00660E26 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
-		AA639DB3144A24BF00660E26 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		AA639DB4144A24BF00660E26 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AA639DB6144A24BF00660E26 /* SampleSdkApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleSdkApp-Info.plist"; sourceTree = "<group>"; };
 		AA639DB7144A24BF00660E26 /* SampleSdkApp-Integration-Tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SampleSdkApp-Integration-Tests-Prefix.pch"; sourceTree = "<group>"; };
@@ -807,9 +801,6 @@
 		AA639E12144A24BF00660E26 /* UILabel-Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel-Additions.h"; sourceTree = "<group>"; };
 		AA639E13144A24BF00660E26 /* UILabel-Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel-Additions.m"; sourceTree = "<group>"; };
 		AA639E14144A24BF00660E26 /* urls.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = urls.plist; sourceTree = "<group>"; };
-		AA639E15144A24BF00660E26 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
-		AA639E16144A24BF00660E26 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
-		AA639E17144A24BF00660E26 /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		AA639E6A144A26BD00660E26 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		AA639F5B144A290400660E26 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		AA639F5E144A290400660E26 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -835,6 +826,7 @@
 		AAAFE93F1435640C00851C73 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = Frameworks/SymbolCollisionTestLibs/libJSONKit.a; sourceTree = "<group>"; };
 		AAAFE9401435640C00851C73 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth.a; path = Frameworks/SymbolCollisionTestLibs/libOAuth.a; sourceTree = "<group>"; };
 		AAAFE9411435640C00851C73 /* libSBJson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSBJson.a; path = Frameworks/SymbolCollisionTestLibs/libSBJson.a; sourceTree = "<group>"; };
+		AAC2181A14746F9300F4BE55 /* SocializeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeLoadingView.h; sourceTree = "<group>"; };
 		AAD3F2A514620A2E007D2AB7 /* IntegrationTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntegrationTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD3F2BC14620AD0007D2AB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAD3F2BD14620AD0007D2AB7 /* IntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IntegrationTests-Info.plist"; sourceTree = "<group>"; };
@@ -977,6 +969,7 @@
 		AA3325CB144CD2C90033C7FA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				AAC2181A14746F9300F4BE55 /* SocializeLoadingView.h */,
 				AA8636BA144CA0A200CFA759 /* Tests */,
 				AAD7E367144F59BC0073308D /* TestActivityViewController.h */,
 				AAD7E368144F59BC0073308D /* TestActivityViewController.m */,
@@ -1003,8 +996,6 @@
 				AA639DAF144A24BF00660E26 /* LikeListViewController.h */,
 				AA639DB0144A24BF00660E26 /* LikeListViewController.m */,
 				AA639DB1144A24BF00660E26 /* LikeListViewController.xib */,
-				AA639DB2144A24BF00660E26 /* LoadingView.h */,
-				AA639DB3144A24BF00660E26 /* LoadingView.m */,
 				AA639DB4144A24BF00660E26 /* main.m */,
 				AA639DB6144A24BF00660E26 /* SampleSdkApp-Info.plist */,
 				AA639DB7144A24BF00660E26 /* SampleSdkApp-Integration-Tests-Prefix.pch */,
@@ -1047,9 +1038,6 @@
 				AA639E12144A24BF00660E26 /* UILabel-Additions.h */,
 				AA639E13144A24BF00660E26 /* UILabel-Additions.m */,
 				AA639E14144A24BF00660E26 /* urls.plist */,
-				AA639E15144A24BF00660E26 /* UserProfileViewController.h */,
-				AA639E16144A24BF00660E26 /* UserProfileViewController.m */,
-				AA639E17144A24BF00660E26 /* UserProfileViewController.xib */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -1460,7 +1448,6 @@
 				AA639E5D144A24C000660E26 /* TestSocializeActionBar.xib in Resources */,
 				AA639E5F144A24C000660E26 /* TestViewCreationViewController.xib in Resources */,
 				AA639E62144A24C000660E26 /* urls.plist in Resources */,
-				AA639E64144A24C000660E26 /* UserProfileViewController.xib in Resources */,
 				AA3325C9144CD2980033C7FA /* Smiley.png in Resources */,
 				AAD7E303144E54730073308D /* GenericViewController.xib in Resources */,
 				AAD7E307144E54730073308D /* TestTabbedSocializeActionBar.xib in Resources */,
@@ -1619,7 +1606,6 @@
 				AA8637F7144CA28300CFA759 /* TestSocializeActionBar.xib in Resources */,
 				AA8637F8144CA28300CFA759 /* TestViewCreationViewController.xib in Resources */,
 				AA8637F9144CA28300CFA759 /* urls.plist in Resources */,
-				AA8637FA144CA28300CFA759 /* UserProfileViewController.xib in Resources */,
 				AAD7E304144E54730073308D /* GenericViewController.xib in Resources */,
 				AAD7E308144E54730073308D /* TestTabbedSocializeActionBar.xib in Resources */,
 				AAD7E36D144F59BC0073308D /* TestActivityViewController.xib in Resources */,
@@ -2042,7 +2028,6 @@
 				AA639E5E144A24C000660E26 /* TestViewCreationViewController.m in Sources */,
 				AA639E60144A24C000660E26 /* UIButton+Socialize.m in Sources */,
 				AA639E61144A24C000660E26 /* UILabel-Additions.m in Sources */,
-				AA639E63144A24C000660E26 /* UserProfileViewController.m in Sources */,
 				AA8636C9144CA0A200CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */,
 				AA8636CA144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
 				AA8636CB144CA0A200CFA759 /* SampleSdkAppKIFTestController.m in Sources */,
@@ -2076,7 +2061,6 @@
 				AA8637D6144CA28300CFA759 /* TestViewCreationViewController.m in Sources */,
 				AA8637D7144CA28300CFA759 /* UIButton+Socialize.m in Sources */,
 				AA8637D8144CA28300CFA759 /* UILabel-Additions.m in Sources */,
-				AA8637D9144CA28300CFA759 /* UserProfileViewController.m in Sources */,
 				AA8637DC144CA28300CFA759 /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */,
 				AA8637DD144CA28300CFA759 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
 				AA8637DE144CA28300CFA759 /* SampleSdkAppKIFTestController.m in Sources */,

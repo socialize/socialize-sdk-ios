@@ -29,12 +29,12 @@
 #import "_Socialize.h"
 
 @class SocializeShareBuilder;
-@class LoadingView;
+@class SocializeLoadingView;
 @class SocializeProfileViewController;
 
 @interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate> {
     @private 
-    LoadingView*  _loadingIndicatorView;
+    SocializeLoadingView*  _loadingIndicatorView;
 }
 @property(nonatomic, retain) UINavigationController* authViewController;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;

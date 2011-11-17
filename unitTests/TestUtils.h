@@ -8,4 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@interface OCMockRecorder (TestUtils)
+- (id)andReturnBool:(BOOL)b;
+- (id)andReturnInteger:(NSInteger)i;
+@end
+
+
 void RunOnMainThread(void (^block)());

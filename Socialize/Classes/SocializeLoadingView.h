@@ -14,7 +14,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoadingView : UIView
+@interface SocializeLoadingView : UIView
 {
 	NSTimeInterval minDuration;
 	NSDate* timestamp;

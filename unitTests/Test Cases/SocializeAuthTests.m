@@ -67,7 +67,7 @@
             apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" 
             thirdPartyAuthToken:@"another token"
             thirdPartyAppId:@"anotheruserid"
-                        thirdPartyName:FacebookAuth];
+                        thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     
     
     [_mockService verify];
@@ -149,7 +149,7 @@
     
     
     id serviceMock = [OCMockObject mockForClass: [SocializeAuthenticateService class]];
-    [[serviceMock expect]  authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:token thirdPartyAppId:appId thirdPartyName:FacebookAuth];
+    [[serviceMock expect]  authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:token thirdPartyAppId:appId thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     
     FacebookAuthenticator* fbAuth = [[[FacebookAuthenticator alloc] initWithFramework:fbMock apiKey:apiKey apiSecret:apiSecret appId:appId service:serviceMock]autorelease];
     
@@ -188,7 +188,7 @@
     
     
     id serviceMock = [OCMockObject mockForClass: [SocializeAuthenticateService class]];
-    [[serviceMock expect]  authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:token thirdPartyAppId:appId thirdPartyName:FacebookAuth];
+    [[serviceMock expect]  authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:token thirdPartyAppId:appId thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     
     FacebookAuthenticator* fbAuth = [[[FacebookAuthenticator alloc] initWithFramework:fbMock apiKey:apiKey apiSecret:apiSecret appId:appId service:serviceMock]autorelease];
     

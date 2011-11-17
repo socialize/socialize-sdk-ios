@@ -126,7 +126,7 @@
 -(void) testConfigurateView
 {
     id mockMap = [OCMockObject niceMockForClass: [CommentMapView class]];
-    [[mockMap expect] configurate];
+    [[mockMap expect] roundCorners];
     commentView.mapOfUserLocation = mockMap;
     
     [commentView configurateView];

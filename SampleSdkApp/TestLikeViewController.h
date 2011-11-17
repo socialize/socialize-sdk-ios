@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Socialize/Socialize.h>
-#import "LoadingView.h"
+#import "SocializeLoadingView.h"
 
 
 @interface TestLikeViewController : UIViewController<SocializeServiceDelegate> {
@@ -20,7 +20,7 @@
 
     BOOL                  _isLiked;
     Socialize*            _socialize;
-    LoadingView*          _loadingView;
+    SocializeLoadingView*          _loadingView;
     NSMutableArray*       _likes;
     
     /*info view */

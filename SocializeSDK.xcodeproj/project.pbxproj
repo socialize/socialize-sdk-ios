@@ -386,7 +386,6 @@
 		6D205A3F13C3DB9100D0645E /* SocializeErrorFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D205A3D13C3DB7000D0645E /* SocializeErrorFormatter.m */; };
 		6D205A4113C5060900D0645E /* SocializeShareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D205A2D13BE58D500D0645E /* SocializeShareTests.m */; };
 		6D31962513CDE72F00154B1F /* SocializeDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */; };
-		6D3F84B71424046D00825DFC /* ComposeMessageViewControllerForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F84B61424046D00825DFC /* ComposeMessageViewControllerForTest.m */; };
 		6D44A37913FC3456004B3A46 /* SocializeActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A37813FC3456004B3A46 /* SocializeActionTests.m */; };
 		6D44A64013FC6E9D004B3A46 /* socialize-navbar-button-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A63E13FC6E79004B3A46 /* socialize-navbar-button-dark.png */; };
 		6D44A64213FC6E9D004B3A46 /* socialize-navbar-button-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A63F13FC6E82004B3A46 /* socialize-navbar-button-dark@2x.png */; };
@@ -460,7 +459,7 @@
 		6D8D224E140598160026185F /* UINavigationBarBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D224C140598110026185F /* UINavigationBarBackground.m */; };
 		6D8D225114059CA20026185F /* socialize-navbar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D224F14059C920026185F /* socialize-navbar-bg.png */; };
 		6D8D225314059CA20026185F /* socialize-navbar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D225014059C960026185F /* socialize-navbar-bg@2x.png */; };
-		6D8D234E1407256E0026185F /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D234C140725570026185F /* LoadingView.m */; };
+		6D8D234E1407256E0026185F /* SocializeLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D234C140725570026185F /* SocializeLoadingView.m */; };
 		6D9A0BA013BD310A00AE949C /* SocializeViewFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0B9F13BD310A00AE949C /* SocializeViewFormatterTests.m */; };
 		6D9A0BA413BE1BA700AE949C /* SocializeShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0BA213BE1BA600AE949C /* SocializeShare.m */; };
 		6D9A0BA813BE1EA300AE949C /* SocializeShareJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0BA613BE1EA100AE949C /* SocializeShareJSONFormatter.m */; };
@@ -704,7 +703,6 @@
 		AA3325FE144CD8070033C7FA /* TestViewCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE8CC14355F1B00851C73 /* TestViewCreationViewController.m */; };
 		AA3325FF144CD8070033C7FA /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE8CF14355F1B00851C73 /* UIButton+Socialize.m */; };
 		AA332600144CD8070033C7FA /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE8D114355F1B00851C73 /* UILabel-Additions.m */; };
-		AA332601144CD8070033C7FA /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE8D414355F1B00851C73 /* UserProfileViewController.m */; };
 		AA332602144CD8070033C7FA /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1638C527143DC98E00538659 /* TestSocializeActionBar.m */; };
 		AA332604144CD8070033C7FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE93B1435633300851C73 /* CoreLocation.framework */; };
 		AA332605144CD8070033C7FA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE93C1435633300851C73 /* MapKit.framework */; };
@@ -728,7 +726,6 @@
 		AA332618144CD8070033C7FA /* TestShowSmallUserInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE8CA14355F1B00851C73 /* TestShowSmallUserInfo.xib */; };
 		AA332619144CD8070033C7FA /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE8CD14355F1B00851C73 /* TestViewCreationViewController.xib */; };
 		AA33261A144CD8070033C7FA /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE8D214355F1B00851C73 /* urls.plist */; };
-		AA33261B144CD8070033C7FA /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE8D514355F1B00851C73 /* UserProfileViewController.xib */; };
 		AA33261C144CD8070033C7FA /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1638C528143DC98E00538659 /* TestSocializeActionBar.xib */; };
 		AA33261D144CD8070033C7FA /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D8F1433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib */; };
 		AA33261E144CD8070033C7FA /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */; };
@@ -1186,8 +1183,6 @@
 		AAAFE91E14355F1B00851C73 /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE8CF14355F1B00851C73 /* UIButton+Socialize.m */; };
 		AAAFE91F14355F1B00851C73 /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE8D114355F1B00851C73 /* UILabel-Additions.m */; };
 		AAAFE92014355F1B00851C73 /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE8D214355F1B00851C73 /* urls.plist */; };
-		AAAFE92114355F1B00851C73 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE8D414355F1B00851C73 /* UserProfileViewController.m */; };
-		AAAFE92214355F1B00851C73 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE8D514355F1B00851C73 /* UserProfileViewController.xib */; };
 		AAAFE937143562CA00851C73 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE936143562CA00851C73 /* QuartzCore.framework */; };
 		AAAFE938143562DB00851C73 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6742ED13F9AFD800140AA3 /* libSocialize.a */; };
 		AAAFE93D1435633300851C73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE93B1435633300851C73 /* CoreLocation.framework */; };
@@ -1259,7 +1254,7 @@
 		AABC1511144A114900088B7D /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBEA6A14057B4B00E41FC0 /* UIButton+Socialize.m */; };
 		AABC1512144A114900088B7D /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBEA6C14057B5700E41FC0 /* UILabel-Additions.m */; };
 		AABC1513144A114900088B7D /* UINavigationBarBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D224C140598110026185F /* UINavigationBarBackground.m */; };
-		AABC1514144A114900088B7D /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D234C140725570026185F /* LoadingView.m */; };
+		AABC1514144A114900088B7D /* SocializeLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D234C140725570026185F /* SocializeLoadingView.m */; };
 		AABC1515144A114900088B7D /* HtmlPageCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8984421407CA6B00482F1E /* HtmlPageCreator.m */; };
 		AABC1516144A114900088B7D /* URLDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD30140E4F2600518811 /* URLDownload.m */; };
 		AABC1517144A114900088B7D /* URLDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD32140E4F2700518811 /* URLDownloadOperation.m */; };
@@ -1799,8 +1794,6 @@
 		6D205A3D13C3DB7000D0645E /* SocializeErrorFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeErrorFormatter.m; path = Classes/SocializeErrorFormatter.m; sourceTree = "<group>"; };
 		6D31962213CDE72C00154B1F /* SocializeDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDataFetcher.h; path = Classes/SocializeDataFetcher.h; sourceTree = "<group>"; };
 		6D31962313CDE72E00154B1F /* SocializeDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDataFetcher.m; path = Classes/SocializeDataFetcher.m; sourceTree = "<group>"; };
-		6D3F84B51424046D00825DFC /* ComposeMessageViewControllerForTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComposeMessageViewControllerForTest.h; path = "Test Cases/ComposeMessageViewControllerForTest.h"; sourceTree = "<group>"; };
-		6D3F84B61424046D00825DFC /* ComposeMessageViewControllerForTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComposeMessageViewControllerForTest.m; path = "Test Cases/ComposeMessageViewControllerForTest.m"; sourceTree = "<group>"; };
 		6D44A37713FC3456004B3A46 /* SocializeActionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActionTests.h; path = "Test Cases/SocializeActionTests.h"; sourceTree = "<group>"; };
 		6D44A37813FC3456004B3A46 /* SocializeActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActionTests.m; path = "Test Cases/SocializeActionTests.m"; sourceTree = "<group>"; };
 		6D44A63E13FC6E79004B3A46 /* socialize-navbar-button-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-dark.png"; path = "Resources/socialize-navbar-button-dark.png"; sourceTree = "<group>"; };
@@ -1887,8 +1880,8 @@
 		6D8D224C140598110026185F /* UINavigationBarBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UINavigationBarBackground.m; path = Classes/UINavigationBarBackground.m; sourceTree = "<group>"; };
 		6D8D224F14059C920026185F /* socialize-navbar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-bg.png"; path = "Resources/socialize-navbar-bg.png"; sourceTree = "<group>"; };
 		6D8D225014059C960026185F /* socialize-navbar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-bg@2x.png"; path = "Resources/socialize-navbar-bg@2x.png"; sourceTree = "<group>"; };
-		6D8D234B140725500026185F /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingView.h; path = Classes/LoadingView.h; sourceTree = "<group>"; };
-		6D8D234C140725570026185F /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingView.m; path = Classes/LoadingView.m; sourceTree = "<group>"; };
+		6D8D234B140725500026185F /* SocializeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLoadingView.h; path = Classes/SocializeLoadingView.h; sourceTree = "<group>"; };
+		6D8D234C140725570026185F /* SocializeLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLoadingView.m; path = Classes/SocializeLoadingView.m; sourceTree = "<group>"; };
 		6D97F03C13DFC91500B16454 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6D9A0B9E13BD310A00AE949C /* SocializeViewFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeViewFormatterTests.h; path = "Test Cases/SocializeViewFormatterTests.h"; sourceTree = "<group>"; };
 		6D9A0B9F13BD310A00AE949C /* SocializeViewFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeViewFormatterTests.m; path = "Test Cases/SocializeViewFormatterTests.m"; sourceTree = "<group>"; };
@@ -2109,7 +2102,7 @@
 		AAAFE87814355F1B00851C73 /* LikeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LikeListViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AAAFE87914355F1B00851C73 /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LikeListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE87A14355F1B00851C73 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
-		AAAFE87B14355F1B00851C73 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		AAAFE87B14355F1B00851C73 /* SocializeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeLoadingView.h; sourceTree = "<group>"; };
 		AAAFE87C14355F1B00851C73 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		AAAFE87D14355F1B00851C73 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AAAFE87E14355F1B00851C73 /* UIIntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UIIntegrationTests-Info.plist"; sourceTree = "<group>"; };
@@ -2151,9 +2144,6 @@
 		AAAFE8D014355F1B00851C73 /* UILabel-Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel-Additions.h"; sourceTree = "<group>"; };
 		AAAFE8D114355F1B00851C73 /* UILabel-Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel-Additions.m"; sourceTree = "<group>"; };
 		AAAFE8D214355F1B00851C73 /* urls.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = urls.plist; sourceTree = "<group>"; };
-		AAAFE8D314355F1B00851C73 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = UserProfileViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		AAAFE8D414355F1B00851C73 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
-		AAAFE8D514355F1B00851C73 /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		AAAFE936143562CA00851C73 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AAAFE93B1435633300851C73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AAAFE93C1435633300851C73 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -2788,8 +2778,8 @@
 				169BC7A51420D602007ED41E /* UILabel+FormatedText.m */,
 				AAC201951460CFD30045FDAB /* UINavigationController+Socialize.h */,
 				AAC201961460CFD30045FDAB /* UINavigationController+Socialize.m */,
-				6D8D234B140725500026185F /* LoadingView.h */,
-				6D8D234C140725570026185F /* LoadingView.m */,
+				6D8D234B140725500026185F /* SocializeLoadingView.h */,
+				6D8D234C140725570026185F /* SocializeLoadingView.m */,
 				6D8D224B1405980F0026185F /* UINavigationBarBackground.h */,
 				6D8D224C140598110026185F /* UINavigationBarBackground.m */,
 				6DDBEA6914057B4A00E41FC0 /* UIButton+Socialize.h */,
@@ -3121,8 +3111,6 @@
 				16D247891417A984008A550D /* PostCommentViewControllerTests.h */,
 				16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */,
 				166DD757146421130017D0E9 /* SocializeComposeMessageViewControllerLandscape.xib */,
-				6D3F84B51424046D00825DFC /* ComposeMessageViewControllerForTest.h */,
-				6D3F84B61424046D00825DFC /* ComposeMessageViewControllerForTest.m */,
 			);
 			name = "Post Comment";
 			sourceTree = "<group>";
@@ -3349,7 +3337,7 @@
 				AAAFE87814355F1B00851C73 /* LikeListViewController.h */,
 				AAAFE87914355F1B00851C73 /* LikeListViewController.m */,
 				AAAFE87A14355F1B00851C73 /* LikeListViewController.xib */,
-				AAAFE87B14355F1B00851C73 /* LoadingView.h */,
+				AAAFE87B14355F1B00851C73 /* SocializeLoadingView.h */,
 				AAAFE87C14355F1B00851C73 /* LoadingView.m */,
 				AAAFE88214355F1B00851C73 /* SampleSdkAppAppDelegate.h */,
 				AAAFE88314355F1B00851C73 /* SampleSdkAppAppDelegate.m */,
@@ -3383,9 +3371,6 @@
 				AAAFE8CF14355F1B00851C73 /* UIButton+Socialize.m */,
 				AAAFE8D014355F1B00851C73 /* UILabel-Additions.h */,
 				AAAFE8D114355F1B00851C73 /* UILabel-Additions.m */,
-				AAAFE8D314355F1B00851C73 /* UserProfileViewController.h */,
-				AAAFE8D414355F1B00851C73 /* UserProfileViewController.m */,
-				AAAFE8D514355F1B00851C73 /* UserProfileViewController.xib */,
 				16D54790144E997A0010732A /* TestActivityViewController.h */,
 				16D54791144E997A0010732A /* TestActivityViewController.m */,
 				16D54792144E997C0010732A /* TestActivityViewController.xib */,
@@ -4318,7 +4303,6 @@
 				AA332618144CD8070033C7FA /* TestShowSmallUserInfo.xib in Resources */,
 				AA332619144CD8070033C7FA /* TestViewCreationViewController.xib in Resources */,
 				AA33261A144CD8070033C7FA /* urls.plist in Resources */,
-				AA33261B144CD8070033C7FA /* UserProfileViewController.xib in Resources */,
 				AA33261C144CD8070033C7FA /* TestSocializeActionBar.xib in Resources */,
 				AA33261D144CD8070033C7FA /* SocializeEditValueTableViewCell.xib in Resources */,
 				AA33261E144CD8070033C7FA /* SocializeProfileEditTableViewCell.xib in Resources */,
@@ -4507,7 +4491,6 @@
 				AAAFE91B14355F1B00851C73 /* TestShowSmallUserInfo.xib in Resources */,
 				AAAFE91D14355F1B00851C73 /* TestViewCreationViewController.xib in Resources */,
 				AAAFE92014355F1B00851C73 /* urls.plist in Resources */,
-				AAAFE92214355F1B00851C73 /* UserProfileViewController.xib in Resources */,
 				1638C52A143DC98E00538659 /* TestSocializeActionBar.xib in Resources */,
 				16038932143F10DB00455B6A /* SocializeEditValueTableViewCell.xib in Resources */,
 				16038933143F10DB00455B6A /* SocializeProfileEditTableViewCell.xib in Resources */,
@@ -5034,7 +5017,7 @@
 				6DDBEA6E14057B6000E41FC0 /* UIButton+Socialize.m in Sources */,
 				6DDBEA7014057B6000E41FC0 /* UILabel-Additions.m in Sources */,
 				6D8D224E140598160026185F /* UINavigationBarBackground.m in Sources */,
-				6D8D234E1407256E0026185F /* LoadingView.m in Sources */,
+				6D8D234E1407256E0026185F /* SocializeLoadingView.m in Sources */,
 				6D8984441407CA6B00482F1E /* HtmlPageCreator.m in Sources */,
 				1666BD34140E4F2800518811 /* URLDownload.m in Sources */,
 				1666BD36140E4F2800518811 /* URLDownloadOperation.m in Sources */,
@@ -5149,7 +5132,6 @@
 				16A82A041419F37400193CA7 /* ImagesCacheTests.m in Sources */,
 				16A82A29141DE79D00193CA7 /* ImageLoaderTests.m in Sources */,
 				6DFB0012141FF9460030DE32 /* CommentsTableViewTests.m in Sources */,
-				6D3F84B71424046D00825DFC /* ComposeMessageViewControllerForTest.m in Sources */,
 				160630F4142CB17B003B5AC7 /* SocializeUnitTestApplication.m in Sources */,
 				166ACEDF14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m in Sources */,
 				AAE8412A1448CBA3006BDA0E /* SocializeService+Testing.m in Sources */,
@@ -5202,7 +5184,6 @@
 				AA3325FE144CD8070033C7FA /* TestViewCreationViewController.m in Sources */,
 				AA3325FF144CD8070033C7FA /* UIButton+Socialize.m in Sources */,
 				AA332600144CD8070033C7FA /* UILabel-Additions.m in Sources */,
-				AA332601144CD8070033C7FA /* UserProfileViewController.m in Sources */,
 				AA332602144CD8070033C7FA /* TestSocializeActionBar.m in Sources */,
 				AA3326E7144CD9FB0033C7FA /* KIFTestScenario+SampleSdkAppAdditions.m in Sources */,
 				AA3326E8144CD9FB0033C7FA /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
@@ -5253,7 +5234,6 @@
 				AAAFE91C14355F1B00851C73 /* TestViewCreationViewController.m in Sources */,
 				AAAFE91E14355F1B00851C73 /* UIButton+Socialize.m in Sources */,
 				AAAFE91F14355F1B00851C73 /* UILabel-Additions.m in Sources */,
-				AAAFE92114355F1B00851C73 /* UserProfileViewController.m in Sources */,
 				1638C529143DC98E00538659 /* TestSocializeActionBar.m in Sources */,
 				16D54795144E9A630010732A /* TestActivityViewController.m in Sources */,
 				AA9E0C89144E060B00D2C37F /* TestTabbedSocializeActionBar.m in Sources */,
@@ -5326,7 +5306,7 @@
 				AABC1511144A114900088B7D /* UIButton+Socialize.m in Sources */,
 				AABC1512144A114900088B7D /* UILabel-Additions.m in Sources */,
 				AABC1513144A114900088B7D /* UINavigationBarBackground.m in Sources */,
-				AABC1514144A114900088B7D /* LoadingView.m in Sources */,
+				AABC1514144A114900088B7D /* SocializeLoadingView.m in Sources */,
 				AABC1515144A114900088B7D /* HtmlPageCreator.m in Sources */,
 				AABC1516144A114900088B7D /* URLDownload.m in Sources */,
 				AABC1517144A114900088B7D /* URLDownloadOperation.m in Sources */,

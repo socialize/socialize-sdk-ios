@@ -8,6 +8,17 @@
 
 #import "TestUtils.h"
 
+@implementation OCMockRecorder (TestUtils)
+- (id)andReturnBool:(BOOL)b {
+    return [self andReturnValue:OCMOCK_VALUE(b)];
+}
+
+- (id)andReturnInteger:(NSInteger)i {
+    return [self andReturnValue:OCMOCK_VALUE(i)];
+}
+
+@end
+
 void RunOnMainThread(void (^blk)()) {
     if ([NSThread isMainThread]) {
         NSLog(@"Running block directly");

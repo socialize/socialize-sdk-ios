@@ -246,7 +246,7 @@ otherwise you will get a failure.
                     apiSecret:(NSString*)apiSecret
               thirdPartyAppId:(NSString*)thirdPartyAppId 
          thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName;
 
 /**
  Third party authentication via SDK service.
@@ -269,7 +269,7 @@ otherwise you will get a failure.
  */
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret
               thirdPartyAppId:(NSString*)thirdPartyAppId 
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName;
 
 /**
  Facebook authentication via SDK service.
@@ -325,7 +325,7 @@ otherwise you will get a failure.
                     apiSecret:(NSString*)apiSecret 
           thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
               thirdPartyAppId:(NSString*)thirdPartyAppId
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName;
 
 /**
  Check if facebook is configured

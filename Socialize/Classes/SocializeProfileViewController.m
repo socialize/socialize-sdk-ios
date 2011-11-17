@@ -10,7 +10,7 @@
 #import "ImagesCache.h"
 #import "UINavigationBarBackground.h"
 #import "UIButton+Socialize.h"
-#import "LoadingView.h"
+#import "SocializeLoadingView.h"
 #import "ImagesCache.h"
 #import "UINavigationController+Socialize.h"
 
@@ -79,6 +79,16 @@
     return [super initWithNibName:@"SocializeProfileViewController" bundle:nil];
 }
 
+- (void)getCurrentUser {
+    [self startLoading];
+    [self.socialize getCurrentUser];
+}
+
+- (void)afterAnonymouslyLoginAction {
+    if (self.fullUser == nil && self.user == nil) {
+        [self getCurrentUser];
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -99,8 +109,9 @@
         [self.socialize getUserWithId:self.user.objectID];
     } else {
         // no full user or partial user, load for current user
-        [self startLoading];
-        [self.socialize getCurrentUser];
+        if ([self.socialize isAuthenticated]) {
+            [self getCurrentUser];
+        }
     }
 }
 
@@ -245,7 +256,7 @@
 }
 
 - (void)profileEditViewControllerDidSave:(SocializeProfileEditViewController *)profileEditViewController {
-    self.loadingView = [LoadingView loadingViewInView:self.profileEditViewController.navigationController.view];
+    self.loadingView = [SocializeLoadingView loadingViewInView:self.profileEditViewController.navigationController.view];
 	self.profileEditViewController.navigationItem.rightBarButtonItem.enabled = NO;
     
     id<SocializeFullUser> userCopy = [(id)self.fullUser copy];
