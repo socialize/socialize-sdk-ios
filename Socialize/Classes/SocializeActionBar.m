@@ -64,6 +64,7 @@
 @synthesize shareComposer = shareComposer_;
 @synthesize commentsNavController = commentsNavController_;
 @synthesize finishedAskingServerForExistingLike = finishedAskingServerForExistingLike_;
+@synthesize noAutoLayout = noAutoLayout_;
 
 - (void)dealloc
 {
@@ -109,6 +110,10 @@
 
 #pragma mark - View lifecycle
 
+- (void)setNoAutoLayout:(BOOL)noAutoLayout {
+    noAutoLayout_ = noAutoLayout;
+    [(SocializeActionView*)self.view setNoAutoLayout:noAutoLayout];
+}
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView

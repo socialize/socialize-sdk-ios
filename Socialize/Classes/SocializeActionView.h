@@ -57,5 +57,7 @@
 
 @property (nonatomic, assign) id<SocializeActionViewDelegate> delegate;
 @property (nonatomic, readonly) BOOL isLiked;
+@property (nonatomic, assign) BOOL noAutoLayout;
+
 
 @end
