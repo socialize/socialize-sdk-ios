@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SocializeComposeMessageViewController.h"
+#import "SocializeAuthViewController.h"
 
-@interface SocializePostCommentViewController : SocializeComposeMessageViewController
+@interface SocializePostCommentViewController : SocializeComposeMessageViewController <SocializeAuthViewControllerDelegate>
 + (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL;
 + (SocializePostCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL;
 - (void)finishCreateComment;

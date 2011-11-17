@@ -10,6 +10,7 @@
 #import "SocializeLocationManager.h"
 #import "CommentMapView.h"
 #import "UINavigationController+Socialize.h"
+#import "SocializeAuthViewController.h"
 
 @implementation SocializePostCommentViewController
 @synthesize facebookSwitch = facebookSwitch_;
@@ -91,7 +92,6 @@
         return;
     }
     
-    [self stopLoading];
     [self dismissSelf];
 }
 
@@ -126,15 +126,15 @@
     }
 }
 
-- (void)authorizationSkipped {
-    [self finishCreateComment];
+-(void)authorizationSkipped {
+    [self finishCreateComment];    
 }
 
--(void)didAuthenticate:(id<SocializeUser>)user {
+-(void)socializeAuthViewController:(SocializeAuthViewController *)authViewController didAuthenticate:(id<SocializeUser>)user {
     // FIXME [#20995319] auth flow in wrong place
-    // Also, we give the user an opportunity to adjust the facebook switch
     [self afterFacebookLoginAction];
-    [self finishCreateComment];
+    [self finishCreateComment];    
 }
+
 
 @end
