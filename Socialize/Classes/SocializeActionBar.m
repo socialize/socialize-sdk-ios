@@ -114,7 +114,7 @@
 - (void)loadView
 {
     [super loadView];
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(0, 0, 320, ACTION_PANE_HEIGHT)];
+    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(0, 0, 320, SOCIALIZE_ACTION_PANE_HEIGHT)];
     self.view = actionView;
     actionView.delegate = self;
     [actionView release];

@@ -370,7 +370,7 @@
 }
 
 - (void)positionInSuperview {
-    self.frame = CGRectMake(0, self.superview.bounds.size.height - ACTION_PANE_HEIGHT, self.superview.bounds.size.width,  ACTION_PANE_HEIGHT);
+    self.frame = CGRectMake(0, self.superview.bounds.size.height - SOCIALIZE_ACTION_PANE_HEIGHT, self.superview.bounds.size.width,  SOCIALIZE_ACTION_PANE_HEIGHT);
 }
 
 - (void)layoutSubviews {
