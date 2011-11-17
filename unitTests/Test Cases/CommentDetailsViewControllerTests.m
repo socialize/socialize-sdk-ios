@@ -41,6 +41,10 @@
 
 #pragma mark - Mock objects
 
+- (BOOL)shouldRunOnMainThread {
+    return YES;
+}
+
 -(id) mockCommentWithDate: (NSDate*) date lat: (NSNumber*)lat lng: (NSNumber*)lng profileUrl: (NSString*)url
 {
     id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
@@ -101,6 +105,10 @@
 
 -(void) testShowComment
 {
+    id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
+    [[[mockSocialize stub] andReturnBool:YES] isAuthenticated];
+    commentDetails.socialize = mockSocialize;
+    
     id mockComment = [self  mockCommentWithDate:[NSDate date] lat:nil lng:nil profileUrl:nil];
     commentDetails.comment = mockComment;
     
