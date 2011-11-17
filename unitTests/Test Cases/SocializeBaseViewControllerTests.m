@@ -99,7 +99,6 @@
     [[(id)self.viewController expect] setCancelButton:nil];
     [[(id)self.viewController expect] setSendButton:nil];
     [[(id)self.viewController expect] setGenericAlertView:nil];
-    [[(id)self.viewController expect] setFacebookAuthQuestionDialog:nil];
     [[(id)self.viewController expect] setPostFacebookAuthenticationProfileViewController:nil];
     [[(id)self.viewController expect] setSendActivityToFacebookFeedAlertView:nil];
     [[(id)self.viewController expect] setAuthViewController:nil];

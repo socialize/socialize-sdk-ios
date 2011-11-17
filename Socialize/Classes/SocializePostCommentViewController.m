@@ -94,11 +94,6 @@
     [self stopLoading];
     [self dismissSelf];
 }
-
-- (void)afterUserRejectedFacebookAuthentication {
-    [self finishCreateComment];
-}
-
 - (void)afterFacebookLoginAction {
     self.facebookSwitch.hidden = NO;
 }

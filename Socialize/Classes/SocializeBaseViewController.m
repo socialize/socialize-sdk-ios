@@ -47,7 +47,6 @@
 @synthesize saveButton = saveButton_;
 @synthesize genericAlertView = genericAlertView_;
 @synthesize socialize = socialize_;
-@synthesize facebookAuthQuestionDialog = facebookAuthQuestionDialog_;
 @synthesize postFacebookAuthenticationProfileViewController = postFacebookAuthenticationProfileViewController_;
 @synthesize requestingFacebookFromUser = requestingFacebookFromUser_;
 @synthesize shareBuilder = shareBuilder_;
@@ -59,7 +58,6 @@
     self.genericAlertView = nil;
     self.socialize.delegate = nil;
     self.socialize = nil;
-    self.facebookAuthQuestionDialog = nil;
     self.postFacebookAuthenticationProfileViewController = nil;
     self.shareBuilder = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
@@ -77,7 +75,6 @@
     self.cancelButton = nil;
     self.sendButton = nil;
     self.genericAlertView = nil;
-    self.facebookAuthQuestionDialog = nil;
     self.postFacebookAuthenticationProfileViewController = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
     self.authViewController = nil;
@@ -262,32 +259,8 @@
     [localNavigationController.navigationBar resetBackground];
 }
 
-
-// Facebook authentication flow
-
-- (UIAlertView*)facebookAuthQuestionDialog {
-    if (facebookAuthQuestionDialog_ == nil) 
-    {
-        facebookAuthQuestionDialog_ = [[UIAlertView alloc]
-                                       initWithTitle:@"Facebook?" message:@"You are not authenticated with Facebook. Authenticate with Facebook now?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-    }
-    
-    return facebookAuthQuestionDialog_;
-}
-
-- (void)afterUserRejectedFacebookAuthentication {
-    
-}
-
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (alertView == self.facebookAuthQuestionDialog) {
-        
-        if (buttonIndex == 1) {
-            [self authenticateWithFacebook];
-        } else {
-            [self afterUserRejectedFacebookAuthentication];
-        }
-    }  else if (alertView == self.sendActivityToFacebookFeedAlertView) {
+    if (alertView == self.sendActivityToFacebookFeedAlertView) {
         if (buttonIndex == alertView.cancelButtonIndex) {
             [self sendActivityToFacebookFeedCancelled];
         }
@@ -313,16 +286,6 @@
         authViewController_ = [[SocializeAuthViewController authViewControllerInNavigationController:self] retain];
     }
     return authViewController_;
-}
-- (void)requestFacebookFromUser {
-    if (![self.socialize facebookAvailable]) {
-        return;
-    }
-
-    if (![self.socialize isAuthenticatedWithFacebook]) {
-        self.requestingFacebookFromUser = YES;
-        [self.facebookAuthQuestionDialog show];
-    }
 }
 
 - (SocializeProfileViewController*)postFacebookAuthenticationProfileViewController {
@@ -394,7 +357,7 @@
 - (void)sendActivityToFacebookFeedSucceeded {
     [self stopLoading];
 }
-
+    
 - (void)sendActivityToFacebookFeedFailed:(NSError*)error {
     [self stopLoading];
     [self.sendActivityToFacebookFeedAlertView show];
