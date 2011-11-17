@@ -91,12 +91,9 @@
 
 -(id)initWithEntityUrl:(NSString*)url presentModalInController:(UIViewController*)controller
 {
-    if ((self = [self initWithEntity:nil presentModalInController:controller])) {
-        id<SocializeEntity> newEntity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
-        [newEntity setKey:url];
-        self.entity = newEntity;
-    }
-    return self;
+    id<SocializeEntity> newEntity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
+    [newEntity setKey:url];
+    return [self initWithEntity:newEntity presentModalInController:controller];
 }
 
 -(id)initWithEntity:(id<SocializeEntity>)socEntity presentModalInController:(UIViewController*)controller
