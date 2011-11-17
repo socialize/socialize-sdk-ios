@@ -15,6 +15,8 @@
 + (SocializePostCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL;
 - (void)finishCreateComment;
 @property (nonatomic, retain) id<SocializeComment> commentObject;
-@property (nonatomic, retain) IBOutlet UISwitch *facebookSwitch;
+@property (nonatomic, retain) IBOutlet UIButton *facebookButton;
 @property (nonatomic, assign) BOOL commentSentToFacebook;
+
+- (IBAction)facebookButtonPressed:(UIButton*)sender;
 @end

@@ -12,10 +12,14 @@
 #import "UINavigationController+Socialize.h"
 #import "SocializeAuthViewController.h"
 
+@interface SocializePostCommentViewController ()
+- (void)configureFacebookButton;
+@end
+
 @implementation SocializePostCommentViewController
-@synthesize facebookSwitch = facebookSwitch_;
 @synthesize commentObject = commentObject_;
 @synthesize commentSentToFacebook = commentSentToFacebook_;
+@synthesize facebookButton = facebookButton_;
 
 + (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL {
     SocializePostCommentViewController *postCommentViewController = [self postCommentViewControllerWithEntityURL:entityURL];
@@ -31,7 +35,7 @@
 }
 
 - (void)dealloc {
-    self.facebookSwitch = nil;
+    self.facebookButton = nil;
     self.commentObject = nil;
 
     [super dealloc];
@@ -41,14 +45,23 @@
     [super viewDidLoad];
     
     self.title = @"New Comment";
-    
-    self.facebookSwitch.hidden = ![self.socialize isAuthenticatedWithFacebook];
+    [self configureFacebookButton];
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
     
-    self.facebookSwitch = nil;
+    self.facebookButton = nil;
+}
+
+- (void)configureFacebookButton {
+    if ([self.socialize isAuthenticatedWithFacebook]) {
+        BOOL dontPost = [[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
+        self.facebookButton.hidden = NO;
+        self.facebookButton.selected = !dontPost;
+    } else {
+        self.facebookButton.hidden = YES;
+    }
 }
 
 - (void)createCommentOnSocializeServer {
@@ -65,7 +78,7 @@
 }
 
 - (BOOL)shouldSendToFacebook {
-    return self.facebookSwitch.on && !self.facebookSwitch.hidden;
+    return self.facebookButton.selected && !self.facebookButton.hidden;
 }
 
 - (void)dismissSelf {
@@ -100,7 +113,11 @@
 }
 
 - (void)afterFacebookLoginAction {
-    self.facebookSwitch.hidden = NO;
+    [self configureFacebookButton];
+}
+
+- (void)facebookButtonPressed:(UIButton *)sender {
+    sender.selected = !sender.selected;
 }
 
 -(void)sendButtonPressed:(UIButton*)button {
