@@ -66,7 +66,8 @@
     
     self.mockNavigationItem = [OCMockObject mockForClass:[UINavigationItem class]];
     [[[(id)self.profileViewController stub] andReturn:self.mockNavigationItem] navigationItem];
-
+    [[self.mockNavigationItem stub] leftBarButtonItem];
+    
     self.mockProfileImageView = [OCMockObject mockForClass:[UIImageView class]];
     [[[(id)self.profileViewController stub] andReturn:self.mockProfileImageView] profileImageView];
     
@@ -135,7 +136,6 @@
 }
 
 - (void)basicViewDidLoad {
-//    [[self.mockNavigationBar expect] setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.profileViewController.doneButton];
     [[self.mockProfileImageView expect] setImage:self.profileViewController.defaultProfileImage];    
 }
@@ -167,7 +167,7 @@
     // Set up a mock full
     id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
     self.profileViewController.fullUser = mockFullUser;
-    
+
     [[(id)self.profileViewController expect] configureViews];
     [self.profileViewController viewDidLoad];
 }

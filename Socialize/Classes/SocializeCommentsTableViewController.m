@@ -26,7 +26,6 @@
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
--(void)backToCommentsList:(id)sender;
 @end
 
 @implementation SocializeCommentsTableViewController
@@ -249,10 +248,6 @@
 
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
     return [SocializeProfileViewController socializeProfileViewControllerForUser:user delegate:nil];
-}
-
--(void)backToCommentsList:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)newTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

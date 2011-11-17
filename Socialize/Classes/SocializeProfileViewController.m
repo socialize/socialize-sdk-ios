@@ -79,6 +79,7 @@
     return [super initWithNibName:@"SocializeProfileViewController" bundle:nil];
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

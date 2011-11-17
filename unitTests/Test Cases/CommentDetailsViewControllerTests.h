@@ -36,4 +36,8 @@
     SocializeCommentDetailsViewController* commentDetails;
 }
 
+@property (nonatomic,retain) id mockProfileNavigationController;
+@property (nonatomic,retain) id partialMockCommentDetailsViewController;
+@property (nonatomic,retain) id mockButton;
+@property (nonatomic,retain) id mockNavigationController;
 @end

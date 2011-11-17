@@ -91,8 +91,7 @@
     NSString *testName = @"somestring";
     id mockButton = [OCMockObject mockForClass:[UIButton class]];
     id mockLabel = [OCMockObject mockForClass:[UILabel class]];
-    [[mockLabel expect] setTitle:testName forState:UIControlStateNormal];
-    [[[mockButton expect] andReturn:mockLabel] titleLabel];
+    [[mockButton expect] setTitle:testName forState:UIControlStateNormal];
     commentView.profileNameButton = mockButton;
     [commentView updateUserName:testName];
     [mockButton verify];

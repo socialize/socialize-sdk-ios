@@ -99,7 +99,7 @@
 }
 -(IBAction)profileButtonTapped:(id)sender {
     SocializeProfileViewController *profileViewController = [self getProfileViewControllerForUser:self.comment.user];
-    profileViewController.navigationItem.leftBarButtonItem = [self createLeftNavigationButtonWithCaption:@"HAH"];
+    profileViewController.navigationItem.leftBarButtonItem = [self createLeftNavigationButtonWithCaption:@"Comment"];
     [self.navigationController pushViewController:(UIViewController *)profileViewController animated:YES];
 }
 -(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
