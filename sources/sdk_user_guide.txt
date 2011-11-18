@@ -45,7 +45,7 @@ There are 2 variants to achieve the same result. If you already have authenticat
 
 .. raw:: html
 
-	<script src="https://gist.github.com/1204490.js?file=FacebookAuthentication.m"></script>
+	<script src="https://gist.github.com/1370829.js?file=FacebookAuthentication.m"></script>
 	
 Authenticating with Twitter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
