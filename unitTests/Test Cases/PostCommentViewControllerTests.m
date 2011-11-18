@@ -35,13 +35,19 @@
 #import <OCMock/OCMock.h>
 #import "CommentsTableViewCell.h"
 #import "SocializeGeocoderAdapter.h"
+#import "SocializePrivateDefinitions.h"
 
 
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
 
+@interface SocializePostCommentViewController (Tests)
+- (void)dismissSelf;
+@end
+
 @implementation PostCommentViewControllerTests
 @synthesize postCommentViewController = postCommentViewController_;
+@synthesize mockFacebookButton = mockFacebookButton_;
 
 + (SocializeBaseViewController*)createController {
     return [SocializePostCommentViewController postCommentViewControllerWithEntityURL:TEST_URL];
@@ -52,9 +58,14 @@
     
     // super setUp creates self.viewController
     self.postCommentViewController = (SocializePostCommentViewController*)self.viewController;
+    
+    self.mockFacebookButton = [OCMockObject mockForClass:[UIButton class]];
+    self.postCommentViewController.facebookButton = self.mockFacebookButton;
 }
 
 - (void)tearDown {
+    [self.mockFacebookButton verify];
+    
     [super tearDown];
 }
 
@@ -148,7 +159,7 @@
 }
 
 - (void)testViewDidUnloadFreesViews {
-    [[(id)self.postCommentViewController expect] setFacebookSwitch:nil];
+    [[(id)self.postCommentViewController expect] setFacebookButton:nil];
     [self.postCommentViewController viewDidUnload];
 }
 
@@ -180,6 +191,32 @@
     [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:testText longitude:longitudeNumber latitude:latitudeNumber];
 
     [self.postCommentViewController finishCreateComment];
+}
+
+- (void)testAuthingWithFacebookShowsFacebookButtonAndSendsToFacebook {
+    // Ensure we already have a comment created
+    id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
+    self.postCommentViewController.commentObject = mockComment;
+    
+    // Set user default to not posting to facebook
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+    
+    // Switch should unhide and be deselected because of our user default
+    [[self.mockFacebookButton expect] setHidden:NO];
+    [[self.mockFacebookButton expect] setSelected:NO];
+    
+    // In case these are asked for again
+    [[[self.mockFacebookButton stub]  andReturnBool:NO] isHidden];
+    [[[self.mockFacebookButton stub]  andReturnBool:NO] isSelected];
+    
+    // We are now authed with facebook
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
+    
+    // expect dismissal
+    [[(id)self.postCommentViewController expect] dismissSelf];
+    
+    // Authenticate view controller completed facebook auth
+    [self.postCommentViewController socializeAuthViewController:nil didAuthenticate:nil];
 }
 
 @end

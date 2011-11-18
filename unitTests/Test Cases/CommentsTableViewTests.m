@@ -30,6 +30,7 @@
       listView = [[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString: TEST_URL];
     postCommentController = [OCMockObject niceMockForClass:[SocializeComposeMessageViewController class]];
     self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
+    [[self.mockSocialize stub] setDelegate:nil];
     listView.socialize = self.mockSocialize;
     
     
@@ -37,7 +38,6 @@
 
 -(void) tearDownClass
 {
-    [[self.mockSocialize expect] setDelegate:nil];
     [listView release];
     //[postCommentController release];
 }
@@ -71,6 +71,7 @@
     BOOL retValue = YES;
     [[[self.mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticated];
     [[self.mockSocialize expect] getCommentList:OCMOCK_ANY first:nil last:nil]; 
+    [[self.mockSocialize stub] setDelegate:nil];
     listView.socialize = self.mockSocialize;
     
     [[mockTable expect] reloadData];
@@ -226,6 +227,7 @@
     id partialMockController = [OCMockObject partialMockForObject:listView];
     id mockTable = [OCMockObject niceMockForClass:[UITableView class]];
     id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
+    [[mockSocialize stub] setDelegate:nil];
 
     listView.tableView = mockTable;
     listView.socialize = mockSocialize;

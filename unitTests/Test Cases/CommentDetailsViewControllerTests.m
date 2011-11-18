@@ -107,6 +107,7 @@
 {
     id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     [[[mockSocialize stub] andReturnBool:YES] isAuthenticated];
+    [[mockSocialize stub] setDelegate:nil];
     commentDetails.socialize = mockSocialize;
     
     id mockComment = [self  mockCommentWithDate:[NSDate date] lat:nil lng:nil profileUrl:nil];
