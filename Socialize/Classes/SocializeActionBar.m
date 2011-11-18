@@ -345,9 +345,11 @@
     [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:like.entity.likes] liked:YES];
     [(SocializeActionView*)self.view unlockButtons];    
     
+#if 0
     if ([self.socialize isAuthenticatedWithFacebook]) {
         [self sendActivityToFacebookFeed:like];            
     }
+#endif
 }
 
 - (void)failedCreatingLikeWithError:(NSError*)error {

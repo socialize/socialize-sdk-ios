@@ -153,8 +153,8 @@
     
     [[self.mockActionView expect] unlockButtons];
     [[self.mockActionView expect] updateLikesCount:[NSNumber numberWithInt:testLikes] liked:YES];
-    [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticatedWithFacebook];
-    [[(id)self.actionBar expect] sendActivityToFacebookFeed:mockLike];
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
+//    [[(id)self.actionBar expect] sendActivityToFacebookFeed:mockLike];
     [[self.mockSocialize expect] getEntityByKey:TEST_ENTITY_URL];
     
     [self.actionBar service:nil didCreate:mockLike];
