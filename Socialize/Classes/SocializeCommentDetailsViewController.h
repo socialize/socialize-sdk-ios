@@ -24,6 +24,7 @@ typedef URLDownload*(^LoaderFactory)(NSString* url, id sender, SEL selector, id 
         id<SocializeComment>    comment;
         ImagesCache*            cache;
 }
+-(IBAction)profileButtonTapped:(id)sender;
 
 @property (nonatomic, retain) IBOutlet CommentDetailsView*     commentDetailsView;
 @property (nonatomic, retain) id<SocializeComment>    comment;

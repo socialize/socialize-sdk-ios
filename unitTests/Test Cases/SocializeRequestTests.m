@@ -106,18 +106,6 @@
     GHAssertTrue([self compareParams: oaRequestParamsActual and: oaRequestParamsExpected], nil);
 }
 
-
-- (void)testFaildGetRequest {
-    [self prepare];
-    _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:nil];
-    _request.delegate = self;
-    _request.baseURL = @"bad-url";
-    
-    [_request connect];  
-    [self waitForStatus:kGHUnitWaitStatusFailure timeout:30.0];
-}
-
-
 -(void)testOAInterfaceForRequests2
 {    
     NSString   *language = [[NSLocale currentLocale] objectForKey: NSLocaleLanguageCode];

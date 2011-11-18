@@ -107,11 +107,6 @@
     
     [self dismissSelf];
 }
-
-- (void)afterUserRejectedFacebookAuthentication {
-    [self finishCreateComment];
-}
-
 - (void)afterFacebookLoginAction {
     [self configureFacebookButton];
 }

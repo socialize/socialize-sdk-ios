@@ -45,8 +45,7 @@
 @property (nonatomic, retain) UIBarButtonItem *cancelButton;
 @property (nonatomic, retain) UIBarButtonItem *saveButton;
 @property (nonatomic, retain) UIAlertView *genericAlertView;
-@property(nonatomic, retain) UIAlertView *facebookAuthQuestionDialog;
-@property(nonatomic, retain) SocializeProfileViewController *postFacebookAuthenticationProfileViewController;
+@property (nonatomic, retain) SocializeProfileViewController *postFacebookAuthenticationProfileViewController;
 @property (nonatomic, assign) BOOL requestingFacebookFromUser;
 @property (nonatomic, retain) UIAlertView *sendActivityToFacebookFeedAlertView;
 @property (nonatomic, retain) SocializeShareBuilder *shareBuilder;
@@ -61,8 +60,6 @@
 -(void)afterFacebookLoginAction;
 -(BOOL)shouldAutoAuthOnAppear;
 - (UIView*)showLoadingInView;
-- (void)afterUserRejectedFacebookAuthentication;
-- (void)requestFacebookFromUser;
 - (void)authenticateWithFacebook;
 - (void)saveButtonPressed:(UIButton*)button;
 - (void)editButtonPressed:(UIButton*)button;
@@ -73,4 +70,5 @@
 - (void)sendActivityToFacebookFeedSucceeded;
 - (void)sendActivityToFacebookFeedFailed:(NSError*)error;
 - (void)sendActivityToFacebookFeedCancelled;
+- (UIBarButtonItem*)createLeftNavigationButtonWithCaption:(NSString*)caption;
 @end

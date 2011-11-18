@@ -66,7 +66,8 @@
     
     self.mockNavigationItem = [OCMockObject mockForClass:[UINavigationItem class]];
     [[[(id)self.profileViewController stub] andReturn:self.mockNavigationItem] navigationItem];
-
+    [[self.mockNavigationItem stub] leftBarButtonItem];
+    
     self.mockProfileImageView = [OCMockObject mockForClass:[UIImageView class]];
     [[[(id)self.profileViewController stub] andReturn:self.mockProfileImageView] profileImageView];
     
@@ -174,7 +175,7 @@
     // Set up a mock full
     id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
     self.profileViewController.fullUser = mockFullUser;
-    
+
     [[(id)self.profileViewController expect] configureViews];
     [self.profileViewController viewDidLoad];
 }

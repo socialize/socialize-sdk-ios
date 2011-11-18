@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">10K549</string>
+		<string key="IBDocument.SystemVersion">11A494a</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1934</string>
-		<string key="IBDocument.AppKitVersion">1038.36</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<string key="IBDocument.AppKitVersion">1128</string>
+		<string key="IBDocument.HIToolboxVersion">564.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">931</string>
@@ -97,7 +97,7 @@
 								<string key="NSFrame">{{62, 27}, {105, 24}}</string>
 								<reference key="NSSuperview" ref="642631657"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="775601021"/>
+								<reference key="NSNextKeyView" ref="778129316"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -207,43 +207,6 @@
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Helvetica-Bold</string>
 									<double key="NSSize">15</double>
-									<int key="NSfFlags">16</int>
-								</object>
-							</object>
-							<object class="IBUILabel" id="775601021">
-								<reference key="NSNextResponder" ref="642631657"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{62, 28}, {260, 21}}</string>
-								<reference key="NSSuperview" ref="642631657"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="778129316"/>
-								<bool key="IBUIOpaque">NO</bool>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">7</int>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Label</string>
-								<object class="NSColor" key="IBUITextColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC45MjgxMzQ0ODg5IDEgMC45MjM3NzA0MDk5AA</bytes>
-								</object>
-								<nil key="IBUIHighlightedColor"/>
-								<object class="NSColor" key="IBUIShadowColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MC4zNjY5MzU0ODM5AA</bytes>
-								</object>
-								<string key="IBUIShadowOffset">{0, 1}</string>
-								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">10</float>
-								<object class="IBUIFontDescription" key="IBUIFontDescription">
-									<string key="name">Helvetica-Bold</string>
-									<string key="family">Helvetica</string>
-									<int key="traits">2</int>
-									<double key="pointSize">18</double>
-								</object>
-								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">Helvetica-Bold</string>
-									<double key="NSSize">18</double>
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
@@ -359,14 +322,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">profileNameLable</string>
-						<reference key="source" ref="642631657"/>
-						<reference key="destination" ref="775601021"/>
-					</object>
-					<int key="connectionID">81</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">profileImage</string>
 						<reference key="source" ref="642631657"/>
 						<reference key="destination" ref="468614128"/>
@@ -404,6 +359,24 @@
 						<reference key="destination" ref="803352208"/>
 					</object>
 					<int key="connectionID">94</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">profileButtonTapped:</string>
+						<reference key="source" ref="1043996451"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">96</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">profileButtonTapped:</string>
+						<reference key="source" ref="120941526"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">97</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -454,7 +427,6 @@
 							<reference ref="468614128"/>
 							<reference ref="1043996451"/>
 							<reference ref="120941526"/>
-							<reference ref="775601021"/>
 							<reference ref="778129316"/>
 							<reference ref="247648669"/>
 							<reference ref="701465071"/>
@@ -494,12 +466,6 @@
 						<reference key="object" ref="120941526"/>
 						<reference key="parent" ref="642631657"/>
 						<string key="objectName">profileBtnLbl</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">79</int>
-						<reference key="object" ref="775601021"/>
-						<reference key="parent" ref="642631657"/>
-						<string key="objectName">ProfileName</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">83</int>
@@ -556,7 +522,6 @@
 					<string>72.IBPluginDependency</string>
 					<string>76.IBPluginDependency</string>
 					<string>76.IBUIButtonInspectorSelectedEdgeInsetMetadataKey</string>
-					<string>79.IBPluginDependency</string>
 					<string>83.IBPluginDependency</string>
 					<string>85.IBPluginDependency</string>
 					<string>88.CustomClassName</string>
@@ -582,7 +547,6 @@
 					<real value="0.0"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>CommentMapView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -602,7 +566,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">94</int>
+			<int key="maxID">97</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -620,7 +584,6 @@
 							<string>positionLable</string>
 							<string>profileImage</string>
 							<string>profileNameButton</string>
-							<string>profileNameLable</string>
 							<string>shadowBackground</string>
 							<string>shadowMapOfUserLocation</string>
 						</object>
@@ -632,7 +595,6 @@
 							<string>UILabel</string>
 							<string>UIImageView</string>
 							<string>UIButton</string>
-							<string>UILabel</string>
 							<string>UIImageView</string>
 							<string>UIView</string>
 						</object>
@@ -647,7 +609,6 @@
 							<string>positionLable</string>
 							<string>profileImage</string>
 							<string>profileNameButton</string>
-							<string>profileNameLable</string>
 							<string>shadowBackground</string>
 							<string>shadowMapOfUserLocation</string>
 						</object>
@@ -678,10 +639,6 @@
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">profileNameLable</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">shadowBackground</string>
 								<string key="candidateClassName">UIImageView</string>
 							</object>
@@ -707,6 +664,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">SocializeBaseViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">tableView</string>
+						<string key="NS.object.0">UITableView</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">tableView</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">tableView</string>
+							<string key="candidateClassName">UITableView</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/SocializeBaseViewController.h</string>
@@ -715,6 +683,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">SocializeCommentDetailsViewController</string>
 					<string key="superclassName">SocializeBaseViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">profileButtonTapped:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">profileButtonTapped:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">profileButtonTapped:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">commentDetailsView</string>
 						<string key="NS.object.0">CommentDetailsView</string>
