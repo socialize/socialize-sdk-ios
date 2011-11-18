@@ -318,10 +318,15 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    [self adjustForOrientation:interfaceOrientation];
-    
-    return YES;
+    // Return YES for supported orientations if iOS5
+    BOOL iOS5 = [[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0;
+    if( iOS5 ) {
+        [self adjustForOrientation:interfaceOrientation];
+        return YES;
+    } else {
+        [self adjustForOrientation:UIInterfaceOrientationPortrait];  
+        return NO;
+    }
 }
 
 
