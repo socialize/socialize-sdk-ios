@@ -35,6 +35,7 @@
 #import "SocializeFacebookInterface.h"
 
 @interface SocializeBaseViewController () <SocializeProfileViewControllerDelegate, SocializeAuthViewControllerDelegate>
+-(void)leftNavigationButtonPressed:(id)sender;  
 @end
 
 @implementation SocializeBaseViewController
@@ -46,20 +47,17 @@
 @synthesize saveButton = saveButton_;
 @synthesize genericAlertView = genericAlertView_;
 @synthesize socialize = socialize_;
-@synthesize facebookAuthQuestionDialog = facebookAuthQuestionDialog_;
 @synthesize postFacebookAuthenticationProfileViewController = postFacebookAuthenticationProfileViewController_;
 @synthesize requestingFacebookFromUser = requestingFacebookFromUser_;
 @synthesize shareBuilder = shareBuilder_;
 @synthesize sendActivityToFacebookFeedAlertView = sendActivityToFacebookFeedAlertView_;
 @synthesize authViewController = authViewController_;
-
 - (void)dealloc
 {
     self.genericAlertView.delegate = nil;
     self.genericAlertView = nil;
     self.socialize.delegate = nil;
     self.socialize = nil;
-    self.facebookAuthQuestionDialog = nil;
     self.postFacebookAuthenticationProfileViewController = nil;
     self.shareBuilder = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
@@ -77,7 +75,6 @@
     self.cancelButton = nil;
     self.sendButton = nil;
     self.genericAlertView = nil;
-    self.facebookAuthQuestionDialog = nil;
     self.postFacebookAuthenticationProfileViewController = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
     self.authViewController = nil;
@@ -126,6 +123,18 @@
         sendButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
     return sendButton_;
+}
+
+-(UIBarButtonItem*) createLeftNavigationButtonWithCaption:(NSString*) caption
+{
+    UIButton *backButton = [UIButton blackSocializeNavBarBackButtonWithTitle:caption]; 
+    [backButton addTarget:self action:@selector(leftNavigationButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * backLeftItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
+    return backLeftItem;
+}
+-(void)leftNavigationButtonPressed:(id)sender {
+    //default implementation for the left navigation button
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (UIBarButtonItem*)doneButton {
@@ -255,36 +264,12 @@
     [localNavigationController.navigationBar resetBackground];
 }
 
-
-// Facebook authentication flow
-
-- (UIAlertView*)facebookAuthQuestionDialog {
-    if (facebookAuthQuestionDialog_ == nil) 
-    {
-        facebookAuthQuestionDialog_ = [[UIAlertView alloc]
-                                       initWithTitle:@"Facebook?" message:@"You are not authenticated with Facebook. Authenticate with Facebook now?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-    }
-    
-    return facebookAuthQuestionDialog_;
-}
-
-- (void)afterUserRejectedFacebookAuthentication {
-    
-}
-
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (alertView == self.facebookAuthQuestionDialog) {
-        
-        if (buttonIndex == 1) {
-            [self authenticateWithFacebook];
-        } else {
-            [self afterUserRejectedFacebookAuthentication];
-        }
-    }  else if (alertView == self.sendActivityToFacebookFeedAlertView) {
+    if (alertView == self.sendActivityToFacebookFeedAlertView) {
         if (buttonIndex == alertView.cancelButtonIndex) {
             [self sendActivityToFacebookFeedCancelled];
         }
-        if (buttonIndex == alertView.firstOtherButtonIndex) {
+        else if (buttonIndex == alertView.firstOtherButtonIndex) {
             [self sendActivityToFacebookFeed:self.shareBuilder.shareObject];
         }
     }
@@ -306,16 +291,6 @@
         authViewController_ = [[SocializeAuthViewController authViewControllerInNavigationController:self] retain];
     }
     return authViewController_;
-}
-- (void)requestFacebookFromUser {
-    if (![self.socialize facebookAvailable]) {
-        return;
-    }
-
-    if (![self.socialize isAuthenticatedWithFacebook]) {
-        self.requestingFacebookFromUser = YES;
-        [self.facebookAuthQuestionDialog show];
-    }
 }
 
 - (SocializeProfileViewController*)postFacebookAuthenticationProfileViewController {
@@ -387,7 +362,7 @@
 - (void)sendActivityToFacebookFeedSucceeded {
     [self stopLoading];
 }
-
+    
 - (void)sendActivityToFacebookFeedFailed:(NSError*)error {
     [self stopLoading];
     [self.sendActivityToFacebookFeedAlertView show];

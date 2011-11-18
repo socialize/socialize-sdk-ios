@@ -67,7 +67,7 @@ BOOL useBackgroundImage = NO;
     if ([UINavigationBar instancesRespondToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
         [self setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
     } else {
-        if( [self viewWithTag: UINavigationBarBackgroundImageTag] ) {
+        if( [self viewWithTag: UINavigationBarBackgroundImageTag] ) {   
             //there is already a tag with this view so we're exiting this function.
             return;
         }

@@ -25,9 +25,7 @@
 
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
--(UIBarButtonItem*) createLeftNavigationButtonWithCaption: (NSString*) caption;
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
--(void)backToCommentsList:(id)sender;
 @end
 
 @implementation SocializeCommentsTableViewController
@@ -225,13 +223,6 @@
 	return [NSDate getTimeElapsedString:startdate]; 
 }
 
--(UIBarButtonItem*) createLeftNavigationButtonWithCaption: (NSString*) caption
-{
-    UIButton *backButton = [UIButton blackSocializeNavBarBackButtonWithTitle:caption]; 
-    [backButton addTarget:self action:@selector(backToCommentsList:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem * backLeftItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
-    return backLeftItem;
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -265,10 +256,6 @@
 
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
     return [SocializeProfileViewController socializeProfileViewControllerForUser:user delegate:nil];
-}
-
--(void)backToCommentsList:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)newTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

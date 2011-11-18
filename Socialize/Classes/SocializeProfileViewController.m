@@ -36,23 +36,6 @@
 @synthesize defaultProfileImage = defaultProfileImage_;
 @synthesize alertView = alertView_;
 
-+ (UIViewController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeProfileViewControllerDelegate>)delegate {
-    SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
-    profile.delegate = delegate;
-    profile.user = user;
-    UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
-    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:profile] autorelease];
-    [nav.navigationBar setBackgroundImage:navImage];
-    return nav;
-}
-
-+ (UIViewController*)socializeProfileViewControllerWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
-    return [self socializeProfileViewControllerForUser:nil delegate:delegate];
-}
-
-+ (UIViewController*)currentUserProfileWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
-    return [self socializeProfileViewControllerWithDelegate:delegate];
-}
 
 - (void)dealloc {
     self.fullUser = nil;
@@ -69,7 +52,29 @@
     
     [super dealloc];
 }
++ (UINavigationController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeProfileViewControllerDelegate>)delegate {
+    SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] initWithUser:user delegate:delegate] autorelease];
+    UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
+    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:profile] autorelease];
+    [nav.navigationBar setBackgroundImage:navImage];
+    return nav;
+}
 
++ (UINavigationController*)socializeProfileViewControllerWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
+    return [SocializeProfileViewController socializeProfileViewControllerForUser:nil delegate:delegate];
+}
+
++ (UINavigationController*)currentUserProfileWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
+    return [SocializeProfileViewController socializeProfileViewControllerWithDelegate:delegate];
+}
+
+- (id)initWithUser:(id<SocializeUser>)user delegate:(id<SocializeProfileViewControllerDelegate>)delegate {
+    if( self = [self init] ) {
+        self.delegate = delegate;
+        self.user = user;
+    }
+    return self;
+}
 - (id)init {
     return [super initWithNibName:@"SocializeProfileViewController" bundle:nil];
 }
@@ -89,7 +94,10 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = self.doneButton;
+    //we will show a done button here if there is not left barbutton item already showing
+    if (!self.navigationItem.leftBarButtonItem)
+        self.navigationItem.leftBarButtonItem = self.doneButton;
+
     self.profileImageView.image = [self defaultProfileImage];
     
     if (self.fullUser != nil) {

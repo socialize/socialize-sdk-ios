@@ -18,6 +18,7 @@
 #import "ImagesCache.h"
 #import "ImageLoader.h"
 #import "SocializeGeocoderAdapter.h"
+#import "SocializeProfileViewController.h"
 
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
@@ -30,12 +31,11 @@
 #define kCenterPointLongitude -122.417908
 
 
-@interface SocializeCommentDetailsViewController()
-
+@interface SocializeCommentDetailsViewController()<SocializeProfileViewControllerDelegate>
 -(void) showComment;
 -(void) setupCommentGeoLocation;
 -(void) showShareLocation:(BOOL)hasLocation;
-
+-(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 @end
 
 @implementation SocializeCommentDetailsViewController
@@ -97,7 +97,15 @@
      }
     ];
 }
-
+-(IBAction)profileButtonTapped:(id)sender {
+    SocializeProfileViewController *profileViewController = [self getProfileViewControllerForUser:self.comment.user];
+    profileViewController.navigationItem.leftBarButtonItem = [self createLeftNavigationButtonWithCaption:@"Comment"];
+    [self.navigationController pushViewController:(UIViewController *)profileViewController animated:YES];
+}
+-(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
+    SocializeProfileViewController *profileViewController = [[SocializeProfileViewController alloc]initWithUser:user delegate:self];
+    return profileViewController;
+}
 -(void)showShareLocation:(BOOL)hasLocation
 {
     commentDetailsView.showMap = hasLocation;
@@ -151,6 +159,12 @@
     
     [htmlCreator release];
 }
+- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
+    //implement
+}
+- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController {
+        //implement
+}
 
 -(void)updateProfileImage
 {
@@ -194,6 +208,7 @@
 {
     [super viewDidLoad];
     [self showShareLocation:self.comment.lat != nil];
+
 }
 
 - (void)viewDidUnload
