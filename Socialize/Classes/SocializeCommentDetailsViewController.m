@@ -188,6 +188,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 { 
+    [super viewWillAppear:animated];
     [self updateProfileImage];
     [self.commentDetailsView updateUserName:comment.user.userName];
     [self showComment];
@@ -196,6 +197,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {   
+    [super viewWillDisappear:animated];
     [cache stopOperations];
     
     [self.profileImageDownloader cancelDownload];

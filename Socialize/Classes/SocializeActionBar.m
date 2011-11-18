@@ -64,6 +64,7 @@
 @synthesize shareComposer = shareComposer_;
 @synthesize commentsNavController = commentsNavController_;
 @synthesize finishedAskingServerForExistingLike = finishedAskingServerForExistingLike_;
+@synthesize noAutoLayout = noAutoLayout_;
 
 - (void)dealloc
 {
@@ -91,12 +92,9 @@
 
 -(id)initWithEntityUrl:(NSString*)url presentModalInController:(UIViewController*)controller
 {
-    if ((self = [self initWithEntity:nil presentModalInController:controller])) {
-        id<SocializeEntity> newEntity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
-        [newEntity setKey:url];
-        self.entity = newEntity;
-    }
-    return self;
+    id<SocializeEntity> newEntity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
+    [newEntity setKey:url];
+    return [self initWithEntity:newEntity presentModalInController:controller];
 }
 
 -(id)initWithEntity:(id<SocializeEntity>)socEntity presentModalInController:(UIViewController*)controller
@@ -112,12 +110,16 @@
 
 #pragma mark - View lifecycle
 
+- (void)setNoAutoLayout:(BOOL)noAutoLayout {
+    noAutoLayout_ = noAutoLayout;
+    [(SocializeActionView*)self.view setNoAutoLayout:noAutoLayout];
+}
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
     [super loadView];
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(0, 0, 320, ACTION_PANE_HEIGHT)];
+    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(0, 0, 320, SOCIALIZE_ACTION_PANE_HEIGHT)];
     self.view = actionView;
     actionView.delegate = self;
     [actionView release];

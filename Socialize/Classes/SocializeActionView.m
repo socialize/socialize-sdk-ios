@@ -43,6 +43,7 @@
 
 @synthesize delegate = _socializeDelegate;
 @synthesize isLiked = _isLiked;
+@synthesize noAutoLayout = _noAutoLayout;
 
 //@synthesize commentButton = _commentButton, likeButton = _likeButton, viewButton = _viewCounter, activityIndicator = _activityIndicator, buttonLabelFont = _buttonLabelFont;
 
@@ -370,12 +371,15 @@
 }
 
 - (void)positionInSuperview {
-    self.frame = CGRectMake(0, self.superview.bounds.size.height - ACTION_PANE_HEIGHT, self.superview.bounds.size.width,  ACTION_PANE_HEIGHT);
+    [super setFrame:CGRectMake(0, self.superview.bounds.size.height - SOCIALIZE_ACTION_PANE_HEIGHT, self.superview.bounds.size.width,  SOCIALIZE_ACTION_PANE_HEIGHT)];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self positionInSuperview];
+    
+    if (!_noAutoLayout) {
+        [self positionInSuperview];
+    }
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {

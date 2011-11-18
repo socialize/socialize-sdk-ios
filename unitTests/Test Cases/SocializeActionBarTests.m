@@ -286,4 +286,15 @@
     // FIXME test that error is actually not shown
 }
 
+- (void)testSettingNoAutoLayoutUpdatesActionView {
+    [[self.mockActionView expect] setNoAutoLayout:YES];
+    self.actionBar.noAutoLayout = YES;
+}
+
+- (void)testUnsettingNoAutoLayoutUpdatesActionView {
+    [[self.mockActionView expect] setNoAutoLayout:NO];
+    self.actionBar.noAutoLayout = NO;
+}
+
+
 @end

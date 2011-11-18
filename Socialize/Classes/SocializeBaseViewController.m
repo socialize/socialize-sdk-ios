@@ -237,6 +237,11 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.navigationController.navigationBar resetBackground];
+}
+
 -(void)service:(SocializeService *)service didFail:(NSError *)error
 {
     [self stopLoadAnimation];

@@ -123,7 +123,7 @@
     [getEntityTextField resignFirstResponder];
 }
 
-#define ACTION_PANE_HEIGHT 44
+#define SOCIALIZE_ACTION_PANE_HEIGHT 44
 
 // getting/retrieving comments or likes would invoke this callback
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
@@ -154,7 +154,7 @@
 
             /*initialize and update the socialize action view*/
             if (!_actionView){
-                _actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - ACTION_PANE_HEIGHT, self.view.bounds.size.height,  ACTION_PANE_HEIGHT)];
+                _actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - SOCIALIZE_ACTION_PANE_HEIGHT, self.view.bounds.size.height,  SOCIALIZE_ACTION_PANE_HEIGHT)];
                 [self.view addSubview:_actionView];
             }
 
