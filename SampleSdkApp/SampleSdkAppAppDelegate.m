@@ -43,22 +43,12 @@
     [self.window addSubview:rootController.view];
     [self.window makeKeyAndVisible];
     
-#if RUN_GHUNIT_TESTS
-    int retVal = [GHTestRunner run];
-    if (retVal == 0) {
-        NSLog(@"GHUNIT TESTS SUCCEEDED");
-    } else {
-        NSLog(@"GHUNIT TESTS FAILED");
-    }
-    printf("return value from test runner is: %d\n", retVal);
-    NSAssert1(retVal == 0, @"There were %i failures during logic integration tests.", retVal);
-#endif
 #if RUN_KIF_TESTS
     [[SampleSdkAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
         // Exit after the tests complete so that CI knows we're done
         int failureCount = [[SampleSdkAppKIFTestController sharedInstance] failureCount];
-        NSLog(@"failure count %i", failureCount);
-        if( getenv("KIF_CLI") ) {
+        if (getenv("RUN_CLI")) {
+            NSLog(@"Exiting with %i failures", failureCount);
             exit(failureCount);
         }
     }];

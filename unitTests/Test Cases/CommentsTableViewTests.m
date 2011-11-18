@@ -13,14 +13,27 @@
 #import "SocializePostCommentViewController.h"
 #import "TableBGInfoView.h"
 
-@implementation CommentsTableViewTests
 
+@interface SocializeCommentsTableViewController(public)
+-(IBAction)viewProfileButtonTouched:(UIButton*)sender;
+-(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
+@end
+    
+@implementation CommentsTableViewTests
+@synthesize mockSocialize = mockSocialize_;
+@synthesize mockComment = mockComment_;
+@synthesize partialMockCommentTableViewController = partialMockCommentTableViewController_;
 #define TEST_URL @"test_entity_url"
 
 -(void) setUpClass
 {
       listView = [[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString: TEST_URL];
-    postCommentController = [OCMockObject niceMockForClass:[SocializePostCommentViewController class]];
+    postCommentController = [OCMockObject niceMockForClass:[SocializeComposeMessageViewController class]];
+    self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
+    [[self.mockSocialize stub] setDelegate:nil];
+    listView.socialize = self.mockSocialize;
+    
+    
 }
 
 -(void) tearDownClass
@@ -28,36 +41,46 @@
     [listView release];
     //[postCommentController release];
 }
+-(void)setUp {
+    self.mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
+    self.partialMockCommentTableViewController = [OCMockObject partialMockForObject:listView];
+}
+-(void)tearDown {
+    //verify global mocks
+    [self.mockComment verify];
+    [self.partialMockCommentTableViewController verify];
+    
+    //reset the objects back to nil
+    self.mockComment = nil;
+    self.partialMockCommentTableViewController = nil;
+}
 
 -(void)testViewDidAppear {
     
-    id mockSocialize = [OCMockObject mockForClass: [Socialize class]];
     BOOL retValue = YES;
-    [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticated];
-    [[mockSocialize expect] getCommentList:TEST_URL first:OCMOCK_ANY last:OCMOCK_ANY];
-    listView.socialize = mockSocialize;
+    [[[self.mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticated];
+    [[self.mockSocialize expect] getCommentList:TEST_URL first:OCMOCK_ANY last:OCMOCK_ANY];
     [listView viewWillAppear:YES]; 
     
-    [mockSocialize verify]; 
+    [self.mockSocialize verify]; 
 }
 
 -(void)testServiceSuccess {
     
     id mockTable = [OCMockObject niceMockForClass:[UITableView class]];
-    id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     BOOL retValue = YES;
-    [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticated];
-    [[mockSocialize expect] getCommentList:OCMOCK_ANY first:nil last:nil]; 
-
+    [[[self.mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticated];
+    [[self.mockSocialize expect] getCommentList:OCMOCK_ANY first:nil last:nil]; 
+    [[self.mockSocialize stub] setDelegate:nil];
+    listView.socialize = self.mockSocialize;
+    
     [[mockTable expect] reloadData];
     listView.tableView = mockTable;
-    listView.socialize = mockSocialize;
     [listView service:OCMOCK_ANY didFetchElements:OCMOCK_ANY];
     [listView viewWillAppear:YES]; 
-    
+
     [mockTable verify]; 
 }
-
 
 -(void)testDidFail {
     id mockError = [OCMockObject mockForClass:[NSError class]];
@@ -70,11 +93,9 @@
 -(void)testViewDidLoad{
     
     id mockTable = [OCMockObject niceMockForClass:[UITableView class]];
-    id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     
     [[mockTable expect] setBackgroundView:OCMOCK_ANY];
     listView.tableView = mockTable;
-    listView.socialize = mockSocialize;
     [listView viewDidLoad]; 
     
     [mockTable verify]; 
@@ -136,12 +157,37 @@
     
     [mockTableView verify];
 }
+-(void)testTableViewcellForRowNoCommentsLoading {
+    listView.arrayOfComments = nil;
+    listView.isLoading = YES;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [listView tableView:listView.tableView cellForRowAtIndexPath:indexPath];
+}
+-(void)testViewProfileButtonTouched {
+    //set the tag so we can look it up in the comments array later
+    id mockButton = [OCMockObject mockForClass:[UIButton class]];
+    [[[mockButton expect] andReturnValue:[NSNumber numberWithInt:0]] tag];
+    
+    //create mock user and assign it to the comment
+    id mockUser = [OCMockObject niceMockForProtocol:@protocol(SocializeUser)];
+    [[[self.mockComment expect] andReturn:mockUser] user];
+    listView.arrayOfComments = [NSArray arrayWithObject:self.mockComment];
+    
+    //mock out creation of profile controller and present
+    id mockProfileViewController = [OCMockObject mockForClass:[SocializeProfileViewController class]];
+    [[[self.partialMockCommentTableViewController expect] andReturn:mockProfileViewController] getProfileViewControllerForUser:mockUser];
+    [[self.partialMockCommentTableViewController expect] presentModalViewController:mockProfileViewController animated:YES];
+    
 
--(void)tableViewcellForRowAtIndexPath{
+    [listView viewProfileButtonTouched:mockButton];
+    
+}
+-(void)testTableViewcellForRowAtIndexPath{
     
     id partialTableViewMock = [OCMockObject partialMockForObject:listView.tableView];
     id tableViewCellMock = [OCMockObject niceMockForClass:[CommentsTableViewCell class]];
-    listView.arrayOfComments = [NSArray arrayWithObject:[NSNumber numberWithInt:45]];
+    id mockComment = [OCMockObject niceMockForProtocol:@protocol(SocializeComment)]; 
+    listView.arrayOfComments = [NSArray arrayWithObject:mockComment];
 
     [[[partialTableViewMock expect] andReturn:tableViewCellMock] dequeueReusableCellWithIdentifier:OCMOCK_ANY];
     
@@ -152,7 +198,6 @@
     [partialTableViewMock verify];
     
 }
-
 /*-(void)testDidSelectIndexAtRowPath{
     
     id navigationControllerMock = [OCMockObject niceMockForClass:[UINavigationController class]];
@@ -177,23 +222,34 @@
 }
 */
 
-/*
 -(void)testAddCommentButton{
     
     id partialMockController = [OCMockObject partialMockForObject:listView];
     id mockTable = [OCMockObject niceMockForClass:[UITableView class]];
     id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
+    [[mockSocialize stub] setDelegate:nil];
 
     listView.tableView = mockTable;
     listView.socialize = mockSocialize;
     
     [[partialMockController expect] presentModalViewController:OCMOCK_ANY animated:YES];
-    [[[partialMockController stub] andCall:@selector(postCommentControllerInstance) onObject:self] postCommentControllerInstance];
+//    [[[partialMockController stub] andCall:@selector(postCommentControllerInstance) onObject:self] postCommentControllerInstance];
     
     [listView addCommentButtonPressed:OCMOCK_ANY];
     [partialMockController verify]; 
 }
-*/
+
+- (void)testCommentCellLayout {
+    CommentsTableViewCell *cell = [[CommentsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    [cell setComment:@"Some Comment"];
+    UILabel *testSummary = [[[UILabel alloc] initWithFrame:CGRectMake(58, 32, 254, 21)] autorelease];
+    cell.summaryLabel = testSummary;
+    [cell layoutSubviews];
+    GHAssertTrue(CGRectEqualToRect(cell.frame, CGRectMake(0, 0, 320, 65)), @"Bad frame");
+    
+    [cell release];
+}
+
 
 
 @end

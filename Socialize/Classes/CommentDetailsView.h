@@ -18,10 +18,9 @@
     IBOutlet UIImageView*       navImage;
     IBOutlet UILabel*           positionLable;
     IBOutlet UIButton*          profileNameButton;
-    IBOutlet UILabel*           profileNameLable;
     IBOutlet UIImageView*       profileImage;
     IBOutlet UIImageView*       shadowBackground;
-    
+    IBOutlet UIView*            shadowMapOfUserLocation;
     BOOL                        showMap;
 }
 
@@ -30,9 +29,9 @@
 @property (nonatomic, retain) IBOutlet UIImageView* navImage;
 @property (nonatomic, retain) IBOutlet UILabel* positionLable;
 @property (nonatomic, retain) IBOutlet UIButton* profileNameButton;
-@property (nonatomic, retain) IBOutlet UILabel* profileNameLable;
 @property (nonatomic, retain) IBOutlet UIImageView* profileImage;
 @property (nonatomic, retain) IBOutlet UIImageView* shadowBackground;
+@property (nonatomic, retain) IBOutlet UIView * shadowMapOfUserLocation;
 @property (nonatomic, assign) BOOL showMap;
 
 -(void) updateProfileImage: (UIImage* )image;

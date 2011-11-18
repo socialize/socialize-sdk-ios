@@ -35,25 +35,54 @@
 #import "SocializeView.h"
 #import "SocializeEntity.h"
 #import "BlocksKit.h"
+#import "SocializeShareBuilder.h"
+#import "SocializeFacebookInterface.h"
+#import "SocializePostShareViewController.h"
+#import "SocializeEntityService.h"
 
 @interface SocializeActionBar()
-@property(nonatomic, retain) id<SocializeLike> entityLike;
-@property(nonatomic, retain) id<SocializeView> entityView;
+@property (nonatomic, retain) id<SocializeView> entityView;
+@property (nonatomic, retain) id<SocializeLike> entityLike;
+@property (nonatomic, assign) BOOL finishedAskingServerForExistingLike;
 
 -(void) shareViaEmail;
--(void)launchMailAppOnDevice;
+-(void)shareViaFacebook;
 -(void)displayComposerSheet;
+-(void)askServerForExistingLike;
+-(void)reloadEntity;
 
 @end
 
 @implementation SocializeActionBar
 
-@synthesize parentViewController;
-@synthesize entity;
-@synthesize entityLike;
-@synthesize entityView;
-@synthesize didFetchEntity = _didFetchEntity;
-@synthesize ignoreNextView = _ignoreNextView;
+@synthesize presentModalInViewController = _presentModalInViewController;
+@synthesize entity = _entity;
+@synthesize entityLike = entityLike_;
+@synthesize entityView = entityView_;
+@synthesize ignoreNextView = ignoreNextView_;
+@synthesize shareActionSheet = shareActionSheet_;
+@synthesize shareComposer = shareComposer_;
+@synthesize commentsNavController = commentsNavController_;
+@synthesize finishedAskingServerForExistingLike = finishedAskingServerForExistingLike_;
+@synthesize noAutoLayout = noAutoLayout_;
+
+- (void)dealloc
+{
+    self.presentModalInViewController = nil;
+    self.entity = nil;
+    self.entityLike = nil;
+    self.entityView = nil;
+    self.shareActionSheet = nil;
+    self.shareComposer = nil;
+    self.commentsNavController = nil;
+
+    if (self.isViewLoaded) {
+        [(SocializeActionView*)self.view setDelegate: nil];
+    }
+    
+    [super dealloc];
+}
+
 
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller
 {
@@ -63,12 +92,9 @@
 
 -(id)initWithEntityUrl:(NSString*)url presentModalInController:(UIViewController*)controller
 {
-    if ((self = [self initWithEntity:nil presentModalInController:controller])) {
-        id<SocializeEntity> newEntity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
-        [newEntity setKey:url];
-        self.entity = newEntity;
-    }
-    return self;
+    id<SocializeEntity> newEntity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
+    [newEntity setKey:url];
+    return [self initWithEntity:newEntity presentModalInController:controller];
 }
 
 -(id)initWithEntity:(id<SocializeEntity>)socEntity presentModalInController:(UIViewController*)controller
@@ -77,37 +103,23 @@
     if(self)
     {
         self.entity = socEntity;
-        self.parentViewController = controller;
+        self.presentModalInViewController = controller;
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [entity release];
-    [entityView release];
-    [entityLike release];
-    [(SocializeActionView*)self.view setDelegate: nil];
-    [comentsNavController release];
-    self.parentViewController = nil;
-    [super dealloc];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
 #pragma mark - View lifecycle
 
+- (void)setNoAutoLayout:(BOOL)noAutoLayout {
+    noAutoLayout_ = noAutoLayout;
+    [(SocializeActionView*)self.view setNoAutoLayout:noAutoLayout];
+}
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectZero];
+    [super loadView];
+    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(0, 0, 320, SOCIALIZE_ACTION_PANE_HEIGHT)];
     self.view = actionView;
     actionView.delegate = self;
     [actionView release];
@@ -118,98 +130,7 @@
 {
     [super viewDidLoad];
 
-    comentsNavController = [[SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:[entity key]] retain];
-}
-
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
--(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
-{
-    if ([dataArray count]){
-        id<SocializeObject> object = [dataArray objectAtIndex:0];
-        if ([object conformsToProtocol:@protocol(SocializeEntity)])
-        {
-            self.entity = (id<SocializeEntity>)object;          
-            [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views] withLikesCount:[NSNumber numberWithInt:entity.likes] isLiked:entityLike!=nil withCommentsCount:[NSNumber numberWithInt:entity.comments]];
-            self.didFetchEntity = YES;
-        }
-        if ([object conformsToProtocol:@protocol(SocializeLike)])
-        {
-            [dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
-            {
-                id<SocializeLike> like = (id<SocializeLike>)obj;
-                if(like.user.objectID == self.socialize.authenticatedUser.objectID)
-                {
-                    self.entityLike = like;
-                    [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:self.entityLike.entity.likes] liked:YES];
-                    *stop = YES;
-                }
-            }];
-        }
-    }    
-}
-
--(void)service:(SocializeService *)service didDelete:(id<SocializeObject>)object
-{
-    [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes-1] liked:NO];
-    self.entityLike = nil;
-    [(SocializeActionView*)self.view unlockButtons];
-    
-}
-
--(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object
-{
-    if([object conformsToProtocol:@protocol(SocializeView)])
-    {
-        self.entityView = (id<SocializeView>)object;
-        [(SocializeActionView*)self.view updateViewsCount:[NSNumber numberWithInt:entityView.entity.views]];
-    }
-    if([object conformsToProtocol:@protocol(SocializeLike)])
-    {
-        self.entityLike = (id<SocializeLike>)object;
-        [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:entityLike.entity.likes] liked:YES];
-        [(SocializeActionView*)self.view unlockButtons];
-    } 
-    
-    // Refresh from server
-    [self.socialize getEntityByKey:[entity key]];
-}
-
--(void)service:(SocializeService*)service didFail:(NSError*)error
-{
-    [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:0] withLikesCount:[NSNumber numberWithInt:0] isLiked:NO withCommentsCount:[NSNumber numberWithInt:0]];
-    if([service isKindOfClass:[SocializeAuthenticateService class]])
-    {
-        [super service:service didFail:error];
-    }
-    else
-    {       
-        if(![[error localizedDescription] isEqualToString:@"Entity does not exist."])
-            [self showAllertWithText:[error localizedDescription] andTitle:@"Get entiry failed"];
-        
-        if([service isKindOfClass:[SocializeLikeService class]])
-            [(SocializeActionView*)self.view unlockButtons];
-    }
-}
-
--(void)didAuthenticate:(id<SocializeUser>)user
-{
-    [super didAuthenticate:user];
-    //remove like status because we do not know it for new user yet.
-    self.entityLike = nil;
-    [(SocializeActionView*)self.view updateIsLiked:NO];
+    self.commentsNavController = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:self.entity.key];
 }
 
 #pragma mark Socialize base class method
@@ -221,30 +142,36 @@
 {
 }
 
--(void)afterAnonymouslyLoginAction
-{
-    if (self.ignoreNextView) {
-        // Refresh now
-        [self.socialize getEntityByKey:[entity key]];
-        self.ignoreNextView = NO;
-    } else {
-        // Refresh will happen after the view
-        [self.socialize viewEntity:entity longitude:nil latitude:nil];
-    }
-    
-
-
-    if(entityLike == nil)
-        [self.socialize getLikesForEntityKey:[entity key] first:nil last:nil];
+- (BOOL)shouldAutoAuthOnAppear {
+    return NO;
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)appear {
+    if (self.ignoreNextView) {
+        self.ignoreNextView = NO;
+        
+        // Normally, we reload the entity after viewing. Since we aren't viewing, reload it now.
+        // FIXME This is only to update comments count, we do not truly have to reload
+        [self reloadEntity];
+        return;
+    }
+    [self.socialize viewEntity:self.entity longitude:nil latitude:nil];    
+
+    if (!self.finishedAskingServerForExistingLike) {
+        [self askServerForExistingLike];
+    }
+}
+
+- (void)afterAnonymouslyLoginAction {
+    [self appear];
 }
 
 -(void)socializeActionViewWillAppear:(SocializeActionView *)socializeActionView {
-    [socializeActionView startActivityForUpdateViewsCount];
-    [self performAutoAuth];
+    if (![self.socialize isAuthenticated]) {
+        [self performAutoAuth];
+    } else {
+        [self appear];
+    }
 }
 
 -(void)socializeActionViewWillDisappear:(SocializeActionView *)socializeActionView {
@@ -255,106 +182,211 @@
 -(void)commentButtonTouched:(id)sender
 {
     self.ignoreNextView = YES;
-    [self.parentViewController presentModalViewController:comentsNavController animated:YES];
+    [self.presentModalInViewController presentModalViewController:self.commentsNavController animated:YES];
 }
 
 -(void)likeButtonTouched:(id)sender
 {
     [(SocializeActionView*)self.view lockButtons];
     
-    if(entityLike)
-        [self.socialize unlikeEntity: entityLike];
+    if(self.entityLike)
+        [self.socialize unlikeEntity:self.entityLike];
     else
-        [self.socialize likeEntityWithKey:[entity key] longitude:nil latitude:nil];
+        [self.socialize likeEntityWithKey:self.entity.key longitude:nil latitude:nil];
+}
+
+- (UIActionSheet*)shareActionSheet {
+    if (shareActionSheet_ == nil) {
+        shareActionSheet_ = [[UIActionSheet sheetWithTitle:nil] retain];
+        
+        if([self.socialize facebookAvailable])
+            [shareActionSheet_ addButtonWithTitle:@"Share on Facebook" handler:^{ [self shareViaFacebook]; }];
+
+        [shareActionSheet_ addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
+        
+        [shareActionSheet_ setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
+    }
+    return shareActionSheet_;
 }
 
 -(void)shareButtonTouched: (id) sender
 {    
-    UIActionSheet* shareActionSheet = [UIActionSheet sheetWithTitle:nil];
-    [shareActionSheet addButtonWithTitle:@"Share on Twitter" handler:^{ NSLog(@"Zip!"); }];
-    [shareActionSheet addButtonWithTitle:@"Share on Facebook" handler:^{ NSLog(@"Zap!"); }];
-    [shareActionSheet addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
-    [shareActionSheet setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
-    [shareActionSheet showInView:self.view.window];
+    [self.shareActionSheet showInView:self.view.window];
+}
+
+-(void)shareViaFacebook
+{
+    self.ignoreNextView = YES;
+    UINavigationController *shareController = [SocializePostShareViewController postShareViewControllerInNavigationControllerWithEntityURL:self.entity.key];
+    [self.presentModalInViewController presentModalViewController:shareController animated:YES];
 }
 
 #pragma mark Share via email
 
 -(void) shareViaEmail
 {
-    // This sample can run on devices running iPhone OS 2.0 or later  
-	// The MFMailComposeViewController class is only available in iPhone OS 3.0 or later. 
-	// So, we must verify the existence of the above class and provide a workaround for devices running 
-	// earlier versions of the iPhone OS. 
-	// We display an email composition interface if MFMailComposeViewController exists and the device can send emails.
-	// We launch the Mail application on the device, otherwise.
-	
-	Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
-	if (mailClass != nil)
-	{
-		// We must always check whether the current device is configured for sending emails
-		if ([mailClass canSendMail])
-		{
-			[self displayComposerSheet];
-		}
-		else
-		{
-			[self launchMailAppOnDevice];
-		}
-	}
-	else
-	{
-		[self launchMailAppOnDevice];
-	}
+    [self displayComposerSheet];
+}
+
+- (MFMailComposeViewController*)shareComposer {
+    if (shareComposer_ == nil) {
+        shareComposer_ = [[MFMailComposeViewController alloc] init];
+        shareComposer_.completionBlock = ^(MFMailComposeResult result, NSError *error)
+        {
+            // Notifies users about errors associated with the interface
+            switch (result)
+            {
+                case MFMailComposeResultCancelled:
+                    NSLog(@"Result: canceled");
+                    break;
+                case MFMailComposeResultSaved:
+                    NSLog(@"Result: saved");
+                    break;
+                case MFMailComposeResultSent:
+                    NSLog(@"Result: sent");
+                    break;
+                case MFMailComposeResultFailed:
+                    NSLog(@"Result: failed with error %@", [error localizedDescription]);
+                    break;
+                default:
+                    NSLog(@"Result: not sent");
+                    break;
+            }
+        };
+    }
+    
+    return shareComposer_;
 }
 
 // Displays an email composition interface inside the application. Populates all the Mail fields. 
 -(void)displayComposerSheet 
 {
-	MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
-    picker.completionBlock = ^(MFMailComposeResult result, NSError *error)
-    {
-    // Notifies users about errors associated with the interface
-    switch (result)
-        {
-            case MFMailComposeResultCancelled:
-                NSLog(@"Result: canceled");
-                break;
-            case MFMailComposeResultSaved:
-                NSLog(@"Result: saved");
-                break;
-            case MFMailComposeResultSent:
-                NSLog(@"Result: sent");
-                break;
-            case MFMailComposeResultFailed:
-                NSLog(@"Result: failed with error %@", [error localizedDescription]);
-                break;
-            default:
-                NSLog(@"Result: not sent");
-                break;
+    NSString *subject = self.entity.name;
+    if ([subject length] == 0) {
+        subject = self.entity.key;
+    }
+    [self.shareComposer setSubject:subject];
+
+    // Fill out the email body text
+    NSString *emailBody = [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", self.entity.name, self.entity.key];
+    [self.shareComposer setMessageBody:emailBody isHTML:NO];
+
+	[self.presentModalInViewController presentModalViewController:self.shareComposer animated:YES];
+}
+
+- (void)reloadEntity {
+    // Refresh from server
+    [self.socialize getEntityByKey:self.entity.key];
+}
+
+- (void)finishedGettingEntities:(NSArray*)entities {
+    if ([entities count] < 1) {
+        return;
+    }
+    
+    id<SocializeEntity> entity = [entities objectAtIndex:0];
+    self.entity = entity;
+    [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views]
+                                                 withLikesCount:[NSNumber numberWithInt:entity.likes]
+                                                        isLiked:self.entityLike != nil
+                                              withCommentsCount:[NSNumber numberWithInt:entity.comments]];    
+}
+
+- (void)askServerForExistingLike {
+    [self.socialize getLikesForEntityKey:self.entity.key first:nil last:nil];    
+}
+
+- (void)finishedGettingLikes:(NSArray*)likes {
+    self.finishedAskingServerForExistingLike = YES;
+    
+    if ([likes count] < 1) {
+        return;
+    }
+
+    for (id<SocializeLike> like in likes) {
+        if(like.user.objectID == self.socialize.authenticatedUser.objectID) {
+            // Found existing like for authenticated user
+            self.entityLike = like;
+            [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:like.entity.likes] liked:YES];
+            return;
         }
-    };
-	
-	[picker setSubject:@"Share with you my interest!"];
-
-	// Fill out the email body text
-  	NSString *emailBody = [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", entity.name, entity.key];
-	[picker setMessageBody:emailBody isHTML:NO];
-	
-	[self.parentViewController presentModalViewController:picker animated:YES];
-    [picker release];
+    }
 }
 
-// Launches the Mail application on the device.
--(void)launchMailAppOnDevice
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
 {
-	NSString *recipients = @"mailto:first@example.com&subject=Share with you my interest!";
-	NSString *body = [NSString stringWithFormat: @"&body=I thought you would find this interesting: %@ %@", entity.name, entity.key];
-	
-	NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];
-	email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+    if ([service isKindOfClass:[SocializeLikeService class]]) {
+        [self finishedGettingLikes:dataArray];
+    } else if ([service isKindOfClass:[SocializeEntityService class]]) {
+        [self finishedGettingEntities:dataArray];
+    }
 }
+
+- (void)finishedDeletingLike:(id<SocializeLike>)like {
+    [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:self.entityLike.entity.likes-1] liked:NO];
+    self.entityLike = nil;
+    [(SocializeActionView*)self.view unlockButtons];
+}
+
+-(void)service:(SocializeService *)service didDelete:(id<SocializeObject>)object
+{
+    if([service isKindOfClass:[SocializeLikeService class]]) {
+        [self finishedDeletingLike:(id<SocializeLike>)object];
+    }
+}
+
+- (void)finishedCreatingView:(id<SocializeView>)view {
+    self.entityView = view;
+    [(SocializeActionView*)self.view updateViewsCount:[NSNumber numberWithInt:view.entity.views]];
+}
+
+- (void)finishedCreatingLike:(id<SocializeLike>)like {
+    self.entityLike = like;
+    [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:like.entity.likes] liked:YES];
+    [(SocializeActionView*)self.view unlockButtons];    
+    
+#if 0
+    if ([self.socialize isAuthenticatedWithFacebook]) {
+        [self sendActivityToFacebookFeed:like];            
+    }
+#endif
+}
+
+- (void)failedCreatingLikeWithError:(NSError*)error {
+    [(SocializeActionView*)self.view unlockButtons];    
+}
+
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object
+{
+    if ([object conformsToProtocol:@protocol(SocializeView)]) {
+        [self finishedCreatingView:(id<SocializeView>)object];
+    } else if ([object conformsToProtocol:@protocol(SocializeLike)]) {
+        [self finishedCreatingLike:(id<SocializeLike>)object];
+    } 
+    
+    [self reloadEntity];
+}
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error
+{
+    [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:0] withLikesCount:[NSNumber numberWithInt:0] isLiked:NO withCommentsCount:[NSNumber numberWithInt:0]];
+    if([service isKindOfClass:[SocializeLikeService class]]) {
+        [self failedCreatingLikeWithError:error];
+    }
+    
+    if(![[error localizedDescription] isEqualToString:@"Entity does not exist."]) {
+        [super service:service didFail:error];
+    }
+}
+
+-(void)didAuthenticate:(id<SocializeUser>)user
+{
+    [super didAuthenticate:user];
+    //remove like status because we do not know it for new user yet.
+    self.entityLike = nil;
+    [(SocializeActionView*)self.view updateIsLiked:NO];
+}
+
+
 
 @end

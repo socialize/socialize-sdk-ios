@@ -26,8 +26,6 @@
 #define COMMENT_INDICATOR_SIZE_HEIGHT 17
 #define PADDING_BETWEEN_TEXT_ICON 2
 
-#define ACTION_PANE_HEIGHT 44
-
 @interface SocializeActionView()
 -(void)instantiateButtons;
 -(void)setupButtons;
@@ -45,6 +43,7 @@
 
 @synthesize delegate = _socializeDelegate;
 @synthesize isLiked = _isLiked;
+@synthesize noAutoLayout = _noAutoLayout;
 
 //@synthesize commentButton = _commentButton, likeButton = _likeButton, viewButton = _viewCounter, activityIndicator = _activityIndicator, buttonLabelFont = _buttonLabelFont;
 
@@ -55,9 +54,10 @@
 
         self.delegate = nil;
         [self instantiateButtons];
-		[self setupButtons];
+        [self setupButtons];
         self.accessibilityLabel = @"Socialize Action View";
         self.backgroundColor = [UIColor whiteColor];
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
 	}
     return self;
 }
@@ -84,9 +84,13 @@
 -(void)instantiateButtons{
     _buttonLabelFont = [[UIFont boldSystemFontOfSize:11.0f] retain];
     _commentButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _commentButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     _likeButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _likeButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     _viewCounter = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _viewCounter.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
     _shareButton = [[UIButton buttonWithType:UIButtonTypeCustom]retain];
+    _shareButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     _activityIndicator = [[UIActivityIndicatorView alloc] init];
     
     _likeButton.accessibilityLabel = @"like button";
@@ -100,26 +104,22 @@
 	CGPoint buttonOrigin;
 	CGSize buttonSize;
 
-    // [#20081405 Hide share]
-//	buttonSize = [self getButtonSizeForLabel:@"Share" iconName:@"action-bar-icon-share.png"];
-//	buttonOrigin.x = ACTION_VIEW_WIDTH - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
-//	buttonOrigin.y = BUTTON_Y_ORIGIN;
-//	
-//    [self setButtonLabel:@"Share" 
-//            withImageForNormalState: @"action-bar-button-black.png" 
-//            withImageForHightlightedState:@"action-bar-button-black-hover.png"
-//			withIconName:@"action-bar-icon-share.png"
-//                atOrigin:buttonOrigin
-//                onButton:_shareButton
-//			withSelector:@selector(shareButtonPressed:)];
+	buttonSize = [self getButtonSizeForLabel:@"Share" iconName:@"action-bar-icon-share.png"];
+	buttonOrigin.x = self.bounds.size.width - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
+	buttonOrigin.y = BUTTON_Y_ORIGIN;
+	
+    [self setButtonLabel:@"Share" 
+            withImageForNormalState: @"action-bar-button-black.png" 
+            withImageForHightlightedState:@"action-bar-button-black-hover.png"
+			withIconName:@"action-bar-icon-share.png"
+                atOrigin:buttonOrigin
+                onButton:_shareButton
+			withSelector:@selector(shareButtonPressed:)];
     
     
-//	[self addSubview:_shareButton];
+	[self addSubview:_shareButton];
     
-    // [#20081405 Hide share]
-    buttonOrigin.x = ACTION_VIEW_WIDTH; 
-
-	buttonSize = [self getButtonSizeForLabel:@"0" iconName:@"comment-sm-icon.png"];
+    buttonSize = [self getButtonSizeForLabel:@"0" iconName:@"comment-sm-icon.png"];
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
  
@@ -165,6 +165,10 @@
     _activityIndicator.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y + 5, 20, 20);
 	[self addSubview:_activityIndicator];
 	[_activityIndicator startAnimating];
+}
+
+- (UIImage*)buttonBackgroundImage:(NSString*)imageName {
+    return [[UIImage imageNamed:imageName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 }
 
 - (CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName 
@@ -223,14 +227,14 @@
 - (void) updateIsLiked: (BOOL)isLiked{
     _isLiked = isLiked;
 	if (_isLiked){
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-red.png"] forState:UIControlStateNormal]; 
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-red-hover.png"] forState: UIControlStateHighlighted]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-red.png"] forState:UIControlStateNormal]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-red-hover.png"] forState: UIControlStateHighlighted]; 
 		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-liked.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
 	else{
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-black.png"] forState:UIControlStateNormal]; 
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-black-hover.png"] forState:UIControlStateHighlighted]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-black.png"] forState:UIControlStateNormal]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-black-hover.png"] forState:UIControlStateHighlighted]; 
 		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-like.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
@@ -248,14 +252,14 @@
     _isLiked = isLiked;
 	[_likeButton setTitle:formattedValue forState:UIControlStateNormal] ;
 	if (_isLiked){
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-red.png"] forState:UIControlStateNormal]; 
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-red-hover.png"] forState: UIControlStateHighlighted]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-red.png"] forState:UIControlStateNormal]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-red-hover.png"] forState: UIControlStateHighlighted]; 
 		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-liked.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
 	else{
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-black.png"] forState:UIControlStateNormal]; 
-		[_likeButton setBackgroundImage:[UIImage imageNamed:@"action-bar-button-black-hover.png"] forState:UIControlStateHighlighted]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-black.png"] forState:UIControlStateNormal]; 
+		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-black-hover.png"] forState:UIControlStateHighlighted]; 
 		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-like.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
@@ -270,9 +274,7 @@
     NSString* formattedValue = [NSNumber formatMyNumber:commentsCount ceiling:[NSNumber numberWithInt:1000]];
 	CGSize buttonSize = [self getButtonSizeForLabel:formattedValue  iconName:@"comment-sm-icon.png"];
 
-// [#20081405 Hide share]
-//    CGPoint buttonOrigin = _shareButton.frame.origin;
-    CGPoint buttonOrigin = CGPointMake(ACTION_VIEW_WIDTH, 0);
+    CGPoint buttonOrigin = _shareButton.frame.origin;
 
 	buttonOrigin.x = buttonOrigin.x - buttonSize.width - PADDING_IN_BETWEEN_BUTTONS; 
 	buttonOrigin.y = BUTTON_Y_ORIGIN;
@@ -299,8 +301,8 @@
 		button.frame =  CGRectMake(frameOrigin.x, frameOrigin.y , buttonSize.width , buttonSize.height);
  
 	
-	UIImage* imageForNormalState = [[UIImage imageNamed:bgImage] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
-	UIImage* imageForHighlightedState = [[UIImage imageNamed:bgHighlightedImage] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+	UIImage* imageForNormalState = [self buttonBackgroundImage:bgImage];;
+	UIImage* imageForHighlightedState = [self buttonBackgroundImage:bgHighlightedImage];
 	
 	[button setBackgroundImage:imageForNormalState forState:UIControlStateNormal]; 
 	[button setBackgroundImage:imageForHighlightedState forState:UIControlStateHighlighted]; 
@@ -369,12 +371,15 @@
 }
 
 - (void)positionInSuperview {
-    self.frame = CGRectMake(0, self.superview.bounds.size.height - ACTION_PANE_HEIGHT, self.superview.bounds.size.width,  ACTION_PANE_HEIGHT);
+    [super setFrame:CGRectMake(0, self.superview.bounds.size.height - SOCIALIZE_ACTION_PANE_HEIGHT, self.superview.bounds.size.width,  SOCIALIZE_ACTION_PANE_HEIGHT)];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self positionInSuperview];
+    
+    if (!_noAutoLayout) {
+        [self positionInSuperview];
+    }
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {

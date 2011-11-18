@@ -11,7 +11,7 @@
 #import "SocializeActionViewForTest.h"
 #import "UIFontForTest.h"
 #import <OCMock/OCMock.h>
-
+#import "NSNumber+Additions.h"
 
 @implementation SocializeActionTests
 
@@ -152,6 +152,54 @@
     [actionView commentButtonPressed:nil];
     [mockDelegate verify];
 }
+
+- (void)testFormatting {
+    NSString *kFormat = [NSNumber formatMyNumber:[NSNumber numberWithInt:1000] ceiling:[NSNumber numberWithInt:1000]];
+    GHAssertEqualObjects(kFormat, @"1K+", @"bad format");
+
+    NSString *mFormat = [NSNumber formatMyNumber:[NSNumber numberWithInt:1000000] ceiling:[NSNumber numberWithInt:1000000]];
+    GHAssertEqualObjects(mFormat, @"1M+", @"bad format");
+
+    NSString *gFormat = [NSNumber formatMyNumber:[NSNumber numberWithInt:1000000000] ceiling:[NSNumber numberWithInt:1000000000]];
+    GHAssertEqualObjects(gFormat, @"1G+", @"bad format");
+}
+
+/*
+-(void)testLayoutInSuperview
+{
+    GHAssertNotNil(self.actionBar.view, nil);
+    GHAssertTrue(CGRectEqualToRect(self.actionBar.view.frame, CGRectMake(0,416,320,44)), nil);
+    GHAssertTrue([self.actionBar.view isKindOfClass: [SocializeActionView class]] ,nil);
+    GHAssertEqualStrings(self.actionBar.entity.key, TEST_ENTITY_URL, nil);
+}
+ */
+-(void)testAutoresizeMask
+{
+    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT)];
+    GHAssertTrue(actionView.autoresizingMask == (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin), nil);
+}
+
+- (void)testNoAutoLayoutDoesNotAutoLayout {
+    
+    // Make an action view in a large subview with a strange location
+    CGRect initialFrame = CGRectMake(1, 2, WIDTH, HEIGHT);
+    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:initialFrame];
+    UIView *mockView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 460)];
+    [mockView addSubview:actionView];
+    
+    // Disable auto layout
+    actionView.noAutoLayout = YES;
+    
+    // Initiate layout event
+    [actionView layoutSubviews];
+    
+    // Frame should not change
+    GHAssertTrue(CGRectEqualToRect(initialFrame, actionView.frame), @"Bad frame");
+    
+    [actionView release];
+}
+
 #pragma mark-
+
 
 @end

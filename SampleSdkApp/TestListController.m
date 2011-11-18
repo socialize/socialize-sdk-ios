@@ -48,6 +48,7 @@
                       @"Test Socialize Action Bar",
                       @"Test Tabbed Socialize Action Bar",
                       @"Test Current user activity",
+                      @"Test Post a Share",
                       nil
                       ]retain];
 
@@ -57,6 +58,8 @@
 
 - (void)dealloc
 {
+    _tableView.delegate = nil;
+    [_tableView release];
     [super dealloc];
 }
 
@@ -181,8 +184,10 @@
         case 7:
         {
             NSString* url = [self getEntityKey];
-            if(url)
-                [self presentModalViewController:[SocializePostCommentViewController  createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:url andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]] animated:YES];
+            if(url) {
+                UINavigationController *nav = [SocializePostCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:url];
+                [self presentModalViewController:nav animated:YES];
+            }
             break;
         }
         case 8:
@@ -195,17 +200,18 @@
 #ifdef RUN_KIF_TESTS
             UINavigationController *nav = (UINavigationController*)profile;
             SocializeProfileViewController *pvc = (SocializeProfileViewController*)[[nav viewControllers] objectAtIndex:0];
-            SocializeProfileEditViewController *edit = [[[SocializeProfileEditViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
-            id editMock = [OCMockObject partialMockForObject:edit];
-            //- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+            SocializeProfileEditViewController *edit = pvc.profileEditViewController;
+
+            id mockActionSheet = [OCMockObject mockForClass:[UIActionSheet class]];
+             
+            edit.uploadPicActionSheet = mockActionSheet;
             
             UIImage *profileImage = [UIImage imageNamed:@"Smiley.png"];
-            [[[editMock expect] andDo:^(NSInvocation* blah){
+            [[[mockActionSheet expect] andDo:^(NSInvocation* blah){
                 NSDictionary *info = [NSDictionary dictionaryWithObject:profileImage forKey:UIImagePickerControllerEditedImage];
                 [edit imagePickerController:nil didFinishPickingMediaWithInfo:info];
-            }] showActionSheet];
+            }] showInView:OCMOCK_ANY];
             
-            pvc.profileEditViewController = editMock;
 #endif
             [self.navigationController presentModalViewController:profile animated:YES];
             break;
@@ -234,6 +240,16 @@
             controller = [[TestActivityViewController alloc] initWithNibName:@"TestActivityViewController" bundle:nil];
             [self.navigationController pushViewController:controller animated:YES];
             break;
+        case 13:
+        {
+            NSString* url = [self getEntityKey];
+            if(url) {
+                UINavigationController *nav = [SocializePostShareViewController postShareViewControllerInNavigationControllerWithEntityURL:url];
+                [self presentModalViewController:nav animated:YES];
+            }
+            break;
+        }
+
     }    
     [controller release];
 }

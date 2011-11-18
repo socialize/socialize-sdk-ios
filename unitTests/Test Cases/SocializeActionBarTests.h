@@ -30,12 +30,18 @@
 #import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
 
+@class Socialize;
 @class SocializeActionBar;
 
-@interface SocializeActionBarTests : GHTestCase {
-    SocializeActionBar* actionBar;
-    id mockParentController;
-    id mockParantView;
-}
+@interface SocializeActionBarTests : GHTestCase
+
+@property (nonatomic, retain) SocializeActionBar *actionBar;
+@property (nonatomic, retain) SocializeActionBar *origActionBar;
+@property (nonatomic, retain) id mockParentController;
+@property (nonatomic, retain) UIView *parentView;
+@property (nonatomic, retain) id mockSocialize;
+@property (nonatomic, retain) id mockActionView;
+@property (nonatomic, retain) id mockEntity;
+@property (nonatomic, retain) id mockShareComposer;
 
 @end

@@ -33,22 +33,18 @@
 @protocol SocializeView;
 @protocol SocializeEntity;
 @protocol SocializeLike;
+@class MFMailComposeViewController;
 
-@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate> {
-    @private
-    CGRect viewRect;
-    UIViewController* comentsNavController;   
-    UIViewController* parentViewController;
-    
-    id<SocializeView> entityView;
-    id<SocializeEntity> entity;
-    id<SocializeLike> entityLike;
-}
+@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate>
 
-@property(nonatomic, assign) UIViewController* parentViewController;
-@property(nonatomic, retain) id<SocializeEntity> entity;
-@property (nonatomic, assign) BOOL didFetchEntity;
+@property (nonatomic, assign) UIViewController* presentModalInViewController;
+@property (nonatomic, retain) id<SocializeEntity> entity;
+@property (nonatomic, retain) UIViewController *commentsNavController;
+
 @property (nonatomic, assign) BOOL ignoreNextView;
+@property (nonatomic, retain) UIActionSheet *shareActionSheet;
+@property (nonatomic, retain) MFMailComposeViewController *shareComposer;
+@property (nonatomic, assign) BOOL noAutoLayout;
 
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
 

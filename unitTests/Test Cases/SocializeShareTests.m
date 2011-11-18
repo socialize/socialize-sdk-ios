@@ -8,6 +8,7 @@
 
 #import "SocializeShareTests.h"
 #import <OCMock/OCMock.h>
+#import "SocializeShare.h"
 
 @interface SocializeShareTests()
 -(NSString *)helperGetJSONStringFromFile:(NSString *)fileName;
@@ -48,12 +49,12 @@
     
     mockEntity.key = @"www.123.com";
     
-    ShareMedium medium = Facebook;
+    SocializeShareMedium medium = SocializeShareMediumFacebook;
     
     NSArray *expectedParams = [NSArray arrayWithObject:
                                [NSDictionary dictionaryWithObjectsAndKeys:
-                                mockEntity.key, @"entity",
-                                [NSNumber numberWithInt:1], @"medium",
+                                mockEntity.key, @"entity_key",
+                                [NSNumber numberWithInt:medium], @"medium",
                                 @"text", @"text",
                                 nil]];
     
@@ -65,6 +66,11 @@
 
     [_mockService createShareForEntity:mockEntity  medium:medium  text:@"text"];
     [_mockService verify];
+}
+
+-(void)testProtocol
+{
+    GHAssertTrue([_service ProtocolType] == @protocol(SocializeShare), nil);
 }
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{

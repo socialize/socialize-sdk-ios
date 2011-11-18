@@ -11,5 +11,6 @@
 @interface SampleSdkAppKIFTestController : KIFTestController
 
 + (NSString*)testURL:(NSString*)suffix;
++ (NSString*)runID;
 
 @end

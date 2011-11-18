@@ -18,11 +18,13 @@
 #import "SocializeUserService.h"
 #import "SocializeViewService.h"
 #import "SocializeShareService.h"
+#import "Facebook+Socialize.h"
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"
 #define SOCIALIZE_FACEBOOK_LOCAL_APP_ID @"socialize_facebook_local_app_id"
 #define SOCIALIZE_FACEBOOK_APP_ID @"socialize_facebook_app_id"
+#define SOCIALIZE_APPLICATION_LINK @"socialize_app_link"
 
 @implementation Socialize
 
@@ -34,6 +36,7 @@
 @synthesize userService = _userService;
 @synthesize delegate = _delegate;
 @synthesize activityService = _activityService;
+@synthesize shareService = _shareService;
 
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
@@ -44,6 +47,7 @@
     [_viewService release]; _viewService = nil;
     [_userService release]; _userService = nil;
     [_activityService release]; _activityService = nil;
+    [_shareService release]; _shareService = nil;
     
     [super dealloc];
 }
@@ -62,6 +66,7 @@
         _viewService  = [[SocializeViewService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _userService = [[SocializeUserService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _activityService = [[SocializeActivityService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
+        _shareService = [[SocializeShareService  alloc] initWithObjectFactory:_objectFactory delegate:delegate];
     }
     return self;
 }
@@ -83,6 +88,18 @@
 +(void)storeFacebookLocalAppId:(NSString*)facebookLocalAppId {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setValue:facebookLocalAppId forKey:SOCIALIZE_FACEBOOK_LOCAL_APP_ID];
+    [defaults synchronize];
+}
+
++(void)storeApplicationLink:(NSString*)link {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:link forKey:SOCIALIZE_APPLICATION_LINK];
+    [defaults synchronize];
+}
+
++(void)removeApplicationLink{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:SOCIALIZE_APPLICATION_LINK];
     [defaults synchronize];
 }
 
@@ -114,6 +131,12 @@
     return [_authService receiveFacebookAuthToken];
 }
 
++(NSString*) applicationLink
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults valueForKey:SOCIALIZE_APPLICATION_LINK];
+}
+
 #pragma mark authentication info
 
 +(BOOL)handleOpenURL:(NSURL *)url {
@@ -136,6 +159,8 @@
     _commentsService.delegate = delegate;
     _entityService.delegate = delegate;
     _viewService.delegate = delegate;
+    _activityService.delegate = delegate;
+    _userService.delegate = delegate;
 }
 
 -(void)authenticateWithFacebook {
@@ -150,7 +175,7 @@
     NSAssert(apiSecret != nil, @"Missing api secret. API secret must be configured before using socialize.");
     NSAssert(facebookAppId != nil, @"Missing facebook app id. Facebook app id is required to authenticate with facebook.");
     
-    [self authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:facebookAppId thirdPartyLocalAppId:facebookLocalAppId thirdPartyName:FacebookAuth];
+    [self authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:facebookAppId thirdPartyLocalAppId:facebookLocalAppId thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
 }
 
 -(void)authenticateAnonymously
@@ -168,7 +193,7 @@
                     apiSecret:(NSString*)apiSecret 
           thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
               thirdPartyAppId:(NSString*)thirdPartyAppId
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
     if ([SocializeAuthenticateService isAuthenticated])
         [_authService removeAuthenticationInfo];
@@ -185,7 +210,7 @@
                     apiSecret:(NSString*)apiSecret
               thirdPartyAppId:(NSString*)thirdPartyAppId 
          thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
     if ([SocializeAuthenticateService isAuthenticated])
         [_authService removeAuthenticationInfo];
@@ -196,7 +221,7 @@
 -(void)authenticateWithApiKey:(NSString*)apiKey
                     apiSecret:(NSString*)apiSecret
               thirdPartyAppId:(NSString*)thirdPartyAppId 
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
     if ([SocializeAuthenticateService isAuthenticated])
         [_authService removeAuthenticationInfo];
@@ -214,7 +239,32 @@
 
 -(BOOL)isAuthenticatedWithFacebook
 {
-    return [SocializeAuthenticateService isAuthenticatedWithFacebook];
+    if (![self isAuthenticated]) {
+        return NO;
+    }
+    
+    for (NSDictionary *auth in [[self authenticatedUser] thirdPartyAuth]) {
+        if ([[auth objectForKey:@"auth_type"] isEqualToString:@"FaceBook"]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)facebookAvailable {
+    NSString *facebookAppId = [Socialize facebookAppId];
+    NSString *facebookLocalAppId = [Socialize facebookLocalAppId];
+    if (facebookAppId == nil) {
+        return NO;
+    }
+    
+    NSURL *testURL = [NSURL URLWithString:[SocializeFacebook baseUrlForAppId:facebookAppId localAppId:facebookLocalAppId]];
+    if (![[UIApplication sharedApplication] canOpenURL:testURL]) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 -(void)removeAuthenticationInfo{
@@ -273,9 +323,19 @@
 
 #pragma view related stuff
 
+-(void)viewEntityWithKey:(NSString*)url longitude:(NSNumber*)lng latitude: (NSNumber*)lat {
+    [_viewService createViewForEntityKey:url longitude:lng latitude:lat];
+}
+
 -(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat{
     [_viewService createViewForEntity:entity longitude:lng latitude:lat];
 }
+
+/*
+-(void)getViewsForEntityKey:(NSString*)url  first:(NSNumber*)first last:(NSNumber*)last {
+    [_viewService getViewsForEntityKey:url first:first last:last];
+}
+ */
 
 #pragma user related stuff
 -(void)getCurrentUser
@@ -308,4 +368,17 @@
 {
     [_activityService getActivityOfUser:user];
 }
+
+
+#pragma share service stuff
+
+-(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text
+{
+    [_shareService createShareForEntity:entity medium:medium text:text];
+}
+
+-(void)createShareForEntityWithKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text {
+    [_shareService createShareForEntityKey:key medium:medium text:text];
+}
+
 @end

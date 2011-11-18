@@ -25,8 +25,7 @@
 
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
--(UIBarButtonItem*) createLeftNavigationButtonWithCaption: (NSString*) caption;
--(void)backToCommentsList:(id)sender;
+-(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 @end
 
 @implementation SocializeCommentsTableViewController
@@ -79,9 +78,19 @@
     return self;
 }
 
+- (void)refreshCommentsList {
+    [self startLoadAnimationForView:self.view];
+    [self.socialize getCommentList:_entity.key first:nil last:nil]; 
+}
+
 - (void) viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];   
+    informationView.center = self.tableView.center;
+    
+    if ([self.socialize isAuthenticated]) {
+        [self refreshCommentsList];
+    }
 }
 
 - (UIBarButtonItem*)doneButton {
@@ -146,8 +155,7 @@
 
 -(void)afterAnonymouslyLoginAction
 {
-    [self startLoadAnimationForView:self.view];
-    [self.socialize getCommentList:_entity.key first:nil last:nil]; 
+    [self refreshCommentsList];
 }
 
 #pragma mark -
@@ -186,7 +194,7 @@
 
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
-    UINavigationController * pcNavController =[SocializePostCommentViewController  createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:_entity.key andImageForNavBar:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
+    UINavigationController * pcNavController = [SocializePostCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:_entity.key];
     [self presentModalViewController:pcNavController animated:YES];
 }
 
@@ -215,13 +223,6 @@
 	return [NSDate getTimeElapsedString:startdate]; 
 }
 
--(UIBarButtonItem*) createLeftNavigationButtonWithCaption: (NSString*) caption
-{
-    UIButton *backButton = [UIButton blackSocializeNavBarBackButtonWithTitle:caption]; 
-    [backButton addTarget:self action:@selector(backToCommentsList:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem * backLeftItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
-    return backLeftItem;
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -249,14 +250,12 @@
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender {
     // TODO :  lets view the profile
     SocializeComment *comment = ((SocializeComment*)[_arrayOfComments objectAtIndex:sender.tag]);
-    id<SocializeUser> user = comment.user;
-    
-    UIViewController *profileViewController = [SocializeProfileViewController socializeProfileViewControllerForUser:user delegate:nil];
+    UIViewController *profileViewController = [self getProfileViewControllerForUser:comment.user];
     [self presentModalViewController:profileViewController animated:YES];
 }
 
--(void)backToCommentsList:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+-(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
+    return [SocializeProfileViewController socializeProfileViewControllerForUser:user delegate:nil];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)newTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -356,11 +355,6 @@
 #pragma -
 
 #pragma mark UITableViewDelegate
-// Display customization
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-}
-
 // Variable height support
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return [CommentsTableViewCell getCellHeightForString:((SocializeComment*)[_arrayOfComments objectAtIndex:indexPath.row]).text] + 50;
@@ -376,30 +370,7 @@
 	return 0;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-}
 #pragma mark -
-
-
- // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
 - (void)addNoCommentsBackground{
 	informationView.errorLabel.hidden = NO;
 	informationView.noActivityImageView.hidden = NO;

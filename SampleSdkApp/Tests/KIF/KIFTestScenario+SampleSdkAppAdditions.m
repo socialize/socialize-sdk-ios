@@ -11,6 +11,15 @@
 #import "SampleSdkAppKIFTestController.h"
 @implementation KIFTestScenario (SampleSdkAppAdditions)
 
++ (id)scenarioToTestFacebook {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that another user's profile can be viewed."];
+    NSString *comment = [NSString stringWithFormat:@"comment for %@", [SampleSdkAppKIFTestController runID]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentWithControllerForEntity:@"http://www.getsocialize.com" comment:@"comment!"]];
+    [scenario addStep:[KIFTestStep stepToVerifyFacebookFeedContainsMessage:comment]];
+    
+    return scenario;
+}
+
 + (id)scenarioToTestViewOtherProfile {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that another user's profile can be viewed."];
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
@@ -62,20 +71,41 @@
     [scenario addStep:[KIFTestStep stepToVerifyViewWithAccessibilityLabel:@"Socialize Action View" passesTest:^BOOL(id view) {
         return CGRectEqualToRect(CGRectMake(0, 343, 320, 44), [view frame]);
     }]];
+    
+    // Swap tabs and make sure views increments
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:1]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Featured"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Action Bar!"]];
     [scenario addStep:[KIFTestStep stepToWaitForAbsenceOfViewWithAccessibilityLabel:@"In progress"]];
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
     
+    // Verify we can like
     [scenario addStepsFromArray:[KIFTestStep stepsToLikeOnActionBar]];
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarLikesAtCount:1]];
 
+    // Make sure post comment shows the comment controller. Make sure views does not increment again
     [scenario addStepsFromArray:[KIFTestStep stepsToCommentOnActionBar]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"add comment button"]];
     [scenario addStepsFromArray:[KIFTestStep stepsToCreateComment:@"actionbar comment"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Close"]];
     [scenario addStep:[KIFTestStep stepToCheckAccessibilityLabel:@"comment button" hasValue:@"1"]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
+    
+    // Post a share
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share on Facebook"]];
+//    Actual share disabled until i can get a test facebook account set up
+//    [scenario addStepsFromArray:[KIFTestStep stepsToCreateShare:@"actionbar share"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
+
+    // Verify we can show the in-app MFMailComposer
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share via Email"]];
+    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Send"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Delete Draft"]];
+    
 
     return scenario;
 }
@@ -92,47 +122,6 @@
     [scenario addStepsFromArray:[KIFTestStep stepsToAuthenticate]];
     return scenario;
 }
-
-+ (id)scenarioToCreateEntity {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"entity create scenario."];
-    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntityWithURL:url name:nil]];
-    return scenario;
-}
-
-+ (id)scenarioToGetEntity {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a an entity can be created and that it exists on the server after creation."];
-
-    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntityWithURL:url name:nil]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToGetEntityWithURL:url]];
-    return scenario;
-}
-
-+ (id)scenarioToLikeAndUnlikeEntity {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that an entity can be liked"];
-    
-    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntityWithURL:url name:nil]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToLikeEntity:url]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyLikesForEntity:url areAtCount:1]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToUnlikeEntity:url]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyLikesForEntity:url areAtCount:0]];
-
-    return scenario;
-}
-
-+ (id)scenarioToViewEntity {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that an entity can be viewed"];
-    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateEntityWithURL:url name:nil]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToViewEntityWithURL:url]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyViewsForEntity:url areAtCount:1]];
-
-    return scenario;
-}
-
-
 
 
 @end

@@ -11,13 +11,10 @@
 @interface KIFTestScenario (SampleSdkAppAdditions)
 
 + (id)scenarioToAuthenticate;
-+ (id)scenarioToCreateEntity;
-+ (id)scenarioToGetEntity;
 + (id)scenarioToTestUserProfile;
-+ (id)scenarioToLikeAndUnlikeEntity;
-+ (id)scenarioToViewEntity;
 + (id)scenarioToTestCommentsViewControllerWithAutoAuth;
 + (id)scenarioToTestActionBar;
 + (id)scenarioToTestViewOtherProfile;
++ (id)scenarioToTestFacebook;
 
 @end

@@ -102,7 +102,7 @@
     }
     id<SocializeLike> like = [self isLiked: entityTextField.text];
     if(!like) {
-        _loadingView = [LoadingView loadingViewInView:self.view/* withMessage:@"Liking"*/]; 
+        _loadingView = [SocializeLoadingView loadingViewInView:self.view/* withMessage:@"Liking"*/]; 
         [_socialize likeEntityWithKey:entityTextField.text longitude:nil latitude:nil];
     }
 }
@@ -118,7 +118,7 @@
 
     id<SocializeLike> like = [self isLiked: entityTextField.text];
     if(like){
-        _loadingView = [LoadingView loadingViewInView:self.view /*withMessage:@"unliking"*/]; 
+        _loadingView = [SocializeLoadingView loadingViewInView:self.view /*withMessage:@"unliking"*/]; 
         [_socialize unlikeEntity:like];    
     }
 }
