@@ -350,8 +350,6 @@
 		16FDF4E01414BA0A00EAA064 /* SocializeCommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */; };
 		180B37EF147499E7009D2E22 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18029E121432B815002BDEC7 /* CoreLocation.framework */; };
 		180B37F214749A37009D2E22 /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 180B37F114749A37009D2E22 /* libprofile_rt.dylib */; };
-		180EFE9514609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */; };
-		180EFE9614609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */; };
 		180EFE9514609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		180EFE9614609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		180EFE9714609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFE9414609C1000AA957D /* SocializeAuthTableViewCell.m */; };
