@@ -77,7 +77,7 @@ Let Socialize know your Facebook app id.  You can register or find your Facebook
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1294278.js?file=gistfile1.m"></script>
+        <script src="https://gist.github.com/1375443.js?file=gistfile1.m"></script>
 
 You must register your app to open with your facebook app id url by adding a URL Types array to your Application's <MyApp>-Info.plist.
 The string is a lowercase fb followed by your app id. The example app is configured as below:
@@ -88,5 +88,5 @@ You must also be sure to call [Socialize handleOpenURL:url] from your UIApplicat
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1294195.js?file=appDelegate.m"></script>
+        <script src="https://gist.github.com/1375464.js?file=appDelegate.m"></script>
 
