@@ -1,402 +1,152 @@
 //
-//  PostCommentViewController.m
-//  appbuildr
+//  SocializePostCommentViewController.m
+//  SocializeSDK
 //
-//  Created by William M. Johnson on 4/5/11.
-//  Copyright 2011 pointabout. All rights reserved.
+//  Created by Nathaniel Griswold on 11/10/11.
+//  Copyright (c) 2011 Socialize, Inc. All rights reserved.
 //
-#import <QuartzCore/QuartzCore.h>
-#import "SocializePostCommentViewController.h"
-#import "UIButton+Socialize.h"
-#import "CommentMapView.h"
-#import "_Socialize.h"
-#import "LoadingView.h"
-#import "UIKeyboardListener.h"
-#import "SocializeLocationManager.h"
-#import "UILabel+FormatedText.h"
-#import "UINavigationBarBackground.h"
-#import "SocializeProfileViewController.h"
-#import "SocializeAuthenticateService.h"
-#import "SocializeGeocoderAdapter.h"
-#import "NSString+PlaceMark.h"
 
-#define NO_CITY_MSG @"Could not locate the place name."
-#define MIN_DISMISS_INTERVAL 0.75
+#import "SocializePostCommentViewController.h"
+#import "SocializeLocationManager.h"
+#import "CommentMapView.h"
+#import "UINavigationController+Socialize.h"
+#import "SocializeAuthViewController.h"
 
 @interface SocializePostCommentViewController ()
-
--(void)setShareLocation:(BOOL)enableLocation;
--(void)setUserLocation; 
--(void)sendButtonPressed:(id)button;
--(void)closeButtonPressed:(id)button;
--(void)configureDoNotShareLocationButton;
--(void)updateViewWithNewLocation: (CLLocation*)userLocation;
--(void)createComment;
--(void)authenticateViaFacebook;
-
-
-@end 
+- (void)configureFacebookButton;
+@end
 
 @implementation SocializePostCommentViewController
+@synthesize commentObject = commentObject_;
+@synthesize commentSentToFacebook = commentSentToFacebook_;
+@synthesize facebookButton = facebookButton_;
 
-@synthesize commentTextView;
-@synthesize locationText;
-@synthesize doNotShareLocationButton;
-@synthesize activateLocationButton;
-@synthesize mapOfUserLocation;
-@synthesize facebookAuthQuestionDialog = _facebookAuthQuestionDialog;
-
-+(UINavigationController*)createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:(NSString*)url andImageForNavBar: (UIImage*)imageForBar
-{
-    SocializePostCommentViewController * pcViewController = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializePostCommentViewController" 
-                                                                                               bundle:nil 
-                                                                                      entityUrlString:url
-                                                                                     keyboardListener:[UIKeyboardListener createWithVisibleKeyboard:NO] 
-                                                                                      locationManager:[SocializeLocationManager create]
-                                                                                         geocoderInfo:[SocializeGeocoderAdapter class]
-                                                    
-                                                    ];
-    
-    UIImage * socializeNavBarBackground = imageForBar;
-    UINavigationController * pcNavController = [[[UINavigationController alloc] initWithRootViewController:pcViewController] autorelease];
-    [pcNavController.navigationBar setBackgroundImage:socializeNavBarBackground];
-    [pcViewController release];
-
-    return pcNavController;
++ (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL {
+    SocializePostCommentViewController *postCommentViewController = [self postCommentViewControllerWithEntityURL:entityURL];
+    UINavigationController *navigationController = [UINavigationController socializeNavigationControllerWithRootViewController:postCommentViewController];
+    return navigationController;    
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil 
-               bundle:(NSBundle *)nibBundleOrNil 
-      entityUrlString:(NSString*)entityUrlString 
-     keyboardListener:(UIKeyboardListener*)kb 
-      locationManager:(SocializeLocationManager*) lManager
-         geocoderInfo:(Class)geocoderInfo
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        _entityUrlString = [entityUrlString retain];
-        kbListener = [kb retain];
-        locationManager = [lManager retain];
-        _geoCoderInfo = geocoderInfo;
-    }
-    return self;
++ (SocializePostCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL {
+    SocializePostCommentViewController *postCommentViewController = [[[SocializePostCommentViewController alloc]
+                                                       initWithNibName:@"SocializePostCommentViewController" bundle:nil entityUrlString:entityURL]
+                                                      autorelease];
+    return postCommentViewController;
 }
 
-- (void)dealloc
-{
-    [commentTextView release];
-    [doNotShareLocationButton release];
-    [activateLocationButton release];
-    [mapOfUserLocation release];
-    [locationText release];
-    [_entityUrlString release];
-    [kbListener release];
-    [locationManager release];
-    [_facebookAuthQuestionDialog release];
-    [_geoCoderInfo release];
+- (void)dealloc {
+    self.facebookButton = nil;
+    self.commentObject = nil;
 
     [super dealloc];
 }
 
-- (UIAlertView*)facebookAuthQuestionDialog {
-    if (_facebookAuthQuestionDialog == nil) 
-    {
-        _facebookAuthQuestionDialog = [[UIAlertView alloc]
-                                       initWithTitle:@"Facebook?" message:@"You are not authenticated with Facebook. Authenticate with Facebook now?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-    }
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    return _facebookAuthQuestionDialog;
+    self.title = @"New Comment";
+    [self configureFacebookButton];
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (alertView == self.facebookAuthQuestionDialog) 
-    {   
-        if (buttonIndex == 1)
-        {
-            [self.socialize authenticateWithFacebook];
-        } else
-        {
-            [self createComment];
-        }
-    } 
-}
-
-#pragma Location enable/disable button callbacks
--(void) startLoadAnimationForView: (UIView*) view
-{
-    [super startLoadAnimationForView:view];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
-}
-
--(void) stopLoadAnimation
-{
-    [super  stopLoadAnimation];
-    self.navigationItem.rightBarButtonItem.enabled = YES; 
-}
-
-
-
--(void)updateViewWithNewLocation: (CLLocation*)userLocation
-{   
-    if (userLocation) {
-        
-        [mapOfUserLocation setFitLocation: userLocation.coordinate withSpan: [CommentMapView coordinateSpan]];
-        
-        __block id geocoder = [[_geoCoderInfo alloc]init];
-        
-        [geocoder reverseGeocodeLocation:userLocation completionHandler:^(NSArray*placemarks, NSError *error)
-         {
-             if(error)
-             {
-                 NSLog(@"reverseGeocoder didFailWithError:%@", error);
-                 locationManager.currentLocationDescription = NO_CITY_MSG;
-             }
-             else
-             {
-                 locationManager.currentLocationDescription = [NSString stringWithPlacemark:[placemarks objectAtIndex:0]];
-             }
-             [self setUserLocation];
-             [geocoder autorelease];
-         }
-         ];
-    }
-}
-
--(void)setUserLocation
-{
-    if (locationManager.shouldShareLocation) {
-        [self.locationText text: locationManager.currentLocationDescription 
-                   withFontName: @"Helvetica" 
-                   withFontSize: 12.0 
-                      withColor: [UIColor colorWithRed:(35.0/255) green:(130.0/255) blue:(210.0/255) alpha:1]
-         ];
-    }
-    else {
-        [self.locationText text: @"Location will not be shared." 
-                   withFontName: @"Helvetica-Oblique" 
-                   withFontSize: 12.0 
-                      withColor: [UIColor colorWithRed:(167.0/255) green:(167.0/255) blue:(167.0/255) alpha:1]
-         ];
-    }
-}
-
--(void)configureDoNotShareLocationButton
-{   
-    UIImage * normalImage = [[UIImage imageNamed:@"socialize-comment-button.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
-    UIImage * highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
+- (void)viewDidUnload {
+    [super viewDidUnload];
     
-    [self.doNotShareLocationButton setBackgroundImage:normalImage forState:UIControlStateNormal];
-	[self.doNotShareLocationButton setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
+    self.facebookButton = nil;
+}
+
+- (void)configureFacebookButton {
+    if ([self.socialize isAuthenticatedWithFacebook]) {
+        BOOL dontPost = [[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
+        self.facebookButton.hidden = NO;
+        self.facebookButton.selected = !dontPost;
+    } else {
+        self.facebookButton.hidden = YES;
+    }
+}
+
+- (void)createCommentOnSocializeServer {
+    [self startLoading];
     
-}
-
--(void)setShareLocation:(BOOL)enableLocation 
-{   
-    locationManager.shouldShareLocation = enableLocation;
-    if (enableLocation) {
-        if (![locationManager applicationIsAuthorizedToUseLocationServices])
-        {
-            [self showAllertWithText:@"Please Turn On Location Services in Settings to Allow This Application to Share Your Location." andTitle:nil];
-            return;
-        }
-       
-        [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateNormal];
-        [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateHighlighted];
-        
-    }
-    else
-    {   
-        [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-disabled.png"] forState:UIControlStateNormal];
-        [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-disabled.png"] forState:UIControlStateHighlighted];   
-    }
-    
-    [self setUserLocation];
-}
-
-#pragma mark - Buttons actions
-
--(IBAction)activateLocationButtonPressed:(id)sender
-{
-    if (locationManager.shouldShareLocation)
-    {
-        if (kbListener.isVisible) 
-        {
-            [commentTextView resignFirstResponder];          
-        }
-        else
-        {
-            [commentTextView becomeFirstResponder];
-        }            
-    }
-    else
-    {
-        [self setShareLocation:YES];
-    }
-}
-
--(IBAction)doNotShareLocationButtonPressed:(id)sender
-{  
-    [self setShareLocation:NO];
-    [commentTextView becomeFirstResponder];
-}
-
-- (void)createComment {
-    if(locationManager.shouldShareLocation)
+    if(self.locationManager.shouldShareLocation)
     {
         NSNumber* latitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.latitude];
         NSNumber* longitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.longitude];        
-        [self.socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:longitude latitude:latitude];
+        [self.socialize createCommentForEntityWithKey:self.entityURL comment:commentTextView.text longitude:longitude latitude:latitude];
     }
     else
-        [self.socialize createCommentForEntityWithKey:_entityUrlString comment:commentTextView.text longitude:nil latitude:nil];
+        [self.socialize createCommentForEntityWithKey:self.entityURL comment:commentTextView.text longitude:nil latitude:nil];
 }
 
-- (void)authenticateViaFacebook {
-    [self.facebookAuthQuestionDialog show];
+- (BOOL)shouldSendToFacebook {
+    return self.facebookButton.selected && !self.facebookButton.hidden;
 }
 
-#pragma mark - navigation bar button actions
--(void)sendButtonPressed:(id)button {
-    [self startLoadAnimationForView:commentTextView];
-    
-    if (![self.socialize isAuthenticatedWithFacebook] && [Socialize facebookAppId] != nil) {
-        [self authenticateViaFacebook];
-    } else {
-        [self createComment];
-    }
-}
-
--(void)closeButtonPressed:(id)button {
-    [self stopLoadAnimation];
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-#pragma mark - SocializeServiceDelegate
-
--(void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object{   
-    // Rapid animated dismissal does not work on iOS5 (but works in iOS4)
+- (void)dismissSelf {
+    // Double animated dismissal does not work on iOS5 (but works in iOS4)
     // Allow previous modal dismisalls to complete. iOS5 added dismissViewControllerAnimated:completion:, which
-    // we would use here if backward compatibility was not required.
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, MIN_DISMISS_INTERVAL * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    // we would use here if backward compatibility was not required.   
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, MIN_MODAL_DISMISS_INTERVAL * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self stopLoadAnimation];
         [self dismissModalViewControllerAnimated:YES];
     });
 }
 
-- (void)showProfile {
-    SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
-    profile.delegate = self;
+- (void)finishCreateComment {
     
-    UINavigationController *navigationController = [[[UINavigationController alloc]
-                                                     initWithRootViewController:profile]
-                                                    autorelease];
+    // Create the comment object if not already created.
+    if (self.commentObject == nil) {
+        [self createCommentOnSocializeServer];
+        return;
+    }
     
-    [self presentModalViewController:navigationController animated:YES];
-}
-
-- (void)profileViewControllerDidSave:(SocializeProfileViewController *)profileViewController {
-    [self dismissModalViewControllerAnimated:YES];
-    [self startLoadAnimationForView:commentTextView];
-    [self createComment];
-}
-
-- (void)profileViewControllerDidCancel:(SocializeProfileViewController *)profileViewController {
-    [self dismissModalViewControllerAnimated:YES];
-    [self startLoadAnimationForView:commentTextView];
-    [self createComment];
-}
-
--(void)service:(SocializeService *)service didFail:(NSError *)error
-{
-    if([service isKindOfClass:[SocializeAuthenticateService class]])
-    {
-        [super service:service didFail:error];
+    // Send activity to facebook if the user requested it
+    if (!self.commentSentToFacebook && [self shouldSendToFacebook]) {
+        [self sendActivityToFacebookFeed:self.commentObject];
+        return;
     }
-    else
-    {   
-        [self stopLoadAnimation];
-        [self showAllertWithText:[error localizedDescription] andTitle:@"Post comment"];  
-    }
+    
+    [self dismissSelf];
+}
+- (void)afterFacebookLoginAction {
+    [self configureFacebookButton];
 }
 
--(void)didAuthenticate:(id<SocializeUser>)user {
-    if (![SocializeAuthenticateService isAuthenticatedWithFacebook]) {
-        [super didAuthenticate:user];//complete anonymous authentication
+- (void)facebookButtonPressed:(UIButton *)sender {
+    sender.selected = !sender.selected;
+}
+
+-(void)sendButtonPressed:(UIButton*)button {
+    if (![self.socialize isAuthenticatedWithFacebook]) {
+        [self presentModalViewController:self.authViewController animated:YES];
     } else {
-        [self stopLoadAnimation];
-        [self showProfile];
+        [self finishCreateComment];
     }
 }
 
-
-#pragma mark - UITextViewDelegate callbacks
-
--(void)textViewDidChange:(UITextView *)textView {
-    if ([commentTextView.text length] > 0) 
-      self.navigationItem.rightBarButtonItem.enabled = YES;     
-    else
-      self.navigationItem.rightBarButtonItem.enabled = NO;
+- (void)sendActivityToFacebookFeedSucceeded {
+    self.commentSentToFacebook = YES;
+    [self finishCreateComment];
 }
 
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    self.title = @"New Comment";
-    
-    UIButton * closeButton = [UIButton blackSocializeNavBarButtonWithTitle:@"Cancel"];
-    [closeButton addTarget:self action:@selector(closeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem * leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:closeButton];
-    
-    self.navigationItem.leftBarButtonItem = leftButtonItem;
-    [leftButtonItem release];
-    
-    UIButton * sendButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Send"];
-    [sendButton addTarget:self action:@selector(sendButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem * rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:sendButton];
-    rightButtonItem.enabled = NO;
-    
-    self.navigationItem.rightBarButtonItem = rightButtonItem;
-    [rightButtonItem release];
+- (void)sendActivityToFacebookFeedCancelled {
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self.commentTextView becomeFirstResponder];    
-    [self setShareLocation:locationManager.shouldShareLocation];
-    
-    [mapOfUserLocation configurate];
-    [self configureDoNotShareLocationButton];       
-    [self updateViewWithNewLocation: mapOfUserLocation.userLocation.location];
+-(void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object {
+    if ([object conformsToProtocol:@protocol(SocializeComment)]) {
+        self.commentObject = (id<SocializeComment>)object;
+        [self finishCreateComment];
+    }
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-        
-    self.commentTextView = nil;
-    self.locationText = nil;
-    self.doNotShareLocationButton = nil;
-    self.activateLocationButton = nil;
-    self.mapOfUserLocation = nil;
-    self.facebookAuthQuestionDialog = nil;
+-(void)authorizationSkipped {
+    [self finishCreateComment];    
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+-(void)socializeAuthViewController:(SocializeAuthViewController *)authViewController didAuthenticate:(id<SocializeUser>)user {
+    // FIXME [#20995319] auth flow in wrong place
+    [self afterFacebookLoginAction];
+    [self finishCreateComment];    
 }
 
-#pragma mark - Map View Delegate
-
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    [self updateViewWithNewLocation:userLocation.location];
-}
 
 @end

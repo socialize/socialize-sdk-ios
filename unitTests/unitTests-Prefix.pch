@@ -56,4 +56,5 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "SocializeService+Testing.h"
+    #import "TestUtils.h"
 #endif

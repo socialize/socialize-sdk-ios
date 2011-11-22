@@ -69,6 +69,7 @@
     [super viewDidLoad];
     [self.entityView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.entityUrl]]];
     bar = [[SocializeActionBar actionBarWithUrl:self.entityUrl presentModalInController:self] retain];
+//    bar.view.frame = CGRectMake(0, 0, <#CGFloat width#>, <#CGFloat height#>)
     [self.view addSubview:bar.view];
 }
 
@@ -84,7 +85,8 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait ||
+            UIInterfaceOrientationIsLandscape(interfaceOrientation));
 }
 
 @end

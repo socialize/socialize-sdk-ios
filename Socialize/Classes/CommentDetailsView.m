@@ -18,7 +18,6 @@
 -(void) configurateProfileImage;
 -(void) moveSubview: (UIView*) subView onValue: (CGFloat) value;
 -(CGFloat) desideSize;
--(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height;
 @end
 
 @implementation CommentDetailsView
@@ -29,26 +28,30 @@
 @synthesize positionLable;
 @synthesize showMap;
 @synthesize profileNameButton;
-@synthesize profileNameLable;
 @synthesize profileImage;
 @synthesize shadowBackground;
+@synthesize shadowMapOfUserLocation;
 
 - (id)initWithCoder:(NSCoder *)decoder
 {
     self = [super initWithCoder:decoder];
     if(self)
     {
-        self.autoresizesSubviews = NO;
-        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        //self.autoresizesSubviews = NO;
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
         self.backgroundColor = [UIColor colorWithRed:65/ 255.f green:77/ 255.f blue:86/ 255.f alpha:1.0];
         
         
-        self.profileNameLable.textColor = [UIColor colorWithRed:217/ 255.f green:225/ 255.f blue:232/ 255.f alpha:1.0];
-        self.profileNameLable.layer.shadowOpacity = 0.9;   
-        self.profileNameLable.layer.shadowRadius = 1.0;
-        self.profileNameLable.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.profileNameLable.layer.shadowOffset = CGSizeMake(0.0, -1.0);
-        self.profileNameLable.layer.masksToBounds = NO;   
+        self.profileNameButton.titleLabel.textColor = [UIColor colorWithRed:217/ 255.f green:225/ 255.f blue:232/ 255.f alpha:1.0];
+        self.profileNameButton.titleLabel.layer.shadowOpacity = 0.9;   
+        self.profileNameButton.titleLabel.layer.shadowRadius = 1.0;
+        self.profileNameButton.titleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.profileNameButton.titleLabel.layer.shadowOffset = CGSizeMake(0.0, -1.0);
+        self.profileNameButton.titleLabel.layer.masksToBounds = NO; 
+        
+        
+        
+
     }
     return self;
 }
@@ -79,7 +82,13 @@
 -(void)configurateView
 {
     [self configurateProfileImage];
-    [self.mapOfUserLocation configurate];
+    [self.mapOfUserLocation roundCorners];
+    
+    shadowMapOfUserLocation.layer.cornerRadius = 3.0;
+    shadowMapOfUserLocation.layer.shadowColor = [UIColor colorWithRed:22/ 255.f green:28/ 255.f blue:31/ 255.f alpha:1.0].CGColor;
+    shadowMapOfUserLocation.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    shadowMapOfUserLocation.layer.shadowOpacity = 0.9f;
+    shadowMapOfUserLocation.layer.shadowRadius = 3.0f;
 }
 
 -(void) updateProfileImage: (UIImage* )image
@@ -111,7 +120,7 @@
 
 -(void) updateUserName: (NSString*)name
 {
-    self.profileNameLable.text = name;
+    [self.profileNameButton setTitle:name forState:UIControlStateNormal];
 }
 
 -(void) updateGeoLocation: (CLLocationCoordinate2D) location
@@ -139,24 +148,19 @@
 
 -(void) updateComponentsLayoutWithCommentViewHeight: (CGFloat) height
 {    
-    CGRect profileNameLableFrame = self.profileNameLable.frame;
-    profileNameLableFrame.size = [self.profileNameLable.text sizeWithFont:self.profileNameLable.font];
-    self.profileNameButton.frame = profileNameLableFrame;
-  
-    
     CGRect commentFrame = commentMessage.frame;
     commentFrame.size.height = height;
     commentMessage.frame = commentFrame;
     
     if(showMap){
         [self moveSubview: shadowBackground onValue: commentMessage.frame.origin.y + commentMessage.frame.size.height];
-        [self moveSubview: mapOfUserLocation onValue: commentMessage.frame.origin.y + commentMessage.frame.size.height + VIEW_OFSET_SIZE];
-        [self moveSubview: navImage onValue: mapOfUserLocation.frame.origin.y + mapOfUserLocation.frame.size.height + GEO_LABLE_OFSSET];
-        [self moveSubview: positionLable onValue: mapOfUserLocation.frame.origin.y + mapOfUserLocation.frame.size.height + GEO_LABLE_OFSSET]; 
+        [self moveSubview: shadowMapOfUserLocation onValue: commentMessage.frame.origin.y + commentMessage.frame.size.height + VIEW_OFSET_SIZE];
+        [self moveSubview: navImage onValue: shadowMapOfUserLocation.frame.origin.y + shadowMapOfUserLocation.frame.size.height + GEO_LABLE_OFSSET];
+        [self moveSubview: positionLable onValue: shadowMapOfUserLocation.frame.origin.y + shadowMapOfUserLocation.frame.size.height + GEO_LABLE_OFSSET]; 
     }
     else {
-        [self.mapOfUserLocation removeFromSuperview];
-        self.mapOfUserLocation = nil;
+        [self.shadowMapOfUserLocation removeFromSuperview];
+        self.shadowMapOfUserLocation = nil;
         
         [self moveSubview: shadowBackground onValue: commentMessage.frame.origin.y + commentMessage.frame.size.height];
         [self moveSubview: navImage onValue: commentMessage.frame.origin.y + commentMessage.frame.size.height + VIEW_OFSET_SIZE];
@@ -187,9 +191,9 @@
     [navImage release]; navImage = nil;
     [profileNameButton release]; profileNameButton = nil;
     [positionLable release]; positionLable = nil;
-    [profileNameLable release]; profileNameLable = nil;
     [profileImage release]; profileImage = nil;
     [shadowBackground release]; shadowBackground = nil;
+    [shadowMapOfUserLocation release]; shadowMapOfUserLocation = nil;
     
     [super dealloc];
 }

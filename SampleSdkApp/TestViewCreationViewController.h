@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Socialize/Socialize.h>
-#import "LoadingView.h"
+#import "SocializeLoadingView.h"
 
 @interface TestViewCreationViewController : UIViewController<SocializeServiceDelegate> {
  
@@ -18,7 +18,7 @@
     IBOutlet UIButton*    createButton;
 
     Socialize*            _socialize;
-    LoadingView*          _loadingView;
+    SocializeLoadingView*          _loadingView;
     
     /*info view */
     

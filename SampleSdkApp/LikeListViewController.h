@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Socialize/Socialize.h>
-#import "LoadingView.h"
+#import "SocializeLoadingView.h"
 
 @interface LikeListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SocializeServiceDelegate> {
 
@@ -22,7 +22,7 @@
     IBOutlet UIButton*    getLikesButton;
     
     UIButton*             hiddenButton;
-    LoadingView*          _loadingView;
+    SocializeLoadingView*          _loadingView;
 }
 
 @property (retain,nonatomic) IBOutlet UITableView* tableView;

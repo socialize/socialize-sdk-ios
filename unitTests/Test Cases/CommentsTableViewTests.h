@@ -11,11 +11,15 @@
 #import <UIKit/UIKit.h>
 
 @class SocializeCommentsTableViewController;
-@class SocializePostCommentViewController;
+@class SocializeComposeMessageViewController;
 
 @interface CommentsTableViewTests : GHTestCase {
     SocializeCommentsTableViewController* listView;
     id                                    postCommentController;
 }
+
+@property (nonatomic, retain) id mockSocialize;
+@property (nonatomic, retain) id mockComment;
+@property (nonatomic, retain) id partialMockCommentTableViewController;
 
 @end

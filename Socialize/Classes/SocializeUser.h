@@ -40,7 +40,7 @@
 -(void)setThirdPartyAuth:(NSArray*)auth;
 -(NSArray*)thirdPartyAuth;
 
--(NSNumber*)userIdForThirdPartyAuth:(ThirdPartyAuthName) auth;
+-(NSNumber*)userIdForThirdPartyAuth:(SocializeThirdPartyAuthType) auth;
 
 @end
 
@@ -67,6 +67,6 @@
 @property (nonatomic, copy) NSString* meta;
 @property (nonatomic, copy) NSArray* thirdPartyAuth;
 
--(NSNumber*)userIdForThirdPartyAuth:(ThirdPartyAuthName) auth;
+-(NSNumber*)userIdForThirdPartyAuth:(SocializeThirdPartyAuthType) auth;
 
 @end

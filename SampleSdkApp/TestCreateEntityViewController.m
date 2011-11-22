@@ -81,7 +81,7 @@
         [self.view addSubview:hiddenButton];
     }
 
-    _loadingView = [LoadingView loadingViewInView:self.view]; 
+    _loadingView = [SocializeLoadingView loadingViewInView:self.view]; 
     [_socialize createEntityWithUrl:createEntityUrlTextField.text andName:createEntityNameTextField.text];
 }
 

@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 extern BOOL useBackgroundImage;
+extern const NSInteger UINavigationBarBackgroundImageTag;
 
 @interface UINavigationBar(UINavigationBarCategory) 
 - (void)setBackgroundImage:(UIImage*)image;
 - (void)showBackgroundImage;
 - (void)hideBackgroundImage;
+- (UIImage*)backgroundImage;
 
 -(void)setBackgroundImage:(UIImage*)image withTag:(NSInteger)bgTag;
--(void)resetBackground:(NSInteger)bgTag;
 -(void)removeBackgroundWithTag:(NSInteger)bgTag;
+-(void)resetBackground;
 @end

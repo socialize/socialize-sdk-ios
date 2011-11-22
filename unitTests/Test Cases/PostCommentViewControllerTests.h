@@ -29,8 +29,11 @@
 
 #import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
+#import "SocializeComposeMessageViewControllerTests.h"
 
-@interface PostCommentViewControllerTests : GHTestCase {
-}
+@class SocializePostCommentViewController;
 
+@interface PostCommentViewControllerTests : SocializeComposeMessageViewControllerTests
+@property (nonatomic, retain) SocializePostCommentViewController *postCommentViewController;
+@property (nonatomic, retain) id mockFacebookButton;
 @end

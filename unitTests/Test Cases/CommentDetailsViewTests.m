@@ -88,12 +88,14 @@
 
 -(void)testUpdateUserName
 {
-    id profileLable = [OCMockObject niceMockForClass: [UILabel class]];
-    [[profileLable expect] setText:@"Testuser"];
-    commentView.profileNameLable = profileLable;
-    
-    [commentView updateUserName:@"Testuser"];
-    [profileLable verify];
+    NSString *testName = @"somestring";
+    id mockButton = [OCMockObject mockForClass:[UIButton class]];
+    id mockLabel = [OCMockObject mockForClass:[UILabel class]];
+    [[mockButton expect] setTitle:testName forState:UIControlStateNormal];
+    commentView.profileNameButton = mockButton;
+    [commentView updateUserName:testName];
+    [mockButton verify];
+    [mockLabel verify];
 }
 
 -(void)testUpdateGeoLocation
@@ -124,7 +126,7 @@
 -(void) testConfigurateView
 {
     id mockMap = [OCMockObject niceMockForClass: [CommentMapView class]];
-    [[mockMap expect] configurate];
+    [[mockMap expect] roundCorners];
     commentView.mapOfUserLocation = mockMap;
     
     [commentView configurateView];
@@ -145,6 +147,14 @@
     [commentView webViewDidFinishLoad:mockCommentView];
     
     [mockCommentView verify];
+}
+
+
+-(void)testAutoresizeMask
+{
+    CommentDetailsView* view = [[CommentDetailsView alloc] initWithCoder:nil];
+    GHAssertTrue(view.autoresizingMask == (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin), nil);
+    [view release];
 }
 
 @end

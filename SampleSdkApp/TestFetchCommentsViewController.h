@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <Socialize/Socialize.h>
-#import "LoadingView.h"
+#import "SocializeLoadingView.h"
 
 @interface TestFetchCommentsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SocializeServiceDelegate> {
     
     IBOutlet UITextField*     _textField;
     IBOutlet UITableView*     _tableView;
     IBOutlet UIButton*        _fetchButton;
-    LoadingView*              _loadingView;
+    SocializeLoadingView*              _loadingView;
     
     NSArray*                  _comments;
     Socialize*                _socialize;

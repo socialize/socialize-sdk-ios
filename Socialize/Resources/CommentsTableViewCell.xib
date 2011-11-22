@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">11B26</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1138</string>
-		<string key="IBDocument.HIToolboxVersion">566.00</string>
+		<string key="IBDocument.SystemVersion">10K549</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1934</string>
+		<string key="IBDocument.AppKitVersion">1038.36</string>
+		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">933</string>
+			<string key="NS.object.0">931</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -130,7 +130,6 @@
 								<string key="NSFrame">{{58, 32}, {254, 21}}</string>
 								<reference key="NSSuperview" ref="170546375"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -162,7 +161,7 @@
 							</object>
 							<object class="IBUILabel" id="12128339">
 								<reference key="NSNextResponder" ref="170546375"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">289</int>
 								<string key="NSFrame">{{244, 5}, {62, 21}}</string>
 								<reference key="NSSuperview" ref="170546375"/>
 								<reference key="NSWindow"/>
@@ -232,7 +231,7 @@
 							</object>
 							<object class="IBUIImageView" id="562419667">
 								<reference key="NSNextResponder" ref="170546375"/>
-								<int key="NSvFlags">-2147483356</int>
+								<int key="NSvFlags">-2147483359</int>
 								<string key="NSFrame">{{228, 10}, {9, 12}}</string>
 								<reference key="NSSuperview" ref="170546375"/>
 								<reference key="NSWindow"/>
@@ -727,6 +726,6 @@
 				<string>{9, 12}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">933</string>
+		<string key="IBCocoaTouchPluginVersion">931</string>
 	</data>
 </archive>

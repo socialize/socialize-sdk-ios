@@ -72,6 +72,7 @@
 
 - (void) dealloc
 {
+    _geocoder.delegate = nil;
     [_geocoder release];
     [handler release];
     [super dealloc];

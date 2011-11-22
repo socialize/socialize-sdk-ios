@@ -47,4 +47,13 @@
  */
 -(void)createViewForEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 
+/**
+ Get views on the given entity key
+ 
+ @param key Entity URL.
+ @param first The first view object to get. (OPTIONAL)
+ @param last The last view object to get. (OPTIONAL)
+ */
+//-(void)getViewsForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last;
+
 @end

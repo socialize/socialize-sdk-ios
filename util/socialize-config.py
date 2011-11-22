@@ -1,25 +1,7 @@
 #!/usr/bin/env python
 
+from plutil import *
 import sys
-import collections
-import plistlib
-
-def nested_update(d, u):
-    for k, v in u.iteritems():
-        if isinstance(v, collections.Mapping):
-            r = nested_update(d.get(k, {}), v)
-            d[k] = r
-        else:
-            d[k] = u[k]
-    return d
-
-def update_plist(config_filepath , u):
-    f = open(config_filepath, 'r')
-    plist = plistlib.readPlist(f)
-    nested_update(plist, u)
-    f.close()
-    f = open(config_filepath, 'w')
-    plistlib.writePlist(plist, f)
 
 if __name__ == '__main__':
   if len(sys.argv) != 7:

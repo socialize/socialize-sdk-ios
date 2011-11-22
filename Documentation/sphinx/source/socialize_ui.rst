@@ -18,9 +18,38 @@ To incorporate the Socialize UI views into your app you need to be authenticated
 
     <script src="https://gist.github.com/1274157.js?file=appDelegate.m"></script>
 
-In the next release we will add anonymous authentication in the UI stuff.
+Socialize Action Bar
+----------------------
 
+v0.8.0 of the Socialize SDK introduced the "Action Bar", which allows your users to easily
+comment and like/unlike entities
 
+.. image:: images/action_bar.png	
+
+Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller:
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1315113.js"> </script>
+
+By default, the Action Bar will automatically place itself at the bottom of its
+superview and adjust to rotation.  If you find that content is being hidden,
+one option is to ensure that 44 pixels are left empty at the bottom of your
+view. When using interface builder, this is as simple as sliding up the bottom
+of any content.
+
+If you still find you have problems, and you would like to disable the auto
+layout feature completely, you can do so. The following example disables
+autolayout and manually places the Action Bar at (0,400).
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1374087.js"> </script>
+
+If you need more detail on installing the action bar please see our `Adding the Socialize Action Bar Video`_.
+
+    .. _Adding the Socialize Action Bar Video: http://vimeo.com/31403049
+ 
 Comment View
 ----------------------
 v0.4.0 of the Socialize SDK introduced the "Comment View" which provides the creation and viewing 
@@ -39,19 +68,6 @@ When you want to launch the comment view, simply instantiate and present the com
 
         <script src="https://gist.github.com/1293791.js"> </script>
 
-Socialize Action Bar
-----------------------
-
-v0.8.0 of the Socialize SDK introduce the "Action Bar", which lets your users easily
-comment and like/unlike entities
-
-.. image:: images/action_bar.png	
-
-Just instantiate a SocializeActionBar controller and add the view to your view controller:
-
-.. raw:: html
-
-        <script src="https://gist.github.com/1315113.js"> </script>
 
 Adding Facebook Support
 -------------------------
@@ -61,7 +77,7 @@ Let Socialize know your Facebook app id.  You can register or find your Facebook
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1294278.js?file=gistfile1.m"></script>
+        <script src="https://gist.github.com/1375443.js?file=gistfile1.m"></script>
 
 You must register your app to open with your facebook app id url by adding a URL Types array to your Application's <MyApp>-Info.plist.
 The string is a lowercase fb followed by your app id. The example app is configured as below:
@@ -72,5 +88,5 @@ You must also be sure to call [Socialize handleOpenURL:url] from your UIApplicat
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1294195.js?file=appDelegate.m"></script>
+        <script src="https://gist.github.com/1375464.js?file=appDelegate.m"></script>
 
