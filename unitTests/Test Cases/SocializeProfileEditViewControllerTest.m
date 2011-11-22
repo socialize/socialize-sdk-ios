@@ -204,6 +204,7 @@
     [[mockValueLabel expect] setText:@"Mister"];
     [[mockArrowImageView expect] setHidden:NO];
     [[mockCell expect] setBackgroundColor:[UIColor colorWithRed:44/255.0f green:54/255.0f blue:63/255.0f alpha:1.0]];
+    [[mockCell expect] setSelectionStyle:UITableViewCellSelectionStyleBlue];
     UITableViewCell *cell = [self.profileEditViewController tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPropertiesRowFirstName inSection:SocializeProfileEditViewControllerSectionProperties]];
     GHAssertEquals(cell, mockCell, @"Bad cell");
 }
@@ -272,6 +273,7 @@
     [[mockCell expect] setSelectionStyle:UITableViewCellSelectionStyleNone];
     [[mockCell expect] setAccessoryView:self.mockFacebookSwitch];
     [[mockCell expect] setBackgroundColor:[UIColor colorWithRed:35/255.0f green:43/255.0f blue:50/255.0f alpha:1.0]];
+    [[mockCell expect] setSelectionStyle:UITableViewCellSelectionStyleNone];
     [[[self.mockTableView expect] andReturn:nil] dequeueReusableCellWithIdentifier:OCMOCK_ANY];
 
     [self.profileEditViewController tableView:self.mockTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPermissionsRowFacebook inSection:SocializeProfileEditViewControllerSectionPermissions]];
