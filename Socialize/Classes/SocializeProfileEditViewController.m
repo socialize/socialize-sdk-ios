@@ -301,6 +301,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
             
         case SocializeProfileEditViewControllerSectionProperties:
             cell = [self getNormalCell];
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             NSString *keyText = SocializeProfileEditViewControllerPropertiesInfoItems[indexPath.row].displayName;
             NSString *valueText = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
             [[(SocializeProfileEditTableViewCell*)cell keyLabel] setText:keyText];
@@ -310,6 +311,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
             
         case SocializeProfileEditViewControllerSectionPermissions:
             cell = [self getNormalCell];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             switch (indexPath.row) {
                 case SocializeProfileEditViewControllerPermissionsRowFacebook:
                     [[(SocializeProfileEditTableViewCell*)cell keyLabel] setText:@"Post to Facebook"];
@@ -434,13 +436,13 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 	{
 		[self showActionSheet];
 		return;
-	}
-    
-    NSString *editName = SocializeProfileEditViewControllerPropertiesInfoItems[indexPath.row].editName;
-    self.editValueController.title = editName;
-    self.editValueController.valueToEdit = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
-    self.editValueController.indexPath = indexPath;
-    [self.navigationController pushViewController:self.editValueController animated:YES];
+	} else if (indexPath.section == SocializeProfileEditViewControllerSectionProperties) {
+        NSString *editName = SocializeProfileEditViewControllerPropertiesInfoItems[indexPath.row].editName;
+        self.editValueController.title = editName;
+        self.editValueController.valueToEdit = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
+        self.editValueController.indexPath = indexPath;
+        [self.navigationController pushViewController:self.editValueController animated:YES];
+    }
 }
 
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object
