@@ -343,11 +343,9 @@
     [[[mockUser expect] andReturn:@"toe"] lastName];
     [[[mockUser expect] andReturn:@"big toed joe"] description];
     self.profileViewController.fullUser = mockUser;
-    
+
     [[self.mockProfileEditViewController expect] setProfileImage:mockImage];
-    [[self.mockProfileEditViewController expect] setFirstName:@"joe"];
-    [[self.mockProfileEditViewController expect] setLastName:@"toe"];
-    [[self.mockProfileEditViewController expect] setBio:OCMOCK_ANY];
+    [[self.mockProfileEditViewController expect] setFullUser:mockUser];
     
     id mockNavigationControllerForEdit = [OCMockObject mockForClass:[UINavigationController class]];
     [[[(id)self.profileViewController stub] andReturn:mockNavigationControllerForEdit] navigationControllerForEdit];
@@ -356,72 +354,15 @@
     [self.profileViewController showEditController];
 }
 
-- (void)testSaveProfile {
+- (void)testUpdateProfileComplete {
+    id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
     id mockImage = [OCMockObject mockForClass:[UIImage class]];
-    [[[self.mockProfileEditViewController expect] andReturn:@"joe"] firstName];
-    [[[self.mockProfileEditViewController expect] andReturn:@"toe"] lastName];
-    [[[self.mockProfileEditViewController expect] andReturn:@"big toed joe"] bio];
-    [[[self.mockProfileEditViewController expect] andReturn:mockImage] profileImage];
-    
-    // The existing user should be copied, and updates applied
-    id mockOrigUser = [OCMockObject mockForClass:[SocializeFullUser class]];
-    id mockCopyUser = [OCMockObject mockForClass:[SocializeFullUser class]];
-    [[[mockOrigUser expect] andReturn:mockCopyUser] copy];
-    [[mockCopyUser expect] setFirstName:@"joe"];
-    [[mockCopyUser expect] setLastName:@"toe"];
-    [[mockCopyUser expect] setDescription:@"big toed joe"];
-    self.profileViewController.fullUser = mockOrigUser;
-
-    [[self.mockSocialize expect] updateUserProfile:mockCopyUser profileImage:mockImage];
-    
-    // FIXME subconfiguration is hard to test and unnecessary... code should be part of the edit controller, not this one
-    
-    // Handle configuration of profile edit subcontroller (UINavigationController loading view)
-    id mockNavigation = [OCMockObject mockForClass:[UINavigationController class]];
-    id mockView = [OCMockObject niceMockForClass:[UIView class]];
-    [[[mockNavigation expect] andReturn:mockView] view];
-    [[[self.mockProfileEditViewController stub] andReturn:mockNavigation] navigationController];
-    
-    // Handle configuration of profile edit subcontroller (UINavigationItem Right button enabled)
-    id mockButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
-    id mockSubNavigationItem = [OCMockObject mockForClass:[UINavigationItem class]];
-    [[[mockSubNavigationItem stub] andReturn:mockButton] rightBarButtonItem];
-    [[mockButton expect] setEnabled:NO];
-    [[[self.mockProfileEditViewController stub] andReturn:mockSubNavigationItem] navigationItem];
-    
-    [self.profileViewController profileEditViewControllerDidSave:self.mockProfileEditViewController];
-    
-    [mockButton verify];
-    [mockSubNavigationItem verify];
-    [mockNavigation verify];
-}
-
-- (void)testServiceFailure {
-    [[(id)self.profileViewController expect] stopLoading];
-    [[(id)self.profileViewController expect] showAlertWithText:OCMOCK_ANY andTitle:OCMOCK_ANY];
-    [self.profileViewController service:nil didFail:nil];
-}
-
-- (void)testUserLoadedFromServer {
-    id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
-    NSArray *elements = [NSArray arrayWithObject:mockFullUser];
-    
-    [[(id)self.profileViewController expect] stopLoading];
-    [[(id)self.profileViewController expect] setFullUser:mockFullUser];
-    [[(id)self.profileViewController expect] configureViews];
-    
-    [self.profileViewController service:nil didFetchElements:elements];
-}
-
-- (void)testUserUpdateSentToServer {
-    id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
-    
-    [[(id)self.profileViewController expect] stopLoading];
-    [[(id)self.profileViewController expect] setFullUser:mockFullUser];
+    [[[self.mockProfileEditViewController stub] andReturn:mockImage] profileImage];
+    [[[self.mockProfileEditViewController stub] andReturn:mockUser] fullUser];
     [[(id)self.profileViewController expect] configureViews];
     [[(id)self.profileViewController expect] hideEditController];
+    [self.profileViewController profileEditViewController:self.mockProfileEditViewController didUpdateProfileWithUser:mockUser];
     
-    [self.profileViewController service:nil didUpdate:mockFullUser];
 }
 
 @end

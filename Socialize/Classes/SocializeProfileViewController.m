@@ -79,11 +79,6 @@
     return [super initWithNibName:@"SocializeProfileViewController" bundle:nil];
 }
 
-- (void)getCurrentUser {
-    [self startLoading];
-    [self.socialize getCurrentUser];
-}
-
 - (void)afterAnonymouslyLoginAction {
     if (self.fullUser == nil && self.user == nil) {
         [self getCurrentUser];
@@ -237,10 +232,8 @@
 
 -(void)showEditController
 {
+    self.profileEditViewController.fullUser = self.fullUser;
     self.profileEditViewController.profileImage = self.profileImageView.image;
-    self.profileEditViewController.firstName = self.fullUser.firstName;
-    self.profileEditViewController.lastName = self.fullUser.lastName;
-    self.profileEditViewController.bio = [self.fullUser description];
     [self presentModalViewController:self.navigationControllerForEdit animated:YES];
 }
 
@@ -255,16 +248,10 @@
 	[self hideEditController];    
 }
 
-- (void)profileEditViewControllerDidSave:(SocializeProfileEditViewController *)profileEditViewController {
-    self.loadingView = [SocializeLoadingView loadingViewInView:self.profileEditViewController.navigationController.view];
-	self.profileEditViewController.navigationItem.rightBarButtonItem.enabled = NO;
-    
-    id<SocializeFullUser> userCopy = [(id)self.fullUser copy];
-    userCopy.firstName = self.profileEditViewController.firstName;
-    userCopy.lastName = self.profileEditViewController.lastName;
-    userCopy.description = self.profileEditViewController.bio;
-    UIImage* newProfileImage = self.profileEditViewController.profileImage;
-    [self.socialize updateUserProfile:userCopy profileImage:newProfileImage];
+- (void)profileEditViewController:(SocializeProfileEditViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
+    self.fullUser = user;
+    [self configureViews];
+    [self hideEditController];
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
@@ -273,23 +260,9 @@
     [self showAlertWithText:[NSString stringWithFormat: @"cannot get profile %@", [error localizedDescription]] andTitle:@"Error occurred"];
 }
 
--(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
-{
-    [self stopLoading];
-    
-    id<SocializeFullUser> fullUser = [dataArray objectAtIndex:0];
-    NSAssert([fullUser conformsToProtocol:@protocol(SocializeFullUser)], @"Not a socialize user");
+- (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser {
     self.fullUser = fullUser;
     [self configureViews];
 }
-
--(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object
-{
-    [self stopLoading];
-    self.fullUser = (id<SocializeFullUser>)object;
-    [self configureViews];
-    [self hideEditController];
-}
-
 
 @end
