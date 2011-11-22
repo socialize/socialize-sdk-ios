@@ -373,6 +373,14 @@
     [_activityService getActivityOfUser:user];
 }
 
+-(void)getActivityOfUserId:(NSInteger)userId {
+    [_activityService getActivityOfUserId:userId];
+}
+
+-(void)getActivityOfUserId:(NSInteger)userId first:(NSNumber*)first last:(NSNumber*)last activity:(SocializeActivityType)activityType {
+    [_activityService getActivityOfUserId:userId first:first last:last activity:activityType];
+}
+
 
 #pragma share service stuff
 

@@ -8,14 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeService.h"
-
-typedef enum {
-    SocializeCommentActivity,
-    SocializeLikeActivity,
-    SocializeShareActivity,
-    SocializeViewActivity,
-    SocializeAllActivity
-} SocializeActivityType;
+#import "SocializeCommonDefinitions.h"
 
 @protocol SocializeUser;
 
@@ -27,5 +20,6 @@ typedef enum {
 -(void) getActivityOfCurrentApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last;
 -(void) getActivityOfUser:(id<SocializeUser>)user;
 -(void) getActivityOfUser:(id<SocializeUser>)user first: (NSNumber*)first last:(NSNumber*)last activity: (SocializeActivityType) type;
-
+-(void) getActivityOfUserId:(NSInteger)userId first: (NSNumber*)first last:(NSNumber*)last activity: (SocializeActivityType) type;
+-(void) getActivityOfUserId:(NSInteger)userId;
 @end

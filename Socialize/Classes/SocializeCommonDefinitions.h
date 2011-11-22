@@ -21,3 +21,11 @@ typedef enum {
     SocializeShareMediumFacebook = 2,
     SocializeShareMediumOther = 3
 } SocializeShareMedium;
+
+typedef enum {
+    SocializeCommentActivity,
+    SocializeLikeActivity,
+    SocializeShareActivity,
+    SocializeViewActivity,
+    SocializeAllActivity
+} SocializeActivityType;
