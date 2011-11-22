@@ -404,7 +404,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 
 - (SocializeProfileEditValueViewController*)editValueController {
     if (editValueController_ == nil) {
-        editValueController_ = [[SocializeProfileEditValueViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        editValueController_ = [[SocializeProfileEditValueViewController alloc] init];
         editValueController_.delegate = self;
     }
     return editValueController_;
