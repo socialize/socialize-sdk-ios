@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-extern BOOL useBackgroundImage;
 extern const NSInteger UINavigationBarBackgroundImageTag;
 
 @interface UINavigationBar(UINavigationBarCategory) 
