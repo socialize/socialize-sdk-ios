@@ -58,10 +58,6 @@
         return NO;
 }
 
-+ (BOOL)isAuthenticatedWithFacebook {
-    return [self isAuthenticated] && [FacebookAuthenticator hasValidToken];
-}
-
 -(void)persistConsumerInfo:(NSString*)apiKey andApiSecret:(NSString*)apiSecret{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (userDefaults){
