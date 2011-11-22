@@ -243,6 +243,10 @@
         return NO;
     }
     
+    if (![FacebookAuthenticator hasValidToken]) {
+        return NO;
+    }
+    
     for (NSDictionary *auth in [[self authenticatedUser] thirdPartyAuth]) {
         if ([[auth objectForKey:@"auth_type"] isEqualToString:@"FaceBook"]) {
             return YES;

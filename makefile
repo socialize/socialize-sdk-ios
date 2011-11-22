@@ -2,6 +2,8 @@
 
 BUNDLE_SCHEME=Socialize Bundle
 
+CLEAN_SCHEMES = unitTests SampleSdkApp UIIntegrationTests IntegrationTests "Socialize Framework"
+
 default: build buildsample test package
  	# do all the dependencies above
 	#
@@ -25,8 +27,12 @@ buildsample:
      
 # If you need to clean a specific target/configuration: $(COMMAND) -target $(TARGET) -configuration DebugOrRelease -sdk $(SDK) clean
 clean:
-	xcodebuild -project SocializeSDK.xcodeproj -alltargets -configuration Debug -sdk iphonesimulator clean
-	xcodebuild -project SocializeSDK.xcodeproj -alltargets -configuration Release -sdk iphoneos clean
+	for scheme in $(CLEAN_SCHEMES); do \
+		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Debug -sdk iphoneos clean ; \
+		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Debug -sdk iphoneos clean ; \
+		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Release -sdk iphonesimulator clean ; \
+		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Release -sdk iphonesimulator clean ; \
+	done
 	rm -rfd build
 
 test:

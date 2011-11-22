@@ -92,6 +92,8 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 {
     [super viewDidLoad];
     
+    self.title = @"Edit Profile";
+    
     self.tableView.accessibilityLabel = @"edit profile";
     self.navigationItem.leftBarButtonItem = self.cancelButton;	
     self.saveButton.enabled = NO;
