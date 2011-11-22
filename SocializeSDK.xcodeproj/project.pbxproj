@@ -2119,7 +2119,6 @@
 		AAAFE87914355F1B00851C73 /* LikeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LikeListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAAFE87A14355F1B00851C73 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
 		AAAFE87B14355F1B00851C73 /* SocializeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeLoadingView.h; sourceTree = "<group>"; };
-		AAAFE87C14355F1B00851C73 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		AAAFE87D14355F1B00851C73 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AAAFE87E14355F1B00851C73 /* UIIntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "UIIntegrationTests-Info.plist"; sourceTree = "<group>"; };
 		AAAFE87F14355F1B00851C73 /* SampleSdkApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleSdkApp-Info.plist"; sourceTree = "<group>"; };
@@ -3356,7 +3355,6 @@
 				AAAFE87914355F1B00851C73 /* LikeListViewController.m */,
 				AAAFE87A14355F1B00851C73 /* LikeListViewController.xib */,
 				AAAFE87B14355F1B00851C73 /* SocializeLoadingView.h */,
-				AAAFE87C14355F1B00851C73 /* LoadingView.m */,
 				AAAFE88214355F1B00851C73 /* SampleSdkAppAppDelegate.h */,
 				AAAFE88314355F1B00851C73 /* SampleSdkAppAppDelegate.m */,
 				AAAFE88B14355F1B00851C73 /* StringHelper.h */,

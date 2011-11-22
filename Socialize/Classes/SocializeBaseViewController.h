@@ -31,6 +31,7 @@
 @class SocializeShareBuilder;
 @class SocializeLoadingView;
 @class SocializeProfileViewController;
+@class ImagesCache;
 
 @interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate> {
     @private 
@@ -49,6 +50,7 @@
 @property (nonatomic, assign) BOOL requestingFacebookFromUser;
 @property (nonatomic, retain) UIAlertView *sendActivityToFacebookFeedAlertView;
 @property (nonatomic, retain) SocializeShareBuilder *shareBuilder;
+@property (nonatomic, retain) ImagesCache *imagesCache;
 
 -(void) showAlertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoading;
@@ -71,4 +73,11 @@
 - (void)sendActivityToFacebookFeedFailed:(NSError*)error;
 - (void)sendActivityToFacebookFeedCancelled;
 - (UIBarButtonItem*)createLeftNavigationButtonWithCaption:(NSString*)caption;
+- (void)getCurrentUser;
+- (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser;
+- (void)loadImageAtURL:(NSString*)imageURL
+          startLoading:(void(^)())startLoadingBlock
+           stopLoading:(void(^)())stopLoadingBlock
+            completion:(void(^)(UIImage *image))completionBlock;
+
 @end
