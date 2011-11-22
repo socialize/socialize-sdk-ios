@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SocializeBaseViewController.h"
 
 @class SocializeEditValueTableViewCell;
 @protocol SocializeProfileEditValueViewControllerDelegate;
 
-@interface SocializeProfileEditValueViewController : UITableViewController <UITextFieldDelegate>
+@interface SocializeProfileEditValueViewController : SocializeBaseViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, assign) BOOL didEdit;
 @property (nonatomic, assign) IBOutlet SocializeEditValueTableViewCell * editValueCell;

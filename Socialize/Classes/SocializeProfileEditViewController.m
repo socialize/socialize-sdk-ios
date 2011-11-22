@@ -13,7 +13,7 @@
 #import "UIButton+Socialize.h"
 #import "SocializeProfileEditValueViewController.h"
 #import "SocializePrivateDefinitions.h"
-
+#import "UINavigationController+Socialize.h"
 
 typedef struct {
     NSString *displayName;
@@ -22,9 +22,9 @@ typedef struct {
 } SocializeProfileEditViewControllerPropertiesInfo;
 
 static SocializeProfileEditViewControllerPropertiesInfo SocializeProfileEditViewControllerPropertiesInfoItems[] = {
-    { @"first name", @"First name", @"firstName" },
-    { @"last name", @"Last name", @"lastName" },
-    { @"bio", @"Bio", @"bio" },
+    { @"first name", @"First name", @"fullUser.firstName" },
+    { @"last name", @"Last name", @"fullUser.lastName" },
+    { @"bio", @"Bio", @"fullUser.description" },
 };
 
 
@@ -39,9 +39,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 };
 
 @implementation SocializeProfileEditViewController
-@synthesize firstName = firstName_;
-@synthesize lastName = lastName_;
-@synthesize bio = bio_;
+@synthesize fullUser = fullUser_;
 @synthesize profileImageCell = profileImageCell_;
 @synthesize profileImage = profileImage_;
 @synthesize cellBackgroundColors = cellBackgroundColors_;
@@ -54,10 +52,18 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 @synthesize bundle = bundle_;
 @synthesize userDefaults = userDefaults_;
 
++ (UINavigationController*)profileEditViewControllerInNavigationController {
+    SocializeProfileEditViewController *profileEditViewController = [self profileEditViewController];
+    UINavigationController *navigationController = [UINavigationController socializeNavigationControllerWithRootViewController:profileEditViewController];
+    return navigationController;
+}
+
++ (SocializeProfileEditViewController*)profileEditViewController {
+    return [[[[self class] alloc] init] autorelease];
+}
+
 - (void)dealloc {
-    self.firstName = nil;
-    self.lastName = nil;
-    self.bio = nil;
+    self.fullUser = nil;
     self.profileImageCell = nil;
     self.profileImage = nil;
     self.cellBackgroundColors = nil;
@@ -99,12 +105,72 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.profileImageCell = nil;
 }
 
+- (void)reloadImageCell {
+	NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+	[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];    
+}
+
+- (void)setProfileImageFromImage:(UIImage*)image {
+    if (image == nil) {
+        self.profileImage = [UIImage imageNamed:@"socialize-profileimage-large-default.png"];
+    } else {
+        self.profileImage = image;
+    }
+    
+    [self reloadImageCell];
+}
+
+- (void)setProfileImageFromURL:(NSString*)imageURL {
+    if (imageURL == nil) {
+        [self setProfileImageFromImage:nil];
+    } else {
+        [self loadImageAtURL:imageURL
+                startLoading:^{
+                    [self.profileImageCell.spinner startAnimating];
+                } stopLoading:^{
+                    [self.profileImageCell.spinner stopAnimating];                    
+                } completion:^(UIImage *image) {
+                    [self setProfileImageFromImage:image];
+                }];
+    }
+}
+
+- (void)configureViews {
+    if (self.profileImage == nil) {
+        NSString *imageURL = self.fullUser.smallImageUrl;
+        [self setProfileImageFromURL:imageURL];
+    }
+    [self.tableView reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.fullUser == nil) {
+        [self getCurrentUser];
+    } else {
+        [self configureViews];
+    }
+}
+
+- (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser {
+    self.fullUser = fullUser;
+    [self configureViews];
+}
+
 - (void)cancelButtonPressed:(UIButton*)cancelButton {
-    [self.delegate profileEditViewControllerDidCancel:self];
+    if (self.delegate != nil) {
+        [self.delegate profileEditViewControllerDidCancel:self];
+    } else {
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (void)saveButtonPressed:(UIButton*)saveButton {
-    [self.delegate profileEditViewControllerDidSave:self];
+    [self startLoading];
+	self.navigationItem.rightBarButtonItem.enabled = NO;
+    
+    SocializeFullUser *newUser = [[(SocializeFullUser*)self.fullUser copy] autorelease];
+    [self.socialize updateUserProfile:newUser profileImage:self.profileImage];
 }
 
 - (NSArray*)cellBackgroundColors {
@@ -309,6 +375,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	DebugLog(@"getting callback from actions sheet. index is %i and cancel button index is:%i", buttonIndex, actionSheet.cancelButtonIndex);
 	if( buttonIndex == actionSheet.cancelButtonIndex ) {
+        [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 		return;
 	}	
 	if (buttonIndex == 1) {
@@ -330,16 +397,14 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 	[picker dismissModalViewControllerAnimated:YES];
 	
 	[self setProfileImage:image];
-    
-	NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-	[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [self reloadImageCell];
 }
 
 #pragma mark - Table view delegate
 
 - (SocializeProfileEditValueViewController*)editValueController {
     if (editValueController_ == nil) {
-        editValueController_ = [[SocializeProfileEditValueViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        editValueController_ = [[SocializeProfileEditValueViewController alloc] init];
         editValueController_.delegate = self;
     }
     return editValueController_;
@@ -376,6 +441,24 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.editValueController.valueToEdit = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
     self.editValueController.indexPath = indexPath;
     [self.navigationController pushViewController:self.editValueController animated:YES];
+}
+
+-(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object
+{
+    self.fullUser = (id<SocializeFullUser>)object;
+    [self stopLoading];
+    
+    if (self.delegate != nil) {
+        [self.delegate profileEditViewController:self didUpdateProfileWithUser:self.fullUser];
+    } else {
+        [self dismissModalViewControllerAnimated:YES];
+    }
+}
+
+-(void)service:(SocializeService*)service didFail:(NSError*)error
+{
+    [self stopLoading];
+    [super service:service didFail:error];
 }
 
 @end

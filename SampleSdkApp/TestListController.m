@@ -49,6 +49,7 @@
                       @"Test Tabbed Socialize Action Bar",
                       @"Test Current user activity",
                       @"Test Post a Share",
+                      @"Test Edit User Profile",
                       nil
                       ]retain];
 
@@ -247,6 +248,12 @@
                 UINavigationController *nav = [SocializePostShareViewController postShareViewControllerInNavigationControllerWithEntityURL:url];
                 [self presentModalViewController:nav animated:YES];
             }
+            break;
+        }
+        case 14:
+        {
+            UINavigationController *nav = [SocializeProfileEditViewController profileEditViewControllerInNavigationController];
+            [self.navigationController presentModalViewController:nav animated:YES];
             break;
         }
 

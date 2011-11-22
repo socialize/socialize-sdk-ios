@@ -141,12 +141,14 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     return [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil];
 }
     
-- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
-    [self profileViewDidFinish];    
+- (void)profileEditViewControllerDidCancel:(SocializeProfileEditViewController *)profileEditViewController {
+    [self profileViewDidFinish];        
 }
-- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController {
-    [self profileViewDidFinish];
+
+- (void)profileEditViewController:(SocializeProfileEditViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
+    [self profileViewDidFinish];            
 }
+
 - (void)profileViewDidFinish {
     SEL didAuthSelector = @selector(socializeAuthViewController:didAuthenticate:);
     if ([self.delegate respondsToSelector:didAuthSelector] ) {
@@ -154,13 +156,14 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     }
     [self dismissModalViewControllerAnimated:YES];
 }
+
 -(void)didAuthenticate:(id<SocializeUser>)user 
 {
     self.user = user;
     if ( [self.socialize isAuthenticatedWithFacebook] ) { 
-        SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
-        profile.delegate = self;
-        [self.navigationController pushViewController:profile animated:YES];
+        SocializeProfileEditViewController *profileEdit = [SocializeProfileEditViewController profileEditViewController];
+        profileEdit.delegate = self;
+        [self.navigationController pushViewController:profileEdit animated:YES];
     }
 }
 

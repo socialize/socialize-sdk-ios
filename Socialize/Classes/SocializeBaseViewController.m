@@ -33,6 +33,8 @@
 #import "SocializeProfileViewController.h"
 #import "SocializeShareBuilder.h"
 #import "SocializeFacebookInterface.h"
+#import "SocializeUserService.h"
+#import "ImagesCache.h"
 
 @interface SocializeBaseViewController () <SocializeProfileViewControllerDelegate, SocializeAuthViewControllerDelegate>
 -(void)leftNavigationButtonPressed:(id)sender;  
@@ -47,17 +49,20 @@
 @synthesize saveButton = saveButton_;
 @synthesize genericAlertView = genericAlertView_;
 @synthesize socialize = socialize_;
+@synthesize imagesCache = imagesCache_;
 @synthesize postFacebookAuthenticationProfileViewController = postFacebookAuthenticationProfileViewController_;
 @synthesize requestingFacebookFromUser = requestingFacebookFromUser_;
 @synthesize shareBuilder = shareBuilder_;
 @synthesize sendActivityToFacebookFeedAlertView = sendActivityToFacebookFeedAlertView_;
 @synthesize authViewController = authViewController_;
+
 - (void)dealloc
 {
     self.genericAlertView.delegate = nil;
     self.genericAlertView = nil;
     self.socialize.delegate = nil;
     self.socialize = nil;
+    self.imagesCache = nil;
     self.postFacebookAuthenticationProfileViewController = nil;
     self.shareBuilder = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
@@ -96,6 +101,14 @@
     }
     
     return socialize_;
+}
+
+- (ImagesCache*)imagesCache {
+    if (imagesCache_ == nil) {
+        imagesCache_ = [[ImagesCache sharedImagesCache] retain];
+    }
+    
+    return imagesCache_;
 }
 
 - (UIBarButtonItem*)saveButton {
@@ -234,7 +247,6 @@
     }
     
     [self.navigationController.navigationBar resetBackground];
-
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -393,6 +405,52 @@
     [self.shareBuilder performShareForPath:@"me/feed"];
 }
 
+- (void)loadImageAtURL:(NSString*)imageURL
+          startLoading:(void(^)())startLoadingBlock
+           stopLoading:(void(^)())stopLoadingBlock
+            completion:(void(^)(UIImage *image))completionBlock {
+    
+    // Already have it loaded
+    UIImage *existing = [self.imagesCache imageFromCache:imageURL];
+    if (existing != nil) {
+        completionBlock(existing);
+        return;
+    }
+    
+    // Download image
+    startLoadingBlock();
+    
+    // FIXME implementation should handle copy
+    CompleteBlock complete = [[^(ImagesCache* imgs){
+        stopLoadingBlock();
+        
+        UIImage *loadedImage = [imgs imageFromCache:imageURL];
+        completionBlock(loadedImage);
+    } copy] autorelease];
+    
+    [self.imagesCache loadImageFromUrl:imageURL
+                        completeAction:complete];
 
+}
+
+- (void)getCurrentUser {
+    [self startLoading];
+    [self.socialize getCurrentUser];
+}
+
+- (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser {
+    
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
+{
+    [self stopLoading];
+    
+    if ([service isKindOfClass:[SocializeUserService class]]) {
+        id<SocializeFullUser> fullUser = [dataArray objectAtIndex:0];
+        NSAssert([fullUser conformsToProtocol:@protocol(SocializeFullUser)], @"Not a socialize user");
+        [self didGetCurrentUser:fullUser];
+    }
+}
 
 @end

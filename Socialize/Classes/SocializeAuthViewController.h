@@ -10,7 +10,7 @@
 #import "SocializeAuthTableViewCell.h"
 #import "SocializeAuthInfoTableViewCell.h"
 #import "SocializeBaseViewController.h"
-#import "SocializeProfileViewController.h"
+#import "SocializeProfileEditViewController.h"
 #import "SocializeUser.h"
 
 
@@ -27,7 +27,7 @@ typedef enum {
 
 @protocol SocializeAuthViewControllerDelegate;
 
-@interface SocializeAuthViewController : SocializeBaseViewController<SocializeProfileViewControllerDelegate> {
+@interface SocializeAuthViewController : SocializeBaseViewController<SocializeProfileEditViewControllerDelegate> {
     UITableView                 *tableView;
     NSString                    *_facebookUsername;
     //for unit test

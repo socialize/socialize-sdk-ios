@@ -22,5 +22,6 @@
 @property (nonatomic, retain) id mockFacebookSwitch;
 @property (nonatomic, retain) id mockUserDefaults;
 @property (nonatomic, retain) id mockActionSheet;
+@property (nonatomic, retain) id mockSocialize;
 
 @end
