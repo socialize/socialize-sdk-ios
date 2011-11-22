@@ -13,6 +13,7 @@
 #import "SocializeLoadingView.h"
 #import "ImagesCache.h"
 #import "UINavigationController+Socialize.h"
+#import "SocializeActivityViewController.h"
 
 @interface SocializeProfileViewController ()
 -(void)showEditController;
@@ -35,7 +36,8 @@
 @synthesize imagesCache = imagesCache_;
 @synthesize defaultProfileImage = defaultProfileImage_;
 @synthesize alertView = alertView_;
-
+@synthesize activityViewController = activityViewController_;
+@synthesize activityLoadingActivityIndicator = activityLoadingActivityIndicator_;
 
 - (void)dealloc {
     self.fullUser = nil;
@@ -49,9 +51,27 @@
     self.navigationControllerForEdit = nil;
     self.imagesCache = nil;
     self.defaultProfileImage = nil;
+    self.activityViewController = nil;
+    self.activityViewController.delegate = nil;
+    self.activityViewController = nil;
     
     [super dealloc];
 }
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    // Release any retained subviews of the main view.
+    self.userNameLabel = nil;
+    self.userDescriptionLabel = nil;
+    self.userLocationLabel = nil;
+    self.profileImageView = nil;
+    self.profileEditViewController = nil;
+    self.defaultProfileImage = nil;
+    self.activityViewController = nil;
+}
+
 + (UINavigationController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeProfileViewControllerDelegate>)delegate {
     SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] initWithUser:user delegate:delegate] autorelease];
     UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
@@ -110,19 +130,6 @@
             [self getCurrentUser];
         }
     }
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    // Release any retained subviews of the main view.
-    self.userNameLabel = nil;
-    self.userDescriptionLabel = nil;
-    self.userLocationLabel = nil;
-    self.profileImageView = nil;
-    self.profileEditViewController = nil;
-    self.defaultProfileImage = nil;
 }
 
 - (void)editButtonPressed:(UIBarButtonItem*)button {
@@ -213,6 +220,7 @@
     // Configure the profile image
     [self setProfileImageFromURL:self.fullUser.smallImageUrl];
     [self configureEditButton];
+    [self.activityViewController setCurrentUser:self.fullUser.objectID];
 }
 
 - (SocializeProfileEditViewController*)profileEditViewController {
@@ -254,6 +262,41 @@
     self.fullUser = user;
     [self configureViews];
     [self hideEditController];
+}
+
+- (SocializeActivityViewController*)activityViewController {
+    if (activityViewController_ == nil) {
+        activityViewController_ = [[SocializeActivityViewController alloc] init];
+        activityViewController_.delegate = self;
+    }
+    
+    return activityViewController_;
+}
+
+- (void)activityViewControllerDidStartLoadingActivity:(SocializeActivityViewController *)activityViewController {
+    [self.activityLoadingActivityIndicator startAnimating];
+}
+
+- (void)activityViewControllerDidStopLoadingActivity:(SocializeActivityViewController *)activityViewController {
+    [self.activityLoadingActivityIndicator stopAnimating];
+}
+
+- (void)activityViewController:(SocializeActivityViewController *)activityViewController profileTappedForUser:(id<SocializeUser>)user {
+//    if (user.objectID != self.fullUser.objectID) {
+        UINavigationController *profile = [SocializeProfileViewController socializeProfileViewControllerForUser:user delegate:nil];
+        [self presentModalViewController:profile animated:YES];
+//    }
+}
+
+- (void)addActivityControllerToView {
+    CGRect activityFrame = self.view.frame;
+	self.activityViewController.view.frame = CGRectMake(0,160, activityFrame.size.width, activityFrame.size.height-160);
+    [self.view addSubview:self.activityViewController.view];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self addActivityControllerToView];
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error

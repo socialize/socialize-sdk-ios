@@ -164,7 +164,7 @@
 					</object>
 					<object class="IBUIImageView" id="948729349">
 						<reference key="NSNextResponder" ref="962981150"/>
-						<int key="NSvFlags">-2147483358</int>
+						<int key="NSvFlags">290</int>
 						<string key="NSFrame">{{0, 132}, {320, 28}}</string>
 						<reference key="NSSuperview" ref="962981150"/>
 						<reference key="NSWindow"/>
@@ -178,11 +178,10 @@
 					</object>
 					<object class="IBUILabel" id="945457316">
 						<reference key="NSNextResponder" ref="962981150"/>
-						<int key="NSvFlags">-2147483356</int>
+						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{11, 134}, {102, 21}}</string>
 						<reference key="NSSuperview" ref="962981150"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -260,6 +259,16 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIStyle">0</int>
 					</object>
+					<object class="IBUIActivityIndicatorView" id="674923723">
+						<reference key="NSNextResponder" ref="962981150"/>
+						<int key="NSvFlags">-2147483356</int>
+						<string key="NSFrame">{{121, 136}, {20, 20}}</string>
+						<reference key="NSSuperview" ref="962981150"/>
+						<reference key="NSWindow"/>
+						<string key="NSReuseIdentifierKey">_NS:1030</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
 				</object>
 				<string key="NSFrame">{{0, 44}, {320, 436}}</string>
 				<reference key="NSSuperview"/>
@@ -327,6 +336,14 @@
 					</object>
 					<int key="connectionID">35</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">activityLoadingActivityIndicator</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="674923723"/>
+					</object>
+					<int key="connectionID">37</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -365,6 +382,7 @@
 							<reference ref="613716247"/>
 							<reference ref="297588274"/>
 							<reference ref="710186201"/>
+							<reference ref="674923723"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -421,6 +439,11 @@
 						<reference key="object" ref="297588274"/>
 						<reference key="parent" ref="962981150"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">36</int>
+						<reference key="object" ref="674923723"/>
+						<reference key="parent" ref="962981150"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -442,12 +465,14 @@
 					<string>19.IBPluginDependency</string>
 					<string>20.IBPluginDependency</string>
 					<string>27.IBPluginDependency</string>
+					<string>36.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>SocializeProfileViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>UIResponder</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -474,7 +499,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">35</int>
+			<int key="maxID">37</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -505,6 +530,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>activityLoadingActivityIndicator</string>
 							<string>profileImageActivityIndicator</string>
 							<string>profileImageView</string>
 							<string>userDescriptionLabel</string>
@@ -513,6 +539,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIActivityIndicatorView</string>
 							<string>UIActivityIndicatorView</string>
 							<string>UIImageView</string>
 							<string>UILabel</string>
@@ -524,6 +551,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>activityLoadingActivityIndicator</string>
 							<string>profileImageActivityIndicator</string>
 							<string>profileImageView</string>
 							<string>userDescriptionLabel</string>
@@ -532,6 +560,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">activityLoadingActivityIndicator</string>
+								<string key="candidateClassName">UIActivityIndicatorView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">profileImageActivityIndicator</string>
 								<string key="candidateClassName">UIActivityIndicatorView</string>

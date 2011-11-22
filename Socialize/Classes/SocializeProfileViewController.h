@@ -11,12 +11,14 @@
 #import "SocializeProfileEditViewController.h"
 #import "_Socialize.h"
 #import "SocializeBaseViewController.h"
+#import "SocializeActivityViewController.h"
 
 @class ImagesCache;
 @class SocializeLoadingView;
+@class SocializeActivityViewController;
 @protocol SocializeProfileViewControllerDelegate;
 
-@interface SocializeProfileViewController : SocializeBaseViewController <UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate, SocializeServiceDelegate>
+@interface SocializeProfileViewController : SocializeBaseViewController <UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate, SocializeServiceDelegate, SocializeActivityViewControllerDelegate>
 + (UINavigationController*)socializeProfileViewControllerWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate;
 + (UINavigationController*)currentUserProfileWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate;
 + (UINavigationController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeProfileViewControllerDelegate>)delegate;
@@ -35,6 +37,9 @@
 @property (nonatomic, retain) ImagesCache *imagesCache;
 @property (nonatomic, retain) UIImage *defaultProfileImage;
 @property (nonatomic, retain) UIAlertView *alertView;
+@property (nonatomic, retain) SocializeActivityViewController *activityViewController;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityLoadingActivityIndicator;
+
 - (void)doneButtonPressed:(UIBarButtonItem*)button;
 - (void)editButtonPressed:(UIBarButtonItem*)button;
 - (void)setProfileImageFromURL:(NSString*)imageURL;
