@@ -10,6 +10,7 @@
 #import "SocializeActivityTableViewCell.h"
 #import "SocializeActivityService.h"
 #import "SocializeProfileViewController.h"
+#import "SocializeTableBGInfoView.h"
 
 @implementation SocializeActivityViewController
 @synthesize activityTableViewCell = activityTableViewCell_;
@@ -27,6 +28,11 @@
     [super viewDidUnload];
     
     self.activityTableViewCell = nil;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.informationView.errorLabel.text = @"No Activity to Show";
 }
 
 - (SocializeActivityTableViewCell*)createActivityTableViewCell {
