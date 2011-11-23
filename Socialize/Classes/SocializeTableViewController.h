@@ -8,6 +8,8 @@
 
 #import "SocializeBaseViewController.h"
 
+@class SocializeTableBGInfoView;
+
 extern NSInteger SocializeTableViewControllerDefaultPageSize;
 
 @interface SocializeTableViewController : SocializeBaseViewController  <UITableViewDelegate, UITableViewDataSource>
@@ -18,7 +20,7 @@ extern NSInteger SocializeTableViewControllerDefaultPageSize;
 @property (nonatomic, retain) IBOutlet UIView *tableFooterView;
 @property (nonatomic, retain) IBOutlet UIView *tableBackgroundView;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityLoadingActivityIndicatorView;
-
+@property (nonatomic, retain) SocializeTableBGInfoView *informationView;
 - (void)loadContentForNextPageAtOffset:(NSInteger)offset;
 - (void)startLoadingContent;
 - (void)stopLoadingContent;

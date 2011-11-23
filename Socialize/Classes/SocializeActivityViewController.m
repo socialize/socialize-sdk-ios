@@ -205,6 +205,8 @@
     // Ensure activity indicator off for cells reused mid-load
     [cell.profileImageActivity stopAnimating];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    
     NSString *imageURL = activity.user.smallImageUrl;
     if (imageURL != nil) {
         [self loadImageAtURL:imageURL

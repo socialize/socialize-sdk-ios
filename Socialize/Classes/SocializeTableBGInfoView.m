@@ -10,6 +10,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UILabel-Additions.h"
 
+CGFloat SocializeTableBGInfoViewDefaultWidth = 140.f;
+CGFloat SocializeTableBGInfoViewDefaultHeight = 140.f;
+
 @implementation SocializeTableBGInfoView
 @synthesize noActivityImageView;
 @synthesize	errorLabel;

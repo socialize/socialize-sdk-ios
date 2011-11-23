@@ -7,6 +7,7 @@
 //
 
 #import "SocializeTableViewController.h"
+#import "SocializeTableBGInfoView.h"
 
 NSInteger SocializeTableViewControllerDefaultPageSize = 10;
 
@@ -24,13 +25,15 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
 @synthesize tableBackgroundView = tableBackgroundView_;
 @synthesize activityLoadingActivityIndicatorView = activityLoadingActivityIndicatorView_;
 @synthesize pageSize = pageSize_;
+@synthesize informationView = informationView_;
 
 - (void)dealloc {
     self.content = nil;
     self.tableFooterView = nil;
     self.tableBackgroundView = nil;
     self.activityLoadingActivityIndicatorView = nil;
-
+    self.informationView = nil;
+    
     [super dealloc];
 }
 
@@ -50,6 +53,7 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
     self.tableFooterView = nil;
     self.tableBackgroundView = nil;
     self.activityLoadingActivityIndicatorView = nil;
+    self.informationView = nil;
 }
 
 - (UIView*)tableBackgroundView {
@@ -65,6 +69,24 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
     
     self.tableView.backgroundView = self.tableBackgroundView;
     self.tableView.tableFooterView = self.tableFooterView;
+    
+    [self.tableView addSubview:self.informationView];
+}
+
+- (SocializeTableBGInfoView*)informationView {
+    if (informationView_ == nil) {
+        
+        CGRect containerFrame = CGRectMake(0, 0, SocializeTableBGInfoViewDefaultWidth, SocializeTableBGInfoViewDefaultHeight);
+        informationView_ = [[SocializeTableBGInfoView alloc] initWithFrame:containerFrame bgImageName:@"socialize-nocomments-icon.png"];
+        CGRect tableFrame = self.tableView.frame;
+        CGPoint center = CGPointMake(tableFrame.size.width / 2.0, tableFrame.size.height / 2.0);
+        self.informationView.errorLabel.hidden = NO;
+        self.informationView.noActivityImageView.hidden = NO;
+        informationView_.hidden = YES;
+        informationView_.errorLabel.text = @"No Content to Show.";
+        informationView_.center = center;
+    }
+    return informationView_;
 }
 
 - (NSMutableArray*)content {
@@ -114,6 +136,13 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
     
     if ([content count] < self.pageSize) {
         self.loadedAllContent = YES;
+    }
+    
+    if ([self.content count] == 0) {
+        self.tableFooterView.hidden = YES;
+        self.informationView.hidden = NO;
+    } else {
+        self.informationView.hidden = YES;
     }
 }
 
