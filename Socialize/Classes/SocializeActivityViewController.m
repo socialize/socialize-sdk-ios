@@ -133,35 +133,6 @@
     return titleText;
 }
 
--(NSString *) timeString:(NSDate *)date {
-	NSString * formatString = @"%i%@";
-	
-	NSInteger timeInterval = (NSInteger) ceil(fabs([date timeIntervalSinceNow]));
-	
-	
-	NSInteger daysHoursMinutesOrSeconds = timeInterval/(24*3600);
-	if (daysHoursMinutesOrSeconds > 0) 
-	{
-		return [NSString stringWithFormat:formatString,daysHoursMinutesOrSeconds, @"d"]; 
-	}
-	
-	daysHoursMinutesOrSeconds = timeInterval/3600;
-	
-	if (daysHoursMinutesOrSeconds > 0) 
-	{
-		return [NSString stringWithFormat:formatString,daysHoursMinutesOrSeconds, @"h"]; 
-	}
-	
-	daysHoursMinutesOrSeconds = timeInterval/60;
-	
-	if (daysHoursMinutesOrSeconds > 0) 
-	{
-		return [NSString stringWithFormat:formatString,daysHoursMinutesOrSeconds, @"m"]; 
-	}
-	
-	return [NSString stringWithFormat:formatString,timeInterval, @"s"];
-}
-
 - (NSString*)nameStringForActivity:(id<SocializeActivity>)activity {
     NSString *nameString;
     if ([activity.user.firstName length] > 0 && [activity.user.lastName length] > 0) {
@@ -195,7 +166,7 @@
     [imageView release];
     
     NSString *nameString = [self nameStringForActivity:activity];
-    NSString *timeString = [self timeString:activity.date];
+    NSString *timeString = [NSString stringWithHumanReadableIntegerAndSuffixSinceDate:activity.date];
     NSString * nameAndHourString = [NSString stringWithFormat:@"%@ about %@ ago", nameString, timeString];
 	cell.nameLabel.text = nameAndHourString;
     
