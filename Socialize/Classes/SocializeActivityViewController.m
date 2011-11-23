@@ -16,6 +16,7 @@
 @synthesize activityTableViewCell = activityTableViewCell_;
 @synthesize currentUser = currentUser_;
 @synthesize delegate = delegate_;
+@synthesize dontShowNames = dontShowNames_;
 
 - (void)dealloc {
     self.activityTableViewCell = nil;
@@ -167,7 +168,13 @@
     
     NSString *nameString = [self nameStringForActivity:activity];
     NSString *timeString = [NSString stringWithHumanReadableIntegerAndSuffixSinceDate:activity.date];
-    NSString * nameAndHourString = [NSString stringWithFormat:@"%@ about %@ ago", nameString, timeString];
+    
+    NSString *nameAndHourString;
+    if (self.dontShowNames) {
+        nameAndHourString = [NSString stringWithFormat:@"about %@ ago", timeString];
+    } else {
+        nameAndHourString = [NSString stringWithFormat:@"%@ about %@ ago", nameString, timeString];
+    }
 	cell.nameLabel.text = nameAndHourString;
     
     // Allows us to associate activity with button when press event happens

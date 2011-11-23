@@ -15,6 +15,7 @@
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, assign) NSInteger currentUser;
 @property (nonatomic, retain) IBOutlet SocializeActivityTableViewCell *activityTableViewCell;
+@property (nonatomic, assign) BOOL dontShowNames;
 
 - (IBAction)viewProfileButtonTouched:(UIButton*)button;
 @end

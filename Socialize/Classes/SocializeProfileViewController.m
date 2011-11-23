@@ -268,6 +268,7 @@
     if (activityViewController_ == nil) {
         activityViewController_ = [[SocializeActivityViewController alloc] init];
         activityViewController_.delegate = self;
+        activityViewController_.dontShowNames = YES;
     }
     
     return activityViewController_;
