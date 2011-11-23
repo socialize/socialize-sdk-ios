@@ -11,32 +11,13 @@
 #import "SocializeActivityService.h"
 #import "SocializeProfileViewController.h"
 
-static NSInteger SocializeActivityViewControllerPageSize = 10;
-
-@interface SocializeActivityViewController ()
-@property (nonatomic, assign) BOOL waitingForActivity;
-@property (nonatomic, assign) BOOL loadedAllActivity;
-@end
-
 @implementation SocializeActivityViewController
 @synthesize activityTableViewCell = activityTableViewCell_;
-@synthesize bundle = bundle_;
-@synthesize activityArray = activityArray_;
 @synthesize currentUser = currentUser_;
-@synthesize waitingForActivity = waitingForActivity_;
-@synthesize loadedAllActivity = loadedAllActivity_;
 @synthesize delegate = delegate_;
-@synthesize tableBackgroundView = tableBackgroundView_;
-@synthesize activityLoadingActivityIndicatorView = activityLoadingActivityIndicatorView_;
-@synthesize tableFooterView = tableFooterView_;
 
 - (void)dealloc {
     self.activityTableViewCell = nil;
-    self.bundle = nil;
-    self.activityArray = nil;
-    self.tableBackgroundView = nil;
-    self.activityLoadingActivityIndicatorView = nil;
-    self.tableFooterView = nil;
     
     [super dealloc];
 }
@@ -46,32 +27,6 @@ static NSInteger SocializeActivityViewControllerPageSize = 10;
     [super viewDidUnload];
     
     self.activityTableViewCell = nil;
-    self.tableBackgroundView = nil;
-    self.activityLoadingActivityIndicatorView = nil;
-    self.tableFooterView = nil;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.tableView.backgroundView = self.tableBackgroundView;
-    self.tableView.tableFooterView = self.tableFooterView;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.activityArray count];
-}
-
-- (NSBundle*)bundle {
-    if (bundle_ == nil) {
-        bundle_ = [[NSBundle mainBundle] retain];
-    }
-    return bundle_;
 }
 
 - (SocializeActivityTableViewCell*)createActivityTableViewCell {
@@ -87,76 +42,34 @@ static NSInteger SocializeActivityViewControllerPageSize = 10;
 }
 
 - (void)loadActivityForUserID:(NSInteger)userID position:(NSInteger)position {
-    [self.activityLoadingActivityIndicatorView startAnimating];
-    [self.delegate activityViewControllerDidStartLoadingActivity:self];
-    self.waitingForActivity = YES;
     [self.socialize getActivityOfUserId:userID
                                   first:[NSNumber numberWithInteger:position]
-                                   last:[NSNumber numberWithInteger:position + SocializeActivityViewControllerPageSize]
+                                   last:[NSNumber numberWithInteger:position + self.pageSize]
                                activity:SocializeAllActivity];
 }
 
-- (void)loadActivityForNextPage {
-    NSInteger offset = [self.activityArray count];
+- (void)loadContentForNextPageAtOffset:(NSInteger)offset {
     [self loadActivityForUserID:self.currentUser position:offset];
-}
-
-- (void)stopLoadingActivity {
-    [self.activityLoadingActivityIndicatorView stopAnimating];
-    self.waitingForActivity = NO;
-    [self.delegate activityViewControllerDidStopLoadingActivity:self];
 }
 
 - (void)setCurrentUser:(NSInteger)currentUser {
     currentUser_ = currentUser;
-    self.activityArray = nil;
-    [self loadActivityForUserID:currentUser position:0];
-}
-
-- (NSMutableArray*)activityArray {
-    if (activityArray_ == nil) {
-        activityArray_ = [[NSMutableArray alloc] init];
-    }
-    return activityArray_;
-}
-
-- (NSArray*)indexPathsForSectionRange:(NSRange)sectionRange rowRange:(NSRange)rowRange {
-    NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:sectionRange.length*rowRange.length];
-    for (int s = sectionRange.location; s < sectionRange.location + sectionRange.length; s++) {
-        for (int r = rowRange.location; r < rowRange.location + rowRange.length; r++) {
-            [indexPaths addObject:[NSIndexPath indexPathForRow:r inSection:s]];
-        }
-    }
-    return indexPaths;
-}
-
-- (void)receiveNewActivity:(NSArray*)activity {
-    [self stopLoadingActivity];
+    self.content = nil;
     
-    if ([activity count] > 0) {
-        [self.tableView beginUpdates];
-        NSRange rowRange = NSMakeRange([self.activityArray count], [activity count]);
-        NSArray *paths = [self indexPathsForSectionRange:NSMakeRange(0, 1) rowRange:rowRange];
-        [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self.activityArray addObjectsFromArray:activity];
-        [self.tableView endUpdates];
-    }
-    
-    if ([activity count] < SocializeActivityViewControllerPageSize) {
-        self.loadedAllActivity = YES;
-    }
+    // Force a content load
+    [self startLoadingContent];
 }
 
 - (void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
     [super service:service didFetchElements:dataArray];
     if ([service isKindOfClass:[SocializeActivityService class]]) {
-        [self receiveNewActivity:dataArray];
+        [self receiveNewContent:dataArray];
     }
 }
 
 - (void)service:(SocializeService *)service didFail:(NSError *)error {
     if ([service isKindOfClass:[SocializeActivityService class]]) {
-        [self stopLoadingActivity];
+        [self stopLoadingContent];
     }
     [super service:service didFail:error];
 }
@@ -264,7 +177,7 @@ static NSInteger SocializeActivityViewControllerPageSize = 10;
         cell = [self createActivityTableViewCell];
     }
     
-    SocializeActivity *activity = [self.activityArray objectAtIndex:indexPath.row];
+    SocializeActivity *activity = [self.content objectAtIndex:indexPath.row];
     cell.activityIcon.image = [self iconForActivity:activity];
     
     // FIXME +1 why?
@@ -308,19 +221,8 @@ static NSInteger SocializeActivityViewControllerPageSize = 10;
     return cell;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView != self.tableView) {
-        return;
-    }
-    
-    CGFloat offset = scrollView.contentOffset.y + scrollView.bounds.size.height;
-    if (offset >= scrollView.contentSize.height && !self.waitingForActivity && !self.loadedAllActivity) {
-        [self loadActivityForNextPage];
-    }
-}
-
 - (IBAction)viewProfileButtonTouched:(UIButton*)button {
-    SocializeActivity *activity = [self.activityArray objectAtIndex:button.tag];
+    SocializeActivity *activity = [self.content objectAtIndex:button.tag];
     [self.delegate activityViewController:self profileTappedForUser:activity.user];
 }
 

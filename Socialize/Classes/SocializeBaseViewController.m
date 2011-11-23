@@ -55,6 +55,7 @@
 @synthesize shareBuilder = shareBuilder_;
 @synthesize sendActivityToFacebookFeedAlertView = sendActivityToFacebookFeedAlertView_;
 @synthesize authViewController = authViewController_;
+@synthesize bundle = bundle_;
 
 - (void)dealloc
 {
@@ -66,7 +67,8 @@
     self.postFacebookAuthenticationProfileViewController = nil;
     self.shareBuilder = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
-    
+    self.bundle = nil;
+
     [super dealloc];
 }
 
@@ -93,6 +95,13 @@
     }
     
     return tableView_;
+}
+
+- (NSBundle*)bundle {
+    if (bundle_ == nil) {
+        bundle_ = [[NSBundle mainBundle] retain];
+    }
+    return bundle_;
 }
 
 - (Socialize*)socialize {

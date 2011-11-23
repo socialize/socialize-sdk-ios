@@ -6,29 +6,20 @@
 //  Copyright (c) 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeBaseViewController.h"
+#import "SocializeTableViewController.h"
 
 @class SocializeActivityTableViewCell;
 @protocol SocializeActivityViewControllerDelegate;
 
-@interface SocializeActivityViewController : SocializeBaseViewController <UITableViewDelegate, UITableViewDataSource>
+@interface SocializeActivityViewController : SocializeTableViewController
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, assign) NSInteger currentUser;
-@property (nonatomic, retain) NSBundle *bundle;
 @property (nonatomic, retain) IBOutlet SocializeActivityTableViewCell *activityTableViewCell;
-@property (nonatomic, retain) NSMutableArray *activityArray;
-@property (nonatomic, assign, readonly) BOOL waitingForActivity;
-@property (nonatomic, assign, readonly) BOOL loadedAllActivity;
-@property (nonatomic, retain) IBOutlet UIView *tableBackgroundView;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityLoadingActivityIndicatorView;
-@property (nonatomic, retain) IBOutlet UIView *tableFooterView;
 
 - (IBAction)viewProfileButtonTouched:(UIButton*)button;
 @end
 
 @protocol SocializeActivityViewControllerDelegate <NSObject>
 @optional
-- (void)activityViewControllerDidStartLoadingActivity:(SocializeActivityViewController*)activityViewController;
-- (void)activityViewControllerDidStopLoadingActivity:(SocializeActivityViewController*)activityViewController;
 - (void)activityViewController:(SocializeActivityViewController*)activityViewController profileTappedForUser:(id<SocializeUser>)user;
 @end

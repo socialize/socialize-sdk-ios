@@ -51,6 +51,7 @@
 @property (nonatomic, retain) UIAlertView *sendActivityToFacebookFeedAlertView;
 @property (nonatomic, retain) SocializeShareBuilder *shareBuilder;
 @property (nonatomic, retain) ImagesCache *imagesCache;
+@property (nonatomic, retain) NSBundle *bundle;
 
 -(void) showAlertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoading;

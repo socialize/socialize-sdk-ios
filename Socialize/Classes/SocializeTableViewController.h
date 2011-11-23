@@ -8,6 +8,20 @@
 
 #import "SocializeBaseViewController.h"
 
-@interface SocializeTableViewController : SocializeBaseViewController
+extern NSInteger SocializeTableViewControllerDefaultPageSize;
+
+@interface SocializeTableViewController : SocializeBaseViewController  <UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, retain) NSMutableArray *content;
+@property (nonatomic, assign) NSInteger pageSize;
+@property (nonatomic, assign, readonly) BOOL waitingForContent;
+@property (nonatomic, assign, readonly) BOOL loadedAllContent;
+@property (nonatomic, retain) IBOutlet UIView *tableFooterView;
+@property (nonatomic, retain) IBOutlet UIView *tableBackgroundView;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityLoadingActivityIndicatorView;
+
+- (void)loadContentForNextPageAtOffset:(NSInteger)offset;
+- (void)startLoadingContent;
+- (void)stopLoadingContent;
+- (void)receiveNewContent:(NSArray*)content;
 
 @end
