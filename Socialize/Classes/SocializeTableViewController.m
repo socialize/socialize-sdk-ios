@@ -68,7 +68,6 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
     [super viewDidLoad];
     
     self.tableView.backgroundView = self.tableBackgroundView;
-    self.tableView.tableFooterView = self.tableFooterView;
     
     [self.tableView addSubview:self.informationView];
 }
@@ -141,7 +140,10 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
     if ([self.content count] == 0) {
         self.tableFooterView.hidden = YES;
         self.informationView.hidden = NO;
+        self.tableView.tableFooterView = nil;
     } else {
+        // Make sure the footer is shown if there is content
+        self.tableView.tableFooterView = self.tableFooterView;
         self.informationView.hidden = YES;
     }
 }

@@ -10,8 +10,6 @@
 #import "ImagesCache.h"
 #import "UINavigationBarBackground.h"
 #import "UIButton+Socialize.h"
-#import "SocializeLoadingView.h"
-#import "ImagesCache.h"
 #import "UINavigationController+Socialize.h"
 #import "SocializeActivityViewController.h"
 
@@ -19,6 +17,7 @@
 -(void)showEditController;
 -(void)hideEditController;
 -(void)configureViews;
+- (void)addActivityControllerToView;
 @end
 
 @implementation SocializeProfileViewController
@@ -31,7 +30,6 @@
 @synthesize profileImageView = profileImageView_;
 @synthesize profileImageActivityIndicator = profileImageActivityIndicator_;
 @synthesize profileEditViewController = profileEditViewController_;
-@synthesize loadingView = loadingView_;
 @synthesize navigationControllerForEdit = navigationControllerForEdit_;
 @synthesize imagesCache = imagesCache_;
 @synthesize defaultProfileImage = defaultProfileImage_;
@@ -117,6 +115,8 @@
 
     self.profileImageView.image = [self defaultProfileImage];
     
+    [self addActivityControllerToView];
+
     if (self.fullUser != nil) {
         // Already have a full user
         [self configureViews];
@@ -297,7 +297,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self addActivityControllerToView];
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
