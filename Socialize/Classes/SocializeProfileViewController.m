@@ -310,4 +310,8 @@
     [self configureViews];
 }
 
+- (IBAction)headerTapped:(id)sender {
+    [self.activityViewController.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
 @end

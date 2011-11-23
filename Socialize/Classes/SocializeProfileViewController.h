@@ -44,6 +44,7 @@
 - (void)editButtonPressed:(UIBarButtonItem*)button;
 - (void)setProfileImageFromURL:(NSString*)imageURL;
 - (void)setProfileImageFromImage:(UIImage*)image;
+- (IBAction)headerTapped:(id)sender;
 @end
 
 @protocol SocializeProfileViewControllerDelegate
