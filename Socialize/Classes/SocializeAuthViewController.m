@@ -54,6 +54,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 - (id)initWithDelegate:(id<SocializeAuthViewControllerDelegate>)delegate {
     if( self = [super initWithNibName:@"SocializeAuthViewController" bundle:nil] ) {
         self.delegate = delegate;
+        self.title = @"Authenticate";
     }
     return self;
 }
