@@ -16,11 +16,12 @@
 @property (nonatomic, assign) NSInteger currentUser;
 @property (nonatomic, retain) IBOutlet SocializeActivityTableViewCell *activityTableViewCell;
 @property (nonatomic, assign) BOOL dontShowNames;
+@property (nonatomic, assign) BOOL dontShowDisclosure;
 
 - (IBAction)viewProfileButtonTouched:(UIButton*)button;
 @end
 
 @protocol SocializeActivityViewControllerDelegate <NSObject>
-@optional
 - (void)activityViewController:(SocializeActivityViewController*)activityViewController profileTappedForUser:(id<SocializeUser>)user;
+- (void)activityViewController:(SocializeActivityViewController*)activityViewController activityTapped:(id<SocializeActivity>)activity;
 @end

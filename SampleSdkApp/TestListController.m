@@ -263,11 +263,8 @@
 
 #pragma mark - Service delegete
 
-- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
-}
-- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+- (void)profileViewController:(SocializeProfileViewController *)profileViewController wantsViewActivity:(id<SocializeActivity>)activity {
+    NSLog(@"View %@!", activity);
 }
 
 @end

@@ -17,6 +17,7 @@
 @synthesize currentUser = currentUser_;
 @synthesize delegate = delegate_;
 @synthesize dontShowNames = dontShowNames_;
+@synthesize dontShowDisclosure = dontShowDisclosure_;
 
 - (void)dealloc {
     self.activityTableViewCell = nil;
@@ -191,6 +192,8 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
+    cell.disclosureImage.hidden = self.dontShowDisclosure;
+    
     NSString *imageURL = activity.user.smallImageUrl;
     if (imageURL != nil) {
         [self loadImageAtURL:imageURL
@@ -213,6 +216,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<SocializeActivity> activity = [self.content objectAtIndex:indexPath.row];
+    [self.delegate activityViewController:self activityTapped:activity];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

@@ -19,4 +19,5 @@ extern const NSInteger SocializeActivityTableViewCellHeight;
 @property (nonatomic, retain) IBOutlet UIView * profileView;
 @property (nonatomic, retain) IBOutlet UIButton * btnViewProfile;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView * profileImageActivity;
+@property (nonatomic, retain) IBOutlet UIImageView * disclosureImage;
 @end

@@ -269,7 +269,6 @@
 								<string key="NSFrame">{{298, 19}, {15, 22}}</string>
 								<reference key="NSSuperview" ref="210649253"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -385,6 +384,14 @@
 						<reference key="destination" ref="24182396"/>
 					</object>
 					<int key="connectionID">33</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">disclosureImage</string>
+						<reference key="source" ref="936046983"/>
+						<reference key="destination" ref="417913683"/>
+					</object>
+					<int key="connectionID">34</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -557,7 +564,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">33</int>
+			<int key="maxID">34</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -573,6 +580,7 @@
 							<string>activityTextLabel</string>
 							<string>btnViewProfile</string>
 							<string>commentTextLabel</string>
+							<string>disclosureImage</string>
 							<string>informationView</string>
 							<string>nameLabel</string>
 							<string>profileImageActivity</string>
@@ -585,6 +593,7 @@
 							<string>UILabel</string>
 							<string>UIButton</string>
 							<string>UILabel</string>
+							<string>UIImageView</string>
 							<string>UIView</string>
 							<string>UILabel</string>
 							<string>UIActivityIndicatorView</string>
@@ -600,6 +609,7 @@
 							<string>activityTextLabel</string>
 							<string>btnViewProfile</string>
 							<string>commentTextLabel</string>
+							<string>disclosureImage</string>
 							<string>informationView</string>
 							<string>nameLabel</string>
 							<string>profileImageActivity</string>
@@ -623,6 +633,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">commentTextLabel</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">disclosureImage</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">informationView</string>

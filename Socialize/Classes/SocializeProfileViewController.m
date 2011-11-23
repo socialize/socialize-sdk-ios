@@ -137,8 +137,8 @@
 }
 
 - (void)doneButtonPressed:(UIBarButtonItem*)button {
-    if (self.delegate != nil) {
-        [self.delegate profileViewControllerDidCancel:self];
+    if ([self.delegate respondsToSelector:@selector(profileViewControllerDidFinish:)]) {
+        [self.delegate profileViewControllerDidFinish:self];
     } else {
         [self dismissModalViewControllerAnimated:YES];
     }
@@ -269,6 +269,7 @@
         activityViewController_ = [[SocializeActivityViewController alloc] init];
         activityViewController_.delegate = self;
         activityViewController_.dontShowNames = YES;
+        activityViewController_.dontShowDisclosure = ![self.delegate respondsToSelector:@selector(profileViewController:wantsViewActivity:)];
     }
     
     return activityViewController_;
@@ -286,6 +287,12 @@
     if (user.objectID != self.fullUser.objectID) {
         UINavigationController *profile = [SocializeProfileViewController socializeProfileViewControllerForUser:user delegate:nil];
         [self presentModalViewController:profile animated:YES];
+    }
+}
+
+- (void)activityViewController:(SocializeActivityViewController *)activityViewController activityTapped:(id<SocializeActivity>)activity {
+    if ([self.delegate respondsToSelector:@selector(profileViewController:wantsViewActivity:)]) {
+        [self.delegate profileViewController:self wantsViewActivity:activity];
     }
 }
 

@@ -46,7 +46,8 @@
 - (IBAction)headerTapped:(id)sender;
 @end
 
-@protocol SocializeProfileViewControllerDelegate
-- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController;
-- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController;
+@protocol SocializeProfileViewControllerDelegate <NSObject>
+@optional
+- (void)profileViewControllerDidFinish:(SocializeProfileViewController*)profileViewController;
+- (void)profileViewController:(SocializeProfileViewController*)profileViewController wantsViewActivity:(id<SocializeActivity>)activity;
 @end

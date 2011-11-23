@@ -21,6 +21,7 @@ const NSInteger SocializeActivityTableViewCellHeight = 74.0f;
 @synthesize commentTextLabel;
 @synthesize btnViewProfile;
 @synthesize profileImageActivity = profileImageActivity_;
+@synthesize disclosureImage = disclosureImage_;
 
 - (void) dealloc
 {
@@ -32,7 +33,8 @@ const NSInteger SocializeActivityTableViewCellHeight = 74.0f;
     self.activityIcon = nil;
     self.informationView = nil;
     self.profileImageActivity = nil;
-
+    self.disclosureImage = nil;
+    
 	[super dealloc];
 }
 
