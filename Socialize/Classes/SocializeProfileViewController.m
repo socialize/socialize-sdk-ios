@@ -282,10 +282,10 @@
 }
 
 - (void)activityViewController:(SocializeActivityViewController *)activityViewController profileTappedForUser:(id<SocializeUser>)user {
-//    if (user.objectID != self.fullUser.objectID) {
+    if (user.objectID != self.fullUser.objectID) {
         UINavigationController *profile = [SocializeProfileViewController socializeProfileViewControllerForUser:user delegate:nil];
         [self presentModalViewController:profile animated:YES];
-//    }
+    }
 }
 
 - (void)addActivityControllerToView {
