@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TableBGInfoView : UIView {
+@interface SocializeTableBGInfoView : UIView {
 	UIImageView		 *noActivityImageView;
 	UILabel			 *errorLabel;
 }

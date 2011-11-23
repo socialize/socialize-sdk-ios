@@ -6,11 +6,11 @@
 //  Copyright 2011 pointabout. All rights reserved.
 //
 
-#import "TableBGInfoView.h"
+#import "SocializeTableBGInfoView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UILabel-Additions.h"
 
-@implementation TableBGInfoView
+@implementation SocializeTableBGInfoView
 @synthesize noActivityImageView;
 @synthesize	errorLabel;
 

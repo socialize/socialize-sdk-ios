@@ -12,7 +12,7 @@
 #import "SocializeBaseViewController.h"
 
 @class CommentsTableFooterView;
-@class TableBGInfoView;
+@class SocializeTableBGInfoView;
 @class ImagesCache;
 
 /*
@@ -42,7 +42,7 @@
 	NSDateFormatter*    _commentDateFormatter;
 
 	CommentsTableFooterView*      footerView;
-	TableBGInfoView*              informationView; 
+	SocializeTableBGInfoView*              informationView; 
     CommentsTableViewCell*        commentsCell;
     
     SocializeEntity*              _entity;
@@ -62,7 +62,7 @@
 @property (retain, nonatomic) ImagesCache               *cache;
 @property (retain, nonatomic) NSArray                   *arrayOfComments;
 @property (assign, nonatomic) BOOL                      isLoading;
-@property (retain, nonatomic) TableBGInfoView           *informationView;
+@property (retain, nonatomic) SocializeTableBGInfoView           *informationView;
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName;
 

@@ -400,7 +400,7 @@
 		6D44A902140329CB004B3A46 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
 		6D44A90B140419B6004B3A46 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A90514041851004B3A46 /* CommentsTableViewCell.m */; };
 		6D44A90E140419B6004B3A46 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A9071404189C004B3A46 /* NSDateAdditions.m */; };
-		6D44A911140419B6004B3A46 /* TableBGInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A90914041939004B3A46 /* TableBGInfoView.m */; };
+		6D44A911140419B6004B3A46 /* SocializeTableBGInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A90914041939004B3A46 /* SocializeTableBGInfoView.m */; };
 		6D49743C13B2588700463D23 /* SocializeLikeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49743A13B2586C00463D23 /* SocializeLikeService.m */; };
 		6D49744013B295A400463D23 /* SocializeLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49743E13B2959500463D23 /* SocializeLike.m */; };
 		6D67433613F9EEC300140AA3 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431613F9EEBA00140AA3 /* SocializeComposeMessageViewController.xib */; };
@@ -1045,6 +1045,10 @@
 		AA87C601146CB66100B22EF4 /* SocializePostShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA87C5FB146CB65700B22EF4 /* SocializePostShareViewController.xib */; };
 		AA87C602146CB66200B22EF4 /* SocializePostShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA87C5FB146CB65700B22EF4 /* SocializePostShareViewController.xib */; };
 		AA87C603146CC3B200B22EF4 /* SocializeComposeMessageViewControllerLandscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166DD757146421130017D0E9 /* SocializeComposeMessageViewControllerLandscape.xib */; };
+		AA88E831147D77F500123E6F /* SocializeTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA88E82F147D77F500123E6F /* SocializeTableViewController.h */; };
+		AA88E832147D77F500123E6F /* SocializeTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA88E82F147D77F500123E6F /* SocializeTableViewController.h */; };
+		AA88E833147D77F500123E6F /* SocializeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA88E830147D77F500123E6F /* SocializeTableViewController.m */; };
+		AA88E834147D77F500123E6F /* SocializeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA88E830147D77F500123E6F /* SocializeTableViewController.m */; };
 		AA8D0A5414720AEA007B53AC /* socialize-activity-call-out-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D0A4414720AEA007B53AC /* socialize-activity-call-out-arrow.png */; };
 		AA8D0A5514720AEA007B53AC /* socialize-activity-call-out-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D0A4414720AEA007B53AC /* socialize-activity-call-out-arrow.png */; };
 		AA8D0A5614720AEA007B53AC /* socialize-activity-call-out-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D0A4414720AEA007B53AC /* socialize-activity-call-out-arrow.png */; };
@@ -1285,7 +1289,7 @@
 		AABC150C144A114900088B7D /* SocializeCommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */; };
 		AABC150D144A114900088B7D /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A90514041851004B3A46 /* CommentsTableViewCell.m */; };
 		AABC150E144A114900088B7D /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A9071404189C004B3A46 /* NSDateAdditions.m */; };
-		AABC150F144A114900088B7D /* TableBGInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A90914041939004B3A46 /* TableBGInfoView.m */; };
+		AABC150F144A114900088B7D /* SocializeTableBGInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A90914041939004B3A46 /* SocializeTableBGInfoView.m */; };
 		AABC1510144A114900088B7D /* CommentsTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D133A7514041BBA00E16BA4 /* CommentsTableFooterView.m */; };
 		AABC1511144A114900088B7D /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBEA6A14057B4B00E41FC0 /* UIButton+Socialize.m */; };
 		AABC1512144A114900088B7D /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBEA6C14057B5700E41FC0 /* UILabel-Additions.m */; };
@@ -1991,8 +1995,8 @@
 		6D44A90514041851004B3A46 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsTableViewCell.m; path = Classes/CommentsTableViewCell.m; sourceTree = "<group>"; };
 		6D44A9061404186C004B3A46 /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDateAdditions.h; path = Classes/NSDateAdditions.h; sourceTree = "<group>"; };
 		6D44A9071404189C004B3A46 /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDateAdditions.m; path = Classes/NSDateAdditions.m; sourceTree = "<group>"; };
-		6D44A908140418E0004B3A46 /* TableBGInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableBGInfoView.h; path = Classes/TableBGInfoView.h; sourceTree = "<group>"; };
-		6D44A90914041939004B3A46 /* TableBGInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableBGInfoView.m; path = Classes/TableBGInfoView.m; sourceTree = "<group>"; };
+		6D44A908140418E0004B3A46 /* SocializeTableBGInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeTableBGInfoView.h; path = Classes/SocializeTableBGInfoView.h; sourceTree = "<group>"; };
+		6D44A90914041939004B3A46 /* SocializeTableBGInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeTableBGInfoView.m; path = Classes/SocializeTableBGInfoView.m; sourceTree = "<group>"; };
 		6D49743913B2586200463D23 /* SocializeLikeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeService.h; path = Classes/SocializeLikeService.h; sourceTree = "<group>"; };
 		6D49743A13B2586C00463D23 /* SocializeLikeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeService.m; path = Classes/SocializeLikeService.m; sourceTree = "<group>"; };
 		6D49743D13B2958D00463D23 /* SocializeLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLike.h; path = Classes/SocializeLike.h; sourceTree = "<group>"; };
@@ -2237,6 +2241,8 @@
 		AA87C5F2146CB63100B22EF4 /* SocializePostShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePostShareViewController.h; path = Classes/SocializePostShareViewController.h; sourceTree = "<group>"; };
 		AA87C5F3146CB63100B22EF4 /* SocializePostShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializePostShareViewController.m; path = Classes/SocializePostShareViewController.m; sourceTree = "<group>"; };
 		AA87C5FB146CB65700B22EF4 /* SocializePostShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializePostShareViewController.xib; path = Resources/SocializePostShareViewController.xib; sourceTree = "<group>"; };
+		AA88E82F147D77F500123E6F /* SocializeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeTableViewController.h; path = Classes/SocializeTableViewController.h; sourceTree = "<group>"; };
+		AA88E830147D77F500123E6F /* SocializeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeTableViewController.m; path = Classes/SocializeTableViewController.m; sourceTree = "<group>"; };
 		AA8D0A4414720AEA007B53AC /* socialize-activity-call-out-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-call-out-arrow.png"; path = "Resources/socialize-activity-call-out-arrow.png"; sourceTree = "<group>"; };
 		AA8D0A4514720AEA007B53AC /* socialize-activity-call-out-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-call-out-arrow@2x.png"; path = "Resources/socialize-activity-call-out-arrow@2x.png"; sourceTree = "<group>"; };
 		AA8D0A4614720AEA007B53AC /* socialize-authorize-authenticate-badge-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-authorize-authenticate-badge-icon.png"; path = "Resources/socialize-authorize-authenticate-badge-icon.png"; sourceTree = "<group>"; };
@@ -2943,6 +2949,7 @@
 			children = (
 				16075490143302E4002E5A38 /* SocializeBaseViewController.h */,
 				16075491143302E4002E5A38 /* SocializeBaseViewController.m */,
+				AA88E835147D77FC00123E6F /* Base Table View */,
 				AA08B3D9147C31B700E6D1CA /* Activity */,
 				AAF903101473040300AB8674 /* Comment Details */,
 				AAF9030F147303F100AB8674 /* Profile */,
@@ -3473,6 +3480,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		AA88E835147D77FC00123E6F /* Base Table View */ = {
+			isa = PBXGroup;
+			children = (
+				AA88E82F147D77F500123E6F /* SocializeTableViewController.h */,
+				AA88E830147D77F500123E6F /* SocializeTableViewController.m */,
+				6D44A908140418E0004B3A46 /* SocializeTableBGInfoView.h */,
+				6D44A90914041939004B3A46 /* SocializeTableBGInfoView.m */,
+			);
+			name = "Base Table View";
+			sourceTree = "<group>";
+		};
 		AAAFE86214355F1B00851C73 /* SampleSdkApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -3681,8 +3699,6 @@
 				16437694144C4F4E001EA3E4 /* commentsNavBarLeftItemView.xib */,
 				6D133A7014041AC600E16BA4 /* CommentsTableViewCell.xib */,
 				6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */,
-				6D44A908140418E0004B3A46 /* TableBGInfoView.h */,
-				6D44A90914041939004B3A46 /* TableBGInfoView.m */,
 				6D133A7414041BBA00E16BA4 /* CommentsTableFooterView.h */,
 				6D133A7514041BBA00E16BA4 /* CommentsTableFooterView.m */,
 				6D44A90414041848004B3A46 /* CommentsTableViewCell.h */,
@@ -3801,6 +3817,7 @@
 				AA87C5F6146CB63200B22EF4 /* SocializePostShareViewController.h in Headers */,
 				AA08B3E6147C321500E6D1CA /* SocializeActivityTableViewCell.h in Headers */,
 				AA08B3FF147C344900E6D1CA /* SocializeActivityViewController.h in Headers */,
+				AA88E832147D77F500123E6F /* SocializeTableViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3878,6 +3895,7 @@
 				18EDD38A14731BE0009B63C4 /* SocializeAuthViewController.h in Headers */,
 				AA08B3E5147C321500E6D1CA /* SocializeActivityTableViewCell.h in Headers */,
 				AA08B3FE147C344900E6D1CA /* SocializeActivityViewController.h in Headers */,
+				AA88E831147D77F500123E6F /* SocializeTableViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5422,7 +5440,7 @@
 				6D44A8FF14032982004B3A46 /* SocializeCommentsTableViewController.m in Sources */,
 				6D44A90B140419B6004B3A46 /* CommentsTableViewCell.m in Sources */,
 				6D44A90E140419B6004B3A46 /* NSDateAdditions.m in Sources */,
-				6D44A911140419B6004B3A46 /* TableBGInfoView.m in Sources */,
+				6D44A911140419B6004B3A46 /* SocializeTableBGInfoView.m in Sources */,
 				6D133A7714041BBA00E16BA4 /* CommentsTableFooterView.m in Sources */,
 				6DDBEA6E14057B6000E41FC0 /* UIButton+Socialize.m in Sources */,
 				6DDBEA7014057B6000E41FC0 /* UILabel-Additions.m in Sources */,
@@ -5504,6 +5522,7 @@
 				AAF903111473067100AB8674 /* SocializeProfileEditTableViewCell.m in Sources */,
 				AA08B3E7147C321500E6D1CA /* SocializeActivityTableViewCell.m in Sources */,
 				AA08B400147C344900E6D1CA /* SocializeActivityViewController.m in Sources */,
+				AA88E833147D77F500123E6F /* SocializeTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5713,7 +5732,7 @@
 				AABC150C144A114900088B7D /* SocializeCommentsTableViewController.m in Sources */,
 				AABC150D144A114900088B7D /* CommentsTableViewCell.m in Sources */,
 				AABC150E144A114900088B7D /* NSDateAdditions.m in Sources */,
-				AABC150F144A114900088B7D /* TableBGInfoView.m in Sources */,
+				AABC150F144A114900088B7D /* SocializeTableBGInfoView.m in Sources */,
 				AABC1510144A114900088B7D /* CommentsTableFooterView.m in Sources */,
 				AABC1511144A114900088B7D /* UIButton+Socialize.m in Sources */,
 				AABC1512144A114900088B7D /* UILabel-Additions.m in Sources */,
@@ -5795,6 +5814,7 @@
 				AAF903121473067200AB8674 /* SocializeProfileEditTableViewCell.m in Sources */,
 				AA08B3E8147C321500E6D1CA /* SocializeActivityTableViewCell.m in Sources */,
 				AA08B401147C344900E6D1CA /* SocializeActivityViewController.m in Sources */,
+				AA88E834147D77F500123E6F /* SocializeTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

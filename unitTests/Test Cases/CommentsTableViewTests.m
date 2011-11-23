@@ -11,7 +11,7 @@
 #import "CommentsTableViewCell.h"
 #import <OCMock/OCMock.h>
 #import "SocializePostCommentViewController.h"
-#import "TableBGInfoView.h"
+#import "SocializeTableBGInfoView.h"
 
 
 @interface SocializeCommentsTableViewController(public)
@@ -118,7 +118,7 @@
     NSInteger section = 0; 
     listView.isLoading = NO;
     
-    id mockInformationView = [OCMockObject niceMockForClass:[TableBGInfoView class]];
+    id mockInformationView = [OCMockObject niceMockForClass:[SocializeTableBGInfoView class]];
 
     listView.informationView = mockInformationView;
 
@@ -133,7 +133,7 @@
     NSInteger section = 0; 
     listView.isLoading = NO;
     
-    id mockInformationView = [OCMockObject niceMockForClass:[TableBGInfoView class]];
+    id mockInformationView = [OCMockObject niceMockForClass:[SocializeTableBGInfoView class]];
     
     listView.informationView = mockInformationView;
     listView.arrayOfComments = [NSArray arrayWithObject:[NSNumber numberWithInt:45]];

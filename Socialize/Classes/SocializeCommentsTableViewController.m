@@ -21,7 +21,7 @@
 #import "SocializeLocationManager.h"
 #import "SocializeAuthenticateService.h"
 #import "ImagesCache.h"
-#import "TableBGInfoView.h"
+#import "SocializeTableBGInfoView.h"
 
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
@@ -166,7 +166,7 @@
 
     /*container frame inits*/
     CGRect containerFrame = CGRectMake(0, 0, 140, 140);
-    TableBGInfoView * containerView = [[[TableBGInfoView alloc] initWithFrame:containerFrame bgImageName:@"socialize-nocomments-icon.png"] autorelease];
+    SocializeTableBGInfoView * containerView = [[[SocializeTableBGInfoView alloc] initWithFrame:containerFrame bgImageName:@"socialize-nocomments-icon.png"] autorelease];
     containerView.hidden = YES;
     containerView.center = _tableView.center;
     [_tableView addSubview:containerView];
