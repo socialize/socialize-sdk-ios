@@ -20,6 +20,8 @@
 @property (nonatomic, assign, readonly) BOOL waitingForActivity;
 @property (nonatomic, assign, readonly) BOOL loadedAllActivity;
 @property (nonatomic, retain) IBOutlet UIView *tableBackgroundView;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityLoadingActivityIndicatorView;
+@property (nonatomic, retain) IBOutlet UIView *tableFooterView;
 
 - (IBAction)viewProfileButtonTouched:(UIButton*)button;
 @end

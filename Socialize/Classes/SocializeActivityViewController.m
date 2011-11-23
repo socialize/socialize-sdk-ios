@@ -27,12 +27,16 @@ static NSInteger SocializeActivityViewControllerPageSize = 10;
 @synthesize loadedAllActivity = loadedAllActivity_;
 @synthesize delegate = delegate_;
 @synthesize tableBackgroundView = tableBackgroundView_;
+@synthesize activityLoadingActivityIndicatorView = activityLoadingActivityIndicatorView_;
+@synthesize tableFooterView = tableFooterView_;
 
 - (void)dealloc {
     self.activityTableViewCell = nil;
     self.bundle = nil;
     self.activityArray = nil;
     self.tableBackgroundView = nil;
+    self.activityLoadingActivityIndicatorView = nil;
+    self.tableFooterView = nil;
     
     [super dealloc];
 }
@@ -43,6 +47,8 @@ static NSInteger SocializeActivityViewControllerPageSize = 10;
     
     self.activityTableViewCell = nil;
     self.tableBackgroundView = nil;
+    self.activityLoadingActivityIndicatorView = nil;
+    self.tableFooterView = nil;
 }
 
 - (void)viewDidLoad
@@ -50,7 +56,7 @@ static NSInteger SocializeActivityViewControllerPageSize = 10;
     [super viewDidLoad];
     
     self.tableView.backgroundView = self.tableBackgroundView;
-    self.tableView.tableFooterView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"socialize-sectionheader-bg.png"]];
+    self.tableView.tableFooterView = self.tableFooterView;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -81,6 +87,7 @@ static NSInteger SocializeActivityViewControllerPageSize = 10;
 }
 
 - (void)loadActivityForUserID:(NSInteger)userID position:(NSInteger)position {
+    [self.activityLoadingActivityIndicatorView startAnimating];
     [self.delegate activityViewControllerDidStartLoadingActivity:self];
     self.waitingForActivity = YES;
     [self.socialize getActivityOfUserId:userID
@@ -95,6 +102,7 @@ static NSInteger SocializeActivityViewControllerPageSize = 10;
 }
 
 - (void)stopLoadingActivity {
+    [self.activityLoadingActivityIndicatorView stopAnimating];
     self.waitingForActivity = NO;
     [self.delegate activityViewControllerDidStopLoadingActivity:self];
 }
@@ -132,7 +140,9 @@ static NSInteger SocializeActivityViewControllerPageSize = 10;
         [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
         [self.activityArray addObjectsFromArray:activity];
         [self.tableView endUpdates];
-    } else {
+    }
+    
+    if ([activity count] < SocializeActivityViewControllerPageSize) {
         self.loadedAllActivity = YES;
     }
 }

@@ -274,11 +274,11 @@
 }
 
 - (void)activityViewControllerDidStartLoadingActivity:(SocializeActivityViewController *)activityViewController {
-    [self.activityLoadingActivityIndicator startAnimating];
+//    [self.activityLoadingActivityIndicator startAnimating];
 }
 
 - (void)activityViewControllerDidStopLoadingActivity:(SocializeActivityViewController *)activityViewController {
-    [self.activityLoadingActivityIndicator stopAnimating];
+//    [self.activityLoadingActivityIndicator stopAnimating];
 }
 
 - (void)activityViewController:(SocializeActivityViewController *)activityViewController profileTappedForUser:(id<SocializeUser>)user {
