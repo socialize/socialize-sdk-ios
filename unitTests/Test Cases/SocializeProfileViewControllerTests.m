@@ -40,6 +40,7 @@
 @synthesize mockUserDescriptionLabel = mockUserDescriptionLabel_;
 @synthesize mockDoneButton = mockDoneButton_;
 @synthesize mockEditButton = mockEditButton_;
+@synthesize mockActivityViewController = mockActivityViewController_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -95,6 +96,9 @@
     
     self.mockEditButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.profileViewController.editButton = self.mockEditButton;
+    
+    self.mockActivityViewController = [OCMockObject mockForClass:[SocializeActivityViewController class]];
+    self.profileViewController.activityViewController = self.mockActivityViewController;
 }
 
 -(void) tearDown
@@ -116,6 +120,7 @@
     [self.mockUserDescriptionLabel verify];
     [self.mockDoneButton verify];
     [self.mockEditButton verify];
+    [self.mockActivityViewController verify];
 
     self.origProfileViewController = nil;
     self.profileViewController = nil;
@@ -132,7 +137,7 @@
     self.mockUserDescriptionLabel = nil;    
     self.mockDoneButton = nil;
     self.mockEditButton = nil;
-
+    self.mockActivityViewController = nil;
 }
 
 - (void)expectBasicViewDidLoad {
@@ -279,10 +284,12 @@
     NSString *firstName = @"firstName";
     NSString *lastName = @"lastName";
     NSString *smallImageUrl = @"smallImageURL";
+    NSInteger testUserID = 1234;
     [[[mockFullUser stub] andReturn:userName] userName];
     [[[mockFullUser stub] andReturn:firstName] firstName];
     [[[mockFullUser stub] andReturn:lastName] lastName];
     [[[mockFullUser stub] andReturn:smallImageUrl] smallImageUrl];
+    [[[mockFullUser stub] andReturnInteger:testUserID] objectID];
     self.profileViewController.fullUser = mockFullUser;
     
     // Labels should be configured
@@ -294,6 +301,9 @@
     
     // Edit button config
     [[(id)self.profileViewController expect] configureEditButton];
+    
+    // Activity subcontroller should be configured for this user
+    [[self.mockActivityViewController expect] setCurrentUser:testUserID];
     
     [self.profileViewController configureViews];
 }
