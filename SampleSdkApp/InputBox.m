@@ -30,6 +30,7 @@
 
 @implementation InputBox
 @synthesize inputMsg = _inputMsg;
+@synthesize inputField = _inputField;
 
 -(id)init
 {

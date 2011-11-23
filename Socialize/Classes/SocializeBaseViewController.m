@@ -127,7 +127,7 @@
 
 -(UIBarButtonItem*) createLeftNavigationButtonWithCaption:(NSString*) caption
 {
-    UIButton *backButton = [UIButton blackSocializeNavBarBackButtonWithTitle:caption]; 
+    UIButton *backButton = [UIButton blueSocializeNavBarBackButtonWithTitle:caption]; 
     [backButton addTarget:self action:@selector(leftNavigationButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * backLeftItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
     return backLeftItem;

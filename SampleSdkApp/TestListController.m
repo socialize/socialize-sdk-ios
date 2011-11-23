@@ -73,8 +73,12 @@
 
 -(NSString*) getEntityKey
 {
-    InputBox* input = [[InputBox new]autorelease];
+    InputBox* input = [[InputBox new]autorelease];    
+#ifndef RUN_KIF_TESTS
+    input.inputField.text=@"http://www.npr.org/";
+#endif
     [input showInputMessageWithTitle:@"Enter entity URL" andPlaceholder:@"Full URL"];
+    
     return input.inputMsg;
 }
 

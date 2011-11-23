@@ -80,7 +80,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 -(UIBarButtonItem *) createSkipButton {
-    UIButton * skipButton = [UIButton blackSocializeNavBarButtonWithTitle:@"Skip"];
+    UIButton * skipButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Skip"];
     [skipButton addTarget:self action:@selector(skipButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *skipButtonItem = [[UIBarButtonItem alloc] initWithCustomView:skipButton];
     return [skipButtonItem autorelease];

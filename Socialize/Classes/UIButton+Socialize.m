@@ -158,19 +158,7 @@
     return  blueButton;
 }
 
-+(UIButton *)blackSocializeNavBarButton
-{
-    return [UIButton blackSocializeNavBarButtonWithTitle:nil];
-}
-
-+(UIButton *)blackSocializeNavBarButtonWithTitle:(NSString *)title
-{
-    UIButton * blackButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [blackButton configureWithTitle:title type:AMSOCIALIZE_BUTTON_TYPE_BLACK];
-    return  blackButton;
-}
-
-+(UIButton *)blackSocializeNavBarBackButtonWithTitle:(NSString *)title
++(UIButton *)blueSocializeNavBarBackButtonWithTitle:(NSString *)title
 {
     UIImage* backImageNormal = [[UIImage imageNamed:@"socialize-navbar-button-back.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
 	UIImage* backImageHighligted = [[UIImage imageNamed:@"socialize-navbar-button-back-pressed.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
@@ -179,7 +167,7 @@
 	[backButton setBackgroundImage:backImageNormal forState:UIControlStateNormal];
 	[backButton setBackgroundImage:backImageHighligted forState:UIControlStateHighlighted];
 	backButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-	
+	//the spacing in the string is need here so that it'll be centered when displayed
 	NSString * titleString = [NSString stringWithFormat:@"  %@", title];
 	[backButton setTitle:titleString forState:UIControlStateNormal];
 	CGSize backButtonSize = [backButton.titleLabel.text sizeWithFont:backButton.titleLabel.font constrainedToSize:CGSizeMake(100, 29)];
