@@ -21,6 +21,7 @@
 - (void)configureViews;
 - (void)configureEditButton;
 - (void)hideEditController;
+- (void)addActivityControllerToView;
 @end
 
 @implementation SocializeProfileViewControllerTests
@@ -143,7 +144,8 @@
 - (void)expectBasicViewDidLoad {
 //    [[self.mockNavigationBar expect] setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.profileViewController.doneButton];
-    [[self.mockProfileImageView expect] setImage:self.profileViewController.defaultProfileImage];    
+    [[self.mockProfileImageView expect] setImage:self.profileViewController.defaultProfileImage];
+    [[(id)self.profileViewController expect] addActivityControllerToView];
 }
 
 - (void)testViewDidLoadWithNoUserWhenAlreadyAuthedGetsCurrentUser {
@@ -209,7 +211,7 @@
 }
 
 - (void)testDoneWithDelegateCallsDelegate {
-    [[self.mockDelegate expect] profileViewControllerDidCancel:self.origProfileViewController];
+    [[self.mockDelegate expect] profileViewControllerDidFinish:self.origProfileViewController];
     [self.profileViewController doneButtonPressed:nil];
 }
 
