@@ -11,6 +11,7 @@
 @interface OCMockRecorder (TestUtils)
 - (id)andReturnBool:(BOOL)b;
 - (id)andReturnInteger:(NSInteger)i;
+- (id)andReturnUInteger:(NSUInteger)i;
 @end
 
 

@@ -13,6 +13,10 @@
     return [self andReturnValue:OCMOCK_VALUE(b)];
 }
 
+- (id)andReturnUInteger:(NSUInteger)i {
+    return [self andReturnValue:OCMOCK_VALUE(i)];
+}
+
 - (id)andReturnInteger:(NSInteger)i {
     return [self andReturnValue:OCMOCK_VALUE(i)];
 }

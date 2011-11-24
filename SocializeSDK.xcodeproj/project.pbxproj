@@ -1060,6 +1060,8 @@
 		AA88E841147DA38900123E6F /* NSString+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA88E83E147DA38900123E6F /* NSString+Socialize.h */; };
 		AA88E842147DA38900123E6F /* NSString+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA88E83F147DA38900123E6F /* NSString+Socialize.m */; };
 		AA88E843147DA38900123E6F /* NSString+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA88E83F147DA38900123E6F /* NSString+Socialize.m */; };
+		AA88E847147DCA4300123E6F /* SocializeActivityViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA88E846147DCA4300123E6F /* SocializeActivityViewControllerTests.m */; };
+		AA88E84B147DCAFD00123E6F /* SocializeTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA88E84A147DCAFD00123E6F /* SocializeTableViewTests.m */; };
 		AA8D0A5414720AEA007B53AC /* socialize-activity-call-out-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D0A4414720AEA007B53AC /* socialize-activity-call-out-arrow.png */; };
 		AA8D0A5514720AEA007B53AC /* socialize-activity-call-out-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D0A4414720AEA007B53AC /* socialize-activity-call-out-arrow.png */; };
 		AA8D0A5614720AEA007B53AC /* socialize-activity-call-out-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D0A4414720AEA007B53AC /* socialize-activity-call-out-arrow.png */; };
@@ -2257,6 +2259,10 @@
 		AA88E836147D838500123E6F /* SocializeTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeTableViewController.xib; path = Resources/SocializeTableViewController.xib; sourceTree = "<group>"; };
 		AA88E83E147DA38900123E6F /* NSString+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Socialize.h"; path = "Classes/NSString+Socialize.h"; sourceTree = "<group>"; };
 		AA88E83F147DA38900123E6F /* NSString+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Socialize.m"; path = "Classes/NSString+Socialize.m"; sourceTree = "<group>"; };
+		AA88E845147DCA4300123E6F /* SocializeActivityViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityViewControllerTests.h; path = "Test Cases/SocializeActivityViewControllerTests.h"; sourceTree = "<group>"; };
+		AA88E846147DCA4300123E6F /* SocializeActivityViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityViewControllerTests.m; path = "Test Cases/SocializeActivityViewControllerTests.m"; sourceTree = "<group>"; };
+		AA88E849147DCAFD00123E6F /* SocializeTableViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeTableViewTests.h; path = "Test Cases/SocializeTableViewTests.h"; sourceTree = "<group>"; };
+		AA88E84A147DCAFD00123E6F /* SocializeTableViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeTableViewTests.m; path = "Test Cases/SocializeTableViewTests.m"; sourceTree = "<group>"; };
 		AA8D0A4414720AEA007B53AC /* socialize-activity-call-out-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-call-out-arrow.png"; path = "Resources/socialize-activity-call-out-arrow.png"; sourceTree = "<group>"; };
 		AA8D0A4514720AEA007B53AC /* socialize-activity-call-out-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-call-out-arrow@2x.png"; path = "Resources/socialize-activity-call-out-arrow@2x.png"; sourceTree = "<group>"; };
 		AA8D0A4614720AEA007B53AC /* socialize-authorize-authenticate-badge-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-authorize-authenticate-badge-icon.png"; path = "Resources/socialize-authorize-authenticate-badge-icon.png"; sourceTree = "<group>"; };
@@ -2937,6 +2943,8 @@
 			children = (
 				AA51C14B1471D10700E5C003 /* SocializeBaseViewControllerTests.h */,
 				AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */,
+				AA88E848147DCA7A00123E6F /* SocializeTableView */,
+				AA88E844147DC54600123E6F /* Activity */,
 				AA6B6F211472F795008E885B /* Compose Message */,
 				AA6B6F1F1472F756008E885B /* Comment Details */,
 				AA6B6F1E1472F744008E885B /* Comments List */,
@@ -3506,6 +3514,24 @@
 				6D44A90914041939004B3A46 /* SocializeTableBGInfoView.m */,
 			);
 			name = "Base Table View";
+			sourceTree = "<group>";
+		};
+		AA88E844147DC54600123E6F /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				AA88E845147DCA4300123E6F /* SocializeActivityViewControllerTests.h */,
+				AA88E846147DCA4300123E6F /* SocializeActivityViewControllerTests.m */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
+		AA88E848147DCA7A00123E6F /* SocializeTableView */ = {
+			isa = PBXGroup;
+			children = (
+				AA88E849147DCAFD00123E6F /* SocializeTableViewTests.h */,
+				AA88E84A147DCAFD00123E6F /* SocializeTableViewTests.m */,
+			);
+			name = SocializeTableView;
 			sourceTree = "<group>";
 		};
 		AAAFE86214355F1B00851C73 /* SampleSdkApp */ = {
@@ -5609,6 +5635,8 @@
 				AA2044A11470EA40003A875C /* PostCommentViewControllerTests.m in Sources */,
 				AA51C14D1471D10700E5C003 /* SocializeBaseViewControllerTests.m in Sources */,
 				AA6B6F181472F4A4008E885B /* SocializeComposeMessageViewControllerTests.m in Sources */,
+				AA88E847147DCA4300123E6F /* SocializeActivityViewControllerTests.m in Sources */,
+				AA88E84B147DCAFD00123E6F /* SocializeTableViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
