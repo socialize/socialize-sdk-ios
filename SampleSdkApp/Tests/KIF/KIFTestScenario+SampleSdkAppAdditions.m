@@ -113,7 +113,21 @@
 
 + (id)scenarioToTestUserProfile {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test Socialize User Profiles"];
-    [scenario addStepsFromArray:[KIFTestStep stepsToTestUserProfile]];
+
+    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
+    NSString *commentText = [NSString stringWithFormat:@"comment for %@", [SampleSdkAppKIFTestController runID]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentWithControllerForEntity:url comment:commentText]];
+
+    NSString *firstName = @"Test First Name";
+    [scenario addStepsFromArray:[KIFTestStep stepsToOpenProfile]];
+    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:commentText]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToOpenEditProfile]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToEditProfileImage]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToSetProfileFirstName:firstName]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyProfileFirstName:firstName]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
+    
     return scenario;
 }
 

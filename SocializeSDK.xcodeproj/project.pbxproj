@@ -1045,8 +1045,8 @@
 		AA87C601146CB66100B22EF4 /* SocializePostShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA87C5FB146CB65700B22EF4 /* SocializePostShareViewController.xib */; };
 		AA87C602146CB66200B22EF4 /* SocializePostShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA87C5FB146CB65700B22EF4 /* SocializePostShareViewController.xib */; };
 		AA87C603146CC3B200B22EF4 /* SocializeComposeMessageViewControllerLandscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166DD757146421130017D0E9 /* SocializeComposeMessageViewControllerLandscape.xib */; };
-		AA88E831147D77F500123E6F /* SocializeTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA88E82F147D77F500123E6F /* SocializeTableViewController.h */; };
-		AA88E832147D77F500123E6F /* SocializeTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA88E82F147D77F500123E6F /* SocializeTableViewController.h */; };
+		AA88E831147D77F500123E6F /* SocializeTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA88E82F147D77F500123E6F /* SocializeTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA88E832147D77F500123E6F /* SocializeTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA88E82F147D77F500123E6F /* SocializeTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA88E833147D77F500123E6F /* SocializeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA88E830147D77F500123E6F /* SocializeTableViewController.m */; };
 		AA88E834147D77F500123E6F /* SocializeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA88E830147D77F500123E6F /* SocializeTableViewController.m */; };
 		AA88E837147D838500123E6F /* SocializeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA88E836147D838500123E6F /* SocializeTableViewController.xib */; };
