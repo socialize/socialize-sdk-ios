@@ -29,8 +29,8 @@ buildsample:
 clean:
 	for scheme in $(CLEAN_SCHEMES); do \
 		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Debug -sdk iphoneos clean ; \
-		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Debug -sdk iphoneos clean ; \
-		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Release -sdk iphonesimulator clean ; \
+		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Debug -sdk iphonesimulator clean ; \
+		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Release -sdk iphoneos clean ; \
 		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Release -sdk iphonesimulator clean ; \
 	done
 	rm -rfd build
