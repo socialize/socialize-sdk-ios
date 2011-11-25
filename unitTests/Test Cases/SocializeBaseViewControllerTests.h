@@ -7,6 +7,7 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
+#import "ImagesCache.h"
 
 @class SocializeBaseViewController;
 
@@ -23,5 +24,8 @@
 @property (nonatomic, retain) id mockEditButton;
 @property (nonatomic, retain) id mockSendButton;
 @property (nonatomic, retain) id mockCancelButton;
-
+@property (nonatomic, retain) id mockBundle;
+@property (nonatomic, retain) id mockImagesCache;
+- (void)expectServiceFailureWithError:(NSError*)error;
+- (void)expectAndSimulateLoadOfImage:(UIImage*)image fromURL:(NSString*)url;
 @end

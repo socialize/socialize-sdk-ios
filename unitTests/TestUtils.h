@@ -14,5 +14,14 @@
 - (id)andReturnUInteger:(NSUInteger)i;
 @end
 
+@interface OCMockObject (TestUtils)
+- (void)stubIsKindOfClass:(Class)class;
+- (void)stubIsMemberOfClass:(Class)class;
+
+@end
+
+@interface UIButton (TestUtils)
+- (void)simulateControlEvent:(UIControlEvents)event;
+@end
 
 void RunOnMainThread(void (^block)());

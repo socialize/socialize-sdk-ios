@@ -12,6 +12,7 @@
 @protocol SocializeActivityViewControllerDelegate;
 
 @interface SocializeActivityViewController : SocializeTableViewController
+
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, assign) NSInteger currentUser;
 @property (nonatomic, retain) IBOutlet SocializeActivityTableViewCell *activityTableViewCell;

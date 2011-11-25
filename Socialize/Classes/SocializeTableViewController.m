@@ -121,6 +121,16 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
     return indexPaths;
 }
 
+- (void)clearContent {
+    if ([self.content count] > 0) {
+        [self.tableView beginUpdates];
+        NSArray *indexPaths = [self indexPathsForSectionRange:NSMakeRange(0, 1) rowRange:NSMakeRange(0, [self.content count])];
+        [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+        self.content = nil;
+        [self.tableView endUpdates];
+    }
+}
+
 - (void)receiveNewContent:(NSArray*)content {
     [self stopLoadingContent];
     

@@ -8,6 +8,8 @@
 
 #import "SocializeTableViewTests.h"
 
+@class SocializeActivityViewController;
 @interface SocializeActivityViewControllerTests : SocializeTableViewTests
-
+@property (nonatomic, retain) SocializeActivityViewController *activityViewController;
+@property (nonatomic, retain) id mockActivityViewControllerDelegate;
 @end

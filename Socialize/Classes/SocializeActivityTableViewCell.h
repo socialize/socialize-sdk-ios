@@ -7,7 +7,7 @@
 //
 
 extern NSString *const SocializeActivityTableViewCellReuseIdentifier;
-extern const NSInteger SocializeActivityTableViewCellHeight;
+extern const CGFloat SocializeActivityTableViewCellHeight;
 
 @interface SocializeActivityTableViewCell : UITableViewCell
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;

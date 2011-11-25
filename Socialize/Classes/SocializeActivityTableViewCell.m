@@ -9,7 +9,7 @@
 #import "SocializeActivityTableViewCell.h"
 
 NSString *const SocializeActivityTableViewCellReuseIdentifier = @"SocializeActivityTableViewCell";
-const NSInteger SocializeActivityTableViewCellHeight = 74.0f;
+const CGFloat SocializeActivityTableViewCellHeight = 74.0f;
 
 @implementation SocializeActivityTableViewCell
 @synthesize nameLabel;

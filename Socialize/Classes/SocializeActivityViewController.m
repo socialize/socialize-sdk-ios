@@ -60,12 +60,18 @@
     [self loadActivityForUserID:self.currentUser position:offset];
 }
 
-- (void)setCurrentUser:(NSInteger)currentUser {
+- (void)setCurrentUser_:(NSInteger)currentUser {
     currentUser_ = currentUser;
-    self.content = nil;
-    
-    // Force a content load
-    [self startLoadingContent];
+}
+
+- (void)setCurrentUser:(NSInteger)currentUser {
+    if (currentUser != currentUser_) {
+        currentUser_ = currentUser;
+
+        [self clearContent];
+        // Force a content load
+        [self startLoadingContent];
+    }
 }
 
 - (void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {

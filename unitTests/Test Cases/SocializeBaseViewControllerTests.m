@@ -22,6 +22,8 @@
 @synthesize mockEditButton = mockEditButton_;
 @synthesize mockSendButton = mockSendButton_;
 @synthesize mockCancelButton = mockCancelButton_;
+@synthesize mockBundle = mockBundle_;
+@synthesize mockImagesCache = mockImagesCache_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -65,6 +67,12 @@
 
     self.mockCancelButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.viewController.cancelButton = self.mockCancelButton;
+    
+    self.mockBundle = [OCMockObject mockForClass:[NSBundle class]];
+    self.viewController.bundle = self.mockBundle;
+
+    self.mockImagesCache = [OCMockObject mockForClass:[ImagesCache class]];
+    self.viewController.imagesCache = self.mockImagesCache;
 }
 
 -(void) tearDown
@@ -79,6 +87,8 @@
     [self.mockGenericAlertView verify];
     [self.mockDoneButton verify];
     [self.mockEditButton verify];
+    [self.mockBundle verify];
+    [self.mockImagesCache verify];
 
     [[self.mockGenericAlertView expect] setDelegate:nil];
     self.origViewController = nil;
@@ -90,6 +100,8 @@
     self.mockGenericAlertView = nil;
     self.mockDoneButton = nil;
     self.mockEditButton = nil;
+    self.mockBundle = nil;
+    self.mockImagesCache = nil;
 }
 
 - (void)testViewDidUnload {
@@ -104,6 +116,19 @@
     [[(id)self.viewController expect] setAuthViewController:nil];
     
     [self.viewController viewDidUnload];
+}
+
+- (void)expectAndSimulateLoadOfImage:(UIImage*)image fromURL:(NSString*)url {
+    // First return nil for image from cache
+    [[[self.mockImagesCache expect] andReturn:nil] imageFromCache:url];
+    
+    [[[self.mockImagesCache expect] andDo:^(NSInvocation *inv) {
+        // Get the completion block and call it
+        void(^completionBlock)(ImagesCache *image);
+        [inv getArgument:&completionBlock atIndex:3];
+        [[[self.mockImagesCache expect] andReturn:image] imageFromCache:url];
+        completionBlock(self.mockImagesCache);
+    }] loadImageFromUrl:url completeAction:OCMOCK_ANY];
 }
 
 - (void)testDefaultTableViewProperty {
@@ -261,12 +286,16 @@
     [self.viewController viewWillAppear:YES];
 }
 
+- (void)expectServiceFailureWithError:(NSError*)error {
+    [[(id)self.viewController expect] stopLoadAnimation];
+    [[(id)self.viewController expect] showAlertWithText:[error localizedDescription] andTitle:OCMOCK_ANY];
+}
+
 - (void)testServiceFailureShowsAnAlert {
     NSString *testDescription = @"testDescription";
     id mockError = [OCMockObject mockForClass:[NSError class]];
-    [[[mockError expect] andReturn:testDescription] localizedDescription];
-    [[(id)self.viewController expect] stopLoadAnimation];
-    [[(id)self.viewController expect] showAlertWithText:testDescription andTitle:OCMOCK_ANY];
+    [[[mockError stub] andReturn:testDescription] localizedDescription];
+    [self expectServiceFailureWithError:mockError];
     [self.viewController service:nil didFail:mockError];
 }
 

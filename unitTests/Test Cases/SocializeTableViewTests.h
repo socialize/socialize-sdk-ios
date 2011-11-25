@@ -17,4 +17,6 @@
 @property (nonatomic, assign) id mockTableBackgroundView;
 @property (nonatomic, assign) id mockContent;
 @property (nonatomic, assign) id mockActivityLoadingActivityIndicatorView;
+
+- (void)expectViewDidLoad;
 @end

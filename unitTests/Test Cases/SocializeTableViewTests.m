@@ -71,10 +71,13 @@
     return YES;
 }
 
-- (void)testViewDidLoadSetsUpViews {
+- (void)expectViewDidLoad {
     [[self.mockTableView expect] setBackgroundView:self.mockTableBackgroundView];
     [[self.mockTableView expect] addSubview:self.mockInformationView];
-    
+}
+
+- (void)testViewDidLoadSetsUpViews {
+    [self expectViewDidLoad];
     [self.tableViewController viewDidLoad];
 }
 
