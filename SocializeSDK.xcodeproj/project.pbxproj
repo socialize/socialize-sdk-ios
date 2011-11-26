@@ -3741,13 +3741,13 @@
 			children = (
 				16437694144C4F4E001EA3E4 /* commentsNavBarLeftItemView.xib */,
 				6D133A7014041AC600E16BA4 /* CommentsTableViewCell.xib */,
-				6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */,
 				6D133A7414041BBA00E16BA4 /* CommentsTableFooterView.h */,
 				6D133A7514041BBA00E16BA4 /* CommentsTableFooterView.m */,
 				6D44A90414041848004B3A46 /* CommentsTableViewCell.h */,
 				6D44A90514041851004B3A46 /* CommentsTableViewCell.m */,
 				6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */,
 				6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */,
+				6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */,
 			);
 			name = "Comments List";
 			sourceTree = "<group>";
