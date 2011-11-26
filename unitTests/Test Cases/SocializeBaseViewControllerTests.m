@@ -24,6 +24,7 @@
 @synthesize mockCancelButton = mockCancelButton_;
 @synthesize mockBundle = mockBundle_;
 @synthesize mockImagesCache = mockImagesCache_;
+@synthesize mockSaveButton = mockSaveButton_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -67,7 +68,10 @@
 
     self.mockCancelButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.viewController.cancelButton = self.mockCancelButton;
-    
+        
+    self.mockSaveButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.viewController.saveButton = self.mockSaveButton;
+
     self.mockBundle = [OCMockObject mockForClass:[NSBundle class]];
     self.viewController.bundle = self.mockBundle;
 

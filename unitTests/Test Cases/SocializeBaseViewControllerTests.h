@@ -23,6 +23,7 @@
 @property (nonatomic, retain) id mockDoneButton;
 @property (nonatomic, retain) id mockEditButton;
 @property (nonatomic, retain) id mockSendButton;
+@property (nonatomic, retain) id mockSaveButton;
 @property (nonatomic, retain) id mockCancelButton;
 @property (nonatomic, retain) id mockBundle;
 @property (nonatomic, retain) id mockImagesCache;
