@@ -25,6 +25,8 @@
 @synthesize mockBundle = mockBundle_;
 @synthesize mockImagesCache = mockImagesCache_;
 @synthesize mockSaveButton = mockSaveButton_;
+@synthesize mockView = mockView_;
+@synthesize mockWindow = mockWindow_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -40,6 +42,11 @@
     
     self.origViewController = [[self class] createController];
     self.viewController = [OCMockObject partialMockForObject:self.origViewController];
+    
+    self.mockWindow = [OCMockObject mockForClass:[UIWindow class]];
+    self.mockView = [OCMockObject niceMockForClass:[UIView class]];
+    [[[self.mockView stub] andReturn:self.mockWindow] window];
+    [[[(id)self.viewController stub] andReturn:self.mockView] view];
     
     self.mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
     [[[(id)self.viewController stub] andReturn:self.mockNavigationController] navigationController];
@@ -136,13 +143,10 @@
 }
 
 - (void)testDefaultTableViewProperty {
-    id mockTableView = [OCMockObject mockForClass:[UITableView class]];
-    BOOL yes = YES;
-    [[[mockTableView expect] andReturnValue:OCMOCK_VALUE(yes)] isKindOfClass:[UITableView class]];
-    [[[(id)self.viewController stub] andReturn:mockTableView] view];
+    [[[self.mockView stub] andReturnBool:YES] isKindOfClass:[UITableView class]];
 
     UITableView *defaultTableView = self.viewController.tableView;
-    GHAssertEquals(mockTableView, defaultTableView, @"tableView incorrect");
+    GHAssertEquals(self.mockView, defaultTableView, @"tableView incorrect");
 }
 
 - (void)testDefaultSocialize {
@@ -204,10 +208,8 @@
 }
 
 - (void)testDefaultShowLoadingInView {
-    id mockView = [OCMockObject mockForClass:[UIView class]];
-    [[[(id)self.viewController stub] andReturn:mockView] view];
     UIView *showLoadingInView = [self.viewController showLoadingInView];
-    GHAssertEquals(mockView, showLoadingInView, nil);
+    GHAssertEquals(self.mockView, showLoadingInView, nil);
 }
 
 - (void)testDefaultAutoAuth {
@@ -284,9 +286,13 @@
     [self.viewController didAuthenticate:nil];
 }
 
-- (void)testViewWillAppear {
+- (void)expectViewWillAppear {
     [[(id)self.viewController expect] performAutoAuth];
-    [[self.mockNavigationBar expect] resetBackground];
+    [[self.mockNavigationBar expect] resetBackground];    
+}
+
+- (void)testViewWillAppear {
+    [self expectViewWillAppear];
     [self.viewController viewWillAppear:YES];
 }
 

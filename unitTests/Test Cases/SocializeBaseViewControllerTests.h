@@ -27,6 +27,9 @@
 @property (nonatomic, retain) id mockCancelButton;
 @property (nonatomic, retain) id mockBundle;
 @property (nonatomic, retain) id mockImagesCache;
+@property (nonatomic, retain) id mockView;
+@property (nonatomic, retain) id mockWindow;
 - (void)expectServiceFailureWithError:(NSError*)error;
 - (void)expectAndSimulateLoadOfImage:(UIImage*)image fromURL:(NSString*)url;
+- (void)expectViewWillAppear;
 @end

@@ -30,7 +30,7 @@
     
     self.mockTableView = [OCMockObject mockForClass:[UITableView class]];
     self.tableViewController.tableView = self.mockTableView;
-
+    
     // Forward some messages
     [[[self.mockTableView stub] andDo:^(NSInvocation *inv) {
         NSInteger rows = [self.tableViewController tableView:self.mockTableView numberOfRowsInSection:0];

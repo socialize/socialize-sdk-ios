@@ -291,9 +291,7 @@
 
 - (void)testActionSheetShown {
     NSIndexPath *imagePath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerImageRowProfileImage inSection:SocializeProfileEditViewControllerSectionImage];
-    id mockWindow = [OCMockObject mockForClass:[UIWindow class]];
-    [[[self.mockTableView expect] andReturn:mockWindow] window];
-    [[self.mockActionSheet expect] showInView:mockWindow];
+    [[self.mockActionSheet expect] showInView:self.mockWindow];
     [self.profileEditViewController tableView:self.mockTableView didSelectRowAtIndexPath:imagePath];
 }
 
