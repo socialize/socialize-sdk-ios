@@ -281,6 +281,7 @@
             [_cache loadImageFromUrl: entryComment.user.smallImageUrl withLoader:[UrlImageLoader class] andCompleteAction:completeAction];
         }
     }
+    cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"socialize-cell-bg.png"]] autorelease];
 
 	return cell;
 }
