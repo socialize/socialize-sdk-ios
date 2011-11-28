@@ -122,7 +122,6 @@
     [[(id)self.viewController expect] setCancelButton:nil];
     [[(id)self.viewController expect] setSendButton:nil];
     [[(id)self.viewController expect] setGenericAlertView:nil];
-    [[(id)self.viewController expect] setPostFacebookAuthenticationProfileViewController:nil];
     [[(id)self.viewController expect] setSendActivityToFacebookFeedAlertView:nil];
     [[(id)self.viewController expect] setAuthViewController:nil];
     
@@ -243,10 +242,6 @@
     [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(isAuthenticatedWithFB)] isAuthenticatedWithFacebook];
     [[self.mockSocialize expect] authenticateWithFacebook];
     [self.origViewController authenticateWithFacebook];
-}
-- (void) testPostFBAuthProfileViewController {
-    SocializeProfileViewController *profileViewController = self.origViewController.postFacebookAuthenticationProfileViewController;
-    GHAssertEquals([profileViewController delegate], self.origViewController,@"The delegate for the profile view controller was not set properly");
 }
 
 - (void) testDidDismissWithButtonForFBSend {

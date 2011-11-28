@@ -36,7 +36,7 @@
 #import "SocializeUserService.h"
 #import "ImagesCache.h"
 
-@interface SocializeBaseViewController () <SocializeProfileViewControllerDelegate, SocializeAuthViewControllerDelegate>
+@interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
 -(void)leftNavigationButtonPressed:(id)sender;  
 @end
 
@@ -50,8 +50,6 @@
 @synthesize genericAlertView = genericAlertView_;
 @synthesize socialize = socialize_;
 @synthesize imagesCache = imagesCache_;
-@synthesize postFacebookAuthenticationProfileViewController = postFacebookAuthenticationProfileViewController_;
-@synthesize requestingFacebookFromUser = requestingFacebookFromUser_;
 @synthesize shareBuilder = shareBuilder_;
 @synthesize sendActivityToFacebookFeedAlertView = sendActivityToFacebookFeedAlertView_;
 @synthesize authViewController = authViewController_;
@@ -64,7 +62,6 @@
     self.socialize.delegate = nil;
     self.socialize = nil;
     self.imagesCache = nil;
-    self.postFacebookAuthenticationProfileViewController = nil;
     self.shareBuilder = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
     self.bundle = nil;
@@ -82,7 +79,6 @@
     self.cancelButton = nil;
     self.sendButton = nil;
     self.genericAlertView = nil;
-    self.postFacebookAuthenticationProfileViewController = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
     self.authViewController = nil;
 }
@@ -314,56 +310,15 @@
     return authViewController_;
 }
 
-- (SocializeProfileViewController*)postFacebookAuthenticationProfileViewController {
-    if (postFacebookAuthenticationProfileViewController_ == nil) {
-        postFacebookAuthenticationProfileViewController_ = [[SocializeProfileViewController alloc] init];
-        postFacebookAuthenticationProfileViewController_.delegate = self;
-    }
-    
-    return postFacebookAuthenticationProfileViewController_;
-}
-
-- (void)showProfile {
-    
-    UINavigationController *navigationController = [[[UINavigationController alloc]
-                                                     initWithRootViewController:self.postFacebookAuthenticationProfileViewController]
-                                                    autorelease];
-    
-    [self presentModalViewController:navigationController animated:YES];
-}
-
 -(void)didAuthenticate:(id<SocializeUser>)user
 {
     [self stopLoadAnimation];
     
     if ([self.socialize isAuthenticatedWithFacebook]) {
-        if (self.requestingFacebookFromUser) {
-            // Complete facebook authentication flow
-            [self showProfile];
-        } else {
-            [self afterFacebookLoginAction];
-        }
+        [self afterFacebookLoginAction];
     } else {
         // Complete auto auth
         [self afterAnonymouslyLoginAction];
-    }
-}
-
-- (void)dismissFacebookAuthProfile {
-    self.requestingFacebookFromUser = NO;
-    [self dismissModalViewControllerAnimated:YES];
-    [self afterFacebookLoginAction];
-}
-
-- (void)profileViewControllerDidSave:(SocializeProfileViewController *)profileViewController {
-    if (profileViewController == self.postFacebookAuthenticationProfileViewController) {
-        [self dismissFacebookAuthProfile];
-    }
-}
-
-- (void)profileViewControllerDidCancel:(SocializeProfileViewController *)profileViewController {
-    if (profileViewController == self.postFacebookAuthenticationProfileViewController) {
-        [self dismissFacebookAuthProfile];
     }
 }
 

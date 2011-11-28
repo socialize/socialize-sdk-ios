@@ -30,7 +30,6 @@
 
 @class SocializeShareBuilder;
 @class SocializeLoadingView;
-@class SocializeProfileViewController;
 @class ImagesCache;
 
 @interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate> {
@@ -46,8 +45,6 @@
 @property (nonatomic, retain) UIBarButtonItem *cancelButton;
 @property (nonatomic, retain) UIBarButtonItem *saveButton;
 @property (nonatomic, retain) UIAlertView *genericAlertView;
-@property (nonatomic, retain) SocializeProfileViewController *postFacebookAuthenticationProfileViewController;
-@property (nonatomic, assign) BOOL requestingFacebookFromUser;
 @property (nonatomic, retain) UIAlertView *sendActivityToFacebookFeedAlertView;
 @property (nonatomic, retain) SocializeShareBuilder *shareBuilder;
 @property (nonatomic, retain) ImagesCache *imagesCache;
