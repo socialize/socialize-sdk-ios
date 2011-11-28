@@ -38,6 +38,13 @@
 @synthesize activityService = _activityService;
 @synthesize shareService = _shareService;
 
++ (void)initialize {
+    if (self == [Socialize class]) {
+        Class dynamicTest = NSClassFromString(@"SocializeDynamicTest");
+        NSAssert(dynamicTest != nil, @"Dynamic Class Load Error -- Is the application linked with -all_load?");
+    }
+}
+
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
     [_authService release]; _authService = nil;

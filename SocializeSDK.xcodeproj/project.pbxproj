@@ -1009,6 +1009,10 @@
 		AA3E20BE1461FA9B000321BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D97F03C13DFC91500B16454 /* QuartzCore.framework */; };
 		AA3E212D1461FAE8000321BF /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D7343D013F5CD4B0076A8E6 /* SocializeConfigurationInfo.plist */; };
 		AA4132C3146852AE006D906F /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4132C2146852AE006D906F /* StringHelper.m */; };
+		AA4956FE1484276A00718BC4 /* SocializeDynamicTest.h in Headers */ = {isa = PBXBuildFile; fileRef = AA4956FC1484276A00718BC4 /* SocializeDynamicTest.h */; };
+		AA4956FF1484276A00718BC4 /* SocializeDynamicTest.h in Headers */ = {isa = PBXBuildFile; fileRef = AA4956FC1484276A00718BC4 /* SocializeDynamicTest.h */; };
+		AA4957001484276A00718BC4 /* SocializeDynamicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4956FD1484276A00718BC4 /* SocializeDynamicTest.m */; };
+		AA4957011484276A00718BC4 /* SocializeDynamicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4956FD1484276A00718BC4 /* SocializeDynamicTest.m */; };
 		AA51C1441471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
 		AA51C1451471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
 		AA51C1461471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
@@ -2239,6 +2243,8 @@
 		AA3E20B71461F329000321BF /* SocializeAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAsyncTestCase.m; sourceTree = "<group>"; };
 		AA4132C1146852AE006D906F /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
 		AA4132C2146852AE006D906F /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
+		AA4956FC1484276A00718BC4 /* SocializeDynamicTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDynamicTest.h; path = Classes/SocializeDynamicTest.h; sourceTree = "<group>"; };
+		AA4956FD1484276A00718BC4 /* SocializeDynamicTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDynamicTest.m; path = Classes/SocializeDynamicTest.m; sourceTree = "<group>"; };
 		AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthViewController.xib; path = Resources/SocializeAuthViewController.xib; sourceTree = "<group>"; };
 		AA51C14B1471D10700E5C003 /* SocializeBaseViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBaseViewControllerTests.h; path = "Test Cases/SocializeBaseViewControllerTests.h"; sourceTree = "<group>"; };
 		AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBaseViewControllerTests.m; path = "Test Cases/SocializeBaseViewControllerTests.m"; sourceTree = "<group>"; };
@@ -2705,6 +2711,8 @@
 		5C6AAC62137C3F5500AF0219 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AA4956FC1484276A00718BC4 /* SocializeDynamicTest.h */,
+				AA4956FD1484276A00718BC4 /* SocializeDynamicTest.m */,
 				16E2C3D1139778FE007C91ED /* SocializeObjects */,
 				9A4D29621393FE860065C0CB /* Factories */,
 				5CFCBE36138594E800EF5073 /* SocializeObjectParsers */,
@@ -3862,6 +3870,7 @@
 				AA08B3FF147C344900E6D1CA /* SocializeActivityViewController.h in Headers */,
 				AA88E832147D77F500123E6F /* SocializeTableViewController.h in Headers */,
 				AA88E841147DA38900123E6F /* NSString+Socialize.h in Headers */,
+				AA4956FF1484276A00718BC4 /* SocializeDynamicTest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3941,6 +3950,7 @@
 				AA08B3FE147C344900E6D1CA /* SocializeActivityViewController.h in Headers */,
 				AA88E831147D77F500123E6F /* SocializeTableViewController.h in Headers */,
 				AA88E840147DA38900123E6F /* NSString+Socialize.h in Headers */,
+				AA4956FE1484276A00718BC4 /* SocializeDynamicTest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5576,6 +5586,7 @@
 				AA08B400147C344900E6D1CA /* SocializeActivityViewController.m in Sources */,
 				AA88E833147D77F500123E6F /* SocializeTableViewController.m in Sources */,
 				AA88E842147DA38900123E6F /* NSString+Socialize.m in Sources */,
+				AA4957001484276A00718BC4 /* SocializeDynamicTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5871,6 +5882,7 @@
 				AA08B401147C344900E6D1CA /* SocializeActivityViewController.m in Sources */,
 				AA88E834147D77F500123E6F /* SocializeTableViewController.m in Sources */,
 				AA88E843147DA38900123E6F /* NSString+Socialize.m in Sources */,
+				AA4957011484276A00718BC4 /* SocializeDynamicTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
