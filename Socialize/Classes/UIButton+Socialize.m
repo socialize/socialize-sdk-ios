@@ -27,6 +27,7 @@
 {
     NSString * normalImageURI = nil;
     NSString * highlightImageURI = nil;
+    NSString * disabledImageURI = nil;
     switch (type) 
     {
         case AMSOCIALIZE_BUTTON_TYPE_RED:
@@ -36,6 +37,7 @@
         case AMSOCIALIZE_BUTTON_TYPE_BLUE:
             normalImageURI = @"socialize-navbar-button-blue-bg-normal.png";
             highlightImageURI = @"socialize-navbar-button-blue-bg-highlighted.png";
+            disabledImageURI = @"socialize-navbar-button-blue-bg-inactive.png";
             break;
         case AMSOCIALIZE_BUTTON_TYPE_BLACK:
         default:
@@ -44,14 +46,25 @@
             break;
     }
     
+    
     UIImage * normalImage = [[UIImage imageNamed:normalImageURI]stretchableImageWithLeftCapWidth:6 topCapHeight:0] ;
     UIImage * highlightImage = [[UIImage imageNamed:highlightImageURI]stretchableImageWithLeftCapWidth:6 topCapHeight:0];
-    [self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    
+
+
+    UIColor * disabledColor = [UIColor colorWithRed:190.0/255.0 green:197/255.0 blue:205/255.0 alpha:1.0];  
+    [self setTitleColor:disabledColor forState:UIControlStateDisabled];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	
     [self setBackgroundImage:normalImage forState:UIControlStateNormal];
 	[self setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
     self.titleLabel.textColor = [UIColor whiteColor]; 
+    
+    if( disabledImageURI ) {
+        UIImage * disabledImage = [[UIImage imageNamed:@"socialize-navbar-button-blue-bg-inactive.png"]stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+        [self setBackgroundImage:disabledImage forState:UIControlStateDisabled];
+    }
+    
     
     if ([title length] > 0) 
     {
