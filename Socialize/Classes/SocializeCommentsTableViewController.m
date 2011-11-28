@@ -138,7 +138,7 @@
     _isLoading = NO;
 }
 
--(void)afterAnonymouslyLoginAction
+-(void)afterLoginAction
 {
     [self startLoadingContent];
 }

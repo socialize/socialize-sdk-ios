@@ -237,6 +237,7 @@
     if(![self.socialize isAuthenticated])
     {
         [self startLoading];
+        
         [self.socialize authenticateAnonymously];
     }
 }
@@ -265,12 +266,7 @@
     [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
 }
 
--(void)afterAnonymouslyLoginAction
-{
-    // Should be implemented in the child classes.
-}
-
--(void)afterFacebookLoginAction
+-(void)afterLoginAction
 {
     // Should be implemented in the child classes.
 }
@@ -314,12 +310,7 @@
 {
     [self stopLoadAnimation];
     
-    if ([self.socialize isAuthenticatedWithFacebook]) {
-        [self afterFacebookLoginAction];
-    } else {
-        // Complete auto auth
-        [self afterAnonymouslyLoginAction];
-    }
+    [self afterLoginAction];
 }
 
 - (UIAlertView*)sendActivityToFacebookFeedAlertView {

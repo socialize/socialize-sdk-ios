@@ -162,7 +162,7 @@
     }
 }
 
-- (void)afterAnonymouslyLoginAction {
+- (void)afterLoginAction {
     [self appear];
 }
 

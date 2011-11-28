@@ -97,7 +97,7 @@
     return [super initWithNibName:@"SocializeProfileViewController" bundle:nil];
 }
 
-- (void)afterAnonymouslyLoginAction {
+- (void)afterLoginAction {
     if (self.fullUser == nil && self.user == nil) {
         [self getCurrentUser];
     }

@@ -253,7 +253,7 @@
 - (void)testInitialAuth {
     [[self.mockSocialize expect] viewEntity:self.mockEntity longitude:nil latitude:nil];
     [[self.mockSocialize expect] getLikesForEntityKey:TEST_ENTITY_URL first:nil last:nil];
-    [self.actionBar afterAnonymouslyLoginAction];
+    [self.actionBar afterLoginAction];
 }
 
 - (void)testFailingLikeServiceUnlocksButtonsAndZerosCountsAndShowsError {

@@ -277,7 +277,7 @@
     [[(id)self.viewController expect] stopLoadAnimation];
     BOOL no = NO;
     [[[self.mockSocialize stub] andReturnValue:OCMOCK_VALUE(no)] isAuthenticatedWithFacebook];
-    [[(id)self.viewController expect] afterAnonymouslyLoginAction];
+    [[(id)self.viewController expect] afterLoginAction];
     [self.viewController didAuthenticate:nil];
 }
 
