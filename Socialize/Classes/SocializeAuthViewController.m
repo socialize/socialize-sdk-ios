@@ -15,7 +15,6 @@
 @interface  SocializeAuthViewController()
     -(SocializeAuthTableViewCell *)getAuthorizeTableViewCell;
     -(SocializeAuthInfoTableViewCell*)getAuthorizeInfoTableViewCell;
-    -(UIBarButtonItem *) createSkipButton;
     -(void)profileViewDidFinish;
     -(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass;
     -(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName;
@@ -31,6 +30,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 
 
 @synthesize tableView;
+@synthesize skipButton = skipButton_;
 @synthesize delegate = _delegate;
 @synthesize user = _user;
 
@@ -74,22 +74,12 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [self createSkipButton];
+    //self.navigationItem.rightBarButtonItem = [self createSkipButton];
     self.view.backgroundColor = [UIColor colorWithRed:50/255.0f green:58/255.0f blue:67/255.0f alpha:1.0];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorColor = [UIColor colorWithRed:25/255.0f green:31/255.0f blue:37/255.0f alpha:1.0];
 }
-
--(UIBarButtonItem *) createSkipButton {
-    UIButton * skipButton = [UIButton blackSocializeNavBarButtonWithTitle:@"Skip"];
-    [skipButton addTarget:self action:@selector(skipButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *skipButtonItem = [[UIBarButtonItem alloc] initWithCustomView:skipButton];
-    return [skipButtonItem autorelease];
-}
-
--(void)skipButtonPressed:(id)button {
-    //[self stopLoadAnimation];
-    
+-(IBAction)skipButtonPressed:(id)sender {
     if( [self.delegate respondsToSelector:@selector(authorizationSkipped)] ) {
         [self.delegate authorizationSkipped];
     }
