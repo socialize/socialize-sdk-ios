@@ -22,6 +22,7 @@
 
 + (id)scenarioToTestViewOtherProfile {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that another user's profile can be viewed."];
+    [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
     [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentWithControllerForEntity:url comment:@"comment!"]];
     [scenario addStepsFromArray:[KIFTestStep stepsToGetCommentsForEntity:url]];
@@ -51,6 +52,7 @@
 
 + (id)scenarioToTestCommentsViewControllerWithAutoAuth {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that test that socialize UI views work even when not logged in."];
+    [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
     [scenario addStepsFromArray:[KIFTestStep stepsToNoAuth]];
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
     NSString *commentString = [NSString stringWithFormat:@"Comment from %s", _cmd];
@@ -66,6 +68,7 @@
 
 + (id)scenarioToTestActionBar {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test the Socialize Action Bar"];
+    [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
     [scenario addStepsFromArray:[KIFTestStep stepsToShowTabbedActionBarForURL:url]];
     [scenario addStep:[KIFTestStep stepToVerifyViewWithAccessibilityLabel:@"Socialize Action View" passesTest:^BOOL(id view) {
@@ -115,6 +118,7 @@
 
 + (id)scenarioToTestUserProfile {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test Socialize User Profiles"];
+    [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
 
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
     NSString *commentText = [NSString stringWithFormat:@"comment for %@", [SampleSdkAppKIFTestController runID]];
