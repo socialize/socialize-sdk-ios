@@ -216,16 +216,26 @@
 }
 
 - (void)testAutoAuthWhenNotAuthedPerformsAuth {
-    BOOL no = NO;
-    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(no)] isAuthenticated];
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
+    [[[self.mockSocialize stub] andReturnBool:NO] facebookSessionValid];
     [[(id)self.viewController expect] startLoading];
     [[self.mockSocialize expect] authenticateAnonymously];
     [self.viewController performAutoAuth];
 }
 
+- (void)testAutoAuthWhenNotAuthedAndFacebookAlreadyValidPerformsFacebookAuth {
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookSessionValid];
+    [[(id)self.viewController expect] startLoading];
+    [[self.mockSocialize expect] authenticateWithFacebook];
+    [self.viewController performAutoAuth];
+}
+
 - (void)testAutoAuthWhenAuthedDoesNothing {
-    BOOL yes = YES;
-    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(yes)] isAuthenticated];
+    [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticated];
+    [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticatedWithFacebook];
     [self.viewController performAutoAuth];
 }
 

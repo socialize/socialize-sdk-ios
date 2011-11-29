@@ -35,6 +35,7 @@
 #import "SocializeFacebookInterface.h"
 #import "SocializeUserService.h"
 #import "ImagesCache.h"
+#import "SocializeAuthenticateService.h"
 
 @interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
 -(void)leftNavigationButtonPressed:(id)sender;  
@@ -234,10 +235,15 @@
 
 -(void)performAutoAuth
 {
-    if(![self.socialize isAuthenticated])
-    {
+    if (![self.socialize isAuthenticatedWithFacebook] && [self.socialize facebookSessionValid]) {
+        // Go ahead and upgrade to facebook auth since we already have a valid token.
+        // (This is ok to do automatically, since an external app callout will not happen)
         [self startLoading];
-        
+        [self.socialize authenticateWithFacebook];        
+    } else if(![self.socialize isAuthenticated]) {
+        // We're Not authenticated at all, and we can't auto auth with facebook
+        // Just do anon
+        [self startLoading];
         [self.socialize authenticateAnonymously];
     } else {
         [self afterLoginAction];

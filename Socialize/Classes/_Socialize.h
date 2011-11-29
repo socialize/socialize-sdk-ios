@@ -354,6 +354,13 @@ otherwise you will get a failure.
 -(BOOL)isAuthenticatedWithFacebook;
 
 /**
+ Check if an existing facebook session already exists
+ 
+ @return YES if there is already a valid facebook session for this app
+ */
+- (BOOL)facebookSessionValid;
+
+/**
  Remove old authentication information.
  
  If user would like to re-authenticate he has to remove previous authentication information.

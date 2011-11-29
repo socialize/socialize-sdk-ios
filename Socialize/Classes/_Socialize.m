@@ -278,6 +278,10 @@
     return YES;
 }
 
+- (BOOL)facebookSessionValid {
+    return [FacebookAuthenticator hasValidToken];
+}
+
 -(void)removeAuthenticationInfo{
     [_authService removeAuthenticationInfo];
 }
