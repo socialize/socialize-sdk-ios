@@ -92,12 +92,14 @@
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
     
     // Post a share
+    [scenario addStep:[KIFTestStep stepToEnableValidFacebookSession]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share on Facebook"]];
 //    Actual share disabled until i can get a test facebook account set up
 //    [scenario addStepsFromArray:[KIFTestStep stepsToCreateShare:@"actionbar share"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
+    [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
 
     // Verify we can show the in-app MFMailComposer
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share"]];

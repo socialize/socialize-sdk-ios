@@ -16,8 +16,23 @@
 #import "UIView-KIFAdditions.h"
 #import "UIWindow-KIFAdditions.h"
 #import <Socialize/SocializeFacebookInterface.h>
+#import "SampleSdkAppKIFTestController.h"
 
 @implementation KIFTestStep (SampleSdkAppAdditions)
+
++ (id)stepToEnableValidFacebookSession {
+    return [self stepWithDescription:@"Enable preauthed facebook session" executionBlock:^(KIFTestStep *step, NSError **error) {
+        [SampleSdkAppKIFTestController enableValidFacebookSession];
+        return KIFTestStepResultSuccess;
+    }];
+}
+
++ (id)stepToDisableValidFacebookSession {
+    return [self stepWithDescription:@"Disable preauthed facebook session" executionBlock:^(KIFTestStep *step, NSError **error) {
+        [SampleSdkAppKIFTestController disableValidFacebookSession];
+        return KIFTestStepResultSuccess;
+    }];
+}
 
 + (NSArray*)stepsToPopNavigationControllerToIndex:(NSInteger)index
 {

@@ -73,15 +73,8 @@
     self.keyField.text = [apiInfo objectForKey:@"key"];
     self.secretField.text = [apiInfo objectForKey:@"secret"];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([apiInfo objectForKey:@"facebookToken"]) {
-        [defaults setObject:[apiInfo objectForKey:@"facebookToken"] forKey:@"FBAccessTokenKey"];
-        [defaults setObject:[NSDate distantFuture] forKey:@"FBExpirationDateKey"];
-        [defaults synchronize];
-    } else {
-        [defaults removeObjectForKey:@"FBAccessTokenKey"];
-        [defaults removeObjectForKey:@"FBExpirationDateKey"];
-    }
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FBAccessTokenKey"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FBExpirationDateKey"];
     [Socialize storeSocializeApiKey:[apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
     [Socialize storeFacebookAppId:@"115622641859087"];
     [Socialize storeApplicationLink:@"http://www.google.com"];
