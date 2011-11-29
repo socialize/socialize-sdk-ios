@@ -82,15 +82,6 @@
                               last:[NSNumber numberWithInteger:offset + self.pageSize]];
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-    
-    [super viewWillAppear:animated];   
-    
-    if ([self.socialize isAuthenticated]) {
-        [self startLoadingContent];
-    }
-}
-
 - (UIBarButtonItem*)doneButton {
     if (_doneButton == nil)
     {

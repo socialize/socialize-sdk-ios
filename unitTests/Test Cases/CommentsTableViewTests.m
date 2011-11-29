@@ -40,11 +40,9 @@
     self.commentsTableViewController = nil;
 }
 
--(void)testViewWillAppear {
-    [super expectViewWillAppear];
-    [[[self.mockSocialize stub] andReturnBool:YES]isAuthenticated];
+-(void)testAfterLoginAction {
     [[(id)self.commentsTableViewController expect] startLoadingContent];
-    [self.commentsTableViewController viewWillAppear:YES]; 
+    [self.commentsTableViewController afterLoginAction]; 
 }
 
 -(void)testServiceSuccess {

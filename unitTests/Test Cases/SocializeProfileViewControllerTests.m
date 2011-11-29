@@ -148,23 +148,16 @@
     [[(id)self.profileViewController expect] addActivityControllerToView];
 }
 
-- (void)testViewDidLoadWithNoUserWhenAlreadyAuthedGetsCurrentUser {
-    [self expectBasicViewDidLoad];
-    
-    // Not authed
-    BOOL yes = YES;
-    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(yes)] isAuthenticated];
+- (void)testAfterLoginWithNoUserGetsCurrentUser {
     
     // Expect we get full user for current user from server
     [[(id)self.profileViewController expect] startLoading];
     [[self.mockSocialize expect] getCurrentUser];
     
-    [self.profileViewController viewDidLoad];
+    [self.profileViewController afterLoginAction];
 }
 
-- (void)testViewDidLoadWithPartialUser {
-    [self expectBasicViewDidLoad];
-
+- (void)testAfterLoginWithPartialUser {
     // Set up a mock partial user
     NSInteger userID = 123;
     id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
@@ -173,18 +166,16 @@
     
     [[(id)self.profileViewController expect] startLoading];
     [[self.mockSocialize expect] getUserWithId:userID];
-    [self.profileViewController viewDidLoad];
+    [self.profileViewController afterLoginAction];
 }
 
-- (void)testViewDidLoadWithFullUser {
-    [self expectBasicViewDidLoad];
-    
+- (void)testAfterLoginWithFullUser {
     // Set up a mock full
     id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
     self.profileViewController.fullUser = mockFullUser;
 
     [[(id)self.profileViewController expect] configureViews];
-    [self.profileViewController viewDidLoad];
+    [self.profileViewController afterLoginAction];
 }
 
 - (void)testViewDidUnload {

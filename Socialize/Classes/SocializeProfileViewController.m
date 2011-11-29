@@ -98,7 +98,15 @@
 }
 
 - (void)afterLoginAction {
-    if (self.fullUser == nil && self.user == nil) {
+    if (self.fullUser != nil) {
+        // Already have a full user
+        [self configureViews];
+    } else if (self.user != nil) {
+        // Have a partial user object, fetch the whole thing
+        [self startLoading];
+        [self.socialize getUserWithId:self.user.objectID];
+    } else {
+        // no full user or partial user, load for current user
         [self getCurrentUser];
     }
 }
@@ -116,20 +124,6 @@
     self.profileImageView.image = [self defaultProfileImage];
     
     [self addActivityControllerToView];
-
-    if (self.fullUser != nil) {
-        // Already have a full user
-        [self configureViews];
-    } else if (self.user != nil) {
-        // Have a partial user object, fetch the whole thing
-        [self startLoading];
-        [self.socialize getUserWithId:self.user.objectID];
-    } else {
-        // no full user or partial user, load for current user
-        if ([self.socialize isAuthenticated]) {
-            [self getCurrentUser];
-        }
-    }
 }
 
 - (void)editButtonPressed:(UIBarButtonItem*)button {

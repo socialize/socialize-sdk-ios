@@ -239,6 +239,8 @@
         [self startLoading];
         
         [self.socialize authenticateAnonymously];
+    } else {
+        [self afterLoginAction];
     }
 }
 

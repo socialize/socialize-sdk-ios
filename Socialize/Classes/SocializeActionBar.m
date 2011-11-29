@@ -167,11 +167,7 @@
 }
 
 -(void)socializeActionViewWillAppear:(SocializeActionView *)socializeActionView {
-    if (![self.socialize isAuthenticated]) {
-        [self performAutoAuth];
-    } else {
-        [self appear];
-    }
+    [self performAutoAuth];
 }
 
 -(void)socializeActionViewWillDisappear:(SocializeActionView *)socializeActionView {
