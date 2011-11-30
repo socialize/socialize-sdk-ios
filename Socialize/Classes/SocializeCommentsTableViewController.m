@@ -89,7 +89,7 @@
 - (UIBarButtonItem*)doneButton {
     if (_doneButton == nil)
     {
-        UIButton *button = [UIButton redSocializeNavBarButtonWithTitle:@"Close"];
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Close"];
         [button addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         _doneButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     }

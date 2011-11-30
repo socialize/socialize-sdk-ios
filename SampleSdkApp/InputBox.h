@@ -30,13 +30,14 @@
 
 @interface InputBox : NSObject<UIAlertViewDelegate> {
     @private
-    UITextField* _inputField;
+
     NSString* _inputMsg;
     NSCondition* lock;
     BOOL shouldKeepRunning;
 }
 
 @property(nonatomic, copy) NSString* inputMsg;
+@property(nonatomic, retain) UITextField* inputField;
 
 -(void)showInputMessageWithTitle:(NSString*)title andPlaceholder:(NSString*)placeholder;
 

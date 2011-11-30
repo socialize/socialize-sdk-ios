@@ -27,6 +27,7 @@
 {
     NSString * normalImageURI = nil;
     NSString * highlightImageURI = nil;
+    NSString * disabledImageURI = nil;
     switch (type) 
     {
         case AMSOCIALIZE_BUTTON_TYPE_RED:
@@ -36,6 +37,7 @@
         case AMSOCIALIZE_BUTTON_TYPE_BLUE:
             normalImageURI = @"socialize-navbar-button-blue-bg-normal.png";
             highlightImageURI = @"socialize-navbar-button-blue-bg-highlighted.png";
+            disabledImageURI = @"socialize-navbar-button-blue-bg-inactive.png";
             break;
         case AMSOCIALIZE_BUTTON_TYPE_BLACK:
         default:
@@ -44,14 +46,26 @@
             break;
     }
     
+    
     UIImage * normalImage = [[UIImage imageNamed:normalImageURI]stretchableImageWithLeftCapWidth:6 topCapHeight:0] ;
     UIImage * highlightImage = [[UIImage imageNamed:highlightImageURI]stretchableImageWithLeftCapWidth:6 topCapHeight:0];
-    [self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    
+
+
+    UIColor * disabledColor = [UIColor colorWithRed:220.0/255.0 green:220/255.0 blue:220/255.0 alpha:1.0];  
+    [self setTitleColor:disabledColor forState:UIControlStateDisabled];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self setTitleShadowColor:disabledColor forState:UIControlStateDisabled];
 	
     [self setBackgroundImage:normalImage forState:UIControlStateNormal];
 	[self setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
     self.titleLabel.textColor = [UIColor whiteColor]; 
+    
+    if( disabledImageURI ) {
+        UIImage * disabledImage = [[UIImage imageNamed:@"socialize-navbar-button-blue-bg-inactive.png"]stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+        [self setBackgroundImage:disabledImage forState:UIControlStateDisabled];
+    }
+    
     
     if ([title length] > 0) 
     {
@@ -158,19 +172,7 @@
     return  blueButton;
 }
 
-+(UIButton *)blackSocializeNavBarButton
-{
-    return [UIButton blackSocializeNavBarButtonWithTitle:nil];
-}
-
-+(UIButton *)blackSocializeNavBarButtonWithTitle:(NSString *)title
-{
-    UIButton * blackButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [blackButton configureWithTitle:title type:AMSOCIALIZE_BUTTON_TYPE_BLACK];
-    return  blackButton;
-}
-
-+(UIButton *)blackSocializeNavBarBackButtonWithTitle:(NSString *)title
++(UIButton *)blueSocializeNavBarBackButtonWithTitle:(NSString *)title
 {
     UIImage* backImageNormal = [[UIImage imageNamed:@"socialize-navbar-button-back.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
 	UIImage* backImageHighligted = [[UIImage imageNamed:@"socialize-navbar-button-back-pressed.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
@@ -179,7 +181,7 @@
 	[backButton setBackgroundImage:backImageNormal forState:UIControlStateNormal];
 	[backButton setBackgroundImage:backImageHighligted forState:UIControlStateHighlighted];
 	backButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-	
+	//the spacing in the string is need here so that it'll be centered when displayed
 	NSString * titleString = [NSString stringWithFormat:@"  %@", title];
 	[backButton setTitle:titleString forState:UIControlStateNormal];
 	CGSize backButtonSize = [backButton.titleLabel.text sizeWithFont:backButton.titleLabel.font constrainedToSize:CGSizeMake(100, 29)];
