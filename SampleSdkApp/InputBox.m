@@ -41,6 +41,8 @@
         [_inputField setBackgroundColor:[UIColor whiteColor]];
         _inputField.text = @"";   
         _inputField.accessibilityLabel = @"Input Field";
+        _inputField.autocorrectionType =  UITextAutocorrectionTypeNo;
+        _inputField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         lock = [[NSCondition alloc] init];
     }
     return self;

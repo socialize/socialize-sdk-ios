@@ -9,7 +9,6 @@
 #import "UINavigationBarBackground.h"
 
 const NSInteger UINavigationBarBackgroundImageTag = 1234;
-BOOL useBackgroundImage = NO;
 
 
 @implementation UINavigationBar (UINavigationBarCategory)
@@ -28,15 +27,6 @@ BOOL useBackgroundImage = NO;
 		view.hidden = NO;
 		
 	}
-	else 
-	{
-		if (useBackgroundImage)
-		{
-			
-			[self setBackgroundImage:[UIImage imageNamed:@"header_image.png"] withTag:UINavigationBarBackgroundImageTag];
-		}
-	}
-
 	[self resetBackground];
 }
 

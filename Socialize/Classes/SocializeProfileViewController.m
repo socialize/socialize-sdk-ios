@@ -10,14 +10,14 @@
 #import "ImagesCache.h"
 #import "UINavigationBarBackground.h"
 #import "UIButton+Socialize.h"
-#import "SocializeLoadingView.h"
-#import "ImagesCache.h"
 #import "UINavigationController+Socialize.h"
+#import "SocializeActivityViewController.h"
 
 @interface SocializeProfileViewController ()
 -(void)showEditController;
 -(void)hideEditController;
 -(void)configureViews;
+- (void)addActivityControllerToView;
 @end
 
 @implementation SocializeProfileViewController
@@ -30,12 +30,12 @@
 @synthesize profileImageView = profileImageView_;
 @synthesize profileImageActivityIndicator = profileImageActivityIndicator_;
 @synthesize profileEditViewController = profileEditViewController_;
-@synthesize loadingView = loadingView_;
 @synthesize navigationControllerForEdit = navigationControllerForEdit_;
 @synthesize imagesCache = imagesCache_;
 @synthesize defaultProfileImage = defaultProfileImage_;
 @synthesize alertView = alertView_;
-
+@synthesize activityViewController = activityViewController_;
+@synthesize activityLoadingActivityIndicator = activityLoadingActivityIndicator_;
 
 - (void)dealloc {
     self.fullUser = nil;
@@ -49,9 +49,27 @@
     self.navigationControllerForEdit = nil;
     self.imagesCache = nil;
     self.defaultProfileImage = nil;
+    self.activityViewController = nil;
+    self.activityViewController.delegate = nil;
+    self.activityViewController = nil;
     
     [super dealloc];
 }
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    // Release any retained subviews of the main view.
+    self.userNameLabel = nil;
+    self.userDescriptionLabel = nil;
+    self.userLocationLabel = nil;
+    self.profileImageView = nil;
+    self.profileEditViewController = nil;
+    self.defaultProfileImage = nil;
+    self.activityViewController = nil;
+}
+
 + (UINavigationController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeProfileViewControllerDelegate>)delegate {
     SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] initWithUser:user delegate:delegate] autorelease];
     UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
@@ -79,27 +97,7 @@
     return [super initWithNibName:@"SocializeProfileViewController" bundle:nil];
 }
 
-- (void)getCurrentUser {
-    [self startLoading];
-    [self.socialize getCurrentUser];
-}
-
-- (void)afterAnonymouslyLoginAction {
-    if (self.fullUser == nil && self.user == nil) {
-        [self getCurrentUser];
-    }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    //we will show a done button here if there is not left barbutton item already showing
-    if (!self.navigationItem.leftBarButtonItem)
-        self.navigationItem.leftBarButtonItem = self.doneButton;
-
-    self.profileImageView.image = [self defaultProfileImage];
-    
+- (void)afterLoginAction {
     if (self.fullUser != nil) {
         // Already have a full user
         [self configureViews];
@@ -109,23 +107,23 @@
         [self.socialize getUserWithId:self.user.objectID];
     } else {
         // no full user or partial user, load for current user
-        if ([self.socialize isAuthenticated]) {
-            [self getCurrentUser];
-        }
+        [self getCurrentUser];
     }
 }
 
-- (void)viewDidUnload
+- (void)viewDidLoad
 {
-    [super viewDidUnload];
+    [super viewDidLoad];
     
-    // Release any retained subviews of the main view.
-    self.userNameLabel = nil;
-    self.userDescriptionLabel = nil;
-    self.userLocationLabel = nil;
-    self.profileImageView = nil;
-    self.profileEditViewController = nil;
-    self.defaultProfileImage = nil;
+    self.title = @"Profile";
+    
+    //we will show a done button here if there is not left barbutton item already showing
+    if (!self.navigationItem.leftBarButtonItem)
+        self.navigationItem.leftBarButtonItem = self.doneButton;
+
+    self.profileImageView.image = [self defaultProfileImage];
+    
+    [self addActivityControllerToView];
 }
 
 - (void)editButtonPressed:(UIBarButtonItem*)button {
@@ -133,8 +131,8 @@
 }
 
 - (void)doneButtonPressed:(UIBarButtonItem*)button {
-    if (self.delegate != nil) {
-        [self.delegate profileViewControllerDidCancel:self];
+    if ([self.delegate respondsToSelector:@selector(profileViewControllerDidFinish:)]) {
+        [self.delegate profileViewControllerDidFinish:self];
     } else {
         [self dismissModalViewControllerAnimated:YES];
     }
@@ -216,6 +214,8 @@
     // Configure the profile image
     [self setProfileImageFromURL:self.fullUser.smallImageUrl];
     [self configureEditButton];
+    self.activityViewController.currentUser = self.fullUser.objectID;
+    [self.activityViewController initializeContent];
 }
 
 - (SocializeProfileEditViewController*)profileEditViewController {
@@ -237,10 +237,8 @@
 
 -(void)showEditController
 {
+    self.profileEditViewController.fullUser = self.fullUser;
     self.profileEditViewController.profileImage = self.profileImageView.image;
-    self.profileEditViewController.firstName = self.fullUser.firstName;
-    self.profileEditViewController.lastName = self.fullUser.lastName;
-    self.profileEditViewController.bio = [self.fullUser description];
     [self presentModalViewController:self.navigationControllerForEdit animated:YES];
 }
 
@@ -255,16 +253,52 @@
 	[self hideEditController];    
 }
 
-- (void)profileEditViewControllerDidSave:(SocializeProfileEditViewController *)profileEditViewController {
-    self.loadingView = [SocializeLoadingView loadingViewInView:self.profileEditViewController.navigationController.view];
-	self.profileEditViewController.navigationItem.rightBarButtonItem.enabled = NO;
+- (void)profileEditViewController:(SocializeProfileEditViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
+    self.fullUser = user;
+    [self configureViews];
+    [self hideEditController];
+}
+
+- (SocializeActivityViewController*)activityViewController {
+    if (activityViewController_ == nil) {
+        activityViewController_ = [[SocializeActivityViewController alloc] init];
+        activityViewController_.delegate = self;
+        activityViewController_.dontShowNames = YES;
+        activityViewController_.dontShowDisclosure = ![self.delegate respondsToSelector:@selector(profileViewController:wantsViewActivity:)];
+    }
     
-    id<SocializeFullUser> userCopy = [(id)self.fullUser copy];
-    userCopy.firstName = self.profileEditViewController.firstName;
-    userCopy.lastName = self.profileEditViewController.lastName;
-    userCopy.description = self.profileEditViewController.bio;
-    UIImage* newProfileImage = self.profileEditViewController.profileImage;
-    [self.socialize updateUserProfile:userCopy profileImage:newProfileImage];
+    return activityViewController_;
+}
+
+- (void)activityViewControllerDidStartLoadingActivity:(SocializeActivityViewController *)activityViewController {
+//    [self.activityLoadingActivityIndicator startAnimating];
+}
+
+- (void)activityViewControllerDidStopLoadingActivity:(SocializeActivityViewController *)activityViewController {
+//    [self.activityLoadingActivityIndicator stopAnimating];
+}
+
+- (void)activityViewController:(SocializeActivityViewController *)activityViewController profileTappedForUser:(id<SocializeUser>)user {
+    if (user.objectID != self.fullUser.objectID) {
+        UINavigationController *profile = [SocializeProfileViewController socializeProfileViewControllerForUser:user delegate:nil];
+        [self presentModalViewController:profile animated:YES];
+    }
+}
+
+- (void)activityViewController:(SocializeActivityViewController *)activityViewController activityTapped:(id<SocializeActivity>)activity {
+    if ([self.delegate respondsToSelector:@selector(profileViewController:wantsViewActivity:)]) {
+        [self.delegate profileViewController:self wantsViewActivity:activity];
+    }
+}
+
+- (void)addActivityControllerToView {
+    CGRect activityFrame = self.view.frame;
+	self.activityViewController.view.frame = CGRectMake(0,160, activityFrame.size.width, activityFrame.size.height-160);
+    [self.view addSubview:self.activityViewController.view];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
@@ -273,23 +307,13 @@
     [self showAlertWithText:[NSString stringWithFormat: @"cannot get profile %@", [error localizedDescription]] andTitle:@"Error occurred"];
 }
 
--(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
-{
-    [self stopLoading];
-    
-    id<SocializeFullUser> fullUser = [dataArray objectAtIndex:0];
-    NSAssert([fullUser conformsToProtocol:@protocol(SocializeFullUser)], @"Not a socialize user");
+- (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser {
     self.fullUser = fullUser;
     [self configureViews];
 }
 
--(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object
-{
-    [self stopLoading];
-    self.fullUser = (id<SocializeFullUser>)object;
-    [self configureViews];
-    [self hideEditController];
+- (IBAction)headerTapped:(id)sender {
+    [self.activityViewController scrollToTop];
 }
-
 
 @end

@@ -16,8 +16,23 @@
 #import "UIView-KIFAdditions.h"
 #import "UIWindow-KIFAdditions.h"
 #import <Socialize/SocializeFacebookInterface.h>
+#import "SampleSdkAppKIFTestController.h"
 
 @implementation KIFTestStep (SampleSdkAppAdditions)
+
++ (id)stepToEnableValidFacebookSession {
+    return [self stepWithDescription:@"Enable preauthed facebook session" executionBlock:^(KIFTestStep *step, NSError **error) {
+        [SampleSdkAppKIFTestController enableValidFacebookSession];
+        return KIFTestStepResultSuccess;
+    }];
+}
+
++ (id)stepToDisableValidFacebookSession {
+    return [self stepWithDescription:@"Disable preauthed facebook session" executionBlock:^(KIFTestStep *step, NSError **error) {
+        [SampleSdkAppKIFTestController disableValidFacebookSession];
+        return KIFTestStepResultSuccess;
+    }];
+}
 
 + (NSArray*)stepsToPopNavigationControllerToIndex:(NSInteger)index
 {
@@ -68,32 +83,46 @@
     return steps;
 }
 
-+ (NSArray*)stepsToTestUserProfile {
++ (NSArray*)stepsToOpenProfile {
     NSMutableArray *steps = [NSMutableArray array];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:9 inSection:0];
     [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Edit"]];
+    return steps;
+}
 
++ (NSArray*)stepsToOpenEditProfile {
+    NSMutableArray *steps = [NSMutableArray array];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Edit"]];
+    return steps;
+}
+
++ (NSArray*)stepsToEditProfileImage {
+    NSMutableArray *steps = [NSMutableArray array];
     // Tap image
     NSIndexPath *imagePath = [NSIndexPath indexPathForRow:0 inSection:0];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"edit profile" atIndexPath:imagePath]];
-    
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Save"]];
+    return steps;
+}
+
++ (NSArray*)stepsToSetProfileFirstName:(NSString*)firstName {
+    NSMutableArray *steps = [NSMutableArray array];
+    // Tap image
     NSIndexPath *editPath = [NSIndexPath indexPathForRow:0 inSection:1];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"edit profile" atIndexPath:editPath]];
-    
-    NSString *firstName = @"Test First Name";
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"First name"]]; 
     [steps addObject:[KIFTestStep stepToEnterText:firstName intoViewWithAccessibilityLabel:@"First name"]]; 
+//    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Edit Profile"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
-    //this second "Save" is to save the entire form to the server.  It is need Do Not Remove
-    [steps addObject:[KIFTestStep stepToWaitForTimeInterval:0.5 description:@"Wait for save button"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    return steps;
+}
+
++ (NSArray*)stepsToVerifyProfileFirstName:(NSString*)firstName {
+    NSMutableArray *steps = [NSMutableArray array];
     NSString *firstNameAccessibilityLabel = @"name";
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:firstNameAccessibilityLabel]];
     [steps addObject:[KIFTestStep stepToCheckAccessibilityLabel:firstNameAccessibilityLabel hasValue:firstName]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
     return steps;
 }
 

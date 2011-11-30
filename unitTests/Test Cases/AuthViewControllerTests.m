@@ -86,16 +86,17 @@ BOOL isAuthenticatedWithFacebook = YES;
     NSObject *object = [SocializeAuthViewController authViewControllerInNavigationController:mockDelegate];
     NSAssert( [object isKindOfClass:[UINavigationController class]], @"static creation method did not create uinavigation controller" ) ;   
 }
-
+/*
 - (void)testCreateSkipButton {
     [self.authViewController createSkipButton];
 }
+ */
 - (void)testViewDidLoad {
-    id barButtonMock = [OCMockObject niceMockForClass:[UIBarButtonItem class]];
+//    id barButtonMock = [OCMockObject niceMockForClass:[UIBarButtonItem class]];
     
     id mockView = [OCMockObject niceMockForClass:[UIView class]]; 
     
-    [[[self.partialMockAuthViewController expect] andReturn:barButtonMock] createSkipButton];
+//    [[[self.partialMockAuthViewController expect] andReturn:barButtonMock] createSkipButton];
     [[[self.partialMockAuthViewController stub] andReturn:mockView] view];
     [self.authViewController viewDidLoad];
 }
@@ -139,12 +140,6 @@ BOOL isAuthenticatedWithFacebook = YES;
     [self.authViewController tableView:self.mockTableView cellForRowAtIndexPath:path];
 }
 
-- (void)profileViewDelegateWithSelector:(SEL)method {
-    id mockProfileViewController = [OCMockObject mockForClass:[SocializeProfileViewController class]];
-    [[self.partialMockAuthViewController expect] profileViewDidFinish];
-    [self.authViewController performSelector:method withObject:mockProfileViewController];
-}
-
 -(void) testDidSelectRowForFB {
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     id mockTableView = [OCMockObject mockForClass:[UITableView class]];
@@ -165,10 +160,12 @@ BOOL isAuthenticatedWithFacebook = YES;
 }
 
 - (void)testProfileViewDidCancel {
-    [self profileViewDelegateWithSelector:@selector(profileViewControllerDidCancel:)];
+    [[self.partialMockAuthViewController expect] profileViewDidFinish];
+    [self.authViewController profileEditViewController:nil didUpdateProfileWithUser:nil];
 }
 - (void)testProfileViewDidSave {
-    [self profileViewDelegateWithSelector:@selector(profileViewControllerDidSave:)];    
+    [[self.partialMockAuthViewController expect] profileViewDidFinish];
+    [self.authViewController profileEditViewControllerDidCancel:nil];
 }
     
 - (void) testGetAuthorizeInfoTableViewCell {

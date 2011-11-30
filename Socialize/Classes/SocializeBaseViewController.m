@@ -33,8 +33,11 @@
 #import "SocializeProfileViewController.h"
 #import "SocializeShareBuilder.h"
 #import "SocializeFacebookInterface.h"
+#import "SocializeUserService.h"
+#import "ImagesCache.h"
+#import "SocializeAuthenticateService.h"
 
-@interface SocializeBaseViewController () <SocializeProfileViewControllerDelegate, SocializeAuthViewControllerDelegate>
+@interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
 -(void)leftNavigationButtonPressed:(id)sender;  
 @end
 
@@ -47,21 +50,23 @@
 @synthesize saveButton = saveButton_;
 @synthesize genericAlertView = genericAlertView_;
 @synthesize socialize = socialize_;
-@synthesize postFacebookAuthenticationProfileViewController = postFacebookAuthenticationProfileViewController_;
-@synthesize requestingFacebookFromUser = requestingFacebookFromUser_;
+@synthesize imagesCache = imagesCache_;
 @synthesize shareBuilder = shareBuilder_;
 @synthesize sendActivityToFacebookFeedAlertView = sendActivityToFacebookFeedAlertView_;
 @synthesize authViewController = authViewController_;
+@synthesize bundle = bundle_;
+
 - (void)dealloc
 {
     self.genericAlertView.delegate = nil;
     self.genericAlertView = nil;
     self.socialize.delegate = nil;
     self.socialize = nil;
-    self.postFacebookAuthenticationProfileViewController = nil;
+    self.imagesCache = nil;
     self.shareBuilder = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
-    
+    self.bundle = nil;
+
     [super dealloc];
 }
 
@@ -75,7 +80,6 @@
     self.cancelButton = nil;
     self.sendButton = nil;
     self.genericAlertView = nil;
-    self.postFacebookAuthenticationProfileViewController = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
     self.authViewController = nil;
 }
@@ -90,12 +94,27 @@
     return tableView_;
 }
 
+- (NSBundle*)bundle {
+    if (bundle_ == nil) {
+        bundle_ = [[NSBundle mainBundle] retain];
+    }
+    return bundle_;
+}
+
 - (Socialize*)socialize {
     if (socialize_ == nil) {
         socialize_ = [[Socialize alloc] initWithDelegate:self];
     }
     
     return socialize_;
+}
+
+- (ImagesCache*)imagesCache {
+    if (imagesCache_ == nil) {
+        imagesCache_ = [[ImagesCache sharedImagesCache] retain];
+    }
+    
+    return imagesCache_;
 }
 
 - (UIBarButtonItem*)saveButton {
@@ -216,10 +235,18 @@
 
 -(void)performAutoAuth
 {
-    if(![self.socialize isAuthenticated])
-    {
+    if (![self.socialize isAuthenticatedWithFacebook] && [self.socialize facebookSessionValid]) {
+        // Go ahead and upgrade to facebook auth since we already have a valid token.
+        // (This is ok to do automatically, since an external app callout will not happen)
+        [self startLoading];
+        [self.socialize authenticateWithFacebook];        
+    } else if(![self.socialize isAuthenticated]) {
+        // We're Not authenticated at all, and we can't auto auth with facebook
+        // Just do anon
         [self startLoading];
         [self.socialize authenticateAnonymously];
+    } else {
+        [self afterLoginAction];
     }
 }
 
@@ -234,7 +261,6 @@
     }
     
     [self.navigationController.navigationBar resetBackground];
-
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -248,12 +274,7 @@
     [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
 }
 
--(void)afterAnonymouslyLoginAction
-{
-    // Should be implemented in the child classes.
-}
-
--(void)afterFacebookLoginAction
+-(void)afterLoginAction
 {
     // Should be implemented in the child classes.
 }
@@ -293,57 +314,11 @@
     return authViewController_;
 }
 
-- (SocializeProfileViewController*)postFacebookAuthenticationProfileViewController {
-    if (postFacebookAuthenticationProfileViewController_ == nil) {
-        postFacebookAuthenticationProfileViewController_ = [[SocializeProfileViewController alloc] init];
-        postFacebookAuthenticationProfileViewController_.delegate = self;
-    }
-    
-    return postFacebookAuthenticationProfileViewController_;
-}
-
-- (void)showProfile {
-    
-    UINavigationController *navigationController = [[[UINavigationController alloc]
-                                                     initWithRootViewController:self.postFacebookAuthenticationProfileViewController]
-                                                    autorelease];
-    
-    [self presentModalViewController:navigationController animated:YES];
-}
-
 -(void)didAuthenticate:(id<SocializeUser>)user
 {
     [self stopLoadAnimation];
     
-    if ([self.socialize isAuthenticatedWithFacebook]) {
-        if (self.requestingFacebookFromUser) {
-            // Complete facebook authentication flow
-            [self showProfile];
-        } else {
-            [self afterFacebookLoginAction];
-        }
-    } else {
-        // Complete auto auth
-        [self afterAnonymouslyLoginAction];
-    }
-}
-
-- (void)dismissFacebookAuthProfile {
-    self.requestingFacebookFromUser = NO;
-    [self dismissModalViewControllerAnimated:YES];
-    [self afterFacebookLoginAction];
-}
-
-- (void)profileViewControllerDidSave:(SocializeProfileViewController *)profileViewController {
-    if (profileViewController == self.postFacebookAuthenticationProfileViewController) {
-        [self dismissFacebookAuthProfile];
-    }
-}
-
-- (void)profileViewControllerDidCancel:(SocializeProfileViewController *)profileViewController {
-    if (profileViewController == self.postFacebookAuthenticationProfileViewController) {
-        [self dismissFacebookAuthProfile];
-    }
+    [self afterLoginAction];
 }
 
 - (UIAlertView*)sendActivityToFacebookFeedAlertView {
@@ -393,6 +368,52 @@
     [self.shareBuilder performShareForPath:@"me/feed"];
 }
 
+- (void)loadImageAtURL:(NSString*)imageURL
+          startLoading:(void(^)())startLoadingBlock
+           stopLoading:(void(^)())stopLoadingBlock
+            completion:(void(^)(UIImage *image))completionBlock {
+    
+    // Already have it loaded
+    UIImage *existing = [self.imagesCache imageFromCache:imageURL];
+    if (existing != nil) {
+        completionBlock(existing);
+        return;
+    }
+    
+    // Download image
+    startLoadingBlock();
+    
+    // FIXME implementation should handle copy
+    CompleteBlock complete = [[^(ImagesCache* imgs){
+        stopLoadingBlock();
+        
+        UIImage *loadedImage = [imgs imageFromCache:imageURL];
+        completionBlock(loadedImage);
+    } copy] autorelease];
+    
+    [self.imagesCache loadImageFromUrl:imageURL
+                        completeAction:complete];
 
+}
+
+- (void)getCurrentUser {
+    [self startLoading];
+    [self.socialize getCurrentUser];
+}
+
+- (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser {
+    
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
+{
+    [self stopLoading];
+    
+    if ([service isKindOfClass:[SocializeUserService class]]) {
+        id<SocializeFullUser> fullUser = [dataArray objectAtIndex:0];
+        NSAssert([fullUser conformsToProtocol:@protocol(SocializeFullUser)], @"Not a socialize user");
+        [self didGetCurrentUser:fullUser];
+    }
+}
 
 @end

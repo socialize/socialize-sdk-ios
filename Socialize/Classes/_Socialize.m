@@ -38,6 +38,13 @@
 @synthesize activityService = _activityService;
 @synthesize shareService = _shareService;
 
++ (void)initialize {
+    if (self == [Socialize class]) {
+        Class dynamicTest = NSClassFromString(@"SocializeDynamicTest");
+        NSAssert(dynamicTest != nil, @"Dynamic Class Load Error -- Is the application linked with -all_load?");
+    }
+}
+
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
     [_authService release]; _authService = nil;
@@ -243,6 +250,10 @@
         return NO;
     }
     
+    if (![FacebookAuthenticator hasValidToken]) {
+        return NO;
+    }
+    
     for (NSDictionary *auth in [[self authenticatedUser] thirdPartyAuth]) {
         if ([[auth objectForKey:@"auth_type"] isEqualToString:@"FaceBook"]) {
             return YES;
@@ -265,6 +276,10 @@
     }
     
     return YES;
+}
+
+- (BOOL)facebookSessionValid {
+    return [FacebookAuthenticator hasValidToken];
 }
 
 -(void)removeAuthenticationInfo{
@@ -367,6 +382,14 @@
 -(void)getActivityOfUser:(id<SocializeUser>)user
 {
     [_activityService getActivityOfUser:user];
+}
+
+-(void)getActivityOfUserId:(NSInteger)userId {
+    [_activityService getActivityOfUserId:userId];
+}
+
+-(void)getActivityOfUserId:(NSInteger)userId first:(NSNumber*)first last:(NSNumber*)last activity:(SocializeActivityType)activityType {
+    [_activityService getActivityOfUserId:userId first:first last:last activity:activityType];
 }
 
 

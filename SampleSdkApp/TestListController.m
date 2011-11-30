@@ -49,6 +49,7 @@
                       @"Test Tabbed Socialize Action Bar",
                       @"Test Current user activity",
                       @"Test Post a Share",
+                      @"Test Edit User Profile",
                       nil
                       ]retain];
 
@@ -253,6 +254,12 @@
             }
             break;
         }
+        case 14:
+        {
+            UINavigationController *nav = [SocializeProfileEditViewController profileEditViewControllerInNavigationController];
+            [self.navigationController presentModalViewController:nav animated:YES];
+            break;
+        }
 
     }    
     [controller release];
@@ -260,11 +267,8 @@
 
 #pragma mark - Service delegete
 
-- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
-}
-- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+- (void)profileViewController:(SocializeProfileViewController *)profileViewController wantsViewActivity:(id<SocializeActivity>)activity {
+    NSLog(@"View %@!", activity);
 }
 
 @end

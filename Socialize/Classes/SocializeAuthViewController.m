@@ -15,7 +15,6 @@
 @interface  SocializeAuthViewController()
     -(SocializeAuthTableViewCell *)getAuthorizeTableViewCell;
     -(SocializeAuthInfoTableViewCell*)getAuthorizeInfoTableViewCell;
-    -(UIBarButtonItem *) createSkipButton;
     -(void)profileViewDidFinish;
     -(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass;
     -(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName;
@@ -31,6 +30,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 
 
 @synthesize tableView;
+@synthesize skipButton = skipButton_;
 @synthesize delegate = _delegate;
 @synthesize user = _user;
 
@@ -54,6 +54,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 - (id)initWithDelegate:(id<SocializeAuthViewControllerDelegate>)delegate {
     if( self = [super initWithNibName:@"SocializeAuthViewController" bundle:nil] ) {
         self.delegate = delegate;
+        self.title = @"Authenticate";
     }
     return self;
 }
@@ -73,22 +74,12 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [self createSkipButton];
+    //self.navigationItem.rightBarButtonItem = [self createSkipButton];
     self.view.backgroundColor = [UIColor colorWithRed:50/255.0f green:58/255.0f blue:67/255.0f alpha:1.0];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorColor = [UIColor colorWithRed:25/255.0f green:31/255.0f blue:37/255.0f alpha:1.0];
 }
-
--(UIBarButtonItem *) createSkipButton {
-    UIButton * skipButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Skip"];
-    [skipButton addTarget:self action:@selector(skipButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *skipButtonItem = [[UIBarButtonItem alloc] initWithCustomView:skipButton];
-    return [skipButtonItem autorelease];
-}
-
--(void)skipButtonPressed:(id)button {
-    //[self stopLoadAnimation];
-    
+-(IBAction)skipButtonPressed:(id)sender {
     if( [self.delegate respondsToSelector:@selector(authorizationSkipped)] ) {
         [self.delegate authorizationSkipped];
     }
@@ -141,12 +132,14 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     return [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil];
 }
     
-- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
-    [self profileViewDidFinish];    
+- (void)profileEditViewControllerDidCancel:(SocializeProfileEditViewController *)profileEditViewController {
+    [self profileViewDidFinish];        
 }
-- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController {
-    [self profileViewDidFinish];
+
+- (void)profileEditViewController:(SocializeProfileEditViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
+    [self profileViewDidFinish];            
 }
+
 - (void)profileViewDidFinish {
     SEL didAuthSelector = @selector(socializeAuthViewController:didAuthenticate:);
     if ([self.delegate respondsToSelector:didAuthSelector] ) {
@@ -154,13 +147,14 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     }
     [self dismissModalViewControllerAnimated:YES];
 }
+
 -(void)didAuthenticate:(id<SocializeUser>)user 
 {
     self.user = user;
     if ( [self.socialize isAuthenticatedWithFacebook] ) { 
-        SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] init] autorelease];
-        profile.delegate = self;
-        [self.navigationController pushViewController:profile animated:YES];
+        SocializeProfileEditViewController *profileEdit = [SocializeProfileEditViewController profileEditViewController];
+        profileEdit.delegate = self;
+        [self.navigationController pushViewController:profileEdit animated:YES];
     }
 }
 

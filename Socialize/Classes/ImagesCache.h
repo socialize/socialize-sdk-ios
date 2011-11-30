@@ -36,6 +36,7 @@ typedef void (^CompleteBlock)(ImagesCache* cache);
 @private
     NSMutableDictionary             *imagesDictionary;
     NSMutableDictionary             *pendingUrlDownloads;
+    NSMutableDictionary             *pendingUrlCallbacks;
 }
 
 /* This loader will be used implicitly if no custom loader is specified */

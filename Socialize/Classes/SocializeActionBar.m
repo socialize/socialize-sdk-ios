@@ -39,6 +39,7 @@
 #import "SocializeFacebookInterface.h"
 #import "SocializePostShareViewController.h"
 #import "SocializeEntityService.h"
+#import "SocializeProfileViewController.h"
 
 @interface SocializeActionBar()
 @property (nonatomic, retain) id<SocializeView> entityView;
@@ -162,16 +163,12 @@
     }
 }
 
-- (void)afterAnonymouslyLoginAction {
+- (void)afterLoginAction {
     [self appear];
 }
 
 -(void)socializeActionViewWillAppear:(SocializeActionView *)socializeActionView {
-    if (![self.socialize isAuthenticated]) {
-        [self performAutoAuth];
-    } else {
-        [self appear];
-    }
+    [self performAutoAuth];
 }
 
 -(void)socializeActionViewWillDisappear:(SocializeActionView *)socializeActionView {
@@ -193,6 +190,13 @@
         [self.socialize unlikeEntity:self.entityLike];
     else
         [self.socialize likeEntityWithKey:self.entity.key longitude:nil latitude:nil];
+}
+
+-(void)viewButtonTouched:(id)sender
+{
+    self.ignoreNextView = YES;
+    UINavigationController *nav = [SocializeProfileViewController currentUserProfileWithDelegate:nil];
+    [self.presentModalInViewController presentModalViewController:nav animated:YES];
 }
 
 - (UIActionSheet*)shareActionSheet {
@@ -345,9 +349,11 @@
     [(SocializeActionView*)self.view updateLikesCount:[NSNumber numberWithInt:like.entity.likes] liked:YES];
     [(SocializeActionView*)self.view unlockButtons];    
     
+#if 0
     if ([self.socialize isAuthenticatedWithFacebook]) {
         [self sendActivityToFacebookFeed:like];            
     }
+#endif
 }
 
 - (void)failedCreatingLikeWithError:(NSError*)error {

@@ -22,6 +22,11 @@
 @synthesize mockEditButton = mockEditButton_;
 @synthesize mockSendButton = mockSendButton_;
 @synthesize mockCancelButton = mockCancelButton_;
+@synthesize mockBundle = mockBundle_;
+@synthesize mockImagesCache = mockImagesCache_;
+@synthesize mockSaveButton = mockSaveButton_;
+@synthesize mockView = mockView_;
+@synthesize mockWindow = mockWindow_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -37,6 +42,11 @@
     
     self.origViewController = [[self class] createController];
     self.viewController = [OCMockObject partialMockForObject:self.origViewController];
+    
+    self.mockWindow = [OCMockObject mockForClass:[UIWindow class]];
+    self.mockView = [OCMockObject niceMockForClass:[UIView class]];
+    [[[self.mockView stub] andReturn:self.mockWindow] window];
+    [[[(id)self.viewController stub] andReturn:self.mockView] view];
     
     self.mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
     [[[(id)self.viewController stub] andReturn:self.mockNavigationController] navigationController];
@@ -65,6 +75,15 @@
 
     self.mockCancelButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.viewController.cancelButton = self.mockCancelButton;
+        
+    self.mockSaveButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.viewController.saveButton = self.mockSaveButton;
+
+    self.mockBundle = [OCMockObject mockForClass:[NSBundle class]];
+    self.viewController.bundle = self.mockBundle;
+
+    self.mockImagesCache = [OCMockObject mockForClass:[ImagesCache class]];
+    self.viewController.imagesCache = self.mockImagesCache;
 }
 
 -(void) tearDown
@@ -79,6 +98,8 @@
     [self.mockGenericAlertView verify];
     [self.mockDoneButton verify];
     [self.mockEditButton verify];
+    [self.mockBundle verify];
+    [self.mockImagesCache verify];
 
     [[self.mockGenericAlertView expect] setDelegate:nil];
     self.origViewController = nil;
@@ -90,6 +111,8 @@
     self.mockGenericAlertView = nil;
     self.mockDoneButton = nil;
     self.mockEditButton = nil;
+    self.mockBundle = nil;
+    self.mockImagesCache = nil;
 }
 
 - (void)testViewDidUnload {
@@ -99,21 +122,30 @@
     [[(id)self.viewController expect] setCancelButton:nil];
     [[(id)self.viewController expect] setSendButton:nil];
     [[(id)self.viewController expect] setGenericAlertView:nil];
-    [[(id)self.viewController expect] setPostFacebookAuthenticationProfileViewController:nil];
     [[(id)self.viewController expect] setSendActivityToFacebookFeedAlertView:nil];
     [[(id)self.viewController expect] setAuthViewController:nil];
     
     [self.viewController viewDidUnload];
 }
 
+- (void)expectAndSimulateLoadOfImage:(UIImage*)image fromURL:(NSString*)url {
+    // First return nil for image from cache
+    [[[self.mockImagesCache expect] andReturn:nil] imageFromCache:url];
+    
+    [[[self.mockImagesCache expect] andDo:^(NSInvocation *inv) {
+        // Get the completion block and call it
+        void(^completionBlock)(ImagesCache *image);
+        [inv getArgument:&completionBlock atIndex:3];
+        [[[self.mockImagesCache expect] andReturn:image] imageFromCache:url];
+        completionBlock(self.mockImagesCache);
+    }] loadImageFromUrl:url completeAction:OCMOCK_ANY];
+}
+
 - (void)testDefaultTableViewProperty {
-    id mockTableView = [OCMockObject mockForClass:[UITableView class]];
-    BOOL yes = YES;
-    [[[mockTableView expect] andReturnValue:OCMOCK_VALUE(yes)] isKindOfClass:[UITableView class]];
-    [[[(id)self.viewController stub] andReturn:mockTableView] view];
+    [[[self.mockView stub] andReturnBool:YES] isKindOfClass:[UITableView class]];
 
     UITableView *defaultTableView = self.viewController.tableView;
-    GHAssertEquals(mockTableView, defaultTableView, @"tableView incorrect");
+    GHAssertEquals(self.mockView, defaultTableView, @"tableView incorrect");
 }
 
 - (void)testDefaultSocialize {
@@ -175,10 +207,8 @@
 }
 
 - (void)testDefaultShowLoadingInView {
-    id mockView = [OCMockObject mockForClass:[UIView class]];
-    [[[(id)self.viewController stub] andReturn:mockView] view];
     UIView *showLoadingInView = [self.viewController showLoadingInView];
-    GHAssertEquals(mockView, showLoadingInView, nil);
+    GHAssertEquals(self.mockView, showLoadingInView, nil);
 }
 
 - (void)testDefaultAutoAuth {
@@ -186,16 +216,26 @@
 }
 
 - (void)testAutoAuthWhenNotAuthedPerformsAuth {
-    BOOL no = NO;
-    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(no)] isAuthenticated];
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
+    [[[self.mockSocialize stub] andReturnBool:NO] facebookSessionValid];
     [[(id)self.viewController expect] startLoading];
     [[self.mockSocialize expect] authenticateAnonymously];
     [self.viewController performAutoAuth];
 }
 
+- (void)testAutoAuthWhenNotAuthedAndFacebookAlreadyValidPerformsFacebookAuth {
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookSessionValid];
+    [[(id)self.viewController expect] startLoading];
+    [[self.mockSocialize expect] authenticateWithFacebook];
+    [self.viewController performAutoAuth];
+}
+
 - (void)testAutoAuthWhenAuthedDoesNothing {
-    BOOL yes = YES;
-    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(yes)] isAuthenticated];
+    [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticated];
+    [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticatedWithFacebook];
     [self.viewController performAutoAuth];
 }
 
@@ -212,10 +252,6 @@
     [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(isAuthenticatedWithFB)] isAuthenticatedWithFacebook];
     [[self.mockSocialize expect] authenticateWithFacebook];
     [self.origViewController authenticateWithFacebook];
-}
-- (void) testPostFBAuthProfileViewController {
-    SocializeProfileViewController *profileViewController = self.origViewController.postFacebookAuthenticationProfileViewController;
-    GHAssertEquals([profileViewController delegate], self.origViewController,@"The delegate for the profile view controller was not set properly");
 }
 
 - (void) testDidDismissWithButtonForFBSend {
@@ -251,22 +287,30 @@
     [[(id)self.viewController expect] stopLoadAnimation];
     BOOL no = NO;
     [[[self.mockSocialize stub] andReturnValue:OCMOCK_VALUE(no)] isAuthenticatedWithFacebook];
-    [[(id)self.viewController expect] afterAnonymouslyLoginAction];
+    [[(id)self.viewController expect] afterLoginAction];
     [self.viewController didAuthenticate:nil];
 }
 
-- (void)testViewWillAppear {
+- (void)expectViewWillAppear {
     [[(id)self.viewController expect] performAutoAuth];
-    [[self.mockNavigationBar expect] resetBackground];
+    [[self.mockNavigationBar expect] resetBackground];    
+}
+
+- (void)testViewWillAppear {
+    [self expectViewWillAppear];
     [self.viewController viewWillAppear:YES];
+}
+
+- (void)expectServiceFailureWithError:(NSError*)error {
+    [[(id)self.viewController expect] stopLoadAnimation];
+    [[(id)self.viewController expect] showAlertWithText:[error localizedDescription] andTitle:OCMOCK_ANY];
 }
 
 - (void)testServiceFailureShowsAnAlert {
     NSString *testDescription = @"testDescription";
     id mockError = [OCMockObject mockForClass:[NSError class]];
-    [[[mockError expect] andReturn:testDescription] localizedDescription];
-    [[(id)self.viewController expect] stopLoadAnimation];
-    [[(id)self.viewController expect] showAlertWithText:testDescription andTitle:OCMOCK_ANY];
+    [[[mockError stub] andReturn:testDescription] localizedDescription];
+    [self expectServiceFailureWithError:mockError];
     [self.viewController service:nil didFail:mockError];
 }
 

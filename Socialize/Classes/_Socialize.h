@@ -354,6 +354,13 @@ otherwise you will get a failure.
 -(BOOL)isAuthenticatedWithFacebook;
 
 /**
+ Check if an existing facebook session already exists
+ 
+ @return YES if there is already a valid facebook session for this app
+ */
+- (BOOL)facebookSessionValid;
+
+/**
  Remove old authentication information.
  
  If user would like to re-authenticate he has to remove previous authentication information.
@@ -512,6 +519,8 @@ otherwise you will get a failure.
 
 -(void)getActivityOfCurrentApplication;
 -(void)getActivityOfUser:(id<SocializeUser>)user;
+-(void)getActivityOfUserId:(NSInteger)userId;
+-(void)getActivityOfUserId:(NSInteger)userId first:(NSNumber*)first last:(NSNumber*)last activity:(SocializeActivityType)activityType;
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text;
 -(void)createShareForEntityWithKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text;

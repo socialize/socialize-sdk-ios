@@ -73,16 +73,7 @@
 }
 
 - (void)testFacebookFromSettings {
-    NSDate *exp = [NSDate date];
-    [Socialize storeFacebookAppId:@"1234"];
-    [Socialize storeFacebookLocalAppId:@"abcd"];
-    [[NSUserDefaults standardUserDefaults] setObject:@"testToken" forKey:@"FBAccessTokenKey"];
-    [[NSUserDefaults standardUserDefaults] setObject:exp forKey:@"FBExpirationDateKey"];
-
-    SocializeFacebook *facebook = self.facebookInterface.facebook;
-    GHAssertEqualObjects(@"abcd", facebook.localAppId, @"Bad local app id");
-    GHAssertEqualObjects(@"testToken", facebook.accessToken, @"Bad token");
-    GHAssertEqualObjects(exp, facebook.expirationDate, @"Bad date");
+    GHAssertThrows((void)self.facebookInterface.facebook, @"Should throw");
 }
 
 @end

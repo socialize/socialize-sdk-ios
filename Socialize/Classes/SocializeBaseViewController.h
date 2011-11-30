@@ -30,7 +30,7 @@
 
 @class SocializeShareBuilder;
 @class SocializeLoadingView;
-@class SocializeProfileViewController;
+@class ImagesCache;
 
 @interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate> {
     @private 
@@ -45,10 +45,10 @@
 @property (nonatomic, retain) UIBarButtonItem *cancelButton;
 @property (nonatomic, retain) UIBarButtonItem *saveButton;
 @property (nonatomic, retain) UIAlertView *genericAlertView;
-@property (nonatomic, retain) SocializeProfileViewController *postFacebookAuthenticationProfileViewController;
-@property (nonatomic, assign) BOOL requestingFacebookFromUser;
 @property (nonatomic, retain) UIAlertView *sendActivityToFacebookFeedAlertView;
 @property (nonatomic, retain) SocializeShareBuilder *shareBuilder;
+@property (nonatomic, retain) ImagesCache *imagesCache;
+@property (nonatomic, retain) NSBundle *bundle;
 
 -(void) showAlertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoading;
@@ -56,8 +56,7 @@
 -(void) startLoadAnimationForView: (UIView*) view;
 -(void) stopLoadAnimation;
 -(void)performAutoAuth;
--(void) afterAnonymouslyLoginAction;
--(void)afterFacebookLoginAction;
+-(void) afterLoginAction;
 -(BOOL)shouldAutoAuthOnAppear;
 - (UIView*)showLoadingInView;
 - (void)authenticateWithFacebook;
@@ -71,4 +70,11 @@
 - (void)sendActivityToFacebookFeedFailed:(NSError*)error;
 - (void)sendActivityToFacebookFeedCancelled;
 - (UIBarButtonItem*)createLeftNavigationButtonWithCaption:(NSString*)caption;
+- (void)getCurrentUser;
+- (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser;
+- (void)loadImageAtURL:(NSString*)imageURL
+          startLoading:(void(^)())startLoadingBlock
+           stopLoading:(void(^)())stopLoadingBlock
+            completion:(void(^)(UIImage *image))completionBlock;
+
 @end

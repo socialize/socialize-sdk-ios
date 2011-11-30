@@ -7,17 +7,15 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
+#import "SocializeBaseViewControllerTests.h"
 
 @class SocializeProfileEditViewController;
 
-@interface SocializeProfileEditViewControllerTest : GHTestCase
-@property (nonatomic, retain) SocializeProfileEditViewController *origProfileEditViewController;
+@interface SocializeProfileEditViewControllerTest : SocializeBaseViewControllerTests
 @property (nonatomic, retain) SocializeProfileEditViewController *profileEditViewController;
 @property (nonatomic, retain) id mockDelegate;
 @property (nonatomic, retain) id mockTableView;
 @property (nonatomic, retain) id mockBundle;
-@property (nonatomic, retain) id mockCancelButton;
-@property (nonatomic, retain) id mockSaveButton;
 @property (nonatomic, retain) id mockNavigationItem;
 @property (nonatomic, retain) id mockFacebookSwitch;
 @property (nonatomic, retain) id mockUserDefaults;

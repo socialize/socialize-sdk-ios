@@ -147,7 +147,7 @@
 
 	[self addSubview:_likeButton];
         
-	_viewCounter.userInteractionEnabled = NO;
+	_viewCounter.userInteractionEnabled = YES;
 	_viewCounter.hidden = YES;
 
 	buttonOrigin.x = PADDING_IN_BETWEEN_BUTTONS; 
@@ -159,7 +159,7 @@
 			withIconName:@"action-bar-icon-views.png"
 				atOrigin:buttonOrigin
 				onButton:_viewCounter
-			withSelector:nil];
+			withSelector:@selector(viewButtonPressed:)];
 	[self addSubview:_viewCounter];
 	
     _activityIndicator.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y + 5, 20, 20);
@@ -354,6 +354,10 @@
 	[_socializeDelegate likeButtonTouched:sender];
 }
 
+-(void)viewButtonPressed:(id)sender
+{
+	[_socializeDelegate viewButtonTouched:sender];
+}
 
 -(void)shareButtonPressed:(id)sender
 {

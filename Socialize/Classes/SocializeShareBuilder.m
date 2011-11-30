@@ -82,8 +82,8 @@
 
 -(void)performShareForPath:(NSString*)path
 {
-    NSAssert(self.shareObject != nil, @"Could not be nil");
-    NSAssert(self.shareProtocol != nil, @"Could not be nil");
+    NSAssert(self.shareObject != nil, @"Share Object cannot be nil");
+    NSAssert(self.shareProtocol != nil, @"Share Protocol cannot  be nil");
     
     NSMutableDictionary* params;
     if([Socialize applicationLink])
@@ -116,7 +116,7 @@
 -(void)prepareForEntityShare: (NSMutableDictionary*) params
 {
     id<SocializeShare> share = (id<SocializeShare>)self.shareObject;
-    NSString* message = [NSString stringWithFormat:@"Check this out: \n %@ \n\n Shared from %@ using Socialize for iOS. \n http://www.getsocialize.com", share.entity.key, share.application.name];
+    NSString* message = [NSString stringWithFormat:@"%@: \n %@ \n\n Shared from %@ using Socialize for iOS. \n http://www.getsocialize.com", share.text, share.entity.key, share.application.name];
     [params setObject:message forKey:@"message"]; 
 }
 
@@ -130,7 +130,7 @@
 -(void)prepareForLikeShare: (NSMutableDictionary*) params
 {
     id<SocializeLike> like = (id<SocializeLike>)self.shareObject;
-    NSString* message = [NSString stringWithFormat:@"Likes %@ \n\n Posted from %@ using Socialize for iOS. \n http://www.getsocialize.com", like.entity.key, like.application.name];
+    NSString* message = [NSString stringWithFormat:@"Liked %@ \n\n Posted from %@ using Socialize for iOS. \n http://www.getsocialize.com", like.entity.key, like.application.name];
     [params setObject:message forKey:@"message"];
 }
 

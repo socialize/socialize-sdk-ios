@@ -41,9 +41,7 @@ typedef enum {
 @class SocializeProfileEditValueViewController;
 
 @interface SocializeProfileEditViewController : SocializeBaseViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SocializeProfileEditValueViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, copy) NSString *firstName;
-@property (nonatomic, copy) NSString *lastName;
-@property (nonatomic, copy) NSString *bio;
+@property (nonatomic, retain) id<SocializeFullUser> fullUser;
 @property (nonatomic, retain) UIImage *profileImage;
 @property (nonatomic, retain) NSArray *cellBackgroundColors;
 @property (nonatomic, assign) id<SocializeProfileEditViewControllerDelegate> delegate;
@@ -55,6 +53,10 @@ typedef enum {
 @property (nonatomic, retain) UISwitch *facebookSwitch;
 @property (nonatomic, retain) NSBundle *bundle;
 @property (nonatomic, retain) NSUserDefaults *userDefaults;
+@property (nonatomic, assign) BOOL editOccured;
+
++ (UINavigationController*)profileEditViewControllerInNavigationController;
++ (SocializeProfileEditViewController*)profileEditViewController;
 
 - (NSString*)keyPathForPropertiesRow:(SocializeProfileEditViewControllerPropertiesRow)row;
 -(void) showActionSheet;
@@ -62,7 +64,7 @@ typedef enum {
 
 @protocol SocializeProfileEditViewControllerDelegate <NSObject>
 
-- (void)profileEditViewControllerDidSave:(SocializeProfileEditViewController*)profileEditViewController;
+- (void)profileEditViewController:(SocializeProfileEditViewController*)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user;
 - (void)profileEditViewControllerDidCancel:(SocializeProfileEditViewController*)profileEditViewController;
 
 @end
