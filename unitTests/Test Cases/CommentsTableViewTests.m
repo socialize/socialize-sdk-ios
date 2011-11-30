@@ -40,8 +40,8 @@
     self.commentsTableViewController = nil;
 }
 
--(void)testAfterLoginAction {
-    [[(id)self.commentsTableViewController expect] startLoadingContent];
+-(void)testAfterLoginActionInitializesContent {
+    [[(id)self.commentsTableViewController expect] initializeContent];
     [self.commentsTableViewController afterLoginAction]; 
 }
 

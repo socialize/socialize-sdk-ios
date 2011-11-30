@@ -14,6 +14,8 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
 @interface SocializeTableViewController ()
 @property (nonatomic, assign) BOOL waitingForContent;
 @property (nonatomic, assign) BOOL loadedAllContent;
+@property (nonatomic, assign, getter=isInitialized) BOOL initialized;
+- (void)startLoadingContent;
 @end
 
 
@@ -24,14 +26,17 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
 @synthesize tableFooterView = tableFooterView_;
 @synthesize tableBackgroundView = tableBackgroundView_;
 @synthesize activityLoadingActivityIndicatorView = activityLoadingActivityIndicatorView_;
+@synthesize activityLoadingLabel = activityLoadingLabel_;
 @synthesize pageSize = pageSize_;
 @synthesize informationView = informationView_;
+@synthesize initialized = initialized_;
 
 - (void)dealloc {
     self.content = nil;
     self.tableFooterView = nil;
     self.tableBackgroundView = nil;
     self.activityLoadingActivityIndicatorView = nil;
+    self.activityLoadingLabel = nil;
     self.informationView = nil;
     
     [super dealloc];
@@ -53,6 +58,7 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
     self.tableFooterView = nil;
     self.tableBackgroundView = nil;
     self.activityLoadingActivityIndicatorView = nil;
+    self.activityLoadingLabel = nil;
     self.informationView = nil;
 }
 
@@ -68,8 +74,15 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
     [super viewDidLoad];
     
     self.tableView.backgroundView = self.tableBackgroundView;
-    
+
     [self.tableView addSubview:self.informationView];
+}
+
+- (void)initializeContent {
+    if (!self.initialized) {
+        self.tableView.tableFooterView = self.tableFooterView;
+        [self startLoadingContent];
+    }
 }
 
 - (SocializeTableBGInfoView*)informationView {
@@ -100,7 +113,12 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
 }
 
 - (void)startLoadingContent {
+    if (self.loadedAllContent == YES) {
+        return;
+    }
+    
     [self.activityLoadingActivityIndicatorView startAnimating];
+    self.activityLoadingLabel.hidden = NO;
     self.waitingForContent = YES;
     NSInteger offset = [self.content count];
     [self loadContentForNextPageAtOffset:offset];
@@ -108,7 +126,12 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
 
 - (void)stopLoadingContent {
     [self.activityLoadingActivityIndicatorView stopAnimating];
+    self.activityLoadingLabel.hidden = YES;
     self.waitingForContent = NO;
+}
+
+- (void)failLoadingContent {
+    [self stopLoadingContent];
 }
 
 - (NSArray*)indexPathsForSectionRange:(NSRange)sectionRange rowRange:(NSRange)rowRange {
@@ -119,16 +142,6 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
         }
     }
     return indexPaths;
-}
-
-- (void)clearContent {
-    if ([self.content count] > 0) {
-        [self.tableView beginUpdates];
-        NSArray *indexPaths = [self indexPathsForSectionRange:NSMakeRange(0, 1) rowRange:NSMakeRange(0, [self.content count])];
-        [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-        self.content = nil;
-        [self.tableView endUpdates];
-    }
 }
 
 - (void)receiveNewContent:(NSArray*)content {
@@ -145,16 +158,18 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
     
     if ([content count] < self.pageSize) {
         self.loadedAllContent = YES;
+        self.tableView.tableFooterView = nil;
     }
     
     if ([self.content count] == 0) {
-        self.tableFooterView.hidden = YES;
         self.informationView.hidden = NO;
         self.tableView.tableFooterView = nil;
     } else {
-        // Make sure the footer is shown if there is content
-        self.tableView.tableFooterView = self.tableFooterView;
         self.informationView.hidden = YES;
+    }
+    
+    if (!self.initialized) {
+        self.initialized = YES;
     }
 }
 

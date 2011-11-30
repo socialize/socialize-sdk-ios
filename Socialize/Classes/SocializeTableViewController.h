@@ -17,15 +17,16 @@ extern NSInteger SocializeTableViewControllerDefaultPageSize;
 @property (nonatomic, assign) NSInteger pageSize;
 @property (nonatomic, assign, readonly) BOOL waitingForContent;
 @property (nonatomic, assign, readonly) BOOL loadedAllContent;
+@property (nonatomic, assign, readonly, getter=isInitialized) BOOL initialized;
 @property (nonatomic, retain) IBOutlet UIView *tableFooterView;
 @property (nonatomic, retain) IBOutlet UIView *tableBackgroundView;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityLoadingActivityIndicatorView;
+@property (nonatomic, retain) IBOutlet UILabel *activityLoadingLabel;
 @property (nonatomic, retain) SocializeTableBGInfoView *informationView;
 - (void)loadContentForNextPageAtOffset:(NSInteger)offset;
-- (void)startLoadingContent;
-- (void)stopLoadingContent;
 - (void)receiveNewContent:(NSArray*)content;
+- (void)failLoadingContent;
 - (void)scrollToTop;
-- (void)clearContent;
+- (void)initializeContent;
 
 @end

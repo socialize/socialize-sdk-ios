@@ -13,10 +13,6 @@
 #import <objc/runtime.h>
 #import "SocializeActivityService.h"
 
-@interface SocializeActivityViewController ()
-- (void)setCurrentUser_:(NSInteger)currentUser;
-@end
-
 @implementation SocializeActivityViewControllerTests
 @synthesize activityViewController = activityViewController_;
 @synthesize mockActivityViewControllerDelegate = mockActivityViewControllerDelegate_;
@@ -63,18 +59,10 @@
     GHAssertEquals(height, SocializeActivityTableViewCellHeight, @"bad height");
 }
 
-- (void)testSetCurrentUserClearsContentAndLoadsNewContent {
-    [[(id)self.activityViewController expect] clearContent];
-    [[(id)self.activityViewController expect] startLoadingContent];
-    [self.activityViewController setCurrentUser:55];
-    
-    GHAssertEquals(self.activityViewController.currentUser, 55, @"Bad id");
-}
-
 - (void)testLoadContentCallLoadsAllActivityFromSocialize {
     NSInteger testUserID = 10;
 
-    [self.activityViewController setCurrentUser_:testUserID];
+    self.activityViewController.currentUser = testUserID;
     self.activityViewController.pageSize = 15;
     
     // Start loading
@@ -99,11 +87,11 @@
     [self.activityViewController service:mockActivityService didFetchElements:mockElements];
 }
 
-- (void)testFailingGetActivityStopsLoadingContent {
+- (void)testFailingGetActivityFailsLoadingContent {
     id mockActivityService = [OCMockObject mockForClass:[SocializeActivityService class]];
     [mockActivityService stubIsKindOfClass:[SocializeActivityService class]];
     
-    [[(id)self.activityViewController expect] stopLoadingContent];
+    [[(id)self.activityViewController expect] failLoadingContent];
     [super expectServiceFailureWithError:nil];
     [self.activityViewController service:mockActivityService didFail:nil];
 }

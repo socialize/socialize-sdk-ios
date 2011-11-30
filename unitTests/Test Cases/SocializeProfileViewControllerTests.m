@@ -298,6 +298,9 @@
     // Activity subcontroller should be configured for this user
     [[self.mockActivityViewController expect] setCurrentUser:testUserID];
     
+    // Activity content should be initialized
+    [[self.mockActivityViewController expect] initializeContent];
+    
     [self.profileViewController configureViews];
 }
 

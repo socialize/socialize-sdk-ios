@@ -10,6 +10,11 @@
 #import "SocializeTableViewController.h"
 #import "SocializeTableBGInfoView.h"
 
+@interface SocializeTableViewController ()
+@property (nonatomic, assign, getter=isInitialized) BOOL initialized;
+- (void)startLoadingContent;
+@end
+
 @implementation SocializeTableViewTests
 @synthesize tableViewController = tableViewController_;
 @synthesize mockTableView = mockTableView_;
@@ -17,6 +22,7 @@
 @synthesize mockTableBackgroundView = mockTableBackgroundView_;
 @synthesize mockContent = mockContent_;
 @synthesize mockActivityLoadingActivityIndicatorView = mockActivityLoadingActivityIndicatorView_;
+@synthesize mockTableFooterView = mockTableFooterView_;
 
 + (SocializeBaseViewController*)createController {
     return [[[SocializeTableViewController alloc] init] autorelease];
@@ -48,6 +54,9 @@
 
     self.mockActivityLoadingActivityIndicatorView = [OCMockObject mockForClass:[UIActivityIndicatorView class]];
     self.tableViewController.activityLoadingActivityIndicatorView = self.mockActivityLoadingActivityIndicatorView;
+    
+    self.mockTableFooterView = [OCMockObject mockForClass:[UIView class]];
+    self.tableViewController.tableFooterView = self.mockTableFooterView;
 }
 
 - (void)tearDown {
@@ -150,6 +159,33 @@
     [[self.mockTableView expect] scrollToRowAtIndexPath:topIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     [self.tableViewController scrollToTop];
 }
+
+- (void)testThatInitializingDoesNothingWhenAlreadyInitialized {
+    self.tableViewController.initialized = YES;
+    [self.tableViewController initializeContent];
+}
+
+- (void)testThatInitializingMakesFooterVisibleAndStartsLoading {
+    [[self.mockTableView expect] setTableFooterView:self.mockTableFooterView];
+    [[(id)self.tableViewController expect] startLoadingContent];
+    [self.tableViewController initializeContent];
+}
+
+- (void)testThatReceivingNewContentSetsInitialized {
+    
+    // Don't care about these here
+    self.tableViewController.content = nil;
+    self.tableViewController.activityLoadingActivityIndicatorView = nil;
+    self.tableViewController.tableView = nil;
+    self.tableViewController.informationView = nil;
+    
+    GHAssertFalse(self.tableViewController.isInitialized, @"Should not be initialized");
+
+    [self.tableViewController receiveNewContent:nil];
+    
+    GHAssertTrue(self.tableViewController.isInitialized, @"Should be initialized");
+}
+
 
 
 @end

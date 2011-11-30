@@ -76,6 +76,10 @@
     return self;
 }
 
+- (void)afterLoginAction {
+    [self initializeContent];
+}
+
 - (void)loadContentForNextPageAtOffset:(NSInteger)offset {
     [self.socialize getCommentList:_entity.key
                              first:[NSNumber numberWithInteger:offset]
@@ -116,7 +120,7 @@
             // Entity does not yet exist. No content to fetch.
             [self receiveNewContent:nil];
         } else {
-            [self stopLoadingContent];
+            [self failLoadingContent];
             [super service:service didFail:error];
         }
     } else {
@@ -127,11 +131,6 @@
 -(void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
     [self receiveNewContent:dataArray];
     _isLoading = NO;
-}
-
--(void)afterLoginAction
-{
-    [self startLoadingContent];
 }
 
 #pragma mark -

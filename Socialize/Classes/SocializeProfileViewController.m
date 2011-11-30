@@ -214,7 +214,8 @@
     // Configure the profile image
     [self setProfileImageFromURL:self.fullUser.smallImageUrl];
     [self configureEditButton];
-    [self.activityViewController setCurrentUser:self.fullUser.objectID];
+    self.activityViewController.currentUser = self.fullUser.objectID;
+    [self.activityViewController initializeContent];
 }
 
 - (SocializeProfileEditViewController*)profileEditViewController {
