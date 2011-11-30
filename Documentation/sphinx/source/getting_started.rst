@@ -55,7 +55,7 @@ If you're having problems please let us know by clicking on the 'Feedback' tab o
 
 Setting up your Socialize Keys
 -------------------------------
-To incorporate the Socialize UI views into your app you need to be authenticated.
+To utilize the iOS SDK and views into your app we need to let the library know your app key and secret.  If you need to get a application key and secret you can get one at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_ 
 
 .. raw:: html
 
@@ -65,9 +65,9 @@ Adding the Socialize Action Bar
 ----------------------
 
 v0.8.0 of the Socialize SDK introduced the "Action Bar", which allows your users to easily
-comment and like/unlike entities
+comment, share and "like" entities
 
-.. image:: images/action_bar.png	
+.. image:: images/action_bar_solo.png	
 
 Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller:
 
@@ -92,8 +92,6 @@ autolayout and manually places the Action Bar at (0,400).
 If you need more detail on installing the action bar please see our `Adding the Socialize Action Bar Video`_.
 
     .. _Adding the Socialize Action Bar Video: http://vimeo.com/31403049
- 
-Next Steps...
--------------
 
-Once Socialize is installed, you'll want to start adding some user interaction.  The quickest way to integrate Socialize in your app is by using the packaged UI views.  Get started with the :doc:`socialize_ui` 
+
+By now you should be able to see the Socialize Action Bar.  If you need any help please visit us at http://support.getsocialize.com
