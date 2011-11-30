@@ -124,6 +124,11 @@
     [self.actionBar commentButtonTouched:nil];
 }
 
+- (void)testModalProfileDisplay {
+    [[self.mockParentController expect] presentModalViewController:OCMOCK_ANY animated:YES];
+    [self.actionBar viewButtonTouched:nil];
+}
+
 - (void)testLikeWhenNotLikedLocksAndCreatesLike {
     [[self.mockActionView expect] lockButtons];
     [[self.mockSocialize expect] likeEntityWithKey:TEST_ENTITY_URL longitude:nil latitude:nil];

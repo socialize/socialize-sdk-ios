@@ -39,6 +39,7 @@
 #import "SocializeFacebookInterface.h"
 #import "SocializePostShareViewController.h"
 #import "SocializeEntityService.h"
+#import "SocializeProfileViewController.h"
 
 @interface SocializeActionBar()
 @property (nonatomic, retain) id<SocializeView> entityView;
@@ -189,6 +190,13 @@
         [self.socialize unlikeEntity:self.entityLike];
     else
         [self.socialize likeEntityWithKey:self.entity.key longitude:nil latitude:nil];
+}
+
+-(void)viewButtonTouched:(id)sender
+{
+    self.ignoreNextView = YES;
+    UINavigationController *nav = [SocializeProfileViewController currentUserProfileWithDelegate:nil];
+    [self.presentModalInViewController presentModalViewController:nav animated:YES];
 }
 
 - (UIActionSheet*)shareActionSheet {
