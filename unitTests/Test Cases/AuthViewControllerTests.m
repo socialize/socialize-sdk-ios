@@ -86,16 +86,17 @@ BOOL isAuthenticatedWithFacebook = YES;
     NSObject *object = [SocializeAuthViewController authViewControllerInNavigationController:mockDelegate];
     NSAssert( [object isKindOfClass:[UINavigationController class]], @"static creation method did not create uinavigation controller" ) ;   
 }
-
+/*
 - (void)testCreateSkipButton {
     [self.authViewController createSkipButton];
 }
+ */
 - (void)testViewDidLoad {
-    id barButtonMock = [OCMockObject niceMockForClass:[UIBarButtonItem class]];
+//    id barButtonMock = [OCMockObject niceMockForClass:[UIBarButtonItem class]];
     
     id mockView = [OCMockObject niceMockForClass:[UIView class]]; 
     
-    [[[self.partialMockAuthViewController expect] andReturn:barButtonMock] createSkipButton];
+//    [[[self.partialMockAuthViewController expect] andReturn:barButtonMock] createSkipButton];
     [[[self.partialMockAuthViewController stub] andReturn:mockView] view];
     [self.authViewController viewDidLoad];
 }

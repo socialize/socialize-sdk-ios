@@ -21,7 +21,8 @@
 #import "SocializeLocationManager.h"
 #import "SocializeAuthenticateService.h"
 #import "ImagesCache.h"
-#import "TableBGInfoView.h"
+#import "SocializeTableBGInfoView.h"
+#import "SocializeCommentsService.h"
 
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
@@ -30,15 +31,12 @@
 
 @implementation SocializeCommentsTableViewController
 
-@synthesize tableView = _tableView;
 @synthesize cache = _cache;
-@synthesize arrayOfComments = _arrayOfComments;
 @synthesize isLoading = _isLoading;
 
 @synthesize brushedMetalBackground;
 @synthesize backgroundView;
 @synthesize roundedContainerView;
-@synthesize informationView;
 
 @synthesize noCommentsIconView;
 @synthesize commentsCell;
@@ -78,25 +76,20 @@
     return self;
 }
 
-- (void)refreshCommentsList {
-    [self startLoadAnimationForView:self.view];
-    [self.socialize getCommentList:_entity.key first:nil last:nil]; 
+- (void)afterLoginAction {
+    [self initializeContent];
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-    
-    [super viewWillAppear:animated];   
-    informationView.center = self.tableView.center;
-    
-    if ([self.socialize isAuthenticated]) {
-        [self refreshCommentsList];
-    }
+- (void)loadContentForNextPageAtOffset:(NSInteger)offset {
+    [self.socialize getCommentList:_entity.key
+                             first:[NSNumber numberWithInteger:offset]
+                              last:[NSNumber numberWithInteger:offset + self.pageSize]];
 }
 
 - (UIBarButtonItem*)doneButton {
     if (_doneButton == nil)
     {
-        UIButton *button = [UIButton redSocializeNavBarButtonWithTitle:@"Close"];
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Close"];
         [button addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         _doneButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
@@ -120,42 +113,24 @@
 
 #pragma mark SocializeService Delegate
 
--(void)service:(SocializeService *)service didFail:(NSError *)error{
-
-    if ([service isKindOfClass:[SocializeAuthenticateService class]])
-    {
+-(void)service:(SocializeService *)service didFail:(NSError *)error {
+    if ([service isKindOfClass:[SocializeCommentsService class]]) {
+        _isLoading = NO;
+        if ( [[error localizedDescription] isEqualToString:@"Entity does not exist."] ) {
+            // Entity does not yet exist. No content to fetch.
+            [self receiveNewContent:nil];
+        } else {
+            [self failLoadingContent];
+            [super service:service didFail:error];
+        }
+    } else {
         [super service:service didFail:error];
     }
-    else
-    {
-        [self stopLoadAnimation];
-        _isLoading = NO;
-        [self.tableView reloadData];
-        if ( ![[error localizedDescription] isEqualToString:@"Entity does not exist."] ) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Failed!", @"") 
-                                                        message: [error localizedDescription]
-                                                       delegate: nil 
-                                              cancelButtonTitle: NSLocalizedString(@"OK", @"")
-                                              otherButtonTitles: nil];
-            [alert show];	
-            [alert release];
-        }
-    }
 }
 
--(void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray{
- 
+-(void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
+    [self receiveNewContent:dataArray];
     _isLoading = NO;
-    [_arrayOfComments release]; _arrayOfComments = nil;
-    _arrayOfComments = [dataArray retain];
-    [self stopLoadAnimation];
-    [self.tableView reloadData];
-    
-}
-
--(void)afterAnonymouslyLoginAction
-{
-    [self refreshCommentsList];
 }
 
 #pragma mark -
@@ -164,22 +139,14 @@
 - (void)viewDidLoad {   
     [super viewDidLoad];
 
-    /*container frame inits*/
-    CGRect containerFrame = CGRectMake(0, 0, 140, 140);
-    TableBGInfoView * containerView = [[[TableBGInfoView alloc] initWithFrame:containerFrame bgImageName:@"socialize-nocomments-icon.png"] autorelease];
-    containerView.hidden = YES;
-    containerView.center = _tableView.center;
-    [_tableView addSubview:containerView];
+    self.informationView.errorLabel.text = @"No comments to show.";
     
-    informationView = containerView;
-    informationView.errorLabel.text = @"No comments to show.";
-    
-    _tableView.scrollsToTop = YES;
-    _tableView.autoresizesSubviews = YES;
+    self.tableView.scrollsToTop = YES;
+    self.tableView.autoresizesSubviews = YES;
 
 	UIImage * backgroundImage = [UIImage imageNamed:@"socialize-activity-bg.png"];
 	UIImageView * imageBackgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
-	_tableView.backgroundView = imageBackgroundView; 
+	self.tableView.backgroundView = imageBackgroundView; 
 	[imageBackgroundView release];
     
     self.tableView.accessibilityLabel = @"Comments Table View";
@@ -202,37 +169,19 @@
 
 #pragma mark CommentViewController delegate
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-	if ([_arrayOfComments count] <= 0 && !_isLoading) 
-		[self addNoCommentsBackground];
-	else 
-		[self removeNoCommentsBackground];
-	
-	if (_arrayOfComments)
-		return [_arrayOfComments count];
-	else
-		return 0;
-}
-
 -(NSString*)getDateString:(NSDate*)startdate {
 	return [NSDate getTimeElapsedString:startdate]; 
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if ([_arrayOfComments count]){
+    if ([self.content count]){
 
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        SocializeComment* entryComment = ((SocializeComment*)[_arrayOfComments objectAtIndex:indexPath.row]);
+        SocializeComment* entryComment = ((SocializeComment*)[self.content objectAtIndex:indexPath.row]);
         
         SocializeCommentDetailsViewController* details = [[SocializeCommentDetailsViewController alloc] init];
-        details.title = [NSString stringWithFormat: @"%d of %d", indexPath.row + 1, [_arrayOfComments count]];
+        details.title = [NSString stringWithFormat: @"%d of %d", indexPath.row + 1, [self.content count]];
         details.comment = entryComment;
 
         [_cache stopOperations];
@@ -249,7 +198,7 @@
 
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender {
     // TODO :  lets view the profile
-    SocializeComment *comment = ((SocializeComment*)[_arrayOfComments objectAtIndex:sender.tag]);
+    SocializeComment *comment = ((SocializeComment*)[self.content objectAtIndex:sender.tag]);
     UIViewController *profileViewController = [self getProfileViewControllerForUser:comment.user];
     [self presentModalViewController:profileViewController animated:YES];
 }
@@ -272,78 +221,58 @@
         cell.accessibilityLabel = @"Comment Cell";
     }
 	
-	if ([_arrayOfComments count]) {
-		
-		SocializeComment* entryComment = ((SocializeComment*)[_arrayOfComments objectAtIndex:indexPath.row]);
+    SocializeComment* entryComment = ((SocializeComment*)[self.content objectAtIndex:indexPath.row]);
 
-		NSString *commentText = ((SocializeComment*)[_arrayOfComments objectAtIndex:indexPath.row]).text;
-		NSString *commentHeadline = ((SocializeComment*)[_arrayOfComments objectAtIndex:indexPath.row]).user.userName;
-        
-        cell.locationPin.hidden = (entryComment.lat == nil);
-        cell.btnViewProfile.tag = indexPath.row;
-		cell.headlineLabel.text = commentHeadline;
-		[cell setComment:commentText];
-        
-		cell.dateLabel.text = [self getDateString:((SocializeComment*)[_arrayOfComments objectAtIndex:indexPath.row]).date];
-        
-        CGRect cellRect = cell.bounds;
-        CGRect datelabelRect = cell.dateLabel.frame;
-        
-        CGSize textSize = CGSizeMake(cellRect.size.width, datelabelRect.size.height);
-        textSize = [cell.dateLabel.text sizeWithFont:cell.dateLabel.font constrainedToSize:textSize];
-                    
-        CGFloat xLabelCoordinate = cellRect.size.width - textSize.width - 7;
-        datelabelRect = CGRectMake(xLabelCoordinate, datelabelRect.origin.y, textSize.width, datelabelRect.size.height);
-        cell.dateLabel.frame = datelabelRect;
-         
-        CGRect locationPinFrame = cell.locationPin.frame;
-        CGFloat xPinCoordinate = xLabelCoordinate - locationPinFrame.size.width - 7;
-        locationPinFrame = CGRectMake(xPinCoordinate, locationPinFrame.origin.y, locationPinFrame.size.width, locationPinFrame.size.height);
-        
-        cell.locationPin.frame = locationPinFrame;
-        
-        UIImage * profileImage =(UIImage *)[_cache imageFromCache:entryComment.user.smallImageUrl];
-		
-		if (profileImage) 
-		{
-			cell.userProfileImage.image = profileImage;
-		}
-		else
-		{
-            cell.userProfileImage.image = [UIImage imageNamed:@"socialize-cell-image-default.png"];
-			if (([entryComment.user.smallImageUrl length] > 0))
-			{ 
+    NSString *commentText = entryComment.text;
+    NSString *commentHeadline = entryComment.user.userName;
+    
+    cell.locationPin.hidden = (entryComment.lat == nil);
+    cell.btnViewProfile.tag = indexPath.row;
+    cell.headlineLabel.text = commentHeadline;
+    [cell setComment:commentText];
+    
+    cell.dateLabel.text = [self getDateString:entryComment.date];
+    
+    CGRect cellRect = cell.bounds;
+    CGRect datelabelRect = cell.dateLabel.frame;
+    
+    CGSize textSize = CGSizeMake(cellRect.size.width, datelabelRect.size.height);
+    textSize = [cell.dateLabel.text sizeWithFont:cell.dateLabel.font constrainedToSize:textSize];
                 
-                CompleteBlock completeAction = [[^(ImagesCache* cache)
-                                                 {
-                                                     if (!_arrayOfComments)
-                                                         return;
-                                                     
-                                                     [_tableView reloadData];
-                                                 } copy]autorelease];
-                [_cache loadImageFromUrl: entryComment.user.smallImageUrl withLoader:[UrlImageLoader class] andCompleteAction:completeAction];
-			}
-		}
-	}
-	else {
-		if (_isLoading){
-			UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RegularCell"] autorelease];
-			cell.textLabel.text = @"Comments loading...";
-			return cell;
-		}
-		else if (_errorLoading){
+    CGFloat xLabelCoordinate = cellRect.size.width - textSize.width - 7;
+    datelabelRect = CGRectMake(xLabelCoordinate, datelabelRect.origin.y, textSize.width, datelabelRect.size.height);
+    cell.dateLabel.frame = datelabelRect;
+     
+    CGRect locationPinFrame = cell.locationPin.frame;
+    CGFloat xPinCoordinate = xLabelCoordinate - locationPinFrame.size.width - 7;
+    locationPinFrame = CGRectMake(xPinCoordinate, locationPinFrame.origin.y, locationPinFrame.size.width, locationPinFrame.size.height);
+    
+    cell.locationPin.frame = locationPinFrame;
+    
+    UIImage * profileImage =(UIImage *)[_cache imageFromCache:entryComment.user.smallImageUrl];
+    
+    if (profileImage) 
+    {
+        cell.userProfileImage.image = profileImage;
+    }
+    else
+    {
+        cell.userProfileImage.image = [UIImage imageNamed:@"socialize-cell-image-default.png"];
+        if (([entryComment.user.smallImageUrl length] > 0))
+        { 
+            
+            CompleteBlock completeAction = [[^(ImagesCache* cache)
+                                             {
+                                                 if (!self.content)
+                                                     return;
+                                                 
+                                                 [self.tableView reloadData];
+                                             } copy]autorelease];
+            [_cache loadImageFromUrl: entryComment.user.smallImageUrl withLoader:[UrlImageLoader class] andCompleteAction:completeAction];
+        }
+    }
+    cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"socialize-cell-bg.png"]] autorelease];
 
-			UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RegularCell"] autorelease];
-			cell.textLabel.text = @"Error retrieving comments";
-			return cell;
-
-		}
-		else {
-			UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RegularCell"] autorelease];
-			cell.textLabel.text = @"Be the first commentator";
-			return cell;
-		}
-	}
 	return cell;
 }
 
@@ -357,7 +286,7 @@
 #pragma mark UITableViewDelegate
 // Variable height support
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [CommentsTableViewCell getCellHeightForString:((SocializeComment*)[_arrayOfComments objectAtIndex:indexPath.row]).text] + 50;
+	return [CommentsTableViewCell getCellHeightForString:((SocializeComment*)[self.content objectAtIndex:indexPath.row]).text] + 50;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -370,23 +299,9 @@
 	return 0;
 }
 
-#pragma mark -
-- (void)addNoCommentsBackground{
-	informationView.errorLabel.hidden = NO;
-	informationView.noActivityImageView.hidden = NO;
-	informationView.hidden = NO;
-}
-
-- (void)removeNoCommentsBackground{
-	informationView.errorLabel.hidden = YES;
-	informationView.noActivityImageView.hidden = YES;
-	informationView.hidden = YES;
-}
-
 - (void)dealloc {
     [_cache release];
 	[_entity release];
-	[_arrayOfComments release];
 	[_commentDateFormatter release];
     [footerView release];
     [_doneButton release];

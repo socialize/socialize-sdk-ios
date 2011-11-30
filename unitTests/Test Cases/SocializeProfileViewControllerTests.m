@@ -21,6 +21,7 @@
 - (void)configureViews;
 - (void)configureEditButton;
 - (void)hideEditController;
+- (void)addActivityControllerToView;
 @end
 
 @implementation SocializeProfileViewControllerTests
@@ -40,6 +41,7 @@
 @synthesize mockUserDescriptionLabel = mockUserDescriptionLabel_;
 @synthesize mockDoneButton = mockDoneButton_;
 @synthesize mockEditButton = mockEditButton_;
+@synthesize mockActivityViewController = mockActivityViewController_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -95,6 +97,9 @@
     
     self.mockEditButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.profileViewController.editButton = self.mockEditButton;
+    
+    self.mockActivityViewController = [OCMockObject mockForClass:[SocializeActivityViewController class]];
+    self.profileViewController.activityViewController = self.mockActivityViewController;
 }
 
 -(void) tearDown
@@ -116,6 +121,7 @@
     [self.mockUserDescriptionLabel verify];
     [self.mockDoneButton verify];
     [self.mockEditButton verify];
+    [self.mockActivityViewController verify];
 
     self.origProfileViewController = nil;
     self.profileViewController = nil;
@@ -132,32 +138,26 @@
     self.mockUserDescriptionLabel = nil;    
     self.mockDoneButton = nil;
     self.mockEditButton = nil;
-
+    self.mockActivityViewController = nil;
 }
 
 - (void)expectBasicViewDidLoad {
 //    [[self.mockNavigationBar expect] setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.profileViewController.doneButton];
-    [[self.mockProfileImageView expect] setImage:self.profileViewController.defaultProfileImage];    
+    [[self.mockProfileImageView expect] setImage:self.profileViewController.defaultProfileImage];
+    [[(id)self.profileViewController expect] addActivityControllerToView];
 }
 
-- (void)testViewDidLoadWithNoUserWhenAlreadyAuthedGetsCurrentUser {
-    [self expectBasicViewDidLoad];
-    
-    // Not authed
-    BOOL yes = YES;
-    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(yes)] isAuthenticated];
+- (void)testAfterLoginWithNoUserGetsCurrentUser {
     
     // Expect we get full user for current user from server
     [[(id)self.profileViewController expect] startLoading];
     [[self.mockSocialize expect] getCurrentUser];
     
-    [self.profileViewController viewDidLoad];
+    [self.profileViewController afterLoginAction];
 }
 
-- (void)testViewDidLoadWithPartialUser {
-    [self expectBasicViewDidLoad];
-
+- (void)testAfterLoginWithPartialUser {
     // Set up a mock partial user
     NSInteger userID = 123;
     id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
@@ -166,18 +166,16 @@
     
     [[(id)self.profileViewController expect] startLoading];
     [[self.mockSocialize expect] getUserWithId:userID];
-    [self.profileViewController viewDidLoad];
+    [self.profileViewController afterLoginAction];
 }
 
-- (void)testViewDidLoadWithFullUser {
-    [self expectBasicViewDidLoad];
-    
+- (void)testAfterLoginWithFullUser {
     // Set up a mock full
     id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
     self.profileViewController.fullUser = mockFullUser;
 
     [[(id)self.profileViewController expect] configureViews];
-    [self.profileViewController viewDidLoad];
+    [self.profileViewController afterLoginAction];
 }
 
 - (void)testViewDidUnload {
@@ -204,7 +202,7 @@
 }
 
 - (void)testDoneWithDelegateCallsDelegate {
-    [[self.mockDelegate expect] profileViewControllerDidCancel:self.origProfileViewController];
+    [[self.mockDelegate expect] profileViewControllerDidFinish:self.origProfileViewController];
     [self.profileViewController doneButtonPressed:nil];
 }
 
@@ -279,10 +277,12 @@
     NSString *firstName = @"firstName";
     NSString *lastName = @"lastName";
     NSString *smallImageUrl = @"smallImageURL";
+    NSInteger testUserID = 1234;
     [[[mockFullUser stub] andReturn:userName] userName];
     [[[mockFullUser stub] andReturn:firstName] firstName];
     [[[mockFullUser stub] andReturn:lastName] lastName];
     [[[mockFullUser stub] andReturn:smallImageUrl] smallImageUrl];
+    [[[mockFullUser stub] andReturnInteger:testUserID] objectID];
     self.profileViewController.fullUser = mockFullUser;
     
     // Labels should be configured
@@ -294,6 +294,12 @@
     
     // Edit button config
     [[(id)self.profileViewController expect] configureEditButton];
+    
+    // Activity subcontroller should be configured for this user
+    [[self.mockActivityViewController expect] setCurrentUser:testUserID];
+    
+    // Activity content should be initialized
+    [[self.mockActivityViewController expect] initializeContent];
     
     [self.profileViewController configureViews];
 }

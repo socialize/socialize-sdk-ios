@@ -53,6 +53,7 @@ typedef enum {
 @property (nonatomic, retain) UISwitch *facebookSwitch;
 @property (nonatomic, retain) NSBundle *bundle;
 @property (nonatomic, retain) NSUserDefaults *userDefaults;
+@property (nonatomic, assign) BOOL editOccured;
 
 + (UINavigationController*)profileEditViewControllerInNavigationController;
 + (SocializeProfileEditViewController*)profileEditViewController;

@@ -74,8 +74,12 @@
 
 -(NSString*) getEntityKey
 {
-    InputBox* input = [[InputBox new]autorelease];
+    InputBox* input = [[InputBox new]autorelease];    
+#ifndef RUN_KIF_TESTS
+    input.inputField.text=@"http://www.npr.org/";
+#endif
     [input showInputMessageWithTitle:@"Enter entity URL" andPlaceholder:@"Full URL"];
+    
     return input.inputMsg;
 }
 
@@ -263,11 +267,8 @@
 
 #pragma mark - Service delegete
 
-- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
-}
-- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+- (void)profileViewController:(SocializeProfileViewController *)profileViewController wantsViewActivity:(id<SocializeActivity>)activity {
+    NSLog(@"View %@!", activity);
 }
 
 @end

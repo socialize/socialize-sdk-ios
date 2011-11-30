@@ -35,8 +35,9 @@
 #import "SocializeFacebookInterface.h"
 #import "SocializeUserService.h"
 #import "ImagesCache.h"
+#import "SocializeAuthenticateService.h"
 
-@interface SocializeBaseViewController () <SocializeProfileViewControllerDelegate, SocializeAuthViewControllerDelegate>
+@interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
 -(void)leftNavigationButtonPressed:(id)sender;  
 @end
 
@@ -50,11 +51,10 @@
 @synthesize genericAlertView = genericAlertView_;
 @synthesize socialize = socialize_;
 @synthesize imagesCache = imagesCache_;
-@synthesize postFacebookAuthenticationProfileViewController = postFacebookAuthenticationProfileViewController_;
-@synthesize requestingFacebookFromUser = requestingFacebookFromUser_;
 @synthesize shareBuilder = shareBuilder_;
 @synthesize sendActivityToFacebookFeedAlertView = sendActivityToFacebookFeedAlertView_;
 @synthesize authViewController = authViewController_;
+@synthesize bundle = bundle_;
 
 - (void)dealloc
 {
@@ -63,10 +63,10 @@
     self.socialize.delegate = nil;
     self.socialize = nil;
     self.imagesCache = nil;
-    self.postFacebookAuthenticationProfileViewController = nil;
     self.shareBuilder = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
-    
+    self.bundle = nil;
+
     [super dealloc];
 }
 
@@ -80,7 +80,6 @@
     self.cancelButton = nil;
     self.sendButton = nil;
     self.genericAlertView = nil;
-    self.postFacebookAuthenticationProfileViewController = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
     self.authViewController = nil;
 }
@@ -93,6 +92,13 @@
     }
     
     return tableView_;
+}
+
+- (NSBundle*)bundle {
+    if (bundle_ == nil) {
+        bundle_ = [[NSBundle mainBundle] retain];
+    }
+    return bundle_;
 }
 
 - (Socialize*)socialize {
@@ -140,7 +146,7 @@
 
 -(UIBarButtonItem*) createLeftNavigationButtonWithCaption:(NSString*) caption
 {
-    UIButton *backButton = [UIButton blackSocializeNavBarBackButtonWithTitle:caption]; 
+    UIButton *backButton = [UIButton blueSocializeNavBarBackButtonWithTitle:caption]; 
     [backButton addTarget:self action:@selector(leftNavigationButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * backLeftItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
     return backLeftItem;
@@ -229,10 +235,18 @@
 
 -(void)performAutoAuth
 {
-    if(![self.socialize isAuthenticated])
-    {
+    if (![self.socialize isAuthenticatedWithFacebook] && [self.socialize facebookSessionValid]) {
+        // Go ahead and upgrade to facebook auth since we already have a valid token.
+        // (This is ok to do automatically, since an external app callout will not happen)
+        [self startLoading];
+        [self.socialize authenticateWithFacebook];        
+    } else if(![self.socialize isAuthenticated]) {
+        // We're Not authenticated at all, and we can't auto auth with facebook
+        // Just do anon
         [self startLoading];
         [self.socialize authenticateAnonymously];
+    } else {
+        [self afterLoginAction];
     }
 }
 
@@ -260,12 +274,7 @@
     [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
 }
 
--(void)afterAnonymouslyLoginAction
-{
-    // Should be implemented in the child classes.
-}
-
--(void)afterFacebookLoginAction
+-(void)afterLoginAction
 {
     // Should be implemented in the child classes.
 }
@@ -305,57 +314,11 @@
     return authViewController_;
 }
 
-- (SocializeProfileViewController*)postFacebookAuthenticationProfileViewController {
-    if (postFacebookAuthenticationProfileViewController_ == nil) {
-        postFacebookAuthenticationProfileViewController_ = [[SocializeProfileViewController alloc] init];
-        postFacebookAuthenticationProfileViewController_.delegate = self;
-    }
-    
-    return postFacebookAuthenticationProfileViewController_;
-}
-
-- (void)showProfile {
-    
-    UINavigationController *navigationController = [[[UINavigationController alloc]
-                                                     initWithRootViewController:self.postFacebookAuthenticationProfileViewController]
-                                                    autorelease];
-    
-    [self presentModalViewController:navigationController animated:YES];
-}
-
 -(void)didAuthenticate:(id<SocializeUser>)user
 {
     [self stopLoadAnimation];
     
-    if ([self.socialize isAuthenticatedWithFacebook]) {
-        if (self.requestingFacebookFromUser) {
-            // Complete facebook authentication flow
-            [self showProfile];
-        } else {
-            [self afterFacebookLoginAction];
-        }
-    } else {
-        // Complete auto auth
-        [self afterAnonymouslyLoginAction];
-    }
-}
-
-- (void)dismissFacebookAuthProfile {
-    self.requestingFacebookFromUser = NO;
-    [self dismissModalViewControllerAnimated:YES];
-    [self afterFacebookLoginAction];
-}
-
-- (void)profileViewControllerDidSave:(SocializeProfileViewController *)profileViewController {
-    if (profileViewController == self.postFacebookAuthenticationProfileViewController) {
-        [self dismissFacebookAuthProfile];
-    }
-}
-
-- (void)profileViewControllerDidCancel:(SocializeProfileViewController *)profileViewController {
-    if (profileViewController == self.postFacebookAuthenticationProfileViewController) {
-        [self dismissFacebookAuthProfile];
-    }
+    [self afterLoginAction];
 }
 
 - (UIAlertView*)sendActivityToFacebookFeedAlertView {
