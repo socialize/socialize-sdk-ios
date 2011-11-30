@@ -23,6 +23,7 @@
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
     <link rel="top" title="Socialize iOS SDK v1.0 documentation" href="index.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
     <link rel="prev" title="SDK User Guide" href="sdk_user_guide.html" /> 
   </head>
   <body>
@@ -30,8 +31,11 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
+          <a href="changelog.html" title="Changelog"
+             accesskey="N">next</a></li>
+        <li class="right" >
           <a href="sdk_user_guide.html" title="SDK User Guide"
-             accesskey="P">previous</a></li>
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">Socialize iOS SDK v1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -68,18 +72,17 @@
 <h1>SDK Pro Tips<a class="headerlink" href="#sdk-pro-tips" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="building-the-sdk-from-source">
 <h2>Building the SDK from source<a class="headerlink" href="#building-the-sdk-from-source" title="Permalink to this headline">¶</a></h2>
-<p>In the case you might need some changes done to the framework, after which you can build the framework using terminal command: &#8220;make build&#8221;. The output of this command’s execution will be the embedded static framework. And to build the sample app use &#8220;build sample&#8221; command.</p>
-<p>To get a successful build you have to change the provision credentials in the make file to your own which you can get from <a class="reference external" href="http://developer.apple.com/devcenter/ios/index.action">Apple&#8217;s Developer Portal</a></p>
+<p>The framework can be built with the command &#8220;make framework&#8221;. The output of
+this command’s execution will be the embedded static framework in the
+build/Socialize.embeddedframework directory of the project</p>
+<p>A sample app is included in the SampleSdkApp subdirectory of the Socialize source tree.</p>
 <ul>
-<li><dl class="first docutils">
-<dt>change the following properties to build sample application</dt>
-<dd><p class="first last">xcodebuild -target SampleSdkApp -configuration Distribution -sdk iphoneos PROVISIONING_PROFILE=&#8221;User provision profile&#8221; CODE_SIGN_IDENTITY=&#8221;iPhone Distribution: user identity&#8221; build*</p>
-</dd>
-</dl>
+<li><p class="first">If you experience any problems with user credentials, you can perform a manual xcodebuild with override as follows:</p>
+<blockquote>
+<div><p>xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme &#8220;Socialize Framework&#8221; -configuration Release -sdk iphoneos build PROVISIONING_PROFILE=&#8221;User provision profile&#8221; CODE_SIGN_IDENTITY=&#8221;iPhone Distribution: user identity&#8221;</p>
+</div></blockquote>
 </li>
 </ul>
-<p>If you don’t have a valid Apple provision, change the SDK type to the simulator.
-<em>xcodebuild -target SampleSdkApp -configuration Debug -sdk iphonesimulator build</em></p>
 </div>
 </div>
 
@@ -98,6 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#building-the-sdk-from-source">Building the SDK from source</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
         </div>
@@ -108,8 +112,11 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
+          <a href="changelog.html" title="Changelog"
+             >next</a></li>
+        <li class="right" >
           <a href="sdk_user_guide.html" title="SDK User Guide"
-             >previous</a></li>
+             >previous</a> |</li>
         <li><a href="index.html">Socialize iOS SDK v1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>

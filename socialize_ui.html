@@ -112,13 +112,25 @@ of comments associated with an entity (URL).</p>
 </div>
 <div class="section" id="adding-facebook-support">
 <h2>Adding Facebook Support<a class="headerlink" href="#adding-facebook-support" title="Permalink to this headline">¶</a></h2>
-<p>To add Facebook support in Socialize, you&#8217;ll need to perform three steps:</p>
-<p>Let Socialize know your Facebook app id.  You can register or find your Facebook app id here: <a class="reference external" href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a></p>
-<script src="https://gist.github.com/1375443.js?file=gistfile1.m"></script><p>You must register your app to open with your facebook app id url by adding a URL Types array to your Application&#8217;s &lt;MyApp&gt;-Info.plist.
+<div class="section" id="my-app-already-uses-facebook">
+<h3>My App Already Uses Facebook<a class="headerlink" href="#my-app-already-uses-facebook" title="Permalink to this headline">¶</a></h3>
+<p>If your app already authenticates with Facebook and stores credentials to the
+user defaults (as documented in the official Facebook tutorial at
+<a class="reference external" href="https://developers.facebook.com/docs/mobile/ios/build/">https://developers.facebook.com/docs/mobile/ios/build/</a>), then there is nothing
+more you need to do. Socialize will automatically configure itself to use
+existing Facebook authentication.</p>
+</div>
+<div class="section" id="i-want-to-use-socialize-s-builtin-facebook-authentication">
+<h3>I want to use Socialize&#8217;s builtin Facebook authentication<a class="headerlink" href="#i-want-to-use-socialize-s-builtin-facebook-authentication" title="Permalink to this headline">¶</a></h3>
+<p>If you would like to take advantage of Socialize&#8217;s built in Facebook
+authentication functionality, then you&#8217;ll need to perform three steps:</p>
+<p>First, let Socialize know your Facebook app id.  You can register or find your Facebook app id here: <a class="reference external" href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a></p>
+<script src="https://gist.github.com/1375443.js?file=gistfile1.m"></script><p>Next, you must register your app to open with your facebook app id url by adding a URL Types array to your Application&#8217;s &lt;MyApp&gt;-Info.plist.
 The string is a lowercase fb followed by your app id. The example app is configured as below:</p>
 <img alt="images/facebook_urltypes.png" src="images/facebook_urltypes.png" />
-<p>You must also be sure to call [Socialize handleOpenURL:url] from your UIApplicationDelegate&#8217;s application:handleOpenURL: method. Socialize will take care of handing off the openURL request to the underlying <a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>. This completes the authentication flow.</p>
+<p>Finally, you must be sure to call [Socialize handleOpenURL:url] from your UIApplicationDelegate&#8217;s application:handleOpenURL: method. Socialize will take care of handing off the openURL request to the underlying <a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>. This completes the authentication flow.</p>
 <script src="https://gist.github.com/1375464.js?file=appDelegate.m"></script></div>
+</div>
 </div>
 
 
@@ -139,6 +151,7 @@ The string is a lowercase fb followed by your app id. The example app is configu
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
         </div>

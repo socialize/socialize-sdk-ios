@@ -1,0 +1,206 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Changelog &mdash; Socialize iOS SDK v1.0 documentation</title>
+    <link rel="stylesheet" href="static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+    <link rel="top" title="Socialize iOS SDK v1.0 documentation" href="index.html" />
+    <link rel="prev" title="SDK Pro Tips" href="sdk_pro_tips.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="sdk_pro_tips.html" title="SDK Pro Tips"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Socialize iOS SDK v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "socialize";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#222";
+  feedback_widget_options.style = "idea";
+  feedback_widget_options.product = "socialize_ios_sdk";
+  feedback_widget_options.tag = "Feedback";
+
+  feedback_widget_options.limit = "3";
+
+  GSFN.feedback_widget.prototype.local_base_url = "http://support.getsocialize.com";
+  GSFN.feedback_widget.prototype.local_ssl_base_url = "http://support.getsocialize.com";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script><div class="section" id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v1-0-0">
+<h2>v1.0.0<a class="headerlink" href="#v1-0-0" title="Permalink to this headline">¶</a></h2>
+<p>[feature] make profile clickable in the comment detail view</p>
+<p>[bug] Profile edit value nav buttons still hiding on 4.3</p>
+<p>[chore] hide the activity view on profile view controller</p>
+<p>[feature] Authorizing drops user into directly into edit profile (instead of profile) to make some settings more obvious</p>
+</div>
+<div class="section" id="v0-10-1">
+<h2>v0.10.1<a class="headerlink" href="#v0-10-1" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Create new getting started video based on new documentation [ ]</p>
+<p>[feature] List activity for User SDK [ ]</p>
+<p>[feature] Create an entity share for SDK [ ]</p>
+<p>[feature] Share via email [ ]</p>
+<p>[feature] add landscape support for commenting/action bar [ ]</p>
+<p>[feature] Add share to Action Bar [ ui ]</p>
+<p>[feature] Add call to facebook graph API [ ]</p>
+<p>[feature] Comments/likes should post to FB [ ]</p>
+<p>[feature] Add user preferences for auto-posting comments/likes [ ]</p>
+<p>[feature] Create UDID replacement algorithm [ ]</p>
+<p>[bug] Fix button on action bar [ ]</p>
+<p>[feature] LIkes should post to FB [ ]</p>
+<p>[bug] when you clean out auth and then go to the profile view controller sample app [ crash]</p>
+<p>[bug] Socialize auth conflicts with users pre-authorizing facebook [ ]</p>
+<p>[bug] Loading mode disabled too early in text composition views [ regression]</p>
+<p>[feature] ActionBar should not hide any content [ ]</p>
+<p>[bug] navigation buttons for UIViewControllers on simulator 4.3 don&#8217;t show up [ ]</p>
+<p>[feature] make profile clickable in the comment detail view [ ]</p>
+<p>[feature] add custom FB authentication dialog from AppMakr [ ]</p>
+<p>[feature] Add &#8220;post to facebook&#8221; switch to PostCommentViewController [ ]</p>
+</div>
+<div class="section" id="v0-9-0">
+<h2>v0.9.0<a class="headerlink" href="#v0-9-0" title="Permalink to this headline">¶</a></h2>
+<p>[feature] add documentation for adding FB ID to the code [ ]</p>
+<p>[feature] add branding to the top of the navigation bar [ ]</p>
+<p>[feature] Action bar should auto increment view [ ]</p>
+<p>[bug] Action bar buttons cannot be pressed [ ]</p>
+<p>[bug] PostCommentViewController does not dismiss self after facebook profile view on iOS5 [ ]</p>
+<p>[bug] ActionBar comment count not updating after post [ ]</p>
+<p>[feature] add documentation for Action Bar [ ]</p>
+<p>[feature] An End User should be able to view another users profile [ ]</p>
+<p>[bug] SocializeActionBar should require parent view controller [ ]</p>
+</div>
+<div class="section" id="v0-8-0">
+<h2>v0.8.0<a class="headerlink" href="#v0-8-0" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Add like service support to the action bar [ ]</p>
+<p>[feature] remove the second dialog when adding a comment [ ]</p>
+<p>[bug] Fix issues in the SDK and Sample Sdk App which were found by static analyzer. [ ]</p>
+<p>[feature] Add GetSatisfaction widget to documentation [ ]</p>
+<p>[bug] App Crashes if facebook id not defined [ ]</p>
+<p>[bug] Update documentation on presenting SocializeCommentsTableViewController [ ]</p>
+<p>[feature] Re-add posting of profile image once PUTs are fixed [ ]</p>
+<p>[feature] Facebook auth hardening (assertions) and documentation updates [ ]</p>
+<p>[feature] Our SocializeActionBarView should work similar to existing Ad SDKS like Admob [ ]</p>
+</div>
+<div class="section" id="v0-7-1">
+<h2>v0.7.1<a class="headerlink" href="#v0-7-1" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Release configuration contains incorrect url [ ]</p>
+</div>
+<div class="section" id="v0-7-0">
+<h2>v0.7.0<a class="headerlink" href="#v0-7-0" title="Permalink to this headline">¶</a></h2>
+<p>[feature] upgrade to iOS5 [ ]</p>
+<p>[bug] remove alert when user pushes &#8216;cancel&#8217; on comment entry box. [ ]</p>
+<p>[bug] Find and fix memory allocation issues in the Sample Application. [ ]</p>
+<p>[bug] Find and fix memory allocation issues in the Socialize SDK [ ]</p>
+<p>[feature] apply the existing the UI Profile view from AppMakr [ ]</p>
+<p>[feature] User edit UI actually edits the user&#8217;s profile [ ]</p>
+<p>[feature] Edit User(Profile) SDK [ ]</p>
+<p>[feature] Socialize action bar [ ui ]</p>
+<p>[bug] remove gcov dependency [ ]</p>
+<p>[bug] UI bug when rendering UICommentsViewController [ ui ]</p>
+<p>[bug] navbar header image in iOS5 don&#8217;t show [ ]</p>
+<p>[feature] exposed viewcontrollers should provide their own navigation controller since we&#8217;ll ask users to present us a modal. [ ]</p>
+<p>[bug] Buttons get hidden when using ios4.3 simulator and navigating back and forth [ ]</p>
+</div>
+<div class="section" id="id1">
+<h2>0.6.0<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>[feature] User can authenticate with Facebook [ i-test needed ]</p>
+<p>[bug] the embedded framework package zip doesn&#8217;t work because of missing header files [ ]</p>
+<p>[bug] rename SBJSON library from FB to have the socialize prefix [ ]</p>
+<p>[feature] remove alert from comment list view when getting comments for an entity if the entity doesn&#8217;t exist. [ ]</p>
+<p>[feature] provide better error log messages for raw response method [ ]</p>
+<p>[feature] UI Views should automatically authenticate [ ]</p>
+<p>[feature] Get User (Profile) SDK [ ]</p>
+<p>[feature] User profile view [ ui ]</p>
+<p>[bug] fix embedded framework to include the right headers [ ]</p>
+</div>
+<div class="section" id="id2">
+<h2>0.1.0<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Unlike an entity [ ]</p>
+<p>[feature] All API calls must be authenticated using the /authenticate API [ ]</p>
+<p>[feature] Like an entity [ ]</p>
+<p>[feature] Device will send agent in request [ ]</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialize_ui.html">Implementing the UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v1-0-0">v1.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">0.1.0</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="sdk_pro_tips.html" title="SDK Pro Tips"
+             >previous</a></li>
+        <li><a href="index.html">Socialize iOS SDK v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Socialize Inc.
+    </div>
+  </body>
+</html>
