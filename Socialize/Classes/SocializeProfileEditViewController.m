@@ -51,6 +51,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 @synthesize facebookSwitch = facebookSwitch_;
 @synthesize bundle = bundle_;
 @synthesize userDefaults = userDefaults_;
+@synthesize editOccured = editOccured_;
 
 + (UINavigationController*)profileEditViewControllerInNavigationController {
     SocializeProfileEditViewController *profileEditViewController = [self profileEditViewController];
@@ -92,9 +93,10 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 {
     [super viewDidLoad];
     
+    self.title = @"Edit Profile";
+    
     self.tableView.accessibilityLabel = @"edit profile";
     self.navigationItem.leftBarButtonItem = self.cancelButton;	
-    self.saveButton.enabled = NO;
     self.navigationItem.rightBarButtonItem = self.saveButton;
 }
 
@@ -152,6 +154,14 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     }
 }
 
+- (void)dismissSelfAfterSave {
+    if ([self.delegate respondsToSelector:@selector(profileEditViewController:didUpdateProfileWithUser:)]) {
+        [self.delegate profileEditViewController:self didUpdateProfileWithUser:self.fullUser];
+    } else {
+        [self dismissModalViewControllerAnimated:YES];
+    }
+}
+
 - (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser {
     self.fullUser = fullUser;
     [self configureViews];
@@ -166,11 +176,15 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 }
 
 - (void)saveButtonPressed:(UIButton*)saveButton {
-    [self startLoading];
-	self.navigationItem.rightBarButtonItem.enabled = NO;
-    
-    SocializeFullUser *newUser = [[(SocializeFullUser*)self.fullUser copy] autorelease];
-    [self.socialize updateUserProfile:newUser profileImage:self.profileImage];
+    if (self.editOccured) {
+        [self startLoading];
+        self.saveButton.enabled = NO;
+        
+        SocializeFullUser *newUser = [[(SocializeFullUser*)self.fullUser copy] autorelease];
+        [self.socialize updateUserProfile:newUser profileImage:self.profileImage];
+    } else {
+        [self dismissSelfAfterSave];
+    }
 }
 
 - (NSArray*)cellBackgroundColors {
@@ -287,7 +301,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     NSNumber *dontPostToFacebook = [NSNumber numberWithBool:!facebookSwitch.on];
     [self.userDefaults setObject:dontPostToFacebook forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
     [self.userDefaults synchronize];
-    self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -394,7 +407,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     
     DebugLog(@"image was picked!!!");
 	
-	self.navigationItem.rightBarButtonItem.enabled = YES;
     //[self.view setNeedsDisplay];
 	[picker dismissModalViewControllerAnimated:YES];
 	
@@ -415,7 +427,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 - (void)profileEditValueViewControllerDidSave:(SocializeProfileEditValueViewController *)profileEditValueController
 {
 	[self.navigationController popViewControllerAnimated:YES];
-	self.navigationItem.rightBarButtonItem.enabled = YES;
+    self.editOccured = YES;
 	
 	NSIndexPath * indexPath = profileEditValueController.indexPath;
 	
@@ -450,15 +462,12 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.fullUser = (id<SocializeFullUser>)object;
     [self stopLoading];
     
-    if (self.delegate != nil) {
-        [self.delegate profileEditViewController:self didUpdateProfileWithUser:self.fullUser];
-    } else {
-        [self dismissModalViewControllerAnimated:YES];
-    }
+    [self dismissSelfAfterSave];
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
 {
+    self.saveButton.enabled = YES;
     [self stopLoading];
     [super service:service didFail:error];
 }

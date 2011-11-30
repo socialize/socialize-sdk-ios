@@ -56,6 +56,7 @@ static ImagesCache *sharedImagesCache;
     {
         imagesDictionary = [[NSMutableDictionary alloc]initWithCapacity:20];
 		pendingUrlDownloads = [[NSMutableDictionary alloc]initWithCapacity:20];
+		pendingUrlCallbacks = [[NSMutableDictionary alloc]initWithCapacity:20];
     }
     return self;
 }
@@ -65,6 +66,7 @@ static ImagesCache *sharedImagesCache;
     [self stopOperations];
     [imagesDictionary release]; imagesDictionary = nil;
     [pendingUrlDownloads release]; pendingUrlDownloads = nil;
+    [pendingUrlCallbacks release]; pendingUrlCallbacks = nil;
     [super dealloc];
 }
 
@@ -73,14 +75,16 @@ static ImagesCache *sharedImagesCache;
     return (UIImage *)[imagesDictionary objectForKey:url];
 }
 
--(CompleteLoadBlock)createCompleteBlock: (CompleteBlock)cAction
+-(CompleteLoadBlock)createCompleteBlock
 {
     __block ImagesCache* blockSelf = self;
     return [[^(NSString* url, NSData* data)
     {
         [blockSelf completeLoadHandler:data url: url];
-        if(cAction)
+        for (CompleteBlock cAction in [pendingUrlCallbacks objectForKey:url]) {
             cAction(blockSelf);
+        }
+        [pendingUrlCallbacks removeObjectForKey:url];
     }copy]autorelease];
 }
 
@@ -91,15 +95,20 @@ static ImagesCache *sharedImagesCache;
 
 -(void)loadImageFromUrl:(NSString*)url withLoader:(Class)loader andCompleteAction:(CompleteBlock)cAction
 {
-    if([pendingUrlDownloads objectForKey:url])
+    if([pendingUrlDownloads objectForKey:url]) {
+        NSMutableArray *currentCallbacks = [pendingUrlCallbacks objectForKey:url];
+        [currentCallbacks addObject:cAction];
         return;
+    }
     
     NSAssert([loader conformsToProtocol:@protocol(ImageLoaderProtocol)], @"Image Loader should conform to the ImageLoaderProtocol");    
     id loaderInstance = [[loader alloc] init];
     
     [pendingUrlDownloads setObject:loaderInstance forKey:url];
-    [loaderInstance startWithUrl:url andCompleteBlock:[self createCompleteBlock:cAction]];
+    [loaderInstance startWithUrl:url andCompleteBlock:[self createCompleteBlock]];
     [loaderInstance release];
+    NSMutableArray *callbacks = [NSMutableArray arrayWithObject:cAction];
+    [pendingUrlCallbacks setObject:callbacks forKey:url];
 }
 
 -(void)stopOperations
@@ -109,6 +118,7 @@ static ImagesCache *sharedImagesCache;
         [loader cancelDownload];
     }];
     
+    [pendingUrlCallbacks removeAllObjects];
     [pendingUrlDownloads removeAllObjects];
 }
 

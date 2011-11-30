@@ -26,4 +26,5 @@
 @property (nonatomic, retain) id mockUserDescriptionLabel;
 @property (nonatomic, retain) id mockDoneButton;
 @property (nonatomic, retain) id mockEditButton;
+@property (nonatomic, retain) id mockActivityViewController;
 @end

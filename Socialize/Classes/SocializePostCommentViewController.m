@@ -107,7 +107,7 @@
     
     [self dismissSelf];
 }
-- (void)afterFacebookLoginAction {
+- (void)afterLoginAction {
     [self configureFacebookButton];
 }
 
@@ -144,7 +144,7 @@
 
 -(void)socializeAuthViewController:(SocializeAuthViewController *)authViewController didAuthenticate:(id<SocializeUser>)user {
     // FIXME [#20995319] auth flow in wrong place
-    [self afterFacebookLoginAction];
+    [self afterLoginAction];
     [self finishCreateComment];    
 }
 

@@ -170,7 +170,7 @@
     return  blackButton;
 }
 
-+(UIButton *)blackSocializeNavBarBackButtonWithTitle:(NSString *)title
++(UIButton *)blueSocializeNavBarBackButtonWithTitle:(NSString *)title
 {
     UIImage* backImageNormal = [[UIImage imageNamed:@"socialize-navbar-button-back.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
 	UIImage* backImageHighligted = [[UIImage imageNamed:@"socialize-navbar-button-back-pressed.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];

@@ -6,11 +6,14 @@
 //  Copyright 2011 pointabout. All rights reserved.
 //
 
-#import "TableBGInfoView.h"
+#import "SocializeTableBGInfoView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UILabel-Additions.h"
 
-@implementation TableBGInfoView
+CGFloat SocializeTableBGInfoViewDefaultWidth = 140.f;
+CGFloat SocializeTableBGInfoViewDefaultHeight = 140.f;
+
+@implementation SocializeTableBGInfoView
 @synthesize noActivityImageView;
 @synthesize	errorLabel;
 

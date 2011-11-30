@@ -22,6 +22,7 @@
 
 + (id)scenarioToTestViewOtherProfile {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that another user's profile can be viewed."];
+    [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
     [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentWithControllerForEntity:url comment:@"comment!"]];
     [scenario addStepsFromArray:[KIFTestStep stepsToGetCommentsForEntity:url]];
@@ -51,6 +52,7 @@
 
 + (id)scenarioToTestCommentsViewControllerWithAutoAuth {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that test that socialize UI views work even when not logged in."];
+    [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
     [scenario addStepsFromArray:[KIFTestStep stepsToNoAuth]];
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
     NSString *commentString = [NSString stringWithFormat:@"Comment from %s", _cmd];
@@ -66,6 +68,7 @@
 
 + (id)scenarioToTestActionBar {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test the Socialize Action Bar"];
+    [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
     [scenario addStepsFromArray:[KIFTestStep stepsToShowTabbedActionBarForURL:url]];
     [scenario addStep:[KIFTestStep stepToVerifyViewWithAccessibilityLabel:@"Socialize Action View" passesTest:^BOOL(id view) {
@@ -92,12 +95,14 @@
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
     
     // Post a share
+    [scenario addStep:[KIFTestStep stepToEnableValidFacebookSession]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share on Facebook"]];
 //    Actual share disabled until i can get a test facebook account set up
 //    [scenario addStepsFromArray:[KIFTestStep stepsToCreateShare:@"actionbar share"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
+    [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
 
     // Verify we can show the in-app MFMailComposer
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share"]];
@@ -113,7 +118,22 @@
 
 + (id)scenarioToTestUserProfile {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test Socialize User Profiles"];
-    [scenario addStepsFromArray:[KIFTestStep stepsToTestUserProfile]];
+    [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
+
+    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
+    NSString *commentText = [NSString stringWithFormat:@"comment for %@", [SampleSdkAppKIFTestController runID]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentWithControllerForEntity:url comment:commentText]];
+
+    NSString *firstName = @"Test First Name";
+    [scenario addStepsFromArray:[KIFTestStep stepsToOpenProfile]];
+    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:commentText]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToOpenEditProfile]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToEditProfileImage]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToSetProfileFirstName:firstName]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyProfileFirstName:firstName]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
+    
     return scenario;
 }
 

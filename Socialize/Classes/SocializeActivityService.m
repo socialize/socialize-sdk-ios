@@ -65,12 +65,21 @@
      ];
 }
 
+-(void) getActivityOfUserId:(NSInteger)userId {
+    return [self getActivityOfUserId:userId first:nil last:nil activity:SocializeAllActivity];
+}
+
 -(void) getActivityOfUser:(id<SocializeUser>)user
 {
     [self getActivityOfUser:user first:nil last:nil activity:SocializeAllActivity];
 }
 
 -(void) getActivityOfUser:(id<SocializeUser>)user first: (NSNumber*)first last:(NSNumber*)last activity: (SocializeActivityType) type
+{
+    [self getActivityOfUserId:user.objectID first:first last:last activity:type];
+}
+
+-(void) getActivityOfUserId:(NSInteger)userId first: (NSNumber*)first last:(NSNumber*)last activity: (SocializeActivityType) type
 {
     NSMutableDictionary* params = nil;
     
@@ -80,7 +89,7 @@
 
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
-                                resourcePath:[self resourcePathWithUserId: user.objectID andActivityType: type]
+                                resourcePath:[self resourcePathWithUserId: userId andActivityType: type]
                           expectedJSONFormat:SocializeDictionaryWIthListAndErrors
                                       params:params]
      ];   

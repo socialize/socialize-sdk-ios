@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+extern CGFloat SocializeTableBGInfoViewDefaultWidth;
+extern CGFloat SocializeTableBGInfoViewDefaultHeight;
 
-@interface TableBGInfoView : UIView {
+@interface SocializeTableBGInfoView : UIView {
 	UIImageView		 *noActivityImageView;
 	UILabel			 *errorLabel;
 }

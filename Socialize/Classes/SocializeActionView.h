@@ -16,6 +16,7 @@
 @protocol SocializeActionViewDelegate <NSObject>
 
 -(void)commentButtonTouched:(id)sender;
+-(void)viewButtonTouched:(id)sender;
 -(void)likeButtonTouched:(id)sender;
 -(void)shareButtonTouched: (id) sender;
 -(void)socializeActionViewWillAppear:(SocializeActionView*)socializeActionView;
