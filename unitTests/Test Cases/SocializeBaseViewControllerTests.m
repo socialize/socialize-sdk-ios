@@ -122,7 +122,6 @@
     [[(id)self.viewController expect] setCancelButton:nil];
     [[(id)self.viewController expect] setSendButton:nil];
     [[(id)self.viewController expect] setGenericAlertView:nil];
-    [[(id)self.viewController expect] setPostFacebookAuthenticationProfileViewController:nil];
     [[(id)self.viewController expect] setSendActivityToFacebookFeedAlertView:nil];
     [[(id)self.viewController expect] setAuthViewController:nil];
     
@@ -217,16 +216,26 @@
 }
 
 - (void)testAutoAuthWhenNotAuthedPerformsAuth {
-    BOOL no = NO;
-    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(no)] isAuthenticated];
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
+    [[[self.mockSocialize stub] andReturnBool:NO] facebookSessionValid];
     [[(id)self.viewController expect] startLoading];
     [[self.mockSocialize expect] authenticateAnonymously];
     [self.viewController performAutoAuth];
 }
 
+- (void)testAutoAuthWhenNotAuthedAndFacebookAlreadyValidPerformsFacebookAuth {
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookSessionValid];
+    [[(id)self.viewController expect] startLoading];
+    [[self.mockSocialize expect] authenticateWithFacebook];
+    [self.viewController performAutoAuth];
+}
+
 - (void)testAutoAuthWhenAuthedDoesNothing {
-    BOOL yes = YES;
-    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(yes)] isAuthenticated];
+    [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticated];
+    [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticatedWithFacebook];
     [self.viewController performAutoAuth];
 }
 
@@ -243,10 +252,6 @@
     [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(isAuthenticatedWithFB)] isAuthenticatedWithFacebook];
     [[self.mockSocialize expect] authenticateWithFacebook];
     [self.origViewController authenticateWithFacebook];
-}
-- (void) testPostFBAuthProfileViewController {
-    SocializeProfileViewController *profileViewController = self.origViewController.postFacebookAuthenticationProfileViewController;
-    GHAssertEquals([profileViewController delegate], self.origViewController,@"The delegate for the profile view controller was not set properly");
 }
 
 - (void) testDidDismissWithButtonForFBSend {
@@ -282,7 +287,7 @@
     [[(id)self.viewController expect] stopLoadAnimation];
     BOOL no = NO;
     [[[self.mockSocialize stub] andReturnValue:OCMOCK_VALUE(no)] isAuthenticatedWithFacebook];
-    [[(id)self.viewController expect] afterAnonymouslyLoginAction];
+    [[(id)self.viewController expect] afterLoginAction];
     [self.viewController didAuthenticate:nil];
 }
 

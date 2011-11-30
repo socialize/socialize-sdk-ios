@@ -60,20 +60,6 @@
     [self loadActivityForUserID:self.currentUser position:offset];
 }
 
-- (void)setCurrentUser_:(NSInteger)currentUser {
-    currentUser_ = currentUser;
-}
-
-- (void)setCurrentUser:(NSInteger)currentUser {
-    if (currentUser != currentUser_) {
-        currentUser_ = currentUser;
-
-        [self clearContent];
-        // Force a content load
-        [self startLoadingContent];
-    }
-}
-
 - (void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
     [super service:service didFetchElements:dataArray];
     if ([service isKindOfClass:[SocializeActivityService class]]) {
@@ -83,7 +69,7 @@
 
 - (void)service:(SocializeService *)service didFail:(NSError *)error {
     if ([service isKindOfClass:[SocializeActivityService class]]) {
-        [self stopLoadingContent];
+        [self failLoadingContent];
     }
     [super service:service didFail:error];
 }

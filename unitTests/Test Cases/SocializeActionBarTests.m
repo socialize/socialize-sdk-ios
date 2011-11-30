@@ -124,6 +124,11 @@
     [self.actionBar commentButtonTouched:nil];
 }
 
+- (void)testModalProfileDisplay {
+    [[self.mockParentController expect] presentModalViewController:OCMOCK_ANY animated:YES];
+    [self.actionBar viewButtonTouched:nil];
+}
+
 - (void)testLikeWhenNotLikedLocksAndCreatesLike {
     [[self.mockActionView expect] lockButtons];
     [[self.mockSocialize expect] likeEntityWithKey:TEST_ENTITY_URL longitude:nil latitude:nil];
@@ -243,9 +248,7 @@
     self.actionBar.shareComposer.completionBlock(MFMailComposeResultSent, nil); // currently noop
 }
 
-- (void)testShowingViewWhenNotAuthenticated {
-    BOOL noValue = NO;
-    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(noValue)] isAuthenticated];
+- (void)testShowingViewPerformsAutoAuth {
     [[(id)self.actionBar expect] performAutoAuth];
     [self.actionBar socializeActionViewWillAppear:self.mockActionView];
 }
@@ -253,7 +256,7 @@
 - (void)testInitialAuth {
     [[self.mockSocialize expect] viewEntity:self.mockEntity longitude:nil latitude:nil];
     [[self.mockSocialize expect] getLikesForEntityKey:TEST_ENTITY_URL first:nil last:nil];
-    [self.actionBar afterAnonymouslyLoginAction];
+    [self.actionBar afterLoginAction];
 }
 
 - (void)testFailingLikeServiceUnlocksButtonsAndZerosCountsAndShowsError {

@@ -44,5 +44,7 @@
 + (NSArray*)stepsToEditProfileImage;
 + (NSArray*)stepsToSetProfileFirstName:(NSString*)firstName;
 + (NSArray*)stepsToVerifyProfileFirstName:(NSString*)firstName;
++ (id)stepToDisableValidFacebookSession;
++ (id)stepToEnableValidFacebookSession;
 
 @end
