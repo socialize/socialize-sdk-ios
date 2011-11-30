@@ -5,12 +5,26 @@ Getting Started Guide
 =====================
 
 .. contents:: Table of contents
+ 
 
-Minimum Requirements
---------------------
+Introduction
+------------
+The Socialize SDK provides a simple set of classes and methods built upon the `Socialize REST API <http://www.getsocialize.com/docs/v1/>`_
 
-iOS 4 is minimum supported version by this SDK. 
+App developers can elect to use either the pre-defined user interface controls provided in the Socialize UI 
+framework, or "roll their own" using direct SDK calls.
 
+ALL calls to the Socialize SDK are *asynchronous*, meaning that your application will not "block" while 
+waiting for a response from the Socialize server.
+
+You are notified of the outcome of calls to the Socialize service via a *SocializeServiceDelegate* 
+passed into each call to the Socialize SDK.
+
+The main class through which you will be interacting would be Socialize. You can authenticate, comment, like/unlike via Socialize instance and are detailed in the following section.
+
+.. note:: * iOS 4.0 is the minimum version supported by this SDK
+          * The UI views have not been optimized to work with the larger screens of the iPad
+ 
 Installing the SDK
 ------------------
 - Download and unzip the lastest iOS SDK release from the website.  You can find it here: http://www.getsocialize.com/sdk/
@@ -39,6 +53,46 @@ If you need more detail configuring the SDK in your app please see our `Getting 
 
 If you're having problems please let us know by clicking on the 'Feedback' tab on the right side of the page.   We're here to help.
 
+Setting up your Socialize Keys
+-------------------------------
+To incorporate the Socialize UI views into your app you need to be authenticated.
+
+.. raw:: html
+
+    <script src="https://gist.github.com/1274157.js?file=appDelegate.m"></script>
+
+Adding the Socialize Action Bar
+----------------------
+
+v0.8.0 of the Socialize SDK introduced the "Action Bar", which allows your users to easily
+comment and like/unlike entities
+
+.. image:: images/action_bar.png	
+
+Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller:
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1315113.js"> </script>
+
+By default, the Action Bar will automatically place itself at the bottom of its
+superview and adjust to rotation.  If you find that content is being hidden,
+one option is to ensure that 44 pixels are left empty at the bottom of your
+view. When using interface builder, this is as simple as sliding up the bottom
+of any content.
+
+If you still find you have problems, and you would like to disable the auto
+layout feature completely, you can do so. The following example disables
+autolayout and manually places the Action Bar at (0,400).
+
+.. raw:: html
+
+        <script src="https://gist.github.com/1374087.js"> </script>
+
+If you need more detail on installing the action bar please see our `Adding the Socialize Action Bar Video`_.
+
+    .. _Adding the Socialize Action Bar Video: http://vimeo.com/31403049
+ 
 Next Steps...
 -------------
 
