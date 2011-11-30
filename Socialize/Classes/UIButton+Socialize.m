@@ -52,9 +52,10 @@
     
 
 
-    UIColor * disabledColor = [UIColor colorWithRed:190.0/255.0 green:197/255.0 blue:205/255.0 alpha:1.0];  
+    UIColor * disabledColor = [UIColor colorWithRed:220.0/255.0 green:220/255.0 blue:220/255.0 alpha:1.0];  
     [self setTitleColor:disabledColor forState:UIControlStateDisabled];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self setTitleShadowColor:disabledColor forState:UIControlStateDisabled];
 	
     [self setBackgroundImage:normalImage forState:UIControlStateNormal];
 	[self setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
