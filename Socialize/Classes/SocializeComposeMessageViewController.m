@@ -324,8 +324,12 @@
         [self adjustForOrientation:interfaceOrientation];
         return YES;
     } else {
-        [self adjustForOrientation:UIInterfaceOrientationPortrait];  
-        return NO;
+        if (interfaceOrientation == UIInterfaceOrientationPortrait) {
+            [self adjustForOrientation:UIInterfaceOrientationPortrait];  
+            return YES;
+        } else {
+            return NO;
+        }
     }
 }
 
