@@ -122,7 +122,7 @@
          {
              if(error)
              {
-                 NSLog(@"reverseGeocoder didFailWithError:%@", error);
+//                 NSLog(@"reverseGeocoder didFailWithError:%@", error);
                  self.locationManager.currentLocationDescription = NO_CITY_MSG;
              }
              else

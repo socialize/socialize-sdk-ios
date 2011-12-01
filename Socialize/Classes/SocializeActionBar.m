@@ -208,7 +208,7 @@
 
         [shareActionSheet_ addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
         
-        [shareActionSheet_ setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
+        [shareActionSheet_ setCancelButtonWithTitle:nil handler:^{  }];
     }
     return shareActionSheet_;
 }
@@ -241,19 +241,14 @@
             switch (result)
             {
                 case MFMailComposeResultCancelled:
-                    NSLog(@"Result: canceled");
                     break;
                 case MFMailComposeResultSaved:
-                    NSLog(@"Result: saved");
                     break;
                 case MFMailComposeResultSent:
-                    NSLog(@"Result: sent");
                     break;
                 case MFMailComposeResultFailed:
-                    NSLog(@"Result: failed with error %@", [error localizedDescription]);
                     break;
                 default:
-                    NSLog(@"Result: not sent");
                     break;
             }
         };
