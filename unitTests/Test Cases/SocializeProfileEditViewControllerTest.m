@@ -20,6 +20,7 @@
 - (void)facebookSwitchChanged:(UISwitch*)facebookSwitch;
 - (BOOL)haveCamera;
 - (void)configureProfileImageCell;
+- (void)configureViewsForUser;
 @end
 
 @implementation SocializeProfileEditViewControllerTest
@@ -470,7 +471,20 @@
     [self.profileEditViewController service:nil didUpdate:mockFullUser];
 }
 
+- (void)testViewWillAppearWithUserEnablesSaveButton {
+    id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
+    self.profileEditViewController.fullUser = mockFullUser;
+    
+    [[self.mockSaveButton expect] setEnabled:YES];
+    [[(id)self.profileEditViewController expect] configureViewsForUser];
+    [super expectViewWillAppear];
+    [self.profileEditViewController viewWillAppear:YES];
+}
 
-
+- (void)testFinishingGetUserEnablesSaveButton {
+    [[(id)self.profileEditViewController expect] configureViewsForUser];
+    [[self.mockSaveButton expect] setEnabled:YES];
+    [self.profileEditViewController didGetCurrentUser:nil];
+}
 
 @end
