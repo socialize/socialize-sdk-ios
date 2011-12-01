@@ -187,7 +187,7 @@
     [[[self.mockMapOfUserLocation stub] andReturn:mockLocation] userLocation];
     [[[self.mockCommentTextView stub] andReturn:testText] text];
     [[self.mockSendButton expect] setEnabled:NO];
-    [[self.mockCancelButton expect] setEnabled:NO];
+//    [[self.mockCancelButton expect] setEnabled:NO];
     [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:testText longitude:longitudeNumber latitude:latitudeNumber];
 
     [self.postCommentViewController finishCreateComment];

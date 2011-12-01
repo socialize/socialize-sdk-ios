@@ -228,7 +228,6 @@
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.mockCancelButton];
     [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockSendButton];
     [[self.mockSendButton expect] setEnabled:NO];
-    [[self.mockCancelButton expect] setEnabled:NO];
     BOOL noValue = NO;
     [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(noValue)] shouldShareLocation];
     [[self.mockLocationManager expect] setShouldShareLocation:NO];
