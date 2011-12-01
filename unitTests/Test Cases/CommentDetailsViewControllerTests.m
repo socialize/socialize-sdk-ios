@@ -155,14 +155,15 @@
     [[mockDeteailView expect] updateCommentMsg:[self showComment:mockComment]];
         
      commentDetails.commentDetailsView = mockDeteailView;
+    [[[self.partialMockCommentDetailsViewController stub] andReturn:mockDeteailView] view];
     
-    [commentDetails viewDidLoad]; 
-    [commentDetails viewWillAppear:YES];
+    [self.partialMockCommentDetailsViewController viewDidLoad]; 
+    [self.partialMockCommentDetailsViewController viewWillAppear:YES];
     
     [mockComment verify];
     [mockDeteailView verify];
     
-    [commentDetails viewWillDisappear:YES];
+    [self.partialMockCommentDetailsViewController viewWillDisappear:YES];
 }
 
 -(void) testProfileButtonTapped {
@@ -199,19 +200,20 @@
     [[mockDeteailView expect] updateCommentMsg:[self showComment:mockComment]];
     
     commentDetails.commentDetailsView = mockDeteailView;
-    
+    [[[self.partialMockCommentDetailsViewController stub] andReturn:mockDeteailView] view];
+
     commentDetails.loaderFactory = [[^URLDownload*(NSString* url, id sender, SEL selector, id tag){
         GHAssertEqualStrings(profileUrl, url, nil);
         return nil;
     } copy]autorelease];
     
-    [commentDetails viewDidLoad]; 
-    [commentDetails viewWillAppear:YES];
+    [self.partialMockCommentDetailsViewController viewDidLoad]; 
+    [self.partialMockCommentDetailsViewController viewWillAppear:YES];
     
     [mockComment verify];
     [mockDeteailView verify];
     
-    [commentDetails viewWillDisappear:YES];
+    [self.partialMockCommentDetailsViewController viewWillDisappear:YES];
 }
 
 @end

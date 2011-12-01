@@ -144,6 +144,7 @@
 - (void)testDefaultTableViewProperty {
     [[[self.mockView stub] andReturnBool:YES] isKindOfClass:[UITableView class]];
 
+    [self.viewController viewDidLoad];
     UITableView *defaultTableView = self.viewController.tableView;
     GHAssertEquals(self.mockView, defaultTableView, @"tableView incorrect");
 }
