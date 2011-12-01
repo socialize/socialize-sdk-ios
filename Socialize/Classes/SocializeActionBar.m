@@ -126,12 +126,11 @@
     [actionView release];
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    self.commentsNavController = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:self.entity.key];
+- (UIViewController*)commentsNavController {
+    if (commentsNavController_ == nil) {
+        commentsNavController_ = [[SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:self.entity.key] retain];
+    }
+    return commentsNavController_;
 }
 
 #pragma mark Socialize base class method
@@ -179,6 +178,10 @@
 -(void)commentButtonTouched:(id)sender
 {
     self.ignoreNextView = YES;
+    
+    // Reset for now, since we yet don't have refresh functionality
+    self.commentsNavController = nil;
+    
     [self.presentModalInViewController presentModalViewController:self.commentsNavController animated:YES];
 }
 
