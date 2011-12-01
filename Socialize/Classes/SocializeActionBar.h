@@ -45,6 +45,7 @@
 @property (nonatomic, retain) UIActionSheet *shareActionSheet;
 @property (nonatomic, retain) MFMailComposeViewController *shareComposer;
 @property (nonatomic, assign) BOOL noAutoLayout;
+@property (nonatomic, assign, readonly) BOOL initialized;
 
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
 

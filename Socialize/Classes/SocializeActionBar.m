@@ -45,6 +45,7 @@
 @property (nonatomic, retain) id<SocializeView> entityView;
 @property (nonatomic, retain) id<SocializeLike> entityLike;
 @property (nonatomic, assign) BOOL finishedAskingServerForExistingLike;
+@property (nonatomic, assign) BOOL initialized;
 
 -(void) shareViaEmail;
 -(void)shareViaFacebook;
@@ -66,6 +67,7 @@
 @synthesize commentsNavController = commentsNavController_;
 @synthesize finishedAskingServerForExistingLike = finishedAskingServerForExistingLike_;
 @synthesize noAutoLayout = noAutoLayout_;
+@synthesize initialized = initialized_;
 
 - (void)dealloc
 {
@@ -147,6 +149,10 @@
 }
 
 - (void)appear {
+    if (!self.initialized) {
+        [(SocializeActionView*)self.view hideButtons];
+    }
+    
     if (self.ignoreNextView) {
         self.ignoreNextView = NO;
         
@@ -284,6 +290,11 @@
 - (void)finishedGettingEntities:(NSArray*)entities {
     if ([entities count] < 1) {
         return;
+    }
+    
+    if (!self.initialized) {
+        self.initialized = YES;
+        [(SocializeActionView*)self.view showButtons];
     }
     
     id<SocializeEntity> entity = [entities objectAtIndex:0];
