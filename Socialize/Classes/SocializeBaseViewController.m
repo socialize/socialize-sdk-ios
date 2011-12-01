@@ -58,6 +58,8 @@
 
 - (void)dealloc
 {
+    self.tableView.delegate = nil;
+    self.tableView.dataSource = nil;
     self.tableView = nil;
     self.doneButton = nil;
     self.editButton = nil;
@@ -89,14 +91,12 @@
     self.authViewController = nil;
 }
 
-- (UITableView*)tableView {
-    if (tableView_ == nil) {
-        if ([self.view isKindOfClass:[UITableView class]]) {
-            tableView_ = (UITableView*)self.view;
-        }
-    }
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    return tableView_;
+    if (self.tableView == nil && [self.view isKindOfClass:[UITableView class]]) {
+        self.tableView = (UITableView*)self.view;
+    }
 }
 
 - (NSBundle*)bundle {

@@ -77,7 +77,7 @@
     [[mockErrorLabel expect] setText:OCMOCK_ANY];
     
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.commentsTableViewController.brandingButton];
-    [[self.mockNavigationItem expect] setRightBarButtonItem:self.commentsTableViewController.doneButton];
+    [[self.mockNavigationItem expect] setRightBarButtonItem:self.commentsTableViewController.closeButton];
     
     [[self.mockTableView expect] setScrollsToTop:YES];
     [[self.mockTableView expect] setAutoresizesSubviews:YES];
