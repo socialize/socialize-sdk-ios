@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Implementing the UI &mdash; Socialize iOS SDK v1.0 documentation</title>
+    <title>Implementing the UI &mdash; Socialize iOS SDK v1.1.1 documentation</title>
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0',
+        VERSION:     '1.1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK v1.0 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK v1.1.1 documentation" href="index.html" />
     <link rel="next" title="SDK User Guide" href="sdk_user_guide.html" />
     <link rel="prev" title="Getting Started Guide" href="getting_started.html" /> 
   </head>
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK v1.1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -75,29 +75,16 @@
 <p>As of v0.4.0 of the Socialize SDK we are providing pre-built UI views that can
 quickly and easily be dropped in to your app, saving you the time of building
 these views yourself!</p>
-<div class="section" id="initialize-the-socialize-ui-system">
-<h3>Initialize the Socialize UI System<a class="headerlink" href="#initialize-the-socialize-ui-system" title="Permalink to this headline">¶</a></h3>
-<p>To incorporate the Socialize UI views into your app you need to be authenticated.</p>
-<script src="https://gist.github.com/1274157.js?file=appDelegate.m"></script></div>
 </div>
-<div class="section" id="socialize-action-bar">
-<h2>Socialize Action Bar<a class="headerlink" href="#socialize-action-bar" title="Permalink to this headline">¶</a></h2>
-<p>v0.8.0 of the Socialize SDK introduced the &#8220;Action Bar&#8221;, which allows your users to easily
-comment and like/unlike entities</p>
-<img alt="images/action_bar.png" src="images/action_bar.png" />
-<p>Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller:</p>
-<script src="https://gist.github.com/1315113.js"> </script><p>By default, the Action Bar will automatically place itself at the bottom of its
-superview and adjust to rotation.  If you find that content is being hidden,
-one option is to ensure that 44 pixels are left empty at the bottom of your
-view. When using interface builder, this is as simple as sliding up the bottom
-of any content.</p>
-<p>If you still find you have problems, and you would like to disable the auto
-layout feature completely, you can do so. The following example disables
-autolayout and manually places the Action Bar at (0,400).</p>
-<script src="https://gist.github.com/1374087.js"> </script><p>If you need more detail on installing the action bar please see our <a class="reference external" href="http://vimeo.com/31403049">Adding the Socialize Action Bar Video</a>.</p>
-<blockquote>
-<div></div></blockquote>
-</div>
+<div class="section" id="adding-facebook-support">
+<h2>Adding Facebook Support<a class="headerlink" href="#adding-facebook-support" title="Permalink to this headline">¶</a></h2>
+<p>To add Facebook support in Socialize, you&#8217;ll need to perform three steps:</p>
+<p>Let Socialize know your Facebook app id.  You can register or find your Facebook app id here: <a class="reference external" href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a></p>
+<script src="https://gist.github.com/1375443.js?file=gistfile1.m"></script><p>You must register your app to open with your facebook app id url by adding a URL Types array to your Application&#8217;s &lt;MyApp&gt;-Info.plist.
+The string is a lowercase fb followed by your app id. The example app is configured as below:</p>
+<img alt="images/facebook_urltypes.png" src="images/facebook_urltypes.png" />
+<p>You must also be sure to call [Socialize handleOpenURL:url] from your UIApplicationDelegate&#8217;s application:handleOpenURL: method. Socialize will take care of handing off the openURL request to the underlying <a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>. This completes the authentication flow.</p>
+<script src="https://gist.github.com/1375464.js?file=appDelegate.m"></script></div>
 <div class="section" id="comment-view">
 <h2>Comment View<a class="headerlink" href="#comment-view" title="Permalink to this headline">¶</a></h2>
 <p>v0.4.0 of the Socialize SDK introduced the &#8220;Comment View&#8221; which provides the creation and viewing
@@ -110,8 +97,8 @@ of comments associated with an entity (URL).</p>
 <p>When you want to launch the comment view, simply instantiate and present the commentViewController :</p>
 <script src="https://gist.github.com/1293791.js"> </script></div>
 </div>
-<div class="section" id="adding-facebook-support">
-<h2>Adding Facebook Support<a class="headerlink" href="#adding-facebook-support" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2>Adding Facebook Support<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="my-app-already-uses-facebook">
 <h3>My App Already Uses Facebook<a class="headerlink" href="#my-app-already-uses-facebook" title="Permalink to this headline">¶</a></h3>
 <p>If your app already authenticates with Facebook and stores credentials to the
@@ -144,9 +131,9 @@ The string is a lowercase fb followed by your app id. The example app is configu
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Implementing the UI</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#socialize-action-bar">Socialize Action Bar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#comment-view">Comment View</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#adding-facebook-support">Adding Facebook Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comment-view">Comment View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Adding Facebook Support</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
@@ -167,7 +154,7 @@ The string is a lowercase fb followed by your app id. The example app is configu
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK v1.1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
