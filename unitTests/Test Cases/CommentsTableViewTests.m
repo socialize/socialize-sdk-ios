@@ -184,6 +184,10 @@
     [cell release];
 }
 
-
+- (void)testPostingCommentInsertsOnTop {
+    id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
+    [[(id)self.commentsTableViewController expect] insertContentAtHead:[NSArray arrayWithObject:mockComment]];
+    [self.commentsTableViewController postCommentViewController:nil didCreateComment:mockComment];
+}
 
 @end

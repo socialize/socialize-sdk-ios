@@ -45,6 +45,7 @@
 @property (nonatomic, retain) id<SocializeView> entityView;
 @property (nonatomic, retain) id<SocializeLike> entityLike;
 @property (nonatomic, assign) BOOL finishedAskingServerForExistingLike;
+@property (nonatomic, assign) BOOL initialized;
 
 -(void) shareViaEmail;
 -(void)shareViaFacebook;
@@ -66,6 +67,7 @@
 @synthesize commentsNavController = commentsNavController_;
 @synthesize finishedAskingServerForExistingLike = finishedAskingServerForExistingLike_;
 @synthesize noAutoLayout = noAutoLayout_;
+@synthesize initialized = initialized_;
 
 - (void)dealloc
 {
@@ -126,12 +128,11 @@
     [actionView release];
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    self.commentsNavController = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:self.entity.key];
+- (UIViewController*)commentsNavController {
+    if (commentsNavController_ == nil) {
+        commentsNavController_ = [[SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:self.entity.key] retain];
+    }
+    return commentsNavController_;
 }
 
 #pragma mark Socialize base class method
@@ -148,6 +149,10 @@
 }
 
 - (void)appear {
+    if (!self.initialized) {
+        [(SocializeActionView*)self.view hideButtons];
+    }
+    
     if (self.ignoreNextView) {
         self.ignoreNextView = NO;
         
@@ -179,6 +184,10 @@
 -(void)commentButtonTouched:(id)sender
 {
     self.ignoreNextView = YES;
+    
+    // Reset for now, since we yet don't have refresh functionality
+    self.commentsNavController = nil;
+    
     [self.presentModalInViewController presentModalViewController:self.commentsNavController animated:YES];
 }
 
@@ -208,7 +217,7 @@
 
         [shareActionSheet_ addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
         
-        [shareActionSheet_ setCancelButtonWithTitle:nil handler:^{ NSLog(@"Never mind, then!"); }];
+        [shareActionSheet_ setCancelButtonWithTitle:nil handler:^{  }];
     }
     return shareActionSheet_;
 }
@@ -241,19 +250,14 @@
             switch (result)
             {
                 case MFMailComposeResultCancelled:
-                    NSLog(@"Result: canceled");
                     break;
                 case MFMailComposeResultSaved:
-                    NSLog(@"Result: saved");
                     break;
                 case MFMailComposeResultSent:
-                    NSLog(@"Result: sent");
                     break;
                 case MFMailComposeResultFailed:
-                    NSLog(@"Result: failed with error %@", [error localizedDescription]);
                     break;
                 default:
-                    NSLog(@"Result: not sent");
                     break;
             }
         };
@@ -286,6 +290,11 @@
 - (void)finishedGettingEntities:(NSArray*)entities {
     if ([entities count] < 1) {
         return;
+    }
+    
+    if (!self.initialized) {
+        self.initialized = YES;
+        [(SocializeActionView*)self.view showButtons];
     }
     
     id<SocializeEntity> entity = [entities objectAtIndex:0];

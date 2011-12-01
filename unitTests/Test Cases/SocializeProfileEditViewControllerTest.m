@@ -20,6 +20,7 @@
 - (void)facebookSwitchChanged:(UISwitch*)facebookSwitch;
 - (BOOL)haveCamera;
 - (void)configureProfileImageCell;
+- (void)configureViewsForUser;
 @end
 
 @implementation SocializeProfileEditViewControllerTest
@@ -231,10 +232,6 @@
     BOOL no = NO;
     [[[self.mockFacebookSwitch expect] andReturnValue:OCMOCK_VALUE(no)] isOn];
     
-    // Expect save button enabled because an edit occured
-    [[[self.mockNavigationItem stub] andReturn:self.mockSaveButton] rightBarButtonItem];
-    [[self.mockSaveButton expect] setEnabled:YES];
-    
     // Expect defaults updated
     // Expect defaults go to not posting (ie, switch off)
     [[self.mockUserDefaults expect] setObject:[NSNumber numberWithBool:YES] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
@@ -328,7 +325,6 @@
 
 - (void)testViewDidLoad {
     [[self.mockTableView expect] setAccessibilityLabel:@"edit profile"];
-    [[self.mockSaveButton expect] setEnabled:NO];
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.mockCancelButton];
     [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockSaveButton];
     [self.profileEditViewController viewDidLoad];
@@ -475,7 +471,20 @@
     [self.profileEditViewController service:nil didUpdate:mockFullUser];
 }
 
+- (void)testViewWillAppearWithUserEnablesSaveButton {
+    id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
+    self.profileEditViewController.fullUser = mockFullUser;
+    
+    [[self.mockSaveButton expect] setEnabled:YES];
+    [[(id)self.profileEditViewController expect] configureViewsForUser];
+    [super expectViewWillAppear];
+    [self.profileEditViewController viewWillAppear:YES];
+}
 
-
+- (void)testFinishingGetUserEnablesSaveButton {
+    [[(id)self.profileEditViewController expect] configureViewsForUser];
+    [[self.mockSaveButton expect] setEnabled:YES];
+    [self.profileEditViewController didGetCurrentUser:nil];
+}
 
 @end

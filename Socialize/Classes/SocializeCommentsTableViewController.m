@@ -161,8 +161,17 @@
 
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
-    UINavigationController * pcNavController = [SocializePostCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:_entity.key];
+    UINavigationController * pcNavController = [SocializePostCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:_entity.key delegate:self];
     [self presentModalViewController:pcNavController animated:YES];
+}
+
+- (void)composeMessageViewControllerDidCancel:(SocializeComposeMessageViewController *)composeMessageViewController {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)postCommentViewController:(SocializePostCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
+    [self insertContentAtHead:[NSArray arrayWithObject:comment]];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark -

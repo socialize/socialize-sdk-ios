@@ -16,6 +16,7 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
 @property (nonatomic, assign) BOOL loadedAllContent;
 @property (nonatomic, assign, getter=isInitialized) BOOL initialized;
 - (void)startLoadingContent;
+- (NSArray*)indexPathsForSectionRange:(NSRange)sectionRange rowRange:(NSRange)rowRange;
 @end
 
 
@@ -79,7 +80,7 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
 }
 
 - (void)initializeContent {
-    if (!self.initialized) {
+    if (!self.initialized && !self.waitingForContent) {
         self.tableView.tableFooterView = self.tableFooterView;
         [self startLoadingContent];
     }
@@ -106,6 +107,17 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
         content_ = [[NSMutableArray alloc] init];
     }
     return content_;
+}
+
+- (void)insertContentAtHead:(NSArray*)array {
+    NSMutableArray *newArray = [[array mutableCopy] autorelease];
+    [newArray addObjectsFromArray:self.content];
+    NSInteger nElements = [array count];
+    NSArray *indexPaths = [self indexPathsForSectionRange:NSMakeRange(0, 1) rowRange:NSMakeRange(0, nElements)];
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+    self.content = newArray;
+    [self.tableView endUpdates];
 }
 
 - (void)loadContentForNextPageAtOffset:(NSInteger)offset {

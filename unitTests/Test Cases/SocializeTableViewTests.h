@@ -12,12 +12,12 @@
 
 @interface SocializeTableViewTests : SocializeBaseViewControllerTests
 @property (nonatomic, retain) SocializeTableViewController *tableViewController;
-@property (nonatomic, assign) id mockTableView;
-@property (nonatomic, assign) id mockInformationView;
-@property (nonatomic, assign) id mockTableBackgroundView;
-@property (nonatomic, assign) id mockContent;
-@property (nonatomic, assign) id mockActivityLoadingActivityIndicatorView;
-@property (nonatomic, assign) id mockTableFooterView;
+@property (nonatomic, retain) id mockTableView;
+@property (nonatomic, retain) id mockInformationView;
+@property (nonatomic, retain) id mockTableBackgroundView;
+@property (nonatomic, retain) id mockContent;
+@property (nonatomic, retain) id mockActivityLoadingActivityIndicatorView;
+@property (nonatomic, retain) id mockTableFooterView;
 
 - (void)expectViewDidLoad;
 @end

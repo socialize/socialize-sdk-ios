@@ -15,6 +15,7 @@
 @class CommentMapView;
 @class UIKeyboardListener;
 @class SocializeLocationManager;
+@protocol SocializeComposeMessageViewControllerDelegate;
 
 @interface SocializeComposeMessageViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate>
 {
@@ -26,6 +27,7 @@
     Class _geoCoderInfo;
 }
 
+@property (nonatomic, assign) id<SocializeComposeMessageViewControllerDelegate> delegate;
 @property (nonatomic, copy) NSString *entityURL;
 @property(nonatomic, retain) SocializeLocationManager *locationManager;
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;
@@ -42,7 +44,13 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil 
                bundle:(NSBundle *)nibBundleOrNil 
-      entityUrlString:(NSString*)entityUrlString ;
+      entityUrlString:(NSString*)entityUrlString;
 
+
+@end
+
+@protocol SocializeComposeMessageViewControllerDelegate <NSObject>
+
+- (void)composeMessageViewControllerDidCancel:(SocializeComposeMessageViewController*)composeMessageViewController;
 
 @end

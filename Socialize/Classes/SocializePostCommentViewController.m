@@ -20,9 +20,11 @@
 @synthesize commentObject = commentObject_;
 @synthesize commentSentToFacebook = commentSentToFacebook_;
 @synthesize facebookButton = facebookButton_;
+@synthesize delegate = delegate_;
 
-+ (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL {
++ (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SocializePostCommentViewControllerDelegate>)delegate {
     SocializePostCommentViewController *postCommentViewController = [self postCommentViewControllerWithEntityURL:entityURL];
+    postCommentViewController.delegate = delegate;
     UINavigationController *navigationController = [UINavigationController socializeNavigationControllerWithRootViewController:postCommentViewController];
     return navigationController;    
 }
@@ -81,14 +83,35 @@
     return self.facebookButton.selected && !self.facebookButton.hidden;
 }
 
+- (void)executeAfterModalDismissDelay:(void (^)())block {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, MIN_MODAL_DISMISS_INTERVAL * NSEC_PER_SEC), 
+                   dispatch_get_main_queue(),
+                   block);
+}
+
 - (void)dismissSelf {
+    // In the case that the user just came back from the SocializeAuthViewController, and the 
+    // socialize server finishes creating the comment before the modal dismissal animation has played,
+    // we need to hack a delay for iOS5 or the second dismissal will not happen
+    
     // Double animated dismissal does not work on iOS5 (but works in iOS4)
     // Allow previous modal dismisalls to complete. iOS5 added dismissViewControllerAnimated:completion:, which
-    // we would use here if backward compatibility was not required.   
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, MIN_MODAL_DISMISS_INTERVAL * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    // we could also use for the previous dismissal, but this is a little simpler and lets us ignore version differences.
+    [self executeAfterModalDismissDelay:^{
         [self stopLoadAnimation];
         [self dismissModalViewControllerAnimated:YES];
-    });
+    }];
+}
+
+- (void)notifyDelegateOrDismissSelf {
+    if ([self.delegate respondsToSelector:@selector(postCommentViewController:didCreateComment:)]) {
+        [self executeAfterModalDismissDelay:^{
+            [self stopLoadAnimation];
+            [self.delegate postCommentViewController:self didCreateComment:self.commentObject];
+        }];
+    } else {
+        [self dismissSelf];
+    }
 }
 
 - (void)finishCreateComment {
@@ -105,7 +128,7 @@
         return;
     }
     
-    [self dismissSelf];
+    [self notifyDelegateOrDismissSelf];
 }
 - (void)afterLoginAction {
     [self configureFacebookButton];

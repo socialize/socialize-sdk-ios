@@ -68,7 +68,6 @@
 
 - (id)initWithNibName:(NSString*)nibName bundle:(NSBundle *)nibBundleOrNil{
     if ((self = [super initWithNibName:nibName bundle:nibBundleOrNil])) {
-        NSLog(@"bundle found");
     }
     return self;
 }
@@ -86,7 +85,6 @@
      {
          if(error)
          {
-             NSLog(@"reverseGeocoder didFailWithError:%@", error);
              [commentDetailsView updateLocationText: NO_CITY_MSG];
          }
          else
@@ -153,7 +151,7 @@
     }
     else
     {
-        NSLog(@"Could not create dynamic html for comment");
+        // Could not create dynamic html for comment
         [commentDetailsView updateCommentMsg:comment.text];
     }
     
