@@ -27,14 +27,14 @@
 
 #import <UIKit/UIKit.h>
 #import <Socialize/Socialize.h>
-#import "LoadingView.h"
+#import "SocializeLoadingView.h"
 
 
 @interface TestActivityViewController : UIViewController<SocializeServiceDelegate, UITableViewDataSource, UITableViewDelegate> {
     @private
     NSArray* activity;
     Socialize* socialize;
-    LoadingView*          _loadingView;
+    SocializeLoadingView*          _loadingView;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView* activityTable;

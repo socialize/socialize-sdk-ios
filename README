@@ -1,12 +1,18 @@
-Release Notes 0.1.0
-++++++++++++++++++++++++
+Socialize for iOS is a drop-in solution for adding a social community to your
+application. To get started and see it in action, check out the
+quick start guide (linked below). For more info on Socialize itself, check out
+http://www.getsocialize.com.
 
-[feature] Unlike an entity [ ]
+QUICK START
 
-[feature] All API calls must be authenticated using the /authenticate API [ ]
+If you just want to get up and running as fast as possible, check out
+http://socialize.github.com/socialize-sdk-ios/getting_started.html
 
-[feature] Like an entity [ ]
+DOCUMENTATION
 
-[feature] Device will send agent in request [ ]
+The full documentation set, including info on building and recent changes, can
+be found at http://socialize.github.com/socialize-sdk-ios/
 
-[feature] testin
+IRC
+
+Visit us in #socialize on irc.freenode.net

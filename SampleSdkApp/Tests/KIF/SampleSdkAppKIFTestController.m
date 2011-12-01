@@ -21,20 +21,40 @@ static NSString *SampleSdkAppKIFTestControllerRunID = nil;
 
 @implementation SampleSdkAppKIFTestController
 
++(NSDictionary*)authInfoFromConfig
+{
+    NSBundle * bundle =  [NSBundle bundleForClass:[self class]];
+    NSString * configPath = [bundle pathForResource:@"SocializeApiInfo" ofType:@"plist"];
+    NSDictionary * configurationDictionary = [[[NSDictionary alloc]initWithContentsOfFile:configPath] autorelease];
+    return  [configurationDictionary objectForKey:@"Socialize API info"];
+}
+
++ (void)enableValidFacebookSession {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *apiInfo = [self authInfoFromConfig];
+    if ([apiInfo objectForKey:@"facebookToken"]) {
+        [defaults setObject:[apiInfo objectForKey:@"facebookToken"] forKey:@"FBAccessTokenKey"];
+        [defaults setObject:[NSDate distantFuture] forKey:@"FBExpirationDateKey"];
+        [defaults synchronize];
+    }
+}
+                             
++ (void)disableValidFacebookSession {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"FBAccessTokenKey"];
+    [defaults removeObjectForKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+}
+                   
 
 - (void)initializeScenarios;
 {
-//    [self addScenario:[KIFTestScenario scenarioToTestCommentsViewControllerWithAutoAuth]];
     [self addScenario:[KIFTestScenario scenarioToAuthenticate]];
-    
     [self addScenario:[KIFTestScenario scenarioToTestViewOtherProfile]];
     [self addScenario:[KIFTestScenario scenarioToTestUserProfile]];
-    [self addScenario:[KIFTestScenario scenarioToCreateEntity]];
-    [self addScenario:[KIFTestScenario scenarioToGetEntity]];
-    [self addScenario:[KIFTestScenario scenarioToLikeAndUnlikeEntity]];
-    [self addScenario:[KIFTestScenario scenarioToViewEntity]];
     [self addScenario:[KIFTestScenario scenarioToTestActionBar]];
 
+    //    [self addScenario:[KIFTestScenario scenarioToTestFacebook]];
 }
 
 + (NSString*)runID {

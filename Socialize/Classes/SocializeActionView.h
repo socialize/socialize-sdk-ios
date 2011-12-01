@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
+#define SOCIALIZE_ACTION_PANE_HEIGHT 44
+
 @class SocializeActionView;
 
 @protocol SocializeActionViewDelegate <NSObject>
 
 -(void)commentButtonTouched:(id)sender;
+-(void)viewButtonTouched:(id)sender;
 -(void)likeButtonTouched:(id)sender;
 -(void)shareButtonTouched: (id) sender;
 -(void)socializeActionViewWillAppear:(SocializeActionView*)socializeActionView;
@@ -54,5 +58,7 @@
 
 @property (nonatomic, assign) id<SocializeActionViewDelegate> delegate;
 @property (nonatomic, readonly) BOOL isLiked;
+@property (nonatomic, assign) BOOL noAutoLayout;
+
 
 @end

@@ -69,7 +69,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _loadingView = [LoadingView loadingViewInView:self.view]; 
+    _loadingView = [SocializeLoadingView loadingViewInView:self.view]; 
     [_socialize getCurrentUser];
 }
 
@@ -106,7 +106,7 @@
     _user = [[dataArray objectAtIndex:0] retain];
     self.userName.text = _user.userName;
     
-    NSNumber* fbId = [_user userIdForThirdPartyAuth:FacebookAuth];
+    NSNumber* fbId = [_user userIdForThirdPartyAuth:SocializeThirdPartyAuthTypeFacebook];
     if(fbId)
         self.fbUserId.text = [NSString stringWithFormat:@"%d", fbId];
 }
@@ -118,7 +118,7 @@
 
 -(IBAction)updateBtn
 {
-    _loadingView = [LoadingView loadingViewInView:self.view]; 
+    _loadingView = [SocializeLoadingView loadingViewInView:self.view]; 
     
     [_user setUserName:@"Sergey"];
     [_socialize updateUserProfile:_user];    

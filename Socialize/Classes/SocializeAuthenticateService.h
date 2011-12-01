@@ -81,7 +81,7 @@ Socialize authentication service is the authentication engine. It performs anony
                             apiSecret:(NSString*)apiSecret 
                   thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
                      thirdPartyAppId:(NSString*)thirdPartyAppId
-                        thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
+                        thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName;
 
 /**
  Convenience method
@@ -91,7 +91,7 @@ Socialize authentication service is the authentication engine. It performs anony
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                     apiSecret:(NSString*)apiSecret 
               thirdPartyAppId:(NSString*)thirdPartyAppId 
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName;
 
 /**
  Third party authentication via SDK service.
@@ -114,7 +114,7 @@ Socialize authentication service is the authentication engine. It performs anony
                     apiSecret:(NSString*)apiSecret 
               thirdPartyAppId:(NSString*)thirdPartyAppId 
          thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName;
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName;
 
 /**@name Other methods*/
 
@@ -124,13 +124,6 @@ Socialize authentication service is the authentication engine. It performs anony
  @return YES if valid and NO if access token was expired.
  */
 +(BOOL)isAuthenticated;
-
-/**
- Check if authentication credentials still valid /and/ that this is a facebook authentication.
- 
- @return YES if credentials are valid and facebook was used for authentication, and NO otherwise
- */
-+ (BOOL)isAuthenticatedWithFacebook;
 
 /**
  Remove old authentication information.

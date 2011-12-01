@@ -26,22 +26,22 @@
 
 @implementation CommentMapView
 
--(void) configurate
+-(void) roundCorners
 {
     self.layer.cornerRadius = 9.0f;
     self.layer.masksToBounds = YES;
         
-    UIView* shadowView = [[UIView alloc] init];
-    shadowView.layer.cornerRadius = 9.0;
-    shadowView.layer.shadowColor = [UIColor colorWithRed:48/ 255.f green:57/ 255.f blue:64/ 255.f alpha:1.0].CGColor;
-    shadowView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    shadowView.layer.shadowOpacity = 0.9f;
-    shadowView.layer.shadowRadius = 9.0f;
-    
-    [self.superview addSubview:shadowView];
-    [self removeFromSuperview];
-    [shadowView addSubview:self];    
-    [shadowView release];
+//    UIView* shadowView = [[UIView alloc] init];
+//    shadowView.layer.cornerRadius = 9.0;
+//    shadowView.layer.shadowColor = [UIColor colorWithRed:48/ 255.f green:57/ 255.f blue:64/ 255.f alpha:1.0].CGColor;
+//    shadowView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+//    shadowView.layer.shadowOpacity = 0.9f;
+//    shadowView.layer.shadowRadius = 9.0f;
+//    
+//    [self.superview addSubview:shadowView];
+//    [self removeFromSuperview];
+//    [shadowView addSubview:self];    
+//    [shadowView release];
 }
 
 -(void) setFitLocation: (CLLocationCoordinate2D) location withSpan: (MKCoordinateSpan) span

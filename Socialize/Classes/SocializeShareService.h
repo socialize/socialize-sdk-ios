@@ -13,21 +13,13 @@
 #import "SocializeRequest.h"
 #import "SocializeService.h"
 
-typedef enum {
-    Facebook = 1,
-    Twitter = 2,
-    Other = 3
-} ShareMedium;
-
 
 @interface SocializeShareService : SocializeService {
-
-
 }
 
 
--(void)createShareForEntityKey:(NSString*)key medium:(ShareMedium)medium  text:(NSString*)text;
--(void)createShareForEntity:(id<SocializeEntity>)entity medium:(ShareMedium)medium  text:(NSString*)text;
+-(void)createShareForEntityKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text;
+-(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text;
 
 
 @end

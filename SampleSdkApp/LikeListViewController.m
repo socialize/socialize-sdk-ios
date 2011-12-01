@@ -27,6 +27,8 @@
 
 - (void)dealloc
 {
+    _tableView.delegate = nil;
+    [_tableView release];
     [_likes release];
     [super dealloc];
 }
@@ -110,7 +112,7 @@
         [self.view addSubview:hiddenButton];
     }
     
-    _loadingView = [LoadingView loadingViewInView:self.view]; 
+    _loadingView = [SocializeLoadingView loadingViewInView:self.view]; 
     [_socialize getLikesForEntityKey:entityField.text first:nil last:nil];
 }
 #pragma mark -

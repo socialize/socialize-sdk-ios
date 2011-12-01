@@ -10,9 +10,10 @@
 #import "SocializeServiceDelegate.h"
 #import "_Socialize.h"
 #import "SocializeBaseViewController.h"
+#import "SocializeTableViewController.h"
 
 @class CommentsTableFooterView;
-@class TableBGInfoView;
+@class SocializeTableBGInfoView;
 @class ImagesCache;
 
 /*
@@ -26,10 +27,9 @@
 
 @class CommentsTableViewCell;
 
-@interface SocializeCommentsTableViewController : SocializeBaseViewController<UITableViewDataSource, SocializeServiceDelegate, UITableViewDelegate> 
+@interface SocializeCommentsTableViewController : SocializeTableViewController<UITableViewDataSource, SocializeServiceDelegate, UITableViewDelegate> 
 {
 
-	IBOutlet UITableView*   _tableView;
 	IBOutlet UIView*        backgroundView;
 	IBOutlet UIImageView*   brushedMetalBackground;
 	IBOutlet UIView*        roundedContainerView;
@@ -38,37 +38,30 @@
 	BOOL				_isLoading;
 	BOOL				_errorLoading;
     
-	NSArray*            _arrayOfComments;
 	NSDateFormatter*    _commentDateFormatter;
 
 	CommentsTableFooterView*      footerView;
-	TableBGInfoView*              informationView; 
     CommentsTableViewCell*        commentsCell;
     
     SocializeEntity*              _entity;
     ImagesCache*                  _cache;
 }
 
-@property (retain, nonatomic) IBOutlet UITableView  *tableView;
 @property (retain, nonatomic) IBOutlet UIImageView	*brushedMetalBackground;
 @property (retain, nonatomic) IBOutlet UIView		*backgroundView;
 @property (retain, nonatomic) IBOutlet UIView		*roundedContainerView;
 @property (retain, nonatomic) IBOutlet UIImageView	*noCommentsIconView;
-@property (retain, nonatomic) UIBarButtonItem	*doneButton;
+@property (retain, nonatomic) UIBarButtonItem	*closeButton;
 @property (retain, nonatomic) UIBarButtonItem	*brandingButton;
 
 @property (nonatomic, assign) IBOutlet CommentsTableViewCell     *commentsCell;
 @property (retain, nonatomic) IBOutlet CommentsTableFooterView   *footerView;
 @property (retain, nonatomic) ImagesCache               *cache;
-@property (retain, nonatomic) NSArray                   *arrayOfComments;
 @property (assign, nonatomic) BOOL                      isLoading;
-@property (retain, nonatomic) TableBGInfoView           *informationView;
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName;
 
 -(IBAction)addCommentButtonPressed:(id)sender;
--(void)addNoCommentsBackground;
--(void)removeNoCommentsBackground;
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entryUrlString:(NSString*) entryUrlString;
 

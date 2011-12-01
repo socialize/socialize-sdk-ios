@@ -33,5 +33,5 @@ typedef enum
 +(UIButton *)blackSocializeNavBarButton;
 +(UIButton *)blackSocializeNavBarButtonWithTitle:(NSString *)title;
 
-+(UIButton *)blackSocializeNavBarBackButtonWithTitle:(NSString *)title;
++(UIButton *)blueSocializeNavBarBackButtonWithTitle:(NSString *)title;
 @end

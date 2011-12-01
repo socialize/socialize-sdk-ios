@@ -1,6 +1,8 @@
-.PHONY: tags framework bundle
+.PHONY: tags framework bundle integration-tests ui-integration-tests clean test
 
 BUNDLE_SCHEME=Socialize Bundle
+
+CLEAN_SCHEMES = unitTests SampleSdkApp UIIntegrationTests IntegrationTests "Socialize Framework"
 
 default: build buildsample test package
  	# do all the dependencies above
@@ -11,7 +13,7 @@ package: framework
      
 framework:
   	# build embedded framework
-	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "Socialize Framework" -configuration Distribution -sdk iphoneos build
+	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "Socialize Framework" -configuration Release -sdk iphoneos build
 
 bundle:
 	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "${BUNDLE_SCHEME}" -configuration Release -sdk iphoneos build
@@ -20,20 +22,28 @@ bundle:
 
 buildsample:
 	#building sample
-	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "Socialize Framework" -configuration Distribution -sdk iphoneos build	
+	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "Socialize Framework" -configuration Release -sdk iphoneos build	
 	#xcodebuild -target SampleSdkApp -configuration Distribution -sdk iphoneos PROVISIONING_PROFILE="542E5F91-FA04-4A6B-BEB8-1CCD67D816FD" CODE_SIGN_IDENTITY="iPhone Distribution: pointabout" build
      
 # If you need to clean a specific target/configuration: $(COMMAND) -target $(TARGET) -configuration DebugOrRelease -sdk $(SDK) clean
 clean:
-	xcodebuild -project SocializeSDK.xcodeproj -alltargets -configuration Debug -sdk iphonesimulator clean
-	xcodebuild -project SocializeSDK.xcodeproj -alltargets -configuration Distribution -sdk iphoneos clean
+	for scheme in $(CLEAN_SCHEMES); do \
+		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Debug -sdk iphoneos clean ; \
+		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Debug -sdk iphonesimulator clean ; \
+		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Release -sdk iphoneos clean ; \
+		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Release -sdk iphonesimulator clean ; \
+	done
 	rm -rfd build
+
 test:
-# run unit tests
-	WRITE_JUNIT_XML=YES GHUNIT_UI_CLI=1 xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme unitTests -configuration Debug -sdk iphonesimulator build
+	WRITE_JUNIT_XML=YES RUN_CLI=YES xcodebuild -workspace socialize-sdk-ios.xcworkspace/ -sdk iphonesimulator -configuration Debug -scheme unitTests
+	#WRITE_JUNIT_XML=YES GHUNIT_UI_CLI=1 xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme unitTests -configuration Debug -sdk iphonesimulator build
 
 integration-tests:
-	./util/run-integration-tests.sh
+	cd SampleSdkApp && WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -workspace SampleSdkApp.xcworkspace/ -scheme IntegrationTests -configuration Debug -sdk iphonesimulator build
+
+ui-integration-tests:
+	cd SampleSdkApp && RUN_CLI=1 xcodebuild -workspace SampleSdkApp.xcworkspace/ -scheme UIIntegrationTests -configuration Debug -sdk iphonesimulator build
 
 doc:
 	cd "./Socialize";\

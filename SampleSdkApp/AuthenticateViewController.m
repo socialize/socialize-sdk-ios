@@ -11,6 +11,9 @@
 #import "TestListController.h"
 #import "UIButton+Socialize.h"
 
+
+#define TESTING_FACEBOOK_TOKEN @"BAABpKH5ZBZBg8BANSQGGvcd7DGCxJvOU0S1QZCsF3ZBrmlMT9dZCrLGA5oQJ06njmIE1COAgjsmWDJsRwIig30jbhPZCArmdBe4WgY9CZAL9OZBfs1JIQtAf8F0btxVc2baUJZCZBhpgk3LQZDZD"
+
 @interface AuthenticateViewController()
 -(NSDictionary*)authInfoFromConfig;
 @end
@@ -70,12 +73,18 @@
     self.keyField.text = [apiInfo objectForKey:@"key"];
     self.secretField.text = [apiInfo objectForKey:@"secret"];
     
-    [Socialize storeSocializeApiKey: [apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
+    if ([apiInfo objectForKey:@"facebookToken"]) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:[apiInfo objectForKey:@"facebookToken"] forKey:@"FBAccessTokenKey"];
+        [defaults setObject:[NSDate distantFuture] forKey:@"FBExpirationDateKey"];
+        [defaults synchronize];
+    }
+    [Socialize storeSocializeApiKey:[apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
     [Socialize storeFacebookAppId:@"115622641859087"];
+    [Socialize storeApplicationLink:@"http://www.google.com"];
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];
 #endif
-    
 }
 
 - (void)viewDidUnload
@@ -100,7 +109,7 @@
 
 -(IBAction)authenticate:(id)sender {
     
-    _loadingView = [LoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 
+    _loadingView = [SocializeLoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 
     [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text];
 
 }
@@ -114,13 +123,16 @@
 
 -(IBAction)authenticateViaFacebook:(id)sender
 {
-    _loadingView = [LoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 
+    _loadingView = [SocializeLoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 
 //   [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text thirdPartyAppId:@"115622641859087" thirdPartyName:FacebookAuth];
     [socialize authenticateWithFacebook];
 }
 
 -(IBAction)emptyCache:(id)sender{
     [socialize removeAuthenticationInfo];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FBAccessTokenKey"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"FBExpirationDateKey"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
@@ -139,7 +151,7 @@
 
 -(void)didAuthenticate:(id<SocializeUser>)user {
     
-    NSLog(@"%@", [user userIdForThirdPartyAuth: FacebookAuth]);
+    NSLog(@"%@", [user userIdForThirdPartyAuth: SocializeThirdPartyAuthTypeFacebook]);
 //    NSLog(@"%@", [socialize.authService receiveFacebookAuthToken]);
     
     [_loadingView removeView];

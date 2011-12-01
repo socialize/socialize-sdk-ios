@@ -8,46 +8,44 @@
 
 #import "UINavigationBarBackground.h"
 
-static const NSInteger navBgTag = 1234;
-BOOL useBackgroundImage = NO;
+const NSInteger UINavigationBarBackgroundImageTag = 1234;
 
 
 @implementation UINavigationBar (UINavigationBarCategory)
 
 - (void)setBackgroundImage:(UIImage*)image
 {
-	[self setBackgroundImage:(UIImage*)image withTag:navBgTag];
-	[self resetBackground:navBgTag];
-	
+	[self setBackgroundImage:(UIImage*)image withTag:UINavigationBarBackgroundImageTag];
+	[self resetBackground];
 }
 
 - (void)showBackgroundImage
 {
-	UIView *view = [self viewWithTag:navBgTag];
+	UIView *view = [self viewWithTag:UINavigationBarBackgroundImageTag];
 	if( view ) 
 	{
 		view.hidden = NO;
 		
 	}
-	else 
-	{
-		if (useBackgroundImage)
-		{
-			
-			[self setBackgroundImage:[UIImage imageNamed:@"header_image.png"] withTag:navBgTag];
-		}
-	}
-
-	[self resetBackground:navBgTag];
+	[self resetBackground];
 }
 
 - (void)hideBackgroundImage
 {
-	UIView *view = [self viewWithTag:navBgTag];
+	UIView *view = [self viewWithTag:UINavigationBarBackgroundImageTag];
 	if( view ) 
 	{
 		view.hidden = YES;
 	}
+}
+
+- (UIImage*)backgroundImage {
+    if ([UINavigationBar instancesRespondToSelector:@selector(backgroundImage:forBarMetrics:)]) {
+        return [self backgroundImageForBarMetrics:UIBarMetricsDefault];
+    } else {
+        UIImageView *imageView = (UIImageView*)[self viewWithTag:UINavigationBarBackgroundImageTag];
+        return imageView.image;
+    }
 }
 
 - (void)setBackgroundImage:(UIImage*)image withTag:(NSInteger)bgTag{
@@ -59,7 +57,7 @@ BOOL useBackgroundImage = NO;
     if ([UINavigationBar instancesRespondToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
         [self setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
     } else {
-        if( [self viewWithTag: 1234] ) {
+        if( [self viewWithTag: UINavigationBarBackgroundImageTag] ) {   
             //there is already a tag with this view so we're exiting this function.
             return;
         }
@@ -83,8 +81,11 @@ BOOL useBackgroundImage = NO;
 		[view removeFromSuperview];
 	}
 }
--(void)resetBackground:(NSInteger)bgTag {
-	[self sendSubviewToBack:[self viewWithTag:bgTag]];
+
+-(void)resetBackground {
+	[self sendSubviewToBack:[self viewWithTag:UINavigationBarBackgroundImageTag]];
 }
+
+
 @end
 

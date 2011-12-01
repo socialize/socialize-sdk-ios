@@ -29,6 +29,7 @@
 #import "CommentDetailsViewControllerTests.h"
 #import "SocializeCommentDetailsViewController.h"
 #import "SocializeComment.h"
+#import "SocializeProfileViewController.h"
 #import "CommentDetailsView.h"
 #import <OCMock/OCMock.h>
 #import "HtmlPageCreator.h"
@@ -37,9 +38,53 @@
 #define TEST_COMMENT @"test comment"
 #define TEST_USER_NAME @"test_user"
 
+@interface SocializeCommentDetailsViewController(public)
+-(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
+@end
+
 @implementation CommentDetailsViewControllerTests
 
+@synthesize mockProfileNavigationController = mockProfileNavigationController_;
+@synthesize partialMockCommentDetailsViewController = partialMockCommentDetailsViewController_;
+@synthesize mockButton = mockButton_;
+@synthesize mockNavigationController = mockNavigationController_;
+
 #pragma mark - Mock objects
+
+-(void)setUp 
+{
+    self.mockProfileNavigationController = [OCMockObject niceMockForClass:[SocializeProfileViewController class]];
+    self.mockButton = [OCMockObject mockForClass:[UIButton class]];
+    self.partialMockCommentDetailsViewController = [OCMockObject partialMockForObject:commentDetails];
+    self.mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
+}
+-(void) tearDown 
+{
+    [self.mockProfileNavigationController verify];
+    [self.mockButton verify];
+    [self.partialMockCommentDetailsViewController verify];
+    [self.mockNavigationController verify];
+    
+    self.mockProfileNavigationController = nil;
+    self.mockButton = nil;
+    self.partialMockCommentDetailsViewController = nil;
+    self.mockNavigationController = nil;
+}
+
+-(void)setUpClass
+{
+    commentDetails = [[SocializeCommentDetailsViewController alloc] initWithNibName:@"SocializeCommentDetailsViewController" bundle:nil];
+    [Socialize storeSocializeApiKey:@"12341234" andSecret: @"12341234"];
+}
+
+-(void)tearDownClass
+{
+    [commentDetails release]; commentDetails = nil;
+}
+
+- (BOOL)shouldRunOnMainThread {
+    return YES;
+}
 
 -(id) mockCommentWithDate: (NSDate*) date lat: (NSNumber*)lat lng: (NSNumber*)lng profileUrl: (NSString*)url
 {
@@ -83,16 +128,6 @@
     return [[[htmlCreator html] copy] autorelease];
 }
 
--(void)setUpClass
-{
-    commentDetails = [[SocializeCommentDetailsViewController alloc] initWithNibName:@"SocializeCommentDetailsViewController" bundle:nil];
-    [Socialize storeSocializeApiKey:@"12341234" andSecret: @"12341234"];
-}
-
--(void)tearDownClass
-{
-    [commentDetails release]; commentDetails = nil;
-}
 
 - (void) testViewDidLoad 
 { 
@@ -101,6 +136,12 @@
 
 -(void) testShowComment
 {
+    id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
+    [[[mockSocialize stub] andReturnBool:YES] isAuthenticated];
+    [[[mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
+    [[mockSocialize stub] setDelegate:nil];
+    commentDetails.socialize = mockSocialize;
+    
     id mockComment = [self  mockCommentWithDate:[NSDate date] lat:nil lng:nil profileUrl:nil];
     commentDetails.comment = mockComment;
     
@@ -114,14 +155,28 @@
     [[mockDeteailView expect] updateCommentMsg:[self showComment:mockComment]];
         
      commentDetails.commentDetailsView = mockDeteailView;
+    [[[self.partialMockCommentDetailsViewController stub] andReturn:mockDeteailView] view];
     
-    [commentDetails viewDidLoad]; 
-    [commentDetails viewWillAppear:YES];
+    [self.partialMockCommentDetailsViewController viewDidLoad]; 
+    [self.partialMockCommentDetailsViewController viewWillAppear:YES];
     
     [mockComment verify];
     [mockDeteailView verify];
     
-    [commentDetails viewWillDisappear:YES];
+    [self.partialMockCommentDetailsViewController viewWillDisappear:YES];
+}
+
+-(void) testProfileButtonTapped {
+    
+    [[[self.partialMockCommentDetailsViewController expect] andReturn:self.mockProfileNavigationController] getProfileViewControllerForUser:OCMOCK_ANY];
+    [[[self.partialMockCommentDetailsViewController expect] andReturn:OCMOCK_ANY] createLeftNavigationButtonWithCaption:OCMOCK_ANY];
+    
+    //setup mock navigation controller
+    [[[self.partialMockCommentDetailsViewController expect] andReturn:self.mockNavigationController] navigationController];
+    [[self.mockNavigationController expect] pushViewController:self.mockProfileNavigationController animated:YES];
+
+    id mockSender = [OCMockObject mockForClass:[UIButton class]];
+    [commentDetails profileButtonTapped:mockSender];
 }
 
 -(void) testShowCommentWithGeo
@@ -145,19 +200,20 @@
     [[mockDeteailView expect] updateCommentMsg:[self showComment:mockComment]];
     
     commentDetails.commentDetailsView = mockDeteailView;
-    
+    [[[self.partialMockCommentDetailsViewController stub] andReturn:mockDeteailView] view];
+
     commentDetails.loaderFactory = [[^URLDownload*(NSString* url, id sender, SEL selector, id tag){
         GHAssertEqualStrings(profileUrl, url, nil);
         return nil;
     } copy]autorelease];
     
-    [commentDetails viewDidLoad]; 
-    [commentDetails viewWillAppear:YES];
+    [self.partialMockCommentDetailsViewController viewDidLoad]; 
+    [self.partialMockCommentDetailsViewController viewWillAppear:YES];
     
     [mockComment verify];
     [mockDeteailView verify];
     
-    [commentDetails viewWillDisappear:YES];
+    [self.partialMockCommentDetailsViewController viewWillDisappear:YES];
 }
 
 @end

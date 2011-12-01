@@ -15,6 +15,7 @@
 #import "JSONKit.h"
 #import "SocializePrivateDefinitions.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "Facebook+Socialize.h"
 
 @interface SocializeAuthenticateService()
 -(NSString*)getSocializeToken;
@@ -57,10 +58,6 @@
         return NO;
 }
 
-+ (BOOL)isAuthenticatedWithFacebook {
-    return [self isAuthenticated] && [FacebookAuthenticator hasValidToken];
-}
-
 -(void)persistConsumerInfo:(NSString*)apiKey andApiSecret:(NSString*)apiSecret{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (userDefaults){
@@ -91,7 +88,7 @@
                             apiSecret:(NSString*)apiSecret 
                   thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
                      thirdPartyAppId:(NSString*)thirdPartyAppId
-                       thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+                       thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
                              [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid", 
@@ -109,25 +106,16 @@
 
 }
 
-- (NSString *)getFacebookBaseUrlForAppId:(NSString*)appId localAppId:(NSString*)localAppId {
-    return [NSString stringWithFormat:@"fb%@%@://authorize",
-            appId,
-            localAppId ? localAppId : @""];
-}
-
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                     apiSecret:(NSString*)apiSecret 
               thirdPartyAppId:(NSString*)thirdPartyAppId 
          thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
-    SocializeFacebook* fb = [[SocializeFacebook alloc] initWithAppId:thirdPartyAppId];
+    SocializeFacebook* fb = [SocializeFacebook facebookFromSettings];
 
-    NSURL *testURL = [NSURL URLWithString:[self getFacebookBaseUrlForAppId:thirdPartyAppId localAppId:thirdPartyLocalAppId]];
-    NSAssert([[UIApplication sharedApplication] canOpenURL:testURL], @"Socialize -- Can not authenticate with facebook! Please ensure you have registered a facebook URL scheme for your app as described at http://socialize.github.com/socialize-sdk-ios/socialize_ui.html#adding-facebook-support");
     [fbAuth release]; fbAuth = nil;
     fbAuth = [[FacebookAuthenticator alloc] initWithFramework:fb apiKey:apiKey apiSecret:apiSecret appId:thirdPartyAppId localAppId:thirdPartyLocalAppId service:self];
-    [fb release]; fb = nil; 
     
     [fbAuth performAuthentication];
 }
@@ -135,7 +123,7 @@
 -(void)authenticateWithApiKey:(NSString*)apiKey 
                     apiSecret:(NSString*)apiSecret 
               thirdPartyAppId:(NSString*)thirdPartyAppId 
-               thirdPartyName:(ThirdPartyAuthName)thirdPartyName
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
     [self authenticateWithApiKey:apiKey
                        apiSecret:apiSecret
@@ -205,10 +193,6 @@
         [defaults removeObjectForKey:secret];
     }
 
-    // Remove local facebook authentication info
-    [defaults removeObjectForKey:@"FBAccessTokenKey"];
-    [defaults removeObjectForKey:@"FBExpirationDateKey"];
-    
     // Remove persisted local user data
     [defaults removeObjectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
     
@@ -329,11 +313,11 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
 
         // Store this authenticator for later retrieval from static class method handleOpenURL:
         [FacebookAuthenticator setLastUsedAuthenticator:self];
-        [self.facebook authorize:nil delegate:self localAppId:self.thirdPartyLocalAppId];
+        [self.facebook authorize:[NSArray arrayWithObjects:@"publish_stream", nil] delegate:self localAppId:self.thirdPartyLocalAppId];
     }
     else
     {
-        [self.service authenticateWithApiKey:self.apiKey apiSecret:self.apiSecret thirdPartyAuthToken:self.facebook.accessToken thirdPartyAppId:self.thirdPartyAppId thirdPartyName:FacebookAuth];
+        [self.service authenticateWithApiKey:self.apiKey apiSecret:self.apiSecret thirdPartyAuthToken:self.facebook.accessToken thirdPartyAppId:self.thirdPartyAppId thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     }
 
 }
@@ -354,7 +338,7 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
     [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKey"];
     [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
-    [service authenticateWithApiKey:self.apiKey apiSecret:self.apiSecret thirdPartyAuthToken:self.facebook.accessToken thirdPartyAppId:self.thirdPartyAppId thirdPartyName:FacebookAuth];
+    [service authenticateWithApiKey:self.apiKey apiSecret:self.apiSecret thirdPartyAuthToken:self.facebook.accessToken thirdPartyAppId:self.thirdPartyAppId thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     
     [FacebookAuthenticator setLastUsedAuthenticator:nil];
 }
@@ -390,7 +374,7 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
 
 + (BOOL)handleOpenURL:(NSURL*)url {
     return [FacebookAuthenticatorLastUsedAuthenticator handleOpenURL:url];
-}
+}   
 
 -(BOOL) handleOpenURL:(NSURL *)url
 {

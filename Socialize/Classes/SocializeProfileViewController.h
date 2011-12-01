@@ -10,17 +10,19 @@
 #import "SocializeFullUser.h"
 #import "SocializeProfileEditViewController.h"
 #import "_Socialize.h"
+#import "SocializeBaseViewController.h"
+#import "SocializeActivityViewController.h"
 
 @class ImagesCache;
-@class LoadingView;
+@class SocializeLoadingView;
+@class SocializeActivityViewController;
 @protocol SocializeProfileViewControllerDelegate;
 
-@interface SocializeProfileViewController : UIViewController <UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate, SocializeServiceDelegate>
-+ (UIViewController*)socializeProfileViewControllerWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate;
-+ (UIViewController*)currentUserProfileWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate;
-+ (UIViewController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeProfileViewControllerDelegate>)delegate;
-@property (nonatomic, retain) UIBarButtonItem *doneButton;
-@property (nonatomic, retain) UIBarButtonItem *editButton;
+@interface SocializeProfileViewController : SocializeBaseViewController <UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate, SocializeServiceDelegate, SocializeActivityViewControllerDelegate>
++ (UINavigationController*)socializeProfileViewControllerWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate;
++ (UINavigationController*)currentUserProfileWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate;
++ (UINavigationController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeProfileViewControllerDelegate>)delegate;
+- (id)initWithUser:(id<SocializeUser>)user delegate:(id<SocializeProfileViewControllerDelegate>)delegate;
 @property (nonatomic, assign) id<SocializeProfileViewControllerDelegate> delegate;
 @property (nonatomic, retain) id<SocializeUser> user;
 @property (nonatomic, retain) id<SocializeFullUser> fullUser;
@@ -30,14 +32,22 @@
 @property (nonatomic, retain) IBOutlet UILabel *userLocationLabel;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *profileImageActivityIndicator;
 @property (nonatomic, retain) SocializeProfileEditViewController *profileEditViewController;
-@property (nonatomic, retain) LoadingView *loadingView;
-@property (nonatomic, retain) Socialize *socialize;
 @property (nonatomic, retain) UINavigationController *navigationControllerForEdit;
 @property (nonatomic, retain) ImagesCache *imagesCache;
--(void)editVCSave:(id)button;
+@property (nonatomic, retain) UIImage *defaultProfileImage;
+@property (nonatomic, retain) UIAlertView *alertView;
+@property (nonatomic, retain) SocializeActivityViewController *activityViewController;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityLoadingActivityIndicator;
+
+- (void)doneButtonPressed:(UIBarButtonItem*)button;
+- (void)editButtonPressed:(UIBarButtonItem*)button;
+- (void)setProfileImageFromURL:(NSString*)imageURL;
+- (void)setProfileImageFromImage:(UIImage*)image;
+- (IBAction)headerTapped:(id)sender;
 @end
 
-@protocol SocializeProfileViewControllerDelegate
-- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController;
-- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController;
+@protocol SocializeProfileViewControllerDelegate <NSObject>
+@optional
+- (void)profileViewControllerDidFinish:(SocializeProfileViewController*)profileViewController;
+- (void)profileViewController:(SocializeProfileViewController*)profileViewController wantsViewActivity:(id<SocializeActivity>)activity;
 @end

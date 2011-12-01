@@ -27,18 +27,47 @@
  */
 
 #import "PostCommentViewControllerTests.h"
-#import "PostCommentViewControllerForTest.h"
 #import "CommentMapView.h"
 #import "SocializeLocationManager.h"
 #import "UIKeyboardListener.h"
 #import "UILabel+FormatedText.h"
 #import "Socialize.h"
 #import <OCMock/OCMock.h>
+#import "CommentsTableViewCell.h"
+#import "SocializeGeocoderAdapter.h"
+#import "SocializePrivateDefinitions.h"
+
 
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
 
+@interface SocializePostCommentViewController (Tests)
+- (void)dismissSelf;
+@end
+
 @implementation PostCommentViewControllerTests
+@synthesize postCommentViewController = postCommentViewController_;
+@synthesize mockFacebookButton = mockFacebookButton_;
+
++ (SocializeBaseViewController*)createController {
+    return [SocializePostCommentViewController postCommentViewControllerWithEntityURL:TEST_URL];
+}
+
+- (void)setUp {
+    [super setUp];
+    
+    // super setUp creates self.viewController
+    self.postCommentViewController = (SocializePostCommentViewController*)self.viewController;
+    
+    self.mockFacebookButton = [OCMockObject mockForClass:[UIButton class]];
+    self.postCommentViewController.facebookButton = self.mockFacebookButton;
+}
+
+- (void)tearDown {
+    [self.mockFacebookButton verify];
+    
+    [super tearDown];
+}
 
 // By default NO, but if you have a UI test or test dependent on running on the main thread return YES
 - (BOOL)shouldRunOnMainThread
@@ -46,6 +75,7 @@
     return YES;
 }
 
+/*
 -(void)testInit
 {
     id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
@@ -80,156 +110,113 @@
     [controller verify];
     [mockSocialize verify];
     
+    [[mockSocialize expect] setDelegate:nil];
     [controller viewDidUnload];
     [controller release];
 }
+*/
 
--(void)testCreateMethod
+-(void)testSendButtonPressedWithGeo
 {
-    UINavigationController* controller = [PostCommentViewControllerForTest createNavigationControllerWithPostViewControllerOnRootWithEntityUrl:TEST_URL andImageForNavBar:nil];
-    GHAssertNotNil(controller, nil);
-}
-
--(void)testactivateLocationButtonPressedWithVisibleKB
-{
-    id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
     BOOL trueValue = YES;
-    [[[mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
+    [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(trueValue)] shouldShareLocation];
     
-    id mockKbListener = [OCMockObject mockForClass: [UIKeyboardListener class]];
-    [[[mockKbListener stub]andReturnValue:OCMOCK_VALUE(trueValue)]isVisible];
-    
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:mockKbListener locationManager:mockLocationManager];
-    
-    [[(id)controller.commentTextView expect]resignFirstResponder];
-    
-    [controller activateLocationButtonPressed:nil]; 
-   
-    [controller verify];   
-    [controller release];
-}
-
--(void)testactivateLocationButtonPressedWithInvisibleKB
-{
-    id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
-    BOOL trueValue = YES;
-    [[[mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
-    
-    id mockKbListener = [OCMockObject mockForClass: [UIKeyboardListener class]];
-    BOOL falseValue = NO;
-    [[[mockKbListener stub]andReturnValue:OCMOCK_VALUE(falseValue)]isVisible];
-    
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:mockKbListener locationManager:mockLocationManager];
-    
-    [[(id)controller.commentTextView expect]becomeFirstResponder];
-    
-    [controller activateLocationButtonPressed:nil]; 
-    
-    [controller verify];   
-    [controller release];
-}
-
--(void)testdoNotShareLocationButtonPressed
-{   
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
-
-    [[(id)controller.commentTextView expect]becomeFirstResponder];
-    [[(id)controller.locationText expect] text:@"Location will not be shared."  withFontName: @"Helvetica-Oblique"  withFontSize: 12.0 withColor:OCMOCK_ANY];
-    
-    [controller doNotShareLocationButtonPressed:nil]; 
-    
-    [controller verify];   
-    [controller release];
-}
-
--(void)testSendBtnPressedWithGeo
-{
-    id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
-    BOOL trueValue = YES;
-    [[[mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
-    
-    id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
-    [[mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:OCMOCK_ANY latitude:OCMOCK_ANY];
+    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:OCMOCK_ANY latitude:OCMOCK_ANY];
     BOOL retValue = YES;
-    [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticatedWithFacebook];
+    [[[self.mockSocialize stub] andReturnValue:OCMOCK_VALUE(retValue)] isAuthenticatedWithFacebook];
+    [[self.mockSendButton expect] setEnabled:NO];
     
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
-    controller.socialize = mockSocialize;
-    
-    [controller performSelector: @selector(sendButtonPressed:)withObject:nil];
-    
-    [controller verify];
-    [mockSocialize verify];
-    [controller release];    
+    [self.postCommentViewController performSelector: @selector(sendButtonPressed:)withObject:nil];
 }
 
--(void)testSendBtnPressed
+-(void)testSendButtonPressed
 {
-    id mockLocationManager = [OCMockObject mockForClass: [SocializeLocationManager class]];
     BOOL trueValue = NO;
-    [[[mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
+    [[[self.mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
     
-    id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
-    [[mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:nil latitude:nil];
+    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:nil latitude:nil];
     BOOL retValue = YES;
-    [[[mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticatedWithFacebook];
+    [[[self.mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticatedWithFacebook];
     
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
-    controller.socialize = mockSocialize;
-    
-    [controller performSelector: @selector(sendButtonPressed:)withObject:nil];
-    
-    [controller verify];
-    [mockSocialize verify];
-    [controller release];    
+    [[self.mockSendButton expect] setEnabled:NO];
+
+    [self.postCommentViewController performSelector: @selector(sendButtonPressed:)withObject:nil];
 }
 
--(void)testSupportOrientation
+-(void)testEnableSendButtonWhenCommentTextPopulated
 {
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
-    GHAssertTrue([controller shouldAutorotateToInterfaceOrientation: UIInterfaceOrientationPortrait], nil);
-    
-    [controller release];
+    [[[self.mockCommentTextView stub]andReturn: @"Sample text"] text];    
+
+    [[self.mockSendButton expect] setEnabled:YES];
+    [self.postCommentViewController textViewDidChange: nil];
 }
 
--(void)testEnableSendBtn
+-(void)testDisableSendButtonWhenCommentTextEmpty
 {
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
-
-    id mockBtn = [OCMockObject niceMockForClass: [UIBarButtonItem class]];
-    [[mockBtn expect] setEnabled:YES];
-    controller.navigationItem.rightBarButtonItem = mockBtn;
-  
-    [[[(id)controller.commentTextView stub]andReturn: @"Sample text"] text];    
-
-    [controller textViewDidChange: nil];
-    
-    [controller verify];
-    [mockBtn verify];
-    
-    controller.navigationItem.rightBarButtonItem = nil;
-     
-    [controller release]; 
+    [[[self.mockCommentTextView stub]andReturn: @""] text];    
+    [[self.mockSendButton expect] setEnabled:NO];
+    [self.postCommentViewController textViewDidChange: nil];
 }
 
--(void)testDisableSendBtn
-{
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:nil];
+- (void)testViewDidUnloadFreesViews {
+    [[(id)self.postCommentViewController expect] setFacebookButton:nil];
+    [self.postCommentViewController viewDidUnload];
+}
+
+- (id)mockMKUserLocationWithLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude {
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+    id mockLocation = [OCMockObject mockForClass:[CLLocation class]];
+    [[[mockLocation stub] andReturnValue:OCMOCK_VALUE(coordinate)] coordinate];
+    id mockUserLocation = [OCMockObject mockForClass:[MKUserLocation class]];
+    [[[mockUserLocation stub] andReturn:mockLocation] location];
+
+    return mockUserLocation;
+}
+
+- (void)testFinishCreateCommentCreatesSocializeCommentIfNeeded {
+    NSString *testText = @"testText";
     
-    id mockBtn = [OCMockObject niceMockForClass: [UIBarButtonItem class]];
-    [[mockBtn expect] setEnabled:NO];
-    controller.navigationItem.rightBarButtonItem = mockBtn;
+    CLLocationDegrees latitude = 1.1;
+    CLLocationDegrees longitude = 1.2;
+    NSNumber *latitudeNumber = [NSNumber numberWithFloat:latitude];
+    NSNumber *longitudeNumber = [NSNumber numberWithFloat:longitude];
     
-    [[[(id)controller.commentTextView stub]andReturn: @""] text];    
+    BOOL yesValue = YES;
+    [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(yesValue)] shouldShareLocation];
+    id mockLocation = [self mockMKUserLocationWithLatitude:latitude longitude:longitude];
+    [[[self.mockMapOfUserLocation stub] andReturn:mockLocation] userLocation];
+    [[[self.mockCommentTextView stub] andReturn:testText] text];
+    [[self.mockSendButton expect] setEnabled:NO];
+    [[self.mockCancelButton expect] setEnabled:NO];
+    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:testText longitude:longitudeNumber latitude:latitudeNumber];
+
+    [self.postCommentViewController finishCreateComment];
+}
+
+- (void)testAuthingWithFacebookShowsFacebookButtonAndSendsToFacebook {
+    // Ensure we already have a comment created
+    id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
+    self.postCommentViewController.commentObject = mockComment;
     
-    [controller textViewDidChange: nil];
+    // Set user default to not posting to facebook
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
     
-    [controller verify];
-    [mockBtn verify];
+    // Switch should unhide and be deselected because of our user default
+    [[self.mockFacebookButton expect] setHidden:NO];
+    [[self.mockFacebookButton expect] setSelected:NO];
     
-    controller.navigationItem.rightBarButtonItem = nil;
+    // In case these are asked for again
+    [[[self.mockFacebookButton stub]  andReturnBool:NO] isHidden];
+    [[[self.mockFacebookButton stub]  andReturnBool:NO] isSelected];
     
-    [controller release]; 
+    // We are now authed with facebook
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
+    
+    // expect dismissal
+    [[(id)self.postCommentViewController expect] dismissSelf];
+    
+    // Authenticate view controller completed facebook auth
+    [self.postCommentViewController socializeAuthViewController:nil didAuthenticate:nil];
 }
 
 @end

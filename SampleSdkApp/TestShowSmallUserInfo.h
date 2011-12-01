@@ -27,12 +27,12 @@
 
 #import <UIKit/UIKit.h>
 #import <Socialize/Socialize.h>
-#import "LoadingView.h"
+#import "SocializeLoadingView.h"
 
 @class SocializeUser;
 @interface TestShowSmallUserInfo : UIViewController<SocializeServiceDelegate> {
     @private
-    LoadingView*            _loadingView;
+    SocializeLoadingView*            _loadingView;
     Socialize*              _socialize;
     id<SocializeFullUser>   _user;
     

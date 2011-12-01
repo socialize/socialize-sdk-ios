@@ -9,13 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
+#import "SocializeTableViewTests.h"
 
 @class SocializeCommentsTableViewController;
-@class SocializePostCommentViewController;
+@class SocializeComposeMessageViewController;
 
-@interface CommentsTableViewTests : GHTestCase {
-    SocializeCommentsTableViewController* listView;
-    id                                    postCommentController;
-}
+@interface CommentsTableViewTests : SocializeTableViewTests
 
+@property (nonatomic, retain) SocializeCommentsTableViewController *commentsTableViewController;
 @end

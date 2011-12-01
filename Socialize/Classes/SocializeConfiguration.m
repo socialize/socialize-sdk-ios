@@ -43,7 +43,7 @@ static SocializeConfiguration *sharedConfiguration;
     [_configurationInfo release]; 
     [_configurationFilePath release];
     [_restserverBaseURL release];
-    [_restserverBaseURL release];
+    [_secureRestserverBaseURL release];
     [super dealloc];
 }
 
@@ -105,12 +105,12 @@ static SocializeConfiguration *sharedConfiguration;
 }
 
 - (NSString*)secureRestserverBaseURL {
-    if (_restserverBaseURL == nil) {
+    if (_secureRestserverBaseURL == nil) {
         NSDictionary *configuration = [self.configurationInfo objectForKey:@"URLs"];
-        _restserverBaseURL = [[configuration objectForKey:kSecureRestserverBaseURL] copy];
+        _secureRestserverBaseURL = [[configuration objectForKey:kSecureRestserverBaseURL] copy];
     }
     
-    return _restserverBaseURL;
+    return _secureRestserverBaseURL;
 }
 
 @end

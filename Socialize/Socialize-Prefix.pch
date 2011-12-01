@@ -6,6 +6,8 @@
     #import <Foundation/Foundation.h>
     #import "BKGlobals.h"
     #import <dispatch/dispatch.h>
+    #import "SocializePrivateDefinitions.h"
+    #import "NSString+Socialize.h"
 #endif
 
 #ifdef DEBUG

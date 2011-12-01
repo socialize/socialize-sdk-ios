@@ -8,37 +8,18 @@
 
 #import "SocializeProfileEditTableViewCell.h"
 
+NSInteger SocializeProfileEditTableViewCellHeight = 50;
 
 @implementation SocializeProfileEditTableViewCell
 
-@synthesize keyLabel;
-@synthesize valueLabel;
-@synthesize theImageView;
-@synthesize spinner;
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code.
-    }
-    return self;
-}
-
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    
-    [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state.
-}
-
+@synthesize keyLabel = keyLabel_;
+@synthesize valueLabel = valueLabel_;
+@synthesize arrowImageView = arrowImageView_;
 
 - (void)dealloc {
-    [keyLabel release]; keyLabel = nil;
-	[valueLabel release]; valueLabel = nil;
-	[theImageView release]; theImageView = nil;
-	[spinner release]; spinner = nil;
+    self.keyLabel = nil;
+    self.valueLabel = nil;
+    self.arrowImageView = nil;
     
     [super dealloc];
 }

@@ -18,7 +18,6 @@
 + (NSArray*)stepsToShowTabbedActionBarForURL:(NSString*)url;
 + (NSArray*)stepsToLikeOnActionBar;
 + (NSArray*)stepsToCommentOnActionBar;
-+ (NSArray*)stepsToTestUserProfile;
 + (NSArray*)stepsToCreateEntityWithURL:(NSString*)url name:(NSString*)name;
 + (NSArray*)stepsToCreateEntityWithRandomURL;
 + (NSArray*)stepsToGetEntityWithURL:(NSString*)url;
@@ -38,5 +37,14 @@
 + (id)stepToVerifyViewWithAccessibilityLabel:(NSString*)label passesTest:(BOOL (^)(id view))testBlock;
 + (NSArray*)stepsToVerifyActionBarLikesAtCount:(NSInteger)count;
 + (id)stepToVerifyElementWithAccessibilityLabelDoesNotExist:(NSString*)label;
++ (id)stepToVerifyFacebookFeedContainsMessage:(NSString*)message;
++ (NSArray*)stepsToCreateShare:(NSString*)comment;
++ (NSArray*)stepsToOpenProfile;
++ (NSArray*)stepsToOpenEditProfile;
++ (NSArray*)stepsToEditProfileImage;
++ (NSArray*)stepsToSetProfileFirstName:(NSString*)firstName;
++ (NSArray*)stepsToVerifyProfileFirstName:(NSString*)firstName;
++ (id)stepToDisableValidFacebookSession;
++ (id)stepToEnableValidFacebookSession;
 
 @end

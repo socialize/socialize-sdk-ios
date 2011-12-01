@@ -8,17 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSInteger SocializeProfileEditTableViewCellHeight;
 
 @interface SocializeProfileEditTableViewCell : UITableViewCell 
-{
-	UILabel * keyLabel;
-	UILabel * valueLabel;
-	UIImageView * theImageView;
-	UIActivityIndicatorView * spinner;
-}
+
 @property (nonatomic, retain) IBOutlet UILabel * keyLabel;
 @property (nonatomic, retain) IBOutlet UILabel * valueLabel;
-@property (nonatomic, retain) IBOutlet UIImageView * theImageView;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView * spinner;
-
+@property (nonatomic, retain) IBOutlet UIImageView * arrowImageView;
 @end

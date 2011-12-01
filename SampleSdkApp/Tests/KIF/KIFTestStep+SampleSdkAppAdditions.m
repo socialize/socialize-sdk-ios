@@ -15,8 +15,24 @@
 #import "UITouch-KIFAdditions.h"
 #import "UIView-KIFAdditions.h"
 #import "UIWindow-KIFAdditions.h"
+#import <Socialize/SocializeFacebookInterface.h>
+#import "SampleSdkAppKIFTestController.h"
 
 @implementation KIFTestStep (SampleSdkAppAdditions)
+
++ (id)stepToEnableValidFacebookSession {
+    return [self stepWithDescription:@"Enable preauthed facebook session" executionBlock:^(KIFTestStep *step, NSError **error) {
+        [SampleSdkAppKIFTestController enableValidFacebookSession];
+        return KIFTestStepResultSuccess;
+    }];
+}
+
++ (id)stepToDisableValidFacebookSession {
+    return [self stepWithDescription:@"Disable preauthed facebook session" executionBlock:^(KIFTestStep *step, NSError **error) {
+        [SampleSdkAppKIFTestController disableValidFacebookSession];
+        return KIFTestStepResultSuccess;
+    }];
+}
 
 + (NSArray*)stepsToPopNavigationControllerToIndex:(NSInteger)index
 {
@@ -67,36 +83,51 @@
     return steps;
 }
 
-+ (NSArray*)stepsToTestUserProfile {
++ (NSArray*)stepsToOpenProfile {
     NSMutableArray *steps = [NSMutableArray array];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:9 inSection:0];
     [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Edit"]];
+    return steps;
+}
 
++ (NSArray*)stepsToOpenEditProfile {
+    NSMutableArray *steps = [NSMutableArray array];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Edit"]];
+    return steps;
+}
+
++ (NSArray*)stepsToEditProfileImage {
+    NSMutableArray *steps = [NSMutableArray array];
     // Tap image
     NSIndexPath *imagePath = [NSIndexPath indexPathForRow:0 inSection:0];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"edit profile" atIndexPath:imagePath]];
-    
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Save"]];
+    return steps;
+}
+
++ (NSArray*)stepsToSetProfileFirstName:(NSString*)firstName {
+    NSMutableArray *steps = [NSMutableArray array];
+    // Tap image
     NSIndexPath *editPath = [NSIndexPath indexPathForRow:0 inSection:1];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"edit profile" atIndexPath:editPath]];
-    
-    NSString *firstName = @"Test First Name";
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"First name"]]; 
     [steps addObject:[KIFTestStep stepToEnterText:firstName intoViewWithAccessibilityLabel:@"First name"]]; 
+//    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Edit Profile"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
-    //this second "Save" is to save the entire form to the server.  It is need Do Not Remove
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
+    return steps;
+}
+
++ (NSArray*)stepsToVerifyProfileFirstName:(NSString*)firstName {
+    NSMutableArray *steps = [NSMutableArray array];
     NSString *firstNameAccessibilityLabel = @"name";
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:firstNameAccessibilityLabel]];
     [steps addObject:[KIFTestStep stepToCheckAccessibilityLabel:firstNameAccessibilityLabel hasValue:firstName]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
     return steps;
 }
 
 + (NSArray*)stepsToShowTabbedActionBarForURL:(NSString*)url {
-    NSMutableArray *steps = [NSMutableArray array];
+    NSMutableArray *steps = [NSMutableArray array]; 
     
     [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:11 inSection:0];
@@ -111,6 +142,7 @@
 + (NSArray*)stepsToVerifyActionBarViewsAtCount:(NSInteger)count {
     NSMutableArray *steps = [NSMutableArray array];
     NSString *countString = [NSString stringWithFormat:@"%d", count];
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"view counter"]];
     [steps addObject:[KIFTestStep stepToCheckAccessibilityLabel:@"view counter" hasValue:countString]];
     
     return steps;
@@ -207,6 +239,18 @@
     return steps;
 }
 
++ (NSArray*)stepsToCreateShare:(NSString*)comment
+{
+    NSMutableArray *steps = [NSMutableArray array];
+    
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comment Entry"]];
+    [steps addObject:[KIFTestStep stepToEnterText:comment intoViewWithAccessibilityLabel:@"Comment Entry"]];
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Send"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
+
+    return steps;
+}
+
 + (NSArray*)stepsToCreateComment:(NSString*)comment
 {
     NSMutableArray *steps = [NSMutableArray array];
@@ -214,10 +258,8 @@
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToEnterText:comment intoViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
-    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Facebook?"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"No"]];
-//    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Anonymous?"]];
-//    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Ok"]];
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"facebook"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Skip"]];
     return steps;
 }
 
@@ -386,5 +428,33 @@
 
 }
 
++ (id)stepToVerifyFacebookFeedContainsMessage:(NSString*)message {
+    NSString *description = [NSString stringWithFormat:@"Step to find message %@ in facebook feed", message];
+    return [KIFTestStep stepWithDescription:description executionBlock:^(KIFTestStep *step, NSError **error) {
+        SocializeFacebookInterface *fbi = [[[SocializeFacebookInterface alloc] init] autorelease];
+        __block BOOL done = NO;
+        __block KIFTestStepResult result = KIFTestStepResultFailure;
+        
+        [fbi requestWithGraphPath:@"me/feed" params:nil httpMethod:@"GET" completion:^(id response, NSError *error) {
+            if (error == nil) {
+                NSString *fullMessage = [[[response objectForKey:@"data"] objectAtIndex:0] objectForKey:@"message"];
+                if ([fullMessage containsString:message]) {
+                    result = KIFTestStepResultSuccess;
+                }
+            } else {
+                NSLog(@"Failed to get feed -- %@", [error userInfo]);
+            }
+            done = YES;
+        }]; 
+        
+        while (!done) { 
+            CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.3, YES);
+        }
+        NSLog(@"Finished");
+        
+        return result;;
+    }];
+
+}
 
 @end
