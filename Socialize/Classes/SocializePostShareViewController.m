@@ -45,6 +45,11 @@
     return NO;
 }
 
+- (void)afterLoginAction {
+    // The compose message base is auto disabling this after animation stops
+    [self textViewDidChange:self.commentTextView];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
