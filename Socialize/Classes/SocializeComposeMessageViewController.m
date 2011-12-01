@@ -51,6 +51,7 @@
 @synthesize locationManager = _locationManager;
 @synthesize kbListener = _kbListener;
 @synthesize entityURL = _entityURL;
+@synthesize delegate = delegate_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil 
                bundle:(NSBundle *)nibBundleOrNil 
@@ -215,7 +216,12 @@
 
 -(void)cancelButtonPressed:(UIButton*)button {
     [self stopLoadAnimation];
-    [self dismissModalViewControllerAnimated:YES];
+    
+    if ([self.delegate respondsToSelector:@selector(composeMessageViewControllerDidCancel:)]) {
+        [self.delegate composeMessageViewControllerDidCancel:self];
+    } else {
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - SocializeServiceDelegate

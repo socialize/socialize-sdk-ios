@@ -190,7 +190,7 @@
         {
             NSString* url = [self getEntityKey];
             if(url) {
-                UINavigationController *nav = [SocializePostCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:url];
+                UINavigationController *nav = [SocializePostCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:url delegate:nil];
                 [self presentModalViewController:nav animated:YES];
             }
             break;
