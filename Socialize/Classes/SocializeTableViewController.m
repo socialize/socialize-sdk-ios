@@ -80,7 +80,7 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
 }
 
 - (void)initializeContent {
-    if (!self.initialized) {
+    if (!self.initialized && !self.waitingForContent) {
         self.tableView.tableFooterView = self.tableFooterView;
         [self startLoadingContent];
     }
