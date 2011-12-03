@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSError (Socialize)
-+ (NSError*)socializeUnexpectedJSONResponseErrorForResponse:(NSString*)responseString;
++ (NSError*)socializeUnexpectedJSONResponseErrorWithResponse:(NSString*)responseString description:(NSString*)description;
++ (NSError*)socializeServerReturnedErrorsErrorWithErrorsArray:(NSArray*)errorsArray;
 + (NSError*)defaultSocializeErrorForCode:(NSUInteger)code;
 @end

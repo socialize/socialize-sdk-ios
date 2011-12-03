@@ -150,7 +150,7 @@
         if (![jsonObject isKindOfClass:[NSDictionary class]])
         {
             // the return object was not what was supposed to be, soo erroring out.
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Expected a Dictionary"]];
             return;
         }
         NSString* errors = [jsonObject objectForKey:@"errors"];
@@ -158,7 +158,7 @@
         
         if (!errors || !items){
             // we should atleast have elements for erors and items in them.
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Incomplete Response Dictionary"]];
             return;
         }
         
@@ -167,14 +167,8 @@
         
         if ([errorResponses isKindOfClass: [NSArray class]]){
             if ([errorResponses count]){
-
-                for (SocializeError *errorResp in errorResponses) {
-                    NSLog(@"Error: %@", errorResp.error );
-                    if([self.delegate respondsToSelector:@selector(service:didFail:)])  {
-                        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorResp.error forKey:NSLocalizedDescriptionKey];
-                        [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:userInfo]];
-                    }
-                }
+                // Only treat server errors as failure if at least one exists
+                [self failWithError:[NSError socializeServerReturnedErrorsErrorWithErrorsArray:errorResponses]];
                 return;
             }
         }
@@ -184,7 +178,7 @@
                 if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]]) {
                     [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponses];
                 } else {
-                    [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
+                    [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Object did not conform to expected data protocol"]];
                 }
             }
             else {
@@ -192,7 +186,7 @@
             }
         }
         else {
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Expected an Array"]];
         }
     }
     else if (request.expectedJSONFormat == SocializeDictionary) {
@@ -200,7 +194,7 @@
         if ([objectResponse conformsToProtocol:[self ProtocolType]]) {
             [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
         } else {
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Object did not conform to expected data protocol"]];
         }
     }
     else if (request.expectedJSONFormat == SocializeList){
@@ -212,14 +206,13 @@
                 if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]])
                     [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
                 else {
-                    [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
+                    [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Object did not conform to expected data protocol"]];
                 }
             } else {
-                // FIXME: Is the logic here wrong? Shouldn't empty list be ok?
-                [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
+                [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Expected List of One or More Items (Found None)"]];
             }
         } else {
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Expected an Array"]];
         }
     }
 }

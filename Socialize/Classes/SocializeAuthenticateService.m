@@ -170,7 +170,7 @@
             if (([((NSObject*)_delegate) respondsToSelector:@selector(didAuthenticate:)]) )
                 [_delegate didAuthenticate:self.authenticatedUser];
         } else {
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseBody]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseBody description:@"Response Missing OAuth Token and Secret"]];
         }            
     }
     
@@ -347,8 +347,9 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
 - (void)fbDidNotLogin:(BOOL)cancelled
 {
     NSLog(@"User cancelled authentication");
-    if(cancelled)
-        [service request:nil didFailWithError:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+    if(cancelled) {
+        [service request:nil didFailWithError:[NSError defaultSocializeErrorForCode:SocializeErrorFacebookCancelledByUser]];        
+    }
     
     [FacebookAuthenticator setLastUsedAuthenticator:nil];
 }
