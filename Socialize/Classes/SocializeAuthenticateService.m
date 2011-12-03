@@ -169,11 +169,9 @@
             
             if (([((NSObject*)_delegate) respondsToSelector:@selector(didAuthenticate:)]) )
                 [_delegate didAuthenticate:self.authenticatedUser];
-        }
-        else if (([((NSObject*)_delegate) respondsToSelector:@selector(service:didFail:)]) ) {
-            [_delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
-        }
-            
+        } else {
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseBody]];
+        }            
     }
     
     [responseBody release];

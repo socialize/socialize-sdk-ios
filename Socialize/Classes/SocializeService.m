@@ -128,6 +128,12 @@
     }
 }
 
+- (void)failWithError:(NSError*)error {
+    if([self.delegate respondsToSelector:@selector(service:didFail:)]) {
+        [self.delegate service:self didFail:error];
+    }
+}
+
 -(void) dispatch:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
 {
     //Move the following lines to the base  SocializeService Class, because it's the same for all objects.
@@ -144,18 +150,15 @@
         if (![jsonObject isKindOfClass:[NSDictionary class]])
         {
             // the return object was not what was supposed to be, soo erroring out.
-            if([self.delegate respondsToSelector:@selector(service:didFail:)])
-                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
             return;
         }
-        
         NSString* errors = [jsonObject objectForKey:@"errors"];
         NSString* items = [jsonObject objectForKey:@"items"];
         
         if (!errors || !items){
             // we should atleast have elements for erors and items in them.
-            if([self.delegate respondsToSelector:@selector(service:didFail:)])
-                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
             return;
         }
         
@@ -177,27 +180,28 @@
         }
         
         if([objectResponse isKindOfClass: [NSArray class]]){ 
-            if ([objectResponse count]){
-                if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]])
+            if ([objectResponse count]) {
+                if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]]) {
                     [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponses];
-                else 
-                    if([self.delegate respondsToSelector:@selector(service:didFail:)])
-                        [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+                } else {
+                    [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
+                }
             }
-            else
+            else {
                 [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponses];
+            }
         }
-        else
-            if([self.delegate respondsToSelector:@selector(service:didFail:)])
-                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+        else {
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
+        }
     }
-    else if (request.expectedJSONFormat == SocializeDictionary){
+    else if (request.expectedJSONFormat == SocializeDictionary) {
         id objectResponse = [_objectCreator createObjectFromString:responseString forProtocol:[self ProtocolType]]; 
-        if ([objectResponse conformsToProtocol:[self ProtocolType]])
+        if ([objectResponse conformsToProtocol:[self ProtocolType]]) {
             [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
-        else
-            if([self.delegate respondsToSelector:@selector(service:didFail:)])
-                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+        } else {
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
+        }
     }
     else if (request.expectedJSONFormat == SocializeList){
         //  NSString* items = [_objectCreator createObjectFromString:responseString forProtocol:[self ProtocolType]];
@@ -207,17 +211,16 @@
             if ([objectResponse count]){
                 if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]])
                     [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
-                else
-                    if([self.delegate respondsToSelector:@selector(service:didFail:)])
-                        [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+                else {
+                    [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
+                }
+            } else {
+                // FIXME: Is the logic here wrong? Shouldn't empty list be ok?
+                [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
             }
-            else
-                if([self.delegate respondsToSelector:@selector(service:didFail:)])
-                    [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
+        } else {
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorForResponse:responseString]];
         }
-        else
-            if([self.delegate respondsToSelector:@selector(service:didFail:)])
-                [self.delegate service:self didFail:[NSError errorWithDomain:@"Socialize" code:400 userInfo:nil]];
     }
 }
 
