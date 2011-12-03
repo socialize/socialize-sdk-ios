@@ -8,6 +8,8 @@
     #import <dispatch/dispatch.h>
     #import "SocializePrivateDefinitions.h"
     #import "NSString+Socialize.h"
+    #import "StringHelper.h"
+    #import "NSError+Socialize.h"
 #endif
 
 #ifdef DEBUG
