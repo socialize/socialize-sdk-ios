@@ -37,4 +37,13 @@
     GHAssertEquals(testErrors, errors, @"Missing Errors");
 }
 
+- (void)testServerReturnedHTTPErrorContainsMessage {
+    NSString *testServerErrorMessage = @"Harp has been eating paint chips";
+    id mockResponse = [OCMockObject mockForClass:[NSHTTPURLResponse class]];
+    [[[mockResponse stub] andReturnInteger:401] statusCode];
+    NSError *error = [NSError socializeServerReturnedHTTPErrorErrorWithResponse:mockResponse responseBody:testServerErrorMessage];
+    NSString *description = [error localizedDescription];
+    GHAssertTrue([description containsString:testServerErrorMessage], @"Missing message");
+}
+
 @end

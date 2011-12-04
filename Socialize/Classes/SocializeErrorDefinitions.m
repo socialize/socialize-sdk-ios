@@ -13,13 +13,14 @@ NSString *const SocializeErrorDomain = @"Socialize";
 
 // userInfo definitions
 NSString *const kSocializeErrorResponseBodyKey = @"kSocializeErrorResponseBodyKey";
+NSString *const kSocializeErrorNSHTTPURLResponseKey = @"kSocializeErrorNSHTTPURLResponseKey";
 NSString *const kSocializeErrorServerErrorsArrayKey = @"kSocializeErrorServerErrorsArrayKey";
 
 
 static NSString *SocializeDefaultErrorStrings[SocializeNumErrors] = {
     @"Unexpected Server JSON Response",
     @"The Server Returned Errors",
-    @"An HTTP Error Occured",
+    @"The Server Returned an HTTP Error Code",
     @"User Cancelled Facebook Authentication",
 };
 

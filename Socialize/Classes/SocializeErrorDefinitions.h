@@ -13,12 +13,13 @@ extern NSString *const SocializeErrorDomain;
 // userInfo keys for specific errors
 extern NSString *const kSocializeErrorResponseBodyKey;
 extern NSString *const kSocializeErrorServerErrorsArrayKey;
+extern NSString *const kSocializeErrorNSHTTPURLResponseKey;
 
 enum {
     SocializeErrorUnknown = -1,
     SocializeErrorUnexpectedJSONResponse,
     SocializeErrorServerReturnedErrors,
-    SocializeErrorHTTPError,
+    SocializeErrorServerReturnedHTTPError,
     SocializeErrorFacebookCancelledByUser,
     SocializeNumErrors,
 };

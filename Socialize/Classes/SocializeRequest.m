@@ -364,17 +364,19 @@ running = _running;
 
 - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
     [self stopRunningIfNecessary];
+    NSString *responseBody = [[NSString alloc] initWithData:data
+                                                    encoding:NSUTF8StringEncoding];
 #ifdef DEBUG
-    NSString *responseBody = [[[NSString alloc] initWithData:data
-                                                    encoding:NSUTF8StringEncoding] autorelease];
     [self produceHTMLOutput:responseBody];
 #endif
 
     NSHTTPURLResponse* response = (NSHTTPURLResponse*)ticket.response;
-    if (response.statusCode == 200)
+    if (response.statusCode == 200) {
         [self handleResponseData:data];
-    else
-        [self failWithError:[NSError errorWithDomain:@"Socialize" code:response.statusCode userInfo:nil]];
+    } else {
+        [self failWithError:[NSError socializeServerReturnedHTTPErrorErrorWithResponse:response responseBody:responseBody]];
+    }
+    [responseBody release];
 }
 
 -(void)produceHTMLOutput:(NSString*)outputString{

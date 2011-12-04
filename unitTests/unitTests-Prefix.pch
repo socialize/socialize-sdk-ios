@@ -57,4 +57,5 @@
     #import <Foundation/Foundation.h>
     #import "SocializeService+Testing.h"
     #import "TestUtils.h"
+    #import "StringHelper.h"
 #endif

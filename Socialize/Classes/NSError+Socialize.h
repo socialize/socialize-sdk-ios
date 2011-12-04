@@ -12,4 +12,5 @@
 + (NSError*)socializeUnexpectedJSONResponseErrorWithResponse:(NSString*)responseString description:(NSString*)description;
 + (NSError*)socializeServerReturnedErrorsErrorWithErrorsArray:(NSArray*)errorsArray;
 + (NSError*)defaultSocializeErrorForCode:(NSUInteger)code;
++ (NSError*)socializeServerReturnedHTTPErrorErrorWithResponse:(NSHTTPURLResponse*)response responseBody:(NSString*)responseBody;
 @end

@@ -9,6 +9,7 @@
 #import "NSError+Socialize.h"
 #import "SocializeErrorDefinitions.h"
 #import "SocializeError.h"
+#import "StringHelper.h"
 
 @implementation NSError (Socialize)
 
@@ -32,6 +33,26 @@
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:NSLocalizedString(description, @"") forKey:NSLocalizedDescriptionKey];
     [userInfo setObject:errorsArray forKey:kSocializeErrorServerErrorsArrayKey];
     NSError *error = [NSError errorWithDomain:SocializeErrorDomain code:SocializeErrorServerReturnedErrors userInfo:userInfo];
+    return error;
+}
+
++ (NSError*)socializeServerReturnedHTTPErrorErrorWithResponse:(NSHTTPURLResponse*)response responseBody:(NSString*)responseBody {
+    NSArray *lines = [responseBody componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    NSString *defaultDescription = SocializeDefaultLocalizedErrorStringForCode(SocializeErrorServerReturnedHTTPError);
+    NSString *description = [NSString stringWithFormat:@"%@ (HTTP %d)", defaultDescription, [response statusCode]];
+    if ([lines count]) {
+        NSString *firstLine = [lines objectAtIndex:0];
+        if ([firstLine length] > 0 && ![[firstLine lowercaseString] containsString:@"<html"]) {
+            // Sometimes the server spits out more specific errors right in the response body.
+            // It looks like we have one of these, so override the description
+            description = [NSString stringWithFormat:@"%@ (HTTP %d)", firstLine, [response statusCode]];
+        }
+    }
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:defaultDescription forKey:NSLocalizedDescriptionKey];
+    [userInfo setObject:description forKey:NSLocalizedDescriptionKey];
+    [userInfo setObject:responseBody forKey:kSocializeErrorResponseBodyKey];
+    [userInfo setObject:response forKey:kSocializeErrorNSHTTPURLResponseKey];
+    NSError *error = [NSError errorWithDomain:SocializeErrorDomain code:SocializeErrorServerReturnedHTTPError userInfo:userInfo];
     return error;
 }
 
