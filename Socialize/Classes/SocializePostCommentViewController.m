@@ -154,6 +154,12 @@
 - (void)sendActivityToFacebookFeedCancelled {
 }
 
+- (void)sendActivityToFacebookFeedFailed:(NSError *)error {
+    // Just skip Facebook send
+    self.commentSentToFacebook = YES;
+    [self finishCreateComment];
+}
+
 -(void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object {
     if ([object conformsToProtocol:@protocol(SocializeComment)]) {
         self.commentObject = (id<SocializeComment>)object;
