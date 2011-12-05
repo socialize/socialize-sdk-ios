@@ -161,7 +161,7 @@
 							</object>
 							<object class="IBUIButton" id="730715486">
 								<reference key="NSNextResponder" ref="227796856"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">257</int>
 								<string key="NSFrame">{{274, 1}, {40, 38}}</string>
 								<reference key="NSSuperview" ref="227796856"/>
 								<reference key="NSWindow"/>
@@ -249,7 +249,6 @@
 								<string key="NSFrame">{{38, 149}, {239, 47}}</string>
 								<reference key="NSSuperview" ref="730674798"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -661,8 +660,8 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="socialize-comment-detail-bottom-shadow-background.png">{2, 213}</string>
-			<string key="socialize-comment-facebook-disabled-button.png">{40, 38}</string>
-			<string key="socialize-comment-facebook-enabled-button.png">{40, 38}</string>
+			<string key="socialize-comment-facebook-disabled-button.png">{25, 25}</string>
+			<string key="socialize-comment-facebook-enabled-button.png">{25, 25}</string>
 			<string key="socialize-comment-location-bar-background.png">{1, 39}</string>
 			<string key="socialize-comment-location-enabled.png">{24, 25}</string>
 		</dictionary>
