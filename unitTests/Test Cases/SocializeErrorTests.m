@@ -23,7 +23,7 @@
 
 - (void)testUnexpectedJsonErrorContainsResponse {
     NSString *testResponse = @"testResponse";
-    NSError *error = [NSError socializeUnexpectedJSONResponseErrorWithResponse:testResponse description:@""];
+    NSError *error = [NSError socializeUnexpectedJSONResponseErrorWithResponse:testResponse reason:@""];
     NSString *response = [error.userInfo objectForKey:kSocializeErrorResponseBodyKey];
     GHAssertNotNil(response, @"Missing Response");
 }

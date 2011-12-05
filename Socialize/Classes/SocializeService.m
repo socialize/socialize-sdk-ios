@@ -150,7 +150,7 @@
         if (![jsonObject isKindOfClass:[NSDictionary class]])
         {
             // the return object was not what was supposed to be, soo erroring out.
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Expected a Dictionary"]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Expected a Dictionary"]];
             return;
         }
         NSString* errors = [jsonObject objectForKey:@"errors"];
@@ -158,7 +158,7 @@
         
         if (!errors || !items){
             // we should atleast have elements for erors and items in them.
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Incomplete Response Dictionary"]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Incomplete Response Dictionary"]];
             return;
         }
         
@@ -178,7 +178,7 @@
                 if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]]) {
                     [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponses];
                 } else {
-                    [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Object did not conform to expected data protocol"]];
+                    [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Object did not conform to expected data protocol"]];
                 }
             }
             else {
@@ -186,7 +186,7 @@
             }
         }
         else {
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Expected an Array"]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Expected an Array"]];
         }
     }
     else if (request.expectedJSONFormat == SocializeDictionary) {
@@ -194,7 +194,7 @@
         if ([objectResponse conformsToProtocol:[self ProtocolType]]) {
             [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
         } else {
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Object did not conform to expected data protocol"]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Object did not conform to expected data protocol"]];
         }
     }
     else if (request.expectedJSONFormat == SocializeList){
@@ -206,13 +206,13 @@
                 if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]])
                     [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
                 else {
-                    [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Object did not conform to expected data protocol"]];
+                    [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Object did not conform to expected data protocol"]];
                 }
             } else {
-                [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Expected List of One or More Items (Found None)"]];
+                [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Expected List of One or More Items (Found None)"]];
             }
         } else {
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString description:@"Expected an Array"]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Expected an Array"]];
         }
     }
 }

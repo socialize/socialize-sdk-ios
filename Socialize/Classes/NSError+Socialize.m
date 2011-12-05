@@ -20,8 +20,10 @@
     return error;
 }
 
-+ (NSError*)socializeUnexpectedJSONResponseErrorWithResponse:(NSString*)responseString description:(NSString*)description  {
-    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:NSLocalizedString(description, @"") forKey:NSLocalizedDescriptionKey];
++ (NSError*)socializeUnexpectedJSONResponseErrorWithResponse:(NSString*)responseString reason:(NSString*)reason  {
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    [userInfo setObject:SocializeDefaultLocalizedErrorStringForCode(SocializeErrorUnexpectedJSONResponse) forKey:NSLocalizedDescriptionKey];
+    [userInfo setObject:NSLocalizedFailureReasonErrorKey forKey:reason];
     [userInfo setObject:responseString forKey:kSocializeErrorResponseBodyKey];
     NSError *error = [NSError errorWithDomain:SocializeErrorDomain code:SocializeErrorUnexpectedJSONResponse userInfo:userInfo];
     return error;

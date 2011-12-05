@@ -170,7 +170,7 @@
             if (([((NSObject*)_delegate) respondsToSelector:@selector(didAuthenticate:)]) )
                 [_delegate didAuthenticate:self.authenticatedUser];
         } else {
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseBody description:@"Response Missing OAuth Token and Secret"]];
+            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseBody reason:@"Response Missing OAuth Token and Secret"]];
         }            
     }
     
