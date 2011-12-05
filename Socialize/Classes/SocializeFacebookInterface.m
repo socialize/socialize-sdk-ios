@@ -73,6 +73,7 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 }
 
 - (void)request:(SocializeFBRequest *)request didFailWithError:(NSError *)error {
+    DebugLog(@"Facebook Wall Post Failed! Description: %@", [error localizedDescription]);
     RequestCompletionBlock completionBlock = [self.handlers objectForKey:[self requestIdentifier:request]];
     completionBlock(nil, error);
     [self removeHandlerForRequest:request];
