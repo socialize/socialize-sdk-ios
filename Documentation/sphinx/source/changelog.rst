@@ -4,6 +4,52 @@
 Changelog
 =============================================
 
+v1.1.3
+------
+[feature] Facebook errors presented to user (e.g. "Wall post failed") are more detailed [ ]
+
+[bug] Docs "My App Already Uses Facebook" section missing a step [ ]
+
+[bug] Facebook section shows up twice in docs [ ]
+
+[feature] Socialize errors presented to user (e.g. 400) are more specific [ ]
+
+[bug] Facebook wall post success should not be required for create comment [ ]
+
+[bug] Facebook button does not adjust properly for landscape [ ]
+
+[bug] Share subsection in the docs "SDK User Guide" section out of date [ ]
+
+[feature] Improve getting started guide [ ]
+
+v1.1.2
+------
+
+[bug] Posting a new comment from comments list should update the comments list [ ] 
+
+[bug] Reopening comments list should refresh content [ ] 
+
+[bug] Action Bar Buttons should not be visible during initial load [ ] 
+
+[bug] Post Share's send button should still be disabled after a new facebook auth [ ] 
+
+[bug] If paginated view quickly hidden and shown during initial content load, first page is requested twice [ ] 
+
+[bug] On second edit profile from action bar, save button is not reenabled [ ] 
+
+[bug] Remove some lingering NSLog messages [ ]
+
+v1.1.1
+------
+
+[feature] documentation should have a more complete getting started guide [ ] 
+
+[bug] UIBarButtonItem memory leaks [ ] 
+
+[bug] fix shouldAutoRotateToInterfaceOrientation: for message composition views [ ]
+
+
+
 v1.0.0
 ------
 
