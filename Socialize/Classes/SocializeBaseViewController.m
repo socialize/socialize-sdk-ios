@@ -330,7 +330,7 @@
     if (sendActivityToFacebookFeedAlertView_ == nil) {
         sendActivityToFacebookFeedAlertView_ = [[UIAlertView alloc]
                                                 initWithTitle:@"Facebook Error"
-                                                message:@"There was a Problem Writing to Your Facebook Wall"
+                                                message:nil
                                                 delegate:self
                                                 cancelButtonTitle:@"Dismiss"
                                                 otherButtonTitles:@"Retry", nil];
@@ -345,6 +345,18 @@
     
 - (void)sendActivityToFacebookFeedFailed:(NSError*)error {
     [self stopLoading];
+    
+    NSString *message = @"There was a Problem Writing to Your Facebook Wall";
+    
+    // Provide more detailed error if available
+    NSString *facebookErrorType = [[[error userInfo] objectForKey:@"error"] objectForKey:@"type"];
+    NSString *facebookErrorMessage = [[[error userInfo] objectForKey:@"error"] objectForKey:@"message"];
+    if (facebookErrorType != nil && facebookErrorMessage != nil) {
+        message = [NSString stringWithFormat:@"%@: %@", facebookErrorType, facebookErrorMessage];
+    }
+    
+    self.sendActivityToFacebookFeedAlertView.message = message;
+    
     [self.sendActivityToFacebookFeedAlertView show];
 }
 

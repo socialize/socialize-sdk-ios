@@ -11,7 +11,7 @@
 
 @class SocializeBaseViewController;
 
-@interface SocializeBaseViewControllerTests : GHTestCase
+@interface SocializeBaseViewControllerTests : GHAsyncTestCase
 + (SocializeBaseViewController*)createController;
 @property (nonatomic, retain) SocializeBaseViewController *viewController;
 @property (nonatomic, retain) SocializeBaseViewController *origViewController;

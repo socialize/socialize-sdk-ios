@@ -219,4 +219,32 @@
     [self.postCommentViewController socializeAuthViewController:nil didAuthenticate:nil];
 }
 
+- (void)testThatFailingFacebookStillFinishesCreateComment {
+    // Ensure we already have a comment created
+    id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
+    self.postCommentViewController.commentObject = mockComment;
+    
+    // View is configured for sending to facebook
+    [[[self.mockFacebookButton stub] andReturnBool:YES] isSelected];
+    [[[self.mockFacebookButton stub] andReturnBool:NO] isHidden];
+    
+    // Set ourselves as delegate for async events (notification is delayed for this object)
+    self.postCommentViewController.delegate = self;
+    
+    // Send should reenable
+    [[self.mockSendButton expect] setEnabled:YES];
+    
+    // Try to finish creating the comment
+    [self prepare];
+    [self.postCommentViewController sendActivityToFacebookFeedFailed:nil];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
+}
+
+- (void)postCommentViewController:(SocializePostCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
+    [self notify:kGHUnitWaitStatusSuccess];
+}
+
+- (void)composeMessageViewControllerDidCancel:(SocializeComposeMessageViewController*)composeMessageViewController {
+}
+
 @end

@@ -506,7 +506,6 @@
 		AA639E26144A24C000660E26 /* SampleSdkAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DBD144A24BF00660E26 /* SampleSdkAppAppDelegate.m */; };
 		AA639E27144A24C000660E26 /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639DBE144A24BF00660E26 /* SocializeApiInfo.plist */; };
 		AA639E28144A24C000660E26 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639DBF144A24BF00660E26 /* SocializeConfigurationInfo.plist */; };
-		AA639E29144A24C000660E26 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC1144A24BF00660E26 /* StringHelper.m */; };
 		AA639E2A144A24C000660E26 /* TestCreateCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC3144A24BF00660E26 /* TestCreateCommentViewController.m */; };
 		AA639E2B144A24C000660E26 /* TestCreateCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DC4144A24BF00660E26 /* TestCreateCommentViewController.xib */; };
 		AA639E2C144A24C000660E26 /* TestCreateEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC6144A24BF00660E26 /* TestCreateEntityViewController.m */; };
@@ -540,7 +539,6 @@
 		AA8637CA144CA28300CFA759 /* LikeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DB0144A24BF00660E26 /* LikeListViewController.m */; };
 		AA8637CB144CA28300CFA759 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DB4144A24BF00660E26 /* main.m */; };
 		AA8637CC144CA28300CFA759 /* SampleSdkAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DBD144A24BF00660E26 /* SampleSdkAppAppDelegate.m */; };
-		AA8637CD144CA28300CFA759 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC1144A24BF00660E26 /* StringHelper.m */; };
 		AA8637CE144CA28300CFA759 /* TestCreateCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC3144A24BF00660E26 /* TestCreateCommentViewController.m */; };
 		AA8637CF144CA28300CFA759 /* TestCreateEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC6144A24BF00660E26 /* TestCreateEntityViewController.m */; };
 		AA8637D0144CA28300CFA759 /* TestFetchCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC9144A24BF00660E26 /* TestFetchCommentsViewController.m */; };
@@ -582,6 +580,8 @@
 		AA973CD81468A0EA00DAE945 /* TestShareServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CD71468A0EA00DAE945 /* TestShareServices.m */; };
 		AA973CDB1468A14300DAE945 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CDA1468A14300DAE945 /* StringHelper.m */; };
 		AA973CDE1468A57200DAE945 /* TestEntityServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CDD1468A57200DAE945 /* TestEntityServices.m */; };
+		AAD21911148AFD8200EF5503 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC1144A24BF00660E26 /* StringHelper.m */; };
+		AAD21912148AFD8300EF5503 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC1144A24BF00660E26 /* StringHelper.m */; };
 		AAD3F2A714620A2E007D2AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6D14352BC100C62B97 /* UIKit.framework */; };
 		AAD3F2A814620A2E007D2AB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6F14352BC100C62B97 /* Foundation.framework */; };
 		AAD3F2A914620A2E007D2AB7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */; };
@@ -2212,7 +2212,6 @@
 				AA639E20144A24C000660E26 /* LikeListViewController.m in Sources */,
 				AA639E23144A24C000660E26 /* main.m in Sources */,
 				AA639E26144A24C000660E26 /* SampleSdkAppAppDelegate.m in Sources */,
-				AA639E29144A24C000660E26 /* StringHelper.m in Sources */,
 				AA639E2A144A24C000660E26 /* TestCreateCommentViewController.m in Sources */,
 				AA639E2C144A24C000660E26 /* TestCreateEntityViewController.m in Sources */,
 				AA639E2E144A24C000660E26 /* TestFetchCommentsViewController.m in Sources */,
@@ -2230,6 +2229,7 @@
 				AAD7E301144E54730073308D /* GenericViewController.m in Sources */,
 				AAD7E305144E54730073308D /* TestTabbedSocializeActionBar.m in Sources */,
 				AAD7E36A144F59BC0073308D /* TestActivityViewController.m in Sources */,
+				AAD21912148AFD8300EF5503 /* StringHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2245,7 +2245,6 @@
 				AA8637CA144CA28300CFA759 /* LikeListViewController.m in Sources */,
 				AA8637CB144CA28300CFA759 /* main.m in Sources */,
 				AA8637CC144CA28300CFA759 /* SampleSdkAppAppDelegate.m in Sources */,
-				AA8637CD144CA28300CFA759 /* StringHelper.m in Sources */,
 				AA8637CE144CA28300CFA759 /* TestCreateCommentViewController.m in Sources */,
 				AA8637CF144CA28300CFA759 /* TestCreateEntityViewController.m in Sources */,
 				AA8637D0144CA28300CFA759 /* TestFetchCommentsViewController.m in Sources */,
@@ -2263,6 +2262,7 @@
 				AAD7E302144E54730073308D /* GenericViewController.m in Sources */,
 				AAD7E306144E54730073308D /* TestTabbedSocializeActionBar.m in Sources */,
 				AAD7E36B144F59BC0073308D /* TestActivityViewController.m in Sources */,
+				AAD21911148AFD8200EF5503 /* StringHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

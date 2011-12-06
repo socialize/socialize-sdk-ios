@@ -4,6 +4,24 @@
 Changelog
 =============================================
 
+v1.1.3
+------
+[feature] Facebook errors presented to user (e.g. "Wall post failed") are more detailed [ ]
+
+[bug] Docs "My App Already Uses Facebook" section missing a step [ ]
+
+[bug] Facebook section shows up twice in docs [ ]
+
+[feature] Socialize errors presented to user (e.g. 400) are more specific [ ]
+
+[bug] Facebook wall post success should not be required for create comment [ ]
+
+[bug] Facebook button does not adjust properly for landscape [ ]
+
+[bug] Share subsection in the docs "SDK User Guide" section out of date [ ]
+
+[feature] Improve getting started guide [ ]
+
 v1.1.2
 ------
 

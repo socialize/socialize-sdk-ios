@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "SocializeErrorDefinitions.h"
 
 /** 
  Third party authentication type 
