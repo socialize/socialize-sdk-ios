@@ -224,7 +224,7 @@
 
 -(void)shareButtonTouched: (id) sender
 {    
-    [self.shareActionSheet showInView:self.view.window];
+    [self.shareActionSheet showInView:self.presentModalInViewController.view];
 }
 
 -(void)shareViaFacebook
