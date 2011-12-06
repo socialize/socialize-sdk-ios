@@ -408,12 +408,10 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
-    DebugLog(@"image was picked!!!");
-	
-    //[self.view setNeedsDisplay];
 	[picker dismissModalViewControllerAnimated:YES];
 	
-	[self setProfileImage:image];
+    self.editOccured = YES;
+    [self setProfileImage:image];
     [self reloadImageCell];
 }
 
