@@ -2,20 +2,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started Guide &mdash; Socialize iOS SDK 1.1.2 documentation</title>
-    
+    <title>Getting Started Guide &mdash; Socialize iOS SDK v1.1.3 documentation</title>
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.1.2',
+        VERSION:     '1.1.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,8 +22,8 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.1.2 documentation" href="index.html" />
-    <link rel="next" title="Implementing the UI" href="socialize_ui.html" />
+    <link rel="top" title="Socialize iOS SDK v1.1.3 documentation" href="index.html" />
+    <link rel="next" title="Socialize Action Bar" href="action_bar.html" />
     <link rel="prev" title="Socialize iOS SDK" href="index.html" /> 
   </head>
   <body>
@@ -34,12 +31,12 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="socialize_ui.html" title="Implementing the UI"
+          <a href="action_bar.html" title="Socialize Action Bar"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.1.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK v1.1.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -78,9 +75,15 @@
 <ul class="simple">
 <li><a class="reference internal" href="#getting-started-guide" id="id1">Getting Started Guide</a><ul>
 <li><a class="reference internal" href="#introduction" id="id2">Introduction</a></li>
-<li><a class="reference internal" href="#installing-the-sdk" id="id3">Installing the SDK</a></li>
-<li><a class="reference internal" href="#setting-up-your-socialize-keys" id="id4">Setting up your Socialize Keys</a></li>
-<li><a class="reference internal" href="#adding-the-socialize-action-bar" id="id5">Adding the Socialize Action Bar</a></li>
+<li><a class="reference internal" href="#installing-the-sdk" id="id3">Installing the SDK</a><ul>
+<li><a class="reference internal" href="#step-1-add-the-socialize-framework-to-your-project" id="id4">Step 1: Add the Socialize Framework to Your Project</a></li>
+<li><a class="reference internal" href="#step-2-add-required-frameworks-to-your-project" id="id5">Step 2: Add Required Frameworks to Your Project</a></li>
+<li><a class="reference internal" href="#step-3-set-project-linker-flags" id="id6">Step 3: Set Project Linker Flags</a></li>
+<li><a class="reference internal" href="#step-4-set-up-your-socialize-keys" id="id7">Step 4: Set up your Socialize Keys</a></li>
+<li><a class="reference internal" href="#optional-configure-your-app-for-facebook" id="id8">Optional: Configure Your App for Facebook</a></li>
+<li><a class="reference internal" href="#last-step-include-socialize-in-your-app" id="id9">Last Step: Include Socialize in your App!</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -105,30 +108,41 @@ passed into each call to the Socialize SDK.</p>
 </div>
 <div class="section" id="installing-the-sdk">
 <h2><a class="toc-backref" href="#id3">Installing the SDK</a><a class="headerlink" href="#installing-the-sdk" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step-1-add-the-socialize-framework-to-your-project">
+<h3><a class="toc-backref" href="#id4">Step 1: Add the Socialize Framework to Your Project</a><a class="headerlink" href="#step-1-add-the-socialize-framework-to-your-project" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Download and unzip the lastest iOS SDK release from the website.  You can find it here: <a class="reference external" href="http://www.getsocialize.com/sdk/">http://www.getsocialize.com/sdk/</a></p>
 </li>
-<li><dl class="first docutils">
-<dt>Install the embedded static framework to your application. To do this just drag and drop Socialize.embeddedframework folder from the package to your framework section in your project.</dt>
-<dd><img alt="images/drag_and_drop.png" class="first last" src="images/drag_and_drop.png" />
-</dd>
-</dl>
+<li><p class="first">Install the embedded static framework to your application. To do this just drag and drop Socialize.embeddedframework folder from the package to your framework section in your project. Note that this is a directory that includes both Socialize.framework and our bundled Resources.</p>
 </li>
-<li><p class="first">Add CoreGraphics.framework to your application target.</p>
+<li><p class="first">When prompted, check &#8220;Copy items into destination group&#8217;s folder (if needed)&#8221; and click finish</p>
+<blockquote>
+<div><img alt="images/drag_and_drop.png" src="images/drag_and_drop.png" />
+</div></blockquote>
 </li>
+</ul>
+</div>
+<div class="section" id="step-2-add-required-frameworks-to-your-project">
+<h3><a class="toc-backref" href="#id5">Step 2: Add Required Frameworks to Your Project</a><a class="headerlink" href="#step-2-add-required-frameworks-to-your-project" title="Permalink to this headline">¶</a></h3>
+<ul>
 <li><p class="first">Add CoreLocation.framework to your application target.</p>
 </li>
 <li><p class="first">Add MapKit.framework to your application target.</p>
 </li>
-<li><p class="first">Add QuartzCore.framework to your application target.</p>
-</li>
 <li><p class="first">Add MessageUI.framework to your application target.</p>
 </li>
-</ul>
-<p><em>Additional Configuration</em></p>
-<ul>
-<li><p class="first">First of all, you should be sure that Socialize.framework and resources from the Resources folder were added as the dependence to the correct target.</p>
+<li><p class="first">Add QuartzCore.framework to your application target.</p>
 </li>
+<li><p class="first">Add CoreGraphics.framework to your application target.</p>
+<blockquote>
+<div><img alt="images/add_frameworks.png" src="images/add_frameworks.png" />
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="step-3-set-project-linker-flags">
+<h3><a class="toc-backref" href="#id6">Step 3: Set Project Linker Flags</a><a class="headerlink" href="#step-3-set-project-linker-flags" title="Permalink to this headline">¶</a></h3>
+<ul>
 <li><p class="first">Add <strong>-ObjC</strong> and <strong>-all_load</strong> flag to the Other Linker Flags in the build settings of your application target. <em>Please use the flag exactly as it is—the most common mistake here tends to be misspelling or incorrect capitalization.</em></p>
 <blockquote>
 <div><img alt="images/image00.png" src="images/image00.png" style="width: 700px; height: 410px;" />
@@ -140,28 +154,51 @@ passed into each call to the Socialize SDK.</p>
 <div></div></blockquote>
 <p>If you&#8217;re having problems please let us know by clicking on the &#8216;Feedback&#8217; tab on the right side of the page.   We&#8217;re here to help.</p>
 </div>
-<div class="section" id="setting-up-your-socialize-keys">
-<h2><a class="toc-backref" href="#id4">Setting up your Socialize Keys</a><a class="headerlink" href="#setting-up-your-socialize-keys" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step-4-set-up-your-socialize-keys">
+<h3><a class="toc-backref" href="#id7">Step 4: Set up your Socialize Keys</a><a class="headerlink" href="#step-4-set-up-your-socialize-keys" title="Permalink to this headline">¶</a></h3>
 <p>To utilize the iOS SDK and views into your app we need to let the library know your app key and secret.  If you need to get a application key and secret you can get one at <a class="reference external" href="http://www.getsocialize.com/apps">http://www.getsocialize.com/apps</a></p>
 <script src="https://gist.github.com/1274157.js?file=appDelegate.m"></script></div>
-<div class="section" id="adding-the-socialize-action-bar">
-<h2><a class="toc-backref" href="#id5">Adding the Socialize Action Bar</a><a class="headerlink" href="#adding-the-socialize-action-bar" title="Permalink to this headline">¶</a></h2>
-<p>v0.8.0 of the Socialize SDK introduced the &#8220;Action Bar&#8221;, which allows your users to easily
-comment, share and &#8220;like&#8221; entities</p>
+<div class="section" id="optional-configure-your-app-for-facebook">
+<h3><a class="toc-backref" href="#id8">Optional: Configure Your App for Facebook</a><a class="headerlink" href="#optional-configure-your-app-for-facebook" title="Permalink to this headline">¶</a></h3>
+<p>It is strongly recommended that users be able to authenticate with Facebook when using Socialize so as to maximize the exposure, and promotion of your app.</p>
+<p>Let Socialize know your Facebook app id.  You can register or find your
+Facebook app id here: <a class="reference external" href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a></p>
+<p>You should also store your app&#8217;s iTunes link. This will be included in
+any Facebook wall posts sent from Socialize.</p>
+<script src="https://gist.github.com/1375443.js?file=gistfile1.m"></script><p>If your app already authenticates with Facebook and stores credentials to the
+user defaults (as documented in the official Facebook tutorial at
+<a class="reference external" href="https://developers.facebook.com/docs/mobile/ios/build/">https://developers.facebook.com/docs/mobile/ios/build/</a>), then there is nothing
+more you need to do. Socialize will automatically configure itself to use
+existing Facebook authentication.</p>
+<p>If your app is not already configured for facebook authentication, then you&#8217;ll
+need to perform two more steps:</p>
+<p>First, you must register your app to open with your facebook app id url by
+adding a URL Types array to your Application&#8217;s &lt;MyApp&gt;-Info.plist.  The string
+is a lowercase fb followed by your app id. The example app is configured as
+below:</p>
+<img alt="images/facebook_urltypes.png" src="images/facebook_urltypes.png" />
+<p>And lastly, you must be sure to call [Socialize handleOpenURL:url] from your
+UIApplicationDelegate&#8217;s application:handleOpenURL: method. Socialize will take
+care of handing off the openURL request to the underlying <a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>. This
+completes the authentication flow.</p>
+<script src="https://gist.github.com/1375464.js?file=appDelegate.m"></script></div>
+<div class="section" id="last-step-include-socialize-in-your-app">
+<h3><a class="toc-backref" href="#id9">Last Step: Include Socialize in your App!</a><a class="headerlink" href="#last-step-include-socialize-in-your-app" title="Permalink to this headline">¶</a></h3>
+<p>Now that you have your environment all setup, it’s time to include Socialize.</p>
+<p>The core component of the Socialize SDK is the “Action Bar”</p>
 <img alt="images/action_bar_solo.png" src="images/action_bar_solo.png" />
+<p>This is a general purpose toolbar that sits at the bottom of your app and provides a central &#8220;one-stop-shop&#8221; of social features for your users.</p>
 <p>Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller:</p>
 <script src="https://gist.github.com/1315113.js"> </script><p>By default, the Action Bar will automatically place itself at the bottom of its
 superview and adjust to rotation.  If you find that content is being hidden,
 one option is to ensure that 44 pixels are left empty at the bottom of your
 view. When using interface builder, this is as simple as sliding up the bottom
 of any content.</p>
-<p>If you still find you have problems, and you would like to disable the auto
-layout feature completely, you can do so. The following example disables
-autolayout and manually places the Action Bar at (0,400).</p>
-<script src="https://gist.github.com/1374087.js"> </script><p>If you need more detail on installing the action bar please see our <a class="reference external" href="http://vimeo.com/31403049">Adding the Socialize Action Bar Video</a>.</p>
+<p>If you need more detail on installing the action bar please see our <a class="reference external" href="http://vimeo.com/31403049">Adding the Socialize Action Bar Video</a>.</p>
 <blockquote>
 <div></div></blockquote>
 <p>By now you should be able to see the Socialize Action Bar.  If you need any help please visit us at <a class="reference external" href="http://support.getsocialize.com">http://support.getsocialize.com</a></p>
+</div>
 </div>
 </div>
 
@@ -176,11 +213,10 @@ autolayout and manually places the Action Bar at (0,400).</p>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-the-sdk">Installing the SDK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#setting-up-your-socialize-keys">Setting up your Socialize Keys</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-the-socialize-action-bar">Adding the Socialize Action Bar</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="socialize_ui.html">Implementing the UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
@@ -194,12 +230,12 @@ autolayout and manually places the Action Bar at (0,400).</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="socialize_ui.html" title="Implementing the UI"
+          <a href="action_bar.html" title="Socialize Action Bar"
              >next</a></li>
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.1.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK v1.1.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
