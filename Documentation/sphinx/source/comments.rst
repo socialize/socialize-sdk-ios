@@ -1,14 +1,8 @@
 .. include:: feedback_widget.rst
 
 =========================================
-Implementing the UI 
+Socialize Comments
 =========================================
-
-Introduction
-------------
-As of v0.4.0 of the Socialize SDK we are providing pre-built UI views that can 
-quickly and easily be dropped in to your app, saving you the time of building 
-these views yourself!
 
 Comment View
 ----------------------
@@ -27,5 +21,3 @@ When you want to launch the comment view, simply instantiate and present the com
 .. raw:: html
 
         <script src="https://gist.github.com/1293791.js"> </script>
-
-
