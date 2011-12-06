@@ -169,4 +169,9 @@ To list all comments for an entity use the **getCommentList** method.
 
 Share
 -----
-Coming Soon!
+To register a share with the Socialize servers, use the **createShareForEntityWithKey:medium:text:** method.
+
+.. raw:: html
+
+    <script src="https://gist.github.com/1436022.js?file=CreateShare.m"></script>
+
