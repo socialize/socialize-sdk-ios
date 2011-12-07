@@ -220,11 +220,13 @@
 }
 
 - (void)testShareShowsActionSheet {
+    // Stub in a view for the parent
+    id mockView = [OCMockObject mockForClass:[UIView class]];
+    [[[self.mockParentController stub] andReturn:mockView] view];
+    
     id mockSheet = [OCMockObject mockForClass:[UIActionSheet class]];
     self.actionBar.shareActionSheet = mockSheet;
-    id mockWindow = [OCMockObject mockForClass:[UIWindow class]];
-    [[[self.mockActionView expect] andReturn:mockWindow] window];
-    [[mockSheet expect] showInView:mockWindow];
+    [[mockSheet expect] showInView:mockView];
     [self.actionBar shareButtonTouched:nil];
     [mockSheet verify];
 }
