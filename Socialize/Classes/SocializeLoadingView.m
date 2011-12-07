@@ -20,6 +20,8 @@
 //
 // Creates a CGPathRect with a round rect of the given radius.
 //
+
+CF_RETURNS_RETAINED
 static CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 {
 	//

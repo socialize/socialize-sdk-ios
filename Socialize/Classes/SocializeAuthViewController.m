@@ -44,7 +44,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 +(UINavigationController*)authViewControllerInNavigationController:(id<SocializeAuthViewControllerDelegate>)delegate;
 {
     SocializeAuthViewController *authController 
-    = [[SocializeAuthViewController alloc] initWithDelegate:delegate];
+    = [[[SocializeAuthViewController alloc] initWithDelegate:delegate] autorelease];
                                                                                                               
     UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:authController] autorelease];
     UIImage *navBarImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];

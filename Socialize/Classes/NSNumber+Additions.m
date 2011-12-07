@@ -37,6 +37,9 @@
 	else if (kiloOrMil >= 3) {
 		kiloOrMilChar = 'G';
 	}
+    else {
+        kiloOrMilChar = '?';
+    }
 	
 	NSInteger noOfDigitsToShow = noOfDigits % 3;
 	NSString * myFinalStr = [NSString stringWithFormat:@"%@%c+", [stringValue substringToIndex:noOfDigitsToShow ], kiloOrMilChar];

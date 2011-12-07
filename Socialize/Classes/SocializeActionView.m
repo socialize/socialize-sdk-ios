@@ -174,10 +174,12 @@
 - (CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName 
 {
 	CGSize labelSize;
+    /* NG -- commenting because the flow here does not make sense
 	if ([labelString length] <= 0)
 	{
 		labelSize = CGSizeZero;
 	}
+     */
 	
 	labelSize = [labelString sizeWithFont:_buttonLabelFont];
 	if (iconName)

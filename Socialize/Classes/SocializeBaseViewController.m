@@ -157,7 +157,7 @@
 {
     UIButton *backButton = [UIButton blueSocializeNavBarBackButtonWithTitle:caption]; 
     [backButton addTarget:self action:@selector(leftNavigationButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem * backLeftItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
+    UIBarButtonItem * backLeftItem = [[[UIBarButtonItem alloc]initWithCustomView:backButton] autorelease];
     return backLeftItem;
 }
 -(void)leftNavigationButtonPressed:(id)sender {
