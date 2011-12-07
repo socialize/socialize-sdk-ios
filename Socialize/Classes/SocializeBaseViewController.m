@@ -70,6 +70,8 @@
     self.socialize.delegate = nil;
     self.socialize = nil;
     self.imagesCache = nil;
+    self.shareBuilder.successAction = nil;
+    self.shareBuilder.errorAction = nil;
     self.shareBuilder = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
     self.bundle = nil;
@@ -368,11 +370,13 @@
     if (shareBuilder_ == nil) {
         shareBuilder_ = [[SocializeShareBuilder alloc] init];
         shareBuilder_.shareProtocol = [[[SocializeFacebookInterface alloc] init] autorelease];
+        
+        __block __typeof__(self) weakSelf = self;
         shareBuilder_.successAction = ^{
-            [self sendActivityToFacebookFeedSucceeded];
+            [weakSelf sendActivityToFacebookFeedSucceeded];
         };
         shareBuilder_.errorAction = ^(NSError *error) {
-            [self sendActivityToFacebookFeedFailed:error];
+            [weakSelf sendActivityToFacebookFeedFailed:error];
         };
         
     }

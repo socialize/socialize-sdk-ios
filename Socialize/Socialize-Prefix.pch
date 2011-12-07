@@ -10,6 +10,7 @@
     #import "NSString+Socialize.h"
 //    #import "StringHelper.h"
     #import "NSError+Socialize.h"
+    #import "DebugUtil.h"
 #endif
 
 #ifdef DEBUG
