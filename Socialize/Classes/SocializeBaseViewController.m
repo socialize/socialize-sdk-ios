@@ -63,8 +63,9 @@
     self.tableView = nil;
     self.doneButton = nil;
     self.editButton = nil;
-    self.cancelButton = nil;
     self.sendButton = nil;  
+    self.cancelButton = nil;
+    self.saveButton = nil;
     self.genericAlertView.delegate = nil;
     self.genericAlertView = nil;
     self.socialize.delegate = nil;
