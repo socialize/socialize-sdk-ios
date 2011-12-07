@@ -75,6 +75,7 @@
     self.shareBuilder.errorAction = nil;
     self.shareBuilder = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
+    self.authViewController = nil;
     self.bundle = nil;
 
     [super dealloc];
@@ -86,11 +87,12 @@
     
     self.doneButton = nil;
     self.editButton = nil;
-    self.saveButton = nil;
-    self.cancelButton = nil;
     self.sendButton = nil;
+    self.cancelButton = nil;
+    self.saveButton = nil;
     self.genericAlertView = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
+    self.authViewController = nil;
     self.authViewController = nil;
 }
 

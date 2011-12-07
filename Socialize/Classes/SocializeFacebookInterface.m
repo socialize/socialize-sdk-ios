@@ -21,6 +21,7 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 
 - (void)dealloc {
     self.facebook = nil;
+    self.handlers = nil;
     
     [super dealloc];
 }
@@ -34,7 +35,7 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 }
 
 - (NSMutableDictionary*)handlers {
-    if (handlers_ == nil) handlers_ = [NSMutableDictionary new];
+    if (handlers_ == nil) handlers_ = [[NSMutableDictionary alloc] init];
     return handlers_;
 }
 
