@@ -93,7 +93,6 @@
     self.genericAlertView = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
     self.authViewController = nil;
-    self.authViewController = nil;
 }
 
 - (void)viewDidLoad {
