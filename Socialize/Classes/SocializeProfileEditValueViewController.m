@@ -27,6 +27,10 @@
 #pragma mark View lifecycle
 
 - (void)dealloc {
+    self.editValueCell = nil;
+    self.editValueField = nil;
+    self.indexPath = nil;
+    self.valueToEdit = nil;    
     self.cancelButton = nil;
     self.saveButton = nil;
     self.bundle = nil;
