@@ -17,4 +17,4 @@ if [ -f $ZIP_FILE ];\
 then
     rm $ZIP_FILE
 fi  
-zip -r $ZIP_FILE ./*  --exclude="*.git*" --exclude="*.svn*"
+zip -ry $ZIP_FILE ./*  --exclude="*.git*" --exclude="*.svn*"

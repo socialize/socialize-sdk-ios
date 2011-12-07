@@ -534,6 +534,8 @@
 		9ABB68B913BA6920001882D1 /* SocializeUserServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB68B813BA6920001882D1 /* SocializeUserServiceTests.m */; };
 		9ABB68BD13BA78A4001882D1 /* SocializeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB68BB13BA78A4001882D1 /* SocializeService.m */; };
 		9AC0259A13BB8253004AB147 /* SocializeUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0259813BB8253004AB147 /* SocializeUserService.m */; };
+		AA06B68C148EE39E00D084D4 /* DebugUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = AA06B68B148EE39E00D084D4 /* DebugUtil.h */; };
+		AA06B68D148EE39E00D084D4 /* DebugUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = AA06B68B148EE39E00D084D4 /* DebugUtil.h */; };
 		AA08B3E5147C321500E6D1CA /* SocializeActivityTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AA08B3E3147C321500E6D1CA /* SocializeActivityTableViewCell.h */; };
 		AA08B3E6147C321500E6D1CA /* SocializeActivityTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AA08B3E3147C321500E6D1CA /* SocializeActivityTableViewCell.h */; };
 		AA08B3E7147C321500E6D1CA /* SocializeActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA08B3E4147C321500E6D1CA /* SocializeActivityTableViewCell.m */; };
@@ -2215,6 +2217,7 @@
 		9ABB68BB13BA78A4001882D1 /* SocializeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeService.m; path = Classes/SocializeService.m; sourceTree = "<group>"; };
 		9AC0259713BB8253004AB147 /* SocializeUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUserService.h; path = Classes/SocializeUserService.h; sourceTree = "<group>"; };
 		9AC0259813BB8253004AB147 /* SocializeUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserService.m; path = Classes/SocializeUserService.m; sourceTree = "<group>"; };
+		AA06B68B148EE39E00D084D4 /* DebugUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugUtil.h; sourceTree = "<group>"; };
 		AA08B3E3147C321500E6D1CA /* SocializeActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityTableViewCell.h; path = Classes/SocializeActivityTableViewCell.h; sourceTree = "<group>"; };
 		AA08B3E4147C321500E6D1CA /* SocializeActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityTableViewCell.m; path = Classes/SocializeActivityTableViewCell.m; sourceTree = "<group>"; };
 		AA08B3E9147C322A00E6D1CA /* SocializeActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeActivityTableViewCell.xib; path = Resources/SocializeActivityTableViewCell.xib; sourceTree = "<group>"; };
@@ -3358,6 +3361,7 @@
 				AA369FB4146C50A700E15AA4 /* NSData+Base64.m */,
 				AA369FB5146C50A700E15AA4 /* UIDevice+IdentifierAddition.h */,
 				AA369FB6146C50A700E15AA4 /* UIDevice+IdentifierAddition.m */,
+				AA06B68B148EE39E00D084D4 /* DebugUtil.h */,
 			);
 			name = Misc;
 			path = Socialize/Misc;
@@ -3920,6 +3924,7 @@
 				AA7383301489B562009BE1D0 /* NSError+Socialize.h in Headers */,
 				AA7383351489B596009BE1D0 /* SocializeErrorDefinitions.h in Headers */,
 				AAD218FB148AFBD600EF5503 /* StringHelper.h in Headers */,
+				AA06B68D148EE39E00D084D4 /* DebugUtil.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4004,6 +4009,7 @@
 				AA73832F1489B562009BE1D0 /* NSError+Socialize.h in Headers */,
 				AA7383341489B596009BE1D0 /* SocializeErrorDefinitions.h in Headers */,
 				AAD218FA148AFBD600EF5503 /* StringHelper.h in Headers */,
+				AA06B68C148EE39E00D084D4 /* DebugUtil.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6492,6 +6498,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -6527,6 +6534,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

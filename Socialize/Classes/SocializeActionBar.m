@@ -212,10 +212,11 @@
     if (shareActionSheet_ == nil) {
         shareActionSheet_ = [[UIActionSheet sheetWithTitle:nil] retain];
         
+        __block __typeof__(self) weakSelf = self;
         if([self.socialize facebookAvailable])
-            [shareActionSheet_ addButtonWithTitle:@"Share on Facebook" handler:^{ [self shareViaFacebook]; }];
+            [shareActionSheet_ addButtonWithTitle:@"Share on Facebook" handler:^{ [weakSelf shareViaFacebook]; }];
 
-        [shareActionSheet_ addButtonWithTitle:@"Share via Email" handler:^{ [self shareViaEmail]; }];
+        [shareActionSheet_ addButtonWithTitle:@"Share via Email" handler:^{ [weakSelf shareViaEmail]; }];
         
         [shareActionSheet_ setCancelButtonWithTitle:nil handler:^{  }];
     }
@@ -224,7 +225,7 @@
 
 -(void)shareButtonTouched: (id) sender
 {    
-    [self.shareActionSheet showInView:self.view.window];
+    [self.shareActionSheet showInView:self.presentModalInViewController.view];
 }
 
 -(void)shareViaFacebook

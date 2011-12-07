@@ -63,7 +63,7 @@ const NSInteger UINavigationBarBackgroundImageTag = 1234;
         }
         
         UIImageView *aTabBarBackground = [[UIImageView alloc]initWithImage:image];
-        aTabBarBackground.frame = CGRectMake(0, 0, 320, self.frame.size.height);
+        aTabBarBackground.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         
         self.translucent = NO;
         aTabBarBackground.tag = bgTag;
