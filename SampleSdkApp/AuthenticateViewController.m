@@ -165,7 +165,7 @@
     
     [_loadingView removeView];
     self.resultLabel.text = @"failed";
-    UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:@"Authentication failed!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    UIAlertView *msg = [[UIAlertView alloc] initWithTitle:@"Error occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [msg show];
     [msg release];
 

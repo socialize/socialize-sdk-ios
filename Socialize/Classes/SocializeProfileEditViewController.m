@@ -137,7 +137,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     }
 }
 
-- (void)configureViews {
+- (void)configureViewsForUser {
     if (self.profileImage == nil) {
         NSString *imageURL = self.fullUser.smallImageUrl;
         [self setProfileImageFromURL:imageURL];
@@ -148,9 +148,11 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (self.fullUser == nil) {
+        self.saveButton.enabled = NO;
         [self getCurrentUser];
     } else {
-        [self configureViews];
+        self.saveButton.enabled = YES;
+        [self configureViewsForUser];
     }
 }
 
@@ -164,7 +166,8 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 
 - (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser {
     self.fullUser = fullUser;
-    [self configureViews];
+    self.saveButton.enabled = YES;
+    [self configureViewsForUser];
 }
 
 - (void)cancelButtonPressed:(UIButton*)cancelButton {
@@ -405,12 +408,10 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
-    DebugLog(@"image was picked!!!");
-	
-    //[self.view setNeedsDisplay];
 	[picker dismissModalViewControllerAnimated:YES];
 	
-	[self setProfileImage:image];
+    self.editOccured = YES;
+    [self setProfileImage:image];
     [self reloadImageCell];
 }
 

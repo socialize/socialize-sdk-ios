@@ -342,6 +342,18 @@
     _commentButton.enabled = YES;
 }
 
+- (void)hideButtons {
+    _likeButton.hidden = YES;
+    _commentButton.hidden = YES;
+    _shareButton.hidden = YES;
+}
+
+- (void)showButtons {
+    _likeButton.hidden = NO;
+    _commentButton.hidden = NO;
+    _shareButton.hidden = NO;
+}
+
 #pragma mark Socialize Delegate
 
 -(void)commentButtonPressed:(id)sender

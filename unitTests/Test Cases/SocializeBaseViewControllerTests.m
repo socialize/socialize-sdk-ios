@@ -98,6 +98,9 @@
     [self.mockGenericAlertView verify];
     [self.mockDoneButton verify];
     [self.mockEditButton verify];
+    [self.mockSendButton verify];
+    [self.mockCancelButton verify];
+    [self.mockSaveButton verify];
     [self.mockBundle verify];
     [self.mockImagesCache verify];
 
@@ -111,6 +114,9 @@
     self.mockGenericAlertView = nil;
     self.mockDoneButton = nil;
     self.mockEditButton = nil;
+    self.mockSendButton = nil;
+    self.mockCancelButton = nil;
+    self.mockSaveButton = nil;
     self.mockBundle = nil;
     self.mockImagesCache = nil;
 }
@@ -144,6 +150,7 @@
 - (void)testDefaultTableViewProperty {
     [[[self.mockView stub] andReturnBool:YES] isKindOfClass:[UITableView class]];
 
+    [self.viewController viewDidLoad];
     UITableView *defaultTableView = self.viewController.tableView;
     GHAssertEquals(self.mockView, defaultTableView, @"tableView incorrect");
 }

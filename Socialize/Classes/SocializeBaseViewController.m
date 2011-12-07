@@ -58,6 +58,13 @@
 
 - (void)dealloc
 {
+    self.tableView.delegate = nil;
+    self.tableView.dataSource = nil;
+    self.tableView = nil;
+    self.doneButton = nil;
+    self.editButton = nil;
+    self.cancelButton = nil;
+    self.sendButton = nil;  
     self.genericAlertView.delegate = nil;
     self.genericAlertView = nil;
     self.socialize.delegate = nil;
@@ -84,14 +91,12 @@
     self.authViewController = nil;
 }
 
-- (UITableView*)tableView {
-    if (tableView_ == nil) {
-        if ([self.view isKindOfClass:[UITableView class]]) {
-            tableView_ = (UITableView*)self.view;
-        }
-    }
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    return tableView_;
+    if (self.tableView == nil && [self.view isKindOfClass:[UITableView class]]) {
+        self.tableView = (UITableView*)self.view;
+    }
 }
 
 - (NSBundle*)bundle {
@@ -146,7 +151,7 @@
 
 -(UIBarButtonItem*) createLeftNavigationButtonWithCaption:(NSString*) caption
 {
-    UIButton *backButton = [UIButton blackSocializeNavBarBackButtonWithTitle:caption]; 
+    UIButton *backButton = [UIButton blueSocializeNavBarBackButtonWithTitle:caption]; 
     [backButton addTarget:self action:@selector(leftNavigationButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * backLeftItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
     return backLeftItem;
@@ -325,7 +330,7 @@
     if (sendActivityToFacebookFeedAlertView_ == nil) {
         sendActivityToFacebookFeedAlertView_ = [[UIAlertView alloc]
                                                 initWithTitle:@"Facebook Error"
-                                                message:@"There was a Problem Writing to Your Facebook Wall"
+                                                message:nil
                                                 delegate:self
                                                 cancelButtonTitle:@"Dismiss"
                                                 otherButtonTitles:@"Retry", nil];
@@ -340,6 +345,18 @@
     
 - (void)sendActivityToFacebookFeedFailed:(NSError*)error {
     [self stopLoading];
+    
+    NSString *message = @"There was a Problem Writing to Your Facebook Wall";
+    
+    // Provide more detailed error if available
+    NSString *facebookErrorType = [[[error userInfo] objectForKey:@"error"] objectForKey:@"type"];
+    NSString *facebookErrorMessage = [[[error userInfo] objectForKey:@"error"] objectForKey:@"message"];
+    if (facebookErrorType != nil && facebookErrorMessage != nil) {
+        message = [NSString stringWithFormat:@"%@: %@", facebookErrorType, facebookErrorMessage];
+    }
+    
+    self.sendActivityToFacebookFeedAlertView.message = message;
+    
     [self.sendActivityToFacebookFeedAlertView show];
 }
 

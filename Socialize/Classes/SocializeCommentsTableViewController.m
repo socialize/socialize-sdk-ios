@@ -41,7 +41,7 @@
 @synthesize noCommentsIconView;
 @synthesize commentsCell;
 @synthesize footerView;
-@synthesize doneButton = _doneButton;
+@synthesize closeButton = _closeButton;
 @synthesize brandingButton = _brandingButton;
 
 
@@ -86,14 +86,14 @@
                               last:[NSNumber numberWithInteger:offset + self.pageSize]];
 }
 
-- (UIBarButtonItem*)doneButton {
-    if (_doneButton == nil)
+- (UIBarButtonItem*)closeButton {
+    if (_closeButton == nil)
     {
-        UIButton *button = [UIButton redSocializeNavBarButtonWithTitle:@"Close"];
-        [button addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        _doneButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Close"];
+        [button addTarget:self action:@selector(closeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        _closeButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
-    return _doneButton;
+    return _closeButton;
 }
 
 -(UIBarButtonItem*)brandingButton
@@ -107,7 +107,7 @@
     return  _brandingButton;
 }
 
-- (void)doneButtonPressed:(id)button {
+- (void)closeButtonPressed:(id)button {
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -154,15 +154,24 @@
    
     
     self.navigationItem.leftBarButtonItem = self.brandingButton;
-    self.navigationItem.rightBarButtonItem = self.doneButton;    
+    self.navigationItem.rightBarButtonItem = self.closeButton;    
 }
 
 #pragma mark tableFooterViewDelegate
 
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
-    UINavigationController * pcNavController = [SocializePostCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:_entity.key];
+    UINavigationController * pcNavController = [SocializePostCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:_entity.key delegate:self];
     [self presentModalViewController:pcNavController animated:YES];
+}
+
+- (void)composeMessageViewControllerDidCancel:(SocializeComposeMessageViewController *)composeMessageViewController {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)postCommentViewController:(SocializePostCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
+    [self insertContentAtHead:[NSArray arrayWithObject:comment]];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark -
@@ -304,7 +313,7 @@
 	[_entity release];
 	[_commentDateFormatter release];
     [footerView release];
-    [_doneButton release];
+    [_closeButton release];
     [_brandingButton release];
     [super dealloc];
 }

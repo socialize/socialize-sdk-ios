@@ -9,7 +9,8 @@ Contents:
    :maxdepth: 2
    
    getting_started
-   socialize_ui
+   action_bar
+   comments
    sdk_user_guide
    sdk_pro_tips
    changelog

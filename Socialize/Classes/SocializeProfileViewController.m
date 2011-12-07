@@ -247,6 +247,7 @@
 {
     [self stopLoading];
     [self dismissModalViewControllerAnimated:YES];
+    self.profileEditViewController = nil;
 }
 
 - (void)profileEditViewControllerDidCancel:(SocializeProfileEditViewController *)profileEditViewController {

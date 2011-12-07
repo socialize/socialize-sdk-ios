@@ -119,7 +119,7 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"%@", @"OK");
+//    NSLog(@"%@", @"OK");
 	[self performSelectorOnMainThread:@selector(dataSendback) withObject:nil waitUntilDone:YES];
 }
 

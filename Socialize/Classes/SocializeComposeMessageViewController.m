@@ -51,6 +51,7 @@
 @synthesize locationManager = _locationManager;
 @synthesize kbListener = _kbListener;
 @synthesize entityURL = _entityURL;
+@synthesize delegate = delegate_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil 
                bundle:(NSBundle *)nibBundleOrNil 
@@ -121,7 +122,7 @@
          {
              if(error)
              {
-                 NSLog(@"reverseGeocoder didFailWithError:%@", error);
+//                 NSLog(@"reverseGeocoder didFailWithError:%@", error);
                  self.locationManager.currentLocationDescription = NO_CITY_MSG;
              }
              else
@@ -215,7 +216,12 @@
 
 -(void)cancelButtonPressed:(UIButton*)button {
     [self stopLoadAnimation];
-    [self dismissModalViewControllerAnimated:YES];
+    
+    if ([self.delegate respondsToSelector:@selector(composeMessageViewControllerDidCancel:)]) {
+        [self.delegate composeMessageViewControllerDidCancel:self];
+    } else {
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - SocializeServiceDelegate
@@ -324,8 +330,12 @@
         [self adjustForOrientation:interfaceOrientation];
         return YES;
     } else {
-        [self adjustForOrientation:UIInterfaceOrientationPortrait];  
-        return NO;
+        if (interfaceOrientation == UIInterfaceOrientationPortrait) {
+            [self adjustForOrientation:UIInterfaceOrientationPortrait];  
+            return YES;
+        } else {
+            return NO;
+        }
     }
 }
 

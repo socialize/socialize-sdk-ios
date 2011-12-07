@@ -38,6 +38,7 @@
 @synthesize mockDoNotShareLocationButton = mockDoNotShareLocationButton_;
 @synthesize mockActivateLocationButton = mockActivateLocationButton_;
 @synthesize mockMapOfUserLocation = mockMapOfUserLocation_;
+@synthesize mockDelegate = mockDelegate_;
 
 + (SocializeBaseViewController*)createController {
     return [[[SocializeComposeMessageViewController alloc] initWithNibName:nil bundle:nil entityUrlString:TEST_URL] autorelease];
@@ -85,6 +86,9 @@
 
     [[[self.mockNavigationItem stub] andReturn:self.mockSendButton] rightBarButtonItem];
     [[[self.mockNavigationItem stub] andReturn:self.mockCancelButton] leftBarButtonItem];
+    
+    self.mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeComposeMessageViewControllerDelegate)];
+    self.composeMessageViewController.delegate = self.mockDelegate;
 }
 
 - (void)tearDown {
@@ -101,6 +105,7 @@
     [self.mockDoNotShareLocationButton verify];
     [self.mockActivateLocationButton verify];
     [self.mockMapOfUserLocation verify];
+    [self.mockDelegate verify];
     
     self.composeMessageViewController = nil;
     self.mockSocialize = nil;
@@ -113,12 +118,12 @@
     self.mockDoNotShareLocationButton = nil;
     self.mockActivateLocationButton = nil;
     self.mockMapOfUserLocation = nil;
-
+    self.mockDelegate = nil;
 }
 
 -(void)testCreateMethod
 {
-    UINavigationController* controller = [SocializePostCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:TEST_URL];
+    UINavigationController* controller = [SocializePostCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:TEST_URL delegate:nil];
     GHAssertNotNil(controller, nil);
 }
 
@@ -223,7 +228,6 @@
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.mockCancelButton];
     [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockSendButton];
     [[self.mockSendButton expect] setEnabled:NO];
-    [[self.mockCancelButton expect] setEnabled:NO];
     BOOL noValue = NO;
     [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(noValue)] shouldShareLocation];
     [[self.mockLocationManager expect] setShouldShareLocation:NO];
@@ -232,6 +236,13 @@
 - (void)testViewDidLoad {
     [self prepareForViewDidLoad];
     [(id)self.composeMessageViewController viewDidLoad];
+}
+
+- (void)testCancellingCallsDelegate {
+    self.composeMessageViewController.cancelButton = nil;
+    [[(id)self.composeMessageViewController expect] stopLoadAnimation];
+    [[self.mockDelegate expect] composeMessageViewControllerDidCancel:(SocializeComposeMessageViewController*)self.origViewController];
+    [(UIButton*)self.composeMessageViewController.cancelButton.customView simulateControlEvent:UIControlEventTouchUpInside];
 }
 
 

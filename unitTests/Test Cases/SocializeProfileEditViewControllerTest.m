@@ -20,6 +20,7 @@
 - (void)facebookSwitchChanged:(UISwitch*)facebookSwitch;
 - (BOOL)haveCamera;
 - (void)configureProfileImageCell;
+- (void)configureViewsForUser;
 @end
 
 @implementation SocializeProfileEditViewControllerTest
@@ -120,6 +121,22 @@
 
     [[self.mockSocialize expect] updateUserProfile:mockCopyUser profileImage:mockImage];
     [self.profileEditViewController saveButtonPressed:nil];
+}
+
+- (void)testUpdatingTextCausesEdit {
+    NSString *testValue = @"testValue";
+    
+    NSIndexPath *firstNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    id mockEditValueViewController = [OCMockObject mockForClass:[SocializeProfileEditValueViewController class]];
+    id mockTextField = [OCMockObject mockForClass:[UITextField class]];
+    [[[mockTextField stub] andReturn:testValue] text];
+    [[[mockEditValueViewController stub] andReturn:mockTextField] editValueField];
+    [[[mockEditValueViewController stub] andReturn:firstNameIndexPath] indexPath];
+    [[self.mockNavigationController expect] popViewControllerAnimated:YES];
+    [[self.mockTableView expect] reloadRowsAtIndexPaths:[NSArray arrayWithObject:firstNameIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    GHAssertFalse(self.profileEditViewController.editOccured, @"Edit should not have occured yet");
+    [self.profileEditViewController profileEditValueViewControllerDidSave:mockEditValueViewController];
+    GHAssertTrue(self.profileEditViewController.editOccured, @"Edit should have occured");
 }
 
 - (void)testSavingWithoutEditCallsDelegate {
@@ -231,10 +248,6 @@
     BOOL no = NO;
     [[[self.mockFacebookSwitch expect] andReturnValue:OCMOCK_VALUE(no)] isOn];
     
-    // Expect save button enabled because an edit occured
-    [[[self.mockNavigationItem stub] andReturn:self.mockSaveButton] rightBarButtonItem];
-    [[self.mockSaveButton expect] setEnabled:YES];
-    
     // Expect defaults updated
     // Expect defaults go to not posting (ie, switch off)
     [[self.mockUserDefaults expect] setObject:[NSNumber numberWithBool:YES] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
@@ -328,7 +341,6 @@
 
 - (void)testViewDidLoad {
     [[self.mockTableView expect] setAccessibilityLabel:@"edit profile"];
-    [[self.mockSaveButton expect] setEnabled:NO];
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.mockCancelButton];
     [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockSaveButton];
     [self.profileEditViewController viewDidLoad];
@@ -378,7 +390,9 @@
     NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [[self.mockTableView expect] reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
 
+    GHAssertFalse(self.profileEditViewController.editOccured, @"Edit should not have occured yet");
     [self.profileEditViewController imagePickerController:self.profileEditViewController.imagePicker didFinishPickingMediaWithInfo:info];    
+    GHAssertTrue(self.profileEditViewController.editOccured, @"Edit should have occured");
 }
 
 - (void)testEditValue {
@@ -475,7 +489,20 @@
     [self.profileEditViewController service:nil didUpdate:mockFullUser];
 }
 
+- (void)testViewWillAppearWithUserEnablesSaveButton {
+    id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
+    self.profileEditViewController.fullUser = mockFullUser;
+    
+    [[self.mockSaveButton expect] setEnabled:YES];
+    [[(id)self.profileEditViewController expect] configureViewsForUser];
+    [super expectViewWillAppear];
+    [self.profileEditViewController viewWillAppear:YES];
+}
 
-
+- (void)testFinishingGetUserEnablesSaveButton {
+    [[(id)self.profileEditViewController expect] configureViewsForUser];
+    [[self.mockSaveButton expect] setEnabled:YES];
+    [self.profileEditViewController didGetCurrentUser:nil];
+}
 
 @end

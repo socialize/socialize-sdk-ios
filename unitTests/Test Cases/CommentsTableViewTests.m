@@ -77,7 +77,7 @@
     [[mockErrorLabel expect] setText:OCMOCK_ANY];
     
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.commentsTableViewController.brandingButton];
-    [[self.mockNavigationItem expect] setRightBarButtonItem:self.commentsTableViewController.doneButton];
+    [[self.mockNavigationItem expect] setRightBarButtonItem:self.commentsTableViewController.closeButton];
     
     [[self.mockTableView expect] setScrollsToTop:YES];
     [[self.mockTableView expect] setAutoresizesSubviews:YES];
@@ -184,6 +184,10 @@
     [cell release];
 }
 
-
+- (void)testPostingCommentInsertsOnTop {
+    id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
+    [[(id)self.commentsTableViewController expect] insertContentAtHead:[NSArray arrayWithObject:mockComment]];
+    [self.commentsTableViewController postCommentViewController:nil didCreateComment:mockComment];
+}
 
 @end

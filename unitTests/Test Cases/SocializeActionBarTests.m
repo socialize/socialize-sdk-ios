@@ -211,6 +211,8 @@
                                                      isLiked:YES
                                            withCommentsCount:[NSNumber numberWithInteger:comments]];
     
+    [[self.mockActionView expect] showButtons];
+    
     // =(
     id mockService = [self createMockForServiceClass:[SocializeEntityService class]];
 
@@ -256,6 +258,8 @@
 - (void)testInitialAuth {
     [[self.mockSocialize expect] viewEntity:self.mockEntity longitude:nil latitude:nil];
     [[self.mockSocialize expect] getLikesForEntityKey:TEST_ENTITY_URL first:nil last:nil];
+    GHAssertFalse(self.actionBar.initialized, @"Should not be initialized");
+    [[self.mockActionView expect] hideButtons];
     [self.actionBar afterLoginAction];
 }
 

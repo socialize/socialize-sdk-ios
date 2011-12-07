@@ -130,4 +130,9 @@ static NSString *const TestURL = @"http://getsocialize.com";
     GHAssertFalse([self.postShareViewController shouldAutoAuthOnAppear], nil);
 }
 
+- (void)testThatSendButtonDisabledAfterInitialAuth {
+    [[self.mockSendButton expect] setEnabled:NO];
+    [self.postShareViewController afterLoginAction];
+}
+
 @end

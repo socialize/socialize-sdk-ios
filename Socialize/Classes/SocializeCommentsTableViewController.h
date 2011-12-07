@@ -11,6 +11,7 @@
 #import "_Socialize.h"
 #import "SocializeBaseViewController.h"
 #import "SocializeTableViewController.h"
+#import "SocializePostCommentViewController.h"
 
 @class CommentsTableFooterView;
 @class SocializeTableBGInfoView;
@@ -27,7 +28,7 @@
 
 @class CommentsTableViewCell;
 
-@interface SocializeCommentsTableViewController : SocializeTableViewController<UITableViewDataSource, SocializeServiceDelegate, UITableViewDelegate> 
+@interface SocializeCommentsTableViewController : SocializeTableViewController<UITableViewDataSource, SocializeServiceDelegate, UITableViewDelegate, SocializePostCommentViewControllerDelegate> 
 {
 
 	IBOutlet UIView*        backgroundView;
@@ -51,7 +52,7 @@
 @property (retain, nonatomic) IBOutlet UIView		*backgroundView;
 @property (retain, nonatomic) IBOutlet UIView		*roundedContainerView;
 @property (retain, nonatomic) IBOutlet UIImageView	*noCommentsIconView;
-@property (retain, nonatomic) UIBarButtonItem	*doneButton;
+@property (retain, nonatomic) UIBarButtonItem	*closeButton;
 @property (retain, nonatomic) UIBarButtonItem	*brandingButton;
 
 @property (nonatomic, assign) IBOutlet CommentsTableViewCell     *commentsCell;
