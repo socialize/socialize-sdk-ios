@@ -4,6 +4,16 @@
 Changelog
 =============================================
 
+v1.1.4
+------
+[bug] Editing only profile image does not update server [ regression ]
+
+[bug] Pressing share on pre-5.0 iPad causes crash [ ]
+
+[bug] Socialize Navigation Bar background cut off on iPad [ ]
+
+[bug] Fix some circular references in action sheet block callbacks [ ]
+
 v1.1.3
 ------
 [feature] Facebook errors presented to user (e.g. "Wall post failed") are more detailed [ ]
