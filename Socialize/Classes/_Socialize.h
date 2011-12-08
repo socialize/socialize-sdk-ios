@@ -40,6 +40,7 @@
 @class SocializeUserService;
 @class SocializeActivityService;
 @class SocializeShareService;
+@class SocializeNotificationService;
 @class UIImage;
 @class SocializeFacebook;
 
@@ -64,6 +65,7 @@ otherwise you will get a failure.
     SocializeUserService            *_userService;
     SocializeActivityService        *_activityService;
     SocializeShareService           *_shareService;
+    SocializeNotificationService    *_notificationService;
 }
 /**Get access to the authentication service via <SocializeAuthenticateService>.*/
 @property (nonatomic, retain) SocializeAuthenticateService    *authService;
@@ -81,6 +83,8 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeActivityService        *activityService;
 /**Get access to the activity service via <SocializeShareService>.*/
 @property (nonatomic, retain) SocializeShareService           *shareService;
+/**Get access to the activity service via <SocializeNotificationService>.*/
+@property (nonatomic, retain) SocializeNotificationService    *notificationService;
 /**Current delegate*/
 @property (nonatomic, assign) id<SocializeServiceDelegate> delegate;
 
@@ -496,6 +500,11 @@ otherwise you will get a failure.
  @see createCommentForEntityWithKey:comment:longitude:latitude:
  */
 -(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
+
+/** Socialize Notification Service **/
+//registers a device token.  Call this method when the developer gets the callback for:
+//didRegisterForRemoteNotificationsWithDeviceToken from the system
+-(void)registerDeviceToken:(NSData *)deviceToken;
 
 /** @name View stuff */
 

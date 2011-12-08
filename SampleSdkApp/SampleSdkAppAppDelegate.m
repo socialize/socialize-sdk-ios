@@ -34,6 +34,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
+   
+    Socialize *socialize = [[Socialize alloc] initWithDelegate:self];  
+    NSString *st = @"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+    [socialize registerDeviceToken: [st dataUsingEncoding:NSUTF8StringEncoding]];
+
     UIViewController* rootViewController = nil;
        
     // we check the authentication here.

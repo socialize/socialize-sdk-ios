@@ -43,7 +43,7 @@
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
                                 resourcePath:@"view/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]
      ];
 
@@ -65,7 +65,7 @@
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
                                 resourcePath:@"view/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]
      ];
 

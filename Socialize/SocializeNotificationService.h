@@ -1,0 +1,16 @@
+//
+//  SocializeNotificationService.h
+//  SocializeSDK
+//
+//  Created by Isaac Mosquera on 12/7/11.
+//  Copyright (c) 2011 Socialize, Inc. All rights reserved.
+//
+
+#import "SocializeService.h"
+
+@interface SocializeNotificationService : SocializeService
+
+
+-(void)registerDeviceTokens:(NSArray *) tokens;
+-(void)registerDeviceToken:(NSData *)deviceToken;
+@end

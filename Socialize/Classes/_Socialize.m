@@ -17,6 +17,7 @@
 #import "SocializeCommentsService.h"
 #import "SocializeUserService.h"
 #import "SocializeViewService.h"
+#import "SocializeNotificationService.h"
 #import "SocializeShareService.h"
 #import "Facebook+Socialize.h"
 
@@ -37,7 +38,7 @@
 @synthesize delegate = _delegate;
 @synthesize activityService = _activityService;
 @synthesize shareService = _shareService;
-
+@synthesize notificationService = _notificationService;
 + (void)initialize {
     if (self == [Socialize class]) {
         Class dynamicTest = NSClassFromString(@"SocializeDynamicTest");
@@ -55,6 +56,7 @@
     [_userService release]; _userService = nil;
     [_activityService release]; _activityService = nil;
     [_shareService release]; _shareService = nil;
+    [_notificationService release]; _notificationService = nil;
     
     [super dealloc];
 }
@@ -74,6 +76,7 @@
         _userService = [[SocializeUserService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _activityService = [[SocializeActivityService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _shareService = [[SocializeShareService  alloc] initWithObjectFactory:_objectFactory delegate:delegate];
+        _notificationService = [[SocializeNotificationService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
     }
     return self;
 }
@@ -336,7 +339,7 @@
     [_entityService createEntityWithKey:entityKey andName:name];
 }
 
-#pragma view related stuff
+#pragma mark view related stuff
 
 -(void)viewEntityWithKey:(NSString*)url longitude:(NSNumber*)lng latitude: (NSNumber*)lat {
     [_viewService createViewForEntityKey:url longitude:lng latitude:lat];
@@ -352,7 +355,7 @@
 }
  */
 
-#pragma user related stuff
+#pragma mark user related stuff
 -(void)getCurrentUser
 {
     [_userService getCurrentUser];
@@ -373,7 +376,7 @@
     [_userService updateUser:user profileImage:profileImage];
 }
 
-#pragma activity related stuff
+#pragma mark activity related stuff
 -(void)getActivityOfCurrentApplication
 {
     [_activityService getActivityOfCurrentApplication];
@@ -393,7 +396,7 @@
 }
 
 
-#pragma share service stuff
+#pragma mark share service stuff
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text
 {
@@ -404,4 +407,9 @@
     [_shareService createShareForEntityKey:key medium:medium text:text];
 }
 
+/* NOTIFICATION SERVICE CALLS */
+#pragma mark notification service stuff
+-(void)registerDeviceToken:(NSData *)deviceToken {
+    [_notificationService registerDeviceToken:deviceToken];
+}
 @end

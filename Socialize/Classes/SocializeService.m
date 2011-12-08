@@ -142,7 +142,7 @@
     if(request.expectedJSONFormat == SocializeAny)
         [self invokeAppropriateCallback:request objectList:nil errorList:nil];
     
-    else if(request.expectedJSONFormat == SocializeDictionaryWIthListAndErrors){
+    else if(request.expectedJSONFormat == SocializeDictionaryWithListAndErrors){
         
         // if it is the response form {errors:"",items:""}
         JSONDecoder *jsonKitDecoder = [JSONDecoder decoder];

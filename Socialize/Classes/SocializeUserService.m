@@ -47,7 +47,7 @@
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:USER_GET_ENDPOINT
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]
      ];
 }

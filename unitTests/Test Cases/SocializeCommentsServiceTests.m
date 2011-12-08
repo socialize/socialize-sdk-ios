@@ -69,7 +69,7 @@ static const int singleCommentId = 1;
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:@"comment/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:[NSMutableDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObject: [NSNumber numberWithInt:singleCommentId]], @"id", nil]
       ]];
     
@@ -86,7 +86,7 @@ static const int singleCommentId = 1;
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:@"comment/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:[NSMutableDictionary dictionaryWithObjectsAndKeys:ids, @"id", keys, @"key", nil]
       ]];
  
@@ -105,7 +105,7 @@ static const int singleCommentId = 1;
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:@"comment/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"entity_key", nil]
       ]];
     
@@ -124,7 +124,7 @@ static const int singleCommentId = 1;
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:@"comment/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"http://www.example.com/interesting-story/", @"entity_key", first, @"first", last, @"last", nil]
       ]];
     
@@ -152,7 +152,7 @@ static const int singleCommentId = 1;
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
                                 resourcePath:@"comment/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:mockArray
       ]];
 
@@ -173,7 +173,7 @@ static const int singleCommentId = 1;
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
                                 resourcePath:@"comment/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:mockArray
       ]];
 
@@ -196,7 +196,7 @@ static const int singleCommentId = 1;
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
                                 resourcePath:@"comment/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:mockArray
       ]];
 
