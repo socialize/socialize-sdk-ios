@@ -1038,6 +1038,90 @@
 		AA7383351489B596009BE1D0 /* SocializeErrorDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7383331489B596009BE1D0 /* SocializeErrorDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA73833A1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7383371489B5F5009BE1D0 /* SocializeErrorDefinitions.m */; };
 		AA73833B1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7383371489B5F5009BE1D0 /* SocializeErrorDefinitions.m */; };
+		AA7FB8991491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */; };
+		AA7FB89A1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */; };
+		AA7FB89B1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */; };
+		AA7FB89C1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */; };
+		AA7FB89D1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */; };
+		AA7FB89E1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */; };
+		AA7FB89F1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */; };
+		AA7FB8A01491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8901491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png */; };
+		AA7FB8A11491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8901491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png */; };
+		AA7FB8A21491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8901491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png */; };
+		AA7FB8A31491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8901491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png */; };
+		AA7FB8A41491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8901491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png */; };
+		AA7FB8A51491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8901491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png */; };
+		AA7FB8A61491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8901491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png */; };
+		AA7FB8A71491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8911491415600B018DE /* socialize-iphone-notification-button-enabled.png */; };
+		AA7FB8A81491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8911491415600B018DE /* socialize-iphone-notification-button-enabled.png */; };
+		AA7FB8A91491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8911491415600B018DE /* socialize-iphone-notification-button-enabled.png */; };
+		AA7FB8AA1491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8911491415600B018DE /* socialize-iphone-notification-button-enabled.png */; };
+		AA7FB8AB1491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8911491415600B018DE /* socialize-iphone-notification-button-enabled.png */; };
+		AA7FB8AC1491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8911491415600B018DE /* socialize-iphone-notification-button-enabled.png */; };
+		AA7FB8AD1491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8911491415600B018DE /* socialize-iphone-notification-button-enabled.png */; };
+		AA7FB8AE1491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8921491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png */; };
+		AA7FB8AF1491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8921491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png */; };
+		AA7FB8B01491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8921491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png */; };
+		AA7FB8B11491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8921491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png */; };
+		AA7FB8B21491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8921491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png */; };
+		AA7FB8B31491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8921491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png */; };
+		AA7FB8B41491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8921491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png */; };
+		AA7FB8B51491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
+		AA7FB8B61491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
+		AA7FB8B71491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
+		AA7FB8B81491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
+		AA7FB8B91491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
+		AA7FB8BA1491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
+		AA7FB8BB1491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
+		AA7FB8BC1491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8941491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png */; };
+		AA7FB8BD1491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8941491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png */; };
+		AA7FB8BE1491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8941491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png */; };
+		AA7FB8BF1491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8941491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png */; };
+		AA7FB8C01491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8941491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png */; };
+		AA7FB8C11491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8941491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png */; };
+		AA7FB8C21491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8941491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png */; };
+		AA7FB8C31491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8951491415600B018DE /* socialize-iphone-notification-button-normal.png */; };
+		AA7FB8C41491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8951491415600B018DE /* socialize-iphone-notification-button-normal.png */; };
+		AA7FB8C51491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8951491415600B018DE /* socialize-iphone-notification-button-normal.png */; };
+		AA7FB8C61491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8951491415600B018DE /* socialize-iphone-notification-button-normal.png */; };
+		AA7FB8C71491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8951491415600B018DE /* socialize-iphone-notification-button-normal.png */; };
+		AA7FB8C81491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8951491415600B018DE /* socialize-iphone-notification-button-normal.png */; };
+		AA7FB8C91491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8951491415600B018DE /* socialize-iphone-notification-button-normal.png */; };
+		AA7FB8CA1491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8961491415600B018DE /* socialize-iphone-notification-button-normal@2x.png */; };
+		AA7FB8CB1491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8961491415600B018DE /* socialize-iphone-notification-button-normal@2x.png */; };
+		AA7FB8CC1491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8961491415600B018DE /* socialize-iphone-notification-button-normal@2x.png */; };
+		AA7FB8CD1491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8961491415600B018DE /* socialize-iphone-notification-button-normal@2x.png */; };
+		AA7FB8CE1491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8961491415600B018DE /* socialize-iphone-notification-button-normal@2x.png */; };
+		AA7FB8CF1491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8961491415600B018DE /* socialize-iphone-notification-button-normal@2x.png */; };
+		AA7FB8D01491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8961491415600B018DE /* socialize-iphone-notification-button-normal@2x.png */; };
+		AA7FB8D11491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8971491415600B018DE /* socialize-iphone-subcribe-notification-icon.png */; };
+		AA7FB8D21491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8971491415600B018DE /* socialize-iphone-subcribe-notification-icon.png */; };
+		AA7FB8D31491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8971491415600B018DE /* socialize-iphone-subcribe-notification-icon.png */; };
+		AA7FB8D41491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8971491415600B018DE /* socialize-iphone-subcribe-notification-icon.png */; };
+		AA7FB8D51491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8971491415600B018DE /* socialize-iphone-subcribe-notification-icon.png */; };
+		AA7FB8D61491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8971491415600B018DE /* socialize-iphone-subcribe-notification-icon.png */; };
+		AA7FB8D71491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8971491415600B018DE /* socialize-iphone-subcribe-notification-icon.png */; };
+		AA7FB8D81491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8981491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png */; };
+		AA7FB8D91491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8981491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png */; };
+		AA7FB8DA1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8981491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png */; };
+		AA7FB8DB1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8981491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png */; };
+		AA7FB8DC1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8981491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png */; };
+		AA7FB8DD1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8981491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png */; };
+		AA7FB8DE1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8981491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png */; };
+		AA7FB8E11491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8DF1491460B00B018DE /* socialize-notifications-bottom-shadow-background.png */; };
+		AA7FB8E21491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8DF1491460B00B018DE /* socialize-notifications-bottom-shadow-background.png */; };
+		AA7FB8E31491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8DF1491460B00B018DE /* socialize-notifications-bottom-shadow-background.png */; };
+		AA7FB8E41491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8DF1491460B00B018DE /* socialize-notifications-bottom-shadow-background.png */; };
+		AA7FB8E51491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8DF1491460B00B018DE /* socialize-notifications-bottom-shadow-background.png */; };
+		AA7FB8E61491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8DF1491460B00B018DE /* socialize-notifications-bottom-shadow-background.png */; };
+		AA7FB8E71491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8DF1491460B00B018DE /* socialize-notifications-bottom-shadow-background.png */; };
+		AA7FB8E81491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */; };
+		AA7FB8E91491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */; };
+		AA7FB8EA1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */; };
+		AA7FB8EB1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */; };
+		AA7FB8EC1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */; };
+		AA7FB8ED1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */; };
+		AA7FB8EE1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */; };
 		AA86389D144CA45E00CFA759 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA863899144CA42C00CFA759 /* libOCMock.a */; };
 		AA87C5DC146C7E8C00B22EF4 /* SocializePostCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA87C5D9146C7E8C00B22EF4 /* SocializePostCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA87C5DD146C7E8C00B22EF4 /* SocializePostCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA87C5D9146C7E8C00B22EF4 /* SocializePostCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2279,6 +2363,18 @@
 		AA73832E1489B562009BE1D0 /* NSError+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSError+Socialize.m"; path = "Classes/NSError+Socialize.m"; sourceTree = "<group>"; };
 		AA7383331489B596009BE1D0 /* SocializeErrorDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeErrorDefinitions.h; path = Classes/SocializeErrorDefinitions.h; sourceTree = "<group>"; };
 		AA7383371489B5F5009BE1D0 /* SocializeErrorDefinitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeErrorDefinitions.m; path = Classes/SocializeErrorDefinitions.m; sourceTree = "<group>"; };
+		AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-disabled.png"; path = "Resources/socialize-iphone-notification-button-disabled.png"; sourceTree = "<group>"; };
+		AA7FB8901491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-disabled@2x.png"; path = "Resources/socialize-iphone-notification-button-disabled@2x.png"; sourceTree = "<group>"; };
+		AA7FB8911491415600B018DE /* socialize-iphone-notification-button-enabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-enabled.png"; path = "Resources/socialize-iphone-notification-button-enabled.png"; sourceTree = "<group>"; };
+		AA7FB8921491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-enabled@2x.png"; path = "Resources/socialize-iphone-notification-button-enabled@2x.png"; sourceTree = "<group>"; };
+		AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-highlighted.png"; path = "Resources/socialize-iphone-notification-button-highlighted.png"; sourceTree = "<group>"; };
+		AA7FB8941491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-highlighted@2x.png"; path = "Resources/socialize-iphone-notification-button-highlighted@2x.png"; sourceTree = "<group>"; };
+		AA7FB8951491415600B018DE /* socialize-iphone-notification-button-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-normal.png"; path = "Resources/socialize-iphone-notification-button-normal.png"; sourceTree = "<group>"; };
+		AA7FB8961491415600B018DE /* socialize-iphone-notification-button-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-normal@2x.png"; path = "Resources/socialize-iphone-notification-button-normal@2x.png"; sourceTree = "<group>"; };
+		AA7FB8971491415600B018DE /* socialize-iphone-subcribe-notification-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-subcribe-notification-icon.png"; path = "Resources/socialize-iphone-subcribe-notification-icon.png"; sourceTree = "<group>"; };
+		AA7FB8981491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-subcribe-notification-icon@2x.png"; path = "Resources/socialize-iphone-subcribe-notification-icon@2x.png"; sourceTree = "<group>"; };
+		AA7FB8DF1491460B00B018DE /* socialize-notifications-bottom-shadow-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-notifications-bottom-shadow-background.png"; path = "Resources/socialize-notifications-bottom-shadow-background.png"; sourceTree = "<group>"; };
+		AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-notifications-bottom-shadow-background@2x.png"; path = "Resources/socialize-notifications-bottom-shadow-background@2x.png"; sourceTree = "<group>"; };
 		AA863889144CA42C00CFA759 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = Frameworks/OCMock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		AA87C5D9146C7E8C00B22EF4 /* SocializePostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePostCommentViewController.h; path = Classes/SocializePostCommentViewController.h; sourceTree = "<group>"; };
 		AA87C5DA146C7E8C00B22EF4 /* SocializePostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializePostCommentViewController.m; path = Classes/SocializePostCommentViewController.m; sourceTree = "<group>"; };
@@ -3173,6 +3269,18 @@
 		9A4D29831393FF720065C0CB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AA7FB8DF1491460B00B018DE /* socialize-notifications-bottom-shadow-background.png */,
+				AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */,
+				AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */,
+				AA7FB8901491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png */,
+				AA7FB8911491415600B018DE /* socialize-iphone-notification-button-enabled.png */,
+				AA7FB8921491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png */,
+				AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */,
+				AA7FB8941491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png */,
+				AA7FB8951491415600B018DE /* socialize-iphone-notification-button-normal.png */,
+				AA7FB8961491415600B018DE /* socialize-iphone-notification-button-normal@2x.png */,
+				AA7FB8971491415600B018DE /* socialize-iphone-subcribe-notification-icon.png */,
+				AA7FB8981491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png */,
 				AAFB6D25147C534900094023 /* socialize-activity-cell-icon-comment-highlighted.png */,
 				AAFB6D26147C534900094023 /* socialize-activity-cell-icon-comment-highlighted@2x.png */,
 				AAFB6D27147C534900094023 /* socialize-activity-cell-icon-comment-normal.png */,
@@ -4400,6 +4508,18 @@
 				AAFB6DB9147C534900094023 /* socialize-comment-facebook-disabled-button@2x.png in Resources */,
 				AAFB6DC0147C534900094023 /* socialize-comment-facebook-enabled-button@2x.png in Resources */,
 				AA88E839147D838500123E6F /* SocializeTableViewController.xib in Resources */,
+				AA7FB89B1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */,
+				AA7FB8A21491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */,
+				AA7FB8A91491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */,
+				AA7FB8B01491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */,
+				AA7FB8B71491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */,
+				AA7FB8BE1491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */,
+				AA7FB8C51491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */,
+				AA7FB8CC1491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */,
+				AA7FB8D31491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */,
+				AA7FB8DA1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */,
+				AA7FB8E31491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
+				AA7FB8EA1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4568,6 +4688,18 @@
 				AAFB6DB7147C534900094023 /* socialize-comment-facebook-disabled-button@2x.png in Resources */,
 				AAFB6DBE147C534900094023 /* socialize-comment-facebook-enabled-button@2x.png in Resources */,
 				AA88E837147D838500123E6F /* SocializeTableViewController.xib in Resources */,
+				AA7FB8991491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */,
+				AA7FB8A01491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */,
+				AA7FB8A71491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */,
+				AA7FB8AE1491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */,
+				AA7FB8B51491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */,
+				AA7FB8BC1491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */,
+				AA7FB8C31491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */,
+				AA7FB8CA1491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */,
+				AA7FB8D11491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */,
+				AA7FB8D81491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */,
+				AA7FB8E11491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
+				AA7FB8E81491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4732,6 +4864,18 @@
 				AAFB6DBB147C534900094023 /* socialize-comment-facebook-disabled-button@2x.png in Resources */,
 				AAFB6DC2147C534900094023 /* socialize-comment-facebook-enabled-button@2x.png in Resources */,
 				AA88E83B147D838500123E6F /* SocializeTableViewController.xib in Resources */,
+				AA7FB89D1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */,
+				AA7FB8A41491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */,
+				AA7FB8AB1491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */,
+				AA7FB8B21491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */,
+				AA7FB8B91491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */,
+				AA7FB8C01491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */,
+				AA7FB8C71491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */,
+				AA7FB8CE1491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */,
+				AA7FB8D51491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */,
+				AA7FB8DC1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */,
+				AA7FB8E51491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
+				AA7FB8EC1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4915,6 +5059,18 @@
 				AAFB6DBC147C534900094023 /* socialize-comment-facebook-disabled-button@2x.png in Resources */,
 				AAFB6DC3147C534900094023 /* socialize-comment-facebook-enabled-button@2x.png in Resources */,
 				AA88E83C147D838500123E6F /* SocializeTableViewController.xib in Resources */,
+				AA7FB89E1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */,
+				AA7FB8A51491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */,
+				AA7FB8AC1491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */,
+				AA7FB8B31491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */,
+				AA7FB8BA1491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */,
+				AA7FB8C11491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */,
+				AA7FB8C81491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */,
+				AA7FB8CF1491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */,
+				AA7FB8D61491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */,
+				AA7FB8DD1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */,
+				AA7FB8E61491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
+				AA7FB8ED1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4970,6 +5126,18 @@
 				AAFB6DBD147C534900094023 /* socialize-comment-facebook-disabled-button@2x.png in Resources */,
 				AAFB6DC4147C534900094023 /* socialize-comment-facebook-enabled-button@2x.png in Resources */,
 				AA88E83D147D838500123E6F /* SocializeTableViewController.xib in Resources */,
+				AA7FB89F1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */,
+				AA7FB8A61491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */,
+				AA7FB8AD1491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */,
+				AA7FB8B41491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */,
+				AA7FB8BB1491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */,
+				AA7FB8C21491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */,
+				AA7FB8C91491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */,
+				AA7FB8D01491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */,
+				AA7FB8D71491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */,
+				AA7FB8DE1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */,
+				AA7FB8E71491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
+				AA7FB8EE1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5155,6 +5323,18 @@
 				AAFB6DBA147C534900094023 /* socialize-comment-facebook-disabled-button@2x.png in Resources */,
 				AAFB6DC1147C534900094023 /* socialize-comment-facebook-enabled-button@2x.png in Resources */,
 				AA88E83A147D838500123E6F /* SocializeTableViewController.xib in Resources */,
+				AA7FB89C1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */,
+				AA7FB8A31491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */,
+				AA7FB8AA1491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */,
+				AA7FB8B11491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */,
+				AA7FB8B81491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */,
+				AA7FB8BF1491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */,
+				AA7FB8C61491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */,
+				AA7FB8CD1491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */,
+				AA7FB8D41491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */,
+				AA7FB8DB1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */,
+				AA7FB8E41491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
+				AA7FB8EB1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5321,6 +5501,18 @@
 				AAFB6DB8147C534900094023 /* socialize-comment-facebook-disabled-button@2x.png in Resources */,
 				AAFB6DBF147C534900094023 /* socialize-comment-facebook-enabled-button@2x.png in Resources */,
 				AA88E838147D838500123E6F /* SocializeTableViewController.xib in Resources */,
+				AA7FB89A1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */,
+				AA7FB8A11491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png in Resources */,
+				AA7FB8A81491415600B018DE /* socialize-iphone-notification-button-enabled.png in Resources */,
+				AA7FB8AF1491415600B018DE /* socialize-iphone-notification-button-enabled@2x.png in Resources */,
+				AA7FB8B61491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */,
+				AA7FB8BD1491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png in Resources */,
+				AA7FB8C41491415600B018DE /* socialize-iphone-notification-button-normal.png in Resources */,
+				AA7FB8CB1491415600B018DE /* socialize-iphone-notification-button-normal@2x.png in Resources */,
+				AA7FB8D21491415600B018DE /* socialize-iphone-subcribe-notification-icon.png in Resources */,
+				AA7FB8D91491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */,
+				AA7FB8E21491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
+				AA7FB8E91491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
