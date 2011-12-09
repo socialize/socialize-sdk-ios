@@ -11,7 +11,6 @@
 #import "CommentMapView.h"
 #import "_Socialize.h"
 #import "SocializeLoadingView.h"
-#import "UIKeyboardListener.h"
 #import "SocializeLocationManager.h"
 #import "UILabel+FormatedText.h"
 #import "UINavigationBarBackground.h"
@@ -46,7 +45,6 @@
 @synthesize mapOfUserLocation;
 @synthesize mapContainer = _mapContainer;
 @synthesize locationManager = _locationManager;
-@synthesize kbListener = _kbListener;
 @synthesize entityURL = _entityURL;
 @synthesize delegate = delegate_;
 @synthesize lowerContainer = lowerContainer_;
@@ -71,7 +69,6 @@
     [mapOfUserLocation release];
     [locationText release];
     [_entityURL release];
-    [_kbListener release];
     [_locationManager release];
     [_geoCoderInfo release];
     [_mapContainer release];
@@ -79,14 +76,6 @@
     [upperContainer_ release];
 
     [super dealloc];
-}
-
-- (UIKeyboardListener*)kbListener {
-    if (_kbListener == nil) {
-        _kbListener = [[UIKeyboardListener createWithVisibleKeyboard:NO] retain];
-    }
-    
-    return _kbListener;
 }
 
 - (SocializeLocationManager*)locationManager {
@@ -193,7 +182,7 @@
 {
     if (self.locationManager.shouldShareLocation)
     {
-        if (self.kbListener.isVisible) 
+        if ([commentTextView isFirstResponder]) 
         {
             [commentTextView resignFirstResponder];          
         }
@@ -262,9 +251,6 @@
     self.sendButton.enabled = NO;
     
     [self.commentTextView becomeFirstResponder];    
-    
-    // Ensure kb listener initialized the first time the view appears
-    (void)self.kbListener;
     
     [self setShareLocation:self.locationManager.shouldShareLocation];
     

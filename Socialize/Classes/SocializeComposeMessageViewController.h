@@ -13,7 +13,6 @@
 #import "_Socialize.h"
 #import "SocializeProfileViewController.h"
 @class CommentMapView;
-@class UIKeyboardListener;
 @class SocializeLocationManager;
 @protocol SocializeComposeMessageViewControllerDelegate;
 
@@ -38,7 +37,6 @@
 @property(nonatomic, retain) IBOutlet UIView *lowerContainer;
 @property(nonatomic, retain) IBOutlet UIView *upperContainer;
 @property(nonatomic, retain) IBOutlet UIView *mapContainer;
-@property(nonatomic, retain) UIKeyboardListener *kbListener;
 
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;

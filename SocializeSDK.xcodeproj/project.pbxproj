@@ -338,7 +338,6 @@
 		16D547A2144EA4340010732A /* SocializeActivityJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 16D5479F144EA4320010732A /* SocializeActivityJSONFormatter.h */; };
 		16D547A3144EA4340010732A /* SocializeActivityJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D547A0144EA4330010732A /* SocializeActivityJSONFormatter.m */; };
 		16D547A4144EA4340010732A /* SocializeActivityJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D547A0144EA4330010732A /* SocializeActivityJSONFormatter.m */; };
-		16DAC99A1420C0EE0011CD5F /* UIKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DAC9981420C0EE0011CD5F /* UIKeyboardListener.m */; };
 		16E33C091445BFA3006E2EB4 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C061445BFA3006E2EB4 /* NSString+MD5Addition.m */; };
 		16E33C161445D2ED006E2EB4 /* SocializeGeocoderAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E33C151445D2ED006E2EB4 /* SocializeGeocoderAdapter.m */; };
 		16F21EE013CDDE5000911977 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
@@ -1428,7 +1427,6 @@
 		AABC1526144A114900088B7D /* OAServiceTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBFE6C141FDDCC0030DE32 /* OAServiceTicket.m */; };
 		AABC1527144A114900088B7D /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBFE6F141FDDCC0030DE32 /* OAToken.m */; };
 		AABC1528144A114900088B7D /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBFE90141FDE660030DE32 /* JSONKit.m */; };
-		AABC1529144A114900088B7D /* UIKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DAC9981420C0EE0011CD5F /* UIKeyboardListener.m */; };
 		AABC152A144A114900088B7D /* SocializeLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7A01420CD94007ED41E /* SocializeLocationManager.m */; };
 		AABC152B144A114900088B7D /* UILabel+FormatedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7A51420D602007ED41E /* UILabel+FormatedText.m */; };
 		AABC152C144A114900088B7D /* NSString+PlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 160754861432FB7C002E5A38 /* NSString+PlaceMark.m */; };
@@ -2026,8 +2024,6 @@
 		16D54792144E997C0010732A /* TestActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestActivityViewController.xib; sourceTree = "<group>"; };
 		16D5479F144EA4320010732A /* SocializeActivityJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityJSONFormatter.h; path = Classes/SocializeActivityJSONFormatter.h; sourceTree = "<group>"; };
 		16D547A0144EA4330010732A /* SocializeActivityJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityJSONFormatter.m; path = Classes/SocializeActivityJSONFormatter.m; sourceTree = "<group>"; };
-		16DAC9971420C0EE0011CD5F /* UIKeyboardListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIKeyboardListener.h; path = Classes/UIKeyboardListener.h; sourceTree = "<group>"; };
-		16DAC9981420C0EE0011CD5F /* UIKeyboardListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIKeyboardListener.m; path = Classes/UIKeyboardListener.m; sourceTree = "<group>"; };
 		16E33C051445BFA3006E2EB4 /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5Addition.h"; path = "Classes/NSString+MD5Addition.h"; sourceTree = "<group>"; };
 		16E33C061445BFA3006E2EB4 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5Addition.m"; path = "Classes/NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		16E33C141445D2ED006E2EB4 /* SocializeGeocoderAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeGeocoderAdapter.h; path = Classes/SocializeGeocoderAdapter.h; sourceTree = "<group>"; };
@@ -3146,8 +3142,6 @@
 				16D2479B1418D668008A550D /* ImagesCache.m */,
 				16A82A0A1419FA9500193CA7 /* ImageLoader.h */,
 				16A82A0B1419FA9500193CA7 /* ImageLoader.m */,
-				16DAC9971420C0EE0011CD5F /* UIKeyboardListener.h */,
-				16DAC9981420C0EE0011CD5F /* UIKeyboardListener.m */,
 				169BC79F1420CD94007ED41E /* SocializeLocationManager.h */,
 				169BC7A01420CD94007ED41E /* SocializeLocationManager.m */,
 				169BC7A41420D602007ED41E /* UILabel+FormatedText.h */,
@@ -5793,7 +5787,6 @@
 				6DFBFE88141FDDCC0030DE32 /* OAServiceTicket.m in Sources */,
 				6DFBFE8B141FDDCC0030DE32 /* OAToken.m in Sources */,
 				6DFBFE92141FDE660030DE32 /* JSONKit.m in Sources */,
-				16DAC99A1420C0EE0011CD5F /* UIKeyboardListener.m in Sources */,
 				169BC7A21420CD94007ED41E /* SocializeLocationManager.m in Sources */,
 				169BC7A71420D602007ED41E /* UILabel+FormatedText.m in Sources */,
 				160754881432FB7C002E5A38 /* NSString+PlaceMark.m in Sources */,
@@ -6092,7 +6085,6 @@
 				AABC1526144A114900088B7D /* OAServiceTicket.m in Sources */,
 				AABC1527144A114900088B7D /* OAToken.m in Sources */,
 				AABC1528144A114900088B7D /* JSONKit.m in Sources */,
-				AABC1529144A114900088B7D /* UIKeyboardListener.m in Sources */,
 				AABC152A144A114900088B7D /* SocializeLocationManager.m in Sources */,
 				AABC152B144A114900088B7D /* UILabel+FormatedText.m in Sources */,
 				AABC152C144A114900088B7D /* NSString+PlaceMark.m in Sources */,

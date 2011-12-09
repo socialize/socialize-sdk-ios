@@ -9,7 +9,6 @@
 #import "SocializeComposeMessageViewControllerTests.h"
 #import "CommentMapView.h"
 #import "SocializeLocationManager.h"
-#import "UIKeyboardListener.h"
 #import "UILabel+FormatedText.h"
 #import "Socialize.h"
 #import <OCMock/OCMock.h>
@@ -60,9 +59,6 @@
     self.mockLocationManager = [OCMockObject mockForClass:[SocializeLocationManager class]];
     self.composeMessageViewController.locationManager = self.mockLocationManager;
     
-    self.mockKbListener = [OCMockObject mockForClass:[UIKeyboardListener class]];
-    self.composeMessageViewController.kbListener = self.mockKbListener;
-
     self.mockLocationViewContainer = [OCMockObject niceMockForClass:[UIView class]];
     self.composeMessageViewController.locationViewContainer = self.mockLocationViewContainer;
     

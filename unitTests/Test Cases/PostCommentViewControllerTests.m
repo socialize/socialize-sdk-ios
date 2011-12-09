@@ -29,7 +29,6 @@
 #import "PostCommentViewControllerTests.h"
 #import "CommentMapView.h"
 #import "SocializeLocationManager.h"
-#import "UIKeyboardListener.h"
 #import "UILabel+FormatedText.h"
 #import "Socialize.h"
 #import <OCMock/OCMock.h>
