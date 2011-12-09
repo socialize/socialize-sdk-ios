@@ -60,7 +60,6 @@
 		16038954143F10DB00455B6A /* socialize-navbar-button-red-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D220F14057FBB0026185F /* socialize-navbar-button-red-active@2x.png */; };
 		16038955143F10DB00455B6A /* socialize-navbar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221014057FC20026185F /* socialize-navbar-button-red.png */; };
 		16038956143F10DB00455B6A /* socialize-navbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221114057FCB0026185F /* socialize-navbar-button-red@2x.png */; };
-		16038958143F10DB00455B6A /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431613F9EEBA00140AA3 /* SocializeComposeMessageViewController.xib */; };
 		16038959143F10DB00455B6A /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D133A7014041AC600E16BA4 /* CommentsTableViewCell.xib */; };
 		1603895A143F10DB00455B6A /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
 		1603895B143F10DB00455B6A /* socialize-nocomments-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA63140573DE00E41FC0 /* socialize-nocomments-icon.png */; };
@@ -406,7 +405,6 @@
 		6D44A911140419B6004B3A46 /* SocializeTableBGInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A90914041939004B3A46 /* SocializeTableBGInfoView.m */; };
 		6D49743C13B2588700463D23 /* SocializeLikeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49743A13B2586C00463D23 /* SocializeLikeService.m */; };
 		6D49744013B295A400463D23 /* SocializeLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49743E13B2959500463D23 /* SocializeLike.m */; };
-		6D67433613F9EEC300140AA3 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431613F9EEBA00140AA3 /* SocializeComposeMessageViewController.xib */; };
 		6D67433713F9EEC300140AA3 /* socialize-comment-user-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431713F9EEBA00140AA3 /* socialize-comment-user-background@2x.png */; };
 		6D67433813F9EEC300140AA3 /* socialize-comment-user-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431813F9EEBA00140AA3 /* socialize-comment-user-background.png */; };
 		6D67433913F9EEC300140AA3 /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431913F9EEBA00140AA3 /* socialize-comment-details-icon-geo-enabled@2x.png */; };
@@ -643,7 +641,6 @@
 		AA3181A2144A4474008F4D59 /* socialize-navbar-button-red-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D220F14057FBB0026185F /* socialize-navbar-button-red-active@2x.png */; };
 		AA3181A3144A4474008F4D59 /* socialize-navbar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221014057FC20026185F /* socialize-navbar-button-red.png */; };
 		AA3181A4144A4474008F4D59 /* socialize-navbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221114057FCB0026185F /* socialize-navbar-button-red@2x.png */; };
-		AA3181A6144A4474008F4D59 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431613F9EEBA00140AA3 /* SocializeComposeMessageViewController.xib */; };
 		AA3181A7144A4474008F4D59 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D133A7014041AC600E16BA4 /* CommentsTableViewCell.xib */; };
 		AA3181A8144A4474008F4D59 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
 		AA3181A9144A4474008F4D59 /* socialize-nocomments-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA63140573DE00E41FC0 /* socialize-nocomments-icon.png */; };
@@ -790,7 +787,6 @@
 		AA33263F144CD8070033C7FA /* socialize-navbar-button-red-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D220F14057FBB0026185F /* socialize-navbar-button-red-active@2x.png */; };
 		AA332640144CD8070033C7FA /* socialize-navbar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221014057FC20026185F /* socialize-navbar-button-red.png */; };
 		AA332641144CD8070033C7FA /* socialize-navbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221114057FCB0026185F /* socialize-navbar-button-red@2x.png */; };
-		AA332643144CD8070033C7FA /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431613F9EEBA00140AA3 /* SocializeComposeMessageViewController.xib */; };
 		AA332644144CD8070033C7FA /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D133A7014041AC600E16BA4 /* CommentsTableViewCell.xib */; };
 		AA332645144CD8070033C7FA /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
 		AA332646144CD8070033C7FA /* socialize-nocomments-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA63140573DE00E41FC0 /* socialize-nocomments-icon.png */; };
@@ -917,7 +913,6 @@
 		AA369FE7146C54ED00E15AA4 /* socialize-navbar-button-red-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D220F14057FBB0026185F /* socialize-navbar-button-red-active@2x.png */; };
 		AA369FE8146C54ED00E15AA4 /* socialize-navbar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221014057FC20026185F /* socialize-navbar-button-red.png */; };
 		AA369FE9146C54ED00E15AA4 /* socialize-navbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221114057FCB0026185F /* socialize-navbar-button-red@2x.png */; };
-		AA369FEA146C54ED00E15AA4 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431613F9EEBA00140AA3 /* SocializeComposeMessageViewController.xib */; };
 		AA369FEB146C54ED00E15AA4 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D133A7014041AC600E16BA4 /* CommentsTableViewCell.xib */; };
 		AA369FEC146C54ED00E15AA4 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
 		AA369FED146C54ED00E15AA4 /* socialize-nocomments-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA63140573DE00E41FC0 /* socialize-nocomments-icon.png */; };
@@ -1442,7 +1437,6 @@
 		AABC153E144A114900088B7D /* NSNumber+Additions.h in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A7D11402D20A004B3A46 /* NSNumber+Additions.h */; };
 		AABC153F144A114900088B7D /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1681BD7813F555DC00EC6042 /* FBDialog.bundle */; };
 		AABC1540144A114900088B7D /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D7343D013F5CD4B0076A8E6 /* SocializeConfigurationInfo.plist */; };
-		AABC1542144A114900088B7D /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431613F9EEBA00140AA3 /* SocializeComposeMessageViewController.xib */; };
 		AABC1543144A114900088B7D /* socialize-comment-user-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431713F9EEBA00140AA3 /* socialize-comment-user-background@2x.png */; };
 		AABC1544144A114900088B7D /* socialize-comment-user-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431813F9EEBA00140AA3 /* socialize-comment-user-background.png */; };
 		AABC1545144A114900088B7D /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67431913F9EEBA00140AA3 /* socialize-comment-details-icon-geo-enabled@2x.png */; };
@@ -2124,7 +2118,6 @@
 		6D49743D13B2958D00463D23 /* SocializeLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLike.h; path = Classes/SocializeLike.h; sourceTree = "<group>"; };
 		6D49743E13B2959500463D23 /* SocializeLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLike.m; path = Classes/SocializeLike.m; sourceTree = "<group>"; };
 		6D6742ED13F9AFD800140AA3 /* libSocialize.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSocialize.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D67431613F9EEBA00140AA3 /* SocializeComposeMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeComposeMessageViewController.xib; path = Resources/SocializeComposeMessageViewController.xib; sourceTree = "<group>"; };
 		6D67431713F9EEBA00140AA3 /* socialize-comment-user-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-user-background@2x.png"; path = "Resources/socialize-comment-user-background@2x.png"; sourceTree = "<group>"; };
 		6D67431813F9EEBA00140AA3 /* socialize-comment-user-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-user-background.png"; path = "Resources/socialize-comment-user-background.png"; sourceTree = "<group>"; };
 		6D67431913F9EEBA00140AA3 /* socialize-comment-details-icon-geo-enabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-details-icon-geo-enabled@2x.png"; path = "Resources/socialize-comment-details-icon-geo-enabled@2x.png"; sourceTree = "<group>"; };
@@ -3873,7 +3866,6 @@
 		AAF9030A1472FCCC00AB8674 /* Compose Message */ = {
 			isa = PBXGroup;
 			children = (
-				6D67431613F9EEBA00140AA3 /* SocializeComposeMessageViewController.xib */,
 				1681BDBE13F55BCB00EC6042 /* SocializeComposeMessageViewController.h */,
 				1681BDBF13F55BCB00EC6042 /* SocializeComposeMessageViewController.m */,
 				AAF9030C1472FCF100AB8674 /* Comment */,
@@ -4399,7 +4391,6 @@
 				AA369FE7146C54ED00E15AA4 /* socialize-navbar-button-red-active@2x.png in Resources */,
 				AA369FE8146C54ED00E15AA4 /* socialize-navbar-button-red.png in Resources */,
 				AA369FE9146C54ED00E15AA4 /* socialize-navbar-button-red@2x.png in Resources */,
-				AA369FEA146C54ED00E15AA4 /* SocializeComposeMessageViewController.xib in Resources */,
 				AA369FEB146C54ED00E15AA4 /* CommentsTableViewCell.xib in Resources */,
 				AA369FEC146C54ED00E15AA4 /* SocializeCommentsTableViewController.xib in Resources */,
 				AA369FED146C54ED00E15AA4 /* socialize-nocomments-icon.png in Resources */,
@@ -4534,7 +4525,6 @@
 				6D44A8B41402F7E6004B3A46 /* NSNumber+Additions.h in Resources */,
 				1681BD9013F555DC00EC6042 /* FBDialog.bundle in Resources */,
 				6D7343E013F5CD4B0076A8E6 /* SocializeConfigurationInfo.plist in Resources */,
-				6D67433613F9EEC300140AA3 /* SocializeComposeMessageViewController.xib in Resources */,
 				6D67433713F9EEC300140AA3 /* socialize-comment-user-background@2x.png in Resources */,
 				6D67433813F9EEC300140AA3 /* socialize-comment-user-background.png in Resources */,
 				6D67433913F9EEC300140AA3 /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */,
@@ -4748,7 +4738,6 @@
 				AA3181A2144A4474008F4D59 /* socialize-navbar-button-red-active@2x.png in Resources */,
 				AA3181A3144A4474008F4D59 /* socialize-navbar-button-red.png in Resources */,
 				AA3181A4144A4474008F4D59 /* socialize-navbar-button-red@2x.png in Resources */,
-				AA3181A6144A4474008F4D59 /* SocializeComposeMessageViewController.xib in Resources */,
 				AA3181A7144A4474008F4D59 /* CommentsTableViewCell.xib in Resources */,
 				AA3181A8144A4474008F4D59 /* SocializeCommentsTableViewController.xib in Resources */,
 				AA3181A9144A4474008F4D59 /* socialize-nocomments-icon.png in Resources */,
@@ -4940,7 +4929,6 @@
 				AA33263F144CD8070033C7FA /* socialize-navbar-button-red-active@2x.png in Resources */,
 				AA332640144CD8070033C7FA /* socialize-navbar-button-red.png in Resources */,
 				AA332641144CD8070033C7FA /* socialize-navbar-button-red@2x.png in Resources */,
-				AA332643144CD8070033C7FA /* SocializeComposeMessageViewController.xib in Resources */,
 				AA332644144CD8070033C7FA /* CommentsTableViewCell.xib in Resources */,
 				AA332645144CD8070033C7FA /* SocializeCommentsTableViewController.xib in Resources */,
 				AA332646144CD8070033C7FA /* socialize-nocomments-icon.png in Resources */,
@@ -5202,7 +5190,6 @@
 				16038954143F10DB00455B6A /* socialize-navbar-button-red-active@2x.png in Resources */,
 				16038955143F10DB00455B6A /* socialize-navbar-button-red.png in Resources */,
 				16038956143F10DB00455B6A /* socialize-navbar-button-red@2x.png in Resources */,
-				16038958143F10DB00455B6A /* SocializeComposeMessageViewController.xib in Resources */,
 				16038959143F10DB00455B6A /* CommentsTableViewCell.xib in Resources */,
 				1603895A143F10DB00455B6A /* SocializeCommentsTableViewController.xib in Resources */,
 				1603895B143F10DB00455B6A /* socialize-nocomments-icon.png in Resources */,
@@ -5349,7 +5336,6 @@
 				AABC153E144A114900088B7D /* NSNumber+Additions.h in Resources */,
 				AABC153F144A114900088B7D /* FBDialog.bundle in Resources */,
 				AABC1540144A114900088B7D /* SocializeConfigurationInfo.plist in Resources */,
-				AABC1542144A114900088B7D /* SocializeComposeMessageViewController.xib in Resources */,
 				AABC1543144A114900088B7D /* socialize-comment-user-background@2x.png in Resources */,
 				AABC1544144A114900088B7D /* socialize-comment-user-background.png in Resources */,
 				AABC1545144A114900088B7D /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */,
