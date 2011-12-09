@@ -27,12 +27,13 @@
 
 #import <UIKit/UIKit.h>
 #import "_Socialize.h"
+#import "SocializeKeyboardListener.h"
 
 @class SocializeShareBuilder;
 @class SocializeLoadingView;
 @class ImagesCache;
 
-@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate> {
+@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, SocializeKeyboardListenerDelegate> {
     @private 
     SocializeLoadingView*  _loadingIndicatorView;
 }
@@ -49,6 +50,7 @@
 @property (nonatomic, retain) SocializeShareBuilder *shareBuilder;
 @property (nonatomic, retain) ImagesCache *imagesCache;
 @property (nonatomic, retain) NSBundle *bundle;
+@property (nonatomic, retain) SocializeKeyboardListener *keyboardListener;
 
 -(void) showAlertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoading;

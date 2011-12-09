@@ -35,7 +35,8 @@
 @property(nonatomic, retain) IBOutlet UIButton      *doNotShareLocationButton;
 @property(nonatomic, retain) IBOutlet UIButton      *activateLocationButton;
 @property(nonatomic, retain) IBOutlet CommentMapView *mapOfUserLocation;
-@property(nonatomic, retain) IBOutlet UIView *locationViewContainer;
+@property(nonatomic, retain) IBOutlet UIView *lowerContainer;
+@property(nonatomic, retain) IBOutlet UIView *upperContainer;
 @property(nonatomic, retain) IBOutlet UIView *mapContainer;
 @property(nonatomic, retain) UIKeyboardListener *kbListener;
 

@@ -1588,6 +1588,10 @@
 		AAE9A6F0145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE9A6ED145F55B3001A9F1D /* SocializeFacebookInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE9A6F1145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6EE145F55B3001A9F1D /* SocializeFacebookInterface.m */; };
 		AAE9A6F2145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6EE145F55B3001A9F1D /* SocializeFacebookInterface.m */; };
+		AAEABFF414919575007C3D23 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */; };
+		AAEABFF514919575007C3D23 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */; };
+		AAEABFF614919575007C3D23 /* SocializeKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */; };
+		AAEABFF714919575007C3D23 /* SocializeKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */; };
 		AAEB4A7B1458E88300A01F5B /* SocializeServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */; };
 		AAF177301472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */; };
 		AAF177311472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */; };
@@ -2520,6 +2524,8 @@
 		AAE9A6E8145F39A6001A9F1D /* Facebook+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Facebook+Socialize.m"; path = "Classes/Facebook+Socialize.m"; sourceTree = "<group>"; };
 		AAE9A6ED145F55B3001A9F1D /* SocializeFacebookInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebookInterface.h; path = Classes/SocializeFacebookInterface.h; sourceTree = "<group>"; };
 		AAE9A6EE145F55B3001A9F1D /* SocializeFacebookInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebookInterface.m; path = Classes/SocializeFacebookInterface.m; sourceTree = "<group>"; };
+		AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeKeyboardListener.h; path = Classes/SocializeKeyboardListener.h; sourceTree = "<group>"; };
+		AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeKeyboardListener.m; path = Classes/SocializeKeyboardListener.m; sourceTree = "<group>"; };
 		AAEB4A791458E88300A01F5B /* SocializeServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeServiceTests.h; path = "Test Cases/SocializeServiceTests.h"; sourceTree = "<group>"; };
 		AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeServiceTests.m; path = "Test Cases/SocializeServiceTests.m"; sourceTree = "<group>"; };
 		AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthInfoTableViewCell.xib; path = Resources/SocializeAuthInfoTableViewCell.xib; sourceTree = "<group>"; };
@@ -3168,6 +3174,8 @@
 				AAE9A6E8145F39A6001A9F1D /* Facebook+Socialize.m */,
 				AA88E83E147DA38900123E6F /* NSString+Socialize.h */,
 				AA88E83F147DA38900123E6F /* NSString+Socialize.m */,
+				AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */,
+				AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -4033,6 +4041,7 @@
 				AA7383351489B596009BE1D0 /* SocializeErrorDefinitions.h in Headers */,
 				AAD218FB148AFBD600EF5503 /* StringHelper.h in Headers */,
 				AA06B68D148EE39E00D084D4 /* DebugUtil.h in Headers */,
+				AAEABFF514919575007C3D23 /* SocializeKeyboardListener.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4118,6 +4127,7 @@
 				AA7383341489B596009BE1D0 /* SocializeErrorDefinitions.h in Headers */,
 				AAD218FA148AFBD600EF5503 /* StringHelper.h in Headers */,
 				AA06B68C148EE39E00D084D4 /* DebugUtil.h in Headers */,
+				AAEABFF414919575007C3D23 /* SocializeKeyboardListener.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5845,6 +5855,7 @@
 				AA7383311489B562009BE1D0 /* NSError+Socialize.m in Sources */,
 				AA73833A1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */,
 				AAD218FC148AFBD600EF5503 /* StringHelper.m in Sources */,
+				AAEABFF614919575007C3D23 /* SocializeKeyboardListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6143,6 +6154,7 @@
 				AA7383321489B562009BE1D0 /* NSError+Socialize.m in Sources */,
 				AA73833B1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */,
 				AAD218FD148AFBD600EF5503 /* StringHelper.m in Sources */,
+				AAEABFF714919575007C3D23 /* SocializeKeyboardListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

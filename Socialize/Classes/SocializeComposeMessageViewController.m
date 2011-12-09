@@ -34,8 +34,6 @@
 -(void)configureLocationText; 
 -(void)configureDoNotShareLocationButton;
 -(void)updateViewWithNewLocation: (CLLocation*)userLocation;
--(void) adjustViewToLayoutWithKeyboardHeigth:(int)keyboardHeigth;
-
 
 @end 
 
@@ -46,12 +44,13 @@
 @synthesize doNotShareLocationButton;
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
-@synthesize locationViewContainer = _locationViewContainer;
 @synthesize mapContainer = _mapContainer;
 @synthesize locationManager = _locationManager;
 @synthesize kbListener = _kbListener;
 @synthesize entityURL = _entityURL;
 @synthesize delegate = delegate_;
+@synthesize lowerContainer = lowerContainer_;
+@synthesize upperContainer = upperContainer_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil 
                bundle:(NSBundle *)nibBundleOrNil 
@@ -75,8 +74,9 @@
     [_kbListener release];
     [_locationManager release];
     [_geoCoderInfo release];
-    [_locationViewContainer release];
     [_mapContainer release];
+    [lowerContainer_ release];
+    [upperContainer_ release];
 
     [super dealloc];
 }
@@ -250,22 +250,12 @@
 
 #pragma mark - View lifecycle
 
-- (void)adjustForOrientation:(UIInterfaceOrientation)orientation {
-    if(UIInterfaceOrientationIsLandscape(orientation))
-    {       
-        [self adjustViewToLayoutWithKeyboardHeigth: LANDSCAPE_KEYBOARD_HEIGHT];
-    }
-    else
-    {
-        [self adjustViewToLayoutWithKeyboardHeigth: PORTRAIT_KEYBOARD_HEIGHT];
-    }
-}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    [self.lowerContainer addSubview:self.mapContainer];
+    
     self.navigationItem.leftBarButtonItem = self.cancelButton;
     
     self.navigationItem.rightBarButtonItem = self.sendButton;
@@ -281,10 +271,6 @@
     [self.mapOfUserLocation roundCorners];
     [self configureDoNotShareLocationButton];       
     [self updateViewWithNewLocation: mapOfUserLocation.userLocation.location];
-    
-    if (UIDeviceOrientationIsValidInterfaceOrientation([[UIDevice currentDevice] orientation])) {
-        [self adjustForOrientation:(UIInterfaceOrientation)[[UIDevice currentDevice] orientation]];
-    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -301,42 +287,37 @@
     self.doNotShareLocationButton = nil;
     self.activateLocationButton = nil;
     self.mapOfUserLocation = nil;
-    self.locationViewContainer = nil;
     self.mapContainer = nil;
+    self.lowerContainer = nil;
+    self.upperContainer = nil;
 }
 
 - (UIView*)showLoadingInView {
     return commentTextView;
 }
 
--(void) adjustViewToLayoutWithKeyboardHeigth:(int)keyboardHeigth
-{
-    CGRect commentFrame = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height - self.locationViewContainer.frame.size.height - keyboardHeigth);
-    self.commentTextView.frame = commentFrame;
+- (void)keyboardListener:(SocializeKeyboardListener *)keyboardListener keyboardWillShowWithWithBeginFrame:(CGRect)beginFrame endFrame:(CGRect)endFrame animationCurve:(UIViewAnimationCurve)animationCurve animationDuration:(NSTimeInterval)animationDuration {
+    CGRect newKeyboardFrame = [SocializeKeyboardListener convertKeyboardRect:endFrame toView:self.view];
     
-    CGRect activateLoactionButtonFrame = self.locationViewContainer.frame;
-    activateLoactionButtonFrame.origin.y = self.commentTextView.frame.origin.y + self.commentTextView.frame.size.height;
-    self.locationViewContainer.frame = activateLoactionButtonFrame;
+    // The lower container is just the same size as the keyboard
+    self.lowerContainer.frame = newKeyboardFrame;
     
-    CGRect mapContainerFrame = CGRectMake(0,self.view.frame.size.height - keyboardHeigth, self.view.frame.size.width, keyboardHeigth);
-    
-    self.mapContainer.frame = mapContainerFrame;
+    // The upper container covers the rest of our view
+    CGFloat upperHeight = self.view.frame.size.height - newKeyboardFrame.size.height;
+    self.upperContainer.frame = CGRectMake(0, 0, self.view.frame.size.width, upperHeight);
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    // The keyboard must be shown before rotation, or we won't get events to be able to recompute our container frames.
+    // Static definition of frames does not work well because different languages have different keyboard sizes
+    if (![commentTextView isFirstResponder]) {
+        [commentTextView becomeFirstResponder];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations if iOS5
-    BOOL iOS5 = [[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0;
-    if( iOS5 ) {
-        [self adjustForOrientation:interfaceOrientation];
-        return YES;
-    } else {
-        if (interfaceOrientation == UIInterfaceOrientationPortrait) {
-            [self adjustForOrientation:UIInterfaceOrientationPortrait];  
-            return YES;
-        } else {
-            return NO;
-        }
-    }
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation)
+        || interfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
 
