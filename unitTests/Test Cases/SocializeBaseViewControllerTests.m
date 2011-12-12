@@ -27,6 +27,7 @@
 @synthesize mockSaveButton = mockSaveButton_;
 @synthesize mockView = mockView_;
 @synthesize mockWindow = mockWindow_;
+@synthesize mockKeyboardListener = mockKeyboardListener_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -84,6 +85,9 @@
 
     self.mockImagesCache = [OCMockObject mockForClass:[ImagesCache class]];
     self.viewController.imagesCache = self.mockImagesCache;
+    
+    self.mockKeyboardListener = [OCMockObject mockForClass:[SocializeKeyboardListener class]];
+    self.viewController.keyboardListener = self.mockKeyboardListener;
 }
 
 -(void) tearDown
@@ -103,7 +107,9 @@
     [self.mockSaveButton verify];
     [self.mockBundle verify];
     [self.mockImagesCache verify];
+    [self.mockKeyboardListener verify];
 
+    [[self.mockKeyboardListener stub] setDelegate:nil];
     [[self.mockGenericAlertView expect] setDelegate:nil];
     self.origViewController = nil;
     self.viewController = nil;
@@ -119,6 +125,7 @@
     self.mockSaveButton = nil;
     self.mockBundle = nil;
     self.mockImagesCache = nil;
+    self.mockKeyboardListener = nil;
 }
 
 - (void)testViewDidUnload {

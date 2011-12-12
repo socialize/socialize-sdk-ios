@@ -283,14 +283,15 @@
 }
 
 - (void)keyboardListener:(SocializeKeyboardListener *)keyboardListener keyboardWillShowWithWithBeginFrame:(CGRect)beginFrame endFrame:(CGRect)endFrame animationCurve:(UIViewAnimationCurve)animationCurve animationDuration:(NSTimeInterval)animationDuration {
-    CGRect newKeyboardFrame = [SocializeKeyboardListener convertKeyboardRect:endFrame toView:self.view];
+    CGRect newKeyboardFrame = [self.keyboardListener convertKeyboardRect:endFrame toView:self.view];
     
     // The lower container is just the same size as the keyboard
     self.lowerContainer.frame = newKeyboardFrame;
     
     // The upper container covers the rest of our view
     CGFloat upperHeight = self.view.frame.size.height - newKeyboardFrame.size.height;
-    self.upperContainer.frame = CGRectMake(0, 0, self.view.frame.size.width, upperHeight);
+    CGRect upperFrame = CGRectMake(0, 0, self.view.frame.size.width, upperHeight);
+    self.upperContainer.frame = upperFrame;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {

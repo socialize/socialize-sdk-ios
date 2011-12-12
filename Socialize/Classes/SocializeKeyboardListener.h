@@ -17,6 +17,7 @@
 - (CGRect)currentKeyboardFrameInView:(UIView*)view;
 // Keyboard rects are given in screen coordinates
 + (CGRect)convertKeyboardRect:(CGRect)rect toView:(UIView *)view;
+- (CGRect) convertKeyboardRect:(CGRect)rect toView:(UIView *)view;
 @end
 
 @protocol SocializeKeyboardListenerDelegate <NSObject>

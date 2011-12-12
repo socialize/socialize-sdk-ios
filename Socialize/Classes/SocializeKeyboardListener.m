@@ -36,6 +36,10 @@
     return [view convertRect:[window convertRect:rect fromWindow:nil] fromView:nil];
 }
 
+- (CGRect) convertKeyboardRect:(CGRect)rect toView:(UIView *)view {
+    return [[self class] convertKeyboardRect:rect toView:view];
+}
+
 - (CGRect)currentKeyboardFrameInView:(UIView*)view {
     return [[self class] convertKeyboardRect:self.currentKeyboardFrame toView:view];
 }

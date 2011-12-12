@@ -26,11 +26,10 @@
 
 @implementation SocializeComposeMessageViewControllerTests
 @synthesize composeMessageViewController = composeMessageViewController_;
-@synthesize mockView = mockView_;
 @synthesize mockSocialize = mockSocialize_;
 @synthesize mockLocationManager = mockLocationManager_;
-@synthesize mockKbListener = mockKbListener_;
-@synthesize mockLocationViewContainer = mockLocationViewContainer_;
+@synthesize mockUpperContainer = mockUpperContainer_;
+@synthesize mockLowerContainer = mockLowerContainer_;
 @synthesize mockMapContainer = mockMapContainer_;
 @synthesize mockCommentTextView = mockCommentTextView_;
 @synthesize mockLocationText = mockLocationText_;
@@ -53,15 +52,15 @@
     
     self.composeMessageViewController = (SocializeComposeMessageViewController*)self.viewController;
 
-    self.mockView = [OCMockObject niceMockForClass:[UIView class]];
-    [[[(id)self.composeMessageViewController stub] andReturn:self.mockView] view];
-    
     self.mockLocationManager = [OCMockObject mockForClass:[SocializeLocationManager class]];
     self.composeMessageViewController.locationManager = self.mockLocationManager;
     
-    self.mockLocationViewContainer = [OCMockObject niceMockForClass:[UIView class]];
-    self.composeMessageViewController.locationViewContainer = self.mockLocationViewContainer;
+    self.mockUpperContainer = [OCMockObject niceMockForClass:[UIView class]];
+    self.composeMessageViewController.upperContainer = self.mockUpperContainer;
     
+    self.mockLowerContainer = [OCMockObject niceMockForClass:[UIView class]];
+    self.composeMessageViewController.lowerContainer = self.mockLowerContainer;
+
     self.mockMapContainer = [OCMockObject niceMockForClass: [UIView class]];
     self.composeMessageViewController.mapContainer = self.mockMapContainer;
     
@@ -93,8 +92,8 @@
     [(id)self.composeMessageViewController verify];
     [self.mockSocialize verify];
     [self.mockLocationManager verify];
-    [self.mockKbListener verify];
-    [self.mockLocationViewContainer verify];
+    [self.mockUpperContainer verify];
+    [self.mockLowerContainer verify];
     [self.mockMapContainer verify];
     [self.mockCommentTextView verify];
     [self.mockLocationText verify];
@@ -107,8 +106,8 @@
     self.mockSocialize = nil;
     self.mockLocationManager = nil;
     self.mockMapContainer = nil;
-    self.mockKbListener = nil;
-    self.mockLocationViewContainer = nil;
+    self.mockUpperContainer = nil;
+    self.mockLowerContainer = nil;
     self.mockCommentTextView = nil;
     self.mockLocationText = nil;
     self.mockDoNotShareLocationButton = nil;
@@ -125,11 +124,10 @@
 
 -(void)testactivateLocationButtonPressedWithVisibleKB
 {
-    BOOL trueValue = YES;
-    [[[self.mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
-    
-    [[[self.mockKbListener stub]andReturnValue:OCMOCK_VALUE(trueValue)]isVisible];
-    
+    [[[self.mockLocationManager stub] andReturnBool:YES] shouldShareLocation];
+    [[[self.mockCommentTextView stub] andReturnBool:YES] isFirstResponder];
+
+    // Keyboard should hide
     [[self.mockCommentTextView expect] resignFirstResponder];
     
     [self.composeMessageViewController activateLocationButtonPressed:nil]; 
@@ -137,14 +135,11 @@
 
 -(void)testactivateLocationButtonPressedWithInvisibleKB
 {
-    BOOL trueValue = YES;
-    [[[self.mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
-    
-    BOOL falseValue = NO;
-    [[[self.mockKbListener stub] andReturnValue:OCMOCK_VALUE(falseValue)] isVisible];
-    
-    
-    [[self.mockCommentTextView expect]becomeFirstResponder];
+    [[[self.mockLocationManager stub] andReturnBool:YES] shouldShareLocation];
+    [[[self.mockCommentTextView stub] andReturnBool:NO] isFirstResponder];
+
+    // Keyboard should show
+    [[self.mockCommentTextView expect] becomeFirstResponder];
     
     [self.composeMessageViewController activateLocationButtonPressed:nil]; 
 }
@@ -164,60 +159,33 @@
 
 -(void)testSupportOrientation
 {
-//    GHAssertTrue([self.composeMessageViewController shouldAutorotateToInterfaceOrientation: UIInterfaceOrientationPortrait], nil);
+    GHAssertTrue([self.composeMessageViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortrait], nil);
+    GHAssertTrue([self.composeMessageViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft], nil);
+    GHAssertTrue([self.composeMessageViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight], nil);
+    GHAssertFalse([self.composeMessageViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortraitUpsideDown], nil);
 }
 
--(void)testSupportLandscapeRotation
-{
-    BOOL onIos5 = [[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0;
-    BOOL shouldRotateLandscape = [self.composeMessageViewController shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft];
-    
-    GHAssertEquals(onIos5, shouldRotateLandscape, nil);
-}
+#define STATUS_BAR_HEIGHT 20
+#define NAVIGATION_BAR_HEIGHT 32
 
-- (void)testLandscapeLayout {
-    SocializeComposeMessageViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializeComposeMessageViewControllerLandscape" 
-                                                                                                           bundle:nil 
-                                                                                                  entityUrlString:TEST_URL
-                                                       ];
+- (void)testAdjustingForNewKeyboard {
+    CGRect testViewFrame = CGRectMake(0, 0, 480, 268);
+    [[[self.mockView stub] andReturnValue:OCMOCK_VALUE(testViewFrame)] frame];
+    CGRect keyboardEndFrame = CGRectMake(158, 0, 162, 480);
     
-//    [controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationLandscapeRight];
-    [controller adjustForOrientation:UIInterfaceOrientationLandscapeRight];
-    
-    int keyboardHeigth = 162;
-    int viewWidth = 460;
-    int viewHeight = 320;
-    int aciviticontainerHeight = 39;
-    CGRect expectedCommentFrame = CGRectMake(0,0, viewWidth, viewHeight - aciviticontainerHeight - keyboardHeigth);
-    CGRect expectedActivityLocationFrame = CGRectMake(0, expectedCommentFrame.origin.y + expectedCommentFrame.size.height, viewWidth, aciviticontainerHeight);
-    CGRect expectedMapContainerFrame = CGRectMake(0,viewHeight - keyboardHeigth, viewWidth, keyboardHeigth);
-    
-    GHAssertTrue(CGRectEqualToRect(expectedCommentFrame, controller.commentTextView.frame), nil);
-    GHAssertTrue(CGRectEqualToRect(expectedActivityLocationFrame, controller.locationViewContainer.frame), nil);    
-    GHAssertTrue(CGRectEqualToRect(expectedMapContainerFrame, controller.mapContainer.frame), nil);    
-}
+    // An example landscape keyboard in view coordinates, (for a view shifted down 52px for status and navigation bar)
+    CGRect keyboardEndFrameInViewCoordinates = CGRectMake(0, 106, 480, 162);
+    [[[self.mockKeyboardListener stub] andReturnValue:OCMOCK_VALUE(keyboardEndFrameInViewCoordinates)] convertKeyboardRect:keyboardEndFrame toView:self.mockView];
 
--(void)testPortraitLayout
-{   
-    SocializePostCommentViewController * controller = [[SocializePostCommentViewController alloc] initWithNibName:@"SocializeComposeMessageViewController" 
-                                                                                                           bundle:nil 
-                                                                                                  entityUrlString:TEST_URL
-                                                       ];
+    // Lower container should become keyboard frame
+    [[self.mockLowerContainer expect] setFrame:keyboardEndFrameInViewCoordinates];
     
-    [controller adjustForOrientation:UIInterfaceOrientationPortrait];
-//    [controller shouldAutorotateToInterfaceOrientation:UIInterfaceOrientationPortrait];
-    
-    int keyboardHeigth = 216;
-    int viewWidth = 320;
-    int viewHeight = 460;
-    int aciviticontainerHeight = 39;
-    CGRect expectedCommentFrame = CGRectMake(0,0, viewWidth, viewHeight - aciviticontainerHeight - keyboardHeigth);
-    CGRect expectedActivityLocationFrame = CGRectMake(0, expectedCommentFrame.origin.y + expectedCommentFrame.size.height, viewWidth, aciviticontainerHeight);
-    CGRect expectedMapContainerFrame = CGRectMake(0,viewHeight - keyboardHeigth, viewWidth, keyboardHeigth);
-    
-    GHAssertTrue(CGRectEqualToRect(expectedCommentFrame, controller.commentTextView.frame), nil);
-    GHAssertTrue(CGRectEqualToRect(expectedActivityLocationFrame, controller.locationViewContainer.frame), nil);    
-    GHAssertTrue(CGRectEqualToRect(expectedMapContainerFrame, controller.mapContainer.frame), nil);    
+    // Upper container should become remainder
+    CGFloat keyboardHeight = keyboardEndFrameInViewCoordinates.size.height;
+    CGFloat upperHeight = testViewFrame.size.height - keyboardHeight;
+    [[self.mockUpperContainer expect] setFrame:CGRectMake(0, 0, testViewFrame.size.width, upperHeight)];
+
+    [self.composeMessageViewController keyboardListener:nil keyboardWillShowWithWithBeginFrame:CGRectZero endFrame:keyboardEndFrame animationCurve:UIViewAnimationCurveEaseIn animationDuration:.3f];
 }
 
 - (void)prepareForViewDidLoad {
