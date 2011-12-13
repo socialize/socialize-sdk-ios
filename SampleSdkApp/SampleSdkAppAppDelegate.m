@@ -90,16 +90,8 @@
 - (void)application:(UIApplication*)application  
 didFailToRegisterForRemoteNotificationsWithError:(NSError*)error  
 {  
-    // Inform the user that registration failed  
-        UIAlertView* failureAlert = [[UIAlertView alloc] initWithTitle:@"Error"  
-                                                               message:[error localizedDescription]  
-                                                              delegate:nil  
-                                                     cancelButtonTitle:@"OK"  
-                                                     otherButtonTitles:nil];  
-    [failureAlert show];  
-    [failureAlert release];  
+    NSLog(@"Error Register Notifications: %@", [error localizedDescription]);
 }  
-
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {

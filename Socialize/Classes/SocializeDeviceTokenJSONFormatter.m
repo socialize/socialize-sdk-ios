@@ -13,6 +13,9 @@
 @implementation SocializeDeviceTokenJSONFormatter
 
 -(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary {
+    if (toObject == nil || JSONDictionary == nil ) {
+        return;
+    }
     id<SocializeDeviceToken> deviceToken = (id<SocializeDeviceToken>)toObject;
 
     [deviceToken setDevice_token:[JSONDictionary objectForKey:@"device_token"]];

@@ -366,6 +366,11 @@
 		185BEF1814844E9C00D5A56A /* socialize-navbar-button-blue-bg-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1614844E9A00D5A56A /* socialize-navbar-button-blue-bg-inactive.png */; };
 		185BEF1914844E9C00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */; };
 		187981F614902FCF00A37841 /* SocializeDeviceTokenService.m in Sources */ = {isa = PBXBuildFile; fileRef = 187981F414902FCF00A37841 /* SocializeDeviceTokenService.m */; };
+		1880193A1497B85F00146C99 /* SocializeDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F3C1496D79300B659BE /* SocializeDeviceToken.m */; };
+		1880193B1497B87A00146C99 /* SocializeDeviceTokenService.m in Sources */ = {isa = PBXBuildFile; fileRef = 187981F414902FCF00A37841 /* SocializeDeviceTokenService.m */; };
+		1880193E1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1880193D1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m */; };
+		188019401497BD8500146C99 /* SocializeDeviceTokenJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F381496D68400B659BE /* SocializeDeviceTokenJSONFormatter.m */; };
+		188019431497C07A00146C99 /* SocializeDeviceTokenServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 188019421497C07A00146C99 /* SocializeDeviceTokenServiceTests.m */; };
 		18D8EDD1146B162600E9991F /* AuthViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */; };
 		18D8EDD5146B48F700E9991F /* SocializeAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18D8EDD6146B48F700E9991F /* SocializeAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */; };
@@ -2055,6 +2060,10 @@
 		185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-blue-bg-inactive@2x.png"; path = "Resources/socialize-navbar-button-blue-bg-inactive@2x.png"; sourceTree = "<group>"; };
 		187981F314902FCF00A37841 /* SocializeDeviceTokenService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeDeviceTokenService.h; sourceTree = "<group>"; };
 		187981F414902FCF00A37841 /* SocializeDeviceTokenService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeDeviceTokenService.m; sourceTree = "<group>"; };
+		1880193C1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceTokenJSONFormatterTests.h; path = "Test Cases/SocializeDeviceTokenJSONFormatterTests.h"; sourceTree = "<group>"; };
+		1880193D1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceTokenJSONFormatterTests.m; path = "Test Cases/SocializeDeviceTokenJSONFormatterTests.m"; sourceTree = "<group>"; };
+		188019411497C07A00146C99 /* SocializeDeviceTokenServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceTokenServiceTests.h; path = "Test Cases/SocializeDeviceTokenServiceTests.h"; sourceTree = "<group>"; };
+		188019421497C07A00146C99 /* SocializeDeviceTokenServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceTokenServiceTests.m; path = "Test Cases/SocializeDeviceTokenServiceTests.m"; sourceTree = "<group>"; };
 		18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUnitTestApplication.h; sourceTree = "<group>"; };
 		18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUnitTestApplication.m; sourceTree = "<group>"; };
 		18D8EDCF146B162600E9991F /* AuthViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthViewControllerTests.h; path = "Test Cases/AuthViewControllerTests.h"; sourceTree = "<group>"; };
@@ -2683,6 +2692,8 @@
 				166DD7391462B8F10017D0E9 /* SocializeShareBuilderTests.m */,
 				AAC71B69148AE822004413CD /* SocializeErrorTests.h */,
 				AAC71B6A148AE822004413CD /* SocializeErrorTests.m */,
+				188019411497C07A00146C99 /* SocializeDeviceTokenServiceTests.h */,
+				188019421497C07A00146C99 /* SocializeDeviceTokenServiceTests.m */,
 			);
 			name = "Infrastructure Tests";
 			sourceTree = "<group>";
@@ -3063,6 +3074,8 @@
 				1670BE6113C6EC04000CC441 /* SocializeShareFormatterTests.m */,
 				166ACEDD14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.h */,
 				166ACEDE14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m */,
+				1880193C1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.h */,
+				1880193D1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m */,
 			);
 			name = "Parser Tests";
 			sourceTree = "<group>";
@@ -5927,6 +5940,8 @@
 				AAC71B6B148AE822004413CD /* SocializeErrorTests.m in Sources */,
 				AACC4F6B1496A42300F106D4 /* SocializeKeyboardListenerTests.m in Sources */,
 				AAB076651496B4F20024A385 /* SocializeComposeMessageViewControllerTests.m in Sources */,
+				1880193E1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m in Sources */,
+				188019431497C07A00146C99 /* SocializeDeviceTokenServiceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6163,6 +6178,9 @@
 				AA73833B1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */,
 				AAD218FD148AFBD600EF5503 /* StringHelper.m in Sources */,
 				AAEABFF714919575007C3D23 /* SocializeKeyboardListener.m in Sources */,
+				1880193A1497B85F00146C99 /* SocializeDeviceToken.m in Sources */,
+				1880193B1497B87A00146C99 /* SocializeDeviceTokenService.m in Sources */,
+				188019401497BD8500146C99 /* SocializeDeviceTokenJSONFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
