@@ -1581,8 +1581,8 @@
 		AAE9A6F0145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE9A6ED145F55B3001A9F1D /* SocializeFacebookInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE9A6F1145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6EE145F55B3001A9F1D /* SocializeFacebookInterface.m */; };
 		AAE9A6F2145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6EE145F55B3001A9F1D /* SocializeFacebookInterface.m */; };
-		AAEABFF414919575007C3D23 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */; };
-		AAEABFF514919575007C3D23 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */; };
+		AAEABFF414919575007C3D23 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAEABFF514919575007C3D23 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAEABFF614919575007C3D23 /* SocializeKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */; };
 		AAEABFF714919575007C3D23 /* SocializeKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */; };
 		AAEB4A7B1458E88300A01F5B /* SocializeServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */; };

@@ -179,7 +179,6 @@
 		AA5154181491837F0051830B /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51536C1491837F0051830B /* SocializeAuthViewController.xib */; };
 		AA5154191491837F0051830B /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51536D1491837F0051830B /* SocializeCommentDetailsViewController.xib */; };
 		AA51541A1491837F0051830B /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51536E1491837F0051830B /* SocializeCommentsTableViewController.xib */; };
-		AA51541B1491837F0051830B /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51536F1491837F0051830B /* SocializeComposeMessageViewController.xib */; };
 		AA51541D1491837F0051830B /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5153711491837F0051830B /* SocializeEditValueTableViewCell.xib */; };
 		AA51541E1491837F0051830B /* SocializePostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5153721491837F0051830B /* SocializePostCommentViewController.xib */; };
 		AA51541F1491837F0051830B /* SocializePostShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5153731491837F0051830B /* SocializePostShareViewController.xib */; };
@@ -350,7 +349,6 @@
 		AA5154C5149183A00051830B /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51536C1491837F0051830B /* SocializeAuthViewController.xib */; };
 		AA5154C6149183A00051830B /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51536D1491837F0051830B /* SocializeCommentDetailsViewController.xib */; };
 		AA5154C7149183A00051830B /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51536E1491837F0051830B /* SocializeCommentsTableViewController.xib */; };
-		AA5154C8149183A00051830B /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51536F1491837F0051830B /* SocializeComposeMessageViewController.xib */; };
 		AA5154CA149183A00051830B /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5153711491837F0051830B /* SocializeEditValueTableViewCell.xib */; };
 		AA5154CB149183A00051830B /* SocializePostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5153721491837F0051830B /* SocializePostCommentViewController.xib */; };
 		AA5154CC149183A00051830B /* SocializePostShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5153731491837F0051830B /* SocializePostShareViewController.xib */; };
@@ -520,7 +518,6 @@
 		AA515570149183A10051830B /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51536C1491837F0051830B /* SocializeAuthViewController.xib */; };
 		AA515571149183A10051830B /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51536D1491837F0051830B /* SocializeCommentDetailsViewController.xib */; };
 		AA515572149183A10051830B /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51536E1491837F0051830B /* SocializeCommentsTableViewController.xib */; };
-		AA515573149183A10051830B /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51536F1491837F0051830B /* SocializeComposeMessageViewController.xib */; };
 		AA515575149183A10051830B /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5153711491837F0051830B /* SocializeEditValueTableViewCell.xib */; };
 		AA515576149183A10051830B /* SocializePostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5153721491837F0051830B /* SocializePostCommentViewController.xib */; };
 		AA515577149183A10051830B /* SocializePostShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5153731491837F0051830B /* SocializePostShareViewController.xib */; };
@@ -884,7 +881,6 @@
 		AA51536C1491837F0051830B /* SocializeAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeAuthViewController.xib; sourceTree = "<group>"; };
 		AA51536D1491837F0051830B /* SocializeCommentDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeCommentDetailsViewController.xib; sourceTree = "<group>"; };
 		AA51536E1491837F0051830B /* SocializeCommentsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeCommentsTableViewController.xib; sourceTree = "<group>"; };
-		AA51536F1491837F0051830B /* SocializeComposeMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeComposeMessageViewController.xib; sourceTree = "<group>"; };
 		AA5153701491837F0051830B /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SocializeConfigurationInfo.plist; sourceTree = "<group>"; };
 		AA5153711491837F0051830B /* SocializeEditValueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeEditValueTableViewCell.xib; sourceTree = "<group>"; };
 		AA5153721491837F0051830B /* SocializePostCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializePostCommentViewController.xib; sourceTree = "<group>"; };
@@ -1378,7 +1374,6 @@
 				AA51536C1491837F0051830B /* SocializeAuthViewController.xib */,
 				AA51536D1491837F0051830B /* SocializeCommentDetailsViewController.xib */,
 				AA51536E1491837F0051830B /* SocializeCommentsTableViewController.xib */,
-				AA51536F1491837F0051830B /* SocializeComposeMessageViewController.xib */,
 				AA5153701491837F0051830B /* SocializeConfigurationInfo.plist */,
 				AA5153711491837F0051830B /* SocializeEditValueTableViewCell.xib */,
 				AA5153721491837F0051830B /* SocializePostCommentViewController.xib */,
@@ -1803,7 +1798,6 @@
 				AA5154181491837F0051830B /* SocializeAuthViewController.xib in Resources */,
 				AA5154191491837F0051830B /* SocializeCommentDetailsViewController.xib in Resources */,
 				AA51541A1491837F0051830B /* SocializeCommentsTableViewController.xib in Resources */,
-				AA51541B1491837F0051830B /* SocializeComposeMessageViewController.xib in Resources */,
 				AA51541D1491837F0051830B /* SocializeEditValueTableViewCell.xib in Resources */,
 				AA51541E1491837F0051830B /* SocializePostCommentViewController.xib in Resources */,
 				AA51541F1491837F0051830B /* SocializePostShareViewController.xib in Resources */,
@@ -1999,7 +1993,6 @@
 				AA5154C5149183A00051830B /* SocializeAuthViewController.xib in Resources */,
 				AA5154C6149183A00051830B /* SocializeCommentDetailsViewController.xib in Resources */,
 				AA5154C7149183A00051830B /* SocializeCommentsTableViewController.xib in Resources */,
-				AA5154C8149183A00051830B /* SocializeComposeMessageViewController.xib in Resources */,
 				AA5154CA149183A00051830B /* SocializeEditValueTableViewCell.xib in Resources */,
 				AA5154CB149183A00051830B /* SocializePostCommentViewController.xib in Resources */,
 				AA5154CC149183A00051830B /* SocializePostShareViewController.xib in Resources */,
@@ -2178,7 +2171,6 @@
 				AA515570149183A10051830B /* SocializeAuthViewController.xib in Resources */,
 				AA515571149183A10051830B /* SocializeCommentDetailsViewController.xib in Resources */,
 				AA515572149183A10051830B /* SocializeCommentsTableViewController.xib in Resources */,
-				AA515573149183A10051830B /* SocializeComposeMessageViewController.xib in Resources */,
 				AA515575149183A10051830B /* SocializeEditValueTableViewCell.xib in Resources */,
 				AA515576149183A10051830B /* SocializePostCommentViewController.xib in Resources */,
 				AA515577149183A10051830B /* SocializePostShareViewController.xib in Resources */,
