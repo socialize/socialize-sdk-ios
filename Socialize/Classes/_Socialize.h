@@ -84,7 +84,7 @@ otherwise you will get a failure.
 /**Get access to the activity service via <SocializeShareService>.*/
 @property (nonatomic, retain) SocializeShareService           *shareService;
 /**Get access to the activity service via <SocializeNotificationService>.*/
-@property (nonatomic, retain) SocializeDeviceTokenService    *notificationService;
+@property (nonatomic, retain) SocializeDeviceTokenService    *deviceTokenService;
 /**Current delegate*/
 @property (nonatomic, assign) id<SocializeServiceDelegate> delegate;
 
@@ -96,11 +96,6 @@ otherwise you will get a failure.
  @param delegate Implemented by user callback delegate which responds to the  <SocializeServiceDelegate> protocol.
  */
 -(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
-
-/**
- Initializea a singleton to the Socialize Service.
- */
-+(id)shared;
 
 /**
  Save API information to the user defaults.
@@ -509,7 +504,7 @@ otherwise you will get a failure.
 /** Socialize Notification Service **/
 //registers a device token.  Call this method when the developer gets the callback for:
 //didRegisterForRemoteNotificationsWithDeviceToken from the system
--(void)registerDeviceToken:(NSData *)deviceToken;
++(void)registerDeviceToken:(NSData *)deviceToken;
 
 /** @name View stuff */
 

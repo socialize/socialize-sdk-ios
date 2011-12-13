@@ -38,7 +38,7 @@
 @synthesize delegate = _delegate;
 @synthesize activityService = _activityService;
 @synthesize shareService = _shareService;
-@synthesize notificationService = _deviceTokenService;
+@synthesize deviceTokenService = _deviceTokenService;
 
 static Socialize *_sharedSocialize = NULL;
 
@@ -49,7 +49,7 @@ static Socialize *_sharedSocialize = NULL;
     }
 }
 
-+(id)shared {
++(id)sharedSocialize {
     @synchronized(self)
     {
         if (_sharedSocialize == nil)
@@ -420,7 +420,8 @@ static Socialize *_sharedSocialize = NULL;
 
 /* NOTIFICATION SERVICE CALLS */
 #pragma mark notification service stuff
--(void)registerDeviceToken:(NSData *)deviceToken {
-    [_deviceTokenService registerDeviceToken:deviceToken];
++(void)registerDeviceToken:(NSData *)deviceToken {
+    Socialize *socialize = [Socialize sharedSocialize];
+    [socialize.deviceTokenService registerDeviceToken:deviceToken];
 }
 @end
