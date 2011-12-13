@@ -45,6 +45,8 @@
                bundle:(NSBundle *)nibBundleOrNil 
       entityUrlString:(NSString*)entityUrlString;
 
+- (void)addSocializeRoundedGrayButtonImagesToButton:(UIButton*)button;
+- (void)setSubviewForLowerContainer:(UIView*)newSubview;
 
 @end
 

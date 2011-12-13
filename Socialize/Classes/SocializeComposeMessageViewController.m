@@ -143,14 +143,17 @@
     }
 }
 
--(void)configureDoNotShareLocationButton
-{   
+- (void)addSocializeRoundedGrayButtonImagesToButton:(UIButton*)button {
     UIImage * normalImage = [[UIImage imageNamed:@"socialize-comment-button.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
     UIImage * highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
     
-    [self.doNotShareLocationButton setBackgroundImage:normalImage forState:UIControlStateNormal];
-	[self.doNotShareLocationButton setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
-    
+    [button setBackgroundImage:normalImage forState:UIControlStateNormal];
+	[button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
+}
+
+-(void)configureDoNotShareLocationButton
+{   
+    [self addSocializeRoundedGrayButtonImagesToButton:self.doNotShareLocationButton];
 }
 
 -(void)setShareLocation:(BOOL)enableLocation 
@@ -178,6 +181,14 @@
 
 #pragma mark - Buttons actions
 
+- (void)setSubviewForLowerContainer:(UIView*)newSubview {
+    for (UIView *view in self.lowerContainer.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    [self.lowerContainer addSubview:newSubview];
+}
+
 -(IBAction)activateLocationButtonPressed:(id)sender
 {
     if (self.locationManager.shouldShareLocation)
@@ -185,6 +196,7 @@
         if ([commentTextView isFirstResponder]) 
         {
             [commentTextView resignFirstResponder];          
+            [self setSubviewForLowerContainer:self.mapContainer];
         }
         else
         {
@@ -194,6 +206,7 @@
     else
     {
         [self setShareLocation:YES];
+        [self setSubviewForLowerContainer:self.mapContainer];
     }
 }
 
@@ -243,8 +256,6 @@
 {
     [super viewDidLoad];
 
-    [self.lowerContainer addSubview:self.mapContainer];
-    
     self.navigationItem.leftBarButtonItem = self.cancelButton;
     
     self.navigationItem.rightBarButtonItem = self.sendButton;
