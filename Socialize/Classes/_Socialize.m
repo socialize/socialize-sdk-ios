@@ -332,8 +332,12 @@
     [_entityService entityWithKey:entitykey];
 }
 
--(void)createEntityWithUrl:(NSString*)entityKey andName:(NSString*)name{
+-(void)createEntityWithKey:(NSString*)entityKey name:(NSString*)name{
     [_entityService createEntityWithKey:entityKey andName:name];
+}
+
+-(void)createEntityWithUrl:(NSString*)entityKey andName:(NSString*)name{
+    [self createEntityWithKey:entityKey name:name];
 }
 
 #pragma view related stuff

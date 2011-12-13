@@ -428,8 +428,21 @@ otherwise you will get a failure.
  Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
+ @param entityKey Key for the entity
+ @param name Name of the entity
+ */
+-(void)createEntityWithKey:(NSString*)entityKey name:(NSString*)name;
+
+/**
+ Create entity.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
  @param entityKey URL of entity
  @param name Name of entity
+ 
+ @warning Deprecated. Use createEntityWithKey:name: instead
  */
 -(void)createEntityWithUrl:(NSString*)entityKey andName:(NSString*)name;
 

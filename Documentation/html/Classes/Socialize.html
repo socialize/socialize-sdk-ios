@@ -40,13 +40,21 @@
 	
 	<option value="properties">Properties</option>
 	
+	<option value="//api/name/activityService">&nbsp;&nbsp;&nbsp;&nbsp;activityService</option>
+	
 	<option value="//api/name/authService">&nbsp;&nbsp;&nbsp;&nbsp;authService</option>
 	
 	<option value="//api/name/commentsService">&nbsp;&nbsp;&nbsp;&nbsp;commentsService</option>
 	
+	<option value="//api/name/delegate">&nbsp;&nbsp;&nbsp;&nbsp;delegate</option>
+	
 	<option value="//api/name/entityService">&nbsp;&nbsp;&nbsp;&nbsp;entityService</option>
 	
 	<option value="//api/name/likeService">&nbsp;&nbsp;&nbsp;&nbsp;likeService</option>
+	
+	<option value="//api/name/shareService">&nbsp;&nbsp;&nbsp;&nbsp;shareService</option>
+	
+	<option value="//api/name/userService">&nbsp;&nbsp;&nbsp;&nbsp;userService</option>
 	
 	<option value="//api/name/viewService">&nbsp;&nbsp;&nbsp;&nbsp;viewService</option>
 	
@@ -59,9 +67,21 @@
 	
 	<option value="//api/name/apiSecret">&nbsp;&nbsp;&nbsp;&nbsp;+ apiSecret</option>
 	
+	<option value="//api/name/applicationLink">&nbsp;&nbsp;&nbsp;&nbsp;+ applicationLink</option>
+	
+	<option value="//api/name/facebookAppId">&nbsp;&nbsp;&nbsp;&nbsp;+ facebookAppId</option>
+	
+	<option value="//api/name/facebookLocalAppId">&nbsp;&nbsp;&nbsp;&nbsp;+ facebookLocalAppId</option>
+	
 	<option value="//api/name/handleOpenURL:">&nbsp;&nbsp;&nbsp;&nbsp;+ handleOpenURL:</option>
 	
+	<option value="//api/name/removeApplicationLink">&nbsp;&nbsp;&nbsp;&nbsp;+ removeApplicationLink</option>
+	
+	<option value="//api/name/storeApplicationLink:">&nbsp;&nbsp;&nbsp;&nbsp;+ storeApplicationLink:</option>
+	
 	<option value="//api/name/storeFacebookAppId:">&nbsp;&nbsp;&nbsp;&nbsp;+ storeFacebookAppId:</option>
+	
+	<option value="//api/name/storeFacebookLocalAppId:">&nbsp;&nbsp;&nbsp;&nbsp;+ storeFacebookLocalAppId:</option>
 	
 	<option value="//api/name/storeSocializeApiKey:andSecret:">&nbsp;&nbsp;&nbsp;&nbsp;+ storeSocializeApiKey:andSecret:</option>
 	
@@ -70,7 +90,11 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/authenticateAnonymously">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateAnonymously</option>
+	
 	<option value="//api/name/authenticateWithApiKey:apiSecret:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithApiKey:apiSecret:</option>
+	
+	<option value="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:</option>
 	
 	<option value="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</option>
 	
@@ -78,13 +102,21 @@
 	
 	<option value="//api/name/authenticateWithFacebook">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithFacebook</option>
 	
+	<option value="//api/name/authenticatedUser">&nbsp;&nbsp;&nbsp;&nbsp;- authenticatedUser</option>
+	
 	<option value="//api/name/createCommentForEntity:comment:longitude:latitude:">&nbsp;&nbsp;&nbsp;&nbsp;- createCommentForEntity:comment:longitude:latitude:</option>
 	
 	<option value="//api/name/createCommentForEntityWithKey:comment:longitude:latitude:">&nbsp;&nbsp;&nbsp;&nbsp;- createCommentForEntityWithKey:comment:longitude:latitude:</option>
 	
+	<option value="//api/name/createEntityWithKey:name:">&nbsp;&nbsp;&nbsp;&nbsp;- createEntityWithKey:name:</option>
+	
 	<option value="//api/name/createEntityWithUrl:andName:">&nbsp;&nbsp;&nbsp;&nbsp;- createEntityWithUrl:andName:</option>
 	
 	<option value="//api/name/createObjectForProtocol:">&nbsp;&nbsp;&nbsp;&nbsp;- createObjectForProtocol:</option>
+	
+	<option value="//api/name/facebookAvailable">&nbsp;&nbsp;&nbsp;&nbsp;- facebookAvailable</option>
+	
+	<option value="//api/name/facebookSessionValid">&nbsp;&nbsp;&nbsp;&nbsp;- facebookSessionValid</option>
 	
 	<option value="//api/name/getCommentById:">&nbsp;&nbsp;&nbsp;&nbsp;- getCommentById:</option>
 	
@@ -98,7 +130,11 @@
 	
 	<option value="//api/name/isAuthenticated">&nbsp;&nbsp;&nbsp;&nbsp;- isAuthenticated</option>
 	
+	<option value="//api/name/isAuthenticatedWithFacebook">&nbsp;&nbsp;&nbsp;&nbsp;- isAuthenticatedWithFacebook</option>
+	
 	<option value="//api/name/likeEntityWithKey:longitude:latitude:">&nbsp;&nbsp;&nbsp;&nbsp;- likeEntityWithKey:longitude:latitude:</option>
+	
+	<option value="//api/name/receiveFacebookAuthToken">&nbsp;&nbsp;&nbsp;&nbsp;- receiveFacebookAuthToken</option>
 	
 	<option value="//api/name/removeAuthenticationInfo">&nbsp;&nbsp;&nbsp;&nbsp;- removeAuthenticationInfo</option>
 	
@@ -146,13 +182,21 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/activityService">activityService</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authService">authService</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/commentsService">commentsService</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/delegate">delegate</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/entityService">entityService</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/likeService">likeService</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shareService">shareService</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/userService">userService</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/viewService">viewService</a></span></li>
 	
@@ -166,9 +210,21 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/apiSecret">apiSecret</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/applicationLink">applicationLink</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/facebookAppId">facebookAppId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/facebookLocalAppId">facebookLocalAppId</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/handleOpenURL:">handleOpenURL:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeApplicationLink">removeApplicationLink</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/storeApplicationLink:">storeApplicationLink:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/storeFacebookAppId:">storeFacebookAppId:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/storeFacebookLocalAppId:">storeFacebookLocalAppId:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/storeSocializeApiKey:andSecret:">storeSocializeApiKey:andSecret:</a></span></li>
 	
@@ -178,7 +234,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateAnonymously">authenticateAnonymously</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithApiKey:apiSecret:">authenticateWithApiKey:apiSecret:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:">authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</a></span></li>
 	
@@ -186,13 +246,21 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithFacebook">authenticateWithFacebook</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticatedUser">authenticatedUser</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createCommentForEntity:comment:longitude:latitude:">createCommentForEntity:comment:longitude:latitude:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createCommentForEntityWithKey:comment:longitude:latitude:">createCommentForEntityWithKey:comment:longitude:latitude:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createEntityWithKey:name:">createEntityWithKey:name:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createEntityWithUrl:andName:">createEntityWithUrl:andName:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createObjectForProtocol:">createObjectForProtocol:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/facebookAvailable">facebookAvailable</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/facebookSessionValid">facebookSessionValid</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getCommentById:">getCommentById:</a></span></li>
 	
@@ -206,7 +274,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAuthenticated">isAuthenticated</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAuthenticatedWithFacebook">isAuthenticatedWithFacebook</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/likeEntityWithKey:longitude:latitude:">likeEntityWithKey:longitude:latitude:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiveFacebookAuthToken">receiveFacebookAuthToken</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeAuthenticationInfo">removeAuthenticationInfo</a></span></li>
 	
@@ -243,7 +315,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">Socialize.h</td>
+	<td class="specification-value">_Socialize.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -253,7 +325,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>This is a general facade of the   SDK`s API. Through it a third party developers could use the API.</p><div class="warning"><p><strong>Note:</strong> Every thing in socialize revolves around the concept of “Entity”. An entity could be liked, unliked, commented on etc.
+						<p>This is a general facade of the   SDK`s API. Through it a third party developers could use the API.</p><div class="warning"><p><strong>Note:</strong> Every thing in socialize revolves around the concept of &ldquo;Entity&rdquo;. An entity could be liked, unliked, commented on etc.
 In Socialize an entity can only be a url. So when creating an entity always remember to input the key for the entity as a url
 otherwise you will get a failure.</p></div>
 					</div>
@@ -306,6 +378,34 @@ otherwise you will get a failure.</p></div>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/userService">&nbsp;&nbsp;userService</a></code>
+		<span class="tooltip"><p>Get access to the user service via <a href="../Classes/SocializeViewService.html">SocializeViewService</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/activityService">&nbsp;&nbsp;activityService</a></code>
+		<span class="tooltip"><p>Get access to the activity service via <SocializeActivityService>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shareService">&nbsp;&nbsp;shareService</a></code>
+		<span class="tooltip"><p>Get access to the activity service via <SocializeShareService>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
+		<span class="tooltip"><p>Current delegate</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
 </li>
 						</ul>
 						
@@ -317,7 +417,7 @@ otherwise you will get a failure.</p></div>
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithDelegate:">&ndash;&nbsp;initWithDelegate:</a></code>
-		<span class="tooltip"><p>Initialize Socialize service with <a href="../Protocols/SocializeServiceDelegate.html">SocializeServiceDelegate</a> callback.</p></span>
+		<span class="tooltip"><p>Initialize Socialize service with <SocializeServiceDelegate> callback.</p></span>
 	</span>
 	
 	
@@ -337,6 +437,27 @@ otherwise you will get a failure.</p></div>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/storeFacebookLocalAppId:">+&nbsp;storeFacebookLocalAppId:</a></code>
+		<span class="tooltip"><p>Save facebook local app id to the user defaults.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/storeApplicationLink:">+&nbsp;storeApplicationLink:</a></code>
+		<span class="tooltip"><p>Save app link to the user defaults.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeApplicationLink">+&nbsp;removeApplicationLink</a></code>
+		<span class="tooltip"><p>Remove app link from the user defaults.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/apiKey">+&nbsp;apiKey</a></code>
 		<span class="tooltip"><p>Provide access to the Socialize API key.</p></span>
 	</span>
@@ -351,8 +472,36 @@ otherwise you will get a failure.</p></div>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/facebookAppId">+&nbsp;facebookAppId</a></code>
+		<span class="tooltip"><p>Provide access to the facebook app id</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/facebookLocalAppId">+&nbsp;facebookLocalAppId</a></code>
+		<span class="tooltip"><p>Provide access to the facebook local app id (used if you have multiple apps with the same facebook app id, e.g. paid and free)</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/applicationLink">+&nbsp;applicationLink</a></code>
+		<span class="tooltip"><p>Provide access to the app link</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receiveFacebookAuthToken">&ndash;&nbsp;receiveFacebookAuthToken</a></code>
+		<span class="tooltip"><p>Provide access to the facebook authorization token after facebook authentication</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/setDelegate:">&ndash;&nbsp;setDelegate:</a></code>
-		<span class="tooltip"><p>Set callback delegate which responds to protocol <a href="../Protocols/SocializeServiceDelegate.html">SocializeServiceDelegate</a> to the service.</p></span>
+		<span class="tooltip"><p>Set callback delegate which responds to protocol <SocializeServiceDelegate> to the service.</p></span>
 	</span>
 	
 	
@@ -396,6 +545,13 @@ application delegate&rsquo;s method. An example is below.</p></span>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:">&ndash;&nbsp;authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:</a></code>
+		<span class="tooltip"><p>Third party authentication via SDK service.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">&ndash;&nbsp;authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</a></code>
 		<span class="tooltip"><p>Third party authentication via SDK service.</p></span>
 	</span>
@@ -410,6 +566,13 @@ application delegate&rsquo;s method. An example is below.</p></span>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/authenticateAnonymously">&ndash;&nbsp;authenticateAnonymously</a></code>
+		<span class="tooltip"><p>Authenticate with API key and API secret that were saved in the user defaults.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:">&ndash;&nbsp;authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</a></code>
 		<span class="tooltip"><p>Third party authentication.</p></span>
 	</span>
@@ -417,8 +580,36 @@ application delegate&rsquo;s method. An example is below.</p></span>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/facebookAvailable">&ndash;&nbsp;facebookAvailable</a></code>
+		<span class="tooltip"><p>Check if facebook is configured</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/isAuthenticated">&ndash;&nbsp;isAuthenticated</a></code>
 		<span class="tooltip"><p>Check if authentication credentials still valid.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authenticatedUser">&ndash;&nbsp;authenticatedUser</a></code>
+		<span class="tooltip"><p>A SocializeUser object for the currently authenticated user</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isAuthenticatedWithFacebook">&ndash;&nbsp;isAuthenticatedWithFacebook</a></code>
+		<span class="tooltip"><p>Check if authentication credentials still valid /and/ that this is a facebook authentication.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/facebookSessionValid">&ndash;&nbsp;facebookSessionValid</a></code>
+		<span class="tooltip"><p>Check if an existing facebook session already exists</p></span>
 	</span>
 	
 	
@@ -470,6 +661,13 @@ application delegate&rsquo;s method. An example is below.</p></span>
 	<span class="tooltip">
 		<code><a href="#//api/name/getEntityByKey:">&ndash;&nbsp;getEntityByKey:</a></code>
 		<span class="tooltip"><p>Fetch entity by key.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createEntityWithKey:name:">&ndash;&nbsp;createEntityWithKey:name:</a></code>
+		<span class="tooltip"><p>Create entity.</p></span>
 	</span>
 	
 	
@@ -545,6 +743,40 @@ application delegate&rsquo;s method. An example is below.</p></span>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/activityService" title="activityService"></a>
+	<h3 class="subsubtitle method-title">activityService</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get access to the activity service via <SocializeActivityService>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) SocializeActivityService *activityService</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/authService" title="authService"></a>
 	<h3 class="subsubtitle method-title">authService</h3>
 	
@@ -572,7 +804,7 @@ application delegate&rsquo;s method. An example is below.</p></span>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -606,7 +838,41 @@ application delegate&rsquo;s method. An example is below.</p></span>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="subsubtitle method-title">delegate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Current delegate</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) id&lt;SocializeServiceDelegate&gt; delegate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -640,7 +906,7 @@ application delegate&rsquo;s method. An example is below.</p></span>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -674,7 +940,75 @@ application delegate&rsquo;s method. An example is below.</p></span>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shareService" title="shareService"></a>
+	<h3 class="subsubtitle method-title">shareService</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get access to the activity service via <SocializeShareService>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) SocializeShareService *shareService</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/userService" title="userService"></a>
+	<h3 class="subsubtitle method-title">userService</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get access to the user service via <a href="../Classes/SocializeViewService.html">SocializeViewService</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) SocializeUserService *userService</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -708,7 +1042,7 @@ application delegate&rsquo;s method. An example is below.</p></span>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -755,7 +1089,7 @@ application delegate&rsquo;s method. An example is below.</p></span>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -794,7 +1128,124 @@ application delegate&rsquo;s method. An example is below.</p></span>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/applicationLink" title="applicationLink"></a>
+	<h3 class="subsubtitle method-title">applicationLink</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Provide access to the app link</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSString *)applicationLink</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>link to the app</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/facebookAppId" title="facebookAppId"></a>
+	<h3 class="subsubtitle method-title">facebookAppId</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Provide access to the facebook app id</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSString *)facebookAppId</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Facebook app id</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/facebookLocalAppId" title="facebookLocalAppId"></a>
+	<h3 class="subsubtitle method-title">facebookLocalAppId</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Provide access to the facebook local app id (used if you have multiple apps with the same facebook app id, e.g. paid and free)</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSString *)facebookLocalAppId</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Local Facebook app id</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -852,7 +1303,85 @@ application delegate&rsquo;s method. An example is below.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeApplicationLink" title="removeApplicationLink"></a>
+	<h3 class="subsubtitle method-title">removeApplicationLink</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Remove app link from the user defaults.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)removeApplicationLink</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/storeApplicationLink:" title="storeApplicationLink:"></a>
+	<h3 class="subsubtitle method-title">storeApplicationLink:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Save app link to the user defaults.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)storeApplicationLink:(NSString *)<em>link</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>application</em></dt>
+			<dd><p>link(URL)</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -896,7 +1425,51 @@ application delegate&rsquo;s method. An example is below.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/storeFacebookLocalAppId:" title="storeFacebookLocalAppId:"></a>
+	<h3 class="subsubtitle method-title">storeFacebookLocalAppId:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Save facebook local app id to the user defaults.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)storeFacebookLocalAppId:(NSString *)<em>facebookLocalAppID</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>facebookLocalAppID</em></dt>
+			<dd><p>Facebook App Id</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -945,7 +1518,7 @@ application delegate&rsquo;s method. An example is below.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -958,6 +1531,64 @@ application delegate&rsquo;s method. An example is below.</p>
 					<div class="section section-methods">
 						<a title="Instance Methods" name="instance_methods"></a>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/authenticateAnonymously" title="authenticateAnonymously"></a>
+	<h3 class="subsubtitle method-title">authenticateAnonymously</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Authenticate with API key and API secret that were saved in the user defaults.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)authenticateAnonymously</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method is used to perform anonymous authentication. It means that uses could not do any action with his profile.
+Find information how to get API key and secret on <a href="http://www.getsocialize.com/">Socialize.</a></p>
+
+<p>Successful call of this method invokes <SocializeServiceDelegate> didAuthenticate: method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:">&ndash; authenticateWithApiKey:apiSecret:</a></p></code></li>
+			
+			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">&ndash; authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</a></p></code></li>
+			
+			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:">&ndash; authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</a></p></code></li>
+			
+			<li><code><p><a href="#//api/name/storeSocializeApiKey:andSecret:">+ storeSocializeApiKey:andSecret:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/authenticateWithApiKey:apiSecret:" title="authenticateWithApiKey:apiSecret:"></a>
@@ -999,8 +1630,8 @@ application delegate&rsquo;s method. An example is below.</p>
 		<p>This method is used to perform anonymous authentication. It means that uses could not do any action with his profile.
 Find information how to get API key and secret on <a href="http://www.getsocialize.com/">Socialize.</a></p>
 
-<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html">SocializeServiceDelegate</a> didAuthenticate: method.
-In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+<p>Successful call of this method invokes <SocializeServiceDelegate> didAuthenticate: method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p>
 	</div>
 	
 	
@@ -1022,7 +1653,92 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:" title="authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:"></a>
+	<h3 class="subsubtitle method-title">authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Third party authentication via SDK service.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)authenticateWithApiKey:(NSString *)<em>apiKey</em> apiSecret:(NSString *)<em>apiSecret</em> thirdPartyAppId:(NSString *)<em>thirdPartyAppId</em> thirdPartyLocalAppId:(NSString *)<em>thirdPartyLocalAppId</em> thirdPartyName:(SocializeThirdPartyAuthType)<em>thirdPartyName</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>apiKey</em></dt>
+			<dd><p>API access key.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>apiSecret</em></dt>
+			<dd><p>API access secret.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>thirdPartyAppId</em></dt>
+			<dd><p>Extern service application id.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>thirdPartyLocalAppId</em></dt>
+			<dd><p>Extern service local application id.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>thirdPartyName</em></dt>
+			<dd><p>Third party authentication name. Current verion of SDK suports only FacebookAuth value.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user&rsquo;s profile.</p>
+
+<p>Find information how to get API key and secret on <a href="http://www.getsocialize.com/">Socialize.</a></p>
+
+<p>Successful call of this method invokes <SocializeServiceDelegate> didAuthenticate: method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p><div class="warning"><p><strong>Note:</strong> In current SDK version only Facebook authentication is available.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:">&ndash; authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</a></p></code></li>
+			
+			<li><code><p><a href="#//api/name/authenticateWithApiKey:apiSecret:">&ndash; authenticateWithApiKey:apiSecret:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1039,7 +1755,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)authenticateWithApiKey:(NSString *)<em>apiKey</em> apiSecret:(NSString *)<em>apiSecret</em> thirdPartyAppId:(NSString *)<em>thirdPartyAppId</em> thirdPartyName:(ThirdPartyAuthName)<em>thirdPartyName</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)authenticateWithApiKey:(NSString *)<em>apiKey</em> apiSecret:(NSString *)<em>apiSecret</em> thirdPartyAppId:(NSString *)<em>thirdPartyAppId</em> thirdPartyName:(SocializeThirdPartyAuthType)<em>thirdPartyName</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
@@ -1075,12 +1791,12 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.</p>
+		<p>Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user&rsquo;s profile.</p>
 
 <p>Find information how to get API key and secret on <a href="http://www.getsocialize.com/">Socialize.</a></p>
 
-<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html">SocializeServiceDelegate</a> didAuthenticate: method.
-In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p><div class="warning"><p><strong>Note:</strong> In current SDK version only Facebook authentication is available.</p></div>
+<p>Successful call of this method invokes <SocializeServiceDelegate> didAuthenticate: method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p><div class="warning"><p><strong>Note:</strong> In current SDK version only Facebook authentication is available.</p></div>
 	</div>
 	
 	
@@ -1102,7 +1818,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1119,7 +1835,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)authenticateWithApiKey:(NSString *)<em>apiKey</em> apiSecret:(NSString *)<em>apiSecret</em> thirdPartyAuthToken:(NSString *)<em>thirdPartyAuthToken</em> thirdPartyAppId:(NSString *)<em>thirdPartyAppId</em> thirdPartyName:(ThirdPartyAuthName)<em>thirdPartyName</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)authenticateWithApiKey:(NSString *)<em>apiKey</em> apiSecret:(NSString *)<em>apiSecret</em> thirdPartyAuthToken:(NSString *)<em>thirdPartyAuthToken</em> thirdPartyAppId:(NSString *)<em>thirdPartyAppId</em> thirdPartyName:(SocializeThirdPartyAuthType)<em>thirdPartyName</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
@@ -1160,12 +1876,12 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user’s profile.</p>
+		<p>Third Party Authentication uses a service like Facebook to verify the user. Using third party authentication allows the user to maintain a profile that is linked to their activity. Without using Third Party Authentication, the user will still be able to access socialize features but these actions will not be linked to the user&rsquo;s profile.</p>
 
 <p>Find information how to get API key and secert on <a href="http://www.getsocialize.com/">Socialize.</a></p>
 
-<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html">SocializeServiceDelegate</a> didAuthenticate: method.
-In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p><div class="warning"><p>In current SDK version only Facebook authentication is available.</p></div>
+<p>Successful call of this method invokes <SocializeServiceDelegate> didAuthenticate: method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p><div class="warning"><p>In current SDK version only Facebook authentication is available.</p></div>
 	</div>
 	
 	
@@ -1187,7 +1903,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1217,8 +1933,8 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>This is a convenience method for facebook authentication (without an existing token).</p>
 
-<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html">SocializeServiceDelegate</a> didAuthenticate: method.
-In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+<p>Successful call of this method invokes <SocializeServiceDelegate> didAuthenticate: method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p>
 	</div>
 	
 	
@@ -1242,7 +1958,46 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/authenticatedUser" title="authenticatedUser"></a>
+	<h3 class="subsubtitle method-title">authenticatedUser</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A SocializeUser object for the currently authenticated user</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id&lt;SocializeUser&gt;)authenticatedUser</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A SocializeUser object for the currently authenticated user</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1295,8 +2050,8 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didCreate:">[SocializeServiceDelegate service:didCreate:]</a> method.
-In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+		<p>Successful call of this method invokes [SocializeServiceDelegate service:didCreate:] method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p>
 	</div>
 	
 	
@@ -1316,7 +2071,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1369,8 +2124,8 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didCreate:">[SocializeServiceDelegate service:didCreate:]</a> method.
-In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+		<p>Successful call of this method invokes [SocializeServiceDelegate service:didCreate:] method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p>
 	</div>
 	
 	
@@ -1390,7 +2145,62 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/createEntityWithKey:name:" title="createEntityWithKey:name:"></a>
+	<h3 class="subsubtitle method-title">createEntityWithKey:name:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create entity.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)createEntityWithKey:(NSString *)<em>entityKey</em> name:(NSString *)<em>name</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>entityKey</em></dt>
+			<dd><p>Key for the entity</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>Name of the entity</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Successful call of this method invokes [SocializeServiceDelegate service:didCreate:] method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1433,8 +2243,8 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didCreate:">[SocializeServiceDelegate service:didCreate:]</a> method.
-In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+		<p>Successful call of this method invokes [SocializeServiceDelegate service:didCreate:] method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p><div class="warning"><p>Deprecated. Use createEntityWithKey:name: instead</p></div>
 	</div>
 	
 	
@@ -1445,7 +2255,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1497,7 +2307,85 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/facebookAvailable" title="facebookAvailable"></a>
+	<h3 class="subsubtitle method-title">facebookAvailable</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Check if facebook is configured</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)facebookAvailable</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the app is properly configured for facebook usage</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/facebookSessionValid" title="facebookSessionValid"></a>
+	<h3 class="subsubtitle method-title">facebookSessionValid</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Check if an existing facebook session already exists</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)facebookSessionValid</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if there is already a valid facebook session for this app</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1535,8 +2423,8 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFetchElements:">[SocializeServiceDelegate service:didFetchElements:]</a> method.
-In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+		<p>Successful call of this method invokes [SocializeServiceDelegate service:didFetchElements:] method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p>
 	</div>
 	
 	
@@ -1547,7 +2435,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1595,10 +2483,10 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFetchElements:">[SocializeServiceDelegate service:didFetchElements:]</a> method.
-In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+		<p>Successful call of this method invokes [SocializeServiceDelegate service:didFetchElements:] method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p>
 
-<p>Parameters first and last (OPTIONAL) : specify range to do pagination by entity’s key. First is included, and last is excluded.</p>
+<p>Parameters first and last (OPTIONAL) : specify range to do pagination by entity&rsquo;s key. First is included, and last is excluded.</p>
 
 <p>Default values:</p>
 
@@ -1619,7 +2507,7 @@ If only last = 150 is passed, then last is truncated to 100. If last = 25, then 
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1657,8 +2545,8 @@ If only last = 150 is passed, then last is truncated to 100. If last = 25, then 
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFetchElements:">[SocializeServiceDelegate service:didFetchElements:]</a> method.
-In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+		<p>Successful call of this method invokes [SocializeServiceDelegate service:didFetchElements:] method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p>
 	</div>
 	
 	
@@ -1669,7 +2557,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1723,7 +2611,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1736,7 +2624,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Initialize Socialize service with <a href="../Protocols/SocializeServiceDelegate.html">SocializeServiceDelegate</a> callback.</p>
+		<p>Initialize Socialize service with <SocializeServiceDelegate> callback.</p>
 	</div>		
 	
 	
@@ -1748,7 +2636,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>delegate</em></dt>
-			<dd><p>Implemented by user callback delegate which responds to the  <a href="../Protocols/SocializeServiceDelegate.html">SocializeServiceDelegate</a> protocol.</p></dd>
+			<dd><p>Implemented by user callback delegate which responds to the  <SocializeServiceDelegate> protocol.</p></dd>
 		</dl>
 		
 	</div>
@@ -1767,7 +2655,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1806,7 +2694,46 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isAuthenticatedWithFacebook" title="isAuthenticatedWithFacebook"></a>
+	<h3 class="subsubtitle method-title">isAuthenticatedWithFacebook</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Check if authentication credentials still valid /and/ that this is a facebook authentication.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)isAuthenticatedWithFacebook</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if credentials are valid and facebook was used for authentication, and NO otherwise</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1854,8 +2781,8 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didCreate:">[SocializeServiceDelegate service:didCreate:]</a> method.
-In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+		<p>Successful call of this method invokes [SocializeServiceDelegate service:didCreate:] method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p>
 	</div>
 	
 	
@@ -1866,7 +2793,46 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/receiveFacebookAuthToken" title="receiveFacebookAuthToken"></a>
+	<h3 class="subsubtitle method-title">receiveFacebookAuthToken</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Provide access to the facebook authorization token after facebook authentication</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)receiveFacebookAuthToken</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Facebook authorization token</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1905,7 +2871,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1918,7 +2884,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Set callback delegate which responds to protocol <a href="../Protocols/SocializeServiceDelegate.html">SocializeServiceDelegate</a> to the service.</p>
+		<p>Set callback delegate which responds to protocol <SocializeServiceDelegate> to the service.</p>
 	</div>		
 	
 	
@@ -1930,7 +2896,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>delegate</em></dt>
-			<dd><p>Implemented by user callback delegate which responds to the  <a href="../Protocols/SocializeServiceDelegate.html">SocializeServiceDelegate</a> protocol.</p></dd>
+			<dd><p>Implemented by user callback delegate which responds to the  <SocializeServiceDelegate> protocol.</p></dd>
 		</dl>
 		
 	</div>
@@ -1949,7 +2915,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -1987,8 +2953,8 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didDelete:">[SocializeServiceDelegate service:didDelete:]</a> method.
-In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+		<p>Successful call of this method invokes [SocializeServiceDelegate service:didDelete:] method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p>
 	</div>
 	
 	
@@ -1999,7 +2965,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -2047,8 +3013,8 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Successful call of this method invokes <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didCreate:">[SocializeServiceDelegate service:didCreate:]</a> method.
-In case of error it will be called <a href="../Protocols/SocializeServiceDelegate.html#//api/name/service:didFail:">[SocializeServiceDelegate service:didFail:]</a> method.</p>
+		<p>Successful call of this method invokes [SocializeServiceDelegate service:didCreate:] method.
+In case of error it will be called [SocializeServiceDelegate service:didFail:] method.</p>
 	</div>
 	
 	
@@ -2059,7 +3025,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">Socialize.h</code><br />
+		<code class="declared-in-ref">_Socialize.h</code><br />
 	</div>				
 	
 	
@@ -2078,7 +3044,7 @@ In case of error it will be called <a href="../Protocols/SocializeServiceDelegat
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 Socialize Inc. All rights reserved. (Last updated: 2011-09-22)</span><br />
+						<p><span class="copyright">&copy; 2011 Socialize Inc. All rights reserved. (Last updated: 2011-12-13)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
 						
