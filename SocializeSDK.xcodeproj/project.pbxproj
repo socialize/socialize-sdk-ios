@@ -360,10 +360,14 @@
 		180EFEA514609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */; };
 		18296316148450F100F6EFF3 /* socialize-navbar-button-blue-bg-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */; };
 		18296317148450F700F6EFF3 /* socialize-navbar-button-blue-bg-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1614844E9A00D5A56A /* socialize-navbar-button-blue-bg-inactive.png */; };
+		183514DF1497B70A00976838 /* SocializeDeviceToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 18398F3B1496D79300B659BE /* SocializeDeviceToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18398F391496D68500B659BE /* SocializeDeviceTokenJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 18398F371496D68400B659BE /* SocializeDeviceTokenJSONFormatter.h */; };
+		18398F3A1496D68500B659BE /* SocializeDeviceTokenJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F381496D68400B659BE /* SocializeDeviceTokenJSONFormatter.m */; };
+		18398F3D1496D79300B659BE /* SocializeDeviceToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 18398F3B1496D79300B659BE /* SocializeDeviceToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18398F3E1496D79300B659BE /* SocializeDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F3C1496D79300B659BE /* SocializeDeviceToken.m */; };
 		185BEF1814844E9C00D5A56A /* socialize-navbar-button-blue-bg-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1614844E9A00D5A56A /* socialize-navbar-button-blue-bg-inactive.png */; };
 		185BEF1914844E9C00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */; };
-		187981F514902FCF00A37841 /* SocializeNotificationService.h in Headers */ = {isa = PBXBuildFile; fileRef = 187981F314902FCF00A37841 /* SocializeNotificationService.h */; };
-		187981F614902FCF00A37841 /* SocializeNotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 187981F414902FCF00A37841 /* SocializeNotificationService.m */; };
+		187981F614902FCF00A37841 /* SocializeDeviceTokenService.m in Sources */ = {isa = PBXBuildFile; fileRef = 187981F414902FCF00A37841 /* SocializeDeviceTokenService.m */; };
 		18D8EDD1146B162600E9991F /* AuthViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */; };
 		18D8EDD5146B48F700E9991F /* SocializeAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18D8EDD6146B48F700E9991F /* SocializeAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */; };
@@ -1964,10 +1968,14 @@
 		180EFE9414609C1000AA957D /* SocializeAuthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAuthTableViewCell.m; sourceTree = "<group>"; };
 		180EFEA014609C7800AA957D /* SocializeAuthInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeAuthInfoTableViewCell.h; sourceTree = "<group>"; };
 		180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAuthInfoTableViewCell.m; sourceTree = "<group>"; };
+		18398F371496D68400B659BE /* SocializeDeviceTokenJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceTokenJSONFormatter.h; path = Classes/SocializeDeviceTokenJSONFormatter.h; sourceTree = "<group>"; };
+		18398F381496D68400B659BE /* SocializeDeviceTokenJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceTokenJSONFormatter.m; path = Classes/SocializeDeviceTokenJSONFormatter.m; sourceTree = "<group>"; };
+		18398F3B1496D79300B659BE /* SocializeDeviceToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceToken.h; path = Classes/SocializeDeviceToken.h; sourceTree = "<group>"; };
+		18398F3C1496D79300B659BE /* SocializeDeviceToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceToken.m; path = Classes/SocializeDeviceToken.m; sourceTree = "<group>"; };
 		185BEF1614844E9A00D5A56A /* socialize-navbar-button-blue-bg-inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-blue-bg-inactive.png"; path = "Resources/socialize-navbar-button-blue-bg-inactive.png"; sourceTree = "<group>"; };
 		185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-blue-bg-inactive@2x.png"; path = "Resources/socialize-navbar-button-blue-bg-inactive@2x.png"; sourceTree = "<group>"; };
-		187981F314902FCF00A37841 /* SocializeNotificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeNotificationService.h; sourceTree = "<group>"; };
-		187981F414902FCF00A37841 /* SocializeNotificationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeNotificationService.m; sourceTree = "<group>"; };
+		187981F314902FCF00A37841 /* SocializeDeviceTokenService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeDeviceTokenService.h; sourceTree = "<group>"; };
+		187981F414902FCF00A37841 /* SocializeDeviceTokenService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeDeviceTokenService.m; sourceTree = "<group>"; };
 		18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUnitTestApplication.h; sourceTree = "<group>"; };
 		18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUnitTestApplication.m; sourceTree = "<group>"; };
 		18D8EDCF146B162600E9991F /* AuthViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthViewControllerTests.h; path = "Test Cases/AuthViewControllerTests.h"; sourceTree = "<group>"; };
@@ -2724,8 +2732,12 @@
 				9A4D296E1393FEDA0065C0CB /* SocializeApplication.m */,
 				9A4D296F1393FEDA0065C0CB /* SocializeComment.h */,
 				9A4D29701393FEDB0065C0CB /* SocializeComment.m */,
+				18398F3B1496D79300B659BE /* SocializeDeviceToken.h */,
+				18398F3C1496D79300B659BE /* SocializeDeviceToken.m */,
 				9A4D29711393FEDB0065C0CB /* SocializeEntity.h */,
 				9A4D29721393FEDC0065C0CB /* SocializeEntity.m */,
+				6D205A3813C3D77C00D0645E /* SocializeError.h */,
+				6D205A3913C3D77C00D0645E /* SocializeError.m */,
 				9A4D29731393FEDC0065C0CB /* SocializeObject.h */,
 				9A4D29741393FEDC0065C0CB /* SocializeObject.m */,
 				9A4D29751393FEDC0065C0CB /* SocializeUser.h */,
@@ -2738,8 +2750,6 @@
 				6D144D0113BCE8AD001D8E0A /* SocializeView.m */,
 				6D9A0BA113BE1BA600AE949C /* SocializeShare.h */,
 				6D9A0BA213BE1BA600AE949C /* SocializeShare.m */,
-				6D205A3813C3D77C00D0645E /* SocializeError.h */,
-				6D205A3913C3D77C00D0645E /* SocializeError.m */,
 			);
 			name = SocializeObjects;
 			sourceTree = "<group>";
@@ -2899,6 +2909,8 @@
 				5C3069BD13A2B396007335FF /* SocializeObjectFormatter.m */,
 				16F449CC13AF536E003BE655 /* SocializeApplicationJSONFormatter.h */,
 				16F449CD13AF536F003BE655 /* SocializeApplicationJSONFormatter.m */,
+				16D5479F144EA4320010732A /* SocializeActivityJSONFormatter.h */,
+				16D547A0144EA4330010732A /* SocializeActivityJSONFormatter.m */,
 				84B8F3D51396EF4D00C95F41 /* SocializeObjectJSONFormatter.h */,
 				84B8F3D41396EF4D00C95F41 /* SocializeObjectJSONFormatter.m */,
 				84B8F3D01396EF4100C95F41 /* SocializeEntityJSONFormatter.h */,
@@ -2919,8 +2931,8 @@
 				6D9A0BA613BE1EA100AE949C /* SocializeShareJSONFormatter.m */,
 				6D205A3C13C3DB6300D0645E /* SocializeErrorFormatter.h */,
 				6D205A3D13C3DB7000D0645E /* SocializeErrorFormatter.m */,
-				16D5479F144EA4320010732A /* SocializeActivityJSONFormatter.h */,
-				16D547A0144EA4330010732A /* SocializeActivityJSONFormatter.m */,
+				18398F371496D68400B659BE /* SocializeDeviceTokenJSONFormatter.h */,
+				18398F381496D68400B659BE /* SocializeDeviceTokenJSONFormatter.m */,
 			);
 			name = SocializeObjectParsers;
 			sourceTree = "<group>";
@@ -3627,8 +3639,8 @@
 				6D49743A13B2586C00463D23 /* SocializeLikeService.m */,
 				9A68EB5813AFFA3900E38356 /* SocializeAuthenticateService.h */,
 				9A68EB5913AFFA3900E38356 /* SocializeAuthenticateService.m */,
-				187981F314902FCF00A37841 /* SocializeNotificationService.h */,
-				187981F414902FCF00A37841 /* SocializeNotificationService.m */,
+				187981F314902FCF00A37841 /* SocializeDeviceTokenService.h */,
+				187981F414902FCF00A37841 /* SocializeDeviceTokenService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -3931,6 +3943,7 @@
 				AA7383351489B596009BE1D0 /* SocializeErrorDefinitions.h in Headers */,
 				AAD218FB148AFBD600EF5503 /* StringHelper.h in Headers */,
 				AA06B68D148EE39E00D084D4 /* DebugUtil.h in Headers */,
+				183514DF1497B70A00976838 /* SocializeDeviceToken.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4016,7 +4029,8 @@
 				AA7383341489B596009BE1D0 /* SocializeErrorDefinitions.h in Headers */,
 				AAD218FA148AFBD600EF5503 /* StringHelper.h in Headers */,
 				AA06B68C148EE39E00D084D4 /* DebugUtil.h in Headers */,
-				187981F514902FCF00A37841 /* SocializeNotificationService.h in Headers */,
+				18398F391496D68500B659BE /* SocializeDeviceTokenJSONFormatter.h in Headers */,
+				18398F3D1496D79300B659BE /* SocializeDeviceToken.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5660,7 +5674,9 @@
 				AA7383311489B562009BE1D0 /* NSError+Socialize.m in Sources */,
 				AA73833A1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */,
 				AAD218FC148AFBD600EF5503 /* StringHelper.m in Sources */,
-				187981F614902FCF00A37841 /* SocializeNotificationService.m in Sources */,
+				187981F614902FCF00A37841 /* SocializeDeviceTokenService.m in Sources */,
+				18398F3A1496D68500B659BE /* SocializeDeviceTokenJSONFormatter.m in Sources */,
+				18398F3E1496D79300B659BE /* SocializeDeviceToken.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6474,7 +6490,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: isaac mosquera (L79C47AF68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: isaac mosquera (L79C47AF68)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -6506,6 +6523,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9F637AFD-95EB-45B4-AF77-8A190BDDA854";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9F637AFD-95EB-45B4-AF77-8A190BDDA854";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -6516,7 +6535,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: isaac mosquera (L79C47AF68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: isaac mosquera (L79C47AF68)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -6542,6 +6562,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9F637AFD-95EB-45B4-AF77-8A190BDDA854";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9F637AFD-95EB-45B4-AF77-8A190BDDA854";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

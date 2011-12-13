@@ -34,10 +34,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
-   
-    Socialize *socialize = [[Socialize alloc] initWithDelegate:self];  
-    NSString *st = @"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
-    [socialize registerDeviceToken: [st dataUsingEncoding:NSUTF8StringEncoding]];
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];  
 
     UIViewController* rootViewController = nil;
        
@@ -84,6 +81,25 @@
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
 }
+
+
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken
+{  
+    [[Socialize shared] registerDeviceToken:deviceToken];
+}
+- (void)application:(UIApplication*)application  
+didFailToRegisterForRemoteNotificationsWithError:(NSError*)error  
+{  
+    // Inform the user that registration failed  
+        UIAlertView* failureAlert = [[UIAlertView alloc] initWithTitle:@"Error"  
+                                                               message:[error localizedDescription]  
+                                                              delegate:nil  
+                                                     cancelButtonTitle:@"OK"  
+                                                     otherButtonTitles:nil];  
+    [failureAlert show];  
+    [failureAlert release];  
+}  
+
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {

@@ -6,6 +6,8 @@
 	<dict>
 		<key>SocializeApplication</key>
 		<string>SocializeApplicationJSONFormatter</string>
+		<key>SocializeDeviceToken</key>
+		<string>SocializeDeviceTokenJSONFormatter</string>
 		<key>SocializeComment</key>
 		<string>SocializeCommentJSONFormatter</string>
 		<key>SocializeEntity</key>
@@ -27,6 +29,8 @@
 	<dict>
 		<key>SocializeActivity</key>
 		<string>SocializeActivity</string>
+		<key>SocializeDeviceToken</key>
+		<string>SocializeDeviceToken</string>
 		<key>SocializeApplication</key>
 		<string>SocializeApplication</string>
 		<key>SocializeComment</key>

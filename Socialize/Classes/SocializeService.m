@@ -72,9 +72,7 @@
     [request connect];
 }
 
-#pragma mark - Socialize requst delegate
-
-
+#pragma mark - Socialize request delegate
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error {
      //[self doDidFailWithError:error];
     if([self.delegate respondsToSelector:@selector(service:didFail:)])
@@ -138,6 +136,8 @@
 {
     //Move the following lines to the base  SocializeService Class, because it's the same for all objects.
     NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    
+    NSLog(@"the response from the server is: %@", responseString );
     
     if(request.expectedJSONFormat == SocializeAny)
         [self invokeAppropriateCallback:request objectList:nil errorList:nil];

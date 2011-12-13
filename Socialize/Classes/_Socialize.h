@@ -40,7 +40,7 @@
 @class SocializeUserService;
 @class SocializeActivityService;
 @class SocializeShareService;
-@class SocializeNotificationService;
+@class SocializeDeviceTokenService;
 @class UIImage;
 @class SocializeFacebook;
 
@@ -65,7 +65,7 @@ otherwise you will get a failure.
     SocializeUserService            *_userService;
     SocializeActivityService        *_activityService;
     SocializeShareService           *_shareService;
-    SocializeNotificationService    *_notificationService;
+    SocializeDeviceTokenService    *_deviceTokenService;
 }
 /**Get access to the authentication service via <SocializeAuthenticateService>.*/
 @property (nonatomic, retain) SocializeAuthenticateService    *authService;
@@ -84,7 +84,7 @@ otherwise you will get a failure.
 /**Get access to the activity service via <SocializeShareService>.*/
 @property (nonatomic, retain) SocializeShareService           *shareService;
 /**Get access to the activity service via <SocializeNotificationService>.*/
-@property (nonatomic, retain) SocializeNotificationService    *notificationService;
+@property (nonatomic, retain) SocializeDeviceTokenService    *notificationService;
 /**Current delegate*/
 @property (nonatomic, assign) id<SocializeServiceDelegate> delegate;
 
@@ -96,6 +96,11 @@ otherwise you will get a failure.
  @param delegate Implemented by user callback delegate which responds to the  <SocializeServiceDelegate> protocol.
  */
 -(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
+
+/**
+ Initializea a singleton to the Socialize Service.
+ */
++(id)shared;
 
 /**
  Save API information to the user defaults.

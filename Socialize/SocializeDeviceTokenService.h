@@ -8,7 +8,7 @@
 
 #import "SocializeService.h"
 
-@interface SocializeNotificationService : SocializeService
+@interface SocializeDeviceTokenService : SocializeService
 
 
 -(void)registerDeviceTokens:(NSArray *) tokens;

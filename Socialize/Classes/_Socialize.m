@@ -17,7 +17,7 @@
 #import "SocializeCommentsService.h"
 #import "SocializeUserService.h"
 #import "SocializeViewService.h"
-#import "SocializeNotificationService.h"
+#import "SocializeDeviceTokenService.h"
 #import "SocializeShareService.h"
 #import "Facebook+Socialize.h"
 
@@ -38,14 +38,25 @@
 @synthesize delegate = _delegate;
 @synthesize activityService = _activityService;
 @synthesize shareService = _shareService;
-@synthesize notificationService = _notificationService;
+@synthesize notificationService = _deviceTokenService;
+
+static Socialize *_sharedSocialize = NULL;
+
 + (void)initialize {
     if (self == [Socialize class]) {
         Class dynamicTest = NSClassFromString(@"SocializeDynamicTest");
-        NSAssert(dynamicTest != nil, @"Dynamic Class Load Error -- Is the application linked with -all_load?");
+        NSAssert(dynamicTest != nil, @"Dynamic Class Load Error -- does your application build settings for 'other linker flags' contain the flag '-all_load'?");
     }
 }
 
++(id)shared {
+    @synchronized(self)
+    {
+        if (_sharedSocialize == nil)
+            _sharedSocialize = [[self alloc] initWithDelegate:nil];
+    }
+    return _sharedSocialize;
+}
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
     [_authService release]; _authService = nil;
@@ -56,8 +67,8 @@
     [_userService release]; _userService = nil;
     [_activityService release]; _activityService = nil;
     [_shareService release]; _shareService = nil;
-    [_notificationService release]; _notificationService = nil;
-    
+    [_deviceTokenService release]; _deviceTokenService = nil;
+    [_sharedSocialize release]; _sharedSocialize = nil;
     [super dealloc];
 }
 
@@ -76,7 +87,7 @@
         _userService = [[SocializeUserService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _activityService = [[SocializeActivityService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _shareService = [[SocializeShareService  alloc] initWithObjectFactory:_objectFactory delegate:delegate];
-        _notificationService = [[SocializeNotificationService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
+        _deviceTokenService = [[SocializeDeviceTokenService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
     }
     return self;
 }
@@ -410,6 +421,6 @@
 /* NOTIFICATION SERVICE CALLS */
 #pragma mark notification service stuff
 -(void)registerDeviceToken:(NSData *)deviceToken {
-    [_notificationService registerDeviceToken:deviceToken];
+    [_deviceTokenService registerDeviceToken:deviceToken];
 }
 @end

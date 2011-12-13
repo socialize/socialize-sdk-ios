@@ -7,11 +7,11 @@
 //
 
 #define USER_DEVICE_METHOD @"user/device/"
-#import "SocializeNotificationService.h"
+#import "SocializeDeviceTokenService.h"
 #import "SocializeRequest.h"
+#import "SocializeDeviceToken.h"
 
-@implementation SocializeNotificationService
-
+@implementation SocializeDeviceTokenService
 
 -(void)registerDeviceTokens:(NSArray *) tokens {
     NSMutableArray *params = [NSMutableArray array];
@@ -33,4 +33,9 @@
                    stringByReplacingOccurrencesOfString: @" " withString: @""];
     [self registerDeviceTokens:[NSArray arrayWithObjects:deviceTokenStr, nil]];
 }
+-(Protocol *)ProtocolType
+{
+    return  @protocol(SocializeDeviceToken);
+}
+
 @end
