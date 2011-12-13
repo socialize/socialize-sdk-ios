@@ -36,6 +36,7 @@
 #import "SocializeUserService.h"
 #import "ImagesCache.h"
 #import "SocializeAuthenticateService.h"
+#import "SocializeKeyboardListener.h"
 
 @interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
 -(void)leftNavigationButtonPressed:(id)sender;  
@@ -55,6 +56,7 @@
 @synthesize sendActivityToFacebookFeedAlertView = sendActivityToFacebookFeedAlertView_;
 @synthesize authViewController = authViewController_;
 @synthesize bundle = bundle_;
+@synthesize keyboardListener = keyboardListener_;
 
 - (void)dealloc
 {
@@ -77,6 +79,8 @@
     self.sendActivityToFacebookFeedAlertView = nil;
     self.authViewController = nil;
     self.bundle = nil;
+    self.keyboardListener.delegate = nil;
+    self.keyboardListener = nil;
 
     [super dealloc];
 }
@@ -97,6 +101,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.keyboardListener = [[[SocializeKeyboardListener alloc] init] autorelease];
+    self.keyboardListener.delegate = self;
     
     if (self.tableView == nil && [self.view isKindOfClass:[UITableView class]]) {
         self.tableView = (UITableView*)self.view;

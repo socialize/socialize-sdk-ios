@@ -29,6 +29,7 @@
 @property (nonatomic, retain) id mockImagesCache;
 @property (nonatomic, retain) id mockView;
 @property (nonatomic, retain) id mockWindow;
+@property (nonatomic, retain) id mockKeyboardListener;
 - (void)expectServiceFailureWithError:(NSError*)error;
 - (void)expectAndSimulateLoadOfImage:(UIImage*)image fromURL:(NSString*)url;
 - (void)expectViewWillAppear;

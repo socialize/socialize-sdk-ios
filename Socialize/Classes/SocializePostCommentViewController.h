@@ -19,7 +19,14 @@
 @property (nonatomic, retain) id<SocializeComment> commentObject;
 @property (nonatomic, retain) IBOutlet UIButton *facebookButton;
 @property (nonatomic, assign) BOOL commentSentToFacebook;
+@property (nonatomic, retain) IBOutlet UIButton *unsubscribeButton;
+@property (nonatomic, retain) IBOutlet UIButton *enableSubscribeButton;
+@property (nonatomic, assign) BOOL dontSubscribeToDiscussion;
+@property(nonatomic, retain) IBOutlet UIView *subscribeContainer;
 
 - (IBAction)facebookButtonPressed:(UIButton*)sender;
+-(IBAction)unsubscribeButtonPressed:(id)sender;
+-(IBAction)enableSubscribeButtonPressed:(id)sender;
+
 @end
 

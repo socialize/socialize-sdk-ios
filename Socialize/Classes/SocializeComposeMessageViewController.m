@@ -11,7 +11,6 @@
 #import "CommentMapView.h"
 #import "_Socialize.h"
 #import "SocializeLoadingView.h"
-#import "UIKeyboardListener.h"
 #import "SocializeLocationManager.h"
 #import "UILabel+FormatedText.h"
 #import "UINavigationBarBackground.h"
@@ -34,8 +33,6 @@
 -(void)configureLocationText; 
 -(void)configureDoNotShareLocationButton;
 -(void)updateViewWithNewLocation: (CLLocation*)userLocation;
--(void) adjustViewToLayoutWithKeyboardHeigth:(int)keyboardHeigth;
-
 
 @end 
 
@@ -46,12 +43,12 @@
 @synthesize doNotShareLocationButton;
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
-@synthesize locationViewContainer = _locationViewContainer;
 @synthesize mapContainer = _mapContainer;
 @synthesize locationManager = _locationManager;
-@synthesize kbListener = _kbListener;
 @synthesize entityURL = _entityURL;
 @synthesize delegate = delegate_;
+@synthesize lowerContainer = lowerContainer_;
+@synthesize upperContainer = upperContainer_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil 
                bundle:(NSBundle *)nibBundleOrNil 
@@ -72,21 +69,13 @@
     [mapOfUserLocation release];
     [locationText release];
     [_entityURL release];
-    [_kbListener release];
     [_locationManager release];
     [_geoCoderInfo release];
-    [_locationViewContainer release];
     [_mapContainer release];
+    [lowerContainer_ release];
+    [upperContainer_ release];
 
     [super dealloc];
-}
-
-- (UIKeyboardListener*)kbListener {
-    if (_kbListener == nil) {
-        _kbListener = [[UIKeyboardListener createWithVisibleKeyboard:NO] retain];
-    }
-    
-    return _kbListener;
 }
 
 - (SocializeLocationManager*)locationManager {
@@ -154,14 +143,17 @@
     }
 }
 
--(void)configureDoNotShareLocationButton
-{   
+- (void)addSocializeRoundedGrayButtonImagesToButton:(UIButton*)button {
     UIImage * normalImage = [[UIImage imageNamed:@"socialize-comment-button.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
     UIImage * highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
     
-    [self.doNotShareLocationButton setBackgroundImage:normalImage forState:UIControlStateNormal];
-	[self.doNotShareLocationButton setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
-    
+    [button setBackgroundImage:normalImage forState:UIControlStateNormal];
+	[button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
+}
+
+-(void)configureDoNotShareLocationButton
+{   
+    [self addSocializeRoundedGrayButtonImagesToButton:self.doNotShareLocationButton];
 }
 
 -(void)setShareLocation:(BOOL)enableLocation 
@@ -189,13 +181,22 @@
 
 #pragma mark - Buttons actions
 
+- (void)setSubviewForLowerContainer:(UIView*)newSubview {
+    for (UIView *view in self.lowerContainer.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    [self.lowerContainer addSubview:newSubview];
+}
+
 -(IBAction)activateLocationButtonPressed:(id)sender
 {
     if (self.locationManager.shouldShareLocation)
     {
-        if (self.kbListener.isVisible) 
+        if ([commentTextView isFirstResponder]) 
         {
             [commentTextView resignFirstResponder];          
+            [self setSubviewForLowerContainer:self.mapContainer];
         }
         else
         {
@@ -205,6 +206,7 @@
     else
     {
         [self setShareLocation:YES];
+        [self setSubviewForLowerContainer:self.mapContainer];
     }
 }
 
@@ -250,18 +252,6 @@
 
 #pragma mark - View lifecycle
 
-- (void)adjustForOrientation:(UIInterfaceOrientation)orientation {
-    if(UIInterfaceOrientationIsLandscape(orientation))
-    {       
-        [self adjustViewToLayoutWithKeyboardHeigth: LANDSCAPE_KEYBOARD_HEIGHT];
-    }
-    else
-    {
-        [self adjustViewToLayoutWithKeyboardHeigth: PORTRAIT_KEYBOARD_HEIGHT];
-    }
-}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -273,18 +263,11 @@
     
     [self.commentTextView becomeFirstResponder];    
     
-    // Ensure kb listener initialized the first time the view appears
-    (void)self.kbListener;
-    
     [self setShareLocation:self.locationManager.shouldShareLocation];
     
     [self.mapOfUserLocation roundCorners];
     [self configureDoNotShareLocationButton];       
     [self updateViewWithNewLocation: mapOfUserLocation.userLocation.location];
-    
-    if (UIDeviceOrientationIsValidInterfaceOrientation([[UIDevice currentDevice] orientation])) {
-        [self adjustForOrientation:(UIInterfaceOrientation)[[UIDevice currentDevice] orientation]];
-    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -301,42 +284,38 @@
     self.doNotShareLocationButton = nil;
     self.activateLocationButton = nil;
     self.mapOfUserLocation = nil;
-    self.locationViewContainer = nil;
     self.mapContainer = nil;
+    self.lowerContainer = nil;
+    self.upperContainer = nil;
 }
 
 - (UIView*)showLoadingInView {
     return commentTextView;
 }
 
--(void) adjustViewToLayoutWithKeyboardHeigth:(int)keyboardHeigth
-{
-    CGRect commentFrame = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height - self.locationViewContainer.frame.size.height - keyboardHeigth);
-    self.commentTextView.frame = commentFrame;
+- (void)keyboardListener:(SocializeKeyboardListener *)keyboardListener keyboardWillShowWithWithBeginFrame:(CGRect)beginFrame endFrame:(CGRect)endFrame animationCurve:(UIViewAnimationCurve)animationCurve animationDuration:(NSTimeInterval)animationDuration {
+    CGRect newKeyboardFrame = [self.keyboardListener convertKeyboardRect:endFrame toView:self.view];
     
-    CGRect activateLoactionButtonFrame = self.locationViewContainer.frame;
-    activateLoactionButtonFrame.origin.y = self.commentTextView.frame.origin.y + self.commentTextView.frame.size.height;
-    self.locationViewContainer.frame = activateLoactionButtonFrame;
+    // The lower container is just the same size as the keyboard
+    self.lowerContainer.frame = newKeyboardFrame;
     
-    CGRect mapContainerFrame = CGRectMake(0,self.view.frame.size.height - keyboardHeigth, self.view.frame.size.width, keyboardHeigth);
-    
-    self.mapContainer.frame = mapContainerFrame;
+    // The upper container covers the rest of our view
+    CGFloat upperHeight = self.view.frame.size.height - newKeyboardFrame.size.height;
+    CGRect upperFrame = CGRectMake(0, 0, self.view.frame.size.width, upperHeight);
+    self.upperContainer.frame = upperFrame;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    // The keyboard must be shown before rotation, or we won't get events to be able to recompute our container frames.
+    // Static definition of frames does not work well because different languages have different keyboard sizes
+    if (![commentTextView isFirstResponder]) {
+        [commentTextView becomeFirstResponder];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations if iOS5
-    BOOL iOS5 = [[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0;
-    if( iOS5 ) {
-        [self adjustForOrientation:interfaceOrientation];
-        return YES;
-    } else {
-        if (interfaceOrientation == UIInterfaceOrientationPortrait) {
-            [self adjustForOrientation:UIInterfaceOrientationPortrait];  
-            return YES;
-        } else {
-            return NO;
-        }
-    }
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation)
+        || interfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
 

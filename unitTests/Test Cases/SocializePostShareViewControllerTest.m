@@ -51,6 +51,8 @@ static NSString *const TestURL = @"http://getsocialize.com";
     self.mockShareObject = nil;
     self.postShareViewController = nil;
     self.mockCommentTextView = nil;
+
+    [super tearDown];
 }
 
 - (void)testViewDidLoad {

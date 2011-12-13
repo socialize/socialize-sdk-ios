@@ -17,7 +17,6 @@
 #import "SocializeComment.h"
 #import "UINavigationBarBackground.h"
 #import "ImageLoader.h"
-#import "UIKeyboardListener.h"
 #import "SocializeLocationManager.h"
 #import "SocializeAuthenticateService.h"
 #import "ImagesCache.h"
@@ -150,7 +149,7 @@
 	[imageBackgroundView release];
     
     self.tableView.accessibilityLabel = @"Comments Table View";
-	self.view.clipsToBounds = YES;    
+	self.tableView.clipsToBounds = YES;    
    
     
     self.navigationItem.leftBarButtonItem = self.brandingButton;

@@ -21,6 +21,10 @@
 @synthesize commentSentToFacebook = commentSentToFacebook_;
 @synthesize facebookButton = facebookButton_;
 @synthesize delegate = delegate_;
+@synthesize unsubscribeButton = unsubscribeButton_;
+@synthesize dontSubscribeToDiscussion = dontSubscribeToDiscussion_;
+@synthesize enableSubscribeButton = enabledSubscribeButton_;
+@synthesize subscribeContainer = subscribeContainer_;
 
 + (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SocializePostCommentViewControllerDelegate>)delegate {
     SocializePostCommentViewController *postCommentViewController = [self postCommentViewControllerWithEntityURL:entityURL];
@@ -39,6 +43,9 @@
 - (void)dealloc {
     self.facebookButton = nil;
     self.commentObject = nil;
+    self.unsubscribeButton = nil;
+    self.enableSubscribeButton = nil;
+    self.subscribeContainer = nil;
 
     [super dealloc];
 }
@@ -48,12 +55,17 @@
     
     self.title = @"New Comment";
     [self configureFacebookButton];
+    [self addSocializeRoundedGrayButtonImagesToButton:self.unsubscribeButton];
+    self.dontSubscribeToDiscussion = NO;
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
     
     self.facebookButton = nil;
+    self.unsubscribeButton = nil;
+    self.enableSubscribeButton = nil;
+    self.subscribeContainer = nil;
 }
 
 - (void)configureFacebookButton {
@@ -144,6 +156,34 @@
     } else {
         [self finishCreateComment];
     }
+}
+
+- (void)setDontSubscribeToDiscussion:(BOOL)dontSubscribeToDiscussion {
+    dontSubscribeToDiscussion_ = dontSubscribeToDiscussion;
+    self.enableSubscribeButton.selected = !self.dontSubscribeToDiscussion;
+}
+
+-(IBAction)enableSubscribeButtonPressed:(id)sender {
+
+    if (self.dontSubscribeToDiscussion) {
+        [self setDontSubscribeToDiscussion:NO];
+        [self setSubviewForLowerContainer:self.subscribeContainer];
+    } else {
+        if ([commentTextView isFirstResponder]) 
+        {
+            [self setSubviewForLowerContainer:self.subscribeContainer];
+            [commentTextView resignFirstResponder];          
+        }
+        else
+        {
+            [commentTextView becomeFirstResponder];
+        }            
+    }
+}
+
+-(IBAction)unsubscribeButtonPressed:(id)sender {
+    [self setDontSubscribeToDiscussion:YES];
+    [commentTextView becomeFirstResponder];
 }
 
 - (void)sendActivityToFacebookFeedSucceeded {
