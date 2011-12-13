@@ -65,6 +65,9 @@
 - (void)tearDown {
     [self.mockFacebookButton verify];
     
+    self.postCommentViewController = nil;
+    self.mockFacebookButton = nil;
+    
     [super tearDown];
 }
 

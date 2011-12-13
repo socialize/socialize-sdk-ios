@@ -33,6 +33,7 @@
     [super setUp];
     // super setUp creates self.viewController
     self.commentsTableViewController = (SocializeCommentsTableViewController*)self.viewController;
+    self.mockView = self.mockTableView;
 }
 
 -(void)tearDown {
@@ -83,6 +84,7 @@
     [[self.mockTableView expect] setAutoresizesSubviews:YES];
     [[self.mockTableView expect] setBackgroundView:OCMOCK_ANY];
     [[self.mockTableView expect] setAccessibilityLabel:@"Comments Table View"];
+    [[self.mockView expect] setClipsToBounds:YES];
     
     [self.commentsTableViewController viewDidLoad]; 
 }

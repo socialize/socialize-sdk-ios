@@ -149,7 +149,7 @@
 	[imageBackgroundView release];
     
     self.tableView.accessibilityLabel = @"Comments Table View";
-	self.view.clipsToBounds = YES;    
+	self.tableView.clipsToBounds = YES;    
    
     
     self.navigationItem.leftBarButtonItem = self.brandingButton;

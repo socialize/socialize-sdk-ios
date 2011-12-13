@@ -48,7 +48,7 @@
     [[notification.userInfo valueForKey:UIKeyboardFrameBeginUserInfoKey] getValue:beginFrame];
     [[notification.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:endFrame];
     [[notification.userInfo valueForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:animationCurve];
-    [[notification.userInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:animationCurve];
+    [[notification.userInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:animationDuration];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {

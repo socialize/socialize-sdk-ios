@@ -41,13 +41,18 @@
 {
     [super setUp];
     
-    self.origViewController = [[self class] createController];
-    self.viewController = [OCMockObject partialMockForObject:self.origViewController];
+    @autoreleasepool {
+        self.origViewController = [[self class] createController];
+        self.viewController = [OCMockObject partialMockForObject:self.origViewController];
+    }
     
     self.mockWindow = [OCMockObject mockForClass:[UIWindow class]];
     self.mockView = [OCMockObject niceMockForClass:[UIView class]];
     [[[self.mockView stub] andReturn:self.mockWindow] window];
-    [[[(id)self.viewController stub] andReturn:self.mockView] view];
+    [[[(id)self.viewController stub] andDo:^(NSInvocation* inv) {
+        UIView *currentMock = self.mockView;
+        [inv setReturnValue:&currentMock];
+    }] view];
     
     self.mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
     [[[(id)self.viewController stub] andReturn:self.mockNavigationController] navigationController];
@@ -60,6 +65,7 @@
     
     self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     [[[self.mockSocialize stub] andReturn:self.viewController] delegate];
+    [[self.mockSocialize stub] setDelegate:nil];
     self.viewController.socialize = self.mockSocialize;
     
     self.mockGenericAlertView = [OCMockObject mockForClass:[UIAlertView class]];
@@ -112,7 +118,11 @@
     [[self.mockKeyboardListener stub] setDelegate:nil];
     [[self.mockGenericAlertView expect] setDelegate:nil];
     self.origViewController = nil;
+    
+    // There is some kind of retain cycle with the OCMock recorders array here
+    [(id)self.viewController stop];
     self.viewController = nil;
+    
     self.mockNavigationController = nil;
     self.mockNavigationBar = nil;
     self.mockNavigationItem = nil;
@@ -155,7 +165,12 @@
 }
 
 - (void)testDefaultTableViewProperty {
+    self.mockView = [OCMockObject mockForClass:[UITableView class]];
     [[[self.mockView stub] andReturnBool:YES] isKindOfClass:[UITableView class]];
+    
+    // Handle tableview cleanup in dealloc
+    [[self.mockView stub] setDelegate:nil];
+    [[self.mockView stub] setDataSource:nil];
 
     [self.viewController viewDidLoad];
     UITableView *defaultTableView = self.viewController.tableView;

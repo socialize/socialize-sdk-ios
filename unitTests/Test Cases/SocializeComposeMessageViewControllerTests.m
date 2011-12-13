@@ -87,8 +87,6 @@
 }
 
 - (void)tearDown {
-    [super tearDown];
-    
     [(id)self.composeMessageViewController verify];
     [self.mockSocialize verify];
     [self.mockLocationManager verify];
@@ -114,6 +112,8 @@
     self.mockActivateLocationButton = nil;
     self.mockMapOfUserLocation = nil;
     self.mockDelegate = nil;
+    
+    [super tearDown];
 }
 
 -(void)testCreateMethod
@@ -208,6 +208,5 @@
     [[self.mockDelegate expect] composeMessageViewControllerDidCancel:(SocializeComposeMessageViewController*)self.origViewController];
     [(UIButton*)self.composeMessageViewController.cancelButton.customView simulateControlEvent:UIControlEventTouchUpInside];
 }
-
 
 @end
