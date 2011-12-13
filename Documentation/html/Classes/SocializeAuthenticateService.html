@@ -46,14 +46,14 @@
 	
 	<option value="//api/name/isAuthenticated">&nbsp;&nbsp;&nbsp;&nbsp;+ isAuthenticated</option>
 	
-	<option value="//api/name/isAuthenticatedWithFacebook">&nbsp;&nbsp;&nbsp;&nbsp;+ isAuthenticatedWithFacebook</option>
-	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
 	<option value="//api/name/authenticateWithApiKey:apiSecret:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithApiKey:apiSecret:</option>
+	
+	<option value="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:</option>
 	
 	<option value="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</option>
 	
@@ -101,8 +101,6 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAuthenticated">isAuthenticated</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAuthenticatedWithFacebook">isAuthenticatedWithFacebook</a></span></li>
-	
 </ul></li>
 
 
@@ -110,6 +108,8 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithApiKey:apiSecret:">authenticateWithApiKey:apiSecret:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:">authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</a></span></li>
 	
@@ -202,6 +202,13 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:">&ndash;&nbsp;authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</a></code>
+		<span class="tooltip"><p>Convenience method</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:">&ndash;&nbsp;authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:</a></code>
 		<span class="tooltip"><p>Third party authentication via SDK service.</p></span>
 	</span>
 	
@@ -218,13 +225,6 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/isAuthenticated">+&nbsp;isAuthenticated</a></code>
 		<span class="tooltip"><p>Check if authentication credentials still valid.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/isAuthenticatedWithFacebook">+&nbsp;isAuthenticatedWithFacebook</a></code>
-		<span class="tooltip"><p>Check if authentication credentials still valid /and/ that this is a facebook authentication.</p></span>
 	</span>
 	
 	
@@ -356,45 +356,6 @@ plug socialize into their application</p>
 	
 </div>
 						
-						<div class="section-method">
-	<a name="//api/name/isAuthenticatedWithFacebook" title="isAuthenticatedWithFacebook"></a>
-	<h3 class="subsubtitle method-title">isAuthenticatedWithFacebook</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Check if authentication credentials still valid /and/ that this is a facebook authentication.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>+ (BOOL)isAuthenticatedWithFacebook</code></div>
-	
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>YES if credentials are valid and facebook was used for authentication, and NO otherwise</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SocializeAuthenticateService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
 					</div>
 					
 					
@@ -470,8 +431,8 @@ Find information how to get API key and secret on <a href="http://www.getsociali
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:" title="authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:"></a>
-	<h3 class="subsubtitle method-title">authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</h3>
+	<a name="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:" title="authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:"></a>
+	<h3 class="subsubtitle method-title">authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyLocalAppId:thirdPartyName:</h3>
 	
 	
 	
@@ -480,7 +441,7 @@ Find information how to get API key and secret on <a href="http://www.getsociali
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)authenticateWithApiKey:(NSString *)<em>apiKey</em> apiSecret:(NSString *)<em>apiSecret</em> thirdPartyAppId:(NSString *)<em>thirdPartyAppId</em> thirdPartyName:(ThirdPartyAuthName)<em>thirdPartyName</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)authenticateWithApiKey:(NSString *)<em>apiKey</em> apiSecret:(NSString *)<em>apiSecret</em> thirdPartyAppId:(NSString *)<em>thirdPartyAppId</em> thirdPartyLocalAppId:(NSString *)<em>thirdPartyLocalAppId</em> thirdPartyName:(SocializeThirdPartyAuthType)<em>thirdPartyName</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
@@ -499,6 +460,11 @@ Find information how to get API key and secret on <a href="http://www.getsociali
 		<dl class="argument-def parameter-def">
 			<dt><em>thirdPartyAppId</em></dt>
 			<dd><p>Extern service application id.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>thirdPartyLocalAppId</em></dt>
+			<dd><p>Extern service local application id.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -547,6 +513,40 @@ Find information how to get API key and secret on <a href="http://www.getsociali
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:" title="authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:"></a>
+	<h3 class="subsubtitle method-title">authenticateWithApiKey:apiSecret:thirdPartyAppId:thirdPartyName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Convenience method</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)authenticateWithApiKey:(NSString *)<em>apiKey</em> apiSecret:(NSString *)<em>apiSecret</em> thirdPartyAppId:(NSString *)<em>thirdPartyAppId</em> thirdPartyName:(SocializeThirdPartyAuthType)<em>thirdPartyName</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SocializeAuthenticateService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:" title="authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:"></a>
 	<h3 class="subsubtitle method-title">authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:</h3>
 	
@@ -557,7 +557,7 @@ Find information how to get API key and secret on <a href="http://www.getsociali
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)authenticateWithApiKey:(NSString *)<em>apiKey</em> apiSecret:(NSString *)<em>apiSecret</em> thirdPartyAuthToken:(NSString *)<em>thirdPartyAuthToken</em> thirdPartyAppId:(NSString *)<em>thirdPartyAppId</em> thirdPartyName:(ThirdPartyAuthName)<em>thirdPartyName</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)authenticateWithApiKey:(NSString *)<em>apiKey</em> apiSecret:(NSString *)<em>apiSecret</em> thirdPartyAuthToken:(NSString *)<em>thirdPartyAuthToken</em> thirdPartyAppId:(NSString *)<em>thirdPartyAppId</em> thirdPartyName:(SocializeThirdPartyAuthType)<em>thirdPartyName</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
@@ -774,7 +774,7 @@ Find information how to get API key and secret on <a href="http://www.getsociali
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 Socialize Inc. All rights reserved. (Last updated: 2011-09-22)</span><br />
+						<p><span class="copyright">&copy; 2011 Socialize Inc. All rights reserved. (Last updated: 2011-12-13)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
 						
