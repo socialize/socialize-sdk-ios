@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>SDK User Guide &mdash; Socialize iOS SDK v1.1.4 documentation</title>
+    <title>SDK User Guide &mdash; Socialize iOS SDK v1.1.5 documentation</title>
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.1.4',
+        VERSION:     '1.1.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK v1.1.4 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK v1.1.5 documentation" href="index.html" />
     <link rel="next" title="SDK Pro Tips" href="sdk_pro_tips.html" />
     <link rel="prev" title="Socialize Comments" href="comments.html" /> 
   </head>
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="comments.html" title="Socialize Comments"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK v1.1.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK v1.1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -113,26 +113,18 @@ want anonymous authentication, simply call the <strong>authenticate</strong> met
 <p>Throughout the documentation and the code snippets we refer to an &#8220;entity&#8221;.  This is simply a
 generic term for something that can be view, shared, liked or commented on.  Generally this will
 correspond to a single item of content in your app.</p>
-<p><strong>NOTE: Entities MUST be URLs!</strong></p>
-<p>Entities in Socialize MUST be represented by an HTTP URL.  It is <strong>strongly recommended</strong> that a
-<em>real</em> URL be used (i.e. one that corresponds to an active web page) however if this is not possible
-because your content is not web based you can simply create a URL from key that uniquely identifies
-your entity.</p>
-<p>For example:</p>
-<pre class="literal-block">
-<strong>http://www.getsocialize.com (valid URL preferred)</strong>
-
-<a class="reference external" href="http://myuniqekey">http://myuniqekey</a> (Not a <em>real</em> URL, but will still work)
-</pre>
+<p>Entity keys in Socialize are free form.  It is recommended that a <em>real</em> URL be
+used (i.e. one that corresponds to an active web page)</p>
 <div class="section" id="creating-an-entity">
 <h3>Creating an Entity<a class="headerlink" href="#creating-an-entity" title="Permalink to this headline">¶</a></h3>
-<p>An entity consists of a <strong>key</strong> (URL) and a <strong>name</strong>.  The name should be descriptive and help you identify the
+<p>An entity consists of a <strong>key</strong> and a <strong>name</strong>.  The name should be descriptive and help you identify the
 entity when viewing reports on the Socialize dashboard.</p>
-<p>Creating an entity explicitly in this manner is <strong>optional but recommended</strong>.  If you simply post a
-comment,view,share or like against a URL that does not currently exist, it will be automatically created
-for you, but will not have a <em>name</em> associated with it.</p>
+<p>Creating an entity explicitly in this manner is <strong>optional but recommended</strong>.
+If you simply post a comment,view,share or like against an entity key that does
+not currently exist, it will be automatically created for you, but will not
+have a <em>name</em> associated with it.</p>
 <p>To create an entity, simply invoke the <strong>createEntity</strong> message:</p>
-<script src="https://gist.github.com/1204490.js?file=CreateEntity.m"></script></div>
+<script src="https://gist.github.com/1473477.js?file=CreateEntity.m"></script></div>
 <div class="section" id="retrieving-entity-data">
 <h3>Retrieving Entity data<a class="headerlink" href="#retrieving-entity-data" title="Permalink to this headline">¶</a></h3>
 <p>An existing entity can be retrieved via the <strong>getEntity</strong> method.  Entities obtained in this way will also
@@ -221,7 +213,7 @@ need the ID of the like.  This is returned from the initial call to <strong>like
         <li class="right" >
           <a href="comments.html" title="Socialize Comments"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK v1.1.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK v1.1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
