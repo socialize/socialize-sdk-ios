@@ -4,6 +4,14 @@
 Changelog
 =============================================
 
+v1.1.5
+------
+[feature] Remove requirement for URL from code and docs [ ]
+
+[bug] Fixed some minor bugs found by static analyzer [ ]
+
+[bug] Fix memory leaks [ ]
+
 v1.1.4
 ------
 [bug] Editing only profile image does not update server [ regression ]
