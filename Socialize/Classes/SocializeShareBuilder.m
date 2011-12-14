@@ -89,7 +89,7 @@
     if([Socialize applicationLink])
         params = [self prepareApplicationInfoWithLink: [Socialize applicationLink]];
     else
-        params = [NSMutableDictionary new];
+        params = [NSMutableDictionary dictionary];
     
 
     SEL prepareSelector = NSSelectorFromString([prepareActions objectForKey:[self.shareObject class]]);

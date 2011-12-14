@@ -17,7 +17,7 @@ Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar co
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1315113.js"> </script>
+        <script src="https://gist.github.com/1474007.js"> </script>
 
 By default, the Action Bar will automatically place itself at the bottom of its
 superview and adjust to rotation.  If you find that content is being hidden,
@@ -37,7 +37,7 @@ following example disables autolayout and manually places the Action Bar at
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1374087.js"> </script>
+        <script src="https://gist.github.com/1474011.js"> </script>
 
 If you need more detail on installing the action bar please see our `Adding the Socialize Action Bar Video`_.
 

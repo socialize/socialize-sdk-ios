@@ -27,6 +27,7 @@
 
 - (void)dealloc
 {
+    [_socialize release];
     [super dealloc];
 }
 

@@ -22,7 +22,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
 
-static NSString* const kUserAgent = @"Socialize v1.1.4/iOS";
+static NSString* const kUserAgent = @"Socialize v1.1.5/iOS";
 static const NSTimeInterval kTimeoutInterval = 180.0;
 static const int kGeneralErrorCode = 10000;
 
@@ -60,7 +60,7 @@ running = _running;
 {   
     NSString   *language = [[NSLocale currentLocale] objectForKey: NSLocaleLanguageCode];
     NSString   *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
-    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.1.4; %@_%@; BundleID/%@;",
+    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.1.5; %@_%@; BundleID/%@;",
                                [[UIDevice currentDevice]systemVersion],
                                [[UIDevice currentDevice]model],
                                language,

@@ -63,8 +63,9 @@
     self.tableView = nil;
     self.doneButton = nil;
     self.editButton = nil;
-    self.cancelButton = nil;
     self.sendButton = nil;  
+    self.cancelButton = nil;
+    self.saveButton = nil;
     self.genericAlertView.delegate = nil;
     self.genericAlertView = nil;
     self.socialize.delegate = nil;
@@ -74,6 +75,7 @@
     self.shareBuilder.errorAction = nil;
     self.shareBuilder = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
+    self.authViewController = nil;
     self.bundle = nil;
 
     [super dealloc];
@@ -85,9 +87,9 @@
     
     self.doneButton = nil;
     self.editButton = nil;
-    self.saveButton = nil;
-    self.cancelButton = nil;
     self.sendButton = nil;
+    self.cancelButton = nil;
+    self.saveButton = nil;
     self.genericAlertView = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
     self.authViewController = nil;
@@ -155,7 +157,7 @@
 {
     UIButton *backButton = [UIButton blueSocializeNavBarBackButtonWithTitle:caption]; 
     [backButton addTarget:self action:@selector(leftNavigationButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem * backLeftItem = [[UIBarButtonItem alloc]initWithCustomView:backButton];
+    UIBarButtonItem * backLeftItem = [[[UIBarButtonItem alloc]initWithCustomView:backButton] autorelease];
     return backLeftItem;
 }
 -(void)leftNavigationButtonPressed:(id)sender {

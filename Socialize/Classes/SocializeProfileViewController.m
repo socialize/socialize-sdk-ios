@@ -38,20 +38,23 @@
 @synthesize activityLoadingActivityIndicator = activityLoadingActivityIndicator_;
 
 - (void)dealloc {
+    self.user = nil;
     self.fullUser = nil;
     self.userNameLabel = nil;
     self.userDescriptionLabel = nil;
     self.userLocationLabel = nil;
     self.profileImageView = nil;
+    self.profileImageActivityIndicator = nil;
     self.profileEditViewController.delegate = nil;
     self.profileEditViewController = nil;
     self.navigationControllerForEdit.delegate = nil;
     self.navigationControllerForEdit = nil;
     self.imagesCache = nil;
     self.defaultProfileImage = nil;
-    self.activityViewController = nil;
+    self.alertView = nil;
     self.activityViewController.delegate = nil;
     self.activityViewController = nil;
+    self.activityLoadingActivityIndicator = nil;
     
     [super dealloc];
 }

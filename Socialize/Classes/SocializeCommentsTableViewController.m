@@ -198,7 +198,6 @@
         
         UIBarButtonItem * backLeftItem = [self createLeftNavigationButtonWithCaption:@"Comments"];
         details.navigationItem.leftBarButtonItem = backLeftItem;	
-        [backLeftItem release];
            
         [self.navigationController pushViewController:details animated:YES];
         [details release];

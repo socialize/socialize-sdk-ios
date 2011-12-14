@@ -35,6 +35,10 @@
 @protocol SocializeLike;
 @class MFMailComposeViewController;
 
+/**
+ The Socialize Action Bar
+
+ */
 @interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate>
 
 @property (nonatomic, assign) UIViewController* presentModalInViewController;
@@ -47,8 +51,49 @@
 @property (nonatomic, assign) BOOL noAutoLayout;
 @property (nonatomic, assign, readonly) BOOL initialized;
 
+/** @name Initialization */
+
+/**
+ Class helper method to create an Action Bar
+ 
+ @param url The URL for the Entity Key
+ @param presentModalInController Modal dialogs and UIActionSheet popups will be presented in this controller and its view
+ 
+ @warning Deprecated. Use actionbarWithKey:presentModalInController: instead
+ */
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
 
+
+/**
+ Class helper method to create an Action Bar
+ 
+ @param key The Entity Key
+ @param presentModalInController Modal dialogs and UIActionSheet popups will be presented in this controller and its view
+ */
++(SocializeActionBar*)actionBarWithKey:(NSString*)key presentModalInController:(UIViewController*)controller;
+
+
+/**
+ Action Bar Init
+ 
+ @param url The URL for the Entity Key
+ @param presentModalInController Modal dialogs and UIActionSheet popups will be presented in this controller and its view
+ */
 -(id)initWithEntityUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
+
+/**
+ Action Bar Init
+ 
+ @param key The Entity Key
+ @param presentModalInController Modal dialogs and UIActionSheet popups will be presented in this controller and its view
+ */
+-(id)initWithEntityKey:(NSString*)key presentModalInController:(UIViewController*)controller;
+
+/**
+ Action Bar Init
+ 
+ @param url The URL for the Entity Key
+ @param presentModalInController Modal dialogs and UIActionSheet popups will be presented in this controller and its view
+ */
 -(id)initWithEntity:(id<SocializeEntity>)socEntity presentModalInController:(UIViewController*)controller;
 @end
