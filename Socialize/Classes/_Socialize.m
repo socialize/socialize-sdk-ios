@@ -19,6 +19,7 @@
 #import "SocializeViewService.h"
 #import "SocializeDeviceTokenService.h"
 #import "SocializeShareService.h"
+#import "SocializeSubscriptionService.h"
 #import "Facebook+Socialize.h"
 #import "NSTimer+BlocksKit.h"
 
@@ -41,8 +42,8 @@
 @synthesize activityService = _activityService;
 @synthesize shareService = _shareService;
 @synthesize deviceTokenService = _deviceTokenService;
-
-static Socialize *_sharedSocialize = NULL;
+@synthesize subscriptionService = _subscriptionService;
+static Socialize *_sharedSocialize = nil;
 
 + (void)initialize {
     if (self == [Socialize class]) {
@@ -71,6 +72,8 @@ static Socialize *_sharedSocialize = NULL;
     [_shareService release]; _shareService = nil;
     [_deviceTokenService release]; _deviceTokenService = nil;
     [_sharedSocialize release]; _sharedSocialize = nil;
+    [_subscriptionService release]; _subscriptionService = nil;
+    
     [super dealloc];
 }
 
@@ -90,6 +93,7 @@ static Socialize *_sharedSocialize = NULL;
         _activityService = [[SocializeActivityService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _shareService = [[SocializeShareService  alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _deviceTokenService = [[SocializeDeviceTokenService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
+        _subscriptionService = [[SocializeSubscriptionService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
     }
     return self;
 }
@@ -358,11 +362,16 @@ static Socialize *_sharedSocialize = NULL;
     [_entityService entityWithKey:entitykey];
 }
 
--(void)createEntityWithUrl:(NSString*)entityKey andName:(NSString*)name{
+-(void)createEntityWithKey:(NSString*)entityKey name:(NSString*)name{
     [_entityService createEntityWithKey:entityKey andName:name];
 }
 
 #pragma mark view related stuff
+-(void)createEntityWithUrl:(NSString*)entityKey andName:(NSString*)name{
+    [self createEntityWithKey:entityKey name:name];
+}
+
+#pragma view related stuff
 
 -(void)viewEntityWithKey:(NSString*)url longitude:(NSNumber*)lng latitude: (NSNumber*)lat {
     [_viewService createViewForEntityKey:url longitude:lng latitude:lat];
@@ -430,11 +439,24 @@ static Socialize *_sharedSocialize = NULL;
     [_shareService createShareForEntityKey:key medium:medium text:text];
 }
 
-/* NOTIFICATION SERVICE CALLS */
+/* REGISTER DEVICE TOKEN SERVICE CALLS */
 #pragma mark notification service stuff
 +(void)registerDeviceToken:(NSData *)deviceToken {
     Socialize *socialize = [Socialize sharedSocialize];
     [socialize.deviceTokenService registerDeviceToken:deviceToken];
 
 }   
+#pragma mark subscription types
+- (void)subscribeToCommentsForEntityKey:(NSString*)entityKey {
+    [_subscriptionService subscribeToCommentsForEntityKey:entityKey];
+}
+
+- (void)unsubscribeFromCommentsForEntityKey:(NSString*)entityKey {
+    [_subscriptionService unsubscribeFromCommentsForEntityKey:entityKey];
+}
+
+- (void)getSubscriptionsForEntityKey:(NSString*)entityKey first:(NSNumber*)first last:(NSNumber*)last {
+    [_subscriptionService getSubscriptionsForEntityKey:entityKey first:first last:last];
+}
+
 @end
