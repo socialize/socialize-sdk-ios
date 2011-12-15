@@ -145,7 +145,7 @@ static const int singleCommentId = 1;
     
     NSArray* mockArray = [NSArray arrayWithObjects:
                                      [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil],ENTITY,
+                                        [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil], @"entity",
                                       @"this was a great story", @"text", nil], 
                                      nil];
     
@@ -168,7 +168,7 @@ static const int singleCommentId = 1;
     entity.name = @"example";
     
     NSArray* mockArray = [NSArray arrayWithObject:
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil],ENTITY, @"this was a great story", @"text",                             [NSNumber numberWithFloat:1.2], @"lng",[NSNumber numberWithFloat:1.1], @"lat", nil]];
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil],@"entity", @"this was a great story", @"text",                             [NSNumber numberWithFloat:1.2], @"lng",[NSNumber numberWithFloat:1.1], @"lat", nil]];
     
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"

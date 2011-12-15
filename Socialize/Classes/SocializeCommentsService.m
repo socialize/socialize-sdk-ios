@@ -89,47 +89,51 @@
      ];
 }
 
--(void) createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat
-{
-    NSMutableDictionary* commentDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:entityKey, ENTITY_KEY, comment, COMMENT_KEY, nil];
-    if (lng!= nil && lat != nil)
-    {
-        [commentDictionary setObject:lng forKey:@"lng"];
-        [commentDictionary setObject:lat forKey:@"lat"];
-    }
-    
-    NSArray *params = [NSArray arrayWithObject:commentDictionary];
+- (void)createCommentForParams:(NSArray*)params {
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
                                 resourcePath:COMMENTS_LIST_METHOD
                           expectedJSONFormat:SocializeDictionaryWIthListAndErrors
                                       params:params]
      ];
+}
 
+- (void)createCommentForCommentParams:(NSDictionary*)commentParams {
+    [self createCommentForParams:[NSArray arrayWithObject:commentParams]];
+}
+
+- (NSMutableDictionary*)commentParamsForEntityKey:(NSString*)entityKey entityName:(NSString*)entityName comment:(NSString*)comment latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude {
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    if ([entityName length] > 0) {
+        NSMutableDictionary *entityParams = [NSMutableDictionary dictionary];
+        [entityParams setObject:entityKey forKey:@"key"];
+        [entityParams setObject:entityName forKey:@"name"];
+        [params setObject:entityParams forKey:@"entity"];
+    } else {
+        [params setObject:entityKey forKey:@"entity_key"];
+    }
+
+    [params setObject:comment forKey:COMMENT_KEY];
+    if (latitude != nil && longitude != nil) {
+        [params setObject:latitude forKey:@"lat"];
+        [params setObject:longitude forKey:@"lng"];
+    }
+    
+    return params;
+}
+
+-(void) createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat
+{
+    NSMutableDictionary *params = [self commentParamsForEntityKey:entityKey entityName:nil comment:comment latitude:lat longitude:lng];
+    [self createCommentForCommentParams:params];
 }
 
 -(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat
 {
-    if(entity.name)
-    {
-        NSDictionary* newEntity = [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil];
-        NSMutableDictionary* commentDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:newEntity, ENTITY_KEY, comment, COMMENT_KEY, nil];
-        if (lng!= nil && lat != nil)
-        {
-            [commentDictionary setObject:lng forKey:@"lng"];
-            [commentDictionary setObject:lat forKey:@"lat"];
-        }
-        
-        NSArray *params = [NSArray arrayWithObject: commentDictionary];
-        [self executeRequest:
-         [SocializeRequest requestWithHttpMethod:@"POST"
-                                    resourcePath:COMMENTS_LIST_METHOD
-                              expectedJSONFormat:SocializeDictionaryWIthListAndErrors
-                                          params:params]
-         ];
-    }
-    else
-        [self createCommentForEntityWithKey:entity.key comment:comment longitude:lng latitude:lat];
+    NSMutableDictionary *params = [self commentParamsForEntityKey:entity.key entityName:entity.name comment:comment latitude:lat longitude:lng];
+    [self createCommentForCommentParams:params];
 }
 
 @end

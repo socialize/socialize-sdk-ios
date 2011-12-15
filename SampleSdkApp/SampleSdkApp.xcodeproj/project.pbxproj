@@ -620,6 +620,7 @@
 		AA973CDB1468A14300DAE945 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CDA1468A14300DAE945 /* StringHelper.m */; };
 		AA973CDE1468A57200DAE945 /* TestEntityServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CDD1468A57200DAE945 /* TestEntityServices.m */; };
 		AAB128D014998640009AF443 /* TestSubscriptionService.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB128CF14998640009AF443 /* TestSubscriptionService.m */; };
+		AAC49332149A9D12000EEA7E /* TestCommentServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC49331149A9D12000EEA7E /* TestCommentServices.m */; };
 		AAD21911148AFD8200EF5503 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC1144A24BF00660E26 /* StringHelper.m */; };
 		AAD21912148AFD8300EF5503 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DC1144A24BF00660E26 /* StringHelper.m */; };
 		AAD3F2A714620A2E007D2AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6D14352BC100C62B97 /* UIKit.framework */; };
@@ -983,6 +984,8 @@
 		AAB128CE14998640009AF443 /* TestSubscriptionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSubscriptionService.h; sourceTree = "<group>"; };
 		AAB128CF14998640009AF443 /* TestSubscriptionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSubscriptionService.m; sourceTree = "<group>"; };
 		AAC2181A14746F9300F4BE55 /* SocializeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeLoadingView.h; sourceTree = "<group>"; };
+		AAC49330149A9D12000EEA7E /* TestCommentServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCommentServices.h; sourceTree = "<group>"; };
+		AAC49331149A9D12000EEA7E /* TestCommentServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCommentServices.m; sourceTree = "<group>"; };
 		AAD3F2A514620A2E007D2AB7 /* IntegrationTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntegrationTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD3F2BC14620AD0007D2AB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAD3F2BD14620AD0007D2AB7 /* IntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IntegrationTests-Info.plist"; sourceTree = "<group>"; };
@@ -1460,6 +1463,8 @@
 			children = (
 				AAB128CE14998640009AF443 /* TestSubscriptionService.h */,
 				AAB128CF14998640009AF443 /* TestSubscriptionService.m */,
+				AAC49330149A9D12000EEA7E /* TestCommentServices.h */,
+				AAC49331149A9D12000EEA7E /* TestCommentServices.m */,
 				AA5D75311469CC8F0046AF8B /* TestFacebookInterface.h */,
 				AA5D75321469CC8F0046AF8B /* TestFacebookInterface.m */,
 				AA973CD61468A0EA00DAE945 /* TestShareServices.h */,
@@ -2390,6 +2395,7 @@
 				AA973CDE1468A57200DAE945 /* TestEntityServices.m in Sources */,
 				AA5D75331469CC8F0046AF8B /* TestFacebookInterface.m in Sources */,
 				AAB128D014998640009AF443 /* TestSubscriptionService.m in Sources */,
+				AAC49332149A9D12000EEA7E /* TestCommentServices.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
