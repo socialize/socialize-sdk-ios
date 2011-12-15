@@ -15,6 +15,7 @@
 #import "SocializeCommentsService.h"
 #import "SocializeUserService.h"
 #import "SocializeViewService.h"
+#import "SocializeSubscriptionService.h"
 
 @implementation SocializeTests
 
@@ -161,6 +162,7 @@
     id user = socialize.userService = [OCMockObject mockForClass:[SocializeUserService class]];
     id activity = socialize.activityService = [OCMockObject mockForClass:[SocializeActivityService class]];
     id view = socialize.viewService = [OCMockObject mockForClass:[SocializeViewService class]];
+    id subscription = socialize.subscriptionService = [OCMockObject mockForClass:[SocializeSubscriptionService class]];
 
     id<SocializeLike> likeEntity = [socialize createObjectForProtocol:@protocol(SocializeLike)];
     [[like expect] deleteLike:likeEntity];
@@ -231,6 +233,21 @@
     [[view expect] createViewForEntity:viewedEntity longitude:nil latitude:nil];
     [socialize viewEntity:viewedEntity longitude:nil latitude:nil];
     [view verify];
+    
+    // Subscribe to comments
+    NSString *testSubscriptionKey = @"testSubscriptionKey";
+    [[subscription expect] subscribeToCommentsForEntityKey:testSubscriptionKey];
+    [socialize subscribeToCommentsForEntityKey:testSubscriptionKey];
+    
+    // Unsubscribe from comments
+    [[subscription expect] unsubscribeFromCommentsForEntityKey:testSubscriptionKey];
+    [socialize unsubscribeFromCommentsForEntityKey:testSubscriptionKey];
+
+    // Get subscriptions
+    id mockSubscriptionStart = [OCMockObject mockForClass:[NSNumber class]];
+    id mockSubscriptionEnd = [OCMockObject mockForClass:[NSNumber class]];
+    [[subscription expect] getSubscriptionsForEntityKey:testSubscriptionKey first:mockSubscriptionStart last:mockSubscriptionEnd];
+    [socialize getSubscriptionsForEntityKey:testSubscriptionKey first:mockSubscriptionStart last:mockSubscriptionEnd];
 }
 
 - (void)testAuthWrappers {

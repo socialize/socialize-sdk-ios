@@ -18,6 +18,7 @@
 #import "SocializeUserService.h"
 #import "SocializeViewService.h"
 #import "SocializeShareService.h"
+#import "SocializeSubscriptionService.h"
 #import "Facebook+Socialize.h"
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"
@@ -37,6 +38,7 @@
 @synthesize delegate = _delegate;
 @synthesize activityService = _activityService;
 @synthesize shareService = _shareService;
+@synthesize subscriptionService = _subscriptionService;
 
 + (void)initialize {
     if (self == [Socialize class]) {
@@ -55,6 +57,7 @@
     [_userService release]; _userService = nil;
     [_activityService release]; _activityService = nil;
     [_shareService release]; _shareService = nil;
+    [_subscriptionService release]; _subscriptionService = nil;
     
     [super dealloc];
 }
@@ -74,6 +77,7 @@
         _userService = [[SocializeUserService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _activityService = [[SocializeActivityService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _shareService = [[SocializeShareService  alloc] initWithObjectFactory:_objectFactory delegate:delegate];
+        _subscriptionService = [[SocializeSubscriptionService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
     }
     return self;
 }
@@ -406,6 +410,18 @@
 
 -(void)createShareForEntityWithKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text {
     [_shareService createShareForEntityKey:key medium:medium text:text];
+}
+
+- (void)subscribeToCommentsForEntityKey:(NSString*)entityKey {
+    [_subscriptionService subscribeToCommentsForEntityKey:entityKey];
+}
+
+- (void)unsubscribeFromCommentsForEntityKey:(NSString*)entityKey {
+    [_subscriptionService unsubscribeFromCommentsForEntityKey:entityKey];
+}
+
+- (void)getSubscriptionsForEntityKey:(NSString*)entityKey first:(NSNumber*)first last:(NSNumber*)last {
+    [_subscriptionService getSubscriptionsForEntityKey:entityKey first:first last:last];
 }
 
 @end

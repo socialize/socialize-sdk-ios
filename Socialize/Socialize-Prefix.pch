@@ -11,6 +11,7 @@
 //    #import "StringHelper.h"
     #import "NSError+Socialize.h"
     #import "DebugUtil.h"
+    #import "NSDate+Socialize.h"
 #endif
 
 #ifdef DEBUG

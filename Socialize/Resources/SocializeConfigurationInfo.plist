@@ -4,6 +4,8 @@
 <dict>
 	<key>Formatters</key>
 	<dict>
+		<key>SocializeSubscription</key>
+		<string>SocializeSubscriptionJSONFormatter</string>
 		<key>SocializeApplication</key>
 		<string>SocializeApplicationJSONFormatter</string>
 		<key>SocializeComment</key>
@@ -25,6 +27,8 @@
 	</dict>
 	<key>Prototypes</key>
 	<dict>
+		<key>SocializeSubscription</key>
+		<string>SocializeSubscription</string>
 		<key>SocializeActivity</key>
 		<string>SocializeActivity</string>
 		<key>SocializeApplication</key>
@@ -49,9 +53,9 @@
 	<key>URLs</key>
 	<dict>
 		<key>RestserverBaseURL</key>
-		<string>http://api.getsocialize.com/v1/</string>
+		<string>http://stage.api.getsocialize.com/v1/</string>
 		<key>SecureRestserverBaseURL</key>
-		<string>https://api.getsocialize.com/v1/</string>
+		<string>https://stage.api.getsocialize.com/v1/</string>
 	</dict>
 </dict>
 </plist>

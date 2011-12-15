@@ -1335,6 +1335,25 @@
 		AAAFE93E1435633300851C73 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE93C1435633300851C73 /* MapKit.framework */; };
 		AAAFE947143564B100851C73 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE945143564B100851C73 /* GHUnitIOS.framework */; };
 		AAB076651496B4F20024A385 /* SocializeComposeMessageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6B6F171472F4A4008E885B /* SocializeComposeMessageViewControllerTests.m */; };
+		AAB127D4149928ED009AF443 /* SocializeSubscriptionService.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB127D2149928ED009AF443 /* SocializeSubscriptionService.h */; };
+		AAB127D5149928ED009AF443 /* SocializeSubscriptionService.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB127D2149928ED009AF443 /* SocializeSubscriptionService.h */; };
+		AAB127D6149928ED009AF443 /* SocializeSubscriptionService.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127D3149928ED009AF443 /* SocializeSubscriptionService.m */; };
+		AAB127D7149928ED009AF443 /* SocializeSubscriptionService.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127D3149928ED009AF443 /* SocializeSubscriptionService.m */; };
+		AAB127DA1499297C009AF443 /* SocializeSubscription.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB127D81499297C009AF443 /* SocializeSubscription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAB127DB1499297C009AF443 /* SocializeSubscription.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB127D81499297C009AF443 /* SocializeSubscription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAB127DC1499297C009AF443 /* SocializeSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127D91499297C009AF443 /* SocializeSubscription.m */; };
+		AAB127DD1499297C009AF443 /* SocializeSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127D91499297C009AF443 /* SocializeSubscription.m */; };
+		AAB127E014992B61009AF443 /* SocializeSubscriptionJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB127DE14992B61009AF443 /* SocializeSubscriptionJSONFormatter.h */; };
+		AAB127E114992B61009AF443 /* SocializeSubscriptionJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB127DE14992B61009AF443 /* SocializeSubscriptionJSONFormatter.h */; };
+		AAB127E214992B61009AF443 /* SocializeSubscriptionJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127DF14992B61009AF443 /* SocializeSubscriptionJSONFormatter.m */; };
+		AAB127E314992B61009AF443 /* SocializeSubscriptionJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127DF14992B61009AF443 /* SocializeSubscriptionJSONFormatter.m */; };
+		AAB127E614992FB3009AF443 /* NSDate+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB127E414992FB3009AF443 /* NSDate+Socialize.h */; };
+		AAB127E714992FB3009AF443 /* NSDate+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB127E414992FB3009AF443 /* NSDate+Socialize.h */; };
+		AAB127E814992FB3009AF443 /* NSDate+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127E514992FB3009AF443 /* NSDate+Socialize.m */; };
+		AAB127E914992FB3009AF443 /* NSDate+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127E514992FB3009AF443 /* NSDate+Socialize.m */; };
+		AAB127F214994A0C009AF443 /* TestSubscriptionService.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127F114994A0C009AF443 /* TestSubscriptionService.m */; };
+		AAB127F514995BB3009AF443 /* SocializeSubscriptionServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127F414995BB3009AF443 /* SocializeSubscriptionServiceTests.m */; };
+		AAB127FA14997745009AF443 /* SocializeSubscriptionFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127F914997745009AF443 /* SocializeSubscriptionFormatterTests.m */; };
 		AABB7D941433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D8F1433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib */; };
 		AABB7D951433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */; };
 		AABB7D961433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */; };
@@ -2478,6 +2497,20 @@
 		AAAFE93B1435633300851C73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AAAFE93C1435633300851C73 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AAAFE945143564B100851C73 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
+		AAB127D2149928ED009AF443 /* SocializeSubscriptionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeSubscriptionService.h; path = Classes/SocializeSubscriptionService.h; sourceTree = "<group>"; };
+		AAB127D3149928ED009AF443 /* SocializeSubscriptionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeSubscriptionService.m; path = Classes/SocializeSubscriptionService.m; sourceTree = "<group>"; };
+		AAB127D81499297C009AF443 /* SocializeSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeSubscription.h; path = Classes/SocializeSubscription.h; sourceTree = "<group>"; };
+		AAB127D91499297C009AF443 /* SocializeSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeSubscription.m; path = Classes/SocializeSubscription.m; sourceTree = "<group>"; };
+		AAB127DE14992B61009AF443 /* SocializeSubscriptionJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeSubscriptionJSONFormatter.h; path = Classes/SocializeSubscriptionJSONFormatter.h; sourceTree = "<group>"; };
+		AAB127DF14992B61009AF443 /* SocializeSubscriptionJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeSubscriptionJSONFormatter.m; path = Classes/SocializeSubscriptionJSONFormatter.m; sourceTree = "<group>"; };
+		AAB127E414992FB3009AF443 /* NSDate+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Socialize.h"; path = "Classes/NSDate+Socialize.h"; sourceTree = "<group>"; };
+		AAB127E514992FB3009AF443 /* NSDate+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Socialize.m"; path = "Classes/NSDate+Socialize.m"; sourceTree = "<group>"; };
+		AAB127F014994A0C009AF443 /* TestSubscriptionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSubscriptionService.h; sourceTree = "<group>"; };
+		AAB127F114994A0C009AF443 /* TestSubscriptionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSubscriptionService.m; sourceTree = "<group>"; };
+		AAB127F314995BB3009AF443 /* SocializeSubscriptionServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeSubscriptionServiceTests.h; path = "Test Cases/SocializeSubscriptionServiceTests.h"; sourceTree = "<group>"; };
+		AAB127F414995BB3009AF443 /* SocializeSubscriptionServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeSubscriptionServiceTests.m; path = "Test Cases/SocializeSubscriptionServiceTests.m"; sourceTree = "<group>"; };
+		AAB127F814997745009AF443 /* SocializeSubscriptionFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeSubscriptionFormatterTests.h; path = "Test Cases/SocializeSubscriptionFormatterTests.h"; sourceTree = "<group>"; };
+		AAB127F914997745009AF443 /* SocializeSubscriptionFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeSubscriptionFormatterTests.m; path = "Test Cases/SocializeSubscriptionFormatterTests.m"; sourceTree = "<group>"; };
 		AAB2DEE5143A796300C3C1F5 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = "Frameworks/OCMock/Source/build/Release-iphoneos/libOCMock.a"; sourceTree = "<group>"; };
 		AABB7D8F1433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeEditValueTableViewCell.xib; path = Resources/SocializeEditValueTableViewCell.xib; sourceTree = "<group>"; };
 		AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditTableViewCell.xib; path = Resources/SocializeProfileEditTableViewCell.xib; sourceTree = "<group>"; };
@@ -2645,32 +2678,8 @@
 		1657EF9413A1FFBA00E488CC /* Infrastructure Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6DF5996213ABE843000D125A /* Auth Tests */,
-				6D49744113B404DF00463D23 /* Like tests */,
-				1657EF9513A2000600E488CC /* SocializeRequestTests.h */,
-				1657EF9613A2000600E488CC /* SocializeRequestTests.m */,
-				1636372D13AB289500403879 /* SocializeCommentsServiceTests.h */,
-				1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */,
-				9A6C09AA13B2941F00780951 /* SocializeEntityServiceTests.h */,
-				9A6C09AB13B2941F00780951 /* SocializeEntityServiceTests.m */,
-				9ABB68B713BA6920001882D1 /* SocializeUserServiceTests.h */,
-				9ABB68B813BA6920001882D1 /* SocializeUserServiceTests.m */,
-				6D144D0813BD28F2001D8E0A /* SocializeViewTests.h */,
-				6D144D0913BD28F3001D8E0A /* SocializeViewTests.m */,
-				6D205A2C13BE58D300D0645E /* SocializeShareTests.h */,
-				6D205A2D13BE58D500D0645E /* SocializeShareTests.m */,
-				6DFD546513D94BB800336836 /* SocializeTests.h */,
-				6DFD546613D94BBB00336836 /* SocializeTests.m */,
-				16D54784144D836A0010732A /* SocializeActivityServiceTests.h */,
-				16D54785144D836A0010732A /* SocializeActivityServiceTests.m */,
-				AAEB4A791458E88300A01F5B /* SocializeServiceTests.h */,
-				AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */,
-				AA6DE803145FBBB40037E48E /* SocializeFacebookInterfaceTests.h */,
-				AA6DE804145FBBB40037E48E /* SocializeFacebookInterfaceTests.m */,
-				166DD7381462B8F10017D0E9 /* SocializeShareBuilderTests.h */,
-				166DD7391462B8F10017D0E9 /* SocializeShareBuilderTests.m */,
-				AAC71B69148AE822004413CD /* SocializeErrorTests.h */,
-				AAC71B6A148AE822004413CD /* SocializeErrorTests.m */,
+				AAB127F614995C04009AF443 /* Services */,
+				AAB127F714995C80009AF443 /* Other */,
 			);
 			name = "Infrastructure Tests";
 			sourceTree = "<group>";
@@ -2830,6 +2839,8 @@
 				6D9A0BA213BE1BA600AE949C /* SocializeShare.m */,
 				6D205A3813C3D77C00D0645E /* SocializeError.h */,
 				6D205A3913C3D77C00D0645E /* SocializeError.m */,
+				AAB127D81499297C009AF443 /* SocializeSubscription.h */,
+				AAB127D91499297C009AF443 /* SocializeSubscription.m */,
 			);
 			name = SocializeObjects;
 			sourceTree = "<group>";
@@ -3011,6 +3022,8 @@
 				6D205A3D13C3DB7000D0645E /* SocializeErrorFormatter.m */,
 				16D5479F144EA4320010732A /* SocializeActivityJSONFormatter.h */,
 				16D547A0144EA4330010732A /* SocializeActivityJSONFormatter.m */,
+				AAB127DE14992B61009AF443 /* SocializeSubscriptionJSONFormatter.h */,
+				AAB127DF14992B61009AF443 /* SocializeSubscriptionJSONFormatter.m */,
 			);
 			name = SocializeObjectParsers;
 			sourceTree = "<group>";
@@ -3047,6 +3060,8 @@
 				1670BE6113C6EC04000CC441 /* SocializeShareFormatterTests.m */,
 				166ACEDD14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.h */,
 				166ACEDE14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m */,
+				AAB127F814997745009AF443 /* SocializeSubscriptionFormatterTests.h */,
+				AAB127F914997745009AF443 /* SocializeSubscriptionFormatterTests.m */,
 			);
 			name = "Parser Tests";
 			sourceTree = "<group>";
@@ -3090,15 +3105,6 @@
 				AA6B6F221472F7D4008E885B /* Other */,
 			);
 			name = "UI tests";
-			sourceTree = "<group>";
-		};
-		6D49744113B404DF00463D23 /* Like tests */ = {
-			isa = PBXGroup;
-			children = (
-				1670BE5A13C6EBDD000CC441 /* SocializeLikeTests.h */,
-				1670BE5B13C6EBDD000CC441 /* SocializeLikeTests.m */,
-			);
-			name = "Like tests";
 			sourceTree = "<group>";
 		};
 		6D89844914083B5B00482F1E /* UI */ = {
@@ -3166,17 +3172,10 @@
 				AA88E83F147DA38900123E6F /* NSString+Socialize.m */,
 				AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */,
 				AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */,
+				AAB127E414992FB3009AF443 /* NSDate+Socialize.h */,
+				AAB127E514992FB3009AF443 /* NSDate+Socialize.m */,
 			);
 			name = Utilities;
-			sourceTree = "<group>";
-		};
-		6DF5996213ABE843000D125A /* Auth Tests */ = {
-			isa = PBXGroup;
-			children = (
-				1670BE5713C6EBCC000CC441 /* SocializeAuthTests.h */,
-				1670BE5813C6EBCC000CC441 /* SocializeAuthTests.m */,
-			);
-			name = "Auth Tests";
 			sourceTree = "<group>";
 		};
 		6DFBFE52141FDC890030DE32 /* ThirdPartyLibs */ = {
@@ -3514,6 +3513,8 @@
 				AA973CC11468A02800DAE945 /* TestShareServices.m */,
 				AAAC19911469B11200A083A6 /* TestFacebookInterface.h */,
 				AAAC19921469B11200A083A6 /* TestFacebookInterface.m */,
+				AAB127F014994A0C009AF443 /* TestSubscriptionService.h */,
+				AAB127F114994A0C009AF443 /* TestSubscriptionService.m */,
 			);
 			path = TestCases;
 			sourceTree = "<group>";
@@ -3709,6 +3710,50 @@
 			path = SampleSdkApp;
 			sourceTree = "<group>";
 		};
+		AAB127F614995C04009AF443 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				16D54784144D836A0010732A /* SocializeActivityServiceTests.h */,
+				16D54785144D836A0010732A /* SocializeActivityServiceTests.m */,
+				1636372D13AB289500403879 /* SocializeCommentsServiceTests.h */,
+				1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */,
+				9A6C09AA13B2941F00780951 /* SocializeEntityServiceTests.h */,
+				9A6C09AB13B2941F00780951 /* SocializeEntityServiceTests.m */,
+				AAEB4A791458E88300A01F5B /* SocializeServiceTests.h */,
+				AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */,
+				AAB127F314995BB3009AF443 /* SocializeSubscriptionServiceTests.h */,
+				AAB127F414995BB3009AF443 /* SocializeSubscriptionServiceTests.m */,
+				9ABB68B713BA6920001882D1 /* SocializeUserServiceTests.h */,
+				9ABB68B813BA6920001882D1 /* SocializeUserServiceTests.m */,
+				1670BE5A13C6EBDD000CC441 /* SocializeLikeTests.h */,
+				1670BE5B13C6EBDD000CC441 /* SocializeLikeTests.m */,
+				1670BE5713C6EBCC000CC441 /* SocializeAuthTests.h */,
+				1670BE5813C6EBCC000CC441 /* SocializeAuthTests.m */,
+				6D205A2C13BE58D300D0645E /* SocializeShareTests.h */,
+				6D205A2D13BE58D500D0645E /* SocializeShareTests.m */,
+				6D144D0813BD28F2001D8E0A /* SocializeViewTests.h */,
+				6D144D0913BD28F3001D8E0A /* SocializeViewTests.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		AAB127F714995C80009AF443 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				AAC71B69148AE822004413CD /* SocializeErrorTests.h */,
+				AAC71B6A148AE822004413CD /* SocializeErrorTests.m */,
+				AA6DE803145FBBB40037E48E /* SocializeFacebookInterfaceTests.h */,
+				AA6DE804145FBBB40037E48E /* SocializeFacebookInterfaceTests.m */,
+				1657EF9513A2000600E488CC /* SocializeRequestTests.h */,
+				1657EF9613A2000600E488CC /* SocializeRequestTests.m */,
+				166DD7381462B8F10017D0E9 /* SocializeShareBuilderTests.h */,
+				166DD7391462B8F10017D0E9 /* SocializeShareBuilderTests.m */,
+				6DFD546513D94BB800336836 /* SocializeTests.h */,
+				6DFD546613D94BBB00336836 /* SocializeTests.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
 		AAB64D99147307DA009E892D /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -3731,6 +3776,8 @@
 				6D49743A13B2586C00463D23 /* SocializeLikeService.m */,
 				9A68EB5813AFFA3900E38356 /* SocializeAuthenticateService.h */,
 				9A68EB5913AFFA3900E38356 /* SocializeAuthenticateService.m */,
+				AAB127D2149928ED009AF443 /* SocializeSubscriptionService.h */,
+				AAB127D3149928ED009AF443 /* SocializeSubscriptionService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -4033,6 +4080,10 @@
 				AAD218FB148AFBD600EF5503 /* StringHelper.h in Headers */,
 				AA06B68D148EE39E00D084D4 /* DebugUtil.h in Headers */,
 				AAEABFF514919575007C3D23 /* SocializeKeyboardListener.h in Headers */,
+				AAB127D5149928ED009AF443 /* SocializeSubscriptionService.h in Headers */,
+				AAB127DB1499297C009AF443 /* SocializeSubscription.h in Headers */,
+				AAB127E114992B61009AF443 /* SocializeSubscriptionJSONFormatter.h in Headers */,
+				AAB127E714992FB3009AF443 /* NSDate+Socialize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4119,6 +4170,10 @@
 				AAD218FA148AFBD600EF5503 /* StringHelper.h in Headers */,
 				AA06B68C148EE39E00D084D4 /* DebugUtil.h in Headers */,
 				AAEABFF414919575007C3D23 /* SocializeKeyboardListener.h in Headers */,
+				AAB127D4149928ED009AF443 /* SocializeSubscriptionService.h in Headers */,
+				AAB127DA1499297C009AF443 /* SocializeSubscription.h in Headers */,
+				AAB127E014992B61009AF443 /* SocializeSubscriptionJSONFormatter.h in Headers */,
+				AAB127E614992FB3009AF443 /* NSDate+Socialize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5840,6 +5895,10 @@
 				AA73833A1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */,
 				AAD218FC148AFBD600EF5503 /* StringHelper.m in Sources */,
 				AAEABFF614919575007C3D23 /* SocializeKeyboardListener.m in Sources */,
+				AAB127D6149928ED009AF443 /* SocializeSubscriptionService.m in Sources */,
+				AAB127DC1499297C009AF443 /* SocializeSubscription.m in Sources */,
+				AAB127E214992B61009AF443 /* SocializeSubscriptionJSONFormatter.m in Sources */,
+				AAB127E814992FB3009AF443 /* NSDate+Socialize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5903,6 +5962,8 @@
 				AAC71B6B148AE822004413CD /* SocializeErrorTests.m in Sources */,
 				AACC4F6B1496A42300F106D4 /* SocializeKeyboardListenerTests.m in Sources */,
 				AAB076651496B4F20024A385 /* SocializeComposeMessageViewControllerTests.m in Sources */,
+				AAB127F514995BB3009AF443 /* SocializeSubscriptionServiceTests.m in Sources */,
+				AAB127FA14997745009AF443 /* SocializeSubscriptionFormatterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5959,6 +6020,7 @@
 				AA973CC21468A02800DAE945 /* TestShareServices.m in Sources */,
 				AA973CF51468A6AB00DAE945 /* TestEntityServices.m in Sources */,
 				AAAC19931469B11200A083A6 /* TestFacebookInterface.m in Sources */,
+				AAB127F214994A0C009AF443 /* TestSubscriptionService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6139,6 +6201,10 @@
 				AA73833B1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */,
 				AAD218FD148AFBD600EF5503 /* StringHelper.m in Sources */,
 				AAEABFF714919575007C3D23 /* SocializeKeyboardListener.m in Sources */,
+				AAB127D7149928ED009AF443 /* SocializeSubscriptionService.m in Sources */,
+				AAB127DD1499297C009AF443 /* SocializeSubscription.m in Sources */,
+				AAB127E314992B61009AF443 /* SocializeSubscriptionJSONFormatter.m in Sources */,
+				AAB127E914992FB3009AF443 /* NSDate+Socialize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

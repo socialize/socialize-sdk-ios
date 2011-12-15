@@ -40,6 +40,7 @@
 @class SocializeUserService;
 @class SocializeActivityService;
 @class SocializeShareService;
+@class SocializeSubscriptionService;
 @class UIImage;
 @class SocializeFacebook;
 
@@ -64,6 +65,7 @@ otherwise you will get a failure.
     SocializeUserService            *_userService;
     SocializeActivityService        *_activityService;
     SocializeShareService           *_shareService;
+    SocializeSubscriptionService           *_subscriptionService;
 }
 /**Get access to the authentication service via <SocializeAuthenticateService>.*/
 @property (nonatomic, retain) SocializeAuthenticateService    *authService;
@@ -81,6 +83,8 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeActivityService        *activityService;
 /**Get access to the activity service via <SocializeShareService>.*/
 @property (nonatomic, retain) SocializeShareService           *shareService;
+/**Get access to the activity service via <SocializeSubscriptionService>.*/
+@property (nonatomic, retain) SocializeSubscriptionService *subscriptionService;
 /**Current delegate*/
 @property (nonatomic, assign) id<SocializeServiceDelegate> delegate;
 
@@ -537,4 +541,37 @@ otherwise you will get a failure.
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text;
 -(void)createShareForEntityWithKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text;
+
+/**
+ Enable push notifications for new comments on the given entity
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param entityKey Pushes will be sent for comments on this entity
+ */
+- (void)subscribeToCommentsForEntityKey:(NSString*)entityKey;
+
+/**
+ Disable push notifications for new comments on the given entity
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param entityKey Pushes will no longer be sent for comments on this entity
+ */
+- (void)unsubscribeFromCommentsForEntityKey:(NSString*)entityKey;
+
+/**
+ Get all subscriptions for the given entity key
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didFetchElements:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param entityKey Get subscriptions for this entity key
+ @param first First index
+ @param last Last index, noninclusive
+ */
+- (void)getSubscriptionsForEntityKey:(NSString*)entityKey first:(NSNumber*)first last:(NSNumber*)last;
+
 @end
