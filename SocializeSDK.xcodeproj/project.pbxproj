@@ -348,18 +348,31 @@
 		16FDF4E01414BA0A00EAA064 /* SocializeCommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */; };
 		180B37EF147499E7009D2E22 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18029E121432B815002BDEC7 /* CoreLocation.framework */; };
 		180B37F214749A37009D2E22 /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 180B37F114749A37009D2E22 /* libprofile_rt.dylib */; };
-		180EFE9514609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		180EFE9614609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		180EFE9714609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFE9414609C1000AA957D /* SocializeAuthTableViewCell.m */; };
-		180EFE9814609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFE9414609C1000AA957D /* SocializeAuthTableViewCell.m */; };
-		180EFEA214609C7800AA957D /* SocializeAuthInfoTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFEA014609C7800AA957D /* SocializeAuthInfoTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		180EFEA314609C7800AA957D /* SocializeAuthInfoTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 180EFEA014609C7800AA957D /* SocializeAuthInfoTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		180EFEA414609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */; };
-		180EFEA514609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */; };
 		18296316148450F100F6EFF3 /* socialize-navbar-button-blue-bg-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */; };
 		18296317148450F700F6EFF3 /* socialize-navbar-button-blue-bg-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1614844E9A00D5A56A /* socialize-navbar-button-blue-bg-inactive.png */; };
+		183514DF1497B70A00976838 /* SocializeDeviceToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 18398F3B1496D79300B659BE /* SocializeDeviceToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1835F5501499889100AB0CD3 /* SocializeDeviceTokenService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1835F54E1499889100AB0CD3 /* SocializeDeviceTokenService.h */; };
+		1835F5511499889100AB0CD3 /* SocializeDeviceTokenService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1835F54E1499889100AB0CD3 /* SocializeDeviceTokenService.h */; };
+		1835F5521499889100AB0CD3 /* SocializeDeviceTokenService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835F54F1499889100AB0CD3 /* SocializeDeviceTokenService.m */; };
+		1835F5531499889100AB0CD3 /* SocializeDeviceTokenService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835F54F1499889100AB0CD3 /* SocializeDeviceTokenService.m */; };
+		1835F558149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 1835F554149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.h */; };
+		1835F559149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 1835F554149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.h */; };
+		1835F55A149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835F555149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.m */; };
+		1835F55B149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835F555149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.m */; };
+		1835F55C149988BA00AB0CD3 /* SocializeAuthTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 1835F556149988BA00AB0CD3 /* SocializeAuthTableViewCell.h */; };
+		1835F55D149988BA00AB0CD3 /* SocializeAuthTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 1835F556149988BA00AB0CD3 /* SocializeAuthTableViewCell.h */; };
+		1835F55E149988BA00AB0CD3 /* SocializeAuthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835F557149988BA00AB0CD3 /* SocializeAuthTableViewCell.m */; };
+		1835F55F149988BA00AB0CD3 /* SocializeAuthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835F557149988BA00AB0CD3 /* SocializeAuthTableViewCell.m */; };
+		18398F391496D68500B659BE /* SocializeDeviceTokenJSONFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 18398F371496D68400B659BE /* SocializeDeviceTokenJSONFormatter.h */; };
+		18398F3A1496D68500B659BE /* SocializeDeviceTokenJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F381496D68400B659BE /* SocializeDeviceTokenJSONFormatter.m */; };
+		18398F3D1496D79300B659BE /* SocializeDeviceToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 18398F3B1496D79300B659BE /* SocializeDeviceToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18398F3E1496D79300B659BE /* SocializeDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F3C1496D79300B659BE /* SocializeDeviceToken.m */; };
 		185BEF1814844E9C00D5A56A /* socialize-navbar-button-blue-bg-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1614844E9A00D5A56A /* socialize-navbar-button-blue-bg-inactive.png */; };
 		185BEF1914844E9C00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */; };
+		1880193A1497B85F00146C99 /* SocializeDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F3C1496D79300B659BE /* SocializeDeviceToken.m */; };
+		1880193E1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1880193D1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m */; };
+		188019401497BD8500146C99 /* SocializeDeviceTokenJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F381496D68400B659BE /* SocializeDeviceTokenJSONFormatter.m */; };
+		188019431497C07A00146C99 /* SocializeDeviceTokenServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 188019421497C07A00146C99 /* SocializeDeviceTokenServiceTests.m */; };
 		18D8EDD1146B162600E9991F /* AuthViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */; };
 		18D8EDD5146B48F700E9991F /* SocializeAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18D8EDD6146B48F700E9991F /* SocializeAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */; };
@@ -2057,12 +2070,22 @@
 		16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentDetailsViewController.m; path = Classes/SocializeCommentDetailsViewController.m; sourceTree = "<group>"; };
 		18029E121432B815002BDEC7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		180B37F114749A37009D2E22 /* libprofile_rt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprofile_rt.dylib; path = Platforms/iPhoneOS.platform/Developer/usr/lib/libprofile_rt.dylib; sourceTree = DEVELOPER_DIR; };
-		180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeAuthTableViewCell.h; sourceTree = "<group>"; };
-		180EFE9414609C1000AA957D /* SocializeAuthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAuthTableViewCell.m; sourceTree = "<group>"; };
-		180EFEA014609C7800AA957D /* SocializeAuthInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeAuthInfoTableViewCell.h; sourceTree = "<group>"; };
-		180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAuthInfoTableViewCell.m; sourceTree = "<group>"; };
+		1835F54E1499889100AB0CD3 /* SocializeDeviceTokenService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceTokenService.h; path = Classes/SocializeDeviceTokenService.h; sourceTree = "<group>"; };
+		1835F54F1499889100AB0CD3 /* SocializeDeviceTokenService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceTokenService.m; path = Classes/SocializeDeviceTokenService.m; sourceTree = "<group>"; };
+		1835F554149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeAuthInfoTableViewCell.h; path = Classes/SocializeAuthInfoTableViewCell.h; sourceTree = "<group>"; };
+		1835F555149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeAuthInfoTableViewCell.m; path = Classes/SocializeAuthInfoTableViewCell.m; sourceTree = "<group>"; };
+		1835F556149988BA00AB0CD3 /* SocializeAuthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeAuthTableViewCell.h; path = Classes/SocializeAuthTableViewCell.h; sourceTree = "<group>"; };
+		1835F557149988BA00AB0CD3 /* SocializeAuthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeAuthTableViewCell.m; path = Classes/SocializeAuthTableViewCell.m; sourceTree = "<group>"; };
+		18398F371496D68400B659BE /* SocializeDeviceTokenJSONFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceTokenJSONFormatter.h; path = Classes/SocializeDeviceTokenJSONFormatter.h; sourceTree = "<group>"; };
+		18398F381496D68400B659BE /* SocializeDeviceTokenJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceTokenJSONFormatter.m; path = Classes/SocializeDeviceTokenJSONFormatter.m; sourceTree = "<group>"; };
+		18398F3B1496D79300B659BE /* SocializeDeviceToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceToken.h; path = Classes/SocializeDeviceToken.h; sourceTree = "<group>"; };
+		18398F3C1496D79300B659BE /* SocializeDeviceToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceToken.m; path = Classes/SocializeDeviceToken.m; sourceTree = "<group>"; };
 		185BEF1614844E9A00D5A56A /* socialize-navbar-button-blue-bg-inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-blue-bg-inactive.png"; path = "Resources/socialize-navbar-button-blue-bg-inactive.png"; sourceTree = "<group>"; };
 		185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-blue-bg-inactive@2x.png"; path = "Resources/socialize-navbar-button-blue-bg-inactive@2x.png"; sourceTree = "<group>"; };
+		1880193C1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceTokenJSONFormatterTests.h; path = "Test Cases/SocializeDeviceTokenJSONFormatterTests.h"; sourceTree = "<group>"; };
+		1880193D1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceTokenJSONFormatterTests.m; path = "Test Cases/SocializeDeviceTokenJSONFormatterTests.m"; sourceTree = "<group>"; };
+		188019411497C07A00146C99 /* SocializeDeviceTokenServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceTokenServiceTests.h; path = "Test Cases/SocializeDeviceTokenServiceTests.h"; sourceTree = "<group>"; };
+		188019421497C07A00146C99 /* SocializeDeviceTokenServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceTokenServiceTests.m; path = "Test Cases/SocializeDeviceTokenServiceTests.m"; sourceTree = "<group>"; };
 		18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUnitTestApplication.h; sourceTree = "<group>"; };
 		18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUnitTestApplication.m; sourceTree = "<group>"; };
 		18D8EDCF146B162600E9991F /* AuthViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthViewControllerTests.h; path = "Test Cases/AuthViewControllerTests.h"; sourceTree = "<group>"; };
@@ -2681,6 +2704,34 @@
 		1657EF9413A1FFBA00E488CC /* Infrastructure Tests */ = {
 			isa = PBXGroup;
 			children = (
+				6DF5996213ABE843000D125A /* Auth Tests */,
+				6D49744113B404DF00463D23 /* Like tests */,
+				1657EF9513A2000600E488CC /* SocializeRequestTests.h */,
+				1657EF9613A2000600E488CC /* SocializeRequestTests.m */,
+				1636372D13AB289500403879 /* SocializeCommentsServiceTests.h */,
+				1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */,
+				9A6C09AA13B2941F00780951 /* SocializeEntityServiceTests.h */,
+				9A6C09AB13B2941F00780951 /* SocializeEntityServiceTests.m */,
+				9ABB68B713BA6920001882D1 /* SocializeUserServiceTests.h */,
+				9ABB68B813BA6920001882D1 /* SocializeUserServiceTests.m */,
+				6D144D0813BD28F2001D8E0A /* SocializeViewTests.h */,
+				6D144D0913BD28F3001D8E0A /* SocializeViewTests.m */,
+				6D205A2C13BE58D300D0645E /* SocializeShareTests.h */,
+				6D205A2D13BE58D500D0645E /* SocializeShareTests.m */,
+				6DFD546513D94BB800336836 /* SocializeTests.h */,
+				6DFD546613D94BBB00336836 /* SocializeTests.m */,
+				16D54784144D836A0010732A /* SocializeActivityServiceTests.h */,
+				16D54785144D836A0010732A /* SocializeActivityServiceTests.m */,
+				AAEB4A791458E88300A01F5B /* SocializeServiceTests.h */,
+				AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */,
+				AA6DE803145FBBB40037E48E /* SocializeFacebookInterfaceTests.h */,
+				AA6DE804145FBBB40037E48E /* SocializeFacebookInterfaceTests.m */,
+				166DD7381462B8F10017D0E9 /* SocializeShareBuilderTests.h */,
+				166DD7391462B8F10017D0E9 /* SocializeShareBuilderTests.m */,
+				AAC71B69148AE822004413CD /* SocializeErrorTests.h */,
+				AAC71B6A148AE822004413CD /* SocializeErrorTests.m */,
+				188019411497C07A00146C99 /* SocializeDeviceTokenServiceTests.h */,
+				188019421497C07A00146C99 /* SocializeDeviceTokenServiceTests.m */,
 				AAB127F614995C04009AF443 /* Services */,
 				AAB127F714995C80009AF443 /* Other */,
 			);
@@ -2826,8 +2877,12 @@
 				9A4D296E1393FEDA0065C0CB /* SocializeApplication.m */,
 				9A4D296F1393FEDA0065C0CB /* SocializeComment.h */,
 				9A4D29701393FEDB0065C0CB /* SocializeComment.m */,
+				18398F3B1496D79300B659BE /* SocializeDeviceToken.h */,
+				18398F3C1496D79300B659BE /* SocializeDeviceToken.m */,
 				9A4D29711393FEDB0065C0CB /* SocializeEntity.h */,
 				9A4D29721393FEDC0065C0CB /* SocializeEntity.m */,
+				6D205A3813C3D77C00D0645E /* SocializeError.h */,
+				6D205A3913C3D77C00D0645E /* SocializeError.m */,
 				9A4D29731393FEDC0065C0CB /* SocializeObject.h */,
 				9A4D29741393FEDC0065C0CB /* SocializeObject.m */,
 				9A4D29751393FEDC0065C0CB /* SocializeUser.h */,
@@ -3003,6 +3058,8 @@
 				5C3069BD13A2B396007335FF /* SocializeObjectFormatter.m */,
 				16F449CC13AF536E003BE655 /* SocializeApplicationJSONFormatter.h */,
 				16F449CD13AF536F003BE655 /* SocializeApplicationJSONFormatter.m */,
+				16D5479F144EA4320010732A /* SocializeActivityJSONFormatter.h */,
+				16D547A0144EA4330010732A /* SocializeActivityJSONFormatter.m */,
 				84B8F3D51396EF4D00C95F41 /* SocializeObjectJSONFormatter.h */,
 				84B8F3D41396EF4D00C95F41 /* SocializeObjectJSONFormatter.m */,
 				84B8F3D01396EF4100C95F41 /* SocializeEntityJSONFormatter.h */,
@@ -3023,6 +3080,8 @@
 				6D9A0BA613BE1EA100AE949C /* SocializeShareJSONFormatter.m */,
 				6D205A3C13C3DB6300D0645E /* SocializeErrorFormatter.h */,
 				6D205A3D13C3DB7000D0645E /* SocializeErrorFormatter.m */,
+				18398F371496D68400B659BE /* SocializeDeviceTokenJSONFormatter.h */,
+				18398F381496D68400B659BE /* SocializeDeviceTokenJSONFormatter.m */,
 				16D5479F144EA4320010732A /* SocializeActivityJSONFormatter.h */,
 				16D547A0144EA4330010732A /* SocializeActivityJSONFormatter.m */,
 				AAB127DE14992B61009AF443 /* SocializeSubscriptionJSONFormatter.h */,
@@ -3063,6 +3122,8 @@
 				1670BE6113C6EC04000CC441 /* SocializeShareFormatterTests.m */,
 				166ACEDD14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.h */,
 				166ACEDE14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m */,
+				1880193C1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.h */,
+				1880193D1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m */,
 				AAB127F814997745009AF443 /* SocializeSubscriptionFormatterTests.h */,
 				AAB127F914997745009AF443 /* SocializeSubscriptionFormatterTests.m */,
 			);
@@ -3769,6 +3830,8 @@
 				6D144CFC13BCE75D001D8E0A /* SocializeViewService.m */,
 				6D9A0BA913BE20CC00AE949C /* SocializeShareService.h */,
 				6D9A0BAA13BE20D000AE949C /* SocializeShareService.m */,
+				1835F54E1499889100AB0CD3 /* SocializeDeviceTokenService.h */,
+				1835F54F1499889100AB0CD3 /* SocializeDeviceTokenService.m */,
 				5C21C0CE1396D9A800CF2B9F /* SocializeEntityService.h */,
 				5C21C0CF1396D9A800CF2B9F /* SocializeEntityService.m */,
 				5C21C0D21396DA0400CF2B9F /* SocializeActivityService.h */,
@@ -3907,13 +3970,13 @@
 		AAF903091472FCAE00AB8674 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				1835F554149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.h */,
+				1835F555149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.m */,
+				1835F556149988BA00AB0CD3 /* SocializeAuthTableViewCell.h */,
+				1835F557149988BA00AB0CD3 /* SocializeAuthTableViewCell.m */,
 				AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */,
 				AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */,
 				AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */,
-				180EFE9314609C1000AA957D /* SocializeAuthTableViewCell.h */,
-				180EFE9414609C1000AA957D /* SocializeAuthTableViewCell.m */,
-				180EFEA014609C7800AA957D /* SocializeAuthInfoTableViewCell.h */,
-				180EFEA114609C7800AA957D /* SocializeAuthInfoTableViewCell.m */,
 				18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */,
 				18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */,
 			);
@@ -4058,8 +4121,6 @@
 				16C365EA14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */,
 				16C365EE14518F1600DD5421 /* UIView+BlocksKit.h in Headers */,
 				16C365F214518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */,
-				180EFE9614609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */,
-				180EFEA314609C7800AA957D /* SocializeAuthInfoTableViewCell.h in Headers */,
 				AAE9A6EA145F39A6001A9F1D /* Facebook+Socialize.h in Headers */,
 				AAE9A6F0145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */,
 				166DD6F8146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
@@ -4084,7 +4145,11 @@
 				AA7383351489B596009BE1D0 /* SocializeErrorDefinitions.h in Headers */,
 				AAD218FB148AFBD600EF5503 /* StringHelper.h in Headers */,
 				AA06B68D148EE39E00D084D4 /* DebugUtil.h in Headers */,
+				183514DF1497B70A00976838 /* SocializeDeviceToken.h in Headers */,
 				AAEABFF514919575007C3D23 /* SocializeKeyboardListener.h in Headers */,
+				1835F5511499889100AB0CD3 /* SocializeDeviceTokenService.h in Headers */,
+				1835F559149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.h in Headers */,
+				1835F55D149988BA00AB0CD3 /* SocializeAuthTableViewCell.h in Headers */,
 				AAB127D5149928ED009AF443 /* SocializeSubscriptionService.h in Headers */,
 				AAB127DB1499297C009AF443 /* SocializeSubscription.h in Headers */,
 				AAB127E114992B61009AF443 /* SocializeSubscriptionJSONFormatter.h in Headers */,
@@ -4148,8 +4213,6 @@
 				16C365E914518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */,
 				16C365ED14518F1600DD5421 /* UIView+BlocksKit.h in Headers */,
 				16C365F114518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */,
-				180EFE9514609C1000AA957D /* SocializeAuthTableViewCell.h in Headers */,
-				180EFEA214609C7800AA957D /* SocializeAuthInfoTableViewCell.h in Headers */,
 				AAE9A6E9145F39A6001A9F1D /* Facebook+Socialize.h in Headers */,
 				AAE9A6EF145F55B3001A9F1D /* SocializeFacebookInterface.h in Headers */,
 				166DD6F7146168B10017D0E9 /* ShareProviderProtocol.h in Headers */,
@@ -4174,7 +4237,12 @@
 				AA7383341489B596009BE1D0 /* SocializeErrorDefinitions.h in Headers */,
 				AAD218FA148AFBD600EF5503 /* StringHelper.h in Headers */,
 				AA06B68C148EE39E00D084D4 /* DebugUtil.h in Headers */,
+				18398F391496D68500B659BE /* SocializeDeviceTokenJSONFormatter.h in Headers */,
+				18398F3D1496D79300B659BE /* SocializeDeviceToken.h in Headers */,
 				AAEABFF414919575007C3D23 /* SocializeKeyboardListener.h in Headers */,
+				1835F5501499889100AB0CD3 /* SocializeDeviceTokenService.h in Headers */,
+				1835F558149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.h in Headers */,
+				1835F55C149988BA00AB0CD3 /* SocializeAuthTableViewCell.h in Headers */,
 				AAB127D4149928ED009AF443 /* SocializeSubscriptionService.h in Headers */,
 				AAB127DA1499297C009AF443 /* SocializeSubscription.h in Headers */,
 				AAB127E014992B61009AF443 /* SocializeSubscriptionJSONFormatter.h in Headers */,
@@ -5876,8 +5944,6 @@
 				16C365EB14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				16C365EF14518F1600DD5421 /* UIView+BlocksKit.m in Sources */,
 				16C365F314518F1600DD5421 /* UIWebView+BlocksKit.m in Sources */,
-				180EFE9714609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */,
-				180EFEA414609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */,
 				AAE9A6EB145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAE9A6F1145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */,
 				166DD6FD1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */,
@@ -5899,7 +5965,12 @@
 				AA7383311489B562009BE1D0 /* NSError+Socialize.m in Sources */,
 				AA73833A1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */,
 				AAD218FC148AFBD600EF5503 /* StringHelper.m in Sources */,
+				18398F3A1496D68500B659BE /* SocializeDeviceTokenJSONFormatter.m in Sources */,
+				18398F3E1496D79300B659BE /* SocializeDeviceToken.m in Sources */,
 				AAEABFF614919575007C3D23 /* SocializeKeyboardListener.m in Sources */,
+				1835F5521499889100AB0CD3 /* SocializeDeviceTokenService.m in Sources */,
+				1835F55A149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.m in Sources */,
+				1835F55E149988BA00AB0CD3 /* SocializeAuthTableViewCell.m in Sources */,
 				AAB127D6149928ED009AF443 /* SocializeSubscriptionService.m in Sources */,
 				AAB127DC1499297C009AF443 /* SocializeSubscription.m in Sources */,
 				AAB127E214992B61009AF443 /* SocializeSubscriptionJSONFormatter.m in Sources */,
@@ -5967,6 +6038,8 @@
 				AAC71B6B148AE822004413CD /* SocializeErrorTests.m in Sources */,
 				AACC4F6B1496A42300F106D4 /* SocializeKeyboardListenerTests.m in Sources */,
 				AAB076651496B4F20024A385 /* SocializeComposeMessageViewControllerTests.m in Sources */,
+				1880193E1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m in Sources */,
+				188019431497C07A00146C99 /* SocializeDeviceTokenServiceTests.m in Sources */,
 				AAB127F514995BB3009AF443 /* SocializeSubscriptionServiceTests.m in Sources */,
 				AAB127FA14997745009AF443 /* SocializeSubscriptionFormatterTests.m in Sources */,
 			);
@@ -6183,8 +6256,6 @@
 				16C365EC14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				16C365F014518F1600DD5421 /* UIView+BlocksKit.m in Sources */,
 				16C365F414518F1600DD5421 /* UIWebView+BlocksKit.m in Sources */,
-				180EFE9814609C1000AA957D /* SocializeAuthTableViewCell.m in Sources */,
-				180EFEA514609C7800AA957D /* SocializeAuthInfoTableViewCell.m in Sources */,
 				AAE9A6EC145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAE9A6F2145F55B3001A9F1D /* SocializeFacebookInterface.m in Sources */,
 				166DD6FE1461694A0017D0E9 /* SocializeShareBuilder.m in Sources */,
@@ -6207,6 +6278,11 @@
 				AA73833B1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */,
 				AAD218FD148AFBD600EF5503 /* StringHelper.m in Sources */,
 				AAEABFF714919575007C3D23 /* SocializeKeyboardListener.m in Sources */,
+				1880193A1497B85F00146C99 /* SocializeDeviceToken.m in Sources */,
+				188019401497BD8500146C99 /* SocializeDeviceTokenJSONFormatter.m in Sources */,
+				1835F5531499889100AB0CD3 /* SocializeDeviceTokenService.m in Sources */,
+				1835F55B149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.m in Sources */,
+				1835F55F149988BA00AB0CD3 /* SocializeAuthTableViewCell.m in Sources */,
 				AAB127D7149928ED009AF443 /* SocializeSubscriptionService.m in Sources */,
 				AAB127DD1499297C009AF443 /* SocializeSubscription.m in Sources */,
 				AAB127E314992B61009AF443 /* SocializeSubscriptionJSONFormatter.m in Sources */,
@@ -6726,7 +6802,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: isaac mosquera (L79C47AF68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: isaac mosquera (L79C47AF68)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -6758,6 +6835,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9F637AFD-95EB-45B4-AF77-8A190BDDA854";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9F637AFD-95EB-45B4-AF77-8A190BDDA854";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -6768,7 +6847,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: isaac mosquera (L79C47AF68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: isaac mosquera (L79C47AF68)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -6794,6 +6874,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9F637AFD-95EB-45B4-AF77-8A190BDDA854";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9F637AFD-95EB-45B4-AF77-8A190BDDA854";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

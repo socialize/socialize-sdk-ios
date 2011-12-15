@@ -30,7 +30,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         socialize = [[Socialize alloc] initWithDelegate:self];  
-
         // Custom initialization
     }
     return self;

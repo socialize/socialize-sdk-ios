@@ -17,15 +17,18 @@
 #import "SocializeCommentsService.h"
 #import "SocializeUserService.h"
 #import "SocializeViewService.h"
+#import "SocializeDeviceTokenService.h"
 #import "SocializeShareService.h"
 #import "SocializeSubscriptionService.h"
 #import "Facebook+Socialize.h"
+#import "NSTimer+BlocksKit.h"
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"
 #define SOCIALIZE_FACEBOOK_LOCAL_APP_ID @"socialize_facebook_local_app_id"
 #define SOCIALIZE_FACEBOOK_APP_ID @"socialize_facebook_app_id"
 #define SOCIALIZE_APPLICATION_LINK @"socialize_app_link"
+#define SOCIALIZE_DEVICE_TOKEN @"socialize_device_token"
 
 @implementation Socialize
 
@@ -38,15 +41,25 @@
 @synthesize delegate = _delegate;
 @synthesize activityService = _activityService;
 @synthesize shareService = _shareService;
+@synthesize deviceTokenService = _deviceTokenService;
 @synthesize subscriptionService = _subscriptionService;
+static Socialize *_sharedSocialize = nil;
 
 + (void)initialize {
     if (self == [Socialize class]) {
         Class dynamicTest = NSClassFromString(@"SocializeDynamicTest");
-        NSAssert(dynamicTest != nil, @"Dynamic Class Load Error -- Is the application linked with -all_load?");
+        NSAssert(dynamicTest != nil, @"Dynamic Class Load Error -- does your application build settings for 'other linker flags' contain the flag '-all_load'?");
     }
 }
 
++(id)sharedSocialize {
+    @synchronized(self)
+    {
+        if (_sharedSocialize == nil)
+            _sharedSocialize = [[self alloc] initWithDelegate:nil];
+    }
+    return _sharedSocialize;
+}
 - (void)dealloc {
     [_objectFactory release]; _objectFactory = nil;
     [_authService release]; _authService = nil;
@@ -57,6 +70,8 @@
     [_userService release]; _userService = nil;
     [_activityService release]; _activityService = nil;
     [_shareService release]; _shareService = nil;
+    [_deviceTokenService release]; _deviceTokenService = nil;
+    [_sharedSocialize release]; _sharedSocialize = nil;
     [_subscriptionService release]; _subscriptionService = nil;
     
     [super dealloc];
@@ -77,6 +92,7 @@
         _userService = [[SocializeUserService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _activityService = [[SocializeActivityService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _shareService = [[SocializeShareService  alloc] initWithObjectFactory:_objectFactory delegate:delegate];
+        _deviceTokenService = [[SocializeDeviceTokenService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _subscriptionService = [[SocializeSubscriptionService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
     }
     return self;
@@ -87,6 +103,12 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setValue:key forKey:SOCIALIZE_API_KEY];
     [defaults setValue:secret forKey:SOCIALIZE_API_SECRET];
+    [defaults synchronize];
+}
+
++(void)storeDeviceToken:(NSString*)deviceToken {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:deviceToken forKey:SOCIALIZE_DEVICE_TOKEN];
     [defaults synchronize];
 }
 
@@ -142,6 +164,10 @@
     return [_authService receiveFacebookAuthToken];
 }
 
++(NSString *) deviceToken {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults valueForKey:SOCIALIZE_DEVICE_TOKEN];
+}
 +(NSString*) applicationLink
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -349,6 +375,7 @@
     [_entityService createEntityWithKey:entityKey andName:name];
 }
 
+#pragma mark view related stuff
 -(void)createEntityWithUrl:(NSString*)entityKey andName:(NSString*)name{
     [self createEntityWithKey:entityKey name:name];
 }
@@ -369,7 +396,7 @@
 }
  */
 
-#pragma user related stuff
+#pragma mark user related stuff
 -(void)getCurrentUser
 {
     [_userService getCurrentUser];
@@ -390,7 +417,7 @@
     [_userService updateUser:user profileImage:profileImage];
 }
 
-#pragma activity related stuff
+#pragma mark activity related stuff
 -(void)getActivityOfCurrentApplication
 {
     [_activityService getActivityOfCurrentApplication];
@@ -410,7 +437,7 @@
 }
 
 
-#pragma share service stuff
+#pragma mark share service stuff
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text
 {
@@ -421,6 +448,14 @@
     [_shareService createShareForEntityKey:key medium:medium text:text];
 }
 
+/* REGISTER DEVICE TOKEN SERVICE CALLS */
+#pragma mark notification service stuff
++(void)registerDeviceToken:(NSData *)deviceToken {
+    Socialize *socialize = [Socialize sharedSocialize];
+    [socialize.deviceTokenService registerDeviceToken:deviceToken];
+
+}   
+#pragma mark subscription types
 - (void)subscribeToCommentsForEntityKey:(NSString*)entityKey {
     [_subscriptionService subscribeToCommentsForEntityKey:entityKey];
 }

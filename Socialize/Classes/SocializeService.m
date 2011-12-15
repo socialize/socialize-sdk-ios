@@ -31,7 +31,6 @@
 
 
 @interface SocializeService()
--(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList;
 -(void) dispatch:(SocializeRequest *)request didLoadRawResponse:(NSData *)data;
 @end
 
@@ -72,9 +71,7 @@
     [request connect];
 }
 
-#pragma mark - Socialize requst delegate
-
-
+#pragma mark - Socialize request delegate
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error {
      //[self doDidFailWithError:error];
     if([self.delegate respondsToSelector:@selector(service:didFail:)])
@@ -83,10 +80,8 @@
     [self freeDelegate];
 }
 
--(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList {
-
+-(NSMutableArray *)getObjectListArray:(id)objectList {
     NSMutableArray* array = nil;
-    
     if ([objectList isKindOfClass:[NSArray class]])
         array = objectList;
     else if (objectList != nil){
@@ -95,11 +90,15 @@
     }
     else {
         array = nil;
-    }
+    }    
+    return array;
+}
+-(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList {
+
+    NSMutableArray* array = [self getObjectListArray:objectList];
     
     if (request.operationType == SocializeRequestOperationTypeInferred) {
-        
-
+    
         if ([request.httpMethod isEqualToString:@"POST"]){
             if ([array count])
                 if([self.delegate respondsToSelector:@selector(service:didCreate:)])
@@ -142,7 +141,7 @@
     if(request.expectedJSONFormat == SocializeAny)
         [self invokeAppropriateCallback:request objectList:nil errorList:nil];
     
-    else if(request.expectedJSONFormat == SocializeDictionaryWIthListAndErrors){
+    else if(request.expectedJSONFormat == SocializeDictionaryWithListAndErrors){
         
         // if it is the response form {errors:"",items:""}
         JSONDecoder *jsonKitDecoder = [JSONDecoder decoder];

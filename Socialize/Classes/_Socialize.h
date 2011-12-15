@@ -40,6 +40,7 @@
 @class SocializeUserService;
 @class SocializeActivityService;
 @class SocializeShareService;
+@class SocializeDeviceTokenService;
 @class SocializeSubscriptionService;
 @class UIImage;
 @class SocializeFacebook;
@@ -65,6 +66,7 @@ otherwise you will get a failure.
     SocializeUserService            *_userService;
     SocializeActivityService        *_activityService;
     SocializeShareService           *_shareService;
+    SocializeDeviceTokenService    *_deviceTokenService;
     SocializeSubscriptionService           *_subscriptionService;
 }
 /**Get access to the authentication service via <SocializeAuthenticateService>.*/
@@ -83,6 +85,8 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeActivityService        *activityService;
 /**Get access to the activity service via <SocializeShareService>.*/
 @property (nonatomic, retain) SocializeShareService           *shareService;
+/**Get access to the activity service via <SocializeNotificationService>.*/
+@property (nonatomic, retain) SocializeDeviceTokenService    *deviceTokenService;
 /**Get access to the activity service via <SocializeSubscriptionService>.*/
 @property (nonatomic, retain) SocializeSubscriptionService *subscriptionService;
 /**Current delegate*/
@@ -119,6 +123,13 @@ otherwise you will get a failure.
  */
 +(void)storeFacebookLocalAppId:(NSString*)facebookLocalAppID;
 
+/**
+ Save device token to the user defaults.
+ 
+ @param deviceToken The device token from the notification registration
+ */
++(void)storeDeviceToken:(NSString*)deviceToken;
+    
 /**
  Save app link to the user defaults.
  
@@ -160,6 +171,12 @@ otherwise you will get a failure.
  */
 +(NSString*) facebookLocalAppId;
 
+/**
+ Provide access to device token from notification registration
+ 
+ @return stored device token
+ */
++(NSString *) deviceToken;
 
 /**
  Provide access to the app link
@@ -526,6 +543,11 @@ otherwise you will get a failure.
  @param subscribe YES if you want to subscribe to push notifications for other comments on this entity, NO otherwise
  */
 -(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat subscribe:(BOOL)subscribe;
+
+/** Socialize Notification Service **/
+//registers a device token.  Call this method when the developer gets the callback for:
+//didRegisterForRemoteNotificationsWithDeviceToken from the system
++(void)registerDeviceToken:(NSData *)deviceToken;
 
 /** @name View stuff */
 

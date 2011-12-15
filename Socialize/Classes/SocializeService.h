@@ -44,6 +44,8 @@
 -(id) initWithObjectFactory: (SocializeObjectFactory*) objectFactory delegate:(id<SocializeServiceDelegate>) delegate;
 
 - (void)executeRequest:(SocializeRequest*)request;
+-(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList;
+-(NSMutableArray *)getObjectListArray:(id)objectList;
 -(NSMutableDictionary*)generateParamsFromJsonString:(NSString*)jsonRequest;
 -(void)freeDelegate;
 -(void)retainDelegate;
