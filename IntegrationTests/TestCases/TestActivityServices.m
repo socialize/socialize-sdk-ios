@@ -13,7 +13,7 @@
 
 - (void)testGetUserActivity {
     NSString *commentURL = [self testURL:[NSString stringWithFormat:@"%s/comment", _cmd]];
-    [self createCommentWithURL:commentURL text:@"comment" latitude:nil longitude:nil];
+    [self createCommentWithURL:commentURL text:@"comment" latitude:nil longitude:nil subscribe:NO];
 
     NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", _cmd]];
     [self createShareWithURL:shareURL medium:SocializeShareMediumFacebook text:@"share"];

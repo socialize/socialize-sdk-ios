@@ -1581,6 +1581,7 @@
 		AAC201991460CFD30045FDAB /* UINavigationController+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC201961460CFD30045FDAB /* UINavigationController+Socialize.m */; };
 		AAC2019A1460CFD30045FDAB /* UINavigationController+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC201961460CFD30045FDAB /* UINavigationController+Socialize.m */; };
 		AAC43CB9145B726500F607C8 /* LoadingViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC43CB8145B726500F607C8 /* LoadingViewTests.m */; };
+		AAC4931C149A92C5000EEA7E /* TestCommentServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4931B149A92C5000EEA7E /* TestCommentServices.m */; };
 		AAC71B6B148AE822004413CD /* SocializeErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC71B6A148AE822004413CD /* SocializeErrorTests.m */; };
 		AACA15FA146B6F05005E05EE /* SocializeProfileViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E38A144F80320073308D /* SocializeProfileViewControllerTests.m */; };
 		AACA15FE146B7730005E05EE /* SocializeProfileEditViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA91664F1463B24700EFBD7E /* SocializeProfileEditViewControllerTest.m */; };
@@ -2548,6 +2549,8 @@
 		AAC201961460CFD30045FDAB /* UINavigationController+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Socialize.m"; path = "Classes/UINavigationController+Socialize.m"; sourceTree = "<group>"; };
 		AAC43CB7145B726500F607C8 /* LoadingViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingViewTests.h; path = "Test Cases/LoadingViewTests.h"; sourceTree = "<group>"; };
 		AAC43CB8145B726500F607C8 /* LoadingViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingViewTests.m; path = "Test Cases/LoadingViewTests.m"; sourceTree = "<group>"; };
+		AAC4931A149A92C5000EEA7E /* TestCommentServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCommentServices.h; sourceTree = "<group>"; };
+		AAC4931B149A92C5000EEA7E /* TestCommentServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCommentServices.m; sourceTree = "<group>"; };
 		AAC71B69148AE822004413CD /* SocializeErrorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeErrorTests.h; path = "Test Cases/SocializeErrorTests.h"; sourceTree = "<group>"; };
 		AAC71B6A148AE822004413CD /* SocializeErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeErrorTests.m; path = "Test Cases/SocializeErrorTests.m"; sourceTree = "<group>"; };
 		AACC4F651496A3E600F106D4 /* SocializeKeyboardListenerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeKeyboardListenerTests.h; path = "Test Cases/SocializeKeyboardListenerTests.h"; sourceTree = "<group>"; };
@@ -3558,14 +3561,14 @@
 		AA3E20B31461F329000321BF /* TestCases */ = {
 			isa = PBXGroup;
 			children = (
+				AA3E20B61461F329000321BF /* SocializeAsyncTestCase.h */,
+				AA3E20B71461F329000321BF /* SocializeAsyncTestCase.m */,
 				AA973CF31468A6AB00DAE945 /* TestEntityServices.h */,
 				AA973CF41468A6AB00DAE945 /* TestEntityServices.m */,
 				AAE7958D14684EB100BEAD28 /* TestLikeServices.h */,
 				AAE7958E14684EB100BEAD28 /* TestLikeServices.m */,
 				AA3E20B41461F329000321BF /* AuthTest.h */,
 				AA3E20B51461F329000321BF /* AuthTest.m */,
-				AA3E20B61461F329000321BF /* SocializeAsyncTestCase.h */,
-				AA3E20B71461F329000321BF /* SocializeAsyncTestCase.m */,
 				AAE795AC14684F1E00BEAD28 /* TestActivityServices.h */,
 				AAE795AD14684F1E00BEAD28 /* TestActivityServices.m */,
 				AA973CC01468A02800DAE945 /* TestShareServices.h */,
@@ -3574,6 +3577,8 @@
 				AAAC19921469B11200A083A6 /* TestFacebookInterface.m */,
 				AAB127F014994A0C009AF443 /* TestSubscriptionService.h */,
 				AAB127F114994A0C009AF443 /* TestSubscriptionService.m */,
+				AAC4931A149A92C5000EEA7E /* TestCommentServices.h */,
+				AAC4931B149A92C5000EEA7E /* TestCommentServices.m */,
 			);
 			path = TestCases;
 			sourceTree = "<group>";
@@ -6092,6 +6097,7 @@
 				AA973CF51468A6AB00DAE945 /* TestEntityServices.m in Sources */,
 				AAAC19931469B11200A083A6 /* TestFacebookInterface.m in Sources */,
 				AAB127F214994A0C009AF443 /* TestSubscriptionService.m in Sources */,
+				AAC4931C149A92C5000EEA7E /* TestCommentServices.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

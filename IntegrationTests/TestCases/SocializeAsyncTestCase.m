@@ -91,11 +91,25 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     [self waitForStatus:kGHUnitWaitStatusSuccess];    
 }
 
-- (void)createCommentWithURL:(NSString*)url text:(NSString*)text latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude {
+- (void)createCommentWithURL:(NSString*)url text:(NSString*)text latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude subscribe:(BOOL)subscribe {
     [self prepare];
     [self.socialize createCommentForEntityWithKey:url comment:text longitude:longitude latitude:latitude];
     [self waitForStatus:kGHUnitWaitStatusSuccess];
     NSLog(@"Created %@", url);
+}
+
+- (void)createCommentWithEntity:(id<SocializeEntity>)entity text:(NSString*)text latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude subscribe:(BOOL)subscribe {
+    [self prepare];
+    [self.socialize createCommentForEntity:entity comment:text longitude:longitude latitude:latitude];
+    [self waitForStatus:kGHUnitWaitStatusSuccess];
+    NSLog(@"Created %@ (%@)", entity.key, entity.name);
+}
+
+- (void)getCommentsForEntityWithKey:(NSString*)entityKey {
+    [self prepare];
+    [self.socialize getCommentList:entityKey first:nil last:nil];
+    [self waitForStatus:kGHUnitWaitStatusSuccess];
+    NSLog(@"Fetched %d comments", [self.fetchedElements count]);
 }
 
 - (void)createShareWithURL:(NSString*)url medium:(SocializeShareMedium)medium text:(NSString*)text {
@@ -148,6 +162,12 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
 - (void)getActivityForCurrentUser {
     [self prepare];
     [self.socialize getActivityOfUser:[self.socialize authenticatedUser]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess];
+}
+
+- (void)getSubscriptionsForEntityKey:(NSString*)entityKey {
+    [self prepare];
+    [self.socialize getSubscriptionsForEntityKey:entityKey first:nil last:nil];
     [self waitForStatus:kGHUnitWaitStatusSuccess];
 }
 

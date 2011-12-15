@@ -506,16 +506,29 @@ otherwise you will get a failure.
 /**
  Create comment for entity.
  
+ @see createCommentForEntityWithKey:comment:longitude:latitude:subscribe:
+ */
+-(void)createCommentForEntityWithKey:(NSString*)url comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
+
+/**
+ Create comment for entity.
+ 
  Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
- @param url URL to the entity.
+ @param entityKey URL to the entity.
  @param comment Text of the comment.
  @param lng Longitude *float* value. Could be nil. (OPTIONAL)
  @param lat Latitude  *float* value. Could be nil. (OPTIONAL)
- @see createCommentForEntity:comment:longitude:latitude:;
+ @param subscribe YES if you want to subscribe to push notifications for other comments on this entity, NO otherwise
  */
--(void)createCommentForEntityWithKey:(NSString*)url comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
+-(void)createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat subscribe:(BOOL)subscribe;
+
+/**
+ Create comment for entity.
+ @see createCommentForEntity:comment:longitude:latitude:subscribe:
+ */
+-(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
 
 /**
  Create comment for entity.
@@ -527,9 +540,9 @@ otherwise you will get a failure.
  @param comment Text of the comment.
  @param lng Longitude *float* value. Could be nil. (OPTIONAL)
  @param lat Latitude  *float* value. Could be nil. (OPTIONAL)
- @see createCommentForEntityWithKey:comment:longitude:latitude:
+ @param subscribe YES if you want to subscribe to push notifications for other comments on this entity, NO otherwise
  */
--(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
+-(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat subscribe:(BOOL)subscribe;
 
 /** Socialize Notification Service **/
 //registers a device token.  Call this method when the developer gets the callback for:

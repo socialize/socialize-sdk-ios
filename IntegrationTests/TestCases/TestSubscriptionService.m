@@ -29,10 +29,8 @@
     GHAssertEqualObjects([(id<SocializeSubscription>)self.createdObject type], @"new_comments", @"bad type");
     
     // Get updated subscriptions for the entity (should contain new subscription)
-    [self prepare];
-    [self.socialize getSubscriptionsForEntityKey:entityKey first:nil last:nil];
-    [self waitForStatus:kGHUnitWaitStatusSuccess];
-
+    [self getSubscriptionsForEntityKey:entityKey];
+    
     // Test singular subscription object has correct key and type, and is subscribed
     GHAssertTrue([self.fetchedElements count] == 1, @"Should contain new subscription");
     id<SocializeSubscription> subscription = [self.fetchedElements objectAtIndex:0];
@@ -61,6 +59,16 @@
     GHAssertFalse([subscription subscribed], @"subscribed should be false");
 }
 
+- (void)testCreatingNewCommentWithSubscription {
+    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/entity", _cmd]];
 
+    [self createCommentWithURL:entityKey text:@"comment" latitude:nil longitude:nil subscribe:YES];
+    
+    [self getSubscriptionsForEntityKey:entityKey];
+    
+    GHAssertTrue([self.fetchedElements count] == 1, @"Should contain one subscription");
+    id<SocializeSubscription> subscription = [self.fetchedElements objectAtIndex:0];
+    GHAssertEqualObjects([[subscription entity] key], entityKey, @"Bad entity key");
+}
 
 @end

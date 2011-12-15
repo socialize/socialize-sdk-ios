@@ -352,9 +352,18 @@ static Socialize *_sharedSocialize = nil;
     [_commentsService createCommentForEntityWithKey:entityKey comment:comment longitude: lng latitude: lat];
 }
 
+-(void)createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat subscribe:(BOOL)subscribe {
+    [_commentsService createCommentForEntityWithKey:entityKey comment:comment longitude:lng latitude:lat subscribe:subscribe];
+}
+
 -(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat{
     [_commentsService createCommentForEntity:entity comment:comment longitude: lng latitude: lat];
 }
+
+-(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat subscribe:(BOOL)subscribe {
+    [_commentsService createCommentForEntity:entity comment:comment longitude:lng latitude:lat subscribe:subscribe];    
+}
+
 
 #pragma entity related stuff
 

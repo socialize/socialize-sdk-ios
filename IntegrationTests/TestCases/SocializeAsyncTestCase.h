@@ -19,7 +19,9 @@
 
 - (void)waitForStatus:(NSInteger)status;
 - (NSString*)testURL:(NSString*)suffix;
-- (void)createCommentWithURL:(NSString*)url text:(NSString*)text latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude;
+- (void)createCommentWithURL:(NSString*)url text:(NSString*)text latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude subscribe:(BOOL)subscribe;
+- (void)createCommentWithEntity:(id<SocializeEntity>)entity text:(NSString*)text latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude subscribe:(BOOL)subscribe;
+- (void)getCommentsForEntityWithKey:(NSString*)entityKey;
 - (void)createShareWithURL:(NSString*)url medium:(SocializeShareMedium)medium text:(NSString*)text;
 - (void)createLikeWithURL:(NSString*)url latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude;
 - (void)createViewWithURL:(NSString*)url latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude;
@@ -29,5 +31,6 @@
 - (void)deleteLike:(id<SocializeLike>)like;
 - (void)createEntityWithURL:(NSString*)url name:(NSString*)name;
 - (void)getEntityWithURL:(NSString*)url;
+- (void)getSubscriptionsForEntityKey:(NSString*)entityKey;
 //- (void)getViewsForURL:(NSString*)url;
 @end
