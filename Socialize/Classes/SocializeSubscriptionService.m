@@ -30,7 +30,7 @@
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
                                 resourcePath:@"user/subscription/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:subscriptions]
      ];
 }
@@ -59,7 +59,7 @@
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:@"user/subscription/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]
      ];
 }

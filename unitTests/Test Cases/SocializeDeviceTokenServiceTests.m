@@ -48,10 +48,10 @@
     GHAssertTrue(shouldRegister, @"should register should have returned true");
 }
 
--(void)invokeAppropriateCallback {
+-(void)testInvokeAppropriateCallback {
     NSArray *objectList = [NSArray arrayWithObject:self.mockDeviceToken];
-    [[[self.partialDeviceTokenService expect] andReturn:objectList] getObjectListArray:OCMOCK_ANY];
-    [self.deviceTokenService invokeAppropriateCallback:nil objectList:nil errorList:nil];
+    [[[self.partialDeviceTokenService stub] andReturn:objectList] getObjectListArray:OCMOCK_ANY];
+    [self.deviceTokenService invokeAppropriateCallback:nil objectList:objectList errorList:nil];
 }
 -(void)testRegisterTokenWithTimerInvalidation {
     [[[self.partialDeviceTokenService expect] andReturnBool:NO] shouldRegisterDeviceToken:self.mockDeviceTokenString];

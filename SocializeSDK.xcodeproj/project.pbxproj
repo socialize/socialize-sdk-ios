@@ -2701,8 +2701,6 @@
 		1657EF9413A1FFBA00E488CC /* Infrastructure Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6DF5996213ABE843000D125A /* Auth Tests */,
-				6D49744113B404DF00463D23 /* Like tests */,
 				1657EF9513A2000600E488CC /* SocializeRequestTests.h */,
 				1657EF9613A2000600E488CC /* SocializeRequestTests.m */,
 				1636372D13AB289500403879 /* SocializeCommentsServiceTests.h */,
