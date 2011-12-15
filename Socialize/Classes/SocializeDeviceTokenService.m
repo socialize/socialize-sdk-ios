@@ -36,12 +36,15 @@
     [self executeRequest:request];
 }
 -(BOOL)shouldRegisterDeviceToken:(NSString *)deviceToken {
-    NSString *storedDeviceToken = [Socialize deviceToken];
+    NSString *storedDeviceToken = [self getDeviceToken];
     if (storedDeviceToken && [storedDeviceToken isEqualToString:deviceToken] ) {
         return NO;
     } else {
         return YES;
     }
+}
+-(NSString *) getDeviceToken {
+    return [Socialize deviceToken];
 }
 -(void) invalidateRegisterDeviceTimer {
     if (self.registerDeviceTimer) {
