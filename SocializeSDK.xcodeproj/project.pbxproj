@@ -3502,14 +3502,14 @@
 		AA3E20B31461F329000321BF /* TestCases */ = {
 			isa = PBXGroup;
 			children = (
+				AA3E20B61461F329000321BF /* SocializeAsyncTestCase.h */,
+				AA3E20B71461F329000321BF /* SocializeAsyncTestCase.m */,
 				AA973CF31468A6AB00DAE945 /* TestEntityServices.h */,
 				AA973CF41468A6AB00DAE945 /* TestEntityServices.m */,
 				AAE7958D14684EB100BEAD28 /* TestLikeServices.h */,
 				AAE7958E14684EB100BEAD28 /* TestLikeServices.m */,
 				AA3E20B41461F329000321BF /* AuthTest.h */,
 				AA3E20B51461F329000321BF /* AuthTest.m */,
-				AA3E20B61461F329000321BF /* SocializeAsyncTestCase.h */,
-				AA3E20B71461F329000321BF /* SocializeAsyncTestCase.m */,
 				AAE795AC14684F1E00BEAD28 /* TestActivityServices.h */,
 				AAE795AD14684F1E00BEAD28 /* TestActivityServices.m */,
 				AA973CC01468A02800DAE945 /* TestShareServices.h */,

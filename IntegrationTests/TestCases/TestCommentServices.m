@@ -17,7 +17,7 @@
     NSNumber *latitude = [NSNumber numberWithFloat:12.f];
     NSNumber *longitude = [NSNumber numberWithFloat:34.f];
     
-    [self createCommentWithEntity:entity text:@"test comment" latitude:latitude longitude:longitude];
+    [self createCommentWithEntity:entity text:@"test comment" latitude:latitude longitude:longitude subscribe:YES];
     
     [self getCommentsForEntityWithKey:entity.key];
     
@@ -34,7 +34,7 @@
     NSNumber *latitude = [NSNumber numberWithFloat:12.f];
     NSNumber *longitude = [NSNumber numberWithFloat:34.f];
     
-    [self createCommentWithURL:entityKey text:commentText latitude:latitude longitude:longitude];
+    [self createCommentWithURL:entityKey text:commentText latitude:latitude longitude:longitude subscribe:YES];
     
     [self getCommentsForEntityWithKey:entityKey];
     

@@ -102,7 +102,7 @@
     [self createCommentForParams:[NSArray arrayWithObject:commentParams]];
 }
 
-- (NSMutableDictionary*)commentParamsForEntityKey:(NSString*)entityKey entityName:(NSString*)entityName comment:(NSString*)comment latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude {
+- (NSMutableDictionary*)commentParamsForEntityKey:(NSString*)entityKey entityName:(NSString*)entityName comment:(NSString*)comment latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude subscribe:(BOOL)subscribe {
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
@@ -121,19 +121,29 @@
         [params setObject:longitude forKey:@"lng"];
     }
     
+    [params setObject:[NSNumber numberWithBool:subscribe] forKey:@"subscribe"];
+    
     return params;
+}
+
+-(void) createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat subscribe:(BOOL)subscribe {
+    NSMutableDictionary *params = [self commentParamsForEntityKey:entityKey entityName:nil comment:comment latitude:lat longitude:lng subscribe:subscribe];
+    [self createCommentForCommentParams:params];
 }
 
 -(void) createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat
 {
-    NSMutableDictionary *params = [self commentParamsForEntityKey:entityKey entityName:nil comment:comment latitude:lat longitude:lng];
+    [self createCommentForEntityWithKey:entityKey comment:comment longitude:lng latitude:lat subscribe:NO];
+}
+
+-(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat subscribe:(BOOL)subscribe {
+    NSMutableDictionary *params = [self commentParamsForEntityKey:entity.key entityName:entity.name comment:comment latitude:lat longitude:lng subscribe:subscribe];
     [self createCommentForCommentParams:params];
 }
 
 -(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat
 {
-    NSMutableDictionary *params = [self commentParamsForEntityKey:entity.key entityName:entity.name comment:comment latitude:lat longitude:lng];
-    [self createCommentForCommentParams:params];
+    [self createCommentForEntity:entity comment:comment longitude:lng latitude:lat subscribe:NO];
 }
 
 @end

@@ -143,11 +143,12 @@ static const int singleCommentId = 1;
     entity.key = @"http://www.example.com/interesting-story/";
     entity.name = @"example";
     
-    NSArray* mockArray = [NSArray arrayWithObjects:
-                                     [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil], @"entity",
-                                      @"this was a great story", @"text", nil], 
-                                     nil];
+    NSArray* mockArray = [NSArray arrayWithObject:
+                          [NSDictionary dictionaryWithObjectsAndKeys:
+                           [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil], @"entity",
+                           @"this was a great story", @"text",
+                           [NSNumber numberWithBool:NO], @"subscribe",
+                           nil]];
     
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
@@ -168,7 +169,13 @@ static const int singleCommentId = 1;
     entity.name = @"example";
     
     NSArray* mockArray = [NSArray arrayWithObject:
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil],@"entity", @"this was a great story", @"text",                             [NSNumber numberWithFloat:1.2], @"lng",[NSNumber numberWithFloat:1.1], @"lat", nil]];
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                           [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil],@"entity",
+                           @"this was a great story", @"text",
+                           [NSNumber numberWithFloat:1.2], @"lng",
+                           [NSNumber numberWithFloat:1.1], @"lat",
+                           [NSNumber numberWithBool:NO], @"subscribe",
+                           nil]];
     
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
@@ -190,6 +197,8 @@ static const int singleCommentId = 1;
                              @"this was a great story", @"text",
                              [NSNumber numberWithFloat:1.2], @"lng",
                              [NSNumber numberWithFloat:1.1], @"lat",                             
+                             [NSNumber numberWithBool:NO], @"subscribe",
+
                              nil],
                           nil];
     
