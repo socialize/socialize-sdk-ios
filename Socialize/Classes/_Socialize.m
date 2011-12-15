@@ -20,12 +20,14 @@
 #import "SocializeDeviceTokenService.h"
 #import "SocializeShareService.h"
 #import "Facebook+Socialize.h"
+#import "NSTimer+BlocksKit.h"
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"
 #define SOCIALIZE_FACEBOOK_LOCAL_APP_ID @"socialize_facebook_local_app_id"
 #define SOCIALIZE_FACEBOOK_APP_ID @"socialize_facebook_app_id"
 #define SOCIALIZE_APPLICATION_LINK @"socialize_app_link"
+#define SOCIALIZE_DEVICE_TOKEN @"socialize_device_token"
 
 @implementation Socialize
 
@@ -100,6 +102,12 @@ static Socialize *_sharedSocialize = NULL;
     [defaults synchronize];
 }
 
++(void)storeDeviceToken:(NSString*)deviceToken {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:deviceToken forKey:SOCIALIZE_DEVICE_TOKEN];
+    [defaults synchronize];
+}
+
 +(void)storeFacebookAppId:(NSString*)facebookAppId {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setValue:facebookAppId forKey:SOCIALIZE_FACEBOOK_APP_ID];
@@ -152,6 +160,10 @@ static Socialize *_sharedSocialize = NULL;
     return [_authService receiveFacebookAuthToken];
 }
 
++(NSString *) deviceToken {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults valueForKey:SOCIALIZE_DEVICE_TOKEN];
+}
 +(NSString*) applicationLink
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -423,5 +435,6 @@ static Socialize *_sharedSocialize = NULL;
 +(void)registerDeviceToken:(NSData *)deviceToken {
     Socialize *socialize = [Socialize sharedSocialize];
     [socialize.deviceTokenService registerDeviceToken:deviceToken];
-}
+
+}   
 @end

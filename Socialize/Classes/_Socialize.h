@@ -120,6 +120,13 @@ otherwise you will get a failure.
 +(void)storeFacebookLocalAppId:(NSString*)facebookLocalAppID;
 
 /**
+ Save device token to the user defaults.
+ 
+ @param deviceToken The device token from the notification registration
+ */
++(void)storeDeviceToken:(NSString*)deviceToken;
+    
+/**
  Save app link to the user defaults.
  
  @param application link(URL)
@@ -160,6 +167,12 @@ otherwise you will get a failure.
  */
 +(NSString*) facebookLocalAppId;
 
+/**
+ Provide access to device token from notification registration
+ 
+ @return stored device token
+ */
++(NSString *) deviceToken;
 
 /**
  Provide access to the app link

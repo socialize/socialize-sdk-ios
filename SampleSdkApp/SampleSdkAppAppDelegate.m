@@ -83,6 +83,7 @@
 }
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken
 {  
+    NSLog(@"registering device token");
     [Socialize registerDeviceToken:deviceToken];
 }
 - (void)application:(UIApplication*)application  
