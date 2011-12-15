@@ -68,7 +68,7 @@
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:COMMENTS_LIST_METHOD
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]
      ];
 }
@@ -84,7 +84,7 @@
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:COMMENTS_LIST_METHOD
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]
      ];
 }
@@ -93,7 +93,7 @@
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
                                 resourcePath:COMMENTS_LIST_METHOD
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]
      ];
 }

@@ -34,6 +34,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];  
+
     UIViewController* rootViewController = nil;
        
     // we check the authentication here.
@@ -79,6 +81,16 @@
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
 }
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken
+{  
+    NSLog(@"registering device token");
+    [Socialize registerDeviceToken:deviceToken];
+}
+- (void)application:(UIApplication*)application  
+didFailToRegisterForRemoteNotificationsWithError:(NSError*)error  
+{  
+    NSLog(@"Error Register Notifications: %@", [error localizedDescription]);
+}  
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {

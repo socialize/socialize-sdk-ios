@@ -55,7 +55,7 @@
         [self executeRequest:
          [SocializeRequest requestWithHttpMethod:@"POST"
                                     resourcePath:LIKE_METHOD
-                              expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                              expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                           params:params]
          ];
 
@@ -85,7 +85,7 @@
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:updatedResource
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]
      ];
 
@@ -103,7 +103,7 @@
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:LIKE_METHOD
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]
      ];
 

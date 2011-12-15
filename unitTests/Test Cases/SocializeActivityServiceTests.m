@@ -53,7 +53,7 @@
     [[_activityService expect]executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:path
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]];
     
     id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
@@ -72,7 +72,7 @@
     [[_activityService expect]executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:@"activity/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:nil]];
     
     [_activityService getActivityOfCurrentApplication];
@@ -86,7 +86,7 @@
     [[_activityService expect]executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:@"activity/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]];
     
     [_activityService getActivityOfCurrentApplicationWithFirst:[NSNumber numberWithInt:3] last:[NSNumber numberWithInt:5]];
@@ -98,7 +98,7 @@
     [[_activityService expect]executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:@"user/123/activity/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:nil]];
     id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
     int identificator = 123;

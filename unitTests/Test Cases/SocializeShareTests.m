@@ -61,7 +61,7 @@
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
                                 resourcePath:@"share/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:expectedParams]];
 
     [_mockService createShareForEntity:mockEntity  medium:medium  text:@"text"];

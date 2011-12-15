@@ -45,7 +45,7 @@
                                    nil];
 
     NSString* newMethodName = [NSString stringWithFormat:@"like/%d/", alikeId];
-    SocializeRequest *expectedRequest = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:newMethodName expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:params];
+    SocializeRequest *expectedRequest = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:newMethodName expectedJSONFormat:SocializeDictionaryWithListAndErrors params:params];
     [[_mockService expect] executeRequest:expectedRequest];
 
     [_mockService getLike:alikeId];
@@ -84,7 +84,7 @@
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:@"like/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]];
 
     [_mockService getLikesForEntityKey:@"www.123.com" first:first last:last];
@@ -101,7 +101,7 @@
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:@"like/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]];
 
     [_mockService getLikesForEntityKey:@"www.123.com" first:nil last:nil];
@@ -122,7 +122,7 @@
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
                                 resourcePath:@"like/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]];
 
     [_mockService postLikeForEntity:mockEntity andLongitude:nil latitude:nil];
@@ -145,7 +145,7 @@
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
                                 resourcePath:@"like/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]];
 
     [_mockService postLikeForEntity:mockEntity andLongitude:lng latitude:lat];

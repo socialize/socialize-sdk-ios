@@ -62,7 +62,7 @@
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:ENTITY_GET_ENDPOINT
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]
      ];
 
@@ -76,7 +76,7 @@
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
                                 resourcePath:ENTITY_CREATE_ENDPOINT
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]
      ];
 
@@ -98,7 +98,7 @@
 }
 
 -(void)createEntities:(NSArray *)entities{
-    [self createEntities:entities expectedResponseFormat:SocializeDictionaryWIthListAndErrors];
+    [self createEntities:entities expectedResponseFormat:SocializeDictionaryWithListAndErrors];
 }
 
 @end

@@ -70,7 +70,7 @@
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"POST"
                                 resourcePath:@"entity/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:expectedDictionary]];
     
     [_mockService createEntityWithKey:entityKey andName:entityName];
@@ -89,7 +89,7 @@
     [[_mockService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:@"entity/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:params]];
 
     [_entityService entityWithKey:entityKey];

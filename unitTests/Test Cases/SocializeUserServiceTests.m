@@ -51,7 +51,7 @@
     [[_mockUserService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:@"user/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:userIdDictionary]
      ];
 
@@ -84,7 +84,7 @@
     [[_mockUserService expect] executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
                                 resourcePath:@"user/"
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                       params:userIdDictionary]];
 
        
