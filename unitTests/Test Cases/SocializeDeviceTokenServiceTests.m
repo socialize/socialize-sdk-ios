@@ -38,10 +38,12 @@
     GHAssertNil(self.deviceTokenService.registerDeviceTimer, @"register device timer should be nil after invalidation");
 }
 -(void)testRegisterDeviceTokenPersistently {
-    id mockData = [OCMockObject mockForClass:[NSData class]];
-    [[self.partialDeviceTokenService expect] getTimerBlockForToken:OCMOCK_ANY];
-    [self.deviceTokenService registerDeviceToken:mockData persistent:YES];
+    id mockString = [OCMockObject mockForClass:[NSString class]];
+    [[mockString expect] uppercaseString];
+    
+    [self.deviceTokenService registerDeviceToken:mockString persistent:YES];
     GHAssertNotNil(self.deviceTokenService.registerDeviceTimer,@"the register service is nil when it should be initialized");
+    [mockString verify];
 }    
 -(void)testRegisterDeviceTokens {
 //    -(void)registerDeviceTokens:(NSArray *) tokens {
