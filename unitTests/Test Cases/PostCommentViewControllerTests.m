@@ -135,7 +135,7 @@
     BOOL trueValue = YES;
     [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(trueValue)] shouldShareLocation];
     
-    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:OCMOCK_ANY latitude:OCMOCK_ANY];
+    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:OCMOCK_ANY latitude:OCMOCK_ANY subscribe:YES];
     BOOL retValue = YES;
     [[[self.mockSocialize stub] andReturnValue:OCMOCK_VALUE(retValue)] isAuthenticatedWithFacebook];
     [[self.mockSendButton expect] setEnabled:NO];
@@ -148,7 +148,7 @@
     BOOL trueValue = NO;
     [[[self.mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
     
-    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:nil latitude:nil];
+    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:nil latitude:nil subscribe:YES];
     BOOL retValue = YES;
     [[[self.mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticatedWithFacebook];
     
@@ -202,7 +202,7 @@
     [[[self.mockCommentTextView stub] andReturn:testText] text];
     [[self.mockSendButton expect] setEnabled:NO];
 //    [[self.mockCancelButton expect] setEnabled:NO];
-    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:testText longitude:longitudeNumber latitude:latitudeNumber];
+    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:testText longitude:longitudeNumber latitude:latitudeNumber subscribe:YES];
 
     [self.postCommentViewController finishCreateComment];
 }

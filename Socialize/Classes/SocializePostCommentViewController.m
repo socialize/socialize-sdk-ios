@@ -88,7 +88,7 @@
         [self.socialize createCommentForEntityWithKey:self.entityURL comment:commentTextView.text longitude:longitude latitude:latitude subscribe:!self.dontSubscribeToDiscussion];
     }
     else
-        [self.socialize createCommentForEntityWithKey:self.entityURL comment:commentTextView.text longitude:nil latitude:nil];
+        [self.socialize createCommentForEntityWithKey:self.entityURL comment:commentTextView.text longitude:nil latitude:nil subscribe:!self.dontSubscribeToDiscussion];
 }
 
 - (BOOL)shouldSendToFacebook {
