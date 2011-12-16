@@ -185,7 +185,6 @@
     [[(id)self.profileViewController expect] setUserDescriptionLabel:nil];
     [[(id)self.profileViewController expect] setUserLocationLabel:nil];
     [[(id)self.profileViewController expect] setProfileImageView:nil];
-    [[(id)self.profileViewController expect] setProfileEditViewController:nil];
     [[(id)self.profileViewController expect] setDefaultProfileImage:nil];
     [self.profileViewController viewDidUnload];
 }
