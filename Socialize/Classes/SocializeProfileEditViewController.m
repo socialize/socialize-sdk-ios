@@ -14,6 +14,7 @@
 #import "SocializeProfileEditValueViewController.h"
 #import "SocializePrivateDefinitions.h"
 #import "UINavigationController+Socialize.h"
+#import "UIImage+Resize.h"
 
 typedef struct {
     NSString *displayName;
@@ -117,7 +118,8 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     if (image == nil) {
         self.profileImage = [UIImage imageNamed:@"socialize-profileimage-large-default.png"];
     } else {
-        self.profileImage = image;
+        UIImage *resized = [image imageWithSameAspectRatioAndWidth:300.f];
+        self.profileImage = resized;
     }
     
     [self reloadImageCell];
@@ -417,8 +419,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 	[picker dismissModalViewControllerAnimated:YES];
 	
     [self configureForAfterEdit];
-    [self setProfileImage:image];
-    [self reloadImageCell];
+    [self setProfileImageFromImage:image];
 }
 
 #pragma mark - Table view delegate

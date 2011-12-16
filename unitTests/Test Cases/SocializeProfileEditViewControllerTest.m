@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "SocializePrivateDefinitions.h"
+#import "UIImage+Resize.h"
 
 @interface SocializeProfileEditViewController ()
 - (void)cancelButtonPressed:(UIButton*)button;
@@ -388,9 +389,12 @@
     [[mockPicker expect] dismissModalViewControllerAnimated:YES];
 
     // Image should be set
-    UIImage *mockImage = [OCMockObject mockForClass:[UIImage class]];
+    id mockImage = [OCMockObject mockForClass:[UIImage class]];
+    id mockResizedImage = [OCMockObject mockForClass:[UIImage class]];
+    [[[mockImage expect] andReturn:mockResizedImage] imageWithSameAspectRatioAndWidth:300.f];
+    
     NSDictionary *info = [NSDictionary dictionaryWithObject:mockImage forKey:UIImagePickerControllerEditedImage];
-    [[(id)self.profileEditViewController expect] setProfileImage:mockImage];
+    [[(id)self.profileEditViewController expect] setProfileImage:mockResizedImage];
     
     // Cell should reconfigure
     NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
