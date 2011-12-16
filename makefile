@@ -27,12 +27,10 @@ buildsample:
      
 # If you need to clean a specific target/configuration: $(COMMAND) -target $(TARGET) -configuration DebugOrRelease -sdk $(SDK) clean
 clean:
-	for scheme in $(CLEAN_SCHEMES); do \
-		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Debug -sdk iphoneos clean ; \
-		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Debug -sdk iphonesimulator clean ; \
-		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Release -sdk iphoneos clean ; \
-		xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "$$scheme" -configuration Release -sdk iphonesimulator clean ; \
-	done
+	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "Socialize" -configuration Release -sdk iphoneos clean
+	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "unitTests" -configuration Debug -sdk iphonesimulator clean
+	xcodebuild -workspace SampleSdkApp/SampleSdkApp.xcworkspace -scheme "IntegrationTests" -configuration Debug -sdk iphonesimulator clean
+	xcodebuild -workspace SampleSdkApp/SampleSdkApp.xcworkspace -scheme "IntegrationTests" -configuration Debug -sdk iphonesimulator clean
 	rm -rfd build
 
 test:
