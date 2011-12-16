@@ -263,6 +263,7 @@
     self.fullUser = user;
     [self configureViews];
     [self hideEditController];
+    [self.activityViewController fullUserChanged:self.fullUser];
 }
 
 - (SocializeActivityViewController*)activityViewController {

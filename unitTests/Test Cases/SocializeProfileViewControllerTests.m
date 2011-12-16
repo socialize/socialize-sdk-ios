@@ -360,12 +360,13 @@
 }
 
 - (void)testUpdateProfileComplete {
-    id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
+    id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
     id mockImage = [OCMockObject mockForClass:[UIImage class]];
     [[[self.mockProfileEditViewController stub] andReturn:mockImage] profileImage];
     [[[self.mockProfileEditViewController stub] andReturn:mockUser] fullUser];
     [[(id)self.profileViewController expect] configureViews];
     [[(id)self.profileViewController expect] hideEditController];
+    [[self.mockActivityViewController expect] fullUserChanged:mockUser];
     [self.profileViewController profileEditViewController:self.mockProfileEditViewController didUpdateProfileWithUser:mockUser];
     
 }

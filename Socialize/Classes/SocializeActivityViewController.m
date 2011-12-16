@@ -142,6 +142,15 @@
     [cell.profileImageActivity stopAnimating];    
 }
 
+- (void)fullUserChanged:(id<SocializeFullUser>)fullUser {
+    for (SocializeActivity *activity in self.content) {
+        if (activity.user.objectID == fullUser.objectID) {
+            activity.user.smallImageUrl = fullUser.smallImageUrl;
+        }
+    }
+    [self.tableView reloadData];
+}
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SocializeActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SocializeActivityTableViewCellReuseIdentifier];
     if (cell == nil) {
