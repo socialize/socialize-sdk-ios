@@ -72,25 +72,27 @@
 }
 
 -(void) updateUser:(id<SocializeFullUser>)user profileImage:(UIImage*)image {
-    NSString* userResource = USER_POST_ENDPOINT(user.objectID);
-    
-    NSMutableDictionary * jsonParams =  [[[_objectCreator createDictionaryRepresentationOfObject:user] mutableCopy] autorelease];
-    if (image != nil) {
-        NSString *imageb64 = [image base64PNGRepresentation];
-        if (imageb64 != nil) {
-            [jsonParams setObject:[image base64PNGRepresentation] forKey:@"picture"];
+    // Build the request in the background, as profile image can be large
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString* userResource = USER_POST_ENDPOINT(user.objectID);
+        
+        NSMutableDictionary * jsonParams =  [[[_objectCreator createDictionaryRepresentationOfObject:user] mutableCopy] autorelease];
+        if (image != nil) {
+            NSString *imageb64 = [image base64PNGRepresentation];
+            if (imageb64 != nil) {
+                [jsonParams setObject:[image base64PNGRepresentation] forKey:@"picture"];
+            }
         }
-    }
-
-    NSString *json = [jsonParams JSONString];
-    NSMutableDictionary* params = [self generateParamsFromJsonString:json];
-    SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"POST"
-                                                           resourcePath:userResource
-                                                     expectedJSONFormat:SocializeDictionary
-                                                                 params:params];
-    request.operationType = SocializeRequestOperationTypeUpdate;
-    [self executeRequest:request];
-
+        
+        NSString *json = [jsonParams JSONString];
+        NSMutableDictionary* params = [self generateParamsFromJsonString:json];
+        SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"POST"
+                                                               resourcePath:userResource
+                                                         expectedJSONFormat:SocializeDictionary
+                                                                     params:params];
+        request.operationType = SocializeRequestOperationTypeUpdate;
+        [self executeRequest:request];
+    });
 }
 
 @end

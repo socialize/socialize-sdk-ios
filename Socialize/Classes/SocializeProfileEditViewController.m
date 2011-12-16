@@ -14,6 +14,7 @@
 #import "SocializeProfileEditValueViewController.h"
 #import "SocializePrivateDefinitions.h"
 #import "UINavigationController+Socialize.h"
+#import "UIImage+Resize.h"
 
 typedef struct {
     NSString *displayName;
@@ -98,6 +99,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.tableView.accessibilityLabel = @"edit profile";
     self.navigationItem.leftBarButtonItem = self.cancelButton;	
     self.navigationItem.rightBarButtonItem = self.saveButton;
+    [self changeTitleOnCustomBarButton:self.saveButton toText:@"Done"];
 }
 
 - (void)viewDidUnload
@@ -116,7 +118,8 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     if (image == nil) {
         self.profileImage = [UIImage imageNamed:@"socialize-profileimage-large-default.png"];
     } else {
-        self.profileImage = image;
+        UIImage *resized = [image imageWithSameAspectRatioAndWidth:300.f];
+        self.profileImage = resized;
     }
     
     [self reloadImageCell];
@@ -405,14 +408,18 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 	[self presentModalViewController:self.imagePicker animated:YES];
 }
 
+- (void)configureForAfterEdit {
+    self.editOccured = YES;
+    [self changeTitleOnCustomBarButton:self.saveButton toText:@"Save"];
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
 	[picker dismissModalViewControllerAnimated:YES];
 	
-    self.editOccured = YES;
-    [self setProfileImage:image];
-    [self reloadImageCell];
+    [self configureForAfterEdit];
+    [self setProfileImageFromImage:image];
 }
 
 #pragma mark - Table view delegate
@@ -428,7 +435,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 - (void)profileEditValueViewControllerDidSave:(SocializeProfileEditValueViewController *)profileEditValueController
 {
 	[self.navigationController popViewControllerAnimated:YES];
-    self.editOccured = YES;
+    [self configureForAfterEdit];
 	
 	NSIndexPath * indexPath = profileEditValueController.indexPath;
 	

@@ -33,7 +33,7 @@
 #import "SocializeUserService.h"
 
 
-@interface SocializeUserServiceTests : GHTestCase  
+@interface SocializeUserServiceTests : GHAsyncTestCase  
 {
     id mockfactory;
     id mockDelegate;

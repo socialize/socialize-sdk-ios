@@ -319,8 +319,21 @@ running = _running;
         return;
 
     [self startRunningIfNecessary];
-    [self configureURLRequest];
-    [self.dataFetcher start];
+    
+    // Request preparation can take a long time for large data in POST requests.
+    // This is because the request signing includes the urlencoded POST body
+    // Because of this, we prepare the request in the background, then begin 
+    // execution on the main thread
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self configureURLRequest];
+        
+        // Begin request on the main thread, because NSURLConnection calls its delegate on the
+        // thread it was started from
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.dataFetcher start];
+        });
+    });
+    
 }
 
 /**

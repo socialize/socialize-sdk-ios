@@ -147,6 +147,12 @@
     }] loadImageFromUrl:url completeAction:OCMOCK_ANY];
 }
 
+- (void)expectChangeTitleOnCustomBarButton:(id)mockButton toText:(NSString*)text {
+    id mockUIButton = [OCMockObject mockForClass:[UIButton class]];
+    [[[mockButton expect] andReturn:mockUIButton] customView];
+    [[mockUIButton expect] setTitle:text forState:UIControlStateNormal];
+}
+
 - (void)testDefaultTableViewProperty {
     [[[self.mockView stub] andReturnBool:YES] isKindOfClass:[UITableView class]];
 

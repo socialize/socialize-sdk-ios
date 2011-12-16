@@ -76,5 +76,5 @@
           startLoading:(void(^)())startLoadingBlock
            stopLoading:(void(^)())stopLoadingBlock
             completion:(void(^)(UIImage *image))completionBlock;
-
+- (void)changeTitleOnCustomBarButton:(UIBarButtonItem*)barButton toText:(NSString*)text;
 @end

@@ -68,7 +68,7 @@
     self.userDescriptionLabel = nil;
     self.userLocationLabel = nil;
     self.profileImageView = nil;
-    self.profileEditViewController = nil;
+    self.navigationControllerForEdit = nil;
     self.defaultProfileImage = nil;
     self.activityViewController = nil;
 }
@@ -250,6 +250,8 @@
 {
     [self stopLoading];
     [self dismissModalViewControllerAnimated:YES];
+    self.navigationControllerForEdit = nil;
+    self.profileEditViewController.delegate = nil;
     self.profileEditViewController = nil;
 }
 
@@ -261,6 +263,7 @@
     self.fullUser = user;
     [self configureViews];
     [self hideEditController];
+    [self.activityViewController fullUserChanged:self.fullUser];
 }
 
 - (SocializeActivityViewController*)activityViewController {
