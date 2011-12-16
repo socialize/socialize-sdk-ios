@@ -79,7 +79,7 @@
 
     [self prepare];
     [_request connect];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.1];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
 
     NSArray* oaRequestParamsActual = [_request.request socializeParameters];
     
@@ -106,7 +106,7 @@
 
     [self prepare];
     [_request connect];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.1];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
 
     NSArray* oaRequestParamsActual = [_request.request socializeParameters];
     
