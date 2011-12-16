@@ -133,8 +133,14 @@
 -(void)testConfigureURLRequestIsCalled {
     _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:nil];
     id mockRequest = [OCMockObject partialMockForObject:_request];
-    [[mockRequest expect] configureURLRequest];
+    [[[mockRequest expect] andDo:^(NSInvocation *inv) {
+        [self notify:kGHUnitWaitStatusSuccess];
+    }] configureURLRequest];
+    
+    [self prepare];
     [_request connect];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.5];
+    
     [mockRequest verify];
 }
 
