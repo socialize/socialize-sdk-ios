@@ -72,8 +72,15 @@
     _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:params];
 
     _request.dataFetcher = [OCMockObject niceMockForClass: [OAAsynchronousDataFetcher class]];
-    [_request connect];
     
+    [(OAAsynchronousDataFetcher*)[[_request.dataFetcher expect] andDo:^(NSInvocation *inv) {
+        [self notify:kGHUnitWaitStatusSuccess];
+    }] start];
+
+    [self prepare];
+    [_request connect];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.1];
+
     NSArray* oaRequestParamsActual = [_request.request socializeParameters];
     
     OARequestParameter* p1 = [OARequestParameter requestParameterWithName:@"id" value:@"1"];
@@ -92,8 +99,15 @@
     
     _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWIthListAndErrors params:params];
     _request.dataFetcher = [OCMockObject niceMockForClass: [OAAsynchronousDataFetcher class]];
+
+    [(OAAsynchronousDataFetcher*)[[_request.dataFetcher expect] andDo:^(NSInvocation *inv) {
+        [self notify:kGHUnitWaitStatusSuccess];
+    }] start];
+
+    [self prepare];
     [_request connect];
-    
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.1];
+
     NSArray* oaRequestParamsActual = [_request.request socializeParameters];
     
     OARequestParameter* p1 = [OARequestParameter requestParameterWithName:@"id" value:@"1"];
