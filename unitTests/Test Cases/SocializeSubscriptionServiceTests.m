@@ -30,7 +30,7 @@
 }
 
 - (BOOL)request:(SocializeRequest*)request isSubscriptionPOSTForKey:(NSString*)entityKey subscribed:(BOOL)subscribed {
-    if (![self request:request isRequestWithPath:@"user/subscription/" method:@"POST" format:SocializeDictionaryWIthListAndErrors])
+    if (![self request:request isRequestWithPath:@"user/subscription/" method:@"POST" format:SocializeDictionaryWithListAndErrors])
         return NO;
     
     NSDictionary *params = [request.params objectAtIndex:0];
@@ -75,7 +75,7 @@
     NSNumber *last = [NSNumber numberWithInteger:70];
 
     [[(id)self.subscriptionService expect] executeRequest:[OCMArg checkWithBlock:^(SocializeRequest *request) {
-        if (![self request:request isRequestWithPath:@"user/subscription/" method:@"GET" format:SocializeDictionaryWIthListAndErrors])
+        if (![self request:request isRequestWithPath:@"user/subscription/" method:@"GET" format:SocializeDictionaryWithListAndErrors])
             return NO;
         if (![self request:request hasFirst:first last:last])
             return NO;
