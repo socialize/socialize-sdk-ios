@@ -35,6 +35,10 @@
 @implementation SocializeRequestTests
 @synthesize expectedError = _expectedError;
 
+- (BOOL)shouldRunOnMainThread {
+    return YES;
+}
+
 -(BOOL) compareParams: (NSArray*)actual and: (NSArray*)expected
 {
     if([actual count] != [expected count])
@@ -79,7 +83,7 @@
 
     [self prepare];
     [_request connect];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:3];
 
     NSArray* oaRequestParamsActual = [_request.request socializeParameters];
     
@@ -106,7 +110,7 @@
 
     [self prepare];
     [_request connect];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:3];
 
     NSArray* oaRequestParamsActual = [_request.request socializeParameters];
     
