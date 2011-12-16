@@ -4,6 +4,20 @@
 Changelog
 =============================================
 
+v1.1.6
+------
+[bug] User's own profile image does not update in activity after changing profile image [ ]
+
+[bug] Large profile images fail to send to server [ ]
+
+[bug] Profile edit right side button being called "save" before edit is confusing [ ]
+
+[bug] Crash can occur after certain profile edits [ ]
+
+[bug] Fix some bugs that occur when editing profile a second time [ ]
+
+[bug] Changing profile image to a large image causes noticeable main thread block with no indication [ ]
+
 v1.1.5
 ------
 [feature] Remove requirement for URL from code and docs [ ]
