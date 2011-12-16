@@ -134,6 +134,9 @@
     [[[mockEditValueViewController stub] andReturn:firstNameIndexPath] indexPath];
     [[self.mockNavigationController expect] popViewControllerAnimated:YES];
     [[self.mockTableView expect] reloadRowsAtIndexPaths:[NSArray arrayWithObject:firstNameIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    
+    [self expectChangeTitleOnCustomBarButton:self.mockSaveButton toText:@"Save"];
+
     GHAssertFalse(self.profileEditViewController.editOccured, @"Edit should not have occured yet");
     [self.profileEditViewController profileEditValueViewControllerDidSave:mockEditValueViewController];
     GHAssertTrue(self.profileEditViewController.editOccured, @"Edit should have occured");
@@ -343,6 +346,9 @@
     [[self.mockTableView expect] setAccessibilityLabel:@"edit profile"];
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.mockCancelButton];
     [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockSaveButton];
+    
+    [self expectChangeTitleOnCustomBarButton:self.mockSaveButton toText:@"Done"];
+
     [self.profileEditViewController viewDidLoad];
 }
 
@@ -390,6 +396,8 @@
     NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [[self.mockTableView expect] reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
 
+    [self expectChangeTitleOnCustomBarButton:self.mockSaveButton toText:@"Save"];
+
     GHAssertFalse(self.profileEditViewController.editOccured, @"Edit should not have occured yet");
     [self.profileEditViewController imagePickerController:self.profileEditViewController.imagePicker didFinishPickingMediaWithInfo:info];    
     GHAssertTrue(self.profileEditViewController.editOccured, @"Edit should have occured");
@@ -418,8 +426,11 @@
     [[(id)self.profileEditViewController expect] setValue:@"some value" forKeyPath:@"fullUser.firstName"];
     
     [[self.mockTableView expect] reloadRowsAtIndexPaths:[NSArray arrayWithObject:firstNamePath] withRowAnimation:UITableViewRowAnimationNone];
+    [self expectChangeTitleOnCustomBarButton:self.mockSaveButton toText:@"Save"];
     
     [self.profileEditViewController profileEditValueViewControllerDidSave:mockEditValue];
+    
+    GHAssertTrue(self.profileEditViewController.editOccured, @"Edit should have occured");
 }
 
 - (void)testEditValueCancel {

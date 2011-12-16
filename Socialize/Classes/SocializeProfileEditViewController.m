@@ -98,6 +98,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.tableView.accessibilityLabel = @"edit profile";
     self.navigationItem.leftBarButtonItem = self.cancelButton;	
     self.navigationItem.rightBarButtonItem = self.saveButton;
+    [self changeTitleOnCustomBarButton:self.saveButton toText:@"Done"];
 }
 
 - (void)viewDidUnload
@@ -405,12 +406,17 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 	[self presentModalViewController:self.imagePicker animated:YES];
 }
 
+- (void)configureForAfterEdit {
+    self.editOccured = YES;
+    [self changeTitleOnCustomBarButton:self.saveButton toText:@"Save"];
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
 	[picker dismissModalViewControllerAnimated:YES];
 	
-    self.editOccured = YES;
+    [self configureForAfterEdit];
     [self setProfileImage:image];
     [self reloadImageCell];
 }
@@ -428,7 +434,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 - (void)profileEditValueViewControllerDidSave:(SocializeProfileEditValueViewController *)profileEditValueController
 {
 	[self.navigationController popViewControllerAnimated:YES];
-    self.editOccured = YES;
+    [self configureForAfterEdit];
 	
 	NSIndexPath * indexPath = profileEditValueController.indexPath;
 	
