@@ -124,10 +124,14 @@
                                                                          params:requestDictionary];
     expectedRequest.operationType = SocializeRequestOperationTypeUpdate;
     
-    [[_mockUserService expect] executeRequest:expectedRequest];
+    [[[_mockUserService expect] andDo:^(NSInvocation *inv) {
+        [self notify:kGHUnitWaitStatusSuccess];
+    }] executeRequest:expectedRequest];
 
     
+    [self prepare];
     [_userService updateUser:mockUser];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
     
     [mockfactory verify];
     [_mockUserService verify];    

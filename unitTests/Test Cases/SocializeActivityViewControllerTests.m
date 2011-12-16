@@ -195,4 +195,26 @@
     [self.activityViewController tableView:self.mockTableView didSelectRowAtIndexPath:indexPath];
 }
 
+- (void)testFullUserChanged {
+    NSString *testImageURL = @"testImageURL";
+    id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
+    [[[mockFullUser stub] andReturnInteger:123] objectID];
+    [[[mockFullUser stub] andReturn:testImageURL] smallImageUrl];
+    
+    // Generate mock activity with a matching user
+    id mockActivity = [OCMockObject mockForProtocol:@protocol(SocializeActivity)];
+    id activityUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
+    [[[activityUser stub] andReturnInteger:123] objectID];
+    [[[mockActivity stub] andReturn:activityUser] user];
+    self.activityViewController.content = [NSArray arrayWithObject:mockActivity];
+    
+    // Image URL should be updated
+    [[activityUser expect] setSmallImageUrl:testImageURL];
+    
+    // Table data should be reloaded
+    [[self.mockTableView expect] reloadData];
+    
+    [self.activityViewController fullUserChanged:mockFullUser];
+}
+
 @end

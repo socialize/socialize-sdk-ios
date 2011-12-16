@@ -133,6 +133,11 @@
     return imagesCache_;
 }
 
+- (void)changeTitleOnCustomBarButton:(UIBarButtonItem*)barButton toText:(NSString*)text {
+    UIButton *button = (UIButton*)[barButton customView];
+    [button setTitle:text forState:UIControlStateNormal];
+}
+
 - (UIBarButtonItem*)saveButton {
     if (saveButton_ == nil) {
         UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];

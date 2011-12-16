@@ -33,4 +33,5 @@
 - (void)expectServiceFailureWithError:(NSError*)error;
 - (void)expectAndSimulateLoadOfImage:(UIImage*)image fromURL:(NSString*)url;
 - (void)expectViewWillAppear;
+- (void)expectChangeTitleOnCustomBarButton:(id)mockButton toText:(NSString*)text;
 @end

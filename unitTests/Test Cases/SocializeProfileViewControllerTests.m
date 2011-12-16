@@ -185,7 +185,6 @@
     [[(id)self.profileViewController expect] setUserDescriptionLabel:nil];
     [[(id)self.profileViewController expect] setUserLocationLabel:nil];
     [[(id)self.profileViewController expect] setProfileImageView:nil];
-    [[(id)self.profileViewController expect] setProfileEditViewController:nil];
     [[(id)self.profileViewController expect] setDefaultProfileImage:nil];
     [self.profileViewController viewDidUnload];
 }
@@ -361,12 +360,13 @@
 }
 
 - (void)testUpdateProfileComplete {
-    id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
+    id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
     id mockImage = [OCMockObject mockForClass:[UIImage class]];
     [[[self.mockProfileEditViewController stub] andReturn:mockImage] profileImage];
     [[[self.mockProfileEditViewController stub] andReturn:mockUser] fullUser];
     [[(id)self.profileViewController expect] configureViews];
     [[(id)self.profileViewController expect] hideEditController];
+    [[self.mockActivityViewController expect] fullUserChanged:mockUser];
     [self.profileViewController profileEditViewController:self.mockProfileEditViewController didUpdateProfileWithUser:mockUser];
     
 }
