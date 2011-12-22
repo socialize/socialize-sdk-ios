@@ -258,12 +258,13 @@
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToEnterText:comment intoViewWithAccessibilityLabel:@"Comment Entry"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"facebook"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Skip"]];
+
     return steps;
 }
 + (NSArray*)stepsToSkipAuth {  
     NSMutableArray *steps = [NSMutableArray array];
-    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"facebook"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Skip"]];
     return steps;
 }
 

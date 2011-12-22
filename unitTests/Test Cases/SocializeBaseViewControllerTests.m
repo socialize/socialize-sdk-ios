@@ -246,6 +246,12 @@
     GHAssertEquals(self.mockView, showLoadingInView, nil);
 }
 
+- (void)testshouldShowAuthViewController {
+    [[[self.mockSocialize expect] andReturnBool:NO]isAuthenticatedWithFacebook];
+    [[[self.mockSocialize expect] andReturnBool:YES]isFacebookConfigured];
+    BOOL shouldShow = [self.viewController shouldShowAuthViewController];
+    GHAssertTrue(shouldShow, @"should show auth view controller should've returned true");
+}
 - (void)testDefaultAutoAuth {
     GHAssertTrue([self.viewController shouldAutoAuthOnAppear], nil);
 }
