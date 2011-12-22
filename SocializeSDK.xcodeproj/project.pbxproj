@@ -559,6 +559,8 @@
 		AA08B400147C344900E6D1CA /* SocializeActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA08B3FD147C344900E6D1CA /* SocializeActivityViewController.m */; };
 		AA08B401147C344900E6D1CA /* SocializeActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA08B3FD147C344900E6D1CA /* SocializeActivityViewController.m */; };
 		AA0CF83D146DC0B300BBCF41 /* SocializePostShareViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0CF83C146DC0B300BBCF41 /* SocializePostShareViewControllerTest.m */; };
+		AA0EB74D14A3BF6400ED9FE6 /* socialize-navbar-button-blue-bg-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1614844E9A00D5A56A /* socialize-navbar-button-blue-bg-inactive.png */; };
+		AA0EB74E14A3BF6400ED9FE6 /* socialize-navbar-button-blue-bg-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */; };
 		AA2024EF144CA77D006C1F8F /* SocializeActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 1638C521143DC96A00538659 /* SocializeActionBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2024F0144CA79D006C1F8F /* SocializeActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A7C51402BF6E004B3A46 /* SocializeActionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2024F1144CA7B7006C1F8F /* Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11B6144324E4004E4C1B /* Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -4596,6 +4598,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0EB74D14A3BF6400ED9FE6 /* socialize-navbar-button-blue-bg-inactive.png in Resources */,
+				AA0EB74E14A3BF6400ED9FE6 /* socialize-navbar-button-blue-bg-inactive@2x.png in Resources */,
 				AA318180144A4473008F4D59 /* SocializeEditValueTableViewCell.xib in Resources */,
 				AA318181144A4473008F4D59 /* SocializeProfileEditTableViewCell.xib in Resources */,
 				AA318182144A4473008F4D59 /* SocializeProfileEditTableViewImageCell.xib in Resources */,
@@ -6292,7 +6296,6 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "SocializeResources/SocializeResources-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
@@ -6316,7 +6319,6 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "SocializeResources/SocializeResources-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "Socialize-$(PLATFORM_NAME)";
