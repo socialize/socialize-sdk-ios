@@ -315,10 +315,6 @@ running = _running;
  */
 - (void)connect
 {   
-    NSDate *start = [NSDate date];
-    // do stuff...
-    NSLog(@"### time0 %f", [start timeIntervalSinceNow]);
-    
     if (_running)
         return;
 
@@ -329,13 +325,11 @@ running = _running;
     // Because of this, we prepare the request in the background, then begin 
     // execution on the main thread
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSLog(@"### time1 %f", [start timeIntervalSinceNow]);
         [self configureURLRequest];
         
         // Begin request on the main thread, because NSURLConnection calls its delegate on the
         // thread it was started from
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"### time2 %f", [start timeIntervalSinceNow]);
             [self.dataFetcher start];
         });
     });

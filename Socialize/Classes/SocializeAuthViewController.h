@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SocializeAuthTableViewCell.h"
-#import "SocializeAuthInfoTableViewCell.h"
 #import "SocializeBaseViewController.h"
 #import "SocializeProfileEditViewController.h"
 #import "SocializeUser.h"

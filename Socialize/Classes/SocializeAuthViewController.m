@@ -10,7 +10,9 @@
 #import "SocializeAuthenticateService.h"
 #import "UIButton+Socialize.h"
 #import "UINavigationBarBackground.h"
+#import "SocializeAuthTableViewCell.h"
 #import "SocializeUser.h"
+#import "SocializeAuthInfoTableViewCell.h"
 
 @interface  SocializeAuthViewController()
     -(SocializeAuthTableViewCell *)getAuthorizeTableViewCell;
