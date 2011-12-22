@@ -21,6 +21,7 @@
 + (NSArray*)stepsToCreateEntityWithURL:(NSString*)url name:(NSString*)name;
 + (NSArray*)stepsToCreateEntityWithRandomURL;
 + (NSArray*)stepsToGetEntityWithURL:(NSString*)url;
++ (NSArray*)stepsToSkipAuth;
 + (NSArray*)stepsToGetCommentsForEntity:(NSString*)entity;
 + (NSArray*)stepsToLikeEntity:(NSString*)entity;
 + (NSArray*)stepsToVerifyLikesForEntity:(NSString*)entity areAtCount:(NSInteger)count;
