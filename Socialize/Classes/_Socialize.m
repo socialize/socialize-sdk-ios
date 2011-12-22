@@ -243,6 +243,9 @@
 -(BOOL)isAuthenticated{
     return [SocializeAuthenticateService isAuthenticated];
 }
+- (BOOL)isFacebookConfigured {
+    return [SocializeFacebook isFacebookConfigured];
+}
 
 -(BOOL)isAuthenticatedWithFacebook
 {
