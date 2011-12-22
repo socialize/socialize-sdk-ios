@@ -253,7 +253,9 @@
 -(BOOL)shouldAutoAuthOnAppear {
     return YES;
 }
-
+-(BOOL) shouldShowAuthViewController {
+    return ( [self.socialize isAuthenticatedWithFacebook] && [self.socialize isFacebookConfigured]);
+}
 -(void)performAutoAuth
 {
     if (![self.socialize isAuthenticatedWithFacebook] && [self.socialize facebookSessionValid]) {

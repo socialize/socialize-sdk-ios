@@ -70,7 +70,7 @@
     [[[(id)self.profileViewController stub] andReturn:self.mockNavigationItem] navigationItem];
     [[self.mockNavigationItem stub] leftBarButtonItem];
     
-    self.mockProfileImageView = [OCMockObject mockForClass:[UIImageView class]];
+    self.mockProfileImageView = [OCMockObject niceMockForClass:[UIImageView class]];
     [[[(id)self.profileViewController stub] andReturn:self.mockProfileImageView] profileImageView];
     
     self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
@@ -140,12 +140,21 @@
     self.mockEditButton = nil;
     self.mockActivityViewController = nil;
 }
-
-- (void)expectBasicViewDidLoad {
+-(void)testHideEditController {
+    [[(id)self.profileViewController expect] dismissModalViewControllerAnimated:YES];
+    [[(id)self.profileViewController expect] stopLoading];
+    [[self.mockProfileEditViewController expect] setDelegate:nil];
+    [self.profileViewController hideEditController];
+}
+- (void)testBasicViewDidLoad {
 //    [[self.mockNavigationBar expect] setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.profileViewController.doneButton];
     [[self.mockProfileImageView expect] setImage:self.profileViewController.defaultProfileImage];
     [[(id)self.profileViewController expect] addActivityControllerToView];
+    
+    [[(id)self.profileViewController expect] addActivityControllerToView];
+    [[self.mockNavigationItem expect] setLeftBarButtonItem:OCMOCK_ANY];
+    [self.profileViewController viewDidLoad];
 }
 
 - (void)testAfterLoginWithNoUserGetsCurrentUser {

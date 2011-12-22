@@ -136,8 +136,7 @@
     [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(trueValue)] shouldShareLocation];
     
     [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:OCMOCK_ANY latitude:OCMOCK_ANY subscribe:YES];
-    BOOL retValue = YES;
-    [[[self.mockSocialize stub] andReturnValue:OCMOCK_VALUE(retValue)] isAuthenticatedWithFacebook];
+    [[[(id)self.viewController stub]andReturnBool:NO] shouldShowAuthViewController];
     [[self.mockSendButton expect] setEnabled:NO];
     
     [self.postCommentViewController performSelector: @selector(sendButtonPressed:)withObject:nil];
@@ -149,8 +148,7 @@
     [[[self.mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
     
     [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:nil latitude:nil subscribe:YES];
-    BOOL retValue = YES;
-    [[[self.mockSocialize stub]andReturnValue:OCMOCK_VALUE(retValue)]isAuthenticatedWithFacebook];
+    [[[(id)self.viewController stub]andReturnBool:NO] shouldShowAuthViewController];
     
     [[self.mockSendButton expect] setEnabled:NO];
 

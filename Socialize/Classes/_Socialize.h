@@ -368,6 +368,14 @@ otherwise you will get a failure.
 -(id<SocializeUser>)authenticatedUser;
 
 /**
+ returns true/false based if facebook is configured correctly.  Will throw Assert error if Facebook
+ is configured improperly or partially configured
+ 
+ @return YES if facebook is configured correctly and NO otherwise
+ */
+
+- (BOOL)isFacebookConfigured;
+/**
  Check if authentication credentials still valid /and/ that this is a facebook authentication.
  
  @return YES if credentials are valid and facebook was used for authentication, and NO otherwise

@@ -62,6 +62,7 @@
 -(BOOL)shouldAutoAuthOnAppear;
 - (UIView*)showLoadingInView;
 - (void)authenticateWithFacebook;
+- (BOOL)shouldShowAuthViewController;
 - (void)saveButtonPressed:(UIButton*)button;
 - (void)editButtonPressed:(UIButton*)button;
 - (void)doneButtonPressed:(UIButton*)button;
