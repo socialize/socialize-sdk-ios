@@ -190,14 +190,15 @@
     NSString* key = [NSString stringWithFormat:@"OAUTH_%@_%@_KEY", kPROVIDER_PREFIX, kPROVIDER_NAME];
     NSString* secret = [NSString stringWithFormat:@"OAUTH_%@_%@_SECRET", kPROVIDER_PREFIX, kPROVIDER_NAME];
     
-    if ([defaults objectForKey:key] && [defaults objectForKey:secret]) 
-    {
-        [defaults removeObjectForKey:key];
-        [defaults removeObjectForKey:secret];
-    }
+    [defaults removeObjectForKey:key];
+    [defaults removeObjectForKey:secret];
 
     // Remove persisted local user data
     [defaults removeObjectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
+    
+    // Remove any Facebook data
+    [defaults removeObjectForKey:@"FBAccessTokenKey"];
+    [defaults removeObjectForKey:@"FBExpirationDateKey"];
     
     [defaults synchronize]; 
 }
