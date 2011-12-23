@@ -183,9 +183,6 @@ static Socialize *_sharedSocialize = nil;
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret
 {
-   if ([SocializeAuthenticateService isAuthenticated])
-       [_authService removeAuthenticationInfo];
-
    [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret]; 
 }
 
@@ -232,9 +229,6 @@ static Socialize *_sharedSocialize = nil;
               thirdPartyAppId:(NSString*)thirdPartyAppId
                thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
-    if ([SocializeAuthenticateService isAuthenticated])
-        [_authService removeAuthenticationInfo];
-    
     [_authService  authenticateWithApiKey:apiKey 
                                 apiSecret:apiSecret
                       thirdPartyAuthToken:thirdPartyAuthToken
@@ -249,9 +243,6 @@ static Socialize *_sharedSocialize = nil;
          thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
                thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
-    if ([SocializeAuthenticateService isAuthenticated])
-        [_authService removeAuthenticationInfo];
-    
     [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:thirdPartyAppId thirdPartyLocalAppId:thirdPartyLocalAppId thirdPartyName:thirdPartyName];
 }
 
@@ -260,9 +251,6 @@ static Socialize *_sharedSocialize = nil;
               thirdPartyAppId:(NSString*)thirdPartyAppId 
                thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
-    if ([SocializeAuthenticateService isAuthenticated])
-        [_authService removeAuthenticationInfo];
-    
     [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:thirdPartyAppId thirdPartyName:thirdPartyName];
 }
 

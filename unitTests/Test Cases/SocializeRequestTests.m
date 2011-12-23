@@ -31,6 +31,7 @@
 #import "OAAsynchronousDataFetcher.h"
 #import "OAServiceTicket.h"
 #import <OCMock/OCMock.h>
+#import "StringHelper.h"
 
 @implementation SocializeRequestTests
 @synthesize expectedError = _expectedError;
@@ -205,6 +206,19 @@
     [_request tokenRequestTicket:tiket didFinishWithData:data];
     [mockDelegate verify];
     [mockResponse verify];
+}
+
+- (void)testThatTokenRequestDoesNotIncludeToken {
+    SocializeRequest *request = [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                                                 resourcePath:@"something/"
+                                                           expectedJSONFormat:SocializeDictionary
+                                                                       params:nil];
+
+    request.tokenRequest = YES;
+    [request configureURLRequest];
+    NSString *authorization = [request.request valueForHTTPHeaderField:@"Authorization"];
+    BOOL foundToken = [authorization containsString:@"oauth_token"];
+    GHAssertFalse(foundToken, @"should not have token");
 }
 
 -(void)testCompereRequestWithNilParams

@@ -124,7 +124,6 @@
     Socialize *socialize = [[Socialize alloc] initWithDelegate:mockDelegate];
     socialize.authService = mockAuthService;
 
-    [[mockAuthService expect] removeAuthenticationInfo];
     [[mockAuthService expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"1234" thirdPartyLocalAppId:@"abcd" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     [socialize authenticateWithFacebook];
     [mockAuthService verify];
@@ -262,23 +261,16 @@
     NSString* apiSecret = @"11111111-222222-333333";
     [Socialize storeSocializeApiKey:apiKey andSecret:apiSecret];
     
-    [[auth expect] removeAuthenticationInfo];
     [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret];
     [socialize authenticateAnonymously];
     [auth verify];
     
-    [[auth expect] removeAuthenticationInfo];
     [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"123" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     [socialize authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"123" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     [auth verify];
     
-    [[auth expect] removeAuthenticationInfo];
     [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:@"token" thirdPartyAppId:@"123" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     [socialize authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:@"token" thirdPartyAppId:@"123" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
-    [auth verify];
-    
-    [[auth expect] removeAuthenticationInfo];
-    [socialize removeAuthenticationInfo];
     [auth verify];
 }
 

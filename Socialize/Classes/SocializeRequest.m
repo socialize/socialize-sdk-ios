@@ -54,7 +54,8 @@ operationType = _requestType,
 secure = _secure,
 baseURL = _baseURL,
 secureBaseURL = _secureBaseURL,
-running = _running;
+running = _running,
+tokenRequest = _tokenRequest;
 
 + (NSString *)userAgentString
 {   
@@ -290,7 +291,11 @@ running = _running;
 
 - (OAMutableURLRequest*)request {
     if (_request == nil) {
-        OAToken *token =  [[[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX] autorelease];
+        OAToken *token = nil;
+        if (!self.isTokenRequest) {
+            token =  [[[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX] autorelease];
+        }
+        
         OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:[SocializeRequest consumerKey] secret:[SocializeRequest consumerSecret]] autorelease];
 
         _request = [[OAMutableURLRequest alloc] initWithURL:nil consumer:consumer token:token realm:nil signatureProvider:nil];
