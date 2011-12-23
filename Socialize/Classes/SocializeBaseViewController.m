@@ -81,6 +81,13 @@
     [super dealloc];
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (nibBundleOrNil == nil) {
+        nibBundleOrNil = [Socialize bundle];
+    }
+    return [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -105,7 +112,7 @@
 
 - (NSBundle*)bundle {
     if (bundle_ == nil) {
-        bundle_ = [[NSBundle mainBundle] retain];
+        bundle_ = [[Socialize bundle] retain];
     }
     return bundle_;
 }

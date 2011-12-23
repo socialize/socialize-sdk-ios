@@ -50,7 +50,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 @synthesize uploadPicActionSheet = uploadPicActionSheet_;
 @synthesize editValueController = editValueController_;
 @synthesize facebookSwitch = facebookSwitch_;
-@synthesize bundle = bundle_;
 @synthesize userDefaults = userDefaults_;
 @synthesize editOccured = editOccured_;
 
@@ -74,7 +73,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.uploadPicActionSheet = nil;
     self.editValueController = nil;
     self.facebookSwitch = nil;
-    self.bundle = nil;
     self.userDefaults = nil;
     
     [super dealloc];
@@ -116,7 +114,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 
 - (void)setProfileImageFromImage:(UIImage*)image {
     if (image == nil) {
-        self.profileImage = [UIImage imageNamed:@"socialize-profileimage-large-default.png"];
+        self.profileImage = [UIImage socializeImageNamed:@"socialize-profileimage-large-default.png"];
     } else {
         UIImage *resized = [image imageWithSameAspectRatioAndWidth:300.f];
         self.profileImage = resized;
@@ -246,13 +244,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 		self.profileImageCell.spinner.hidesWhenStopped = YES;
 		[self.profileImageCell.spinner startAnimating];
 	}
-}
-
-- (NSBundle*)bundle {
-    if (bundle_ == nil) {
-        bundle_ = [[NSBundle mainBundle] retain];
-    }
-    return bundle_;
 }
 
 - (SocializeProfileEditTableViewImageCell *)profileImageCell

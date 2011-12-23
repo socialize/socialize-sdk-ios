@@ -192,7 +192,7 @@
 - (void)testDefaultProfileImage {
     self.profileViewController.defaultProfileImage = nil;
     UIImage *defaultProfile = self.profileViewController.defaultProfileImage;
-    GHAssertEqualObjects(defaultProfile, [UIImage imageNamed:@"socialize-profileimage-large-default.png"], @"bad profile");
+    GHAssertEqualObjects(defaultProfile, [UIImage socializeImageNamed:@"socialize-profileimage-large-default.png"], @"bad profile");
 }
 
 - (void)testEditButtonShowsEdit {
@@ -335,8 +335,8 @@
     
     UINavigationController *defaultNavigationControllerForEdit = self.profileViewController.navigationControllerForEdit;
     GHAssertEquals(defaultNavigationControllerForEdit.delegate, self.origProfileViewController, @"delegate not configured");
-    GHAssertNotNil([UIImage imageNamed:@"socialize-navbar-bg.png"], @"image not found");
-    GHAssertEquals([defaultNavigationControllerForEdit.navigationBar backgroundImage], [UIImage imageNamed:@"socialize-navbar-bg.png"], @"bad image");
+    GHAssertNotNil([UIImage socializeImageNamed:@"socialize-navbar-bg.png"], @"image not found");
+    GHAssertEquals([defaultNavigationControllerForEdit.navigationBar backgroundImage], [UIImage socializeImageNamed:@"socialize-navbar-bg.png"], @"bad image");
 }
 
 - (void)testShowEditProfile {

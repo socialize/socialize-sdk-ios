@@ -47,7 +47,7 @@
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName {
     SocializeCommentsTableViewController* commentsController = [[[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString:entityName] autorelease];
-    UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
+    UIImage *navImage = [UIImage socializeImageNamed:@"socialize-navbar-bg.png"];
     UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:commentsController] autorelease];
     [nav.navigationBar setBackgroundImage:navImage];
     
@@ -100,7 +100,7 @@
 {
     if(_brandingButton == nil)
     {
-        NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"commentsNavBarLeftItemView" owner:self options:nil];
+        NSArray* nibViews =  [self.bundle loadNibNamed:@"commentsNavBarLeftItemView" owner:self options:nil];
         UIView* brandingView = [ nibViews objectAtIndex: 0];
         _brandingButton = [[UIBarButtonItem alloc] initWithCustomView:brandingView];
     }
@@ -144,7 +144,7 @@
     self.tableView.scrollsToTop = YES;
     self.tableView.autoresizesSubviews = YES;
 
-	UIImage * backgroundImage = [UIImage imageNamed:@"socialize-activity-bg.png"];
+	UIImage * backgroundImage = [UIImage socializeImageNamed:@"socialize-activity-bg.png"];
 	UIImageView * imageBackgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
 	self.tableView.backgroundView = imageBackgroundView; 
 	[imageBackgroundView release];
@@ -222,7 +222,7 @@
     if (cell == nil) {
         
         // Create a temporary UIViewController to instantiate the custom cell.
-        [[NSBundle mainBundle] loadNibNamed:@"CommentsTableViewCell" owner:self options:nil];
+        [self.bundle loadNibNamed:@"CommentsTableViewCell" owner:self options:nil];
         // Grab a pointer to the custom cell.
         cell = commentsCell;
         self.commentsCell = nil;
@@ -265,7 +265,7 @@
     }
     else
     {
-        cell.userProfileImage.image = [UIImage imageNamed:@"socialize-cell-image-default.png"];
+        cell.userProfileImage.image = [UIImage socializeImageNamed:@"socialize-cell-image-default.png"];
         if (([entryComment.user.smallImageUrl length] > 0))
         { 
             
@@ -279,7 +279,7 @@
             [_cache loadImageFromUrl: entryComment.user.smallImageUrl withLoader:[UrlImageLoader class] andCompleteAction:completeAction];
         }
     }
-    cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"socialize-cell-bg.png"]] autorelease];
+    cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage socializeImageNamed:@"socialize-cell-bg.png"]] autorelease];
 
 	return cell;
 }

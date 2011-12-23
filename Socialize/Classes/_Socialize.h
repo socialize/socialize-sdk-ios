@@ -93,6 +93,10 @@ otherwise you will get a failure.
  */
 -(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
 
++ (NSString*)fullResourcePath:(NSString*)suffix;
++ (NSString*)relativeResourcePath:(NSString*)suffix;
++ (NSBundle*)bundle;
+
 /**
  Save API information to the user defaults.
  
@@ -121,6 +125,20 @@ otherwise you will get a failure.
  @param application link(URL)
  */
 +(void)storeApplicationLink:(NSString*)link;
+
+/**
+ Save relative application path to Socialize's bundle.
+ 
+ @param bundlePath The path
+ */
++(void)storeBundlePath:(NSString*)bundlePath;
+
+/**
+ Retrieve current bundle path
+ 
+ @return bundle path
+ */
++(NSString*)bundlePath;
 
 /**
  Remove app link from the user defaults.

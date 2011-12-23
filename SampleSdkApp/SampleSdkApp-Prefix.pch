@@ -11,6 +11,7 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+#import "UIImage+Socialize.h"
 
 #if RUN_KIF_TESTS
 #import "SampleSdkAppKIFTestController.h"

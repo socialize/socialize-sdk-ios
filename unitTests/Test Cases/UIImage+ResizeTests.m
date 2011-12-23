@@ -12,7 +12,7 @@
 @implementation UIImage_ResizeTests
 
 - (void)testResizingImage {
-    UIImage *smiley = [UIImage imageNamed:@"Smiley.png"];
+    UIImage *smiley = [UIImage socializeImageNamed:@"Smiley.png"];
     
     UIImage *resized = [smiley imageWithSameAspectRatioAndWidth:300];
     GHAssertEquals((int)resized.size.width, 300, @"Bad width");

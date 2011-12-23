@@ -78,19 +78,19 @@
     UIImage *image = nil;
     
     if ([activity isMemberOfClass:[SocializeLike class]]) {
-        image = [UIImage imageNamed:@"socialize-activity-cell-icon-like.png"];
+        image = [UIImage socializeImageNamed:@"socialize-activity-cell-icon-like.png"];
     } else if ([activity isMemberOfClass:[SocializeComment class]]) {
-        image = [UIImage imageNamed:@"socialize-activity-cell-icon-comment.png"];
+        image = [UIImage socializeImageNamed:@"socialize-activity-cell-icon-comment.png"];
     } else if ([activity isMemberOfClass:[SocializeShare class]]) {
         switch ([(SocializeShare*)activity medium]) {
             case SocializeShareMediumFacebook:
-                image = [UIImage imageNamed:@"socialize-activity-cell-icon-facebook.png"];
+                image = [UIImage socializeImageNamed:@"socialize-activity-cell-icon-facebook.png"];
                 break;
             case SocializeShareMediumTwitter:
-                image = [UIImage imageNamed:@"socialize-activity-cell-icon-twitter.png"];
+                image = [UIImage socializeImageNamed:@"socialize-activity-cell-icon-twitter.png"];
                 break;
             case SocializeShareMediumOther:
-                image = [UIImage imageNamed:@"socialize-activity-cell-icon-share.png"];
+                image = [UIImage socializeImageNamed:@"socialize-activity-cell-icon-share.png"];
                 break;
         }
     }
@@ -161,7 +161,7 @@
     cell.activityIcon.image = [self iconForActivity:activity];
     
     // FIXME +1 why?
-    UIImage * backgroundImage = [UIImage imageNamed:@"socialize-cell-bg.png"];
+    UIImage * backgroundImage = [UIImage socializeImageNamed:@"socialize-cell-bg.png"];
     UIImageView * imageView = [[UIImageView alloc] initWithImage:backgroundImage];
     CGRect backgroundImageFrame = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height+1);
     imageView.frame = backgroundImageFrame;

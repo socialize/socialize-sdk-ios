@@ -75,7 +75,7 @@
 
 + (UINavigationController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeProfileViewControllerDelegate>)delegate {
     SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] initWithUser:user delegate:delegate] autorelease];
-    UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
+    UIImage *navImage = [UIImage socializeImageNamed:@"socialize-navbar-bg.png"];
     UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:profile] autorelease];
     [nav.navigationBar setBackgroundImage:navImage];
     return nav;
@@ -145,7 +145,7 @@
 
 - (UIImage*)defaultProfileImage {
     if (defaultProfileImage_ == nil) {
-        defaultProfileImage_ = [[UIImage imageNamed:@"socialize-profileimage-large-default.png"] retain];
+        defaultProfileImage_ = [[UIImage socializeImageNamed:@"socialize-profileimage-large-default.png"] retain];
     }
     
     return defaultProfileImage_;

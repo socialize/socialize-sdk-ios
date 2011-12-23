@@ -51,7 +51,6 @@ typedef enum {
 @property (nonatomic, assign) IBOutlet SocializeProfileEditTableViewImageCell * profileImageCell;
 @property (nonatomic, assign) IBOutlet SocializeProfileEditTableViewCell * profileTextCell;
 @property (nonatomic, retain) UISwitch *facebookSwitch;
-@property (nonatomic, retain) NSBundle *bundle;
 @property (nonatomic, retain) NSUserDefaults *userDefaults;
 @property (nonatomic, assign) BOOL editOccured;
 

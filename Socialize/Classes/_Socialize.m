@@ -25,6 +25,10 @@
 #define SOCIALIZE_FACEBOOK_LOCAL_APP_ID @"socialize_facebook_local_app_id"
 #define SOCIALIZE_FACEBOOK_APP_ID @"socialize_facebook_app_id"
 #define SOCIALIZE_APPLICATION_LINK @"socialize_app_link"
+#define SOCIALIZE_BUNDLE_PATH @"socialize_bundle_path"
+#define SOCIALIZE_DEVICE_TOKEN @"socialize_device_token"
+
+static NSBundle *SocializeBundle;
 
 @implementation Socialize
 
@@ -43,6 +47,45 @@
         Class dynamicTest = NSClassFromString(@"SocializeDynamicTest");
         NSAssert(dynamicTest != nil, @"Dynamic Class Load Error -- Is the application linked with -all_load?");
     }
+}
+
++ (NSString*)relativeResourcePath:(NSString*)suffix {
+    NSMutableString *path = [NSMutableString string];
+    
+    // Append bundle
+    NSString *bundlePath = [self bundlePath];
+    if ([bundlePath length] > 0) {
+        [path appendString:bundlePath];
+    }
+    
+    // Append suffix
+    if ([suffix length] > 0) {
+        [path appendFormat:@"/%@", suffix];
+    }
+    
+    return path;
+}
+
++ (NSString*)fullResourcePath:(NSString*)suffix {
+    NSMutableString *path = [[[[NSBundle mainBundle] resourcePath] mutableCopy] autorelease];
+    NSString *relativePath = [self relativeResourcePath:suffix];
+    if ([relativePath length] > 0) {
+        [path appendFormat:@"/%@", relativePath];
+    }
+    
+    return path;
+}
+
++ (NSBundle*)bundle {
+    if (SocializeBundle == nil) {
+        if ([[self bundlePath] length] > 0) {
+            NSString *path = [self fullResourcePath:nil];
+            SocializeBundle = [[NSBundle bundleWithPath:path] retain];
+        } else {
+            SocializeBundle = [[NSBundle mainBundle] retain];
+        }
+    }
+    return SocializeBundle;
 }
 
 - (void)dealloc {
@@ -101,6 +144,16 @@
 +(void)storeApplicationLink:(NSString*)link {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setValue:link forKey:SOCIALIZE_APPLICATION_LINK];
+    [defaults synchronize];
+}
+
++(NSString*)bundlePath {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:SOCIALIZE_BUNDLE_PATH];
+}
+
++(void)storeBundlePath:(NSString*)bundlePath {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:bundlePath forKey:SOCIALIZE_BUNDLE_PATH];
     [defaults synchronize];
 }
 

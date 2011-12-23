@@ -110,7 +110,7 @@
     if (hasLocation) 
     {
         [self setupCommentGeoLocation];
-        [commentDetailsView updateNavigationImage:[UIImage imageNamed:@"socialize-comment-details-icon-geo-enabled.png"]];
+        [commentDetailsView updateNavigationImage:[UIImage socializeImageNamed:@"socialize-comment-details-icon-geo-enabled.png"]];
     }
     else
     {
@@ -118,7 +118,7 @@
                                          color: [UIColor colorWithRed:127/ 255.f green:139/ 255.f blue:147/ 255.f alpha:1.0] 
                                           fontName:@"Helvetica-Oblique" 
                                           fontSize:12];
-        [commentDetailsView updateNavigationImage:[UIImage imageNamed:@"socialize-comment-details-icon-geo-disabled.png"]]; 
+        [commentDetailsView updateNavigationImage:[UIImage socializeImageNamed:@"socialize-comment-details-icon-geo-disabled.png"]]; 
     }  
 }
 

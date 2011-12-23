@@ -156,8 +156,8 @@
 
 -(void)configureDoNotShareLocationButton
 {   
-    UIImage * normalImage = [[UIImage imageNamed:@"socialize-comment-button.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
-    UIImage * highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
+    UIImage * normalImage = [[UIImage socializeImageNamed:@"socialize-comment-button.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
+    UIImage * highlightImage = [[UIImage socializeImageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
     
     [self.doNotShareLocationButton setBackgroundImage:normalImage forState:UIControlStateNormal];
 	[self.doNotShareLocationButton setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
@@ -174,14 +174,14 @@
             return;
         }
        
-        [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateNormal];
-        [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateHighlighted];
+        [activateLocationButton setImage:[UIImage socializeImageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateNormal];
+        [activateLocationButton setImage:[UIImage socializeImageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateHighlighted];
         
     }
     else
     {   
-        [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-disabled.png"] forState:UIControlStateNormal];
-        [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-disabled.png"] forState:UIControlStateHighlighted];   
+        [activateLocationButton setImage:[UIImage socializeImageNamed:@"socialize-comment-location-disabled.png"] forState:UIControlStateNormal];
+        [activateLocationButton setImage:[UIImage socializeImageNamed:@"socialize-comment-location-disabled.png"] forState:UIControlStateHighlighted];   
     }
     
     [self configureLocationText];

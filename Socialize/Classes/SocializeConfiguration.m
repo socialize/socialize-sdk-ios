@@ -7,6 +7,7 @@
 //
 
 #import "SocializeConfiguration.h"
+#import "_Socialize.h"
 
 NSString * const kSocializeModuleConfigurationPrototypesKey = @"Prototypes";
 NSString * const kSocializeModuleConfigurationFormatterKey = @"Formatters";
@@ -81,7 +82,7 @@ static SocializeConfiguration *sharedConfiguration;
 
 +(NSString *)defaultConfigurationPath
 {
-    NSBundle * bundle =  [NSBundle bundleForClass:[self class]];
+    NSBundle * bundle =  [Socialize bundle];
     NSString * configPath = [bundle pathForResource:@"SocializeConfigurationInfo" ofType:@"plist"];
 
     return  configPath;

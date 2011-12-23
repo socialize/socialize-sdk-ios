@@ -65,7 +65,7 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
 
 - (UIView*)tableBackgroundView {
     if (tableBackgroundView_ == nil) {
-        tableBackgroundView_ = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_brushed_metal@2x.png"]];
+        tableBackgroundView_ = [[UIImageView alloc] initWithImage:[UIImage socializeImageNamed:@"background_brushed_metal@2x.png"]];
     }
     return tableBackgroundView_;
 }

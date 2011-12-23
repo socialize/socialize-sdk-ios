@@ -26,7 +26,7 @@ CGFloat SocializeTableBGInfoViewDefaultHeight = 140.f;
 		self.layer.cornerRadius = 10.0;
 		self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 		
-		UIImage *noActivityImage = [UIImage imageNamed:bgImageName];
+		UIImage *noActivityImage = [UIImage socializeImageNamed:bgImageName];
 		
 		CGFloat imageXvalue = (self.frame.size.width - noActivityImage.size.width)/2;
 		CGFloat imageYvalue = 20;

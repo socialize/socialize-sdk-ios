@@ -11,7 +11,7 @@
 
 @implementation UINavigationController (Socialize)
 + (UINavigationController*)socializeNavigationControllerWithRootViewController:(UIViewController*)viewController {
-    UIImage * socializeNavBarBackground = [UIImage imageNamed:@"socialize-navbar-bg.png"];
+    UIImage * socializeNavBarBackground = [UIImage socializeImageNamed:@"socialize-navbar-bg.png"];
     
     UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
     [nav.navigationBar setBackgroundImage:socializeNavBarBackground];

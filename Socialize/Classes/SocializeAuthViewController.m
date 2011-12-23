@@ -47,7 +47,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     = [[[SocializeAuthViewController alloc] initWithDelegate:delegate] autorelease];
                                                                                                               
     UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:authController] autorelease];
-    UIImage *navBarImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
+    UIImage *navBarImage = [UIImage socializeImageNamed:@"socialize-navbar-bg.png"];
     [navController.navigationBar setBackgroundImage:navBarImage];
     return navController;
 }
@@ -129,7 +129,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 -(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName {
-    return [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil];
+    return [self.bundle loadNibNamed:nibName owner:self options:nil];
 }
     
 - (void)profileEditViewControllerDidCancel:(SocializeProfileEditViewController *)profileEditViewController {
@@ -192,15 +192,15 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
             switch( indexPath.row ) 
             {
                 case SocializeAuthViewControllerRowFacebook:
-                    authCell.cellIcon.image = [UIImage imageNamed:@"socialize-authorize-facebook-enabled-icon.png"];
+                    authCell.cellIcon.image = [UIImage socializeImageNamed:@"socialize-authorize-facebook-enabled-icon.png"];
                     authCell.cellLabel.text = @"facebook";
                     break;
                 case SocializeAuthViewControllerRowTwitter:
-                    authCell.cellIcon.image = [UIImage imageNamed:@"socialize-authorize-twitter-disabled-icon.png"];
+                    authCell.cellIcon.image = [UIImage socializeImageNamed:@"socialize-authorize-twitter-disabled-icon.png"];
                     authCell.cellLabel.text = @"Twitter";
                     break;
             }
-            authCell.cellAccessoryIcon.image = [UIImage imageNamed:@"socialize-activity-call-out-arrow.png"];
+            authCell.cellAccessoryIcon.image = [UIImage socializeImageNamed:@"socialize-activity-call-out-arrow.png"];
             cell = authCell;
             break;
 			
@@ -208,7 +208,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 		default:
 			infoCell = [self getAuthorizeInfoTableViewCell];
 			infoCell.backgroundColor = [UIColor colorWithRed:41/255.0f green:48/255.0f blue:54/255.0f alpha:1.0];
-            infoCell.cellIcon.image = [UIImage imageNamed:@"socialize-authorize-user-icon.png"];
+            infoCell.cellIcon.image = [UIImage socializeImageNamed:@"socialize-authorize-user-icon.png"];
             infoCell.cellLabel.text = @"You are currently anonymous.";
             infoCell.cellSubLabel.text = @"Authenticate with a service above";
             cell = infoCell;

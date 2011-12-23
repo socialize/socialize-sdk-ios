@@ -168,7 +168,7 @@
 }
 
 - (UIImage*)buttonBackgroundImage:(NSString*)imageName {
-    return [[UIImage imageNamed:imageName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+    return [[UIImage socializeImageNamed:imageName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 }
 
 - (CGSize)getButtonSizeForLabel:(NSString*)labelString iconName:(NSString*)iconName 
@@ -231,13 +231,13 @@
 	if (_isLiked){
 		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-red.png"] forState:UIControlStateNormal]; 
 		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-red-hover.png"] forState: UIControlStateHighlighted]; 
-		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-liked.png"] forState:UIControlStateNormal];
+		[_likeButton setImage:[UIImage socializeImageNamed:@"action-bar-icon-liked.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
 	else{
 		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-black.png"] forState:UIControlStateNormal]; 
 		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-black-hover.png"] forState:UIControlStateHighlighted]; 
-		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-like.png"] forState:UIControlStateNormal];
+		[_likeButton setImage:[UIImage socializeImageNamed:@"action-bar-icon-like.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
 }
@@ -256,13 +256,13 @@
 	if (_isLiked){
 		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-red.png"] forState:UIControlStateNormal]; 
 		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-red-hover.png"] forState: UIControlStateHighlighted]; 
-		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-liked.png"] forState:UIControlStateNormal];
+		[_likeButton setImage:[UIImage socializeImageNamed:@"action-bar-icon-liked.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
 	else{
 		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-black.png"] forState:UIControlStateNormal]; 
 		[_likeButton setBackgroundImage:[self buttonBackgroundImage:@"action-bar-button-black-hover.png"] forState:UIControlStateHighlighted]; 
-		[_likeButton setImage:[UIImage imageNamed:@"action-bar-icon-like.png"] forState:UIControlStateNormal];
+		[_likeButton setImage:[UIImage socializeImageNamed:@"action-bar-icon-like.png"] forState:UIControlStateNormal];
 		[_likeButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
     }
     
@@ -312,7 +312,7 @@
 	
 	// Now load the image and create the image view
 	if (iconName){
-		UIImage *image = [UIImage imageNamed:iconName];
+		UIImage *image = [UIImage socializeImageNamed:iconName];
 		[button setImage:image forState:UIControlStateNormal];
 		[button setImageEdgeInsets:UIEdgeInsetsMake(0, 0.0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
 	}
@@ -383,7 +383,7 @@
 - (void)drawRect:(CGRect)rect 
 {	
 	[super drawRect:rect];   
-	[[[UIImage imageNamed:@"action-bar-bg.png"] stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5] 
+	[[[UIImage socializeImageNamed:@"action-bar-bg.png"] stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5] 
      drawInRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
      blendMode:kCGBlendModeMultiply alpha:1.0];
 }

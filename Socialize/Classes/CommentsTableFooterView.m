@@ -30,7 +30,7 @@
 
 -(void)layoutSubviews{
     
-    UIImage *sbImg = [[UIImage imageNamed:@"socialize-comment-background-text-input.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
+    UIImage *sbImg = [[UIImage socializeImageNamed:@"socialize-comment-background-text-input.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
     self.searchBarImageView.image = sbImg;
 }
 

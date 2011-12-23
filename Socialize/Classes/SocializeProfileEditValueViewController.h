@@ -22,7 +22,6 @@
 @property (nonatomic, retain) UIBarButtonItem *cancelButton;
 @property (nonatomic, retain) UIBarButtonItem *saveButton;
 @property (nonatomic, assign) id<SocializeProfileEditValueViewControllerDelegate> delegate;
-@property (nonatomic, retain) NSBundle *bundle;
 @property (nonatomic, retain) UIView *tableHeaderView;
 @end
 

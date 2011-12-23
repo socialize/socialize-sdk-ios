@@ -1491,6 +1491,10 @@
 		AAD4B4221460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD4B40C1460A45000F39D0A /* SocializeProfileEditViewController.m */; };
 		AAD4B4231460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD4B40C1460A45000F39D0A /* SocializeProfileEditViewController.m */; };
 		AAD67926144911DA00C17C4D /* UIImage+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD67924144911DA00C17C4D /* UIImage+Network.m */; };
+		AAE55DCA14A3FF510034E1CB /* UIImage+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE55DC814A3FF510034E1CB /* UIImage+Socialize.h */; };
+		AAE55DCB14A3FF510034E1CB /* UIImage+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE55DC814A3FF510034E1CB /* UIImage+Socialize.h */; };
+		AAE55DCC14A3FF510034E1CB /* UIImage+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE55DC914A3FF510034E1CB /* UIImage+Socialize.m */; };
+		AAE55DCD14A3FF510034E1CB /* UIImage+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE55DC914A3FF510034E1CB /* UIImage+Socialize.m */; };
 		AAE7958F14684EB100BEAD28 /* TestLikeServices.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE7958D14684EB100BEAD28 /* TestLikeServices.h */; };
 		AAE7959014684EB100BEAD28 /* TestLikeServices.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE7958D14684EB100BEAD28 /* TestLikeServices.h */; };
 		AAE795AE14684F1E00BEAD28 /* TestActivityServices.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE795AC14684F1E00BEAD28 /* TestActivityServices.h */; };
@@ -2424,6 +2428,8 @@
 		AAD67924144911DA00C17C4D /* UIImage+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Network.m"; path = "Classes/UIImage+Network.m"; sourceTree = "<group>"; };
 		AAD7E389144F80320073308D /* SocializeProfileViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileViewControllerTests.h; path = "Test Cases/SocializeProfileViewControllerTests.h"; sourceTree = "<group>"; };
 		AAD7E38A144F80320073308D /* SocializeProfileViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileViewControllerTests.m; path = "Test Cases/SocializeProfileViewControllerTests.m"; sourceTree = "<group>"; };
+		AAE55DC814A3FF510034E1CB /* UIImage+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Socialize.h"; path = "Classes/UIImage+Socialize.h"; sourceTree = "<group>"; };
+		AAE55DC914A3FF510034E1CB /* UIImage+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Socialize.m"; path = "Classes/UIImage+Socialize.m"; sourceTree = "<group>"; };
 		AAE7958D14684EB100BEAD28 /* TestLikeServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLikeServices.h; sourceTree = "<group>"; };
 		AAE7958E14684EB100BEAD28 /* TestLikeServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLikeServices.m; sourceTree = "<group>"; };
 		AAE795AC14684F1E00BEAD28 /* TestActivityServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestActivityServices.h; sourceTree = "<group>"; };
@@ -3090,6 +3096,8 @@
 				AA88E83F147DA38900123E6F /* NSString+Socialize.m */,
 				AAF7A30F149B35D000FE67E9 /* UIImage+Resize.h */,
 				AAF7A310149B35D000FE67E9 /* UIImage+Resize.m */,
+				AAE55DC814A3FF510034E1CB /* UIImage+Socialize.h */,
+				AAE55DC914A3FF510034E1CB /* UIImage+Socialize.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -3945,6 +3953,7 @@
 				AA06B68D148EE39E00D084D4 /* DebugUtil.h in Headers */,
 				AAF7A312149B35D100FE67E9 /* UIImage+Resize.h in Headers */,
 				AAF7A318149B37DC00FE67E9 /* UIImage+ResizeTests.h in Headers */,
+				AAE55DCB14A3FF510034E1CB /* UIImage+Socialize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4032,6 +4041,7 @@
 				AA06B68C148EE39E00D084D4 /* DebugUtil.h in Headers */,
 				AAF7A311149B35D100FE67E9 /* UIImage+Resize.h in Headers */,
 				AAF7A317149B37DC00FE67E9 /* UIImage+ResizeTests.h in Headers */,
+				AAE55DCA14A3FF510034E1CB /* UIImage+Socialize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5679,6 +5689,7 @@
 				AA73833A1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */,
 				AAD218FC148AFBD600EF5503 /* StringHelper.m in Sources */,
 				AAF7A313149B35D100FE67E9 /* UIImage+Resize.m in Sources */,
+				AAE55DCC14A3FF510034E1CB /* UIImage+Socialize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5979,6 +5990,7 @@
 				AA73833B1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */,
 				AAD218FD148AFBD600EF5503 /* StringHelper.m in Sources */,
 				AAF7A314149B35D100FE67E9 /* UIImage+Resize.m in Sources */,
+				AAE55DCD14A3FF510034E1CB /* UIImage+Socialize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

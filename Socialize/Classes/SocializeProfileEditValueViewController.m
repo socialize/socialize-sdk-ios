@@ -20,7 +20,6 @@
 @synthesize cancelButton = cancelButton_;
 @synthesize saveButton = saveButton_;
 @synthesize delegate = delegate_;
-@synthesize bundle = bundle_;
 @synthesize tableHeaderView = tableHeaderView_;
 
 #pragma mark -
@@ -33,7 +32,6 @@
     self.valueToEdit = nil;    
     self.cancelButton = nil;
     self.saveButton = nil;
-    self.bundle = nil;
     self.tableHeaderView = nil;
     
     [super dealloc];
@@ -127,13 +125,6 @@
 {
     [self editOccured];
 	return YES;	
-}
-
-- (NSBundle*)bundle {
-    if (bundle_ == nil) {
-        bundle_ = [[NSBundle mainBundle] retain];
-    }
-    return bundle_;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

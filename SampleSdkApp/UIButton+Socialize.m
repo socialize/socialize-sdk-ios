@@ -44,8 +44,8 @@
             break;
     }
     
-    UIImage * normalImage = [[UIImage imageNamed:normalImageURI]stretchableImageWithLeftCapWidth:6 topCapHeight:0] ;
-    UIImage * highlightImage = [[UIImage imageNamed:highlightImageURI]stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+    UIImage * normalImage = [[UIImage socializeImageNamed:normalImageURI]stretchableImageWithLeftCapWidth:6 topCapHeight:0] ;
+    UIImage * highlightImage = [[UIImage socializeImageNamed:highlightImageURI]stretchableImageWithLeftCapWidth:6 topCapHeight:0];
     [self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	
@@ -98,8 +98,8 @@
             break;
     }
     
-    UIImage * normalImage = [[UIImage imageNamed:normalImageURI]stretchableImageWithLeftCapWidth:6 topCapHeight:0] ;
-    UIImage * highlightImage = [[UIImage imageNamed:highlightImageURI]stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+    UIImage * normalImage = [[UIImage socializeImageNamed:normalImageURI]stretchableImageWithLeftCapWidth:6 topCapHeight:0] ;
+    UIImage * highlightImage = [[UIImage socializeImageNamed:highlightImageURI]stretchableImageWithLeftCapWidth:6 topCapHeight:0];
     [self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	
@@ -172,8 +172,8 @@
 
 +(UIButton *)blueSocializeNavBarBackButtonWithTitle:(NSString *)title
 {
-    UIImage* backImageNormal = [[UIImage imageNamed:@"socialize-navbar-button-back.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
-	UIImage* backImageHighligted = [[UIImage imageNamed:@"socialize-navbar-button-back-pressed.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
+    UIImage* backImageNormal = [[UIImage socializeImageNamed:@"socialize-navbar-button-back.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
+	UIImage* backImageHighligted = [[UIImage socializeImageNamed:@"socialize-navbar-button-back-pressed.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
 	UIButton * backButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	
 	[backButton setBackgroundImage:backImageNormal forState:UIControlStateNormal];

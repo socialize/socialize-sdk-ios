@@ -30,7 +30,7 @@
 }
 
 -(void)awakeFromNib{
-	self.bgImage.image = [[UIImage imageNamed:@"comments-cell-bg-borders.png"]  stretchableImageWithLeftCapWidth:0 topCapHeight:1];
+	self.bgImage.image = [[UIImage socializeImageNamed:@"comments-cell-bg-borders.png"]  stretchableImageWithLeftCapWidth:0 topCapHeight:1];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -79,7 +79,7 @@
 
 	[super drawRect:rect];
 	CGContextRef ctx = UIGraphicsGetCurrentContext();
-	CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,CGSizeMake(55,55)}, [[UIImage imageNamed:@"comment-cell-bg-tile.png"] CGImage]);
+	CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,CGSizeMake(55,55)}, [[UIImage socializeImageNamed:@"comment-cell-bg-tile.png"] CGImage]);
 
 }
 
