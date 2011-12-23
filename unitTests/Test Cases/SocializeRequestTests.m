@@ -111,7 +111,7 @@
 
     [self prepare];
     [_request connect];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
 
     NSArray* oaRequestParamsActual = [_request.request socializeParameters];
     
@@ -158,7 +158,7 @@
     
     [self prepare];
     [_request connect];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.5];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
     
     [mockRequest verify];
 }
