@@ -7,7 +7,10 @@ fi
 THISDIR=$(dirname "$0")
 [[ $THISDIR =~ ^/ ]] || THISDIR="$PWD/$THISDIR"
 
-${THISDIR}/simulator-force-location-enabled.py com.pointabout.${PRODUCT_NAME}
+# Simulator needs to be dead before we force loc
+#killall "iPhone Simulator" >/dev/null 2>&1
+
+${THISDIR}/simulator-force-location-enabled.py com.getsocialize.samplesdk
 
 DATAFILE=/tmp/$$.data
 trap "rm -f $DATAFILE" INT TERM EXIT
