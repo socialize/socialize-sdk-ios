@@ -41,13 +41,15 @@
                                                 nil];
 
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-    [self executeRequest:
-     [SocializeRequest secureRequestWithHttpMethod:@"POST"
-                                resourcePath:AUTHENTICATE_METHOD
-                          expectedJSONFormat:SocializeDictionary
-                                      params:paramsDict]
-     ];
-
+    SocializeRequest *request = [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                                                 resourcePath:AUTHENTICATE_METHOD
+                                                           expectedJSONFormat:SocializeDictionary
+                                                                       params:paramsDict];
+    
+    // Flag this as a token request so we do not send the existing token
+    request.tokenRequest = YES;
+    
+    [self executeRequest:request];
 }
 
 +(BOOL)isAuthenticated {
@@ -97,12 +99,15 @@
                              thirdPartyAppId, @"auth_id" , nil] ;                        
                                
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-    [self executeRequest:
-     [SocializeRequest secureRequestWithHttpMethod:@"POST"
-                                      resourcePath:AUTHENTICATE_METHOD
-                                expectedJSONFormat:SocializeDictionary
-                                            params:params]
-     ];
+
+    SocializeRequest *request = [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                                                 resourcePath:AUTHENTICATE_METHOD
+                                                           expectedJSONFormat:SocializeDictionary
+                                                                       params:params];
+    
+    request.tokenRequest = YES;
+
+    [self executeRequest:request];
 
 }
 
