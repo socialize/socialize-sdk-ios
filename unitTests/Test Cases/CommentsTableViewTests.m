@@ -82,7 +82,6 @@
     
     [[self.mockTableView expect] setScrollsToTop:YES];
     [[self.mockTableView expect] setAutoresizesSubviews:YES];
-    [[self.mockTableView expect] setBackgroundView:OCMOCK_ANY];
     [[self.mockTableView expect] setAccessibilityLabel:@"Comments Table View"];
     [[self.mockView expect] setClipsToBounds:YES];
     

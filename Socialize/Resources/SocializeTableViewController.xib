@@ -39,7 +39,7 @@
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIImageView" id="402380577">
 						<reference key="NSNextResponder" ref="224485621"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{320, 416}</string>
 						<reference key="NSSuperview" ref="224485621"/>
 						<reference key="NSWindow"/>
@@ -49,7 +49,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">background_brushed_metal@2x.png</string>
+							<string key="NSResourceName">socialize-activity-bg.png</string>
 						</object>
 					</object>
 				</array>
@@ -73,7 +73,7 @@
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIActivityIndicatorView" id="438913015">
 						<reference key="NSNextResponder" ref="597017937"/>
-						<int key="NSvFlags">-2147483356</int>
+						<int key="NSvFlags">-2147483355</int>
 						<string key="NSFrame">{{151, 4}, {20, 20}}</string>
 						<reference key="NSSuperview" ref="597017937"/>
 						<reference key="NSWindow"/>
@@ -84,7 +84,7 @@
 					</object>
 					<object class="IBUILabel" id="904549290">
 						<reference key="NSNextResponder" ref="597017937"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">293</int>
 						<string key="NSFrame">{{140, 24}, {41, 15}}</string>
 						<reference key="NSSuperview" ref="597017937"/>
 						<reference key="NSWindow"/>
@@ -136,14 +136,6 @@
 			<array class="NSMutableArray" key="connectionRecords">
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">tableBackgroundView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="224485621"/>
-					</object>
-					<int key="connectionID">7</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">tableFooterView</string>
 						<reference key="source" ref="841351856"/>
 						<reference key="destination" ref="597017937"/>
@@ -165,6 +157,14 @@
 						<reference key="destination" ref="904549290"/>
 					</object>
 					<int key="connectionID">11</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tableBackgroundView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="224485621"/>
+					</object>
+					<int key="connectionID">13</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -237,7 +237,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">11</int>
+			<int key="maxID">13</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -299,8 +299,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">background_brushed_metal@2x.png</string>
-			<string key="NS.object.0">{640, 960}</string>
+			<string key="NS.key.0">socialize-activity-bg.png</string>
+			<string key="NS.object.0">{320, 366}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>

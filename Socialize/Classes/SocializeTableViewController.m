@@ -9,7 +9,7 @@
 #import "SocializeTableViewController.h"
 #import "SocializeTableBGInfoView.h"
 
-NSInteger SocializeTableViewControllerDefaultPageSize = 10;
+NSInteger SocializeTableViewControllerDefaultPageSize = 20;
 
 @interface SocializeTableViewController ()
 @property (nonatomic, assign) BOOL waitingForContent;
@@ -63,13 +63,6 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
     self.informationView = nil;
 }
 
-- (UIView*)tableBackgroundView {
-    if (tableBackgroundView_ == nil) {
-        tableBackgroundView_ = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_brushed_metal@2x.png"]];
-    }
-    return tableBackgroundView_;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -92,12 +85,14 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 10;
         CGRect containerFrame = CGRectMake(0, 0, SocializeTableBGInfoViewDefaultWidth, SocializeTableBGInfoViewDefaultHeight);
         informationView_ = [[SocializeTableBGInfoView alloc] initWithFrame:containerFrame bgImageName:@"socialize-nocomments-icon.png"];
         CGRect tableFrame = self.tableView.frame;
-        CGPoint center = CGPointMake(tableFrame.size.width / 2.0, tableFrame.size.height / 2.0);
-        self.informationView.errorLabel.hidden = NO;
-        self.informationView.noActivityImageView.hidden = NO;
+        informationView_.errorLabel.hidden = NO;
+        informationView_.noActivityImageView.hidden = NO;
         informationView_.hidden = YES;
         informationView_.errorLabel.text = @"No Content to Show.";
+        CGPoint center = CGPointMake(tableFrame.size.width / 2.0, tableFrame.size.height / 2.0);
         informationView_.center = center;
+        informationView_.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
+            UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     }
     return informationView_;
 }
