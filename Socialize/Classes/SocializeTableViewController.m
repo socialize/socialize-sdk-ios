@@ -9,7 +9,7 @@
 #import "SocializeTableViewController.h"
 #import "SocializeTableBGInfoView.h"
 
-NSInteger SocializeTableViewControllerDefaultPageSize = 10;
+NSInteger SocializeTableViewControllerDefaultPageSize = 20;
 
 @interface SocializeTableViewController ()
 @property (nonatomic, assign) BOOL waitingForContent;
