@@ -27,6 +27,7 @@ typedef URLDownload*(^LoaderFactory)(NSString* url, id sender, SEL selector, id 
 -(IBAction)profileButtonTapped:(id)sender;
 
 @property (nonatomic, retain) IBOutlet CommentDetailsView*     commentDetailsView;
+@property (nonatomic, retain) IBOutlet UIButton*     profileLabelButton;
 @property (nonatomic, retain) id<SocializeComment>    comment;
 @property (nonatomic, retain) URLDownload* profileImageDownloader;
 @property (nonatomic, retain) LoaderFactory loaderFactory;
