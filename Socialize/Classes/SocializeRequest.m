@@ -22,7 +22,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
 
-static NSString* const kUserAgent = @"Socialize v1.1.6/iOS";
+static NSString* const kUserAgent = @"Socialize v1.1.7/iOS";
 static const NSTimeInterval kTimeoutInterval = 180.0;
 static const int kGeneralErrorCode = 10000;
 
@@ -54,13 +54,14 @@ operationType = _requestType,
 secure = _secure,
 baseURL = _baseURL,
 secureBaseURL = _secureBaseURL,
-running = _running;
+running = _running,
+tokenRequest = _tokenRequest;
 
 + (NSString *)userAgentString
 {   
     NSString   *language = [[NSLocale currentLocale] objectForKey: NSLocaleLanguageCode];
     NSString   *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
-    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.1.6; %@_%@; BundleID/%@;",
+    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.1.7; %@_%@; BundleID/%@;",
                                [[UIDevice currentDevice]systemVersion],
                                [[UIDevice currentDevice]model],
                                language,
@@ -290,7 +291,11 @@ running = _running;
 
 - (OAMutableURLRequest*)request {
     if (_request == nil) {
-        OAToken *token =  [[[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX] autorelease];
+        OAToken *token = nil;
+        if (!self.isTokenRequest) {
+            token =  [[[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX] autorelease];
+        }
+        
         OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:[SocializeRequest consumerKey] secret:[SocializeRequest consumerSecret]] autorelease];
 
         _request = [[OAMutableURLRequest alloc] initWithURL:nil consumer:consumer token:token realm:nil signatureProvider:nil];
@@ -315,6 +320,10 @@ running = _running;
  */
 - (void)connect
 {   
+    NSDate *start = [NSDate date];
+    // do stuff...
+    NSLog(@"### time0 %f", [start timeIntervalSinceNow]);
+    
     if (_running)
         return;
 
@@ -325,11 +334,13 @@ running = _running;
     // Because of this, we prepare the request in the background, then begin 
     // execution on the main thread
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSLog(@"### time1 %f", [start timeIntervalSinceNow]);
         [self configureURLRequest];
         
         // Begin request on the main thread, because NSURLConnection calls its delegate on the
         // thread it was started from
         dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"### time2 %f", [start timeIntervalSinceNow]);
             [self.dataFetcher start];
         });
     });

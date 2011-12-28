@@ -68,6 +68,7 @@
 @synthesize finishedAskingServerForExistingLike = finishedAskingServerForExistingLike_;
 @synthesize noAutoLayout = noAutoLayout_;
 @synthesize initialized = initialized_;
+@synthesize delegate = delegate_;
 
 - (void)dealloc
 {
@@ -231,9 +232,27 @@
     return shareActionSheet_;
 }
 
+- (void)showActionSheet:(UIActionSheet*)actionSheet {
+    if ([self.delegate respondsToSelector:@selector(actionBar:wantsDisplayActionSheet:)]) {
+        
+        // Let the delegate override action sheet display if they want
+        [self.delegate actionBar:self wantsDisplayActionSheet:actionSheet];
+        
+    } else if ([self.presentModalInViewController isKindOfClass:[UITabBarController class]]) {
+        
+        // Some default behavior for UITabBarController (showFromTabBar:)
+        [actionSheet showFromTabBar:[(UITabBarController*)self.presentModalInViewController tabBar]];
+        
+    } else {
+        
+        // Normal Behavior: just display in modal target's view
+        [actionSheet showInView:self.presentModalInViewController.view];
+    }
+}
+
 -(void)shareButtonTouched: (id) sender
-{    
-    [self.shareActionSheet showInView:self.presentModalInViewController.view];
+{
+    [self showActionSheet:self.shareActionSheet];
 }
 
 -(void)shareViaFacebook

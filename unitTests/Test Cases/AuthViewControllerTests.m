@@ -8,6 +8,8 @@
 
 #import "AuthViewControllerTests.h"
 #import "SocializeAuthenticateService.h"
+#import "SocializeAuthTableViewCell.h"
+#import "SocializeAuthInfoTableViewCell.h"
 
 //THIS REDEFINES THE INTERFACES AS PUBLIC SO WE CAN TEST THEM
 @interface  SocializeAuthViewController(public)

@@ -144,11 +144,6 @@
     self.tableView.scrollsToTop = YES;
     self.tableView.autoresizesSubviews = YES;
 
-	UIImage * backgroundImage = [UIImage imageNamed:@"socialize-activity-bg.png"];
-	UIImageView * imageBackgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
-	self.tableView.backgroundView = imageBackgroundView; 
-	[imageBackgroundView release];
-    
     self.tableView.accessibilityLabel = @"Comments Table View";
 	self.view.clipsToBounds = YES;    
    

@@ -153,9 +153,6 @@
 -(void)authenticateWithApiKey:(NSString*)apiKey 
           apiSecret:(NSString*)apiSecret
 {
-   if ([SocializeAuthenticateService isAuthenticated])
-       [_authService removeAuthenticationInfo];
-
    [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret]; 
 }
 
@@ -202,9 +199,6 @@
               thirdPartyAppId:(NSString*)thirdPartyAppId
                thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
-    if ([SocializeAuthenticateService isAuthenticated])
-        [_authService removeAuthenticationInfo];
-    
     [_authService  authenticateWithApiKey:apiKey 
                                 apiSecret:apiSecret
                       thirdPartyAuthToken:thirdPartyAuthToken
@@ -219,9 +213,6 @@
          thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
                thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
-    if ([SocializeAuthenticateService isAuthenticated])
-        [_authService removeAuthenticationInfo];
-    
     [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:thirdPartyAppId thirdPartyLocalAppId:thirdPartyLocalAppId thirdPartyName:thirdPartyName];
 }
 
@@ -230,9 +221,6 @@
               thirdPartyAppId:(NSString*)thirdPartyAppId 
                thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
-    if ([SocializeAuthenticateService isAuthenticated])
-        [_authService removeAuthenticationInfo];
-    
     [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:thirdPartyAppId thirdPartyName:thirdPartyName];
 }
 
@@ -242,6 +230,9 @@
 
 -(BOOL)isAuthenticated{
     return [SocializeAuthenticateService isAuthenticated];
+}
+- (BOOL)isFacebookConfigured {
+    return [SocializeFacebook isFacebookConfigured];
 }
 
 -(BOOL)isAuthenticatedWithFacebook

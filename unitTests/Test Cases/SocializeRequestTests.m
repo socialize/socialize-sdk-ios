@@ -31,6 +31,7 @@
 #import "OAAsynchronousDataFetcher.h"
 #import "OAServiceTicket.h"
 #import <OCMock/OCMock.h>
+#import "StringHelper.h"
 
 @implementation SocializeRequestTests
 @synthesize expectedError = _expectedError;
@@ -79,7 +80,7 @@
 
     [self prepare];
     [_request connect];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.1];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
 
     NSArray* oaRequestParamsActual = [_request.request socializeParameters];
     
@@ -106,7 +107,8 @@
 
     [self prepare];
     [_request connect];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.1];
+    NSLog(@"#####################");
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
 
     NSArray* oaRequestParamsActual = [_request.request socializeParameters];
     
@@ -124,7 +126,7 @@
 {    
     NSString   *language = [[NSLocale currentLocale] objectForKey: NSLocaleLanguageCode];
     NSString   *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
-    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.1.6; %@_%@; BundleID/%@;",
+    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.1.7; %@_%@; BundleID/%@;",
                                [[UIDevice currentDevice]systemVersion],
                                [[UIDevice currentDevice]model],
                                language,
@@ -153,7 +155,7 @@
     
     [self prepare];
     [_request connect];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.5];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
     
     [mockRequest verify];
 }
@@ -201,6 +203,19 @@
     [_request tokenRequestTicket:tiket didFinishWithData:data];
     [mockDelegate verify];
     [mockResponse verify];
+}
+
+- (void)testThatTokenRequestDoesNotIncludeToken {
+    SocializeRequest *request = [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                                                 resourcePath:@"something/"
+                                                           expectedJSONFormat:SocializeDictionary
+                                                                       params:nil];
+
+    request.tokenRequest = YES;
+    [request configureURLRequest];
+    NSString *authorization = [request.request valueForHTTPHeaderField:@"Authorization"];
+    BOOL foundToken = [authorization containsString:@"oauth_token"];
+    GHAssertFalse(foundToken, @"should not have token");
 }
 
 -(void)testCompereRequestWithNilParams

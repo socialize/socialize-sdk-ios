@@ -41,13 +41,15 @@
                                                 nil];
 
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-    [self executeRequest:
-     [SocializeRequest secureRequestWithHttpMethod:@"POST"
-                                resourcePath:AUTHENTICATE_METHOD
-                          expectedJSONFormat:SocializeDictionary
-                                      params:paramsDict]
-     ];
-
+    SocializeRequest *request = [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                                                 resourcePath:AUTHENTICATE_METHOD
+                                                           expectedJSONFormat:SocializeDictionary
+                                                                       params:paramsDict];
+    
+    // Flag this as a token request so we do not send the existing token
+    request.tokenRequest = YES;
+    
+    [self executeRequest:request];
 }
 
 +(BOOL)isAuthenticated {
@@ -97,12 +99,15 @@
                              thirdPartyAppId, @"auth_id" , nil] ;                        
                                
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
-    [self executeRequest:
-     [SocializeRequest secureRequestWithHttpMethod:@"POST"
-                                      resourcePath:AUTHENTICATE_METHOD
-                                expectedJSONFormat:SocializeDictionary
-                                            params:params]
-     ];
+
+    SocializeRequest *request = [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                                                 resourcePath:AUTHENTICATE_METHOD
+                                                           expectedJSONFormat:SocializeDictionary
+                                                                       params:params];
+    
+    request.tokenRequest = YES;
+
+    [self executeRequest:request];
 
 }
 
@@ -185,14 +190,15 @@
     NSString* key = [NSString stringWithFormat:@"OAUTH_%@_%@_KEY", kPROVIDER_PREFIX, kPROVIDER_NAME];
     NSString* secret = [NSString stringWithFormat:@"OAUTH_%@_%@_SECRET", kPROVIDER_PREFIX, kPROVIDER_NAME];
     
-    if ([defaults objectForKey:key] && [defaults objectForKey:secret]) 
-    {
-        [defaults removeObjectForKey:key];
-        [defaults removeObjectForKey:secret];
-    }
+    [defaults removeObjectForKey:key];
+    [defaults removeObjectForKey:secret];
 
     // Remove persisted local user data
     [defaults removeObjectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
+    
+    // Remove any Facebook data
+    [defaults removeObjectForKey:@"FBAccessTokenKey"];
+    [defaults removeObjectForKey:@"FBExpirationDateKey"];
     
     [defaults synchronize]; 
 }

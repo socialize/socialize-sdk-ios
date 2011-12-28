@@ -27,4 +27,11 @@
 
 + (void)verifyFacebookSettings;
 
+
+ /**
+ @return BOOL true/false based if facebook has been configured correctly
+  */
+
++ (BOOL)isFacebookConfigured;
+
 @end

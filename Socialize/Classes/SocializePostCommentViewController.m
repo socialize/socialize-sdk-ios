@@ -139,7 +139,7 @@
 }
 
 -(void)sendButtonPressed:(UIButton*)button {
-    if (![self.socialize isAuthenticatedWithFacebook]) {
+    if ([self shouldShowAuthViewController]) {
         [self presentModalViewController:self.authViewController animated:YES];
     } else {
         [self finishCreateComment];
