@@ -4,6 +4,24 @@
 Changelog
 =============================================
 
+v1.1.7
+------
+[bug] when FB is not configured the authentication screen still shows [ ]
+
+[bug] canceling FB when authenticating causes anonymous data to be removed, resulting in a new anonymous user [ ]
+
+[bug] Profile View still show facebook details after removeAuthenticationInfo. [ ]
+
+[bug] Username label in comment details is too small [ ]
+
+[bug] Fix Profile and Comments List view layout on iPad [ ]
+
+[bug] Profile and Comments List do not paginate correctly on iPad [ ]
+
+[bug] ActionBar should use showFromTabBar: for action sheet display when target is a UITabBarController [ ]
+
+[feature] Add ActionBar delegate callback for custom action sheet display behavior [ ]
+
 v1.1.6
 ------
 [bug] User's own profile image does not update in activity after changing profile image [ ]
