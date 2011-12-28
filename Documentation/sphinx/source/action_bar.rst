@@ -43,6 +43,21 @@ If you need more detail on installing the action bar please see our `Adding the 
 
     .. _Adding the Socialize Action Bar Video: http://vimeo.com/31403049
 
+Delegate
+--------
+
+Defining a SocializeActionBarDelegate will allow you to customize some behavior of the
+action bar.
+
+Showing Action Sheets
+~~~~~~~~~~~~~~~~~~~~~
+
+If you wish, you can customize the way the Action Bar shows action sheets. To do this,
+just implement actionBar:wantsDisplayActionSheet:, as below
+
+.. raw:: html
+
+      <script src="https://gist.github.com/1528996.js"> </script>
 
 More Info
 -----------------------
