@@ -106,14 +106,14 @@ below:
 .. image:: images/facebook_urltypes.png	
 
 And lastly, you must be sure to call [Socialize handleOpenURL:url] from your
-UIApplicationDelegate's application:handleOpenURL: method. Socialize will take
+UIApplicationDelegate's application:openURL:sourceApplication: method. Socialize will take
 care of handing off the openURL request to the underlying `Facebook iOS SDK
 <http://developers.facebook.com/docs/reference/iossdk/authentication/>`_. This
 completes the authentication flow.
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1375464.js?file=appDelegate.m"></script>
+        <script src="https://gist.github.com/1529163.js?file=appDelegate.m"></script>
 
 Last Step: Include Socialize in your App!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
