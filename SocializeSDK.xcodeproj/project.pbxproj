@@ -348,6 +348,10 @@
 		16FDF4E01414BA0A00EAA064 /* SocializeCommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */; };
 		180B37EF147499E7009D2E22 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18029E121432B815002BDEC7 /* CoreLocation.framework */; };
 		180B37F214749A37009D2E22 /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 180B37F114749A37009D2E22 /* libprofile_rt.dylib */; };
+		181EA0A414AADBF70052720B /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1854042B14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib */; };
+		181EA0A514AADBF90052720B /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1854042B14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib */; };
+		181EA0A614AADBFC0052720B /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1854042B14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib */; };
+		181EA0A914AADC0D0052720B /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1854042B14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib */; };
 		18296316148450F100F6EFF3 /* socialize-navbar-button-blue-bg-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */; };
 		18296317148450F700F6EFF3 /* socialize-navbar-button-blue-bg-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1614844E9A00D5A56A /* socialize-navbar-button-blue-bg-inactive.png */; };
 		183514DF1497B70A00976838 /* SocializeDeviceToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 18398F3B1496D79300B659BE /* SocializeDeviceToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -367,6 +371,11 @@
 		18398F3A1496D68500B659BE /* SocializeDeviceTokenJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F381496D68400B659BE /* SocializeDeviceTokenJSONFormatter.m */; };
 		18398F3D1496D79300B659BE /* SocializeDeviceToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 18398F3B1496D79300B659BE /* SocializeDeviceToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18398F3E1496D79300B659BE /* SocializeDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F3C1496D79300B659BE /* SocializeDeviceToken.m */; };
+		1854042914AA306B00EAA6AF /* SocializeActivityDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1854042714AA306B00EAA6AF /* SocializeActivityDetailsViewController.m */; };
+		1854042A14AA306B00EAA6AF /* SocializeActivityDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1854042814AA306B00EAA6AF /* SocializeActivityDetailsViewController.h */; };
+		1854042C14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1854042B14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib */; };
+		1854043414AA851500EAA6AF /* SocializeActivityDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1854043214AA851500EAA6AF /* SocializeActivityDetailsView.m */; };
+		1854043514AA851500EAA6AF /* SocializeActivityDetailsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1854043314AA851500EAA6AF /* SocializeActivityDetailsView.h */; };
 		185BEF1814844E9C00D5A56A /* socialize-navbar-button-blue-bg-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1614844E9A00D5A56A /* socialize-navbar-button-blue-bg-inactive.png */; };
 		185BEF1914844E9C00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */; };
 		1880193A1497B85F00146C99 /* SocializeDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F3C1496D79300B659BE /* SocializeDeviceToken.m */; };
@@ -2088,6 +2097,11 @@
 		18398F381496D68400B659BE /* SocializeDeviceTokenJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceTokenJSONFormatter.m; path = Classes/SocializeDeviceTokenJSONFormatter.m; sourceTree = "<group>"; };
 		18398F3B1496D79300B659BE /* SocializeDeviceToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceToken.h; path = Classes/SocializeDeviceToken.h; sourceTree = "<group>"; };
 		18398F3C1496D79300B659BE /* SocializeDeviceToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceToken.m; path = Classes/SocializeDeviceToken.m; sourceTree = "<group>"; };
+		1854042714AA306B00EAA6AF /* SocializeActivityDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityDetailsViewController.m; path = Classes/SocializeActivityDetailsViewController.m; sourceTree = "<group>"; };
+		1854042814AA306B00EAA6AF /* SocializeActivityDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityDetailsViewController.h; path = Classes/SocializeActivityDetailsViewController.h; sourceTree = "<group>"; };
+		1854042B14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeActivityDetailsViewController.xib; path = Resources/SocializeActivityDetailsViewController.xib; sourceTree = "<group>"; };
+		1854043214AA851500EAA6AF /* SocializeActivityDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityDetailsView.m; path = Classes/SocializeActivityDetailsView.m; sourceTree = "<group>"; };
+		1854043314AA851500EAA6AF /* SocializeActivityDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityDetailsView.h; path = Classes/SocializeActivityDetailsView.h; sourceTree = "<group>"; };
 		185BEF1614844E9A00D5A56A /* socialize-navbar-button-blue-bg-inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-blue-bg-inactive.png"; path = "Resources/socialize-navbar-button-blue-bg-inactive.png"; sourceTree = "<group>"; };
 		185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-blue-bg-inactive@2x.png"; path = "Resources/socialize-navbar-button-blue-bg-inactive@2x.png"; sourceTree = "<group>"; };
 		1880193C1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceTokenJSONFormatterTests.h; path = "Test Cases/SocializeDeviceTokenJSONFormatterTests.h"; sourceTree = "<group>"; };
@@ -3193,7 +3207,6 @@
 				AAF903101473040300AB8674 /* Comment Details */,
 				AAF9030F147303F100AB8674 /* Profile */,
 				AA6B6F231472FBEB008E885B /* Profile Edit */,
-				AAF9030E1472FD2F00AB8674 /* Comment Details */,
 				AAF9030D1472FD1900AB8674 /* Comments List */,
 				AAF9030A1472FCCC00AB8674 /* Compose Message */,
 				AAF903091472FCAE00AB8674 /* Auth */,
@@ -3503,6 +3516,11 @@
 		AA08B3D9147C31B700E6D1CA /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				1854043214AA851500EAA6AF /* SocializeActivityDetailsView.m */,
+				1854043314AA851500EAA6AF /* SocializeActivityDetailsView.h */,
+				1854042B14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib */,
+				1854042714AA306B00EAA6AF /* SocializeActivityDetailsViewController.m */,
+				1854042814AA306B00EAA6AF /* SocializeActivityDetailsViewController.h */,
 				AA08B3FC147C344800E6D1CA /* SocializeActivityViewController.h */,
 				AA08B3FD147C344900E6D1CA /* SocializeActivityViewController.m */,
 				AA08B3EF147C336300E6D1CA /* SocializeActivityViewController.xib */,
@@ -4045,18 +4063,6 @@
 			name = "Comments List";
 			sourceTree = "<group>";
 		};
-		AAF9030E1472FD2F00AB8674 /* Comment Details */ = {
-			isa = PBXGroup;
-			children = (
-				16C8160714598F7900FFC476 /* SocializeCommentDetailsViewController.xib */,
-				16C330D613F3BD29004EA34D /* CommentDetailsView.h */,
-				16C330D713F3BD29004EA34D /* CommentDetailsView.m */,
-				16C330D813F3BD29004EA34D /* CommentMapView.h */,
-				16C330D913F3BD29004EA34D /* CommentMapView.m */,
-			);
-			name = "Comment Details";
-			sourceTree = "<group>";
-		};
 		AAF9030F147303F100AB8674 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -4072,6 +4078,11 @@
 			children = (
 				16FDF4DD1414BA0A00EAA064 /* SocializeCommentDetailsViewController.h */,
 				16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */,
+				16C8160714598F7900FFC476 /* SocializeCommentDetailsViewController.xib */,
+				16C330D613F3BD29004EA34D /* CommentDetailsView.h */,
+				16C330D713F3BD29004EA34D /* CommentDetailsView.m */,
+				16C330D813F3BD29004EA34D /* CommentMapView.h */,
+				16C330D913F3BD29004EA34D /* CommentMapView.m */,
 			);
 			name = "Comment Details";
 			sourceTree = "<group>";
@@ -4265,6 +4276,8 @@
 				AAB127E614992FB3009AF443 /* NSDate+Socialize.h in Headers */,
 				AAF7A311149B35D100FE67E9 /* UIImage+Resize.h in Headers */,
 				AAF7A317149B37DC00FE67E9 /* UIImage+ResizeTests.h in Headers */,
+				1854042A14AA306B00EAA6AF /* SocializeActivityDetailsViewController.h in Headers */,
+				1854043514AA851500EAA6AF /* SocializeActivityDetailsView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4846,6 +4859,7 @@
 				AA7FB8D81491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */,
 				AA7FB8E11491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8E81491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
+				1854042C14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5021,6 +5035,7 @@
 				AA7FB8DC1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */,
 				AA7FB8E51491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8EC1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
+				181EA0A914AADC0D0052720B /* SocializeActivityDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5215,6 +5230,7 @@
 				AA7FB8DD1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */,
 				AA7FB8E61491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8ED1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
+				181EA0A414AADBF70052720B /* SocializeActivityDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5478,6 +5494,7 @@
 				AA7FB8DB1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */,
 				AA7FB8E41491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8EB1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
+				181EA0A514AADBF90052720B /* SocializeActivityDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5655,6 +5672,7 @@
 				AA7FB8D91491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */,
 				AA7FB8E21491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8E91491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
+				181EA0A614AADBFC0052720B /* SocializeActivityDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5995,6 +6013,8 @@
 				AAB127E214992B61009AF443 /* SocializeSubscriptionJSONFormatter.m in Sources */,
 				AAB127E814992FB3009AF443 /* NSDate+Socialize.m in Sources */,
 				AAF7A313149B35D100FE67E9 /* UIImage+Resize.m in Sources */,
+				1854042914AA306B00EAA6AF /* SocializeActivityDetailsViewController.m in Sources */,
+				1854043414AA851500EAA6AF /* SocializeActivityDetailsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,13 +31,6 @@
 #define kCenterPointLongitude -122.417908
 
 
-@interface SocializeCommentDetailsViewController()<SocializeProfileViewControllerDelegate>
--(void) showComment;
--(void) setupCommentGeoLocation;
--(void) showShareLocation:(BOOL)hasLocation;
--(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
-@end
-
 @implementation SocializeCommentDetailsViewController
 
 @synthesize commentDetailsView;

@@ -22,7 +22,7 @@
 #import "ImagesCache.h"
 #import "SocializeTableBGInfoView.h"
 #import "SocializeCommentsService.h"
-
+#import "SocializeActivityDetailsViewController.h"
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
@@ -183,9 +183,8 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         SocializeComment* entryComment = ((SocializeComment*)[self.content objectAtIndex:indexPath.row]);
         
-        SocializeCommentDetailsViewController* details = [[SocializeCommentDetailsViewController alloc] init];
+        SocializeActivityDetailsViewController* details = [[SocializeActivityDetailsViewController alloc] initWithActivity:entryComment];
         details.title = [NSString stringWithFormat: @"%d of %d", indexPath.row + 1, [self.content count]];
-        details.comment = entryComment;
 
         [_cache stopOperations];
         details.cache = _cache;
