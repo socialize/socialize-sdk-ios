@@ -2,17 +2,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started Guide &mdash; Socialize iOS SDK v1.1.6 documentation</title>
+    <title>Getting Started Guide &mdash; Socialize iOS SDK 1.1.7 documentation</title>
+    
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.1.6',
+        VERSION:     '1.1.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK v1.1.6 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.1.7 documentation" href="index.html" />
     <link rel="next" title="Socialize Action Bar" href="action_bar.html" />
     <link rel="prev" title="Socialize iOS SDK" href="index.html" /> 
   </head>
@@ -36,7 +39,7 @@
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK v1.1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -178,10 +181,10 @@ is a lowercase fb followed by your app id. The example app is configured as
 below:</p>
 <img alt="images/facebook_urltypes.png" src="images/facebook_urltypes.png" />
 <p>And lastly, you must be sure to call [Socialize handleOpenURL:url] from your
-UIApplicationDelegate&#8217;s application:handleOpenURL: method. Socialize will take
+UIApplicationDelegate&#8217;s application:openURL:sourceApplication: method. Socialize will take
 care of handing off the openURL request to the underlying <a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>. This
 completes the authentication flow.</p>
-<script src="https://gist.github.com/1375464.js?file=appDelegate.m"></script></div>
+<script src="https://gist.github.com/1529163.js?file=appDelegate.m"></script></div>
 <div class="section" id="last-step-include-socialize-in-your-app">
 <h3><a class="toc-backref" href="#id9">Last Step: Include Socialize in your App!</a><a class="headerlink" href="#last-step-include-socialize-in-your-app" title="Permalink to this headline">¶</a></h3>
 <p>Now that you have your environment all setup, it’s time to include Socialize.</p>
@@ -235,7 +238,7 @@ of any content.</p>
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK v1.1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
