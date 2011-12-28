@@ -31,9 +31,9 @@
 #import <UIKit/UIKit.h>
 
 @class Socialize;
-@class SocializeActionBar;
+#import "SocializeActionBar.h"
 
-@interface SocializeActionBarTests : GHTestCase
+@interface SocializeActionBarTests : GHAsyncTestCase <SocializeActionBarDelegate>
 
 @property (nonatomic, retain) SocializeActionBar *actionBar;
 @property (nonatomic, retain) SocializeActionBar *origActionBar;
@@ -43,5 +43,6 @@
 @property (nonatomic, retain) id mockActionView;
 @property (nonatomic, retain) id mockEntity;
 @property (nonatomic, retain) id mockShareComposer;
+@property (nonatomic, retain) id mockShareActionSheet;
 
 @end

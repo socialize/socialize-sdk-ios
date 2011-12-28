@@ -66,6 +66,7 @@
 @synthesize mockActionView = mockActionView_;
 @synthesize mockEntity = mockEntity_;
 @synthesize mockShareComposer = mockShareComposer_;
+@synthesize mockShareActionSheet = mockShareActionSheet_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -89,6 +90,9 @@
     
     self.mockShareComposer = [OCMockObject mockForClass:[MFMailComposeViewController class]];
     self.actionBar.shareComposer = self.mockShareComposer;
+    
+    self.mockShareActionSheet = [OCMockObject mockForClass:[UIActionSheet class]];
+    self.actionBar.shareActionSheet = self.mockShareActionSheet;
 }
 
 -(void)tearDown
@@ -225,11 +229,8 @@
     [[[self.mockParentController stub] andReturn:mockView] view];
     [[[self.mockParentController stub] andReturnBool:NO] isKindOfClass:[UITabBarController class]];
     
-    id mockSheet = [OCMockObject mockForClass:[UIActionSheet class]];
-    self.actionBar.shareActionSheet = mockSheet;
-    [[mockSheet expect] showInView:mockView];
+    [[self.mockShareActionSheet expect] showInView:mockView];
     [self.actionBar shareButtonTouched:nil];
-    [mockSheet verify];
 }
 
 
@@ -318,16 +319,23 @@
     id mockTabBar = [OCMockObject mockForClass:[UITabBar class]];
     [[[mockParentController stub] andReturn:mockTabBar] tabBar];
 
-    // Mock out the share action sheet
-    id mockSheet = [OCMockObject mockForClass:[UIActionSheet class]];
-    self.actionBar.shareActionSheet = mockSheet;
-    
     // Should show from our tab bar
-    [[mockSheet expect] showFromTabBar:mockTabBar];
+    [[self.mockShareActionSheet expect] showFromTabBar:mockTabBar];
     
     [self.actionBar shareButtonTouched:nil];
 }
      
+- (void)testThatDelegateCanOverrideActionSheetDisplay {
+    self.actionBar.delegate = self;
+    
+    [self prepare];
+    [self.actionBar shareButtonTouched:nil];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+}
 
+- (void)actionBar:(SocializeActionBar *)actionBar wantsDisplayActionSheet:(UIActionSheet *)actionSheet {
+    GHAssertEquals(actionSheet, self.mockShareActionSheet, @"Bad action sheet");
+    [self notify:kGHUnitWaitStatusSuccess];
+}
 
 @end
