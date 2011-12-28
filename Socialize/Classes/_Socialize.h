@@ -45,6 +45,8 @@
 @class UIImage;
 @class SocializeFacebook;
 
+typedef void(^SocializeEntityLoaderBlock)(UINavigationController *navigationController, id<SocializeEntity>entity);
+
 /**
 This is a general facade of the   SDK`s API. Through it a third party developers could use the API.
  
@@ -100,6 +102,22 @@ otherwise you will get a failure.
  @param delegate Implemented by user callback delegate which responds to the  <SocializeServiceDelegate> protocol.
  */
 -(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
+
+/**
+ Provide access to the entity loader block
+ 
+ typedef void(^SocializeEntityLoaderBlock)(UINavigationController *navigationController, id<SocializeEntity>entity);
+ */
++(SocializeEntityLoaderBlock)entityLoaderBlock;
+
+/**
+ Set entity loader block
+ 
+ typedef void(^SocializeEntityLoaderBlock)(UINavigationController *navigationController, id<SocializeEntity>entity);
+ 
+ @param entityLoaderBlock This block will be called when Socialize wishes to load an entity
+ */
++(void)setEntityLoaderBlock:(SocializeEntityLoaderBlock)entityLoaderBlock;
 
 /**
  Save API information to the user defaults.

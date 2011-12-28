@@ -12,6 +12,7 @@
     #import "NSError+Socialize.h"
     #import "DebugUtil.h"
     #import "NSDate+Socialize.h"
+    #import "PropertyHelpers.h"
 #endif
 
 #ifdef DEBUG
