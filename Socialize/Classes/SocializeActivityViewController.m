@@ -11,6 +11,7 @@
 #import "SocializeActivityService.h"
 #import "SocializeProfileViewController.h"
 #import "SocializeTableBGInfoView.h"
+#import "_Socialize.h"
 
 @implementation SocializeActivityViewController
 @synthesize activityTableViewCell = activityTableViewCell_;
@@ -193,7 +194,9 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
-    cell.disclosureImage.hidden = self.dontShowDisclosure;
+    BOOL hideDisclosure = [Socialize entityLoaderBlock] == nil;
+    
+    cell.disclosureImage.hidden = hideDisclosure;
     
     NSString *imageURL = activity.user.smallImageUrl;
     if (imageURL != nil) {

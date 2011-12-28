@@ -125,6 +125,48 @@
     [[[self.mockTableView stub] andReturn:cell] cellForRowAtIndexPath:indexPath];
 }
 
+- (void)testCellDisclosureIsHiddenWhenLoaderIsNil {
+    [Socialize setEntityLoaderBlock:nil];
+    
+    // Stub in a cell
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    id mockCell = [OCMockObject niceMockForClass:[SocializeActivityTableViewCell class]];
+    [self stubForCellAtIndexPath:indexPath cell:mockCell activity:nil];
+    
+    // Stub in a disclosure image
+    id mockDisclosureImage = [OCMockObject mockForClass:[UIImageView class]];
+    [[[mockCell stub] andReturn:mockDisclosureImage] disclosureImage];
+    
+    // Should be hidden
+    [[mockDisclosureImage expect] setHidden:YES];
+    
+    SocializeActivityTableViewCell *cell = (SocializeActivityTableViewCell*)[self.activityViewController tableView:self.mockTableView cellForRowAtIndexPath:indexPath];
+    GHAssertEquals(cell, mockCell, @"Bad cell");
+}
+
+- (void)testCellDisclosureIsNotHiddenWhenLoaderIsNotNil {
+    
+    // Set a loader
+    [Socialize setEntityLoaderBlock:^(UINavigationController *nav, id<SocializeEntity>entity) {
+    }];
+    
+    // Stub in a cell
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    id mockCell = [OCMockObject niceMockForClass:[SocializeActivityTableViewCell class]];
+    [self stubForCellAtIndexPath:indexPath cell:mockCell activity:nil];
+    
+    // Stub in a disclosure image
+    id mockDisclosureImage = [OCMockObject mockForClass:[UIImageView class]];
+    [[[mockCell stub] andReturn:mockDisclosureImage] disclosureImage];
+    
+    // Should be hidden
+    [[mockDisclosureImage expect] setHidden:NO];
+    
+    SocializeActivityTableViewCell *cell = (SocializeActivityTableViewCell*)[self.activityViewController tableView:self.mockTableView cellForRowAtIndexPath:indexPath];
+    GHAssertEquals(cell, mockCell, @"Bad cell");
+}
+
+
 - (void)testCellWithProfileImageNotInCacheAnimatesLoadsAndStopsAnimating {
     NSString *testURL = @"http://www.test.com/image.png";
     

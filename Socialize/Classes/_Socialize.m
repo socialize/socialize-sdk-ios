@@ -44,6 +44,8 @@
 @synthesize deviceTokenService = _deviceTokenService;
 @synthesize subscriptionService = _subscriptionService;
 static Socialize *_sharedSocialize = nil;
+static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
+
 
 + (void)initialize {
     if (self == [Socialize class]) {
@@ -96,6 +98,15 @@ static Socialize *_sharedSocialize = nil;
         _subscriptionService = [[SocializeSubscriptionService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
     }
     return self;
+}
+
++(void)setEntityLoaderBlock:(SocializeEntityLoaderBlock)entityLoaderBlock {
+    SocializeEntityLoaderBlock copied = [[entityLoaderBlock copy] autorelease];
+    NonatomicRetainedSetToFrom(_sharedEntityLoaderBlock, copied);
+}
+
++(SocializeEntityLoaderBlock)entityLoaderBlock {
+    return _sharedEntityLoaderBlock;
 }
 
 +(void)storeSocializeApiKey:(NSString*) key andSecret: (NSString*)secret;

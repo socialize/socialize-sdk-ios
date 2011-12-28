@@ -380,4 +380,20 @@
     
 }
 
+- (void)testEntityLoaderIsCalledWhenActivityTapped {
+    id mockActivity = [OCMockObject mockForProtocol:@protocol(SocializeActivity)];
+    id mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
+    [[[mockActivity stub] andReturn:mockEntity] entity];
+    
+    [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity>entity) {
+        GHAssertEquals(navigationController, self.mockNavigationController, @"Bad nav");
+        GHAssertEquals(entity, mockEntity, @"Bad ent");
+        [self notify:kGHUnitWaitStatusSuccess];
+    }];
+
+    [self prepare];
+    [self.profileViewController activityViewController:nil activityTapped:mockActivity];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+}
+
 @end

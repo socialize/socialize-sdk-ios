@@ -271,7 +271,9 @@
         activityViewController_ = [[SocializeActivityViewController alloc] init];
         activityViewController_.delegate = self;
         activityViewController_.dontShowNames = YES;
-        activityViewController_.dontShowDisclosure = ![self.delegate respondsToSelector:@selector(profileViewController:wantsViewActivity:)];
+        
+        BOOL entityLoaderUndefined = [Socialize entityLoaderBlock] == nil;
+        activityViewController_.dontShowDisclosure = entityLoaderUndefined;
     }
     
     return activityViewController_;
@@ -293,8 +295,9 @@
 }
 
 - (void)activityViewController:(SocializeActivityViewController *)activityViewController activityTapped:(id<SocializeActivity>)activity {
-    if ([self.delegate respondsToSelector:@selector(profileViewController:wantsViewActivity:)]) {
-        [self.delegate profileViewController:self wantsViewActivity:activity];
+    SocializeEntityLoaderBlock entityLoader = [Socialize entityLoaderBlock];
+    if (self.navigationController != nil && entityLoader != nil) {
+        entityLoader(self.navigationController, activity.entity);
     }
 }
 

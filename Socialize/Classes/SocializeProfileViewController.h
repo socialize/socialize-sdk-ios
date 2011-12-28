@@ -49,5 +49,4 @@
 @protocol SocializeProfileViewControllerDelegate <NSObject>
 @optional
 - (void)profileViewControllerDidFinish:(SocializeProfileViewController*)profileViewController;
-- (void)profileViewController:(SocializeProfileViewController*)profileViewController wantsViewActivity:(id<SocializeActivity>)activity;
 @end
