@@ -223,6 +223,7 @@
     // Stub in a view for the parent
     id mockView = [OCMockObject mockForClass:[UIView class]];
     [[[self.mockParentController stub] andReturn:mockView] view];
+    [[[self.mockParentController stub] andReturnBool:NO] isKindOfClass:[UITabBarController class]];
     
     id mockSheet = [OCMockObject mockForClass:[UIActionSheet class]];
     self.actionBar.shareActionSheet = mockSheet;
@@ -304,6 +305,29 @@
     [[self.mockActionView expect] setNoAutoLayout:NO];
     self.actionBar.noAutoLayout = NO;
 }
+
+- (void)testThatShareShowsFromTabBarIfTargetIsTabBar {
+    // Replace parent controller
+    id mockParentController = [OCMockObject mockForClass:[UITabBarController class]];
+    self.actionBar.presentModalInViewController = mockParentController;
+    
+    // Controller is a tab bar controller
+    [[[mockParentController stub] andReturnBool:YES] isKindOfClass:[UITabBarController class]];
+
+    // Stub in a tab bar
+    id mockTabBar = [OCMockObject mockForClass:[UITabBar class]];
+    [[[mockParentController stub] andReturn:mockTabBar] tabBar];
+
+    // Mock out the share action sheet
+    id mockSheet = [OCMockObject mockForClass:[UIActionSheet class]];
+    self.actionBar.shareActionSheet = mockSheet;
+    
+    // Should show from our tab bar
+    [[mockSheet expect] showFromTabBar:mockTabBar];
+    
+    [self.actionBar shareButtonTouched:nil];
+}
+     
 
 
 @end

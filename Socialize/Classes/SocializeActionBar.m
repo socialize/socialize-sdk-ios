@@ -231,9 +231,17 @@
     return shareActionSheet_;
 }
 
+- (void)showActionSheet:(UIActionSheet*)actionSheet {
+    if ([self.presentModalInViewController isKindOfClass:[UITabBarController class]]) {
+        [actionSheet showFromTabBar:[(UITabBarController*)self.presentModalInViewController tabBar]];
+    } else {
+        [actionSheet showInView:self.presentModalInViewController.view];
+    }
+}
+
 -(void)shareButtonTouched: (id) sender
-{    
-    [self.shareActionSheet showInView:self.presentModalInViewController.view];
+{
+    [self showActionSheet:self.shareActionSheet];
 }
 
 -(void)shareViaFacebook
