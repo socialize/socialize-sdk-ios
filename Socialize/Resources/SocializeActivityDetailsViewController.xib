@@ -79,14 +79,14 @@
 							<object class="IBUIButton" id="120941526">
 								<reference key="NSNextResponder" ref="642631657"/>
 								<int key="NSvFlags">294</int>
-								<string key="NSFrame">{{62, 27}, {105, 24}}</string>
+								<string key="NSFrame">{{65, 27}, {225, 24}}</string>
 								<reference key="NSSuperview" ref="642631657"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="778129316"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
+								<int key="IBUILineBreakMode">4</int>
 								<object class="NSColor" key="IBUIHighlightedTitleColor" id="941143813">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -167,7 +167,7 @@
 							</object>
 							<object class="IBUIView" id="18623747">
 								<reference key="NSNextResponder" ref="642631657"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">274</int>
 								<object class="NSMutableArray" key="NSSubviews">
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<object class="IBUIImageView" id="405606739">
@@ -186,8 +186,8 @@
 									</object>
 									<object class="IBUILabel" id="39619907">
 										<reference key="NSNextResponder" ref="18623747"/>
-										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{109, 4}, {102, 21}}</string>
+										<int key="NSvFlags">294</int>
+										<string key="NSFrame">{{5, 3}, {305, 21}}</string>
 										<reference key="NSSuperview" ref="18623747"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView"/>
@@ -217,7 +217,7 @@
 										</object>
 									</object>
 								</object>
-								<string key="NSFrame">{{0, 210}, {320, 250}}</string>
+								<string key="NSFrame">{{0, 210}, {320, 200}}</string>
 								<reference key="NSSuperview" ref="642631657"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="405606739"/>
@@ -311,6 +311,14 @@
 						<reference key="destination" ref="778129316"/>
 					</object>
 					<int key="connectionID">129</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">recentActivityLabel</string>
+						<reference key="source" ref="642631657"/>
+						<reference key="destination" ref="39619907"/>
+					</object>
+					<int key="connectionID">130</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -500,7 +508,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">129</int>
+			<int key="maxID">130</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -513,23 +521,19 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>activityMessageView</string>
-							<string>positionLable</string>
 							<string>profileImage</string>
 							<string>profileNameButton</string>
 							<string>recentActivityHeaderImage</string>
+							<string>recentActivityLabel</string>
 							<string>recentActivityView</string>
-							<string>shadowBackground</string>
-							<string>shadowMapOfUserLocation</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIWebView</string>
-							<string>UILabel</string>
 							<string>UIImageView</string>
 							<string>UIButton</string>
 							<string>UIImageView</string>
-							<string>UIView</string>
-							<string>UIImageView</string>
+							<string>UILabel</string>
 							<string>UIView</string>
 						</object>
 					</object>
@@ -538,23 +542,17 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>activityMessageView</string>
-							<string>positionLable</string>
 							<string>profileImage</string>
 							<string>profileNameButton</string>
 							<string>recentActivityHeaderImage</string>
+							<string>recentActivityLabel</string>
 							<string>recentActivityView</string>
-							<string>shadowBackground</string>
-							<string>shadowMapOfUserLocation</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">activityMessageView</string>
 								<string key="candidateClassName">UIWebView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">positionLable</string>
-								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">profileImage</string>
@@ -569,15 +567,11 @@
 								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">recentActivityLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">recentActivityView</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">shadowBackground</string>
-								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">shadowMapOfUserLocation</string>
 								<string key="candidateClassName">UIView</string>
 							</object>
 						</object>

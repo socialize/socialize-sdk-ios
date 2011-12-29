@@ -30,6 +30,7 @@
 @synthesize activityMessage;
 @synthesize activityDate;
 @synthesize username;
+@synthesize recentActivityLabel;
 #pragma mark init/dealloc methods
 - (void)dealloc
 {
@@ -44,6 +45,8 @@
     [activityMessage release]; activityMessage = nil;
     [activityDate release]; activityDate = nil;
     [username release]; username = nil;
+    [recentActivityLabel release]; recentActivityLabel = nil;
+    
     [super dealloc];
 }
 
@@ -93,7 +96,15 @@
 }
 
 -(void) setUsername:(NSString*)name {
-    [self.profileNameButton setTitle:name forState:UIControlStateNormal];
+    [username release];
+    username = nil;
+    
+    if (name) {
+        username = [name retain];
+    }
+    
+    [self.profileNameButton setTitle:username forState:UIControlStateNormal];
+    self.recentActivityLabel.text = [NSString stringWithFormat:@"%@'s Recent Activity", username];
 }
 
 #pragma mark activity message method webview
@@ -148,15 +159,29 @@
 
 
 #pragma mark layout logic
+
 //this method should be abstracted to a SocializeUIView when we write one. 
 -(void) positionView:(UIView*)lowerView belowView:(UIView *)upperView
 {
+    //this method should only move the view along the y coordinate
     CGFloat yCoord = upperView.frame.origin.y + upperView.frame.size.height;
     CGRect viewFrame = lowerView.frame;
     viewFrame.origin.y = yCoord;
     lowerView.frame = viewFrame;
 }
-
+//this method should be abstracted to a SocializeUIView when we write one. 
+-(void)fillRestOfView:(UIView *)containerView withView:(UIView*)view {
+    CGRect viewFrame = view.frame;
+    CGFloat newHeight = containerView.frame.size.height - viewFrame.origin.y;
+    if (newHeight < 235) {
+        newHeight = 235;
+    }
+    viewFrame.size.height = newHeight; 
+    view.frame = viewFrame;
+}
+-(CGFloat)bottomYCoord:(UIView*)view {
+    return (view.frame.size.height + view.frame.origin.y);
+}
 -(void) layoutActivityDetailsSubviews
 {    
     CGFloat messageHeight = [self getMessageHeight];
@@ -165,12 +190,17 @@
     messageFrame.size.height = messageHeight;
     activityMessageView.frame = messageFrame;
     
-    //adjust the activity view frame
+    // adjust the activity view frame below the activity message
     [self positionView:self.recentActivityView belowView:self.activityMessageView];
+    
+    // fill out the remaining view with the recent activity view if it's 
+    //smaller than the entire height than the minimum size of the activity view
+    [self fillRestOfView:self withView:self.recentActivityView];
+       
     //adjust all the activity subviews
     [self layoutRecentActivitySubviews];
     
-    CGFloat height = self.recentActivityView.frame.origin.y + self.recentActivityView.frame.size.height;
+    CGFloat height = [self bottomYCoord:self.recentActivityView];
     self.contentSize = CGSizeMake(self.frame.size.width, height);
 }
 
@@ -178,7 +208,7 @@
 -(void) layoutRecentActivitySubviews { 
     [self positionView:self.activityTableView belowView:self.recentActivityHeaderImage];
     
-    //we also need to give the tableview the correct height
+    //we also need to give the tableview the correct height so we'll take the bottom most view
     CGFloat activityHeight = self.recentActivityView.frame.size.height - self.recentActivityHeaderImage.frame.size.height;
     CGRect newActivityFrame = self.activityTableView.frame;
     newActivityFrame.size.height = activityHeight;
@@ -186,7 +216,8 @@
 }
 -(void) setActivityTableView:(UIView *)newActivityTableView {
     if( activityTableView ) {
-        //we need to remove the previous view from the hierarchy
+        //we need to remove the previous view from
+        //the hierarchy before adding a new one later
         [activityTableView removeFromSuperview];
         [activityTableView release];
         activityTableView = nil;

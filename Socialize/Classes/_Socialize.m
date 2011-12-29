@@ -209,7 +209,6 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 }
 
 -(void)authenticateWithFacebook {
-    NSLog(@"inside authenticateWithFacebook");
     
     NSString *apiKey = [Socialize apiKey];
     NSString *apiSecret = [Socialize apiSecret];

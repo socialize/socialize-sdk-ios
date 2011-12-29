@@ -16,6 +16,7 @@
     IBOutlet UIButton*          profileNameButton;
     IBOutlet UIImageView*       profileImage;
     IBOutlet UIView*            recentActivityView;
+    IBOutlet UILabel*           recentActivityLabel;
     IBOutlet UIImageView*       recentActivityHeaderImage;
     UIView*                     activityTableView;
     NSString*                   activityMessage;
@@ -23,20 +24,22 @@
     NSString*                   username;
 }
 
-@property (nonatomic, retain) IBOutlet UIWebView* activityMessageView; 
-@property (nonatomic, retain) IBOutlet UIButton* profileNameButton;
-@property (nonatomic, retain) IBOutlet UIImageView* profileImage;
+@property (nonatomic, retain) IBOutlet UIWebView*       activityMessageView; 
+@property (nonatomic, retain) IBOutlet UIButton*        profileNameButton;
+@property (nonatomic, retain) IBOutlet UIImageView*     profileImage;
 /* recent activity view is a container view for the tableview and headers */
-@property (nonatomic, retain) UIView * recentActivityView;
-@property (nonatomic, retain) UIView * activityTableView;
-@property (nonatomic, retain) UIView * recentActivityHeaderImage;
-@property (nonatomic, retain) NSString * activityMessage;
-@property (nonatomic, retain) NSDate* activityDate;
-@property (nonatomic, retain) NSString *username;
+@property (nonatomic, retain) UIView *                  recentActivityView;
+@property (nonatomic, retain) UIView *                  activityTableView;
+@property (nonatomic, retain) UIView *                  recentActivityHeaderImage;
+@property (nonatomic, retain) UILabel*                  recentActivityLabel;
+@property (nonatomic, retain) NSString*                 activityMessage;
+@property (nonatomic, retain) NSDate*                   activityDate;
+@property (nonatomic, retain) NSString*                 username;
+
 -(void) updateProfileImage: (UIImage* )image;
 -(void) updateActivityMessageView;
 -(void) layoutRecentActivitySubviews;
 -(void) layoutActivityDetailsSubviews;
--(void)updateActivityMessage:(NSString *)newActivityMessage withActivityDate:(NSDate *)newActivityDate;
+-(void) updateActivityMessage:(NSString *)newActivityMessage withActivityDate:(NSDate *)newActivityDate;
 
 @end

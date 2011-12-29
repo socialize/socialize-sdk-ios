@@ -63,12 +63,12 @@
 
 #pragma mark setting socialize activity
 -(void)setSocializeActivity:(id<SocializeActivity>)socializeActivity {
-    NSAssert([socializeActivity isKindOfClass:[SocializeComment class]], @"socialize activity details only  currently handles of type socialize comment");
     if(socializeActivity_) {
         [socializeActivity_ release];
         socializeActivity_ = nil;
     }
     if( socializeActivity) {
+        NSAssert([socializeActivity isKindOfClass:[SocializeComment class]], @"socialize activity details only  currently handles of type socialize comment, you passed in %@", [socializeActivity class]);
         socializeActivity_ = [socializeActivity retain];
         self.activityViewController.currentUser = socializeActivity_.user.objectID;
     }
@@ -142,12 +142,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-     // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
--(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-    return YES;
 }
 
 #pragma mark - profile view methods
