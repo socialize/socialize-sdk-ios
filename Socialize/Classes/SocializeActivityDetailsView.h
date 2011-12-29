@@ -13,34 +13,31 @@
 
 @interface SocializeActivityDetailsView : UIScrollView <UIWebViewDelegate> {
 @private
-    IBOutlet UIWebView*         commentMessage;
-    IBOutlet CommentMapView*    mapOfUserLocation;
-    IBOutlet UIImageView*       navImage;
-    IBOutlet UILabel*           positionLable;
+    IBOutlet UIWebView*         activityMessageView;
     IBOutlet UIButton*          profileNameButton;
     IBOutlet UIImageView*       profileImage;
-    IBOutlet UIImageView*       shadowBackground;
-    IBOutlet UIView*            shadowMapOfUserLocation;
-    BOOL                        showMap;
+    IBOutlet UIView*            recentActivityView;
+    IBOutlet UIImageView*       recentActivityHeaderImage;
+    UIView*                     activityTableView;
+    NSString*                   activityMessage;
+    NSDate*                     activityDate;
+    NSString*                   username;
 }
 
-@property (nonatomic, retain) IBOutlet UIWebView* commentMessage; 
-@property (nonatomic, retain) IBOutlet CommentMapView* mapOfUserLocation;
-@property (nonatomic, retain) IBOutlet UIImageView* navImage;
-@property (nonatomic, retain) IBOutlet UILabel* positionLable;
+@property (nonatomic, retain) IBOutlet UIWebView* activityMessageView; 
 @property (nonatomic, retain) IBOutlet UIButton* profileNameButton;
 @property (nonatomic, retain) IBOutlet UIImageView* profileImage;
-@property (nonatomic, retain) IBOutlet UIImageView* shadowBackground;
-@property (nonatomic, retain) IBOutlet UIView * shadowMapOfUserLocation;
-@property (nonatomic, assign) BOOL showMap;
-
+/* recent activity view is a container view for the tableview and headers */
+@property (nonatomic, retain) UIView * recentActivityView;
+@property (nonatomic, retain) UIView * activityTableView;
+@property (nonatomic, retain) UIView * recentActivityHeaderImage;
+@property (nonatomic, retain) NSString * activityMessage;
+@property (nonatomic, retain) NSDate* activityDate;
+@property (nonatomic, retain) NSString *username;
 -(void) updateProfileImage: (UIImage* )image;
--(void) updateLocationText: (NSString*)text;
--(void) updateLocationText: (NSString*)text color: (UIColor*) color fontName: (NSString*) font fontSize: (CGFloat)size;
--(void) updateNavigationImage: (UIImage*)image;
--(void) updateUserName: (NSString*)name;
--(void) updateGeoLocation: (CLLocationCoordinate2D)location;
--(void) updateCommentMsg: (NSString*)comment;
--(void) configurateView;
+-(void) updateActivityMessageView;
+-(void) layoutRecentActivitySubviews;
+-(void) layoutActivityDetailsSubviews;
+-(void)updateActivityMessage:(NSString *)newActivityMessage withActivityDate:(NSDate *)newActivityDate;
 
 @end

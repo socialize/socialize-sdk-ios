@@ -152,7 +152,7 @@
     [[mockDeteailView expect] updateNavigationImage: [UIImage imageNamed:@"socialize-comment-details-icon-geo-disabled.png"]];
     [[mockDeteailView expect] updateUserName:TEST_USER_NAME];
     [[mockDeteailView expect] configurateView];
-    [[mockDeteailView expect] updateCommentMsg:[self showComment:mockComment]];
+    [[mockDeteailView expect] updateActivityMessage:[self showComment:mockComment]];
         
      commentDetails.commentDetailsView = mockDeteailView;
     [[[self.partialMockCommentDetailsViewController stub] andReturn:mockDeteailView] view];
@@ -197,7 +197,7 @@
     [[mockDeteailView expect] updateNavigationImage: [UIImage imageNamed:@"socialize-comment-details-icon-geo-enabled.png"]];
     [[mockDeteailView expect] updateUserName:TEST_USER_NAME];
     [[mockDeteailView expect] configurateView];
-    [[mockDeteailView expect] updateCommentMsg:[self showComment:mockComment]];
+    [[mockDeteailView expect] updateActivityMessage:[self showComment:mockComment]];
     
     commentDetails.commentDetailsView = mockDeteailView;
     [[[self.partialMockCommentDetailsViewController stub] andReturn:mockDeteailView] view];

@@ -19,17 +19,13 @@
 
 @interface SocializeActivityDetailsViewController : SocializeBaseViewController 
 {
-    @private
-        SocializeActivityDetailsView*     activityDetailsView;
-        ImagesCache*            cache;
+
 }
 -(IBAction)profileButtonTapped:(id)sender;
 -(id)initWithActivity:(id<SocializeActivity>)socializeActivity;
--(void)addActivityControllerToView;
     
 @property (nonatomic, retain) IBOutlet SocializeActivityDetailsView*     activityDetailsView;
 @property (nonatomic, retain) id<SocializeActivity> socializeActivity;
-@property (nonatomic, retain) NSString *activityDisplayText;
 @property (nonatomic, retain) URLDownload* profileImageDownloader;
 @property (nonatomic, retain) ImagesCache*  cache;
 @property (nonatomic, retain) SocializeActivityViewController*  activityViewController;
