@@ -1,20 +1,19 @@
 //
-//  CommentDetailsView.m
-//  appbuildr
+//  SocializeActivityDetailsView.m
+//  Socialize SDK
 //
-//  Created by Sergey Popenko on 4/6/11.
-//  Copyright 2011 pointabout. All rights reserved.
+//  Created by Isaac on 12/6/11.
+//  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
 #import "SocializeActivityDetailsView.h"
-#import "CommentMapView.h"
 #import "HtmlPageCreator.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define VIEW_OFFSET_SIZE 20
-#define NO_LOCATION_MSG @"No location associated with this comment."
+#define NO_LOCATION_MSG @"No location associated with this activity."
 #define NO_CITY_MSG @"Could not locate the place name."
-#define NO_COMMENT_MSG @"Could not load comment."
+#define NO_COMMENT_MSG @"Could not load activity."
 
 @interface SocializeActivityDetailsView()
 -(void) configurateProfileImage;
@@ -97,8 +96,8 @@
     [self.profileNameButton setTitle:name forState:UIControlStateNormal];
 }
 
-#pragma mark comments method webview
--(CGFloat)getCommentHeight {
+#pragma mark activity message method webview
+-(CGFloat)getMessageHeight {
     NSString *output = [activityMessageView stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"wrapper\").offsetHeight;"];
     CGFloat height = [output floatValue];
     return height;
@@ -121,9 +120,9 @@
         
         if(self.activityMessage)
         {        
-            NSMutableString* commentText = [[[NSMutableString alloc] initWithString:self.activityMessage] autorelease];       
-            [commentText replaceOccurrencesOfString: @"\n" withString:@"<br>" options:NSLiteralSearch range:NSMakeRange(0, [commentText length])];
-            [htmlCreator addInformation:commentText forTag: @"COMMENT_TEXT"];
+            NSMutableString* activityText = [[[NSMutableString alloc] initWithString:self.activityMessage] autorelease];       
+            [activityText replaceOccurrencesOfString: @"\n" withString:@"<br>" options:NSLiteralSearch range:NSMakeRange(0, [activityText length])];
+            [htmlCreator addInformation:activityText forTag: @"COMMENT_TEXT"];
         }
         else
         {
@@ -136,7 +135,7 @@
     else
     {
         // Could not create dynamic html for comment
-        [self.activityMessageView loadHTMLString:htmlCreator.html baseURL:nil];
+        [self.activityMessageView loadHTMLString:self.activityMessage baseURL:nil];
     }
     [htmlCreator release];
     //we shouldn't do the layout here, we need to wait for webview to finish loading -- see delegate methods
@@ -160,7 +159,7 @@
 
 -(void) layoutActivityDetailsSubviews
 {    
-    CGFloat messageHeight = [self getCommentHeight];
+    CGFloat messageHeight = [self getMessageHeight];
     //update comments height
     CGRect messageFrame = activityMessageView.frame;
     messageFrame.size.height = messageHeight;

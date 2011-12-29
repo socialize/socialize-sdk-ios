@@ -1,15 +1,14 @@
 //
-//  CommentDetailsView.h
-//  appbuildr
+//  SocializeActivityDetailsView.h
+//  Socialize SDK
 //
-//  Created by Sergey Popenko on 4/6/11.
-//  Copyright 2011 pointabout. All rights reserved.
+//  Created by Isaac Mosquera on 12/6/11.
+//  Copyright 2011 Socialize. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@class CommentMapView;
 
 @interface SocializeActivityDetailsView : UIScrollView <UIWebViewDelegate> {
 @private
