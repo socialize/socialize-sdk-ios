@@ -3,7 +3,7 @@
 //  appbuildr
 //
 //  Created by Fawad Haider on 12/2/10.
-//  Copyright 2010 pointabout. All rights reserved.
+//  Copyright 2010. All rights reserved.
 //
 
 #import "SocializeCommentsTableViewController.h"
@@ -23,6 +23,8 @@
 #import "SocializeTableBGInfoView.h"
 #import "SocializeCommentsService.h"
 #import "SocializeActivityDetailsViewController.h"
+#import "SocializeSubscriptionService.h"
+
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
@@ -42,7 +44,7 @@
 @synthesize footerView;
 @synthesize closeButton = _closeButton;
 @synthesize brandingButton = _brandingButton;
-
+@synthesize subscribedButton = _subscribedButton;
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName {
     SocializeCommentsTableViewController* commentsController = [[[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString:entityName] autorelease];
@@ -127,9 +129,43 @@
     }
 }
 
+- (BOOL)elementsHaveActiveSubscription:(NSArray*)elements {
+    for (id<SocializeSubscription> subscription in elements) {
+        if ([subscription subscribed]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 -(void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
-    [self receiveNewContent:dataArray];
-    _isLoading = NO;
+    if ([service isKindOfClass:[SocializeSubscriptionService class]]) {
+        BOOL subscribed = [self elementsHaveActiveSubscription:dataArray];
+        self.subscribedButton.enabled = YES;
+        self.subscribedButton.selected = subscribed;
+    } else if ([service isKindOfClass:[SocializeCommentsService class]]) {
+        [self receiveNewContent:dataArray];
+        _isLoading = NO;
+    }
+}
+
+- (void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object {
+    
+}
+
+- (void)getSubscriptionStatus {
+    [self.socialize getSubscriptionsForEntityKey:_entity.key first:nil last:nil];
+}
+
+- (IBAction)subscribedButtonPressed:(id)sender {
+    if (self.subscribedButton.selected) {
+        self.subscribedButton.selected = NO;
+        [self.socialize unsubscribeFromCommentsForEntityKey:_entity.key];
+    } else {
+        self.subscribedButton.selected = YES;
+        [self.socialize subscribeToCommentsForEntityKey:_entity.key];
+    }
 }
 
 #pragma mark -
@@ -149,6 +185,9 @@
     
     self.navigationItem.leftBarButtonItem = self.brandingButton;
     self.navigationItem.rightBarButtonItem = self.closeButton;    
+    
+    self.subscribedButton.enabled = NO;
+    [self getSubscriptionStatus];
 }
 
 #pragma mark tableFooterViewDelegate
@@ -307,6 +346,8 @@
     [footerView release];
     [_closeButton release];
     [_brandingButton release];
+    [_subscribedButton release];
+    
     [super dealloc];
 }
 
