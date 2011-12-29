@@ -168,8 +168,6 @@
 }
 
 -(void)authenticateWithFacebook {
-    NSLog(@"inside authenticateWithFacebook");
-    
     NSString *apiKey = [Socialize apiKey];
     NSString *apiSecret = [Socialize apiSecret];
     NSString *facebookAppId = [Socialize facebookAppId];

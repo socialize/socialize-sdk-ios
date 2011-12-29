@@ -352,7 +352,6 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
  */
 - (void)fbDidNotLogin:(BOOL)cancelled
 {
-    NSLog(@"User cancelled authentication");
     if(cancelled) {
         [service request:nil didFailWithError:[NSError defaultSocializeErrorForCode:SocializeErrorFacebookCancelledByUser]];        
     }
