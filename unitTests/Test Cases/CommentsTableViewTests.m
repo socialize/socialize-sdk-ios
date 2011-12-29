@@ -13,6 +13,7 @@
 #import "SocializeTableBGInfoView.h"
 #import "SocializeCommentsService.h"
 #import "SocializeProfileViewController.h"
+#import "SocializeSubscriptionService.h"
 
 @interface SocializeCommentsTableViewController(public)
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender;
@@ -22,6 +23,7 @@
 @implementation CommentsTableViewTests
 @synthesize commentsTableViewController = commentsTableViewController_;
 @synthesize mockView = mockView_;
+@synthesize mockSubscribedButton = mockSubscribedButton_;
 
 #define TEST_URL @"test_entity_url"
 
@@ -34,10 +36,15 @@
     // super setUp creates self.viewController
     self.commentsTableViewController = (SocializeCommentsTableViewController*)self.viewController;
     self.mockView = self.mockTableView;
+    
+    self.mockSubscribedButton = [OCMockObject mockForClass:[UIButton class]];
+    self.commentsTableViewController.subscribedButton = self.mockSubscribedButton;
 }
 
 -(void)tearDown {
     [super tearDown];
+    
+    [self.mockSubscribedButton verify];
     self.commentsTableViewController = nil;
 }
 
@@ -47,10 +54,12 @@
 }
 
 -(void)testServiceSuccess {
-    
+    id mockService = [OCMockObject mockForClass:[SocializeCommentsService class]];
+    [mockService stubIsKindOfClass:[SocializeCommentsService class]];
+
     id mockContent = [OCMockObject mockForClass:[NSArray class]];
     [[(id)self.commentsTableViewController expect] receiveNewContent:mockContent];
-    [self.commentsTableViewController service:OCMOCK_ANY didFetchElements:mockContent];
+    [self.commentsTableViewController service:mockService didFetchElements:mockContent];
 }
 
 -(void)testDidFail {
@@ -85,6 +94,9 @@
     [[self.mockTableView expect] setAccessibilityLabel:@"Comments Table View"];
     [[self.mockView expect] setClipsToBounds:YES];
     
+    [[self.mockSubscribedButton expect] setEnabled:NO];
+    [[self.mockSocialize expect] getSubscriptionsForEntityKey:TEST_URL first:nil last:nil];
+
     [self.commentsTableViewController viewDidLoad]; 
 }
 
@@ -189,6 +201,40 @@
     id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
     [[(id)self.commentsTableViewController expect] insertContentAtHead:[NSArray arrayWithObject:mockComment]];
     [self.commentsTableViewController postCommentViewController:nil didCreateComment:mockComment];
+}
+
+- (void)testThatPressingEnabledSubscribedButtonCancelsSubscription {
+    [[[self.mockSubscribedButton stub] andReturnBool:YES] isSelected];
+    [[self.mockSubscribedButton expect] setSelected:NO];
+    [[self.mockSocialize expect] unsubscribeFromCommentsForEntityKey:TEST_URL];
+    
+    [self.commentsTableViewController subscribedButtonPressed:self.mockSubscribedButton];
+}
+
+- (void)testThatPressingDisabledSubscribedButtonCancelsSubscription {
+    [[[self.mockSubscribedButton stub] andReturnBool:NO] isSelected];
+    [[self.mockSubscribedButton expect] setSelected:YES];
+    [[self.mockSocialize expect] subscribeToCommentsForEntityKey:TEST_URL];
+    
+    [self.commentsTableViewController subscribedButtonPressed:self.mockSubscribedButton];
+}
+
+- (void)testFinishingGetSubscriptionsUpdatesButton {
+    
+    // Array contains an active subscription
+    id mockSubscription = [OCMockObject mockForProtocol:@protocol(SocializeSubscription)];
+    [[[mockSubscription stub]  andReturnBool:YES] subscribed];
+    NSArray *elements = [NSArray arrayWithObject:mockSubscription];
+
+    // Subscription service
+    id mockService = [OCMockObject mockForClass:[SocializeSubscriptionService class]];
+    [mockService stubIsKindOfClass:[SocializeSubscriptionService class]];
+
+    // Button should enable and become selected
+    [[self.mockSubscribedButton expect] setEnabled:YES];
+    [[self.mockSubscribedButton expect] setSelected:YES];
+    
+    [self.commentsTableViewController service:mockService didFetchElements:elements];
 }
 
 @end
