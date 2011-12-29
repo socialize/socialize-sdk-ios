@@ -9,8 +9,10 @@
 #import "SocializeActivityDetailsView.h"
 #import "HtmlPageCreator.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIView+Layout.h"
 
 #define VIEW_OFFSET_SIZE 20
+#define MIN_RECENT_ACTIVITY_HEIGHT 235
 #define NO_LOCATION_MSG @"No location associated with this activity."
 #define NO_CITY_MSG @"Could not locate the place name."
 #define NO_COMMENT_MSG @"Could not load activity."
@@ -68,7 +70,7 @@
 
 -(void) addShadowForView:(UIView*)view
 {
-    //this method should also be abstracted to a SocializeUIView when it exists
+
     UIView* shadowView = [[UIView alloc] init];
     shadowView.layer.cornerRadius = 3.0;
     shadowView.layer.shadowColor = [UIColor colorWithRed:22/ 255.f green:28/ 255.f blue:31/ 255.f alpha:1.0].CGColor;
@@ -159,29 +161,6 @@
 
 
 #pragma mark layout logic
-
-//this method should be abstracted to a SocializeUIView when we write one. 
--(void) positionView:(UIView*)lowerView belowView:(UIView *)upperView
-{
-    //this method should only move the view along the y coordinate
-    CGFloat yCoord = upperView.frame.origin.y + upperView.frame.size.height;
-    CGRect viewFrame = lowerView.frame;
-    viewFrame.origin.y = yCoord;
-    lowerView.frame = viewFrame;
-}
-//this method should be abstracted to a SocializeUIView when we write one. 
--(void)fillRestOfView:(UIView *)containerView withView:(UIView*)view {
-    CGRect viewFrame = view.frame;
-    CGFloat newHeight = containerView.frame.size.height - viewFrame.origin.y;
-    if (newHeight < 235) {
-        newHeight = 235;
-    }
-    viewFrame.size.height = newHeight; 
-    view.frame = viewFrame;
-}
--(CGFloat)bottomYCoord:(UIView*)view {
-    return (view.frame.size.height + view.frame.origin.y);
-}
 -(void) layoutActivityDetailsSubviews
 {    
     CGFloat messageHeight = [self getMessageHeight];
@@ -191,22 +170,20 @@
     activityMessageView.frame = messageFrame;
     
     // adjust the activity view frame below the activity message
-    [self positionView:self.recentActivityView belowView:self.activityMessageView];
+    [self.recentActivityView positionBelowView:self.activityMessageView];
     
-    // fill out the remaining view with the recent activity view if it's 
-    //smaller than the entire height than the minimum size of the activity view
-    [self fillRestOfView:self withView:self.recentActivityView];
-       
+    // fill out the remaining view with the recent activity view
+    [self.recentActivityView fillRestOfView:self minSize:CGSizeMake(self.frame.size.width,MIN_RECENT_ACTIVITY_HEIGHT)];
+    
     //adjust all the activity subviews
     [self layoutRecentActivitySubviews];
     
-    CGFloat height = [self bottomYCoord:self.recentActivityView];
-    self.contentSize = CGSizeMake(self.frame.size.width, height);
+    self.contentSize = CGSizeMake(self.frame.size.width, self.recentActivityView.diagonalPoint.y);
 }
 
 #pragma mark activity view layout
 -(void) layoutRecentActivitySubviews { 
-    [self positionView:self.activityTableView belowView:self.recentActivityHeaderImage];
+    [self.activityTableView positionBelowView:self.recentActivityHeaderImage];
     
     //we also need to give the tableview the correct height so we'll take the bottom most view
     CGFloat activityHeight = self.recentActivityView.frame.size.height - self.recentActivityHeaderImage.frame.size.height;

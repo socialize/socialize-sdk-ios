@@ -382,6 +382,8 @@
 		1880193E1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1880193D1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m */; };
 		188019401497BD8500146C99 /* SocializeDeviceTokenJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F381496D68400B659BE /* SocializeDeviceTokenJSONFormatter.m */; };
 		188019431497C07A00146C99 /* SocializeDeviceTokenServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 188019421497C07A00146C99 /* SocializeDeviceTokenServiceTests.m */; };
+		18BD4CF014ACC220000D6FAB /* UIView+Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 18BD4CEE14ACC220000D6FAB /* UIView+Layout.h */; };
+		18BD4CF114ACC220000D6FAB /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD4CEF14ACC220000D6FAB /* UIView+Layout.m */; };
 		18D8EDD1146B162600E9991F /* AuthViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */; };
 		18D8EDD5146B48F700E9991F /* SocializeAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18D8EDD6146B48F700E9991F /* SocializeAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */; };
@@ -2112,6 +2114,8 @@
 		188019421497C07A00146C99 /* SocializeDeviceTokenServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceTokenServiceTests.m; path = "Test Cases/SocializeDeviceTokenServiceTests.m"; sourceTree = "<group>"; };
 		18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUnitTestApplication.h; sourceTree = "<group>"; };
 		18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUnitTestApplication.m; sourceTree = "<group>"; };
+		18BD4CEE14ACC220000D6FAB /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Layout.h"; path = "Classes/UIView+Layout.h"; sourceTree = "<group>"; };
+		18BD4CEF14ACC220000D6FAB /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Layout.m"; path = "Classes/UIView+Layout.m"; sourceTree = "<group>"; };
 		18D8EDCF146B162600E9991F /* AuthViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthViewControllerTests.h; path = "Test Cases/AuthViewControllerTests.h"; sourceTree = "<group>"; };
 		18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthViewControllerTests.m; path = "Test Cases/AuthViewControllerTests.m"; sourceTree = "<group>"; };
 		18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeAuthViewController.h; path = Classes/SocializeAuthViewController.h; sourceTree = "<group>"; };
@@ -3252,6 +3256,8 @@
 				6DDBEA6C14057B5700E41FC0 /* UILabel-Additions.m */,
 				AAD67923144911DA00C17C4D /* UIImage+Network.h */,
 				AAD67924144911DA00C17C4D /* UIImage+Network.m */,
+				18BD4CEE14ACC220000D6FAB /* UIView+Layout.h */,
+				18BD4CEF14ACC220000D6FAB /* UIView+Layout.m */,
 				16E33C051445BFA3006E2EB4 /* NSString+MD5Addition.h */,
 				16E33C061445BFA3006E2EB4 /* NSString+MD5Addition.m */,
 				1657EF9913A2170A00E488CC /* NSString+UrlSerialization.h */,
@@ -4284,6 +4290,7 @@
 				1854042A14AA306B00EAA6AF /* SocializeActivityDetailsViewController.h in Headers */,
 				1854043514AA851500EAA6AF /* SocializeActivityDetailsView.h in Headers */,
 				AA1F1AEF14AA9AE000B83792 /* PropertyHelpers.h in Headers */,
+				18BD4CF014ACC220000D6FAB /* UIView+Layout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6021,6 +6028,7 @@
 				AAF7A313149B35D100FE67E9 /* UIImage+Resize.m in Sources */,
 				1854042914AA306B00EAA6AF /* SocializeActivityDetailsViewController.m in Sources */,
 				1854043414AA851500EAA6AF /* SocializeActivityDetailsView.m in Sources */,
+				18BD4CF114ACC220000D6FAB /* UIView+Layout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
