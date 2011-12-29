@@ -38,6 +38,7 @@
 @synthesize profileImageDownloader;
 @synthesize loaderFactory;
 @synthesize cache;
+@synthesize profileLabelButton = profileLabelButton_;
 
 - (void)dealloc
 {
@@ -200,6 +201,7 @@
     [super viewDidLoad];
     [self showShareLocation:self.comment.lat != nil];
 
+    [self.profileLabelButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
 }
 
 - (void)viewDidUnload

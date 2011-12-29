@@ -34,6 +34,7 @@
 @protocol SocializeEntity;
 @protocol SocializeLike;
 @class MFMailComposeViewController;
+@protocol SocializeActionBarDelegate;
 
 /**
  The Socialize Action Bar
@@ -41,6 +42,7 @@
  */
 @interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate>
 
+@property (nonatomic, assign) id<SocializeActionBarDelegate> delegate;
 @property (nonatomic, assign) UIViewController* presentModalInViewController;
 @property (nonatomic, retain) id<SocializeEntity> entity;
 @property (nonatomic, retain) UIViewController *commentsNavController;
@@ -96,4 +98,11 @@
  @param presentModalInController Modal dialogs and UIActionSheet popups will be presented in this controller and its view
  */
 -(id)initWithEntity:(id<SocializeEntity>)socEntity presentModalInController:(UIViewController*)controller;
+@end
+
+@protocol SocializeActionBarDelegate <NSObject>
+
+@optional
+- (void)actionBar:(SocializeActionBar*)actionBar wantsDisplayActionSheet:(UIActionSheet*)actionSheet;
+
 @end
