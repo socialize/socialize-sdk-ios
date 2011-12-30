@@ -80,9 +80,21 @@
     [mockString verify];
 }    
 -(void)testRegisterDeviceTokens {
-//    -(void)registerDeviceTokens:(NSArray *) tokens {
     NSMutableArray *tokens = [NSArray arrayWithObject:@"FFFF"];
-    [[self.partialDeviceTokenService expect] executeRequest:OCMOCK_ANY];
+    [[self.partialDeviceTokenService expect] executeRequest:[OCMArg checkWithBlock:^(SocializeRequest *request) {
+        NSArray *params = [request params];
+        NSDictionary *deviceTokenObject = [params objectAtIndex:0];
+        NSString *deviceToken = [deviceTokenObject objectForKey:@"device_token"];
+        NSString *deviceType = [deviceTokenObject objectForKey:@"device_type"];
+        
+        if (![deviceToken isEqualToString:@"FFFF"])
+            return NO;
+        if (![deviceType isEqualToString:@"iOS"])
+            return NO;
+        
+        return YES;
+    }]];
+    
     [self.deviceTokenService registerDeviceTokens:tokens];
     
 }

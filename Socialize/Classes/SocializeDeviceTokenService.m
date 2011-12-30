@@ -25,7 +25,10 @@
 -(void)registerDeviceTokens:(NSArray *) tokens {
     NSMutableArray *params = [NSMutableArray array];
     for ( NSString *token in tokens ) {
-        NSDictionary *deviceToken = [NSDictionary dictionaryWithObject:token forKey:@"device_token"];
+        NSDictionary *deviceToken = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     token, @"device_token",
+                                     @"iOS", @"device_type",
+                                     nil];
         [params addObject:deviceToken];
        
     }
