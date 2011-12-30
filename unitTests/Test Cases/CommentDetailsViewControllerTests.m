@@ -38,9 +38,10 @@
 #define TEST_COMMENT @"test comment"
 #define TEST_USER_NAME @"test_user"
 
+/*
 @interface SocializeCommentDetailsViewController(public)
 -(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
-@end
+@end*/
 
 @implementation CommentDetailsViewControllerTests
 
@@ -152,7 +153,6 @@
     [[mockDeteailView expect] updateNavigationImage: [UIImage imageNamed:@"socialize-comment-details-icon-geo-disabled.png"]];
     [[mockDeteailView expect] updateUserName:TEST_USER_NAME];
     [[mockDeteailView expect] configurateView];
-    [[mockDeteailView expect] updateActivityMessage:[self showComment:mockComment]];
         
      commentDetails.commentDetailsView = mockDeteailView;
     [[[self.partialMockCommentDetailsViewController stub] andReturn:mockDeteailView] view];
@@ -179,41 +179,6 @@
     [commentDetails profileButtonTapped:mockSender];
 }
 
--(void) testShowCommentWithGeo
-{
-    NSNumber* lat = [NSNumber numberWithDouble:1.1];
-    NSNumber* lng = [NSNumber numberWithDouble:0.2];
-    NSString* profileUrl = @"UserPicture";
-    
-    id mockComment = [self  mockCommentWithDate:[NSDate date] lat:lat lng:lng profileUrl:profileUrl];
-    commentDetails.comment = mockComment;
-    
-    id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
-    [[mockDeteailView expect] setShowMap: YES];
-    
-    CLLocationCoordinate2D centerPoint = {[lat doubleValue], [lng doubleValue]};        
-    [[mockDeteailView expect] updateGeoLocation: centerPoint];
-    
-    [[mockDeteailView expect] updateNavigationImage: [UIImage imageNamed:@"socialize-comment-details-icon-geo-enabled.png"]];
-    [[mockDeteailView expect] updateUserName:TEST_USER_NAME];
-    [[mockDeteailView expect] configurateView];
-    [[mockDeteailView expect] updateActivityMessage:[self showComment:mockComment]];
-    
-    commentDetails.commentDetailsView = mockDeteailView;
-    [[[self.partialMockCommentDetailsViewController stub] andReturn:mockDeteailView] view];
 
-    commentDetails.loaderFactory = [[^URLDownload*(NSString* url, id sender, SEL selector, id tag){
-        GHAssertEqualStrings(profileUrl, url, nil);
-        return nil;
-    } copy]autorelease];
-    
-    [self.partialMockCommentDetailsViewController viewDidLoad]; 
-    [self.partialMockCommentDetailsViewController viewWillAppear:YES];
-    
-    [mockComment verify];
-    [mockDeteailView verify];
-    
-    [self.partialMockCommentDetailsViewController viewWillDisappear:YES];
-}
 
 @end

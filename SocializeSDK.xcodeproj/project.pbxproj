@@ -158,7 +158,7 @@
 		1666BD36140E4F2800518811 /* URLDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD32140E4F2700518811 /* URLDownloadOperation.m */; };
 		1666BD39140E509800518811 /* URLDownloadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD38140E509800518811 /* URLDownloadTests.m */; };
 		1666BD3A140F9B9800518811 /* URLDownloadOperationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD2C140E481500518811 /* URLDownloadOperationTests.m */; };
-		1666BD3D1410C3D400518811 /* CommentDetailsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD3C1410C3C000518811 /* CommentDetailsViewControllerTests.m */; };
+		1666BD3D1410C3D400518811 /* CommentDetailsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666BD3C1410C3C000518811 /* CommentDetailsViewControllerTests.m */; settings = {COMPILER_FLAGS = "-Wno-deprecated"; }; };
 		166ACED814346A8100B28AF6 /* SocializeFullUserJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ACED614346A8000B28AF6 /* SocializeFullUserJSONFormatter.m */; };
 		166ACEDC14346B6500B28AF6 /* SocializeFullUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ACEDA14346B6500B28AF6 /* SocializeFullUser.m */; };
 		166ACEDF14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 166ACEDE14347A3400B28AF6 /* SocializeFullUserJSONFormatterTests.m */; };
@@ -378,6 +378,11 @@
 		1854043514AA851500EAA6AF /* SocializeActivityDetailsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1854043314AA851500EAA6AF /* SocializeActivityDetailsView.h */; };
 		185BEF1814844E9C00D5A56A /* socialize-navbar-button-blue-bg-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1614844E9A00D5A56A /* socialize-navbar-button-blue-bg-inactive.png */; };
 		185BEF1914844E9C00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */; };
+		1861E09114ACFA7300B7E92A /* ActivityDetailsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1861E09014ACFA7300B7E92A /* ActivityDetailsViewControllerTests.m */; };
+		1861E09214AD5C3300B7E92A /* SocializeActivityDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1854042714AA306B00EAA6AF /* SocializeActivityDetailsViewController.m */; };
+		1861E09314AD5C3300B7E92A /* SocializeActivityDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1854042814AA306B00EAA6AF /* SocializeActivityDetailsViewController.h */; };
+		1861E09414AD5C4A00B7E92A /* SocializeActivityDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1854043214AA851500EAA6AF /* SocializeActivityDetailsView.m */; };
+		1861E09514AD5C4A00B7E92A /* SocializeActivityDetailsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1854043314AA851500EAA6AF /* SocializeActivityDetailsView.h */; };
 		1880193A1497B85F00146C99 /* SocializeDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F3C1496D79300B659BE /* SocializeDeviceToken.m */; };
 		1880193E1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1880193D1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m */; };
 		188019401497BD8500146C99 /* SocializeDeviceTokenJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F381496D68400B659BE /* SocializeDeviceTokenJSONFormatter.m */; };
@@ -2108,6 +2113,8 @@
 		1854043314AA851500EAA6AF /* SocializeActivityDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityDetailsView.h; path = Classes/SocializeActivityDetailsView.h; sourceTree = "<group>"; };
 		185BEF1614844E9A00D5A56A /* socialize-navbar-button-blue-bg-inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-blue-bg-inactive.png"; path = "Resources/socialize-navbar-button-blue-bg-inactive.png"; sourceTree = "<group>"; };
 		185BEF1714844E9B00D5A56A /* socialize-navbar-button-blue-bg-inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-blue-bg-inactive@2x.png"; path = "Resources/socialize-navbar-button-blue-bg-inactive@2x.png"; sourceTree = "<group>"; };
+		1861E08F14ACFA7300B7E92A /* ActivityDetailsViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityDetailsViewControllerTests.h; path = "Test Cases/ActivityDetailsViewControllerTests.h"; sourceTree = "<group>"; };
+		1861E09014ACFA7300B7E92A /* ActivityDetailsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityDetailsViewControllerTests.m; path = "Test Cases/ActivityDetailsViewControllerTests.m"; sourceTree = "<group>"; };
 		1880193C1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceTokenJSONFormatterTests.h; path = "Test Cases/SocializeDeviceTokenJSONFormatterTests.h"; sourceTree = "<group>"; };
 		1880193D1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceTokenJSONFormatterTests.m; path = "Test Cases/SocializeDeviceTokenJSONFormatterTests.m"; sourceTree = "<group>"; };
 		188019411497C07A00146C99 /* SocializeDeviceTokenServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceTokenServiceTests.h; path = "Test Cases/SocializeDeviceTokenServiceTests.h"; sourceTree = "<group>"; };
@@ -2936,6 +2943,15 @@
 			name = SocializeObjects;
 			sourceTree = "<group>";
 		};
+		1861E08A14ACF9EC00B7E92A /* Activity Details */ = {
+			isa = PBXGroup;
+			children = (
+				1861E08F14ACFA7300B7E92A /* ActivityDetailsViewControllerTests.h */,
+				1861E09014ACFA7300B7E92A /* ActivityDetailsViewControllerTests.m */,
+			);
+			name = "Activity Details";
+			sourceTree = "<group>";
+		};
 		5C6AAC62137C3F5500AF0219 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -3191,6 +3207,7 @@
 				AA51C14B1471D10700E5C003 /* SocializeBaseViewControllerTests.h */,
 				AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */,
 				AA88E848147DCA7A00123E6F /* SocializeTableView */,
+				1861E08A14ACF9EC00B7E92A /* Activity Details */,
 				AA88E844147DC54600123E6F /* Activity */,
 				AA6B6F211472F795008E885B /* Compose Message */,
 				AA6B6F1F1472F756008E885B /* Comment Details */,
@@ -4192,6 +4209,8 @@
 				AAF7A312149B35D100FE67E9 /* UIImage+Resize.h in Headers */,
 				AAF7A318149B37DC00FE67E9 /* UIImage+ResizeTests.h in Headers */,
 				AA1F1AF014AA9AE000B83792 /* PropertyHelpers.h in Headers */,
+				1861E09314AD5C3300B7E92A /* SocializeActivityDetailsViewController.h in Headers */,
+				1861E09514AD5C4A00B7E92A /* SocializeActivityDetailsView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6097,6 +6116,7 @@
 				AAB127F514995BB3009AF443 /* SocializeSubscriptionServiceTests.m in Sources */,
 				AAB127FA14997745009AF443 /* SocializeSubscriptionFormatterTests.m in Sources */,
 				AAF7A31B149B385800FE67E9 /* UIImage+ResizeTests.m in Sources */,
+				1861E09114ACFA7300B7E92A /* ActivityDetailsViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6343,6 +6363,8 @@
 				AAB127E314992B61009AF443 /* SocializeSubscriptionJSONFormatter.m in Sources */,
 				AAB127E914992FB3009AF443 /* NSDate+Socialize.m in Sources */,
 				AAF7A314149B35D100FE67E9 /* UIImage+Resize.m in Sources */,
+				1861E09214AD5C3300B7E92A /* SocializeActivityDetailsViewController.m in Sources */,
+				1861E09414AD5C4A00B7E92A /* SocializeActivityDetailsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

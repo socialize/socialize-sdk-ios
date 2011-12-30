@@ -31,6 +31,8 @@
 
 @interface SocializeActivityDetailsViewController()<SocializeProfileViewControllerDelegate>
 -(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
+-(void)loadActivityDetailData;
+-(void)updateProfileImage;
 @end
 
 @implementation SocializeActivityDetailsViewController
@@ -45,23 +47,68 @@
 #pragma mark init/dealloc
 - (void)dealloc
 {
+    //we have to release this property manually because it's readyonly
+    [socializeActivity_ release];
+    
     self.activityDetailsView = nil;
-    self.socializeActivity = nil;
     self.profileImageDownloader = nil;
     self.activityViewController = nil;
     self.cache = nil;
     [super dealloc];
 }
--(id)initWithActivity:(id<SocializeActivity>)socializeActivity {
-    //super will automatically init with the right viewcontroller
-    if(self=[super initWithNibName:nil bundle:nil]) {
-        //this property has a custom setter method below
-        self.socializeActivity = socializeActivity;
+
+-(id)init {
+    if(self=[self initWithActivity:nil]) {
+        //any additional 
     }
     return self;
 }
 
-#pragma mark setting socialize activity
+-(id)initWithActivity:(id<SocializeActivity>)socializeActivity {
+    //super will automatically init with the right viewcontroller
+    if(self=[super initWithNibName:nil bundle:nil]) {
+        //using ivar because it's a readonly property
+        [self setSocializeActivity:socializeActivity];
+    }
+    return self;
+}
+
+#pragma mark fetching/setting socialize activity
+-(void)fetchActivityForType:(NSString*)activityType activityID:(NSNumber*)activityID {
+    //comments are currently the only type that exist
+    [self.socialize getCommentById:[activityID intValue]];    
+}
+
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray {
+    if ([dataArray count]){
+        id<SocializeObject> object = [dataArray objectAtIndex:0];
+        if ([object conformsToProtocol:@protocol(SocializeActivity)]){
+            //  do entity saving here. 
+            //  All the entity related information can be fetched here ie stats or name.
+            self.socializeActivity = (id<SocializeActivity>)object;
+            [self loadActivityDetailData];
+        }
+    }
+}
+
+-(void)loadActivityDetailData {
+    if(self.socializeActivity) {
+        NSString *activityText = ((SocializeComment *)self.socializeActivity).text;
+        [self.activityDetailsView updateActivityMessage:activityText 
+                                       withActivityDate:self.socializeActivity.date];
+        [self.activityViewController initializeContent];
+        [self updateProfileImage];
+        //once all the data is being loaded or fetched we can turn off the animation
+        [self stopLoadAnimation];
+    }
+}
+
+-(void)configureDetailsView {
+    self.activityViewController.currentUser = self.socializeActivity.user.objectID;
+    self.activityDetailsView.username = self.socializeActivity.user.userName;
+    self.activityDetailsView.activityTableView = self.activityViewController.view;
+}
+
 -(void)setSocializeActivity:(id<SocializeActivity>)socializeActivity {
     if(socializeActivity_) {
         [socializeActivity_ release];
@@ -69,11 +116,12 @@
     }
     if( socializeActivity) {
         NSAssert([socializeActivity isKindOfClass:[SocializeComment class]], @"socialize activity details only  currently handles of type socialize comment, you passed in %@", [socializeActivity class]);
+        //when the socialize activity changes we should also let the recent activity view controller
+        //know that there is a new user for which to load recent activity.
         socializeActivity_ = [socializeActivity retain];
-        self.activityViewController.currentUser = socializeActivity_.user.objectID;
+        [self configureDetailsView];
     }
 }
-
 
 -(void)updateProfileImage
 {
@@ -95,7 +143,6 @@
     }
 }
 
-
 #pragma mark - activityviewcontroller methods
 - (SocializeActivityViewController*)activityViewController {
     if (activityViewController_ == nil) {
@@ -103,26 +150,15 @@
         activityViewController_.delegate = self;
         activityViewController_.dontShowNames = YES;
         activityViewController_.dontShowDisclosure = NO;
-    }
+    }   
     return activityViewController_;
 }
-
 
 #pragma mark - View lifecycle
 -(void)viewWillAppear:(BOOL)animated
 { 
     [super viewWillAppear:animated];
-    //configure the socialize activity view
-    [self updateProfileImage];
-    self.activityDetailsView.username = self.socializeActivity.user.userName;
-    
-    //set the activity message on the activity view
-    NSString *activityText = ((SocializeComment *)self.socializeActivity).text;
-    [self.activityDetailsView updateActivityMessage:activityText 
-                                   withActivityDate:self.socializeActivity.date];
-    
-    //initialize the data for the recent activity view
-    [self.activityViewController initializeContent];
+    [self loadActivityDetailData];
 }
 -(void)viewWillDisappear:(BOOL)animated
 {   
@@ -136,7 +172,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.activityDetailsView.activityTableView = self.activityViewController.view;
+    [self startLoadAnimationForView:self.activityDetailsView];
+    
 }
 
 - (void)viewDidUnload

@@ -439,7 +439,6 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 
 
 #pragma mark share service stuff
-
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text
 {
     [_shareService createShareForEntity:entity medium:medium text:text];

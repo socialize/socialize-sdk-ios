@@ -1,0 +1,24 @@
+//
+//  ActivityDetailsViewControllerTests.h
+//  SocializeSDK
+//
+//  Created by Isaac Mosquera on 12/29/11.
+//  Copyright (c) 2011 Socialize, Inc. All rights reserved.
+//
+
+#import "SocializeBaseViewControllerTests.h"
+#import "SocializeActivityDetailsViewController.h"
+
+@interface ActivityDetailsViewControllerTests : SocializeBaseViewControllerTests
+
+{
+    
+}
+
+@property (nonatomic, retain) id mockActivityDetailsView;
+@property (nonatomic, retain) id mockSocializeActivity;
+@property (nonatomic, retain) id mockProfileImageDownloader;
+@property (nonatomic, retain) id mockCache;
+@property (nonatomic, retain) id mockActivityViewController;
+
+@end

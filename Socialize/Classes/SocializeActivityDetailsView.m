@@ -13,12 +13,13 @@
 
 #define VIEW_OFFSET_SIZE 20
 #define MIN_RECENT_ACTIVITY_HEIGHT 235
+#define MIN_ACTIVITY_MESSAGE_HEIGHT 50.0f
 #define NO_LOCATION_MSG @"No location associated with this activity."
 #define NO_CITY_MSG @"Could not locate the place name."
 #define NO_COMMENT_MSG @"Could not load activity."
 
 @interface SocializeActivityDetailsView()
--(void) configurateProfileImage;
+-(void) configureProfileImage;
 @end
 
 @implementation SocializeActivityDetailsView
@@ -33,6 +34,7 @@
 @synthesize activityDate;
 @synthesize username;
 @synthesize recentActivityLabel;
+@synthesize dateFormatter;
 #pragma mark init/dealloc methods
 - (void)dealloc
 {
@@ -48,6 +50,7 @@
     [activityDate release]; activityDate = nil;
     [username release]; username = nil;
     [recentActivityLabel release]; recentActivityLabel = nil;
+    [dateFormatter release]; dateFormatter = nil;
     
     [super dealloc];
 }
@@ -83,7 +86,7 @@
     [shadowView release];
 }
 
--(void) configurateProfileImage
+-(void) configureProfileImage
 {
     self.profileImage.layer.cornerRadius = 3.0;
     self.profileImage.layer.masksToBounds = YES;
@@ -94,7 +97,7 @@
 -(void) updateProfileImage: (UIImage* )image
 {
     self.profileImage.image = image;
-    [self configurateProfileImage];
+    [self configureProfileImage];
 }
 
 -(void) setUsername:(NSString*)name {
@@ -113,7 +116,11 @@
 -(CGFloat)getMessageHeight {
     NSString *output = [activityMessageView stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"wrapper\").offsetHeight;"];
     CGFloat height = [output floatValue];
-    return height;
+    if( height < MIN_ACTIVITY_MESSAGE_HEIGHT ) {
+        return MIN_ACTIVITY_MESSAGE_HEIGHT;
+    } else {
+        return height;
+    }
 }
 
 -(void)updateActivityMessage:(NSString *)newActivityMessage withActivityDate:(NSDate *)newActivityDate {
@@ -121,15 +128,21 @@
     self.activityDate = newActivityDate;
     [self updateActivityMessageView];
 }
+
+-(NSDateFormatter *) dateFormatter {
+    if( dateFormatter == nil ) {
+        dateFormatter =  [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"EEEE, MMMM d, yyyy 'at' h:mm a"];      
+    }
+    return dateFormatter;
+}
+
 -(void) updateActivityMessageView {
     HtmlPageCreator* htmlCreator = [[HtmlPageCreator alloc]init];
     
     if([htmlCreator loadTemplate:[[NSBundle mainBundle] pathForResource:@"comment_template_clear" ofType:@"htm"]])
     {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"EEEE, MMMM d, yyyy 'at' h:mm a"];      
-        [htmlCreator addInformation:[dateFormatter stringFromDate:self.activityDate] forTag:@"DATE_TEXT"];
-        [dateFormatter release]; dateFormatter = nil;
+        [htmlCreator addInformation:[self.dateFormatter stringFromDate:self.activityDate] forTag:@"DATE_TEXT"];
         
         if(self.activityMessage)
         {        

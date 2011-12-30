@@ -181,7 +181,7 @@
 
     self.tableView.accessibilityLabel = @"Comments Table View";
 	self.tableView.clipsToBounds = YES;    
-   
+    
     
     self.navigationItem.leftBarButtonItem = self.brandingButton;
     self.navigationItem.rightBarButtonItem = self.closeButton;    
@@ -222,7 +222,11 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         SocializeComment* entryComment = ((SocializeComment*)[self.content objectAtIndex:indexPath.row]);
         
-        SocializeActivityDetailsViewController* details = [[SocializeActivityDetailsViewController alloc] initWithActivity:entryComment];
+        /* make sure this get's put back into live code 
+        SocializeActivityDetailsViewController* details = [[SocializeActivityDetailsViewController alloc] initWithActivity:entryComment]; */
+        //testing the fetch mechanism
+        SocializeActivityDetailsViewController* details = [[SocializeActivityDetailsViewController alloc]init];
+        [details fetchActivityForType:@"" activityID:[NSNumber numberWithInt:entryComment.objectID]];
         details.title = [NSString stringWithFormat: @"%d of %d", indexPath.row + 1, [self.content count]];
 
         [_cache stopOperations];

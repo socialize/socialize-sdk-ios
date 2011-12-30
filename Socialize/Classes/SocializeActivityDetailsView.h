@@ -22,6 +22,7 @@
     NSString*                   activityMessage;
     NSDate*                     activityDate;
     NSString*                   username;
+    NSDateFormatter*            dateFormatter;
 }
 
 @property (nonatomic, retain) IBOutlet UIWebView*       activityMessageView; 
@@ -35,6 +36,7 @@
 @property (nonatomic, retain) NSString*                 activityMessage;
 @property (nonatomic, retain) NSDate*                   activityDate;
 @property (nonatomic, retain) NSString*                 username;
+@property (nonatomic, retain) NSDateFormatter*          dateFormatter;
 
 -(void) updateProfileImage: (UIImage* )image;
 -(void) updateActivityMessageView;
