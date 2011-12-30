@@ -10,8 +10,6 @@
 #import "SocializeDeviceToken.h"
 #import "Socialize.h"
 
-
-
 #define SOCIALIZE_USER_DEVICE_METHOD @"user/device/"
 
 @implementation SocializeDeviceTokenService
@@ -25,7 +23,10 @@
 -(void)registerDeviceTokens:(NSArray *) tokens {
     NSMutableArray *params = [NSMutableArray array];
     for ( NSString *token in tokens ) {
-        NSDictionary *deviceToken = [NSDictionary dictionaryWithObject:token forKey:@"device_token"];
+        NSDictionary *deviceToken = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     token, @"device_token",
+                                     @"iOS", @"device_type",
+                                     nil];
         [params addObject:deviceToken];
        
     }
@@ -74,6 +75,11 @@
 -(void)registerDeviceTokenString:(NSString *)deviceToken {
     [self registerDeviceTokens:[NSArray arrayWithObject:deviceToken]];
 }
+
+-(void)startTimerWithBlock:(BKTimerBlock)timerBlock {
+    self.registerDeviceTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 block:timerBlock repeats:YES];
+}
+
 -(void)registerDeviceToken:(NSString *)deviceToken persistent:(BOOL)isPersistent {
     //if it is persistent, we'll create a timer that'll keep trying to persist the key until it reaches success
     deviceToken = [deviceToken uppercaseString];
@@ -81,7 +87,7 @@
         BKTimerBlock timerBlock = ^(NSTimeInterval time) {
             [self registerDeviceTokensWithTimer:deviceToken];
         };
-        self.registerDeviceTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 block:timerBlock repeats:YES];
+        [self startTimerWithBlock:timerBlock];
     } else {
         //execute timerblock directly since we don't need to add it to a timer
         [self registerDeviceTokenString:deviceToken];

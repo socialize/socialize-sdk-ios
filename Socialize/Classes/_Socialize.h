@@ -103,6 +103,10 @@ otherwise you will get a failure.
  */
 -(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
 
++ (BOOL)isSocializeNotification:(NSDictionary*)userInfo;
+
++ (BOOL)handleSocializeNotification:(NSDictionary*)userInfo;
+
 /**
  Provide access to the entity loader block
  

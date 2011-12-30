@@ -22,6 +22,7 @@
 #import "SocializeSubscriptionService.h"
 #import "Facebook+Socialize.h"
 #import "NSTimer+BlocksKit.h"
+#import "SocializeNotificationHandler.h"
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"
@@ -45,7 +46,6 @@
 @synthesize subscriptionService = _subscriptionService;
 static Socialize *_sharedSocialize = nil;
 static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
-
 
 + (void)initialize {
     if (self == [Socialize class]) {
@@ -183,6 +183,14 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     return [defaults valueForKey:SOCIALIZE_APPLICATION_LINK];
+}
+
++ (BOOL)isSocializeNotification:(NSDictionary*)userInfo {
+    return [SocializeNotificationHandler isSocializeNotification:userInfo];
+}
+
++ (BOOL)handleSocializeNotification:(NSDictionary*)userInfo {
+    return [[SocializeNotificationHandler sharedNotificationHandler] handleSocializeNotification:userInfo];
 }
 
 #pragma mark authentication info

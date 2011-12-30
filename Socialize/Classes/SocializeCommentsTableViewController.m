@@ -204,6 +204,9 @@
 
 - (void)postCommentViewController:(SocializePostCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
     [self insertContentAtHead:[NSArray arrayWithObject:comment]];
+    
+    self.subscribedButton.selected = !postCommentViewController.dontSubscribeToDiscussion;
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 

@@ -56,7 +56,6 @@
     }];
 #endif
     
-    
     return YES;
 }
 
@@ -99,6 +98,14 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {    
     return [Socialize handleOpenURL:url];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    if ([Socialize handleSocializeNotification:userInfo]) {
+        return;
+    }
+    
+    // Nonsocialize notification handling goes here
 }
 
 - (void)dealloc
