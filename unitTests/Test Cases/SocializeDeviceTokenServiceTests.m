@@ -10,6 +10,11 @@
 #import "SocializeDeviceToken.h"
 #import <OCMock/OCMock.h>
 
+@interface SocializeDeviceTokenService ()
+-(void)startTimerWithBlock:(BKTimerBlock)timerBlock;
+@end
+
+
 @implementation SocializeDeviceTokenServiceTests
 
 @synthesize deviceTokenService = deviceTokenService_;
@@ -75,7 +80,10 @@
     id mockString = [OCMockObject mockForClass:[NSString class]];
     [[mockString expect] uppercaseString];
     
-    [self.deviceTokenService registerDeviceToken:mockString persistent:YES];
+    // timer should start
+    [[self.partialDeviceTokenService expect] startTimerWithBlock:OCMOCK_ANY];
+    
+    [self.partialDeviceTokenService registerDeviceToken:mockString persistent:YES];
     GHAssertNotNil(self.deviceTokenService.registerDeviceTimer,@"the register service is nil when it should be initialized");
     [mockString verify];
 }    
