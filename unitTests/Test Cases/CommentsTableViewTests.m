@@ -197,10 +197,18 @@
     [cell release];
 }
 
-- (void)testPostingCommentInsertsOnTop {
+- (void)testPostingCommentInsertsOnTopAndUpdatesSubscribedButton {
     id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
     [[(id)self.commentsTableViewController expect] insertContentAtHead:[NSArray arrayWithObject:mockComment]];
-    [self.commentsTableViewController postCommentViewController:nil didCreateComment:mockComment];
+    
+    // Stub a post comment where the user chose not to subscribe to the discussion
+    id mockPostCommentViewController = [OCMockObject mockForClass:[SocializePostCommentViewController class]];
+    [[[mockPostCommentViewController stub] andReturnBool:YES] dontSubscribeToDiscussion];
+    
+    // Subscribed button should turn off
+    [[self.mockSubscribedButton expect] setSelected:NO];
+    
+    [self.commentsTableViewController postCommentViewController:mockPostCommentViewController didCreateComment:mockComment];
 }
 
 - (void)testThatPressingEnabledSubscribedButtonCancelsSubscription {
