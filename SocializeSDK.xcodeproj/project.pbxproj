@@ -1642,6 +1642,8 @@
 		AAF1773D1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */; };
 		AAF3BC7614880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF3BC7514880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAF3BC7714880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF3BC7514880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAF559DC14AE51EF00565248 /* DebugUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF559DB14AE51EF00565248 /* DebugUtil.m */; };
+		AAF559DD14AE51EF00565248 /* DebugUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF559DB14AE51EF00565248 /* DebugUtil.m */; };
 		AAF7A311149B35D100FE67E9 /* UIImage+Resize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF7A30F149B35D000FE67E9 /* UIImage+Resize.h */; };
 		AAF7A312149B35D100FE67E9 /* UIImage+Resize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF7A30F149B35D000FE67E9 /* UIImage+Resize.h */; };
 		AAF7A313149B35D100FE67E9 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF7A310149B35D000FE67E9 /* UIImage+Resize.m */; };
@@ -2602,6 +2604,7 @@
 		AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthInfoTableViewCell.xib; path = Resources/SocializeAuthInfoTableViewCell.xib; sourceTree = "<group>"; };
 		AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthTableViewCell.xib; path = Resources/SocializeAuthTableViewCell.xib; sourceTree = "<group>"; };
 		AAF3BC7514880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePostCommentViewControllerDelegate.h; path = Classes/SocializePostCommentViewControllerDelegate.h; sourceTree = "<group>"; };
+		AAF559DB14AE51EF00565248 /* DebugUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugUtil.m; sourceTree = "<group>"; };
 		AAF7A30F149B35D000FE67E9 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resize.h"; path = "Classes/UIImage+Resize.h"; sourceTree = "<group>"; };
 		AAF7A310149B35D000FE67E9 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resize.m"; path = "Classes/UIImage+Resize.m"; sourceTree = "<group>"; };
 		AAF7A315149B37DC00FE67E9 /* UIImage+ResizeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ResizeTests.h"; path = "Test Cases/UIImage+ResizeTests.h"; sourceTree = "<group>"; };
@@ -3570,6 +3573,7 @@
 				AA369FB5146C50A700E15AA4 /* UIDevice+IdentifierAddition.h */,
 				AA369FB6146C50A700E15AA4 /* UIDevice+IdentifierAddition.m */,
 				AA06B68B148EE39E00D084D4 /* DebugUtil.h */,
+				AAF559DB14AE51EF00565248 /* DebugUtil.m */,
 			);
 			name = Misc;
 			path = Socialize/Misc;
@@ -6025,6 +6029,7 @@
 				AAB127E814992FB3009AF443 /* NSDate+Socialize.m in Sources */,
 				AAF7A313149B35D100FE67E9 /* UIImage+Resize.m in Sources */,
 				AA047F9B14AD5AA20047D596 /* SocializeNotificationHandler.m in Sources */,
+				AAF559DC14AE51EF00565248 /* DebugUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6341,6 +6346,7 @@
 				AAB127E914992FB3009AF443 /* NSDate+Socialize.m in Sources */,
 				AAF7A314149B35D100FE67E9 /* UIImage+Resize.m in Sources */,
 				AA047F9C14AD5AA20047D596 /* SocializeNotificationHandler.m in Sources */,
+				AAF559DD14AE51EF00565248 /* DebugUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
