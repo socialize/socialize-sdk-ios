@@ -47,9 +47,8 @@
 #pragma mark init/dealloc
 - (void)dealloc
 {
-    //we have to release this property manually because it's readyonly
-    [socializeActivity_ release];
     
+    self.socializeActivity = nil;
     self.activityDetailsView = nil;
     self.profileImageDownloader = nil;
     self.activityViewController = nil;
@@ -110,15 +109,10 @@
 }
 
 -(void)setSocializeActivity:(id<SocializeActivity>)socializeActivity {
-    if(socializeActivity_) {
-        [socializeActivity_ release];
-        socializeActivity_ = nil;
-    }
-    if( socializeActivity) {
-        NSAssert([socializeActivity isKindOfClass:[SocializeComment class]], @"socialize activity details only  currently handles of type socialize comment, you passed in %@", [socializeActivity class]);
+    NonatomicRetainedSetToFrom(socializeActivity_, socializeActivity);
+    if( socializeActivity_ ) {
         //when the socialize activity changes we should also let the recent activity view controller
         //know that there is a new user for which to load recent activity.
-        socializeActivity_ = [socializeActivity retain];
         [self configureDetailsView];
     }
 }

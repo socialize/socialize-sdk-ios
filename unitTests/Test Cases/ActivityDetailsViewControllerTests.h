@@ -14,7 +14,8 @@
 {
     
 }
-
+@property (nonatomic, retain) SocializeActivityDetailsViewController* activityDetailsViewController;
+@property (nonatomic, retain) id partialActivityDetailsViewController;
 @property (nonatomic, retain) id mockActivityDetailsView;
 @property (nonatomic, retain) id mockSocializeActivity;
 @property (nonatomic, retain) id mockProfileImageDownloader;

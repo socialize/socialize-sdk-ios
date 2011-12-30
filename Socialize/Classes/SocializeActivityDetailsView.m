@@ -10,13 +10,15 @@
 #import "HtmlPageCreator.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIView+Layout.h"
+#import "PropertyHelpers.h"
 
-#define VIEW_OFFSET_SIZE 20
-#define MIN_RECENT_ACTIVITY_HEIGHT 235
-#define MIN_ACTIVITY_MESSAGE_HEIGHT 50.0f
-#define NO_LOCATION_MSG @"No location associated with this activity."
-#define NO_CITY_MSG @"Could not locate the place name."
-#define NO_COMMENT_MSG @"Could not load activity."
+CGFloat const kActivityDetailViewOffset = 20;
+CGFloat const kMinRecentActivityHeight = 20;
+CGFloat const kMinActivityMessageHeight = 50;
+
+NSString * const kNoLocationMessage = @"No location associated with this activity.";
+NSString * const kNoCityMessage = @"Could not locate the place name.";
+NSString * const kNoCommentMessage = @"Could not load activity.";
 
 @interface SocializeActivityDetailsView()
 -(void) configureProfileImage;
@@ -38,7 +40,6 @@
 #pragma mark init/dealloc methods
 - (void)dealloc
 {
-
     activityMessageView.delegate = nil;
     [activityMessageView release]; activityMessageView = nil;
     [profileNameButton release]; profileNameButton = nil;
@@ -101,23 +102,19 @@
 }
 
 -(void) setUsername:(NSString*)name {
-    [username release];
-    username = nil;
-    
-    if (name) {
-        username = [name retain];
+    NonatomicRetainedSetToFrom(username, name);
+    if(username) {
+        [self.profileNameButton setTitle:username forState:UIControlStateNormal];
+        self.recentActivityLabel.text = [NSString stringWithFormat:@"%@'s Recent Activity", username];
     }
-    
-    [self.profileNameButton setTitle:username forState:UIControlStateNormal];
-    self.recentActivityLabel.text = [NSString stringWithFormat:@"%@'s Recent Activity", username];
 }
 
 #pragma mark activity message method webview
 -(CGFloat)getMessageHeight {
     NSString *output = [activityMessageView stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"wrapper\").offsetHeight;"];
     CGFloat height = [output floatValue];
-    if( height < MIN_ACTIVITY_MESSAGE_HEIGHT ) {
-        return MIN_ACTIVITY_MESSAGE_HEIGHT;
+    if( height < kMinRecentActivityHeight ) {
+        return kMinRecentActivityHeight;
     } else {
         return height;
     }
@@ -152,8 +149,7 @@
         }
         else
         {
-            [htmlCreator addInformation:NO_COMMENT_MSG 
-                                 forTag: @"COMMENT_TEXT"];    
+            [htmlCreator addInformation:kNoCommentMessage forTag: @"COMMENT_TEXT"];    
         }
         
         [self.activityMessageView loadHTMLString:htmlCreator.html baseURL:nil];
@@ -186,7 +182,7 @@
     [self.recentActivityView positionBelowView:self.activityMessageView];
     
     // fill out the remaining view with the recent activity view
-    [self.recentActivityView fillRestOfView:self minSize:CGSizeMake(self.frame.size.width,MIN_RECENT_ACTIVITY_HEIGHT)];
+    [self.recentActivityView fillRestOfView:self minSize:CGSizeMake(self.frame.size.width,kMinRecentActivityHeight)];
     
     //adjust all the activity subviews
     [self layoutRecentActivitySubviews];
