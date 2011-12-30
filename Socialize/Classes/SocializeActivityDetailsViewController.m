@@ -39,20 +39,15 @@
 
 @synthesize activityDetailsView = activityDetailsView_;
 @synthesize socializeActivity = socializeActivity_;
-@synthesize profileImageDownloader = profileImageDownloader_;
 @synthesize activityViewController = activityViewController_;
-@synthesize cache = cache_;
 
 
 #pragma mark init/dealloc
 - (void)dealloc
 {
-    
     self.socializeActivity = nil;
     self.activityDetailsView = nil;
-    self.profileImageDownloader = nil;
     self.activityViewController = nil;
-    self.cache = nil;
     [super dealloc];
 }
 
@@ -119,20 +114,15 @@
 
 -(void)updateProfileImage
 {
-    if(self.socializeActivity.user.smallImageUrl != nil && [self.socializeActivity.user.smallImageUrl length]>0)
-    {
-        UIImage* image = [self.cache imageFromCache:self.socializeActivity.user.smallImageUrl];
-        if(image)
-        {
+    if(self.socializeActivity.user.smallImageUrl && [self.socializeActivity.user.smallImageUrl length]>0){
+        UIImage* image = [self.imagesCache imageFromCache:self.socializeActivity.user.smallImageUrl];
+        if(image) {
             [self.activityDetailsView updateProfileImage: image];
-        }
-        else
-        {
+        } else {
             CompleteBlock complete = [[^(ImagesCache* imgs){
                 [self.activityDetailsView updateProfileImage: [imgs imageFromCache:self.socializeActivity.user.smallImageUrl]];
             }copy] autorelease];
-            
-            [self.cache loadImageFromUrl:self.socializeActivity.user.smallImageUrl withLoader:[UrlImageLoader class] andCompleteAction:complete];
+            [self.imagesCache loadImageFromUrl:self.socializeActivity.user.smallImageUrl withLoader:[UrlImageLoader class] andCompleteAction:complete];
         }
     }
 }
@@ -157,10 +147,7 @@
 -(void)viewWillDisappear:(BOOL)animated
 {   
     [super viewWillDisappear:animated];
-    [self.cache stopOperations];
-    
-    [self.profileImageDownloader cancelDownload];
-    self.profileImageDownloader = nil;
+    [self.imagesCache stopOperations];
 }
 
 - (void)viewDidLoad

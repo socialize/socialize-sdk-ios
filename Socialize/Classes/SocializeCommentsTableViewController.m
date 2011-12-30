@@ -233,7 +233,6 @@
         details.title = [NSString stringWithFormat: @"%d of %d", indexPath.row + 1, [self.content count]];
 
         [_cache stopOperations];
-        details.cache = _cache;
         
         UIBarButtonItem * backLeftItem = [self createLeftNavigationButtonWithCaption:@"Comments"];
         details.navigationItem.leftBarButtonItem = backLeftItem;	

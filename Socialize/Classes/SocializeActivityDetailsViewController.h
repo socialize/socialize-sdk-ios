@@ -29,8 +29,6 @@
 
 @property (nonatomic, retain) IBOutlet SocializeActivityDetailsView*     activityDetailsView;
 @property (nonatomic, retain) id<SocializeActivity> socializeActivity;
-@property (nonatomic, retain) URLDownload* profileImageDownloader;
-@property (nonatomic, retain) ImagesCache*  cache;
 /** this view controller shows all the recent activity for a given user */
 @property (nonatomic, retain) SocializeActivityViewController*  activityViewController;
 

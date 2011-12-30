@@ -10,6 +10,7 @@
 #import "SocializeCommentDetailsViewController.h"
 #import "Socialize.h"
 #import "SocializeCommentsService.h"
+#import "SocializeActivityDetailsViewController.h"
 
 static SocializeNotificationHandler *sharedNotificationHandler;
 
@@ -78,8 +79,7 @@ static SocializeNotificationHandler *sharedNotificationHandler;
 }
 
 - (void)showActivityForComment:(id<SocializeComment>)comment {
-    self.activityDetailsViewController = [[[SocializeCommentDetailsViewController alloc] init] autorelease];
-    self.activityDetailsViewController.comment = comment;
+    self.activityDetailsViewController = [[[SocializeActivityDetailsViewController alloc] init] autorelease];
     self.activityDetailsViewController.view.frame = CGRectMake(0, 20, 320, 460);
     [self.displayWindow addSubview:self.activityDetailsViewController.view];
 }

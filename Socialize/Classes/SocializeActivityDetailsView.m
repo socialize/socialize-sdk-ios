@@ -168,7 +168,6 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     [self layoutActivityDetailsSubviews];
 }
 
-
 #pragma mark layout logic
 -(void) layoutActivityDetailsSubviews
 {    
