@@ -13,7 +13,7 @@
 #import "PropertyHelpers.h"
 
 CGFloat const kActivityDetailViewOffset = 20;
-CGFloat const kMinRecentActivityHeight = 20;
+CGFloat const kMinRecentActivityHeight = 200;
 CGFloat const kMinActivityMessageHeight = 50;
 
 NSString * const kNoLocationMessage = @"No location associated with this activity.";
@@ -113,8 +113,8 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 -(CGFloat)getMessageHeight {
     NSString *output = [activityMessageView stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"wrapper\").offsetHeight;"];
     CGFloat height = [output floatValue];
-    if( height < kMinRecentActivityHeight ) {
-        return kMinRecentActivityHeight;
+    if( height < kMinActivityMessageHeight ) {
+        return kMinActivityMessageHeight;
     } else {
         return height;
     }

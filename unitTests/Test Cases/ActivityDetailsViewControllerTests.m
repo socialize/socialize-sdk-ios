@@ -27,17 +27,22 @@
 @synthesize mockCache = mockCache_;
 @synthesize mockActivityViewController = mockActivityViewController_;
 
++ (SocializeBaseViewController*)createController {
+    return [[[SocializeActivityDetailsViewController alloc] init] autorelease];
+}
+
 -(void)setUp 
 {
-    self.activityDetailsViewController = [[SocializeActivityDetailsViewController alloc] init];
-    self.partialActivityDetailsViewController = [OCMockObject partialMockForObject:self.activityDetailsViewController];
+    [super setUp];
+    self.activityDetailsViewController = (SocializeActivityDetailsViewController *)self.origViewController;
+    self.partialActivityDetailsViewController = (SocializeActivityDetailsViewController *)self.viewController;
     self.mockActivityDetailsView = [OCMockObject mockForClass:[SocializeActivityDetailsView class]];
     self.mockSocializeActivity = [OCMockObject mockForClass:[SocializeActivityDetailsView class]]; 
     self.mockProfileImageDownloader = [OCMockObject mockForClass:[URLDownload class]];
     
     self.mockCache = [OCMockObject mockForClass:[ImagesCache class]];
     self.mockActivityViewController = [OCMockObject mockForClass:[SocializeActivityDetailsView class]];
-    [super setUp];
+
 }
 
 -(void)tearDown
@@ -61,12 +66,26 @@
 }
 
 -(void)testFetchActivityForType {
+    //setup the ns number that is passed into the method
     id mockActivityId = [OCMockObject mockForClass:[NSNumber class]];
     [[[mockActivityId expect] andReturnInteger:0] intValue];
     //make sure that this method makes the call to get a comment
-    [[self.mockSocialize expect] getCommentById:0];   
+    [[self.mockSocialize expect] getCommentById:0];     
     //there is current restrictions on activity type so we'll pass in ocmock any.  we should add constraints
     [self.activityDetailsViewController fetchActivityForType:OCMOCK_ANY activityID:mockActivityId];       
+}
+-(void)testDidFetchElements {
+    //this is the array that gets passed back from the server
+    NSArray *activities = [NSArray arrayWithObject:self.mockSocializeActivity];
+    
+    //we need to make that the activity data is loaded when an activity comes back from the server
+    [[self.partialActivityDetailsViewController expect] loadActivityDetailData];
+    
+    [self.activityDetailsViewController service:OCMOCK_ANY didFetchElements:activities];
+    
+    GHAssertTrue(self.activityDetailsViewController.socializeActivity == self.mockSocializeActivity, 
+                 @"the socialize activity was not set to the instance variable when it returned from the server");
+    
 }
 -(void) testProfileButtonTapped {
     /*

@@ -115,15 +115,13 @@
 -(void)updateProfileImage
 {
     if(self.socializeActivity.user.smallImageUrl && [self.socializeActivity.user.smallImageUrl length]>0){
-        UIImage* image = [self.imagesCache imageFromCache:self.socializeActivity.user.smallImageUrl];
-        if(image) {
-            [self.activityDetailsView updateProfileImage: image];
-        } else {
-            CompleteBlock complete = [[^(ImagesCache* imgs){
-                [self.activityDetailsView updateProfileImage: [imgs imageFromCache:self.socializeActivity.user.smallImageUrl]];
-            }copy] autorelease];
-            [self.imagesCache loadImageFromUrl:self.socializeActivity.user.smallImageUrl withLoader:[UrlImageLoader class] andCompleteAction:complete];
-        }
+        
+        [self loadImageAtURL:self.socializeActivity.user.smallImageUrl
+                startLoading:^{}
+                 stopLoading:^{}
+                  completion:^(UIImage *image) {
+                      [self.activityDetailsView updateProfileImage: image];
+                }];
     }
 }
 
