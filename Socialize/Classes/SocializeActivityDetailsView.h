@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-
+@class HtmlPageCreator;
 @interface SocializeActivityDetailsView : UIScrollView <UIWebViewDelegate> {
 @private
     IBOutlet UIWebView*         activityMessageView;
@@ -23,6 +23,7 @@
     NSDate*                     activityDate;
     NSString*                   username;
     NSDateFormatter*            dateFormatter;
+    HtmlPageCreator*            htmlPageCreator;
 }
 
 @property (nonatomic, retain) IBOutlet UIWebView*       activityMessageView; 
@@ -37,6 +38,7 @@
 @property (nonatomic, retain) NSDate*                   activityDate;
 @property (nonatomic, retain) NSString*                 username;
 @property (nonatomic, retain) NSDateFormatter*          dateFormatter;
+@property (nonatomic, retain) HtmlPageCreator*          htmlPageCreator;
 
 -(void) updateProfileImage: (UIImage* )image;
 -(void) updateActivityMessageView;

@@ -37,21 +37,24 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 @synthesize username;
 @synthesize recentActivityLabel;
 @synthesize dateFormatter;
+@synthesize htmlPageCreator;
+
 #pragma mark init/dealloc methods
 - (void)dealloc
 {
     activityMessageView.delegate = nil;
-    [activityMessageView release]; activityMessageView = nil;
-    [profileNameButton release]; profileNameButton = nil;
-    [profileImage release]; profileImage = nil;
-    [recentActivityView release]; recentActivityView = nil;
-    [activityTableView release]; activityTableView = nil;
-    [recentActivityHeaderImage release]; recentActivityHeaderImage = nil;
-    [activityMessage release]; activityMessage = nil;
-    [activityDate release]; activityDate = nil;
-    [username release]; username = nil;
-    [recentActivityLabel release]; recentActivityLabel = nil;
-    [dateFormatter release]; dateFormatter = nil;
+    [activityMessageView release];
+    [profileNameButton release];
+    [profileImage release]; 
+    [recentActivityView release]; 
+    [activityTableView release]; 
+    [recentActivityHeaderImage release];
+    [activityMessage release];
+    [activityDate release]; 
+    [username release]; 
+    [recentActivityLabel release];
+    [dateFormatter release]; 
+    [htmlPageCreator release]; 
     
     [super dealloc];
 }
@@ -87,16 +90,15 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     [shadowView release];
 }
 
--(void) configureProfileImage
-{
+-(void) configureProfileImage {
     self.profileImage.layer.cornerRadius = 3.0;
     self.profileImage.layer.masksToBounds = YES;
     self.profileImage.layer.borderWidth = 1.0;
     
     [self addShadowForView:self.profileImage];
 }
--(void) updateProfileImage: (UIImage* )image
-{
+
+-(void) updateProfileImage: (UIImage* )image {
     self.profileImage.image = image;
     [self configureProfileImage];
 }
@@ -134,35 +136,23 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     return dateFormatter;
 }
 
--(void) updateActivityMessageView {
-    HtmlPageCreator* htmlCreator = [[HtmlPageCreator alloc]init];
-    
-    if([htmlCreator loadTemplate:[[NSBundle mainBundle] pathForResource:@"comment_template_clear" ofType:@"htm"]])
-    {
-        [htmlCreator addInformation:[self.dateFormatter stringFromDate:self.activityDate] forTag:@"DATE_TEXT"];
-        
-        if(self.activityMessage)
-        {        
-            NSMutableString* activityText = [[[NSMutableString alloc] initWithString:self.activityMessage] autorelease];       
-            [activityText replaceOccurrencesOfString: @"\n" withString:@"<br>" options:NSLiteralSearch range:NSMakeRange(0, [activityText length])];
-            [htmlCreator addInformation:activityText forTag: @"COMMENT_TEXT"];
-        }
-        else
-        {
-            [htmlCreator addInformation:kNoCommentMessage forTag: @"COMMENT_TEXT"];    
-        }
-        
-        [self.activityMessageView loadHTMLString:htmlCreator.html baseURL:nil];
+-(HtmlPageCreator *) htmlCreator {
+    if( htmlPageCreator == nil ) {
+        htmlPageCreator = [[HtmlPageCreator alloc]init];
     }
-    else
-    {
-        // Could not create dynamic html for comment
-        [self.activityMessageView loadHTMLString:self.activityMessage baseURL:nil];
-    }
-    [htmlCreator release];
-    //we shouldn't do the layout here, we need to wait for webview to finish loading -- see delegate methods
-} 
+    return htmlPageCreator;
+}
 
+-(void) updateActivityMessageView {
+    [self.htmlCreator loadTemplate:[[NSBundle mainBundle] pathForResource:@"comment_template_clear" ofType:@"htm"]];
+    [self.htmlCreator addInformation:[self.dateFormatter stringFromDate:self.activityDate] forTag:@"DATE_TEXT"];
+        
+    NSMutableString* activityText = [[[NSMutableString alloc] initWithString:self.activityMessage] autorelease];       
+    [activityText replaceOccurrencesOfString: @"\n" withString:@"<br>" options:NSLiteralSearch range:NSMakeRange(0, [activityText length])];
+    [self.htmlCreator addInformation:activityText forTag: @"COMMENT_TEXT"];
+    [self.activityMessageView loadHTMLString:htmlPageCreator.html baseURL:nil];
+    //we shouldn't do the layout here, we need to wait for webview to finish loading -- see delegate methods
+}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self layoutActivityDetailsSubviews];
@@ -197,7 +187,9 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     CGFloat activityHeight = self.recentActivityView.frame.size.height - self.recentActivityHeaderImage.frame.size.height;
     CGRect newActivityFrame = self.activityTableView.frame;
     newActivityFrame.size.height = activityHeight;
+    NSLog(@"new activity frame %@", newActivityFrame);
     self.activityTableView.frame = newActivityFrame;
+    
 }
 -(void) setActivityTableView:(UIView *)newActivityTableView {
     if( activityTableView ) {

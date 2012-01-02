@@ -138,6 +138,7 @@
     [self.activityDetailsViewController viewWillAppear:YES];
 }
 -(void)testViewDidLoad {
+    [[self.partialActivityDetailsViewController expect] configureDetailsView];
     [[self.partialActivityDetailsViewController expect]  startLoadAnimationForView:self.mockActivityDetailsView];  
     [self.activityDetailsViewController viewDidLoad];
 }

@@ -387,6 +387,7 @@
 		1880193E1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1880193D1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m */; };
 		188019401497BD8500146C99 /* SocializeDeviceTokenJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18398F381496D68400B659BE /* SocializeDeviceTokenJSONFormatter.m */; };
 		188019431497C07A00146C99 /* SocializeDeviceTokenServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 188019421497C07A00146C99 /* SocializeDeviceTokenServiceTests.m */; };
+		189596D514B23A2100AC4ECC /* ActivityDetailsViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 189596D414B23A2100AC4ECC /* ActivityDetailsViewTests.m */; };
 		18BD4CF014ACC220000D6FAB /* UIView+Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 18BD4CEE14ACC220000D6FAB /* UIView+Layout.h */; };
 		18BD4CF114ACC220000D6FAB /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD4CEF14ACC220000D6FAB /* UIView+Layout.m */; };
 		18D8EDD1146B162600E9991F /* AuthViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */; };
@@ -2126,6 +2127,8 @@
 		1880193D1497BA1500146C99 /* SocializeDeviceTokenJSONFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceTokenJSONFormatterTests.m; path = "Test Cases/SocializeDeviceTokenJSONFormatterTests.m"; sourceTree = "<group>"; };
 		188019411497C07A00146C99 /* SocializeDeviceTokenServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDeviceTokenServiceTests.h; path = "Test Cases/SocializeDeviceTokenServiceTests.h"; sourceTree = "<group>"; };
 		188019421497C07A00146C99 /* SocializeDeviceTokenServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDeviceTokenServiceTests.m; path = "Test Cases/SocializeDeviceTokenServiceTests.m"; sourceTree = "<group>"; };
+		189596D314B23A2100AC4ECC /* ActivityDetailsViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityDetailsViewTests.h; path = "Test Cases/ActivityDetailsViewTests.h"; sourceTree = "<group>"; };
+		189596D414B23A2100AC4ECC /* ActivityDetailsViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityDetailsViewTests.m; path = "Test Cases/ActivityDetailsViewTests.m"; sourceTree = "<group>"; };
 		18A3C3A5141FD00000003172 /* SocializeUnitTestApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUnitTestApplication.h; sourceTree = "<group>"; };
 		18A3C3A6141FD00000003172 /* SocializeUnitTestApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUnitTestApplication.m; sourceTree = "<group>"; };
 		18BD4CEE14ACC220000D6FAB /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Layout.h"; path = "Classes/UIView+Layout.h"; sourceTree = "<group>"; };
@@ -2962,6 +2965,8 @@
 			children = (
 				1861E08F14ACFA7300B7E92A /* ActivityDetailsViewControllerTests.h */,
 				1861E09014ACFA7300B7E92A /* ActivityDetailsViewControllerTests.m */,
+				189596D314B23A2100AC4ECC /* ActivityDetailsViewTests.h */,
+				189596D414B23A2100AC4ECC /* ActivityDetailsViewTests.m */,
 			);
 			name = "Activity Details";
 			sourceTree = "<group>";
@@ -6147,6 +6152,7 @@
 				AAF7A31B149B385800FE67E9 /* UIImage+ResizeTests.m in Sources */,
 				1861E09114ACFA7300B7E92A /* ActivityDetailsViewControllerTests.m in Sources */,
 				AA047F9F14AD63900047D596 /* SocializeNotificationHandlerTests.m in Sources */,
+				189596D514B23A2100AC4ECC /* ActivityDetailsViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
