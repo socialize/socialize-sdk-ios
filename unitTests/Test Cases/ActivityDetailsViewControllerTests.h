@@ -18,8 +18,7 @@
 @property (nonatomic, retain) id partialActivityDetailsViewController;
 @property (nonatomic, retain) id mockActivityDetailsView;
 @property (nonatomic, retain) id mockSocializeActivity;
-@property (nonatomic, retain) id mockProfileImageDownloader;
-@property (nonatomic, retain) id mockCache;
 @property (nonatomic, retain) id mockActivityViewController;
+@property (nonatomic, retain) id mockSocializeUser;
 
 @end

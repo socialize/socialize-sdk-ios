@@ -410,6 +410,10 @@
            stopLoading:(void(^)())stopLoadingBlock
             completion:(void(^)(UIImage *image))completionBlock {
     
+    if( imageURL == nil ) {
+        //we should return here if the image url is nil
+        return;
+    }
     // Already have it loaded
     UIImage *existing = [self.imagesCache imageFromCache:imageURL];
     if (existing != nil) {

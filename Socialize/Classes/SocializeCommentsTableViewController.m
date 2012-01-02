@@ -28,6 +28,7 @@
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
+-(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment;
 @end
 
 @implementation SocializeCommentsTableViewController
@@ -225,11 +226,8 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         SocializeComment* entryComment = ((SocializeComment*)[self.content objectAtIndex:indexPath.row]);
         
-        /* make sure this get's put back into live code 
-        SocializeActivityDetailsViewController* details = [[SocializeActivityDetailsViewController alloc] initWithActivity:entryComment]; */
-        //testing the fetch mechanism
-        SocializeActivityDetailsViewController* details = [[SocializeActivityDetailsViewController alloc]init];
-        [details fetchActivityForType:@"" activityID:[NSNumber numberWithInt:entryComment.objectID]];
+        SocializeActivityDetailsViewController* details = [self createActivityDetailsViewController:entryComment];
+
         details.title = [NSString stringWithFormat: @"%d of %d", indexPath.row + 1, [self.content count]];
 
         [_cache stopOperations];
@@ -238,8 +236,10 @@
         details.navigationItem.leftBarButtonItem = backLeftItem;	
            
         [self.navigationController pushViewController:details animated:YES];
-        [details release];
     }
+}
+-(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment{
+    return [[[SocializeActivityDetailsViewController alloc] initWithActivity:entryComment] autorelease];
 }
 
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender {

@@ -114,16 +114,13 @@
 
 -(void)updateProfileImage
 {
-    if(self.socializeActivity.user.smallImageUrl && [self.socializeActivity.user.smallImageUrl length]>0){
-        
-        [self loadImageAtURL:self.socializeActivity.user.smallImageUrl
-                startLoading:^{}
-                 stopLoading:^{}
-                  completion:^(UIImage *image) {
-                      [self.activityDetailsView updateProfileImage: image];
-                }];
-    }
-}
+    [self loadImageAtURL:self.socializeActivity.user.smallImageUrl
+            startLoading:^{}
+             stopLoading:^{}
+              completion:^(UIImage *image) {
+                  [self.activityDetailsView updateProfileImage: image];
+            }];
+}   
 
 #pragma mark - activityviewcontroller methods
 - (SocializeActivityViewController*)activityViewController {
@@ -142,22 +139,11 @@
     [super viewWillAppear:animated];
     [self loadActivityDetailData];
 }
--(void)viewWillDisappear:(BOOL)animated
-{   
-    [super viewWillDisappear:animated];
-    [self.imagesCache stopOperations];
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self startLoadAnimationForView:self.activityDetailsView];
-    
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
+    [self startLoadAnimationForView:self.activityDetailsView];   
 }
 
 #pragma mark - profile view methods
