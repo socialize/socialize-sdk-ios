@@ -252,6 +252,12 @@
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
 }
 
+-(void) testDidCreateComment {
+    id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
+    //we have to make sure that if we pass in a valid comment that finish create comments is called
+    [[(id)self.viewController expect] finishCreateComment];
+    [self.postCommentViewController service:nil didCreate:mockComment];
+}
 - (void)postCommentViewController:(SocializePostCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
     [self notify:kGHUnitWaitStatusSuccess];
 }
