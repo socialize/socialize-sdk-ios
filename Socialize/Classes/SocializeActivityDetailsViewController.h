@@ -21,7 +21,6 @@
 {
     
 }
--(IBAction)profileButtonTapped:(id)sender;
 -(id)initWithActivity:(id<SocializeActivity>)socializeActivity;
 -(id)init;
 -(void)fetchActivityForType:(NSString*)activityType activityID:(NSNumber*)activityID;

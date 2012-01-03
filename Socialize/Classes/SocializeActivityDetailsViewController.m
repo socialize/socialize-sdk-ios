@@ -29,8 +29,7 @@
 #define kCenterPointLongitude -122.417908
 
 
-@interface SocializeActivityDetailsViewController()<SocializeProfileViewControllerDelegate>
--(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
+@interface SocializeActivityDetailsViewController()
 -(void)loadActivityDetailData;
 -(void)updateProfileImage;
 @end
@@ -147,25 +146,4 @@
     [self configureDetailsView];
     [self startLoadAnimationForView:self.activityDetailsView];   
 }
-
-#pragma mark - profile view methods
--(IBAction)profileButtonTapped:(id)sender {
-    SocializeProfileViewController *profileViewController = [self getProfileViewControllerForUser:self.socializeActivity.user];
-    profileViewController.navigationItem.leftBarButtonItem = [self createLeftNavigationButtonWithCaption:@"Comment"];
-    [self.navigationController pushViewController:(UIViewController *)profileViewController animated:YES];
-}
-
--(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
-    SocializeProfileViewController *profileViewController = [[[SocializeProfileViewController alloc]initWithUser:user delegate:self] autorelease];
-    return profileViewController;
-}
-
-- (void)profileViewControllerDidCancel:(SocializeProfileViewController*)profileViewController {
-    //implement
-}
-- (void)profileViewControllerDidSave:(SocializeProfileViewController*)profileViewController {
-    //implement
-}
-
-
 @end

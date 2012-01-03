@@ -190,7 +190,6 @@
 										<string key="NSFrame">{{5, 3}, {305, 21}}</string>
 										<reference key="NSSuperview" ref="18623747"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<int key="IBUIContentMode">7</int>
@@ -318,24 +317,6 @@
 						<reference key="destination" ref="39619907"/>
 					</object>
 					<int key="connectionID">130</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">profileButtonTapped:</string>
-						<reference key="source" ref="1043996451"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">96</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">profileButtonTapped:</string>
-						<reference key="source" ref="120941526"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">97</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -583,17 +564,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">SocializeActivityDetailsViewController</string>
 					<string key="superclassName">SocializeBaseViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">profileButtonTapped:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">profileButtonTapped:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">profileButtonTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">activityDetailsView</string>
 						<string key="NS.object.0">SocializeActivityDetailsView</string>
