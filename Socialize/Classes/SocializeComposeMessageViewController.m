@@ -186,6 +186,8 @@
     }
     
     [self.lowerContainer addSubview:newSubview];
+    CGRect lowerFrame = self.lowerContainer.frame;
+    newSubview.frame = CGRectMake(0, 0, lowerFrame.size.width, lowerFrame.size.height);
 }
 
 -(IBAction)activateLocationButtonPressed:(id)sender
@@ -297,7 +299,6 @@
     
     // The lower container is just the same size as the keyboard
     self.lowerContainer.frame = newKeyboardFrame;
-    
     // The upper container covers the rest of our view
     CGFloat upperHeight = self.view.frame.size.height - newKeyboardFrame.size.height;
     CGRect upperFrame = CGRectMake(0, 0, self.view.frame.size.width, upperHeight);
