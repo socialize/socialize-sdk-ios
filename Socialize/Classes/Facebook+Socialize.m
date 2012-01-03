@@ -28,13 +28,22 @@
     }
 }
 
++ (BOOL)alreadyAuthenticated {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"FBAccessTokenKey"] != nil &&
+        [[defaults objectForKey:@"FBExpirationDateKey"] timeIntervalSinceNow] > 0;
+}
+
 + (void)verifyFacebookSettings {
     NSString *facebookAppId = [Socialize facebookAppId];
     NSString *facebookLocalAppId = [Socialize facebookLocalAppId];
     NSAssert(facebookAppId != nil, @"Socialize: Missing facebook app id. Facebook app id is required to authenticate with facebook.");
     NSURL *testURL = [NSURL URLWithString:[SocializeFacebook baseUrlForAppId:facebookAppId localAppId:facebookLocalAppId]];
-    NSAssert([[UIApplication sharedApplication] canOpenURL:testURL], @"Socialize: Application is not configured to open facebook URL scheme! Please ensure you have configured your app to open the facebook URL scheme %@ as described at http://socialize.github.com/socialize-sdk-ios/socialize_ui.html#adding-facebook-support", testURL);
+    if (![self alreadyAuthenticated]) {
+        NSAssert([[UIApplication sharedApplication] canOpenURL:testURL], @"Socialize: External Facebook Authentication required, but application is not configured to open facebook URL scheme! Please ensure you have configured your app to open the facebook URL scheme %@ as described at http://socialize.github.com/socialize-sdk-ios/socialize_ui.html#adding-facebook-support", testURL);
+    }
 }
+
 + (SocializeFacebook*)facebookFromSettings {
     [SocializeFacebook verifyFacebookSettings];
     NSString *facebookAppId = [Socialize facebookAppId];
