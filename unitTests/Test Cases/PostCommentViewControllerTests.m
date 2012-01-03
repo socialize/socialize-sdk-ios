@@ -42,6 +42,7 @@
 
 @interface SocializePostCommentViewController (Tests)
 - (void)dismissSelf;
+- (void)configureFacebookButton;
 @end
 
 @implementation PostCommentViewControllerTests
@@ -252,6 +253,17 @@
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
 }
 
+-(void) testViewDidLoad {
+    [[(id)self.viewController expect] configureFacebookButton];
+    [[(id)self.viewController expect] addSocializeRoundedGrayButtonImagesToButton:OCMOCK_ANY];
+    [self.postCommentViewController viewDidLoad];
+    GHAssertFalse(self.postCommentViewController.dontSubscribeToDiscussion, @"subscribe value was not set to no");
+}
+
+-(void) testSendActivityToFB {
+    [[(id)self.viewController expect] finishCreateComment];
+    [self.postCommentViewController sendActivityToFacebookFeedSucceeded];
+}
 -(void) testDidCreateComment {
     id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
     //we have to make sure that if we pass in a valid comment that finish create comments is called
