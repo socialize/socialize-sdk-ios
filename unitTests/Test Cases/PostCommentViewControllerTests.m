@@ -253,11 +253,15 @@
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
 }
 
+-(void) prepareForViewDidLoad {
+    [[(id)self.postCommentViewController expect] configureFacebookButton];
+    [[(id)self.postCommentViewController expect] addSocializeRoundedGrayButtonImagesToButton:OCMOCK_ANY];
+    [[(id)self.postCommentViewController expect] setDontSubscribeToDiscussion:NO];        
+}
 -(void) testViewDidLoad {
-    [[(id)self.viewController expect] configureFacebookButton];
-    [[(id)self.viewController expect] addSocializeRoundedGrayButtonImagesToButton:OCMOCK_ANY];
+    [super prepareForViewDidLoad];
+    [self prepareForViewDidLoad];
     [self.postCommentViewController viewDidLoad];
-    GHAssertFalse(self.postCommentViewController.dontSubscribeToDiscussion, @"subscribe value was not set to no");
 }
 
 -(void) testSendActivityToFB {

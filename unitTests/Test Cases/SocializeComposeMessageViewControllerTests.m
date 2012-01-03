@@ -19,6 +19,7 @@
 @interface SocializeComposeMessageViewController ()
 - (void)setShareLocation:(BOOL)shareLocation;
 - (void)adjustForOrientation:(UIInterfaceOrientation)orientation;
+- (void)configureDoNotShareLocationButton;
 @end
 
 #define TEST_URL @"test_entity_url"
@@ -189,6 +190,8 @@
 }
 
 - (void)prepareForViewDidLoad {
+    
+    [[(id)self.composeMessageViewController expect] configureDoNotShareLocationButton];
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.mockCancelButton];
     [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockSendButton];
     [[self.mockSendButton expect] setEnabled:NO];
