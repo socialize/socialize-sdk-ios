@@ -67,7 +67,7 @@ const NSInteger UINavigationBarBackgroundImageTag = 1234;
         
         self.translucent = NO;
         aTabBarBackground.tag = bgTag;
-        aTabBarBackground.autoresizingMask = UIViewAutoresizingFlexibleHeight; // Resizes image during rotation
+        aTabBarBackground.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth; // Resizes image during rotation
         
         [self addSubview:aTabBarBackground];
         [self sendSubviewToBack:aTabBarBackground];

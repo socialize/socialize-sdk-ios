@@ -271,6 +271,10 @@
 - (void)testThatPressingEnableSubscribeWhenNotSubscribedReenablesSubscribe {
     [[self.mockLowerContainer expect] addSubview:self.mockSubscribeContainer];
 
+    // Test frame data for lower container
+    CGRect lowerFrame = CGRectMake(0, 0, 320, 180);
+    [[[self.mockLowerContainer stub] andReturnValue:OCMOCK_VALUE(lowerFrame)] frame];
+
     // Preconfigure the subscription status, and expect disable on state because of this
     [[self.mockEnableSubscribeButton expect] setSelected:NO];
     self.postCommentViewController.dontSubscribeToDiscussion = YES;
@@ -278,11 +282,18 @@
     // Expect reenable on state for enable subscribe button
     [[self.mockEnableSubscribeButton expect] setSelected:YES];
 
+    // Frame should be set to exactly match lower container
+    [[self.mockSubscribeContainer expect] setFrame:CGRectMake(0, 0, lowerFrame.size.width, lowerFrame.size.height)];
+
     [self.postCommentViewController enableSubscribeButtonPressed:nil];
     GHAssertFalse(self.postCommentViewController.dontSubscribeToDiscussion, @"Should be subscribed");
 }
 
 - (void)testEnableSubscribeWhenKeyboardShownHidesKeyboardAndChangesLowerContainer {
+    
+    // Test frame data for lower container
+    CGRect lowerFrame = CGRectMake(0, 0, 320, 180);
+    [[[self.mockLowerContainer stub] andReturnValue:OCMOCK_VALUE(lowerFrame)] frame];
     
     // Keyboard is shown
     [[[self.mockCommentTextView expect] andReturnBool:YES] isFirstResponder];
@@ -293,6 +304,9 @@
     // Lower view should update, since it is being exposed
     [[self.mockLowerContainer expect] addSubview:self.mockSubscribeContainer];
 
+    // Frame should be set to exactly match lower container
+    [[self.mockSubscribeContainer expect] setFrame:CGRectMake(0, 0, lowerFrame.size.width, lowerFrame.size.height)];
+    
     [self.postCommentViewController enableSubscribeButtonPressed:nil];
 }
 
