@@ -10,7 +10,6 @@
 #import "UIButton+Socialize.h"
 #import "CommentMapView.h"
 #import "_Socialize.h"
-#import "SocializeLoadingView.h"
 #import "SocializeLocationManager.h"
 #import "UILabel+FormatedText.h"
 #import "UINavigationBarBackground.h"
@@ -148,7 +147,7 @@
     UIImage * highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
     
     [button setBackgroundImage:normalImage forState:UIControlStateNormal];
-	[button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
+	[button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];    
 }
 
 -(void)configureDoNotShareLocationButton

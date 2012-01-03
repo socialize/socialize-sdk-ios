@@ -52,7 +52,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.title = @"New Comment";
     [self configureFacebookButton];
     [self addSocializeRoundedGrayButtonImagesToButton:self.unsubscribeButton];

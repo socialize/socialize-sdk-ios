@@ -217,7 +217,6 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 }
 
 -(void)authenticateWithFacebook {
-    NSLog(@"inside authenticateWithFacebook");
     
     NSString *apiKey = [Socialize apiKey];
     NSString *apiSecret = [Socialize apiSecret];
@@ -448,7 +447,6 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 
 
 #pragma mark share service stuff
-
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text
 {
     [_shareService createShareForEntity:entity medium:medium text:text];
