@@ -19,6 +19,7 @@
 
 @property (nonatomic, retain) Socialize *socialize;
 @property (nonatomic, retain) UINavigationController *navigationController;
+@property (nonatomic, retain) SocializeActivityDetailsViewController *activityDetailsViewController;
 @property (nonatomic, retain) UIWindow *displayWindow;
 
 @end

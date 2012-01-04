@@ -18,11 +18,13 @@ static SocializeNotificationHandler *sharedNotificationHandler;
 @synthesize socialize = socialize_;
 @synthesize navigationController = navigationController_;
 @synthesize displayWindow = displayWindow_;
+@synthesize activityDetailsViewController = activityDetailsViewController_;
 
 - (void)dealloc {
     self.socialize = nil;
     self.navigationController = nil;
     self.displayWindow = nil;
+    self.activityDetailsViewController = nil;
     
     [super dealloc];
 }
@@ -58,18 +60,32 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     return YES;
 }
 
+- (SocializeActivityDetailsViewController*)activityDetailsViewController {
+    if (activityDetailsViewController_ == nil) {
+        activityDetailsViewController_ = [[SocializeActivityDetailsViewController alloc] init];
+    }
+    
+    return activityDetailsViewController_;
+}
+
+- (UINavigationController*)navigationController {
+    if (navigationController_ == nil) {
+        navigationController_ = [[UINavigationController alloc] initWithRootViewController:self.activityDetailsViewController];
+    }
+    return navigationController_;
+}
+
 -(void)showActivityDetailsForActivityType:(NSString*)activityType activityID:(NSNumber*)activityID {
     NSAssert([activityType isEqualToString:@"comment"], @"Socialize Notification is of type new_comments, but activity is not a comment");
     NSAssert(activityID != nil, @"Socialize Notification is Missing Comment ID");
     
-    SocializeActivityDetailsViewController *activityDetailsViewController = [[[SocializeActivityDetailsViewController alloc] init] autorelease];
-    
-    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:activityDetailsViewController] autorelease];
+    self.activityDetailsViewController = nil;
+    self.navigationController = nil;
 
     self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
     [self.displayWindow addSubview:self.navigationController.view];
     
-    [activityDetailsViewController fetchActivityForType:activityType activityID:activityID];
+    [self.activityDetailsViewController fetchActivityForType:activityType activityID:activityID];
 }
 
 - (BOOL)handleSocializeNotification:(NSDictionary*)userInfo {
