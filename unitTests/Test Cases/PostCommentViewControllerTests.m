@@ -35,7 +35,7 @@
 #import "CommentsTableViewCell.h"
 #import "SocializeGeocoderAdapter.h"
 #import "SocializePrivateDefinitions.h"
-
+#import "SocializeSubscriptionService.h"
 
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
@@ -257,7 +257,10 @@
     [[(id)self.postCommentViewController expect] configureFacebookButton];
     [[(id)self.postCommentViewController expect] addSocializeRoundedGrayButtonImagesToButton:OCMOCK_ANY];
     [[(id)self.postCommentViewController expect] setDontSubscribeToDiscussion:NO];        
+    [[self.mockEnableSubscribeButton expect] setEnabled:NO];
+    [[(id)self.postCommentViewController expect] getSubscriptionStatus];
 }
+
 -(void) testViewDidLoad {
     [super prepareForViewDidLoad];
     [self prepareForViewDidLoad];
@@ -344,6 +347,26 @@
     //
     
     [self.postCommentViewController enableSubscribeButtonPressed:nil];
+}
+
+- (void)testThatFetchingSubscriptionWithSubscribedFalseSetsDontSubscribeToDiscussion {
+    
+    // Create a negative subscription
+    id mockSubscription = [OCMockObject mockForProtocol:@protocol(SocializeSubscription)];
+    [[[mockSubscription stub] andReturnBool:NO] subscribed];
+    NSArray *dataArray = [NSArray arrayWithObject:mockSubscription];
+    
+    // Message is from the subscription service class
+    id mockService = [OCMockObject mockForClass:[SocializeSubscriptionService class]];
+    [mockService stubIsKindOfClass:[SocializeSubscriptionService class]];
+    
+    // Should always reenable once subscription status is known
+    [[self.mockEnableSubscribeButton expect] setEnabled:YES];
+    
+    // Selection state should be off, to reflect that we are not subscribed
+    [[self.mockEnableSubscribeButton expect] setSelected:NO];
+    
+    [self.postCommentViewController service:mockService didFetchElements:dataArray];
 }
 
 

@@ -11,6 +11,7 @@
 #import "CommentMapView.h"
 #import "UINavigationController+Socialize.h"
 #import "SocializeAuthViewController.h"
+#import "SocializeSubscriptionService.h"
 
 @interface SocializePostCommentViewController ()
 - (void)configureFacebookButton;
@@ -57,6 +58,9 @@
     [self configureFacebookButton];
     [self addSocializeRoundedGrayButtonImagesToButton:self.unsubscribeButton];
     self.dontSubscribeToDiscussion = NO;
+    
+    self.enableSubscribeButton.enabled = NO;
+    [self getSubscriptionStatus];
 }
 
 - (void)viewDidUnload {
@@ -215,6 +219,32 @@
     // FIXME [#20995319] auth flow in wrong place
     [self afterLoginAction];
     [self finishCreateComment];    
+}
+
+- (BOOL)elementsHaveInactiveSubscription:(NSArray*)elements {
+    for (id<SocializeSubscription> subscription in elements) {
+        if (![subscription subscribed]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+-(void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
+    if ([service isKindOfClass:[SocializeSubscriptionService class]]) {
+        // The only time we want the button off is if they have previously posted without subscription
+        BOOL subscribeHasBeenDisabled = [self elementsHaveInactiveSubscription:dataArray];
+        self.enableSubscribeButton.enabled = YES;
+        [self setDontSubscribeToDiscussion:subscribeHasBeenDisabled];
+        
+    } else {
+        [super service:service didFetchElements:dataArray];
+    }
+}
+
+- (void)getSubscriptionStatus {
+    [self.socialize getSubscriptionsForEntityKey:self.entityURL first:nil last:nil];
 }
 
 
