@@ -16,12 +16,12 @@ static SocializeNotificationHandler *sharedNotificationHandler;
 
 @implementation SocializeNotificationHandler
 @synthesize socialize = socialize_;
-@synthesize activityDetailsViewController = activityDetailsViewController_;
+@synthesize navigationController = navigationController_;
 @synthesize displayWindow = displayWindow_;
 
 - (void)dealloc {
     self.socialize = nil;
-    self.activityDetailsViewController = nil;
+    self.navigationController = nil;
     self.displayWindow = nil;
     
     [super dealloc];
@@ -62,7 +62,14 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     NSAssert([activityType isEqualToString:@"comment"], @"Socialize Notification is of type new_comments, but activity is not a comment");
     NSAssert(activityID != nil, @"Socialize Notification is Missing Comment ID");
     
-    [self.socialize getCommentById:[activityID integerValue]];
+    SocializeActivityDetailsViewController *activityDetailsViewController = [[[SocializeActivityDetailsViewController alloc] init] autorelease];
+    
+    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:activityDetailsViewController] autorelease];
+
+    self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
+    [self.displayWindow addSubview:self.navigationController.view];
+    
+    [activityDetailsViewController fetchActivityForType:activityType activityID:activityID];
 }
 
 - (BOOL)handleSocializeNotification:(NSDictionary*)userInfo {
@@ -76,21 +83,6 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     [self showActivityDetailsForActivityType:activityType activityID:activityID];
     
     return YES;
-}
-
-- (void)showActivityForComment:(id<SocializeComment>)comment {
-    self.activityDetailsViewController = [[[SocializeActivityDetailsViewController alloc] init] autorelease];
-    self.activityDetailsViewController.view.frame = CGRectMake(0, 20, 320, 460);
-    [self.displayWindow addSubview:self.activityDetailsViewController.view];
-}
-
-- (void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
-    id<SocializeComment> comment = (id<SocializeComment>)[dataArray objectAtIndex:0];
-    [self showActivityForComment:comment];
-}
-
-- (void)service:(SocializeService *)service didFail:(NSError *)error {
-//    NSAssert(nil, @"%@", error);
 }
 
 @end

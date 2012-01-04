@@ -55,7 +55,7 @@
         }
     }];
 #endif
-    
+
     return YES;
 }
 
@@ -80,11 +80,17 @@
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
 }
+
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken
 {  
     NSLog(@"registering device token");
+    
+    // Nil out the device token. Normally, this wouldn't be required, but sometimes we switch between servers
+    [Socialize storeDeviceToken:nil];
+    
     [Socialize registerDeviceToken:deviceToken];
 }
+
 - (void)application:(UIApplication*)application  
 didFailToRegisterForRemoteNotificationsWithError:(NSError*)error  
 {  

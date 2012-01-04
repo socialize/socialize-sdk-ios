@@ -18,7 +18,7 @@
 - (BOOL)handleSocializeNotification:(NSDictionary*)userInfo;
 
 @property (nonatomic, retain) Socialize *socialize;
-@property (nonatomic, retain) SocializeActivityDetailsViewController *activityDetailsViewController;
+@property (nonatomic, retain) UINavigationController *navigationController;
 @property (nonatomic, retain) UIWindow *displayWindow;
 
 @end

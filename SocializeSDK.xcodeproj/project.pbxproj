@@ -6918,8 +6918,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: isaac mosquera (L79C47AF68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: isaac mosquera (L79C47AF68)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -6951,8 +6950,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9F637AFD-95EB-45B4-AF77-8A190BDDA854";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9F637AFD-95EB-45B4-AF77-8A190BDDA854";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -6963,8 +6961,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: isaac mosquera (L79C47AF68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: isaac mosquera (L79C47AF68)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -6990,8 +6987,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9F637AFD-95EB-45B4-AF77-8A190BDDA854";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9F637AFD-95EB-45B4-AF77-8A190BDDA854";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

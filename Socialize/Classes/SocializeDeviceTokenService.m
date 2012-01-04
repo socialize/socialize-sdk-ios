@@ -70,6 +70,9 @@
     NSMutableArray* array = [self getObjectListArray:objectList];
     SocializeDeviceToken *deviceToken = (SocializeDeviceToken *)[array objectAtIndex:0];
     [Socialize storeDeviceToken:deviceToken.device_token];
+    
+    SDebugLog(1, @"Successfully registered device with token %@", deviceToken.device_token);
+    
     [super invokeAppropriateCallback:request objectList:objectList errorList:errorList];
 }
 -(void)registerDeviceTokenString:(NSString *)deviceToken {
