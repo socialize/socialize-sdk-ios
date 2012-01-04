@@ -174,6 +174,10 @@
             
             if (([((NSObject*)_delegate) respondsToSelector:@selector(didAuthenticate:)]) )
                 [_delegate didAuthenticate:self.authenticatedUser];
+            
+            // Post a global notification that the authenticated user has changed
+            [[NSNotificationCenter defaultCenter] postNotificationName:SocializeAuthenticatedUserDidChangeNotification object:self.authenticatedUser];
+            
         } else {
             [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseBody reason:@"Response Missing OAuth Token and Secret"]];
         }            

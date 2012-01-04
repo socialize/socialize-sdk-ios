@@ -12,7 +12,7 @@
 #import <GHUnitIOS/GHUnit.h>
 
 
-@interface SocializeTests : GHTestCase<SocializeServiceDelegate> {
+@interface SocializeTests : GHAsyncTestCase<SocializeServiceDelegate> {
     Socialize               *_service;
     NSError                 *_testError;
     id _mockService;
