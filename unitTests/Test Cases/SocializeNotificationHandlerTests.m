@@ -16,6 +16,10 @@
 @synthesize mockActivityDetailsViewController = mockActivityDetailsViewController_;
 @synthesize mockNavigationController = mockNavigationController_;
 
+- (BOOL)shouldRunOnMainThread {
+    return YES;
+}
+
 - (void)setUp {
     self.origNotificationHandler = [[[SocializeNotificationHandler alloc] init] autorelease];
     self.notificationHandler = [OCMockObject partialMockForObject:self.origNotificationHandler];
@@ -24,6 +28,8 @@
     self.notificationHandler.displayWindow = self.mockDisplayWindow;
     
     self.mockActivityDetailsViewController = [OCMockObject mockForClass:[SocializeActivityDetailsViewController class]];
+    [[self.mockActivityDetailsViewController stub] setDelegate:nil];
+    
     self.notificationHandler.activityDetailsViewController = self.mockActivityDetailsViewController;
     
     self.mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
@@ -102,6 +108,37 @@
     [[self.mockActivityDetailsViewController expect] fetchActivityForType:@"comment" activityID:testID];
     
     [self.notificationHandler handleSocializeNotification:userInfo];
+    
+    [mockView verify];
+}
+
+- (void)testDismissingActivityDetailsHidesNavigationController {
+    
+    // Stub in a view for the navigation controller
+    id mockView = [OCMockObject mockForClass:[UIView class]];
+    [[[self.mockNavigationController stub] andReturn:mockView] view];
+    
+    // An existing frame for the navigation controller's stub view
+    CGRect navigationFrame = CGRectMake(0, 20, 320, 460);
+    [[[mockView stub] andReturnValue:OCMOCK_VALUE(navigationFrame)] frame];
+    
+    // Animation should end up here
+    CGRect expectedEndFrame = CGRectMake(0, 480, 320, 460);
+
+    // End frame for our manual modal dismissal
+    [[mockView expect] setFrame:expectedEndFrame];
+    
+    // Async wait for removeFromSuperview (animation is complete)
+    [[[mockView expect] andDo:^(NSInvocation *inv) {
+        // The animation is complete
+        [self notify:kGHUnitWaitStatusSuccess];
+    }] removeFromSuperview];
+    
+    [self prepare];
+    [self.notificationHandler activityDetailsViewControllerDidDismiss:self.mockActivityDetailsViewController];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
+    
+    [mockView verify];
 }
 
 @end

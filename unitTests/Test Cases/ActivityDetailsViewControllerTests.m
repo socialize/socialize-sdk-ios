@@ -140,6 +140,8 @@
 -(void)testViewDidLoad {
     [[self.partialActivityDetailsViewController expect] configureDetailsView];
     [[self.partialActivityDetailsViewController expect]  startLoadAnimationForView:self.mockActivityDetailsView];  
+    [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockDoneButton];
+    
     [self.activityDetailsViewController viewDidLoad];
 }
 @end

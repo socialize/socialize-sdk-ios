@@ -24,6 +24,8 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     self.socialize = nil;
     self.navigationController = nil;
     self.displayWindow = nil;
+    
+    [activityDetailsViewController_ setDelegate:nil];
     self.activityDetailsViewController = nil;
     
     [super dealloc];
@@ -63,6 +65,7 @@ static SocializeNotificationHandler *sharedNotificationHandler;
 - (SocializeActivityDetailsViewController*)activityDetailsViewController {
     if (activityDetailsViewController_ == nil) {
         activityDetailsViewController_ = [[SocializeActivityDetailsViewController alloc] init];
+        activityDetailsViewController_.delegate = self;
     }
     
     return activityDetailsViewController_;
@@ -102,6 +105,23 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     [self showActivityDetailsForActivityType:activityType activityID:activityID];
     
     return YES;
+}
+
+- (void)animatedDismissOfNavigationController {
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         CGRect frame = self.navigationController.view.frame;
+                         frame.origin.y = frame.origin.y + frame.size.height;
+                         self.navigationController.view.frame = frame;
+                     } completion:^(BOOL finished) {
+                         [self.navigationController.view removeFromSuperview];
+                         self.navigationController = nil;
+                         self.activityDetailsViewController = nil;
+                     }];
+}
+
+- (void)activityDetailsViewControllerDidDismiss:(SocializeActivityDetailsViewController *)activityDetailsViewController {
+    [self animatedDismissOfNavigationController];
 }
 
 @end

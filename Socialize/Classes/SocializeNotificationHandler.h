@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "_Socialize.h"
+#import "SocializeActivityDetailsViewController.h"
 
 @class SocializeActivityDetailsViewController;
 
-@interface SocializeNotificationHandler : NSObject <SocializeServiceDelegate>
+@interface SocializeNotificationHandler : NSObject <SocializeServiceDelegate, SocializeActivityDetailsViewControllerDelegate>
 
 + (BOOL)isSocializeNotification:(NSDictionary*)userInfo;
 + (SocializeNotificationHandler*)sharedNotificationHandler;

@@ -16,11 +16,9 @@
 @class URLDownload;
 @protocol SocializeActivity;
 @class ImagesCache;
+@protocol SocializeActivityDetailsViewControllerDelegate;
 
-@interface SocializeActivityDetailsViewController : SocializeBaseViewController 
-{
-    
-}
+@interface SocializeActivityDetailsViewController : SocializeBaseViewController {}
 -(id)initWithActivity:(id<SocializeActivity>)socializeActivity;
 -(id)init;
 -(void)fetchActivityForType:(NSString*)activityType activityID:(NSNumber*)activityID;
@@ -30,6 +28,13 @@
 @property (nonatomic, retain) id<SocializeActivity> socializeActivity;
 /** this view controller shows all the recent activity for a given user */
 @property (nonatomic, retain) SocializeActivityViewController*  activityViewController;
+@property (nonatomic, assign) id <SocializeActivityDetailsViewControllerDelegate> delegate;
 
+
+@end
+
+@protocol SocializeActivityDetailsViewControllerDelegate <NSObject>
+
+- (void)activityDetailsViewControllerDidDismiss:(SocializeActivityDetailsViewController*)activityDetailsViewController;
 
 @end

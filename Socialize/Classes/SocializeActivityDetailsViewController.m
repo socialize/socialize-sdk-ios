@@ -39,7 +39,7 @@
 @synthesize activityDetailsView = activityDetailsView_;
 @synthesize socializeActivity = socializeActivity_;
 @synthesize activityViewController = activityViewController_;
-
+@synthesize delegate = delegate_;
 
 #pragma mark init/dealloc
 - (void)dealloc
@@ -145,5 +145,13 @@
     [super viewDidLoad];
     [self configureDetailsView];
     [self startLoadAnimationForView:self.activityDetailsView];   
+    self.navigationItem.rightBarButtonItem = self.doneButton;
 }
+
+- (void)doneButtonPressed:(UIBarButtonItem *)button {
+    if ([self.delegate respondsToSelector:@selector(activityDetailsViewControllerDidDismiss:)]) {
+        [self.delegate activityDetailsViewControllerDidDismiss:self];
+    }
+}
+
 @end
