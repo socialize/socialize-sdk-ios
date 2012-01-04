@@ -82,7 +82,10 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     self.activityDetailsViewController = nil;
     self.navigationController = nil;
 
-    self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
+    CGRect statusFrame = [[UIApplication sharedApplication] statusBarFrame];
+    CGRect windowFrame = self.displayWindow.frame;
+    
+    self.navigationController.view.frame = CGRectMake(0, statusFrame.size.height, windowFrame.size.width, windowFrame.size.height - statusFrame.size.height);
     [self.displayWindow addSubview:self.navigationController.view];
     
     [self.activityDetailsViewController fetchActivityForType:activityType activityID:activityID];
