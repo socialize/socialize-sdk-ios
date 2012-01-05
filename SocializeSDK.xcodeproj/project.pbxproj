@@ -5446,7 +5446,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PROJECT_DIR}/util/dump-xcode-env.sh";
+			shellScript = "\"${PROJECT_DIR}/util/dump-xcode-env.sh\"";
 			showEnvVarsInLog = 0;
 		};
 		AA33A41114630B3600319168 /* ShellScript */ = {
@@ -5489,7 +5489,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PROJECT_DIR}/util/dump-xcode-env.sh";
+			shellScript = "\"${PROJECT_DIR}/util/dump-xcode-env.sh\"";
 			showEnvVarsInLog = 0;
 		};
 		AABC15AB144A114900088B7D /* Dump Xcode Environment */ = {
@@ -5504,7 +5504,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PROJECT_DIR}/util/dump-xcode-env.sh";
+			shellScript = "\"${PROJECT_DIR}/util/dump-xcode-env.sh\"";
 			showEnvVarsInLog = 0;
 		};
 		AAE0D28C1444F48C009537DA /* Dump Xcode Environment */ = {
@@ -5519,7 +5519,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PROJECT_DIR}/util/dump-xcode-env.sh";
+			shellScript = "\"${PROJECT_DIR}/util/dump-xcode-env.sh\"";
 			showEnvVarsInLog = 0;
 		};
 		AAEB4A6C1458DB0300A01F5B /* Run Script */ = {
