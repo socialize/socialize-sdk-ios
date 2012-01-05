@@ -80,6 +80,7 @@
     }
     [Socialize storeSocializeApiKey:[apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
     [Socialize storeFacebookAppId:@"115622641859087"];
+    //this URL should be removed in favor of the redirect URL from socialize
     [Socialize storeApplicationLink:@"http://www.google.com"];
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];
