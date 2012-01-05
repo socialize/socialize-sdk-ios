@@ -9,7 +9,7 @@
 #import "TestFetchCommentsViewController.h"
 #import <Socialize/Socialize.h>
 #import "UIButton+Socialize.h"
-#import "SocializeActivityDetailsViewController.h"
+//#import "SocializeActivityDetailsViewController.h"
 #define SUCCESS @"success"
 #define FAIL @"fail"
 
