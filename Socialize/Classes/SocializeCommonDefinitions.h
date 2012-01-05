@@ -29,3 +29,5 @@ typedef enum {
     SocializeViewActivity,
     SocializeAllActivity
 } SocializeActivityType;
+
+extern NSString *const SocializeAuthenticatedUserDidChangeNotification;

@@ -3,7 +3,7 @@
 //  appbuildr
 //
 //  Created by Fawad Haider on 12/2/10.
-//  Copyright 2010 pointabout. All rights reserved.
+//  Copyright 2010. All rights reserved.
 //
 
 #import "SocializeCommentsTableViewController.h"
@@ -22,11 +22,13 @@
 #import "ImagesCache.h"
 #import "SocializeTableBGInfoView.h"
 #import "SocializeCommentsService.h"
+#import "SocializeActivityDetailsViewController.h"
 #import "SocializeSubscriptionService.h"
 
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
+-(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment;
 @end
 
 @implementation SocializeCommentsTableViewController
@@ -180,7 +182,7 @@
 
     self.tableView.accessibilityLabel = @"Comments Table View";
 	self.tableView.clipsToBounds = YES;    
-   
+    
     
     self.navigationItem.leftBarButtonItem = self.brandingButton;
     self.navigationItem.rightBarButtonItem = self.closeButton;    
@@ -203,6 +205,9 @@
 
 - (void)postCommentViewController:(SocializePostCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
     [self insertContentAtHead:[NSArray arrayWithObject:comment]];
+    
+    self.subscribedButton.selected = !postCommentViewController.dontSubscribeToDiscussion;
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -221,19 +226,20 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         SocializeComment* entryComment = ((SocializeComment*)[self.content objectAtIndex:indexPath.row]);
         
-        SocializeCommentDetailsViewController* details = [[SocializeCommentDetailsViewController alloc] init];
+        SocializeActivityDetailsViewController* details = [self createActivityDetailsViewController:entryComment];
+
         details.title = [NSString stringWithFormat: @"%d of %d", indexPath.row + 1, [self.content count]];
-        details.comment = entryComment;
 
         [_cache stopOperations];
-        details.cache = _cache;
         
         UIBarButtonItem * backLeftItem = [self createLeftNavigationButtonWithCaption:@"Comments"];
         details.navigationItem.leftBarButtonItem = backLeftItem;	
            
         [self.navigationController pushViewController:details animated:YES];
-        [details release];
     }
+}
+-(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment{
+    return [[[SocializeActivityDetailsViewController alloc] initWithActivity:entryComment] autorelease];
 }
 
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender {

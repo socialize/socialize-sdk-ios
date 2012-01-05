@@ -10,7 +10,6 @@
 #import "UIButton+Socialize.h"
 #import "CommentMapView.h"
 #import "_Socialize.h"
-#import "SocializeLoadingView.h"
 #import "SocializeLocationManager.h"
 #import "UILabel+FormatedText.h"
 #import "UINavigationBarBackground.h"
@@ -148,7 +147,7 @@
     UIImage * highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
     
     [button setBackgroundImage:normalImage forState:UIControlStateNormal];
-	[button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
+	[button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];    
 }
 
 -(void)configureDoNotShareLocationButton
@@ -187,6 +186,8 @@
     }
     
     [self.lowerContainer addSubview:newSubview];
+    CGRect lowerFrame = self.lowerContainer.frame;
+    newSubview.frame = CGRectMake(0, 0, lowerFrame.size.width, lowerFrame.size.height);
 }
 
 -(IBAction)activateLocationButtonPressed:(id)sender
@@ -298,7 +299,6 @@
     
     // The lower container is just the same size as the keyboard
     self.lowerContainer.frame = newKeyboardFrame;
-    
     // The upper container covers the rest of our view
     CGFloat upperHeight = self.view.frame.size.height - newKeyboardFrame.size.height;
     CGRect upperFrame = CGRectMake(0, 0, self.view.frame.size.width, upperHeight);

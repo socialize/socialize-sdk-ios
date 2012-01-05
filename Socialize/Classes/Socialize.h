@@ -17,3 +17,4 @@
 #import "SocializeActionView.h"
 #import "SocializeActionBar.h"
 #import "SocializeObjects.h"
+#import "SocializeActivityDetailsViewController.h"

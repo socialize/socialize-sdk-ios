@@ -54,18 +54,20 @@
         [inv setReturnValue:&currentMock];
     }] view];
     
-    self.mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
+    self.mockNavigationController = [OCMockObject niceMockForClass:[UINavigationController class]];
     [[[(id)self.viewController stub] andReturn:self.mockNavigationController] navigationController];
     
-    self.mockNavigationBar = [OCMockObject mockForClass:[UINavigationBar class]];
+    self.mockNavigationBar = [OCMockObject niceMockForClass:[UINavigationBar class]];
     [[[self.mockNavigationController stub] andReturn:self.mockNavigationBar] navigationBar];
     
     self.mockNavigationItem = [OCMockObject mockForClass:[UINavigationItem class]];
     [[[(id)self.viewController stub] andReturn:self.mockNavigationItem] navigationItem];
     
-    self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
+    self.mockSocialize = [OCMockObject niceMockForClass:[Socialize class]];
     [[[self.mockSocialize stub] andReturn:self.viewController] delegate];
     [[self.mockSocialize stub] setDelegate:nil];
+
+    
     self.viewController.socialize = self.mockSocialize;
     
     self.mockGenericAlertView = [OCMockObject mockForClass:[UIAlertView class]];

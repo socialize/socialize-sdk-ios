@@ -19,4 +19,8 @@
     [super dealloc];
 }
 
+-(NSString *) displayText {
+    return self.text;
+}
+
 @end

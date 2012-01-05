@@ -35,13 +35,14 @@
 #import "CommentsTableViewCell.h"
 #import "SocializeGeocoderAdapter.h"
 #import "SocializePrivateDefinitions.h"
-
+#import "SocializeSubscriptionService.h"
 
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
 
 @interface SocializePostCommentViewController (Tests)
 - (void)dismissSelf;
+- (void)configureFacebookButton;
 @end
 
 @implementation PostCommentViewControllerTests
@@ -252,6 +253,30 @@
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
 }
 
+-(void) prepareForViewDidLoad {
+    [[(id)self.postCommentViewController expect] configureFacebookButton];
+    [[(id)self.postCommentViewController expect] addSocializeRoundedGrayButtonImagesToButton:OCMOCK_ANY];
+    [[(id)self.postCommentViewController expect] setDontSubscribeToDiscussion:NO];        
+    [[self.mockEnableSubscribeButton expect] setEnabled:NO];
+    [[(id)self.postCommentViewController expect] getSubscriptionStatus];
+}
+
+-(void) testViewDidLoad {
+    [super prepareForViewDidLoad];
+    [self prepareForViewDidLoad];
+    [self.postCommentViewController viewDidLoad];
+}
+
+-(void) testSendActivityToFB {
+    [[(id)self.viewController expect] finishCreateComment];
+    [self.postCommentViewController sendActivityToFacebookFeedSucceeded];
+}
+-(void) testDidCreateComment {
+    id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
+    //we have to make sure that if we pass in a valid comment that finish create comments is called
+    [[(id)self.viewController expect] finishCreateComment];
+    [self.postCommentViewController service:nil didCreate:mockComment];
+}
 - (void)postCommentViewController:(SocializePostCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
     [self notify:kGHUnitWaitStatusSuccess];
 }
@@ -271,6 +296,10 @@
 - (void)testThatPressingEnableSubscribeWhenNotSubscribedReenablesSubscribe {
     [[self.mockLowerContainer expect] addSubview:self.mockSubscribeContainer];
 
+    // Test frame data for lower container
+    CGRect lowerFrame = CGRectMake(0, 0, 320, 180);
+    [[[self.mockLowerContainer stub] andReturnValue:OCMOCK_VALUE(lowerFrame)] frame];
+
     // Preconfigure the subscription status, and expect disable on state because of this
     [[self.mockEnableSubscribeButton expect] setSelected:NO];
     self.postCommentViewController.dontSubscribeToDiscussion = YES;
@@ -278,11 +307,18 @@
     // Expect reenable on state for enable subscribe button
     [[self.mockEnableSubscribeButton expect] setSelected:YES];
 
+    // Frame should be set to exactly match lower container
+    [[self.mockSubscribeContainer expect] setFrame:CGRectMake(0, 0, lowerFrame.size.width, lowerFrame.size.height)];
+
     [self.postCommentViewController enableSubscribeButtonPressed:nil];
     GHAssertFalse(self.postCommentViewController.dontSubscribeToDiscussion, @"Should be subscribed");
 }
 
 - (void)testEnableSubscribeWhenKeyboardShownHidesKeyboardAndChangesLowerContainer {
+    
+    // Test frame data for lower container
+    CGRect lowerFrame = CGRectMake(0, 0, 320, 180);
+    [[[self.mockLowerContainer stub] andReturnValue:OCMOCK_VALUE(lowerFrame)] frame];
     
     // Keyboard is shown
     [[[self.mockCommentTextView expect] andReturnBool:YES] isFirstResponder];
@@ -293,6 +329,9 @@
     // Lower view should update, since it is being exposed
     [[self.mockLowerContainer expect] addSubview:self.mockSubscribeContainer];
 
+    // Frame should be set to exactly match lower container
+    [[self.mockSubscribeContainer expect] setFrame:CGRectMake(0, 0, lowerFrame.size.width, lowerFrame.size.height)];
+    
     [self.postCommentViewController enableSubscribeButtonPressed:nil];
 }
 
@@ -308,6 +347,26 @@
     //
     
     [self.postCommentViewController enableSubscribeButtonPressed:nil];
+}
+
+- (void)testThatFetchingSubscriptionWithSubscribedFalseSetsDontSubscribeToDiscussion {
+    
+    // Create a negative subscription
+    id mockSubscription = [OCMockObject mockForProtocol:@protocol(SocializeSubscription)];
+    [[[mockSubscription stub] andReturnBool:NO] subscribed];
+    NSArray *dataArray = [NSArray arrayWithObject:mockSubscription];
+    
+    // Message is from the subscription service class
+    id mockService = [OCMockObject mockForClass:[SocializeSubscriptionService class]];
+    [mockService stubIsKindOfClass:[SocializeSubscriptionService class]];
+    
+    // Should always reenable once subscription status is known
+    [[self.mockEnableSubscribeButton expect] setEnabled:YES];
+    
+    // Selection state should be off, to reflect that we are not subscribed
+    [[self.mockEnableSubscribeButton expect] setSelected:NO];
+    
+    [self.postCommentViewController service:mockService didFetchElements:dataArray];
 }
 
 

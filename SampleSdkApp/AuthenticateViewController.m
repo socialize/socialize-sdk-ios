@@ -152,10 +152,7 @@
 #pragma mark Authentication delegate
 
 -(void)didAuthenticate:(id<SocializeUser>)user {
-    
-    NSLog(@"%@", [user userIdForThirdPartyAuth: SocializeThirdPartyAuthTypeFacebook]);
-//    NSLog(@"%@", [socialize.authService receiveFacebookAuthToken]);
-    
+        
     [_loadingView removeView];
     self.resultLabel.text = @"success";
     TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil];

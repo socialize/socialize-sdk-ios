@@ -27,6 +27,6 @@
 - (IBAction)facebookButtonPressed:(UIButton*)sender;
 -(IBAction)unsubscribeButtonPressed:(id)sender;
 -(IBAction)enableSubscribeButtonPressed:(id)sender;
-
+- (void)getSubscriptionStatus;
 @end
 

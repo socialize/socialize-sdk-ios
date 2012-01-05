@@ -22,6 +22,7 @@
 #import "SocializeSubscriptionService.h"
 #import "Facebook+Socialize.h"
 #import "NSTimer+BlocksKit.h"
+#import "SocializeNotificationHandler.h"
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"
@@ -29,6 +30,8 @@
 #define SOCIALIZE_FACEBOOK_APP_ID @"socialize_facebook_app_id"
 #define SOCIALIZE_APPLICATION_LINK @"socialize_app_link"
 #define SOCIALIZE_DEVICE_TOKEN @"socialize_device_token"
+
+NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAuthenticatedUserDidChangeNotification";
 
 @implementation Socialize
 
@@ -46,7 +49,6 @@
 static Socialize *_sharedSocialize = nil;
 static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 
-
 + (void)initialize {
     if (self == [Socialize class]) {
         Class dynamicTest = NSClassFromString(@"SocializeDynamicTest");
@@ -62,7 +64,10 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
     }
     return _sharedSocialize;
 }
+
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     [_objectFactory release]; _objectFactory = nil;
     [_authService release]; _authService = nil;
     [_likeService release]; _likeService = nil;
@@ -73,7 +78,6 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
     [_activityService release]; _activityService = nil;
     [_shareService release]; _shareService = nil;
     [_deviceTokenService release]; _deviceTokenService = nil;
-    [_sharedSocialize release]; _sharedSocialize = nil;
     [_subscriptionService release]; _subscriptionService = nil;
     
     [super dealloc];
@@ -96,6 +100,8 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
         _shareService = [[SocializeShareService  alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _deviceTokenService = [[SocializeDeviceTokenService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _subscriptionService = [[SocializeSubscriptionService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userChanged:) name:SocializeAuthenticatedUserDidChangeNotification object:nil];
     }
     return self;
 }
@@ -185,6 +191,14 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
     return [defaults valueForKey:SOCIALIZE_APPLICATION_LINK];
 }
 
++ (BOOL)isSocializeNotification:(NSDictionary*)userInfo {
+    return [SocializeNotificationHandler isSocializeNotification:userInfo];
+}
+
++ (BOOL)handleSocializeNotification:(NSDictionary*)userInfo {
+    return [[SocializeNotificationHandler sharedNotificationHandler] handleSocializeNotification:userInfo];
+}
+
 #pragma mark authentication info
 
 +(BOOL)handleOpenURL:(NSURL *)url {
@@ -209,7 +223,6 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 }
 
 -(void)authenticateWithFacebook {
-    NSLog(@"inside authenticateWithFacebook");
     
     NSString *apiKey = [Socialize apiKey];
     NSString *apiSecret = [Socialize apiSecret];
@@ -440,7 +453,6 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 
 
 #pragma mark share service stuff
-
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text
 {
     [_shareService createShareForEntity:entity medium:medium text:text];
@@ -457,6 +469,15 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
     [socialize.deviceTokenService registerDeviceToken:deviceToken];
 
 }   
+
+- (void)resendDeviceToken {
+    NSString *existingToken = [Socialize deviceToken];
+    if ([existingToken length] > 0) {
+        [Socialize storeDeviceToken:nil];
+        [self.deviceTokenService registerDeviceToken:existingToken persistent:YES];
+    }
+}
+
 #pragma mark subscription types
 - (void)subscribeToCommentsForEntityKey:(NSString*)entityKey {
     [_subscriptionService subscribeToCommentsForEntityKey:entityKey];
@@ -468,6 +489,12 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 
 - (void)getSubscriptionsForEntityKey:(NSString*)entityKey first:(NSNumber*)first last:(NSNumber*)last {
     [_subscriptionService getSubscriptionsForEntityKey:entityKey first:first last:last];
+}
+
+- (void)userChanged:(id<SocializeUser>)newUser {
+    if (self == _sharedSocialize) {
+        [self resendDeviceToken];
+    }
 }
 
 @end

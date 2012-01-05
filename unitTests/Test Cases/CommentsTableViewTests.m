@@ -14,10 +14,12 @@
 #import "SocializeCommentsService.h"
 #import "SocializeProfileViewController.h"
 #import "SocializeSubscriptionService.h"
+#import "SocializeActivityDetailsViewController.h"
 
 @interface SocializeCommentsTableViewController(public)
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender;
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
+-(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment;
 @end
     
 @implementation CommentsTableViewTests
@@ -117,6 +119,13 @@
     [[self.mockTableView expect] deselectRowAtIndexPath:OCMOCK_ANY animated:YES];
     [[self.mockNavigationController expect] pushViewController:OCMOCK_ANY animated:YES];
     
+    //create a mock activity vc to make sure thats what is passed back and configured correct
+    id mockActitivtyDetailsController = [OCMockObject niceMockForClass:[SocializeActivityDetailsViewController class]];
+    [[[(id)self.commentsTableViewController expect] andReturn:mockActitivtyDetailsController] createActivityDetailsViewController:OCMOCK_ANY];
+    
+    //lets make sure that the title was set correctly for this viewcontroller
+    [[mockActitivtyDetailsController expect] setTitle:@"1 of 1"];
+     
     [self.commentsTableViewController tableView:self.mockTableView didSelectRowAtIndexPath:indexSet];
 }
 
@@ -197,10 +206,18 @@
     [cell release];
 }
 
-- (void)testPostingCommentInsertsOnTop {
+- (void)testPostingCommentInsertsOnTopAndUpdatesSubscribedButton {
     id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
     [[(id)self.commentsTableViewController expect] insertContentAtHead:[NSArray arrayWithObject:mockComment]];
-    [self.commentsTableViewController postCommentViewController:nil didCreateComment:mockComment];
+    
+    // Stub a post comment where the user chose not to subscribe to the discussion
+    id mockPostCommentViewController = [OCMockObject mockForClass:[SocializePostCommentViewController class]];
+    [[[mockPostCommentViewController stub] andReturnBool:YES] dontSubscribeToDiscussion];
+    
+    // Subscribed button should turn off
+    [[self.mockSubscribedButton expect] setSelected:NO];
+    
+    [self.commentsTableViewController postCommentViewController:mockPostCommentViewController didCreateComment:mockComment];
 }
 
 - (void)testThatPressingEnabledSubscribedButtonCancelsSubscription {
