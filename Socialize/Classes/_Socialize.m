@@ -195,7 +195,7 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
     return [SocializeNotificationHandler isSocializeNotification:userInfo];
 }
 
-+ (BOOL)handleSocializeNotification:(NSDictionary*)userInfo {
++ (BOOL)handleNotification:(NSDictionary*)userInfo {
     return [[SocializeNotificationHandler sharedNotificationHandler] handleSocializeNotification:userInfo];
 }
 

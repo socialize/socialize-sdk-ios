@@ -105,7 +105,7 @@ otherwise you will get a failure.
 
 + (BOOL)isSocializeNotification:(NSDictionary*)userInfo;
 
-+ (BOOL)handleSocializeNotification:(NSDictionary*)userInfo;
++ (BOOL)handleNotification:(NSDictionary*)userInfo;
 
 /**
  Provide access to the entity loader block

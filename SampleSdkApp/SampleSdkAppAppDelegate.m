@@ -107,7 +107,7 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    if ([Socialize handleSocializeNotification:userInfo]) {
+    if ([Socialize handleNotification:userInfo]) {
         return;
     }
     
