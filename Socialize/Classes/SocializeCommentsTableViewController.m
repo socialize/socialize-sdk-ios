@@ -88,9 +88,11 @@
 }
 
 - (void)loadContentForNextPageAtOffset:(NSInteger)offset {
-    [self.socialize getCommentList:_entity.key
-                             first:[NSNumber numberWithInteger:offset]
-                              last:[NSNumber numberWithInteger:offset + self.pageSize]];
+    if ([_entity.key length] > 0) {
+        [self.socialize getCommentList:_entity.key
+                                 first:[NSNumber numberWithInteger:offset]
+                                  last:[NSNumber numberWithInteger:offset + self.pageSize]];
+    }
 }
 
 - (UIBarButtonItem*)closeButton {
@@ -165,7 +167,9 @@
 }
 
 - (void)getSubscriptionStatus {
-    [self.socialize getSubscriptionsForEntityKey:_entity.key first:nil last:nil];
+    if ([_entity.key length] > 0) {
+        [self.socialize getSubscriptionsForEntityKey:_entity.key first:nil last:nil];
+    }
 }
 
 - (IBAction)subscribedButtonPressed:(id)sender {

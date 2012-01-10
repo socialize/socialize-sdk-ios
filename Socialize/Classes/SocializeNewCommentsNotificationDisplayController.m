@@ -73,6 +73,8 @@
         NSAssert(self.activityID != nil, @"Socialize Notification is Missing Comment ID");
         
         [self.activityDetailsViewController fetchActivityForType:self.activityType activityID:self.activityID];
+    } else if (viewController == self.commentsTableViewController) {
+        [self.delegate notificationDisplayControllerDidFinish:self];
     }
 }
 
