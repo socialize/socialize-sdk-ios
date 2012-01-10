@@ -29,7 +29,7 @@ Installing the SDK
 ------------------
 
 Step 1: Add the Socialize Framework to Your Project
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Download and unzip the lastest iOS SDK release from the website.  You can find it here: http://www.getsocialize.com/sdk/
 - Install the embedded static framework to your application. To do this just drag and drop Socialize.embeddedframework folder from the package to your framework section in your project. Note that this is a directory that includes both Socialize.framework and our bundled Resources.
@@ -39,7 +39,7 @@ Step 1: Add the Socialize Framework to Your Project
  
 
 Step 2: Add Required Frameworks to Your Project
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Add CoreLocation.framework to your application target.
 - Add MapKit.framework to your application target.
@@ -50,7 +50,7 @@ Step 2: Add Required Frameworks to Your Project
  	.. image:: images/add_frameworks.png
 
 Step 3: Set Project Linker Flags
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Add **-ObjC** and **-all_load** flag to the Other Linker Flags in the build settings of your application target. *Please use the flag exactly as it is—the most common mistake here tends to be misspelling or incorrect capitalization.*
 
@@ -116,7 +116,7 @@ completes the authentication flow.
         <script src="https://gist.github.com/1529163.js?file=appDelegate.m"></script>
 
 Last Step: Include Socialize in your App!
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that you have your environment all setup, it’s time to include Socialize.
 
