@@ -74,7 +74,11 @@
         
         [self.activityDetailsViewController fetchActivityForType:self.activityType activityID:self.activityID];
     } else if (viewController == self.commentsTableViewController) {
-        [self.delegate notificationDisplayControllerDidFinish:self];
+        
+        if ([self.commentsTableViewController.entity.key length] == 0) {
+            // No entity key is defined, so don't show the list.
+            [self.delegate notificationDisplayControllerDidFinish:self];
+        }
     }
 }
 

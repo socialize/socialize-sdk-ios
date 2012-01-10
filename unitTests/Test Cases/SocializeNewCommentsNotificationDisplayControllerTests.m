@@ -93,4 +93,25 @@
     [self.commentsNotificationDisplayController navigationController:self.mockNavigationController willShowViewController:self.mockActivityDetailsViewController animated:YES];
 }
 
+- (void)testShowingCommentsTableViewDismissesIfNoEntityAvailable {
+    
+    // No entity was received
+    [[[self.mockCommentsTableViewController stub] andReturn:nil] entity];
+    
+    // Delegate should be notified immediately that we are done
+    [[self.mockDelegate expect] notificationDisplayControllerDidFinish:self.commentsNotificationDisplayController];
+    
+    [self.commentsNotificationDisplayController navigationController:self.mockNavigationController willShowViewController:self.mockCommentsTableViewController animated:YES];
+}
+
+- (void)testShowingCommentsTableViewDoesNothingIfEntityAvailable {
+    id mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
+    [[[mockEntity stub] andReturn:@"testKey"] key];
+    
+    // Stub mock entity with key
+    [[[self.mockCommentsTableViewController stub] andReturn:mockEntity] entity];
+    
+    [self.commentsNotificationDisplayController navigationController:self.mockNavigationController willShowViewController:self.mockCommentsTableViewController animated:YES];
+}
+
 @end
