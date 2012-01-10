@@ -9,18 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "_Socialize.h"
 #import "SocializeActivityDetailsViewController.h"
+#import "SocializeCommentsTableViewController.h"
+#import "SocializeNewCommentsNotificationDisplayController.h"
 
-@class SocializeActivityDetailsViewController;
-
-@interface SocializeNotificationHandler : NSObject <SocializeServiceDelegate, SocializeActivityDetailsViewControllerDelegate>
+@interface SocializeNotificationHandler : NSObject <SocializeServiceDelegate, SocializeNotificationDisplayControllerDelegate>
 
 + (BOOL)isSocializeNotification:(NSDictionary*)userInfo;
 + (SocializeNotificationHandler*)sharedNotificationHandler;
 - (BOOL)handleSocializeNotification:(NSDictionary*)userInfo;
 
 @property (nonatomic, retain) Socialize *socialize;
-@property (nonatomic, retain) UINavigationController *navigationController;
-@property (nonatomic, retain) SocializeActivityDetailsViewController *activityDetailsViewController;
 @property (nonatomic, retain) UIWindow *displayWindow;
+@property (nonatomic, retain) NSMutableArray *displayControllers;
 
 @end

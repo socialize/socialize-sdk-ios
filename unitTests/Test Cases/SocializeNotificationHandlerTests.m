@@ -9,12 +9,16 @@
 #import "SocializeNotificationHandlerTests.h"
 #import "SocializeActivityDetailsViewController.h"
 
+@interface SocializeNotificationHandler ()
+- (SocializeNewCommentsNotificationDisplayController*)createNewCommentsDisplayControllerForActivityType:(NSString*)activityType activityID:(NSNumber*)activityID;
+- (void)animatedDismissOfTopDisplayController;
+- (void)removeDisplayController:(SocializeNotificationDisplayController*)displayController;
+@end
+
 @implementation SocializeNotificationHandlerTests
 @synthesize notificationHandler = notificationHandler_;
 @synthesize origNotificationHandler = origNotificationHandler_;
 @synthesize mockDisplayWindow = mockDisplayWindow_;
-@synthesize mockActivityDetailsViewController = mockActivityDetailsViewController_;
-@synthesize mockNavigationController = mockNavigationController_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -26,25 +30,13 @@
     
     self.mockDisplayWindow = [OCMockObject mockForClass:[UIWindow class]];
     self.notificationHandler.displayWindow = self.mockDisplayWindow;
-    
-    self.mockActivityDetailsViewController = [OCMockObject mockForClass:[SocializeActivityDetailsViewController class]];
-    [[self.mockActivityDetailsViewController stub] setDelegate:nil];
-    
-    self.notificationHandler.activityDetailsViewController = self.mockActivityDetailsViewController;
-    
-    self.mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
-    self.notificationHandler.navigationController = self.mockNavigationController;
 }
 
 - (void)tearDown {
     [self.mockDisplayWindow verify];
-    [self.mockActivityDetailsViewController verify];
-    [self.mockNavigationController verify];
     
     self.origNotificationHandler = nil;
     self.notificationHandler = nil;
-    self.mockActivityDetailsViewController = nil;
-    self.mockNavigationController = nil;
 }
 
 - (void)testValidSocializeNotificationIsNotification {
@@ -75,70 +67,90 @@
 - (void)testUnknownNotificationTypeDoesNotCrash {
 }
 
-- (void)testHandleSocializeNotification {
+- (void)testCreateNewCommentsDisplayController {
+    NSString *commentType = @"comment";
+    NSNumber *commentID = [NSNumber numberWithInteger:1234];
+    
+    SocializeNewCommentsNotificationDisplayController *controller = [self.notificationHandler createNewCommentsDisplayControllerForActivityType:commentType activityID:commentID];
+    GHAssertEqualObjects(controller.activityType, commentType, @"Bad type");
+    GHAssertEqualObjects(controller.activityID, commentID, @"Bad id");
+    GHAssertEqualObjects(controller.delegate, self.origNotificationHandler, @"Bad delegate");
+}
+
+- (void)testHandleNewCommentsSocializeNotification {
     
     NSNumber *testID = [NSNumber numberWithInteger:304899];
+    NSString *commentType = @"comment";
     NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                                    testID, @"activity_id",
-                                   @"comment", @"activity_type",
+                                   commentType, @"activity_type",
                                    @"new_comments", @"notification_type",
                                    nil];
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
 
+    // Mock display controller
+    id mockNotificationDisplayController = [OCMockObject mockForClass:[SocializeNotificationDisplayController class]];
+    [[[(id)self.notificationHandler stub] andReturn:mockNotificationDisplayController] createNewCommentsDisplayControllerForActivityType:commentType activityID:testID];
     
-    // Expect these are nilled out. Ignore the messages and keep our mocks in place for testing
-    [[(id)self.notificationHandler expect] setNavigationController:nil];
-    [[(id)self.notificationHandler expect] setActivityDetailsViewController:nil];
-
-    // Stub in the frame for the display window
+    // Has a top controller
+    id mockMainViewController = [OCMockObject mockForClass:[UIViewController class]];
+    [[[mockNotificationDisplayController stub] andReturn:mockMainViewController] mainViewController];
+    
+    // With a mock view
+    id mockView = [OCMockObject mockForClass:[UIView class]];
+    [[[mockMainViewController stub] andReturn:mockView] view];
+    
+    // Stub in a test frame for the target display window
     CGRect testFrame = CGRectMake(0, 0, 320, 480);
     [[[self.mockDisplayWindow stub] andReturnValue:OCMOCK_VALUE(testFrame)] frame];
     
-    // Stub in a UIView for the navigation controller
-    id mockView = [OCMockObject mockForClass:[UIView class]];
-    [[[self.mockNavigationController stub] andReturn:mockView] view];
-    
-    // Should be configured for window display, under the status bar (20px high on iphone)
+    // The display controller's view should be configured for window display, under the status bar (20px high on iphone)
     [[mockView expect] setFrame:CGRectMake(0, 20, 320, 460)];
     
-    // Should become a subview of the window
+    // And it should become a subview of the display window
     [[self.mockDisplayWindow expect] addSubview:mockView];
-    
-    // Should load our activity
-    [[self.mockActivityDetailsViewController expect] fetchActivityForType:@"comment" activityID:testID];
     
     [self.notificationHandler handleSocializeNotification:userInfo];
     
+    [mockNotificationDisplayController verify];
+    [mockMainViewController verify];
     [mockView verify];
+    
+    NSArray *expectedArray = [NSArray arrayWithObject:mockNotificationDisplayController];
+    GHAssertEqualObjects(self.notificationHandler.displayControllers, expectedArray, @"Incorrect list of controllers");
 }
 
-- (void)testDismissingActivityDetailsHidesNavigationController {
-    
-    // Stub in a view for the navigation controller
-    id mockView = [OCMockObject mockForClass:[UIView class]];
-    [[[self.mockNavigationController stub] andReturn:mockView] view];
-    
-    // An existing frame for the navigation controller's stub view
-    CGRect navigationFrame = CGRectMake(0, 20, 320, 460);
-    [[[mockView stub] andReturnValue:OCMOCK_VALUE(navigationFrame)] frame];
-    
-    // Animation should end up here
-    CGRect expectedEndFrame = CGRectMake(0, 480, 320, 460);
+- (void)testThatDisplayControllerFinishTriggersAnimation {
+    [[(id)self.notificationHandler expect] animatedDismissOfTopDisplayController];
+    [self.notificationHandler notificationDisplayControllerDidFinish:nil];
+}
 
-    // End frame for our manual modal dismissal
-    [[mockView expect] setFrame:expectedEndFrame];
+- (void)testThatFinishingAnimationForDisplayControllerRemovesFromViewAndUpdatesArray {
     
-    // Async wait for removeFromSuperview (animation is complete)
-    [[[mockView expect] andDo:^(NSInvocation *inv) {
-        // The animation is complete
-        [self notify:kGHUnitWaitStatusSuccess];
-    }] removeFromSuperview];
+    // Stub in a single display controller
+    id mockNotificationDisplayController = [OCMockObject mockForClass:[SocializeNotificationDisplayController class]];
+    self.notificationHandler.displayControllers = [NSMutableArray arrayWithObject:mockNotificationDisplayController];
     
-    [self prepare];
-    [self.notificationHandler activityDetailsViewControllerDidDismiss:self.mockActivityDetailsViewController];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
+    // Which has a top controller
+    id mockMainViewController = [OCMockObject mockForClass:[UIViewController class]];
+    [[[mockNotificationDisplayController stub] andReturn:mockMainViewController] mainViewController];
     
+    // With a mock view
+    id mockView = [OCMockObject mockForClass:[UIView class]];
+    [[[mockMainViewController stub] andReturn:mockView] view];
+    
+    // Controller view should be removed from view
+    [[mockView expect] removeFromSuperview];
+    
+    // Simulate the end of the animation
+    [self.notificationHandler removeDisplayController:mockNotificationDisplayController];
+    
+    [mockNotificationDisplayController verify];
+    [mockMainViewController verify];
     [mockView verify];
+    
+    // Array should be empty
+    GHAssertTrue([self.notificationHandler.displayControllers count] == 0, @"Should be empty");
 }
 
 @end

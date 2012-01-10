@@ -80,6 +80,10 @@
             //  All the entity related information can be fetched here ie stats or name.
             self.socializeActivity = (id<SocializeActivity>)object;
             [self loadActivityDetailData];
+            
+            if ([self.delegate respondsToSelector:@selector(activityDetailsViewController:didLoadActivity:)]) {
+                [self.delegate activityDetailsViewController:self didLoadActivity:self.socializeActivity];
+            }
         }
     }
 }
@@ -154,4 +158,7 @@
     }
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    return toInterfaceOrientation == UIInterfaceOrientationPortrait;
+}
 @end

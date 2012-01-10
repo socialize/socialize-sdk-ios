@@ -61,6 +61,17 @@
     
     self.enableSubscribeButton.enabled = NO;
     [self getSubscriptionStatus];
+    
+    
+//    NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                   @"271982", @"activity_id",
+//                                   @"comment", @"activity_type",
+//                                   @"new_comments", @"notification_type",
+//                                   nil];
+//    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+//    [Socialize handleNotification:userInfo];
+
+    
 }
 
 - (void)viewDidUnload {
@@ -70,6 +81,23 @@
     self.unsubscribeButton = nil;
     self.enableSubscribeButton = nil;
     self.subscribeContainer = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    
+    
+    
+//    NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                   @"304899", @"activity_id",
+//                                   @"comment", @"activity_type",
+//                                   @"new_comments", @"notification_type",
+//                                   nil];
+//    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+//    [Socialize handleNotification:userInfo];
+    
+
 }
 
 - (void)configureFacebookButton {

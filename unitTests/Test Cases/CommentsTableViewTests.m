@@ -50,8 +50,10 @@
     self.commentsTableViewController = nil;
 }
 
--(void)testAfterLoginActionInitializesContent {
+-(void)testAfterLoginActionInitializesContentAndGetsSubscriptions {
     [[(id)self.commentsTableViewController expect] initializeContent];
+    [[self.mockSocialize expect] getSubscriptionsForEntityKey:TEST_URL first:nil last:nil];
+
     [self.commentsTableViewController afterLoginAction]; 
 }
 
@@ -97,7 +99,6 @@
     [[self.mockView expect] setClipsToBounds:YES];
     
     [[self.mockSubscribedButton expect] setEnabled:NO];
-    [[self.mockSocialize expect] getSubscriptionsForEntityKey:TEST_URL first:nil last:nil];
 
     [self.commentsTableViewController viewDidLoad]; 
 }
