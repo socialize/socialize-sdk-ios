@@ -9,6 +9,7 @@
 #import "SocializeNewCommentsNotificationDisplayController.h"
 #import "SocializeActivityDetailsViewController.h"
 #import "SocializeCommentsTableViewController.h"
+#import "UINavigationController+Socialize.h"
 
 @implementation SocializeNewCommentsNotificationDisplayController
 @synthesize navigationController = navigationController_;
@@ -48,7 +49,7 @@
 
 - (UINavigationController*)navigationController {
     if (navigationController_ == nil) {
-        navigationController_ = [[UINavigationController alloc] initWithRootViewController:self.commentsTableViewController];
+        navigationController_ = [[UINavigationController socializeNavigationControllerWithRootViewController:self.commentsTableViewController] retain];
         [navigationController_ pushViewController:self.activityDetailsViewController animated:NO];
         navigationController_.delegate = self;
     }

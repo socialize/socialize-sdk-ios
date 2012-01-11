@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIView+Layout.h"
 #import "PropertyHelpers.h"
+#import "UIButton+Socialize.h"
 
 CGFloat const kActivityDetailViewOffset = 20;
 CGFloat const kMinRecentActivityHeight = 200;
@@ -38,6 +39,8 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 @synthesize recentActivityLabel;
 @synthesize dateFormatter;
 @synthesize htmlPageCreator;
+@synthesize showEntityView = showEntityView_;
+@synthesize showEntityButton = showEntityButton_;
 
 #pragma mark init/dealloc methods
 - (void)dealloc
@@ -54,7 +57,9 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     [username release]; 
     [recentActivityLabel release];
     [dateFormatter release]; 
-    [htmlPageCreator release]; 
+    [htmlPageCreator release];
+    [showEntityView_ release];
+    [showEntityButton_ release];
     
     [super dealloc];
 }
@@ -73,6 +78,10 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
         self.profileNameButton.titleLabel.layer.masksToBounds = NO; 
     }
     return self;
+}
+
+- (void)awakeFromNib {
+    [self.showEntityButton addSocializeRoundedGrayButtonImages];
 }
 
 -(void) addShadowForView:(UIView*)view
@@ -167,8 +176,11 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     messageFrame.size.height = messageHeight;
     activityMessageView.frame = messageFrame;
     
-    // adjust the activity view frame below the activity message
-    [self.recentActivityView positionBelowView:self.activityMessageView];
+    // Show entity is below the variable-height activity message view
+    [self.showEntityView positionBelowView:self.activityMessageView];
+    
+    // Activity view is below the show entity view
+    [self.recentActivityView positionBelowView:self.showEntityView];
     
     // fill out the remaining view with the recent activity view
     [self.recentActivityView fillRestOfView:self minSize:CGSizeMake(self.frame.size.width,kMinRecentActivityHeight)];

@@ -61,6 +61,7 @@
     GHAssertEquals(self.commentsNotificationDisplayController.mainViewController, self.mockNavigationController, @"Should be navigation controller");
 }
 
+/*
 - (void)testDefaultNavigationController {
     id niceCommentsTableViewController = [OCMockObject niceMockForClass:[SocializeCommentsTableViewController class]];
     self.commentsNotificationDisplayController.commentsTableViewController = niceCommentsTableViewController;
@@ -73,6 +74,8 @@
     
     GHAssertEquals(defaultNav.delegate, self.commentsNotificationDisplayController, @"bad delegate");
 }
+ */
+
 
 - (void)testFinishingWithCommentsListNotifiesDelegate {
     [[self.mockDelegate expect] notificationDisplayControllerDidFinish:self.commentsNotificationDisplayController];

@@ -161,4 +161,23 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     return toInterfaceOrientation == UIInterfaceOrientationPortrait;
 }
+
+- (IBAction)showEntityButtonPressed:(id)sender {
+    SocializeEntityLoaderBlock entityLoader = [Socialize entityLoaderBlock];
+    if (entityLoader != nil) {
+        entityLoader(self.navigationController, self.socializeActivity.entity);
+    }
+}
+
+- (void)activityViewController:(SocializeActivityViewController*)activityViewController profileTappedForUser:(id<SocializeUser>)user {
+    
+}
+
+- (void)activityViewController:(SocializeActivityViewController *)activityViewController activityTapped:(id<SocializeActivity>)activity {
+    SocializeEntityLoaderBlock entityLoader = [Socialize entityLoaderBlock];
+    if (self.navigationController != nil && entityLoader != nil) {
+        entityLoader(self.navigationController, activity.entity);
+    }
+}
+
 @end

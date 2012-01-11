@@ -18,11 +18,12 @@
 @class ImagesCache;
 @protocol SocializeActivityDetailsViewControllerDelegate;
 
-@interface SocializeActivityDetailsViewController : SocializeBaseViewController {}
+@interface SocializeActivityDetailsViewController : SocializeBaseViewController <SocializeActivityViewControllerDelegate>
 -(id)initWithActivity:(id<SocializeActivity>)socializeActivity;
 -(id)init;
 -(void)fetchActivityForType:(NSString*)activityType activityID:(NSNumber*)activityID;
 -(void)configureDetailsView;
+- (IBAction)showEntityButtonPressed:(id)sender;
 
 @property (nonatomic, retain) IBOutlet SocializeActivityDetailsView*     activityDetailsView;
 @property (nonatomic, retain) id<SocializeActivity> socializeActivity;
