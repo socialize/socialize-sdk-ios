@@ -56,6 +56,8 @@
 	</dict>
 	<key>URLs</key>
 	<dict>
+		<key>RedirectBaseURL</key>
+		<string>http://r.getsocialize.com/</string>
 		<key>RestserverBaseURL</key>
 		<string>http://api.getsocialize.com/v1/</string>
 		<key>SecureRestserverBaseURL</key>

@@ -12,12 +12,14 @@ NSString * const kSocializeModuleConfigurationPrototypesKey = @"Prototypes";
 NSString * const kSocializeModuleConfigurationFormatterKey = @"Formatters";
 NSString * const kSecureRestserverBaseURL = @"SecureRestserverBaseURL";
 NSString * const kRestserverBaseURL = @"RestserverBaseURL";
+NSString * const kRedirectBaseURL = @"RedirectBaseURL";
 
 @interface SocializeConfiguration ()
 
 -(NSDictionary *)retrieveConfigurationDataFromFileAtPath:(NSString *)configurationPath;
 @property(nonatomic, copy) NSString * restserverBaseURL;
 @property(nonatomic, copy) NSString * secureRestserverBaseURL;
+@property(nonatomic, copy) NSString * redirectBaseURL;
 
 @end
 
@@ -28,6 +30,7 @@ NSString * const kRestserverBaseURL = @"RestserverBaseURL";
 @synthesize configurationFilePath = _configurationFilePath;
 @synthesize restserverBaseURL = _restserverBaseURL;
 @synthesize secureRestserverBaseURL = _secureRestserverBaseURL;
+@synthesize redirectBaseURL = _redirectBaseURL;
 
 static SocializeConfiguration *sharedConfiguration;
 + (SocializeConfiguration*)sharedConfiguration {
@@ -44,6 +47,7 @@ static SocializeConfiguration *sharedConfiguration;
     [_configurationFilePath release];
     [_restserverBaseURL release];
     [_secureRestserverBaseURL release];
+    [_redirectBaseURL release];
     [super dealloc];
 }
 
@@ -111,6 +115,15 @@ static SocializeConfiguration *sharedConfiguration;
     }
     
     return _secureRestserverBaseURL;
+}
+
+- (NSString*)redirectBaseURL {
+    if (_redirectBaseURL == nil) {
+        NSDictionary *configuration = [self.configurationInfo objectForKey:@"URLs"];
+        _redirectBaseURL = [[configuration objectForKey:kRedirectBaseURL] copy];
+    }
+    
+    return _redirectBaseURL;
 }
 
 @end

@@ -56,10 +56,12 @@
 	</dict>
 	<key>URLs</key>
 	<dict>
+		<key>RedirectBaseURL</key>
+		<string>http://r.getsocialize.com/</string>
 		<key>RestserverBaseURL</key>
-		<string>http://stage.api.getsocialize.com/v1/</string>
+		<string>http://api.getsocialize.com/v1/</string>
 		<key>SecureRestserverBaseURL</key>
-		<string>https://stage.api.getsocialize.com/v1/</string>
+		<string>https://api.getsocialize.com/v1/</string>
 	</dict>
 </dict>
 </plist>
