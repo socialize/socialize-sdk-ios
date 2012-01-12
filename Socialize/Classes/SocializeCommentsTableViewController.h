@@ -16,6 +16,8 @@
 @class CommentsTableFooterView;
 @class SocializeTableBGInfoView;
 @class ImagesCache;
+@class SocializeBubbleView;
+@class SocializeNotificationToggleBubbleContentView;
 
 /*
 @protocol SocializeCommentsDelegate 
@@ -64,6 +66,9 @@
 
 @property (nonatomic, assign) id<SocializeCommentsTableViewControllerDelegate> delegate;
 @property (nonatomic, retain) id<SocializeEntity> entity;
+
+@property (retain, nonatomic) SocializeBubbleView *bubbleView;
+@property (retain, nonatomic) SocializeNotificationToggleBubbleContentView *bubbleContentView;
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName;
 

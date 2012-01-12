@@ -565,6 +565,8 @@
 		AA0069BF14BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0069BC14BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.h */; };
 		AA0069C014BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0069BD14BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.m */; };
 		AA0069C114BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0069BD14BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.m */; };
+		AA047D7914BFC1F2005560C3 /* SocializeBubbleViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047D7814BFC1F2005560C3 /* SocializeBubbleViewTests.m */; };
+		AA047D8014C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047D7F14C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m */; };
 		AA047F9914AD5AA20047D596 /* SocializeNotificationHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AA047F9714AD5AA20047D596 /* SocializeNotificationHandler.h */; };
 		AA047F9A14AD5AA20047D596 /* SocializeNotificationHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AA047F9714AD5AA20047D596 /* SocializeNotificationHandler.h */; };
 		AA047F9B14AD5AA20047D596 /* SocializeNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047F9814AD5AA20047D596 /* SocializeNotificationHandler.m */; };
@@ -1406,6 +1408,17 @@
 		AAB127F214994A0C009AF443 /* TestSubscriptionService.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127F114994A0C009AF443 /* TestSubscriptionService.m */; };
 		AAB127F514995BB3009AF443 /* SocializeSubscriptionServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127F414995BB3009AF443 /* SocializeSubscriptionServiceTests.m */; };
 		AAB127FA14997745009AF443 /* SocializeSubscriptionFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB127F914997745009AF443 /* SocializeSubscriptionFormatterTests.m */; };
+		AAB427F814BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB427F614BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h */; };
+		AAB427F914BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB427F614BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h */; };
+		AAB427FA14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
+		AAB427FB14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
+		AAB427FD14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
+		AAB427FE14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
+		AAB427FF14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
+		AAB4280014BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
+		AAB4280114BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
+		AAB4280214BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
+		AAB4280314BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
 		AABB7D941433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D8F1433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib */; };
 		AABB7D951433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */; };
 		AABB7D961433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */; };
@@ -1638,6 +1651,10 @@
 		AAD4B4221460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD4B40C1460A45000F39D0A /* SocializeProfileEditViewController.m */; };
 		AAD4B4231460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD4B40C1460A45000F39D0A /* SocializeProfileEditViewController.m */; };
 		AAD67926144911DA00C17C4D /* UIImage+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD67924144911DA00C17C4D /* UIImage+Network.m */; };
+		AADE200914BE682700E59945 /* SocializeBubbleView.h in Headers */ = {isa = PBXBuildFile; fileRef = AADE200714BE682700E59945 /* SocializeBubbleView.h */; };
+		AADE200A14BE682700E59945 /* SocializeBubbleView.h in Headers */ = {isa = PBXBuildFile; fileRef = AADE200714BE682700E59945 /* SocializeBubbleView.h */; };
+		AADE200B14BE682700E59945 /* SocializeBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AADE200814BE682700E59945 /* SocializeBubbleView.m */; };
+		AADE200C14BE682700E59945 /* SocializeBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AADE200814BE682700E59945 /* SocializeBubbleView.m */; };
 		AAE7958F14684EB100BEAD28 /* TestLikeServices.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE7958D14684EB100BEAD28 /* TestLikeServices.h */; };
 		AAE7959014684EB100BEAD28 /* TestLikeServices.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE7958D14684EB100BEAD28 /* TestLikeServices.h */; };
 		AAE795AE14684F1E00BEAD28 /* TestActivityServices.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE795AC14684F1E00BEAD28 /* TestActivityServices.h */; };
@@ -2400,6 +2417,10 @@
 		9AC0259813BB8253004AB147 /* SocializeUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUserService.m; path = Classes/SocializeUserService.m; sourceTree = "<group>"; };
 		AA0069BC14BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNewCommentsNotificationDisplayController.h; path = Classes/SocializeNewCommentsNotificationDisplayController.h; sourceTree = "<group>"; };
 		AA0069BD14BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNewCommentsNotificationDisplayController.m; path = Classes/SocializeNewCommentsNotificationDisplayController.m; sourceTree = "<group>"; };
+		AA047D7714BFC1F2005560C3 /* SocializeBubbleViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBubbleViewTests.h; path = "Test Cases/SocializeBubbleViewTests.h"; sourceTree = "<group>"; };
+		AA047D7814BFC1F2005560C3 /* SocializeBubbleViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBubbleViewTests.m; path = "Test Cases/SocializeBubbleViewTests.m"; sourceTree = "<group>"; };
+		AA047D7E14C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNotificationToggleBubbleContentViewTests.h; path = "Test Cases/SocializeNotificationToggleBubbleContentViewTests.h"; sourceTree = "<group>"; };
+		AA047D7F14C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNotificationToggleBubbleContentViewTests.m; path = "Test Cases/SocializeNotificationToggleBubbleContentViewTests.m"; sourceTree = "<group>"; };
 		AA047F9714AD5AA20047D596 /* SocializeNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNotificationHandler.h; path = Classes/SocializeNotificationHandler.h; sourceTree = "<group>"; };
 		AA047F9814AD5AA20047D596 /* SocializeNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNotificationHandler.m; path = Classes/SocializeNotificationHandler.m; sourceTree = "<group>"; };
 		AA047F9D14AD63900047D596 /* SocializeNotificationHandlerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNotificationHandlerTests.h; path = "Test Cases/SocializeNotificationHandlerTests.h"; sourceTree = "<group>"; };
@@ -2610,6 +2631,9 @@
 		AAB127F814997745009AF443 /* SocializeSubscriptionFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeSubscriptionFormatterTests.h; path = "Test Cases/SocializeSubscriptionFormatterTests.h"; sourceTree = "<group>"; };
 		AAB127F914997745009AF443 /* SocializeSubscriptionFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeSubscriptionFormatterTests.m; path = "Test Cases/SocializeSubscriptionFormatterTests.m"; sourceTree = "<group>"; };
 		AAB2DEE5143A796300C3C1F5 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = "Frameworks/OCMock/Source/build/Release-iphoneos/libOCMock.a"; sourceTree = "<group>"; };
+		AAB427F614BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNotificationToggleBubbleContentView.h; path = Classes/SocializeNotificationToggleBubbleContentView.h; sourceTree = "<group>"; };
+		AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNotificationToggleBubbleContentView.m; path = Classes/SocializeNotificationToggleBubbleContentView.m; sourceTree = "<group>"; };
+		AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeNotificationToggleBubbleContentView.xib; sourceTree = "<group>"; };
 		AABB7D8F1433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeEditValueTableViewCell.xib; path = Resources/SocializeEditValueTableViewCell.xib; sourceTree = "<group>"; };
 		AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditTableViewCell.xib; path = Resources/SocializeProfileEditTableViewCell.xib; sourceTree = "<group>"; };
 		AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditTableViewImageCell.xib; path = Resources/SocializeProfileEditTableViewImageCell.xib; sourceTree = "<group>"; };
@@ -2639,6 +2663,8 @@
 		AAD67924144911DA00C17C4D /* UIImage+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Network.m"; path = "Classes/UIImage+Network.m"; sourceTree = "<group>"; };
 		AAD7E389144F80320073308D /* SocializeProfileViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileViewControllerTests.h; path = "Test Cases/SocializeProfileViewControllerTests.h"; sourceTree = "<group>"; };
 		AAD7E38A144F80320073308D /* SocializeProfileViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileViewControllerTests.m; path = "Test Cases/SocializeProfileViewControllerTests.m"; sourceTree = "<group>"; };
+		AADE200714BE682700E59945 /* SocializeBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBubbleView.h; path = Classes/SocializeBubbleView.h; sourceTree = "<group>"; };
+		AADE200814BE682700E59945 /* SocializeBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBubbleView.m; path = Classes/SocializeBubbleView.m; sourceTree = "<group>"; };
 		AAE7958D14684EB100BEAD28 /* TestLikeServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLikeServices.h; sourceTree = "<group>"; };
 		AAE7958E14684EB100BEAD28 /* TestLikeServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLikeServices.m; sourceTree = "<group>"; };
 		AAE795AC14684F1E00BEAD28 /* TestActivityServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestActivityServices.h; sourceTree = "<group>"; };
@@ -3245,6 +3271,7 @@
 		6D44A37613FC342D004B3A46 /* UI tests */ = {
 			isa = PBXGroup;
 			children = (
+				AA047D7614BFC1CC005560C3 /* Bubble */,
 				AA6FBAC514BCB52E00D8646C /* Notifications */,
 				AA51C14B1471D10700E5C003 /* SocializeBaseViewControllerTests.h */,
 				AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */,
@@ -3268,6 +3295,7 @@
 			children = (
 				16075490143302E4002E5A38 /* SocializeBaseViewController.h */,
 				16075491143302E4002E5A38 /* SocializeBaseViewController.m */,
+				AAB427EF14BFA7FC007AAF90 /* Bubble */,
 				AA88E835147D77FC00123E6F /* Base Table View */,
 				AA08B3D9147C31B700E6D1CA /* Activity */,
 				AAF903101473040300AB8674 /* Comment Details */,
@@ -3581,6 +3609,17 @@
 				6D7343D013F5CD4B0076A8E6 /* SocializeConfigurationInfo.plist */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		AA047D7614BFC1CC005560C3 /* Bubble */ = {
+			isa = PBXGroup;
+			children = (
+				AA047D7714BFC1F2005560C3 /* SocializeBubbleViewTests.h */,
+				AA047D7814BFC1F2005560C3 /* SocializeBubbleViewTests.m */,
+				AA047D7E14C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.h */,
+				AA047D7F14C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m */,
+			);
+			name = Bubble;
 			sourceTree = "<group>";
 		};
 		AA047F9614AD5A6E0047D596 /* Notifications */ = {
@@ -3947,6 +3986,18 @@
 			name = Other;
 			sourceTree = "<group>";
 		};
+		AAB427EF14BFA7FC007AAF90 /* Bubble */ = {
+			isa = PBXGroup;
+			children = (
+				AADE200714BE682700E59945 /* SocializeBubbleView.h */,
+				AADE200814BE682700E59945 /* SocializeBubbleView.m */,
+				AAB427F614BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h */,
+				AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */,
+				AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */,
+			);
+			name = Bubble;
+			sourceTree = "<group>";
+		};
 		AAB64D99147307DA009E892D /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -4285,6 +4336,8 @@
 				AA047F9A14AD5AA20047D596 /* SocializeNotificationHandler.h in Headers */,
 				AA0069BF14BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.h in Headers */,
 				AA6FBAC214BCAC0C00D8646C /* SocializeNotificationDisplayController.h in Headers */,
+				AADE200A14BE682700E59945 /* SocializeBubbleView.h in Headers */,
+				AAB427F914BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4387,6 +4440,8 @@
 				AA047F9914AD5AA20047D596 /* SocializeNotificationHandler.h in Headers */,
 				AA0069BE14BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.h in Headers */,
 				AA6FBAC114BCAC0C00D8646C /* SocializeNotificationDisplayController.h in Headers */,
+				AADE200914BE682700E59945 /* SocializeBubbleView.h in Headers */,
+				AAB427F814BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4789,6 +4844,7 @@
 				AA7FB8E31491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8EA1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				AAF7A31C149B38DC00FE67E9 /* Smiley.png in Resources */,
+				AAB427FF14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4969,6 +5025,7 @@
 				AA7FB8E11491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8E81491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				1854042C14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib in Resources */,
+				AAB427FD14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5145,6 +5202,7 @@
 				AA7FB8E51491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8EC1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A914AADC0D0052720B /* SocializeActivityDetailsViewController.xib in Resources */,
+				AAB4280114BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5341,6 +5399,7 @@
 				AA7FB8ED1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A414AADBF70052720B /* SocializeActivityDetailsViewController.xib in Resources */,
 				AA9D780414BE191A00D76D6B /* SampleEntityLoader.xib in Resources */,
+				AAB4280214BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5409,6 +5468,7 @@
 				AA7FB8E71491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8EE1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				AA9D780514BE191A00D76D6B /* SampleEntityLoader.xib in Resources */,
+				AAB4280314BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5607,6 +5667,7 @@
 				AA7FB8EB1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A514AADBF90052720B /* SocializeActivityDetailsViewController.xib in Resources */,
 				AA9D780314BE191A00D76D6B /* SampleEntityLoader.xib in Resources */,
+				AAB4280014BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5785,6 +5846,7 @@
 				AA7FB8E21491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8E91491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A614AADBFC0052720B /* SocializeActivityDetailsViewController.xib in Resources */,
+				AAB427FE14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6132,6 +6194,8 @@
 				AAF559DC14AE51EF00565248 /* DebugUtil.m in Sources */,
 				AA0069C014BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.m in Sources */,
 				AA6FBAC314BCAC0C00D8646C /* SocializeNotificationDisplayController.m in Sources */,
+				AADE200B14BE682700E59945 /* SocializeBubbleView.m in Sources */,
+				AAB427FA14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6204,6 +6268,8 @@
 				AA047F9F14AD63900047D596 /* SocializeNotificationHandlerTests.m in Sources */,
 				189596D514B23A2100AC4ECC /* ActivityDetailsViewTests.m in Sources */,
 				AA6FBAC814BCB6D900D8646C /* SocializeNewCommentsNotificationDisplayControllerTests.m in Sources */,
+				AA047D7914BFC1F2005560C3 /* SocializeBubbleViewTests.m in Sources */,
+				AA047D8014C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6459,6 +6525,8 @@
 				AAF559DD14AE51EF00565248 /* DebugUtil.m in Sources */,
 				AA0069C114BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.m in Sources */,
 				AA6FBAC414BCAC0C00D8646C /* SocializeNotificationDisplayController.m in Sources */,
+				AADE200C14BE682700E59945 /* SocializeBubbleView.m in Sources */,
+				AAB427FB14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

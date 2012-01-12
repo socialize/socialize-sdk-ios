@@ -24,6 +24,9 @@
 #import "SocializeCommentsService.h"
 #import "SocializeActivityDetailsViewController.h"
 #import "SocializeSubscriptionService.h"
+#import "SocializeBubbleView.h"
+#import "UIView+Layout.h"
+#import "SocializeNotificationToggleBubbleContentView.h"
 
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
@@ -50,6 +53,8 @@
 @synthesize entity = _entity;
 
 @synthesize delegate = delegate_;
+@synthesize bubbleView = bubbleView_;
+@synthesize bubbleContentView = bubbleContentView_;
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName {
     SocializeCommentsTableViewController* commentsController = [[[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString:entityName] autorelease];
@@ -172,6 +177,22 @@
     }
 }
 
+- (SocializeNotificationToggleBubbleContentView*)bubbleContentView {
+    if (bubbleContentView_ == nil) {
+        bubbleContentView_ = [[SocializeNotificationToggleBubbleContentView notificationToggleBubbleContentViewFromNib] retain];
+    }
+    
+    return bubbleContentView_;
+}
+
+- (SocializeBubbleView*)bubbleView {
+    if (bubbleView_ == nil) {
+        bubbleView_ = [[SocializeBubbleView alloc] initWithSize:CGSizeMake(240, 100)];
+        [bubbleView_.contentView addSubview:self.bubbleContentView];
+    }
+    return bubbleView_;
+}
+
 - (IBAction)subscribedButtonPressed:(id)sender {
     if (self.subscribedButton.selected) {
         self.subscribedButton.selected = NO;
@@ -180,6 +201,16 @@
         self.subscribedButton.selected = YES;
         [self.socialize subscribeToCommentsForEntityKey:_entity.key];
     }
+    
+    if (self.bubbleView != nil) {
+        [self.bubbleView removeFromSuperview];
+        self.bubbleView = nil;
+    }
+    [self.bubbleContentView configureForNotificationsEnabled:self.subscribedButton.selected];
+    
+    CGRect buttonRect = [self.subscribedButton convertRect:self.subscribedButton.frame toView:self.view];
+    [self.bubbleView showFromRect:buttonRect inView:self.view offset:CGPointMake(0, -15) animated:YES];
+    [self.bubbleView performSelector:@selector(animateOutAndRemoveFromSuperview) withObject:nil afterDelay:2];
 }
 
 #pragma mark -
@@ -365,6 +396,8 @@
     [_closeButton release];
     [_brandingButton release];
     [_subscribedButton release];
+    [bubbleContentView_ release];
+    [bubbleView_ release];
     
     [super dealloc];
 }

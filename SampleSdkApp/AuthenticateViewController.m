@@ -11,7 +11,6 @@
 #import "TestListController.h"
 #import "UIButton+Socialize.h"
 
-
 #define TESTING_FACEBOOK_TOKEN @"BAABpKH5ZBZBg8BANSQGGvcd7DGCxJvOU0S1QZCsF3ZBrmlMT9dZCrLGA5oQJ06njmIE1COAgjsmWDJsRwIig30jbhPZCArmdBe4WgY9CZAL9OZBfs1JIQtAf8F0btxVc2baUJZCZBhpgk3LQZDZD"
 
 @interface AuthenticateViewController()
@@ -87,6 +86,9 @@
 #else
     [Socialize storeFacebookLocalAppId:nil];
 #endif
+    
+//    UIViewController *comments = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:@"http://www.npr.org/"];
+//    [self presentModalViewController:comments animated:YES];
 }
 
 - (void)viewDidUnload
@@ -98,7 +100,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return NO;
+    return interfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
 -(NSDictionary*)authInfoFromConfig
