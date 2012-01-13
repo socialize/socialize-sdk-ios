@@ -82,6 +82,7 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 
 - (void)awakeFromNib {
     [self.showEntityButton addSocializeRoundedGrayButtonImages];
+    [self configureProfileImage];
 }
 
 -(void) addShadowForView:(UIView*)view
