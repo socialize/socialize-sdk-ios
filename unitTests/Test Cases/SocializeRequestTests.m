@@ -126,9 +126,10 @@
 {    
     NSString   *language = [[NSLocale currentLocale] objectForKey: NSLocaleLanguageCode];
     NSString   *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
-    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v1.1.7; %@_%@; BundleID/%@;",
+    NSString * userAgentStr = [NSString stringWithFormat:@"iOS-%@/%@ SocializeSDK/v%@; %@_%@; BundleID/%@;",
                                [[UIDevice currentDevice]systemVersion],
                                [[UIDevice currentDevice]model],
+                               SOCIALIZE_VERSION_STRING,
                                language,
                                countryCode,
                                [[NSBundle mainBundle] bundleIdentifier]];
