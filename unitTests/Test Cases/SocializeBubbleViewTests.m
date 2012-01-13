@@ -51,7 +51,7 @@
     
     [self prepare];
     [self.socializeBubbleView showFromRect:CGRectMake(10, 10, 20, 20) inView:mockView offset:CGPointMake(0, -10) animated:YES];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:2];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
 }
 
 - (void)testAnimateOutRemovesFromSuperview {
@@ -61,7 +61,7 @@
 
     [self prepare];
     [self.socializeBubbleView animateOutAndRemoveFromSuperview];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:2];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
 }
 
 @end
