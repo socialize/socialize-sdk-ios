@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "SocializeErrorDefinitions.h"
 
+#define SOCIALIZE_VERSION 1.3
+#define SOCIALIZE_VERSION_STRING @"1.3"
+
 /** 
  Third party authentication type 
 */
