@@ -25,6 +25,7 @@
 @synthesize mockSocializeActivity = mockSocializeActivity_;
 @synthesize mockActivityViewController = mockActivityViewController_;
 @synthesize mockSocializeUser = mockSocializeUser_;
+@synthesize mockShowEntityButton = mockShowEntityButton_;
 
 + (SocializeBaseViewController*)createController {
     return [[[SocializeActivityDetailsViewController alloc] init] autorelease];
@@ -39,7 +40,7 @@
     self.mockActivityDetailsView = [OCMockObject niceMockForClass:[SocializeActivityDetailsView class]];
     self.activityDetailsViewController.activityDetailsView = self.mockActivityDetailsView;
 
-    self.mockSocializeActivity = [OCMockObject niceMockForProtocol:@protocol(SocializeActivity)];
+    self.mockSocializeActivity = [OCMockObject niceMockForProtocol:@protocol(SocializeComment)];
     //we have to stub out the user methods because they get called and set when a new activity is passed in
     self.mockSocializeUser = [OCMockObject niceMockForProtocol:@protocol(SocializeUser)];
     [[[self.mockSocializeActivity stub] andReturn:self.mockSocializeUser] user];
@@ -47,6 +48,9 @@
     self.activityDetailsViewController.socializeActivity = self.mockSocializeActivity;
     self.mockActivityViewController = [OCMockObject mockForClass:[SocializeActivityViewController class]];
     self.activityDetailsViewController.activityViewController = self.mockActivityViewController;
+    
+    self.mockShowEntityButton = [OCMockObject mockForClass:[UIButton class]];
+    [[[self.mockActivityDetailsView stub] andReturn:self.mockShowEntityButton] showEntityButton];
 }
 
 -(void)tearDown
@@ -57,13 +61,15 @@
     [self.mockSocializeActivity verify];
     [self.mockActivityViewController verify];
     [self.mockSocializeUser verify];
-
+    [self.mockShowEntityButton verify];
+    
     self.activityDetailsViewController = nil;
     self.partialActivityDetailsViewController = nil;
     self.mockActivityDetailsView = nil;
     self.mockSocializeActivity = nil;
     self.mockActivityViewController = nil;
     self.mockSocializeUser = nil;
+    self.mockShowEntityButton = nil;
     [super tearDown];
 }
 
@@ -173,5 +179,36 @@
     [self.activityDetailsViewController activityViewController:self.mockActivityViewController activityTapped:mockActivity];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.5];
 }
+
+- (void)testLoadActivityDetailDataWithComment {
+    NSString *testString = @"blah";
+    NSDate *testDate = [NSDate date];
+    NSString *testKey = @"testKey";
+    
+    // Stub in some information for the comment, and an entity that it is about
+    [[[self.mockSocializeActivity stub] andReturn:testString] text];
+    [[[self.mockSocializeActivity stub] andReturn:testDate] date];
+    id mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
+    [[[mockEntity stub] andReturn:testKey] key];
+    [[[mockEntity stub] andReturn:nil] name];
+    [[[self.mockSocializeActivity stub] andReturn:mockEntity] entity];
+    
+    // Should initialize the activity controller (tableview)
+    [[self.mockActivityViewController expect] initializeContent];
+    
+    // Should update the actual details view with comment info
+    [[self.mockActivityDetailsView expect] updateActivityMessage:testString withActivityDate:testDate];
+    
+    // Some internal setup tested elsewhere
+    [[self.partialActivityDetailsViewController expect] updateProfileImage];
+    [[self.partialActivityDetailsViewController expect] stopLoadAnimation];
+    
+    // View entity button's title should be set to reflect the comment's entity
+    [[self.mockShowEntityButton expect] setTitle:testKey forState:UIControlStateNormal];
+     
+    [self.activityDetailsViewController loadActivityDetailData];
+}
+     
+
 
 @end
