@@ -214,10 +214,6 @@
             break;
         case 9:
         {
-            [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity>entity) {
-                NSLog(@"View entity %@!", entity);
-            }];
-            
             UIViewController *profile = [SocializeProfileViewController currentUserProfileWithDelegate:self];
 #ifdef RUN_KIF_TESTS
             UINavigationController *nav = (UINavigationController*)profile;
