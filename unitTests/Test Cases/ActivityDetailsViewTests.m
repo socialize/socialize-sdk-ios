@@ -8,6 +8,7 @@
 
 #import "ActivityDetailsViewTests.h"
 #import "HtmlPageCreator.h"
+#import "UIButton+Socialize.h"
 
 @implementation ActivityDetailsViewTests
 
@@ -15,6 +16,7 @@
 @synthesize partialActivityDetailsView = partialActivitydetailsView_;
 @synthesize mockHtmlCreator = mockHtmlCreator_;
 @synthesize mockActivityMessageView = mockActivityMessageView_;
+@synthesize mockShowEntityButton = mockShowEntityButton_;
 
 -(void)setUp {
     self.activityDetailsView = [[SocializeActivityDetailsView alloc] init];
@@ -28,23 +30,27 @@
     self.mockActivityMessageView  = [OCMockObject mockForClass:[UIWebView  class]];
     self.activityDetailsView.activityMessageView = self.mockActivityMessageView;
     
+    self.mockShowEntityButton = [OCMockObject mockForClass:[UIButton class]];
+    self.activityDetailsView.showEntityButton = self.mockShowEntityButton;
 }
 
 -(void)tearDown {
     [self.partialActivityDetailsView verify];
     [self.mockHtmlCreator verify];
     [self.mockActivityMessageView verify];
+    [self.mockShowEntityButton verify];
     
     self.activityDetailsView = nil;
     self.partialActivityDetailsView = nil;
     self.mockHtmlCreator = nil;
     self.mockActivityMessageView = nil;
+    self.mockShowEntityButton = nil;
 }
 
 -(void) testUpdateActivityMessage {
     //expect that the load template is called
     [[self.mockHtmlCreator expect] loadTemplate:OCMOCK_ANY];
-    [[self.mockHtmlCreator expect] addInformation:OCMOCK_ANY forTag:@"DATE_TEXT"];
+    [[self.mockHtmlCreator  expect] addInformation:OCMOCK_ANY forTag:@"DATE_TEXT"];
     [[self.mockHtmlCreator expect] addInformation:OCMOCK_ANY forTag:@"COMMENT_TEXT"];
     
     NSString* sampleHTML = @"<bold>test</bold>";
@@ -60,6 +66,11 @@
 -(void)testWebViewDidFinish {
     [[self.partialActivityDetailsView expect] layoutActivityDetailsSubviews];
     [self.activityDetailsView webViewDidFinishLoad:self.mockActivityMessageView];
+}
+
+- (void)testAwakeFromNibConfiguresButton {
+    [[self.mockShowEntityButton expect] addSocializeRoundedGrayButtonImages];
+    [self.activityDetailsView awakeFromNib];
 }
 
 @end

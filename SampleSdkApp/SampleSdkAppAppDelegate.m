@@ -12,6 +12,7 @@
 #import <Socialize/Socialize.h>
 #import "TestListController.h"
 #include <AvailabilityMacros.h>
+#import "SampleEntityLoader.h"
 
 #if RUN_GHUNIT_TESTS
 #import <GHUnitIOS/GHUnit.h>
@@ -56,6 +57,11 @@
     }];
 #endif
 
+    [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity>entity) {
+        SampleEntityLoader *entityLoader = [[[SampleEntityLoader alloc] initWithEntity:entity] autorelease];
+        [navigationController pushViewController:entityLoader animated:YES];
+    }];
+    
     return YES;
 }
 
@@ -107,7 +113,7 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    if ([Socialize handleSocializeNotification:userInfo]) {
+    if ([Socialize handleNotification:userInfo]) {
         return;
     }
     

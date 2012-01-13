@@ -16,17 +16,13 @@ static SocializeNotificationHandler *sharedNotificationHandler;
 
 @implementation SocializeNotificationHandler
 @synthesize socialize = socialize_;
-@synthesize navigationController = navigationController_;
 @synthesize displayWindow = displayWindow_;
-@synthesize activityDetailsViewController = activityDetailsViewController_;
+@synthesize displayControllers = displayControllers_;
 
 - (void)dealloc {
     self.socialize = nil;
-    self.navigationController = nil;
     self.displayWindow = nil;
-    
-    [activityDetailsViewController_ setDelegate:nil];
-    self.activityDetailsViewController = nil;
+    self.displayControllers = nil;
     
     [super dealloc];
 }
@@ -39,11 +35,95 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     return socialize_;
 }
 
+- (NSMutableArray*)displayControllers {
+    if (displayControllers_ == nil) {
+        displayControllers_ = [[NSMutableArray alloc] init];
+    }
+    return displayControllers_;
+}
+
 - (UIWindow*)displayWindow {
     if (displayWindow_ == nil) {
-        displayWindow_ = [[[UIApplication sharedApplication] keyWindow] retain];
+        displayWindow_ = [[[[UIApplication sharedApplication] windows] objectAtIndex:0] retain];
     }
     return displayWindow_;
+}
+
+- (void)addDisplayController:(SocializeNotificationDisplayController*)displayController {
+    // Cover entire window, except for status bar
+    CGRect statusFrame = [[UIApplication sharedApplication] statusBarFrame];
+    CGRect windowFrame = self.displayWindow.frame;
+    displayController.mainViewController.view.frame = CGRectMake(0, statusFrame.size.height, windowFrame.size.width, windowFrame.size.height - statusFrame.size.height);
+
+    // Add as subview
+    [self.displayWindow addSubview:displayController.mainViewController.view];
+    [self.displayControllers addObject:displayController];
+}
+
+- (SocializeNotificationDisplayController*)topDisplayController {
+    return [self.displayControllers lastObject];
+}
+
+- (void)removeDisplayController:(SocializeNotificationDisplayController*)displayController {
+    SocializeNotificationDisplayController *top = [self topDisplayController];
+    NSAssert(top == displayController, @"Socialize: tried to remove non-topmost display controller");
+    
+    [top.mainViewController.view removeFromSuperview];
+    [self.displayControllers removeLastObject];
+}
+
+- (void)animatedDismissOfTopDisplayController {
+    SocializeNotificationDisplayController *top = [self topDisplayController];
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         CGRect frame = top.mainViewController.view.frame;
+                         frame.origin.y = frame.origin.y + frame.size.height;
+                         top.mainViewController.view.frame = frame;
+                     } completion:^(BOOL finished) {
+                         [self removeDisplayController:top];
+                     }];
+}
+
+- (SocializeNewCommentsNotificationDisplayController*)createNewCommentsDisplayControllerForActivityType:(NSString*)activityType activityID:(NSNumber*)activityID {
+    SocializeNewCommentsNotificationDisplayController *display = [[[SocializeNewCommentsNotificationDisplayController alloc] init] autorelease];
+    display.activityType = activityType;
+    display.activityID = activityID;
+    display.delegate = self;
+    
+    return display;
+}
+
+- (void)addNewCommentsNotificationDisplayForActivityType:(NSString*)activityType activityID:(NSNumber*)activityID {
+    SocializeNewCommentsNotificationDisplayController *display = [self createNewCommentsDisplayControllerForActivityType:activityType activityID:activityID];
+    [self addDisplayController:display];
+}
+
+- (void)notificationDisplayControllerDidFinish:(SocializeNotificationDisplayController*)notificationController {
+    [self animatedDismissOfTopDisplayController];    
+}
+
+- (void)handleNotificationForNotificationType:(NSString*)notificationType activityType:(NSString*)activityType activityID:(NSNumber*)activityID {
+    if ([notificationType isEqualToString:@"new_comments"]) {
+        [self addNewCommentsNotificationDisplayForActivityType:activityType activityID:activityID];
+    } else {
+        NSAssert(NO, @"Tried to handle unknown notification type %@", notificationType);
+    }
+}
+
+- (BOOL)handleSocializeNotification:(NSDictionary*)userInfo {
+    
+    // Make sure this is a socialize notification that we are willing to handle in this release
+    if (![SocializeNotificationHandler isSocializeNotification:userInfo])
+        return NO;
+    
+    NSDictionary *socializeDictionary = [userInfo objectForKey:@"socialize"];
+    
+    NSNumber *activityID = [socializeDictionary objectForKey:@"activity_id"];
+    NSString *activityType = [socializeDictionary objectForKey:@"activity_type"];
+    NSString *notificationType = [socializeDictionary objectForKey:@"notification_type"];
+    [self handleNotificationForNotificationType:notificationType activityType:activityType activityID:activityID];
+    
+    return YES;
 }
 
 + (SocializeNotificationHandler*)sharedNotificationHandler {
@@ -62,66 +142,5 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     return YES;
 }
 
-- (SocializeActivityDetailsViewController*)activityDetailsViewController {
-    if (activityDetailsViewController_ == nil) {
-        activityDetailsViewController_ = [[SocializeActivityDetailsViewController alloc] init];
-        activityDetailsViewController_.delegate = self;
-    }
-    
-    return activityDetailsViewController_;
-}
-
-- (UINavigationController*)navigationController {
-    if (navigationController_ == nil) {
-        navigationController_ = [[UINavigationController alloc] initWithRootViewController:self.activityDetailsViewController];
-    }
-    return navigationController_;
-}
-
--(void)showActivityDetailsForActivityType:(NSString*)activityType activityID:(NSNumber*)activityID {
-    NSAssert([activityType isEqualToString:@"comment"], @"Socialize Notification is of type new_comments, but activity is not a comment");
-    NSAssert(activityID != nil, @"Socialize Notification is Missing Comment ID");
-    
-    self.activityDetailsViewController = nil;
-    self.navigationController = nil;
-
-    CGRect statusFrame = [[UIApplication sharedApplication] statusBarFrame];
-    CGRect windowFrame = self.displayWindow.frame;
-    
-    self.navigationController.view.frame = CGRectMake(0, statusFrame.size.height, windowFrame.size.width, windowFrame.size.height - statusFrame.size.height);
-    [self.displayWindow addSubview:self.navigationController.view];
-    
-    [self.activityDetailsViewController fetchActivityForType:activityType activityID:activityID];
-}
-
-- (BOOL)handleSocializeNotification:(NSDictionary*)userInfo {
-    if (![SocializeNotificationHandler isSocializeNotification:userInfo])
-        return NO;
-    
-    NSDictionary *socializeDictionary = [userInfo objectForKey:@"socialize"];
-    
-    NSNumber *activityID = [socializeDictionary objectForKey:@"activity_id"];
-    NSString *activityType = [socializeDictionary objectForKey:@"activity_type"];
-    [self showActivityDetailsForActivityType:activityType activityID:activityID];
-    
-    return YES;
-}
-
-- (void)animatedDismissOfNavigationController {
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         CGRect frame = self.navigationController.view.frame;
-                         frame.origin.y = frame.origin.y + frame.size.height;
-                         self.navigationController.view.frame = frame;
-                     } completion:^(BOOL finished) {
-                         [self.navigationController.view removeFromSuperview];
-                         self.navigationController = nil;
-                         self.activityDetailsViewController = nil;
-                     }];
-}
-
-- (void)activityDetailsViewControllerDidDismiss:(SocializeActivityDetailsViewController *)activityDetailsViewController {
-    [self animatedDismissOfNavigationController];
-}
 
 @end

@@ -80,6 +80,10 @@
             //  All the entity related information can be fetched here ie stats or name.
             self.socializeActivity = (id<SocializeActivity>)object;
             [self loadActivityDetailData];
+            
+            if ([self.delegate respondsToSelector:@selector(activityDetailsViewController:didLoadActivity:)]) {
+                [self.delegate activityDetailsViewController:self didLoadActivity:self.socializeActivity];
+            }
         }
     }
 }
@@ -151,6 +155,28 @@
 - (void)doneButtonPressed:(UIBarButtonItem *)button {
     if ([self.delegate respondsToSelector:@selector(activityDetailsViewControllerDidDismiss:)]) {
         [self.delegate activityDetailsViewControllerDidDismiss:self];
+    }
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    return toInterfaceOrientation == UIInterfaceOrientationPortrait;
+}
+
+- (IBAction)showEntityButtonPressed:(id)sender {
+    SocializeEntityLoaderBlock entityLoader = [Socialize entityLoaderBlock];
+    if (entityLoader != nil) {
+        entityLoader(self.navigationController, self.socializeActivity.entity);
+    }
+}
+
+- (void)activityViewController:(SocializeActivityViewController*)activityViewController profileTappedForUser:(id<SocializeUser>)user {
+    
+}
+
+- (void)activityViewController:(SocializeActivityViewController *)activityViewController activityTapped:(id<SocializeActivity>)activity {
+    SocializeEntityLoaderBlock entityLoader = [Socialize entityLoaderBlock];
+    if (self.navigationController != nil && entityLoader != nil) {
+        entityLoader(self.navigationController, activity.entity);
     }
 }
 

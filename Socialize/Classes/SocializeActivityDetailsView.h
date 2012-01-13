@@ -29,6 +29,8 @@
 @property (nonatomic, retain) IBOutlet UIWebView*       activityMessageView; 
 @property (nonatomic, retain) IBOutlet UIButton*        profileNameButton;
 @property (nonatomic, retain) IBOutlet UIImageView*     profileImage;
+@property (nonatomic, retain) IBOutlet UIView *showEntityView;
+@property (nonatomic, retain) IBOutlet UIButton *showEntityButton;
 /* recent activity view is a container view for the tableview and headers */
 @property (nonatomic, retain) UIView *                  recentActivityView;
 @property (nonatomic, retain) UIView *                  activityTableView;

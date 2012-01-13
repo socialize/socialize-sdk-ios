@@ -13,9 +13,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AA3E209D1461F057000321BF"
-               BuildableName = "IntegrationTests.app"
-               BlueprintName = "IntegrationTests"
+               BlueprintIdentifier = "AAAFE5E314355BF900851C73"
+               BuildableName = "SampleSdkApp.app"
+               BlueprintName = "SampleSdkApp"
                ReferencedContainer = "container:SocializeSDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,27 +31,27 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AA3E209D1461F057000321BF"
-            BuildableName = "IntegrationTests.app"
-            BlueprintName = "IntegrationTests"
+            BlueprintIdentifier = "AAAFE5E314355BF900851C73"
+            BuildableName = "SampleSdkApp.app"
+            BlueprintName = "SampleSdkApp"
             ReferencedContainer = "container:SocializeSDK.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
    <LaunchAction
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AA3E209D1461F057000321BF"
-            BuildableName = "IntegrationTests.app"
-            BlueprintName = "IntegrationTests"
+            BlueprintIdentifier = "AAAFE5E314355BF900851C73"
+            BuildableName = "SampleSdkApp.app"
+            BlueprintName = "SampleSdkApp"
             ReferencedContainer = "container:SocializeSDK.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,9 +74,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AA3E209D1461F057000321BF"
-            BuildableName = "IntegrationTests.app"
-            BlueprintName = "IntegrationTests"
+            BlueprintIdentifier = "AAAFE5E314355BF900851C73"
+            BuildableName = "SampleSdkApp.app"
+            BlueprintName = "SampleSdkApp"
             ReferencedContainer = "container:SocializeSDK.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

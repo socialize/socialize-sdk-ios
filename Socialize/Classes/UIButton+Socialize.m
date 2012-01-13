@@ -191,5 +191,12 @@
     return  backButton;
 }
 
+- (void)addSocializeRoundedGrayButtonImages {
+    UIImage * normalImage = [[UIImage imageNamed:@"socialize-comment-button.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
+    UIImage * highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
+    
+    [self setBackgroundImage:normalImage forState:UIControlStateNormal];
+	[self setBackgroundImage:highlightImage forState:UIControlStateHighlighted];    
+}
 
 @end

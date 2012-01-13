@@ -144,4 +144,34 @@
     
     [self.activityDetailsViewController viewDidLoad];
 }
+
+- (void)testPressingShowEntityButtonShowsEntityLoader {
+    [Socialize setEntityLoaderBlock:^(UINavigationController *nav, id<SocializeEntity>entity) {
+        [self notify:kGHUnitWaitStatusSuccess];
+    }];
+    
+    [self prepare];
+    [self.activityDetailsViewController showEntityButtonPressed:nil];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.5];
+}
+
+- (void)testTappingActivityShowsEntityLoader {
+    // The activity that will be tapped, and its entity
+    id mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
+    id mockActivity = [OCMockObject mockForProtocol:@protocol(SocializeActivity)];
+    [[[mockActivity stub] andReturn:mockEntity] entity];
+    
+    // Set up an entity loader
+    [Socialize setEntityLoaderBlock:^(UINavigationController *nav, id<SocializeEntity>entity) {
+        GHAssertEquals(nav, self.mockNavigationController, @"bad nav");
+        GHAssertEquals(entity, mockEntity, @"bad ent");
+        [self notify:kGHUnitWaitStatusSuccess];
+    }];
+    
+    // Simulate tapping activity (this is a row tap in the child controller)
+    [self prepare];
+    [self.activityDetailsViewController activityViewController:self.mockActivityViewController activityTapped:mockActivity];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.5];
+}
+
 @end

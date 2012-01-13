@@ -29,6 +29,7 @@
 -(NSString*)getDateString:(NSDate*)date;
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 -(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment;
+- (void)getSubscriptionStatus;
 @end
 
 @implementation SocializeCommentsTableViewController
@@ -46,6 +47,9 @@
 @synthesize closeButton = _closeButton;
 @synthesize brandingButton = _brandingButton;
 @synthesize subscribedButton = _subscribedButton;
+@synthesize entity = _entity;
+
+@synthesize delegate = delegate_;
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName {
     SocializeCommentsTableViewController* commentsController = [[[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString:entityName] autorelease];
@@ -80,12 +84,15 @@
 
 - (void)afterLoginAction {
     [self initializeContent];
+    [self getSubscriptionStatus];
 }
 
 - (void)loadContentForNextPageAtOffset:(NSInteger)offset {
-    [self.socialize getCommentList:_entity.key
-                             first:[NSNumber numberWithInteger:offset]
-                              last:[NSNumber numberWithInteger:offset + self.pageSize]];
+    if ([_entity.key length] > 0) {
+        [self.socialize getCommentList:_entity.key
+                                 first:[NSNumber numberWithInteger:offset]
+                                  last:[NSNumber numberWithInteger:offset + self.pageSize]];
+    }
 }
 
 - (UIBarButtonItem*)closeButton {
@@ -110,7 +117,11 @@
 }
 
 - (void)closeButtonPressed:(id)button {
-    [self dismissModalViewControllerAnimated:YES];
+    if ([self.delegate respondsToSelector:@selector(commentsTableViewControllerDidFinish:)]) {
+        [self.delegate commentsTableViewControllerDidFinish:self];
+    } else {
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark SocializeService Delegate
@@ -156,7 +167,9 @@
 }
 
 - (void)getSubscriptionStatus {
-    [self.socialize getSubscriptionsForEntityKey:_entity.key first:nil last:nil];
+    if ([_entity.key length] > 0) {
+        [self.socialize getSubscriptionsForEntityKey:_entity.key first:nil last:nil];
+    }
 }
 
 - (IBAction)subscribedButtonPressed:(id)sender {
@@ -188,7 +201,6 @@
     self.navigationItem.rightBarButtonItem = self.closeButton;    
     
     self.subscribedButton.enabled = NO;
-    [self getSubscriptionStatus];
 }
 
 #pragma mark tableFooterViewDelegate

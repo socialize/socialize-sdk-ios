@@ -14,6 +14,4 @@
 @property (nonatomic, retain) SocializeNotificationHandler *notificationHandler;
 @property (nonatomic, retain) SocializeNotificationHandler *origNotificationHandler;
 @property (nonatomic, retain) id mockDisplayWindow;
-@property (nonatomic, retain) id mockActivityDetailsViewController;
-@property (nonatomic, retain) id mockNavigationController;
 @end

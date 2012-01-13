@@ -22,7 +22,7 @@ typedef enum
 -(void)configureWithoutResizingWithTitle:(NSString *)title type:(AMSocializeButtonType)type;
 -(void)configureWithType:(AMSocializeButtonType)type;
 -(void)configureWithoutResizingWithType:(AMSocializeButtonType)type;
-
+- (void)addSocializeRoundedGrayButtonImages;
 
 +(UIButton *)redSocializeNavBarButton;
 +(UIButton *)redSocializeNavBarButtonWithTitle:(NSString *)title;
