@@ -69,6 +69,7 @@
 @synthesize noAutoLayout = noAutoLayout_;
 @synthesize initialized = initialized_;
 @synthesize delegate = delegate_;
+@synthesize unconfiguredEmailAlert = unconfiguredEmailAlert_;
 
 - (void)dealloc
 {
@@ -79,7 +80,8 @@
     self.shareActionSheet = nil;
     self.shareComposer = nil;
     self.commentsNavController = nil;
-
+    self.unconfiguredEmailAlert = nil;
+    
     if (self.isViewLoaded) {
         [(SocializeActionView*)self.view setDelegate: nil];
     }
@@ -264,9 +266,29 @@
 
 #pragma mark Share via email
 
+- (UIAlertView*)unconfiguredEmailAlert {
+    if (unconfiguredEmailAlert_ == nil) {
+        unconfiguredEmailAlert_ = [[UIAlertView alloc] initWithTitle:@"Mail is not Configured" message:@"Please configure at least one mail account before using this feature."];
+        [unconfiguredEmailAlert_ addButtonWithTitle:@"Add Account" handler:^{
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=ACCOUNT_SETTINGS"]];
+        }];
+        [unconfiguredEmailAlert_ setCancelButtonWithTitle:@"Ok" handler:^{}];
+    }
+    
+    return unconfiguredEmailAlert_;
+}
+
+- (BOOL)canSendMail {
+    return [MFMailComposeViewController canSendMail];
+}
+
 -(void) shareViaEmail
 {
-    [self displayComposerSheet];
+    if ([self canSendMail]) {
+        [self displayComposerSheet];
+    } else {
+        [self.unconfiguredEmailAlert show];
+    }
 }
 
 - (MFMailComposeViewController*)shareComposer {
