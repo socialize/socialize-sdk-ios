@@ -85,11 +85,13 @@
     NSAssert(self.shareObject != nil, @"Share Object cannot be nil");
     NSAssert(self.shareProtocol != nil, @"Share Protocol cannot  be nil");
     
-    NSMutableDictionary* params;
-    if([Socialize applicationLink])
-        params = [self prepareApplicationInfoWithLink: [Socialize applicationLink]];
-    else
-        params = [NSMutableDictionary dictionary];
+    NSString *applicationURL = [Socialize applicationURL];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+              applicationURL, @"link",
+              @"Download the app now to join the conversation.", @"caption",
+              self.shareObject.application.name, @"name", 
+              nil];
     
 
     SEL prepareSelector = NSSelectorFromString([prepareActions objectForKey:[self.shareObject class]]);
@@ -116,21 +118,24 @@
 -(void)prepareForEntityShare: (NSMutableDictionary*) params
 {
     id<SocializeShare> share = (id<SocializeShare>)self.shareObject;
-    NSString* message = [NSString stringWithFormat:@"%@: \n %@ \n\n Shared from %@ using Socialize for iOS. \n http://www.getsocialize.com", share.text, share.entity.key, share.application.name];
+    NSString *objectURL = [Socialize objectURL:self.shareObject.entity];
+    NSString* message = [NSString stringWithFormat:@"%@: \n %@ \n\n Shared from %@ using Socialize for iOS. \n http://www.getsocialize.com/", share.text, objectURL, share.application.name];
     [params setObject:message forKey:@"message"]; 
 }
 
 -(void)prepareForCommentShare: (NSMutableDictionary*) params
 {
     id<SocializeComment> comment = (id<SocializeComment>)self.shareObject;
-    NSString* message = [NSString stringWithFormat:@"%@ \n\n %@ \n\n Posted from %@ using Socialize for iOS. \n http://www.getsocialize.com", comment.entity.key, comment.text, comment.application.name];
+    NSString *objectURL = [Socialize objectURL:self.shareObject.entity];
+    NSString* message = [NSString stringWithFormat:@"%@ \n\n %@ \n\n Posted from %@ using Socialize for iOS. \n http://www.getsocialize.com/", objectURL, comment.text, comment.application.name];
     [params setObject:message forKey:@"message"];
 }
 
 -(void)prepareForLikeShare: (NSMutableDictionary*) params
 {
     id<SocializeLike> like = (id<SocializeLike>)self.shareObject;
-    NSString* message = [NSString stringWithFormat:@"Liked %@ \n\n Posted from %@ using Socialize for iOS. \n http://www.getsocialize.com", like.entity.key, like.application.name];
+    NSString *objectURL = [Socialize objectURL:self.shareObject.entity];
+    NSString* message = [NSString stringWithFormat:@"Liked %@ \n\n Posted from %@ using Socialize for iOS. \n http://www.getsocialize.com/", objectURL, like.application.name];
     [params setObject:message forKey:@"message"];
 }
 

@@ -160,8 +160,6 @@
 
 -(void)testBuildShareForEntityWithApplicationLink
 {
-    [Socialize storeApplicationLink:@"test"];   
-    
     id mockShareProtocol = [OCMockObject partialMockForObject:[TestShareProvider createSuccessProvider:YES]];    
     [[[mockShareProtocol expect]andForwardToRealObject]requestWithGraphPath:@"me/feed" params:OCMOCK_ANY httpMethod:@"POST" completion:OCMOCK_ANY];
     
@@ -171,8 +169,6 @@
     [builder performShareForPath:@"me/feed"];
     
     [mockShareProtocol verify];
-    
-    [Socialize removeApplicationLink];
 }
 
 -(void)testBuildShareWithCallbacks

@@ -223,7 +223,6 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 }
 
 -(void)authenticateWithFacebook {
-    
     NSString *apiKey = [Socialize apiKey];
     NSString *apiSecret = [Socialize apiSecret];
     NSString *facebookAppId = [Socialize facebookAppId];
@@ -495,6 +494,25 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
     if (self == _sharedSocialize) {
         [self resendDeviceToken];
     }
+}
+
++ (NSString*)socializeRedirectURL:(NSString*)path {
+    NSString *redirectBaseURL = [[SocializeConfiguration sharedConfiguration] redirectBaseURL];
+    NSString *url = [redirectBaseURL stringByAppendingString:path];
+    return url;
+}
+
++ (NSString*)objectURL:(id<SocializeObject>)object {
+    NSString *suffix = [NSString stringWithFormat:@"e/%d", object.objectID];
+    NSString *url = [self socializeRedirectURL:suffix];
+    return url;
+}
+
++ (NSString*)applicationURL {
+    NSString *apiKey = [[NSUserDefaults standardUserDefaults] objectForKey:SOCIALIZE_API_KEY];
+    NSString *suffix = [NSString stringWithFormat:@"a/%@", apiKey];
+    NSString *url = [self socializeRedirectURL:suffix];
+    return url;
 }
 
 @end

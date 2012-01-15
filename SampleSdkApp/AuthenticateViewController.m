@@ -11,7 +11,6 @@
 #import "TestListController.h"
 #import "UIButton+Socialize.h"
 
-
 #define TESTING_FACEBOOK_TOKEN @"BAABpKH5ZBZBg8BANSQGGvcd7DGCxJvOU0S1QZCsF3ZBrmlMT9dZCrLGA5oQJ06njmIE1COAgjsmWDJsRwIig30jbhPZCArmdBe4WgY9CZAL9OZBfs1JIQtAf8F0btxVc2baUJZCZBhpgk3LQZDZD"
 
 @interface AuthenticateViewController()
@@ -80,13 +79,14 @@
     }
     [Socialize storeSocializeApiKey:[apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
     [Socialize storeFacebookAppId:@"115622641859087"];
-    //this URL should be removed in favor of the redirect URL from socialize
-    [Socialize storeApplicationLink:@"http://www.google.com"];
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];
 #else
     [Socialize storeFacebookLocalAppId:nil];
 #endif
+    
+//    UIViewController *comments = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:@"http://www.npr.org/"];
+//    [self presentModalViewController:comments animated:YES];
 }
 
 - (void)viewDidUnload
@@ -98,7 +98,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return NO;
+    return interfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
 -(NSDictionary*)authInfoFromConfig

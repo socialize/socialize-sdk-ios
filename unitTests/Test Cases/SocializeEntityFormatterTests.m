@@ -54,6 +54,7 @@
     [[mockEntity expect]setLikes:[[JSONDictionaryToParse objectForKey:@"likes"]intValue]];
     [[mockEntity expect]setComments:[[JSONDictionaryToParse objectForKey:@"comments"]intValue]];
     [[mockEntity expect]setShares:[[JSONDictionaryToParse objectForKey:@"shares"]intValue]];
+    [[mockEntity expect]setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
     
     
     SocializeEntityJSONFormatter * entityFormatter = [[[SocializeEntityJSONFormatter alloc]initWithFactory:_factory] autorelease];

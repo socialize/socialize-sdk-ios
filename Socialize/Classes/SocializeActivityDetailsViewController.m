@@ -98,6 +98,12 @@
         [self updateProfileImage];
         //once all the data is being loaded or fetched we can turn off the animation
         [self stopLoadAnimation];
+        
+        NSString *showEntityTitle = self.socializeActivity.entity.name;
+        if ([showEntityTitle length] == 0) {
+            showEntityTitle = self.socializeActivity.entity.key;
+        }
+        [self.activityDetailsView.showEntityButton setTitle:showEntityTitle forState:UIControlStateNormal];
     }
 }
 

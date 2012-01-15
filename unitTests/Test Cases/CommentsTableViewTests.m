@@ -15,6 +15,8 @@
 #import "SocializeProfileViewController.h"
 #import "SocializeSubscriptionService.h"
 #import "SocializeActivityDetailsViewController.h"
+#import "SocializeBubbleView.h"
+#import "SocializeNotificationToggleBubbleContentView.h"
 
 @interface SocializeCommentsTableViewController(public)
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender;
@@ -26,6 +28,8 @@
 @synthesize commentsTableViewController = commentsTableViewController_;
 @synthesize mockView = mockView_;
 @synthesize mockSubscribedButton = mockSubscribedButton_;
+@synthesize mockBubbleView = mockBubbleView_;
+@synthesize mockBubbleContentView = mockBubbleContentView_;
 
 #define TEST_URL @"test_entity_url"
 
@@ -41,6 +45,12 @@
     
     self.mockSubscribedButton = [OCMockObject mockForClass:[UIButton class]];
     self.commentsTableViewController.subscribedButton = self.mockSubscribedButton;
+        
+    self.mockBubbleView = [OCMockObject mockForClass:[SocializeBubbleView class]];
+    self.commentsTableViewController.bubbleView = self.mockBubbleView;
+
+    self.mockBubbleContentView = [OCMockObject mockForClass:[SocializeNotificationToggleBubbleContentView class]];
+    self.commentsTableViewController.bubbleContentView = self.mockBubbleContentView;
 }
 
 -(void)tearDown {
@@ -221,19 +231,44 @@
     [self.commentsTableViewController postCommentViewController:mockPostCommentViewController didCreateComment:mockComment];
 }
 
+- (void)expectBubbleConfigurationForEnabled:(BOOL)enabled {
+    [[self.mockBubbleView expect] removeFromSuperview];
+    [[(id)self.commentsTableViewController expect] setBubbleView:nil];
+    
+    // Code will compute the rect to show from, stub in some test values
+    CGRect testFrame = CGRectMake(10, 10, 20, 20);
+    CGRect testRect = CGRectMake(10, 400, 20, 20);
+    [[[self.mockSubscribedButton expect] andReturnValue:OCMOCK_VALUE(testFrame)] frame];
+    [[[self.mockSubscribedButton expect] andReturnValue:OCMOCK_VALUE(testRect)] convertRect:testFrame toView:self.mockView];
+    
+    // View should configure for notification
+    [[self.mockBubbleContentView expect] configureForNotificationsEnabled:enabled];
+    
+//    [[self.mockBubbleView expect] showFromRect:testRect inView:self.mockView animated:YES];
+    [[self.mockBubbleView expect] showFromRect:testRect inView:self.mockView offset:CGPointMake(0, -15) animated:YES];
+    [[self.mockBubbleView expect] performSelector:@selector(animateOutAndRemoveFromSuperview) withObject:nil afterDelay:2];
+}
+
 - (void)testThatPressingEnabledSubscribedButtonCancelsSubscription {
-    [[[self.mockSubscribedButton stub] andReturnBool:YES] isSelected];
+    [[[self.mockSubscribedButton expect] andReturnBool:YES] isSelected];
     [[self.mockSubscribedButton expect] setSelected:NO];
+    [[[self.mockSubscribedButton stub] andReturnBool:NO] isSelected];
     [[self.mockSocialize expect] unsubscribeFromCommentsForEntityKey:TEST_URL];
+    
+    [self expectBubbleConfigurationForEnabled:NO];
     
     [self.commentsTableViewController subscribedButtonPressed:self.mockSubscribedButton];
 }
 
-- (void)testThatPressingDisabledSubscribedButtonCancelsSubscription {
-    [[[self.mockSubscribedButton stub] andReturnBool:NO] isSelected];
+- (void)testThatPressingDisabledSubscribedButtonCreatesSubscription {
+    [[[self.mockSubscribedButton expect] andReturnBool:NO] isSelected];
     [[self.mockSubscribedButton expect] setSelected:YES];
+    [[[self.mockSubscribedButton stub] andReturnBool:YES] isSelected];
+
     [[self.mockSocialize expect] subscribeToCommentsForEntityKey:TEST_URL];
     
+    [self expectBubbleConfigurationForEnabled:YES];
+
     [self.commentsTableViewController subscribedButtonPressed:self.mockSubscribedButton];
 }
 

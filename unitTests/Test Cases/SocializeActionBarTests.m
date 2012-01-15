@@ -54,6 +54,7 @@
 -(void) shareViaEmail;
 -(void)launchMailAppOnDevice;
 -(void)displayComposerSheet;
+-(BOOL)canSendMail;
 
 @end
 
@@ -67,6 +68,7 @@
 @synthesize mockEntity = mockEntity_;
 @synthesize mockShareComposer = mockShareComposer_;
 @synthesize mockShareActionSheet = mockShareActionSheet_;
+@synthesize mockUnconfiguredEmailAlert = mockUnconfiguredEmailAlert_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -93,6 +95,9 @@
     
     self.mockShareActionSheet = [OCMockObject mockForClass:[UIActionSheet class]];
     self.actionBar.shareActionSheet = self.mockShareActionSheet;
+    
+    self.mockUnconfiguredEmailAlert = [OCMockObject mockForClass:[UIAlertView class]];
+    self.actionBar.unconfiguredEmailAlert = self.mockUnconfiguredEmailAlert;
 }
 
 -(void)tearDown
@@ -338,6 +343,18 @@
 - (void)actionBar:(SocializeActionBar *)actionBar wantsDisplayActionSheet:(UIActionSheet *)actionSheet {
     GHAssertEquals(actionSheet, self.mockShareActionSheet, @"Bad action sheet");
     [self notify:kGHUnitWaitStatusSuccess];
+}
+
+- (void)testUnconfiguredMailShowsAlert {
+    [[[(id)self.actionBar stub] andReturnBool:NO] canSendMail];
+    [[self.mockUnconfiguredEmailAlert expect] show];
+    [self.actionBar shareViaEmail];
+}
+
+- (void)testUnconfiguredEmailAlert {
+    self.actionBar.unconfiguredEmailAlert = nil;
+    UIAlertView *alertView = self.actionBar.unconfiguredEmailAlert;
+    GHAssertNotNil(alertView, @"missing alert view");
 }
 
 @end

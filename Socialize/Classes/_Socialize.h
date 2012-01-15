@@ -157,13 +157,13 @@ otherwise you will get a failure.
  
  @param application link(URL)
  */
-+(void)storeApplicationLink:(NSString*)link;
++(void)storeApplicationLink:(NSString*)link   __attribute__((deprecated)) ;
 
 /**
  Remove app link from the user defaults.
  
  */
-+(void)removeApplicationLink;
++(void)removeApplicationLink __attribute__((deprecated));
 
 /**
  Provide access to the Socialize API key.
@@ -638,5 +638,9 @@ otherwise you will get a failure.
  @param last Last index, noninclusive
  */
 - (void)getSubscriptionsForEntityKey:(NSString*)entityKey first:(NSNumber*)first last:(NSNumber*)last;
+
++ (NSString*)objectURL:(id<SocializeObject>)object;
+
++ (NSString*)applicationURL;
 
 @end
