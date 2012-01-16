@@ -11,7 +11,7 @@ Enabling Notifications for your Socialize SDK just take a few steps.  High-level
 `Apple's documentation <http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Introduction/Introduction.html>`_,
 but the Socialize SDK takes care of the low-level implementation details of notifications for you letting you focus on developing your application specific code.
 
-#add a screen shot of a notifcation and resulting view controller
+.. image:: images/apns_screenshot.png
 
 
 Configuring Your Apple App ID
