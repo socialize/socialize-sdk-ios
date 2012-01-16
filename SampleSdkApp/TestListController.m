@@ -275,7 +275,7 @@
         }
         case 15:
         {
-            NSString *testIDText = [self getValueWithPrompt:@"Enter a comment ID" defaultValue:@"248649"];
+            NSString *testIDText = [self getValueWithPrompt:@"Enter a comment ID" defaultValue:@"308047"];
             if ([testIDText length] > 0) {
                 NSNumber *testID = [NSNumber numberWithInteger:[testIDText integerValue]];
                 NSString *commentType = @"comment";
