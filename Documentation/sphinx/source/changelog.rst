@@ -4,6 +4,12 @@
 Changelog
 =============================================
 
+v1.1.8
+------
+[bug] fix the final package to not follow symlinks and reduce the total package size. [ ]
+
+[bug] MFMailComposeDelegate crashes on nil modal display attempt when no email clients are configured. [ ]
+
 v1.1.7
 ------
 [bug] when FB is not configured the authentication screen still shows [ ]

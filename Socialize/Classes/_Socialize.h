@@ -92,6 +92,11 @@ otherwise you will get a failure.
 /**Get access to the activity service via <SocializeSubscriptionService>.*/
 @property (nonatomic, retain) SocializeSubscriptionService *subscriptionService;
 /**Current delegate*/
+
+/**
+ Set callback delegate which responds to protocol <SocializeServiceDelegate> to the service.
+ @param delegate Implemented by user callback delegate which responds to the  <SocializeServiceDelegate> protocol.
+ */
 @property (nonatomic, assign) id<SocializeServiceDelegate> delegate;
 
 /** @name Initialization */
@@ -213,12 +218,6 @@ otherwise you will get a failure.
  @return Facebook authorization token
  */
 -(NSString*) receiveFacebookAuthToken;
-
-/**
- Set callback delegate which responds to protocol <SocializeServiceDelegate> to the service.
- @param delegate Implemented by user callback delegate which responds to the  <SocializeServiceDelegate> protocol.
- */
--(void)setDelegate:(id<SocializeServiceDelegate>)delegate;
 
 /** @name  Local in memory object creation */
 
