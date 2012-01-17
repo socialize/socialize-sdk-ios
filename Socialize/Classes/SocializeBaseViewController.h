@@ -32,6 +32,7 @@
 @class SocializeShareBuilder;
 @class SocializeLoadingView;
 @class ImagesCache;
+@class SocializeProfileEditViewController;
 
 @interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, SocializeKeyboardListenerDelegate> {
     @private 
@@ -45,6 +46,7 @@
 @property (nonatomic, retain) UIBarButtonItem *sendButton;
 @property (nonatomic, retain) UIBarButtonItem *cancelButton;
 @property (nonatomic, retain) UIBarButtonItem *saveButton;
+@property (nonatomic, retain) UIBarButtonItem *settingsButton;
 @property (nonatomic, retain) UIAlertView *genericAlertView;
 @property (nonatomic, retain) UIAlertView *sendActivityToFacebookFeedAlertView;
 @property (nonatomic, retain) SocializeShareBuilder *shareBuilder;
@@ -63,11 +65,6 @@
 - (UIView*)showLoadingInView;
 - (void)authenticateWithFacebook;
 - (BOOL)shouldShowAuthViewController;
-- (void)saveButtonPressed:(UIButton*)button;
-- (void)editButtonPressed:(UIButton*)button;
-- (void)doneButtonPressed:(UIButton*)button;
-- (void)sendButtonPressed:(UIButton*)button;
-- (void)cancelButtonPressed:(UIButton*)button;
 - (void)sendActivityToFacebookFeed:(id<SocializeActivity>)activity;
 - (void)sendActivityToFacebookFeedSucceeded;
 - (void)sendActivityToFacebookFeedFailed:(NSError*)error;
@@ -80,4 +77,33 @@
            stopLoading:(void(^)())stopLoadingBlock
             completion:(void(^)(UIImage *image))completionBlock;
 - (void)changeTitleOnCustomBarButton:(UIBarButtonItem*)barButton toText:(NSString*)text;
+- (void)saveButtonPressed:(UIButton*)button;
+- (void)editButtonPressed:(UIButton*)button;
+- (void)doneButtonPressed:(UIButton*)button;
+- (void)sendButtonPressed:(UIButton*)button;
+- (void)cancelButtonPressed:(UIButton*)button;
+- (void)settingsButtonPressed:(UIButton*)button;
 @end
+
+#define SYNTH_RED_SOCIALIZE_BAR_BUTTON(PROPERTY, TITLESTR) \
+@synthesize PROPERTY = PROPERTY ## _; \
+- (UIBarButtonItem*)PROPERTY { \
+    if (PROPERTY ## _ == nil) { \
+        UIButton *button = [UIButton redSocializeNavBarButtonWithTitle: TITLESTR ]; \
+        [button addTarget:self action:@selector(PROPERTY ## Pressed:) forControlEvents:UIControlEventTouchUpInside]; \
+        PROPERTY ## _ = [[UIBarButtonItem alloc] initWithCustomView:button]; \
+    } \
+    return PROPERTY ## _; \
+}
+
+#define SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(PROPERTY, TITLESTR) \
+@synthesize PROPERTY = PROPERTY ## _; \
+- (UIBarButtonItem*)PROPERTY { \
+    if (PROPERTY ## _ == nil) { \
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle: TITLESTR ]; \
+        [button addTarget:self action:@selector(PROPERTY ## Pressed:) forControlEvents:UIControlEventTouchUpInside]; \
+        PROPERTY ## _ = [[UIBarButtonItem alloc] initWithCustomView:button]; \
+    } \
+    return PROPERTY ## _; \
+}
+

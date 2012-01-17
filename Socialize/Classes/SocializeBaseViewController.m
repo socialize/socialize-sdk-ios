@@ -37,6 +37,7 @@
 #import "ImagesCache.h"
 #import "SocializeAuthenticateService.h"
 #import "SocializeKeyboardListener.h"
+#import "UINavigationController+Socialize.h"
 
 @interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
 -(void)leftNavigationButtonPressed:(id)sender;  
@@ -44,11 +45,12 @@
 
 @implementation SocializeBaseViewController
 @synthesize tableView = tableView_;
-@synthesize doneButton = doneButton_;
-@synthesize editButton = editButton_;
-@synthesize sendButton = sendButton_;
-@synthesize cancelButton = cancelButton_;
-@synthesize saveButton = saveButton_;
+SYNTH_RED_SOCIALIZE_BAR_BUTTON(settingsButton, @"Settings")
+SYNTH_RED_SOCIALIZE_BAR_BUTTON(editButton, @"Edit")
+SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(doneButton, @"Done")
+SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
+SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
+SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 @synthesize genericAlertView = genericAlertView_;
 @synthesize socialize = socialize_;
 @synthesize imagesCache = imagesCache_;
@@ -68,6 +70,7 @@
     self.sendButton = nil;  
     self.cancelButton = nil;
     self.saveButton = nil;
+    self.settingsButton = nil;
     self.genericAlertView.delegate = nil;
     self.genericAlertView = nil;
     self.socialize.delegate = nil;
@@ -138,33 +141,6 @@
     [button setTitle:text forState:UIControlStateNormal];
 }
 
-- (UIBarButtonItem*)saveButton {
-    if (saveButton_ == nil) {
-        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
-        [button addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        saveButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
-    }
-    return saveButton_;
-}
-
-- (UIBarButtonItem*)cancelButton {
-    if (cancelButton_ == nil) {
-        UIButton *button = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
-        [button addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        cancelButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
-    }
-    return cancelButton_;
-}
-
-- (UIBarButtonItem*)sendButton {
-    if (sendButton_ == nil) {
-        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Send"];
-        [button addTarget:self action:@selector(sendButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        sendButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
-    }
-    return sendButton_;
-}
-
 -(UIBarButtonItem*) createLeftNavigationButtonWithCaption:(NSString*) caption
 {
     UIButton *backButton = [UIButton blueSocializeNavBarBackButtonWithTitle:caption]; 
@@ -172,42 +148,17 @@
     UIBarButtonItem * backLeftItem = [[[UIBarButtonItem alloc]initWithCustomView:backButton] autorelease];
     return backLeftItem;
 }
+
+- (void)saveButtonPressed:(UIButton*)button {}
+- (void)editButtonPressed:(UIButton*)button {}
+- (void)doneButtonPressed:(UIButton*)button {}
+- (void)sendButtonPressed:(UIButton*)button {}
+- (void)cancelButtonPressed:(UIButton*)button {}
+- (void)settingsButtonPressed:(UIButton*)button {}
+
 -(void)leftNavigationButtonPressed:(id)sender {
     //default implementation for the left navigation button
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (UIBarButtonItem*)doneButton {
-    if (doneButton_ == nil) {
-        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Done"];
-        [button addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        doneButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
-    }
-    return doneButton_;
-}
-
-- (UIBarButtonItem*)editButton {
-    if (editButton_ == nil) {
-        UIButton *button = [UIButton redSocializeNavBarButtonWithTitle:@"Edit"];
-        [button addTarget:self action:@selector(editButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        editButton_ = [[UIBarButtonItem alloc] initWithCustomView:button];
-    }
-    return editButton_;
-}
-
-- (void)saveButtonPressed:(UIButton*)button {
-}
-
-- (void)editButtonPressed:(UIButton*)button {
-}
-
-- (void)doneButtonPressed:(UIButton*)button {
-}
-
-- (void)sendButtonPressed:(UIButton*)button {
-}
-
-- (void)cancelButtonPressed:(UIButton*)button {
 }
 
 - (UIAlertView*)genericAlertView {

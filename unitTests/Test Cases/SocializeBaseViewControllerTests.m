@@ -202,30 +202,18 @@
     [self.viewController performSelector:s withObject:nil];
 }
 
-- (void)testDoneCallsSelector {
-    self.viewController.doneButton = nil;
-    [self assertBarButtonCallsSelector:self.viewController.doneButton selector:@selector(doneButtonPressed:)];
+#define SYNTH_BUTTON_TEST(PROPERTY) \
+- (void)testSelectorIsCalled__ ## PROPERTY { \
+    self.viewController.PROPERTY  = nil; \
+    [self assertBarButtonCallsSelector:self.viewController.PROPERTY selector:@selector(PROPERTY ## Pressed:)]; \
 }
 
-- (void)testEditCallsSelector {
-    self.viewController.editButton = nil;
-    [self assertBarButtonCallsSelector:self.viewController.editButton selector:@selector(editButtonPressed:)];
-}
-
-- (void)testSendCallsSelector {
-    self.viewController.sendButton = nil;
-    [self assertBarButtonCallsSelector:self.viewController.sendButton selector:@selector(sendButtonPressed:)];
-}
-
-- (void)testCancelCallsSelector {
-    self.viewController.cancelButton = nil;
-    [self assertBarButtonCallsSelector:self.viewController.cancelButton selector:@selector(cancelButtonPressed:)];
-}
-
-- (void)testSaveCallsSelector {
-    self.viewController.saveButton = nil;
-    [self assertBarButtonCallsSelector:self.viewController.saveButton selector:@selector(saveButtonPressed:)];
-}
+SYNTH_BUTTON_TEST(doneButton)
+SYNTH_BUTTON_TEST(editButton)
+SYNTH_BUTTON_TEST(sendButton)
+SYNTH_BUTTON_TEST(cancelButton)
+SYNTH_BUTTON_TEST(saveButton)
+SYNTH_BUTTON_TEST(settingsButton)
 
 - (void)testDefaultGenericAlertView {
     self.viewController.genericAlertView = nil;
