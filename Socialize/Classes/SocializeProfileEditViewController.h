@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SocializeProfileEditValueViewController.h"
 #import "SocializeBaseViewController.h"
+#import "SocializeProfileEditViewControllerDelegate.h"
 
 @class SocializeProfileEditValueViewController;
 typedef enum {
@@ -35,12 +36,11 @@ typedef enum {
     SocializeProfileEditViewControllerNumPermissionsRows,
 } SocializeProfileEditViewControllerPermissionsRow;
 
-@protocol SocializeProfileEditViewControllerDelegate;
 @class SocializeProfileEditTableViewImageCell;
 @class SocializeProfileEditTableViewCell;
 @class SocializeProfileEditValueViewController;
 
-@interface SocializeProfileEditViewController : SocializeBaseViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SocializeProfileEditValueViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SocializeProfileEditViewController : SocializeBaseViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, retain) id<SocializeFullUser> fullUser;
 @property (nonatomic, retain) UIImage *profileImage;
 @property (nonatomic, retain) NSArray *cellBackgroundColors;
@@ -54,19 +54,13 @@ typedef enum {
 @property (nonatomic, retain) NSBundle *bundle;
 @property (nonatomic, retain) NSUserDefaults *userDefaults;
 @property (nonatomic, assign) BOOL editOccured;
+@property (nonatomic, retain) UIBarButtonItem *saveButton;
 
 + (UINavigationController*)profileEditViewControllerInNavigationController;
 + (SocializeProfileEditViewController*)profileEditViewController;
 
 - (NSString*)keyPathForPropertiesRow:(SocializeProfileEditViewControllerPropertiesRow)row;
 -(void) showActionSheet;
-@end
-
-@protocol SocializeProfileEditViewControllerDelegate <NSObject>
-
-- (void)profileEditViewController:(SocializeProfileEditViewController*)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user;
-- (void)profileEditViewControllerDidCancel:(SocializeProfileEditViewController*)profileEditViewController;
-
 @end
 
 

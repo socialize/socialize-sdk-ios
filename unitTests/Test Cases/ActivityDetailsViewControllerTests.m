@@ -11,7 +11,7 @@
 #import "URLDownload.h"
 #import <OCMock/OCMock.h>
 
-@interface SocializeActivityDetailsViewController()<SocializeProfileViewControllerDelegate>
+@interface SocializeActivityDetailsViewController()
 -(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 -(void)loadActivityDetailData;
 -(void)updateProfileImage;

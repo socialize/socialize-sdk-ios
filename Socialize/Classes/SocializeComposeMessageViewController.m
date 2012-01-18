@@ -48,6 +48,7 @@
 @synthesize delegate = delegate_;
 @synthesize lowerContainer = lowerContainer_;
 @synthesize upperContainer = upperContainer_;
+SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 
 - (id)initWithNibName:(NSString *)nibNameOrNil 
                bundle:(NSBundle *)nibBundleOrNil 
@@ -73,6 +74,7 @@
     [_mapContainer release];
     [lowerContainer_ release];
     [upperContainer_ release];
+    [sendButton_ release];
 
     [super dealloc];
 }
@@ -89,13 +91,13 @@
 -(void) startLoadAnimationForView: (UIView*) view
 {
     [super startLoadAnimationForView:view];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.sendButton.enabled = NO;
 }
 
 -(void) stopLoadAnimation
 {
     [super  stopLoadAnimation];
-    self.navigationItem.rightBarButtonItem.enabled = YES; 
+    self.sendButton.enabled = YES; 
 }
 
 -(void)updateViewWithNewLocation: (CLLocation*)userLocation
@@ -216,16 +218,6 @@
     [commentTextView becomeFirstResponder];
 }
 
--(void)cancelButtonPressed:(UIButton*)button {
-    [self stopLoadAnimation];
-    
-    if ([self.delegate respondsToSelector:@selector(composeMessageViewControllerDidCancel:)]) {
-        [self.delegate composeMessageViewControllerDidCancel:self];
-    } else {
-        [self dismissModalViewControllerAnimated:YES];
-    }
-}
-
 #pragma mark - SocializeServiceDelegate
 
 -(void)service:(SocializeService *)service didFail:(NSError *)error
@@ -245,9 +237,9 @@
 
 -(void)textViewDidChange:(UITextView *)textView {
     if ([commentTextView.text length] > 0) 
-      self.navigationItem.rightBarButtonItem.enabled = YES;     
+      self.sendButton.enabled = YES;     
     else
-      self.navigationItem.rightBarButtonItem.enabled = NO;
+      self.sendButton.enabled = NO;
 }
 
 #pragma mark - View lifecycle

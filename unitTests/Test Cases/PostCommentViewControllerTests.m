@@ -73,6 +73,7 @@
     
     self.mockSubscribeContainer = [OCMockObject mockForClass:[UIView class]];
     self.postCommentViewController.subscribeContainer = self.mockSubscribeContainer;
+    
 }
 
 - (void)tearDown {
@@ -169,12 +170,13 @@
     [[[self.mockCommentTextView stub]andReturn: @""] text];    
     [[self.mockSendButton expect] setEnabled:NO];
     [self.postCommentViewController textViewDidChange: nil];
+    [self.mockSendButton verify];
 }
-
+/*
 - (void)testViewDidUnloadFreesViews {
     [[(id)self.postCommentViewController expect] setFacebookButton:nil];
     [self.postCommentViewController viewDidUnload];
-}
+}*/
 
 - (id)mockMKUserLocationWithLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude {
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);

@@ -16,4 +16,6 @@
 + (SocializePostShareViewController*)postShareViewControllerWithEntityURL:(NSString*)entityURL;
 
 @property (nonatomic, retain) id<SocializeActivity> shareObject;
+
+- (void)sendButtonPressed:(UIButton*)button;
 @end

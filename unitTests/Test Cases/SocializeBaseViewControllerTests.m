@@ -9,6 +9,8 @@
 #import "SocializeBaseViewControllerTests.h"
 #import "SocializeBaseViewController.h"
 #import "UINavigationBarBackground.h"
+#import "SocializeBaseViewControllerDelegate.h"
+#import "SocializeProfileEditViewController.h"
 
 @implementation SocializeBaseViewControllerTests
 @synthesize viewController = viewController_;
@@ -19,15 +21,15 @@
 @synthesize mockNavigationItem = mockNavigationItem_;
 @synthesize mockNavigationBar = mockNavigationBar_;
 @synthesize mockDoneButton = mockDoneButton_;
-@synthesize mockEditButton = mockEditButton_;
-@synthesize mockSendButton = mockSendButton_;
 @synthesize mockCancelButton = mockCancelButton_;
 @synthesize mockBundle = mockBundle_;
 @synthesize mockImagesCache = mockImagesCache_;
-@synthesize mockSaveButton = mockSaveButton_;
+@synthesize mockSettingsButton = mockSettingsButton_;
 @synthesize mockView = mockView_;
 @synthesize mockWindow = mockWindow_;
 @synthesize mockKeyboardListener = mockKeyboardListener_;
+@synthesize mockDelegate = mockDelegate_;
+@synthesize mockProfileEditViewController = mockProfileEditViewController_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -67,7 +69,6 @@
     [[[self.mockSocialize stub] andReturn:self.viewController] delegate];
     [[self.mockSocialize stub] setDelegate:nil];
 
-    
     self.viewController.socialize = self.mockSocialize;
     
     self.mockGenericAlertView = [OCMockObject mockForClass:[UIAlertView class]];
@@ -76,17 +77,11 @@
     self.mockDoneButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.viewController.doneButton = self.mockDoneButton;
     
-    self.mockEditButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
-    self.viewController.editButton = self.mockEditButton;
-    
-    self.mockSendButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
-    self.viewController.sendButton = self.mockSendButton;
-
     self.mockCancelButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.viewController.cancelButton = self.mockCancelButton;
         
-    self.mockSaveButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
-    self.viewController.saveButton = self.mockSaveButton;
+    self.mockSettingsButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.viewController.settingsButton = self.mockSettingsButton;
 
     self.mockBundle = [OCMockObject mockForClass:[NSBundle class]];
     self.viewController.bundle = self.mockBundle;
@@ -96,12 +91,17 @@
     
     self.mockKeyboardListener = [OCMockObject mockForClass:[SocializeKeyboardListener class]];
     self.viewController.keyboardListener = self.mockKeyboardListener;
+    
+    self.mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeBaseViewControllerDelegate)];
+    self.viewController.delegate = self.mockDelegate;
+    
+    self.mockProfileEditViewController = [OCMockObject mockForClass:[SocializeProfileEditViewController class]];
+    [[self.mockProfileEditViewController stub] setDelegate:nil];
+    self.viewController.profileEditViewController = self.mockProfileEditViewController;
 }
 
 -(void) tearDown
 {
-    [super tearDown];
-    
     [(id)self.viewController verify];
     [self.mockNavigationController verify];
     [self.mockNavigationBar verify];
@@ -109,21 +109,17 @@
     [self.mockSocialize verify];
     [self.mockGenericAlertView verify];
     [self.mockDoneButton verify];
-    [self.mockEditButton verify];
-    [self.mockSendButton verify];
     [self.mockCancelButton verify];
-    [self.mockSaveButton verify];
+    [self.mockSettingsButton verify];
     [self.mockBundle verify];
     [self.mockImagesCache verify];
     [self.mockKeyboardListener verify];
-
+    [self.mockDelegate verify];
+    [self.mockProfileEditViewController verify];
+    
     [[self.mockKeyboardListener stub] setDelegate:nil];
     [[self.mockGenericAlertView expect] setDelegate:nil];
     self.origViewController = nil;
-    
-    // There is some kind of retain cycle with the OCMock recorders array here
-    [(id)self.viewController stop];
-    self.viewController = nil;
     
     self.mockNavigationController = nil;
     self.mockNavigationBar = nil;
@@ -131,21 +127,25 @@
     self.mockSocialize = nil;
     self.mockGenericAlertView = nil;
     self.mockDoneButton = nil;
-    self.mockEditButton = nil;
-    self.mockSendButton = nil;
     self.mockCancelButton = nil;
-    self.mockSaveButton = nil;
+    self.mockSettingsButton = nil;
     self.mockBundle = nil;
     self.mockImagesCache = nil;
     self.mockKeyboardListener = nil;
+    self.mockDelegate = nil;
+    self.mockProfileEditViewController = nil;
+    
+    // There is some kind of retain cycle with the OCMock recorders array here
+    [(id)self.viewController stop];
+    self.viewController = nil;
+    
+    [super tearDown];
 }
 
 - (void)testViewDidUnload {
     [[(id)self.viewController expect] setDoneButton:nil];
-    [[(id)self.viewController expect] setEditButton:nil];
-    [[(id)self.viewController expect] setSaveButton:nil];
     [[(id)self.viewController expect] setCancelButton:nil];
-    [[(id)self.viewController expect] setSendButton:nil];
+    [[(id)self.viewController expect] setSettingsButton:nil];
     [[(id)self.viewController expect] setGenericAlertView:nil];
     [[(id)self.viewController expect] setSendActivityToFacebookFeedAlertView:nil];
     [[(id)self.viewController expect] setAuthViewController:nil];
@@ -198,22 +198,25 @@
     NSArray *actions = [button actionsForTarget:self.origViewController forControlEvent:UIControlEventTouchUpInside];
     SEL s = NSSelectorFromString([actions objectAtIndex:0]);
     GHAssertEquals(selector, s, @"Selector incorrect");
-    
-    [self.viewController performSelector:s withObject:nil];
 }
 
-#define SYNTH_BUTTON_TEST(PROPERTY) \
-- (void)testSelectorIsCalled__ ## PROPERTY { \
-    self.viewController.PROPERTY  = nil; \
-    [self assertBarButtonCallsSelector:self.viewController.PROPERTY selector:@selector(PROPERTY ## Pressed:)]; \
+SYNTH_BUTTON_TEST(viewController, doneButton)
+SYNTH_BUTTON_TEST(viewController, cancelButton)
+SYNTH_BUTTON_TEST(viewController, settingsButton)
+
+- (void)testCancelInformsDelegate {
+    [[self.mockDelegate expect] baseViewControllerDidCancel:self.origViewController];
+    [self.viewController cancelButtonPressed:self.mockCancelButton];
 }
 
-SYNTH_BUTTON_TEST(doneButton)
-SYNTH_BUTTON_TEST(editButton)
-SYNTH_BUTTON_TEST(sendButton)
-SYNTH_BUTTON_TEST(cancelButton)
-SYNTH_BUTTON_TEST(saveButton)
-SYNTH_BUTTON_TEST(settingsButton)
+- (void)expectDelegateNotifiedOfCompletion {
+    [[self.mockDelegate expect] baseViewControllerDidFinish:self.origViewController];    
+}
+
+- (void)testDoneInformsDelegate {
+    [self expectDelegateNotifiedOfCompletion];
+    [self.viewController doneButtonPressed:self.mockDoneButton];
+}
 
 - (void)testDefaultGenericAlertView {
     self.viewController.genericAlertView = nil;
@@ -352,5 +355,17 @@ SYNTH_BUTTON_TEST(settingsButton)
     [[mockBar expect] resetBackground];
     [self.viewController navigationController:mockNav didShowViewController:nil animated:YES];
 }
+
+- (void)testDoneWithDelegateCallsDelegate {
+    [[self.mockDelegate expect] baseViewControllerDidFinish:self.origViewController];
+    [self.viewController doneButtonPressed:nil];
+}
+
+- (void)testDoneWithoutDelegateDismissesSelf {
+    [[(id)self.viewController expect] dismissModalViewControllerAnimated:YES];
+    self.viewController.delegate = nil;
+    [self.viewController doneButtonPressed:nil];
+}
+
 
 @end

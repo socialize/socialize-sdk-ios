@@ -40,16 +40,15 @@
 #import "UINavigationController+Socialize.h"
 
 @interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
--(void)leftNavigationButtonPressed:(id)sender;  
+-(void)leftNavigationButtonPressed:(id)sender;
+-(void)showEditController;
 @end
 
 @implementation SocializeBaseViewController
+@synthesize delegate = delegate_;
 @synthesize tableView = tableView_;
 SYNTH_RED_SOCIALIZE_BAR_BUTTON(settingsButton, @"Settings")
-SYNTH_RED_SOCIALIZE_BAR_BUTTON(editButton, @"Edit")
 SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(doneButton, @"Done")
-SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
-SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 @synthesize genericAlertView = genericAlertView_;
 @synthesize socialize = socialize_;
@@ -59,6 +58,8 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 @synthesize authViewController = authViewController_;
 @synthesize bundle = bundle_;
 @synthesize keyboardListener = keyboardListener_;
+@synthesize profileEditViewController = profileEditViewController_;
+@synthesize navigationControllerForEdit = navigationControllerForEdit_;
 
 - (void)dealloc
 {
@@ -66,10 +67,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     self.tableView.dataSource = nil;
     self.tableView = nil;
     self.doneButton = nil;
-    self.editButton = nil;
-    self.sendButton = nil;  
     self.cancelButton = nil;
-    self.saveButton = nil;
     self.settingsButton = nil;
     self.genericAlertView.delegate = nil;
     self.genericAlertView = nil;
@@ -84,6 +82,8 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     self.bundle = nil;
     self.keyboardListener.delegate = nil;
     self.keyboardListener = nil;
+    self.profileEditViewController = nil;
+    self.navigationControllerForEdit = nil;
 
     [super dealloc];
 }
@@ -93,10 +93,8 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [super viewDidUnload];
     
     self.doneButton = nil;
-    self.editButton = nil;
-    self.sendButton = nil;
     self.cancelButton = nil;
-    self.saveButton = nil;
+    self.settingsButton = nil;
     self.genericAlertView = nil;
     self.sendActivityToFacebookFeedAlertView = nil;
     self.authViewController = nil;
@@ -149,12 +147,30 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     return backLeftItem;
 }
 
-- (void)saveButtonPressed:(UIButton*)button {}
-- (void)editButtonPressed:(UIButton*)button {}
-- (void)doneButtonPressed:(UIButton*)button {}
-- (void)sendButtonPressed:(UIButton*)button {}
-- (void)cancelButtonPressed:(UIButton*)button {}
-- (void)settingsButtonPressed:(UIButton*)button {}
+- (void)notifyDelegateOfCompletion {
+    if ([self.delegate respondsToSelector:@selector(baseViewControllerDidFinish:)]) {
+        [self.delegate baseViewControllerDidFinish:self];
+    } else {
+        [self dismissModalViewControllerAnimated:YES];
+    }    
+}
+
+- (void)doneButtonPressed:(UIBarButtonItem*)button {
+    [self notifyDelegateOfCompletion];
+}
+
+- (void)cancelButtonPressed:(UIButton*)button {
+    if ([self.delegate respondsToSelector:@selector(baseViewControllerDidCancel:)]) {
+        [self.delegate baseViewControllerDidCancel:self];
+    } else {
+        [self dismissModalViewControllerAnimated:YES];
+    }
+}
+
+- (void)settingsButtonPressed:(UIButton *)button {
+    [self showEditController];
+}
+
 
 -(void)leftNavigationButtonPressed:(id)sender {
     //default implementation for the left navigation button
@@ -407,5 +423,49 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
         [self didGetCurrentUser:fullUser];
     }
 }
+
+- (SocializeProfileEditViewController*)profileEditViewController {
+    if (profileEditViewController_ == nil) {
+        profileEditViewController_ = [[SocializeProfileEditViewController alloc]
+                                      init];
+        profileEditViewController_.delegate = self;
+    }
+    return profileEditViewController_;
+}
+
+- (UINavigationController*)navigationControllerForEdit {
+    if (navigationControllerForEdit_ == nil) {
+        navigationControllerForEdit_ = [[UINavigationController socializeNavigationControllerWithRootViewController:self.profileEditViewController] retain];
+        navigationControllerForEdit_.delegate = self;
+    }
+    return navigationControllerForEdit_;
+}
+
+-(void)showEditController
+{
+    [self presentModalViewController:self.navigationControllerForEdit animated:YES];
+}
+
+
+-(void)hideEditController
+{
+    [self stopLoading];
+    [self dismissModalViewControllerAnimated:YES];
+    self.navigationControllerForEdit = nil;
+    self.profileEditViewController.delegate = nil;
+    self.profileEditViewController = nil;
+}
+
+- (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
+    if (baseViewController == self.profileEditViewController) {
+        [self hideEditController];    
+    }
+}
+
+- (void)profileEditViewController:(SocializeProfileEditViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
+    [self hideEditController];
+}
+
+
 
 @end

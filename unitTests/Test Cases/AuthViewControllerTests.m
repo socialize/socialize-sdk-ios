@@ -161,15 +161,6 @@ BOOL isAuthenticatedWithFacebook = YES;
     [mockCell verify];
 }
 
-- (void)testProfileViewDidCancel {
-    [[self.partialMockAuthViewController expect] profileViewDidFinish];
-    [self.authViewController profileEditViewController:nil didUpdateProfileWithUser:nil];
-}
-- (void)testProfileViewDidSave {
-    [[self.partialMockAuthViewController expect] profileViewDidFinish];
-    [self.authViewController profileEditViewControllerDidCancel:nil];
-}
-    
 - (void) testGetAuthorizeInfoTableViewCell {
 
     //mock the table cell and expect methods

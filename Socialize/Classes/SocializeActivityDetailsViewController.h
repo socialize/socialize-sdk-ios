@@ -11,6 +11,7 @@
 #import "SocializeBaseViewController.h"
 #import "SocializeActivityDetailsView.h"
 #import "SocializeActivityViewController.h"
+#import "SocializeActivityDetailsViewControllerDelegate.h"
 
 @class CommentDetailsView;
 @class URLDownload;
@@ -34,9 +35,3 @@
 
 @end
 
-@protocol SocializeActivityDetailsViewControllerDelegate <NSObject>
-@optional
-- (void)activityDetailsViewControllerDidDismiss:(SocializeActivityDetailsViewController*)activityDetailsViewController;
-- (void)activityDetailsViewController:(SocializeActivityDetailsViewController*)activityDetailsViewController didLoadActivity:(id<SocializeActivity>)activity;
-
-@end

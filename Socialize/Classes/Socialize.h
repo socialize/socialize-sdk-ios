@@ -18,3 +18,4 @@
 #import "SocializeActionBar.h"
 #import "SocializeObjects.h"
 #import "SocializeActivityDetailsViewController.h"
+#import "SocializeActionBarDelegate.h"

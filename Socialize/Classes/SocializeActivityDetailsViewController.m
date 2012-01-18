@@ -158,12 +158,6 @@
     self.navigationItem.rightBarButtonItem = self.doneButton;
 }
 
-- (void)doneButtonPressed:(UIBarButtonItem *)button {
-    if ([self.delegate respondsToSelector:@selector(activityDetailsViewControllerDidDismiss:)]) {
-        [self.delegate activityDetailsViewControllerDidDismiss:self];
-    }
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     return toInterfaceOrientation == UIInterfaceOrientationPortrait;
 }

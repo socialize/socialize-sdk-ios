@@ -22,7 +22,7 @@
 typedef URLDownload*(^LoaderFactory)(NSString* url, id sender, SEL selector, id tag);
 
  __attribute__((deprecated))
-@interface SocializeCommentDetailsViewController : SocializeBaseViewController<SocializeProfileViewControllerDelegate>
+@interface SocializeCommentDetailsViewController : SocializeBaseViewController<SocializeBaseViewControllerDelegate>
 {
     @private
         CommentDetailsView*     commentDetailsView;

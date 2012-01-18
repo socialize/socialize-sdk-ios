@@ -28,13 +28,13 @@
 #import <UIKit/UIKit.h>
 #import "SocializeBaseViewController.h"
 #import "SocializeActionView.h"
+#import "SocializeActionBarDelegate.h"
 
 @class SocializeCommentsTableViewController;
 @protocol SocializeView;
 @protocol SocializeEntity;
 @protocol SocializeLike;
 @class MFMailComposeViewController;
-@protocol SocializeActionBarDelegate;
 
 /**
  The Socialize Action Bar
@@ -101,9 +101,3 @@
 -(id)initWithEntity:(id<SocializeEntity>)socEntity presentModalInController:(UIViewController*)controller;
 @end
 
-@protocol SocializeActionBarDelegate <NSObject>
-
-@optional
-- (void)actionBar:(SocializeActionBar*)actionBar wantsDisplayActionSheet:(UIActionSheet*)actionSheet;
-
-@end

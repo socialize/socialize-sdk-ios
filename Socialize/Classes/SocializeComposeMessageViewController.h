@@ -12,9 +12,10 @@
 #import "SocializeBaseViewController.h"
 #import "_Socialize.h"
 #import "SocializeProfileViewController.h"
+#import "SocializeBaseViewControllerDelegate.h"
+
 @class CommentMapView;
 @class SocializeLocationManager;
-@protocol SocializeComposeMessageViewControllerDelegate;
 
 @interface SocializeComposeMessageViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate>
 {
@@ -26,7 +27,6 @@
     Class _geoCoderInfo;
 }
 
-@property (nonatomic, assign) id<SocializeComposeMessageViewControllerDelegate> delegate;
 @property (nonatomic, copy) NSString *entityURL;
 @property(nonatomic, retain) SocializeLocationManager *locationManager;
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;
@@ -37,6 +37,7 @@
 @property(nonatomic, retain) IBOutlet UIView *lowerContainer;
 @property(nonatomic, retain) IBOutlet UIView *upperContainer;
 @property(nonatomic, retain) IBOutlet UIView *mapContainer;
+@property(nonatomic, retain) UIBarButtonItem *sendButton;
 
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
@@ -47,11 +48,5 @@
 
 - (void)addSocializeRoundedGrayButtonImagesToButton:(UIButton*)button;
 - (void)setSubviewForLowerContainer:(UIView*)newSubview;
-
 @end
 
-@protocol SocializeComposeMessageViewControllerDelegate <NSObject>
-
-- (void)composeMessageViewControllerDidCancel:(SocializeComposeMessageViewController*)composeMessageViewController;
-
-@end

@@ -38,6 +38,7 @@
 @synthesize mockActivateLocationButton = mockActivateLocationButton_;
 @synthesize mockMapOfUserLocation = mockMapOfUserLocation_;
 @synthesize mockDelegate = mockDelegate_;
+@synthesize mockSendButton = mockSendButton_;
 
 + (SocializeBaseViewController*)createController {
     return [[[SocializeComposeMessageViewController alloc] initWithNibName:nil bundle:nil entityUrlString:TEST_URL] autorelease];
@@ -83,8 +84,8 @@
     [[[self.mockNavigationItem stub] andReturn:self.mockSendButton] rightBarButtonItem];
     [[[self.mockNavigationItem stub] andReturn:self.mockCancelButton] leftBarButtonItem];
     
-    self.mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeComposeMessageViewControllerDelegate)];
-    self.composeMessageViewController.delegate = self.mockDelegate;
+    self.mockSendButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.composeMessageViewController.sendButton = self.mockSendButton;
 }
 
 - (void)tearDown {
@@ -100,6 +101,7 @@
     [self.mockActivateLocationButton verify];
     [self.mockMapOfUserLocation verify];
     [self.mockDelegate verify];
+    [self.mockSendButton verify];
     
     self.composeMessageViewController = nil;
     self.mockSocialize = nil;
@@ -113,6 +115,7 @@
     self.mockActivateLocationButton = nil;
     self.mockMapOfUserLocation = nil;
     self.mockDelegate = nil;
+    self.mockSendButton = nil;
     
     [super tearDown];
 }
@@ -203,13 +206,6 @@
 - (void)testViewDidLoad {
     [self prepareForViewDidLoad];
     [(id)self.composeMessageViewController viewDidLoad];
-}
-
-- (void)testCancellingCallsDelegate {
-    self.composeMessageViewController.cancelButton = nil;
-    [[(id)self.composeMessageViewController expect] stopLoadAnimation];
-    [[self.mockDelegate expect] composeMessageViewControllerDidCancel:(SocializeComposeMessageViewController*)self.origViewController];
-    [(UIButton*)self.composeMessageViewController.cancelButton.customView simulateControlEvent:UIControlEventTouchUpInside];
 }
 
 @end

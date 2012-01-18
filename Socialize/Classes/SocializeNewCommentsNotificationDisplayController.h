@@ -10,6 +10,7 @@
 #import "SocializeActivityDetailsViewController.h"
 #import "SocializeCommentsTableViewController.h"
 #import "SocializeNotificationDisplayController.h"
+#import "SocializeActivityDetailsViewControllerDelegate.h"
 
 @interface SocializeNewCommentsNotificationDisplayController : SocializeNotificationDisplayController <SocializeActivityDetailsViewControllerDelegate, SocializeCommentsTableViewControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, retain) UINavigationController *navigationController;
