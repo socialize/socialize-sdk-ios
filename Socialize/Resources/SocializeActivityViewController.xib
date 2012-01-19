@@ -39,7 +39,6 @@
 				<string key="NSFrame">{{0, 64}, {320, 416}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MC4yNTQ5MDE5NjA4IDAuMzAxOTYwNzg0MyAwLjMzNzI1NDkwMgA</bytes>
@@ -164,6 +163,7 @@
 							<string>activityTextLabel</string>
 							<string>btnViewProfile</string>
 							<string>commentTextLabel</string>
+							<string>disclosureImage</string>
 							<string>informationView</string>
 							<string>nameLabel</string>
 							<string>profileImageActivity</string>
@@ -176,6 +176,7 @@
 							<string>UILabel</string>
 							<string>UIButton</string>
 							<string>UILabel</string>
+							<string>UIImageView</string>
 							<string>UIView</string>
 							<string>UILabel</string>
 							<string>UIActivityIndicatorView</string>
@@ -191,6 +192,7 @@
 							<string>activityTextLabel</string>
 							<string>btnViewProfile</string>
 							<string>commentTextLabel</string>
+							<string>disclosureImage</string>
 							<string>informationView</string>
 							<string>nameLabel</string>
 							<string>profileImageActivity</string>
@@ -214,6 +216,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">commentTextLabel</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">disclosureImage</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">informationView</string>
@@ -257,14 +263,35 @@
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">activityTableViewCell</string>
-						<string key="NS.object.0">SocializeActivityTableViewCell</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>activityTableViewCell</string>
+							<string>delegate</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>SocializeActivityTableViewCell</string>
+							<string>id</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">activityTableViewCell</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">activityTableViewCell</string>
-							<string key="candidateClassName">SocializeActivityTableViewCell</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>activityTableViewCell</string>
+							<string>delegate</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">activityTableViewCell</string>
+								<string key="candidateClassName">SocializeActivityTableViewCell</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">delegate</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -289,6 +316,60 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/SocializeBaseViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">SocializeTableViewController</string>
+					<string key="superclassName">SocializeBaseViewController</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>activityLoadingActivityIndicatorView</string>
+							<string>activityLoadingLabel</string>
+							<string>tableBackgroundView</string>
+							<string>tableFooterView</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIActivityIndicatorView</string>
+							<string>UILabel</string>
+							<string>UIView</string>
+							<string>UIView</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>activityLoadingActivityIndicatorView</string>
+							<string>activityLoadingLabel</string>
+							<string>tableBackgroundView</string>
+							<string>tableFooterView</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">activityLoadingActivityIndicatorView</string>
+								<string key="candidateClassName">UIActivityIndicatorView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">activityLoadingLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">tableBackgroundView</string>
+								<string key="candidateClassName">UIView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">tableFooterView</string>
+								<string key="candidateClassName">UIView</string>
+							</object>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/SocializeTableViewController.h</string>
 					</object>
 				</object>
 			</object>

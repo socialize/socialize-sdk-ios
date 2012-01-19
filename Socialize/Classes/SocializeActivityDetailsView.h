@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+@protocol SocializeActivityDetailsViewDelegate;
 @class HtmlPageCreator;
-@interface SocializeActivityDetailsView : UIScrollView <UIWebViewDelegate> {
+@interface SocializeActivityDetailsView : UIView <UIWebViewDelegate> {
 @private
     IBOutlet UIWebView*         activityMessageView;
     IBOutlet UIButton*          profileNameButton;
@@ -18,7 +19,6 @@
     IBOutlet UIView*            recentActivityView;
     IBOutlet UILabel*           recentActivityLabel;
     IBOutlet UIImageView*       recentActivityHeaderImage;
-    UIView*                     activityTableView;
     NSString*                   activityMessage;
     NSDate*                     activityDate;
     NSString*                   username;
@@ -26,6 +26,7 @@
     HtmlPageCreator*            htmlPageCreator;
 }
 
+@property (nonatomic, assign) IBOutlet id<SocializeActivityDetailsViewDelegate> delegate;
 @property (nonatomic, retain) IBOutlet UIWebView*       activityMessageView; 
 @property (nonatomic, retain) IBOutlet UIButton*        profileNameButton;
 @property (nonatomic, retain) IBOutlet UIImageView*     profileImage;
@@ -33,7 +34,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *showEntityButton;
 /* recent activity view is a container view for the tableview and headers */
 @property (nonatomic, retain) UIView *                  recentActivityView;
-@property (nonatomic, retain) UIView *                  activityTableView;
 @property (nonatomic, retain) UIView *                  recentActivityHeaderImage;
 @property (nonatomic, retain) UILabel*                  recentActivityLabel;
 @property (nonatomic, retain) NSString*                 activityMessage;
@@ -44,8 +44,13 @@
 
 -(void) updateProfileImage: (UIImage* )image;
 -(void) updateActivityMessageView;
--(void) layoutRecentActivitySubviews;
 -(void) layoutActivityDetailsSubviews;
 -(void) updateActivityMessage:(NSString *)newActivityMessage withActivityDate:(NSDate *)newActivityDate;
+
+@end
+
+@protocol SocializeActivityDetailsViewDelegate <NSObject>
+
+- (void)activityDetailsViewDidFinishLoad:(SocializeActivityDetailsView*)activityDetailsView;
 
 @end

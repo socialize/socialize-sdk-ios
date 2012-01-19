@@ -3310,7 +3310,8 @@
 				16075491143302E4002E5A38 /* SocializeBaseViewController.m */,
 				AAB427EF14BFA7FC007AAF90 /* Bubble */,
 				AA88E835147D77FC00123E6F /* Base Table View */,
-				AA08B3D9147C31B700E6D1CA /* Activity */,
+				AAAA661E14C77D0C00261F35 /* Activity Details */,
+				AA08B3D9147C31B700E6D1CA /* Activity List */,
 				AAF903101473040300AB8674 /* Comment Details */,
 				AAF9030F147303F100AB8674 /* Profile */,
 				AA6B6F231472FBEB008E885B /* Profile Edit */,
@@ -3648,23 +3649,17 @@
 			name = Notifications;
 			sourceTree = "<group>";
 		};
-		AA08B3D9147C31B700E6D1CA /* Activity */ = {
+		AA08B3D9147C31B700E6D1CA /* Activity List */ = {
 			isa = PBXGroup;
 			children = (
-				1854043214AA851500EAA6AF /* SocializeActivityDetailsView.m */,
-				1854043314AA851500EAA6AF /* SocializeActivityDetailsView.h */,
-				1854042B14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib */,
-				1854042714AA306B00EAA6AF /* SocializeActivityDetailsViewController.m */,
-				1854042814AA306B00EAA6AF /* SocializeActivityDetailsViewController.h */,
 				AA08B3FC147C344800E6D1CA /* SocializeActivityViewController.h */,
 				AA08B3FD147C344900E6D1CA /* SocializeActivityViewController.m */,
 				AA08B3EF147C336300E6D1CA /* SocializeActivityViewController.xib */,
 				AA08B3E3147C321500E6D1CA /* SocializeActivityTableViewCell.h */,
 				AA08B3E4147C321500E6D1CA /* SocializeActivityTableViewCell.m */,
 				AA08B3E9147C322A00E6D1CA /* SocializeActivityTableViewCell.xib */,
-				AA0186B014C6151400858AD8 /* SocializeActivityDetailsViewControllerDelegate.h */,
 			);
-			name = Activity;
+			name = "Activity List";
 			sourceTree = "<group>";
 		};
 		AA3326DE144CD9FB0033C7FA /* KIF */ = {
@@ -3945,6 +3940,19 @@
 				AA88E84A147DCAFD00123E6F /* SocializeTableViewTests.m */,
 			);
 			name = SocializeTableView;
+			sourceTree = "<group>";
+		};
+		AAAA661E14C77D0C00261F35 /* Activity Details */ = {
+			isa = PBXGroup;
+			children = (
+				1854042B14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib */,
+				1854042714AA306B00EAA6AF /* SocializeActivityDetailsViewController.m */,
+				1854042814AA306B00EAA6AF /* SocializeActivityDetailsViewController.h */,
+				1854043214AA851500EAA6AF /* SocializeActivityDetailsView.m */,
+				1854043314AA851500EAA6AF /* SocializeActivityDetailsView.h */,
+				AA0186B014C6151400858AD8 /* SocializeActivityDetailsViewControllerDelegate.h */,
+			);
+			name = "Activity Details";
 			sourceTree = "<group>";
 		};
 		AAAFE86214355F1B00851C73 /* SampleSdkApp */ = {

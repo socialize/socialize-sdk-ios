@@ -450,7 +450,6 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
     [_activityService getActivityOfUserId:userId first:first last:last activity:activityType];
 }
 
-
 #pragma mark share service stuff
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text
 {

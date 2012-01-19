@@ -10,6 +10,7 @@
 #import "SocializeProfileViewController.h"
 #import "URLDownload.h"
 #import <OCMock/OCMock.h>
+#import "SocializeActivityDetailsView.h"
 
 @interface SocializeActivityDetailsViewController()
 -(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
@@ -26,6 +27,7 @@
 @synthesize mockActivityViewController = mockActivityViewController_;
 @synthesize mockSocializeUser = mockSocializeUser_;
 @synthesize mockShowEntityButton = mockShowEntityButton_;
+@synthesize mockTableView = mockTableView_;
 
 + (SocializeBaseViewController*)createController {
     return [[[SocializeActivityDetailsViewController alloc] init] autorelease];
@@ -51,6 +53,11 @@
     
     self.mockShowEntityButton = [OCMockObject mockForClass:[UIButton class]];
     [[[self.mockActivityDetailsView stub] andReturn:self.mockShowEntityButton] showEntityButton];
+    
+    self.mockTableView = [OCMockObject mockForClass:[UITableView class]];
+    [[self.mockTableView stub] setDelegate:nil];
+    [[self.mockTableView stub] setDataSource:nil];
+    self.activityDetailsViewController.tableView = self.mockTableView;
 }
 
 -(void)tearDown
@@ -62,6 +69,7 @@
     [self.mockActivityViewController verify];
     [self.mockSocializeUser verify];
     [self.mockShowEntityButton verify];
+    [self.mockTableView verify];
     
     self.activityDetailsViewController = nil;
     self.partialActivityDetailsViewController = nil;
@@ -70,6 +78,7 @@
     self.mockActivityViewController = nil;
     self.mockSocializeUser = nil;
     self.mockShowEntityButton = nil;
+    self.mockTableView = nil;
     [super tearDown];
 }
 
@@ -148,6 +157,12 @@
     [[self.partialActivityDetailsViewController expect]  startLoadAnimationForView:self.mockActivityDetailsView];  
     [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockDoneButton];
     
+    // Header should be set to the actual details UIView subclass
+    [[self.mockTableView expect] setTableHeaderView:self.mockActivityDetailsView];
+    
+    // Expected configuration for the activity list
+    [[self.mockActivityViewController expect] setDontShowNames:YES];
+    
     [self.activityDetailsViewController viewDidLoad];
 }
 
@@ -209,6 +224,10 @@
     [self.activityDetailsViewController loadActivityDetailData];
 }
      
+- (void)testActivityDetailsViewFinishLoadResetsHeader {
+    [[self.mockTableView expect] setTableHeaderView:self.mockActivityDetailsView];
+    [self.activityDetailsViewController activityDetailsViewDidFinishLoad:self.mockActivityDetailsView];
+}
 
 
 @end

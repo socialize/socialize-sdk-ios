@@ -110,7 +110,6 @@
 -(void)configureDetailsView {
     self.activityViewController.currentUser = self.socializeActivity.user.objectID;
     self.activityDetailsView.username = self.socializeActivity.user.userName;
-    self.activityDetailsView.activityTableView = self.activityViewController.view;
 }
 
 -(void)setSocializeActivity:(id<SocializeActivity>)socializeActivity {
@@ -132,15 +131,8 @@
             }];
 }   
 
-#pragma mark - activityviewcontroller methods
-- (SocializeActivityViewController*)activityViewController {
-    if (activityViewController_ == nil) {
-        activityViewController_ = [[SocializeActivityViewController alloc] init];
-        activityViewController_.delegate = self;
-        activityViewController_.dontShowNames = YES;
-        activityViewController_.dontShowDisclosure = NO;
-    }   
-    return activityViewController_;
+- (void)configureActivityViewController {
+    self.activityViewController.dontShowNames = YES;
 }
 
 #pragma mark - View lifecycle
@@ -156,6 +148,14 @@
     [self configureDetailsView];
     [self startLoadAnimationForView:self.activityDetailsView];   
     self.navigationItem.rightBarButtonItem = self.doneButton;
+    self.tableView.tableHeaderView = self.activityDetailsView;
+    
+    [self configureActivityViewController];
+}
+
+- (void)activityDetailsViewDidFinishLoad:(SocializeActivityDetailsView *)activityDetailsView {
+    // This needs to be reset if its size changes
+    self.tableView.tableHeaderView = self.activityDetailsView;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
@@ -179,5 +179,6 @@
         entityLoader(self.navigationController, activity.entity);
     }
 }
+
 
 @end

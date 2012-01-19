@@ -13,8 +13,6 @@
 #import "PropertyHelpers.h"
 #import "UIButton+Socialize.h"
 
-CGFloat const kActivityDetailViewOffset = 20;
-CGFloat const kMinRecentActivityHeight = 200;
 CGFloat const kMinActivityMessageHeight = 50;
 
 NSString * const kNoLocationMessage = @"No location associated with this activity.";
@@ -31,7 +29,6 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 @synthesize profileNameButton;
 @synthesize profileImage;
 @synthesize recentActivityView;
-@synthesize activityTableView;
 @synthesize recentActivityHeaderImage;
 @synthesize activityMessage;
 @synthesize activityDate;
@@ -41,6 +38,7 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 @synthesize htmlPageCreator;
 @synthesize showEntityView = showEntityView_;
 @synthesize showEntityButton = showEntityButton_;
+@synthesize delegate = delegate_;
 
 #pragma mark init/dealloc methods
 - (void)dealloc
@@ -50,7 +48,6 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     [profileNameButton release];
     [profileImage release]; 
     [recentActivityView release]; 
-    [activityTableView release]; 
     [recentActivityHeaderImage release];
     [activityMessage release];
     [activityDate release]; 
@@ -166,6 +163,8 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self layoutActivityDetailsSubviews];
+    
+    [self.delegate activityDetailsViewDidFinishLoad:self];
 }
 
 #pragma mark layout logic
@@ -183,41 +182,13 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     // Activity view is below the show entity view
     [self.recentActivityView positionBelowView:self.showEntityView];
     
-    // fill out the remaining view with the recent activity view
-    [self.recentActivityView fillRestOfView:self minSize:CGSizeMake(self.frame.size.width,kMinRecentActivityHeight)];
-    
-    //adjust all the activity subviews
-    [self layoutRecentActivitySubviews];
-    
-    self.contentSize = CGSizeMake(self.frame.size.width, self.recentActivityView.diagonalPoint.y);
+    CGRect thisFrame = self.bounds;
+    CGPoint botRight = self.recentActivityView.diagonalPoint;
+    CGFloat newHeight = botRight.y;
+    thisFrame.size.height = newHeight;
+    self.bounds = thisFrame;
 }
 
 #pragma mark activity view layout
--(void) layoutRecentActivitySubviews { 
-    [self.activityTableView positionBelowView:self.recentActivityHeaderImage];
-    
-    //we also need to give the tableview the correct height so we'll take the bottom most view
-    CGFloat activityHeight = self.recentActivityView.frame.size.height - self.recentActivityHeaderImage.frame.size.height;
-    CGRect newActivityFrame = self.activityTableView.frame;
-    newActivityFrame.size.height = activityHeight;
-    NSLog(@"new activity frame %@", newActivityFrame);
-    self.activityTableView.frame = newActivityFrame;
-    
-}
--(void) setActivityTableView:(UIView *)newActivityTableView {
-    if( activityTableView ) {
-        //we need to remove the previous view from
-        //the hierarchy before adding a new one later
-        [activityTableView removeFromSuperview];
-        [activityTableView release];
-        activityTableView = nil;
-    }
-    if ( newActivityTableView ) {
-        activityTableView = [newActivityTableView retain];
-        //we also need to set the correct frame when we add the object as a subview
-        [self.recentActivityView addSubview:activityTableView];
-        [self layoutActivityDetailsSubviews];
-    }
-}
 
 @end

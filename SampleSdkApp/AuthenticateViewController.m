@@ -87,6 +87,17 @@
     
 //    UIViewController *comments = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:@"http://www.npr.org/"];
 //    [self presentModalViewController:comments animated:YES];
+    
+//    NSString *commentType = @"comment";
+//    NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                   [NSNumber numberWithInteger:308047], @"activity_id",
+//                                   commentType, @"activity_type",
+//                                   @"new_comments", @"notification_type",
+//                                   nil];
+//    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+//    
+//    [Socialize handleNotification:userInfo];
+
 }
 
 - (void)viewDidUnload

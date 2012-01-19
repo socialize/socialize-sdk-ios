@@ -21,4 +21,5 @@
 @property (nonatomic, retain) id mockActivityViewController;
 @property (nonatomic, retain) id mockSocializeUser;
 @property (nonatomic, retain) id mockShowEntityButton;
+@property (nonatomic, retain) id mockTableView;
 @end
