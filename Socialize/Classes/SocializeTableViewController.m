@@ -163,7 +163,7 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 20;
         [self.tableView endUpdates];
     }
     
-    if ([content count] < self.pageSize) {
+    if ([content count] < self.pageSize || [content count] == 0) {
         self.loadedAllContent = YES;
         self.tableView.tableFooterView = nil;
     }
