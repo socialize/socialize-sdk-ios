@@ -1412,13 +1412,6 @@
 		AAB427F914BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB427F614BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h */; };
 		AAB427FA14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
 		AAB427FB14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
-		AAB427FD14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
-		AAB427FE14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
-		AAB427FF14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
-		AAB4280014BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
-		AAB4280114BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
-		AAB4280214BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
-		AAB4280314BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */; };
 		AABB7D941433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D8F1433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib */; };
 		AABB7D951433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */; };
 		AABB7D961433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */; };
@@ -2633,7 +2626,6 @@
 		AAB2DEE5143A796300C3C1F5 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = "Frameworks/OCMock/Source/build/Release-iphoneos/libOCMock.a"; sourceTree = "<group>"; };
 		AAB427F614BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNotificationToggleBubbleContentView.h; path = Classes/SocializeNotificationToggleBubbleContentView.h; sourceTree = "<group>"; };
 		AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNotificationToggleBubbleContentView.m; path = Classes/SocializeNotificationToggleBubbleContentView.m; sourceTree = "<group>"; };
-		AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeNotificationToggleBubbleContentView.xib; sourceTree = "<group>"; };
 		AABB7D8F1433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeEditValueTableViewCell.xib; path = Resources/SocializeEditValueTableViewCell.xib; sourceTree = "<group>"; };
 		AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditTableViewCell.xib; path = Resources/SocializeProfileEditTableViewCell.xib; sourceTree = "<group>"; };
 		AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditTableViewImageCell.xib; path = Resources/SocializeProfileEditTableViewImageCell.xib; sourceTree = "<group>"; };
@@ -3993,7 +3985,6 @@
 				AADE200814BE682700E59945 /* SocializeBubbleView.m */,
 				AAB427F614BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h */,
 				AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */,
-				AAB427FC14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib */,
 			);
 			name = Bubble;
 			sourceTree = "<group>";
@@ -4844,7 +4835,6 @@
 				AA7FB8E31491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8EA1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				AAF7A31C149B38DC00FE67E9 /* Smiley.png in Resources */,
-				AAB427FF14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5025,7 +5015,6 @@
 				AA7FB8E11491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8E81491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				1854042C14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib in Resources */,
-				AAB427FD14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5202,7 +5191,6 @@
 				AA7FB8E51491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8EC1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A914AADC0D0052720B /* SocializeActivityDetailsViewController.xib in Resources */,
-				AAB4280114BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5399,7 +5387,6 @@
 				AA7FB8ED1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A414AADBF70052720B /* SocializeActivityDetailsViewController.xib in Resources */,
 				AA9D780414BE191A00D76D6B /* SampleEntityLoader.xib in Resources */,
-				AAB4280214BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5468,7 +5455,6 @@
 				AA7FB8E71491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8EE1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				AA9D780514BE191A00D76D6B /* SampleEntityLoader.xib in Resources */,
-				AAB4280314BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5667,7 +5653,6 @@
 				AA7FB8EB1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A514AADBF90052720B /* SocializeActivityDetailsViewController.xib in Resources */,
 				AA9D780314BE191A00D76D6B /* SampleEntityLoader.xib in Resources */,
-				AAB4280014BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5846,7 +5831,6 @@
 				AA7FB8E21491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8E91491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A614AADBFC0052720B /* SocializeActivityDetailsViewController.xib in Resources */,
-				AAB427FE14BFAC78007AAF90 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
