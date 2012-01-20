@@ -124,6 +124,11 @@
 
 #pragma mark - View lifecycle
 
+- (void)presentInternalController:(UIViewController*)viewController {
+    self.ignoreNextView = YES;
+    [self.presentModalInViewController presentModalViewController:viewController animated:YES];
+}
+
 - (void)setNoAutoLayout:(BOOL)noAutoLayout {
     noAutoLayout_ = noAutoLayout;
     [(SocializeActionView*)self.view setNoAutoLayout:noAutoLayout];
@@ -194,12 +199,10 @@
 
 -(void)commentButtonTouched:(id)sender
 {
-    self.ignoreNextView = YES;
-    
     // Reset for now, since we yet don't have refresh functionality
     self.commentsNavController = nil;
     
-    [self.presentModalInViewController presentModalViewController:self.commentsNavController animated:YES];
+    [self presentInternalController:self.commentsNavController];
 }
 
 -(void)likeButtonTouched:(id)sender
@@ -214,9 +217,8 @@
 
 -(void)viewButtonTouched:(id)sender
 {
-    self.ignoreNextView = YES;
     UINavigationController *nav = [SocializeProfileViewController currentUserProfileWithDelegate:nil];
-    [self.presentModalInViewController presentModalViewController:nav animated:YES];
+    [self presentInternalController:nav];
 }
 
 - (UIActionSheet*)shareActionSheet {
@@ -259,9 +261,8 @@
 
 -(void)shareViaFacebook
 {
-    self.ignoreNextView = YES;
     UINavigationController *shareController = [SocializePostShareViewController postShareViewControllerInNavigationControllerWithEntityURL:self.entity.key];
-    [self.presentModalInViewController presentModalViewController:shareController animated:YES];
+    [self presentInternalController:shareController];
 }
 
 #pragma mark Share via email
@@ -329,7 +330,7 @@
     NSString *emailBody = [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", self.entity.name, self.entity.key];
     [self.shareComposer setMessageBody:emailBody isHTML:NO];
 
-	[self.presentModalInViewController presentModalViewController:self.shareComposer animated:YES];
+    [self presentInternalController:self.shareComposer];
 }
 
 - (void)reloadEntity {

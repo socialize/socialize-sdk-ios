@@ -55,6 +55,7 @@
 -(void)launchMailAppOnDevice;
 -(void)displayComposerSheet;
 -(BOOL)canSendMail;
+- (void)presentInternalController:(UIViewController*)viewController;
 
 @end
 
@@ -129,12 +130,12 @@
 
 
 - (void)testModalCommentDisplay {
-    [[self.mockParentController expect] presentModalViewController:OCMOCK_ANY animated:YES];
+    [[(id)self.actionBar expect] presentInternalController:OCMOCK_ANY];
     [self.actionBar commentButtonTouched:nil];
 }
 
 - (void)testModalProfileDisplay {
-    [[self.mockParentController expect] presentModalViewController:OCMOCK_ANY animated:YES];
+    [[(id)self.actionBar expect] presentInternalController:OCMOCK_ANY];
     [self.actionBar viewButtonTouched:nil];
 }
 
@@ -244,7 +245,7 @@
 - (void)testShareViaEmailShowsComposer {
     [[self.mockShareComposer expect] setSubject:TEST_ENTITY_NAME];
     [[self.mockShareComposer expect] setMessageBody:OCMOCK_ANY isHTML:NO];
-    [[self.mockParentController expect] presentModalViewController:self.mockShareComposer animated:YES];
+    [[(id)self.actionBar expect] presentInternalController:self.mockShareComposer];
 
      [self.actionBar shareViaEmail];
 }
@@ -355,6 +356,13 @@
     self.actionBar.unconfiguredEmailAlert = nil;
     UIAlertView *alertView = self.actionBar.unconfiguredEmailAlert;
     GHAssertNotNil(alertView, @"missing alert view");
+}
+
+- (void)testPresentModalControllerIgnoresNextViewAndPresents {
+    [[(id)self.actionBar expect] setIgnoreNextView:YES];
+    [[self.mockParentController expect] presentModalViewController:OCMOCK_ANY animated:YES];
+    
+    [self.actionBar presentInternalController:nil];
 }
 
 @end
