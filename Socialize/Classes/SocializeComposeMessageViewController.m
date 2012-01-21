@@ -20,6 +20,7 @@
 #import "SocializeFacebookInterface.h"
 #import "SocializeShareBuilder.h"
 #import "SocializePrivateDefinitions.h"
+#import "SocializeHorizontalContainerView.h"
 
 #define NO_CITY_MSG @"Could not locate the place name."
 
@@ -49,13 +50,12 @@
 @synthesize lowerContainer = lowerContainer_;
 @synthesize upperContainer = upperContainer_;
 SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
+@synthesize messageActionButtonContainer = messageActionButtonContainer_;
+@synthesize messageActionButtons = messageActionButtons_;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil 
-               bundle:(NSBundle *)nibBundleOrNil 
-      entityUrlString:(NSString*)entityUrlString 
+- (id)initWithEntityUrlString:(NSString*)entityUrlString 
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self = [super init]) {
         self.entityURL = entityUrlString;
     }
     return self;
@@ -75,6 +75,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [lowerContainer_ release];
     [upperContainer_ release];
     [sendButton_ release];
+    [messageActionButtonContainer_ release];
+    [messageActionButtons_ release];
 
     [super dealloc];
 }
@@ -279,6 +281,12 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     self.mapContainer = nil;
     self.lowerContainer = nil;
     self.upperContainer = nil;
+}
+
+- (void)setMessageActionButtons:(NSArray *)messageActionButtons {
+    NonatomicRetainedSetToFrom(messageActionButtons_, messageActionButtons);
+    self.messageActionButtonContainer.columns = self.messageActionButtons;
+    [self.messageActionButtonContainer layoutColumns];
 }
 
 - (UIView*)showLoadingInView {

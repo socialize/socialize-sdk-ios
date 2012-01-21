@@ -216,8 +216,7 @@
     // Set user default to not posting to facebook
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
     
-    // Switch should unhide and be deselected because of our user default
-    [[self.mockFacebookButton expect] setHidden:NO];
+    // Switch should be deselected because of our user default
     [[self.mockFacebookButton expect] setSelected:NO];
     
     // In case these are asked for again
@@ -230,8 +229,20 @@
     // expect dismissal
     [[(id)self.postCommentViewController expect] dismissSelf];
     
+    // Message action buttons should be set up again, since facebook is now available
+    [[(id)self.postCommentViewController expect] configureMessageActionButtons];
+    
     // Authenticate view controller completed facebook auth
     [self.postCommentViewController socializeAuthViewController:nil didAuthenticate:nil];
+}
+
+- (void)testMessageActionButtonsWhenFacebookAndNotificationsAvailable {
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
+    [[[self.mockSocialize stub] andReturnBool:YES] notificationsAreConfigured];
+    
+    NSArray *expectedButtons = [NSMutableArray arrayWithObjects:self.mockFacebookButton, self.mockEnableSubscribeButton, nil];
+    [[(id)self.postCommentViewController expect] setMessageActionButtons:expectedButtons];
+    [self.postCommentViewController configureMessageActionButtons];
 }
 
 - (void)testThatFailingFacebookStillFinishesCreateComment {

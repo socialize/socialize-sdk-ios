@@ -15,6 +15,7 @@
 #import "CommentsTableViewCell.h"
 #import "SocializeGeocoderAdapter.h"
 #import "SocializeComposeMessageViewController.h"
+#import "SocializeHorizontalContainerView.h"
 
 @interface SocializeComposeMessageViewController ()
 - (void)setShareLocation:(BOOL)shareLocation;
@@ -39,9 +40,10 @@
 @synthesize mockMapOfUserLocation = mockMapOfUserLocation_;
 @synthesize mockDelegate = mockDelegate_;
 @synthesize mockSendButton = mockSendButton_;
+@synthesize mockMessageActionButtonContainer = mockMessageActionButtonContainer_;
 
 + (SocializeBaseViewController*)createController {
-    return [[[SocializeComposeMessageViewController alloc] initWithNibName:nil bundle:nil entityUrlString:TEST_URL] autorelease];
+    return [[[SocializeComposeMessageViewController alloc] initWithEntityUrlString:TEST_URL] autorelease];
 }
 
 - (BOOL)shouldRunOnMainThread
@@ -86,6 +88,9 @@
     
     self.mockSendButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.composeMessageViewController.sendButton = self.mockSendButton;
+    
+    self.mockMessageActionButtonContainer = [OCMockObject mockForClass:[SocializeHorizontalContainerView class]];
+    self.composeMessageViewController.messageActionButtonContainer = self.mockMessageActionButtonContainer;
 }
 
 - (void)tearDown {
@@ -102,6 +107,7 @@
     [self.mockMapOfUserLocation verify];
     [self.mockDelegate verify];
     [self.mockSendButton verify];
+    [self.mockMessageActionButtonContainer verify];
     
     self.composeMessageViewController = nil;
     self.mockSocialize = nil;
@@ -116,6 +122,7 @@
     self.mockMapOfUserLocation = nil;
     self.mockDelegate = nil;
     self.mockSendButton = nil;
+    self.mockMessageActionButtonContainer = nil;
     
     [super tearDown];
 }
@@ -200,7 +207,7 @@
     [[self.mockSendButton expect] setEnabled:NO];
     BOOL noValue = NO;
     [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(noValue)] shouldShareLocation];
-    [[self.mockLocationManager expect] setShouldShareLocation:NO];
+    [[self.mockLocationManager expect] setShouldShareLocation:NO];    
 }
 
 - (void)testViewDidLoad {

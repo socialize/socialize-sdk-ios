@@ -642,4 +642,8 @@ otherwise you will get a failure.
 
 + (NSString*)applicationURL;
 
+- (BOOL)notificationsAreConfigured;
+
++(id)sharedSocialize;
+
 @end

@@ -18,10 +18,6 @@
 #import "SocializeSubscriptionService.h"
 #import "SocializeDeviceTokenService.h"
 
-@interface Socialize()
-+ (Socialize*)sharedSocialize;
-@end
-
 @implementation SocializeTests
 
 -(void) setUpClass

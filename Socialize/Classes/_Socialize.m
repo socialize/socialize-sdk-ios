@@ -514,4 +514,11 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
     return url;
 }
 
+- (BOOL)notificationsAreConfigured {
+    BOOL entityLoaderDefined = [Socialize entityLoaderBlock] != nil;
+    BOOL tokenSent = [[Socialize deviceToken] length] > 0;
+    
+    return entityLoaderDefined && tokenSent;
+}
+
 @end

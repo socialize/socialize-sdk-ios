@@ -23,6 +23,7 @@
 @property (nonatomic, retain) id mockMapOfUserLocation;
 @property (nonatomic, retain) id mockDelegate;
 @property (nonatomic, retain) id mockSendButton;
+@property (nonatomic, retain) id mockMessageActionButtonContainer;
 
 - (void)prepareForViewDidLoad;
 @end

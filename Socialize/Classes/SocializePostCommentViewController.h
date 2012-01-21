@@ -28,5 +28,6 @@
 -(IBAction)unsubscribeButtonPressed:(id)sender;
 -(IBAction)enableSubscribeButtonPressed:(id)sender;
 - (void)getSubscriptionStatus;
+- (void)configureMessageActionButtons;
 @end
 

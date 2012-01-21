@@ -16,6 +16,7 @@
 
 @class CommentMapView;
 @class SocializeLocationManager;
+@class SocializeHorizontalContainerView;
 
 @interface SocializeComposeMessageViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate>
 {
@@ -25,6 +26,7 @@
     UIButton*   activateLocationButton;
     CommentMapView* mapOfUserLocation;
     Class _geoCoderInfo;
+    NSArray *messageActionButtons_;
 }
 
 @property (nonatomic, copy) NSString *entityURL;
@@ -38,15 +40,16 @@
 @property(nonatomic, retain) IBOutlet UIView *upperContainer;
 @property(nonatomic, retain) IBOutlet UIView *mapContainer;
 @property(nonatomic, retain) UIBarButtonItem *sendButton;
+@property(nonatomic, retain) IBOutlet SocializeHorizontalContainerView *messageActionButtonContainer;
+@property(nonatomic, retain) NSArray *messageActionButtons;
 
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil 
-               bundle:(NSBundle *)nibBundleOrNil 
-      entityUrlString:(NSString*)entityUrlString;
+- (id)initWithEntityUrlString:(NSString*)entityUrlString;
 
 - (void)addSocializeRoundedGrayButtonImagesToButton:(UIButton*)button;
 - (void)setSubviewForLowerContainer:(UIView*)newSubview;
+
 @end
 

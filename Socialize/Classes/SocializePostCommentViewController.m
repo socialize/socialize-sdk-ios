@@ -36,7 +36,7 @@
 
 + (SocializePostCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL {
     SocializePostCommentViewController *postCommentViewController = [[[SocializePostCommentViewController alloc]
-                                                       initWithNibName:@"SocializePostCommentViewController" bundle:nil entityUrlString:entityURL]
+                                                       initWithEntityUrlString:entityURL]
                                                       autorelease];
     return postCommentViewController;
 }
@@ -100,14 +100,24 @@
 
 }
 
-- (void)configureFacebookButton {
+- (void)configureMessageActionButtons {
+    NSMutableArray *buttons = [NSMutableArray array];
     if ([self.socialize isAuthenticatedWithFacebook]) {
-        BOOL dontPost = [[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
-        self.facebookButton.hidden = NO;
-        self.facebookButton.selected = !dontPost;
-    } else {
-        self.facebookButton.hidden = YES;
+        [buttons addObject:self.facebookButton];
     }
+
+    if ([self.socialize notificationsAreConfigured]) {
+        [buttons addObject:self.enableSubscribeButton];
+    } else {
+        DebugLog(@"Notifications are not configured. Subscribe button will not be shown");
+    }
+    
+    self.messageActionButtons = buttons;
+}
+
+- (void)configureFacebookButton {
+    BOOL dontPost = [[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
+    self.facebookButton.selected = !dontPost;
 }
 
 - (void)createCommentOnSocializeServer {
@@ -175,7 +185,10 @@
     [self notifyDelegateOrDismissSelf];
 }
 - (void)afterLoginAction {
+    [super afterLoginAction];
+    
     [self configureFacebookButton];
+    [self configureMessageActionButtons];
 }
 
 - (void)facebookButtonPressed:(UIButton *)sender {
