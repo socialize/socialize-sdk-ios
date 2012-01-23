@@ -20,6 +20,7 @@
     [entity_ release];
     [user_ release];
     [date_ release];
+    [type_ release];
     [super dealloc];
 }
 
