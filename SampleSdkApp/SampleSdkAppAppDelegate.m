@@ -62,6 +62,8 @@
         [navigationController pushViewController:entityLoader animated:YES];
     }];
     
+//    [Socialize setEntityLoaderBlock:nil];
+    
     return YES;
 }
 

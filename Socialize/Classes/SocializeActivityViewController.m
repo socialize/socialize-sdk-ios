@@ -192,11 +192,15 @@
     // Ensure activity indicator off for cells reused mid-load
     [cell.profileImageActivity stopAnimating];
     
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    BOOL noEntityLoader = [Socialize entityLoaderBlock] == nil;
     
-    BOOL hideDisclosure = [Socialize entityLoaderBlock] == nil;
+    if (noEntityLoader) {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    } else {
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    }
     
-    cell.disclosureImage.hidden = hideDisclosure;
+    cell.disclosureImage.hidden = noEntityLoader;
     
     NSString *imageURL = activity.user.smallImageUrl;
     if (imageURL != nil) {
