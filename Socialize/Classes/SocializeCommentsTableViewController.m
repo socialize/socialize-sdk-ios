@@ -253,7 +253,7 @@
     [self presentModalViewController:pcNavController animated:YES];
 }
 
-- (void)composeMessageViewControllerDidCancel:(SocializeComposeMessageViewController *)composeMessageViewController {
+- (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
     [self dismissModalViewControllerAnimated:YES];
 }
 

@@ -294,9 +294,6 @@
     [self notify:kGHUnitWaitStatusSuccess];
 }
 
-- (void)composeMessageViewControllerDidCancel:(SocializeComposeMessageViewController*)composeMessageViewController {
-}
-
 - (void)testThatBigUnsubscribeButtonUpdatesOtherButtonAndDontSubscribeState {
     [[self.mockCommentTextView expect] becomeFirstResponder];
     [[self.mockEnableSubscribeButton expect] setSelected:NO];

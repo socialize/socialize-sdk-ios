@@ -134,7 +134,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     return [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil];
 }
     
-- (void)profileEditViewControllerDidCancel:(SocializeProfileEditViewController *)profileEditViewController {
+- (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
     [self profileViewDidFinish];        
 }
 
