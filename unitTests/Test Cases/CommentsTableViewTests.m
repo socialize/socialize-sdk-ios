@@ -91,7 +91,9 @@
     self.commentsTableViewController.tableView = self.mockTableView;
 }
 
--(void)testViewDidLoad{
+-(void)testViewDidLoad {
+    [Socialize setEntityLoaderBlock:nil];
+    
 //    [self makeTableViewNice];
     [super expectViewDidLoad];
 
@@ -110,6 +112,10 @@
     
     [[self.mockSubscribedButton expect] setEnabled:NO];
 
+    // Notifications are disabled
+    [[[self.mockSocialize stub] andReturnBool:NO] notificationsAreConfigured];
+    [[self.mockSubscribedButton expect] setHidden:YES];
+    
     [self.commentsTableViewController viewDidLoad]; 
 }
 

@@ -27,6 +27,7 @@
 #import "SocializeBubbleView.h"
 #import "UIView+Layout.h"
 #import "SocializeNotificationToggleBubbleContentView.h"
+#import "CommentsTableFooterView.h"
 
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
@@ -232,6 +233,16 @@
     self.navigationItem.rightBarButtonItem = self.closeButton;    
     
     self.subscribedButton.enabled = NO;
+    
+    if (![self.socialize notificationsAreConfigured]) {
+        self.subscribedButton.hidden = YES;
+        
+        CGRect frame = self.footerView.searchBarImageView.frame;
+        frame.size.width = self.footerView.frame.size.width;
+        frame.origin.x = self.footerView.frame.origin.x;
+        frame = CGRectInset(frame, 8, 0);
+        self.footerView.searchBarImageView.frame = frame;
+    }
 }
 
 #pragma mark tableFooterViewDelegate
