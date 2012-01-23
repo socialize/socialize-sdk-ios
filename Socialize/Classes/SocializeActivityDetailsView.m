@@ -12,6 +12,7 @@
 #import "UIView+Layout.h"
 #import "PropertyHelpers.h"
 #import "UIButton+Socialize.h"
+#import "_Socialize.h"
 
 CGFloat const kMinActivityMessageHeight = 50;
 
@@ -175,13 +176,21 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     CGRect messageFrame = activityMessageView.frame;
     messageFrame.size.height = messageHeight;
     activityMessageView.frame = messageFrame;
-    
-    // Show entity is below the variable-height activity message view
-    [self.showEntityView positionBelowView:self.activityMessageView];
-    
-    // Activity view is below the show entity view
-    [self.recentActivityView positionBelowView:self.showEntityView];
-    
+
+    if ([Socialize entityLoaderBlock] != nil) {
+        // Show entity is below the variable-height activity message view
+        [self addSubview:self.showEntityView];
+        [self.showEntityView positionBelowView:self.activityMessageView];
+        
+        // Activity view is below the show entity view
+        [self.recentActivityView positionBelowView:self.showEntityView];
+    } else {
+        [self.showEntityView removeFromSuperview];
+        
+        // Activity view is below the show entity view
+        [self.recentActivityView positionBelowView:self.activityMessageView];
+    }
+        
     CGRect thisFrame = self.bounds;
     CGPoint botRight = self.recentActivityView.diagonalPoint;
     CGFloat newHeight = botRight.y;

@@ -16,5 +16,7 @@
 @property (nonatomic, retain) id                                mockHtmlCreator;
 @property (nonatomic, retain) id                                mockActivityMessageView;
 @property (nonatomic, retain) id mockShowEntityButton;
+@property (nonatomic, retain) id mockShowEntityView;
+@property (nonatomic, retain) id mockRecentActivityView;
 
 @end
