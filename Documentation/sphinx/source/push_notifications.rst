@@ -4,7 +4,7 @@
 Push Notifications
 =========================================
 
-Enabling Apple Notification Push Service (APNS) for your application
+Step 1: Enable Apple Notification Push Service (APNS) for your application
 ----------------------------------------------------------------------
 
 Enabling Notifications for your Socialize SDK just take a few steps.  High-level concepts are covered in 
@@ -14,7 +14,7 @@ but the Socialize SDK takes care of the low-level implementation details of noti
 .. image:: images/apns_screenshot.png
 
 
-Configuring Your Apple App ID
+Step 2: Configuring Your Apple App ID
 ----------------------------------------------------------------------
 
 To enable APNS for your application you'll first have to configure your App ID in `Apple's developer portal <https://developer.apple.com/ios/manage/bundles/index.action>`.   
@@ -24,7 +24,7 @@ https://developer.apple.com/ios/manage/bundles/index.action
 .. image:: images/appid_listing.png
 
 
-Keys/Certificates for your App ID for APNS
+Step 3: Add Keys/Certificates for your App ID for APNS
 ----------------------------------------------------------------------
 
 APNS security is based on private/public key pairs (X.509) and signing certificates.  To start the process click the 'configure' button on the right hand side and follow the directions 
@@ -35,7 +35,7 @@ This should result in the 'Keychain Access' application opening.
 
 .. image:: images/add_certificates.png
 
-Exporting your .p12 (key/certificate pair) from the Keychain Access tool.
+Step 4: Exporting your .p12 (key/certificate pair) from the Keychain Access tool.
 ------------------------------------------------------------------------------------
 After you've downloaded and double-clicked the certificate it should automatically open the 'Keychain Access' tool. Then find they 'My Certificates' category on the left hand side of the 
 'Keychain Access' tool.  Right click on the 'Apple Production iOS Push Services' and export the key/certificate pair in the p12 (Personal Information Exchange) format.  
@@ -44,8 +44,7 @@ Save this file without a password and upload it to our developer portal.
 .. image:: images/export_p12.png
 
 
-
-Uploading your .p12 to the Socialize Developer Portal
+Step 5: Uploading your .p12 to the Socialize Developer Portal
 ------------------------------------------------------------------------------------
 
 To upload you'll need to get to the application dashboard: http://www.getsocialize.com/apps/ and select the application for which you want to configure.  If you've added a 
@@ -55,33 +54,35 @@ password to your p12 in the previous step make sure to put that in.
 
 
 
-Configuring Socialize in Your App
+Step 6: Configuring Socialize in Your App
 ------------------------------------------------------------------------------------
 
 To configure your app you'll need to register for notifications and handle the notification response.
 
 
-Register for Notifications
+Step 7: Register for Notifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To configure Socialize inside the app, the minimum you'll need to do is register for notifications.  Run the application, and see that you get the push notification request pop-up. 
-If you do not get it, you might be using the wrong provisioning profile.
+If you get an error, you might be using the wrong provisioning profile.
 
 .. raw:: html
 
     <script src="https://gist.github.com/1566706.js?file=appDelegate.m"></script> 
 
 
-Handle Notifications
+Step 8: Handle Notifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For notifications you'll have to handle notifications.  Our method call knows whether the notification was meant for the Socialize SDK and if not, it allows you to handle the 
-application specific notification.
+
+Once a notification is received, you have to give Socialize the opportunity to handle it.
+Our method call will let you know if the notification was a Socialize notification. This
+allows you to use the logic below to also handle notifications of your own, if you need to.
 
 .. raw:: html
 
     <script src="https://gist.github.com/1566706.js?file=MyAppDelegate.m"></script>
 
 
-Defining an Entity Loader (Optional, Recomended)
+Step 9 (Optional, Recommended): Defining an Entity Loader
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Some of Socialize's UI objects have the ability to link back to your application's objects.
 We highly recommend that you register an "Entity Loader" block with Socialize. This is a piece
