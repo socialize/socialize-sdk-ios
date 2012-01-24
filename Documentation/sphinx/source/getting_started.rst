@@ -32,9 +32,12 @@ Step 1: Add the Socialize Framework to Your Project
 
 - Download and unzip the lastest iOS SDK release from the website.  You can find it here: http://www.getsocialize.com/sdk/
 - Install the embedded static framework to your application. To do this just drag and drop Socialize.embeddedframework folder from the package to your framework section in your project. Note that this is a directory that includes both Socialize.framework and our bundled Resources.
-- When prompted, check "Copy items into destination group's folder (if needed)" and click finish
 
  	.. image:: images/drag_and_drop.png
+
+- When prompted, check "Copy items into destination group's folder (if needed)" and click finish
+
+ 	.. image:: images/check_copy_items.png
  
 
 Step 2: Add Required Frameworks to Your Project
@@ -64,10 +67,14 @@ If you need more detail configuring the SDK in your app please see our `Getting 
 
 If you're having problems please let us know by clicking on the 'Feedback' tab on the right side of the page.   We're here to help.
 
-Step 4: Set up your Socialize Keys
+You can also search or post on our `support forums`_
+
+  .. _support forums: http://support.getsocialize.com
+
+Step 4: Import Header and Set up your Socialize Keys
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To utilize the iOS SDK and views into your app we need to let the library know your app key and secret.  If you need to get a application key and secret you can get one at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_ 
+To utilize the iOS SDK and views into your app, we need to import the Socialize.h header and let the library know your app key and secret.  If you need to get a application key and secret you can get one at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_ 
 
 .. note:: Make sure import the Socialize header in the code snippet below
 

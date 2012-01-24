@@ -57,12 +57,12 @@
     }];
 #endif
 
-//    [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity>entity) {
-//        SampleEntityLoader *entityLoader = [[[SampleEntityLoader alloc] initWithEntity:entity] autorelease];
-//        [navigationController pushViewController:entityLoader animated:YES];
-//    }];
-//    
-    [Socialize setEntityLoaderBlock:nil];
+    [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity>entity) {
+        SampleEntityLoader *entityLoader = [[[SampleEntityLoader alloc] initWithEntity:entity] autorelease];
+        [navigationController pushViewController:entityLoader animated:YES];
+    }];
+    
+//    [Socialize setEntityLoaderBlock:nil];
     
     return YES;
 }
