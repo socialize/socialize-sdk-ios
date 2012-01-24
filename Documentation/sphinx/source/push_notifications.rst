@@ -36,7 +36,7 @@ Step 2: Configuring Your Apple App ID
 ----------------------------------------------------------------------
 
 To enable APNS for your application you'll first have to configure your App ID in `Apple's developer portal <https://developer.apple.com/ios/manage/bundles/index.action>`.   
-App IDs are an integral part of the iOS Development and Socialize that allows an application to communicate with the Apple Push Notification Service.  You can configure your App ID here:
+You can configure your App ID here:
 https://developer.apple.com/ios/manage/bundles/index.action
 
 .. image:: images/appid_listing.png
@@ -45,7 +45,7 @@ https://developer.apple.com/ios/manage/bundles/index.action
 Step 3: Keys/Certificates for your App ID for APNS
 ----------------------------------------------------------------------
 
-APNS security is based on private/public key pairs (X.509) and signing certificates.  To start the process click the 'configure' button on the right hand side and follow the directions 
+To start the process click the 'configure' button on the right hand side and follow the directions 
 given to you by Apple **very carefully**.  Once you've completed the steps make sure you download the certificate and double-click on the certificate. 
 This should result in the 'Keychain Access' application opening. 
 
@@ -66,7 +66,7 @@ Save this file without a password and upload it to our developer portal.
 Step 4: Uploading your .p12 to the Socialize Developer Portal
 ------------------------------------------------------------------------------------
 
-To upload you'll need to get to the application dashboard: http://www.getsocialize.com/apps/ and select the application for which you want to configure.  If you've added a 
+To upload you'll need to get to the application dashboard: http://www.getsocialize.com/apps/ and select the application you want to configure.  If you've added a 
 password to your p12 in the previous step make sure to put that in.
 
 .. image:: images/notifications_edit_link.png
