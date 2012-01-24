@@ -152,3 +152,10 @@ If you need more detail on installing the action bar please see our `Adding the 
 
 
 By now you should be able to see the Socialize Action Bar.  If you need any help please visit us at http://support.getsocialize.com
+
+
+Next Steps
+-----------------------------------------------------------------------------------------
+Visit your App dashboard on the Socialize website to see new user actions show up in the analytics charts.  You can also enable additional features like Push Notifications.
+
+http://www.getsocialize.com/apps/

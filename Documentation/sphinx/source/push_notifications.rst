@@ -12,7 +12,7 @@ In v1.3 of Socialize we introduced push notifications. This provides your app wi
 .. image:: images/apns_screenshot.png
 
 
-LiveAlerts in Comment Threads
+SmartAlerts™ in Comment Threads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 when a user posts a comment they can elect to subscribe to updates for that topic.
 
@@ -116,3 +116,32 @@ of code that is executed by Socialize when it wishes to display an entity.
 .. image:: images/entity_loader.png
 
 .. note:: When building your application, keep in mind that notifications may be received on devices that do not yet have the entity available.  
+
+
+Troubleshooting Notifications
+----------------------------------------
+
+If you don't see the notifications alert box there are some simple ways to troubleshoot problems.  We also have a vibrant developer community and support 
+here: http://support.getsocialize.com support who can help Additionally here some common errors you might encounter
+
+
+Logging Errors from Notifications Registrations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can implement the notifications delegate method which callbacks if any error occurs during registration.  This should log
+the value of the error to your console.
+
+.. raw:: html
+
+    <script src="https://gist.github.com/1671602.js?file=HandleError.m"></script>
+
+
+I Keep Getting the Error "no valid 'aps-environment' entitlement string found for application"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This typically means you didn't re-create and download the provisioning profile after you enabled pushed notifications.  
+You can re-create your distribution profile here: https://developer.apple.com/ios/manage/provisioningprofiles/viewDistributionProfiles.action.  You'll also want to remove any 
+other versions of provisioning file which exist on your phone.
+
+
+Please go to support.getsocialize.com for additional support 
