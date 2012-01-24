@@ -68,6 +68,10 @@ If you need more detail configuring the SDK in your app please see our `Getting 
 
 If you're having problems please let us know by clicking on the 'Feedback' tab on the right side of the page.   We're here to help.
 
+You can also search or post on our `support forums`_
+
+  .. _support forums: http://support.getsocialize.com
+
 Step 4: Set up your Socialize Keys
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
