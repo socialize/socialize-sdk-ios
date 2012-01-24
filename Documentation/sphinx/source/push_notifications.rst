@@ -79,3 +79,22 @@ application specific notification.
 .. raw:: html
 
     <script src="https://gist.github.com/1566706.js?file=MyAppDelegate.m"></script>
+
+
+Defining an Entity Loader (Optional, Recomended)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Some of Socialize's UI objects have the ability to link back to your application's objects.
+We highly recommend that you register an "Entity Loader" block with Socialize. This is a piece
+of code that is executed by Socialize when it wishes to display an entity. 
+
+.. raw:: html
+
+    <script src="https://gist.github.com/1667068.js?file=entityLoader.m"></script>
+
+.. image:: images/entity_loader.png
+
+When building your application, keep in mind that notifications may be received
+on devices that do not yet have the entity available.
+
+You may choose not to define an entity loader. If so, then Socialize will
+simply not link back into your application.
