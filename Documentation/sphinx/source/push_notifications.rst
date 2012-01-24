@@ -69,12 +69,19 @@ password to your p12 in the previous step make sure to put that in.
 
 
 
-Step 6: Configuring Socialize in Your App
+Step 6: Configuring Notifications in Your App
 --------------------------------------------------------------------------------
 To configure your app you'll need to register for notifications, handle the notification response and define an entity loader so we display users your content.
 
-
 Register for Notifications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You'll first need to register the application with the operating system to accept notifications
+
+.. raw:: html
+
+    <script src="https://gist.github.com/1671602.js?file=registerForNotifications.m"></script>
+
+Register for Device Token
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To configure Socialize inside the app, the minimum you'll need to do is register for notifications.  Run the application, and see that you get the push notification request pop-up. 
 If you get an error, you might be using the wrong provisioning profile.
