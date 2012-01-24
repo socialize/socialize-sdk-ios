@@ -83,7 +83,6 @@ If you get an error, you might be using the wrong provisioning profile.
 
     <script src="https://gist.github.com/1566706.js?file=appDelegate.m"></script> 
 
-
 Handle Notifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -95,6 +94,8 @@ allows you to use the logic below to also handle notifications of your own, if y
 
     <script src="https://gist.github.com/1566706.js?file=MyAppDelegate.m"></script>
 
+.. note:: Socialize will not currently do any foreground handling of notifications. If a notification is received
+  while the Application is in the foreground, it will be ignored.
 
 Defining an Entity Loader
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
