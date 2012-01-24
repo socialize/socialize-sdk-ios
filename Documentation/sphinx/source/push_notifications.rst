@@ -34,7 +34,9 @@ Then turn on enabled:
 
 Step 2: Configuring Your Apple App ID
 --------------------------------------------------------------------------------
-To enable APNS for your application you'll first have to configure your App ID in `Apple's developer portal <https://developer.apple.com/ios/manage/bundles/index.action>`.   
+
+To enable APNS for your application you'll first have to configure your App ID in 
+`Apple's developer portal <https://developer.apple.com/ios/manage/bundles/index.action>`_.   
 You can configure your App ID here:
 https://developer.apple.com/ios/manage/bundles/index.action
 
@@ -43,16 +45,19 @@ https://developer.apple.com/ios/manage/bundles/index.action
 
 Step 3: Keys/Certificates for your App ID for APNS
 --------------------------------------------------------------------------------
+
 To start the process click the 'configure' button for your 'Production Push SSL Certificate' on the right hand side.  Follow the directions given to you by Apple **very carefully**.  Once you've completed the steps make sure you download the certificate and double-click on the certificate. 
-This should result in the 'Keychain Access' application opening. 
+This should result in the 'Keychain Access' application opening.  **Make sure to re-create your distribution provisioning profile, download and re-install the profile**.
 
 .. note:: We currently don’t support development push certificates
 .. note:: You don’t have to use your primary Keychain key as the identifier, nor does it have to connect to your developer account.   You can make a new keychain in Keychain Access, and use that to handle the Certificate Signing Request. This can be especially useful if you need to share this between multiple developers.
 
 .. image:: images/add_certificates.png
 
+
 Step 4: Exporting your .p12 (key/certificate pair) from the Keychain Access tool.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+
 After you've downloaded and double-clicked the certificate it should automatically open the 'Keychain Access' tool. Then find they 'My Certificates' category on the left hand side of the 
 'Keychain Access' tool.  Right click on the 'Apple Production iOS Push Services' and export the key/certificate pair in the p12 (Personal Information Exchange) format.  
 Save this file without a password and upload it to our developer portal.
