@@ -110,10 +110,14 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     }
 }
 
+- (BOOL)applicationInForeground {
+    return [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
+}
+
 - (BOOL)handleSocializeNotification:(NSDictionary*)userInfo {
     
     // Don't handle any foreground notifications for now
-    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+    if ([self applicationInForeground]) {
         return NO;
     }
 

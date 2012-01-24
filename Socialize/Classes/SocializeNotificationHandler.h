@@ -17,6 +17,7 @@
 + (BOOL)isSocializeNotification:(NSDictionary*)userInfo;
 + (SocializeNotificationHandler*)sharedNotificationHandler;
 - (BOOL)handleSocializeNotification:(NSDictionary*)userInfo;
+- (BOOL)applicationInForeground;
 
 @property (nonatomic, retain) Socialize *socialize;
 @property (nonatomic, retain) UIWindow *displayWindow;

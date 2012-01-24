@@ -110,6 +110,9 @@
     // And it should become a subview of the display window
     [[self.mockDisplayWindow expect] addSubview:mockView];
     
+    // Simulate coming from background
+    [[[(id)self.notificationHandler stub] andReturnBool:NO] applicationInForeground];
+    
     [self.notificationHandler handleSocializeNotification:userInfo];
     
     [mockNotificationDisplayController verify];
