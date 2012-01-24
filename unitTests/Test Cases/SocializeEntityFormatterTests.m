@@ -55,6 +55,7 @@
     [[mockEntity expect]setComments:[[JSONDictionaryToParse objectForKey:@"comments"]intValue]];
     [[mockEntity expect]setShares:[[JSONDictionaryToParse objectForKey:@"shares"]intValue]];
     [[mockEntity expect]setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
+    [[mockEntity expect]setMeta:[JSONDictionaryToParse objectForKey:@"meta"]];
     
     
     SocializeEntityJSONFormatter * entityFormatter = [[[SocializeEntityJSONFormatter alloc]initWithFactory:_factory] autorelease];
@@ -70,10 +71,12 @@
     
     NSString * expectedKeyFieldValue =(NSString *)[[JSONArrayParse objectAtIndex:0]objectForKey:@"key"];
     NSString * expectedNameFieldValue =(NSString *)[[JSONArrayParse objectAtIndex:0]objectForKey:@"name"];
+    NSString * expectedMeta = @"expectedMeta";
     
     id mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
     [[[mockEntity expect] andReturn:expectedKeyFieldValue] key];
     [[[mockEntity expect] andReturn:expectedNameFieldValue] name];
+    [[[mockEntity stub] andReturn:expectedMeta] meta];
     
     SocializeEntityJSONFormatter * entityFormatter = [[[SocializeEntityJSONFormatter alloc]initWithFactory:_factory] autorelease];
     
@@ -85,9 +88,11 @@
     //Verify Dictionary values.
     NSString * actualKeyFieldValue = (NSString *) [objectDictionary valueForKey:@"key"];
     NSString * actualNameFieldValue = (NSString *) [objectDictionary valueForKey:@"name"];
+    NSString * actualMeta = (NSString *) [objectDictionary valueForKey:@"meta"];
     GHAssertEqualStrings(expectedKeyFieldValue, actualKeyFieldValue, @"Entity formatter (toDictionary) - expected keyValue=%@ != actual keyValue=%@", expectedKeyFieldValue, actualKeyFieldValue);
     
     GHAssertEqualStrings(expectedNameFieldValue, actualNameFieldValue, @"Entity formatter (toDictionary) - expected nameValue=%@ != actual nameValue=%@", expectedKeyFieldValue, actualNameFieldValue);
+    GHAssertEqualStrings(expectedMeta, actualMeta, @"bad meta");
     
 }
 

@@ -59,6 +59,12 @@
  */
 -(void)setShares:(int)shares;
 
+/**Get metadata of entity.*/
+-(NSString *)meta;
+/**Set metadata of entity.
+ @param meta freeform metadata string */
+-(void)setMeta:(NSString *)meta;
+
 @end
 
 /**Private implementation of <SocializeEntity> protocol*/
@@ -85,5 +91,8 @@
 @property (nonatomic, assign) int comments;
 /**Shares's count*/
 @property (nonatomic, assign) int shares;
+
+/**Entity metadata*/
+@property (nonatomic, copy) NSString * meta;
 
 @end

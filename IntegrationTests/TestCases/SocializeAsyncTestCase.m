@@ -79,6 +79,12 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     [self waitForStatus:status timeout:10.0];
 }
 
+- (void)createEntity:(id<SocializeEntity>)entity {
+    [self prepare];
+    [self.socialize createEntity:entity];
+    [self waitForStatus:kGHUnitWaitStatusSuccess];
+}
+
 - (void)createEntityWithURL:(NSString*)url name:(NSString*)name {
     [self prepare];
     [self.socialize createEntityWithUrl:url andName:name];

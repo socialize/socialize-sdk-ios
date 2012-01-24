@@ -385,6 +385,10 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
     [_entityService entityWithKey:entitykey];
 }
 
+-(void)createEntity:(id<SocializeEntity>)entity {
+    [_entityService createEntity:entity];
+}
+
 -(void)createEntityWithKey:(NSString*)entityKey name:(NSString*)name{
     [_entityService createEntityWithKey:entityKey andName:name];
 }

@@ -478,6 +478,17 @@ otherwise you will get a failure.
  Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
+ @param entity An object that conforms to the SocializeEntity protocol
+ @param name Name of the entity
+ */
+-(void)createEntity:(id<SocializeEntity>)entity;
+
+/**
+ Create entity.
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
  @param entityKey Key for the entity
  @param name Name of the entity
  */

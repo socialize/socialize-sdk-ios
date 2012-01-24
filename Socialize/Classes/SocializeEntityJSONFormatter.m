@@ -23,6 +23,7 @@
     [toEntity setLikes:[[JSONDictionary objectForKey:@"likes"]intValue]];
     [toEntity setComments:[[JSONDictionary objectForKey:@"comments"]intValue]];  
     [toEntity setShares:[[JSONDictionary objectForKey:@"shares"]intValue]]; 
+    [toEntity setMeta:[JSONDictionary objectForKey:@"meta"]];
     
     [super doToObject:toObject fromDictionary:JSONDictionary];
 }
@@ -32,6 +33,10 @@
     id<SocializeEntity> fromEntity = (id<SocializeEntity>)fromObject;
     [JSONFormatDictionary setObject:[fromEntity key] forKey:@"key"];
     [JSONFormatDictionary setObject:[fromEntity name] forKey:@"name"];
+    
+    if ([fromEntity meta] != nil) {
+        [JSONFormatDictionary setObject:[fromEntity meta] forKey:@"meta"];
+    }
 }
 
 @end

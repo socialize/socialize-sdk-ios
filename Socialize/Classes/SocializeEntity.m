@@ -18,11 +18,14 @@
 @synthesize  likes = _likes;
 @synthesize  comments = _comments;
 @synthesize  shares = _shares;
+@synthesize  meta = _meta;
 
 -(void)dealloc
 {
     [_key release];
     [_name release];
+    [_meta release];
+    
     [super dealloc];
 }
 
