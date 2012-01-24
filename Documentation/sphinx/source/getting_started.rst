@@ -72,10 +72,10 @@ You can also search or post on our `support forums`_
 
   .. _support forums: http://support.getsocialize.com
 
-Step 4: Set up your Socialize Keys
+Step 4: Import Header and Set up your Socialize Keys
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To utilize the iOS SDK and views into your app we need to let the library know your app key and secret.  If you need to get a application key and secret you can get one at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_ 
+To utilize the iOS SDK and views into your app, we need to import the Socialize.h header and let the library know your app key and secret.  If you need to get a application key and secret you can get one at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_ 
 
 .. raw:: html
 
