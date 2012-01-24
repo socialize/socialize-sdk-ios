@@ -1,20 +1,38 @@
 .. include:: feedback_widget.rst
 
 =========================================
-Push Notifications
+Enabling Push Notifications
 =========================================
 
-Enabling Apple Notification Push Service (APNS) for your application
+Introduction
 ----------------------------------------------------------------------
 
-Enabling Notifications for your Socialize SDK just take a few steps.  High-level concepts are covered in 
-`Apple's documentation <http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Introduction/Introduction.html>`_,
-but the Socialize SDK takes care of the low-level implementation details of notifications for you letting you focus on developing your application specific code.
+In v1.3 of Socialize we introduced push notifications. This provides your app with a simple and effective way to bring users back into the “viral loop” of the app.
 
 .. image:: images/apns_screenshot.png
 
 
-Configuring Your Apple App ID
+LiveAlerts in Comment Threads
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+when a user posts a comment they can elect to subscribe to updates for that topic.
+
+When another user then posts a comment, the original user will receive a push notification to their device bringing them back into the app.
+
+
+
+Step 1: Enable Notifications on http://www.getsocialize.com
+----------------------------------------------------------------------------------------------
+For Push Notifications to work they must be enabled on a compatible plan at http://getsocialize.com/apps
+
+Select your app and click “Notification Settings”
+
+.. image:: images/notification_web_settings.png
+
+Then turn on enabled:
+
+.. image:: images/notification_web_switch.png
+
+Step 2: Configuring Your Apple App ID
 ----------------------------------------------------------------------
 
 To enable APNS for your application you'll first have to configure your App ID in `Apple's developer portal <https://developer.apple.com/ios/manage/bundles/index.action>`.   
@@ -24,7 +42,7 @@ https://developer.apple.com/ios/manage/bundles/index.action
 .. image:: images/appid_listing.png
 
 
-Keys/Certificates for your App ID for APNS
+Step 3: Keys/Certificates for your App ID for APNS
 ----------------------------------------------------------------------
 
 APNS security is based on private/public key pairs (X.509) and signing certificates.  To start the process click the 'configure' button on the right hand side and follow the directions 
@@ -35,7 +53,7 @@ This should result in the 'Keychain Access' application opening.
 
 .. image:: images/add_certificates.png
 
-Exporting your .p12 (key/certificate pair) from the Keychain Access tool.
+Step 3: Exporting your .p12 (key/certificate pair) from the Keychain Access tool.
 ------------------------------------------------------------------------------------
 After you've downloaded and double-clicked the certificate it should automatically open the 'Keychain Access' tool. Then find they 'My Certificates' category on the left hand side of the 
 'Keychain Access' tool.  Right click on the 'Apple Production iOS Push Services' and export the key/certificate pair in the p12 (Personal Information Exchange) format.  
@@ -45,7 +63,7 @@ Save this file without a password and upload it to our developer portal.
 
 
 
-Uploading your .p12 to the Socialize Developer Portal
+Step 4: Uploading your .p12 to the Socialize Developer Portal
 ------------------------------------------------------------------------------------
 
 To upload you'll need to get to the application dashboard: http://www.getsocialize.com/apps/ and select the application for which you want to configure.  If you've added a 
@@ -55,7 +73,7 @@ password to your p12 in the previous step make sure to put that in.
 
 
 
-Configuring Socialize in Your App
+Step 5: Configuring Socialize in Your App
 ------------------------------------------------------------------------------------
 
 To configure your app you'll need to register for notifications and handle the notification response.

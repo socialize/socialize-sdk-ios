@@ -23,7 +23,6 @@ passed into each call to the Socialize SDK.
 The main class through which you will be interacting would be Socialize. You can authenticate, comment, like/unlike via Socialize instance and are detailed in the following section.
 
 .. note:: * iOS 4.0 is the minimum version supported by this SDK
-          * The UI views have not been optimized to work with the larger screens of the iPad
  
 Installing the SDK
 ------------------
@@ -69,6 +68,8 @@ Step 4: Set up your Socialize Keys
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To utilize the iOS SDK and views into your app we need to let the library know your app key and secret.  If you need to get a application key and secret you can get one at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_ 
+
+.. note:: Make sure import the Socialize header in the code snippet below
 
 .. raw:: html
 
