@@ -83,6 +83,32 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 20;
     [self.tableView addSubview:self.informationView];
 }
 
+- (void)configureInformationView {
+    
+    if ([self.content count] == 0 && self.loadedAllContent) {
+        // This is hidden if we are all done loading and have received nothing
+        self.informationView.hidden = NO;
+    } else {
+        // Otherwise, it is shown
+        self.informationView.hidden = YES;
+    }
+}
+
+- (void)configureTableFooterView {
+    if (self.loadedAllContent) {
+        // If we are done loading content, we no longer need the 'loading' footer
+        self.tableView.tableFooterView = nil;
+    } else {
+        // Otherwise we still need it shown
+        self.tableView.tableFooterView = self.tableFooterView;
+    }
+}
+
+- (void)contentChanged {
+    [self configureTableFooterView];
+    [self configureInformationView];
+}
+
 - (void)initializeContent {
     if (!self.initialized && !self.waitingForContent) {
         self.tableView.tableFooterView = self.tableFooterView;
@@ -124,6 +150,8 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 20;
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
     self.content = newArray;
     [self.tableView endUpdates];
+    
+    [self contentChanged];
 }
 
 - (void)loadContentForNextPageAtOffset:(NSInteger)offset {
@@ -176,19 +204,13 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 20;
     
     if ([content count] < self.pageSize || [content count] == 0) {
         self.loadedAllContent = YES;
-        self.tableView.tableFooterView = nil;
-    }
-    
-    if ([self.content count] == 0) {
-        self.informationView.hidden = NO;
-        self.tableView.tableFooterView = nil;
-    } else {
-        self.informationView.hidden = YES;
     }
     
     if (!self.initialized) {
         self.initialized = YES;
     }
+    
+    [self contentChanged];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

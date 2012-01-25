@@ -12,6 +12,7 @@
 
 @interface SocializeTableViewTests : SocializeBaseViewControllerTests
 @property (nonatomic, retain) SocializeTableViewController *tableViewController;
+@property (nonatomic, retain) SocializeTableViewController *partialTableViewController;
 @property (nonatomic, retain) id mockTableView;
 @property (nonatomic, retain) id mockInformationView;
 @property (nonatomic, retain) id mockTableBackgroundView;

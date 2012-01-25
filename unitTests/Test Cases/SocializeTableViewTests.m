@@ -13,10 +13,12 @@
 @interface SocializeTableViewController ()
 @property (nonatomic, assign, getter=isInitialized) BOOL initialized;
 - (void)startLoadingContent;
+- (void)contentChanged;
 @end
 
 @implementation SocializeTableViewTests
 @synthesize tableViewController = tableViewController_;
+@synthesize partialTableViewController = partialTableViewController_;
 @synthesize mockTableView = mockTableView_;
 @synthesize mockInformationView = mockInformationView_;
 @synthesize mockTableBackgroundView = mockTableBackgroundView_;
@@ -34,7 +36,7 @@
     // super setUp creates self.viewController
     self.tableViewController = (SocializeTableViewController*)self.viewController;
     
-    self.mockTableView = [OCMockObject mockForClass:[UITableView class]];
+    self.mockTableView = [OCMockObject niceMockForClass:[UITableView class]];
     [[self.mockTableView stub] setDelegate:nil];
     [[self.mockTableView stub] setDataSource:nil];
     self.tableViewController.tableView = self.mockTableView;
@@ -68,6 +70,8 @@
     [self.mockContent verify];
     [self.mockActivityLoadingActivityIndicatorView verify];
     
+    self.tableViewController = nil;
+    self.partialTableViewController = nil;
     self.mockTableView = nil;
     self.mockInformationView = nil;
     self.mockTableBackgroundView = nil;
@@ -188,6 +192,13 @@
     GHAssertTrue(self.tableViewController.isInitialized, @"Should be initialized");
 }
 
+- (void)testThatInsertingContentUpdatesInformationView {
+    id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
 
+    self.tableViewController.content = [OCMockObject niceMockForClass:[NSMutableArray class]];
+
+    [[(id)self.tableViewController expect] contentChanged];
+    [self.tableViewController insertContentAtHead:[NSArray arrayWithObject:mockComment]];
+}
 
 @end
