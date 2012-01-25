@@ -10,7 +10,9 @@ Contents:
    
    getting_started
    action_bar
+   push_notifications
    comments
    sdk_user_guide
    sdk_pro_tips
    changelog
+

@@ -11,7 +11,6 @@
 #import "TestListController.h"
 #import "UIButton+Socialize.h"
 
-
 #define TESTING_FACEBOOK_TOKEN @"BAABpKH5ZBZBg8BANSQGGvcd7DGCxJvOU0S1QZCsF3ZBrmlMT9dZCrLGA5oQJ06njmIE1COAgjsmWDJsRwIig30jbhPZCArmdBe4WgY9CZAL9OZBfs1JIQtAf8F0btxVc2baUJZCZBhpgk3LQZDZD"
 
 @interface AuthenticateViewController()
@@ -30,7 +29,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         socialize = [[Socialize alloc] initWithDelegate:self];  
-
         // Custom initialization
     }
     return self;
@@ -81,10 +79,25 @@
     }
     [Socialize storeSocializeApiKey:[apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
     [Socialize storeFacebookAppId:@"115622641859087"];
-    [Socialize storeApplicationLink:@"http://www.google.com"];
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];
+#else
+    [Socialize storeFacebookLocalAppId:nil];
 #endif
+    
+//    UIViewController *comments = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:@"http://www.npr.org/"];
+//    [self presentModalViewController:comments animated:YES];
+    
+//    NSString *commentType = @"comment";
+//    NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                   [NSNumber numberWithInteger:308047], @"activity_id",
+//                                   commentType, @"activity_type",
+//                                   @"new_comments", @"notification_type",
+//                                   nil];
+//    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+//    
+//    [Socialize handleNotification:userInfo];
+
 }
 
 - (void)viewDidUnload
@@ -96,7 +109,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return NO;
+    return interfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
 -(NSDictionary*)authInfoFromConfig
@@ -150,10 +163,7 @@
 #pragma mark Authentication delegate
 
 -(void)didAuthenticate:(id<SocializeUser>)user {
-    
-    NSLog(@"%@", [user userIdForThirdPartyAuth: SocializeThirdPartyAuthTypeFacebook]);
-//    NSLog(@"%@", [socialize.authService receiveFacebookAuthToken]);
-    
+        
     [_loadingView removeView];
     self.resultLabel.text = @"success";
     TestListController *listController = [[TestListController alloc] initWithNibName:@"TestListController" bundle:nil];

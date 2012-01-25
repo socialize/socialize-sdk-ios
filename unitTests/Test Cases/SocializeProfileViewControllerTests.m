@@ -26,56 +26,31 @@
 
 @implementation SocializeProfileViewControllerTests
 @synthesize profileViewController = profileViewController_;
-@synthesize origProfileViewController = origProfileViewController_;
-@synthesize mockDelegate = mockDelegate_;
-@synthesize mockSocialize = mockSocialize_;
-@synthesize mockProfileEditViewController = mockProfileEditViewController_;
-@synthesize mockNavigationController = mockNavigationController_;
-@synthesize mockNavigationItem = mockNavigationItem_;
-@synthesize mockNavigationBar = mockNavigationBar_;
 @synthesize mockImagesCache = mockImagesCache_;
 @synthesize mockProfileImageView = mockProfileImageView_;
 @synthesize mockDefaultProfileImage = mockDefaultProfileImage_;
 @synthesize mockProfileImageActivityIndicator = mockProfileImageActivityIndicator_;
 @synthesize mockUserNameLabel = mockUserNameLabel_;
 @synthesize mockUserDescriptionLabel = mockUserDescriptionLabel_;
-@synthesize mockDoneButton = mockDoneButton_;
-@synthesize mockEditButton = mockEditButton_;
 @synthesize mockActivityViewController = mockActivityViewController_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
 }
 
++ (SocializeBaseViewController*)createController {
+    return [[[SocializeProfileViewController alloc] init] autorelease];
+}
+
 -(void) setUp
 {
     [super setUp];
     
-    self.origProfileViewController = [[[SocializeProfileViewController alloc] init] autorelease];
-    self.profileViewController = [OCMockObject partialMockForObject:self.origProfileViewController];
-    
-    self.mockProfileEditViewController = [OCMockObject mockForClass:[SocializeProfileEditViewController class]];
-    self.profileViewController.profileEditViewController = self.mockProfileEditViewController;
-    
-    self.mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeProfileViewControllerDelegate)];
-    self.profileViewController.delegate = self.mockDelegate;
-    
-    self.mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
-    [[[(id)self.profileViewController stub] andReturn:self.mockNavigationController] navigationController];
+    self.profileViewController = (SocializeProfileViewController*)self.viewController;
 
-    self.mockNavigationBar = [OCMockObject mockForClass:[UINavigationBar class]];
-    [[[self.mockNavigationController stub] andReturn:self.mockNavigationBar] navigationBar];
-    
-    self.mockNavigationItem = [OCMockObject mockForClass:[UINavigationItem class]];
-    [[[(id)self.profileViewController stub] andReturn:self.mockNavigationItem] navigationItem];
-    [[self.mockNavigationItem stub] leftBarButtonItem];
-    
     self.mockProfileImageView = [OCMockObject mockForClass:[UIImageView class]];
-    [[[(id)self.profileViewController stub] andReturn:self.mockProfileImageView] profileImageView];
-    
-    self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
-    [[[self.mockSocialize stub] andReturn:self.profileViewController] delegate];
-    self.profileViewController.socialize = self.mockSocialize;
+    self.profileViewController.profileImageView = self.mockProfileImageView;
+//    [[[(id)self.profileViewController stub] andReturn:self.mockProfileImageView] profileImageView];
     
     self.mockImagesCache = [OCMockObject mockForClass:[ImagesCache class]];
     self.profileViewController.imagesCache = self.mockImagesCache;
@@ -92,60 +67,47 @@
     self.mockUserDescriptionLabel = [OCMockObject mockForClass:[UILabel class]];
     self.profileViewController.userDescriptionLabel = self.mockUserDescriptionLabel;
     
-    self.mockDoneButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
-    self.profileViewController.doneButton = self.mockDoneButton;
-    
-    self.mockEditButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
-    self.profileViewController.editButton = self.mockEditButton;
-    
     self.mockActivityViewController = [OCMockObject mockForClass:[SocializeActivityViewController class]];
+    [[self.mockActivityViewController stub] setDelegate:nil];
     self.profileViewController.activityViewController = self.mockActivityViewController;
 }
 
 -(void) tearDown
 {
-    [super tearDown];
-    
     [(id)self.profileViewController verify];
-    [self.mockProfileEditViewController verify];
-    [self.mockDelegate verify];
-    [self.mockNavigationController verify];
-    [self.mockNavigationBar verify];
-    [self.mockNavigationItem verify];
     [self.mockProfileImageView verify];
-    [self.mockSocialize verify];
     [self.mockImagesCache verify];
     [self.mockDefaultProfileImage verify];
     [self.mockProfileImageActivityIndicator verify];
     [self.mockUserNameLabel verify];
     [self.mockUserDescriptionLabel verify];
-    [self.mockDoneButton verify];
-    [self.mockEditButton verify];
     [self.mockActivityViewController verify];
 
-    self.origProfileViewController = nil;
     self.profileViewController = nil;
-    self.mockDelegate = nil;
-    self.mockNavigationController = nil;
-    self.mockNavigationBar = nil;
-    self.mockNavigationItem = nil;
     self.mockProfileImageView = nil;
-    self.mockSocialize = nil;
     self.mockImagesCache = nil;
     self.mockDefaultProfileImage = nil;
     self.mockProfileImageActivityIndicator = nil;
     self.mockUserNameLabel = nil;
     self.mockUserDescriptionLabel = nil;    
-    self.mockDoneButton = nil;
-    self.mockEditButton = nil;
     self.mockActivityViewController = nil;
+    
+    [super tearDown];
 }
 
-- (void)expectBasicViewDidLoad {
+-(void)testHideEditController {
+    [[(id)self.profileViewController expect] dismissModalViewControllerAnimated:YES];
+    [[(id)self.profileViewController expect] stopLoading];
+    [self.profileViewController hideEditController];
+}
+
+- (void)testBasicViewDidLoad {
 //    [[self.mockNavigationBar expect] setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
+    [[[self.mockNavigationItem stub] andReturn:nil] leftBarButtonItem];
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.profileViewController.doneButton];
-    [[self.mockProfileImageView expect] setImage:self.profileViewController.defaultProfileImage];
     [[(id)self.profileViewController expect] addActivityControllerToView];
+    [[(id)self.profileViewController expect] setProfileImageFromImage:self.profileViewController.defaultProfileImage];
+    [self.profileViewController viewDidLoad];
 }
 
 - (void)testAfterLoginWithNoUserGetsCurrentUser {
@@ -172,6 +134,7 @@
 - (void)testAfterLoginWithFullUser {
     // Set up a mock full
     id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
+    
     self.profileViewController.fullUser = mockFullUser;
 
     [[(id)self.profileViewController expect] configureViews];
@@ -180,7 +143,6 @@
 
 - (void)testViewDidUnload {
     [[(id)self.profileViewController expect] setDoneButton:nil];
-    [[(id)self.profileViewController expect] setEditButton:nil];
     [[(id)self.profileViewController expect] setUserNameLabel:nil];
     [[(id)self.profileViewController expect] setUserDescriptionLabel:nil];
     [[(id)self.profileViewController expect] setUserLocationLabel:nil];
@@ -195,20 +157,9 @@
     GHAssertEqualObjects(defaultProfile, [UIImage imageNamed:@"socialize-profileimage-large-default.png"], @"bad profile");
 }
 
-- (void)testEditButtonShowsEdit {
+- (void)testSettingsButtonShowsSettings {
     [[(id)self.profileViewController expect] showEditController];
-    [self.profileViewController editButtonPressed:nil];
-}
-
-- (void)testDoneWithDelegateCallsDelegate {
-    [[self.mockDelegate expect] profileViewControllerDidFinish:self.origProfileViewController];
-    [self.profileViewController doneButtonPressed:nil];
-}
-
-- (void)testDoneWithoutDelegateDismissesSelf {
-    [[(id)self.profileViewController expect] dismissModalViewControllerAnimated:YES];
-    self.profileViewController.delegate = nil;
-    [self.profileViewController doneButtonPressed:nil];
+    [self.profileViewController settingsButtonPressed:nil];
 }
 
 - (void)testSetProfileImageWithNilImage {
@@ -313,10 +264,9 @@
     [[[mockUser stub] andReturnValue:OCMOCK_VALUE(objectID)] objectID];
     [[[self.mockSocialize stub] andReturn:mockUser] authenticatedUser];
     
-    id mockEditButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
-    self.profileViewController.editButton = mockEditButton;
-//    [[self.mockNavigationItem expect] setRightBarButtonItem:self.profileViewController.editButton];
-    [[self.mockNavigationItem expect] setRightBarButtonItem:mockEditButton];
+    id mockSettingsButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
+    self.profileViewController.settingsButton = mockSettingsButton;
+    [[self.mockNavigationItem expect] setRightBarButtonItem:mockSettingsButton];
     
     [self.profileViewController configureEditButton];
 }
@@ -324,20 +274,24 @@
 - (void)testProfileEditViewController {
     self.profileViewController.profileEditViewController = nil;
     SocializeProfileEditViewController *defaultProfileEdit = self.profileViewController.profileEditViewController;
-    GHAssertEquals(defaultProfileEdit.delegate, self.origProfileViewController, @"delegate not configured");
+    GHAssertEquals(defaultProfileEdit.delegate, self.origViewController, @"delegate not configured");
 }
 
+/*
 - (void)testNavigationControllerForEdit {
+    @autoreleasepool {
     self.profileViewController.navigationControllerForEdit = nil;
     
     // Temporarily a nice mock because it needs to pass through UIKit's UINavigationController init
     self.profileViewController.profileEditViewController = [OCMockObject niceMockForClass:[SocializeProfileEditViewController class]];
     
     UINavigationController *defaultNavigationControllerForEdit = self.profileViewController.navigationControllerForEdit;
-    GHAssertEquals(defaultNavigationControllerForEdit.delegate, self.origProfileViewController, @"delegate not configured");
+    GHAssertEquals(defaultNavigationControllerForEdit.delegate, self.origViewController, @"delegate not configured");
     GHAssertNotNil([UIImage imageNamed:@"socialize-navbar-bg.png"], @"image not found");
     GHAssertEquals([defaultNavigationControllerForEdit.navigationBar backgroundImage], [UIImage imageNamed:@"socialize-navbar-bg.png"], @"bad image");
+    }
 }
+ */
 
 - (void)testShowEditProfile {
     id mockImage = [OCMockObject mockForClass:[UIImage class]];
@@ -369,6 +323,22 @@
     [[self.mockActivityViewController expect] fullUserChanged:mockUser];
     [self.profileViewController profileEditViewController:self.mockProfileEditViewController didUpdateProfileWithUser:mockUser];
     
+}
+
+- (void)testEntityLoaderIsCalledWhenActivityTapped {
+    id mockActivity = [OCMockObject mockForProtocol:@protocol(SocializeActivity)];
+    id mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
+    [[[mockActivity stub] andReturn:mockEntity] entity];
+    
+    [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity>entity) {
+        GHAssertEquals(navigationController, self.mockNavigationController, @"Bad nav");
+        GHAssertEquals(entity, mockEntity, @"Bad ent");
+        [self notify:kGHUnitWaitStatusSuccess];
+    }];
+
+    [self prepare];
+    [self.profileViewController activityViewController:nil activityTapped:mockActivity];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
 }
 
 @end

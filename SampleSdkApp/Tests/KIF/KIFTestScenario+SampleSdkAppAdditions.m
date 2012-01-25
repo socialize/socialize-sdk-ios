@@ -30,7 +30,7 @@
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"profile button"]];
     
     // edit should be here (our profile)
-    [scenario addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Edit"]];
+    [scenario addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Settings"]];
     
     // Exit and auth as new user
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
@@ -42,7 +42,7 @@
     [scenario addStepsFromArray:[KIFTestStep stepsToGetCommentsForEntity:url]];
     [scenario addStep:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"profile button"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"profile button"]];
-    [scenario addStep:[KIFTestStep stepToVerifyElementWithAccessibilityLabelDoesNotExist:@"Edit"]];
+    [scenario addStep:[KIFTestStep stepToVerifyElementWithAccessibilityLabelDoesNotExist:@"Settings"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Close"]];
     [scenario addStep:[KIFTestStep stepToWaitForTimeInterval:1 description:@"end"]];

@@ -12,10 +12,11 @@
 #import "SocializeBaseViewController.h"
 #import "_Socialize.h"
 #import "SocializeProfileViewController.h"
+#import "SocializeBaseViewControllerDelegate.h"
+
 @class CommentMapView;
-@class UIKeyboardListener;
 @class SocializeLocationManager;
-@protocol SocializeComposeMessageViewControllerDelegate;
+@class SocializeHorizontalContainerView;
 
 @interface SocializeComposeMessageViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate>
 {
@@ -25,9 +26,9 @@
     UIButton*   activateLocationButton;
     CommentMapView* mapOfUserLocation;
     Class _geoCoderInfo;
+    NSArray *messageActionButtons_;
 }
 
-@property (nonatomic, assign) id<SocializeComposeMessageViewControllerDelegate> delegate;
 @property (nonatomic, copy) NSString *entityURL;
 @property(nonatomic, retain) SocializeLocationManager *locationManager;
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;
@@ -35,22 +36,20 @@
 @property(nonatomic, retain) IBOutlet UIButton      *doNotShareLocationButton;
 @property(nonatomic, retain) IBOutlet UIButton      *activateLocationButton;
 @property(nonatomic, retain) IBOutlet CommentMapView *mapOfUserLocation;
-@property(nonatomic, retain) IBOutlet UIView *locationViewContainer;
+@property(nonatomic, retain) IBOutlet UIView *lowerContainer;
+@property(nonatomic, retain) IBOutlet UIView *upperContainer;
 @property(nonatomic, retain) IBOutlet UIView *mapContainer;
-@property(nonatomic, retain) UIKeyboardListener *kbListener;
+@property(nonatomic, retain) UIBarButtonItem *sendButton;
+@property(nonatomic, retain) IBOutlet SocializeHorizontalContainerView *messageActionButtonContainer;
+@property(nonatomic, retain) NSArray *messageActionButtons;
 
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil 
-               bundle:(NSBundle *)nibBundleOrNil 
-      entityUrlString:(NSString*)entityUrlString;
+- (id)initWithEntityUrlString:(NSString*)entityUrlString;
 
-
-@end
-
-@protocol SocializeComposeMessageViewControllerDelegate <NSObject>
-
-- (void)composeMessageViewControllerDidCancel:(SocializeComposeMessageViewController*)composeMessageViewController;
+- (void)addSocializeRoundedGrayButtonImagesToButton:(UIButton*)button;
+- (void)setSubviewForLowerContainer:(UIView*)newSubview;
 
 @end
+

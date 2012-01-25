@@ -3,7 +3,7 @@
 //  appbuildr
 //
 //  Created by Fawad Haider on 12/2/10.
-//  Copyright 2010 pointabout. All rights reserved.
+//  Copyright 2010. All rights reserved.
 //
 
 #import "SocializeCommentsTableViewController.h"
@@ -17,16 +17,23 @@
 #import "SocializeComment.h"
 #import "UINavigationBarBackground.h"
 #import "ImageLoader.h"
-#import "UIKeyboardListener.h"
 #import "SocializeLocationManager.h"
 #import "SocializeAuthenticateService.h"
 #import "ImagesCache.h"
 #import "SocializeTableBGInfoView.h"
 #import "SocializeCommentsService.h"
+#import "SocializeActivityDetailsViewController.h"
+#import "SocializeSubscriptionService.h"
+#import "SocializeBubbleView.h"
+#import "UIView+Layout.h"
+#import "SocializeNotificationToggleBubbleContentView.h"
+#import "CommentsTableFooterView.h"
 
 @interface SocializeCommentsTableViewController()
 -(NSString*)getDateString:(NSDate*)date;
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
+-(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment;
+- (void)getSubscriptionStatus;
 @end
 
 @implementation SocializeCommentsTableViewController
@@ -43,7 +50,12 @@
 @synthesize footerView;
 @synthesize closeButton = _closeButton;
 @synthesize brandingButton = _brandingButton;
+@synthesize subscribedButton = _subscribedButton;
+@synthesize entity = _entity;
 
+@synthesize delegate = delegate_;
+@synthesize bubbleView = bubbleView_;
+@synthesize bubbleContentView = bubbleContentView_;
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName {
     SocializeCommentsTableViewController* commentsController = [[[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString:entityName] autorelease];
@@ -78,12 +90,15 @@
 
 - (void)afterLoginAction {
     [self initializeContent];
+    [self getSubscriptionStatus];
 }
 
 - (void)loadContentForNextPageAtOffset:(NSInteger)offset {
-    [self.socialize getCommentList:_entity.key
-                             first:[NSNumber numberWithInteger:offset]
-                              last:[NSNumber numberWithInteger:offset + self.pageSize]];
+    if ([_entity.key length] > 0) {
+        [self.socialize getCommentList:_entity.key
+                                 first:[NSNumber numberWithInteger:offset]
+                                  last:[NSNumber numberWithInteger:offset + self.pageSize]];
+    }
 }
 
 - (UIBarButtonItem*)closeButton {
@@ -108,7 +123,11 @@
 }
 
 - (void)closeButtonPressed:(id)button {
-    [self dismissModalViewControllerAnimated:YES];
+    if ([self.delegate respondsToSelector:@selector(commentsTableViewControllerDidFinish:)]) {
+        [self.delegate commentsTableViewControllerDidFinish:self];
+    } else {
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark SocializeService Delegate
@@ -128,9 +147,71 @@
     }
 }
 
+- (BOOL)elementsHaveActiveSubscription:(NSArray*)elements {
+    for (id<SocializeSubscription> subscription in elements) {
+        if ([subscription subscribed]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 -(void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
-    [self receiveNewContent:dataArray];
-    _isLoading = NO;
+    if ([service isKindOfClass:[SocializeSubscriptionService class]]) {
+        BOOL subscribed = [self elementsHaveActiveSubscription:dataArray];
+        self.subscribedButton.enabled = YES;
+        self.subscribedButton.selected = subscribed;
+    } else if ([service isKindOfClass:[SocializeCommentsService class]]) {
+        [self receiveNewContent:dataArray];
+        _isLoading = NO;
+    }
+}
+
+- (void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object {
+    
+}
+
+- (void)getSubscriptionStatus {
+    if ([_entity.key length] > 0) {
+        [self.socialize getSubscriptionsForEntityKey:_entity.key first:nil last:nil];
+    }
+}
+
+- (SocializeNotificationToggleBubbleContentView*)bubbleContentView {
+    if (bubbleContentView_ == nil) {
+        bubbleContentView_ = [[SocializeNotificationToggleBubbleContentView notificationToggleBubbleContentViewFromNib] retain];
+    }
+    
+    return bubbleContentView_;
+}
+
+- (SocializeBubbleView*)bubbleView {
+    if (bubbleView_ == nil) {
+        bubbleView_ = [[SocializeBubbleView alloc] initWithSize:CGSizeMake(240, 100)];
+        [bubbleView_.contentView addSubview:self.bubbleContentView];
+    }
+    return bubbleView_;
+}
+
+- (IBAction)subscribedButtonPressed:(id)sender {
+    if (self.subscribedButton.selected) {
+        self.subscribedButton.selected = NO;
+        [self.socialize unsubscribeFromCommentsForEntityKey:_entity.key];
+    } else {
+        self.subscribedButton.selected = YES;
+        [self.socialize subscribeToCommentsForEntityKey:_entity.key];
+    }
+    
+    if (self.bubbleView != nil) {
+        [self.bubbleView removeFromSuperview];
+        self.bubbleView = nil;
+    }
+    [self.bubbleContentView configureForNotificationsEnabled:self.subscribedButton.selected];
+    
+    CGRect buttonRect = [self.subscribedButton convertRect:self.subscribedButton.frame toView:self.view];
+    [self.bubbleView showFromRect:buttonRect inView:self.view offset:CGPointMake(0, -15) animated:YES];
+    [self.bubbleView performSelector:@selector(animateOutAndRemoveFromSuperview) withObject:nil afterDelay:2];
 }
 
 #pragma mark -
@@ -145,11 +226,23 @@
     self.tableView.autoresizesSubviews = YES;
 
     self.tableView.accessibilityLabel = @"Comments Table View";
-	self.view.clipsToBounds = YES;    
-   
+	self.tableView.clipsToBounds = YES;    
+    
     
     self.navigationItem.leftBarButtonItem = self.brandingButton;
     self.navigationItem.rightBarButtonItem = self.closeButton;    
+    
+    self.subscribedButton.enabled = NO;
+    
+    if (![self.socialize notificationsAreConfigured]) {
+        self.subscribedButton.hidden = YES;
+        
+        CGRect frame = self.footerView.searchBarImageView.frame;
+        frame.size.width = self.footerView.frame.size.width;
+        frame.origin.x = self.footerView.frame.origin.x;
+        frame = CGRectInset(frame, 8, 0);
+        self.footerView.searchBarImageView.frame = frame;
+    }
 }
 
 #pragma mark tableFooterViewDelegate
@@ -160,12 +253,15 @@
     [self presentModalViewController:pcNavController animated:YES];
 }
 
-- (void)composeMessageViewControllerDidCancel:(SocializeComposeMessageViewController *)composeMessageViewController {
+- (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
     [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)postCommentViewController:(SocializePostCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
     [self insertContentAtHead:[NSArray arrayWithObject:comment]];
+    
+    self.subscribedButton.selected = !postCommentViewController.dontSubscribeToDiscussion;
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -184,19 +280,20 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         SocializeComment* entryComment = ((SocializeComment*)[self.content objectAtIndex:indexPath.row]);
         
-        SocializeCommentDetailsViewController* details = [[SocializeCommentDetailsViewController alloc] init];
+        SocializeActivityDetailsViewController* details = [self createActivityDetailsViewController:entryComment];
+
         details.title = [NSString stringWithFormat: @"%d of %d", indexPath.row + 1, [self.content count]];
-        details.comment = entryComment;
 
         [_cache stopOperations];
-        details.cache = _cache;
         
         UIBarButtonItem * backLeftItem = [self createLeftNavigationButtonWithCaption:@"Comments"];
         details.navigationItem.leftBarButtonItem = backLeftItem;	
            
         [self.navigationController pushViewController:details animated:YES];
-        [details release];
     }
+}
+-(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment{
+    return [[[SocializeActivityDetailsViewController alloc] initWithActivity:entryComment] autorelease];
 }
 
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender {
@@ -309,6 +406,10 @@
     [footerView release];
     [_closeButton release];
     [_brandingButton release];
+    [_subscribedButton release];
+    [bubbleContentView_ release];
+    [bubbleView_ release];
+    
     [super dealloc];
 }
 

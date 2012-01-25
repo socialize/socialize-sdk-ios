@@ -50,6 +50,7 @@
                       @"Test Current user activity",
                       @"Test Post a Share",
                       @"Test Edit User Profile",
+                      @"Test New Comments Notification",
                       nil
                       ]retain];
 
@@ -80,6 +81,17 @@
     input.inputField.text=@"http://www.npr.org/";
 #endif
     [input showInputMessageWithTitle:@"Enter entity URL" andPlaceholder:@"Full URL"];
+    
+    return input.inputMsg;
+}
+
+-(NSString*) getValueWithPrompt:(NSString*)prompt defaultValue:(NSString*)defaultValue
+{
+    InputBox* input = [[InputBox new]autorelease];    
+#ifndef RUN_KIF_TESTS
+    input.inputField.text=defaultValue;
+#endif
+    [input showInputMessageWithTitle:prompt andPlaceholder:nil];
     
     return input.inputMsg;
 }
@@ -261,15 +273,29 @@
             [self.navigationController presentModalViewController:nav animated:YES];
             break;
         }
+        case 15:
+        {
+            NSString *testIDText = [self getValueWithPrompt:@"Enter a comment ID" defaultValue:@"322895"];
+            if ([testIDText length] > 0) {
+                NSNumber *testID = [NSNumber numberWithInteger:[testIDText integerValue]];
+                NSString *commentType = @"comment";
+                NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                               testID, @"activity_id",
+                                               commentType, @"activity_type",
+                                               @"new_comments", @"notification_type",
+                                               nil];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+
+                [Socialize handleNotification:userInfo];
+            }
+            break;
+        }
+
 
     }    
     [controller release];
 }
 
 #pragma mark - Service delegete
-
-- (void)profileViewController:(SocializeProfileViewController *)profileViewController wantsViewActivity:(id<SocializeActivity>)activity {
-    NSLog(@"View %@!", activity);
-}
 
 @end

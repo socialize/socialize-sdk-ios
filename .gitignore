@@ -19,3 +19,4 @@ SampleSdkApp/testrunner/Automation Results.plist
 SampleSdkApp/testrunner/sampleApp_instruments.trace
 tags
 *.pyc
+*.swo

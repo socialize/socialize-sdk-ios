@@ -93,7 +93,7 @@
 
 + (NSArray*)stepsToOpenEditProfile {
     NSMutableArray *steps = [NSMutableArray array];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Edit"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Settings"]];
     return steps;
 }
 

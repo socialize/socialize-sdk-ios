@@ -336,6 +336,13 @@ tokenRequest = _tokenRequest;
         // Begin request on the main thread, because NSURLConnection calls its delegate on the
         // thread it was started from
         dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *body = [[[NSString alloc] initWithData:[self.request HTTPBody] encoding:NSASCIIStringEncoding] autorelease];
+            NSString *urlString = [[self.request URL] absoluteString];
+            SDebugLog(2, @"----- Sending Request -----");
+            SDebugLog(2, @"URL: %@", urlString);
+            SDebugLog(2, @"Body: %@", body);
+            SDebugLog(2, @"----- End Request ---------");
+
             [self.dataFetcher start];
         });
     });
@@ -385,11 +392,21 @@ tokenRequest = _tokenRequest;
     [self stopRunningIfNecessary];
     NSString *responseBody = [[NSString alloc] initWithData:data
                                                     encoding:NSUTF8StringEncoding];
+    NSHTTPURLResponse* response = (NSHTTPURLResponse*)ticket.response;
+    NSURLRequest *request = ticket.request;
+    NSString *urlString = [[request URL] absoluteString];
+
 #ifdef DEBUG
     [self produceHTMLOutput:responseBody];
 #endif
+    
+    SDebugLog(2, @"----- Received Response -----");
+    SDebugLog(2, @"URL: %@", urlString);
+    SDebugLog(2, @"Code: %d", [response statusCode]);
+    SDebugLog(2, @"Headers: %@", [response allHeaderFields]);
+    SDebugLog(2, @"Body: %@", responseBody);
+    SDebugLog(2, @"----- End Response ----------");
 
-    NSHTTPURLResponse* response = (NSHTTPURLResponse*)ticket.response;
     if (response.statusCode == 200) {
         [self handleResponseData:data];
     } else {

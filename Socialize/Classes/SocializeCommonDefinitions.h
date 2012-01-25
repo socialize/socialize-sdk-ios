@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "SocializeErrorDefinitions.h"
 
-#define SOCIALIZE_VERSION 1.1.9
-#define SOCIALIZE_VERSION_STRING @"1.1.9"
+#define SOCIALIZE_VERSION 1.3
+#define SOCIALIZE_VERSION_STRING @"1.3"
 
 /** 
  Third party authentication type 
@@ -32,3 +32,5 @@ typedef enum {
     SocializeViewActivity,
     SocializeAllActivity
 } SocializeActivityType;
+
+extern NSString *const SocializeAuthenticatedUserDidChangeNotification;

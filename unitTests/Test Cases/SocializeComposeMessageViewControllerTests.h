@@ -12,10 +12,9 @@
 
 @interface SocializeComposeMessageViewControllerTests : SocializeBaseViewControllerTests
 @property (nonatomic, retain) SocializeComposeMessageViewController *composeMessageViewController;
-@property (nonatomic, retain) id mockView;
 @property (nonatomic, retain) id mockLocationManager;
-@property (nonatomic, retain) id mockKbListener;
-@property (nonatomic, retain) id mockLocationViewContainer;
+@property (nonatomic, retain) id mockUpperContainer;
+@property (nonatomic, retain) id mockLowerContainer;
 @property (nonatomic, retain) id mockMapContainer;
 @property (nonatomic, retain) id mockCommentTextView;
 @property (nonatomic, retain) id mockLocationText;
@@ -23,6 +22,8 @@
 @property (nonatomic, retain) id mockActivateLocationButton;
 @property (nonatomic, retain) id mockMapOfUserLocation;
 @property (nonatomic, retain) id mockDelegate;
+@property (nonatomic, retain) id mockSendButton;
+@property (nonatomic, retain) id mockMessageActionButtonContainer;
 
 - (void)prepareForViewDidLoad;
 @end

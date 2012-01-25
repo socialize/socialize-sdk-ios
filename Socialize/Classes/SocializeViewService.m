@@ -44,7 +44,7 @@
         [self executeRequest:
          [SocializeRequest requestWithHttpMethod:@"POST"
                                     resourcePath:VIEW_METHOD
-                              expectedJSONFormat:SocializeDictionaryWIthListAndErrors
+                              expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                           params:params]
          ];
 

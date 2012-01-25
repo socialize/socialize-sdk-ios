@@ -4,6 +4,10 @@
 <dict>
 	<key>Formatters</key>
 	<dict>
+		<key>SocializeDeviceToken</key>
+		<string>SocializeDeviceTokenJSONFormatter</string>
+		<key>SocializeSubscription</key>
+		<string>SocializeSubscriptionJSONFormatter</string>
 		<key>SocializeApplication</key>
 		<string>SocializeApplicationJSONFormatter</string>
 		<key>SocializeComment</key>
@@ -25,6 +29,10 @@
 	</dict>
 	<key>Prototypes</key>
 	<dict>
+		<key>SocializeDeviceToken</key>
+		<string>SocializeDeviceToken</string>
+		<key>SocializeSubscription</key>
+		<string>SocializeSubscription</string>
 		<key>SocializeActivity</key>
 		<string>SocializeActivity</string>
 		<key>SocializeApplication</key>
@@ -48,6 +56,8 @@
 	</dict>
 	<key>URLs</key>
 	<dict>
+		<key>RedirectBaseURL</key>
+		<string>http://r.getsocialize.com/</string>
 		<key>RestserverBaseURL</key>
 		<string>http://api.getsocialize.com/v1/</string>
 		<key>SecureRestserverBaseURL</key>

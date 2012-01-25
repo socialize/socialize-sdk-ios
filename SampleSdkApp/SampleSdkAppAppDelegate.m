@@ -12,6 +12,7 @@
 #import <Socialize/Socialize.h>
 #import "TestListController.h"
 #include <AvailabilityMacros.h>
+#import "SampleEntityLoader.h"
 
 #if RUN_GHUNIT_TESTS
 #import <GHUnitIOS/GHUnit.h>
@@ -34,6 +35,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];  
+
     UIViewController* rootViewController = nil;
        
     // we check the authentication here.
@@ -53,7 +56,13 @@
         }
     }];
 #endif
+
+    [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity>entity) {
+        SampleEntityLoader *entityLoader = [[[SampleEntityLoader alloc] initWithEntity:entity] autorelease];
+        [navigationController pushViewController:entityLoader animated:YES];
+    }];
     
+//    [Socialize setEntityLoaderBlock:nil];
     
     return YES;
 }
@@ -80,6 +89,22 @@
      */
 }
 
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken
+{  
+    NSLog(@"registering device token");
+    
+    // Nil out the device token. Normally, this wouldn't be required, but sometimes we switch between servers
+    [Socialize storeDeviceToken:nil];
+    
+    [Socialize registerDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication*)application  
+didFailToRegisterForRemoteNotificationsWithError:(NSError*)error  
+{  
+    NSLog(@"Error Register Notifications: %@", [error localizedDescription]);
+}  
+
 - (void)applicationWillTerminate:(UIApplication *)application
 {
 
@@ -87,6 +112,14 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {    
     return [Socialize handleOpenURL:url];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    if ([Socialize handleNotification:userInfo]) {
+        return;
+    }
+    
+    // Nonsocialize notification handling goes here
 }
 
 - (void)dealloc

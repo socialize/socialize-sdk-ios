@@ -14,8 +14,6 @@
 #import "SocializeActivityViewController.h"
 
 @interface SocializeProfileViewController ()
--(void)showEditController;
--(void)hideEditController;
 -(void)configureViews;
 - (void)addActivityControllerToView;
 @end
@@ -29,8 +27,6 @@
 @synthesize userLocationLabel = userLocationLabel_;
 @synthesize profileImageView = profileImageView_;
 @synthesize profileImageActivityIndicator = profileImageActivityIndicator_;
-@synthesize profileEditViewController = profileEditViewController_;
-@synthesize navigationControllerForEdit = navigationControllerForEdit_;
 @synthesize imagesCache = imagesCache_;
 @synthesize defaultProfileImage = defaultProfileImage_;
 @synthesize alertView = alertView_;
@@ -52,7 +48,7 @@
     self.imagesCache = nil;
     self.defaultProfileImage = nil;
     self.alertView = nil;
-    self.activityViewController.delegate = nil;
+    [activityViewController_ setDelegate:nil];
     self.activityViewController = nil;
     self.activityLoadingActivityIndicator = nil;
     
@@ -73,7 +69,7 @@
     self.activityViewController = nil;
 }
 
-+ (UINavigationController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeProfileViewControllerDelegate>)delegate {
++ (UINavigationController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeBaseViewControllerDelegate>)delegate {
     SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] initWithUser:user delegate:delegate] autorelease];
     UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
     UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:profile] autorelease];
@@ -81,15 +77,15 @@
     return nav;
 }
 
-+ (UINavigationController*)socializeProfileViewControllerWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
++ (UINavigationController*)socializeProfileViewControllerWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate {
     return [SocializeProfileViewController socializeProfileViewControllerForUser:nil delegate:delegate];
 }
 
-+ (UINavigationController*)currentUserProfileWithDelegate:(id<SocializeProfileViewControllerDelegate>)delegate {
++ (UINavigationController*)currentUserProfileWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate {
     return [SocializeProfileViewController socializeProfileViewControllerWithDelegate:delegate];
 }
 
-- (id)initWithUser:(id<SocializeUser>)user delegate:(id<SocializeProfileViewControllerDelegate>)delegate {
+- (id)initWithUser:(id<SocializeUser>)user delegate:(id<SocializeBaseViewControllerDelegate>)delegate {
     if( self = [self init] ) {
         self.delegate = delegate;
         self.user = user;
@@ -124,21 +120,9 @@
     if (!self.navigationItem.leftBarButtonItem)
         self.navigationItem.leftBarButtonItem = self.doneButton;
 
-    self.profileImageView.image = [self defaultProfileImage];
+    [self setProfileImageFromImage:[self defaultProfileImage]];
     
     [self addActivityControllerToView];
-}
-
-- (void)editButtonPressed:(UIBarButtonItem*)button {
-    [self showEditController];
-}
-
-- (void)doneButtonPressed:(UIBarButtonItem*)button {
-    if ([self.delegate respondsToSelector:@selector(profileViewControllerDidFinish:)]) {
-        [self.delegate profileViewControllerDidFinish:self];
-    } else {
-        [self dismissModalViewControllerAnimated:YES];
-    }
 }
 
 #pragma mark - View lifecycle
@@ -201,7 +185,7 @@
 - (void)configureEditButton {
     BOOL isCurrentUserProfile = (self.fullUser.objectID == [[self.socialize authenticatedUser] objectID]);
     if (isCurrentUserProfile) {
-        self.navigationItem.rightBarButtonItem = self.editButton;
+        self.navigationItem.rightBarButtonItem = self.settingsButton;
     } else {
         self.navigationItem.rightBarButtonItem = nil;
     }
@@ -221,49 +205,18 @@
     [self.activityViewController initializeContent];
 }
 
-- (SocializeProfileEditViewController*)profileEditViewController {
-    if (profileEditViewController_ == nil) {
-        profileEditViewController_ = [[SocializeProfileEditViewController alloc]
-                                      init];
-        profileEditViewController_.delegate = self;
-    }
-    return profileEditViewController_;
-}
-
-- (UINavigationController*)navigationControllerForEdit {
-    if (navigationControllerForEdit_ == nil) {
-        navigationControllerForEdit_ = [[UINavigationController socializeNavigationControllerWithRootViewController:self.profileEditViewController] retain];
-        navigationControllerForEdit_.delegate = self;
-    }
-    return navigationControllerForEdit_;
-}
-
--(void)showEditController
-{
+- (void)showEditController {
     self.profileEditViewController.fullUser = self.fullUser;
     self.profileEditViewController.profileImage = self.profileImageView.image;
-    [self presentModalViewController:self.navigationControllerForEdit animated:YES];
-}
-
-
--(void)hideEditController
-{
-    [self stopLoading];
-    [self dismissModalViewControllerAnimated:YES];
-    self.navigationControllerForEdit = nil;
-    self.profileEditViewController.delegate = nil;
-    self.profileEditViewController = nil;
-}
-
-- (void)profileEditViewControllerDidCancel:(SocializeProfileEditViewController *)profileEditViewController {
-	[self hideEditController];    
+    [super showEditController];
 }
 
 - (void)profileEditViewController:(SocializeProfileEditViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
     self.fullUser = user;
     [self configureViews];
-    [self hideEditController];
     [self.activityViewController fullUserChanged:self.fullUser];
+    
+    [super profileEditViewController:profileEditViewController didUpdateProfileWithUser:user];
 }
 
 - (SocializeActivityViewController*)activityViewController {
@@ -271,7 +224,9 @@
         activityViewController_ = [[SocializeActivityViewController alloc] init];
         activityViewController_.delegate = self;
         activityViewController_.dontShowNames = YES;
-        activityViewController_.dontShowDisclosure = ![self.delegate respondsToSelector:@selector(profileViewController:wantsViewActivity:)];
+        
+        BOOL entityLoaderUndefined = [Socialize entityLoaderBlock] == nil;
+        activityViewController_.dontShowDisclosure = entityLoaderUndefined;
     }
     
     return activityViewController_;
@@ -293,8 +248,9 @@
 }
 
 - (void)activityViewController:(SocializeActivityViewController *)activityViewController activityTapped:(id<SocializeActivity>)activity {
-    if ([self.delegate respondsToSelector:@selector(profileViewController:wantsViewActivity:)]) {
-        [self.delegate profileViewController:self wantsViewActivity:activity];
+    SocializeEntityLoaderBlock entityLoader = [Socialize entityLoaderBlock];
+    if (self.navigationController != nil && entityLoader != nil) {
+        entityLoader(self.navigationController, activity.entity);
     }
 }
 

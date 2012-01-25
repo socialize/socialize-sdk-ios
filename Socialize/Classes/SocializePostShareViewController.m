@@ -28,9 +28,7 @@
 
 + (SocializePostShareViewController*)postShareViewControllerWithEntityURL:(NSString *)entityURL {
     SocializePostShareViewController *postShareViewController = [[[SocializePostShareViewController alloc]
-                                                                  initWithNibName:@"SocializePostShareViewController"
-                                                                  bundle:nil
-                                                                  entityUrlString:entityURL]
+                                                                  initWithEntityUrlString:entityURL]
                                                                  autorelease];
     return postShareViewController;
 }

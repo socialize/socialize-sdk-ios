@@ -13,7 +13,7 @@
 typedef enum {
     SocializeDictionary,   //Expected response from the service is dictionary
     SocializeList,         //Expected response form the service is a list
-    SocializeDictionaryWIthListAndErrors,   // Expected response from the service is dictionary of error list and object list
+    SocializeDictionaryWithListAndErrors,   // Expected response from the service is dictionary of error list and object list
     SocializeAny            //Anything goes...typically for delete
 } ExpectedResponseFormat;
 

@@ -40,8 +40,12 @@
 @class SocializeUserService;
 @class SocializeActivityService;
 @class SocializeShareService;
+@class SocializeDeviceTokenService;
+@class SocializeSubscriptionService;
 @class UIImage;
 @class SocializeFacebook;
+
+typedef void(^SocializeEntityLoaderBlock)(UINavigationController *navigationController, id<SocializeEntity>entity);
 
 /**
 This is a general facade of the   SDK`s API. Through it a third party developers could use the API.
@@ -64,6 +68,8 @@ otherwise you will get a failure.
     SocializeUserService            *_userService;
     SocializeActivityService        *_activityService;
     SocializeShareService           *_shareService;
+    SocializeDeviceTokenService    *_deviceTokenService;
+    SocializeSubscriptionService           *_subscriptionService;
 }
 /**Get access to the authentication service via <SocializeAuthenticateService>.*/
 @property (nonatomic, retain) SocializeAuthenticateService    *authService;
@@ -81,6 +87,11 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeActivityService        *activityService;
 /**Get access to the activity service via <SocializeShareService>.*/
 @property (nonatomic, retain) SocializeShareService           *shareService;
+/**Get access to the activity service via <SocializeNotificationService>.*/
+@property (nonatomic, retain) SocializeDeviceTokenService    *deviceTokenService;
+/**Get access to the activity service via <SocializeSubscriptionService>.*/
+@property (nonatomic, retain) SocializeSubscriptionService *subscriptionService;
+/**Current delegate*/
 
 /**
  Set callback delegate which responds to protocol <SocializeServiceDelegate> to the service.
@@ -96,6 +107,26 @@ otherwise you will get a failure.
  @param delegate Implemented by user callback delegate which responds to the  <SocializeServiceDelegate> protocol.
  */
 -(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
+
++ (BOOL)isSocializeNotification:(NSDictionary*)userInfo;
+
++ (BOOL)handleNotification:(NSDictionary*)userInfo;
+
+/**
+ Provide access to the entity loader block
+ 
+ typedef void(^SocializeEntityLoaderBlock)(UINavigationController *navigationController, id<SocializeEntity>entity);
+ */
++(SocializeEntityLoaderBlock)entityLoaderBlock;
+
+/**
+ Set entity loader block
+ 
+ typedef void(^SocializeEntityLoaderBlock)(UINavigationController *navigationController, id<SocializeEntity>entity);
+ 
+ @param entityLoaderBlock This block will be called when Socialize wishes to load an entity
+ */
++(void)setEntityLoaderBlock:(SocializeEntityLoaderBlock)entityLoaderBlock;
 
 /**
  Save API information to the user defaults.
@@ -120,17 +151,24 @@ otherwise you will get a failure.
 +(void)storeFacebookLocalAppId:(NSString*)facebookLocalAppID;
 
 /**
+ Save device token to the user defaults.
+ 
+ @param deviceToken The device token from the notification registration
+ */
++(void)storeDeviceToken:(NSString*)deviceToken;
+    
+/**
  Save app link to the user defaults.
  
  @param application link(URL)
  */
-+(void)storeApplicationLink:(NSString*)link;
++(void)storeApplicationLink:(NSString*)link   __attribute__((deprecated)) ;
 
 /**
  Remove app link from the user defaults.
  
  */
-+(void)removeApplicationLink;
++(void)removeApplicationLink __attribute__((deprecated));
 
 /**
  Provide access to the Socialize API key.
@@ -160,6 +198,12 @@ otherwise you will get a failure.
  */
 +(NSString*) facebookLocalAppId;
 
+/**
+ Provide access to device token from notification registration
+ 
+ @return stored device token
+ */
++(NSString *) deviceToken;
 
 /**
  Provide access to the app link
@@ -491,16 +535,29 @@ otherwise you will get a failure.
 /**
  Create comment for entity.
  
+ @see createCommentForEntityWithKey:comment:longitude:latitude:subscribe:
+ */
+-(void)createCommentForEntityWithKey:(NSString*)url comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
+
+/**
+ Create comment for entity.
+ 
  Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
  
- @param url URL to the entity.
+ @param entityKey URL to the entity.
  @param comment Text of the comment.
  @param lng Longitude *float* value. Could be nil. (OPTIONAL)
  @param lat Latitude  *float* value. Could be nil. (OPTIONAL)
- @see createCommentForEntity:comment:longitude:latitude:;
+ @param subscribe YES if you want to subscribe to push notifications for other comments on this entity, NO otherwise
  */
--(void)createCommentForEntityWithKey:(NSString*)url comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
+-(void)createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*)comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat subscribe:(BOOL)subscribe;
+
+/**
+ Create comment for entity.
+ @see createCommentForEntity:comment:longitude:latitude:subscribe:
+ */
+-(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
 
 /**
  Create comment for entity.
@@ -512,9 +569,14 @@ otherwise you will get a failure.
  @param comment Text of the comment.
  @param lng Longitude *float* value. Could be nil. (OPTIONAL)
  @param lat Latitude  *float* value. Could be nil. (OPTIONAL)
- @see createCommentForEntityWithKey:comment:longitude:latitude:
+ @param subscribe YES if you want to subscribe to push notifications for other comments on this entity, NO otherwise
  */
--(void)createCommentForEntity:(id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat;
+-(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat subscribe:(BOOL)subscribe;
+
+/** Socialize Notification Service **/
+//registers a device token.  Call this method when the developer gets the callback for:
+//didRegisterForRemoteNotificationsWithDeviceToken from the system
++(void)registerDeviceToken:(NSData *)deviceToken;
 
 /** @name View stuff */
 
@@ -543,4 +605,45 @@ otherwise you will get a failure.
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text;
 -(void)createShareForEntityWithKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text;
+
+/**
+ Enable push notifications for new comments on the given entity
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param entityKey Pushes will be sent for comments on this entity
+ */
+- (void)subscribeToCommentsForEntityKey:(NSString*)entityKey;
+
+/**
+ Disable push notifications for new comments on the given entity
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didCreate:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param entityKey Pushes will no longer be sent for comments on this entity
+ */
+- (void)unsubscribeFromCommentsForEntityKey:(NSString*)entityKey;
+
+/**
+ Get all subscriptions for the given entity key
+ 
+ Successful call of this method invokes <[SocializeServiceDelegate service:didFetchElements:]> method.
+ In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
+ 
+ @param entityKey Get subscriptions for this entity key
+ @param first First index
+ @param last Last index, noninclusive
+ */
+- (void)getSubscriptionsForEntityKey:(NSString*)entityKey first:(NSNumber*)first last:(NSNumber*)last;
+
++ (NSString*)objectURL:(id<SocializeObject>)object;
+
++ (NSString*)applicationURL;
+
+- (BOOL)notificationsAreConfigured;
+
++(id)sharedSocialize;
+
 @end

@@ -17,4 +17,9 @@
 @interface CommentsTableViewTests : SocializeTableViewTests
 
 @property (nonatomic, retain) SocializeCommentsTableViewController *commentsTableViewController;
+@property (nonatomic, retain) id mockSubscribedButton;
+@property (nonatomic, retain) id mockBubbleView;
+@property (nonatomic, retain) id mockBubbleContentView;
+
+
 @end

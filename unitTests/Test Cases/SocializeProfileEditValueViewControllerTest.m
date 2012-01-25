@@ -18,28 +18,22 @@
 
 @implementation SocializeProfileEditValueViewControllerTest
 @synthesize profileEditValueViewController = profileEditValueViewController_;
-@synthesize origProfileEditValueViewController = origProfileEditValueViewController_;
-@synthesize mockDelegate = mockDelegate_;
-@synthesize mockNavigationItem = mockNavigationItem_;
-@synthesize mockNavigationController = mockNavigationController_;
 @synthesize mockTableView = mockTableView_;
 @synthesize mockBundle = mockBundle_;
 @synthesize mockSaveButton = mockSaveButton_;
-@synthesize mockCancelButton = mockCancelButton_;
+
++ (SocializeBaseViewController*)createController {
+    return [[[SocializeProfileEditValueViewController alloc] init] autorelease];
+}
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
 }
 
 - (void)setUp {
-    self.origProfileEditValueViewController = [[[SocializeProfileEditValueViewController alloc] init] autorelease];
-    self.profileEditValueViewController = [OCMockObject partialMockForObject:self.origProfileEditValueViewController];
-    self.mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeProfileEditValueViewControllerDelegate)];
-    self.profileEditValueViewController.delegate = self.mockDelegate;
-    self.mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
-    self.mockNavigationItem = [OCMockObject mockForClass:[UINavigationItem class]];
-    [[[(id)self.profileEditValueViewController stub] andReturn:self.mockNavigationController] navigationController];
-    [[[(id)self.profileEditValueViewController stub] andReturn:self.mockNavigationItem] navigationItem];
+    [super setUp];
+    
+    self.profileEditValueViewController = (SocializeProfileEditValueViewController*)self.viewController;
     
     self.mockTableView = [OCMockObject mockForClass:[UITableView class]];
     [[[(id)self.profileEditValueViewController stub] andReturn:self.mockTableView] view];
@@ -50,44 +44,23 @@
     self.mockBundle = [OCMockObject mockForClass:[NSBundle class]];
     self.profileEditValueViewController.bundle = self.mockBundle;
     
-    self.mockCancelButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
-    self.profileEditValueViewController.cancelButton = self.mockCancelButton;
-    
     self.mockSaveButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.profileEditValueViewController.saveButton = self.mockSaveButton;
 }
 
 - (void)tearDown {
     [(id)self.profileEditValueViewController verify];
-    [self.mockDelegate verify];
-    [self.mockNavigationController verify];
-    [self.mockNavigationItem verify];
-    [self.mockCancelButton verify];
     [self.mockSaveButton verify];
     
     
     self.profileEditValueViewController = nil;
-    self.origProfileEditValueViewController = nil;
-    self.mockDelegate = nil;
-    self.mockNavigationController = nil;
-    self.mockNavigationItem = nil;
-    self.mockCancelButton = nil;
     self.mockSaveButton = nil;
-}
-
-- (void)testCancellingCallsDelegate {
-    [[self.mockDelegate expect] profileEditValueViewControllerDidCancel:self.origProfileEditValueViewController];
-    [self.profileEditValueViewController cancelButtonPressed:nil];
-}
-
-- (void)testSavingCallsDelegate {
-    [[self.mockDelegate expect] profileEditValueViewControllerDidSave:self.origProfileEditValueViewController];
-    [self.profileEditValueViewController saveButtonPressed:nil];
+    
+    [super tearDown];
 }
 
 - (void)testUnloadingView {
     [[(id)self.profileEditValueViewController expect] setSaveButton:nil];
-    [[(id)self.profileEditValueViewController expect] setCancelButton:nil];
     [self.profileEditValueViewController viewDidUnload];
 }
 
@@ -98,6 +71,9 @@
 }
 
 - (void)testTableHeaderView {
+    CGRect testFrame = CGRectMake(0, 20, 320, 460);
+    [[[self.mockView stub] andReturnValue:OCMOCK_VALUE(testFrame)] frame];
+    
     CGRect expectFrame = CGRectMake(0, 0, 320, 30);
     GHAssertTrue(CGRectEqualToRect(expectFrame, self.profileEditValueViewController.tableHeaderView.frame), @"Bad frame");
 }
@@ -184,6 +160,11 @@
     UITableViewCell *cell = [self.profileEditValueViewController tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     GHAssertEquals(cell, mockCell, @"Bad cell");
 
+}
+
+- (void)testThatSaveButtonNotifiesDelegateOfCompletion {
+    [self expectDelegateNotifiedOfCompletion];
+    [self.profileEditValueViewController saveButtonPressed:nil];
 }
 
 @end

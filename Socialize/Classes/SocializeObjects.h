@@ -17,3 +17,5 @@
 #import "SocializeView.h"
 #import "SocializeShare.h"
 #import "SocializeError.h"
+#import "SocializeDeviceToken.h"
+#import "SocializeSubscription.h"

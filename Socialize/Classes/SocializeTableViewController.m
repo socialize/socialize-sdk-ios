@@ -43,12 +43,23 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 20;
     [super dealloc];
 }
 
+- (void)commonInit {
+    self.pageSize = SocializeTableViewControllerDefaultPageSize;
+    
+    // Get some defaults, even if we are subclassed
+    [self.bundle loadNibNamed:@"SocializeTableViewController" owner:self options:nil];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self commonInit];
+    }
+    return self;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        self.pageSize = SocializeTableViewControllerDefaultPageSize;
-        
-        // Get some defaults, even if we are subclassed
-        [self.bundle loadNibNamed:@"SocializeTableViewController" owner:self options:nil];
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        [self commonInit];
     }
     return self;
 }

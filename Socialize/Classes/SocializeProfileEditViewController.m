@@ -53,6 +53,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 @synthesize bundle = bundle_;
 @synthesize userDefaults = userDefaults_;
 @synthesize editOccured = editOccured_;
+SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 + (UINavigationController*)profileEditViewControllerInNavigationController {
     SocializeProfileEditViewController *profileEditViewController = [self profileEditViewController];
@@ -76,7 +77,8 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.facebookSwitch = nil;
     self.bundle = nil;
     self.userDefaults = nil;
-    
+    self.saveButton = nil;
+
     [super dealloc];
 }
 
@@ -106,6 +108,7 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 {
     [super viewDidUnload];
     
+    self.saveButton = nil;
     self.profileImageCell = nil;
 }
 
@@ -171,14 +174,6 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     self.fullUser = fullUser;
     self.saveButton.enabled = YES;
     [self configureViewsForUser];
-}
-
-- (void)cancelButtonPressed:(UIButton*)cancelButton {
-    if (self.delegate != nil) {
-        [self.delegate profileEditViewControllerDidCancel:self];
-    } else {
-        [self dismissModalViewControllerAnimated:YES];
-    }
 }
 
 - (void)saveButtonPressed:(UIButton*)saveButton {
@@ -432,22 +427,25 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
     return editValueController_;
 }
 
-- (void)profileEditValueViewControllerDidSave:(SocializeProfileEditValueViewController *)profileEditValueController
-{
-	[self.navigationController popViewControllerAnimated:YES];
-    [self configureForAfterEdit];
-	
-	NSIndexPath * indexPath = profileEditValueController.indexPath;
-	
-    NSString *keyPath = [self keyPathForPropertiesRow:indexPath.row];
-    [self setValue:profileEditValueController.editValueField.text forKeyPath:keyPath];
-	
-	[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+- (void)baseViewControllerDidFinish:(SocializeBaseViewController *)baseViewController {
+    if (baseViewController == self.editValueController) {
+        [self.navigationController popViewControllerAnimated:YES];
+        [self configureForAfterEdit];
+        
+        NSIndexPath * indexPath = self.editValueController.indexPath;
+        
+        NSString *keyPath = [self keyPathForPropertiesRow:indexPath.row];
+        [self setValue:self.editValueController.editValueField.text forKeyPath:keyPath];
+        
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
-- (void)profileEditValueViewControllerDidCancel:(SocializeProfileEditValueViewController *)profileEditValueController
-{
-	[self.navigationController popViewControllerAnimated:YES];
+
+- (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
+    if (baseViewController == self.editValueController) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

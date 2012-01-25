@@ -21,6 +21,8 @@ if __name__ == '__main__':
     'Registered': '',
   }
 
+  subprocess.call('killall "iPhone Simulator"', stderr=subprocess.PIPE, shell=True)
+
   try:
     subprocess.check_call('plutil -convert xml1 "%s"' % LOCATIOND_FILENAME, shell=True)
   except subprocess.CalledProcessError:

@@ -12,6 +12,7 @@ extern NSString * const kSocializeModuleConfigurationPrototypesKey;
 extern NSString * const kSocializeModuleConfigurationFormatterKey;
 extern NSString * const kRestserverBaseURL;
 extern NSString * const kSecureRestserverBaseURL;
+extern NSString * const kRedirectBaseURL;
 
 @interface SocializeConfiguration : NSObject 
 {
@@ -30,4 +31,5 @@ extern NSString * const kSecureRestserverBaseURL;
 @property(nonatomic, readonly) NSString * defaultConfigurationPath;
 @property(nonatomic, copy, readonly) NSString * restserverBaseURL;
 @property(nonatomic, copy, readonly) NSString * secureRestserverBaseURL;
+@property(nonatomic, copy, readonly) NSString * redirectBaseURL;
 @end

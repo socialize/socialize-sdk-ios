@@ -27,28 +27,35 @@
 
 #import <UIKit/UIKit.h>
 #import "_Socialize.h"
+#import "SocializeKeyboardListener.h"
+#import "SocializeProfileEditViewControllerDelegate.h"
 
 @class SocializeShareBuilder;
 @class SocializeLoadingView;
 @class ImagesCache;
+@class SocializeProfileEditViewController;
 
-@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate> {
+@protocol SocializeBaseViewControllerDelegate;
+
+@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate, SocializeKeyboardListenerDelegate> {
     @private 
     SocializeLoadingView*  _loadingIndicatorView;
 }
+@property (nonatomic, assign) id<SocializeBaseViewControllerDelegate> delegate;
 @property(nonatomic, retain) UINavigationController* authViewController;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) Socialize *socialize;
 @property (nonatomic, retain) UIBarButtonItem *doneButton;
-@property (nonatomic, retain) UIBarButtonItem *editButton;
-@property (nonatomic, retain) UIBarButtonItem *sendButton;
 @property (nonatomic, retain) UIBarButtonItem *cancelButton;
-@property (nonatomic, retain) UIBarButtonItem *saveButton;
+@property (nonatomic, retain) UIBarButtonItem *settingsButton;
 @property (nonatomic, retain) UIAlertView *genericAlertView;
 @property (nonatomic, retain) UIAlertView *sendActivityToFacebookFeedAlertView;
 @property (nonatomic, retain) SocializeShareBuilder *shareBuilder;
 @property (nonatomic, retain) ImagesCache *imagesCache;
 @property (nonatomic, retain) NSBundle *bundle;
+@property (nonatomic, retain) SocializeKeyboardListener *keyboardListener;
+@property (nonatomic, retain) SocializeProfileEditViewController *profileEditViewController;
+@property (nonatomic, retain) UINavigationController *navigationControllerForEdit;
 
 -(void) showAlertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoading;
@@ -61,11 +68,6 @@
 - (UIView*)showLoadingInView;
 - (void)authenticateWithFacebook;
 - (BOOL)shouldShowAuthViewController;
-- (void)saveButtonPressed:(UIButton*)button;
-- (void)editButtonPressed:(UIButton*)button;
-- (void)doneButtonPressed:(UIButton*)button;
-- (void)sendButtonPressed:(UIButton*)button;
-- (void)cancelButtonPressed:(UIButton*)button;
 - (void)sendActivityToFacebookFeed:(id<SocializeActivity>)activity;
 - (void)sendActivityToFacebookFeedSucceeded;
 - (void)sendActivityToFacebookFeedFailed:(NSError*)error;
@@ -78,4 +80,32 @@
            stopLoading:(void(^)())stopLoadingBlock
             completion:(void(^)(UIImage *image))completionBlock;
 - (void)changeTitleOnCustomBarButton:(UIBarButtonItem*)barButton toText:(NSString*)text;
+- (void)doneButtonPressed:(UIBarButtonItem*)button;
+- (void)cancelButtonPressed:(UIBarButtonItem*)button;
+- (void)settingsButtonPressed:(UIBarButtonItem*)button;
+- (void)showEditController;
+- (void)notifyDelegateOfCompletion;
 @end
+
+#define SYNTH_RED_SOCIALIZE_BAR_BUTTON(PROPERTY, TITLESTR) \
+@synthesize PROPERTY = PROPERTY ## _; \
+- (UIBarButtonItem*)PROPERTY { \
+    if (PROPERTY ## _ == nil) { \
+        UIButton *button = [UIButton redSocializeNavBarButtonWithTitle: TITLESTR ]; \
+        [button addTarget:self action:@selector(PROPERTY ## Pressed:) forControlEvents:UIControlEventTouchUpInside]; \
+        PROPERTY ## _ = [[UIBarButtonItem alloc] initWithCustomView:button]; \
+    } \
+    return PROPERTY ## _; \
+}
+
+#define SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(PROPERTY, TITLESTR) \
+@synthesize PROPERTY = PROPERTY ## _; \
+- (UIBarButtonItem*)PROPERTY { \
+    if (PROPERTY ## _ == nil) { \
+        UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle: TITLESTR ]; \
+        [button addTarget:self action:@selector(PROPERTY ## Pressed:) forControlEvents:UIControlEventTouchUpInside]; \
+        PROPERTY ## _ = [[UIBarButtonItem alloc] initWithCustomView:button]; \
+    } \
+    return PROPERTY ## _; \
+}
+

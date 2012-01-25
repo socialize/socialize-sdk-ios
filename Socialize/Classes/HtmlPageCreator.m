@@ -34,7 +34,9 @@
 
 -(void) addInformation: (NSString*) info forTag: (NSString*) tag
 {
-    [html replaceOccurrencesOfString: tag withString:info options:NSLiteralSearch range:NSMakeRange(0, [html length])];
+    if( info && tag ) {
+        [html replaceOccurrencesOfString: tag withString:info options:NSLiteralSearch range:NSMakeRange(0, [html length])];
+    }
 }
 
 @end

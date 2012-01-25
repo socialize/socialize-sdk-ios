@@ -53,7 +53,9 @@
 
 #pragma mark primitive method implementations
 -(void)doToObject:(id<SocializeObject>)toObject fromDictionary:(NSDictionary *)JSONDictionary
-{}
+{
+    [toObject setObjectID:[[JSONDictionary objectForKey:@"id"] intValue]]; 
+}
 
 -(void)doToDictionary:(NSMutableDictionary *)dictionary fromObject:(id<SocializeObject>) fromObject
 {}

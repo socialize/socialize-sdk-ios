@@ -11,6 +11,7 @@
 #import "CommentMapView.h"
 #import "UINavigationController+Socialize.h"
 #import "SocializeAuthViewController.h"
+#import "SocializeSubscriptionService.h"
 
 @interface SocializePostCommentViewController ()
 - (void)configureFacebookButton;
@@ -21,6 +22,10 @@
 @synthesize commentSentToFacebook = commentSentToFacebook_;
 @synthesize facebookButton = facebookButton_;
 @synthesize delegate = delegate_;
+@synthesize unsubscribeButton = unsubscribeButton_;
+@synthesize dontSubscribeToDiscussion = dontSubscribeToDiscussion_;
+@synthesize enableSubscribeButton = enabledSubscribeButton_;
+@synthesize subscribeContainer = subscribeContainer_;
 
 + (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SocializePostCommentViewControllerDelegate>)delegate {
     SocializePostCommentViewController *postCommentViewController = [self postCommentViewControllerWithEntityURL:entityURL];
@@ -31,7 +36,7 @@
 
 + (SocializePostCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL {
     SocializePostCommentViewController *postCommentViewController = [[[SocializePostCommentViewController alloc]
-                                                       initWithNibName:@"SocializePostCommentViewController" bundle:nil entityUrlString:entityURL]
+                                                       initWithEntityUrlString:entityURL]
                                                       autorelease];
     return postCommentViewController;
 }
@@ -39,31 +44,80 @@
 - (void)dealloc {
     self.facebookButton = nil;
     self.commentObject = nil;
+    self.unsubscribeButton = nil;
+    self.enableSubscribeButton = nil;
+    self.subscribeContainer = nil;
 
     [super dealloc];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.title = @"New Comment";
     [self configureFacebookButton];
+    [self addSocializeRoundedGrayButtonImagesToButton:self.unsubscribeButton];
+    self.dontSubscribeToDiscussion = NO;
+    
+    self.enableSubscribeButton.enabled = NO;
+    [self getSubscriptionStatus];
+    
+    
+//    NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                   @"271982", @"activity_id",
+//                                   @"comment", @"activity_type",
+//                                   @"new_comments", @"notification_type",
+//                                   nil];
+//    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+//    [Socialize handleNotification:userInfo];
+
+    
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
     
     self.facebookButton = nil;
+    self.unsubscribeButton = nil;
+    self.enableSubscribeButton = nil;
+    self.subscribeContainer = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    
+    
+    
+//    NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                   @"304899", @"activity_id",
+//                                   @"comment", @"activity_type",
+//                                   @"new_comments", @"notification_type",
+//                                   nil];
+//    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+//    [Socialize handleNotification:userInfo];
+    
+
+}
+
+- (void)configureMessageActionButtons {
+    NSMutableArray *buttons = [NSMutableArray array];
+    if ([self.socialize isAuthenticatedWithFacebook]) {
+        [buttons addObject:self.facebookButton];
+    }
+
+    if ([self.socialize notificationsAreConfigured]) {
+        [buttons addObject:self.enableSubscribeButton];
+    } else {
+        DebugLog(@"Notifications are not configured. Subscribe button will not be shown");
+    }
+    
+    self.messageActionButtons = buttons;
 }
 
 - (void)configureFacebookButton {
-    if ([self.socialize isAuthenticatedWithFacebook]) {
-        BOOL dontPost = [[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
-        self.facebookButton.hidden = NO;
-        self.facebookButton.selected = !dontPost;
-    } else {
-        self.facebookButton.hidden = YES;
-    }
+    BOOL dontPost = [[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
+    self.facebookButton.selected = !dontPost;
 }
 
 - (void)createCommentOnSocializeServer {
@@ -73,14 +127,14 @@
     {
         NSNumber* latitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.latitude];
         NSNumber* longitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.longitude];        
-        [self.socialize createCommentForEntityWithKey:self.entityURL comment:commentTextView.text longitude:longitude latitude:latitude];
+        [self.socialize createCommentForEntityWithKey:self.entityURL comment:commentTextView.text longitude:longitude latitude:latitude subscribe:!self.dontSubscribeToDiscussion];
     }
     else
-        [self.socialize createCommentForEntityWithKey:self.entityURL comment:commentTextView.text longitude:nil latitude:nil];
+        [self.socialize createCommentForEntityWithKey:self.entityURL comment:commentTextView.text longitude:nil latitude:nil subscribe:!self.dontSubscribeToDiscussion];
 }
 
 - (BOOL)shouldSendToFacebook {
-    return self.facebookButton.selected && !self.facebookButton.hidden;
+    return [self.socialize isAuthenticatedWithFacebook] && self.facebookButton.selected && !self.facebookButton.hidden;
 }
 
 - (void)executeAfterModalDismissDelay:(void (^)())block {
@@ -131,7 +185,10 @@
     [self notifyDelegateOrDismissSelf];
 }
 - (void)afterLoginAction {
+    [super afterLoginAction];
+    
     [self configureFacebookButton];
+    [self configureMessageActionButtons];
 }
 
 - (void)facebookButtonPressed:(UIButton *)sender {
@@ -144,6 +201,34 @@
     } else {
         [self finishCreateComment];
     }
+}
+
+- (void)setDontSubscribeToDiscussion:(BOOL)dontSubscribeToDiscussion {
+    dontSubscribeToDiscussion_ = dontSubscribeToDiscussion;
+    self.enableSubscribeButton.selected = !self.dontSubscribeToDiscussion;
+}
+
+-(IBAction)enableSubscribeButtonPressed:(id)sender {
+
+    if (self.dontSubscribeToDiscussion) {
+        [self setDontSubscribeToDiscussion:NO];
+        [self setSubviewForLowerContainer:self.subscribeContainer];
+    } else {
+        if ([commentTextView isFirstResponder]) 
+        {
+            [self setSubviewForLowerContainer:self.subscribeContainer];
+            [commentTextView resignFirstResponder];          
+        }
+        else
+        {
+            [commentTextView becomeFirstResponder];
+        }            
+    }
+}
+
+-(IBAction)unsubscribeButtonPressed:(id)sender {
+    [self setDontSubscribeToDiscussion:YES];
+    [commentTextView becomeFirstResponder];
 }
 
 - (void)sendActivityToFacebookFeedSucceeded {
@@ -175,6 +260,32 @@
     // FIXME [#20995319] auth flow in wrong place
     [self afterLoginAction];
     [self finishCreateComment];    
+}
+
+- (BOOL)elementsHaveInactiveSubscription:(NSArray*)elements {
+    for (id<SocializeSubscription> subscription in elements) {
+        if (![subscription subscribed]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+-(void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
+    if ([service isKindOfClass:[SocializeSubscriptionService class]]) {
+        // The only time we want the button off is if they have previously posted without subscription
+        BOOL subscribeHasBeenDisabled = [self elementsHaveInactiveSubscription:dataArray];
+        self.enableSubscribeButton.enabled = YES;
+        [self setDontSubscribeToDiscussion:subscribeHasBeenDisabled];
+        
+    } else {
+        [super service:service didFetchElements:dataArray];
+    }
+}
+
+- (void)getSubscriptionStatus {
+    [self.socialize getSubscriptionsForEntityKey:self.entityURL first:nil last:nil];
 }
 
 

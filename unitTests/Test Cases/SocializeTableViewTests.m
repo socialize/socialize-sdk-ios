@@ -35,6 +35,8 @@
     self.tableViewController = (SocializeTableViewController*)self.viewController;
     
     self.mockTableView = [OCMockObject mockForClass:[UITableView class]];
+    [[self.mockTableView stub] setDelegate:nil];
+    [[self.mockTableView stub] setDataSource:nil];
     self.tableViewController.tableView = self.mockTableView;
     
     // Forward some messages

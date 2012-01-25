@@ -17,8 +17,7 @@
 @synthesize indexPath;
 @synthesize valueToEdit;
 @synthesize didEdit;
-@synthesize cancelButton = cancelButton_;
-@synthesize saveButton = saveButton_;
+SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 @synthesize delegate = delegate_;
 @synthesize bundle = bundle_;
 @synthesize tableHeaderView = tableHeaderView_;
@@ -31,7 +30,6 @@
     self.editValueField = nil;
     self.indexPath = nil;
     self.valueToEdit = nil;    
-    self.cancelButton = nil;
     self.saveButton = nil;
     self.bundle = nil;
     self.tableHeaderView = nil;
@@ -41,33 +39,6 @@
 
 - (void)viewDidUnload {
     self.saveButton = nil;
-    self.cancelButton = nil;
-}
-
-- (UIBarButtonItem*)cancelButton {
-    if (cancelButton_ == nil) {
-        UIButton * actualButton = [UIButton redSocializeNavBarButtonWithTitle:@"Cancel"];
-        [actualButton addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        cancelButton_ = [[UIBarButtonItem alloc] initWithCustomView:actualButton];
-    }
-    return cancelButton_;
-}
-
-- (UIBarButtonItem*)saveButton {
-    if (saveButton_ == nil) {
-        UIButton * actualButton = [UIButton blueSocializeNavBarButtonWithTitle:@"Save"];
-        [actualButton addTarget:self action:@selector(saveButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        saveButton_ = [[UIBarButtonItem alloc] initWithCustomView:actualButton];
-    }
-    return saveButton_;
-}
-
-- (void)saveButtonPressed:(UIButton*)saveButton {
-    [self.delegate profileEditValueViewControllerDidSave:self];
-}
-
-- (void)cancelButtonPressed:(UIButton*)cancelButton {
-    [self.delegate profileEditValueViewControllerDidCancel:self];
 }
 
 - (UIView*)tableHeaderView {
@@ -154,6 +125,10 @@
 	[self.editValueField becomeFirstResponder];
     
     return cell;
+}
+
+- (void)saveButtonPressed:(UIBarButtonItem*)saveButton {
+    [self notifyDelegateOfCompletion];
 }
 
 

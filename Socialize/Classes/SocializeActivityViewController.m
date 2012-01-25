@@ -11,6 +11,7 @@
 #import "SocializeActivityService.h"
 #import "SocializeProfileViewController.h"
 #import "SocializeTableBGInfoView.h"
+#import "_Socialize.h"
 
 @implementation SocializeActivityViewController
 @synthesize activityTableViewCell = activityTableViewCell_;
@@ -191,9 +192,15 @@
     // Ensure activity indicator off for cells reused mid-load
     [cell.profileImageActivity stopAnimating];
     
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    BOOL noEntityLoader = [Socialize entityLoaderBlock] == nil;
     
-    cell.disclosureImage.hidden = self.dontShowDisclosure;
+    if (noEntityLoader) {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    } else {
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    }
+    
+    cell.disclosureImage.hidden = noEntityLoader;
     
     NSString *imageURL = activity.user.smallImageUrl;
     if (imageURL != nil) {

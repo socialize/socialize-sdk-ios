@@ -1,0 +1,15 @@
+{
+    "date": "2011-12-15 00:56:10+0000",
+    "entity": {
+        "comments": 0,
+        "id": 920848,
+        "key": "http://itest.AF7BC19B/testCreateSubscriptionOnComment/entity",
+        "likes": 0, "name": "", "shares": 0, "type": "url", "views": 0
+    },
+    "id": 37,
+    "subscribed": true,
+    "type": "new_comments",
+    "user": {
+        "city": null, "first_name": null, "id": 53001218, "last_name": null, "meta": null, "small_image_uri": null, "state": null, "third_party_auth": [], "username": "User53001218"
+    }
+}

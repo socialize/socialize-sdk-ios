@@ -24,6 +24,7 @@
     [toEntity setComments:[[JSONDictionary objectForKey:@"comments"]intValue]];  
     [toEntity setShares:[[JSONDictionary objectForKey:@"shares"]intValue]]; 
     
+    [super doToObject:toObject fromDictionary:JSONDictionary];
 }
 
 -(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject

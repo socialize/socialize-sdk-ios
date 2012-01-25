@@ -172,6 +172,8 @@
 //    [[(id)self.actionBar expect] sendActivityToFacebookFeed:mockLike];
     [[self.mockSocialize expect] getEntityByKey:TEST_ENTITY_URL];
     
+    [[(id)self.actionBar expect] sendActivityToFacebookFeed:mockLike];
+    
     [self.actionBar service:nil didCreate:mockLike];
 }
 
