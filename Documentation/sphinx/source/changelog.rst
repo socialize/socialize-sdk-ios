@@ -4,6 +4,22 @@
 Changelog
 =============================================
 
+v1.3
+----
+
+[feature] Socialize Notifications[ ]
+
+[feature] add a block callback to handle entity loading. [ ]
+
+[bug] Setting url scheme suffix should not be required (currently crashes on assertion) for users fb authing on their own [ ]
+
+[feature] Likes should post to Facebook [ ]
+
+[feature] Add a generic Action Detail view for comment info
+
+[feature] Facebook wall content urls for app and entity now use indirect getsocialize.com links instead of direct links [ ]
+
+
 v1.1.8
 ------
 [bug] fix the final package to not follow symlinks and reduce the total package size. [ ]
