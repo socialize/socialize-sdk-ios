@@ -7,7 +7,7 @@ Changelog
 v1.3
 ----
 
-[feature] Socialize Notifications[ ]
+[feature] Socialize Smart Alerts (push notifications on iOS) [ ]
 
 [feature] add a block callback to handle entity loading. [ ]
 
