@@ -134,7 +134,7 @@
 }
 
 - (BOOL)shouldSendToFacebook {
-    return self.facebookButton.selected && !self.facebookButton.hidden;
+    return [self.socialize isAuthenticatedWithFacebook] && self.facebookButton.selected && !self.facebookButton.hidden;
 }
 
 - (void)executeAfterModalDismissDelay:(void (^)())block {
