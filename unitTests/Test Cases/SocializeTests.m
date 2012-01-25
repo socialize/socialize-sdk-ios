@@ -106,7 +106,9 @@
     NSString* apiKey = @"0000000-1111101110-1111";
     NSString* apiSecret = @"11111111-222222-333333";
     
-    [Socialize storeSocializeApiKey: apiKey andSecret:apiSecret];
+    [Socialize storeConsumerKey:apiKey];
+    [Socialize storeConsumerSecret:apiSecret];
+    
     GHAssertEqualStrings(apiKey,[Socialize apiKey], nil);
     GHAssertEqualStrings(apiSecret,[Socialize apiSecret], nil);
     
@@ -116,7 +118,9 @@
     NSString* apiKey = @"0000000-1111101110-1111";
     NSString* apiSecret = @"11111111-222222-333333";
 
-    [Socialize storeSocializeApiKey:apiKey andSecret:apiSecret];
+    [Socialize storeConsumerKey:apiKey];
+    [Socialize storeConsumerSecret:apiSecret];
+    
     [Socialize storeFacebookAppId:@"1234"];
     [Socialize storeFacebookLocalAppId:@"abcd"];
     
@@ -260,7 +264,8 @@
     
     NSString* apiKey = @"0000000-1111101110-1111";
     NSString* apiSecret = @"11111111-222222-333333";
-    [Socialize storeSocializeApiKey:apiKey andSecret:apiSecret];
+    [Socialize storeConsumerKey:apiKey];
+    [Socialize storeConsumerSecret:apiSecret];
     
     [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret];
     [socialize authenticateAnonymously];

@@ -123,6 +123,14 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
     [defaults synchronize];
 }
 
++(void)storeConsumerKey:(NSString*)consumerKey {
+    [[NSUserDefaults standardUserDefaults] setValue:consumerKey forKey:SOCIALIZE_API_KEY];
+}
+
++(void)storeConsumerSecret:(NSString*)consumerSecret {
+    [[NSUserDefaults standardUserDefaults] setValue:consumerSecret forKey:SOCIALIZE_API_SECRET];
+}
+
 +(void)storeDeviceToken:(NSString*)deviceToken {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setValue:deviceToken forKey:SOCIALIZE_DEVICE_TOKEN];

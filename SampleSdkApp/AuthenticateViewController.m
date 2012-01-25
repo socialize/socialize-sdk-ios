@@ -77,7 +77,9 @@
         [defaults setObject:[NSDate distantFuture] forKey:@"FBExpirationDateKey"];
         [defaults synchronize];
     }
-    [Socialize storeSocializeApiKey:[apiInfo objectForKey:@"key"] andSecret: [apiInfo objectForKey:@"secret"]];
+    [Socialize storeConsumerKey:[apiInfo objectForKey:@"key"]];
+    [Socialize storeConsumerSecret:[apiInfo objectForKey:@"secret"]];
+
     [Socialize storeFacebookAppId:@"115622641859087"];
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];

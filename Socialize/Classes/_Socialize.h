@@ -134,7 +134,21 @@ otherwise you will get a failure.
  @param key Socialize API key.
  @param secret Socialize API secret.
  */
-+(void)storeSocializeApiKey:(NSString*) key andSecret: (NSString*)secret;
++(void)storeSocializeApiKey:(NSString*) key andSecret: (NSString*)secret __attribute__((deprecated));
+
+/**
+ Save API consumer key
+ 
+ @param consumerKey Socialize API consumer key.
+ */
++(void)storeConsumerKey:(NSString*)consumerKey;
+
+/**
+ Save API consumer secret
+ 
+ @param consumerSecret Socialize API consumer secret.
+ */
++(void)storeConsumerSecret:(NSString*)consumerSecret;
 
 /**
  Save facebook app id to the user defaults.

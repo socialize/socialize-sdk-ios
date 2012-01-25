@@ -83,7 +83,7 @@ at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_.  Clic
 
 .. raw:: html
 
-    <script src="https://gist.github.com/1274157.js?file=appDelegate.m"></script>
+    <script src="https://gist.github.com/1678336.js?file=appDelegate.m"></script>
 
 Step 5: Include Socialize in your App!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
