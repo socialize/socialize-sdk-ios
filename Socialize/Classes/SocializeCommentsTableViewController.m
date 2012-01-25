@@ -235,6 +235,8 @@
     self.subscribedButton.enabled = NO;
     
     if (![self.socialize notificationsAreConfigured]) {
+        DebugLog(SOCIALIZE_NOTIFICATIONS_NOT_CONFIGURED_MESSAGE);
+
         self.subscribedButton.hidden = YES;
         
         CGRect frame = self.footerView.searchBarImageView.frame;

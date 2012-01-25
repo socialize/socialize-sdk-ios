@@ -20,3 +20,6 @@
 #define kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY @"SOCIALIZE_DONT_POST_TO_FACEBOOK_KEY"
 
 #define MIN_MODAL_DISMISS_INTERVAL 0.75
+
+#define SOCIALIZE_FACEBOOK_NOT_CONFIGURED_MESSAGE @"Socialize Warning: Facebook is not configured. Facebook UI controls will not be shown. You should consider enabling Socialize's Facebook support, as described in http://socialize.github.com/socialize-sdk-ios/getting_started.html"
+#define SOCIALIZE_NOTIFICATIONS_NOT_CONFIGURED_MESSAGE @"Socialize Warning: Notifications are not configured. Notification UI controls will not be shown. You can read about Socialize's SmartAlerts at http://socialize.github.com/socialize-sdk-ios/push_notifications.html"

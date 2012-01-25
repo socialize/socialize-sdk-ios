@@ -104,12 +104,14 @@
     NSMutableArray *buttons = [NSMutableArray array];
     if ([self.socialize isAuthenticatedWithFacebook]) {
         [buttons addObject:self.facebookButton];
+    } else {
+        DebugLog(SOCIALIZE_FACEBOOK_NOT_CONFIGURED_MESSAGE);
     }
 
     if ([self.socialize notificationsAreConfigured]) {
         [buttons addObject:self.enableSubscribeButton];
     } else {
-        DebugLog(@"Notifications are not configured. Subscribe button will not be shown");
+        DebugLog(SOCIALIZE_NOTIFICATIONS_NOT_CONFIGURED_MESSAGE);
     }
     
     self.messageActionButtons = buttons;
