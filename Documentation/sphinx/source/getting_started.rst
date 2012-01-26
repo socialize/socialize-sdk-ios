@@ -45,13 +45,17 @@ Step 1: Add the Socialize Framework to Your Project
 Step 2: Add Required Frameworks to Your Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Add CoreLocation.framework to your application target.
-- Add MapKit.framework to your application target.
-- Add MessageUI.framework to your application target.
-- Add QuartzCore.framework to your application target.
-- Add CoreGraphics.framework to your application target.
+- Add the following frameworks to your application target:
 
- 	.. image:: images/add_frameworks.png
+::
+
+           CoreLocation.framework
+           MapKit.framework
+           MessageUI.framework
+           QuartzCore.framework
+           CoreGraphics.framework
+
+.. image:: images/add_frameworks.png
 
 Step 3: Set Project Linker Flags
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
