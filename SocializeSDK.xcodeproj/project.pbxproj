@@ -1073,6 +1073,8 @@
 		AA51C14D1471D10700E5C003 /* SocializeBaseViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */; };
 		AA5ACEEF1467C3F200790B3D /* SocializeProfileEditValueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C2144325F9004E4C1B /* SocializeProfileEditValueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5ACEF01467C3F300790B3D /* SocializeProfileEditValueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C2144325F9004E4C1B /* SocializeProfileEditValueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA68733C14D1E56300970F77 /* SocializeVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = AA68733B14D1E56300970F77 /* SocializeVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA68733D14D1E56300970F77 /* SocializeVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = AA68733B14D1E56300970F77 /* SocializeVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6DE805145FBBB40037E48E /* SocializeFacebookInterfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE804145FBBB40037E48E /* SocializeFacebookInterfaceTests.m */; };
 		AA6FBAC114BCAC0C00D8646C /* SocializeNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6FBABF14BCAC0C00D8646C /* SocializeNotificationDisplayController.h */; };
 		AA6FBAC214BCAC0C00D8646C /* SocializeNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6FBABF14BCAC0C00D8646C /* SocializeNotificationDisplayController.h */; };
@@ -2499,6 +2501,7 @@
 		AA51C14B1471D10700E5C003 /* SocializeBaseViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBaseViewControllerTests.h; path = "Test Cases/SocializeBaseViewControllerTests.h"; sourceTree = "<group>"; };
 		AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBaseViewControllerTests.m; path = "Test Cases/SocializeBaseViewControllerTests.m"; sourceTree = "<group>"; };
 		AA639F84144A34B600660E26 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		AA68733B14D1E56300970F77 /* SocializeVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeVersion.h; path = Classes/SocializeVersion.h; sourceTree = "<group>"; };
 		AA6B6F161472F4A4008E885B /* SocializeComposeMessageViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeComposeMessageViewControllerTests.h; path = "Test Cases/SocializeComposeMessageViewControllerTests.h"; sourceTree = "<group>"; };
 		AA6B6F171472F4A4008E885B /* SocializeComposeMessageViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeComposeMessageViewControllerTests.m; path = "Test Cases/SocializeComposeMessageViewControllerTests.m"; sourceTree = "<group>"; };
 		AA6DE803145FBBB40037E48E /* SocializeFacebookInterfaceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebookInterfaceTests.h; path = "Test Cases/SocializeFacebookInterfaceTests.h"; sourceTree = "<group>"; };
@@ -3058,6 +3061,7 @@
 		5C9004331395963A007361F6 /* API Client */ = {
 			isa = PBXGroup;
 			children = (
+				AA68733B14D1E56300970F77 /* SocializeVersion.h */,
 				5C21C0C21396BF8300CF2B9F /* _Socialize.h */,
 				5C21C0C31396BF8300CF2B9F /* _Socialize.m */,
 				1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */,
@@ -4384,6 +4388,7 @@
 				AAF50D7314CA0ED700585474 /* SocializeBaseViewControllerDelegate.h in Headers */,
 				AAE930D814CA094F007CEB50 /* SocializeHorizontalContainerView.h in Headers */,
 				AA2CDD7E14D103A5003B61BC /* SocializeLocationManager.h in Headers */,
+				AA68733D14D1E56300970F77 /* SocializeVersion.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4494,6 +4499,7 @@
 				AAF50D7214CA0ED700585474 /* SocializeBaseViewControllerDelegate.h in Headers */,
 				AAE930D714CA094F007CEB50 /* SocializeHorizontalContainerView.h in Headers */,
 				AA2CDD7D14D103A4003B61BC /* SocializeLocationManager.h in Headers */,
+				AA68733C14D1E56300970F77 /* SocializeVersion.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4504,6 +4510,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5CC3DADF1378824800B11B78 /* Build configuration list for PBXNativeTarget "Socialize" */;
 			buildPhases = (
+				AA68732614D1D95200970F77 /* Make Version Header */,
 				5CC3DABA1378824700B11B78 /* Sources */,
 				5CC3DABB1378824700B11B78 /* Frameworks */,
 				AA2024F2144CA7C0006C1F8F /* Headers */,
@@ -6018,6 +6025,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./util/generate-coverage-report.sh";
+			showEnvVarsInLog = 0;
+		};
+		AA68732614D1D95200970F77 /* Make Version Header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Make Version Header";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${PROJECT_DIR}\" && make subst-build";
 			showEnvVarsInLog = 0;
 		};
 		AAB8F4751443713900441515 /* Dump Xcode Environment */ = {

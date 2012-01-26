@@ -1,0 +1,2 @@
+#define SOCIALIZE_VERSION @socialize_version@
+#define SOCIALIZE_VERSION_STRING @"@socialize_version@"

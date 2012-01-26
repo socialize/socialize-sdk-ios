@@ -32,6 +32,7 @@ clean:
 	xcodebuild -workspace SampleSdkApp/SampleSdkApp.xcworkspace -scheme "IntegrationTests" -configuration Debug -sdk iphonesimulator clean
 	xcodebuild -workspace SampleSdkApp/SampleSdkApp.xcworkspace -scheme "IntegrationTests" -configuration Debug -sdk iphonesimulator clean
 	rm -rfd build
+	rm -f $(SUBST_BUILD_FILES)
 
 test:
 	WRITE_JUNIT_XML=YES RUN_CLI=YES xcodebuild -workspace socialize-sdk-ios.xcworkspace/ -sdk iphonesimulator -configuration Debug -scheme unitTests
@@ -51,7 +52,7 @@ mytest:
 	xcodebuild -project SocializeSDK.xcodeproj -target "Socialize Framework" -configuration Distribution -sdk iphoneos clean build
 	WRITE_JUNIT_XML=YES GHUNIT_CLI=1 xcodebuild -target unitTests -configuration Debug -sdk iphonesimulator build
 
-sphinx_doc:
+sphinx_doc: subst-build
 	export LANG=en_US.UTF-8;\
 	export LC_ALL=en_US.UTF-8;\
 	export LC_CTYPE=en_US.UTF-8;\
@@ -66,3 +67,9 @@ tags:
 
 debug: build-sample-debug
 	./debug.sh
+
+-include subst.mk
+
+SUBST_BUILD_FILES := Socialize/Classes/SocializeVersion.h Documentation/sphinx/source/conf.py
+
+subst-build: $(SUBST_BUILD_FILES)

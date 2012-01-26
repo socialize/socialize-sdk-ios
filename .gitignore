@@ -20,3 +20,5 @@ SampleSdkApp/testrunner/sampleApp_instruments.trace
 tags
 *.pyc
 *.swo
+Socialize/Classes/SocializeVersion.h
+Documentation/sphinx/source/conf.py
