@@ -4628,6 +4628,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AABC15AC144A114900088B7D /* Build configuration list for PBXNativeTarget "Socialize-Profiling" */;
 			buildPhases = (
+				AA40E4A514D209E700EB6DEE /* Make Version Header */,
 				AABC14D5144A114900088B7D /* Sources */,
 				AABC1539144A114900088B7D /* Frameworks */,
 				AA2024EE144CA744006C1F8F /* Headers */,
@@ -6025,6 +6026,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./util/generate-coverage-report.sh";
+			showEnvVarsInLog = 0;
+		};
+		AA40E4A514D209E700EB6DEE /* Make Version Header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Make Version Header";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${PROJECT_DIR}\" && make subst-build";
 			showEnvVarsInLog = 0;
 		};
 		AA68732614D1D95200970F77 /* Make Version Header */ = {
