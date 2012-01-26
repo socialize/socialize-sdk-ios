@@ -44,6 +44,7 @@
 @property (nonatomic, retain) id mockEntity;
 @property (nonatomic, retain) id mockShareComposer;
 @property (nonatomic, retain) id mockShareActionSheet;
+@property (nonatomic, retain) id mockShareTextMessageComposer;
 @property (nonatomic, retain) id mockUnconfiguredEmailAlert;
 
 @end
