@@ -26,18 +26,27 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface SocializeLocationManager : NSObject {
+@protocol SocializeLocationManagerDelegate;
+
+@interface SocializeLocationManager : NSObject <CLLocationManagerDelegate> {
 @private
     BOOL _shareLocation;
     NSString* _currentLocationDescription;
 }
-
+@property (nonatomic, assign) id<SocializeLocationManagerDelegate> delegate;
 @property (nonatomic, assign) BOOL shouldShareLocation;
 @property (nonatomic, retain) NSString* currentLocationDescription;
+@property (nonatomic, retain) CLLocationManager *locationManager;
 
 -(BOOL)applicationIsAuthorizedToUseLocationServices;
++(SocializeLocationManager*)locationManager;
 
-+(SocializeLocationManager*)create;
+@end
+
+@protocol SocializeLocationManagerDelegate <NSObject>
+
+- (void)locationManager:(SocializeLocationManager*)locationManager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
 
 @end

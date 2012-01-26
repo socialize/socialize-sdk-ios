@@ -59,7 +59,7 @@
          <EnvironmentVariable
             key = "SocializeDebug"
             value = "2"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>

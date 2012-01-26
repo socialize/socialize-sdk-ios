@@ -13,12 +13,12 @@
 #import "_Socialize.h"
 #import "SocializeProfileViewController.h"
 #import "SocializeBaseViewControllerDelegate.h"
+#import "SocializeLocationManager.h"
 
 @class CommentMapView;
-@class SocializeLocationManager;
 @class SocializeHorizontalContainerView;
 
-@interface SocializeComposeMessageViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate>
+@interface SocializeComposeMessageViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate, SocializeLocationManagerDelegate>
 {
     UITextView* commentTextView;
     UILabel*    locationText; 

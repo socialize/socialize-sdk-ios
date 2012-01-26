@@ -69,6 +69,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [mapOfUserLocation release];
     [locationText release];
     [_entityURL release];
+    [_locationManager setDelegate:nil];
     [_locationManager release];
     [_geoCoderInfo release];
     [_mapContainer release];
@@ -83,7 +84,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 
 - (SocializeLocationManager*)locationManager {
     if (_locationManager == nil) {
-        _locationManager = [[SocializeLocationManager create] retain];
+        _locationManager = [[SocializeLocationManager locationManager] retain];
+        _locationManager.delegate = self;
     }
     
     return _locationManager;
@@ -162,12 +164,6 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 {   
     self.locationManager.shouldShareLocation = enableLocation;
     if (enableLocation) {
-        if (![self.locationManager applicationIsAuthorizedToUseLocationServices])
-        {
-            [self showAlertWithText:@"Please Turn On Location Services in Settings to Allow This Application to Share Your Location." andTitle:nil];
-            return;
-        }
-       
         [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateNormal];
         [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateHighlighted];
         
@@ -209,6 +205,13 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     }
     else
     {
+        if (![self.locationManager applicationIsAuthorizedToUseLocationServices])
+        {
+            [self showAlertWithText:@"Please Turn On Location Services in Settings to Allow This Application to Share Your Location." andTitle:nil];
+            return;
+        }
+        
+
         [self setShareLocation:YES];
         [self setSubviewForLowerContainer:self.mapContainer];
     }
@@ -322,6 +325,14 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     [self updateViewWithNewLocation:userLocation.location];
+}
+
+- (void)locationManager:(SocializeLocationManager *)locationManager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (status == kCLAuthorizationStatusAuthorized) {
+        [self setShareLocation:YES];
+    } else {
+        [self setShareLocation:NO];
+    }
 }
 
 @end

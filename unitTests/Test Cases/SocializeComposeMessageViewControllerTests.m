@@ -57,6 +57,7 @@
     self.composeMessageViewController = (SocializeComposeMessageViewController*)self.viewController;
 
     self.mockLocationManager = [OCMockObject mockForClass:[SocializeLocationManager class]];
+    [[self.mockLocationManager stub] setDelegate:nil];
     self.composeMessageViewController.locationManager = self.mockLocationManager;
     
     self.mockUpperContainer = [OCMockObject niceMockForClass:[UIView class]];
@@ -213,6 +214,11 @@
 - (void)testViewDidLoad {
     [self prepareForViewDidLoad];
     [(id)self.composeMessageViewController viewDidLoad];
+}
+
+- (void)testAllowingLocationUpdatesBar {
+    [[(id)self.composeMessageViewController expect] setShareLocation:YES];
+    [self.composeMessageViewController locationManager:self.mockLocationManager didChangeAuthorizationStatus:kCLAuthorizationStatusAuthorized];
 }
 
 @end

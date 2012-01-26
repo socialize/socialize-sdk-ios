@@ -36,8 +36,10 @@
 
 @synthesize shouldShareLocation = _shareLocation;
 @synthesize currentLocationDescription = _currentLocationDescription;
+@synthesize locationManager = locationManager_;
+@synthesize delegate = delegate_;
 
-+(SocializeLocationManager*)create
++(SocializeLocationManager*)locationManager
 {
     return [[[SocializeLocationManager alloc] init] autorelease];
 }
@@ -48,8 +50,17 @@
     if(self)
     {
         _shareLocation = [self shouldShareLocationOnStart];
+        (void)self.locationManager;
     }
     return self;
+}
+
+- (CLLocationManager*)locationManager {
+    if (locationManager_ == nil) {
+        locationManager_ = [[CLLocationManager alloc] init];
+        locationManager_.delegate = self;
+    }
+    return locationManager_;
 }
 
 -(BOOL)shouldShareLocationOnStart
@@ -78,10 +89,15 @@
     
 }
 
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    [self.delegate locationManager:self didChangeAuthorizationStatus:status];
+}
+
 -(void)dealloc
 {
     [[NSUserDefaults standardUserDefaults]setValue:[NSNumber numberWithBool:_shareLocation] forKey:@"post_comment_share_location"];
     [_currentLocationDescription release];
+    self.locationManager = nil;
     [super dealloc];
 }
 @end
