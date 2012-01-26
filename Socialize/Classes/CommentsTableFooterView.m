@@ -15,7 +15,8 @@
 
 @synthesize searchBarImageView;
 @synthesize addCommentButton;
-
+@synthesize addCommentView = addCommentView_;
+@synthesize subscribedButton = _subscribedButton;
 
 //- (void)adjustTableHeaderHeight:(NSInteger)diff{
 //
@@ -34,11 +35,25 @@
     self.searchBarImageView.image = sbImg;
 }
 
+- (void)hideSubscribedButton {
+    
+    self.subscribedButton.hidden = YES;
+    
+    CGRect frame = self.addCommentView.frame;
+    frame.size.width = self.frame.size.width;
+    frame.origin.x = self.frame.origin.x;
+    frame = CGRectInset(frame, 8, 0);
+    self.addCommentView.frame = frame;
+
+}
+
 - (void)dealloc {
 
-   [searchBarImageView release];
-   [addCommentButton release];
-   [super dealloc];
+    [searchBarImageView release];
+    [addCommentButton release];
+    [addCommentView_ release];
+    [_subscribedButton release];
+    [super dealloc];
 
 }
 @end

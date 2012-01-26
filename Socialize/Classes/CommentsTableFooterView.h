@@ -16,5 +16,9 @@
 
 @property (nonatomic, retain) IBOutlet UIImageView * searchBarImageView;
 @property (nonatomic, retain) IBOutlet UIButton * addCommentButton;
+@property (nonatomic, retain) IBOutlet UIView *addCommentView;
+@property (retain, nonatomic) IBOutlet UIButton	*subscribedButton;
+
+- (void)hideSubscribedButton;
 
 @end

@@ -50,7 +50,6 @@
 @synthesize footerView;
 @synthesize closeButton = _closeButton;
 @synthesize brandingButton = _brandingButton;
-@synthesize subscribedButton = _subscribedButton;
 @synthesize entity = _entity;
 
 @synthesize delegate = delegate_;
@@ -160,8 +159,8 @@
 -(void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
     if ([service isKindOfClass:[SocializeSubscriptionService class]]) {
         BOOL subscribed = [self elementsHaveActiveSubscription:dataArray];
-        self.subscribedButton.enabled = YES;
-        self.subscribedButton.selected = subscribed;
+        self.footerView.subscribedButton.enabled = YES;
+        self.footerView.subscribedButton.selected = subscribed;
     } else if ([service isKindOfClass:[SocializeCommentsService class]]) {
         [self receiveNewContent:dataArray];
         _isLoading = NO;
@@ -195,11 +194,11 @@
 }
 
 - (IBAction)subscribedButtonPressed:(id)sender {
-    if (self.subscribedButton.selected) {
-        self.subscribedButton.selected = NO;
+    if (self.footerView.subscribedButton.selected) {
+        self.footerView.subscribedButton.selected = NO;
         [self.socialize unsubscribeFromCommentsForEntityKey:_entity.key];
     } else {
-        self.subscribedButton.selected = YES;
+        self.footerView.subscribedButton.selected = YES;
         [self.socialize subscribeToCommentsForEntityKey:_entity.key];
     }
     
@@ -207,9 +206,9 @@
         [self.bubbleView removeFromSuperview];
         self.bubbleView = nil;
     }
-    [self.bubbleContentView configureForNotificationsEnabled:self.subscribedButton.selected];
+    [self.bubbleContentView configureForNotificationsEnabled:self.footerView.subscribedButton.selected];
     
-    CGRect buttonRect = [self.subscribedButton convertRect:self.subscribedButton.frame toView:self.view];
+    CGRect buttonRect = [self.footerView.subscribedButton convertRect:self.footerView.subscribedButton.frame toView:self.view];
     [self.bubbleView showFromRect:buttonRect inView:self.view offset:CGPointMake(0, -15) animated:YES];
     [self.bubbleView performSelector:@selector(animateOutAndRemoveFromSuperview) withObject:nil afterDelay:2];
 }
@@ -232,18 +231,12 @@
     self.navigationItem.leftBarButtonItem = self.brandingButton;
     self.navigationItem.rightBarButtonItem = self.closeButton;    
     
-    self.subscribedButton.enabled = NO;
+    self.footerView.subscribedButton.enabled = NO;
     
     if (![self.socialize notificationsAreConfigured]) {
         DebugLog(SOCIALIZE_NOTIFICATIONS_NOT_CONFIGURED_MESSAGE);
-
-        self.subscribedButton.hidden = YES;
         
-        CGRect frame = self.footerView.searchBarImageView.frame;
-        frame.size.width = self.footerView.frame.size.width;
-        frame.origin.x = self.footerView.frame.origin.x;
-        frame = CGRectInset(frame, 8, 0);
-        self.footerView.searchBarImageView.frame = frame;
+        [self.footerView hideSubscribedButton];
     }
 }
 
@@ -262,7 +255,7 @@
 - (void)postCommentViewController:(SocializePostCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
     [self insertContentAtHead:[NSArray arrayWithObject:comment]];
     
-    self.subscribedButton.selected = !postCommentViewController.dontSubscribeToDiscussion;
+    self.footerView.subscribedButton.selected = !postCommentViewController.dontSubscribeToDiscussion;
     
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -408,7 +401,6 @@
     [footerView release];
     [_closeButton release];
     [_brandingButton release];
-    [_subscribedButton release];
     [bubbleContentView_ release];
     [bubbleView_ release];
     

@@ -55,7 +55,6 @@
 @property (retain, nonatomic) IBOutlet UIView		*backgroundView;
 @property (retain, nonatomic) IBOutlet UIView		*roundedContainerView;
 @property (retain, nonatomic) IBOutlet UIImageView	*noCommentsIconView;
-@property (retain, nonatomic) IBOutlet UIButton	*subscribedButton;
 @property (retain, nonatomic) UIBarButtonItem	*closeButton;
 @property (retain, nonatomic) UIBarButtonItem	*brandingButton;
 

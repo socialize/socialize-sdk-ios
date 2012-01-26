@@ -17,6 +17,7 @@
 #import "SocializeActivityDetailsViewController.h"
 #import "SocializeBubbleView.h"
 #import "SocializeNotificationToggleBubbleContentView.h"
+#import "CommentsTableFooterView.h"
 
 @interface SocializeCommentsTableViewController(public)
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender;
@@ -30,6 +31,7 @@
 @synthesize mockSubscribedButton = mockSubscribedButton_;
 @synthesize mockBubbleView = mockBubbleView_;
 @synthesize mockBubbleContentView = mockBubbleContentView_;
+@synthesize mockFooterView = mockFooterView_;
 
 #define TEST_URL @"test_entity_url"
 
@@ -43,8 +45,11 @@
     self.commentsTableViewController = (SocializeCommentsTableViewController*)self.viewController;
     self.mockView = self.mockTableView;
     
+    self.mockFooterView = [OCMockObject mockForClass:[CommentsTableFooterView class]];
+    self.commentsTableViewController.footerView = self.mockFooterView;
+    
     self.mockSubscribedButton = [OCMockObject mockForClass:[UIButton class]];
-    self.commentsTableViewController.subscribedButton = self.mockSubscribedButton;
+    [[[self.mockFooterView stub] andReturn:self.mockSubscribedButton] subscribedButton];
         
     self.mockBubbleView = [OCMockObject mockForClass:[SocializeBubbleView class]];
     self.commentsTableViewController.bubbleView = self.mockBubbleView;
@@ -56,8 +61,11 @@
 -(void)tearDown {
     [super tearDown];
     
+    [self.mockFooterView verify];
     [self.mockSubscribedButton verify];
     self.commentsTableViewController = nil;
+    self.mockFooterView = nil;
+    self.mockSubscribedButton = nil;
 }
 
 -(void)testAfterLoginActionInitializesContentAndGetsSubscriptions {
@@ -114,7 +122,7 @@
 
     // Notifications are disabled
     [[[self.mockSocialize stub] andReturnBool:NO] notificationsAreConfigured];
-    [[self.mockSubscribedButton expect] setHidden:YES];
+    [[self.mockFooterView expect] hideSubscribedButton];
     
     [self.commentsTableViewController viewDidLoad]; 
 }
