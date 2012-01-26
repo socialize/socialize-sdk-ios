@@ -650,6 +650,8 @@
 		AA202538144CA8DC006C1F8F /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11CC1443261E004E4C1B /* SocializeServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA202539144CA8DD006C1F8F /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11CC1443261E004E4C1B /* SocializeServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2044A11470EA40003A875C /* PostCommentViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */; };
+		AA2CDD7D14D103A4003B61BC /* SocializeLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 169BC79F1420CD94007ED41E /* SocializeLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA2CDD7E14D103A5003B61BC /* SocializeLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 169BC79F1420CD94007ED41E /* SocializeLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA318175144A440F008F4D59 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA639F84144A34B600660E26 /* CoreFoundation.framework */; };
 		AA318180144A4473008F4D59 /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D8F1433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib */; };
 		AA318181144A4473008F4D59 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */; };
@@ -4381,6 +4383,7 @@
 				AA0186CC14C61A4A00858AD8 /* SocializeActionBarDelegate.h in Headers */,
 				AAF50D7314CA0ED700585474 /* SocializeBaseViewControllerDelegate.h in Headers */,
 				AAE930D814CA094F007CEB50 /* SocializeHorizontalContainerView.h in Headers */,
+				AA2CDD7E14D103A5003B61BC /* SocializeLocationManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4490,6 +4493,7 @@
 				AA0186CB14C61A4A00858AD8 /* SocializeActionBarDelegate.h in Headers */,
 				AAF50D7214CA0ED700585474 /* SocializeBaseViewControllerDelegate.h in Headers */,
 				AAE930D714CA094F007CEB50 /* SocializeHorizontalContainerView.h in Headers */,
+				AA2CDD7D14D103A4003B61BC /* SocializeLocationManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
