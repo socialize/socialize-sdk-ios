@@ -35,6 +35,7 @@
 @protocol SocializeEntity;
 @protocol SocializeLike;
 @class MFMailComposeViewController;
+@class MFMessageComposeViewController;
 
 /**
  The Socialize Action Bar
@@ -50,6 +51,7 @@
 @property (nonatomic, assign) BOOL ignoreNextView;
 @property (nonatomic, retain) UIActionSheet *shareActionSheet;
 @property (nonatomic, retain) MFMailComposeViewController *shareComposer;
+@property (nonatomic, retain) MFMessageComposeViewController *shareTextMessageComposer;
 @property (nonatomic, assign) BOOL noAutoLayout;
 @property (nonatomic, assign, readonly) BOOL initialized;
 @property (nonatomic, retain) UIAlertView *unconfiguredEmailAlert;

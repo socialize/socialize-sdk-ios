@@ -35,6 +35,7 @@
 #import "SocializeAuthenticateService.h"
 #import "SocializeLikeService.h"
 #import "SocializeEntityService.h"
+#import "MFMessageComposeViewController+BlocksKit.h"
 
 #define TEST_ENTITY_URL @"http://test.com"
 #define TEST_ENTITY_NAME @"TEST_ENTITY_NAME"
@@ -55,8 +56,9 @@
 -(void)launchMailAppOnDevice;
 -(void)displayComposerSheet;
 -(BOOL)canSendMail;
+-(BOOL)canSendText;
 - (void)presentInternalController:(UIViewController*)viewController;
-
+-(void)displaySMSComposerSheet;
 @end
 
 @implementation SocializeActionBarTests
@@ -70,6 +72,7 @@
 @synthesize mockShareComposer = mockShareComposer_;
 @synthesize mockShareActionSheet = mockShareActionSheet_;
 @synthesize mockUnconfiguredEmailAlert = mockUnconfiguredEmailAlert_;
+@synthesize mockShareTextMessageComposer = mockShareTextMessageComposer_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -99,6 +102,9 @@
     
     self.mockUnconfiguredEmailAlert = [OCMockObject mockForClass:[UIAlertView class]];
     self.actionBar.unconfiguredEmailAlert = self.mockUnconfiguredEmailAlert;
+    
+    self.mockShareTextMessageComposer = [OCMockObject mockForClass:[MFMessageComposeViewController class]];
+    self.actionBar.shareTextMessageComposer = self.mockShareTextMessageComposer;
 }
 
 -(void)tearDown
@@ -109,6 +115,7 @@
     [self.mockSocialize verify];
     [self.mockActionView verify];
     [self.mockShareComposer verify];
+    [self.mockShareTextMessageComposer verify];
     
     [[self.mockSocialize stub] setDelegate:nil];
     self.mockParentController = nil;
@@ -118,6 +125,7 @@
     self.mockSocialize = nil;
     self.mockActionView = nil;
     self.mockShareComposer = nil;
+    self.mockShareTextMessageComposer = nil;
 }
 
 - (id)createMockForServiceClass:(Class)serviceClass {
@@ -363,6 +371,24 @@
     [[self.mockParentController expect] presentModalViewController:OCMOCK_ANY animated:YES];
     
     [self.actionBar presentInternalController:nil];
+}
+
+- (void)testDefaultActionSheet {
+    self.actionBar.shareActionSheet = nil;
+    
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
+    [[[(id)self.actionBar stub] andReturnBool:YES] canSendMail];
+    [[[(id)self.actionBar stub] andReturnBool:YES] canSendText];
+    
+    UIActionSheet *actionSheet = self.actionBar.shareActionSheet;
+    
+    GHAssertEquals(actionSheet.numberOfButtons, 4, @"Bad button count");
+}
+
+- (void)testDisplayTextMessageComposer {
+    [[(id)self.actionBar expect] setShareTextMessageComposer:nil];
+    [[(id)self.actionBar expect] presentInternalController:self.mockShareTextMessageComposer];
+    [self.actionBar displaySMSComposerSheet];
 }
 
 @end

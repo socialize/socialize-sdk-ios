@@ -52,7 +52,9 @@
 -(void)displayComposerSheet;
 -(void)askServerForExistingLike;
 -(void)reloadEntity;
-
+- (BOOL)canSendText;
+-(void)displaySMSComposerSheet;
+- (void)shareViaText;
 @end
 
 @implementation SocializeActionBar
@@ -70,6 +72,7 @@
 @synthesize initialized = initialized_;
 @synthesize delegate = delegate_;
 @synthesize unconfiguredEmailAlert = unconfiguredEmailAlert_;
+@synthesize shareTextMessageComposer = shareTextMessageComposer_;
 
 - (void)dealloc
 {
@@ -81,6 +84,7 @@
     self.shareComposer = nil;
     self.commentsNavController = nil;
     self.unconfiguredEmailAlert = nil;
+    self.shareTextMessageComposer = nil;
     
     if (self.isViewLoaded) {
         [(SocializeActionView*)self.view setDelegate: nil];
@@ -231,6 +235,9 @@
 
         [shareActionSheet_ addButtonWithTitle:@"Share via Email" handler:^{ [weakSelf shareViaEmail]; }];
         
+        if ([self canSendText]) {
+            [shareActionSheet_ addButtonWithTitle:@"Share via Text" handler:^{ [weakSelf shareViaText]; }];
+        }
         [shareActionSheet_ setCancelButtonWithTitle:nil handler:^{  }];
     }
     return shareActionSheet_;
@@ -317,20 +324,61 @@
     return shareComposer_;
 }
 
-// Displays an email composition interface inside the application. Populates all the Mail fields. 
--(void)displayComposerSheet 
-{
+- (NSString*)subjectString {
     NSString *subject = self.entity.name;
     if ([subject length] == 0) {
         subject = self.entity.key;
     }
-    [self.shareComposer setSubject:subject];
+
+    return subject;
+}
+
+- (NSString*)messageBodyString {
+    return [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", self.entity.name, self.entity.key];    
+}
+
+// Displays an email composition interface inside the application. Populates all the Mail fields. 
+-(void)displayComposerSheet 
+{
+    [self.shareComposer setSubject:[self subjectString]];
 
     // Fill out the email body text
-    NSString *emailBody = [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", self.entity.name, self.entity.key];
+    NSString *emailBody = [self messageBodyString];
     [self.shareComposer setMessageBody:emailBody isHTML:NO];
 
     [self presentInternalController:self.shareComposer];
+}
+
+- (BOOL)canSendText {
+    return [MFMessageComposeViewController canSendText];
+}
+
+- (MFMessageComposeViewController*)shareTextMessageComposer {
+    if (shareTextMessageComposer_ == nil) {
+        shareTextMessageComposer_ = [[MFMessageComposeViewController alloc] init];
+        [shareTextMessageComposer_ setBody:[self messageBodyString]];
+        shareTextMessageComposer_.completionBlock = ^(MessageComposeResult result) {
+            switch (result) {
+                case MessageComposeResultFailed:
+                    [UIAlertView showAlertWithTitle:@"Error" message:@"There was a problem sending your text message" buttonTitle:@"Ok" handler:nil];
+                    break;
+                default:
+                    break;
+            }
+        };
+    }
+    
+    return shareTextMessageComposer_;
+}
+
+-(void)displaySMSComposerSheet 
+{
+    self.shareTextMessageComposer = nil;
+	[self presentInternalController:self.shareTextMessageComposer];
+}
+
+- (void)shareViaText {
+    [self displaySMSComposerSheet];
 }
 
 - (void)reloadEntity {
