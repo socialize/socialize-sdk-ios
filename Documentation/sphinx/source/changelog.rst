@@ -19,6 +19,13 @@ v1.3
 
 [feature] Facebook wall content urls for app and entity now use indirect getsocialize.com links instead of direct links [ ]
 
+v1.1.9
+------
+[bug] Fix setDelegate warning on _Socialize.h when using ARC [ ]
+
+[bug] Paginated view would hit server on scroll of empty view [ ]
+
+[bug] Dismiss action bar mail composer would increment view count [ ] 
 
 v1.1.8
 ------
