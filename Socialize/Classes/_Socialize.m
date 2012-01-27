@@ -23,6 +23,7 @@
 #import "Facebook+Socialize.h"
 #import "NSTimer+BlocksKit.h"
 #import "SocializeNotificationHandler.h"
+#import "StringHelper.h"
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"
@@ -117,18 +118,22 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 
 +(void)storeSocializeApiKey:(NSString*) key andSecret: (NSString*)secret;
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setValue:key forKey:SOCIALIZE_API_KEY];
-    [defaults setValue:secret forKey:SOCIALIZE_API_SECRET];
-    [defaults synchronize];
+    [self storeConsumerKey:key];
+    [self storeConsumerSecret:secret];
 }
 
 +(void)storeConsumerKey:(NSString*)consumerKey {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    consumerKey = [consumerKey trim];
     [[NSUserDefaults standardUserDefaults] setValue:consumerKey forKey:SOCIALIZE_API_KEY];
+    [defaults synchronize];
 }
 
 +(void)storeConsumerSecret:(NSString*)consumerSecret {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    consumerSecret = [consumerSecret trim];
     [[NSUserDefaults standardUserDefaults] setValue:consumerSecret forKey:SOCIALIZE_API_SECRET];
+    [defaults synchronize];
 }
 
 +(void)storeDeviceToken:(NSString*)deviceToken {
