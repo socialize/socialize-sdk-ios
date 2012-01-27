@@ -66,6 +66,18 @@
     return self;
 }
 
+- (BOOL)isCurrentUserProfile {
+    return (self.socializeActivity.user.objectID == [[self.socialize authenticatedUser] objectID]);
+}
+
+- (void)configureSettingsButton {
+    if ([self isCurrentUserProfile]) {
+        self.navigationItem.rightBarButtonItem = self.settingsButton;
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+}
+
 #pragma mark fetching/setting socialize activity
 -(void)fetchActivityForType:(NSString*)activityType activityID:(NSNumber*)activityID {
     //comments are currently the only type that exist
@@ -80,6 +92,7 @@
             //  All the entity related information can be fetched here ie stats or name.
             self.socializeActivity = (id<SocializeActivity>)object;
             [self loadActivityDetailData];
+            [self configureSettingsButton];
             
             if ([self.delegate respondsToSelector:@selector(activityDetailsViewController:didLoadActivity:)]) {
                 [self.delegate activityDetailsViewController:self didLoadActivity:self.socializeActivity];
@@ -147,9 +160,10 @@
     [super viewDidLoad];
     [self configureDetailsView];
     [self startLoadAnimationForView:self.activityDetailsView];   
-    self.navigationItem.rightBarButtonItem = self.doneButton;
     self.tableView.tableHeaderView = self.activityDetailsView;
-    
+
+    [self configureSettingsButton];
+
     [self configureActivityViewController];
 }
 

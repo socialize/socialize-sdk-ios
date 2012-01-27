@@ -68,7 +68,7 @@
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if (viewController == self.activityDetailsViewController) {
         viewController.title = @"New Comment";
-        viewController.navigationItem.rightBarButtonItem = nil;
+//        viewController.navigationItem.rightBarButtonItem = nil;
         
         NSAssert([self.activityType isEqualToString:@"comment"], @"Socialize Notification is of type new_comments, but activity is not a comment");
         NSAssert(self.activityID != nil, @"Socialize Notification is Missing Comment ID");
