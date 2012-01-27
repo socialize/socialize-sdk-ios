@@ -16,6 +16,7 @@
 -(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 -(void)loadActivityDetailData;
 -(void)updateProfileImage;
+- (void)configureSettingsButton;
 @end
 
 @implementation ActivityDetailsViewControllerTests
@@ -104,6 +105,7 @@
     //make sure that the configuration has been set after a new socialize activity has been passed
     //so that everything gets the right value when being displayed on screen
     [[self.partialActivityDetailsViewController expect] configureDetailsView];
+    [[(id)self.partialActivityDetailsViewController expect] configureSettingsButton];
     
     [self.activityDetailsViewController service:OCMOCK_ANY didFetchElements:activities];
     
@@ -152,10 +154,10 @@
     [[self.partialActivityDetailsViewController expect] loadActivityDetailData];
     [self.activityDetailsViewController viewWillAppear:YES];
 }
+
 -(void)testViewDidLoad {
     [[self.partialActivityDetailsViewController expect] configureDetailsView];
     [[self.partialActivityDetailsViewController expect]  startLoadAnimationForView:self.mockActivityDetailsView];  
-    [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockDoneButton];
     
     // Header should be set to the actual details UIView subclass
     [[self.mockTableView expect] setTableHeaderView:self.mockActivityDetailsView];
@@ -163,6 +165,9 @@
     // Expected configuration for the activity list
     [[self.mockActivityViewController expect] setDontShowNames:YES];
     
+    // Should configure the settings button
+    [[(id)self.partialActivityDetailsViewController expect] configureSettingsButton];
+
     [self.activityDetailsViewController viewDidLoad];
 }
 
