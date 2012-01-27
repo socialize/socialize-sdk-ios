@@ -64,9 +64,9 @@
  @param url The URL for the Entity Key
  @param presentModalInController Modal dialogs and UIActionSheet popups will be presented in this controller and its view
  
- @warning Deprecated. Use actionbarWithKey:presentModalInController: instead
+ @warning Deprecated. Use actionbarWithKey:name:presentModalInController: instead
  */
-+(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
++(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller __attribute__((deprecated));
 
 
 /**
@@ -74,8 +74,19 @@
  
  @param key The Entity Key
  @param presentModalInController Modal dialogs and UIActionSheet popups will be presented in this controller and its view
+ 
+ @warning Deprecated. Use actionBarWithKey:name:presentModalInController:
  */
-+(SocializeActionBar*)actionBarWithKey:(NSString*)key presentModalInController:(UIViewController*)controller;
++(SocializeActionBar*)actionBarWithKey:(NSString*)key presentModalInController:(UIViewController*)controller __attribute__((deprecated));
+
+/**
+ Class helper method to create an Action Bar
+ 
+ @param key The Entity Key
+ @param name The Entity Name
+ @param presentModalInController Modal dialogs and UIActionSheet popups will be presented in this controller and its view
+ */
++(SocializeActionBar*)actionBarWithKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller;
 
 
 /**
@@ -84,7 +95,7 @@
  @param url The URL for the Entity Key
  @param presentModalInController Modal dialogs and UIActionSheet popups will be presented in this controller and its view
  */
--(id)initWithEntityUrl:(NSString*)url presentModalInController:(UIViewController*)controller;
+-(id)initWithEntityUrl:(NSString*)url presentModalInController:(UIViewController*)controller __attribute__((deprecated));
 
 /**
  Action Bar Init
@@ -92,7 +103,9 @@
  @param key The Entity Key
  @param presentModalInController Modal dialogs and UIActionSheet popups will be presented in this controller and its view
  */
--(id)initWithEntityKey:(NSString*)key presentModalInController:(UIViewController*)controller;
+-(id)initWithEntityKey:(NSString*)key presentModalInController:(UIViewController*)controller __attribute__((deprecated));
+
+-(id)initWithEntityKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller;
 
 /**
  Action Bar Init
