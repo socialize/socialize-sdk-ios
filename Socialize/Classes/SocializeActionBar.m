@@ -96,19 +96,28 @@
 
 +(SocializeActionBar*)actionBarWithKey:(NSString*)url presentModalInController:(UIViewController*)controller
 {
-    SocializeActionBar* bar = [[[SocializeActionBar alloc] initWithEntityUrl:url presentModalInController:controller] autorelease];
-    return bar;
+    return [self actionBarWithKey:url name:nil presentModalInController:controller];
 }
 
 +(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller {
     return [self actionBarWithKey:url presentModalInController:controller];
 }
 
--(id)initWithEntityKey:(NSString*)key presentModalInController:(UIViewController*)controller
-{
++(SocializeActionBar*)actionBarWithKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller {
+    SocializeActionBar* bar = [[[SocializeActionBar alloc] initWithEntityKey:key name:name presentModalInController:controller] autorelease];
+    return bar;
+}
+
+-(id)initWithEntityKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller {
     id<SocializeEntity> newEntity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
     [newEntity setKey:key];
+    [newEntity setName:name];
     return [self initWithEntity:newEntity presentModalInController:controller];
+}
+
+-(id)initWithEntityKey:(NSString*)key presentModalInController:(UIViewController*)controller
+{
+    return [self initWithEntityKey:key name:nil presentModalInController:controller];
 }
 
 -(id)initWithEntityUrl:(NSString*)url presentModalInController:(UIViewController*)controller {
