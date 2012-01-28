@@ -1173,6 +1173,22 @@
 		AA7FB8EC1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */; };
 		AA7FB8ED1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */; };
 		AA7FB8EE1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */; };
+		AA839A9F14D3764F00103ECE /* SocializeRichPushNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA839A9D14D3764F00103ECE /* SocializeRichPushNotificationDisplayController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA839AA014D3764F00103ECE /* SocializeRichPushNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA839A9D14D3764F00103ECE /* SocializeRichPushNotificationDisplayController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA839AA114D3764F00103ECE /* SocializeRichPushNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839A9E14D3764F00103ECE /* SocializeRichPushNotificationDisplayController.m */; };
+		AA839AA214D3764F00103ECE /* SocializeRichPushNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839A9E14D3764F00103ECE /* SocializeRichPushNotificationDisplayController.m */; };
+		AA839AA614D3772800103ECE /* SocializeRichPushNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA839AA314D3772800103ECE /* SocializeRichPushNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA839AA714D3772800103ECE /* SocializeRichPushNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA839AA314D3772800103ECE /* SocializeRichPushNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA839AA814D3772800103ECE /* SocializeRichPushNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839AA414D3772800103ECE /* SocializeRichPushNotificationViewController.m */; };
+		AA839AA914D3772800103ECE /* SocializeRichPushNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839AA414D3772800103ECE /* SocializeRichPushNotificationViewController.m */; };
+		AA839AAA14D3772800103ECE /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA839AA514D3772800103ECE /* SocializeRichPushNotificationViewController.xib */; };
+		AA839AAB14D3772800103ECE /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA839AA514D3772800103ECE /* SocializeRichPushNotificationViewController.xib */; };
+		AA839AAC14D381C300103ECE /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA839AA514D3772800103ECE /* SocializeRichPushNotificationViewController.xib */; };
+		AA839AAD14D381C400103ECE /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA839AA514D3772800103ECE /* SocializeRichPushNotificationViewController.xib */; };
+		AA839AAE14D381C500103ECE /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA839AA514D3772800103ECE /* SocializeRichPushNotificationViewController.xib */; };
+		AA839AAF14D381C600103ECE /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA839AA514D3772800103ECE /* SocializeRichPushNotificationViewController.xib */; };
+		AA839AB014D381C700103ECE /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA839AA514D3772800103ECE /* SocializeRichPushNotificationViewController.xib */; };
+		AA839AB314D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839AB214D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m */; };
 		AA86389D144CA45E00CFA759 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA863899144CA42C00CFA759 /* libOCMock.a */; };
 		AA87C5DC146C7E8C00B22EF4 /* SocializePostCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA87C5D9146C7E8C00B22EF4 /* SocializePostCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA87C5DD146C7E8C00B22EF4 /* SocializePostCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA87C5D9146C7E8C00B22EF4 /* SocializePostCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2526,6 +2542,13 @@
 		AA7FB8981491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-subcribe-notification-icon@2x.png"; path = "Resources/socialize-iphone-subcribe-notification-icon@2x.png"; sourceTree = "<group>"; };
 		AA7FB8DF1491460B00B018DE /* socialize-notifications-bottom-shadow-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-notifications-bottom-shadow-background.png"; path = "Resources/socialize-notifications-bottom-shadow-background.png"; sourceTree = "<group>"; };
 		AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-notifications-bottom-shadow-background@2x.png"; path = "Resources/socialize-notifications-bottom-shadow-background@2x.png"; sourceTree = "<group>"; };
+		AA839A9D14D3764F00103ECE /* SocializeRichPushNotificationDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRichPushNotificationDisplayController.h; path = Classes/SocializeRichPushNotificationDisplayController.h; sourceTree = "<group>"; };
+		AA839A9E14D3764F00103ECE /* SocializeRichPushNotificationDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRichPushNotificationDisplayController.m; path = Classes/SocializeRichPushNotificationDisplayController.m; sourceTree = "<group>"; };
+		AA839AA314D3772800103ECE /* SocializeRichPushNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRichPushNotificationViewController.h; path = Classes/SocializeRichPushNotificationViewController.h; sourceTree = "<group>"; };
+		AA839AA414D3772800103ECE /* SocializeRichPushNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRichPushNotificationViewController.m; path = Classes/SocializeRichPushNotificationViewController.m; sourceTree = "<group>"; };
+		AA839AA514D3772800103ECE /* SocializeRichPushNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeRichPushNotificationViewController.xib; path = Classes/SocializeRichPushNotificationViewController.xib; sourceTree = "<group>"; };
+		AA839AB114D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeRichPushNotificationViewControllerTests.h; sourceTree = "<group>"; };
+		AA839AB214D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeRichPushNotificationViewControllerTests.m; sourceTree = "<group>"; };
 		AA863889144CA42C00CFA759 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = Frameworks/OCMock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		AA87C5D9146C7E8C00B22EF4 /* SocializePostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePostCommentViewController.h; path = Classes/SocializePostCommentViewController.h; sourceTree = "<group>"; };
 		AA87C5DA146C7E8C00B22EF4 /* SocializePostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializePostCommentViewController.m; path = Classes/SocializePostCommentViewController.m; sourceTree = "<group>"; };
@@ -3663,6 +3686,11 @@
 				AA6FBAC014BCAC0C00D8646C /* SocializeNotificationDisplayController.m */,
 				AA0069BC14BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.h */,
 				AA0069BD14BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.m */,
+				AA839A9D14D3764F00103ECE /* SocializeRichPushNotificationDisplayController.h */,
+				AA839A9E14D3764F00103ECE /* SocializeRichPushNotificationDisplayController.m */,
+				AA839AA314D3772800103ECE /* SocializeRichPushNotificationViewController.h */,
+				AA839AA414D3772800103ECE /* SocializeRichPushNotificationViewController.m */,
+				AA839AA514D3772800103ECE /* SocializeRichPushNotificationViewController.xib */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -3906,6 +3934,8 @@
 				AA047F9E14AD63900047D596 /* SocializeNotificationHandlerTests.m */,
 				AA6FBAC614BCB6D900D8646C /* SocializeNewCommentsNotificationDisplayControllerTests.h */,
 				AA6FBAC714BCB6D900D8646C /* SocializeNewCommentsNotificationDisplayControllerTests.m */,
+				AA839AB114D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.h */,
+				AA839AB214D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -4389,6 +4419,8 @@
 				AAE930D814CA094F007CEB50 /* SocializeHorizontalContainerView.h in Headers */,
 				AA2CDD7E14D103A5003B61BC /* SocializeLocationManager.h in Headers */,
 				AA68733D14D1E56300970F77 /* SocializeVersion.h in Headers */,
+				AA839AA014D3764F00103ECE /* SocializeRichPushNotificationDisplayController.h in Headers */,
+				AA839AA714D3772800103ECE /* SocializeRichPushNotificationViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4500,6 +4532,8 @@
 				AAE930D714CA094F007CEB50 /* SocializeHorizontalContainerView.h in Headers */,
 				AA2CDD7D14D103A4003B61BC /* SocializeLocationManager.h in Headers */,
 				AA68733C14D1E56300970F77 /* SocializeVersion.h in Headers */,
+				AA839A9F14D3764F00103ECE /* SocializeRichPushNotificationDisplayController.h in Headers */,
+				AA839AA614D3772800103ECE /* SocializeRichPushNotificationViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4905,6 +4939,7 @@
 				AAF50D6C14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 				AAAF7F3314CA208900EA387C /* SocializePostCommentViewController.xib in Resources */,
 				AAAF7F3A14CA208900EA387C /* SocializePostShareViewController.xib in Resources */,
+				AA839AAC14D381C300103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5086,6 +5121,7 @@
 				AAF50D6A14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 				AAAF7F3114CA208900EA387C /* SocializePostCommentViewController.xib in Resources */,
 				AAAF7F3814CA208900EA387C /* SocializePostShareViewController.xib in Resources */,
+				AA839AAA14D3772800103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5263,6 +5299,7 @@
 				AAF50D6E14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 				AAAF7F3514CA208900EA387C /* SocializePostCommentViewController.xib in Resources */,
 				AAAF7F3C14CA208900EA387C /* SocializePostShareViewController.xib in Resources */,
+				AA839AAE14D381C500103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5460,6 +5497,7 @@
 				AAF50D6F14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 				AAAF7F3614CA208900EA387C /* SocializePostCommentViewController.xib in Resources */,
 				AAAF7F3D14CA208900EA387C /* SocializePostShareViewController.xib in Resources */,
+				AA839AAF14D381C600103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5529,6 +5567,7 @@
 				AAF50D7014CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 				AAAF7F3714CA208900EA387C /* SocializePostCommentViewController.xib in Resources */,
 				AAAF7F3E14CA208900EA387C /* SocializePostShareViewController.xib in Resources */,
+				AA839AB014D381C700103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5728,6 +5767,7 @@
 				AAF50D6D14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 				AAAF7F3414CA208900EA387C /* SocializePostCommentViewController.xib in Resources */,
 				AAAF7F3B14CA208900EA387C /* SocializePostShareViewController.xib in Resources */,
+				AA839AAD14D381C400103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5907,6 +5947,7 @@
 				AAF50D6B14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 				AAAF7F3214CA208900EA387C /* SocializePostCommentViewController.xib in Resources */,
 				AAAF7F3914CA208900EA387C /* SocializePostShareViewController.xib in Resources */,
+				AA839AAB14D3772800103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6287,6 +6328,8 @@
 				AADE200B14BE682700E59945 /* SocializeBubbleView.m in Sources */,
 				AAB427FA14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */,
 				AAE930D914CA094F007CEB50 /* SocializeHorizontalContainerView.m in Sources */,
+				AA839AA114D3764F00103ECE /* SocializeRichPushNotificationDisplayController.m in Sources */,
+				AA839AA814D3772800103ECE /* SocializeRichPushNotificationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6362,6 +6405,7 @@
 				AA047D7914BFC1F2005560C3 /* SocializeBubbleViewTests.m in Sources */,
 				AA047D8014C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m in Sources */,
 				AAAF7F4114CA2D5800EA387C /* SocializeHorizontalLayoutTests.m in Sources */,
+				AA839AB314D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6621,6 +6665,8 @@
 				AAB427FB14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */,
 				AAE930DA14CA094F007CEB50 /* SocializeHorizontalContainerView.m in Sources */,
 				AAEFDE3214CDFD8900764633 /* UIView+Layout.m in Sources */,
+				AA839AA214D3764F00103ECE /* SocializeRichPushNotificationDisplayController.m in Sources */,
+				AA839AA914D3772800103ECE /* SocializeRichPushNotificationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

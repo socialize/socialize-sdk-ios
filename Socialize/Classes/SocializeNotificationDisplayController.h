@@ -12,9 +12,10 @@
 
 @interface SocializeNotificationDisplayController : NSObject
 
+- (id)initWithUserInfo:(NSDictionary*)userInfo;
+
+@property (nonatomic, retain) NSDictionary *userInfo;
 @property (nonatomic, assign) id <SocializeNotificationDisplayControllerDelegate> delegate;
-@property (nonatomic, copy) NSString *activityType;
-@property (nonatomic, copy) NSNumber *activityID;
 @property (nonatomic, readonly) UIViewController *mainViewController;
 
 @end

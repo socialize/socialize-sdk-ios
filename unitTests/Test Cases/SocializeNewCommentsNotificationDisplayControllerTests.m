@@ -24,8 +24,14 @@
 
 - (void)setUp {
     self.commentsNotificationDisplayController = [[[SocializeNewCommentsNotificationDisplayController alloc] init] autorelease];
-    self.commentsNotificationDisplayController.activityID = [NSNumber numberWithInteger:1234];
-    self.commentsNotificationDisplayController.activityType = [NSString stringWithFormat:@"comment"];
+    
+    NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSNumber numberWithInteger:1234], @"activity_id",
+                                   @"comment", @"activity_type",
+                                   @"new_comments", @"notification_type",
+                                   nil];
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+    self.commentsNotificationDisplayController.userInfo = userInfo;
                                                                
     // Stub Activity details
     self.mockActivityDetailsViewController = [OCMockObject mockForClass:[SocializeActivityDetailsViewController class]];

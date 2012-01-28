@@ -10,9 +10,9 @@
 #import "SocializeActivityDetailsViewController.h"
 
 @interface SocializeNotificationHandler ()
-- (SocializeNewCommentsNotificationDisplayController*)createNewCommentsDisplayControllerForActivityType:(NSString*)activityType activityID:(NSNumber*)activityID;
 - (void)animatedDismissOfTopDisplayController;
 - (void)removeDisplayController:(SocializeNotificationDisplayController*)displayController;
+- (void)addDisplayController:(SocializeNotificationDisplayController*)displayController;
 @end
 
 @implementation SocializeNotificationHandlerTests
@@ -67,30 +67,12 @@
 - (void)testUnknownNotificationTypeDoesNotCrash {
 }
 
-- (void)testCreateNewCommentsDisplayController {
-    NSString *commentType = @"comment";
-    NSNumber *commentID = [NSNumber numberWithInteger:1234];
-    
-    SocializeNewCommentsNotificationDisplayController *controller = [self.notificationHandler createNewCommentsDisplayControllerForActivityType:commentType activityID:commentID];
-    GHAssertEqualObjects(controller.activityType, commentType, @"Bad type");
-    GHAssertEqualObjects(controller.activityID, commentID, @"Bad id");
-    GHAssertEqualObjects(controller.delegate, self.origNotificationHandler, @"Bad delegate");
-}
-
-- (void)testHandleNewCommentsSocializeNotification {
-    
-    NSNumber *testID = [NSNumber numberWithInteger:304899];
-    NSString *commentType = @"comment";
-    NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   testID, @"activity_id",
-                                   commentType, @"activity_type",
-                                   @"new_comments", @"notification_type",
-                                   nil];
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
-
+- (void)testAddDisplayController {
     // Mock display controller
     id mockNotificationDisplayController = [OCMockObject mockForClass:[SocializeNotificationDisplayController class]];
-    [[[(id)self.notificationHandler stub] andReturn:mockNotificationDisplayController] createNewCommentsDisplayControllerForActivityType:commentType activityID:testID];
+    [[mockNotificationDisplayController stub] setDelegate:nil];
+    
+    [[mockNotificationDisplayController expect] setDelegate:self.origNotificationHandler];
     
     // Has a top controller
     id mockMainViewController = [OCMockObject mockForClass:[UIViewController class]];
@@ -110,10 +92,7 @@
     // And it should become a subview of the display window
     [[self.mockDisplayWindow expect] addSubview:mockView];
     
-    // Simulate coming from background
-    [[[(id)self.notificationHandler stub] andReturnBool:NO] applicationInForeground];
-    
-    [self.notificationHandler handleSocializeNotification:userInfo];
+    [self.notificationHandler addDisplayController:mockNotificationDisplayController];
     
     [mockNotificationDisplayController verify];
     [mockMainViewController verify];
@@ -121,6 +100,47 @@
     
     NSArray *expectedArray = [NSArray arrayWithObject:mockNotificationDisplayController];
     GHAssertEqualObjects(self.notificationHandler.displayControllers, expectedArray, @"Incorrect list of controllers");
+}
+
+- (void)testHandleNewCommentsSocializeNotification {
+    
+    NSNumber *testID = [NSNumber numberWithInteger:304899];
+    NSString *commentType = @"comment";
+    NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   testID, @"activity_id",
+                                   commentType, @"activity_type",
+                                   @"new_comments", @"notification_type",
+                                   nil];
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+
+    
+    // Simulate coming from background
+    [[[(id)self.notificationHandler stub] andReturnBool:NO] applicationInForeground];
+    
+    // Expect add new comments controller
+    [[(id)self.notificationHandler expect] addDisplayController:[OCMArg checkWithBlock:^BOOL(id controller) {
+        return [controller isKindOfClass:[SocializeNewCommentsNotificationDisplayController class]];
+    }]];
+     
+    [self.notificationHandler handleSocializeNotification:userInfo];
+    
+}
+
+- (void)testHandleRichPushSocializeNotification {
+    
+    NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   @"test title", @"title",
+                                   @"rich_push", @"notification_type",
+                                   nil];
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+    
+    
+    // Expect add new comments controller
+    [[(id)self.notificationHandler expect] addDisplayController:[OCMArg checkWithBlock:^BOOL(id controller) {
+        return [controller isKindOfClass:[SocializeRichPushNotificationDisplayController class]];
+    }]];
+    
+    [self.notificationHandler handleSocializeNotification:userInfo];
 }
 
 - (void)testThatDisplayControllerFinishTriggersAnimation {
@@ -132,6 +152,10 @@
     
     // Stub in a single display controller
     id mockNotificationDisplayController = [OCMockObject mockForClass:[SocializeNotificationDisplayController class]];
+    
+    // Should stop being delegate
+    [[mockNotificationDisplayController expect] setDelegate:nil];
+    
     self.notificationHandler.displayControllers = [NSMutableArray arrayWithObject:mockNotificationDisplayController];
     
     // Which has a top controller

@@ -10,15 +10,20 @@
 
 @implementation SocializeNotificationDisplayController
 @synthesize delegate = delegate_;
-@synthesize activityType = activityType_;
-@synthesize activityID = activityID_;
 @synthesize mainViewController = topViewController_;
+@synthesize userInfo = userInfo_;
 
 - (void)dealloc {
-    self.activityType = nil;
-    self.activityID = nil;
-
+    self.userInfo = nil;
     [super dealloc];
+}
+
+- (id)initWithUserInfo:(NSDictionary *)userInfo {
+    if (self = [super init]) {
+        self.userInfo = userInfo;
+    }
+    
+    return self;
 }
 
 - (UIViewController*)mainViewController {

@@ -68,12 +68,15 @@
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if (viewController == self.activityDetailsViewController) {
         viewController.title = @"New Comment";
-//        viewController.navigationItem.rightBarButtonItem = nil;
         
-        NSAssert([self.activityType isEqualToString:@"comment"], @"Socialize Notification is of type new_comments, but activity is not a comment");
-        NSAssert(self.activityID != nil, @"Socialize Notification is Missing Comment ID");
+        NSDictionary *socializeDictionary = [self.userInfo objectForKey:@"socialize"];
+        NSNumber *activityID = [socializeDictionary objectForKey:@"activity_id"];
+        NSString *activityType = [socializeDictionary objectForKey:@"activity_type"];
+
+        NSAssert([activityType isEqualToString:@"comment"], @"Socialize Notification is of type new_comments, but activity is not a comment");
+        NSAssert(activityID != nil, @"Socialize Notification is Missing Comment ID");
         
-        [self.activityDetailsViewController fetchActivityForType:self.activityType activityID:self.activityID];
+        [self.activityDetailsViewController fetchActivityForType:activityType activityID:activityID];
     } else if (viewController == self.commentsTableViewController) {
         
         if ([self.commentsTableViewController.entity.key length] == 0) {

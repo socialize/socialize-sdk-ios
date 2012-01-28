@@ -51,6 +51,7 @@
                       @"Test Post a Share",
                       @"Test Edit User Profile",
                       @"Test New Comments Notification",
+                      @"Test Rich Push Notification",
                       nil
                       ]retain];
 
@@ -290,7 +291,21 @@
             }
             break;
         }
-
+        case 16:
+        {
+            NSString *testURL = [self getValueWithPrompt:@"Enter a URL" defaultValue:@"http://www.npr.org/"];
+            if ([testURL length] > 0) {
+                NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                               testURL, @"url",
+                                               @"rich_push", @"notification_type",
+                                               nil];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+                
+                [Socialize handleNotification:userInfo];
+            }
+            break;
+        }
+            
 
     }    
     [controller release];
