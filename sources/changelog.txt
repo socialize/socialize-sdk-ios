@@ -4,6 +4,29 @@
 Changelog
 =============================================
 
+v1.3.1
+------
+
+[bug] Changing app's location authorized status should immediately update UI controls [ ]
+
+[feature] add debug level warning that facebook isn't configured. [ ]
+
+[bug] "no comments to show" message should hide after first comment [ ]
+
+[bug] "Add Comment" at bottom of comments list not justified when notifications button hidden [ ]
+
+[bug] storeSocializeApiKey:andSecret: needs to be deprecated/renamed [ ]
+
+[feature] add SMS to Sharing [ ]
+
+[feature] Allow specifying entity name when creating action bar [ ]
+
+[feature] Allow navigation to settings from activity detail [ ]
+
+[feature] add description of an "entity key" in documentation - get this from the android doco [ ]
+
+[bug] make sure to strip blank space from key/secret before sending it to server [ ]
+
 v1.3
 ----
 
@@ -19,6 +42,13 @@ v1.3
 
 [feature] Facebook wall content urls for app and entity now use indirect getsocialize.com links instead of direct links [ ]
 
+v1.1.9
+------
+[bug] Fix setDelegate warning on _Socialize.h when using ARC [ ]
+
+[bug] Paginated view would hit server on scroll of empty view [ ]
+
+[bug] Dismiss action bar mail composer would increment view count [ ] 
 
 v1.1.8
 ------

@@ -146,18 +146,32 @@ Testing SmartAlerts™
 
 In order to test that SmartAlerts™ are working correctly you'll want to first to get your app compiled and installed on a physical device and working 
 on the simulator as well.  
-    * Open apps on both the simulator and the physical device.
-    * From the physical device leave a comment on an entity.  Make sure you to subscribe to entity when you leave a comment.  You should now be subscribed
-      to the entity and will receive notifications when someone else leaves a comment.
-    * On the simulator add a comment to the same the entity from which you did on the physical device.
-    * Notifications are sent out asynchronously in a queue.  It may take 2-3 minutes to receive your notification.
+
+#. Open apps on both the simulator and the physical device.
+#. From the physical device leave a comment on an entity.  Make sure you to subscribe to entity when you leave a comment.  You should now be subscribed to the entity and will receive notifications when someone else leaves a comment.
+#. On the simulator add a comment to the same the entity from which you did on the physical device.
+#. Notifications are sent out asynchronously in a queue.  It may take 2-3 minutes to receive your notification.
+
+.. image:: images/subscribe_button.png
+
+.. note:: The subscribe button will only show on an actual device. If you do not see the button on the device, please refer to the Troubleshooting section below.
 
 Troubleshooting Notifications
 ----------------------------------------
 
-If you don't see the notifications alert box there are some simple ways to troubleshoot problems.  We also have a vibrant developer community and support 
+If you are not receiving notifications, there are some simple ways to troubleshoot problems.  We also have a vibrant developer community and support 
 here: http://support.getsocialize.com support who can help Additionally here some common errors you might encounter
 
+
+I Don't See the Notifications Button
+------------------------------------
+
+The notifications button will only appear if a valid push token has been
+registered with Socialize using [Socialize registerDeviceToken:]. This means
+the buttons will never show on the iOS simulator.
+
+If you do not see the buttons on the actual device, you might try making sure there
+are no errors with registration process, as described in the next section.
 
 Logging Errors from Notifications Registrations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
