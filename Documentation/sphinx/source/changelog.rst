@@ -4,6 +4,29 @@
 Changelog
 =============================================
 
+v1.3.1
+------
+
+[bug] Changing app's location authorized status should immediately update UI controls [ ]
+
+[feature] add debug level warning that facebook isn't configured. [ ]
+
+[bug] "no comments to show" message should hide after first comment [ ]
+
+[bug] "Add Comment" at bottom of comments list not justified when notifications button hidden [ ]
+
+[bug] storeSocializeApiKey:andSecret: needs to be deprecated/renamed [ ]
+
+[feature] add SMS to Sharing [ ]
+
+[feature] Allow specifying entity name when creating action bar [ ]
+
+[feature] Allow navigation to settings from activity detail [ ]
+
+[feature] add description of an "entity key" in documentation - get this from the android doco [ ]
+
+[bug] make sure to strip blank space from key/secret before sending it to server [ ]
+
 v1.3
 ----
 
