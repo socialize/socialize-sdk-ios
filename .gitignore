@@ -17,6 +17,7 @@ Socialize-iOS.embeddedframework
 *.xcuserdatad
 SampleSdkApp/testrunner/Automation Results.plist
 SampleSdkApp/testrunner/sampleApp_instruments.trace
+Socialize/Classes/SocializeVersion.h
 tags
 *.pyc
 *.swo
