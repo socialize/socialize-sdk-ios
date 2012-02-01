@@ -88,6 +88,16 @@ To create an entity, simply invoke the **createEntity** message:
 
     <script src="https://gist.github.com/1473477.js?file=CreateEntity.m"></script>
 
+Entity Meta Data, and Other Advanced Functionality
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Should you find that you need to store custom metadata on an entity, Socialize
+will provide for this. Full customization of entity objects can be realized
+through use of the createEntity: variant for creating your entity.
+
+.. raw:: html
+
+    <script src="https://gist.github.com/1719630.js?file=createEntity.m"></script>
 
 Retrieving Entity data
 ~~~~~~~~~~~~~~~~~~~~~~
