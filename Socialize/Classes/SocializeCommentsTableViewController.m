@@ -87,7 +87,7 @@
     return self;
 }
 
-- (void)afterLoginAction {
+- (void)afterLoginAction:(BOOL)userChanged {
     [self initializeContent];
     [self getSubscriptionStatus];
 }

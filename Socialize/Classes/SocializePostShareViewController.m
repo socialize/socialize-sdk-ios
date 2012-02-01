@@ -43,7 +43,7 @@
     return NO;
 }
 
-- (void)afterLoginAction {
+- (void)afterLoginAction:(BOOL)userChanged {
     // The compose message base is auto disabling this after animation stops
     [self textViewDidChange:self.commentTextView];
 }

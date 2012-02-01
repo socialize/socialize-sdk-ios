@@ -280,7 +280,7 @@
     [[self.mockSocialize expect] getLikesForEntityKey:TEST_ENTITY_URL first:nil last:nil];
     GHAssertFalse(self.actionBar.initialized, @"Should not be initialized");
     [[self.mockActionView expect] hideButtons];
-    [self.actionBar afterLoginAction];
+    [self.actionBar afterLoginAction:YES];
 }
 
 - (void)testFailingLikeServiceUnlocksButtonsAndZerosCountsAndShowsError {

@@ -63,7 +63,7 @@
 -(void) startLoadAnimationForView: (UIView*) view;
 -(void) stopLoadAnimation;
 -(void)performAutoAuth;
--(void) afterLoginAction;
+-(void) afterLoginAction:(BOOL)userChanged;
 -(BOOL)shouldAutoAuthOnAppear;
 - (UIView*)showLoadingInView;
 - (void)authenticateWithFacebook;

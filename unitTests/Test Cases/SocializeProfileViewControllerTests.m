@@ -116,7 +116,7 @@
     [[(id)self.profileViewController expect] startLoading];
     [[self.mockSocialize expect] getCurrentUser];
     
-    [self.profileViewController afterLoginAction];
+    [self.profileViewController afterLoginAction:YES];
 }
 
 - (void)testAfterLoginWithPartialUser {
@@ -128,7 +128,7 @@
     
     [[(id)self.profileViewController expect] startLoading];
     [[self.mockSocialize expect] getUserWithId:userID];
-    [self.profileViewController afterLoginAction];
+    [self.profileViewController afterLoginAction:YES];
 }
 
 - (void)testAfterLoginWithFullUser {
@@ -138,7 +138,7 @@
     self.profileViewController.fullUser = mockFullUser;
 
     [[(id)self.profileViewController expect] configureViews];
-    [self.profileViewController afterLoginAction];
+    [self.profileViewController afterLoginAction:YES];
 }
 
 - (void)testViewDidUnload {
