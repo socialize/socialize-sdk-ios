@@ -50,6 +50,7 @@ NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAut
 @synthesize subscriptionService = _subscriptionService;
 static Socialize *_sharedSocialize = nil;
 static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
+static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 
 + (void)initialize {
     if (self == [Socialize class]) {
@@ -115,6 +116,15 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 
 +(SocializeEntityLoaderBlock)entityLoaderBlock {
     return _sharedEntityLoaderBlock;
+}
+
++ (void)setCanLoadEntityBlock:(SocializeCanLoadEntityBlock)canLoadEntityBlock {
+    SocializeCanLoadEntityBlock copied = [[canLoadEntityBlock copy] autorelease];
+    NonatomicRetainedSetToFrom(_sharedCanLoadEntityBlock, copied);
+}
+
++(SocializeCanLoadEntityBlock)canLoadEntityBlock {
+    return _sharedCanLoadEntityBlock;
 }
 
 +(void)storeSocializeApiKey:(NSString*) key andSecret: (NSString*)secret;

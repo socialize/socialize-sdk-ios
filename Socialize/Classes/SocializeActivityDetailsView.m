@@ -33,6 +33,7 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 @synthesize recentActivityHeaderImage;
 @synthesize activityMessage;
 @synthesize activityDate;
+@synthesize activity = activity_;
 @synthesize username;
 @synthesize recentActivityLabel;
 @synthesize dateFormatter;
@@ -40,7 +41,6 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 @synthesize showEntityView = showEntityView_;
 @synthesize showEntityButton = showEntityButton_;
 @synthesize delegate = delegate_;
-
 #pragma mark init/dealloc methods
 - (void)dealloc
 {
@@ -52,6 +52,7 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     [recentActivityHeaderImage release];
     [activityMessage release];
     [activityDate release]; 
+    [activity_ release];
     [username release]; 
     [recentActivityLabel release];
     [dateFormatter release]; 
@@ -136,6 +137,16 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     [self updateActivityMessageView];
 }
 
+- (void)setActivity:(id<SocializeActivity>)activity {
+    NonatomicRetainedSetToFrom(activity_, activity);
+    NSAssert([activity conformsToProtocol:@protocol(SocializeComment)], @"Only comments are supported");
+    id<SocializeComment> comment = (id<SocializeComment>)activity;
+    NSString *activityText = comment.text;
+    [self updateActivityMessage:activityText 
+                                   withActivityDate:comment.date];
+
+}
+
 -(NSDateFormatter *) dateFormatter {
     if( dateFormatter == nil ) {
         dateFormatter =  [[NSDateFormatter alloc] init];
@@ -177,7 +188,11 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     messageFrame.size.height = messageHeight;
     activityMessageView.frame = messageFrame;
 
-    if ([Socialize entityLoaderBlock] != nil) {
+    BOOL haveEntityLoader = [Socialize entityLoaderBlock] != nil;
+    BOOL entityLoadRejected = [Socialize canLoadEntityBlock] != nil && ![Socialize canLoadEntityBlock](self.activity.entity);
+    BOOL canLoadEntity = haveEntityLoader && !entityLoadRejected;
+
+    if (canLoadEntity) {
         // Show entity is below the variable-height activity message view
         [self addSubview:self.showEntityView];
         [self.showEntityView positionBelowView:self.activityMessageView];

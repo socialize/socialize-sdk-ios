@@ -48,6 +48,7 @@
 extern NSString *const kSocializeDisableBrandingKey;
 
 typedef void(^SocializeEntityLoaderBlock)(UINavigationController *navigationController, id<SocializeEntity>entity);
+typedef BOOL(^SocializeCanLoadEntityBlock)(id<SocializeEntity>entity);
 
 /**
 This is a general facade of the   SDK`s API. Through it a third party developers could use the API.
@@ -129,6 +130,24 @@ otherwise you will get a failure.
  @param entityLoaderBlock This block will be called when Socialize wishes to load an entity
  */
 +(void)setEntityLoaderBlock:(SocializeEntityLoaderBlock)entityLoaderBlock;
+
+/**
+ Provide access to the "don't load entity" block
+ 
+ typedef BOOL(^SocializeCanLoadEntityBlock)(id<SocializeEntity>entity);
+ */
++(SocializeCanLoadEntityBlock)canLoadEntityBlock;
+
+/**
+ Set "don't load entity block"
+ 
+ typedef BOOL(^SocializeEntityUnavailableBlock)(id<SocializeEntity>entity);
+ 
+ You only need to implement this if you wish to selectively disable loading of certain entities from Socialize in your app
+ 
+ @param entityUnavailableBlock Block which should return YES if Socialize should not try to display the given entity in your app, NO otherwise
+ */
++(void)setCanLoadEntityBlock:(SocializeCanLoadEntityBlock)canLoadEntityBlock;
 
 /**
  Save API information to the user defaults.

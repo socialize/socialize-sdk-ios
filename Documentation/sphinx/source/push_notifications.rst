@@ -139,7 +139,14 @@ Copy the lines below to add an entity loader
 
 .. image:: images/entity_loader.png
 
-.. note:: When building your application, keep in mind that notifications may be received on devices that do not yet have the entity available.  
+For some applications, it might happen that an entities are not always
+available. Socialize provides the ability to selectively disable loading for a
+given entity. Should you find you need this, you can do this by defining a "Can
+Load Entity" block, as follows
+
+.. raw:: html
+
+    <script src="https://gist.github.com/1667068.js?file=canLoadEntity.m"></script>
 
 Testing SmartAlerts™ 
 -----------------------------------------------------------------------------------

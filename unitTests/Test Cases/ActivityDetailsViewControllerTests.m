@@ -217,7 +217,7 @@
     [[self.mockActivityViewController expect] initializeContent];
     
     // Should update the actual details view with comment info
-    [[self.mockActivityDetailsView expect] updateActivityMessage:testString withActivityDate:testDate];
+    [[self.mockActivityDetailsView expect] setActivity:self.mockSocializeActivity];
     
     // Some internal setup tested elsewhere
     [[self.partialActivityDetailsViewController expect] updateProfileImage];

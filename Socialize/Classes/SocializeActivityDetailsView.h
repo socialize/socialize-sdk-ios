@@ -10,6 +10,8 @@
 #import <MapKit/MapKit.h>
 
 @protocol SocializeActivityDetailsViewDelegate;
+@protocol SocializeActivity;
+
 @class HtmlPageCreator;
 @interface SocializeActivityDetailsView : UIView <UIWebViewDelegate> {
 @private
@@ -38,6 +40,7 @@
 @property (nonatomic, retain) UILabel*                  recentActivityLabel;
 @property (nonatomic, retain) NSString*                 activityMessage;
 @property (nonatomic, retain) NSDate*                   activityDate;
+@property (nonatomic, retain) id<SocializeActivity> activity;
 @property (nonatomic, retain) NSString*                 username;
 @property (nonatomic, retain) NSDateFormatter*          dateFormatter;
 @property (nonatomic, retain) HtmlPageCreator*          htmlPageCreator;

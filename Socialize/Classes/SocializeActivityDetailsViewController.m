@@ -103,10 +103,8 @@
 
 -(void)loadActivityDetailData {
     if(self.socializeActivity) {
-        NSString *activityText = ((SocializeComment *)self.socializeActivity).text;
         [self.activityViewController initializeContent];
-        [self.activityDetailsView updateActivityMessage:activityText 
-                                       withActivityDate:self.socializeActivity.date];
+        self.activityDetailsView.activity = self.socializeActivity;
 
         [self updateProfileImage];
         //once all the data is being loaded or fetched we can turn off the animation

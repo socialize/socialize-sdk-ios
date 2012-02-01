@@ -91,9 +91,7 @@
     [self.activityDetailsView awakeFromNib];
 }
 
-- (void)testShowActivityNotShownWhenNoEntityLoader {
-    [Socialize setEntityLoaderBlock:nil];
-    
+- (void)expectCommonLayout {
     CGFloat height = 10.f;
     CGRect origFrame = CGRectMake(0, 0, 320, 30);
     [[[self.partialActivityDetailsView stub] andReturnValue:OCMOCK_VALUE(height)] getMessageHeight];
@@ -103,9 +101,49 @@
     
     // don't care about this one
     [[[self.mockRecentActivityView stub] andReturnValue:OCMOCK_VALUE(CGPointZero)] diagonalPoint];
+}
+
+- (void)expectLayoutWithShowEntityButtonNotShown {
+    [self expectCommonLayout];
     
     [[self.mockShowEntityView expect] removeFromSuperview];
     [[self.mockRecentActivityView expect] positionBelowView:self.mockActivityMessageView];
+}
+
+- (void)expectLayoutWithShowEntityButtonShown {
+    [self expectCommonLayout];
+    
+    [[(id)self.partialActivityDetailsView expect] addSubview:self.mockShowEntityView];
+    [[self.mockShowEntityView expect] positionBelowView:self.self.mockActivityMessageView];
+    [[self.mockRecentActivityView expect] positionBelowView:self.self.mockShowEntityView];
+}
+
+
+- (void)testShowActivityNotShownWhenNoEntityLoader {
+    [Socialize setEntityLoaderBlock:nil];
+    [self expectLayoutWithShowEntityButtonNotShown];
+    
+    [self.partialActivityDetailsView layoutActivityDetailsSubviews];
+}
+
+- (void)testShowActivityStillNotShownWhenEntityLoaderButCanNotLoadEntity {
+    
+    // We have an entity loader defined
+    [Socialize setEntityLoaderBlock:^(UINavigationController *controller, id<SocializeEntity>entity) {}];
+    
+    // But we can not display the entity
+    [Socialize setCanLoadEntityBlock:^(id<SocializeEntity> entity) { return NO; }];
+    
+    [self expectLayoutWithShowEntityButtonNotShown];
+    
+    [self.partialActivityDetailsView layoutActivityDetailsSubviews];
+}
+
+- (void)testShowActivityWithEntityLoaderAndNoCanLoadEntityShowsButton {
+    [Socialize setEntityLoaderBlock:^(UINavigationController *nav, id<SocializeEntity>entity){}];
+    [Socialize setCanLoadEntityBlock:nil];
+
+    [self expectLayoutWithShowEntityButtonShown];
     
     [self.partialActivityDetailsView layoutActivityDetailsSubviews];
 }
