@@ -225,7 +225,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 }
 -(void)performAutoAuth
 {
-    if (![self.socialize isAuthenticatedWithFacebook] && [self.socialize facebookSessionValid]) {
+    if (![self.socialize isAuthenticatedWithFacebook] && [self.socialize facebookSessionValid] && [self.socialize facebookAvailable]) {
         // Go ahead and upgrade to facebook auth since we already have a valid token.
         // (This is ok to do automatically, since an external app callout will not happen)
         [self startLoading];
