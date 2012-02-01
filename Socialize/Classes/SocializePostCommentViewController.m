@@ -15,6 +15,7 @@
 
 @interface SocializePostCommentViewController ()
 - (void)configureFacebookButton;
+- (void)configureForNewUser;
 @end
 
 @implementation SocializePostCommentViewController
@@ -59,19 +60,9 @@
     [self addSocializeRoundedGrayButtonImagesToButton:self.unsubscribeButton];
     self.dontSubscribeToDiscussion = NO;
     
-    self.enableSubscribeButton.enabled = NO;
-    [self getSubscriptionStatus];
-    
-    
-//    NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                   @"271982", @"activity_id",
-//                                   @"comment", @"activity_type",
-//                                   @"new_comments", @"notification_type",
-//                                   nil];
-//    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
-//    [Socialize handleNotification:userInfo];
-
-    
+    if ([self.socialize isAuthenticated]) {
+        [self configureForNewUser];
+    }
 }
 
 - (void)viewDidUnload {
@@ -85,19 +76,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    
-    
-    
-//    NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                   @"304899", @"activity_id",
-//                                   @"comment", @"activity_type",
-//                                   @"new_comments", @"notification_type",
-//                                   nil];
-//    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
-//    [Socialize handleNotification:userInfo];
-    
-
 }
 
 - (void)configureMessageActionButtons {
@@ -187,11 +165,19 @@
     [self notifyDelegateOrDismissSelf];
 }
 
+- (void)configureForNewUser {
+    [self getSubscriptionStatus];
+}
+
 - (void)afterLoginAction:(BOOL)userChanged {
     [super afterLoginAction:userChanged];
     
     [self configureFacebookButton];
     [self configureMessageActionButtons];
+    
+    if (userChanged) {
+        [self configureForNewUser];
+    }
 }
 
 - (void)facebookButtonPressed:(UIButton *)sender {
@@ -288,6 +274,7 @@
 }
 
 - (void)getSubscriptionStatus {
+    self.enableSubscribeButton.enabled = NO;
     [self.socialize getSubscriptionsForEntityKey:self.entityURL first:nil last:nil];
 }
 

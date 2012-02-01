@@ -36,6 +36,7 @@
 #import "SocializeGeocoderAdapter.h"
 #import "SocializePrivateDefinitions.h"
 #import "SocializeSubscriptionService.h"
+#import "SocializeHorizontalContainerView.h"
 
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
@@ -232,6 +233,9 @@
     // Message action buttons should be set up again, since facebook is now available
     [[(id)self.postCommentViewController expect] configureMessageActionButtons];
     
+    // Subscription status needs to be reloaded
+    [[(id)self.postCommentViewController expect] getSubscriptionStatus];
+
     // Authenticate view controller completed facebook auth
     [self.postCommentViewController socializeAuthViewController:nil didAuthenticate:nil];
 }
@@ -271,6 +275,9 @@
     [[(id)self.postCommentViewController expect] addSocializeRoundedGrayButtonImagesToButton:OCMOCK_ANY];
     [[(id)self.postCommentViewController expect] setDontSubscribeToDiscussion:NO];        
     [[self.mockEnableSubscribeButton expect] setEnabled:NO];
+
+    // We are authenticated, expect to get subscription right away
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticated];
     [[(id)self.postCommentViewController expect] getSubscriptionStatus];
 }
 
@@ -379,5 +386,17 @@
     [self.postCommentViewController service:mockService didFetchElements:dataArray];
 }
 
+- (void)testAfterLoginGetsSubscriptionIfUserChanged {
+    NSString *testKey = @"testKey";
+    self.postCommentViewController.entityURL = testKey;
+    
+    // don't care about these here
+    self.mockFacebookButton = self.postCommentViewController.facebookButton = [OCMockObject niceMockForClass:[UIButton class]];    
+    self.mockMessageActionButtonContainer = self.postCommentViewController.messageActionButtonContainer = [OCMockObject niceMockForClass:[SocializeHorizontalContainerView class]];
+    
+    [[self.mockEnableSubscribeButton expect] setEnabled:NO];
+    [[self.mockSocialize expect] getSubscriptionsForEntityKey:testKey first:nil last:nil];
+    [self.postCommentViewController afterLoginAction:YES];
+}
 
 @end
