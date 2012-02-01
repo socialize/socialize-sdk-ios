@@ -204,4 +204,80 @@
     GHAssertNotNil(builder.errorAction, nil);
 }
 
+- (void)performShareWithShareObject:(id)shareObject paramsVerifyBlock:(BOOL (^)(id))paramsVerifyBlock {
+    
+    id mockShareProtocol = [OCMockObject mockForProtocol:@protocol(ShareProviderProtocol)];
+    [[mockShareProtocol expect] requestWithGraphPath:@"me/feed" params:[OCMArg checkWithBlock:paramsVerifyBlock] httpMethod:@"POST" completion:OCMOCK_ANY];
+    
+    SocializeShareBuilder* builder = [[[SocializeShareBuilder alloc] init] autorelease];
+    builder.shareProtocol = mockShareProtocol;
+    builder.shareObject = shareObject;
+    [builder performShareForPath:@"me/feed"];
+    
+    [mockShareProtocol verify];
+}
+
+- (void)performCommentShareWithParamsVerifyBlock:(BOOL (^)(id))paramsVerifyBlock {
+    id mockComment = [self generateMockSocializeCommentWithEntityKey:@"testKey" andApplicationName:@"myapp" andComment:@"something"];
+    [self performShareWithShareObject:mockComment paramsVerifyBlock:paramsVerifyBlock];
+}
+
+- (void)performLikeShareWithParamsVerifyBlock:(BOOL (^)(id))paramsVerifyBlock {
+    id mockLike = [self generateMockSocializeLikeWithEntityKey:@"testKey" andApplicationName:@"myapp"];
+    [self performShareWithShareObject:mockLike paramsVerifyBlock:paramsVerifyBlock];
+}
+
+- (void)performShareShareWithParamsVerifyBlock:(BOOL (^)(id))paramsVerifyBlock {
+    id mockLike = [self generateMockSocializeShareWithEntityKey:@"testKey" andApplicationName:@"myapp"];
+    [self performShareWithShareObject:mockLike paramsVerifyBlock:paramsVerifyBlock];
+}
+
+- (BOOL (^)(id))doesNotContainSocializeBlock {
+    return ^(id params) {
+        NSString *message = [params objectForKey:@"message"];
+        return (BOOL)![[message lowercaseString] containsString:@"socialize"];
+    };
+}
+
+- (BOOL (^)(id))containsSocializeBlock {
+    return ^(id params) {
+        NSString *message = [params objectForKey:@"message"];
+        return [[message lowercaseString] containsString:@"socialize"];
+    };
+}
+
+- (void)testCommentPostDoesNotContainSocializeIfFlagDisabled {
+    [Socialize storeDisableBranding:YES];
+    [self performCommentShareWithParamsVerifyBlock:[self doesNotContainSocializeBlock]];
+    
+}
+
+- (void)testCommentPostDoesContainSocializeIfFlagDisabled {
+    [Socialize storeDisableBranding:NO];
+    [self performCommentShareWithParamsVerifyBlock:[self containsSocializeBlock]];    
+}
+
+- (void)testLikePostDoesNotContainSocializeIfFlagDisabled {
+    [Socialize storeDisableBranding:YES];
+    [self performLikeShareWithParamsVerifyBlock:[self doesNotContainSocializeBlock]];
+    
+}
+
+- (void)testLikePostDoesContainSocializeIfFlagDisabled {
+    [Socialize storeDisableBranding:NO];
+    [self performLikeShareWithParamsVerifyBlock:[self containsSocializeBlock]];    
+}
+
+- (void)testSharePostDoesNotContainSocializeIfFlagDisabled {
+    [Socialize storeDisableBranding:YES];
+    [self performShareShareWithParamsVerifyBlock:[self doesNotContainSocializeBlock]];
+    
+}
+
+- (void)testSharePostDoesContainSocializeIfFlagDisabled {
+    [Socialize storeDisableBranding:NO];
+    [self performShareShareWithParamsVerifyBlock:[self containsSocializeBlock]];    
+}
+
+
 @end

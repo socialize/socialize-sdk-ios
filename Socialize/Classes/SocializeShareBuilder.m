@@ -119,7 +119,11 @@
 {
     id<SocializeShare> share = (id<SocializeShare>)self.shareObject;
     NSString *objectURL = [Socialize objectURL:self.shareObject.entity];
-    NSString* message = [NSString stringWithFormat:@"%@: \n %@ \n\n Shared from %@ using Socialize for iOS. \n http://www.getsocialize.com/", share.text, objectURL, share.application.name];
+    NSMutableString* message = [NSMutableString stringWithFormat:@"%@: \n %@", share.text, objectURL];
+                                
+    if (![Socialize disableBranding]) {
+        [message appendFormat:@"\n\n Shared from %@ using Socialize for iOS. \n http://www.getsocialize.com/", share.application.name];
+    }
     [params setObject:message forKey:@"message"]; 
 }
 
@@ -127,7 +131,11 @@
 {
     id<SocializeComment> comment = (id<SocializeComment>)self.shareObject;
     NSString *objectURL = [Socialize objectURL:self.shareObject.entity];
-    NSString* message = [NSString stringWithFormat:@"%@ \n\n %@ \n\n Posted from %@ using Socialize for iOS. \n http://www.getsocialize.com/", objectURL, comment.text, comment.application.name];
+    NSMutableString* message = [NSMutableString stringWithFormat:@"%@ \n\n %@", objectURL, comment.text];
+    
+    if (![Socialize disableBranding]) {
+        [message appendFormat:@"\n\n Posted from %@ using Socialize for iOS. \n http://www.getsocialize.com/", comment.application.name];
+    }
     [params setObject:message forKey:@"message"];
 }
 
@@ -135,7 +143,11 @@
 {
     id<SocializeLike> like = (id<SocializeLike>)self.shareObject;
     NSString *objectURL = [Socialize objectURL:self.shareObject.entity];
-    NSString* message = [NSString stringWithFormat:@"Liked %@ \n\n Posted from %@ using Socialize for iOS. \n http://www.getsocialize.com/", objectURL, like.application.name];
+    NSMutableString* message = [NSMutableString stringWithFormat:@"Liked %@", objectURL];
+                         
+    if (![Socialize disableBranding]) {
+        [message appendFormat:@"\n\n Posted from %@ using Socialize for iOS. \n http://www.getsocialize.com/", like.application.name];
+    }
     [params setObject:message forKey:@"message"];
 }
 

@@ -31,6 +31,7 @@
 #define SOCIALIZE_FACEBOOK_APP_ID @"socialize_facebook_app_id"
 #define SOCIALIZE_APPLICATION_LINK @"socialize_app_link"
 #define SOCIALIZE_DEVICE_TOKEN @"socialize_device_token"
+NSString *const kSocializeDisableBrandingKey = @"kSocializeDisableBrandingKey";
 
 NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAuthenticatedUserDidChangeNotification";
 
@@ -164,6 +165,16 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:SOCIALIZE_APPLICATION_LINK];
     [defaults synchronize];
+}
+
++(void)storeDisableBranding:(BOOL)disableBranding {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:[NSNumber numberWithBool:disableBranding] forKey:kSocializeDisableBrandingKey];
+    [defaults synchronize];
+}
+
++ (BOOL)disableBranding {
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDisableBrandingKey] boolValue];
 }
 
 +(NSString*) apiKey

@@ -45,6 +45,8 @@
 @class UIImage;
 @class SocializeFacebook;
 
+extern NSString *const kSocializeDisableBrandingKey;
+
 typedef void(^SocializeEntityLoaderBlock)(UINavigationController *navigationController, id<SocializeEntity>entity);
 
 /**
@@ -183,6 +185,21 @@ otherwise you will get a failure.
  
  */
 +(void)removeApplicationLink __attribute__((deprecated));
+
+/**
+ Some aspects of Socialize, such as Facebook wall posts, include information about Socialize. If you do not
+ wish to have this 
+ 
+ @param disableBranding turn off the branding
+ */
++(void)storeDisableBranding:(BOOL)disableBranding;
+
+/**
+ Provide access to the Socialize "disable branding" flag
+ 
+ @return BOOL reflecting whether or not branding is disabled.
+ */
++ (BOOL)disableBranding;
 
 /**
  Provide access to the Socialize API key.
