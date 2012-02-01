@@ -321,7 +321,7 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     [[(id)self.viewController expect] stopLoadAnimation];
     BOOL no = NO;
     [[[self.mockSocialize stub] andReturnValue:OCMOCK_VALUE(no)] isAuthenticatedWithFacebook];
-    [[(id)self.viewController expect] afterLoginAction];
+    [[(id)self.viewController expect] afterLoginAction:YES];
     [self.viewController didAuthenticate:nil];
 }
 

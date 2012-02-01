@@ -236,7 +236,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
         [self startLoading];
         [self.socialize authenticateAnonymously];
     } else {
-        [self afterLoginAction];
+        [self afterLoginAction:NO];
     }
 }
 
@@ -264,7 +264,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
 }
 
--(void)afterLoginAction
+-(void)afterLoginAction:(BOOL)userChanged
 {
     // Should be implemented in the child classes.
 }
@@ -308,7 +308,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 {
     [self stopLoadAnimation];
     
-    [self afterLoginAction];
+    [self afterLoginAction:YES];
 }
 
 - (UIAlertView*)sendActivityToFacebookFeedAlertView {

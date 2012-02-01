@@ -134,7 +134,7 @@ static NSString *const TestURL = @"http://getsocialize.com";
 
 - (void)testThatSendButtonDisabledAfterInitialAuth {
     [[self.mockSendButton expect] setEnabled:NO];
-    [self.postShareViewController afterLoginAction];
+    [self.postShareViewController afterLoginAction:YES];
 }
 
 @end

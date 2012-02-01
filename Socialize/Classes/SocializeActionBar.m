@@ -197,7 +197,7 @@
     }
 }
 
-- (void)afterLoginAction {
+- (void)afterLoginAction:(BOOL)userChanged {
     [self appear];
 }
 

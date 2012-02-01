@@ -96,7 +96,7 @@
     return [super initWithNibName:@"SocializeProfileViewController" bundle:nil];
 }
 
-- (void)afterLoginAction {
+- (void)afterLoginAction:(BOOL)userChanged {
     if (self.fullUser != nil) {
         // Already have a full user
         [self configureViews];
