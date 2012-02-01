@@ -12,11 +12,9 @@ extern CGFloat SocializeTableBGInfoViewDefaultWidth;
 extern CGFloat SocializeTableBGInfoViewDefaultHeight;
 
 @interface SocializeTableBGInfoView : UIView {
-	UIImageView		 *noActivityImageView;
 	UILabel			 *errorLabel;
 }
 
-@property (nonatomic, retain) UIImageView* noActivityImageView;
 @property (nonatomic, retain) UILabel*	   errorLabel;
 - (id)initWithFrame:(CGRect)frame bgImageName:(NSString*)bgImageName;
 @end

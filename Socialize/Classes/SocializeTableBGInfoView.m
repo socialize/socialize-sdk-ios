@@ -14,7 +14,6 @@ CGFloat SocializeTableBGInfoViewDefaultWidth = 140.f;
 CGFloat SocializeTableBGInfoViewDefaultHeight = 140.f;
 
 @implementation SocializeTableBGInfoView
-@synthesize noActivityImageView;
 @synthesize	errorLabel;
 
 - (id)initWithFrame:(CGRect)frame bgImageName:(NSString*)bgImageName {
@@ -25,17 +24,6 @@ CGFloat SocializeTableBGInfoViewDefaultHeight = 140.f;
 		self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
 		self.layer.cornerRadius = 10.0;
 		self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-		
-		UIImage *noActivityImage = [UIImage imageNamed:bgImageName];
-		
-		CGFloat imageXvalue = (self.frame.size.width - noActivityImage.size.width)/2;
-		CGFloat imageYvalue = 20;
-		CGRect imageFrame = CGRectMake(imageXvalue, imageYvalue, noActivityImage.size.width, noActivityImage.size.height);
-		
-		self.noActivityImageView = [[[UIImageView alloc] initWithFrame:imageFrame] autorelease];
-		self.noActivityImageView.image = noActivityImage;
-		self.noActivityImageView.hidden = YES;
-		[self addSubview:noActivityImageView];
 		
 		self.errorLabel = [[[UILabel alloc] init]autorelease];
 		self.errorLabel.backgroundColor = [UIColor clearColor];
@@ -51,8 +39,7 @@ CGFloat SocializeTableBGInfoViewDefaultHeight = 140.f;
 		
 		CGFloat labelXvalue = (self.frame.size.width - labelSize.width)/2;
 		
-		CGRect noImageViewFrame = self.noActivityImageView.frame;
-		CGFloat labelYvalue = noImageViewFrame.origin.y + noImageViewFrame.size.height + 6;
+        CGFloat labelYvalue = self.frame.size.height / 2.f - 12;
 		CGRect  labelFrame = CGRectMake(labelXvalue, labelYvalue, labelSize.width, labelSize.height);
 		self.errorLabel.frame = labelFrame;
 		self.errorLabel.numberOfLines = 0;
@@ -70,7 +57,6 @@ CGFloat SocializeTableBGInfoViewDefaultHeight = 140.f;
 */
 
 - (void)dealloc {
-	self.noActivityImageView = nil;
 	self.errorLabel = nil;
     [super dealloc];
 }

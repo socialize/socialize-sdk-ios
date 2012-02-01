@@ -123,7 +123,6 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 20;
         informationView_ = [[SocializeTableBGInfoView alloc] initWithFrame:containerFrame bgImageName:@"socialize-nocomments-icon.png"];
         CGRect tableFrame = self.tableView.frame;
         informationView_.errorLabel.hidden = NO;
-        informationView_.noActivityImageView.hidden = NO;
         informationView_.hidden = YES;
         informationView_.errorLabel.text = @"No Content to Show.";
         CGPoint center = CGPointMake(tableFrame.size.width / 2.0, tableFrame.size.height / 2.0);
