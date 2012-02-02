@@ -4,6 +4,12 @@
 Changelog
 =============================================
 
+v1.3.2
+------
+[bug] App will crash if external Facebook auth is used, but no app id defined with Socialize [ crash facebook ]
+
+[bug] Displaying PostComment before being authenticated causes 400 error [ authentication ]
+
 v1.3.1
 ------
 
