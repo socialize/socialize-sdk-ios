@@ -40,6 +40,7 @@
 #import "SocializePostShareViewController.h"
 #import "SocializeEntityService.h"
 #import "SocializeProfileViewController.h"
+#import <Twitter/Twitter.h>
 
 @interface SocializeActionBar()
 @property (nonatomic, retain) id<SocializeView> entityView;
@@ -55,6 +56,7 @@
 - (BOOL)canSendText;
 -(void)displaySMSComposerSheet;
 - (void)shareViaText;
+- (void)shareViaTwitter;
 @end
 
 @implementation SocializeActionBar
@@ -234,6 +236,10 @@
     [self presentInternalController:nav];
 }
 
+- (Class)twitterComposerClass {
+    return NSClassFromString(@"TWTweetComposeViewController");
+}
+
 - (UIActionSheet*)shareActionSheet {
     if (shareActionSheet_ == nil) {
         shareActionSheet_ = [[UIActionSheet sheetWithTitle:nil] retain];
@@ -247,6 +253,11 @@
         if ([self canSendText]) {
             [shareActionSheet_ addButtonWithTitle:@"Share via Text" handler:^{ [weakSelf shareViaText]; }];
         }
+        
+        if ([self twitterComposerClass] != nil) {
+            [shareActionSheet_ addButtonWithTitle:@"Share via Twitter" handler:^{ [weakSelf shareViaTwitter]; }];
+        }
+        
         [shareActionSheet_ setCancelButtonWithTitle:nil handler:^{  }];
     }
     return shareActionSheet_;
@@ -388,6 +399,11 @@
 
 - (void)shareViaText {
     [self displaySMSComposerSheet];
+}
+
+- (void)shareViaTwitter {
+    TWTweetComposeViewController *composer = [[[TWTweetComposeViewController alloc] init] autorelease];
+    [self presentInternalController:composer];
 }
 
 - (void)reloadEntity {

@@ -53,12 +53,14 @@
 @property(nonatomic, retain) id<SocializeView> entityView;
 
 -(void) shareViaEmail;
+-(void) shareViaTwitter;
 -(void)launchMailAppOnDevice;
 -(void)displayComposerSheet;
 -(BOOL)canSendMail;
 -(BOOL)canSendText;
 - (void)presentInternalController:(UIViewController*)viewController;
 -(void)displaySMSComposerSheet;
+- (Class)twitterComposerClass;
 @end
 
 @implementation SocializeActionBarTests
@@ -373,6 +375,8 @@
     [self.actionBar presentInternalController:nil];
 }
 
+#import <Twitter/Twitter.h>
+
 - (void)testDefaultActionSheet {
     self.actionBar.shareActionSheet = nil;
     
@@ -380,15 +384,24 @@
     [[[(id)self.actionBar stub] andReturnBool:YES] canSendMail];
     [[[(id)self.actionBar stub] andReturnBool:YES] canSendText];
     
+    Class testClass = [OCMockObject mockForClass:[NSObject class]];
+    
+    [[[(id)self.actionBar stub] andReturnValue:OCMOCK_VALUE(testClass)] twitterComposerClass];
+    
     UIActionSheet *actionSheet = self.actionBar.shareActionSheet;
     
-    GHAssertEquals(actionSheet.numberOfButtons, 4, @"Bad button count");
+    GHAssertEquals(actionSheet.numberOfButtons, 5, @"Bad button count");
 }
 
 - (void)testDisplayTextMessageComposer {
     [[(id)self.actionBar expect] setShareTextMessageComposer:nil];
     [[(id)self.actionBar expect] presentInternalController:self.mockShareTextMessageComposer];
     [self.actionBar displaySMSComposerSheet];
+}
+
+- (void)testDisplayTweetComposer {
+    [[(id)self.actionBar expect] presentInternalController:OCMOCK_ANY];
+    [self.actionBar shareViaTwitter];
 }
 
 @end
