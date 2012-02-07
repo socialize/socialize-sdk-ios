@@ -1675,12 +1675,6 @@
 		AADE200A14BE682700E59945 /* SocializeBubbleView.h in Headers */ = {isa = PBXBuildFile; fileRef = AADE200714BE682700E59945 /* SocializeBubbleView.h */; };
 		AADE200B14BE682700E59945 /* SocializeBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AADE200814BE682700E59945 /* SocializeBubbleView.m */; };
 		AADE200C14BE682700E59945 /* SocializeBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AADE200814BE682700E59945 /* SocializeBubbleView.m */; };
-		AAE01D9714E06F3600D94B64 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE01D9614E06F3600D94B64 /* Twitter.framework */; };
-		AAE01D9814E06F4000D94B64 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE01D9614E06F3600D94B64 /* Twitter.framework */; };
-		AAE01D9914E06F4300D94B64 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE01D9614E06F3600D94B64 /* Twitter.framework */; };
-		AAE01D9A14E06F4400D94B64 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE01D9614E06F3600D94B64 /* Twitter.framework */; };
-		AAE01D9B14E06F4500D94B64 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE01D9614E06F3600D94B64 /* Twitter.framework */; };
-		AAE01D9C14E06F4900D94B64 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE01D9614E06F3600D94B64 /* Twitter.framework */; };
 		AAE7958F14684EB100BEAD28 /* TestLikeServices.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE7958D14684EB100BEAD28 /* TestLikeServices.h */; };
 		AAE7959014684EB100BEAD28 /* TestLikeServices.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE7958D14684EB100BEAD28 /* TestLikeServices.h */; };
 		AAE795AE14684F1E00BEAD28 /* TestActivityServices.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE795AC14684F1E00BEAD28 /* TestActivityServices.h */; };
@@ -2717,7 +2711,6 @@
 		AAD7E38A144F80320073308D /* SocializeProfileViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileViewControllerTests.m; path = "Test Cases/SocializeProfileViewControllerTests.m"; sourceTree = "<group>"; };
 		AADE200714BE682700E59945 /* SocializeBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBubbleView.h; path = Classes/SocializeBubbleView.h; sourceTree = "<group>"; };
 		AADE200814BE682700E59945 /* SocializeBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBubbleView.m; path = Classes/SocializeBubbleView.m; sourceTree = "<group>"; };
-		AAE01D9614E06F3600D94B64 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		AAE7958D14684EB100BEAD28 /* TestLikeServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLikeServices.h; sourceTree = "<group>"; };
 		AAE7958E14684EB100BEAD28 /* TestLikeServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLikeServices.m; sourceTree = "<group>"; };
 		AAE795AC14684F1E00BEAD28 /* TestActivityServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestActivityServices.h; sourceTree = "<group>"; };
@@ -2771,7 +2764,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAE01D9714E06F3600D94B64 /* Twitter.framework in Frameworks */,
 				5CC3DAC21378824800B11B78 /* Foundation.framework in Frameworks */,
 				16F21EE013CDDE5000911977 /* UIKit.framework in Frameworks */,
 			);
@@ -2792,7 +2784,6 @@
 				1681BDB313F5567300EC6042 /* MapKit.framework in Frameworks */,
 				1681BDCB13F55E2400EC6042 /* QuartzCore.framework in Frameworks */,
 				16C365F814519D4900DD5421 /* MessageUI.framework in Frameworks */,
-				AAE01D9C14E06F4900D94B64 /* Twitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2819,7 +2810,6 @@
 				AA332609144CD8070033C7FA /* Foundation.framework in Frameworks */,
 				AA33260A144CD8070033C7FA /* CoreGraphics.framework in Frameworks */,
 				16C365F7145192C300DD5421 /* MessageUI.framework in Frameworks */,
-				AAE01D9A14E06F4400D94B64 /* Twitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2836,7 +2826,6 @@
 				AA3E20A01461F057000321BF /* UIKit.framework in Frameworks */,
 				AA3E20A11461F057000321BF /* Foundation.framework in Frameworks */,
 				AA3E20A21461F057000321BF /* CoreGraphics.framework in Frameworks */,
-				AAE01D9B14E06F4500D94B64 /* Twitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2852,7 +2841,6 @@
 				AAAFE5E614355BF900851C73 /* UIKit.framework in Frameworks */,
 				AAAFE5E714355BF900851C73 /* Foundation.framework in Frameworks */,
 				AAAFE5E814355BF900851C73 /* CoreGraphics.framework in Frameworks */,
-				AAE01D9914E06F4300D94B64 /* Twitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2862,7 +2850,6 @@
 			files = (
 				AABC153A144A114900088B7D /* Foundation.framework in Frameworks */,
 				AABC153B144A114900088B7D /* UIKit.framework in Frameworks */,
-				AAE01D9814E06F4000D94B64 /* Twitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3144,7 +3131,6 @@
 		5CC3DAC01378824800B11B78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AAE01D9614E06F3600D94B64 /* Twitter.framework */,
 				16C365F5145192B900DD5421 /* MessageUI.framework */,
 				AAAFE945143564B100851C73 /* GHUnitIOS.framework */,
 				AAB2DEE5143A796300C3C1F5 /* libOCMock.a */,
