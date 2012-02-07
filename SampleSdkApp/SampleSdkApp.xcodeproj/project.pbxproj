@@ -11,6 +11,9 @@
 		16D2DEF7145546410034A6C8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D2DEF5145546370034A6C8 /* MessageUI.framework */; };
 		AA2025B1144CB249006C1F8F /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8636D4144CA0DB00CFA759 /* libKIF.a */; };
 		AA2025B2144CB263006C1F8F /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8636D4144CA0DB00CFA759 /* libKIF.a */; };
+		AA2AE95514E0A6CB005A57CD /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2AE95414E0A6CB005A57CD /* Twitter.framework */; };
+		AA2AE95B14E0A6D3005A57CD /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2AE95414E0A6CB005A57CD /* Twitter.framework */; };
+		AA2AE95C14E0A6D4005A57CD /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2AE95414E0A6CB005A57CD /* Twitter.framework */; };
 		AA2DA2421435437400C62B97 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA2241435420300C62B97 /* MapKit.framework */; };
 		AA2DA2431435437400C62B97 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA222143541F700C62B97 /* CoreLocation.framework */; };
 		AA2DA2441435437400C62B97 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA220143541E100C62B97 /* QuartzCore.framework */; };
@@ -716,6 +719,7 @@
 
 /* Begin PBXFileReference section */
 		16D2DEF5145546370034A6C8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		AA2AE95414E0A6CB005A57CD /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		AA2D9E6D14352BC100C62B97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA2D9E6F14352BC100C62B97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1021,6 +1025,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA2AE95514E0A6CB005A57CD /* Twitter.framework in Frameworks */,
 				16D2DEF6145546370034A6C8 /* MessageUI.framework in Frameworks */,
 				AA3325E1144CD6490033C7FA /* libOCMock.a in Frameworks */,
 				AA2025B1144CB249006C1F8F /* libKIF.a in Frameworks */,
@@ -1049,6 +1054,7 @@
 				AA8637E7144CA28300CFA759 /* CoreGraphics.framework in Frameworks */,
 				16D2DEF7145546410034A6C8 /* MessageUI.framework in Frameworks */,
 				AA51557E1491865F0051830B /* Socialize.framework in Frameworks */,
+				AA2AE95B14E0A6D3005A57CD /* Twitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1065,6 +1071,7 @@
 				AAD3F2A814620A2E007D2AB7 /* Foundation.framework in Frameworks */,
 				AAD3F2A914620A2E007D2AB7 /* CoreGraphics.framework in Frameworks */,
 				AA51557F1491865F0051830B /* Socialize.framework in Frameworks */,
+				AA2AE95C14E0A6D4005A57CD /* Twitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1097,6 +1104,7 @@
 		AA2D9E6C14352BC100C62B97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA2AE95414E0A6CB005A57CD /* Twitter.framework */,
 				AA5152CD1491837F0051830B /* Socialize.embeddedframework */,
 				16D2DEF5145546370034A6C8 /* MessageUI.framework */,
 				AA8636D6144CA14300CFA759 /* GHUnitIOS.framework */,
