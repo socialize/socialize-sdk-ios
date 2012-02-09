@@ -159,12 +159,16 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [self notifyDelegateOfCompletion];
 }
 
-- (void)cancelButtonPressed:(UIButton*)button {
+- (void)notifyDelegateOfCancellation {
     if ([self.delegate respondsToSelector:@selector(baseViewControllerDidCancel:)]) {
         [self.delegate baseViewControllerDidCancel:self];
     } else {
         [self dismissModalViewControllerAnimated:YES];
-    }
+    }    
+}
+
+- (void)cancelButtonPressed:(UIButton*)button {
+    [self notifyDelegateOfCancellation];
 }
 
 - (void)settingsButtonPressed:(UIButton *)button {

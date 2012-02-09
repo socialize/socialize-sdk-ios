@@ -85,6 +85,7 @@
 - (void)settingsButtonPressed:(UIBarButtonItem*)button;
 - (void)showEditController;
 - (void)notifyDelegateOfCompletion;
+- (void)notifyDelegateOfCancellation;
 @end
 
 #define SYNTH_RED_SOCIALIZE_BAR_BUTTON(PROPERTY, TITLESTR) \

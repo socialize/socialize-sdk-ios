@@ -10,6 +10,8 @@
 #import <Socialize/Socialize.h>
 #import "TestListController.h"
 #import "UIButton+Socialize.h"
+//#import "SocializeTwitterAuthViewController.h"
+//#import "UINavigationController+Socialize.h"
 
 #define TESTING_FACEBOOK_TOKEN @"BAABpKH5ZBZBg8BANSQGGvcd7DGCxJvOU0S1QZCsF3ZBrmlMT9dZCrLGA5oQJ06njmIE1COAgjsmWDJsRwIig30jbhPZCArmdBe4WgY9CZAL9OZBfs1JIQtAf8F0btxVc2baUJZCZBhpgk3LQZDZD"
 
@@ -99,6 +101,15 @@
 //    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
 //    
 //    [Socialize handleNotification:userInfo];
+    
+
+//    SocializeTwitterAuthViewController *twitter = [[[SocializeTwitterAuthViewController alloc] init] autorelease];
+//    twitter.consumerKey = @"GTBh585vOo4yG7j3blQAg";
+//    twitter.consumerSecret = @"OpSevfQ2lUUktQlM14NPyqpgydsJKYyqCukNw9UM";
+//    
+//    UINavigationController *nav = [UINavigationController socializeNavigationControllerWithRootViewController:twitter];
+//    [self presentModalViewController:nav animated:YES];
+    
 
 }
 
@@ -108,6 +119,12 @@
     self.keyField = nil;
     self.secretField = nil;
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+}
+                                      
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

@@ -19,3 +19,4 @@
 #import "SocializeObjects.h"
 #import "SocializeActivityDetailsViewController.h"
 #import "SocializeActionBarDelegate.h"
+#import "SocializeTwitterAuthViewController.h"
