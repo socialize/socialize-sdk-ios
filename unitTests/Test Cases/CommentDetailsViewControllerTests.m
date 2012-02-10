@@ -139,7 +139,7 @@
 {
     id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     [[[mockSocialize stub] andReturnBool:YES] isAuthenticated];
-    [[[mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
+    [[[mockSocialize stub] andReturnBool:YES] isAuthenticatedWithThirdParty];
     [[mockSocialize stub] setDelegate:nil];
     commentDetails.socialize = mockSocialize;
     

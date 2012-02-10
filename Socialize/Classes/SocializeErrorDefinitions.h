@@ -21,6 +21,7 @@ enum {
     SocializeErrorServerReturnedErrors,
     SocializeErrorServerReturnedHTTPError,
     SocializeErrorFacebookCancelledByUser,
+    SocializeErrorTwitterCancelledByUser,
     SocializeNumErrors,
 };
 

@@ -21,28 +21,6 @@
 
 @synthesize thirdPartyAuth = _thirdPartyAuth;
 
--(NSNumber*)detectUserIdWithTag: (NSString*) tag
-{
-    NSNumber* result = nil;
-    for(NSDictionary* info in _thirdPartyAuth)
-    {
-        if([[info objectForKey:@"auth_type"] isEqual:tag])
-            result = [info objectForKey:@"auth_id"];
-    }
-    return [[result copy] autorelease];
-}
-
--(NSNumber*)userIdForThirdPartyAuth:(SocializeThirdPartyAuthType) auth
-{
-    NSNumber* userId = nil;
-    switch (auth) {
-        case SocializeThirdPartyAuthTypeFacebook:
-            userId = [self detectUserIdWithTag: @"FaceBook"];
-            break;
-    }
-    return userId;
-}
-
 -(void)dealloc
 {
     [_firstName release];

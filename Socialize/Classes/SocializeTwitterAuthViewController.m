@@ -23,7 +23,7 @@
 - (void)requestAccessToken;
 @end
 
-static NSString *const SocializeTwitterAuthCallbackScheme = @"socializeoauth";
+NSString *const SocializeTwitterAuthCallbackScheme = @"socializeoauth";
 
 NSString *const SocializeTwitterRequestTokenURL = @"https://api.twitter.com/oauth/request_token";
 NSString *const SocializeTwitterAccessTokenURL = @"https://api.twitter.com/oauth/access_token";
@@ -54,6 +54,7 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 - (void)dealloc {
     self.consumerKey = nil;
     self.consumerSecret = nil;
+    [webView_ setDelegate:nil];
     self.webView = nil;
     self.requestToken = nil;
     self.verifier = nil;
@@ -103,10 +104,10 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 }
 
 - (void)notifyDelegateOfCompletion {
-    if ([self.delegate respondsToSelector:@selector(twitterAuthViewController:didReceiveAccessToken:accessTokenKey:screenName:userID:)]) {
+    if ([self.delegate respondsToSelector:@selector(twitterAuthViewController:didReceiveAccessToken:accessTokenSecret:screenName:userID:)]) {
         [self.delegate twitterAuthViewController:self
                            didReceiveAccessToken:self.accessToken.key
-                                  accessTokenKey:self.accessToken.secret
+                               accessTokenSecret:self.accessToken.secret
                                       screenName:self.screenName
                                           userID:self.userID];
     }
@@ -149,7 +150,9 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
     
     // The body should contain the verifier
     NSString *httpBodyString = [NSString stringWithFormat:@"%@=%@", kTwitterRequestVerifier, self.verifier];
-    [request setHTTPBody:[httpBodyString dataUsingEncoding:NSUTF8StringEncoding]];
+    NSData *testData = [httpBodyString dataUsingEncoding:NSUTF8StringEncoding];
+    (void)testData;
+    [request setHTTPBody:testData];
     
     [self fetchDataWithRequest:request
                          didFinishSelector:@selector(requestAccessToken:didFinishWithData:)

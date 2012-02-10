@@ -17,17 +17,6 @@
             localAppId ? localAppId : @""];
 }
 
-+ (BOOL)isFacebookConfigured {
-    NSString *facebookAppId = [Socialize facebookAppId];
-    if( facebookAppId == nil ) {
-        return NO;
-    } else {
-        // this makes sure that facebook settings are configured correctly
-        [SocializeFacebook verifyFacebookSettings];
-        return YES;       
-    }
-}
-
 + (BOOL)alreadyAuthenticated {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"FBAccessTokenKey"] != nil &&

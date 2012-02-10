@@ -16,7 +16,7 @@
 @optional
 - (void)twitterAuthViewController:(SocializeTwitterAuthViewController*)twitterAuthViewController
             didReceiveAccessToken:(NSString*)accessToken
-                   accessTokenKey:(NSString*)accessTokenKey
+                accessTokenSecret:(NSString*)accessTokenSecret
                        screenName:(NSString*)screenName
                            userID:(NSString*)userID;
 

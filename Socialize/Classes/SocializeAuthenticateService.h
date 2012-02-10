@@ -158,4 +158,11 @@ Socialize authentication service is the authentication engine. It performs anony
  */
 -(NSString*)receiveFacebookAuthToken;
 
+/**
+ Authenticate with Twitter using stored credentials
+ @see storeSocializeTwitterAccessToken:
+ @see storeSocializeTwitterAccessTokenSecret:
+ */
+- (void)authenticateWithTwitterUsingStoredCredentials;
+
 @end

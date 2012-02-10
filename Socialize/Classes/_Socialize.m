@@ -24,6 +24,7 @@
 #import "NSTimer+BlocksKit.h"
 #import "SocializeNotificationHandler.h"
 #import "StringHelper.h"
+#import "SocializeTwitterAuthenticator.h"
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"
@@ -31,9 +32,32 @@
 #define SOCIALIZE_FACEBOOK_APP_ID @"socialize_facebook_app_id"
 #define SOCIALIZE_APPLICATION_LINK @"socialize_app_link"
 #define SOCIALIZE_DEVICE_TOKEN @"socialize_device_token"
+
+#define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
++ (TYPE*)NAME { \
+    return [[NSUserDefaults standardUserDefaults] objectForKey:STORE_KEY]; \
+}
+
+#define SYNTH_DEFAULTS_SETTER(TYPE, NAME, STORE_KEY) \
++ (void)store ## NAME : (TYPE*)value { \
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; \
+    [defaults setValue:value forKey:STORE_KEY]; \
+    [defaults synchronize]; \
+}
+
+#define SYNTH_DEFAULTS_PROPERTY(TYPE, UPPERNAME, LOWERNAME, STORE_KEY) \
+SYNTH_DEFAULTS_SETTER(TYPE, UPPERNAME, STORE_KEY) \
+SYNTH_DEFAULTS_GETTER(TYPE, LOWERNAME, STORE_KEY)
+
 NSString *const kSocializeDisableBrandingKey = @"kSocializeDisableBrandingKey";
 
 NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAuthenticatedUserDidChangeNotification";
+
+NSString *const kSocializeTwitterAuthConsumerKey = @"kSocializeTwitterAuthConsumerKey";
+NSString *const kSocializeTwitterAuthConsumerSecret = @"kSocializeTwitterAuthConsumerSecret";
+NSString *const kSocializeTwitterAuthAccessToken = @"kSocializeTwitterAuthAccessToken";
+NSString *const kSocializeTwitterAuthAccessTokenSecret = @"kSocializeTwitterAuthAccessTokenSecret";
+NSString *const kSocializeTwitterAuthScreenName = @"kSocializeTwitterAuthScreenName";
 
 @implementation Socialize
 
@@ -48,6 +72,8 @@ NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAut
 @synthesize shareService = _shareService;
 @synthesize deviceTokenService = _deviceTokenService;
 @synthesize subscriptionService = _subscriptionService;
+@synthesize twitterAuthenticator = _twitterAuthenticator;
+
 static Socialize *_sharedSocialize = nil;
 static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
@@ -82,6 +108,7 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
     [_shareService release]; _shareService = nil;
     [_deviceTokenService release]; _deviceTokenService = nil;
     [_subscriptionService release]; _subscriptionService = nil;
+    [_twitterAuthenticator release]; _twitterAuthenticator = nil;
     
     [super dealloc];
 }
@@ -164,6 +191,12 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
     [defaults setValue:facebookLocalAppId forKey:SOCIALIZE_FACEBOOK_LOCAL_APP_ID];
     [defaults synchronize];
 }
+
+SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerKey, twitterConsumerKey, kSocializeTwitterAuthConsumerKey)
+SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, kSocializeTwitterAuthConsumerSecret)
+SYNTH_DEFAULTS_PROPERTY(NSString, TwitterAccessToken, twitterAccessToken, kSocializeTwitterAuthAccessToken)
+SYNTH_DEFAULTS_PROPERTY(NSString, TwitterAccessTokenSecret, twitterAccessTokenSecret, kSocializeTwitterAuthAccessTokenSecret)
+SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSocializeTwitterAuthScreenName)
 
 +(void)storeApplicationLink:(NSString*)link {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -269,6 +302,17 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
     [self authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:facebookAppId thirdPartyLocalAppId:facebookLocalAppId thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
 }
 
+- (void)authenticateWithTwitterUsingStoredCredentials {
+    [_authService authenticateWithTwitterUsingStoredCredentials];
+}
+
+- (void)authenticateWithTwitter:(id<SocializeTwitterAuthenticatorDelegate>)delegate {
+    self.twitterAuthenticator = [[[SocializeTwitterAuthenticator alloc] init] autorelease];
+
+    self.twitterAuthenticator.delegate = delegate;
+    [self.twitterAuthenticator authenticateWithTwitter];
+}
+
 -(void)authenticateAnonymously
 {
     NSString *apiKey = [Socialize apiKey];
@@ -318,27 +362,40 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 -(BOOL)isAuthenticated{
     return [SocializeAuthenticateService isAuthenticated];
 }
-- (BOOL)isFacebookConfigured {
-    return [SocializeFacebook isFacebookConfigured];
-}
 
--(BOOL)isAuthenticatedWithFacebook
+-(BOOL)isAuthenticatedWithAuthType:(NSString*)authType
 {
     if (![self isAuthenticated]) {
         return NO;
     }
     
-    if (![FacebookAuthenticator hasValidToken]) {
-        return NO;
-    }
-    
     for (NSDictionary *auth in [[self authenticatedUser] thirdPartyAuth]) {
-        if ([[auth objectForKey:@"auth_type"] isEqualToString:@"FaceBook"]) {
+        if ([[auth objectForKey:@"auth_type"] isEqualToString:authType]) {
             return YES;
         }
     }
     
     return NO;
+}
+
+-(BOOL)isAuthenticatedWithFacebook {
+    if (![FacebookAuthenticator hasValidToken]) {
+        return NO;
+    }
+    
+
+    return [self isAuthenticatedWithAuthType:@"FaceBook"];
+}
+
+-(BOOL)isAuthenticatedWithTwitter {
+    if (![self twitterSessionValid])
+        return NO;
+    
+    return [self isAuthenticatedWithAuthType:@"Twitter"];
+}
+
+- (BOOL)isAuthenticatedWithThirdParty {
+    return [self isAuthenticatedWithFacebook] || [self isAuthenticatedWithTwitter];
 }
 
 - (BOOL)facebookAvailable {
@@ -356,8 +413,27 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
     return YES;
 }
 
+- (BOOL)twitterAvailable {
+    return [[[self class] twitterConsumerKey] length] > 0 && [[[self class] twitterConsumerSecret] length] > 0;
+}
+
+- (BOOL)thirdPartyAvailable {
+    return [self facebookAvailable] || [self twitterAvailable];
+}
+
 - (BOOL)facebookSessionValid {
     return [FacebookAuthenticator hasValidToken];
+}
+
+- (BOOL)twitterSessionValid {
+    NSString *twitterAccessToken = [[self class] twitterAccessToken];
+    NSString *twitterAccessTokenSecret = [[self class] twitterAccessTokenSecret];
+    
+    if ([twitterAccessToken length] == 0 || [twitterAccessTokenSecret length] == 0) {
+        return NO;
+    }
+
+    return YES;
 }
 
 -(void)removeAuthenticationInfo{

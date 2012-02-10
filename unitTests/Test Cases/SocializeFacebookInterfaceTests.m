@@ -95,12 +95,6 @@
     GHAssertEqualObjects(facebook.expirationDate, fbExpirationDate, @"bad token");
 }
 
-- (void)testFacebookIsNotConfiguredWhenAppIdIsNil {
-    [Socialize storeFacebookAppId:nil];
-
-    BOOL configured = [SocializeFacebook isFacebookConfigured];
-    GHAssertFalse(configured, @"Should not be configured");
-}
 
 
 @end

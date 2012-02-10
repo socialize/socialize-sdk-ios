@@ -16,6 +16,7 @@
 extern NSString *const SocializeTwitterRequestTokenURL;
 extern NSString *const SocializeTwitterAccessTokenURL;
 extern NSString *const SocializeTwitterAuthenticateURL;
+extern NSString *const SocializeTwitterAuthCallbackScheme;
 
 @interface SocializeTwitterAuthViewController : SocializeBaseViewController <UIWebViewDelegate>
 @property (nonatomic, assign) id<SocializeTwitterAuthViewControllerDelegate> delegate;

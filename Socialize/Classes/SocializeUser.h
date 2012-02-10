@@ -40,8 +40,6 @@
 -(void)setThirdPartyAuth:(NSArray*)auth;
 -(NSArray*)thirdPartyAuth;
 
--(NSNumber*)userIdForThirdPartyAuth:(SocializeThirdPartyAuthType) auth;
-
 @end
 
 /**Private implementation of <SocializeUser> protocol*/
@@ -66,7 +64,5 @@
 @property (nonatomic, copy) NSString* state;
 @property (nonatomic, copy) NSString* meta;
 @property (nonatomic, copy) NSArray* thirdPartyAuth;
-
--(NSNumber*)userIdForThirdPartyAuth:(SocializeThirdPartyAuthType) auth;
 
 @end

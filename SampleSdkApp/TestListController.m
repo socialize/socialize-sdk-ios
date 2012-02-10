@@ -21,6 +21,7 @@
 #import "InputBox.h"
 #import "TestActivityViewController.h"
 #import "TestTabbedSocializeActionBar.h"
+//#import "UINavigationController+Socialize.h"
 
 #if RUN_KIF_TESTS
 #import <OCMock/OCMock.h>
@@ -118,6 +119,16 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+//    SocializeAuthViewController *auth = [[[SocializeAuthViewController alloc] initWithDelegate:nil] autorelease];
+//    
+//    UINavigationController *nav = [UINavigationController socializeNavigationControllerWithRootViewController:auth];
+//    [self presentModalViewController:nav animated:YES];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

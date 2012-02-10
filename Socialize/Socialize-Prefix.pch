@@ -13,6 +13,8 @@
     #import "DebugUtil.h"
     #import "NSDate+Socialize.h"
     #import "PropertyHelpers.h"
+    #import "UINavigationController+Socialize.h"
+    #import "UIViewController+Socialize.h"
 #endif
 
 #ifdef DEBUG

@@ -105,10 +105,10 @@
     
     _user = [[dataArray objectAtIndex:0] retain];
     self.userName.text = _user.userName;
-    
-    NSNumber* fbId = [_user userIdForThirdPartyAuth:SocializeThirdPartyAuthTypeFacebook];
-    if(fbId)
-        self.fbUserId.text = [NSString stringWithFormat:@"%d", fbId];
+//    
+//    NSNumber* fbId = [_user userIdForThirdPartyAuth:SocializeThirdPartyAuthTypeFacebook];
+//    if(fbId)
+//        self.fbUserId.text = [NSString stringWithFormat:@"%d", fbId];
 }
 
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object

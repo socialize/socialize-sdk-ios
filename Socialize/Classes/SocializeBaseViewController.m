@@ -224,16 +224,23 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 -(BOOL)shouldAutoAuthOnAppear {
     return YES;
 }
+
 -(BOOL) shouldShowAuthViewController {
-    return ( ![self.socialize isAuthenticatedWithFacebook] && [self.socialize isFacebookConfigured]);
+    return ( ![self.socialize isAuthenticatedWithThirdParty] && [self.socialize thirdPartyAvailable]);
 }
+
 -(void)performAutoAuth
 {
-    if (![self.socialize isAuthenticatedWithFacebook] && [self.socialize facebookSessionValid] && [self.socialize facebookAvailable]) {
-        // Go ahead and upgrade to facebook auth since we already have a valid token.
+    if (![self.socialize isAuthenticatedWithThirdParty] && [self.socialize facebookSessionValid] && [self.socialize facebookAvailable]) {
+        // Go ahead and link Socialize to facebook auth since we already have a valid token.
+        // Because this is first, Facebook is currently preferred over Twitter
         // (This is ok to do automatically, since an external app callout will not happen)
         [self startLoading];
         [self.socialize authenticateWithFacebook];        
+    } else if (![self.socialize isAuthenticatedWithThirdParty] && [self.socialize twitterSessionValid] && [self.socialize twitterAvailable]) {
+        // Go ahead and link Socialize to twitter since we already have a valid twitter session (maybe the user supplied the access token and secret manually)
+        [self startLoading];
+        [self.socialize authenticateWithTwitterUsingStoredCredentials];
     } else if(![self.socialize isAuthenticated]) {
         // We're Not authenticated at all, and we can't auto auth with facebook
         // Just do anon

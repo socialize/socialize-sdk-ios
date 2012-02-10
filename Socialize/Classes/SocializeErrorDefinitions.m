@@ -21,7 +21,8 @@ static NSString *SocializeDefaultErrorStrings[SocializeNumErrors] = {
     @"Unexpected Server JSON Response",
     @"The Server Returned Errors",
     @"The Server Returned an HTTP Error Code",
-    @"User Cancelled Facebook Authentication",
+    @"Facebook Authentication Cancelled",
+    @"Twitter Authentication Cancelled",
 };
 
 NSString *SocializeDefaultLocalizedErrorStringForCode(NSUInteger code) {

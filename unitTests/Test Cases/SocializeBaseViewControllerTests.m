@@ -240,11 +240,12 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
 }
 
 - (void)testshouldShowAuthViewController {
-    [[[self.mockSocialize expect] andReturnBool:NO]isAuthenticatedWithFacebook];
-    [[[self.mockSocialize expect] andReturnBool:YES]isFacebookConfigured];
+    [[[self.mockSocialize expect] andReturnBool:NO] isAuthenticatedWithThirdParty];
+    [[[self.mockSocialize expect] andReturnBool:YES] thirdPartyAvailable];
     BOOL shouldShow = [self.viewController shouldShowAuthViewController];
     GHAssertTrue(shouldShow, @"should show auth view controller should've returned true");
 }
+
 - (void)testDefaultAutoAuth {
     GHAssertTrue([self.viewController shouldAutoAuthOnAppear], nil);
 }
@@ -280,7 +281,7 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
 
 - (void)testAutoAuthWhenAuthedDoesNothing {
     [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticated];
-    [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticatedWithFacebook];
+    [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticatedWithThirdParty];
     [self.viewController performAutoAuth];
 }
 

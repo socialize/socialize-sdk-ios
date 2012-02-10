@@ -115,6 +115,9 @@ BOOL isAuthenticatedWithFacebook = YES;
     [mockTableView verify];
 }
 - (void)setupSectionAuthTypes:(NSString *)authString  withType:(SocializeAuthViewControllerRows) authType  {
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
+    [[[self.mockSocialize stub] andReturnBool:YES] twitterAvailable];
+
     //EXPECT getAuthorizeTableViewCell
     [[[self.partialMockAuthViewController expect] andReturn:self.mockAuthTableViewCell] getAuthorizeTableViewCell];
     id mockLabel = [OCMockObject mockForClass:[UILabel class]];
@@ -127,11 +130,13 @@ BOOL isAuthenticatedWithFacebook = YES;
 }
 
 - (void) testRowForTwitter{
-    [self setupSectionAuthTypes:@"Twitter" withType:SocializeAuthViewControllerRowTwitter];
+    [self setupSectionAuthTypes:@"twitter" withType:SocializeAuthViewControllerRowTwitter];
 }
+
 - (void) testRowForFacebook{
     [self setupSectionAuthTypes:@"facebook" withType:SocializeAuthViewControllerRowFacebook];
 }
+
 - (void) testRowForAuthInfo {
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:SocializeAuthViewControllerSectionAuthInfo];
     //mock SocializeAuthInfoTableViewCell
@@ -143,12 +148,16 @@ BOOL isAuthenticatedWithFacebook = YES;
 }
 
 -(void) testDidSelectRowForFB {
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
+    [[[self.mockSocialize stub] andReturnBool:YES] twitterAvailable];
+    
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     id mockTableView = [OCMockObject mockForClass:[UITableView class]];
     [[mockTableView expect] deselectRowAtIndexPath:path animated:YES];
     [self.authViewController tableView:mockTableView didSelectRowAtIndexPath:path];
     [mockTableView verify];
 }
+
 -(void) testGetCellFromNib {
     NSMutableArray *topLevelViews = [[NSMutableArray alloc] init];
     id mockCell = [OCMockObject mockForClass:[SocializeAuthInfoTableViewCell class]];
@@ -178,10 +187,12 @@ BOOL isAuthenticatedWithFacebook = YES;
     [mockTableCell verify];
     [mockTableView verify];
 }
+
 - (void)testDidAuthenticate {
     id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
+    [[[self.mockSocialize stub] andReturn:mockUser] authenticatedUser];
     
-    [[[self.mockSocialize expect] andReturnValue:[NSNumber numberWithBool:YES]] isAuthenticatedWithFacebook]; 
+    [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticatedWithThirdParty]; 
     //create and set the mock navigation controller
     id mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
     [[mockNavigationController expect] pushViewController:[OCMArg any] animated:YES];
@@ -194,6 +205,7 @@ BOOL isAuthenticatedWithFacebook = YES;
     [mockNavigationController verify];
     NSAssert( self.authViewController.user == mockUser, @"the user object was not set after auth");
 }
+
 - (void)testProfileViewDidFinish {
     self.authViewController.user = [OCMockObject mockForProtocol:@protocol(SocializeUser)];   
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewControllerDelegate)];

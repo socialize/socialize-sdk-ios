@@ -14,14 +14,19 @@
 #import "SocializeUser.h"
 #import "SocializeAuthInfoTableViewCell.h"
 
+static NSString *const kAuthTypeRowText = @"kAuthTypeRowText";
+static NSString *const kAuthTypeRowImageName = @"kAuthTypeRowImageName";
+static NSString *const kAuthTypeRowAction = @"kAuthTypeRowAction";
+
 @interface  SocializeAuthViewController()
-    -(SocializeAuthTableViewCell *)getAuthorizeTableViewCell;
-    -(SocializeAuthInfoTableViewCell*)getAuthorizeInfoTableViewCell;
-    -(void)profileViewDidFinish;
-    -(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass;
-    -(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName;
-    @property (nonatomic, retain) id<SocializeAuthViewControllerDelegate> delegate;
-    @property (nonatomic, retain) id<SocializeUser> user;
+-(SocializeAuthTableViewCell *)getAuthorizeTableViewCell;
+-(SocializeAuthInfoTableViewCell*)getAuthorizeInfoTableViewCell;
+-(void)profileViewDidFinish;
+-(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass;
+-(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName;
+@property (nonatomic, retain) id<SocializeAuthViewControllerDelegate> delegate;
+@property (nonatomic, retain) id<SocializeUser> user;
+@property (nonatomic, retain) NSMutableArray *authTypeRowData;
 @end
 
 
@@ -35,14 +40,21 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 @synthesize skipButton = skipButton_;
 @synthesize delegate = _delegate;
 @synthesize user = _user;
-
+@synthesize authTypeRowData = authTypeRowData_;
 
 -(void) dealloc {
     self.tableView = nil;
     self.delegate = nil;
     self.user = nil;
+    self.authTypeRowData = nil;
+    
     [super dealloc];
 }
+
+- (BOOL)shouldAutoAuthOnAppear {
+    return NO;
+}
+
 +(UINavigationController*)authViewControllerInNavigationController:(id<SocializeAuthViewControllerDelegate>)delegate;
 {
     SocializeAuthViewController *authController 
@@ -53,6 +65,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     [navController.navigationBar setBackgroundImage:navBarImage];
     return navController;
 }
+
 - (id)initWithDelegate:(id<SocializeAuthViewControllerDelegate>)delegate {
     if( self = [super initWithNibName:@"SocializeAuthViewController" bundle:nil] ) {
         self.delegate = delegate;
@@ -60,6 +73,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     }
     return self;
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return SocializeAuthViewControllerNumSections;
@@ -81,6 +95,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorColor = [UIColor colorWithRed:25/255.0f green:31/255.0f blue:37/255.0f alpha:1.0];
 }
+
 -(IBAction)skipButtonPressed:(id)sender {
     if( [self.delegate respondsToSelector:@selector(authorizationSkipped)] ) {
         [self.delegate authorizationSkipped];
@@ -88,6 +103,75 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     [self dismissModalViewControllerAnimated:YES];
 }
 
+- (NSDictionary*)authTypeRowForText:(NSString*)text imageName:(NSString*)imageName {
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            text, kAuthTypeRowText,
+            nil];
+}
+
+- (void)authenticateWithFacebook {
+    [self.socialize authenticateWithFacebook];
+    [self startLoading];
+}
+
+- (void)authenticationComplete {
+    [self stopLoading];
+    if ( [self.socialize isAuthenticatedWithThirdParty]) {
+        self.user = [self.socialize authenticatedUser];
+        SocializeProfileEditViewController *profileEdit = [SocializeProfileEditViewController profileEditViewController];
+        profileEdit.delegate = self;
+        [self.navigationController pushViewController:profileEdit animated:YES];
+    }
+}
+
+- (void)authenticateWithTwitter {
+    [self startLoading];
+    
+    [self.socialize authenticateWithTwitter:self];
+}
+
+- (void)twitterAuthenticatorDidSucceed:(SocializeTwitterAuthenticator *)twitterAuthenticator {
+    [self authenticationComplete];
+}
+
+- (void)twitterAuthenticator:(SocializeTwitterAuthenticator *)twitterAuthenticator didFailWithError:(NSError *)error {
+    [self stopLoading];
+}
+
+- (UIViewController*)twitterAuthenticatorRequiresModalPresentationTarget:(SocializeTwitterAuthenticator*)twitterAuthenticator {
+    return self;
+}
+
+- (NSMutableArray*)authTypeRowData {
+    if (authTypeRowData_ == nil) {
+        authTypeRowData_ = [[NSMutableArray alloc] init];
+        
+        __block id weakSelf = self;
+        
+        if ([self.socialize facebookAvailable]) {
+            [authTypeRowData_ addObject:
+             [NSDictionary dictionaryWithObjectsAndKeys:
+              
+              @"facebook", kAuthTypeRowText,
+              @"socialize-authorize-facebook-enabled-icon.png", kAuthTypeRowImageName,
+              [[^{ [weakSelf authenticateWithFacebook]; } copy] autorelease], kAuthTypeRowAction,
+              nil]];
+        }
+        
+        if ([self.socialize twitterAvailable]) {
+            [authTypeRowData_ addObject:
+             [NSDictionary dictionaryWithObjectsAndKeys:
+              
+              @"twitter", kAuthTypeRowText,
+              @"socialize-authorize-twitter-enabled-icon.png", kAuthTypeRowImageName,
+              [[^{ [weakSelf authenticateWithTwitter]; } copy] autorelease], kAuthTypeRowAction,
+              nil]];
+        }
+
+    }
+    
+    return authTypeRowData_;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
@@ -96,7 +180,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 	switch (section) 
 	{
 		case SocializeAuthViewControllerSectionAuthTypes:
-            noOfRows = 1;
+            noOfRows = [self.authTypeRowData count];
             break;
         case SocializeAuthViewControllerSectionAuthInfo:
             noOfRows = 1;
@@ -150,14 +234,9 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     [self dismissModalViewControllerAnimated:YES];
 }
 
--(void)didAuthenticate:(id<SocializeUser>)user 
-{
-    self.user = user;
-    if ( [self.socialize isAuthenticatedWithFacebook] ) { 
-        SocializeProfileEditViewController *profileEdit = [SocializeProfileEditViewController profileEditViewController];
-        profileEdit.delegate = self;
-        [self.navigationController pushViewController:profileEdit animated:YES];
-    }
+// This is only called when finishing the Facebook flow (not twitter)
+-(void)didAuthenticate:(id<SocializeUser>)user {
+    [self authenticationComplete];
 }
 
 -(SocializeAuthTableViewCell *)getAuthorizeTableViewCell
@@ -174,8 +253,11 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [aTableView deselectRowAtIndexPath:indexPath animated:YES];
 	if(indexPath.section == SocializeAuthViewControllerSectionAuthTypes){
-        [self.socialize authenticateWithFacebook];
-        [self startLoadAnimationForView:self.view];
+        
+        // execute the action
+        NSDictionary *data = [self.authTypeRowData objectAtIndex:indexPath.row];
+        void (^action)() = [data objectForKey:kAuthTypeRowAction];
+        action();
     }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -190,19 +272,11 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 			authCell = [self getAuthorizeTableViewCell];
 			authCell.backgroundColor = [UIColor colorWithRed:61/255.0f green:70/255.0f blue:76/255.0f alpha:1.0] ;
 
-            
-            switch( indexPath.row ) 
-            {
-                case SocializeAuthViewControllerRowFacebook:
-                    authCell.cellIcon.image = [UIImage imageNamed:@"socialize-authorize-facebook-enabled-icon.png"];
-                    authCell.cellLabel.text = @"facebook";
-                    break;
-                case SocializeAuthViewControllerRowTwitter:
-                    authCell.cellIcon.image = [UIImage imageNamed:@"socialize-authorize-twitter-disabled-icon.png"];
-                    authCell.cellLabel.text = @"Twitter";
-                    break;
-            }
+            NSDictionary *data = [self.authTypeRowData objectAtIndex:indexPath.row];
+            authCell.cellIcon.image = [UIImage imageNamed:[data objectForKey:kAuthTypeRowImageName]];
+            authCell.cellLabel.text = [data objectForKey:kAuthTypeRowText];
             authCell.cellAccessoryIcon.image = [UIImage imageNamed:@"socialize-activity-call-out-arrow.png"];
+            
             cell = authCell;
             break;
 			

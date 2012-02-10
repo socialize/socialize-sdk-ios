@@ -137,6 +137,47 @@
                   thirdPartyName:thirdPartyName];
 }
 
+- (void)authenticateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
+                       thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
+                    thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret {
+    
+    NSString *authType = [NSString stringWithFormat:@"%d", type];
+
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
+                                   [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid", 
+                                   authType, @"auth_type",
+                                   thirdPartyAuthToken, @"auth_token",
+                                   thirdPartyAuthTokenSecret, @"auth_token_secret",
+                                   nil];
+    
+    SocializeRequest *request = [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                                                 resourcePath:AUTHENTICATE_METHOD
+                                                           expectedJSONFormat:SocializeDictionary
+                                                                       params:params];
+    
+    request.tokenRequest = YES;
+    
+    [self executeRequest:request];
+
+}
+
+- (void)authenticateWithTwitterAccessToken:(NSString*)twitterAccessToken
+                  twitterAccessTokenSecret:(NSString*)twitterAccessTokenSecret {
+
+    [self authenticateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeTwitter
+                         thirdPartyAuthToken:twitterAccessToken
+                   thirdPartyAuthTokenSecret:twitterAccessTokenSecret];
+}
+
+- (void)authenticateWithTwitterUsingStoredCredentials {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *accessToken = [defaults objectForKey:kSocializeTwitterAuthAccessToken];
+    NSString *accessTokenSecret = [defaults objectForKey:kSocializeTwitterAuthAccessTokenSecret];
+    
+    [self authenticateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeTwitter
+                         thirdPartyAuthToken:accessToken
+                   thirdPartyAuthTokenSecret:accessTokenSecret];
+}
 
 /**
  * Called when an error prevents the request from completing successfully.
@@ -204,6 +245,10 @@
     [defaults removeObjectForKey:@"FBAccessTokenKey"];
     [defaults removeObjectForKey:@"FBExpirationDateKey"];
     
+    // Remove any Twitter data
+    [defaults removeObjectForKey:kSocializeTwitterAuthAccessToken];
+    [defaults removeObjectForKey:kSocializeTwitterAuthAccessTokenSecret];
+
     [defaults synchronize]; 
 }
 

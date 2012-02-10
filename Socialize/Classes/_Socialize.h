@@ -30,6 +30,7 @@
 #import "SocializeObjects.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeServiceDelegate.h"
+#import "SocializeTwitterAuthenticatorDelegate.h"
 
 @class SocializeObjectFactory;
 @class SocializeAuthenticateService;
@@ -44,6 +45,7 @@
 @class SocializeSubscriptionService;
 @class UIImage;
 @class SocializeFacebook;
+@class SocializeTwitterAuthenticator;
 
 extern NSString *const kSocializeDisableBrandingKey;
 
@@ -95,6 +97,9 @@ otherwise you will get a failure.
 /**Get access to the activity service via <SocializeSubscriptionService>.*/
 @property (nonatomic, retain) SocializeSubscriptionService *subscriptionService;
 /**Current delegate*/
+
+/* Used for managed twitter authentication flow */
+@property (nonatomic, retain) SocializeTwitterAuthenticator *twitterAuthenticator;
 
 /**
  Set callback delegate which responds to protocol <SocializeServiceDelegate> to the service.
@@ -184,6 +189,18 @@ otherwise you will get a failure.
  @param facebookLocalAppID Facebook App Id
  */
 +(void)storeFacebookLocalAppId:(NSString*)facebookLocalAppID;
+
++(void)storeTwitterConsumerKey:(NSString*)consumerKey;
++(void)storeTwitterConsumerSecret:(NSString*)consumerSecret;
++(void)storeTwitterAccessToken:(NSString*)accessToken;
++(void)storeTwitterAccessTokenSecret:(NSString*)accessTokenSecret;
++(void)storeTwitterScreenName:(NSString*)screenName;
+
++(NSString*)twitterConsumerKey;
++(NSString*)twitterConsumerSecret;
++(NSString*)twitterAccessToken;
++(NSString*)twitterAccessTokenSecret;
++(NSString*)twitterScreenName;
 
 /**
  Save device token to the user defaults.
@@ -378,6 +395,23 @@ otherwise you will get a failure.
 -(void)authenticateWithFacebook;
 
 /**
+ Link Twitter account to Socialize account using existing stored credentials
+ 
+ This will only work if [Socialize twitterSessionValid returns YES
+ 
+ @see storeTwitterConsumerKey:
+ @see storeTwitterConsumerSecret:
+ @see storeTwitterAccessToken:
+ @see storeTwitterAccessTokenSecret:
+ */
+- (void)authenticateWithTwitterUsingStoredCredentials;
+
+/**
+ Perform a managed Twitter authentication process, including webview callout to twitter auth process if necessary
+ */
+- (void)authenticateWithTwitter:(id<SocializeTwitterAuthenticatorDelegate>)delegate;
+
+/**
  Authenticate with API key and API secret that were saved in the user defaults.
  
  This method is used to perform anonymous authentication. It means that uses could not do any action with his profile.  
@@ -427,6 +461,20 @@ otherwise you will get a failure.
 - (BOOL)facebookAvailable;
 
 /**
+ Check if TWITTER is configured
+ 
+ @return YES if the app is properly configured for facebook usage
+ */
+- (BOOL)twitterAvailable;
+
+/**
+ Check if the app is configured for any type of third party authentication (currently Facebook or Twitter)
+ 
+ @return YES if available, NO otherwise
+ */
+- (BOOL)thirdPartyAvailable;
+
+/**
  Check if authentication credentials still valid.
  
  @return YES if valid and NO if access token was expired.
@@ -439,14 +487,6 @@ otherwise you will get a failure.
 -(id<SocializeUser>)authenticatedUser;
 
 /**
- returns true/false based if facebook is configured correctly.  Will throw Assert error if Facebook
- is configured improperly or partially configured
- 
- @return YES if facebook is configured correctly and NO otherwise
- */
-
-- (BOOL)isFacebookConfigured;
-/**
  Check if authentication credentials still valid /and/ that this is a facebook authentication.
  
  @return YES if credentials are valid and facebook was used for authentication, and NO otherwise
@@ -454,11 +494,29 @@ otherwise you will get a failure.
 -(BOOL)isAuthenticatedWithFacebook;
 
 /**
+ @return YES if authenticated with Socialize and linked to Twitter
+ */
+-(BOOL)isAuthenticatedWithTwitter;
+
+/**
+ Check if authenticated with a third party
+ @return YES if authenticated with any third party (currently, either Twitter or Facebook)
+ */
+- (BOOL)isAuthenticatedWithThirdParty;
+
+/**
  Check if an existing facebook session already exists
  
  @return YES if there is already a valid facebook session for this app
  */
 - (BOOL)facebookSessionValid;
+
+/**
+ Check if an existing twitter session already exists
+ 
+ @return YES if there is already a valid twitter access token / secret
+ */
+- (BOOL)twitterSessionValid;
 
 /**
  Remove old authentication information.
