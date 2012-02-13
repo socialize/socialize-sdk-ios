@@ -73,6 +73,17 @@
     [_mockService verify];
 }
 
+
+- (void)testAssociateWithThirdParty {
+    NSString *testToken = @"testToken";
+    NSString *testTokenSecret = @"testTokenSecret";
+    
+    [[_mockService expect] executeRequest:OCMOCK_ANY];
+
+    [_mockService associateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeTwitter token:testToken tokenSecret:testTokenSecret];
+}
+
+
 -(void)testOAtoken{
 
     OAToken *authToken = [[[OAToken alloc ] initWithKey:@"somekkey" secret:@"somesecret"] autorelease];

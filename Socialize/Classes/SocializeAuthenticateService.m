@@ -33,6 +33,7 @@
 }
 
 #define AUTHENTICATE_METHOD @"authenticate/"
+#define ASSOCIATE_METHOD @"third_party_authenticate/"
 
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret{            
     NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier]];
@@ -137,6 +138,25 @@
                   thirdPartyName:thirdPartyName];
 }
 
+- (void)associateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
+                                  token:(NSString*)token
+                            tokenSecret:(NSString*)tokenSecret {
+    
+    NSString *authType = [NSString stringWithFormat:@"%d", type];
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
+                                   authType, @"auth_type",
+                                   token, @"auth_token",
+                                   tokenSecret, @"auth_token_secret",
+                                   nil];
+
+    SocializeRequest *request = [SocializeRequest secureRequestWithHttpMethod:@"POST"
+                                                                 resourcePath:ASSOCIATE_METHOD
+                                                           expectedJSONFormat:SocializeDictionary
+                                                                       params:params];
+    [self executeRequest:request];
+}
+
 - (void)authenticateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
                        thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
                     thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret {
@@ -177,6 +197,8 @@
     [self authenticateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeTwitter
                          thirdPartyAuthToken:accessToken
                    thirdPartyAuthTokenSecret:accessTokenSecret];
+
+//    [self associateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeTwitter token:accessToken tokenSecret:accessTokenSecret];
 }
 
 /**

@@ -116,6 +116,15 @@ Socialize authentication service is the authentication engine. It performs anony
          thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
                thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName;
 
+/**
+ Third party associate.
+ 
+ Associate third party info with an existing (Socialize oauth-verified) account
+ */
+- (void)associateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
+                                  token:(NSString*)token
+                            tokenSecret:(NSString*)tokenSecret;
+
 /**@name Other methods*/
 
 /**
