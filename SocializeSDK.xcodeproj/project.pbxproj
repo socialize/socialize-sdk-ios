@@ -3158,7 +3158,7 @@
 				AA73832C1489B52D009BE1D0 /* Errors */,
 				AAB64D9B147308C4009E892D /* Propagation */,
 				AA73815514EAD67200C8AE25 /* DeviceTokenSender */,
-				AAB64D9B147308C4009E892D /* Facebook Support */,
+				AAB64D9B147308C4009E892D /* Propagation */,
 			);
 			name = "API Client";
 			sourceTree = "<group>";

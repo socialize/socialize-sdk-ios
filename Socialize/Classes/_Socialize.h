@@ -201,13 +201,6 @@ otherwise you will get a failure.
 +(NSString*)twitterAccessToken;
 +(NSString*)twitterAccessTokenSecret;
 +(NSString*)twitterScreenName;
-
-/**
- Save device token to the user defaults.
- 
- @param deviceToken The device token from the notification registration
- */
-+(void)storeDeviceToken:(NSString*)deviceToken;
     
 /**
  Save app link to the user defaults.
