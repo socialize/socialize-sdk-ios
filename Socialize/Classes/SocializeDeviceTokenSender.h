@@ -26,5 +26,6 @@
 // FIXME actual api client wrapper should be separated from front-facing 'Socialize' component
 @property (nonatomic, retain) Socialize *socialize;
 @property (nonatomic, retain) NSTimer *timer;
+@property (nonatomic, assign, readonly) BOOL tokenOnServer;
 
 @end

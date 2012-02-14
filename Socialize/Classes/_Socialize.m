@@ -34,7 +34,6 @@
 
 NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAuthenticatedUserDidChangeNotification";
 NSString *const kSocializeDeviceTokenKey  = @"kSocializeDeviceTokenKey";
-NSString *const kSocializeDeviceTokenRegisteredKey  = @"kSocializeDeviceTokenRegisteredKey";
 
 @implementation Socialize
 
