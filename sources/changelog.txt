@@ -4,6 +4,12 @@
 Changelog
 =============================================
 
+v1.3.3
+------
+[bug] Update documentation to make it clear that entity loader is required for notifications [ documentation notifications]
+
+[bug] Clean up token send logic and add better logging [ notifications]
+
 v1.3.2
 ------
 [bug] App will crash if external Facebook auth is used, but no app id defined with Socialize [ crash facebook ]
