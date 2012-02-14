@@ -128,8 +128,10 @@ Handle Notifications
  
 Defining an Entity Loader
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Some of Socialize's UI objects have the ability to link back to your application's objects.  When a user opens a notifications you want to direct htem back to the related piece of content. 
-To do so you must implement the Socialize entity loader.
+For Smart Alerts to work correctly, you must define an entity loader.
+
+Defining an Entity Loader allows Socialize's UI objects to link back to your
+application's objects.
 
 Copy the lines below to add an entity loader 
 

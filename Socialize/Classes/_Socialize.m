@@ -25,13 +25,13 @@
 #import "SocializeNotificationHandler.h"
 #import "StringHelper.h"
 #import "SocializeTwitterAuthenticator.h"
+#import "SocializeDeviceTokenSender.h"
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"
 #define SOCIALIZE_FACEBOOK_LOCAL_APP_ID @"socialize_facebook_local_app_id"
 #define SOCIALIZE_FACEBOOK_APP_ID @"socialize_facebook_app_id"
 #define SOCIALIZE_APPLICATION_LINK @"socialize_app_link"
-#define SOCIALIZE_DEVICE_TOKEN @"socialize_device_token"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -52,6 +52,8 @@ SYNTH_DEFAULTS_GETTER(TYPE, LOWERNAME, STORE_KEY)
 NSString *const kSocializeDisableBrandingKey = @"kSocializeDisableBrandingKey";
 
 NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAuthenticatedUserDidChangeNotification";
+NSString *const kSocializeDeviceTokenKey  = @"kSocializeDeviceTokenKey";
+NSString *const kSocializeDeviceTokenRegisteredKey  = @"kSocializeDeviceTokenRegisteredKey";
 
 NSString *const kSocializeTwitterAuthConsumerKey = @"kSocializeTwitterAuthConsumerKey";
 NSString *const kSocializeTwitterAuthConsumerSecret = @"kSocializeTwitterAuthConsumerSecret";
@@ -95,8 +97,6 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
     [_objectFactory release]; _objectFactory = nil;
     [_authService release]; _authService = nil;
     [_likeService release]; _likeService = nil;
@@ -130,8 +130,6 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
         _shareService = [[SocializeShareService  alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _deviceTokenService = [[SocializeDeviceTokenService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _subscriptionService = [[SocializeSubscriptionService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userChanged:) name:SocializeAuthenticatedUserDidChangeNotification object:nil];
     }
     return self;
 }
@@ -171,12 +169,6 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     consumerSecret = [consumerSecret trim];
     [[NSUserDefaults standardUserDefaults] setValue:consumerSecret forKey:SOCIALIZE_API_SECRET];
-    [defaults synchronize];
-}
-
-+(void)storeDeviceToken:(NSString*)deviceToken {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setValue:deviceToken forKey:SOCIALIZE_DEVICE_TOKEN];
     [defaults synchronize];
 }
 
@@ -248,10 +240,6 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     return [_authService receiveFacebookAuthToken];
 }
 
-+(NSString *) deviceToken {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    return [defaults valueForKey:SOCIALIZE_DEVICE_TOKEN];
-}
 +(NSString*) applicationLink
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -287,6 +275,7 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     _viewService.delegate = delegate;
     _activityService.delegate = delegate;
     _userService.delegate = delegate;
+    _deviceTokenService.delegate = delegate;
 }
 
 -(void)authenticateWithFacebook {
@@ -574,21 +563,10 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     [_shareService createShareForEntityKey:key medium:medium text:text];
 }
 
-/* REGISTER DEVICE TOKEN SERVICE CALLS */
 #pragma mark notification service stuff
 +(void)registerDeviceToken:(NSData *)deviceToken {
-    Socialize *socialize = [Socialize sharedSocialize];
-    [socialize.deviceTokenService registerDeviceToken:deviceToken];
-
+    [[SocializeDeviceTokenSender sharedDeviceTokenSender] registerDeviceToken:deviceToken];
 }   
-
-- (void)resendDeviceToken {
-    NSString *existingToken = [Socialize deviceToken];
-    if ([existingToken length] > 0) {
-        [Socialize storeDeviceToken:nil];
-        [self.deviceTokenService registerDeviceToken:existingToken persistent:YES];
-    }
-}
 
 #pragma mark subscription types
 - (void)subscribeToCommentsForEntityKey:(NSString*)entityKey {
@@ -601,12 +579,6 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
 
 - (void)getSubscriptionsForEntityKey:(NSString*)entityKey first:(NSNumber*)first last:(NSNumber*)last {
     [_subscriptionService getSubscriptionsForEntityKey:entityKey first:first last:last];
-}
-
-- (void)userChanged:(id<SocializeUser>)newUser {
-    if (self == _sharedSocialize) {
-        [self resendDeviceToken];
-    }
 }
 
 + (NSString*)socializeRedirectURL:(NSString*)path {
@@ -630,9 +602,18 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
 
 - (BOOL)notificationsAreConfigured {
     BOOL entityLoaderDefined = [Socialize entityLoaderBlock] != nil;
-    BOOL tokenSent = [[Socialize deviceToken] length] > 0;
+    BOOL tokenAvailable = [[SocializeDeviceTokenSender sharedDeviceTokenSender] tokenAvailable];
     
-    return entityLoaderDefined && tokenSent;
+    return entityLoaderDefined && tokenAvailable;
 }
+
+- (void)_registerDeviceTokenString:(NSString*)deviceTokenString {
+    [_deviceTokenService registerDeviceTokenString:deviceTokenString];
+}
+
+- (void)registerDeviceToken:(NSData*)deviceToken {
+//    [[SocializeDeviceTokenSender sharedDeviceTokenSender] registerDeviceToken
+}
+
 
 @end
