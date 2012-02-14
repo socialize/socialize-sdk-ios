@@ -4,6 +4,10 @@
 Changelog
 =============================================
 
+v1.3.4
+------
+[bug] Remove all caching of device tokens [ notifications]
+
 v1.3.3
 ------
 [bug] Update documentation to make it clear that entity loader is required for notifications [ documentation notifications]
