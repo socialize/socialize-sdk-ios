@@ -163,13 +163,6 @@ otherwise you will get a failure.
  @param facebookLocalAppID Facebook App Id
  */
 +(void)storeFacebookLocalAppId:(NSString*)facebookLocalAppID;
-
-/**
- Save device token to the user defaults.
- 
- @param deviceToken The device token from the notification registration
- */
-+(void)storeDeviceToken:(NSString*)deviceToken;
     
 /**
  Save app link to the user defaults.
@@ -211,13 +204,6 @@ otherwise you will get a failure.
  @return Local Facebook app id
  */
 +(NSString*) facebookLocalAppId;
-
-/**
- Provide access to device token from notification registration
- 
- @return stored device token
- */
-+(NSString *) deviceToken;
 
 /**
  Provide access to the app link
@@ -670,5 +656,11 @@ otherwise you will get a failure.
 - (BOOL)notificationsAreConfigured;
 
 +(id)sharedSocialize;
+
+/** Send device token (string) to Socialize servers using the REST API
+ You should not require this function for normal use. Use registerDeviceToken: instead
+ */
+- (void)_registerDeviceTokenString:(NSString*)deviceTokenString;
+
 
 @end

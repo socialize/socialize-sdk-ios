@@ -13,7 +13,6 @@
 
 @property(nonatomic, retain) SocializeDeviceTokenService *deviceTokenService;
 @property(nonatomic, retain) id partialDeviceTokenService;
-@property(nonatomic, retain) id mockRegisterDeviceTimer;
 @property(nonatomic, retain) id mockDeviceTokenString;
 @property(nonatomic, retain) id mockDeviceToken;
 @end    

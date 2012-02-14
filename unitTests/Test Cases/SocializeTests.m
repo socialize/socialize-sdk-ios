@@ -300,20 +300,4 @@
     NSLog(@"didFetchElements %@", dataArray);
 }
 
-- (void)testThatSharedInstanceResendsDeviceTokenOnUserChange {
-    id mockDeviceTokenService = [OCMockObject mockForClass:[SocializeDeviceTokenService class]];
-    [[Socialize sharedSocialize] setDeviceTokenService:mockDeviceTokenService];
-    
-    [Socialize storeDeviceToken:@"abc123"];
-    [[[mockDeviceTokenService expect] andDo:^(NSInvocation *inv) {
-        [self notify:kGHUnitWaitStatusSuccess];
-    }] registerDeviceToken:@"abc123" persistent:YES];
-    
-    [self prepare];
-    [[NSNotificationCenter defaultCenter] postNotificationName:SocializeAuthenticatedUserDidChangeNotification object:nil];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
-    
-    [mockDeviceTokenService verify];
-}
-
 @end
