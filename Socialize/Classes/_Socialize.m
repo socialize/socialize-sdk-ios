@@ -424,8 +424,60 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     return YES;
 }
 
--(void)removeAuthenticationInfo{
-    [_authService removeAuthenticationInfo];
+- (void)removeFacebookAuthenticationInfo {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    // Remove any Facebook data -- these are defined by the Facebook API, and not Socialize specific
+    [defaults removeObjectForKey:@"FBAccessTokenKey"];
+    [defaults removeObjectForKey:@"FBExpirationDateKey"];
+    
+    [defaults synchronize];     
+}
+
+- (void)removeSocializeAuthenticationInfo {
+    [_authService removeSocializeAuthenticationInfo];
+}
+
+- (void)removeTwitterAuthenticationInfo {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // Remove any Twitter data -- these are Socialize specific
+    [defaults removeObjectForKey:kSocializeTwitterAuthAccessToken];
+    [defaults removeObjectForKey:kSocializeTwitterAuthAccessTokenSecret];
+    [defaults synchronize];
+    
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [storage cookies]) {
+        if ([[cookie domain] isEqualToString:@".twitter.com"]) {
+            NSLog(@"Deleting %@", cookie);
+            [storage deleteCookie:cookie];
+        }
+    }
+
+}
+
+- (void)twitterLogout {
+    [self removeTwitterAuthenticationInfo];
+    
+    // Remove existing auth data so we go back to anonymous
+//    if ([self isAuthenticatedWithTwitter]) {
+//        [self removeSocializeAuthenticationInfo];
+//    }
+}
+
+- (void)facebookLogout {
+    [self removeFacebookAuthenticationInfo];
+    
+    // Remove existing auth data so we go back to anonymous
+//    if ([self isAuthenticatedWithFacebook]) {
+//        [self removeSocializeAuthenticationInfo];
+//    }
+}
+
+-(void)removeAuthenticationInfo {
+    [self removeSocializeAuthenticationInfo];
+    [self removeFacebookAuthenticationInfo];
+    [self removeTwitterAuthenticationInfo];
 }
 
 #pragma object creation

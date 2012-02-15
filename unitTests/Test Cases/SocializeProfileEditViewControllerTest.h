@@ -18,6 +18,7 @@
 @property (nonatomic, retain) id mockBundle;
 @property (nonatomic, retain) id mockNavigationItem;
 @property (nonatomic, retain) id mockFacebookSwitch;
+@property (nonatomic, retain) id mockTwitterSwitch;
 @property (nonatomic, retain) id mockUserDefaults;
 @property (nonatomic, retain) id mockActionSheet;
 @property (nonatomic, retain) id mockSaveButton;

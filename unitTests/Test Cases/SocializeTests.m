@@ -68,7 +68,7 @@
 }
  */
 
--(void)testRemoveAuthInfo{
+-(void)testRemoveAuthInfo {
     id mockService = [OCMockObject mockForClass:[SocializeAuthenticateService class]];
     _service.authService = mockService;
     
@@ -77,7 +77,7 @@
     
     mockEntity.key = @"www.123.com";
     
-    [[mockService expect] removeAuthenticationInfo];
+    [[mockService expect] removeSocializeAuthenticationInfo];
     
     [_service removeAuthenticationInfo];
     [mockService verify];

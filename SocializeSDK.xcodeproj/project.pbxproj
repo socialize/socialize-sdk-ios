@@ -910,6 +910,8 @@
 		AA3326E9144CD9FB0033C7FA /* SampleSdkAppKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3326E4144CD9FB0033C7FA /* SampleSdkAppKIFTestController.m */; };
 		AA3326F5144CDA850033C7FA /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3326F2144CDA4B0033C7FA /* libKIF.a */; };
 		AA3326F6144CDAAA0033C7FA /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE945143564B100851C73 /* GHUnitIOS.framework */; };
+		AA337E7014E9EB6100A6BB9C /* OCMockRecorder+SocializeHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AA337E6F14E9EB6100A6BB9C /* OCMockRecorder+SocializeHelpers.m */; };
+		AA337E7314E9EDD000A6BB9C /* OCMockObject+SocializeHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AA337E7214E9EDD000A6BB9C /* OCMockObject+SocializeHelpers.m */; };
 		AA33A43B1463174700319168 /* profile_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CD4882C1386C42300E60C4C /* profile_functions.c */; };
 		AA369FB7146C50A700E15AA4 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = AA369FB3146C50A700E15AA4 /* NSData+Base64.h */; };
 		AA369FB8146C50A700E15AA4 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = AA369FB3146C50A700E15AA4 /* NSData+Base64.h */; };
@@ -1080,6 +1082,8 @@
 		AA540D8714E45DBA002E9FA4 /* SocializeTwitterAuthenticatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA540D8614E45DBA002E9FA4 /* SocializeTwitterAuthenticatorTests.m */; };
 		AA5ACEEF1467C3F200790B3D /* SocializeProfileEditValueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C2144325F9004E4C1B /* SocializeProfileEditValueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5ACEF01467C3F300790B3D /* SocializeProfileEditValueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C2144325F9004E4C1B /* SocializeProfileEditValueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA63C44714EA22C70035D4D0 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63C44614EA22C70035D4D0 /* JRSwizzle.m */; };
+		AA63C44A14EA24070035D4D0 /* UIAlertView+Observer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63C44914EA24070035D4D0 /* UIAlertView+Observer.m */; };
 		AA68733C14D1E56300970F77 /* SocializeVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = AA68733B14D1E56300970F77 /* SocializeVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA68733D14D1E56300970F77 /* SocializeVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = AA68733B14D1E56300970F77 /* SocializeVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6DE805145FBBB40037E48E /* SocializeFacebookInterfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE804145FBBB40037E48E /* SocializeFacebookInterfaceTests.m */; };
@@ -1709,6 +1713,7 @@
 		AADE200A14BE682700E59945 /* SocializeBubbleView.h in Headers */ = {isa = PBXBuildFile; fileRef = AADE200714BE682700E59945 /* SocializeBubbleView.h */; };
 		AADE200B14BE682700E59945 /* SocializeBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AADE200814BE682700E59945 /* SocializeBubbleView.m */; };
 		AADE200C14BE682700E59945 /* SocializeBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AADE200814BE682700E59945 /* SocializeBubbleView.m */; };
+		AAE2750814EB446D00CE081D /* SocializeTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2750714EB446D00CE081D /* SocializeTestCase.m */; };
 		AAE5942914E47C8A004F1976 /* UIViewController+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE5942714E47C8A004F1976 /* UIViewController+Socialize.h */; };
 		AAE5942A14E47C8A004F1976 /* UIViewController+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE5942714E47C8A004F1976 /* UIViewController+Socialize.h */; };
 		AAE5942B14E47C8A004F1976 /* UIViewController+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE5942814E47C8A004F1976 /* UIViewController+Socialize.m */; };
@@ -2520,6 +2525,10 @@
 		AA3326E3144CD9FB0033C7FA /* SampleSdkAppKIFTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleSdkAppKIFTestController.h; sourceTree = "<group>"; };
 		AA3326E4144CD9FB0033C7FA /* SampleSdkAppKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSdkAppKIFTestController.m; sourceTree = "<group>"; };
 		AA3326EA144CDA4A0033C7FA /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = Frameworks/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
+		AA337E6E14E9EB6100A6BB9C /* OCMockRecorder+SocializeHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OCMockRecorder+SocializeHelpers.h"; path = "Test Cases/OCMockRecorder+SocializeHelpers.h"; sourceTree = "<group>"; };
+		AA337E6F14E9EB6100A6BB9C /* OCMockRecorder+SocializeHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "OCMockRecorder+SocializeHelpers.m"; path = "Test Cases/OCMockRecorder+SocializeHelpers.m"; sourceTree = "<group>"; };
+		AA337E7114E9EDD000A6BB9C /* OCMockObject+SocializeHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OCMockObject+SocializeHelpers.h"; sourceTree = "<group>"; };
+		AA337E7214E9EDD000A6BB9C /* OCMockObject+SocializeHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OCMockObject+SocializeHelpers.m"; sourceTree = "<group>"; };
 		AA369FB3146C50A700E15AA4 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		AA369FB4146C50A700E15AA4 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		AA369FB5146C50A700E15AA4 /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
@@ -2560,6 +2569,10 @@
 		AA540D8514E45DBA002E9FA4 /* SocializeTwitterAuthenticatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeTwitterAuthenticatorTests.h; path = "Test Cases/SocializeTwitterAuthenticatorTests.h"; sourceTree = "<group>"; };
 		AA540D8614E45DBA002E9FA4 /* SocializeTwitterAuthenticatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeTwitterAuthenticatorTests.m; path = "Test Cases/SocializeTwitterAuthenticatorTests.m"; sourceTree = "<group>"; };
 		AA639F84144A34B600660E26 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		AA63C44514EA22C70035D4D0 /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
+		AA63C44614EA22C70035D4D0 /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
+		AA63C44814EA24070035D4D0 /* UIAlertView+Observer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Observer.h"; sourceTree = "<group>"; };
+		AA63C44914EA24070035D4D0 /* UIAlertView+Observer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Observer.m"; sourceTree = "<group>"; };
 		AA68733B14D1E56300970F77 /* SocializeVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeVersion.h; path = Classes/SocializeVersion.h; sourceTree = "<group>"; };
 		AA6B6F161472F4A4008E885B /* SocializeComposeMessageViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeComposeMessageViewControllerTests.h; path = "Test Cases/SocializeComposeMessageViewControllerTests.h"; sourceTree = "<group>"; };
 		AA6B6F171472F4A4008E885B /* SocializeComposeMessageViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeComposeMessageViewControllerTests.m; path = "Test Cases/SocializeComposeMessageViewControllerTests.m"; sourceTree = "<group>"; };
@@ -2768,6 +2781,8 @@
 		AAD7E38A144F80320073308D /* SocializeProfileViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileViewControllerTests.m; path = "Test Cases/SocializeProfileViewControllerTests.m"; sourceTree = "<group>"; };
 		AADE200714BE682700E59945 /* SocializeBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBubbleView.h; path = Classes/SocializeBubbleView.h; sourceTree = "<group>"; };
 		AADE200814BE682700E59945 /* SocializeBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBubbleView.m; path = Classes/SocializeBubbleView.m; sourceTree = "<group>"; };
+		AAE2750614EB446D00CE081D /* SocializeTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeTestCase.h; path = "Test Cases/SocializeTestCase.h"; sourceTree = "<group>"; };
+		AAE2750714EB446D00CE081D /* SocializeTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeTestCase.m; path = "Test Cases/SocializeTestCase.m"; sourceTree = "<group>"; };
 		AAE5942714E47C8A004F1976 /* UIViewController+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Socialize.h"; path = "Classes/UIViewController+Socialize.h"; sourceTree = "<group>"; };
 		AAE5942814E47C8A004F1976 /* UIViewController+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Socialize.m"; path = "Classes/UIViewController+Socialize.m"; sourceTree = "<group>"; };
 		AAE7958D14684EB100BEAD28 /* TestLikeServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLikeServices.h; sourceTree = "<group>"; };
@@ -3238,6 +3253,7 @@
 		5CC3DAEE1378859000B11B78 /* unitTests */ = {
 			isa = PBXGroup;
 			children = (
+				AA337E6D14E9EB2300A6BB9C /* Utilities */,
 				5CD488221386B91B00E60C4C /* Test Files */,
 				5CC3DAEF1378859000B11B78 /* Main Files */,
 				5CFCBE431385CAD100EF5073 /* Resources */,
@@ -3262,6 +3278,8 @@
 		5CD488221386B91B00E60C4C /* Test Files */ = {
 			isa = PBXGroup;
 			children = (
+				AAE2750614EB446D00CE081D /* SocializeTestCase.h */,
+				AAE2750714EB446D00CE081D /* SocializeTestCase.m */,
 				6D44A37613FC342D004B3A46 /* UI tests */,
 				1657EF9D13A226A800E488CC /* Utils Tests */,
 				1657EF9413A1FFBA00E488CC /* Infrastructure Tests */,
@@ -3803,6 +3821,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		AA337E6D14E9EB2300A6BB9C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AA63C44514EA22C70035D4D0 /* JRSwizzle.h */,
+				AA63C44614EA22C70035D4D0 /* JRSwizzle.m */,
+				AA337E6E14E9EB6100A6BB9C /* OCMockRecorder+SocializeHelpers.h */,
+				AA337E6F14E9EB6100A6BB9C /* OCMockRecorder+SocializeHelpers.m */,
+				AA337E7114E9EDD000A6BB9C /* OCMockObject+SocializeHelpers.h */,
+				AA337E7214E9EDD000A6BB9C /* OCMockObject+SocializeHelpers.m */,
+				AA63C44814EA24070035D4D0 /* UIAlertView+Observer.h */,
+				AA63C44914EA24070035D4D0 /* UIAlertView+Observer.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		AA369FB2146C50A700E15AA4 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
@@ -3983,7 +4016,6 @@
 				AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */,
 				AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */,
 				AABB7D921433F38B00D0FDF9 /* SocializeProfileEditValueViewController.xib */,
-				AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */,
 				AABB7D8F1433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib */,
 				AAD4B4141460B25100F39D0A /* SocializeProfileEditTableViewImageCell.h */,
 				AAD4B4151460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m */,
@@ -3993,6 +4025,7 @@
 				167E11C1144325F9004E4C1B /* SocializeProfileEditTableViewCell.m */,
 				AAD4B40B1460A45000F39D0A /* SocializeProfileEditViewController.h */,
 				AAD4B40C1460A45000F39D0A /* SocializeProfileEditViewController.m */,
+				AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */,
 				167E11C2144325F9004E4C1B /* SocializeProfileEditValueViewController.h */,
 				167E11C3144325F9004E4C1B /* SocializeProfileEditValueViewController.m */,
 				AA3CC5B414C60CE90095A849 /* SocializeProfileEditViewControllerDelegate.h */,
@@ -6543,6 +6576,11 @@
 				AA92BC1714E3985500F67058 /* SocializeTwitterAuthViewControllerTests.m in Sources */,
 				AA540D8714E45DBA002E9FA4 /* SocializeTwitterAuthenticatorTests.m in Sources */,
 				AA73815E14EAEB1900C8AE25 /* SocializeDeviceTokenSenderTests.m in Sources */,
+				AA337E7014E9EB6100A6BB9C /* OCMockRecorder+SocializeHelpers.m in Sources */,
+				AA337E7314E9EDD000A6BB9C /* OCMockObject+SocializeHelpers.m in Sources */,
+				AA63C44714EA22C70035D4D0 /* JRSwizzle.m in Sources */,
+				AA63C44A14EA24070035D4D0 /* UIAlertView+Observer.m in Sources */,
+				AAE2750814EB446D00CE081D /* SocializeTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

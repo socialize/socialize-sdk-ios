@@ -8,10 +8,11 @@
 
 #import <GHUnitIOS/GHUnit.h>
 #import "ImagesCache.h"
+#import "SocializeTestCase.h"
 
 @class SocializeBaseViewController;
 
-@interface SocializeBaseViewControllerTests : GHAsyncTestCase
+@interface SocializeBaseViewControllerTests : SocializeTestCase
 + (SocializeBaseViewController*)createController;
 @property (nonatomic, retain) SocializeBaseViewController *viewController;
 @property (nonatomic, retain) SocializeBaseViewController *origViewController;
@@ -30,7 +31,7 @@
 @property (nonatomic, retain) id mockKeyboardListener;
 @property (nonatomic, retain) id mockDelegate;
 @property (nonatomic, retain) id mockProfileEditViewController;
-- (void)expectServiceFailureWithError:(NSError*)error;
+- (void)expectServiceFailure;
 - (void)expectAndSimulateLoadOfImage:(UIImage*)image fromURL:(NSString*)url;
 - (void)expectViewWillAppear;
 - (void)expectChangeTitleOnCustomBarButton:(id)mockButton toText:(NSString*)text;

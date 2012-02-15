@@ -92,7 +92,7 @@
     [mockActivityService stubIsKindOfClass:[SocializeActivityService class]];
     
     [[(id)self.activityViewController expect] failLoadingContent];
-    [super expectServiceFailureWithError:nil];
+    [super expectServiceFailure];
     [self.activityViewController service:mockActivityService didFail:nil];
 }
 

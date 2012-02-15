@@ -139,7 +139,7 @@ Socialize authentication service is the authentication engine. It performs anony
  
  If user would like to re-authenticate he has to remove previous authentication information.
  */
--(void)removeAuthenticationInfo;
+-(void)removeSocializeAuthenticationInfo;
 
 /**
  This method is used for Facebook authentication.

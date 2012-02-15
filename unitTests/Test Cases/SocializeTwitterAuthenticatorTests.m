@@ -23,6 +23,8 @@
 
 - (void)setUp {
     self.twitterAuthenticator = [[[SocializeTwitterAuthenticator alloc] init] autorelease];
+    self.twitterAuthenticator = [OCMockObject partialMockForObject:self.twitterAuthenticator];
+    
     self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     [[self.mockSocialize stub] setDelegate:nil];
     
@@ -62,6 +64,9 @@
 
 - (void)testAuthenticateWithTwitterShowsTwitterAuthControllerIfNeeded {
     
+    // Should clear controller
+    [[(id)self.twitterAuthenticator expect] setTwitterAuthViewController:nil];
+    
     // Twitter session not valid
     [[[self.mockSocialize stub] andReturnBool:NO] twitterSessionValid];
 
@@ -90,7 +95,7 @@
     [[[self.mockSocialize stub] andReturnBool:YES] twitterSessionValid];
 
     // Not already authed
-    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithTwitter];
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithThirdParty];
     
     // Should send store credentials to Socialize server
     [[self.mockSocialize expect] authenticateWithTwitterUsingStoredCredentials];
@@ -122,7 +127,7 @@
     [[[self.mockSocialize stub] andReturnBool:YES] twitterSessionValid];
     
     // Already authed
-    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithTwitter];
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithThirdParty];
     
     [self prepare];
     [self.twitterAuthenticator didAuthenticate:nil];
@@ -137,7 +142,7 @@
     self.twitterAuthenticator.twitterAuthViewController = nil;
     SocializeTwitterAuthViewController *controller = self.twitterAuthenticator.twitterAuthViewController;
     
-    GHAssertEquals(controller.delegate, self.twitterAuthenticator, @"Bad delegate");
+    GHAssertEquals(controller.delegate, [(id)self.twitterAuthenticator realObject], @"Bad delegate");
 }
 
 - (void)testFailingSocializeServiceCausesFailure {

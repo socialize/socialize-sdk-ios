@@ -119,7 +119,7 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
     // Open "oauth/authenticate" in our UIWebView
     NSString *urlString = [SocializeTwitterAuthenticateURL stringByAppendingFormat:@"?oauth_token=%@", self.requestToken.key];
     NSURL *url = [NSURL URLWithString:urlString];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:10.0];
     [self.webView loadRequest:request];
 }
 
@@ -221,7 +221,7 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
     
     self.title = @"Twitter Auth";
     self.navigationItem.leftBarButtonItem = self.cancelButton;
-    
+
     [self tryToCompleteOAuthProcess];
 }
 

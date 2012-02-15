@@ -347,16 +347,16 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     [self.viewController viewWillAppear:YES];
 }
 
-- (void)expectServiceFailureWithError:(NSError*)error {
+- (void)expectServiceFailure {
     [[(id)self.viewController expect] stopLoadAnimation];
-    [[(id)self.viewController expect] showAlertWithText:[error localizedDescription] andTitle:OCMOCK_ANY];
+    [[(id)self.viewController expect] showAlertWithText:OCMOCK_ANY andTitle:OCMOCK_ANY];
 }
 
 - (void)testServiceFailureShowsAnAlert {
     NSString *testDescription = @"testDescription";
     id mockError = [OCMockObject mockForClass:[NSError class]];
     [[[mockError stub] andReturn:testDescription] localizedDescription];
-    [self expectServiceFailureWithError:mockError];
+    [self expectServiceFailure];
     [self.viewController service:nil didFail:mockError];
 }
 

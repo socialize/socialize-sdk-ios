@@ -36,7 +36,7 @@
 
 @end
 
-@implementation UIButton (TestUtils)
+@implementation UIControl (TestUtils)
 - (void)simulateControlEvent:(UIControlEvents)event {
     for (id target in [self allTargets]) {
         NSArray *actions = [self actionsForTarget:target forControlEvent:event];

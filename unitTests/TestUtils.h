@@ -20,7 +20,7 @@
 
 @end
 
-@interface UIButton (TestUtils)
+@interface UIControl (TestUtils)
 - (void)simulateControlEvent:(UIControlEvents)event;
 @end
 

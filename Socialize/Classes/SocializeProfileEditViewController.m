@@ -15,6 +15,23 @@
 #import "SocializePrivateDefinitions.h"
 #import "UINavigationController+Socialize.h"
 #import "UIImage+Resize.h"
+#import "UIAlertView+BlocksKit.h"
+
+@interface SocializeProfileEditViewController ()
+
+// Latch the status for these, so we can perform row animations
+@property (nonatomic, assign) BOOL showFacebookLogout;
+@property (nonatomic, assign) BOOL showTwitterLogout;
+
+- (void)updateInterfaceToReflectFacebookSessionStatus ;
+- (void)showTwitterLoginDialog;
+- (void)showFacebookLoginDialog;
+- (void)updateInterfaceToReflectSessionStatuses;
+- (void)updateInterfaceToReflectTwitterSessionStatus;
+- (NSIndexPath*)indexPathForTwitterLogoutRow;
+- (NSIndexPath*)indexPathForFacebookLogoutRow;
+- (NSIndexPath*)indexPathForFacebookLogoutRow;
+@end
 
 typedef struct {
     NSString *displayName;
@@ -29,16 +46,6 @@ static SocializeProfileEditViewControllerPropertiesInfo SocializeProfileEditView
 };
 
 
-typedef struct {
-    NSInteger rowCount;
-} SocializeProfileEditViewControllerSectionInfo;
-
-static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewControllerSectionInfoItems[] = {
-    { SocializeProfileEditViewControllerNumImageRows },
-    { SocializeProfileEditViewControllerNumPropertiesRows },
-    { SocializeProfileEditViewControllerNumPermissionsRows },
-};
-
 @implementation SocializeProfileEditViewController
 @synthesize fullUser = fullUser_;
 @synthesize profileImageCell = profileImageCell_;
@@ -50,10 +57,14 @@ static SocializeProfileEditViewControllerSectionInfo SocializeProfileEditViewCon
 @synthesize uploadPicActionSheet = uploadPicActionSheet_;
 @synthesize editValueController = editValueController_;
 @synthesize facebookSwitch = facebookSwitch_;
+@synthesize twitterSwitch = twitterSwitch_;
 @synthesize bundle = bundle_;
 @synthesize userDefaults = userDefaults_;
 @synthesize editOccured = editOccured_;
 SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
+@synthesize facebookCells = facebookCells_;
+@synthesize showFacebookLogout = showFacebookLogout_;
+@synthesize showTwitterLogout = showTwitterLogout_;
 
 + (UINavigationController*)profileEditViewControllerInNavigationController {
     SocializeProfileEditViewController *profileEditViewController = [self profileEditViewController];
@@ -75,9 +86,11 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     self.uploadPicActionSheet = nil;
     self.editValueController = nil;
     self.facebookSwitch = nil;
+    self.twitterSwitch = nil;
     self.bundle = nil;
     self.userDefaults = nil;
     self.saveButton = nil;
+    self.facebookCells = nil;
 
     [super dealloc];
 }
@@ -102,6 +115,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     self.navigationItem.leftBarButtonItem = self.cancelButton;	
     self.navigationItem.rightBarButtonItem = self.saveButton;
     [self changeTitleOnCustomBarButton:self.saveButton toText:@"Done"];
+
+    self.showTwitterLogout = [self.socialize twitterSessionValid];
+    self.showFacebookLogout = [self.socialize facebookSessionValid];
 }
 
 - (void)viewDidUnload
@@ -213,9 +229,37 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     return [self.cellBackgroundColors objectAtIndex:offset % 2];
 }
 
+- (NSInteger)twitterSection {
+    if (![self.socialize twitterAvailable]) {
+        return NSNotFound;
+    }
+    if ([self.socialize facebookAvailable]) {
+        return 3;
+    }
+    
+    return 2;
+}
+
+- (NSInteger)facebookSection {
+    if (![self.socialize facebookAvailable]) {
+        return NSNotFound;
+    }
+    return 2;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return SocializeProfileEditViewControllerNumSections;
+    NSInteger numSections = 2;
+    
+    if ([self.socialize facebookAvailable]) {
+        numSections++;
+    }
+    
+    if ([self.socialize twitterAvailable]) {
+        numSections++;
+    }
+    
+    return numSections;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -229,7 +273,30 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return SocializeProfileEditViewControllerSectionInfoItems[section].rowCount;
+    NSInteger numRows = 0;
+    switch (section) {
+        case SocializeProfileEditViewControllerSectionImage:
+            numRows = 1;
+            break;
+        case SocializeProfileEditViewControllerSectionProperties:
+            numRows = sizeof(SocializeProfileEditViewControllerPropertiesInfoItems) / sizeof(SocializeProfileEditViewControllerPropertiesInfo);
+            break;
+        case SocializeProfileEditViewControllerSectionFacebook:
+            if (self.showFacebookLogout) {
+                numRows = 2;
+            } else {
+                numRows = 1;
+            }
+            break;
+        case SocializeProfileEditViewControllerSectionTwitter:
+            if (self.showTwitterLogout) {
+                numRows = 2;
+            } else {
+                numRows = 1;
+            }
+            break;
+    }
+    return numRows;
 }
 
 - (void)configureProfileImageCell {
@@ -261,7 +328,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 	return profileImageCell_;
 }
 
--(SocializeProfileEditTableViewCell *)getNormalCell
+-(SocializeProfileEditTableViewCell *)getProfileEditCell
 {
 	
 	static NSString *CellIdentifier = @"profile_edit_cell";
@@ -276,6 +343,19 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 	
 	return cell;	
 }
+
+-(UITableViewCell*)getNormalCellWithStyle:(UITableViewCellStyle)style {
+	NSString *CellIdentifier = [NSString stringWithFormat:@"NormalCell__%d", style];
+
+	UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	
+	if (cell == nil) {
+        cell = [[[UITableViewCell alloc ] initWithStyle:style reuseIdentifier:CellIdentifier] autorelease];
+    }
+	
+	return cell;
+}
+
 
 - (NSString*)keyPathForPropertiesRow:(SocializeProfileEditViewControllerPropertiesRow)row {
     return SocializeProfileEditViewControllerPropertiesInfoItems[row].storageKeyPath;
@@ -302,6 +382,40 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     NSNumber *dontPostToFacebook = [NSNumber numberWithBool:!facebookSwitch.on];
     [self.userDefaults setObject:dontPostToFacebook forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
     [self.userDefaults synchronize];
+    
+    if ([facebookSwitch isOn] && ![self.socialize facebookSessionValid]) {
+        [self showFacebookLoginDialog];
+    }
+
+}
+
+- (UISwitch*)twitterSwitch {
+    if (twitterSwitch_ == nil) {
+        twitterSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
+        
+        if ([self.socialize twitterSessionValid]) {
+            twitterSwitch_.on = ![[self.userDefaults objectForKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY] boolValue];
+        } else {
+            twitterSwitch_.on = NO;
+        }
+        
+        [twitterSwitch_ addTarget:self action:@selector(twitterSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    return twitterSwitch_;
+}
+
+- (void)twitterSwitchChanged:(UISwitch*)twitterSwitch {
+    NSNumber *dontPostToTwitter = [NSNumber numberWithBool:!twitterSwitch.isOn];
+    [self.userDefaults setObject:dontPostToTwitter forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
+    [self.userDefaults synchronize];
+    
+    if ([twitterSwitch isOn] && ![self.socialize twitterSessionValid]) {
+        [self showTwitterLoginDialog];
+    }
+}
+
+- (UIColor*)cellFontColor {
+    return [UIColor colorWithRed:116.f/255.f green:137.f/255.f blue:156.f/255.f alpha:1.f];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -314,7 +428,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
             break;
             
         case SocializeProfileEditViewControllerSectionProperties:
-            cell = [self getNormalCell];
+            cell = [self getProfileEditCell];
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             NSString *keyText = SocializeProfileEditViewControllerPropertiesInfoItems[indexPath.row].displayName;
             NSString *valueText = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
@@ -323,16 +437,47 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
             [[(SocializeProfileEditTableViewCell*)cell arrowImageView] setHidden:NO];
             break;
             
-        case SocializeProfileEditViewControllerSectionPermissions:
-            cell = [self getNormalCell];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        case SocializeProfileEditViewControllerSectionFacebook:
+            cell = [self getNormalCellWithStyle:UITableViewCellStyleDefault];
+            cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.f];
+            cell.textLabel.textColor = [self cellFontColor];
             switch (indexPath.row) {
-                case SocializeProfileEditViewControllerPermissionsRowFacebook:
-                    [[(SocializeProfileEditTableViewCell*)cell keyLabel] setText:@"Post to Facebook"];
-                    [[(SocializeProfileEditTableViewCell*)cell valueLabel] setText:nil];
-                    [[(SocializeProfileEditTableViewCell*)cell arrowImageView] setHidden:YES];
+                case SocializeProfileEditViewControllerFacebookRowPost:
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.textLabel.textAlignment = UITextAlignmentLeft;
+                    cell.textLabel.text = @"Post to Facebook";
                     cell.accessoryView = self.facebookSwitch;
+                    break;
+                case SocializeProfileEditViewControllerFacebookRowLogout:
+                    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                    cell.textLabel.textAlignment = UITextAlignmentCenter;
+                    cell.textLabel.text = @"Sign out of Facebook";
+                    cell.accessoryView = nil;
+                    break;
+                default:
+                    NSAssert(NO, @"unhandled");
+            }
+            break;
+            
+        case SocializeProfileEditViewControllerSectionTwitter:
+            cell = [self getNormalCellWithStyle:UITableViewCellStyleDefault];
+            cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.f];
+            cell.textLabel.textColor = [self cellFontColor];
+
+            switch (indexPath.row) {
+                case SocializeProfileEditViewControllerTwitterRowPost:
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.textLabel.textAlignment = UITextAlignmentLeft;
+                    cell.textLabel.text = @"Post to Twitter";
+                    cell.accessoryView = self.twitterSwitch;
+
+                    break;
+                case SocializeProfileEditViewControllerTwitterRowLogout:
+                    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                    cell.textLabel.textAlignment = UITextAlignmentCenter;
+                    cell.textLabel.text = @"Sign out of Twitter";
+                    cell.accessoryView = nil;
+
                     break;
                 default:
                     NSAssert(NO, @"unhandled");
@@ -441,11 +586,68 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     }
 }
 
-
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
     if (baseViewController == self.editValueController) {
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (void)twitterLogout {
+    [self.socialize removeTwitterAuthenticationInfo];
+    [self updateInterfaceToReflectTwitterSessionStatus];
+}
+
+- (void)facebookLogout {
+    [self.socialize removeFacebookAuthenticationInfo];
+    [self updateInterfaceToReflectFacebookSessionStatus];
+}
+
+- (NSIndexPath*)indexPathForTwitterLogoutRow {
+    return [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerTwitterRowLogout inSection:[self twitterSection]];
+}
+
+- (NSIndexPath*)indexPathForFacebookLogoutRow {
+    return [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerFacebookRowLogout inSection:[self facebookSection]];
+}
+
+- (void)showConfirmLogoutDialogForService:(NSString*)service handler:(void(^)())handler {
+    NSString *message = [NSString stringWithFormat:@"%@ functionality will be disabled until you log in again", service];
+    UIAlertView *alertView = [UIAlertView alertWithTitle:@"Are You Sure?" message:message];
+    [alertView setCancelButtonWithTitle:@"Cancel" handler:^{}];
+    [alertView addButtonWithTitle:@"Log Out" handler:handler];
+    [alertView show];
+}
+
+- (void)scrollToTwitterLogoutRow {
+    [self.tableView scrollToRowAtIndexPath:[self indexPathForTwitterLogoutRow] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+- (void)twitterAuthenticatorDidSucceed:(SocializeTwitterAuthenticator *)twitterAuthenticator {
+    
+    // Add the twitter logout row
+    [self updateInterfaceToReflectSessionStatuses];
+}
+
+- (void)twitterAuthenticator:(SocializeTwitterAuthenticator *)twitterAuthenticator didFailWithError:(NSError *)error {
+    [self updateInterfaceToReflectSessionStatuses];
+}
+
+- (UIViewController*)twitterAuthenticatorRequiresModalPresentationTarget:(SocializeTwitterAuthenticator *)twitterAuthenticator {
+    return self;
+}
+
+- (void)showTwitterLoginDialog {
+    UIAlertView *alertView = [UIAlertView alertWithTitle:@"Twitter Login Required" message:@"Do you want to log in with Twitter?"];
+    [alertView setCancelButtonWithTitle:@"No" handler:^{ [self.twitterSwitch setOn:NO animated:YES]; }];
+    [alertView addButtonWithTitle:@"Yes" handler:^{ [self.socialize authenticateWithTwitter:self]; }];
+    [alertView show];    
+}
+
+- (void)showFacebookLoginDialog {
+    UIAlertView *alertView = [UIAlertView alertWithTitle:@"Facebook Login Required" message:@"Do you want to log in with Facebook?"];
+    [alertView setCancelButtonWithTitle:@"No" handler:^{ [self.facebookSwitch setOn:NO animated:YES]; }];
+    [alertView addButtonWithTitle:@"Yes" handler:^{ [self startLoading]; [self.socialize authenticateWithFacebook]; }];
+    [alertView show];    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -460,7 +662,83 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         self.editValueController.valueToEdit = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
         self.editValueController.indexPath = indexPath;
         [self.navigationController pushViewController:self.editValueController animated:YES];
+    } else if (indexPath.section == SocializeProfileEditViewControllerSectionTwitter) {
+        if (indexPath.row == SocializeProfileEditViewControllerTwitterRowLogout) {
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+            [self showConfirmLogoutDialogForService:@"Twitter" handler:^{ [self twitterLogout]; }];
+        }
+    } else if (indexPath.section == SocializeProfileEditViewControllerSectionFacebook) {
+        if (indexPath.row == SocializeProfileEditViewControllerFacebookRowLogout) {
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+            [self showConfirmLogoutDialogForService:@"Facebook" handler:^{ [self facebookLogout]; }];
+        }
     }
+}
+
+- (void)updateInterfaceToReflectFacebookSessionStatus {
+    if ([self.socialize facebookSessionValid] && !self.showFacebookLogout) {
+
+        // Logout button should be shown but isn't. Animate it into view
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerFacebookRowLogout inSection:[self facebookSection]];        
+        [self.tableView beginUpdates];
+        self.showFacebookLogout = YES;
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView endUpdates];
+    } else if (![self.socialize facebookSessionValid] && self.showFacebookLogout) {
+        
+        // Logout button shown but shouldn't be. Animate it out of view
+        [self.tableView beginUpdates];
+        self.showFacebookLogout = NO;
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForFacebookLogoutRow]] withRowAnimation:UITableViewRowAnimationBottom];
+        [self.socialize removeFacebookAuthenticationInfo];
+        [self.tableView endUpdates];
+
+    }
+    
+    if (![self.socialize facebookSessionValid]) {
+        // Force switch to off
+        if ([self.facebookSwitch isOn]) {
+            [self.facebookSwitch setOn:NO animated:YES];
+        } 
+    }
+}
+
+- (void)updateInterfaceToReflectTwitterSessionStatus {
+    if ([self.socialize twitterSessionValid] && !self.showTwitterLogout) {
+
+        // Logout button should be shown but isn't. Animate it into view
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerTwitterRowLogout inSection:[self twitterSection]];
+        [self.tableView beginUpdates];
+        self.showTwitterLogout = YES;
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView endUpdates];
+        
+        
+        // Since twitter logout is currently the last row, it feels awkward if we don't scroll
+        [self scrollToTwitterLogoutRow];
+
+    } else if (![self.socialize twitterSessionValid] && self.showTwitterLogout) {
+        
+        // Logout button shown but shouldn't be. Animate it out of view
+        [self.tableView beginUpdates];
+        self.showTwitterLogout = NO;
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForTwitterLogoutRow]] withRowAnimation:UITableViewRowAnimationBottom];
+        [self.socialize removeTwitterAuthenticationInfo];
+        [self.tableView endUpdates];
+
+    }
+    
+    if (![self.socialize twitterSessionValid]) {
+        // Force switch to off
+        if ([self.twitterSwitch isOn]) {
+            [self.twitterSwitch setOn:NO animated:YES];
+        }
+    }
+}
+
+- (void)updateInterfaceToReflectSessionStatuses {
+    [self updateInterfaceToReflectFacebookSessionStatus];
+    [self updateInterfaceToReflectTwitterSessionStatus];
 }
 
 -(void)service:(SocializeService*)service didUpdate:(id<SocializeObject>)object
@@ -473,9 +751,14 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
 {
+    [self updateInterfaceToReflectSessionStatuses];
     self.saveButton.enabled = YES;
-    [self stopLoading];
     [super service:service didFail:error];
+}
+
+- (void)didAuthenticate:(id<SocializeUser>)user {
+    [self stopLoading];
+    [self updateInterfaceToReflectSessionStatuses];
 }
 
 @end

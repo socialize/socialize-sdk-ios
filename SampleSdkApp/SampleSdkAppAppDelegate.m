@@ -71,8 +71,8 @@
     
     [Socialize storeTwitterConsumerKey:@"ZWxJ0zIK73n5HKwGLHolQ"];
     [Socialize storeTwitterConsumerSecret:@"3K1LTY39QM9DPAqJzSZAD3L2EBEXXvuCdtTRr8NDd8"];
-    [Socialize storeTwitterAccessToken:nil];
-    [Socialize storeTwitterAccessTokenSecret:nil];
+//    [Socialize storeTwitterAccessToken:@"blah"];
+//    [Socialize storeTwitterAccessTokenSecret:@"blah"];
 
     return YES;
 }

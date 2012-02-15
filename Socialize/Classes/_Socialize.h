@@ -201,6 +201,11 @@ otherwise you will get a failure.
 +(NSString*)twitterAccessToken;
 +(NSString*)twitterAccessTokenSecret;
 +(NSString*)twitterScreenName;
+
+- (void)removeTwitterAuthenticationInfo;
+
+- (void)removeFacebookAuthenticationInfo;
+
     
 /**
  Save app link to the user defaults.

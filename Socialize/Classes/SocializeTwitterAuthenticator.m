@@ -89,6 +89,7 @@
 }
 
 - (void)showTwitterAuthViewController {
+    self.twitterAuthViewController = nil;
     UINavigationController *nav = [self.twitterAuthViewController wrappingSocializeNavigationController];
     [self displayController:nav];
 }
@@ -99,7 +100,7 @@
         return;
     }
     
-    if (![self.socialize isAuthenticatedWithTwitter]) {
+    if (![self.socialize isAuthenticatedWithThirdParty]) {
         [self.socialize authenticateWithTwitterUsingStoredCredentials];
         return;
     }

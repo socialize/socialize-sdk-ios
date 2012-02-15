@@ -85,6 +85,9 @@
     [Socialize storeFacebookAppId:@"115622641859087"];
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];
+    [Socialize storeTwitterAccessToken:nil];
+    [Socialize storeTwitterAccessTokenSecret:nil];
+    
 #else
     [Socialize storeFacebookLocalAppId:nil];
 #endif

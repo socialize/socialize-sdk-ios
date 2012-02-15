@@ -250,26 +250,18 @@
     [self freeDelegate];
 }
 
--(void)removeAuthenticationInfo
+-(void)removeSocializeAuthenticationInfo
 {
-
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString* key = [NSString stringWithFormat:@"OAUTH_%@_%@_KEY", kPROVIDER_PREFIX, kPROVIDER_NAME];
     NSString* secret = [NSString stringWithFormat:@"OAUTH_%@_%@_SECRET", kPROVIDER_PREFIX, kPROVIDER_NAME];
     
     [defaults removeObjectForKey:key];
     [defaults removeObjectForKey:secret];
-
+    
     // Remove persisted local user data
     [defaults removeObjectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
-    
-    // Remove any Facebook data
-    [defaults removeObjectForKey:@"FBAccessTokenKey"];
-    [defaults removeObjectForKey:@"FBExpirationDateKey"];
-    
-    // Remove any Twitter data
-    [defaults removeObjectForKey:kSocializeTwitterAuthAccessToken];
-    [defaults removeObjectForKey:kSocializeTwitterAuthAccessTokenSecret];
 
     [defaults synchronize]; 
 }
@@ -449,7 +441,7 @@ static FacebookAuthenticator *FacebookAuthenticatorLastUsedAuthenticator;
 
 + (BOOL)handleOpenURL:(NSURL*)url {
     return [FacebookAuthenticatorLastUsedAuthenticator handleOpenURL:url];
-}   
+}
 
 -(BOOL) handleOpenURL:(NSURL *)url
 {

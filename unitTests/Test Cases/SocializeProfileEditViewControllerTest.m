@@ -15,6 +15,7 @@
 #import "SocializePrivateDefinitions.h"
 #import "UIImage+Resize.h"
 #import "SocializeBaseViewControllerDelegate.h"
+#import "UIAlertView+BlocksKit.h"
 
 @interface SocializeProfileEditViewController ()
 - (void)cancelButtonPressed:(UIButton*)button;
@@ -23,6 +24,7 @@
 - (BOOL)haveCamera;
 - (void)configureProfileImageCell;
 - (void)configureViewsForUser;
+- (void)twitterSwitchChanged:(UISwitch*)twitterSwitch;
 @end
 
 @implementation SocializeProfileEditViewControllerTest
@@ -35,6 +37,7 @@
 @synthesize mockUserDefaults = mockUserDefaults_;
 @synthesize mockActionSheet = mockActionSheet_;
 @synthesize mockSaveButton = mockSaveButton_;
+@synthesize mockTwitterSwitch = mocKTwitterSwitch_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -68,6 +71,9 @@
     self.mockFacebookSwitch = [OCMockObject mockForClass:[UISwitch class]];
     self.profileEditViewController.facebookSwitch = self.mockFacebookSwitch;
     
+    self.mockTwitterSwitch = [OCMockObject mockForClass:[UISwitch class]];
+    self.profileEditViewController.twitterSwitch = self.mockTwitterSwitch;
+
     self.mockUserDefaults = [OCMockObject mockForClass:[NSUserDefaults class]];
     self.profileEditViewController.userDefaults = self.mockUserDefaults;
     
@@ -86,6 +92,7 @@
     [self.mockBundle verify];
     [self.mockNavigationItem verify];
     [self.mockFacebookSwitch verify];
+    [self.mockTwitterSwitch verify];
     [self.mockUserDefaults verify];
     [self.mockActionSheet verify];
 
@@ -93,6 +100,7 @@
     self.mockDelegate = nil;
     self.mockNavigationItem = nil;
     self.mockFacebookSwitch = nil;
+    self.mockTwitterSwitch = nil;
     self.mockUserDefaults = nil;
     self.mockActionSheet = nil;
     self.mockSocialize = nil;
@@ -222,7 +230,9 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 }
 
 - (void)testNumberOfSections {
-    GHAssertEquals([self.profileEditViewController numberOfSectionsInTableView:nil], SocializeProfileEditViewControllerNumSections, @"Wrong section count");
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
+    [[[self.mockSocialize stub] andReturnBool:YES] twitterAvailable];
+    GHAssertEquals([self.profileEditViewController numberOfSectionsInTableView:nil], 4, @"Wrong section count");
 }
 
 - (void)testKeyPaths {
@@ -251,41 +261,55 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 // Switch is inverted -- called "Post to facebook", the user default is kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY
 - (void)testFacebookSwitchChangedOnToOff {
     // Return off (new state)
-    BOOL no = NO;
-    [[[self.mockFacebookSwitch expect] andReturnValue:OCMOCK_VALUE(no)] isOn];
+    [[[self.mockFacebookSwitch stub] andReturnBool:NO] isOn];
     
     // Expect defaults updated
     // Expect defaults go to not posting (ie, switch off)
     [[self.mockUserDefaults expect] setObject:[NSNumber numberWithBool:YES] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
     [[self.mockUserDefaults expect] synchronize];
     
+    
     [self.profileEditViewController facebookSwitchChanged:self.mockFacebookSwitch];
 }
 
 - (void)testFacebookCellConfiguration {
-    id mockCell = [OCMockObject mockForClass:[SocializeProfileEditTableViewCell class]];
-    [[[self.mockBundle expect] andDo:^(NSInvocation* inv) {
-        self.profileEditViewController.profileTextCell = mockCell;
-    }] loadNibNamed:@"SocializeProfileEditTableViewCell" owner:OCMOCK_ANY options:nil];
+    id mockCell = [OCMockObject niceMockForClass:[SocializeProfileEditTableViewCell class]];
+//    [[[self.mockBundle expect] andDo:^(NSInvocation* inv) {
+//        self.profileEditViewController.profileTextCell = mockCell;
+//    }] loadNibNamed:@"SocializeProfileEditTableViewCell" owner:OCMOCK_ANY options:nil];
 
-    id mockKeyLabel = [OCMockObject mockForClass:[UILabel class]];
-    id mockValueLabel = [OCMockObject mockForClass:[UILabel class]];
-    id mockArrowImageView = [OCMockObject mockForClass:[UIImageView class]];
+    id mockKeyLabel = [OCMockObject niceMockForClass:[UILabel class]];
+    id mockValueLabel = [OCMockObject niceMockForClass:[UILabel class]];
+    id mockArrowImageView = [OCMockObject niceMockForClass:[UIImageView class]];
     [[[mockCell expect] andReturn:mockKeyLabel] keyLabel];
     [[[mockCell expect] andReturn:mockValueLabel] valueLabel];
     [[[mockCell expect] andReturn:mockArrowImageView] arrowImageView];
-    [[mockKeyLabel expect] setText:@"Post to Facebook"];
-    [[mockValueLabel expect] setText:nil];
-    [[mockArrowImageView expect] setHidden:YES];
 
     [[mockCell expect] setSelectionStyle:UITableViewCellSelectionStyleNone];
     [[mockCell expect] setAccessoryView:self.mockFacebookSwitch];
-    [[mockCell expect] setBackgroundColor:[UIColor colorWithRed:35/255.0f green:43/255.0f blue:50/255.0f alpha:1.0]];
+    [[[self.mockTableView expect] andReturn:mockCell] dequeueReusableCellWithIdentifier:OCMOCK_ANY];
+
+    [self.profileEditViewController tableView:self.mockTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerFacebookRowPost inSection:SocializeProfileEditViewControllerSectionFacebook]];
+
+}
+
+
+- (void)testTwitterCellConfiguration {
+    id mockCell = [OCMockObject niceMockForClass:[SocializeProfileEditTableViewCell class]];
+
+    id mockKeyLabel = [OCMockObject niceMockForClass:[UILabel class]];
+    id mockValueLabel = [OCMockObject niceMockForClass:[UILabel class]];
+    id mockArrowImageView = [OCMockObject niceMockForClass:[UIImageView class]];
+    [[[mockCell expect] andReturn:mockKeyLabel] keyLabel];
+    [[[mockCell expect] andReturn:mockValueLabel] valueLabel];
+    [[[mockCell expect] andReturn:mockArrowImageView] arrowImageView];
+    
     [[mockCell expect] setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [[[self.mockTableView expect] andReturn:nil] dequeueReusableCellWithIdentifier:OCMOCK_ANY];
-
-    [self.profileEditViewController tableView:self.mockTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPermissionsRowFacebook inSection:SocializeProfileEditViewControllerSectionPermissions]];
-
+    [[mockCell expect] setAccessoryView:self.mockTwitterSwitch];
+    [[[self.mockTableView expect] andReturn:mockCell] dequeueReusableCellWithIdentifier:OCMOCK_ANY];
+    
+    [self.profileEditViewController tableView:self.mockTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerTwitterRowPost inSection:SocializeProfileEditViewControllerSectionTwitter]];
+    
 }
 
 - (void)testActionSheetNoCamera {
@@ -345,14 +369,20 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [mockPicker verify];
 }
 
-- (void)testViewDidLoad {
-    [[self.mockTableView expect] setAccessibilityLabel:@"edit profile"];
+- (void)expectViewDidLoad {
+    [[self.mockTableView expect] setAccessibilityLabel:OCMOCK_ANY];
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.mockCancelButton];
     [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockSaveButton];
-    
     [self expectChangeTitleOnCustomBarButton:self.mockSaveButton toText:@"Done"];
+}
 
-    [self.profileEditViewController viewDidLoad];
+- (void)performViewDidLoad {
+    [self expectViewDidLoad];
+    [self.profileEditViewController viewDidLoad];    
+}
+
+- (void)testViewDidLoad {
+    [self performViewDidLoad];
 }
 
 - (void)testViewDidUnload {
@@ -495,10 +525,31 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 }
  */
 
-- (void)testServiceFailure {
+- (void)expectServiceFailure {
     [[self.mockSaveButton expect] setEnabled:YES];
-    [[(id)self.profileEditViewController expect] stopLoading];
-    [[(id)self.profileEditViewController expect] showAlertWithText:OCMOCK_ANY andTitle:OCMOCK_ANY];
+    [super expectServiceFailure];
+}
+
+- (void)testServiceFailureTurnsOffFacebookButton {
+    
+    // Don't care about this mock
+    [self.mockTwitterSwitch makeNice];
+    
+    // Make sure any initial state is set
+    [self performViewDidLoad];
+    
+    // Facebook inactive
+    [[[self.mockSocialize stub] andReturnBool:NO] facebookSessionValid];
+    
+    // Switch is on (but shouldn't be anymore)
+    [[[self.mockFacebookSwitch stub] andReturnBool:YES] isOn];
+    
+    // Should turn off
+    [[self.mockFacebookSwitch expect] setOn:NO animated:YES];
+    
+    // Expect common failure
+    [self expectServiceFailure];
+    
     [self.profileEditViewController service:nil didFail:nil];
 }
 
@@ -526,5 +577,122 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [[self.mockSaveButton expect] setEnabled:YES];
     [self.profileEditViewController didGetCurrentUser:nil];
 }
+
+- (void)ignoreLoadingInterface {
+    [[(id)self stub] stopLoading];
+}
+
+- (void)testFinishingFacebookAuthAddsFacebookLogoutRow {
+    // ensure both available, so we can compute section
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
+    [[[self.mockSocialize stub] andReturnBool:YES] twitterAvailable];
+
+    // don't care
+    [self.mockTwitterSwitch makeNice];
+    
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookSessionValid];
+    
+    [[self.mockTableView expect] beginUpdates];
+    [[self.mockTableView expect] insertRowsAtIndexPaths:OCMOCK_ANY withRowAnimation:UITableViewRowAnimationTop];
+    [[self.mockTableView expect] endUpdates];
+    
+    [self.profileEditViewController didAuthenticate:nil];
+}
+
+- (void)testFinishingTwitterAuthAddsTwitterLogoutRow {
+    // ensure both available, so we can compute section
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
+    [[[self.mockSocialize stub] andReturnBool:YES] twitterAvailable];
+
+    // don't care
+    [self.mockFacebookSwitch makeNice];
+    
+    // allow other messages
+    [self.mockTableView makeNice];
+    
+    [[[self.mockSocialize stub] andReturnBool:YES] twitterSessionValid];
+    
+    NSIndexPath *expectedPath = [NSIndexPath indexPathForRow:1 inSection:3];
+    
+    [[self.mockTableView expect] beginUpdates];
+    [[self.mockTableView expect] insertRowsAtIndexPaths:[NSArray arrayWithObject:expectedPath] withRowAnimation:UITableViewRowAnimationTop];
+    [[self.mockTableView expect] endUpdates];
+    
+    [self.profileEditViewController didAuthenticate:nil];
+}
+
+- (void)testSettingTwitterSwitchOffUpdatesDefaults {
+
+    // Should no longer post to twitter
+    [[self.mockUserDefaults expect] setObject:[NSNumber numberWithBool:YES] forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
+    [[self.mockUserDefaults expect] synchronize];
+
+    [[[self.mockTwitterSwitch stub] andReturnBool:NO] isOn];
+    
+    [self.profileEditViewController twitterSwitchChanged:self.mockTwitterSwitch];
+}
+
+- (void)testSettingTwitterSwitchOnPromptsForLogin {
+    [self.mockUserDefaults makeNice];
+    
+    [[[self.mockSocialize stub] andReturnBool:NO] twitterSessionValid];
+    
+    [[[self.mockTwitterSwitch stub] andReturnBool:YES] isOn];
+    
+    [self.profileEditViewController twitterSwitchChanged:self.mockTwitterSwitch];
+    
+    GHAssertNotNil(self.lastShownAlert, @"Should have alert");
+}
+
+- (void)testSettingFacebookSwitchOnPromptsForLogin {
+    [self.mockUserDefaults makeNice];
+    
+    [[[self.mockSocialize stub] andReturnBool:NO] facebookSessionValid];
+    
+    [[[self.mockFacebookSwitch stub] andReturnBool:YES] isOn];
+    
+    [self.profileEditViewController facebookSwitchChanged:self.mockFacebookSwitch];
+    
+    GHAssertNotNil(self.lastShownAlert, @"Should have alert");
+}
+
+- (void)testSelectingTwitterLogoutPromptsForLogout {
+    // ensure both available, so we can compute section
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
+    [[[self.mockSocialize stub] andReturnBool:YES] twitterAvailable];
+    
+    [[[self.mockSocialize stub] andReturnBool:YES] twitterSessionValid];
+    
+    [self.mockTableView makeNice];
+    
+    NSIndexPath *logoutPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerTwitterRowLogout inSection:SocializeProfileEditViewControllerSectionTwitter];
+    [self.profileEditViewController tableView:self.mockTableView didSelectRowAtIndexPath:logoutPath];
+    
+    GHAssertNotNil(self.lastShownAlert, @"Should have alert");
+    
+    [[self.mockSocialize expect] removeTwitterAuthenticationInfo];
+    BKBlock handler = [self.lastShownAlert handlerForButtonAtIndex:1];
+    handler();
+}
+
+- (void)testSelectingFacebookLogoutPromptsForLogout {
+    // ensure both available, so we can compute section
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
+    [[[self.mockSocialize stub] andReturnBool:YES] twitterAvailable];
+    
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookSessionValid];
+    
+    [self.mockTableView makeNice];
+    
+    NSIndexPath *logoutPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerFacebookRowLogout inSection:SocializeProfileEditViewControllerSectionFacebook];
+    [self.profileEditViewController tableView:self.mockTableView didSelectRowAtIndexPath:logoutPath];
+    
+    GHAssertNotNil(self.lastShownAlert, @"Should have alert");
+    
+    [[self.mockSocialize expect] removeFacebookAuthenticationInfo];
+    BKBlock handler = [self.lastShownAlert handlerForButtonAtIndex:1];
+    handler();
+}
+
 
 @end
