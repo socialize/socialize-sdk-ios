@@ -13,6 +13,7 @@
 @interface SocializeDeviceTokenSender ()
 - (void)startTimer;
 - (void)timerCheck;
+@property (nonatomic, assign) BOOL tokenOnServer;
 @end
 
 @implementation SocializeDeviceTokenSenderTests
@@ -35,25 +36,21 @@
     self.deviceTokenSender = nil;
 }
 
-- (void)setTokenOnServer:(BOOL)tokenOnServer {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:tokenOnServer] forKey:kSocializeDeviceTokenRegisteredKey];
-}
-
 - (void)testThatDeviceTokenResentOnUserChange {
     NSString *testToken = @"FFFF1234";
     
     [[NSUserDefaults standardUserDefaults] setObject:testToken forKey:kSocializeDeviceTokenKey];
-    [self setTokenOnServer:YES];
+    self.deviceTokenSender.tokenOnServer = YES;
     
     [[self.mockSocialize expect] _registerDeviceTokenString:testToken];
     [[NSNotificationCenter defaultCenter] postNotificationName:SocializeAuthenticatedUserDidChangeNotification object:nil];
     
-    BOOL registered = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDeviceTokenRegisteredKey] boolValue];
+    BOOL registered = self.deviceTokenSender.tokenOnServer;
     GHAssertFalse(registered, @"Should not be registered");
 }
 
 - (void)testThatFailureStartsTimer {
-    [self setTokenOnServer:NO];
+    self.deviceTokenSender.tokenOnServer = NO;
     
     [[(id)self.deviceTokenSender expect] startTimer];
     
@@ -64,7 +61,8 @@
     NSString *testToken = @"ffff1234";
 
     [[NSUserDefaults standardUserDefaults] setObject:testToken forKey:kSocializeDeviceTokenKey];
-    [self setTokenOnServer:NO];
+    self.deviceTokenSender.tokenOnServer = NO;
+
     
     // Simulate server response with capitalized token string
     SocializeDeviceToken *deviceToken = [[[SocializeDeviceToken alloc] init] autorelease];
@@ -72,15 +70,14 @@
     
     [self.deviceTokenSender service:nil didCreate:deviceToken];
     
-    BOOL registered = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDeviceTokenRegisteredKey] boolValue];
-    GHAssertTrue(registered, @"Should be registered");
+    GHAssertTrue(self.deviceTokenSender.tokenOnServer, @"Should be registered");
 }
 
 - (void)testSuccessfulCreateWithMismatchedTokenFailsAndStartsTimer {
     NSString *testToken = @"FFFF1234";
 
     [[NSUserDefaults standardUserDefaults] setObject:testToken forKey:kSocializeDeviceTokenKey];
-    [self setTokenOnServer:NO];
+    self.deviceTokenSender.tokenOnServer = NO;
     
     SocializeDeviceToken *deviceToken = [[[SocializeDeviceToken alloc] init] autorelease];
     [deviceToken setDevice_token:@"blah"];
@@ -90,12 +87,11 @@
 
     [self.deviceTokenSender service:nil didCreate:deviceToken];
     
-    BOOL registered = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDeviceTokenRegisteredKey] boolValue];
-    GHAssertFalse(registered, @"Should not be registered");
+    GHAssertFalse(self.deviceTokenSender.tokenOnServer, @"Should not be registered");
 }
 
 - (void)testDeviceTokenRegistration {
-    [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"kSocializeDeviceTokenRegisteredKey"];
+    self.deviceTokenSender.tokenOnServer = NO;
     char testTokenData[2] = "\xaa\xff";
     NSData *testToken = [NSData dataWithBytes:&testTokenData length:sizeof(testTokenData)];
     NSString *testTokenString = @"aaff";
@@ -117,13 +113,39 @@
     self.deviceTokenSender.timer = mockTimer;
 
     // Token already sent
-    [self setTokenOnServer:YES];
+    self.deviceTokenSender.tokenOnServer = YES;
     
     // Should invalidate
     [[mockTimer expect] invalidate];
 
     [self.deviceTokenSender timerCheck];
     [mockTimer verify];
+}
+
+- (void)expectRegistrationAndSucceed {
+    [[[self.mockSocialize expect] andDo:^(NSInvocation *inv) {
+        NSString *deviceTokenString;
+        [inv getArgument:&deviceTokenString atIndex:2];
+        SocializeDeviceToken *deviceToken = [[[SocializeDeviceToken alloc] init] autorelease];
+        [deviceToken setDevice_token:deviceTokenString];
+        [self.deviceTokenSender service:nil didCreate:deviceToken];
+    }] _registerDeviceTokenString:OCMOCK_ANY];
+}
+
+- (void)testSendingMultipleTokens {
+    char testTokenData1[2] = "\x11\x22";
+    NSData *testToken1 = [NSData dataWithBytes:&testTokenData1 length:sizeof(testTokenData1)];
+
+    char testTokenData2[2] = "\xbb\xee";
+    NSString *testTokenString2 = @"bbee";
+    NSData *testToken2 = [NSData dataWithBytes:&testTokenData2 length:sizeof(testTokenData2)];
+
+    [self expectRegistrationAndSucceed];
+    
+    [[self.mockSocialize expect] _registerDeviceTokenString:testTokenString2];
+    
+    [self.deviceTokenSender registerDeviceToken:testToken1];
+    [self.deviceTokenSender registerDeviceToken:testToken2];
 }
 
 @end

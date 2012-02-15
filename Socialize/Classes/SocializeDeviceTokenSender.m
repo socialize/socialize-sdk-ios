@@ -14,6 +14,8 @@
 @interface SocializeDeviceTokenSender ()
 - (void)startTimer;
 - (void)sendDeviceTokenIfNecessary;
+- (void)resendDeviceToken;
+@property (nonatomic, assign) BOOL tokenOnServer;
 @end
 
 static SocializeDeviceTokenSender *sharedDeviceTokenSender;
@@ -22,6 +24,7 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
 @implementation SocializeDeviceTokenSender
 @synthesize socialize = socialize_;
 @synthesize timer = timer_;
+@synthesize tokenOnServer = tokenOnServer_;
 
 + (void)load {
     (void)[self sharedDeviceTokenSender];
@@ -72,25 +75,23 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
     NSString *deviceTokenString = [self stringForToken:deviceToken];
     NSAssert([deviceTokenString length] > 0, @"Bad token");
     [[NSUserDefaults standardUserDefaults] setObject:deviceTokenString forKey:kSocializeDeviceTokenKey];
-    [self sendDeviceTokenIfNecessary];
+    [self resendDeviceToken];
 }
 
 - (void)sendDeviceTokenIfNecessary {
     NSString *existingToken = [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDeviceTokenKey];
-    if ([existingToken length] > 0 && ![self tokenOnServer]) {
+    if ([existingToken length] > 0 && !self.tokenOnServer) {
         [self.socialize _registerDeviceTokenString:existingToken];
     }
 }
 
 - (void)resendDeviceToken {
-    // Force an update
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSocializeDeviceTokenRegisteredKey];
-    
+    self.tokenOnServer = NO;
     [self sendDeviceTokenIfNecessary];
 }
 
 - (void)timerCheck {
-    if (![self tokenOnServer]) {
+    if (!self.tokenOnServer) {
         // Token still does not exist on server
         [self sendDeviceTokenIfNecessary];
     } else {
@@ -112,7 +113,7 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
     if (self.timer != nil)
         return;
     
-    if ([self tokenOnServer])
+    if (self.tokenOnServer)
         return;
     
     [self startTimer];
@@ -125,11 +126,6 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
 - (BOOL)tokenAvailable {
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDeviceTokenKey];
     return [token length] > 0;
-}
-
-- (BOOL)tokenOnServer {
-    NSNumber *tokenRegistered = [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDeviceTokenRegisteredKey];
-    return [tokenRegistered boolValue];
 }
 
 - (void)service:(SocializeService *)service didFail:(NSError *)error {
@@ -145,7 +141,7 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
     
     if ([serverToken length] > 0 && [[serverToken lowercaseString] isEqualToString:[storedToken lowercaseString]]) {
         NSLog(@"Socialize: device token %@ successfully registered with server", serverToken);
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSocializeDeviceTokenRegisteredKey];
+        self.tokenOnServer = YES;
     } else {
         
         NSLog(@"Socialize: token registration problem: server token (%@) did not match stored token (%@)", serverToken, storedToken);

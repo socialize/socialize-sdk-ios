@@ -53,7 +53,6 @@ NSString *const kSocializeDisableBrandingKey = @"kSocializeDisableBrandingKey";
 
 NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAuthenticatedUserDidChangeNotification";
 NSString *const kSocializeDeviceTokenKey  = @"kSocializeDeviceTokenKey";
-NSString *const kSocializeDeviceTokenRegisteredKey  = @"kSocializeDeviceTokenRegisteredKey";
 
 NSString *const kSocializeTwitterAuthConsumerKey = @"kSocializeTwitterAuthConsumerKey";
 NSString *const kSocializeTwitterAuthConsumerSecret = @"kSocializeTwitterAuthConsumerSecret";
