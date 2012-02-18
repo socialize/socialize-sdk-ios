@@ -13,5 +13,4 @@
 
 @synthesize medium = _medium;
 
-
 @end

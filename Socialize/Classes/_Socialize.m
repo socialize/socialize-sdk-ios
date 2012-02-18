@@ -614,6 +614,10 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     [_shareService createShareForEntityKey:key medium:medium text:text];
 }
 
+- (void)createShare:(id<SocializeShare>)share {
+    [_shareService createShare:share];
+}
+
 #pragma mark notification service stuff
 +(void)registerDeviceToken:(NSData *)deviceToken {
     [[SocializeDeviceTokenSender sharedDeviceTokenSender] registerDeviceToken:deviceToken];
@@ -665,6 +669,5 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
 - (void)registerDeviceToken:(NSData*)deviceToken {
 //    [[SocializeDeviceTokenSender sharedDeviceTokenSender] registerDeviceToken
 }
-
 
 @end

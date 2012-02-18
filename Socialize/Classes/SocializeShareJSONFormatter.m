@@ -18,8 +18,16 @@
     id<SocializeShare> share = (id<SocializeShare>)toObject;
     
     [share setMedium:[[[JSONDictionary valueForKey:@"medium"] valueForKey:@"id"] intValue]];
-    [share setText:[JSONDictionary valueForKey:@"text"]];
     [super doToObject:share fromDictionary:JSONDictionary];
+}
+
+- (void)doToDictionary:(NSMutableDictionary *)dictionaryRepresentation fromObject:(id<SocializeObject>)fromObject {
+    id<SocializeShare> share = (id<SocializeShare>)fromObject;
+
+    NSString *medium = [NSString stringWithFormat:@"%d", [share medium]];
+    [dictionaryRepresentation setObject:medium forKey:@"medium"];
+    
+    [super doToDictionary:dictionaryRepresentation fromObject:fromObject];
 }
 
 @end

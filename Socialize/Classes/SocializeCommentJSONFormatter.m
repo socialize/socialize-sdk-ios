@@ -50,4 +50,13 @@
     [super doToObject:comment fromDictionary:JSONDictionary];
 }
 
+- (void)doToDictionary:(NSMutableDictionary *)dictionaryRepresentation fromObject:(id<SocializeObject>)fromObject {
+    id<SocializeComment> comment = (id<SocializeComment>)fromObject;
+    
+    [dictionaryRepresentation setObject:[comment text] forKey:@"text"];
+    
+    [super doToDictionary:dictionaryRepresentation fromObject:fromObject];
+}
+
+
 @end

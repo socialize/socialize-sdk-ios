@@ -88,6 +88,17 @@
  */
 -(void)setDate:(NSDate *)date;
 
+/**
+ Get text to be sent to twitter when this activity is created.
+ */
+-(NSString *)twitterText;
+
+/**
+ Set text to be sent to twitter when this activity is created.
+ @param twitterText
+ */
+-(void)setTwitterText:(NSString *)twitterText;
+
 @end
 
 /**Private implementation of <SocializeActivity> protocol*/
@@ -116,5 +127,8 @@
 @property (nonatomic, retain) NSNumber*           lng;
 /** Set\get date of activity.*/
 @property (nonatomic, retain) NSDate*           date;
+
+/* Text to be sent to twitter */
+@property (nonatomic, copy) NSString *twitterText;
 
 @end

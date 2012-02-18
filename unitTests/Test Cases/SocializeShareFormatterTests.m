@@ -49,4 +49,39 @@
     [mockShare verify];
 }
 
+- (void)testFromShare {
+    NSString *testKey = @"testKey";
+    NSString *testName = @"testName";
+    NSString *testText = @"testText";
+    NSString *testTwitterText = @"testTwitterText";
+    
+    SocializeShare *share = [[[SocializeShare alloc] init] autorelease];
+    SocializeEntity *entity = [[[SocializeEntity alloc] init] autorelease];
+    [entity setKey:testKey];
+    [entity setName:testName];
+    [share setEntity:entity];
+    [share setMedium:SocializeShareMediumTwitter];
+    [share setText:testText];
+    [share setTwitterText:testTwitterText];
+    
+    NSMutableDictionary *testDict = [NSMutableDictionary dictionary];
+    SocializeShareJSONFormatter *entityFormatter = [[[SocializeShareJSONFormatter alloc] initWithFactory:_factory] autorelease];
+    [entityFormatter toDictionary:testDict fromObject:share];
+    NSLog(@"%@", testDict);
+    
+    NSString *dictKey = [[testDict objectForKey:@"entity"] objectForKey:@"key"];
+    NSString *dictName = [[testDict objectForKey:@"entity"] objectForKey:@"name"];
+    NSNumber *dictMedium = [testDict objectForKey:@"medium"];
+    NSNumber *dictTwitterText = [[[testDict objectForKey:@"propagation"] objectAtIndex:0] objectForKey:@"text"];
+    NSNumber *dictTwitterThirdParty = [[[testDict objectForKey:@"propagation"] objectAtIndex:0] objectForKey:@"third_party"];
+    NSNumber *dictText = [testDict objectForKey:@"text"];
+    GHAssertEqualStrings(dictKey, testKey, nil);
+    GHAssertEqualStrings(dictName, testName, nil);
+    GHAssertEquals([dictMedium integerValue], SocializeShareMediumTwitter, nil);
+    GHAssertEqualStrings(dictKey, testKey, nil);
+    GHAssertEqualStrings(dictTwitterText, testTwitterText, nil);
+    GHAssertEqualStrings(dictTwitterThirdParty, @"twitter", nil);
+    GHAssertEqualStrings(dictText, testText, nil);
+}
+
 @end

@@ -22,6 +22,16 @@
     return  @protocol(SocializeShare);
 }
 
+- (void)createShare:(id<SocializeShare>)share {
+    NSDictionary *params = [_objectCreator createDictionaryRepresentationOfObject:share];
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:SHARE_METHOD
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                      params:[NSArray arrayWithObject:params]]
+     ];
+}
+
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text{
     [self createShareForEntityKey:[entity key] medium:medium text:text];
 }

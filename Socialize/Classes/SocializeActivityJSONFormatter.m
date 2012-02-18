@@ -31,6 +31,13 @@
 
 @implementation SocializeActivityJSONFormatter
 
+// Application: [I]
+// Entity: [IO]
+// User: [I]
+// Lat: [IO]
+// Lng: [IO]
+// Date: [I]
+
 -(void)doToObject:(id<SocializeObject>) toObject fromDictionary:(NSDictionary *)JSONDictionary
 {
     id<SocializeActivity> activity = (id<SocializeActivity>)toObject;
@@ -57,5 +64,42 @@
     
     [activity setUser:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"user"] forProtocol:@protocol(SocializeUser)]];
 }
+
+- (void)doToDictionary:(NSMutableDictionary *)dictionaryRepresentation fromObject:(id<SocializeObject>)fromObject {
+    
+    id<SocializeActivity> activity = (id<SocializeActivity>)fromObject;
+    
+    [dictionaryRepresentation setValue:[activity lat] forKey:@"lat"];
+    [dictionaryRepresentation setValue:[activity lng] forKey:@"lng"];
+    
+    id<SocializeEntity> entity = [activity entity];
+    if ([[entity name] length] > 0) {
+        NSMutableDictionary *entityParams = [NSMutableDictionary dictionary];
+        [entityParams setObject:[entity key] forKey:@"key"];
+        [entityParams setObject:[entity name] forKey:@"name"];
+        [dictionaryRepresentation setObject:entityParams forKey:@"entity"];
+    } else {
+        [dictionaryRepresentation setObject:[entity key] forKey:@"entity_key"];
+    }
+    
+    NSMutableArray *propagators = [NSMutableArray array];
+    
+    if ([activity twitterText] != nil) {
+        // Add twitter propagator
+        NSDictionary *twitterDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     [activity twitterText], @"text",
+                                     @"twitter", @"third_party",
+                                     nil];
+        [propagators addObject:twitterDict];
+    }
+
+    // Add propagators if there are any
+    if ([propagators count] > 0) {
+        [dictionaryRepresentation setObject:propagators forKey:@"propagation"];
+    }
+
+    [super doToDictionary:dictionaryRepresentation fromObject:fromObject];
+}
+
 
 @end

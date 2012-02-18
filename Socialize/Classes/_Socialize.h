@@ -715,6 +715,7 @@ otherwise you will get a failure.
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text;
 -(void)createShareForEntityWithKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text;
+- (void)createShare:(id<SocializeShare>)share;
 
 /**
  Enable push notifications for new comments on the given entity
