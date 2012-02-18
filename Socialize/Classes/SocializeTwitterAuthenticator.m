@@ -11,11 +11,16 @@
 #import "SocializeTwitterAuthViewController.h"
 #import "UINavigationController+Socialize.h"
 
+@interface SocializeTwitterAuthenticator ()
+@property (nonatomic, assign) BOOL sentTokenToSocialize;
+@end
+
 @implementation SocializeTwitterAuthenticator
 @synthesize delegate = delegate_;
 @synthesize socialize = socialize_;
 @synthesize twitterAuthViewController = twitterAuthViewController_;
 @synthesize modalPresentationTarget = modalPresentationTarget_;
+@synthesize sentTokenToSocialize = sentTokenToSocialize_;
 
 - (void)dealloc {
     self.socialize = nil;
@@ -46,7 +51,19 @@
     return twitterAuthViewController_;
 }
 
+- (void)dismissController:(UIViewController*)controller {
+    if ([self.delegate respondsToSelector:@selector(twitterAuthenticator:requiresDismissOfViewController:)]) {
+        [self.delegate twitterAuthenticator:self requiresDismissOfViewController:controller];
+    } else if (self.modalPresentationTarget != nil) {
+        [self.modalPresentationTarget dismissModalViewControllerAnimated:YES];
+    } else {
+        NSAssert(NO, @"Delegate implementation error. You MUST implement either twitterAuthenticator:requiresDismissOfViewController: or modalPresentationTargetForTwitterAuthenticator:");
+    }
+}
+
 - (void)succeed {
+    [self dismissController:self.twitterAuthViewController];
+
     if ([self.delegate respondsToSelector:@selector(twitterAuthenticatorDidSucceed:)]) {
         [self.delegate twitterAuthenticatorDidSucceed:self];
     }
@@ -66,16 +83,6 @@
     }
     
     return modalPresentationTarget_;
-}
-
-- (void)dismissController:(UIViewController*)controller {
-    if ([self.delegate respondsToSelector:@selector(twitterAuthenticator:requiresDismissOfViewController:)]) {
-        [self.delegate twitterAuthenticator:self requiresDismissOfViewController:controller];
-    } else if (self.modalPresentationTarget != nil) {
-        [self.modalPresentationTarget dismissModalViewControllerAnimated:YES];
-    } else {
-        NSAssert(NO, @"Delegate implementation error. You MUST implement either twitterAuthenticator:requiresDismissOfViewController: or modalPresentationTargetForTwitterAuthenticator:");
-    }
 }
 
 - (void)displayController:(UIViewController*)controller {
@@ -100,7 +107,7 @@
         return;
     }
     
-    if (![self.socialize isAuthenticatedWithThirdParty]) {
+    if (!self.sentTokenToSocialize) {
         [self.socialize authenticateWithTwitterUsingStoredCredentials];
         return;
     }
@@ -139,11 +146,11 @@
 - (void)baseViewControllerDidFinish:(SocializeBaseViewController *)baseViewController {
     /* The SocializeTwitterAuthViewController flow was completed successfully */
 
-    [self dismissController:baseViewController];
     [self tryToFinishAuthenticatingWithTwitter];
 }
 
 - (void)didAuthenticate:(id<SocializeUser>)user {
+    self.sentTokenToSocialize = YES;
     [self tryToFinishAuthenticatingWithTwitter];
 }
 

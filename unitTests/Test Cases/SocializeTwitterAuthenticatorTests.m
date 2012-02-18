@@ -100,9 +100,6 @@
     // Should send store credentials to Socialize server
     [[self.mockSocialize expect] authenticateWithTwitterUsingStoredCredentials];
 
-    // Should dismiss on our modal target
-    [[self.mockPresentationTarget expect] dismissModalViewControllerAnimated:YES];
-    
     [self.twitterAuthenticator baseViewControllerDidFinish:self.mockTwitterAuthViewController];
 }
 
@@ -128,6 +125,9 @@
     
     // Already authed
     [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithThirdParty];
+    
+    // Should dismiss on our modal target
+    [[self.mockPresentationTarget expect] dismissModalViewControllerAnimated:YES];
     
     [self prepare];
     [self.twitterAuthenticator didAuthenticate:nil];
