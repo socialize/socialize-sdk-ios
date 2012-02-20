@@ -679,6 +679,10 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)updateInterfaceToReflectFacebookSessionStatus {
+    if ([self facebookSection] == NSNotFound) {
+        return;
+    }
+    
     if ([self loggedInWithFacebook] && !self.showFacebookLogout) {
 
         // Logout button should be shown but isn't. Animate it into view
@@ -715,6 +719,10 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)updateInterfaceToReflectTwitterSessionStatus {
+    if ([self twitterSection] == NSNotFound) {
+        return;
+    }
+
     if ([self loggedInWithTwitter] && !self.showTwitterLogout) {
 
         // Logout button should be shown but isn't. Animate it into view

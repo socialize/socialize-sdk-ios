@@ -532,6 +532,9 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 
 - (void)testServiceFailureTurnsOffFacebookButton {
     
+    // Facebook must be available for the interface to be shown
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
+
     // Don't care about this mock
     [self.mockTwitterSwitch makeNice];
     
@@ -619,6 +622,23 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [[self.mockTableView expect] endUpdates];
     
     [self.profileEditViewController didAuthenticate:nil];
+}
+
+- (void)testFinishingFacebookAuthDoesNotTryToUpdateTwitterControlsWhenHidden {
+    // facebook but not twitter (twitter section hidden)
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
+    [[[self.mockSocialize stub] andReturnBool:NO] twitterAvailable];
+    
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
+    
+    // Should just update facebook
+    NSIndexPath *expectedPath = [NSIndexPath indexPathForRow:1 inSection:2];
+    [[self.mockTableView expect] beginUpdates];
+    [[self.mockTableView expect] insertRowsAtIndexPaths:[NSArray arrayWithObject:expectedPath] withRowAnimation:UITableViewRowAnimationTop];
+    [[self.mockTableView expect] endUpdates];
+    
+    [self.profileEditViewController didAuthenticate:nil];
+
 }
 
 - (void)testSettingTwitterSwitchOffUpdatesDefaults {
