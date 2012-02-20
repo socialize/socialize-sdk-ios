@@ -31,6 +31,9 @@
 - (NSIndexPath*)indexPathForTwitterLogoutRow;
 - (NSIndexPath*)indexPathForFacebookLogoutRow;
 - (NSIndexPath*)indexPathForFacebookLogoutRow;
+- (BOOL)loggedInWithTwitter;
+- (BOOL)loggedInWithFacebook;
+
 @end
 
 typedef struct {
@@ -116,8 +119,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     self.navigationItem.rightBarButtonItem = self.saveButton;
     [self changeTitleOnCustomBarButton:self.saveButton toText:@"Done"];
 
-    self.showTwitterLogout = [self.socialize twitterSessionValid];
-    self.showFacebookLogout = [self.socialize facebookSessionValid];
+    self.showTwitterLogout = [self loggedInWithTwitter];
+    self.showFacebookLogout = [self loggedInWithFacebook];
 }
 
 - (void)viewDidUnload
@@ -383,7 +386,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     [self.userDefaults setObject:dontPostToFacebook forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
     [self.userDefaults synchronize];
     
-    if ([facebookSwitch isOn] && ![self.socialize facebookSessionValid]) {
+    if ([facebookSwitch isOn] && ![self loggedInWithFacebook]) {
         [self showFacebookLoginDialog];
     }
 
@@ -676,7 +679,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)updateInterfaceToReflectFacebookSessionStatus {
-    if ([self.socialize facebookSessionValid] && !self.showFacebookLogout) {
+    if ([self loggedInWithFacebook] && !self.showFacebookLogout) {
 
         // Logout button should be shown but isn't. Animate it into view
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerFacebookRowLogout inSection:[self facebookSection]];        
@@ -684,7 +687,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         self.showFacebookLogout = YES;
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
         [self.tableView endUpdates];
-    } else if (![self.socialize facebookSessionValid] && self.showFacebookLogout) {
+    } else if (![self loggedInWithFacebook] && self.showFacebookLogout) {
         
         // Logout button shown but shouldn't be. Animate it out of view
         [self.tableView beginUpdates];
@@ -695,7 +698,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
     }
     
-    if (![self.socialize facebookSessionValid]) {
+    if (![self loggedInWithFacebook]) {
         // Force switch to off
         if ([self.facebookSwitch isOn]) {
             [self.facebookSwitch setOn:NO animated:YES];
@@ -703,8 +706,16 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     }
 }
 
+- (BOOL)loggedInWithTwitter {
+    return [self.socialize isAuthenticatedWithTwitter];
+}
+
+- (BOOL)loggedInWithFacebook {
+    return [self.socialize isAuthenticatedWithFacebook];
+}
+
 - (void)updateInterfaceToReflectTwitterSessionStatus {
-    if ([self.socialize twitterSessionValid] && !self.showTwitterLogout) {
+    if ([self loggedInWithTwitter] && !self.showTwitterLogout) {
 
         // Logout button should be shown but isn't. Animate it into view
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerTwitterRowLogout inSection:[self twitterSection]];
@@ -717,7 +728,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         // Since twitter logout is currently the last row, it feels awkward if we don't scroll
         [self scrollToTwitterLogoutRow];
 
-    } else if (![self.socialize twitterSessionValid] && self.showTwitterLogout) {
+    } else if (![self loggedInWithTwitter] && self.showTwitterLogout) {
         
         // Logout button shown but shouldn't be. Animate it out of view
         [self.tableView beginUpdates];
@@ -728,7 +739,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
     }
     
-    if (![self.socialize twitterSessionValid]) {
+    if (![self loggedInWithTwitter]) {
         // Force switch to off
         if ([self.twitterSwitch isOn]) {
             [self.twitterSwitch setOn:NO animated:YES];

@@ -539,7 +539,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [self performViewDidLoad];
     
     // Facebook inactive
-    [[[self.mockSocialize stub] andReturnBool:NO] facebookSessionValid];
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
     
     // Switch is on (but shouldn't be anymore)
     [[[self.mockFacebookSwitch stub] andReturnBool:YES] isOn];
@@ -590,7 +590,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     // don't care
     [self.mockTwitterSwitch makeNice];
     
-    [[[self.mockSocialize stub] andReturnBool:YES] facebookSessionValid];
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
     
     [[self.mockTableView expect] beginUpdates];
     [[self.mockTableView expect] insertRowsAtIndexPaths:OCMOCK_ANY withRowAnimation:UITableViewRowAnimationTop];
@@ -610,7 +610,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     // allow other messages
     [self.mockTableView makeNice];
     
-    [[[self.mockSocialize stub] andReturnBool:YES] twitterSessionValid];
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithTwitter];
     
     NSIndexPath *expectedPath = [NSIndexPath indexPathForRow:1 inSection:3];
     
@@ -635,7 +635,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 - (void)testSettingTwitterSwitchOnPromptsForLogin {
     [self.mockUserDefaults makeNice];
     
-    [[[self.mockSocialize stub] andReturnBool:NO] twitterSessionValid];
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithTwitter];
     
     [[[self.mockTwitterSwitch stub] andReturnBool:YES] isOn];
     
@@ -647,7 +647,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 - (void)testSettingFacebookSwitchOnPromptsForLogin {
     [self.mockUserDefaults makeNice];
     
-    [[[self.mockSocialize stub] andReturnBool:NO] facebookSessionValid];
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
     
     [[[self.mockFacebookSwitch stub] andReturnBool:YES] isOn];
     
@@ -661,7 +661,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
     [[[self.mockSocialize stub] andReturnBool:YES] twitterAvailable];
     
-    [[[self.mockSocialize stub] andReturnBool:YES] twitterSessionValid];
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithTwitter];
     
     [self.mockTableView makeNice];
     
@@ -680,7 +680,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
     [[[self.mockSocialize stub] andReturnBool:YES] twitterAvailable];
     
-    [[[self.mockSocialize stub] andReturnBool:YES] facebookSessionValid];
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
     
     [self.mockTableView makeNice];
     
