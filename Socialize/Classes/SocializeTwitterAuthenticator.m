@@ -70,6 +70,8 @@
 }
 
 - (void)failWithError:(NSError*)error {
+    [self dismissController:self.twitterAuthViewController];
+
     if ([self.delegate respondsToSelector:@selector(twitterAuthenticator:didFailWithError:)]) {
         [self.delegate twitterAuthenticator:self didFailWithError:error];
     }
@@ -137,8 +139,6 @@
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
     /* The SocializeTwitterAuthViewController flow was cancelled by the user */
     
-    [self dismissController:baseViewController];
-
     NSError *error = [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser];
     [self failWithError:error];
 }

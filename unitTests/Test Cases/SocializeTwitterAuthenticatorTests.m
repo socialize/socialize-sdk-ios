@@ -146,6 +146,7 @@
 }
 
 - (void)testFailingSocializeServiceCausesFailure {
+    [[self.mockPresentationTarget expect] dismissModalViewControllerAnimated:YES];
     [self prepare];
     [self.twitterAuthenticator service:nil didFail:nil];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
