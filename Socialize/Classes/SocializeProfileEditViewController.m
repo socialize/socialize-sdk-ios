@@ -375,7 +375,12 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 - (UISwitch*)facebookSwitch {
     if (facebookSwitch_ == nil) {
         facebookSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
-        facebookSwitch_.on = ![[self.userDefaults objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
+        
+        if ([self loggedInWithFacebook]) {
+            facebookSwitch_.on = ![[self.userDefaults objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
+        } else {
+            facebookSwitch_.on = NO;
+        }
         [facebookSwitch_ addTarget:self action:@selector(facebookSwitchChanged:) forControlEvents:UIControlEventValueChanged];
     }
     return facebookSwitch_;
@@ -396,7 +401,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     if (twitterSwitch_ == nil) {
         twitterSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
         
-        if ([self.socialize twitterSessionValid]) {
+        if ([self loggedInWithTwitter]) {
             twitterSwitch_.on = ![[self.userDefaults objectForKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY] boolValue];
         } else {
             twitterSwitch_.on = NO;
@@ -412,7 +417,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     [self.userDefaults setObject:dontPostToTwitter forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
     [self.userDefaults synchronize];
     
-    if ([twitterSwitch isOn] && ![self.socialize twitterSessionValid]) {
+    if ([twitterSwitch isOn] && ![self loggedInWithTwitter]) {
         [self showTwitterLoginDialog];
     }
 }

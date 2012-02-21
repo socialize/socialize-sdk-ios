@@ -242,6 +242,8 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 
 - (void)testFacebookSwitchStartState {
     
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
+    
     // Reset to default
     self.profileEditViewController.facebookSwitch = nil;
     
