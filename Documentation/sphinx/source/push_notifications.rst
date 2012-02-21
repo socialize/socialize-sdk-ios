@@ -173,7 +173,7 @@ here: http://support.getsocialize.com support who can help Additionally here som
 
 
 I Don't See the Notifications Button
-------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The notifications button will only appear if a valid push token has been
 registered with Socialize using [Socialize registerDeviceToken:]. This means
@@ -200,5 +200,22 @@ This typically means you didn't re-create and download the provisioning profile 
 You can re-create your distribution profile here: https://developer.apple.com/ios/manage/provisioningprofiles/viewDistributionProfiles.action.  You'll also want to remove any 
 other versions of provisioning file which exist on your phone.
 
+Everything looks ok, but I am still not receiving notifications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One possibility is that Socialize has received a development push token.
+Development tokens will currently prevent pushes being sent to real devices.
+Until Socialize automatically clears these on error, you should verify that you
+do not send development tokens to Socialize using [Socialize
+registerDeviceToken:]
+
+As a precaution, you might wrap the registration call as follows:
+
+.. raw:: html
+
+  <script src="https://gist.github.com/1879369.js?file=gistfile1.m"></script>
+
+This is only a problem if you already have separate push configurations and certificates
+for development and distribution. Socialize itself does not support development push.
 
 Please go to support.getsocialize.com for additional support.
