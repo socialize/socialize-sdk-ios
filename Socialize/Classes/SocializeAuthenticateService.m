@@ -97,7 +97,7 @@
                              [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid", 
                              @"1"/* auth type is for facebook*/ , @"auth_type", //TODO:: should be changed
                              thirdPartyAuthToken, @"auth_token",
-                             thirdPartyAppId, @"auth_id" , nil] ;                        
+                                   nil];
                                
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
 

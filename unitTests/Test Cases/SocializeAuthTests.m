@@ -52,20 +52,18 @@
 
 -(void)testAuthAnonymousParams{
     
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UIDevice currentDevice].uniqueGlobalDeviceIdentifier,@"udid",
-                                       @"1"/* auth type is for facebook*/ , @"auth_type",
-                                       @"another token", @"auth_token",
-                                       @"anotheruserid", @"auth_id" , nil] ;
+    NSString *testToken = @"testToken";
 
-    [[_mockService expect] executeRequest:
-     [SocializeRequest secureRequestWithHttpMethod:@"POST"
-                                      resourcePath:@"authenticate/"
-                                expectedJSONFormat:SocializeDictionary
-                                            params:params]];
+    [[_mockService expect] executeRequest:[OCMArg checkWithBlock:^(SocializeRequest *req) {
+        GHAssertEqualStrings([req httpMethod], @"POST", @"Not equal");
+        NSDictionary *params = [req params];
+        GHAssertEqualStrings([params objectForKey:@"auth_token"], testToken, @"bad token");
+        return YES;
+    }]];
 
-    [_mockService  authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" 
+     [_mockService  authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" 
             apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819" 
-            thirdPartyAuthToken:@"another token"
+            thirdPartyAuthToken:testToken
             thirdPartyAppId:@"anotheruserid"
                         thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
     
