@@ -19,6 +19,10 @@
 #import "SocializePrivateDefinitions.h"
 #import "SocializeConfiguration.h"
 
+@interface OAMutableURLRequest ()
+- (NSString *)_signatureBaseString;
+@end
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
 
@@ -290,16 +294,20 @@ tokenRequest = _tokenRequest;
     [self.request prepare];
 }
 
+- (OAToken*)token {
+    if (_token == nil) {
+        if (!self.isTokenRequest) {
+            _token =  [[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
+        }
+    }
+    return _token;
+}
+
 - (OAMutableURLRequest*)request {
     if (_request == nil) {
-        OAToken *token = nil;
-        if (!self.isTokenRequest) {
-            token =  [[[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX] autorelease];
-        }
-        
         OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:[SocializeRequest consumerKey] secret:[SocializeRequest consumerSecret]] autorelease];
 
-        _request = [[OAMutableURLRequest alloc] initWithURL:nil consumer:consumer token:token realm:nil signatureProvider:nil];
+        _request = [[OAMutableURLRequest alloc] initWithURL:nil consumer:consumer token:self.token realm:nil signatureProvider:nil];
     }
     
     return _request;
@@ -340,7 +348,12 @@ tokenRequest = _tokenRequest;
             NSString *urlString = [[self.request URL] absoluteString];
             SDebugLog(2, @"----- Sending Request -----");
             SDebugLog(2, @"URL: %@", urlString);
+            SDebugLog(2, @"Headers: %@", [[self request] allHTTPHeaderFields]);
+            SDebugLog(2, @"OAuth key: %@, OAuth secret: %@", self.token.key, self.token.secret);
+            SDebugLog(2, @"Consumer key: %@, Consumer secret: %@", [SocializeRequest consumerKey], [SocializeRequest consumerSecret]);
+            SDebugLog(2, @"Signature Base String: %@", [[self request] _signatureBaseString]);
             SDebugLog(2, @"Body: %@", body);
+            SDebugLog(2, @"Params: %@", _params);
             SDebugLog(2, @"----- End Request ---------");
 
             [self.dataFetcher start];

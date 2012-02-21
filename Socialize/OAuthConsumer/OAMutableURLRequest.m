@@ -148,6 +148,9 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
 												  [consumer.secret SocializeURLEncodedString],
                                                   [token.secret SocializeURLEncodedString]]];
     
+    SDebugLog(3, @"Signing request using consumersecret=%@, tokensecret=%@, with base string %@", [consumer secret], [token secret], [self _signatureBaseString]);
+    SDebugLog(3, @"Signature is %@", signature);
+
     // set OAuth headers
     NSString *oauthToken;
     if ([token.key isEqualToString:@""])
