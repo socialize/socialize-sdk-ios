@@ -106,7 +106,7 @@
                                                            expectedJSONFormat:SocializeDictionary
                                                                        params:params];
     
-    request.tokenRequest = YES;
+//    request.tokenRequest = NO;
 
     [self executeRequest:request];
 
@@ -161,7 +161,7 @@
                        thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
                     thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret {
     
-    NSString *authType = [NSString stringWithFormat:@"%d", type];
+    NSString *authType = [NSString stringWithFormat :@"%d", type];
 
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
                                    [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid", 
@@ -175,7 +175,7 @@
                                                            expectedJSONFormat:SocializeDictionary
                                                                        params:params];
     
-    request.tokenRequest = YES;
+//    request.tokenRequest = YES;
     
     [self executeRequest:request];
 
