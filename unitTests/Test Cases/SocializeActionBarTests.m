@@ -292,6 +292,7 @@
     
     id mockError = [OCMockObject mockForClass:[NSError class]];
     [[[mockError stub] andReturn:@"ERROR"] localizedDescription];
+    [[mockError stub] domain];
     
     [[(id)self.actionBar expect] stopLoadAnimation];
     [[(id)self.actionBar expect] showAlertWithText:@"ERROR" andTitle:@"Error"];

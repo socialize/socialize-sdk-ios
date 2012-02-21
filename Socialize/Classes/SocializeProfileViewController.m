@@ -266,8 +266,7 @@
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error
 {
-    [self stopLoading];
-    [self showAlertWithText:[NSString stringWithFormat: @"cannot get profile %@", [error localizedDescription]] andTitle:@"Error occurred"];
+    [super service:service didFail:error];
 }
 
 - (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser {

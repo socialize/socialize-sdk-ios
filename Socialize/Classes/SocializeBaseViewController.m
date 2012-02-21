@@ -271,6 +271,13 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 
 -(void)service:(SocializeService *)service didFail:(NSError *)error
 {
+    if ([[error domain] isEqualToString:SocializeErrorDomain] && [error code] == SocializeErrorServerReturnedHTTPError) {
+        NSHTTPURLResponse *response = [[error userInfo] objectForKey:kSocializeErrorNSHTTPURLResponseKey];
+        if ([response statusCode] == 401) {
+            [self.socialize removeSocializeAuthenticationInfo];
+        }
+    }
+
     [self stopLoadAnimation];
     [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
 }

@@ -11,6 +11,7 @@
 #import "UINavigationBarBackground.h"
 #import "SocializeBaseViewControllerDelegate.h"
 #import "SocializeProfileEditViewController.h"
+#import "SocializeCommonDefinitions.h"
 
 @implementation SocializeBaseViewControllerTests
 @synthesize viewController = viewController_;
@@ -356,7 +357,27 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     NSString *testDescription = @"testDescription";
     id mockError = [OCMockObject mockForClass:[NSError class]];
     [[[mockError stub] andReturn:testDescription] localizedDescription];
+    [[mockError stub] domain];
     [self expectServiceFailure];
+    [self.viewController service:nil didFail:mockError];
+}
+
+- (void)testServiceAuthenticationFailureRemovesSocializeAuthenticationInfo {
+    [[self.mockSocialize expect] removeSocializeAuthenticationInfo];
+    
+    id mockError = [OCMockObject mockForClass:[NSError class]];
+    [[mockError stub] localizedDescription];
+    [[[mockError stub] andReturn:SocializeErrorDomain] domain];
+    [[[mockError stub] andReturnInteger:SocializeErrorServerReturnedHTTPError] code];
+    id mockRequest = [OCMockObject mockForClass:[NSHTTPURLResponse class]];
+    [[[mockRequest stub] andReturnInteger:401] statusCode];
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:mockRequest forKey:kSocializeErrorNSHTTPURLResponseKey];
+    [[[mockError stub] andReturn:userInfo] userInfo];
+    [[[mockError stub] andReturn:SocializeErrorDomain] domain];
+
+    // Expect general failure flow
+    [self expectServiceFailure];
+    
     [self.viewController service:nil didFail:mockError];
 }
 

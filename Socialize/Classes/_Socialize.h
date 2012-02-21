@@ -516,6 +516,11 @@ otherwise you will get a failure.
  */
 -(void)removeAuthenticationInfo;
 
+/**
+ Remove just Socialize authentication info (no third party credentials will be wiped)
+ */
+- (void)removeSocializeAuthenticationInfo;
+
 /** @name Like stuff*/
 
 /**
