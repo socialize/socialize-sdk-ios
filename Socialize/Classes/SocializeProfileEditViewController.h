@@ -10,7 +10,6 @@
 #import "SocializeProfileEditValueViewController.h"
 #import "SocializeBaseViewController.h"
 #import "SocializeProfileEditViewControllerDelegate.h"
-#import "SocializeTwitterAuthenticatorDelegate.h"
 
 @class SocializeProfileEditValueViewController;
 typedef enum {
@@ -49,7 +48,7 @@ typedef enum {
 @class SocializeProfileEditTableViewCell;
 @class SocializeProfileEditValueViewController;
 
-@interface SocializeProfileEditViewController : SocializeBaseViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, SocializeTwitterAuthenticatorDelegate>
+@interface SocializeProfileEditViewController : SocializeBaseViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, retain) id<SocializeFullUser> fullUser;
 @property (nonatomic, retain) UIImage *profileImage;
 @property (nonatomic, retain) NSArray *cellBackgroundColors;

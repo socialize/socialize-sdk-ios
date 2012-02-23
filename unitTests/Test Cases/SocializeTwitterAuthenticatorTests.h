@@ -7,11 +7,10 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
-#import "SocializeTwitterAuthenticatorDelegate.h"
 
 @class SocializeTwitterAuthenticator;
 
-@interface SocializeTwitterAuthenticatorTests : GHAsyncTestCase <SocializeTwitterAuthenticatorDelegate>
+@interface SocializeTwitterAuthenticatorTests : GHAsyncTestCase
 
 @property (nonatomic, retain) SocializeTwitterAuthenticator *twitterAuthenticator;
 @property (nonatomic, retain) id mockSocialize;

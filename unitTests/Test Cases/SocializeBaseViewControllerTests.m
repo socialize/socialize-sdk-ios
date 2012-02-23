@@ -266,7 +266,7 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     [[[self.mockSocialize stub] andReturnBool:YES] facebookSessionValid];
     [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
     [[(id)self.viewController expect] startLoading];
-    [[self.mockSocialize expect] authenticateWithFacebook];
+    [[self.mockSocialize expect] authenticateViaFacebookWithStoredCredentials];
     [self.viewController performAutoAuth];
 }
 
@@ -297,7 +297,7 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     BOOL isAuthenticatedWithFB = NO;
     [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(isFacebookAvailable)] facebookAvailable];
     [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(isAuthenticatedWithFB)] isAuthenticatedWithFacebook];
-    [[self.mockSocialize expect] authenticateWithFacebook];
+    [[self.mockSocialize expect] authenticateViaFacebook];
     [self.origViewController authenticateWithFacebook];
 }
 

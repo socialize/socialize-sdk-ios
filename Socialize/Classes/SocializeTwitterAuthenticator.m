@@ -16,26 +16,21 @@
 @end
 
 @implementation SocializeTwitterAuthenticator
-@synthesize delegate = delegate_;
-@synthesize socialize = socialize_;
 @synthesize twitterAuthViewController = twitterAuthViewController_;
-@synthesize modalPresentationTarget = modalPresentationTarget_;
 @synthesize sentTokenToSocialize = sentTokenToSocialize_;
+@synthesize successBlock = successBlock_;
+@synthesize failureBlock = failureBlock_;
 
 - (void)dealloc {
-    self.socialize = nil;
     [twitterAuthViewController_ setDelegate:nil];
     self.twitterAuthViewController = nil;
-    self.modalPresentationTarget = nil;
     
     [super dealloc];
 }
 
-- (Socialize*)socialize {
-    if (socialize_ == nil) {
-        socialize_ = [[Socialize alloc] initWithDelegate:self];
-    }
-    return socialize_;
+- (void)cancelAllCallbacks {
+    [twitterAuthViewController_ setDelegate:nil];
+    [super cancelAllCallbacks];
 }
 
 - (SocializeTwitterAuthViewController*)twitterAuthViewController {
@@ -51,56 +46,27 @@
     return twitterAuthViewController_;
 }
 
-- (void)dismissController:(UIViewController*)controller {
-    if ([self.delegate respondsToSelector:@selector(twitterAuthenticator:requiresDismissOfViewController:)]) {
-        [self.delegate twitterAuthenticator:self requiresDismissOfViewController:controller];
-    } else if (self.modalPresentationTarget != nil) {
-        [self.modalPresentationTarget dismissModalViewControllerAnimated:YES];
-    } else {
-        NSAssert(NO, @"Delegate implementation error. You MUST implement either twitterAuthenticator:requiresDismissOfViewController: or modalPresentationTargetForTwitterAuthenticator:");
-    }
-}
-
 - (void)succeed {
-    [self dismissController:self.twitterAuthViewController];
-
-    if ([self.delegate respondsToSelector:@selector(twitterAuthenticatorDidSucceed:)]) {
-        [self.delegate twitterAuthenticatorDidSucceed:self];
+    [self.display dismissController:self.twitterAuthViewController];
+    
+    if (self.successBlock != nil) {
+        self.successBlock();
     }
 }
 
 - (void)failWithError:(NSError*)error {
-    [self dismissController:self.twitterAuthViewController];
-
-    if ([self.delegate respondsToSelector:@selector(twitterAuthenticator:didFailWithError:)]) {
-        [self.delegate twitterAuthenticator:self didFailWithError:error];
-    }
-}
-
-- (UIViewController*)modalPresentationTarget {
-    if (modalPresentationTarget_ == nil) {
-        if ([self.delegate respondsToSelector:@selector(twitterAuthenticatorRequiresModalPresentationTarget:)]) {
-            modalPresentationTarget_ = [[self.delegate twitterAuthenticatorRequiresModalPresentationTarget:self] retain];
-        }
-    }
+    [self cancelAllCallbacks];
+    [self.display dismissController:self.twitterAuthViewController];
     
-    return modalPresentationTarget_;
-}
-
-- (void)displayController:(UIViewController*)controller {
-    if ([self.delegate respondsToSelector:@selector(twitterAuthenticator:requiresDisplayOfViewController:)]) {
-        [self.delegate twitterAuthenticator:self requiresDisplayOfViewController:controller];
-    } else if (self.modalPresentationTarget != nil) {
-        [self.modalPresentationTarget presentModalViewController:controller animated:YES];
-    } else {
-        NSAssert(NO, @"Delegate implementation error. You MUST implement either twitterAuthenticator:requiresDisplayOfViewController: or modalPresentationTargetForTwitterAuthenticator:");
+    if (self.failureBlock != nil) {
+        self.failureBlock(error);
     }
 }
 
 - (void)showTwitterAuthViewController {
     self.twitterAuthViewController = nil;
     UINavigationController *nav = [self.twitterAuthViewController wrappingSocializeNavigationController];
-    [self displayController:nav];
+    [self.display displayController:nav];
 }
 
 - (void)tryToFinishAuthenticatingWithTwitter {
@@ -110,7 +76,7 @@
     }
     
     if (!self.sentTokenToSocialize) {
-        [self.socialize authenticateWithTwitterUsingStoredCredentials];
+        [self.socialize authenticateViaTwitterWithStoredCredentials];
         return;
     }
 
@@ -129,11 +95,6 @@
     [defaults setObject:accessTokenSecret forKey:kSocializeTwitterAuthAccessTokenSecret];
     [defaults setObject:screenName forKey:kSocializeTwitterAuthScreenName];
     [defaults synchronize];
-    
-    // Let the delegate know, if they care
-    if ([self.delegate respondsToSelector:@selector(twitterAuthenticator:didReceiveAccessToken:accessTokenSecret:screenName:userID:)]) {
-        [self.delegate twitterAuthenticator:self didReceiveAccessToken:accessToken accessTokenSecret:accessTokenSecret screenName:screenName userID:userID];
-    }
 }
 
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {

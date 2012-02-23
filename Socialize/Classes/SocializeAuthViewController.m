@@ -110,7 +110,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 - (void)authenticateWithFacebook {
-    [self.socialize authenticateWithFacebook];
+    [self.socialize authenticateViaFacebookWithStoredCredentials];
     [self startLoading];
 }
 
@@ -127,19 +127,12 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 - (void)authenticateWithTwitter {
     [self startLoading];
     
-    [self.socialize authenticateWithTwitter:self];
-}
-
-- (void)twitterAuthenticatorDidSucceed:(SocializeTwitterAuthenticator *)twitterAuthenticator {
-    [self authenticationComplete];
-}
-
-- (void)twitterAuthenticator:(SocializeTwitterAuthenticator *)twitterAuthenticator didFailWithError:(NSError *)error {
-    [self stopLoading];
-}
-
-- (UIViewController*)twitterAuthenticatorRequiresModalPresentationTarget:(SocializeTwitterAuthenticator*)twitterAuthenticator {
-    return self;
+    [self.socialize authenticateViaTwitterWithDisplayHandler:self
+                                                     success:^{
+                                                         [self authenticationComplete];
+                                                     } failure:^(NSError *error) {
+                                                         [self stopLoading];
+                                                     }];
 }
 
 - (NSMutableArray*)authTypeRowData {

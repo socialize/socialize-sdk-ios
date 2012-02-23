@@ -15,6 +15,7 @@
 #import "NSString+QueryString.h"
 #import "UIAlertView+BlocksKit.h"
 #import "OAServiceTicket.h"
+#import "NSHTTPCookieStorage+Utilities.h"
 
 @interface SocializeTwitterAuthViewController ()
 - (void)requestRequestToken;
@@ -67,6 +68,13 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
     [super dealloc];
 }
 
+- (void)cancelAllCallbacks {
+    NSLog(@"Cancelling all callbacks");
+    [self.dataFetcher cancel];
+    [self.socialize setDelegate:nil];
+    [self.webView setDelegate:nil];
+}
+
 - (void)fetchDataWithRequest:(OAMutableURLRequest*)request didFinishSelector:(SEL)finish didFailSelector:(SEL)fail {
     self.dataFetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:request
                                                                         delegate:self
@@ -100,6 +108,8 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
         return;
     }
     
+    NSLog(@"%@",[NSThread callStackSymbols]);
+
     [self notifyDelegateOfCompletion];
 }
 
@@ -215,6 +225,16 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
     NSLog(@"Failed with error");
 }
 
+- (void)removeTwitterCookies {
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [storage cookies]) {
+        if ([[cookie domain] isEqualToString:@".twitter.com"]) {
+            NSLog(@"Deleting %@", cookie);
+            [storage deleteCookie:cookie];
+        }
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -222,7 +242,14 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
     self.title = @"Twitter Auth";
     self.navigationItem.leftBarButtonItem = self.cancelButton;
 
+    [NSHTTPCookieStorage removeCookiesInDomain:@".twitter.com"];
+    
     [self tryToCompleteOAuthProcess];
+}
+
+- (void)cancelButtonPressed:(UIBarButtonItem *)button {
+    [self cancelAllCallbacks];
+    [super cancelButtonPressed:button];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {

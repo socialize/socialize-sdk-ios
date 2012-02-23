@@ -9,19 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "SocializeServiceDelegate.h"
 #import "SocializeTwitterAuthViewControllerDelegate.h"
-#import "SocializeTwitterAuthenticatorDelegate.h"
+#import "SocializeUIDisplay.h"
+#import "SocializeAction.h"
 
 @class Socialize;
 @class SocializeTwitterAuthViewController;
 
-@interface SocializeTwitterAuthenticator : NSObject <SocializeServiceDelegate, SocializeTwitterAuthViewControllerDelegate>
+@interface SocializeTwitterAuthenticator : SocializeAction <SocializeTwitterAuthViewControllerDelegate>
 
 - (void)authenticateWithTwitter;
 
-@property (nonatomic, assign) id delegate;
-
-@property (nonatomic, retain) UIViewController *modalPresentationTarget;
-@property (nonatomic, retain) Socialize *socialize;
 @property (nonatomic, retain) SocializeTwitterAuthViewController *twitterAuthViewController;
-
+@property (nonatomic, copy) void (^successBlock)();
+@property (nonatomic, copy) void (^failureBlock)(NSError *error);
 @end

@@ -30,7 +30,6 @@
 #import "SocializeObjects.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeServiceDelegate.h"
-#import "SocializeTwitterAuthenticatorDelegate.h"
 
 @class SocializeObjectFactory;
 @class SocializeAuthenticateService;
@@ -383,24 +382,41 @@ otherwise you will get a failure.
  @see storeSocializeApiKey:andSecret:
  @see storeFacebookAppId:
  */
--(void)authenticateWithFacebook;
+-(void)authenticateViaFacebook;
+-(void)authenticateWithFacebook  __attribute__((deprecated));
+- (void)authenticateViaFacebookWithStoredCredentials;
 
 /**
  Link Twitter account to Socialize account using existing stored credentials
- 
- This will only work if [Socialize twitterSessionValid returns YES
  
  @see storeTwitterConsumerKey:
  @see storeTwitterConsumerSecret:
  @see storeTwitterAccessToken:
  @see storeTwitterAccessTokenSecret:
  */
-- (void)authenticateWithTwitterUsingStoredCredentials;
+- (void)authenticateViaTwitterWithStoredCredentials;
 
 /**
  Perform a managed Twitter authentication process, including webview callout to twitter auth process if necessary
+ 
+ @see SocializeUIDisplayHandler
+ This variant allows specifying an explicit consumer key and secret
  */
-- (void)authenticateWithTwitter:(id<SocializeTwitterAuthenticatorDelegate>)delegate;
+//- (void)authenticateViaTwitterWithConsumerKey:(NSString*)consumerKey
+//                               consumerSecret:(NSString*)consumerSecret
+//                               displayHandler:(id)displayHandler;
+
+/**
+ Perform a managed Twitter authentication process, including webview callout to twitter auth process if necessary
+ This variant uses the stored consumer key and secret (used by built-in Socialize UI controls)
+ 
+ @param displayHandler A SocializeUIDisplayHandler for handling the required modal controller presentation and dismissal.
+ 
+ @see SocializeUIDisplayHandler
+ */
+- (void)authenticateViaTwitterWithDisplayHandler:(id)displayHandler
+                                         success:(void(^)())success
+                                         failure:(void(^)(NSError *error))failure;
 
 /**
  Authenticate with API key and API secret that were saved in the user defaults.

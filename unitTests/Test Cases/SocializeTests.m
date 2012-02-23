@@ -130,7 +130,7 @@
     socialize.authService = mockAuthService;
 
     [[mockAuthService expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"1234" thirdPartyLocalAppId:@"abcd" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
-    [socialize authenticateWithFacebook];
+    [socialize authenticateViaFacebook];
     [mockAuthService verify];
     [socialize release];
 }

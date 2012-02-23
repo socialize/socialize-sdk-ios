@@ -640,21 +640,28 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     [self updateInterfaceToReflectSessionStatuses];
 }
 
-- (UIViewController*)twitterAuthenticatorRequiresModalPresentationTarget:(SocializeTwitterAuthenticator *)twitterAuthenticator {
-    return self;
+- (void)authenticateViaTwitter {
+    [self.socialize authenticateViaTwitterWithDisplayHandler:self
+                                                     success:^{
+                                                         [self updateInterfaceToReflectSessionStatuses];
+                                                     } failure:^(NSError *error) {
+                                                         [self updateInterfaceToReflectSessionStatuses];
+                                                     }];
 }
 
 - (void)showTwitterLoginDialog {
     UIAlertView *alertView = [UIAlertView alertWithTitle:@"Twitter Login Required" message:@"Do you want to log in with Twitter?"];
     [alertView setCancelButtonWithTitle:@"No" handler:^{ [self.twitterSwitch setOn:NO animated:YES]; }];
-    [alertView addButtonWithTitle:@"Yes" handler:^{ [self.socialize authenticateWithTwitter:self]; }];
+    [alertView addButtonWithTitle:@"Yes"
+                          handler:^{ [self authenticateViaTwitter]; }];
+                                      
     [alertView show];    
 }
 
 - (void)showFacebookLoginDialog {
     UIAlertView *alertView = [UIAlertView alertWithTitle:@"Facebook Login Required" message:@"Do you want to log in with Facebook?"];
     [alertView setCancelButtonWithTitle:@"No" handler:^{ [self.facebookSwitch setOn:NO animated:YES]; }];
-    [alertView addButtonWithTitle:@"Yes" handler:^{ [self startLoading]; [self.socialize authenticateWithFacebook]; }];
+    [alertView addButtonWithTitle:@"Yes" handler:^{ [self startLoading]; [self.socialize authenticateViaFacebookWithStoredCredentials]; }];
     [alertView show];    
 }
 

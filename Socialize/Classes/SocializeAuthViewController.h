@@ -10,7 +10,6 @@
 #import "SocializeBaseViewController.h"
 #import "SocializeProfileEditViewController.h"
 #import "SocializeUser.h"
-#import "SocializeTwitterAuthenticatorDelegate.h"
 
 @class SocializeTwitterAuthDataStore;
 
@@ -28,7 +27,7 @@ typedef enum {
 
 @protocol SocializeAuthViewControllerDelegate;
 
-@interface SocializeAuthViewController : SocializeBaseViewController<SocializeProfileEditViewControllerDelegate, SocializeTwitterAuthenticatorDelegate> {
+@interface SocializeAuthViewController : SocializeBaseViewController<SocializeProfileEditViewControllerDelegate> {
     UITableView                 *tableView;
     NSString                    *_facebookUsername;
     UIButton                    *skipButton;

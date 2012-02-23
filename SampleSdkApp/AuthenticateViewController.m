@@ -159,7 +159,7 @@
 {
     _loadingView = [SocializeLoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 
 //   [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text thirdPartyAppId:@"115622641859087" thirdPartyName:FacebookAuth];
-    [socialize authenticateWithFacebook];
+    [socialize authenticateViaFacebookWithStoredCredentials];
 }
 
 -(IBAction)emptyCache:(id)sender{

@@ -277,7 +277,7 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     _deviceTokenService.delegate = delegate;
 }
 
--(void)authenticateWithFacebook {
+-(void)authenticateViaFacebook {
     NSString *apiKey = [Socialize apiKey];
     NSString *apiSecret = [Socialize apiSecret];
     NSString *facebookAppId = [Socialize facebookAppId];
@@ -290,14 +290,25 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     [self authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:facebookAppId thirdPartyLocalAppId:facebookLocalAppId thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
 }
 
-- (void)authenticateWithTwitterUsingStoredCredentials {
+- (void)authenticateViaFacebookWithStoredCredentials {
+    [self authenticateViaFacebook];
+}
+
+- (void)authenticateWithFacebook {
+    [self authenticateViaFacebook];
+}
+
+- (void)authenticateViaTwitterWithStoredCredentials {
     [_authService authenticateWithTwitterUsingStoredCredentials];
 }
 
-- (void)authenticateWithTwitter:(id<SocializeTwitterAuthenticatorDelegate>)delegate {
-    self.twitterAuthenticator = [[[SocializeTwitterAuthenticator alloc] init] autorelease];
-
-    self.twitterAuthenticator.delegate = delegate;
+- (void)authenticateViaTwitterWithDisplayHandler:(id)displayHandler
+                                         success:(void(^)())success
+                                         failure:(void(^)(NSError *error))failure {
+    
+    self.twitterAuthenticator = [[[SocializeTwitterAuthenticator alloc] initWithDisplayHandler:displayHandler] autorelease];
+    self.twitterAuthenticator.successBlock = success;
+    self.twitterAuthenticator.failureBlock = failure;
     [self.twitterAuthenticator authenticateWithTwitter];
 }
 
@@ -453,7 +464,6 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
             [storage deleteCookie:cookie];
         }
     }
-
 }
 
 - (void)twitterLogout {

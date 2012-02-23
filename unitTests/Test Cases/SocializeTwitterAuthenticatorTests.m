@@ -22,16 +22,22 @@
 @synthesize mockPresentationTarget = mockPresentationTarget_;
 
 - (void)setUp {
-    self.twitterAuthenticator = [[[SocializeTwitterAuthenticator alloc] init] autorelease];
+    self.mockPresentationTarget = [OCMockObject mockForClass:[UIViewController class]];
+
+    self.twitterAuthenticator = [[[SocializeTwitterAuthenticator alloc] initWithDisplayHandler:self.mockPresentationTarget] autorelease];
     self.twitterAuthenticator = [OCMockObject partialMockForObject:self.twitterAuthenticator];
+    self.twitterAuthenticator.failureBlock = ^(NSError *error) {
+        [self notify:kGHUnitWaitStatusSuccess];
+    };
+    self.twitterAuthenticator.successBlock = ^{
+        [self notify:kGHUnitWaitStatusSuccess];        
+    };
     
     self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     [[self.mockSocialize stub] setDelegate:nil];
     
     self.twitterAuthenticator.socialize = self.mockSocialize;
     
-    self.mockPresentationTarget = [OCMockObject mockForClass:[UIViewController class]];
-    self.twitterAuthenticator.delegate = self;
     
     self.mockTwitterAuthViewController = [OCMockObject mockForClass:[SocializeTwitterAuthViewController class]];
     [[self.mockTwitterAuthViewController stub] setDelegate:nil];
@@ -98,7 +104,7 @@
     [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithThirdParty];
     
     // Should send store credentials to Socialize server
-    [[self.mockSocialize expect] authenticateWithTwitterUsingStoredCredentials];
+    [[self.mockSocialize expect] authenticateViaTwitterWithStoredCredentials];
 
     [self.twitterAuthenticator baseViewControllerDidFinish:self.mockTwitterAuthViewController];
 }
@@ -113,10 +119,6 @@
     [self prepare];
     [self.twitterAuthenticator baseViewControllerDidCancel:self.mockTwitterAuthViewController];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
-}
-
-- (void)twitterAuthenticator:(SocializeTwitterAuthenticator *)twitterAuthenticator didFailWithError:(NSError *)error {
-    [self notify:kGHUnitWaitStatusSuccess];
 }
 
 - (void)testCompletingSocializeAuthenticationNotifiesDelegateOfSuccess {
