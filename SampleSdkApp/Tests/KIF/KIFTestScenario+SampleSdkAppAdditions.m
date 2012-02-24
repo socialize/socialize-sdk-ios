@@ -11,14 +11,14 @@
 #import "SampleSdkAppKIFTestController.h"
 @implementation KIFTestScenario (SampleSdkAppAdditions)
 
-+ (id)scenarioToTestFacebook {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that another user's profile can be viewed."];
-    NSString *comment = [NSString stringWithFormat:@"comment for %@", [SampleSdkAppKIFTestController runID]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentWithControllerForEntity:@"http://www.getsocialize.com" comment:@"comment!"]];
-    [scenario addStep:[KIFTestStep stepToVerifyFacebookFeedContainsMessage:comment]];
-    
-    return scenario;
-}
+//+ (id)scenarioToTestFacebook {
+//    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that another user's profile can be viewed."];
+//    NSString *comment = [NSString stringWithFormat:@"comment for %@", [SampleSdkAppKIFTestController runID]];
+//    [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentWithControllerForEntity:@"http://www.getsocialize.com" comment:@"comment!"]];
+//    [scenario addStep:[KIFTestStep stepToVerifyFacebookFeedContainsMessage:comment]];
+//    
+//    return scenario;
+//}
 
 + (id)scenarioToTestViewOtherProfile {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that another user's profile can be viewed."];
