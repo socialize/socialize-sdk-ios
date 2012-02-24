@@ -12,9 +12,10 @@ if [ -z "$RUN_CLI" ]; then
 fi
 
 if [ -n "$SIMVER_OVERRIDE" ]; then
-    export SDKROOT="/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator${SIMVER_OVERRIDE}.sdk/"
+    export SDKROOT="$DEVELOPER_DIR/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator${SIMVER_OVERRIDE}.sdk/"
 fi
 
+echo DYLD_ROOT_PATH = "$SDKROOT"
 export DYLD_ROOT_PATH="$SDKROOT"
 export DYLD_FRAMEWORK_PATH="$CONFIGURATION_BUILD_DIR"
 export IPHONE_SIMULATOR_ROOT="$SDKROOT"
