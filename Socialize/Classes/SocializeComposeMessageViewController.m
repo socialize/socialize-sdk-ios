@@ -52,6 +52,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 @synthesize messageActionButtonContainer = messageActionButtonContainer_;
 @synthesize messageActionButtons = messageActionButtons_;
 @synthesize currentLocationDescription = currentLocationDescription_;
+@synthesize locationManager = locationManager_;
 
 - (id)initWithEntityUrlString:(NSString*)entityUrlString 
 {
@@ -81,8 +82,17 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [messageActionButtonContainer_ release];
     [messageActionButtons_ release];
     [currentLocationDescription_ release];
-
+    [locationManager_ release];
+    
     [super dealloc];
+}
+
+- (SocializeLocationManager*)locationManager {
+    if (locationManager_ == nil) {
+        locationManager_ = [[SocializeLocationManager sharedLocationManager] retain];
+    }
+    
+    return locationManager_;
 }
 
 #pragma Location enable/disable button callbacks
@@ -323,6 +333,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 #pragma mark - Map View Delegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    [self.locationManager setLastLocation:userLocation.location];
+    
     [self updateViewWithNewLocation:userLocation.location];
 }
 

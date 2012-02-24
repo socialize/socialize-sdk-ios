@@ -88,6 +88,9 @@
     
     self.mockMessageActionButtonContainer = [OCMockObject mockForClass:[SocializeHorizontalContainerView class]];
     self.composeMessageViewController.messageActionButtonContainer = self.mockMessageActionButtonContainer;
+    
+    self.mockLocationManager = [OCMockObject mockForClass:[SocializeLocationManager class]];
+    self.composeMessageViewController.locationManager = self.mockLocationManager;
 }
 
 - (void)tearDown {
@@ -215,6 +218,15 @@
     NSValue *statusValue = [NSValue valueWithBytes:&status objCType:@encode(CLAuthorizationStatus)];
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:statusValue forKey:kSocializeCLAuthorizationStatusKey];
     [[NSNotificationCenter defaultCenter] postNotificationName:SocializeCLAuthorizationStatusDidChangeNotification object:self userInfo:userInfo];
+}
+
+- (void)testMapViewLocationUpdateUpdatesLocationManager {
+    id mockMKUserLocation = [OCMockObject niceMockForClass:[MKUserLocation class]];
+    id mockLocation = [OCMockObject niceMockForClass:[CLLocation class]];
+    [[[mockMKUserLocation stub] andReturn:mockLocation] location];
+    [[self.mockLocationManager expect] setLastLocation:mockLocation];
+    
+    [self.composeMessageViewController mapView:nil didUpdateUserLocation:mockMKUserLocation];
 }
 
 @end

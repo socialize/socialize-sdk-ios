@@ -42,6 +42,7 @@
 @property(nonatomic, retain) IBOutlet SocializeHorizontalContainerView *messageActionButtonContainer;
 @property(nonatomic, retain) NSArray *messageActionButtons;
 @property(nonatomic, copy) NSString *currentLocationDescription;
+@property (nonatomic, retain) SocializeLocationManager *locationManager;
 
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;

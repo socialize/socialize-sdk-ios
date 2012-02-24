@@ -10,13 +10,16 @@
 #import "SocializeCommonDefinitions.h"
 
 static SocializeLocationManager *sharedLocationManager;
+static NSTimeInterval SocializeLocationManagerCurrentLocationExpireTime = 60.;
 
 @implementation SocializeLocationManager
 @synthesize locationManager = locationManager_;
+@synthesize lastLocation = lastLocation_;
 
 - (void)dealloc {
     [locationManager_ setDelegate:nil];
     self.locationManager = nil;
+    self.lastLocation = nil;
     [super dealloc];
 }
 
@@ -63,6 +66,14 @@ static SocializeLocationManager *sharedLocationManager;
     NSValue *statusValue = [NSValue valueWithBytes:&status objCType:@encode(CLAuthorizationStatus)];
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:statusValue forKey:kSocializeCLAuthorizationStatusKey];
     [[NSNotificationCenter defaultCenter] postNotificationName:SocializeCLAuthorizationStatusDidChangeNotification object:self userInfo:userInfo];
+}
+
+- (CLLocation*)currentLocation {
+    if ([[NSDate date] timeIntervalSinceDate:self.lastLocation.timestamp] < SocializeLocationManagerCurrentLocationExpireTime) {
+        return self.lastLocation;
+    }
+    
+    return nil;
 }
 
 @end
