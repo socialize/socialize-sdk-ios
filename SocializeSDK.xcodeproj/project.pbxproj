@@ -347,7 +347,6 @@
 		16F449DD13AF8B37003BE655 /* SocializeUserJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F449DC13AF8B36003BE655 /* SocializeUserJSONFormatterTests.m */; };
 		16FDF4E01414BA0A00EAA064 /* SocializeCommentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FDF4DE1414BA0A00EAA064 /* SocializeCommentDetailsViewController.m */; };
 		180B37EF147499E7009D2E22 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18029E121432B815002BDEC7 /* CoreLocation.framework */; };
-		180B37F214749A37009D2E22 /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 180B37F114749A37009D2E22 /* libprofile_rt.dylib */; };
 		181EA0A414AADBF70052720B /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1854042B14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib */; };
 		181EA0A514AADBF90052720B /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1854042B14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib */; };
 		181EA0A614AADBFC0052720B /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1854042B14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib */; };
@@ -1094,6 +1093,7 @@
 		AA7383351489B596009BE1D0 /* SocializeErrorDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7383331489B596009BE1D0 /* SocializeErrorDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA73833A1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7383371489B5F5009BE1D0 /* SocializeErrorDefinitions.m */; };
 		AA73833B1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7383371489B5F5009BE1D0 /* SocializeErrorDefinitions.m */; };
+		AA76792014F70A6000919EC4 /* GCDAProfiling.c in Sources */ = {isa = PBXBuildFile; fileRef = AA76791F14F70A6000919EC4 /* GCDAProfiling.c */; };
 		AA7FB8991491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */; };
 		AA7FB89A1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */; };
 		AA7FB89B1491415600B018DE /* socialize-iphone-notification-button-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */; };
@@ -2523,6 +2523,7 @@
 		AA73832E1489B562009BE1D0 /* NSError+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSError+Socialize.m"; path = "Classes/NSError+Socialize.m"; sourceTree = "<group>"; };
 		AA7383331489B596009BE1D0 /* SocializeErrorDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeErrorDefinitions.h; path = Classes/SocializeErrorDefinitions.h; sourceTree = "<group>"; };
 		AA7383371489B5F5009BE1D0 /* SocializeErrorDefinitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeErrorDefinitions.m; path = Classes/SocializeErrorDefinitions.m; sourceTree = "<group>"; };
+		AA76791F14F70A6000919EC4 /* GCDAProfiling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GCDAProfiling.c; sourceTree = "<group>"; };
 		AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-disabled.png"; path = "Resources/socialize-iphone-notification-button-disabled.png"; sourceTree = "<group>"; };
 		AA7FB8901491415600B018DE /* socialize-iphone-notification-button-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-disabled@2x.png"; path = "Resources/socialize-iphone-notification-button-disabled@2x.png"; sourceTree = "<group>"; };
 		AA7FB8911491415600B018DE /* socialize-iphone-notification-button-enabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-enabled.png"; path = "Resources/socialize-iphone-notification-button-enabled.png"; sourceTree = "<group>"; };
@@ -2759,7 +2760,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				180B37F214749A37009D2E22 /* libprofile_rt.dylib in Frameworks */,
 				180B37EF147499E7009D2E22 /* CoreLocation.framework in Frameworks */,
 				AA86389D144CA45E00CFA759 /* libOCMock.a in Frameworks */,
 				AABC15B1144A123B00088B7D /* libSocialize-profiling.a in Frameworks */,
@@ -3172,6 +3172,7 @@
 		5CC3DAEF1378859000B11B78 /* Main Files */ = {
 			isa = PBXGroup;
 			children = (
+				AA76791F14F70A6000919EC4 /* GCDAProfiling.c */,
 				5CD4882C1386C42300E60C4C /* profile_functions.c */,
 				5CFA263B1379D84F003675B8 /* GHUnitIOSTestMain.m */,
 				5CC3DAF41378859000B11B78 /* unitTests-Prefix.pch */,
@@ -6387,6 +6388,7 @@
 				AA047D8014C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m in Sources */,
 				AAAF7F4114CA2D5800EA387C /* SocializeHorizontalLayoutTests.m in Sources */,
 				AA73815E14EAEB1900C8AE25 /* SocializeDeviceTokenSenderTests.m in Sources */,
+				AA76792014F70A6000919EC4 /* GCDAProfiling.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6880,7 +6882,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(DEVELOPER_DIR)/usr/lib\"",
 					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/usr/lib\"",
 				);
 				OTHER_CFLAGS = (
@@ -6928,7 +6929,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(DEVELOPER_DIR)/usr/lib\"",
 					"\"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/usr/lib\"",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
