@@ -21,7 +21,9 @@ typedef enum SocializeThirdPartyAuthType {
 typedef enum {
     SocializeShareMediumTwitter = 1,
     SocializeShareMediumFacebook = 2,
-    SocializeShareMediumOther = 3
+    SocializeShareMediumEmail = 3,
+    SocializeShareMediumSMS = 4,
+    SocializeShareMediumOther = 101
 } SocializeShareMedium;
 
 typedef enum {
@@ -33,6 +35,9 @@ typedef enum {
 } SocializeActivityType;
 
 extern NSString *const SocializeAuthenticatedUserDidChangeNotification;
+extern NSString *const SocializeCLAuthorizationStatusDidChangeNotification;
+extern NSString *const kSocializeCLAuthorizationStatusKey;
+extern NSString *const kSocializeShouldShareLocationKey;
 
 extern NSString *const kSocializeTwitterAuthConsumerKey;
 extern NSString *const kSocializeTwitterAuthConsumerSecret;

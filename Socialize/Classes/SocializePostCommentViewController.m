@@ -103,7 +103,7 @@
 - (void)createCommentOnSocializeServer {
     [self startLoading];
     
-    if(self.locationManager.shouldShareLocation)
+    if([[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue])
     {
         NSNumber* latitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.latitude];
         NSNumber* longitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.longitude];        

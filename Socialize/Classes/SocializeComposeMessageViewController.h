@@ -18,7 +18,7 @@
 @class CommentMapView;
 @class SocializeHorizontalContainerView;
 
-@interface SocializeComposeMessageViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate, SocializeLocationManagerDelegate>
+@interface SocializeComposeMessageViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate>
 {
     UITextView* commentTextView;
     UILabel*    locationText; 
@@ -30,7 +30,6 @@
 }
 
 @property (nonatomic, copy) NSString *entityURL;
-@property(nonatomic, retain) SocializeLocationManager *locationManager;
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;
 @property(nonatomic, retain) IBOutlet UILabel       *locationText;
 @property(nonatomic, retain) IBOutlet UIButton      *doNotShareLocationButton;
@@ -42,6 +41,7 @@
 @property(nonatomic, retain) UIBarButtonItem *sendButton;
 @property(nonatomic, retain) IBOutlet SocializeHorizontalContainerView *messageActionButtonContainer;
 @property(nonatomic, retain) NSArray *messageActionButtons;
+@property(nonatomic, copy) NSString *currentLocationDescription;
 
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;

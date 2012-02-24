@@ -52,6 +52,10 @@ SYNTH_DEFAULTS_GETTER(TYPE, LOWERNAME, STORE_KEY)
 NSString *const kSocializeDisableBrandingKey = @"kSocializeDisableBrandingKey";
 
 NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAuthenticatedUserDidChangeNotification";
+NSString *const SocializeCLAuthorizationStatusDidChangeNotification = @"SocializeLocationManagerAuthorizationStatusDidChangeNotification";
+NSString *const kSocializeCLAuthorizationStatusKey = @"kSocializeCLAuthorizationStatusKey";
+NSString *const kSocializeShouldShareLocationKey = @"kSocializeShouldShareLocationKey";
+
 NSString *const kSocializeDeviceTokenKey  = @"kSocializeDeviceTokenKey";
 
 NSString *const kSocializeTwitterAuthConsumerKey = @"kSocializeTwitterAuthConsumerKey";

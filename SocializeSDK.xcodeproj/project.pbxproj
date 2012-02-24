@@ -643,6 +643,7 @@
 		AA202538144CA8DC006C1F8F /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11CC1443261E004E4C1B /* SocializeServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA202539144CA8DD006C1F8F /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11CC1443261E004E4C1B /* SocializeServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2044A11470EA40003A875C /* PostCommentViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2478A1417A985008A550D /* PostCommentViewControllerTests.m */; };
+		AA29CEB314F71654005F4686 /* SocializeLocationManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA29CEB214F71654005F4686 /* SocializeLocationManagerTests.m */; };
 		AA2CDD7D14D103A4003B61BC /* SocializeLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 169BC79F1420CD94007ED41E /* SocializeLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2CDD7E14D103A5003B61BC /* SocializeLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 169BC79F1420CD94007ED41E /* SocializeLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA318175144A440F008F4D59 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA639F84144A34B600660E26 /* CoreFoundation.framework */; };
@@ -2526,6 +2527,8 @@
 		AA1F1AEE14AA9AE000B83792 /* PropertyHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PropertyHelpers.h; path = Classes/PropertyHelpers.h; sourceTree = "<group>"; };
 		AA26DD30146AF87E00AA25BF /* SocializeProfileEditValueViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileEditValueViewControllerTest.h; path = "Test Cases/SocializeProfileEditValueViewControllerTest.h"; sourceTree = "<group>"; };
 		AA26DD31146AF87E00AA25BF /* SocializeProfileEditValueViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileEditValueViewControllerTest.m; path = "Test Cases/SocializeProfileEditValueViewControllerTest.m"; sourceTree = "<group>"; };
+		AA29CEB114F71654005F4686 /* SocializeLocationManagerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLocationManagerTests.h; path = "Test Cases/SocializeLocationManagerTests.h"; sourceTree = "<group>"; };
+		AA29CEB214F71654005F4686 /* SocializeLocationManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLocationManagerTests.m; path = "Test Cases/SocializeLocationManagerTests.m"; sourceTree = "<group>"; };
 		AA318174144A440F008F4D59 /* Socialize-iphoneos.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Socialize-iphoneos.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA33268D144CD8070033C7FA /* UIIntegrationTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIIntegrationTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3326DF144CD9FB0033C7FA /* KIFTestScenario+SampleSdkAppAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestScenario+SampleSdkAppAdditions.h"; sourceTree = "<group>"; };
@@ -2988,6 +2991,8 @@
 				AA73815D14EAEB1900C8AE25 /* SocializeDeviceTokenSenderTests.m */,
 				AAD6953014F5D3E000422942 /* SocializeUIDisplayTests.h */,
 				AAD6953114F5D3E000422942 /* SocializeUIDisplayTests.m */,
+				AA29CEB114F71654005F4686 /* SocializeLocationManagerTests.h */,
+				AA29CEB214F71654005F4686 /* SocializeLocationManagerTests.m */,
 			);
 			name = "Infrastructure Tests";
 			sourceTree = "<group>";
@@ -6637,6 +6642,7 @@
 				AAE2750814EB446D00CE081D /* SocializeTestCase.m in Sources */,
 				AAD6953214F5D3E000422942 /* SocializeUIDisplayTests.m in Sources */,
 				AA76792014F70A6000919EC4 /* GCDAProfiling.c in Sources */,
+				AA29CEB314F71654005F4686 /* SocializeLocationManagerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -135,8 +135,7 @@
 
 -(void)testSendButtonPressedWithGeo
 {
-    BOOL trueValue = YES;
-    [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(trueValue)] shouldShareLocation];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSocializeShouldShareLocationKey];
     
     [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:OCMOCK_ANY latitude:OCMOCK_ANY subscribe:YES];
     [[[(id)self.viewController stub]andReturnBool:NO] shouldShowAuthViewController];
@@ -147,8 +146,7 @@
 
 -(void)testSendButtonPressed
 {
-    BOOL trueValue = NO;
-    [[[self.mockLocationManager stub]andReturnValue:OCMOCK_VALUE(trueValue)]shouldShareLocation];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSocializeShouldShareLocationKey];
     
     [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:nil latitude:nil subscribe:YES];
     [[[(id)self.viewController stub]andReturnBool:NO] shouldShowAuthViewController];
@@ -197,8 +195,8 @@
     NSNumber *latitudeNumber = [NSNumber numberWithFloat:latitude];
     NSNumber *longitudeNumber = [NSNumber numberWithFloat:longitude];
     
-    BOOL yesValue = YES;
-    [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(yesValue)] shouldShareLocation];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSocializeShouldShareLocationKey];
+
     id mockLocation = [self mockMKUserLocationWithLatitude:latitude longitude:longitude];
     [[[self.mockMapOfUserLocation stub] andReturn:mockLocation] userLocation];
     [[[self.mockCommentTextView stub] andReturn:testText] text];

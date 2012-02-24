@@ -44,7 +44,6 @@
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
 @synthesize mapContainer = _mapContainer;
-@synthesize locationManager = _locationManager;
 @synthesize entityURL = _entityURL;
 @synthesize delegate = delegate_;
 @synthesize lowerContainer = lowerContainer_;
@@ -52,25 +51,28 @@
 SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 @synthesize messageActionButtonContainer = messageActionButtonContainer_;
 @synthesize messageActionButtons = messageActionButtons_;
+@synthesize currentLocationDescription = currentLocationDescription_;
 
 - (id)initWithEntityUrlString:(NSString*)entityUrlString 
 {
     if (self = [super init]) {
         self.entityURL = entityUrlString;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coreLocationAuthorizationStatusDidChange:) name:SocializeCLAuthorizationStatusDidChangeNotification object:nil];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+     
     [commentTextView release];
     [doNotShareLocationButton release];
     [activateLocationButton release];
     [mapOfUserLocation release];
     [locationText release];
     [_entityURL release];
-    [_locationManager setDelegate:nil];
-    [_locationManager release];
     [_geoCoderInfo release];
     [_mapContainer release];
     [lowerContainer_ release];
@@ -78,17 +80,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [sendButton_ release];
     [messageActionButtonContainer_ release];
     [messageActionButtons_ release];
+    [currentLocationDescription_ release];
 
     [super dealloc];
-}
-
-- (SocializeLocationManager*)locationManager {
-    if (_locationManager == nil) {
-        _locationManager = [[SocializeLocationManager locationManager] retain];
-        _locationManager.delegate = self;
-    }
-    
-    return _locationManager;
 }
 
 #pragma Location enable/disable button callbacks
@@ -116,11 +110,11 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
          {
              if(error)
              {
-                 self.locationManager.currentLocationDescription = NO_CITY_MSG;
+                 self.currentLocationDescription = NO_CITY_MSG;
              }
              else
              {
-                 self.locationManager.currentLocationDescription = [NSString stringWithPlacemark:[placemarks objectAtIndex:0]];
+                 self.currentLocationDescription = [NSString stringWithPlacemark:[placemarks objectAtIndex:0]];
              }
              [self configureLocationText];
              [geocoder autorelease];
@@ -131,8 +125,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 
 -(void)configureLocationText
 {
-    if (self.locationManager.shouldShareLocation) {
-        [self.locationText text: self.locationManager.currentLocationDescription 
+    BOOL shareLocation = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue];
+    if (shareLocation) {
+        [self.locationText text: self.currentLocationDescription 
                    withFontName: @"Helvetica" 
                    withFontSize: 12.0 
                       withColor: [UIColor colorWithRed:(35.0/255) green:(130.0/255) blue:(210.0/255) alpha:1]
@@ -162,7 +157,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 
 -(void)setShareLocation:(BOOL)enableLocation 
 {   
-    self.locationManager.shouldShareLocation = enableLocation;
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:enableLocation] forKey:kSocializeShouldShareLocationKey];
+
     if (enableLocation) {
         [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateNormal];
         [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateHighlighted];
@@ -191,7 +187,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 
 -(IBAction)activateLocationButtonPressed:(id)sender
 {
-    if (self.locationManager.shouldShareLocation)
+    BOOL shareLocation = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue];
+
+    if (shareLocation)
     {
         if ([commentTextView isFirstResponder]) 
         {
@@ -205,7 +203,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     }
     else
     {
-        if (![self.locationManager applicationIsAuthorizedToUseLocationServices])
+        if (![SocializeLocationManager locationServicesAvailable])
         {
             [self showAlertWithText:@"Please Turn On Location Services in Settings to Allow This Application to Share Your Location." andTitle:nil];
             return;
@@ -260,7 +258,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     
     [self.commentTextView becomeFirstResponder];    
     
-    [self setShareLocation:self.locationManager.shouldShareLocation];
+    BOOL shareLocation = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue];
+    [self setShareLocation:shareLocation];
     
     [self.mapOfUserLocation roundCorners];
     [self configureDoNotShareLocationButton];       
@@ -327,7 +326,10 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [self updateViewWithNewLocation:userLocation.location];
 }
 
-- (void)locationManager:(SocializeLocationManager *)locationManager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+- (void)coreLocationAuthorizationStatusDidChange:(NSNotification*)notification {
+    CLAuthorizationStatus status = kCLAuthorizationStatusNotDetermined;
+    [[[notification userInfo] objectForKey:kSocializeCLAuthorizationStatusKey] getValue:&status];
+    
     if (status == kCLAuthorizationStatusAuthorized) {
         [self setShareLocation:YES];
     } else {

@@ -56,10 +56,6 @@
     
     self.composeMessageViewController = (SocializeComposeMessageViewController*)self.viewController;
 
-    self.mockLocationManager = [OCMockObject mockForClass:[SocializeLocationManager class]];
-    [[self.mockLocationManager stub] setDelegate:nil];
-    self.composeMessageViewController.locationManager = self.mockLocationManager;
-    
     self.mockUpperContainer = [OCMockObject niceMockForClass:[UIView class]];
     self.composeMessageViewController.upperContainer = self.mockUpperContainer;
     
@@ -136,7 +132,7 @@
 
 -(void)testactivateLocationButtonPressedWithVisibleKB
 {
-    [[[self.mockLocationManager stub] andReturnBool:YES] shouldShareLocation];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSocializeShouldShareLocationKey];
     [[[self.mockCommentTextView stub] andReturnBool:YES] isFirstResponder];
 
     // Keyboard should hide
@@ -147,7 +143,7 @@
 
 -(void)testactivateLocationButtonPressedWithInvisibleKB
 {
-    [[[self.mockLocationManager stub] andReturnBool:YES] shouldShareLocation];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSocializeShouldShareLocationKey];
     [[[self.mockCommentTextView stub] andReturnBool:NO] isFirstResponder];
 
     // Keyboard should show
@@ -158,15 +154,15 @@
 
 -(void)testdoNotShareLocationButtonPressed
 {   
-    BOOL falseValue = NO;
-    [[[self.mockLocationManager stub]andReturnValue:OCMOCK_VALUE(falseValue)]shouldShareLocation];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSocializeShouldShareLocationKey];
 
-    [[self.mockLocationManager expect] setShouldShareLocation:NO];
     [[self.mockCommentTextView expect]becomeFirstResponder];
-    [[self.mockLocationText expect] text:@"Location will not be shared."  withFontName: @"Helvetica-Oblique"  withFontSize: 12.0 withColor:OCMOCK_ANY];
+//    [[self.mockLocationText expect] text:@"Location will not be shared."  withFontName: @"Helvetica-Oblique"  withFontSize: 12.0 withColor:OCMOCK_ANY];
 //    [[(id)self.composeMessageViewController expect] setShareLocation:NO];
     
     [self.composeMessageViewController doNotShareLocationButtonPressed:nil]; 
+    BOOL shareLocation = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue];
+    GHAssertFalse(shareLocation, @"Should have been set false");
 }
 
 -(void)testSupportOrientation
@@ -206,9 +202,7 @@
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.mockCancelButton];
     [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockSendButton];
     [[self.mockSendButton expect] setEnabled:NO];
-    BOOL noValue = NO;
-    [[[self.mockLocationManager stub] andReturnValue:OCMOCK_VALUE(noValue)] shouldShareLocation];
-    [[self.mockLocationManager expect] setShouldShareLocation:NO];    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSocializeShouldShareLocationKey];
 }
 
 - (void)testViewDidLoad {
@@ -217,8 +211,10 @@
 }
 
 - (void)testAllowingLocationUpdatesBar {
-    [[(id)self.composeMessageViewController expect] setShareLocation:YES];
-    [self.composeMessageViewController locationManager:self.mockLocationManager didChangeAuthorizationStatus:kCLAuthorizationStatusAuthorized];
+    CLAuthorizationStatus status = kCLAuthorizationStatusAuthorized;
+    NSValue *statusValue = [NSValue valueWithBytes:&status objCType:@encode(CLAuthorizationStatus)];
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:statusValue forKey:kSocializeCLAuthorizationStatusKey];
+    [[NSNotificationCenter defaultCenter] postNotificationName:SocializeCLAuthorizationStatusDidChangeNotification object:self userInfo:userInfo];
 }
 
 @end
