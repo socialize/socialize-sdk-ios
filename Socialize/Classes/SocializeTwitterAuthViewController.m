@@ -107,8 +107,6 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
         [self requestAccessToken];
         return;
     }
-    
-    NSLog(@"%@",[NSThread callStackSymbols]);
 
     [self notifyDelegateOfCompletion];
 }

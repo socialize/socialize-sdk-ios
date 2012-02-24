@@ -45,6 +45,8 @@
 @class UIImage;
 @class SocializeFacebook;
 @class SocializeTwitterAuthenticator;
+@class SocializeShareOptions;
+@class SocializeTwitterAuthOptions;
 
 extern NSString *const kSocializeDisableBrandingKey;
 
@@ -399,7 +401,7 @@ otherwise you will get a failure.
 /**
  Perform a managed Twitter authentication process, including webview callout to twitter auth process if necessary
  
- @see SocializeUIDisplayHandler
+ @see SocializeUIDisplay
  This variant allows specifying an explicit consumer key and secret
  */
 //- (void)authenticateViaTwitterWithConsumerKey:(NSString*)consumerKey
@@ -410,13 +412,14 @@ otherwise you will get a failure.
  Perform a managed Twitter authentication process, including webview callout to twitter auth process if necessary
  This variant uses the stored consumer key and secret (used by built-in Socialize UI controls)
  
- @param displayHandler A SocializeUIDisplayHandler for handling the required modal controller presentation and dismissal.
+ @param displayHandler A SocializeUIDisplay for handling the required modal controller presentation and dismissal.
  
- @see SocializeUIDisplayHandler
+ @see SocializeUIDisplay
  */
-- (void)authenticateViaTwitterWithDisplayHandler:(id)displayHandler
-                                         success:(void(^)())success
-                                         failure:(void(^)(NSError *error))failure;
+- (void)authenticateViaTwitterWithOptions:(SocializeTwitterAuthOptions*)options
+                                  display:(id)display
+                                  success:(void(^)())success
+                                  failure:(void(^)(NSError *error))failure;
 
 /**
  Authenticate with API key and API secret that were saved in the user defaults.
@@ -782,6 +785,11 @@ otherwise you will get a failure.
  You should not require this function for normal use. Use registerDeviceToken: instead
  */
 - (void)_registerDeviceTokenString:(NSString*)deviceTokenString;
+
++ (void)createShareWithOptions:(SocializeShareOptions*)options
+                       display:(id)display
+                       success:(void(^)())success
+                       failure:(void(^)(NSError *error))failure;
 
 
 @end

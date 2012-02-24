@@ -24,7 +24,6 @@
 @property (nonatomic, assign) BOOL showTwitterLogout;
 
 - (void)updateInterfaceToReflectFacebookSessionStatus ;
-- (void)showTwitterLoginDialog;
 - (void)showFacebookLoginDialog;
 - (void)updateInterfaceToReflectSessionStatuses;
 - (void)updateInterfaceToReflectTwitterSessionStatus;
@@ -418,7 +417,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     [self.userDefaults synchronize];
     
     if ([twitterSwitch isOn] && ![self loggedInWithTwitter]) {
-        [self showTwitterLoginDialog];
+        [self authenticateViaTwitter];
     }
 }
 
@@ -641,21 +640,13 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)authenticateViaTwitter {
-    [self.socialize authenticateViaTwitterWithDisplayHandler:self
-                                                     success:^{
-                                                         [self updateInterfaceToReflectSessionStatuses];
-                                                     } failure:^(NSError *error) {
-                                                         [self updateInterfaceToReflectSessionStatuses];
-                                                     }];
-}
-
-- (void)showTwitterLoginDialog {
-    UIAlertView *alertView = [UIAlertView alertWithTitle:@"Twitter Login Required" message:@"Do you want to log in with Twitter?"];
-    [alertView setCancelButtonWithTitle:@"No" handler:^{ [self.twitterSwitch setOn:NO animated:YES]; }];
-    [alertView addButtonWithTitle:@"Yes"
-                          handler:^{ [self authenticateViaTwitter]; }];
-                                      
-    [alertView show];    
+    [self.socialize authenticateViaTwitterWithOptions:nil
+                                              display:self
+                                              success:^{
+                                                  [self updateInterfaceToReflectSessionStatuses];
+                                              } failure:^(NSError *error) {
+                                                  [self updateInterfaceToReflectSessionStatuses];
+                                              }];
 }
 
 - (void)showFacebookLoginDialog {

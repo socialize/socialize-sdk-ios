@@ -127,12 +127,13 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 - (void)authenticateWithTwitter {
     [self startLoading];
     
-    [self.socialize authenticateViaTwitterWithDisplayHandler:self
-                                                     success:^{
-                                                         [self authenticationComplete];
-                                                     } failure:^(NSError *error) {
-                                                         [self stopLoading];
-                                                     }];
+    [self.socialize authenticateViaTwitterWithOptions:nil
+                                              display:self
+                                              success:^{
+                                                  [self authenticationComplete];
+                                              } failure:^(NSError *error) {
+                                                  [self stopLoading];
+                                              }];
 }
 
 - (NSMutableArray*)authTypeRowData {

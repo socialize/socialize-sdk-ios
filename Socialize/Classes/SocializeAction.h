@@ -10,12 +10,27 @@
 #import "SocializeServiceDelegate.h"
 
 @class Socialize;
-@class SocializeUIDisplay;
+@class SocializeUIDisplayProxy;
 
-@interface SocializeAction : NSObject <SocializeServiceDelegate>
-- (id)initWithDisplayHandler:(id)displayHandler;
+@interface SocializeAction : NSOperation <SocializeServiceDelegate>
+- (id)initWithDisplayObject:(id)displayObject
+                    display:(id)display
+                    success:(void(^)())success
+                    failure:(void(^)(NSError *error))failure;
+
 - (void)cancelAllCallbacks;
+- (void)executeAction;
+- (void)finishedOnMainThread;
+- (NSError*)defaultError;
+- (void)failWithError:(NSError*)error;
+- (void)succeed;
+
++ (void)executeAction:(SocializeAction*)action;
++ (NSOperationQueue*)actionQueue;
 
 @property (nonatomic, retain) Socialize *socialize;
-@property (nonatomic, retain) SocializeUIDisplay *display;
+@property (nonatomic, retain) SocializeUIDisplayProxy *displayProxy;
+@property (nonatomic, copy) void (^failureBlock)(NSError *error);
+@property (nonatomic, copy) void (^successBlock)();
+
 @end

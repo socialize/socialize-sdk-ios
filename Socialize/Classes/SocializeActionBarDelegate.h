@@ -12,6 +12,6 @@
 @protocol SocializeActionBarDelegate <SocializeBaseViewControllerDelegate>;
 
 @optional
-- (void)actionBar:(SocializeActionBar*)actionBar wantsDisplayActionSheet:(UIActionSheet*)actionSheet;
+- (void)actionBar:(SocializeActionBar*)actionBar wantsDisplayActionSheet:(UIActionSheet*)actionSheet __attribute__((deprecated));
 
 @end

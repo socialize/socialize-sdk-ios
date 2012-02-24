@@ -15,14 +15,21 @@ extern NSString *const kSocializeErrorResponseBodyKey;
 extern NSString *const kSocializeErrorServerErrorsArrayKey;
 extern NSString *const kSocializeErrorNSHTTPURLResponseKey;
 
-enum {
+typedef enum {
     SocializeErrorUnknown = -1,
     SocializeErrorUnexpectedJSONResponse,
     SocializeErrorServerReturnedErrors,
     SocializeErrorServerReturnedHTTPError,
     SocializeErrorFacebookCancelledByUser,
+    SocializeErrorFacebookUnavailable,
     SocializeErrorTwitterCancelledByUser,
+    SocializeErrorTwitterUnavailable,
+    SocializeErrorSMSNotAvailable,
+    SocializeErrorEmailNotAvailable,
+    SocializeErrorShareCreationFailed,
+    SocializeErrorShareCancelledByUser,
     SocializeNumErrors,
-};
+} SocializeErrorCode;
 
+NSString *SocializeDefaultErrorStringForCode(NSUInteger code);
 NSString *SocializeDefaultLocalizedErrorStringForCode(NSUInteger code);

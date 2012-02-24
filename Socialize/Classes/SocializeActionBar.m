@@ -40,6 +40,10 @@
 #import "SocializePostShareViewController.h"
 #import "SocializeEntityService.h"
 #import "SocializeProfileViewController.h"
+#import "SocializeShareOptions.h"
+#import "NSError+Socialize.h"
+#import "SocializeUIDisplayProxy.h"
+#import "SocializeShareCreator.h"
 
 @interface SocializeActionBar()
 @property (nonatomic, retain) id<SocializeView> entityView;
@@ -47,19 +51,13 @@
 @property (nonatomic, assign) BOOL finishedAskingServerForExistingLike;
 @property (nonatomic, assign) BOOL initialized;
 
--(void) shareViaEmail;
--(void)shareViaFacebook;
--(void)displayComposerSheet;
 -(void)askServerForExistingLike;
 -(void)reloadEntity;
-- (BOOL)canSendText;
--(void)displaySMSComposerSheet;
-- (void)shareViaText;
 @end
 
 @implementation SocializeActionBar
 
-@synthesize presentModalInViewController = _presentModalInViewController;
+@synthesize displayProxy = _display;
 @synthesize entity = _entity;
 @synthesize entityLike = entityLike_;
 @synthesize entityView = entityView_;
@@ -76,7 +74,7 @@
 
 - (void)dealloc
 {
-    self.presentModalInViewController = nil;
+    self.displayProxy = nil;
     self.entity = nil;
     self.entityLike = nil;
     self.entityView = nil;
@@ -104,8 +102,11 @@
 }
 
 +(SocializeActionBar*)actionBarWithKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller {
-    SocializeActionBar* bar = [[[SocializeActionBar alloc] initWithEntityKey:key name:name presentModalInController:controller] autorelease];
-    return bar;
+    return [[[SocializeActionBar alloc] initWithEntityKey:key name:name presentModalInController:controller] autorelease];
+}
+
++(SocializeActionBar*)actionBarWithEntity:(id<SocializeEntity>)entity display:(id)display {
+    return [[[SocializeActionBar alloc] initWithEntity:entity display:display] autorelease];
 }
 
 -(id)initWithEntityKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller {
@@ -124,13 +125,16 @@
     return [self initWithEntityKey:url presentModalInController:controller];
 }
 
--(id)initWithEntity:(id<SocializeEntity>)socEntity presentModalInController:(UIViewController*)controller
-{
+-(id)initWithEntity:(id<SocializeEntity>)entity presentModalInController:(UIViewController*)controller {
+    return [self initWithEntity:entity display:controller];
+}
+
+-(id)initWithEntity:(id<SocializeEntity>)entity display:(id)display {
     self = [super init];
     if(self)
     {
-        self.entity = socEntity;
-        self.presentModalInViewController = controller;
+        self.entity = entity;
+        self.displayProxy = [SocializeUIDisplayProxy UIDisplayProxyWithObject:self display:display];
     }
     return self;
 }
@@ -139,7 +143,7 @@
 
 - (void)presentInternalController:(UIViewController*)viewController {
     self.ignoreNextView = YES;
-    [self.presentModalInViewController presentModalViewController:viewController animated:YES];
+    [self.displayProxy presentModalViewController:viewController];
 }
 
 - (void)setNoAutoLayout:(BOOL)noAutoLayout {
@@ -234,160 +238,17 @@
     [self presentInternalController:nav];
 }
 
-- (UIActionSheet*)shareActionSheet {
-    if (shareActionSheet_ == nil) {
-        shareActionSheet_ = [[UIActionSheet sheetWithTitle:nil] retain];
-        
-        __block __typeof__(self) weakSelf = self;
-        if([self.socialize facebookAvailable])
-            [shareActionSheet_ addButtonWithTitle:@"Share on Facebook" handler:^{ [weakSelf shareViaFacebook]; }];
-
-        [shareActionSheet_ addButtonWithTitle:@"Share via Email" handler:^{ [weakSelf shareViaEmail]; }];
-        
-        if ([self canSendText]) {
-            [shareActionSheet_ addButtonWithTitle:@"Share via Text" handler:^{ [weakSelf shareViaText]; }];
-        }
-        [shareActionSheet_ setCancelButtonWithTitle:nil handler:^{  }];
-    }
-    return shareActionSheet_;
-}
-
-- (void)showActionSheet:(UIActionSheet*)actionSheet {
-    if ([self.delegate respondsToSelector:@selector(actionBar:wantsDisplayActionSheet:)]) {
-        
-        // Let the delegate override action sheet display if they want
-        [self.delegate actionBar:self wantsDisplayActionSheet:actionSheet];
-        
-    } else if ([self.presentModalInViewController isKindOfClass:[UITabBarController class]]) {
-        
-        // Some default behavior for UITabBarController (showFromTabBar:)
-        [actionSheet showFromTabBar:[(UITabBarController*)self.presentModalInViewController tabBar]];
-        
-    } else {
-        
-        // Normal Behavior: just display in modal target's view
-        [actionSheet showInView:self.presentModalInViewController.view];
-    }
-}
-
 -(void)shareButtonTouched: (id) sender
 {
-    [self showActionSheet:self.shareActionSheet];
-}
-
--(void)shareViaFacebook
-{
-    UINavigationController *shareController = [SocializePostShareViewController postShareViewControllerInNavigationControllerWithEntityURL:self.entity.key];
-    [self presentInternalController:shareController];
-}
-
-#pragma mark Share via email
-
-- (UIAlertView*)unconfiguredEmailAlert {
-    if (unconfiguredEmailAlert_ == nil) {
-        unconfiguredEmailAlert_ = [[UIAlertView alloc] initWithTitle:@"Mail is not Configured" message:@"Please configure at least one mail account before using this feature."];
-        [unconfiguredEmailAlert_ addButtonWithTitle:@"Add Account" handler:^{
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=ACCOUNT_SETTINGS"]];
-        }];
-        [unconfiguredEmailAlert_ setCancelButtonWithTitle:@"Ok" handler:^{}];
-    }
-    
-    return unconfiguredEmailAlert_;
-}
-
-- (BOOL)canSendMail {
-    return [MFMailComposeViewController canSendMail];
-}
-
--(void) shareViaEmail
-{
-    if ([self canSendMail]) {
-        [self displayComposerSheet];
-    } else {
-        [self.unconfiguredEmailAlert show];
-    }
-}
-
-- (MFMailComposeViewController*)shareComposer {
-    if (shareComposer_ == nil) {
-        shareComposer_ = [[MFMailComposeViewController alloc] init];
-        shareComposer_.completionBlock = ^(MFMailComposeResult result, NSError *error)
-        {
-            // Notifies users about errors associated with the interface
-            switch (result)
-            {
-                case MFMailComposeResultCancelled:
-                    break;
-                case MFMailComposeResultSaved:
-                    break;
-                case MFMailComposeResultSent:
-                    break;
-                case MFMailComposeResultFailed:
-                    break;
-                default:
-                    break;
-            }
-        };
-    }
-    
-    return shareComposer_;
-}
-
-- (NSString*)subjectString {
-    NSString *subject = self.entity.name;
-    if ([subject length] == 0) {
-        subject = self.entity.key;
-    }
-
-    return subject;
-}
-
-- (NSString*)messageBodyString {
-    return [NSString stringWithFormat: @"I thought you would find this interesting: %@ %@", self.entity.name, self.entity.key];    
-}
-
-// Displays an email composition interface inside the application. Populates all the Mail fields. 
--(void)displayComposerSheet 
-{
-    [self.shareComposer setSubject:[self subjectString]];
-
-    // Fill out the email body text
-    NSString *emailBody = [self messageBodyString];
-    [self.shareComposer setMessageBody:emailBody isHTML:NO];
-
-    [self presentInternalController:self.shareComposer];
-}
-
-- (BOOL)canSendText {
-    return [MFMessageComposeViewController canSendText];
-}
-
-- (MFMessageComposeViewController*)shareTextMessageComposer {
-    if (shareTextMessageComposer_ == nil) {
-        shareTextMessageComposer_ = [[MFMessageComposeViewController alloc] init];
-        [shareTextMessageComposer_ setBody:[self messageBodyString]];
-        shareTextMessageComposer_.completionBlock = ^(MessageComposeResult result) {
-            switch (result) {
-                case MessageComposeResultFailed:
-                    [UIAlertView showAlertWithTitle:@"Error" message:@"There was a problem sending your text message" buttonTitle:@"Ok" handler:nil];
-                    break;
-                default:
-                    break;
-            }
-        };
-    }
-    
-    return shareTextMessageComposer_;
-}
-
--(void)displaySMSComposerSheet 
-{
-    self.shareTextMessageComposer = nil;
-	[self presentInternalController:self.shareTextMessageComposer];
-}
-
-- (void)shareViaText {
-    [self displaySMSComposerSheet];
+    SocializeShareOptions *options = [SocializeShareOptions shareOptionsWithEntity:self.entity];
+    [SocializeShareCreator createShareWithOptions:options
+                                     displayProxy:self.displayProxy
+                                          success:^{}
+                                          failure:^(NSError *error) {
+                                              if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
+                                                  [self showAlertWithText:[error localizedDescription] andTitle:@"Share Failed"];
+                                              }
+                                          }];
 }
 
 - (void)reloadEntity {

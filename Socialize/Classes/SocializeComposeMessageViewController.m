@@ -349,4 +349,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     }
 }
 
+- (void)sendButtonPressed:(UIButton*)sendButton {
+    [self notifyDelegateOfCompletion];
+}
+
 @end

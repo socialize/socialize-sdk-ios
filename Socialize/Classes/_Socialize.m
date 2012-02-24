@@ -26,6 +26,9 @@
 #import "StringHelper.h"
 #import "SocializeTwitterAuthenticator.h"
 #import "SocializeDeviceTokenSender.h"
+#import "SocializeShareCreator.h"
+#import "SocializeShareOptions.h"
+#import "SocializeTwitterAuthOptions.h"
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"
@@ -306,14 +309,12 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     [_authService authenticateWithTwitterUsingStoredCredentials];
 }
 
-- (void)authenticateViaTwitterWithDisplayHandler:(id)displayHandler
-                                         success:(void(^)())success
-                                         failure:(void(^)(NSError *error))failure {
-    
-    self.twitterAuthenticator = [[[SocializeTwitterAuthenticator alloc] initWithDisplayHandler:displayHandler] autorelease];
-    self.twitterAuthenticator.successBlock = success;
-    self.twitterAuthenticator.failureBlock = failure;
-    [self.twitterAuthenticator authenticateWithTwitter];
+- (void)authenticateViaTwitterWithOptions:(SocializeTwitterAuthOptions*)options
+                                  display:(id)display
+                                  success:(void(^)())success
+                                  failure:(void(^)(NSError *error))failure {
+
+    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options display:display success:success failure:failure];
 }
 
 -(void)authenticateAnonymously
@@ -464,7 +465,6 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie *cookie in [storage cookies]) {
         if ([[cookie domain] isEqualToString:@".twitter.com"]) {
-            NSLog(@"Deleting %@", cookie);
             [storage deleteCookie:cookie];
         }
     }
@@ -680,8 +680,8 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     [_deviceTokenService registerDeviceTokenString:deviceTokenString];
 }
 
-- (void)registerDeviceToken:(NSData*)deviceToken {
-//    [[SocializeDeviceTokenSender sharedDeviceTokenSender] registerDeviceToken
++ (void)createShareWithOptions:(SocializeShareOptions*)options display:(id)display success:(void(^)())success failure:(void(^)(NSError *error))failure {
+    [SocializeShareCreator createShareWithOptions:options display:display success:success failure:failure];
 }
 
 @end

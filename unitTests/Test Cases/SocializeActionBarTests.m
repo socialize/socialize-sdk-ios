@@ -52,13 +52,7 @@
 @property(nonatomic, retain) id<SocializeLike> entityLike;
 @property(nonatomic, retain) id<SocializeView> entityView;
 
--(void) shareViaEmail;
--(void)launchMailAppOnDevice;
--(void)displayComposerSheet;
--(BOOL)canSendMail;
--(BOOL)canSendText;
 - (void)presentInternalController:(UIViewController*)viewController;
--(void)displaySMSComposerSheet;
 @end
 
 @implementation SocializeActionBarTests
@@ -69,10 +63,6 @@
 @synthesize mockSocialize = mockSocialize_;
 @synthesize mockActionView = mockActionView_;
 @synthesize mockEntity = mockEntity_;
-@synthesize mockShareComposer = mockShareComposer_;
-@synthesize mockShareActionSheet = mockShareActionSheet_;
-@synthesize mockUnconfiguredEmailAlert = mockUnconfiguredEmailAlert_;
-@synthesize mockShareTextMessageComposer = mockShareTextMessageComposer_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -85,7 +75,7 @@
     [[[self.mockEntity stub] andReturn:TEST_ENTITY_URL] key];
     [[[self.mockEntity stub] andReturn:TEST_ENTITY_NAME] name];
 
-    self.origActionBar = [[[SocializeActionBar alloc] initWithEntity:self.mockEntity presentModalInController:self.mockParentController] autorelease];
+    self.origActionBar = [[[SocializeActionBar alloc] initWithEntity:self.mockEntity display:self.mockParentController] autorelease];
     self.actionBar = [OCMockObject partialMockForObject:self.origActionBar];
     
     self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
@@ -94,17 +84,6 @@
     self.mockActionView = [OCMockObject mockForClass:[SocializeActionView class]];
     [[[(id)self.actionBar stub] andReturn:self.mockActionView] view];
     
-    self.mockShareComposer = [OCMockObject mockForClass:[MFMailComposeViewController class]];
-    self.actionBar.shareComposer = self.mockShareComposer;
-    
-    self.mockShareActionSheet = [OCMockObject mockForClass:[UIActionSheet class]];
-    self.actionBar.shareActionSheet = self.mockShareActionSheet;
-    
-    self.mockUnconfiguredEmailAlert = [OCMockObject mockForClass:[UIAlertView class]];
-    self.actionBar.unconfiguredEmailAlert = self.mockUnconfiguredEmailAlert;
-    
-    self.mockShareTextMessageComposer = [OCMockObject mockForClass:[MFMessageComposeViewController class]];
-    self.actionBar.shareTextMessageComposer = self.mockShareTextMessageComposer;
 }
 
 -(void)tearDown
@@ -114,8 +93,6 @@
     [(id)self.actionBar verify];
     [self.mockSocialize verify];
     [self.mockActionView verify];
-    [self.mockShareComposer verify];
-    [self.mockShareTextMessageComposer verify];
     
     [[self.mockSocialize stub] setDelegate:nil];
     self.mockParentController = nil;
@@ -124,8 +101,6 @@
     self.actionBar = nil;
     self.mockSocialize = nil;
     self.mockActionView = nil;
-    self.mockShareComposer = nil;
-    self.mockShareTextMessageComposer = nil;
 }
 
 - (id)createMockForServiceClass:(Class)serviceClass {
@@ -239,37 +214,6 @@
     [self.actionBar service:mockService didFetchElements:[NSArray arrayWithObject:mockEntity]];
 }
 
-- (void)testShareShowsActionSheet {
-    // Stub in a view for the parent
-    id mockView = [OCMockObject mockForClass:[UIView class]];
-    [[[self.mockParentController stub] andReturn:mockView] view];
-    [[[self.mockParentController stub] andReturnBool:NO] isKindOfClass:[UITabBarController class]];
-    
-    [[self.mockShareActionSheet expect] showInView:mockView];
-    [self.actionBar shareButtonTouched:nil];
-}
-
-
-- (void)testShareViaEmailShowsComposer {
-    [[self.mockShareComposer expect] setSubject:TEST_ENTITY_NAME];
-    [[self.mockShareComposer expect] setMessageBody:OCMOCK_ANY isHTML:NO];
-    [[(id)self.actionBar expect] presentInternalController:self.mockShareComposer];
-
-     [self.actionBar shareViaEmail];
-}
-
-- (void)testComposerCases {
-    self.actionBar.shareComposer = nil;
-    /* Tests we don't crash, anyway. Add additional testing if these ever have an effect */
-    
-    // Make sure it's created on the main thread (exception will be thrown if not)
-
-    self.actionBar.shareComposer.completionBlock(MFMailComposeResultCancelled, nil); // currently noop
-    self.actionBar.shareComposer.completionBlock(MFMailComposeResultFailed, nil); // currently noop
-    self.actionBar.shareComposer.completionBlock(MFMailComposeResultSaved, nil); // currently noop
-    self.actionBar.shareComposer.completionBlock(MFMailComposeResultSent, nil); // currently noop
-}
-
 - (void)testShowingViewPerformsAutoAuth {
     [[(id)self.actionBar expect] performAutoAuth];
     [self.actionBar socializeActionViewWillAppear:self.mockActionView];
@@ -324,72 +268,24 @@
     self.actionBar.noAutoLayout = NO;
 }
 
-- (void)testThatShareShowsFromTabBarIfTargetIsTabBar {
-    // Replace parent controller
-    id mockParentController = [OCMockObject mockForClass:[UITabBarController class]];
-    self.actionBar.presentModalInViewController = mockParentController;
-    
-    // Controller is a tab bar controller
-    [[[mockParentController stub] andReturnBool:YES] isKindOfClass:[UITabBarController class]];
-
-    // Stub in a tab bar
-    id mockTabBar = [OCMockObject mockForClass:[UITabBar class]];
-    [[[mockParentController stub] andReturn:mockTabBar] tabBar];
-
-    // Should show from our tab bar
-    [[self.mockShareActionSheet expect] showFromTabBar:mockTabBar];
-    
-    [self.actionBar shareButtonTouched:nil];
-}
-     
-- (void)testThatDelegateCanOverrideActionSheetDisplay {
-    self.actionBar.delegate = self;
-    
-    [self prepare];
-    [self.actionBar shareButtonTouched:nil];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
-}
-
-- (void)actionBar:(SocializeActionBar *)actionBar wantsDisplayActionSheet:(UIActionSheet *)actionSheet {
-    GHAssertEquals(actionSheet, self.mockShareActionSheet, @"Bad action sheet");
-    [self notify:kGHUnitWaitStatusSuccess];
-}
-
-- (void)testUnconfiguredMailShowsAlert {
-    [[[(id)self.actionBar stub] andReturnBool:NO] canSendMail];
-    [[self.mockUnconfiguredEmailAlert expect] show];
-    [self.actionBar shareViaEmail];
-}
-
-- (void)testUnconfiguredEmailAlert {
-    self.actionBar.unconfiguredEmailAlert = nil;
-    UIAlertView *alertView = self.actionBar.unconfiguredEmailAlert;
-    GHAssertNotNil(alertView, @"missing alert view");
-}
+//- (void)testThatDelegateCanOverrideActionSheetDisplay {
+//    self.actionBar.delegate = self;
+//    
+//    [self prepare];
+//    [self.actionBar shareButtonTouched:nil];
+//    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+//}
+//
+//- (void)actionBar:(SocializeActionBar *)actionBar wantsDisplayActionSheet:(UIActionSheet *)actionSheet {
+//    GHAssertEquals(actionSheet, self.mockShareActionSheet, @"Bad action sheet");
+//    [self notify:kGHUnitWaitStatusSuccess];
+//}
 
 - (void)testPresentModalControllerIgnoresNextViewAndPresents {
     [[(id)self.actionBar expect] setIgnoreNextView:YES];
     [[self.mockParentController expect] presentModalViewController:OCMOCK_ANY animated:YES];
     
     [self.actionBar presentInternalController:nil];
-}
-
-- (void)testDefaultActionSheet {
-    self.actionBar.shareActionSheet = nil;
-    
-    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
-    [[[(id)self.actionBar stub] andReturnBool:YES] canSendMail];
-    [[[(id)self.actionBar stub] andReturnBool:YES] canSendText];
-    
-    UIActionSheet *actionSheet = self.actionBar.shareActionSheet;
-    
-    GHAssertEquals(actionSheet.numberOfButtons, 4, @"Bad button count");
-}
-
-- (void)testDisplayTextMessageComposer {
-    [[(id)self.actionBar expect] setShareTextMessageComposer:nil];
-    [[(id)self.actionBar expect] presentInternalController:self.mockShareTextMessageComposer];
-    [self.actionBar displaySMSComposerSheet];
 }
 
 @end
