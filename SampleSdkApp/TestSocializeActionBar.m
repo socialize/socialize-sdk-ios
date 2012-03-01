@@ -68,7 +68,11 @@
 {
     [super viewDidLoad];
     [self.entityView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.entityUrl]]];
-    bar = [[SocializeActionBar actionBarWithKey:self.entityUrl name:@"TestBar" presentModalInController:self] retain];
+//    bar = [[SocializeActionBar actionBarWithKey:self.entityUrl name:@"TestBar" presentModalInController:self] retain];
+    SocializeEntity *entity = [[[SocializeEntity alloc] init] autorelease];
+    entity.key = self.entityUrl;
+    entity.name = @"TestBar";
+    bar = [SocializeActionBar actionBarWithEntity:entity display:self];
 //    bar.view.frame = CGRectMake(0, 0, <#CGFloat width#>, <#CGFloat height#>)
     [self.view addSubview:bar.view];
 }

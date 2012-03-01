@@ -31,6 +31,9 @@
 @property (nonatomic, retain) id mockKeyboardListener;
 @property (nonatomic, retain) id mockDelegate;
 @property (nonatomic, retain) id mockProfileEditViewController;
+@property (nonatomic, retain) id mockTwitterAuthenticatorClass;
+@property (nonatomic, retain) id mockFacebookAuthenticatorClass;
+
 - (void)expectServiceFailure;
 - (void)expectAndSimulateLoadOfImage:(UIImage*)image fromURL:(NSString*)url;
 - (void)expectViewWillAppear;

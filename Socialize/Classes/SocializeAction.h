@@ -32,5 +32,8 @@
 @property (nonatomic, retain) SocializeUIDisplayProxy *displayProxy;
 @property (nonatomic, copy) void (^failureBlock)(NSError *error);
 @property (nonatomic, copy) void (^successBlock)();
+@property (nonatomic, assign) Class twitterAuthenticatorClass;
+@property (nonatomic, assign) Class facebookAuthenticatorClass;
+@property (nonatomic, assign) Class facebookWallPosterClass;
 
 @end

@@ -58,6 +58,6 @@
     #import "SocializeService+Testing.h"
     #import "TestUtils.h"
     #import "StringHelper.h"
-    #import "OCMockRecorder+SocializeHelpers.h"
-    #import "OCMockObject+SocializeHelpers.h"
+#import "UIAlertView+Observer.h"
+#import "NSObject+Observer.h"
 #endif

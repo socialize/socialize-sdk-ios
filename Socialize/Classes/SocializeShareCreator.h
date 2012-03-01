@@ -37,4 +37,7 @@
 
 @property (nonatomic, retain) id<SocializeShare> shareObject;
 @property (nonatomic, retain) SocializeShareOptions *options;
+@property (nonatomic, assign) Class messageComposerClass;
+@property (nonatomic, assign) Class mailComposerClass;
+@property (nonatomic, retain) UIApplication *application;
 @end

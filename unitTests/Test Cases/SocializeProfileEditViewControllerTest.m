@@ -654,16 +654,22 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [self.profileEditViewController twitterSwitchChanged:self.mockTwitterSwitch];
 }
 
-- (void)testSettingTwitterSwitchOnPromptsForLogin {
+- (void)testSettingTwitterSwitchOnAttemptsTwitterLogin {
     [self.mockUserDefaults makeNice];
     
+    // Not authed
     [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithTwitter];
     
+    // Simulating "was just set to on"
     [[[self.mockTwitterSwitch stub] andReturnBool:YES] isOn];
     
-    [self.profileEditViewController twitterSwitchChanged:self.mockTwitterSwitch];
+    // Should auth
+    [[self.mockTwitterAuthenticatorClass expect] authenticateViaTwitterWithOptions:OCMOCK_ANY
+                                                                           display:OCMOCK_ANY
+                                                                           success:OCMOCK_ANY
+                                                                           failure:OCMOCK_ANY];
     
-    GHAssertNotNil(self.lastShownAlert, @"Should have alert");
+    [self.profileEditViewController twitterSwitchChanged:self.mockTwitterSwitch];
 }
 
 - (void)testSettingFacebookSwitchOnPromptsForLogin {

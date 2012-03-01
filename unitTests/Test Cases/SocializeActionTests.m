@@ -2,204 +2,200 @@
 //  SocializeActionTests.m
 //  SocializeSDK
 //
-//  Created by Fawad Haider on 8/17/11.
-//  Copyright 2011 Socialize, Inc. All rights reserved.
+//  Created by Nathaniel Griswold on 2/28/12.
+//  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
 #import "SocializeActionTests.h"
-#import "SocializeActionView.h"
-#import "SocializeActionViewForTest.h"
-#import "UIFontForTest.h"
-#import <OCMock/OCMock.h>
-#import "NSNumber+Additions.h"
+#import "_Socialize.h"
+#import "SocializeTwitterAuthenticator.h"
+#import "SocializeFacebookAuthenticator.h"
+#import "SocializeFacebookWallPoster.h"
+
+@interface FailingAction : SocializeAction
+@end
+
+@implementation FailingAction
+- (void)executeAction {
+    NSError *error = [[[NSError alloc] init] autorelease];
+    [self failWithError:error];
+}
+@end
+
+@interface SucceedingAction : SocializeAction
+@end
+
+@implementation SucceedingAction
+- (void)executeAction {
+    [self succeed];
+}
+@end
+
+@interface DisplayImplementation : NSObject
+@end
+
+@implementation DisplayImplementation
+- (void)socializeObject:(id)object requiresDisplayOfActionSheet:(UIActionSheet*)actionSheet {}
+- (void)socializeObject:(id)object requiresDisplayOfViewController:(UIViewController *)controller {}
+- (void)socializeObject:(id)object requiresDismissOfViewController:(UIViewController *)controller {}
+- (void)socializeObject:(id)object requiresDisplayOfAlertView:(UIAlertView *)alertView {}
+- (void)socializeObjectWillStartLoading:(id)object {}
+- (void)socializeObjectWillStopLoading:(id)object {}
+@end
 
 @implementation SocializeActionTests
+@synthesize action = action_;
+@synthesize mockDisplay = display_;
+@synthesize mockSocialize = mockSocialize_;
+@synthesize mockTwitterAuthenticatorClass = mockTwitterAuthenticatorClass_;
+@synthesize mockFacebookAuthenticatorClass = mockFacebookAuthenticatorClass_;
+@synthesize mockFacebookWallPosterClass = mockFacebookWallPosterClass_;
 
-/*// Run at start of all tests in the class
-- (void)setUpClass
-{
-    NSLog(@"setUpClass");
+- (id)createAction {
+    return [[[SocializeAction alloc] initWithDisplayObject:nil
+                                                   display:self.mockDisplay
+                                                   success:^{ [self notify:kGHUnitWaitStatusSuccess]; }
+                                                   failure:^(NSError *error) { [self notify:kGHUnitWaitStatusFailure]; }] autorelease];
 }
 
-// Run at end of all tests in the class
-- (void)tearDownClass
-{
-    NSLog(@"tearDownClass");
-}
- */
-/*
+- (void)setUp {
+    self.mockDisplay = [OCMockObject mockForClass:[DisplayImplementation class]];
+    [[[self.mockDisplay stub] andReturnBool:NO] isKindOfClass:[UITabBarController class]];
+    
+    self.action = [self createAction];
 
-// Run before each test method
-- (void)setUp
-{
-}
+    self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
+    [[self.mockSocialize stub] setDelegate:nil];
+    
+    self.action.socialize = self.mockSocialize;
+    [[[self.mockSocialize stub] andReturnBool:YES] twitterAvailable];
+    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
+    
+    self.mockTwitterAuthenticatorClass = [OCMockObject classMockForClass:[SocializeTwitterAuthenticator class]];
+    self.action.twitterAuthenticatorClass = self.mockTwitterAuthenticatorClass;
+    
+    self.mockFacebookAuthenticatorClass = [OCMockObject classMockForClass:[SocializeFacebookAuthenticator class]];
+    self.action.facebookAuthenticatorClass = self.mockFacebookAuthenticatorClass;
+    
+    self.mockFacebookAuthenticatorClass = [OCMockObject classMockForClass:[SocializeFacebookAuthenticator class]];
+    self.action.facebookAuthenticatorClass = self.mockFacebookAuthenticatorClass;
 
-// Run after each test method
-- (void)tearDown
-{
-}
-*/
-#pragma mark -
+    self.mockFacebookWallPosterClass = [OCMockObject classMockForClass:[SocializeFacebookWallPoster class]];
+    self.action.facebookWallPosterClass = self.mockFacebookWallPosterClass;
 
-#define ORIGIN_X 0
-#define ORIGIN_Y 0
-
-#define HEIGHT 44 
-#define WIDTH 320 
-
-
-#pragma mark create more tests
-
-// By default NO, but if you have a UI test or test dependent on running on the main thread return YES
-- (BOOL)shouldRunOnMainThread
-{
-    return YES;
 }
 
-
--(void)testImagesBeingSet{
+- (void)tearDown {
+    [self.mockDisplay verify];
+    [self.mockTwitterAuthenticatorClass verify];
+    [self.mockFacebookAuthenticatorClass verify];
+    [self.mockFacebookWallPosterClass verify];
     
-    id likeButton = [OCMockObject niceMockForClass:[UIButton class]];
-    id viewButton = [OCMockObject niceMockForClass:[UIButton class]];
-    id commentButton = [OCMockObject niceMockForClass:[UIButton class]];
-
-    //    UIFont * labelFont = [[UIFontForTest alloc] init];
-    UIFont* labelFont = [UIFont boldSystemFontOfSize:11.0f];
-    id activityIndicator = [OCMockObject niceMockForClass:[UIActivityIndicatorView class]];
-
-    [[commentButton expect] setBackgroundImage:OCMOCK_ANY forState:UIControlStateNormal];
-    [[likeButton expect] setBackgroundImage:OCMOCK_ANY forState:UIControlStateNormal];
-    [[viewButton expect] setBackgroundImage:OCMOCK_ANY forState:UIControlStateNormal];
-
-    SocializeActionViewForTest* actionView = [[SocializeActionViewForTest alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT) labelButtonFont:labelFont likeButton:likeButton viewButton:viewButton commentButton:commentButton activityIndicator:activityIndicator];
-
-    [likeButton verify];
-    [viewButton verify];
-    [commentButton verify];
-
-    CGRect actionRect = CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT);
-    GHAssertEquals(actionRect, actionView.frame, @"the frame should be the same as we specififed");
-    [actionView release];
+    self.mockTwitterAuthenticatorClass = nil;
+    self.mockFacebookAuthenticatorClass = nil;
+    self.mockFacebookWallPosterClass = nil;
+    self.mockDisplay = nil;
+    self.action.socialize = nil;
+    self.action = nil;
+    
+    [super tearDown];
 }
 
--(void)testUpdateCounts{
+- (void)succeedFacebookAuthentication {
     
-    id likeButton = [OCMockObject niceMockForClass:[UIButton class]];
-    id viewButton = [OCMockObject niceMockForClass:[UIButton class]];
-    id commentButton = [OCMockObject niceMockForClass:[UIButton class]];
+    // Initially, not authenticated
+    [[[self.mockSocialize expect] andReturnBool:NO] isAuthenticatedWithFacebook];
     
-    UIFont* labelFont = [UIFont boldSystemFontOfSize:11.0f];
-    id activityIndicator = [OCMockObject niceMockForClass:[UIActivityIndicatorView class]];
-    
-    SocializeActionViewForTest* actionView = [[SocializeActionViewForTest alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT) labelButtonFont:labelFont likeButton:likeButton viewButton:viewButton commentButton:commentButton activityIndicator:activityIndicator];
-
-    [[commentButton expect] setTitle:OCMOCK_ANY forState:UIControlStateNormal];
-    [[likeButton expect] setTitle:OCMOCK_ANY forState:UIControlStateNormal];
-    [[viewButton expect] setTitle:OCMOCK_ANY forState:UIControlStateNormal];
-    
-    NSNumber* viewsCount = [NSNumber numberWithInt:67];
-    NSNumber* likesCount = [NSNumber numberWithInt:67];
-    NSNumber* commentsCount = [NSNumber numberWithInt:67];
-    
-    [actionView updateCountsWithViewsCount: viewsCount withLikesCount: likesCount isLiked: YES withCommentsCount: commentsCount];
-    
-    [likeButton verify];
-    [viewButton verify];
-    [commentButton verify];
-    
-    [actionView release];
+    [[[self.mockFacebookAuthenticatorClass expect] andDo4:^(id options, id display, id success, id failure) {
+        // Succeed -- Authenticated from now on
+        [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
+        
+        void (^successBlock)() = success;
+        successBlock();
+    }] authenticateViaFacebookWithOptions:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
 }
 
--(void)testUpdateisLiked{
-
-    id likeButton = [OCMockObject niceMockForClass:[UIButton class]];
-    id viewButton = [OCMockObject niceMockForClass:[UIButton class]];
-    id commentButton = [OCMockObject niceMockForClass:[UIButton class]];
-    
-    UIFont* labelFont = [UIFont boldSystemFontOfSize:11.0f];
-    id activityIndicator = [OCMockObject niceMockForClass:[UIActivityIndicatorView class]];
-    
-    SocializeActionViewForTest* actionView = [[SocializeActionViewForTest alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT) labelButtonFont:labelFont likeButton:likeButton viewButton:viewButton commentButton:commentButton activityIndicator:activityIndicator];
-    
-    [[likeButton expect] setImage:OCMOCK_ANY forState:UIControlStateNormal];
-    [actionView updateIsLiked:NO];
-    [actionView updateIsLiked:YES];
-    
-    [likeButton verify];
-    [actionView release];
+- (void)failFacebookAuthentication {
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
+    [[[self.mockFacebookAuthenticatorClass expect] andDo4:^(id options, id display, id success, id failure) {
+        void (^failureBlock)(NSError *error) = failure;
+        failureBlock(nil);
+    }] authenticateViaFacebookWithOptions:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
 }
 
--(void)testLikeDelegate{
-    id mockDelegate = [OCMockObject niceMockForProtocol:@protocol(SocializeActionViewDelegate)];
-    
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT)];
-    
-    actionView.delegate = mockDelegate;
-    [[mockDelegate expect] likeButtonTouched:OCMOCK_ANY];
-    
-    [actionView likeButtonPressed:nil];
-    [mockDelegate verify];
+- (void)failTwitterAuthentication {
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithTwitter];
+    [[[self.mockTwitterAuthenticatorClass expect] andDo4:^(id options, id display, id success, id failure) {
+        void (^failureBlock)(NSError *error) = failure;
+        failureBlock(nil);
+    }] authenticateViaTwitterWithOptions:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
 }
 
--(void)testCommentDelegate{
-    id mockDelegate = [OCMockObject niceMockForProtocol:@protocol(SocializeActionViewDelegate)];
+- (void)succeedTwitterAuthentication {
     
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT)];
+    // Initially, not authenticated
+    [[[self.mockSocialize expect] andReturnBool:NO] isAuthenticatedWithTwitter];
     
-    actionView.delegate = mockDelegate;
-    [[mockDelegate expect] commentButtonTouched:OCMOCK_ANY];
-    
-    [actionView commentButtonPressed:nil];
-    [mockDelegate verify];
+    [[[self.mockTwitterAuthenticatorClass expect] andDo4:^(id options, id display, id success, id failure) {
+        // Succeed -- Authenticated from now on
+        [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithTwitter];
+        
+        void (^successBlock)() = success;
+        successBlock();
+    }] authenticateViaTwitterWithOptions:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
 }
 
-- (void)testFormatting {
-    NSString *kFormat = [NSNumber formatMyNumber:[NSNumber numberWithInt:1000] ceiling:[NSNumber numberWithInt:1000]];
-    GHAssertEqualObjects(kFormat, @"1K+", @"bad format");
 
-    NSString *mFormat = [NSNumber formatMyNumber:[NSNumber numberWithInt:1000000] ceiling:[NSNumber numberWithInt:1000000]];
-    GHAssertEqualObjects(mFormat, @"1M+", @"bad format");
-
-    NSString *gFormat = [NSNumber formatMyNumber:[NSNumber numberWithInt:1000000000] ceiling:[NSNumber numberWithInt:1000000000]];
-    GHAssertEqualObjects(gFormat, @"1G+", @"bad format");
+- (void)succeedPostingToFacebookWall {
+    [[[self.mockFacebookWallPosterClass expect] andDo4:^(id options, id display, id success, id failure) {
+        // Succeed -- Authenticated from now on
+        [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
+        
+        void (^successBlock)() = success;
+        successBlock();
+    }] postToFacebookWallWithOptions:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
 }
 
-/*
--(void)testLayoutInSuperview
-{
-    GHAssertNotNil(self.actionBar.view, nil);
-    GHAssertTrue(CGRectEqualToRect(self.actionBar.view.frame, CGRectMake(0,416,320,44)), nil);
-    GHAssertTrue([self.actionBar.view isKindOfClass: [SocializeActionView class]] ,nil);
-    GHAssertEqualStrings(self.actionBar.entity.key, TEST_ENTITY_URL, nil);
-}
- */
--(void)testAutoresizeMask
-{
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:CGRectMake(ORIGIN_X, ORIGIN_Y, WIDTH, HEIGHT)];
-    GHAssertTrue(actionView.autoresizingMask == (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin), nil);
+- (void)executeAction:(SocializeAction*)action andWaitForStatus:(int)status {
+    [self prepare];
+    [SocializeAction executeAction:action];
+    [self waitForStatus:status timeout:1.0];
+    
+    [action waitUntilFinished];
 }
 
-- (void)testNoAutoLayoutDoesNotAutoLayout {
+- (void)executeActionAndWaitForStatus:(int)status fromTest:(SEL)test {
+    [self prepare];
+    [SocializeAction executeAction:self.action];
+    [self waitForStatus:status timeout:1.0];
     
-    // Make an action view in a large subview with a strange location
-    CGRect initialFrame = CGRectMake(1, 2, WIDTH, HEIGHT);
-    SocializeActionView* actionView = [[SocializeActionView alloc] initWithFrame:initialFrame];
-    UIView *mockView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 460)];
-    [mockView addSubview:actionView];
+    [self expectDeallocationOfObject:self.action fromTest:test];
     
-    // Disable auto layout
-    actionView.noAutoLayout = YES;
-    
-    // Initiate layout event
-    [actionView layoutSubviews];
-    
-    // Frame should not change
-    GHAssertTrue(CGRectEqualToRect(initialFrame, actionView.frame), @"Bad frame");
-    
-    [actionView release];
+    [self.action waitUntilFinished];
 }
 
-#pragma mark-
+- (void)testFailingAction {
+    FailingAction *fail = [[[FailingAction alloc] initWithDisplayObject:nil
+                                                                display:nil
+                                                                success:nil
+                                                                failure:^(NSError *error) { [self notify:kGHUnitWaitStatusFailure]; }] autorelease];
+    [self executeAction:fail andWaitForStatus:kGHUnitWaitStatusFailure];
+}
 
+- (void)testSucceedingAction {
+    SucceedingAction *succeed = [[[SucceedingAction alloc] initWithDisplayObject:nil
+                                                                         display:nil
+                                                                         success:^{ [self notify:kGHUnitWaitStatusSuccess]; }
+                                                                         failure:nil] autorelease];
+    [self executeAction:succeed andWaitForStatus:kGHUnitWaitStatusSuccess];
+}
+
+- (void)testCancellingCallbacks {
+    [self.action cancelAllCallbacks];
+}
+
+- (void)testDefaultAction {
+    [SocializeAction executeAction:self.action];
+}
 
 @end

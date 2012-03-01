@@ -20,6 +20,7 @@
 - (void)presentModalViewController:(UIViewController*)controller;
 - (void)dismissModalViewController:(UIViewController*)controller;
 - (void)showActionSheet:(UIActionSheet*)actionSheet;
+- (void)showAlertView:(UIAlertView*)alertView;
 - (void)startLoading;
 - (void)stopLoading;
 @end

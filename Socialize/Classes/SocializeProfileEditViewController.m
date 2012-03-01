@@ -16,6 +16,7 @@
 #import "UINavigationController+Socialize.h"
 #import "UIImage+Resize.h"
 #import "UIAlertView+BlocksKit.h"
+#import "SocializeTwitterAuthenticator.h"
 
 @interface SocializeProfileEditViewController ()
 
@@ -640,7 +641,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)authenticateViaTwitter {
-    [self.socialize authenticateViaTwitterWithOptions:nil
+    [self.twitterAuthenticatorClass authenticateViaTwitterWithOptions:nil
                                               display:self
                                               success:^{
                                                   [self updateInterfaceToReflectSessionStatuses];

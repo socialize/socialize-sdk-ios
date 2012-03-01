@@ -21,6 +21,7 @@
 #import "SocializeFacebookAuthenticator.h"
 #import "NSError+Socialize.h"
 #import "SocializeFacebookWallPoster.h"
+#import "SocializePreprocessorUtilities.h"
 
 @interface SocializeShareCreator ()
 - (void)showSMSComposer;
@@ -33,13 +34,17 @@
 @synthesize finishedServerCreate = finishedServerCreate_;
 @synthesize selectedShareMedium = selectedShareMedium_;
 @synthesize postedToFacebookWall = postedToFacebookWall_;
+SYNTH_CLASS_GETTER(MFMessageComposeViewController, messageComposerClass)
+SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
 
 @synthesize shareObject = shareObject;
 @synthesize options = options_;
+@synthesize application = application_;
 
 - (void)dealloc {
     self.shareObject = nil;
     self.options = nil;
+    self.application = nil;
     
     [super dealloc];
 }
@@ -74,6 +79,13 @@
     }
     
     return self;
+}
+
+- (UIApplication*)application {
+    if (application_ == nil) {
+        application_ = [[UIApplication sharedApplication] retain];
+    }
+    return application_;
 }
 
 - (void)createShareOnSocializeServer {
@@ -112,7 +124,7 @@
 }
 
 - (BOOL)canSendText {
-    return [MFMessageComposeViewController canSendText];
+    return [self.messageComposerClass canSendText];
 }
 
 - (NSString*)defaultSMSMessage {
@@ -127,14 +139,24 @@
         [self failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorSMSNotAvailable]];
     }
     
-    MFMessageComposeViewController *composer = [[[MFMessageComposeViewController alloc] init] autorelease];
+    MFMessageComposeViewController *composer = [[[self.messageComposerClass alloc] init] autorelease];
     [composer setBody:[self defaultSMSMessage]];
+    
+    __block __typeof__(self) weakSelf = self;
+    __block __typeof__(composer) weakComposer = composer;
     composer.completionBlock = ^(MessageComposeResult result) {
+        [weakSelf.displayProxy dismissModalViewController:weakComposer];
+
         switch (result) {
             case MessageComposeResultFailed:
-                [self showRetryDialogWithMessage:@"Compose failed" error:nil];
+                [weakSelf failWithError:nil];
                 break;
-            default:
+            case MessageComposeResultCancelled:
+                [weakSelf failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]];
+                break;
+            case MessageComposeResultSent:
+                weakSelf.shareObject.text = @"n/a";
+                [weakSelf tryToFinishCreatingShare];
                 break;
         }
     };
@@ -144,18 +166,20 @@
 
 - (void)showUnconfiguredEmailAlert {
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Mail is not Configured" message:@"Please configure at least one mail account before sharing via email."] autorelease];
+    
+    __block __typeof__(self) weakSelf = self;
     [alert addButtonWithTitle:@"Add Account" handler:^{
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=ACCOUNT_SETTINGS"]];
-        [self failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorEmailNotAvailable]];
+        [weakSelf.application openURL:[NSURL URLWithString:@"prefs:root=ACCOUNT_SETTINGS"]];
+        [weakSelf failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorEmailNotAvailable]];
     }];
     [alert setCancelButtonWithTitle:@"Cancel" handler:^{
-        [self failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorEmailNotAvailable]];
+        [weakSelf failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorEmailNotAvailable]];
     }];
-    [alert show];
+    [weakSelf.displayProxy showAlertView:alert];
 }
 
 - (BOOL)canSendMail {
-    return [MFMailComposeViewController canSendMail];
+    return [self.mailComposerClass canSendMail];
 }
 
 - (NSString*)defaultEmailMessageBody {
@@ -168,20 +192,25 @@
 
 - (void)showEmailComposition {
     MFMailComposeViewController *composer = [[[MFMailComposeViewController alloc] init] autorelease];
+    
+    __block __typeof__(self) weakSelf = self;
+    __block __typeof__(composer) weakComposer = composer;
     composer.completionBlock = ^(MFMailComposeResult result, NSError *error)
     {
+        [weakSelf.displayProxy dismissModalViewController:weakComposer];
         // Notifies users about errors associated with the interface
         switch (result)
         {
             case MFMailComposeResultCancelled:
-                break;
             case MFMailComposeResultSaved:
-                break;
-            case MFMailComposeResultSent:
+                [weakSelf failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]];
                 break;
             case MFMailComposeResultFailed:
+                [weakSelf failWithError:nil];
                 break;
-            default:
+            case MFMailComposeResultSent:
+                weakSelf.shareObject.text = @"n/a";
+                [weakSelf tryToFinishCreatingShare];
                 break;
         }
     };
@@ -214,20 +243,30 @@
     __block __typeof__(self) weakSelf = self;
     
     if([self.socialize twitterAvailable]) {
-        [actionSheet addButtonWithTitle:@"Share via Twitter" handler:^{ [weakSelf selectShareMedium:SocializeShareMediumTwitter]; }];
+        [actionSheet addButtonWithTitle:@"Share via Twitter" handler:^{
+            [weakSelf selectShareMedium:SocializeShareMediumTwitter];
+        }];
     }
 
     if([self.socialize facebookAvailable]) {
-        [actionSheet addButtonWithTitle:@"Share via Facebook" handler:^{ [weakSelf selectShareMedium:SocializeShareMediumFacebook]; }];
+        [actionSheet addButtonWithTitle:@"Share via Facebook" handler:^{
+            [weakSelf selectShareMedium:SocializeShareMediumFacebook];
+        }];
     }
 
-    [actionSheet addButtonWithTitle:@"Share via Email" handler:^{ [weakSelf selectShareMedium:SocializeShareMediumEmail]; }];
+    [actionSheet addButtonWithTitle:@"Share via Email" handler:^{
+        [weakSelf selectShareMedium:SocializeShareMediumEmail];
+    }];
 
     if ([self canSendText]) {
-        [actionSheet addButtonWithTitle:@"Share via SMS" handler:^{ [weakSelf selectShareMedium:SocializeShareMediumSMS]; }];
+        [actionSheet addButtonWithTitle:@"Share via SMS" handler:^{
+            [weakSelf selectShareMedium:SocializeShareMediumSMS];
+        }];
     }
     
-    [actionSheet setCancelButtonWithTitle:nil handler:^{ [self failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]]; }];
+    [actionSheet setCancelButtonWithTitle:nil handler:^{
+        [weakSelf failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]];
+    }];
     
     [self.displayProxy showActionSheet:actionSheet];
 }
@@ -262,7 +301,7 @@
 }
 
 - (void)authenticateViaTwitter {
-    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:self.options.twitterAuthOptions
+    [self.twitterAuthenticatorClass authenticateViaTwitterWithOptions:self.options.twitterAuthOptions
                                                         displayProxy:self.displayProxy
                                                              success:^{
                                                                  [self tryToFinishCreatingShare];
@@ -276,7 +315,7 @@
 }
 
 - (void)authenticateViaFacebook {
-    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:self.options.facebookAuthOptions
+    [self.facebookAuthenticatorClass authenticateViaFacebookWithOptions:self.options.facebookAuthOptions
                                                           displayProxy:self.displayProxy
                                                                success:^{
                                                                    [self tryToFinishCreatingShare];
@@ -301,7 +340,7 @@
     [message appendFormat:@"\n\n Shared from %@ using Socialize for iOS. \n http://www.getsocialize.com/", self.shareObject.application.name];
     
     options.message = message;
-    [SocializeFacebookWallPoster postToFacebookWallWithOptions:options
+    [self.facebookWallPosterClass postToFacebookWallWithOptions:options
                                                   displayProxy:self.displayProxy
                                                        success:^{
                                                            self.postedToFacebookWall = YES;
@@ -350,22 +389,6 @@
     }
 
     [self succeed];
-}
-
-- (void)create {
-    [self tryToFinishCreatingShare];
-}
-
-- (void)retry {
-    // User would like to retry after a failure has occurred
-    [self tryToFinishCreatingShare];
-}
-
-- (void)showRetryDialogWithMessage:(NSString*)message error:(NSError*)error {
-    UIAlertView *alertView = [UIAlertView alertWithTitle:@"Failed to Create Share" message:message];
-    [alertView setCancelButtonWithTitle:@"Cancel" handler:^{ [self failWithError:error]; }];
-    [alertView addButtonWithTitle:@"Retry" handler:^{ [self retry]; }];
-    [alertView show];
 }
 
 - (void)executeAction {

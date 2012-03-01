@@ -38,36 +38,44 @@
 }
 
 - (void)presentModalViewController:(UIViewController*)controller {
-    if ([self.display respondsToSelector:@selector(object:requiresDisplayOfViewController:)]) {
+    if ([self.display respondsToSelector:@selector(socializeObject:requiresDisplayOfViewController:)]) {
         [self.display socializeObject:self.object requiresDisplayOfViewController:controller];
     } else if ([self.display respondsToSelector:@selector(presentModalViewController:animated:)]) {
         [self.display presentModalViewController:controller animated:YES];
     } else {
-        NSAssert(NO, @"ui display implementation must respond to either object:requiresDisplayOfViewController or presentModalViewController:animated");
+        NSAssert(NO, @"ui display implementation must respond to either socializeObject:requiresDisplayOfViewController or presentModalViewController:animated");
     }
 }
 
 - (void)dismissModalViewController:(UIViewController*)controller {
-    if ([self.display respondsToSelector:@selector(object:requiresDismissOfViewController:)]) {
+    if ([self.display respondsToSelector:@selector(socializeObject:requiresDismissOfViewController:)]) {
         [self.display socializeObject:self.object requiresDismissOfViewController:controller];
     } else if ([self.display respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
         [self.display dismissModalViewControllerAnimated:YES];
     } else {
-        NSAssert(NO, @"ui display implementation must respond to either object:requiresDismissOfViewController or presentModalViewController:animated");
+        NSAssert(NO, @"ui display implementation must respond to either socializeObject:requiresDismissOfViewController or presentModalViewController:animated");
     }
 }
 
 - (void)showActionSheet:(UIActionSheet*)actionSheet {
-    if ([self.display respondsToSelector:@selector(object:requiresDisplayOfActionSheet:)]) {
+    if ([self.display respondsToSelector:@selector(socializeObject:requiresDisplayOfActionSheet:)]) {
         [self.display socializeObject:self.object requiresDisplayOfActionSheet:actionSheet];
     } else if ([self.display isKindOfClass:[UITabBarController class]]) {
         [actionSheet showFromTabBar:[(UITabBarController*)self.display tabBar]];
     } else if ([self.display respondsToSelector:@selector(view)]) {
         UIView *view = [self.display view];
-        NSAssert([view isKindOfClass:[UIView class]], @"ui display implementation view is not a UIView. Please implement object:requiresDisplayOfobjectSheet");
+        NSAssert([view isKindOfClass:[UIView class]], @"ui display implementation view is not a UIView. Please implement socializeObject:requiresDisplayOfActionSheet");
         [actionSheet showInView:view];
     } else {
-        NSAssert(NO, @"ui display implementation must either respond to object:requiresDisplayOfobjectSheet or respond to `view` with a UIView");
+        NSAssert(NO, @"ui display implementation must either respond to socializeObject:requiresDisplayOfActionSheet or respond to `view` with a UIView");
+    }
+}
+
+- (void)showAlertView:(UIAlertView *)alertView {
+    if ([self.display respondsToSelector:@selector(socializeObject:requiresDisplayOfAlertView:)]) {
+        [self.display socializeObject:self.object requiresDisplayOfAlertView:alertView];
+    } else {
+        [alertView show];
     }
 }
 
@@ -76,11 +84,11 @@
         return;
     
     self.loading = YES;
-    if ([self.display respondsToSelector:@selector(objectWillStartLoading:)]) {
+    if ([self.display respondsToSelector:@selector(socializeObjectWillStartLoading:)]) {
         [self.display socializeObjectWillStartLoading:self.object];
     } else if ([self.display respondsToSelector:@selector(view)]) {
         UIView *view = [self.display view];
-        NSAssert([view isKindOfClass:[UIView class]], @"displayHandler view is not a UIView. Please implement object:requiresDisplayOfobjectSheet");
+        NSAssert([view isKindOfClass:[UIView class]], @"displayHandler view is not a UIView. Please implement socializeObject:requiresDisplayOfobjectSheet");
         self.loadingView = [SocializeLoadingView loadingViewInView:view];
     }
 }

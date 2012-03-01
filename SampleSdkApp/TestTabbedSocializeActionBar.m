@@ -38,7 +38,12 @@
 {
     [super viewDidLoad];
     
-    self.actionBar = [SocializeActionBar actionBarWithKey:self.entityUrl name:@"TestBar" presentModalInController:self];
+    SocializeEntity *entity = [[[SocializeEntity alloc] init] autorelease];
+    entity.key = self.entityUrl;
+    entity.name = @"TestBar";
+    self.actionBar = [SocializeActionBar actionBarWithEntity:entity display:self];
+
+//    self.actionBar = [SocializeActionBar actionBarWithKey:self.entityUrl name:@"TestBar" presentModalInController:self];
     [self.generic1.view addSubview:self.actionBar.view];
     self.generic1.label.text = @"First controller";
     self.generic2.label.text = @"Second controller";

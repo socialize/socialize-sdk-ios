@@ -9,6 +9,10 @@
 #import "SocializeAction.h"
 #import "SocializeUIDisplayProxy.h"
 #import "_Socialize.h"
+#import "SocializePreprocessorUtilities.h"
+
+@class SocializeFacebookAuthenticator;
+@class SocializeTwitterAuthenticator;
 
 static NSOperationQueue *actionQueue;
 
@@ -28,6 +32,10 @@ typedef enum {
 @synthesize finishedLock = finishedLock_;
 @synthesize failureBlock = failureBlock_;
 @synthesize successBlock = successBlock_;
+
+SYNTH_CLASS_GETTER(SocializeFacebookAuthenticator, facebookAuthenticatorClass)
+SYNTH_CLASS_GETTER(SocializeTwitterAuthenticator, twitterAuthenticatorClass)
+SYNTH_CLASS_GETTER(SocializeFacebookWallPoster, facebookWallPosterClass)
 
 - (void)dealloc {
     [socialize_ setDelegate:nil];
@@ -130,6 +138,7 @@ typedef enum {
     
     // Await task completion ([self finishedOnMainThread])
     [self waitUntilFinishedOnMainThread];
+    NSLog(@"Action complete");
 }
 
 - (void)waitUntilFinishedOnMainThread {
