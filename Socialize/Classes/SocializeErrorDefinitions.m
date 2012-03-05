@@ -22,11 +22,22 @@ static NSString *SocializeDefaultErrorStrings[SocializeNumErrors] = {
     @"The Server Returned Errors",
     @"The Server Returned an HTTP Error Code",
     @"Facebook Authentication Cancelled",
+    @"Facebook is not Configured",
+    @"Facebook authentication was restarted before completion",
     @"Twitter Authentication Cancelled",
+    @"Twitter is not Configured",
+    @"SMS Not Available",
+    @"Email Not Available",
+    @"Failed to Create Share",
+    @"User Cancelled Share"
 };
 
-NSString *SocializeDefaultLocalizedErrorStringForCode(NSUInteger code) {
+NSString *SocializeDefaultErrorStringForCode(NSUInteger code) {
 //    NSAssert(code < SocializeNumErrors, @"Bad error code %d", code);
-    NSString *defaultString = SocializeDefaultErrorStrings[code];
+    return SocializeDefaultErrorStrings[code];
+}
+
+NSString *SocializeDefaultLocalizedErrorStringForCode(NSUInteger code) {
+    NSString *defaultString = SocializeDefaultErrorStringForCode(code);
     return NSLocalizedString(defaultString, @"");
 }

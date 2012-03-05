@@ -34,13 +34,30 @@ typedef enum {
     SocializeAllActivity
 } SocializeActivityType;
 
+// Notifications
 extern NSString *const SocializeAuthenticatedUserDidChangeNotification;
 extern NSString *const SocializeCLAuthorizationStatusDidChangeNotification;
 extern NSString *const kSocializeCLAuthorizationStatusKey;
 extern NSString *const kSocializeShouldShareLocationKey;
 
+// Twitter
 extern NSString *const kSocializeTwitterAuthConsumerKey;
 extern NSString *const kSocializeTwitterAuthConsumerSecret;
 extern NSString *const kSocializeTwitterAuthAccessToken;
 extern NSString *const kSocializeTwitterAuthAccessTokenSecret;
 extern NSString *const kSocializeTwitterAuthScreenName;
+extern NSString *const kSocializeTwitterAuthUserId;
+extern NSString *const kSocializeTwitterStringForAPI;
+
+// Facebook
+extern NSString *const kSocializeFacebookAuthAppId;
+extern NSString *const kSocializeFacebookAuthLocalAppId;
+extern NSString *const kSocializeFacebookAuthAccessToken;
+extern NSString *const kSocializeFacebookAuthExpirationDate;
+extern NSString *const kSocializeFacebookStringForAPI;
+
+#define SOCIALIZE_API_KEY @"socialize_api_key"
+#define SOCIALIZE_API_SECRET @"socialize_api_secret"
+#define SOCIALIZE_FACEBOOK_LOCAL_APP_ID @"socialize_facebook_local_app_id"
+#define SOCIALIZE_FACEBOOK_APP_ID @"socialize_facebook_app_id"
+#define SOCIALIZE_APPLICATION_LINK @"socialize_app_link"

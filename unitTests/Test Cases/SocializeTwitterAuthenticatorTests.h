@@ -7,16 +7,13 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
+#import "SocializeActionTests.h"
+#import "SocializeThirdPartyAuthenticatorTests.h"
 
 @class SocializeTwitterAuthenticator;
 
-@interface SocializeTwitterAuthenticatorTests : GHAsyncTestCase
+@interface SocializeTwitterAuthenticatorTests : SocializeThirdPartyAuthenticatorTests
 
 @property (nonatomic, retain) SocializeTwitterAuthenticator *twitterAuthenticator;
-@property (nonatomic, retain) id mockSocialize;
-@property (nonatomic, retain) id mockDelegate;
-@property (nonatomic, retain) id mockTwitterAuthViewController;
-@property (nonatomic, retain) id mockNavigationForTwitterAuthViewController;
-@property (nonatomic, retain) id mockPresentationTarget;
 
 @end

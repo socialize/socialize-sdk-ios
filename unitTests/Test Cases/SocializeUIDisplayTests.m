@@ -7,21 +7,26 @@
 //
 
 #import "SocializeUIDisplayTests.h"
-#import "SocializeUIDisplayHandler.h"
+#import "SocializeUIDisplay.h"
 
 @implementation SocializeUIDisplayTests
-@synthesize display = display_;
+@synthesize displayProxy = displayProxy_;
 @synthesize mockHandler = mockHandler_;
+@synthesize mockDisplay = mockDisplay_;
 
 - (void)setUp {
-    self.display = [[SocializeUIDisplay alloc] initWithDisplayHandler:self.mockHandler];
+    id mockObject = [OCMockObject mockForClass:[NSObject class]];
+    self.mockDisplay = [OCMockObject mockForClass:[NSObject class]];
+    self.displayProxy = [[SocializeUIDisplayProxy alloc] initWithObject:mockObject display:nil];
 }
 
 - (void)tearDown {
     [self.mockHandler verify];
+    [self.mockDisplay verify];
     
     self.mockHandler = nil;
-    self.display = nil;
+    self.mockDisplay = nil;
+    self.displayProxy = nil;
 }
 
 @end

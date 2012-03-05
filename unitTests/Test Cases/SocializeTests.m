@@ -258,10 +258,6 @@
     Socialize *socialize = [[Socialize alloc] initWithDelegate:nil];
     id auth = socialize.authService = [OCMockObject mockForClass:[SocializeAuthenticateService class]];
 
-    [[auth expect] receiveFacebookAuthToken];
-    [socialize receiveFacebookAuthToken];
-    [auth verify];
-    
     NSString* apiKey = @"0000000-1111101110-1111";
     NSString* apiSecret = @"11111111-222222-333333";
     [Socialize storeConsumerKey:apiKey];

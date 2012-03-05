@@ -125,6 +125,10 @@ Socialize authentication service is the authentication engine. It performs anony
                                   token:(NSString*)token
                             tokenSecret:(NSString*)tokenSecret;
 
+- (void)authenticateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
+                       thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
+                 thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret;
+
 /**@name Other methods*/
 
 /**
@@ -161,17 +165,13 @@ Socialize authentication service is the authentication engine. It performs anony
 +(BOOL)handleOpenURL:(NSURL *)url;
 
 /**
- Allows get facebook authentication token
- 
- @return facebook authentication toke
- */
--(NSString*)receiveFacebookAuthToken;
-
-/**
  Authenticate with Twitter using stored credentials
  @see storeSocializeTwitterAccessToken:
  @see storeSocializeTwitterAccessTokenSecret:
  */
-- (void)authenticateWithTwitterUsingStoredCredentials;
+- (void)authenticateViaTwitterUsingStoredCredentials;
+
+- (void)authenticateViaTwitterAccessToken:(NSString*)twitterAccessToken
+                  twitterAccessTokenSecret:(NSString*)twitterAccessTokenSecret;
 
 @end

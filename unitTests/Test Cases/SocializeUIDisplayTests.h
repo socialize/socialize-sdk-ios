@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SocializeUIDisplay.h"
+#import "SocializeUIDisplayProxy.h"
 
 @interface SocializeUIDisplayTests : NSObject
-@property (nonatomic, retain) SocializeUIDisplay *display;
+@property (nonatomic, retain) SocializeUIDisplayProxy *displayProxy;
 @property (nonatomic, retain) id mockHandler;
+@property (nonatomic, retain) id mockDisplay;
 @end

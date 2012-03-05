@@ -63,9 +63,9 @@
     }];
 
 //    [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"kSocializeDeviceTokenRegisteredKey"];
-    char testTokenData[32] = "\xaa\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff";
-    NSData *testToken = [NSData dataWithBytes:&testTokenData length:sizeof(testTokenData)];
-    [Socialize registerDeviceToken:testToken];
+//    char testTokenData[32] = "\xaa\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff";
+//    NSData *testToken = [NSData dataWithBytes:&testTokenData length:sizeof(testTokenData)];
+//    [Socialize registerDeviceToken:testToken];
     
 //    [Socialize setEntityLoaderBlock:nil];
     

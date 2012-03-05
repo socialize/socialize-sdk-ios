@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SocializeErrorDefinitions.h"
 
 @interface NSError (Socialize)
 + (NSError*)socializeUnexpectedJSONResponseErrorWithResponse:(NSString*)responseString reason:(NSString*)reason;
 + (NSError*)socializeServerReturnedErrorsErrorWithErrorsArray:(NSArray*)errorsArray;
 + (NSError*)defaultSocializeErrorForCode:(NSUInteger)code;
 + (NSError*)socializeServerReturnedHTTPErrorErrorWithResponse:(NSHTTPURLResponse*)response responseBody:(NSString*)responseBody;
+- (BOOL)isSocializeErrorWithCode:(SocializeErrorCode)code;
 @end

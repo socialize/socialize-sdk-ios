@@ -11,15 +11,33 @@
 #import "SocializeTwitterAuthViewControllerDelegate.h"
 #import "SocializeUIDisplay.h"
 #import "SocializeAction.h"
+#import "SocializeTwitterAuthOptions.h"
+#import "SocializeThirdPartyAuthenticator.h"
+#import "SocializeServiceDelegate.h"
 
 @class Socialize;
 @class SocializeTwitterAuthViewController;
+@class SocializeUIDisplayProxy;
+@class SocializeTwitterAuthOptions;
 
-@interface SocializeTwitterAuthenticator : SocializeAction <SocializeTwitterAuthViewControllerDelegate>
+@interface SocializeTwitterAuthenticator : SocializeThirdPartyAuthenticator <SocializeTwitterAuthViewControllerDelegate, SocializeServiceDelegate>
 
-- (void)authenticateWithTwitter;
++ (void)authenticateViaTwitterWithOptions:(SocializeTwitterAuthOptions*)options
+                                  display:(id)display
+                                  success:(void(^)())success
+                                  failure:(void(^)(NSError *error))failure;
 
++ (void)authenticateViaTwitterWithOptions:(SocializeTwitterAuthOptions*)options
+                             displayProxy:(SocializeUIDisplayProxy*)proxy
+                                  success:(void(^)())success
+                                  failure:(void(^)(NSError *error))failure;
+
+- (id)initWithDisplayObject:(id)displayObject
+                    display:(id)display
+                    options:(SocializeTwitterAuthOptions*)options
+                    success:(void(^)())success
+                    failure:(void(^)(NSError *error))failure;
+
+@property (nonatomic, retain) SocializeTwitterAuthOptions *options;
 @property (nonatomic, retain) SocializeTwitterAuthViewController *twitterAuthViewController;
-@property (nonatomic, copy) void (^successBlock)();
-@property (nonatomic, copy) void (^failureBlock)(NSError *error);
 @end

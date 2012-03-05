@@ -10,22 +10,49 @@
 #import "_Socialize.h"
 #import "SocializeTwitterAuthViewController.h"
 #import "UINavigationController+Socialize.h"
-
-@interface SocializeTwitterAuthenticator ()
-@property (nonatomic, assign) BOOL sentTokenToSocialize;
-@end
+#import "SocializeUIDisplayProxy.h"
+#import "SocializeThirdPartyTwitter.h"
+#import "SocializeThirdPartyTwitter.h"
 
 @implementation SocializeTwitterAuthenticator
 @synthesize twitterAuthViewController = twitterAuthViewController_;
-@synthesize sentTokenToSocialize = sentTokenToSocialize_;
-@synthesize successBlock = successBlock_;
-@synthesize failureBlock = failureBlock_;
+@synthesize options = options_;
 
 - (void)dealloc {
     [twitterAuthViewController_ setDelegate:nil];
     self.twitterAuthViewController = nil;
+    self.options = nil;
     
     [super dealloc];
+}
+
++ (void)authenticateViaTwitterWithOptions:(SocializeTwitterAuthOptions*)options
+                                  display:(id)display
+                                  success:(void(^)())success
+                                  failure:(void(^)(NSError *error))failure {
+    SocializeTwitterAuthenticator *auth = [[[self alloc] initWithDisplayObject:nil display:display options:options success:success failure:failure] autorelease];
+    [SocializeAction executeAction:auth];
+}
+
++ (void)authenticateViaTwitterWithOptions:(SocializeTwitterAuthOptions*)options
+                           displayProxy:(SocializeUIDisplayProxy*)proxy
+                                success:(void(^)())success
+                                failure:(void(^)(NSError *error))failure {
+    SocializeTwitterAuthenticator *auth = [[[self alloc] initWithDisplayObject:proxy.object display:proxy.display options:options success:success failure:failure] autorelease];
+    [SocializeAction executeAction:auth];
+}
+
+- (id)initWithDisplayObject:(id)displayObject
+                    display:(id)display
+                    options:(SocializeTwitterAuthOptions*)options
+                    success:(void(^)())success
+                    failure:(void(^)(NSError *error))failure {
+    
+    return [super initWithDisplayObject:displayObject display:display options:options success:success failure:failure];
+}
+
+- (Class)thirdParty {
+    return [SocializeThirdPartyTwitter class];
 }
 
 - (void)cancelAllCallbacks {
@@ -33,54 +60,18 @@
     [super cancelAllCallbacks];
 }
 
-- (SocializeTwitterAuthViewController*)twitterAuthViewController {
-    if (twitterAuthViewController_ == nil) {
-        twitterAuthViewController_ = [[SocializeTwitterAuthViewController alloc] init];
-        twitterAuthViewController_.delegate = self;
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        twitterAuthViewController_.consumerKey = [defaults objectForKey:kSocializeTwitterAuthConsumerKey];
-        twitterAuthViewController_.consumerSecret = [defaults objectForKey:kSocializeTwitterAuthConsumerSecret];
-    }
-    
-    return twitterAuthViewController_;
-}
-
-- (void)succeed {
-    [self.display dismissController:self.twitterAuthViewController];
-    
-    if (self.successBlock != nil) {
-        self.successBlock();
-    }
-}
-
-- (void)failWithError:(NSError*)error {
-    [self cancelAllCallbacks];
-    [self.display dismissController:self.twitterAuthViewController];
-    
-    if (self.failureBlock != nil) {
-        self.failureBlock(error);
-    }
+- (void)attemptInteractiveLogin {
+    [self showTwitterAuthViewController];
 }
 
 - (void)showTwitterAuthViewController {
-    self.twitterAuthViewController = nil;
-    UINavigationController *nav = [self.twitterAuthViewController wrappingSocializeNavigationController];
-    [self.display displayController:nav];
-}
-
-- (void)tryToFinishAuthenticatingWithTwitter {
-    if (![self.socialize twitterSessionValid]) {
-        [self showTwitterAuthViewController];
-        return;
-    }
+    self.twitterAuthViewController = [[[SocializeTwitterAuthViewController alloc] init] autorelease];
+    self.twitterAuthViewController.delegate = self;
     
-    if (!self.sentTokenToSocialize) {
-        [self.socialize authenticateViaTwitterWithStoredCredentials];
-        return;
-    }
-
-    [self succeed];
+    self.twitterAuthViewController.consumerKey = [(Class)self.thirdParty accessToken];
+    self.twitterAuthViewController.consumerSecret = [(Class)self.thirdParty accessTokenSecret];
+    UINavigationController *nav = [self.twitterAuthViewController wrappingSocializeNavigationController];
+    [self.displayProxy presentModalViewController:nav];
 }
 
 - (void)twitterAuthViewController:(SocializeTwitterAuthViewController *)twitterAuthViewController
@@ -89,38 +80,25 @@
                        screenName:(NSString *)screenName
                            userID:(NSString *)userID {
 
-    // Successful auth -- store into the Socialize user defaults keys
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:accessToken forKey:kSocializeTwitterAuthAccessToken];
-    [defaults setObject:accessTokenSecret forKey:kSocializeTwitterAuthAccessTokenSecret];
-    [defaults setObject:screenName forKey:kSocializeTwitterAuthScreenName];
-    [defaults synchronize];
+    [SocializeThirdPartyTwitter storeLocalCredentialsAccessToken:accessToken
+                                               accessTokenSecret:accessTokenSecret
+                                                      screenName:screenName
+                                                          userId:userID];
 }
 
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
     /* The SocializeTwitterAuthViewController flow was cancelled by the user */
-    
+    [self.displayProxy dismissModalViewController:self.twitterAuthViewController];
+
     NSError *error = [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser];
     [self failWithError:error];
 }
 
 - (void)baseViewControllerDidFinish:(SocializeBaseViewController *)baseViewController {
     /* The SocializeTwitterAuthViewController flow was completed successfully */
+    [self.displayProxy dismissModalViewController:self.twitterAuthViewController];
 
-    [self tryToFinishAuthenticatingWithTwitter];
-}
-
-- (void)didAuthenticate:(id<SocializeUser>)user {
-    self.sentTokenToSocialize = YES;
-    [self tryToFinishAuthenticatingWithTwitter];
-}
-
-- (void)service:(SocializeService *)service didFail:(NSError *)error {
-    [self failWithError:error];
-}
-
-- (void)authenticateWithTwitter {
-    [self tryToFinishAuthenticatingWithTwitter];
+    [self tryToFinishAuthenticating];
 }
 
 @end

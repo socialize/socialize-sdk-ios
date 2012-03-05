@@ -26,12 +26,10 @@
 #import "StringHelper.h"
 #import "SocializeTwitterAuthenticator.h"
 #import "SocializeDeviceTokenSender.h"
-
-#define SOCIALIZE_API_KEY @"socialize_api_key"
-#define SOCIALIZE_API_SECRET @"socialize_api_secret"
-#define SOCIALIZE_FACEBOOK_LOCAL_APP_ID @"socialize_facebook_local_app_id"
-#define SOCIALIZE_FACEBOOK_APP_ID @"socialize_facebook_app_id"
-#define SOCIALIZE_APPLICATION_LINK @"socialize_app_link"
+#import "SocializeShareCreator.h"
+#import "SocializeShareOptions.h"
+#import "SocializeTwitterAuthOptions.h"
+#import "SocializeFacebookAuthHandler.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -63,6 +61,14 @@ NSString *const kSocializeTwitterAuthConsumerSecret = @"kSocializeTwitterAuthCon
 NSString *const kSocializeTwitterAuthAccessToken = @"kSocializeTwitterAuthAccessToken";
 NSString *const kSocializeTwitterAuthAccessTokenSecret = @"kSocializeTwitterAuthAccessTokenSecret";
 NSString *const kSocializeTwitterAuthScreenName = @"kSocializeTwitterAuthScreenName";
+NSString *const kSocializeTwitterAuthUserId = @"kSocializeTwitterAuthUserId";
+NSString *const kSocializeTwitterStringForAPI = @"Twitter";
+
+NSString *const kSocializeFacebookAuthAppId = SOCIALIZE_FACEBOOK_APP_ID;
+NSString *const kSocializeFacebookAuthLocalAppId = SOCIALIZE_FACEBOOK_LOCAL_APP_ID;
+NSString *const kSocializeFacebookAuthAccessToken = @"FBAccessTokenKey";
+NSString *const kSocializeFacebookAuthExpirationDate = @"FBExpirationDateKey";
+NSString *const kSocializeFacebookStringForAPI = @"FaceBook";
 
 @implementation Socialize
 
@@ -239,10 +245,6 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     return [defaults valueForKey:SOCIALIZE_FACEBOOK_LOCAL_APP_ID];
 }
 
--(NSString*) receiveFacebookAuthToken {
-    return [_authService receiveFacebookAuthToken];
-}
-
 +(NSString*) applicationLink
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -260,7 +262,7 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
 #pragma mark authentication info
 
 +(BOOL)handleOpenURL:(NSURL *)url {
-    return [SocializeAuthenticateService handleOpenURL:url];
+    return [[SocializeFacebookAuthHandler sharedFacebookAuthHandler] handleOpenURL:url];
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey 
@@ -303,17 +305,19 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
 }
 
 - (void)authenticateViaTwitterWithStoredCredentials {
-    [_authService authenticateWithTwitterUsingStoredCredentials];
+    [_authService authenticateViaTwitterUsingStoredCredentials];
 }
 
-- (void)authenticateViaTwitterWithDisplayHandler:(id)displayHandler
-                                         success:(void(^)())success
-                                         failure:(void(^)(NSError *error))failure {
-    
-    self.twitterAuthenticator = [[[SocializeTwitterAuthenticator alloc] initWithDisplayHandler:displayHandler] autorelease];
-    self.twitterAuthenticator.successBlock = success;
-    self.twitterAuthenticator.failureBlock = failure;
-    [self.twitterAuthenticator authenticateWithTwitter];
+- (void)authenticateViaTwitterWithAccessToken:(NSString*)accessToken accessTokenSecret:(NSString*)accessTokenSecret {
+    [_authService authenticateViaTwitterAccessToken:accessToken twitterAccessTokenSecret:accessTokenSecret];
+}
+
+- (void)authenticateViaTwitterWithOptions:(SocializeTwitterAuthOptions*)options
+                                  display:(id)display
+                                  success:(void(^)())success
+                                  failure:(void(^)(NSError *error))failure {
+
+    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options display:display success:success failure:failure];
 }
 
 -(void)authenticateAnonymously
@@ -390,6 +394,12 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     return [self isAuthenticatedWithAuthType:@"FaceBook"];
 }
 
+- (void)authenticateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
+                       thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
+                 thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret {
+    [_authService authenticateWithThirdPartyAuthType:type thirdPartyAuthToken:thirdPartyAuthToken thirdPartyAuthTokenSecret:thirdPartyAuthTokenSecret];
+}
+
 -(BOOL)isAuthenticatedWithTwitter {
     if (![self twitterSessionValid])
         return NO;
@@ -464,7 +474,6 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie *cookie in [storage cookies]) {
         if ([[cookie domain] isEqualToString:@".twitter.com"]) {
-            NSLog(@"Deleting %@", cookie);
             [storage deleteCookie:cookie];
         }
     }
@@ -680,8 +689,8 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     [_deviceTokenService registerDeviceTokenString:deviceTokenString];
 }
 
-- (void)registerDeviceToken:(NSData*)deviceToken {
-//    [[SocializeDeviceTokenSender sharedDeviceTokenSender] registerDeviceToken
++ (void)createShareWithOptions:(SocializeShareOptions*)options display:(id)display success:(void(^)())success failure:(void(^)(NSError *error))failure {
+    [SocializeShareCreator createShareWithOptions:options display:display success:success failure:failure];
 }
 
 @end

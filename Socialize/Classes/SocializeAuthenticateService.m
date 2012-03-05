@@ -175,13 +175,11 @@
                                                            expectedJSONFormat:SocializeDictionary
                                                                        params:params];
     
-//    request.tokenRequest = YES;
-    
     [self executeRequest:request];
 
 }
 
-- (void)authenticateWithTwitterAccessToken:(NSString*)twitterAccessToken
+- (void)authenticateViaTwitterAccessToken:(NSString*)twitterAccessToken
                   twitterAccessTokenSecret:(NSString*)twitterAccessTokenSecret {
 
     [self authenticateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeTwitter
@@ -189,7 +187,7 @@
                    thirdPartyAuthTokenSecret:twitterAccessTokenSecret];
 }
 
-- (void)authenticateWithTwitterUsingStoredCredentials {
+- (void)authenticateViaTwitterUsingStoredCredentials {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *accessToken = [defaults objectForKey:kSocializeTwitterAuthAccessToken];
     NSString *accessTokenSecret = [defaults objectForKey:kSocializeTwitterAuthAccessTokenSecret];
@@ -287,13 +285,6 @@
 {    
     return [fbAuth handleOpenURL:url]; 
 }
-
--(NSString*)receiveFacebookAuthToken
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    return [defaults objectForKey:@"FBAccessTokenKey"];
-}
-
 
 @end
 

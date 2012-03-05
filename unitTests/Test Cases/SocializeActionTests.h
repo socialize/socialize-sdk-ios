@@ -2,16 +2,30 @@
 //  SocializeActionTests.h
 //  SocializeSDK
 //
-//  Created by Fawad Haider on 8/17/11.
-//  Copyright 2011 Socialize, Inc. All rights reserved.
+//  Created by Nathaniel Griswold on 2/28/12.
+//  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import <GHUnitIOS/GHUnit.h>
-#import <UIKit/UIKit.h>
+#import "SocializeTestCase.h"
+#import "SocializeAction.h"
 
+@interface SocializeActionTests : SocializeTestCase
+@property (nonatomic, retain) SocializeAction *action;
+@property (nonatomic, retain) id partialAction;
+@property (nonatomic, retain) id mockDisplay;
+@property (nonatomic, retain) id mockSocialize;
+@property (nonatomic, retain) id mockTwitterAuthenticatorClass;
+@property (nonatomic, retain) id mockFacebookAuthenticatorClass;
+@property (nonatomic, retain) id mockFacebookWallPosterClass;
 
-@interface SocializeActionTests : GHTestCase {
-    
-}
+- (id)createAction;
+- (void)executeActionAndWaitForStatus:(int)status fromTest:(SEL)test;
+- (void)executeAction:(SocializeAction*)action andWaitForStatus:(int)status;
+
+- (void)succeedPostingToFacebookWall;
+- (void)succeedFacebookAuthentication;
+- (void)failFacebookAuthentication;
+- (void)failTwitterAuthentication;
+- (void)succeedTwitterAuthentication;
 
 @end

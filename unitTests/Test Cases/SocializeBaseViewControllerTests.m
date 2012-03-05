@@ -12,6 +12,8 @@
 #import "SocializeBaseViewControllerDelegate.h"
 #import "SocializeProfileEditViewController.h"
 #import "SocializeCommonDefinitions.h"
+#import "SocializeTwitterAuthenticator.h"
+#import "SocializeFacebookAuthenticator.h"
 
 @implementation SocializeBaseViewControllerTests
 @synthesize viewController = viewController_;
@@ -31,6 +33,8 @@
 @synthesize mockKeyboardListener = mockKeyboardListener_;
 @synthesize mockDelegate = mockDelegate_;
 @synthesize mockProfileEditViewController = mockProfileEditViewController_;
+@synthesize mockTwitterAuthenticatorClass = mockTwitterAuthenticatorClass_;
+@synthesize mockFacebookAuthenticatorClass = mockFacebookAuthenticatorClass_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -99,6 +103,13 @@
     self.mockProfileEditViewController = [OCMockObject mockForClass:[SocializeProfileEditViewController class]];
     [[self.mockProfileEditViewController stub] setDelegate:nil];
     self.viewController.profileEditViewController = self.mockProfileEditViewController;
+    
+    self.mockTwitterAuthenticatorClass = [OCMockObject classMockForClass:[SocializeTwitterAuthenticator class]];
+    self.viewController.twitterAuthenticatorClass = self.mockTwitterAuthenticatorClass;
+    
+    self.mockFacebookAuthenticatorClass = [OCMockObject classMockForClass:[SocializeFacebookAuthenticator class]];
+    self.viewController.facebookAuthenticatorClass = self.mockFacebookAuthenticatorClass;
+
 }
 
 -(void) tearDown
@@ -117,6 +128,8 @@
     [self.mockKeyboardListener verify];
     [self.mockDelegate verify];
     [self.mockProfileEditViewController verify];
+    [self.mockTwitterAuthenticatorClass verify];
+    [self.mockFacebookAuthenticatorClass verify];
     
     [[self.mockKeyboardListener stub] setDelegate:nil];
     [[self.mockGenericAlertView expect] setDelegate:nil];
@@ -135,6 +148,8 @@
     self.mockKeyboardListener = nil;
     self.mockDelegate = nil;
     self.mockProfileEditViewController = nil;
+    self.mockTwitterAuthenticatorClass = nil;
+    self.mockFacebookAuthenticatorClass = nil;
     
     // There is some kind of retain cycle with the OCMock recorders array here
     [(id)self.viewController stop];

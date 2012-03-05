@@ -13,16 +13,20 @@
 
 @implementation NSError (Socialize)
 
-+ (NSError*)defaultSocializeErrorForCode:(NSUInteger)code {
++ (NSError*)socializeErrorWithCode:(NSUInteger)code description:(NSString*)description {
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-    [userInfo setObject:SocializeDefaultLocalizedErrorStringForCode(code) forKey:NSLocalizedDescriptionKey];
+    [userInfo setObject:NSLocalizedString(description, @"") forKey:NSLocalizedDescriptionKey];
     NSError *error = [NSError errorWithDomain:SocializeErrorDomain code:code userInfo:userInfo];
     return error;
 }
 
++ (NSError*)defaultSocializeErrorForCode:(NSUInteger)code {
+    return [self socializeErrorWithCode:code description:SocializeDefaultErrorStringForCode(code)];
+}
+
 + (NSError*)socializeUnexpectedJSONResponseErrorWithResponse:(NSString*)responseString reason:(NSString*)reason  {
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-    [userInfo setObject:SocializeDefaultLocalizedErrorStringForCode(SocializeErrorUnexpectedJSONResponse) forKey:NSLocalizedDescriptionKey];
+    [userInfo setObject:SocializeDefaultErrorStringForCode(SocializeErrorUnexpectedJSONResponse) forKey:NSLocalizedDescriptionKey];
     [userInfo setObject:NSLocalizedFailureReasonErrorKey forKey:reason];
     [userInfo setObject:responseString forKey:kSocializeErrorResponseBodyKey];
     NSError *error = [NSError errorWithDomain:SocializeErrorDomain code:SocializeErrorUnexpectedJSONResponse userInfo:userInfo];
@@ -56,6 +60,10 @@
     [userInfo setObject:response forKey:kSocializeErrorNSHTTPURLResponseKey];
     NSError *error = [NSError errorWithDomain:SocializeErrorDomain code:SocializeErrorServerReturnedHTTPError userInfo:userInfo];
     return error;
+}
+
+- (BOOL)isSocializeErrorWithCode:(SocializeErrorCode)code {
+    return ([[self domain] isEqualToString:SocializeErrorDomain] && [self code] == code);
 }
 
 @end
