@@ -275,16 +275,6 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     [self.viewController performAutoAuth];
 }
 
-- (void)testAutoAuthWhenNotAuthedAndFacebookAlreadyValidPerformsFacebookAuth {
-    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
-    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
-    [[[self.mockSocialize stub] andReturnBool:YES] facebookSessionValid];
-    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
-    [[(id)self.viewController expect] startLoading];
-    [[self.mockSocialize expect] authenticateViaFacebookWithStoredCredentials];
-    [self.viewController performAutoAuth];
-}
-
 - (void)testAutoAuthWhenNotAuthedAndFacebookAlreadyValidDoesNotFacebookAuthIfFacebookNotAvailable {
     [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
     [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
@@ -296,8 +286,8 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
 }
 
 - (void)testAutoAuthWhenAuthedDoesNothing {
-    [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticated];
-    [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticatedWithThirdParty];
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticated];
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithThirdParty];
     [self.viewController performAutoAuth];
 }
 

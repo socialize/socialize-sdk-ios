@@ -235,17 +235,7 @@ SYNTH_CLASS_GETTER(SocializeFacebookAuthenticator, facebookAuthenticatorClass)
 
 -(void)performAutoAuth
 {
-    if (![self.socialize isAuthenticatedWithThirdParty] && [self.socialize facebookSessionValid] && [self.socialize facebookAvailable]) {
-        // Go ahead and link Socialize to facebook auth since we already have a valid token.
-        // Because this is first, Facebook is currently preferred over Twitter
-        // (This is ok to do automatically, since an external app callout will not happen)
-        [self startLoading];
-        [self.socialize authenticateViaFacebookWithStoredCredentials];        
-    } else if (![self.socialize isAuthenticatedWithThirdParty] && [self.socialize twitterSessionValid] && [self.socialize twitterAvailable]) {
-        // Go ahead and link Socialize to twitter since we already have a valid twitter session (maybe the user supplied the access token and secret manually)
-        [self startLoading];
-        [self.socialize authenticateViaTwitterWithStoredCredentials];
-    } else if(![self.socialize isAuthenticated]) {
+    if(![self.socialize isAuthenticated]) {
         // We're Not authenticated at all, and we can't auto auth with facebook
         // Just do anon
         [self startLoading];
