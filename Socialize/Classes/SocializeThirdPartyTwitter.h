@@ -10,6 +10,8 @@
 
 @interface SocializeThirdPartyTwitter : NSObject <SocializeThirdParty>
 
++ (NSString*)consumerKey;
++ (NSString*)consumerSecret;
 + (NSString*)accessToken;
 + (NSString*)accessTokenSecret;
 + (void)removeTwitterCookies;

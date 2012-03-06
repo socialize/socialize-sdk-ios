@@ -12,6 +12,18 @@
 
 @implementation SocializeThirdPartyTwitter
 
++ (BOOL)available {
+    return [[self consumerKey] length] > 0 && [[self consumerSecret] length] > 0;
+}
+
++ (NSString*)consumerKey {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeTwitterAuthConsumerKey];
+}
+
++ (NSString*)consumerSecret {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeTwitterAuthConsumerSecret];
+}
+
 + (NSString*)accessToken {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeTwitterAuthAccessToken];
 }

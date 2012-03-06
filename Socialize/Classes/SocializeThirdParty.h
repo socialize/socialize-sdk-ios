@@ -11,6 +11,7 @@
 
 @protocol SocializeThirdParty
 
++ (BOOL)available;
 + (BOOL)authenticationPossible;
 + (NSString*)thirdPartyName;
 + (BOOL)isAuthenticated;

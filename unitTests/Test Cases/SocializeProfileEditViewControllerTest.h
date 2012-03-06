@@ -23,4 +23,9 @@
 @property (nonatomic, retain) id mockActionSheet;
 @property (nonatomic, retain) id mockSaveButton;
 
+@property (nonatomic, assign) BOOL isAuthenticatedWithTwitter;
+@property (nonatomic, assign) BOOL twitterAvailable;
+@property (nonatomic, assign) BOOL isAuthenticatedWithFacebook;
+@property (nonatomic, assign) BOOL facebookAvailable;
+
 @end

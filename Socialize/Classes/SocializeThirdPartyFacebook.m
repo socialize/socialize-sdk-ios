@@ -12,6 +12,22 @@
 
 @implementation SocializeThirdPartyFacebook
 
++ (BOOL)available {
+    NSString *facebookAppId = [self facebookAppId];
+    NSString *facebookLocalAppId = [self facebookLocalAppId];
+    if (facebookAppId == nil) {
+        return NO;
+    }
+    
+    NSURL *testURL = [NSURL URLWithString:[self baseUrlForAppId:facebookAppId localAppId:facebookLocalAppId]];
+    if (![[UIApplication sharedApplication] canOpenURL:testURL]) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+
 + (NSString *)baseUrlForAppId:(NSString*)appId localAppId:(NSString*)localAppId {
     return [NSString stringWithFormat:@"fb%@%@://authorize",
             appId,

@@ -11,9 +11,12 @@
 #import "NSObject+Observer.h"
 #import <objc/runtime.h>
 
+id testSelf;
+
 @implementation SocializeTestCase
 @synthesize lastShownAlert = lastReceivedAlert_;
 @synthesize expectedDeallocations = expectedDeallocations_;
+@synthesize swizzledMethods = swizzledMethods_;
 
 - (id)init {
     if (self = [super init]) {
@@ -25,9 +28,18 @@
 
 - (void)dealloc {
     self.expectedDeallocations = nil;
+    self.swizzledMethods = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
+}
+
+- (NSMutableDictionary*)swizzledMethods {
+    if (swizzledMethods_ == nil) {
+        swizzledMethods_ = [[NSMutableDictionary alloc] init];
+    }
+    
+    return swizzledMethods_;
 }
 
 - (void)alertShown:(NSNotification*)notification {
@@ -49,8 +61,16 @@
     self.lastShownAlert = nil;
 }
 
+- (void)setUpClass {
+    testSelf = self;
+}
+
 - (void)tearDownClass {
     [super tearDownClass];
+    
+    testSelf = nil;
+    
+    [self deswizzle];
 
     if ([self.expectedDeallocations count] > 0) {
         [NSThread sleepForTimeInterval:0.1];
@@ -86,5 +106,25 @@
     NSString *commentString = [NSString stringWithCString:(const char*)test encoding:NSASCIIStringEncoding];
     [self.expectedDeallocations setObject:commentString forKey:address];
 }
+
+- (void)swizzleClass:(Class)target_class selector:(SEL)classSelector toObject:(id)object selector:(SEL)objectSelector {
+    Method originalMethod = class_getClassMethod(target_class, classSelector);
+    Method swizzledMethod = class_getInstanceMethod([object class], objectSelector);
+    method_exchangeImplementations(originalMethod, swizzledMethod);
+    
+    NSValue *orig = [NSValue valueWithBytes:&originalMethod objCType:@encode(Method)];
+    NSValue *swizzled = [NSValue valueWithBytes:&swizzledMethod objCType:@encode(Method)];
+    [self.swizzledMethods setObject:swizzled forKey:orig];
+}
+
+- (void)deswizzle {
+    [self.swizzledMethods enumerateKeysAndObjectsUsingBlock:^(NSValue *orig, NSValue *swizzled, BOOL *stop) {
+        Method origMethod, swizzledMethod;
+        [orig getValue:&origMethod];
+        [swizzled getValue:&swizzledMethod];
+        method_exchangeImplementations(swizzledMethod, origMethod);
+    }];
+}
+
 
 @end
