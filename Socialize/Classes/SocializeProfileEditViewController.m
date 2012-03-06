@@ -34,6 +34,8 @@
 - (NSIndexPath*)indexPathForFacebookLogoutRow;
 - (BOOL)loggedInWithTwitter;
 - (BOOL)loggedInWithFacebook;
+- (void)authenticateViaFacebook;
+- (void)authenticateViaTwitter;
 
 @end
 

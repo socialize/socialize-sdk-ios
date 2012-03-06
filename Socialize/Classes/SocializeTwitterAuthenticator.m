@@ -14,6 +14,10 @@
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyTwitter.h"
 
+@interface SocializeTwitterAuthenticator ()
+- (void)showTwitterAuthViewController;
+@end
+
 @implementation SocializeTwitterAuthenticator
 @synthesize twitterAuthViewController = twitterAuthViewController_;
 @synthesize options = options_;

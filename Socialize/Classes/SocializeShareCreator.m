@@ -25,6 +25,8 @@
 
 @interface SocializeShareCreator ()
 - (void)showSMSComposer;
+- (void)tryToFinishCreatingShare;
+- (NSString*)entityNameOrKey;
 @property (nonatomic, assign) BOOL finishedServerCreate;
 @property (nonatomic, assign) BOOL selectedShareMedium;
 @property (nonatomic, assign) BOOL postedToFacebookWall;

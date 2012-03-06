@@ -13,6 +13,7 @@
 #import "_Socialize.h"
 
 @interface SocializeThirdPartyAuthenticator ()
+- (void)showLoginDialog;
 @property (nonatomic, assign) BOOL sentTokenToSocialize;
 @property (nonatomic, assign) BOOL attemptedAutoAuth;
 @property (nonatomic, assign) BOOL failedAutoAuth;
