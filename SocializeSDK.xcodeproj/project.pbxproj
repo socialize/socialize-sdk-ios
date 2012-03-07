@@ -563,8 +563,8 @@
 		AA0186CB14C61A4A00858AD8 /* SocializeActionBarDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0186CA14C61A4A00858AD8 /* SocializeActionBarDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0186CC14C61A4A00858AD8 /* SocializeActionBarDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0186CA14C61A4A00858AD8 /* SocializeActionBarDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0307C11506DA8000E8C43F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AABE17891500634900500D45 /* libOCMock.a */; };
-		AA0307C51506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0307C41506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h */; };
-		AA0307C61506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0307C41506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h */; };
+		AA0307C51506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0307C41506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA0307C61506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0307C41506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA047D7914BFC1F2005560C3 /* SocializeBubbleViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047D7814BFC1F2005560C3 /* SocializeBubbleViewTests.m */; };
 		AA047D8014C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047D7F14C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m */; };
 		AA047F9914AD5AA20047D596 /* SocializeNotificationHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AA047F9714AD5AA20047D596 /* SocializeNotificationHandler.h */; };
