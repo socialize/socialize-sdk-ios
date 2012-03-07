@@ -617,6 +617,8 @@
 		AA08FC3614FD650E002242EB /* SocializeActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA08FC3514FD650D002242EB /* SocializeActionTests.m */; };
 		AA08FC3714FD650E002242EB /* SocializeActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA08FC3514FD650D002242EB /* SocializeActionTests.m */; };
 		AA0CF83D146DC0B300BBCF41 /* SocializePostShareViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0CF83C146DC0B300BBCF41 /* SocializePostShareViewControllerTest.m */; };
+		AA1C0E42150808490013F98B /* NSObject+ClassMock.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1C0E41150808490013F98B /* NSObject+ClassMock.m */; };
+		AA1C0E43150808490013F98B /* NSObject+ClassMock.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1C0E41150808490013F98B /* NSObject+ClassMock.m */; };
 		AA1F1AEF14AA9AE000B83792 /* PropertyHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1F1AEE14AA9AE000B83792 /* PropertyHelpers.h */; };
 		AA1F1AF014AA9AE000B83792 /* PropertyHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1F1AEE14AA9AE000B83792 /* PropertyHelpers.h */; };
 		AA2024EF144CA77D006C1F8F /* SocializeActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 1638C521143DC96A00538659 /* SocializeActionBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2878,6 +2880,8 @@
 		AA08FC3514FD650D002242EB /* SocializeActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActionTests.m; path = "Test Cases/SocializeActionTests.m"; sourceTree = "<group>"; };
 		AA0CF83B146DC0B300BBCF41 /* SocializePostShareViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePostShareViewControllerTest.h; path = "Test Cases/SocializePostShareViewControllerTest.h"; sourceTree = "<group>"; };
 		AA0CF83C146DC0B300BBCF41 /* SocializePostShareViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializePostShareViewControllerTest.m; path = "Test Cases/SocializePostShareViewControllerTest.m"; sourceTree = "<group>"; };
+		AA1C0E40150808490013F98B /* NSObject+ClassMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ClassMock.h"; sourceTree = "<group>"; };
+		AA1C0E41150808490013F98B /* NSObject+ClassMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ClassMock.m"; sourceTree = "<group>"; };
 		AA1F1AEE14AA9AE000B83792 /* PropertyHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PropertyHelpers.h; path = Classes/PropertyHelpers.h; sourceTree = "<group>"; };
 		AA26DD30146AF87E00AA25BF /* SocializeProfileEditValueViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileEditValueViewControllerTest.h; path = "Test Cases/SocializeProfileEditValueViewControllerTest.h"; sourceTree = "<group>"; };
 		AA26DD31146AF87E00AA25BF /* SocializeProfileEditValueViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileEditValueViewControllerTest.m; path = "Test Cases/SocializeProfileEditValueViewControllerTest.m"; sourceTree = "<group>"; };
@@ -4258,6 +4262,8 @@
 		AA337E6D14E9EB2300A6BB9C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AA1C0E40150808490013F98B /* NSObject+ClassMock.h */,
+				AA1C0E41150808490013F98B /* NSObject+ClassMock.m */,
 				AABDA006146B8F8B00D73FE4 /* TestUtils.h */,
 				AABDA007146B8F8B00D73FE4 /* TestUtils.m */,
 				AA63C44514EA22C70035D4D0 /* JRSwizzle.h */,
@@ -7450,6 +7456,7 @@
 				AAE94D98150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m in Sources */,
 				AA36761F150452EF00B57A7E /* SocializeFacebookAuthHandlerTests.m in Sources */,
 				AA9A12A81504769500176AFD /* SocializeFacebookAuthenticatorTests.m in Sources */,
+				AA1C0E42150808490013F98B /* NSObject+ClassMock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7540,6 +7547,7 @@
 				AAE94D99150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m in Sources */,
 				AA367620150452EF00B57A7E /* SocializeFacebookAuthHandlerTests.m in Sources */,
 				AA9A12A91504769500176AFD /* SocializeFacebookAuthenticatorTests.m in Sources */,
+				AA1C0E43150808490013F98B /* NSObject+ClassMock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -604,12 +604,12 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)twitterLogout {
-    [self.socialize removeTwitterAuthenticationInfo];
+    [SocializeThirdPartyTwitter removeLocalCredentials];
     [self updateInterfaceToReflectTwitterSessionStatus];
 }
 
 - (void)facebookLogout {
-    [self.socialize removeFacebookAuthenticationInfo];
+    [SocializeThirdPartyFacebook removeLocalCredentials];
     [self updateInterfaceToReflectFacebookSessionStatus];
 }
 
@@ -709,7 +709,6 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         [self.tableView beginUpdates];
         self.showFacebookLogout = NO;
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForFacebookLogoutRow]] withRowAnimation:UITableViewRowAnimationBottom];
-        [self.socialize removeFacebookAuthenticationInfo];
         [self.tableView endUpdates];
 
     }
@@ -746,7 +745,6 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         [self.tableView beginUpdates];
         self.showTwitterLogout = NO;
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForTwitterLogoutRow]] withRowAnimation:UITableViewRowAnimationBottom];
-        [self.socialize removeTwitterAuthenticationInfo];
         [self.tableView endUpdates];
 
     }

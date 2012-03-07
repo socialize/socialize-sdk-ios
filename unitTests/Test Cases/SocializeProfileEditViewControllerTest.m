@@ -19,6 +19,7 @@
 #import "SocializeFacebookAuthenticator.h"
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
+#import "NSObject+ClassMock.h"
 
 @interface SocializeProfileEditViewController ()
 - (void)cancelButtonPressed:(UIButton*)button;
@@ -54,31 +55,25 @@
     return [[[SocializeProfileEditViewController alloc] init] autorelease];
 }
 
+- (void)handleException:(NSException *)exception {
+    [ClassMockForwarder removeAllMocks];
+}
+
 - (void)setUpClass {
     [super setUpClass];
     
-    [self swizzleClass:[SocializeThirdPartyTwitter class] selector:@selector(isAuthenticated) toObject:self selector:@selector(testIsAuthenticatedWithTwitter)];
-    [self swizzleClass:[SocializeThirdPartyTwitter class] selector:@selector(available) toObject:self selector:@selector(testTwitterAvailable)];
-    [self swizzleClass:[SocializeThirdPartyFacebook class] selector:@selector(isAuthenticated) toObject:self selector:@selector(testIsAuthenticatedWithFacebook)];
-    [self swizzleClass:[SocializeThirdPartyFacebook class] selector:@selector(available) toObject:self selector:@selector(testFacebookAvailable)];
+//    [[[SocializeThirdPartyTwitter expect] andReturnBoolFromBlock:^{
+//        NSLog(@"Hi");
+//        return NO;
+//    }] isAuthenticated];
+//    BOOL abc = [SocializeThirdPartyTwitter isAuthenticated];
+//    (void)abc;
+//    [SocializeThirdPartyTwitter verify];
+    
 }
 
-- (BOOL)testIsAuthenticatedWithTwitter {
-    return [testSelf isAuthenticatedWithTwitter];
+- (void)tearDownClass {
 }
-
-- (BOOL)testIsAuthenticatedWithFacebook {
-    return [testSelf isAuthenticatedWithFacebook];
-}
-
-- (BOOL)testTwitterAvailable {
-    return [testSelf twitterAvailable];
-}
-
-- (BOOL)testFacebookAvailable {
-    return [testSelf facebookAvailable];
-}
-
 
 - (void)setUp {
     [super setUp];
@@ -119,11 +114,24 @@
     self.facebookAvailable = YES;
     self.twitterAvailable = YES;
     [self loadView];
+    
+    [SocializeThirdPartyTwitter startMockingClass];
+    [SocializeThirdPartyFacebook startMockingClass];
+    [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithTwitter; } ] isAuthenticated];
+    [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.twitterAvailable; } ] available];
+    [[[SocializeThirdPartyFacebook stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithFacebook; } ] isAuthenticated];
+    [[[SocializeThirdPartyFacebook stub] andReturnBoolFromBlock:^{ return self.facebookAvailable; } ] available];
+
 }
 
 - (void)tearDown {
     [super tearDown];
     
+    [SocializeThirdPartyTwitter verify];
+    [SocializeThirdPartyFacebook verify];
+    [SocializeThirdPartyTwitter stopMockingClass];
+    [SocializeThirdPartyFacebook stopMockingClass];
+
     [self.mockDelegate verify];
     [self.mockTableView verify];
     [self.mockBundle verify];
@@ -744,7 +752,8 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     
     GHAssertNotNil(self.lastShownAlert, @"Should have alert");
     
-    [[self.mockSocialize expect] removeTwitterAuthenticationInfo];
+    [[SocializeThirdPartyTwitter expect] removeLocalCredentials];
+
     BKBlock handler = [self.lastShownAlert handlerForButtonAtIndex:1];
     handler();
 }
@@ -759,7 +768,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     
     GHAssertNotNil(self.lastShownAlert, @"Should have alert");
     
-    [[self.mockSocialize expect] removeFacebookAuthenticationInfo];
+    [[SocializeThirdPartyFacebook expect] removeLocalCredentials];
     BKBlock handler = [self.lastShownAlert handlerForButtonAtIndex:1];
     handler();
 }
