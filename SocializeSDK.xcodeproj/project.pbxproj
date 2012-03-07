@@ -562,6 +562,9 @@
 		AA0186B214C6151400858AD8 /* SocializeActivityDetailsViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0186B014C6151400858AD8 /* SocializeActivityDetailsViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0186CB14C61A4A00858AD8 /* SocializeActionBarDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0186CA14C61A4A00858AD8 /* SocializeActionBarDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0186CC14C61A4A00858AD8 /* SocializeActionBarDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0186CA14C61A4A00858AD8 /* SocializeActionBarDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA0307C11506DA8000E8C43F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AABE17891500634900500D45 /* libOCMock.a */; };
+		AA0307C51506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0307C41506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h */; };
+		AA0307C61506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0307C41506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h */; };
 		AA047D7914BFC1F2005560C3 /* SocializeBubbleViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047D7814BFC1F2005560C3 /* SocializeBubbleViewTests.m */; };
 		AA047D8014C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047D7F14C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m */; };
 		AA047F9914AD5AA20047D596 /* SocializeNotificationHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AA047F9714AD5AA20047D596 /* SocializeNotificationHandler.h */; };
@@ -2283,6 +2286,13 @@
 			remoteGlobalIDString = AABC14D4144A114900088B7D;
 			remoteInfo = "Socialize (Profiling)";
 		};
+		AA0307C21506DA8C00E8C43F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA863889144CA42C00CFA759 /* OCMock.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 030EF0DB14632FF700B04273;
+			remoteInfo = OCMockLib;
+		};
 		AA29D13F14F7215A005F4686 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5CC3DAB3137881B900B11B78 /* Project object */;
@@ -2838,6 +2848,7 @@
 		AA0069BD14BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNewCommentsNotificationDisplayController.m; path = Classes/SocializeNewCommentsNotificationDisplayController.m; sourceTree = "<group>"; };
 		AA0186B014C6151400858AD8 /* SocializeActivityDetailsViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityDetailsViewControllerDelegate.h; path = Classes/SocializeActivityDetailsViewControllerDelegate.h; sourceTree = "<group>"; };
 		AA0186CA14C61A4A00858AD8 /* SocializeActionBarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActionBarDelegate.h; path = Classes/SocializeActionBarDelegate.h; sourceTree = "<group>"; };
+		AA0307C41506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUIDisplayProxyDelegate.h; path = Classes/SocializeUIDisplayProxyDelegate.h; sourceTree = "<group>"; };
 		AA047D7714BFC1F2005560C3 /* SocializeBubbleViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBubbleViewTests.h; path = "Test Cases/SocializeBubbleViewTests.h"; sourceTree = "<group>"; };
 		AA047D7814BFC1F2005560C3 /* SocializeBubbleViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBubbleViewTests.m; path = "Test Cases/SocializeBubbleViewTests.m"; sourceTree = "<group>"; };
 		AA047D7E14C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNotificationToggleBubbleContentViewTests.h; path = "Test Cases/SocializeNotificationToggleBubbleContentViewTests.h"; sourceTree = "<group>"; };
@@ -3285,6 +3296,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0307C11506DA8000E8C43F /* libOCMock.a in Frameworks */,
 				AA3326F6144CDAAA0033C7FA /* GHUnitIOS.framework in Frameworks */,
 				AA3326F5144CDA850033C7FA /* libKIF.a in Frameworks */,
 				AA332604144CD8070033C7FA /* CoreLocation.framework in Frameworks */,
@@ -4829,6 +4841,7 @@
 				AAE915E414F5806D00F2DB95 /* SocializeUIDisplayProxy.h */,
 				AAE915E514F5806D00F2DB95 /* SocializeUIDisplayProxy.m */,
 				AAE915EA14F5813700F2DB95 /* SocializeUIDisplay.h */,
+				AA0307C41506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h */,
 			);
 			name = Display;
 			sourceTree = "<group>";
@@ -5100,6 +5113,7 @@
 				AAE94D901500258100877A7B /* SocializeThirdPartyFacebook.h in Headers */,
 				AAADF8F81504175E009E5493 /* SocializeFacebookAuthHandler.h in Headers */,
 				AA9A129F15046C6700176AFD /* SocializeOptions.h in Headers */,
+				AA0307C61506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5239,6 +5253,7 @@
 				AAE94D8F1500258100877A7B /* SocializeThirdPartyFacebook.h in Headers */,
 				AAADF8F71504175E009E5493 /* SocializeFacebookAuthHandler.h in Headers */,
 				AA9A129E15046C6700176AFD /* SocializeOptions.h in Headers */,
+				AA0307C51506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5340,6 +5355,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AA0307C31506DA8C00E8C43F /* PBXTargetDependency */,
 				AA3326F4144CDA7F0033C7FA /* PBXTargetDependency */,
 				AA3325EB144CD8070033C7FA /* PBXTargetDependency */,
 			);
@@ -7817,6 +7833,11 @@
 			isa = PBXTargetDependency;
 			target = AABC14D4144A114900088B7D /* Socialize-Profiling */;
 			targetProxy = 1643767A144C348A001EA3E4 /* PBXContainerItemProxy */;
+		};
+		AA0307C31506DA8C00E8C43F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OCMockLib;
+			targetProxy = AA0307C21506DA8C00E8C43F /* PBXContainerItemProxy */;
 		};
 		AA29D13E14F7215A005F4686 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

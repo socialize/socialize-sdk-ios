@@ -146,6 +146,10 @@
     [self.displayProxy presentModalViewController:viewController];
 }
 
+- (void)displayProxy:(SocializeUIDisplayProxy *)proxy willDisplayViewController:(UIViewController *)controller {
+    self.ignoreNextView = YES;
+}
+
 - (void)setNoAutoLayout:(BOOL)noAutoLayout {
     noAutoLayout_ = noAutoLayout;
     [(SocializeActionView*)self.view setNoAutoLayout:noAutoLayout];

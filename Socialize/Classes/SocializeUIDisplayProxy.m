@@ -8,6 +8,7 @@
 
 #import "SocializeUIDisplayProxy.h"
 #import "SocializeLoadingView.h"
+#import "SocializeUIDisplayProxyDelegate.h"
 
 @interface SocializeUIDisplayProxy ()
 @property (nonatomic, retain) SocializeLoadingView *loadingView;
@@ -38,6 +39,10 @@
 }
 
 - (void)presentModalViewController:(UIViewController*)controller {
+    if ([self.object respondsToSelector:@selector(displayProxy:willDisplayViewController:)]) {
+        [self.object displayProxy:self willDisplayViewController:controller];
+    }
+         
     if ([self.display respondsToSelector:@selector(socializeObject:requiresDisplayOfViewController:)]) {
         [self.display socializeObject:self.object requiresDisplayOfViewController:controller];
     } else if ([self.display respondsToSelector:@selector(presentModalViewController:animated:)]) {

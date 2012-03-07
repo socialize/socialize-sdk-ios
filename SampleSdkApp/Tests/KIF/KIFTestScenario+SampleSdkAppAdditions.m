@@ -97,7 +97,7 @@
     // Post a share
     [scenario addStep:[KIFTestStep stepToEnableValidFacebookSession]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share"]];
-    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share on Facebook"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share via Facebook"]];
 //    Actual share disabled until i can get a test facebook account set up
 //    [scenario addStepsFromArray:[KIFTestStep stepsToCreateShare:@"actionbar share"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
