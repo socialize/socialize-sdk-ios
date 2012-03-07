@@ -142,7 +142,6 @@
 #pragma mark - View lifecycle
 
 - (void)presentInternalController:(UIViewController*)viewController {
-    self.ignoreNextView = YES;
     [self.displayProxy presentModalViewController:viewController];
 }
 
