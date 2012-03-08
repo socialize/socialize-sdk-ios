@@ -1,4 +1,4 @@
-.PHONY: tags framework bundle integration-tests ui-integration-tests clean test oldtest
+.PHONY: tags framework bundle integration-tests ui-integration-tests clean test
 
 BUNDLE_SCHEME=Socialize Bundle
 
@@ -38,9 +38,6 @@ clean:
 test:
 	WRITE_JUNIT_XML=YES RUN_CLI=YES xcodebuild -workspace socialize-sdk-ios.xcworkspace/ -sdk iphonesimulator -configuration Debug -scheme unitTests
 	#WRITE_JUNIT_XML=YES GHUNIT_UI_CLI=1 xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme unitTests -configuration Debug -sdk iphonesimulator build
-
-oldtest:
-	WRITE_JUNIT_XML=YES RUN_CLI=YES xcodebuild -workspace socialize-sdk-ios.xcworkspace/ -sdk iphonesimulator -configuration Debug -scheme unitTests-pre-4.3
 
 integration-tests:
 	cd SampleSdkApp && WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -workspace SampleSdkApp.xcworkspace/ -scheme IntegrationTests -configuration Debug -sdk iphonesimulator build
