@@ -20,6 +20,7 @@
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "NSObject+ClassMock.h"
+#import "SocializeTwitterAuthenticator.h"
 
 @interface SocializeProfileEditViewController ()
 - (void)cancelButtonPressed:(UIButton*)button;
@@ -53,22 +54,6 @@
 
 + (SocializeBaseViewController*)createController {
     return [[[SocializeProfileEditViewController alloc] init] autorelease];
-}
-
-- (void)setUpClass {
-    [super setUpClass];
-    
-//    [[[SocializeThirdPartyTwitter expect] andReturnBoolFromBlock:^{
-//        NSLog(@"Hi");
-//        return NO;
-//    }] isAuthenticated];
-//    BOOL abc = [SocializeThirdPartyTwitter isAuthenticated];
-//    (void)abc;
-//    [SocializeThirdPartyTwitter verify];
-    
-}
-
-- (void)tearDownClass {
 }
 
 - (void)setUp {
@@ -113,6 +98,9 @@
     
     [SocializeThirdPartyTwitter startMockingClass];
     [SocializeThirdPartyFacebook startMockingClass];
+    [SocializeFacebookAuthenticator startMockingClass];
+    [SocializeTwitterAuthenticator startMockingClass];
+    
     [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithTwitter; } ] isAuthenticated];
     [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.twitterAvailable; } ] available];
     [[[SocializeThirdPartyFacebook stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithFacebook; } ] isAuthenticated];
@@ -123,10 +111,10 @@
 - (void)tearDown {
     [super tearDown];
     
-    [SocializeThirdPartyTwitter verify];
-    [SocializeThirdPartyFacebook verify];
-    [SocializeThirdPartyTwitter stopMockingClass];
-    [SocializeThirdPartyFacebook stopMockingClass];
+    [SocializeThirdPartyTwitter stopMockingClassAndVerify];
+    [SocializeThirdPartyFacebook stopMockingClassAndVerify];
+    [SocializeFacebookAuthenticator stopMockingClassAndVerify];
+    [SocializeTwitterAuthenticator stopMockingClassAndVerify];
 
     [self.mockDelegate verify];
     [self.mockTableView verify];
@@ -713,7 +701,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [[[self.mockTwitterSwitch stub] andReturnBool:YES] isOn];
     
     // Should auth
-    [[self.mockTwitterAuthenticatorClass expect] authenticateViaTwitterWithOptions:OCMOCK_ANY
+    [[SocializeTwitterAuthenticator expect] authenticateViaTwitterWithOptions:OCMOCK_ANY
                                                                            display:OCMOCK_ANY
                                                                            success:OCMOCK_ANY
                                                                            failure:OCMOCK_ANY];
@@ -728,7 +716,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     
     [[[self.mockFacebookSwitch stub] andReturnBool:YES] isOn];
     
-    [[self.mockFacebookAuthenticatorClass expect] authenticateViaFacebookWithOptions:OCMOCK_ANY
+    [[SocializeFacebookAuthenticator expect] authenticateViaFacebookWithOptions:OCMOCK_ANY
                                                                              display:OCMOCK_ANY
                                                                              success:OCMOCK_ANY
                                                                              failure:OCMOCK_ANY];

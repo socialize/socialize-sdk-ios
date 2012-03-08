@@ -49,9 +49,6 @@
 @synthesize partialAction = partialAction_;
 @synthesize mockDisplay = display_;
 @synthesize mockSocialize = mockSocialize_;
-@synthesize mockTwitterAuthenticatorClass = mockTwitterAuthenticatorClass_;
-@synthesize mockFacebookAuthenticatorClass = mockFacebookAuthenticatorClass_;
-@synthesize mockFacebookWallPosterClass = mockFacebookWallPosterClass_;
 
 - (id)createAction {
     return [[[SocializeAction alloc] initWithDisplayObject:nil
@@ -73,30 +70,10 @@
     [[self.mockSocialize stub] setDelegate:nil];
     
     self.action.socialize = self.mockSocialize;
-    
-    self.mockTwitterAuthenticatorClass = [OCMockObject classMockForClass:[SocializeTwitterAuthenticator class]];
-    self.action.twitterAuthenticatorClass = self.mockTwitterAuthenticatorClass;
-    
-    self.mockFacebookAuthenticatorClass = [OCMockObject classMockForClass:[SocializeFacebookAuthenticator class]];
-    self.action.facebookAuthenticatorClass = self.mockFacebookAuthenticatorClass;
-    
-    self.mockFacebookAuthenticatorClass = [OCMockObject classMockForClass:[SocializeFacebookAuthenticator class]];
-    self.action.facebookAuthenticatorClass = self.mockFacebookAuthenticatorClass;
-
-    self.mockFacebookWallPosterClass = [OCMockObject classMockForClass:[SocializeFacebookWallPoster class]];
-    self.action.facebookWallPosterClass = self.mockFacebookWallPosterClass;
-
 }
 
 - (void)tearDown {
     [self.mockDisplay verify];
-    [self.mockTwitterAuthenticatorClass verify];
-    [self.mockFacebookAuthenticatorClass verify];
-    [self.mockFacebookWallPosterClass verify];
-    
-    self.mockTwitterAuthenticatorClass = nil;
-    self.mockFacebookAuthenticatorClass = nil;
-    self.mockFacebookWallPosterClass = nil;
     self.mockDisplay = nil;
     self.partialAction = nil;
     self.action.socialize = nil;
@@ -110,7 +87,7 @@
     // Initially, not authenticated
     [[[self.mockSocialize expect] andReturnBool:NO] isAuthenticatedWithFacebook];
     
-    [[[self.mockFacebookAuthenticatorClass expect] andDo4:^(id options, id display, id success, id failure) {
+    [[[SocializeFacebookAuthenticator expect] andDo4:^(id options, id display, id success, id failure) {
         // Succeed -- Authenticated from now on
         [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
         
@@ -121,7 +98,7 @@
 
 - (void)failFacebookAuthentication {
     [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
-    [[[self.mockFacebookAuthenticatorClass expect] andDo4:^(id options, id display, id success, id failure) {
+    [[[SocializeFacebookAuthenticator expect] andDo4:^(id options, id display, id success, id failure) {
         void (^failureBlock)(NSError *error) = failure;
         failureBlock(nil);
     }] authenticateViaFacebookWithOptions:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
@@ -129,7 +106,7 @@
 
 - (void)failTwitterAuthentication {
     [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithTwitter];
-    [[[self.mockTwitterAuthenticatorClass expect] andDo4:^(id options, id display, id success, id failure) {
+    [[[SocializeTwitterAuthenticator expect] andDo4:^(id options, id display, id success, id failure) {
         void (^failureBlock)(NSError *error) = failure;
         failureBlock(nil);
     }] authenticateViaTwitterWithOptions:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
@@ -140,7 +117,7 @@
     // Initially, not authenticated
     [[[self.mockSocialize expect] andReturnBool:NO] isAuthenticatedWithTwitter];
     
-    [[[self.mockTwitterAuthenticatorClass expect] andDo4:^(id options, id display, id success, id failure) {
+    [[[SocializeTwitterAuthenticator expect] andDo4:^(id options, id display, id success, id failure) {
         // Succeed -- Authenticated from now on
         [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithTwitter];
         
@@ -151,7 +128,7 @@
 
 
 - (void)succeedPostingToFacebookWall {
-    [[[self.mockFacebookWallPosterClass expect] andDo4:^(id options, id display, id success, id failure) {
+    [[[SocializeFacebookWallPoster expect] andDo4:^(id options, id display, id success, id failure) {
         // Succeed -- Authenticated from now on
         [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
         

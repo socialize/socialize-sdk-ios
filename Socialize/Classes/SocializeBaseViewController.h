@@ -56,8 +56,6 @@
 @property (nonatomic, retain) SocializeKeyboardListener *keyboardListener;
 @property (nonatomic, retain) SocializeProfileEditViewController *profileEditViewController;
 @property (nonatomic, retain) UINavigationController *navigationControllerForEdit;
-@property (nonatomic, assign) Class twitterAuthenticatorClass;
-@property (nonatomic, assign) Class facebookAuthenticatorClass;
 
 -(void) showAlertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoading;

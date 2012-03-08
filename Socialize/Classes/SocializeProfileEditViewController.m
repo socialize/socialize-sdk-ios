@@ -644,7 +644,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)authenticateViaTwitter {
-    [self.twitterAuthenticatorClass authenticateViaTwitterWithOptions:nil
+    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:nil
                                               display:self
                                               success:^{
                                                   [self updateInterfaceToReflectSessionStatuses];
@@ -654,7 +654,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)authenticateViaFacebook {
-    [self.facebookAuthenticatorClass authenticateViaFacebookWithOptions:nil
+    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:nil
                                                                 display:self
                                                                 success:^{
                                                                     [self updateInterfaceToReflectSessionStatuses];

@@ -305,7 +305,7 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
 }
 
 - (void)authenticateViaTwitter {
-    [self.twitterAuthenticatorClass authenticateViaTwitterWithOptions:self.options.twitterAuthOptions
+    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:self.options.twitterAuthOptions
                                                         displayProxy:self.displayProxy
                                                              success:^{
                                                                  [self tryToFinishCreatingShare];
@@ -319,7 +319,7 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
 }
 
 - (void)authenticateViaFacebook {
-    [self.facebookAuthenticatorClass authenticateViaFacebookWithOptions:self.options.facebookAuthOptions
+    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:self.options.facebookAuthOptions
                                                           displayProxy:self.displayProxy
                                                                success:^{
                                                                    [self tryToFinishCreatingShare];
@@ -344,7 +344,7 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
     [message appendFormat:@"\n\n Shared from %@ using Socialize for iOS. \n http://www.getsocialize.com/", self.shareObject.application.name];
     
     options.message = message;
-    [self.facebookWallPosterClass postToFacebookWallWithOptions:options
+    [SocializeFacebookWallPoster postToFacebookWallWithOptions:options
                                                   displayProxy:self.displayProxy
                                                        success:^{
                                                            self.postedToFacebookWall = YES;

@@ -33,10 +33,6 @@ typedef enum {
 @synthesize failureBlock = failureBlock_;
 @synthesize successBlock = successBlock_;
 
-SYNTH_CLASS_GETTER(SocializeFacebookAuthenticator, facebookAuthenticatorClass)
-SYNTH_CLASS_GETTER(SocializeTwitterAuthenticator, twitterAuthenticatorClass)
-SYNTH_CLASS_GETTER(SocializeFacebookWallPoster, facebookWallPosterClass)
-
 - (void)dealloc {
     [socialize_ setDelegate:nil];
     self.socialize = nil;

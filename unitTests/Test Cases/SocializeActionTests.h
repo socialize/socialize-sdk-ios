@@ -14,9 +14,6 @@
 @property (nonatomic, retain) id partialAction;
 @property (nonatomic, retain) id mockDisplay;
 @property (nonatomic, retain) id mockSocialize;
-@property (nonatomic, retain) id mockTwitterAuthenticatorClass;
-@property (nonatomic, retain) id mockFacebookAuthenticatorClass;
-@property (nonatomic, retain) id mockFacebookWallPosterClass;
 
 - (id)createAction;
 - (void)executeActionAndWaitForStatus:(int)status fromTest:(SEL)test;

@@ -64,9 +64,6 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 @synthesize profileEditViewController = profileEditViewController_;
 @synthesize navigationControllerForEdit = navigationControllerForEdit_;
 
-SYNTH_CLASS_GETTER(SocializeTwitterAuthenticator, twitterAuthenticatorClass)
-SYNTH_CLASS_GETTER(SocializeFacebookAuthenticator, facebookAuthenticatorClass)
-
 - (void)dealloc
 {
     self.tableView.delegate = nil;
