@@ -14,6 +14,9 @@
 #import "SocializeCommonDefinitions.h"
 #import "SocializeTwitterAuthenticator.h"
 #import "SocializeFacebookAuthenticator.h"
+#import "SocializeThirdPartyFacebook.h"
+#import "SocializeThirdPartyTwitter.h"
+#import "SocializeFacebookAuthenticator.h"
 
 @implementation SocializeBaseViewControllerTests
 @synthesize viewController = viewController_;
@@ -109,7 +112,6 @@
     
     self.mockFacebookAuthenticatorClass = [OCMockObject classMockForClass:[SocializeFacebookAuthenticator class]];
     self.viewController.facebookAuthenticatorClass = self.mockFacebookAuthenticatorClass;
-
 }
 
 -(void) tearDown
@@ -268,22 +270,19 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
 
 - (void)testAutoAuthWhenNotAuthedPerformsAuth {
     [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
-    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
-    [[[self.mockSocialize stub] andReturnBool:NO] facebookSessionValid];
-    [[(id)self.viewController expect] startLoading];
     [[self.mockSocialize expect] authenticateAnonymously];
     [self.viewController performAutoAuth];
 }
 
-- (void)testAutoAuthWhenNotAuthedAndFacebookAlreadyValidDoesNotFacebookAuthIfFacebookNotAvailable {
-    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
-    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
-    [[[self.mockSocialize stub] andReturnBool:YES] facebookSessionValid];
-    [[[self.mockSocialize stub] andReturnBool:NO] facebookAvailable];
-    [[(id)self.viewController expect] startLoading];
-    [[self.mockSocialize expect] authenticateAnonymously];
-    [self.viewController performAutoAuth];
-}
+//- (void)testAutoAuthWhenNotAuthedAndFacebookAlreadyValidDoesNotFacebookAuthIfFacebookNotAvailable {
+//    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
+//    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticatedWithFacebook];
+//    [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] hasLocalCredentials];
+//    [[[SocializeThirdPartyFacebook stub] andReturnBool:NO] available];
+//    [[(id)self.viewController expect] startLoading];
+//    [[self.mockSocialize expect] authenticateAnonymously];
+//    [self.viewController performAutoAuth];
+//}
 
 - (void)testAutoAuthWhenAuthedDoesNothing {
     [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticated];
@@ -291,19 +290,31 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     [self.viewController performAutoAuth];
 }
 
-- (void)testAuthenticateWithFacebookNotAvailable {
-    BOOL isFacebookAvailable = NO;
-    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(isFacebookAvailable)] facebookAvailable];
+- (void)testAuthenticateWithFacebookWhenFacebookNotAvailable {
+    [SocializeThirdPartyFacebook startMockingClass];
+    
+    [[[SocializeThirdPartyFacebook stub] andReturnBool:NO] available];
+
     [[(id)self.viewController expect] showAlertWithText:OCMOCK_ANY andTitle:OCMOCK_ANY];
     [self.origViewController authenticateWithFacebook];
+    
+    [SocializeThirdPartyFacebook stopMockingClassAndVerify];
 }
-- (void)testAuthenticateWithFacebookAvailable {
-    BOOL isFacebookAvailable = YES;
-    BOOL isAuthenticatedWithFB = NO;
-    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(isFacebookAvailable)] facebookAvailable];
-    [[[self.mockSocialize expect] andReturnValue:OCMOCK_VALUE(isAuthenticatedWithFB)] isAuthenticatedWithFacebook];
-    [[self.mockSocialize expect] authenticateViaFacebook];
+- (void)testAuthenticateWithFacebookWhenFacebookAvailable {
+    [SocializeThirdPartyFacebook startMockingClass];
+    [SocializeFacebookAuthenticator startMockingClass];
+    
+    [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] available];
+    [[[SocializeThirdPartyFacebook stub] andReturnBool:NO] isAuthenticated];
+
+    [[SocializeFacebookAuthenticator expect] authenticateViaFacebookWithOptions:OCMOCK_ANY
+                                                                        display:OCMOCK_ANY
+                                                                        success:OCMOCK_ANY
+                                                                        failure:OCMOCK_ANY];
     [self.origViewController authenticateWithFacebook];
+    
+    [SocializeThirdPartyFacebook stopMockingClassAndVerify];
+    [SocializeFacebookAuthenticator stopMockingClassAndVerify];
 }
 
 - (void) testDidDismissWithButtonForFBSend {

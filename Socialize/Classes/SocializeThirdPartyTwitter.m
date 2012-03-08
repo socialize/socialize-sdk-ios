@@ -44,7 +44,7 @@
     return SocializeThirdPartyAuthTypeTwitter;
 }
 
-+ (void)storeLocalCredentialsAccessToken:(NSString*)accessToken
++ (void)storeLocalCredentialsWithAccessToken:(NSString*)accessToken
                        accessTokenSecret:(NSString*)accessTokenSecret
                               screenName:(NSString*)screenName
                                   userId:(NSString*)userId {
@@ -54,12 +54,6 @@
     [defaults setObject:screenName forKey:kSocializeTwitterAuthScreenName];
     [defaults setObject:userId forKey:kSocializeTwitterAuthUserId];
     [defaults synchronize];
-}
-
-+ (BOOL)authenticationPossible {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    return [[defaults objectForKey:kSocializeTwitterAuthConsumerKey] length] > 0 &&
-    [[defaults objectForKey:kSocializeTwitterAuthConsumerSecret] length] > 0;
 }
 
 + (void)removeTwitterCookies {

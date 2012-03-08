@@ -13,6 +13,8 @@
 #import "SocializeAuthTableViewCell.h"
 #import "SocializeUser.h"
 #import "SocializeAuthInfoTableViewCell.h"
+#import "SocializeThirdPartyFacebook.h"
+#import "SocializeThirdPartyTwitter.h"
 
 static NSString *const kAuthTypeRowText = @"kAuthTypeRowText";
 static NSString *const kAuthTypeRowImageName = @"kAuthTypeRowImageName";
@@ -142,7 +144,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
         
         __block id weakSelf = self;
         
-        if ([self.socialize facebookAvailable]) {
+        if ([SocializeThirdPartyFacebook available]) {
             [authTypeRowData_ addObject:
              [NSDictionary dictionaryWithObjectsAndKeys:
               
@@ -152,7 +154,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
               nil]];
         }
         
-        if ([self.socialize twitterAvailable]) {
+        if ([SocializeThirdPartyTwitter available]) {
             [authTypeRowData_ addObject:
              [NSDictionary dictionaryWithObjectsAndKeys:
               

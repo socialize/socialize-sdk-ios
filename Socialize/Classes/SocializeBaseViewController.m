@@ -39,6 +39,8 @@
 #import "SocializeKeyboardListener.h"
 #import "UINavigationController+Socialize.h"
 #import "SocializePreprocessorUtilities.h"
+#import "SocializeThirdPartyFacebook.h"
+#import "SocializeFacebookAuthenticator.h"
 
 @interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
 -(void)leftNavigationButtonPressed:(id)sender;
@@ -299,14 +301,19 @@ SYNTH_CLASS_GETTER(SocializeFacebookAuthenticator, facebookAuthenticatorClass)
 }
 
 - (void)authenticateWithFacebook {
-    if (![self.socialize facebookAvailable]) {
+    if (![SocializeThirdPartyFacebook available]) {
         [self showAlertWithText:@"Proper facebook configuration is required to use this view" andTitle:@"Facebook not Configured"];
         return;
     }
     
-    if (![self.socialize isAuthenticatedWithFacebook]) {
-        [self startLoading];
-        [self.socialize authenticateViaFacebook];
+    if (![SocializeThirdPartyFacebook isAuthenticated]) {
+        [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:nil
+                                                                   display:self
+                                                                   success:^{
+                                                                       [self afterLoginAction:YES];
+                                                                   } failure:^(NSError *error) {
+                                                                       [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
+                                                                   }];
     }
 }
 -(UINavigationController *)authViewController{    

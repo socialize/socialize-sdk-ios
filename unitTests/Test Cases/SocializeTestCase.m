@@ -54,6 +54,10 @@ id testSelf;
     return expectedDeallocations_;
 }
 
+- (void)handleException:(NSException *)exception {
+    [ClassMockForwarder stopMockingAllClasses];
+}
+
 - (void)setUp {
     [super setUp];
     

@@ -65,7 +65,7 @@
 - (void)stubBoolsForMockThirdParty:(id)mockThirdParty {
     [[[mockThirdParty stub] andReturnBoolFromBlock:^{ return self.isAuthenticated; }] isAuthenticated];
     [[[mockThirdParty stub] andReturnBoolFromBlock:^{ return self.hasLocalCredentials; }] hasLocalCredentials];
-    [[[mockThirdParty stub] andReturnBoolFromBlock:^{ return self.authenticationPossible; }] authenticationPossible];
+    [[[mockThirdParty stub] andReturnBoolFromBlock:^{ return self.authenticationPossible; }] available];
 }
 
 - (NSInteger)authType {

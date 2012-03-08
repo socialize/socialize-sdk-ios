@@ -75,21 +75,6 @@
     return SocializeThirdPartyAuthTypeFacebook;
 }
 
-+ (BOOL)authenticationPossible {
-    NSString *facebookAppId = [self facebookAppId];
-    NSString *facebookLocalAppId = [self facebookLocalAppId];
-    if (facebookAppId == nil) {
-        return NO;
-    }
-    
-    NSURL *testURL = [NSURL URLWithString:[self baseUrlForAppId:facebookAppId localAppId:facebookLocalAppId]];
-    if (![[UIApplication sharedApplication] canOpenURL:testURL]) {
-        return NO;
-    }
-    
-    return YES;
-}
-
 + (NSError*)thirdPartyUnavailableError {
     return [NSError defaultSocializeErrorForCode:SocializeErrorFacebookUnavailable];
 }

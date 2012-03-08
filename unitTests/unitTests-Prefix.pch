@@ -58,4 +58,5 @@
     #import "SocializeService+Testing.h"
     #import "TestUtils.h"
     #import "StringHelper.h"
+#import "NSObject+ClassMock.h"
 #endif

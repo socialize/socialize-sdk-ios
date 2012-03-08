@@ -10,6 +10,8 @@
 #import "SocializeAuthenticateService.h"
 #import "SocializeAuthTableViewCell.h"
 #import "SocializeAuthInfoTableViewCell.h"
+#import "SocializeThirdPartyFacebook.h"
+#import "SocializeThirdPartyTwitter.h"
 
 //THIS REDEFINES THE INTERFACES AS PUBLIC SO WE CAN TEST THEM
 @interface  SocializeAuthViewController(public)
@@ -51,10 +53,15 @@ BOOL isAuthenticatedWithFacebook = YES;
     self.mockTableView = [OCMockObject mockForClass:[UITableView class]];
     self.mockSocialize = [OCMockObject niceMockForClass:[Socialize class]];
     self.authViewController.socialize = self.mockSocialize;
-                          
+    
+    [SocializeThirdPartyFacebook startMockingClass];
+    [SocializeThirdPartyTwitter startMockingClass];
 }
 // Run after each test method
 - (void)tearDown { 
+    [SocializeThirdPartyTwitter stopMockingClassAndVerify];
+    [SocializeThirdPartyFacebook stopMockingClassAndVerify];
+    
     [self.mockAuthTableViewCell verify];
     [self.partialMockAuthViewController verify];
     [self.mockAuthTableViewCell verify];
@@ -115,8 +122,8 @@ BOOL isAuthenticatedWithFacebook = YES;
     [mockTableView verify];
 }
 - (void)setupSectionAuthTypes:(NSString *)authString  withType:(SocializeAuthViewControllerRows) authType  {
-    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
-    [[[self.mockSocialize stub] andReturnBool:YES] twitterAvailable];
+    [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] available];
+    [[[SocializeThirdPartyTwitter stub] andReturnBool:YES] available];
 
     //EXPECT getAuthorizeTableViewCell
     [[[self.partialMockAuthViewController expect] andReturn:self.mockAuthTableViewCell] getAuthorizeTableViewCell];
@@ -148,8 +155,8 @@ BOOL isAuthenticatedWithFacebook = YES;
 }
 
 -(void) testDidSelectRowForFB {
-    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
-    [[[self.mockSocialize stub] andReturnBool:YES] twitterAvailable];
+    [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] available];
+    [[[SocializeThirdPartyTwitter stub] andReturnBool:YES] available];
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     id mockTableView = [OCMockObject mockForClass:[UITableView class]];

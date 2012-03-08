@@ -55,10 +55,6 @@
     return [[[SocializeProfileEditViewController alloc] init] autorelease];
 }
 
-- (void)handleException:(NSException *)exception {
-    [ClassMockForwarder removeAllMocks];
-}
-
 - (void)setUpClass {
     [super setUpClass];
     

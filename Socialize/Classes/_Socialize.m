@@ -30,6 +30,8 @@
 #import "SocializeShareOptions.h"
 #import "SocializeTwitterAuthOptions.h"
 #import "SocializeFacebookAuthHandler.h"
+#import "SocializeThirdPartyTwitter.h"
+#import "SocializeThirdPartyFacebook.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -385,122 +387,36 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     return NO;
 }
 
--(BOOL)isAuthenticatedWithFacebook {
-    if (![FacebookAuthenticator hasValidToken]) {
-        return NO;
-    }
-    
-
-    return [self isAuthenticatedWithAuthType:@"FaceBook"];
-}
-
 - (void)authenticateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
                        thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
                  thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret {
     [_authService authenticateWithThirdPartyAuthType:type thirdPartyAuthToken:thirdPartyAuthToken thirdPartyAuthTokenSecret:thirdPartyAuthTokenSecret];
 }
 
+-(BOOL)isAuthenticatedWithFacebook {
+    return [SocializeThirdPartyFacebook isAuthenticated];
+}
+
 -(BOOL)isAuthenticatedWithTwitter {
-    if (![self twitterSessionValid])
-        return NO;
-    
-    return [self isAuthenticatedWithAuthType:@"Twitter"];
+    return [SocializeThirdPartyTwitter isAuthenticated];
 }
 
 - (BOOL)isAuthenticatedWithThirdParty {
-    return [self isAuthenticatedWithFacebook] || [self isAuthenticatedWithTwitter];
-}
-
-- (BOOL)facebookAvailable {
-    NSString *facebookAppId = [Socialize facebookAppId];
-    NSString *facebookLocalAppId = [Socialize facebookLocalAppId];
-    if (facebookAppId == nil) {
-        return NO;
-    }
-    
-    NSURL *testURL = [NSURL URLWithString:[SocializeFacebook baseUrlForAppId:facebookAppId localAppId:facebookLocalAppId]];
-    if (![[UIApplication sharedApplication] canOpenURL:testURL]) {
-        return NO;
-    }
-    
-    return YES;
-}
-
-- (BOOL)twitterAvailable {
-    return [[[self class] twitterConsumerKey] length] > 0 && [[[self class] twitterConsumerSecret] length] > 0;
+    return [SocializeThirdPartyFacebook isAuthenticated] || [SocializeThirdPartyTwitter isAuthenticated];
 }
 
 - (BOOL)thirdPartyAvailable {
-    return [self facebookAvailable] || [self twitterAvailable];
-}
-
-- (BOOL)facebookSessionValid {
-    return [FacebookAuthenticator hasValidToken];
-}
-
-- (BOOL)twitterSessionValid {
-    NSString *twitterAccessToken = [[self class] twitterAccessToken];
-    NSString *twitterAccessTokenSecret = [[self class] twitterAccessTokenSecret];
-    
-    if ([twitterAccessToken length] == 0 || [twitterAccessTokenSecret length] == 0) {
-        return NO;
-    }
-
-    return YES;
-}
-
-- (void)removeFacebookAuthenticationInfo {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-    // Remove any Facebook data -- these are defined by the Facebook API, and not Socialize specific
-    [defaults removeObjectForKey:@"FBAccessTokenKey"];
-    [defaults removeObjectForKey:@"FBExpirationDateKey"];
-    
-    [defaults synchronize];     
+    return [SocializeThirdPartyFacebook available] || [SocializeThirdPartyTwitter available];
 }
 
 - (void)removeSocializeAuthenticationInfo {
     [_authService removeSocializeAuthenticationInfo];
 }
 
-- (void)removeTwitterAuthenticationInfo {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    // Remove any Twitter data -- these are Socialize specific
-    [defaults removeObjectForKey:kSocializeTwitterAuthAccessToken];
-    [defaults removeObjectForKey:kSocializeTwitterAuthAccessTokenSecret];
-    [defaults synchronize];
-    
-    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (NSHTTPCookie *cookie in [storage cookies]) {
-        if ([[cookie domain] isEqualToString:@".twitter.com"]) {
-            [storage deleteCookie:cookie];
-        }
-    }
-}
-
-- (void)twitterLogout {
-    [self removeTwitterAuthenticationInfo];
-    
-    // Remove existing auth data so we go back to anonymous
-//    if ([self isAuthenticatedWithTwitter]) {
-//        [self removeSocializeAuthenticationInfo];
-//    }
-}
-
-- (void)facebookLogout {
-    [self removeFacebookAuthenticationInfo];
-    
-    // Remove existing auth data so we go back to anonymous
-//    if ([self isAuthenticatedWithFacebook]) {
-//        [self removeSocializeAuthenticationInfo];
-//    }
-}
-
 -(void)removeAuthenticationInfo {
     [self removeSocializeAuthenticationInfo];
-    [self removeFacebookAuthenticationInfo];
-    [self removeTwitterAuthenticationInfo];
+//    [self removeFacebookAuthenticationInfo];
+//    [self removeTwitterAuthenticationInfo];
 }
 
 #pragma object creation

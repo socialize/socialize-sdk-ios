@@ -84,7 +84,7 @@
                        screenName:(NSString *)screenName
                            userID:(NSString *)userID {
 
-    [SocializeThirdPartyTwitter storeLocalCredentialsAccessToken:accessToken
+    [SocializeThirdPartyTwitter storeLocalCredentialsWithAccessToken:accessToken
                                                accessTokenSecret:accessTokenSecret
                                                       screenName:screenName
                                                           userId:userID];

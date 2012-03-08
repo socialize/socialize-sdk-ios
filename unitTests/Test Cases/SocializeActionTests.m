@@ -12,6 +12,7 @@
 #import "SocializeFacebookAuthenticator.h"
 #import "SocializeFacebookWallPoster.h"
 
+
 @interface FailingAction : SocializeAction
 @end
 
@@ -72,8 +73,6 @@
     [[self.mockSocialize stub] setDelegate:nil];
     
     self.action.socialize = self.mockSocialize;
-    [[[self.mockSocialize stub] andReturnBool:YES] twitterAvailable];
-    [[[self.mockSocialize stub] andReturnBool:YES] facebookAvailable];
     
     self.mockTwitterAuthenticatorClass = [OCMockObject classMockForClass:[SocializeTwitterAuthenticator class]];
     self.action.twitterAuthenticatorClass = self.mockTwitterAuthenticatorClass;

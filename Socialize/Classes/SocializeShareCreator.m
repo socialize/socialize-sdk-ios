@@ -22,6 +22,8 @@
 #import "NSError+Socialize.h"
 #import "SocializeFacebookWallPoster.h"
 #import "SocializePreprocessorUtilities.h"
+#import "SocializeThirdPartyFacebook.h"
+#import "SocializeThirdPartyTwitter.h"
 
 @interface SocializeShareCreator ()
 - (void)showSMSComposer;
@@ -244,13 +246,13 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
 
     __block __typeof__(self) weakSelf = self;
     
-    if([self.socialize twitterAvailable]) {
+    if([SocializeThirdPartyTwitter available]) {
         [actionSheet addButtonWithTitle:@"Share via Twitter" handler:^{
             [weakSelf selectShareMedium:SocializeShareMediumTwitter];
         }];
     }
 
-    if([self.socialize facebookAvailable]) {
+    if([SocializeThirdPartyFacebook available]) {
         [actionSheet addButtonWithTitle:@"Share via Facebook" handler:^{
             [weakSelf selectShareMedium:SocializeShareMediumFacebook];
         }];

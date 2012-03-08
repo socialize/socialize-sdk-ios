@@ -203,10 +203,6 @@ otherwise you will get a failure.
 +(NSString*)twitterAccessTokenSecret;
 +(NSString*)twitterScreenName;
 
-- (void)removeTwitterAuthenticationInfo;
-
-- (void)removeFacebookAuthenticationInfo;
-
     
 /**
  Save app link to the user defaults.
@@ -468,20 +464,6 @@ otherwise you will get a failure.
                  thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret;
 
 /**
- Check if facebook is configured
- 
- @return YES if the app is properly configured for facebook usage
- */
-- (BOOL)facebookAvailable;
-
-/**
- Check if TWITTER is configured
- 
- @return YES if the app is properly configured for facebook usage
- */
-- (BOOL)twitterAvailable;
-
-/**
  Check if the app is configured for any type of third party authentication (currently Facebook or Twitter)
  
  @return YES if available, NO otherwise
@@ -518,19 +500,6 @@ otherwise you will get a failure.
  */
 - (BOOL)isAuthenticatedWithThirdParty;
 
-/**
- Check if an existing facebook session already exists
- 
- @return YES if there is already a valid facebook session for this app
- */
-- (BOOL)facebookSessionValid;
-
-/**
- Check if an existing twitter session already exists
- 
- @return YES if there is already a valid twitter access token / secret
- */
-- (BOOL)twitterSessionValid;
 
 /**
  Remove old authentication information.

@@ -18,6 +18,8 @@
 #import "SocializeComposeMessageViewController.h"
 #import "SocializeFacebookAuthenticator.h"
 #import "SocializePreprocessorUtilities.h"
+#import "SocializeThirdPartyTwitter.h"
+#import "SocializeThirdPartyFacebook.h"
 
 enum {
     ActionSheetButtonTwitter,
@@ -105,6 +107,12 @@ enum {
 - (void)setUp {
     [super setUp];
     
+    [SocializeThirdPartyTwitter startMockingClass];
+    [SocializeThirdPartyFacebook startMockingClass];
+    [[[SocializeThirdPartyTwitter stub] andReturnBool:YES] available];
+    [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] available];
+    
+
     self.disableSMS = NO;
     self.disableMail = NO;
     
@@ -125,6 +133,9 @@ enum {
 - (void)tearDown {
     [super tearDown];
     
+    [SocializeThirdPartyTwitter stopMockingClassAndVerify];
+    [SocializeThirdPartyFacebook stopMockingClassAndVerify];
+
     [self.mockMessageComposerClass verify];
     [self.mockMailComposerClass verify];
     [self.mockApplication verify];

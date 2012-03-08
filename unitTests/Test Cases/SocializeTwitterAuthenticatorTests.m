@@ -14,6 +14,7 @@
 #import "_Socialize.h"
 #import "SocializeUIDisplayProxy.h"
 #import "SocializeTwitterAuthViewControllerDelegate.h"
+#import "SocializeThirdPartyTwitter.h"
 
 @implementation SocializeTwitterAuthenticatorTests
 @synthesize twitterAuthenticator = twitterAuthenticator_;
@@ -39,14 +40,25 @@
 - (void)setUp {
     [super setUp];
     
-    self.twitterAuthenticator = (SocializeTwitterAuthenticator*)self.action;
+    [SocializeThirdPartyTwitter startMockingClass];
     
-    [[NSUserDefaults standardUserDefaults] setObject:@"consumerKey" forKey:kSocializeTwitterAuthConsumerKey];
-    [[NSUserDefaults standardUserDefaults] setObject:@"consumerSecret" forKey:kSocializeTwitterAuthConsumerSecret];
+    [self stubBoolsForMockThirdParty:[SocializeThirdPartyTwitter classMock]];
+    [[[SocializeThirdPartyTwitter stub] andReturn:@"Twitter"] thirdPartyName];
+    [[[SocializeThirdPartyTwitter stub] andReturn:@"token"] accessToken];
+    [[[SocializeThirdPartyTwitter stub] andReturn:@"token"] socializeAuthToken];
+    [[[SocializeThirdPartyTwitter stub] andReturn:@"secret"] accessTokenSecret];
+    [[[SocializeThirdPartyTwitter stub] andReturn:@"secret"] socializeAuthTokenSecret];
+
+    [[[SocializeThirdPartyTwitter stub] andReturnInteger:SocializeThirdPartyAuthTypeTwitter] socializeAuthType];
+    
+    
+    self.twitterAuthenticator = (SocializeTwitterAuthenticator*)self.action;
 }
 
 - (void)tearDown {
     [super tearDown];
+    
+    [SocializeThirdPartyTwitter stopMockingClassAndVerify];
     
     self.twitterAuthenticator = nil;
 }
@@ -64,13 +76,12 @@
     return SocializeThirdPartyAuthTypeTwitter;
 }
 
-- (void)simulateInteractiveAuthConditions {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kSocializeTwitterAuthAccessToken];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kSocializeTwitterAuthAccessTokenSecret];
-}
-
 - (void)succeedInteractiveTwitterLogin {
     [[[self.mockDisplay expect] andDo2:^(id obj, SocializeTwitterAuthViewController *twitterAuth) {
+        
+        [[[SocializeThirdPartyTwitter expect] andDo0:^{
+            self.hasLocalCredentials = YES;
+        }] storeLocalCredentialsWithAccessToken:OCMOCK_ANY accessTokenSecret:OCMOCK_ANY screenName:OCMOCK_ANY userId:OCMOCK_ANY];
         
         // Credentials should now be available
         [self.twitterAuthenticator twitterAuthViewController:twitterAuth

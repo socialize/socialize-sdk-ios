@@ -38,7 +38,14 @@ static NSMutableDictionary *copiedClasses;
     return [ClassMockForwarder copiedClassForClass:(Class)self];
 }
 
-+ (void)removeAllMocks {
+/**
+ * Return the shared class mock instance
+ */
+- (id)classMock {
+    return [ClassMockForwarder classMockForClass:(Class)self];
+}
+
++ (void)stopMockingAllClasses {
     [[self classMocks] enumerateKeysAndObjectsUsingBlock:^(id key, id mock, BOOL *stop) {
         // Just in case dealocating triggers a verify
         [[mock retain] autorelease];
@@ -189,6 +196,11 @@ static NSMutableDictionary *copiedClasses;
 }
 
 + (Class)origClass {
+    [self startMockingErrorForSelector:_cmd];
+    return nil;
+}
+
++ (id)classMock {
     [self startMockingErrorForSelector:_cmd];
     return nil;
 }

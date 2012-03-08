@@ -88,7 +88,7 @@
 
 - (void)tryToFinishAuthenticating {
     // Check if auth is even possible
-    if (![self.thirdParty authenticationPossible]) {
+    if (![self.thirdParty available]) {
         [self failWithError:[self.thirdParty thirdPartyUnavailableError]];
         return;
     }
