@@ -85,9 +85,11 @@
     [Socialize storeFacebookAppId:@"115622641859087"];
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];
-    [Socialize storeTwitterAccessToken:nil];
-    [Socialize storeTwitterAccessTokenSecret:nil];
     
+//    NSString *token = [apiInfo objectForKey:@"facebookToken"];
+//    if ([token length] > 0) {
+//        [[Socialize sharedSocialize] linkToFacebookWithAccessToken:token expirationDate:[NSDate distantFuture]];
+//    }
 #else
     [Socialize storeFacebookLocalAppId:nil];
 #endif
@@ -159,7 +161,7 @@
 {
     _loadingView = [SocializeLoadingView loadingViewInView:self.view/* withMessage:@"Authenticating"*/]; 
 //   [socialize authenticateWithApiKey:_keyField.text apiSecret:_secretField.text thirdPartyAppId:@"115622641859087" thirdPartyName:FacebookAuth];
-    [socialize linkToFacebookWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"FBAccessTokenKey"]];
+    [socialize linkToFacebookWithAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"FBAccessTokenKey"] expirationDate:[NSDate distantFuture]];
 }
 
 -(IBAction)emptyCache:(id)sender{

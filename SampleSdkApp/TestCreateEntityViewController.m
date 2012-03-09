@@ -82,7 +82,7 @@
     }
 
     _loadingView = [SocializeLoadingView loadingViewInView:self.view]; 
-    [_socialize createEntityWithUrl:createEntityUrlTextField.text andName:createEntityNameTextField.text];
+    [_socialize createEntityWithKey:createEntityUrlTextField.text name:createEntityNameTextField.text];
 }
 
 -(IBAction)backgroundTouched{   
