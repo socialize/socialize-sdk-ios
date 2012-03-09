@@ -4,6 +4,18 @@
 Changelog
 =============================================
 
+v1.3.5
+------
+[bug] Fix SocializeRequest crash [ ]
+
+[bug] NSDate hexString category method has same name as apple private API [ ]
+
+[feature] Developer can silence Socialize UI error messages [ ]
+
+[feature] Errors in Socialize UI should post notification [ ]
+
+[feature] Enable search box in docs [ ]
+
 v1.3.4
 ------
 [bug] Remove all caching of device tokens [ notifications]
