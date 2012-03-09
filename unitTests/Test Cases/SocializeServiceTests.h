@@ -9,5 +9,5 @@
 #import <GHUnitIOS/GHUnit.h>
 
 @interface SocializeServiceTests : GHTestCase
-
+@property (nonatomic, retain) id mockRequest;
 @end

@@ -568,6 +568,7 @@
 		AA0186B214C6151400858AD8 /* SocializeActivityDetailsViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0186B014C6151400858AD8 /* SocializeActivityDetailsViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0186CB14C61A4A00858AD8 /* SocializeActionBarDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0186CA14C61A4A00858AD8 /* SocializeActionBarDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0186CC14C61A4A00858AD8 /* SocializeActionBarDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0186CA14C61A4A00858AD8 /* SocializeActionBarDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA01F8F6150A84C900BB2B29 /* TestSocializeService.m in Sources */ = {isa = PBXBuildFile; fileRef = AA01F8F5150A84C900BB2B29 /* TestSocializeService.m */; };
 		AA047D7914BFC1F2005560C3 /* SocializeBubbleViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047D7814BFC1F2005560C3 /* SocializeBubbleViewTests.m */; };
 		AA047D8014C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047D7F14C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m */; };
 		AA047F9914AD5AA20047D596 /* SocializeNotificationHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AA047F9714AD5AA20047D596 /* SocializeNotificationHandler.h */; };
@@ -2442,6 +2443,8 @@
 		AA0069BD14BBB57900E664F6 /* SocializeNewCommentsNotificationDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNewCommentsNotificationDisplayController.m; path = Classes/SocializeNewCommentsNotificationDisplayController.m; sourceTree = "<group>"; };
 		AA0186B014C6151400858AD8 /* SocializeActivityDetailsViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityDetailsViewControllerDelegate.h; path = Classes/SocializeActivityDetailsViewControllerDelegate.h; sourceTree = "<group>"; };
 		AA0186CA14C61A4A00858AD8 /* SocializeActionBarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActionBarDelegate.h; path = Classes/SocializeActionBarDelegate.h; sourceTree = "<group>"; };
+		AA01F8F4150A84C900BB2B29 /* TestSocializeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSocializeService.h; sourceTree = "<group>"; };
+		AA01F8F5150A84C900BB2B29 /* TestSocializeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSocializeService.m; sourceTree = "<group>"; };
 		AA047D7714BFC1F2005560C3 /* SocializeBubbleViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBubbleViewTests.h; path = "Test Cases/SocializeBubbleViewTests.h"; sourceTree = "<group>"; };
 		AA047D7814BFC1F2005560C3 /* SocializeBubbleViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBubbleViewTests.m; path = "Test Cases/SocializeBubbleViewTests.m"; sourceTree = "<group>"; };
 		AA047D7E14C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNotificationToggleBubbleContentViewTests.h; path = "Test Cases/SocializeNotificationToggleBubbleContentViewTests.h"; sourceTree = "<group>"; };
@@ -3776,6 +3779,8 @@
 				AAB127F114994A0C009AF443 /* TestSubscriptionService.m */,
 				AAC4931A149A92C5000EEA7E /* TestCommentServices.h */,
 				AAC4931B149A92C5000EEA7E /* TestCommentServices.m */,
+				AA01F8F4150A84C900BB2B29 /* TestSocializeService.h */,
+				AA01F8F5150A84C900BB2B29 /* TestSocializeService.m */,
 			);
 			path = TestCases;
 			sourceTree = "<group>";
@@ -6449,6 +6454,7 @@
 				AAB127F214994A0C009AF443 /* TestSubscriptionService.m in Sources */,
 				AAC4931C149A92C5000EEA7E /* TestCommentServices.m in Sources */,
 				AA9D780214BE191A00D76D6B /* SampleEntityLoader.m in Sources */,
+				AA01F8F6150A84C900BB2B29 /* TestSocializeService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
