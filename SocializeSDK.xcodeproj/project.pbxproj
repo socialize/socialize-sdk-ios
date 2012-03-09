@@ -569,6 +569,9 @@
 		AA0186CB14C61A4A00858AD8 /* SocializeActionBarDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0186CA14C61A4A00858AD8 /* SocializeActionBarDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0186CC14C61A4A00858AD8 /* SocializeActionBarDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0186CA14C61A4A00858AD8 /* SocializeActionBarDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA01F8F6150A84C900BB2B29 /* TestSocializeService.m in Sources */ = {isa = PBXBuildFile; fileRef = AA01F8F5150A84C900BB2B29 /* TestSocializeService.m */; };
+		AA03D183150A9D8C00E7BFA3 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE86B14355F1B00851C73 /* DataHelper.m */; };
+		AA03D1AC150A9E3C00E7BFA3 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE86B14355F1B00851C73 /* DataHelper.m */; };
+		AA03D1AD150A9E3D00E7BFA3 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE86B14355F1B00851C73 /* DataHelper.m */; };
 		AA047D7914BFC1F2005560C3 /* SocializeBubbleViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047D7814BFC1F2005560C3 /* SocializeBubbleViewTests.m */; };
 		AA047D8014C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047D7F14C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.m */; };
 		AA047F9914AD5AA20047D596 /* SocializeNotificationHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AA047F9714AD5AA20047D596 /* SocializeNotificationHandler.h */; };
@@ -6317,6 +6320,7 @@
 				AAB427FA14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */,
 				AAE930D914CA094F007CEB50 /* SocializeHorizontalContainerView.m in Sources */,
 				AA73815A14EAD69700C8AE25 /* SocializeDeviceTokenSender.m in Sources */,
+				AA03D1AC150A9E3C00E7BFA3 /* DataHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6455,6 +6459,7 @@
 				AAC4931C149A92C5000EEA7E /* TestCommentServices.m in Sources */,
 				AA9D780214BE191A00D76D6B /* SampleEntityLoader.m in Sources */,
 				AA01F8F6150A84C900BB2B29 /* TestSocializeService.m in Sources */,
+				AA03D183150A9D8C00E7BFA3 /* DataHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6655,6 +6660,7 @@
 				AAE930DA14CA094F007CEB50 /* SocializeHorizontalContainerView.m in Sources */,
 				AAEFDE3214CDFD8900764633 /* UIView+Layout.m in Sources */,
 				AA73815B14EAD69700C8AE25 /* SocializeDeviceTokenSender.m in Sources */,
+				AA03D1AD150A9E3D00E7BFA3 /* DataHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

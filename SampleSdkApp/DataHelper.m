@@ -30,7 +30,7 @@
 
 @implementation NSData (helper)
 
-- (NSString*)hexString {
+- (NSString*)socializeHexString {
 	NSMutableString *str = [NSMutableString stringWithCapacity:64];
 	int length = [self length];
 	char *bytes = malloc(sizeof(char) * length);

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		16D2DEF6145546370034A6C8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D2DEF5145546370034A6C8 /* MessageUI.framework */; };
 		16D2DEF7145546410034A6C8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D2DEF5145546370034A6C8 /* MessageUI.framework */; };
+		AA03D197150A9DDE00E7BFA3 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA6144A24BF00660E26 /* DataHelper.m */; };
 		AA2025B1144CB249006C1F8F /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8636D4144CA0DB00CFA759 /* libKIF.a */; };
 		AA2025B2144CB263006C1F8F /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8636D4144CA0DB00CFA759 /* libKIF.a */; };
 		AA2DA2421435437400C62B97 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DA2241435420300C62B97 /* MapKit.framework */; };
@@ -2410,6 +2411,7 @@
 				AA5D75331469CC8F0046AF8B /* TestFacebookInterface.m in Sources */,
 				AAB128D014998640009AF443 /* TestSubscriptionService.m in Sources */,
 				AAC49332149A9D12000EEA7E /* TestCommentServices.m in Sources */,
+				AA03D197150A9DDE00E7BFA3 /* DataHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

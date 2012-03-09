@@ -30,6 +30,6 @@
 
 @interface NSData (helper)
 
-- (NSString*)hexString;
+- (NSString*)socializeHexString;
 
 @end
