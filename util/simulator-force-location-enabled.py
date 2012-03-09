@@ -5,7 +5,7 @@ from plutil import *
 import os
 import subprocess
 
-LOCATIOND_FILENAME="%(HOME)s/Library/Application Support/iPhone Simulator/5.0/Library/Caches/locationd/clients.plist" % os.environ
+LOCATIOND_FILENAME="%(HOME)s/Library/Application Support/iPhone Simulator/5.1/Library/Caches/locationd/clients.plist" % os.environ
 
 if __name__ == '__main__':
   if len(sys.argv) < 2:
