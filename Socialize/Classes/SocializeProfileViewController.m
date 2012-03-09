@@ -264,11 +264,6 @@
     [super viewWillAppear:animated];
 }
 
--(void)service:(SocializeService*)service didFail:(NSError*)error
-{
-    [super service:service didFail:error];
-}
-
 - (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser {
     self.fullUser = fullUser;
     [self configureViews];

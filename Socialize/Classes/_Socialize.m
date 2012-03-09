@@ -55,11 +55,16 @@ NSString *const kSocializeConsumerKey = @"kSocializeConsumerKey";
 NSString *const kSocializeConsumerSecret = @"kSocializeConsumerSecret";
 
 NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAuthenticatedUserDidChangeNotification";
+
 NSString *const SocializeCLAuthorizationStatusDidChangeNotification = @"SocializeLocationManagerAuthorizationStatusDidChangeNotification";
 NSString *const kSocializeCLAuthorizationStatusKey = @"kSocializeCLAuthorizationStatusKey";
 NSString *const kSocializeShouldShareLocationKey = @"kSocializeShouldShareLocationKey";
 
+NSString *const SocializeUIControllerDidFailWithErrorNotification = @"SocializeUIControllerDidFailWithErrorNotification";
+NSString *const SocializeUIControllerErrorUserInfoKey = @"SocializeUIControllerErrorUserInfoKey";
+
 NSString *const kSocializeDeviceTokenKey  = @"kSocializeDeviceTokenKey";
+NSString *const kSocializeUIErrorAlertsDisabled = @"kSocializeUIErrorAlertsDisabled";
 
 NSString *const kSocializeTwitterAuthConsumerKey = @"kSocializeTwitterAuthConsumerKey";
 NSString *const kSocializeTwitterAuthConsumerSecret = @"kSocializeTwitterAuthConsumerSecret";
@@ -221,6 +226,12 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
 
 + (BOOL)disableBranding {
     return [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDisableBrandingKey] boolValue];
+}
+
++(void)storeUIErrorAlertsDisabled:(BOOL)disabled {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:disabled] forKey:kSocializeUIErrorAlertsDisabled];
+    [defaults synchronize];
 }
 
 +(NSString*) apiKey

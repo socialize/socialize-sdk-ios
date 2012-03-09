@@ -64,3 +64,7 @@ extern NSString *const kSocializeFacebookStringForAPI;
 #define SOCIALIZE_FACEBOOK_LOCAL_APP_ID @"socialize_facebook_local_app_id"
 #define SOCIALIZE_FACEBOOK_APP_ID @"socialize_facebook_app_id"
 #define SOCIALIZE_APPLICATION_LINK @"socialize_app_link"
+extern NSString *const SocializeUIControllerDidFailWithErrorNotification;
+extern NSString *const SocializeUIControllerErrorUserInfoKey;
+
+extern NSString *const kSocializeUIErrorAlertsDisabled;

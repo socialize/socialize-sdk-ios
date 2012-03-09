@@ -132,9 +132,6 @@ _html_static_path = ['_static']
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-html_sidebars = {
-	'**': ['globaltoc.html']
-}
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
 #html_last_updated_fmt = '%b %d, %Y'
@@ -145,7 +142,7 @@ html_sidebars = {
 
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
-   '**': ['globaltoc.html']
+   '**': ['globaltoc.html', 'searchbox.html']
 }
 # Additional templates that should be rendered to pages, maps page names to
 # template names.

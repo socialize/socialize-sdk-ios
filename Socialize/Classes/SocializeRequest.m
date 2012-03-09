@@ -32,6 +32,8 @@ static const int kGeneralErrorCode = 10000;
 
 
 @interface SocializeRequest()
+@property (nonatomic, assign) BOOL cancelled;
+
     -(void)failWithError:(NSError *)error;
     -(void)handleResponseData:(NSData *)data;
     -(void)produceHTMLOutput:(NSString*)outputString;
@@ -60,6 +62,7 @@ baseURL = _baseURL,
 secureBaseURL = _secureBaseURL,
 running = _running,
 tokenRequest = _tokenRequest;
+@synthesize cancelled = cancelled_;
 
 + (NSString *)userAgentString
 {   
@@ -339,11 +342,18 @@ tokenRequest = _tokenRequest;
     // Because of this, we prepare the request in the background, then begin 
     // execution on the main thread
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if (self.cancelled) {
+            return;
+        }
+        
         [self configureURLRequest];
         
         // Begin request on the main thread, because NSURLConnection calls its delegate on the
         // thread it was started from
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.cancelled) {
+                return;
+            }
             NSString *body = [[[NSString alloc] initWithData:[self.request HTTPBody] encoding:NSASCIIStringEncoding] autorelease];
             NSString *urlString = [[self.request URL] absoluteString];
             SDebugLog(2, @"----- Sending Request -----");
@@ -379,6 +389,11 @@ tokenRequest = _tokenRequest;
     [_httpMethod release]; _httpMethod = nil;
     [_params release]; _params = nil;
     [super dealloc];
+}
+
+- (void)cancel {
+    self.cancelled = YES;
+    [_dataFetcher cancel];
 }
 
 - (void)scheduleRelease {

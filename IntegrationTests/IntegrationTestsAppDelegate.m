@@ -18,7 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Socialize storeSocializeApiKey:@"976421bd-0bc9-44c8-a170-bd12376123a3" andSecret:@"2bf36ced-b9ab-4c5b-b054-8ca975d39c14"];
+    [Socialize storeConsumerKey:@"976421bd-0bc9-44c8-a170-bd12376123a3"];
+    [Socialize storeConsumerSecret:@"2bf36ced-b9ab-4c5b-b054-8ca975d39c14"];
+//    [Socialize storeSocializeApiKey:@"976421bd-0bc9-44c8-a170-bd12376123a3" andSecret:@"2bf36ced-b9ab-4c5b-b054-8ca975d39c14"];
     [super applicationDidFinishLaunching:application];
     /*
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];

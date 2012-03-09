@@ -39,6 +39,7 @@
 @implementation SocializeService
 
 @synthesize delegate = _delegate;
+@synthesize outstandingRequests = outstandingRequests_;
 
 -(Protocol *)ProtocolType
 {
@@ -48,6 +49,12 @@
 {   
     _objectCreator = nil;
     self.delegate = nil;
+    
+    for (SocializeRequest *request in outstandingRequests_) {
+        [request setDelegate:nil];
+        [request cancel];
+    }
+    self.outstandingRequests = nil;
     [super dealloc];
 }
 
@@ -65,15 +72,32 @@
     return self;
 }
 
+- (NSMutableSet*)outstandingRequests {
+    if (outstandingRequests_ == nil) {
+        outstandingRequests_ = [[NSMutableSet alloc] init];
+    }
+    
+    return outstandingRequests_;
+}
+
 - (void)executeRequest:(SocializeRequest*)request {
     [self retainDelegate];
+    [self.outstandingRequests addObject:request];
     request.delegate = self;
     [request connect];
+}
+
+- (void)removeRequest:(SocializeRequest*)request {
+    if ([self.outstandingRequests containsObject:request]) {
+        [self.outstandingRequests removeObject:request];
+    }    
 }
 
 #pragma mark - Socialize request delegate
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error {
      //[self doDidFailWithError:error];
+    [self removeRequest:request];
+    
     if([self.delegate respondsToSelector:@selector(service:didFail:)])
         [self.delegate service:self didFail:error];    
     
@@ -227,6 +251,7 @@
 
 - (void)request:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
 {
+    [self removeRequest:request];
     [self dispatch:request didLoadRawResponse:data];
     [self freeDelegate];
 }

@@ -262,19 +262,40 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [self.navigationController.navigationBar resetBackground];
 }
 
+- (BOOL)dontShowErrors {
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeUIErrorAlertsDisabled] boolValue];
+}
+
+- (void)postErrorNotificationForError:(NSError*)error {
+    NSDictionary *userInfo = nil;
+    if (error != nil) {
+        userInfo = [NSDictionary dictionaryWithObject:error forKey:SocializeUIControllerErrorUserInfoKey];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:SocializeUIControllerDidFailWithErrorNotification
+                                                        object:self
+                                                      userInfo:userInfo];
+}
+
 - (void)failWithError:(NSError*)error {
+    [self postErrorNotificationForError:error];
+    
     if ([[error domain] isEqualToString:SocializeErrorDomain] && [error code] == SocializeErrorServerReturnedHTTPError) {
         NSHTTPURLResponse *response = [[error userInfo] objectForKey:kSocializeErrorNSHTTPURLResponseKey];
         if ([response statusCode] == 401) {
             [self.socialize removeSocializeAuthenticationInfo];
         }
     }
+
+    if (![self dontShowErrors]) {
+        [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
+    }
     
-    [self stopLoadAnimation];
-    [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
 }
 
--(void)service:(SocializeService *)service didFail:(NSError *)error {
+-(void)service:(SocializeService *)service didFail:(NSError *)error
+{
+    [self stopLoadAnimation];
+    
     [self failWithError:error];
 }
 

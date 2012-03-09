@@ -242,7 +242,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     else
     {   
         [self stopLoadAnimation];
-        [self showAlertWithText:[error localizedDescription] andTitle:@"Post comment"];  
+        
+        [self failWithError:error];
     }
 }
 

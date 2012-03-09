@@ -17,6 +17,7 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeFacebookAuthenticator.h"
+#import "_Socialize.h"
 
 @implementation SocializeBaseViewControllerTests
 @synthesize viewController = viewController_;
@@ -103,7 +104,9 @@
     
     self.mockProfileEditViewController = [OCMockObject mockForClass:[SocializeProfileEditViewController class]];
     [[self.mockProfileEditViewController stub] setDelegate:nil];
-    self.viewController.profileEditViewController = self.mockProfileEditViewController;  
+    self.viewController.profileEditViewController = self.mockProfileEditViewController;
+    
+    [Socialize storeUIErrorAlertsDisabled:NO];
 }
 
 -(void) tearDown
@@ -357,13 +360,28 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     [[(id)self.viewController expect] showAlertWithText:OCMOCK_ANY andTitle:OCMOCK_ANY];
 }
 
+- (id)observerMockForNotificationName:(NSString*)name object:(id)object userInfo:(NSDictionary*)userInfo {
+    id observer = [OCMockObject observerMock];
+    [[NSNotificationCenter defaultCenter] addMockObserver:observer name:name object:object];
+    [[observer expect] notificationWithName:name object:object userInfo:userInfo];
+    return observer;
+}
+
+- (id)observerMockForUIError:(NSError*)error {
+    NSDictionary *errorInfo = [NSDictionary dictionaryWithObject:error forKey:SocializeUIControllerErrorUserInfoKey];
+    return [self observerMockForNotificationName:SocializeUIControllerDidFailWithErrorNotification object:self.origViewController userInfo:errorInfo];
+}
+
 - (void)testServiceFailureShowsAnAlert {
-    NSString *testDescription = @"testDescription";
     id mockError = [OCMockObject mockForClass:[NSError class]];
+    id observer = [self observerMockForUIError:mockError];
+    NSString *testDescription = @"testDescription";
     [[[mockError stub] andReturn:testDescription] localizedDescription];
     [[mockError stub] domain];
     [self expectServiceFailure];
     [self.viewController service:nil didFail:mockError];
+    
+    [observer verify];
 }
 
 - (void)testServiceAuthenticationFailureRemovesSocializeAuthenticationInfo {
@@ -383,6 +401,15 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     [self expectServiceFailure];
     
     [self.viewController service:nil didFail:mockError];
+}
+
+- (void)testServiceFailureDoesNotShowAlertIfAlertsSilenced {
+    id mockError = [OCMockObject niceMockForClass:[NSError class]];
+
+    id observer = [self observerMockForUIError:mockError];
+    [Socialize storeUIErrorAlertsDisabled:YES];
+    [self.viewController service:nil didFail:mockError];
+    [observer verify];
 }
 
 - (void)testBackgroundResetsOnShow {

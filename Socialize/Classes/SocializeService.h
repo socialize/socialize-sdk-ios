@@ -40,6 +40,7 @@
 }
 @property (nonatomic, readonly) Protocol * ProtocolType;
 @property (nonatomic, assign) id<SocializeServiceDelegate> delegate;
+@property (nonatomic, retain) NSMutableSet *outstandingRequests;
 
 -(id) initWithObjectFactory: (SocializeObjectFactory*) objectFactory delegate:(id<SocializeServiceDelegate>) delegate;
 

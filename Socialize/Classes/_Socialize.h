@@ -207,6 +207,8 @@ otherwise you will get a failure.
  */
 +(void)removeApplicationLink __attribute__((deprecated));
 
++(void)storeUIErrorAlertsDisabled:(BOOL)disabled;
+
 /**
  Some aspects of Socialize, such as Facebook wall posts, include information about Socialize. If you do not
  wish to have this 

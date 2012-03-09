@@ -59,4 +59,6 @@
     #import "TestUtils.h"
     #import "StringHelper.h"
 #import "NSObject+ClassMock.h"
+#import <OCMock/OCMock.h>
+
 #endif
