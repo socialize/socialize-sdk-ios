@@ -69,7 +69,15 @@
     
 //    [Socialize setEntityLoaderBlock:nil];
     
+    [Socialize storeUIErrorAlertsDisabled:NO];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errorNotification:) name:SocializeUIControllerDidFailWithErrorNotification object:nil];
+    
     return YES;
+}
+
+- (void)errorNotification:(NSNotification*)notification {
+    NSError *error = [[notification userInfo] objectForKey:SocializeUIControllerErrorUserInfoKey];
+    NSLog(@"Error: %@", [error localizedDescription]);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

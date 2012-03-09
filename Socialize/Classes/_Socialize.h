@@ -177,6 +177,8 @@ otherwise you will get a failure.
  */
 +(void)removeApplicationLink __attribute__((deprecated));
 
++(void)storeUIErrorAlertsDisabled:(BOOL)disabled;
+
 /**
  Provide access to the Socialize API key.
  

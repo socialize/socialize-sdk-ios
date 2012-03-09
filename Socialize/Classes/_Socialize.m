@@ -33,7 +33,11 @@
 #define SOCIALIZE_APPLICATION_LINK @"socialize_app_link"
 
 NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAuthenticatedUserDidChangeNotification";
+NSString *const SocializeUIControllerDidFailWithErrorNotification = @"SocializeUIControllerDidFailWithErrorNotification";
+NSString *const SocializeUIControllerErrorUserInfoKey = @"SocializeUIControllerErrorUserInfoKey";
+
 NSString *const kSocializeDeviceTokenKey  = @"kSocializeDeviceTokenKey";
+NSString *const kSocializeUIErrorAlertsDisabled = @"kSocializeUIErrorAlertsDisabled";
 
 @implementation Socialize
 
@@ -154,6 +158,12 @@ static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 +(void)removeApplicationLink{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:SOCIALIZE_APPLICATION_LINK];
+    [defaults synchronize];
+}
+
++(void)storeUIErrorAlertsDisabled:(BOOL)disabled {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:disabled] forKey:kSocializeUIErrorAlertsDisabled];
     [defaults synchronize];
 }
 

@@ -32,3 +32,7 @@ typedef enum {
 } SocializeActivityType;
 
 extern NSString *const SocializeAuthenticatedUserDidChangeNotification;
+extern NSString *const SocializeUIControllerDidFailWithErrorNotification;
+extern NSString *const SocializeUIControllerErrorUserInfoKey;
+
+extern NSString *const kSocializeUIErrorAlertsDisabled;

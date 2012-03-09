@@ -11,6 +11,7 @@
 #import "UINavigationBarBackground.h"
 #import "SocializeBaseViewControllerDelegate.h"
 #import "SocializeProfileEditViewController.h"
+#import "_Socialize.h"
 
 @implementation SocializeBaseViewControllerTests
 @synthesize viewController = viewController_;
@@ -98,6 +99,8 @@
     self.mockProfileEditViewController = [OCMockObject mockForClass:[SocializeProfileEditViewController class]];
     [[self.mockProfileEditViewController stub] setDelegate:nil];
     self.viewController.profileEditViewController = self.mockProfileEditViewController;
+    
+    [Socialize storeUIErrorAlertsDisabled:NO];
 }
 
 -(void) tearDown
@@ -351,12 +354,35 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     [[(id)self.viewController expect] showAlertWithText:[error localizedDescription] andTitle:OCMOCK_ANY];
 }
 
+- (id)observerMockForNotificationName:(NSString*)name object:(id)object userInfo:(NSDictionary*)userInfo {
+    id observer = [OCMockObject observerMock];
+    [[NSNotificationCenter defaultCenter] addMockObserver:observer name:name object:object];
+    [[observer expect] notificationWithName:name object:object userInfo:userInfo];
+    return observer;
+}
+
+- (id)observerMockForUIError:(NSError*)error {
+    NSDictionary *errorInfo = [NSDictionary dictionaryWithObject:error forKey:SocializeUIControllerErrorUserInfoKey];
+    return [self observerMockForNotificationName:SocializeUIControllerDidFailWithErrorNotification object:self.origViewController userInfo:errorInfo];
+}
+
 - (void)testServiceFailureShowsAnAlert {
-    NSString *testDescription = @"testDescription";
     id mockError = [OCMockObject mockForClass:[NSError class]];
+    id observer = [self observerMockForUIError:mockError];
+    NSString *testDescription = @"testDescription";
     [[[mockError stub] andReturn:testDescription] localizedDescription];
     [self expectServiceFailureWithError:mockError];
     [self.viewController service:nil didFail:mockError];
+    [observer verify];
+}
+
+- (void)testServiceFailureDoesNotShowAlertIfAlertsSilenced {
+    id mockError = [OCMockObject mockForClass:[NSError class]];
+
+    id observer = [self observerMockForUIError:mockError];
+    [Socialize storeUIErrorAlertsDisabled:YES];
+    [self.viewController service:nil didFail:mockError];
+    [observer verify];
 }
 
 - (void)testBackgroundResetsOnShow {
