@@ -335,10 +335,10 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
 
 - (void)postToFacebookWall {
     SocializeFacebookWallPostOptions *options = [[[SocializeFacebookWallPostOptions alloc] init] autorelease];
-    options.link = [Socialize applicationURL];
+    options.link = [NSString stringWithSocializeURLForApplication];
     options.caption = NSLocalizedString(@"Download the app now to join the conversation.", @"");
     options.name = [self entityNameOrKey];
-    NSString *objectURL = [Socialize objectURL:self.shareObject.entity];
+    NSString *objectURL = [NSString stringWithSocializeURLForObject:self.shareObject.entity];
     
     NSMutableString* message = [NSMutableString stringWithFormat:@"%@:\n%@", self.shareObject.text, objectURL];
     [message appendFormat:@"\n\n Shared from %@ using Socialize for iOS. \n http://www.getsocialize.com/", self.shareObject.application.name];

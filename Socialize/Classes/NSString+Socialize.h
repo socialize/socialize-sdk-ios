@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol SocializeObject;
+
 @interface NSString (Socialize)
 +(NSString *) stringWithHumanReadableIntegerAndSuffixSinceDate:(NSDate *)date;
+
++ (NSString*)socializeRedirectURL:(NSString*)path;
++ (NSString*)stringWithSocializeURLForObject:(id<SocializeObject>)object;
++ (NSString*)stringWithSocializeURLForApplication;
+
 @end

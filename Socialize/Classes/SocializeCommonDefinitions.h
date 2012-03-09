@@ -34,6 +34,9 @@ typedef enum {
     SocializeAllActivity
 } SocializeActivityType;
 
+extern NSString *const kSocializeConsumerKey;
+extern NSString *const kSocializeConsumerSecret;
+
 // Notifications
 extern NSString *const SocializeAuthenticatedUserDidChangeNotification;
 extern NSString *const SocializeCLAuthorizationStatusDidChangeNotification;

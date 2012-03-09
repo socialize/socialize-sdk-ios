@@ -85,7 +85,7 @@
     NSAssert(self.shareObject != nil, @"Share Object cannot be nil");
     NSAssert(self.shareProtocol != nil, @"Share Protocol cannot  be nil");
     
-    NSString *applicationURL = [Socialize applicationURL];
+    NSString *applicationURL = [NSString stringWithSocializeURLForApplication];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
               applicationURL, @"link",
@@ -118,7 +118,7 @@
 -(void)prepareForEntityShare: (NSMutableDictionary*) params
 {
     id<SocializeShare> share = (id<SocializeShare>)self.shareObject;
-    NSString *objectURL = [Socialize objectURL:self.shareObject.entity];
+    NSString *objectURL = [NSString stringWithSocializeURLForObject:self.shareObject.entity];
     NSMutableString* message = [NSMutableString stringWithFormat:@"%@: \n %@", share.text, objectURL];
                                 
     if (![Socialize disableBranding]) {
@@ -130,7 +130,7 @@
 -(void)prepareForCommentShare: (NSMutableDictionary*) params
 {
     id<SocializeComment> comment = (id<SocializeComment>)self.shareObject;
-    NSString *objectURL = [Socialize objectURL:self.shareObject.entity];
+    NSString *objectURL = [NSString stringWithSocializeURLForObject:self.shareObject.entity];
     NSMutableString* message = [NSMutableString stringWithFormat:@"%@ \n\n %@", objectURL, comment.text];
     
     if (![Socialize disableBranding]) {
@@ -142,7 +142,7 @@
 -(void)prepareForLikeShare: (NSMutableDictionary*) params
 {
     id<SocializeLike> like = (id<SocializeLike>)self.shareObject;
-    NSString *objectURL = [Socialize objectURL:self.shareObject.entity];
+    NSString *objectURL = [NSString stringWithSocializeURLForObject:self.shareObject.entity];
     NSMutableString* message = [NSMutableString stringWithFormat:@"Liked %@", objectURL];
                          
     if (![Socialize disableBranding]) {

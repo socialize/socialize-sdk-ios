@@ -733,10 +733,6 @@ otherwise you will get a failure.
  */
 - (void)getSubscriptionsForEntityKey:(NSString*)entityKey first:(NSNumber*)first last:(NSNumber*)last;
 
-+ (NSString*)objectURL:(id<SocializeObject>)object;
-
-+ (NSString*)applicationURL;
-
 - (BOOL)notificationsAreConfigured;
 
 +(id)sharedSocialize;

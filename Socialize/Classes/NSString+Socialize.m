@@ -7,6 +7,9 @@
 //
 
 #import "NSString+Socialize.h"
+#import "SocializeConfiguration.h"
+#import "SocializeObject.h"
+#import "SocializeCommonDefinitions.h"
 
 @implementation NSString (Socialize)
 
@@ -31,5 +34,25 @@
 	
 	return [NSString stringWithFormat:@"%i%@",integer, suffix];
 }
+
++ (NSString*)socializeRedirectURL:(NSString*)path {
+    NSString *redirectBaseURL = [[SocializeConfiguration sharedConfiguration] redirectBaseURL];
+    NSString *url = [redirectBaseURL stringByAppendingString:path];
+    return url;
+}
+
++ (NSString*)stringWithSocializeURLForObject:(id<SocializeObject>)object {
+    NSString *suffix = [NSString stringWithFormat:@"e/%d", object.objectID];
+    NSString *url = [self socializeRedirectURL:suffix];
+    return url;
+}
+
++ (NSString*)stringWithSocializeURLForApplication {
+    NSString *apiKey = [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeConsumerKey];
+    NSString *suffix = [NSString stringWithFormat:@"a/%@", apiKey];
+    NSString *url = [self socializeRedirectURL:suffix];
+    return url;
+}
+
 
 @end

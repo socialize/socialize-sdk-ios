@@ -51,6 +51,9 @@ SYNTH_DEFAULTS_GETTER(TYPE, LOWERNAME, STORE_KEY)
 
 NSString *const kSocializeDisableBrandingKey = @"kSocializeDisableBrandingKey";
 
+NSString *const kSocializeConsumerKey = @"kSocializeConsumerKey";
+NSString *const kSocializeConsumerSecret = @"kSocializeConsumerSecret";
+
 NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAuthenticatedUserDidChangeNotification";
 NSString *const SocializeCLAuthorizationStatusDidChangeNotification = @"SocializeLocationManagerAuthorizationStatusDidChangeNotification";
 NSString *const kSocializeCLAuthorizationStatusKey = @"kSocializeCLAuthorizationStatusKey";
@@ -575,25 +578,6 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
 
 - (void)getSubscriptionsForEntityKey:(NSString*)entityKey first:(NSNumber*)first last:(NSNumber*)last {
     [_subscriptionService getSubscriptionsForEntityKey:entityKey first:first last:last];
-}
-
-+ (NSString*)socializeRedirectURL:(NSString*)path {
-    NSString *redirectBaseURL = [[SocializeConfiguration sharedConfiguration] redirectBaseURL];
-    NSString *url = [redirectBaseURL stringByAppendingString:path];
-    return url;
-}
-
-+ (NSString*)objectURL:(id<SocializeObject>)object {
-    NSString *suffix = [NSString stringWithFormat:@"e/%d", object.objectID];
-    NSString *url = [self socializeRedirectURL:suffix];
-    return url;
-}
-
-+ (NSString*)applicationURL {
-    NSString *apiKey = [[NSUserDefaults standardUserDefaults] objectForKey:SOCIALIZE_API_KEY];
-    NSString *suffix = [NSString stringWithFormat:@"a/%@", apiKey];
-    NSString *url = [self socializeRedirectURL:suffix];
-    return url;
 }
 
 - (BOOL)notificationsAreConfigured {
