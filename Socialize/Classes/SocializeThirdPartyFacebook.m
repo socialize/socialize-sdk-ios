@@ -87,7 +87,7 @@
     return @"Facebook";
 }
 
-+ (BOOL)isAuthenticated {
++ (BOOL)isLinkedToSocialize {
     return [self hasLocalCredentials] && [[Socialize sharedSocialize] isAuthenticatedWithAuthType:kSocializeFacebookStringForAPI];
 }
 

@@ -179,24 +179,16 @@
 
 }
 
-- (void)authenticateViaTwitterAccessToken:(NSString*)twitterAccessToken
-                  twitterAccessTokenSecret:(NSString*)twitterAccessTokenSecret {
-
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret {
     [self authenticateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeTwitter
                          thirdPartyAuthToken:twitterAccessToken
                    thirdPartyAuthTokenSecret:twitterAccessTokenSecret];
 }
 
-- (void)authenticateViaTwitterUsingStoredCredentials {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *accessToken = [defaults objectForKey:kSocializeTwitterAuthAccessToken];
-    NSString *accessTokenSecret = [defaults objectForKey:kSocializeTwitterAuthAccessTokenSecret];
-    
-    [self authenticateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeTwitter
-                         thirdPartyAuthToken:accessToken
-                   thirdPartyAuthTokenSecret:accessTokenSecret];
-
-//    [self associateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeTwitter token:accessToken tokenSecret:accessTokenSecret];
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken {
+    [self authenticateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeFacebook
+                         thirdPartyAuthToken:facebookAccessToken
+                   thirdPartyAuthTokenSecret:nil];
 }
 
 /**

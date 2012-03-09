@@ -262,17 +262,20 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [self.navigationController.navigationBar resetBackground];
 }
 
--(void)service:(SocializeService *)service didFail:(NSError *)error
-{
+- (void)failWithError:(NSError*)error {
     if ([[error domain] isEqualToString:SocializeErrorDomain] && [error code] == SocializeErrorServerReturnedHTTPError) {
         NSHTTPURLResponse *response = [[error userInfo] objectForKey:kSocializeErrorNSHTTPURLResponseKey];
         if ([response statusCode] == 401) {
             [self.socialize removeSocializeAuthenticationInfo];
         }
     }
-
+    
     [self stopLoadAnimation];
     [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
+}
+
+-(void)service:(SocializeService *)service didFail:(NSError *)error {
+    [self failWithError:error];
 }
 
 -(void)afterLoginAction:(BOOL)userChanged
@@ -303,7 +306,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
         return;
     }
     
-    if (![SocializeThirdPartyFacebook isAuthenticated]) {
+    if (![SocializeThirdPartyFacebook isLinkedToSocialize]) {
         [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:nil
                                                                    display:self
                                                                    success:^{

@@ -72,8 +72,8 @@
     self.twitterAuthViewController = [[[SocializeTwitterAuthViewController alloc] init] autorelease];
     self.twitterAuthViewController.delegate = self;
     
-    self.twitterAuthViewController.consumerKey = [(Class)self.thirdParty accessToken];
-    self.twitterAuthViewController.consumerSecret = [(Class)self.thirdParty accessTokenSecret];
+    self.twitterAuthViewController.consumerKey = [SocializeThirdPartyTwitter consumerKey];
+    self.twitterAuthViewController.consumerSecret = [SocializeThirdPartyTwitter consumerSecret];
     UINavigationController *nav = [self.twitterAuthViewController wrappingSocializeNavigationController];
     [self.displayProxy presentModalViewController:nav];
 }
@@ -85,9 +85,7 @@
                            userID:(NSString *)userID {
 
     [SocializeThirdPartyTwitter storeLocalCredentialsWithAccessToken:accessToken
-                                               accessTokenSecret:accessTokenSecret
-                                                      screenName:screenName
-                                                          userId:userID];
+                                                   accessTokenSecret:accessTokenSecret];
 }
 
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
@@ -102,7 +100,7 @@
     /* The SocializeTwitterAuthViewController flow was completed successfully */
     [self.displayProxy dismissModalViewController:self.twitterAuthViewController];
 
-    [self tryToFinishAuthenticating];
+    [self succeedInteractiveLogin];
 }
 
 @end

@@ -122,8 +122,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     self.navigationItem.rightBarButtonItem = self.saveButton;
     [self changeTitleOnCustomBarButton:self.saveButton toText:@"Done"];
 
-    self.showTwitterLogout = [SocializeThirdPartyTwitter isAuthenticated];
-    self.showFacebookLogout = [SocializeThirdPartyFacebook isAuthenticated];
+    self.showTwitterLogout = [SocializeThirdPartyTwitter isLinkedToSocialize];
+    self.showFacebookLogout = [SocializeThirdPartyFacebook isLinkedToSocialize];
 }
 
 - (void)viewDidUnload
@@ -379,7 +379,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     if (facebookSwitch_ == nil) {
         facebookSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
         
-        if ([SocializeThirdPartyFacebook isAuthenticated]) {
+        if ([SocializeThirdPartyFacebook isLinkedToSocialize]) {
             facebookSwitch_.on = ![[self.userDefaults objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
         } else {
             facebookSwitch_.on = NO;
@@ -394,7 +394,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     [self.userDefaults setObject:dontPostToFacebook forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
     [self.userDefaults synchronize];
     
-    if ([facebookSwitch isOn] && ![SocializeThirdPartyFacebook isAuthenticated]) {
+    if ([facebookSwitch isOn] && ![SocializeThirdPartyFacebook isLinkedToSocialize]) {
         [self authenticateViaFacebook];
     }
 
@@ -404,7 +404,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     if (twitterSwitch_ == nil) {
         twitterSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
         
-        if ([SocializeThirdPartyTwitter isAuthenticated]) {
+        if ([SocializeThirdPartyTwitter isLinkedToSocialize]) {
             twitterSwitch_.on = ![[self.userDefaults objectForKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY] boolValue];
         } else {
             twitterSwitch_.on = NO;
@@ -420,7 +420,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     [self.userDefaults setObject:dontPostToTwitter forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
     [self.userDefaults synchronize];
     
-    if ([twitterSwitch isOn] && ![SocializeThirdPartyTwitter isAuthenticated]) {
+    if ([twitterSwitch isOn] && ![SocializeThirdPartyTwitter isLinkedToSocialize]) {
         [self authenticateViaTwitter];
     }
 }
@@ -695,7 +695,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         return;
     }
     
-    if ([SocializeThirdPartyFacebook isAuthenticated] && !self.showFacebookLogout) {
+    if ([SocializeThirdPartyFacebook isLinkedToSocialize] && !self.showFacebookLogout) {
 
         // Logout button should be shown but isn't. Animate it into view
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerFacebookRowLogout inSection:[self facebookSection]];        
@@ -703,7 +703,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         self.showFacebookLogout = YES;
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
         [self.tableView endUpdates];
-    } else if (![SocializeThirdPartyFacebook isAuthenticated] && self.showFacebookLogout) {
+    } else if (![SocializeThirdPartyFacebook isLinkedToSocialize] && self.showFacebookLogout) {
         
         // Logout button shown but shouldn't be. Animate it out of view
         [self.tableView beginUpdates];
@@ -713,7 +713,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
     }
     
-    if (![SocializeThirdPartyFacebook isAuthenticated]) {
+    if (![SocializeThirdPartyFacebook isLinkedToSocialize]) {
         // Force switch to off
         if ([self.facebookSwitch isOn]) {
             [self.facebookSwitch setOn:NO animated:YES];
@@ -726,7 +726,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         return;
     }
 
-    if ([SocializeThirdPartyTwitter isAuthenticated] && !self.showTwitterLogout) {
+    if ([SocializeThirdPartyTwitter isLinkedToSocialize] && !self.showTwitterLogout) {
 
         // Logout button should be shown but isn't. Animate it into view
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerTwitterRowLogout inSection:[self twitterSection]];
@@ -739,7 +739,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         // Since twitter logout is currently the last row, it feels awkward if we don't scroll
         [self scrollToTwitterLogoutRow];
 
-    } else if (![SocializeThirdPartyTwitter isAuthenticated] && self.showTwitterLogout) {
+    } else if (![SocializeThirdPartyTwitter isLinkedToSocialize] && self.showTwitterLogout) {
         
         // Logout button shown but shouldn't be. Animate it out of view
         [self.tableView beginUpdates];
@@ -749,7 +749,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
     }
     
-    if (![SocializeThirdPartyTwitter isAuthenticated]) {
+    if (![SocializeThirdPartyTwitter isLinkedToSocialize]) {
         // Force switch to off
         if ([self.twitterSwitch isOn]) {
             [self.twitterSwitch setOn:NO animated:YES];

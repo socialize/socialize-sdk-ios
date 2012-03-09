@@ -138,6 +138,10 @@ static NSMutableDictionary *copiedClasses;
     return [copiedClass instanceMethodSignatureForSelector:sel];
 }
 
+- (BOOL)resolveClassMethod:(SEL)sel {
+    return NO;
+}
+
 #pragma mark Real class methods
 /**
  End the mocking process

@@ -16,8 +16,6 @@
 + (NSString*)accessTokenSecret;
 + (void)removeTwitterCookies;
 + (void)storeLocalCredentialsWithAccessToken:(NSString*)accessToken
-                       accessTokenSecret:(NSString*)accessTokenSecret
-                              screenName:(NSString*)screenName
-                                  userId:(NSString*)userId;
+                           accessTokenSecret:(NSString*)accessTokenSecret;
 
 @end

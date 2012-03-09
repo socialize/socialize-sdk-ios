@@ -116,18 +116,13 @@ Socialize authentication service is the authentication engine. It performs anony
          thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
                thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName;
 
-/**
- Third party associate.
- 
- Associate third party info with an existing (Socialize oauth-verified) account
- */
-- (void)associateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
-                                  token:(NSString*)token
-                            tokenSecret:(NSString*)tokenSecret;
-
 - (void)authenticateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
                        thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
                  thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret;
+
+- (void)associateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
+                                  token:(NSString*)token
+                            tokenSecret:(NSString*)tokenSecret;
 
 /**@name Other methods*/
 
@@ -165,13 +160,9 @@ Socialize authentication service is the authentication engine. It performs anony
 +(BOOL)handleOpenURL:(NSURL *)url;
 
 /**
- Authenticate with Twitter using stored credentials
- @see storeSocializeTwitterAccessToken:
- @see storeSocializeTwitterAccessTokenSecret:
+ Link Socialize user to an existing Twitter session
  */
-- (void)authenticateViaTwitterUsingStoredCredentials;
-
-- (void)authenticateViaTwitterAccessToken:(NSString*)twitterAccessToken
-                  twitterAccessTokenSecret:(NSString*)twitterAccessTokenSecret;
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret;
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken;
 
 @end

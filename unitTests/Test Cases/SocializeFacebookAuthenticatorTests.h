@@ -14,7 +14,6 @@
 
 @property (nonatomic, retain) SocializeFacebookAuthenticator *facebookAuthenticator;
 @property (nonatomic, retain) id mockFacebookAuthHandler;
-@property (nonatomic, retain) id mockThirdPartyFacebook;
 
 @property (nonatomic, retain) NSString *accessToken;
 @property (nonatomic, retain) NSDate *expirationDate;

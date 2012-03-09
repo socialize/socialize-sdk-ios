@@ -44,7 +44,7 @@
 
     self.mockThirdParty = [OCMockObject classMockForProtocol:@protocol(SocializeThirdParty)];
     self.thirdPartyAuthenticator.thirdParty = self.mockThirdParty;
-    
+
     [[[self.mockThirdParty stub] andReturn:@"My Third Party"] thirdPartyName];
     
     [[[self.mockThirdParty stub] andReturnFromBlock:^{
@@ -63,7 +63,7 @@
 }
 
 - (void)stubBoolsForMockThirdParty:(id)mockThirdParty {
-    [[[mockThirdParty stub] andReturnBoolFromBlock:^{ return self.isAuthenticated; }] isAuthenticated];
+    [[[mockThirdParty stub] andReturnBoolFromBlock:^{ return self.isAuthenticated; }] isLinkedToSocialize];
     [[[mockThirdParty stub] andReturnBoolFromBlock:^{ return self.hasLocalCredentials; }] hasLocalCredentials];
     [[[mockThirdParty stub] andReturnBoolFromBlock:^{ return self.authenticationPossible; }] available];
 }
@@ -101,7 +101,7 @@
         [self simulateLocalCredentials];
         
         // Finish off the auth process
-        [self.thirdPartyAuthenticator tryToFinishAuthenticating];
+        [self.thirdPartyAuthenticator succeedInteractiveLogin];
         
     }] attemptInteractiveLogin];
 }
@@ -147,55 +147,13 @@
 //    [self expectDeallocationOfObject:self.thirdPartyAuthenticator fromTest:_cmd];
 }
 
+- (void)executeActionAndWaitForStatus:(int)status fromTest:(SEL)test {
+    [[self.mockThirdParty expect] removeLocalCredentials];
+    [super executeActionAndWaitForStatus:status fromTest:test];
+}
+
 - (void)testAuthenticationNotPossibleCausesFailure {
     self.authenticationPossible = NO;
-    
-    [self executeActionAndWaitForStatus:kGHUnitWaitStatusFailure fromTest:_cmd];
-}
-
-- (void)testAutoAuthSuccess {
-    [self.mockDisplay makeNice];
-    
-    [self simulateAutoAuthConditions];
-
-    [self suceedSocializeAuthentication];
-    
-    [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
-}
-
-- (void)autoAuthCredentialsWipeTestWithStatusCode:(int)statusCode {
-    [self.mockDisplay makeNice];
-    
-    [self simulateAutoAuthConditions];
-    
-    [[[self.mockThirdParty expect] andDo0:^{
-        self.hasLocalCredentials = NO;
-    }] removeLocalCredentials];
-    
-    // Simulate the 401
-    [self failSocializeAuthWithHTTPStatusCode:statusCode];
-    
-    // Cancel auth
-    [self respondToLoginDialogWithAccept:NO];
-    
-    [self executeActionAndWaitForStatus:kGHUnitWaitStatusFailure fromTest:_cmd];
-}
-
-- (void)testAutoAuthFailureWith401WipesCredentialsAndOpensDialog {
-    [self autoAuthCredentialsWipeTestWithStatusCode:401];
-}
-
-- (void)testAutoAuthFailureWith403WipesCredentialsAndOpensDialog {
-    [self autoAuthCredentialsWipeTestWithStatusCode:403];
-}
-
-- (void)testAutoAuthFailureWith400CausesFailure {
-    [self.mockDisplay makeNice];
-    
-    [self simulateAutoAuthConditions];
-    
-    // Simulate the 400
-    [self failSocializeAuthWithHTTPStatusCode:400];
     
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusFailure fromTest:_cmd];
 }

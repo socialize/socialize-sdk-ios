@@ -13,7 +13,6 @@
 @implementation SocializeFacebookAuthenticatorTests
 @synthesize facebookAuthenticator = facebookAuthenticator_;
 @synthesize mockFacebookAuthHandler = mockFacebookAuthHandler_;
-@synthesize mockThirdPartyFacebook = mockThirdPartyFacebook_;
 @synthesize accessToken = accessToken_;
 @synthesize expirationDate = expirationDate_;
 
@@ -41,45 +40,47 @@
 - (void)setUp {
     [super setUp];
     
+    [SocializeThirdPartyFacebook startMockingClass];
+    
     self.facebookAuthenticator  = (SocializeFacebookAuthenticator*)self.action;
     
     self.mockFacebookAuthHandler = [OCMockObject mockForClass:[SocializeFacebookAuthHandler class]];
     self.facebookAuthenticator.facebookAuthHandler = self.mockFacebookAuthHandler;
     
-    self.mockThirdPartyFacebook = [OCMockObject classMockForClass:[SocializeThirdPartyFacebook class]];
-    self.facebookAuthenticator.thirdParty = self.mockThirdPartyFacebook;
+    self.mockThirdParty = [SocializeThirdPartyFacebook classMock];
+    self.thirdPartyAuthenticator.thirdParty = self.mockThirdParty;
 
-    [self stubBoolsForMockThirdParty:self.mockThirdPartyFacebook];
+    [self stubBoolsForMockThirdParty:self.mockThirdParty];
     
-    [[[self.mockThirdPartyFacebook stub] andReturn:@"Facebook"] thirdPartyName];
-    [[[self.mockThirdPartyFacebook stub] andReturn:@"AppID"] facebookAppId];
-    [[[self.mockThirdPartyFacebook stub] andReturn:nil] facebookUrlSchemeSuffix];
-    [[[self.mockThirdPartyFacebook stub] andReturnInteger:SocializeThirdPartyAuthTypeFacebook] socializeAuthType];
+    [[[SocializeThirdPartyFacebook stub] andReturn:@"Facebook"] thirdPartyName];
+    [[[SocializeThirdPartyFacebook stub] andReturn:@"AppID"] facebookAppId];
+    [[[SocializeThirdPartyFacebook stub] andReturn:nil] facebookUrlSchemeSuffix];
+    [[[SocializeThirdPartyFacebook stub] andReturnInteger:SocializeThirdPartyAuthTypeFacebook] socializeAuthType];
     
-    [[[self.mockThirdPartyFacebook stub] andReturn:self.accessToken] socializeAuthToken];
-    [[[self.mockThirdPartyFacebook stub] andReturn:self.accessToken] facebookAccessToken];
-    [[[self.mockThirdPartyFacebook stub] andReturn:self.expirationDate] facebookExpirationDate];
-    [[[self.mockThirdPartyFacebook stub] andReturn:nil] socializeAuthTokenSecret];
+    [[[SocializeThirdPartyFacebook stub] andReturn:self.accessToken] socializeAuthToken];
+    [[[SocializeThirdPartyFacebook stub] andReturn:self.accessToken] facebookAccessToken];
+    [[[SocializeThirdPartyFacebook stub] andReturn:self.expirationDate] facebookExpirationDate];
+    [[[SocializeThirdPartyFacebook stub] andReturn:nil] socializeAuthTokenSecret];
 }
 
 - (void)tearDown {
     [self.mockFacebookAuthHandler verify];
-    [self.mockThirdPartyFacebook verify];
     
     self.facebookAuthenticator = nil;
     self.mockFacebookAuthHandler = nil;
-    self.mockThirdPartyFacebook = nil;
     self.expirationDate = nil;
     self.accessToken = nil;
-    
+    [SocializeThirdPartyFacebook stopMockingClassAndVerify];
+
     [super tearDown];
+
 }
 
 - (void)succeedInteractiveFacebookLogin {
     NSString *token = @"token";
     NSDate *expirationDate = [NSDate distantFuture];
     
-    [[self.mockThirdPartyFacebook expect]
+    [[SocializeThirdPartyFacebook expect]
      storeLocalCredentialsWithAccessToken:token expirationDate:expirationDate];
     
     [[[self.mockFacebookAuthHandler expect] andDo5:^(id appId, id suffix, id perms, id success, id failure) {

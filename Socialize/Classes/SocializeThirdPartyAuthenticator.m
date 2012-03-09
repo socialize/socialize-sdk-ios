@@ -15,16 +15,14 @@
 @interface SocializeThirdPartyAuthenticator ()
 - (void)showLoginDialog;
 @property (nonatomic, assign) BOOL sentTokenToSocialize;
-@property (nonatomic, assign) BOOL attemptedAutoAuth;
-@property (nonatomic, assign) BOOL failedAutoAuth;
 @property (nonatomic, assign) BOOL authDialogAccepted;
+@property (nonatomic, assign) BOOL interactiveLoginSucceeded;
 @end
 
 @implementation SocializeThirdPartyAuthenticator
 @synthesize sentTokenToSocialize = sentTokenToSocialize_;
 @synthesize authDialogAccepted = authDialogAccepted_;
-@synthesize attemptedAutoAuth = attemptedAutoAuth_;
-@synthesize failedAutoAuth = failedAutoAuth_;
+@synthesize interactiveLoginSucceeded = interactiveLoginSucceeded_;
 
 @synthesize options = options_;
 @synthesize thirdParty = thirdParty_;
@@ -59,17 +57,19 @@
     return thirdParty_;
 }
 
-- (BOOL)isAuthenticationFailure:(NSError*)error {
-    if ([[error domain] isEqualToString:SocializeErrorDomain] && [error code] == SocializeErrorServerReturnedHTTPError) {
-        
-        // Determine if this is an error we can recover from
-        NSHTTPURLResponse *response = [[error userInfo] objectForKey:kSocializeErrorNSHTTPURLResponseKey];
-        if ([response statusCode] == 401 || [response statusCode] == 403) {
-            return YES;
-        }
-    }
-    
+- (BOOL)hasLocalCredentials {
+    NSAssert(NO, @"not implemented");
     return NO;
+}
+
+- (NSString*)socializeAuthToken {
+    NSAssert(NO, @"not implemented");
+    return nil;
+}
+
+- (NSString*)socializeAuthTokenSecret {
+    NSAssert(NO, @"not implemented");
+    return nil;
 }
 
 - (void)linkWithSocializeUsingLocalCredentials {
@@ -93,22 +93,14 @@
         return;
     }
     
-    // Try to silently auto auth if there are already credentials and we haven't already tried
-    if (![self.thirdParty isAuthenticated] && [self.thirdParty hasLocalCredentials] && !self.attemptedAutoAuth) {
-        [self.displayProxy startLoading];
-        self.attemptedAutoAuth = YES;
-        [self linkWithSocializeUsingLocalCredentials];
-        return;
-    }
-    
     // Show dialog, allow user abort if desired
-    if (![self.thirdParty hasLocalCredentials] && !self.authDialogAccepted && ![self.options doNotPromptForPermission]) {
+    if (!self.authDialogAccepted && ![self.options doNotPromptForPermission]) {
         [self showLoginDialog];
         return;
     }
     
     // Interactive login
-    if (![self.thirdParty hasLocalCredentials]) {
+    if (!self.interactiveLoginSucceeded) {
         [self attemptInteractiveLogin];
         return;
     }
@@ -141,36 +133,23 @@
     [self.displayProxy showAlertView:alertView];
 }
 
-- (void)socializeAuthenticationFailedWithError:(NSError*)error {
-    if (self.attemptedAutoAuth && !self.failedAutoAuth) {
-        
-        // Auto auth failure
-        self.failedAutoAuth = YES;
-        
-        if ([self isAuthenticationFailure:error]) {
-            // Credentials are no longer valid, wipe credentials and retry
-            [self.thirdParty removeLocalCredentials];
-            [self tryToFinishAuthenticating];
+- (void)succeedInteractiveLogin {
+    self.interactiveLoginSucceeded = YES;
+    [self tryToFinishAuthenticating];
+}
 
-        } else {
-            
-            // We can't handle the error, fail
-            [self failWithError:error];
-        }
-    } else {
-        
-        // Normal failure
-        [self failWithError:error];
-    }
+- (void)socializeAuthenticationFailedWithError:(NSError*)error {
+    [self.thirdParty removeLocalCredentials];
+    [self failWithError:error];
 }
 
 - (void)socializeAuthenticationSucceeded {
     self.sentTokenToSocialize = YES;
     [self tryToFinishAuthenticating];
-    
 }
 
 - (void)executeAction {
+    [self.thirdParty removeLocalCredentials];
     [self tryToFinishAuthenticating];
 }
 

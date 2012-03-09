@@ -45,14 +45,10 @@
 }
 
 + (void)storeLocalCredentialsWithAccessToken:(NSString*)accessToken
-                       accessTokenSecret:(NSString*)accessTokenSecret
-                              screenName:(NSString*)screenName
-                                  userId:(NSString*)userId {
+                           accessTokenSecret:(NSString*)accessTokenSecret {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:accessToken forKey:kSocializeTwitterAuthAccessToken];
     [defaults setObject:accessTokenSecret forKey:kSocializeTwitterAuthAccessTokenSecret];
-    [defaults setObject:screenName forKey:kSocializeTwitterAuthScreenName];
-    [defaults setObject:userId forKey:kSocializeTwitterAuthUserId];
     [defaults synchronize];
 }
 
@@ -78,7 +74,7 @@
     return @"Twitter";
 }
 
-+ (BOOL)isAuthenticated {
++ (BOOL)isLinkedToSocialize {
     return [self hasLocalCredentials] && [[Socialize sharedSocialize] isAuthenticatedWithAuthType:kSocializeTwitterStringForAPI];
 }
 
@@ -95,10 +91,6 @@
     [defaults synchronize];
     
     [self removeTwitterCookies];
-}
-
-+ (void)authenticateUsingLocalCredentials {
-    [[Socialize sharedSocialize] authenticateViaTwitterWithAccessToken:[self accessToken] accessTokenSecret:[self accessTokenSecret]];
 }
 
 @end

@@ -193,15 +193,9 @@ otherwise you will get a failure.
 
 +(void)storeTwitterConsumerKey:(NSString*)consumerKey;
 +(void)storeTwitterConsumerSecret:(NSString*)consumerSecret;
-+(void)storeTwitterAccessToken:(NSString*)accessToken;
-+(void)storeTwitterAccessTokenSecret:(NSString*)accessTokenSecret;
-+(void)storeTwitterScreenName:(NSString*)screenName;
 
 +(NSString*)twitterConsumerKey;
 +(NSString*)twitterConsumerSecret;
-+(NSString*)twitterAccessToken;
-+(NSString*)twitterAccessTokenSecret;
-+(NSString*)twitterScreenName;
 
     
 /**
@@ -369,23 +363,20 @@ otherwise you will get a failure.
  Successful call of this method invokes <SocializeServiceDelegate> didAuthenticate: method.
  In case of error it will be called <[SocializeServiceDelegate service:didFail:]> method.
   
+ @warning Deprecated, use linkToFacebookWithAccessToken: instead
+ 
  @see authenticateWithApiKey:apiSecret:thirdPartyAuthToken:thirdPartyAppId:thirdPartyName:
  @see storeSocializeApiKey:andSecret:
  @see storeFacebookAppId:
  */
--(void)authenticateViaFacebook;
 -(void)authenticateWithFacebook  __attribute__((deprecated));
-- (void)authenticateViaFacebookWithStoredCredentials;
 
 /**
- Link Twitter account to Socialize account using existing stored credentials
- 
- @see storeTwitterConsumerKey:
- @see storeTwitterConsumerSecret:
- @see storeTwitterAccessToken:
- @see storeTwitterAccessTokenSecret:
+ Link
  */
-- (void)authenticateViaTwitterWithStoredCredentials;
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken;
+
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret;
 
 /**
  Perform a managed Twitter authentication process, including webview callout to twitter auth process if necessary
@@ -764,7 +755,6 @@ otherwise you will get a failure.
                        success:(void(^)())success
                        failure:(void(^)(NSError *error))failure;
 
-- (void)authenticateViaTwitterWithAccessToken:(NSString*)accessToken accessTokenSecret:(NSString*)accessTokenSecret;
 -(BOOL)isAuthenticatedWithAuthType:(NSString*)authType;
 
 @end

@@ -64,12 +64,14 @@ NSString *const kSocializeTwitterAuthAccessToken = @"kSocializeTwitterAuthAccess
 NSString *const kSocializeTwitterAuthAccessTokenSecret = @"kSocializeTwitterAuthAccessTokenSecret";
 NSString *const kSocializeTwitterAuthScreenName = @"kSocializeTwitterAuthScreenName";
 NSString *const kSocializeTwitterAuthUserId = @"kSocializeTwitterAuthUserId";
+
 NSString *const kSocializeTwitterStringForAPI = @"Twitter";
 
 NSString *const kSocializeFacebookAuthAppId = SOCIALIZE_FACEBOOK_APP_ID;
 NSString *const kSocializeFacebookAuthLocalAppId = SOCIALIZE_FACEBOOK_LOCAL_APP_ID;
-NSString *const kSocializeFacebookAuthAccessToken = @"FBAccessTokenKey";
-NSString *const kSocializeFacebookAuthExpirationDate = @"FBExpirationDateKey";
+NSString *const kSocializeFacebookAuthAccessToken = @"kSocializeFacebookAuthAccessToken";
+NSString *const kSocializeFacebookAuthExpirationDate = @"kSocializeFacebookAuthAccessToken";
+
 NSString *const kSocializeFacebookStringForAPI = @"FaceBook";
 
 @implementation Socialize
@@ -197,9 +199,6 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 
 SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerKey, twitterConsumerKey, kSocializeTwitterAuthConsumerKey)
 SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, kSocializeTwitterAuthConsumerSecret)
-SYNTH_DEFAULTS_PROPERTY(NSString, TwitterAccessToken, twitterAccessToken, kSocializeTwitterAuthAccessToken)
-SYNTH_DEFAULTS_PROPERTY(NSString, TwitterAccessTokenSecret, twitterAccessTokenSecret, kSocializeTwitterAuthAccessTokenSecret)
-SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSocializeTwitterAuthScreenName)
 
 +(void)storeApplicationLink:(NSString*)link {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -285,40 +284,33 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
     _deviceTokenService.delegate = delegate;
 }
 
--(void)authenticateViaFacebook {
-    NSString *apiKey = [Socialize apiKey];
-    NSString *apiSecret = [Socialize apiSecret];
-    NSString *facebookAppId = [Socialize facebookAppId];
-    NSString *facebookLocalAppId = [Socialize facebookLocalAppId];
-    
-    NSAssert(apiKey != nil, @"Missing api key. API key must be configured before using socialize.");
-    NSAssert(apiSecret != nil, @"Missing api secret. API secret must be configured before using socialize.");
-    NSAssert(facebookAppId != nil, @"Missing facebook app id. Facebook app id is required to authenticate with facebook.");
-    
-    [self authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:facebookAppId thirdPartyLocalAppId:facebookLocalAppId thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
+/**
+ * Deprecated legacy behavior (should go soon)
+ */
+-(void)authenticateWithFacebook {
+    NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"FBAccessTokenKey"];
+    NSDate *expirationDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"FBExpirationDateKey"];
+    if ([accessToken length] == 0 && [[NSDate date] timeIntervalSinceDate:expirationDate] > 0 ) {
+        return;
+    }
+    [SocializeThirdPartyFacebook storeLocalCredentialsWithAccessToken:accessToken expirationDate:expirationDate];
+    [self linkToFacebookWithAccessToken:accessToken];
 }
 
-- (void)authenticateViaFacebookWithStoredCredentials {
-    [self authenticateViaFacebook];
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret {
+    [SocializeThirdPartyTwitter storeLocalCredentialsWithAccessToken:twitterAccessToken accessTokenSecret:twitterAccessTokenSecret];
+    [_authService linkToTwitterWithAccessToken:twitterAccessToken accessTokenSecret:twitterAccessTokenSecret];
 }
 
-- (void)authenticateWithFacebook {
-    [self authenticateViaFacebook];
-}
-
-- (void)authenticateViaTwitterWithStoredCredentials {
-    [_authService authenticateViaTwitterUsingStoredCredentials];
-}
-
-- (void)authenticateViaTwitterWithAccessToken:(NSString*)accessToken accessTokenSecret:(NSString*)accessTokenSecret {
-    [_authService authenticateViaTwitterAccessToken:accessToken twitterAccessTokenSecret:accessTokenSecret];
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken {
+    [_authService linkToFacebookWithAccessToken:facebookAccessToken];
 }
 
 - (void)authenticateViaTwitterWithOptions:(SocializeTwitterAuthOptions*)options
                                   display:(id)display
                                   success:(void(^)())success
                                   failure:(void(^)(NSError *error))failure {
-
+    
     [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options display:display success:success failure:failure];
 }
 
@@ -394,15 +386,15 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterScreenName, twitterScreenName, kSociali
 }
 
 -(BOOL)isAuthenticatedWithFacebook {
-    return [SocializeThirdPartyFacebook isAuthenticated];
+    return [SocializeThirdPartyFacebook isLinkedToSocialize];
 }
 
 -(BOOL)isAuthenticatedWithTwitter {
-    return [SocializeThirdPartyTwitter isAuthenticated];
+    return [SocializeThirdPartyTwitter isLinkedToSocialize];
 }
 
 - (BOOL)isAuthenticatedWithThirdParty {
-    return [SocializeThirdPartyFacebook isAuthenticated] || [SocializeThirdPartyTwitter isAuthenticated];
+    return [SocializeThirdPartyFacebook isLinkedToSocialize] || [SocializeThirdPartyTwitter isLinkedToSocialize];
 }
 
 - (BOOL)thirdPartyAvailable {

@@ -15,6 +15,8 @@
 #import "SocializeAuthInfoTableViewCell.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
+#import "SocializeFacebookAuthenticator.h"
+#import "SocializeTwitterAuthenticator.h"
 
 static NSString *const kAuthTypeRowText = @"kAuthTypeRowText";
 static NSString *const kAuthTypeRowImageName = @"kAuthTypeRowImageName";
@@ -112,8 +114,13 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 - (void)authenticateWithFacebook {
-    [self.socialize authenticateViaFacebookWithStoredCredentials];
-    [self startLoading];
+    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:nil
+                                                               display:self
+                                                               success:^{
+                                                                   [self authenticationComplete];
+                                                               } failure:^(NSError *error) {
+                                                                   [self failWithError:error];
+                                                               }];
 }
 
 - (void)authenticationComplete {
@@ -127,15 +134,13 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 - (void)authenticateWithTwitter {
-    [self startLoading];
-    
-    [self.socialize authenticateViaTwitterWithOptions:nil
-                                              display:self
-                                              success:^{
-                                                  [self authenticationComplete];
-                                              } failure:^(NSError *error) {
-                                                  [self stopLoading];
-                                              }];
+    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:nil
+                                                             display:self
+                                                             success:^{
+                                                                 [self authenticationComplete];
+                                                             } failure:^(NSError *error) {
+                                                                 [self failWithError:error];
+                                                             }];
 }
 
 - (NSMutableArray*)authTypeRowData {

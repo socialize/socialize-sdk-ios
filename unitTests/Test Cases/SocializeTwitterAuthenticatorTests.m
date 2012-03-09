@@ -42,12 +42,15 @@
     
     [SocializeThirdPartyTwitter startMockingClass];
     
+    self.mockThirdParty = [SocializeThirdPartyTwitter classMock];
     [self stubBoolsForMockThirdParty:[SocializeThirdPartyTwitter classMock]];
     [[[SocializeThirdPartyTwitter stub] andReturn:@"Twitter"] thirdPartyName];
     [[[SocializeThirdPartyTwitter stub] andReturn:@"token"] accessToken];
     [[[SocializeThirdPartyTwitter stub] andReturn:@"token"] socializeAuthToken];
     [[[SocializeThirdPartyTwitter stub] andReturn:@"secret"] accessTokenSecret];
     [[[SocializeThirdPartyTwitter stub] andReturn:@"secret"] socializeAuthTokenSecret];
+    [[[SocializeThirdPartyTwitter stub] andReturn:@"consumerKey"] consumerKey];
+    [[[SocializeThirdPartyTwitter stub] andReturn:@"consumerSecret"] consumerSecret];
 
     [[[SocializeThirdPartyTwitter stub] andReturnInteger:SocializeThirdPartyAuthTypeTwitter] socializeAuthType];
     
@@ -81,7 +84,7 @@
         
         [[[SocializeThirdPartyTwitter expect] andDo0:^{
             self.hasLocalCredentials = YES;
-        }] storeLocalCredentialsWithAccessToken:OCMOCK_ANY accessTokenSecret:OCMOCK_ANY screenName:OCMOCK_ANY userId:OCMOCK_ANY];
+        }] storeLocalCredentialsWithAccessToken:OCMOCK_ANY accessTokenSecret:OCMOCK_ANY];
         
         // Credentials should now be available
         [self.twitterAuthenticator twitterAuthViewController:twitterAuth

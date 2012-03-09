@@ -18,12 +18,13 @@
                     success:(void(^)())success
                     failure:(void(^)(NSError *error))failure;
 
-- (BOOL)isAuthenticationFailure:(NSError*)error;
 - (void)attemptInteractiveLogin;
 - (void)socializeAuthenticationFailedWithError:(NSError*)error;
 - (void)socializeAuthenticationSucceeded;
 - (void)tryToFinishAuthenticating;
+- (void)succeedInteractiveLogin;
 
 @property (nonatomic, retain) SocializeAuthOptions *options;
 @property (nonatomic, assign) Class<SocializeThirdParty> thirdParty;
+
 @end

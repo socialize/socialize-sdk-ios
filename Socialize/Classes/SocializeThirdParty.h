@@ -13,7 +13,7 @@
 
 + (BOOL)available;
 + (NSString*)thirdPartyName;
-+ (BOOL)isAuthenticated;
++ (BOOL)isLinkedToSocialize;
 + (NSError*)thirdPartyUnavailableError;
 + (NSError*)userAbortedAuthError;
 + (BOOL)hasLocalCredentials;

@@ -17,6 +17,7 @@ id testSelf;
 @synthesize lastShownAlert = lastReceivedAlert_;
 @synthesize expectedDeallocations = expectedDeallocations_;
 @synthesize swizzledMethods = swizzledMethods_;
+@synthesize lastException = lastException_;
 
 - (id)init {
     if (self = [super init]) {
@@ -29,6 +30,7 @@ id testSelf;
 - (void)dealloc {
     self.expectedDeallocations = nil;
     self.swizzledMethods = nil;
+    self.lastException = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
@@ -55,6 +57,7 @@ id testSelf;
 }
 
 - (void)handleException:(NSException *)exception {
+    self.lastException = exception;
     [ClassMockForwarder stopMockingAllClasses];
 }
 
@@ -79,7 +82,7 @@ id testSelf;
     if ([self.expectedDeallocations count] > 0) {
         [NSThread sleepForTimeInterval:0.1];
     }
-    if ([self.expectedDeallocations count] > 0) {
+    if ([self.expectedDeallocations count] > 0 && self.lastException == nil) {
         NSMutableString *reason = [NSMutableString stringWithString:@"Expected deallocations were not observed. Failing entire suite\n"];        
         [reason appendString:@"------ Failed deallocations ------"];
         

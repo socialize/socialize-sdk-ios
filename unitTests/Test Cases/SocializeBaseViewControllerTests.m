@@ -293,7 +293,7 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     [SocializeFacebookAuthenticator startMockingClass];
     
     [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] available];
-    [[[SocializeThirdPartyFacebook stub] andReturnBool:NO] isAuthenticated];
+    [[[SocializeThirdPartyFacebook stub] andReturnBool:NO] isLinkedToSocialize];
 
     [[SocializeFacebookAuthenticator expect] authenticateViaFacebookWithOptions:OCMOCK_ANY
                                                                         display:OCMOCK_ANY

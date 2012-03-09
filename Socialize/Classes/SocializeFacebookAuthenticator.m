@@ -74,18 +74,18 @@
 
 - (void)attemptInteractiveLogin {
     [self.displayProxy startLoading];
-    NSString *facebookAppId = [self.thirdParty facebookAppId];
-    NSString *urlSchemeSuffix = [self.thirdParty facebookUrlSchemeSuffix];
+    NSString *facebookAppId = [SocializeThirdPartyFacebook facebookAppId];
+    NSString *urlSchemeSuffix = [SocializeThirdPartyFacebook facebookUrlSchemeSuffix];
     
     __block __typeof__(self) weakSelf = self;
     [self.facebookAuthHandler authenticateWithAppId:facebookAppId
                                     urlSchemeSuffix:urlSchemeSuffix
                                         permissions:self.options.permissions
                                             success:^(NSString *accessToken, NSDate *expirationDate) {
-                                                [self.thirdParty storeLocalCredentialsWithAccessToken:accessToken
+                                                [SocializeThirdPartyFacebook storeLocalCredentialsWithAccessToken:accessToken
                                                                                                    expirationDate:expirationDate];
                                                 
-                                                [weakSelf tryToFinishAuthenticating];
+                                                [weakSelf succeedInteractiveLogin];
                                             } failure:^(NSError *error) {
                                                 [weakSelf failWithError:error];
                                             }];

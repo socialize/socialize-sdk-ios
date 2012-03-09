@@ -101,9 +101,9 @@
     [SocializeFacebookAuthenticator startMockingClass];
     [SocializeTwitterAuthenticator startMockingClass];
     
-    [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithTwitter; } ] isAuthenticated];
+    [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithTwitter; } ] isLinkedToSocialize];
     [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.twitterAvailable; } ] available];
-    [[[SocializeThirdPartyFacebook stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithFacebook; } ] isAuthenticated];
+    [[[SocializeThirdPartyFacebook stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithFacebook; } ] isLinkedToSocialize];
     [[[SocializeThirdPartyFacebook stub] andReturnBoolFromBlock:^{ return self.facebookAvailable; } ] available];
 
 }

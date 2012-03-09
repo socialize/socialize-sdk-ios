@@ -114,26 +114,24 @@
     
 }
 
-- (void)testAuthenticateWithFacebook {
-    NSString* apiKey = @"0000000-1111101110-1111";
-    NSString* apiSecret = @"11111111-222222-333333";
 
-    [Socialize storeConsumerKey:apiKey];
-    [Socialize storeConsumerSecret:apiSecret];
-    
-    [Socialize storeFacebookAppId:@"1234"];
-    [Socialize storeFacebookLocalAppId:@"abcd"];
-    
-    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
+- (void)testAuthenticateWithFacebook {
     id mockAuthService = [OCMockObject mockForClass:[SocializeAuthenticateService class]];
-    Socialize *socialize = [[Socialize alloc] initWithDelegate:mockDelegate];
+    Socialize *socialize = [[Socialize alloc] initWithDelegate:nil];
     socialize.authService = mockAuthService;
 
-    [[mockAuthService expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"1234" thirdPartyLocalAppId:@"abcd" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
-    [socialize authenticateViaFacebook];
+    [[NSUserDefaults standardUserDefaults] setObject:@"1234" forKey:@"FBAccessTokenKey"];
+    [[mockAuthService expect] linkToFacebookWithAccessToken:@"1234"];
+    
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"
+    [socialize authenticateWithFacebook];
+#pragma GCC diagnostic pop
+
     [mockAuthService verify];
     [socialize release];
 }
+
 
 - (void)testSetDelegate {
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];

@@ -16,6 +16,8 @@ extern id testSelf;
 @property (nonatomic, retain) NSMutableDictionary *swizzledMethods;
 @property (nonatomic, retain) UIAlertView *lastShownAlert;
 @property (nonatomic, retain) NSMutableDictionary *expectedDeallocations;
+@property (nonatomic, retain) NSException *lastException;
+
 - (void)expectDeallocationOfObject:(NSObject*)object fromTest:(SEL)test;
 - (void)swizzleClass:(Class)target_class selector:(SEL)classSelector toObject:(id)object selector:(SEL)objectSelector;
 - (void)deswizzle;

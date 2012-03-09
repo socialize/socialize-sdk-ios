@@ -86,6 +86,8 @@
 - (void)showEditController;
 - (void)notifyDelegateOfCompletion;
 - (void)notifyDelegateOfCancellation;
+- (void)failWithError:(NSError*)error;
+
 @end
 
 #define SYNTH_RED_SOCIALIZE_BAR_BUTTON(PROPERTY, TITLESTR) \
