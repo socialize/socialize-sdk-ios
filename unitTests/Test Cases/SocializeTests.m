@@ -196,7 +196,12 @@
     [comments verify];
     
     [[entity expect] createEntityWithKey:@"url" andName:@"name"];
+    
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"
     [socialize createEntityWithUrl:@"url" andName:@"name"];
+#pragma GCC diagnostic pop
+
     [entity verify];
 
     [[entity expect] entityWithKey:@"key"];
@@ -265,13 +270,6 @@
     [socialize authenticateAnonymously];
     [auth verify];
     
-    [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"123" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
-    [socialize authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:@"123" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
-    [auth verify];
-    
-    [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:@"token" thirdPartyAppId:@"123" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
-    [socialize authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAuthToken:@"token" thirdPartyAppId:@"123" thirdPartyName:SocializeThirdPartyAuthTypeFacebook];
-    [auth verify];
 }
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{

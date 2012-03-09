@@ -44,7 +44,6 @@
 @class SocializeSubscriptionService;
 @class UIImage;
 @class SocializeFacebook;
-@class SocializeTwitterAuthenticator;
 @class SocializeShareOptions;
 @class SocializeTwitterAuthOptions;
 
@@ -98,9 +97,6 @@ otherwise you will get a failure.
 /**Get access to the activity service via <SocializeSubscriptionService>.*/
 @property (nonatomic, retain) SocializeSubscriptionService *subscriptionService;
 /**Current delegate*/
-
-/* Used for managed twitter authentication flow */
-@property (nonatomic, retain) SocializeTwitterAuthenticator *twitterAuthenticator;
 
 /**
  Set callback delegate which responds to protocol <SocializeServiceDelegate> to the service.
@@ -374,7 +370,7 @@ otherwise you will get a failure.
 /**
  Link
  */
-- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken;
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken expirationDate:(NSDate*)expirationDate;
 
 - (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret;
 
@@ -441,7 +437,7 @@ otherwise you will get a failure.
                     apiSecret:(NSString*)apiSecret 
           thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
               thirdPartyAppId:(NSString*)thirdPartyAppId
-               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName;
+               thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName  __attribute__((deprecated));
 
 /**
  Link socialize account to third party
@@ -592,7 +588,7 @@ otherwise you will get a failure.
  
  @warning Deprecated. Use createEntityWithKey:name: instead
  */
--(void)createEntityWithUrl:(NSString*)entityKey andName:(NSString*)name;
+-(void)createEntityWithUrl:(NSString*)entityKey andName:(NSString*)name  __attribute__((deprecated));
 
 /** @name Comment stuff */
 

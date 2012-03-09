@@ -10,7 +10,7 @@
 #import "SocializeFacebookInterface.h"
 #import "SocializeFacebook.h"
 #import "Socialize.h"
-#import "Facebook+Socialize.h"
+#import "SocializeThirdPartyFacebook.h"
 
 @interface SocializeFacebookInterface () <SocializeFBRequestDelegate>
 @end
@@ -34,12 +34,6 @@
     [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path" andParams:[NSMutableDictionary dictionary] andHttpMethod:@"METHOD" andDelegate:self.facebookInterface];
     self.facebookInterface.facebook = mockFacebook;
     
-    NSDate *exp = [NSDate date];
-    [[NSUserDefaults standardUserDefaults] setObject:@"testToken" forKey:@"FBAccessTokenKey"];
-    [[NSUserDefaults standardUserDefaults] setObject:exp forKey:@"FBExpirationDateKey"];
-    [[mockFacebook expect] setAccessToken:@"testToken"];
-    [[mockFacebook expect] setExpirationDate:exp];
-    
     [self.facebookInterface requestWithGraphPath:@"some/path" params:nil httpMethod:@"METHOD" completion:^(id result, NSError *error) {
         GHAssertNil(error, @"error was not nil");
         completed = YES;
@@ -58,12 +52,6 @@
     [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path" andParams:[NSMutableDictionary dictionary] andHttpMethod:@"METHOD" andDelegate:self.facebookInterface];
     self.facebookInterface.facebook = mockFacebook;
     
-    NSDate *exp = [NSDate date];
-    [[NSUserDefaults standardUserDefaults] setObject:@"testToken" forKey:@"FBAccessTokenKey"];
-    [[NSUserDefaults standardUserDefaults] setObject:exp forKey:@"FBExpirationDateKey"];
-    [[mockFacebook expect] setAccessToken:@"testToken"];
-    [[mockFacebook expect] setExpirationDate:exp];
-
     [self.facebookInterface requestWithGraphPath:@"some/path" params:nil httpMethod:@"METHOD" completion:^(id result, NSError *error) {
         GHAssertNil(result, @"result was not nil");
         completed = YES;
@@ -72,29 +60,5 @@
     
     GHAssertTrue(completed, @"block not completed");
 }
-
-- (void)testFacebookFromSettingsWhenNotAuthenticatedThrowsException {
-    [Socialize storeFacebookAppId:@"fb123"];
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"FBAccessTokenKey"];
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"FBExpirationDateKey"];
-    GHAssertThrows((void)self.facebookInterface.facebook, @"Should throw because url is not configured");
-}
-
-- (void)testFacebookFromSettingsWhenAuthenticatedIsValid {
-    NSString *fbID = @"fb123";
-    NSString *fbAccessToken = @"abc";
-    NSDate *fbExpirationDate = [NSDate distantFuture];
-    
-    [Socialize storeFacebookAppId:fbID];
-    [[NSUserDefaults standardUserDefaults] setObject:fbAccessToken forKey:@"FBAccessTokenKey"];
-    [[NSUserDefaults standardUserDefaults] setObject:fbExpirationDate forKey:@"FBExpirationDateKey"];
-
-    SocializeFacebook *facebook = self.facebookInterface.facebook;
-    
-    GHAssertEqualObjects(facebook.accessToken, fbAccessToken, @"bad token");
-    GHAssertEqualObjects(facebook.expirationDate, fbExpirationDate, @"bad token");
-}
-
-
 
 @end

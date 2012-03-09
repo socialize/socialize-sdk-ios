@@ -8,6 +8,8 @@
 
 #import "SocializeThirdParty.h"
 
+@class SocializeFacebook;
+
 @interface SocializeThirdPartyFacebook : NSObject <SocializeThirdParty>
 
 + (NSString *)baseUrlForAppId:(NSString*)appId localAppId:(NSString*)localAppId;
@@ -15,8 +17,10 @@
 + (NSString*)facebookLocalAppId;
 + (NSString*)facebookUrlSchemeSuffix;
 + (NSString*)facebookAccessToken;
-+ (NSString*)facebookExpirationDate;
++ (NSDate*)facebookExpirationDate;
 + (void)storeLocalCredentialsWithAccessToken:(NSString*)accessToken
                               expirationDate:(NSDate*)expirationDate;
+
++ (SocializeFacebook*)createFacebookClient;
 
 @end

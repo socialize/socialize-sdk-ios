@@ -20,7 +20,6 @@
 #import "SocializeDeviceTokenService.h"
 #import "SocializeShareService.h"
 #import "SocializeSubscriptionService.h"
-#import "Facebook+Socialize.h"
 #import "NSTimer+BlocksKit.h"
 #import "SocializeNotificationHandler.h"
 #import "StringHelper.h"
@@ -32,6 +31,7 @@
 #import "SocializeFacebookAuthHandler.h"
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
+#import "SocializeFacebookAuthenticator.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -87,7 +87,6 @@ NSString *const kSocializeFacebookStringForAPI = @"FaceBook";
 @synthesize shareService = _shareService;
 @synthesize deviceTokenService = _deviceTokenService;
 @synthesize subscriptionService = _subscriptionService;
-@synthesize twitterAuthenticator = _twitterAuthenticator;
 
 static Socialize *_sharedSocialize = nil;
 static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
@@ -121,7 +120,6 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
     [_shareService release]; _shareService = nil;
     [_deviceTokenService release]; _deviceTokenService = nil;
     [_subscriptionService release]; _subscriptionService = nil;
-    [_twitterAuthenticator release]; _twitterAuthenticator = nil;
     
     [super dealloc];
 }
@@ -294,7 +292,7 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
         return;
     }
     [SocializeThirdPartyFacebook storeLocalCredentialsWithAccessToken:accessToken expirationDate:expirationDate];
-    [self linkToFacebookWithAccessToken:accessToken];
+    [self linkToFacebookWithAccessToken:accessToken expirationDate:expirationDate];
 }
 
 - (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret {
@@ -302,7 +300,8 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
     [_authService linkToTwitterWithAccessToken:twitterAccessToken accessTokenSecret:twitterAccessTokenSecret];
 }
 
-- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken {
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken expirationDate:(NSDate*)expirationDate {
+    [SocializeThirdPartyFacebook storeLocalCredentialsWithAccessToken:facebookAccessToken expirationDate:[NSDate distantFuture]];
     [_authService linkToFacebookWithAccessToken:facebookAccessToken];
 }
 
@@ -331,12 +330,12 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
               thirdPartyAppId:(NSString*)thirdPartyAppId
                thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
-    [_authService  authenticateWithApiKey:apiKey 
-                                apiSecret:apiSecret
-                      thirdPartyAuthToken:thirdPartyAuthToken
-                          thirdPartyAppId:thirdPartyAppId
-                           thirdPartyName:thirdPartyName
-     ];
+    NSAssert(thirdPartyName == SocializeThirdPartyAuthTypeFacebook, @"Only Facebook was/is supported in this (deprecated) call");
+
+    [Socialize storeConsumerKey:apiKey];
+    [Socialize storeConsumerSecret:apiSecret];
+    [Socialize storeFacebookAppId:thirdPartyAppId];
+    [self linkToFacebookWithAccessToken:thirdPartyAuthToken expirationDate:[NSDate distantFuture]];
 }     
 
 -(void)authenticateWithApiKey:(NSString*)apiKey
@@ -345,7 +344,18 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
          thirdPartyLocalAppId:(NSString*)thirdPartyLocalAppId 
                thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
-    [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:thirdPartyAppId thirdPartyLocalAppId:thirdPartyLocalAppId thirdPartyName:thirdPartyName];
+    NSAssert(thirdPartyName == SocializeThirdPartyAuthTypeFacebook, @"Only Facebook was/is supported in this (deprecated) call");
+    [Socialize storeConsumerKey:apiKey];
+    [Socialize storeConsumerSecret:apiSecret];
+    [Socialize storeFacebookAppId:thirdPartyAppId];
+    [Socialize storeFacebookLocalAppId:thirdPartyLocalAppId];
+
+    SocializeFacebookAuthOptions *options = [SocializeFacebookAuthOptions options];
+    options.doNotPromptForPermission = YES;
+    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:options
+                                                               display:nil
+                                                               success:nil
+                                                               failure:nil];
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey
@@ -353,7 +363,7 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
               thirdPartyAppId:(NSString*)thirdPartyAppId 
                thirdPartyName:(SocializeThirdPartyAuthType)thirdPartyName
 {
-    [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:thirdPartyAppId thirdPartyName:thirdPartyName];
+    [self authenticateWithApiKey:apiKey apiSecret:apiSecret thirdPartyAppId:thirdPartyAppId thirdPartyLocalAppId:nil thirdPartyName:thirdPartyName];
 }
 
 -(id<SocializeUser>)authenticatedUser {
@@ -407,8 +417,8 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
 
 -(void)removeAuthenticationInfo {
     [self removeSocializeAuthenticationInfo];
-//    [self removeFacebookAuthenticationInfo];
-//    [self removeTwitterAuthenticationInfo];
+    [SocializeThirdPartyFacebook removeLocalCredentials];
+    [SocializeThirdPartyTwitter removeLocalCredentials];
 }
 
 #pragma object creation

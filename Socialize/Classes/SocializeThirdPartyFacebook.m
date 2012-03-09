@@ -9,6 +9,7 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeCommonDefinitions.h"
 #import "_Socialize.h"
+#import "SocializeFacebook.h"
 
 @implementation SocializeThirdPartyFacebook
 
@@ -47,7 +48,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:accessToken forKey:@"FBAccessTokenKey"];
     [defaults setObject:expirationDate forKey:@"FBExpirationDateKey"];
-
+    
     [defaults synchronize];
 }
 
@@ -59,7 +60,7 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeFacebookAuthAccessToken];
 }
 
-+ (NSString*)facebookExpirationDate {
++ (NSDate*)facebookExpirationDate {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeFacebookAuthExpirationDate];
 }
 
@@ -101,6 +102,19 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:kSocializeFacebookAuthAccessToken];
     [defaults removeObjectForKey:kSocializeFacebookAuthExpirationDate];
+}
+
++ (SocializeFacebook*)createFacebookClient {
+    NSAssert([self available], @"Tried to create facebook instance when facebook not available");
+    NSAssert([self hasLocalCredentials], @"Tried to create facebook instance without local credentials");
+    
+    SocializeFacebook *facebook = [[[SocializeFacebook alloc] initWithAppId:[self facebookAppId]] autorelease];
+    facebook.localAppId = [self facebookLocalAppId];
+    facebook.accessToken = [self facebookAccessToken];
+    facebook.expirationDate = [self facebookExpirationDate];
+    
+    return facebook;
+    
 }
 
 @end

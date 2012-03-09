@@ -8,7 +8,8 @@
 //
 
 #import "SocializeFacebookInterface.h"
-#import "Facebook+Socialize.h"
+#import "SocializeThirdPartyFacebook.h"
+#import "SocializeFacebook.h"
 
 typedef void (^RequestCompletionBlock)(id result, NSError *error);
 
@@ -28,7 +29,7 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 
 - (SocializeFacebook*)facebook {
     if (facebook_ == nil) {
-        facebook_ = [[SocializeFacebook facebookFromSettings] retain];
+        facebook_ = [[SocializeThirdPartyFacebook createFacebookClient] retain];
     }
     
     return facebook_;
@@ -50,17 +51,7 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
     }
 }
 
-- (void)copyDefaultsToFacebookObject {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"FBAccessTokenKey"] 
-        && [defaults objectForKey:@"FBExpirationDateKey"]) {
-        self.facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
-        self.facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
-    }
-}
-
 - (void)requestWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params httpMethod:(NSString*)httpMethod completion:(void (^)(id result, NSError *error))completion {
-    [self copyDefaultsToFacebookObject];
     if (params == nil) {
         params = [NSMutableDictionary dictionary];
     }

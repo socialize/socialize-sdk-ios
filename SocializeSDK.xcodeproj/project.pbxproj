@@ -1821,10 +1821,6 @@
 		AAE94D911500258100877A7B /* SocializeThirdPartyFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE94D8E1500258100877A7B /* SocializeThirdPartyFacebook.m */; };
 		AAE94D921500258100877A7B /* SocializeThirdPartyFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE94D8E1500258100877A7B /* SocializeThirdPartyFacebook.m */; };
 		AAE94D98150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE94D97150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m */; };
-		AAE9A6E9145F39A6001A9F1D /* Facebook+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE9A6E7145F39A6001A9F1D /* Facebook+Socialize.h */; };
-		AAE9A6EA145F39A6001A9F1D /* Facebook+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE9A6E7145F39A6001A9F1D /* Facebook+Socialize.h */; };
-		AAE9A6EB145F39A6001A9F1D /* Facebook+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6E8145F39A6001A9F1D /* Facebook+Socialize.m */; };
-		AAE9A6EC145F39A6001A9F1D /* Facebook+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9A6E8145F39A6001A9F1D /* Facebook+Socialize.m */; };
 		AAEABFF414919575007C3D23 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAEABFF514919575007C3D23 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAEABFF614919575007C3D23 /* SocializeKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */; };
@@ -2933,8 +2929,6 @@
 		AAE94D8E1500258100877A7B /* SocializeThirdPartyFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeThirdPartyFacebook.m; path = Classes/SocializeThirdPartyFacebook.m; sourceTree = "<group>"; };
 		AAE94D96150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeThirdPartyAuthenticatorTests.h; path = "Test Cases/SocializeThirdPartyAuthenticatorTests.h"; sourceTree = "<group>"; };
 		AAE94D97150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeThirdPartyAuthenticatorTests.m; path = "Test Cases/SocializeThirdPartyAuthenticatorTests.m"; sourceTree = "<group>"; };
-		AAE9A6E7145F39A6001A9F1D /* Facebook+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Facebook+Socialize.h"; path = "Classes/Facebook+Socialize.h"; sourceTree = "<group>"; };
-		AAE9A6E8145F39A6001A9F1D /* Facebook+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Facebook+Socialize.m"; path = "Classes/Facebook+Socialize.m"; sourceTree = "<group>"; };
 		AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeKeyboardListener.h; path = Classes/SocializeKeyboardListener.h; sourceTree = "<group>"; };
 		AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeKeyboardListener.m; path = Classes/SocializeKeyboardListener.m; sourceTree = "<group>"; };
 		AAEB4A791458E88300A01F5B /* SocializeServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeServiceTests.h; path = "Test Cases/SocializeServiceTests.h"; sourceTree = "<group>"; };
@@ -3641,8 +3635,6 @@
 				1657EF9A13A2170A00E488CC /* NSString+UrlSerialization.m */,
 				16E33C141445D2ED006E2EB4 /* SocializeGeocoderAdapter.h */,
 				16E33C151445D2ED006E2EB4 /* SocializeGeocoderAdapter.m */,
-				AAE9A6E7145F39A6001A9F1D /* Facebook+Socialize.h */,
-				AAE9A6E8145F39A6001A9F1D /* Facebook+Socialize.m */,
 				AA88E83E147DA38900123E6F /* NSString+Socialize.h */,
 				AA88E83F147DA38900123E6F /* NSString+Socialize.m */,
 				AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */,
@@ -4754,7 +4746,6 @@
 				16C365EA14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */,
 				16C365EE14518F1600DD5421 /* UIView+BlocksKit.h in Headers */,
 				16C365F214518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */,
-				AAE9A6EA145F39A6001A9F1D /* Facebook+Socialize.h in Headers */,
 				AAD4B40F1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */,
 				AAC201981460CFD30045FDAB /* UINavigationController+Socialize.h in Headers */,
 				AA5ACEF01467C3F300790B3D /* SocializeProfileEditValueViewController.h in Headers */,
@@ -4893,7 +4884,6 @@
 				16C365E914518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */,
 				16C365ED14518F1600DD5421 /* UIView+BlocksKit.h in Headers */,
 				16C365F114518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */,
-				AAE9A6E9145F39A6001A9F1D /* Facebook+Socialize.h in Headers */,
 				AAD4B40E1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */,
 				AAC201971460CFD30045FDAB /* UINavigationController+Socialize.h in Headers */,
 				AA5ACEEF1467C3F200790B3D /* SocializeProfileEditValueViewController.h in Headers */,
@@ -6749,7 +6739,6 @@
 				16C365EB14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				16C365EF14518F1600DD5421 /* UIView+BlocksKit.m in Sources */,
 				16C365F314518F1600DD5421 /* UIWebView+BlocksKit.m in Sources */,
-				AAE9A6EB145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAD4B4181460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m in Sources */,
 				AAD4B4201460C19E00F39D0A /* SocializeProfileEditValueViewController.m in Sources */,
 				AAD4B4221460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */,
@@ -7126,7 +7115,6 @@
 				16C365EC14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				16C365F014518F1600DD5421 /* UIView+BlocksKit.m in Sources */,
 				16C365F414518F1600DD5421 /* UIWebView+BlocksKit.m in Sources */,
-				AAE9A6EC145F39A6001A9F1D /* Facebook+Socialize.m in Sources */,
 				AAD4B4191460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m in Sources */,
 				AAD4B4211460C1A000F39D0A /* SocializeProfileEditValueViewController.m in Sources */,
 				AAD4B4231460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */,
