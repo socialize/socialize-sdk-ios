@@ -95,4 +95,6 @@
 /**Entity metadata*/
 @property (nonatomic, copy) NSString * meta;
 
++ (SocializeEntity*)entityWithKey:(NSString*)key name:(NSString*)name;
+
 @end

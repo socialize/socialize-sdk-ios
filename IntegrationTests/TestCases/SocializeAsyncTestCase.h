@@ -33,5 +33,7 @@
 - (void)createEntity:(id<SocializeEntity>)entity;
 - (void)getEntityWithURL:(NSString*)url;
 - (void)getSubscriptionsForEntityKey:(NSString*)entityKey;
+- (void)createComments:(NSArray*)comments;
+
 //- (void)getViewsForURL:(NSString*)url;
 @end

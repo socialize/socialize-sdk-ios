@@ -130,4 +130,15 @@
  */
 -(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat subscribe:(BOOL)subscribe;
 
+/**
+ * Create multiple comments at once
+ */
+- (void)createComments:(NSArray*)comments;
+
+/**
+ * Create one comment
+ */
+- (void)createComment:(id<SocializeComment>)comment;
+
+
 @end

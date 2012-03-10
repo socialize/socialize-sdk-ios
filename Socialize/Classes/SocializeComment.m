@@ -12,6 +12,7 @@
 @implementation SocializeComment
 
 @synthesize text = _text;
+@synthesize subscribe = _subscribe;
 
 -(void)dealloc
 {
@@ -21,6 +22,13 @@
 
 -(NSString *) displayText {
     return self.text;
+}
+
++ (SocializeComment*)commentWithEntity:(id<SocializeEntity>)entity text:(NSString*)text {
+    SocializeComment *comment = [[[self alloc] init] autorelease];
+    comment.entity = entity;
+    comment.text = text;
+    return comment;
 }
 
 @end

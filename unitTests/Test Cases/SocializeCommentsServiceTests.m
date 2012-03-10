@@ -237,6 +237,21 @@ static const int singleCommentId = 1;
     [_service request:nil didLoadRawResponse:jsonData];
 }
 
+- (void)testCreateComments {
+    SocializeEntity *entity1 = [SocializeEntity entityWithKey:@"key1" name:@"name1"];
+    SocializeEntity *entity2 = [SocializeEntity entityWithKey:@"key2" name:@"name2"];
+    
+    SocializeComment *comment1 = [SocializeComment commentWithEntity:entity1 text:@"first comment"];
+    SocializeComment *comment2 = [SocializeComment commentWithEntity:entity2 text:@"second comment"];
+     
+    [[[_mockService expect] andDo1:^(SocializeRequest *request) {
+        NSArray *params = [request params];
+        GHAssertTrue([params count] == 2, @"Bad count");
+    }] executeRequest:OCMOCK_ANY];
+
+    [_service createComments:[NSArray arrayWithObjects:comment1, comment2, nil]];
+}
+
 #pragma mark helper methods
 
 

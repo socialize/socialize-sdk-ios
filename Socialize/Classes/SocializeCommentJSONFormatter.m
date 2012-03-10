@@ -55,6 +55,8 @@
     
     [dictionaryRepresentation setObject:[comment text] forKey:@"text"];
     
+    [dictionaryRepresentation setObject:[NSNumber numberWithBool:[comment subscribe]] forKey:@"subscribe"];
+    
     [super doToDictionary:dictionaryRepresentation fromObject:fromObject];
 }
 

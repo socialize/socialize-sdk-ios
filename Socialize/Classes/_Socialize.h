@@ -669,6 +669,16 @@ otherwise you will get a failure.
  */
 -(void) createCommentForEntity: (id<SocializeEntity>) entity comment: (NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat subscribe:(BOOL)subscribe;
 
+/**
+ * Create a comment (invokes service:didCreate:)
+ */
+- (void)createComment:(id<SocializeComment>)comment;
+
+/**
+ * Create multiple comment (invokes service:didCreate:)
+ */
+- (void)createComments:(NSArray*)comments;
+
 /** Socialize Notification Service **/
 //registers a device token.  Call this method when the developer gets the callback for:
 //didRegisterForRemoteNotificationsWithDeviceToken from the system

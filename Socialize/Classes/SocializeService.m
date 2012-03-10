@@ -124,12 +124,19 @@
     if (request.operationType == SocializeRequestOperationTypeInferred) {
     
         if ([request.httpMethod isEqualToString:@"POST"]){
-            if ([array count])
-                if([self.delegate respondsToSelector:@selector(service:didCreate:)])
+            if ([array count] > 1) {
+                if([self.delegate respondsToSelector:@selector(service:didCreate:)]) {
+                    [self.delegate service:self didCreate:array];
+                }
+            } else if ([array count] == 1) {
+                if([self.delegate respondsToSelector:@selector(service:didCreate:)]) {
                     [self.delegate service:self didCreate:[array objectAtIndex:0]];
-            else
-                if([self.delegate respondsToSelector:@selector(service:didCreate:)])
+                }
+            } else {
+                if([self.delegate respondsToSelector:@selector(service:didCreate:)]) {
                     [self.delegate service:self didCreate:nil];
+                }
+            }
         }
         else if ([request.httpMethod isEqualToString:@"GET"] && [self.delegate respondsToSelector:@selector(service:didFetchElements:)])
             [self.delegate service:self didFetchElements:array];

@@ -1431,7 +1431,6 @@
 		AAA5325A1475C7A8007EE0BE /* socialize-comment-facebook-enabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA5324E1475C7A8007EE0BE /* socialize-comment-facebook-enabled-button.png */; };
 		AAA5325B1475C7A8007EE0BE /* socialize-comment-facebook-enabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA5324E1475C7A8007EE0BE /* socialize-comment-facebook-enabled-button.png */; };
 		AAA5325C1475C7A8007EE0BE /* socialize-comment-facebook-enabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA5324E1475C7A8007EE0BE /* socialize-comment-facebook-enabled-button.png */; };
-		AAAC19931469B11200A083A6 /* TestFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAC19921469B11200A083A6 /* TestFacebookInterface.m */; };
 		AAADF8F71504175E009E5493 /* SocializeFacebookAuthHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AAADF8F51504175E009E5493 /* SocializeFacebookAuthHandler.h */; };
 		AAADF8F81504175E009E5493 /* SocializeFacebookAuthHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AAADF8F51504175E009E5493 /* SocializeFacebookAuthHandler.h */; };
 		AAADF8F91504175E009E5493 /* SocializeFacebookAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AAADF8F61504175E009E5493 /* SocializeFacebookAuthHandler.m */; };
@@ -2778,8 +2777,6 @@
 		AA9E0C8D144E076D00D2C37F /* GenericViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericViewController.xib; sourceTree = "<group>"; };
 		AAA5324D1475C7A8007EE0BE /* socialize-comment-facebook-disabled-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-facebook-disabled-button.png"; path = "Resources/socialize-comment-facebook-disabled-button.png"; sourceTree = "<group>"; };
 		AAA5324E1475C7A8007EE0BE /* socialize-comment-facebook-enabled-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-facebook-enabled-button.png"; path = "Resources/socialize-comment-facebook-enabled-button.png"; sourceTree = "<group>"; };
-		AAAC19911469B11200A083A6 /* TestFacebookInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFacebookInterface.h; sourceTree = "<group>"; };
-		AAAC19921469B11200A083A6 /* TestFacebookInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFacebookInterface.m; sourceTree = "<group>"; };
 		AAADF8F51504175E009E5493 /* SocializeFacebookAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebookAuthHandler.h; path = Classes/SocializeFacebookAuthHandler.h; sourceTree = "<group>"; };
 		AAADF8F61504175E009E5493 /* SocializeFacebookAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebookAuthHandler.m; path = Classes/SocializeFacebookAuthHandler.m; sourceTree = "<group>"; };
 		AAAF7F2F14CA208900EA387C /* SocializePostCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializePostCommentViewController.xib; path = Resources/SocializePostCommentViewController.xib; sourceTree = "<group>"; };
@@ -4047,8 +4044,6 @@
 				AAE795AD14684F1E00BEAD28 /* TestActivityServices.m */,
 				AA973CC01468A02800DAE945 /* TestShareServices.h */,
 				AA973CC11468A02800DAE945 /* TestShareServices.m */,
-				AAAC19911469B11200A083A6 /* TestFacebookInterface.h */,
-				AAAC19921469B11200A083A6 /* TestFacebookInterface.m */,
 				AAB127F014994A0C009AF443 /* TestSubscriptionService.h */,
 				AAB127F114994A0C009AF443 /* TestSubscriptionService.m */,
 				AAC4931A149A92C5000EEA7E /* TestCommentServices.h */,
@@ -6963,7 +6958,6 @@
 				AA4132C3146852AE006D906F /* StringHelper.m in Sources */,
 				AA973CC21468A02800DAE945 /* TestShareServices.m in Sources */,
 				AA973CF51468A6AB00DAE945 /* TestEntityServices.m in Sources */,
-				AAAC19931469B11200A083A6 /* TestFacebookInterface.m in Sources */,
 				AAB127F214994A0C009AF443 /* TestSubscriptionService.m in Sources */,
 				AAC4931C149A92C5000EEA7E /* TestCommentServices.m in Sources */,
 				AA9D780214BE191A00D76D6B /* SampleEntityLoader.m in Sources */,

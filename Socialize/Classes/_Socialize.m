@@ -483,6 +483,13 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
     [_commentsService createCommentForEntity:entity comment:comment longitude:lng latitude:lat subscribe:subscribe];    
 }
 
+- (void)createComment:(id<SocializeComment>)comment {
+    [_commentsService createComment:comment];
+}
+
+- (void)createComments:(NSArray*)comments {
+    [_commentsService createComments:comments];
+}
 
 #pragma entity related stuff
 

@@ -29,4 +29,11 @@
     [super dealloc];
 }
 
++ (SocializeEntity*)entityWithKey:(NSString*)key name:(NSString*)name {
+    SocializeEntity *entity = [[[self alloc] init] autorelease];
+    entity.key = key;
+    entity.name = name;
+    return entity;
+}
+
 @end

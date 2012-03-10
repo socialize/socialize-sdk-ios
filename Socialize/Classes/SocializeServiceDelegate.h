@@ -58,7 +58,7 @@
  @param object Successfully created <SocializeObject>.
  @warning *Note:* User should convert object to expected protocol type. For example <SocializeComment> or <SocializeLike>
  */
--(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object;
+-(void)service:(SocializeService*)service didCreate:(id)objectOrObjects;
 
 /**@name Fetch callback*/
 

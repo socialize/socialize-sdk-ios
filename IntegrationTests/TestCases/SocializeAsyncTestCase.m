@@ -87,7 +87,13 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
 
 - (void)createEntityWithURL:(NSString*)url name:(NSString*)name {
     [self prepare];
-    [self.socialize createEntityWithUrl:url andName:name];
+    [self.socialize createEntityWithKey:url name:name];
+    [self waitForStatus:kGHUnitWaitStatusSuccess];
+}
+
+- (void)createComments:(NSArray*)comments {
+    [self prepare];
+    [self.socialize createComments:comments];
     [self waitForStatus:kGHUnitWaitStatusSuccess];
 }
 

@@ -44,4 +44,17 @@
     GHAssertEqualObjects(fetchedComment.lng, longitude, @"bad longitude");
 }
 
+- (void)testCreateMultipleComments {
+    NSString *key1 = [self testURL:[NSString stringWithFormat:@"%s/comment1", _cmd]];
+    NSString *key2 = [self testURL:[NSString stringWithFormat:@"%s/comment2", _cmd]];
+    SocializeEntity *entity1 = [SocializeEntity entityWithKey:key1 name:@"name1"];
+    SocializeEntity *entity2 = [SocializeEntity entityWithKey:key2 name:@"name2"];
+
+    SocializeComment *comment1 = [SocializeComment commentWithEntity:entity1 text:@"first comment"];
+    SocializeComment *comment2 = [SocializeComment commentWithEntity:entity2 text:@"second comment"];
+    [self createComments:[NSArray arrayWithObjects:comment1, comment2, nil]];
+    
+    GHAssertTrue([self.createdObject count] == 2, @"bad count");
+}
+
 @end

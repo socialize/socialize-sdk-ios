@@ -22,6 +22,13 @@
  */
 -(void)setText:(NSString *)text;
 
+-(BOOL)subscribe;
+/**
+ Set subscribed
+ @param subscribe If yes, subscribe user to push notifications for new comments on the entity
+ */
+-(void)setSubscribe:(BOOL)subscribe;
+
 @end
 
 /**Private implementation of <SocializeComment> protocol.*/
@@ -32,5 +39,8 @@
 
 /**Comment text*/
 @property (nonatomic, copy) NSString * text;
+@property (nonatomic, assign) BOOL subscribe;
+
++ (SocializeComment*)commentWithEntity:(id<SocializeEntity>)entity text:(NSString*)text;
 
 @end

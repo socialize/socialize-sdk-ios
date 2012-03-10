@@ -189,6 +189,14 @@ static SocializeObjectFactory *sharedObjectFactory;
     return  result;
 }
 
+- (NSArray*)createDictionaryRepresentationArrayForObjects:(NSArray*)socializeObjects {
+    NSMutableArray *params = [NSMutableArray arrayWithCapacity:[socializeObjects count]];
+    for (id<SocializeObject>object in socializeObjects) {
+        [params addObject:[self createDictionaryRepresentationOfObject:object]];
+    }
+    return params;
+}
+
 -(SocializeObjectFormatter *)formatterForObject:(id<SocializeObject>)socializeObject
 {
     for (NSString * prototypeProtocolName in [formatterDictionary allKeys]) 
