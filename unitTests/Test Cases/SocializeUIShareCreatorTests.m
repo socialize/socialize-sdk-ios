@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeShareCreatorTests.h"
+#import "SocializeUIShareCreatorTests.h"
 #import "SocializeUIDisplayProxy.h"
 #import "SocializeUIDisplay.h"
 #import "UIActionSheet+BlocksKit.h"
@@ -79,7 +79,7 @@ enum {
 + (BOOL)canSendMail { return YES; }
 @end
 
-@implementation SocializeShareCreatorTests
+@implementation SocializeUIShareCreatorTests
 @synthesize shareCreator = shareCreator_;
 @synthesize mockMailComposerClass = mockMailComposerClass_;
 @synthesize mockMessageComposerClass = mockMessageComposerClass_;

@@ -10,7 +10,7 @@
 #import "SocializeUIShareCreator.h"
 #import "SocializeActionTests.h"
 
-@interface SocializeShareCreatorTests : SocializeActionTests
+@interface SocializeUIShareCreatorTests : SocializeActionTests
 @property (nonatomic, retain) SocializeUIShareCreator *shareCreator;
 @property (nonatomic, retain) id mockMessageComposerClass;
 @property (nonatomic, retain) id mockMailComposerClass;
