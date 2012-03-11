@@ -25,3 +25,7 @@
 + (SocializeThirdPartyAuthType)socializeAuthType;
 
 @end
+
+@interface SocializeThirdParty : NSObject
++ (NSArray*)allThirdParties;
+@end

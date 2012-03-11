@@ -90,7 +90,7 @@ enum {
 - (id)createAction {
     __block id weakSelf = self;
 
-    return [[[SocializeShareCreator alloc] initWithDisplayObject:nil
+    return [[[SocializeUIShareCreator alloc] initWithDisplayObject:nil
                                                          display:self.mockDisplay
                                                          options:nil
                                                          success:^{
@@ -119,7 +119,7 @@ enum {
     self.disableSMS = NO;
     self.disableMail = NO;
     
-    self.shareCreator = (SocializeShareCreator*)self.action;
+    self.shareCreator = (SocializeUIShareCreator*)self.action;
     
     self.mockMessageComposerClass = [OCMockObject classMockForClass:[MFMessageComposeViewController class]];
     self.shareCreator.messageComposerClass = self.mockMessageComposerClass;

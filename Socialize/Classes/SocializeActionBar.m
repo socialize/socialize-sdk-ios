@@ -40,10 +40,10 @@
 #import "SocializePostShareViewController.h"
 #import "SocializeEntityService.h"
 #import "SocializeProfileViewController.h"
-#import "SocializeShareOptions.h"
+#import "SocializeUIShareOptions.h"
 #import "NSError+Socialize.h"
 #import "SocializeUIDisplayProxy.h"
-#import "SocializeShareCreator.h"
+#import "SocializeUIShareCreator.h"
 
 @interface SocializeActionBar()
 @property (nonatomic, retain) id<SocializeView> entityView;
@@ -243,15 +243,15 @@
 
 -(void)shareButtonTouched: (id) sender
 {
-    SocializeShareOptions *options = [SocializeShareOptions shareOptionsWithEntity:self.entity];
-    [SocializeShareCreator createShareWithOptions:options
-                                     displayProxy:self.displayProxy
-                                          success:^{}
-                                          failure:^(NSError *error) {
-                                              if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
-                                                  [self showAlertWithText:[error localizedDescription] andTitle:@"Share Failed"];
-                                              }
-                                          }];
+    SocializeUIShareOptions *options = [SocializeUIShareOptions UIShareOptionsWithEntity:self.entity];
+    [SocializeUIShareCreator createShareWithOptions:options
+                                       displayProxy:self.displayProxy
+                                            success:^{}
+                                            failure:^(NSError *error) {
+                                                if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
+                                                    [self showAlertWithText:[error localizedDescription] andTitle:@"Share Failed"];
+                                                }
+                                            }];
 }
 
 - (void)reloadEntity {

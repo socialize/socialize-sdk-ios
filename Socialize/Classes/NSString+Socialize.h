@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol SocializeObject;
+@protocol SocializeEntity;
 
 @interface NSString (Socialize)
 +(NSString *) stringWithHumanReadableIntegerAndSuffixSinceDate:(NSDate *)date;
@@ -16,5 +17,7 @@
 + (NSString*)socializeRedirectURL:(NSString*)path;
 + (NSString*)stringWithSocializeURLForObject:(id<SocializeObject>)object;
 + (NSString*)stringWithSocializeURLForApplication;
++ (NSString*)stringWithTitleForSocializeEntity:(id<SocializeEntity>)entity;
++ (NSString*)stringWithSocializeAppDownloadPlug;
 
 @end

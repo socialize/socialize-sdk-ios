@@ -1,5 +1,5 @@
 //
-//  SocializeShareCreator.h
+//  SocializeLikeCreator.h
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 3/9/12.
@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SocializeActivityCreator.h"
-#import "SocializeShare.h"
+#import "SocializeLike.h"
 
-@interface SocializeShareCreator : SocializeActivityCreator
-@property (nonatomic, readonly) id<SocializeShare> share;
+@interface SocializeLikeCreator : SocializeActivityCreator
+@property (nonatomic, readonly) id<SocializeLike> like;
+
 @end

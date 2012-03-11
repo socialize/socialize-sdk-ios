@@ -44,7 +44,7 @@
 @class SocializeSubscriptionService;
 @class UIImage;
 @class SocializeFacebook;
-@class SocializeShareOptions;
+@class SocializeUIShareOptions;
 @class SocializeTwitterAuthOptions;
 
 extern NSString *const kSocializeDisableBrandingKey;
@@ -754,7 +754,7 @@ otherwise you will get a failure.
  */
 - (void)_registerDeviceTokenString:(NSString*)deviceTokenString;
 
-+ (void)createShareWithOptions:(SocializeShareOptions*)options
++ (void)createShareWithOptions:(SocializeUIShareOptions*)options
                        display:(id)display
                        success:(void(^)())success
                        failure:(void(^)(NSError *error))failure;

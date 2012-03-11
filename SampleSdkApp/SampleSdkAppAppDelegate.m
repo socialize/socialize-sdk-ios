@@ -33,8 +33,11 @@
     return [[UIApplication sharedApplication] delegate];
 }
 
+//#import "SocializeCommentCreator.h"
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
+    [SocializeCommentCreator in
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];  
 
     UIViewController* rootViewController = nil;

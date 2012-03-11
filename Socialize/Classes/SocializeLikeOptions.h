@@ -1,5 +1,5 @@
 //
-//  SocializeShareOptions.h
+//  SocializeLikeOptions.h
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 3/9/12.
@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "SocializeActivityOptions.h"
 
-@interface SocializeShareOptions : SocializeActivityOptions
+@interface SocializeLikeOptions : SocializeActivityOptions
 
 @end

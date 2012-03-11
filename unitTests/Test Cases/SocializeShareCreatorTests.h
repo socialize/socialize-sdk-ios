@@ -7,11 +7,11 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
-#import "SocializeShareCreator.h"
+#import "SocializeUIShareCreator.h"
 #import "SocializeActionTests.h"
 
 @interface SocializeShareCreatorTests : SocializeActionTests
-@property (nonatomic, retain) SocializeShareCreator *shareCreator;
+@property (nonatomic, retain) SocializeUIShareCreator *shareCreator;
 @property (nonatomic, retain) id mockMessageComposerClass;
 @property (nonatomic, retain) id mockMailComposerClass;
 @property (nonatomic, retain) id mockApplication;

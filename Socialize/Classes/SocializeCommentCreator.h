@@ -7,7 +7,11 @@
 //
 
 #import "SocializeAction.h"
+#import "SocializeActivityCreator.h"
+#import "SocializeComment.h"
+#import "SocializeCommentOptions.h"
 
-@interface SocializeCommentCreator : SocializeAction
+@interface SocializeCommentCreator : SocializeActivityCreator
+@property (nonatomic, readonly) id<SocializeComment> comment;
 
 @end

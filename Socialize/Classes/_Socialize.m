@@ -25,8 +25,8 @@
 #import "StringHelper.h"
 #import "SocializeTwitterAuthenticator.h"
 #import "SocializeDeviceTokenSender.h"
-#import "SocializeShareCreator.h"
-#import "SocializeShareOptions.h"
+#import "SocializeUIShareCreator.h"
+#import "SocializeUIShareOptions.h"
 #import "SocializeTwitterAuthOptions.h"
 #import "SocializeFacebookAuthHandler.h"
 #import "SocializeThirdPartyTwitter.h"
@@ -609,8 +609,8 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
     [_deviceTokenService registerDeviceTokenString:deviceTokenString];
 }
 
-+ (void)createShareWithOptions:(SocializeShareOptions*)options display:(id)display success:(void(^)())success failure:(void(^)(NSError *error))failure {
-    [SocializeShareCreator createShareWithOptions:options display:display success:success failure:failure];
++ (void)createShareWithOptions:(SocializeUIShareOptions*)options display:(id)display success:(void(^)())success failure:(void(^)(NSError *error))failure {
+    [SocializeUIShareCreator createShareWithOptions:options display:display success:success failure:failure];
 }
 
 @end

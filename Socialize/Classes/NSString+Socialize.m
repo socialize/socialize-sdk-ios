@@ -10,6 +10,7 @@
 #import "SocializeConfiguration.h"
 #import "SocializeObject.h"
 #import "SocializeCommonDefinitions.h"
+#import "SocializeEntity.h"
 
 @implementation NSString (Socialize)
 
@@ -54,5 +55,17 @@
     return url;
 }
 
++ (NSString*)stringWithTitleForSocializeEntity:(id<SocializeEntity>)entity {
+    NSString *title = entity.name;
+    if ([title length] == 0) {
+        title = entity.key;
+    }
+    
+    return title;
+}
+
++ (NSString*)stringWithSocializeAppDownloadPlug {
+    return NSLocalizedString(@"Download the app now to join the conversation.", @"");
+}
 
 @end
