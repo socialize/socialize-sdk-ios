@@ -29,7 +29,9 @@ static NSString *SocializeDefaultErrorStrings[SocializeNumErrors] = {
     @"SMS Not Available",
     @"Email Not Available",
     @"Failed to Create Share",
-    @"User Cancelled Share"
+    @"User Cancelled Share",
+    @"Third party is not linked",
+    @"Third party is not available"
 };
 
 NSString *SocializeDefaultErrorStringForCode(NSUInteger code) {

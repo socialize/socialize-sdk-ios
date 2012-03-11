@@ -46,8 +46,8 @@
 + (void)storeLocalCredentialsWithAccessToken:(NSString*)accessToken
                               expirationDate:(NSDate*)expirationDate {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:accessToken forKey:@"FBAccessTokenKey"];
-    [defaults setObject:expirationDate forKey:@"FBExpirationDateKey"];
+    [defaults setObject:accessToken forKey:kSocializeFacebookAuthAccessToken];
+    [defaults setObject:expirationDate forKey:kSocializeFacebookAuthExpirationDate];
     
     [defaults synchronize];
 }

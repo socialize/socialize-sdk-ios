@@ -12,7 +12,6 @@
 #import "SocializeActivity.h"
 
 @interface SocializeActivityCreator : SocializeAction
-@property (nonatomic, retain) NSSet *thirdParties;
 @property (nonatomic, retain) SocializeActivityOptions *options;
 @property (nonatomic, retain) id<SocializeActivity> activity;
 

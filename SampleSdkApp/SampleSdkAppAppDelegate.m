@@ -33,11 +33,22 @@
     return [[UIApplication sharedApplication] delegate];
 }
 
-//#import "SocializeCommentCreator.h"
+#import "SocializeCommentCreator.h"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
-    [SocializeCommentCreator in
+    SocializeEntity *entity = [SocializeEntity entityWithKey:@"key" name:@"name"];
+    SocializeComment *comment = [SocializeComment commentWithEntity:entity text:@"some comment 2"];
+    
+    SocializeCommentOptions *options = [SocializeCommentOptions options];
+    options.thirdParties = [NSArray arrayWithObjects:@"facebook", nil];
+    [SocializeCommentCreator createComment:comment options:options display:nil
+                                   success:^{
+                                       NSLog(@"Done");
+                                   } failure:^(NSError* error) {
+                                       NSLog(@"Failed: %@", error);
+                                   }];
+    
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];  
 
     UIViewController* rootViewController = nil;

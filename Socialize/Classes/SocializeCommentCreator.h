@@ -12,6 +12,12 @@
 #import "SocializeCommentOptions.h"
 
 @interface SocializeCommentCreator : SocializeActivityCreator
++ (void)createComment:(id<SocializeComment>)comment
+              options:(SocializeCommentOptions*)options
+              display:(id)display
+              success:(void(^)())success
+              failure:(void(^)(NSError *error))failure;
+
 @property (nonatomic, readonly) id<SocializeComment> comment;
 
 @end

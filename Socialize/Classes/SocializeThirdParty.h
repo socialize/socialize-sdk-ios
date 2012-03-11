@@ -28,4 +28,6 @@
 
 @interface SocializeThirdParty : NSObject
 + (NSArray*)allThirdParties;
++ (Class<SocializeThirdParty>)thirdPartyWithName:(NSString*)name;
+
 @end

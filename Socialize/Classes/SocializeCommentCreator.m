@@ -9,31 +9,23 @@
 #import "SocializeCommentCreator.h"
 #import "_Socialize.h"
 #import "SocializeUIDisplayProxy.h"
+
 @implementation SocializeCommentCreator
 @synthesize comment = comment_;
 
-//+ (void)createComment:(id<SocializComment>)comment
-//          withOptions:(SocializeCommentOptions*)options
-//              display:(id)display
-//              success:(void(^)())success
-//              failure:(void(^)(NSError *error))failure {
-//    
-////    SocializeCommentCreator *comment = [[[SocializeCommentCreator alloc]
-////                                         initWithDisplayProxy:display activity:comment options:<#(SocializeActivityOptions *)#> success:<#^(void)success#> failure:<#^(NSError *error)failure#>
-//}
-
-- (id)initWithComment:(id<SocializeComment>)comment
-              options:(SocializeActivityOptions*)options
++ (void)createComment:(id<SocializeComment>)comment
+              options:(SocializeCommentOptions*)options
               display:(id)display
-                   success:(void(^)())success
-                   failure:(void(^)(NSError *error))failure {
+              success:(void(^)())success
+              failure:(void(^)(NSError *error))failure {
     
-//    return [super initWithDisplayObject:nil display:<#(id)#> success:<#^(void)success#> failure:<#^(NSError *error)failure#>
-//                              activity:activity
-//                               options:options
-//                               success:success
-//                               failure:failure];
-    return nil;
+    SocializeCommentCreator *creator = [[[SocializeCommentCreator alloc] initWithActivity:comment
+                                                                                  options:options
+                                                                             displayProxy:nil
+                                                                                  display:display] autorelease];
+    creator.successBlock = success;
+    creator.failureBlock = failure;
+    [SocializeAction executeAction:creator];
 }
 
 - (id<SocializeComment>)comment {

@@ -16,4 +16,15 @@
 + (NSArray*)allThirdParties {
     return [NSArray arrayWithObjects:[SocializeThirdPartyTwitter class], [SocializeThirdPartyFacebook class], nil];
 }
+
++ (Class<SocializeThirdParty>)thirdPartyWithName:(NSString*)name {
+    name = [name lowercaseString];
+    for (Class<SocializeThirdParty> thirdParty in [self allThirdParties]) {
+        if ([[[thirdParty thirdPartyName] lowercaseString] isEqualToString:name]) {
+            return thirdParty;
+        }
+    }
+    return nil;
+}
+
 @end

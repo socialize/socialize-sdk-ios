@@ -12,6 +12,8 @@
 #import "_Socialize.h"
 #import "SocializeThirdParty.h"
 #import "SocializeUIDisplayProxy.h"
+#import "SocializeThirdPartyFacebook.h"
+#import "SocializeThirdPartyTwitter.h"
 
 @interface SocializeActivityCreator ()
 @property (nonatomic, assign) BOOL finishedServerCreate;
@@ -19,7 +21,6 @@
 @end
 
 @implementation SocializeActivityCreator
-@synthesize thirdParties = thirdParties_;
 @synthesize options = options_;
 @synthesize activity = activity_;
 
@@ -27,7 +28,6 @@
 @synthesize postedToFacebookWall = postedToFacebookWall_;
 
 - (void)dealloc {
-    self.thirdParties = nil;
     self.options = nil;
     self.activity = nil;
     
@@ -45,32 +45,6 @@
     return self;
 }
     
-- (NSSet*)thirdParties {
-    if (thirdParties_ == nil) {
-        thirdParties_ = [[NSMutableSet alloc] init];
-        
-        NSMutableSet *newThirdParties = [NSMutableSet set];
-        if (self.options.thirdParties != nil) {
-            // Custom third parties list
-            for (NSString *thirdParty in self.options.thirdParties) {
-                [newThirdParties addObject:[thirdParty lowercaseString]];
-            }
-        } else {
-            // Use all linked third parties
-            for (Class<SocializeThirdParty> thirdParty in [SocializeThirdParty allThirdParties]) {
-                [newThirdParties addObject:[[thirdParty thirdPartyName] lowercaseString]];
-            }
-        }
-        thirdParties_ = newThirdParties;
-    }
-    
-    return thirdParties_;
-}
-
-- (void)verifyThirdParties {
-    
-}
-
 - (void)createActivityOnSocializeServer {
     NSAssert(NO, @"Not implemented");
 }
@@ -111,12 +85,22 @@
     return nil;
 }
 
+- (BOOL)shouldPostToThirdParty:(Class<SocializeThirdParty>)thirdParty {
+    for (NSString *name in self.options.thirdParties) {
+        if ([[name lowercaseString] isEqualToString:[[thirdParty thirdPartyName] lowercaseString]]) {
+            return YES;
+        }
+    }
+    
+    return [thirdParty isLinkedToSocialize];
+}
+
 - (BOOL)shouldPostToFacebook {
-    return [self.thirdParties containsObject:@"facebook"];
+    return [self shouldPostToThirdParty:[SocializeThirdPartyFacebook class]];
 }
 
 - (BOOL)shouldPostToTwitter {
-    return [self.thirdParties containsObject:@"twitter"];
+    return [self shouldPostToThirdParty:[SocializeThirdPartyTwitter class]];
 }
 
 - (void)prepareActivityForCreate {
@@ -167,7 +151,25 @@
     [self succeed];
 }
 
+- (BOOL)verifyThirdPartiesFromOptions {
+    for (NSString *thirdPartyName in self.options.thirdParties) {
+        Class<SocializeThirdParty> thirdParty = [SocializeThirdParty thirdPartyWithName:thirdPartyName];
+        if (thirdParty == nil) {
+            [self failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorThirdPartyNotAvailable]];
+            return NO;
+        } else if (![thirdParty isLinkedToSocialize]) {
+            [self failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorThirdPartyNotLinked]];
+            return NO;
+        }
+    }
+    return YES;
+}
+
 - (void)executeAction {
+    if (![self verifyThirdPartiesFromOptions]) {
+        return;
+    }
+    
     [self tryToFinishCreatingActivity];
 }
 

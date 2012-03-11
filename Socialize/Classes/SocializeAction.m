@@ -55,6 +55,7 @@ typedef enum {
             displayProxy = [SocializeUIDisplayProxy UIDisplayProxyWithObject:self display:display];
         }
         self.displayProxy = displayProxy;
+        self.options = options;
     }
     return self;
 }

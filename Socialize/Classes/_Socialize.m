@@ -78,7 +78,7 @@ NSString *const kSocializeTwitterStringForAPI = @"Twitter";
 NSString *const kSocializeFacebookAuthAppId = SOCIALIZE_FACEBOOK_APP_ID;
 NSString *const kSocializeFacebookAuthLocalAppId = SOCIALIZE_FACEBOOK_LOCAL_APP_ID;
 NSString *const kSocializeFacebookAuthAccessToken = @"kSocializeFacebookAuthAccessToken";
-NSString *const kSocializeFacebookAuthExpirationDate = @"kSocializeFacebookAuthAccessToken";
+NSString *const kSocializeFacebookAuthExpirationDate = @"kSocializeFacebookAuthExpirationDate";
 
 NSString *const kSocializeFacebookStringForAPI = @"FaceBook";
 
