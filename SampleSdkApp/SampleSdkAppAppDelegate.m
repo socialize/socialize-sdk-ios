@@ -41,7 +41,7 @@
     SocializeComment *comment = [SocializeComment commentWithEntity:entity text:@"some comment 2"];
     
     SocializeCommentOptions *options = [SocializeCommentOptions options];
-    options.thirdParties = [NSArray arrayWithObjects:@"facebook", nil];
+//    options.thirdParties = [NSArray arrayWithObjects:@"facebook", nil];
     [SocializeCommentCreator createComment:comment options:options display:nil
                                    success:^{
                                        NSLog(@"Done");

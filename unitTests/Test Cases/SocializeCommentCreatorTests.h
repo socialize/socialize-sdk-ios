@@ -7,7 +7,9 @@
 //
 
 #import "SocializeActionTests.h"
+#import "SocializeCommentCreator.h"
 
 @interface SocializeCommentCreatorTests : SocializeActionTests
+@property (nonatomic, retain) SocializeCommentCreator *commentCreator;
 
 @end

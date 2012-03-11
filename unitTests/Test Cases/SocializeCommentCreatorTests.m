@@ -9,5 +9,6 @@
 #import "SocializeCommentCreatorTests.h"
 
 @implementation SocializeCommentCreatorTests
+@synthesize commentCreator = commentCreator_;
 
 @end
