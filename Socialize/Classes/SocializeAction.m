@@ -32,6 +32,7 @@ typedef enum {
 @synthesize finishedLock = finishedLock_;
 @synthesize failureBlock = failureBlock_;
 @synthesize successBlock = successBlock_;
+@synthesize options = options_;
 
 - (void)dealloc {
     [socialize_ setDelegate:nil];
@@ -40,25 +41,32 @@ typedef enum {
     self.finishedLock = nil;
     self.failureBlock = nil;
     self.successBlock = nil;
+    self.options = nil;
     
     [super dealloc];
 }
 
-- (id)initWithDisplayObject:(id)displayObject
-                    display:(id)display
-                    success:(void(^)())success
-                    failure:(void(^)(NSError *error))failure {
+- (id)initWithOptions:(SocializeOptions*)options
+         displayProxy:(SocializeUIDisplayProxy*)displayProxy
+              display:(id<SocializeUIDisplay>)display {
     
     if (self = [super init]) {
-        if (displayObject == nil) {
-            displayObject = self;
+        if (displayProxy == nil) {
+            displayProxy = [SocializeUIDisplayProxy UIDisplayProxyWithObject:self display:display];
         }
-        
-        self.displayProxy = [SocializeUIDisplayProxy UIDisplayProxyWithObject:displayObject display:display];
-        self.successBlock = success;
-        self.failureBlock = failure;
+        self.displayProxy = displayProxy;
     }
     return self;
+}
+
+- (id)initWithOptions:(SocializeOptions*)options
+         displayProxy:(SocializeUIDisplayProxy*)displayProxy {
+    return [self initWithOptions:options displayProxy:displayProxy display:nil];
+}
+
+- (id)initWithOptions:(SocializeOptions*)options 
+              display:(id<SocializeUIDisplay>)display {
+    return [self initWithOptions:options displayProxy:nil display:display];
 }
 
 + (NSOperationQueue*)actionQueue {

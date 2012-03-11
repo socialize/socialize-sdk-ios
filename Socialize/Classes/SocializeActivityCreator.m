@@ -35,19 +35,16 @@
 }
 
 - (id)initWithActivity:(id<SocializeActivity>)activity
-         displayObject:(id)displayObject
-               display:(id)display
-               options:(SocializeActivityOptions*)options
-               success:(void(^)())success
-               failure:(void(^)(NSError *error))failure {
+               options:(SocializeOptions*)options
+         displayProxy:(SocializeUIDisplayProxy*)displayProxy
+              display:(id<SocializeUIDisplay>)display {
     
-    if (self = [super initWithDisplayObject:displayObject display:display success:success failure:failure]) {
-        self.options = options;
+    if (self = [super initWithOptions:options displayProxy:displayProxy display:display]) {
+        self.activity = activity;
     }
-    
     return self;
 }
-
+    
 - (NSSet*)thirdParties {
     if (thirdParties_ == nil) {
         thirdParties_ = [[NSMutableSet alloc] init];

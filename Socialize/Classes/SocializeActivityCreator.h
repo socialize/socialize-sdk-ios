@@ -17,11 +17,9 @@
 @property (nonatomic, retain) id<SocializeActivity> activity;
 
 - (id)initWithActivity:(id<SocializeActivity>)activity
-         displayObject:(id)displayObject
-               display:(id)display
-               options:(SocializeActivityOptions*)options
-               success:(void(^)())success
-               failure:(void(^)(NSError *error))failure;
+               options:(SocializeOptions*)options
+          displayProxy:(SocializeUIDisplayProxy*)displayProxy
+               display:(id<SocializeUIDisplay>)display;
 
 - (void)createActivityOnSocializeServer;
 - (NSString*)defaultText;

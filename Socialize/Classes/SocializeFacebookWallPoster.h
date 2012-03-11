@@ -21,12 +21,6 @@
                               success:(void(^)())success
                               failure:(void(^)(NSError *error))failure;
 
-- (id)initWithDisplayObject:(id)displayObject
-                    display:(id)display
-                    options:(SocializeFacebookWallPostOptions*)options
-                    success:(void(^)())success
-                    failure:(void(^)(NSError *error))failure;
-
 @property (nonatomic, retain) SocializeFacebookWallPostOptions *options;
 @property (nonatomic, retain) SocializeFacebookInterface *facebookInterface;
 

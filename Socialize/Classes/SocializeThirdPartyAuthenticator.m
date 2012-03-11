@@ -33,19 +33,6 @@
     [super dealloc];
 }
 
-- (id)initWithDisplayObject:(id)displayObject
-                    display:(id)display
-                    options:(SocializeAuthOptions*)options
-                    success:(void(^)())success
-                    failure:(void(^)(NSError *error))failure {
-    
-    if (self = [super initWithDisplayObject:displayObject display:display success:success failure:failure]) {
-        self.options = options;
-    }
-    
-    return self;
-}
-
 - (void)attemptInteractiveLogin {
     NSAssert(NO, @"not implemented");
 }

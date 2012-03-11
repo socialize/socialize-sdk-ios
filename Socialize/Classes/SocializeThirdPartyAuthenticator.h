@@ -12,11 +12,6 @@
 @protocol SocializeThirdParty;
 
 @interface SocializeThirdPartyAuthenticator : SocializeAction
-- (id)initWithDisplayObject:(id)displayObject
-                    display:(id)display
-                    options:(SocializeAuthOptions*)options
-                    success:(void(^)())success
-                    failure:(void(^)(NSError *error))failure;
 
 - (void)attemptInteractiveLogin;
 - (void)socializeAuthenticationFailedWithError:(NSError*)error;

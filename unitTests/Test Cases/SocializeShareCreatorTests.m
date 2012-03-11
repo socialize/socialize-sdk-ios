@@ -89,16 +89,16 @@ enum {
 
 - (id)createAction {
     __block id weakSelf = self;
-
-    return [[[SocializeUIShareCreator alloc] initWithDisplayObject:nil
-                                                         display:self.mockDisplay
-                                                         options:nil
-                                                         success:^{
-                                                             [weakSelf notify:kGHUnitWaitStatusSuccess];
-                                                         } failure:^(NSError *error) {
-                                                             [weakSelf notify:kGHUnitWaitStatusFailure];
-                                                         }] autorelease];
-
+    
+    SocializeUIShareCreator *shareCreator = [[[SocializeUIShareCreator alloc] initWithOptions:nil display:self.mockDisplay] autorelease];
+    shareCreator.successBlock = ^{
+        [weakSelf notify:kGHUnitWaitStatusSuccess];
+    };
+    shareCreator.failureBlock = ^(NSError *error) {
+        [weakSelf notify:kGHUnitWaitStatusFailure];
+    };
+    
+    return shareCreator;
 }
 
 - (BOOL)shouldRunOnMainThread {

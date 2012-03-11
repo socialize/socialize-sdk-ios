@@ -11,7 +11,7 @@
 /** All socializeObject* methods are optional if the display handler acts like a UIViewController. Override as needed.
  * If your display handler does not act like a UIViewController, you must implement all socializeObject* methods.
  */
-@interface NSObject (SocializeUIDisplay)
+@protocol SocializeUIDisplay <NSObject>
 
 - (void)socializeObject:(id)object requiresDisplayOfViewController:(UIViewController*)controller;
 - (void)socializeObject:(id)object requiresDismissOfViewController:(UIViewController*)controller;

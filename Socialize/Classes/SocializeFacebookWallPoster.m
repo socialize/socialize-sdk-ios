@@ -33,31 +33,24 @@
                                   display:(id)display
                                   success:(void(^)())success
                                   failure:(void(^)(NSError *error))failure {
-    SocializeFacebookWallPoster *poster = [[[self alloc] initWithDisplayObject:nil display:display options:options success:success failure:failure] autorelease];
+    SocializeFacebookWallPoster *poster = [[[self alloc] initWithOptions:options display:display] autorelease];
+    poster.successBlock = success;
+    poster.failureBlock = failure;
+    
     [SocializeAction executeAction:poster];
 }
 
 + (void)postToFacebookWallWithOptions:(SocializeFacebookWallPostOptions*)options
-                             displayProxy:(SocializeUIDisplayProxy*)proxy
-                                  success:(void(^)())success
-                                  failure:(void(^)(NSError *error))failure {
-    SocializeFacebookWallPoster *poster = [[[self alloc] initWithDisplayObject:proxy.object display:proxy.display options:options success:success failure:failure] autorelease];
+                         displayProxy:(SocializeUIDisplayProxy*)proxy
+                              success:(void(^)())success
+                              failure:(void(^)(NSError *error))failure {
+    SocializeFacebookWallPoster *poster = [[[self alloc] initWithOptions:options displayProxy:proxy] autorelease];
+    poster.successBlock = success;
+    poster.failureBlock = failure;
+
     [SocializeAction executeAction:poster];
 }
 
-
-- (id)initWithDisplayObject:(id)displayObject
-                    display:(id)display
-                    options:(SocializeFacebookWallPostOptions*)options
-                    success:(void(^)())success
-                    failure:(void(^)(NSError *error))failure {
-    
-    if (self = [super initWithDisplayObject:displayObject display:display success:success failure:failure]) {
-        self.options = options;
-    }
-    
-    return self;
-}
 
 - (SocializeFacebookInterface*)facebookInterface {
     if (facebookInterface_ == nil) {

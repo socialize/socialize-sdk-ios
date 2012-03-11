@@ -51,10 +51,18 @@
 @synthesize mockSocialize = mockSocialize_;
 
 - (id)createAction {
-    return [[[SocializeAction alloc] initWithDisplayObject:nil
-                                                   display:self.mockDisplay
-                                                   success:^{ [self notify:kGHUnitWaitStatusSuccess]; }
-                                                   failure:^(NSError *error) { [self notify:kGHUnitWaitStatusFailure]; }] autorelease];
+    __block id weakSelf = self;
+
+    SocializeAction *action = [[[SocializeAction alloc] initWithOptions:nil display:self.mockDisplay] autorelease];
+    action.successBlock = ^{
+        [weakSelf notify:kGHUnitWaitStatusSuccess];
+    };
+    action.failureBlock = ^(NSError *error) {
+        [weakSelf notify:kGHUnitWaitStatusFailure];
+    };
+    
+    return action;
+
 }
 
 - (void)setUp {
@@ -156,18 +164,20 @@
 }
 
 - (void)testFailingAction {
-    FailingAction *fail = [[[FailingAction alloc] initWithDisplayObject:nil
-                                                                display:nil
-                                                                success:nil
-                                                                failure:^(NSError *error) { [self notify:kGHUnitWaitStatusFailure]; }] autorelease];
+    FailingAction *fail = [[[FailingAction alloc] initWithOptions:nil display:nil] autorelease];
+    fail.failureBlock = ^(NSError *error) { 
+        [self notify:kGHUnitWaitStatusFailure];
+    };
+    
     [self executeAction:fail andWaitForStatus:kGHUnitWaitStatusFailure];
 }
 
 - (void)testSucceedingAction {
-    SucceedingAction *succeed = [[[SucceedingAction alloc] initWithDisplayObject:nil
-                                                                         display:nil
-                                                                         success:^{ [self notify:kGHUnitWaitStatusSuccess]; }
-                                                                         failure:nil] autorelease];
+    SucceedingAction *succeed = [[[SucceedingAction alloc] initWithOptions:nil display:nil] autorelease];
+    succeed.successBlock = ^{
+        [self notify:kGHUnitWaitStatusSuccess];
+    };
+
     [self executeAction:succeed andWaitForStatus:kGHUnitWaitStatusSuccess];
 }
 

@@ -19,14 +19,24 @@
 - (id)createAction {
     __block id weakSelf = self;
     
-    return [[[SocializeFacebookAuthenticator alloc] initWithDisplayObject:nil
-                                                                 display:self.mockDisplay
-                                                                 options:nil
-                                                                 success:^{
-                                                                     [weakSelf notify:kGHUnitWaitStatusSuccess];
-                                                                 } failure:^(NSError *error) {
-                                                                     [weakSelf notify:kGHUnitWaitStatusFailure];
-                                                                 }] autorelease];
+//    return [[[SocializeFacebookAuthenticator alloc] initWithDisplayObject:nil
+//                                                                 display:self.mockDisplay
+//                                                                 options:nil
+//                                                                 success:^{
+//                                                                     [weakSelf notify:kGHUnitWaitStatusSuccess];
+//                                                                 } failure:^(NSError *error) {
+//                                                                     [weakSelf notify:kGHUnitWaitStatusFailure];
+//                                                                 }] autorelease];
+    
+    SocializeFacebookAuthenticator *auth = [[[SocializeFacebookAuthenticator alloc] initWithOptions:nil display:self.mockDisplay] autorelease];
+    auth.successBlock = ^{
+        [weakSelf notify:kGHUnitWaitStatusSuccess];
+    };
+    auth.failureBlock = ^(NSError *error) {
+        [weakSelf notify:kGHUnitWaitStatusFailure];
+    };
+    
+    return auth;
 }
 
 - (BOOL)shouldRunOnMainThread {

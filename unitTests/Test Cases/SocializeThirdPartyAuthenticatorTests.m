@@ -23,14 +23,24 @@
 - (id)createAction {
     __block id weakSelf = self;
     
-    return [[[SocializeThirdPartyAuthenticator alloc] initWithDisplayObject:nil
-                                                                    display:self.mockDisplay
-                                                                    options:nil
-                                                                    success:^{
-                                                                        [weakSelf notify:kGHUnitWaitStatusSuccess];
-                                                                    } failure:^(NSError *error) {
-                                                                        [weakSelf notify:kGHUnitWaitStatusFailure];
-                                                                    }] autorelease];
+//    return [[[SocializeThirdPartyAuthenticator alloc] initWithDisplayObject:nil
+//                                                                    display:self.mockDisplay
+//                                                                    options:nil
+//                                                                    success:^{
+//                                                                        [weakSelf notify:kGHUnitWaitStatusSuccess];
+//                                                                    } failure:^(NSError *error) {
+//                                                                        [weakSelf notify:kGHUnitWaitStatusFailure];
+//                                                                    }] autorelease];
+    SocializeThirdPartyAuthenticator *auth = [[[SocializeThirdPartyAuthenticator alloc] initWithOptions:nil display:self.mockDisplay] autorelease];
+    auth.successBlock = ^{
+        [weakSelf notify:kGHUnitWaitStatusSuccess];
+    };
+    auth.failureBlock = ^(NSError *error) {
+        [weakSelf notify:kGHUnitWaitStatusFailure];
+    };
+    
+    return auth;
+
 }
 
 - (BOOL)shouldRunOnMainThread {

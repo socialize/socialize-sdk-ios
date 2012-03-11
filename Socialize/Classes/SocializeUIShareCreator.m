@@ -58,7 +58,10 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
                        success:(void(^)())success
                        failure:(void(^)(NSError *error))failure {
     
-    SocializeUIShareCreator *share = [[[self alloc] initWithDisplayObject:nil display:display options:options success:success failure:failure] autorelease];
+    SocializeUIShareCreator *share = [[[self alloc] initWithOptions:options display:display] autorelease];
+    share.successBlock = success;
+    share.failureBlock = failure;
+    
     [SocializeAction executeAction:share];
 }
 
@@ -66,17 +69,14 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
                   displayProxy:(SocializeUIDisplayProxy*)proxy
                        success:(void(^)())success
                        failure:(void(^)(NSError *error))failure {
-    SocializeUIShareCreator *share = [[[self alloc] initWithDisplayObject:proxy.object display:proxy.display options:options success:success failure:failure] autorelease];
+    SocializeUIShareCreator *share = [[[self alloc] initWithOptions:options displayProxy:proxy] autorelease];
+    share.successBlock = success;
+    share.failureBlock = failure;
     [SocializeAction executeAction:share];
 }
 
-- (id)initWithDisplayObject:(id)displayObject
-                    display:(id)display
-                    options:(SocializeUIShareOptions*)options
-                    success:(void(^)())success
-                    failure:(void(^)(NSError *error))failure {
-    
-    if (self = [super initWithDisplayObject:displayObject display:display success:success failure:failure]) {
+- (id)initWithOptions:(SocializeUIShareOptions *)options displayProxy:(SocializeUIDisplayProxy *)displayProxy display:(id<SocializeUIDisplay>)display {
+    if (self = [super initWithOptions:options displayProxy:displayProxy display:display]) {
         self.shareObject = [[[SocializeShare alloc] init] autorelease];
         self.shareObject.entity = options.entity;
         self.options = options;

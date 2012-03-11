@@ -29,12 +29,6 @@
                        success:(void(^)())success
                        failure:(void(^)(NSError *error))failure;
 
-- (id)initWithDisplayObject:(id)displayObject
-                    display:(id)display
-                    options:(SocializeUIShareOptions*)options
-                    success:(void(^)())success
-                    failure:(void(^)(NSError *error))failure;
-
 @property (nonatomic, retain) id<SocializeShare> shareObject;
 @property (nonatomic, retain) SocializeUIShareOptions *options;
 @property (nonatomic, assign) Class messageComposerClass;

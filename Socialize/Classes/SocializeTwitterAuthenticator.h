@@ -32,12 +32,6 @@
                                   success:(void(^)())success
                                   failure:(void(^)(NSError *error))failure;
 
-- (id)initWithDisplayObject:(id)displayObject
-                    display:(id)display
-                    options:(SocializeTwitterAuthOptions*)options
-                    success:(void(^)())success
-                    failure:(void(^)(NSError *error))failure;
-
 @property (nonatomic, retain) SocializeTwitterAuthOptions *options;
 @property (nonatomic, retain) SocializeTwitterAuthViewController *twitterAuthViewController;
 @end

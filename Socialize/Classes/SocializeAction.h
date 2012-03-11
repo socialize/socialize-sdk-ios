@@ -8,15 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeServiceDelegate.h"
+#import "SocializeOptions.h"
 
 @class Socialize;
 @class SocializeUIDisplayProxy;
+@protocol SocializeUIDisplay;
 
 @interface SocializeAction : NSOperation <SocializeServiceDelegate>
-- (id)initWithDisplayObject:(id)displayObject
-                    display:(id)display
-                    success:(void(^)())success
-                    failure:(void(^)(NSError *error))failure;
+
+- (id)initWithOptions:(SocializeOptions*)options
+         displayProxy:(SocializeUIDisplayProxy*)displayProxy
+              display:(id<SocializeUIDisplay>)display;
+
+- (id)initWithOptions:(SocializeOptions*)options
+         displayProxy:(SocializeUIDisplayProxy*)displayProxy;
+
+- (id)initWithOptions:(SocializeOptions*)options 
+              display:(id<SocializeUIDisplay>)display;
 
 - (void)cancelAllCallbacks;
 - (void)executeAction;
@@ -32,4 +40,6 @@
 @property (nonatomic, retain) SocializeUIDisplayProxy *displayProxy;
 @property (nonatomic, copy) void (^failureBlock)(NSError *error);
 @property (nonatomic, copy) void (^successBlock)();
+@property (nonatomic, retain) SocializeOptions *options;
+
 @end

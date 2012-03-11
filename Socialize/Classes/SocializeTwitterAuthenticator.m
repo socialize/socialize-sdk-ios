@@ -34,7 +34,10 @@
                                   display:(id)display
                                   success:(void(^)())success
                                   failure:(void(^)(NSError *error))failure {
-    SocializeTwitterAuthenticator *auth = [[[self alloc] initWithDisplayObject:nil display:display options:options success:success failure:failure] autorelease];
+    SocializeTwitterAuthenticator *auth = [[[self alloc] initWithOptions:options display:display] autorelease];
+    auth.successBlock = success;
+    auth.failureBlock = failure;
+
     [SocializeAction executeAction:auth];
 }
 
@@ -42,17 +45,11 @@
                            displayProxy:(SocializeUIDisplayProxy*)proxy
                                 success:(void(^)())success
                                 failure:(void(^)(NSError *error))failure {
-    SocializeTwitterAuthenticator *auth = [[[self alloc] initWithDisplayObject:proxy.object display:proxy.display options:options success:success failure:failure] autorelease];
-    [SocializeAction executeAction:auth];
-}
-
-- (id)initWithDisplayObject:(id)displayObject
-                    display:(id)display
-                    options:(SocializeTwitterAuthOptions*)options
-                    success:(void(^)())success
-                    failure:(void(^)(NSError *error))failure {
+    SocializeTwitterAuthenticator *auth = [[[self alloc] initWithOptions:options displayProxy:proxy] autorelease];
+    auth.successBlock = success;
+    auth.failureBlock = failure;
     
-    return [super initWithDisplayObject:displayObject display:display options:options success:success failure:failure];
+    [SocializeAction executeAction:auth];
 }
 
 - (Class)thirdParty {

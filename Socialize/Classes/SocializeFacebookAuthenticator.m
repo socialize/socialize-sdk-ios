@@ -30,7 +30,11 @@
                                    display:(id)display
                                    success:(void(^)())success
                                    failure:(void(^)(NSError *error))failure {
-    SocializeFacebookAuthenticator *auth = [[[self alloc] initWithDisplayObject:nil display:display options:options success:success failure:failure] autorelease];
+    
+    SocializeFacebookAuthenticator *auth = [[[self alloc] initWithOptions:options display:display] autorelease];
+    auth.successBlock = success;
+    auth.failureBlock = failure;
+
     [SocializeAction executeAction:auth];
 }
 
@@ -38,23 +42,13 @@
                               displayProxy:(SocializeUIDisplayProxy*)proxy
                                    success:(void(^)())success
                                    failure:(void(^)(NSError *error))failure {
-    SocializeFacebookAuthenticator *auth = [[[self alloc] initWithDisplayObject:proxy.object display:proxy.display options:options success:success failure:failure] autorelease];
+    SocializeFacebookAuthenticator *auth = [[[self alloc] initWithOptions:success displayProxy:proxy] autorelease];
+    auth.successBlock = success;
+    auth.failureBlock = failure;
+    
     [SocializeAction executeAction:auth];
 }
 
-
-- (id)initWithDisplayObject:(id)displayObject
-                    display:(id)display
-                    options:(SocializeFacebookAuthOptions*)options
-                    success:(void(^)())success
-                    failure:(void(^)(NSError *error))failure {
-    
-    if (self = [super initWithDisplayObject:displayObject display:display success:success failure:failure]) {
-        self.options = options;
-    }
-    
-    return self;
-}
 
 - (Class)thirdParty {
     if (thirdParty_ == nil) {
