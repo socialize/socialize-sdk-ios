@@ -23,6 +23,7 @@
 @implementation SocializeActivityCreator
 @synthesize options = options_;
 @synthesize activity = activity_;
+@synthesize thirdParties = thirdParties_;
 
 @synthesize finishedServerCreate = finishedServerCreate_;
 @synthesize postedToFacebookWall = postedToFacebookWall_;
@@ -30,6 +31,7 @@
 - (void)dealloc {
     self.options = nil;
     self.activity = nil;
+    self.thirdParties = nil;
     
     [super dealloc];
 }
@@ -47,11 +49,6 @@
     
 - (void)createActivityOnSocializeServer {
     NSAssert(NO, @"Not implemented");
-}
-
-- (NSString*)defaultText {
-    NSAssert(NO, @"Not implemented");
-    return nil;
 }
 
 - (NSString*)activityText {
@@ -79,20 +76,8 @@
     return message;
 }
 
-// Activity-specific text for twitter
-- (NSString*)textForTwitter {
-    NSAssert(NO, @"Not implemented");
-    return nil;
-}
-
 - (BOOL)shouldPostToThirdParty:(Class<SocializeThirdParty>)thirdParty {
-    for (NSString *name in self.options.thirdParties) {
-        if ([[name lowercaseString] isEqualToString:[[thirdParty thirdPartyName] lowercaseString]]) {
-            return YES;
-        }
-    }
-    
-    return [thirdParty isLinkedToSocialize];
+    return [self.thirdParties containsObject:[[thirdParty thirdPartyName] lowercaseString]];
 }
 
 - (BOOL)shouldPostToFacebook {
@@ -103,9 +88,32 @@
     return [self shouldPostToThirdParty:[SocializeThirdPartyTwitter class]];
 }
 
+- (NSArray*)thirdParties {
+    if (thirdParties_ == nil) {
+        NSMutableArray *newThirdParties = [[NSMutableArray alloc] init];
+        
+        if (self.options.thirdParties != nil) {
+            // User-specified list of thirdparties
+            for (NSString *name in self.options.thirdParties) {
+                [newThirdParties addObject:[name lowercaseString]];
+            }
+        } else {
+            // Default list of thirdparties
+            for (Class<SocializeThirdParty> thirdParty in [SocializeThirdParty allThirdParties]) {
+                if ([thirdParty isLinkedToSocialize]) {
+                    [newThirdParties addObject:[[thirdParty thirdPartyName] lowercaseString]];
+                }
+            }
+        }
+        thirdParties_ = newThirdParties;
+    }
+    return thirdParties_;
+}
+
 - (void)prepareActivityForCreate {
     if ([self shouldPostToTwitter]) {
-        [self.activity setTwitterText:[self textForTwitter]];
+        // Currently only twitter is allowed in the third parties list
+        [self.activity setThirdParties:[NSArray arrayWithObject:@"twitter"]];
     }
 }
 

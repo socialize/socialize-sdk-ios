@@ -14,6 +14,7 @@
 @interface SocializeActivityCreator : SocializeAction
 @property (nonatomic, retain) SocializeActivityOptions *options;
 @property (nonatomic, retain) id<SocializeActivity> activity;
+@property (nonatomic, retain) NSArray *thirdParties;
 
 - (id)initWithActivity:(id<SocializeActivity>)activity
                options:(SocializeOptions*)options
@@ -21,9 +22,7 @@
                display:(id<SocializeUIDisplay>)display;
 
 - (void)createActivityOnSocializeServer;
-- (NSString*)defaultText;
 - (void)succeedServerCreateWithActivity:(id<SocializeActivity>)activity;
 - (NSString*)textForFacebook;
-- (NSString*)textForTwitter;
 
 @end

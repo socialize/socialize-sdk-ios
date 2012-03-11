@@ -89,15 +89,15 @@
 -(void)setDate:(NSDate *)date;
 
 /**
- Get text to be sent to twitter when this activity is created.
+ Third party destinations
  */
--(NSString *)twitterText;
+-(NSString *)thirdParties;
 
 /**
- Set text to be sent to twitter when this activity is created.
- @param twitterText
+ Third party propagation targets
+ @param thirdParties
  */
--(void)setTwitterText:(NSString *)twitterText;
+-(void)setThirdParties:(NSArray*)thirdParties;
 
 @end
 
@@ -129,6 +129,6 @@
 @property (nonatomic, retain) NSDate*           date;
 
 /* Text to be sent to twitter */
-@property (nonatomic, copy) NSString *twitterText;
+@property (nonatomic, copy) NSArray *thirdParties;
 
 @end

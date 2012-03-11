@@ -94,7 +94,7 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
 
 - (void)createShareOnSocializeServer {
     if (self.shareObject.medium == SocializeShareMediumTwitter) {
-        [self.shareObject setTwitterText:[self.shareObject text]];
+        [self.shareObject setThirdParties:[NSArray arrayWithObject:@"twitter"]];
     }
     
     [self.socialize createShare:self.shareObject];

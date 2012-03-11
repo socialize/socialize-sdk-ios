@@ -37,11 +37,6 @@
     return [NSMutableString stringWithFormat:@"%@ \n\n %@", objectURL, self.comment.text];
 }
 
-- (NSString*)textForTwitter {
-    NSString *objectURL = [NSString stringWithSocializeURLForObject:self.comment.entity];
-    return [NSMutableString stringWithFormat:@"%@ (%@)", self.comment.text, objectURL];
-}
-
 - (void)createActivityOnSocializeServer {
     [self.socialize createComment:self.comment];
 }

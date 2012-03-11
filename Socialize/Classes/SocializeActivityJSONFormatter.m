@@ -82,20 +82,11 @@
         [dictionaryRepresentation setObject:[entity key] forKey:@"entity_key"];
     }
     
-    NSMutableArray *propagators = [NSMutableArray array];
-    
-    if ([activity twitterText] != nil) {
+    if ([activity thirdParties] != nil) {
+        NSMutableDictionary *propagation = [NSMutableDictionary dictionary];
         // Add twitter propagator
-        NSDictionary *twitterDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                     [activity twitterText], @"text",
-                                     @"twitter", @"third_party",
-                                     nil];
-        [propagators addObject:twitterDict];
-    }
-
-    // Add propagators if there are any
-    if ([propagators count] > 0) {
-        [dictionaryRepresentation setObject:propagators forKey:@"propagation"];
+        [propagation setObject:[activity thirdParties] forKey:@"third_parties"];
+        [dictionaryRepresentation setObject:propagation forKey:@"propagation"];
     }
 
     [super doToDictionary:dictionaryRepresentation fromObject:fromObject];

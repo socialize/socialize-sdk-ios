@@ -19,7 +19,7 @@
 @synthesize  lng = _lng;
 @synthesize  date = _date;
 
-@synthesize twitterText = _twitterText;
+@synthesize thirdParties = _thirdParties;
 
 -(void)dealloc
 {
@@ -29,7 +29,7 @@
     [_lat release];
     [_lng release];
     [_date release];
-    [_twitterText release];
+    [_thirdParties release];
     [super dealloc];
 }
 
