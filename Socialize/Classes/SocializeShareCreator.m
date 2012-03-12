@@ -40,7 +40,7 @@
 }
 
 - (void)service:(SocializeService *)service didCreate:(id)objectOrObjects {
-    NSAssert([objectOrObjects conformsToProtocol:@protocol(SocializeShare)], @"Not a comment");
+    NSAssert([objectOrObjects conformsToProtocol:@protocol(SocializeShare)], @"Not a share");
     
     [self succeedServerCreateWithActivity:objectOrObjects];
 }
