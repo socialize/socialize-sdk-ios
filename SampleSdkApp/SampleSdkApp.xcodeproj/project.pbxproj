@@ -18,6 +18,7 @@
 		AA2DA2461435437400C62B97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6D14352BC100C62B97 /* UIKit.framework */; };
 		AA2DA2471435437400C62B97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6F14352BC100C62B97 /* Foundation.framework */; };
 		AA2DA2481435437400C62B97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */; };
+		AA323499150DC5FE004C97B4 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA320CD4150DC08D00634C23 /* libOCMock.a */; };
 		AA3325C9144CD2980033C7FA /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3325C8144CD2980033C7FA /* Smiley.png */; };
 		AA378B9D14E3A4A40035647E /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA378AF014E3A4A40035647E /* action-bar-bg.png */; };
 		AA378B9E14E3A4A40035647E /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA378AF014E3A4A40035647E /* action-bar-bg.png */; };
@@ -1015,6 +1016,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA323499150DC5FE004C97B4 /* libOCMock.a in Frameworks */,
 				16D2DEF6145546370034A6C8 /* MessageUI.framework in Frameworks */,
 				AA2025B1144CB249006C1F8F /* libKIF.a in Frameworks */,
 				AA8636D7144CA14300CFA759 /* GHUnitIOS.framework in Frameworks */,
