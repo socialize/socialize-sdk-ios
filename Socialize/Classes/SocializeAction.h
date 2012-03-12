@@ -35,6 +35,7 @@
 
 + (void)executeAction:(SocializeAction*)action;
 + (NSOperationQueue*)actionQueue;
+- (void)callSuccessBlock;
 
 @property (nonatomic, retain) Socialize *socialize;
 @property (nonatomic, retain) SocializeUIDisplayProxy *displayProxy;

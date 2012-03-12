@@ -15,7 +15,7 @@
 + (void)createLike:(id<SocializeLike>)like
            options:(SocializeLikeOptions*)options
            display:(id<SocializeUIDisplay>)display
-           success:(void(^)())success
+           success:(void(^)(id<SocializeLike>))success
            failure:(void(^)(NSError *error))failure;
 
 @property (nonatomic, readonly) id<SocializeLike> like;

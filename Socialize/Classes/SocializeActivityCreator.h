@@ -15,6 +15,7 @@
 @property (nonatomic, retain) SocializeActivityOptions *options;
 @property (nonatomic, retain) id<SocializeActivity> activity;
 @property (nonatomic, retain) NSArray *thirdParties;
+@property (nonatomic, copy) void (^activitySuccessBlock)(id<SocializeActivity> activity);
 
 - (id)initWithActivity:(id<SocializeActivity>)activity
                options:(SocializeOptions*)options

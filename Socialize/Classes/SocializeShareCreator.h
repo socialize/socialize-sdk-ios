@@ -16,7 +16,7 @@
 + (void)createShare:(id<SocializeShare>)share
             options:(SocializeShareOptions*)options
             display:(id)display
-            success:(void(^)())success
+            success:(void(^)(id<SocializeShare>))success
             failure:(void(^)(NSError *error))failure;
 
 @property (nonatomic, readonly) id<SocializeShare> share;

@@ -14,14 +14,14 @@
 + (void)createShare:(id<SocializeShare>)share
             options:(SocializeShareOptions*)options
             display:(id)display
-            success:(void(^)())success
+            success:(void(^)(id<SocializeShare>))success
             failure:(void(^)(NSError *error))failure {
     
     SocializeShareCreator *creator = [[[SocializeShareCreator alloc] initWithActivity:share
                                                                               options:options
                                                                          displayProxy:nil
                                                                               display:display] autorelease];
-    creator.successBlock = success;
+    creator.activitySuccessBlock = success;
     creator.failureBlock = failure;
     [SocializeAction executeAction:creator];
 }

@@ -29,7 +29,7 @@
                              displayProxy:nil
                              display:self.mockDisplay] autorelease];
     
-    self.activityCreator.successBlock = ^{
+    self.activityCreator.activitySuccessBlock = ^(id<SocializeActivity> activity) {
         [weakSelf notify:kGHUnitWaitStatusSuccess];
     };
     self.activityCreator.failureBlock = ^(NSError *error) {

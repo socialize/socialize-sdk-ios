@@ -14,14 +14,14 @@
 + (void)createLike:(id<SocializeLike>)like
            options:(SocializeLikeOptions*)options
            display:(id<SocializeUIDisplay>)display
-           success:(void(^)())success
+           success:(void(^)(id<SocializeLike>))success
            failure:(void(^)(NSError *error))failure {
     
     SocializeLikeCreator *creator = [[[SocializeLikeCreator alloc] initWithActivity:like
                                                                             options:options
                                                                        displayProxy:nil
                                                                             display:display] autorelease];
-    creator.successBlock = success;
+    creator.activitySuccessBlock = success;
     creator.failureBlock = failure;
     [SocializeAction executeAction:creator];
 }

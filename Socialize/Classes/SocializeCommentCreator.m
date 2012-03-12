@@ -16,14 +16,14 @@
 + (void)createComment:(id<SocializeComment>)comment
               options:(SocializeCommentOptions*)options
               display:(id)display
-              success:(void(^)())success
+              success:(void(^)(id<SocializeComment>))success
               failure:(void(^)(NSError *error))failure {
     
     SocializeCommentCreator *creator = [[[SocializeCommentCreator alloc] initWithActivity:comment
                                                                                   options:options
                                                                              displayProxy:nil
                                                                                   display:display] autorelease];
-    creator.successBlock = success;
+    creator.activitySuccessBlock = success;
     creator.failureBlock = failure;
     [SocializeAction executeAction:creator];
 }

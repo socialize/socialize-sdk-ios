@@ -25,7 +25,7 @@
                              displayProxy:nil
                              display:self.mockDisplay] autorelease];
     
-    self.commentCreator.successBlock = ^{
+    self.commentCreator.activitySuccessBlock = ^(id<SocializeComment> serverComment) {
         [weakSelf notify:kGHUnitWaitStatusSuccess];
     };
     self.commentCreator.failureBlock = ^(NSError *error) {

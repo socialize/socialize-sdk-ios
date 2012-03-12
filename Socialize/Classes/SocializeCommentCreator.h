@@ -15,7 +15,7 @@
 + (void)createComment:(id<SocializeComment>)comment
               options:(SocializeCommentOptions*)options
               display:(id)display
-              success:(void(^)())success
+              success:(void(^)(id<SocializeComment>))success
               failure:(void(^)(NSError *error))failure;
 
 @property (nonatomic, readonly) id<SocializeComment> comment;

@@ -24,6 +24,7 @@
 @synthesize options = options_;
 @synthesize activity = activity_;
 @synthesize thirdParties = thirdParties_;
+@synthesize activitySuccessBlock = activitySuccessBlock_;
 
 @synthesize finishedServerCreate = finishedServerCreate_;
 @synthesize postedToFacebookWall = postedToFacebookWall_;
@@ -32,6 +33,7 @@
     self.options = nil;
     self.activity = nil;
     self.thirdParties = nil;
+    self.activitySuccessBlock = nil;
     
     [super dealloc];
 }
@@ -142,6 +144,12 @@
     self.activity = activity;
     self.finishedServerCreate = YES;
     [self tryToFinishCreatingActivity];
+}
+
+- (void)callSuccessBlock {
+    if (self.activitySuccessBlock != nil) {
+        self.activitySuccessBlock(self.activity);
+    }
 }
 
 - (void)tryToFinishCreatingActivity {

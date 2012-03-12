@@ -115,12 +115,16 @@ typedef enum {
     [self finishedOnMainThread];
 }
 
-- (void)succeed {
-    [self.displayProxy stopLoading];
-    
+- (void)callSuccessBlock {
     if (self.successBlock != nil) {
         self.successBlock();
     }
+}
+
+- (void)succeed {
+    [self.displayProxy stopLoading];
+    
+    [self callSuccessBlock];
     
     [self finishedOnMainThread];
 }

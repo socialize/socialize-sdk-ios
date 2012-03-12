@@ -26,7 +26,7 @@
                             displayProxy:nil
                             display:self.mockDisplay] autorelease];
     
-    self.shareCreator.successBlock = ^{
+    self.shareCreator.activitySuccessBlock = ^(id<SocializeShare> serverShare) {
         [weakSelf notify:kGHUnitWaitStatusSuccess];
     };
     self.shareCreator.failureBlock = ^(NSError *error) {

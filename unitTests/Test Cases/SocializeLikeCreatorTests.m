@@ -26,7 +26,7 @@
                           displayProxy:nil
                           display:self.mockDisplay] autorelease];
     
-    self.likeCreator.successBlock = ^{
+    self.likeCreator.activitySuccessBlock = ^(id<SocializeLike> serverLike) {
         [weakSelf notify:kGHUnitWaitStatusSuccess];
     };
     self.likeCreator.failureBlock = ^(NSError *error) {
