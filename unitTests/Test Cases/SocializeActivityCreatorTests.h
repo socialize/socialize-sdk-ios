@@ -13,4 +13,6 @@
 @property (nonatomic, retain) id mockActivity;
 @property (nonatomic, retain) SocializeActivityCreator *activityCreator;
 @property (nonatomic, retain) id mockOptions;
+@property (nonatomic, retain) NSError *lastError;
+
 @end
