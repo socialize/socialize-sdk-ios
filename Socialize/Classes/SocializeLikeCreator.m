@@ -13,14 +13,14 @@
 
 + (void)createLike:(id<SocializeLike>)like
            options:(SocializeLikeOptions*)options
-           display:(id<SocializeUIDisplay>)display
+      displayProxy:(SocializeUIDisplayProxy*)displayProxy
            success:(void(^)(id<SocializeLike>))success
            failure:(void(^)(NSError *error))failure {
     
     SocializeLikeCreator *creator = [[[SocializeLikeCreator alloc] initWithActivity:like
                                                                             options:options
-                                                                       displayProxy:nil
-                                                                            display:display] autorelease];
+                                                                       displayProxy:displayProxy
+                                                                            display:nil] autorelease];
     creator.activitySuccessBlock = success;
     creator.failureBlock = failure;
     [SocializeAction executeAction:creator];
@@ -48,7 +48,7 @@
 }
 
 - (void)service:(SocializeService *)service didFail:(NSError *)error {
-    [self failWithError:error];
+    [self failServerCreateWithError:error];
 }
 
 @end

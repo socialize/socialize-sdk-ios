@@ -36,6 +36,7 @@
 #import "SocializeLikeService.h"
 #import "SocializeEntityService.h"
 #import "MFMessageComposeViewController+BlocksKit.h"
+#import "SocializeLikeCreator.h"
 
 #define TEST_ENTITY_URL @"http://test.com"
 #define TEST_ENTITY_NAME @"TEST_ENTITY_NAME"
@@ -84,10 +85,14 @@
     self.mockActionView = [OCMockObject mockForClass:[SocializeActionView class]];
     [[[(id)self.actionBar stub] andReturn:self.mockActionView] view];
     
+    [SocializeLikeCreator startMockingClass];
+    
 }
 
 -(void)tearDown
 {
+    [SocializeLikeCreator stopMockingClassAndVerify];
+    
     [self.mockParentController verify];
     [self.mockEntity verify];
     [(id)self.actionBar verify];
@@ -124,7 +129,8 @@
 
 - (void)testLikeWhenNotLikedLocksAndCreatesLike {
     [[self.mockActionView expect] lockButtons];
-    [[self.mockSocialize expect] likeEntityWithKey:TEST_ENTITY_URL longitude:nil latitude:nil];
+    [[SocializeLikeCreator expect] createLike:OCMOCK_ANY options:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+    
     [self.actionBar likeButtonTouched:nil];
 }
 

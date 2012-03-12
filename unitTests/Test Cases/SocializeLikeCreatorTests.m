@@ -97,7 +97,7 @@
     [self.mockLike makeNice];
     [[[SocializeLikeCreator expect] andReturn:nil] alloc];
     [[SocializeLikeCreator stub] initialize];
-    [[SocializeLikeCreator origClass] createLike:self.mockLike options:nil display:nil success:nil failure:nil];
+    [[SocializeLikeCreator origClass] createLike:self.mockLike options:nil displayProxy:nil success:nil failure:nil];
     
     [SocializeLikeCreator stopMockingClassAndVerify];
 }

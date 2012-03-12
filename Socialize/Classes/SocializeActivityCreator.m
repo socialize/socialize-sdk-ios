@@ -14,6 +14,7 @@
 #import "SocializeUIDisplayProxy.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
+#import "StringHelper.h"
 
 @interface SocializeActivityCreator ()
 @property (nonatomic, assign) BOOL finishedServerCreate;
@@ -144,6 +145,22 @@
     self.activity = activity;
     self.finishedServerCreate = YES;
     [self tryToFinishCreatingActivity];
+}
+
+- (void)failServerCreateWithError:(NSError*)error {
+    if ([error isSocializeErrorWithCode:SocializeErrorServerReturnedErrors]) {
+        NSArray *objects = [[error userInfo] objectForKey:kSocializeErrorServerObjectsArrayKey];
+        
+        if ([objects count] > 0) {
+            id<SocializeActivity> activity = [objects objectAtIndex:0];
+            if ([activity conformsToProtocol:@protocol(SocializeActivity)]) {
+                // The server still created the activity, so we can continue.
+                [self succeedServerCreateWithActivity:activity];
+                return;
+            }
+        }
+    }
+    [self failWithError:error];
 }
 
 - (void)callSuccessBlock {

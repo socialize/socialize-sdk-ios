@@ -24,6 +24,8 @@
 
 - (void)createActivityOnSocializeServer;
 - (void)succeedServerCreateWithActivity:(id<SocializeActivity>)activity;
+- (void)failServerCreateWithError:(NSError*)error;
+
 - (NSString*)textForFacebook;
 
 @end

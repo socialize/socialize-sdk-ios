@@ -14,7 +14,7 @@
 @interface SocializeLikeCreator : SocializeActivityCreator
 + (void)createLike:(id<SocializeLike>)like
            options:(SocializeLikeOptions*)options
-           display:(id<SocializeUIDisplay>)display
+      displayProxy:(SocializeUIDisplayProxy*)displayProxy
            success:(void(^)(id<SocializeLike>))success
            failure:(void(^)(NSError *error))failure;
 

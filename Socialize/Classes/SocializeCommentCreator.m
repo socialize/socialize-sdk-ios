@@ -48,7 +48,7 @@
 }
 
 - (void)service:(SocializeService *)service didFail:(NSError *)error {
-    [self failWithError:error];
+    [self failServerCreateWithError:error];
 }
 
 @end
