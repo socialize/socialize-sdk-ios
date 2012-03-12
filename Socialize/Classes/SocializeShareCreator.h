@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "SocializeActivityCreator.h"
 #import "SocializeShare.h"
+#import "SocializeShareOptions.h"
 
 @interface SocializeShareCreator : SocializeActivityCreator
+
++ (void)createShare:(id<SocializeShare>)share
+            options:(SocializeShareOptions*)options
+            display:(id)display
+            success:(void(^)())success
+            failure:(void(^)(NSError *error))failure;
+
 @property (nonatomic, readonly) id<SocializeShare> share;
 @end
