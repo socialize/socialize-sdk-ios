@@ -11,6 +11,7 @@
 #import "SocializeThirdPartyTwitter.h"
 #import "NSError+Socialize.h"
 #import "SocializeFacebookWallPoster.h"
+#import "SocializePrivateDefinitions.h"
 
 @implementation SocializeActivityCreatorTests
 @synthesize mockActivity = mockActivity_;
@@ -48,6 +49,9 @@
     [SocializeFacebookWallPoster startMockingClass];
     [[[SocializeThirdPartyTwitter stub] andReturn:@"Twitter"] thirdPartyName];
     [[[SocializeThirdPartyFacebook stub] andReturn:@"Facebook"] thirdPartyName];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
 }
 
 - (void)tearDown {
@@ -96,6 +100,10 @@
     }] setThirdParties:OCMOCK_ANY];
 }
 
+- (void)rejectSetTwitterInActivity:(id)mockActivity {
+    [[mockActivity reject] setThirdParties:OCMOCK_ANY];
+}
+
 - (void)selectJustTwitterInOptions {
     [[[SocializeThirdPartyTwitter stub] andReturnBool:YES] isLinkedToSocialize];
     
@@ -115,6 +123,18 @@
     
     [self succeedSocializeCreate];
     [self expectSetTwitterInActivity:self.mockActivity];
+    
+    [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
+}
+
+- (void)testSuccessfulSocializeCreateWithJustTwitterSucceedsAndDoesNotAutopostIfDisabled {
+    [self selectJustTwitterInOptions];
+    
+    [self succeedSocializeCreate];
+
+    // User turned off twitter autopost
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
+    [self rejectSetTwitterInActivity:self.mockActivity];
     
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
 }

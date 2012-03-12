@@ -84,11 +84,15 @@
 }
 
 - (BOOL)shouldPostToFacebook {
-    return [self shouldPostToThirdParty:[SocializeThirdPartyFacebook class]];
+    BOOL dontPostToFacebook = [[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
+    return [self shouldPostToThirdParty:[SocializeThirdPartyFacebook class]]
+    && !dontPostToFacebook;
 }
 
 - (BOOL)shouldPostToTwitter {
-    return [self shouldPostToThirdParty:[SocializeThirdPartyTwitter class]];
+    BOOL dontPostToTwitter = [[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY] boolValue];
+    return [self shouldPostToThirdParty:[SocializeThirdPartyTwitter class]]
+    && !dontPostToTwitter;
 }
 
 - (NSArray*)thirdParties {
