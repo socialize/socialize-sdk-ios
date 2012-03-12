@@ -14,5 +14,10 @@
 @property (nonatomic, retain) SocializeActivityCreator *activityCreator;
 @property (nonatomic, retain) id mockOptions;
 @property (nonatomic, retain) NSError *lastError;
+- (void)succeedSocializeCreate;
+- (void)expectSetTwitterInActivity;
+- (void)selectJustFacebookInOptions;
+- (void)selectJustTwitterInOptions;
+- (void)succeedFacebookWallPost;
 
 @end

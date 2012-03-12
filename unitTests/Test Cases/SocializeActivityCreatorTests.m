@@ -89,22 +89,33 @@
     }] createActivityOnSocializeServer];
 }
 
-- (void)succeedSocializeCreateWithTwitter {
-    [self succeedSocializeCreate];
+- (void)expectSetTwitterInActivity {
     [[[self.mockActivity expect] andDo1:^(NSArray *thirdParties) {
         NSArray *expectedThirdParties = [NSArray arrayWithObject:@"twitter"];
         GHAssertEqualObjects(thirdParties, expectedThirdParties, @"bad third parties %@", thirdParties);
     }] setThirdParties:OCMOCK_ANY];
 }
 
-- (void)testSuccessfulSocializeCreateWithJustTwitterSucceeds {
-    // Twitter linked and selected
+- (void)selectJustTwitterInOptions {
     [[[SocializeThirdPartyTwitter stub] andReturnBool:YES] isLinkedToSocialize];
     
     // Explicitly Specify twitter in options
     [[[self.mockOptions stub] andReturn:[NSArray arrayWithObject:@"twitter"]] thirdParties];
+}
+
+- (void)selectJustFacebookInOptions {
+    [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] isLinkedToSocialize];
     
-    [self succeedSocializeCreateWithTwitter];
+    // Explicitly Specify twitter in options
+    [[[self.mockOptions stub] andReturn:[NSArray arrayWithObject:@"facebook"]] thirdParties];
+}
+
+- (void)testSuccessfulSocializeCreateWithJustTwitterSucceeds {
+    [self selectJustTwitterInOptions];
+    
+    [self succeedSocializeCreate];
+    [self expectSetTwitterInActivity];
+    
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
 }
 
@@ -113,7 +124,9 @@
     [[[SocializeThirdPartyTwitter stub] andReturnBool:YES] isLinkedToSocialize];
     [[[SocializeThirdPartyFacebook stub] andReturnBool:NO] isLinkedToSocialize];
     
-    [self succeedSocializeCreateWithTwitter];
+    [self succeedSocializeCreate];
+    [self expectSetTwitterInActivity];
+
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
 }
 
@@ -126,8 +139,7 @@
 
 - (void)testSuccessfulSocializeCreateWithFacebookPostsToWallAndSucceeds {
     // Facebook linked and selected
-    [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] isLinkedToSocialize];
-    [[[self.mockOptions stub] andReturn:[NSArray arrayWithObject:@"facebook"]] thirdParties];
+    [self selectJustFacebookInOptions];
     
     [[[(id)self.partialAction stub] andReturn:@"Let's get Social, already"] textForFacebook];
     
