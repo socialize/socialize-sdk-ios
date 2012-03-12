@@ -89,8 +89,8 @@
     }] createActivityOnSocializeServer];
 }
 
-- (void)expectSetTwitterInActivity {
-    [[[self.mockActivity expect] andDo1:^(NSArray *thirdParties) {
+- (void)expectSetTwitterInActivity:(id)mockActivity {
+    [[[mockActivity expect] andDo1:^(NSArray *thirdParties) {
         NSArray *expectedThirdParties = [NSArray arrayWithObject:@"twitter"];
         GHAssertEqualObjects(thirdParties, expectedThirdParties, @"bad third parties %@", thirdParties);
     }] setThirdParties:OCMOCK_ANY];
@@ -114,7 +114,7 @@
     [self selectJustTwitterInOptions];
     
     [self succeedSocializeCreate];
-    [self expectSetTwitterInActivity];
+    [self expectSetTwitterInActivity:self.mockActivity];
     
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
 }
@@ -125,7 +125,7 @@
     [[[SocializeThirdPartyFacebook stub] andReturnBool:NO] isLinkedToSocialize];
     
     [self succeedSocializeCreate];
-    [self expectSetTwitterInActivity];
+    [self expectSetTwitterInActivity:self.mockActivity];
 
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
 }

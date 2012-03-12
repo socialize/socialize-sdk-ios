@@ -15,7 +15,7 @@
 @property (nonatomic, retain) id mockOptions;
 @property (nonatomic, retain) NSError *lastError;
 - (void)succeedSocializeCreate;
-- (void)expectSetTwitterInActivity;
+- (void)expectSetTwitterInActivity:(id)mockActivity;
 - (void)selectJustFacebookInOptions;
 - (void)selectJustTwitterInOptions;
 - (void)succeedFacebookWallPost;

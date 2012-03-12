@@ -7,7 +7,11 @@
 //
 
 #import "SocializeActivityCreatorTests.h"
+#import "SocializeShareCreator.h"
 
 @interface SocializeShareCreatorTests : SocializeActivityCreatorTests
+@property (nonatomic, retain) SocializeShareCreator *shareCreator;
+@property (nonatomic, retain) id mockOptions;
+@property (nonatomic, retain) id mockShare;
 
 @end

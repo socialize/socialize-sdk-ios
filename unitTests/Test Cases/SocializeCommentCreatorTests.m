@@ -68,7 +68,7 @@
     [self selectJustTwitterInOptions];
     
     [self succeedCommentCreate];
-    [self expectSetTwitterInActivity];
+    [self expectSetTwitterInActivity:self.mockComment];
     
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
 }
