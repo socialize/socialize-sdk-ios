@@ -42,7 +42,7 @@
                               displayProxy:(SocializeUIDisplayProxy*)proxy
                                    success:(void(^)())success
                                    failure:(void(^)(NSError *error))failure {
-    SocializeFacebookAuthenticator *auth = [[[self alloc] initWithOptions:success displayProxy:proxy] autorelease];
+    SocializeFacebookAuthenticator *auth = [[[self alloc] initWithOptions:options displayProxy:proxy] autorelease];
     auth.successBlock = success;
     auth.failureBlock = failure;
     
