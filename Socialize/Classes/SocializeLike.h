@@ -20,7 +20,7 @@
 
 /**Private implenetation of <SocializeLike> protocol*/
 @interface SocializeLike : SocializeActivity <SocializeLike>
-{
-}
+
++ (SocializeLike*)likeWithEntity:(id<SocializeEntity>)entity;
 
 @end

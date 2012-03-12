@@ -24,6 +24,7 @@
 - (void)getCommentsForEntityWithKey:(NSString*)entityKey;
 - (void)createShareWithURL:(NSString*)url medium:(SocializeShareMedium)medium text:(NSString*)text;
 - (void)createLikeWithURL:(NSString*)url latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude;
+- (void)createLike:(id<SocializeLike>)like;
 - (void)createViewWithURL:(NSString*)url latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude;
 - (void)getActivityForCurrentUser;
 - (void)getActivityForApplication;

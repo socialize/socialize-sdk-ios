@@ -10,4 +10,9 @@
 
 
 @implementation SocializeLike
++ (SocializeLike*)likeWithEntity:(id<SocializeEntity>)entity {
+    SocializeLike *like = [[[SocializeLike alloc] init] autorelease];
+    like.entity = entity;
+    return like;
+}
 @end

@@ -38,28 +38,33 @@
 
 -(void)postLikeForEntity:(id<SocializeEntity>)entity andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat
 {
-    [self postLikeForEntityKey:[entity key] andLongitude:lng latitude:lat];
+    SocializeLike *like = [SocializeLike likeWithEntity:entity];
+    [like setLat:lat];
+    [like setLng:lng];
+    [self createLike:like];
 }
 
--(void)postLikeForEntityKey:(NSString*)key andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat
-{
-    if (key && [key length]){   
-        NSDictionary* entityParam = nil;
-        if (lng!= nil && lat != nil)
-            entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity_key", lng, @"lng", lat, @"lat", nil];
-        else
-            entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity_key", nil];
-        
-        NSArray *params = [NSArray arrayWithObjects:entityParam, 
-                           nil];
-        [self executeRequest:
-         [SocializeRequest requestWithHttpMethod:@"POST"
-                                    resourcePath:LIKE_METHOD
-                              expectedJSONFormat:SocializeDictionaryWithListAndErrors
-                                          params:params]
-         ];
+-(void)postLikeForEntityKey:(NSString*)key andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat {
+    SocializeEntity *entity = [SocializeEntity entityWithKey:key name:nil];
+    [self postLikeForEntity:entity andLongitude:lat latitude:lng];
+}
 
-    }
+- (void)createLikesForParams:(NSArray*)params {
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:LIKE_METHOD
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                      params:params]
+     ];
+}
+
+- (void)createLikes:(NSArray*)likes {
+    NSArray* params = [_objectCreator createDictionaryRepresentationArrayForObjects:likes];
+    [self createLikesForParams:params];
+}
+
+- (void)createLike:(id<SocializeLike>)like {
+    [self createLikes:[NSArray arrayWithObject:like]];
 }
 
 -(void)deleteLike:(id<SocializeLike>)like{

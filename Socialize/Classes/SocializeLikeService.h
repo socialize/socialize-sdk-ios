@@ -79,4 +79,8 @@
  */
 -(void)postLikeForEntity:(id<SocializeEntity>)entity andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 
+- (void)createLikes:(NSArray*)likes;
+
+- (void)createLike:(id<SocializeLike>)like;
+
 @end

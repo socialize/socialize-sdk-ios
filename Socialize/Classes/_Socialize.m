@@ -453,6 +453,14 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
     [_likeService deleteLike:like]; 
 }
 
+- (void)createLike:(id<SocializeLike>)like {
+    [_likeService createLike:like];
+}
+
+- (void)createLikes:(NSArray*)likes {
+    [_likeService createLikes:likes];
+}
+
 -(void)getLikesForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last{
     [_likeService getLikesForEntityKey:key first:first last:last] ;
 }

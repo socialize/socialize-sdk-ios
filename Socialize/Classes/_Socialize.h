@@ -526,6 +526,9 @@ otherwise you will get a failure.
  */
 -(void)unlikeEntity:(id<SocializeLike>)like;
 
+- (void)createLike:(id<SocializeLike>)like;
+- (void)createLikes:(NSArray*)likes;
+
 /**
  Get list of 'likes' for entity.
  
@@ -712,6 +715,7 @@ otherwise you will get a failure.
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text;
 -(void)createShareForEntityWithKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text;
 - (void)createShare:(id<SocializeShare>)share;
+
 
 /**
  Enable push notifications for new comments on the given entity
