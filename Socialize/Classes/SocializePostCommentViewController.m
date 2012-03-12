@@ -14,7 +14,9 @@
 #import "SocializeSubscriptionService.h"
 #import "SocializeCommentCreator.h"
 #import "SocializeThirdPartyFacebook.h"
+#import "SocializeThirdPartyTwitter.h"
 #import "SocializeFacebookAuthenticator.h"
+#import "SocializeTwitterAuthenticator.h"
 #import "SocializeUIDisplayProxy.h"
 
 @interface SocializePostCommentViewController ()
@@ -30,6 +32,7 @@
 @synthesize dontSubscribeToDiscussion = dontSubscribeToDiscussion_;
 @synthesize enableSubscribeButton = enabledSubscribeButton_;
 @synthesize subscribeContainer = subscribeContainer_;
+@synthesize twitterButton = twitterButton_;
 
 + (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SocializePostCommentViewControllerDelegate>)delegate {
     SocializePostCommentViewController *postCommentViewController = [self postCommentViewControllerWithEntityURL:entityURL];
@@ -51,6 +54,7 @@
     self.unsubscribeButton = nil;
     self.enableSubscribeButton = nil;
     self.subscribeContainer = nil;
+    self.twitterButton = nil;
 
     [super dealloc];
 }
@@ -83,12 +87,19 @@
 
 - (void)configureMessageActionButtons {
     NSMutableArray *buttons = [NSMutableArray array];
+
+    if ([SocializeThirdPartyTwitter available]) {
+        [buttons addObject:self.twitterButton];
+    } else {
+        DebugLog(SOCIALIZE_TWITTER_NOT_CONFIGURED_MESSAGE);
+    }
+    
     if ([SocializeThirdPartyFacebook available]) {
         [buttons addObject:self.facebookButton];
     } else {
         DebugLog(SOCIALIZE_FACEBOOK_NOT_CONFIGURED_MESSAGE);
     }
-
+    
     if ([self.socialize notificationsAreConfigured]) {
         [buttons addObject:self.enableSubscribeButton];
     } else {
@@ -104,8 +115,10 @@
     self.facebookButton.selected = isLinked && !dontPost;
 }
 
-- (BOOL)shouldSendToFacebook {
-    return [self.socialize isAuthenticatedWithFacebook] && self.facebookButton.selected && !self.facebookButton.hidden;
+- (void)configureTwitterButton {
+    BOOL dontPost = [[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY] boolValue];
+    BOOL isLinked = [SocializeThirdPartyTwitter isLinkedToSocialize];
+    self.twitterButton.selected = isLinked && !dontPost;
 }
 
 - (void)executeAfterModalDismissDelay:(void (^)())block {
@@ -170,6 +183,7 @@
     [super afterLoginAction:userChanged];
     
     [self configureFacebookButton];
+    [self configureTwitterButton];
     [self configureMessageActionButtons];
     
     if (userChanged) {
@@ -178,7 +192,11 @@
 }
 
 - (void)setPostToFacebook:(BOOL)postToFacebook {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:postToFacebook] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!postToFacebook] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+}
+
+- (void)setPostToTwitter:(BOOL)postToTwitter {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!postToTwitter] forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
 }
 
 - (void)facebookButtonPressed:(UIButton *)sender {
@@ -195,6 +213,24 @@
         [self setPostToFacebook:sender.selected];
     }
 }
+
+- (IBAction)twitterButtonPressed:(UIButton*)sender {
+    if (!sender.selected && ![SocializeThirdPartyTwitter isLinkedToSocialize]) {
+        [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:nil
+                                                                  display:self
+                                                                  success:^{
+                                                                      [self setPostToTwitter:YES];
+                                                                      [self configureTwitterButton];
+                                                                  } failure:^(NSError *error) {
+                                                                      [self configureTwitterButton];
+                                                                  }];
+    } else {
+        sender.selected = !sender.selected;
+        [self setPostToTwitter:sender.selected];
+    }
+
+}
+
 
 -(void)sendButtonPressed:(UIButton*)button {
     if ([self shouldShowAuthViewController]) {

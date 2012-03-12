@@ -1448,6 +1448,20 @@
 		AA9E0C91144E147900D2C37F /* GenericViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9E0C8C144E076D00D2C37F /* GenericViewController.m */; };
 		AA9E0C92144E148700D2C37F /* GenericViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9E0C8D144E076D00D2C37F /* GenericViewController.xib */; };
 		AA9E0C93144E148700D2C37F /* TestTabbedSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9E0C88144E060B00D2C37F /* TestTabbedSocializeActionBar.xib */; };
+		AAA162D8150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D6150E8EE70052148B /* socialize-comment-twitter-disabled-button.png */; };
+		AAA162D9150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D6150E8EE70052148B /* socialize-comment-twitter-disabled-button.png */; };
+		AAA162DA150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D6150E8EE70052148B /* socialize-comment-twitter-disabled-button.png */; };
+		AAA162DB150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D6150E8EE70052148B /* socialize-comment-twitter-disabled-button.png */; };
+		AAA162DC150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D6150E8EE70052148B /* socialize-comment-twitter-disabled-button.png */; };
+		AAA162DD150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D6150E8EE70052148B /* socialize-comment-twitter-disabled-button.png */; };
+		AAA162DE150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D6150E8EE70052148B /* socialize-comment-twitter-disabled-button.png */; };
+		AAA162DF150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D7150E8EE70052148B /* socialize-comment-twitter-enabled-button.png */; };
+		AAA162E0150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D7150E8EE70052148B /* socialize-comment-twitter-enabled-button.png */; };
+		AAA162E1150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D7150E8EE70052148B /* socialize-comment-twitter-enabled-button.png */; };
+		AAA162E2150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D7150E8EE70052148B /* socialize-comment-twitter-enabled-button.png */; };
+		AAA162E3150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D7150E8EE70052148B /* socialize-comment-twitter-enabled-button.png */; };
+		AAA162E4150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D7150E8EE70052148B /* socialize-comment-twitter-enabled-button.png */; };
+		AAA162E5150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA162D7150E8EE70052148B /* socialize-comment-twitter-enabled-button.png */; };
 		AAA5324F1475C7A8007EE0BE /* socialize-comment-facebook-disabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA5324D1475C7A8007EE0BE /* socialize-comment-facebook-disabled-button.png */; };
 		AAA532501475C7A8007EE0BE /* socialize-comment-facebook-disabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA5324D1475C7A8007EE0BE /* socialize-comment-facebook-disabled-button.png */; };
 		AAA532511475C7A8007EE0BE /* socialize-comment-facebook-disabled-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA5324D1475C7A8007EE0BE /* socialize-comment-facebook-disabled-button.png */; };
@@ -2823,6 +2837,8 @@
 		AA9E0C8B144E076D00D2C37F /* GenericViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericViewController.h; sourceTree = "<group>"; };
 		AA9E0C8C144E076D00D2C37F /* GenericViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericViewController.m; sourceTree = "<group>"; };
 		AA9E0C8D144E076D00D2C37F /* GenericViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericViewController.xib; sourceTree = "<group>"; };
+		AAA162D6150E8EE70052148B /* socialize-comment-twitter-disabled-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-twitter-disabled-button.png"; path = "Resources/socialize-comment-twitter-disabled-button.png"; sourceTree = "<group>"; };
+		AAA162D7150E8EE70052148B /* socialize-comment-twitter-enabled-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-twitter-enabled-button.png"; path = "Resources/socialize-comment-twitter-enabled-button.png"; sourceTree = "<group>"; };
 		AAA5324D1475C7A8007EE0BE /* socialize-comment-facebook-disabled-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-facebook-disabled-button.png"; path = "Resources/socialize-comment-facebook-disabled-button.png"; sourceTree = "<group>"; };
 		AAA5324E1475C7A8007EE0BE /* socialize-comment-facebook-enabled-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-facebook-enabled-button.png"; path = "Resources/socialize-comment-facebook-enabled-button.png"; sourceTree = "<group>"; };
 		AAADF8F51504175E009E5493 /* SocializeFacebookAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebookAuthHandler.h; path = Classes/SocializeFacebookAuthHandler.h; sourceTree = "<group>"; };
@@ -3797,6 +3813,8 @@
 		9A4D29831393FF720065C0CB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AAA162D6150E8EE70052148B /* socialize-comment-twitter-disabled-button.png */,
+				AAA162D7150E8EE70052148B /* socialize-comment-twitter-enabled-button.png */,
 				AA7FB8DF1491460B00B018DE /* socialize-notifications-bottom-shadow-background.png */,
 				AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */,
 				AA7FB88F1491415600B018DE /* socialize-iphone-notification-button-disabled.png */,
@@ -5459,6 +5477,8 @@
 				AA839AAC14D381C300103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 				AA92BBEC14E368B900F67058 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AAE09C7814F857B50093CDA9 /* SocializeComposeMessageViewController.xib in Resources */,
+				AAA162DA150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */,
+				AAA162E1150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5643,6 +5663,8 @@
 				AA839AAA14D3772800103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 				AA92BBEA14E3574400F67058 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AA82E75514F8559C002CDF93 /* SocializeComposeMessageViewController.xib in Resources */,
+				AAA162D8150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */,
+				AAA162DF150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5823,6 +5845,8 @@
 				AA839AAE14D381C500103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 				AA92BBEE14E368BB00F67058 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AAE09C7714F857B30093CDA9 /* SocializeComposeMessageViewController.xib in Resources */,
+				AAA162DC150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */,
+				AAA162E3150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6023,6 +6047,8 @@
 				AA839AAF14D381C600103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 				AA92BBEF14E368BC00F67058 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AAE09C7B14F857B70093CDA9 /* SocializeComposeMessageViewController.xib in Resources */,
+				AAA162DD150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */,
+				AAA162E4150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6095,6 +6121,8 @@
 				AA839AB014D381C700103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 				AA92BBF014E368BC00F67058 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AAE09C7C14F857B80093CDA9 /* SocializeComposeMessageViewController.xib in Resources */,
+				AAA162DE150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */,
+				AAA162E5150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6297,6 +6325,8 @@
 				AA839AAD14D381C400103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 				AA92BBED14E368BA00F67058 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AAE09C7A14F857B60093CDA9 /* SocializeComposeMessageViewController.xib in Resources */,
+				AAA162DB150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */,
+				AAA162E2150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6479,6 +6509,8 @@
 				AA839AAB14D3772800103ECE /* SocializeRichPushNotificationViewController.xib in Resources */,
 				AA92BBEB14E3574400F67058 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AAE09C7614F857B00093CDA9 /* SocializeComposeMessageViewController.xib in Resources */,
+				AAA162D9150E8EE70052148B /* socialize-comment-twitter-disabled-button.png in Resources */,
+				AAA162E0150E8EE70052148B /* socialize-comment-twitter-enabled-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

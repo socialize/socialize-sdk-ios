@@ -40,6 +40,8 @@
 #import "SocializeCommentCreator.h"
 #import "SocializeFacebookAuthenticator.h"
 #import "SocializeThirdPartyFacebook.h"
+#import "SocializeThirdPartyTwitter.h"
+#import "SocializeTwitterAuthenticator.h"
 
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
@@ -52,6 +54,7 @@
 @implementation PostCommentViewControllerTests
 @synthesize postCommentViewController = postCommentViewController_;
 @synthesize mockFacebookButton = mockFacebookButton_;
+@synthesize mockTwitterButton = mockTwitterButton_;
 @synthesize mockUnsubscribeButton = mockUnsubscribeButton_;
 @synthesize mockEnableSubscribeButton = mockEnableSubscribeButton_;
 @synthesize mockSubscribeContainer = mockSubscribeContainer_;
@@ -66,6 +69,8 @@
     [SocializeCommentCreator startMockingClass];
     [SocializeThirdPartyFacebook startMockingClass];
     [SocializeFacebookAuthenticator startMockingClass];
+    [SocializeThirdPartyTwitter startMockingClass];
+    [SocializeTwitterAuthenticator startMockingClass];
     
     // super setUp creates self.viewController
     self.postCommentViewController = (SocializePostCommentViewController*)self.viewController;
@@ -73,6 +78,9 @@
     self.mockFacebookButton = [OCMockObject mockForClass:[UIButton class]];
     self.postCommentViewController.facebookButton = self.mockFacebookButton;
     
+    self.mockTwitterButton = [OCMockObject mockForClass:[UIButton class]];
+    self.postCommentViewController.twitterButton = self.mockTwitterButton;
+
     self.mockUnsubscribeButton = [OCMockObject mockForClass:[UIButton class]];
     self.postCommentViewController.unsubscribeButton = self.mockUnsubscribeButton;
     
@@ -88,6 +96,8 @@
     [SocializeCommentCreator stopMockingClassAndVerify];
     [SocializeThirdPartyFacebook stopMockingClassAndVerify];
     [SocializeFacebookAuthenticator stopMockingClassAndVerify];
+    [SocializeThirdPartyTwitter stopMockingClassAndVerify];
+    [SocializeTwitterAuthenticator stopMockingClassAndVerify];
     
     [self.mockFacebookButton verify];
     
@@ -223,6 +233,7 @@
 
 - (void)ignoreButtons {
     [self.mockFacebookButton makeNice];
+    [self.mockTwitterButton makeNice];
     [self.mockMessageActionButtonContainer makeNice];
     [self.mockEnableSubscribeButton makeNice];
     [self.mockUnsubscribeButton makeNice];
@@ -230,6 +241,8 @@
 }
 
 - (void)testAuthingWithFacebookCreatesComment {
+    [self ignoreTwitter];
+    
     [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] isLinkedToSocialize];
     [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] available];
     
@@ -240,12 +253,17 @@
     [self.postCommentViewController socializeAuthViewController:nil didAuthenticate:nil];
 }
 
-- (void)testMessageActionButtonsWhenFacebookAndNotificationsAvailable {
+- (void)testMessageActionButtonsWhenEverythingAvailable {
     [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] available];
+    [[[SocializeThirdPartyTwitter stub] andReturnBool:YES] available];
     [[[self.mockSocialize stub] andReturnBool:YES] notificationsAreConfigured];
     
-    NSArray *expectedButtons = [NSMutableArray arrayWithObjects:self.mockFacebookButton, self.mockEnableSubscribeButton, nil];
-    [[(id)self.postCommentViewController expect] setMessageActionButtons:expectedButtons];
+    [[[(id)self.postCommentViewController expect] andDo1:^(NSArray *buttons) {
+        GHAssertTrue([buttons containsObject:self.mockTwitterButton], nil);
+        GHAssertTrue([buttons containsObject:self.mockFacebookButton], nil);
+        GHAssertTrue([buttons containsObject:self.mockEnableSubscribeButton], nil);
+    }] setMessageActionButtons:OCMOCK_ANY];
+    
     [self.postCommentViewController configureMessageActionButtons];
 }
 
@@ -360,8 +378,15 @@
     [[SocializeThirdPartyFacebook stub] available];
 }
 
+- (void)ignoreTwitter {
+    [[SocializeThirdPartyTwitter stub] isLinkedToSocialize];
+    [[SocializeThirdPartyTwitter stub] available];
+}
+
 - (void)testAfterLoginGetsSubscriptionIfUserChanged {
     [self ignoreFacebook];
+    [self ignoreTwitter];
+    [self ignoreButtons];
     
     NSString *testKey = @"testKey";
     self.postCommentViewController.entityURL = testKey;
@@ -373,6 +398,20 @@
     [[self.mockEnableSubscribeButton expect] setEnabled:NO];
     [[self.mockSocialize expect] getSubscriptionsForEntityKey:testKey first:nil last:nil];
     [self.postCommentViewController afterLoginAction:YES];
+}
+
+- (void)expectTwitterLogin {
+    [[SocializeTwitterAuthenticator expect] authenticateViaTwitterWithOptions:OCMOCK_ANY display:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+
+}
+
+- (void)testPressingTwitterButtonAttemptsLogin {
+    [[[SocializeThirdPartyTwitter stub] andReturnBool:NO] isLinkedToSocialize];
+    [[[self.mockTwitterButton stub] andReturnBool:NO] isSelected];
+    
+    [self expectTwitterLogin];
+    
+    [self.postCommentViewController twitterButtonPressed:self.mockTwitterButton];
 }
 
 @end

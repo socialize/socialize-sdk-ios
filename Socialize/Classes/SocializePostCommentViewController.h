@@ -17,12 +17,14 @@
 @property (nonatomic, assign) id<SocializePostCommentViewControllerDelegate> delegate;
 @property (nonatomic, retain) id<SocializeComment> commentObject;
 @property (nonatomic, retain) IBOutlet UIButton *facebookButton;
+@property (nonatomic, retain) IBOutlet UIButton *twitterButton;
 @property (nonatomic, retain) IBOutlet UIButton *unsubscribeButton;
 @property (nonatomic, retain) IBOutlet UIButton *enableSubscribeButton;
 @property (nonatomic, assign) BOOL dontSubscribeToDiscussion;
 @property(nonatomic, retain) IBOutlet UIView *subscribeContainer;
 
 - (IBAction)facebookButtonPressed:(UIButton*)sender;
+- (IBAction)twitterButtonPressed:(UIButton*)sender;
 -(IBAction)unsubscribeButtonPressed:(id)sender;
 -(IBAction)enableSubscribeButtonPressed:(id)sender;
 - (void)getSubscriptionStatus;

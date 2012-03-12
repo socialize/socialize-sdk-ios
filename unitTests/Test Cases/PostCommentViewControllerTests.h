@@ -37,6 +37,7 @@
 @interface PostCommentViewControllerTests : SocializeComposeMessageViewControllerTests <SocializePostCommentViewControllerDelegate>
 @property (nonatomic, retain) SocializePostCommentViewController *postCommentViewController;
 @property (nonatomic, retain) id mockFacebookButton;
+@property (nonatomic, retain) id mockTwitterButton;
 @property (nonatomic, retain) id mockUnsubscribeButton;
 @property (nonatomic, retain) id mockEnableSubscribeButton;
 @property (nonatomic, retain) id mockSubscribeContainer;
