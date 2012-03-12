@@ -38,6 +38,8 @@
 #import "SocializeSubscriptionService.h"
 #import "SocializeHorizontalContainerView.h"
 #import "SocializeCommentCreator.h"
+#import "SocializeFacebookAuthenticator.h"
+#import "SocializeThirdPartyFacebook.h"
 
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
@@ -62,6 +64,8 @@
     [super setUp];
     
     [SocializeCommentCreator startMockingClass];
+    [SocializeThirdPartyFacebook startMockingClass];
+    [SocializeFacebookAuthenticator startMockingClass];
     
     // super setUp creates self.viewController
     self.postCommentViewController = (SocializePostCommentViewController*)self.viewController;
@@ -82,6 +86,8 @@
 
 - (void)tearDown {
     [SocializeCommentCreator stopMockingClassAndVerify];
+    [SocializeThirdPartyFacebook stopMockingClassAndVerify];
+    [SocializeFacebookAuthenticator stopMockingClassAndVerify];
     
     [self.mockFacebookButton verify];
     
@@ -224,6 +230,9 @@
 }
 
 - (void)testAuthingWithFacebookCreatesComment {
+    [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] isLinkedToSocialize];
+    [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] available];
+    
     [self ignoreButtons];
     
     [self expectCreateComment];
@@ -232,7 +241,7 @@
 }
 
 - (void)testMessageActionButtonsWhenFacebookAndNotificationsAvailable {
-    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
+    [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] available];
     [[[self.mockSocialize stub] andReturnBool:YES] notificationsAreConfigured];
     
     NSArray *expectedButtons = [NSMutableArray arrayWithObjects:self.mockFacebookButton, self.mockEnableSubscribeButton, nil];
@@ -346,7 +355,14 @@
     [self.postCommentViewController service:mockService didFetchElements:dataArray];
 }
 
+- (void)ignoreFacebook {
+    [[SocializeThirdPartyFacebook stub] isLinkedToSocialize];
+    [[SocializeThirdPartyFacebook stub] available];
+}
+
 - (void)testAfterLoginGetsSubscriptionIfUserChanged {
+    [self ignoreFacebook];
+    
     NSString *testKey = @"testKey";
     self.postCommentViewController.entityURL = testKey;
     

@@ -13,6 +13,9 @@
 #import "SocializeAuthViewController.h"
 #import "SocializeSubscriptionService.h"
 #import "SocializeCommentCreator.h"
+#import "SocializeThirdPartyFacebook.h"
+#import "SocializeFacebookAuthenticator.h"
+#import "SocializeUIDisplayProxy.h"
 
 @interface SocializePostCommentViewController ()
 - (void)configureFacebookButton;
@@ -80,7 +83,7 @@
 
 - (void)configureMessageActionButtons {
     NSMutableArray *buttons = [NSMutableArray array];
-    if ([self.socialize isAuthenticatedWithFacebook]) {
+    if ([SocializeThirdPartyFacebook available]) {
         [buttons addObject:self.facebookButton];
     } else {
         DebugLog(SOCIALIZE_FACEBOOK_NOT_CONFIGURED_MESSAGE);
@@ -97,7 +100,8 @@
 
 - (void)configureFacebookButton {
     BOOL dontPost = [[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
-    self.facebookButton.selected = !dontPost;
+    BOOL isLinked = [SocializeThirdPartyFacebook isLinkedToSocialize];
+    self.facebookButton.selected = isLinked && !dontPost;
 }
 
 - (BOOL)shouldSendToFacebook {
@@ -173,8 +177,23 @@
     }
 }
 
+- (void)setPostToFacebook:(BOOL)postToFacebook {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:postToFacebook] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+}
+
 - (void)facebookButtonPressed:(UIButton *)sender {
-    sender.selected = !sender.selected;
+    if (!sender.selected && ![SocializeThirdPartyFacebook isLinkedToSocialize]) {
+        [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:nil display:self
+                                                                   success:^{
+                                                                       [self setPostToFacebook:YES];
+                                                                       [self configureFacebookButton];
+                                                                   } failure:^(NSError *error) {
+                                                                       [self configureFacebookButton];
+                                                                   }];
+    } else {
+        sender.selected = !sender.selected;
+        [self setPostToFacebook:sender.selected];
+    }
 }
 
 -(void)sendButtonPressed:(UIButton*)button {
