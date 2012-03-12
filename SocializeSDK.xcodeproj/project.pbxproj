@@ -1878,6 +1878,8 @@
 		AAF3BC7614880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF3BC7514880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAF3BC7714880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF3BC7514880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAF46179150D575C003B55F5 /* SocializeActivityCreatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF46178150D575B003B55F5 /* SocializeActivityCreatorTests.m */; };
+		AAF4617F150D7FC6003B55F5 /* SocializeShareCreatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF4617E150D7FC5003B55F5 /* SocializeShareCreatorTests.m */; };
+		AAF46182150D7FD9003B55F5 /* SocializeLikeCreatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF46181150D7FD8003B55F5 /* SocializeLikeCreatorTests.m */; };
 		AAF50D6A14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF50D6914CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib */; };
 		AAF50D6B14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF50D6914CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib */; };
 		AAF50D6C14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF50D6914CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib */; };
@@ -2987,6 +2989,10 @@
 		AAF3BC7514880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePostCommentViewControllerDelegate.h; path = Classes/SocializePostCommentViewControllerDelegate.h; sourceTree = "<group>"; };
 		AAF46177150D575A003B55F5 /* SocializeActivityCreatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityCreatorTests.h; path = "Test Cases/SocializeActivityCreatorTests.h"; sourceTree = "<group>"; };
 		AAF46178150D575B003B55F5 /* SocializeActivityCreatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityCreatorTests.m; path = "Test Cases/SocializeActivityCreatorTests.m"; sourceTree = "<group>"; };
+		AAF4617D150D7FC4003B55F5 /* SocializeShareCreatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeShareCreatorTests.h; path = "Test Cases/SocializeShareCreatorTests.h"; sourceTree = "<group>"; };
+		AAF4617E150D7FC5003B55F5 /* SocializeShareCreatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeShareCreatorTests.m; path = "Test Cases/SocializeShareCreatorTests.m"; sourceTree = "<group>"; };
+		AAF46180150D7FD7003B55F5 /* SocializeLikeCreatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeCreatorTests.h; path = "Test Cases/SocializeLikeCreatorTests.h"; sourceTree = "<group>"; };
+		AAF46181150D7FD8003B55F5 /* SocializeLikeCreatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeCreatorTests.m; path = "Test Cases/SocializeLikeCreatorTests.m"; sourceTree = "<group>"; };
 		AAF50D6914CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeNotificationToggleBubbleContentView.xib; path = Resources/SocializeNotificationToggleBubbleContentView.xib; sourceTree = "<group>"; };
 		AAF50D7114CA0ED700585474 /* SocializeBaseViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBaseViewControllerDelegate.h; path = Classes/SocializeBaseViewControllerDelegate.h; sourceTree = "<group>"; };
 		AAF559DB14AE51EF00565248 /* DebugUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugUtil.m; sourceTree = "<group>"; };
@@ -4650,6 +4656,10 @@
 				AAF46178150D575B003B55F5 /* SocializeActivityCreatorTests.m */,
 				AA4CDFE615098EFD00558287 /* SocializeCommentCreatorTests.h */,
 				AA4CDFE715098EFD00558287 /* SocializeCommentCreatorTests.m */,
+				AAF4617D150D7FC4003B55F5 /* SocializeShareCreatorTests.h */,
+				AAF4617E150D7FC5003B55F5 /* SocializeShareCreatorTests.m */,
+				AAF46180150D7FD7003B55F5 /* SocializeLikeCreatorTests.h */,
+				AAF46181150D7FD8003B55F5 /* SocializeLikeCreatorTests.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -6990,6 +7000,8 @@
 				AA4CDFE815098EFD00558287 /* SocializeCommentCreatorTests.m in Sources */,
 				AA76792014F70A6000919EC4 /* GCDAProfiling.c in Sources */,
 				AAF46179150D575C003B55F5 /* SocializeActivityCreatorTests.m in Sources */,
+				AAF4617F150D7FC6003B55F5 /* SocializeShareCreatorTests.m in Sources */,
+				AAF46182150D7FD9003B55F5 /* SocializeLikeCreatorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
