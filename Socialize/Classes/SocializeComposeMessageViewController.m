@@ -95,6 +95,14 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     return locationManager_;
 }
 
+- (BOOL)canSend {
+    return [commentTextView.text length] > 0;
+}
+
+- (void)updateSendButton {
+    self.sendButton.enabled = [self canSend];
+}
+
 #pragma Location enable/disable button callbacks
 -(void) startLoadAnimationForView: (UIView*) view
 {
@@ -105,7 +113,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 -(void) stopLoadAnimation
 {
     [super  stopLoadAnimation];
-    self.sendButton.enabled = YES; 
+    [self updateSendButton];
 }
 
 -(void)updateViewWithNewLocation: (CLLocation*)userLocation
@@ -250,10 +258,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 #pragma mark - UITextViewDelegate callbacks
 
 -(void)textViewDidChange:(UITextView *)textView {
-    if ([commentTextView.text length] > 0) 
-      self.sendButton.enabled = YES;     
-    else
-      self.sendButton.enabled = NO;
+    [self updateSendButton];
 }
 
 #pragma mark - View lifecycle
@@ -265,7 +270,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     self.navigationItem.leftBarButtonItem = self.cancelButton;
     
     self.navigationItem.rightBarButtonItem = self.sendButton;
-    self.sendButton.enabled = NO;
+    [self updateSendButton];
     
     [self.commentTextView becomeFirstResponder];    
     
