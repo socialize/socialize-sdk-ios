@@ -55,7 +55,9 @@
 
     [[[SocializeThirdPartyTwitter stub] andReturnInteger:SocializeThirdPartyAuthTypeTwitter] socializeAuthType];
     
-    
+    Class realTwitter = [SocializeThirdPartyTwitter origClass];
+    [[[SocializeThirdPartyTwitter stub] andReturn:[realTwitter userAbortedAuthError]] userAbortedAuthError];
+
     self.twitterAuthenticator = (SocializeTwitterAuthenticator*)self.action;
 }
 
@@ -81,7 +83,9 @@
 }
 
 - (void)succeedInteractiveTwitterLogin {
-    [[[self.mockDisplay expect] andDo2:^(id obj, SocializeTwitterAuthViewController *twitterAuth) {
+    [[[self.mockDisplay expect] andDo2:^(id obj, UINavigationController *twitterNav) {
+        
+        SocializeTwitterAuthViewController *twitterAuth = (SocializeTwitterAuthViewController*)[twitterNav topViewController];
         
         [[[SocializeThirdPartyTwitter expect] andDo0:^{
             self.hasLocalCredentials = YES;
@@ -99,7 +103,7 @@
     }] socializeObject:OCMOCK_ANY requiresDisplayOfViewController:OCMOCK_ANY];
 }
 
-- (void)testSuccessfulInteractiveLogin {
+- (void)succeedToSettings {
     [self.mockDisplay makeNice];
     
     // Initially, local credentials not available
@@ -113,10 +117,28 @@
     
     // Socialize third party link succeeds
     [self suceedSocializeAuthentication];
+}
+
+- (void)testSuccessfulInteractiveLogin {
+    [self succeedToSettings];
+    
+    // Save settings
+    [self expectSettingsAndSave];
     
     // Expect success
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
 }
+
+- (void)testLoggingOutOfThirdPartyInSettingsCausesFailure {
+    [self succeedToSettings];
+    
+    // Save settings
+    [self expectSettingsAndLogout];
+    
+    // Expect success
+    [self executeActionAndWaitForStatus:kGHUnitWaitStatusFailure fromTest:_cmd];
+}
+
 
      
 @end

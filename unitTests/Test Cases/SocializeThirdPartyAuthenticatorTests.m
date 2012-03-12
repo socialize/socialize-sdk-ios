@@ -12,6 +12,7 @@
 #import "SocializeUIDisplay.h"
 #import "_Socialize.h"
 #import "SocializeServiceDelegate.h"
+#import "SocializeProfileEditViewController.h"
 
 @implementation SocializeThirdPartyAuthenticatorTests
 @synthesize thirdPartyAuthenticator = thirdPartyAuthenticator_;
@@ -19,6 +20,7 @@
 @synthesize isAuthenticated = isAuthenticated_;
 @synthesize hasLocalCredentials = hasLocalCredentials_;
 @synthesize authenticationPossible = authenticationPossible_;
+@synthesize mockSettings = mockSettings_;
 
 - (id)createAction {
     __block id weakSelf = self;
@@ -70,6 +72,8 @@
     [self stubBoolsForMockThirdParty:self.mockThirdParty];
     
     [[[self.mockThirdParty stub] andReturnInteger:[self authType]] socializeAuthType];
+    
+    self.mockSettings = [OCMockObject mockForClass:[SocializeProfileEditViewController class]];
 }
 
 - (void)stubBoolsForMockThirdParty:(id)mockThirdParty {
@@ -125,6 +129,7 @@
 
 - (void)suceedSocializeAuthentication {
     [self expectSocializeAuthenticationAndDo:^{
+        self.isAuthenticated = YES;
         [self.thirdPartyAuthenticator didAuthenticate:nil];
     }];
 }
@@ -151,6 +156,32 @@
     self.isAuthenticated = NO;
     self.hasLocalCredentials = NO;
     self.authenticationPossible = YES;
+}
+
+- (void)expectSettingsAndDo:(void(^)(SocializeProfileEditViewController *controller))block {
+    [[[self.mockDisplay expect] andDo2:^(id obj, UINavigationController *settingsNav) {
+        SocializeProfileEditViewController *settings = (SocializeProfileEditViewController*)[settingsNav topViewController];
+        block(settings);
+    }] socializeObject:OCMOCK_ANY requiresDisplayOfViewController:OCMOCK_ANY];
+}
+
+- (void)expectSettingsAndCancel {
+    [self expectSettingsAndDo:^(SocializeProfileEditViewController *settings) {
+        [self.thirdPartyAuthenticator baseViewControllerDidCancel:settings];
+    }];
+}
+
+- (void)expectSettingsAndSave {
+    [self expectSettingsAndDo:^(SocializeProfileEditViewController *settings) {
+        [self.thirdPartyAuthenticator profileEditViewController:settings didUpdateProfileWithUser:nil];
+    }];
+}
+
+- (void)expectSettingsAndLogout {
+    [self expectSettingsAndDo:^(SocializeProfileEditViewController *settings) {
+        self.isAuthenticated = NO;
+        [self.thirdPartyAuthenticator profileEditViewController:settings didUpdateProfileWithUser:nil];
+    }];    
 }
 
 - (void)testCreateDestroy {
@@ -183,8 +214,34 @@
     // Socialize third party link succeeds
     [self suceedSocializeAuthentication];
     
+    // Save settings
+    [self expectSettingsAndSave];
+    
     // Expect success
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
 }
+
+- (void)testLoggingOutOfThirdPartyInSettingsCausesFailure {
+    [self.mockDisplay makeNice];
+    
+    // Initially, local credentials not available
+    [self simulateInteractiveAuthConditions];
+    
+    // Yes, we want to log in
+    [self respondToLoginDialogWithAccept:YES];
+    
+    // Interactive login completes successfully
+    [self succeedInteractiveLogin];
+    
+    // Socialize third party link succeeds
+    [self suceedSocializeAuthentication];
+    
+    // Save settings
+    [self expectSettingsAndLogout];
+    
+    // Expect success
+    [self executeActionAndWaitForStatus:kGHUnitWaitStatusFailure fromTest:_cmd];
+}
+
 
 @end

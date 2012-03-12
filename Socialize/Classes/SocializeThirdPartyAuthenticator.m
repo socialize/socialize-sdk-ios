@@ -11,18 +11,22 @@
 #import "SocializeThirdParty.h"
 #import "SocializeUIDisplayProxy.h"
 #import "_Socialize.h"
+#import "SocializeProfileEditViewController.h"
+#import "SocializeBaseViewControllerDelegate.h"
 
 @interface SocializeThirdPartyAuthenticator ()
 - (void)showLoginDialog;
 @property (nonatomic, assign) BOOL sentTokenToSocialize;
 @property (nonatomic, assign) BOOL authDialogAccepted;
 @property (nonatomic, assign) BOOL interactiveLoginSucceeded;
+@property (nonatomic, assign) BOOL displayedSettings;
 @end
 
 @implementation SocializeThirdPartyAuthenticator
 @synthesize sentTokenToSocialize = sentTokenToSocialize_;
 @synthesize authDialogAccepted = authDialogAccepted_;
 @synthesize interactiveLoginSucceeded = interactiveLoginSucceeded_;
+@synthesize displayedSettings = displayedSettings_;
 
 @synthesize options = options_;
 @synthesize thirdParty = thirdParty_;
@@ -73,6 +77,29 @@
     [self socializeAuthenticationSucceeded];
 }
 
+- (void)finishWithSettings {
+    // Settings cancelled
+    self.displayedSettings = YES;
+    [self tryToFinishAuthenticating];        
+}
+
+- (void)baseViewControllerDidCancel:(SocializeBaseViewController*)baseViewController {
+    [self.displayProxy dismissModalViewController:baseViewController];
+    [self finishWithSettings];
+}
+
+- (void)profileEditViewController:(SocializeProfileEditViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
+    [self.displayProxy dismissModalViewController:profileEditViewController];
+    [self finishWithSettings];
+}
+
+- (void)showSettings {
+    SocializeProfileEditViewController *settings = [[[SocializeProfileEditViewController alloc] init] autorelease];
+    settings.delegate = self;
+    UINavigationController *nav = [settings wrappingSocializeNavigationController];
+    [self.displayProxy presentModalViewController:nav];
+}
+
 - (void)tryToFinishAuthenticating {
     // Check if auth is even possible
     if (![self.thirdParty available]) {
@@ -96,6 +123,17 @@
     if (!self.sentTokenToSocialize) {
         [self.displayProxy startLoading];
         [self linkWithSocializeUsingLocalCredentials];
+        return;
+    }
+    
+    if (!self.displayedSettings) {
+        [self showSettings];
+        return;
+    }
+    
+    if (![self.thirdParty isLinkedToSocialize]) {
+        // For example, maybe the user immediately logged out in settings
+        [self failWithError:[self.thirdParty userAbortedAuthError]];
         return;
     }
     

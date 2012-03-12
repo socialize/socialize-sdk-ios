@@ -86,18 +86,24 @@
 }
 
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
-    /* The SocializeTwitterAuthViewController flow was cancelled by the user */
-    [self.displayProxy dismissModalViewController:self.twitterAuthViewController];
+    if (baseViewController == self.twitterAuthViewController) {
+        /* The SocializeTwitterAuthViewController flow was cancelled by the user */
+        [self.displayProxy dismissModalViewController:self.twitterAuthViewController];
 
-    NSError *error = [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser];
-    [self failWithError:error];
+        NSError *error = [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser];
+        [self failWithError:error];
+    } else {
+        [super baseViewControllerDidCancel:baseViewController];
+    }
 }
 
 - (void)baseViewControllerDidFinish:(SocializeBaseViewController *)baseViewController {
-    /* The SocializeTwitterAuthViewController flow was completed successfully */
-    [self.displayProxy dismissModalViewController:self.twitterAuthViewController];
+    if (baseViewController == self.twitterAuthViewController) {
+        /* The SocializeTwitterAuthViewController flow was completed successfully */
+        [self.displayProxy dismissModalViewController:self.twitterAuthViewController];
 
-    [self succeedInteractiveLogin];
+        [self succeedInteractiveLogin];
+    }
 }
 
 @end

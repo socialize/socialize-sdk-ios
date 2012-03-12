@@ -9,6 +9,7 @@
 #import "SocializeBaseViewControllerDelegate.h"
 
 @class SocializeProfileEditViewController;
+@protocol SocializeFullUser;
 
 @protocol SocializeProfileEditViewControllerDelegate <SocializeBaseViewControllerDelegate>
 

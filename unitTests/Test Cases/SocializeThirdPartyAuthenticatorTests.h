@@ -17,6 +17,7 @@
 @property (nonatomic, assign) BOOL isAuthenticated;
 @property (nonatomic, assign) BOOL hasLocalCredentials;
 @property (nonatomic, assign) BOOL authenticationPossible;
+@property (nonatomic, retain) id mockSettings;
 
 - (void)respondToLoginDialogWithAccept:(BOOL)accept;
 - (void)simulateAutoAuthConditions;
@@ -27,5 +28,9 @@
 - (void)expectSocializeAuthenticationAndDo:(void(^)())block;
 - (NSInteger)authType;
 - (void)stubBoolsForMockThirdParty:(id)mockThirdParty;
+
+- (void)expectSettingsAndCancel;
+- (void)expectSettingsAndSave;
+- (void)expectSettingsAndLogout;
 
 @end

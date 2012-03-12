@@ -71,6 +71,8 @@
     [[[SocializeThirdPartyFacebook stub] andReturn:self.accessToken] facebookAccessToken];
     [[[SocializeThirdPartyFacebook stub] andReturn:self.expirationDate] facebookExpirationDate];
     [[[SocializeThirdPartyFacebook stub] andReturn:nil] socializeAuthTokenSecret];
+    Class realFacebook = [SocializeThirdPartyFacebook origClass];
+    [[[SocializeThirdPartyFacebook stub] andReturn:[realFacebook userAbortedAuthError]] userAbortedAuthError];
 }
 
 - (void)tearDown {
@@ -100,7 +102,7 @@
     }] authenticateWithAppId:OCMOCK_ANY urlSchemeSuffix:OCMOCK_ANY permissions:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
 }
 
-- (void)testSuccessfulInteractiveLogin {
+- (void)succeedToSettings {
     [self.mockDisplay makeNice];
     
     // Initially, local credentials not available
@@ -114,9 +116,26 @@
     
     // Socialize third party link succeeds
     [self suceedSocializeAuthentication];
+}
+
+- (void)testSuccessfulInteractiveLogin {
+    [self succeedToSettings];
     
+    // Save settings
+    [self expectSettingsAndSave];
+
     // Expect success
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
+}
+
+- (void)testLoggingOutOfThirdPartyInSettingsCausesFailure {
+    [self succeedToSettings];
+    
+    // Save settings
+    [self expectSettingsAndLogout];
+    
+    // Expect success
+    [self executeActionAndWaitForStatus:kGHUnitWaitStatusFailure fromTest:_cmd];
 }
 
 @end
