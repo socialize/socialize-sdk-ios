@@ -12,6 +12,7 @@
 #import "UINavigationController+Socialize.h"
 #import "SocializeAuthViewController.h"
 #import "SocializeSubscriptionService.h"
+#import "SocializeCommentCreator.h"
 
 @interface SocializePostCommentViewController ()
 - (void)configureFacebookButton;
@@ -20,7 +21,6 @@
 
 @implementation SocializePostCommentViewController
 @synthesize commentObject = commentObject_;
-@synthesize commentSentToFacebook = commentSentToFacebook_;
 @synthesize facebookButton = facebookButton_;
 @synthesize delegate = delegate_;
 @synthesize unsubscribeButton = unsubscribeButton_;
@@ -100,19 +100,6 @@
     self.facebookButton.selected = !dontPost;
 }
 
-- (void)createCommentOnSocializeServer {
-    [self startLoading];
-    
-    if([[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue])
-    {
-        NSNumber* latitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.latitude];
-        NSNumber* longitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.longitude];        
-        [self.socialize createCommentForEntityWithKey:self.entityURL comment:commentTextView.text longitude:longitude latitude:latitude subscribe:!self.dontSubscribeToDiscussion];
-    }
-    else
-        [self.socialize createCommentForEntityWithKey:self.entityURL comment:commentTextView.text longitude:nil latitude:nil subscribe:!self.dontSubscribeToDiscussion];
-}
-
 - (BOOL)shouldSendToFacebook {
     return [self.socialize isAuthenticatedWithFacebook] && self.facebookButton.selected && !self.facebookButton.hidden;
 }
@@ -148,21 +135,27 @@
     }
 }
 
-- (void)finishCreateComment {
+- (void)createComment {
+    [self startLoading];
     
-    // Create the comment object if not already created.
-    if (self.commentObject == nil) {
-        [self createCommentOnSocializeServer];
-        return;
+    SocializeEntity *entity = [SocializeEntity entityWithKey:self.entityURL name:nil];
+    SocializeComment *comment = [SocializeComment commentWithEntity:entity text:commentTextView.text];
+    
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue]) {
+        NSNumber* latitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.latitude];
+        NSNumber* longitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.longitude];        
+        comment.lat = latitude;
+        comment.lng = longitude;
     }
     
-    // Send activity to facebook if the user requested it
-    if (!self.commentSentToFacebook && [self shouldSendToFacebook]) {
-        [self sendActivityToFacebookFeed:self.commentObject];
-        return;
-    }
-    
-    [self notifyDelegateOrDismissSelf];
+    [SocializeCommentCreator createComment:comment options:nil display:nil
+                                   success:^(id<SocializeComment> comment) {
+                                       self.commentObject = comment;
+                                       [self notifyDelegateOrDismissSelf];
+                                   } failure:^(NSError *error) {
+                                       [self stopLoading];
+                                       [self failWithError:error];
+                                   }];
 }
 
 - (void)configureForNewUser {
@@ -188,7 +181,7 @@
     if ([self shouldShowAuthViewController]) {
         [self presentModalViewController:self.authViewController animated:YES];
     } else {
-        [self finishCreateComment];
+        [self createComment];
     }
 }
 
@@ -220,35 +213,14 @@
     [commentTextView becomeFirstResponder];
 }
 
-- (void)sendActivityToFacebookFeedSucceeded {
-    self.commentSentToFacebook = YES;
-    [self finishCreateComment];
-}
-
-- (void)sendActivityToFacebookFeedCancelled {
-}
-
-- (void)sendActivityToFacebookFeedFailed:(NSError *)error {
-    // Just skip Facebook send
-    self.commentSentToFacebook = YES;
-    [self finishCreateComment];
-}
-
--(void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object {
-    if ([object conformsToProtocol:@protocol(SocializeComment)]) {
-        self.commentObject = (id<SocializeComment>)object;
-        [self finishCreateComment];
-    }
-}
-
 -(void)authorizationSkipped {
-    [self finishCreateComment];    
+    [self createComment];    
 }
 
 -(void)socializeAuthViewController:(SocializeAuthViewController *)authViewController didAuthenticate:(id<SocializeUser>)user {
     // FIXME [#20995319] auth flow in wrong place
     [self afterLoginAction:YES];
-    [self finishCreateComment];    
+    [self createComment];    
 }
 
 - (BOOL)elementsHaveInactiveSubscription:(NSArray*)elements {

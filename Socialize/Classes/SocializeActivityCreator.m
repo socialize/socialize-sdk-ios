@@ -141,7 +141,9 @@
                                                            self.postedToFacebookWall = YES;
                                                            [self tryToFinishCreatingActivity];
                                                        } failure:^(NSError *error) {
-                                                           [self failWithError:error];
+                                                           // Look the other way
+                                                           self.postedToFacebookWall = YES;
+                                                           [self tryToFinishCreatingActivity];
                                                        }];
 }
 

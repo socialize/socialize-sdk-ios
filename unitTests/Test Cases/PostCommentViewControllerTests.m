@@ -37,6 +37,7 @@
 #import "SocializePrivateDefinitions.h"
 #import "SocializeSubscriptionService.h"
 #import "SocializeHorizontalContainerView.h"
+#import "SocializeCommentCreator.h"
 
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
@@ -60,6 +61,8 @@
 - (void)setUp {
     [super setUp];
     
+    [SocializeCommentCreator startMockingClass];
+    
     // super setUp creates self.viewController
     self.postCommentViewController = (SocializePostCommentViewController*)self.viewController;
     
@@ -78,6 +81,8 @@
 }
 
 - (void)tearDown {
+    [SocializeCommentCreator stopMockingClassAndVerify];
+    
     [self.mockFacebookButton verify];
     
     self.postCommentViewController = nil;
@@ -133,13 +138,17 @@
 }
 */
 
+- (void)expectCreateComment {
+    [[self.mockSendButton expect] setEnabled:NO];
+    [[SocializeCommentCreator expect] createComment:OCMOCK_ANY options:OCMOCK_ANY display:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+}
+
 -(void)testSendButtonPressedWithGeo
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSocializeShouldShareLocationKey];
-    
-    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:OCMOCK_ANY latitude:OCMOCK_ANY subscribe:YES];
+
+    [self expectCreateComment];
     [[[(id)self.viewController stub]andReturnBool:NO] shouldShowAuthViewController];
-    [[self.mockSendButton expect] setEnabled:NO];
     
     [self.postCommentViewController performSelector: @selector(sendButtonPressed:)withObject:nil];
 }
@@ -148,10 +157,9 @@
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSocializeShouldShareLocationKey];
     
-    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:OCMOCK_ANY longitude:nil latitude:nil subscribe:YES];
+    [self expectCreateComment];
     [[[(id)self.viewController stub]andReturnBool:NO] shouldShowAuthViewController];
     
-    [[self.mockSendButton expect] setEnabled:NO];
 
     [self.postCommentViewController performSelector: @selector(sendButtonPressed:)withObject:nil];
 }
@@ -187,53 +195,38 @@
     return mockUserLocation;
 }
 
-- (void)testFinishCreateCommentCreatesSocializeCommentIfNeeded {
-    NSString *testText = @"testText";
-    
-    CLLocationDegrees latitude = 1.1;
-    CLLocationDegrees longitude = 1.2;
-    NSNumber *latitudeNumber = [NSNumber numberWithFloat:latitude];
-    NSNumber *longitudeNumber = [NSNumber numberWithFloat:longitude];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSocializeShouldShareLocationKey];
+//- (void)testFinishCreateCommentCreatesSocializeCommentIfNeeded {
+//    NSString *testText = @"testText";
+//    
+//    CLLocationDegrees latitude = 1.1;
+//    CLLocationDegrees longitude = 1.2;
+//    NSNumber *latitudeNumber = [NSNumber numberWithFloat:latitude];
+//    NSNumber *longitudeNumber = [NSNumber numberWithFloat:longitude];
+//    
+//    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSocializeShouldShareLocationKey];
+//
+//    id mockLocation = [self mockMKUserLocationWithLatitude:latitude longitude:longitude];
+//    [[[self.mockMapOfUserLocation stub] andReturn:mockLocation] userLocation];
+//    [[[self.mockCommentTextView stub] andReturn:testText] text];
+//    [[self.mockSendButton expect] setEnabled:NO];
+////    [[self.mockCancelButton expect] setEnabled:NO];
+//    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:testText longitude:longitudeNumber latitude:latitudeNumber subscribe:YES];
+//
+//    [self.postCommentViewController createComment];
+//}
 
-    id mockLocation = [self mockMKUserLocationWithLatitude:latitude longitude:longitude];
-    [[[self.mockMapOfUserLocation stub] andReturn:mockLocation] userLocation];
-    [[[self.mockCommentTextView stub] andReturn:testText] text];
-    [[self.mockSendButton expect] setEnabled:NO];
-//    [[self.mockCancelButton expect] setEnabled:NO];
-    [[self.mockSocialize expect] createCommentForEntityWithKey:TEST_URL comment:testText longitude:longitudeNumber latitude:latitudeNumber subscribe:YES];
-
-    [self.postCommentViewController finishCreateComment];
+- (void)ignoreButtons {
+    [self.mockFacebookButton makeNice];
+    [self.mockMessageActionButtonContainer makeNice];
+    [self.mockEnableSubscribeButton makeNice];
+    [self.mockUnsubscribeButton makeNice];
+    [self.mockSendButton makeNice];
 }
 
-- (void)testAuthingWithFacebookShowsFacebookButtonAndSendsToFacebook {
-    // Ensure we already have a comment created
-    id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
-    self.postCommentViewController.commentObject = mockComment;
+- (void)testAuthingWithFacebookCreatesComment {
+    [self ignoreButtons];
     
-    // Set user default to not posting to facebook
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
-    
-    // Switch should be deselected because of our user default
-    [[self.mockFacebookButton expect] setSelected:NO];
-    
-    // In case these are asked for again
-    [[[self.mockFacebookButton stub]  andReturnBool:NO] isHidden];
-    [[[self.mockFacebookButton stub]  andReturnBool:NO] isSelected];
-    
-    // We are now authed with facebook
-    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
-    
-    // expect dismissal
-    [[(id)self.postCommentViewController expect] dismissSelf];
-    
-    // Message action buttons should be set up again, since facebook is now available
-    [[(id)self.postCommentViewController expect] configureMessageActionButtons];
-    
-    // Subscription status needs to be reloaded
-    [[(id)self.postCommentViewController expect] getSubscriptionStatus];
-
+    [self expectCreateComment];
     // Authenticate view controller completed facebook auth
     [self.postCommentViewController socializeAuthViewController:nil didAuthenticate:nil];
 }
@@ -245,27 +238,6 @@
     NSArray *expectedButtons = [NSMutableArray arrayWithObjects:self.mockFacebookButton, self.mockEnableSubscribeButton, nil];
     [[(id)self.postCommentViewController expect] setMessageActionButtons:expectedButtons];
     [self.postCommentViewController configureMessageActionButtons];
-}
-
-- (void)testThatFailingFacebookStillFinishesCreateComment {
-    // Ensure we already have a comment created
-    id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
-    self.postCommentViewController.commentObject = mockComment;
-    
-    // View is configured for sending to facebook
-    [[[self.mockFacebookButton stub] andReturnBool:YES] isSelected];
-    [[[self.mockFacebookButton stub] andReturnBool:NO] isHidden];
-    
-    // Set ourselves as delegate for async events (notification is delayed for this object)
-    self.postCommentViewController.delegate = self;
-    
-    // Send should reenable
-    [[self.mockSendButton expect] setEnabled:YES];
-    
-    // Try to finish creating the comment
-    [self prepare];
-    [self.postCommentViewController sendActivityToFacebookFeedFailed:nil];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
 }
 
 -(void) prepareForViewDidLoad {
@@ -285,16 +257,6 @@
     [self.postCommentViewController viewDidLoad];
 }
 
--(void) testSendActivityToFB {
-    [[(id)self.viewController expect] finishCreateComment];
-    [self.postCommentViewController sendActivityToFacebookFeedSucceeded];
-}
--(void) testDidCreateComment {
-    id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
-    //we have to make sure that if we pass in a valid comment that finish create comments is called
-    [[(id)self.viewController expect] finishCreateComment];
-    [self.postCommentViewController service:nil didCreate:mockComment];
-}
 - (void)postCommentViewController:(SocializePostCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
     [self notify:kGHUnitWaitStatusSuccess];
 }
