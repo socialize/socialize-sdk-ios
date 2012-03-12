@@ -71,10 +71,14 @@
     NSString *facebookAppId = [SocializeThirdPartyFacebook facebookAppId];
     NSString *urlSchemeSuffix = [SocializeThirdPartyFacebook facebookUrlSchemeSuffix];
     
+    NSArray *permissions = self.options.permissions;
+    if (permissions == nil) {
+        permissions = [NSArray arrayWithObjects:@"publish_stream", @"offline_access", nil];
+    }
     __block __typeof__(self) weakSelf = self;
     [self.facebookAuthHandler authenticateWithAppId:facebookAppId
                                     urlSchemeSuffix:urlSchemeSuffix
-                                        permissions:self.options.permissions
+                                        permissions:permissions
                                             success:^(NSString *accessToken, NSDate *expirationDate) {
                                                 [SocializeThirdPartyFacebook storeLocalCredentialsWithAccessToken:accessToken
                                                                                                    expirationDate:expirationDate];
