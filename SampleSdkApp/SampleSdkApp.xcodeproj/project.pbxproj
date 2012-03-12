@@ -19,7 +19,6 @@
 		AA2DA2471435437400C62B97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E6F14352BC100C62B97 /* Foundation.framework */; };
 		AA2DA2481435437400C62B97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */; };
 		AA3325C9144CD2980033C7FA /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3325C8144CD2980033C7FA /* Smiley.png */; };
-		AA3325E1144CD6490033C7FA /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3325DC144CD5DF0033C7FA /* libOCMock.a */; };
 		AA378B9D14E3A4A40035647E /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA378AF014E3A4A40035647E /* action-bar-bg.png */; };
 		AA378B9E14E3A4A40035647E /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA378AF014E3A4A40035647E /* action-bar-bg.png */; };
 		AA378B9F14E3A4A40035647E /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA378AF014E3A4A40035647E /* action-bar-bg.png */; };
@@ -540,7 +539,6 @@
 		AA378DA214E3A4A50035647E /* Socialize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA378B9C14E3A4A40035647E /* Socialize.framework */; };
 		AA378DA314E3A4A50035647E /* Socialize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA378B9C14E3A4A40035647E /* Socialize.framework */; };
 		AA55A7C814620FBA00F8C13F /* TestLikeServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA55A7C714620FBA00F8C13F /* TestLikeServices.m */; };
-		AA5D75331469CC8F0046AF8B /* TestFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5D75321469CC8F0046AF8B /* TestFacebookInterface.m */; };
 		AA639E18144A24C000660E26 /* AuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA1144A24BF00660E26 /* AuthenticateViewController.m */; };
 		AA639E19144A24C000660E26 /* AuthenticateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DA2144A24BF00660E26 /* AuthenticateViewController.xib */; };
 		AA639E1A144A24C000660E26 /* CommetsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA4144A24BF00660E26 /* CommetsTableView.m */; };
@@ -680,6 +678,13 @@
 			remoteGlobalIDString = AAB07267139719AC008AF393;
 			remoteInfo = KIF;
 		};
+		AA320CD3150DC08D00634C23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 030EF0DC14632FF700B04273;
+			remoteInfo = OCMockLib;
+		};
 		AA3325D7144CD5DF0033C7FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */;
@@ -694,33 +699,12 @@
 			remoteGlobalIDString = 03BF2D3708F1C69500978C59;
 			remoteInfo = OCMockTests;
 		};
-		AA3325DB144CD5DF0033C7FA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 033C84AF11F585CB0009B9CD;
-			remoteInfo = OCMockPhoneSim;
-		};
-		AA3325DD144CD5DF0033C7FA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 03DAC01F11FEB771007AF17B;
-			remoteInfo = OCMockPhoneDevice;
-		};
 		AA8636D3144CA0DB00CFA759 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA8636CC144CA0DB00CFA759 /* KIF.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = AAB07268139719AC008AF393;
 			remoteInfo = KIF;
-		};
-		AAD7E353144F54B50073308D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA3325CC144CD5DE0033C7FA /* OCMock.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 033C84AE11F585CB0009B9CD;
-			remoteInfo = OCMockPhoneSim;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -912,8 +896,6 @@
 		AA378B9C14E3A4A40035647E /* Socialize.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Socialize.framework; sourceTree = "<group>"; };
 		AA55A7C614620FBA00F8C13F /* TestLikeServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLikeServices.h; sourceTree = "<group>"; };
 		AA55A7C714620FBA00F8C13F /* TestLikeServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLikeServices.m; sourceTree = "<group>"; };
-		AA5D75311469CC8F0046AF8B /* TestFacebookInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFacebookInterface.h; sourceTree = "<group>"; };
-		AA5D75321469CC8F0046AF8B /* TestFacebookInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFacebookInterface.m; sourceTree = "<group>"; };
 		AA639DA0144A24BF00660E26 /* AuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticateViewController.h; sourceTree = "<group>"; };
 		AA639DA1144A24BF00660E26 /* AuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticateViewController.m; sourceTree = "<group>"; };
 		AA639DA2144A24BF00660E26 /* AuthenticateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenticateViewController.xib; sourceTree = "<group>"; };
@@ -1034,7 +1016,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				16D2DEF6145546370034A6C8 /* MessageUI.framework in Frameworks */,
-				AA3325E1144CD6490033C7FA /* libOCMock.a in Frameworks */,
 				AA2025B1144CB249006C1F8F /* libKIF.a in Frameworks */,
 				AA8636D7144CA14300CFA759 /* GHUnitIOS.framework in Frameworks */,
 				AA2DA2421435437400C62B97 /* MapKit.framework in Frameworks */,
@@ -1223,8 +1204,7 @@
 			children = (
 				AA3325D8144CD5DF0033C7FA /* OCMock.framework */,
 				AA3325DA144CD5DF0033C7FA /* OCMockTests.octest */,
-				AA3325DC144CD5DF0033C7FA /* libOCMock.a */,
-				AA3325DE144CD5DF0033C7FA /* libOCMock.a */,
+				AA320CD4150DC08D00634C23 /* libOCMock.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1489,8 +1469,6 @@
 				AAB128CF14998640009AF443 /* TestSubscriptionService.m */,
 				AAC49330149A9D12000EEA7E /* TestCommentServices.h */,
 				AAC49331149A9D12000EEA7E /* TestCommentServices.m */,
-				AA5D75311469CC8F0046AF8B /* TestFacebookInterface.h */,
-				AA5D75321469CC8F0046AF8B /* TestFacebookInterface.m */,
 				AA973CD61468A0EA00DAE945 /* TestShareServices.h */,
 				AA973CD71468A0EA00DAE945 /* TestShareServices.m */,
 				AA973CA614689C3C00DAE945 /* TestActivityServices.h */,
@@ -1524,7 +1502,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				AAD7E354144F54B50073308D /* PBXTargetDependency */,
 				AA2025A6144CB219006C1F8F /* PBXTargetDependency */,
 			);
 			name = UIIntegrationTests;
@@ -1610,6 +1587,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		AA320CD4150DC08D00634C23 /* libOCMock.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOCMock.a;
+			remoteRef = AA320CD3150DC08D00634C23 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		AA3325D8144CD5DF0033C7FA /* OCMock.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1622,20 +1606,6 @@
 			fileType = wrapper.cfbundle;
 			path = OCMockTests.octest;
 			remoteRef = AA3325D9144CD5DF0033C7FA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AA3325DC144CD5DF0033C7FA /* libOCMock.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libOCMock.a;
-			remoteRef = AA3325DB144CD5DF0033C7FA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AA3325DE144CD5DF0033C7FA /* libOCMock.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libOCMock.a;
-			remoteRef = AA3325DD144CD5DF0033C7FA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		AA8636D4144CA0DB00CFA759 /* libKIF.a */ = {
@@ -2430,7 +2400,6 @@
 				AA973CD81468A0EA00DAE945 /* TestShareServices.m in Sources */,
 				AA973CDB1468A14300DAE945 /* StringHelper.m in Sources */,
 				AA973CDE1468A57200DAE945 /* TestEntityServices.m in Sources */,
-				AA5D75331469CC8F0046AF8B /* TestFacebookInterface.m in Sources */,
 				AAB128D014998640009AF443 /* TestSubscriptionService.m in Sources */,
 				AAC49332149A9D12000EEA7E /* TestCommentServices.m in Sources */,
 				AA03D197150A9DDE00E7BFA3 /* DataHelper.m in Sources */,
@@ -2449,11 +2418,6 @@
 			isa = PBXTargetDependency;
 			name = KIF;
 			targetProxy = AA2025B3144CB273006C1F8F /* PBXContainerItemProxy */;
-		};
-		AAD7E354144F54B50073308D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OCMockPhoneSim;
-			targetProxy = AAD7E353144F54B50073308D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
