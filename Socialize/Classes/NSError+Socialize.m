@@ -33,11 +33,12 @@
     return error;
 }
 
-+ (NSError*)socializeServerReturnedErrorsErrorWithErrorsArray:(NSArray*)errorsArray {
++ (NSError*)socializeServerReturnedErrorsErrorWithErrorsArray:(NSArray*)errorsArray objectsArray:(NSArray*)objectsArray {
     id<SocializeError> firstError = [errorsArray objectAtIndex:0];
     NSString *description = firstError.error;
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:NSLocalizedString(description, @"") forKey:NSLocalizedDescriptionKey];
     [userInfo setObject:errorsArray forKey:kSocializeErrorServerErrorsArrayKey];
+    [userInfo setObject:objectsArray forKey:kSocializeErrorServerObjectsArrayKey];
     NSError *error = [NSError errorWithDomain:SocializeErrorDomain code:SocializeErrorServerReturnedErrors userInfo:userInfo];
     return error;
 }

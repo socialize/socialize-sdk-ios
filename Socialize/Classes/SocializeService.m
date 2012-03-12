@@ -198,7 +198,7 @@
         if ([errorResponses isKindOfClass: [NSArray class]]){
             if ([errorResponses count]){
                 // Only treat server errors as failure if at least one exists
-                [self failWithError:[NSError socializeServerReturnedErrorsErrorWithErrorsArray:errorResponses]];
+                [self failWithError:[NSError socializeServerReturnedErrorsErrorWithErrorsArray:errorResponses objectsArray:objectResponse]];
                 return;
             }
         }

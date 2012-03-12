@@ -13,6 +13,7 @@ extern NSString *const SocializeErrorDomain;
 // userInfo keys for specific errors
 extern NSString *const kSocializeErrorResponseBodyKey;
 extern NSString *const kSocializeErrorServerErrorsArrayKey;
+extern NSString *const kSocializeErrorServerObjectsArrayKey;
 extern NSString *const kSocializeErrorNSHTTPURLResponseKey;
 
 typedef enum {

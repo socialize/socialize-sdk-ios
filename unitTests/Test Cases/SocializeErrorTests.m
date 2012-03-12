@@ -32,9 +32,12 @@
     id mockError = [OCMockObject mockForProtocol:@protocol(SocializeError)];
     [[[mockError stub] andReturn:@"testError"] error];
     NSArray *testErrors = [NSArray arrayWithObject:mockError];
-    NSError *error = [NSError socializeServerReturnedErrorsErrorWithErrorsArray:testErrors];
+    id mockObjects = [OCMockObject mockForClass:[NSArray class]];
+    NSError *error = [NSError socializeServerReturnedErrorsErrorWithErrorsArray:testErrors objectsArray:mockObjects];
     NSArray *errors = [error.userInfo objectForKey:kSocializeErrorServerErrorsArrayKey];
+    NSArray *objects = [error.userInfo objectForKey:kSocializeErrorServerObjectsArrayKey];
     GHAssertEquals(testErrors, errors, @"Missing Errors");
+    GHAssertEquals(mockObjects, objects, @"Missing Objects");
 }
 
 - (void)testServerReturnedHTTPErrorContainsMessage {

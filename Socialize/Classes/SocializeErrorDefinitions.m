@@ -15,6 +15,7 @@ NSString *const SocializeErrorDomain = @"Socialize";
 NSString *const kSocializeErrorResponseBodyKey = @"kSocializeErrorResponseBodyKey";
 NSString *const kSocializeErrorNSHTTPURLResponseKey = @"kSocializeErrorNSHTTPURLResponseKey";
 NSString *const kSocializeErrorServerErrorsArrayKey = @"kSocializeErrorServerErrorsArrayKey";
+NSString *const kSocializeErrorServerObjectsArrayKey = @"kSocializeErrorServerObjectsArrayKey";
 
 
 static NSString *SocializeDefaultErrorStrings[SocializeNumErrors] = {

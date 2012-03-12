@@ -11,7 +11,7 @@
 
 @interface NSError (Socialize)
 + (NSError*)socializeUnexpectedJSONResponseErrorWithResponse:(NSString*)responseString reason:(NSString*)reason;
-+ (NSError*)socializeServerReturnedErrorsErrorWithErrorsArray:(NSArray*)errorsArray;
++ (NSError*)socializeServerReturnedErrorsErrorWithErrorsArray:(NSArray*)errorsArray objectsArray:(NSArray*)objectsArray;
 + (NSError*)defaultSocializeErrorForCode:(NSUInteger)code;
 + (NSError*)socializeServerReturnedHTTPErrorErrorWithResponse:(NSHTTPURLResponse*)response responseBody:(NSString*)responseBody;
 - (BOOL)isSocializeErrorWithCode:(SocializeErrorCode)code;
