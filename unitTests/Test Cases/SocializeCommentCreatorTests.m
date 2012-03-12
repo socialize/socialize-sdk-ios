@@ -57,6 +57,13 @@
     }] createComment:OCMOCK_ANY];
 }
 
+- (void)failCommentCreate {
+    [[[self.mockSocialize expect] andDo1:^(id<SocializeComment> comment) {
+        id mockError = [OCMockObject niceMockForClass:[NSError class]];
+        [self.commentCreator service:nil didFail:mockError];
+    }] createComment:OCMOCK_ANY];
+}
+
 - (void)testSuccessfulCommentOnTwitter {
     [self selectJustTwitterInOptions];
     
@@ -64,7 +71,14 @@
     [self expectSetTwitterInActivity];
     
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
+}
 
+- (void)testFailedCommentOnTwitter {
+    [self selectJustTwitterInOptions];
+    
+    [self failCommentCreate];
+    
+    [self executeActionAndWaitForStatus:kGHUnitWaitStatusFailure fromTest:_cmd];
 }
 
 - (void)testSuccessfulCommentOnFacebook {
