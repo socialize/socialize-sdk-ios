@@ -311,7 +311,6 @@
 						<string key="NSFrame">{{0, 200}, {320, 216}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:196</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
@@ -1109,8 +1108,8 @@
 			<string key="socialize-comment-facebook-enabled-button.png">{25, 25}</string>
 			<string key="socialize-comment-location-bar-background.png">{1, 39}</string>
 			<string key="socialize-comment-location-enabled.png">{24, 25}</string>
-			<string key="socialize-comment-twitter-disabled-button.png">{32, 32}</string>
-			<string key="socialize-comment-twitter-enabled-button.png">{32, 32}</string>
+			<string key="socialize-comment-twitter-disabled-button.png">{25, 25}</string>
+			<string key="socialize-comment-twitter-enabled-button.png">{25, 25}</string>
 			<string key="socialize-iphone-notification-button-disabled.png">{30, 30}</string>
 			<string key="socialize-iphone-notification-button-enabled.png">{30, 30}</string>
 			<string key="socialize-iphone-subcribe-notification-icon.png">{165, 77}</string>
