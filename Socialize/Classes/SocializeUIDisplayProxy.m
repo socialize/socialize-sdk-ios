@@ -63,6 +63,12 @@
 }
 
 - (void)showActionSheet:(UIActionSheet*)actionSheet {
+    if ([self.object respondsToSelector:@selector(displayProxy:shouldDisplayActionSheet:)]) {
+        if (![self.object displayProxy:self shouldDisplayActionSheet:actionSheet]) {
+            return;
+        }
+    }
+
     if ([self.display respondsToSelector:@selector(socializeObject:requiresDisplayOfActionSheet:)]) {
         [self.display socializeObject:self.object requiresDisplayOfActionSheet:actionSheet];
     } else if ([self.display isKindOfClass:[UITabBarController class]]) {

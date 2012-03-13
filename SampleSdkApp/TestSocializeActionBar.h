@@ -26,10 +26,11 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "SocializeActionBarDelegate.h"
 
 @class SocializeActionBar;
 
-@interface TestSocializeActionBar : UIViewController {
+@interface TestSocializeActionBar : UIViewController <SocializeActionBarDelegate> {
     NSString* entityUrl;
     IBOutlet UIWebView* entityView;
     SocializeActionBar* bar;

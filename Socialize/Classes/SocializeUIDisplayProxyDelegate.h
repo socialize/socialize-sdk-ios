@@ -13,4 +13,5 @@
 @protocol SocializeUIDisplayProxyDelegate <NSObject>
 @optional
 - (void)displayProxy:(SocializeUIDisplayProxy*)proxy willDisplayViewController:(UIViewController*)controller;
+- (BOOL)displayProxy:(SocializeUIDisplayProxy*)proxy shouldDisplayActionSheet:(UIActionSheet*)actionSheet;
 @end

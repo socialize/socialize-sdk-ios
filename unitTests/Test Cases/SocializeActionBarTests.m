@@ -274,18 +274,18 @@
     self.actionBar.noAutoLayout = NO;
 }
 
-//- (void)testThatDelegateCanOverrideActionSheetDisplay {
-//    self.actionBar.delegate = self;
-//    
-//    [self prepare];
-//    [self.actionBar shareButtonTouched:nil];
-//    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
-//}
-//
-//- (void)actionBar:(SocializeActionBar *)actionBar wantsDisplayActionSheet:(UIActionSheet *)actionSheet {
+- (void)testThatDelegateCanOverrideActionSheetDisplay {
+    self.actionBar.delegate = self;
+    
+    [self prepare];
+    [self.actionBar shareButtonTouched:nil];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+}
+
+- (void)actionBar:(SocializeActionBar *)actionBar wantsDisplayActionSheet:(UIActionSheet *)actionSheet {
 //    GHAssertEquals(actionSheet, self.mockShareActionSheet, @"Bad action sheet");
-//    [self notify:kGHUnitWaitStatusSuccess];
-//}
+    [self notify:kGHUnitWaitStatusSuccess];
+}
 
 - (void)testPresentModalControllerIgnoresNextViewAndPresents {
     [[(id)self.actionBar expect] setIgnoreNextView:YES];

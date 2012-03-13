@@ -150,6 +150,14 @@
     self.ignoreNextView = YES;
 }
 
+- (BOOL)displayProxy:(SocializeUIDisplayProxy *)proxy shouldDisplayActionSheet:(UIActionSheet *)actionSheet {
+    if ([self.delegate respondsToSelector:@selector(actionBar:wantsDisplayActionSheet:)]) {
+        [self.delegate actionBar:self wantsDisplayActionSheet:actionSheet];
+        return NO;
+    }
+    return YES;
+}
+
 - (void)setNoAutoLayout:(BOOL)noAutoLayout {
     noAutoLayout_ = noAutoLayout;
     [(SocializeActionView*)self.view setNoAutoLayout:noAutoLayout];
