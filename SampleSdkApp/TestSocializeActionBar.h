@@ -26,7 +26,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "SocializeActionBarDelegate.h"
+#import <Socialize/Socialize.h>
 
 @class SocializeActionBar;
 
