@@ -29,6 +29,7 @@
 #import "_Socialize.h"
 #import "SocializeKeyboardListener.h"
 #import "SocializeProfileEditViewControllerDelegate.h"
+#import "SocializeUIDisplay.h"
 
 @class SocializeShareBuilder;
 @class SocializeLoadingView;
@@ -37,7 +38,7 @@
 
 @protocol SocializeBaseViewControllerDelegate;
 
-@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate, SocializeKeyboardListenerDelegate> {
+@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate, SocializeKeyboardListenerDelegate, SocializeUIDisplay> {
     @private 
     SocializeLoadingView*  _loadingIndicatorView;
 }

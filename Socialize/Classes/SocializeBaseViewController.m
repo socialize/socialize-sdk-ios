@@ -506,6 +506,12 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [self hideEditController];
 }
 
+- (void)socializeObjectWillStartLoading:(id)object {
+    [self startLoading];
+}
 
+- (void)socializeObjectWillStopLoading:(id)object {
+    [self stopLoading];
+}
 
 @end
