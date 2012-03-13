@@ -13,6 +13,7 @@
  */
 @protocol SocializeUIDisplay <NSObject>
 
+@optional
 - (void)socializeObject:(id)object requiresDisplayOfViewController:(UIViewController*)controller;
 - (void)socializeObject:(id)object requiresDismissOfViewController:(UIViewController*)controller;
 - (void)socializeObject:(id)object requiresDisplayOfActionSheet:(UIActionSheet*)actionSheet;

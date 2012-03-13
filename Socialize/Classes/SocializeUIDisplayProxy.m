@@ -109,8 +109,8 @@
         return;
     
     self.loading = NO;
-    if ([self.display respondsToSelector:@selector(objectWillStartLoading:)]) {
-        [self.display socializeObjectWillStartLoading:self.object];
+    if ([self.display respondsToSelector:@selector(socializeObjectWillStopLoading:)]) {
+        [self.display socializeObjectWillStopLoading:self.object];
     } else if (self.loadingView != nil) {
         [self.loadingView removeView];
         self.loadingView = nil;
