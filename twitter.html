@@ -1,0 +1,170 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Twitter Integration &mdash; Socialize iOS SDK 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+    <link rel="top" title="Socialize iOS SDK 1.5 documentation" href="index.html" />
+    <link rel="next" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" />
+    <link rel="prev" title="Socialize Action Bar" href="action_bar.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="action_bar.html" title="Socialize Action Bar"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Socialize iOS SDK 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="twitter-integration">
+<h1>Twitter Integration<a class="headerlink" href="#twitter-integration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>It is strongly recommended that users be able to authenticate with Twitter when
+using Socialize so as to maximize the exposure and promotion of your app.</p>
+<p>This provides significant benefits to both your application and your users, including:</p>
+<ol class="arabic simple">
+<li>Improved user experience through personalized comments</li>
+<li>Automatic profile creation (user name and profile picture)</li>
+<li>Ability to automatically post user comments and likes to Twitter</li>
+<li>Promotes your app on Twitter by associating your app with a users&#8217; tweets</li>
+</ol>
+<p>To add Twitter authentication, you&#8217;ll need a Twitter Application and the consumer key/consumer secret for the Twitter app.
+If you already have a Twitter app, you can skip this section.</p>
+</div>
+<div class="section" id="creating-a-twitter-application">
+<h2>Creating a Twitter Application<a class="headerlink" href="#creating-a-twitter-application" title="Permalink to this headline">¶</a></h2>
+<p>If you <strong>do not</strong> already have a Twitter app just follow these simple steps:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>First create a Twitter app.  Go to <a class="reference external" href="https://dev.twitter.com/">https://dev.twitter.com/</a> and create a new app:</li>
+</ol>
+<blockquote>
+<div><img alt="images/tw_create_app.png" src="images/tw_create_app.png" />
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>When creating the app, make sure you specify a callback URL.
+This can be any value, and is not actually called during authentication but Twitter requires a
+valid URL for callback otherwise authentication will fail.</li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Make sure you specify a callback URL</p>
+</div>
+<img alt="images/tw_app_details.png" src="images/tw_app_details.png" />
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Change the permissions on the app to Read/Write</li>
+</ol>
+<blockquote>
+<div><p>The default permissions for new Twitter Apps is Read Only, this must be changed to Read/Write.</p>
+<p>Your Twitter Consumer Key and Consumer Secret is also displayed on this page</p>
+<img alt="images/tw_app_info.png" src="images/tw_app_info.png" />
+<p>These settings can be altered from the Settings tab on your Twitter App page</p>
+<img alt="images/tw_app_permissions.png" src="images/tw_app_permissions.png" />
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="configuring-twitter-in-socialize">
+<span id="propagate-tw"></span><h2>Configuring Twitter in Socialize<a class="headerlink" href="#configuring-twitter-in-socialize" title="Permalink to this headline">¶</a></h2>
+<p>Once you have a twitter application, simply tell Socialize about your consumer key and secret:</p>
+<script src="https://gist.github.com/2025402.js?file=gistfile1.m"></script></div>
+<div class="section" id="propagating-socialize-actions-to-twitter">
+<h2>Propagating Socialize Actions to Twitter<a class="headerlink" href="#propagating-socialize-actions-to-twitter" title="Permalink to this headline">¶</a></h2>
+<p>Social actions such as Comment and Like will automatically be propagated to
+Twitter when using the Socialize UI.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Twitter Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-twitter-application">Creating a Twitter Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-twitter-in-socialize">Configuring Twitter in Socialize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#propagating-socialize-actions-to-twitter">Propagating Socialize Actions to Twitter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
+             >next</a></li>
+        <li class="right" >
+          <a href="action_bar.html" title="Socialize Action Bar"
+             >previous</a> |</li>
+        <li><a href="index.html">Socialize iOS SDK 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Socialize Inc.
+    </div>
+  </body>
+</html>

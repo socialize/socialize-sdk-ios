@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>SDK User Guide &mdash; Socialize iOS SDK 1.3.5 documentation</title>
+    <title>SDK User Guide &mdash; Socialize iOS SDK 1.5 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.3.5',
+        VERSION:     '1.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.3.5 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.5 documentation" href="index.html" />
     <link rel="next" title="SDK Pro Tips" href="sdk_pro_tips.html" />
     <link rel="prev" title="Advanced UI Configuration" href="ui_advanced.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="ui_advanced.html" title="Advanced UI Configuration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.3.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -128,6 +128,12 @@ not currently exist, it will be automatically created for you, but will not
 have a <em>name</em> associated with it.</p>
 <p>To create an entity, simply invoke the <strong>createEntity</strong> message:</p>
 <script src="https://gist.github.com/1473477.js?file=CreateEntity.m"></script></div>
+<div class="section" id="entity-meta-data-and-other-advanced-functionality">
+<h3>Entity Meta Data, and Other Advanced Functionality<a class="headerlink" href="#entity-meta-data-and-other-advanced-functionality" title="Permalink to this headline">¶</a></h3>
+<p>Should you find that you need to store custom metadata on an entity, Socialize
+will provide for this. Full customization of entity objects can be realized
+through use of the createEntity: variant for creating your entity.</p>
+<script src="https://gist.github.com/1719630.js?file=createEntity.m"></script></div>
 <div class="section" id="retrieving-entity-data">
 <h3>Retrieving Entity data<a class="headerlink" href="#retrieving-entity-data" title="Permalink to this headline">¶</a></h3>
 <p>An existing entity can be retrieved via the <strong>getEntity</strong> method.  Entities obtained in this way will also
@@ -187,6 +193,7 @@ need the ID of the like.  This is returned from the initial call to <strong>like
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
@@ -231,7 +238,7 @@ need the ID of the like.  This is returned from the initial call to <strong>like
         <li class="right" >
           <a href="ui_advanced.html" title="Advanced UI Configuration"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.3.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

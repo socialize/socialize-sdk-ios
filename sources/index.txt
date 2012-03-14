@@ -10,6 +10,7 @@ Contents:
    
    getting_started
    action_bar
+   twitter
    push_notifications
    comments
    ui_advanced

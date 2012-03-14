@@ -4,6 +4,38 @@
 Changelog
 =============================================
 
+v1.5
+----
+[feature] Add canLoadEntity block to disallow loading of specific entities [ ui]
+
+[feature] Developer can authenticate user with twitter in SDK [ twitter auth ]
+
+[feature] User can sign in to Twitter from UI [ twitter]
+
+[feature] User can sign out of facebook [ facebook auth ui]
+
+[feature] Socialize 401 error should automatically wipe local credentials for default UI controls [ ]
+
+[feature] Developer can link to multiple third parties via /authenticate/ [ ]
+
+[feature] Add develop device token notes to trouble shooting section of ios SDK docs [ documentation ]
+
+[feature] User can share via twitter on share window [ twitter share ]
+
+[bug] Facebook default perms now include offline_access [ facebook]
+
+[feature] Likes autotweet if enabled [ twitter ]
+
+[feature] User can enable/disable auto-tweeting of likes and comments in settings [ ui twitter]
+
+[feature] Comments autotweet if enabled [ twitter ui]
+
+[bug] Fix a case where empty comment still allowed [ ui]
+
+[feature] Third parties always show on comment controller [ ui]
+
+[feature] Third party auth flow goes directly to settings instead of profile [ ui auth]
+
 v1.3.5
 ------
 [bug] Fix SocializeRequest crash [ ]

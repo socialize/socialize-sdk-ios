@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 1.3.5 documentation</title>
+    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 1.5 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.3.5',
+        VERSION:     '1.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,9 +25,9 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.3.5 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.5 documentation" href="index.html" />
     <link rel="next" title="Socialize Comments" href="comments.html" />
-    <link rel="prev" title="Socialize Action Bar" href="action_bar.html" /> 
+    <link rel="prev" title="Twitter Integration" href="twitter.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,9 +37,9 @@
           <a href="comments.html" title="Socialize Comments"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="action_bar.html" title="Socialize Action Bar"
+          <a href="twitter.html" title="Twitter Integration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.3.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -170,11 +170,11 @@ provisioning profile for your changes to take effect.</p>
 application&#8217;s objects.</p>
 <p>Copy the lines below to add an entity loader</p>
 <script src="https://gist.github.com/1667068.js?file=entityLoader.m"></script><img alt="images/entity_loader.png" src="images/entity_loader.png" />
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">When building your application, keep in mind that notifications may be received on devices that do not yet have the entity available.</p>
-</div>
-</div>
+<p>For some applications, it might happen that an entities are not always
+available. Socialize provides the ability to selectively disable loading for a
+given entity. Should you find you need this, you can do this by defining a &#8220;Can
+Load Entity&#8221; block, as follows</p>
+<script src="https://gist.github.com/1667068.js?file=canLoadEntity.m"></script></div>
 </div>
 <div class="section" id="testing-smartalerts">
 <h2>Testing SmartAlerts™<a class="headerlink" href="#testing-smartalerts" title="Permalink to this headline">¶</a></h2>
@@ -196,14 +196,14 @@ on the simulator as well.</p>
 <h2>Troubleshooting Notifications<a class="headerlink" href="#troubleshooting-notifications" title="Permalink to this headline">¶</a></h2>
 <p>If you are not receiving notifications, there are some simple ways to troubleshoot problems.  We also have a vibrant developer community and support
 here: <a class="reference external" href="http://support.getsocialize.com">http://support.getsocialize.com</a> support who can help Additionally here some common errors you might encounter</p>
-</div>
 <div class="section" id="i-don-t-see-the-notifications-button">
-<h2>I Don&#8217;t See the Notifications Button<a class="headerlink" href="#i-don-t-see-the-notifications-button" title="Permalink to this headline">¶</a></h2>
+<h3>I Don&#8217;t See the Notifications Button<a class="headerlink" href="#i-don-t-see-the-notifications-button" title="Permalink to this headline">¶</a></h3>
 <p>The notifications button will only appear if a valid push token has been
 registered with Socialize using [Socialize registerDeviceToken:]. This means
 the buttons will never show on the iOS simulator.</p>
 <p>If you do not see the buttons on the actual device, you might try making sure there
 are no errors with registration process, as described in the next section.</p>
+</div>
 <div class="section" id="logging-errors-from-notifications-registrations">
 <h3>Logging Errors from Notifications Registrations<a class="headerlink" href="#logging-errors-from-notifications-registrations" title="Permalink to this headline">¶</a></h3>
 <p>You can implement the notifications delegate method which callbacks if any error occurs during registration.  This should log
@@ -214,6 +214,17 @@ the value of the error to your console.</p>
 <p>This typically means you didn&#8217;t re-create and download the provisioning profile after you enabled pushed notifications.
 You can re-create your distribution profile here: <a class="reference external" href="https://developer.apple.com/ios/manage/provisioningprofiles/viewDistributionProfiles.action">https://developer.apple.com/ios/manage/provisioningprofiles/viewDistributionProfiles.action</a>.  You&#8217;ll also want to remove any
 other versions of provisioning file which exist on your phone.</p>
+</div>
+<div class="section" id="everything-looks-ok-but-i-am-still-not-receiving-notifications">
+<h3>Everything looks ok, but I am still not receiving notifications<a class="headerlink" href="#everything-looks-ok-but-i-am-still-not-receiving-notifications" title="Permalink to this headline">¶</a></h3>
+<p>One possibility is that Socialize has received a development push token.
+Development tokens will currently prevent pushes being sent to real devices.
+Until Socialize automatically clears these on error, you should verify that you
+do not send development tokens to Socialize using [Socialize
+registerDeviceToken:]</p>
+<p>As a precaution, you might wrap the registration call as follows:</p>
+<script src="https://gist.github.com/1879369.js?file=gistfile1.m"></script><p>This is only a problem if you already have separate push configurations and certificates
+for development and distribution. Socialize itself does not support development push.</p>
 <p>Please go to support.getsocialize.com for additional support.</p>
 </div>
 </div>
@@ -229,6 +240,7 @@ other versions of provisioning file which exist on your phone.</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Enabling SmartAlerts™ Notifications</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-1-setup-smartalerts-on-the-app-dashboard">Step 1: Setup SmartAlerts™ on the App Dashboard</a></li>
@@ -239,7 +251,6 @@ other versions of provisioning file which exist on your phone.</p>
 <li class="toctree-l2"><a class="reference internal" href="#step-6-configuring-notifications-in-your-app">Step 6: Configuring Notifications in Your App</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#testing-smartalerts">Testing SmartAlerts™</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting-notifications">Troubleshooting Notifications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#i-don-t-see-the-notifications-button">I Don&#8217;t See the Notifications Button</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
@@ -273,9 +284,9 @@ other versions of provisioning file which exist on your phone.</p>
           <a href="comments.html" title="Socialize Comments"
              >next</a></li>
         <li class="right" >
-          <a href="action_bar.html" title="Socialize Action Bar"
+          <a href="twitter.html" title="Twitter Integration"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.3.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
