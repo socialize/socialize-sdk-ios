@@ -36,7 +36,6 @@
 @synthesize commentDetailsView;
 @synthesize comment;
 @synthesize profileImageDownloader;
-@synthesize loaderFactory;
 @synthesize cache;
 @synthesize profileLabelButton = profileLabelButton_;
 

@@ -19,8 +19,6 @@
 @class ImagesCache;
 @protocol SocializeProfileViewControllerDelegate;
 
-typedef URLDownload*(^LoaderFactory)(NSString* url, id sender, SEL selector, id tag);
-
  __attribute__((deprecated))
 @interface SocializeCommentDetailsViewController : SocializeBaseViewController<SocializeBaseViewControllerDelegate>
 {
@@ -40,7 +38,6 @@ typedef URLDownload*(^LoaderFactory)(NSString* url, id sender, SEL selector, id 
 @property (nonatomic, retain) IBOutlet UIButton*     profileLabelButton;
 @property (nonatomic, retain) id<SocializeComment>    comment;
 @property (nonatomic, retain) URLDownload* profileImageDownloader;
-@property (nonatomic, retain) LoaderFactory loaderFactory;
 @property (nonatomic, retain) ImagesCache*  cache;
 
 @end
