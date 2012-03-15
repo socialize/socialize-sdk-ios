@@ -758,11 +758,6 @@ otherwise you will get a failure.
  */
 - (void)_registerDeviceTokenString:(NSString*)deviceTokenString;
 
-+ (void)createShareWithOptions:(SocializeUIShareOptions*)options
-                       display:(id)display
-                       success:(void(^)())success
-                       failure:(void(^)(NSError *error))failure;
-
 -(BOOL)isAuthenticatedWithAuthType:(NSString*)authType;
 
 @end
