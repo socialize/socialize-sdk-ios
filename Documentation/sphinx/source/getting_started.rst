@@ -167,6 +167,10 @@ completes the authentication flow.
 .. raw:: html
 
         <script src="https://gist.github.com/1529163.js?file=appDelegate.m"></script>
+
+Optional: Configure Your App for Twitter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+See the `Twitter section <twitter.html>`_.
  
 Next Steps
 -----------------------------------------------------------------------------------------
