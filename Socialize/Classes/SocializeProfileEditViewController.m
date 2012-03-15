@@ -454,7 +454,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
             case SocializeProfileEditViewControllerFacebookRowPost:
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.textAlignment = UITextAlignmentLeft;
-                cell.textLabel.text = @"Post to Facebook";
+                cell.textLabel.text = @"Autopost to Facebook";
                 cell.accessoryView = self.facebookSwitch;
                 break;
             case SocializeProfileEditViewControllerFacebookRowLogout:
@@ -475,7 +475,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
             case SocializeProfileEditViewControllerTwitterRowPost:
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.textAlignment = UITextAlignmentLeft;
-                cell.textLabel.text = @"Post to Twitter";
+                cell.textLabel.text = @"Autopost to Twitter";
                 cell.accessoryView = self.twitterSwitch;
                 
                 break;
