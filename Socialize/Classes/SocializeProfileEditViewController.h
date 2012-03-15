@@ -12,13 +12,6 @@
 #import "SocializeProfileEditViewControllerDelegate.h"
 
 @class SocializeProfileEditValueViewController;
-typedef enum {
-    SocializeProfileEditViewControllerSectionImage,
-    SocializeProfileEditViewControllerSectionProperties,
-    SocializeProfileEditViewControllerSectionFacebook,
-    SocializeProfileEditViewControllerSectionTwitter,
-    SocializeProfileEditViewControllerNumSections,
-} SocializeProfileEditViewControllerSection;
 
 typedef enum {
     SocializeProfileEditViewControllerImageRowProfileImage,
@@ -71,6 +64,12 @@ typedef enum {
 
 - (NSString*)keyPathForPropertiesRow:(SocializeProfileEditViewControllerPropertiesRow)row;
 -(void) showActionSheet;
+
+- (NSInteger)facebookSection;
+- (NSInteger)twitterSection;
+- (NSInteger)imageSection;
+- (NSInteger)propertiesSection;
+
 @end
 
 

@@ -59,6 +59,19 @@
 - (void)setUp {
     [super setUp];
     
+    [SocializeThirdPartyTwitter startMockingClass];
+    [SocializeThirdPartyFacebook startMockingClass];
+    [SocializeFacebookAuthenticator startMockingClass];
+    [SocializeTwitterAuthenticator startMockingClass];
+    
+    [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithTwitter; } ] isLinkedToSocialize];
+    [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.twitterAvailable; } ] available];
+    [[[SocializeThirdPartyFacebook stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithFacebook; } ] isLinkedToSocialize];
+    [[[SocializeThirdPartyFacebook stub] andReturnBoolFromBlock:^{ return self.facebookAvailable; } ] available];
+    
+    self.facebookAvailable = YES;
+    self.twitterAvailable = YES;
+
     self.profileEditViewController = (SocializeProfileEditViewController*)self.viewController;
     self.mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeProfileEditViewControllerDelegate)];
     self.profileEditViewController.delegate = self.mockDelegate;
@@ -70,7 +83,7 @@
     
     // OCMock can not match primitives =(
     // Iterate and forward all sections calls
-    for (int section = 0; section < SocializeProfileEditViewControllerNumSections; section++) {
+    for (int section = 0; section < [self.profileEditViewController numberOfSectionsInTableView:nil]; section++) {
         [[[self.mockTableView stub] andDo:^(NSInvocation *inv) {
             NSInteger rows = [self.profileEditViewController tableView:self.mockTableView numberOfRowsInSection:section];
             [inv setReturnValue:&rows];
@@ -92,20 +105,8 @@
     self.mockSaveButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.profileEditViewController.saveButton = self.mockSaveButton;
     
-    self.facebookAvailable = YES;
-    self.twitterAvailable = YES;
     [self loadView];
     
-    [SocializeThirdPartyTwitter startMockingClass];
-    [SocializeThirdPartyFacebook startMockingClass];
-    [SocializeFacebookAuthenticator startMockingClass];
-    [SocializeTwitterAuthenticator startMockingClass];
-    
-    [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithTwitter; } ] isLinkedToSocialize];
-    [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.twitterAvailable; } ] available];
-    [[[SocializeThirdPartyFacebook stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithFacebook; } ] isLinkedToSocialize];
-    [[[SocializeThirdPartyFacebook stub] andReturnBoolFromBlock:^{ return self.facebookAvailable; } ] available];
-
 }
 
 - (void)tearDown {
@@ -262,7 +263,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [[mockArrowImageView expect] setHidden:NO];
     [[mockCell expect] setBackgroundColor:[UIColor colorWithRed:44/255.0f green:54/255.0f blue:63/255.0f alpha:1.0]];
     [[mockCell expect] setSelectionStyle:UITableViewCellSelectionStyleBlue];
-    UITableViewCell *cell = [self.profileEditViewController tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPropertiesRowFirstName inSection:SocializeProfileEditViewControllerSectionProperties]];
+    UITableViewCell *cell = [self.profileEditViewController tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPropertiesRowFirstName inSection:[self.profileEditViewController propertiesSection]]];
     GHAssertEquals(cell, mockCell, @"Bad cell");
 }
 
@@ -327,7 +328,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [[mockCell expect] setAccessoryView:self.mockFacebookSwitch];
     [[[self.mockTableView expect] andReturn:mockCell] dequeueReusableCellWithIdentifier:OCMOCK_ANY];
 
-    [self.profileEditViewController tableView:self.mockTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerFacebookRowPost inSection:SocializeProfileEditViewControllerSectionFacebook]];
+    [self.profileEditViewController tableView:self.mockTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerFacebookRowPost inSection:[self.profileEditViewController facebookSection]]];
 
 }
 
@@ -346,7 +347,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [[mockCell expect] setAccessoryView:self.mockTwitterSwitch];
     [[[self.mockTableView expect] andReturn:mockCell] dequeueReusableCellWithIdentifier:OCMOCK_ANY];
     
-    [self.profileEditViewController tableView:self.mockTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerTwitterRowPost inSection:SocializeProfileEditViewControllerSectionTwitter]];
+    [self.profileEditViewController tableView:self.mockTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerTwitterRowPost inSection:[self.profileEditViewController twitterSection]]];
     
 }
 
@@ -371,7 +372,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 }
 
 - (void)testActionSheetShown {
-    NSIndexPath *imagePath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerImageRowProfileImage inSection:SocializeProfileEditViewControllerSectionImage];
+    NSIndexPath *imagePath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerImageRowProfileImage inSection:[self.profileEditViewController imageSection]];
     [[self.mockActionSheet expect] showInView:self.mockWindow];
     [self.profileEditViewController tableView:self.mockTableView didSelectRowAtIndexPath:imagePath];
 }
@@ -430,13 +431,13 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 }
 
 - (void)testImageCellHeight {
-    NSIndexPath *imagePath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerImageRowProfileImage inSection:SocializeProfileEditViewControllerSectionImage];
+    NSIndexPath *imagePath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerImageRowProfileImage inSection:[self.profileEditViewController imageSection]];
     NSInteger imageHeight = [self.profileEditViewController tableView:self.mockTableView heightForRowAtIndexPath:imagePath];
     GHAssertEquals(imageHeight, SocializeProfileEditTableViewImageCellHeight, @"Bad height");
 }
 
 - (void)testNormalCellHeight {
-    NSIndexPath *propertyPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPropertiesRowFirstName inSection:SocializeProfileEditViewControllerSectionProperties];
+    NSIndexPath *propertyPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPropertiesRowFirstName inSection:[self.profileEditViewController propertiesSection]];
     NSInteger propertyHeight = [self.profileEditViewController tableView:self.mockTableView heightForRowAtIndexPath:propertyPath];
     GHAssertEquals(propertyHeight, SocializeProfileEditTableViewCellHeight, @"Bad height");
 }
@@ -490,7 +491,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     self.profileEditViewController.fullUser = mockUser;
     
     // firstName should be set
-    NSIndexPath *firstNamePath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPropertiesRowFirstName inSection:SocializeProfileEditViewControllerSectionProperties];
+    NSIndexPath *firstNamePath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPropertiesRowFirstName inSection:[self.profileEditViewController propertiesSection]];
     id mockEditValue = [OCMockObject mockForClass:[SocializeProfileEditValueViewController class]];
     self.profileEditViewController.editValueController = mockEditValue;
     [[[mockEditValue expect] andReturn:firstNamePath] indexPath];
@@ -731,7 +732,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     
     [self.mockTableView makeNice];
     
-    NSIndexPath *logoutPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerTwitterRowLogout inSection:SocializeProfileEditViewControllerSectionTwitter];
+    NSIndexPath *logoutPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerTwitterRowLogout inSection:[self.profileEditViewController twitterSection]];
     [self.profileEditViewController tableView:self.mockTableView didSelectRowAtIndexPath:logoutPath];
     
     GHAssertNotNil(self.lastShownAlert, @"Should have alert");
@@ -747,7 +748,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     
     [self.mockTableView makeNice];
     
-    NSIndexPath *logoutPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerFacebookRowLogout inSection:SocializeProfileEditViewControllerSectionFacebook];
+    NSIndexPath *logoutPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerFacebookRowLogout inSection:[self.profileEditViewController facebookSection]];
     [self.profileEditViewController tableView:self.mockTableView didSelectRowAtIndexPath:logoutPath];
     
     GHAssertNotNil(self.lastShownAlert, @"Should have alert");
@@ -757,5 +758,60 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     handler();
 }
 
+- (void)expectTwitterLogin {
+    [[SocializeTwitterAuthenticator expect] authenticateViaTwitterWithOptions:OCMOCK_ANY display:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+}
+
+- (void)expectFacebookLogin {
+    [[SocializeFacebookAuthenticator expect] authenticateViaFacebookWithOptions:OCMOCK_ANY display:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+}
+
+- (id)getCellAtIndexPath:(NSIndexPath*)indexPath {
+    [[[self.mockTableView expect] andReturn:nil] dequeueReusableCellWithIdentifier:OCMOCK_ANY];
+    UITableViewCell *cell = [self.profileEditViewController tableView:self.mockTableView cellForRowAtIndexPath:indexPath];
+    return cell;
+}
+
+- (id)getAccessoryAtIndexPath:(NSIndexPath*)indexPath {
+    UITableViewCell *cell = [self getCellAtIndexPath:indexPath];
+    return cell.accessoryView;
+}
+
+- (void)testTwitterButNotFacebookCanStillTriggerTwitterLogin {
+    self.facebookAvailable = NO;
+    self.twitterAvailable = YES;
+    self.isAuthenticatedWithTwitter = NO;
+    self.profileEditViewController.twitterSwitch = nil;
+    [self.mockUserDefaults makeNice];
+    
+    
+    NSIndexPath *expectedTwitterPath = [NSIndexPath indexPathForRow:0 inSection:2];
+    
+    // Turn the switch on
+    UISwitch *sw = [self getAccessoryAtIndexPath:expectedTwitterPath];
+    sw.on = YES;
+    
+    [self expectTwitterLogin];
+    
+    [sw simulateControlEvent:UIControlEventValueChanged];
+}
+
+- (void)testFacebookButNotTwitterCanStillTriggerFacebookLogin {
+    self.facebookAvailable = YES;
+    self.twitterAvailable = NO;
+    self.isAuthenticatedWithFacebook = NO;
+    self.profileEditViewController.facebookSwitch = nil;
+    [self.mockUserDefaults makeNice];
+        
+    NSIndexPath *expectedFacebookPath = [NSIndexPath indexPathForRow:0 inSection:2];
+        
+    // Turn the switch on
+    UISwitch *sw = [self getAccessoryAtIndexPath:expectedFacebookPath];
+    sw.on = YES;
+    
+    [self expectFacebookLogin];
+    
+    [sw simulateControlEvent:UIControlEventValueChanged];
+}
 
 @end

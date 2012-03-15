@@ -246,6 +246,14 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     return 2;
 }
 
+- (NSInteger)imageSection {
+    return 0;
+}
+
+- (NSInteger)propertiesSection {
+    return 1;
+}
+
 - (NSInteger)facebookSection {
     if (![SocializeThirdPartyFacebook available]) {
         return NSNotFound;
@@ -270,38 +278,33 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == SocializeProfileEditViewControllerSectionImage) {
+    if (indexPath.section == [self imageSection]) {
         return SocializeProfileEditTableViewImageCellHeight;
     }
 	
 	return SocializeProfileEditTableViewCellHeight;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger numRows = 0;
-    switch (section) {
-        case SocializeProfileEditViewControllerSectionImage:
+    if (section == [self imageSection]) {
+        numRows = 1;
+    } else if (section == [self propertiesSection]) {
+        numRows = sizeof(SocializeProfileEditViewControllerPropertiesInfoItems) / sizeof(SocializeProfileEditViewControllerPropertiesInfo);
+    } else if (section == [self facebookSection]) {
+        if (self.showFacebookLogout) {
+            numRows = 2;
+        } else {
             numRows = 1;
-            break;
-        case SocializeProfileEditViewControllerSectionProperties:
-            numRows = sizeof(SocializeProfileEditViewControllerPropertiesInfoItems) / sizeof(SocializeProfileEditViewControllerPropertiesInfo);
-            break;
-        case SocializeProfileEditViewControllerSectionFacebook:
-            if (self.showFacebookLogout) {
-                numRows = 2;
-            } else {
-                numRows = 1;
-            }
-            break;
-        case SocializeProfileEditViewControllerSectionTwitter:
-            if (self.showTwitterLogout) {
-                numRows = 2;
-            } else {
-                numRows = 1;
-            }
-            break;
+        }
+    } else if (section == [self twitterSection]) {
+        if (self.showTwitterLogout) {
+            numRows = 2;
+        } else {
+            numRows = 1;
+        }
     }
+    
     return numRows;
 }
 
@@ -432,73 +435,64 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
-    switch (indexPath.section) {
-        case SocializeProfileEditViewControllerSectionImage:
-            cell = self.profileImageCell;
-            [self configureProfileImageCell];
-            break;
-            
-        case SocializeProfileEditViewControllerSectionProperties:
-            cell = [self getProfileEditCell];
-            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-            NSString *keyText = SocializeProfileEditViewControllerPropertiesInfoItems[indexPath.row].displayName;
-            NSString *valueText = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
-            [[(SocializeProfileEditTableViewCell*)cell keyLabel] setText:keyText];
-            [[(SocializeProfileEditTableViewCell*)cell valueLabel] setText:valueText];
-            [[(SocializeProfileEditTableViewCell*)cell arrowImageView] setHidden:NO];
-            break;
-            
-        case SocializeProfileEditViewControllerSectionFacebook:
-            cell = [self getNormalCellWithStyle:UITableViewCellStyleDefault];
-            cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.f];
-            cell.textLabel.textColor = [self cellFontColor];
-            switch (indexPath.row) {
-                case SocializeProfileEditViewControllerFacebookRowPost:
-                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                    cell.textLabel.textAlignment = UITextAlignmentLeft;
-                    cell.textLabel.text = @"Post to Facebook";
-                    cell.accessoryView = self.facebookSwitch;
-                    break;
-                case SocializeProfileEditViewControllerFacebookRowLogout:
-                    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-                    cell.textLabel.textAlignment = UITextAlignmentCenter;
-                    cell.textLabel.text = @"Sign out of Facebook";
-                    cell.accessoryView = nil;
-                    break;
-                default:
-                    NSAssert(NO, @"unhandled");
-            }
-            break;
-            
-        case SocializeProfileEditViewControllerSectionTwitter:
-            cell = [self getNormalCellWithStyle:UITableViewCellStyleDefault];
-            cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.f];
-            cell.textLabel.textColor = [self cellFontColor];
-
-            switch (indexPath.row) {
-                case SocializeProfileEditViewControllerTwitterRowPost:
-                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                    cell.textLabel.textAlignment = UITextAlignmentLeft;
-                    cell.textLabel.text = @"Post to Twitter";
-                    cell.accessoryView = self.twitterSwitch;
-
-                    break;
-                case SocializeProfileEditViewControllerTwitterRowLogout:
-                    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-                    cell.textLabel.textAlignment = UITextAlignmentCenter;
-                    cell.textLabel.text = @"Sign out of Twitter";
-                    cell.accessoryView = nil;
-
-                    break;
-                default:
-                    NSAssert(NO, @"unhandled");
-            }
-            break;
-        default:
-            NSAssert(NO, @"unhandled");
-
-
+    if (indexPath.section == [self imageSection]) {
+        cell = self.profileImageCell;
+        [self configureProfileImageCell];
+    } else if (indexPath.section == [self propertiesSection]) {
+        cell = [self getProfileEditCell];
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        NSString *keyText = SocializeProfileEditViewControllerPropertiesInfoItems[indexPath.row].displayName;
+        NSString *valueText = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
+        [[(SocializeProfileEditTableViewCell*)cell keyLabel] setText:keyText];
+        [[(SocializeProfileEditTableViewCell*)cell valueLabel] setText:valueText];
+        [[(SocializeProfileEditTableViewCell*)cell arrowImageView] setHidden:NO];
+    } else if (indexPath.section == [self facebookSection]) {        
+        cell = [self getNormalCellWithStyle:UITableViewCellStyleDefault];
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.f];
+        cell.textLabel.textColor = [self cellFontColor];
+        switch (indexPath.row) {
+            case SocializeProfileEditViewControllerFacebookRowPost:
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.textLabel.textAlignment = UITextAlignmentLeft;
+                cell.textLabel.text = @"Post to Facebook";
+                cell.accessoryView = self.facebookSwitch;
+                break;
+            case SocializeProfileEditViewControllerFacebookRowLogout:
+                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                cell.textLabel.textAlignment = UITextAlignmentCenter;
+                cell.textLabel.text = @"Sign out of Facebook";
+                cell.accessoryView = nil;
+                break;
+            default:
+                NSAssert(NO, @"unhandled");
+        }
+    } else if (indexPath.section == [self twitterSection]) {
+        cell = [self getNormalCellWithStyle:UITableViewCellStyleDefault];
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.f];
+        cell.textLabel.textColor = [self cellFontColor];
+        
+        switch (indexPath.row) {
+            case SocializeProfileEditViewControllerTwitterRowPost:
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.textLabel.textAlignment = UITextAlignmentLeft;
+                cell.textLabel.text = @"Post to Twitter";
+                cell.accessoryView = self.twitterSwitch;
+                
+                break;
+            case SocializeProfileEditViewControllerTwitterRowLogout:
+                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                cell.textLabel.textAlignment = UITextAlignmentCenter;
+                cell.textLabel.text = @"Sign out of Twitter";
+                cell.accessoryView = nil;
+                
+                break;
+            default:
+                NSAssert(NO, @"unhandled");
+        }
+    } else {
+        NSAssert(NO, @"unhandled section");
     }
+    
     cell.backgroundColor = [self cellBackgroundColorForIndexPath:indexPath];
     
     return cell;
@@ -667,22 +661,22 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 {
     __block __typeof__(self) weakSelf = self;
     
-	if (indexPath.section == SocializeProfileEditViewControllerSectionImage) 
+	if (indexPath.section == [self imageSection]) 
 	{
 		[self showActionSheet];
 		return;
-	} else if (indexPath.section == SocializeProfileEditViewControllerSectionProperties) {
+	} else if (indexPath.section == [self propertiesSection]) {
         NSString *editName = SocializeProfileEditViewControllerPropertiesInfoItems[indexPath.row].editName;
         self.editValueController.title = editName;
         self.editValueController.valueToEdit = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
         self.editValueController.indexPath = indexPath;
         [self.navigationController pushViewController:self.editValueController animated:YES];
-    } else if (indexPath.section == SocializeProfileEditViewControllerSectionTwitter) {
+    } else if (indexPath.section == [self twitterSection]) {
         if (indexPath.row == SocializeProfileEditViewControllerTwitterRowLogout) {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
             [self showConfirmLogoutDialogForService:@"Twitter" handler:^{ [weakSelf twitterLogout]; }];
         }
-    } else if (indexPath.section == SocializeProfileEditViewControllerSectionFacebook) {
+    } else if (indexPath.section == [self facebookSection]) {
         if (indexPath.row == SocializeProfileEditViewControllerFacebookRowLogout) {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
             [self showConfirmLogoutDialogForService:@"Facebook" handler:^{ [weakSelf facebookLogout]; }];
