@@ -11,5 +11,6 @@
 
 @interface SocializeAuthOptions : SocializeOptions
 @property (nonatomic, assign) BOOL doNotPromptForPermission;
+@property (nonatomic, assign) BOOL doNotShowProfile;
 
 @end

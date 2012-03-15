@@ -126,7 +126,7 @@
         return;
     }
     
-    if (!self.displayedSettings) {
+    if (!self.displayedSettings && !self.options.doNotShowProfile) {
         [self showSettings];
         return;
     }

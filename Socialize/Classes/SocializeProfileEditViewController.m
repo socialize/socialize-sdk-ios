@@ -638,7 +638,10 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)authenticateViaTwitter {
-    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:nil
+    SocializeTwitterAuthOptions *options = [SocializeTwitterAuthOptions options];
+    options.doNotShowProfile = YES;
+    
+    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options
                                               display:self
                                               success:^{
                                                   [self updateInterfaceToReflectSessionStatuses];
@@ -648,7 +651,10 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)authenticateViaFacebook {
-    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:nil
+    SocializeFacebookAuthOptions *options = [SocializeFacebookAuthOptions options];
+    options.doNotShowProfile = YES;
+
+    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:options
                                                                 display:self
                                                                 success:^{
                                                                     [self updateInterfaceToReflectSessionStatuses];

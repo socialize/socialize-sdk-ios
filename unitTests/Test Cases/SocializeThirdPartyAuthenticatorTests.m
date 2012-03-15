@@ -199,7 +199,7 @@
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusFailure fromTest:_cmd];
 }
 
-- (void)testSuccessfulInteractiveLogin {
+- (void)succeedToSettings {
     [self.mockDisplay makeNice];
     
     // Initially, local credentials not available
@@ -213,6 +213,10 @@
     
     // Socialize third party link succeeds
     [self suceedSocializeAuthentication];
+}
+
+- (void)testSuccessfulInteractiveLogin {
+    [self succeedToSettings];
     
     // Save settings
     [self expectSettingsAndSave];
@@ -222,25 +226,27 @@
 }
 
 - (void)testLoggingOutOfThirdPartyInSettingsCausesFailure {
-    [self.mockDisplay makeNice];
-    
-    // Initially, local credentials not available
-    [self simulateInteractiveAuthConditions];
-    
-    // Yes, we want to log in
-    [self respondToLoginDialogWithAccept:YES];
-    
-    // Interactive login completes successfully
-    [self succeedInteractiveLogin];
-    
-    // Socialize third party link succeeds
-    [self suceedSocializeAuthentication];
+    [self succeedToSettings];
     
     // Save settings
     [self expectSettingsAndLogout];
     
     // Expect success
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusFailure fromTest:_cmd];
+}
+
+- (void)testProfileNotShownIfOptionSet {
+    
+    // Do not show settings option
+    SocializeAuthOptions *options = [SocializeAuthOptions options];
+    options.doNotShowProfile = YES;
+    self.thirdPartyAuthenticator.options = options;
+    
+    // Only to settings
+    [self succeedToSettings];
+    
+    // Expect success
+    [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
 }
 
 

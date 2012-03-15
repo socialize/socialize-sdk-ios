@@ -10,5 +10,6 @@
 
 @implementation SocializeAuthOptions
 @synthesize doNotPromptForPermission = doNotPromptForPermission_;
+@synthesize doNotShowProfile = doNotShowProfile_;
 
 @end
