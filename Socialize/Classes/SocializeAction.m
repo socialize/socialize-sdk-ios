@@ -129,7 +129,13 @@ typedef enum {
     [self finishedOnMainThread];
 }
 
+- (void)destroyUI {
+    
+}
+
 - (void)finishedOnMainThread {
+    [self destroyUI];
+    
     NSAssert([[NSThread currentThread] isMainThread], @"Action must be finished on main thread");
     [self.finishedLock lock];
     [self.finishedLock unlockWithCondition:SocializeActionConditionFinished];

@@ -32,6 +32,7 @@
 - (NSError*)defaultError;
 - (void)failWithError:(NSError*)error;
 - (void)succeed;
+- (void)destroyUI;
 
 + (void)executeAction:(SocializeAction*)action;
 + (NSOperationQueue*)actionQueue;

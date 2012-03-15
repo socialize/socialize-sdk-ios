@@ -23,11 +23,14 @@
 @synthesize options = options_;
 
 - (void)dealloc {
-    [twitterAuthViewController_ setDelegate:nil];
-    self.twitterAuthViewController = nil;
     self.options = nil;
     
     [super dealloc];
+}
+
+- (void)destroyUI {
+    [twitterAuthViewController_ setDelegate:nil];
+    self.twitterAuthViewController = nil;
 }
 
 + (void)authenticateViaTwitterWithOptions:(SocializeTwitterAuthOptions*)options
