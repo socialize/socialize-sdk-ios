@@ -75,7 +75,10 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
     NSString *deviceTokenString = [self stringForToken:deviceToken];
     NSAssert([deviceTokenString length] > 0, @"Bad token");
     [[NSUserDefaults standardUserDefaults] setObject:deviceTokenString forKey:kSocializeDeviceTokenKey];
-    [self resendDeviceToken];
+    
+    if ([self.socialize isAuthenticated]) {
+        [self resendDeviceToken];
+    }
 }
 
 - (void)sendDeviceTokenIfNecessary {

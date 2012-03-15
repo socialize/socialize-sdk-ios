@@ -14,4 +14,7 @@
 @property (nonatomic, retain) SocializeDeviceTokenSender *deviceTokenSender;
 @property (nonatomic, retain) id mockSocialize;
 
+@property (nonatomic, retain) NSString *testTokenString;
+@property (nonatomic, retain) NSData *testTokenData;
+
 @end

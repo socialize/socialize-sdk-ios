@@ -19,6 +19,8 @@
 @implementation SocializeDeviceTokenSenderTests
 @synthesize deviceTokenSender = deviceTokenSender_;
 @synthesize mockSocialize = mockSocialize_;
+@synthesize testTokenData = testTokenData_;
+@synthesize testTokenString = testTokenString_;
 
 - (void)setUp {
     self.deviceTokenSender = [[[SocializeDeviceTokenSender alloc] init] autorelease];
@@ -28,6 +30,10 @@
     self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     [[self.mockSocialize stub] setDelegate:nil];
     self.deviceTokenSender.socialize = self.mockSocialize;
+    
+    char testTokenData[2] = "\xaa\xff";
+    self.testTokenData = [NSData dataWithBytes:&testTokenData length:sizeof(testTokenData)];
+    self.testTokenString = @"aaff";
 }
 
 - (void)tearDown {
@@ -90,14 +96,21 @@
     GHAssertFalse(self.deviceTokenSender.tokenOnServer, @"Should not be registered");
 }
 
-- (void)testDeviceTokenRegistration {
+- (void)testDeviceTokenRegistrationWithNoUserDoesNotSend {
     self.deviceTokenSender.tokenOnServer = NO;
-    char testTokenData[2] = "\xaa\xff";
-    NSData *testToken = [NSData dataWithBytes:&testTokenData length:sizeof(testTokenData)];
-    NSString *testTokenString = @"aaff";
+    [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
+    [[self.mockSocialize reject] _registerDeviceTokenString:self.testTokenString];
+    
+    [self.deviceTokenSender registerDeviceToken:self.testTokenData];    
+}
 
-    [[self.mockSocialize expect] _registerDeviceTokenString:testTokenString];
-    [self.deviceTokenSender registerDeviceToken:testToken];
+- (void)testDeviceTokenRegistrationWithUserDoesSend {
+    self.deviceTokenSender.tokenOnServer = NO;
+
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticated];
+    [[self.mockSocialize expect] _registerDeviceTokenString:self.testTokenString];
+    
+    [self.deviceTokenSender registerDeviceToken:self.testTokenData];
 }
 
 - (void)testTokenAvailableWhenSet {
@@ -140,6 +153,8 @@
     NSString *testTokenString2 = @"bbee";
     NSData *testToken2 = [NSData dataWithBytes:&testTokenData2 length:sizeof(testTokenData2)];
 
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticated];
+    
     [self expectRegistrationAndSucceed];
     
     [[self.mockSocialize expect] _registerDeviceTokenString:testTokenString2];
