@@ -87,6 +87,7 @@
 }
 
 - (void)testAwakeFromNibConfiguresButton {
+    [self.mockShowEntityButton makeNice];
     [[self.mockShowEntityButton expect] addSocializeRoundedGrayButtonImages];
     [self.activityDetailsView awakeFromNib];
 }
