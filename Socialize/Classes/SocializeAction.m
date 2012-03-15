@@ -153,7 +153,6 @@ typedef enum {
     
     // Await task completion ([self finishedOnMainThread])
     [self waitUntilFinishedOnMainThread];
-    NSLog(@"Action complete");
 }
 
 - (void)waitUntilFinishedOnMainThread {

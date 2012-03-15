@@ -69,7 +69,6 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 }
 
 - (void)cancelAllCallbacks {
-    NSLog(@"Cancelling all callbacks");
     [self.dataFetcher cancel];
     [self.socialize setDelegate:nil];
     [self.webView setDelegate:nil];
@@ -220,14 +219,12 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 
 - (void)requestAccessToken:(OAServiceTicket *)ticket didFailWithError:(NSError*)error {
     // The request for the access token has failed
-    NSLog(@"Failed with error");
 }
 
 - (void)removeTwitterCookies {
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie *cookie in [storage cookies]) {
         if ([[cookie domain] isEqualToString:@".twitter.com"]) {
-            NSLog(@"Deleting %@", cookie);
             [storage deleteCookie:cookie];
         }
     }
