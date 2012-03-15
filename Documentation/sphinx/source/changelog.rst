@@ -4,6 +4,12 @@
 Changelog
 =============================================
 
+v1.5.1
+------
+[bug] Logging into third party from profile now shows profile on top of profile [ ]
+
+[bug] Configuring twitter but not Facebook caused a profile controller inconsistency [ ]
+
 v1.5
 ----
 [feature] Add canLoadEntity block to disallow loading of specific entities [ ui]
