@@ -29,7 +29,6 @@ buildsample:
 clean:
 	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "Socialize" -configuration Release -sdk iphoneos clean
 	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "unitTests" -configuration Debug -sdk iphonesimulator clean
-	xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme "unitTests-pre-4.3" -configuration Debug -sdk iphonesimulator clean
 	xcodebuild -workspace SampleSdkApp/SampleSdkApp.xcworkspace -scheme "IntegrationTests" -configuration Debug -sdk iphonesimulator clean
 	xcodebuild -workspace SampleSdkApp/SampleSdkApp.xcworkspace -scheme "IntegrationTests" -configuration Debug -sdk iphonesimulator clean
 	rm -rfd build
