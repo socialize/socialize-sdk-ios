@@ -59,8 +59,18 @@ Once you have a twitter application, simply tell Socialize about your consumer k
 
   <script src="https://gist.github.com/2025402.js?file=gistfile1.m"></script>
 
+Linking to Twitter Using Existing Credentials
+---------------------------------------------
+If you already have a Twitter access token of your own, you can link to Socialize like so:
+
+.. raw:: html
+
+  <script src="https://gist.github.com/2047355.js?file=linkToTwitter.m"></script>
+
+
 Propagating Socialize Actions to Twitter
 -----------------------------------------
 
 Social actions such as Comment and Like will automatically be propagated to
-Twitter when using the Socialize UI. 
+Twitter when using the Socialize UI. SDK Calls for creating propagating
+actions will be available soon.
