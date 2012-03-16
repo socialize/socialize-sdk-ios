@@ -165,6 +165,8 @@
         comment.lng = longitude;
     }
     
+    [comment setSubscribe:!self.dontSubscribeToDiscussion];
+    
     [SocializeCommentCreator createComment:comment options:nil display:nil
                                    success:^(id<SocializeComment> comment) {
                                        self.commentObject = comment;

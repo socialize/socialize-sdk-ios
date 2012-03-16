@@ -23,12 +23,16 @@
 }
 
 - (id)andDo0:(void(^)())action {
+    if (action == nil) return self;
+
     return [self andDo:^(NSInvocation *inv) {
         action();
     }];
 }
 
 - (id)andDo1:(void(^)(id))action {
+    if (action == nil) return self;
+
     return [self andDo:^(NSInvocation *inv) {
         id arg1;
         [inv getArgument:&arg1 atIndex:2];
@@ -37,6 +41,8 @@
 }
 
 - (id)andDo2:(void(^)(id, id))action {
+    if (action == nil) return self;
+    
     return [self andDo:^(NSInvocation *inv) {
         id arg1, arg2;
         [inv getArgument:&arg1 atIndex:2];
@@ -46,6 +52,7 @@
 }
 
 - (id)andDo3:(void(^)(id, id, id))action {
+    if (action == nil) return self;
     return [self andDo:^(NSInvocation *inv) {
         id arg1, arg2, arg3;
         [inv getArgument:&arg1 atIndex:2];
@@ -56,6 +63,7 @@
 }
 
 - (id)andDo4:(void(^)(id, id, id, id))action {
+    if (action == nil) return self;
     return [self andDo:^(NSInvocation *inv) {
         id arg1, arg2, arg3, arg4;
         [inv getArgument:&arg1 atIndex:2];
@@ -67,6 +75,7 @@
 }
 
 - (id)andDo5:(void(^)(id, id, id, id, id))action {
+    if (action == nil) return self;
     return [self andDo:^(NSInvocation *inv) {
         id arg1, arg2, arg3, arg4, arg5;
         [inv getArgument:&arg1 atIndex:2];

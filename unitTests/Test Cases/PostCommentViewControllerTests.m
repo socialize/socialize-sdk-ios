@@ -42,6 +42,7 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeTwitterAuthenticator.h"
+#import "SocializeCommentOptions.h"
 
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
@@ -154,9 +155,13 @@
 }
 */
 
-- (void)expectCreateComment {
+- (void)expectCreateCommentAndVerifyWithBlock:(void(^)(id<SocializeComment> comment, SocializeCommentOptions *options))verifyBlock {
     [[self.mockSendButton expect] setEnabled:NO];
-    [[SocializeCommentCreator expect] createComment:OCMOCK_ANY options:OCMOCK_ANY display:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+    [[[SocializeCommentCreator expect] andDo2:verifyBlock] createComment:OCMOCK_ANY options:OCMOCK_ANY display:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+}
+
+- (void)expectCreateComment {
+    [self expectCreateCommentAndVerifyWithBlock:nil];
 }
 
 -(void)testSendButtonPressedWithGeo
@@ -169,6 +174,11 @@
     [self.postCommentViewController performSelector: @selector(sendButtonPressed:)withObject:nil];
 }
 
+- (void)pressSendButton {
+    [self.postCommentViewController performSelector: @selector(sendButtonPressed:)withObject:nil];
+    
+}
+
 -(void)testSendButtonPressed
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSocializeShouldShareLocationKey];
@@ -176,8 +186,29 @@
     [self expectCreateComment];
     [[[(id)self.viewController stub]andReturnBool:NO] shouldShowAuthViewController];
     
+    [self pressSendButton];
+}
 
-    [self.postCommentViewController performSelector: @selector(sendButtonPressed:)withObject:nil];
+- (void)testSendCreatesCommentWithSubscribed {
+    [self ignoreButtons];
+    [self.postCommentViewController setDontSubscribeToDiscussion:NO];
+    
+    [self expectCreateCommentAndVerifyWithBlock:^(id<SocializeComment> comment, SocializeCommentOptions *options) {
+        GHAssertTrue([comment subscribe], @"Should be subscribed");
+    }];
+
+    [self pressSendButton];
+}
+
+- (void)testSendCreatesCommentNotSubscribed {
+    [self ignoreButtons];
+    [self.postCommentViewController setDontSubscribeToDiscussion:YES];
+    
+    [self expectCreateCommentAndVerifyWithBlock:^(id<SocializeComment> comment, SocializeCommentOptions *options) {
+        GHAssertFalse([comment subscribe], @"Should not be subscribed");
+    }];
+    
+    [self pressSendButton];
 }
 
 -(void)testEnableSendButtonWhenCommentTextPopulated
@@ -238,6 +269,9 @@
     [self.mockEnableSubscribeButton makeNice];
     [self.mockUnsubscribeButton makeNice];
     [self.mockSendButton makeNice];
+    [self.mockDoNotShareLocationButton makeNice];
+    [self.mockActivateLocationButton makeNice];
+    [self.mockCancelButton makeNice];
 }
 
 - (void)testAuthingWithFacebookCreatesComment {
