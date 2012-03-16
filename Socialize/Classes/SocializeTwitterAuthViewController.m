@@ -192,7 +192,7 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 
 - (void)requestRequestToken:(OAServiceTicket *)ticket didFailWithError:(NSError*)error {
     // The actual request for the request token has failed
-    [self showRetryDialogWithMessage:@"Could not get request token"];
+    [self showRetryDialogWithMessage:@"Twitter error"];
 }
 
 - (void)requestAccessToken:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
@@ -219,6 +219,7 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 
 - (void)requestAccessToken:(OAServiceTicket *)ticket didFailWithError:(NSError*)error {
     // The request for the access token has failed
+    [self showRetryDialogWithMessage:@"Twitter error"];
 }
 
 - (void)removeTwitterCookies {
