@@ -4,6 +4,34 @@
 Changelog
 =============================================
 
+v1.5.2
+------
+[bug] iOS 4.3 crashes at end of twitter authentication [ ]
+
+[bug] "View Entity" button label on comment details is too wide [ ]
+
+[bug] Remove an unused property that is causing some warnings (LoaderFactory) [ ]
+
+[bug] Hide an undocumented method that should not yet be public [ ]
+
+[bug] Link to twitter from getting started doc [ ]
+
+[bug] Do not attempt to send push token before authenticated (consumer key null) [ ]
+
+[bug] Remove some lingering NSLogs [ ]
+
+[bug] Posting a subscription comment would not subscribe to smartalerts [ ]
+
+[bug] Update confusing facebook url config image in docs [ ]
+
+[bug] Freshly signing in to third party should force autopost enabled [ ]
+
+[bug] Comment actions should disable when loading [ ]
+
+[bug] A twitter auth failure case should show retry dialog [ ]
+
+[bug] Default title as key for entity loader button is ugly
+
 v1.5.1
 ------
 [bug] Logging into third party from profile now shows profile on top of profile [ ]
