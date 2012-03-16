@@ -224,7 +224,7 @@
     [[self.partialActivityDetailsViewController expect] stopLoadAnimation];
     
     // View entity button's title should be set to reflect the comment's entity
-    [[self.mockShowEntityButton expect] setTitle:testKey forState:UIControlStateNormal];
+    [[self.mockShowEntityButton expect] setTitle:OCMOCK_ANY forState:UIControlStateNormal];
      
     [self.activityDetailsViewController loadActivityDetailData];
 }

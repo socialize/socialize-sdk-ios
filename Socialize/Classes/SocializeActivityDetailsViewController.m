@@ -112,7 +112,7 @@
         
         NSString *showEntityTitle = self.socializeActivity.entity.name;
         if ([showEntityTitle length] == 0) {
-            showEntityTitle = self.socializeActivity.entity.key;
+            showEntityTitle = @"Show More";
         }
         [self.activityDetailsView.showEntityButton setTitle:showEntityTitle forState:UIControlStateNormal];
     }
