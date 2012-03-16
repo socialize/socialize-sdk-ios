@@ -100,6 +100,8 @@
     [self.displayProxy presentModalViewController:nav];
 }
 
+- (void)willSucceed {}
+
 - (void)tryToFinishAuthenticating {
     // Check if auth is even possible
     if (![self.thirdParty available]) {
@@ -137,6 +139,7 @@
         return;
     }
     
+    [self willSucceed];
     [self succeed];
 }
 

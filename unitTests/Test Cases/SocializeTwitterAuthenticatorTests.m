@@ -15,6 +15,7 @@
 #import "SocializeUIDisplayProxy.h"
 #import "SocializeTwitterAuthViewControllerDelegate.h"
 #import "SocializeThirdPartyTwitter.h"
+#import "SocializePrivateDefinitions.h"
 
 @implementation SocializeTwitterAuthenticatorTests
 @synthesize twitterAuthenticator = twitterAuthenticator_;
@@ -119,7 +120,17 @@
     [self suceedSocializeAuthentication];
 }
 
+- (BOOL)autopostStatus {
+    return ![[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY] boolValue];
+}
+
+- (void)setAutopostStatus:(BOOL)status {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!status] forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
+}
+
 - (void)testSuccessfulInteractiveLogin {
+    [self setAutopostStatus:NO];
+    
     [self succeedToSettings];
     
     // Save settings
@@ -127,6 +138,8 @@
     
     // Expect success
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
+    
+    GHAssertTrue([self autopostStatus], @"Status bad");
 }
 
 - (void)testLoggingOutOfThirdPartyInSettingsCausesFailure {

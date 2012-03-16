@@ -58,6 +58,12 @@
     return thirdParty_;
 }
 
+- (void)willSucceed {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithBool:NO] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+    [defaults synchronize];
+}
+
 - (SocializeFacebookAuthHandler*)facebookAuthHandler {
     if (facebookAuthHandler_ == nil) {
         facebookAuthHandler_ = [[SocializeFacebookAuthHandler sharedFacebookAuthHandler] retain];

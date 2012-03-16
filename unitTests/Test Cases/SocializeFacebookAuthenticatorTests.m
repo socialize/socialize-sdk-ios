@@ -9,6 +9,8 @@
 #import "SocializeFacebookAuthenticatorTests.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeFacebookAuthHandler.h"
+#import "SocializeCommonDefinitions.h"
+#import "SocializePrivateDefinitions.h"
 
 @implementation SocializeFacebookAuthenticatorTests
 @synthesize facebookAuthenticator = facebookAuthenticator_;
@@ -118,7 +120,17 @@
     [self suceedSocializeAuthentication];
 }
 
+- (BOOL)autopostStatus {
+    return ![[[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
+}
+
+- (void)setAutopostStatus:(BOOL)status {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!status] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
+}
+
 - (void)testSuccessfulInteractiveLogin {
+    [self setAutopostStatus:NO];
+    
     [self succeedToSettings];
     
     // Save settings
@@ -126,6 +138,8 @@
 
     // Expect success
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
+    
+    GHAssertTrue([self autopostStatus], @"Status bad");
 }
 
 - (void)testLoggingOutOfThirdPartyInSettingsCausesFailure {

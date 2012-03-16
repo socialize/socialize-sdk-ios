@@ -59,6 +59,12 @@
     return [SocializeThirdPartyTwitter class];
 }
 
+- (void)willSucceed {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithBool:NO] forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
+    [defaults synchronize];
+}
+
 - (void)cancelAllCallbacks {
     [twitterAuthViewController_ setDelegate:nil];
     [super cancelAllCallbacks];
