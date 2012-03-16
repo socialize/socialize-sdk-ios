@@ -114,12 +114,17 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 - (void)authenticateWithFacebook {
-    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:nil
+    SocializeFacebookAuthOptions *options = [SocializeFacebookAuthOptions options];
+    options.doNotPromptForPermission = YES;
+
+    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:options
                                                                display:self
                                                                success:^{
                                                                    [self authenticationComplete];
                                                                } failure:^(NSError *error) {
-                                                                   [self failWithError:error];
+                                                                   if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
+                                                                       [self failWithError:error];
+                                                                   }
                                                                }];
 }
 
@@ -134,12 +139,17 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 - (void)authenticateWithTwitter {
-    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:nil
+    SocializeTwitterAuthOptions *options = [SocializeTwitterAuthOptions options];
+    options.doNotPromptForPermission = YES;
+
+    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options
                                                              display:self
                                                              success:^{
                                                                  [self authenticationComplete];
                                                              } failure:^(NSError *error) {
-                                                                 [self failWithError:error];
+                                                                 if (![error isSocializeErrorWithCode:SocializeErrorTwitterCancelledByUser]) {
+                                                                     [self failWithError:error];
+                                                                 }
                                                              }];
 }
 
