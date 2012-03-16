@@ -30,6 +30,8 @@ v1.5.2
 
 [bug] A twitter auth failure case should show retry dialog [ ]
 
+[bug] Default title as key for entity loader button is ugly
+
 v1.5.1
 ------
 [bug] Logging into third party from profile now shows profile on top of profile [ ]
