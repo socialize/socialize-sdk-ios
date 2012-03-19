@@ -195,34 +195,4 @@ BOOL isAuthenticatedWithFacebook = YES;
     [mockTableView verify];
 }
 
-- (void)testDidAuthenticate {
-    id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeUser)];
-    [[[self.mockSocialize stub] andReturn:mockUser] authenticatedUser];
-    
-    [[[self.mockSocialize expect] andReturnBool:YES] isAuthenticatedWithThirdParty]; 
-    //create and set the mock navigation controller
-    id mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];
-    [[mockNavigationController expect] pushViewController:[OCMArg any] animated:YES];
-    [[[self.partialMockAuthViewController expect] andReturn:mockNavigationController] navigationController];
-     
-    //execute the method that needs to be tested
-    [self.authViewController didAuthenticate:mockUser];
-    
-     //verify mocks and responses
-    [mockNavigationController verify];
-    NSAssert( self.authViewController.user == mockUser, @"the user object was not set after auth");
-}
-
-- (void)testProfileViewDidFinish {
-    self.authViewController.user = [OCMockObject mockForProtocol:@protocol(SocializeUser)];   
-    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewControllerDelegate)];
-    [[[mockDelegate stub] andReturn:[NSNumber numberWithBool:TRUE]] respondsToSelector:@selector(socializeAuthViewController:didAuthenticate:)];
-    [[mockDelegate expect] socializeAuthViewController:self.authViewController didAuthenticate:self.authViewController.user];
-    self.authViewController.delegate = mockDelegate;
-    [self.authViewController profileViewDidFinish];
-    
-    //verify mocks to make sure all is ok
-    [mockDelegate verify];
-
-}
 @end

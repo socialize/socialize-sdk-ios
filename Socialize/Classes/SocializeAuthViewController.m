@@ -25,7 +25,6 @@ static NSString *const kAuthTypeRowAction = @"kAuthTypeRowAction";
 @interface  SocializeAuthViewController()
 -(SocializeAuthTableViewCell *)getAuthorizeTableViewCell;
 -(SocializeAuthInfoTableViewCell*)getAuthorizeInfoTableViewCell;
--(void)profileViewDidFinish;
 -(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass;
 -(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName;
 @property (nonatomic, retain) id<SocializeAuthViewControllerDelegate> delegate;
@@ -107,6 +106,11 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     [self dismissModalViewControllerAnimated:YES];
 }
 
+// Dismiss any SocializeAction controllers non-animated
+- (void)socializeObject:(id)object requiresDismissOfViewController:(UIViewController *)controller {
+    [self dismissModalViewControllerAnimated:NO];
+}
+
 - (NSDictionary*)authTypeRowForText:(NSString*)text imageName:(NSString*)imageName {
     return [NSDictionary dictionaryWithObjectsAndKeys:
             text, kAuthTypeRowText,
@@ -129,12 +133,9 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 - (void)authenticationComplete {
-    [self stopLoading];
     if ( [self.socialize isAuthenticatedWithThirdParty]) {
+        [self finish];
         self.user = [self.socialize authenticatedUser];
-        SocializeProfileEditViewController *profileEdit = [SocializeProfileEditViewController profileEditViewController];
-        profileEdit.delegate = self;
-        [self.navigationController pushViewController:profileEdit animated:YES];
     }
 }
 
@@ -229,20 +230,14 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     return [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil];
 }
     
-- (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
-    [self profileViewDidFinish];        
-}
+- (void)finish {
+    // Dismiss self
+    [self dismissModalViewControllerAnimated:YES];
 
-- (void)profileEditViewController:(SocializeProfileEditViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
-    [self profileViewDidFinish];            
-}
-
-- (void)profileViewDidFinish {
     SEL didAuthSelector = @selector(socializeAuthViewController:didAuthenticate:);
     if ([self.delegate respondsToSelector:didAuthSelector] ) {
         [self.delegate socializeAuthViewController:self didAuthenticate:self.user];
     }
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 // This is only called when finishing the Facebook flow (not twitter)
