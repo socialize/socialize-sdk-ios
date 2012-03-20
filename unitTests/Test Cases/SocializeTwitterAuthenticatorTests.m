@@ -128,29 +128,29 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!status] forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
 }
 
-- (void)testSuccessfulInteractiveLogin {
-    [self setAutopostStatus:NO];
-    
-    [self succeedToSettings];
-    
-    // Save settings
-    [self expectSettingsAndSave];
-    
-    // Expect success
-    [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
-    
-    GHAssertTrue([self autopostStatus], @"Status bad");
-}
+//- (void)testSuccessfulInteractiveLogin {
+//    [self setAutopostStatus:NO];
+//    
+//    [self succeedToSettings];
+//    
+//    // Save settings
+//    [self expectSettingsAndSave];
+//    
+//    // Expect success
+//    [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
+//    
+//    GHAssertTrue([self autopostStatus], @"Status bad");
+//}
 
-- (void)testLoggingOutOfThirdPartyInSettingsCausesFailure {
-    [self succeedToSettings];
-    
-    // Save settings
-    [self expectSettingsAndLogout];
-    
-    // Expect success
-    [self executeActionAndWaitForStatus:kGHUnitWaitStatusFailure fromTest:_cmd];
-}
+//- (void)testLoggingOutOfThirdPartyInSettingsCausesFailure {
+//    [self succeedToSettings];
+//    
+//    // Save settings
+//    [self expectSettingsAndLogout];
+//    
+//    // Expect success
+//    [self executeActionAndWaitForStatus:kGHUnitWaitStatusFailure fromTest:_cmd];
+//}
 
 
      

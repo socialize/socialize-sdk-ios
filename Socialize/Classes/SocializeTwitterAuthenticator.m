@@ -59,6 +59,12 @@
     return [SocializeThirdPartyTwitter class];
 }
 
+- (void)showSettings {
+    // Temporary hotfix for iOS 4.2 and earlier
+    UINavigationController *settings = [self createSettings];
+    [self.twitterAuthViewController presentModalViewController:settings animated:YES];
+}
+
 - (void)willSucceed {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[NSNumber numberWithBool:NO] forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
@@ -97,7 +103,6 @@
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
     if (baseViewController == self.twitterAuthViewController) {
         /* The SocializeTwitterAuthViewController flow was cancelled by the user */
-        [self.displayProxy dismissModalViewController:self.twitterAuthViewController];
 
         NSError *error = [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser];
         [self failWithError:error];
@@ -109,7 +114,6 @@
 - (void)baseViewControllerDidFinish:(SocializeBaseViewController *)baseViewController {
     if (baseViewController == self.twitterAuthViewController) {
         /* The SocializeTwitterAuthViewController flow was completed successfully */
-        [self.displayProxy dismissModalViewController:self.twitterAuthViewController];
 
         [self succeedInteractiveLogin];
     }

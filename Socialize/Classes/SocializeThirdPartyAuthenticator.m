@@ -93,11 +93,16 @@
     [self finishWithSettings];
 }
 
-- (void)showSettings {
+- (UINavigationController*)createSettings {
     SocializeProfileEditViewController *settings = [[[SocializeProfileEditViewController alloc] init] autorelease];
     settings.delegate = self;
-    UINavigationController *nav = [settings wrappingSocializeNavigationController];
-    [self.displayProxy presentModalViewController:nav];
+    UINavigationController *nav = [settings wrappingSocializeNavigationController];    
+    return nav;
+}
+
+- (void)showSettings {
+    UINavigationController *settings = [self createSettings];
+    [self.displayProxy presentModalViewController:settings];
 }
 
 - (void)willSucceed {}

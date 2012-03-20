@@ -20,6 +20,8 @@
 - (void)tryToFinishAuthenticating;
 - (void)succeedInteractiveLogin;
 - (void)willSucceed;
+- (UINavigationController*)createSettings;
+- (void)showSettings;
 
 @property (nonatomic, retain) SocializeAuthOptions *options;
 @property (nonatomic, assign) Class<SocializeThirdParty> thirdParty;
