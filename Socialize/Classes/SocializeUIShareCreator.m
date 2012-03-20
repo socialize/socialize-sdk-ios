@@ -310,9 +310,6 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
         options = [SocializeTwitterAuthOptions options];
     }
     
-    // Temporary fix to avoid a double modal transition for v1.5.3 (settings dismiss, composer show)
-    options.doNotShowProfile = YES;
-    
     [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options
                                                         displayProxy:self.displayProxy
                                                              success:^{

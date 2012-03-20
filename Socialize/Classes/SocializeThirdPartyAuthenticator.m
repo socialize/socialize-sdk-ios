@@ -133,10 +133,12 @@
         return;
     }
     
-    if (!self.displayedSettings && !self.options.doNotShowProfile) {
-        [self showSettings];
-        return;
-    }
+// Temporary fix to avoid a double modal transition for v1.5.3 (settings dismiss, composer show)
+    
+//    if (!self.displayedSettings && !self.options.doNotShowProfile) {
+//        [self showSettings];
+//        return;
+//    }
     
     if (![self.thirdParty isLinkedToSocialize]) {
         // For example, maybe the user immediately logged out in settings
