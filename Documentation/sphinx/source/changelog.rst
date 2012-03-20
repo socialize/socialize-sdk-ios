@@ -4,6 +4,16 @@
 Changelog
 =============================================
 
+v1.5.3
+------
+[bug] Fix double display of settings after auth controller [ ]
+
+[bug] Fix modal transition crash on iOS 4.2 and earlier [ ]
+
+[bug] Socialize app link on facebook wall incorrect [ ]
+
+[bug] ActionBar Share via twitter / fb would not show text composer on first run [ ]
+
 v1.5.2
 ------
 [bug] iOS 4.3 crashes at end of twitter authentication [ ]
