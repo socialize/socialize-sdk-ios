@@ -59,12 +59,6 @@
     return [SocializeThirdPartyTwitter class];
 }
 
-- (void)showSettings {
-    // Temporary hotfix for iOS 4.2 and earlier
-    UINavigationController *settings = [self createSettings];
-    [self.twitterAuthViewController presentModalViewController:settings animated:YES];
-}
-
 - (void)willSucceed {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[NSNumber numberWithBool:NO] forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
