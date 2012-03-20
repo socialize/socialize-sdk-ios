@@ -305,7 +305,15 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
 }
 
 - (void)authenticateViaTwitter {
-    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:self.options.twitterAuthOptions
+    SocializeTwitterAuthOptions *options = self.options.twitterAuthOptions;
+    if (options == nil) {
+        options = [SocializeTwitterAuthOptions options];
+    }
+    
+    // Temporary fix to avoid a double modal transition for v1.5.3 (settings dismiss, composer show)
+    options.doNotShowProfile = YES;
+    
+    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options
                                                         displayProxy:self.displayProxy
                                                              success:^{
                                                                  [self tryToFinishCreatingShare];
@@ -319,7 +327,15 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
 }
 
 - (void)authenticateViaFacebook {
-    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:self.options.facebookAuthOptions
+    SocializeFacebookAuthOptions *options = self.options.facebookAuthOptions;
+    if (options == nil) {
+        options = [SocializeFacebookAuthOptions options];
+    }
+    
+    // Temporary fix to avoid a double modal transition for v1.5.3 (settings dismiss, composer show)
+    options.doNotShowProfile = YES;
+
+    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:options
                                                           displayProxy:self.displayProxy
                                                                success:^{
                                                                    [self tryToFinishCreatingShare];
