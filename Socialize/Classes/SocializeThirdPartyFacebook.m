@@ -98,7 +98,19 @@
     [[defaults objectForKey:kSocializeFacebookAuthExpirationDate] timeIntervalSinceNow] > 0;
 }
 
++ (void)removeFacebookCookies {
+    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray* facebookCookies = [cookies cookiesForURL:
+                                [NSURL URLWithString:@"http://login.facebook.com"]];
+    
+    for (NSHTTPCookie* cookie in facebookCookies) {
+        [cookies deleteCookie:cookie];
+    }
+}
+
 + (void)removeLocalCredentials {
+    [self removeFacebookCookies];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:kSocializeFacebookAuthAccessToken];
     [defaults removeObjectForKey:kSocializeFacebookAuthExpirationDate];

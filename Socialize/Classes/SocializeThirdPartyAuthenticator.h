@@ -20,6 +20,7 @@
 - (void)tryToFinishAuthenticating;
 - (void)succeedInteractiveLogin;
 - (void)willSucceed;
+- (BOOL)permissionDialogNotPossible;
 
 @property (nonatomic, retain) SocializeAuthOptions *options;
 @property (nonatomic, assign) Class<SocializeThirdParty> thirdParty;

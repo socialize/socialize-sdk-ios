@@ -105,6 +105,10 @@
     [self.displayProxy presentModalViewController:settings];
 }
 
+- (BOOL)permissionDialogNotPossible {
+    return NO;
+}
+
 - (void)willSucceed {}
 
 - (void)tryToFinishAuthenticating {
@@ -115,7 +119,7 @@
     }
     
     // Show dialog, allow user abort if desired
-    if (!self.authDialogAccepted && ![self.options doNotPromptForPermission]) {
+    if (!self.authDialogAccepted && ![self.options doNotPromptForPermission] && ![self permissionDialogNotPossible]) {
         [self showLoginDialog];
         return;
     }

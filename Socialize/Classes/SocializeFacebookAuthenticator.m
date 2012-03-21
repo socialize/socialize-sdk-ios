@@ -49,6 +49,15 @@
     [SocializeAction executeAction:auth];
 }
 
+- (BOOL)permissionDialogNotPossible {
+    // UIAlertView transition breaks an immediately following facebook internal modal controller display
+    // Internal modal is shown only for devices that will fail to open safari urls, which currently
+    // is only known to be low-memory devices on iOS 4.
+    // Unfortunately, canOpenURL: will return YES, but openURL: will in fact fail for this particular case
+    // However, devices that suffer from this problem can not make it past 4.3
+    double systemVersion = [[[UIDevice currentDevice] systemVersion] doubleValue];
+    return systemVersion < 4.3;
+}
 
 - (Class)thirdParty {
     if (thirdParty_ == nil) {
