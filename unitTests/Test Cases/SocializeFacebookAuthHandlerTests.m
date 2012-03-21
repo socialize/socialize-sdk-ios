@@ -96,29 +96,6 @@
     [self attemptAuthenticationAndWaitForStatus:kGHUnitWaitStatusFailure];
 }
 
-- (void)testSecondAuthAttemptCausesErrorButStillRetries {
-    
-    [self ignoreFacebookAuthentication];
-    [self attemptAuthenticationWithSuccess:^(NSString *accessToken, NSDate *expirationDate) {
-        GHAssertTrue(NO, @"should not be called");
-    } failure:^(NSError *error) {
-        GHAssertTrue([error isSocializeErrorWithCode:SocializeErrorFacebookAuthRestarted], @"unexpected error");
-        // This is the failure block that should be called after second attempt
-        [self notify:kGHUnitWaitStatusFailure];
-    }];
-    
-    [self prepare];
-    [self ignoreFacebookAuthentication];
-    [self attemptAuthenticationWithSuccess:^(NSString *accessToken, NSDate *expirationDate) {
-        GHAssertTrue(NO, @"should not be called");
-    } failure:^(NSError *error) {
-        GHAssertTrue(NO, @"should not be called");
-    }];
-    
-    [self waitForStatus:kGHUnitWaitStatusFailure timeout:1.0];
-
-}
-
 - (void)testSharedHandler {
     SocializeFacebookAuthHandler *handler = [SocializeFacebookAuthHandler sharedFacebookAuthHandler];
     GHAssertNotNil(handler, @"");

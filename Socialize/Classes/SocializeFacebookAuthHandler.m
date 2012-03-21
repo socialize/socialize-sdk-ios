@@ -52,12 +52,6 @@ SYNTH_CLASS_GETTER(SocializeFacebook, facebookClass)
                       success:(void(^)())success
                       failure:(void(^)(NSError*))failure {
     
-    if (self.authenticating) {
-        // Authentication restarted before completion
-        NSError *error = [NSError defaultSocializeErrorForCode:SocializeErrorFacebookAuthRestarted];
-        [self failWithError:error];
-    }
-    
     self.authenticating = YES;
     self.facebook = [[[self.facebookClass alloc] initWithAppId:appId] autorelease];
     self.permissions = permissions;
