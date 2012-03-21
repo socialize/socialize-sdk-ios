@@ -73,7 +73,6 @@
 }
 
 - (void)attemptInteractiveLogin {
-    [self.displayProxy startLoading];
     NSString *facebookAppId = [SocializeThirdPartyFacebook facebookAppId];
     NSString *urlSchemeSuffix = [SocializeThirdPartyFacebook facebookUrlSchemeSuffix];
     
