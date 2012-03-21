@@ -21,6 +21,7 @@
 
 @synthesize thirdParties = _thirdParties;
 @synthesize thirdPartiesInfoRequest = _thirdPartiesInfoRequest;
+@synthesize propagationInfoResponse = _propagationInfoResponse;
 
 -(void)dealloc
 {
@@ -32,6 +33,7 @@
     [_date release];
     [_thirdParties release];
     [_thirdPartiesInfoRequest release];
+    [_propagationInfoResponse release];
     [super dealloc];
 }
 

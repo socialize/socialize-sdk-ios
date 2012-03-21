@@ -27,7 +27,7 @@
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/share_single_response.json"];
     NSDictionary * JSONDictionaryToParse =(NSDictionary *)[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
-    id mockShare = [OCMockObject mockForProtocol:@protocol(SocializeShare)];
+    id mockShare = [OCMockObject niceMockForProtocol:@protocol(SocializeShare)];
     
     [[mockShare expect] setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
     [[mockShare expect] setLat:((NSNumber*)[JSONDictionaryToParse objectForKey:@"lat"])];

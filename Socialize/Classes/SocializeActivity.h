@@ -110,6 +110,17 @@
  */
 -(void)setThirdPartiesInfoRequest:(NSArray*)setThirdPartiesInfoRequest;
 
+/**
+ Third party propagation info request targets
+ */
+-(NSDictionary *)propagationInfoResponse;
+
+/**
+ Set Propagation Info Response
+ @param propagationInfoResponse
+ */
+-(void)setPropagationInfoResponse:(NSArray*)propagationInfoResponse;
+
 @end
 
 /**Private implementation of <SocializeActivity> protocol*/
@@ -144,5 +155,8 @@
 
 /* Get propagation info for these third parties */
 @property (nonatomic, copy) NSArray *thirdPartiesInfoRequest;
+
+/* Propagation info response dictionary */
+@property (nonatomic, copy) NSArray *propagationInfoResponse;
 
 @end

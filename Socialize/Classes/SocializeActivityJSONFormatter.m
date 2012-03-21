@@ -63,6 +63,8 @@
     [activity setApplication:[_factory createObjectFromDictionary: [JSONDictionary valueForKey:@"application"] forProtocol:@protocol(SocializeApplication)]];
     
     [activity setUser:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"user"] forProtocol:@protocol(SocializeUser)]];
+    
+    [activity setPropagationInfoResponse:[JSONDictionary valueForKey:@"propagation_info_response"]];
 }
 
 - (void)doToDictionary:(NSMutableDictionary *)dictionaryRepresentation fromObject:(id<SocializeObject>)fromObject {
