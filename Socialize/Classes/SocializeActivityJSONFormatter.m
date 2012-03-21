@@ -89,6 +89,13 @@
         [dictionaryRepresentation setObject:propagation forKey:@"propagation"];
     }
 
+    if ([activity thirdPartiesInfoRequest] != nil) {
+        NSMutableDictionary *propagationInfo = [NSMutableDictionary dictionary];
+        // Add twitter propagator
+        [propagationInfo setObject:[activity thirdPartiesInfoRequest] forKey:@"third_parties"];
+        [dictionaryRepresentation setObject:propagationInfo forKey:@"propagation_info_request"];
+    }
+
     [super doToDictionary:dictionaryRepresentation fromObject:fromObject];
 }
 

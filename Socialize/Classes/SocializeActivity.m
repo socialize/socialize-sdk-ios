@@ -20,6 +20,7 @@
 @synthesize  date = _date;
 
 @synthesize thirdParties = _thirdParties;
+@synthesize thirdPartiesInfoRequest = _thirdPartiesInfoRequest;
 
 -(void)dealloc
 {
@@ -30,6 +31,7 @@
     [_lng release];
     [_date release];
     [_thirdParties release];
+    [_thirdPartiesInfoRequest release];
     [super dealloc];
 }
 

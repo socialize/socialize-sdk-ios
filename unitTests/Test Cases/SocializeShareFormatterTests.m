@@ -62,6 +62,7 @@
     [share setMedium:SocializeShareMediumTwitter];
     [share setText:testText];
     [share setThirdParties:[NSArray arrayWithObject:@"twitter"]];
+    [share setThirdPartiesInfoRequest:[NSArray arrayWithObject:@"facebook"]];
     
     NSMutableDictionary *testDict = [NSMutableDictionary dictionary];
     SocializeShareJSONFormatter *entityFormatter = [[[SocializeShareJSONFormatter alloc] initWithFactory:_factory] autorelease];
@@ -72,12 +73,14 @@
     NSString *dictName = [[testDict objectForKey:@"entity"] objectForKey:@"name"];
     NSNumber *dictMedium = [testDict objectForKey:@"medium"];
     NSArray *dictThirdParties = [[testDict objectForKey:@"propagation"] objectForKey:@"third_parties"];
+    NSArray *dictThirdPartiesInfo = [[testDict objectForKey:@"propagation_info_request"] objectForKey:@"third_parties"];
     NSNumber *dictText = [testDict objectForKey:@"text"];
     GHAssertEqualStrings(dictKey, testKey, nil);
     GHAssertEqualStrings(dictName, testName, nil);
     GHAssertEquals([dictMedium integerValue], SocializeShareMediumTwitter, nil);
     GHAssertEqualStrings(dictKey, testKey, nil);
     GHAssertEqualObjects(dictThirdParties, [NSArray arrayWithObject:@"twitter"], nil);
+    GHAssertEqualObjects(dictThirdPartiesInfo, [NSArray arrayWithObject:@"facebook"], nil);
     GHAssertEqualStrings(dictText, testText, nil);
 }
 
