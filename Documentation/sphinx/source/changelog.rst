@@ -4,6 +4,10 @@
 Changelog
 =============================================
 
+v1.5.4
+------
+[bug] Fix a bug where consumer key could be unset before using Socialize UI or when doing manual third party link [ ]
+
 v1.5.3
 ------
 [bug] Fix double display of settings after auth controller [ ]
