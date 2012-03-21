@@ -134,7 +134,7 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
     // Build an OARequest with our twitter app info
     OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:self.consumerKey secret:self.consumerSecret] autorelease];
     NSURL *requestURL = [NSURL URLWithString:urlString];
-    OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:requestURL consumer:consumer token:token realm:nil signatureProvider:nil];
+    OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:requestURL consumer:consumer token:token realm:nil signatureProvider:nil] autorelease];
     return request;
 }
 
@@ -168,8 +168,8 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 
 - (OAToken*)tokenForResponseBody:(NSData*)data {
     // Build a new token from a response
-    NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    OAToken *token = [[OAToken alloc] initWithHTTPResponseBody:responseBody];
+    NSString *responseBody = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    OAToken *token = [[[OAToken alloc] initWithHTTPResponseBody:responseBody] autorelease];
     
     return token;
 }
