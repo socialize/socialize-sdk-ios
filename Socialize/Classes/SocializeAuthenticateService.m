@@ -62,8 +62,8 @@
 -(void)persistConsumerInfo:(NSString*)apiKey andApiSecret:(NSString*)apiSecret{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (userDefaults){
-        [userDefaults setObject:apiKey forKey:kSOCIALIZE_API_KEY_KEY];
-        [userDefaults setObject:apiSecret forKey:kSOCIALIZE_API_SECRET_KEY];
+        [userDefaults setObject:apiKey forKey:kSocializeConsumerKey];
+        [userDefaults setObject:apiSecret forKey:kSocializeConsumerSecret];
         [userDefaults synchronize];
     }
 }

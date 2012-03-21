@@ -97,12 +97,12 @@ tokenRequest = _tokenRequest;
 
 + (NSString*)consumerKey{
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-    return [userDefaults valueForKey:kSOCIALIZE_API_KEY_KEY];
+    return [userDefaults valueForKey:kSocializeConsumerKey];
 }
 
 + (NSString*)consumerSecret{
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-    return [userDefaults valueForKey:kSOCIALIZE_API_SECRET_KEY];
+    return [userDefaults valueForKey:kSocializeConsumerSecret];
 }
 
 - (NSString*)baseURL {

@@ -35,6 +35,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
+    [Socialize storeConsumerKey:@"abc123"];
+    NSString *consumerKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"socialize_api_key"];
+    NSLog(@"Consumer key is %@", consumerKey);
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];  
 
     UIViewController* rootViewController = nil;

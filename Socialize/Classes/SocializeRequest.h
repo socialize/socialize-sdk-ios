@@ -85,6 +85,8 @@ typedef enum {
                   params:(id)params;
 
 + (NSString *)userAgentString;
++ (NSString*)consumerKey;
++ (NSString*)consumerSecret;
 
 - (void) connect;
 - (void)configureURLRequest;

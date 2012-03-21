@@ -32,6 +32,7 @@
 #import "OAServiceTicket.h"
 #import <OCMock/OCMock.h>
 #import "StringHelper.h"
+#import "_Socialize.h"
 
 @implementation SocializeRequestTests
 @synthesize expectedError = _expectedError;
@@ -251,6 +252,29 @@
                                                    encoding:NSUTF8StringEncoding];
     NSLog(@"responseBody %@", responseBody);
     [self notify:kGHUnitWaitStatusSuccess];
+}
+
+static NSString *UUIDString() {
+    CFUUIDRef	uuidObj = CFUUIDCreate(nil);
+    NSString	*uuidString = (NSString*)CFUUIDCreateString(nil, uuidObj);
+    CFRelease(uuidObj);
+    return [uuidString autorelease];
+}
+
+- (void)testThatRequestUsesCorrectConsumerKeyAndSecretAfterChange {
+    NSString *testConsumerKey = UUIDString();
+    NSString *testConsumerSecret = UUIDString();
+    
+    [Socialize storeConsumerKey:testConsumerKey];
+    [Socialize storeConsumerSecret:testConsumerSecret];
+    
+    SocializeRequest* request = [SocializeRequest requestWithHttpMethod:@"" resourcePath:@"" expectedJSONFormat:SocializeDictionary params:nil];
+    [request configureURLRequest];
+    NSString *consumerKey = [SocializeRequest consumerKey];
+    NSString *consumerSecret = [SocializeRequest consumerSecret];
+    
+    GHAssertEqualStrings(consumerKey, testConsumerKey, @"Bad consumer key");
+    GHAssertEqualStrings(consumerSecret, testConsumerSecret, @"Bad consumer secret");
 }
 
 @end
