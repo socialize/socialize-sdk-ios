@@ -122,11 +122,30 @@
         // Currently only twitter is allowed in the third parties list
         [self.activity setThirdParties:[NSArray arrayWithObject:@"twitter"]];
     }
+    
+    if ([self shouldPostToFacebook]) {
+        [self.activity setThirdPartiesInfoRequest:[NSArray arrayWithObject:@"facebook"]];
+    }
+}
+
+- (NSString*)facebookEntityURLFromPropagationInfo {
+    NSDictionary *facebookPropagationInfo = [[self.activity propagationInfoResponse] objectForKey:@"facebook"];
+    NSString *entityURL = [facebookPropagationInfo objectForKey:@"entity_url"];
+
+    return entityURL;
+}
+
+- (NSString*)facebookApplicationURLFromPropagationInfo {
+    NSDictionary *facebookPropagationInfo = [[self.activity propagationInfoResponse] objectForKey:@"facebook"];
+    NSString *entityURL = [facebookPropagationInfo objectForKey:@"entity_url"];
+    
+    return entityURL;
 }
 
 - (SocializeFacebookWallPostOptions*)facebookWallPostOptions {
     SocializeFacebookWallPostOptions *options = [SocializeFacebookWallPostOptions options];
-    options.link = [NSString stringWithSocializeURLForApplication];
+    
+    options.link = [self facebookApplicationURLFromPropagationInfo];
     options.caption = [NSString stringWithSocializeAppDownloadPlug];
     options.name = [NSString stringWithTitleForSocializeEntity:self.activity.entity];
     options.message = [self facebookWallMessage];

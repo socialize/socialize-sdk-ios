@@ -24,6 +24,7 @@
 #import "SocializePreprocessorUtilities.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
+#import "SocializeShareCreator.h"
 
 @interface SocializeUIShareCreator ()
 - (void)showSMSComposer;
@@ -393,15 +394,15 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
     
     // Create on server
     if (!self.finishedServerCreate) {
-        [self.displayProxy startLoading];
-        
-        [self createShareOnSocializeServer];
-        return;
-    }
-
-    // Write to facebook wall
-    if (self.shareObject.medium == SocializeShareMediumFacebook && !self.postedToFacebookWall) {
-        [self postToFacebookWall];
+        [SocializeShareCreator createShare:self.shareObject
+                                   options:nil displayProxy:self.displayProxy
+                                   success:^(id<SocializeShare> share) {
+                                       self.finishedServerCreate = YES;
+                                       self.shareObject = share;
+                                       [self tryToFinishCreatingShare];
+                                   } failure:^(NSError *error) {
+                                       [self failWithError:error];
+                                   }];
         return;
     }
 

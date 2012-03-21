@@ -27,5 +27,8 @@
 - (void)failServerCreateWithError:(NSError*)error;
 
 - (NSString*)textForFacebook;
+- (NSString*)facebookEntityURLFromPropagationInfo;
+- (NSString*)facebookApplicationURLFromPropagationInfo;
+
 
 @end

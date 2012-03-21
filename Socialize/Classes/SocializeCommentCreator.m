@@ -33,8 +33,9 @@
 }
 
 - (NSString*)textForFacebook {
-    NSString *objectURL = [NSString stringWithSocializeURLForObject:self.comment.entity];
-    return [NSMutableString stringWithFormat:@"%@ \n\n %@", objectURL, self.comment.text];
+    NSString *entityURL = [self facebookEntityURLFromPropagationInfo];
+    
+    return [NSMutableString stringWithFormat:@"%@ \n\n %@", entityURL, self.comment.text];
 }
 
 - (void)createActivityOnSocializeServer {

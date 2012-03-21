@@ -84,6 +84,7 @@
 
 - (void)testSuccessfulShareOnFacebook {
     [self selectJustFacebookInOptions];
+    [[[self.mockShare stub] andReturnInteger:SocializeShareMediumFacebook] medium];
     
     [self succeedShareCreate];
     [self succeedFacebookWallPost];
