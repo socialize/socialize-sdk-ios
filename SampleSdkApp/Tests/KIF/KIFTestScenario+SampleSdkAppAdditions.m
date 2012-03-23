@@ -108,8 +108,8 @@
     [scenario addStep:[KIFTestStep stepToEnableValidFacebookSession]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Share via Twitter"]];
-    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Do you want to log in with Twitter?"]];
-    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Yes"]];
+//    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Do you want to log in with Twitter?"]];
+//    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Yes"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
     [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
