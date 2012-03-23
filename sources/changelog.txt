@@ -4,6 +4,14 @@
 Changelog
 =============================================
 
+v1.5.5
+------
+[bug] UI should not be blocked on manual return from fb auth [ facebook authentication]
+
+[bug] In-app modal facebook dialog should work (support certain devices that cannot open to safari/fb) [ facebook authentication ]
+
+[bug] Fix memory leaks [ memory ]
+
 v1.5.4
 ------
 [bug] Fix a bug where consumer key could be unset before using Socialize UI or when doing manual third party link [ ]
