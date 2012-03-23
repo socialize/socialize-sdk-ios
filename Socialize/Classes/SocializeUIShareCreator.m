@@ -310,6 +310,7 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
     if (options == nil) {
         options = [SocializeTwitterAuthOptions options];
     }
+    options.doNotPromptForPermission = YES;
     
     [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options
                                                         displayProxy:self.displayProxy

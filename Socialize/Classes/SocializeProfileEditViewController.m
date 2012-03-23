@@ -640,7 +640,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 - (void)authenticateViaTwitter {
     SocializeTwitterAuthOptions *options = [SocializeTwitterAuthOptions options];
     options.doNotShowProfile = YES;
-    
+    options.doNotPromptForPermission = YES;
+
     [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options
                                               display:self
                                               success:^{
