@@ -46,6 +46,7 @@
 @class SocializeFacebook;
 @class SocializeUIShareOptions;
 @class SocializeTwitterAuthOptions;
+@class SocializeEventService;
 
 extern NSString *const kSocializeDisableBrandingKey;
 
@@ -96,6 +97,8 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeDeviceTokenService    *deviceTokenService;
 /**Get access to the activity service via <SocializeSubscriptionService>.*/
 @property (nonatomic, retain) SocializeSubscriptionService *subscriptionService;
+/**Get access to the activity service via <SocializeEventsService>.*/
+@property (nonatomic, retain) SocializeEventService         *eventsService;
 /**Current delegate*/
 
 /**

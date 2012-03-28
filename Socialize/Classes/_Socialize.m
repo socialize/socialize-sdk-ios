@@ -32,6 +32,7 @@
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeFacebookAuthenticator.h"
+#import "SocializeEventService.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -98,6 +99,7 @@ NSString *const kSocializeFacebookStringForAPI = @"FaceBook";
 @synthesize shareService = _shareService;
 @synthesize deviceTokenService = _deviceTokenService;
 @synthesize subscriptionService = _subscriptionService;
+@synthesize eventsService = _eventsService;
 
 static Socialize *_sharedSocialize = nil;
 static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
@@ -131,6 +133,7 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
     [_shareService release]; _shareService = nil;
     [_deviceTokenService release]; _deviceTokenService = nil;
     [_subscriptionService release]; _subscriptionService = nil;
+    [_eventsService release]; _eventsService = nil;
     
     [super dealloc];
 }
@@ -152,6 +155,7 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
         _shareService = [[SocializeShareService  alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _deviceTokenService = [[SocializeDeviceTokenService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _subscriptionService = [[SocializeSubscriptionService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
+        _eventsService = [[SocializeEventService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
     }
     return self;
 }
@@ -638,6 +642,10 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
 
 - (void)getEntityWithId:(NSNumber*)entityId {
     [_entityService getEntityWithId:entityId];
+}
+
+- (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values {
+    [_eventsService trackEventWithBucket:bucket values:values];
 }
 
 @end

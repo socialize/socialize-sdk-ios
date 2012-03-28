@@ -8,6 +8,8 @@
 
 #import "SocializeNotificationHandlerTests.h"
 #import "SocializeActivityDetailsViewController.h"
+#import "_Socialize_private.h"
+#import "SocializeDirectEntityNotificationDisplayController.h"
 
 @interface SocializeNotificationHandler ()
 - (void)animatedDismissOfTopDisplayController;
@@ -19,6 +21,7 @@
 @synthesize notificationHandler = notificationHandler_;
 @synthesize origNotificationHandler = origNotificationHandler_;
 @synthesize mockDisplayWindow = mockDisplayWindow_;
+@synthesize mockSocialize = mockSocialize_;
 
 - (BOOL)shouldRunOnMainThread {
     return YES;
@@ -30,11 +33,18 @@
     
     self.mockDisplayWindow = [OCMockObject mockForClass:[UIWindow class]];
     self.notificationHandler.displayWindow = self.mockDisplayWindow;
+    
+    self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
+    [[self.mockSocialize stub] setDelegate:nil];
+    self.notificationHandler.socialize = self.mockSocialize;
 }
 
 - (void)tearDown {
+    [(id)self.notificationHandler verify];
     [self.mockDisplayWindow verify];
+    [self.mockSocialize verify];
     
+    self.mockSocialize = nil;
     self.origNotificationHandler = nil;
     self.notificationHandler = nil;
 }
@@ -105,6 +115,10 @@
     GHAssertEqualObjects(self.notificationHandler.displayControllers, expectedArray, @"Incorrect list of controllers");
 }
 
+- (void)expectEvent {
+    [[self.mockSocialize expect] trackEventWithBucket:OCMOCK_ANY values:OCMOCK_ANY];
+}
+
 - (void)testHandleNewCommentsSocializeNotification {
     
     NSNumber *testID = [NSNumber numberWithInteger:304899];
@@ -124,16 +138,18 @@
     [[(id)self.notificationHandler expect] addDisplayController:[OCMArg checkWithBlock:^BOOL(id controller) {
         return [controller isKindOfClass:[SocializeNewCommentsNotificationDisplayController class]];
     }]];
+    
+    [self expectEvent];
      
     [self.notificationHandler handleSocializeNotification:userInfo];
     
 }
 
-- (void)testHandleRichPushSocializeNotification {
+- (void)testHandleDirectURLSocializeNotification {
     
     NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                                    @"test title", @"title",
-                                   @"rich_push", @"notification_type",
+                                   @"developer_direct_url", @"notification_type",
                                    nil];
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
     
@@ -142,6 +158,27 @@
     [[(id)self.notificationHandler expect] addDisplayController:[OCMArg checkWithBlock:^BOOL(id controller) {
         return [controller isKindOfClass:[SocializeDirectURLNotificationDisplayController class]];
     }]];
+    
+    [self expectEvent];
+
+    [self.notificationHandler handleSocializeNotification:userInfo];
+}
+
+- (void)testHandleDirectEntitySocializeNotification {
+    
+    NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   @"test title", @"title",
+                                   @"developer_direct_entity", @"notification_type",
+                                   nil];
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+    
+    
+    // Expect add new comments controller
+    [[(id)self.notificationHandler expect] addDisplayController:[OCMArg checkWithBlock:^BOOL(id controller) {
+        return [controller isKindOfClass:[SocializeDirectEntityNotificationDisplayController class]];
+    }]];
+    
+    [self expectEvent];
     
     [self.notificationHandler handleSocializeNotification:userInfo];
 }

@@ -1598,6 +1598,12 @@
 		AAB427FA14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
 		AAB427FB14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
 		AABA1FC11522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AABA1FC01522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m */; };
+		AABA233D1523A17700B511FA /* SocializeEventService.h in Headers */ = {isa = PBXBuildFile; fileRef = AABA233B1523A17700B511FA /* SocializeEventService.h */; };
+		AABA233E1523A17700B511FA /* SocializeEventService.h in Headers */ = {isa = PBXBuildFile; fileRef = AABA233B1523A17700B511FA /* SocializeEventService.h */; };
+		AABA233F1523A17700B511FA /* SocializeEventService.m in Sources */ = {isa = PBXBuildFile; fileRef = AABA233C1523A17700B511FA /* SocializeEventService.m */; };
+		AABA23401523A17700B511FA /* SocializeEventService.m in Sources */ = {isa = PBXBuildFile; fileRef = AABA233C1523A17700B511FA /* SocializeEventService.m */; };
+		AABA23421523A3EB00B511FA /* _Socialize_private.h in Headers */ = {isa = PBXBuildFile; fileRef = AABA23411523A3EB00B511FA /* _Socialize_private.h */; };
+		AABA23431523A3EB00B511FA /* _Socialize_private.h in Headers */ = {isa = PBXBuildFile; fileRef = AABA23411523A3EB00B511FA /* _Socialize_private.h */; };
 		AABB7D941433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D8F1433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib */; };
 		AABB7D951433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */; };
 		AABB7D961433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */; };
@@ -2974,6 +2980,9 @@
 		AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNotificationToggleBubbleContentView.m; path = Classes/SocializeNotificationToggleBubbleContentView.m; sourceTree = "<group>"; };
 		AABA1FBF1522913C00B511FA /* SocializeRichPushNotificationDisplayControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRichPushNotificationDisplayControllerTests.h; path = "Test Cases/SocializeRichPushNotificationDisplayControllerTests.h"; sourceTree = "<group>"; };
 		AABA1FC01522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRichPushNotificationDisplayControllerTests.m; path = "Test Cases/SocializeRichPushNotificationDisplayControllerTests.m"; sourceTree = "<group>"; };
+		AABA233B1523A17700B511FA /* SocializeEventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEventService.h; path = Classes/SocializeEventService.h; sourceTree = "<group>"; };
+		AABA233C1523A17700B511FA /* SocializeEventService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeEventService.m; path = Classes/SocializeEventService.m; sourceTree = "<group>"; };
+		AABA23411523A3EB00B511FA /* _Socialize_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _Socialize_private.h; path = Classes/_Socialize_private.h; sourceTree = "<group>"; };
 		AABB7D8F1433F38B00D0FDF9 /* SocializeEditValueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeEditValueTableViewCell.xib; path = Resources/SocializeEditValueTableViewCell.xib; sourceTree = "<group>"; };
 		AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditTableViewCell.xib; path = Resources/SocializeProfileEditTableViewCell.xib; sourceTree = "<group>"; };
 		AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditTableViewImageCell.xib; path = Resources/SocializeProfileEditTableViewImageCell.xib; sourceTree = "<group>"; };
@@ -3423,6 +3432,7 @@
 				AA68733B14D1E56300970F77 /* SocializeVersion.h */,
 				5C21C0C21396BF8300CF2B9F /* _Socialize.h */,
 				5C21C0C31396BF8300CF2B9F /* _Socialize.m */,
+				AABA23411523A3EB00B511FA /* _Socialize_private.h */,
 				1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */,
 				167E11BE144325D2004E4C1B /* SocializePrivateDefinitions.h */,
 				5C6AAC62137C3F5500AF0219 /* Models */,
@@ -4531,6 +4541,8 @@
 				9A68EB5913AFFA3900E38356 /* SocializeAuthenticateService.m */,
 				AAB127D2149928ED009AF443 /* SocializeSubscriptionService.h */,
 				AAB127D3149928ED009AF443 /* SocializeSubscriptionService.m */,
+				AABA233B1523A17700B511FA /* SocializeEventService.h */,
+				AABA233C1523A17700B511FA /* SocializeEventService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -4996,6 +5008,8 @@
 				AA0F95E5150FE2490055770F /* SocializeUIDisplay.h in Headers */,
 				AA156AE21521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.h in Headers */,
 				AA156AE91521102400EB2D53 /* SocializeDummyViewController.h in Headers */,
+				AABA233E1523A17700B511FA /* SocializeEventService.h in Headers */,
+				AABA23431523A3EB00B511FA /* _Socialize_private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5145,6 +5159,8 @@
 				AA0F95E4150FE2490055770F /* SocializeUIDisplay.h in Headers */,
 				AA156AE11521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.h in Headers */,
 				AA156AE81521102400EB2D53 /* SocializeDummyViewController.h in Headers */,
+				AABA233D1523A17700B511FA /* SocializeEventService.h in Headers */,
+				AABA23421523A3EB00B511FA /* _Socialize_private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7037,6 +7053,7 @@
 				AA2D0893150AF5CC00D3C159 /* SocializeShareOptions.m in Sources */,
 				AA156AE31521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.m in Sources */,
 				AA156AEA1521102400EB2D53 /* SocializeDummyViewController.m in Sources */,
+				AABA233F1523A17700B511FA /* SocializeEventService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7431,6 +7448,7 @@
 				AA2D0894150AF5CC00D3C159 /* SocializeShareOptions.m in Sources */,
 				AA156AE41521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.m in Sources */,
 				AA156AEB1521102400EB2D53 /* SocializeDummyViewController.m in Sources */,
+				AABA23401523A17700B511FA /* SocializeEventService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
