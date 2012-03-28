@@ -2698,7 +2698,6 @@
 		AA156AE61521102400EB2D53 /* SocializeDummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDummyViewController.m; path = Classes/SocializeDummyViewController.m; sourceTree = "<group>"; };
 		AA156AEE1521105200EB2D53 /* SocializeDummyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeDummyViewController.xib; path = Resources/SocializeDummyViewController.xib; sourceTree = "<group>"; };
 		AA156AF11521109800EB2D53 /* socialize_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = socialize_logo.png; path = Resources/socialize_logo.png; sourceTree = "<group>"; };
-		AA156BE6152113A900EB2D53 /* SampleSdkApp copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SampleSdkApp copy2-Info.plist"; path = "/Users/griswold/ios/socialize-sdk-ios/SampleSdkApp copy2-Info.plist"; sourceTree = "<absolute>"; };
 		AA1C0E40150808490013F98B /* NSObject+ClassMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ClassMock.h"; sourceTree = "<group>"; };
 		AA1C0E41150808490013F98B /* NSObject+ClassMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ClassMock.m"; sourceTree = "<group>"; };
 		AA1F1AEE14AA9AE000B83792 /* PropertyHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PropertyHelpers.h; path = Classes/PropertyHelpers.h; sourceTree = "<group>"; };
@@ -3451,7 +3450,6 @@
 				5CC3DABF1378824800B11B78 /* Products */,
 				AA3326EA144CDA4A0033C7FA /* KIF.xcodeproj */,
 				AA863889144CA42C00CFA759 /* OCMock.xcodeproj */,
-				AA156BE6152113A900EB2D53 /* SampleSdkApp copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
