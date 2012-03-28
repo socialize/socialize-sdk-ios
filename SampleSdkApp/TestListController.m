@@ -52,7 +52,8 @@
                       @"Test Post a Share",
                       @"Test Edit User Profile",
                       @"Test New Comments Notification",
-                      @"Test Rich Push Notification",
+                      @"Test Direct URL Notification",
+                      @"Test Direct Entity Notification",
                       nil
                       ]retain];
 
@@ -307,8 +308,8 @@
             NSString *testURL = [self getValueWithPrompt:@"Enter a URL" defaultValue:@"http://www.npr.org/"];
             if ([testURL length] > 0) {
                 NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                               testURL, @"url",
-                                               @"rich_push", @"notification_type",
+                                               [NSArray arrayWithObject:testURL], @"url",
+                                               @"developer_direct_url", @"notification_type",
                                                nil];
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
                 
@@ -316,7 +317,22 @@
             }
             break;
         }
-            
+        case 17:
+        {
+            NSString *idString = [self getValueWithPrompt:@"Enter an ID" defaultValue:@"3102999"];
+            NSNumber *entityId = [NSNumber numberWithInteger:[idString integerValue]]; 
+            if ([entityId integerValue] > 0) {
+                NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                               @"developer_direct_entity", @"notification_type",
+                                               entityId, @"entity_id",
+                                               nil];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+                
+                [Socialize handleNotification:userInfo];
+            }
+            break;
+        }
+  
 
     }    
     [controller release];

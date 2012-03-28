@@ -58,7 +58,7 @@
                                    @"comment", @"activity_type",
                                    @"blah", @"notification_type",
                                    nil];
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize_badname"];
     
     BOOL isValid = [SocializeNotificationHandler isSocializeNotification:userInfo];
     GHAssertFalse(isValid, @"should be valid");
@@ -91,6 +91,9 @@
     
     // And it should become a subview of the display window
     [[self.mockDisplayWindow expect] addSubview:mockView];
+    
+    // View added message should be sent
+    [[mockNotificationDisplayController expect] viewWasAdded];
     
     [self.notificationHandler addDisplayController:mockNotificationDisplayController];
     

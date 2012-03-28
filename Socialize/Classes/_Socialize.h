@@ -760,4 +760,23 @@ otherwise you will get a failure.
 
 -(BOOL)isAuthenticatedWithAuthType:(NSString*)authType;
 
+/**
+ Get single entity by id
+ 
+ @param entityId The id of the entity (SocializeObject's objectID)
+ */
+- (void)getEntityWithId:(NSNumber*)entityId;
+
+/**
+ Get multiple entities by id
+ 
+ @param entityId The id of the entity (SocializeObject's objectID)
+ */
+- (void)getEntitiesWithIds:(NSArray*)entityIds;
+
+/**
+ Check if the app can actually load this entity
+ */
++ (BOOL)canLoadEntity:(id<SocializeEntity>)entity;
+
 @end

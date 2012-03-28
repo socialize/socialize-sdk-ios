@@ -56,6 +56,8 @@ NSString *const kSocializeConsumerSecret = SOCIALIZE_API_SECRET;
 
 NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAuthenticatedUserDidChangeNotification";
 
+NSString *const SocializeEntityLoaderDidFinishNotification = @"SocializeEntityLoaderDidFinishNotification";
+
 NSString *const SocializeCLAuthorizationStatusDidChangeNotification = @"SocializeLocationManagerAuthorizationStatusDidChangeNotification";
 NSString *const kSocializeCLAuthorizationStatusKey = @"kSocializeCLAuthorizationStatusKey";
 NSString *const kSocializeShouldShareLocationKey = @"kSocializeShouldShareLocationKey";
@@ -170,6 +172,14 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 
 +(SocializeCanLoadEntityBlock)canLoadEntityBlock {
     return _sharedCanLoadEntityBlock;
+}
+
++ (BOOL)canLoadEntity:(id<SocializeEntity>)entity {
+    BOOL haveEntityLoader = [Socialize entityLoaderBlock] != nil;
+    BOOL entityLoadRejected = [self canLoadEntityBlock] != nil && ![self canLoadEntityBlock](entity);
+    BOOL canLoadEntity = haveEntityLoader && !entityLoadRejected;
+    
+    return canLoadEntity;
 }
 
 +(void)storeSocializeApiKey:(NSString*) key andSecret: (NSString*)secret;
@@ -620,6 +630,14 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
 
 + (void)createShareWithOptions:(SocializeUIShareOptions*)options display:(id)display success:(void(^)())success failure:(void(^)(NSError *error))failure {
     [SocializeUIShareCreator createShareWithOptions:options display:display success:success failure:failure];
+}
+
+- (void)getEntitiesWithIds:(NSArray*)entityIds {
+    [_entityService getEntitiesWithIds:entityIds];
+}
+
+- (void)getEntityWithId:(NSNumber*)entityId {
+    [_entityService getEntityWithId:entityId];
 }
 
 @end
