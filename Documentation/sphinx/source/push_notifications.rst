@@ -168,8 +168,11 @@ on the simulator as well.
 Troubleshooting Notifications
 ----------------------------------------
 
-If you are not receiving notifications, there are some simple ways to troubleshoot problems.  We also have a vibrant developer community and support 
-here: http://support.getsocialize.com support who can help Additionally here some common errors you might encounter
+If you are not receiving notifications, there are some simple ways to
+troubleshoot problems.  We also have a vibrant developer community and support
+here: http://support.getsocialize.com support who can help.
+
+Additionally, here some common errors you might encounter:
 
 
 I Don't See the Notifications Button
@@ -202,6 +205,19 @@ other versions of provisioning file which exist on your phone.
 
 Everything looks ok, but I am still not receiving notifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can try sending a push directly to your device. You can open the device logs from Xcode
+by attaching your device, selecting Window -> Organizer, choosing your device, and selecting
+"Console". The message is 
+
+.. raw:: html
+
+  <pre>Mar 28 12:16:57 AppName[3354] <Warning>: Socialize: device token FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF successfully registered with server</pre>
+
+You can then send a notification from the web interface, in the "View Debugger" section of the
+web interface.
+
+.. image:: images/send_to_device.png
 
 One possibility is that Socialize has received a development push token.
 Development tokens will currently prevent pushes being sent to real devices.
