@@ -124,7 +124,7 @@ static SocializeNotificationHandler *sharedNotificationHandler;
         [self addDisplayController:display];
     } else if ([notificationType isEqualToString:@"developer_direct_url"]) {
         NSLog(@"Handling direct url");
-        SocializeRichPushNotificationDisplayController *display = [[[SocializeRichPushNotificationDisplayController alloc] initWithUserInfo:userInfo] autorelease];
+        SocializeDirectURLNotificationDisplayController *display = [[[SocializeDirectURLNotificationDisplayController alloc] initWithUserInfo:userInfo] autorelease];
         [self addDisplayController:display];
     } else if ([notificationType isEqualToString:@"developer_direct_entity"]) {
         SocializeDirectEntityNotificationDisplayController *display = [[[SocializeDirectEntityNotificationDisplayController alloc] initWithUserInfo:userInfo] autorelease];

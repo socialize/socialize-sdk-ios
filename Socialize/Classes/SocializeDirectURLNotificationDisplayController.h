@@ -10,7 +10,7 @@
 #import "SocializeRichPushNotificationViewController.h"
 #import "SocializeBaseViewControllerDelegate.h"
 
-@interface SocializeRichPushNotificationDisplayController : SocializeNotificationDisplayController <SocializeBaseViewControllerDelegate>
+@interface SocializeDirectURLNotificationDisplayController : SocializeNotificationDisplayController <SocializeBaseViewControllerDelegate>
 
 @property (nonatomic, retain) UINavigationController *navigationController;
 

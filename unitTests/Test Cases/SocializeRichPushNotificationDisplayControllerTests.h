@@ -7,9 +7,9 @@
 //
 
 #import "SocializeTestCase.h"
-#import "SocializeRichPushNotificationDisplayController.h"
+#import "SocializeDirectURLNotificationDisplayController.h"
 #import "SocializeNotificationDisplayControllerTests.h"
 
 @interface SocializeRichPushNotificationDisplayControllerTests : SocializeNotificationDisplayControllerTests
-@property (nonatomic, retain) SocializeRichPushNotificationDisplayController *richPushNotificationDisplayController;
+@property (nonatomic, retain) SocializeDirectURLNotificationDisplayController *richPushNotificationDisplayController;
 @end

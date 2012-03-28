@@ -12,7 +12,7 @@
 @synthesize richPushNotificationDisplayController = richPushNotificationDisplayController_;
 
 - (id)createUUT {
-    self.richPushNotificationDisplayController = [[[SocializeRichPushNotificationDisplayController alloc] initWithUserInfo:nil] autorelease];
+    self.richPushNotificationDisplayController = [[[SocializeDirectURLNotificationDisplayController alloc] initWithUserInfo:nil] autorelease];
     
     return self.richPushNotificationDisplayController;
 }

@@ -140,7 +140,7 @@
     
     // Expect add new comments controller
     [[(id)self.notificationHandler expect] addDisplayController:[OCMArg checkWithBlock:^BOOL(id controller) {
-        return [controller isKindOfClass:[SocializeRichPushNotificationDisplayController class]];
+        return [controller isKindOfClass:[SocializeDirectURLNotificationDisplayController class]];
     }]];
     
     [self.notificationHandler handleSocializeNotification:userInfo];

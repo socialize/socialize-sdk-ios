@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeRichPushNotificationDisplayController.h"
+#import "SocializeDirectURLNotificationDisplayController.h"
 #import "UINavigationController+Socialize.h"
 
-@implementation SocializeRichPushNotificationDisplayController
+@implementation SocializeDirectURLNotificationDisplayController
 @synthesize navigationController = navigationController_;
 
 - (UINavigationController*)navigationController {
