@@ -165,6 +165,19 @@ on the simulator as well.
 
 .. note:: The subscribe button will only show on an actual device. If you do not see the button on the device, please refer to the Troubleshooting section below.
 
+Sending Targeted SmartAlerts™
+-----------------------------------------------------------------------------------
+If you would like to send a target alert your users, you can do so. Simply
+click "Send SmartAlert" from the developer dashboard. You can direct the user
+to either a specific entity or a URL of your choosing. Directing to an entity
+will trigger your entity loader. Directing to a URL will send the user to a web
+view to a URL of your choosing. You can either target all of your users or specify
+a comma-separated list of user ids.
+
+.. image:: images/send_targeted_smartalert.png
+
+.. note:: Socialize v1.6 or later is required to receive target SmartAlerts
+
 Troubleshooting Notifications
 ----------------------------------------
 
