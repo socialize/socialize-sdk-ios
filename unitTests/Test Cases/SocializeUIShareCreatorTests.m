@@ -133,6 +133,8 @@ enum {
     
     self.mockApplication = [OCMockObject mockForClass:[UIApplication class]];
     self.shareCreator.application = self.mockApplication;
+    
+    [self.mockDisplay makeNice];
 }
 
 - (void)tearDown {
@@ -344,6 +346,9 @@ enum {
     // Select SMS
     [self respondToActionSheetWithButtonIndex:ActionSheetButtonSMS];
     
+    // Share should create before composition
+    [self succeedCreatingShareWithText:nil];
+
     // Cancel SMS
     [self respondToSMSCompositionWithResult:MessageComposeResultCancelled];
     
@@ -382,6 +387,9 @@ enum {
     // Select Email
     [self respondToActionSheetWithButtonIndex:ActionSheetButtonEmail];
     
+    // Share should create before composition
+    [self succeedCreatingShareWithText:nil];
+    
     [[self.mockApplication expect] openURL:OCMOCK_ANY];
     
     [self respondToEmailAlertWithShowSettings:YES];
@@ -394,6 +402,9 @@ enum {
     // Select Email
     [self respondToActionSheetWithButtonIndex:ActionSheetButtonEmail];
     
+    // Share should create before composition
+    [self succeedCreatingShareWithText:nil];
+    
     [self respondToEmailAlertWithShowSettings:NO];
     
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusFailure fromTest:_cmd];
@@ -403,6 +414,9 @@ enum {
     // MessageComposer cannot be allocated on simulator
     self.shareCreator.mailComposerClass = [MockEmailComposer class];
 
+    // Share should create before composition
+    [self succeedCreatingShareWithText:nil];
+    
     // Select Email
     [self respondToActionSheetWithButtonIndex:ActionSheetButtonEmail];
     

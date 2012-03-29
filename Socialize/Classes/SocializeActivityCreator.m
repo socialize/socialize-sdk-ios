@@ -123,9 +123,7 @@
         [self.activity setThirdParties:[NSArray arrayWithObject:@"twitter"]];
     }
     
-    if ([self shouldPostToFacebook]) {
-        [self.activity setThirdPartiesInfoRequest:[NSArray arrayWithObject:@"facebook"]];
-    }
+    [self.activity setThirdPartiesInfoRequest:[NSArray arrayWithObjects:@"facebook", @"twitter", @"sms", @"email", nil]];
 }
 
 - (NSString*)facebookEntityURLFromPropagationInfo {
@@ -137,7 +135,7 @@
 
 - (NSString*)facebookApplicationURLFromPropagationInfo {
     NSDictionary *facebookPropagationInfo = [[self.activity propagationInfoResponse] objectForKey:@"facebook"];
-    NSString *entityURL = [facebookPropagationInfo objectForKey:@"entity_url"];
+    NSString *entityURL = [facebookPropagationInfo objectForKey:@"application_url"];
     
     return entityURL;
 }
