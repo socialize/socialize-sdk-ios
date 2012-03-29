@@ -18,6 +18,11 @@
             display:(id)display
             success:(void(^)(id<SocializeShare>))success
             failure:(void(^)(NSError *error))failure;
++ (void)createShare:(id<SocializeShare>)share
+            options:(SocializeShareOptions*)options
+       displayProxy:(SocializeUIDisplayProxy*)displayProxy
+            success:(void(^)(id<SocializeShare>))success
+            failure:(void(^)(NSError *error))failure;
 
 @property (nonatomic, readonly) id<SocializeShare> share;
 @end

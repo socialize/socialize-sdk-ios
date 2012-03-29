@@ -53,7 +53,7 @@
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/comment_single_response.json"];
     NSDictionary * JSONDictionaryToParse =(NSDictionary *)[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
-    id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
+    id mockComment = [OCMockObject niceMockForProtocol:@protocol(SocializeComment)];
     
     [[mockComment expect] setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
     [[mockComment expect] setText:[JSONDictionaryToParse objectForKey:@"text"]];

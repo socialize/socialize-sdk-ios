@@ -56,6 +56,19 @@
     return  @protocol(SocializeEntity);
 }
 
+- (void)getEntitiesWithIds:(NSArray*)entityIds {
+    NSDictionary *params = [NSDictionary dictionaryWithObject:entityIds forKey:@"id"];
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"GET"
+                                resourcePath:ENTITY_GET_ENDPOINT
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                      params:params]];
+}
+     
+- (void)getEntityWithId:(NSNumber*)entityId {
+    [self getEntitiesWithIds:[NSArray arrayWithObject:entityId]];
+}
+
 -(void)entityWithKey:(NSString *)keyOfEntity
 {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:keyOfEntity,ENTRY_KEY, nil];

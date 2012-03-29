@@ -24,6 +24,7 @@
 #import "SocializePreprocessorUtilities.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
+#import "SocializeShareCreator.h"
 
 @interface SocializeUIShareCreator ()
 - (void)showSMSComposer;
@@ -32,12 +33,15 @@
 @property (nonatomic, assign) BOOL finishedServerCreate;
 @property (nonatomic, assign) BOOL selectedShareMedium;
 @property (nonatomic, assign) BOOL postedToFacebookWall;
+@property (nonatomic, assign) BOOL compositionComplete;
 @end
 
 @implementation SocializeUIShareCreator
 @synthesize finishedServerCreate = finishedServerCreate_;
 @synthesize selectedShareMedium = selectedShareMedium_;
 @synthesize postedToFacebookWall = postedToFacebookWall_;
+@synthesize compositionComplete = compositionComplete_;
+
 SYNTH_CLASS_GETTER(MFMessageComposeViewController, messageComposerClass)
 SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
 
@@ -132,10 +136,9 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
 }
 
 - (NSString*)defaultSMSMessage {
-    id<SocializeEntity> e = self.shareObject.entity;
-    NSString *description = [e.name length] > 0 ? e.name : e.key;
-    
-    return [NSString stringWithFormat: @"I thought you would find this interesting: %@", description];    
+    NSString *entityURL = [self entityURLForThirdParty:@"sms"];
+    NSString *applicationURL = [self applicationURLForThirdParty:@"sms"];
+    return [self defaultMessageForEntityURL:entityURL applicationURL:applicationURL];
 }
 
 - (void)showSMSComposer {
@@ -159,7 +162,7 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
                 [weakSelf failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]];
                 break;
             case MessageComposeResultSent:
-                weakSelf.shareObject.text = @"n/a";
+                self.compositionComplete = YES;
                 [weakSelf tryToFinishCreatingShare];
                 break;
         }
@@ -186,8 +189,26 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
     return [self.mailComposerClass canSendMail];
 }
 
+- (NSString*)defaultMessageForEntityURL:(NSString*)entityURL applicationURL:(NSString*)applicationURL {
+    id<SocializeEntity> e = self.shareObject.entity;
+    
+    NSMutableString *msg = [NSMutableString stringWithString:@"I thought you would find this interesting: "];
+    
+    if ([e.name length] > 0) {
+        [msg appendFormat:@"%@ ", e.name];
+    }
+    
+    NSString *applicationName = [self.shareObject.application name];
+    
+    [msg appendFormat:@"%@\n\nSent from %@ (%@)", entityURL, applicationName, applicationURL];
+    
+    return msg;    
+}
+
 - (NSString*)defaultEmailMessageBody {
-    return [NSString stringWithFormat: @"I thought you would find this interesting: %@", [self entityNameOrKey]];
+    NSString *entityURL = [self entityURLForThirdParty:@"email"];
+    NSString *applicationURL = [self applicationURLForThirdParty:@"email"];
+    return [self defaultMessageForEntityURL:entityURL applicationURL:applicationURL];
 }
 
 - (NSString*)defaultEmailSubject {
@@ -213,7 +234,7 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
                 [weakSelf failWithError:nil];
                 break;
             case MFMailComposeResultSent:
-                weakSelf.shareObject.text = @"n/a";
+                self.compositionComplete = YES;
                 [weakSelf tryToFinishCreatingShare];
                 break;
         }
@@ -309,6 +330,7 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
     if (options == nil) {
         options = [SocializeTwitterAuthOptions options];
     }
+    options.doNotPromptForPermission = YES;
     
     [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options
                                                         displayProxy:self.displayProxy
@@ -346,25 +368,22 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
                                                                }];
 }
 
-- (void)postToFacebookWall {
-    SocializeFacebookWallPostOptions *options = [[[SocializeFacebookWallPostOptions alloc] init] autorelease];
-    options.link = [NSString stringWithSocializeURLForApplication];
-    options.caption = NSLocalizedString(@"Download the app now to join the conversation.", @"");
-    options.name = [self entityNameOrKey];
-    NSString *objectURL = [NSString stringWithSocializeURLForObject:self.shareObject.entity];
+- (BOOL)createShareBeforeComposition {
+    return self.shareObject.medium == SocializeShareMediumSMS || self.shareObject.medium == SocializeShareMediumEmail;
+}
+
+- (NSString*)entityURLForThirdParty:(NSString*)thirdParty {
+    NSDictionary *propagationInfo = [[self.shareObject propagationInfoResponse] objectForKey:thirdParty];
+    NSString *entityURL = [propagationInfo objectForKey:@"entity_url"];
     
-    NSMutableString* message = [NSMutableString stringWithFormat:@"%@:\n%@", self.shareObject.text, objectURL];
-    [message appendFormat:@"\n\n Shared from %@ using Socialize for iOS. \n http://www.getsocialize.com/", self.shareObject.application.name];
+    return entityURL;
+}
+
+- (NSString*)applicationURLForThirdParty:(NSString*)thirdParty {
+    NSDictionary *facebookPropagationInfo = [[self.shareObject propagationInfoResponse] objectForKey:thirdParty];
+    NSString *entityURL = [facebookPropagationInfo objectForKey:@"application_url"];
     
-    options.message = message;
-    [SocializeFacebookWallPoster postToFacebookWallWithOptions:options
-                                                  displayProxy:self.displayProxy
-                                                       success:^{
-                                                           self.postedToFacebookWall = YES;
-                                                           [self tryToFinishCreatingShare];
-                                                       } failure:^(NSError *error) {
-                                                           [self failWithError:error];
-                                                       }];
+    return entityURL;
 }
 
 - (void)tryToFinishCreatingShare {
@@ -385,24 +404,39 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
         return;
     }
 
-    // Get text
-    if ([self.shareObject.text length] <= 0) {
-        [self showCompositionInterface];
-        return;
+    if ([self createShareBeforeComposition]) {
+        // We need to create the share with dummy text
+        self.shareObject.text = @"n/a";
+    } else {
+        // Get real text
+        if (!self.compositionComplete) {
+            [self showCompositionInterface];
+            return;
+        }
     }
     
     // Create on server
     if (!self.finishedServerCreate) {
         [self.displayProxy startLoading];
-        
-        [self createShareOnSocializeServer];
+
+        [SocializeShareCreator createShare:self.shareObject
+                                   options:nil displayProxy:self.displayProxy
+                                   success:^(id<SocializeShare> share) {
+                                       self.finishedServerCreate = YES;
+                                       self.shareObject = share;
+                                       [self tryToFinishCreatingShare];
+                                   } failure:^(NSError *error) {
+                                       [self failWithError:error];
+                                   }];
         return;
     }
-
-    // Write to facebook wall
-    if (self.shareObject.medium == SocializeShareMediumFacebook && !self.postedToFacebookWall) {
-        [self postToFacebookWall];
-        return;
+    
+    if ([self createShareBeforeComposition]) {
+        // Composition has no yet been shown
+        if (!self.compositionComplete) {
+            [self showCompositionInterface];
+            return;
+        }
     }
 
     [self succeed];
@@ -420,6 +454,7 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
 - (void)baseViewControllerDidFinish:(SocializeComposeMessageViewController *)composition {
     [self.displayProxy dismissModalViewController:composition];
     [self.shareObject setText:composition.commentTextView.text];
+    self.compositionComplete = YES;
     [self tryToFinishCreatingShare];
 }
 

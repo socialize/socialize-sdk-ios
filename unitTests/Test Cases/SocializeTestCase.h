@@ -13,6 +13,8 @@
 extern id testSelf;
 
 @interface SocializeTestCase : GHAsyncTestCase
+@property (nonatomic, retain) id uut;
+
 @property (nonatomic, retain) NSMutableDictionary *swizzledMethods;
 @property (nonatomic, retain) UIAlertView *lastShownAlert;
 @property (nonatomic, retain) NSMutableDictionary *expectedDeallocations;

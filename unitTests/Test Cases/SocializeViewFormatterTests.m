@@ -29,7 +29,7 @@
     NSDictionary * JSONDictionaryToParse =(NSDictionary *)[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
     
-    id mockView = [OCMockObject mockForProtocol:@protocol(SocializeView)];
+    id mockView = [OCMockObject niceMockForProtocol:@protocol(SocializeView)];
     
     [[mockView expect] setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
     [[mockView expect] setLat:((NSNumber*)[JSONDictionaryToParse objectForKey:@"lat"])];

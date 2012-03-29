@@ -25,3 +25,4 @@
 #define SOCIALIZE_NOTIFICATIONS_NOT_CONFIGURED_MESSAGE @"Socialize Warning: Notifications are not configured. Notification UI controls will not be shown. You can read about Socialize's SmartAlerts at http://socialize.github.com/socialize-sdk-ios/push_notifications.html"
 
 extern NSString *const kSocializeDeviceTokenKey;
+

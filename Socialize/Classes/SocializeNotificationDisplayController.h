@@ -13,6 +13,7 @@
 @interface SocializeNotificationDisplayController : NSObject
 
 - (id)initWithUserInfo:(NSDictionary*)userInfo;
+- (void)viewWasAdded;
 
 @property (nonatomic, retain) NSDictionary *userInfo;
 @property (nonatomic, assign) id <SocializeNotificationDisplayControllerDelegate> delegate;

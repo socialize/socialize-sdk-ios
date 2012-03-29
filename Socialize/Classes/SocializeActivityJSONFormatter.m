@@ -63,6 +63,8 @@
     [activity setApplication:[_factory createObjectFromDictionary: [JSONDictionary valueForKey:@"application"] forProtocol:@protocol(SocializeApplication)]];
     
     [activity setUser:[_factory createObjectFromDictionary:[JSONDictionary valueForKey:@"user"] forProtocol:@protocol(SocializeUser)]];
+    
+    [activity setPropagationInfoResponse:[JSONDictionary valueForKey:@"propagation_info_response"]];
 }
 
 - (void)doToDictionary:(NSMutableDictionary *)dictionaryRepresentation fromObject:(id<SocializeObject>)fromObject {
@@ -87,6 +89,13 @@
         // Add twitter propagator
         [propagation setObject:[activity thirdParties] forKey:@"third_parties"];
         [dictionaryRepresentation setObject:propagation forKey:@"propagation"];
+    }
+
+    if ([activity thirdPartiesInfoRequest] != nil) {
+        NSMutableDictionary *propagationInfo = [NSMutableDictionary dictionary];
+        // Add twitter propagator
+        [propagationInfo setObject:[activity thirdPartiesInfoRequest] forKey:@"third_parties"];
+        [dictionaryRepresentation setObject:propagationInfo forKey:@"propagation_info_request"];
     }
 
     [super doToDictionary:dictionaryRepresentation fromObject:fromObject];

@@ -131,6 +131,12 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     NSLog(@"Created %@", url);
 }
 
+- (void)createShare:(id<SocializeShare>)share {
+    [self prepare];
+    [self.socialize createShare:share];
+    [self waitForStatus:kGHUnitWaitStatusSuccess];
+}
+
 - (void)createLikeWithURL:(NSString*)url latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude {
     [self prepare];
     [self.socialize likeEntityWithKey:url longitude:longitude latitude:latitude];

@@ -99,6 +99,28 @@
  */
 -(void)setThirdParties:(NSArray*)thirdParties;
 
+/**
+ Third party propagation info request targets
+ */
+-(NSString *)thirdPartiesInfoRequest;
+
+/**
+ Set Third party propagation info request targets
+ @param thirdPartiesInfo
+ */
+-(void)setThirdPartiesInfoRequest:(NSArray*)setThirdPartiesInfoRequest;
+
+/**
+ Third party propagation info request targets
+ */
+-(NSDictionary *)propagationInfoResponse;
+
+/**
+ Set Propagation Info Response
+ @param propagationInfoResponse
+ */
+-(void)setPropagationInfoResponse:(NSArray*)propagationInfoResponse;
+
 @end
 
 /**Private implementation of <SocializeActivity> protocol*/
@@ -128,7 +150,13 @@
 /** Set\get date of activity.*/
 @property (nonatomic, retain) NSDate*           date;
 
-/* Text to be sent to twitter */
+/* Propagate to these third parties */
 @property (nonatomic, copy) NSArray *thirdParties;
+
+/* Get propagation info for these third parties */
+@property (nonatomic, copy) NSArray *thirdPartiesInfoRequest;
+
+/* Propagation info response dictionary */
+@property (nonatomic, copy) NSArray *propagationInfoResponse;
 
 @end

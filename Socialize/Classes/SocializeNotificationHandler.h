@@ -11,7 +11,7 @@
 #import "SocializeActivityDetailsViewController.h"
 #import "SocializeCommentsTableViewController.h"
 #import "SocializeNewCommentsNotificationDisplayController.h"
-#import "SocializeRichPushNotificationDisplayController.h"
+#import "SocializeDirectURLNotificationDisplayController.h"
 
 @interface SocializeNotificationHandler : NSObject <SocializeServiceDelegate, SocializeNotificationDisplayControllerDelegate>
 

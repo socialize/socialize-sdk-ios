@@ -85,4 +85,10 @@
  @param nameOfEntity Name of entity
  */
 -(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity;
+
+
+- (void)getEntitiesWithIds:(NSArray*)entityIds;
+
+- (void)getEntityWithId:(NSNumber*)entityId;
+
 @end

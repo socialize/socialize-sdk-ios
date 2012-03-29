@@ -26,6 +26,8 @@
     return self;
 }
 
+- (void)viewWasAdded {}
+
 - (UIViewController*)mainViewController {
     NSAssert(NO, @"Not implemented");
     return nil;

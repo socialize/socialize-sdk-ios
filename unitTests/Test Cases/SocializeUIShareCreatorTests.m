@@ -21,6 +21,7 @@
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeFacebookWallPoster.h"
+#import "SocializeShareCreator.h"
 
 enum {
     ActionSheetButtonTwitter,
@@ -115,6 +116,7 @@ enum {
     [SocializeFacebookWallPoster startMockingClass];
     [[[SocializeThirdPartyTwitter stub] andReturnBool:YES] available];
     [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] available];
+    [SocializeShareCreator startMockingClass];
     
     self.disableSMS = NO;
     self.disableMail = NO;
@@ -131,6 +133,8 @@ enum {
     
     self.mockApplication = [OCMockObject mockForClass:[UIApplication class]];
     self.shareCreator.application = self.mockApplication;
+    
+    [self.mockDisplay makeNice];
 }
 
 - (void)tearDown {
@@ -141,6 +145,7 @@ enum {
     [SocializeFacebookAuthenticator stopMockingClassAndVerify];
     [SocializeTwitterAuthenticator stopMockingClassAndVerify];
     [SocializeFacebookWallPoster stopMockingClassAndVerify];
+    [SocializeShareCreator stopMockingClassAndVerify];
     
     [self.mockMessageComposerClass verify];
     [self.mockMailComposerClass verify];
@@ -214,18 +219,23 @@ enum {
 }
 
 - (void)failCreatingShare {
-    [[[self.mockSocialize expect] andDo1:^(id<SocializeShare> share) {
-        [self.shareCreator service:self.mockSocialize didFail:nil];
-    }] createShare:OCMOCK_ANY];
+    [[[SocializeShareCreator expect] andDo5:^(id<SocializeShare> share, id _o, id _d, id _s, id failure) {
+        void (^failureBlock)(NSError *error) = failure;
+        id mockError = [OCMockObject niceMockForClass:[NSError class]];
+        failureBlock(mockError);
+    }] createShare:OCMOCK_ANY options:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
 }
 
 - (void)succeedCreatingShareWithText:(NSString*)text {
-    [[[self.mockSocialize expect] andDo1:^(id<SocializeShare> share) {
+    [[[SocializeShareCreator expect] andDo5:^(id<SocializeShare> share, id _o, id _d, id success, id _f) {
         if (text != nil) {
             GHAssertEqualStrings(share.text, text, @"Share text incorrect");
         }
-        [self.shareCreator service:self.mockSocialize didCreate:share];
-    }] createShare:OCMOCK_ANY];
+        void (^successBlock)(id<SocializeShare> share) = success;
+        successBlock(share);
+        
+    }] createShare:OCMOCK_ANY options:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+
 }
 
 - (void)testCancellingActionSheetCausesFailure {
@@ -312,10 +322,7 @@ enum {
     
     // Share should be created with the composition text
     [self succeedCreatingShareWithText:testText];
-    
-    // Post to the wall
-    [self succeedPostingToFacebookWall];
-    
+
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusSuccess fromTest:_cmd];
 }
 
@@ -339,6 +346,9 @@ enum {
     // Select SMS
     [self respondToActionSheetWithButtonIndex:ActionSheetButtonSMS];
     
+    // Share should create before composition
+    [self succeedCreatingShareWithText:nil];
+
     // Cancel SMS
     [self respondToSMSCompositionWithResult:MessageComposeResultCancelled];
     
@@ -362,7 +372,7 @@ enum {
     // Select SMS
     [self respondToActionSheetWithButtonIndex:ActionSheetButtonSMS];
     
-    // Cancel SMS
+    // Send SMS
     [self respondToSMSCompositionWithResult:MessageComposeResultSent];
     
     // Share should be created with the composition text
@@ -377,6 +387,9 @@ enum {
     // Select Email
     [self respondToActionSheetWithButtonIndex:ActionSheetButtonEmail];
     
+    // Share should create before composition
+    [self succeedCreatingShareWithText:nil];
+    
     [[self.mockApplication expect] openURL:OCMOCK_ANY];
     
     [self respondToEmailAlertWithShowSettings:YES];
@@ -389,6 +402,9 @@ enum {
     // Select Email
     [self respondToActionSheetWithButtonIndex:ActionSheetButtonEmail];
     
+    // Share should create before composition
+    [self succeedCreatingShareWithText:nil];
+    
     [self respondToEmailAlertWithShowSettings:NO];
     
     [self executeActionAndWaitForStatus:kGHUnitWaitStatusFailure fromTest:_cmd];
@@ -398,6 +414,9 @@ enum {
     // MessageComposer cannot be allocated on simulator
     self.shareCreator.mailComposerClass = [MockEmailComposer class];
 
+    // Share should create before composition
+    [self succeedCreatingShareWithText:nil];
+    
     // Select Email
     [self respondToActionSheetWithButtonIndex:ActionSheetButtonEmail];
     

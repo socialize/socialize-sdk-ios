@@ -35,7 +35,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
-    [Socialize storeConsumerKey:@"abc123"];
     NSString *consumerKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"socialize_api_key"];
     NSLog(@"Consumer key is %@", consumerKey);
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];  
@@ -66,9 +65,9 @@
     }];
 
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"kSocializeDeviceTokenRegisteredKey"];
-    char testTokenData[32] = "\xaa\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff";
-    NSData *testToken = [NSData dataWithBytes:&testTokenData length:sizeof(testTokenData)];
-    [Socialize registerDeviceToken:testToken];
+//    char testTokenData[32] = "\xaa\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff";
+//    NSData *testToken = [NSData dataWithBytes:&testTokenData length:sizeof(testTokenData)];
+//    [Socialize registerDeviceToken:testToken];
     
 //    [Socialize setEntityLoaderBlock:nil];
     

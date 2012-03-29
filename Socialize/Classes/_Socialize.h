@@ -46,6 +46,7 @@
 @class SocializeFacebook;
 @class SocializeUIShareOptions;
 @class SocializeTwitterAuthOptions;
+@class SocializeEventService;
 
 extern NSString *const kSocializeDisableBrandingKey;
 
@@ -96,6 +97,8 @@ otherwise you will get a failure.
 @property (nonatomic, retain) SocializeDeviceTokenService    *deviceTokenService;
 /**Get access to the activity service via <SocializeSubscriptionService>.*/
 @property (nonatomic, retain) SocializeSubscriptionService *subscriptionService;
+/**Get access to the activity service via <SocializeEventsService>.*/
+@property (nonatomic, retain) SocializeEventService         *eventsService;
 /**Current delegate*/
 
 /**
@@ -759,5 +762,24 @@ otherwise you will get a failure.
 - (void)_registerDeviceTokenString:(NSString*)deviceTokenString;
 
 -(BOOL)isAuthenticatedWithAuthType:(NSString*)authType;
+
+/**
+ Get single entity by id
+ 
+ @param entityId The id of the entity (SocializeObject's objectID)
+ */
+- (void)getEntityWithId:(NSNumber*)entityId;
+
+/**
+ Get multiple entities by id
+ 
+ @param entityId The id of the entity (SocializeObject's objectID)
+ */
+- (void)getEntitiesWithIds:(NSArray*)entityIds;
+
+/**
+ Check if the app can actually load this entity
+ */
++ (BOOL)canLoadEntity:(id<SocializeEntity>)entity;
 
 @end

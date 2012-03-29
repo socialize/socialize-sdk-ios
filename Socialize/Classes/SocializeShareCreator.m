@@ -26,13 +26,29 @@
     [SocializeAction executeAction:creator];
 }
 
++ (void)createShare:(id<SocializeShare>)share
+            options:(SocializeShareOptions*)options
+       displayProxy:(SocializeUIDisplayProxy*)displayProxy
+            success:(void(^)(id<SocializeShare>))success
+            failure:(void(^)(NSError *error))failure {
+    
+    SocializeShareCreator *creator = [[[SocializeShareCreator alloc] initWithActivity:share
+                                                                              options:options
+                                                                         displayProxy:displayProxy
+                                                                              display:nil] autorelease];
+    creator.activitySuccessBlock = success;
+    creator.failureBlock = failure;
+    [SocializeAction executeAction:creator];
+}
+
 - (id<SocializeShare>)share {
     return (id<SocializeShare>)self.activity;
 }
 
 - (NSString*)textForFacebook {
-    NSString *objectURL = [NSString stringWithSocializeURLForObject:self.share.entity];
-    return [NSMutableString stringWithFormat:@"%@: \n %@", self.share.text, objectURL];
+    NSString *entityURL = [self facebookEntityURLFromPropagationInfo];
+
+    return [NSMutableString stringWithFormat:@"%@: \n %@", self.share.text, entityURL];
 }
 
 - (void)createActivityOnSocializeServer {
@@ -47,6 +63,17 @@
 
 - (void)service:(SocializeService *)service didFail:(NSError *)error {
     [self failServerCreateWithError:error];
+}
+
+/**
+ Third parties is implied from medium for shares
+ */
+- (NSArray*)thirdParties {
+    if (self.share.medium == SocializeShareMediumFacebook) {
+        return [NSArray arrayWithObject:@"facebook"];
+    } else {
+        return [NSArray arrayWithObject:@"twitter"];
+    }
 }
 
 

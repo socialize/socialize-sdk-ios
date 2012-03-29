@@ -27,7 +27,7 @@
     NSString * JSONStringToParse = [self helperGetJSONStringFromFile:@"responses/like_single_response.json"];
     NSDictionary * JSONDictionaryToParse =(NSDictionary *)[JSONStringToParse objectFromJSONStringWithParseOptions:JKParseOptionUnicodeNewlines];
     
-    id mockLike = [OCMockObject mockForProtocol:@protocol(SocializeLike)];
+    id mockLike = [OCMockObject niceMockForProtocol:@protocol(SocializeLike)];
 
     [[mockLike expect] setObjectID:[[JSONDictionaryToParse objectForKey:@"id"]intValue]];
     [[mockLike expect] setLat:((NSNumber*)[JSONDictionaryToParse objectForKey:@"lat"])];

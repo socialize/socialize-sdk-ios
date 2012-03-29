@@ -11,6 +11,8 @@
 #import "Socialize.h"
 #import "SocializeCommentsService.h"
 #import "SocializeActivityDetailsViewController.h"
+#import "SocializeDirectEntityNotificationDisplayController.h"
+#import "_Socialize_private.h"
 
 static SocializeNotificationHandler *sharedNotificationHandler;
 
@@ -60,6 +62,7 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     // Add as subview
     [self.displayWindow addSubview:displayController.mainViewController.view];
     [self.displayControllers addObject:displayController];
+    [displayController viewWasAdded];
 }
 
 - (SocializeNotificationDisplayController*)topDisplayController {
@@ -103,6 +106,8 @@ static SocializeNotificationHandler *sharedNotificationHandler;
 
 - (BOOL)handleSocializeNotification:(NSDictionary*)userInfo {
     
+    NSLog(@"Handling notification: %@", userInfo);
+    
     // Make sure this is a socialize notification that we are willing to handle in this release
     if (![SocializeNotificationHandler isSocializeNotification:userInfo])
         return NO;
@@ -110,6 +115,16 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     NSDictionary *socializeDictionary = [userInfo objectForKey:@"socialize"];    
     NSString *notificationType = [socializeDictionary objectForKey:@"notification_type"];
     
+    if (notificationType == nil) {
+        return NO;
+    }
+
+    // Track the event
+    NSMutableDictionary *eventParams = [NSMutableDictionary dictionaryWithDictionary:socializeDictionary];
+    [eventParams setObject:notificationType forKey:@"notification_type"];
+    [self.socialize trackEventWithBucket:@"NOTIFICATION_OPEN" values:eventParams];
+    
+
     if ([notificationType isEqualToString:@"new_comments"]) {
         // Don't handle any foreground notifications new_comments, for now
         if ([self applicationInForeground]) {
@@ -118,13 +133,16 @@ static SocializeNotificationHandler *sharedNotificationHandler;
         
         SocializeNewCommentsNotificationDisplayController *display = [[[SocializeNewCommentsNotificationDisplayController alloc] initWithUserInfo:userInfo] autorelease];
         [self addDisplayController:display];
-    } else if ([notificationType isEqualToString:@"rich_push"]) {
-        SocializeRichPushNotificationDisplayController *display = [[[SocializeRichPushNotificationDisplayController alloc] initWithUserInfo:userInfo] autorelease];
+    } else if ([notificationType isEqualToString:@"developer_direct_url"]) {
+        SocializeDirectURLNotificationDisplayController *display = [[[SocializeDirectURLNotificationDisplayController alloc] initWithUserInfo:userInfo] autorelease];
+        [self addDisplayController:display];
+    } else if ([notificationType isEqualToString:@"developer_direct_entity"]) {
+        SocializeDirectEntityNotificationDisplayController *display = [[[SocializeDirectEntityNotificationDisplayController alloc] initWithUserInfo:userInfo] autorelease];
         [self addDisplayController:display];
     } else {
-        NSAssert(NO, @"Tried to handle unknown notification type %@", notificationType);
+        return NO;
     }
-    
+
     return YES;
 }
 
@@ -138,11 +156,7 @@ static SocializeNotificationHandler *sharedNotificationHandler;
 + (BOOL)isSocializeNotification:(NSDictionary*)userInfo {
     NSDictionary *socializeDictionary = [userInfo objectForKey:@"socialize"];
     if (socializeDictionary != nil) {
-        if ([[socializeDictionary objectForKey:@"notification_type"] isEqualToString:@"new_comments"]) {
-            return YES;
-        } else if ([[socializeDictionary objectForKey:@"notification_type"] isEqualToString:@"rich_push"]) {
-            return YES;
-        }
+        return YES;
     }
     
     return NO;

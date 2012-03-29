@@ -18,6 +18,11 @@ id testSelf;
 @synthesize expectedDeallocations = expectedDeallocations_;
 @synthesize swizzledMethods = swizzledMethods_;
 @synthesize lastException = lastException_;
+@synthesize uut = uut_;
+
+- (id)createUUT {
+    return nil;
+}
 
 - (id)init {
     if (self = [super init]) {
@@ -64,6 +69,7 @@ id testSelf;
 - (void)setUp {
     [super setUp];
     
+    self.uut = [self createUUT];
     self.expectedDeallocations = nil;
     self.lastShownAlert = nil;
 }
