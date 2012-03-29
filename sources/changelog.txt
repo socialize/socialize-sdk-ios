@@ -4,6 +4,18 @@
 Changelog
 =============================================
 
+v1.6
+----
+[feature] Developer can send direct url to user as SmartAlert [ ]
+
+[feature] Developer can send direct entity to user as SmartAlert [ ]
+
+[feature] Add documentation for getting device token from logs [ ]
+
+[feature] Device calls events endpoint on notification open [ ]
+
+[feature] Email and SMS include app/entity links [ ]
+
 v1.5.5
 ------
 [bug] UI should not be blocked on manual return from fb auth [ facebook authentication]

@@ -165,11 +165,27 @@ on the simulator as well.
 
 .. note:: The subscribe button will only show on an actual device. If you do not see the button on the device, please refer to the Troubleshooting section below.
 
+Sending Targeted SmartAlerts™
+-----------------------------------------------------------------------------------
+If you would like to send a target alert your users, you can do so. Simply
+click "Send SmartAlert" from the developer dashboard. You can direct the user
+to either a specific entity or a URL of your choosing. Directing to an entity
+will trigger your entity loader. Directing to a URL will send the user to a web
+view to a URL of your choosing. You can either target all of your users or specify
+a comma-separated list of user ids.
+
+.. image:: images/send_targeted_smartalert.png
+
+.. note:: Socialize v1.6 or later is required to receive target SmartAlerts
+
 Troubleshooting Notifications
 ----------------------------------------
 
-If you are not receiving notifications, there are some simple ways to troubleshoot problems.  We also have a vibrant developer community and support 
-here: http://support.getsocialize.com support who can help Additionally here some common errors you might encounter
+If you are not receiving notifications, there are some simple ways to
+troubleshoot problems.  We also have a vibrant developer community and support
+here: http://support.getsocialize.com support who can help.
+
+Additionally, here some common errors you might encounter:
 
 
 I Don't See the Notifications Button
@@ -202,6 +218,19 @@ other versions of provisioning file which exist on your phone.
 
 Everything looks ok, but I am still not receiving notifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can try sending a push directly to your device. You can open the device logs from Xcode
+by attaching your device, selecting Window -> Organizer, choosing your device, and selecting
+"Console". The message is 
+
+.. raw:: html
+
+  <pre>Mar 28 12:16:57 AppName[3354] <Warning>: Socialize: device token FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF successfully registered with server</pre>
+
+You can then send a notification from the web interface, in the "View Debugger" section of the
+web interface.
+
+.. image:: images/send_to_device.png
 
 One possibility is that Socialize has received a development push token.
 Development tokens will currently prevent pushes being sent to real devices.

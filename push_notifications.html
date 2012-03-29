@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 1.5.5 documentation</title>
+    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 1.6 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.5.5',
+        VERSION:     '1.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.5.5 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.6 documentation" href="index.html" />
     <link rel="next" title="Socialize Comments" href="comments.html" />
     <link rel="prev" title="Twitter Integration" href="twitter.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.5.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -192,10 +192,26 @@ on the simulator as well.</p>
 <p class="last">The subscribe button will only show on an actual device. If you do not see the button on the device, please refer to the Troubleshooting section below.</p>
 </div>
 </div>
+<div class="section" id="sending-targeted-smartalerts">
+<h2>Sending Targeted SmartAlerts™<a class="headerlink" href="#sending-targeted-smartalerts" title="Permalink to this headline">¶</a></h2>
+<p>If you would like to send a target alert your users, you can do so. Simply
+click &#8220;Send SmartAlert&#8221; from the developer dashboard. You can direct the user
+to either a specific entity or a URL of your choosing. Directing to an entity
+will trigger your entity loader. Directing to a URL will send the user to a web
+view to a URL of your choosing. You can either target all of your users or specify
+a comma-separated list of user ids.</p>
+<img alt="images/send_targeted_smartalert.png" src="images/send_targeted_smartalert.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Socialize v1.6 or later is required to receive target SmartAlerts</p>
+</div>
+</div>
 <div class="section" id="troubleshooting-notifications">
 <h2>Troubleshooting Notifications<a class="headerlink" href="#troubleshooting-notifications" title="Permalink to this headline">¶</a></h2>
-<p>If you are not receiving notifications, there are some simple ways to troubleshoot problems.  We also have a vibrant developer community and support
-here: <a class="reference external" href="http://support.getsocialize.com">http://support.getsocialize.com</a> support who can help Additionally here some common errors you might encounter</p>
+<p>If you are not receiving notifications, there are some simple ways to
+troubleshoot problems.  We also have a vibrant developer community and support
+here: <a class="reference external" href="http://support.getsocialize.com">http://support.getsocialize.com</a> support who can help.</p>
+<p>Additionally, here some common errors you might encounter:</p>
 <div class="section" id="i-don-t-see-the-notifications-button">
 <h3>I Don&#8217;t See the Notifications Button<a class="headerlink" href="#i-don-t-see-the-notifications-button" title="Permalink to this headline">¶</a></h3>
 <p>The notifications button will only appear if a valid push token has been
@@ -217,6 +233,12 @@ other versions of provisioning file which exist on your phone.</p>
 </div>
 <div class="section" id="everything-looks-ok-but-i-am-still-not-receiving-notifications">
 <h3>Everything looks ok, but I am still not receiving notifications<a class="headerlink" href="#everything-looks-ok-but-i-am-still-not-receiving-notifications" title="Permalink to this headline">¶</a></h3>
+<p>You can try sending a push directly to your device. You can open the device logs from Xcode
+by attaching your device, selecting Window -&gt; Organizer, choosing your device, and selecting
+&#8220;Console&#8221;. The message is</p>
+<pre>Mar 28 12:16:57 AppName[3354] <Warning>: Socialize: device token FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF successfully registered with server</pre><p>You can then send a notification from the web interface, in the &#8220;View Debugger&#8221; section of the
+web interface.</p>
+<img alt="images/send_to_device.png" src="images/send_to_device.png" />
 <p>One possibility is that Socialize has received a development push token.
 Development tokens will currently prevent pushes being sent to real devices.
 Until Socialize automatically clears these on error, you should verify that you
@@ -250,6 +272,7 @@ for development and distribution. Socialize itself does not support development 
 <li class="toctree-l2"><a class="reference internal" href="#step-5-uploading-your-p12-to-the-socialize-developer-portal">Step 5: Uploading your .p12 to the Socialize Developer Portal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-6-configuring-notifications-in-your-app">Step 6: Configuring Notifications in Your App</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#testing-smartalerts">Testing SmartAlerts™</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sending-targeted-smartalerts">Sending Targeted SmartAlerts™</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting-notifications">Troubleshooting Notifications</a></li>
 </ul>
 </li>
@@ -286,7 +309,7 @@ for development and distribution. Socialize itself does not support development 
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.5.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
