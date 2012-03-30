@@ -594,7 +594,6 @@
 		AA0730CC14FAEDB8008A8BA3 /* SocializeAuthOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0730C914FAEDB8008A8BA3 /* SocializeAuthOptions.h */; };
 		AA0730CD14FAEDB8008A8BA3 /* SocializeAuthOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0730CA14FAEDB8008A8BA3 /* SocializeAuthOptions.m */; };
 		AA0730CE14FAEDB8008A8BA3 /* SocializeAuthOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0730CA14FAEDB8008A8BA3 /* SocializeAuthOptions.m */; };
-		AA077CA41526261800707885 /* ClassMockRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = AA077CA31526261800707885 /* ClassMockRegistry.m */; };
 		AA08B3E5147C321500E6D1CA /* SocializeActivityTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AA08B3E3147C321500E6D1CA /* SocializeActivityTableViewCell.h */; };
 		AA08B3E6147C321500E6D1CA /* SocializeActivityTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AA08B3E3147C321500E6D1CA /* SocializeActivityTableViewCell.h */; };
 		AA08B3E7147C321500E6D1CA /* SocializeActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA08B3E4147C321500E6D1CA /* SocializeActivityTableViewCell.m */; };
@@ -644,7 +643,6 @@
 		AA156BF015213E6400EB2D53 /* socialize_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AA156AF11521109800EB2D53 /* socialize_logo.png */; };
 		AA156BF115213E6400EB2D53 /* socialize_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AA156AF11521109800EB2D53 /* socialize_logo.png */; };
 		AA18A951150BD4360013CF9E /* SocializeUIShareOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE09C7E14F994670093CDA9 /* SocializeUIShareOptions.h */; };
-		AA1C0E42150808490013F98B /* NSObject+ClassMock.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1C0E41150808490013F98B /* NSObject+ClassMock.m */; };
 		AA1F1AEF14AA9AE000B83792 /* PropertyHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1F1AEE14AA9AE000B83792 /* PropertyHelpers.h */; };
 		AA1F1AF014AA9AE000B83792 /* PropertyHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1F1AEE14AA9AE000B83792 /* PropertyHelpers.h */; };
 		AA2024EF144CA77D006C1F8F /* SocializeActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 1638C521143DC96A00538659 /* SocializeActionBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2686,8 +2684,6 @@
 		AA0730C414FAE595008A8BA3 /* SocializeThirdPartyAuthenticator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeThirdPartyAuthenticator.m; path = Classes/SocializeThirdPartyAuthenticator.m; sourceTree = "<group>"; };
 		AA0730C914FAEDB8008A8BA3 /* SocializeAuthOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeAuthOptions.h; path = Classes/SocializeAuthOptions.h; sourceTree = "<group>"; };
 		AA0730CA14FAEDB8008A8BA3 /* SocializeAuthOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeAuthOptions.m; path = Classes/SocializeAuthOptions.m; sourceTree = "<group>"; };
-		AA077CA21526261800707885 /* ClassMockRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassMockRegistry.h; sourceTree = "<group>"; };
-		AA077CA31526261800707885 /* ClassMockRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassMockRegistry.m; sourceTree = "<group>"; };
 		AA08B3E3147C321500E6D1CA /* SocializeActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityTableViewCell.h; path = Classes/SocializeActivityTableViewCell.h; sourceTree = "<group>"; };
 		AA08B3E4147C321500E6D1CA /* SocializeActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityTableViewCell.m; path = Classes/SocializeActivityTableViewCell.m; sourceTree = "<group>"; };
 		AA08B3E9147C322A00E6D1CA /* SocializeActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeActivityTableViewCell.xib; path = Resources/SocializeActivityTableViewCell.xib; sourceTree = "<group>"; };
@@ -2707,8 +2703,6 @@
 		AA156AE61521102400EB2D53 /* SocializeDummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDummyViewController.m; path = Classes/SocializeDummyViewController.m; sourceTree = "<group>"; };
 		AA156AEE1521105200EB2D53 /* SocializeDummyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeDummyViewController.xib; path = Resources/SocializeDummyViewController.xib; sourceTree = "<group>"; };
 		AA156AF11521109800EB2D53 /* socialize_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = socialize_logo.png; path = Resources/socialize_logo.png; sourceTree = "<group>"; };
-		AA1C0E40150808490013F98B /* NSObject+ClassMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ClassMock.h"; sourceTree = "<group>"; };
-		AA1C0E41150808490013F98B /* NSObject+ClassMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ClassMock.m"; sourceTree = "<group>"; };
 		AA1F1AEE14AA9AE000B83792 /* PropertyHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PropertyHelpers.h; path = Classes/PropertyHelpers.h; sourceTree = "<group>"; };
 		AA26DD30146AF87E00AA25BF /* SocializeProfileEditValueViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileEditValueViewControllerTest.h; path = "Test Cases/SocializeProfileEditValueViewControllerTest.h"; sourceTree = "<group>"; };
 		AA26DD31146AF87E00AA25BF /* SocializeProfileEditValueViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileEditValueViewControllerTest.m; path = "Test Cases/SocializeProfileEditValueViewControllerTest.m"; sourceTree = "<group>"; };
@@ -4111,10 +4105,6 @@
 		AA337E6D14E9EB2300A6BB9C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				AA077CA21526261800707885 /* ClassMockRegistry.h */,
-				AA077CA31526261800707885 /* ClassMockRegistry.m */,
-				AA1C0E40150808490013F98B /* NSObject+ClassMock.h */,
-				AA1C0E41150808490013F98B /* NSObject+ClassMock.m */,
 				AABDA006146B8F8B00D73FE4 /* TestUtils.h */,
 				AABDA007146B8F8B00D73FE4 /* TestUtils.m */,
 				AA63C44514EA22C70035D4D0 /* JRSwizzle.h */,
@@ -7149,7 +7139,6 @@
 				AAE94D98150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m in Sources */,
 				AA36761F150452EF00B57A7E /* SocializeFacebookAuthHandlerTests.m in Sources */,
 				AA9A12A81504769500176AFD /* SocializeFacebookAuthenticatorTests.m in Sources */,
-				AA1C0E42150808490013F98B /* NSObject+ClassMock.m in Sources */,
 				AA4CDFE815098EFD00558287 /* SocializeCommentCreatorTests.m in Sources */,
 				AA76792014F70A6000919EC4 /* GCDAProfiling.c in Sources */,
 				AAF46179150D575C003B55F5 /* SocializeActivityCreatorTests.m in Sources */,
@@ -7158,7 +7147,6 @@
 				AAE33AFD1522674800BEE348 /* SocializeDirectEntityNotificationDisplayControllerTests.m in Sources */,
 				AAE126A7152281C80096BC99 /* SocializeNotificationDisplayControllerTests.m in Sources */,
 				AABA1FC11522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m in Sources */,
-				AA077CA41526261800707885 /* ClassMockRegistry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
