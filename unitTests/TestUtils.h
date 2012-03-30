@@ -9,27 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "OCMock/OCMock.h"
 
-@interface OCMockRecorder (TestUtils)
-- (id)andReturnBool:(BOOL)b;
-- (id)andReturnInteger:(NSInteger)i;
-- (id)andReturnUInteger:(NSUInteger)i;
-
-- (id)andDo0:(void(^)())action;
-- (id)andDo1:(void(^)(id))action;
-- (id)andDo2:(void(^)(id, id))action;
-- (id)andDo3:(void(^)(id, id, id))action;
-- (id)andDo4:(void(^)(id, id, id, id))action;
-- (id)andDo5:(void(^)(id, id, id, id, id))action;
-
-- (id)andReturnFromBlock:(id (^)())block;
-- (id)andReturnBoolFromBlock:(BOOL (^)())block;
-@end
-
-// Expose the realObject private method
-@interface OCMockObject ()
-- (id)realObject;
-@end
-
 @interface OCMockObject (TestUtils)
 + (id)classMockForClass:(Class)class;
 - (void)stubIsKindOfClass:(Class)class;
