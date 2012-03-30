@@ -9,15 +9,7 @@
 #import "NSObject+ClassMock.h"
 #import <objc/runtime.h>
 #import <OCMock/OCMock.h>
-
-@interface OCMockObject ()
-// Exposing a private OCClassMockObject method to make our implementation simpler
-- (Class)mockedClass;
-@end
-
-
-static NSMutableDictionary *classMocks;
-static NSMutableDictionary *copiedClasses;
+#import "ClassMockRegistry.h"
 
 @implementation ClassMockForwarder
 
@@ -35,79 +27,14 @@ static NSMutableDictionary *copiedClasses;
  * Return a copy of the original class with isa unmodified
  */
 - (Class)origClass {
-    return [ClassMockForwarder copiedClassForClass:(Class)self];
+    return [ClassMockRegistry copiedClassForClass:(Class)self];
 }
 
 /**
  * Return the shared class mock instance
  */
 - (id)classMock {
-    return [ClassMockForwarder classMockForClass:(Class)self];
-}
-
-+ (void)stopMockingAllClasses {
-    [[self classMocks] enumerateKeysAndObjectsUsingBlock:^(id key, id mock, BOOL *stop) {
-        // Just in case dealocating triggers a verify
-        [[mock retain] autorelease];
-
-        Class registeredClass = [key pointerValue];
-        [self unregisterClassMockForClass:registeredClass];
-    }];
-}
-
-+ (void)registerClassMock:(id)classMock forClass:(Class)class {
-    id key = [self keyForClassAtAddress:class];
-    NSAssert([[self classMocks] objectForKey:key] == nil, @"Mock already registered!");
-    [[self classMocks] setObject:classMock forKey:key];
-    
-    const char *name = [[NSString stringWithFormat:@"%@ (%@ Copy)", NSStringFromClass(class), NSStringFromClass(self)] UTF8String];
-    Class copied = objc_duplicateClass(class, name, 0);
-
-    NSValue *copiedClassValue = [NSValue valueWithPointer:copied];
-    [[self copiedClasses] setObject:copiedClassValue forKey:key];
-}
-
-+ (void)unregisterClassMockForClass:(Class)class {
-    id existingMock = [[[self classMockForClass:class] retain] autorelease];
-    NSAssert(existingMock != nil, @"Class mock not found in forwarder. Something has gone horribly wrong.");
-
-    id key = [self keyForClassAtAddress:class];
-    [[self classMocks] removeObjectForKey:key];
-    [[self copiedClasses] removeObjectForKey:key];
-    
-    class->isa = [existingMock mockedClass];
-}
-
-+ (NSMutableDictionary*)classMocks {
-    if (classMocks == nil) {
-        classMocks = [[NSMutableDictionary alloc] init];
-    }
-    
-    return classMocks;
-}
-
-+ (NSMutableDictionary*)copiedClasses {
-    if (copiedClasses == nil) {
-        copiedClasses = [[NSMutableDictionary alloc] init];
-    }
-    
-    return copiedClasses;
-}
-
-+ (id)keyForClassAtAddress:(void*)classAddress {
-    return [NSValue valueWithPointer:classAddress];
-}
-
-+ (id)classMockForClass:(Class)class {
-    id key = [self keyForClassAtAddress:class];
-    id mock = [[self classMocks] objectForKey:key];
-    return mock;
-}
-
-+ (Class)copiedClassForClass:(Class)class {
-    id key = [self keyForClassAtAddress:class];
-    NSValue *copiedClassValue = [[self copiedClasses] objectForKey:key];
-    return (Class)[copiedClassValue pointerValue];
+    return [ClassMockRegistry classMockForClass:(Class)self];
 }
 
 #pragma mark Class method forwarding (metaclass instance methods)
@@ -119,14 +46,14 @@ static NSMutableDictionary *copiedClasses;
  self will be the original Class instance with isa modified to this class (ClassMockForwarder)
  */
 - (void)forwardInvocation:(NSInvocation*)inv {
-    id mock = [ClassMockForwarder classMockForClass:(Class)self];
+    id mock = [ClassMockRegistry classMockForClass:(Class)self];
     [inv invokeWithTarget:mock];
 }
 
 
 - (NSMethodSignature*)methodSignatureForSelector:(SEL)sel {
     // See comments in forwardInvocation for info on self
-    id mock = [ClassMockForwarder classMockForClass:(Class)self];
+    id mock = [ClassMockRegistry classMockForClass:(Class)self];
     return [mock methodSignatureForSelector:sel];
 }
 
@@ -134,7 +61,7 @@ static NSMutableDictionary *copiedClasses;
  * call this when forwarding. We use our stashed copy with unmodified isa to do a real instance lookup
  */
 - (NSMethodSignature*)instanceMethodSignatureForSelector:(SEL)sel {
-    Class copiedClass = [ClassMockForwarder copiedClassForClass:(Class)self];
+    Class copiedClass = [ClassMockRegistry copiedClassForClass:(Class)self];
     return [copiedClass instanceMethodSignatureForSelector:sel];
 }
 
@@ -147,11 +74,11 @@ static NSMutableDictionary *copiedClasses;
  End the mocking process
  */
 - (void)stopMockingClass {
-    [ClassMockForwarder unregisterClassMockForClass:(Class)self];
+    [ClassMockRegistry unregisterClassMockForClass:(Class)self];
 }
 
 - (void)stopMockingClassAndVerify {
-    id existingMock = [[[ClassMockForwarder classMockForClass:(Class)self] retain] autorelease];
+    id existingMock = [[[ClassMockRegistry classMockForClass:(Class)self] retain] autorelease];
     [self stopMockingClass];
     [existingMock verify];
 }
@@ -162,10 +89,7 @@ static NSMutableDictionary *copiedClasses;
 
 + (void)startMockingClassWithClassMock:(id)classMock {
     // Register the class-mocking OCMock instance with the MockForwarder
-    [ClassMockForwarder registerClassMock:classMock forClass:self];
-    
-    // Class Method calls will go to MockForwarder after this call
-    self->isa = [ClassMockForwarder class];
+    [ClassMockRegistry registerClassMock:classMock forClass:self];
 }
 
 + (void)startMockingClass {

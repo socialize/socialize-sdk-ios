@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface ClassMockForwarder : NSProxy
-+ (void)stopMockingAllClasses;
 @end
 
 @interface NSObject (ClassMock)

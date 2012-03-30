@@ -10,6 +10,7 @@
 #import "UIAlertView+Observer.h"
 #import "NSObject+Observer.h"
 #import <objc/runtime.h>
+#import "ClassMockRegistry.h"
 
 id testSelf;
 
@@ -63,7 +64,7 @@ id testSelf;
 
 - (void)handleException:(NSException *)exception {
     self.lastException = exception;
-    [ClassMockForwarder stopMockingAllClasses];
+    [ClassMockRegistry stopMockingAllClasses];
 }
 
 - (void)setUp {
