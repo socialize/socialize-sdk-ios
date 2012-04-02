@@ -4,6 +4,10 @@
 Changelog
 =============================================
 
+v1.6.1
+------
+Update notification registration docs to reduce registration of invalid tokens
+
 v1.6
 ----
 [feature] Developer can send direct url to user as SmartAlert [ ]
