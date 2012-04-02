@@ -109,7 +109,7 @@ To register your app's device token add the following lines to your application'
 
 .. raw:: html
 
-    <script src="https://gist.github.com/1566706.js?file=appDelegate.m"></script> 
+    <script src="https://gist.github.com/2287010.js?file=appDelegate.m"></script>
 
 Handle Notifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
