@@ -10,17 +10,23 @@
 #import <Socialize/Socialize.h>
 
 @implementation IntegrationTestsAppDelegate
+@synthesize origToken = origToken_;
 
 - (void)dealloc
 {
+    self.origToken = nil;
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Socialize storeConsumerKey:@"976421bd-0bc9-44c8-a170-bd12376123a3"];
-    [Socialize storeConsumerSecret:@"2bf36ced-b9ab-4c5b-b054-8ca975d39c14"];
+    [Socialize storeConsumerKey:@"0a3bc7cd-c269-4587-8687-cd02db56d57f"];
+    [Socialize storeConsumerSecret:@"8ee55515-4f1f-42ea-b25e-c4eddebf6c02"];
 //    [Socialize storeSocializeApiKey:@"976421bd-0bc9-44c8-a170-bd12376123a3" andSecret:@"2bf36ced-b9ab-4c5b-b054-8ca975d39c14"];
+    [[Socialize sharedSocialize] removeAuthenticationInfo];
+    [Socialize registerDeviceToken:nil];
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
+
     [super applicationDidFinishLaunching:application];
     /*
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
@@ -70,5 +76,24 @@
      See also applicationDidEnterBackground:.
      */
 }
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {
+    NSLog(@"Got token");
+    self.origToken = deviceToken;
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error {
+    NSLog(@"Failled to register: %@", [error localizedDescription]);
+}
+
++ (NSData*)origToken {
+    IntegrationTestsAppDelegate *appDelegate = (IntegrationTestsAppDelegate*)[[UIApplication sharedApplication] delegate];
+    return [appDelegate origToken];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RemoteNotificationReceived" object:userInfo];
+}
+
 
 @end

@@ -24,6 +24,16 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
 @synthesize updatedObject = updatedObject_;
 @synthesize deletedObject = deletedObject_;
 
+- (void)dealloc {
+    self.socialize = nil;
+    self.fetchedElements = nil;
+    self.createdObject = nil;
+    self.updatedObject = nil;
+    self.deletedObject = nil;
+    
+    [super dealloc];
+}
+
 + (NSString*)runID {
     if (SocializeAsyncTestCaseRunID == nil) {
         NSString *uuid = UUIDString();
@@ -58,13 +68,31 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     [[self class] resetRunID];
 }
 
+- (void)authenticateAnonymously {
+    [self prepare];
+    [self.socialize authenticateAnonymously];
+    [self waitForStatus:kGHUnitWaitStatusSuccess];    
+}
+
+- (void)authenticateAnonymouslyIfNeeded {
+    if (![self.socialize isAuthenticated]) {
+        [self authenticateAnonymously];
+    }
+}
+
+- (Socialize*)socialize {
+    if (socialize_ == nil) {
+        socialize_ = [[Socialize alloc] initWithDelegate:self];
+    }
+    
+    return socialize_;
+}
+
 - (void)setUp {
-    self.socialize = [[[Socialize alloc] initWithDelegate:self] autorelease];
+    [self authenticateAnonymouslyIfNeeded];
 }
 
 - (void)tearDown {
-    self.socialize.delegate = nil;
-    self.socialize = nil;
 }
 
 - (NSString*)runID {
@@ -95,6 +123,10 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     [self prepare];
     [self.socialize createComments:comments];
     [self waitForStatus:kGHUnitWaitStatusSuccess];
+}
+
+- (void)createComment:(id<SocializeComment>)comment {
+    [self createComments:[NSArray arrayWithObject:comment]];
 }
 
 - (void)getEntityWithURL:(NSString*)url {
@@ -197,6 +229,12 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     [self waitForStatus:kGHUnitWaitStatusSuccess];
 }
 
+- (void)subscribeToCommentsOnEntity:(id<SocializeEntity>)entity {
+    [self prepare];
+    [self.socialize subscribeToCommentsForEntityKey:entity.key];
+    [self waitForStatus:kGHUnitWaitStatusSuccess];
+}
+
 // Wait for notify
 - (void)service:(SocializeService *)request didFail:(NSError *)error {
     NSLog(@"Error happened: %@", [error description]);
@@ -220,6 +258,10 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
 
 - (void)service:(SocializeService *)service didDelete:(id<SocializeObject>)object {
     self.deletedObject = object;
+    [self notify:kGHUnitWaitStatusSuccess];
+}
+
+- (void)didAuthenticate:(id<SocializeUser>)user {
     [self notify:kGHUnitWaitStatusSuccess];
 }
 

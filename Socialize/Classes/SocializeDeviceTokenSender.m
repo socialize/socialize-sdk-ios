@@ -72,6 +72,10 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
 }
 
 - (void)registerDeviceToken:(NSData*)deviceToken {
+    if (deviceToken == nil) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kSocializeDeviceTokenKey];
+        return;
+    }
     NSString *deviceTokenString = [self stringForToken:deviceToken];
     NSAssert([deviceTokenString length] > 0, @"Bad token");
     [[NSUserDefaults standardUserDefaults] setObject:deviceTokenString forKey:kSocializeDeviceTokenKey];
@@ -145,6 +149,7 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
     if ([serverToken length] > 0 && [[serverToken lowercaseString] isEqualToString:[storedToken lowercaseString]]) {
         NSLog(@"Socialize: device token %@ successfully registered with server", serverToken);
         self.tokenOnServer = YES;
+        [[NSNotificationCenter defaultCenter] postNotificationName:SocializeDidRegisterDeviceTokenNotification object:serverToken];
     } else {
         
         NSLog(@"Socialize: token registration problem: server token (%@) did not match stored token (%@)", serverToken, storedToken);

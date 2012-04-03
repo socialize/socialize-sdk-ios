@@ -974,7 +974,6 @@
 		AA3326E8144CD9FB0033C7FA /* KIFTestStep+SampleSdkAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3326E2144CD9FB0033C7FA /* KIFTestStep+SampleSdkAppAdditions.m */; };
 		AA3326E9144CD9FB0033C7FA /* SampleSdkAppKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3326E4144CD9FB0033C7FA /* SampleSdkAppKIFTestController.m */; };
 		AA3326F5144CDA850033C7FA /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3326F2144CDA4B0033C7FA /* libKIF.a */; };
-		AA3326F6144CDAAA0033C7FA /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE945143564B100851C73 /* GHUnitIOS.framework */; };
 		AA33A43B1463174700319168 /* profile_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CD4882C1386C42300E60C4C /* profile_functions.c */; };
 		AA36761F150452EF00B57A7E /* SocializeFacebookAuthHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA36761E150452EF00B57A7E /* SocializeFacebookAuthHandlerTests.m */; };
 		AA369FB7146C50A700E15AA4 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = AA369FB3146C50A700E15AA4 /* NSData+Base64.h */; };
@@ -1128,7 +1127,6 @@
 		AA3E20A81461F057000321BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA3E20A61461F057000321BF /* InfoPlist.strings */; };
 		AA3E20AA1461F057000321BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E20A91461F057000321BF /* main.m */; };
 		AA3E20AE1461F057000321BF /* IntegrationTestsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E20AD1461F057000321BF /* IntegrationTestsAppDelegate.m */; };
-		AA3E20B21461F17B000321BF /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE945143564B100851C73 /* GHUnitIOS.framework */; };
 		AA3E20B81461F329000321BF /* AuthTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E20B51461F329000321BF /* AuthTest.m */; };
 		AA3E20B91461F329000321BF /* SocializeAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E20B71461F329000321BF /* SocializeAsyncTestCase.m */; };
 		AA3E20BA1461F3B9000321BF /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6742ED13F9AFD800140AA3 /* libSocialize.a */; };
@@ -1463,6 +1461,9 @@
 		AA92BC1214E38EA600F67058 /* SocializeTwitterAuthViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA92BC1114E38EA600F67058 /* SocializeTwitterAuthViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA92BC1314E38EA600F67058 /* SocializeTwitterAuthViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA92BC1114E38EA600F67058 /* SocializeTwitterAuthViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA92BC1714E3985500F67058 /* SocializeTwitterAuthViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA92BC1614E3985500F67058 /* SocializeTwitterAuthViewControllerTests.m */; };
+		AA94613B152A877200BCEB4A /* TestNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = AA94613A152A877200BCEB4A /* TestNotifications.m */; };
+		AA94613D152BB7F200BCEB4A /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA94613C152BB7F200BCEB4A /* GHUnitIOS.framework */; };
+		AA94613E152BB7F200BCEB4A /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA94613C152BB7F200BCEB4A /* GHUnitIOS.framework */; };
 		AA973CC21468A02800DAE945 /* TestShareServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CC11468A02800DAE945 /* TestShareServices.m */; };
 		AA973CF51468A6AB00DAE945 /* TestEntityServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CF41468A6AB00DAE945 /* TestEntityServices.m */; };
 		AA9A129E15046C6700176AFD /* SocializeOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA9A129C15046C6700176AFD /* SocializeOptions.h */; };
@@ -1571,7 +1572,6 @@
 		AAAFE938143562DB00851C73 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6742ED13F9AFD800140AA3 /* libSocialize.a */; };
 		AAAFE93D1435633300851C73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE93B1435633300851C73 /* CoreLocation.framework */; };
 		AAAFE93E1435633300851C73 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE93C1435633300851C73 /* MapKit.framework */; };
-		AAAFE947143564B100851C73 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE945143564B100851C73 /* GHUnitIOS.framework */; };
 		AAB076651496B4F20024A385 /* SocializeComposeMessageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6B6F171472F4A4008E885B /* SocializeComposeMessageViewControllerTests.m */; };
 		AAB127D4149928ED009AF443 /* SocializeSubscriptionService.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB127D2149928ED009AF443 /* SocializeSubscriptionService.h */; };
 		AAB127D5149928ED009AF443 /* SocializeSubscriptionService.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB127D2149928ED009AF443 /* SocializeSubscriptionService.h */; };
@@ -2870,6 +2870,9 @@
 		AA92BC1114E38EA600F67058 /* SocializeTwitterAuthViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeTwitterAuthViewControllerDelegate.h; path = Classes/SocializeTwitterAuthViewControllerDelegate.h; sourceTree = "<group>"; };
 		AA92BC1514E3985500F67058 /* SocializeTwitterAuthViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeTwitterAuthViewControllerTests.h; path = "Test Cases/SocializeTwitterAuthViewControllerTests.h"; sourceTree = "<group>"; };
 		AA92BC1614E3985500F67058 /* SocializeTwitterAuthViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeTwitterAuthViewControllerTests.m; path = "Test Cases/SocializeTwitterAuthViewControllerTests.m"; sourceTree = "<group>"; };
+		AA946139152A877200BCEB4A /* TestNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNotifications.h; sourceTree = "<group>"; };
+		AA94613A152A877200BCEB4A /* TestNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNotifications.m; sourceTree = "<group>"; };
+		AA94613C152BB7F200BCEB4A /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		AA973CC01468A02800DAE945 /* TestShareServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShareServices.h; sourceTree = "<group>"; };
 		AA973CC11468A02800DAE945 /* TestShareServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShareServices.m; sourceTree = "<group>"; };
 		AA973CF31468A6AB00DAE945 /* TestEntityServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEntityServices.h; sourceTree = "<group>"; };
@@ -2957,7 +2960,6 @@
 		AAAFE936143562CA00851C73 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AAAFE93B1435633300851C73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AAAFE93C1435633300851C73 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		AAAFE945143564B100851C73 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		AAB127D2149928ED009AF443 /* SocializeSubscriptionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeSubscriptionService.h; path = Classes/SocializeSubscriptionService.h; sourceTree = "<group>"; };
 		AAB127D3149928ED009AF443 /* SocializeSubscriptionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeSubscriptionService.m; path = Classes/SocializeSubscriptionService.m; sourceTree = "<group>"; };
 		AAB127D81499297C009AF443 /* SocializeSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeSubscription.h; path = Classes/SocializeSubscription.h; sourceTree = "<group>"; };
@@ -3113,13 +3115,13 @@
 				AABE178B1500638D00500D45 /* libOCMock.a in Frameworks */,
 				180B37EF147499E7009D2E22 /* CoreLocation.framework in Frameworks */,
 				AABC15B1144A123B00088B7D /* libSocialize-profiling.a in Frameworks */,
-				AAAFE947143564B100851C73 /* GHUnitIOS.framework in Frameworks */,
 				5CC3DB121378889E00B11B78 /* CoreGraphics.framework in Frameworks */,
 				5CC3DB131378889E00B11B78 /* UIKit.framework in Frameworks */,
 				5CC3DAEC1378859000B11B78 /* Foundation.framework in Frameworks */,
 				1681BDB313F5567300EC6042 /* MapKit.framework in Frameworks */,
 				1681BDCB13F55E2400EC6042 /* QuartzCore.framework in Frameworks */,
 				16C365F814519D4900DD5421 /* MessageUI.framework in Frameworks */,
+				AA94613D152BB7F200BCEB4A /* GHUnitIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3136,7 +3138,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA0307C11506DA8000E8C43F /* libOCMock.a in Frameworks */,
-				AA3326F6144CDAAA0033C7FA /* GHUnitIOS.framework in Frameworks */,
 				AA3326F5144CDA850033C7FA /* libKIF.a in Frameworks */,
 				AA332604144CD8070033C7FA /* CoreLocation.framework in Frameworks */,
 				AA332605144CD8070033C7FA /* MapKit.framework in Frameworks */,
@@ -3158,10 +3159,10 @@
 				AA3E20BC1461FA94000321BF /* MapKit.framework in Frameworks */,
 				AA3E20BD1461FA94000321BF /* MessageUI.framework in Frameworks */,
 				AA3E20BA1461F3B9000321BF /* libSocialize.a in Frameworks */,
-				AA3E20B21461F17B000321BF /* GHUnitIOS.framework in Frameworks */,
 				AA3E20A01461F057000321BF /* UIKit.framework in Frameworks */,
 				AA3E20A11461F057000321BF /* Foundation.framework in Frameworks */,
 				AA3E20A21461F057000321BF /* CoreGraphics.framework in Frameworks */,
+				AA94613E152BB7F200BCEB4A /* GHUnitIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3476,8 +3477,8 @@
 		5CC3DAC01378824800B11B78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA94613C152BB7F200BCEB4A /* GHUnitIOS.framework */,
 				16C365F5145192B900DD5421 /* MessageUI.framework */,
-				AAAFE945143564B100851C73 /* GHUnitIOS.framework */,
 				AAB2DEE5143A796300C3C1F5 /* libOCMock.a */,
 				AAAFE93B1435633300851C73 /* CoreLocation.framework */,
 				AAAFE93C1435633300851C73 /* MapKit.framework */,
@@ -4187,6 +4188,8 @@
 				AAC4931B149A92C5000EEA7E /* TestCommentServices.m */,
 				AA01F8F4150A84C900BB2B29 /* TestSocializeService.h */,
 				AA01F8F5150A84C900BB2B29 /* TestSocializeService.m */,
+				AA946139152A877200BCEB4A /* TestNotifications.h */,
+				AA94613A152A877200BCEB4A /* TestNotifications.m */,
 			);
 			path = TestCases;
 			sourceTree = "<group>";
@@ -7208,6 +7211,7 @@
 				AA9D780214BE191A00D76D6B /* SampleEntityLoader.m in Sources */,
 				AA01F8F6150A84C900BB2B29 /* TestSocializeService.m in Sources */,
 				AA03D183150A9D8C00E7BFA3 /* DataHelper.m in Sources */,
+				AA94613B152A877200BCEB4A /* TestNotifications.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7880,8 +7884,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7902,12 +7909,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -7916,8 +7924,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7931,13 +7942,14 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

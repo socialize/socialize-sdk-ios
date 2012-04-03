@@ -36,6 +36,10 @@
 - (void)getEntityWithURL:(NSString*)url;
 - (void)getSubscriptionsForEntityKey:(NSString*)entityKey;
 - (void)createComments:(NSArray*)comments;
+- (void)createComment:(id<SocializeComment>)comment;
+- (void)subscribeToCommentsOnEntity:(id<SocializeEntity>)entity;
+- (void)authenticateAnonymouslyIfNeeded;
+- (void)authenticateAnonymously;
 
 //- (void)getViewsForURL:(NSString*)url;
 @end

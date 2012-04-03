@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <GHUnitIOS/GHUnit.h>
 
-@interface IntegrationTestsAppDelegate : GHUnitIOSAppDelegate <UIApplicationDelegate, GHTestRunnerDelegate>
+@interface IntegrationTestsAppDelegate : GHUnitIOSAppDelegate <UIApplicationDelegate, GHTestRunnerDelegate>;
+
+@property (nonatomic, retain) NSData *origToken;
+
++ (NSData*)origToken;
 
 @end

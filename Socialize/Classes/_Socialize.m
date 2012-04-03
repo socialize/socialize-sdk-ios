@@ -85,6 +85,8 @@ NSString *const kSocializeFacebookAuthExpirationDate = @"kSocializeFacebookAuthE
 
 NSString *const kSocializeFacebookStringForAPI = @"FaceBook";
 
+NSString *const SocializeDidRegisterDeviceTokenNotification = @"SocializeDidRegisterDeviceTokenNotification";
+
 
 @implementation Socialize
 
