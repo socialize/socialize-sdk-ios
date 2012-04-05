@@ -782,4 +782,9 @@ otherwise you will get a failure.
  */
 + (BOOL)canLoadEntity:(id<SocializeEntity>)entity;
 
+/**
+ Track an event
+ */
+- (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values;
+
 @end

@@ -1464,6 +1464,8 @@
 		AA94613B152A877200BCEB4A /* TestNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = AA94613A152A877200BCEB4A /* TestNotifications.m */; };
 		AA94613D152BB7F200BCEB4A /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA94613C152BB7F200BCEB4A /* GHUnitIOS.framework */; };
 		AA94613E152BB7F200BCEB4A /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA94613C152BB7F200BCEB4A /* GHUnitIOS.framework */; };
+		AA946199152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA946197152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.m */; };
+		AA94619A152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA946198152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.xib */; };
 		AA973CC21468A02800DAE945 /* TestShareServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CC11468A02800DAE945 /* TestShareServices.m */; };
 		AA973CF51468A6AB00DAE945 /* TestEntityServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CF41468A6AB00DAE945 /* TestEntityServices.m */; };
 		AA9A129E15046C6700176AFD /* SocializeOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA9A129C15046C6700176AFD /* SocializeOptions.h */; };
@@ -2873,6 +2875,9 @@
 		AA946139152A877200BCEB4A /* TestNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNotifications.h; sourceTree = "<group>"; };
 		AA94613A152A877200BCEB4A /* TestNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNotifications.m; sourceTree = "<group>"; };
 		AA94613C152BB7F200BCEB4A /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
+		AA946196152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegrationTestStatusViewControllerViewController.h; sourceTree = "<group>"; };
+		AA946197152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegrationTestStatusViewControllerViewController.m; sourceTree = "<group>"; };
+		AA946198152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntegrationTestStatusViewControllerViewController.xib; sourceTree = "<group>"; };
 		AA973CC01468A02800DAE945 /* TestShareServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShareServices.h; sourceTree = "<group>"; };
 		AA973CC11468A02800DAE945 /* TestShareServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShareServices.m; sourceTree = "<group>"; };
 		AA973CF31468A6AB00DAE945 /* TestEntityServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEntityServices.h; sourceTree = "<group>"; };
@@ -4147,6 +4152,9 @@
 			isa = PBXGroup;
 			children = (
 				AA3E20B31461F329000321BF /* TestCases */,
+				AA946196152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.h */,
+				AA946197152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.m */,
+				AA946198152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.xib */,
 				AA4132C1146852AE006D906F /* StringHelper.h */,
 				AA4132C2146852AE006D906F /* StringHelper.m */,
 				AA3E20AC1461F057000321BF /* IntegrationTestsAppDelegate.h */,
@@ -6226,6 +6234,7 @@
 				AA7FCA9F15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */,
 				AA156BEB15213E1C00EB2D53 /* SocializeDummyViewController.xib in Resources */,
 				AA156BF015213E6400EB2D53 /* socialize_logo.png in Resources */,
+				AA94619A152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7212,6 +7221,7 @@
 				AA01F8F6150A84C900BB2B29 /* TestSocializeService.m in Sources */,
 				AA03D183150A9D8C00E7BFA3 /* DataHelper.m in Sources */,
 				AA94613B152A877200BCEB4A /* TestNotifications.m in Sources */,
+				AA946199152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7909,7 +7919,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -7942,7 +7952,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",

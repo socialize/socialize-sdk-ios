@@ -38,14 +38,12 @@
 
 #if !TARGET_IPHONE_SIMULATOR
 - (void)testReceivePushNotification {
-
     [Socialize registerDeviceToken:[IntegrationTestsAppDelegate origToken]];
-    [self waitForNotification:SocializeDidRegisterDeviceTokenNotification timeout:2];
+    [self waitForNotification:SocializeDidRegisterDeviceTokenNotification timeout:10];
     
     // Create entity and subscribe.
     NSString *key = [self testURL:[NSString stringWithFormat:@"%s/comment", _cmd]];
     id<SocializeEntity> entity = [SocializeEntity entityWithKey:key name:@""];
-    entity.key = @"samekey";
     [self createEntity:entity];
 
      
@@ -70,7 +68,7 @@
     
     NSLog(@"Waiting for notification");
     [self prepare];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:20.0];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:35.0];
 }
 #endif
 

@@ -7,5 +7,4 @@
 //
 
 @interface Socialize ()
-- (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values;
 @end

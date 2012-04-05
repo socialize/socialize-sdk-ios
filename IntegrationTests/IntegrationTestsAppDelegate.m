@@ -8,26 +8,38 @@
 
 #import "IntegrationTestsAppDelegate.h"
 #import <Socialize/Socialize.h>
+#import "IntegrationTestStatusViewControllerViewController.h"
 
 @implementation IntegrationTestsAppDelegate
 @synthesize origToken = origToken_;
-
+@synthesize status = status_;
 - (void)dealloc
 {
     self.origToken = nil;
+    self.status = nil;
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Socialize storeConsumerKey:@"0a3bc7cd-c269-4587-8687-cd02db56d57f"];
-    [Socialize storeConsumerSecret:@"8ee55515-4f1f-42ea-b25e-c4eddebf6c02"];
+    [Socialize storeConsumerKey:@"bfa51814-c0a6-46cf-bdbe-9aa95c979ac1"];
+    [Socialize storeConsumerSecret:@"e05707b5-a7c9-4a20-afa1-05e335ab5686"];
 //    [Socialize storeSocializeApiKey:@"976421bd-0bc9-44c8-a170-bd12376123a3" andSecret:@"2bf36ced-b9ab-4c5b-b054-8ca975d39c14"];
     [[Socialize sharedSocialize] removeAuthenticationInfo];
     [Socialize registerDeviceToken:nil];
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
 
+
+#if TARGET_IPHONE_SIMULATOR
     [super applicationDidFinishLaunching:application];
+#else
+    [[UIApplication sharedApplication] setIdleTimerDisabled: YES];    
+    self.status = [[IntegrationTestStatusViewControllerViewController alloc] init];
+    window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [window_ setRootViewController:self.status];
+    [window_ makeKeyAndVisible];
+#endif
+    
     /*
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
