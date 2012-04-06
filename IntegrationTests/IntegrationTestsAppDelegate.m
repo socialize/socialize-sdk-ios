@@ -22,8 +22,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Socialize storeConsumerKey:@"bfa51814-c0a6-46cf-bdbe-9aa95c979ac1"];
-    [Socialize storeConsumerSecret:@"e05707b5-a7c9-4a20-afa1-05e335ab5686"];
+    NSString *serverURL = [[SocializeConfiguration sharedConfiguration] secureRestserverBaseURL];
+    if ([serverURL startsWith:@"https://stage"]) {
+        [Socialize storeConsumerKey:@"0a3bc7cd-c269-4587-8687-cd02db56d57f"];
+        [Socialize storeConsumerSecret:@"8ee55515-4f1f-42ea-b25e-c4eddebf6c02"];    
+    } else {
+        [Socialize storeConsumerKey:@"bfa51814-c0a6-46cf-bdbe-9aa95c979ac1"];
+        [Socialize storeConsumerSecret:@"e05707b5-a7c9-4a20-afa1-05e335ab5686"];
+    }
 //    [Socialize storeSocializeApiKey:@"976421bd-0bc9-44c8-a170-bd12376123a3" andSecret:@"2bf36ced-b9ab-4c5b-b054-8ca975d39c14"];
     [[Socialize sharedSocialize] removeAuthenticationInfo];
     [Socialize registerDeviceToken:nil];

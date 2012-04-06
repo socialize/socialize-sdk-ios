@@ -822,6 +822,9 @@
 		AA3181E7144A4474008F4D59 /* action-bar-button-black-hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67433313F9EEC200140AA3 /* action-bar-button-black-hover@2x.png */; };
 		AA3181E8144A4474008F4D59 /* action-bar-button-black-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67433413F9EEC200140AA3 /* action-bar-button-black-hover.png */; };
 		AA3181E9144A4474008F4D59 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D7343D013F5CD4B0076A8E6 /* SocializeConfigurationInfo.plist */; };
+		AA31EDFF152F9245006C6308 /* SocializeConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D295E1393FE7A0065C0CB /* SocializeConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA31EE00152F9245006C6308 /* SocializeConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D295E1393FE7A0065C0CB /* SocializeConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA31EE01152F94E6006C6308 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE88A14355F1B00851C73 /* SocializeConfigurationInfo.plist */; };
 		AA3325EE144CD8070033C7FA /* AuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE86414355F1B00851C73 /* AuthenticateViewController.m */; };
 		AA3325EF144CD8070033C7FA /* CommetsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE86914355F1B00851C73 /* CommetsTableView.m */; };
 		AA3325F0144CD8070033C7FA /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE86B14355F1B00851C73 /* DataHelper.m */; };
@@ -1134,7 +1137,6 @@
 		AA3E20BC1461FA94000321BF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C330E013F3C2D1004EA34D /* MapKit.framework */; };
 		AA3E20BD1461FA94000321BF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C365F5145192B900DD5421 /* MessageUI.framework */; };
 		AA3E20BE1461FA9B000321BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D97F03C13DFC91500B16454 /* QuartzCore.framework */; };
-		AA3E212D1461FAE8000321BF /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D7343D013F5CD4B0076A8E6 /* SocializeConfigurationInfo.plist */; };
 		AA4132C3146852AE006D906F /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4132C2146852AE006D906F /* StringHelper.m */; };
 		AA4956FE1484276A00718BC4 /* SocializeDynamicTest.h in Headers */ = {isa = PBXBuildFile; fileRef = AA4956FC1484276A00718BC4 /* SocializeDynamicTest.h */; };
 		AA4956FF1484276A00718BC4 /* SocializeDynamicTest.h in Headers */ = {isa = PBXBuildFile; fileRef = AA4956FC1484276A00718BC4 /* SocializeDynamicTest.h */; };
@@ -5016,6 +5018,7 @@
 				AA156AE91521102400EB2D53 /* SocializeDummyViewController.h in Headers */,
 				AABA233E1523A17700B511FA /* SocializeEventService.h in Headers */,
 				AABA23431523A3EB00B511FA /* _Socialize_private.h in Headers */,
+				AA31EE00152F9245006C6308 /* SocializeConfiguration.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5167,6 +5170,7 @@
 				AA156AE81521102400EB2D53 /* SocializeDummyViewController.h in Headers */,
 				AABA233D1523A17700B511FA /* SocializeEventService.h in Headers */,
 				AABA23421523A3EB00B511FA /* _Socialize_private.h in Headers */,
+				AA31EDFF152F9245006C6308 /* SocializeConfiguration.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6164,7 +6168,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA3E20A81461F057000321BF /* InfoPlist.strings in Resources */,
-				AA3E212D1461FAE8000321BF /* SocializeConfigurationInfo.plist in Resources */,
 				AA51C14A1471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */,
 				AA8D0A5A14720AEA007B53AC /* socialize-activity-call-out-arrow.png in Resources */,
 				AA8D0A6114720AEA007B53AC /* socialize-activity-call-out-arrow@2x.png in Resources */,
@@ -6235,6 +6238,7 @@
 				AA156BEB15213E1C00EB2D53 /* SocializeDummyViewController.xib in Resources */,
 				AA156BF015213E6400EB2D53 /* socialize_logo.png in Resources */,
 				AA94619A152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.xib in Resources */,
+				AA31EE01152F94E6006C6308 /* SocializeConfigurationInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
