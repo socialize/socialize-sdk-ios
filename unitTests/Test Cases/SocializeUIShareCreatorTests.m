@@ -35,15 +35,15 @@ enum {
 // Composer cannot be allocated on simulator
 @interface MockSMSComposer : NSObject
 + (BOOL)canSendText;
-@property (copy) BKMessageComposeBlock completionBlock;
+@property (copy) BKMessageComposeBlock sz_completionBlock;
 @property (nonatomic, copy) NSString *body;
 @end
 
 @implementation MockSMSComposer
-@synthesize completionBlock = completionBlock;
+@synthesize sz_completionBlock = sz_completionBlock_;
 @synthesize body = body_;
 - (void)dealloc {
-    self.completionBlock = nil;
+    self.sz_completionBlock = nil;
     self.body = nil;
     
     [super dealloc];
@@ -55,18 +55,18 @@ enum {
 // Real email class is causing issues during tests
 @interface MockEmailComposer : NSObject
 + (BOOL)canSendMail;
-@property (copy) BKMailComposeBlock completionBlock;
+@property (copy) BKMailComposeBlock sz_completionBlock;
 @property (nonatomic, copy) NSString *messageBody;
 @property (nonatomic, copy) NSString *subject;
 @end
 
 @implementation MockEmailComposer
-@synthesize completionBlock = completionBlock;
+@synthesize sz_completionBlock = sz_completionBlock_;
 @synthesize messageBody = messageBody_;
 @synthesize subject = subject_;
 
 - (void)dealloc {
-    self.completionBlock = nil;
+    self.sz_completionBlock = nil;
     self.messageBody = nil;
     self.subject = nil;
     
@@ -178,14 +178,14 @@ enum {
 - (void)respondToSMSCompositionWithResult:(MessageComposeResult)result {
     [[[self.mockDisplay expect] andDo2:^(id object, MFMessageComposeViewController *composer) {
         [[self.mockDisplay expect] socializeObject:self.shareCreator requiresDismissOfViewController:composer];
-        composer.completionBlock(result);
+        composer.sz_completionBlock(result);
     }] socializeObject:OCMOCK_ANY requiresDisplayOfViewController:OCMOCK_ANY];
 }
 
 - (void)respondToEmailCompositionWithResult:(MFMailComposeResult)result error:(NSError*)error {
     [[[self.mockDisplay expect] andDo2:^(id object, MFMailComposeViewController *composer) {
         [[self.mockDisplay expect] socializeObject:self.shareCreator requiresDismissOfViewController:composer];
-        composer.completionBlock(result, error);
+        composer.sz_completionBlock(result, error);
     }] socializeObject:OCMOCK_ANY requiresDisplayOfViewController:OCMOCK_ANY];
 }
 

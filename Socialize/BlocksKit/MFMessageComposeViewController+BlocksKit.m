@@ -29,7 +29,7 @@ static char *kCompletionBlockKey = "MFMessageComposeViewControllerCompletion";
     else
         [controller dismissModalViewControllerAnimated:YES];
     
-    BKMessageComposeBlock block = controller.completionBlock;
+    BKMessageComposeBlock block = controller.sz_completionBlock;
     if (block)
         block(result);
 }
@@ -43,39 +43,39 @@ static char *kCompletionBlockKey = "MFMessageComposeViewControllerCompletion";
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self swizzleSelector:@selector(messageComposeDelegate) withSelector:@selector(bk_messageComposeDelegate)];
-        [self swizzleSelector:@selector(setMessageComposeDelegate:) withSelector:@selector(bk_setMessageComposeDelegate:)];
+        [self swizzleSelector:@selector(messageComposeDelegate) withSelector:@selector(socialize_bk_messageComposeDelegate)];
+        [self swizzleSelector:@selector(setMessageComposeDelegate:) withSelector:@selector(socialize_bk_setMessageComposeDelegate:)];
     });
 }
 
 #pragma mark Methods
 
-- (id)bk_messageComposeDelegate {
+- (id)socialize_bk_messageComposeDelegate {
     return [self associatedValueForKey:kDelegateKey];
 }
 
-- (void)bk_setMessageComposeDelegate:(id)delegate {
+- (void)socialize_bk_setMessageComposeDelegate:(id)delegate {
     [self weaklyAssociateValue:delegate withKey:kDelegateKey];
-    [self bk_setMessageComposeDelegate:[BKMessageComposeViewControllerDelegate shared]];
+    [self socialize_bk_setMessageComposeDelegate:[BKMessageComposeViewControllerDelegate shared]];
 }
 
 #pragma mark Properties
 
 - (BKMessageComposeBlock)completionHandler {
-    return [self completionBlock];
+    return [self sz_completionBlock];
 }
 
 - (void)setCompletionHandler:(BKMessageComposeBlock)completionHandler {
-    [self setCompletionBlock:completionHandler];
+    [self setSz_completionBlock:completionHandler];
 }
 
-- (BKMessageComposeBlock)completionBlock {
+- (BKMessageComposeBlock)sz_completionBlock {
     BKMessageComposeBlock block = [self associatedValueForKey:kCompletionBlockKey];
     return BK_AUTORELEASE([block copy]);
 }
 
-- (void)setCompletionBlock:(BKMessageComposeBlock)handler {
-    [self bk_setMessageComposeDelegate:[BKMessageComposeViewControllerDelegate shared]];
+- (void)setSz_completionBlock:(BKMessageComposeBlock)handler {
+    [self socialize_bk_setMessageComposeDelegate:[BKMessageComposeViewControllerDelegate shared]];
     [self associateCopyOfValue:handler withKey:kCompletionBlockKey];
 }
 

@@ -151,7 +151,7 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
     
     __block __typeof__(self) weakSelf = self;
     __block __typeof__(composer) weakComposer = composer;
-    composer.completionBlock = ^(MessageComposeResult result) {
+    composer.sz_completionBlock = ^(MessageComposeResult result) {
         [weakSelf.displayProxy dismissModalViewController:weakComposer];
 
         switch (result) {
@@ -220,7 +220,7 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
     
     __block __typeof__(self) weakSelf = self;
     __block __typeof__(composer) weakComposer = composer;
-    composer.completionBlock = ^(MFMailComposeResult result, NSError *error)
+    composer.sz_completionBlock = ^(MFMailComposeResult result, NSError *error)
     {
         [weakSelf.displayProxy dismissModalViewController:weakComposer];
         // Notifies users about errors associated with the interface

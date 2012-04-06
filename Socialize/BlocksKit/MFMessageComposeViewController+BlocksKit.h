@@ -29,6 +29,6 @@ typedef void (^BKMessageComposeBlock) (MessageComposeResult result);
  messageComposeViewController:didFinishWithResult method
  of MFMessageComposeViewControllerDelegate.
  */
-@property (copy) BKMessageComposeBlock completionBlock;
+@property (copy) BKMessageComposeBlock sz_completionBlock;
 
 @end

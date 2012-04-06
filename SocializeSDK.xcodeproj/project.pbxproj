@@ -214,64 +214,38 @@
 		16C3659C14518F1600DD5421 /* MFMessageComposeViewController+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3655E14518F1600DD5421 /* MFMessageComposeViewController+BlocksKit.m */; };
 		16C3659D14518F1600DD5421 /* NSArray+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3655F14518F1600DD5421 /* NSArray+BlocksKit.h */; };
 		16C3659E14518F1600DD5421 /* NSArray+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3655F14518F1600DD5421 /* NSArray+BlocksKit.h */; };
-		16C3659F14518F1600DD5421 /* NSArray+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656014518F1600DD5421 /* NSArray+BlocksKit.m */; };
-		16C365A014518F1600DD5421 /* NSArray+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656014518F1600DD5421 /* NSArray+BlocksKit.m */; };
 		16C365A114518F1600DD5421 /* NSCache+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656114518F1600DD5421 /* NSCache+BlocksKit.h */; };
 		16C365A214518F1600DD5421 /* NSCache+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656114518F1600DD5421 /* NSCache+BlocksKit.h */; };
-		16C365A314518F1600DD5421 /* NSCache+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656214518F1600DD5421 /* NSCache+BlocksKit.m */; };
-		16C365A414518F1600DD5421 /* NSCache+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656214518F1600DD5421 /* NSCache+BlocksKit.m */; };
 		16C365A514518F1600DD5421 /* NSDictionary+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656314518F1600DD5421 /* NSDictionary+BlocksKit.h */; };
 		16C365A614518F1600DD5421 /* NSDictionary+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656314518F1600DD5421 /* NSDictionary+BlocksKit.h */; };
-		16C365A714518F1600DD5421 /* NSDictionary+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656414518F1600DD5421 /* NSDictionary+BlocksKit.m */; };
-		16C365A814518F1600DD5421 /* NSDictionary+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656414518F1600DD5421 /* NSDictionary+BlocksKit.m */; };
 		16C365A914518F1600DD5421 /* NSIndexSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656514518F1600DD5421 /* NSIndexSet+BlocksKit.h */; };
 		16C365AA14518F1600DD5421 /* NSIndexSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656514518F1600DD5421 /* NSIndexSet+BlocksKit.h */; };
-		16C365AB14518F1600DD5421 /* NSIndexSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656614518F1600DD5421 /* NSIndexSet+BlocksKit.m */; };
-		16C365AC14518F1600DD5421 /* NSIndexSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656614518F1600DD5421 /* NSIndexSet+BlocksKit.m */; };
 		16C365AD14518F1600DD5421 /* NSInvocation+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656714518F1600DD5421 /* NSInvocation+BlocksKit.h */; };
 		16C365AE14518F1600DD5421 /* NSInvocation+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656714518F1600DD5421 /* NSInvocation+BlocksKit.h */; };
-		16C365AF14518F1600DD5421 /* NSInvocation+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656814518F1600DD5421 /* NSInvocation+BlocksKit.m */; };
-		16C365B014518F1600DD5421 /* NSInvocation+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656814518F1600DD5421 /* NSInvocation+BlocksKit.m */; };
 		16C365B114518F1600DD5421 /* NSMutableArray+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656914518F1600DD5421 /* NSMutableArray+BlocksKit.h */; };
 		16C365B214518F1600DD5421 /* NSMutableArray+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656914518F1600DD5421 /* NSMutableArray+BlocksKit.h */; };
-		16C365B314518F1600DD5421 /* NSMutableArray+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656A14518F1600DD5421 /* NSMutableArray+BlocksKit.m */; };
-		16C365B414518F1600DD5421 /* NSMutableArray+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656A14518F1600DD5421 /* NSMutableArray+BlocksKit.m */; };
 		16C365B514518F1600DD5421 /* NSMutableDictionary+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656B14518F1600DD5421 /* NSMutableDictionary+BlocksKit.h */; };
 		16C365B614518F1600DD5421 /* NSMutableDictionary+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656B14518F1600DD5421 /* NSMutableDictionary+BlocksKit.h */; };
-		16C365B714518F1600DD5421 /* NSMutableDictionary+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656C14518F1600DD5421 /* NSMutableDictionary+BlocksKit.m */; };
-		16C365B814518F1600DD5421 /* NSMutableDictionary+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656C14518F1600DD5421 /* NSMutableDictionary+BlocksKit.m */; };
 		16C365B914518F1600DD5421 /* NSMutableIndexSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656D14518F1600DD5421 /* NSMutableIndexSet+BlocksKit.h */; };
 		16C365BA14518F1600DD5421 /* NSMutableIndexSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656D14518F1600DD5421 /* NSMutableIndexSet+BlocksKit.h */; };
-		16C365BB14518F1600DD5421 /* NSMutableIndexSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656E14518F1600DD5421 /* NSMutableIndexSet+BlocksKit.m */; };
-		16C365BC14518F1600DD5421 /* NSMutableIndexSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656E14518F1600DD5421 /* NSMutableIndexSet+BlocksKit.m */; };
 		16C365BD14518F1600DD5421 /* NSMutableSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656F14518F1600DD5421 /* NSMutableSet+BlocksKit.h */; };
 		16C365BE14518F1600DD5421 /* NSMutableSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3656F14518F1600DD5421 /* NSMutableSet+BlocksKit.h */; };
-		16C365BF14518F1600DD5421 /* NSMutableSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657014518F1600DD5421 /* NSMutableSet+BlocksKit.m */; };
-		16C365C014518F1600DD5421 /* NSMutableSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657014518F1600DD5421 /* NSMutableSet+BlocksKit.m */; };
 		16C365C114518F1600DD5421 /* NSObject+AssociatedObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657114518F1600DD5421 /* NSObject+AssociatedObjects.h */; };
 		16C365C214518F1600DD5421 /* NSObject+AssociatedObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657114518F1600DD5421 /* NSObject+AssociatedObjects.h */; };
 		16C365C314518F1600DD5421 /* NSObject+AssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657214518F1600DD5421 /* NSObject+AssociatedObjects.m */; };
 		16C365C414518F1600DD5421 /* NSObject+AssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657214518F1600DD5421 /* NSObject+AssociatedObjects.m */; };
 		16C365C514518F1600DD5421 /* NSObject+BlockObservation.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657314518F1600DD5421 /* NSObject+BlockObservation.h */; };
 		16C365C614518F1600DD5421 /* NSObject+BlockObservation.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657314518F1600DD5421 /* NSObject+BlockObservation.h */; };
-		16C365C714518F1600DD5421 /* NSObject+BlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657414518F1600DD5421 /* NSObject+BlockObservation.m */; };
-		16C365C814518F1600DD5421 /* NSObject+BlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657414518F1600DD5421 /* NSObject+BlockObservation.m */; };
 		16C365C914518F1600DD5421 /* NSObject+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657514518F1600DD5421 /* NSObject+BlocksKit.h */; };
 		16C365CA14518F1600DD5421 /* NSObject+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657514518F1600DD5421 /* NSObject+BlocksKit.h */; };
-		16C365CB14518F1600DD5421 /* NSObject+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657614518F1600DD5421 /* NSObject+BlocksKit.m */; };
-		16C365CC14518F1600DD5421 /* NSObject+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657614518F1600DD5421 /* NSObject+BlocksKit.m */; };
 		16C365CD14518F1600DD5421 /* NSSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657714518F1600DD5421 /* NSSet+BlocksKit.h */; };
 		16C365CE14518F1600DD5421 /* NSSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657714518F1600DD5421 /* NSSet+BlocksKit.h */; };
-		16C365CF14518F1600DD5421 /* NSSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657814518F1600DD5421 /* NSSet+BlocksKit.m */; };
-		16C365D014518F1600DD5421 /* NSSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657814518F1600DD5421 /* NSSet+BlocksKit.m */; };
 		16C365D114518F1600DD5421 /* NSTimer+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657914518F1600DD5421 /* NSTimer+BlocksKit.h */; };
 		16C365D214518F1600DD5421 /* NSTimer+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657914518F1600DD5421 /* NSTimer+BlocksKit.h */; };
 		16C365D314518F1600DD5421 /* NSTimer+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657A14518F1600DD5421 /* NSTimer+BlocksKit.m */; };
 		16C365D414518F1600DD5421 /* NSTimer+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657A14518F1600DD5421 /* NSTimer+BlocksKit.m */; };
 		16C365D514518F1600DD5421 /* NSURLConnection+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657B14518F1600DD5421 /* NSURLConnection+BlocksKit.h */; };
 		16C365D614518F1600DD5421 /* NSURLConnection+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657B14518F1600DD5421 /* NSURLConnection+BlocksKit.h */; };
-		16C365D714518F1600DD5421 /* NSURLConnection+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657C14518F1600DD5421 /* NSURLConnection+BlocksKit.m */; };
-		16C365D814518F1600DD5421 /* NSURLConnection+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657C14518F1600DD5421 /* NSURLConnection+BlocksKit.m */; };
 		16C365D914518F1600DD5421 /* UIActionSheet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657D14518F1600DD5421 /* UIActionSheet+BlocksKit.h */; };
 		16C365DA14518F1600DD5421 /* UIActionSheet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3657D14518F1600DD5421 /* UIActionSheet+BlocksKit.h */; };
 		16C365DB14518F1600DD5421 /* UIActionSheet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657E14518F1600DD5421 /* UIActionSheet+BlocksKit.m */; };
@@ -282,24 +256,14 @@
 		16C365E014518F1600DD5421 /* UIAlertView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658014518F1600DD5421 /* UIAlertView+BlocksKit.m */; };
 		16C365E114518F1600DD5421 /* UIBarButtonItem+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658114518F1600DD5421 /* UIBarButtonItem+BlocksKit.h */; };
 		16C365E214518F1600DD5421 /* UIBarButtonItem+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658114518F1600DD5421 /* UIBarButtonItem+BlocksKit.h */; };
-		16C365E314518F1600DD5421 /* UIBarButtonItem+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658214518F1600DD5421 /* UIBarButtonItem+BlocksKit.m */; };
-		16C365E414518F1600DD5421 /* UIBarButtonItem+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658214518F1600DD5421 /* UIBarButtonItem+BlocksKit.m */; };
 		16C365E514518F1600DD5421 /* UIControl+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658314518F1600DD5421 /* UIControl+BlocksKit.h */; };
 		16C365E614518F1600DD5421 /* UIControl+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658314518F1600DD5421 /* UIControl+BlocksKit.h */; };
-		16C365E714518F1600DD5421 /* UIControl+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658414518F1600DD5421 /* UIControl+BlocksKit.m */; };
-		16C365E814518F1600DD5421 /* UIControl+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658414518F1600DD5421 /* UIControl+BlocksKit.m */; };
 		16C365E914518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658514518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h */; };
 		16C365EA14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658514518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h */; };
-		16C365EB14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658614518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m */; };
-		16C365EC14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658614518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m */; };
 		16C365ED14518F1600DD5421 /* UIView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658714518F1600DD5421 /* UIView+BlocksKit.h */; };
 		16C365EE14518F1600DD5421 /* UIView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658714518F1600DD5421 /* UIView+BlocksKit.h */; };
-		16C365EF14518F1600DD5421 /* UIView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658814518F1600DD5421 /* UIView+BlocksKit.m */; };
-		16C365F014518F1600DD5421 /* UIView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658814518F1600DD5421 /* UIView+BlocksKit.m */; };
 		16C365F114518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658914518F1600DD5421 /* UIWebView+BlocksKit.h */; };
 		16C365F214518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658914518F1600DD5421 /* UIWebView+BlocksKit.h */; };
-		16C365F314518F1600DD5421 /* UIWebView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658A14518F1600DD5421 /* UIWebView+BlocksKit.m */; };
-		16C365F414518F1600DD5421 /* UIWebView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658A14518F1600DD5421 /* UIWebView+BlocksKit.m */; };
 		16C365F6145192B900DD5421 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C365F5145192B900DD5421 /* MessageUI.framework */; };
 		16C365F7145192C300DD5421 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C365F5145192B900DD5421 /* MessageUI.framework */; };
 		16C365F814519D4900DD5421 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C365F5145192B900DD5421 /* MessageUI.framework */; };
@@ -825,6 +789,8 @@
 		AA31EDFF152F9245006C6308 /* SocializeConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D295E1393FE7A0065C0CB /* SocializeConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA31EE00152F9245006C6308 /* SocializeConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D295E1393FE7A0065C0CB /* SocializeConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA31EE01152F94E6006C6308 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE88A14355F1B00851C73 /* SocializeConfigurationInfo.plist */; };
+		AA31EE03152F9EEF006C6308 /* NSObject+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657614518F1600DD5421 /* NSObject+BlocksKit.m */; };
+		AA31EE04152F9EEF006C6308 /* NSObject+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3657614518F1600DD5421 /* NSObject+BlocksKit.m */; };
 		AA3325EE144CD8070033C7FA /* AuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE86414355F1B00851C73 /* AuthenticateViewController.m */; };
 		AA3325EF144CD8070033C7FA /* CommetsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE86914355F1B00851C73 /* CommetsTableView.m */; };
 		AA3325F0144CD8070033C7FA /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE86B14355F1B00851C73 /* DataHelper.m */; };
@@ -6965,28 +6931,10 @@
 				16C3658D14518F1600DD5421 /* BKDelegate.m in Sources */,
 				16C3659714518F1600DD5421 /* MFMailComposeViewController+BlocksKit.m in Sources */,
 				16C3659B14518F1600DD5421 /* MFMessageComposeViewController+BlocksKit.m in Sources */,
-				16C3659F14518F1600DD5421 /* NSArray+BlocksKit.m in Sources */,
-				16C365A314518F1600DD5421 /* NSCache+BlocksKit.m in Sources */,
-				16C365A714518F1600DD5421 /* NSDictionary+BlocksKit.m in Sources */,
-				16C365AB14518F1600DD5421 /* NSIndexSet+BlocksKit.m in Sources */,
-				16C365AF14518F1600DD5421 /* NSInvocation+BlocksKit.m in Sources */,
-				16C365B314518F1600DD5421 /* NSMutableArray+BlocksKit.m in Sources */,
-				16C365B714518F1600DD5421 /* NSMutableDictionary+BlocksKit.m in Sources */,
-				16C365BB14518F1600DD5421 /* NSMutableIndexSet+BlocksKit.m in Sources */,
-				16C365BF14518F1600DD5421 /* NSMutableSet+BlocksKit.m in Sources */,
 				16C365C314518F1600DD5421 /* NSObject+AssociatedObjects.m in Sources */,
-				16C365C714518F1600DD5421 /* NSObject+BlockObservation.m in Sources */,
-				16C365CB14518F1600DD5421 /* NSObject+BlocksKit.m in Sources */,
-				16C365CF14518F1600DD5421 /* NSSet+BlocksKit.m in Sources */,
 				16C365D314518F1600DD5421 /* NSTimer+BlocksKit.m in Sources */,
-				16C365D714518F1600DD5421 /* NSURLConnection+BlocksKit.m in Sources */,
 				16C365DB14518F1600DD5421 /* UIActionSheet+BlocksKit.m in Sources */,
 				16C365DF14518F1600DD5421 /* UIAlertView+BlocksKit.m in Sources */,
-				16C365E314518F1600DD5421 /* UIBarButtonItem+BlocksKit.m in Sources */,
-				16C365E714518F1600DD5421 /* UIControl+BlocksKit.m in Sources */,
-				16C365EB14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m in Sources */,
-				16C365EF14518F1600DD5421 /* UIView+BlocksKit.m in Sources */,
-				16C365F314518F1600DD5421 /* UIWebView+BlocksKit.m in Sources */,
 				AAD4B4181460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m in Sources */,
 				AAD4B4201460C19E00F39D0A /* SocializeProfileEditValueViewController.m in Sources */,
 				AAD4B4221460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */,
@@ -7065,6 +7013,7 @@
 				AA156AE31521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.m in Sources */,
 				AA156AEA1521102400EB2D53 /* SocializeDummyViewController.m in Sources */,
 				AABA233F1523A17700B511FA /* SocializeEventService.m in Sources */,
+				AA31EE04152F9EEF006C6308 /* NSObject+BlocksKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7361,28 +7310,10 @@
 				16C3658E14518F1600DD5421 /* BKDelegate.m in Sources */,
 				16C3659814518F1600DD5421 /* MFMailComposeViewController+BlocksKit.m in Sources */,
 				16C3659C14518F1600DD5421 /* MFMessageComposeViewController+BlocksKit.m in Sources */,
-				16C365A014518F1600DD5421 /* NSArray+BlocksKit.m in Sources */,
-				16C365A414518F1600DD5421 /* NSCache+BlocksKit.m in Sources */,
-				16C365A814518F1600DD5421 /* NSDictionary+BlocksKit.m in Sources */,
-				16C365AC14518F1600DD5421 /* NSIndexSet+BlocksKit.m in Sources */,
-				16C365B014518F1600DD5421 /* NSInvocation+BlocksKit.m in Sources */,
-				16C365B414518F1600DD5421 /* NSMutableArray+BlocksKit.m in Sources */,
-				16C365B814518F1600DD5421 /* NSMutableDictionary+BlocksKit.m in Sources */,
-				16C365BC14518F1600DD5421 /* NSMutableIndexSet+BlocksKit.m in Sources */,
-				16C365C014518F1600DD5421 /* NSMutableSet+BlocksKit.m in Sources */,
 				16C365C414518F1600DD5421 /* NSObject+AssociatedObjects.m in Sources */,
-				16C365C814518F1600DD5421 /* NSObject+BlockObservation.m in Sources */,
-				16C365CC14518F1600DD5421 /* NSObject+BlocksKit.m in Sources */,
-				16C365D014518F1600DD5421 /* NSSet+BlocksKit.m in Sources */,
 				16C365D414518F1600DD5421 /* NSTimer+BlocksKit.m in Sources */,
-				16C365D814518F1600DD5421 /* NSURLConnection+BlocksKit.m in Sources */,
 				16C365DC14518F1600DD5421 /* UIActionSheet+BlocksKit.m in Sources */,
 				16C365E014518F1600DD5421 /* UIAlertView+BlocksKit.m in Sources */,
-				16C365E414518F1600DD5421 /* UIBarButtonItem+BlocksKit.m in Sources */,
-				16C365E814518F1600DD5421 /* UIControl+BlocksKit.m in Sources */,
-				16C365EC14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m in Sources */,
-				16C365F014518F1600DD5421 /* UIView+BlocksKit.m in Sources */,
-				16C365F414518F1600DD5421 /* UIWebView+BlocksKit.m in Sources */,
 				AAD4B4191460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m in Sources */,
 				AAD4B4211460C1A000F39D0A /* SocializeProfileEditValueViewController.m in Sources */,
 				AAD4B4231460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */,
@@ -7461,6 +7392,7 @@
 				AA156AE41521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.m in Sources */,
 				AA156AEB1521102400EB2D53 /* SocializeDummyViewController.m in Sources */,
 				AABA23401523A17700B511FA /* SocializeEventService.m in Sources */,
+				AA31EE03152F9EEF006C6308 /* NSObject+BlocksKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

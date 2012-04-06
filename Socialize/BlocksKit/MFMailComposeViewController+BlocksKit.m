@@ -29,7 +29,7 @@ static char *kCompletionBlockKey = "MFMailComposeViewControllerCompletion";
     else
         [controller dismissModalViewControllerAnimated:YES];
         
-    BKMailComposeBlock block = controller.completionBlock;
+    BKMailComposeBlock block = controller.sz_completionBlock;
     if (block)
         block(result, error);
 }
@@ -43,39 +43,39 @@ static char *kCompletionBlockKey = "MFMailComposeViewControllerCompletion";
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self swizzleSelector:@selector(mailComposeDelegate) withSelector:@selector(bk_mailComposeDelegate)];
-        [self swizzleSelector:@selector(setMailComposeDelegate:) withSelector:@selector(bk_setMailComposeDelegate:)];
+        [self swizzleSelector:@selector(mailComposeDelegate) withSelector:@selector(sz_bk_mailComposeDelegate)];
+        [self swizzleSelector:@selector(setMailComposeDelegate:) withSelector:@selector(sz_bk_setMailComposeDelegate:)];
     });
 }
 
 #pragma mark Methods
 
-- (id)bk_mailComposeDelegate {
+- (id)sz_bk_mailComposeDelegate {
     return [self associatedValueForKey:kDelegateKey];
 }
 
-- (void)bk_setMailComposeDelegate:(id)delegate {
+- (void)sz_bk_setMailComposeDelegate:(id)delegate {
     [self weaklyAssociateValue:delegate withKey:kDelegateKey];
-    [self bk_setMailComposeDelegate:[BKMailComposeViewControllerDelegate shared]];
+    [self sz_bk_setMailComposeDelegate:[BKMailComposeViewControllerDelegate shared]];
 }
 
 #pragma mark Properties
 
 - (BKMailComposeBlock)completionHandler {
-    return [self completionBlock];
+    return [self sz_completionBlock];
 }
 
 - (void)setCompletionHandler:(BKMailComposeBlock)completionHandler {
-    [self setCompletionBlock:completionHandler];
+    [self setSz_completionBlock:completionHandler];
 }
  
-- (BKMailComposeBlock)completionBlock {
+- (BKMailComposeBlock)sz_completionBlock {
     BKMailComposeBlock block = [self associatedValueForKey:kCompletionBlockKey];
     return BK_AUTORELEASE([block copy]);
 }
 
-- (void)setCompletionBlock:(BKMailComposeBlock)handler {
-    [self bk_setMailComposeDelegate:[BKMailComposeViewControllerDelegate shared]];
+- (void)setSz_completionBlock:(BKMailComposeBlock)handler {
+    [self sz_bk_setMailComposeDelegate:[BKMailComposeViewControllerDelegate shared]];
     [self associateCopyOfValue:handler withKey:kCompletionBlockKey];
 }
 
