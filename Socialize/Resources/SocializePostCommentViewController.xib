@@ -170,7 +170,7 @@
 											<object class="IBUIButton" id="494638508">
 												<reference key="NSNextResponder" ref="35417833"/>
 												<int key="NSvFlags">257</int>
-												<string key="NSFrame">{{82, 0}, {40, 38}}</string>
+												<string key="NSFrame">{{82, 1}, {40, 40}}</string>
 												<reference key="NSSuperview" ref="35417833"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="396742091"/>
@@ -197,11 +197,11 @@
 												</object>
 												<object class="NSCustomResource" key="IBUISelectedImage">
 													<string key="NSClassName">NSImage</string>
-													<string key="NSResourceName">socialize-iphone-notification-button-enabled.png</string>
+													<string key="NSResourceName">socialize-comment-notification-enabled.png</string>
 												</object>
 												<object class="NSCustomResource" key="IBUINormalImage">
 													<string key="NSClassName">NSImage</string>
-													<string key="NSResourceName">socialize-iphone-notification-button-disabled.png</string>
+													<string key="NSResourceName">socialize-comment-notification-disabled.png</string>
 												</object>
 												<object class="IBUIFontDescription" key="IBUIFontDescription" id="597645227">
 													<int key="type">2</int>
@@ -216,7 +216,7 @@
 											<object class="IBUIButton" id="730715486">
 												<reference key="NSNextResponder" ref="35417833"/>
 												<int key="NSvFlags">257</int>
-												<string key="NSFrame">{{41, 1}, {40, 38}}</string>
+												<string key="NSFrame">{{41, 1}, {40, 40}}</string>
 												<reference key="NSSuperview" ref="35417833"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="494638508"/>
@@ -234,16 +234,19 @@
 												<reference key="IBUIDisabledImage" ref="20537193"/>
 												<object class="NSCustomResource" key="IBUISelectedImage">
 													<string key="NSClassName">NSImage</string>
-													<string key="NSResourceName">socialize-comment-facebook-enabled-button.png</string>
+													<string key="NSResourceName">socialize-comment-facebook-enabled.png</string>
 												</object>
-												<reference key="IBUINormalImage" ref="20537193"/>
+												<object class="NSCustomResource" key="IBUINormalImage">
+													<string key="NSClassName">NSImage</string>
+													<string key="NSResourceName">socialize-comment-facebook-disabled.png</string>
+												</object>
 												<reference key="IBUIFontDescription" ref="597645227"/>
 												<reference key="IBUIFont" ref="539295604"/>
 											</object>
 											<object class="IBUIButton" id="420712238">
 												<reference key="NSNextResponder" ref="35417833"/>
 												<int key="NSvFlags">257</int>
-												<string key="NSFrame">{{0, 1}, {40, 38}}</string>
+												<string key="NSFrame">{{0, 1}, {40, 40}}</string>
 												<reference key="NSSuperview" ref="35417833"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="730715486"/>
@@ -258,15 +261,18 @@
 													<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 												</object>
 												<reference key="IBUINormalTitleShadowColor" ref="877216864"/>
-												<object class="NSCustomResource" key="IBUIDisabledImage" id="765086949">
+												<object class="NSCustomResource" key="IBUIDisabledImage">
 													<string key="NSClassName">NSImage</string>
 													<string key="NSResourceName">socialize-comment-twitter-disabled-button.png</string>
 												</object>
 												<object class="NSCustomResource" key="IBUISelectedImage">
 													<string key="NSClassName">NSImage</string>
-													<string key="NSResourceName">socialize-comment-twitter-enabled-button.png</string>
+													<string key="NSResourceName">socialize-comment-twitter-enabled.png</string>
 												</object>
-												<reference key="IBUINormalImage" ref="765086949"/>
+												<object class="NSCustomResource" key="IBUINormalImage">
+													<string key="NSClassName">NSImage</string>
+													<string key="NSResourceName">socialize-comment-twitter-disabled.png</string>
+												</object>
 												<reference key="IBUIFontDescription" ref="597645227"/>
 												<reference key="IBUIFont" ref="539295604"/>
 											</object>
@@ -311,6 +317,7 @@
 						<string key="NSFrame">{{0, 200}, {320, 216}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:196</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
@@ -888,7 +895,7 @@
 				<real value="1" key="11.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="2" key="12.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
-				<real value="1" key="12.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="0.0" key="12.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="22.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="25.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -909,7 +916,7 @@
 				<string key="60.CustomClassName">SocializeHorizontalContainerView</string>
 				<string key="60.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="62.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="0.0" key="62.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="2" key="62.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
@@ -1105,13 +1112,15 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="socialize-comment-detail-bottom-shadow-background.png">{2, 213}</string>
 			<string key="socialize-comment-facebook-disabled-button.png">{25, 25}</string>
-			<string key="socialize-comment-facebook-enabled-button.png">{25, 25}</string>
+			<string key="socialize-comment-facebook-disabled.png">{30, 30}</string>
+			<string key="socialize-comment-facebook-enabled.png">{30, 30}</string>
 			<string key="socialize-comment-location-bar-background.png">{1, 39}</string>
 			<string key="socialize-comment-location-enabled.png">{24, 25}</string>
+			<string key="socialize-comment-notification-disabled.png">{30, 30}</string>
+			<string key="socialize-comment-notification-enabled.png">{30, 30}</string>
 			<string key="socialize-comment-twitter-disabled-button.png">{25, 25}</string>
-			<string key="socialize-comment-twitter-enabled-button.png">{25, 25}</string>
-			<string key="socialize-iphone-notification-button-disabled.png">{30, 30}</string>
-			<string key="socialize-iphone-notification-button-enabled.png">{30, 30}</string>
+			<string key="socialize-comment-twitter-disabled.png">{30, 30}</string>
+			<string key="socialize-comment-twitter-enabled.png">{30, 30}</string>
 			<string key="socialize-iphone-subcribe-notification-icon.png">{165, 77}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1179</string>
