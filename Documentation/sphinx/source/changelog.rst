@@ -4,6 +4,18 @@
 Changelog
 =============================================
 
+v1.6.2
+------
+[bug] HIGH PRI: using SMS crashes appmakr app. [ appmakr ]
+
+[bug] fix Facebook app link name [ ]
+
+[bug] Missing docs for explicit Facebook linking [ ]
+
+[feature] Improve look of action buttons when posting a comment [ ]
+
+[feature] remove extra app link on FB posts [ ]
+
 v1.6.1
 ------
 Update notification registration docs to reduce registration of invalid tokens
