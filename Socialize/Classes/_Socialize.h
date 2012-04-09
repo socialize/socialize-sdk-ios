@@ -190,6 +190,14 @@ otherwise you will get a failure.
  */
 +(void)storeFacebookLocalAppId:(NSString*)facebookLocalAppID;
 
+/**
+ Save facebook url scheme suffix to the user defaults.
+ This is the new name for the local app id
+ 
+ @param facebookURLSchemeSuffix Facebook URL Scheme suffix
+ */
++(void)storeFacebookURLSchemeSuffix:(NSString*)facebookURLSchemeSuffix;
+
 +(void)storeTwitterConsumerKey:(NSString*)consumerKey;
 +(void)storeTwitterConsumerSecret:(NSString*)consumerSecret;
 

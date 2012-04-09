@@ -220,6 +220,10 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
     [defaults synchronize];
 }
 
++ (void)storeFacebookURLSchemeSuffix:(NSString *)facebookURLSchemeSuffix {
+    [self storeFacebookLocalAppId:facebookURLSchemeSuffix];
+}
+
 SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerKey, twitterConsumerKey, kSocializeTwitterAuthConsumerKey)
 SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, kSocializeTwitterAuthConsumerSecret)
 
