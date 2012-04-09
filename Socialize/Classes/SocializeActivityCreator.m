@@ -143,9 +143,9 @@
 - (SocializeFacebookWallPostOptions*)facebookWallPostOptions {
     SocializeFacebookWallPostOptions *options = [SocializeFacebookWallPostOptions options];
     
+    options.name = self.activity.application.name;
     options.link = [self facebookApplicationURLFromPropagationInfo];
     options.caption = [NSString stringWithSocializeAppDownloadPlug];
-    options.name = [NSString stringWithTitleForSocializeEntity:self.activity.entity];
     options.message = [self facebookWallMessage];
     
     return options;
