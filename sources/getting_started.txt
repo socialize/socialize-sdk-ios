@@ -142,12 +142,6 @@ any Facebook wall posts sent from Socialize.
 
         <script src="https://gist.github.com/1375443.js?file=gistfile1.m"></script>
 
-If your app already authenticates with Facebook and stores credentials to the
-user defaults (as documented in the official Facebook tutorial at
-https://developers.facebook.com/docs/mobile/ios/build/), then there is nothing
-more you need to do. Socialize will automatically configure itself to use
-existing Facebook authentication. 
-
 If your app is not already configured for facebook authentication, then you'll
 need to perform two more steps:
 
@@ -167,6 +161,17 @@ completes the authentication flow.
 .. raw:: html
 
         <script src="https://gist.github.com/1529163.js?file=appDelegate.m"></script>
+
+If your app already authenticates with Facebook, you will need to let Socialize
+know about the existing session. You can do this with the
+linkToFacebookWithAccessToken:expirationDate: call.  For more information on
+using FBConnect on your own, you can check the official Facebook tutorial at
+`Facebook iOS SDK
+<http://developers.facebook.com/docs/reference/iossdk/authentication/>`_.
+
+.. raw:: html
+
+        <script src="https://gist.github.com/2345480.js?file=linkToFacebook.m"></script>
 
 Optional: Configure Your App for Twitter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
