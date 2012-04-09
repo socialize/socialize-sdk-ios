@@ -36,7 +36,8 @@
 #import "SocializeLikeService.h"
 #import "SocializeEntityService.h"
 #import "MFMessageComposeViewController+BlocksKit.h"
-#import "SocializeLikeCreator.h"
+#import "SocializeUILikeCreator.h"
+#import "SocializeUIShareCreator.h"
 
 #define TEST_ENTITY_URL @"http://test.com"
 #define TEST_ENTITY_NAME @"TEST_ENTITY_NAME"
@@ -85,13 +86,14 @@
     self.mockActionView = [OCMockObject mockForClass:[SocializeActionView class]];
     [[[(id)self.actionBar stub] andReturn:self.mockActionView] view];
     
-    [SocializeLikeCreator startMockingClass];
-    
+    [SocializeUILikeCreator startMockingClass];
+    [SocializeUIShareCreator startMockingClass];
 }
 
 -(void)tearDown
 {
-    [SocializeLikeCreator stopMockingClassAndVerify];
+    [SocializeUIShareCreator stopMockingClassAndVerify];
+    [SocializeUILikeCreator stopMockingClassAndVerify];
     
     [self.mockParentController verify];
     [self.mockEntity verify];
@@ -129,7 +131,7 @@
 
 - (void)testLikeWhenNotLikedLocksAndCreatesLike {
     [[self.mockActionView expect] lockButtons];
-    [[SocializeLikeCreator expect] createLike:OCMOCK_ANY options:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+    [[SocializeUILikeCreator expect] createLike:OCMOCK_ANY options:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
     
     [self.actionBar likeButtonTouched:nil];
 }
@@ -272,18 +274,18 @@
     self.actionBar.noAutoLayout = NO;
 }
 
-- (void)testThatDelegateCanOverrideActionSheetDisplay {
-    self.actionBar.delegate = self;
-    
-    [self prepare];
-    [self.actionBar shareButtonTouched:nil];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
-}
-
-- (void)actionBar:(SocializeActionBar *)actionBar wantsDisplayActionSheet:(UIActionSheet *)actionSheet {
-//    GHAssertEquals(actionSheet, self.mockShareActionSheet, @"Bad action sheet");
-    [self notify:kGHUnitWaitStatusSuccess];
-}
+//- (void)testThatDelegateCanOverrideActionSheetDisplay {
+//    self.actionBar.delegate = self;
+//    
+//    [self prepare];
+//    [self.actionBar shareButtonTouched:nil];
+//    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+//}
+//
+//- (void)actionBar:(SocializeActionBar *)actionBar wantsDisplayActionSheet:(UIActionSheet *)actionSheet {
+////    GHAssertEquals(actionSheet, self.mockShareActionSheet, @"Bad action sheet");
+//    [self notify:kGHUnitWaitStatusSuccess];
+//}
 
 - (void)testPresentModalControllerIgnoresNextViewAndPresents {
     [[(id)self.actionBar expect] setIgnoreNextView:YES];

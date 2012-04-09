@@ -32,14 +32,12 @@
 - (NSString*)entityNameOrKey;
 @property (nonatomic, assign) BOOL finishedServerCreate;
 @property (nonatomic, assign) BOOL selectedShareMedium;
-@property (nonatomic, assign) BOOL postedToFacebookWall;
 @property (nonatomic, assign) BOOL compositionComplete;
 @end
 
 @implementation SocializeUIShareCreator
 @synthesize finishedServerCreate = finishedServerCreate_;
 @synthesize selectedShareMedium = selectedShareMedium_;
-@synthesize postedToFacebookWall = postedToFacebookWall_;
 @synthesize compositionComplete = compositionComplete_;
 
 SYNTH_CLASS_GETTER(MFMessageComposeViewController, messageComposerClass)

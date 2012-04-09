@@ -27,13 +27,13 @@
  */
 
 
-#import <GHUnitIOS/GHUnit.h>
+#import "SocializeTestCase.h"
 #import <UIKit/UIKit.h>
 
 @class Socialize;
 #import "SocializeActionBar.h"
 
-@interface SocializeActionBarTests : GHAsyncTestCase <SocializeActionBarDelegate>
+@interface SocializeActionBarTests : SocializeTestCase <SocializeActionBarDelegate>
 
 @property (nonatomic, retain) SocializeActionBar *actionBar;
 @property (nonatomic, retain) SocializeActionBar *origActionBar;
