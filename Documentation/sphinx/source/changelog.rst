@@ -6,15 +6,15 @@ Changelog
 
 v1.6.2
 ------
-[bug] HIGH PRI: using SMS crashes appmakr app. [ appmakr ]
+[bug] Using SMS crashes appmakr app. [ appmakr ]
 
-[bug] fix Facebook app link name [ ]
+[bug] Facebook wall post app link incorrectly showed entity name [ ]
 
-[bug] Missing docs for explicit Facebook linking [ ]
+[bug] Add missing docs for explicit Facebook linking [ ]
 
-[feature] Improve look of action buttons when posting a comment [ ]
+[feature] Improve look of Post Comment action buttons [ ]
 
-[feature] remove extra app link on FB posts [ ]
+[feature] Remove getsocialize.com link from Facebook wall posts [ ]
 
 v1.6.1
 ------
