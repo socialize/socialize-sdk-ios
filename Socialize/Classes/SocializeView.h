@@ -23,4 +23,7 @@
 @interface SocializeView : SocializeActivity<SocializeView> {
 }
 
++ (SocializeView*)viewWithEntity:(id<SocializeEntity>)entity;
+
+
 @end

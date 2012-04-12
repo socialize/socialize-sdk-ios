@@ -10,4 +10,11 @@
 
 
 @implementation SocializeView
+
++ (SocializeView*)viewWithEntity:(id<SocializeEntity>)entity {
+    SocializeView *view = [[[self alloc] init] autorelease];
+    view.entity = entity;
+    return view;
+}
+
 @end

@@ -549,6 +549,14 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
     [_viewService createViewForEntity:entity longitude:lng latitude:lat];
 }
 
+- (void)createView:(id<SocializeView>)view {
+    [_viewService createView:view];
+}
+
+- (void)createViews:(NSArray*)views {
+    [_viewService createViews:views];
+}
+
 /*
 -(void)getViewsForEntityKey:(NSString*)url  first:(NSNumber*)first last:(NSNumber*)last {
     [_viewService getViewsForEntityKey:url first:first last:last];

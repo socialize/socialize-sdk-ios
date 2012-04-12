@@ -712,6 +712,8 @@ otherwise you will get a failure.
  */
 -(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 -(void)viewEntityWithKey:(NSString*)url longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
+- (void)createView:(id<SocializeView>)view;
+- (void)createViews:(NSArray*)views;
 
 -(void)getCurrentUser;
 -(void)getUserWithId:(int)userId;
