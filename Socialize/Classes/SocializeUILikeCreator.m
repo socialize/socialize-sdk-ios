@@ -75,8 +75,12 @@
     }];
 }
 
+- (BOOL)shouldLinkToThirdParty {
+    return ![Socialize authenticationNotRequired];
+}
+
 - (void)tryToFinishCreatingLike {
-    if (!self.finishedLinkingToThirdParty) {
+    if (!self.finishedLinkingToThirdParty && [self shouldLinkToThirdParty]) {
         [self linkToThirdParty];
     }
     

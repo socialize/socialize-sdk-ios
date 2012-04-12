@@ -774,6 +774,20 @@ otherwise you will get a failure.
 -(BOOL)isAuthenticatedWithAuthType:(NSString*)authType;
 
 /**
+ * Don't require users to authenticate with a 3rd party for social actions
+ */
++ (void)storeAuthenticationNotRequired:(BOOL)authenticationNotRequired;
+
+/**
+ * Whether or not users are required to authenticate with a 3rd party for social actions
+ */
++ (BOOL)authenticationNotRequired;
+
++ (void)storeAnonymousAllowed:(BOOL)anonymousAllowed;
+
++ (BOOL)anonymousAllowed;
+
+/**
  Get single entity by id
  
  @param entityId The id of the entity (SocializeObject's objectID)
