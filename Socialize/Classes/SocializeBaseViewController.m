@@ -229,7 +229,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 }
 
 -(BOOL) shouldShowAuthViewController {
-    return ( ![self.socialize isAuthenticatedWithThirdParty] && [self.socialize thirdPartyAvailable]);
+    return ( ![self.socialize isAuthenticatedWithThirdParty] && [self.socialize thirdPartyAvailable] && ![Socialize authenticationNotRequired]);
 }
 
 -(void)performAutoAuth
