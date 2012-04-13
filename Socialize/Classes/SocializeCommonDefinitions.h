@@ -60,6 +60,9 @@ extern NSString *const kSocializeFacebookAuthAccessToken;
 extern NSString *const kSocializeFacebookAuthExpirationDate;
 extern NSString *const kSocializeFacebookStringForAPI;
 
+extern NSString *const kSocializeAuthenticationNotRequired;
+extern NSString *const kSocializeAnonymousAllowed;
+
 #define SOCIALIZE_API_KEY @"socialize_api_key"
 #define SOCIALIZE_API_SECRET @"socialize_api_secret"
 #define SOCIALIZE_FACEBOOK_LOCAL_APP_ID @"socialize_facebook_local_app_id"

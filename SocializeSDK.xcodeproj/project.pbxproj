@@ -1294,6 +1294,14 @@
 		AA839AA814D3772800103ECE /* SocializeRichPushNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839AA414D3772800103ECE /* SocializeRichPushNotificationViewController.m */; };
 		AA839AA914D3772800103ECE /* SocializeRichPushNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839AA414D3772800103ECE /* SocializeRichPushNotificationViewController.m */; };
 		AA839AB314D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839AB214D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m */; };
+		AA86DB4215364DCB002DE37D /* SocializeThirdPartyLinker.h in Headers */ = {isa = PBXBuildFile; fileRef = AA86DB4015364DCB002DE37D /* SocializeThirdPartyLinker.h */; };
+		AA86DB4315364DCB002DE37D /* SocializeThirdPartyLinker.h in Headers */ = {isa = PBXBuildFile; fileRef = AA86DB4015364DCB002DE37D /* SocializeThirdPartyLinker.h */; };
+		AA86DB4415364DCB002DE37D /* SocializeThirdPartyLinker.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86DB4115364DCB002DE37D /* SocializeThirdPartyLinker.m */; };
+		AA86DB4515364DCB002DE37D /* SocializeThirdPartyLinker.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86DB4115364DCB002DE37D /* SocializeThirdPartyLinker.m */; };
+		AA86DB4815373CD0002DE37D /* SocializeThirdPartyLinkOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA86DB4615373CD0002DE37D /* SocializeThirdPartyLinkOptions.h */; };
+		AA86DB4915373CD0002DE37D /* SocializeThirdPartyLinkOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA86DB4615373CD0002DE37D /* SocializeThirdPartyLinkOptions.h */; };
+		AA86DB4A15373CD0002DE37D /* SocializeThirdPartyLinkOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86DB4715373CD0002DE37D /* SocializeThirdPartyLinkOptions.m */; };
+		AA86DB4B15373CD0002DE37D /* SocializeThirdPartyLinkOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86DB4715373CD0002DE37D /* SocializeThirdPartyLinkOptions.m */; };
 		AA87C5DC146C7E8C00B22EF4 /* SocializePostCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA87C5D9146C7E8C00B22EF4 /* SocializePostCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA87C5DD146C7E8C00B22EF4 /* SocializePostCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA87C5D9146C7E8C00B22EF4 /* SocializePostCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA87C5DE146C7E8C00B22EF4 /* SocializePostCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA87C5DA146C7E8C00B22EF4 /* SocializePostCommentViewController.m */; };
@@ -1432,6 +1440,14 @@
 		AA8D0AC114720AEA007B53AC /* socialize-authorize-user-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D0A5314720AEA007B53AC /* socialize-authorize-user-icon@2x.png */; };
 		AA8D0AC214720AEA007B53AC /* socialize-authorize-user-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D0A5314720AEA007B53AC /* socialize-authorize-user-icon@2x.png */; };
 		AA8D0AC314720AEA007B53AC /* socialize-authorize-user-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D0A5314720AEA007B53AC /* socialize-authorize-user-icon@2x.png */; };
+		AA8D349B1533A002006B1B41 /* SocializeUILikeCreator.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8D34991533A002006B1B41 /* SocializeUILikeCreator.h */; };
+		AA8D349C1533A002006B1B41 /* SocializeUILikeCreator.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8D34991533A002006B1B41 /* SocializeUILikeCreator.h */; };
+		AA8D349D1533A002006B1B41 /* SocializeUILikeCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8D349A1533A002006B1B41 /* SocializeUILikeCreator.m */; };
+		AA8D349E1533A002006B1B41 /* SocializeUILikeCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8D349A1533A002006B1B41 /* SocializeUILikeCreator.m */; };
+		AA8D34A11533A0AF006B1B41 /* SocializeUILikeOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8D349F1533A0AF006B1B41 /* SocializeUILikeOptions.h */; };
+		AA8D34A21533A0AF006B1B41 /* SocializeUILikeOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8D349F1533A0AF006B1B41 /* SocializeUILikeOptions.h */; };
+		AA8D34A31533A0AF006B1B41 /* SocializeUILikeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8D34A01533A0AF006B1B41 /* SocializeUILikeOptions.m */; };
+		AA8D34A41533A0AF006B1B41 /* SocializeUILikeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8D34A01533A0AF006B1B41 /* SocializeUILikeOptions.m */; };
 		AA92BBE614E3574400F67058 /* SocializeTwitterAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA92BBE314E3574400F67058 /* SocializeTwitterAuthViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA92BBE714E3574400F67058 /* SocializeTwitterAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA92BBE314E3574400F67058 /* SocializeTwitterAuthViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA92BBE814E3574400F67058 /* SocializeTwitterAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA92BBE414E3574400F67058 /* SocializeTwitterAuthViewController.m */; };
@@ -2782,6 +2798,10 @@
 		AA839AB114D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeRichPushNotificationViewControllerTests.h; sourceTree = "<group>"; };
 		AA839AB214D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeRichPushNotificationViewControllerTests.m; sourceTree = "<group>"; };
 		AA863889144CA42C00CFA759 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = Frameworks/OCMock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
+		AA86DB4015364DCB002DE37D /* SocializeThirdPartyLinker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeThirdPartyLinker.h; path = Classes/SocializeThirdPartyLinker.h; sourceTree = "<group>"; };
+		AA86DB4115364DCB002DE37D /* SocializeThirdPartyLinker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeThirdPartyLinker.m; path = Classes/SocializeThirdPartyLinker.m; sourceTree = "<group>"; };
+		AA86DB4615373CD0002DE37D /* SocializeThirdPartyLinkOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeThirdPartyLinkOptions.h; path = Classes/SocializeThirdPartyLinkOptions.h; sourceTree = "<group>"; };
+		AA86DB4715373CD0002DE37D /* SocializeThirdPartyLinkOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeThirdPartyLinkOptions.m; path = Classes/SocializeThirdPartyLinkOptions.m; sourceTree = "<group>"; };
 		AA87C5D9146C7E8C00B22EF4 /* SocializePostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePostCommentViewController.h; path = Classes/SocializePostCommentViewController.h; sourceTree = "<group>"; };
 		AA87C5DA146C7E8C00B22EF4 /* SocializePostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializePostCommentViewController.m; path = Classes/SocializePostCommentViewController.m; sourceTree = "<group>"; };
 		AA87C5F2146CB63100B22EF4 /* SocializePostShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePostShareViewController.h; path = Classes/SocializePostShareViewController.h; sourceTree = "<group>"; };
@@ -2811,6 +2831,10 @@
 		AA8D0A5114720AEA007B53AC /* socialize-authorize-twitter-enabled-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-authorize-twitter-enabled-icon@2x.png"; path = "Resources/socialize-authorize-twitter-enabled-icon@2x.png"; sourceTree = "<group>"; };
 		AA8D0A5214720AEA007B53AC /* socialize-authorize-user-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-authorize-user-icon.png"; path = "Resources/socialize-authorize-user-icon.png"; sourceTree = "<group>"; };
 		AA8D0A5314720AEA007B53AC /* socialize-authorize-user-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-authorize-user-icon@2x.png"; path = "Resources/socialize-authorize-user-icon@2x.png"; sourceTree = "<group>"; };
+		AA8D34991533A002006B1B41 /* SocializeUILikeCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUILikeCreator.h; path = Classes/SocializeUILikeCreator.h; sourceTree = "<group>"; };
+		AA8D349A1533A002006B1B41 /* SocializeUILikeCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUILikeCreator.m; path = Classes/SocializeUILikeCreator.m; sourceTree = "<group>"; };
+		AA8D349F1533A0AF006B1B41 /* SocializeUILikeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUILikeOptions.h; path = Classes/SocializeUILikeOptions.h; sourceTree = "<group>"; };
+		AA8D34A01533A0AF006B1B41 /* SocializeUILikeOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUILikeOptions.m; path = Classes/SocializeUILikeOptions.m; sourceTree = "<group>"; };
 		AA91664E1463B24700EFBD7E /* SocializeProfileEditViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileEditViewControllerTest.h; path = "Test Cases/SocializeProfileEditViewControllerTest.h"; sourceTree = "<group>"; };
 		AA91664F1463B24700EFBD7E /* SocializeProfileEditViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileEditViewControllerTest.m; path = "Test Cases/SocializeProfileEditViewControllerTest.m"; sourceTree = "<group>"; };
 		AA92BBE314E3574400F67058 /* SocializeTwitterAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeTwitterAuthViewController.h; path = Classes/SocializeTwitterAuthViewController.h; sourceTree = "<group>"; };
@@ -4601,6 +4625,8 @@
 				AA9A129D15046C6700176AFD /* SocializeOptions.m */,
 				AAE09C7E14F994670093CDA9 /* SocializeUIShareOptions.h */,
 				AAE09C7F14F994670093CDA9 /* SocializeUIShareOptions.m */,
+				AA8D349F1533A0AF006B1B41 /* SocializeUILikeOptions.h */,
+				AA8D34A01533A0AF006B1B41 /* SocializeUILikeOptions.m */,
 				AA71318F14F9A1FB00132E23 /* SocializeTwitterAuthOptions.h */,
 				AA71319014F9A1FB00132E23 /* SocializeTwitterAuthOptions.m */,
 				AA0730BD14FADB43008A8BA3 /* SocializeFacebookAuthOptions.h */,
@@ -4617,6 +4643,8 @@
 				AA2D088A150AF5B900D3C159 /* SocializeLikeOptions.m */,
 				AA2D088F150AF5CB00D3C159 /* SocializeShareOptions.h */,
 				AA2D0890150AF5CB00D3C159 /* SocializeShareOptions.m */,
+				AA86DB4615373CD0002DE37D /* SocializeThirdPartyLinkOptions.h */,
+				AA86DB4715373CD0002DE37D /* SocializeThirdPartyLinkOptions.m */,
 			);
 			name = Options;
 			sourceTree = "<group>";
@@ -4628,6 +4656,8 @@
 				AADCBDF914F5983300A40664 /* SocializeAction.m */,
 				AADCAD2814F802F60051D4A2 /* SocializeUIShareCreator.h */,
 				AADCAD2914F802F60051D4A2 /* SocializeUIShareCreator.m */,
+				AA8D34991533A002006B1B41 /* SocializeUILikeCreator.h */,
+				AA8D349A1533A002006B1B41 /* SocializeUILikeCreator.m */,
 				AA0730C314FAE594008A8BA3 /* SocializeThirdPartyAuthenticator.h */,
 				AA0730C414FAE595008A8BA3 /* SocializeThirdPartyAuthenticator.m */,
 				AAE915D014F57FE800F2DB95 /* SocializeTwitterAuthenticator.h */,
@@ -4644,6 +4674,8 @@
 				AA2D087E150AF57100D3C159 /* SocializeShareCreator.m */,
 				AA2D0883150AF59600D3C159 /* SocializeLikeCreator.h */,
 				AA2D0884150AF59600D3C159 /* SocializeLikeCreator.m */,
+				AA86DB4015364DCB002DE37D /* SocializeThirdPartyLinker.h */,
+				AA86DB4115364DCB002DE37D /* SocializeThirdPartyLinker.m */,
 				AAE09C7D14F994280093CDA9 /* Options */,
 			);
 			name = Actions;
@@ -4961,6 +4993,10 @@
 				AABA233E1523A17700B511FA /* SocializeEventService.h in Headers */,
 				AABA23431523A3EB00B511FA /* _Socialize_private.h in Headers */,
 				AA31EE00152F9245006C6308 /* SocializeConfiguration.h in Headers */,
+				AA8D349C1533A002006B1B41 /* SocializeUILikeCreator.h in Headers */,
+				AA8D34A21533A0AF006B1B41 /* SocializeUILikeOptions.h in Headers */,
+				AA86DB4315364DCB002DE37D /* SocializeThirdPartyLinker.h in Headers */,
+				AA86DB4915373CD0002DE37D /* SocializeThirdPartyLinkOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5113,6 +5149,10 @@
 				AABA233D1523A17700B511FA /* SocializeEventService.h in Headers */,
 				AABA23421523A3EB00B511FA /* _Socialize_private.h in Headers */,
 				AA31EDFF152F9245006C6308 /* SocializeConfiguration.h in Headers */,
+				AA8D349B1533A002006B1B41 /* SocializeUILikeCreator.h in Headers */,
+				AA8D34A11533A0AF006B1B41 /* SocializeUILikeOptions.h in Headers */,
+				AA86DB4215364DCB002DE37D /* SocializeThirdPartyLinker.h in Headers */,
+				AA86DB4815373CD0002DE37D /* SocializeThirdPartyLinkOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6966,6 +7006,10 @@
 				AA156AEA1521102400EB2D53 /* SocializeDummyViewController.m in Sources */,
 				AABA233F1523A17700B511FA /* SocializeEventService.m in Sources */,
 				AA31EE04152F9EEF006C6308 /* NSObject+BlocksKit.m in Sources */,
+				AA8D349D1533A002006B1B41 /* SocializeUILikeCreator.m in Sources */,
+				AA8D34A31533A0AF006B1B41 /* SocializeUILikeOptions.m in Sources */,
+				AA86DB4415364DCB002DE37D /* SocializeThirdPartyLinker.m in Sources */,
+				AA86DB4A15373CD0002DE37D /* SocializeThirdPartyLinkOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7345,6 +7389,10 @@
 				AA156AEB1521102400EB2D53 /* SocializeDummyViewController.m in Sources */,
 				AABA23401523A17700B511FA /* SocializeEventService.m in Sources */,
 				AA31EE03152F9EEF006C6308 /* NSObject+BlocksKit.m in Sources */,
+				AA8D349E1533A002006B1B41 /* SocializeUILikeCreator.m in Sources */,
+				AA8D34A41533A0AF006B1B41 /* SocializeUILikeOptions.m in Sources */,
+				AA86DB4515364DCB002DE37D /* SocializeThirdPartyLinker.m in Sources */,
+				AA86DB4B15373CD0002DE37D /* SocializeThirdPartyLinkOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

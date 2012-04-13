@@ -46,9 +46,25 @@
     [defaults synchronize]; \
 }
 
+#define SYNTH_DEFAULTS_BOOL_GETTER(NAME, STORE_KEY) \
++ (BOOL)NAME { \
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:STORE_KEY] boolValue]; \
+}
+
+#define SYNTH_DEFAULTS_BOOL_SETTER(NAME, STORE_KEY) \
++ (void)store ## NAME : (BOOL)value { \
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; \
+    [defaults setValue:[NSNumber numberWithBool:value] forKey:STORE_KEY]; \
+    [defaults synchronize]; \
+}
+
 #define SYNTH_DEFAULTS_PROPERTY(TYPE, UPPERNAME, LOWERNAME, STORE_KEY) \
 SYNTH_DEFAULTS_SETTER(TYPE, UPPERNAME, STORE_KEY) \
 SYNTH_DEFAULTS_GETTER(TYPE, LOWERNAME, STORE_KEY)
+
+#define SYNTH_DEFAULTS_BOOL_PROPERTY(UPPERNAME, LOWERNAME, STORE_KEY) \
+SYNTH_DEFAULTS_BOOL_SETTER(UPPERNAME, STORE_KEY) \
+SYNTH_DEFAULTS_BOOL_GETTER(LOWERNAME, STORE_KEY)
 
 NSString *const kSocializeDisableBrandingKey = @"kSocializeDisableBrandingKey";
 
@@ -84,6 +100,10 @@ NSString *const kSocializeFacebookAuthAccessToken = @"kSocializeFacebookAuthAcce
 NSString *const kSocializeFacebookAuthExpirationDate = @"kSocializeFacebookAuthExpirationDate";
 
 NSString *const kSocializeFacebookStringForAPI = @"FaceBook";
+
+// Authentication settings
+NSString *const kSocializeAuthenticationNotRequired = @"kSocializeAuthenticationNotRequired";
+NSString *const kSocializeAnonymousAllowed = @"kSocializeAnonymousAllowed";
 
 NSString *const SocializeDidRegisterDeviceTokenNotification = @"SocializeDidRegisterDeviceTokenNotification";
 
@@ -226,6 +246,9 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 
 SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerKey, twitterConsumerKey, kSocializeTwitterAuthConsumerKey)
 SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, kSocializeTwitterAuthConsumerSecret)
+
+SYNTH_DEFAULTS_BOOL_PROPERTY(AuthenticationNotRequired, authenticationNotRequired, kSocializeAuthenticationNotRequired)
+SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnonymousAllowed);
 
 +(void)storeApplicationLink:(NSString*)link {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -547,6 +570,14 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
 
 -(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat{
     [_viewService createViewForEntity:entity longitude:lng latitude:lat];
+}
+
+- (void)createView:(id<SocializeView>)view {
+    [_viewService createView:view];
+}
+
+- (void)createViews:(NSArray*)views {
+    [_viewService createViews:views];
 }
 
 /*

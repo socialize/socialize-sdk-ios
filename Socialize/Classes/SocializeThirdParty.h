@@ -29,5 +29,6 @@
 @interface SocializeThirdParty : NSObject
 + (NSArray*)allThirdParties;
 + (Class<SocializeThirdParty>)thirdPartyWithName:(NSString*)name;
++ (BOOL)thirdPartyLinked;
 
 @end

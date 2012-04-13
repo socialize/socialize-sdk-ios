@@ -56,4 +56,8 @@
  */
 //-(void)getViewsForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last;
 
+- (void)createViews:(NSArray*)views;
+
+- (void)createView:(id<SocializeView>)view;
+
 @end

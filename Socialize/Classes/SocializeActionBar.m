@@ -44,7 +44,7 @@
 #import "NSError+Socialize.h"
 #import "SocializeUIDisplayProxy.h"
 #import "SocializeUIShareCreator.h"
-#import "SocializeLikeCreator.h"
+#import "SocializeUILikeCreator.h"
 
 @interface SocializeActionBar()
 @property (nonatomic, retain) id<SocializeView> entityView;
@@ -243,7 +243,7 @@
     else {
         SocializeLike *like = [SocializeLike likeWithEntity:self.entity];
         __block __typeof__(self) weakSelf = self;
-        [SocializeLikeCreator createLike:like
+        [SocializeUILikeCreator createLike:like
                                  options:nil
                                  displayProxy:self.displayProxy
                                  success:^(id<SocializeLike> serverLike) {

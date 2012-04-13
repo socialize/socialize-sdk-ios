@@ -712,6 +712,8 @@ otherwise you will get a failure.
  */
 -(void)viewEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
 -(void)viewEntityWithKey:(NSString*)url longitude:(NSNumber*)lng latitude: (NSNumber*)lat;
+- (void)createView:(id<SocializeView>)view;
+- (void)createViews:(NSArray*)views;
 
 -(void)getCurrentUser;
 -(void)getUserWithId:(int)userId;
@@ -770,6 +772,20 @@ otherwise you will get a failure.
 - (void)_registerDeviceTokenString:(NSString*)deviceTokenString;
 
 -(BOOL)isAuthenticatedWithAuthType:(NSString*)authType;
+
+/**
+ * Don't require users to authenticate with a 3rd party for social actions
+ */
++ (void)storeAuthenticationNotRequired:(BOOL)authenticationNotRequired;
+
+/**
+ * Whether or not users are required to authenticate with a 3rd party for social actions
+ */
++ (BOOL)authenticationNotRequired;
+
++ (void)storeAnonymousAllowed:(BOOL)anonymousAllowed;
+
++ (BOOL)anonymousAllowed;
 
 /**
  Get single entity by id

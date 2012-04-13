@@ -153,6 +153,7 @@
     
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"like button"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"like button"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Skip"]];
     return steps;
 }
 

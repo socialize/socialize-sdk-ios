@@ -17,6 +17,7 @@
 @protocol SocializeShareCreatorDelegate;
 @protocol  SocializeShare;
 @protocol SocializeEntity;
+@protocol SocializeLike;
 
 @interface SocializeUIShareCreator : SocializeAction <SocializeServiceDelegate, SocializeBaseViewControllerDelegate>
 
@@ -34,4 +35,5 @@
 @property (nonatomic, assign) Class messageComposerClass;
 @property (nonatomic, assign) Class mailComposerClass;
 @property (nonatomic, retain) UIApplication *application;
+
 @end

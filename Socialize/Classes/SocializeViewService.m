@@ -7,6 +7,7 @@
 //
 
 #import "SocializeViewService.h"
+#import "SocializeEntity.h"
 
 #define VIEW_METHOD @"view/"
 #define ENTRY_KEY @"key"
@@ -26,29 +27,30 @@
 }
 
 -(void)createViewForEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat{
-    [self createViewForEntityKey:[entity key] longitude:lng latitude:lat];
+    SocializeView *view = [SocializeView viewWithEntity:entity];
+    view.lng = lng;
+    view.lat = lat;
+    
+    [self createView:view];
 }
 
--(void)createViewForEntityKey:(NSString*)key longitude:(NSNumber*)lng latitude: (NSNumber*)lat{
-    
-    if (key && [key length]){   
-        NSMutableDictionary* entityParam = [NSMutableDictionary dictionaryWithObjectsAndKeys:key, @"entity_key", nil];
-        
-        if (lng!= nil && lat != nil)
-        {
-            [entityParam setObject:lng forKey:@"lng"];
-            [entityParam setObject:lat forKey:@"lat"];
-        }
-        
-        NSArray *params = [NSArray arrayWithObject:entityParam];
-        [self executeRequest:
-         [SocializeRequest requestWithHttpMethod:@"POST"
-                                    resourcePath:VIEW_METHOD
-                              expectedJSONFormat:SocializeDictionaryWithListAndErrors
-                                          params:params]
-         ];
+-(void)createViewForEntityKey:(NSString*)key longitude:(NSNumber*)lng latitude: (NSNumber*)lat {
+    SocializeEntity *entity = [SocializeEntity entityWithKey:key name:nil];
+    [self createViewForEntity:entity longitude:lng latitude:lat];
+}
 
-    }
+- (void)createViews:(NSArray*)views {
+    NSArray *params = [_objectCreator createDictionaryRepresentationArrayForObjects:views];
+    [self executeRequest:
+     [SocializeRequest requestWithHttpMethod:@"POST"
+                                resourcePath:VIEW_METHOD
+                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                      params:params]
+     ];
+}
+
+- (void)createView:(id<SocializeView>)view {
+    [self createViews:[NSArray arrayWithObject:view]];
 }
 
 /*

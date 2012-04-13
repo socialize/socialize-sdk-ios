@@ -27,4 +27,11 @@
     return nil;
 }
 
++ (BOOL)thirdPartyLinked {
+    for (SocializeThirdParty *thirdParty in [self allThirdParties]) {
+        
+    }
+    return NO;
+}
+
 @end
