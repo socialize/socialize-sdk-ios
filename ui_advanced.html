@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Advanced UI Configuration &mdash; Socialize iOS SDK 1.6.2 documentation</title>
+    <title>Advanced UI Configuration &mdash; Socialize iOS SDK 1.6.3 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.6.2',
+        VERSION:     '1.6.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.6.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.6.3 documentation" href="index.html" />
     <link rel="next" title="SDK User Guide" href="sdk_user_guide.html" />
     <link rel="prev" title="Socialize Comments" href="comments.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="comments.html" title="Socialize Comments"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.6.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.6.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -80,6 +80,17 @@ you can remove them using [Socialize storeUIErrorAlertsDisabled:YES].</p>
 <p>In addition, a notification will be posted for all Socialize UI errors. The notification
 will be posted regardless of whether or not you disable error alerts.</p>
 <script src="https://gist.github.com/2008558.js?file=errorNotifications.m"></script></div>
+<div class="section" id="automatic-third-party-linking">
+<h2>Automatic Third Party Linking<a class="headerlink" href="#automatic-third-party-linking" title="Permalink to this headline">¶</a></h2>
+<p>v1.6.2 introduces Automatic Authentication for your users. Our data indicates
+that users who authenticate with a 3rd party (e.g. Twitter or Facebook) are
+much more likely to introduce new users to your app via the viral effect of
+activity within your app propagating to these 3rd party networks. From v1.6.3
+onwards the Socialize SDK will default to requiring users authenticate with a
+3rd party prior to performing any social action (e.g. Comment or Like).</p>
+<p>This default behavior can be overridden by the developer (you) with the
+following settings:</p>
+<script src="https://gist.github.com/2380420.js?file=linkOptions.m"></script></div>
 </div>
 
 
@@ -97,6 +108,7 @@ will be posted regardless of whether or not you disable error alerts.</p>
 <li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Advanced UI Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#disabling-error-alerts">Disabling Error Alerts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automatic-third-party-linking">Automatic Third Party Linking</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
@@ -130,7 +142,7 @@ will be posted regardless of whether or not you disable error alerts.</p>
         <li class="right" >
           <a href="comments.html" title="Socialize Comments"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.6.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.6.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

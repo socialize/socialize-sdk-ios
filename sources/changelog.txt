@@ -4,6 +4,18 @@
 Changelog
 =============================================
 
+v1.6.3
+------
+[feature] prompt authentication on likes [ ]
+
+[bug] Entity name not being propagated through action bar [ ]
+
+[feature] developer can hide/show 'id rather not' text on auth screen with parameter [ ]
+
+[feature] Developer can enable/disable prompt auth on action (See Advanced UI Section in Documentation) [ ]
+
+[bug] Fix a bad notifications image reference in comments list [ ]
+
 v1.6.2
 ------
 [bug] Using SMS crashes appmakr app. [ appmakr ]
