@@ -49,7 +49,7 @@
     [self.window makeKeyAndVisible];
 
     [Socialize storeAnonymousAllowed:YES];
-    
+    [Socialize storeAuthenticationNotRequired:NO];
 #if RUN_KIF_TESTS
     [[SampleSdkAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
         // Exit after the tests complete so that CI knows we're done
