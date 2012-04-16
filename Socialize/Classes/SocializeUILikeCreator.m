@@ -11,6 +11,7 @@
 #import "SocializeUIDisplayProxy.h"
 #import "SocializeLikeCreator.h"
 #import "SocializeThirdPartyLinker.h"
+#import "SocializeThirdParty.h"
 
 @interface SocializeUILikeCreator ()
 @property (nonatomic, assign) BOOL finishedCreatingLike;
@@ -76,7 +77,7 @@
 }
 
 - (BOOL)shouldLinkToThirdParty {
-    return ![Socialize authenticationNotRequired];
+    return ![Socialize authenticationNotRequired] && ![SocializeThirdParty thirdPartyLinked] && [self.socialize thirdPartyAvailable];
 }
 
 - (void)tryToFinishCreatingLike {
