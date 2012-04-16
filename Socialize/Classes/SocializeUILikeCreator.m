@@ -83,6 +83,7 @@
 - (void)tryToFinishCreatingLike {
     if (!self.finishedLinkingToThirdParty && [self shouldLinkToThirdParty]) {
         [self linkToThirdParty];
+        return;
     }
     
     if (!self.finishedCreatingLike) {
