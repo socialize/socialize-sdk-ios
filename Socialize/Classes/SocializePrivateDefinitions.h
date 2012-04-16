@@ -26,3 +26,9 @@
 
 extern NSString *const kSocializeDeviceTokenKey;
 
+typedef enum {
+    SocializeRequestStateFailed = -1,
+    SocializeRequestStateNotStarted,
+    SocializeRequestStateSent,
+    SocializeRequestStateFinished
+} SocializeRequestState;

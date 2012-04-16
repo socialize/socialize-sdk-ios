@@ -140,5 +140,10 @@ id testSelf;
     }];
 }
 
+- (id)createMockServiceForClass:(Class)serviceClass {
+    id mockService = [OCMockObject mockForClass:serviceClass];
+    [mockService stubIsKindOfClass:serviceClass];
+    return mockService;
+}
 
 @end

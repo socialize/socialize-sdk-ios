@@ -35,7 +35,6 @@
 #define USER_GET_ENDPOINT     @"user/"
 #define USER_POST_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/", userid]
 #define USER_LIKE_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/like/", userid]
-#define USER_LIKE_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/like/", userid]
 
 @implementation SocializeUserService
 
