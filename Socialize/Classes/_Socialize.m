@@ -613,6 +613,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_activityService getActivityOfCurrentApplication];
 }
 
+-(void)getActivityOfCurrentApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last {
+    [_activityService getActivityOfCurrentApplicationWithFirst:first last:last];
+}
+
 -(void)getActivityOfUser:(id<SocializeUser>)user
 {
     [_activityService getActivityOfUser:user];

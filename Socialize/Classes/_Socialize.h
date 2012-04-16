@@ -721,6 +721,7 @@ otherwise you will get a failure.
 -(void)updateUserProfile:(id<SocializeFullUser>)user profileImage:(UIImage*)profileImage;
 
 -(void)getActivityOfCurrentApplication;
+-(void)getActivityOfCurrentApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last;
 -(void)getActivityOfUser:(id<SocializeUser>)user;
 -(void)getActivityOfUserId:(NSInteger)userId;
 -(void)getActivityOfUserId:(NSInteger)userId first:(NSNumber*)first last:(NSNumber*)last activity:(SocializeActivityType)activityType;
