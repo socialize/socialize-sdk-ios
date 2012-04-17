@@ -11,6 +11,7 @@
 #import "SocializeUIDisplayProxy.h"
 #import "SocializeLikeCreator.h"
 #import "SocializeThirdPartyLinker.h"
+#import "SocializeThirdParty.h"
 
 @interface SocializeUILikeCreator ()
 @property (nonatomic, assign) BOOL finishedCreatingLike;
@@ -70,18 +71,20 @@
 - (void)linkToThirdParty {
     [SocializeThirdPartyLinker linkToThirdPartyWithOptions:nil displayProxy:self.displayProxy success:^{
         self.finishedLinkingToThirdParty = YES;
+        [self tryToFinishCreatingLike];
     } failure:^(NSError *error) {
         [self failWithError:error];
     }];
 }
 
 - (BOOL)shouldLinkToThirdParty {
-    return ![Socialize authenticationNotRequired];
+    return ![Socialize authenticationNotRequired] && ![SocializeThirdParty thirdPartyLinked] && [SocializeThirdParty thirdPartyAvailable];
 }
 
 - (void)tryToFinishCreatingLike {
     if (!self.finishedLinkingToThirdParty && [self shouldLinkToThirdParty]) {
         [self linkToThirdParty];
+        return;
     }
     
     if (!self.finishedCreatingLike) {

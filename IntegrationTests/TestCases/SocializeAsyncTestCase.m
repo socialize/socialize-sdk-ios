@@ -213,7 +213,8 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
 
 - (void)getActivityForApplication {
     [self prepare];
-    [self.socialize getActivityOfCurrentApplication];
+    [self.socialize getActivityOfCurrentApplicationWithFirst:[NSNumber numberWithInt:0] last:[NSNumber numberWithInt:10]];
+
     [self waitForStatus:kGHUnitWaitStatusSuccess];
 }
 

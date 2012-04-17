@@ -28,8 +28,19 @@
 }
 
 + (BOOL)thirdPartyLinked {
-    for (SocializeThirdParty *thirdParty in [self allThirdParties]) {
-        
+    for (id<SocializeThirdParty> thirdParty in [self allThirdParties]) {
+        if ([thirdParty isLinkedToSocialize]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
++ (BOOL)thirdPartyAvailable {
+    for (id<SocializeThirdParty> thirdParty in [self allThirdParties]) {
+        if ([thirdParty available]) {
+            return YES;
+        }
     }
     return NO;
 }

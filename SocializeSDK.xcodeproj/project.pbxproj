@@ -1572,6 +1572,7 @@
 		AAB427F914BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB427F614BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h */; };
 		AAB427FA14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
 		AAB427FB14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
+		AAB7B1E2153CEC6000A69D64 /* SocializeUILikeCreatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB7B1E1153CEC6000A69D64 /* SocializeUILikeCreatorTests.m */; };
 		AABA1FC11522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AABA1FC01522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m */; };
 		AABA233D1523A17700B511FA /* SocializeEventService.h in Headers */ = {isa = PBXBuildFile; fileRef = AABA233B1523A17700B511FA /* SocializeEventService.h */; };
 		AABA233E1523A17700B511FA /* SocializeEventService.h in Headers */ = {isa = PBXBuildFile; fileRef = AABA233B1523A17700B511FA /* SocializeEventService.h */; };
@@ -2952,6 +2953,8 @@
 		AAB2DEE5143A796300C3C1F5 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = "Frameworks/OCMock/Source/build/Release-iphoneos/libOCMock.a"; sourceTree = "<group>"; };
 		AAB427F614BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNotificationToggleBubbleContentView.h; path = Classes/SocializeNotificationToggleBubbleContentView.h; sourceTree = "<group>"; };
 		AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNotificationToggleBubbleContentView.m; path = Classes/SocializeNotificationToggleBubbleContentView.m; sourceTree = "<group>"; };
+		AAB7B1E0153CEC6000A69D64 /* SocializeUILikeCreatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUILikeCreatorTests.h; path = "Test Cases/SocializeUILikeCreatorTests.h"; sourceTree = "<group>"; };
+		AAB7B1E1153CEC6000A69D64 /* SocializeUILikeCreatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUILikeCreatorTests.m; path = "Test Cases/SocializeUILikeCreatorTests.m"; sourceTree = "<group>"; };
 		AABA1FBF1522913C00B511FA /* SocializeRichPushNotificationDisplayControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRichPushNotificationDisplayControllerTests.h; path = "Test Cases/SocializeRichPushNotificationDisplayControllerTests.h"; sourceTree = "<group>"; };
 		AABA1FC01522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRichPushNotificationDisplayControllerTests.m; path = "Test Cases/SocializeRichPushNotificationDisplayControllerTests.m"; sourceTree = "<group>"; };
 		AABA233B1523A17700B511FA /* SocializeEventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEventService.h; path = Classes/SocializeEventService.h; sourceTree = "<group>"; };
@@ -4738,6 +4741,8 @@
 				AAF4617E150D7FC5003B55F5 /* SocializeShareCreatorTests.m */,
 				AAF46180150D7FD7003B55F5 /* SocializeLikeCreatorTests.h */,
 				AAF46181150D7FD8003B55F5 /* SocializeLikeCreatorTests.m */,
+				AAB7B1E0153CEC6000A69D64 /* SocializeUILikeCreatorTests.h */,
+				AAB7B1E1153CEC6000A69D64 /* SocializeUILikeCreatorTests.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -7108,6 +7113,7 @@
 				AAE33AFD1522674800BEE348 /* SocializeDirectEntityNotificationDisplayControllerTests.m in Sources */,
 				AAE126A7152281C80096BC99 /* SocializeNotificationDisplayControllerTests.m in Sources */,
 				AABA1FC11522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m in Sources */,
+				AAB7B1E2153CEC6000A69D64 /* SocializeUILikeCreatorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
