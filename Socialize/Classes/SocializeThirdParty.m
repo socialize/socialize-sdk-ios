@@ -36,4 +36,13 @@
     return NO;
 }
 
++ (BOOL)thirdPartyAvailable {
+    for (id<SocializeThirdParty> thirdParty in [self allThirdParties]) {
+        if ([thirdParty available]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 @end

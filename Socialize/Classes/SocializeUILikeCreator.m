@@ -71,13 +71,14 @@
 - (void)linkToThirdParty {
     [SocializeThirdPartyLinker linkToThirdPartyWithOptions:nil displayProxy:self.displayProxy success:^{
         self.finishedLinkingToThirdParty = YES;
+        [self tryToFinishCreatingLike];
     } failure:^(NSError *error) {
         [self failWithError:error];
     }];
 }
 
 - (BOOL)shouldLinkToThirdParty {
-    return ![Socialize authenticationNotRequired] && ![SocializeThirdParty thirdPartyLinked] && [self.socialize thirdPartyAvailable];
+    return ![Socialize authenticationNotRequired] && ![SocializeThirdParty thirdPartyLinked] && [SocializeThirdParty thirdPartyAvailable];
 }
 
 - (void)tryToFinishCreatingLike {

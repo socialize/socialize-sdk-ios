@@ -30,5 +30,6 @@
 + (NSArray*)allThirdParties;
 + (Class<SocializeThirdParty>)thirdPartyWithName:(NSString*)name;
 + (BOOL)thirdPartyLinked;
++ (BOOL)thirdPartyAvailable;
 
 @end
