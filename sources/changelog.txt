@@ -4,6 +4,14 @@
 Changelog
 =============================================
 
+v1.6.4
+------
+[feature] Allow pagination in get application activity [ ]
+
+[bug] Third party link dialog is being reshown on relike [ ]
+
+[bug] Like from action bar creating under wrong user [ ]
+
 v1.6.3
 ------
 [feature] prompt authentication on likes [ ]
