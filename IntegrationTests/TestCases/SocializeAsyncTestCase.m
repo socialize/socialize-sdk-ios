@@ -224,6 +224,12 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     [self waitForStatus:kGHUnitWaitStatusSuccess];
 }
 
+- (void)getLikesForCurrentUserWithEntity:(id<SocializeEntity>)entity {
+    [self prepare];
+    [self.socialize getLikesForUser:[self.socialize authenticatedUser] entity:entity first:nil last:nil];
+    [self waitForStatus:kGHUnitWaitStatusSuccess];
+}
+
 - (void)getSubscriptionsForEntityKey:(NSString*)entityKey {
     [self prepare];
     [self.socialize getSubscriptionsForEntityKey:entityKey first:nil last:nil];

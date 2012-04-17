@@ -63,6 +63,7 @@ secureBaseURL = _secureBaseURL,
 running = _running,
 tokenRequest = _tokenRequest;
 @synthesize cancelled = cancelled_;
+@synthesize expectedProtocol = expectedProtocol_;
 
 + (NSString *)userAgentString
 {   

@@ -607,6 +607,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_userService updateUser:user profileImage:profileImage];
 }
 
+- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
+    [_userService getLikesForUser:user entity:entity first:first last:last];
+}
+
 #pragma mark activity related stuff
 -(void)getActivityOfCurrentApplication
 {

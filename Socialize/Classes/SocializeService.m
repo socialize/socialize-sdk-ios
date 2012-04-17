@@ -166,6 +166,8 @@
 
 -(void) dispatch:(SocializeRequest *)request didLoadRawResponse:(NSData *)data
 {
+    Protocol *protocolType = request.expectedProtocol != nil ? request.expectedProtocol : [self ProtocolType];
+
     //Move the following lines to the base  SocializeService Class, because it's the same for all objects.
     NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     
@@ -192,7 +194,8 @@
             return;
         }
         
-        id objectResponse = [_objectCreator createObjectFromString:items forProtocol:[self ProtocolType]]; 
+        
+        id objectResponse = [_objectCreator createObjectFromString:items forProtocol:protocolType]; 
         id errorResponses = [_objectCreator createObjectFromString:errors forProtocol:@protocol(SocializeError)]; 
         
         if ([errorResponses isKindOfClass: [NSArray class]]){
@@ -205,7 +208,7 @@
         
         if([objectResponse isKindOfClass: [NSArray class]]){ 
             if ([objectResponse count]) {
-                if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]]) {
+                if ([[objectResponse objectAtIndex:0] conformsToProtocol:protocolType]) {
                     [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponses];
                 } else {
                     [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Object did not conform to expected data protocol"]];
@@ -220,8 +223,8 @@
         }
     }
     else if (request.expectedJSONFormat == SocializeDictionary) {
-        id objectResponse = [_objectCreator createObjectFromString:responseString forProtocol:[self ProtocolType]]; 
-        if ([objectResponse conformsToProtocol:[self ProtocolType]]) {
+        id objectResponse = [_objectCreator createObjectFromString:responseString forProtocol:protocolType]; 
+        if ([objectResponse conformsToProtocol:protocolType]) {
             [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
         } else {
             [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Object did not conform to expected data protocol"]];
@@ -229,11 +232,11 @@
     }
     else if (request.expectedJSONFormat == SocializeList){
         //  NSString* items = [_objectCreator createObjectFromString:responseString forProtocol:[self ProtocolType]];
-        id objectResponse = [_objectCreator createObjectFromString:responseString forProtocol:[self ProtocolType]]; 
+        id objectResponse = [_objectCreator createObjectFromString:responseString forProtocol:protocolType]; 
         
         if([objectResponse isKindOfClass: [NSArray class]]){ 
             if ([objectResponse count]){
-                if ([[objectResponse objectAtIndex:0] conformsToProtocol:[self ProtocolType]])
+                if ([[objectResponse objectAtIndex:0] conformsToProtocol:protocolType])
                     [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
                 else {
                     [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Object did not conform to expected data protocol"]];

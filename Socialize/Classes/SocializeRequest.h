@@ -66,6 +66,7 @@ typedef enum {
 @property(nonatomic,copy) NSString        *secureBaseURL;
 @property(nonatomic,assign,getter=isRunning) BOOL        running;
 @property(nonatomic,assign,getter=isTokenRequest) BOOL        tokenRequest;
+@property (nonatomic, assign) Protocol *expectedProtocol;
 + (NSString*)defaultBaseURL;
 + (NSString*)defaultSecureBaseURL;
 

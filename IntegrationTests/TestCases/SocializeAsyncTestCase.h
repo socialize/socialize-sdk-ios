@@ -30,6 +30,7 @@
 - (void)getActivityForCurrentUser;
 - (void)getActivityForApplication;
 - (void)getLikesForURL:(NSString*)url;
+- (void)getLikesForCurrentUserWithEntity:(id<SocializeEntity>)entity;
 - (void)deleteLike:(id<SocializeLike>)like;
 - (void)createEntityWithURL:(NSString*)url name:(NSString*)name;
 - (void)createEntity:(id<SocializeEntity>)entity;

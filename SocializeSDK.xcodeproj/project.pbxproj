@@ -1855,6 +1855,7 @@
 		AAE795B214684FE600BEAD28 /* TestActivityServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE795AD14684F1E00BEAD28 /* TestActivityServices.m */; };
 		AAE795B314684FF200BEAD28 /* TestLikeServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE7958E14684EB100BEAD28 /* TestLikeServices.m */; };
 		AAE8412A1448CBA3006BDA0E /* SocializeService+Testing.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE841291448CBA3006BDA0E /* SocializeService+Testing.m */; };
+		AAE85400153DF18A002B93AD /* TestUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE853FF153DF18A002B93AD /* TestUserService.m */; };
 		AAE915D314F57FE800F2DB95 /* SocializeFacebookInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE915CC14F57FE800F2DB95 /* SocializeFacebookInterface.h */; };
 		AAE915D414F57FE800F2DB95 /* SocializeFacebookInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE915CC14F57FE800F2DB95 /* SocializeFacebookInterface.h */; };
 		AAE915D514F57FE800F2DB95 /* SocializeFacebookInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE915CD14F57FE800F2DB95 /* SocializeFacebookInterface.m */; };
@@ -3014,6 +3015,8 @@
 		AAE795AD14684F1E00BEAD28 /* TestActivityServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestActivityServices.m; sourceTree = "<group>"; };
 		AAE841281448CBA3006BDA0E /* SocializeService+Testing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SocializeService+Testing.h"; path = "Test Cases/SocializeService+Testing.h"; sourceTree = "<group>"; };
 		AAE841291448CBA3006BDA0E /* SocializeService+Testing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SocializeService+Testing.m"; path = "Test Cases/SocializeService+Testing.m"; sourceTree = "<group>"; };
+		AAE853FE153DF18A002B93AD /* TestUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUserService.h; sourceTree = "<group>"; };
+		AAE853FF153DF18A002B93AD /* TestUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUserService.m; sourceTree = "<group>"; };
 		AAE915CC14F57FE800F2DB95 /* SocializeFacebookInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebookInterface.h; path = Classes/SocializeFacebookInterface.h; sourceTree = "<group>"; };
 		AAE915CD14F57FE800F2DB95 /* SocializeFacebookInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebookInterface.m; path = Classes/SocializeFacebookInterface.m; sourceTree = "<group>"; };
 		AAE915CE14F57FE800F2DB95 /* SocializeShareBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeShareBuilder.h; path = Classes/SocializeShareBuilder.h; sourceTree = "<group>"; };
@@ -4166,6 +4169,8 @@
 				AA01F8F5150A84C900BB2B29 /* TestSocializeService.m */,
 				AA946139152A877200BCEB4A /* TestNotifications.h */,
 				AA94613A152A877200BCEB4A /* TestNotifications.m */,
+				AAE853FE153DF18A002B93AD /* TestUserService.h */,
+				AAE853FF153DF18A002B93AD /* TestUserService.m */,
 			);
 			path = TestCases;
 			sourceTree = "<group>";
@@ -7173,6 +7178,7 @@
 				AA03D183150A9D8C00E7BFA3 /* DataHelper.m in Sources */,
 				AA94613B152A877200BCEB4A /* TestNotifications.m in Sources */,
 				AA946199152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.m in Sources */,
+				AAE85400153DF18A002B93AD /* TestUserService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
