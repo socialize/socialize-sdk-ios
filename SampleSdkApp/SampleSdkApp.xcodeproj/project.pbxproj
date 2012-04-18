@@ -613,9 +613,6 @@
 		AA8D345715339378006B1B41 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8D325215339377006B1B41 /* SocializeComposeMessageViewController.xib */; };
 		AA8D345815339378006B1B41 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8D325215339377006B1B41 /* SocializeComposeMessageViewController.xib */; };
 		AA8D345915339378006B1B41 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8D325215339377006B1B41 /* SocializeComposeMessageViewController.xib */; };
-		AA8D345A15339378006B1B41 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA8D325315339377006B1B41 /* SocializeConfigurationInfo.plist */; };
-		AA8D345B15339378006B1B41 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA8D325315339377006B1B41 /* SocializeConfigurationInfo.plist */; };
-		AA8D345C15339378006B1B41 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA8D325315339377006B1B41 /* SocializeConfigurationInfo.plist */; };
 		AA8D345D15339378006B1B41 /* SocializeDummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8D325415339377006B1B41 /* SocializeDummyViewController.xib */; };
 		AA8D345E15339378006B1B41 /* SocializeDummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8D325415339377006B1B41 /* SocializeDummyViewController.xib */; };
 		AA8D345F15339378006B1B41 /* SocializeDummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8D325415339377006B1B41 /* SocializeDummyViewController.xib */; };
@@ -1863,7 +1860,6 @@
 				AA8D345115339378006B1B41 /* SocializeCommentDetailsViewController.xib in Resources */,
 				AA8D345415339378006B1B41 /* SocializeCommentsTableViewController.xib in Resources */,
 				AA8D345715339378006B1B41 /* SocializeComposeMessageViewController.xib in Resources */,
-				AA8D345A15339378006B1B41 /* SocializeConfigurationInfo.plist in Resources */,
 				AA8D345D15339378006B1B41 /* SocializeDummyViewController.xib in Resources */,
 				AA8D346015339378006B1B41 /* SocializeEditValueTableViewCell.xib in Resources */,
 				AA8D346315339378006B1B41 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
@@ -2072,7 +2068,6 @@
 				AA8D345215339378006B1B41 /* SocializeCommentDetailsViewController.xib in Resources */,
 				AA8D345515339378006B1B41 /* SocializeCommentsTableViewController.xib in Resources */,
 				AA8D345815339378006B1B41 /* SocializeComposeMessageViewController.xib in Resources */,
-				AA8D345B15339378006B1B41 /* SocializeConfigurationInfo.plist in Resources */,
 				AA8D345E15339378006B1B41 /* SocializeDummyViewController.xib in Resources */,
 				AA8D346115339378006B1B41 /* SocializeEditValueTableViewCell.xib in Resources */,
 				AA8D346415339378006B1B41 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
@@ -2263,7 +2258,6 @@
 				AA8D345315339378006B1B41 /* SocializeCommentDetailsViewController.xib in Resources */,
 				AA8D345615339378006B1B41 /* SocializeCommentsTableViewController.xib in Resources */,
 				AA8D345915339378006B1B41 /* SocializeComposeMessageViewController.xib in Resources */,
-				AA8D345C15339378006B1B41 /* SocializeConfigurationInfo.plist in Resources */,
 				AA8D345F15339378006B1B41 /* SocializeDummyViewController.xib in Resources */,
 				AA8D346215339378006B1B41 /* SocializeEditValueTableViewCell.xib in Resources */,
 				AA8D346515339378006B1B41 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
