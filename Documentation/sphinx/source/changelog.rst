@@ -4,17 +4,37 @@
 Changelog
 =============================================
 
+v1.6.4
+------
+[feature] Allow pagination in get application activity [ ]
+
+[bug] Third party link dialog is being reshown on relike [ ]
+
+[bug] Like from action bar creating under wrong user [ ]
+
+v1.6.3
+------
+[feature] prompt authentication on likes [ ]
+
+[bug] Entity name not being propagated through action bar [ ]
+
+[feature] developer can hide/show 'id rather not' text on auth screen with parameter [ ]
+
+[feature] Developer can enable/disable prompt auth on action (See Advanced UI Section in Documentation) [ ]
+
+[bug] Fix a bad notifications image reference in comments list [ ]
+
 v1.6.2
 ------
-[bug] HIGH PRI: using SMS crashes appmakr app. [ appmakr ]
+[bug] Using SMS crashes appmakr app. [ appmakr ]
 
-[bug] fix Facebook app link name [ ]
+[bug] Facebook wall post app link incorrectly showed entity name [ ]
 
-[bug] Missing docs for explicit Facebook linking [ ]
+[bug] Add missing docs for explicit Facebook linking [ ]
 
-[feature] Improve look of action buttons when posting a comment [ ]
+[feature] Improve look of Post Comment action buttons [ ]
 
-[feature] remove extra app link on FB posts [ ]
+[feature] Remove getsocialize.com link from Facebook wall posts [ ]
 
 v1.6.1
 ------
