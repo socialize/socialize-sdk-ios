@@ -16,7 +16,6 @@
 @property (nonatomic, retain) Socialize *socialize;
 @property (nonatomic, retain) id<SocializeEntity> entity;
 
-@property (nonatomic, assign) BOOL initialized;
 @property (nonatomic, readonly) BOOL liked;
 
 @property (nonatomic, retain) UIImage *disabledImage;
@@ -27,9 +26,13 @@
 @property (nonatomic, retain) UIImage *activeImage;
 @property (nonatomic, retain) UIImage *activeHighlightedImage;
 
-@property (nonatomic, retain) UIImage *likeIcon;
+@property (nonatomic, retain) UIImage *likedIcon;
+@property (nonatomic, retain) UIImage *unlikedIcon;
 
 @property (nonatomic, retain) id<SocializeUIDisplay> display;
+
+@property (nonatomic, assign) BOOL initialized;
+@property (nonatomic, assign) BOOL hideCount;
 
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity display:(id<SocializeUIDisplay>)display;
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)controller;

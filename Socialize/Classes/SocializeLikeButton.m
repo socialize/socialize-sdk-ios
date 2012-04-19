@@ -12,6 +12,7 @@
 #import "SocializeLikeService.h"
 #import "NSTimer+BlocksKit.h"
 #import "SocializeUILikeCreator.h"
+#import "NSNumber+Additions.h"
 
 static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 
@@ -24,6 +25,8 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 
 @property (nonatomic, retain) id<SocializeLike> like;
 @property (nonatomic, retain) NSTimer *recoveryTimer;
+@property (nonatomic, retain) id<SocializeEntity> serverEntity;
+
 
 @end
 
@@ -34,14 +37,17 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 @synthesize inactiveHighlightedImage = inactiveHighlightedImage_;
 @synthesize activeImage = activeImage_;
 @synthesize activeHighlightedImage = activeHighlightedImage_;
-@synthesize likeIcon = likeIcon_;
+@synthesize likedIcon = likedIcon_;
+@synthesize unlikedIcon = unlikedIcon_;
 @synthesize display = display_;
 @synthesize entity = entity_;
 @synthesize socialize = socialize_;
 @synthesize like = like_;
 @synthesize recoveryTimer = recoveryTimer_;
+@synthesize serverEntity = serverEntity_;
 
 @synthesize initialized = initialized_;
+@synthesize hideCount = hideCount_;
 
 @synthesize likeGetRequestState = likeGetRequestState_;
 @synthesize likeCreateRequestState = likeCreateRequestState_;
@@ -55,6 +61,11 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     self.inactiveHighlightedImage = nil;
     self.activeImage = nil;
     self.activeHighlightedImage = nil;
+    self.likedIcon = nil;
+    self.unlikedIcon = nil;
+    self.display = nil;
+    self.entity = nil;
+    self.serverEntity = nil;
     self.like = nil;
     
     if (recoveryTimer_ != nil) {
@@ -75,7 +86,6 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
         
         self.actualButton.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         [self addSubview:self.actualButton];
-        
     }
     return self;
 }
@@ -88,6 +98,18 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 - (id)initWithFrame:(CGRect)frame {
     [self doesNotRecognizeSelector:_cmd];
     return nil;
+}
+
+- (void)updateViewFromServerEntity:(id<SocializeEntity>)serverEntity {
+    if (!self.hideCount) {
+        NSString* formattedValue = [NSNumber formatMyNumber:[NSNumber numberWithInteger:serverEntity.likes] ceiling:[NSNumber numberWithInt:1000]]; 
+        [self.actualButton setTitle:formattedValue forState:UIControlStateNormal];
+    }
+}
+
+- (void)setServerEntity:(id<SocializeEntity>)serverEntity {
+    NonatomicRetainedSetToFrom(serverEntity_, serverEntity);
+    [self updateViewFromServerEntity:self.serverEntity];
 }
 
 - (void)attemptRecovery {
@@ -177,7 +199,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
         // Get likes for user
         if ([dataArray count] > 0) {
             self.like = [dataArray objectAtIndex:0];
-            self.entity = self.like.entity;
+            self.serverEntity = self.like.entity;
         } else {
             // the like did not exist, which is ok. Continue on, anyway
         }
@@ -192,7 +214,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     if ([service isKindOfClass:[SocializeEntityService class]]) {
         
         // Finished creating entity (initialization)
-        self.entity = objectOrObjects;
+        self.serverEntity = objectOrObjects;
         self.entityCreateRequestState = SocializeRequestStateFinished;
         [self tryToFinishInitializing];
     }
@@ -200,6 +222,9 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 
 - (void)service:(SocializeService *)service didDelete:(id<SocializeObject>)object {
     if ([service isKindOfClass:[SocializeLikeService class]]) {
+        id<SocializeLike> serverLike = (id<SocializeLike>)object;
+        self.serverEntity = serverLike.entity;
+        
         self.likeDeleteRequestState = SocializeRequestStateFinished;
         self.like = nil;
         self.actualButton.enabled = YES;
@@ -246,21 +271,38 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     return [[UIImage imageNamed:@"action-bar-button-red-hover.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 }
 
-+ (UIImage*)defaultLikeIcon {
++ (UIImage*)defaultLikedIcon {
+    return [UIImage imageNamed:@"action-bar-icon-liked.png"];
+}
+
++ (UIImage*)defaultUnlikedIcon {
     return [UIImage imageNamed:@"action-bar-icon-like.png"];
 }
 
-- (void)setLikeIcon:(UIImage*)likeIcon {
-    NonatomicRetainedSetToFrom(likeIcon_, likeIcon);
+- (void)setLikedIcon:(UIImage*)likedIcon {
+    NonatomicRetainedSetToFrom(likedIcon_, likedIcon);
     [self configureButtonBackgroundImages];
 }
 
-- (UIImage*)likeIcon {
-    if (likeIcon_ == nil) {
-        likeIcon_ = [[[self class] defaultLikeIcon] retain];
+- (UIImage*)likedIcon {
+    if (likedIcon_ == nil) {
+        likedIcon_ = [[[self class] defaultLikedIcon] retain];
     }
     
-    return likeIcon_;
+    return likedIcon_;
+}
+
+- (void)setUnlikedIcon:(UIImage*)unlikedIcon {
+    NonatomicRetainedSetToFrom(unlikedIcon_, unlikedIcon);
+    [self configureButtonBackgroundImages];
+}
+
+- (UIImage*)unlikedIcon {
+    if (unlikedIcon_ == nil) {
+        unlikedIcon_ = [[[self class] defaultUnlikedIcon] retain];
+    }
+    
+    return unlikedIcon_;
 }
 
 - (UIImage*)disabledImage {
@@ -334,12 +376,13 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     if (self.like != nil) {
         [self.actualButton setBackgroundImage:self.activeImage forState:UIControlStateNormal];
         [self.actualButton setBackgroundImage:self.activeHighlightedImage forState:UIControlStateHighlighted];
+        [self.actualButton setImage:self.likedIcon forState:UIControlStateNormal];
     } else {
         [self.actualButton setBackgroundImage:self.inactiveImage forState:UIControlStateNormal];
         [self.actualButton setBackgroundImage:self.inactiveHighlightedImage forState:UIControlStateHighlighted];        
+        [self.actualButton setImage:self.unlikedIcon forState:UIControlStateNormal];
     }
     
-    [self.actualButton setImage:self.likeIcon forState:UIControlStateNormal];
 }
 
 - (UIButton*)actualButton {
@@ -370,6 +413,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
             self.likeCreateRequestState = SocializeRequestStateFinished;
             self.like = serverLike;
             self.actualButton.enabled = YES;
+            self.serverEntity = serverLike.entity;
             [self configureButtonBackgroundImages];
 
         } failure:^(NSError *error) {

@@ -124,6 +124,7 @@ static NSString *entityKey = @"entityKey";
 
 - (void)succeedDeletingLike {
     id mockLike = [OCMockObject mockForProtocol:@protocol(SocializeLike)];
+    [[[mockLike stub] andReturn:self.mockEntity] entity];
     [self succeedDeleteLikeWithLike:mockLike];
 }
 
@@ -135,6 +136,8 @@ static NSString *entityKey = @"entityKey";
 
 
 - (void)testSuccessfulInitializationWithExistingLike {
+    [self.mockEntity makeNice];
+    
     // Should start disabled and enable after successful init
     [[self.mockActualButton expect] setEnabled:NO];
     [[self.mockActualButton expect] setEnabled:YES];
@@ -143,6 +146,8 @@ static NSString *entityKey = @"entityKey";
 }
 
 - (void)testSuccessfulInitializationWithoutExistingLike {
+    [self.mockEntity makeNice];
+
     // Should start disabled and enable after successful init
     [[self.mockActualButton expect] setEnabled:NO];
     [[self.mockActualButton expect] setEnabled:YES];
@@ -151,6 +156,8 @@ static NSString *entityKey = @"entityKey";
 }
 
 - (void)testLikeAndUnlikeFromInitialState {
+    [self.mockEntity makeNice];
+
     [self.mockSocialize setExpectationOrderMatters:YES];
 
     [self succeedInitializationWithoutExistingLike];
@@ -163,6 +170,8 @@ static NSString *entityKey = @"entityKey";
 }
 
 - (void)testUnlikeAndLikeFromInitialState {
+    [self.mockEntity makeNice];
+
     [self.mockSocialize setExpectationOrderMatters:YES];
 
     [self succeedInitializationWithExistingLike];

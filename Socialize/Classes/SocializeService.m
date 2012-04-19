@@ -141,7 +141,7 @@
         else if ([request.httpMethod isEqualToString:@"GET"] && [self.delegate respondsToSelector:@selector(service:didFetchElements:)])
             [self.delegate service:self didFetchElements:array];
         else if ([request.httpMethod isEqualToString:@"DELETE"] && [self.delegate respondsToSelector:@selector(service:didDelete:)])
-            [self.delegate service:self didDelete:nil];
+            [self.delegate service:self didDelete:objectList];
         else if ([request.httpMethod isEqualToString:@"PUT"] && [self.delegate respondsToSelector:@selector(service:didUpdate:)])
             [self.delegate service:self didUpdate:objectList];
     } else {

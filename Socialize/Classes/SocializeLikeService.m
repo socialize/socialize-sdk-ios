@@ -75,7 +75,7 @@
         [self executeRequest:
          [SocializeRequest requestWithHttpMethod:@"DELETE"
                                     resourcePath:updatedResource
-                              expectedJSONFormat:SocializeAny
+                              expectedJSONFormat:SocializeDictionary
                                           params:params]
          ];
 
