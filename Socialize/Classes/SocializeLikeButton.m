@@ -439,4 +439,19 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 - (void)initializeActualButton {
 }
 
+- (void)refresh {
+    [self.socialize cancelAllRequests];
+    self.initialized = NO;
+    self.likeGetRequestState = SocializeRequestStateNotStarted;
+    self.likeDeleteRequestState = SocializeRequestStateNotStarted;
+    self.likeCreateRequestState = SocializeRequestStateNotStarted;
+    self.entityCreateRequestState = SocializeRequestStateNotStarted;
+    self.like = nil;
+    self.serverEntity = nil;
+    [self stopRecoveryTimer];
+    self.actualButton.enabled = NO;
+    
+    [self tryToFinishInitializing];
+}
+
 @end

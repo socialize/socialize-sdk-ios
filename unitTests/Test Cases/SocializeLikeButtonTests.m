@@ -25,6 +25,10 @@ static NSString *entityKey = @"entityKey";
 @synthesize realButton = realButton_;
 @synthesize mockDisplay = mockDisplay_;
 
+- (BOOL)shouldRunOnMainThread {
+    return YES;
+}
+
 - (id)createUUT {
     CGRect testFrame = CGRectMake(0, 0, 60, 30);
     self.mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
@@ -108,9 +112,6 @@ static NSString *entityKey = @"entityKey";
     id mockLike = [OCMockObject mockForProtocol:@protocol(SocializeLike)];
     [[[mockLike stub] andReturn:self.mockEntity] entity];
     [self succeedGetLikeWithLike:mockLike];
-    
-    
-    [self.likeButton willMoveToSuperview:nil];
 }
 
 - (void)succeedInitializationWithoutExistingLike {
@@ -118,8 +119,6 @@ static NSString *entityKey = @"entityKey";
 
     [self succeedGetLikeWithLike:nil];
     [self succeedCreateEntityWithEntity:self.mockEntity];
-    
-    [self.likeButton willMoveToSuperview:nil];
 }
 
 - (void)succeedDeletingLike {
@@ -143,6 +142,9 @@ static NSString *entityKey = @"entityKey";
     [[self.mockActualButton expect] setEnabled:YES];
     
     [self succeedInitializationWithExistingLike];
+    
+    [self.likeButton willMoveToSuperview:nil];
+
 }
 
 - (void)testSuccessfulInitializationWithoutExistingLike {
@@ -153,7 +155,30 @@ static NSString *entityKey = @"entityKey";
     [[self.mockActualButton expect] setEnabled:YES];
     
     [self succeedInitializationWithoutExistingLike];
+    
+    [self.likeButton willMoveToSuperview:nil];
+
 }
+
+- (void)testSuccessfulInitializationAndRefreshWithoutExistingLike {
+    [self.mockEntity makeNice];
+    
+    // Should start disabled and enable after successful init
+    [self.mockActualButton setExpectationOrderMatters:YES];
+    [[self.mockActualButton expect] setEnabled:NO];
+    [[self.mockActualButton expect] setEnabled:YES];
+    [[self.mockActualButton expect] setEnabled:NO];
+    [[self.mockActualButton expect] setEnabled:YES];
+    
+    [[self.mockSocialize expect] cancelAllRequests];
+    
+    [self succeedInitializationWithoutExistingLike];
+    [self succeedInitializationWithoutExistingLike];
+    
+    [self.likeButton willMoveToSuperview:nil];
+    [self.likeButton refresh];
+}
+
 
 - (void)testLikeAndUnlikeFromInitialState {
     [self.mockEntity makeNice];
@@ -165,6 +190,7 @@ static NSString *entityKey = @"entityKey";
     [self succeedDeletingLike];
     
     
+    [self.likeButton willMoveToSuperview:nil];
     [self.realButton simulateControlEvent:UIControlEventTouchUpInside];
     [self.realButton simulateControlEvent:UIControlEventTouchUpInside];
 }
@@ -178,6 +204,7 @@ static NSString *entityKey = @"entityKey";
     [self succeedDeletingLike];
     [self succeedCreatingLike];
     
+    [self.likeButton willMoveToSuperview:nil];
     [self.realButton simulateControlEvent:UIControlEventTouchUpInside];
     [self.realButton simulateControlEvent:UIControlEventTouchUpInside];
 }
