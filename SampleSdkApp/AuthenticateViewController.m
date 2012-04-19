@@ -85,9 +85,9 @@
 
     [Socialize storeFacebookAppId:@"115622641859087"];
     
-    id<SocializeEntity> entity = [SocializeEntity entityWithKey:@"something" name:@"Something"];
-    SocializeLikeButton *likeButton = [[SocializeLikeButton alloc] initWithFrame:CGRectMake(50, 0, 100, 40) entity:entity];
-    [self.view addSubview:likeButton];
+//    id<SocializeEntity> entity = [SocializeEntity entityWithKey:@"something" name:@"Something"];
+//    SocializeLikeButton *likeButton = [[SocializeLikeButton alloc] initWithFrame:CGRectMake(50, 0, 100, 40) entity:entity viewController:self];
+//    [self.view addSubview:likeButton];
 
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];

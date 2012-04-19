@@ -29,6 +29,9 @@
 
 @property (nonatomic, retain) UIImage *likeIcon;
 
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity;
+@property (nonatomic, retain) id<SocializeUIDisplay> display;
+
+- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity display:(id<SocializeUIDisplay>)display;
+- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)controller;
 
 @end

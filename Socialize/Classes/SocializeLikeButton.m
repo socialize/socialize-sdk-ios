@@ -11,6 +11,7 @@
 #import "SocializeEntityService.h"
 #import "SocializeLikeService.h"
 #import "NSTimer+BlocksKit.h"
+#import "SocializeUILikeCreator.h"
 
 static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 
@@ -34,6 +35,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 @synthesize activeImage = activeImage_;
 @synthesize activeHighlightedImage = activeHighlightedImage_;
 @synthesize likeIcon = likeIcon_;
+@synthesize display = display_;
 @synthesize entity = entity_;
 @synthesize socialize = socialize_;
 @synthesize like = like_;
@@ -63,12 +65,13 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     [super dealloc];
 }
 
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity {
+- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity display:(id<SocializeUIDisplay>)display {
     self = [super initWithFrame:frame];
     if (self) {
         [self configureButtonBackgroundImages];
         
         self.entity = entity;
+        self.display = display;
         
         self.actualButton.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         [self addSubview:self.actualButton];
@@ -76,6 +79,11 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     }
     return self;
 }
+
+- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)controller {
+    return [self initWithFrame:frame entity:entity display:(id<SocializeUIDisplay>)controller];
+}
+
 
 - (id)initWithFrame:(CGRect)frame {
     [self doesNotRecognizeSelector:_cmd];
@@ -182,15 +190,11 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 
 - (void)service:(SocializeService *)service didCreate:(id)objectOrObjects {
     if ([service isKindOfClass:[SocializeEntityService class]]) {
+        
+        // Finished creating entity (initialization)
         self.entity = objectOrObjects;
         self.entityCreateRequestState = SocializeRequestStateFinished;
         [self tryToFinishInitializing];
-    } else if ([service isKindOfClass:[SocializeLikeService class]]) {
-        // Like has been successfully created
-        self.likeCreateRequestState = SocializeRequestStateFinished;
-        self.like = objectOrObjects;
-        self.actualButton.enabled = YES;
-        [self configureButtonBackgroundImages];
     }
 }
 
@@ -209,9 +213,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     } else if ([service isKindOfClass:[SocializeEntityService class]]) {
         self.entityCreateRequestState = SocializeRequestStateFailed;
     } else if ([service isKindOfClass:[SocializeLikeService class]]) {
-        if (self.likeCreateRequestState == SocializeRequestStateSent) {
-            self.likeCreateRequestState = SocializeRequestStateFailed;
-        } else if (self.likeDeleteRequestState == SocializeRequestStateSent) {
+        if (self.likeDeleteRequestState == SocializeRequestStateSent) {
             self.likeDeleteRequestState = SocializeRequestStateFailed;
         }
     }
@@ -361,7 +363,19 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 - (void)likeOnServer {
     if (self.likeCreateRequestState != SocializeRequestStateSent) {
         self.likeCreateRequestState = SocializeRequestStateSent;
-        [self.socialize likeEntityWithKey:self.entity.key longitude:nil latitude:nil];
+        
+        SocializeLike *like = [SocializeLike likeWithEntity:self.entity];
+        [SocializeUILikeCreator createLike:like options:nil display:self.display success:^(id<SocializeLike> serverLike) {
+            // Like has been successfully created
+            self.likeCreateRequestState = SocializeRequestStateFinished;
+            self.like = serverLike;
+            self.actualButton.enabled = YES;
+            [self configureButtonBackgroundImages];
+
+        } failure:^(NSError *error) {
+            self.likeCreateRequestState = SocializeRequestStateFailed;
+            [self startRecoveryTimer];
+        }];
     }
 }
 

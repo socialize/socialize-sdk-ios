@@ -11,6 +11,7 @@
 #import "SocializeUserService.h"
 #import "SocializeLikeService.h"
 #import "SocializeEntityService.h"
+#import "SocializeUILikeCreator.h"
 
 static NSInteger authenticatedUserID = 12345;
 static NSString *entityKey = @"entityKey";
@@ -22,11 +23,13 @@ static NSString *entityKey = @"entityKey";
 @synthesize mockSocialize = mockSocialize_;
 @synthesize mockAuthenticatedUser = mockAuthenticatedUser_;
 @synthesize realButton = realButton_;
+@synthesize mockDisplay = mockDisplay_;
 
 - (id)createUUT {
     CGRect testFrame = CGRectMake(0, 0, 60, 30);
     self.mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
-    self.likeButton = [[[SocializeLikeButton alloc] initWithFrame:testFrame entity:self.mockEntity] autorelease];
+    self.mockDisplay = [OCMockObject mockForProtocol:@protocol(SocializeUIDisplay)];
+    self.likeButton = [[[SocializeLikeButton alloc] initWithFrame:testFrame entity:self.mockEntity display:self.mockDisplay] autorelease];
     
     return self.likeButton;
 }
@@ -49,19 +52,23 @@ static NSString *entityKey = @"entityKey";
     [[[self.mockEntity stub] andReturn:entityKey] key];
 
     [NSTimer startMockingClass];
+    [SocializeUILikeCreator startMockingClass];
 }
 
 - (void)tearDown {
     [self.mockActualButton verify];
     [self.mockEntity verify];
     [self.mockSocialize verify];
+    [self.mockDisplay verify];
     
     self.mockActualButton = nil;
     self.mockEntity = nil;
     self.mockSocialize = nil;
+    self.mockDisplay = nil;
     
     [NSTimer stopMockingClassAndVerify];
-
+    [SocializeUILikeCreator stopMockingClassAndVerify];
+    
     [super tearDown];
 }
 
@@ -82,10 +89,10 @@ static NSString *entityKey = @"entityKey";
 }
 
 - (void)succeedCreateLikeWithLike:(id<SocializeLike>)like {
-    [[[self.mockSocialize expect] andDo0:^{
-        id mockService = [self createMockServiceForClass:[SocializeLikeService class]];
-        [self.likeButton service:mockService didCreate:like];
-    }] likeEntityWithKey:OCMOCK_ANY longitude:OCMOCK_ANY latitude:OCMOCK_ANY];
+    [[[SocializeUILikeCreator expect] andDo5:^(id _, id __, id ___, id success, id ____) {
+        void (^successBlock)(id<SocializeLike> like) = success;
+        successBlock(like);
+    }] createLike:OCMOCK_ANY options:OCMOCK_ANY display:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
 }
 
 - (void)succeedDeleteLikeWithLike:(id<SocializeLike>)like {
