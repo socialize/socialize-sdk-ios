@@ -49,12 +49,8 @@
 {   
     _objectCreator = nil;
     self.delegate = nil;
+    [self cancelAllRequests];
     
-    for (SocializeRequest *request in outstandingRequests_) {
-        [request setDelegate:nil];
-        [request cancel];
-    }
-    self.outstandingRequests = nil;
     [super dealloc];
 }
 
@@ -70,6 +66,14 @@
     }
     
     return self;
+}
+
+- (void)cancelAllRequests {
+    for (SocializeRequest *request in outstandingRequests_) {
+        [request setDelegate:nil];
+        [request cancel];
+    }
+    self.outstandingRequests = nil;    
 }
 
 - (NSMutableSet*)outstandingRequests {

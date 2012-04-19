@@ -56,5 +56,6 @@
 -(void)doDidReceiveReceiveListOfObjects:(NSArray *)objectResponse;
 -(void)doDidFailWithError:(NSError *)error;
 - (void)failWithError:(NSError*)error;
+- (void)cancelAllRequests;
 
 @end

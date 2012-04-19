@@ -116,6 +116,11 @@ otherwise you will get a failure.
  */
 -(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
 
+/**
+ Cancel all outstanding requests
+ */
+- (void)cancelAllRequests;
+
 + (BOOL)isSocializeNotification:(NSDictionary*)userInfo;
 
 + (BOOL)handleNotification:(NSDictionary*)userInfo;

@@ -182,6 +182,20 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
     return self;
 }
 
+- (void)cancelAllRequests {
+    [_authService cancelAllRequests];
+    [_likeService cancelAllRequests];
+    [_commentsService cancelAllRequests];
+    [_entityService cancelAllRequests];
+    [_viewService cancelAllRequests];
+    [_userService cancelAllRequests];
+    [_activityService cancelAllRequests];
+    [_shareService cancelAllRequests];
+    [_deviceTokenService cancelAllRequests];
+    [_subscriptionService cancelAllRequests];
+    [_eventsService cancelAllRequests];
+}
+
 +(void)setEntityLoaderBlock:(SocializeEntityLoaderBlock)entityLoaderBlock {
     SocializeEntityLoaderBlock copied = [[entityLoaderBlock copy] autorelease];
     NonatomicRetainedSetToFrom(_sharedEntityLoaderBlock, copied);
