@@ -12,7 +12,7 @@
 #import "UIButton+Socialize.h"
 //#import "SocializeTwitterAuthViewController.h"
 //#import "UINavigationController+Socialize.h"
-#import "SocializeLikeButton.h"
+//#import "SocializeLikeButton.h"
 
 #define TESTING_FACEBOOK_TOKEN @"BAABpKH5ZBZBg8BANSQGGvcd7DGCxJvOU0S1QZCsF3ZBrmlMT9dZCrLGA5oQJ06njmIE1COAgjsmWDJsRwIig30jbhPZCArmdBe4WgY9CZAL9OZBfs1JIQtAf8F0btxVc2baUJZCZBhpgk3LQZDZD"
 
