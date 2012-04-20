@@ -4,6 +4,12 @@
 Changelog
 =============================================
 
+v1.7
+----
+[feature] Expose user-specific likes GET endpoint in SDK [ ]
+
+[feature] Developer can add a stand-alone like button [ Piecemeal UI Components ]
+
 v1.6.5
 ------
 [bug] Fix iPad form factor when posting comment, listing comments, and linking to third party

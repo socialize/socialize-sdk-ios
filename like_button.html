@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Advanced UI Configuration &mdash; Socialize iOS SDK 1.7 documentation</title>
+    <title>Socialize Like Button &mdash; Socialize iOS SDK 1.7 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -26,18 +26,18 @@
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
     <link rel="top" title="Socialize iOS SDK 1.7 documentation" href="index.html" />
-    <link rel="next" title="SDK User Guide" href="sdk_user_guide.html" />
-    <link rel="prev" title="Socialize Comments" href="comments.html" /> 
+    <link rel="next" title="Twitter Integration" href="twitter.html" />
+    <link rel="prev" title="Socialize Action Bar" href="action_bar.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="sdk_user_guide.html" title="SDK User Guide"
+          <a href="twitter.html" title="Twitter Integration"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="comments.html" title="Socialize Comments"
+          <a href="action_bar.html" title="Socialize Action Bar"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Socialize iOS SDK 1.7 documentation</a> &raquo;</li> 
       </ul>
@@ -71,26 +71,41 @@
   GSFN.feedback_widget.prototype.local_ssl_base_url = "http://support.getsocialize.com";
 
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
-</script><div class="section" id="advanced-ui-configuration">
-<h1>Advanced UI Configuration<a class="headerlink" href="#advanced-ui-configuration" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="disabling-error-alerts">
-<h2>Disabling Error Alerts<a class="headerlink" href="#disabling-error-alerts" title="Permalink to this headline">¶</a></h2>
-<p>If the error alert messages that the default Socialize UI objects emit do not fit your needs,
-you can remove them using [Socialize storeUIErrorAlertsDisabled:YES].</p>
-<p>In addition, a notification will be posted for all Socialize UI errors. The notification
-will be posted regardless of whether or not you disable error alerts.</p>
-<script src="https://gist.github.com/2008558.js?file=errorNotifications.m"></script></div>
-<div class="section" id="automatic-third-party-linking">
-<h2>Automatic Third Party Linking<a class="headerlink" href="#automatic-third-party-linking" title="Permalink to this headline">¶</a></h2>
-<p>v1.6.2 introduces Automatic Authentication for your users. Our data indicates
-that users who authenticate with a 3rd party (e.g. Twitter or Facebook) are
-much more likely to introduce new users to your app via the viral effect of
-activity within your app propagating to these 3rd party networks. From v1.6.3
-onwards the Socialize SDK will default to requiring users authenticate with a
-3rd party prior to performing any social action (e.g. Comment or Like).</p>
-<p>This default behavior can be overridden by the developer (you) with the
-following settings:</p>
-<script src="https://gist.github.com/2380420.js?file=linkOptions.m"></script></div>
+</script><div class="section" id="socialize-like-button">
+<h1>Socialize Like Button<a class="headerlink" href="#socialize-like-button" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In v1.7 of the Socialize SDK for iOS is a new stand-alone Like Button. This
+is simply the “like” capablity of Socialize contained in a self-standing UI
+element which can be easily customized to suit your app.</p>
+</div>
+<div class="section" id="displaying-the-like-button">
+<h2>Displaying the Like Button<a class="headerlink" href="#displaying-the-like-button" title="Permalink to this headline">¶</a></h2>
+<p>The Like Button is itself a view. To use the Like Button, simply instantiate it and
+add it to your view hierarchy.</p>
+<script src="https://gist.github.com/2432048.js?file=showLikeButton.m"></script></div>
+<div class="section" id="customizing-the-like-button">
+<h2>Customizing the Like Button<a class="headerlink" href="#customizing-the-like-button" title="Permalink to this headline">¶</a></h2>
+<p>All of the images on the like button can be changed. To do this, just set the appropriate property.
+The full list of image properties is:</p>
+<script src="https://gist.github.com/2432048.js?file=likeButtonCustomizableImageProperties.m"></script></div>
+<div class="section" id="responding-to-state-changes">
+<h2>Responding to State Changes<a class="headerlink" href="#responding-to-state-changes" title="Permalink to this headline">¶</a></h2>
+<p>You may find you would like to be notified when the like button changes state. You can accomplish
+this by listening for the SocializeLikeButtonDidChangeStateNotification as follows:</p>
+<script src="https://gist.github.com/2432048.js?file=likeButtonStateChangeNotification.m"></script></div>
+<div class="section" id="refreshing-the-like-button">
+<h2>Refreshing the Like Button<a class="headerlink" href="#refreshing-the-like-button" title="Permalink to this headline">¶</a></h2>
+<p>The Like Button has an explicit refresh call.</p>
+<script src="https://gist.github.com/2432048.js?file=refreshLikeButton.m"></script></div>
+<div class="section" id="changing-the-like-button-s-entity">
+<h2>Changing the Like Button&#8217;s Entity<a class="headerlink" href="#changing-the-like-button-s-entity" title="Permalink to this headline">¶</a></h2>
+<p>The Like Button&#8217;s current entity can be changed by setting the entity property.</p>
+<script src="https://gist.github.com/2432048.js?file=changeEntity.m"></script><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">An explicit refresh is not required when changing the entity</p>
+</div>
+</div>
 </div>
 
 
@@ -103,15 +118,19 @@ following settings:</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
-<li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Socialize Like Button</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#displaying-the-like-button">Displaying the Like Button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-like-button">Customizing the Like Button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#responding-to-state-changes">Responding to State Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#refreshing-the-like-button">Refreshing the Like Button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-the-like-button-s-entity">Changing the Like Button&#8217;s Entity</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Advanced UI Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#disabling-error-alerts">Disabling Error Alerts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#automatic-third-party-linking">Automatic Third Party Linking</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
@@ -138,10 +157,10 @@ following settings:</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="sdk_user_guide.html" title="SDK User Guide"
+          <a href="twitter.html" title="Twitter Integration"
              >next</a></li>
         <li class="right" >
-          <a href="comments.html" title="Socialize Comments"
+          <a href="action_bar.html" title="Socialize Action Bar"
              >previous</a> |</li>
         <li><a href="index.html">Socialize iOS SDK 1.7 documentation</a> &raquo;</li> 
       </ul>

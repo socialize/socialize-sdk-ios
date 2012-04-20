@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>SDK User Guide &mdash; Socialize iOS SDK 1.6.5 documentation</title>
+    <title>SDK User Guide &mdash; Socialize iOS SDK 1.7 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.6.5',
+        VERSION:     '1.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.6.5 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.7 documentation" href="index.html" />
     <link rel="next" title="SDK Pro Tips" href="sdk_pro_tips.html" />
     <link rel="prev" title="Advanced UI Configuration" href="ui_advanced.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="ui_advanced.html" title="Advanced UI Configuration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.6.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -165,6 +165,12 @@ in your app are the most popular, and what is of most interest to your users.</p
 need the ID of the like.  This is returned from the initial call to <strong>like</strong></p>
 <script src="https://gist.github.com/1204490.js?file=Unlike.m"></script></div>
 </div>
+<div class="section" id="get-likes-for-a-user">
+<h2>Get likes for a user<a class="headerlink" href="#get-likes-for-a-user" title="Permalink to this headline">¶</a></h2>
+<p>You can get all likes for a specific user using [Socialize
+getLikesForUser:entity:first:last:]. If entity is non-nil, returned likes will
+be limited to just that entity.</p>
+<script src="https://gist.github.com/2408589.js?file=getLikesForUser.m"></script></div>
 <div class="section" id="comment">
 <h2>Comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h2>
 <p>Comments are a great way to build engagement in your app, and users love making comments!</p>
@@ -193,6 +199,7 @@ need the ID of the like.  This is returned from the initial call to <strong>like
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
@@ -204,6 +211,7 @@ need the ID of the like.  This is returned from the initial call to <strong>like
 <li class="toctree-l2"><a class="reference internal" href="#entities">Entities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#view">View</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#like">Like</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-likes-for-a-user">Get likes for a user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#comment">Comment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#share">Share</a></li>
 </ul>
@@ -238,7 +246,7 @@ need the ID of the like.  This is returned from the initial call to <strong>like
         <li class="right" >
           <a href="ui_advanced.html" title="Advanced UI Configuration"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.6.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

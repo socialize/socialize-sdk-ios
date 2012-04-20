@@ -10,6 +10,7 @@ Contents:
    
    getting_started
    action_bar
+   like_button
    twitter
    push_notifications
    comments

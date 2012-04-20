@@ -140,7 +140,7 @@ any Facebook wall posts sent from Socialize.
 
 .. raw:: html
 
-        <script src="https://gist.github.com/1375443.js?file=gistfile1.m"></script>
+  <script src="https://gist.github.com/2409074.js?file=gistfile1.m"></script>
 
 If your app is not already configured for facebook authentication, then you'll
 need to perform two more steps:
