@@ -15,15 +15,8 @@
 #import "NSNumber+Additions.h"
 
 
-#define ACTION_VIEW_WIDTH 320
 #define BUTTON_PADDINGS 4
-#define ICON_WIDTH 16
-#define ICON_HEIGHT 16
-#define BUTTON_HEIGHT 30
-#define BUTTON_Y_ORIGIN 7
 #define PADDING_IN_BETWEEN_BUTTONS 10
-#define COMMENT_INDICATOR_SIZE_WIDTH 17
-#define COMMENT_INDICATOR_SIZE_HEIGHT 17
 #define PADDING_BETWEEN_TEXT_ICON 2
 
 
@@ -124,6 +117,14 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 //        NSString* formattedValue = [NSNumber formatMyNumber:[NSNumber numberWithInteger:serverEntity.likes] ceiling:[NSNumber numberWithInt:1000]]; 
         NSString *formattedValue = @"999999";
         [self updateButtonTitle:formattedValue];
+    }
+}
+
+- (UIImage*)currentIcon {
+    if ([self liked]) {
+        return self.likedIcon;
+    } else {
+        return self.unlikedIcon;
     }
 }
 
@@ -493,7 +494,12 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 - (CGSize)currentButtonSize {
     NSString *currentTitle = [self.actualButton titleForState:UIControlStateNormal];
 	CGSize titleSize = [currentTitle sizeWithFont:self.actualButton.titleLabel.font];
-    CGSize buttonSize = CGSizeMake(titleSize.width + (2 * BUTTON_PADDINGS) + PADDING_BETWEEN_TEXT_ICON + 5 + ICON_WIDTH, BUTTON_HEIGHT);
+    CGSize iconSize = [[self currentIcon] size];
+    
+    UIImage *currentBackground = [self.actualButton backgroundImageForState:UIControlStateNormal];
+    CGSize backgroundSize = [currentBackground size];
+    
+    CGSize buttonSize = CGSizeMake(titleSize.width + (2 * BUTTON_PADDINGS) + PADDING_BETWEEN_TEXT_ICON + 5 + iconSize.width, backgroundSize.height);
 	
 	return buttonSize;
 }
