@@ -7,7 +7,7 @@ Socialize Like Button
 Introduction
 ------------
 
-In v1.4 of the Socialize SDK for Android is a new stand-alone Like Button. This
+In v1.7 of the Socialize SDK for iOS is a new stand-alone Like Button. This
 is simply the “like” capablity of Socialize contained in a self-standing UI
 element which can be easily customized to suit your app.
 
@@ -49,7 +49,7 @@ The Like Button has an explicit refresh call.
 
 Changing the Like Button's Entity
 --------------------------
-The Like Button's current can be changed.
+The Like Button's current entity can be changed by setting the entity property.
 
 .. raw:: html
 
