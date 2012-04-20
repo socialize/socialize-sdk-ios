@@ -145,7 +145,7 @@
 					</object>
 					<object class="IBUIView" id="766120435">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">271</int>
+						<int key="NSvFlags">266</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUIImageView" id="369987723">
@@ -164,12 +164,12 @@
 							</object>
 							<object class="IBUIView" id="711452551">
 								<reference key="NSNextResponder" ref="766120435"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">290</int>
 								<object class="NSMutableArray" key="NSSubviews">
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<object class="IBUIButton" id="825243708">
 										<reference key="NSNextResponder" ref="711452551"/>
-										<int key="NSvFlags">294</int>
+										<int key="NSvFlags">274</int>
 										<string key="NSFrameSize">{275, 44}</string>
 										<reference key="NSSuperview" ref="711452551"/>
 										<reference key="NSWindow"/>
@@ -204,7 +204,7 @@
 									</object>
 									<object class="IBUIImageView" id="796467430">
 										<reference key="NSNextResponder" ref="711452551"/>
-										<int key="NSvFlags">295</int>
+										<int key="NSvFlags">274</int>
 										<string key="NSFrame">{{5, 7}, {264, 31}}</string>
 										<reference key="NSSuperview" ref="711452551"/>
 										<reference key="NSWindow"/>
@@ -214,11 +214,10 @@
 									</object>
 									<object class="IBUILabel" id="153422503">
 										<reference key="NSNextResponder" ref="711452551"/>
-										<int key="NSvFlags">294</int>
+										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{18, 12}, {101, 21}}</string>
 										<reference key="NSSuperview" ref="711452551"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView"/>
 										<object class="NSColor" key="IBUIBackgroundColor">
 											<int key="NSColorSpace">3</int>
 											<bytes key="NSWhite">MCAwAA</bytes>
