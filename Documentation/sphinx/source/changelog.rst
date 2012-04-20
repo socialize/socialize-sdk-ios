@@ -4,6 +4,10 @@
 Changelog
 =============================================
 
+v1.6.5
+------
+[bug] Fix iPad form factor when posting comment, listing comments, and linking to third party
+
 v1.6.4
 ------
 [feature] Allow pagination in get application activity [ ]
