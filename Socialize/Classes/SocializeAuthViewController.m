@@ -101,6 +101,9 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     if (![Socialize anonymousAllowed]) {
         self.skipButton.hidden = YES;
     }
+    
+    // Remove default gray background (iPad / http://stackoverflow.com/questions/2688007/uitableview-backgroundcolor-always-gray-on-ipad)
+    [self.tableView setBackgroundView:nil];
 }
 
 -(IBAction)skipButtonPressed:(id)sender {
