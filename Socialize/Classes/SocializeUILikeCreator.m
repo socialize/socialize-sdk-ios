@@ -44,6 +44,20 @@
     [SocializeAction executeAction:likeCreator];
 }
 
++ (void)createLike:(id<SocializeLike>)like
+           options:(SocializeUILikeOptions*)options
+           display:(id<SocializeUIDisplay>)display
+           success:(void(^)(id<SocializeLike>))success
+           failure:(void(^)(NSError *error))failure {
+    
+    SocializeUILikeCreator *likeCreator = [[[self alloc] initWithOptions:options display:display] autorelease];
+    likeCreator.like = like;
+    likeCreator.likeSuccessBlock = success;
+    likeCreator.failureBlock = failure;
+    
+    [SocializeAction executeAction:likeCreator];
+}
+
 - (id)initWithOptions:(SocializeUILikeOptions *)options displayProxy:(SocializeUIDisplayProxy *)displayProxy display:(id<SocializeUIDisplay>)display {
     if (self = [super initWithOptions:options displayProxy:displayProxy display:display]) {
         self.options = options;

@@ -75,6 +75,11 @@ id testSelf;
     self.lastShownAlert = nil;
 }
 
+- (void)tearDown {
+    self.uut = nil;
+    [super tearDown];
+}
+
 - (void)setUpClass {
     testSelf = self;
 }
@@ -140,5 +145,10 @@ id testSelf;
     }];
 }
 
+- (id)createMockServiceForClass:(Class)serviceClass {
+    id mockService = [OCMockObject mockForClass:serviceClass];
+    [mockService stubIsKindOfClass:serviceClass];
+    return mockService;
+}
 
 @end

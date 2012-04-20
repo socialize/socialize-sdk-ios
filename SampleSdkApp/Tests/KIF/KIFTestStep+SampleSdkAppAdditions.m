@@ -139,6 +139,21 @@
     return steps;
 }
 
+
++ (NSArray*)stepsToShowButtonTestController:(NSString*)url {
+    NSMutableArray *steps = [NSMutableArray array]; 
+    
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:18 inSection:0];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Input Field"]];
+    [steps addObject:[KIFTestStep stepToEnterText:url intoViewWithAccessibilityLabel:@"Input Field"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Enter"]];
+    //    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Tests"]];
+    return steps;
+}
+
+
 + (NSArray*)stepsToVerifyActionBarViewsAtCount:(NSInteger)count {
     NSMutableArray *steps = [NSMutableArray array];
     NSString *countString = [NSString stringWithFormat:@"%d", count];

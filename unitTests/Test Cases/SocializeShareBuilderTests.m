@@ -235,7 +235,7 @@
 - (BOOL (^)(id))doesNotContainSocializeBlock {
     return ^(id params) {
         NSString *message = [params objectForKey:@"message"];
-        return (BOOL)![[message lowercaseString] containsString:@"socialize"];
+        return (BOOL)![[message lowercaseString] containsString:@"socialize for ios"];
     };
 }
 

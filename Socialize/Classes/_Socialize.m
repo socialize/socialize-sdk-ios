@@ -106,6 +106,7 @@ NSString *const kSocializeAuthenticationNotRequired = @"kSocializeAuthentication
 NSString *const kSocializeAnonymousAllowed = @"kSocializeAnonymousAllowed";
 
 NSString *const SocializeDidRegisterDeviceTokenNotification = @"SocializeDidRegisterDeviceTokenNotification";
+NSString *const SocializeLikeButtonDidChangeStateNotification = @"SocializeLikeButtonDidChangeStateNotification";
 
 
 @implementation Socialize
@@ -180,6 +181,20 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
         _eventsService = [[SocializeEventService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
     }
     return self;
+}
+
+- (void)cancelAllRequests {
+    [_authService cancelAllRequests];
+    [_likeService cancelAllRequests];
+    [_commentsService cancelAllRequests];
+    [_entityService cancelAllRequests];
+    [_viewService cancelAllRequests];
+    [_userService cancelAllRequests];
+    [_activityService cancelAllRequests];
+    [_shareService cancelAllRequests];
+    [_deviceTokenService cancelAllRequests];
+    [_subscriptionService cancelAllRequests];
+    [_eventsService cancelAllRequests];
 }
 
 +(void)setEntityLoaderBlock:(SocializeEntityLoaderBlock)entityLoaderBlock {
@@ -605,6 +620,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
 -(void)updateUserProfile:(id<SocializeFullUser>)user profileImage:(id)profileImage
 {
     [_userService updateUser:user profileImage:profileImage];
+}
+
+- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
+    [_userService getLikesForUser:user entity:entity first:first last:last];
 }
 
 #pragma mark activity related stuff

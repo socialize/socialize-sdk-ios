@@ -138,10 +138,9 @@
                                language,
                                countryCode,
                                [[NSBundle mainBundle] bundleIdentifier]];
-    NSURL *expectedURL = [NSURL URLWithString:@"http://api.getsocialize.com/v1/entity/"];
     
     id mockRequest = [OCMockObject mockForClass:[OAMutableURLRequest class]];
-    [[mockRequest expect] setURL:expectedURL];
+    [[mockRequest expect] setURL:OCMOCK_ANY];
     [[mockRequest expect] setHTTPMethod:@"GET"];
     [[mockRequest expect] addValue:userAgentStr forHTTPHeaderField:@"User-Agent"];
     [[mockRequest expect] setSocializeParameters:[NSMutableArray arrayWithCapacity:0]];

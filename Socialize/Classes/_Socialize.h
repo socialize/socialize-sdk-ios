@@ -116,6 +116,11 @@ otherwise you will get a failure.
  */
 -(id)initWithDelegate:(id<SocializeServiceDelegate>)delegate;
 
+/**
+ Cancel all outstanding requests
+ */
+- (void)cancelAllRequests;
+
 + (BOOL)isSocializeNotification:(NSDictionary*)userInfo;
 
 + (BOOL)handleNotification:(NSDictionary*)userInfo;
@@ -719,6 +724,16 @@ otherwise you will get a failure.
 -(void)getUserWithId:(int)userId;
 -(void)updateUserProfile:(id<SocializeFullUser>)user;
 -(void)updateUserProfile:(id<SocializeFullUser>)user profileImage:(UIImage*)profileImage;
+
+/**
+ * Get likes for a specific user.
+ 
+ @param user user
+ @param entity Optional, only likes for this specific entity will be returned
+ @param first Optional start offset
+ @param last Optional end offset. Can be specified without first.
+ */
+- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last;
 
 -(void)getActivityOfCurrentApplication;
 -(void)getActivityOfCurrentApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last;

@@ -29,6 +29,7 @@
 #import "SocializeService.h"
 #import "SocializeFullUser.h"
 #import "SocializeRequest.h"
+#import "SocializeEntity.h"
 
 @class UIImage;
 
@@ -42,6 +43,7 @@
 -(void) getCurrentUser;
 -(void) updateUser:(id<SocializeFullUser>)user;
 -(void) updateUser:(id<SocializeFullUser>)user profileImage:(UIImage*)image;
+- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last;
 
 @end
 

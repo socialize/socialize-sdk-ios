@@ -23,5 +23,6 @@ extern id testSelf;
 - (void)expectDeallocationOfObject:(NSObject*)object fromTest:(SEL)test;
 - (void)swizzleClass:(Class)target_class selector:(SEL)classSelector toObject:(id)object selector:(SEL)objectSelector;
 - (void)deswizzle;
+- (id)createMockServiceForClass:(Class)serviceClass;
 
 @end

@@ -154,5 +154,21 @@
     return scenario;
 }
 
++ (id)scenarioToTestLikeButton {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test the like button"];
+    [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
+    NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToShowButtonTestController:url]];
+    
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"like button"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Skip"]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarLikesAtCount:1]];
+
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"like button"]];
+    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarLikesAtCount:0]];
+    return scenario;
+}
+
+
 
 @end

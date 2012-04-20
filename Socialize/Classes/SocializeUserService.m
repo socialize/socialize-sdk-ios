@@ -29,9 +29,12 @@
 #import "SocializePrivateDefinitions.h"
 #import "UIImage+Network.h"
 #import "JSONKit.h"
+#import "SocializeEntity.h"
+#import "SocializeLike.h"
 
 #define USER_GET_ENDPOINT     @"user/"
 #define USER_POST_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/", userid]
+#define USER_LIKE_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/like/", userid]
 
 @implementation SocializeUserService
 
@@ -93,6 +96,29 @@
         request.operationType = SocializeRequestOperationTypeUpdate;
         [self executeRequest:request];
     });
+}
+
+- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
+    NSString *endpoint = USER_LIKE_ENDPOINT([user objectID]);
+    NSNumber *userId = [NSNumber numberWithInteger:[user objectID]];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if (entity != nil) {
+        [params setObject:entity.key forKey:@"entity_key"];
+    }
+
+    [params setValue:first forKey:@"first"];
+    [params setValue:last forKey:@"last"];
+    [params setValue:userId forKey:@"id"];
+    
+    SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"GET"
+                                                           resourcePath:endpoint
+                                                     expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                                                 params:params];
+    
+    request.expectedProtocol = @protocol(SocializeLike);
+
+    [self executeRequest:request];
 }
 
 @end

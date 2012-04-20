@@ -64,7 +64,7 @@
                                    nil];
     
     NSString* newMethodName = [NSString stringWithFormat:@"like/%d/", alikeId];
-    SocializeRequest *expectedRequest = [SocializeRequest requestWithHttpMethod:@"DELETE" resourcePath:newMethodName expectedJSONFormat:SocializeAny params:params];
+    SocializeRequest *expectedRequest = [SocializeRequest requestWithHttpMethod:@"DELETE" resourcePath:newMethodName expectedJSONFormat:SocializeDictionary params:params];
     [[_mockService expect] executeRequest:expectedRequest];
 
     [_mockService deleteLike: mockLike];

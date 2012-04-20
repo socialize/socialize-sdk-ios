@@ -18,6 +18,12 @@
            success:(void(^)(id<SocializeLike>))success
            failure:(void(^)(NSError *error))failure;
 
++ (void)createLike:(id<SocializeLike>)like
+           options:(SocializeUILikeOptions*)options
+           display:(id<SocializeUIDisplay>)display
+           success:(void(^)(id<SocializeLike>))success
+           failure:(void(^)(NSError *error))failure;
+
 @property (nonatomic, copy) void (^likeSuccessBlock)(id<SocializeLike> like);
 @property (nonatomic, retain) id<SocializeLike> like;
 

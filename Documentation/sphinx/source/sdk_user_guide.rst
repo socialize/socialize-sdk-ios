@@ -146,6 +146,17 @@ need the ID of the like.  This is returned from the initial call to **like**
 
 	<script src="https://gist.github.com/1204490.js?file=Unlike.m"></script>
 
+Get likes for a user
+---------------------
+
+You can get all likes for a specific user using [Socialize
+getLikesForUser:entity:first:last:]. If entity is non-nil, returned likes will
+be limited to just that entity.
+
+.. raw:: html
+
+  <script src="https://gist.github.com/2408589.js?file=getLikesForUser.m"></script>
+
 Comment
 -------
 Comments are a great way to build engagement in your app, and users love making comments!

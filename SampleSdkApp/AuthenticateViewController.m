@@ -83,9 +83,12 @@
     [Socialize storeConsumerSecret:[apiInfo objectForKey:@"secret"]];
 
     [Socialize storeFacebookAppId:@"115622641859087"];
+    
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];
     
+    
+
 //    NSString *token = [apiInfo objectForKey:@"facebookToken"];
 //    if ([token length] > 0) {
 //        [[Socialize sharedSocialize] linkToFacebookWithAccessToken:token expirationDate:[NSDate distantFuture]];
