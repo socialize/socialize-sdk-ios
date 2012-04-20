@@ -13,7 +13,7 @@
 #import "NSTimer+BlocksKit.h"
 #import "SocializeUILikeCreator.h"
 #import "NSNumber+Additions.h"
-
+#import "UIAlertView+BlocksKit.h"
 
 #define BUTTON_PADDINGS 4
 #define PADDING_IN_BETWEEN_BUTTONS 10
@@ -136,10 +136,6 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 - (void)attemptRecovery {
     if (!self.initialized) {
         [self tryToFinishInitializing];
-    } else if (self.likeCreateRequestState == SocializeRequestStateFailed) {
-        [self likeOnServer];
-    } else if (self.likeDeleteRequestState == SocializeRequestStateFailed) {
-        [self unlikeOnServer];
     } else {
         [self stopRecoveryTimer];
     }
@@ -259,18 +255,43 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     }
 }
 
+- (BOOL)dontShowErrors {
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeUIErrorAlertsDisabled] boolValue];
+}
+
+- (void)postErrorNotificationForError:(NSError*)error {
+    NSDictionary *userInfo = nil;
+    if (error != nil) {
+        userInfo = [NSDictionary dictionaryWithObject:error forKey:SocializeUIControllerErrorUserInfoKey];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:SocializeUIControllerDidFailWithErrorNotification
+                                                        object:self
+                                                      userInfo:userInfo];
+}
+
+- (void)failWithError:(NSError*)error {
+    [self postErrorNotificationForError:error];
+    
+    if (![self dontShowErrors]) {
+        [UIAlertView showAlertWithTitle:@"Error" message:[error localizedDescription] buttonTitle:@"Ok" handler:nil];
+    }
+    
+}
+
 - (void)service:(SocializeService *)service didFail:(NSError *)error {
     if ([service isKindOfClass:[SocializeUserService class]]) {
         self.likeGetRequestState = SocializeRequestStateFailed;
+        [self startRecoveryTimer];
     } else if ([service isKindOfClass:[SocializeEntityService class]]) {
         self.entityCreateRequestState = SocializeRequestStateFailed;
+        [self startRecoveryTimer];
     } else if ([service isKindOfClass:[SocializeLikeService class]]) {
         if (self.likeDeleteRequestState == SocializeRequestStateSent) {
             self.likeDeleteRequestState = SocializeRequestStateFailed;
+            self.actualButton.enabled = YES;
+            [self failWithError:error];
         }
     }
-    
-    [self startRecoveryTimer];
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
@@ -452,7 +473,8 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 
         } failure:^(NSError *error) {
             self.likeCreateRequestState = SocializeRequestStateFailed;
-            [self startRecoveryTimer];
+            self.actualButton.enabled = YES;
+            [self failWithError:error];
         }];
     }
 }
