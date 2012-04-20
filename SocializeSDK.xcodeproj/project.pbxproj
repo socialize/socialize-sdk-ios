@@ -1211,8 +1211,8 @@
 		AA7E73D414FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7E73D114FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.h */; };
 		AA7E73D514FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7E73D214FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.m */; };
 		AA7E73D614FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7E73D214FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.m */; };
-		AA7F0A5C153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F0A5A153CAD7B00EC6DD7 /* SocializeLikeButton.h */; };
-		AA7F0A5D153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F0A5A153CAD7B00EC6DD7 /* SocializeLikeButton.h */; };
+		AA7F0A5C153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F0A5A153CAD7B00EC6DD7 /* SocializeLikeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA7F0A5D153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F0A5A153CAD7B00EC6DD7 /* SocializeLikeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7F0A5E153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F0A5B153CAD7B00EC6DD7 /* SocializeLikeButton.m */; };
 		AA7F0A5F153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F0A5B153CAD7B00EC6DD7 /* SocializeLikeButton.m */; };
 		AA7FB8B51491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };

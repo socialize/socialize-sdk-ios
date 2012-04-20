@@ -24,6 +24,10 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 
 @interface SocializeLikeButton ()
 
+@property (nonatomic, retain) id<SocializeEntity> entity;
+
+@property (nonatomic, assign) BOOL initialized;
+
 @property (nonatomic, assign) SocializeRequestState likeGetRequestState;
 @property (nonatomic, assign) SocializeRequestState entityCreateRequestState;
 @property (nonatomic, assign) SocializeRequestState likeCreateRequestState;
