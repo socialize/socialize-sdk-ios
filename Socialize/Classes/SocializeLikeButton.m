@@ -14,6 +14,19 @@
 #import "SocializeUILikeCreator.h"
 #import "NSNumber+Additions.h"
 
+
+#define ACTION_VIEW_WIDTH 320
+#define BUTTON_PADDINGS 4
+#define ICON_WIDTH 16
+#define ICON_HEIGHT 16
+#define BUTTON_HEIGHT 30
+#define BUTTON_Y_ORIGIN 7
+#define PADDING_IN_BETWEEN_BUTTONS 10
+#define COMMENT_INDICATOR_SIZE_WIDTH 17
+#define COMMENT_INDICATOR_SIZE_HEIGHT 17
+#define PADDING_BETWEEN_TEXT_ICON 2
+
+
 static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 
 @interface SocializeLikeButton ()
@@ -48,6 +61,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 
 @synthesize initialized = initialized_;
 @synthesize hideCount = hideCount_;
+@synthesize autoresizeDisabled = autoresizeDisabled_;
 
 @synthesize likeGetRequestState = likeGetRequestState_;
 @synthesize likeCreateRequestState = likeCreateRequestState_;
@@ -100,10 +114,16 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     return nil;
 }
 
+- (void)updateButtonTitle:(NSString*)title {
+    [self.actualButton setTitle:title forState:UIControlStateNormal];
+    [self resizeButton];
+}
+
 - (void)updateViewFromServerEntity:(id<SocializeEntity>)serverEntity {
     if (!self.hideCount) {
-        NSString* formattedValue = [NSNumber formatMyNumber:[NSNumber numberWithInteger:serverEntity.likes] ceiling:[NSNumber numberWithInt:1000]]; 
-        [self.actualButton setTitle:formattedValue forState:UIControlStateNormal];
+//        NSString* formattedValue = [NSNumber formatMyNumber:[NSNumber numberWithInteger:serverEntity.likes] ceiling:[NSNumber numberWithInt:1000]]; 
+        NSString *formattedValue = @"999999";
+        [self updateButtonTitle:formattedValue];
     }
 }
 
@@ -254,6 +274,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     self.actualButton.enabled = NO;
+    [self resizeButton];
     [self tryToFinishInitializing];
 }
 
@@ -397,6 +418,11 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
         actualButton_.accessibilityLabel = @"like button";
         actualButton_.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
         [actualButton_ addTarget:self action:@selector(actualButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [actualButton_.titleLabel setFont:[UIFont boldSystemFontOfSize:11.0f]];
+        
+        [actualButton_ setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        actualButton_.titleLabel.shadowColor = [UIColor blackColor]; 
+        actualButton_.titleLabel.shadowOffset = CGSizeMake(0, -1); 
     }
     
     return actualButton_;
@@ -462,6 +488,32 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     self.actualButton.enabled = NO;
     
     [self tryToFinishInitializing];
+}
+
+- (CGSize)currentButtonSize {
+    NSString *currentTitle = [self.actualButton titleForState:UIControlStateNormal];
+	CGSize titleSize = [currentTitle sizeWithFont:self.actualButton.titleLabel.font];
+    CGSize buttonSize = CGSizeMake(titleSize.width + (2 * BUTTON_PADDINGS) + PADDING_BETWEEN_TEXT_ICON + 5 + ICON_WIDTH, BUTTON_HEIGHT);
+	
+	return buttonSize;
+}
+
+- (void)resizeButton {
+    if (!self.autoresizeDisabled) {
+        CGRect frame = self.frame;
+        CGSize currentSize = [self currentButtonSize];
+        CGRect newFrame = CGRectMake(frame.origin.x, frame.origin.y, currentSize.width, currentSize.height);
+        self.frame = newFrame;
+        
+        NSString *currentTitle = [self.actualButton titleForState:UIControlStateNormal];
+        if ([currentTitle length] == 0) {
+            [actualButton_ setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
+        
+        } else {
+            [actualButton_ setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
+            [actualButton_ setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON)]; // Left inset is the negative of image width.
+        }
+    }
 }
 
 @end

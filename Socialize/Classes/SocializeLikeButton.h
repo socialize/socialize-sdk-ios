@@ -33,6 +33,7 @@
 
 @property (nonatomic, assign) BOOL initialized;
 @property (nonatomic, assign) BOOL hideCount;
+@property (nonatomic, assign) BOOL autoresizeDisabled;
 
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity display:(id<SocializeUIDisplay>)display;
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)controller;

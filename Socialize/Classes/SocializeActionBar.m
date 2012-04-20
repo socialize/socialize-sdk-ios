@@ -385,6 +385,4 @@
     [(SocializeActionView*)self.view updateIsLiked:NO];
 }
 
-
-
 @end
