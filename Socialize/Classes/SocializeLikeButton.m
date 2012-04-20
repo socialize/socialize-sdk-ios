@@ -118,8 +118,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 
 - (void)updateViewFromServerEntity:(id<SocializeEntity>)serverEntity {
     if (!self.hideCount) {
-//        NSString* formattedValue = [NSNumber formatMyNumber:[NSNumber numberWithInteger:serverEntity.likes] ceiling:[NSNumber numberWithInt:1000]]; 
-        NSString *formattedValue = @"999999";
+        NSString* formattedValue = [NSNumber formatMyNumber:[NSNumber numberWithInteger:serverEntity.likes] ceiling:[NSNumber numberWithInt:1000]]; 
         [self updateButtonTitle:formattedValue];
     }
 }

@@ -32,6 +32,7 @@
 + (NSArray*)stepsToCreateCommentWithControllerForEntity:(NSString*)entity comment:(NSString*)comment;
 + (NSArray*)stepsToCreateComment:(NSString*)comment;
 + (NSArray*)stepsToVerifyCommentExistsForEntity:(NSString*)entity comment:(NSString*)comment;
++ (NSArray*)stepsToShowButtonTestController:(NSString*)url;
 + (id)stepToScrollAndTapRowInTableViewWithAccessibilityLabel:(NSString*)tableViewLabel atIndexPath:(NSIndexPath *)indexPath;
 + (id)stepToCheckAccessibilityLabel:(NSString *)label hasValue:(NSString *)hasValue;
 + (NSArray*)stepsToVerifyActionBarViewsAtCount:(NSInteger)count;

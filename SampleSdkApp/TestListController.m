@@ -22,6 +22,7 @@
 #import "TestActivityViewController.h"
 #import "TestTabbedSocializeActionBar.h"
 //#import "UINavigationController+Socialize.h"
+#import "TestLikeButton.h"
 
 #if RUN_KIF_TESTS
 #import <OCMock/OCMock.h>
@@ -54,6 +55,7 @@
                       @"Test New Comments Notification",
                       @"Test Direct URL Notification",
                       @"Test Direct Entity Notification",
+                      @"Test Standalone Buttons",
                       nil
                       ]retain];
 
@@ -331,6 +333,17 @@
                 [Socialize handleNotification:userInfo];
             }
             break;
+        }
+        case 18:
+        {
+            NSString* url = [self getEntityKey];
+            if(url) {
+                id<SocializeEntity> entity = [SocializeEntity entityWithKey:url name:@"Test Entity"];
+                TestLikeButton *testLike = [[[TestLikeButton alloc] initWithEntity:entity] autorelease];
+                UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:testLike] autorelease];
+                [self presentModalViewController:nav animated:YES];
+            }
+
         }
   
 

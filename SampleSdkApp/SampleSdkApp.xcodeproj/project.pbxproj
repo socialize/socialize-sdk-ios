@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		16D2DEF6145546370034A6C8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D2DEF5145546370034A6C8 /* MessageUI.framework */; };
 		16D2DEF7145546410034A6C8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D2DEF5145546370034A6C8 /* MessageUI.framework */; };
+		AA03AC1E15420C9A009AC508 /* TestLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA03AC1C15420C9A009AC508 /* TestLikeButton.m */; };
+		AA03AC1F15420C9A009AC508 /* TestLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA03AC1C15420C9A009AC508 /* TestLikeButton.m */; };
+		AA03AC2015420C9A009AC508 /* TestLikeButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA03AC1D15420C9A009AC508 /* TestLikeButton.xib */; };
+		AA03AC2115420C9A009AC508 /* TestLikeButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA03AC1D15420C9A009AC508 /* TestLikeButton.xib */; };
 		AA03D197150A9DDE00E7BFA3 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DA6144A24BF00660E26 /* DataHelper.m */; };
 		AA2025B1144CB249006C1F8F /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8636D4144CA0DB00CFA759 /* libKIF.a */; };
 		AA2025B2144CB263006C1F8F /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8636D4144CA0DB00CFA759 /* libKIF.a */; };
@@ -738,6 +742,9 @@
 
 /* Begin PBXFileReference section */
 		16D2DEF5145546370034A6C8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		AA03AC1B15420C9A009AC508 /* TestLikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLikeButton.h; sourceTree = "<group>"; };
+		AA03AC1C15420C9A009AC508 /* TestLikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLikeButton.m; sourceTree = "<group>"; };
+		AA03AC1D15420C9A009AC508 /* TestLikeButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestLikeButton.xib; sourceTree = "<group>"; };
 		AA2D9E6D14352BC100C62B97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA2D9E6F14352BC100C62B97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AA2D9E7114352BC100C62B97 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1159,6 +1166,9 @@
 		AA3325CB144CD2C90033C7FA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				AA03AC1B15420C9A009AC508 /* TestLikeButton.h */,
+				AA03AC1C15420C9A009AC508 /* TestLikeButton.m */,
+				AA03AC1D15420C9A009AC508 /* TestLikeButton.xib */,
 				AA86926514BFBEA000008A49 /* SampleEntityLoader.h */,
 				AA86926614BFBEA000008A49 /* SampleEntityLoader.m */,
 				AA86926714BFBEA000008A49 /* SampleEntityLoader.xib */,
@@ -1869,6 +1879,7 @@
 				AA8D347E15339378006B1B41 /* SocializeTableViewController.xib in Resources */,
 				AA8D348115339378006B1B41 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AAE78F57153F48B6003C3550 /* SocializeConfigurationInfo.plist in Resources */,
+				AA03AC2015420C9A009AC508 /* TestLikeButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2077,6 +2088,7 @@
 				AA8D347F15339378006B1B41 /* SocializeTableViewController.xib in Resources */,
 				AA8D348215339378006B1B41 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AAE78F58153F48B7003C3550 /* SocializeConfigurationInfo.plist in Resources */,
+				AA03AC2115420C9A009AC508 /* TestLikeButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2422,6 +2434,7 @@
 				AAD7E36A144F59BC0073308D /* TestActivityViewController.m in Sources */,
 				AAD21912148AFD8300EF5503 /* StringHelper.m in Sources */,
 				AA86926814BFBEA000008A49 /* SampleEntityLoader.m in Sources */,
+				AA03AC1E15420C9A009AC508 /* TestLikeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2456,6 +2469,7 @@
 				AAD7E36B144F59BC0073308D /* TestActivityViewController.m in Sources */,
 				AAD21911148AFD8200EF5503 /* StringHelper.m in Sources */,
 				AA86926914BFBEA000008A49 /* SampleEntityLoader.m in Sources */,
+				AA03AC1F15420C9A009AC508 /* TestLikeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

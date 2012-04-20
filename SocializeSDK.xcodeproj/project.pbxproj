@@ -529,6 +529,12 @@
 		AA0307C11506DA8000E8C43F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AABE17891500634900500D45 /* libOCMock.a */; };
 		AA0307C51506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0307C41506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0307C61506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0307C41506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA03AC0315420164009AC508 /* TestLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA03AC0115420164009AC508 /* TestLikeButton.m */; };
+		AA03AC0415420164009AC508 /* TestLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA03AC0115420164009AC508 /* TestLikeButton.m */; };
+		AA03AC0515420164009AC508 /* TestLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA03AC0115420164009AC508 /* TestLikeButton.m */; };
+		AA03AC0615420164009AC508 /* TestLikeButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA03AC0215420164009AC508 /* TestLikeButton.xib */; };
+		AA03AC0715420164009AC508 /* TestLikeButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA03AC0215420164009AC508 /* TestLikeButton.xib */; };
+		AA03AC0815420164009AC508 /* TestLikeButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA03AC0215420164009AC508 /* TestLikeButton.xib */; };
 		AA03D183150A9D8C00E7BFA3 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE86B14355F1B00851C73 /* DataHelper.m */; };
 		AA03D1AC150A9E3C00E7BFA3 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE86B14355F1B00851C73 /* DataHelper.m */; };
 		AA03D1AD150A9E3D00E7BFA3 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE86B14355F1B00851C73 /* DataHelper.m */; };
@@ -2635,6 +2641,9 @@
 		AA01F8F4150A84C900BB2B29 /* TestSocializeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSocializeService.h; sourceTree = "<group>"; };
 		AA01F8F5150A84C900BB2B29 /* TestSocializeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSocializeService.m; sourceTree = "<group>"; };
 		AA0307C41506DD3500E8C43F /* SocializeUIDisplayProxyDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUIDisplayProxyDelegate.h; path = Classes/SocializeUIDisplayProxyDelegate.h; sourceTree = "<group>"; };
+		AA03AC0015420164009AC508 /* TestLikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLikeButton.h; sourceTree = "<group>"; };
+		AA03AC0115420164009AC508 /* TestLikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLikeButton.m; sourceTree = "<group>"; };
+		AA03AC0215420164009AC508 /* TestLikeButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestLikeButton.xib; sourceTree = "<group>"; };
 		AA047D7714BFC1F2005560C3 /* SocializeBubbleViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBubbleViewTests.h; path = "Test Cases/SocializeBubbleViewTests.h"; sourceTree = "<group>"; };
 		AA047D7814BFC1F2005560C3 /* SocializeBubbleViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBubbleViewTests.m; path = "Test Cases/SocializeBubbleViewTests.m"; sourceTree = "<group>"; };
 		AA047D7E14C0C57C005560C3 /* SocializeNotificationToggleBubbleContentViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNotificationToggleBubbleContentViewTests.h; path = "Test Cases/SocializeNotificationToggleBubbleContentViewTests.h"; sourceTree = "<group>"; };
@@ -4647,6 +4656,9 @@
 				AA9D77FD14BE191A00D76D6B /* SampleEntityLoader.h */,
 				AA9D77FE14BE191A00D76D6B /* SampleEntityLoader.m */,
 				AA9D77FF14BE191A00D76D6B /* SampleEntityLoader.xib */,
+				AA03AC0015420164009AC508 /* TestLikeButton.h */,
+				AA03AC0115420164009AC508 /* TestLikeButton.m */,
+				AA03AC0215420164009AC508 /* TestLikeButton.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -5961,6 +5973,7 @@
 				AA08146215337A1E00F15928 /* socialize-comment-twitter-disabled@2x.png in Resources */,
 				AA08146715337A1E00F15928 /* socialize-comment-twitter-enabled.png in Resources */,
 				AA08146C15337A1E00F15928 /* socialize-comment-twitter-enabled@2x.png in Resources */,
+				AA03AC0715420164009AC508 /* TestLikeButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6167,6 +6180,7 @@
 				AA08146815337A1E00F15928 /* socialize-comment-twitter-enabled.png in Resources */,
 				AA08146D15337A1E00F15928 /* socialize-comment-twitter-enabled@2x.png in Resources */,
 				AAE78F41153F4892003C3550 /* SocializeConfigurationInfo.plist in Resources */,
+				AA03AC0815420164009AC508 /* TestLikeButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6454,6 +6468,7 @@
 				AA08146615337A1E00F15928 /* socialize-comment-twitter-enabled.png in Resources */,
 				AA08146B15337A1E00F15928 /* socialize-comment-twitter-enabled@2x.png in Resources */,
 				AAE78F44153F489E003C3550 /* SocializeConfigurationInfo.plist in Resources */,
+				AA03AC0615420164009AC508 /* TestLikeButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7155,6 +7170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA03AC0415420164009AC508 /* TestLikeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7188,6 +7204,7 @@
 				AA9E0C90144E077500D2C37F /* TestTabbedSocializeActionBar.m in Sources */,
 				AA9E0C91144E147900D2C37F /* GenericViewController.m in Sources */,
 				AA9D780114BE191A00D76D6B /* SampleEntityLoader.m in Sources */,
+				AA03AC0515420164009AC508 /* TestLikeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7242,6 +7259,7 @@
 				AA9E0C89144E060B00D2C37F /* TestTabbedSocializeActionBar.m in Sources */,
 				AA9E0C8E144E076D00D2C37F /* GenericViewController.m in Sources */,
 				AA9D780014BE191A00D76D6B /* SampleEntityLoader.m in Sources */,
+				AA03AC0315420164009AC508 /* TestLikeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
