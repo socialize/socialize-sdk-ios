@@ -69,6 +69,7 @@ static NSString *entityKey = @"entityKey";
     self.mockEntity = nil;
     self.mockSocialize = nil;
     self.mockDisplay = nil;
+    self.likeButton = nil;
     
     [NSTimer stopMockingClassAndVerify];
     [SocializeUILikeCreator stopMockingClassAndVerify];

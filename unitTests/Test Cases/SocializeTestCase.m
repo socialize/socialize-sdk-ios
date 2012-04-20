@@ -75,6 +75,11 @@ id testSelf;
     self.lastShownAlert = nil;
 }
 
+- (void)tearDown {
+    self.uut = nil;
+    [super tearDown];
+}
+
 - (void)setUpClass {
     testSelf = self;
 }

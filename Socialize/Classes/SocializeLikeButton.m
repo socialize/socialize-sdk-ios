@@ -64,7 +64,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     self.likedIcon = nil;
     self.unlikedIcon = nil;
     self.display = nil;
-    self.entity = nil;
+    entity_ = nil; [entity_ release];
     self.serverEntity = nil;
     self.like = nil;
     
@@ -80,8 +80,8 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     self = [super initWithFrame:frame];
     if (self) {
         [self configureButtonBackgroundImages];
-        
-        self.entity = entity;
+
+        NonatomicRetainedSetToFrom(entity_, entity);
         self.display = display;
         
         self.actualButton.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -164,6 +164,10 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 
 - (void)tryToFinishInitializing {
     if (self.initialized) {
+        return;
+    }
+    
+    if (self.entity == nil) {
         return;
     }
     
@@ -436,7 +440,10 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     [self toggleLikeState];
 }
 
-- (void)initializeActualButton {
+- (void)setEntity:(id<SocializeEntity>)entity {
+    NonatomicRetainedSetToFrom(entity_, entity);
+    
+    [self refresh];
 }
 
 - (void)refresh {
