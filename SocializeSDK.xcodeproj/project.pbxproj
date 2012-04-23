@@ -1931,8 +1931,8 @@
 		AAF50D7314CA0ED700585474 /* SocializeBaseViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF50D7114CA0ED700585474 /* SocializeBaseViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAF559DC14AE51EF00565248 /* DebugUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF559DB14AE51EF00565248 /* DebugUtil.m */; };
 		AAF559DD14AE51EF00565248 /* DebugUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF559DB14AE51EF00565248 /* DebugUtil.m */; };
-		AAF60EB715461AD000245867 /* SampleEntityLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF60EB515461AD000245867 /* SampleEntityLoader.h */; };
-		AAF60EB815461AD000245867 /* SampleEntityLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF60EB515461AD000245867 /* SampleEntityLoader.h */; };
+		AAF60EB715461AD000245867 /* SampleEntityLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF60EB515461AD000245867 /* SampleEntityLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAF60EB815461AD000245867 /* SampleEntityLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF60EB515461AD000245867 /* SampleEntityLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAF60EB915461AD000245867 /* SampleEntityLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF60EB615461AD000245867 /* SampleEntityLoader.m */; };
 		AAF60EBA15461AD000245867 /* SampleEntityLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF60EB615461AD000245867 /* SampleEntityLoader.m */; };
 		AAF60EBC15461ADA00245867 /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF60EBB15461ADA00245867 /* SampleEntityLoader.xib */; };
