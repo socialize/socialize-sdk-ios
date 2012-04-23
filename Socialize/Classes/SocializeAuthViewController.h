@@ -42,7 +42,7 @@ typedef enum {
 +(UINavigationController*)authViewControllerInNavigationController:(id<SocializeAuthViewControllerDelegate>)delegate;
 @end
 
-@protocol SocializeAuthViewControllerDelegate<NSObject>
+@protocol SocializeAuthViewControllerDelegate<SocializeBaseViewControllerDelegate>
 @optional
 -(IBAction)skipButtonPressed:(id)sender;
 -(void)authorizationSkipped;

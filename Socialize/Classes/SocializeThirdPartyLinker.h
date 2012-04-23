@@ -10,7 +10,7 @@
 #import "SocializeAuthViewController.h"
 #import "SocializeThirdPartyLinkOptions.h"
 
-@interface SocializeThirdPartyLinker : SocializeAction <SocializeAuthViewControllerDelegate>
+@interface SocializeThirdPartyLinker : SocializeAction <SocializeAuthViewControllerDelegate, SocializeBaseViewControllerDelegate>
 + (void)linkToThirdPartyWithOptions:(SocializeThirdPartyLinkOptions*)options
                        displayProxy:(SocializeUIDisplayProxy*)displayProxy
                             success:(void(^)())success

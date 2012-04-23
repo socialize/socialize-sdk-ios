@@ -4808,11 +4808,11 @@
 				1835F555149988BA00AB0CD3 /* SocializeAuthInfoTableViewCell.m */,
 				1835F556149988BA00AB0CD3 /* SocializeAuthTableViewCell.h */,
 				1835F557149988BA00AB0CD3 /* SocializeAuthTableViewCell.m */,
-				AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */,
 				AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */,
 				AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */,
 				18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */,
 				18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */,
+				AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */,
 			);
 			name = Auth;
 			sourceTree = "<group>";
