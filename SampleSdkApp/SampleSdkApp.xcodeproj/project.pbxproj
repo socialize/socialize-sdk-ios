@@ -107,10 +107,6 @@
 		AA8637F7144CA28300CFA759 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0C144A24BF00660E26 /* TestSocializeActionBar.xib */; };
 		AA8637F8144CA28300CFA759 /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0F144A24BF00660E26 /* TestViewCreationViewController.xib */; };
 		AA8637F9144CA28300CFA759 /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639E14144A24BF00660E26 /* urls.plist */; };
-		AA86926814BFBEA000008A49 /* SampleEntityLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86926614BFBEA000008A49 /* SampleEntityLoader.m */; };
-		AA86926914BFBEA000008A49 /* SampleEntityLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86926614BFBEA000008A49 /* SampleEntityLoader.m */; };
-		AA86926A14BFBEA000008A49 /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA86926714BFBEA000008A49 /* SampleEntityLoader.xib */; };
-		AA86926B14BFBEA000008A49 /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA86926714BFBEA000008A49 /* SampleEntityLoader.xib */; };
 		AA8D326215339377006B1B41 /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D31AB15339377006B1B41 /* action-bar-bg.png */; };
 		AA8D326315339377006B1B41 /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D31AB15339377006B1B41 /* action-bar-bg.png */; };
 		AA8D326415339377006B1B41 /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D31AB15339377006B1B41 /* action-bar-bg.png */; };
@@ -829,9 +825,6 @@
 		AA8636CC144CA0DB00CFA759 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = ../Frameworks/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
 		AA8636D6144CA14300CFA759 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = ../Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
 		AA863869144CA28300CFA759 /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA86926514BFBEA000008A49 /* SampleEntityLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleEntityLoader.h; sourceTree = "<group>"; };
-		AA86926614BFBEA000008A49 /* SampleEntityLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleEntityLoader.m; sourceTree = "<group>"; };
-		AA86926714BFBEA000008A49 /* SampleEntityLoader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleEntityLoader.xib; sourceTree = "<group>"; };
 		AA8D31AB15339377006B1B41 /* action-bar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-bg.png"; sourceTree = "<group>"; };
 		AA8D31AC15339377006B1B41 /* action-bar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-bg@2x.png"; sourceTree = "<group>"; };
 		AA8D31AD15339377006B1B41 /* action-bar-button-black-hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-bar-button-black-hover.png"; sourceTree = "<group>"; };
@@ -1169,9 +1162,6 @@
 				AA03AC1B15420C9A009AC508 /* TestLikeButton.h */,
 				AA03AC1C15420C9A009AC508 /* TestLikeButton.m */,
 				AA03AC1D15420C9A009AC508 /* TestLikeButton.xib */,
-				AA86926514BFBEA000008A49 /* SampleEntityLoader.h */,
-				AA86926614BFBEA000008A49 /* SampleEntityLoader.m */,
-				AA86926714BFBEA000008A49 /* SampleEntityLoader.xib */,
 				AAC2181A14746F9300F4BE55 /* SocializeLoadingView.h */,
 				AA8636BA144CA0A200CFA759 /* Tests */,
 				AAD7E367144F59BC0073308D /* TestActivityViewController.h */,
@@ -1696,7 +1686,6 @@
 				AAD7E303144E54730073308D /* GenericViewController.xib in Resources */,
 				AAD7E307144E54730073308D /* TestTabbedSocializeActionBar.xib in Resources */,
 				AAD7E36C144F59BC0073308D /* TestActivityViewController.xib in Resources */,
-				AA86926A14BFBEA000008A49 /* SampleEntityLoader.xib in Resources */,
 				AA8D326215339377006B1B41 /* action-bar-bg.png in Resources */,
 				AA8D326515339377006B1B41 /* action-bar-bg@2x.png in Resources */,
 				AA8D326815339377006B1B41 /* action-bar-button-black-hover.png in Resources */,
@@ -1905,7 +1894,6 @@
 				AAD7E304144E54730073308D /* GenericViewController.xib in Resources */,
 				AAD7E308144E54730073308D /* TestTabbedSocializeActionBar.xib in Resources */,
 				AAD7E36D144F59BC0073308D /* TestActivityViewController.xib in Resources */,
-				AA86926B14BFBEA000008A49 /* SampleEntityLoader.xib in Resources */,
 				AA8D326315339377006B1B41 /* action-bar-bg.png in Resources */,
 				AA8D326615339377006B1B41 /* action-bar-bg@2x.png in Resources */,
 				AA8D326915339377006B1B41 /* action-bar-button-black-hover.png in Resources */,
@@ -2433,7 +2421,6 @@
 				AAD7E305144E54730073308D /* TestTabbedSocializeActionBar.m in Sources */,
 				AAD7E36A144F59BC0073308D /* TestActivityViewController.m in Sources */,
 				AAD21912148AFD8300EF5503 /* StringHelper.m in Sources */,
-				AA86926814BFBEA000008A49 /* SampleEntityLoader.m in Sources */,
 				AA03AC1E15420C9A009AC508 /* TestLikeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2468,7 +2455,6 @@
 				AAD7E306144E54730073308D /* TestTabbedSocializeActionBar.m in Sources */,
 				AAD7E36B144F59BC0073308D /* TestActivityViewController.m in Sources */,
 				AAD21911148AFD8200EF5503 /* StringHelper.m in Sources */,
-				AA86926914BFBEA000008A49 /* SampleEntityLoader.m in Sources */,
 				AA03AC1F15420C9A009AC508 /* TestLikeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

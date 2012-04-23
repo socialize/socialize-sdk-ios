@@ -1483,12 +1483,6 @@
 		AA9A12A015046C6700176AFD /* SocializeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9A129D15046C6700176AFD /* SocializeOptions.m */; };
 		AA9A12A115046C6700176AFD /* SocializeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9A129D15046C6700176AFD /* SocializeOptions.m */; };
 		AA9A12A81504769500176AFD /* SocializeFacebookAuthenticatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9A12A71504769500176AFD /* SocializeFacebookAuthenticatorTests.m */; };
-		AA9D780014BE191A00D76D6B /* SampleEntityLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9D77FE14BE191A00D76D6B /* SampleEntityLoader.m */; };
-		AA9D780114BE191A00D76D6B /* SampleEntityLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9D77FE14BE191A00D76D6B /* SampleEntityLoader.m */; };
-		AA9D780214BE191A00D76D6B /* SampleEntityLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9D77FE14BE191A00D76D6B /* SampleEntityLoader.m */; };
-		AA9D780314BE191A00D76D6B /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9D77FF14BE191A00D76D6B /* SampleEntityLoader.xib */; };
-		AA9D780414BE191A00D76D6B /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9D77FF14BE191A00D76D6B /* SampleEntityLoader.xib */; };
-		AA9D780514BE191A00D76D6B /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9D77FF14BE191A00D76D6B /* SampleEntityLoader.xib */; };
 		AA9E0C89144E060B00D2C37F /* TestTabbedSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9E0C87144E060B00D2C37F /* TestTabbedSocializeActionBar.m */; };
 		AA9E0C8A144E060B00D2C37F /* TestTabbedSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9E0C88144E060B00D2C37F /* TestTabbedSocializeActionBar.xib */; };
 		AA9E0C8E144E076D00D2C37F /* GenericViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9E0C8C144E076D00D2C37F /* GenericViewController.m */; };
@@ -1937,6 +1931,12 @@
 		AAF50D7314CA0ED700585474 /* SocializeBaseViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF50D7114CA0ED700585474 /* SocializeBaseViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAF559DC14AE51EF00565248 /* DebugUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF559DB14AE51EF00565248 /* DebugUtil.m */; };
 		AAF559DD14AE51EF00565248 /* DebugUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF559DB14AE51EF00565248 /* DebugUtil.m */; };
+		AAF60EB715461AD000245867 /* SampleEntityLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF60EB515461AD000245867 /* SampleEntityLoader.h */; };
+		AAF60EB815461AD000245867 /* SampleEntityLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF60EB515461AD000245867 /* SampleEntityLoader.h */; };
+		AAF60EB915461AD000245867 /* SampleEntityLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF60EB615461AD000245867 /* SampleEntityLoader.m */; };
+		AAF60EBA15461AD000245867 /* SampleEntityLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF60EB615461AD000245867 /* SampleEntityLoader.m */; };
+		AAF60EBC15461ADA00245867 /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF60EBB15461ADA00245867 /* SampleEntityLoader.xib */; };
+		AAF60EBD15461ADA00245867 /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF60EBB15461ADA00245867 /* SampleEntityLoader.xib */; };
 		AAF7A311149B35D100FE67E9 /* UIImage+Resize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF7A30F149B35D000FE67E9 /* UIImage+Resize.h */; };
 		AAF7A312149B35D100FE67E9 /* UIImage+Resize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF7A30F149B35D000FE67E9 /* UIImage+Resize.h */; };
 		AAF7A313149B35D100FE67E9 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF7A310149B35D000FE67E9 /* UIImage+Resize.m */; };
@@ -2879,9 +2879,6 @@
 		AA9A129D15046C6700176AFD /* SocializeOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeOptions.m; path = Classes/SocializeOptions.m; sourceTree = "<group>"; };
 		AA9A12A61504769500176AFD /* SocializeFacebookAuthenticatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebookAuthenticatorTests.h; path = "Test Cases/SocializeFacebookAuthenticatorTests.h"; sourceTree = "<group>"; };
 		AA9A12A71504769500176AFD /* SocializeFacebookAuthenticatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebookAuthenticatorTests.m; path = "Test Cases/SocializeFacebookAuthenticatorTests.m"; sourceTree = "<group>"; };
-		AA9D77FD14BE191A00D76D6B /* SampleEntityLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleEntityLoader.h; sourceTree = "<group>"; };
-		AA9D77FE14BE191A00D76D6B /* SampleEntityLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleEntityLoader.m; sourceTree = "<group>"; };
-		AA9D77FF14BE191A00D76D6B /* SampleEntityLoader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleEntityLoader.xib; sourceTree = "<group>"; };
 		AA9E0C86144E060B00D2C37F /* TestTabbedSocializeActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTabbedSocializeActionBar.h; sourceTree = "<group>"; };
 		AA9E0C87144E060B00D2C37F /* TestTabbedSocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTabbedSocializeActionBar.m; sourceTree = "<group>"; };
 		AA9E0C88144E060B00D2C37F /* TestTabbedSocializeActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTabbedSocializeActionBar.xib; sourceTree = "<group>"; };
@@ -3069,6 +3066,9 @@
 		AAF50D6914CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeNotificationToggleBubbleContentView.xib; path = Resources/SocializeNotificationToggleBubbleContentView.xib; sourceTree = "<group>"; };
 		AAF50D7114CA0ED700585474 /* SocializeBaseViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBaseViewControllerDelegate.h; path = Classes/SocializeBaseViewControllerDelegate.h; sourceTree = "<group>"; };
 		AAF559DB14AE51EF00565248 /* DebugUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugUtil.m; sourceTree = "<group>"; };
+		AAF60EB515461AD000245867 /* SampleEntityLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleEntityLoader.h; path = Classes/SampleEntityLoader.h; sourceTree = "<group>"; };
+		AAF60EB615461AD000245867 /* SampleEntityLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleEntityLoader.m; path = Classes/SampleEntityLoader.m; sourceTree = "<group>"; };
+		AAF60EBB15461ADA00245867 /* SampleEntityLoader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SampleEntityLoader.xib; path = Resources/SampleEntityLoader.xib; sourceTree = "<group>"; };
 		AAF7A30F149B35D000FE67E9 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resize.h"; path = "Classes/UIImage+Resize.h"; sourceTree = "<group>"; };
 		AAF7A310149B35D000FE67E9 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resize.m"; path = "Classes/UIImage+Resize.m"; sourceTree = "<group>"; };
 		AAF7A315149B37DC00FE67E9 /* UIImage+ResizeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ResizeTests.h"; path = "Test Cases/UIImage+ResizeTests.h"; sourceTree = "<group>"; };
@@ -3712,6 +3712,7 @@
 				AAF903081472FC8500AB8674 /* Action Bar */,
 				AA047F9614AD5A6E0047D596 /* Notifications */,
 				6D89844B14083B8200482F1E /* Utilities */,
+				AAF60EB415461AB400245867 /* Sample Entity Loader */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -4653,9 +4654,6 @@
 				16D54790144E997A0010732A /* TestActivityViewController.h */,
 				16D54791144E997A0010732A /* TestActivityViewController.m */,
 				16D54792144E997C0010732A /* TestActivityViewController.xib */,
-				AA9D77FD14BE191A00D76D6B /* SampleEntityLoader.h */,
-				AA9D77FE14BE191A00D76D6B /* SampleEntityLoader.m */,
-				AA9D77FF14BE191A00D76D6B /* SampleEntityLoader.xib */,
 				AA03AC0015420164009AC508 /* TestLikeButton.h */,
 				AA03AC0115420164009AC508 /* TestLikeButton.m */,
 				AA03AC0215420164009AC508 /* TestLikeButton.xib */,
@@ -4787,6 +4785,16 @@
 				AAB7B1E1153CEC6000A69D64 /* SocializeUILikeCreatorTests.m */,
 			);
 			name = Actions;
+			sourceTree = "<group>";
+		};
+		AAF60EB415461AB400245867 /* Sample Entity Loader */ = {
+			isa = PBXGroup;
+			children = (
+				AAF60EBB15461ADA00245867 /* SampleEntityLoader.xib */,
+				AAF60EB515461AD000245867 /* SampleEntityLoader.h */,
+				AAF60EB615461AD000245867 /* SampleEntityLoader.m */,
+			);
+			name = "Sample Entity Loader";
 			sourceTree = "<group>";
 		};
 		AAF903081472FC8500AB8674 /* Action Bar */ = {
@@ -5045,6 +5053,7 @@
 				AA86DB4315364DCB002DE37D /* SocializeThirdPartyLinker.h in Headers */,
 				AA86DB4915373CD0002DE37D /* SocializeThirdPartyLinkOptions.h in Headers */,
 				AA7F0A5D153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */,
+				AAF60EB815461AD000245867 /* SampleEntityLoader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5202,6 +5211,7 @@
 				AA86DB4215364DCB002DE37D /* SocializeThirdPartyLinker.h in Headers */,
 				AA86DB4815373CD0002DE37D /* SocializeThirdPartyLinkOptions.h in Headers */,
 				AA7F0A5C153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */,
+				AAF60EB715461AD000245867 /* SampleEntityLoader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5787,6 +5797,7 @@
 				AA7FCA9915118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */,
 				AA156AEF1521105300EB2D53 /* SocializeDummyViewController.xib in Resources */,
 				AA156AF21521109800EB2D53 /* socialize_logo.png in Resources */,
+				AAF60EBC15461ADA00245867 /* SampleEntityLoader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6158,7 +6169,6 @@
 				AA7FB8E61491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8ED1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A414AADBF70052720B /* SocializeActivityDetailsViewController.xib in Resources */,
-				AA9D780414BE191A00D76D6B /* SampleEntityLoader.xib in Resources */,
 				AAF50D6F14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 				AAAF7F3614CA208900EA387C /* SocializePostCommentViewController.xib in Resources */,
 				AAAF7F3D14CA208900EA387C /* SocializePostShareViewController.xib in Resources */,
@@ -6237,7 +6247,6 @@
 				AA7FB8DE1491415600B018DE /* socialize-iphone-subcribe-notification-icon@2x.png in Resources */,
 				AA7FB8E71491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8EE1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
-				AA9D780514BE191A00D76D6B /* SampleEntityLoader.xib in Resources */,
 				AAF50D7014CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 				AAAF7F3714CA208900EA387C /* SocializePostCommentViewController.xib in Resources */,
 				AAAF7F3E14CA208900EA387C /* SocializePostShareViewController.xib in Resources */,
@@ -6446,7 +6455,6 @@
 				AA7FB8E41491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8EB1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A514AADBF90052720B /* SocializeActivityDetailsViewController.xib in Resources */,
-				AA9D780314BE191A00D76D6B /* SampleEntityLoader.xib in Resources */,
 				AAF50D6D14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
 				AAAF7F3414CA208900EA387C /* SocializePostCommentViewController.xib in Resources */,
 				AAAF7F3B14CA208900EA387C /* SocializePostShareViewController.xib in Resources */,
@@ -6645,6 +6653,7 @@
 				AA7FCA9A15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */,
 				AA156AF01521105300EB2D53 /* SocializeDummyViewController.xib in Resources */,
 				AA156AF31521109800EB2D53 /* socialize_logo.png in Resources */,
+				AAF60EBD15461ADA00245867 /* SampleEntityLoader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7063,6 +7072,7 @@
 				AA86DB4415364DCB002DE37D /* SocializeThirdPartyLinker.m in Sources */,
 				AA86DB4A15373CD0002DE37D /* SocializeThirdPartyLinkOptions.m in Sources */,
 				AA7F0A5E153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */,
+				AAF60EB915461AD000245867 /* SampleEntityLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7203,7 +7213,6 @@
 				16D54797144E9A640010732A /* TestActivityViewController.m in Sources */,
 				AA9E0C90144E077500D2C37F /* TestTabbedSocializeActionBar.m in Sources */,
 				AA9E0C91144E147900D2C37F /* GenericViewController.m in Sources */,
-				AA9D780114BE191A00D76D6B /* SampleEntityLoader.m in Sources */,
 				AA03AC0515420164009AC508 /* TestLikeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7223,7 +7232,6 @@
 				AA973CF51468A6AB00DAE945 /* TestEntityServices.m in Sources */,
 				AAB127F214994A0C009AF443 /* TestSubscriptionService.m in Sources */,
 				AAC4931C149A92C5000EEA7E /* TestCommentServices.m in Sources */,
-				AA9D780214BE191A00D76D6B /* SampleEntityLoader.m in Sources */,
 				AA01F8F6150A84C900BB2B29 /* TestSocializeService.m in Sources */,
 				AA03D183150A9D8C00E7BFA3 /* DataHelper.m in Sources */,
 				AA94613B152A877200BCEB4A /* TestNotifications.m in Sources */,
@@ -7258,7 +7266,6 @@
 				16D54795144E9A630010732A /* TestActivityViewController.m in Sources */,
 				AA9E0C89144E060B00D2C37F /* TestTabbedSocializeActionBar.m in Sources */,
 				AA9E0C8E144E076D00D2C37F /* GenericViewController.m in Sources */,
-				AA9D780014BE191A00D76D6B /* SampleEntityLoader.m in Sources */,
 				AA03AC0315420164009AC508 /* TestLikeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7453,6 +7460,7 @@
 				AA86DB4515364DCB002DE37D /* SocializeThirdPartyLinker.m in Sources */,
 				AA86DB4B15373CD0002DE37D /* SocializeThirdPartyLinkOptions.m in Sources */,
 				AA7F0A5F153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */,
+				AAF60EBA15461AD000245867 /* SampleEntityLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

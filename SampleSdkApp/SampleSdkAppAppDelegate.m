@@ -12,7 +12,6 @@
 #import <Socialize/Socialize.h>
 #import "TestListController.h"
 #include <AvailabilityMacros.h>
-#import "SampleEntityLoader.h"
 
 #if RUN_GHUNIT_TESTS
 #import <GHUnitIOS/GHUnit.h>

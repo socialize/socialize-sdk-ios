@@ -22,3 +22,4 @@
 #import "SocializeTwitterAuthViewController.h"
 #import "SocializeConfiguration.h"
 #import "SocializeLikeButton.h"
+#import "SampleEntityLoader.h"
