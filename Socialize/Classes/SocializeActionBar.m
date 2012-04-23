@@ -351,7 +351,11 @@
 }
 
 - (void)failedCreatingLikeWithError:(NSError*)error {
-    [(SocializeActionView*)self.view unlockButtons];    
+    [(SocializeActionView*)self.view unlockButtons];
+    
+    if (![error isSocializeErrorWithCode:SocializeErrorThirdPartyLinkCancelledByUser]) {
+        [self failWithError:error];
+    }
 }
 
 -(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object
