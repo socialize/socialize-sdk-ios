@@ -91,6 +91,13 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [super dealloc];
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        (void)self.keyboardListener;
+    }
+    return self;
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -106,12 +113,18 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.keyboardListener = [[[SocializeKeyboardListener alloc] init] autorelease];
-    self.keyboardListener.delegate = self;
-    
     if (self.tableView == nil && [self.view isKindOfClass:[UITableView class]]) {
         self.tableView = (UITableView*)self.view;
     }
+}
+
+- (SocializeKeyboardListener*)keyboardListener {
+    if (keyboardListener_ == nil) {
+        keyboardListener_ = [[SocializeKeyboardListener alloc] init];
+        keyboardListener_.delegate = self;
+    }
+    
+    return keyboardListener_;
 }
 
 - (NSBundle*)bundle {
