@@ -61,8 +61,11 @@
     [share setEntity:entity];
     [share setMedium:SocializeShareMediumTwitter];
     [share setText:testText];
-    [share setThirdParties:[NSArray arrayWithObject:@"twitter"]];
-    [share setThirdPartiesInfoRequest:[NSArray arrayWithObject:@"facebook"]];
+    NSDictionary *propagation = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"twitter"] forKey:@"third_parties"];
+    [share setPropagation:propagation];
+    
+    NSDictionary *pir = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"facebook"] forKey:@"third_parties"];
+    [share setPropagationInfoRequest:pir];
     
     NSMutableDictionary *testDict = [NSMutableDictionary dictionary];
     SocializeShareJSONFormatter *entityFormatter = [[[SocializeShareJSONFormatter alloc] initWithFactory:_factory] autorelease];

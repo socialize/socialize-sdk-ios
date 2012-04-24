@@ -84,18 +84,12 @@
         [dictionaryRepresentation setObject:[entity key] forKey:@"entity_key"];
     }
     
-    if ([activity thirdParties] != nil) {
-        NSMutableDictionary *propagation = [NSMutableDictionary dictionary];
-        // Add twitter propagator
-        [propagation setObject:[activity thirdParties] forKey:@"third_parties"];
-        [dictionaryRepresentation setObject:propagation forKey:@"propagation"];
+    if ([activity propagation] != nil) {
+        [dictionaryRepresentation setObject:[activity propagation] forKey:@"propagation"];
     }
 
-    if ([activity thirdPartiesInfoRequest] != nil) {
-        NSMutableDictionary *propagationInfo = [NSMutableDictionary dictionary];
-        // Add twitter propagator
-        [propagationInfo setObject:[activity thirdPartiesInfoRequest] forKey:@"third_parties"];
-        [dictionaryRepresentation setObject:propagationInfo forKey:@"propagation_info_request"];
+    if ([activity propagationInfoRequest] != nil) {
+        [dictionaryRepresentation setObject:[activity propagationInfoRequest] forKey:@"propagation_info_request"];
     }
 
     [super doToDictionary:dictionaryRepresentation fromObject:fromObject];

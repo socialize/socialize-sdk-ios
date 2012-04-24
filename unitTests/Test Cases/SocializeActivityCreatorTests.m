@@ -94,14 +94,16 @@
 }
 
 - (void)expectSetTwitterInActivity:(id)mockActivity {
-    [[[mockActivity expect] andDo1:^(NSArray *thirdParties) {
+    [[[mockActivity expect] andDo1:^(NSDictionary *propagation) {
         NSArray *expectedThirdParties = [NSArray arrayWithObject:@"twitter"];
-        GHAssertEqualObjects(thirdParties, expectedThirdParties, @"bad third parties %@", thirdParties);
-    }] setThirdParties:OCMOCK_ANY];
+        GHAssertEqualObjects([propagation objectForKey:@"third_parties"], expectedThirdParties, @"bad third parties %@", propagation);
+    }] setPropagation:OCMOCK_ANY];
 }
 
 - (void)rejectSetTwitterInActivity:(id)mockActivity {
-    [[mockActivity reject] setThirdParties:OCMOCK_ANY];
+    [[mockActivity reject] setPropagation:[OCMArg checkWithBlock:^(id propagation) {
+        return [[propagation objectForKey:@"third_parties"] containsObject:@"twitter"];
+    }]];
 }
 
 - (void)selectJustTwitterInOptions {

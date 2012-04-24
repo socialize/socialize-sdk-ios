@@ -19,8 +19,8 @@
 @synthesize  lng = _lng;
 @synthesize  date = _date;
 
-@synthesize thirdParties = _thirdParties;
-@synthesize thirdPartiesInfoRequest = _thirdPartiesInfoRequest;
+@synthesize propagation = _propagation;
+@synthesize propagationInfoRequest = _propagationInfoRequest;
 @synthesize propagationInfoResponse = _propagationInfoResponse;
 
 -(void)dealloc
@@ -31,8 +31,8 @@
     [_lat release];
     [_lng release];
     [_date release];
-    [_thirdParties release];
-    [_thirdPartiesInfoRequest release];
+    [_propagation release];
+    [_propagationInfoRequest release];
     [_propagationInfoResponse release];
     [super dealloc];
 }
