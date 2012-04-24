@@ -374,9 +374,7 @@
     [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:0] withLikesCount:[NSNumber numberWithInt:0] isLiked:NO withCommentsCount:[NSNumber numberWithInt:0]];
     if([service isKindOfClass:[SocializeLikeService class]]) {
         [self failedCreatingLikeWithError:error];
-    }
-    
-    if(![[error localizedDescription] isEqualToString:@"Entity does not exist."]) {
+    } else if(![[error localizedDescription] isEqualToString:@"Entity does not exist."]) {
         [super service:service didFail:error];
     }
 }

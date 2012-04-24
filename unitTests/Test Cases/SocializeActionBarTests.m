@@ -240,12 +240,12 @@
     NSNumber *zero = [NSNumber numberWithInteger:0];
     [[self.mockActionView expect] updateCountsWithViewsCount:zero withLikesCount:zero isLiked:NO withCommentsCount:zero];
     
-    id mockError = [OCMockObject mockForClass:[NSError class]];
+    id mockError = [OCMockObject niceMockForClass:[NSError class]];
     [[[mockError stub] andReturn:@"ERROR"] localizedDescription];
     [[mockError stub] domain];
     
-    [[(id)self.actionBar expect] stopLoadAnimation];
-    [[(id)self.actionBar expect] showAlertWithText:@"ERROR" andTitle:@"Error"];
+//    [[(id)self.actionBar expect] stopLoadAnimation];
+    [[(id)self.actionBar expect] showAlertWithText:OCMOCK_ANY andTitle:OCMOCK_ANY];
 
     [self.actionBar service:mockService didFail:mockError];
 }
@@ -256,7 +256,7 @@
     NSNumber *zero = [NSNumber numberWithInteger:0];
     [[self.mockActionView expect] updateCountsWithViewsCount:zero withLikesCount:zero isLiked:NO withCommentsCount:zero];
     
-    id mockError = [OCMockObject mockForClass:[NSError class]];
+    id mockError = [OCMockObject niceMockForClass:[NSError class]];
     [[[mockError stub] andReturn:@"Entity does not exist."] localizedDescription];
     
     [self.actionBar service:mockService didFail:mockError];
