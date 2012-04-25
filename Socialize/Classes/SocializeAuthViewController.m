@@ -97,6 +97,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     self.view.backgroundColor = [UIColor colorWithRed:50/255.0f green:58/255.0f blue:67/255.0f alpha:1.0];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorColor = [UIColor colorWithRed:25/255.0f green:31/255.0f blue:37/255.0f alpha:1.0];
+    self.navigationItem.leftBarButtonItem = self.cancelButton;
     
     if (![Socialize anonymousAllowed]) {
         self.skipButton.hidden = YES;

@@ -96,7 +96,8 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
 
 - (void)createShareOnSocializeServer {
     if (self.shareObject.medium == SocializeShareMediumTwitter) {
-        [self.shareObject setThirdParties:[NSArray arrayWithObject:@"twitter"]];
+        NSDictionary *propagation = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"twitter"] forKey:@"third_parties"];
+        [self.shareObject setPropagation:propagation];
     }
     
     [self.socialize createShare:self.shareObject];

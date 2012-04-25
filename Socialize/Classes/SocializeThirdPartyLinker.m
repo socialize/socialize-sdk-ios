@@ -9,6 +9,7 @@
 #import "SocializeThirdPartyLinker.h"
 #import "SocializeUIDisplayProxy.h"
 #import "SocializeThirdParty.h"
+#import "SocializeErrorDefinitions.h"
 
 @interface SocializeThirdPartyLinker ()
 @property (nonatomic, assign) BOOL finishedShowingAuthDialog;
@@ -54,6 +55,11 @@
     [self tryToFinishLinking];
 }
 
+- (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
+    [self.displayProxy dismissModalViewController:self.authViewController.navigationController];
+    [self failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorThirdPartyLinkCancelledByUser]];
+}
+
 - (void)authorizationSkipped {
     self.finishedShowingAuthDialog = YES;
     [self.displayProxy dismissModalViewController:self.authViewController];
@@ -63,7 +69,8 @@
 
 - (void)showAuthViewController {
     self.authViewController = [[[SocializeAuthViewController alloc] initWithDelegate:self] autorelease];
-    [self.displayProxy presentModalViewController:self.authViewController];
+    UINavigationController *nav = [UINavigationController socializeNavigationControllerWithRootViewController:self.authViewController];
+    [self.displayProxy presentModalViewController:nav];
 }
 
 - (void)executeAction {

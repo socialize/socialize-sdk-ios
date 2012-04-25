@@ -120,10 +120,12 @@
 - (void)prepareActivityForCreate {
     if ([self shouldPostToTwitter]) {
         // Currently only twitter is allowed in the third parties list
-        [self.activity setThirdParties:[NSArray arrayWithObject:@"twitter"]];
+        NSDictionary *propagation = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"twitter"] forKey:@"third_parties"];
+        [self.activity setPropagation:propagation];
     }
     
-    [self.activity setThirdPartiesInfoRequest:[NSArray arrayWithObjects:@"facebook", @"twitter", @"sms", @"email", nil]];
+    NSDictionary *pir = [NSDictionary dictionaryWithObject:[NSArray arrayWithObjects:@"facebook", @"twitter", @"sms", @"email", nil] forKey:@"third_parties"];
+    [self.activity setPropagationInfoRequest:pir];
 }
 
 - (NSString*)facebookEntityURLFromPropagationInfo {

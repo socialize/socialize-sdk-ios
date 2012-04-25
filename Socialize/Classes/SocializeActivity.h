@@ -91,24 +91,24 @@
 /**
  Third party destinations
  */
--(NSString *)thirdParties;
+-(NSDictionary *)propagation;
 
 /**
  Third party propagation targets
  @param thirdParties
  */
--(void)setThirdParties:(NSArray*)thirdParties;
+-(void)setPropagation:(NSDictionary*)propagation;
 
 /**
  Third party propagation info request targets
  */
--(NSString *)thirdPartiesInfoRequest;
+-(NSDictionary *)propagationInfoRequest;
 
 /**
  Set Third party propagation info request targets
  @param thirdPartiesInfo
  */
--(void)setThirdPartiesInfoRequest:(NSArray*)setThirdPartiesInfoRequest;
+-(void)setPropagationInfoRequest:(NSDictionary*)setPropagationInfoRequest;
 
 /**
  Third party propagation info request targets
@@ -119,7 +119,7 @@
  Set Propagation Info Response
  @param propagationInfoResponse
  */
--(void)setPropagationInfoResponse:(NSArray*)propagationInfoResponse;
+-(void)setPropagationInfoResponse:(NSDictionary*)propagationInfoResponse;
 
 @end
 
@@ -150,11 +150,11 @@
 /** Set\get date of activity.*/
 @property (nonatomic, retain) NSDate*           date;
 
-/* Propagate to these third parties */
-@property (nonatomic, copy) NSArray *thirdParties;
+/* Propagation dictionaries */
+@property (nonatomic, copy) NSDictionary *propagation;
 
-/* Get propagation info for these third parties */
-@property (nonatomic, copy) NSArray *thirdPartiesInfoRequest;
+/* Propagation info-only dictionaries */
+@property (nonatomic, copy) NSDictionary *propagationInfoRequest;
 
 /* Propagation info response dictionary */
 @property (nonatomic, copy) NSArray *propagationInfoResponse;

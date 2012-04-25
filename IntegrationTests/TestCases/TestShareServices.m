@@ -19,7 +19,7 @@
     NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", _cmd]];
     SocializeEntity *entity = [SocializeEntity entityWithKey:shareURL name:@"Test"];
     SocializeShare *share = [SocializeShare shareWithEntity:entity text:@"a share" medium:SocializeShareMediumFacebook];
-    [share setThirdPartiesInfoRequest:[NSArray arrayWithObject:@"facebook"]];
+    [share setPropagationInfoRequest:[NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"facebook"] forKey:@"third_parties"]];
     [self createShare:share];
     
     // verify share

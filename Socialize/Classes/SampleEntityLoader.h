@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Socialize/Socialize.h>
+#import "_Socialize.h"
 
 @interface SampleEntityLoader : UIViewController
 @property (nonatomic, retain) IBOutlet UILabel *entityNameLabel;

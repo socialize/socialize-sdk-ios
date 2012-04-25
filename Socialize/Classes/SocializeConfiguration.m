@@ -66,7 +66,7 @@ static SocializeConfiguration *sharedConfiguration;
         NSDictionary * newConfigurationIfo = [self retrieveConfigurationDataFromFileAtPath:tempConfigurationPath];
         
         NSAssert(newConfigurationIfo!=nil,
-                 @"Configuration information was not found at path ->%@", tempConfigurationPath);
+                 @"Socialize cannot find a configuration file. Please ensure that all Socialize Resources (including SocializeConfigurationInfo.plist) have been added to your project.");
         
         NSAssert([newConfigurationIfo count]> 0, @"Configuration information is empty (Path-> %@)", tempConfigurationPath);
         

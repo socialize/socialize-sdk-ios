@@ -179,6 +179,7 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:SocializeAuthenticatedUserDidChangeNotification object:self.authenticatedUser];
             
         } else {
+            SDebugLog0(@"Unexpected JSON Response: %@", responseBody);
             [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseBody reason:@"Response Missing OAuth Token and Secret"]];
         }            
     }

@@ -351,7 +351,11 @@
 }
 
 - (void)failedCreatingLikeWithError:(NSError*)error {
-    [(SocializeActionView*)self.view unlockButtons];    
+    [(SocializeActionView*)self.view unlockButtons];
+    
+    if (![error isSocializeErrorWithCode:SocializeErrorThirdPartyLinkCancelledByUser] && ![[error localizedDescription] isEqualToString:@"Entity does not exist."]) {
+        [self failWithError:error];
+    }
 }
 
 -(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object
@@ -370,9 +374,7 @@
     [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:0] withLikesCount:[NSNumber numberWithInt:0] isLiked:NO withCommentsCount:[NSNumber numberWithInt:0]];
     if([service isKindOfClass:[SocializeLikeService class]]) {
         [self failedCreatingLikeWithError:error];
-    }
-    
-    if(![[error localizedDescription] isEqualToString:@"Entity does not exist."]) {
+    } else {
         [super service:service didFail:error];
     }
 }

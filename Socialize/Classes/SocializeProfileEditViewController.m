@@ -124,6 +124,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
     self.showTwitterLogout = [SocializeThirdPartyTwitter isLinkedToSocialize];
     self.showFacebookLogout = [SocializeThirdPartyFacebook isLinkedToSocialize];
+    
+    // Remove default gray background (iPad / http://stackoverflow.com/questions/2688007/uitableview-backgroundcolor-always-gray-on-ipad)
+    [self.tableView setBackgroundView:nil];
 }
 
 - (void)viewDidUnload
