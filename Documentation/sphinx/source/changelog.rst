@@ -4,6 +4,20 @@
 Changelog
 =============================================
 
+v1.7.1
+------
+[bug] Fix PostComment keyboard crash after low-memory event [ crash memory ]
+
+[feature] Improve failure text for missing SocializeConfigurationInfo.plist [ ]
+
+[bug] SocializeAuthViewController needs a back or cancel button to completely cancel the flow [ ]
+
+[feature] Include an example entity loader in release distrubution (SampleEntityLoader) [ ]
+
+[bug] Action bar not reporting like error [ ]
+
+[bug] iPad layout broken in activity, profile, and profile edit [ ]
+
 v1.7
 ----
 [feature] Expose user-specific likes GET endpoint in SDK [ ]
