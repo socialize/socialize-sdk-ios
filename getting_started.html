@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started Guide &mdash; Socialize iOS SDK 1.7 documentation</title>
+    <title>Getting Started Guide &mdash; Socialize iOS SDK 1.7.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7',
+        VERSION:     '1.7.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.7.1 documentation" href="index.html" />
     <link rel="next" title="Socialize Action Bar" href="action_bar.html" />
     <link rel="prev" title="Socialize iOS SDK" href="index.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -118,12 +118,18 @@ passed into each call to the Socialize SDK.</p>
 <li><p class="first"><strong>Download and unzip the lastest iOS SDK release from the website.</strong>
 You can find it here: <a class="reference external" href="http://www.getsocialize.com/sdk/">http://www.getsocialize.com/sdk/</a></p>
 </li>
-<li><p class="first"><strong>Install the embedded static framework to your application.</strong>
-To do this just drag and drop Socialize.embeddedframework folder from the package to your framework section in your project. Note that this is a directory that includes both Socialize.framework and our bundled Resources.</p>
-<blockquote>
-<div><img alt="images/drag_and_drop.png" src="images/drag_and_drop.png" />
-</div></blockquote>
+<li><p class="first"><strong>Install the embedded static framework to your application.</strong></p>
+<p>To do this just drag and drop Socialize.embeddedframework folder from the
+package to your framework section in your project.</p>
 </li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Be sure to drag the outlying .embeddedframework folder, not just the framework. The .embeddedframework directory contains both the Socialize framework and the Socialize resources.
+If you just add the framework, you will be missing important Socialize images and configuration files.</p>
+</div>
+<img alt="images/drag_and_drop.png" src="images/drag_and_drop.png" />
+<ul>
 <li><p class="first">When prompted, check &#8220;Copy items into destination group&#8217;s folder (if needed)&#8221; and click finish</p>
 <blockquote>
 <div><img alt="images/check_copy_items.png" src="images/check_copy_items.png" />
@@ -283,7 +289,7 @@ using FBConnect on your own, you can check the official Facebook tutorial at
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
