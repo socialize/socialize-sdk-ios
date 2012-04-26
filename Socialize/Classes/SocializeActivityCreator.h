@@ -29,6 +29,10 @@
 - (NSString*)textForFacebook;
 - (NSString*)facebookEntityURLFromPropagationInfo;
 - (NSString*)facebookApplicationURLFromPropagationInfo;
+- (NSDictionary*)propagation;
+- (NSDictionary*)propagationInfoRequest;
+- (BOOL)shouldPostToFacebook;
+- (BOOL)shouldPostToTwitter;
 
 
 @end

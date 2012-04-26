@@ -65,6 +65,26 @@
     [self failServerCreateWithError:error];
 }
 
+- (BOOL)shouldPostToFacebook {
+    // Share third parties are not disabled by user settings
+    return [self.thirdParties containsObject:@"facebook"];
+}
+
+- (BOOL)shouldPostToTwitter {
+    // Share third parties are not disabled by user settings
+    return [self.thirdParties containsObject:@"twitter"];
+}
+
+- (NSDictionary*)propagationInfoRequest {
+    if (self.share.medium == SocializeShareMediumEmail) {
+        return [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"email"] forKey:@"third_parties"];
+    } else if (self.share.medium == SocializeShareMediumSMS) {
+        return [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"sms"] forKey:@"third_parties"];
+    } else {
+        return [super propagationInfoRequest];
+    }
+}
+
 /**
  Third parties is implied from medium for shares
  */
