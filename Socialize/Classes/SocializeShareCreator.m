@@ -69,13 +69,17 @@
  Third parties is implied from medium for shares
  */
 - (NSArray*)thirdParties {
+    if (self.options.thirdParties != nil) {
+        return self.options.thirdParties;
+    }
+    
     if (self.share.medium == SocializeShareMediumFacebook) {
         return [NSArray arrayWithObject:@"facebook"];
     } else if (self.share.medium == SocializeShareMediumTwitter) {
         return [NSArray arrayWithObject:@"twitter"];
-    } else {
-        return [NSArray array];
     }
+    
+    return [NSArray array];
 }
 
 
