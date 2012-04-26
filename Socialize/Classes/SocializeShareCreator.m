@@ -71,8 +71,10 @@
 - (NSArray*)thirdParties {
     if (self.share.medium == SocializeShareMediumFacebook) {
         return [NSArray arrayWithObject:@"facebook"];
-    } else {
+    } else if (self.share.medium == SocializeShareMediumTwitter) {
         return [NSArray arrayWithObject:@"twitter"];
+    } else {
+        return [NSArray array];
     }
 }
 

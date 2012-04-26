@@ -67,7 +67,8 @@
 
 - (void)testSuccessfulShareOnTwitter {
     [self selectJustTwitterInOptions];
-    
+    [[[self.mockShare stub] andReturnInteger:SocializeShareMediumTwitter] medium];
+
     [self succeedShareCreate];
     [self expectSetTwitterInActivity:self.mockShare];
     
