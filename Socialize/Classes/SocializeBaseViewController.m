@@ -91,6 +91,8 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     self.keyboardListener = nil;
     self.profileEditViewController = nil;
     self.navigationControllerForEdit = nil;
+    self.display = nil;
+    self.displayProxy = nil;
 
     [super dealloc];
 }

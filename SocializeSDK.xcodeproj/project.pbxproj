@@ -1849,8 +1849,8 @@
 		AAE126A7152281C80096BC99 /* SocializeNotificationDisplayControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE126A6152281C80096BC99 /* SocializeNotificationDisplayControllerTests.m */; };
 		AAE2750814EB446D00CE081D /* SocializeTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2750714EB446D00CE081D /* SocializeTestCase.m */; };
 		AAE33AFD1522674800BEE348 /* SocializeDirectEntityNotificationDisplayControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE33AFC1522674800BEE348 /* SocializeDirectEntityNotificationDisplayControllerTests.m */; };
-		AAE56C6A15476A6100A444C5 /* SZUserUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE56C6815476A6100A444C5 /* SZUserUtils.h */; };
-		AAE56C6B15476A6100A444C5 /* SZUserUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE56C6815476A6100A444C5 /* SZUserUtils.h */; };
+		AAE56C6A15476A6100A444C5 /* SZUserUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE56C6815476A6100A444C5 /* SZUserUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAE56C6B15476A6100A444C5 /* SZUserUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE56C6815476A6100A444C5 /* SZUserUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE56C6C15476A6100A444C5 /* SZUserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE56C6915476A6100A444C5 /* SZUserUtils.m */; };
 		AAE56C6D15476A6100A444C5 /* SZUserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE56C6915476A6100A444C5 /* SZUserUtils.m */; };
 		AAE5942914E47C8A004F1976 /* UIViewController+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE5942714E47C8A004F1976 /* UIViewController+Socialize.h */; };

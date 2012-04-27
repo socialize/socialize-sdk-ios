@@ -59,7 +59,6 @@
 
 @implementation SocializeActionBar
 
-@synthesize displayProxy = _display;
 @synthesize entity = _entity;
 @synthesize entityLike = entityLike_;
 @synthesize entityView = entityView_;
@@ -76,7 +75,6 @@
 
 - (void)dealloc
 {
-    self.displayProxy = nil;
     self.entity = nil;
     self.entityLike = nil;
     self.entityView = nil;
@@ -131,12 +129,12 @@
     return [self initWithEntity:entity display:controller];
 }
 
--(id)initWithEntity:(id<SocializeEntity>)entity display:(id)display {
+-(id)initWithEntity:(id<SocializeEntity>)entity display:(id<SocializeUIDisplay>)display {
     self = [super init];
     if(self)
     {
         self.entity = entity;
-        self.displayProxy = [SocializeUIDisplayProxy UIDisplayProxyWithObject:self display:display];
+        self.display = display;
     }
     return self;
 }
@@ -177,8 +175,14 @@
 - (UIViewController*)commentsNavController {
     if (commentsNavController_ == nil) {
         commentsNavController_ = [[SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:self.entity.key] retain];
+        SocializeCommentsTableViewController *comments = (SocializeCommentsTableViewController*)[(UINavigationController*)commentsNavController_ topViewController];
+        comments.delegate = self;
     }
     return commentsNavController_;
+}
+
+- (void)commentsTableViewControllerDidFinish:(SocializeCommentsTableViewController *)commentsTableViewController {
+    [self.displayProxy dismissModalViewController];
 }
 
 #pragma mark Socialize base class method

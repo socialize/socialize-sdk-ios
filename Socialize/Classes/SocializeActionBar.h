@@ -30,6 +30,7 @@
 #import "SocializeActionView.h"
 #import "SocializeActionBarDelegate.h"
 #import "SocializeUIDisplayProxyDelegate.h"
+#import "SocializeCommentsTableViewController.h"
 
 @class SocializeCommentsTableViewController;
 @protocol SocializeView;
@@ -42,10 +43,9 @@
  The Socialize Action Bar
 
  */
-@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate, SocializeUIDisplayProxyDelegate>
+@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate, SocializeUIDisplayProxyDelegate, SocializeCommentsTableViewControllerDelegate>
 
 @property (nonatomic, assign) id<SocializeActionBarDelegate> delegate;
-@property (nonatomic, retain) id displayProxy;
 @property (nonatomic, retain) id<SocializeEntity> entity;
 @property (nonatomic, retain) UIViewController *commentsNavController;
 
@@ -129,7 +129,7 @@
  @param url The URL for the Entity Key
  @param display Target for display actions. Either a UIViewController or a SocializeUIDisplay implementation
  */
--(id)initWithEntity:(id<SocializeEntity>)entity display:(id)display;
+-(id)initWithEntity:(id<SocializeEntity>)entity display:(id<SocializeUIDisplay>)display;
 
 @end
 
