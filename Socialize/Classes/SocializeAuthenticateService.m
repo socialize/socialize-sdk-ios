@@ -15,6 +15,7 @@
 #import "JSONKit.h"
 #import "SocializePrivateDefinitions.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "SocializeFullUser.h"
 
 @interface SocializeAuthenticateService()
 -(NSString*)getSocializeToken;
@@ -204,17 +205,25 @@
     [defaults synchronize]; 
 }
 
-- (id<SocializeUser>)authenticatedUser {    
-    // Also search persistent storage
+- (id)unarchiveFullUserWithProtocol:(Protocol*)protocol {
     NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
     if (userData != nil) {
         NSDictionary *info = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
-        return [_objectCreator createObjectFromDictionary:info forProtocol:@protocol(SocializeUser)];;
+        return [_objectCreator createObjectFromDictionary:info forProtocol:protocol];
     }
     
     // Not available
     return nil;
 }
+
+- (id<SocializeUser>)authenticatedUser {  
+    return [self unarchiveFullUserWithProtocol:@protocol(SocializeUser)];
+}
+
+- (id<SocializeFullUser>)authenticatedFullUser {    
+    return [self unarchiveFullUserWithProtocol:@protocol(SocializeFullUser)];
+}
+
 
 @end
 

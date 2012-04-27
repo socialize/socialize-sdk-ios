@@ -11,12 +11,15 @@
 #import "SocializeService.h"
 #import "SocializeFBConnect.h"
 
+@protocol SocializeFullUser;
+
 /**
 Socialize authentication service is the authentication engine. It performs anonymously and third party authentication.
  */
 @interface SocializeAuthenticateService : SocializeService<SocializeFBSessionDelegate>
 
 @property (nonatomic, readonly) id<SocializeUser>authenticatedUser;
+@property (nonatomic, readonly) id<SocializeFullUser>authenticatedFullUser;
 
 /**@name Anonymous authentication*/
 /**

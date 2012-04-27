@@ -443,6 +443,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     return _authService.authenticatedUser;
 }
 
+-(id<SocializeFullUser>)authenticatedFullUser {
+    return _authService.authenticatedFullUser;
+}
+
 -(BOOL)isAuthenticated{
     return [SocializeAuthenticateService isAuthenticated];
 }

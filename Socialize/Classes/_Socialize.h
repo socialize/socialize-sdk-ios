@@ -488,6 +488,11 @@ otherwise you will get a failure.
 -(id<SocializeUser>)authenticatedUser;
 
 /**
+ @return A SocializeFullUser object for the currently authenticated user
+ */
+-(id<SocializeFullUser>)authenticatedFullUser;
+
+/**
  Check if authentication credentials still valid /and/ that this is a facebook authentication.
  
  @return YES if credentials are valid and facebook was used for authentication, and NO otherwise
