@@ -84,12 +84,12 @@
 }
 
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController*)baseViewController {
-    [self.displayProxy dismissModalViewController:baseViewController];
+    [self.displayProxy dismissModalViewController];
     [self finishWithSettings];
 }
 
 - (void)profileEditViewController:(SocializeProfileEditViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
-    [self.displayProxy dismissModalViewController:profileEditViewController];
+    [self.displayProxy dismissModalViewController];
     [self finishWithSettings];
 }
 

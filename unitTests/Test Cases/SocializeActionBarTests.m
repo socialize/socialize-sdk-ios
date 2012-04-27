@@ -288,10 +288,12 @@
 //}
 
 - (void)testPresentModalControllerIgnoresNextViewAndPresents {
+    id mockController = [OCMockObject mockForClass:[UIViewController class]];
+
     [[(id)self.actionBar expect] setIgnoreNextView:YES];
-    [[self.mockParentController expect] presentModalViewController:OCMOCK_ANY animated:YES];
+    [[self.mockParentController expect] presentModalViewController:mockController animated:YES];
     
-    [self.actionBar presentInternalController:nil];
+    [self.actionBar presentInternalController:mockController];
 }
 
 @end

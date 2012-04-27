@@ -149,9 +149,8 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
     [composer setBody:[self defaultSMSMessage]];
     
     __block __typeof__(self) weakSelf = self;
-    __block __typeof__(composer) weakComposer = composer;
     composer.sz_completionBlock = ^(MessageComposeResult result) {
-        [weakSelf.displayProxy dismissModalViewController:weakComposer];
+        [weakSelf.displayProxy dismissModalViewController];
 
         switch (result) {
             case MessageComposeResultFailed:
@@ -218,10 +217,9 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
     MFMailComposeViewController *composer = [[[self.mailComposerClass alloc] init] autorelease];
     
     __block __typeof__(self) weakSelf = self;
-    __block __typeof__(composer) weakComposer = composer;
     composer.sz_completionBlock = ^(MFMailComposeResult result, NSError *error)
     {
-        [weakSelf.displayProxy dismissModalViewController:weakComposer];
+        [weakSelf.displayProxy dismissModalViewController];
         // Notifies users about errors associated with the interface
         switch (result)
         {
@@ -446,12 +444,12 @@ SYNTH_CLASS_GETTER(MFMailComposeViewController, mailComposerClass)
 }
 
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
-    [self.displayProxy dismissModalViewController:baseViewController];
+    [self.displayProxy dismissModalViewController];
     [self failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]];
 }
 
 - (void)baseViewControllerDidFinish:(SocializeComposeMessageViewController *)composition {
-    [self.displayProxy dismissModalViewController:composition];
+    [self.displayProxy dismissModalViewController];
     [self.shareObject setText:composition.commentTextView.text];
     self.compositionComplete = YES;
     [self tryToFinishCreatingShare];

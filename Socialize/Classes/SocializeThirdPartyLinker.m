@@ -50,19 +50,19 @@
 
 - (void)socializeAuthViewController:(SocializeAuthViewController *)authViewController didAuthenticate:(id<SocializeUser>)user {
     self.finishedShowingAuthDialog = YES;
-    [self.displayProxy dismissModalViewController:self.authViewController];
+    [self.displayProxy dismissModalViewController];
     
     [self tryToFinishLinking];
 }
 
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
-    [self.displayProxy dismissModalViewController:self.authViewController.navigationController];
+    [self.displayProxy dismissModalViewController];
     [self failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorThirdPartyLinkCancelledByUser]];
 }
 
 - (void)authorizationSkipped {
     self.finishedShowingAuthDialog = YES;
-    [self.displayProxy dismissModalViewController:self.authViewController];
+    [self.displayProxy dismissModalViewController];
     
     [self tryToFinishLinking];
 }

@@ -199,7 +199,7 @@ enum {
 - (void)cancelComposition {
     [[[self.mockDisplay expect] andDo2:^(id object, UINavigationController *nav) {
         SocializeBaseViewController *controller =(SocializeBaseViewController*)nav.topViewController;
-        [[self.mockDisplay expect] socializeObject:self.shareCreator requiresDismissOfViewController:controller];
+        [[self.mockDisplay expect] socializeObject:self.shareCreator requiresDismissOfViewController:nav];
         [self.shareCreator baseViewControllerDidCancel:controller];
     }] socializeObject:self.shareCreator requiresDisplayOfViewController:OCMOCK_ANY];
 }
@@ -207,7 +207,7 @@ enum {
 - (void)succeedCompositionWithText:(NSString*)text {
     [[[self.mockDisplay expect] andDo2:^(id object, UINavigationController *nav) {
         SocializeComposeMessageViewController *controller =(SocializeComposeMessageViewController*)nav.topViewController;
-        [[self.mockDisplay expect] socializeObject:self.shareCreator requiresDismissOfViewController:controller];
+        [[self.mockDisplay expect] socializeObject:self.shareCreator requiresDismissOfViewController:nav];
         
         id mockTextView = [OCMockObject mockForClass:[UITextView class]];
         [[[mockTextView stub] andReturn:text] text];

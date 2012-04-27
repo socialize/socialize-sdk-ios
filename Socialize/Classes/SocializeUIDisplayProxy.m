@@ -20,9 +20,12 @@
 @synthesize object = object_;
 @synthesize loadingView = loadingView;
 @synthesize loading = loading_;
+@synthesize controllers = controllers_;
 
 - (void)dealloc {
     self.loadingView = nil;
+    self.controllers = nil;
+    
     [super dealloc];
 }
 
@@ -38,28 +41,64 @@
     return self;
 }
 
+- (NSMutableArray*)controllers {
+    if (controllers_ == nil) {
+        controllers_ = [[NSMutableArray alloc] init];
+    }
+    
+    return controllers_;
+}
+
+- (id<SocializeUIDisplay>)displayAtIndexFromEnd:(NSUInteger)offset {
+    id<SocializeUIDisplay> display;
+    NSUInteger controllerCount = [self.controllers count];
+    if (controllerCount > offset) {
+        // Grab a controller, which conforms to SocializeUIDisplay
+        display = [self.controllers objectAtIndex:controllerCount - 1 - offset];
+    } else {
+        // Fall back to root display, which is a SocializeUIDisplay
+        display = self.display;
+    }
+    
+    return display;
+}
+
+- (id<SocializeUIDisplay>)topDisplay {
+    return [self displayAtIndexFromEnd:0];
+}
+
 - (void)presentModalViewController:(UIViewController*)controller {
     if ([self.object respondsToSelector:@selector(displayProxy:willDisplayViewController:)]) {
         [self.object displayProxy:self willDisplayViewController:controller];
     }
-         
+    
+    id<SocializeUIDisplay> topDisplay = [self topDisplay];
+    
+    [self.controllers addObject:controller];
+
     if ([self.display respondsToSelector:@selector(socializeObject:requiresDisplayOfViewController:)]) {
         [self.display socializeObject:self.object requiresDisplayOfViewController:controller];
-    } else if ([self.display respondsToSelector:@selector(presentModalViewController:animated:)]) {
-        [self.display presentModalViewController:controller animated:YES];
+    } else if ([topDisplay respondsToSelector:@selector(presentModalViewController:animated:)]) {
+        [topDisplay presentModalViewController:controller animated:YES];
     } else {
         NSAssert(NO, @"ui display implementation must respond to either socializeObject:requiresDisplayOfViewController or presentModalViewController:animated");
     }
 }
 
-- (void)dismissModalViewController:(UIViewController*)controller {
+- (void)dismissModalViewController {
+    UIViewController *topController = [self.controllers lastObject];
+    id<SocializeUIDisplay> secondFromTopDisplay = [self displayAtIndexFromEnd:1];
+    
+    [self.controllers removeLastObject];
+
     if ([self.display respondsToSelector:@selector(socializeObject:requiresDismissOfViewController:)]) {
-        [self.display socializeObject:self.object requiresDismissOfViewController:controller];
-    } else if ([self.display respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
-        [self.display dismissModalViewControllerAnimated:YES];
+        [self.display socializeObject:self.object requiresDismissOfViewController:(UIViewController*)topController];
+    } else if ([secondFromTopDisplay respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
+        [secondFromTopDisplay dismissModalViewControllerAnimated:YES];
     } else {
         NSAssert(NO, @"ui display implementation must respond to either socializeObject:requiresDismissOfViewController or presentModalViewController:animated");
     }
+    
 }
 
 - (void)showActionSheet:(UIActionSheet*)actionSheet {

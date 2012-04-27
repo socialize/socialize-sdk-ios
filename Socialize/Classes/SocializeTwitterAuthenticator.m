@@ -97,7 +97,7 @@
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
     if (baseViewController == self.twitterAuthViewController) {
         /* The SocializeTwitterAuthViewController flow was cancelled by the user */
-        [self.displayProxy dismissModalViewController:baseViewController];
+        [self.displayProxy dismissModalViewController];
         NSError *error = [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser];
         [self failWithError:error];
     } else {
@@ -108,7 +108,7 @@
 - (void)baseViewControllerDidFinish:(SocializeBaseViewController *)baseViewController {
     if (baseViewController == self.twitterAuthViewController) {
         /* The SocializeTwitterAuthViewController flow was completed successfully */
-        [self.displayProxy dismissModalViewController:baseViewController];
+        [self.displayProxy dismissModalViewController];
 
         [self succeedInteractiveLogin];
     }
