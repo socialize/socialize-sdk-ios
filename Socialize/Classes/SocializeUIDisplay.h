@@ -28,3 +28,6 @@
 - (UIView*)view;
 
 @end
+
+@interface UIViewController () <SocializeUIDisplay>
+@end

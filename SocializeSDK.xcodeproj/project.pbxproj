@@ -1849,6 +1849,10 @@
 		AAE126A7152281C80096BC99 /* SocializeNotificationDisplayControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE126A6152281C80096BC99 /* SocializeNotificationDisplayControllerTests.m */; };
 		AAE2750814EB446D00CE081D /* SocializeTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2750714EB446D00CE081D /* SocializeTestCase.m */; };
 		AAE33AFD1522674800BEE348 /* SocializeDirectEntityNotificationDisplayControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE33AFC1522674800BEE348 /* SocializeDirectEntityNotificationDisplayControllerTests.m */; };
+		AAE56C6A15476A6100A444C5 /* SZUserUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE56C6815476A6100A444C5 /* SZUserUtils.h */; };
+		AAE56C6B15476A6100A444C5 /* SZUserUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE56C6815476A6100A444C5 /* SZUserUtils.h */; };
+		AAE56C6C15476A6100A444C5 /* SZUserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE56C6915476A6100A444C5 /* SZUserUtils.m */; };
+		AAE56C6D15476A6100A444C5 /* SZUserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE56C6915476A6100A444C5 /* SZUserUtils.m */; };
 		AAE5942914E47C8A004F1976 /* UIViewController+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE5942714E47C8A004F1976 /* UIViewController+Socialize.h */; };
 		AAE5942A14E47C8A004F1976 /* UIViewController+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE5942714E47C8A004F1976 /* UIViewController+Socialize.h */; };
 		AAE5942B14E47C8A004F1976 /* UIViewController+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE5942814E47C8A004F1976 /* UIViewController+Socialize.m */; };
@@ -3028,6 +3032,8 @@
 		AAE2750714EB446D00CE081D /* SocializeTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeTestCase.m; path = "Test Cases/SocializeTestCase.m"; sourceTree = "<group>"; };
 		AAE33AFB1522674800BEE348 /* SocializeDirectEntityNotificationDisplayControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDirectEntityNotificationDisplayControllerTests.h; path = "Test Cases/SocializeDirectEntityNotificationDisplayControllerTests.h"; sourceTree = "<group>"; };
 		AAE33AFC1522674800BEE348 /* SocializeDirectEntityNotificationDisplayControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDirectEntityNotificationDisplayControllerTests.m; path = "Test Cases/SocializeDirectEntityNotificationDisplayControllerTests.m"; sourceTree = "<group>"; };
+		AAE56C6815476A6100A444C5 /* SZUserUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZUserUtils.h; path = Classes/SZUserUtils.h; sourceTree = "<group>"; };
+		AAE56C6915476A6100A444C5 /* SZUserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZUserUtils.m; path = Classes/SZUserUtils.m; sourceTree = "<group>"; };
 		AAE5942714E47C8A004F1976 /* UIViewController+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Socialize.h"; path = "Classes/UIViewController+Socialize.h"; sourceTree = "<group>"; };
 		AAE5942814E47C8A004F1976 /* UIViewController+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Socialize.m"; path = "Classes/UIViewController+Socialize.m"; sourceTree = "<group>"; };
 		AAE7958D14684EB100BEAD28 /* TestLikeServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLikeServices.h; sourceTree = "<group>"; };
@@ -3500,6 +3506,7 @@
 			children = (
 				167E11B6144324E4004E4C1B /* Socialize.h */,
 				5C9004331395963A007361F6 /* API Client */,
+				AAE56C6715476A2300A444C5 /* SDK */,
 				6D89844914083B5B00482F1E /* UI */,
 				1681BD7613F555CA00EC6042 /* Facebook SDK */,
 				9A3095B51384F04100292DC6 /* Configuration */,
@@ -4708,6 +4715,15 @@
 			name = Options;
 			sourceTree = "<group>";
 		};
+		AAE56C6715476A2300A444C5 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				AAE56C6815476A6100A444C5 /* SZUserUtils.h */,
+				AAE56C6915476A6100A444C5 /* SZUserUtils.m */,
+			);
+			name = SDK;
+			sourceTree = "<group>";
+		};
 		AAE915CA14F57F7C00F2DB95 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
@@ -5071,6 +5087,7 @@
 				AA7F0A5D153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */,
 				AAF60EB815461AD000245867 /* SampleEntityLoader.h in Headers */,
 				AADD17F8154B1E0900ECB1D0 /* SZNavigationController.h in Headers */,
+				AAE56C6B15476A6100A444C5 /* SZUserUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5230,6 +5247,7 @@
 				AA7F0A5C153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */,
 				AAF60EB715461AD000245867 /* SampleEntityLoader.h in Headers */,
 				AADD17F7154B1E0900ECB1D0 /* SZNavigationController.h in Headers */,
+				AAE56C6A15476A6100A444C5 /* SZUserUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7092,6 +7110,7 @@
 				AA7F0A5E153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */,
 				AAF60EB915461AD000245867 /* SampleEntityLoader.m in Sources */,
 				AADD17F9154B1E0900ECB1D0 /* SZNavigationController.m in Sources */,
+				AAE56C6C15476A6100A444C5 /* SZUserUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7481,6 +7500,7 @@
 				AA7F0A5F153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */,
 				AAF60EBA15461AD000245867 /* SampleEntityLoader.m in Sources */,
 				AADD17FA154B1E0900ECB1D0 /* SZNavigationController.m in Sources */,
+				AAE56C6D15476A6100A444C5 /* SZUserUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
