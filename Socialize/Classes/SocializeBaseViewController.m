@@ -41,6 +41,8 @@
 #import "SocializePreprocessorUtilities.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeFacebookAuthenticator.h"
+#import "SocializeUIDisplayProxy.h"
+#import "SocializeUIDisplay.h"
 
 @interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
 -(void)leftNavigationButtonPressed:(id)sender;
@@ -63,6 +65,8 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 @synthesize keyboardListener = keyboardListener_;
 @synthesize profileEditViewController = profileEditViewController_;
 @synthesize navigationControllerForEdit = navigationControllerForEdit_;
+@synthesize displayProxy = displayProxy_;
+@synthesize display = display_;
 
 - (void)dealloc
 {
@@ -148,6 +152,19 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     }
     
     return imagesCache_;
+}
+
+- (void)setDisplay:(id<SocializeUIDisplay>)display {
+    NonatomicRetainedSetToFrom(display_, display);
+    self.displayProxy.display = display;
+}
+
+- (SocializeUIDisplayProxy*)displayProxy {
+    if (displayProxy_ == nil) {
+        displayProxy_ = [[SocializeUIDisplayProxy alloc] initWithObject:self display:self.display];
+    }
+    
+    return displayProxy_;
 }
 
 - (void)changeTitleOnCustomBarButton:(UIBarButtonItem*)barButton toText:(NSString*)text {

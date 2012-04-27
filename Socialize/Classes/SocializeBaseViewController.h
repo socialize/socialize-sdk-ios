@@ -29,16 +29,17 @@
 #import "_Socialize.h"
 #import "SocializeKeyboardListener.h"
 #import "SocializeProfileEditViewControllerDelegate.h"
-#import "SocializeUIDisplay.h"
 
 @class SocializeShareBuilder;
 @class SocializeLoadingView;
 @class ImagesCache;
 @class SocializeProfileEditViewController;
+@class SocializeUIDisplayProxy;
+@protocol SocializeUIDisplay;
 
 @protocol SocializeBaseViewControllerDelegate;
 
-@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate, SocializeKeyboardListenerDelegate, SocializeUIDisplay> {
+@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate, SocializeKeyboardListenerDelegate> {
     @private 
     SocializeLoadingView*  _loadingIndicatorView;
 }
@@ -57,6 +58,8 @@
 @property (nonatomic, retain) SocializeKeyboardListener *keyboardListener;
 @property (nonatomic, retain) SocializeProfileEditViewController *profileEditViewController;
 @property (nonatomic, retain) UINavigationController *navigationControllerForEdit;
+@property (nonatomic, retain) SocializeUIDisplayProxy *displayProxy;
+@property (nonatomic, retain) id<SocializeUIDisplay> display;
 
 -(void) showAlertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoading;
