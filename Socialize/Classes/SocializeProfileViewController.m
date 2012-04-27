@@ -12,6 +12,7 @@
 #import "UIButton+Socialize.h"
 #import "UINavigationController+Socialize.h"
 #import "SocializeActivityViewController.h"
+#import "SZNavigationController.h"
 
 @interface SocializeProfileViewController ()
 -(void)configureViews;
@@ -76,6 +77,16 @@
     [nav.navigationBar setBackgroundImage:navImage];
     return nav;
 }
+
++ (SocializeProfileViewController*)profileViewController {
+    return [[[SocializeProfileViewController alloc] init] autorelease];
+}
+
++ (UINavigationController*)profileViewControllerInNavigationController {
+    SocializeProfileViewController *profile = [self profileViewController];
+    return [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
+}
+
 
 + (UINavigationController*)socializeProfileViewControllerWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate {
     return [SocializeProfileViewController socializeProfileViewControllerForUser:nil delegate:delegate];
@@ -242,8 +253,10 @@
 
 - (void)activityViewController:(SocializeActivityViewController *)activityViewController profileTappedForUser:(id<SocializeUser>)user {
     if (user.objectID != self.fullUser.objectID) {
-        UINavigationController *profile = [SocializeProfileViewController socializeProfileViewControllerForUser:user delegate:nil];
-        [self presentModalViewController:profile animated:YES];
+        SocializeProfileViewController *profile = [SocializeProfileViewController profileViewController];
+        profile.user = user;
+        SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
+        [self presentModalViewController:nav animated:YES];
     }
 }
 

@@ -299,7 +299,10 @@
 }
 
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
-    return [SocializeProfileViewController socializeProfileViewControllerForUser:user delegate:nil];
+    SocializeProfileViewController *profile = [SocializeProfileViewController profileViewController];
+    profile.user = user;
+    UINavigationController *nav = [UINavigationController socializeNavigationControllerWithRootViewController:profile];
+    return nav;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)newTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

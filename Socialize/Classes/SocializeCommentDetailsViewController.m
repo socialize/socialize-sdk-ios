@@ -94,7 +94,9 @@
     [self.navigationController pushViewController:(UIViewController *)profileViewController animated:YES];
 }
 -(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
-    SocializeProfileViewController *profileViewController = [[[SocializeProfileViewController alloc]initWithUser:user delegate:self] autorelease];
+    SocializeProfileViewController *profileViewController = [SocializeProfileViewController profileViewController];
+    profileViewController.user = user;
+    profileViewController.delegate = self;
     return profileViewController;
 }
 -(void)showShareLocation:(BOOL)hasLocation

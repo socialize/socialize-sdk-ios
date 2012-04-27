@@ -229,7 +229,7 @@
             break;
         case 9:
         {
-            UIViewController *profile = [SocializeProfileViewController currentUserProfileWithDelegate:self];
+            UIViewController *profile = [SocializeProfileViewController profileViewControllerInNavigationController];
 #ifdef RUN_KIF_TESTS
             UINavigationController *nav = (UINavigationController*)profile;
             SocializeProfileViewController *pvc = (SocializeProfileViewController*)[[nav viewControllers] objectAtIndex:0];

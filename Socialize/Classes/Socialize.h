@@ -23,3 +23,4 @@
 #import "SocializeConfiguration.h"
 #import "SocializeLikeButton.h"
 #import "SampleEntityLoader.h"
+#import "SZNavigationController.h"

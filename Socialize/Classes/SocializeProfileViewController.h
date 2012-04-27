@@ -18,10 +18,12 @@
 @class SocializeActivityViewController;
 
 @interface SocializeProfileViewController : SocializeBaseViewController <UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate, SocializeServiceDelegate, SocializeActivityViewControllerDelegate>
-+ (UINavigationController*)socializeProfileViewControllerWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate;
-+ (UINavigationController*)currentUserProfileWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate;
-+ (UINavigationController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeBaseViewControllerDelegate>)delegate;
-- (id)initWithUser:(id<SocializeUser>)user delegate:(id<SocializeBaseViewControllerDelegate>)delegate;
++ (SocializeProfileViewController*)profileViewController;
++ (UINavigationController*)profileViewControllerInNavigationController;
++ (UINavigationController*)socializeProfileViewControllerWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate __attribute__((deprecated));
++ (UINavigationController*)currentUserProfileWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate __attribute__((deprecated));
++ (UINavigationController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeBaseViewControllerDelegate>)delegate __attribute__((deprecated));
+- (id)initWithUser:(id<SocializeUser>)user delegate:(id<SocializeBaseViewControllerDelegate>)delegate __attribute__((deprecated));
 @property (nonatomic, retain) id<SocializeUser> user;
 @property (nonatomic, retain) id<SocializeFullUser> fullUser;
 @property (nonatomic, retain) IBOutlet UIImageView *profileImageView;

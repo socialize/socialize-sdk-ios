@@ -45,6 +45,7 @@
 #import "SocializeUIDisplayProxy.h"
 #import "SocializeUIShareCreator.h"
 #import "SocializeUILikeCreator.h"
+#import "SZNavigationController.h"
 
 @interface SocializeActionBar()
 @property (nonatomic, retain) id<SocializeView> entityView;
@@ -256,7 +257,8 @@
 
 -(void)viewButtonTouched:(id)sender
 {
-    UINavigationController *nav = [SocializeProfileViewController currentUserProfileWithDelegate:nil];
+    SocializeProfileViewController *profile = [SocializeProfileViewController profileViewController];
+    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
     [self presentInternalController:nav];
 }
 
