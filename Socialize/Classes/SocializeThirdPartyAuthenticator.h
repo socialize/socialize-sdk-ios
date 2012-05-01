@@ -8,11 +8,11 @@
 
 #import "SocializeAction.h"
 #import "SocializeAuthOptions.h"
-#import "SocializeProfileEditViewControllerDelegate.h"
+#import "SZSettingsViewControllerDelegate.h"
 
 @protocol SocializeThirdParty;
 
-@interface SocializeThirdPartyAuthenticator : SocializeAction <SocializeProfileEditViewControllerDelegate>
+@interface SocializeThirdPartyAuthenticator : SocializeAction <SZSettingsViewControllerDelegate>
 
 - (void)attemptInteractiveLogin;
 - (void)socializeAuthenticationFailedWithError:(NSError*)error;

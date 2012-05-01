@@ -11,7 +11,7 @@
 #import "SocializeThirdParty.h"
 #import "SocializeUIDisplayProxy.h"
 #import "_Socialize.h"
-#import "SocializeProfileEditViewController.h"
+#import "SZSettingsViewController.h"
 #import "SocializeBaseViewControllerDelegate.h"
 
 @interface SocializeThirdPartyAuthenticator ()
@@ -88,13 +88,13 @@
     [self finishWithSettings];
 }
 
-- (void)profileEditViewController:(SocializeProfileEditViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
+- (void)profileEditViewController:(SZSettingsViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
     [self.displayProxy dismissModalViewController];
     [self finishWithSettings];
 }
 
 - (UINavigationController*)createSettings {
-    SocializeProfileEditViewController *settings = [[[SocializeProfileEditViewController alloc] init] autorelease];
+    SZSettingsViewController *settings = [[[SZSettingsViewController alloc] init] autorelease];
     settings.delegate = self;
     UINavigationController *nav = [settings wrappingSocializeNavigationController];    
     return nav;

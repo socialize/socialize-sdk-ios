@@ -496,9 +496,9 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     }
 }
 
-- (SocializeProfileEditViewController*)profileEditViewController {
+- (SZSettingsViewController*)profileEditViewController {
     if (profileEditViewController_ == nil) {
-        profileEditViewController_ = [[SocializeProfileEditViewController alloc]
+        profileEditViewController_ = [[SZSettingsViewController alloc]
                                       init];
         profileEditViewController_.delegate = self;
     }
@@ -534,7 +534,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     }
 }
 
-- (void)profileEditViewController:(SocializeProfileEditViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
+- (void)profileEditViewController:(SZSettingsViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
     [self hideEditController];
 }
 

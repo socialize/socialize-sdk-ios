@@ -273,7 +273,7 @@
 
 - (void)testProfileEditViewController {
     self.profileViewController.profileEditViewController = nil;
-    SocializeProfileEditViewController *defaultProfileEdit = self.profileViewController.profileEditViewController;
+    SZSettingsViewController *defaultProfileEdit = self.profileViewController.profileEditViewController;
     GHAssertEquals(defaultProfileEdit.delegate, self.origViewController, @"delegate not configured");
 }
 
@@ -283,7 +283,7 @@
     self.profileViewController.navigationControllerForEdit = nil;
     
     // Temporarily a nice mock because it needs to pass through UIKit's UINavigationController init
-    self.profileViewController.profileEditViewController = [OCMockObject niceMockForClass:[SocializeProfileEditViewController class]];
+    self.profileViewController.profileEditViewController = [OCMockObject niceMockForClass:[SZSettingsViewController class]];
     
     UINavigationController *defaultNavigationControllerForEdit = self.profileViewController.navigationControllerForEdit;
     GHAssertEquals(defaultNavigationControllerForEdit.delegate, self.origViewController, @"delegate not configured");

@@ -10,7 +10,7 @@
 #import "SocializeBaseViewController.h"
 #import "UINavigationBarBackground.h"
 #import "SocializeBaseViewControllerDelegate.h"
-#import "SocializeProfileEditViewController.h"
+#import "SZSettingsViewController.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeTwitterAuthenticator.h"
 #import "SocializeFacebookAuthenticator.h"
@@ -102,7 +102,7 @@
     self.mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeBaseViewControllerDelegate)];
     self.viewController.delegate = self.mockDelegate;
     
-    self.mockProfileEditViewController = [OCMockObject mockForClass:[SocializeProfileEditViewController class]];
+    self.mockProfileEditViewController = [OCMockObject mockForClass:[SZSettingsViewController class]];
     [[self.mockProfileEditViewController stub] setDelegate:nil];
     self.viewController.profileEditViewController = self.mockProfileEditViewController;
     

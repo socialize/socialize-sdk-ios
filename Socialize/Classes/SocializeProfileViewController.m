@@ -222,7 +222,7 @@
     [super showEditController];
 }
 
-- (void)profileEditViewController:(SocializeProfileEditViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
+- (void)profileEditViewController:(SZSettingsViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
     self.fullUser = user;
     [self configureViews];
     [self.activityViewController fullUserChanged:self.fullUser];

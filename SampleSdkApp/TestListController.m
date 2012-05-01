@@ -233,7 +233,7 @@
 #ifdef RUN_KIF_TESTS
             UINavigationController *nav = (UINavigationController*)profile;
             SocializeProfileViewController *pvc = (SocializeProfileViewController*)[[nav viewControllers] objectAtIndex:0];
-            SocializeProfileEditViewController *edit = pvc.profileEditViewController;
+            SZSettingsViewController *edit = pvc.profileEditViewController;
 
             id mockActionSheet = [OCMockObject mockForClass:[UIActionSheet class]];
              
@@ -284,7 +284,7 @@
         }
         case 14:
         {
-            UINavigationController *nav = [SocializeProfileEditViewController profileEditViewControllerInNavigationController];
+            UINavigationController *nav = [SZSettingsViewController profileEditViewControllerInNavigationController];
             [self.navigationController presentModalViewController:nav animated:YES];
             break;
         }

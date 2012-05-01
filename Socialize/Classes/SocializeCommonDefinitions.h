@@ -73,3 +73,9 @@ extern NSString *const SocializeUIControllerDidFailWithErrorNotification;
 extern NSString *const SocializeUIControllerErrorUserInfoKey;
 
 extern NSString *const kSocializeUIErrorAlertsDisabled;
+
+@class SZSettingsViewController;
+@protocol SZSettingsViewControllerDelegate;
+
+typedef SZSettingsViewController SocializeProfileEditViewController;
+#define SocializeProfileEditViewControllerDelegate SZSettingsViewControllerDelegate

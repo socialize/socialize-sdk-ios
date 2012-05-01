@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SocializeFullUser.h"
-#import "SocializeProfileEditViewController.h"
+#import "SZSettingsViewController.h"
 #import "_Socialize.h"
 #import "SocializeBaseViewController.h"
 #import "SocializeActivityViewController.h"
@@ -17,7 +17,7 @@
 @class SocializeLoadingView;
 @class SocializeActivityViewController;
 
-@interface SocializeProfileViewController : SocializeBaseViewController <UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate, SocializeServiceDelegate, SocializeActivityViewControllerDelegate>
+@interface SocializeProfileViewController : SocializeBaseViewController <UINavigationControllerDelegate, SZSettingsViewControllerDelegate, SocializeServiceDelegate, SocializeActivityViewControllerDelegate>
 + (SocializeProfileViewController*)profileViewController;
 + (UINavigationController*)profileViewControllerInNavigationController;
 + (UINavigationController*)socializeProfileViewControllerWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate __attribute__((deprecated));

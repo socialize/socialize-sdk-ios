@@ -27,7 +27,7 @@
 		16038933143F10DB00455B6A /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */; };
 		16038934143F10DB00455B6A /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */; };
 		16038935143F10DB00455B6A /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D921433F38B00D0FDF9 /* SocializeProfileEditValueViewController.xib */; };
-		16038936143F10DB00455B6A /* SocializeProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */; };
+		16038936143F10DB00455B6A /* SZSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SZSettingsViewController.xib */; };
 		16038937143F10DB00455B6A /* background_brushed_metal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69441432ADEF00DA77AC /* background_brushed_metal@2x.png */; };
 		16038938143F10DB00455B6A /* socialize-activity-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69451432ADEF00DA77AC /* socialize-activity-bg.png */; };
 		16038939143F10DB00455B6A /* socialize-activity-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69461432ADEF00DA77AC /* socialize-activity-bg@2x.png */; };
@@ -751,7 +751,7 @@
 		AA318181144A4473008F4D59 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */; };
 		AA318182144A4473008F4D59 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */; };
 		AA318183144A4473008F4D59 /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D921433F38B00D0FDF9 /* SocializeProfileEditValueViewController.xib */; };
-		AA318184144A4473008F4D59 /* SocializeProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */; };
+		AA318184144A4473008F4D59 /* SZSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SZSettingsViewController.xib */; };
 		AA318185144A4473008F4D59 /* background_brushed_metal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69441432ADEF00DA77AC /* background_brushed_metal@2x.png */; };
 		AA318186144A4473008F4D59 /* socialize-activity-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69451432ADEF00DA77AC /* socialize-activity-bg.png */; };
 		AA318187144A4473008F4D59 /* socialize-activity-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69461432ADEF00DA77AC /* socialize-activity-bg@2x.png */; };
@@ -900,7 +900,7 @@
 		AA33261E144CD8070033C7FA /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */; };
 		AA33261F144CD8070033C7FA /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */; };
 		AA332620144CD8070033C7FA /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D921433F38B00D0FDF9 /* SocializeProfileEditValueViewController.xib */; };
-		AA332621144CD8070033C7FA /* SocializeProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */; };
+		AA332621144CD8070033C7FA /* SZSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SZSettingsViewController.xib */; };
 		AA332622144CD8070033C7FA /* background_brushed_metal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69441432ADEF00DA77AC /* background_brushed_metal@2x.png */; };
 		AA332623144CD8070033C7FA /* socialize-activity-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69451432ADEF00DA77AC /* socialize-activity-bg.png */; };
 		AA332624144CD8070033C7FA /* socialize-activity-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69461432ADEF00DA77AC /* socialize-activity-bg@2x.png */; };
@@ -1026,7 +1026,7 @@
 		AA369FC6146C54ED00E15AA4 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */; };
 		AA369FC7146C54ED00E15AA4 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */; };
 		AA369FC8146C54ED00E15AA4 /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D921433F38B00D0FDF9 /* SocializeProfileEditValueViewController.xib */; };
-		AA369FC9146C54ED00E15AA4 /* SocializeProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */; };
+		AA369FC9146C54ED00E15AA4 /* SZSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SZSettingsViewController.xib */; };
 		AA369FCA146C54ED00E15AA4 /* background_brushed_metal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69441432ADEF00DA77AC /* background_brushed_metal@2x.png */; };
 		AA369FCB146C54ED00E15AA4 /* socialize-activity-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69451432ADEF00DA77AC /* socialize-activity-bg.png */; };
 		AA369FCC146C54ED00E15AA4 /* socialize-activity-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69461432ADEF00DA77AC /* socialize-activity-bg@2x.png */; };
@@ -1127,8 +1127,8 @@
 		AA36A02C146C54ED00E15AA4 /* action-bar-button-black-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D67433413F9EEC200140AA3 /* action-bar-button-black-hover.png */; };
 		AA3CB2C6144CEEAC00AA861A /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3CB2C5144CEEAC00AA861A /* Smiley.png */; };
 		AA3CB2C7144CEEAC00AA861A /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3CB2C5144CEEAC00AA861A /* Smiley.png */; };
-		AA3CC5B514C60CE90095A849 /* SocializeProfileEditViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA3CC5B414C60CE90095A849 /* SocializeProfileEditViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA3CC5B614C60CE90095A849 /* SocializeProfileEditViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA3CC5B414C60CE90095A849 /* SocializeProfileEditViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA3CC5B514C60CE90095A849 /* SZSettingsViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA3CC5B414C60CE90095A849 /* SZSettingsViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA3CC5B614C60CE90095A849 /* SZSettingsViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA3CC5B414C60CE90095A849 /* SZSettingsViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA3D694E1432ADEF00DA77AC /* background_brushed_metal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69441432ADEF00DA77AC /* background_brushed_metal@2x.png */; };
 		AA3D694F1432ADEF00DA77AC /* socialize-activity-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69451432ADEF00DA77AC /* socialize-activity-bg.png */; };
 		AA3D69501432ADEF00DA77AC /* socialize-activity-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D69461432ADEF00DA77AC /* socialize-activity-bg@2x.png */; };
@@ -1585,7 +1585,7 @@
 		AABB7D951433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */; };
 		AABB7D961433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */; };
 		AABB7D971433F38B00D0FDF9 /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D921433F38B00D0FDF9 /* SocializeProfileEditValueViewController.xib */; };
-		AABB7D981433F38B00D0FDF9 /* SocializeProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */; };
+		AABB7D981433F38B00D0FDF9 /* SZSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SZSettingsViewController.xib */; };
 		AABC14D6144A114900088B7D /* SocializeConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D295F1393FE7A0065C0CB /* SocializeConfiguration.m */; };
 		AABC14D7144A114900088B7D /* SocializePOOCObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D29641393FE9F0065C0CB /* SocializePOOCObjectFactory.m */; };
 		AABC14D8144A114900088B7D /* SocializeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D296C1393FED90065C0CB /* SocializeActivity.m */; };
@@ -1781,7 +1781,7 @@
 		AABC15A2144A114900088B7D /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */; };
 		AABC15A3144A114900088B7D /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */; };
 		AABC15A4144A114900088B7D /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D921433F38B00D0FDF9 /* SocializeProfileEditValueViewController.xib */; };
-		AABC15A5144A114900088B7D /* SocializeProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */; };
+		AABC15A5144A114900088B7D /* SZSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABB7D931433F38B00D0FDF9 /* SZSettingsViewController.xib */; };
 		AABC15A6144A114900088B7D /* action-bar-button-red-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 16038999143F113300455B6A /* action-bar-button-red-hover.png */; };
 		AABC15A7144A114900088B7D /* action-bar-button-red-hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1603899A143F113400455B6A /* action-bar-button-red-hover@2x.png */; };
 		AABC15A8144A114900088B7D /* action-bar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 1603899B143F113400455B6A /* action-bar-button-red.png */; };
@@ -1799,20 +1799,20 @@
 		AAC4931C149A92C5000EEA7E /* TestCommentServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4931B149A92C5000EEA7E /* TestCommentServices.m */; };
 		AAC71B6B148AE822004413CD /* SocializeErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC71B6A148AE822004413CD /* SocializeErrorTests.m */; };
 		AACA15FA146B6F05005E05EE /* SocializeProfileViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E38A144F80320073308D /* SocializeProfileViewControllerTests.m */; };
-		AACA15FE146B7730005E05EE /* SocializeProfileEditViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA91664F1463B24700EFBD7E /* SocializeProfileEditViewControllerTest.m */; };
+		AACA15FE146B7730005E05EE /* SZSettingsViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA91664F1463B24700EFBD7E /* SZSettingsViewControllerTest.m */; };
 		AACC4F6B1496A42300F106D4 /* SocializeKeyboardListenerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AACC4F661496A3E600F106D4 /* SocializeKeyboardListenerTests.m */; };
 		AAD218FA148AFBD600EF5503 /* StringHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD218F8148AFBD600EF5503 /* StringHelper.h */; };
 		AAD218FB148AFBD600EF5503 /* StringHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD218F8148AFBD600EF5503 /* StringHelper.h */; };
 		AAD218FC148AFBD600EF5503 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD218F9148AFBD600EF5503 /* StringHelper.m */; };
 		AAD218FD148AFBD600EF5503 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD218F9148AFBD600EF5503 /* StringHelper.m */; };
-		AAD4B40E1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD4B40B1460A45000F39D0A /* SocializeProfileEditViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAD4B40F1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD4B40B1460A45000F39D0A /* SocializeProfileEditViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAD4B40E1460A45000F39D0A /* SZSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD4B40B1460A45000F39D0A /* SZSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAD4B40F1460A45000F39D0A /* SZSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD4B40B1460A45000F39D0A /* SZSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAD4B4181460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD4B4151460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m */; };
 		AAD4B4191460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD4B4151460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m */; };
 		AAD4B4201460C19E00F39D0A /* SocializeProfileEditValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167E11C3144325F9004E4C1B /* SocializeProfileEditValueViewController.m */; };
 		AAD4B4211460C1A000F39D0A /* SocializeProfileEditValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167E11C3144325F9004E4C1B /* SocializeProfileEditValueViewController.m */; };
-		AAD4B4221460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD4B40C1460A45000F39D0A /* SocializeProfileEditViewController.m */; };
-		AAD4B4231460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD4B40C1460A45000F39D0A /* SocializeProfileEditViewController.m */; };
+		AAD4B4221460C1A400F39D0A /* SZSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD4B40C1460A45000F39D0A /* SZSettingsViewController.m */; };
+		AAD4B4231460C1A400F39D0A /* SZSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD4B40C1460A45000F39D0A /* SZSettingsViewController.m */; };
 		AAD4EB7414FE9CCB00FBAD4F /* SocializePreprocessorUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD4EB7314FE9CCB00FBAD4F /* SocializePreprocessorUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAD4EB7514FE9CCB00FBAD4F /* SocializePreprocessorUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD4EB7314FE9CCB00FBAD4F /* SocializePreprocessorUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAD67926144911DA00C17C4D /* UIImage+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD67924144911DA00C17C4D /* UIImage+Network.m */; };
@@ -2167,7 +2167,7 @@
 		160754891432FBA4002E5A38 /* SocializeProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileViewController.h; path = Classes/SocializeProfileViewController.h; sourceTree = "<group>"; };
 		1607548A1432FBA4002E5A38 /* SocializeProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileViewController.m; path = Classes/SocializeProfileViewController.m; sourceTree = "<group>"; };
 		1607548E1432FBF4002E5A38 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = Classes/SynthesizeSingleton.h; sourceTree = "<group>"; };
-		16075490143302E4002E5A38 /* SocializeBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBaseViewController.h; path = Classes/SocializeBaseViewController.h; sourceTree = "<group>"; };
+		16075490143302E4002E5A38 /* SocializeBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SocializeBaseViewController.h; path = Classes/SocializeBaseViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		16075491143302E4002E5A38 /* SocializeBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBaseViewController.m; path = Classes/SocializeBaseViewController.m; sourceTree = "<group>"; };
 		1636372D13AB289500403879 /* SocializeCommentsServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsServiceTests.h; path = "Test Cases/SocializeCommentsServiceTests.h"; sourceTree = "<group>"; };
 		1636372E13AB289500403879 /* SocializeCommentsServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsServiceTests.m; path = "Test Cases/SocializeCommentsServiceTests.m"; sourceTree = "<group>"; };
@@ -2395,7 +2395,7 @@
 		18BD4CEF14ACC220000D6FAB /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Layout.m"; path = "Classes/UIView+Layout.m"; sourceTree = "<group>"; };
 		18D8EDCF146B162600E9991F /* AuthViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthViewControllerTests.h; path = "Test Cases/AuthViewControllerTests.h"; sourceTree = "<group>"; };
 		18D8EDD0146B162600E9991F /* AuthViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthViewControllerTests.m; path = "Test Cases/AuthViewControllerTests.m"; sourceTree = "<group>"; };
-		18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeAuthViewController.h; path = Classes/SocializeAuthViewController.h; sourceTree = "<group>"; };
+		18D8EDD2146B48F700E9991F /* SocializeAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SocializeAuthViewController.h; path = Classes/SocializeAuthViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		18D8EDD3146B48F700E9991F /* SocializeAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeAuthViewController.m; path = Classes/SocializeAuthViewController.m; sourceTree = "<group>"; };
 		5C21C0C01396BF8300CF2B9F /* SocializeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRequest.h; path = Classes/SocializeRequest.h; sourceTree = "<group>"; };
 		5C21C0C11396BF8300CF2B9F /* SocializeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRequest.m; path = Classes/SocializeRequest.m; sourceTree = "<group>"; };
@@ -2733,7 +2733,7 @@
 		AA369FB5146C50A700E15AA4 /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
 		AA369FB6146C50A700E15AA4 /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
 		AA3CB2C5144CEEAC00AA861A /* Smiley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Smiley.png; sourceTree = "<group>"; };
-		AA3CC5B414C60CE90095A849 /* SocializeProfileEditViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileEditViewControllerDelegate.h; path = Classes/SocializeProfileEditViewControllerDelegate.h; sourceTree = "<group>"; };
+		AA3CC5B414C60CE90095A849 /* SZSettingsViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SZSettingsViewControllerDelegate.h; path = Classes/SZSettingsViewControllerDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AA3D69441432ADEF00DA77AC /* background_brushed_metal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background_brushed_metal@2x.png"; path = "Resources/background_brushed_metal@2x.png"; sourceTree = "<group>"; };
 		AA3D69451432ADEF00DA77AC /* socialize-activity-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-bg.png"; path = "Resources/socialize-activity-bg.png"; sourceTree = "<group>"; };
 		AA3D69461432ADEF00DA77AC /* socialize-activity-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-bg@2x.png"; path = "Resources/socialize-activity-bg@2x.png"; sourceTree = "<group>"; };
@@ -2862,8 +2862,8 @@
 		AA8D349A1533A002006B1B41 /* SocializeUILikeCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUILikeCreator.m; path = Classes/SocializeUILikeCreator.m; sourceTree = "<group>"; };
 		AA8D349F1533A0AF006B1B41 /* SocializeUILikeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUILikeOptions.h; path = Classes/SocializeUILikeOptions.h; sourceTree = "<group>"; };
 		AA8D34A01533A0AF006B1B41 /* SocializeUILikeOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUILikeOptions.m; path = Classes/SocializeUILikeOptions.m; sourceTree = "<group>"; };
-		AA91664E1463B24700EFBD7E /* SocializeProfileEditViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileEditViewControllerTest.h; path = "Test Cases/SocializeProfileEditViewControllerTest.h"; sourceTree = "<group>"; };
-		AA91664F1463B24700EFBD7E /* SocializeProfileEditViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileEditViewControllerTest.m; path = "Test Cases/SocializeProfileEditViewControllerTest.m"; sourceTree = "<group>"; };
+		AA91664E1463B24700EFBD7E /* SZSettingsViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; name = SZSettingsViewControllerTest.h; path = "Test Cases/SZSettingsViewControllerTest.h"; sourceTree = "<group>"; };
+		AA91664F1463B24700EFBD7E /* SZSettingsViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SZSettingsViewControllerTest.m; path = "Test Cases/SZSettingsViewControllerTest.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AA92BBE314E3574400F67058 /* SocializeTwitterAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeTwitterAuthViewController.h; path = Classes/SocializeTwitterAuthViewController.h; sourceTree = "<group>"; };
 		AA92BBE414E3574400F67058 /* SocializeTwitterAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeTwitterAuthViewController.m; path = Classes/SocializeTwitterAuthViewController.m; sourceTree = "<group>"; };
 		AA92BC0514E36BE500F67058 /* NSArray+AssociativeArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+AssociativeArray.h"; path = "Misc/NSArray+AssociativeArray.h"; sourceTree = "<group>"; };
@@ -2986,7 +2986,7 @@
 		AABB7D901433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditTableViewCell.xib; path = Resources/SocializeProfileEditTableViewCell.xib; sourceTree = "<group>"; };
 		AABB7D911433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditTableViewImageCell.xib; path = Resources/SocializeProfileEditTableViewImageCell.xib; sourceTree = "<group>"; };
 		AABB7D921433F38B00D0FDF9 /* SocializeProfileEditValueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditValueViewController.xib; path = Resources/SocializeProfileEditValueViewController.xib; sourceTree = "<group>"; };
-		AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditViewController.xib; path = Resources/SocializeProfileEditViewController.xib; sourceTree = "<group>"; };
+		AABB7D931433F38B00D0FDF9 /* SZSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZSettingsViewController.xib; path = Resources/SZSettingsViewController.xib; sourceTree = "<group>"; };
 		AABC15AF144A114900088B7D /* libSocialize-profiling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSocialize-profiling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABDA006146B8F8B00D73FE4 /* TestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUtils.h; sourceTree = "<group>"; };
 		AABDA007146B8F8B00D73FE4 /* TestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUtils.m; sourceTree = "<group>"; };
@@ -3003,8 +3003,8 @@
 		AACC4F661496A3E600F106D4 /* SocializeKeyboardListenerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeKeyboardListenerTests.m; path = "Test Cases/SocializeKeyboardListenerTests.m"; sourceTree = "<group>"; };
 		AAD218F8148AFBD600EF5503 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
 		AAD218F9148AFBD600EF5503 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
-		AAD4B40B1460A45000F39D0A /* SocializeProfileEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileEditViewController.h; path = Classes/SocializeProfileEditViewController.h; sourceTree = "<group>"; };
-		AAD4B40C1460A45000F39D0A /* SocializeProfileEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileEditViewController.m; path = Classes/SocializeProfileEditViewController.m; sourceTree = "<group>"; };
+		AAD4B40B1460A45000F39D0A /* SZSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZSettingsViewController.h; path = Classes/SZSettingsViewController.h; sourceTree = "<group>"; };
+		AAD4B40C1460A45000F39D0A /* SZSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZSettingsViewController.m; path = Classes/SZSettingsViewController.m; sourceTree = "<group>"; };
 		AAD4B4141460B25100F39D0A /* SocializeProfileEditTableViewImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileEditTableViewImageCell.h; path = Classes/SocializeProfileEditTableViewImageCell.h; sourceTree = "<group>"; };
 		AAD4B4151460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileEditTableViewImageCell.m; path = Classes/SocializeProfileEditTableViewImageCell.m; sourceTree = "<group>"; };
 		AAD4EB7314FE9CCB00FBAD4F /* SocializePreprocessorUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePreprocessorUtilities.h; path = Classes/SocializePreprocessorUtilities.h; sourceTree = "<group>"; };
@@ -4254,8 +4254,8 @@
 		AA6B6F1D1472F713008E885B /* Profile Edit */ = {
 			isa = PBXGroup;
 			children = (
-				AA91664E1463B24700EFBD7E /* SocializeProfileEditViewControllerTest.h */,
-				AA91664F1463B24700EFBD7E /* SocializeProfileEditViewControllerTest.m */,
+				AA91664E1463B24700EFBD7E /* SZSettingsViewControllerTest.h */,
+				AA91664F1463B24700EFBD7E /* SZSettingsViewControllerTest.m */,
 				AA26DD30146AF87E00AA25BF /* SocializeProfileEditValueViewControllerTest.h */,
 				AA26DD31146AF87E00AA25BF /* SocializeProfileEditValueViewControllerTest.m */,
 			);
@@ -4332,12 +4332,12 @@
 				167E11B914432570004E4C1B /* SocializeEditValueTableViewCell.m */,
 				167E11C0144325F9004E4C1B /* SocializeProfileEditTableViewCell.h */,
 				167E11C1144325F9004E4C1B /* SocializeProfileEditTableViewCell.m */,
-				AAD4B40B1460A45000F39D0A /* SocializeProfileEditViewController.h */,
-				AAD4B40C1460A45000F39D0A /* SocializeProfileEditViewController.m */,
-				AABB7D931433F38B00D0FDF9 /* SocializeProfileEditViewController.xib */,
+				AAD4B40B1460A45000F39D0A /* SZSettingsViewController.h */,
+				AAD4B40C1460A45000F39D0A /* SZSettingsViewController.m */,
+				AABB7D931433F38B00D0FDF9 /* SZSettingsViewController.xib */,
 				167E11C2144325F9004E4C1B /* SocializeProfileEditValueViewController.h */,
 				167E11C3144325F9004E4C1B /* SocializeProfileEditValueViewController.m */,
-				AA3CC5B414C60CE90095A849 /* SocializeProfileEditViewControllerDelegate.h */,
+				AA3CC5B414C60CE90095A849 /* SZSettingsViewControllerDelegate.h */,
 			);
 			name = "Profile Edit";
 			sourceTree = "<group>";
@@ -4989,7 +4989,7 @@
 				16C365EA14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */,
 				16C365EE14518F1600DD5421 /* UIView+BlocksKit.h in Headers */,
 				16C365F214518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */,
-				AAD4B40F1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */,
+				AAD4B40F1460A45000F39D0A /* SZSettingsViewController.h in Headers */,
 				AAC201981460CFD30045FDAB /* UINavigationController+Socialize.h in Headers */,
 				AA5ACEF01467C3F300790B3D /* SocializeProfileEditValueViewController.h in Headers */,
 				AAE7959014684EB100BEAD28 /* TestLikeServices.h in Headers */,
@@ -5028,7 +5028,7 @@
 				AA6FBAC214BCAC0C00D8646C /* SocializeNotificationDisplayController.h in Headers */,
 				AADE200A14BE682700E59945 /* SocializeBubbleView.h in Headers */,
 				AAB427F914BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h in Headers */,
-				AA3CC5B614C60CE90095A849 /* SocializeProfileEditViewControllerDelegate.h in Headers */,
+				AA3CC5B614C60CE90095A849 /* SZSettingsViewControllerDelegate.h in Headers */,
 				AA0186B214C6151400858AD8 /* SocializeActivityDetailsViewControllerDelegate.h in Headers */,
 				AA0186CC14C61A4A00858AD8 /* SocializeActionBarDelegate.h in Headers */,
 				AAF50D7314CA0ED700585474 /* SocializeBaseViewControllerDelegate.h in Headers */,
@@ -5147,7 +5147,7 @@
 				16C365E914518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */,
 				16C365ED14518F1600DD5421 /* UIView+BlocksKit.h in Headers */,
 				16C365F114518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */,
-				AAD4B40E1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */,
+				AAD4B40E1460A45000F39D0A /* SZSettingsViewController.h in Headers */,
 				AAC201971460CFD30045FDAB /* UINavigationController+Socialize.h in Headers */,
 				AA5ACEEF1467C3F200790B3D /* SocializeProfileEditValueViewController.h in Headers */,
 				AAE7958F14684EB100BEAD28 /* TestLikeServices.h in Headers */,
@@ -5188,7 +5188,7 @@
 				AA6FBAC114BCAC0C00D8646C /* SocializeNotificationDisplayController.h in Headers */,
 				AADE200914BE682700E59945 /* SocializeBubbleView.h in Headers */,
 				AAB427F814BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h in Headers */,
-				AA3CC5B514C60CE90095A849 /* SocializeProfileEditViewControllerDelegate.h in Headers */,
+				AA3CC5B514C60CE90095A849 /* SZSettingsViewControllerDelegate.h in Headers */,
 				AA0186B114C6151400858AD8 /* SocializeActivityDetailsViewControllerDelegate.h in Headers */,
 				AA0186CB14C61A4A00858AD8 /* SocializeActionBarDelegate.h in Headers */,
 				AAF50D7214CA0ED700585474 /* SocializeBaseViewControllerDelegate.h in Headers */,
@@ -5487,7 +5487,7 @@
 				AA369FC6146C54ED00E15AA4 /* SocializeProfileEditTableViewCell.xib in Resources */,
 				AA369FC7146C54ED00E15AA4 /* SocializeProfileEditTableViewImageCell.xib in Resources */,
 				AA369FC8146C54ED00E15AA4 /* SocializeProfileEditValueViewController.xib in Resources */,
-				AA369FC9146C54ED00E15AA4 /* SocializeProfileEditViewController.xib in Resources */,
+				AA369FC9146C54ED00E15AA4 /* SZSettingsViewController.xib in Resources */,
 				AA369FCA146C54ED00E15AA4 /* background_brushed_metal@2x.png in Resources */,
 				AA369FCB146C54ED00E15AA4 /* socialize-activity-bg.png in Resources */,
 				AA369FCC146C54ED00E15AA4 /* socialize-activity-bg@2x.png in Resources */,
@@ -5763,7 +5763,7 @@
 				AABB7D951433F38B00D0FDF9 /* SocializeProfileEditTableViewCell.xib in Resources */,
 				AABB7D961433F38B00D0FDF9 /* SocializeProfileEditTableViewImageCell.xib in Resources */,
 				AABB7D971433F38B00D0FDF9 /* SocializeProfileEditValueViewController.xib in Resources */,
-				AABB7D981433F38B00D0FDF9 /* SocializeProfileEditViewController.xib in Resources */,
+				AABB7D981433F38B00D0FDF9 /* SZSettingsViewController.xib in Resources */,
 				1603899D143F113400455B6A /* action-bar-button-red-hover.png in Resources */,
 				1603899F143F113400455B6A /* action-bar-button-red-hover@2x.png in Resources */,
 				160389A1143F113400455B6A /* action-bar-button-red.png in Resources */,
@@ -5845,7 +5845,7 @@
 				AA318181144A4473008F4D59 /* SocializeProfileEditTableViewCell.xib in Resources */,
 				AA318182144A4473008F4D59 /* SocializeProfileEditTableViewImageCell.xib in Resources */,
 				AA318183144A4473008F4D59 /* SocializeProfileEditValueViewController.xib in Resources */,
-				AA318184144A4473008F4D59 /* SocializeProfileEditViewController.xib in Resources */,
+				AA318184144A4473008F4D59 /* SZSettingsViewController.xib in Resources */,
 				AA318185144A4473008F4D59 /* background_brushed_metal@2x.png in Resources */,
 				AA318186144A4473008F4D59 /* socialize-activity-bg.png in Resources */,
 				AA318187144A4473008F4D59 /* socialize-activity-bg@2x.png in Resources */,
@@ -6047,7 +6047,7 @@
 				AA33261E144CD8070033C7FA /* SocializeProfileEditTableViewCell.xib in Resources */,
 				AA33261F144CD8070033C7FA /* SocializeProfileEditTableViewImageCell.xib in Resources */,
 				AA332620144CD8070033C7FA /* SocializeProfileEditValueViewController.xib in Resources */,
-				AA332621144CD8070033C7FA /* SocializeProfileEditViewController.xib in Resources */,
+				AA332621144CD8070033C7FA /* SZSettingsViewController.xib in Resources */,
 				AA332622144CD8070033C7FA /* background_brushed_metal@2x.png in Resources */,
 				AA332623144CD8070033C7FA /* socialize-activity-bg.png in Resources */,
 				AA332624144CD8070033C7FA /* socialize-activity-bg@2x.png in Resources */,
@@ -6331,7 +6331,7 @@
 				16038933143F10DB00455B6A /* SocializeProfileEditTableViewCell.xib in Resources */,
 				16038934143F10DB00455B6A /* SocializeProfileEditTableViewImageCell.xib in Resources */,
 				16038935143F10DB00455B6A /* SocializeProfileEditValueViewController.xib in Resources */,
-				16038936143F10DB00455B6A /* SocializeProfileEditViewController.xib in Resources */,
+				16038936143F10DB00455B6A /* SZSettingsViewController.xib in Resources */,
 				16038937143F10DB00455B6A /* background_brushed_metal@2x.png in Resources */,
 				16038938143F10DB00455B6A /* socialize-activity-bg.png in Resources */,
 				16038939143F10DB00455B6A /* socialize-activity-bg@2x.png in Resources */,
@@ -6621,7 +6621,7 @@
 				AABC15A2144A114900088B7D /* SocializeProfileEditTableViewCell.xib in Resources */,
 				AABC15A3144A114900088B7D /* SocializeProfileEditTableViewImageCell.xib in Resources */,
 				AABC15A4144A114900088B7D /* SocializeProfileEditValueViewController.xib in Resources */,
-				AABC15A5144A114900088B7D /* SocializeProfileEditViewController.xib in Resources */,
+				AABC15A5144A114900088B7D /* SZSettingsViewController.xib in Resources */,
 				AABC15A6144A114900088B7D /* action-bar-button-red-hover.png in Resources */,
 				AABC15A7144A114900088B7D /* action-bar-button-red-hover@2x.png in Resources */,
 				AABC15A8144A114900088B7D /* action-bar-button-red.png in Resources */,
@@ -7026,7 +7026,7 @@
 				16C365DF14518F1600DD5421 /* UIAlertView+BlocksKit.m in Sources */,
 				AAD4B4181460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m in Sources */,
 				AAD4B4201460C19E00F39D0A /* SocializeProfileEditValueViewController.m in Sources */,
-				AAD4B4221460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */,
+				AAD4B4221460C1A400F39D0A /* SZSettingsViewController.m in Sources */,
 				AAC201991460CFD30045FDAB /* UINavigationController+Socialize.m in Sources */,
 				18D8EDD6146B48F700E9991F /* SocializeAuthViewController.m in Sources */,
 				AA369FB9146C50A700E15AA4 /* NSData+Base64.m in Sources */,
@@ -7162,7 +7162,7 @@
 				AA33A43B1463174700319168 /* profile_functions.c in Sources */,
 				18D8EDD1146B162600E9991F /* AuthViewControllerTests.m in Sources */,
 				AACA15FA146B6F05005E05EE /* SocializeProfileViewControllerTests.m in Sources */,
-				AACA15FE146B7730005E05EE /* SocializeProfileEditViewControllerTest.m in Sources */,
+				AACA15FE146B7730005E05EE /* SZSettingsViewControllerTest.m in Sources */,
 				AABDA008146B8F8B00D73FE4 /* TestUtils.m in Sources */,
 				AABDA009146B901600D73FE4 /* SocializeProfileEditValueViewControllerTest.m in Sources */,
 				AAFD1E57146B997A00FCB8A7 /* SocializeActionBarTests.m in Sources */,
@@ -7416,7 +7416,7 @@
 				16C365E014518F1600DD5421 /* UIAlertView+BlocksKit.m in Sources */,
 				AAD4B4191460B25100F39D0A /* SocializeProfileEditTableViewImageCell.m in Sources */,
 				AAD4B4211460C1A000F39D0A /* SocializeProfileEditValueViewController.m in Sources */,
-				AAD4B4231460C1A400F39D0A /* SocializeProfileEditViewController.m in Sources */,
+				AAD4B4231460C1A400F39D0A /* SZSettingsViewController.m in Sources */,
 				AAC2019A1460CFD30045FDAB /* UINavigationController+Socialize.m in Sources */,
 				18D8EDD7146B48F700E9991F /* SocializeAuthViewController.m in Sources */,
 				AA369FBA146C50A700E15AA4 /* NSData+Base64.m in Sources */,

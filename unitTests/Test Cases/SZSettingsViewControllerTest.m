@@ -1,13 +1,13 @@
 //
-//  SocializeProfileEditViewControllerTest.m
+//  SZSettingsViewControllerTest.m
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 11/3/11.
 //  Copyright (c) 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeProfileEditViewControllerTest.h"
-#import "SocializeProfileEditViewController.h"
+#import "SZSettingsViewControllerTest.h"
+#import "SZSettingsViewController.h"
 #import "SocializeProfileEditTableViewImageCell.h"
 #import "SocializeProfileEditTableViewCell.h"
 #import <UIKit/UIKit.h>
@@ -22,7 +22,7 @@
 #import "NSObject+ClassMock.h"
 #import "SocializeTwitterAuthenticator.h"
 
-@interface SocializeProfileEditViewController ()
+@interface SZSettingsViewController ()
 - (void)cancelButtonPressed:(UIButton*)button;
 - (void)saveButtonPressed:(UIButton*)button;
 - (void)facebookSwitchChanged:(UISwitch*)facebookSwitch;
@@ -32,7 +32,7 @@
 - (void)twitterSwitchChanged:(UISwitch*)twitterSwitch;
 @end
 
-@implementation SocializeProfileEditViewControllerTest
+@implementation SZSettingsViewControllerTest
 @synthesize profileEditViewController = profileEditViewController_;
 @synthesize mockDelegate = mockDelegate_;
 @synthesize mockTableView = mockTableView_;
@@ -53,7 +53,7 @@
 }
 
 + (SocializeBaseViewController*)createController {
-    return [[[SocializeProfileEditViewController alloc] init] autorelease];
+    return [[[SZSettingsViewController alloc] init] autorelease];
 }
 
 - (void)setUp {
@@ -72,8 +72,8 @@
     self.facebookAvailable = YES;
     self.twitterAvailable = YES;
 
-    self.profileEditViewController = (SocializeProfileEditViewController*)self.viewController;
-    self.mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeProfileEditViewControllerDelegate)];
+    self.profileEditViewController = (SZSettingsViewController*)self.viewController;
+    self.mockDelegate = [OCMockObject mockForProtocol:@protocol(SZSettingsViewControllerDelegate)];
     self.profileEditViewController.delegate = self.mockDelegate;
     self.mockTableView = [OCMockObject mockForClass:[UITableView class]];
     [[[(id)self.profileEditViewController stub] andReturn:self.mockTableView] view];
@@ -192,7 +192,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 }
 
 - (void)testSavingWithoutEditCallsDelegate {
-    [[self.mockDelegate expect] profileEditViewController:(SocializeProfileEditViewController*)self.origViewController didUpdateProfileWithUser:OCMOCK_ANY];
+    [[self.mockDelegate expect] profileEditViewController:(SZSettingsViewController*)self.origViewController didUpdateProfileWithUser:OCMOCK_ANY];
     [self.profileEditViewController saveButtonPressed:nil];
 }
 
@@ -263,7 +263,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [[mockArrowImageView expect] setHidden:NO];
     [[mockCell expect] setBackgroundColor:[UIColor colorWithRed:44/255.0f green:54/255.0f blue:63/255.0f alpha:1.0]];
     [[mockCell expect] setSelectionStyle:UITableViewCellSelectionStyleBlue];
-    UITableViewCell *cell = [self.profileEditViewController tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPropertiesRowFirstName inSection:[self.profileEditViewController propertiesSection]]];
+    UITableViewCell *cell = [self.profileEditViewController tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SZSettingsViewControllerPropertiesRowFirstName inSection:[self.profileEditViewController propertiesSection]]];
     GHAssertEquals(cell, mockCell, @"Bad cell");
 }
 
@@ -272,7 +272,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 }
 
 - (void)testKeyPaths {
-    NSString *path = [self.profileEditViewController keyPathForPropertiesRow:SocializeProfileEditViewControllerPropertiesRowFirstName];
+    NSString *path = [self.profileEditViewController keyPathForPropertiesRow:SZSettingsViewControllerPropertiesRowFirstName];
     GHAssertEqualObjects(path, @"fullUser.firstName", @"Bad path");
 }
 
@@ -328,7 +328,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [[mockCell expect] setAccessoryView:self.mockFacebookSwitch];
     [[[self.mockTableView expect] andReturn:mockCell] dequeueReusableCellWithIdentifier:OCMOCK_ANY];
 
-    [self.profileEditViewController tableView:self.mockTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerFacebookRowPost inSection:[self.profileEditViewController facebookSection]]];
+    [self.profileEditViewController tableView:self.mockTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SZSettingsViewControllerFacebookRowPost inSection:[self.profileEditViewController facebookSection]]];
 
 }
 
@@ -347,7 +347,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [[mockCell expect] setAccessoryView:self.mockTwitterSwitch];
     [[[self.mockTableView expect] andReturn:mockCell] dequeueReusableCellWithIdentifier:OCMOCK_ANY];
     
-    [self.profileEditViewController tableView:self.mockTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SocializeProfileEditViewControllerTwitterRowPost inSection:[self.profileEditViewController twitterSection]]];
+    [self.profileEditViewController tableView:self.mockTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SZSettingsViewControllerTwitterRowPost inSection:[self.profileEditViewController twitterSection]]];
     
 }
 
@@ -372,7 +372,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 }
 
 - (void)testActionSheetShown {
-    NSIndexPath *imagePath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerImageRowProfileImage inSection:[self.profileEditViewController imageSection]];
+    NSIndexPath *imagePath = [NSIndexPath indexPathForRow:SZSettingsViewControllerImageRowProfileImage inSection:[self.profileEditViewController imageSection]];
     [[self.mockActionSheet expect] showInView:self.mockWindow];
     [self.profileEditViewController tableView:self.mockTableView didSelectRowAtIndexPath:imagePath];
 }
@@ -431,13 +431,13 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 }
 
 - (void)testImageCellHeight {
-    NSIndexPath *imagePath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerImageRowProfileImage inSection:[self.profileEditViewController imageSection]];
+    NSIndexPath *imagePath = [NSIndexPath indexPathForRow:SZSettingsViewControllerImageRowProfileImage inSection:[self.profileEditViewController imageSection]];
     NSInteger imageHeight = [self.profileEditViewController tableView:self.mockTableView heightForRowAtIndexPath:imagePath];
     GHAssertEquals(imageHeight, SocializeProfileEditTableViewImageCellHeight, @"Bad height");
 }
 
 - (void)testNormalCellHeight {
-    NSIndexPath *propertyPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPropertiesRowFirstName inSection:[self.profileEditViewController propertiesSection]];
+    NSIndexPath *propertyPath = [NSIndexPath indexPathForRow:SZSettingsViewControllerPropertiesRowFirstName inSection:[self.profileEditViewController propertiesSection]];
     NSInteger propertyHeight = [self.profileEditViewController tableView:self.mockTableView heightForRowAtIndexPath:propertyPath];
     GHAssertEquals(propertyHeight, SocializeProfileEditTableViewCellHeight, @"Bad height");
 }
@@ -491,7 +491,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     self.profileEditViewController.fullUser = mockUser;
     
     // firstName should be set
-    NSIndexPath *firstNamePath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerPropertiesRowFirstName inSection:[self.profileEditViewController propertiesSection]];
+    NSIndexPath *firstNamePath = [NSIndexPath indexPathForRow:SZSettingsViewControllerPropertiesRowFirstName inSection:[self.profileEditViewController propertiesSection]];
     id mockEditValue = [OCMockObject mockForClass:[SocializeProfileEditValueViewController class]];
     self.profileEditViewController.editValueController = mockEditValue;
     [[[mockEditValue expect] andReturn:firstNamePath] indexPath];
@@ -600,7 +600,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
     
     [[(id)self.profileEditViewController expect] stopLoading];
-    [[self.mockDelegate expect] profileEditViewController:(SocializeProfileEditViewController*)self.origViewController didUpdateProfileWithUser:mockFullUser];
+    [[self.mockDelegate expect] profileEditViewController:(SZSettingsViewController*)self.origViewController didUpdateProfileWithUser:mockFullUser];
     
     [self.profileEditViewController service:nil didUpdate:mockFullUser];
 }
@@ -732,7 +732,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     
     [self.mockTableView makeNice];
     
-    NSIndexPath *logoutPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerTwitterRowLogout inSection:[self.profileEditViewController twitterSection]];
+    NSIndexPath *logoutPath = [NSIndexPath indexPathForRow:SZSettingsViewControllerTwitterRowLogout inSection:[self.profileEditViewController twitterSection]];
     [self.profileEditViewController tableView:self.mockTableView didSelectRowAtIndexPath:logoutPath];
     
     GHAssertNotNil(self.lastShownAlert, @"Should have alert");
@@ -748,7 +748,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     
     [self.mockTableView makeNice];
     
-    NSIndexPath *logoutPath = [NSIndexPath indexPathForRow:SocializeProfileEditViewControllerFacebookRowLogout inSection:[self.profileEditViewController facebookSection]];
+    NSIndexPath *logoutPath = [NSIndexPath indexPathForRow:SZSettingsViewControllerFacebookRowLogout inSection:[self.profileEditViewController facebookSection]];
     [self.profileEditViewController tableView:self.mockTableView didSelectRowAtIndexPath:logoutPath];
     
     GHAssertNotNil(self.lastShownAlert, @"Should have alert");

@@ -12,7 +12,7 @@
 #import "SocializeUIDisplay.h"
 #import "_Socialize.h"
 #import "SocializeServiceDelegate.h"
-#import "SocializeProfileEditViewController.h"
+#import "SZSettingsViewController.h"
 
 @implementation SocializeThirdPartyAuthenticatorTests
 @synthesize thirdPartyAuthenticator = thirdPartyAuthenticator_;
@@ -73,7 +73,7 @@
     
     [[[self.mockThirdParty stub] andReturnInteger:[self authType]] socializeAuthType];
     
-    self.mockSettings = [OCMockObject mockForClass:[SocializeProfileEditViewController class]];
+    self.mockSettings = [OCMockObject mockForClass:[SZSettingsViewController class]];
 }
 
 - (void)stubBoolsForMockThirdParty:(id)mockThirdParty {
@@ -158,27 +158,27 @@
     self.authenticationPossible = YES;
 }
 
-- (void)expectSettingsAndDo:(void(^)(SocializeProfileEditViewController *controller))block {
+- (void)expectSettingsAndDo:(void(^)(SZSettingsViewController *controller))block {
     [[[self.mockDisplay expect] andDo2:^(id obj, UINavigationController *settingsNav) {
-        SocializeProfileEditViewController *settings = (SocializeProfileEditViewController*)[settingsNav topViewController];
+        SZSettingsViewController *settings = (SZSettingsViewController*)[settingsNav topViewController];
         block(settings);
     }] socializeObject:OCMOCK_ANY requiresDisplayOfViewController:OCMOCK_ANY];
 }
 
 - (void)expectSettingsAndCancel {
-    [self expectSettingsAndDo:^(SocializeProfileEditViewController *settings) {
+    [self expectSettingsAndDo:^(SZSettingsViewController *settings) {
         [self.thirdPartyAuthenticator baseViewControllerDidCancel:settings];
     }];
 }
 
 - (void)expectSettingsAndSave {
-    [self expectSettingsAndDo:^(SocializeProfileEditViewController *settings) {
+    [self expectSettingsAndDo:^(SZSettingsViewController *settings) {
         [self.thirdPartyAuthenticator profileEditViewController:settings didUpdateProfileWithUser:nil];
     }];
 }
 
 - (void)expectSettingsAndLogout {
-    [self expectSettingsAndDo:^(SocializeProfileEditViewController *settings) {
+    [self expectSettingsAndDo:^(SZSettingsViewController *settings) {
         self.isAuthenticated = NO;
         [self.thirdPartyAuthenticator profileEditViewController:settings didUpdateProfileWithUser:nil];
     }];    

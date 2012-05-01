@@ -1,5 +1,5 @@
 //
-//  SocializeProfileEditViewController.h
+//  SZSettingsViewController.h
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 11/1/11.
@@ -9,43 +9,43 @@
 #import <UIKit/UIKit.h>
 #import "SocializeProfileEditValueViewController.h"
 #import "SocializeBaseViewController.h"
-#import "SocializeProfileEditViewControllerDelegate.h"
+#import "SZSettingsViewControllerDelegate.h"
 
 @class SocializeProfileEditValueViewController;
 
 typedef enum {
-    SocializeProfileEditViewControllerImageRowProfileImage,
-    SocializeProfileEditViewControllerNumImageRows,
-} SocializeProfileEditViewControllerImageRow;
+    SZSettingsViewControllerImageRowProfileImage,
+    SZSettingsViewControllerNumImageRows,
+} SZSettingsViewControllerImageRow;
 
 typedef enum {
-    SocializeProfileEditViewControllerPropertiesRowFirstName,
-    SocializeProfileEditViewControllerPropertiesRowLastName,
-    SocializeProfileEditViewControllerPropertiesRowBio,
-    SocializeProfileEditViewControllerNumPropertiesRows,
-} SocializeProfileEditViewControllerPropertiesRow;
+    SZSettingsViewControllerPropertiesRowFirstName,
+    SZSettingsViewControllerPropertiesRowLastName,
+    SZSettingsViewControllerPropertiesRowBio,
+    SZSettingsViewControllerNumPropertiesRows,
+} SZSettingsViewControllerPropertiesRow;
 
 typedef enum {
-    SocializeProfileEditViewControllerFacebookRowPost,
-    SocializeProfileEditViewControllerFacebookRowLogout,
-    SocializeProfileEditViewControllerNumFacebookRows,
-} SocializeProfileEditViewControllerFacebookRow;
+    SZSettingsViewControllerFacebookRowPost,
+    SZSettingsViewControllerFacebookRowLogout,
+    SZSettingsViewControllerNumFacebookRows,
+} SZSettingsViewControllerFacebookRow;
 
 typedef enum {
-    SocializeProfileEditViewControllerTwitterRowPost,
-    SocializeProfileEditViewControllerTwitterRowLogout,
-    SocializeProfileEditViewControllerNumTwitterRows,
-} SocializeProfileEditViewControllerTwitterRow;
+    SZSettingsViewControllerTwitterRowPost,
+    SZSettingsViewControllerTwitterRowLogout,
+    SZSettingsViewControllerNumTwitterRows,
+} SZSettingsViewControllerTwitterRow;
 
 @class SocializeProfileEditTableViewImageCell;
 @class SocializeProfileEditTableViewCell;
 @class SocializeProfileEditValueViewController;
 
-@interface SocializeProfileEditViewController : SocializeBaseViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SZSettingsViewController : SocializeBaseViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, retain) id<SocializeFullUser> fullUser;
 @property (nonatomic, retain) UIImage *profileImage;
 @property (nonatomic, retain) NSArray *cellBackgroundColors;
-@property (nonatomic, assign) id<SocializeProfileEditViewControllerDelegate> delegate;
+@property (nonatomic, assign) id<SZSettingsViewControllerDelegate> delegate;
 @property (nonatomic, retain) UIImagePickerController *imagePicker;
 @property (nonatomic, retain) UIActionSheet *uploadPicActionSheet;
 @property (nonatomic, retain) SocializeProfileEditValueViewController *editValueController;
@@ -60,9 +60,9 @@ typedef enum {
 @property (nonatomic, retain) NSMutableArray *facebookCells;
 
 + (UINavigationController*)profileEditViewControllerInNavigationController;
-+ (SocializeProfileEditViewController*)profileEditViewController;
++ (SZSettingsViewController*)profileEditViewController;
 
-- (NSString*)keyPathForPropertiesRow:(SocializeProfileEditViewControllerPropertiesRow)row;
+- (NSString*)keyPathForPropertiesRow:(SZSettingsViewControllerPropertiesRow)row;
 -(void) showActionSheet;
 
 - (NSInteger)facebookSection;
