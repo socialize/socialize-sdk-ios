@@ -61,7 +61,7 @@
 		16038955143F10DB00455B6A /* socialize-navbar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221014057FC20026185F /* socialize-navbar-button-red.png */; };
 		16038956143F10DB00455B6A /* socialize-navbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221114057FCB0026185F /* socialize-navbar-button-red@2x.png */; };
 		16038959143F10DB00455B6A /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D133A7014041AC600E16BA4 /* CommentsTableViewCell.xib */; };
-		1603895A143F10DB00455B6A /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
+		1603895A143F10DB00455B6A /* SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SZCommentsListViewController.xib */; };
 		1603895B143F10DB00455B6A /* socialize-nocomments-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA63140573DE00E41FC0 /* socialize-nocomments-icon.png */; };
 		1603895C143F10DB00455B6A /* socialize-nocomments-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA64140573DF00E41FC0 /* socialize-nocomments-icon@2x.png */; };
 		1603895D143F10DB00455B6A /* comments-cell-bg-borders.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA5D1405709800E41FC0 /* comments-cell-bg-borders.png */; };
@@ -385,8 +385,8 @@
 		6D44A8B41402F7E6004B3A46 /* NSNumber+Additions.h in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A7D11402D20A004B3A46 /* NSNumber+Additions.h */; };
 		6D44A8E514030198004B3A46 /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A8E314030196004B3A46 /* action-bar-bg.png */; };
 		6D44A8E714030198004B3A46 /* action-bar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A8E414030197004B3A46 /* action-bar-bg@2x.png */; };
-		6D44A8FF14032982004B3A46 /* SocializeCommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */; };
-		6D44A902140329CB004B3A46 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
+		6D44A8FF14032982004B3A46 /* SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A8FA14032957004B3A46 /* SZCommentsListViewController.m */; };
+		6D44A902140329CB004B3A46 /* SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SZCommentsListViewController.xib */; };
 		6D44A90B140419B6004B3A46 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A90514041851004B3A46 /* CommentsTableViewCell.m */; };
 		6D44A90E140419B6004B3A46 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A9071404189C004B3A46 /* NSDateAdditions.m */; };
 		6D44A911140419B6004B3A46 /* SocializeTableBGInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A90914041939004B3A46 /* SocializeTableBGInfoView.m */; };
@@ -683,12 +683,12 @@
 		AA2024F6144CA80F006C1F8F /* SZProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 160754891432FBA4002E5A38 /* SZProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2024F7144CA80F006C1F8F /* SocializeComposeMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BDBE13F55BCB00EC6042 /* SocializeComposeMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2024F8144CA80F006C1F8F /* SocializeCommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* SocializeCommentDetailsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA2024F9144CA80F006C1F8F /* SocializeCommentsTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA2024F9144CA80F006C1F8F /* SZCommentsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A8F914032939004B3A46 /* SZCommentsListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2024FA144CA80F006C1F8F /* SocializeBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16075490143302E4002E5A38 /* SocializeBaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2024FB144CA80F006C1F8F /* SZProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 160754891432FBA4002E5A38 /* SZProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2024FC144CA80F006C1F8F /* SocializeComposeMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1681BDBE13F55BCB00EC6042 /* SocializeComposeMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2024FD144CA80F006C1F8F /* SocializeCommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 16FDF4DD1414BA0A00EAA064 /* SocializeCommentDetailsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA2024FE144CA80F006C1F8F /* SocializeCommentsTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA2024FE144CA80F006C1F8F /* SZCommentsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D44A8F914032939004B3A46 /* SZCommentsListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA20250C144CA86C006C1F8F /* SocializeObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11BC144325A7004E4C1B /* SocializeObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA20250D144CA86C006C1F8F /* SocializeActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D296B1393FED80065C0CB /* SocializeActivity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA20250E144CA86C006C1F8F /* SocializeApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4D296D1393FED90065C0CB /* SocializeApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -785,7 +785,7 @@
 		AA3181A3144A4474008F4D59 /* socialize-navbar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221014057FC20026185F /* socialize-navbar-button-red.png */; };
 		AA3181A4144A4474008F4D59 /* socialize-navbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221114057FCB0026185F /* socialize-navbar-button-red@2x.png */; };
 		AA3181A7144A4474008F4D59 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D133A7014041AC600E16BA4 /* CommentsTableViewCell.xib */; };
-		AA3181A8144A4474008F4D59 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
+		AA3181A8144A4474008F4D59 /* SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SZCommentsListViewController.xib */; };
 		AA3181A9144A4474008F4D59 /* socialize-nocomments-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA63140573DE00E41FC0 /* socialize-nocomments-icon.png */; };
 		AA3181AA144A4474008F4D59 /* socialize-nocomments-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA64140573DF00E41FC0 /* socialize-nocomments-icon@2x.png */; };
 		AA3181AB144A4474008F4D59 /* comments-cell-bg-borders.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA5D1405709800E41FC0 /* comments-cell-bg-borders.png */; };
@@ -934,7 +934,7 @@
 		AA332640144CD8070033C7FA /* socialize-navbar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221014057FC20026185F /* socialize-navbar-button-red.png */; };
 		AA332641144CD8070033C7FA /* socialize-navbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221114057FCB0026185F /* socialize-navbar-button-red@2x.png */; };
 		AA332644144CD8070033C7FA /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D133A7014041AC600E16BA4 /* CommentsTableViewCell.xib */; };
-		AA332645144CD8070033C7FA /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
+		AA332645144CD8070033C7FA /* SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SZCommentsListViewController.xib */; };
 		AA332646144CD8070033C7FA /* socialize-nocomments-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA63140573DE00E41FC0 /* socialize-nocomments-icon.png */; };
 		AA332647144CD8070033C7FA /* socialize-nocomments-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA64140573DF00E41FC0 /* socialize-nocomments-icon@2x.png */; };
 		AA332648144CD8070033C7FA /* comments-cell-bg-borders.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA5D1405709800E41FC0 /* comments-cell-bg-borders.png */; };
@@ -1060,7 +1060,7 @@
 		AA369FE8146C54ED00E15AA4 /* socialize-navbar-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221014057FC20026185F /* socialize-navbar-button-red.png */; };
 		AA369FE9146C54ED00E15AA4 /* socialize-navbar-button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D221114057FCB0026185F /* socialize-navbar-button-red@2x.png */; };
 		AA369FEB146C54ED00E15AA4 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D133A7014041AC600E16BA4 /* CommentsTableViewCell.xib */; };
-		AA369FEC146C54ED00E15AA4 /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
+		AA369FEC146C54ED00E15AA4 /* SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SZCommentsListViewController.xib */; };
 		AA369FED146C54ED00E15AA4 /* socialize-nocomments-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA63140573DE00E41FC0 /* socialize-nocomments-icon.png */; };
 		AA369FEE146C54ED00E15AA4 /* socialize-nocomments-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA64140573DF00E41FC0 /* socialize-nocomments-icon@2x.png */; };
 		AA369FEF146C54ED00E15AA4 /* comments-cell-bg-borders.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA5D1405709800E41FC0 /* comments-cell-bg-borders.png */; };
@@ -1639,7 +1639,7 @@
 		AABC1509144A114900088B7D /* UIFontForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A79713FED3A9004B3A46 /* UIFontForTest.m */; };
 		AABC150A144A114900088B7D /* SocializeActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A7C61402BF6E004B3A46 /* SocializeActionView.m */; };
 		AABC150B144A114900088B7D /* NSNumber+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A7D21402D20C004B3A46 /* NSNumber+Additions.m */; };
-		AABC150C144A114900088B7D /* SocializeCommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */; };
+		AABC150C144A114900088B7D /* SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A8FA14032957004B3A46 /* SZCommentsListViewController.m */; };
 		AABC150D144A114900088B7D /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A90514041851004B3A46 /* CommentsTableViewCell.m */; };
 		AABC150E144A114900088B7D /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A9071404189C004B3A46 /* NSDateAdditions.m */; };
 		AABC150F144A114900088B7D /* SocializeTableBGInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D44A90914041939004B3A46 /* SocializeTableBGInfoView.m */; };
@@ -1717,7 +1717,7 @@
 		AABC1562144A114900088B7D /* socialize-navbar-button-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A63F13FC6E82004B3A46 /* socialize-navbar-button-dark@2x.png */; };
 		AABC1563144A114900088B7D /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A8E314030196004B3A46 /* action-bar-bg.png */; };
 		AABC1564144A114900088B7D /* action-bar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A8E414030197004B3A46 /* action-bar-bg@2x.png */; };
-		AABC1565144A114900088B7D /* SocializeCommentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */; };
+		AABC1565144A114900088B7D /* SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D44A901140329CA004B3A46 /* SZCommentsListViewController.xib */; };
 		AABC1566144A114900088B7D /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D133A7014041AC600E16BA4 /* CommentsTableViewCell.xib */; };
 		AABC1567144A114900088B7D /* socialize-comment-background-text-input.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA1B140569FF00E41FC0 /* socialize-comment-background-text-input.png */; };
 		AABC1568144A114900088B7D /* socialize-comment-background-text-input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBEA1C140569FF00E41FC0 /* socialize-comment-background-text-input@2x.png */; };
@@ -2453,9 +2453,9 @@
 		6D44A7D21402D20C004B3A46 /* NSNumber+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+Additions.m"; path = "Classes/NSNumber+Additions.m"; sourceTree = "<group>"; };
 		6D44A8E314030196004B3A46 /* action-bar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-bar-bg.png"; path = "Resources/action-bar-bg.png"; sourceTree = "<group>"; };
 		6D44A8E414030197004B3A46 /* action-bar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-bar-bg@2x.png"; path = "Resources/action-bar-bg@2x.png"; sourceTree = "<group>"; };
-		6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentsTableViewController.h; path = Classes/SocializeCommentsTableViewController.h; sourceTree = "<group>"; };
-		6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentsTableViewController.m; path = Classes/SocializeCommentsTableViewController.m; sourceTree = "<group>"; };
-		6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeCommentsTableViewController.xib; path = Resources/SocializeCommentsTableViewController.xib; sourceTree = "<group>"; };
+		6D44A8F914032939004B3A46 /* SZCommentsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZCommentsListViewController.h; path = Classes/SZCommentsListViewController.h; sourceTree = "<group>"; };
+		6D44A8FA14032957004B3A46 /* SZCommentsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZCommentsListViewController.m; path = Classes/SZCommentsListViewController.m; sourceTree = "<group>"; };
+		6D44A901140329CA004B3A46 /* SZCommentsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZCommentsListViewController.xib; path = Resources/SZCommentsListViewController.xib; sourceTree = "<group>"; };
 		6D44A90414041848004B3A46 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsTableViewCell.h; path = Classes/CommentsTableViewCell.h; sourceTree = "<group>"; };
 		6D44A90514041851004B3A46 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsTableViewCell.m; path = Classes/CommentsTableViewCell.m; sourceTree = "<group>"; };
 		6D44A9061404186C004B3A46 /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDateAdditions.h; path = Classes/NSDateAdditions.h; sourceTree = "<group>"; };
@@ -4899,9 +4899,9 @@
 				6D133A7514041BBA00E16BA4 /* CommentsTableFooterView.m */,
 				6D44A90414041848004B3A46 /* CommentsTableViewCell.h */,
 				6D44A90514041851004B3A46 /* CommentsTableViewCell.m */,
-				6D44A8F914032939004B3A46 /* SocializeCommentsTableViewController.h */,
-				6D44A8FA14032957004B3A46 /* SocializeCommentsTableViewController.m */,
-				6D44A901140329CA004B3A46 /* SocializeCommentsTableViewController.xib */,
+				6D44A8F914032939004B3A46 /* SZCommentsListViewController.h */,
+				6D44A8FA14032957004B3A46 /* SZCommentsListViewController.m */,
+				6D44A901140329CA004B3A46 /* SZCommentsListViewController.xib */,
 			);
 			name = "Comments List";
 			sourceTree = "<group>";
@@ -4944,7 +4944,7 @@
 				AA2024FB144CA80F006C1F8F /* SZProfileViewController.h in Headers */,
 				AA2024FC144CA80F006C1F8F /* SocializeComposeMessageViewController.h in Headers */,
 				AA2024FD144CA80F006C1F8F /* SocializeCommentDetailsViewController.h in Headers */,
-				AA2024FE144CA80F006C1F8F /* SocializeCommentsTableViewController.h in Headers */,
+				AA2024FE144CA80F006C1F8F /* SZCommentsListViewController.h in Headers */,
 				AA202518144CA86D006C1F8F /* SocializeObjects.h in Headers */,
 				AA202519144CA86D006C1F8F /* SocializeActivity.h in Headers */,
 				AA20251A144CA86D006C1F8F /* SocializeApplication.h in Headers */,
@@ -5101,7 +5101,7 @@
 				AA2024F6144CA80F006C1F8F /* SZProfileViewController.h in Headers */,
 				AA2024F7144CA80F006C1F8F /* SocializeComposeMessageViewController.h in Headers */,
 				AA2024F8144CA80F006C1F8F /* SocializeCommentDetailsViewController.h in Headers */,
-				AA2024F9144CA80F006C1F8F /* SocializeCommentsTableViewController.h in Headers */,
+				AA2024F9144CA80F006C1F8F /* SZCommentsListViewController.h in Headers */,
 				AA20250C144CA86C006C1F8F /* SocializeObjects.h in Headers */,
 				AA20250D144CA86C006C1F8F /* SocializeActivity.h in Headers */,
 				AA20250E144CA86C006C1F8F /* SocializeApplication.h in Headers */,
@@ -5521,7 +5521,7 @@
 				AA369FE8146C54ED00E15AA4 /* socialize-navbar-button-red.png in Resources */,
 				AA369FE9146C54ED00E15AA4 /* socialize-navbar-button-red@2x.png in Resources */,
 				AA369FEB146C54ED00E15AA4 /* CommentsTableViewCell.xib in Resources */,
-				AA369FEC146C54ED00E15AA4 /* SocializeCommentsTableViewController.xib in Resources */,
+				AA369FEC146C54ED00E15AA4 /* SZCommentsListViewController.xib in Resources */,
 				AA369FED146C54ED00E15AA4 /* socialize-nocomments-icon.png in Resources */,
 				AA369FEE146C54ED00E15AA4 /* socialize-nocomments-icon@2x.png in Resources */,
 				AA369FEF146C54ED00E15AA4 /* comments-cell-bg-borders.png in Resources */,
@@ -5699,7 +5699,7 @@
 				6D44A64213FC6E9D004B3A46 /* socialize-navbar-button-dark@2x.png in Resources */,
 				6D44A8E514030198004B3A46 /* action-bar-bg.png in Resources */,
 				6D44A8E714030198004B3A46 /* action-bar-bg@2x.png in Resources */,
-				6D44A902140329CB004B3A46 /* SocializeCommentsTableViewController.xib in Resources */,
+				6D44A902140329CB004B3A46 /* SZCommentsListViewController.xib in Resources */,
 				6D133A7114041AC600E16BA4 /* CommentsTableViewCell.xib in Resources */,
 				6DDBEA2514056A0100E41FC0 /* socialize-comment-background-text-input.png in Resources */,
 				6DDBEA2714056A0100E41FC0 /* socialize-comment-background-text-input@2x.png in Resources */,
@@ -5879,7 +5879,7 @@
 				AA3181A3144A4474008F4D59 /* socialize-navbar-button-red.png in Resources */,
 				AA3181A4144A4474008F4D59 /* socialize-navbar-button-red@2x.png in Resources */,
 				AA3181A7144A4474008F4D59 /* CommentsTableViewCell.xib in Resources */,
-				AA3181A8144A4474008F4D59 /* SocializeCommentsTableViewController.xib in Resources */,
+				AA3181A8144A4474008F4D59 /* SZCommentsListViewController.xib in Resources */,
 				AA3181A9144A4474008F4D59 /* socialize-nocomments-icon.png in Resources */,
 				AA3181AA144A4474008F4D59 /* socialize-nocomments-icon@2x.png in Resources */,
 				AA3181AB144A4474008F4D59 /* comments-cell-bg-borders.png in Resources */,
@@ -6081,7 +6081,7 @@
 				AA332640144CD8070033C7FA /* socialize-navbar-button-red.png in Resources */,
 				AA332641144CD8070033C7FA /* socialize-navbar-button-red@2x.png in Resources */,
 				AA332644144CD8070033C7FA /* CommentsTableViewCell.xib in Resources */,
-				AA332645144CD8070033C7FA /* SocializeCommentsTableViewController.xib in Resources */,
+				AA332645144CD8070033C7FA /* SZCommentsListViewController.xib in Resources */,
 				AA332646144CD8070033C7FA /* socialize-nocomments-icon.png in Resources */,
 				AA332647144CD8070033C7FA /* socialize-nocomments-icon@2x.png in Resources */,
 				AA332648144CD8070033C7FA /* comments-cell-bg-borders.png in Resources */,
@@ -6365,7 +6365,7 @@
 				16038955143F10DB00455B6A /* socialize-navbar-button-red.png in Resources */,
 				16038956143F10DB00455B6A /* socialize-navbar-button-red@2x.png in Resources */,
 				16038959143F10DB00455B6A /* CommentsTableViewCell.xib in Resources */,
-				1603895A143F10DB00455B6A /* SocializeCommentsTableViewController.xib in Resources */,
+				1603895A143F10DB00455B6A /* SZCommentsListViewController.xib in Resources */,
 				1603895B143F10DB00455B6A /* socialize-nocomments-icon.png in Resources */,
 				1603895C143F10DB00455B6A /* socialize-nocomments-icon@2x.png in Resources */,
 				1603895D143F10DB00455B6A /* comments-cell-bg-borders.png in Resources */,
@@ -6557,7 +6557,7 @@
 				AABC1562144A114900088B7D /* socialize-navbar-button-dark@2x.png in Resources */,
 				AABC1563144A114900088B7D /* action-bar-bg.png in Resources */,
 				AABC1564144A114900088B7D /* action-bar-bg@2x.png in Resources */,
-				AABC1565144A114900088B7D /* SocializeCommentsTableViewController.xib in Resources */,
+				AABC1565144A114900088B7D /* SZCommentsListViewController.xib in Resources */,
 				AABC1566144A114900088B7D /* CommentsTableViewCell.xib in Resources */,
 				AABC1567144A114900088B7D /* socialize-comment-background-text-input.png in Resources */,
 				AABC1568144A114900088B7D /* socialize-comment-background-text-input@2x.png in Resources */,
@@ -6975,7 +6975,7 @@
 				6D44A79913FED3AC004B3A46 /* UIFontForTest.m in Sources */,
 				6D44A7C81402BF6E004B3A46 /* SocializeActionView.m in Sources */,
 				6D44A7D41402D20E004B3A46 /* NSNumber+Additions.m in Sources */,
-				6D44A8FF14032982004B3A46 /* SocializeCommentsTableViewController.m in Sources */,
+				6D44A8FF14032982004B3A46 /* SZCommentsListViewController.m in Sources */,
 				6D44A90B140419B6004B3A46 /* CommentsTableViewCell.m in Sources */,
 				6D44A90E140419B6004B3A46 /* NSDateAdditions.m in Sources */,
 				6D44A911140419B6004B3A46 /* SocializeTableBGInfoView.m in Sources */,
@@ -7365,7 +7365,7 @@
 				AABC1509144A114900088B7D /* UIFontForTest.m in Sources */,
 				AABC150A144A114900088B7D /* SocializeActionView.m in Sources */,
 				AABC150B144A114900088B7D /* NSNumber+Additions.m in Sources */,
-				AABC150C144A114900088B7D /* SocializeCommentsTableViewController.m in Sources */,
+				AABC150C144A114900088B7D /* SZCommentsListViewController.m in Sources */,
 				AABC150D144A114900088B7D /* CommentsTableViewCell.m in Sources */,
 				AABC150E144A114900088B7D /* NSDateAdditions.m in Sources */,
 				AABC150F144A114900088B7D /* SocializeTableBGInfoView.m in Sources */,

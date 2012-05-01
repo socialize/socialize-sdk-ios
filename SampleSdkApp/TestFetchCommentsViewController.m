@@ -82,8 +82,8 @@
         [self.view addSubview:hiddenButton];
     }
     
-//    SocializeCommentsTableViewController* commentsController = [[[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString:_textField.text] autorelease];
-    UIViewController *commentsController = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:_textField.text];
+//    SZCommentsListViewController* commentsController = [[[SZCommentsListViewController alloc] initWithNibName:@"SZCommentsListViewController" bundle:nil entryUrlString:_textField.text] autorelease];
+    UIViewController *commentsController = [SZCommentsListViewController socializeCommentsTableViewControllerForEntity:_textField.text];
     [self presentModalViewController:commentsController animated:YES];
 //    [self.navigationController pushViewController:commentsController animated:YES];
 }

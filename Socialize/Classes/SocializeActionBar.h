@@ -30,9 +30,9 @@
 #import "SocializeActionView.h"
 #import "SocializeActionBarDelegate.h"
 #import "SocializeUIDisplayProxyDelegate.h"
-#import "SocializeCommentsTableViewController.h"
+#import "SZCommentsListViewController.h"
 
-@class SocializeCommentsTableViewController;
+@class SZCommentsListViewController;
 @protocol SocializeView;
 @protocol SocializeEntity;
 @protocol SocializeLike;
@@ -43,7 +43,7 @@
  The Socialize Action Bar
 
  */
-@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate, SocializeUIDisplayProxyDelegate, SocializeCommentsTableViewControllerDelegate>
+@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate, SocializeUIDisplayProxyDelegate, SZCommentsListViewControllerDelegate>
 
 @property (nonatomic, assign) id<SocializeActionBarDelegate> delegate;
 @property (nonatomic, retain) id<SocializeEntity> entity;

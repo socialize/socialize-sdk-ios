@@ -1,12 +1,12 @@
 //
-//  SocializeCommentsTableViewController.m
+//  SZCommentsListViewController.m
 //  appbuildr
 //
 //  Created by Fawad Haider on 12/2/10.
 //  Copyright 2010. All rights reserved.
 //
 
-#import "SocializeCommentsTableViewController.h"
+#import "SZCommentsListViewController.h"
 #import "CommentsTableViewCell.h"
 #import "NSDateAdditions.h"
 #import "SocializeCommentDetailsViewController.h"
@@ -29,14 +29,14 @@
 #import "SocializeNotificationToggleBubbleContentView.h"
 #import "CommentsTableFooterView.h"
 
-@interface SocializeCommentsTableViewController()
+@interface SZCommentsListViewController()
 -(NSString*)getDateString:(NSDate*)date;
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 -(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment;
 - (void)getSubscriptionStatus;
 @end
 
-@implementation SocializeCommentsTableViewController
+@implementation SZCommentsListViewController
 
 @synthesize cache = _cache;
 @synthesize isLoading = _isLoading;
@@ -57,7 +57,7 @@
 @synthesize bubbleContentView = bubbleContentView_;
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName {
-    SocializeCommentsTableViewController* commentsController = [[[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString:entityName] autorelease];
+    SZCommentsListViewController* commentsController = [[[SZCommentsListViewController alloc] initWithNibName:@"SZCommentsListViewController" bundle:nil entryUrlString:entityName] autorelease];
     UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
     UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:commentsController] autorelease];
     [nav.navigationBar setBackgroundImage:navImage];

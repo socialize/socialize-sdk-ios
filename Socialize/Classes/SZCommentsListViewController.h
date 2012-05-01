@@ -1,5 +1,5 @@
 //
-//  SocializeCommentsTableViewController.h
+//  SZCommentsListViewController.h
 //  appbuildr
 //
 //  Created by Fawad Haider  on 12/2/10.
@@ -29,9 +29,9 @@
 */
 
 @class CommentsTableViewCell;
-@protocol SocializeCommentsTableViewControllerDelegate;
+@protocol SZCommentsListViewControllerDelegate;
 
-@interface SocializeCommentsTableViewController : SocializeTableViewController<UITableViewDataSource, SocializeServiceDelegate, UITableViewDelegate, SocializePostCommentViewControllerDelegate> 
+@interface SZCommentsListViewController : SocializeTableViewController<UITableViewDataSource, SocializeServiceDelegate, UITableViewDelegate, SocializePostCommentViewControllerDelegate> 
 {
 
 	IBOutlet UIView*        backgroundView;
@@ -63,7 +63,7 @@
 @property (retain, nonatomic) ImagesCache               *cache;
 @property (assign, nonatomic) BOOL                      isLoading;
 
-@property (nonatomic, assign) id<SocializeCommentsTableViewControllerDelegate> delegate;
+@property (nonatomic, assign) id<SZCommentsListViewControllerDelegate> delegate;
 @property (nonatomic, retain) id<SocializeEntity> entity;
 
 @property (retain, nonatomic) SocializeBubbleView *bubbleView;
@@ -81,8 +81,8 @@
 @end
 
 
-@protocol SocializeCommentsTableViewControllerDelegate <NSObject>
+@protocol SZCommentsListViewControllerDelegate <NSObject>
 
-- (void)commentsTableViewControllerDidFinish:(SocializeCommentsTableViewController*)commentsTableViewController;
+- (void)commentsTableViewControllerDidFinish:(SZCommentsListViewController*)commentsTableViewController;
 
 @end

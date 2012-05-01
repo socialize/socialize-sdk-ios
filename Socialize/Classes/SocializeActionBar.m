@@ -29,7 +29,7 @@
 #import "SocializeActionView.h"
 #import "SocializeAuthenticateService.h"
 #import "SocializeLikeService.h"
-#import "SocializeCommentsTableViewController.h"
+#import "SZCommentsListViewController.h"
 #import "UIButton+Socialize.h"
 #import "UINavigationBarBackground.h"
 #import "SocializeView.h"
@@ -174,14 +174,14 @@
 
 - (UIViewController*)commentsNavController {
     if (commentsNavController_ == nil) {
-        commentsNavController_ = [[SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:self.entity.key] retain];
-        SocializeCommentsTableViewController *comments = (SocializeCommentsTableViewController*)[(UINavigationController*)commentsNavController_ topViewController];
+        commentsNavController_ = [[SZCommentsListViewController socializeCommentsTableViewControllerForEntity:self.entity.key] retain];
+        SZCommentsListViewController *comments = (SZCommentsListViewController*)[(UINavigationController*)commentsNavController_ topViewController];
         comments.delegate = self;
     }
     return commentsNavController_;
 }
 
-- (void)commentsTableViewControllerDidFinish:(SocializeCommentsTableViewController *)commentsTableViewController {
+- (void)commentsTableViewControllerDidFinish:(SZCommentsListViewController *)commentsTableViewController {
     [self.displayProxy dismissModalViewController];
 }
 

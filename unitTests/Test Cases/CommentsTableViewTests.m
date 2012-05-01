@@ -7,7 +7,7 @@
 //
 
 #import "CommentsTableViewTests.h"
-#import "SocializeCommentsTableViewController.h"
+#import "SZCommentsListViewController.h"
 #import "CommentsTableViewCell.h"
 #import <OCMock/OCMock.h>
 #import "SocializeTableBGInfoView.h"
@@ -19,7 +19,7 @@
 #import "SocializeNotificationToggleBubbleContentView.h"
 #import "CommentsTableFooterView.h"
 
-@interface SocializeCommentsTableViewController(public)
+@interface SZCommentsListViewController(public)
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender;
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 -(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment;
@@ -36,13 +36,13 @@
 #define TEST_URL @"test_entity_url"
 
 + (SocializeBaseViewController*)createController {
-    return [[[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString: TEST_URL] autorelease];
+    return [[[SZCommentsListViewController alloc] initWithNibName:@"SZCommentsListViewController" bundle:nil entryUrlString: TEST_URL] autorelease];
 }
 
 -(void)setUp {
     [super setUp];
     // super setUp creates self.viewController
-    self.commentsTableViewController = (SocializeCommentsTableViewController*)self.viewController;
+    self.commentsTableViewController = (SZCommentsListViewController*)self.viewController;
     self.mockView = self.mockTableView;
     
     self.mockFooterView = [OCMockObject mockForClass:[CommentsTableFooterView class]];

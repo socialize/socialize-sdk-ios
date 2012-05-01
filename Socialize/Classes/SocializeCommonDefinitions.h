@@ -76,10 +76,12 @@ extern NSString *const kSocializeUIErrorAlertsDisabled;
 
 @class SZSettingsViewController;
 @class SZProfileViewController;
+@class SZCommentsListViewController;
 @protocol SZSettingsViewControllerDelegate;
 
 typedef SZSettingsViewController SocializeProfileEditViewController;
 #define SocializeProfileEditViewControllerDelegate SZSettingsViewControllerDelegate
 
 typedef SZProfileViewController SocializeProfileViewController;
+typedef SZCommentsListViewController SocializeCommentsTableViewController;
 

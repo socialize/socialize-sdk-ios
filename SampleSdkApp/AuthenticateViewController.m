@@ -97,7 +97,7 @@
     [Socialize storeFacebookLocalAppId:nil];
 #endif
     
-//    UIViewController *comments = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:@"http://www.npr.org/"];
+//    UIViewController *comments = [SZCommentsListViewController socializeCommentsTableViewControllerForEntity:@"http://www.npr.org/"];
 //    [self presentModalViewController:comments animated:YES];
     
 //    NSString *commentType = @"comment";
