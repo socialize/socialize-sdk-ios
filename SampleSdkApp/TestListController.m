@@ -229,10 +229,10 @@
             break;
         case 9:
         {
-            UIViewController *profile = [SocializeProfileViewController profileViewControllerInNavigationController];
+            UIViewController *profile = [SZProfileViewController profileViewControllerInNavigationController];
 #ifdef RUN_KIF_TESTS
             UINavigationController *nav = (UINavigationController*)profile;
-            SocializeProfileViewController *pvc = (SocializeProfileViewController*)[[nav viewControllers] objectAtIndex:0];
+            SZProfileViewController *pvc = (SZProfileViewController*)[[nav viewControllers] objectAtIndex:0];
             SZSettingsViewController *edit = pvc.profileEditViewController;
 
             id mockActionSheet = [OCMockObject mockForClass:[UIActionSheet class]];

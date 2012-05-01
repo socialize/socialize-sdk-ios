@@ -10,7 +10,7 @@
 #import "SocializeCommentDetailsViewController.h"
 #import "SocializeCommentsTableViewController.h"
 #import "SocializeComposeMessageViewController.h"
-#import "SocializeProfileViewController.h"
+#import "SZProfileViewController.h"
 #import "SZSettingsViewController.h"
 #import "SocializePostCommentViewController.h"
 #import "SocializePostShareViewController.h"

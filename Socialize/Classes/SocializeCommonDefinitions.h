@@ -75,7 +75,11 @@ extern NSString *const SocializeUIControllerErrorUserInfoKey;
 extern NSString *const kSocializeUIErrorAlertsDisabled;
 
 @class SZSettingsViewController;
+@class SZProfileViewController;
 @protocol SZSettingsViewControllerDelegate;
 
 typedef SZSettingsViewController SocializeProfileEditViewController;
 #define SocializeProfileEditViewControllerDelegate SZSettingsViewControllerDelegate
+
+typedef SZProfileViewController SocializeProfileViewController;
+

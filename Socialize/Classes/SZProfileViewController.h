@@ -17,8 +17,8 @@
 @class SocializeLoadingView;
 @class SocializeActivityViewController;
 
-@interface SocializeProfileViewController : SocializeBaseViewController <UINavigationControllerDelegate, SZSettingsViewControllerDelegate, SocializeServiceDelegate, SocializeActivityViewControllerDelegate>
-+ (SocializeProfileViewController*)profileViewController;
+@interface SZProfileViewController : SocializeBaseViewController <UINavigationControllerDelegate, SZSettingsViewControllerDelegate, SocializeServiceDelegate, SocializeActivityViewControllerDelegate>
++ (SZProfileViewController*)profileViewController;
 + (UINavigationController*)profileViewControllerInNavigationController;
 + (UINavigationController*)socializeProfileViewControllerWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate __attribute__((deprecated));
 + (UINavigationController*)currentUserProfileWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate __attribute__((deprecated));

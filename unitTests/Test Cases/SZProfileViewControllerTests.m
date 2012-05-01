@@ -1,12 +1,12 @@
 //
-//  SocializeProfileViewControllerTests.m
+//  SZProfileViewControllerTests.m
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 10/5/11.
 //  Copyright (c) 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeProfileViewControllerTests.h"
+#import "SZProfileViewControllerTests.h"
 #import "Socialize.h"
 #import "SocializeFullUser.h"
 #import <OCMock/OCMock.h>
@@ -14,7 +14,7 @@
 #import "ImagesCache.h"
 #import "UINavigationBarBackground.h"
 
-@interface SocializeProfileViewController ()
+@interface SZProfileViewController ()
 - (void)editButtonPressed:(UIBarButtonItem*)button;
 - (void)showEditController;
 - (UIImage*)defaultProfileImage;
@@ -24,7 +24,7 @@
 - (void)addActivityControllerToView;
 @end
 
-@implementation SocializeProfileViewControllerTests
+@implementation SZProfileViewControllerTests
 @synthesize profileViewController = profileViewController_;
 @synthesize mockImagesCache = mockImagesCache_;
 @synthesize mockProfileImageView = mockProfileImageView_;
@@ -39,14 +39,14 @@
 }
 
 + (SocializeBaseViewController*)createController {
-    return [[[SocializeProfileViewController alloc] init] autorelease];
+    return [[[SZProfileViewController alloc] init] autorelease];
 }
 
 -(void) setUp
 {
     [super setUp];
     
-    self.profileViewController = (SocializeProfileViewController*)self.viewController;
+    self.profileViewController = (SZProfileViewController*)self.viewController;
 
     self.mockProfileImageView = [OCMockObject mockForClass:[UIImageView class]];
     self.profileViewController.profileImageView = self.mockProfileImageView;

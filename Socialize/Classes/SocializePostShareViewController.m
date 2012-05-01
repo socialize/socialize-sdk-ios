@@ -11,7 +11,7 @@
 #import "SocializeLocationManager.h"
 #import "CommentMapView.h"
 #import "SocializeFacebookInterface.h"
-#import "SocializeProfileViewController.h"
+#import "SZProfileViewController.h"
 
 @interface SocializePostShareViewController ()
 - (void)createShareOnSocializeServer;

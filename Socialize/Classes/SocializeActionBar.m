@@ -39,7 +39,7 @@
 #import "SocializeFacebookInterface.h"
 #import "SocializePostShareViewController.h"
 #import "SocializeEntityService.h"
-#import "SocializeProfileViewController.h"
+#import "SZProfileViewController.h"
 #import "SocializeUIShareOptions.h"
 #import "NSError+Socialize.h"
 #import "SocializeUIDisplayProxy.h"
@@ -261,7 +261,7 @@
 
 -(void)viewButtonTouched:(id)sender
 {
-    SocializeProfileViewController *profile = [SocializeProfileViewController profileViewController];
+    SZProfileViewController *profile = [SZProfileViewController profileViewController];
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
     [self presentInternalController:nav];
 }

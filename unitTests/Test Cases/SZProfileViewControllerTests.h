@@ -1,5 +1,5 @@
 //
-//  SocializeProfileViewControllerTests.h
+//  SZProfileViewControllerTests.h
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 10/5/11.
@@ -7,11 +7,11 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
-#import "SocializeProfileViewController.h"
+#import "SZProfileViewController.h"
 #import "SocializeBaseViewControllerTests.h"
 
-@interface SocializeProfileViewControllerTests : SocializeBaseViewControllerTests
-@property (nonatomic, retain) SocializeProfileViewController *profileViewController;
+@interface SZProfileViewControllerTests : SocializeBaseViewControllerTests
+@property (nonatomic, retain) SZProfileViewController *profileViewController;
 @property (nonatomic, retain) id mockImagesCache;
 @property (nonatomic, retain) id mockProfileImageView;
 @property (nonatomic, retain) id mockDefaultProfileImage;

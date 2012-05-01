@@ -9,14 +9,14 @@
 #import "SZUserUtils.h"
 #import "SocializeUIDisplay.h"
 #import "_Socialize.h"
-#import "SocializeProfileViewController.h"
+#import "SZProfileViewController.h"
 #import "SZNavigationController.h"
 #import "SocializeUIDisplayProxy.h"
 
 @implementation SZUserUtils
 
 + (void)showUserProfileWithDisplay:(id<SocializeUIDisplay>)display user:(id<SocializeUser>)user {
-    SocializeProfileViewController *profile = [SocializeProfileViewController profileViewController];
+    SZProfileViewController *profile = [SZProfileViewController profileViewController];
     SocializeUIDisplayProxy *proxy = [SocializeUIDisplayProxy UIDisplayProxyWithObject:profile display:display];
     profile.displayProxy = proxy;
     profile.user = user;

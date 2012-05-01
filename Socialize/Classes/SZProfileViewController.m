@@ -6,7 +6,7 @@
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeProfileViewController.h"
+#import "SZProfileViewController.h"
 #import "ImagesCache.h"
 #import "UINavigationBarBackground.h"
 #import "UIButton+Socialize.h"
@@ -14,12 +14,12 @@
 #import "SocializeActivityViewController.h"
 #import "SZNavigationController.h"
 
-@interface SocializeProfileViewController ()
+@interface SZProfileViewController ()
 -(void)configureViews;
 - (void)addActivityControllerToView;
 @end
 
-@implementation SocializeProfileViewController
+@implementation SZProfileViewController
 @synthesize delegate = delegate_;
 @synthesize user = user_;
 @synthesize fullUser = fullUser_;
@@ -71,29 +71,29 @@
 }
 
 + (UINavigationController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeBaseViewControllerDelegate>)delegate {
-    SocializeProfileViewController *profile = [[[SocializeProfileViewController alloc] initWithUser:user delegate:delegate] autorelease];
+    SZProfileViewController *profile = [[[SZProfileViewController alloc] initWithUser:user delegate:delegate] autorelease];
     UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
     UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:profile] autorelease];
     [nav.navigationBar setBackgroundImage:navImage];
     return nav;
 }
 
-+ (SocializeProfileViewController*)profileViewController {
-    return [[[SocializeProfileViewController alloc] init] autorelease];
++ (SZProfileViewController*)profileViewController {
+    return [[[SZProfileViewController alloc] init] autorelease];
 }
 
 + (UINavigationController*)profileViewControllerInNavigationController {
-    SocializeProfileViewController *profile = [self profileViewController];
+    SZProfileViewController *profile = [self profileViewController];
     return [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
 }
 
 
 + (UINavigationController*)socializeProfileViewControllerWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate {
-    return [SocializeProfileViewController socializeProfileViewControllerForUser:nil delegate:delegate];
+    return [SZProfileViewController socializeProfileViewControllerForUser:nil delegate:delegate];
 }
 
 + (UINavigationController*)currentUserProfileWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate {
-    return [SocializeProfileViewController socializeProfileViewControllerWithDelegate:delegate];
+    return [SZProfileViewController socializeProfileViewControllerWithDelegate:delegate];
 }
 
 - (id)initWithUser:(id<SocializeUser>)user delegate:(id<SocializeBaseViewControllerDelegate>)delegate {
@@ -104,7 +104,7 @@
     return self;
 }
 - (id)init {
-    return [super initWithNibName:@"SocializeProfileViewController" bundle:nil];
+    return [super initWithNibName:@"SZProfileViewController" bundle:nil];
 }
 
 - (void)afterLoginAction:(BOOL)userChanged {
@@ -253,7 +253,7 @@
 
 - (void)activityViewController:(SocializeActivityViewController *)activityViewController profileTappedForUser:(id<SocializeUser>)user {
     if (user.objectID != self.fullUser.objectID) {
-        SocializeProfileViewController *profile = [SocializeProfileViewController profileViewController];
+        SZProfileViewController *profile = [SZProfileViewController profileViewController];
         profile.user = user;
         SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
         [self presentModalViewController:nav animated:YES];
