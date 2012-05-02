@@ -33,9 +33,14 @@ Step 1: Add the Socialize Framework to Your Project
 - **Download and unzip the lastest iOS SDK release from the website.**  
   You can find it here: http://www.getsocialize.com/sdk/
 - **Install the embedded static framework to your application.**
-  To do this just drag and drop Socialize.embeddedframework folder from the package to your framework section in your project. Note that this is a directory that includes both Socialize.framework and our bundled Resources.
 
- 	.. image:: images/drag_and_drop.png
+  To do this just drag and drop Socialize.embeddedframework folder from the
+  package to your framework section in your project.
+
+.. note:: Be sure to drag the outlying .embeddedframework folder, not just the framework. The .embeddedframework directory contains both the Socialize framework and the Socialize resources.
+  If you just add the framework, you will be missing important Socialize images and configuration files.
+
+.. image:: images/drag_and_drop.png
 
 - When prompted, check "Copy items into destination group's folder (if needed)" and click finish
 
