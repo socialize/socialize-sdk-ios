@@ -90,9 +90,19 @@ at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_.  Clic
 
 .. note:: Make sure to import the Socialize header in the code snippet below
 
-.. raw:: html
+.. code-block:: objective-c
 
-    <script src="https://gist.github.com/1678336.js?file=appDelegate.m"></script>
+  //import the socialize header
+  #import <Socialize/Socialize.h>
+
+  #pragma mark
+  - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
+     // set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/
+      [Socialize storeConsumerKey:@"SOCIALIZE_CONSUMER_KEY"];
+      [Socialize storeConsumerSecret:@"SOCIALIZE_CONSUMER_SECRET"];
+
+     //your application specific code
+  }
 
 Step 5: Include Socialize in your App!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -115,9 +125,29 @@ Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar co
 
 In your View controller's header file place the following code:
 
-.. raw:: html
+Controller.h
 
-        <script src="https://gist.github.com/1315113.js"> </script>
+.. code-block:: objective-c
+
+  // Header
+
+  #import <Socialize/Socialize.h>
+
+  @interface Controller : UIViewController
+  @property (nonatomic, retain) SocializeActionBar *actionBar;
+  @end
+
+.. code-block:: objective-c
+
+  // Implementation
+
+  - (void)viewDidLoad
+  {
+      [super viewDidLoad];
+
+      self.actionBar = [SocializeActionBar actionBarWithKey:@"http://www.example.com/object/1234" name:@"Example Entity" presentModalInController:self];
+      [self.view addSubview:self.actionBar.view];
+  }
 
 By default, the Action Bar will automatically place itself at the bottom of its
 superview and adjust to rotation.  If you find that content is being hidden,
@@ -140,12 +170,19 @@ It is strongly recommended that users be able to authenticate with Facebook when
 Let Socialize know your Facebook app id.  You can register or find your
 Facebook app id here: https://developers.facebook.com/apps
 
-You should also store your app's iTunes link. This will be included in
-any Facebook wall posts sent from Socialize.
+.. code-block:: objective-c
 
-.. raw:: html
+  #import <Socialize/Socialize.h>
 
-  <script src="https://gist.github.com/2409074.js?file=gistfile1.m"></script>
+  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+  {
+        //set the FB App Id, you can find your FB app Id here: https://developers.facebook.com/apps
+        [Socialize storeFacebookAppId:@"YOUR FB APP ID"];
+
+        //your extra code goes here
+
+  }
+
 
 If your app is not already configured for facebook authentication, then you'll
 need to perform two more steps:
@@ -163,9 +200,13 @@ care of handing off the openURL request to the underlying `Facebook iOS SDK
 <http://developers.facebook.com/docs/reference/iossdk/authentication/>`_. This
 completes the authentication flow.
 
-.. raw:: html
+.. code-block:: objective-c
 
-        <script src="https://gist.github.com/1529163.js?file=appDelegate.m"></script>
+  #import <Socialize/Socialize.h>
+
+  - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+      return [Socialize handleOpenURL:url];
+  }
 
 If your app already authenticates with Facebook, you will need to let Socialize
 know about the existing session. You can do this with the
@@ -174,9 +215,27 @@ using FBConnect on your own, you can check the official Facebook tutorial at
 `Facebook iOS SDK
 <http://developers.facebook.com/docs/reference/iossdk/authentication/>`_.
 
-.. raw:: html
+.. code-block:: objective-c
 
-        <script src="https://gist.github.com/2345480.js?file=linkToFacebook.m"></script>
+  - (void)linkToFacebook {
+      [Socialize storeFacebookAppId:@"fbMYFACEBOOKAPPID"];
+
+      // The following is only needed if you have multiple apps sharing the same facebook app id
+      // [Socialize storeFacebookURLSchemeSuffix:@"myfreeapp"];
+
+      [mySocialize linkToFacebookWithAccessToken:existingAccessToken expirationDate:existingExpirationDate]
+  }
+
+  - (void)didAuthenticate:(id<SocializeUser>)user {
+      if ([mySocialize isAuthenticatedWithFacebook]) {
+          NSLog(@"Facebook link successful");
+      }
+  }
+
+  - (void)service:(SocializeService *)service didFail:(NSError *)error {
+      NSLog(@"Error: %@", [error localizedDescription]);
+  }
+
 
 Optional: Configure Your App for Twitter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

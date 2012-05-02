@@ -13,9 +13,19 @@ you can remove them using [Socialize storeUIErrorAlertsDisabled:YES].
 In addition, a notification will be posted for all Socialize UI errors. The notification
 will be posted regardless of whether or not you disable error alerts.
 
-.. raw:: html
+.. code-block:: objective-c
 
-  <script src="https://gist.github.com/2008558.js?file=errorNotifications.m"></script>
+  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+      [Socialize storeUIErrorAlertsDisabled:YES];
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errorNotification:) name:SocializeUIControllerDidFailWithErrorNotification object:nil];
+      
+      return YES;
+  }
+
+  - (void)errorNotification:(NSNotification*)notification {
+      NSError *error = [[notification userInfo] objectForKey:SocializeUIControllerErrorUserInfoKey];
+      NSLog(@"Error: %@", [error localizedDescription]);
+  }
 
 Automatic Third Party Linking
 --------------------------------
@@ -30,6 +40,13 @@ onwards the Socialize SDK will default to requiring users authenticate with a
 This default behavior can be overridden by the developer (you) with the
 following settings:
 
-.. raw:: html
+.. code-block:: objective-c
 
-  <script src="https://gist.github.com/2380420.js?file=linkOptions.m"></script>
+  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  ...
+      // User can opt out of third party linking (default NO)
+      [Socialize storeAnonymousAllowed:YES];
+
+      // User is not shown third party link dialog on Social Actions (default NO)
+      [Socialize storeAuthenticationNotRequired:YES];
+  }

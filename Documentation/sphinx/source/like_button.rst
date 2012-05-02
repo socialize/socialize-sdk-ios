@@ -17,43 +17,88 @@ Displaying the Like Button
 The Like Button is itself a view. To use the Like Button, simply instantiate it and
 add it to your view hierarchy.
 
-.. raw:: html
+.. code-block:: objective-c
 
-        <script src="https://gist.github.com/2432048.js?file=showLikeButton.m"></script>
+  - (void)viewDidLoad
+  {
+      [super viewDidLoad];
+      // Do any additional setup after loading the view from its nib.
+      
+      SocializeLikeButton *likeButton = [[SocializeLikeButton alloc] initWithFrame:CGRectMake(120, 30, 0, 0) entity:self.entity viewController:self];
+
+      // Turn of automatic sizing of the like button (default NO)
+  // likeButton.autoresizeDisabled = YES;
+      
+      // Hide the count display
+  // likeButton.hideCount = YES;
+
+      [self.view addSubview:likeButton];
+  }
 
 Customizing the Like Button
 -------------------------
 All of the images on the like button can be changed. To do this, just set the appropriate property.
 The full list of image properties is:
 
-.. raw:: html
+.. code-block:: objective-c
 
-  <script src="https://gist.github.com/2432048.js?file=likeButtonCustomizableImageProperties.m"></script>
+  @interface SocializeLikeButton : UIView <SocializeServiceDelegate>
+
+  ...
+  @property (nonatomic, retain) UIImage *disabledImage;
+
+  @property (nonatomic, retain) UIImage *inactiveImage;
+  @property (nonatomic, retain) UIImage *inactiveHighlightedImage;
+
+  @property (nonatomic, retain) UIImage *activeImage;
+  @property (nonatomic, retain) UIImage *activeHighlightedImage;
+
+  @property (nonatomic, retain) UIImage *likedIcon;
+  @property (nonatomic, retain) UIImage *unlikedIcon;
+
+  @end
 
 Responding to State Changes
 -------------------------
 You may find you would like to be notified when the like button changes state. You can accomplish
 this by listening for the SocializeLikeButtonDidChangeStateNotification as follows:
 
-.. raw:: html
+.. code-block:: objective-c
 
-  <script src="https://gist.github.com/2432048.js?file=likeButtonStateChangeNotification.m"></script>
+  - (id)init {
+  ...
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(likeButtonChanged:) name:SocializeLikeButtonDidChangeStateNotification object:nil];
+  ...
+  }
+
+  - (void)likeButtonChanged:(NSNotification*)notification {
+      // Update your views here
+  }
+
+
 
 Refreshing the Like Button
 --------------------------
 The Like Button has an explicit refresh call.
 
-.. raw:: html
+.. code-block:: objective-c
 
-  <script src="https://gist.github.com/2432048.js?file=refreshLikeButton.m"></script>
+  - (void)someMethod {
+      [likeButton refresh];
+  }
+
 
 Changing the Like Button's Entity
 --------------------------
 The Like Button's current entity can be changed by setting the entity property.
 
-.. raw:: html
+.. code-block:: objective-c
 
-  <script src="https://gist.github.com/2432048.js?file=changeEntity.m"></script>
+  - (void)someMethod {
+      id<SocializeEntity> newEntity = [SocializeEntity entityWithKey:@"newEntity" name:@"New Entity"];
+      likeButton.entity = newEntity;
+  }
+
 
 .. note:: An explicit refresh is not required when changing the entity
 
