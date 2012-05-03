@@ -10,12 +10,13 @@ Disabling Error Alerts
 If the error alert messages that the default Socialize UI objects emit do not fit your needs,
 you can remove them using [Socialize storeUIErrorAlertsDisabled:YES].
 
-In addition, a notification will be posted for all Socialize UI errors. The notification
-will be posted regardless of whether or not you disable error alerts.
+In addition, a notification will be posted for all Socialize UI errors.
 
-.. raw:: html
+.. literalinclude:: snippets/disable_error_alerts.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
 
-  <script src="https://gist.github.com/2008558.js?file=errorNotifications.m"></script>
+.. note::  The notification will be posted regardless of whether or not you disable error alerts.
 
 Automatic Third Party Linking
 --------------------------------
@@ -30,6 +31,6 @@ onwards the Socialize SDK will default to requiring users authenticate with a
 This default behavior can be overridden by the developer (you) with the
 following settings:
 
-.. raw:: html
-
-  <script src="https://gist.github.com/2380420.js?file=linkOptions.m"></script>
+.. literalinclude:: snippets/third_party_link_options.m
+  :start-after: begin-snippet
+  :end-before: end-snippet

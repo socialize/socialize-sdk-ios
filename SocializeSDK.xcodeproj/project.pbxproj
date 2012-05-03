@@ -1923,6 +1923,20 @@
 		AAF1773B1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */; };
 		AAF1773C1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */; };
 		AAF1773D1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */; };
+		AAF3167C15520CB300E4A164 /* api_client.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF316771551F91300E4A164 /* api_client.m */; };
+		AAF3167D15520CB300E4A164 /* third_party_link_options.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF316741551F6DF00E4A164 /* third_party_link_options.m */; };
+		AAF3167E15520CB300E4A164 /* disable_error_alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF316721551F40800E4A164 /* disable_error_alerts.m */; };
+		AAF3167F15520CB300E4A164 /* show_comments_list.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF316701551F21400E4A164 /* show_comments_list.m */; };
+		AAF3168015520CB300E4A164 /* configure_notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3166E1551DF9300E4A164 /* configure_notifications.m */; };
+		AAF3168115520CB300E4A164 /* configure_twitter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF316681551DCF900E4A164 /* configure_twitter.m */; };
+		AAF3168215520CB300E4A164 /* link_to_twitter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3166A1551DCF900E4A164 /* link_to_twitter.m */; };
+		AAF3168315520CB300E4A164 /* create_like_button.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF316651551D81900E4A164 /* create_like_button.m */; };
+		AAF3168415520CB300E4A164 /* link_to_facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF316571551D2B500E4A164 /* link_to_facebook.m */; };
+		AAF3168515520CB300E4A164 /* configure_facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF316541551D0EF00E4A164 /* configure_facebook.m */; };
+		AAF3168615520CB300E4A164 /* configure_keys.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF316521551CFD400E4A164 /* configure_keys.m */; };
+		AAF3168715520CB300E4A164 /* create_action_bar_with_delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3164D1551CB3700E4A164 /* create_action_bar_with_delegate.m */; };
+		AAF3168815520CB300E4A164 /* create_action_bar_no_auto.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF316471551C59400E4A164 /* create_action_bar_no_auto.m */; };
+		AAF3168915520CB300E4A164 /* create_action_bar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3163E1551B98200E4A164 /* create_action_bar.m */; };
 		AAF3BC7614880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF3BC7514880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAF3BC7714880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF3BC7514880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAF46179150D575C003B55F5 /* SocializeActivityCreatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF46178150D575B003B55F5 /* SocializeActivityCreatorTests.m */; };
@@ -3068,6 +3082,27 @@
 		AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeServiceTests.m; path = "Test Cases/SocializeServiceTests.m"; sourceTree = "<group>"; };
 		AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthInfoTableViewCell.xib; path = Resources/SocializeAuthInfoTableViewCell.xib; sourceTree = "<group>"; };
 		AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthTableViewCell.xib; path = Resources/SocializeAuthTableViewCell.xib; sourceTree = "<group>"; };
+		AAF3163D1551B98200E4A164 /* create_action_bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = create_action_bar.h; path = Documentation/sphinx/source/snippets/create_action_bar.h; sourceTree = SOURCE_ROOT; };
+		AAF3163E1551B98200E4A164 /* create_action_bar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = create_action_bar.m; path = Documentation/sphinx/source/snippets/create_action_bar.m; sourceTree = SOURCE_ROOT; };
+		AAF316461551C59400E4A164 /* create_action_bar_no_auto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = create_action_bar_no_auto.h; path = Documentation/sphinx/source/snippets/create_action_bar_no_auto.h; sourceTree = SOURCE_ROOT; };
+		AAF316471551C59400E4A164 /* create_action_bar_no_auto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = create_action_bar_no_auto.m; path = Documentation/sphinx/source/snippets/create_action_bar_no_auto.m; sourceTree = SOURCE_ROOT; };
+		AAF3164C1551CB3700E4A164 /* create_action_bar_with_delegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = create_action_bar_with_delegate.h; path = Documentation/sphinx/source/snippets/create_action_bar_with_delegate.h; sourceTree = SOURCE_ROOT; };
+		AAF3164D1551CB3700E4A164 /* create_action_bar_with_delegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = create_action_bar_with_delegate.m; path = Documentation/sphinx/source/snippets/create_action_bar_with_delegate.m; sourceTree = SOURCE_ROOT; };
+		AAF316521551CFD400E4A164 /* configure_keys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = configure_keys.m; path = Documentation/sphinx/source/snippets/configure_keys.m; sourceTree = SOURCE_ROOT; };
+		AAF316541551D0EF00E4A164 /* configure_facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = configure_facebook.m; path = Documentation/sphinx/source/snippets/configure_facebook.m; sourceTree = SOURCE_ROOT; };
+		AAF316561551D2B500E4A164 /* link_to_facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = link_to_facebook.h; path = Documentation/sphinx/source/snippets/link_to_facebook.h; sourceTree = SOURCE_ROOT; };
+		AAF316571551D2B500E4A164 /* link_to_facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = link_to_facebook.m; path = Documentation/sphinx/source/snippets/link_to_facebook.m; sourceTree = SOURCE_ROOT; };
+		AAF316641551D81900E4A164 /* create_like_button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = create_like_button.h; path = Documentation/sphinx/source/snippets/create_like_button.h; sourceTree = SOURCE_ROOT; };
+		AAF316651551D81900E4A164 /* create_like_button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = create_like_button.m; path = Documentation/sphinx/source/snippets/create_like_button.m; sourceTree = SOURCE_ROOT; };
+		AAF316681551DCF900E4A164 /* configure_twitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = configure_twitter.m; path = Documentation/sphinx/source/snippets/configure_twitter.m; sourceTree = SOURCE_ROOT; };
+		AAF316691551DCF900E4A164 /* link_to_twitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = link_to_twitter.h; path = Documentation/sphinx/source/snippets/link_to_twitter.h; sourceTree = SOURCE_ROOT; };
+		AAF3166A1551DCF900E4A164 /* link_to_twitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = link_to_twitter.m; path = Documentation/sphinx/source/snippets/link_to_twitter.m; sourceTree = SOURCE_ROOT; };
+		AAF3166E1551DF9300E4A164 /* configure_notifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = configure_notifications.m; path = Documentation/sphinx/source/snippets/configure_notifications.m; sourceTree = SOURCE_ROOT; };
+		AAF316701551F21400E4A164 /* show_comments_list.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = show_comments_list.m; path = Documentation/sphinx/source/snippets/show_comments_list.m; sourceTree = SOURCE_ROOT; };
+		AAF316721551F40800E4A164 /* disable_error_alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = disable_error_alerts.m; path = Documentation/sphinx/source/snippets/disable_error_alerts.m; sourceTree = SOURCE_ROOT; };
+		AAF316741551F6DF00E4A164 /* third_party_link_options.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = third_party_link_options.m; path = Documentation/sphinx/source/snippets/third_party_link_options.m; sourceTree = SOURCE_ROOT; };
+		AAF316761551F91300E4A164 /* api_client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = api_client.h; path = Documentation/sphinx/source/snippets/api_client.h; sourceTree = SOURCE_ROOT; };
+		AAF316771551F91300E4A164 /* api_client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = api_client.m; path = Documentation/sphinx/source/snippets/api_client.m; sourceTree = SOURCE_ROOT; };
 		AAF3BC7514880E9B00D0756C /* SocializePostCommentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePostCommentViewControllerDelegate.h; path = Classes/SocializePostCommentViewControllerDelegate.h; sourceTree = "<group>"; };
 		AAF46177150D575A003B55F5 /* SocializeActivityCreatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityCreatorTests.h; path = "Test Cases/SocializeActivityCreatorTests.h"; sourceTree = "<group>"; };
 		AAF46178150D575B003B55F5 /* SocializeActivityCreatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityCreatorTests.m; path = "Test Cases/SocializeActivityCreatorTests.m"; sourceTree = "<group>"; };
@@ -3512,6 +3547,7 @@
 				9A3095B51384F04100292DC6 /* Configuration */,
 				5CC3DAC41378824800B11B78 /* Supporting Files */,
 				9A4D29831393FF720065C0CB /* Resources */,
+				AAF3163C1551B4C700E4A164 /* Code Snippets */,
 			);
 			path = Socialize;
 			sourceTree = "<group>";
@@ -4817,6 +4853,34 @@
 				AAB7B1E1153CEC6000A69D64 /* SocializeUILikeCreatorTests.m */,
 			);
 			name = Actions;
+			sourceTree = "<group>";
+		};
+		AAF3163C1551B4C700E4A164 /* Code Snippets */ = {
+			isa = PBXGroup;
+			children = (
+				AAF316761551F91300E4A164 /* api_client.h */,
+				AAF316771551F91300E4A164 /* api_client.m */,
+				AAF316741551F6DF00E4A164 /* third_party_link_options.m */,
+				AAF316721551F40800E4A164 /* disable_error_alerts.m */,
+				AAF316701551F21400E4A164 /* show_comments_list.m */,
+				AAF3166E1551DF9300E4A164 /* configure_notifications.m */,
+				AAF316681551DCF900E4A164 /* configure_twitter.m */,
+				AAF316691551DCF900E4A164 /* link_to_twitter.h */,
+				AAF3166A1551DCF900E4A164 /* link_to_twitter.m */,
+				AAF316641551D81900E4A164 /* create_like_button.h */,
+				AAF316651551D81900E4A164 /* create_like_button.m */,
+				AAF316561551D2B500E4A164 /* link_to_facebook.h */,
+				AAF316571551D2B500E4A164 /* link_to_facebook.m */,
+				AAF316541551D0EF00E4A164 /* configure_facebook.m */,
+				AAF316521551CFD400E4A164 /* configure_keys.m */,
+				AAF3164C1551CB3700E4A164 /* create_action_bar_with_delegate.h */,
+				AAF3164D1551CB3700E4A164 /* create_action_bar_with_delegate.m */,
+				AAF316461551C59400E4A164 /* create_action_bar_no_auto.h */,
+				AAF316471551C59400E4A164 /* create_action_bar_no_auto.m */,
+				AAF3163D1551B98200E4A164 /* create_action_bar.h */,
+				AAF3163E1551B98200E4A164 /* create_action_bar.m */,
+			);
+			name = "Code Snippets";
 			sourceTree = "<group>";
 		};
 		AAF60EB415461AB400245867 /* Sample Entity Loader */ = {
@@ -7211,6 +7275,20 @@
 				AABA1FC11522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m in Sources */,
 				AAB7B1E2153CEC6000A69D64 /* SocializeUILikeCreatorTests.m in Sources */,
 				AA813807153F4D09007CAE00 /* SocializeLikeButtonTests.m in Sources */,
+				AAF3167C15520CB300E4A164 /* api_client.m in Sources */,
+				AAF3167D15520CB300E4A164 /* third_party_link_options.m in Sources */,
+				AAF3167E15520CB300E4A164 /* disable_error_alerts.m in Sources */,
+				AAF3167F15520CB300E4A164 /* show_comments_list.m in Sources */,
+				AAF3168015520CB300E4A164 /* configure_notifications.m in Sources */,
+				AAF3168115520CB300E4A164 /* configure_twitter.m in Sources */,
+				AAF3168215520CB300E4A164 /* link_to_twitter.m in Sources */,
+				AAF3168315520CB300E4A164 /* create_like_button.m in Sources */,
+				AAF3168415520CB300E4A164 /* link_to_facebook.m in Sources */,
+				AAF3168515520CB300E4A164 /* configure_facebook.m in Sources */,
+				AAF3168615520CB300E4A164 /* configure_keys.m in Sources */,
+				AAF3168715520CB300E4A164 /* create_action_bar_with_delegate.m in Sources */,
+				AAF3168815520CB300E4A164 /* create_action_bar_no_auto.m in Sources */,
+				AAF3168915520CB300E4A164 /* create_action_bar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

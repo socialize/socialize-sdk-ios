@@ -90,9 +90,9 @@ at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_.  Clic
 
 .. note:: Make sure to import the Socialize header in the code snippet below
 
-.. raw:: html
-
-    <script src="https://gist.github.com/1678336.js?file=appDelegate.m"></script>
+.. literalinclude:: snippets/configure_keys.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
 
 Step 5: Include Socialize in your App!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -115,9 +115,11 @@ Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar co
 
 In your View controller's header file place the following code:
 
-.. raw:: html
+.. literalinclude:: snippets/create_action_bar.h
 
-        <script src="https://gist.github.com/1315113.js"> </script>
+.. literalinclude:: snippets/create_action_bar.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
 
 By default, the Action Bar will automatically place itself at the bottom of its
 superview and adjust to rotation.  If you find that content is being hidden,
@@ -140,12 +142,10 @@ It is strongly recommended that users be able to authenticate with Facebook when
 Let Socialize know your Facebook app id.  You can register or find your
 Facebook app id here: https://developers.facebook.com/apps
 
-You should also store your app's iTunes link. This will be included in
-any Facebook wall posts sent from Socialize.
-
-.. raw:: html
-
-  <script src="https://gist.github.com/2409074.js?file=gistfile1.m"></script>
+.. literalinclude:: snippets/configure_facebook.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
+  :emphasize-lines: 9
 
 If your app is not already configured for facebook authentication, then you'll
 need to perform two more steps:
@@ -163,9 +163,10 @@ care of handing off the openURL request to the underlying `Facebook iOS SDK
 <http://developers.facebook.com/docs/reference/iossdk/authentication/>`_. This
 completes the authentication flow.
 
-.. raw:: html
-
-        <script src="https://gist.github.com/1529163.js?file=appDelegate.m"></script>
+.. literalinclude:: snippets/configure_facebook.m
+  :start-after: begin-openurl-snippet
+  :end-before: end-openurl-snippet
+  :emphasize-lines: 9
 
 If your app already authenticates with Facebook, you will need to let Socialize
 know about the existing session. You can do this with the
@@ -174,9 +175,12 @@ using FBConnect on your own, you can check the official Facebook tutorial at
 `Facebook iOS SDK
 <http://developers.facebook.com/docs/reference/iossdk/authentication/>`_.
 
-.. raw:: html
+.. literalinclude:: snippets/link_to_facebook.h
 
-        <script src="https://gist.github.com/2345480.js?file=linkToFacebook.m"></script>
+.. literalinclude:: snippets/link_to_facebook.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
+
 
 Optional: Configure Your App for Twitter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

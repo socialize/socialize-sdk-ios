@@ -55,18 +55,20 @@ Configuring Twitter in Socialize
 
 Once you have a twitter application, simply tell Socialize about your consumer key and secret:
 
-.. raw:: html
-
-  <script src="https://gist.github.com/2025402.js?file=gistfile1.m"></script>
+.. literalinclude:: snippets/configure_twitter.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
+  :emphasize-lines: 9-10
 
 Linking to Twitter Using Existing Credentials
 ---------------------------------------------
 If you already have a Twitter access token of your own, you can link to Socialize like so:
 
-.. raw:: html
+.. literalinclude:: snippets/link_to_twitter.h
 
-  <script src="https://gist.github.com/2047355.js?file=linkToTwitter.m"></script>
-
+.. literalinclude:: snippets/link_to_twitter.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
 
 Propagating Socialize Actions to Twitter
 -----------------------------------------
