@@ -115,7 +115,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 {
     [super viewDidLoad];
     
-    self.title = @"Edit Profile";
+    self.title = @"Settings";
     
     self.tableView.accessibilityLabel = @"edit profile";
     self.navigationItem.leftBarButtonItem = self.cancelButton;	
