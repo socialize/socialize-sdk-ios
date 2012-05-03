@@ -1,5 +1,5 @@
 /*
- * SocializeActionBarTests.h
+ * SZActionBarTests.h
  * SocializeSDK
  *
  * Created on 10/10/11.
@@ -31,12 +31,12 @@
 #import <UIKit/UIKit.h>
 
 @class Socialize;
-#import "SocializeActionBar.h"
+#import "SZActionBar.h"
 
-@interface SocializeActionBarTests : SocializeTestCase <SocializeActionBarDelegate>
+@interface SZActionBarTests : SocializeTestCase <SZActionBarDelegate>
 
-@property (nonatomic, retain) SocializeActionBar *actionBar;
-@property (nonatomic, retain) SocializeActionBar *origActionBar;
+@property (nonatomic, retain) SZActionBar *actionBar;
+@property (nonatomic, retain) SZActionBar *origActionBar;
 @property (nonatomic, retain) id mockParentController;
 @property (nonatomic, retain) UIView *parentView;
 @property (nonatomic, retain) id mockSocialize;

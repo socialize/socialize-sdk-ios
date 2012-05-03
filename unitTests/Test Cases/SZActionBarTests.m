@@ -1,5 +1,5 @@
 /*
- * SocializeActionBarTests.m
+ * SZActionBarTests.m
  * SocializeSDK
  *
  * Created on 10/10/11.
@@ -26,8 +26,8 @@
  * See Also: http://gabriel.github.com/gh-unit/
  */
 
-#import "SocializeActionBarTests.h"
-#import "SocializeActionBar.h"
+#import "SZActionBarTests.h"
+#import "SZActionBar.h"
 #import <OCMock/OCMock.h>
 #import "Socialize.h"
 #import <MessageUI/MessageUI.h>
@@ -42,22 +42,22 @@
 #define TEST_ENTITY_URL @"http://test.com"
 #define TEST_ENTITY_NAME @"TEST_ENTITY_NAME"
 
-@interface UIView (SocializeActionBarTests)
+@interface UIView (SZActionBarTests)
 - (void)_setViewDelegate:(id)delegate;
 @end
 
-@implementation UIView (SocializeActionBarTests)
+@implementation UIView (SZActionBarTests)
 - (void)_setViewDelegate:(id)delegate {}
 @end
 
-@interface SocializeActionBar()
+@interface SZActionBar()
 @property(nonatomic, retain) id<SocializeLike> entityLike;
 @property(nonatomic, retain) id<SocializeView> entityView;
 
 - (void)presentInternalController:(UIViewController*)viewController;
 @end
 
-@implementation SocializeActionBarTests
+@implementation SZActionBarTests
 @synthesize actionBar = actionBar_;
 @synthesize origActionBar = origActionBar_;
 @synthesize mockParentController = mockParentController_;
@@ -77,7 +77,7 @@
     [[[self.mockEntity stub] andReturn:TEST_ENTITY_URL] key];
     [[[self.mockEntity stub] andReturn:TEST_ENTITY_NAME] name];
 
-    self.origActionBar = [[[SocializeActionBar alloc] initWithEntity:self.mockEntity display:self.mockParentController] autorelease];
+    self.origActionBar = [[[SZActionBar alloc] initWithEntity:self.mockEntity display:self.mockParentController] autorelease];
     self.actionBar = [OCMockObject partialMockForObject:self.origActionBar];
     
     self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
@@ -282,7 +282,7 @@
 //    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
 //}
 //
-//- (void)actionBar:(SocializeActionBar *)actionBar wantsDisplayActionSheet:(UIActionSheet *)actionSheet {
+//- (void)actionBar:(SZActionBar *)actionBar wantsDisplayActionSheet:(UIActionSheet *)actionSheet {
 ////    GHAssertEquals(actionSheet, self.mockShareActionSheet, @"Bad action sheet");
 //    [self notify:kGHUnitWaitStatusSuccess];
 //}

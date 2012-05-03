@@ -164,7 +164,6 @@ Creating a Comment
 To create a comment on an entity, use the **createCommentForEntityWithKey:comment:longitude:latitude:** method:
 
 .. literalinclude:: snippets/api_client.m
-  :language: objective-c
   :start-after: begin-create-comment-snippet
   :end-before: end-create-comment-snippet
 

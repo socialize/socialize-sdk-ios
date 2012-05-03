@@ -1,5 +1,5 @@
 /*
- * TestSocializeActionBar.m
+ * TestSZActionBar.m
  * SocializeSDK
  *
  * Created on 10/5/11.
@@ -25,10 +25,10 @@
  * THE SOFTWARE.
  */
 
-#import "TestSocializeActionBar.h"
+#import "TestSZActionBar.h"
 #import  <Socialize/Socialize.h>
 
-@implementation TestSocializeActionBar
+@implementation TestSZActionBar
 @synthesize entityView;
 @synthesize entityUrl;
 
@@ -68,11 +68,11 @@
 {
     [super viewDidLoad];
     [self.entityView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.entityUrl]]];
-//    bar = [[SocializeActionBar actionBarWithKey:self.entityUrl name:@"TestBar" presentModalInController:self] retain];
+//    bar = [[SZActionBar actionBarWithKey:self.entityUrl name:@"TestBar" presentModalInController:self] retain];
     SocializeEntity *entity = [[[SocializeEntity alloc] init] autorelease];
     entity.key = self.entityUrl;
     entity.name = @"TestBar";
-    bar = [[SocializeActionBar actionBarWithKey:@"qkey" name:@"qname" presentModalInController:self] retain];
+    bar = [[SZActionBar actionBarWithKey:@"qkey" name:@"qname" presentModalInController:self] retain];
     bar.delegate = self;
 //    bar.view.frame = CGRectMake(0, 0, <#CGFloat width#>, <#CGFloat height#>)
     [self.view addSubview:bar.view];
@@ -94,7 +94,7 @@
             UIInterfaceOrientationIsLandscape(interfaceOrientation));
 }
 
-//- (void)actionBar:(SocializeActionBar *)actionBar wantsDisplayActionSheet:(UIActionSheet *)actionSheet {
+//- (void)actionBar:(SZActionBar *)actionBar wantsDisplayActionSheet:(UIActionSheet *)actionSheet {
 ////    NSLog(@"Hi there");
 //}
 

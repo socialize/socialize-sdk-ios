@@ -604,8 +604,8 @@
 		AA639E35144A24C000660E26 /* TestListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DD3144A24BF00660E26 /* TestListController.xib */; };
 		AA639E5A144A24C000660E26 /* TestShowSmallUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E08144A24BF00660E26 /* TestShowSmallUserInfo.m */; };
 		AA639E5B144A24C000660E26 /* TestShowSmallUserInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E09144A24BF00660E26 /* TestShowSmallUserInfo.xib */; };
-		AA639E5C144A24C000660E26 /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E0B144A24BF00660E26 /* TestSocializeActionBar.m */; };
-		AA639E5D144A24C000660E26 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0C144A24BF00660E26 /* TestSocializeActionBar.xib */; };
+		AA639E5C144A24C000660E26 /* TestSZActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E0B144A24BF00660E26 /* TestSZActionBar.m */; };
+		AA639E5D144A24C000660E26 /* TestSZActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0C144A24BF00660E26 /* TestSZActionBar.xib */; };
 		AA639E5E144A24C000660E26 /* TestViewCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E0E144A24BF00660E26 /* TestViewCreationViewController.m */; };
 		AA639E5F144A24C000660E26 /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0F144A24BF00660E26 /* TestViewCreationViewController.xib */; };
 		AA639E60144A24C000660E26 /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E11144A24BF00660E26 /* UIButton+Socialize.m */; };
@@ -630,7 +630,7 @@
 		AA8637D2144CA28300CFA759 /* TestLikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DCF144A24BF00660E26 /* TestLikeViewController.m */; };
 		AA8637D3144CA28300CFA759 /* TestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639DD2144A24BF00660E26 /* TestListController.m */; };
 		AA8637D4144CA28300CFA759 /* TestShowSmallUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E08144A24BF00660E26 /* TestShowSmallUserInfo.m */; };
-		AA8637D5144CA28300CFA759 /* TestSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E0B144A24BF00660E26 /* TestSocializeActionBar.m */; };
+		AA8637D5144CA28300CFA759 /* TestSZActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E0B144A24BF00660E26 /* TestSZActionBar.m */; };
 		AA8637D6144CA28300CFA759 /* TestViewCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E0E144A24BF00660E26 /* TestViewCreationViewController.m */; };
 		AA8637D7144CA28300CFA759 /* UIButton+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E11144A24BF00660E26 /* UIButton+Socialize.m */; };
 		AA8637D8144CA28300CFA759 /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA639E13144A24BF00660E26 /* UILabel-Additions.m */; };
@@ -656,7 +656,7 @@
 		AA8637F4144CA28300CFA759 /* TestLikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DD0144A24BF00660E26 /* TestLikeViewController.xib */; };
 		AA8637F5144CA28300CFA759 /* TestListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639DD3144A24BF00660E26 /* TestListController.xib */; };
 		AA8637F6144CA28300CFA759 /* TestShowSmallUserInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E09144A24BF00660E26 /* TestShowSmallUserInfo.xib */; };
-		AA8637F7144CA28300CFA759 /* TestSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0C144A24BF00660E26 /* TestSocializeActionBar.xib */; };
+		AA8637F7144CA28300CFA759 /* TestSZActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0C144A24BF00660E26 /* TestSZActionBar.xib */; };
 		AA8637F8144CA28300CFA759 /* TestViewCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA639E0F144A24BF00660E26 /* TestViewCreationViewController.xib */; };
 		AA8637F9144CA28300CFA759 /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA639E14144A24BF00660E26 /* urls.plist */; };
 		AA973CA814689C3C00DAE945 /* TestActivityServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CA714689C3C00DAE945 /* TestActivityServices.m */; };
@@ -684,10 +684,10 @@
 		AAD7E302144E54730073308D /* GenericViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E2FC144E54730073308D /* GenericViewController.m */; };
 		AAD7E303144E54730073308D /* GenericViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD7E2FD144E54730073308D /* GenericViewController.xib */; };
 		AAD7E304144E54730073308D /* GenericViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD7E2FD144E54730073308D /* GenericViewController.xib */; };
-		AAD7E305144E54730073308D /* TestTabbedSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E2FF144E54730073308D /* TestTabbedSocializeActionBar.m */; };
-		AAD7E306144E54730073308D /* TestTabbedSocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E2FF144E54730073308D /* TestTabbedSocializeActionBar.m */; };
-		AAD7E307144E54730073308D /* TestTabbedSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD7E300144E54730073308D /* TestTabbedSocializeActionBar.xib */; };
-		AAD7E308144E54730073308D /* TestTabbedSocializeActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD7E300144E54730073308D /* TestTabbedSocializeActionBar.xib */; };
+		AAD7E305144E54730073308D /* TestTabbedSZActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E2FF144E54730073308D /* TestTabbedSZActionBar.m */; };
+		AAD7E306144E54730073308D /* TestTabbedSZActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E2FF144E54730073308D /* TestTabbedSZActionBar.m */; };
+		AAD7E307144E54730073308D /* TestTabbedSZActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD7E300144E54730073308D /* TestTabbedSZActionBar.xib */; };
+		AAD7E308144E54730073308D /* TestTabbedSZActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD7E300144E54730073308D /* TestTabbedSZActionBar.xib */; };
 		AAD7E36A144F59BC0073308D /* TestActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E368144F59BC0073308D /* TestActivityViewController.m */; };
 		AAD7E36B144F59BC0073308D /* TestActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E368144F59BC0073308D /* TestActivityViewController.m */; };
 		AAD7E36C144F59BC0073308D /* TestActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD7E369144F59BC0073308D /* TestActivityViewController.xib */; };
@@ -987,9 +987,9 @@
 		AA639E07144A24BF00660E26 /* TestShowSmallUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShowSmallUserInfo.h; sourceTree = "<group>"; };
 		AA639E08144A24BF00660E26 /* TestShowSmallUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShowSmallUserInfo.m; sourceTree = "<group>"; };
 		AA639E09144A24BF00660E26 /* TestShowSmallUserInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestShowSmallUserInfo.xib; sourceTree = "<group>"; };
-		AA639E0A144A24BF00660E26 /* TestSocializeActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSocializeActionBar.h; sourceTree = "<group>"; };
-		AA639E0B144A24BF00660E26 /* TestSocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSocializeActionBar.m; sourceTree = "<group>"; };
-		AA639E0C144A24BF00660E26 /* TestSocializeActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSocializeActionBar.xib; sourceTree = "<group>"; };
+		AA639E0A144A24BF00660E26 /* TestSZActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSZActionBar.h; sourceTree = "<group>"; };
+		AA639E0B144A24BF00660E26 /* TestSZActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSZActionBar.m; sourceTree = "<group>"; };
+		AA639E0C144A24BF00660E26 /* TestSZActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestSZActionBar.xib; sourceTree = "<group>"; };
 		AA639E0D144A24BF00660E26 /* TestViewCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewCreationViewController.h; sourceTree = "<group>"; };
 		AA639E0E144A24BF00660E26 /* TestViewCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewCreationViewController.m; sourceTree = "<group>"; };
 		AA639E0F144A24BF00660E26 /* TestViewCreationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewCreationViewController.xib; sourceTree = "<group>"; };
@@ -1042,9 +1042,9 @@
 		AAD7E2FB144E54730073308D /* GenericViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericViewController.h; sourceTree = "<group>"; };
 		AAD7E2FC144E54730073308D /* GenericViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericViewController.m; sourceTree = "<group>"; };
 		AAD7E2FD144E54730073308D /* GenericViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericViewController.xib; sourceTree = "<group>"; };
-		AAD7E2FE144E54730073308D /* TestTabbedSocializeActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTabbedSocializeActionBar.h; sourceTree = "<group>"; };
-		AAD7E2FF144E54730073308D /* TestTabbedSocializeActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTabbedSocializeActionBar.m; sourceTree = "<group>"; };
-		AAD7E300144E54730073308D /* TestTabbedSocializeActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTabbedSocializeActionBar.xib; sourceTree = "<group>"; };
+		AAD7E2FE144E54730073308D /* TestTabbedSZActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTabbedSZActionBar.h; sourceTree = "<group>"; };
+		AAD7E2FF144E54730073308D /* TestTabbedSZActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTabbedSZActionBar.m; sourceTree = "<group>"; };
+		AAD7E300144E54730073308D /* TestTabbedSZActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTabbedSZActionBar.xib; sourceTree = "<group>"; };
 		AAD7E367144F59BC0073308D /* TestActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestActivityViewController.h; sourceTree = "<group>"; };
 		AAD7E368144F59BC0073308D /* TestActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestActivityViewController.m; sourceTree = "<group>"; };
 		AAD7E369144F59BC0073308D /* TestActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestActivityViewController.xib; sourceTree = "<group>"; };
@@ -1374,9 +1374,9 @@
 				AAD7E2FB144E54730073308D /* GenericViewController.h */,
 				AAD7E2FC144E54730073308D /* GenericViewController.m */,
 				AAD7E2FD144E54730073308D /* GenericViewController.xib */,
-				AAD7E2FE144E54730073308D /* TestTabbedSocializeActionBar.h */,
-				AAD7E2FF144E54730073308D /* TestTabbedSocializeActionBar.m */,
-				AAD7E300144E54730073308D /* TestTabbedSocializeActionBar.xib */,
+				AAD7E2FE144E54730073308D /* TestTabbedSZActionBar.h */,
+				AAD7E2FF144E54730073308D /* TestTabbedSZActionBar.m */,
+				AAD7E300144E54730073308D /* TestTabbedSZActionBar.xib */,
 				AA639DA0144A24BF00660E26 /* AuthenticateViewController.h */,
 				AA639DA1144A24BF00660E26 /* AuthenticateViewController.m */,
 				AA639DA2144A24BF00660E26 /* AuthenticateViewController.xib */,
@@ -1423,9 +1423,9 @@
 				AA639E07144A24BF00660E26 /* TestShowSmallUserInfo.h */,
 				AA639E08144A24BF00660E26 /* TestShowSmallUserInfo.m */,
 				AA639E09144A24BF00660E26 /* TestShowSmallUserInfo.xib */,
-				AA639E0A144A24BF00660E26 /* TestSocializeActionBar.h */,
-				AA639E0B144A24BF00660E26 /* TestSocializeActionBar.m */,
-				AA639E0C144A24BF00660E26 /* TestSocializeActionBar.xib */,
+				AA639E0A144A24BF00660E26 /* TestSZActionBar.h */,
+				AA639E0B144A24BF00660E26 /* TestSZActionBar.m */,
+				AA639E0C144A24BF00660E26 /* TestSZActionBar.xib */,
 				AA639E0D144A24BF00660E26 /* TestViewCreationViewController.h */,
 				AA639E0E144A24BF00660E26 /* TestViewCreationViewController.m */,
 				AA639E0F144A24BF00660E26 /* TestViewCreationViewController.xib */,
@@ -1684,12 +1684,12 @@
 				AA639E33144A24C000660E26 /* TestLikeViewController.xib in Resources */,
 				AA639E35144A24C000660E26 /* TestListController.xib in Resources */,
 				AA639E5B144A24C000660E26 /* TestShowSmallUserInfo.xib in Resources */,
-				AA639E5D144A24C000660E26 /* TestSocializeActionBar.xib in Resources */,
+				AA639E5D144A24C000660E26 /* TestSZActionBar.xib in Resources */,
 				AA639E5F144A24C000660E26 /* TestViewCreationViewController.xib in Resources */,
 				AA639E62144A24C000660E26 /* urls.plist in Resources */,
 				AA3325C9144CD2980033C7FA /* Smiley.png in Resources */,
 				AAD7E303144E54730073308D /* GenericViewController.xib in Resources */,
-				AAD7E307144E54730073308D /* TestTabbedSocializeActionBar.xib in Resources */,
+				AAD7E307144E54730073308D /* TestTabbedSZActionBar.xib in Resources */,
 				AAD7E36C144F59BC0073308D /* TestActivityViewController.xib in Resources */,
 				AA03AC2015420C9A009AC508 /* TestLikeButton.xib in Resources */,
 				AA136E9715508D0500683AFB /* action-bar-bg.png in Resources */,
@@ -1894,11 +1894,11 @@
 				AA8637F4144CA28300CFA759 /* TestLikeViewController.xib in Resources */,
 				AA8637F5144CA28300CFA759 /* TestListController.xib in Resources */,
 				AA8637F6144CA28300CFA759 /* TestShowSmallUserInfo.xib in Resources */,
-				AA8637F7144CA28300CFA759 /* TestSocializeActionBar.xib in Resources */,
+				AA8637F7144CA28300CFA759 /* TestSZActionBar.xib in Resources */,
 				AA8637F8144CA28300CFA759 /* TestViewCreationViewController.xib in Resources */,
 				AA8637F9144CA28300CFA759 /* urls.plist in Resources */,
 				AAD7E304144E54730073308D /* GenericViewController.xib in Resources */,
-				AAD7E308144E54730073308D /* TestTabbedSocializeActionBar.xib in Resources */,
+				AAD7E308144E54730073308D /* TestTabbedSZActionBar.xib in Resources */,
 				AAD7E36D144F59BC0073308D /* TestActivityViewController.xib in Resources */,
 				AA03AC2115420C9A009AC508 /* TestLikeButton.xib in Resources */,
 				AA136E9815508D0500683AFB /* action-bar-bg.png in Resources */,
@@ -2418,7 +2418,7 @@
 				AA639E32144A24C000660E26 /* TestLikeViewController.m in Sources */,
 				AA639E34144A24C000660E26 /* TestListController.m in Sources */,
 				AA639E5A144A24C000660E26 /* TestShowSmallUserInfo.m in Sources */,
-				AA639E5C144A24C000660E26 /* TestSocializeActionBar.m in Sources */,
+				AA639E5C144A24C000660E26 /* TestSZActionBar.m in Sources */,
 				AA639E5E144A24C000660E26 /* TestViewCreationViewController.m in Sources */,
 				AA639E60144A24C000660E26 /* UIButton+Socialize.m in Sources */,
 				AA639E61144A24C000660E26 /* UILabel-Additions.m in Sources */,
@@ -2426,7 +2426,7 @@
 				AA8636CA144CA0A200CFA759 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
 				AA8636CB144CA0A200CFA759 /* SampleSdkAppKIFTestController.m in Sources */,
 				AAD7E301144E54730073308D /* GenericViewController.m in Sources */,
-				AAD7E305144E54730073308D /* TestTabbedSocializeActionBar.m in Sources */,
+				AAD7E305144E54730073308D /* TestTabbedSZActionBar.m in Sources */,
 				AAD7E36A144F59BC0073308D /* TestActivityViewController.m in Sources */,
 				AAD21912148AFD8300EF5503 /* StringHelper.m in Sources */,
 				AA03AC1E15420C9A009AC508 /* TestLikeButton.m in Sources */,
@@ -2452,7 +2452,7 @@
 				AA8637D2144CA28300CFA759 /* TestLikeViewController.m in Sources */,
 				AA8637D3144CA28300CFA759 /* TestListController.m in Sources */,
 				AA8637D4144CA28300CFA759 /* TestShowSmallUserInfo.m in Sources */,
-				AA8637D5144CA28300CFA759 /* TestSocializeActionBar.m in Sources */,
+				AA8637D5144CA28300CFA759 /* TestSZActionBar.m in Sources */,
 				AA8637D6144CA28300CFA759 /* TestViewCreationViewController.m in Sources */,
 				AA8637D7144CA28300CFA759 /* UIButton+Socialize.m in Sources */,
 				AA8637D8144CA28300CFA759 /* UILabel-Additions.m in Sources */,
@@ -2460,7 +2460,7 @@
 				AA8637DD144CA28300CFA759 /* KIFTestStep+SampleSdkAppAdditions.m in Sources */,
 				AA8637DE144CA28300CFA759 /* SampleSdkAppKIFTestController.m in Sources */,
 				AAD7E302144E54730073308D /* GenericViewController.m in Sources */,
-				AAD7E306144E54730073308D /* TestTabbedSocializeActionBar.m in Sources */,
+				AAD7E306144E54730073308D /* TestTabbedSZActionBar.m in Sources */,
 				AAD7E36B144F59BC0073308D /* TestActivityViewController.m in Sources */,
 				AAD21911148AFD8200EF5503 /* StringHelper.m in Sources */,
 				AA03AC1F15420C9A009AC508 /* TestLikeButton.m in Sources */,

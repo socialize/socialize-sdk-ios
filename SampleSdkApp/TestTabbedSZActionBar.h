@@ -1,5 +1,5 @@
 //
-//  TestTabbedSocializeActionBar.h
+//  TestTabbedSZActionBar.h
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 10/18/11.
@@ -11,12 +11,12 @@
 #import "GenericViewController.h"
 #import <Socialize/Socialize.h>
 
-@interface TestTabbedSocializeActionBar : UIViewController
+@interface TestTabbedSZActionBar : UIViewController
 
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet GenericViewController *generic1;
 @property (nonatomic, retain) IBOutlet GenericViewController *generic2;
-@property (nonatomic, retain) IBOutlet SocializeActionBar *actionBar;
+@property (nonatomic, retain) IBOutlet SZActionBar *actionBar;
 
 @property (nonatomic, copy) NSString *entityUrl;
 

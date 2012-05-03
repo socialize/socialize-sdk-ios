@@ -1,5 +1,5 @@
 /*
- * SocializeActionBar.m
+ * SZActionBar.m
  * SocializeSDK
  *
  * Created on 10/5/11.
@@ -25,7 +25,7 @@
  * THE SOFTWARE.
  */
 
-#import "SocializeActionBar.h"
+#import "SZActionBar.h"
 #import "SocializeActionView.h"
 #import "SocializeAuthenticateService.h"
 #import "SocializeLikeService.h"
@@ -47,7 +47,7 @@
 #import "SocializeUILikeCreator.h"
 #import "SZNavigationController.h"
 
-@interface SocializeActionBar()
+@interface SZActionBar()
 @property (nonatomic, retain) id<SocializeView> entityView;
 @property (nonatomic, retain) id<SocializeLike> entityLike;
 @property (nonatomic, assign) BOOL finishedAskingServerForExistingLike;
@@ -57,7 +57,7 @@
 -(void)reloadEntity;
 @end
 
-@implementation SocializeActionBar
+@implementation SZActionBar
 
 @synthesize entity = _entity;
 @synthesize entityLike = entityLike_;
@@ -92,21 +92,21 @@
 }
 
 
-+(SocializeActionBar*)actionBarWithKey:(NSString*)url presentModalInController:(UIViewController*)controller
++(SZActionBar*)actionBarWithKey:(NSString*)url presentModalInController:(UIViewController*)controller
 {
     return [self actionBarWithKey:url name:nil presentModalInController:controller];
 }
 
-+(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller {
++(SZActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller {
     return [self actionBarWithKey:url presentModalInController:controller];
 }
 
-+(SocializeActionBar*)actionBarWithKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller {
-    return [[[SocializeActionBar alloc] initWithEntityKey:key name:name presentModalInController:controller] autorelease];
++(SZActionBar*)actionBarWithKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller {
+    return [[[SZActionBar alloc] initWithEntityKey:key name:name presentModalInController:controller] autorelease];
 }
 
-+(SocializeActionBar*)actionBarWithEntity:(id<SocializeEntity>)entity display:(id)display {
-    return [[[SocializeActionBar alloc] initWithEntity:entity display:display] autorelease];
++(SZActionBar*)actionBarWithEntity:(id<SocializeEntity>)entity display:(id)display {
+    return [[[SZActionBar alloc] initWithEntity:entity display:display] autorelease];
 }
 
 -(id)initWithEntityKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller {
