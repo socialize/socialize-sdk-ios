@@ -82,10 +82,9 @@
         [self.view addSubview:hiddenButton];
     }
     
-//    SZCommentsListViewController* commentsController = [[[SZCommentsListViewController alloc] initWithNibName:@"SZCommentsListViewController" bundle:nil entryUrlString:_textField.text] autorelease];
-    UIViewController *commentsController = [SZCommentsListViewController socializeCommentsTableViewControllerForEntity:_textField.text];
-    [self presentModalViewController:commentsController animated:YES];
-//    [self.navigationController pushViewController:commentsController animated:YES];
+    SZCommentsListViewController *commentsController = [SZCommentsListViewController commentsListViewControllerWithEntityKey:_textField.text];
+    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:commentsController] autorelease];
+    [self presentModalViewController:nav animated:YES];
 }
 
 #pragma mark - Table view data source

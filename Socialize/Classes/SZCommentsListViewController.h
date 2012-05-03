@@ -69,7 +69,8 @@
 @property (retain, nonatomic) SocializeBubbleView *bubbleView;
 @property (retain, nonatomic) SocializeNotificationToggleBubbleContentView *bubbleContentView;
 
-+ (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName;
++ (SZCommentsListViewController*)commentsListViewControllerWithEntityKey:(NSString*)entityKey;
++ (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName __attribute__((deprecated("Please use commentsListViewControllerWithEntityKey: and the SZNavigationController, or the utility functions in SZCommentUtils")));
 
 -(IBAction)subscribedButtonPressed:(id)sender;
 
@@ -77,6 +78,8 @@
 
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entryUrlString:(NSString*) entryUrlString;
+
+- (id)initWithEntityKey:(NSString*)entityKey;
 
 @end
 

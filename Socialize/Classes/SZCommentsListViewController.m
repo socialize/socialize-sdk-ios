@@ -28,6 +28,7 @@
 #import "UIView+Layout.h"
 #import "SocializeNotificationToggleBubbleContentView.h"
 #import "CommentsTableFooterView.h"
+#import "SZNavigationController.h"
 
 @interface SZCommentsListViewController()
 -(NSString*)getDateString:(NSDate*)date;
@@ -58,27 +59,34 @@
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName {
     SZCommentsListViewController* commentsController = [[[SZCommentsListViewController alloc] initWithNibName:@"SZCommentsListViewController" bundle:nil entryUrlString:entityName] autorelease];
-    UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
-    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:commentsController] autorelease];
-    [nav.navigationBar setBackgroundImage:navImage];
+    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:commentsController] autorelease];
     
     return nav;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entryUrlString:(NSString*) entryUrlString {
-    
-	if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
++ (SZCommentsListViewController*)commentsListViewControllerWithEntityKey:(NSString*)entityKey {
+    SZCommentsListViewController* commentsController = [[[SZCommentsListViewController alloc] initWithEntityKey:entityKey] autorelease];
+    return commentsController;
+}
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entryUrlString:(NSString*) entryUrlString {
+    return [self initWithEntityKey:entryUrlString];
+}
+
+- (id)initWithEntityKey:(NSString*)entityKey {
+    
+	if (self = [super init]) {
+        
 		_errorLoading = NO;
 		_isLoading = YES;
-
-
+        
+        
 		_commentDateFormatter = [[NSDateFormatter alloc] init];
 		[_commentDateFormatter setDateFormat:@"hh:mm:ss zzz"];
         
         /*Socialize inits*/
         _entity = [[self.socialize createObjectForProtocol: @protocol(SocializeEntity)]retain];
-        _entity.key = entryUrlString;
+        _entity.key = entityKey;
         
         /* cache for the images*/
         _cache = [[ImagesCache alloc] init];

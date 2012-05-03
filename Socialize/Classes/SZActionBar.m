@@ -174,10 +174,11 @@
 
 - (UIViewController*)commentsNavController {
     if (commentsNavController_ == nil) {
-        commentsNavController_ = [[SZCommentsListViewController socializeCommentsTableViewControllerForEntity:self.entity.key] retain];
-        SZCommentsListViewController *comments = (SZCommentsListViewController*)[(UINavigationController*)commentsNavController_ topViewController];
+        SZCommentsListViewController *comments = [SZCommentsListViewController commentsListViewControllerWithEntityKey:self.entity.key];
         comments.delegate = self;
+        commentsNavController_ = [[SZNavigationController alloc] initWithRootViewController:comments];
     }
+    
     return commentsNavController_;
 }
 
