@@ -41,7 +41,7 @@ typedef enum {
 @class SocializeProfileEditTableViewCell;
 @class SocializeProfileEditValueViewController;
 
-@interface SocializeProfileEditViewController : SocializeBaseViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SocializeProfileEditViewController : SocializeBaseViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate>
 @property (nonatomic, retain) id<SocializeFullUser> fullUser;
 @property (nonatomic, retain) UIImage *profileImage;
 @property (nonatomic, retain) NSArray *cellBackgroundColors;
@@ -58,6 +58,7 @@ typedef enum {
 @property (nonatomic, assign) BOOL editOccured;
 @property (nonatomic, retain) UIBarButtonItem *saveButton;
 @property (nonatomic, retain) NSMutableArray *facebookCells;
+@property (nonatomic, retain) UIPopoverController *popover;
 
 + (UINavigationController*)profileEditViewControllerInNavigationController;
 + (SocializeProfileEditViewController*)profileEditViewController;

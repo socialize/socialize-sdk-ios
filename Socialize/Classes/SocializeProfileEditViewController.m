@@ -71,6 +71,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 @synthesize facebookCells = facebookCells_;
 @synthesize showFacebookLogout = showFacebookLogout_;
 @synthesize showTwitterLogout = showTwitterLogout_;
+@synthesize popover = popover_;
 
 + (UINavigationController*)profileEditViewControllerInNavigationController {
     SocializeProfileEditViewController *profileEditViewController = [self profileEditViewController];
@@ -97,7 +98,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     self.userDefaults = nil;
     self.saveButton = nil;
     self.facebookCells = nil;
-
+    self.popover = nil;
+    
     [super dealloc];
 }
 
@@ -543,8 +545,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	DebugLog(@"getting callback from actions sheet. index is %i and cancel button index is:%i", buttonIndex, actionSheet.cancelButtonIndex);
+    [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+
 	if( buttonIndex == actionSheet.cancelButtonIndex ) {
-        [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 		return;
 	}	
 	if (buttonIndex == 1) {
@@ -553,7 +556,14 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 		self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 	}
 	
-	[self presentModalViewController:self.imagePicker animated:YES];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        self.popover = [[[UIPopoverController alloc] initWithContentViewController:self.imagePicker] autorelease];
+        self.popover.delegate = self;
+        CGRect rect = self.profileImageCell.frame;
+        [self.popover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    } else {
+        [self presentModalViewController:self.imagePicker animated:YES];
+    }
 }
 
 - (void)configureForAfterEdit {
@@ -564,7 +574,11 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
-	[picker dismissModalViewControllerAnimated:YES];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        [self.popover dismissPopoverAnimated:YES];
+    } else {
+        [picker dismissModalViewControllerAnimated:YES];
+    }
 	
     [self configureForAfterEdit];
     [self setProfileImageFromImage:image];
