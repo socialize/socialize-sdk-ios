@@ -15,6 +15,8 @@
 
 @property (nonatomic, readonly) BOOL liked;
 
+// begin-image-properties
+
 @property (nonatomic, retain) UIImage *disabledImage;
 
 @property (nonatomic, retain) UIImage *inactiveImage;
@@ -25,6 +27,8 @@
 
 @property (nonatomic, retain) UIImage *likedIcon;
 @property (nonatomic, retain) UIImage *unlikedIcon;
+
+// end-image-properties
 
 @property (nonatomic, retain) id<SocializeUIDisplay> display;
 

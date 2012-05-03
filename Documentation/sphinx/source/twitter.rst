@@ -55,39 +55,20 @@ Configuring Twitter in Socialize
 
 Once you have a twitter application, simply tell Socialize about your consumer key and secret:
 
-.. code-block:: objective-c
-
-  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-  {
-      [Socialize storeTwitterConsumerKey:@"YOUR_TWITTER_CONSUMER_KEY"];
-      [Socialize storeTwitterConsumerSecret:@"YOUR_TWITTER_CONSUMER_SECRET"];
-  }
+.. literalinclude:: snippets/configure_twitter.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
+  :emphasize-lines: 9-10
 
 Linking to Twitter Using Existing Credentials
 ---------------------------------------------
 If you already have a Twitter access token of your own, you can link to Socialize like so:
 
-.. code-block:: objective-c
+.. literalinclude:: snippets/link_to_twitter.h
 
-  - (void)linkToTwitter {
-      [Socialize storeTwitterConsumerKey:@"MYAPPCONSUMERKEY"];
-      [Socialize storeTwitterConsumerSecret:@"MYAPPCONSUMERSECRET"];
-
-      [mySocialize linkToTwitterWithAccessToken:@"PREAUTHEDACCESSTOKEN" accessTokenSecret:@"PREAUTHEDACCESSTOKENSECRET"];
-  }
-
-  - (void)didAuthenticate:(id<SocializeUser>)user {
-      if ([mySocialize isAuthenticatedWithTwitter]) {
-          NSLog(@"Let's do the Twitter, already: %@", [user thirdPartyAuth]);
-      } else {
-          NSLog(@"Well, at least I tried");
-      }
-  }
-
-  - (void)service:(SocializeService *)service didFail:(NSError *)error {
-      NSLog(@"All is not well: %@", [error localizedDescription]);
-  }
-
+.. literalinclude:: snippets/link_to_twitter.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
 
 Propagating Socialize Actions to Twitter
 -----------------------------------------

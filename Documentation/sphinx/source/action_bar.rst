@@ -15,27 +15,12 @@ Displaying the Action Bar
 
 Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller:
 
-.. code-block:: objective-c
+.. literalinclude:: snippets/create_action_bar.h
 
-  // Header
+.. literalinclude:: snippets/create_action_bar.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
 
-  #import <Socialize/Socialize.h>
-
-  @interface Controller : UIViewController
-  @property (nonatomic, retain) SocializeActionBar *actionBar;
-  @end
-
-.. code-block:: objective-c
-
-  // Implementation
-
-  - (void)viewDidLoad
-  {
-      [super viewDidLoad];
-
-      self.actionBar = [SocializeActionBar actionBarWithKey:@"http://www.example.com/object/1234" presentModalInController:self];
-      [self.view addSubview:self.actionBar.view];
-  }
 
 By default, the Action Bar will automatically place itself at the bottom of its
 superview and adjust to rotation.  If you find that content is being hidden,
@@ -53,17 +38,9 @@ would like to disable the auto layout feature completely, you can do so. The
 following example disables autolayout and manually places the Action Bar at
 (0,400).
 
-.. code-block:: objective-c
-
-  - (void)viewDidLoad
-  {
-      [super viewDidLoad];
-
-      self.actionBar = [SocializeActionBar actionBarWithKey:@"http://www.example.com/object/1234" presentModalInController:self];
-      self.actionBar.noAutoLayout = YES;
-      self.actionBar.view.frame = CGRectMake(0, 400, 320, SOCIALIZE_ACTION_PANE_HEIGHT)
-      [self.view addSubview:self.actionBar.view];
-  }
+.. literalinclude:: snippets/create_action_bar_no_auto.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
 
 If you need more detail on installing the action bar please see our `Adding the Socialize Action Bar Video`_.
 
@@ -81,33 +58,15 @@ Showing Action Sheets
 If you wish, you can customize the way the Action Bar shows action sheets. To do this,
 just implement actionBar:wantsDisplayActionSheet:, as below
 
-.. code-block:: objective-c
+.. literalinclude:: snippets/create_action_bar_with_delegate.h
+  :language: objective-c
+  :emphasize-lines: 7
 
-  // Header
-
-  //import the socialize header
-  #import <Socialize/Socialize.h>
-
-  @interface Controller : UIViewController <SocializeActionBarDelegate>
-  @property (nonatomic, retain) SocializeActionBar *actionBar;
-  @end
-
-.. code-block:: objective-c
-
-  // Implementation
-
-  - (void)viewDidLoad
-  {
-      [super viewDidLoad];
-
-      self.actionBar = [SocializeActionBar actionBarWithKey:@"http://www.example.com/object/1234" presentModalInController:self];
-      self.actionBar.delegate = self
-      [self.view addSubview:self.actionBar.view];
-  }
-
-  - (void)actionBar:(SocializeActionBar*)actionBar wantsDisplayActionSheet:(UIActionSheet*)actionSheet {
-      [actionSheet showFromRect:CGRectMake(50, 50, 50, 50) inView:self.view animated:YES];
-  }
+.. literalinclude:: snippets/create_action_bar_with_delegate.m
+  :language: objective-c
+  :start-after: begin-snippet
+  :end-before: end-snippet
+  :emphasize-lines: 11, 15-18
 
 More Info
 -----------------------

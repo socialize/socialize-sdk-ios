@@ -18,12 +18,6 @@ Displaying the Comment View
 
 When you want to launch the comment view, simply instantiate and present the commentViewController :
 
-.. code-block:: objective-c
-
-  - (IBAction)commentsButtonPressed {
-      //create an entity that is unique with your application.
-      NSString *entityUrlString = @"http://www.example.com/object/1234";
-      
-      UIViewController *commentsController = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:entityUrlString];
-      [self presentModalViewController:commentsController animated:YES];
-  }
+.. literalinclude:: snippets/show_comments_list.m
+  :start-after: begin-snippet
+  :end-before: end-snippet

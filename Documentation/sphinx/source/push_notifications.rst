@@ -99,43 +99,26 @@ Register for Notifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Add the following line to your application delegate:
 
-.. code-block:: objective-c
-
-  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-  {
-    
-       [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
-       //application specific code
-
-  }
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
 
 Register the Device Token
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To register your app's device token add the following lines to your application's delegate
 
-.. code-block:: objective-c
-
-  - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken
-  {
-  #if !DEBUG
-      [Socialize registerDeviceToken:deviceToken];
-  #endif
-  }
-
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-register-snippet
+  :end-before: end-register-snippet
 
 Handle Notifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Add the lines below to allow Socialize to handle the notification.
 
-.. code-block:: objective-c
-
-  - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-      if ([Socialize handleNotification:userInfo]) {
-          return;
-      }
-      // Nonsocialize notification handling goes here
-  }
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-handle-snippet
+  :end-before: end-handle-snippet
 
 .. note::
 
@@ -151,17 +134,9 @@ application's objects.
 
 Copy the lines below to add an entity loader 
 
-.. code-block:: objective-c
-
-  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-  {
-      // ...
-
-      [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity>entity) {
-          SampleEntityLoader *entityLoader = [[[SampleEntityLoader alloc] initWithEntity:entity] autorelease];
-          [navigationController pushViewController:entityLoader animated:YES];
-      }];
-  }
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-entity-loader-snippet
+  :end-before: end-entity-loader-snippet
 
 .. image:: images/entity_loader.png
 
@@ -170,18 +145,9 @@ available. Socialize provides the ability to selectively disable loading for a
 given entity. Should you find you need this, you can do this by defining a "Can
 Load Entity" block, as follows
 
-.. code-block:: objective-c
-
-  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-  {
-      // ...
-
-      [Socialize setCanLoadEntityBlock:^BOOL(id<SocializeEntity> entity) {
-          return ![entity.name isEqualToString:@"DeletedEntity"];
-      }];
-
-
-  }
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-can-load-entity-snippet
+  :end-before: end-can-load-entity-snippet
 
 Testing SmartAlerts™ 
 -----------------------------------------------------------------------------------
@@ -237,12 +203,9 @@ Logging Errors from Notifications Registrations
 You can implement the notifications delegate method which callbacks if any error occurs during registration.  This should log
 the value of the error to your console.
 
-.. code-block:: objective-c
-
-  - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
-  {
-      NSLog(@"Error Register Notifications: %@", [error localizedDescription]);
-  } 
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-register-fail-snippet
+  :end-before: end-register-fail-snippet
 
 I Keep Getting the Error "no valid 'aps-environment' entitlement string found for application"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -275,11 +238,9 @@ registerDeviceToken:]
 
 As a precaution, you might wrap the registration call as follows:
 
-.. code-block:: objective-c
-
-  #if !DEBUG && !TARGET_IPHONE_SIMULATOR
-  [Socialize registerDeviceToken:deviceToken];
-  #endif
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-register-snippet
+  :end-before: end-register-snippet
 
 This is only a problem if you already have separate push configurations and certificates
 for development and distribution. Socialize itself does not support development push.
