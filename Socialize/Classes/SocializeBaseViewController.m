@@ -512,6 +512,8 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
     if (baseViewController == self.profileEditViewController) {
         [self hideEditController];    
+    } else if ([baseViewController isKindOfClass:[SocializeAuthViewController class]]) {
+        [self dismissModalViewControllerAnimated:YES];
     }
 }
 
