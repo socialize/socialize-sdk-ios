@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Socialize Comments &mdash; Socialize iOS SDK 1.7.1 documentation</title>
+    <title>Socialize Comments &mdash; Socialize iOS SDK 1.7.2 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.1',
+        VERSION:     '1.7.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.7.2 documentation" href="index.html" />
     <link rel="next" title="Advanced UI Configuration" href="ui_advanced.html" />
     <link rel="prev" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -83,7 +83,24 @@ of comments associated with an entity (URL).</p>
 <div class="section" id="displaying-the-comment-view">
 <h3>Displaying the Comment View<a class="headerlink" href="#displaying-the-comment-view" title="Permalink to this headline">¶</a></h3>
 <p>When you want to launch the comment view, simply instantiate and present the commentViewController :</p>
-<script src="https://gist.github.com/1293791.js"> </script></div>
+<div class="highlight-python"><pre>
+#import &lt;Socialize/Socialize.h&gt;
+
+@implementation CreateCommentsList
+
+- (IBAction)commentsButtonPressed {
+    //create an entity that is unique with your application.
+    NSString *entityURL = @"http://www.example.com/object/1234";
+    
+    UIViewController *commentsController = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:entityURL];
+    [self presentModalViewController:commentsController animated:YES];
+}
+
+@end
+
+</pre>
+</div>
+</div>
 </div>
 </div>
 
@@ -136,7 +153,7 @@ of comments associated with an entity (URL).</p>
         <li class="right" >
           <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>SDK User Guide &mdash; Socialize iOS SDK 1.7.1 documentation</title>
+    <title>SDK User Guide &mdash; Socialize iOS SDK 1.7.2 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.1',
+        VERSION:     '1.7.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.7.2 documentation" href="index.html" />
     <link rel="next" title="SDK Pro Tips" href="sdk_pro_tips.html" />
     <link rel="prev" title="Advanced UI Configuration" href="ui_advanced.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="ui_advanced.html" title="Advanced UI Configuration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -87,7 +87,73 @@ passed into each call to the Socialize SDK.</p>
 <div class="section" id="initializing-socialize">
 <h2>Initializing Socialize<a class="headerlink" href="#initializing-socialize" title="Permalink to this headline">¶</a></h2>
 <p>To start using the SDK. You need to create and initialize Socialize class and implement the SocializeServiceDelegate.</p>
-<script src="https://gist.github.com/1204490.js?file=Init.m"></script></div>
+<div class="highlight-python"><pre>#import &lt;Socialize/Socialize.h&gt;
+
+@interface SampleAPIClient : NSObject &lt;SocializeServiceDelegate&gt;
+@property (nonatomic, retain) Socialize *socialize;
+@property (nonatomic, retain) id&lt;SocializeLike&gt; like;
+@end
+</pre>
+</div>
+<div class="highlight-python"><pre>
+@implementation SampleAPIClient
+@synthesize socialize = socialize_;
+@synthesize like = like_;
+
+- (void)dealloc {
+    self.socialize = nil;
+    
+    [super dealloc];
+}
+
+- (Socialize*)socialize {
+    if (socialize_ == nil) {
+        socialize_ = [[Socialize alloc] initWithDelegate:self];
+    }
+    return socialize_;
+}
+
+// We need the implement the delegate methods, none of which are required, they are all optional
+
+#pragma mark SocializeServiceDelegate
+
+// this method is optional
+- (void)service:(SocializeService*)service didDelete:(id&lt;SocializeObject&gt;)object{
+    
+}
+
+// this method is optional
+- (void)service:(SocializeService*)service didUpdate:(id&lt;SocializeObject&gt;)object{
+    
+}
+
+// this method is optional
+- (void)service:(SocializeService*)service didFail:(NSError*)error{
+    
+}
+
+// this method is optional
+- (void)service:(SocializeService*)service didCreate:(id&lt;SocializeObject&gt;)object{
+    
+}
+
+// this method is optional
+- (void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
+    
+}
+
+// this method is optional
+- (void)didAuthenticate{
+    
+}
+
+#pragma mark -
+
+@end
+
+</pre>
+</div>
+</div>
 <div class="section" id="authentication">
 <h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
 <p>Every call against the Socialize SDK MUST be authenticated.</p>
@@ -98,17 +164,37 @@ application so subsequent calls are much faster.</p>
 <p>We recommend authenticating with 3rd parties (e.g. Facebook) as this provides a better user experience
 and ensures that user profiles and IDs are retained across app sessions and installs.</p>
 <p>There are 2 variants to achieve the same result. If you already have authenticated with facebook then you can pass the facebook access token to SocializeSDK or you can have the SocializeSDK perform facebook authentication for you.</p>
-<script src="https://gist.github.com/1370829.js?file=FacebookAuthentication.m"></script></div>
+<p>See LinkToFacebookExample in <a class="reference external" href="getting_started.html#optional-configure-your-app-for-facebook">Getting Started</a>.</p>
+</div>
 <div class="section" id="authenticating-with-twitter">
 <h3>Authenticating with Twitter<a class="headerlink" href="#authenticating-with-twitter" title="Permalink to this headline">¶</a></h3>
-<p><em>Coming Soon!</em></p>
+<p>See LinkToTwitter example in the <a class="reference external" href="twitter.html#linking-to-twitter-using-existing-credentials">Twitter Section</a>.</p>
 </div>
 <div class="section" id="anonymous-authentication">
 <h3>Anonymous Authentication<a class="headerlink" href="#anonymous-authentication" title="Permalink to this headline">¶</a></h3>
 <p>We recommend authenticating with 3rd parties (e.g. Facebook) as this provides a better user experience
 and ensures that user profiles and IDs are retained across app sessions and installs, however if you just
 want anonymous authentication, simply call the <strong>authenticate</strong> method:</p>
-<script src="https://gist.github.com/1229170.js?file=Authentication.m"></script></div>
+<div class="highlight-python"><pre>
+// invoke the call
+- (void)authenticateAnonymouslyWithSocialize {
+    [self.socialize authenticateAnonymously];
+}
+
+#pragma mark SocializeServiceDelegate implementation
+// implement the delegate
+- (void)didAuthenticate:(id&lt;SocializeUser&gt;)user {
+    NSLog(@"Authenticated");
+}
+
+// if the authentication fails the following method is called
+- (void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"%@", error);
+}
+
+</pre>
+</div>
+</div>
 </div>
 <div class="section" id="entities">
 <h2>Entities<a class="headerlink" href="#entities" title="Permalink to this headline">¶</a></h2>
@@ -116,8 +202,7 @@ want anonymous authentication, simply call the <strong>authenticate</strong> met
 <p>Throughout the documentation and the code snippets we refer to an &#8220;entity&#8221;.  This is simply a
 generic term for something that can be view, shared, liked or commented on.  Generally this will
 correspond to a single item of content in your app.</p>
-<p>Entity keys in Socialize are free form.  It is recommended that a <em>real</em> URL be
-used (i.e. one that corresponds to an active web page)</p>
+<p>Entity keys in Socialize are free form.</p>
 <div class="section" id="creating-an-entity">
 <h3>Creating an Entity<a class="headerlink" href="#creating-an-entity" title="Permalink to this headline">¶</a></h3>
 <p>An entity consists of a <strong>key</strong> and a <strong>name</strong>.  The name should be descriptive and help you identify the
@@ -127,19 +212,82 @@ If you simply post a comment,view,share or like against an entity key that does
 not currently exist, it will be automatically created for you, but will not
 have a <em>name</em> associated with it.</p>
 <p>To create an entity, simply invoke the <strong>createEntity</strong> message:</p>
-<script src="https://gist.github.com/1473477.js?file=CreateEntity.m"></script></div>
+<div class="highlight-python"><pre>
+- (void)createEntityOnSocializeServer {
+    SocializeEntity *entity = [SocializeEntity entityWithKey:@"key" name:@"An Entity"];
+    [self.socialize createEntity:entity];
+}
+
+#pragma mark SocializeServiceDelegate
+
+// if the operation fails the following method is called
+- (void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"Entity create failed with error: %@", error);
+}
+
+//if the delete is successful
+- (void)service:(SocializeService*)service didCreate:(id&lt;SocializeObject&gt;)object{
+    NSLog(@"Entity created successfully");
+}
+</pre>
+</div>
+</div>
 <div class="section" id="entity-meta-data-and-other-advanced-functionality">
 <h3>Entity Meta Data, and Other Advanced Functionality<a class="headerlink" href="#entity-meta-data-and-other-advanced-functionality" title="Permalink to this headline">¶</a></h3>
 <p>Should you find that you need to store custom metadata on an entity, Socialize
 will provide for this. Full customization of entity objects can be realized
 through use of the createEntity: variant for creating your entity.</p>
-<script src="https://gist.github.com/1719630.js?file=createEntity.m"></script></div>
+<div class="highlight-python"><pre>
+- (void)createEntityOnSocializeServer {
+    SocializeEntity *entity = [SocializeEntity entityWithKey:@"another_key" name:@"An Entity With Some Metadata"];
+    entity.meta = @"Optional metadata to be stored on the Socialize servers";
+    [self.socialize createEntity:entity];
+}
+
+- (void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"%@", error);
+}
+
+//if the delete is successful
+- (void)service:(SocializeService*)service didCreate:(id&lt;SocializeObject&gt;)object{
+    NSLog(@"entity created");
+}
+
+</pre>
+</div>
+</div>
 <div class="section" id="retrieving-entity-data">
 <h3>Retrieving Entity data<a class="headerlink" href="#retrieving-entity-data" title="Permalink to this headline">¶</a></h3>
 <p>An existing entity can be retrieved via the <strong>getEntity</strong> method.  Entities obtained in this way will also
 provide aggregate data on comments, likes, shares and views.  Refer to the <a class="reference external" href="http://www.getsocialize.com/docs/v1/#entity-object">Entity object structure in the API Docs</a>.
 for more detail on these aggregate values.</p>
-<script src="https://gist.github.com/1204768.js?file=GetEntity.m"></script></div>
+<div class="highlight-python"><pre>
+- (void)getEntityFromSocialize {
+    [self.socialize getEntityByKey:@"www.techcrunch.com"];
+}
+
+#pragma mark SocializeServiceDelegate
+
+//if the entity does not exist
+- (void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"Service failure: %@", [error localizedDescription]);
+}
+
+// if the entity is found, we can access it at the first index of the array.
+// The size will always be one when we are trying to get information about an entity.
+- (void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray {
+    if ([dataArray count]){
+        id&lt;SocializeObject&gt; object = [dataArray objectAtIndex:0];
+        if ([object isKindOfClass:[SocializeEntity class]]) {
+            // do entity saving here.
+            // All the entity related information can be fetched here ie stats or name.
+        }
+    }
+}
+
+</pre>
+</div>
+</div>
 </div>
 <div class="section" id="view">
 <h2>View<a class="headerlink" href="#view" title="Permalink to this headline">¶</a></h2>
@@ -149,7 +297,10 @@ most interest.</p>
 <div class="section" id="creating-a-view">
 <h3>Creating a &#8216;View&#8217;<a class="headerlink" href="#creating-a-view" title="Permalink to this headline">¶</a></h3>
 <p>To create a view, simply call the <strong>viewEntity</strong> method:</p>
-<script src="https://gist.github.com/1204490.js?file=PostAView.m"></script></div>
+<div class="highlight-python"><div class="highlight"><pre>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="like">
 <h2>Like<a class="headerlink" href="#like" title="Permalink to this headline">¶</a></h2>
@@ -157,36 +308,166 @@ most interest.</p>
 in your app are the most popular, and what is of most interest to your users.</p>
 <div class="section" id="creating-a-like">
 <h3>Creating a &#8216;Like&#8217;<a class="headerlink" href="#creating-a-like" title="Permalink to this headline">¶</a></h3>
-<p>To create a view, simply call the <strong>like</strong> method:</p>
-<script src="https://gist.github.com/1204490.js?file=PostLike.m"></script></div>
+<p>To create a like, simply call the <strong>like</strong> method:</p>
+<div class="highlight-python"><pre>
+- (void)likeEntity {
+    // Allocate memory for the instance
+    Socialize* socialize = [[Socialize alloc] initWithDelegate:self];
+    
+    // invoke the call (the latitude and the longitude can be nil)
+    [socialize likeEntityWithKey:@"www.url.com" longitude:[NSNumber numberWithFloat:-37.256] latitude:[NSNumber numberWithFloat:122.452314]
+     ];
+}
+    
+#pragma mark SocializeServiceDelegate
+    
+//if the like fails this is called
+- (void)service:(SocializeService*)service didFail:(NSError*)error{
+    
+}
+
+// if the like is created this is called
+- (void)service:(SocializeService*)service didCreate:(id&lt;SocializeObject&gt;)object{
+    if ([object isKindOfClass:[SocializeLike class]]) {
+        id&lt;SocializeLike&gt; like = (id&lt;SocializeLike&gt;)object;
+        self.like = like;
+        NSLog(@"Created like for entity %@", like.entity.name);
+        // do your magic here
+    }
+}
+    
+
+</pre>
+</div>
+</div>
 <div class="section" id="removing-a-like">
 <h3>Removing a &#8216;Like&#8217;<a class="headerlink" href="#removing-a-like" title="Permalink to this headline">¶</a></h3>
 <p>Removing a like (i.e. an &#8216;unlike&#8217;) is done via the <strong>unlike</strong> method.  In order to remove a like, you will
 need the ID of the like.  This is returned from the initial call to <strong>like</strong></p>
-<script src="https://gist.github.com/1204490.js?file=Unlike.m"></script></div>
+<div class="highlight-python"><pre>
+- (void)unlikeEntity {
+    // like is the id&lt;SocializeLike&gt; object which was returned as a result of liking the entity.
+    
+    [self.socialize unlikeEntity:self.like];
+}
+
+// if the operation fails the following method is called
+- (void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"%@", error);
+}
+
+//if the delete is successful
+- (void)service:(SocializeService*)service didDelete:(id&lt;SocializeObject&gt;)object{
+    NSLog(@"entity unlike succeeded");
+}
+
+</pre>
+</div>
+</div>
 </div>
 <div class="section" id="get-likes-for-a-user">
 <h2>Get likes for a user<a class="headerlink" href="#get-likes-for-a-user" title="Permalink to this headline">¶</a></h2>
 <p>You can get all likes for a specific user using [Socialize
 getLikesForUser:entity:first:last:]. If entity is non-nil, returned likes will
 be limited to just that entity.</p>
-<script src="https://gist.github.com/2408589.js?file=getLikesForUser.m"></script></div>
+<div class="highlight-python"><pre>
+- (void)getSomeLikes {
+    id&lt;SocializeEntity&gt; entity = [SocializeEntity entityWithKey:@"mykey" name:@"My Like"];
+    [self.socialize getLikesForUser:[self.socialize authenticatedUser] entity:entity first:nil last:[NSNumber numberWithInteger:1]];
+}
+
+- (void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
+    id&lt;SocializeLike&gt; like = [dataArray objectAtIndex:0];
+    NSLog(@"Now at %d likes", like.entity.likes);
+}
+
+</pre>
+</div>
+</div>
 <div class="section" id="comment">
 <h2>Comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h2>
 <p>Comments are a great way to build engagement in your app, and users love making comments!</p>
 <div class="section" id="creating-a-comment">
 <h3>Creating a Comment<a class="headerlink" href="#creating-a-comment" title="Permalink to this headline">¶</a></h3>
-<p>To create a comment on an entity, use the <strong>createCommentForEntityWithKey:::</strong> method:</p>
-<script src="https://gist.github.com/1204490.js?file=Comment.m"></script></div>
+<p>To create a comment on an entity, use the <strong>createCommentForEntityWithKey:comment:longitude:latitude:</strong> method:</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">createComment</span> <span class="p">{</span>
+    <span class="c1">// longitude and latitude are optional</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">socialize</span> <span class="nl">createCommentForEntityWithKey:</span><span class="s">@&quot;www.yourentityurl.com&quot;</span> <span class="nl">comment:</span><span class="s">@&quot;comment over here&quot;</span> <span class="nl">longitude:</span><span class="nb">nil</span> <span class="nl">latitude:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="cp">#pragma mark SocializeServiceDelegate implementation</span>
+
+<span class="c1">// if the operation fails the following method is called</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">service:</span><span class="p">(</span><span class="n">SocializeService</span><span class="o">*</span><span class="p">)</span><span class="n">service</span> <span class="nl">didFail:</span><span class="p">(</span><span class="n">NSError</span><span class="o">*</span><span class="p">)</span><span class="n">error</span><span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//if the comment was created successfully</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">service:</span><span class="p">(</span><span class="n">SocializeService</span><span class="o">*</span><span class="p">)</span><span class="n">service</span> <span class="nl">didCreate:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">object</span><span class="p">{</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">object</span> <span class="nl">isKindOfClass:</span><span class="p">[</span><span class="n">SocializeComment</span> <span class="n">class</span><span class="p">]])</span> <span class="p">{</span>
+        <span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeComment</span><span class="o">&gt;</span> <span class="n">comment</span> <span class="o">=</span> <span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeComment</span><span class="o">&gt;</span><span class="p">)</span><span class="n">object</span><span class="p">;</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created comment for entity %@&quot;</span><span class="p">,</span> <span class="n">comment</span><span class="p">.</span><span class="n">entity</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+        <span class="c1">// a comment represented by id&lt;SocializeComment&gt; has been created, so have at it</span>
+        <span class="c1">// do your magic here</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="listing-comments">
 <h3>Listing Comments<a class="headerlink" href="#listing-comments" title="Permalink to this headline">¶</a></h3>
-<p>To list all comments for an entity use the <strong>getCommentList</strong> method.</p>
-<script src="https://gist.github.com/1204490.js?file=GetComments.m"></script></div>
+<p>To list all comments for an entity use the <strong>getCommentList:first:last:</strong> method.</p>
+<div class="highlight-python"><pre>
+- (void)getComments {
+    /*Note
+     Each request is limited to 100 items.
+     If first = 0, last = 50, the API returns comments 0-49.
+     If last - first &gt; 100, then last is truncated to equal first + 100. For example, if first = 100, last = 250, then last is changed to last = 200.
+     If only last = 150 is passed, then last is truncated to 100. If last = 25, then results 0...24 are returned.
+     */
+
+    [self.socialize getCommentList:@"entity_key" first:nil last:nil];
+}
+
+/*
+ Implementing the delegate methods
+ getting/retrieving comments would invoke this callback and it would have elements of type id&lt;SocializeComment&gt;
+ */
+-(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray{
+    // the array will contain elements of type id&lt;SocializeComment&gt; from where further info could be retrieved
+}
+
+//in case of error
+-(void)service:(SocializeService*)service didFail:(NSError*)error{
+}
+
+</pre>
+</div>
+</div>
 </div>
 <div class="section" id="share">
 <h2>Share<a class="headerlink" href="#share" title="Permalink to this headline">¶</a></h2>
 <p>To register a share with the Socialize servers, use the <strong>createShareForEntityWithKey:medium:text:</strong> method.</p>
-<script src="https://gist.github.com/1436022.js?file=CreateShare.m"></script></div>
+<div class="highlight-python"><pre>
+- (void)createShare {
+    [self.socialize createShareForEntityWithKey:@"http://www.url.com" medium:SocializeShareMediumFacebook text:@"Check this out!"];
+}
+
+//if the create is successful
+-(void)service:(SocializeService *)service didCreate:(id&lt;SocializeObject&gt;)object{
+    if ([object isKindOfClass:[SocializeShare class]]) {
+        NSLog(@"create share succeeded");
+    }
+}
+
+// if the operation fails the following method is called
+-(void)service:(SocializeService*)service didFail:(NSError*)error{
+    NSLog(@"Create share failed: %@", [error localizedDescription]);
+}
+
+</pre>
+</div>
+</div>
 </div>
 
 
@@ -246,7 +527,7 @@ be limited to just that entity.</p>
         <li class="right" >
           <a href="ui_advanced.html" title="Advanced UI Configuration"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

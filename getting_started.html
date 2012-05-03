@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started Guide &mdash; Socialize iOS SDK 1.7.1 documentation</title>
+    <title>Getting Started Guide &mdash; Socialize iOS SDK 1.7.2 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.1',
+        VERSION:     '1.7.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.7.2 documentation" href="index.html" />
     <link rel="next" title="Socialize Action Bar" href="action_bar.html" />
     <link rel="prev" title="Socialize iOS SDK" href="index.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -176,7 +176,24 @@ at <a class="reference external" href="http://www.getsocialize.com/apps">http://
 <p class="first admonition-title">Note</p>
 <p class="last">Make sure to import the Socialize header in the code snippet below</p>
 </div>
-<script src="https://gist.github.com/1678336.js?file=appDelegate.m"></script></div>
+<div class="highlight-python"><pre>
+//import the socialize header
+#import &lt;Socialize/Socialize.h&gt;
+
+#pragma mark
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
+    // set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/
+    [Socialize storeConsumerKey:@"SOCIALIZE_CONSUMER_KEY"];
+    [Socialize storeConsumerSecret:@"SOCIALIZE_CONSUMER_SECRET"];
+    
+    //your application specific code
+    
+    return YES;
+}
+
+</pre>
+</div>
+</div>
 <div class="section" id="step-5-include-socialize-in-your-app">
 <h3><a class="toc-backref" href="#id9">Step 5: Include Socialize in your App!</a><a class="headerlink" href="#step-5-include-socialize-in-your-app" title="Permalink to this headline">¶</a></h3>
 <p>Now that you have your environment all setup, it’s time to include Socialize.</p>
@@ -192,7 +209,35 @@ components individually please go see the SDK user guide.</p>
 It is not necessary to explicitly create an Entity object when rendering the Action bar as this will be done for you, however entities can be created manually.</p>
 <p>Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller.</p>
 <p>In your View controller&#8217;s header file place the following code:</p>
-<script src="https://gist.github.com/1315113.js"> </script><p>By default, the Action Bar will automatically place itself at the bottom of its
+<div class="highlight-python"><pre>// Header
+
+// Store the action bar in a property on your view controller
+
+#import &lt;Socialize/Socialize.h&gt;
+
+@interface CreateActionBarViewController : UIViewController
+@property (nonatomic, retain) SocializeActionBar *actionBar;
+@end
+</pre>
+</div>
+<div class="highlight-python"><pre>
+// Implementation
+
+// Instantiate the action bar in your view controller
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    if (self.actionBar == nil) {
+        self.actionBar = [SocializeActionBar actionBarWithKey:@"http://www.example.com/object/1234" name:@"Something" presentModalInController:self];
+        [self.view addSubview:self.actionBar.view];
+    }
+}
+
+</pre>
+</div>
+<p>By default, the Action Bar will automatically place itself at the bottom of its
 superview and adjust to rotation.  If you find that content is being hidden,
 one option is to ensure that 44 pixels are left empty at the bottom of your
 view. When using interface builder, this is as simple as sliding up the bottom
@@ -207,9 +252,25 @@ of any content.</p>
 <p>It is strongly recommended that users be able to authenticate with Facebook when using Socialize so as to maximize the exposure, and promotion of your app.</p>
 <p>Let Socialize know your Facebook app id.  You can register or find your
 Facebook app id here: <a class="reference external" href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a></p>
-<p>You should also store your app&#8217;s iTunes link. This will be included in
-any Facebook wall posts sent from Socialize.</p>
-<script src="https://gist.github.com/2409074.js?file=gistfile1.m"></script><p>If your app is not already configured for facebook authentication, then you&#8217;ll
+<div class="highlight-python"><pre>
+//import the socialize header
+#import &lt;Socialize/Socialize.h&gt;
+
+#pragma mark
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
+    // set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/
+    [Socialize storeConsumerKey:@"SOCIALIZE_CONSUMER_KEY"];
+    [Socialize storeConsumerSecret:@"SOCIALIZE_CONSUMER_SECRET"];
+    [Socialize storeFacebookAppId:@"YOUR FB APP ID"];
+    
+    //your application specific code
+    
+    return YES;
+}
+
+</pre>
+</div>
+<p>If your app is not already configured for facebook authentication, then you&#8217;ll
 need to perform two more steps:</p>
 <p>First, you must register your app to open with your facebook app id url by
 adding a URL Types array to your Application&#8217;s &lt;MyApp&gt;-Info.plist.  The string
@@ -220,12 +281,66 @@ below:</p>
 UIApplicationDelegate&#8217;s application:openURL:sourceApplication: method. Socialize will take
 care of handing off the openURL request to the underlying <a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>. This
 completes the authentication flow.</p>
-<script src="https://gist.github.com/1529163.js?file=appDelegate.m"></script><p>If your app already authenticates with Facebook, you will need to let Socialize
+<div class="highlight-python"><pre>#import &lt;Socialize/Socialize.h&gt;
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [Socialize handleOpenURL:url];
+}
+
+</pre>
+</div>
+<p>If your app already authenticates with Facebook, you will need to let Socialize
 know about the existing session. You can do this with the
 linkToFacebookWithAccessToken:expirationDate: call.  For more information on
 using FBConnect on your own, you can check the official Facebook tutorial at
 <a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>.</p>
-<script src="https://gist.github.com/2345480.js?file=linkToFacebook.m"></script></div>
+<div class="highlight-python"><pre>#import &lt;Socialize/Socialize.h&gt;
+
+@interface LinkToFacebookExample : NSObject &lt;SocializeServiceDelegate&gt;
+@property (nonatomic, retain) Socialize *socialize;
+@end
+</pre>
+</div>
+<div class="highlight-python"><pre>
+@implementation LinkToFacebookExample
+@synthesize socialize = socialize_;
+
+
+- (void)dealloc {
+    self.socialize = nil;
+    
+    [super dealloc];
+}
+
+- (Socialize*)socialize {
+    if (socialize_ == nil) {
+        socialize_ = [[Socialize alloc] initWithDelegate:self];
+    }
+    return socialize_;
+}
+
+- (void)linkToFacebook {
+    [Socialize storeFacebookAppId:@"fbMYFACEBOOKAPPID"];
+    
+    // The following is only needed if you have multiple apps sharing the same facebook app id
+    // [Socialize storeFacebookURLSchemeSuffix:@"myfreeapp"];
+    
+    [self.socialize linkToFacebookWithAccessToken:@"EXISTING_TOKEN" expirationDate:[NSDate distantFuture]];
+}
+
+- (void)didAuthenticate:(id&lt;SocializeUser&gt;)user {
+    if ([self.socialize isAuthenticatedWithFacebook]) {
+        NSLog(@"Facebook link successful");
+    }
+}
+
+- (void)service:(SocializeService *)service didFail:(NSError *)error {
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+</pre>
+</div>
+</div>
 <div class="section" id="optional-configure-your-app-for-twitter">
 <h3><a class="toc-backref" href="#id11">Optional: Configure Your App for Twitter</a><a class="headerlink" href="#optional-configure-your-app-for-twitter" title="Permalink to this headline">¶</a></h3>
 <p>See the <a class="reference external" href="twitter.html">Twitter section</a>.</p>
@@ -289,7 +404,7 @@ using FBConnect on your own, you can check the official Facebook tutorial at
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

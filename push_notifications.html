@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 1.7.1 documentation</title>
+    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 1.7.2 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.1',
+        VERSION:     '1.7.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.7.2 documentation" href="index.html" />
     <link rel="next" title="Socialize Comments" href="comments.html" />
     <link rel="prev" title="Twitter Integration" href="twitter.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -145,17 +145,55 @@ provisioning profile for your changes to take effect.</p>
 <div class="section" id="register-for-notifications">
 <h3>Register for Notifications<a class="headerlink" href="#register-for-notifications" title="Permalink to this headline">¶</a></h3>
 <p>Add the following line to your application delegate:</p>
-<script src="https://gist.github.com/1671602.js?file=registerForNotifications.m"></script></div>
+<div class="highlight-python"><pre>
+//import the socialize header
+#import &lt;Socialize/Socialize.h&gt;
+
+#pragma mark
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
+    
+    // Register for Apple Push Notification Service
+    [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
+    
+    //your application specific code
+    
+    return YES;
+}
+
+</pre>
+</div>
+</div>
 <div class="section" id="register-the-device-token">
 <h3>Register the Device Token<a class="headerlink" href="#register-the-device-token" title="Permalink to this headline">¶</a></h3>
 <p>To register your app&#8217;s device token add the following lines to your application&#8217;s delegate</p>
-<script src="https://gist.github.com/2287010.js?file=appDelegate.m"></script></div>
+<div class="highlight-python"><pre>
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken
+{
+#if !DEBUG
+    [Socialize registerDeviceToken:deviceToken];
+#endif
+}
+
+</pre>
+</div>
+</div>
 <div class="section" id="handle-notifications">
 <h3>Handle Notifications<a class="headerlink" href="#handle-notifications" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Add the lines below to allow Socialize to handle the notification.</li>
 </ul>
-<script src="https://gist.github.com/1566706.js?file=MyAppDelegate.m"></script><div class="admonition note">
+<div class="highlight-python"><pre>
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    if ([Socialize handleNotification:userInfo]) {
+        return;
+    }
+    // Nonsocialize notification handling goes here
+}
+@end
+
+</pre>
+</div>
+<div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
 <li>Socialize will not currently do any foreground handling of notifications. If a notification is received while the Application is in the foreground, it will be ignored.</li>
@@ -169,12 +207,41 @@ provisioning profile for your changes to take effect.</p>
 <p>Defining an Entity Loader allows Socialize&#8217;s UI objects to link back to your
 application&#8217;s objects.</p>
 <p>Copy the lines below to add an entity loader</p>
-<script src="https://gist.github.com/1667068.js?file=entityLoader.m"></script><img alt="images/entity_loader.png" src="images/entity_loader.png" />
+<div class="highlight-python"><pre>
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
+    
+    // ...
+    
+    [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id&lt;SocializeEntity&gt;entity) {
+        SampleEntityLoader *entityLoader = [[[SampleEntityLoader alloc] initWithEntity:entity] autorelease];
+        [navigationController pushViewController:entityLoader animated:YES];
+    }];
+    
+    return YES;
+}
+
+</pre>
+</div>
+<img alt="images/entity_loader.png" src="images/entity_loader.png" />
 <p>For some applications, it might happen that an entities are not always
 available. Socialize provides the ability to selectively disable loading for a
 given entity. Should you find you need this, you can do this by defining a &#8220;Can
 Load Entity&#8221; block, as follows</p>
-<script src="https://gist.github.com/1667068.js?file=canLoadEntity.m"></script></div>
+<div class="highlight-python"><pre>
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
+    
+    // ...
+
+    [Socialize setCanLoadEntityBlock:^BOOL(id&lt;SocializeEntity&gt; entity) {
+        return ![entity.name isEqualToString:@"DeletedEntity"];
+    }];
+    
+    return YES;
+}
+
+</pre>
+</div>
+</div>
 </div>
 <div class="section" id="testing-smartalerts">
 <h2>Testing SmartAlerts™<a class="headerlink" href="#testing-smartalerts" title="Permalink to this headline">¶</a></h2>
@@ -224,7 +291,15 @@ are no errors with registration process, as described in the next section.</p>
 <h3>Logging Errors from Notifications Registrations<a class="headerlink" href="#logging-errors-from-notifications-registrations" title="Permalink to this headline">¶</a></h3>
 <p>You can implement the notifications delegate method which callbacks if any error occurs during registration.  This should log
 the value of the error to your console.</p>
-<script src="https://gist.github.com/1671602.js?file=HandleError.m"></script></div>
+<div class="highlight-python"><pre>
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+    NSLog(@"Error Register Notifications: %@", [error localizedDescription]);
+}
+
+</pre>
+</div>
+</div>
 <div class="section" id="i-keep-getting-the-error-no-valid-aps-environment-entitlement-string-found-for-application">
 <h3>I Keep Getting the Error &#8220;no valid &#8216;aps-environment&#8217; entitlement string found for application&#8221;<a class="headerlink" href="#i-keep-getting-the-error-no-valid-aps-environment-entitlement-string-found-for-application" title="Permalink to this headline">¶</a></h3>
 <p>This typically means you didn&#8217;t re-create and download the provisioning profile after you enabled pushed notifications.
@@ -245,7 +320,17 @@ Until Socialize automatically clears these on error, you should verify that you
 do not send development tokens to Socialize using [Socialize
 registerDeviceToken:]</p>
 <p>As a precaution, you might wrap the registration call as follows:</p>
-<script src="https://gist.github.com/1879369.js?file=gistfile1.m"></script><p>This is only a problem if you already have separate push configurations and certificates
+<div class="highlight-python"><pre>
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken
+{
+#if !DEBUG
+    [Socialize registerDeviceToken:deviceToken];
+#endif
+}
+
+</pre>
+</div>
+<p>This is only a problem if you already have separate push configurations and certificates
 for development and distribution. Socialize itself does not support development push.</p>
 <p>Please go to support.getsocialize.com for additional support.</p>
 </div>
@@ -310,7 +395,7 @@ for development and distribution. Socialize itself does not support development 
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

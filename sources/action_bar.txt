@@ -15,9 +15,12 @@ Displaying the Action Bar
 
 Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller:
 
-.. raw:: html
+.. literalinclude:: snippets/create_action_bar.h
 
-        <script src="https://gist.github.com/1474007.js"> </script>
+.. literalinclude:: snippets/create_action_bar.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
+
 
 By default, the Action Bar will automatically place itself at the bottom of its
 superview and adjust to rotation.  If you find that content is being hidden,
@@ -35,9 +38,9 @@ would like to disable the auto layout feature completely, you can do so. The
 following example disables autolayout and manually places the Action Bar at
 (0,400).
 
-.. raw:: html
-
-        <script src="https://gist.github.com/1474011.js"> </script>
+.. literalinclude:: snippets/create_action_bar_no_auto.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
 
 If you need more detail on installing the action bar please see our `Adding the Socialize Action Bar Video`_.
 
@@ -55,9 +58,15 @@ Showing Action Sheets
 If you wish, you can customize the way the Action Bar shows action sheets. To do this,
 just implement actionBar:wantsDisplayActionSheet:, as below
 
-.. raw:: html
+.. literalinclude:: snippets/create_action_bar_with_delegate.h
+  :language: objective-c
+  :emphasize-lines: 7
 
-      <script src="https://gist.github.com/1528996.js"> </script>
+.. literalinclude:: snippets/create_action_bar_with_delegate.m
+  :language: objective-c
+  :start-after: begin-snippet
+  :end-before: end-snippet
+  :emphasize-lines: 11, 15-18
 
 More Info
 -----------------------

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Twitter Integration &mdash; Socialize iOS SDK 1.7.1 documentation</title>
+    <title>Twitter Integration &mdash; Socialize iOS SDK 1.7.2 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.1',
+        VERSION:     '1.7.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.7.2 documentation" href="index.html" />
     <link rel="next" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" />
     <link rel="prev" title="Socialize Like Button" href="like_button.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -101,11 +101,75 @@ valid URL for callback otherwise authentication will fail.</li>
 <div class="section" id="configuring-twitter-in-socialize">
 <span id="propagate-tw"></span><h2>Configuring Twitter in Socialize<a class="headerlink" href="#configuring-twitter-in-socialize" title="Permalink to this headline">¶</a></h2>
 <p>Once you have a twitter application, simply tell Socialize about your consumer key and secret:</p>
-<script src="https://gist.github.com/2025402.js?file=gistfile1.m"></script></div>
+<div class="highlight-python"><pre>
+//import the socialize header
+#import &lt;Socialize/Socialize.h&gt;
+
+#pragma mark
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
+    // set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/
+    [Socialize storeConsumerKey:@"SOCIALIZE_CONSUMER_KEY"];
+    [Socialize storeConsumerSecret:@"SOCIALIZE_CONSUMER_SECRET"];
+    [Socialize storeTwitterConsumerKey:@"YOUR_TWITTER_CONSUMER_KEY"];
+    [Socialize storeTwitterConsumerSecret:@"YOUR_TWITTER_CONSUMER_SECRET"];    
+    //your application specific code
+    
+    return YES;
+}
+
+</pre>
+</div>
+</div>
 <div class="section" id="linking-to-twitter-using-existing-credentials">
 <h2>Linking to Twitter Using Existing Credentials<a class="headerlink" href="#linking-to-twitter-using-existing-credentials" title="Permalink to this headline">¶</a></h2>
 <p>If you already have a Twitter access token of your own, you can link to Socialize like so:</p>
-<script src="https://gist.github.com/2047355.js?file=linkToTwitter.m"></script></div>
+<div class="highlight-python"><pre>#import &lt;Socialize/Socialize.h&gt;
+
+@interface LinkToTwitterExample : NSObject &lt;SocializeServiceDelegate&gt;
+@property (nonatomic, retain) Socialize *socialize;
+@end
+</pre>
+</div>
+<div class="highlight-python"><pre>
+@implementation LinkToTwitterExample
+@synthesize socialize = socialize_;
+
+
+- (void)dealloc {
+    self.socialize = nil;
+    
+    [super dealloc];
+}
+
+- (Socialize*)socialize {
+    if (socialize_ == nil) {
+        socialize_ = [[Socialize alloc] initWithDelegate:self];
+    }
+    return socialize_;
+}
+
+- (void)linkToTwitter {
+    [Socialize storeTwitterConsumerKey:@"MYAPPCONSUMERKEY"];
+    [Socialize storeTwitterConsumerSecret:@"MYAPPCONSUMERSECRET"];
+    
+    [self.socialize linkToTwitterWithAccessToken:@"PREAUTHEDACCESSTOKEN" accessTokenSecret:@"PREAUTHEDACCESSTOKENSECRET"];
+}
+
+- (void)didAuthenticate:(id&lt;SocializeUser&gt;)user {
+    if ([self.socialize isAuthenticatedWithTwitter]) {
+        NSLog(@"Twit Tah! %@", [user thirdPartyAuth]);
+    } else {
+        NSLog(@"Not authenticated with Twitter");
+    }
+}
+
+- (void)service:(SocializeService *)service didFail:(NSError *)error {
+    NSLog(@"All is not well: %@", [error localizedDescription]);
+}
+
+</pre>
+</div>
+</div>
 <div class="section" id="propagating-socialize-actions-to-twitter">
 <h2>Propagating Socialize Actions to Twitter<a class="headerlink" href="#propagating-socialize-actions-to-twitter" title="Permalink to this headline">¶</a></h2>
 <p>Social actions such as Comment and Like will automatically be propagated to
@@ -167,7 +231,7 @@ actions will be available soon.</p>
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

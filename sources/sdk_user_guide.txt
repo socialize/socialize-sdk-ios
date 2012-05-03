@@ -24,9 +24,11 @@ Initializing Socialize
 
 To start using the SDK. You need to create and initialize Socialize class and implement the SocializeServiceDelegate.
 
-.. raw:: html
+.. literalinclude:: snippets/api_client.h
 
-	<script src="https://gist.github.com/1204490.js?file=Init.m"></script>
+.. literalinclude:: snippets/api_client.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
 
 Authentication
 --------------
@@ -42,14 +44,12 @@ and ensures that user profiles and IDs are retained across app sessions and inst
 
 There are 2 variants to achieve the same result. If you already have authenticated with facebook then you can pass the facebook access token to SocializeSDK or you can have the SocializeSDK perform facebook authentication for you.
 
+See LinkToFacebookExample in `Getting Started <getting_started.html#optional-configure-your-app-for-facebook>`_.
 
-.. raw:: html
-
-	<script src="https://gist.github.com/1370829.js?file=FacebookAuthentication.m"></script>
-	
 Authenticating with Twitter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*Coming Soon!*
+See LinkToTwitter example in the `Twitter Section <twitter.html#linking-to-twitter-using-existing-credentials>`_.
+
 	
 Anonymous Authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -57,10 +57,10 @@ We recommend authenticating with 3rd parties (e.g. Facebook) as this provides a 
 and ensures that user profiles and IDs are retained across app sessions and installs, however if you just 
 want anonymous authentication, simply call the **authenticate** method:
 
-.. raw:: html
+.. literalinclude:: snippets/api_client.m
+  :start-after: begin-authenticate-anonymously-snippet
+  :end-before: end-authenticate-anonymously-snippet
 
-        <script src="https://gist.github.com/1229170.js?file=Authentication.m"></script>
-	
 Entities
 --------
 An entity is a single item of content in your app
@@ -69,8 +69,7 @@ Throughout the documentation and the code snippets we refer to an "entity".  Thi
 generic term for something that can be view, shared, liked or commented on.  Generally this will
 correspond to a single item of content in your app.
 
-Entity keys in Socialize are free form.  It is recommended that a *real* URL be
-used (i.e. one that corresponds to an active web page)
+Entity keys in Socialize are free form.
 
 Creating an Entity
 ~~~~~~~~~~~~~~~~~~
@@ -84,9 +83,9 @@ have a *name* associated with it.
 
 To create an entity, simply invoke the **createEntity** message:
 
-.. raw:: html
-
-    <script src="https://gist.github.com/1473477.js?file=CreateEntity.m"></script>
+.. literalinclude:: snippets/api_client.m
+  :start-after: begin-create-entity-snippet
+  :end-before: end-create-entity-snippet
 
 Entity Meta Data, and Other Advanced Functionality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -95,9 +94,9 @@ Should you find that you need to store custom metadata on an entity, Socialize
 will provide for this. Full customization of entity objects can be realized
 through use of the createEntity: variant for creating your entity.
 
-.. raw:: html
-
-    <script src="https://gist.github.com/1719630.js?file=createEntity.m"></script>
+.. literalinclude:: snippets/api_client.m
+  :start-after: begin-create-entity-meta-snippet
+  :end-before: end-create-entity-meta-snippet
 
 Retrieving Entity data
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -105,10 +104,9 @@ An existing entity can be retrieved via the **getEntity** method.  Entities obta
 provide aggregate data on comments, likes, shares and views.  Refer to the `Entity object structure in the API Docs <http://www.getsocialize.com/docs/v1/#entity-object>`_.
 for more detail on these aggregate values.
 
-.. raw:: html
-
-	<script src="https://gist.github.com/1204768.js?file=GetEntity.m"></script>
-
+.. literalinclude:: snippets/api_client.m
+  :start-after: begin-get-entity-snippet
+  :end-before: end-get-entity-snippet
 
 View
 ----
@@ -120,9 +118,9 @@ Creating a 'View'
 ~~~~~~~~~~~~~~~~~
 To create a view, simply call the **viewEntity** method:
 
-.. raw:: html
-
-	<script src="https://gist.github.com/1204490.js?file=PostAView.m"></script>
+.. literalinclude:: snippets/api_client.m
+  :start-after: begin-view-entity-snippet
+  :end-before: end-view-entity-snippet
 
 Like
 ----
@@ -131,20 +129,20 @@ in your app are the most popular, and what is of most interest to your users.
 
 Creating a 'Like'
 ~~~~~~~~~~~~~~~~~
-To create a view, simply call the **like** method:
+To create a like, simply call the **like** method:
 
-.. raw:: html
+.. literalinclude:: snippets/api_client.m
+  :start-after: begin-like-entity-snippet
+  :end-before: end-like-entity-snippet
 
-	<script src="https://gist.github.com/1204490.js?file=PostLike.m"></script>
-	
 Removing a 'Like'
 ~~~~~~~~~~~~~~~~~
 Removing a like (i.e. an 'unlike') is done via the **unlike** method.  In order to remove a like, you will 
 need the ID of the like.  This is returned from the initial call to **like**
 
-.. raw:: html
-
-	<script src="https://gist.github.com/1204490.js?file=Unlike.m"></script>
+.. literalinclude:: snippets/api_client.m
+  :start-after: begin-unlike-entity-snippet
+  :end-before: end-unlike-entity-snippet
 
 Get likes for a user
 ---------------------
@@ -153,9 +151,9 @@ You can get all likes for a specific user using [Socialize
 getLikesForUser:entity:first:last:]. If entity is non-nil, returned likes will
 be limited to just that entity.
 
-.. raw:: html
-
-  <script src="https://gist.github.com/2408589.js?file=getLikesForUser.m"></script>
+.. literalinclude:: snippets/api_client.m
+  :start-after: begin-get-likes-for-user-snippet
+  :end-before: end-get-likes-for-user-snippet
 
 Comment
 -------
@@ -163,25 +161,25 @@ Comments are a great way to build engagement in your app, and users love making 
 
 Creating a Comment
 ~~~~~~~~~~~~~~~~~~
-To create a comment on an entity, use the **createCommentForEntityWithKey:::** method:
+To create a comment on an entity, use the **createCommentForEntityWithKey:comment:longitude:latitude:** method:
 
-.. raw:: html
-
-	<script src="https://gist.github.com/1204490.js?file=Comment.m"></script>
+.. literalinclude:: snippets/api_client.m
+  :language: objective-c
+  :start-after: begin-create-comment-snippet
+  :end-before: end-create-comment-snippet
 
 Listing Comments
 ~~~~~~~~~~~~~~~~
-To list all comments for an entity use the **getCommentList** method. 
+To list all comments for an entity use the **getCommentList:first:last:** method. 
 
-.. raw:: html
-
-	<script src="https://gist.github.com/1204490.js?file=GetComments.m"></script>
+.. literalinclude:: snippets/api_client.m
+  :start-after: begin-get-comments-snippet
+  :end-before: end-get-comments-snippet
 
 Share
 -----
 To register a share with the Socialize servers, use the **createShareForEntityWithKey:medium:text:** method.
 
-.. raw:: html
-
-    <script src="https://gist.github.com/1436022.js?file=CreateShare.m"></script>
-
+.. literalinclude:: snippets/api_client.m
+  :start-after: begin-create-share-snippet
+  :end-before: end-create-share-snippet

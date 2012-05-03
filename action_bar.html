@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Socialize Action Bar &mdash; Socialize iOS SDK 1.7.1 documentation</title>
+    <title>Socialize Action Bar &mdash; Socialize iOS SDK 1.7.2 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.1',
+        VERSION:     '1.7.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.7.2 documentation" href="index.html" />
     <link rel="next" title="Socialize Like Button" href="like_button.html" />
     <link rel="prev" title="Getting Started Guide" href="getting_started.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -81,7 +81,35 @@ entry point into the entire set of Socialize features.</p>
 <div class="section" id="displaying-the-action-bar">
 <h2>Displaying the Action Bar<a class="headerlink" href="#displaying-the-action-bar" title="Permalink to this headline">¶</a></h2>
 <p>Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller:</p>
-<script src="https://gist.github.com/1474007.js"> </script><p>By default, the Action Bar will automatically place itself at the bottom of its
+<div class="highlight-python"><pre>// Header
+
+// Store the action bar in a property on your view controller
+
+#import &lt;Socialize/Socialize.h&gt;
+
+@interface CreateActionBarViewController : UIViewController
+@property (nonatomic, retain) SocializeActionBar *actionBar;
+@end
+</pre>
+</div>
+<div class="highlight-python"><pre>
+// Implementation
+
+// Instantiate the action bar in your view controller
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    if (self.actionBar == nil) {
+        self.actionBar = [SocializeActionBar actionBarWithKey:@"http://www.example.com/object/1234" name:@"Something" presentModalInController:self];
+        [self.view addSubview:self.actionBar.view];
+    }
+}
+
+</pre>
+</div>
+<p>By default, the Action Bar will automatically place itself at the bottom of its
 superview and adjust to rotation.  If you find that content is being hidden,
 one option is to ensure that 44 pixels are left empty at the bottom of your
 view. When using interface builder, this is as simple as sliding up the bottom
@@ -94,7 +122,26 @@ of any content.</p>
 would like to disable the auto layout feature completely, you can do so. The
 following example disables autolayout and manually places the Action Bar at
 (0,400).</p>
-<script src="https://gist.github.com/1474011.js"> </script><p>If you need more detail on installing the action bar please see our <a class="reference external" href="http://vimeo.com/31403049">Adding the Socialize Action Bar Video</a>.</p>
+<div class="highlight-python"><pre>
+// Implementation
+
+// Instantiate the action bar in your view controller
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    if (self.actionBar == nil) {
+        self.actionBar = [SocializeActionBar actionBarWithKey:@"http://www.example.com/object/1234" name:@"My Object" presentModalInController:self];
+        self.actionBar.noAutoLayout = YES;
+        self.actionBar.view.frame = CGRectMake(0, 400, 320, SOCIALIZE_ACTION_PANE_HEIGHT);
+        [self.view addSubview:self.actionBar.view];
+    }
+}
+
+</pre>
+</div>
+<p>If you need more detail on installing the action bar please see our <a class="reference external" href="http://vimeo.com/31403049">Adding the Socialize Action Bar Video</a>.</p>
 <blockquote>
 <div></div></blockquote>
 </div>
@@ -106,7 +153,38 @@ action bar.</p>
 <h3>Showing Action Sheets<a class="headerlink" href="#showing-action-sheets" title="Permalink to this headline">¶</a></h3>
 <p>If you wish, you can customize the way the Action Bar shows action sheets. To do this,
 just implement actionBar:wantsDisplayActionSheet:, as below</p>
-<script src="https://gist.github.com/1528996.js"> </script></div>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">// Header</span>
+
+<span class="cp">// Store the action bar in a property on your view controller</span>
+
+<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
+
+<span class="hll"><span class="k">@interface</span> <span class="nc">CreateActionBarWithDelegateViewController</span> : <span class="nc">UIViewController</span> <span class="o">&lt;</span><span class="n">SocializeActionBarDelegate</span><span class="o">&gt;</span>
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">SocializeActionBar</span> <span class="o">*</span><span class="n">actionBar</span><span class="p">;</span>
+<span class="k">@end</span>
+</pre></div>
+</div>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="c1">// Implementation</span>
+
+<span class="c1">// Instantiate the action bar in your view controller</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SocializeActionBar</span> <span class="nl">actionBarWithKey:</span><span class="s">@&quot;http://www.example.com/object/1234&quot;</span> <span class="nl">name:</span><span class="s">@&quot;My Object&quot;</span> <span class="nl">presentModalInController:</span><span class="n">self</span><span class="p">];</span>
+<span class="hll">        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</span>        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">view</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="hll">
+</span><span class="hll"><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">actionBar:</span><span class="p">(</span><span class="n">SocializeActionBar</span><span class="o">*</span><span class="p">)</span><span class="n">actionBar</span> <span class="nl">wantsDisplayActionSheet:</span><span class="p">(</span><span class="n">UIActionSheet</span><span class="o">*</span><span class="p">)</span><span class="n">actionSheet</span> <span class="p">{</span>
+</span><span class="hll">    <span class="p">[</span><span class="n">actionSheet</span> <span class="nl">showFromRect:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="nl">inView:</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">animated:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class="hll"><span class="p">}</span>
+</span></pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="more-info">
 <h2>More Info<a class="headerlink" href="#more-info" title="Permalink to this headline">¶</a></h2>
@@ -169,7 +247,7 @@ just implement actionBar:wantsDisplayActionSheet:, as below</p>
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

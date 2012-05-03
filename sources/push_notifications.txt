@@ -99,27 +99,26 @@ Register for Notifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Add the following line to your application delegate:
 
-.. raw:: html
-
-    <script src="https://gist.github.com/1671602.js?file=registerForNotifications.m"></script>
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-snippet
+  :end-before: end-snippet
 
 Register the Device Token
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To register your app's device token add the following lines to your application's delegate
 
-.. raw:: html
-
-    <script src="https://gist.github.com/2287010.js?file=appDelegate.m"></script>
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-register-snippet
+  :end-before: end-register-snippet
 
 Handle Notifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Add the lines below to allow Socialize to handle the notification.
 
-
-.. raw:: html
-
-    <script src="https://gist.github.com/1566706.js?file=MyAppDelegate.m"></script>
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-handle-snippet
+  :end-before: end-handle-snippet
 
 .. note::
 
@@ -135,9 +134,9 @@ application's objects.
 
 Copy the lines below to add an entity loader 
 
-.. raw:: html
-
-    <script src="https://gist.github.com/1667068.js?file=entityLoader.m"></script>
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-entity-loader-snippet
+  :end-before: end-entity-loader-snippet
 
 .. image:: images/entity_loader.png
 
@@ -146,9 +145,9 @@ available. Socialize provides the ability to selectively disable loading for a
 given entity. Should you find you need this, you can do this by defining a "Can
 Load Entity" block, as follows
 
-.. raw:: html
-
-    <script src="https://gist.github.com/1667068.js?file=canLoadEntity.m"></script>
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-can-load-entity-snippet
+  :end-before: end-can-load-entity-snippet
 
 Testing SmartAlerts™ 
 -----------------------------------------------------------------------------------
@@ -204,10 +203,9 @@ Logging Errors from Notifications Registrations
 You can implement the notifications delegate method which callbacks if any error occurs during registration.  This should log
 the value of the error to your console.
 
-.. raw:: html
-
-    <script src="https://gist.github.com/1671602.js?file=HandleError.m"></script>
-
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-register-fail-snippet
+  :end-before: end-register-fail-snippet
 
 I Keep Getting the Error "no valid 'aps-environment' entitlement string found for application"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -240,9 +238,9 @@ registerDeviceToken:]
 
 As a precaution, you might wrap the registration call as follows:
 
-.. raw:: html
-
-  <script src="https://gist.github.com/1879369.js?file=gistfile1.m"></script>
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-register-snippet
+  :end-before: end-register-snippet
 
 This is only a problem if you already have separate push configurations and certificates
 for development and distribution. Socialize itself does not support development push.
