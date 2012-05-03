@@ -21,7 +21,7 @@
 #import "SZActionBarDelegate.h"
 #import "SocializeTwitterAuthViewController.h"
 #import "SocializeConfiguration.h"
-#import "SocializeLikeButton.h"
+#import "SZLikeButton.h"
 #import "SampleEntityLoader.h"
 #import "SZNavigationController.h"
 

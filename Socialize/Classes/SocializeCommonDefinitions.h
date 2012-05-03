@@ -43,7 +43,7 @@ extern NSString *const SocializeCLAuthorizationStatusDidChangeNotification;
 extern NSString *const kSocializeCLAuthorizationStatusKey;
 extern NSString *const kSocializeShouldShareLocationKey;
 extern NSString *const SocializeDidRegisterDeviceTokenNotification;
-extern NSString *const SocializeLikeButtonDidChangeStateNotification;
+extern NSString *const SZLikeButtonDidChangeStateNotification;
 
 // Twitter
 extern NSString *const kSocializeTwitterAuthConsumerKey;
@@ -78,6 +78,7 @@ extern NSString *const kSocializeUIErrorAlertsDisabled;
 @class SZProfileViewController;
 @class SZCommentsListViewController;
 @class SZActionBar;
+@class SZLikeButton;
 @protocol SZSettingsViewControllerDelegate;
 @protocol SZActionBarDelegate;
 
@@ -88,4 +89,5 @@ typedef SZProfileViewController SocializeProfileViewController __attribute__((de
 typedef SZCommentsListViewController SocializeCommentsTableViewController __attribute__((deprecated("Please use SZCommentsListViewController or the utility functions in SZCommentUtils")));
 typedef SZActionBar SocializeActionBar __attribute__((deprecated("Please use SZActionBar or the utility functions in SZActionBarUtils")));
 #define SocializeActionBarDelegate SZActionBarDelegate
+typedef SZLikeButton SocializeLikeButton __attribute__((deprecated("Please use SZLikeButton")));
 

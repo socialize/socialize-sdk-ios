@@ -1,12 +1,12 @@
 //
-//  SocializeLikeButton.m
+//  SZLikeButton.m
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 4/16/12.
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeLikeButton.h"
+#import "SZLikeButton.h"
 #import "SocializeUserService.h"
 #import "SocializeEntityService.h"
 #import "SocializeLikeService.h"
@@ -20,9 +20,9 @@
 #define PADDING_BETWEEN_TEXT_ICON 2
 
 
-static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
+static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
 
-@interface SocializeLikeButton ()
+@interface SZLikeButton ()
 
 @property (nonatomic, assign) BOOL initialized;
 
@@ -38,7 +38,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 
 @end
 
-@implementation SocializeLikeButton
+@implementation SZLikeButton
 @synthesize actualButton = actualButton_;
 @synthesize disabledImage = disabledImage_;
 @synthesize inactiveImage = inactiveImage_;
@@ -145,7 +145,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
 - (void)startRecoveryTimer {
     if (self.recoveryTimer == nil) {
         __block __typeof__(self) weakSelf = self;
-        self.recoveryTimer = [NSTimer scheduledTimerWithTimeInterval:SocializeLikeButtonRecoveryTimerInterval
+        self.recoveryTimer = [NSTimer scheduledTimerWithTimeInterval:SZLikeButtonRecoveryTimerInterval
                                                                block:^(NSTimeInterval interval) {
                                                                    [weakSelf attemptRecovery];
                                                                } repeats:YES];
@@ -214,7 +214,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
     self.initialized = YES;
     [self configureButtonBackgroundImages];
     self.actualButton.enabled = YES;
-    [[NSNotificationCenter defaultCenter] postNotificationName:SocializeLikeButtonDidChangeStateNotification object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
 }
 
 - (void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
@@ -252,7 +252,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
         self.like = nil;
         self.actualButton.enabled = YES;
         [self configureButtonBackgroundImages];
-        [[NSNotificationCenter defaultCenter] postNotificationName:SocializeLikeButtonDidChangeStateNotification object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
     }
 }
 
@@ -470,7 +470,7 @@ static NSTimeInterval SocializeLikeButtonRecoveryTimerInterval = 5.0;
             self.actualButton.enabled = YES;
             self.serverEntity = serverLike.entity;
             [self configureButtonBackgroundImages];
-            [[NSNotificationCenter defaultCenter] postNotificationName:SocializeLikeButtonDidChangeStateNotification object:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
 
         } failure:^(NSError *error) {
             self.likeCreateRequestState = SocializeRequestStateFailed;

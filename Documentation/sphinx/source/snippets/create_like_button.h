@@ -5,5 +5,5 @@
 #import <Socialize/Socialize.h>
 
 @interface CreateLikeButtonViewController : UIViewController
-@property (nonatomic, retain) SocializeLikeButton *likeButton;
+@property (nonatomic, retain) SZLikeButton *likeButton;
 @end

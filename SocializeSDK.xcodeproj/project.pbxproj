@@ -1213,10 +1213,10 @@
 		AA7E73D414FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7E73D114FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.h */; };
 		AA7E73D514FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7E73D214FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.m */; };
 		AA7E73D614FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7E73D214FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.m */; };
-		AA7F0A5C153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F0A5A153CAD7B00EC6DD7 /* SocializeLikeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA7F0A5D153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F0A5A153CAD7B00EC6DD7 /* SocializeLikeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA7F0A5E153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F0A5B153CAD7B00EC6DD7 /* SocializeLikeButton.m */; };
-		AA7F0A5F153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F0A5B153CAD7B00EC6DD7 /* SocializeLikeButton.m */; };
+		AA7F0A5C153CAD7B00EC6DD7 /* SZLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F0A5A153CAD7B00EC6DD7 /* SZLikeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA7F0A5D153CAD7B00EC6DD7 /* SZLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F0A5A153CAD7B00EC6DD7 /* SZLikeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA7F0A5E153CAD7B00EC6DD7 /* SZLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F0A5B153CAD7B00EC6DD7 /* SZLikeButton.m */; };
+		AA7F0A5F153CAD7B00EC6DD7 /* SZLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F0A5B153CAD7B00EC6DD7 /* SZLikeButton.m */; };
 		AA7FB8B51491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
 		AA7FB8B61491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
 		AA7FB8B71491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
@@ -1287,7 +1287,7 @@
 		AA7FCA9D15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7FCA9815118BEE008D4102 /* SocializeRichPushNotificationViewController.xib */; };
 		AA7FCA9E15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7FCA9815118BEE008D4102 /* SocializeRichPushNotificationViewController.xib */; };
 		AA7FCA9F15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7FCA9815118BEE008D4102 /* SocializeRichPushNotificationViewController.xib */; };
-		AA813807153F4D09007CAE00 /* SocializeLikeButtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA813806153F4D09007CAE00 /* SocializeLikeButtonTests.m */; };
+		AA813807153F4D09007CAE00 /* SZLikeButtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA813806153F4D09007CAE00 /* SZLikeButtonTests.m */; };
 		AA82E75514F8559C002CDF93 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA82E75414F8559C002CDF93 /* SocializeComposeMessageViewController.xib */; };
 		AA839A9F14D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA839A9D14D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA839AA014D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA839A9D14D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2814,8 +2814,8 @@
 		AA7E73CC14FB0D25001AFC0A /* SocializeFacebookWallPoster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebookWallPoster.m; path = Classes/SocializeFacebookWallPoster.m; sourceTree = "<group>"; };
 		AA7E73D114FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebookWallPostOptions.h; path = Classes/SocializeFacebookWallPostOptions.h; sourceTree = "<group>"; };
 		AA7E73D214FB0F9A001AFC0A /* SocializeFacebookWallPostOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebookWallPostOptions.m; path = Classes/SocializeFacebookWallPostOptions.m; sourceTree = "<group>"; };
-		AA7F0A5A153CAD7B00EC6DD7 /* SocializeLikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeButton.h; path = Classes/SocializeLikeButton.h; sourceTree = "<group>"; };
-		AA7F0A5B153CAD7B00EC6DD7 /* SocializeLikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeButton.m; path = Classes/SocializeLikeButton.m; sourceTree = "<group>"; };
+		AA7F0A5A153CAD7B00EC6DD7 /* SZLikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZLikeButton.h; path = Classes/SZLikeButton.h; sourceTree = "<group>"; };
+		AA7F0A5B153CAD7B00EC6DD7 /* SZLikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZLikeButton.m; path = Classes/SZLikeButton.m; sourceTree = "<group>"; };
 		AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-highlighted.png"; path = "Resources/socialize-iphone-notification-button-highlighted.png"; sourceTree = "<group>"; };
 		AA7FB8941491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-highlighted@2x.png"; path = "Resources/socialize-iphone-notification-button-highlighted@2x.png"; sourceTree = "<group>"; };
 		AA7FB8951491415600B018DE /* socialize-iphone-notification-button-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-normal.png"; path = "Resources/socialize-iphone-notification-button-normal.png"; sourceTree = "<group>"; };
@@ -2826,8 +2826,8 @@
 		AA7FB8E01491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-notifications-bottom-shadow-background@2x.png"; path = "Resources/socialize-notifications-bottom-shadow-background@2x.png"; sourceTree = "<group>"; };
 		AA7FCA9015118BDB008D4102 /* SocializeTwitterAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeTwitterAuthViewController.xib; path = Resources/SocializeTwitterAuthViewController.xib; sourceTree = "<group>"; };
 		AA7FCA9815118BEE008D4102 /* SocializeRichPushNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeRichPushNotificationViewController.xib; path = Resources/SocializeRichPushNotificationViewController.xib; sourceTree = "<group>"; };
-		AA813805153F4D09007CAE00 /* SocializeLikeButtonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeButtonTests.h; path = "Test Cases/SocializeLikeButtonTests.h"; sourceTree = "<group>"; };
-		AA813806153F4D09007CAE00 /* SocializeLikeButtonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeButtonTests.m; path = "Test Cases/SocializeLikeButtonTests.m"; sourceTree = "<group>"; };
+		AA813805153F4D09007CAE00 /* SZLikeButtonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZLikeButtonTests.h; path = "Test Cases/SZLikeButtonTests.h"; sourceTree = "<group>"; };
+		AA813806153F4D09007CAE00 /* SZLikeButtonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZLikeButtonTests.m; path = "Test Cases/SZLikeButtonTests.m"; sourceTree = "<group>"; };
 		AA82E75414F8559C002CDF93 /* SocializeComposeMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeComposeMessageViewController.xib; path = Resources/SocializeComposeMessageViewController.xib; sourceTree = "<group>"; };
 		AA839A9D14D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDirectURLNotificationDisplayController.h; path = Classes/SocializeDirectURLNotificationDisplayController.h; sourceTree = "<group>"; };
 		AA839A9E14D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDirectURLNotificationDisplayController.m; path = Classes/SocializeDirectURLNotificationDisplayController.m; sourceTree = "<group>"; };
@@ -4420,8 +4420,8 @@
 		AA7F0A59153CAD6100EC6DD7 /* Like Button */ = {
 			isa = PBXGroup;
 			children = (
-				AA7F0A5A153CAD7B00EC6DD7 /* SocializeLikeButton.h */,
-				AA7F0A5B153CAD7B00EC6DD7 /* SocializeLikeButton.m */,
+				AA7F0A5A153CAD7B00EC6DD7 /* SZLikeButton.h */,
+				AA7F0A5B153CAD7B00EC6DD7 /* SZLikeButton.m */,
 			);
 			name = "Like Button";
 			sourceTree = "<group>";
@@ -4429,8 +4429,8 @@
 		AA813804153F4CAE007CAE00 /* Like Button */ = {
 			isa = PBXGroup;
 			children = (
-				AA813805153F4D09007CAE00 /* SocializeLikeButtonTests.h */,
-				AA813806153F4D09007CAE00 /* SocializeLikeButtonTests.m */,
+				AA813805153F4D09007CAE00 /* SZLikeButtonTests.h */,
+				AA813806153F4D09007CAE00 /* SZLikeButtonTests.m */,
 			);
 			name = "Like Button";
 			sourceTree = "<group>";
@@ -5148,7 +5148,7 @@
 				AA8D34A21533A0AF006B1B41 /* SocializeUILikeOptions.h in Headers */,
 				AA86DB4315364DCB002DE37D /* SocializeThirdPartyLinker.h in Headers */,
 				AA86DB4915373CD0002DE37D /* SocializeThirdPartyLinkOptions.h in Headers */,
-				AA7F0A5D153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */,
+				AA7F0A5D153CAD7B00EC6DD7 /* SZLikeButton.h in Headers */,
 				AAF60EB815461AD000245867 /* SampleEntityLoader.h in Headers */,
 				AADD17F8154B1E0900ECB1D0 /* SZNavigationController.h in Headers */,
 				AAE56C6B15476A6100A444C5 /* SZUserUtils.h in Headers */,
@@ -5308,7 +5308,7 @@
 				AA8D34A11533A0AF006B1B41 /* SocializeUILikeOptions.h in Headers */,
 				AA86DB4215364DCB002DE37D /* SocializeThirdPartyLinker.h in Headers */,
 				AA86DB4815373CD0002DE37D /* SocializeThirdPartyLinkOptions.h in Headers */,
-				AA7F0A5C153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */,
+				AA7F0A5C153CAD7B00EC6DD7 /* SZLikeButton.h in Headers */,
 				AAF60EB715461AD000245867 /* SampleEntityLoader.h in Headers */,
 				AADD17F7154B1E0900ECB1D0 /* SZNavigationController.h in Headers */,
 				AAE56C6A15476A6100A444C5 /* SZUserUtils.h in Headers */,
@@ -7171,7 +7171,7 @@
 				AA8D34A31533A0AF006B1B41 /* SocializeUILikeOptions.m in Sources */,
 				AA86DB4415364DCB002DE37D /* SocializeThirdPartyLinker.m in Sources */,
 				AA86DB4A15373CD0002DE37D /* SocializeThirdPartyLinkOptions.m in Sources */,
-				AA7F0A5E153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */,
+				AA7F0A5E153CAD7B00EC6DD7 /* SZLikeButton.m in Sources */,
 				AAF60EB915461AD000245867 /* SampleEntityLoader.m in Sources */,
 				AADD17F9154B1E0900ECB1D0 /* SZNavigationController.m in Sources */,
 				AAE56C6C15476A6100A444C5 /* SZUserUtils.m in Sources */,
@@ -7274,7 +7274,7 @@
 				AAE126A7152281C80096BC99 /* SocializeNotificationDisplayControllerTests.m in Sources */,
 				AABA1FC11522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m in Sources */,
 				AAB7B1E2153CEC6000A69D64 /* SocializeUILikeCreatorTests.m in Sources */,
-				AA813807153F4D09007CAE00 /* SocializeLikeButtonTests.m in Sources */,
+				AA813807153F4D09007CAE00 /* SZLikeButtonTests.m in Sources */,
 				AAF3167C15520CB300E4A164 /* api_client.m in Sources */,
 				AAF3167D15520CB300E4A164 /* third_party_link_options.m in Sources */,
 				AAF3167E15520CB300E4A164 /* disable_error_alerts.m in Sources */,
@@ -7575,7 +7575,7 @@
 				AA8D34A41533A0AF006B1B41 /* SocializeUILikeOptions.m in Sources */,
 				AA86DB4515364DCB002DE37D /* SocializeThirdPartyLinker.m in Sources */,
 				AA86DB4B15373CD0002DE37D /* SocializeThirdPartyLinkOptions.m in Sources */,
-				AA7F0A5F153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */,
+				AA7F0A5F153CAD7B00EC6DD7 /* SZLikeButton.m in Sources */,
 				AAF60EBA15461AD000245867 /* SampleEntityLoader.m in Sources */,
 				AADD17FA154B1E0900ECB1D0 /* SZNavigationController.m in Sources */,
 				AAE56C6D15476A6100A444C5 /* SZUserUtils.m in Sources */,

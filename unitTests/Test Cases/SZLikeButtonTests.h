@@ -1,5 +1,5 @@
 //
-//  SocializeLikeButtonTests.h
+//  SZLikeButtonTests.h
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 4/18/12.
@@ -7,10 +7,10 @@
 //
 
 #import "SocializeTestCase.h"
-#import "SocializeLikeButton.h"
+#import "SZLikeButton.h"
 
-@interface SocializeLikeButtonTests : SocializeTestCase
-@property (nonatomic, retain) SocializeLikeButton *likeButton;
+@interface SZLikeButtonTests : SocializeTestCase
+@property (nonatomic, retain) SZLikeButton *likeButton;
 
 @property (nonatomic, retain) id mockEntity;
 @property (nonatomic, retain) id mockActualButton;

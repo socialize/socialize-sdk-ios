@@ -1,5 +1,5 @@
 //
-//  SocializeLikeButton.h
+//  SZLikeButton.h
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 4/16/12.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Socialize.h"
 
-@interface SocializeLikeButton : UIView <SocializeServiceDelegate>
+@interface SZLikeButton : UIView <SocializeServiceDelegate>
 
 @property (nonatomic, retain) UIButton *actualButton;
 

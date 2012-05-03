@@ -106,7 +106,7 @@ NSString *const kSocializeAuthenticationNotRequired = @"kSocializeAuthentication
 NSString *const kSocializeAnonymousAllowed = @"kSocializeAnonymousAllowed";
 
 NSString *const SocializeDidRegisterDeviceTokenNotification = @"SocializeDidRegisterDeviceTokenNotification";
-NSString *const SocializeLikeButtonDidChangeStateNotification = @"SocializeLikeButtonDidChangeStateNotification";
+NSString *const SZLikeButtonDidChangeStateNotification = @"SZLikeButtonDidChangeStateNotification";
 
 
 @implementation Socialize

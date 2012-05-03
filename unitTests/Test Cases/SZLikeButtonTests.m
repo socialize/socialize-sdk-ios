@@ -1,12 +1,12 @@
 //
-//  SocializeLikeButtonTests.m
+//  SZLikeButtonTests.m
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 4/18/12.
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeLikeButtonTests.h"
+#import "SZLikeButtonTests.h"
 #import "SocializeServiceDelegate.h"
 #import "SocializeUserService.h"
 #import "SocializeLikeService.h"
@@ -16,7 +16,7 @@
 static NSInteger authenticatedUserID = 12345;
 static NSString *entityKey = @"entityKey";
 
-@implementation SocializeLikeButtonTests
+@implementation SZLikeButtonTests
 @synthesize likeButton = likeButton_;
 @synthesize mockActualButton = mockActualButton_;
 @synthesize mockEntity = mockEntity_;
@@ -33,7 +33,7 @@ static NSString *entityKey = @"entityKey";
     CGRect testFrame = CGRectMake(0, 0, 60, 30);
     self.mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
     self.mockDisplay = [OCMockObject mockForProtocol:@protocol(SocializeUIDisplay)];
-    self.likeButton = [[[SocializeLikeButton alloc] initWithFrame:testFrame entity:self.mockEntity display:self.mockDisplay] autorelease];
+    self.likeButton = [[[SZLikeButton alloc] initWithFrame:testFrame entity:self.mockEntity display:self.mockDisplay] autorelease];
     
     return self.likeButton;
 }
