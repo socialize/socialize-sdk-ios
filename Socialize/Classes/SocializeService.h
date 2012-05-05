@@ -55,7 +55,7 @@
 -(void)doDidReceiveSocializeObject:(id<SocializeObject>)objectResponse;
 -(void)doDidReceiveReceiveListOfObjects:(NSArray *)objectResponse;
 -(void)doDidFailWithError:(NSError *)error;
-- (void)failWithError:(NSError*)error;
 - (void)cancelAllRequests;
+- (void)failWithRequest:(SocializeRequest*)request error:(NSError*)error;
 
 @end

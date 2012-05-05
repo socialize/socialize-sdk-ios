@@ -64,6 +64,8 @@ running = _running,
 tokenRequest = _tokenRequest;
 @synthesize cancelled = cancelled_;
 @synthesize expectedProtocol = expectedProtocol_;
+@synthesize successBlock = successBlock_;
+@synthesize failureBlock = failureBlock_;
 
 + (NSString *)userAgentString
 {   
@@ -381,6 +383,8 @@ tokenRequest = _tokenRequest;
     // TODO cancelling the datafetcher in dealloc does not make sense (circular reference)
     [_dataFetcher cancel];
     
+    self.successBlock = nil;
+    self.failureBlock = nil;
     [_token release]; _token = nil;
     [_consumer release]; _consumer = nil;
     [_request release]; _request = nil;

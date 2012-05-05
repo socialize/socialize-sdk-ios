@@ -140,13 +140,6 @@
 }
 
 /**
- * Called when an error prevents the request from completing successfully.
- */
-- (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error{
-    [_delegate service:self didFail:error];
-}
-
-/**
  * Called when a request returns and its response has been parsed into
  * an object.
  *
@@ -172,16 +165,19 @@
             [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
             [requestToken release]; requestToken = nil;
             [self persistUserInfo:[jsonObject objectForKey:@"user"]];
-            
-            if (([((NSObject*)_delegate) respondsToSelector:@selector(didAuthenticate:)]) )
+
+            if (request.successBlock != nil) {
+                request.successBlock(self.authenticatedUser);
+            } else if (([_delegate respondsToSelector:@selector(didAuthenticate:)])) {
                 [_delegate didAuthenticate:self.authenticatedUser];
+            }
             
             // Post a global notification that the authenticated user has changed
             [[NSNotificationCenter defaultCenter] postNotificationName:SocializeAuthenticatedUserDidChangeNotification object:self.authenticatedUser];
             
         } else {
             SDebugLog0(@"Unexpected JSON Response: %@", responseBody);
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseBody reason:@"Response Missing OAuth Token and Secret"]];
+            [self failWithRequest:request error:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseBody reason:@"Response Missing OAuth Token and Secret"]];
         }            
     }
     

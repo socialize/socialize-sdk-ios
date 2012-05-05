@@ -102,8 +102,7 @@
      //[self doDidFailWithError:error];
     [self removeRequest:request];
     
-    if([self.delegate respondsToSelector:@selector(service:didFail:)])
-        [self.delegate service:self didFail:error];    
+    [self failWithRequest:request error:error];
     
     [self freeDelegate];
 }
@@ -121,6 +120,15 @@
     }    
     return array;
 }
+
+- (void)invokeCallbackWithRequest:(SocializeRequest*)request object:(id)object selector:(SEL)selector {
+    if (request.successBlock != nil) {
+        request.successBlock(object);
+    } else if ([self.delegate respondsToSelector:selector]) {
+        [self.delegate performSelector:selector withObject:self withObject:object];
+    }
+}
+
 -(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList {
 
     NSMutableArray* array = [self getObjectListArray:objectList];
@@ -129,32 +137,23 @@
     
         if ([request.httpMethod isEqualToString:@"POST"]){
             if ([array count] > 1) {
-                if([self.delegate respondsToSelector:@selector(service:didCreate:)]) {
-                    [self.delegate service:self didCreate:array];
-                }
+                [self invokeCallbackWithRequest:request object:array selector:@selector(service:didCreate:)];
             } else if ([array count] == 1) {
-                if([self.delegate respondsToSelector:@selector(service:didCreate:)]) {
-                    [self.delegate service:self didCreate:[array objectAtIndex:0]];
-                }
+                [self invokeCallbackWithRequest:request object:[array objectAtIndex:0] selector:@selector(service:didCreate:)];
             } else {
-                if([self.delegate respondsToSelector:@selector(service:didCreate:)]) {
-                    [self.delegate service:self didCreate:nil];
-                }
+                [self invokeCallbackWithRequest:request object:nil selector:@selector(service:didCreate:)];
             }
+        } else if ([request.httpMethod isEqualToString:@"GET"]) {
+            [self invokeCallbackWithRequest:request object:array selector:@selector(service:didFetchElements:)];
+        } else if ([request.httpMethod isEqualToString:@"DELETE"]) {
+            [self invokeCallbackWithRequest:request object:objectList selector:@selector(service:didDelete:)];
+        } else if ([request.httpMethod isEqualToString:@"PUT"]) {
+            [self invokeCallbackWithRequest:request object:objectList selector:@selector(service:didUpdate:)];
         }
-        else if ([request.httpMethod isEqualToString:@"GET"] && [self.delegate respondsToSelector:@selector(service:didFetchElements:)])
-            [self.delegate service:self didFetchElements:array];
-        else if ([request.httpMethod isEqualToString:@"DELETE"] && [self.delegate respondsToSelector:@selector(service:didDelete:)])
-            [self.delegate service:self didDelete:objectList];
-        else if ([request.httpMethod isEqualToString:@"PUT"] && [self.delegate respondsToSelector:@selector(service:didUpdate:)])
-            [self.delegate service:self didUpdate:objectList];
     } else {
-        
         switch (request.operationType) {
             case SocializeRequestOperationTypeUpdate:
-                if ([self.delegate respondsToSelector:@selector(service:didUpdate:)]) {
-                    [self.delegate service:self didUpdate:objectList];
-                }
+                [self invokeCallbackWithRequest:request object:objectList selector:@selector(service:didUpdate:)];
                 break;
             default:
                 NSAssert(NO, @"Unhandled operation type %d", request.operationType);
@@ -162,8 +161,10 @@
     }
 }
 
-- (void)failWithError:(NSError*)error {
-    if([self.delegate respondsToSelector:@selector(service:didFail:)]) {
+- (void)failWithRequest:(SocializeRequest*)request error:(NSError*)error {
+    if (request.failureBlock != nil) {
+        request.failureBlock(error);
+    } else if ([self.delegate respondsToSelector:@selector(service:didFail:)]) {
         [self.delegate service:self didFail:error];
     }
 }
@@ -186,7 +187,7 @@
         if (![jsonObject isKindOfClass:[NSDictionary class]])
         {
             // the return object was not what was supposed to be, soo erroring out.
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Expected a Dictionary"]];
+            [self failWithRequest:request error:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Expected a Dictionary"]];
             return;
         }
         NSString* errors = [jsonObject objectForKey:@"errors"];
@@ -194,7 +195,7 @@
         
         if (!errors || !items){
             // we should atleast have elements for erors and items in them.
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Incomplete Response Dictionary"]];
+            [self failWithRequest:request error:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Incomplete Response Dictionary"]];
             return;
         }
         
@@ -205,7 +206,7 @@
         if ([errorResponses isKindOfClass: [NSArray class]]){
             if ([errorResponses count]){
                 // Only treat server errors as failure if at least one exists
-                [self failWithError:[NSError socializeServerReturnedErrorsErrorWithErrorsArray:errorResponses objectsArray:objectResponse]];
+                [self failWithRequest:request error:[NSError socializeServerReturnedErrorsErrorWithErrorsArray:errorResponses objectsArray:objectResponse]];
                 return;
             }
         }
@@ -215,7 +216,7 @@
                 if ([[objectResponse objectAtIndex:0] conformsToProtocol:protocolType]) {
                     [self invokeAppropriateCallback:request objectList:objectResponse errorList:errorResponses];
                 } else {
-                    [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Object did not conform to expected data protocol"]];
+                    [self failWithRequest:request error:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Object did not conform to expected data protocol"]];
                 }
             }
             else {
@@ -223,7 +224,7 @@
             }
         }
         else {
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Expected an Array"]];
+            [self failWithRequest:request error:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Expected an Array"]];
         }
     }
     else if (request.expectedJSONFormat == SocializeDictionary) {
@@ -231,7 +232,7 @@
         if ([objectResponse conformsToProtocol:protocolType]) {
             [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
         } else {
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Object did not conform to expected data protocol"]];
+            [self failWithRequest:request error:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Object did not conform to expected data protocol"]];
         }
     }
     else if (request.expectedJSONFormat == SocializeList){
@@ -243,13 +244,13 @@
                 if ([[objectResponse objectAtIndex:0] conformsToProtocol:protocolType])
                     [self invokeAppropriateCallback:request objectList:objectResponse errorList:nil];
                 else {
-                    [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Object did not conform to expected data protocol"]];
+                    [self failWithRequest:request error:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Object did not conform to expected data protocol"]];
                 }
             } else {
-                [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Expected List of One or More Items (Found None)"]];
+                [self failWithRequest:request error:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Expected List of One or More Items (Found None)"]];
             }
         } else {
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Expected an Array"]];
+            [self failWithRequest:request error:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Expected an Array"]];
         }
     }
 }
