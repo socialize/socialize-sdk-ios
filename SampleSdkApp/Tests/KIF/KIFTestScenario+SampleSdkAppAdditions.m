@@ -80,7 +80,7 @@
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Featured"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Action Bar!"]];
     [scenario addStep:[KIFTestStep stepToWaitForAbsenceOfViewWithAccessibilityLabel:@"In progress"]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
+//    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
     
     // Verify we can like
     [scenario addStepsFromArray:[KIFTestStep stepsToLikeOnActionBar]];
@@ -92,7 +92,7 @@
     [scenario addStepsFromArray:[KIFTestStep stepsToCreateComment:@"actionbar comment"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Close"]];
     [scenario addStep:[KIFTestStep stepToCheckAccessibilityLabel:@"comment button" hasValue:@"1"]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
+//    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
     
     // Post a share
     [scenario addStep:[KIFTestStep stepToEnableValidFacebookSession]];
@@ -102,7 +102,7 @@
 //    [scenario addStepsFromArray:[KIFTestStep stepsToCreateShare:@"actionbar share"]];
     [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Do you want to log in with Facebook?"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"No"]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
+//    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
     [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
     
     [scenario addStep:[KIFTestStep stepToEnableValidFacebookSession]];
@@ -111,7 +111,7 @@
 //    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Do you want to log in with Twitter?"]];
 //    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Yes"]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
+//    [scenario addStepsFromArray:[KIFTestStep stepsToVerifyActionBarViewsAtCount:2]];
     [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
 
 
