@@ -4,6 +4,16 @@
 Changelog
 =============================================
 
+v1.7.3
+------
+[bug] Cancelling auth does not work from post comment [ ui ]
+
+[bug] Action Bar should not refetch entity after view creation [ actionbar ]
+
+[bug] Entity name should show on facebook wall comment. like, share [ facebook ]
+
+[bug] Remove "using Socialize for iOS" from Facebook wall posts [ ]
+
 v1.7.2
 ------
 [bug] Fix bug where sms share might be sent to twitter [ ]
