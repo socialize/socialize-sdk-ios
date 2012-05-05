@@ -35,7 +35,11 @@
 - (NSString*)textForFacebook {
     NSString *entityURL = [self facebookEntityURLFromPropagationInfo];
     
-    return [NSMutableString stringWithFormat:@"%@ \n\n %@", entityURL, self.comment.text];
+    if ([self.activity.entity.name length] > 0) {
+        return [NSString stringWithFormat:@"%@: %@ \n\n %@", self.activity.entity.name, entityURL, self.comment.text];
+    } else {
+        return [NSString stringWithFormat:@"%@ \n\n %@", entityURL, self.comment.text];    
+    }
 }
 
 - (void)createActivityOnSocializeServer {
