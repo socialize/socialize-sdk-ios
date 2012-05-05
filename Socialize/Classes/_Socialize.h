@@ -832,4 +832,9 @@ otherwise you will get a failure.
  */
 - (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values;
 
+- (void)updateUserProfile:(id<SocializeFullUser>)user
+             profileImage:(UIImage*)image
+                  success:(void(^)(id<SocializeFullUser> user))success
+                  failure:(void(^)(NSError *error))failure;
+
 @end

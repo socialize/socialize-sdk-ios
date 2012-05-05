@@ -167,7 +167,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     // Save Button turns off
     [[self.mockSaveButton expect] setEnabled:NO];
 
-    [[self.mockSocialize expect] updateUserProfile:mockCopyUser profileImage:mockImage];
+    [[self.mockSocialize expect] updateUserProfile:mockCopyUser profileImage:mockImage success:OCMOCK_ANY failure:OCMOCK_ANY];
     [self.profileEditViewController saveButtonPressed:nil];
 }
 
@@ -567,33 +567,6 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
 - (void)expectServiceFailure {
     [[self.mockSaveButton expect] setEnabled:YES];
     [super expectServiceFailure];
-}
-
-- (void)testServiceFailureTurnsOffFacebookButton {
-    
-    // Facebook must be available for the interface to be shown
-    self.twitterAvailable = NO;
-    self.facebookAvailable = YES;
-
-    // Don't care about this mock
-    [self.mockTwitterSwitch makeNice];
-    
-    // Make sure any initial state is set
-    [self performViewDidLoad];
-    
-    // Facebook inactive
-    self.isAuthenticatedWithFacebook = NO;
-    
-    // Switch is on (but shouldn't be anymore)
-    [[[self.mockFacebookSwitch stub] andReturnBool:YES] isOn];
-    
-    // Should turn off
-    [[self.mockFacebookSwitch expect] setOn:NO animated:YES];
-    
-    // Expect common failure
-    [self expectServiceFailure];
-    
-    [self.profileEditViewController service:nil didFail:nil];
 }
 
 - (void)testUserUpdateSentToServer {

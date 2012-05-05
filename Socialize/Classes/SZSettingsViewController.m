@@ -209,7 +209,17 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         self.saveButton.enabled = NO;
         
         SocializeFullUser *newUser = [[(SocializeFullUser*)self.fullUser copy] autorelease];
-        [self.socialize updateUserProfile:newUser profileImage:self.profileImage];
+        [self.socialize updateUserProfile:newUser profileImage:self.profileImage
+                                  success:^(id<SocializeFullUser> fullUser) {
+                                      self.fullUser = fullUser;
+                                      [self stopLoading];
+                                      [self dismissSelfAfterSave];
+                                  } failure:^(NSError *error) {
+                                      [self stopLoading];
+                                      self.saveButton.enabled = YES;
+                                      [self updateInterfaceToReflectSessionStatuses];
+                                      [self failWithError:error];
+                                  }];
     } else {
         [self dismissSelfAfterSave];
     }
@@ -786,13 +796,6 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     [self stopLoading];
     
     [self dismissSelfAfterSave];
-}
-
--(void)service:(SocializeService*)service didFail:(NSError*)error
-{
-    [self updateInterfaceToReflectSessionStatuses];
-    self.saveButton.enabled = YES;
-    [super service:service didFail:error];
 }
 
 - (void)didAuthenticate:(id<SocializeUser>)user {

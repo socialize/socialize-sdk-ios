@@ -626,6 +626,13 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_userService updateUser:user profileImage:profileImage];
 }
 
+- (void)updateUserProfile:(id<SocializeFullUser>)user
+             profileImage:(UIImage*)image
+                  success:(void(^)(id<SocializeFullUser> user))success
+                  failure:(void(^)(NSError *error))failure {
+    [_userService updateUser:user profileImage:image success:success failure:failure];
+}
+
 - (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
     [_userService getLikesForUser:user entity:entity first:first last:last];
 }

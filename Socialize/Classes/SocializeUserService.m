@@ -75,6 +75,14 @@
 }
 
 -(void) updateUser:(id<SocializeFullUser>)user profileImage:(UIImage*)image {
+    [self updateUser:user profileImage:image success:nil failure:nil];
+}
+
+- (void)updateUser:(id<SocializeFullUser>)user
+      profileImage:(UIImage*)image
+           success:(void(^)(id<SocializeFullUser> user))success
+           failure:(void(^)(NSError *error))failure {
+    
     // Build the request in the background, as profile image can be large
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString* userResource = USER_POST_ENDPOINT(user.objectID);
@@ -94,8 +102,12 @@
                                                          expectedJSONFormat:SocializeDictionary
                                                                      params:params];
         request.operationType = SocializeRequestOperationTypeUpdate;
+        request.successBlock = success;
+        request.failureBlock = failure;
+        
         [self executeRequest:request];
     });
+
 }
 
 - (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
