@@ -280,22 +280,26 @@
     [self.socialize getEntityByKey:self.entity.key];
 }
 
-- (void)finishedGettingEntities:(NSArray*)entities {
-    if ([entities count] < 1) {
-        return;
-    }
-    
-    if (!self.initialized) {
-        self.initialized = YES;
-        [(SocializeActionView*)self.view showButtons];
-    }
-    
-    id<SocializeEntity> entity = [entities objectAtIndex:0];
+- (void)updateEntity:(id<SocializeEntity>)entity {
     self.entity = entity;
     [(SocializeActionView*)self.view updateCountsWithViewsCount:[NSNumber numberWithInt:entity.views]
                                                  withLikesCount:[NSNumber numberWithInt:entity.likes]
                                                         isLiked:self.entityLike != nil
                                               withCommentsCount:[NSNumber numberWithInt:entity.comments]];    
+    
+    if (!self.initialized) {
+        self.initialized = YES;
+        [(SocializeActionView*)self.view showButtons];
+    }
+}
+
+- (void)finishedGettingEntities:(NSArray*)entities {
+    if ([entities count] < 1) {
+        return;
+    }
+    
+    id<SocializeEntity> entity = [entities objectAtIndex:0];
+    [self updateEntity:entity];
 }
 
 - (void)askServerForExistingLike {
@@ -363,12 +367,14 @@
 -(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object
 {
     if ([object conformsToProtocol:@protocol(SocializeView)]) {
-        [self finishedCreatingView:(id<SocializeView>)object];
+        id<SocializeView> view = (id<SocializeView>)object;
+        [self finishedCreatingView:view];
+        [self updateEntity:view.entity];
     } else if ([object conformsToProtocol:@protocol(SocializeLike)]) {
-        [self finishedCreatingLike:(id<SocializeLike>)object];
+        id<SocializeLike> like = (id<SocializeLike>)object;
+        [self finishedCreatingLike:like];
+        [self updateEntity:like.entity];
     } 
-    
-    [self reloadEntity];
 }
 
 -(void)service:(SocializeService*)service didFail:(NSError*)error

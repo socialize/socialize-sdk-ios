@@ -73,7 +73,7 @@
     NSMutableString *message = [[[self textForFacebook] mutableCopy] autorelease];
     
     if (![Socialize disableBranding]) {
-        [message appendFormat:@"\n\n Shared from %@ using Socialize for iOS.", self.activity.application.name];
+        [message appendFormat:@"\n\n Shared from %@.", self.activity.application.name];
     }
 
     return message;
