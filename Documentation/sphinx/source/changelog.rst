@@ -4,6 +4,34 @@
 Changelog
 =============================================
 
+v1.7.3
+------
+[bug] Cancelling auth does not work from post comment [ ui ]
+
+[bug] Action Bar should not refetch entity after view creation [ actionbar ]
+
+[bug] Entity name should show on facebook wall comment. like, share [ facebook ]
+
+[bug] Remove "using Socialize for iOS" from Facebook wall posts [ ]
+
+v1.7.2
+------
+[bug] Fix bug where sms share might be sent to twitter [ ]
+
+[bug] Activity creates slow due to too many url shortens [ ]
+
+[feature] Expose socialize branded navigation controller [ ]
+
+[feature] Clean up static utilities for profile and profile edit [ ]
+
+[feature] Expose authenticated full user object (previously partial user) [ ]
+
+[feature] Improve quality of code samples [ ]
+
+[feature] Change title of Profile Edit to Settings [ ]
+
+[bug] iPad is crashing when updating profile (UIImagePickerController) [ ]
+
 v1.7.1
 ------
 [bug] Fix PostComment keyboard crash after low-memory event [ crash memory ]

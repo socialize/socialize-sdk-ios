@@ -32,9 +32,12 @@
 
 - (NSString*)textForFacebook {
     NSString *objectURL = [NSString stringWithSocializeURLForObject:self.like.entity];
-    NSMutableString* message = [NSMutableString stringWithFormat:@"Liked %@", objectURL];
     
-    return message;
+    if ([self.like.entity.name length] > 0) {
+        return [NSString stringWithFormat:@"Liked %@ (%@)", self.like.entity.name, objectURL];
+    } else {
+        return [NSString stringWithFormat:@"Liked %@", objectURL];
+    }
 }
 
 - (void)createActivityOnSocializeServer {

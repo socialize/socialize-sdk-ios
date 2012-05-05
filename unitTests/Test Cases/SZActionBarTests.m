@@ -153,15 +153,18 @@
     return mockLike;
 }
 
-- (void)testFinishCreatingLikeUpdatesLikesAndUpdatesFacebookAndReloadsEntity {
+- (void)testFinishCreatingLikeUpdatesLikesAndUpdatesFacebook {
     NSInteger testLikes = 1234;
     id mockLike = [self createMockLikeWithLikes:testLikes];
     
     [[self.mockActionView expect] unlockButtons];
     [[self.mockActionView expect] updateLikesCount:[NSNumber numberWithInt:testLikes] liked:YES];
     [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticatedWithFacebook];
-//    [[(id)self.actionBar expect] sendActivityToFacebookFeed:mockLike];
-    [[self.mockSocialize expect] getEntityByKey:TEST_ENTITY_URL];
+    
+    [[[(id)[mockLike entity] expect] andReturnInteger:11] views];
+    [[[(id)[mockLike entity] expect] andReturnInteger:22] likes];
+    [[[(id)[mockLike entity] expect] andReturnInteger:33] comments];
+    [self.mockActionView makeNice];
     
     [self.actionBar service:nil didCreate:mockLike];
 }
