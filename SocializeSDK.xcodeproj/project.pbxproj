@@ -670,6 +670,10 @@
 		AA156BF015213E6400EB2D53 /* socialize_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AA156AF11521109800EB2D53 /* socialize_logo.png */; };
 		AA156BF115213E6400EB2D53 /* socialize_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AA156AF11521109800EB2D53 /* socialize_logo.png */; };
 		AA18A951150BD4360013CF9E /* SocializeUIShareOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE09C7E14F994670093CDA9 /* SocializeUIShareOptions.h */; };
+		AA1A2DF4155864020085D0D9 /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1A2DF3155864020085D0D9 /* SampleListViewController.m */; };
+		AA1A2DF5155864020085D0D9 /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1A2DF3155864020085D0D9 /* SampleListViewController.m */; };
+		AA1A2DF7155876990085D0D9 /* SampleListViewController.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA1A2DF6155876990085D0D9 /* SampleListViewController.plist */; };
+		AA1A2DF8155876990085D0D9 /* SampleListViewController.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA1A2DF6155876990085D0D9 /* SampleListViewController.plist */; };
 		AA1F1AEF14AA9AE000B83792 /* PropertyHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1F1AEE14AA9AE000B83792 /* PropertyHelpers.h */; };
 		AA1F1AF014AA9AE000B83792 /* PropertyHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1F1AEE14AA9AE000B83792 /* PropertyHelpers.h */; };
 		AA2024EF144CA77D006C1F8F /* SZActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 1638C521143DC96A00538659 /* SZActionBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2711,6 +2715,9 @@
 		AA156AE61521102400EB2D53 /* SocializeDummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDummyViewController.m; path = Classes/SocializeDummyViewController.m; sourceTree = "<group>"; };
 		AA156AEE1521105200EB2D53 /* SocializeDummyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeDummyViewController.xib; path = Resources/SocializeDummyViewController.xib; sourceTree = "<group>"; };
 		AA156AF11521109800EB2D53 /* socialize_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = socialize_logo.png; path = Resources/socialize_logo.png; sourceTree = "<group>"; };
+		AA1A2DF2155864020085D0D9 /* SampleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleListViewController.h; sourceTree = "<group>"; };
+		AA1A2DF3155864020085D0D9 /* SampleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleListViewController.m; sourceTree = "<group>"; };
+		AA1A2DF6155876990085D0D9 /* SampleListViewController.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SampleListViewController.plist; sourceTree = "<group>"; };
 		AA1F1AEE14AA9AE000B83792 /* PropertyHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PropertyHelpers.h; path = Classes/PropertyHelpers.h; sourceTree = "<group>"; };
 		AA26DD30146AF87E00AA25BF /* SocializeProfileEditValueViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeProfileEditValueViewControllerTest.h; path = "Test Cases/SocializeProfileEditValueViewControllerTest.h"; sourceTree = "<group>"; };
 		AA26DD31146AF87E00AA25BF /* SocializeProfileEditValueViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeProfileEditValueViewControllerTest.m; path = "Test Cases/SocializeProfileEditValueViewControllerTest.m"; sourceTree = "<group>"; };
@@ -4707,6 +4714,9 @@
 				AA03AC0015420164009AC508 /* TestLikeButton.h */,
 				AA03AC0115420164009AC508 /* TestLikeButton.m */,
 				AA03AC0215420164009AC508 /* TestLikeButton.xib */,
+				AA1A2DF2155864020085D0D9 /* SampleListViewController.h */,
+				AA1A2DF3155864020085D0D9 /* SampleListViewController.m */,
+				AA1A2DF6155876990085D0D9 /* SampleListViewController.plist */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -6291,6 +6301,7 @@
 				AA03AC0815420164009AC508 /* TestLikeButton.xib in Resources */,
 				AAA4901D1553054E003FB943 /* TestSZActionBar.xib in Resources */,
 				AAA490211553054E003FB943 /* TestTabbedSZActionBar.xib in Resources */,
+				AA1A2DF8155876990085D0D9 /* SampleListViewController.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6577,6 +6588,7 @@
 				AA03AC0615420164009AC508 /* TestLikeButton.xib in Resources */,
 				AAA4901C1553054E003FB943 /* TestSZActionBar.xib in Resources */,
 				AAA490201553054E003FB943 /* TestTabbedSZActionBar.xib in Resources */,
+				AA1A2DF7155876990085D0D9 /* SampleListViewController.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7330,6 +7342,7 @@
 				AA03AC0515420164009AC508 /* TestLikeButton.m in Sources */,
 				AAA4901B1553054E003FB943 /* TestSZActionBar.m in Sources */,
 				AAA4901F1553054E003FB943 /* TestTabbedSZActionBar.m in Sources */,
+				AA1A2DF5155864020085D0D9 /* SampleListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7383,6 +7396,7 @@
 				AA03AC0315420164009AC508 /* TestLikeButton.m in Sources */,
 				AAA4901A1553054E003FB943 /* TestSZActionBar.m in Sources */,
 				AAA4901E1553054E003FB943 /* TestTabbedSZActionBar.m in Sources */,
+				AA1A2DF4155864020085D0D9 /* SampleListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

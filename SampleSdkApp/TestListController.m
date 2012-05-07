@@ -23,6 +23,7 @@
 #import "TestTabbedSZActionBar.h"
 //#import "UINavigationController+Socialize.h"
 #import "TestLikeButton.h"
+#import "SampleListViewController.h"
 
 #if RUN_KIF_TESTS
 #import <OCMock/OCMock.h>
@@ -56,6 +57,7 @@
                       @"Test Direct URL Notification",
                       @"Test Direct Entity Notification",
                       @"Test Standalone Buttons",
+                      @"Test New List",
                       nil
                       ]retain];
 
@@ -345,6 +347,11 @@
             }
 
         }
+        case 19:
+        {
+            SampleListViewController *sampleList = [[[SampleListViewController alloc] init] autorelease];
+            [self.navigationController pushViewController:sampleList animated:YES];
+        }   
   
 
     }    
