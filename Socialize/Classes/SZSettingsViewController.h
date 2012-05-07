@@ -62,6 +62,7 @@ typedef enum {
 
 + (UINavigationController*)profileEditViewControllerInNavigationController;
 + (SZSettingsViewController*)profileEditViewController;
++ (SZSettingsViewController*)settingsViewController;
 
 - (NSString*)keyPathForPropertiesRow:(SZSettingsViewControllerPropertiesRow)row;
 -(void) showActionSheet;

@@ -80,6 +80,10 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 + (SZSettingsViewController*)profileEditViewController {
+    return [self settingsViewController];
+}
+
++ (SZSettingsViewController*)settingsViewController {
     return [[[[self class] alloc] init] autorelease];
 }
 

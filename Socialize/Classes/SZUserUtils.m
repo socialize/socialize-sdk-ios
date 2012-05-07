@@ -15,21 +15,25 @@
 
 @implementation SZUserUtils
 
-+ (void)showUserProfileWithDisplay:(id<SocializeUIDisplay>)display user:(id<SocializeUser>)user {
++ (void)showUserProfileWithViewController:(UIViewController*)viewController user:(id<SocializeUser>)user {
     SZProfileViewController *profile = [SZProfileViewController profileViewController];
-    SocializeUIDisplayProxy *proxy = [SocializeUIDisplayProxy UIDisplayProxyWithObject:profile display:display];
+    SocializeUIDisplayProxy *proxy = [SocializeUIDisplayProxy UIDisplayProxyWithObject:profile display:viewController];
     profile.displayProxy = proxy;
     profile.user = user;
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
     [proxy presentModalViewController:nav];
 }
 
-+ (void)showUserSettingsWithDisplay:(id<SocializeUIDisplay>)display {
-    
++ (void)showUserSettingsWithViewController:(UIViewController*)viewController {
+    SZSettingsViewController *settings = [SZSettingsViewController settingsViewController];
+    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:settings] autorelease];
+    SocializeUIDisplayProxy *proxy = [SocializeUIDisplayProxy UIDisplayProxyWithObject:settings display:viewController];
+    settings.displayProxy = proxy;
+    [proxy presentModalViewController:nav];
 }
 
-+ (void)saveUserSettings:(id<SocializeFullUser>)user success:(void(^)(id<SocializeFullUser> user))success failure:(void(^)(NSError *error))failure {
-
++ (void)saveUserSettings:(id<SocializeFullUser>)user profileImage:(UIImage*)image success:(void(^)(id<SocializeFullUser> user))success failure:(void(^)(NSError *error))failure {
+    [[Socialize sharedSocialize] updateUserProfile:user profileImage:image success:success failure:failure];
 }
 
 + (id<SocializeFullUser>)currentUser {
