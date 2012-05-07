@@ -15,11 +15,11 @@
 
 @implementation SZUserUtils
 
-+ (void)showUserProfileWithViewController:(UIViewController*)viewController user:(id<SocializeUser>)user {
++ (void)showUserProfileWithViewController:(UIViewController*)viewController user:(id<SocializeFullUser>)user {
     SZProfileViewController *profile = [SZProfileViewController profileViewController];
     SocializeUIDisplayProxy *proxy = [SocializeUIDisplayProxy UIDisplayProxyWithObject:profile display:viewController];
     profile.displayProxy = proxy;
-    profile.user = user;
+    profile.fullUser = user;
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
     [proxy presentModalViewController:nav];
 }

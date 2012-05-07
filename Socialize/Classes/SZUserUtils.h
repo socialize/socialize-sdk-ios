@@ -13,10 +13,9 @@
 
 @interface SZUserUtils : NSObject
 
-+ (void)showUserProfileWithViewController:(UIViewController*)viewController user:(id<SocializeUser>)user;
++ (void)showUserProfileWithViewController:(UIViewController*)viewController user:(id<SocializeFullUser>)user;
 + (void)showUserSettingsWithViewController:(UIViewController*)viewController;
 + (void)saveUserSettings:(id<SocializeFullUser>)user profileImage:(UIImage*)image success:(void(^)(id<SocializeFullUser> user))success failure:(void(^)(NSError *error))failure;
-
 + (id<SocializeFullUser>)currentUser;
 
 @end

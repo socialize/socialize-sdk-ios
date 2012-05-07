@@ -21,6 +21,7 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "NSObject+ClassMock.h"
 #import "SocializeTwitterAuthenticator.h"
+#import "SZUserUtils.h"
 
 @interface SZSettingsViewController ()
 - (void)cancelButtonPressed:(UIButton*)button;
@@ -63,6 +64,7 @@
     [SocializeThirdPartyFacebook startMockingClass];
     [SocializeFacebookAuthenticator startMockingClass];
     [SocializeTwitterAuthenticator startMockingClass];
+    [SZUserUtils startMockingClass];
     
     [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithTwitter; } ] isLinkedToSocialize];
     [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.twitterAvailable; } ] available];
@@ -116,6 +118,7 @@
     [SocializeThirdPartyFacebook stopMockingClassAndVerify];
     [SocializeFacebookAuthenticator stopMockingClassAndVerify];
     [SocializeTwitterAuthenticator stopMockingClassAndVerify];
+    [SZUserUtils stopMockingClassAndVerify];
 
     [self.mockDelegate verify];
     [self.mockTableView verify];
@@ -167,7 +170,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     // Save Button turns off
     [[self.mockSaveButton expect] setEnabled:NO];
 
-    [[self.mockSocialize expect] updateUserProfile:mockCopyUser profileImage:mockImage success:OCMOCK_ANY failure:OCMOCK_ANY];
+    [[SZUserUtils expect] saveUserSettings:mockCopyUser profileImage:mockImage success:OCMOCK_ANY failure:OCMOCK_ANY];
     [self.profileEditViewController saveButtonPressed:nil];
 }
 

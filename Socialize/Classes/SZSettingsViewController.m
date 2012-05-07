@@ -21,6 +21,7 @@
 #import "SocializeTwitterAuthenticator.h"
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
+#import "SZUserUtils.h"
 
 @interface SZSettingsViewController ()
 
@@ -213,7 +214,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         self.saveButton.enabled = NO;
         
         SocializeFullUser *newUser = [[(SocializeFullUser*)self.fullUser copy] autorelease];
-        [self.socialize updateUserProfile:newUser profileImage:self.profileImage
+        [SZUserUtils saveUserSettings:newUser profileImage:self.profileImage
                                   success:^(id<SocializeFullUser> fullUser) {
                                       self.fullUser = fullUser;
                                       [self stopLoading];
