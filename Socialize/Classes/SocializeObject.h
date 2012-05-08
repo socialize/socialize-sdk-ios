@@ -39,11 +39,3 @@
 @property(nonatomic, assign) int objectID;
 
 @end
-
-// Protocol
-@protocol SZObject <SocializeObject>
-@end
-
-// Class
-typedef SocializeObject SZObject;
-

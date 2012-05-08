@@ -34,9 +34,3 @@
 @property(nonatomic, copy) NSString * name;
 @end
 
-// Protocol
-@protocol SZApplication <SocializeApplication>
-@end
-
-// Class
-typedef SocializeApplication SZApplication;

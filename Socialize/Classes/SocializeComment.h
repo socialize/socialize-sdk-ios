@@ -45,10 +45,3 @@
 
 @end
 
-// Protocol
-@protocol SZComment <SocializeComment>
-@end
-
-// Class
-typedef SocializeComment SZComment;
-

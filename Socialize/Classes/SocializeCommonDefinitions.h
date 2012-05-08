@@ -91,3 +91,17 @@ typedef SZActionBar SocializeActionBar __attribute__((deprecated("Please use SZA
 #define SocializeActionBarDelegate SZActionBarDelegate
 typedef SZLikeButton SocializeLikeButton __attribute__((deprecated("Please use SZLikeButton")));
 
+#define SZActivity SocializeActivity
+#define SZApplication SocializeApplication
+#define SZComment SocializeComment
+#define SZDeviceToken SocializeDeviceToken
+#define SZEntity SocializeEntity
+#define SZObject SocializeObject
+#define SZUser SocializeUser
+#define SZFullUser SocializeFullUser
+#define SZLike SocializeLike
+#define SZView SocializeView
+#define SZShare SocializeShare
+#define SZSubscription SocializeSubscription
+#define SZError SocializeError
+

@@ -27,10 +27,3 @@
 
 
 @end
-
-// Protocol
-@protocol SZView <SocializeView>
-@end
-
-// Class
-typedef SocializeView SZView;

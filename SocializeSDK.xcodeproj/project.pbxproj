@@ -1224,6 +1224,10 @@
 		AA7F8BA715589A77000ADA70 /* SocializeError.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BA215589A75000ADA70 /* SocializeError.m */; };
 		AA7F8BA815589A77000ADA70 /* SocializeSubscription.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BA315589A76000ADA70 /* SocializeSubscription.h */; };
 		AA7F8BA915589A77000ADA70 /* SocializeSubscription.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BA315589A76000ADA70 /* SocializeSubscription.h */; };
+		AA7F8BAC1558D399000ADA70 /* SZShareUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */; };
+		AA7F8BAD1558D399000ADA70 /* SZShareUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */; };
+		AA7F8BAE1558D399000ADA70 /* SZShareUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */; };
+		AA7F8BAF1558D399000ADA70 /* SZShareUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */; };
 		AA7FB8B51491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
 		AA7FB8B61491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
 		AA7FB8B71491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
@@ -2824,6 +2828,8 @@
 		AA7F8BA115589A74000ADA70 /* SocializeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeError.h; path = Classes/SocializeError.h; sourceTree = "<group>"; };
 		AA7F8BA215589A75000ADA70 /* SocializeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeError.m; path = Classes/SocializeError.m; sourceTree = "<group>"; };
 		AA7F8BA315589A76000ADA70 /* SocializeSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeSubscription.h; path = Classes/SocializeSubscription.h; sourceTree = "<group>"; };
+		AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZShareUtils.h; path = Classes/SZShareUtils.h; sourceTree = "<group>"; };
+		AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZShareUtils.m; path = Classes/SZShareUtils.m; sourceTree = "<group>"; };
 		AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-highlighted.png"; path = "Resources/socialize-iphone-notification-button-highlighted.png"; sourceTree = "<group>"; };
 		AA7FB8941491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-highlighted@2x.png"; path = "Resources/socialize-iphone-notification-button-highlighted@2x.png"; sourceTree = "<group>"; };
 		AA7FB8951491415600B018DE /* socialize-iphone-notification-button-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-normal.png"; path = "Resources/socialize-iphone-notification-button-normal.png"; sourceTree = "<group>"; };
@@ -4764,6 +4770,8 @@
 			children = (
 				AAE56C6815476A6100A444C5 /* SZUserUtils.h */,
 				AAE56C6915476A6100A444C5 /* SZUserUtils.m */,
+				AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */,
+				AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -5160,6 +5168,7 @@
 				AAE56C6B15476A6100A444C5 /* SZUserUtils.h in Headers */,
 				AA7F8BA515589A77000ADA70 /* SocializeError.h in Headers */,
 				AA7F8BA915589A77000ADA70 /* SocializeSubscription.h in Headers */,
+				AA7F8BAD1558D399000ADA70 /* SZShareUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5320,6 +5329,7 @@
 				AAE56C6A15476A6100A444C5 /* SZUserUtils.h in Headers */,
 				AA7F8BA415589A77000ADA70 /* SocializeError.h in Headers */,
 				AA7F8BA815589A77000ADA70 /* SocializeSubscription.h in Headers */,
+				AA7F8BAC1558D399000ADA70 /* SZShareUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7185,6 +7195,7 @@
 				AADD17F9154B1E0900ECB1D0 /* SZNavigationController.m in Sources */,
 				AAE56C6C15476A6100A444C5 /* SZUserUtils.m in Sources */,
 				AA7F8BA615589A77000ADA70 /* SocializeError.m in Sources */,
+				AA7F8BAE1558D399000ADA70 /* SZShareUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7591,6 +7602,7 @@
 				AADD17FA154B1E0900ECB1D0 /* SZNavigationController.m in Sources */,
 				AAE56C6D15476A6100A444C5 /* SZUserUtils.m in Sources */,
 				AA7F8BA715589A77000ADA70 /* SocializeError.m in Sources */,
+				AA7F8BAF1558D399000ADA70 /* SZShareUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

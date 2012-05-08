@@ -41,10 +41,3 @@
 @property (nonatomic, copy) NSString* payload;
 
 @end
-
-// Protocol
-@protocol SZError <SocializeError>
-@end
-
-// Class
-typedef SocializeError SZError;
