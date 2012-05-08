@@ -98,3 +98,10 @@
 + (SocializeEntity*)entityWithKey:(NSString*)key name:(NSString*)name;
 
 @end
+
+// Protocol
+@protocol SZEntity <SocializeEntity>
+@end
+
+// Class
+typedef SocializeEntity SZEntity;

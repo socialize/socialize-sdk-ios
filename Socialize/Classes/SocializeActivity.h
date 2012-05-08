@@ -160,3 +160,9 @@
 @property (nonatomic, copy) NSArray *propagationInfoResponse;
 
 @end
+
+@protocol SZActivity <SocializeActivity>
+@end
+
+typedef SocializeActivity SZActivity;
+

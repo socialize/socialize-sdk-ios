@@ -125,3 +125,10 @@
 
 @end
 
+// Protocol
+@protocol SZFullUser <SocializeFullUser>
+@end
+
+// Class
+typedef SocializeFullUser SZFullUser;
+

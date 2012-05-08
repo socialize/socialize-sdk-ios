@@ -30,3 +30,10 @@
 @property (nonatomic, assign) NSInteger medium;
 
 @end
+
+// Protocol
+@protocol SZShare <SocializeShare>
+@end
+
+// Class
+typedef SocializeShare SZShare;

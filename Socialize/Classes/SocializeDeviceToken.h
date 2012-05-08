@@ -33,3 +33,11 @@
 @property (nonatomic,retain) id<SocializeUser> user;
 @property (nonatomic,retain) id<SocializeApplication> application;
 @end
+
+// Protocol
+@protocol SZDeviceToken <SocializeDeviceToken>
+@end
+
+// Class
+typedef SocializeDeviceToken SZDeviceToken;
+

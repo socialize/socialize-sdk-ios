@@ -92,3 +92,10 @@
 @property (nonatomic, copy) NSString * type;
 
 @end
+
+// Protocol
+@protocol SZSubscription <SocializeSubscription>
+@end
+
+// Class
+typedef SocializeSubscription SZSubscription;

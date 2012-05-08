@@ -24,3 +24,10 @@
 + (SocializeLike*)likeWithEntity:(id<SocializeEntity>)entity;
 
 @end
+
+// Protocol
+@protocol SZLike <SocializeLike>
+@end
+
+// Class
+typedef SocializeLike SZLike;

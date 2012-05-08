@@ -44,3 +44,11 @@
 + (SocializeComment*)commentWithEntity:(id<SocializeEntity>)entity text:(NSString*)text;
 
 @end
+
+// Protocol
+@protocol SZComment <SocializeComment>
+@end
+
+// Class
+typedef SocializeComment SZComment;
+

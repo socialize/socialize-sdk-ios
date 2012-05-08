@@ -66,3 +66,11 @@
 @property (nonatomic, copy) NSArray* thirdPartyAuth;
 
 @end
+
+
+// Protocol
+@protocol SZUser <SocializeUser>
+@end
+
+// Class
+typedef SocializeUser SZUser;
