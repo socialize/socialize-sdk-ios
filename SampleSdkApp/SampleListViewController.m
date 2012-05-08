@@ -8,6 +8,9 @@
 
 #import "SampleListViewController.h"
 #import "SZUserUtils.h"
+#import "SZShareUtils.h"
+#import "SocializeEntity.h"
+#import "UIAlertView+BlocksKit.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -19,6 +22,7 @@ static NSString *kRowExecutionBlock = @"kRowExecutionBlock";
 static NSString *kRowText = @"kRowText";
 
 static NSString *kUserSection = @"kUserSection";
+static NSString *kShareSection = @"kShareSection";
 
 @interface SampleListViewController ()
 @property (nonatomic, retain) NSArray *sections;
@@ -47,10 +51,27 @@ static NSString *kUserSection = @"kUserSection";
         [SZUserUtils showUserSettingsWithViewController:self];
     }]];
     
+    // Share Utilities
+    NSMutableArray *shareRows = [NSMutableArray array];
+    
+    [shareRows addObject:[self rowWithText:@"Share Via Email" executionBlock:^{
+        SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
+        [SZShareUtils shareViaEmailWithViewController:self entity:entity success:^(id<SZShare> share) {
+            [UIAlertView showAlertWithTitle:@"Share successful" message:nil buttonTitle:@"OK" handler:nil];
+        } failure:^(NSError *error) {
+            NSString *reason = [NSString stringWithFormat:@"Share failed: %@", [error localizedDescription]];
+            [UIAlertView showAlertWithTitle:reason message:nil buttonTitle:@"Ok" handler:nil];
+        }];
+    }]];
+    
     return [NSArray arrayWithObjects:
             [self sectionWithIdentifier:kUserSection
                                   title:@"User Utilities"
                                    rows:userRows],
+            [self sectionWithIdentifier:kShareSection
+                                  title:@"Share Utilities"
+                                   rows:shareRows],
+
             nil];
 }
 

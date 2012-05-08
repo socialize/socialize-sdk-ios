@@ -345,15 +345,14 @@
                 UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:testLike] autorelease];
                 [self presentModalViewController:nav animated:YES];
             }
-
+            break;
         }
         case 19:
         {
             SampleListViewController *sampleList = [[[SampleListViewController alloc] init] autorelease];
             [self.navigationController pushViewController:sampleList animated:YES];
+            break;
         }   
-  
-
     }    
     [controller release];
 }

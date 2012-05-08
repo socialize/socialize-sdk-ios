@@ -32,3 +32,5 @@ typedef enum {
     SocializeRequestStateSent,
     SocializeRequestStateFinished
 } SocializeRequestState;
+
+#define BLOCK_CALL_1(blk, arg1) do { if (blk != nil) blk(arg1); } while (0)
