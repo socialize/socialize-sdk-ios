@@ -83,5 +83,12 @@
     return [MFMessageComposeViewController canSendText];
 }
 
++ (void)getShareWithId:(NSNumber*)shareId success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
+    [[Socialize sharedSocialize] getShareWithId:shareId success:success failure:failure];
+}
+
++ (void)getSharesWithIds:(NSArray*)shareIds success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+    [[Socialize sharedSocialize] getSharesWithIds:shareIds success:success failure:failure];
+}
 
 @end

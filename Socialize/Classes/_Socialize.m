@@ -637,6 +637,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_userService getLikesForUser:user entity:entity first:first last:last];
 }
 
+- (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
+    [_userService getSharesForUser:user entity:entity first:first last:last];
+}
+
 #pragma mark activity related stuff
 -(void)getActivityOfCurrentApplication
 {
@@ -673,6 +677,15 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
 - (void)createShare:(id<SocializeShare>)share {
     [_shareService createShare:share];
 }
+
+-(void)getSharesWithIds:(NSArray*)shareIds success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+    [_shareService getSharesWithIds:shareIds success:success failure:failure];
+}
+
+-(void)getShareWithId:(NSNumber*)shareId success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
+    [_shareService getShareWithId:shareId success:success failure:failure];
+}
+
 
 #pragma mark notification service stuff
 +(void)registerDeviceToken:(NSData *)deviceToken {

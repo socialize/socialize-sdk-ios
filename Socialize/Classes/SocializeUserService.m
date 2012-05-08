@@ -35,6 +35,7 @@
 #define USER_GET_ENDPOINT     @"user/"
 #define USER_POST_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/", userid]
 #define USER_LIKE_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/like/", userid]
+#define USER_SHARE_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/share/", userid]
 
 @implementation SocializeUserService
 
@@ -110,15 +111,14 @@
 
 }
 
-- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
-    NSString *endpoint = USER_LIKE_ENDPOINT([user objectID]);
+- (void)getActivityForEndpoint:(NSString*)endpoint protocol:(Protocol*)protocol user:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
     NSNumber *userId = [NSNumber numberWithInteger:[user objectID]];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     if (entity != nil) {
         [params setObject:entity.key forKey:@"entity_key"];
     }
-
+    
     [params setValue:first forKey:@"first"];
     [params setValue:last forKey:@"last"];
     [params setValue:userId forKey:@"id"];
@@ -128,9 +128,18 @@
                                                      expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                                                  params:params];
     
-    request.expectedProtocol = @protocol(SocializeLike);
-
+    request.expectedProtocol = protocol;
+    
     [self executeRequest:request];
 }
+
+- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
+    [self getActivityForEndpoint:USER_LIKE_ENDPOINT([user objectID]) protocol:@protocol(SocializeLike) user:user entity:entity first:first last:last];
+}
+
+- (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
+    [self getActivityForEndpoint:USER_SHARE_ENDPOINT([user objectID]) protocol:@protocol(SocializeLike) user:user entity:entity first:first last:last];
+}
+
 
 @end

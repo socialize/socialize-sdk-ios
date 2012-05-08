@@ -1228,6 +1228,7 @@
 		AA7F8BAD1558D399000ADA70 /* SZShareUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */; };
 		AA7F8BAE1558D399000ADA70 /* SZShareUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */; };
 		AA7F8BAF1558D399000ADA70 /* SZShareUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */; };
+		AA7F8BD31559D606000ADA70 /* TestSZShareUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BD21559D606000ADA70 /* TestSZShareUtils.m */; };
 		AA7FB8B51491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
 		AA7FB8B61491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
 		AA7FB8B71491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
@@ -2830,6 +2831,8 @@
 		AA7F8BA315589A76000ADA70 /* SocializeSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeSubscription.h; path = Classes/SocializeSubscription.h; sourceTree = "<group>"; };
 		AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZShareUtils.h; path = Classes/SZShareUtils.h; sourceTree = "<group>"; };
 		AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZShareUtils.m; path = Classes/SZShareUtils.m; sourceTree = "<group>"; };
+		AA7F8BD11559D606000ADA70 /* TestSZShareUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSZShareUtils.h; sourceTree = "<group>"; };
+		AA7F8BD21559D606000ADA70 /* TestSZShareUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSZShareUtils.m; sourceTree = "<group>"; };
 		AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-highlighted.png"; path = "Resources/socialize-iphone-notification-button-highlighted.png"; sourceTree = "<group>"; };
 		AA7FB8941491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-highlighted@2x.png"; path = "Resources/socialize-iphone-notification-button-highlighted@2x.png"; sourceTree = "<group>"; };
 		AA7FB8951491415600B018DE /* socialize-iphone-notification-button-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-normal.png"; path = "Resources/socialize-iphone-notification-button-normal.png"; sourceTree = "<group>"; };
@@ -4253,6 +4256,7 @@
 				AA94613A152A877200BCEB4A /* TestNotifications.m */,
 				AAE853FE153DF18A002B93AD /* TestUserService.h */,
 				AAE853FF153DF18A002B93AD /* TestUserService.m */,
+				AA7F8BD01559D5E7000ADA70 /* SDK */,
 			);
 			path = TestCases;
 			sourceTree = "<group>";
@@ -4435,6 +4439,15 @@
 				AA7F0A5B153CAD7B00EC6DD7 /* SZLikeButton.m */,
 			);
 			name = "Like Button";
+			sourceTree = "<group>";
+		};
+		AA7F8BD01559D5E7000ADA70 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				AA7F8BD11559D606000ADA70 /* TestSZShareUtils.h */,
+				AA7F8BD21559D606000ADA70 /* TestSZShareUtils.m */,
+			);
+			name = SDK;
 			sourceTree = "<group>";
 		};
 		AA813804153F4CAE007CAE00 /* Like Button */ = {
@@ -7375,6 +7388,7 @@
 				AA94613B152A877200BCEB4A /* TestNotifications.m in Sources */,
 				AA946199152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.m in Sources */,
 				AAE85400153DF18A002B93AD /* TestUserService.m in Sources */,
+				AA7F8BD31559D606000ADA70 /* TestSZShareUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

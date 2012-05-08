@@ -57,5 +57,26 @@
     }
 }
 
+-(void)getSharesWithIds:(NSArray*)shareIds success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+    
+    NSMutableDictionary*  params = [[[NSMutableDictionary alloc] init] autorelease]; 
+    [params setObject:shareIds forKey:@"id"];
+    SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"GET"
+                                                           resourcePath:SHARE_METHOD
+                                                     expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                                                 params:params];
+
+    request.successBlock = success;
+    request.failureBlock = failure;
+    [self executeRequest:request];
+}
+
+-(void)getShareWithId:(NSNumber*)shareId success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
+    [self getSharesWithIds:[NSArray arrayWithObject:shareId]
+                   success:^(NSArray *shares) {
+                       BLOCK_CALL_1(success, [shares objectAtIndex:0]);
+                   } failure:failure];
+}
+
 
 @end
