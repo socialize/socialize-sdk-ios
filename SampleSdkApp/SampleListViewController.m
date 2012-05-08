@@ -61,9 +61,21 @@ static NSString *kShareSection = @"kShareSection";
         } failure:^(NSError *error) {
             NSString *reason = [NSString stringWithFormat:@"Share failed: %@", [error localizedDescription]];
             [UIAlertView showAlertWithTitle:reason message:nil buttonTitle:@"Ok" handler:nil];
+            [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
         }];
     }]];
     
+    [shareRows addObject:[self rowWithText:@"Share Via SMS" executionBlock:^{
+        SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
+        [SZShareUtils shareViaSMSWithViewController:self entity:entity success:^(id<SZShare> share) {
+            [UIAlertView showAlertWithTitle:@"Share successful" message:nil buttonTitle:@"OK" handler:nil];
+        } failure:^(NSError *error) {
+            NSString *reason = [NSString stringWithFormat:@"Share failed: %@", [error localizedDescription]];
+            [UIAlertView showAlertWithTitle:reason message:nil buttonTitle:@"Ok" handler:nil];
+            [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+        }];
+    }]];
+
     return [NSArray arrayWithObjects:
             [self sectionWithIdentifier:kUserSection
                                   title:@"User Utilities"
