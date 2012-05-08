@@ -719,4 +719,9 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_eventsService trackEventWithBucket:bucket values:values];
 }
 
+- (void)createShare:(id<SocializeShare>)share success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
+    [_shareService createShare:share success:success failure:failure];
+}
+
+
 @end

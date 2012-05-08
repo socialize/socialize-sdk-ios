@@ -23,13 +23,19 @@
 }
 
 - (void)createShare:(id<SocializeShare>)share {
+    [self createShare:share success:nil failure:nil];
+}
+
+- (void)createShare:(id<SocializeShare>)share success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
     NSDictionary *params = [_objectCreator createDictionaryRepresentationOfObject:share];
-    [self executeRequest:
-     [SocializeRequest requestWithHttpMethod:@"POST"
-                                resourcePath:SHARE_METHOD
-                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
-                                      params:[NSArray arrayWithObject:params]]
-     ];
+    SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"POST"
+                                                           resourcePath:SHARE_METHOD
+                                                     expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                                                 params:[NSArray arrayWithObject:params]];
+    request.successBlock = success;
+    request.failureBlock = failure;
+
+    [self executeRequest:request];
 }
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text{

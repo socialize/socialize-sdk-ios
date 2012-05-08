@@ -14,6 +14,7 @@
 #import "SocializeService.h"
 
 @protocol SocializeShare;
+@protocol SZShare;
 
 @interface SocializeShareService : SocializeService {
 }
@@ -22,5 +23,6 @@
 -(void)createShareForEntityKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text;
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text;
 - (void)createShare:(id<SocializeShare>)share;
+- (void)createShare:(id<SocializeShare>)share success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
 
 @end
