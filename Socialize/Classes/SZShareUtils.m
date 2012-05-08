@@ -91,4 +91,8 @@
     [[Socialize sharedSocialize] getSharesWithIds:shareIds success:success failure:failure];
 }
 
++ (void)getSharesWithEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+    [[Socialize sharedSocialize] getSharesForEntityKey:[entity key] first:first last:last success:success failure:failure];
+}
+
 @end

@@ -78,5 +78,23 @@
                    } failure:failure];
 }
 
+- (void)getSharesForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+    
+    NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
+    if (key)
+        [params setObject:key forKey:@"entity_key"];
+    if (first && last){
+        [params setObject:first forKey:@"first"];
+        [params setObject:last forKey:@"last"];
+    }
+    SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"GET"
+                                                           resourcePath:SHARE_METHOD
+                                                     expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                                                 params:params];
+    request.successBlock = success;
+    request.failureBlock = failure;
+    
+    [self executeRequest:request];
+}
 
 @end
