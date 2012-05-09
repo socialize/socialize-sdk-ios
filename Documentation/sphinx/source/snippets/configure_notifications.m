@@ -41,17 +41,48 @@
 
 // end-register-fail-snippet
 
+@end
+
+@implementation ConfigureNotifications (HandleNotifications)
+
 // begin-handle-snippet
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    // Handle Socialize notification at foreground
     if ([Socialize handleNotification:userInfo]) {
+        NSLog(@"Socialize handled the notification on foreground");
         return;
     }
-    // Nonsocialize notification handling goes here
+    
+    NSLog(@"Socialize did not handle the notification on foreground");
 }
-@end
+
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
+
+    // ...
+
+    // Register for Apple Push Notification Service
+    [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
+
+    // Handle Socialize notification at launch
+    NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (userInfo != nil) {
+        if ([Socialize handleNotification:userInfo]) {
+            NSLog(@"Socialize handled the notification on app launch.");
+        } else {
+            NSLog(@"Socialize did not handle the notification on app launch.");
+        }
+    }
+    
+    //your application specific code
+    
+    return YES;
+}
 
 // end-handle-snippet
+
+@end
 
 
 @implementation ConfigureNotifications (EntityLoader)
@@ -62,6 +93,20 @@
     
     // ...
     
+    // Register for Apple Push Notification Service
+    [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
+
+    // Handle Socialize notification at launch
+    NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (userInfo != nil) {
+        if ([Socialize handleNotification:userInfo]) {
+            NSLog(@"Socialize handled the notification on app launch.");
+        } else {
+            NSLog(@"Socialize did not handle the notification on app launch.");
+        }
+    }
+
+    // Specify a Socialize entity loader block
     [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity>entity) {
         SampleEntityLoader *entityLoader = [[[SampleEntityLoader alloc] initWithEntity:entity] autorelease];
         [navigationController pushViewController:entityLoader animated:YES];
@@ -92,3 +137,5 @@
 // end-can-load-entity-snippet
 
 @end
+
+
