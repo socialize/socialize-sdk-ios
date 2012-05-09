@@ -641,6 +641,14 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_userService getSharesForUser:user entity:entity first:first last:last];
 }
 
+- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
+    [_userService getLikesForUser:user entity:entity first:first last:last success:success failure:failure];
+}
+
+- (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
+    [_userService getSharesForUser:user entity:entity first:first last:last success:success failure:failure];
+}
+
 #pragma mark activity related stuff
 -(void)getActivityOfCurrentApplication
 {

@@ -43,12 +43,15 @@
 -(void) getCurrentUser;
 -(void) updateUser:(id<SocializeFullUser>)user;
 -(void) updateUser:(id<SocializeFullUser>)user profileImage:(UIImage*)image;
-- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last;
 - (void)updateUser:(id<SocializeFullUser>)user
       profileImage:(UIImage*)image
            success:(void(^)(id<SocializeFullUser> user))success
            failure:(void(^)(NSError *error))failure;
+
+- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last;
+- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure;
 - (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last;
+- (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure;
 
 @end
 

@@ -11,6 +11,17 @@
 
 @implementation TestSZShareUtils
 
+- (id<SZShare>)createTestShareForSelector:(SEL)selector {
+    NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", selector]];
+    SZEntity *entity = [SZEntity entityWithKey:shareURL name:@"Share"];
+    
+    SZShare *share = [SZShare shareWithEntity:entity text:@"some text" medium:SocializeShareMediumSMS];
+    [self createShare:share];
+    id<SZShare> createdShare = [[self.createdObject retain] autorelease];
+
+    return createdShare;
+}
+
 - (void)testGetSharesByIds {
     NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", _cmd]];
     SZEntity *entity = [SZEntity entityWithKey:shareURL name:@"Share"];
@@ -46,27 +57,67 @@
 }
 
 - (void)testGetSharesByEntity {
-    NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", _cmd]];
-    SZEntity *entity = [SZEntity entityWithKey:shareURL name:@"Share"];
-    
-    SZShare *share1 = [SZShare shareWithEntity:entity text:@"some text" medium:SocializeShareMediumSMS];
-    [self createShare:share1];
-    id<SZShare> createdShare1 = [[self.createdObject retain] autorelease];
+    id<SZShare> createdShare = [self createTestShareForSelector:_cmd];
     
     [self prepare];
-    [SZShareUtils getSharesWithEntity:entity
+    [SZShareUtils getSharesWithEntity:createdShare.entity
                                 first:nil
                                  last:nil
                               success:^(NSArray *shares) {
                                   id<SZShare> fetchedShare1 = [shares objectAtIndex:0];
                                   
-                                  GHAssertEquals([fetchedShare1 objectID], [createdShare1 objectID], @"Bad id");
+                                  GHAssertEquals([fetchedShare1 objectID], [createdShare objectID], @"Bad id");
                                   
                                   [self notify:kGHUnitWaitStatusSuccess];
                                   
                               } failure:^(NSError *error) {
                                   [self notify:kGHUnitWaitStatusFailure];
                               }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess];
+}
+
+- (void)testGetSharesByUser {
+    id<SZShare> createdShare = [self createTestShareForSelector:_cmd];
+    
+    [self prepare];
+    [SZShareUtils getSharesWithUser:[[Socialize sharedSocialize] authenticatedUser]
+                                first:nil
+                                 last:[NSNumber numberWithInt:1]
+                              success:^(NSArray *shares) {
+                                  id<SZShare> fetchedShare1 = [shares objectAtIndex:0];
+                                  
+                                  GHAssertTrue([shares count] == 1, @"Bad count");
+                                  GHAssertEquals([fetchedShare1 objectID], [createdShare objectID], @"Bad id");
+                                  GHAssertTrue([fetchedShare1 conformsToProtocol:@protocol(SocializeShare)], @"Bad protocol");
+                                  
+                                  [self notify:kGHUnitWaitStatusSuccess];
+                                  
+                              } failure:^(NSError *error) {
+                                  [self notify:kGHUnitWaitStatusFailure];
+                              }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess];
+}
+
+- (void)testGetSharesByUserAndEntity {
+    id<SZShare> createdShare = [self createTestShareForSelector:_cmd];
+    
+    [self prepare];
+    [SZShareUtils getSharesWithUser:[[Socialize sharedSocialize] authenticatedUser]
+                             entity:createdShare.entity
+                              first:nil
+                               last:nil
+                            success:^(NSArray *shares) {
+                                id<SZShare> fetchedShare = [shares objectAtIndex:0];
+                                
+                                GHAssertTrue([shares count] == 1, @"Bad count");
+                                GHAssertEquals([fetchedShare objectID], [createdShare objectID], @"Bad id");
+                                GHAssertTrue([fetchedShare conformsToProtocol:@protocol(SocializeShare)], @"Bad protocol");
+
+                                [self notify:kGHUnitWaitStatusSuccess];
+                                
+                            } failure:^(NSError *error) {
+                                [self notify:kGHUnitWaitStatusFailure];
+                            }];
     [self waitForStatus:kGHUnitWaitStatusSuccess];
 }
 

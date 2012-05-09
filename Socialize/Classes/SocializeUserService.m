@@ -31,6 +31,7 @@
 #import "JSONKit.h"
 #import "SocializeEntity.h"
 #import "SocializeLike.h"
+#import "SocializeShare.h"
 
 #define USER_GET_ENDPOINT     @"user/"
 #define USER_POST_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/", userid]
@@ -111,7 +112,7 @@
 
 }
 
-- (void)getActivityForEndpoint:(NSString*)endpoint protocol:(Protocol*)protocol user:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
+- (void)getActivityForEndpoint:(NSString*)endpoint protocol:(Protocol*)protocol user:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
     NSNumber *userId = [NSNumber numberWithInteger:[user objectID]];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -129,17 +130,26 @@
                                                                  params:params];
     
     request.expectedProtocol = protocol;
+    request.successBlock = success;
+    request.failureBlock = failure;
     
     [self executeRequest:request];
 }
 
+- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
+    [self getActivityForEndpoint:USER_LIKE_ENDPOINT([user objectID]) protocol:@protocol(SocializeLike) user:user entity:entity first:first last:last success:success failure:failure];
+}
+
 - (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
-    [self getActivityForEndpoint:USER_LIKE_ENDPOINT([user objectID]) protocol:@protocol(SocializeLike) user:user entity:entity first:first last:last];
+    [self getLikesForUser:user entity:entity first:first last:last success:nil failure:nil];
+}
+
+- (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
+    [self getActivityForEndpoint:USER_SHARE_ENDPOINT([user objectID]) protocol:@protocol(SocializeShare) user:user entity:entity first:first last:last success:success failure:failure];
 }
 
 - (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
-    [self getActivityForEndpoint:USER_SHARE_ENDPOINT([user objectID]) protocol:@protocol(SocializeLike) user:user entity:entity first:first last:last];
+    [self getSharesForUser:user entity:entity first:first last:last success:nil failure:nil];
 }
-
 
 @end

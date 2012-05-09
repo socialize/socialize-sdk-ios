@@ -95,4 +95,12 @@
     [[Socialize sharedSocialize] getSharesForEntityKey:[entity key] first:first last:last success:success failure:failure];
 }
 
++ (void)getSharesWithUser:(id<SZUser>)user first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+    [[Socialize sharedSocialize] getSharesForUser:user entity:nil first:first last:last success:success failure:failure];
+}
+
++ (void)getSharesWithUser:(id<SZUser>)user entity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+    [[Socialize sharedSocialize] getSharesForUser:user entity:entity first:first last:last success:success failure:failure];
+}
+
 @end
