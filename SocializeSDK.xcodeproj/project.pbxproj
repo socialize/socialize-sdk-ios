@@ -2105,6 +2105,17 @@
 		AAFB6DB5147C534900094023 /* socialize-activity-cell-icon-twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAFB6D36147C534900094023 /* socialize-activity-cell-icon-twitter@2x.png */; };
 		AAFB6DB6147C534900094023 /* socialize-activity-cell-icon-twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAFB6D36147C534900094023 /* socialize-activity-cell-icon-twitter@2x.png */; };
 		AAFD1E57146B997A00FCB8A7 /* SZActionBarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 167E11D31443293E004E4C1B /* SZActionBarTests.m */; };
+		AAFD8DF5155B38500036E6AF /* SZSelectNetworkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFD8DF3155B38500036E6AF /* SZSelectNetworkViewController.h */; };
+		AAFD8DF6155B38500036E6AF /* SZSelectNetworkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFD8DF3155B38500036E6AF /* SZSelectNetworkViewController.h */; };
+		AAFD8DF7155B38500036E6AF /* SZSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFD8DF4155B38500036E6AF /* SZSelectNetworkViewController.m */; };
+		AAFD8DF8155B38500036E6AF /* SZSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFD8DF4155B38500036E6AF /* SZSelectNetworkViewController.m */; };
+		AAFD8DFA155B38860036E6AF /* SZSelectNetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFD8DF9155B38860036E6AF /* SZSelectNetworkViewController.xib */; };
+		AAFD8DFB155B38860036E6AF /* SZSelectNetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFD8DF9155B38860036E6AF /* SZSelectNetworkViewController.xib */; };
+		AAFD8DFC155B38920036E6AF /* SZSelectNetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFD8DF9155B38860036E6AF /* SZSelectNetworkViewController.xib */; };
+		AAFD8DFD155B38930036E6AF /* SZSelectNetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFD8DF9155B38860036E6AF /* SZSelectNetworkViewController.xib */; };
+		AAFD8DFE155B38940036E6AF /* SZSelectNetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFD8DF9155B38860036E6AF /* SZSelectNetworkViewController.xib */; };
+		AAFD8DFF155B38950036E6AF /* SZSelectNetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFD8DF9155B38860036E6AF /* SZSelectNetworkViewController.xib */; };
+		AAFD8E00155B38950036E6AF /* SZSelectNetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFD8DF9155B38860036E6AF /* SZSelectNetworkViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -3154,6 +3165,9 @@
 		AAFB6D34147C534900094023 /* socialize-activity-cell-icon-share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-cell-icon-share@2x.png"; path = "Resources/socialize-activity-cell-icon-share@2x.png"; sourceTree = "<group>"; };
 		AAFB6D35147C534900094023 /* socialize-activity-cell-icon-twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-cell-icon-twitter.png"; path = "Resources/socialize-activity-cell-icon-twitter.png"; sourceTree = "<group>"; };
 		AAFB6D36147C534900094023 /* socialize-activity-cell-icon-twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-cell-icon-twitter@2x.png"; path = "Resources/socialize-activity-cell-icon-twitter@2x.png"; sourceTree = "<group>"; };
+		AAFD8DF3155B38500036E6AF /* SZSelectNetworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZSelectNetworkViewController.h; path = Classes/SZSelectNetworkViewController.h; sourceTree = "<group>"; };
+		AAFD8DF4155B38500036E6AF /* SZSelectNetworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZSelectNetworkViewController.m; path = Classes/SZSelectNetworkViewController.m; sourceTree = "<group>"; };
+		AAFD8DF9155B38860036E6AF /* SZSelectNetworkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZSelectNetworkViewController.xib; path = Resources/SZSelectNetworkViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3757,6 +3771,7 @@
 				AAF50D7114CA0ED700585474 /* SocializeBaseViewControllerDelegate.h */,
 				16075490143302E4002E5A38 /* SocializeBaseViewController.h */,
 				16075491143302E4002E5A38 /* SocializeBaseViewController.m */,
+				AAFD8DF2155B38250036E6AF /* Select Network */,
 				AADD17F4154B1DEB00ECB1D0 /* Navigation Controller */,
 				AA7F0A59153CAD6100EC6DD7 /* Like Button */,
 				AAE915CA14F57F7C00F2DB95 /* Actions */,
@@ -5023,6 +5038,16 @@
 			name = "Comment Details";
 			sourceTree = "<group>";
 		};
+		AAFD8DF2155B38250036E6AF /* Select Network */ = {
+			isa = PBXGroup;
+			children = (
+				AAFD8DF3155B38500036E6AF /* SZSelectNetworkViewController.h */,
+				AAFD8DF4155B38500036E6AF /* SZSelectNetworkViewController.m */,
+				AAFD8DF9155B38860036E6AF /* SZSelectNetworkViewController.xib */,
+			);
+			name = "Select Network";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -5182,6 +5207,7 @@
 				AA7F8BA515589A77000ADA70 /* SocializeError.h in Headers */,
 				AA7F8BA915589A77000ADA70 /* SocializeSubscription.h in Headers */,
 				AA7F8BAD1558D399000ADA70 /* SZShareUtils.h in Headers */,
+				AAFD8DF6155B38500036E6AF /* SZSelectNetworkViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5343,6 +5369,7 @@
 				AA7F8BA415589A77000ADA70 /* SocializeError.h in Headers */,
 				AA7F8BA815589A77000ADA70 /* SocializeSubscription.h in Headers */,
 				AA7F8BAC1558D399000ADA70 /* SZShareUtils.h in Headers */,
+				AAFD8DF5155B38500036E6AF /* SZSelectNetworkViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5750,6 +5777,7 @@
 				AA08146515337A1E00F15928 /* socialize-comment-twitter-enabled.png in Resources */,
 				AA08146A15337A1E00F15928 /* socialize-comment-twitter-enabled@2x.png in Resources */,
 				AAE78F43153F4899003C3550 /* SocializeConfigurationInfo.plist in Resources */,
+				AAFD8DFC155B38920036E6AF /* SZSelectNetworkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5929,6 +5957,7 @@
 				AA156AEF1521105300EB2D53 /* SocializeDummyViewController.xib in Resources */,
 				AA156AF21521109800EB2D53 /* socialize_logo.png in Resources */,
 				AAF60EBC15461ADA00245867 /* SampleEntityLoader.xib in Resources */,
+				AAFD8DFA155B38860036E6AF /* SZSelectNetworkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6116,6 +6145,7 @@
 				AA08146715337A1E00F15928 /* socialize-comment-twitter-enabled.png in Resources */,
 				AA08146C15337A1E00F15928 /* socialize-comment-twitter-enabled@2x.png in Resources */,
 				AA03AC0715420164009AC508 /* TestLikeButton.xib in Resources */,
+				AAFD8DFE155B38940036E6AF /* SZSelectNetworkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6323,6 +6353,7 @@
 				AAA4901D1553054E003FB943 /* TestSZActionBar.xib in Resources */,
 				AAA490211553054E003FB943 /* TestTabbedSZActionBar.xib in Resources */,
 				AA1A2DF8155876990085D0D9 /* SampleListViewController.plist in Resources */,
+				AAFD8DFF155B38950036E6AF /* SZSelectNetworkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6401,6 +6432,7 @@
 				AA08146915337A1E00F15928 /* socialize-comment-twitter-enabled.png in Resources */,
 				AA08146E15337A1E00F15928 /* socialize-comment-twitter-enabled@2x.png in Resources */,
 				AAE78F42153F4893003C3550 /* SocializeConfigurationInfo.plist in Resources */,
+				AAFD8E00155B38950036E6AF /* SZSelectNetworkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6610,6 +6642,7 @@
 				AAA4901C1553054E003FB943 /* TestSZActionBar.xib in Resources */,
 				AAA490201553054E003FB943 /* TestTabbedSZActionBar.xib in Resources */,
 				AA1A2DF7155876990085D0D9 /* SampleListViewController.plist in Resources */,
+				AAFD8DFD155B38930036E6AF /* SZSelectNetworkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6787,6 +6820,7 @@
 				AA156AF01521105300EB2D53 /* SocializeDummyViewController.xib in Resources */,
 				AA156AF31521109800EB2D53 /* socialize_logo.png in Resources */,
 				AAF60EBD15461ADA00245867 /* SampleEntityLoader.xib in Resources */,
+				AAFD8DFB155B38860036E6AF /* SZSelectNetworkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7209,6 +7243,7 @@
 				AAE56C6C15476A6100A444C5 /* SZUserUtils.m in Sources */,
 				AA7F8BA615589A77000ADA70 /* SocializeError.m in Sources */,
 				AA7F8BAE1558D399000ADA70 /* SZShareUtils.m in Sources */,
+				AAFD8DF7155B38500036E6AF /* SZSelectNetworkViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7617,6 +7652,7 @@
 				AAE56C6D15476A6100A444C5 /* SZUserUtils.m in Sources */,
 				AA7F8BA715589A77000ADA70 /* SocializeError.m in Sources */,
 				AA7F8BAF1558D399000ADA70 /* SZShareUtils.m in Sources */,
+				AAFD8DF8155B38500036E6AF /* SZSelectNetworkViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

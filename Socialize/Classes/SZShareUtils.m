@@ -11,10 +11,14 @@
 #import "MFMessageComposeViewController+BlocksKit.h"
 #import "Socialize.h"
 #import "SocializeObjects.h"
+#import "SZSelectNetworkViewController.h"
 
 @implementation SZShareUtils
 
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity {
+    SZSelectNetworkViewController *selectNetwork = [[[SZSelectNetworkViewController alloc] init] autorelease];
+    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:selectNetwork] autorelease];
+    [viewController presentModalViewController:nav animated:YES];
 }
 
 + (void)shareViaEmailWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {

@@ -54,6 +54,12 @@ static NSString *kShareSection = @"kShareSection";
     // Share Utilities
     NSMutableArray *shareRows = [NSMutableArray array];
     
+    [shareRows addObject:[self rowWithText:@"Show Share Dialog" executionBlock:^{
+        SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
+        [SZShareUtils showShareDialogWithViewController:self entity:entity];
+    }]];
+         
+
     [shareRows addObject:[self rowWithText:@"Share Via Email" executionBlock:^{
         SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
         [SZShareUtils shareViaEmailWithViewController:self entity:entity success:^(id<SZShare> share) {
