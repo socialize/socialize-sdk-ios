@@ -119,6 +119,7 @@ Handle Notifications
 .. literalinclude:: snippets/configure_notifications.m
   :start-after: begin-handle-snippet
   :end-before: end-handle-snippet
+  :emphasize-lines: 0-10,18-27
 
 .. note::
 
@@ -137,6 +138,7 @@ Copy the lines below to add an entity loader
 .. literalinclude:: snippets/configure_notifications.m
   :start-after: begin-entity-loader-snippet
   :end-before: end-entity-loader-snippet
+  :emphasize-lines: 18-22
 
 .. image:: images/entity_loader.png
 

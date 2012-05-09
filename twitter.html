@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Twitter Integration &mdash; Socialize iOS SDK 1.7.3 documentation</title>
+    <title>Twitter Integration &mdash; Socialize iOS SDK 1.7.4 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.3',
+        VERSION:     '1.7.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.3 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.7.4 documentation" href="index.html" />
     <link rel="next" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" />
     <link rel="prev" title="Socialize Like Button" href="like_button.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -101,73 +101,69 @@ valid URL for callback otherwise authentication will fail.</li>
 <div class="section" id="configuring-twitter-in-socialize">
 <span id="propagate-tw"></span><h2>Configuring Twitter in Socialize<a class="headerlink" href="#configuring-twitter-in-socialize" title="Permalink to this headline">¶</a></h2>
 <p>Once you have a twitter application, simply tell Socialize about your consumer key and secret:</p>
-<div class="highlight-python"><pre>
-//import the socialize header
-#import &lt;Socialize/Socialize.h&gt;
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">//import the socialize header</span>
+<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
-#pragma mark
-- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
-    // set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/
-    [Socialize storeConsumerKey:@"SOCIALIZE_CONSUMER_KEY"];
-    [Socialize storeConsumerSecret:@"SOCIALIZE_CONSUMER_SECRET"];
-    [Socialize storeTwitterConsumerKey:@"YOUR_TWITTER_CONSUMER_KEY"];
-    [Socialize storeTwitterConsumerSecret:@"YOUR_TWITTER_CONSUMER_SECRET"];    
-    //your application specific code
+<span class="cp">#pragma mark</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+    <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerKey:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerSecret:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
+<span class="hll">    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeTwitterConsumerKey:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_KEY&quot;</span><span class="p">];</span>
+</span><span class="hll">    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeTwitterConsumerSecret:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_SECRET&quot;</span><span class="p">];</span>    
+</span>    <span class="c1">//your application specific code</span>
     
-    return YES;
-}
-
-</pre>
+    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="linking-to-twitter-using-existing-credentials">
 <h2>Linking to Twitter Using Existing Credentials<a class="headerlink" href="#linking-to-twitter-using-existing-credentials" title="Permalink to this headline">¶</a></h2>
 <p>If you already have a Twitter access token of your own, you can link to Socialize like so:</p>
-<div class="highlight-python"><pre>#import &lt;Socialize/Socialize.h&gt;
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
-@interface LinkToTwitterExample : NSObject &lt;SocializeServiceDelegate&gt;
-@property (nonatomic, retain) Socialize *socialize;
-@end
-</pre>
+<span class="k">@interface</span> <span class="nc">LinkToTwitterExample</span> : <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">SocializeServiceDelegate</span><span class="o">&gt;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">Socialize</span> <span class="o">*</span><span class="n">socialize</span><span class="p">;</span>
+<span class="k">@end</span>
+</pre></div>
 </div>
-<div class="highlight-python"><pre>
-@implementation LinkToTwitterExample
-@synthesize socialize = socialize_;
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">LinkToTwitterExample</span>
+<span class="k">@synthesize</span> <span class="n">socialize</span> <span class="o">=</span> <span class="n">socialize_</span><span class="p">;</span>
 
 
-- (void)dealloc {
-    self.socialize = nil;
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">socialize</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
     
-    [super dealloc];
-}
+    <span class="p">[</span><span class="n">super</span> <span class="n">dealloc</span><span class="p">];</span>
+<span class="p">}</span>
 
-- (Socialize*)socialize {
-    if (socialize_ == nil) {
-        socialize_ = [[Socialize alloc] initWithDelegate:self];
-    }
-    return socialize_;
-}
+<span class="o">-</span> <span class="p">(</span><span class="n">Socialize</span><span class="o">*</span><span class="p">)</span><span class="n">socialize</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">socialize_</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">socialize_</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Socialize</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithDelegate:</span><span class="n">self</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">socialize_</span><span class="p">;</span>
+<span class="p">}</span>
 
-- (void)linkToTwitter {
-    [Socialize storeTwitterConsumerKey:@"MYAPPCONSUMERKEY"];
-    [Socialize storeTwitterConsumerSecret:@"MYAPPCONSUMERSECRET"];
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">linkToTwitter</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeTwitterConsumerKey:</span><span class="s">@&quot;MYAPPCONSUMERKEY&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeTwitterConsumerSecret:</span><span class="s">@&quot;MYAPPCONSUMERSECRET&quot;</span><span class="p">];</span>
     
-    [self.socialize linkToTwitterWithAccessToken:@"PREAUTHEDACCESSTOKEN" accessTokenSecret:@"PREAUTHEDACCESSTOKENSECRET"];
-}
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">socialize</span> <span class="nl">linkToTwitterWithAccessToken:</span><span class="s">@&quot;PREAUTHEDACCESSTOKEN&quot;</span> <span class="nl">accessTokenSecret:</span><span class="s">@&quot;PREAUTHEDACCESSTOKENSECRET&quot;</span><span class="p">];</span>
+<span class="p">}</span>
 
-- (void)didAuthenticate:(id&lt;SocializeUser&gt;)user {
-    if ([self.socialize isAuthenticatedWithTwitter]) {
-        NSLog(@"Twit Tah! %@", [user thirdPartyAuth]);
-    } else {
-        NSLog(@"Not authenticated with Twitter");
-    }
-}
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">didAuthenticate:</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeUser</span><span class="o">&gt;</span><span class="p">)</span><span class="n">user</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">self</span><span class="p">.</span><span class="n">socialize</span> <span class="n">isAuthenticatedWithTwitter</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Twit Tah! %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">user</span> <span class="n">thirdPartyAuth</span><span class="p">]);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Not authenticated with Twitter&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-- (void)service:(SocializeService *)service didFail:(NSError *)error {
-    NSLog(@"All is not well: %@", [error localizedDescription]);
-}
-
-</pre>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">service:</span><span class="p">(</span><span class="n">SocializeService</span> <span class="o">*</span><span class="p">)</span><span class="n">service</span> <span class="nl">didFail:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="n">error</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;All is not well: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="propagating-socialize-actions-to-twitter">
@@ -231,7 +227,7 @@ actions will be available soon.</p>
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

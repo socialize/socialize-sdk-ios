@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started Guide &mdash; Socialize iOS SDK 1.7.3 documentation</title>
+    <title>Getting Started Guide &mdash; Socialize iOS SDK 1.7.4 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.3',
+        VERSION:     '1.7.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.3 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.7.4 documentation" href="index.html" />
     <link rel="next" title="Socialize Action Bar" href="action_bar.html" />
     <link rel="prev" title="Socialize iOS SDK" href="index.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -142,11 +142,11 @@ If you just add the framework, you will be missing important Socialize images an
 <ul class="simple">
 <li>Add the following frameworks to your application target:</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">CoreLocation</span><span class="o">.</span><span class="n">framework</span>
-<span class="n">MapKit</span><span class="o">.</span><span class="n">framework</span>
-<span class="n">MessageUI</span><span class="o">.</span><span class="n">framework</span>
-<span class="n">QuartzCore</span><span class="o">.</span><span class="n">framework</span>
-<span class="n">CoreGraphics</span><span class="o">.</span><span class="n">framework</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="n">CoreLocation</span><span class="p">.</span><span class="n">framework</span>
+<span class="n">MapKit</span><span class="p">.</span><span class="n">framework</span>
+<span class="n">MessageUI</span><span class="p">.</span><span class="n">framework</span>
+<span class="n">QuartzCore</span><span class="p">.</span><span class="n">framework</span>
+<span class="n">CoreGraphics</span><span class="p">.</span><span class="n">framework</span>
 </pre></div>
 </div>
 <img alt="images/add_frameworks.png" src="images/add_frameworks.png" />
@@ -176,22 +176,20 @@ at <a class="reference external" href="http://www.getsocialize.com/apps">http://
 <p class="first admonition-title">Note</p>
 <p class="last">Make sure to import the Socialize header in the code snippet below</p>
 </div>
-<div class="highlight-python"><pre>
-//import the socialize header
-#import &lt;Socialize/Socialize.h&gt;
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">//import the socialize header</span>
+<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
-#pragma mark
-- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
-    // set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/
-    [Socialize storeConsumerKey:@"SOCIALIZE_CONSUMER_KEY"];
-    [Socialize storeConsumerSecret:@"SOCIALIZE_CONSUMER_SECRET"];
+<span class="cp">#pragma mark</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+    <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerKey:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerSecret:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
     
-    //your application specific code
+    <span class="c1">//your application specific code</span>
     
-    return YES;
-}
-
-</pre>
+    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="step-5-include-socialize-in-your-app">
@@ -209,33 +207,31 @@ components individually please go see the SDK user guide.</p>
 It is not necessary to explicitly create an Entity object when rendering the Action bar as this will be done for you, however entities can be created manually.</p>
 <p>Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller.</p>
 <p>In your View controller&#8217;s header file place the following code:</p>
-<div class="highlight-python"><pre>// Header
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">// Header</span>
 
-// Store the action bar in a property on your view controller
+<span class="cp">// Store the action bar in a property on your view controller</span>
 
-#import &lt;Socialize/Socialize.h&gt;
+<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
-@interface CreateActionBarViewController : UIViewController
-@property (nonatomic, retain) SocializeActionBar *actionBar;
-@end
-</pre>
+<span class="k">@interface</span> <span class="nc">CreateActionBarViewController</span> : <span class="nc">UIViewController</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">SocializeActionBar</span> <span class="o">*</span><span class="n">actionBar</span><span class="p">;</span>
+<span class="k">@end</span>
+</pre></div>
 </div>
-<div class="highlight-python"><pre>
-// Implementation
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="c1">// Implementation</span>
 
-// Instantiate the action bar in your view controller
+<span class="c1">// Instantiate the action bar in your view controller</span>
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
 
-    if (self.actionBar == nil) {
-        self.actionBar = [SocializeActionBar actionBarWithKey:@"http://www.example.com/object/1234" name:@"Something" presentModalInController:self];
-        [self.view addSubview:self.actionBar.view];
-    }
-}
-
-</pre>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SocializeActionBar</span> <span class="nl">actionBarWithKey:</span><span class="s">@&quot;http://www.example.com/object/1234&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Something&quot;</span> <span class="nl">presentModalInController:</span><span class="n">self</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">view</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 <p>By default, the Action Bar will automatically place itself at the bottom of its
 superview and adjust to rotation.  If you find that content is being hidden,
@@ -252,23 +248,21 @@ of any content.</p>
 <p>It is strongly recommended that users be able to authenticate with Facebook when using Socialize so as to maximize the exposure, and promotion of your app.</p>
 <p>Let Socialize know your Facebook app id.  You can register or find your
 Facebook app id here: <a class="reference external" href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a></p>
-<div class="highlight-python"><pre>
-//import the socialize header
-#import &lt;Socialize/Socialize.h&gt;
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">//import the socialize header</span>
+<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
-#pragma mark
-- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
-    // set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/
-    [Socialize storeConsumerKey:@"SOCIALIZE_CONSUMER_KEY"];
-    [Socialize storeConsumerSecret:@"SOCIALIZE_CONSUMER_SECRET"];
-    [Socialize storeFacebookAppId:@"YOUR FB APP ID"];
+<span class="cp">#pragma mark</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+    <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerKey:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerSecret:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
+<span class="hll">    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeFacebookAppId:</span><span class="s">@&quot;YOUR FB APP ID&quot;</span><span class="p">];</span>
+</span>    
+    <span class="c1">//your application specific code</span>
     
-    //your application specific code
-    
-    return YES;
-}
-
-</pre>
+    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 <p>If your app is not already configured for facebook authentication, then you&#8217;ll
 need to perform two more steps:</p>
@@ -281,64 +275,61 @@ below:</p>
 UIApplicationDelegate&#8217;s application:openURL:sourceApplication: method. Socialize will take
 care of handing off the openURL request to the underlying <a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>. This
 completes the authentication flow.</p>
-<div class="highlight-python"><pre>#import &lt;Socialize/Socialize.h&gt;
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [Socialize handleOpenURL:url];
-}
-
-</pre>
+<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">openURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">url</span> <span class="nl">sourceApplication:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">sourceApplication</span> <span class="nl">annotation:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">annotation</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">Socialize</span> <span class="nl">handleOpenURL:</span><span class="n">url</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 <p>If your app already authenticates with Facebook, you will need to let Socialize
 know about the existing session. You can do this with the
 linkToFacebookWithAccessToken:expirationDate: call.  For more information on
 using FBConnect on your own, you can check the official Facebook tutorial at
 <a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>.</p>
-<div class="highlight-python"><pre>#import &lt;Socialize/Socialize.h&gt;
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
-@interface LinkToFacebookExample : NSObject &lt;SocializeServiceDelegate&gt;
-@property (nonatomic, retain) Socialize *socialize;
-@end
-</pre>
+<span class="k">@interface</span> <span class="nc">LinkToFacebookExample</span> : <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">SocializeServiceDelegate</span><span class="o">&gt;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">Socialize</span> <span class="o">*</span><span class="n">socialize</span><span class="p">;</span>
+<span class="k">@end</span>
+</pre></div>
 </div>
-<div class="highlight-python"><pre>
-@implementation LinkToFacebookExample
-@synthesize socialize = socialize_;
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">LinkToFacebookExample</span>
+<span class="k">@synthesize</span> <span class="n">socialize</span> <span class="o">=</span> <span class="n">socialize_</span><span class="p">;</span>
 
 
-- (void)dealloc {
-    self.socialize = nil;
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">socialize</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
     
-    [super dealloc];
-}
+    <span class="p">[</span><span class="n">super</span> <span class="n">dealloc</span><span class="p">];</span>
+<span class="p">}</span>
 
-- (Socialize*)socialize {
-    if (socialize_ == nil) {
-        socialize_ = [[Socialize alloc] initWithDelegate:self];
-    }
-    return socialize_;
-}
+<span class="o">-</span> <span class="p">(</span><span class="n">Socialize</span><span class="o">*</span><span class="p">)</span><span class="n">socialize</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">socialize_</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">socialize_</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Socialize</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithDelegate:</span><span class="n">self</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">socialize_</span><span class="p">;</span>
+<span class="p">}</span>
 
-- (void)linkToFacebook {
-    [Socialize storeFacebookAppId:@"fbMYFACEBOOKAPPID"];
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">linkToFacebook</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeFacebookAppId:</span><span class="s">@&quot;fbMYFACEBOOKAPPID&quot;</span><span class="p">];</span>
     
-    // The following is only needed if you have multiple apps sharing the same facebook app id
-    // [Socialize storeFacebookURLSchemeSuffix:@"myfreeapp"];
+    <span class="c1">// The following is only needed if you have multiple apps sharing the same facebook app id</span>
+    <span class="c1">// [Socialize storeFacebookURLSchemeSuffix:@&quot;myfreeapp&quot;];</span>
     
-    [self.socialize linkToFacebookWithAccessToken:@"EXISTING_TOKEN" expirationDate:[NSDate distantFuture]];
-}
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">socialize</span> <span class="nl">linkToFacebookWithAccessToken:</span><span class="s">@&quot;EXISTING_TOKEN&quot;</span> <span class="nl">expirationDate:</span><span class="p">[</span><span class="n">NSDate</span> <span class="n">distantFuture</span><span class="p">]];</span>
+<span class="p">}</span>
 
-- (void)didAuthenticate:(id&lt;SocializeUser&gt;)user {
-    if ([self.socialize isAuthenticatedWithFacebook]) {
-        NSLog(@"Facebook link successful");
-    }
-}
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">didAuthenticate:</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeUser</span><span class="o">&gt;</span><span class="p">)</span><span class="n">user</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">self</span><span class="p">.</span><span class="n">socialize</span> <span class="n">isAuthenticatedWithFacebook</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Facebook link successful&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-- (void)service:(SocializeService *)service didFail:(NSError *)error {
-    NSLog(@"Error: %@", [error localizedDescription]);
-}
-
-</pre>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">service:</span><span class="p">(</span><span class="n">SocializeService</span> <span class="o">*</span><span class="p">)</span><span class="n">service</span> <span class="nl">didFail:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="n">error</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Error: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="optional-configure-your-app-for-twitter">
@@ -404,7 +395,7 @@ using FBConnect on your own, you can check the official Facebook tutorial at
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

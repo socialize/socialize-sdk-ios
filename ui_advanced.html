@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Advanced UI Configuration &mdash; Socialize iOS SDK 1.7.3 documentation</title>
+    <title>Advanced UI Configuration &mdash; Socialize iOS SDK 1.7.4 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.3',
+        VERSION:     '1.7.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.3 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.7.4 documentation" href="index.html" />
     <link rel="next" title="SDK User Guide" href="sdk_user_guide.html" />
     <link rel="prev" title="Socialize Comments" href="comments.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="comments.html" title="Socialize Comments"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -78,23 +78,21 @@
 <p>If the error alert messages that the default Socialize UI objects emit do not fit your needs,
 you can remove them using [Socialize storeUIErrorAlertsDisabled:YES].</p>
 <p>In addition, a notification will be posted for all Socialize UI errors.</p>
-<div class="highlight-python"><pre>
-//import the socialize header
-#import &lt;Socialize/Socialize.h&gt;
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">//import the socialize header</span>
+<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [Socialize storeUIErrorAlertsDisabled:YES];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errorNotification:) name:SocializeUIControllerDidFailWithErrorNotification object:nil];
+<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeUIErrorAlertsDisabled:</span><span class="n">YES</span><span class="p">];</span>
+    <span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="n">defaultCenter</span><span class="p">]</span> <span class="nl">addObserver:</span><span class="n">self</span> <span class="nl">selector:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">errorNotification:</span><span class="p">)</span> <span class="nl">name:</span><span class="n">SocializeUIControllerDidFailWithErrorNotification</span> <span class="nl">object:</span><span class="nb">nil</span><span class="p">];</span>
     
-    return YES;
-}
+    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+<span class="p">}</span>
 
-- (void)errorNotification:(NSNotification*)notification {
-    NSError *error = [[notification userInfo] objectForKey:SocializeUIControllerErrorUserInfoKey];
-    NSLog(@"Error: %@", [error localizedDescription]);
-}
-
-</pre>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">errorNotification:</span><span class="p">(</span><span class="n">NSNotification</span><span class="o">*</span><span class="p">)</span><span class="n">notification</span> <span class="p">{</span>
+    <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="p">[[</span><span class="n">notification</span> <span class="n">userInfo</span><span class="p">]</span> <span class="nl">objectForKey:</span><span class="n">SocializeUIControllerErrorUserInfoKey</span><span class="p">];</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Error: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -111,22 +109,20 @@ onwards the Socialize SDK will default to requiring users authenticate with a
 3rd party prior to performing any social action (e.g. Comment or Like).</p>
 <p>This default behavior can be overridden by the developer (you) with the
 following settings:</p>
-<div class="highlight-python"><pre>
-//import the Socialize header
-#import &lt;Socialize/Socialize.h&gt;
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">//import the Socialize header</span>
+<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
 
-    // User can opt out of third party linking (default NO)
-    [Socialize storeAnonymousAllowed:YES];
+    <span class="c1">// User can opt out of third party linking (default NO)</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeAnonymousAllowed:</span><span class="n">YES</span><span class="p">];</span>
     
-    // User is not shown third party link dialog on Social Actions (default NO)
-    [Socialize storeAuthenticationNotRequired:YES];
+    <span class="c1">// User is not shown third party link dialog on Social Actions (default NO)</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeAuthenticationNotRequired:</span><span class="n">YES</span><span class="p">];</span>
     
-    return YES;
-}
-
-</pre>
+    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -181,7 +177,7 @@ following settings:</p>
         <li class="right" >
           <a href="comments.html" title="Socialize Comments"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
