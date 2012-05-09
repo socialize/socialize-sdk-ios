@@ -169,6 +169,25 @@
     return scenario;
 }
 
++ (id)scenarioToTestDirectURLNotification {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test the like button"];
+    
+    NSMutableArray *steps = [NSMutableArray array];
+    
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:16 inSection:0];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Input Field"]];
+    [steps addObject:[KIFTestStep stepToEnterText:@"http://www.google.com" intoViewWithAccessibilityLabel:@"Input Field"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Enter"]];
+    
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Done"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
+    
+    [scenario addStepsFromArray:steps];
+    
+    return scenario;
+}
 
 
 @end

@@ -310,7 +310,7 @@
             NSString *testURL = [self getValueWithPrompt:@"Enter a URL" defaultValue:@"http://www.npr.org/"];
             if ([testURL length] > 0) {
                 NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                               [NSArray arrayWithObject:testURL], @"url",
+                                               testURL, @"url",
                                                @"developer_direct_url", @"notification_type",
                                                nil];
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];

@@ -16,6 +16,7 @@
 + (id)scenarioToTestActionBar;
 + (id)scenarioToTestViewOtherProfile;
 + (id)scenarioToTestLikeButton;
++ (id)scenarioToTestDirectURLNotification;
 
 //+ (id)scenarioToTestFacebook;
 
