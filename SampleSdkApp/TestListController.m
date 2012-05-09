@@ -340,8 +340,7 @@
             if(url) {
                 id<SocializeEntity> entity = [SocializeEntity entityWithKey:url name:@"Test Entity"];
                 TestLikeButton *testLike = [[[TestLikeButton alloc] initWithEntity:entity] autorelease];
-                UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:testLike] autorelease];
-                [self presentModalViewController:nav animated:YES];
+                [self.navigationController pushViewController:testLike animated:YES];
             }
 
         }
