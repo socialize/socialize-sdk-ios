@@ -23,10 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if ([self.title length] == 0) {
-        self.title = @"Hey You!";
-    }
-    
     self.navigationItem.rightBarButtonItem = self.doneButton;
     
     self.webView.didFinishLoadBlock = ^{
