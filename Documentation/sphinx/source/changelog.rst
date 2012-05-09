@@ -4,6 +4,12 @@
 Changelog
 =============================================
 
+v1.7.4
+------
+[feature] Add launch-time notification handling info to documentation [ ]
+
+[bug] Direct-URL smartalerts are crashing [ ]
+
 v1.7.3
 ------
 [bug] Cancelling auth does not work from post comment [ ui ]
