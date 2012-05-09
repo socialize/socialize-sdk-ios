@@ -1221,6 +1221,8 @@
 		AA7F0A5D153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F0A5A153CAD7B00EC6DD7 /* SocializeLikeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7F0A5E153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F0A5B153CAD7B00EC6DD7 /* SocializeLikeButton.m */; };
 		AA7F0A5F153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F0A5B153CAD7B00EC6DD7 /* SocializeLikeButton.m */; };
+		AA7F8C27155B0EFB000ADA70 /* UIWebView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658A14518F1600DD5421 /* UIWebView+BlocksKit.m */; };
+		AA7F8C28155B0EFC000ADA70 /* UIWebView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658A14518F1600DD5421 /* UIWebView+BlocksKit.m */; };
 		AA7FB8B51491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
 		AA7FB8B61491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
 		AA7FB8B71491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
@@ -7156,6 +7158,7 @@
 				AA7F0A5E153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */,
 				AAF60EB915461AD000245867 /* SampleEntityLoader.m in Sources */,
 				AADD17F9154B1E0900ECB1D0 /* SZNavigationController.m in Sources */,
+				AA7F8C27155B0EFB000ADA70 /* UIWebView+BlocksKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7559,6 +7562,7 @@
 				AA7F0A5F153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */,
 				AAF60EBA15461AD000245867 /* SampleEntityLoader.m in Sources */,
 				AADD17FA154B1E0900ECB1D0 /* SZNavigationController.m in Sources */,
+				AA7F8C28155B0EFC000ADA70 /* UIWebView+BlocksKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
