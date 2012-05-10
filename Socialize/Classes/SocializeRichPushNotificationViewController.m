@@ -39,6 +39,10 @@
     if (!self.initialized) {
         NSURL *url = [NSURL URLWithString:self.url];
         
+        if ([[url scheme] length] == 0) {
+            url = [NSURL URLWithString:[@"http://" stringByAppendingString:self.url]];
+        }
+
         [self startLoading];
         [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
         

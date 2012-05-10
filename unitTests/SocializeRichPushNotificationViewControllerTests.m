@@ -10,6 +10,7 @@
 
 @implementation SocializeRichPushNotificationViewControllerTests
 @synthesize richPushNotificationViewController;
+@synthesize mockWebView = mockWebView_;
 
 + (SocializeBaseViewController*)createController {
     return [[[SocializeRichPushNotificationViewController alloc] init] autorelease];
@@ -17,16 +18,23 @@
 
 - (void)tearDown {
     [super tearDown];
+    [self.mockWebView verify];
     
+    self.mockWebView = nil;
     self.richPushNotificationViewController = nil;
 }
 
 - (void)setUp {
     [super setUp];
     self.richPushNotificationViewController = (SocializeRichPushNotificationViewController*)self.viewController;
+    
+    self.mockWebView = [OCMockObject mockForClass:[UIWebView class]];
+    self.richPushNotificationViewController.webView = self.mockWebView;
 }
              
 - (void)testViewDidLoad {
+    [self.mockWebView makeNice];
+    
     [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockDoneButton];
     [self.richPushNotificationViewController viewDidLoad];
 }
@@ -59,6 +67,20 @@
     [UIApplication stopMockingClassAndVerify];
     
     GHAssertFalse(shouldLoad, @"Should not load");
+}
+
+- (void)testLoadingSchemalessURL {
+    self.richPushNotificationViewController.url = @"www.google.com";
+
+    [[[self.mockWebView expect] andDo1:^(NSURLRequest *request) {
+        NSURL *url = [request URL];
+        
+        GHAssertEqualStrings([url scheme], @"http", @"bad scheme");
+        GHAssertEqualStrings([url host], @"www.google.com", @"bad host");
+        
+    }] loadRequest:OCMOCK_ANY];
+    
+    [self.richPushNotificationViewController viewDidAppear:YES];
 }
 
 @end

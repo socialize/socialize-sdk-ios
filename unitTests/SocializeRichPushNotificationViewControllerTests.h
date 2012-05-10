@@ -11,4 +11,5 @@
 
 @interface SocializeRichPushNotificationViewControllerTests : SocializeBaseViewControllerTests
 @property (nonatomic, retain) SocializeRichPushNotificationViewController *richPushNotificationViewController;
+@property (nonatomic, assign) id mockWebView;
 @end
