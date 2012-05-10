@@ -31,4 +31,34 @@
     [self.richPushNotificationViewController viewDidLoad];
 }
 
+- (void)testLoadingItunesURL {
+    NSString *itunesURL = @"http://itunes.apple.com/us/app/some-app/id123853140?ls=1&mt=8";
+    NSString *itunesSchemeURLString = @"itms-apps://itunes.apple.com/us/app/some-app/id123853140?ls=1&mt=8";
+    NSURL *itunesSchemeURL = [NSURL URLWithString:itunesSchemeURLString];
+    
+    // The main url for this controller is an iTunes one
+    self.richPushNotificationViewController.url = itunesURL;
+    id mockRequest = [OCMockObject mockForClass:[NSURLRequest class]];
+    [[[mockRequest stub] andReturn:itunesSchemeURL] URL];
+
+    // Fake shared application that can open the iTunes URL
+    id mockApplication = [OCMockObject mockForClass:[UIApplication class]];
+    [[[mockApplication stub] andReturnBool:YES] canOpenURL:itunesSchemeURL];
+    [UIApplication startMockingClass];
+    [[[UIApplication stub] andReturn:mockApplication] sharedApplication];
+
+    // URL Should open in fake shared application
+    [[mockApplication expect] openURL:itunesSchemeURL];
+    
+    // Should dismiss itself after loading store URL
+    [[self.mockDelegate expect] baseViewControllerDidFinish:OCMOCK_ANY];
+    
+    // Ask the web view delegate if it can load the itunes scheme (the scheme autoadjusts to itms-apps)
+    BOOL shouldLoad = [self.richPushNotificationViewController webView:nil shouldStartLoadWithRequest:mockRequest navigationType:UIWebViewNavigationTypeOther];
+    
+    [UIApplication stopMockingClassAndVerify];
+    
+    GHAssertFalse(shouldLoad, @"Should not load");
+}
+
 @end

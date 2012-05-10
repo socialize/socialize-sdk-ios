@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SocializeBaseViewController.h"
 
-@interface SocializeRichPushNotificationViewController : SocializeBaseViewController
+@interface SocializeRichPushNotificationViewController : SocializeBaseViewController <UIWebViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
 @property (nonatomic, retain) NSString *url;

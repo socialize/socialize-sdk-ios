@@ -262,8 +262,6 @@
 		16C365EA14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658514518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h */; };
 		16C365ED14518F1600DD5421 /* UIView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658714518F1600DD5421 /* UIView+BlocksKit.h */; };
 		16C365EE14518F1600DD5421 /* UIView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658714518F1600DD5421 /* UIView+BlocksKit.h */; };
-		16C365F114518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658914518F1600DD5421 /* UIWebView+BlocksKit.h */; };
-		16C365F214518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C3658914518F1600DD5421 /* UIWebView+BlocksKit.h */; };
 		16C365F6145192B900DD5421 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C365F5145192B900DD5421 /* MessageUI.framework */; };
 		16C365F7145192C300DD5421 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C365F5145192B900DD5421 /* MessageUI.framework */; };
 		16C365F814519D4900DD5421 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C365F5145192B900DD5421 /* MessageUI.framework */; };
@@ -1209,6 +1207,8 @@
 		AA73833A1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7383371489B5F5009BE1D0 /* SocializeErrorDefinitions.m */; };
 		AA73833B1489B5F5009BE1D0 /* SocializeErrorDefinitions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7383371489B5F5009BE1D0 /* SocializeErrorDefinitions.m */; };
 		AA76792014F70A6000919EC4 /* GCDAProfiling.c in Sources */ = {isa = PBXBuildFile; fileRef = AA76791F14F70A6000919EC4 /* GCDAProfiling.c */; };
+		AA7A7FB1155C524D00ED1930 /* SocializeRichPushNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839AA414D3772800103ECE /* SocializeRichPushNotificationViewController.m */; };
+		AA7A7FB2155C524F00ED1930 /* SocializeRichPushNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839AA414D3772800103ECE /* SocializeRichPushNotificationViewController.m */; };
 		AA7E73CD14FB0D25001AFC0A /* SocializeFacebookWallPoster.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7E73CB14FB0D25001AFC0A /* SocializeFacebookWallPoster.h */; };
 		AA7E73CE14FB0D25001AFC0A /* SocializeFacebookWallPoster.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7E73CB14FB0D25001AFC0A /* SocializeFacebookWallPoster.h */; };
 		AA7E73CF14FB0D25001AFC0A /* SocializeFacebookWallPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7E73CC14FB0D25001AFC0A /* SocializeFacebookWallPoster.m */; };
@@ -1221,8 +1221,6 @@
 		AA7F0A5D153CAD7B00EC6DD7 /* SocializeLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F0A5A153CAD7B00EC6DD7 /* SocializeLikeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7F0A5E153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F0A5B153CAD7B00EC6DD7 /* SocializeLikeButton.m */; };
 		AA7F0A5F153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F0A5B153CAD7B00EC6DD7 /* SocializeLikeButton.m */; };
-		AA7F8C27155B0EFB000ADA70 /* UIWebView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658A14518F1600DD5421 /* UIWebView+BlocksKit.m */; };
-		AA7F8C28155B0EFC000ADA70 /* UIWebView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3658A14518F1600DD5421 /* UIWebView+BlocksKit.m */; };
 		AA7FB8B51491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
 		AA7FB8B61491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
 		AA7FB8B71491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
@@ -1301,8 +1299,6 @@
 		AA839AA214D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839A9E14D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.m */; };
 		AA839AA614D3772800103ECE /* SocializeRichPushNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA839AA314D3772800103ECE /* SocializeRichPushNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA839AA714D3772800103ECE /* SocializeRichPushNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA839AA314D3772800103ECE /* SocializeRichPushNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA839AA814D3772800103ECE /* SocializeRichPushNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839AA414D3772800103ECE /* SocializeRichPushNotificationViewController.m */; };
-		AA839AA914D3772800103ECE /* SocializeRichPushNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839AA414D3772800103ECE /* SocializeRichPushNotificationViewController.m */; };
 		AA839AB314D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839AB214D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m */; };
 		AA86DB4215364DCB002DE37D /* SocializeThirdPartyLinker.h in Headers */ = {isa = PBXBuildFile; fileRef = AA86DB4015364DCB002DE37D /* SocializeThirdPartyLinker.h */; };
 		AA86DB4315364DCB002DE37D /* SocializeThirdPartyLinker.h in Headers */ = {isa = PBXBuildFile; fileRef = AA86DB4015364DCB002DE37D /* SocializeThirdPartyLinker.h */; };
@@ -2335,8 +2331,6 @@
 		16C3658614518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIGestureRecognizer+BlocksKit.m"; path = "Socialize/BlocksKit/UIGestureRecognizer+BlocksKit.m"; sourceTree = "<group>"; };
 		16C3658714518F1600DD5421 /* UIView+BlocksKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+BlocksKit.h"; path = "Socialize/BlocksKit/UIView+BlocksKit.h"; sourceTree = "<group>"; };
 		16C3658814518F1600DD5421 /* UIView+BlocksKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+BlocksKit.m"; path = "Socialize/BlocksKit/UIView+BlocksKit.m"; sourceTree = "<group>"; };
-		16C3658914518F1600DD5421 /* UIWebView+BlocksKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWebView+BlocksKit.h"; path = "Socialize/BlocksKit/UIWebView+BlocksKit.h"; sourceTree = "<group>"; };
-		16C3658A14518F1600DD5421 /* UIWebView+BlocksKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+BlocksKit.m"; path = "Socialize/BlocksKit/UIWebView+BlocksKit.m"; sourceTree = "<group>"; };
 		16C365F5145192B900DD5421 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		16C815FB14598F1E00FFC476 /* socialize-comment-top-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-top-background.png"; path = "Resources/socialize-comment-top-background.png"; sourceTree = "<group>"; };
 		16C815FC14598F1F00FFC476 /* socialize-comment-user-only-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-comment-user-only-background.png"; path = "Resources/socialize-comment-user-only-background.png"; sourceTree = "<group>"; };
@@ -3397,8 +3391,6 @@
 				16C3658614518F1600DD5421 /* UIGestureRecognizer+BlocksKit.m */,
 				16C3658714518F1600DD5421 /* UIView+BlocksKit.h */,
 				16C3658814518F1600DD5421 /* UIView+BlocksKit.m */,
-				16C3658914518F1600DD5421 /* UIWebView+BlocksKit.h */,
-				16C3658A14518F1600DD5421 /* UIWebView+BlocksKit.m */,
 			);
 			name = BlocksKit;
 			sourceTree = "<group>";
@@ -5038,7 +5030,6 @@
 				16C365E614518F1600DD5421 /* UIControl+BlocksKit.h in Headers */,
 				16C365EA14518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */,
 				16C365EE14518F1600DD5421 /* UIView+BlocksKit.h in Headers */,
-				16C365F214518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */,
 				AAD4B40F1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */,
 				AAC201981460CFD30045FDAB /* UINavigationController+Socialize.h in Headers */,
 				AA5ACEF01467C3F300790B3D /* SocializeProfileEditValueViewController.h in Headers */,
@@ -5195,7 +5186,6 @@
 				16C365E514518F1600DD5421 /* UIControl+BlocksKit.h in Headers */,
 				16C365E914518F1600DD5421 /* UIGestureRecognizer+BlocksKit.h in Headers */,
 				16C365ED14518F1600DD5421 /* UIView+BlocksKit.h in Headers */,
-				16C365F114518F1600DD5421 /* UIWebView+BlocksKit.h in Headers */,
 				AAD4B40E1460A45000F39D0A /* SocializeProfileEditViewController.h in Headers */,
 				AAC201971460CFD30045FDAB /* UINavigationController+Socialize.h in Headers */,
 				AA5ACEEF1467C3F200790B3D /* SocializeProfileEditValueViewController.h in Headers */,
@@ -7112,7 +7102,6 @@
 				AAB427FA14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */,
 				AAE930D914CA094F007CEB50 /* SocializeHorizontalContainerView.m in Sources */,
 				AA839AA114D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.m in Sources */,
-				AA839AA814D3772800103ECE /* SocializeRichPushNotificationViewController.m in Sources */,
 				AA92BBE814E3574400F67058 /* SocializeTwitterAuthViewController.m in Sources */,
 				AA92BC0B14E36BE600F67058 /* NSArray+AssociativeArray.m in Sources */,
 				AA92BC0F14E36BE600F67058 /* NSString+QueryString.m in Sources */,
@@ -7158,7 +7147,7 @@
 				AA7F0A5E153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */,
 				AAF60EB915461AD000245867 /* SampleEntityLoader.m in Sources */,
 				AADD17F9154B1E0900ECB1D0 /* SZNavigationController.m in Sources */,
-				AA7F8C27155B0EFB000ADA70 /* UIWebView+BlocksKit.m in Sources */,
+				AA7A7FB1155C524D00ED1930 /* SocializeRichPushNotificationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7516,7 +7505,6 @@
 				AAE930DA14CA094F007CEB50 /* SocializeHorizontalContainerView.m in Sources */,
 				AAEFDE3214CDFD8900764633 /* UIView+Layout.m in Sources */,
 				AA839AA214D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.m in Sources */,
-				AA839AA914D3772800103ECE /* SocializeRichPushNotificationViewController.m in Sources */,
 				AA92BBE914E3574400F67058 /* SocializeTwitterAuthViewController.m in Sources */,
 				AA92BC0C14E36BE600F67058 /* NSArray+AssociativeArray.m in Sources */,
 				AA92BC1014E36BE600F67058 /* NSString+QueryString.m in Sources */,
@@ -7562,7 +7550,7 @@
 				AA7F0A5F153CAD7B00EC6DD7 /* SocializeLikeButton.m in Sources */,
 				AAF60EBA15461AD000245867 /* SampleEntityLoader.m in Sources */,
 				AADD17FA154B1E0900ECB1D0 /* SZNavigationController.m in Sources */,
-				AA7F8C28155B0EFC000ADA70 /* UIWebView+BlocksKit.m in Sources */,
+				AA7A7FB2155C524F00ED1930 /* SocializeRichPushNotificationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
