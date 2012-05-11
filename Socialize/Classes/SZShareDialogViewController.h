@@ -8,6 +8,6 @@
 
 #import "SocializeBaseViewController.h"
 
-@interface SZSelectNetworkViewController : SocializeBaseViewController <UITableViewDelegate, UITableViewDataSource>
+@interface SZShareDialogViewController : SocializeBaseViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end

@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import "SZSelectNetworkViewController.h"
+#import "SZShareDialogViewController.h"
 
-@interface SZSelectNetworkViewController ()
+@interface SZShareDialogViewController ()
 
 @end
 
-@implementation SZSelectNetworkViewController
+@implementation SZShareDialogViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
