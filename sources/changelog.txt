@@ -4,6 +4,12 @@
 Changelog
 =============================================
 
+v1.7.5
+------
+[bug] External links such as iTunes should open for direct url requests [ ]
+
+[bug] Direct URL entities should work if scheme unspecified [ ]
+
 v1.7.4
 ------
 [feature] Add launch-time notification handling info to documentation [ ]
