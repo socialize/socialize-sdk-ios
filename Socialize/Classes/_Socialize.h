@@ -390,6 +390,10 @@ otherwise you will get a failure.
  */
 - (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken expirationDate:(NSDate*)expirationDate;
 
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken 
+                              success:(void(^)(id<SZFullUser>))success
+                              failure:(void(^)(NSError *error))failure;
+
 - (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret;
 
 /**

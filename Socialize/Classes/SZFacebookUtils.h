@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SocializeObjects.h"
 
 @interface SZFacebookUtils : NSObject
 
 + (BOOL)isAvailable;
 + (BOOL)isLinked;
-
++ (void)linkToFacebookWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
 @end

@@ -58,10 +58,6 @@ static NSString *kOtherSection = @"kOtherSection";
     [super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem = self.cancelButton;
-//    self.continueButton.titleLabel.layer.shadowOpacity = 1.0;
-//    self.continueButton.titleLabel.layer.shadowOffset = CGSizeMake(0, -1);
-//    self.continueButton.titleLabel.layer.shadowRadius = 1.0;
-//    self.continueButton.titleLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
 }
 
 #define COPIED_BLOCK(identifier) [[identifier copy] autorelease]

@@ -378,6 +378,12 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_authService linkToFacebookWithAccessToken:facebookAccessToken];
 }
 
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken 
+                              success:(void(^)(id<SZFullUser>))success
+                              failure:(void(^)(NSError *error))failure {
+    [_authService linkToFacebookWithAccessToken:facebookAccessToken success:success failure:failure];
+}
+
 - (void)authenticateViaTwitterWithOptions:(SocializeTwitterAuthOptions*)options
                                   display:(id)display
                                   success:(void(^)())success

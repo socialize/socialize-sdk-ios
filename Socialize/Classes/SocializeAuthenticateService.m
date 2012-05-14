@@ -107,7 +107,10 @@
 
 - (void)authenticateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
                        thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
-                    thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret {
+                    thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret
+                                   success:(void(^)(id<SZFullUser>))success
+                                   failure:(void(^)(NSError *error))failure
+{
     
     NSString *authType = [NSString stringWithFormat :@"%d", type];
 
@@ -123,8 +126,21 @@
                                                            expectedJSONFormat:SocializeDictionary
                                                                        params:params];
     
+    request.successBlock = success;
+    request.failureBlock = failure;
+    
     [self executeRequest:request];
 
+}
+
+- (void)authenticateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
+                       thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
+                 thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret {
+    [self authenticateWithThirdPartyAuthType:type
+                         thirdPartyAuthToken:thirdPartyAuthToken
+                   thirdPartyAuthTokenSecret:thirdPartyAuthTokenSecret
+                                     success:nil
+                                     failure:nil];
 }
 
 - (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret {
@@ -133,10 +149,18 @@
                    thirdPartyAuthTokenSecret:twitterAccessTokenSecret];
 }
 
-- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken {
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken 
+                              success:(void(^)(id<SZFullUser>))success
+                              failure:(void(^)(NSError *error))failure
+{
     [self authenticateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeFacebook
                          thirdPartyAuthToken:facebookAccessToken
-                   thirdPartyAuthTokenSecret:nil];
+                   thirdPartyAuthTokenSecret:nil
+                                     success:success failure:failure];
+}
+
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken {
+    [self linkToFacebookWithAccessToken:facebookAccessToken success:nil failure:nil];
 }
 
 /**
