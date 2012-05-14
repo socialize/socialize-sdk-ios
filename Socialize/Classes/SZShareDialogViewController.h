@@ -8,8 +8,10 @@
 
 #import "SocializeBaseViewController.h"
 
+@class SZShareDialogView;
+
 @interface SZShareDialogViewController : SocializeBaseViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, retain) IBOutlet UIButton *continueButton;
+@property (nonatomic, retain) IBOutlet SZShareDialogView *shareDialogView;
 
 @end

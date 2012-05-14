@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
+#import "SZShareDialogView.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -31,14 +32,14 @@ static NSString *kOtherSection = @"kOtherSection";
 @end
 
 @implementation SZShareDialogViewController
-@synthesize continueButton = continueButton_;
+@synthesize shareDialogView = shareDialogView_;
 @synthesize sections = sections_;
 @synthesize socialNetworkSection = socializeNetworkSection_;
 
 - (void)viewDidUnload {
     [super viewDidUnload];
     
-    self.continueButton = nil;
+    self.shareDialogView = nil;
     self.sections = nil;
     self.socialNetworkSection = nil;
 }
@@ -46,11 +47,7 @@ static NSString *kOtherSection = @"kOtherSection";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.separatorColor = [UIColor colorWithRed:25/255.0f green:31/255.0f blue:37/255.0f alpha:1.0];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    
+    self.navigationItem.leftBarButtonItem = self.cancelButton;
 //    self.continueButton.titleLabel.layer.shadowOpacity = 1.0;
 //    self.continueButton.titleLabel.layer.shadowOffset = CGSizeMake(0, -1);
 //    self.continueButton.titleLabel.layer.shadowRadius = 1.0;
@@ -163,6 +160,10 @@ static NSString *kOtherSection = @"kOtherSection";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]) && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        return 45;
+    }
+    
     return 50;
 }
 
@@ -177,11 +178,20 @@ static NSString *kOtherSection = @"kOtherSection";
     }
     
     if ([[sectionData objectForKey:kSectionIdentifier] isEqualToString:kSocialNetworkSection]) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
         if (![cell.accessoryView isKindOfClass:[UISwitch class]]) {
             cell.accessoryView = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];            
         }
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else {
-        cell.accessoryView = nil;
+        if (![cell.accessoryView isKindOfClass:[UIImageView class]]) {
+            UIImage *arrowImage = [UIImage imageNamed:@"socialize-activity-call-out-arrow.png"];
+            cell.accessoryView = [[[UIImageView alloc] initWithImage:arrowImage] autorelease];
+        }
+
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 
     cell.backgroundColor = [UIColor colorWithRed:41/255.0f green:48/255.0f blue:54/255.0f alpha:1.0];

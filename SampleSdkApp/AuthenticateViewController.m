@@ -58,6 +58,8 @@
 
 #pragma mark - View lifecycle
 
+#import "SZShareUtils.h"
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -83,6 +85,8 @@
     [Socialize storeConsumerSecret:[apiInfo objectForKey:@"secret"]];
 
     [Socialize storeFacebookAppId:@"115622641859087"];
+
+    [SZShareUtils showShareDialogWithViewController:self entity:nil];
     
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];
