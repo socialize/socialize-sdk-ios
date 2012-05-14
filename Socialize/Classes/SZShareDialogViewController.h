@@ -10,4 +10,6 @@
 
 @interface SZShareDialogViewController : SocializeBaseViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, retain) IBOutlet UIButton *continueButton;
+
 @end
