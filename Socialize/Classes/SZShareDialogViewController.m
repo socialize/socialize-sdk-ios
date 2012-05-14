@@ -11,6 +11,7 @@
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SZShareDialogView.h"
+#import "SZShareUtils.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -35,6 +36,15 @@ static NSString *kOtherSection = @"kOtherSection";
 @synthesize shareDialogView = shareDialogView_;
 @synthesize sections = sections_;
 @synthesize socialNetworkSection = socializeNetworkSection_;
+@synthesize entity = entity_;
+
+- (id)initWithEntity:(id<SZEntity>)entity {
+    if (self = [super init]) {
+        self.entity = entity;
+    }
+    
+    return self;
+}
 
 - (void)viewDidUnload {
     [super viewDidUnload];
@@ -93,7 +103,15 @@ static NSString *kOtherSection = @"kOtherSection";
 
 - (NSDictionary*)SMSRow {
     void (^executionBlock)() = ^{
-        
+        [SZShareUtils shareViaSMSWithViewController:self entity:self.entity success:^(id<SZShare> share) {
+            
+        } failure:^(NSError *error) {
+            [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+
+            if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
+                [self failWithError:error];
+            }
+        }];
     };
     
     return [NSDictionary dictionaryWithObjectsAndKeys:
@@ -105,7 +123,16 @@ static NSString *kOtherSection = @"kOtherSection";
 
 - (NSDictionary*)emailRow {
     void (^executionBlock)() = ^{
-        
+        [SZShareUtils shareViaEmailWithViewController:self entity:self.entity success:^(id<SZShare> share) {
+            
+        } failure:^(NSError *error) {
+            [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+
+            if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
+                [self failWithError:error];
+            }
+        }];
+
     };
     
     return [NSDictionary dictionaryWithObjectsAndKeys:
@@ -145,7 +172,7 @@ static NSString *kOtherSection = @"kOtherSection";
     return rows;
 }
 
-- (NSDictionary*)rowForIndexPath:(NSIndexPath*)indexPath {
+- (NSDictionary*)rowDataForIndexPath:(NSIndexPath*)indexPath {
     NSArray *rows = [self rowsForSectionNumber:indexPath.section];
     return [rows objectAtIndex:indexPath.row];
 }
@@ -169,7 +196,7 @@ static NSString *kOtherSection = @"kOtherSection";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *sectionData = [self sectionForSectionNumber:indexPath.section];
-    NSDictionary *rowData = [self rowForIndexPath:indexPath];
+    NSDictionary *rowData = [self rowDataForIndexPath:indexPath];
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -178,12 +205,12 @@ static NSString *kOtherSection = @"kOtherSection";
     }
     
     if ([[sectionData objectForKey:kSectionIdentifier] isEqualToString:kSocialNetworkSection]) {
-        cell.accessoryType = UITableViewCellAccessoryNone;
         if (![cell.accessoryView isKindOfClass:[UISwitch class]]) {
             cell.accessoryView = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];            
         }
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryNone;
     } else {
         if (![cell.accessoryView isKindOfClass:[UIImageView class]]) {
             UIImage *arrowImage = [UIImage imageNamed:@"socialize-activity-call-out-arrow.png"];
@@ -200,6 +227,12 @@ static NSString *kOtherSection = @"kOtherSection";
     cell.textLabel.textColor = [UIColor whiteColor];
 
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *rowData = [self rowDataForIndexPath:indexPath];
+    void (^executionBlock)() = [rowData objectForKey:kRowExecutionBlock];
+    executionBlock();
 }
 
 @end

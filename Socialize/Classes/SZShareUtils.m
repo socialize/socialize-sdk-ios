@@ -16,7 +16,7 @@
 @implementation SZShareUtils
 
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity {
-    SZShareDialogViewController *selectNetwork = [[[SZShareDialogViewController alloc] init] autorelease];
+    SZShareDialogViewController *selectNetwork = [[[SZShareDialogViewController alloc] initWithEntity:entity] autorelease];
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:selectNetwork] autorelease];
     [viewController presentModalViewController:nav animated:YES];
 }

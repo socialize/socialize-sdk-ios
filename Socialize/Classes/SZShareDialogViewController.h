@@ -12,6 +12,9 @@
 
 @interface SZShareDialogViewController : SocializeBaseViewController <UITableViewDelegate, UITableViewDataSource>
 
+- (id)initWithEntity:(id<SZEntity>)entity;
+
+@property (nonatomic, retain) id<SZEntity> entity;
 @property (nonatomic, retain) IBOutlet SZShareDialogView *shareDialogView;
 
 @end
