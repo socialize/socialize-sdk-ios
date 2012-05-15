@@ -99,6 +99,9 @@ NSString *const kSocializeFacebookAuthLocalAppId = SOCIALIZE_FACEBOOK_LOCAL_APP_
 NSString *const kSocializeFacebookAuthAccessToken = @"kSocializeFacebookAuthAccessToken";
 NSString *const kSocializeFacebookAuthExpirationDate = @"kSocializeFacebookAuthExpirationDate";
 
+NSString *const kSocializeDontPostToFacebookKey = kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY;
+NSString *const kSocializeDontPostToTwitterKey = kSOCIALIZE_DONT_POST_TO_TWITTER_KEY;
+
 NSString *const kSocializeFacebookStringForAPI = @"FaceBook";
 
 // Authentication settings

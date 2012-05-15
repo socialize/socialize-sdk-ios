@@ -12,6 +12,9 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "SZShareDialogView.h"
 #import "SZShareUtils.h"
+#import "SZFacebookUtils.h"
+#import "SZTwitterUtils.h"
+#import "UIControl+BlocksKit.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -20,6 +23,7 @@ static NSString *kSectionTitle = @"kSectionTitle";
 static NSString *kSectionRows = @"kSectionRows";
 
 static NSString *kRowExecutionBlock = @"kRowExecutionBlock";
+static NSString *kRowControlChangedBlock = @"kRowControlChangedBlock";
 static NSString *kRowText = @"kRowText";
 static NSString *kRowImage = @"kRowImage";
 static NSString *kRowThirdParty = @"kRowThirdParty";
@@ -62,28 +66,90 @@ static NSString *kOtherSection = @"kOtherSection";
 
 #define COPIED_BLOCK(identifier) [[identifier copy] autorelease]
 
+- (void)setPostToFacebook:(BOOL)postToFacebook {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!postToFacebook] forKey:kSocializeDontPostToFacebookKey];    
+}
+
+- (void)setPostToTwitter:(BOOL)postToTwitter {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!postToTwitter] forKey:kSocializeDontPostToTwitterKey];    
+}
+
 - (NSDictionary*)facebookRow {
-    void (^executionBlock)() = ^{
-        
+    void (^controlChangedBlock)(UISwitch *sw) = ^(UISwitch *sw) {
+        if (sw.on) {
+            
+            // Switch just turned on
+            
+            if ([SZFacebookUtils isLinked]) {
+                
+                // Already linked
+                [self setPostToFacebook:YES];
+            } else {
+                
+                // Not linked -- Attempt link
+                [SZFacebookUtils linkToFacebookWithViewController:self success:^(id<SZFullUser> fullUser) {
+                    
+                    // Successfully linked
+                    [self setPostToFacebook:YES];
+                } failure:^(NSError *error) {
+                    
+                    // Link failed
+                    [sw setOn:NO animated:YES];
+                    [self failWithError:error];
+                }];
+            }
+        } else {
+            
+            // Switch just turned off
+            [self setPostToFacebook:NO];
+        }
+                
     };
     
     return [NSDictionary dictionaryWithObjectsAndKeys:
             @"Facebook", kRowText,
             [UIImage imageNamed:@"socialize-authorize-facebook-enabled-icon.png"], kRowImage,
-            COPIED_BLOCK(executionBlock), kRowExecutionBlock,
+            COPIED_BLOCK(controlChangedBlock), kRowControlChangedBlock,
             [SocializeThirdPartyFacebook class], kRowThirdParty,
             nil];
 }
 
 - (NSDictionary*)twitterRow {
-    void (^executionBlock)() = ^{
+    void (^controlChangedBlock)(UISwitch *sw) = ^(UISwitch *sw) {
+        if (sw.on) {
+            
+            // Switch just turned on
+            
+            if ([SZTwitterUtils isLinked]) {
+                
+                // Already linked
+                [self setPostToTwitter:YES];
+            } else {
+                
+                // Not linked -- Attempt link
+                [SZTwitterUtils linkToTwitterWithViewController:self success:^(id<SZFullUser> fullUser) {
+                    
+                    // Successfully linked
+                    [self setPostToTwitter:YES];
+                } failure:^(NSError *error) {
+                    
+                    // Link failed
+                    [sw setOn:NO animated:YES];
+                    [self failWithError:error];
+                }];
+            }
+        } else {
+            
+            // Switch just turned off
+            [self setPostToTwitter:NO];
+        }
         
     };
 
     return [NSDictionary dictionaryWithObjectsAndKeys:
             @"Twitter", kRowText,
             [UIImage imageNamed:@"socialize-authorize-twitter-enabled-icon.png"], kRowImage,
-            COPIED_BLOCK(executionBlock), kRowExecutionBlock,
+            COPIED_BLOCK(controlChangedBlock), kRowControlChangedBlock,
             [SocializeThirdPartyTwitter class], kRowThirdParty,
             nil];
 }
@@ -202,11 +268,18 @@ static NSString *kOtherSection = @"kOtherSection";
     
     if ([[sectionData objectForKey:kSectionIdentifier] isEqualToString:kSocialNetworkSection]) {
         if (![cell.accessoryView isKindOfClass:[UISwitch class]]) {
-            cell.accessoryView = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];            
+            cell.accessoryView = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
         }
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
+        
+        UISwitch *sw = (UISwitch*)cell.accessoryView;
+        [sw removeEventHandlersForControlEvents:UIControlEventValueChanged];
+        void (^controlChangedBlock)() = [rowData objectForKey:kRowControlChangedBlock];
+        if (controlChangedBlock != nil) {
+            [sw addEventHandler:controlChangedBlock forControlEvents:UIControlEventValueChanged];
+        }
     } else {
         if (![cell.accessoryView isKindOfClass:[UIImageView class]]) {
             UIImage *arrowImage = [UIImage imageNamed:@"socialize-activity-call-out-arrow.png"];
@@ -228,7 +301,8 @@ static NSString *kOtherSection = @"kOtherSection";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *rowData = [self rowDataForIndexPath:indexPath];
     void (^executionBlock)() = [rowData objectForKey:kRowExecutionBlock];
-    executionBlock();
+
+    BLOCK_CALL(executionBlock);
 }
 
 @end

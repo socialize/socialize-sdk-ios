@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SocializeObjects.h"
 
 @interface SZTwitterUtils : NSObject
 
 + (BOOL)isAvailable;
 + (BOOL)isLinked;
++ (void)linkToTwitterWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
 
 @end

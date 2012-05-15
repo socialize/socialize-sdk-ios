@@ -8,6 +8,8 @@
 
 #import "SZTwitterUtils.h"
 #import "SocializeThirdPartyTwitter.h"
+#import "_Socialize.h"
+#import "SocializeTwitterAuthViewController.h"
 
 @implementation SZTwitterUtils
 
@@ -17,6 +19,12 @@
 
 + (BOOL)isLinked {
     return [SocializeThirdPartyTwitter isLinkedToSocialize];
+}
+
++ (void)linkToTwitterWithAccessToken:(NSString*)accessToken accessTokenSecret:(NSString*)accessTokenSecret success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
+}
+
++ (void)linkToTwitterWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
 }
 
 @end

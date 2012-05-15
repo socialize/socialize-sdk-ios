@@ -22,6 +22,7 @@
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SZUserUtils.h"
+#import "UITableView+Socialize.h"
 
 @interface SZSettingsViewController ()
 
@@ -241,17 +242,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     return cellBackgroundColors_;
 }
 
-- (NSInteger)offsetForIndexPath:(NSIndexPath*)indexPath {
-    NSInteger offset = 0;
-    for (int i = 0; i < indexPath.section; i++) {
-        offset += [self.tableView numberOfRowsInSection:i];
-    }
-    offset += indexPath.row;
-    return offset;
-}
-
 - (UIColor*)cellBackgroundColorForIndexPath:(NSIndexPath*)indexPath {
-    NSInteger offset = [self offsetForIndexPath:indexPath];
+    NSInteger offset = [self.tableView offsetForIndexPath:indexPath];
     return [self.cellBackgroundColors objectAtIndex:offset % 2];
 }
 
