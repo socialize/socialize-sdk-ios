@@ -67,6 +67,8 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 @synthesize navigationControllerForEdit = navigationControllerForEdit_;
 @synthesize displayProxy = displayProxy_;
 @synthesize display = display_;
+@synthesize completionBlock = completionBlock_;
+@synthesize cancellationBlock = cancellationBlock_;
 
 - (void)dealloc
 {
@@ -93,6 +95,8 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     self.navigationControllerForEdit = nil;
     self.display = nil;
     self.displayProxy = nil;
+    self.cancellationBlock = nil;
+    self.completionBlock = nil;
 
     [super dealloc];
 }
@@ -183,11 +187,15 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 }
 
 - (void)notifyDelegateOfCompletion {
-    if ([self.delegate respondsToSelector:@selector(baseViewControllerDidFinish:)]) {
-        [self.delegate baseViewControllerDidFinish:self];
+    if (self.completionBlock != nil) {
+        self.completionBlock();
     } else {
-        [self dismissModalViewControllerAnimated:YES];
-    }    
+        if ([self.delegate respondsToSelector:@selector(baseViewControllerDidFinish:)]) {
+            [self.delegate baseViewControllerDidFinish:self];
+        } else {
+            [self dismissModalViewControllerAnimated:YES];
+        }    
+    }
 }
 
 - (void)doneButtonPressed:(UIBarButtonItem*)button {
@@ -195,11 +203,15 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 }
 
 - (void)notifyDelegateOfCancellation {
-    if ([self.delegate respondsToSelector:@selector(baseViewControllerDidCancel:)]) {
-        [self.delegate baseViewControllerDidCancel:self];
+    if (self.cancellationBlock != nil) {
+        self.cancellationBlock();
     } else {
-        [self dismissModalViewControllerAnimated:YES];
-    }    
+        if ([self.delegate respondsToSelector:@selector(baseViewControllerDidCancel:)]) {
+            [self.delegate baseViewControllerDidCancel:self];
+        } else {
+            [self dismissModalViewControllerAnimated:YES];
+        }
+    }
 }
 
 - (void)cancelButtonPressed:(UIButton*)button {

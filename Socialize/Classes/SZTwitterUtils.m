@@ -10,6 +10,7 @@
 #import "SocializeThirdPartyTwitter.h"
 #import "_Socialize.h"
 #import "SocializeTwitterAuthViewController.h"
+#import "SZNavigationController.h"
 
 @implementation SZTwitterUtils
 
@@ -22,9 +23,32 @@
 }
 
 + (void)linkToTwitterWithAccessToken:(NSString*)accessToken accessTokenSecret:(NSString*)accessTokenSecret success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
+    [SocializeThirdPartyTwitter storeLocalCredentialsWithAccessToken:accessToken accessTokenSecret:accessTokenSecret];
+    
+    [[Socialize sharedSocialize] linkToTwitterWithAccessToken:accessToken
+                                            accessTokenSecret:accessTokenSecret
+                                                       success:success
+                                                       failure:failure];
 }
 
 + (void)linkToTwitterWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
+    NSString *consumerKey = [SocializeThirdPartyTwitter consumerKey];
+    NSString *consumerSecret = [SocializeThirdPartyTwitter consumerSecret];
+    
+    SocializeTwitterAuthViewController *auth = [[[SocializeTwitterAuthViewController alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret] autorelease];
+    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:auth] autorelease];
+
+    auth.twitterAuthSuccessBlock = ^(NSString *accessToken, NSString *accessTokenSecret, NSString *screenName, NSString *userId) {
+        [viewController dismissModalViewControllerAnimated:YES];
+        [self linkToTwitterWithAccessToken:accessToken accessTokenSecret:accessTokenSecret success:success failure:failure];
+    };
+    
+    auth.cancellationBlock = ^{
+        [viewController dismissModalViewControllerAnimated:YES];
+        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser]);
+    };
+    
+    [viewController presentModalViewController:nav animated:YES];
 }
 
 @end

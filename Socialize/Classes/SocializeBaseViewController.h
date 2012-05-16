@@ -60,6 +60,8 @@
 @property (nonatomic, retain) UINavigationController *navigationControllerForEdit;
 @property (nonatomic, retain) SocializeUIDisplayProxy *displayProxy;
 @property (nonatomic, retain) id<SocializeUIDisplay> display;
+@property (nonatomic, copy) void (^completionBlock)();
+@property (nonatomic, copy) void (^cancellationBlock)();
 
 -(void) showAlertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoading;

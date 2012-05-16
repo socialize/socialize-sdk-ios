@@ -47,6 +47,7 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 @synthesize delegate = delegate_;
 @synthesize screenName = screenName_;
 @synthesize userID = userID_;
+@synthesize twitterAuthSuccessBlock = twitterAuthSuccessBlock_;
 
 - (BOOL)shouldAutoAuthOnAppear {
     return NO;
@@ -64,8 +65,18 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
     self.dataFetcher = nil;
     self.screenName = nil;
     self.userID = nil;
+    self.twitterAuthSuccessBlock = nil;
     
     [super dealloc];
+}
+
+- (id)initWithConsumerKey:(NSString*)consumerKey consumerSecret:(NSString*)consumerSecret {
+    if (self = [super init]) {
+        self.consumerKey = consumerKey;
+        self.consumerSecret = consumerSecret;
+    }
+    
+    return self;
 }
 
 - (void)cancelAllCallbacks {
@@ -111,15 +122,19 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 }
 
 - (void)notifyDelegateOfCompletion {
-    if ([self.delegate respondsToSelector:@selector(twitterAuthViewController:didReceiveAccessToken:accessTokenSecret:screenName:userID:)]) {
-        [self.delegate twitterAuthViewController:self
-                           didReceiveAccessToken:self.accessToken.key
-                               accessTokenSecret:self.accessToken.secret
-                                      screenName:self.screenName
-                                          userID:self.userID];
+    if (self.twitterAuthSuccessBlock != nil) {
+        self.twitterAuthSuccessBlock(self.accessToken.key, self.accessToken.secret, self.screenName, self.userID);
+    } else {
+        if ([self.delegate respondsToSelector:@selector(twitterAuthViewController:didReceiveAccessToken:accessTokenSecret:screenName:userID:)]) {
+            [self.delegate twitterAuthViewController:self
+                               didReceiveAccessToken:self.accessToken.key
+                                   accessTokenSecret:self.accessToken.secret
+                                          screenName:self.screenName
+                                              userID:self.userID];
+        }
+        
+        [super notifyDelegateOfCompletion];
     }
-    
-    [super notifyDelegateOfCompletion];
 }
 
 - (void)openAuthenticateURL {

@@ -135,7 +135,10 @@ static NSString *kOtherSection = @"kOtherSection";
                     
                     // Link failed
                     [sw setOn:NO animated:YES];
-                    [self failWithError:error];
+                    
+                    if (![error isSocializeErrorWithCode:SocializeErrorTwitterCancelledByUser]) {
+                        [self failWithError:error];
+                    }
                 }];
             }
         } else {
