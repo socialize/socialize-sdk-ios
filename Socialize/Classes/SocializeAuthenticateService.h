@@ -75,6 +75,11 @@ Socialize authentication service is the authentication engine. It performs anony
  Link Socialize user to an existing Twitter session
  */
 - (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret;
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken
+                   accessTokenSecret:(NSString*)twitterAccessTokenSecret
+                             success:(void(^)(id<SZFullUser>))success
+                             failure:(void(^)(NSError *error))failure;
+
 - (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken;
 
 - (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken 

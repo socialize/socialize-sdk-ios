@@ -1414,6 +1414,8 @@
 		AA88E843147DA38900123E6F /* NSString+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA88E83F147DA38900123E6F /* NSString+Socialize.m */; };
 		AA88E847147DCA4300123E6F /* SocializeActivityViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA88E846147DCA4300123E6F /* SocializeActivityViewControllerTests.m */; };
 		AA88E84B147DCAFD00123E6F /* SocializeTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA88E84A147DCAFD00123E6F /* SocializeTableViewTests.m */; };
+		AA8C7193156463870092D5D3 /* SZSocialNetworkUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8C7192156463870092D5D3 /* SZSocialNetworkUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA8C7194156463870092D5D3 /* SZSocialNetworkUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8C7192156463870092D5D3 /* SZSocialNetworkUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8D0A5414720AEA007B53AC /* socialize-activity-call-out-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D0A4414720AEA007B53AC /* socialize-activity-call-out-arrow.png */; };
 		AA8D0A5514720AEA007B53AC /* socialize-activity-call-out-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D0A4414720AEA007B53AC /* socialize-activity-call-out-arrow.png */; };
 		AA8D0A5614720AEA007B53AC /* socialize-activity-call-out-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8D0A4414720AEA007B53AC /* socialize-activity-call-out-arrow.png */; };
@@ -2977,6 +2979,7 @@
 		AA88E846147DCA4300123E6F /* SocializeActivityViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityViewControllerTests.m; path = "Test Cases/SocializeActivityViewControllerTests.m"; sourceTree = "<group>"; };
 		AA88E849147DCAFD00123E6F /* SocializeTableViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeTableViewTests.h; path = "Test Cases/SocializeTableViewTests.h"; sourceTree = "<group>"; };
 		AA88E84A147DCAFD00123E6F /* SocializeTableViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeTableViewTests.m; path = "Test Cases/SocializeTableViewTests.m"; sourceTree = "<group>"; };
+		AA8C7192156463870092D5D3 /* SZSocialNetworkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZSocialNetworkUtils.h; path = Classes/SZSocialNetworkUtils.h; sourceTree = "<group>"; };
 		AA8D0A4414720AEA007B53AC /* socialize-activity-call-out-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-call-out-arrow.png"; path = "Resources/socialize-activity-call-out-arrow.png"; sourceTree = "<group>"; };
 		AA8D0A4514720AEA007B53AC /* socialize-activity-call-out-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-call-out-arrow@2x.png"; path = "Resources/socialize-activity-call-out-arrow@2x.png"; sourceTree = "<group>"; };
 		AA8D0A4614720AEA007B53AC /* socialize-authorize-authenticate-badge-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-authorize-authenticate-badge-icon.png"; path = "Resources/socialize-authorize-authenticate-badge-icon.png"; sourceTree = "<group>"; };
@@ -4920,6 +4923,7 @@
 				AAFD904F155B3D1F0036E6AF /* SZFacebookUtils.m */,
 				AAFD9054155B3D300036E6AF /* SZTwitterUtils.h */,
 				AAFD9055155B3D300036E6AF /* SZTwitterUtils.m */,
+				AA8C7192156463870092D5D3 /* SZSocialNetworkUtils.h */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -5336,6 +5340,7 @@
 				AA0705E51561A5C70001A6FA /* SocializeVerticalLayoutContainerView.h in Headers */,
 				AA0709C81561B5200001A6FA /* UITableView+Resize.h in Headers */,
 				AA070A041562EFDD0001A6FA /* UITableView+Socialize.h in Headers */,
+				AA8C7194156463870092D5D3 /* SZSocialNetworkUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5504,6 +5509,7 @@
 				AA0705E41561A5C70001A6FA /* SocializeVerticalLayoutContainerView.h in Headers */,
 				AA0709C71561B5200001A6FA /* UITableView+Resize.h in Headers */,
 				AA070A031562EFDD0001A6FA /* UITableView+Socialize.h in Headers */,
+				AA8C7193156463870092D5D3 /* SZSocialNetworkUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

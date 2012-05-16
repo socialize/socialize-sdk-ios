@@ -391,10 +391,15 @@ otherwise you will get a failure.
 - (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken expirationDate:(NSDate*)expirationDate;
 
 - (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken 
+                       expirationDate:(NSDate *)expirationDate
                               success:(void(^)(id<SZFullUser>))success
                               failure:(void(^)(NSError *error))failure;
 
 - (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret;
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken 
+                   accessTokenSecret:(NSString *)twitterAccessTokenSecret
+                             success:(void(^)(id<SZFullUser>))success
+                             failure:(void(^)(NSError *error))failure;
 
 /**
  Perform a managed Twitter authentication process, including webview callout to twitter auth process if necessary

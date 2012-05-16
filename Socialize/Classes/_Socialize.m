@@ -371,19 +371,27 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [self linkToFacebookWithAccessToken:accessToken expirationDate:expirationDate];
 }
 
-- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret {
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken 
+                   accessTokenSecret:(NSString *)twitterAccessTokenSecret
+                             success:(void(^)(id<SZFullUser>))success
+                             failure:(void(^)(NSError *error))failure {
     [SocializeThirdPartyTwitter storeLocalCredentialsWithAccessToken:twitterAccessToken accessTokenSecret:twitterAccessTokenSecret];
-    [_authService linkToTwitterWithAccessToken:twitterAccessToken accessTokenSecret:twitterAccessTokenSecret];
+    [_authService linkToTwitterWithAccessToken:twitterAccessToken accessTokenSecret:twitterAccessTokenSecret success:success failure:failure];
+}
+
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret {
+    [self linkToTwitterWithAccessToken:twitterAccessToken accessTokenSecret:twitterAccessTokenSecret success:nil failure:nil];
 }
 
 - (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken expirationDate:(NSDate*)expirationDate {
-    [SocializeThirdPartyFacebook storeLocalCredentialsWithAccessToken:facebookAccessToken expirationDate:[NSDate distantFuture]];
-    [_authService linkToFacebookWithAccessToken:facebookAccessToken];
+    [self linkToFacebookWithAccessToken:facebookAccessToken expirationDate:expirationDate success:nil failure:nil];
 }
 
 - (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken 
+                       expirationDate:(NSDate *)expirationDate
                               success:(void(^)(id<SZFullUser>))success
                               failure:(void(^)(NSError *error))failure {
+    [SocializeThirdPartyFacebook storeLocalCredentialsWithAccessToken:facebookAccessToken expirationDate:[NSDate distantFuture]];
     [_authService linkToFacebookWithAccessToken:facebookAccessToken success:success failure:failure];
 }
 

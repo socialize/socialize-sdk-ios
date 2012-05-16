@@ -43,16 +43,17 @@
     [SocializeThirdPartyFacebook removeLocalCredentials];
 }
 
-+ (void)linkToFacebookWithAccessToken:(NSString*)accessToken expirationDate:(NSDate*)expirationDate success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
++ (void)linkWithAccessToken:(NSString*)accessToken expirationDate:(NSDate*)expirationDate success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
     [SocializeThirdPartyFacebook storeLocalCredentialsWithAccessToken:accessToken
                                                        expirationDate:expirationDate];
     
     [[Socialize sharedSocialize] linkToFacebookWithAccessToken:accessToken
+                                                expirationDate:expirationDate
                                                        success:success
                                                        failure:failure];
 }
 
-+ (void)linkToFacebookWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
++ (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
 
     NSString *facebookAppId = [SocializeThirdPartyFacebook facebookAppId];
     NSString *urlSchemeSuffix = [SocializeThirdPartyFacebook facebookUrlSchemeSuffix];
@@ -72,9 +73,11 @@
          urlSchemeSuffix:urlSchemeSuffix
          permissions:permissions
          success:^(NSString *accessToken, NSDate *expirationDate) {
-             [self linkToFacebookWithAccessToken:accessToken expirationDate:expirationDate success:success failure:failure];
+             [self linkWithAccessToken:accessToken expirationDate:expirationDate success:success failure:failure];
          } failure:failure];
     }];
+    
+    [alertView show];
 }
 
 @end

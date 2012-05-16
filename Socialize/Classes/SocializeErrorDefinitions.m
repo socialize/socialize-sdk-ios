@@ -33,7 +33,8 @@ static NSString *SocializeDefaultErrorStrings[SocializeNumErrors] = {
     @"User Cancelled Share",
     @"Third party is not linked",
     @"Third party is not available",
-    @"Third party link cancelled by user"
+    @"Third party link cancelled by user",
+    @"Process cancelled by user"
 };
 
 NSString *SocializeDefaultErrorStringForCode(NSUInteger code) {

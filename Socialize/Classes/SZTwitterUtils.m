@@ -22,7 +22,11 @@
     return [SocializeThirdPartyTwitter isLinkedToSocialize];
 }
 
-+ (void)linkToTwitterWithAccessToken:(NSString*)accessToken accessTokenSecret:(NSString*)accessTokenSecret success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
++ (void)unlink {
+    [SocializeThirdPartyTwitter removeLocalCredentials];
+}
+
++ (void)linkWithAccessToken:(NSString*)accessToken accessTokenSecret:(NSString*)accessTokenSecret success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
     [SocializeThirdPartyTwitter storeLocalCredentialsWithAccessToken:accessToken accessTokenSecret:accessTokenSecret];
     
     [[Socialize sharedSocialize] linkToTwitterWithAccessToken:accessToken
@@ -31,7 +35,7 @@
                                                        failure:failure];
 }
 
-+ (void)linkToTwitterWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
++ (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
     NSString *consumerKey = [SocializeThirdPartyTwitter consumerKey];
     NSString *consumerSecret = [SocializeThirdPartyTwitter consumerSecret];
     
@@ -40,7 +44,7 @@
 
     auth.twitterAuthSuccessBlock = ^(NSString *accessToken, NSString *accessTokenSecret, NSString *screenName, NSString *userId) {
         [viewController dismissModalViewControllerAnimated:YES];
-        [self linkToTwitterWithAccessToken:accessToken accessTokenSecret:accessTokenSecret success:success failure:failure];
+        [self linkWithAccessToken:accessToken accessTokenSecret:accessTokenSecret success:success failure:failure];
     };
     
     auth.cancellationBlock = ^{

@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeObjects.h"
+#import "SZSocialNetworkUtils.h"
 
-@interface SZFacebookUtils : NSObject
+@interface SZFacebookUtils : NSObject <SZSocialNetworkUtils>
 
 + (void)setAppId:(NSString*)appId expirationDate:(NSDate*)expirationDate;
 + (NSString*)accessToken;
@@ -18,8 +19,8 @@
 + (BOOL)isAvailable;
 + (BOOL)isLinked;
 
-+ (void)linkToFacebookWithAccessToken:(NSString*)accessToken expirationDate:(NSDate*)expirationDate success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
-+ (void)linkToFacebookWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
++ (void)linkWithAccessToken:(NSString*)accessToken expirationDate:(NSDate*)expirationDate success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
++ (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
 + (void)unlink;
 
 @end

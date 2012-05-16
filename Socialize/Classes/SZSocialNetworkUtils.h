@@ -1,20 +1,18 @@
 //
-//  SZTwitterUtils.h
+//  SZSocialNetworkUtils.h
 //  SocializeSDK
 //
-//  Created by Nathaniel Griswold on 5/9/12.
+//  Created by Nathaniel Griswold on 5/16/12.
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "SocializeObjects.h"
-#import "SZSocialNetworkUtils.h"
 
-@interface SZTwitterUtils : NSObject <SZSocialNetworkUtils>
-
+@protocol SZSocialNetworkUtils <NSObject>
 + (BOOL)isAvailable;
 + (BOOL)isLinked;
-+ (void)unlink;
+
 + (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
++ (void)unlink;
 
 @end

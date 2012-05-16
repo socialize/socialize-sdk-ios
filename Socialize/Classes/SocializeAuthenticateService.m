@@ -143,10 +143,20 @@
                                      failure:nil];
 }
 
-- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret {
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken
+                   accessTokenSecret:(NSString*)twitterAccessTokenSecret
+                             success:(void(^)(id<SZFullUser>))success
+                             failure:(void(^)(NSError *error))failure {
+    
     [self authenticateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeTwitter
                          thirdPartyAuthToken:twitterAccessToken
-                   thirdPartyAuthTokenSecret:twitterAccessTokenSecret];
+                   thirdPartyAuthTokenSecret:twitterAccessTokenSecret
+                                     success:success
+                                     failure:failure];
+}
+
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret {
+    [self linkToTwitterWithAccessToken:twitterAccessToken accessTokenSecret:twitterAccessTokenSecret success:nil failure:nil];
 }
 
 - (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken 
