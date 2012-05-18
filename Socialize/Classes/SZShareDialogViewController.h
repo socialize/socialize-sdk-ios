@@ -13,6 +13,7 @@
 @interface SZShareDialogViewController : SocializeBaseViewController <UITableViewDelegate, UITableViewDataSource>
 
 - (id)initWithEntity:(id<SZEntity>)entity;
+- (IBAction)continueButtonPressed:(id)sender;
 
 @property (nonatomic, retain) id<SZEntity> entity;
 @property (nonatomic, retain) IBOutlet SZShareDialogView *shareDialogView;
