@@ -12,6 +12,9 @@
 #import "Socialize.h"
 #import "SocializeObjects.h"
 #import "SZShareDialogViewController.h"
+#import "SZFacebookUtils.h"
+#import "SZTwitterUtils.h"
+#import "SocializePrivateDefinitions.h"
 
 @implementation SZShareUtils
 
@@ -19,6 +22,79 @@
     SZShareDialogViewController *selectNetwork = [[[SZShareDialogViewController alloc] initWithEntity:entity] autorelease];
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:selectNetwork] autorelease];
     [viewController presentModalViewController:nav animated:YES];
+}
+
++ (void)shareViaSocialNetworksWithEntity:(id<SZEntity>)entity text:(NSString*)text options:(SZShareOptions*)options success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
+    if (options.shareTo == SZSocialNetworkNone) {
+        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorShareCreationFailed]);
+        return;
+    }
+    if (options.shareTo & SZSocialNetworkFacebook && (![SZFacebookUtils isAvailable] || ![SZFacebookUtils isLinked])) {
+        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorFacebookUnavailable]);
+        return;
+    }
+    
+    if (options.shareTo & SZSocialNetworkTwitter && (![SZTwitterUtils isAvailable] || ![SZTwitterUtils isLinked])) {
+        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorTwitterUnavailable]);
+        return;
+    }
+
+    // Currently Must exlusively share to a Social Network for this to be the medium.
+    SocializeShareMedium medium;
+    if (options.shareTo == SZSocialNetworkFacebook) {
+        medium = SocializeShareMediumFacebook;
+    } else if (options.shareTo == SZSocialNetworkTwitter) {
+        medium = SocializeShareMediumTwitter;
+    } else {
+        medium = SocializeShareMediumOther;
+    }
+    
+    SZShare *share = [SZShare shareWithEntity:entity text:text medium:medium];
+
+    if (options.shareTo & SZSocialNetworkFacebook) {
+        share.propagationInfoRequest = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"facebook"] forKey:@"third_parties"];
+    }
+    
+    if (options.shareTo & SZSocialNetworkTwitter) {
+        share.propagation = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"twitter"] forKey:@"third_parties"];
+    }
+    
+    [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> share) {
+        if (options.shareTo & SZSocialNetworkFacebook) {
+            
+            // This shortened link returned from the server encapsulates all the Socialize magic
+            NSString *shareURL = [[[share propagationInfoResponse] objectForKey:@"facebook"] objectForKey:@"application_url"];
+
+            NSString *name = share.application.name;
+            NSString *link = shareURL;
+            NSString *caption = [NSString stringWithSocializeAppDownloadPlug];
+            
+            NSString *message;
+            if ([share.entity.name length] > 0) {
+                message = [NSString stringWithFormat:@"%@: %@ \n\n %@\n\n Shared from %@.", share.entity.name, shareURL, text, share.application.name];
+            } else {
+                message = [NSString stringWithFormat:@"%@ \n\n %@\n\n Shared from %@.", shareURL, text, share.application.name];
+            }
+
+            NSDictionary *postData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    message, @"message",
+                                    caption, @"caption",
+                                    link, @"link",
+                                    name, @"name",
+                                      @"This is the description", @"description",
+                                    nil];
+
+            [SZFacebookUtils postWithGraphPath:@"me/links" postData:postData success:^(id result) {
+                BLOCK_CALL_1(success, share);
+            } failure:^(NSError *error) {
+                
+                // Failed Wall post is still a success. Handle separately in options.
+                BLOCK_CALL_1(success, share);
+            }];
+        }
+        
+        BLOCK_CALL_1(success, share);
+    } failure:failure];
 }
 
 + (void)shareViaEmailWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {

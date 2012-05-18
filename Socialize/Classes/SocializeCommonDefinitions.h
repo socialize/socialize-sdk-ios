@@ -18,6 +18,12 @@ typedef enum SocializeThirdPartyAuthType {
     SocializeThirdPartyAuthTypeTwitter = 2
 } SocializeThirdPartyAuthType;
 
+typedef enum SZSocialNetwork {
+    SZSocialNetworkNone = 0,
+    SZSocialNetworkFacebook = 1 << 0,
+    SZSocialNetworkTwitter = 1 << 1,
+} SZSocialNetwork;
+
 typedef enum {
     SocializeShareMediumTwitter = 1,
     SocializeShareMediumFacebook = 2,

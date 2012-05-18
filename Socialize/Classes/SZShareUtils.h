@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeObjects.h"
+#import "SZShareOptions.h"
 
 @interface SZShareUtils : NSObject
 

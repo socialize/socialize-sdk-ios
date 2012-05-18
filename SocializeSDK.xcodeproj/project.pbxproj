@@ -1170,6 +1170,10 @@
 		AA3E20BD1461FA94000321BF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C365F5145192B900DD5421 /* MessageUI.framework */; };
 		AA3E20BE1461FA9B000321BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D97F03C13DFC91500B16454 /* QuartzCore.framework */; };
 		AA4132C3146852AE006D906F /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4132C2146852AE006D906F /* StringHelper.m */; };
+		AA419C971565D31A0030AAB1 /* SZShareOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA419C951565D31A0030AAB1 /* SZShareOptions.h */; };
+		AA419C981565D31A0030AAB1 /* SZShareOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA419C951565D31A0030AAB1 /* SZShareOptions.h */; };
+		AA419C991565D31A0030AAB1 /* SZShareOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA419C961565D31A0030AAB1 /* SZShareOptions.m */; };
+		AA419C9A1565D31A0030AAB1 /* SZShareOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA419C961565D31A0030AAB1 /* SZShareOptions.m */; };
 		AA4889F9155D973C00ED28AC /* socialize-selectnetwork-continue-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4889EF155D973C00ED28AC /* socialize-selectnetwork-continue-btn.png */; };
 		AA4889FA155D973C00ED28AC /* socialize-selectnetwork-continue-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4889EF155D973C00ED28AC /* socialize-selectnetwork-continue-btn.png */; };
 		AA4889FB155D973C00ED28AC /* socialize-selectnetwork-continue-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4889EF155D973C00ED28AC /* socialize-selectnetwork-continue-btn.png */; };
@@ -2877,6 +2881,8 @@
 		AA3E20B71461F329000321BF /* SocializeAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAsyncTestCase.m; sourceTree = "<group>"; };
 		AA4132C1146852AE006D906F /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
 		AA4132C2146852AE006D906F /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
+		AA419C951565D31A0030AAB1 /* SZShareOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZShareOptions.h; path = Classes/SZShareOptions.h; sourceTree = "<group>"; };
+		AA419C961565D31A0030AAB1 /* SZShareOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZShareOptions.m; path = Classes/SZShareOptions.m; sourceTree = "<group>"; };
 		AA4889EF155D973C00ED28AC /* socialize-selectnetwork-continue-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-continue-btn.png"; path = "Resources/socialize-selectnetwork-continue-btn.png"; sourceTree = "<group>"; };
 		AA4889F0155D973C00ED28AC /* socialize-selectnetwork-continue-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-continue-btn@2x.png"; path = "Resources/socialize-selectnetwork-continue-btn@2x.png"; sourceTree = "<group>"; };
 		AA4889F1155D973C00ED28AC /* socialize-selectnetwork-email-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-email-icon.png"; path = "Resources/socialize-selectnetwork-email-icon.png"; sourceTree = "<group>"; };
@@ -4924,6 +4930,8 @@
 				AAFD9054155B3D300036E6AF /* SZTwitterUtils.h */,
 				AAFD9055155B3D300036E6AF /* SZTwitterUtils.m */,
 				AA8C7192156463870092D5D3 /* SZSocialNetworkUtils.h */,
+				AA419C951565D31A0030AAB1 /* SZShareOptions.h */,
+				AA419C961565D31A0030AAB1 /* SZShareOptions.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -5341,6 +5349,7 @@
 				AA0709C81561B5200001A6FA /* UITableView+Resize.h in Headers */,
 				AA070A041562EFDD0001A6FA /* UITableView+Socialize.h in Headers */,
 				AA8C7194156463870092D5D3 /* SZSocialNetworkUtils.h in Headers */,
+				AA419C981565D31A0030AAB1 /* SZShareOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5510,6 +5519,7 @@
 				AA0709C71561B5200001A6FA /* UITableView+Resize.h in Headers */,
 				AA070A031562EFDD0001A6FA /* UITableView+Socialize.h in Headers */,
 				AA8C7193156463870092D5D3 /* SZSocialNetworkUtils.h in Headers */,
+				AA419C971565D31A0030AAB1 /* SZShareOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7442,6 +7452,7 @@
 				AA070A051562EFDD0001A6FA /* UITableView+Socialize.m in Sources */,
 				AA070A071562F10A0001A6FA /* UIControl+BlocksKit.m in Sources */,
 				AA070A091562F6FD0001A6FA /* NSSet+BlocksKit.m in Sources */,
+				AA419C991565D31A0030AAB1 /* SZShareOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7859,6 +7870,7 @@
 				AA070A061562EFDD0001A6FA /* UITableView+Socialize.m in Sources */,
 				AA070A081562F10B0001A6FA /* UIControl+BlocksKit.m in Sources */,
 				AA070A0A1562F6FD0001A6FA /* NSSet+BlocksKit.m in Sources */,
+				AA419C9A1565D31A0030AAB1 /* SZShareOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
