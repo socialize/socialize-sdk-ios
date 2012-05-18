@@ -11,6 +11,7 @@
 #import "SocializeFacebookAuthHandler.h"
 #import "_Socialize.h"
 #import "UIAlertView+BlocksKit.h"
+#import "SocializeFacebookInterface.h"
 
 @implementation SZFacebookUtils
 
@@ -78,6 +79,29 @@
     }];
     
     [alertView show];
+}
+
++ (void)sendRequestWithHTTPMethod:(NSString*)method graphPath:(NSString*)graphPath postData:(NSDictionary*)postData success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
+    [[SocializeFacebookInterface sharedFacebookInterface] requestWithGraphPath:graphPath params:postData httpMethod:method completion:^(id result, NSError *error) {
+        if (error != nil) {
+            BLOCK_CALL_1(failure, error);
+            return;
+        } else {
+            BLOCK_CALL_1(success, result);
+        }
+    }];
+}
+
++ (void)postWithGraphPath:(NSString*)graphPath postData:(NSDictionary*)postData success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
+    [self sendRequestWithHTTPMethod:@"POST" graphPath:graphPath postData:postData success:success failure:failure];
+}
+
++ (void)getWithGraphPath:(NSString*)graphPath postData:(NSDictionary*)postData success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
+    [self sendRequestWithHTTPMethod:@"GET" graphPath:graphPath postData:postData success:success failure:failure];
+}
+
++ (void)deleteWithGraphPath:(NSString*)graphPath postData:(NSDictionary*)postData success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
+    [self sendRequestWithHTTPMethod:@"DELETE" graphPath:graphPath postData:postData success:success failure:failure];
 }
 
 @end
