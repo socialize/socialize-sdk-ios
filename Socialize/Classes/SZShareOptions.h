@@ -11,6 +11,8 @@
 
 @interface SZShareOptions : NSObject
 
++ (SZShareOptions*)defaultOptions;
+
 @property (nonatomic, assign) BOOL dontShareLocation;
 @property (nonatomic, assign) SZSocialNetwork shareTo;
 @property (nonatomic, copy) void (^willPostToSocialNetworkBlock)(SZSocialNetwork network);

@@ -20,4 +20,6 @@
 @property (nonatomic, readonly) SZSocialNetwork selectedNetworks;
 @property (nonatomic, assign) BOOL showOtherShareTypes;
 @property (nonatomic, assign) BOOL disableAutopostSelection;
+
+@property (nonatomic, copy) void (^completionBlock)(SZSocialNetwork selectedNetworks);
 @end

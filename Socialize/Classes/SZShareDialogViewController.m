@@ -61,6 +61,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 @synthesize selectedNetworks = selectedNetworks_;
 @synthesize showOtherShareTypes = showOtherShareTypes_;
 @synthesize disableAutopostSelection = disableAutopostSelection_;
+@synthesize completionBlock = completionBlock_;
 
 - (void)dealloc {
     self.shareDialogView = nil;
@@ -72,6 +73,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     self.autopostSwitch = nil;
     self.facebookSwitch = nil;
     self.twitterSwitch = nil;
+    self.completionBlock = nil;
 
     [super dealloc];
 }
@@ -522,18 +524,17 @@ static NSString *kAutopostSection = @"kAutopostSection";
     BLOCK_CALL(executionBlock);
 }
 
-- (void)finishAndPostShare {
+- (void)finishAndCallCompletion {
     SZSocialNetwork networks = [self selectedNetworks];
     if (networks == SZSocialNetworkNone) {
         [UIAlertView showAlertWithTitle:@"No Networks Selected" message:@"Please select one or more networks to continue." buttonTitle:@"Ok" handler:nil];
         return;
     }
-    
-//    [SZShareUtils shareViaSocialNetworksWithEntity:self.entity text: options:<#(SZShareOptions *)#> success:<#^(id<SocializeShare> share)success#> failure:<#^(NSError *error)failure#>
+    BLOCK_CALL_1(self.completionBlock, networks);
 }
 
 - (IBAction)continueButtonPressed:(id)sender {
-    [self finishAndPostShare];
+    [self finishAndCallCompletion];
 }
 
 @end

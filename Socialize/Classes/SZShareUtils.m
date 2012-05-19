@@ -18,10 +18,19 @@
 
 @implementation SZShareUtils
 
-+ (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity {
++ (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
     SZShareDialogViewController *selectNetwork = [[[SZShareDialogViewController alloc] initWithEntity:entity] autorelease];
     selectNetwork.disableAutopostSelection = YES;
     selectNetwork.showOtherShareTypes = YES;
+    selectNetwork.completionBlock = ^(SZSocialNetwork networks) {
+        [viewController dismissModalViewControllerAnimated:YES];
+        SZShareOptions *options = [SZShareOptions defaultOptions];
+        options.shareTo = networks;
+        [self shareViaSocialNetworksWithEntity:entity text:nil options:options success:success failure:failure];
+    };
+    selectNetwork.cancellationBlock = ^{
+        [viewController dismissModalViewControllerAnimated:YES];        
+    };
     
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:selectNetwork] autorelease];
     [viewController presentModalViewController:nav animated:YES];
@@ -72,12 +81,19 @@
             NSString *link = shareURL;
             NSString *caption = [NSString stringWithSocializeAppDownloadPlug];
             
-            NSString *message;
+            // Build the message string
+            NSMutableString *message = [NSMutableString string];
             if ([share.entity.name length] > 0) {
-                message = [NSString stringWithFormat:@"%@: %@ \n\n %@\n\n Shared from %@.", share.entity.name, shareURL, text, share.application.name];
-            } else {
-                message = [NSString stringWithFormat:@"%@ \n\n %@\n\n Shared from %@.", shareURL, text, share.application.name];
+                [message appendFormat:@"%@: ", share.entity.name];
             }
+            
+            [message appendFormat:@"%@\n\n", shareURL];
+            
+            if ([text length] > 0) {
+                [message appendFormat:@"%@\n\n", text];
+            }
+            
+            [message appendFormat:@"Shared from %@.", share.application.name];
 
             NSDictionary *postData = [NSDictionary dictionaryWithObjectsAndKeys:
                                     message, @"message",

@@ -14,4 +14,8 @@
 @synthesize willPostToSocialNetworkBlock = willPostToSocialNetworkBlock_;
 @synthesize didPostToSocialNetworkBlock = didPostToSocialNetworkBlock_;
 
++ (SZShareOptions*)defaultOptions {
+    return [[[self alloc] init] autorelease];
+}
+
 @end

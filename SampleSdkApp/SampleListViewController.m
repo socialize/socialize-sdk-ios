@@ -56,7 +56,7 @@ static NSString *kShareSection = @"kShareSection";
     
     [shareRows addObject:[self rowWithText:@"Show Share Dialog" executionBlock:^{
         SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
-        [SZShareUtils showShareDialogWithViewController:self entity:entity];
+        [SZShareUtils showShareDialogWithViewController:self entity:entity success:nil failure:nil];
     }]];
          
 

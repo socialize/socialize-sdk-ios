@@ -12,7 +12,7 @@
 
 @interface SZShareUtils : NSObject
 
-+ (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SocializeEntity>)entity;
++ (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
 
 + (void)shareViaEmailWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
 + (BOOL)canShareViaEmail;
