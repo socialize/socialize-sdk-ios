@@ -16,6 +16,7 @@
 
 + (void)shareViaEmailWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
 + (BOOL)canShareViaEmail;
++ (void)shareViaSocialNetworksWithEntity:(id<SZEntity>)entity text:(NSString*)text options:(SZShareOptions*)options success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
 
 + (void)shareViaSMSWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
 + (BOOL)canShareViaSMS;

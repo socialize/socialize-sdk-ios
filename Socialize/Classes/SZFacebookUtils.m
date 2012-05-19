@@ -50,8 +50,10 @@
     
     [[Socialize sharedSocialize] linkToFacebookWithAccessToken:accessToken
                                                 expirationDate:expirationDate
-                                                       success:success
-                                                       failure:failure];
+                                                       success:^(id<SZFullUser> user) {
+                                                           [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSocializeDontPostToFacebookKey];
+                                                           success(user);
+                                                       } failure:failure];
 }
 
 + (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {

@@ -31,8 +31,10 @@
     
     [[Socialize sharedSocialize] linkToTwitterWithAccessToken:accessToken
                                             accessTokenSecret:accessTokenSecret
-                                                       success:success
-                                                       failure:failure];
+                                                      success:^(id<SZFullUser> user) {
+                                                          [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSocializeDontPostToTwitterKey];
+                                                          success(user);
+                                                      } failure:failure];
 }
 
 + (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {

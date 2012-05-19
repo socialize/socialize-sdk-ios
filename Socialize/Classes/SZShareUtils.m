@@ -20,6 +20,9 @@
 
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity {
     SZShareDialogViewController *selectNetwork = [[[SZShareDialogViewController alloc] initWithEntity:entity] autorelease];
+//    selectNetwork.disableAutopostSelection = YES;
+//    selectNetwork.showOtherShareTypes = YES;
+    
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:selectNetwork] autorelease];
     [viewController presentModalViewController:nav animated:YES];
 }

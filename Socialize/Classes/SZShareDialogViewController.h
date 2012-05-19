@@ -17,5 +17,7 @@
 
 @property (nonatomic, retain) id<SZEntity> entity;
 @property (nonatomic, retain) IBOutlet SZShareDialogView *shareDialogView;
-
+@property (nonatomic, readonly) SZSocialNetwork selectedNetworks;
+@property (nonatomic, assign) BOOL showOtherShareTypes;
+@property (nonatomic, assign) BOOL disableAutopostSelection;
 @end

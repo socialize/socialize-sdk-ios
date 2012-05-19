@@ -30,11 +30,15 @@
 }
 
 - (void)sizeToCells {
+    CGRect origFrame = self.frame;
+    
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, CGFLOAT_MAX);
+    
     UITableViewCell *firstCell = [self firstCell];
     UITableViewCell *lastCell = [self lastCell];
     CGRect lastCellFrame = [self convertRect:lastCell.frame fromView:lastCell.superview];
     CGRect firstCellFrame = [self convertRect:firstCell.frame fromView:firstCell.superview];
-    CGRect frame = self.frame;
+    CGRect frame = origFrame;
     
     CGFloat padToTopCell = firstCellFrame.origin.y;
     

@@ -15,6 +15,7 @@
 #import "SZFacebookUtils.h"
 #import "SZTwitterUtils.h"
 #import "UIControl+BlocksKit.h"
+#import "UIAlertView+BlocksKit.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -31,9 +32,11 @@ static NSString *kFacebookRow = @"kRowFacebook";
 static NSString *kTwitterRow = @"kTwitterRow";
 static NSString *kSMSRow = @"kSMSRow";
 static NSString *kEmailRow = @"kEmailRow";
+static NSString *kAutopostRow = @"kAutopostRow";
 
 static NSString *kSocialNetworkSection = @"kSocialNetworkSection";
 static NSString *kOtherSection = @"kOtherSection";
+static NSString *kAutopostSection = @"kAutopostSection";
 
 @interface SZShareDialogViewController ()
 @property (nonatomic, retain) NSMutableArray *sections;
@@ -42,6 +45,7 @@ static NSString *kOtherSection = @"kOtherSection";
 @property (nonatomic, retain) NSMutableDictionary *twitterRow;
 @property (nonatomic, retain) UISwitch *facebookSwitch;
 @property (nonatomic, retain) UISwitch *twitterSwitch;
+@property (nonatomic, retain) UISwitch *autopostSwitch;
 @end
 
 @implementation SZShareDialogViewController
@@ -53,6 +57,10 @@ static NSString *kOtherSection = @"kOtherSection";
 @synthesize twitterRow = twitterRow_;
 @synthesize facebookSwitch = facebookSwitch_;
 @synthesize twitterSwitch = twitterSwitch_;
+@synthesize autopostSwitch = autopostSwitch_;
+@synthesize selectedNetworks = selectedNetworks_;
+@synthesize showOtherShareTypes = showOtherShareTypes_;
+@synthesize disableAutopostSelection = disableAutopostSelection_;
 
 - (void)dealloc {
     self.shareDialogView = nil;
@@ -61,11 +69,13 @@ static NSString *kOtherSection = @"kOtherSection";
     self.entity = nil;
     self.twitterRow = nil;
     self.facebookRow = nil;
+    self.autopostSwitch = nil;
     self.facebookSwitch = nil;
     self.twitterSwitch = nil;
 
     [super dealloc];
 }
+
 - (id)initWithEntity:(id<SZEntity>)entity {
     if (self = [super init]) {
         self.entity = entity;
@@ -88,66 +98,34 @@ static NSString *kOtherSection = @"kOtherSection";
     self.navigationItem.leftBarButtonItem = self.cancelButton;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self updateInterfaceToReflectSessionStatuses];
-}
-
 #define COPIED_BLOCK(identifier) [[identifier copy] autorelease]
 
-- (void)setPostToFacebook:(BOOL)postToFacebook {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!postToFacebook] forKey:kSocializeDontPostToFacebookKey];    
-}
-
-- (void)setPostToTwitter:(BOOL)postToTwitter {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!postToTwitter] forKey:kSocializeDontPostToTwitterKey];    
-}
-
-- (void)updateFacebookSwitchIfNeeded {
-    UISwitch *sw = self.facebookSwitch;
-
-    BOOL wantsPost = ![[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDontPostToFacebookKey] boolValue];
-    BOOL isLinked = [SZFacebookUtils isLinked];
-    BOOL switchOn = wantsPost && isLinked;
-    if (sw.on != switchOn) {
-        [sw setOn:switchOn animated:YES];
-    }
-}
-
-- (void)updateInterfaceToReflectFacebookSessionStatus {
-    if (![SZFacebookUtils isAvailable]) {
-        return;
+- (SZSocialNetwork)selectedNetworks {
+    SZSocialNetwork networks;
+    if ([SZTwitterUtils isAvailable] && self.twitterSwitch.on) {
+        networks |= SZSocialNetworkTwitter;
     }
     
-    [self updateFacebookSwitchIfNeeded];
-
-    [self reloadRowWithIdentifier:kFacebookRow];
-}
-
-- (void)updateTwitterSwitchIfNeeded {
-    UISwitch *sw = self.twitterSwitch;
-    
-    BOOL wantsPost = ![[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDontPostToTwitterKey] boolValue];
-    BOOL isLinked = [SZTwitterUtils isLinked];
-    BOOL switchOn = wantsPost && isLinked;
-    if (sw.on != switchOn) {
-        [sw setOn:switchOn animated:YES];
-    }
-}
-
-- (void)updateInterfaceToReflectTwitterSessionStatus {
-    if (![SZTwitterUtils isAvailable]) {
-        return;
+    if ([SZFacebookUtils isAvailable] && self.facebookSwitch.on) {
+        networks |= SZSocialNetworkFacebook;
     }
     
-    [self updateTwitterSwitchIfNeeded];
+    return networks;
+}
+
+- (void)syncInterfaceWithThirdPartyState {
+    // Because of some API weirdness, it's possible for a third party to be unlinked when another is linked. Handle this.
+    
+    if (![SZTwitterUtils isLinked] && self.twitterSwitch.on) {
+        [self.twitterSwitch setOn:NO animated:YES];
+    }
+    
+    if (![SZFacebookUtils isLinked] && self.facebookSwitch.on) {
+        [self.facebookSwitch setOn:NO animated:YES];
+    }
     
     [self reloadRowWithIdentifier:kTwitterRow];
-}
-
-- (void)updateInterfaceToReflectSessionStatuses {
-    [self updateInterfaceToReflectTwitterSessionStatus];
-    [self updateInterfaceToReflectFacebookSessionStatus];
+    [self reloadRowWithIdentifier:kFacebookRow];
 }
 
 - (UISwitch*)facebookSwitch {
@@ -157,40 +135,32 @@ static NSString *kOtherSection = @"kOtherSection";
         __block __typeof__(self) weakSelf = self;
 
         void (^controlChangedBlock)(UISwitch *sw) = ^(UISwitch *sw) {
-            if (sw.on) {
+            if (sw.on && ![SZFacebookUtils isLinked]) {
                 
                 // Switch just turned on
-                
-                if ([SZFacebookUtils isLinked]) {
+                // Attempt link
+                [SZFacebookUtils linkWithViewController:weakSelf success:^(id<SZFullUser> fullUser) {
+                    // Successfully linked
+                    [self syncInterfaceWithThirdPartyState];
+                } failure:^(NSError *error) {
                     
-                    // Already linked
-                    [weakSelf setPostToFacebook:YES];
-                } else {
+                    // Link failed
+                    [self syncInterfaceWithThirdPartyState];
                     
-                    // Not linked -- Attempt link
-                    [SZFacebookUtils linkWithViewController:weakSelf success:^(id<SZFullUser> fullUser) {
-                        // Successfully linked
-                        [weakSelf setPostToFacebook:YES];
-                        [weakSelf reloadRowWithIdentifier:kFacebookRow];
-                    } failure:^(NSError *error) {
-                        
-                        // Link failed
-                        [sw setOn:NO animated:YES];
-                        [weakSelf reloadRowWithIdentifier:kFacebookRow];
-                        
-                        if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
-                            [weakSelf failWithError:error];
-                        }
-                    }];
-                }
-            } else {
-                
-                // Switch just turned off
-                [weakSelf setPostToFacebook:NO];
+                    if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
+                        [weakSelf failWithError:error];
+                    }
+                }];
             }
             
         };
         [facebookSwitch_ addEventHandler:controlChangedBlock forControlEvents:UIControlEventValueChanged];
+        
+        if ([SZFacebookUtils isAvailable]) {
+            BOOL wantsFacebookPost = ![[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDontPostToFacebookKey] boolValue];
+            BOOL facebookIsLinked = [SZFacebookUtils isLinked];
+            [facebookSwitch_ setOn:wantsFacebookPost && facebookIsLinked animated:NO];
+        }
     }
     
     return facebookSwitch_;
@@ -224,41 +194,33 @@ static NSString *kOtherSection = @"kOtherSection";
         
         __block __typeof__(self) weakSelf = self;
         void (^controlChangedBlock)(UISwitch *sw) = ^(UISwitch *sw) {
-            if (sw.on) {
+            if (sw.on && ![SZTwitterUtils isLinked]) {
                 
-                // Switch just turned on
+                // Switch just turned on, not already linked
                 
-                if ([SZTwitterUtils isLinked]) {
+                // Attempt link
+                [SZTwitterUtils linkWithViewController:weakSelf success:^(id<SZFullUser> fullUser) {
                     
-                    // Already linked
-                    [weakSelf setPostToTwitter:YES];
-                } else {
+                    // Successfully linked
+                    [self syncInterfaceWithThirdPartyState];
+                } failure:^(NSError *error) {
                     
-                    // Not linked -- Attempt link
-                    [SZTwitterUtils linkWithViewController:weakSelf success:^(id<SZFullUser> fullUser) {
-                        
-                        // Successfully linked
-                        [weakSelf setPostToTwitter:YES];
-                        [weakSelf reloadRowWithIdentifier:kTwitterRow];
-                    } failure:^(NSError *error) {
-                        
-                        // Link failed
-                        [sw setOn:NO animated:YES];
-                        [weakSelf reloadRowWithIdentifier:kTwitterRow];
-                        
-                        if (![error isSocializeErrorWithCode:SocializeErrorTwitterCancelledByUser]) {
-                            [weakSelf failWithError:error];
-                        }
-                    }];
-                }
-            } else {
-                
-                // Switch just turned off
-                [weakSelf setPostToTwitter:NO];
+                    // Link failed
+                    [self syncInterfaceWithThirdPartyState];
+                    
+                    if (![error isSocializeErrorWithCode:SocializeErrorTwitterCancelledByUser]) {
+                        [weakSelf failWithError:error];
+                    }
+                }];
             }
-            
         };
         
+        if ([SZTwitterUtils isAvailable]) {
+            BOOL wantsTwitterPost = ![[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDontPostToTwitterKey] boolValue];
+            BOOL twitterIsLinked = [SZTwitterUtils isLinked];
+            [twitterSwitch_ setOn:wantsTwitterPost && twitterIsLinked animated:NO];
+        }
+
         [twitterSwitch_ addEventHandler:controlChangedBlock forControlEvents:UIControlEventValueChanged];
     }
     
@@ -292,6 +254,8 @@ static NSString *kOtherSection = @"kOtherSection";
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
+        cell.textLabel.textColor = [UIColor whiteColor];
     };
 
     return [NSDictionary dictionaryWithObjectsAndKeys:
@@ -317,6 +281,8 @@ static NSString *kOtherSection = @"kOtherSection";
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
         cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-SMS-icon"];
         cell.textLabel.text = @"SMS";
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
+        cell.textLabel.textColor = [UIColor whiteColor];
     };
     
     return [NSDictionary dictionaryWithObjectsAndKeys:
@@ -364,6 +330,8 @@ static NSString *kOtherSection = @"kOtherSection";
         
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
+        cell.textLabel.textColor = [UIColor whiteColor];
     };
 
     return [NSDictionary dictionaryWithObjectsAndKeys:
@@ -373,11 +341,77 @@ static NSString *kOtherSection = @"kOtherSection";
             nil];
 }
 
+- (UISwitch*)autopostSwitch {
+    if (autopostSwitch_ == nil) {
+        autopostSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
+    }
+    
+    return autopostSwitch_;
+}
+
+- (NSDictionary*)autopostRow {
+    void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
+        cell.imageView.image = nil;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.accessoryView = self.autopostSwitch;
+        cell.textLabel.text = @"Always post to selected networks";
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+        cell.textLabel.shadowOffset = CGSizeMake(0, -1);
+        cell.textLabel.shadowColor = [UIColor blackColor];
+    };
+    
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            kAutopostRow, kRowIdentifier,
+            COPIED_BLOCK(cellConfigurationBlock), kRowCellConfigurationBlock,
+            nil];
+}
+
+- (NSDictionary*)autopostSection {
+    NSArray *rows = [NSArray arrayWithObjects:[self autopostRow], nil];
+    
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            kAutopostSection, kSectionIdentifier,
+            rows, kSectionRows,
+            nil];
+}
+
+- (BOOL)showSMS {
+    return self.showOtherShareTypes && [SZShareUtils canShareViaSMS];
+}
+
+- (BOOL)showEmail {
+    return self.showOtherShareTypes && [SZShareUtils canShareViaEmail];
+}
+
+- (BOOL)showOtherShareTypesSection {
+    return [self showSMS] || [self showEmail];
+}
+
 - (NSMutableArray*)sections {
     if (sections_ == nil) {
-        sections_ = [[NSMutableArray alloc] initWithObjects:[self socialNetworkSection], [self otherSection], nil];
+        sections_ = [[NSMutableArray alloc] init];
+        [sections_ addObject:[self socialNetworkSection]];
+        if ([self showOtherShareTypes]) {
+            [sections_ addObject:[self otherSection]];
+        }
+        if (!self.disableAutopostSelection) {
+            [sections_ addObject:[self autopostSection]];
+        }
     }
+    
     return sections_;
+    
+//    if (sections_ == nil) {
+////        sections_ = [[NSMutableArray alloc] init];
+//        (void
+//         if ([self showOtherShareTypes]) {
+//             [[sections_ addObject:[self otherSection]];
+//              }
+//         [self socialNetworkSection], [self otherSection], [self autopostSection], nil];
+//    }
+//    return sections_;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -466,6 +500,10 @@ static NSString *kOtherSection = @"kOtherSection";
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
+        
+    cell.backgroundColor = [UIColor colorWithRed:41/255.0f green:48/255.0f blue:54/255.0f alpha:1.0];
+    cell.textLabel.shadowOffset = CGSizeMake(0, 0);
+    cell.textLabel.shadowColor = [UIColor clearColor];
     
     NSDictionary *sectionData = [self sectionForSectionNumber:indexPath.section];
     NSDictionary *rowData = [self rowDataForIndexPath:indexPath];
@@ -473,9 +511,6 @@ static NSString *kOtherSection = @"kOtherSection";
     void (^rowConfig)(UITableViewCell*) = [rowData objectForKey:kRowCellConfigurationBlock];
     BLOCK_CALL_1(sectionConfig, cell);
     BLOCK_CALL_1(rowConfig, cell);
-    
-    cell.backgroundColor = [UIColor colorWithRed:41/255.0f green:48/255.0f blue:54/255.0f alpha:1.0];
-    cell.textLabel.textColor = [UIColor whiteColor];
 
 	return cell;
 }
@@ -487,7 +522,18 @@ static NSString *kOtherSection = @"kOtherSection";
     BLOCK_CALL(executionBlock);
 }
 
+- (void)finishAndPostShare {
+    SZSocialNetwork networks = [self selectedNetworks];
+    if (networks == SZSocialNetworkNone) {
+        [UIAlertView showAlertWithTitle:@"No Networks Selected" message:@"Please select one or more networks to continue." buttonTitle:@"Ok" handler:nil];
+        return;
+    }
+    
+//    [SZShareUtils shareViaSocialNetworksWithEntity:self.entity text: options:<#(SZShareOptions *)#> success:<#^(id<SocializeShare> share)success#> failure:<#^(NSError *error)failure#>
+}
+
 - (IBAction)continueButtonPressed:(id)sender {
+    [self finishAndPostShare];
 }
 
 @end
