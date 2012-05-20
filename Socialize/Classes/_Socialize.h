@@ -661,6 +661,9 @@ otherwise you will get a failure.
  */
 -(void)getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last;
 
+- (void)getCommentsWithIds:(NSArray*)commentIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+- (void)getCommentsWithEntityKey:(NSString*)entityKey success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+
 /**
  Create comment for entity.
  
@@ -712,6 +715,8 @@ otherwise you will get a failure.
  */
 - (void)createComments:(NSArray*)comments;
 
+- (void)createComments:(NSArray*)comments success:(void(^)(id commentOrComments))success failure:(void(^)(NSError *error))failure;
+
 /** Socialize Notification Service **/
 //registers a device token.  Call this method when the developer gets the callback for:
 //didRegisterForRemoteNotificationsWithDeviceToken from the system
@@ -753,7 +758,7 @@ otherwise you will get a failure.
 
 - (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure;
 - (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure;
-
+- (void)getCommentsForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure;
 -(void)getActivityOfCurrentApplication;
 -(void)getActivityOfCurrentApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last;
 -(void)getActivityOfUser:(id<SocializeUser>)user;

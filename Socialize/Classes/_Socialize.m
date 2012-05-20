@@ -555,6 +555,13 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_commentsService getCommentList:entryKey first:first last:last];
 }
 
+- (void)getCommentsWithIds:(NSArray*)commentIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [_commentsService getCommentsWithIds:commentIds success:success failure:failure];
+}
+- (void)getCommentsWithEntityKey:(NSString*)entityKey success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [_commentsService getCommentsWithEntityKey:entityKey success:success failure:failure];
+}
+
 -(void)createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat{
     [_commentsService createCommentForEntityWithKey:entityKey comment:comment longitude: lng latitude: lat];
 }
@@ -578,6 +585,11 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
 - (void)createComments:(NSArray*)comments {
     [_commentsService createComments:comments];
 }
+
+- (void)createComments:(NSArray*)comments success:(void(^)(id commentOrComments))success failure:(void(^)(NSError *error))failure {
+    [_commentsService createComments:comments success:success failure:failure];
+}
+
 
 #pragma entity related stuff
 
@@ -664,6 +676,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
 
 - (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
     [_userService getSharesForUser:user entity:entity first:first last:last success:success failure:failure];
+}
+
+- (void)getCommentsForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
+    [_userService getCommentsForUser:user entity:entity first:first last:last success:success failure:failure];
 }
 
 #pragma mark activity related stuff
@@ -764,6 +780,5 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
 - (void)createShare:(id<SocializeShare>)share success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
     [_shareService createShare:share success:success failure:failure];
 }
-
 
 @end

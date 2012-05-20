@@ -1579,6 +1579,14 @@
 		AAA4901F1553054E003FB943 /* TestTabbedSZActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA490181553054E003FB943 /* TestTabbedSZActionBar.m */; };
 		AAA490201553054E003FB943 /* TestTabbedSZActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA490191553054E003FB943 /* TestTabbedSZActionBar.xib */; };
 		AAA490211553054E003FB943 /* TestTabbedSZActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA490191553054E003FB943 /* TestTabbedSZActionBar.xib */; };
+		AAAB8373156895C700C6BDCE /* SZCommentUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAB8371156895C700C6BDCE /* SZCommentUtils.h */; };
+		AAAB8374156895C700C6BDCE /* SZCommentUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAB8371156895C700C6BDCE /* SZCommentUtils.h */; };
+		AAAB8375156895C700C6BDCE /* SZCommentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAB8372156895C700C6BDCE /* SZCommentUtils.m */; };
+		AAAB8376156895C700C6BDCE /* SZCommentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAB8372156895C700C6BDCE /* SZCommentUtils.m */; };
+		AAAB83791569767C00C6BDCE /* SDKHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAB83771569767C00C6BDCE /* SDKHelpers.h */; };
+		AAAB837A1569767C00C6BDCE /* SDKHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAB83771569767C00C6BDCE /* SDKHelpers.h */; };
+		AAAB837B1569767C00C6BDCE /* SDKHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAB83781569767C00C6BDCE /* SDKHelpers.m */; };
+		AAAB837C1569767C00C6BDCE /* SDKHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAB83781569767C00C6BDCE /* SDKHelpers.m */; };
 		AAADF8F71504175E009E5493 /* SocializeFacebookAuthHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AAADF8F51504175E009E5493 /* SocializeFacebookAuthHandler.h */; };
 		AAADF8F81504175E009E5493 /* SocializeFacebookAuthHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AAADF8F51504175E009E5493 /* SocializeFacebookAuthHandler.h */; };
 		AAADF8F91504175E009E5493 /* SocializeFacebookAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AAADF8F61504175E009E5493 /* SocializeFacebookAuthHandler.m */; };
@@ -3040,6 +3048,10 @@
 		AAA490171553054E003FB943 /* TestTabbedSZActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTabbedSZActionBar.h; sourceTree = "<group>"; };
 		AAA490181553054E003FB943 /* TestTabbedSZActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTabbedSZActionBar.m; sourceTree = "<group>"; };
 		AAA490191553054E003FB943 /* TestTabbedSZActionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTabbedSZActionBar.xib; sourceTree = "<group>"; };
+		AAAB8371156895C700C6BDCE /* SZCommentUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZCommentUtils.h; path = Classes/SZCommentUtils.h; sourceTree = "<group>"; };
+		AAAB8372156895C700C6BDCE /* SZCommentUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZCommentUtils.m; path = Classes/SZCommentUtils.m; sourceTree = "<group>"; };
+		AAAB83771569767C00C6BDCE /* SDKHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDKHelpers.h; path = Classes/SDKHelpers.h; sourceTree = "<group>"; };
+		AAAB83781569767C00C6BDCE /* SDKHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDKHelpers.m; path = Classes/SDKHelpers.m; sourceTree = "<group>"; };
 		AAADF8F51504175E009E5493 /* SocializeFacebookAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebookAuthHandler.h; path = Classes/SocializeFacebookAuthHandler.h; sourceTree = "<group>"; };
 		AAADF8F61504175E009E5493 /* SocializeFacebookAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebookAuthHandler.m; path = Classes/SocializeFacebookAuthHandler.m; sourceTree = "<group>"; };
 		AAAF7F2F14CA208900EA387C /* SocializePostCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializePostCommentViewController.xib; path = Resources/SocializePostCommentViewController.xib; sourceTree = "<group>"; };
@@ -4921,6 +4933,8 @@
 		AAE56C6715476A2300A444C5 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				AAAB83771569767C00C6BDCE /* SDKHelpers.h */,
+				AAAB83781569767C00C6BDCE /* SDKHelpers.m */,
 				AAE56C6815476A6100A444C5 /* SZUserUtils.h */,
 				AAE56C6915476A6100A444C5 /* SZUserUtils.m */,
 				AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */,
@@ -4932,6 +4946,8 @@
 				AA8C7192156463870092D5D3 /* SZSocialNetworkUtils.h */,
 				AA419C951565D31A0030AAB1 /* SZShareOptions.h */,
 				AA419C961565D31A0030AAB1 /* SZShareOptions.m */,
+				AAAB8371156895C700C6BDCE /* SZCommentUtils.h */,
+				AAAB8372156895C700C6BDCE /* SZCommentUtils.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -5350,6 +5366,8 @@
 				AA070A041562EFDD0001A6FA /* UITableView+Socialize.h in Headers */,
 				AA8C7194156463870092D5D3 /* SZSocialNetworkUtils.h in Headers */,
 				AA419C981565D31A0030AAB1 /* SZShareOptions.h in Headers */,
+				AAAB8374156895C700C6BDCE /* SZCommentUtils.h in Headers */,
+				AAAB837A1569767C00C6BDCE /* SDKHelpers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5520,6 +5538,8 @@
 				AA070A031562EFDD0001A6FA /* UITableView+Socialize.h in Headers */,
 				AA8C7193156463870092D5D3 /* SZSocialNetworkUtils.h in Headers */,
 				AA419C971565D31A0030AAB1 /* SZShareOptions.h in Headers */,
+				AAAB8373156895C700C6BDCE /* SZCommentUtils.h in Headers */,
+				AAAB83791569767C00C6BDCE /* SDKHelpers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7453,6 +7473,8 @@
 				AA070A071562F10A0001A6FA /* UIControl+BlocksKit.m in Sources */,
 				AA070A091562F6FD0001A6FA /* NSSet+BlocksKit.m in Sources */,
 				AA419C991565D31A0030AAB1 /* SZShareOptions.m in Sources */,
+				AAAB8375156895C700C6BDCE /* SZCommentUtils.m in Sources */,
+				AAAB837B1569767C00C6BDCE /* SDKHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7871,6 +7893,8 @@
 				AA070A081562F10B0001A6FA /* UIControl+BlocksKit.m in Sources */,
 				AA070A0A1562F6FD0001A6FA /* NSSet+BlocksKit.m in Sources */,
 				AA419C9A1565D31A0030AAB1 /* SZShareOptions.m in Sources */,
+				AAAB8376156895C700C6BDCE /* SZCommentUtils.m in Sources */,
+				AAAB837C1569767C00C6BDCE /* SDKHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

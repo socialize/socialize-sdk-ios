@@ -37,6 +37,7 @@
 #define USER_POST_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/", userid]
 #define USER_LIKE_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/like/", userid]
 #define USER_SHARE_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/share/", userid]
+#define USER_COMMENT_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/comment/", userid]
 
 @implementation SocializeUserService
 
@@ -150,6 +151,10 @@
 
 - (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
     [self getSharesForUser:user entity:entity first:first last:last success:nil failure:nil];
+}
+
+- (void)getCommentsForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
+    [self getActivityForEndpoint:USER_COMMENT_ENDPOINT([user objectID]) protocol:@protocol(SocializeShare) user:user entity:entity first:first last:last success:success failure:failure];
 }
 
 @end

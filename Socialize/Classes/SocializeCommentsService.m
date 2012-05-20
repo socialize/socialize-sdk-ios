@@ -49,7 +49,35 @@
     return  @protocol(SocializeComment);
 }
 
--(void) getCommentById: (int) commentId
+- (void)callCommentsGetWithParams:(NSDictionary*)params success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"GET"
+                                                           resourcePath:COMMENTS_LIST_METHOD
+                                                     expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                                                 params:params];
+    
+    request.successBlock = success;
+    request.failureBlock = failure;
+    
+    [self executeRequest:request];
+}
+
+- (void)getCommentsWithIds:(NSArray*)commentIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    NSDictionary *params = [NSDictionary dictionaryWithObject:commentIds forKey:@"id"];
+    [self callCommentsGetWithParams:params success:success failure:failure];
+}
+
+- (void)getCommentsWithEntityKey:(NSString*)entityKey success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    NSDictionary *params = [NSDictionary dictionaryWithObject:entityKey forKey:@"entity_key"];
+    [self callCommentsGetWithParams:params success:success failure:failure];
+}
+
+- (void)getCommentWithId:(NSNumber*)commentId
+                 success:(void(^)(id<SZComment> comment))success
+                 failure:(void(^)(NSError *error))failure {
+    
+}
+
+- (void) getCommentById: (int) commentId
 {
     [self getCommentsList:[NSArray arrayWithObject:[NSNumber numberWithInt:commentId]] andKeys:nil];
 }
@@ -89,18 +117,24 @@
      ];
 }
 
-- (void)createCommentForParams:(NSArray*)params {
-    [self executeRequest:
-     [SocializeRequest requestWithHttpMethod:@"POST"
-                                resourcePath:COMMENTS_LIST_METHOD
-                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
-                                      params:params]
-     ];
+- (void)callCommentsPostWithParams:(NSArray*)params success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"POST"
+                               resourcePath:COMMENTS_LIST_METHOD
+                         expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                     params:params];
+    request.successBlock = success;
+    request.failureBlock = failure;
+
+    [self executeRequest:request];
+}
+
+- (void)createComments:(NSArray*)comments success:(void(^)(id commentOrComments))success failure:(void(^)(NSError *error))failure {
+    NSArray* params = [_objectCreator createDictionaryRepresentationArrayForObjects:comments];
+    [self callCommentsPostWithParams:params success:success failure:failure];
 }
 
 - (void)createComments:(NSArray*)comments {
-    NSArray* params = [_objectCreator createDictionaryRepresentationArrayForObjects:comments];
-    [self createCommentForParams:params];
+    [self createComments:comments success:nil failure:nil];
 }
 
 - (void)createComment:(id<SocializeComment>)comment {
