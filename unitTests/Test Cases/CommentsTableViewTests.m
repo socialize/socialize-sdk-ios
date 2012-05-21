@@ -236,13 +236,13 @@
     [[(id)self.commentsTableViewController expect] insertContentAtHead:[NSArray arrayWithObject:mockComment]];
     
     // Stub a post comment where the user chose not to subscribe to the discussion
-    id mockPostCommentViewController = [OCMockObject mockForClass:[SocializePostCommentViewController class]];
-    [[[mockPostCommentViewController stub] andReturnBool:YES] dontSubscribeToDiscussion];
+    id mockComposeCommentViewController = [OCMockObject mockForClass:[SZComposeCommentViewController class]];
+    [[[mockComposeCommentViewController stub] andReturnBool:YES] dontSubscribeToDiscussion];
     
     // Subscribed button should turn off
     [[self.mockSubscribedButton expect] setSelected:NO];
     
-    [self.commentsTableViewController postCommentViewController:mockPostCommentViewController didCreateComment:mockComment];
+    [self.commentsTableViewController postCommentViewController:mockComposeCommentViewController didCreateComment:mockComment];
 }
 
 - (void)expectBubbleConfigurationForEnabled:(BOOL)enabled {

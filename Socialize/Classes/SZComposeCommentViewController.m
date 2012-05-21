@@ -1,12 +1,12 @@
 //
-//  SocializePostCommentViewController.m
+//  SZComposeCommentViewController.m
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 11/10/11.
 //  Copyright (c) 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializePostCommentViewController.h"
+#import "SZComposeCommentViewController.h"
 #import "SocializeLocationManager.h"
 #import "CommentMapView.h"
 #import "UINavigationController+Socialize.h"
@@ -19,12 +19,12 @@
 #import "SocializeTwitterAuthenticator.h"
 #import "SocializeUIDisplayProxy.h"
 
-@interface SocializePostCommentViewController ()
+@interface SZComposeCommentViewController ()
 - (void)configureFacebookButton;
 - (void)configureForNewUser;
 @end
 
-@implementation SocializePostCommentViewController
+@implementation SZComposeCommentViewController
 @synthesize commentObject = commentObject_;
 @synthesize facebookButton = facebookButton_;
 @synthesize delegate = delegate_;
@@ -34,15 +34,15 @@
 @synthesize subscribeContainer = subscribeContainer_;
 @synthesize twitterButton = twitterButton_;
 
-+ (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SocializePostCommentViewControllerDelegate>)delegate {
-    SocializePostCommentViewController *postCommentViewController = [self postCommentViewControllerWithEntityURL:entityURL];
++ (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SZComposeCommentViewControllerDelegate>)delegate {
+    SZComposeCommentViewController *postCommentViewController = [self postCommentViewControllerWithEntityURL:entityURL];
     postCommentViewController.delegate = delegate;
     UINavigationController *navigationController = [UINavigationController socializeNavigationControllerWithRootViewController:postCommentViewController];
     return navigationController;    
 }
 
-+ (SocializePostCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL {
-    SocializePostCommentViewController *postCommentViewController = [[[SocializePostCommentViewController alloc]
++ (SZComposeCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL {
+    SZComposeCommentViewController *postCommentViewController = [[[SZComposeCommentViewController alloc]
                                                        initWithEntityUrlString:entityURL]
                                                       autorelease];
     return postCommentViewController;

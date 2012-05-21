@@ -1,5 +1,5 @@
 /*
- * PostCommentViewControllerTests.m
+ * ComposeCommentViewControllerTests.m
  * SocializeSDK
  *
  * Created on 9/7/11.
@@ -26,7 +26,7 @@
  * See Also: http://gabriel.github.com/gh-unit/
  */
 
-#import "PostCommentViewControllerTests.h"
+#import "ComposeCommentViewControllerTests.h"
 #import "CommentMapView.h"
 #import "SocializeLocationManager.h"
 #import "UILabel+FormatedText.h"
@@ -47,12 +47,12 @@
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
 
-@interface SocializePostCommentViewController (Tests)
+@interface SZComposeCommentViewController (Tests)
 - (void)dismissSelf;
 - (void)configureFacebookButton;
 @end
 
-@implementation PostCommentViewControllerTests
+@implementation ComposeCommentViewControllerTests
 @synthesize postCommentViewController = postCommentViewController_;
 @synthesize mockFacebookButton = mockFacebookButton_;
 @synthesize mockTwitterButton = mockTwitterButton_;
@@ -61,7 +61,7 @@
 @synthesize mockSubscribeContainer = mockSubscribeContainer_;
 
 + (SocializeBaseViewController*)createController {
-    return [SocializePostCommentViewController postCommentViewControllerWithEntityURL:TEST_URL];
+    return [SZComposeCommentViewController postCommentViewControllerWithEntityURL:TEST_URL];
 }
 
 - (void)setUp {
@@ -74,7 +74,7 @@
     [SocializeTwitterAuthenticator startMockingClass];
     
     // super setUp creates self.viewController
-    self.postCommentViewController = (SocializePostCommentViewController*)self.viewController;
+    self.postCommentViewController = (SZComposeCommentViewController*)self.viewController;
     
     self.mockFacebookButton = [OCMockObject mockForClass:[UIButton class]];
     self.postCommentViewController.facebookButton = self.mockFacebookButton;
@@ -125,7 +125,7 @@
     [[[mockLocationManager stub]andReturn:TEST_LOCATION]currentLocationDescription];
     
     
-    PostCommentViewControllerForTest* controller = [[PostCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
+    ComposeCommentViewControllerForTest* controller = [[ComposeCommentViewControllerForTest alloc]initWithEntityUrlString:TEST_URL keyboardListener:nil locationManager:mockLocationManager];
     
     [[(id)controller.commentTextView expect]becomeFirstResponder];
     [[(id)controller.mapOfUserLocation expect]configurate];
@@ -318,7 +318,7 @@
     [self.postCommentViewController viewDidLoad];
 }
 
-- (void)postCommentViewController:(SocializePostCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
+- (void)postCommentViewController:(SZComposeCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
     [self notify:kGHUnitWaitStatusSuccess];
 }
 

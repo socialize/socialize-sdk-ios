@@ -11,7 +11,7 @@
 #import "_Socialize.h"
 #import "SocializeBaseViewController.h"
 #import "SocializeTableViewController.h"
-#import "SocializePostCommentViewController.h"
+#import "SZComposeCommentViewController.h"
 
 @class CommentsTableFooterView;
 @class SocializeTableBGInfoView;
@@ -31,7 +31,7 @@
 @class CommentsTableViewCell;
 @protocol SZCommentsListViewControllerDelegate;
 
-@interface SZCommentsListViewController : SocializeTableViewController<UITableViewDataSource, SocializeServiceDelegate, UITableViewDelegate, SocializePostCommentViewControllerDelegate> 
+@interface SZCommentsListViewController : SocializeTableViewController<UITableViewDataSource, SocializeServiceDelegate, UITableViewDelegate, SZComposeCommentViewControllerDelegate> 
 {
 
 	IBOutlet UIView*        backgroundView;

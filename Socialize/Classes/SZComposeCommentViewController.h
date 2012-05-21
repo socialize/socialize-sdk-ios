@@ -1,5 +1,5 @@
 //
-//  SocializePostCommentViewController.h
+//  SZComposeCommentViewController.h
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 11/10/11.
@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "SocializeComposeMessageViewController.h"
 #import "SocializeAuthViewController.h"
-#import "SocializePostCommentViewControllerDelegate.h"
+#import "SZComposeCommentViewControllerDelegate.h"
 
-@interface SocializePostCommentViewController : SocializeComposeMessageViewController <SocializeAuthViewControllerDelegate>
-+ (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SocializePostCommentViewControllerDelegate>)delegate;
-+ (SocializePostCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL;
-@property (nonatomic, assign) id<SocializePostCommentViewControllerDelegate> delegate;
+@interface SZComposeCommentViewController : SocializeComposeMessageViewController <SocializeAuthViewControllerDelegate>
++ (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SZComposeCommentViewControllerDelegate>)delegate;
++ (SZComposeCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL;
+@property (nonatomic, assign) id<SZComposeCommentViewControllerDelegate> delegate;
 @property (nonatomic, retain) id<SocializeComment> commentObject;
 @property (nonatomic, retain) IBOutlet UIButton *facebookButton;
 @property (nonatomic, retain) IBOutlet UIButton *twitterButton;

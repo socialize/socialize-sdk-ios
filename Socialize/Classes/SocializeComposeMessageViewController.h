@@ -1,5 +1,5 @@
 //
-//  PostCommentViewController.h
+//  ComposeCommentViewController.h
 //  appbuildr
 //
 //  Created by William M. Johnson on 4/5/11.
