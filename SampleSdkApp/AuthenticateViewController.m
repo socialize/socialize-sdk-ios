@@ -86,8 +86,8 @@
 
     [Socialize storeFacebookAppId:@"115622641859087"];
 
-    SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
-    [SZShareUtils showShareDialogWithViewController:self entity:entity success:nil failure:nil];
+//    SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
+//    [SZShareUtils showShareDialogWithViewController:self entity:entity success:nil failure:nil];
     
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];

@@ -11,6 +11,7 @@
 #import "SZShareUtils.h"
 #import "SocializeEntity.h"
 #import "UIAlertView+BlocksKit.h"
+#import "SZCommentUtils.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -23,6 +24,7 @@ static NSString *kRowText = @"kRowText";
 
 static NSString *kUserSection = @"kUserSection";
 static NSString *kShareSection = @"kShareSection";
+static NSString *kCommentSection = @"kCommentSection";
 
 @interface SampleListViewController ()
 @property (nonatomic, retain) NSArray *sections;
@@ -82,6 +84,12 @@ static NSString *kShareSection = @"kShareSection";
         }];
     }]];
 
+    NSMutableArray *commentRows = [NSMutableArray array];
+    [commentRows addObject:[self rowWithText:@"Show Comments List" executionBlock:^{
+        SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
+        [SZCommentUtils showCommentsListWithViewController:self entity:entity completion:nil];
+    }]];
+
     return [NSArray arrayWithObjects:
             [self sectionWithIdentifier:kUserSection
                                   title:@"User Utilities"
@@ -89,6 +97,9 @@ static NSString *kShareSection = @"kShareSection";
             [self sectionWithIdentifier:kShareSection
                                   title:@"Share Utilities"
                                    rows:shareRows],
+            [self sectionWithIdentifier:kCommentSection
+                                  title:@"Comment Utilities"
+                                   rows:commentRows],
 
             nil];
 }

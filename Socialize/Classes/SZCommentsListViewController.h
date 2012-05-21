@@ -71,6 +71,7 @@
 
 + (SZCommentsListViewController*)commentsListViewControllerWithEntityKey:(NSString*)entityKey;
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName __attribute__((deprecated("Please use commentsListViewControllerWithEntityKey: and the SZNavigationController, or the utility functions in SZCommentUtils")));
++ (SZCommentsListViewController*)commentsListViewControllerWithEntity:(id<SZEntity>)entity;
 
 -(IBAction)subscribedButtonPressed:(id)sender;
 
@@ -80,6 +81,8 @@
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entryUrlString:(NSString*) entryUrlString;
 
 - (id)initWithEntityKey:(NSString*)entityKey;
+
+- (id)initWithEntity:(id<SZEntity>)entity;
 
 @end
 

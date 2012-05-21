@@ -69,13 +69,16 @@
     return commentsController;
 }
 
++ (SZCommentsListViewController*)commentsListViewControllerWithEntity:(id<SZEntity>)entity {
+    return [[[self alloc] initWithEntity:entity] autorelease];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil entryUrlString:(NSString*) entryUrlString {
     return [self initWithEntityKey:entryUrlString];
 }
 
-- (id)initWithEntityKey:(NSString*)entityKey {
-    
-	if (self = [super init]) {
+- (id)initWithEntity:(id<SZEntity>)entity {
+    if (self = [super init]) {
         
 		_errorLoading = NO;
 		_isLoading = YES;
@@ -85,14 +88,18 @@
 		[_commentDateFormatter setDateFormat:@"hh:mm:ss zzz"];
         
         /*Socialize inits*/
-        _entity = [[self.socialize createObjectForProtocol: @protocol(SocializeEntity)]retain];
-        _entity.key = entityKey;
+        _entity = (SocializeEntity*)[entity retain];
         
         /* cache for the images*/
         _cache = [[ImagesCache alloc] init];
         
 	}
     return self;
+}
+
+- (id)initWithEntityKey:(NSString*)entityKey {
+    SZEntity *entity = [SZEntity entityWithKey:entityKey name:nil];
+    return [self initWithEntity:entity];
 }
 
 - (void)afterLoginAction:(BOOL)userChanged {

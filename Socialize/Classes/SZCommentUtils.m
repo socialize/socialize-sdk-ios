@@ -9,8 +9,21 @@
 #import "SZCommentUtils.h"
 #import "_Socialize.h"
 #import "SDKHelpers.h"
+#import "SZCommentsListViewController.h"
+#import "SZNavigationController.h"
 
 @implementation SZCommentUtils
+
++ (void)showCommentsListWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)())completion {
+    SZCommentsListViewController *commentsList = [SZCommentsListViewController commentsListViewControllerWithEntity:entity];
+    commentsList.completionBlock = ^{
+        [viewController dismissModalViewControllerAnimated:YES];
+        BLOCK_CALL(completion);
+    };
+    
+    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:commentsList] autorelease];
+    [viewController presentModalViewController:nav animated:YES];
+}
 
 + (void)addCommentWithEntity:(id<SZEntity>)entity text:(NSString*)text shareOptions:(SZShareOptions*)shareOptions success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
     SZComment *comment = [SZComment commentWithEntity:entity text:text];

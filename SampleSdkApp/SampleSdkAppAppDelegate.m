@@ -12,6 +12,7 @@
 #import <Socialize/Socialize.h>
 #import "TestListController.h"
 #include <AvailabilityMacros.h>
+#import "SampleListViewController.h"
 
 #if RUN_GHUNIT_TESTS
 #import <GHUnitIOS/GHUnit.h>
@@ -41,7 +42,8 @@
     UIViewController* rootViewController = nil;
        
     // we check the authentication here.
-    rootViewController = [[[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil] autorelease];
+//    rootViewController = [[[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil] autorelease];
+    rootViewController = [[[SampleListViewController alloc] init] autorelease];
  
     rootController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     [self.window addSubview:rootController.view];
