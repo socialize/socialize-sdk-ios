@@ -249,7 +249,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [[[mockUser stub]  andReturn:@"Mister"] valueForKeyPath:@"firstName"];
     [[[mockUser stub] andReturn:@"Mister"] firstName];
     self.profileEditViewController.fullUser = mockUser;
-    id mockCell = [OCMockObject mockForClass:[SocializeProfileEditTableViewCell class]];
+    id mockCell = [OCMockObject niceMockForClass:[SocializeProfileEditTableViewCell class]];
     [[[self.mockBundle expect] andDo:^(NSInvocation* inv) {
         self.profileEditViewController.profileTextCell = mockCell;
     }] loadNibNamed:@"SocializeProfileEditTableViewCell" owner:OCMOCK_ANY options:nil];
@@ -264,7 +264,6 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     [[mockKeyLabel expect] setText:@"first name"];
     [[mockValueLabel expect] setText:@"Mister"];
     [[mockArrowImageView expect] setHidden:NO];
-    [[mockCell expect] setBackgroundColor:[UIColor colorWithRed:44/255.0f green:54/255.0f blue:63/255.0f alpha:1.0]];
     [[mockCell expect] setSelectionStyle:UITableViewCellSelectionStyleBlue];
     UITableViewCell *cell = [self.profileEditViewController tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:SZSettingsViewControllerPropertiesRowFirstName inSection:[self.profileEditViewController propertiesSection]]];
     GHAssertEquals(cell, mockCell, @"Bad cell");

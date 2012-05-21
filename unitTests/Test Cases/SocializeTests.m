@@ -121,7 +121,7 @@
     socialize.authService = mockAuthService;
 
     [[NSUserDefaults standardUserDefaults] setObject:@"1234" forKey:@"FBAccessTokenKey"];
-    [[mockAuthService expect] linkToFacebookWithAccessToken:@"1234"];
+    [[mockAuthService expect] linkToFacebookWithAccessToken:@"1234" success:OCMOCK_ANY failure:OCMOCK_ANY];
     
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated"
