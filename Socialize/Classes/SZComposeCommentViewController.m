@@ -93,17 +93,17 @@
 - (void)configureMessageActionButtons {
     NSMutableArray *buttons = [NSMutableArray array];
 
-    if ([SocializeThirdPartyTwitter available]) {
-        [buttons addObject:self.twitterButton];
-    } else {
-        DebugLog(SOCIALIZE_TWITTER_NOT_CONFIGURED_MESSAGE);
-    }
-    
-    if ([SocializeThirdPartyFacebook available]) {
-        [buttons addObject:self.facebookButton];
-    } else {
-        DebugLog(SOCIALIZE_FACEBOOK_NOT_CONFIGURED_MESSAGE);
-    }
+//    if ([SocializeThirdPartyTwitter available]) {
+//        [buttons addObject:self.twitterButton];
+//    } else {
+//        DebugLog(SOCIALIZE_TWITTER_NOT_CONFIGURED_MESSAGE);
+//    }
+//    
+//    if ([SocializeThirdPartyFacebook available]) {
+//        [buttons addObject:self.facebookButton];
+//    } else {
+//        DebugLog(SOCIALIZE_FACEBOOK_NOT_CONFIGURED_MESSAGE);
+//    }
     
     if ([self.socialize notificationsAreConfigured]) {
         [buttons addObject:self.enableSubscribeButton];

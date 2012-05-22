@@ -251,8 +251,16 @@ static NSString *kAutopostSection = @"kAutopostSection";
 }
 
 - (NSDictionary*)socialNetworkSection {
-    NSArray *rows = [NSArray arrayWithObjects:[self facebookRow], [self twitterRow], nil];
-    
+    NSMutableArray *rows = [NSMutableArray array];
+
+    if ([SZFacebookUtils isAvailable]) {
+        [rows addObject:[self facebookRow]];
+    }
+
+    if ([SZTwitterUtils isAvailable]) {
+        [rows addObject:[self twitterRow]];
+    }
+
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -321,7 +329,14 @@ static NSString *kAutopostSection = @"kAutopostSection";
 }
 
 - (NSDictionary*)otherSection {
-    NSArray *rows = [NSArray arrayWithObjects:[self emailRow], [self SMSRow], nil];
+    NSMutableArray *rows = [NSMutableArray array];
+    if ([SZShareUtils canShareViaEmail]) {
+        [rows addObject:[self emailRow]];
+    }
+
+    if ([SZShareUtils canShareViaSMS]) {
+        [rows addObject:[self SMSRow]];
+    }
     
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
         

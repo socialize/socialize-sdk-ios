@@ -33,6 +33,8 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeFacebookAuthenticator.h"
 #import "SocializeEventService.h"
+#import "SZTwitterUtils.h"
+#import "SZFacebookUtils.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -135,6 +137,13 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
     if (self == [Socialize class]) {
         Class dynamicTest = NSClassFromString(@"SocializeDynamicTest");
         NSAssert(dynamicTest != nil, @"Dynamic Class Load Error -- does your application build settings for 'other linker flags' contain the flag '-all_load'?");
+        
+        if (![SZFacebookUtils isAvailable]) {
+            DebugLog(SOCIALIZE_FACEBOOK_NOT_CONFIGURED_MESSAGE);        
+        }
+        if (![SZTwitterUtils isAvailable]) {
+            DebugLog(SOCIALIZE_TWITTER_NOT_CONFIGURED_MESSAGE);        
+        }
     }
 }
 
