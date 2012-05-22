@@ -11,6 +11,8 @@
 #import "SDKHelpers.h"
 #import "SZCommentsListViewController.h"
 #import "SZNavigationController.h"
+#import "SZComposeCommentViewController.h"
+#import "SZShareDialogViewController.h"
 
 @implementation SZCommentUtils
 
@@ -22,6 +24,26 @@
     };
     
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:commentsList] autorelease];
+    [viewController presentModalViewController:nav animated:YES];
+}
+
++ (void)getPreferredShareNetworks:(UIViewController*)viewController success:(void(^)(SZSocialNetwork networks))success failure:(void(^)(NSError *error))failure {
+    SZShareDialogViewController *dialog = [[[SZShareDialogViewController alloc] initWithEntity:nil] autorelease];
+    [viewController presentModalViewController:dialog animated:YES];
+}
+
++ (void)showCommentComposerWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
+    SZComposeCommentViewController *composer = [SZComposeCommentViewController composeCommentViewControllerWithEntity:entity];
+    composer.completionBlock = ^(id<SZComment> comment) {
+        [viewController dismissModalViewControllerAnimated:YES];
+        BLOCK_CALL_1(success, comment);
+    };
+    composer.cancellationBlock = ^{
+        [viewController dismissModalViewControllerAnimated:YES];
+        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorCommentCancelledByUser]);
+    };
+    
+    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:composer] autorelease];
     [viewController presentModalViewController:nav animated:YES];
 }
 

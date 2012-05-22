@@ -14,6 +14,7 @@
 @interface SZComposeCommentViewController : SocializeComposeMessageViewController <SocializeAuthViewControllerDelegate>
 + (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SZComposeCommentViewControllerDelegate>)delegate;
 + (SZComposeCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL;
++ (SZComposeCommentViewController*)composeCommentViewControllerWithEntity:(id<SZEntity>)entity;
 @property (nonatomic, assign) id<SZComposeCommentViewControllerDelegate> delegate;
 @property (nonatomic, retain) id<SocializeComment> commentObject;
 @property (nonatomic, retain) IBOutlet UIButton *facebookButton;
@@ -22,6 +23,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *enableSubscribeButton;
 @property (nonatomic, assign) BOOL dontSubscribeToDiscussion;
 @property(nonatomic, retain) IBOutlet UIView *subscribeContainer;
+@property (nonatomic, copy) void (^completionBlock)(id<SZComment> comment);
 
 - (IBAction)facebookButtonPressed:(UIButton*)sender;
 - (IBAction)twitterButtonPressed:(UIButton*)sender;

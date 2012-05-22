@@ -90,6 +90,11 @@ static NSString *kCommentSection = @"kCommentSection";
         [SZCommentUtils showCommentsListWithViewController:self entity:entity completion:nil];
     }]];
 
+    [commentRows addObject:[self rowWithText:@"Show Comment Composer" executionBlock:^{
+        SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
+        [SZCommentUtils showCommentComposerWithViewController:self entity:entity success:nil failure:nil];
+    }]];
+
     return [NSArray arrayWithObjects:
             [self sectionWithIdentifier:kUserSection
                                   title:@"User Utilities"

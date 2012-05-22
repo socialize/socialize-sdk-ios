@@ -33,12 +33,17 @@
 @synthesize enableSubscribeButton = enabledSubscribeButton_;
 @synthesize subscribeContainer = subscribeContainer_;
 @synthesize twitterButton = twitterButton_;
+@synthesize completionBlock = completionBlock_;
 
 + (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SZComposeCommentViewControllerDelegate>)delegate {
     SZComposeCommentViewController *postCommentViewController = [self postCommentViewControllerWithEntityURL:entityURL];
     postCommentViewController.delegate = delegate;
     UINavigationController *navigationController = [UINavigationController socializeNavigationControllerWithRootViewController:postCommentViewController];
     return navigationController;    
+}
+
++ (SZComposeCommentViewController*)composeCommentViewControllerWithEntity:(id<SZEntity>)entity {
+    return [[[self alloc] initWithEntity:entity] autorelease];
 }
 
 + (SZComposeCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL {
@@ -142,7 +147,9 @@
 }
 
 - (void)notifyDelegateOrDismissSelf {
-    if ([self.delegate respondsToSelector:@selector(postCommentViewController:didCreateComment:)]) {
+    if (self.completionBlock != nil) {
+        self.completionBlock(self.commentObject);
+    } else if ([self.delegate respondsToSelector:@selector(postCommentViewController:didCreateComment:)]) {
         [self executeAfterModalDismissDelay:^{
             [self stopLoadAnimation];
             [self.delegate postCommentViewController:self didCreateComment:self.commentObject];
@@ -155,7 +162,7 @@
 - (void)createComment {
     [self startLoading];
     
-    SocializeEntity *entity = [SocializeEntity entityWithKey:self.entityURL name:nil];
+    SocializeEntity *entity = [SocializeEntity entityWithKey:self.entity.key name:nil];
     SocializeComment *comment = [SocializeComment commentWithEntity:entity text:commentTextView.text];
     
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue]) {
@@ -304,7 +311,7 @@
 
 - (void)getSubscriptionStatus {
     self.enableSubscribeButton.enabled = NO;
-    [self.socialize getSubscriptionsForEntityKey:self.entityURL first:nil last:nil];
+    [self.socialize getSubscriptionsForEntityKey:self.entity.key first:nil last:nil];
 }
 
 

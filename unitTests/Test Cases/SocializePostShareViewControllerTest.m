@@ -90,7 +90,7 @@ static NSString *const TestURL = @"http://getsocialize.com";
 - (void)testCreateShareOnSocializeServerPerformsCreate {
     NSString *testText = @"testText";
     NSString *testURL = @"testURL";
-    self.postShareViewController.entityURL = testURL;
+    self.postShareViewController.entity = [SZEntity entityWithKey:testURL name:nil];
     
     [[(id)self.postShareViewController expect] startLoading];
     [[[self.mockCommentTextView stub] andReturn:testText] text];

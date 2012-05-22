@@ -29,7 +29,7 @@
     NSArray *messageActionButtons_;
 }
 
-@property (nonatomic, copy) NSString *entityURL;
+@property (nonatomic, retain) id<SZEntity> entity;
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;
 @property(nonatomic, retain) IBOutlet UILabel       *locationText;
 @property(nonatomic, retain) IBOutlet UIButton      *doNotShareLocationButton;
@@ -48,6 +48,7 @@
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
 
 - (id)initWithEntityUrlString:(NSString*)entityUrlString;
+- (id)initWithEntity:(id<SZEntity>)entity;
 
 - (void)addSocializeRoundedGrayButtonImagesToButton:(UIButton*)button;
 - (void)setSubviewForLowerContainer:(UIView*)newSubview;

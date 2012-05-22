@@ -423,7 +423,7 @@
     [self ignoreButtons];
     
     NSString *testKey = @"testKey";
-    self.postCommentViewController.entityURL = testKey;
+    self.postCommentViewController.entity = [SZEntity entityWithKey:testKey name:nil];
     
     // don't care about these here
     self.mockFacebookButton = self.postCommentViewController.facebookButton = [OCMockObject niceMockForClass:[UIButton class]];    

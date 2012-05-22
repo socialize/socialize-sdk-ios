@@ -73,7 +73,7 @@
 
 - (void)createShareOnSocializeServer {
     [self startLoading];
-    [self.socialize createShareForEntityWithKey:self.entityURL medium:SocializeShareMediumFacebook text:commentTextView.text];
+    [self.socialize createShareForEntityWithKey:self.entity.key medium:SocializeShareMediumFacebook text:commentTextView.text];
 }
 
 - (void)sendButtonPressed:(UIButton*)button {
