@@ -173,9 +173,9 @@ static NSString *kAutopostSection = @"kAutopostSection";
         
         void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
             if ([SZFacebookUtils isLinked]) {
-                cell.imageView.image = [UIImage imageNamed:@"socialize-authorize-facebook-enabled-icon.png"];
+                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-facebook-icon.png"];
             } else {
-                cell.imageView.image = [UIImage imageNamed:@"socialize-authorize-facebook-disabled-icon.png"];
+                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-facebook-dis-icon.png"];
             }
             cell.textLabel.text = @"Facebook";
             cell.accessoryView = self.facebookSwitch;
@@ -233,9 +233,9 @@ static NSString *kAutopostSection = @"kAutopostSection";
     if (twitterRow_ == nil) {
         void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
             if ([SZTwitterUtils isLinked]) {
-                cell.imageView.image = [UIImage imageNamed:@"socialize-authorize-twitter-enabled-icon.png"];
+                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-twitter-icon.png"];
             } else {
-                cell.imageView.image = [UIImage imageNamed:@"socialize-authorize-twitter-disabled-icon.png"];
+                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-twitter-dis-icon.png"];
             }
             cell.textLabel.text = @"Twitter";
             cell.accessoryView = self.twitterSwitch;
