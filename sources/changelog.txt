@@ -4,6 +4,10 @@
 Changelog
 =============================================
 
+v1.7.6
+------
+[feature] Add ability to show share action sheet directly
+
 v1.7.5
 ------
 [bug] External links such as iTunes should open for direct url requests [ ]

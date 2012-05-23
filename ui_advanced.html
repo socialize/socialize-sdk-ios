@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Advanced UI Configuration &mdash; Socialize iOS SDK 1.7.5 documentation</title>
+    <title>Advanced UI Configuration &mdash; Socialize iOS SDK 1.7.6 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.5',
+        VERSION:     '1.7.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.5 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.7.6 documentation" href="index.html" />
     <link rel="next" title="SDK User Guide" href="sdk_user_guide.html" />
     <link rel="prev" title="Socialize Comments" href="comments.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="comments.html" title="Socialize Comments"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -125,6 +125,31 @@ following settings:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="standalone-share">
+<h2>Standalone Share<a class="headerlink" href="#standalone-share" title="Permalink to this headline">¶</a></h2>
+<p>v1.7.6 introduces standalone share functionality. This will allow you to add a share button
+to your app.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This feature was exposed because of high demand, but the share functionality will be changing significantly in Socialize v2.0. The associated will likely be deprecated with the release of v2.0.</p>
+</div>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">StandaloneShareViewController</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nl">shareButtonPressed:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
+    <span class="n">SocializeEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SocializeEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;my_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">showShareActionSheetWithViewController:</span><span class="n">self</span> <span class="nl">entity:</span><span class="n">entity</span> <span class="nl">success:</span><span class="o">^</span><span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Share created successfully&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">error</span> <span class="nl">isSocializeErrorWithCode:</span><span class="n">SocializeErrorShareCancelledByUser</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Share creation failed with error %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>        
+        <span class="p">}</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -144,6 +169,7 @@ following settings:</p>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Advanced UI Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#disabling-error-alerts">Disabling Error Alerts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#automatic-third-party-linking">Automatic Third Party Linking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#standalone-share">Standalone Share</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
@@ -177,7 +203,7 @@ following settings:</p>
         <li class="right" >
           <a href="comments.html" title="Socialize Comments"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
