@@ -25,8 +25,6 @@
 @property(nonatomic, retain) IBOutlet UIView *subscribeContainer;
 @property (nonatomic, copy) void (^completionBlock)(id<SZComment> comment);
 
-- (IBAction)facebookButtonPressed:(UIButton*)sender;
-- (IBAction)twitterButtonPressed:(UIButton*)sender;
 -(IBAction)unsubscribeButtonPressed:(id)sender;
 -(IBAction)enableSubscribeButtonPressed:(id)sender;
 - (void)getSubscriptionStatus;
