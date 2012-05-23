@@ -81,6 +81,9 @@ NSString *const SocializeCLAuthorizationStatusDidChangeNotification = @"Socializ
 NSString *const kSocializeCLAuthorizationStatusKey = @"kSocializeCLAuthorizationStatusKey";
 NSString *const kSocializeShouldShareLocationKey = @"kSocializeShouldShareLocationKey";
 
+NSString *const SZLocationDidChangeNotification = @"SZLocationDidChangeNotification";
+NSString *const kSZNewLocationKey = @"kSZNewLocationKey";
+
 NSString *const SocializeUIControllerDidFailWithErrorNotification = @"SocializeUIControllerDidFailWithErrorNotification";
 NSString *const SocializeUIControllerErrorUserInfoKey = @"SocializeUIControllerErrorUserInfoKey";
 

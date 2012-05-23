@@ -33,6 +33,16 @@
     return [[UIApplication sharedApplication] delegate];
 }
 
+#import "SocializeLocationManager.h"
+
+-(NSDictionary*)authInfoFromConfig
+{
+    NSBundle * bundle =  [NSBundle bundleForClass:[self class]];
+    NSString * configPath = [bundle pathForResource:@"SocializeApiInfo" ofType:@"plist"];
+    NSDictionary * configurationDictionary = [[[NSDictionary alloc]initWithContentsOfFile:configPath] autorelease];
+    return  [configurationDictionary objectForKey:@"Socialize API info"];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
     NSString *consumerKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"socialize_api_key"];
@@ -62,11 +72,45 @@
     }];
 #endif
 
+    NSDictionary* apiInfo = [self authInfoFromConfig];
+    if ([apiInfo objectForKey:@"facebookToken"]) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:[apiInfo objectForKey:@"facebookToken"] forKey:@"FBAccessTokenKey"];
+        [defaults setObject:[NSDate distantFuture] forKey:@"FBExpirationDateKey"];
+        [defaults synchronize];
+    }
+    [Socialize storeConsumerKey:[apiInfo objectForKey:@"key"]];
+    [Socialize storeConsumerSecret:[apiInfo objectForKey:@"secret"]];
+    
+    [Socialize storeFacebookAppId:@"115622641859087"];
+    
+    //    SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
+    //    [SZShareUtils showShareDialogWithViewController:self entity:entity success:nil failure:nil];
+    
+#if RUN_KIF_TESTS
+    [Socialize storeFacebookLocalAppId:@"itest"];
+    
+    
+    
+    //    NSString *token = [apiInfo objectForKey:@"facebookToken"];
+    //    if ([token length] > 0) {
+    //        [[Socialize sharedSocialize] linkToFacebookWithAccessToken:token expirationDate:[NSDate distantFuture]];
+    //    }
+#else
+    [Socialize storeFacebookLocalAppId:nil];
+#endif
+
     [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity>entity) {
         SampleEntityLoader *entityLoader = [[[SampleEntityLoader alloc] initWithEntity:entity] autorelease];
         [navigationController pushViewController:entityLoader animated:YES];
     }];
 
+    [[SocializeLocationManager sharedLocationManager] getCurrentLocationWithSuccess:^(CLLocation *location) {
+        NSLog(@"Got location: %@!", location);        
+    } failure:^(NSError *error) {
+        NSLog(@"Failed location: %@!", [error localizedDescription]);
+    }];
+    
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"kSocializeDeviceTokenRegisteredKey"];
 //    char testTokenData[32] = "\xaa\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff";
 //    NSData *testToken = [NSData dataWithBytes:&testTokenData length:sizeof(testTokenData)];

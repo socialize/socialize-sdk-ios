@@ -50,6 +50,8 @@ extern NSString *const kSocializeCLAuthorizationStatusKey;
 extern NSString *const kSocializeShouldShareLocationKey;
 extern NSString *const SocializeDidRegisterDeviceTokenNotification;
 extern NSString *const SZLikeButtonDidChangeStateNotification;
+extern NSString *const SZLocationDidChangeNotification;
+extern NSString *const kSZNewLocationKey;
 
 // Twitter
 extern NSString *const kSocializeTwitterAuthConsumerKey;

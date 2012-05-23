@@ -35,7 +35,9 @@ static NSString *SocializeDefaultErrorStrings[SocializeNumErrors] = {
     @"Third party is not available",
     @"Third party link cancelled by user",
     @"Process cancelled by user",
-    @"Comment cancelled by user"
+    @"Comment cancelled by user",
+    @"Location update was rejected by user",
+    @"Location update timed out",
 };
 
 NSString *SocializeDefaultErrorStringForCode(NSUInteger code) {

@@ -344,8 +344,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 #pragma mark - Map View Delegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    [self.locationManager setLastLocation:userLocation.location];
-    
+    [[SocializeLocationManager sharedLocationManager] tryToAcceptLocation:[userLocation location]];
     [self updateViewWithNewLocation:userLocation.location];
 }
 
