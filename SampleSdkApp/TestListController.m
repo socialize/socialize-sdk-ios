@@ -56,6 +56,7 @@
                       @"Test Direct URL Notification",
                       @"Test Direct Entity Notification",
                       @"Test Standalone Buttons",
+                      @"Test Standalone Share",
                       nil
                       ]retain];
 
@@ -344,7 +345,19 @@
             }
 
         }
-  
+        case 19:
+        {
+            NSString* url = [self getEntityKey];
+            if(url) {
+                id<SocializeEntity> entity = [SocializeEntity entityWithKey:url name:@"Test Entity"];
+                [Socialize showShareActionSheetWithViewController:self.navigationController entity:entity success:^{
+                    NSLog(@"Share successful");
+                } failure:^(NSError *error) {
+                    NSLog(@"Share failed: %@", [error localizedDescription]);
+                }];
+            }
+            
+        }
 
     }    
     [controller release];

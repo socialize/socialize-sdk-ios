@@ -24,3 +24,4 @@
 #import "SocializeLikeButton.h"
 #import "SampleEntityLoader.h"
 #import "SZNavigationController.h"
+#import "NSError+Socialize.h"

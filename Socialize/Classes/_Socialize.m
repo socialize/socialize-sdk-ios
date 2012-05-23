@@ -33,6 +33,7 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeFacebookAuthenticator.h"
 #import "SocializeEventService.h"
+#import "SocializeUIDisplayProxy.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -694,6 +695,11 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
 
 - (void)_registerDeviceTokenString:(NSString*)deviceTokenString {
     [_deviceTokenService registerDeviceTokenString:deviceTokenString];
+}
+
++ (void)showShareActionSheetWithViewController:(UIViewController*)viewController entity:(id<SocializeEntity>)entity success:(void(^)())success failure:(void(^)(NSError *error))failure {
+    SocializeUIShareOptions *options = [SocializeUIShareOptions UIShareOptionsWithEntity:entity];
+    [SocializeUIShareCreator createShareWithOptions:options display:viewController success:success failure:failure];
 }
 
 + (void)createShareWithOptions:(SocializeUIShareOptions*)options display:(id)display success:(void(^)())success failure:(void(^)(NSError *error))failure {

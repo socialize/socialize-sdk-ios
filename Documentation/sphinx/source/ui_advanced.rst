@@ -34,3 +34,15 @@ following settings:
 .. literalinclude:: snippets/third_party_link_options.m
   :start-after: begin-snippet
   :end-before: end-snippet
+
+Standalone Share
+----------------
+
+v1.7.6 introduces standalone share functionality. This will allow you to add a share button
+to your app. 
+
+.. note:: This feature was exposed because of high demand, but the share functionality will be changing significantly in Socialize v2.0. The associated will likely be deprecated with the release of v2.0.
+
+.. literalinclude:: snippets/standalone_share.m
+  :start-after: begin-snippet
+  :end-before: end-snippet

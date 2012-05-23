@@ -832,4 +832,6 @@ otherwise you will get a failure.
  */
 - (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values;
 
++ (void)showShareActionSheetWithViewController:(UIViewController*)viewController entity:(id<SocializeEntity>)entity success:(void(^)())success failure:(void(^)(NSError *error))failure;
+
 @end
