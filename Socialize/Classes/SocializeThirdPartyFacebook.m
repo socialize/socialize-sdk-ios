@@ -129,4 +129,23 @@
     
 }
 
++ (NSString*)dontPostKey {
+    return kSocializeDontPostToFacebookKey;
+}
+
++ (SZSocialNetwork)socialNetworkFlag {
+    return SZSocialNetworkFacebook;
+}
+
++ (BOOL)userPrefersPost {
+    BOOL dontPost = [[[NSUserDefaults standardUserDefaults] objectForKey:[self dontPostKey]] boolValue];
+    return !dontPost;
+}
+
++ (BOOL)shouldAutopost {
+    BOOL userPrefersPost = [self userPrefersPost];
+    BOOL autopost = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeAutoPostToSocialNetworksKey] boolValue];
+    return autopost && userPrefersPost;
+}
+
 @end

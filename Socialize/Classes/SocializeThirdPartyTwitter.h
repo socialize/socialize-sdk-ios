@@ -8,7 +8,7 @@
 
 #import "SocializeThirdParty.h"
 
-@interface SocializeThirdPartyTwitter : NSObject <SocializeThirdParty>
+@interface SocializeThirdPartyTwitter : SocializeThirdParty <SocializeThirdParty>
 
 + (NSString*)consumerKey;
 + (NSString*)consumerSecret;

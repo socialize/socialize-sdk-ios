@@ -8,14 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeCommonDefinitions.h"
+#import "SZActivityOptions.h"
 
-@interface SZShareOptions : NSObject
+@interface SZShareOptions : SZActivityOptions
+@property (nonatomic, copy) NSString *text;
 
 + (SZShareOptions*)defaultOptions;
-
-@property (nonatomic, assign) BOOL dontShareLocation;
-@property (nonatomic, assign) SZSocialNetwork shareTo;
-@property (nonatomic, copy) void (^willPostToSocialNetworkBlock)(SZSocialNetwork network);
-@property (nonatomic, copy) void (^didPostToSocialNetworkBlock)(SZSocialNetwork network);
 
 @end

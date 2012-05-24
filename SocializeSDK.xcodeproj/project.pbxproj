@@ -664,6 +664,10 @@
 		AA08B401147C344900E6D1CA /* SocializeActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA08B3FD147C344900E6D1CA /* SocializeActivityViewController.m */; };
 		AA08FC3214FD5555002242EB /* SocializeUIShareCreatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA08FC3114FD5555002242EB /* SocializeUIShareCreatorTests.m */; };
 		AA08FC3614FD650E002242EB /* SocializeActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA08FC3514FD650D002242EB /* SocializeActionTests.m */; };
+		AA0ADFC3156E98DB0057FF40 /* SZActivityOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */; };
+		AA0ADFC4156E98DB0057FF40 /* SZActivityOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */; };
+		AA0ADFC5156E98DB0057FF40 /* SZActivityOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */; };
+		AA0ADFC6156E98DB0057FF40 /* SZActivityOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */; };
 		AA0CF83D146DC0B300BBCF41 /* SocializePostShareViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0CF83C146DC0B300BBCF41 /* SocializePostShareViewControllerTest.m */; };
 		AA0F95E4150FE2490055770F /* SocializeUIDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0F95E3150FE2490055770F /* SocializeUIDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0F95E5150FE2490055770F /* SocializeUIDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0F95E3150FE2490055770F /* SocializeUIDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -741,6 +745,10 @@
 		AA202539144CA8DD006C1F8F /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11CC1443261E004E4C1B /* SocializeServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2044A11470EA40003A875C /* ComposeCommentViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2478A1417A985008A550D /* ComposeCommentViewControllerTests.m */; };
 		AA29CEB314F71654005F4686 /* SocializeLocationManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA29CEB214F71654005F4686 /* SocializeLocationManagerTests.m */; };
+		AA2C7182156DAF7700796D22 /* SZCommentOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2C7180156DAF7600796D22 /* SZCommentOptions.h */; };
+		AA2C7183156DAF7700796D22 /* SZCommentOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2C7180156DAF7600796D22 /* SZCommentOptions.h */; };
+		AA2C7184156DAF7700796D22 /* SZCommentOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2C7181156DAF7700796D22 /* SZCommentOptions.m */; };
+		AA2C7185156DAF7700796D22 /* SZCommentOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2C7181156DAF7700796D22 /* SZCommentOptions.m */; };
 		AA2CDD7D14D103A4003B61BC /* SocializeLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 169BC79F1420CD94007ED41E /* SocializeLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2CDD7E14D103A5003B61BC /* SocializeLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 169BC79F1420CD94007ED41E /* SocializeLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2D086C150ACB2D00D3C159 /* SocializeThirdParty.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2D086B150ACB2D00D3C159 /* SocializeThirdParty.m */; };
@@ -2876,6 +2884,8 @@
 		AA08FC3114FD5555002242EB /* SocializeUIShareCreatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUIShareCreatorTests.m; path = "Test Cases/SocializeUIShareCreatorTests.m"; sourceTree = "<group>"; };
 		AA08FC3414FD650D002242EB /* SocializeActionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActionTests.h; path = "Test Cases/SocializeActionTests.h"; sourceTree = "<group>"; };
 		AA08FC3514FD650D002242EB /* SocializeActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActionTests.m; path = "Test Cases/SocializeActionTests.m"; sourceTree = "<group>"; };
+		AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZActivityOptions.h; path = Classes/SZActivityOptions.h; sourceTree = "<group>"; };
+		AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZActivityOptions.m; path = Classes/SZActivityOptions.m; sourceTree = "<group>"; };
 		AA0CF83B146DC0B300BBCF41 /* SocializePostShareViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializePostShareViewControllerTest.h; path = "Test Cases/SocializePostShareViewControllerTest.h"; sourceTree = "<group>"; };
 		AA0CF83C146DC0B300BBCF41 /* SocializePostShareViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializePostShareViewControllerTest.m; path = "Test Cases/SocializePostShareViewControllerTest.m"; sourceTree = "<group>"; };
 		AA0F95E3150FE2490055770F /* SocializeUIDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUIDisplay.h; path = Classes/SocializeUIDisplay.h; sourceTree = "<group>"; };
@@ -2894,6 +2904,8 @@
 		AA29CEB114F71654005F4686 /* SocializeLocationManagerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLocationManagerTests.h; path = "Test Cases/SocializeLocationManagerTests.h"; sourceTree = "<group>"; };
 		AA29CEB214F71654005F4686 /* SocializeLocationManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLocationManagerTests.m; path = "Test Cases/SocializeLocationManagerTests.m"; sourceTree = "<group>"; };
 		AA29D26E14F722FA005F4686 /* unitTests-pre-4.3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "unitTests-pre-4.3-Info.plist"; sourceTree = "<group>"; };
+		AA2C7180156DAF7600796D22 /* SZCommentOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZCommentOptions.h; path = Classes/SZCommentOptions.h; sourceTree = "<group>"; };
+		AA2C7181156DAF7700796D22 /* SZCommentOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZCommentOptions.m; path = Classes/SZCommentOptions.m; sourceTree = "<group>"; };
 		AA2D086B150ACB2D00D3C159 /* SocializeThirdParty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeThirdParty.m; path = Classes/SocializeThirdParty.m; sourceTree = "<group>"; };
 		AA2D0877150AF0F900D3C159 /* SocializeCommentOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentOptions.h; path = Classes/SocializeCommentOptions.h; sourceTree = "<group>"; };
 		AA2D0878150AF0F900D3C159 /* SocializeCommentOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentOptions.m; path = Classes/SocializeCommentOptions.m; sourceTree = "<group>"; };
@@ -5016,10 +5028,14 @@
 				AAFD9054155B3D300036E6AF /* SZTwitterUtils.h */,
 				AAFD9055155B3D300036E6AF /* SZTwitterUtils.m */,
 				AA8C7192156463870092D5D3 /* SZSocialNetworkUtils.h */,
-				AA419C951565D31A0030AAB1 /* SZShareOptions.h */,
-				AA419C961565D31A0030AAB1 /* SZShareOptions.m */,
 				AAAB8371156895C700C6BDCE /* SZCommentUtils.h */,
 				AAAB8372156895C700C6BDCE /* SZCommentUtils.m */,
+				AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */,
+				AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */,
+				AA419C951565D31A0030AAB1 /* SZShareOptions.h */,
+				AA419C961565D31A0030AAB1 /* SZShareOptions.m */,
+				AA2C7180156DAF7600796D22 /* SZCommentOptions.h */,
+				AA2C7181156DAF7700796D22 /* SZCommentOptions.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -5440,6 +5456,8 @@
 				AA419C981565D31A0030AAB1 /* SZShareOptions.h in Headers */,
 				AAAB8374156895C700C6BDCE /* SZCommentUtils.h in Headers */,
 				AAAB837A1569767C00C6BDCE /* SDKHelpers.h in Headers */,
+				AA2C7183156DAF7700796D22 /* SZCommentOptions.h in Headers */,
+				AA0ADFC4156E98DB0057FF40 /* SZActivityOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5612,6 +5630,8 @@
 				AA419C971565D31A0030AAB1 /* SZShareOptions.h in Headers */,
 				AAAB8373156895C700C6BDCE /* SZCommentUtils.h in Headers */,
 				AAAB83791569767C00C6BDCE /* SDKHelpers.h in Headers */,
+				AA2C7182156DAF7700796D22 /* SZCommentOptions.h in Headers */,
+				AA0ADFC3156E98DB0057FF40 /* SZActivityOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7603,6 +7623,8 @@
 				AA419C991565D31A0030AAB1 /* SZShareOptions.m in Sources */,
 				AAAB8375156895C700C6BDCE /* SZCommentUtils.m in Sources */,
 				AAAB837B1569767C00C6BDCE /* SDKHelpers.m in Sources */,
+				AA2C7184156DAF7700796D22 /* SZCommentOptions.m in Sources */,
+				AA0ADFC5156E98DB0057FF40 /* SZActivityOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8023,6 +8045,8 @@
 				AA419C9A1565D31A0030AAB1 /* SZShareOptions.m in Sources */,
 				AAAB8376156895C700C6BDCE /* SZCommentUtils.m in Sources */,
 				AAAB837C1569767C00C6BDCE /* SDKHelpers.m in Sources */,
+				AA2C7185156DAF7700796D22 /* SZCommentOptions.m in Sources */,
+				AA0ADFC6156E98DB0057FF40 /* SZActivityOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

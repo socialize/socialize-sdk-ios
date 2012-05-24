@@ -106,6 +106,7 @@ NSString *const kSocializeFacebookAuthExpirationDate = @"kSocializeFacebookAuthE
 
 NSString *const kSocializeDontPostToFacebookKey = kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY;
 NSString *const kSocializeDontPostToTwitterKey = kSOCIALIZE_DONT_POST_TO_TWITTER_KEY;
+NSString *const kSocializeAutoPostToSocialNetworksKey = @"kSocializeAutoPostToSocialNetworksKey";
 
 NSString *const kSocializeFacebookStringForAPI = @"FaceBook";
 

@@ -105,11 +105,11 @@
         [navigationController pushViewController:entityLoader animated:YES];
     }];
 
-    [[SocializeLocationManager sharedLocationManager] getCurrentLocationWithSuccess:^(CLLocation *location) {
-        NSLog(@"Got location: %@!", location);        
-    } failure:^(NSError *error) {
-        NSLog(@"Failed location: %@!", [error localizedDescription]);
-    }];
+//    [[SocializeLocationManager sharedLocationManager] getCurrentLocationWithSuccess:^(CLLocation *location) {
+//        NSLog(@"Got location: %@!", location);        
+//    } failure:^(NSError *error) {
+//        NSLog(@"Failed location: %@!", [error localizedDescription]);
+//    }];
     
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"kSocializeDeviceTokenRegisteredKey"];
 //    char testTokenData[32] = "\xaa\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff";

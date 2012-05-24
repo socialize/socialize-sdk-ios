@@ -12,9 +12,16 @@
 #import "SZCommentsListViewController.h"
 #import "SZNavigationController.h"
 #import "SZComposeCommentViewController.h"
-#import "SZShareDialogViewController.h"
+#import "SZCommentOptions.h"
+#import "SZShareUtils.h"
+#import "SZUserUtils.h"
 
 @implementation SZCommentUtils
+
++ (SZCommentOptions*)userCommentOptions {
+    SZCommentOptions *options = (SZCommentOptions*)ActivityOptionsFromUserDefaults([SZCommentOptions class]);
+    return options;
+}
 
 + (void)showCommentsListWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)())completion {
     SZCommentsListViewController *commentsList = [SZCommentsListViewController commentsListViewControllerWithEntity:entity];
@@ -25,11 +32,6 @@
     
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:commentsList] autorelease];
     [viewController presentModalViewController:nav animated:YES];
-}
-
-+ (void)getPreferredShareNetworks:(UIViewController*)viewController success:(void(^)(SZSocialNetwork networks))success failure:(void(^)(NSError *error))failure {
-    SZShareDialogViewController *dialog = [[[SZShareDialogViewController alloc] initWithEntity:nil] autorelease];
-    [viewController presentModalViewController:dialog animated:YES];
 }
 
 + (void)showCommentComposerWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
@@ -47,14 +49,22 @@
     [viewController presentModalViewController:nav animated:YES];
 }
 
-+ (void)addCommentWithEntity:(id<SZEntity>)entity text:(NSString*)text shareOptions:(SZShareOptions*)shareOptions success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
++ (void)addCommentWithEntity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options networks:(SZSocialNetwork)networks success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
     SZComment *comment = [SZComment commentWithEntity:entity text:text];
+
+    [comment setSubscribe:![options dontSubscribeToNotifications]];
     
-    ActivityCreatorBlock creator = ^(id<SZComment> comment, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
+    ActivityCreatorBlock commentCreator = ^(id<SZShare> share, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
         [[Socialize sharedSocialize] createComments:[NSArray arrayWithObject:comment] success:createSuccess failure:createFailure];
     };
+    
+    CreateAndShareActivity(comment, options, networks, commentCreator, success, failure);
+}
 
-    CreateAndShareActivity(comment, shareOptions, creator, success, failure);
++ (void)addCommentWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
+    [SZShareUtils getPreferredShareNetworksWithViewController:viewController success:^(SZSocialNetwork networks) {
+        [self addCommentWithEntity:entity text:text options:options networks:networks success:success failure:failure];
+    } failure:failure];
 }
 
 + (void)getCommentWithId:(NSNumber*)commentId success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {

@@ -30,6 +30,7 @@ static NSString *const kAuthTypeRowAction = @"kAuthTypeRowAction";
 @property (nonatomic, retain) id<SocializeAuthViewControllerDelegate> delegate;
 @property (nonatomic, retain) id<SocializeUser> user;
 @property (nonatomic, retain) NSMutableArray *authTypeRowData;
+@property (nonatomic, assign) SZSocialNetwork selectedNetwork;
 @end
 
 
@@ -44,6 +45,8 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 @synthesize delegate = _delegate;
 @synthesize user = _user;
 @synthesize authTypeRowData = authTypeRowData_;
+@synthesize completionBlock = completionBlock_;
+@synthesize selectedNetwork = selectedNetwork_;
 
 -(void) dealloc {
     self.tableView = nil;
@@ -108,10 +111,14 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 -(IBAction)skipButtonPressed:(id)sender {
-    if( [self.delegate respondsToSelector:@selector(authorizationSkipped)] ) {
-        [self.delegate authorizationSkipped];
-    }
-    [self dismissModalViewControllerAnimated:YES];
+    if (self.completionBlock != nil) {
+        self.completionBlock(SZSocialNetworkNone);
+    } else {
+        if( [self.delegate respondsToSelector:@selector(authorizationSkipped)] ) {
+            [self.delegate authorizationSkipped];
+        }
+        [self dismissModalViewControllerAnimated:YES];
+    } 
 }
 
 // Dismiss any SocializeAction controllers non-animated
@@ -126,6 +133,8 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 - (void)authenticateWithFacebook {
+    self.selectedNetwork = SZSocialNetworkFacebook;
+
     SocializeFacebookAuthOptions *options = [SocializeFacebookAuthOptions options];
     options.doNotPromptForPermission = YES;
 
@@ -148,6 +157,8 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 - (void)authenticateWithTwitter {
+    self.selectedNetwork = SZSocialNetworkTwitter;
+    
     SocializeTwitterAuthOptions *options = [SocializeTwitterAuthOptions options];
     options.doNotPromptForPermission = YES;
 
@@ -239,12 +250,16 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
     
 - (void)finish {
-    // Dismiss self
-    [self dismissModalViewControllerAnimated:YES];
+    if (self.completionBlock != nil) {
+        self.completionBlock(self.selectedNetwork);
+    } else {
+        // Dismiss self
+        [self dismissModalViewControllerAnimated:YES];
 
-    SEL didAuthSelector = @selector(socializeAuthViewController:didAuthenticate:);
-    if ([self.delegate respondsToSelector:didAuthSelector] ) {
-        [self.delegate socializeAuthViewController:self didAuthenticate:self.user];
+        SEL didAuthSelector = @selector(socializeAuthViewController:didAuthenticate:);
+        if ([self.delegate respondsToSelector:didAuthSelector] ) {
+            [self.delegate socializeAuthViewController:self didAuthenticate:self.user];
+        }
     }
 }
 

@@ -9,10 +9,7 @@
 #import "SZShareOptions.h"
 
 @implementation SZShareOptions
-@synthesize dontShareLocation = dontShareLocation_;
-@synthesize shareTo = shareTo_;
-@synthesize willPostToSocialNetworkBlock = willPostToSocialNetworkBlock_;
-@synthesize didPostToSocialNetworkBlock = didPostToSocialNetworkBlock_;
+@synthesize text = text_;
 
 + (SZShareOptions*)defaultOptions {
     return [[[self alloc] init] autorelease];

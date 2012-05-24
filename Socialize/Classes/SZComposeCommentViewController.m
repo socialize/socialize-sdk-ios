@@ -18,6 +18,7 @@
 #import "SocializeFacebookAuthenticator.h"
 #import "SocializeTwitterAuthenticator.h"
 #import "SocializeUIDisplayProxy.h"
+#import "SZCommentUtils.h"
 
 @implementation SZComposeCommentViewController
 @synthesize commentObject = commentObject_;
@@ -132,26 +133,16 @@
 - (void)createComment {
     [self startLoading];
     
-    SocializeEntity *entity = [SocializeEntity entityWithKey:self.entity.key name:nil];
-    SocializeComment *comment = [SocializeComment commentWithEntity:entity text:commentTextView.text];
+    SZCommentOptions *options = [SZCommentUtils userCommentOptions];
+    options.dontSubscribeToNotifications = self.dontSubscribeToDiscussion;
     
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue]) {
-        NSNumber* latitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.latitude];
-        NSNumber* longitude = [NSNumber numberWithFloat:mapOfUserLocation.userLocation.location.coordinate.longitude];        
-        comment.lat = latitude;
-        comment.lng = longitude;
-    }
-    
-    [comment setSubscribe:!self.dontSubscribeToDiscussion];
-    
-    [SocializeCommentCreator createComment:comment options:nil display:nil
-                                   success:^(id<SocializeComment> comment) {
-                                       self.commentObject = comment;
-                                       [self notifyDelegateOrDismissSelf];
-                                   } failure:^(NSError *error) {
-                                       [self stopLoading];
-                                       [self failWithError:error];
-                                   }];
+    [SZCommentUtils addCommentWithViewController:self entity:self.entity text:commentTextView.text options:options success:^(id<SZComment> comment) {
+        self.commentObject = comment;
+        [self notifyDelegateOrDismissSelf];
+    } failure:^(NSError *error) {
+        [self stopLoading];
+        [self failWithError:error];
+    }];
 }
 
 - (void)configureForNewUser {
@@ -168,20 +159,8 @@
     }
 }
 
-- (void)setPostToFacebook:(BOOL)postToFacebook {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!postToFacebook] forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
-}
-
-- (void)setPostToTwitter:(BOOL)postToTwitter {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!postToTwitter] forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
-}
-
 -(void)sendButtonPressed:(UIButton*)button {
-    if ([self shouldShowAuthViewController]) {
-        [self presentModalViewController:self.authViewController animated:YES];
-    } else {
-        [self createComment];
-    }
+    [self createComment];
 }
 
 - (void)setDontSubscribeToDiscussion:(BOOL)dontSubscribeToDiscussion {
@@ -213,12 +192,6 @@
 }
 
 -(void)authorizationSkipped {
-    [self createComment];    
-}
-
--(void)socializeAuthViewController:(SocializeAuthViewController *)authViewController didAuthenticate:(id<SocializeUser>)user {
-    // FIXME [#20995319] auth flow in wrong place
-    [self afterLoginAction:YES];
     [self createComment];    
 }
 

@@ -37,6 +37,7 @@ typedef enum {
 
 @property (nonatomic, retain) IBOutlet UITableView     *tableView;
 @property (nonatomic, retain) IBOutlet UIButton        *skipButton;
+@property (nonatomic, copy) void (^completionBlock)(SZSocialNetwork selectedNetwork);
 
 - (id)initWithDelegate:(id<SocializeAuthViewControllerDelegate>)delegate;
 +(UINavigationController*)authViewControllerInNavigationController:(id<SocializeAuthViewControllerDelegate>)delegate;

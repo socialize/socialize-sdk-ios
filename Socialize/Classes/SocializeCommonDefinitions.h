@@ -74,6 +74,7 @@ extern NSString *const kSocializeAnonymousAllowed;
 
 extern NSString *const kSocializeDontPostToFacebookKey;
 extern NSString *const kSocializeDontPostToTwitterKey;
+extern NSString *const kSocializeAutoPostToSocialNetworksKey;
 
 
 #define SOCIALIZE_API_KEY @"socialize_api_key"

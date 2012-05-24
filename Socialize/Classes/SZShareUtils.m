@@ -16,8 +16,37 @@
 #import "SZTwitterUtils.h"
 #import "SocializePrivateDefinitions.h"
 #import "SDKHelpers.h"
+#import "NSError+Socialize.h"
+#import "SocializeThirdParty.h"
 
 @implementation SZShareUtils
+
++ (SZShareOptions*)userShareOptions {
+    SZShareOptions *options = (SZShareOptions*)ActivityOptionsFromUserDefaults([SZShareOptions class]);
+    return options;
+}
+
++ (void)getPreferredShareNetworksWithViewController:(UIViewController*)viewController success:(void(^)(SZSocialNetwork networks))success failure:(void(^)(NSError *error))failure {
+    BOOL autopostIsSet = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeAutoPostToSocialNetworksKey] boolValue];
+    
+    if (autopostIsSet) {
+        
+        // The user has autopost enabled, so we already know the answer
+        SZSocialNetwork socialNetworks = [SocializeThirdParty preferredNetworks];
+        BLOCK_CALL_1(success, socialNetworks);
+    } else {
+        
+        // The user has not enable autopost, so we must prompt them
+        SZShareDialogViewController *dialog = [[[SZShareDialogViewController alloc] initWithEntity:nil] autorelease];
+        dialog.completionBlock = ^(SZSocialNetwork selectedNetworks) {
+            BLOCK_CALL_1(success, selectedNetworks);
+        };
+        dialog.cancellationBlock = ^{
+            BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorProcessCancelledByUser]);
+        };
+        [viewController presentModalViewController:dialog animated:YES];
+    }
+}
 
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
     SZShareDialogViewController *selectNetwork = [[[SZShareDialogViewController alloc] initWithEntity:entity] autorelease];
@@ -25,9 +54,10 @@
     selectNetwork.showOtherShareTypes = YES;
     selectNetwork.completionBlock = ^(SZSocialNetwork networks) {
         [viewController dismissModalViewControllerAnimated:YES];
-        SZShareOptions *options = [SZShareOptions defaultOptions];
-        options.shareTo = networks;
-        [self shareViaSocialNetworksWithEntity:entity text:nil options:options success:success failure:failure];
+        
+        SZShareOptions *shareOptions = [self userShareOptions];
+
+        [self shareViaSocialNetworksWithEntity:entity networks:networks options:shareOptions success:success failure:failure];
     };
     selectNetwork.cancellationBlock = ^{
         [viewController dismissModalViewControllerAnimated:YES];        
@@ -37,15 +67,15 @@
     [viewController presentModalViewController:nav animated:YES];
 }
 
-+ (void)shareViaSocialNetworksWithEntity:(id<SZEntity>)entity text:(NSString*)text options:(SZShareOptions*)options success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
-    SocializeShareMedium medium = SocializeShareMediumForSZShareOptions(options);
-    SZShare *share = [SZShare shareWithEntity:entity text:text medium:medium];
++ (void)shareViaSocialNetworksWithEntity:(id<SZEntity>)entity networks:(SZSocialNetwork)networks options:(SZShareOptions*)options success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
+    SocializeShareMedium medium = SocializeShareMediumForSZSocialNetworks(networks);
+    SZShare *share = [SZShare shareWithEntity:entity text:options.text medium:medium];
     
-    ActivityCreatorBlock creator = ^(id<SZShare> share, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
+    ActivityCreatorBlock shareCreator = ^(id<SZShare> share, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
         [[Socialize sharedSocialize] createShare:share success:createSuccess failure:createFailure];
     };
                                      
-    CreateAndShareActivity(share, options, creator, success, failure);
+    CreateAndShareActivity(share, options, networks, shareCreator, success, failure);
 }
 
 + (void)shareViaEmailWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {

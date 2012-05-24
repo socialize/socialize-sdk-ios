@@ -37,6 +37,8 @@ typedef enum {
     SocializeErrorCommentCancelledByUser,
     SocializeErrorLocationUpdateRejectedByUser,
     SocializeErrorLocationUpdateTimedOut,
+    SocializeErrorLinkCancelledByUser,
+    SocializeErrorLinkNotPossible,
     SocializeNumErrors,
 } SocializeErrorCode;
 

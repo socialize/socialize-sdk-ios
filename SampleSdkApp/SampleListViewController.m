@@ -44,12 +44,16 @@ static NSString *kCommentSection = @"kCommentSection";
     // User Utilities
     NSMutableArray *userRows = [NSMutableArray array];
     
-    [userRows addObject:[self rowWithText:@"Show user profile" executionBlock:^{
+    [userRows addObject:[self rowWithText:@"Show Link Dialog" executionBlock:^{
+        [SZUserUtils showLinkDialogWithViewController:self success:nil failure:nil];
+    }]];
+
+    [userRows addObject:[self rowWithText:@"Show User Profile" executionBlock:^{
         id<SocializeFullUser> user = [SZUserUtils currentUser];
         [SZUserUtils showUserProfileWithViewController:self user:user];
     }]];
 
-    [userRows addObject:[self rowWithText:@"Show user settings" executionBlock:^{
+    [userRows addObject:[self rowWithText:@"Show User Settings" executionBlock:^{
         [SZUserUtils showUserSettingsWithViewController:self];
     }]];
     

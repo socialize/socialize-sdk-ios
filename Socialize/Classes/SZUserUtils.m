@@ -12,8 +12,32 @@
 #import "SZProfileViewController.h"
 #import "SZNavigationController.h"
 #import "SocializeUIDisplayProxy.h"
+#import "SocializeAuthViewController.h"
+#import "SDKHelpers.h"
 
 @implementation SZUserUtils
+
++ (void)showLinkDialogWithViewController:(UIViewController*)viewController success:(void(^)(SZSocialNetwork selectedNetwork))success failure:(void(^)(NSError *error))failure {
+    
+    if (AvailableSocialNetworks() == SZSocialNetworkNone) {
+        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorLinkNotPossible]);
+    }
+    
+    SocializeAuthViewController *auth = [[[SocializeAuthViewController alloc] init] autorelease];
+    
+    auth.completionBlock = ^(SZSocialNetwork selectedNetwork) {
+        [viewController dismissModalViewControllerAnimated:YES];
+        BLOCK_CALL_1(success, selectedNetwork);
+    };
+    
+    auth.cancellationBlock = ^{
+        [viewController dismissModalViewControllerAnimated:YES];
+        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorLinkCancelledByUser]);
+    };
+    
+    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:auth] autorelease];
+    [viewController presentModalViewController:nav animated:YES];
+}
 
 + (void)showUserProfileWithViewController:(UIViewController*)viewController user:(id<SocializeFullUser>)user {
     SZProfileViewController *profile = [SZProfileViewController profileViewController];

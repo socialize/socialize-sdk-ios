@@ -12,11 +12,13 @@
 
 @interface SZShareUtils : NSObject
 
++ (SZShareOptions*)userShareOptions;
++ (void)getPreferredShareNetworksWithViewController:(UIViewController*)viewController success:(void(^)(SZSocialNetwork networks))success failure:(void(^)(NSError *error))failure;
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
 
 + (void)shareViaEmailWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
 + (BOOL)canShareViaEmail;
-+ (void)shareViaSocialNetworksWithEntity:(id<SZEntity>)entity text:(NSString*)text options:(SZShareOptions*)options success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
++ (void)shareViaSocialNetworksWithEntity:(id<SZEntity>)entity networks:(SZSocialNetwork)networks options:(SZShareOptions*)options success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
 
 + (void)shareViaSMSWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
 + (BOOL)canShareViaSMS;
