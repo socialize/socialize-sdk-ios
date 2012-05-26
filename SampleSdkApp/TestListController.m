@@ -277,11 +277,11 @@
             break;
         case 13:
         {
-            NSString* url = [self getEntityKey];
-            if(url) {
-                UINavigationController *nav = [SocializePostShareViewController postShareViewControllerInNavigationControllerWithEntityURL:url];
-                [self presentModalViewController:nav animated:YES];
-            }
+//            NSString* url = [self getEntityKey];
+//            if(url) {
+//                UINavigationController *nav = [SocializePostShareViewController postShareViewControllerInNavigationControllerWithEntityURL:url];
+//                [self presentModalViewController:nav animated:YES];
+//            }
             break;
         }
         case 14:

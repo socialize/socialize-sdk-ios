@@ -13,7 +13,6 @@
 #import "SZProfileViewController.h"
 #import "SZSettingsViewController.h"
 #import "SZComposeCommentViewController.h"
-#import "SocializePostShareViewController.h"
 #import "SocializeActionView.h"
 #import "SZActionBar.h"
 #import "SocializeObjects.h"

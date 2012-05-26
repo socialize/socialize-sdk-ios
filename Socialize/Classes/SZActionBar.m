@@ -37,7 +37,6 @@
 #import "BlocksKit.h"
 #import "SocializeShareBuilder.h"
 #import "SocializeFacebookInterface.h"
-#import "SocializePostShareViewController.h"
 #import "SocializeEntityService.h"
 #import "SZProfileViewController.h"
 #import "SocializeUIShareOptions.h"
