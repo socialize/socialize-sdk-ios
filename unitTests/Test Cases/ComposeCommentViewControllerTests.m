@@ -434,18 +434,4 @@
     [self.postCommentViewController afterLoginAction:YES];
 }
 
-- (void)expectTwitterLogin {
-    [[SocializeTwitterAuthenticator expect] authenticateViaTwitterWithOptions:OCMOCK_ANY display:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
-
-}
-
-- (void)testPressingTwitterButtonAttemptsLogin {
-    [[[SocializeThirdPartyTwitter stub] andReturnBool:NO] isLinkedToSocialize];
-    [[[self.mockTwitterButton stub] andReturnBool:NO] isSelected];
-    
-    [self expectTwitterLogin];
-    
-    [self.postCommentViewController twitterButtonPressed:self.mockTwitterButton];
-}
-
 @end
