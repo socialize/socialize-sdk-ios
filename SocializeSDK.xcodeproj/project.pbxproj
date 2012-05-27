@@ -668,6 +668,10 @@
 		AA0ADFC4156E98DB0057FF40 /* SZActivityOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */; };
 		AA0ADFC5156E98DB0057FF40 /* SZActivityOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */; };
 		AA0ADFC6156E98DB0057FF40 /* SZActivityOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */; };
+		AA0AE0CA1571D8350057FF40 /* SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0AE0C81571D8350057FF40 /* SZComposeCommentViewController.h */; };
+		AA0AE0CB1571D8350057FF40 /* SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0AE0C81571D8350057FF40 /* SZComposeCommentViewController.h */; };
+		AA0AE0CC1571D8350057FF40 /* SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0AE0C91571D8350057FF40 /* SZComposeCommentViewController.m */; };
+		AA0AE0CD1571D8350057FF40 /* SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0AE0C91571D8350057FF40 /* SZComposeCommentViewController.m */; };
 		AA0F95E4150FE2490055770F /* SocializeUIDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0F95E3150FE2490055770F /* SocializeUIDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0F95E5150FE2490055770F /* SocializeUIDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0F95E3150FE2490055770F /* SocializeUIDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA156AE11521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA156ADF1521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.h */; };
@@ -1399,10 +1403,10 @@
 		AA86DB4915373CD0002DE37D /* SocializeThirdPartyLinkOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA86DB4615373CD0002DE37D /* SocializeThirdPartyLinkOptions.h */; };
 		AA86DB4A15373CD0002DE37D /* SocializeThirdPartyLinkOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86DB4715373CD0002DE37D /* SocializeThirdPartyLinkOptions.m */; };
 		AA86DB4B15373CD0002DE37D /* SocializeThirdPartyLinkOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA86DB4715373CD0002DE37D /* SocializeThirdPartyLinkOptions.m */; };
-		AA87C5DC146C7E8C00B22EF4 /* SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA87C5D9146C7E8C00B22EF4 /* SZComposeCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA87C5DD146C7E8C00B22EF4 /* SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA87C5D9146C7E8C00B22EF4 /* SZComposeCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA87C5DE146C7E8C00B22EF4 /* SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA87C5DA146C7E8C00B22EF4 /* SZComposeCommentViewController.m */; };
-		AA87C5DF146C7E8C00B22EF4 /* SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA87C5DA146C7E8C00B22EF4 /* SZComposeCommentViewController.m */; };
+		AA87C5DC146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA87C5D9146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA87C5DD146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA87C5D9146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA87C5DE146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA87C5DA146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.m */; };
+		AA87C5DF146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA87C5DA146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.m */; };
 		AA87C603146CC3B200B22EF4 /* SocializeComposeMessageViewControllerLandscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166DD757146421130017D0E9 /* SocializeComposeMessageViewControllerLandscape.xib */; };
 		AA87C8F2156BF94D0018AD79 /* socialize-selectnetwork-facebook-dis-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA87C8EA156BF94D0018AD79 /* socialize-selectnetwork-facebook-dis-icon.png */; };
 		AA87C8F3156BF94D0018AD79 /* socialize-selectnetwork-facebook-dis-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA87C8EA156BF94D0018AD79 /* socialize-selectnetwork-facebook-dis-icon.png */; };
@@ -1650,13 +1654,13 @@
 		AAADF8F81504175E009E5493 /* SocializeFacebookAuthHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AAADF8F51504175E009E5493 /* SocializeFacebookAuthHandler.h */; };
 		AAADF8F91504175E009E5493 /* SocializeFacebookAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AAADF8F61504175E009E5493 /* SocializeFacebookAuthHandler.m */; };
 		AAADF8FA1504175E009E5493 /* SocializeFacebookAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AAADF8F61504175E009E5493 /* SocializeFacebookAuthHandler.m */; };
-		AAAF7F3114CA208900EA387C /* SZComposeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentViewController.xib */; };
-		AAAF7F3214CA208900EA387C /* SZComposeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentViewController.xib */; };
-		AAAF7F3314CA208900EA387C /* SZComposeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentViewController.xib */; };
-		AAAF7F3414CA208900EA387C /* SZComposeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentViewController.xib */; };
-		AAAF7F3514CA208900EA387C /* SZComposeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentViewController.xib */; };
-		AAAF7F3614CA208900EA387C /* SZComposeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentViewController.xib */; };
-		AAAF7F3714CA208900EA387C /* SZComposeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentViewController.xib */; };
+		AAAF7F3114CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentMessageViewController.xib */; };
+		AAAF7F3214CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentMessageViewController.xib */; };
+		AAAF7F3314CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentMessageViewController.xib */; };
+		AAAF7F3414CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentMessageViewController.xib */; };
+		AAAF7F3514CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentMessageViewController.xib */; };
+		AAAF7F3614CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentMessageViewController.xib */; };
+		AAAF7F3714CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAF7F2F14CA208900EA387C /* SZComposeCommentMessageViewController.xib */; };
 		AAAF7F4114CA2D5800EA387C /* SocializeHorizontalLayoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAF7F4014CA2D5800EA387C /* SocializeHorizontalLayoutTests.m */; };
 		AAAFE5E614355BF900851C73 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		AAAFE5E714355BF900851C73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
@@ -2874,6 +2878,8 @@
 		AA08FC3514FD650D002242EB /* SocializeActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActionTests.m; path = "Test Cases/SocializeActionTests.m"; sourceTree = "<group>"; };
 		AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZActivityOptions.h; path = Classes/SZActivityOptions.h; sourceTree = "<group>"; };
 		AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZActivityOptions.m; path = Classes/SZActivityOptions.m; sourceTree = "<group>"; };
+		AA0AE0C81571D8350057FF40 /* SZComposeCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZComposeCommentViewController.h; path = Classes/SZComposeCommentViewController.h; sourceTree = "<group>"; };
+		AA0AE0C91571D8350057FF40 /* SZComposeCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZComposeCommentViewController.m; path = Classes/SZComposeCommentViewController.m; sourceTree = "<group>"; };
 		AA0F95E3150FE2490055770F /* SocializeUIDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUIDisplay.h; path = Classes/SocializeUIDisplay.h; sourceTree = "<group>"; };
 		AA156ADF1521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDirectEntityNotificationDisplayController.h; path = Classes/SocializeDirectEntityNotificationDisplayController.h; sourceTree = "<group>"; };
 		AA156AE01521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDirectEntityNotificationDisplayController.m; path = Classes/SocializeDirectEntityNotificationDisplayController.m; sourceTree = "<group>"; };
@@ -3034,8 +3040,8 @@
 		AA86DB4115364DCB002DE37D /* SocializeThirdPartyLinker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeThirdPartyLinker.m; path = Classes/SocializeThirdPartyLinker.m; sourceTree = "<group>"; };
 		AA86DB4615373CD0002DE37D /* SocializeThirdPartyLinkOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeThirdPartyLinkOptions.h; path = Classes/SocializeThirdPartyLinkOptions.h; sourceTree = "<group>"; };
 		AA86DB4715373CD0002DE37D /* SocializeThirdPartyLinkOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeThirdPartyLinkOptions.m; path = Classes/SocializeThirdPartyLinkOptions.m; sourceTree = "<group>"; };
-		AA87C5D9146C7E8C00B22EF4 /* SZComposeCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZComposeCommentViewController.h; path = Classes/SZComposeCommentViewController.h; sourceTree = "<group>"; };
-		AA87C5DA146C7E8C00B22EF4 /* SZComposeCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZComposeCommentViewController.m; path = Classes/SZComposeCommentViewController.m; sourceTree = "<group>"; };
+		AA87C5D9146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZComposeCommentMessageViewController.h; path = Classes/SZComposeCommentMessageViewController.h; sourceTree = "<group>"; };
+		AA87C5DA146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZComposeCommentMessageViewController.m; path = Classes/SZComposeCommentMessageViewController.m; sourceTree = "<group>"; };
 		AA87C8EA156BF94D0018AD79 /* socialize-selectnetwork-facebook-dis-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-facebook-dis-icon.png"; path = "Resources/socialize-selectnetwork-facebook-dis-icon.png"; sourceTree = "<group>"; };
 		AA87C8EB156BF94D0018AD79 /* socialize-selectnetwork-facebook-dis-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-facebook-dis-icon@2x.png"; path = "Resources/socialize-selectnetwork-facebook-dis-icon@2x.png"; sourceTree = "<group>"; };
 		AA87C8EC156BF94D0018AD79 /* socialize-selectnetwork-facebook-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-facebook-icon.png"; path = "Resources/socialize-selectnetwork-facebook-icon.png"; sourceTree = "<group>"; };
@@ -3114,7 +3120,7 @@
 		AAAB83781569767C00C6BDCE /* SDKHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDKHelpers.m; path = Classes/SDKHelpers.m; sourceTree = "<group>"; };
 		AAADF8F51504175E009E5493 /* SocializeFacebookAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebookAuthHandler.h; path = Classes/SocializeFacebookAuthHandler.h; sourceTree = "<group>"; };
 		AAADF8F61504175E009E5493 /* SocializeFacebookAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebookAuthHandler.m; path = Classes/SocializeFacebookAuthHandler.m; sourceTree = "<group>"; };
-		AAAF7F2F14CA208900EA387C /* SZComposeCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZComposeCommentViewController.xib; path = Resources/SZComposeCommentViewController.xib; sourceTree = "<group>"; };
+		AAAF7F2F14CA208900EA387C /* SZComposeCommentMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZComposeCommentMessageViewController.xib; path = Resources/SZComposeCommentMessageViewController.xib; sourceTree = "<group>"; };
 		AAAF7F3F14CA2D5800EA387C /* SocializeHorizontalLayoutTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeHorizontalLayoutTests.h; path = "Test Cases/SocializeHorizontalLayoutTests.h"; sourceTree = "<group>"; };
 		AAAF7F4014CA2D5800EA387C /* SocializeHorizontalLayoutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeHorizontalLayoutTests.m; path = "Test Cases/SocializeHorizontalLayoutTests.m"; sourceTree = "<group>"; };
 		AAAFE5E414355BF900851C73 /* SampleSdkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSdkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3967,6 +3973,7 @@
 				AA6B6F231472FBEB008E885B /* Profile Edit */,
 				AAF9030D1472FD1900AB8674 /* Comments List */,
 				AAF9030A1472FCCC00AB8674 /* Compose Message */,
+				AA0AE0C71571D80C0057FF40 /* Compose Comment */,
 				AAF903091472FCAE00AB8674 /* Auth */,
 				AAF903081472FC8500AB8674 /* Action Bar */,
 				AA047F9614AD5A6E0047D596 /* Notifications */,
@@ -4359,6 +4366,15 @@
 				AA08B3E9147C322A00E6D1CA /* SocializeActivityTableViewCell.xib */,
 			);
 			name = "Activity List";
+			sourceTree = "<group>";
+		};
+		AA0AE0C71571D80C0057FF40 /* Compose Comment */ = {
+			isa = PBXGroup;
+			children = (
+				AA0AE0C81571D8350057FF40 /* SZComposeCommentViewController.h */,
+				AA0AE0C91571D8350057FF40 /* SZComposeCommentViewController.m */,
+			);
+			name = "Compose Comment";
 			sourceTree = "<group>";
 		};
 		AA3326DE144CD9FB0033C7FA /* KIF */ = {
@@ -5196,9 +5212,9 @@
 		AAF9030C1472FCF100AB8674 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
-				AAAF7F2F14CA208900EA387C /* SZComposeCommentViewController.xib */,
-				AA87C5D9146C7E8C00B22EF4 /* SZComposeCommentViewController.h */,
-				AA87C5DA146C7E8C00B22EF4 /* SZComposeCommentViewController.m */,
+				AAAF7F2F14CA208900EA387C /* SZComposeCommentMessageViewController.xib */,
+				AA87C5D9146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.h */,
+				AA87C5DA146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.m */,
 				AAF3BC7514880E9B00D0756C /* SZComposeCommentViewControllerDelegate.h */,
 			);
 			name = Comment;
@@ -5322,7 +5338,7 @@
 				18D8EDD5146B48F700E9991F /* SocializeAuthViewController.h in Headers */,
 				AA369FB8146C50A700E15AA4 /* NSData+Base64.h in Headers */,
 				AA369FBC146C50A700E15AA4 /* UIDevice+IdentifierAddition.h in Headers */,
-				AA87C5DD146C7E8C00B22EF4 /* SZComposeCommentViewController.h in Headers */,
+				AA87C5DD146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.h in Headers */,
 				AA08B3E6147C321500E6D1CA /* SocializeActivityTableViewCell.h in Headers */,
 				AA08B3FF147C344900E6D1CA /* SocializeActivityViewController.h in Headers */,
 				AA88E832147D77F500123E6F /* SocializeTableViewController.h in Headers */,
@@ -5427,6 +5443,7 @@
 				AAAB837A1569767C00C6BDCE /* SDKHelpers.h in Headers */,
 				AA2C7183156DAF7700796D22 /* SZCommentOptions.h in Headers */,
 				AA0ADFC4156E98DB0057FF40 /* SZActivityOptions.h in Headers */,
+				AA0AE0CB1571D8350057FF40 /* SZComposeCommentViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5492,7 +5509,7 @@
 				AAE795AE14684F1E00BEAD28 /* TestActivityServices.h in Headers */,
 				AA369FB7146C50A700E15AA4 /* NSData+Base64.h in Headers */,
 				AA369FBB146C50A700E15AA4 /* UIDevice+IdentifierAddition.h in Headers */,
-				AA87C5DC146C7E8C00B22EF4 /* SZComposeCommentViewController.h in Headers */,
+				AA87C5DC146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.h in Headers */,
 				18EDD38A14731BE0009B63C4 /* SocializeAuthViewController.h in Headers */,
 				AA08B3E5147C321500E6D1CA /* SocializeActivityTableViewCell.h in Headers */,
 				AA08B3FE147C344900E6D1CA /* SocializeActivityViewController.h in Headers */,
@@ -5600,6 +5617,7 @@
 				AAAB83791569767C00C6BDCE /* SDKHelpers.h in Headers */,
 				AA2C7182156DAF7700796D22 /* SZCommentOptions.h in Headers */,
 				AA0ADFC3156E98DB0057FF40 /* SZActivityOptions.h in Headers */,
+				AA0AE0CA1571D8350057FF40 /* SZComposeCommentViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5988,7 +6006,7 @@
 				AA7FB8EA1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				AAF7A31C149B38DC00FE67E9 /* Smiley.png in Resources */,
 				AAF50D6C14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
-				AAAF7F3314CA208900EA387C /* SZComposeCommentViewController.xib in Resources */,
+				AAAF7F3314CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */,
 				AAE09C7814F857B50093CDA9 /* SocializeComposeMessageViewController.xib in Resources */,
 				AA7FCA9315118BDB008D4102 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AA7FCA9B15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */,
@@ -6196,7 +6214,7 @@
 				AA7FB8E81491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				1854042C14AA320200EAA6AF /* SocializeActivityDetailsViewController.xib in Resources */,
 				AAF50D6A14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
-				AAAF7F3114CA208900EA387C /* SZComposeCommentViewController.xib in Resources */,
+				AAAF7F3114CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */,
 				AA82E75514F8559C002CDF93 /* SocializeComposeMessageViewController.xib in Resources */,
 				AA7FCA9115118BDB008D4102 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AA7FCA9915118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */,
@@ -6379,7 +6397,7 @@
 				AA7FB8EC1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A914AADC0D0052720B /* SocializeActivityDetailsViewController.xib in Resources */,
 				AAF50D6E14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
-				AAAF7F3514CA208900EA387C /* SZComposeCommentViewController.xib in Resources */,
+				AAAF7F3514CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */,
 				AAE09C7714F857B30093CDA9 /* SocializeComposeMessageViewController.xib in Resources */,
 				AA7FCA9515118BDB008D4102 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AA7FCA9D15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */,
@@ -6600,7 +6618,7 @@
 				AA7FB8ED1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A414AADBF70052720B /* SocializeActivityDetailsViewController.xib in Resources */,
 				AAF50D6F14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
-				AAAF7F3614CA208900EA387C /* SZComposeCommentViewController.xib in Resources */,
+				AAAF7F3614CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */,
 				AAE09C7B14F857B70093CDA9 /* SocializeComposeMessageViewController.xib in Resources */,
 				AA7FCA9615118BDB008D4102 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AA7FCA9E15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */,
@@ -6699,7 +6717,7 @@
 				AA7FB8E71491460B00B018DE /* socialize-notifications-bottom-shadow-background.png in Resources */,
 				AA7FB8EE1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				AAF50D7014CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
-				AAAF7F3714CA208900EA387C /* SZComposeCommentViewController.xib in Resources */,
+				AAAF7F3714CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */,
 				AAE09C7C14F857B80093CDA9 /* SocializeComposeMessageViewController.xib in Resources */,
 				AA7FCA9715118BDB008D4102 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AA7FCA9F15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */,
@@ -6923,7 +6941,7 @@
 				AA7FB8EB1491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A514AADBF90052720B /* SocializeActivityDetailsViewController.xib in Resources */,
 				AAF50D6D14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
-				AAAF7F3414CA208900EA387C /* SZComposeCommentViewController.xib in Resources */,
+				AAAF7F3414CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */,
 				AAE09C7A14F857B60093CDA9 /* SocializeComposeMessageViewController.xib in Resources */,
 				AA7FCA9415118BDB008D4102 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AA7FCA9C15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */,
@@ -7134,7 +7152,7 @@
 				AA7FB8E91491460B00B018DE /* socialize-notifications-bottom-shadow-background@2x.png in Resources */,
 				181EA0A614AADBFC0052720B /* SocializeActivityDetailsViewController.xib in Resources */,
 				AAF50D6B14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
-				AAAF7F3214CA208900EA387C /* SZComposeCommentViewController.xib in Resources */,
+				AAAF7F3214CA208900EA387C /* SZComposeCommentMessageViewController.xib in Resources */,
 				AAE09C7614F857B00093CDA9 /* SocializeComposeMessageViewController.xib in Resources */,
 				AA7FCA9215118BDB008D4102 /* SocializeTwitterAuthViewController.xib in Resources */,
 				AA7FCA9A15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */,
@@ -7490,7 +7508,7 @@
 				18D8EDD6146B48F700E9991F /* SocializeAuthViewController.m in Sources */,
 				AA369FB9146C50A700E15AA4 /* NSData+Base64.m in Sources */,
 				AA369FBD146C50A700E15AA4 /* UIDevice+IdentifierAddition.m in Sources */,
-				AA87C5DE146C7E8C00B22EF4 /* SZComposeCommentViewController.m in Sources */,
+				AA87C5DE146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.m in Sources */,
 				AAF903111473067100AB8674 /* SocializeProfileEditTableViewCell.m in Sources */,
 				AA08B3E7147C321500E6D1CA /* SocializeActivityTableViewCell.m in Sources */,
 				AA08B400147C344900E6D1CA /* SocializeActivityViewController.m in Sources */,
@@ -7585,6 +7603,7 @@
 				AAAB837B1569767C00C6BDCE /* SDKHelpers.m in Sources */,
 				AA2C7184156DAF7700796D22 /* SZCommentOptions.m in Sources */,
 				AA0ADFC5156E98DB0057FF40 /* SZActivityOptions.m in Sources */,
+				AA0AE0CC1571D8350057FF40 /* SZComposeCommentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7910,7 +7929,7 @@
 				18D8EDD7146B48F700E9991F /* SocializeAuthViewController.m in Sources */,
 				AA369FBA146C50A700E15AA4 /* NSData+Base64.m in Sources */,
 				AA369FBE146C50A700E15AA4 /* UIDevice+IdentifierAddition.m in Sources */,
-				AA87C5DF146C7E8C00B22EF4 /* SZComposeCommentViewController.m in Sources */,
+				AA87C5DF146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.m in Sources */,
 				AAF903121473067200AB8674 /* SocializeProfileEditTableViewCell.m in Sources */,
 				AA08B3E8147C321500E6D1CA /* SocializeActivityTableViewCell.m in Sources */,
 				AA08B401147C344900E6D1CA /* SocializeActivityViewController.m in Sources */,
@@ -8005,6 +8024,7 @@
 				AAAB837C1569767C00C6BDCE /* SDKHelpers.m in Sources */,
 				AA2C7185156DAF7700796D22 /* SZCommentOptions.m in Sources */,
 				AA0ADFC6156E98DB0057FF40 /* SZActivityOptions.m in Sources */,
+				AA0AE0CD1571D8350057FF40 /* SZComposeCommentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

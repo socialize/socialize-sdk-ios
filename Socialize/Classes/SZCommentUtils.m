@@ -11,7 +11,7 @@
 #import "SDKHelpers.h"
 #import "SZCommentsListViewController.h"
 #import "SZNavigationController.h"
-#import "SZComposeCommentViewController.h"
+#import "SZComposeCommentMessageViewController.h"
 #import "SZCommentOptions.h"
 #import "SZShareUtils.h"
 #import "SZUserUtils.h"

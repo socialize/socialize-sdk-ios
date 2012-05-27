@@ -18,5 +18,6 @@
 + (void)showUserSettingsWithViewController:(UIViewController*)viewController;
 + (void)saveUserSettings:(id<SocializeFullUser>)user profileImage:(UIImage*)image success:(void(^)(id<SocializeFullUser> user))success failure:(void(^)(NSError *error))failure;
 + (id<SocializeFullUser>)currentUser;
++ (BOOL)userIsLinked;
 
 @end

@@ -17,8 +17,13 @@
 
 @implementation SZUserUtils
 
-+ (void)showLinkDialogWithViewController:(UIViewController*)viewController success:(void(^)(SZSocialNetwork selectedNetwork))success failure:(void(^)(NSError *error))failure {
     
++ (BOOL)userIsLinked {
+    id<SZFullUser> user = [self currentUser];
+    return [[user thirdPartyAuth] count] > 0;
+}
+
++ (void)showLinkDialogWithViewController:(UIViewController*)viewController success:(void(^)(SZSocialNetwork selectedNetwork))success failure:(void(^)(NSError *error))failure {
     if (AvailableSocialNetworks() == SZSocialNetworkNone) {
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorLinkNotPossible]);
     }

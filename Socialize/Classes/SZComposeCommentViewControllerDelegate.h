@@ -10,8 +10,8 @@
 #import "SocializeComposeMessageViewController.h"
 #import "SocializeBaseViewControllerDelegate.h"
 
-@class SZComposeCommentViewController;
+@class SZComposeCommentMessageViewController;
 
 @protocol SZComposeCommentViewControllerDelegate <SocializeBaseViewControllerDelegate>
-- (void)postCommentViewController:(SZComposeCommentViewController*)composeCommentViewController didCreateComment:(id<SocializeComment>)comment;
+- (void)postCommentViewController:(SZComposeCommentMessageViewController*)composeCommentViewController didCreateComment:(id<SocializeComment>)comment;
 @end

@@ -32,10 +32,10 @@
 #import "SocializeComposeMessageViewControllerTests.h"
 #import "SZComposeCommentViewControllerDelegate.h"
 
-@class SZComposeCommentViewController;
+@class SZComposeCommentMessageViewController;
 
 @interface ComposeCommentViewControllerTests : SocializeComposeMessageViewControllerTests <SZComposeCommentViewControllerDelegate>
-@property (nonatomic, retain) SZComposeCommentViewController *postCommentViewController;
+@property (nonatomic, retain) SZComposeCommentMessageViewController *postCommentViewController;
 @property (nonatomic, retain) id mockFacebookButton;
 @property (nonatomic, retain) id mockTwitterButton;
 @property (nonatomic, retain) id mockUnsubscribeButton;

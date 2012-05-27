@@ -220,7 +220,7 @@
         {
             NSString* url = [self getEntityKey];
             if(url) {
-                UINavigationController *nav = [SZComposeCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:url delegate:nil];
+                UINavigationController *nav = [SZComposeCommentMessageViewController postCommentViewControllerInNavigationControllerWithEntityURL:url delegate:nil];
                 [self presentModalViewController:nav animated:YES];
             }
             break;
