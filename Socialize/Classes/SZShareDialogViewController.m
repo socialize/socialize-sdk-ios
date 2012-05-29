@@ -573,6 +573,8 @@ static NSString *kAutopostSection = @"kAutopostSection";
         BOOL autopost = self.autopostSwitch.isOn;
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:autopost] forKey:kSocializeAutoPostToSocialNetworksKey];
     }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)finishAndCallCompletion {
