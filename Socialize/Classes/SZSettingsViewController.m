@@ -195,7 +195,22 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     }
 }
 
+- (void)persistSettingsToDisk {
+    BOOL postToFacebook = self.facebookSwitch.on;
+    [self.userDefaults setObject:[NSNumber numberWithBool:!postToFacebook] forKey:kSocializeDontPostToFacebookKey];
+    
+    BOOL postToTwitter = self.twitterSwitch.on;
+    [self.userDefaults setObject:[NSNumber numberWithBool:!postToTwitter] forKey:kSocializeDontPostToTwitterKey];
+
+    BOOL autopost = postToTwitter || postToFacebook;
+    [self.userDefaults setObject:[NSNumber numberWithBool:autopost] forKey:kSocializeAutoPostToSocialNetworksKey];
+    
+    [self.userDefaults synchronize];
+}
+
 - (void)dismissSelfAfterSave {
+    [self persistSettingsToDisk];
+    
     if ([self.delegate respondsToSelector:@selector(profileEditViewController:didUpdateProfileWithUser:)]) {
         [self.delegate profileEditViewController:self didUpdateProfileWithUser:self.fullUser];
     } else {
@@ -395,7 +410,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         facebookSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
         
         if ([SocializeThirdPartyFacebook isLinkedToSocialize]) {
-            facebookSwitch_.on = ![[self.userDefaults objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue];
+            BOOL switchOn = ![[self.userDefaults objectForKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY] boolValue] && [[self.userDefaults objectForKey:kSocializeAutoPostToSocialNetworksKey] boolValue];
+            facebookSwitch_.on = switchOn;
         } else {
             facebookSwitch_.on = NO;
         }
@@ -405,10 +421,6 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)facebookSwitchChanged:(UISwitch*)facebookSwitch {
-    NSNumber *dontPostToFacebook = [NSNumber numberWithBool:!facebookSwitch.on];
-    [self.userDefaults setObject:dontPostToFacebook forKey:kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY];
-    [self.userDefaults synchronize];
-    
     if ([facebookSwitch isOn] && ![SocializeThirdPartyFacebook isLinkedToSocialize]) {
         [self authenticateViaFacebook];
     }
@@ -420,7 +432,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         twitterSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
         
         if ([SocializeThirdPartyTwitter isLinkedToSocialize]) {
-            twitterSwitch_.on = ![[self.userDefaults objectForKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY] boolValue];
+            BOOL switchOn = ![[self.userDefaults objectForKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY] boolValue] && [[self.userDefaults objectForKey:kSocializeAutoPostToSocialNetworksKey] boolValue];
+            twitterSwitch_.on = switchOn;
         } else {
             twitterSwitch_.on = NO;
         }
