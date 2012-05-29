@@ -62,6 +62,8 @@ static NSString *kAutopostSection = @"kAutopostSection";
 @synthesize showOtherShareTypes = showOtherShareTypes_;
 @synthesize disableAutopostSelection = disableAutopostSelection_;
 @synthesize completionBlock = completionBlock_;
+@synthesize hideUnlinkedNetworks = hideUnlinkedNetworks_;
+@synthesize dontRequireNetworkSelection = dontRequireNetworkSelection_;
 
 - (void)dealloc {
     self.shareDialogView = nil;
@@ -250,14 +252,23 @@ static NSString *kAutopostSection = @"kAutopostSection";
     return twitterRow_;
 }
 
+- (BOOL)showFacebook {
+    return [SZFacebookUtils isAvailable] && !(self.hideUnlinkedNetworks && ![SZFacebookUtils isLinked]);
+}
+
+- (BOOL)showTwitter {
+    return [SZTwitterUtils isAvailable] && !(self.hideUnlinkedNetworks && ![SZTwitterUtils isLinked]);
+}
+
+                                              
 - (NSDictionary*)socialNetworkSection {
     NSMutableArray *rows = [NSMutableArray array];
 
-    if ([SZFacebookUtils isAvailable]) {
+    if ([self showFacebook]) {
         [rows addObject:[self facebookRow]];
     }
 
-    if ([SZTwitterUtils isAvailable]) {
+    if ([self showTwitter]) {
         [rows addObject:[self twitterRow]];
     }
 
@@ -361,6 +372,8 @@ static NSString *kAutopostSection = @"kAutopostSection";
 - (UISwitch*)autopostSwitch {
     if (autopostSwitch_ == nil) {
         autopostSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
+        BOOL autopost = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeAutoPostToSocialNetworksKey] boolValue];
+        [autopostSwitch_ setOn:autopost animated:NO];
     }
     
     return autopostSwitch_;
@@ -406,6 +419,10 @@ static NSString *kAutopostSection = @"kAutopostSection";
     return [self showSMS] || [self showEmail];
 }
 
+- (BOOL)showAutopost {
+    return !self.disableAutopostSelection;
+}
+
 - (NSMutableArray*)sections {
     if (sections_ == nil) {
         sections_ = [[NSMutableArray alloc] init];
@@ -413,7 +430,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
         if ([self showOtherShareTypes]) {
             [sections_ addObject:[self otherSection]];
         }
-        if (!self.disableAutopostSelection) {
+        if ([self showAutopost]) {
             [sections_ addObject:[self autopostSection]];
         }
     }
@@ -539,12 +556,33 @@ static NSString *kAutopostSection = @"kAutopostSection";
     BLOCK_CALL(executionBlock);
 }
 
+- (void)persistSelection {
+    SZSocialNetwork networks = [self selectedNetworks];
+
+    if ([self showFacebook]) {
+        BOOL postToFacebook = (networks & SZSocialNetworkFacebook);
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!postToFacebook] forKey:kSocializeDontPostToFacebookKey];
+    }
+    
+    if ([self showTwitter]) {
+        BOOL postToTwitter = (networks & SZSocialNetworkTwitter);
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!postToTwitter] forKey:kSocializeDontPostToTwitterKey];
+    }
+    
+    if ([self showAutopost]) {
+        BOOL autopost = self.autopostSwitch.isOn;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:autopost] forKey:kSocializeAutoPostToSocialNetworksKey];
+    }
+}
+
 - (void)finishAndCallCompletion {
     SZSocialNetwork networks = [self selectedNetworks];
-    if (networks == SZSocialNetworkNone) {
+    if (networks == SZSocialNetworkNone && !self.dontRequireNetworkSelection) {
         [UIAlertView showAlertWithTitle:@"No Networks Selected" message:@"Please select one or more networks to continue." buttonTitle:@"Ok" handler:nil];
         return;
     }
+    [self persistSelection];
+    
     BLOCK_CALL_1(self.completionBlock, networks);
 }
 

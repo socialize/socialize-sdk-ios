@@ -29,7 +29,7 @@
 + (void)getPreferredShareNetworksWithDisplay:(id<SZDisplay>)display success:(void(^)(SZSocialNetwork networks))success failure:(void(^)(NSError *error))failure {
     BOOL autopostIsSet = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeAutoPostToSocialNetworksKey] boolValue];
     
-    if (autopostIsSet) {
+    if (autopostIsSet || AvailableSocialNetworks() == SZSocialNetworkNone) {
         
         // The user has autopost enabled, so we already know the answer
         SZSocialNetwork socialNetworks = [SocializeThirdParty preferredNetworks];
@@ -38,6 +38,8 @@
         
         // The user has not enable autopost, so we must prompt them
         SZShareDialogViewController *dialog = [[[SZShareDialogViewController alloc] initWithEntity:nil] autorelease];
+        dialog.dontRequireNetworkSelection = YES;
+        
         dialog.completionBlock = ^(SZSocialNetwork selectedNetworks) {
             [display socializeWillEndDisplaySequence];
             BLOCK_CALL_1(success, selectedNetworks);

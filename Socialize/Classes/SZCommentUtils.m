@@ -107,7 +107,11 @@
         
     } copy]; // `addCommentBlock` refers to the heap version of this block for the recursive alert retry call
     
-    [SZShareUtils getPreferredShareNetworksWithDisplay:display success:addCommentBlock failure:failure];
+    if (LinkedSocialNetworks() == SZSocialNetworkNone) {
+        addCommentBlock(SZSocialNetworkNone);
+    } else {
+        [SZShareUtils getPreferredShareNetworksWithDisplay:display success:addCommentBlock failure:failure];
+    }
 }
 
 + (void)getCommentWithId:(NSNumber*)commentId success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
