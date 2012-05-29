@@ -552,4 +552,14 @@ static NSString *kAutopostSection = @"kAutopostSection";
     [self finishAndCallCompletion];
 }
 
+- (void)socializeWillStartLoadingWithMessage:(NSString *)message {
+    [super startLoading];
+    self.cancelButton.enabled = NO;
+}
+
+- (void)socializeWillStopLoading {
+    [super stopLoading];
+    self.cancelButton.enabled = YES;
+}
+
 @end

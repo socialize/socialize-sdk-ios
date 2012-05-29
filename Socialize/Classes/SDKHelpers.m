@@ -47,9 +47,9 @@ BOOL ShouldShowLinkDialog() {
     return ( LinkedSocialNetworks() == SZSocialNetworkNone && AvailableSocialNetworks() != SZSocialNetworkNone && ![Socialize authenticationNotRequired]);
 }
 
-void LinkWrapper(UIViewController *viewController, void (^success)(), void (^failure)(NSError *error)) {
+void LinkWrapper(id<SZDisplay> display, void (^success)(), void (^failure)(NSError *error)) {
     if (ShouldShowLinkDialog()) {
-        [SZUserUtils showLinkDialogWithViewController:viewController success:^(SZSocialNetwork selectedNetwork) {
+        [SZUserUtils showLinkDialogWithDisplay:display success:^(SZSocialNetwork network) {
             success();
         } failure:failure];
     } else {
@@ -145,9 +145,9 @@ void CreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *options,
                 // Failed Wall post is still a success. Handle separately in options.
                 BLOCK_CALL_1(success, activity);
             }];
+        } else {
+            BLOCK_CALL_1(success, activity);
         }
-        
-        BLOCK_CALL_1(success, activity);
     }, failure);
 
 }

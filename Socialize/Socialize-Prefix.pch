@@ -15,6 +15,8 @@
     #import "PropertyHelpers.h"
     #import "UINavigationController+Socialize.h"
     #import "UIViewController+Socialize.h"
+    #import "NSMutableArray+Socialize.h"
+
 #endif
 
 #ifdef DEBUG

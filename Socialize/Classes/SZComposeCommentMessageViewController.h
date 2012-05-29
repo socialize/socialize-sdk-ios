@@ -10,12 +10,7 @@
 #import "SocializeComposeMessageViewController.h"
 #import "SocializeAuthViewController.h"
 #import "SZComposeCommentViewControllerDelegate.h"
-
-typedef enum {
-    SZComposeCommentMessageViewControllerNoSelection = 0,
-    SZComposeCommentMessageViewControllerShareLocationSelection = 1 << 0,
-    SZComposeCommentMessageViewControllerSubscribeToDiscussionSelection = 1 << 1,
-} SZComposeCommentMessageViewControllerSelection;
+#import "SZCommentOptions.h"
 
 @interface SZComposeCommentMessageViewController : SocializeComposeMessageViewController <SocializeAuthViewControllerDelegate>
 + (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SZComposeCommentViewControllerDelegate>)delegate;
@@ -29,7 +24,7 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet UIButton *enableSubscribeButton;
 @property (nonatomic, assign) BOOL dontSubscribeToDiscussion;
 @property(nonatomic, retain) IBOutlet UIView *subscribeContainer;
-@property (nonatomic, copy) void (^completionBlock)(NSString *text, SZComposeCommentMessageViewControllerSelection selection);
+@property (nonatomic, copy) void (^completionBlock)(NSString *text, SZCommentOptions *options);
 
 -(IBAction)unsubscribeButtonPressed:(id)sender;
 -(IBAction)enableSubscribeButtonPressed:(id)sender;

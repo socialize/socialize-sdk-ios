@@ -118,17 +118,11 @@
 }
 
 - (void)callCompletion {
-    SZComposeCommentMessageViewControllerSelection selection;
-    if (!self.dontSubscribeToDiscussion) {
-        selection |= SZComposeCommentMessageViewControllerSubscribeToDiscussionSelection;
-    }
-    
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue]) {
-        selection |= SZComposeCommentMessageViewControllerShareLocationSelection;
-    }
-    
-    
-    self.completionBlock(self.commentTextView.text, selection);
+    SZCommentOptions *options = [SZCommentOptions defaultOptions];
+    options.dontShareLocation = ![[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue];
+    options.dontSubscribeToNotifications = self.dontSubscribeToDiscussion;
+
+    self.completionBlock(self.commentTextView.text, options);
 }
 
 - (void)notifyDelegateOrDismissSelf {
@@ -148,7 +142,7 @@
     SZCommentOptions *options = [SZCommentUtils userCommentOptions];
     options.dontSubscribeToNotifications = self.dontSubscribeToDiscussion;
     
-    [SZCommentUtils addCommentWithViewController:self entity:self.entity text:commentTextView.text options:options success:^(id<SZComment> comment) {
+    [SZCommentUtils addCommentWithDisplay:self entity:self.entity text:commentTextView.text options:options success:^(id<SZComment> comment) {
         self.commentObject = comment;
         [self notifyDelegateOrDismissSelf];
     } failure:^(NSError *error) {

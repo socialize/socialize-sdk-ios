@@ -31,14 +31,14 @@
     return self;
 }
 
-- (SZComposeCommentMessageViewController*)composeCommentViewController {
-    if (composeCommentViewController_ == nil) {
-        composeCommentViewController_ = [[SZComposeCommentMessageViewController alloc] initWithEntity:nil];
-        composeCommentViewController_.completionBlock = ^(NSString *text, SZComposeCommentMessageViewControllerSelection selection) {
-        };
-    }
-    return composeCommentViewController_;
-}
+//- (SZComposeCommentMessageViewController*)composeCommentViewController {
+//    if (composeCommentViewController_ == nil) {
+//        composeCommentViewController_ = [[SZComposeCommentMessageViewController alloc] initWithEntity:nil];
+//        composeCommentViewController_.completionBlock = ^(NSString *text, SZCommentOptions options) {
+//        };
+//    }
+//    return composeCommentViewController_;
+//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

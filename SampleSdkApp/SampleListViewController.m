@@ -45,7 +45,7 @@ static NSString *kCommentSection = @"kCommentSection";
     NSMutableArray *userRows = [NSMutableArray array];
     
     [userRows addObject:[self rowWithText:@"Show Link Dialog" executionBlock:^{
-        [SZUserUtils showLinkDialogWithViewController:self success:nil failure:nil];
+        [SZUserUtils showLinkDialogWithDisplay:self success:nil failure:nil];
     }]];
 
     [userRows addObject:[self rowWithText:@"Show User Profile" executionBlock:^{
@@ -96,7 +96,7 @@ static NSString *kCommentSection = @"kCommentSection";
 
     [commentRows addObject:[self rowWithText:@"Show Comment Composer" executionBlock:^{
         SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
-        [SZCommentUtils showCommentComposerWithViewController:self entity:entity success:nil failure:nil];
+        [SZCommentUtils showCommentComposerWithDisplay:self entity:entity success:nil failure:nil];
     }]];
 
     return [NSArray arrayWithObjects:

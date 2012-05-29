@@ -672,6 +672,10 @@
 		AA0AE0CB1571D8350057FF40 /* SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0AE0C81571D8350057FF40 /* SZComposeCommentViewController.h */; };
 		AA0AE0CC1571D8350057FF40 /* SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0AE0C91571D8350057FF40 /* SZComposeCommentViewController.m */; };
 		AA0AE0CD1571D8350057FF40 /* SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0AE0C91571D8350057FF40 /* SZComposeCommentViewController.m */; };
+		AA0AE1061571F57A0057FF40 /* SZDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0AE1041571F57A0057FF40 /* SZDisplay.h */; };
+		AA0AE1071571F57A0057FF40 /* SZDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0AE1041571F57A0057FF40 /* SZDisplay.h */; };
+		AA0AE1081571F57A0057FF40 /* SZDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0AE1051571F57A0057FF40 /* SZDisplay.m */; };
+		AA0AE1091571F57A0057FF40 /* SZDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0AE1051571F57A0057FF40 /* SZDisplay.m */; };
 		AA0F95E4150FE2490055770F /* SocializeUIDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0F95E3150FE2490055770F /* SocializeUIDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0F95E5150FE2490055770F /* SocializeUIDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0F95E3150FE2490055770F /* SocializeUIDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA156AE11521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA156ADF1521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.h */; };
@@ -1947,6 +1951,10 @@
 		AAC43CB9145B726500F607C8 /* LoadingViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC43CB8145B726500F607C8 /* LoadingViewTests.m */; };
 		AAC4931C149A92C5000EEA7E /* TestCommentServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4931B149A92C5000EEA7E /* TestCommentServices.m */; };
 		AAC71B6B148AE822004413CD /* SocializeErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC71B6A148AE822004413CD /* SocializeErrorTests.m */; };
+		AAC9AA2F15742C3300377869 /* NSMutableArray+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC9AA2D15742C3300377869 /* NSMutableArray+Socialize.h */; };
+		AAC9AA3015742C3300377869 /* NSMutableArray+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC9AA2D15742C3300377869 /* NSMutableArray+Socialize.h */; };
+		AAC9AA3115742C3300377869 /* NSMutableArray+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC9AA2E15742C3300377869 /* NSMutableArray+Socialize.m */; };
+		AAC9AA3215742C3300377869 /* NSMutableArray+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC9AA2E15742C3300377869 /* NSMutableArray+Socialize.m */; };
 		AACA15FA146B6F05005E05EE /* SZProfileViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E38A144F80320073308D /* SZProfileViewControllerTests.m */; };
 		AACA15FE146B7730005E05EE /* SZSettingsViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA91664F1463B24700EFBD7E /* SZSettingsViewControllerTest.m */; };
 		AACC4F6B1496A42300F106D4 /* SocializeKeyboardListenerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AACC4F661496A3E600F106D4 /* SocializeKeyboardListenerTests.m */; };
@@ -2880,6 +2888,8 @@
 		AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZActivityOptions.m; path = Classes/SZActivityOptions.m; sourceTree = "<group>"; };
 		AA0AE0C81571D8350057FF40 /* SZComposeCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZComposeCommentViewController.h; path = Classes/SZComposeCommentViewController.h; sourceTree = "<group>"; };
 		AA0AE0C91571D8350057FF40 /* SZComposeCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZComposeCommentViewController.m; path = Classes/SZComposeCommentViewController.m; sourceTree = "<group>"; };
+		AA0AE1041571F57A0057FF40 /* SZDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZDisplay.h; path = Classes/SZDisplay.h; sourceTree = "<group>"; };
+		AA0AE1051571F57A0057FF40 /* SZDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZDisplay.m; path = Classes/SZDisplay.m; sourceTree = "<group>"; };
 		AA0F95E3150FE2490055770F /* SocializeUIDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUIDisplay.h; path = Classes/SocializeUIDisplay.h; sourceTree = "<group>"; };
 		AA156ADF1521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDirectEntityNotificationDisplayController.h; path = Classes/SocializeDirectEntityNotificationDisplayController.h; sourceTree = "<group>"; };
 		AA156AE01521063D00EB2D53 /* SocializeDirectEntityNotificationDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDirectEntityNotificationDisplayController.m; path = Classes/SocializeDirectEntityNotificationDisplayController.m; sourceTree = "<group>"; };
@@ -3222,6 +3232,8 @@
 		AAC4931B149A92C5000EEA7E /* TestCommentServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCommentServices.m; sourceTree = "<group>"; };
 		AAC71B69148AE822004413CD /* SocializeErrorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeErrorTests.h; path = "Test Cases/SocializeErrorTests.h"; sourceTree = "<group>"; };
 		AAC71B6A148AE822004413CD /* SocializeErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeErrorTests.m; path = "Test Cases/SocializeErrorTests.m"; sourceTree = "<group>"; };
+		AAC9AA2D15742C3300377869 /* NSMutableArray+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+Socialize.h"; path = "Misc/NSMutableArray+Socialize.h"; sourceTree = "<group>"; };
+		AAC9AA2E15742C3300377869 /* NSMutableArray+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+Socialize.m"; path = "Misc/NSMutableArray+Socialize.m"; sourceTree = "<group>"; };
 		AACC4F651496A3E600F106D4 /* SocializeKeyboardListenerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeKeyboardListenerTests.h; path = "Test Cases/SocializeKeyboardListenerTests.h"; sourceTree = "<group>"; };
 		AACC4F661496A3E600F106D4 /* SocializeKeyboardListenerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeKeyboardListenerTests.m; path = "Test Cases/SocializeKeyboardListenerTests.m"; sourceTree = "<group>"; };
 		AAD218F8148AFBD600EF5503 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
@@ -4050,6 +4062,8 @@
 				AA0709C61561B5200001A6FA /* UITableView+Resize.m */,
 				AA070A011562EFDD0001A6FA /* UITableView+Socialize.h */,
 				AA070A021562EFDD0001A6FA /* UITableView+Socialize.m */,
+				AAC9AA2D15742C3300377869 /* NSMutableArray+Socialize.h */,
+				AAC9AA2E15742C3300377869 /* NSMutableArray+Socialize.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -5033,6 +5047,8 @@
 				AA419C961565D31A0030AAB1 /* SZShareOptions.m */,
 				AA2C7180156DAF7600796D22 /* SZCommentOptions.h */,
 				AA2C7181156DAF7700796D22 /* SZCommentOptions.m */,
+				AA0AE1041571F57A0057FF40 /* SZDisplay.h */,
+				AA0AE1051571F57A0057FF40 /* SZDisplay.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -5444,6 +5460,8 @@
 				AA2C7183156DAF7700796D22 /* SZCommentOptions.h in Headers */,
 				AA0ADFC4156E98DB0057FF40 /* SZActivityOptions.h in Headers */,
 				AA0AE0CB1571D8350057FF40 /* SZComposeCommentViewController.h in Headers */,
+				AA0AE1071571F57A0057FF40 /* SZDisplay.h in Headers */,
+				AAC9AA3015742C3300377869 /* NSMutableArray+Socialize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5618,6 +5636,8 @@
 				AA2C7182156DAF7700796D22 /* SZCommentOptions.h in Headers */,
 				AA0ADFC3156E98DB0057FF40 /* SZActivityOptions.h in Headers */,
 				AA0AE0CA1571D8350057FF40 /* SZComposeCommentViewController.h in Headers */,
+				AA0AE1061571F57A0057FF40 /* SZDisplay.h in Headers */,
+				AAC9AA2F15742C3300377869 /* NSMutableArray+Socialize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7604,6 +7624,8 @@
 				AA2C7184156DAF7700796D22 /* SZCommentOptions.m in Sources */,
 				AA0ADFC5156E98DB0057FF40 /* SZActivityOptions.m in Sources */,
 				AA0AE0CC1571D8350057FF40 /* SZComposeCommentViewController.m in Sources */,
+				AA0AE1081571F57A0057FF40 /* SZDisplay.m in Sources */,
+				AAC9AA3115742C3300377869 /* NSMutableArray+Socialize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8025,6 +8047,8 @@
 				AA2C7185156DAF7700796D22 /* SZCommentOptions.m in Sources */,
 				AA0ADFC6156E98DB0057FF40 /* SZActivityOptions.m in Sources */,
 				AA0AE0CD1571D8350057FF40 /* SZComposeCommentViewController.m in Sources */,
+				AA0AE1091571F57A0057FF40 /* SZDisplay.m in Sources */,
+				AAC9AA3215742C3300377869 /* NSMutableArray+Socialize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

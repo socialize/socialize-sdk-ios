@@ -26,7 +26,7 @@
     return options;
 }
 
-+ (void)getPreferredShareNetworksWithViewController:(UIViewController*)viewController success:(void(^)(SZSocialNetwork networks))success failure:(void(^)(NSError *error))failure {
++ (void)getPreferredShareNetworksWithDisplay:(id<SZDisplay>)display success:(void(^)(SZSocialNetwork networks))success failure:(void(^)(NSError *error))failure {
     BOOL autopostIsSet = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeAutoPostToSocialNetworksKey] boolValue];
     
     if (autopostIsSet) {
@@ -39,12 +39,14 @@
         // The user has not enable autopost, so we must prompt them
         SZShareDialogViewController *dialog = [[[SZShareDialogViewController alloc] initWithEntity:nil] autorelease];
         dialog.completionBlock = ^(SZSocialNetwork selectedNetworks) {
+            [display socializeWillEndDisplaySequence];
             BLOCK_CALL_1(success, selectedNetworks);
         };
         dialog.cancellationBlock = ^{
+            [display socializeWillEndDisplaySequence];
             BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorProcessCancelledByUser]);
         };
-        [viewController presentModalViewController:dialog animated:YES];
+        [display socializeWillBeginDisplaySequenceWithViewController:dialog];
     }
 }
 

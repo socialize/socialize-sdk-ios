@@ -15,6 +15,7 @@
 #import "SZCommentOptions.h"
 #import "SZShareUtils.h"
 #import "SZUserUtils.h"
+#import "SZDisplay.h"
 
 @implementation SZCommentUtils
 
@@ -34,19 +35,30 @@
     [viewController presentModalViewController:nav animated:YES];
 }
 
-+ (void)showCommentComposerWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
-    SZComposeCommentViewController *composer = [SZComposeCommentViewController composeCommentViewControllerWithEntity:entity];
-    composer.completionBlock = ^(id<SZComment> comment) {
-        [viewController dismissModalViewControllerAnimated:YES];
-        BLOCK_CALL_1(success, comment);
-    };
-    composer.cancellationBlock = ^{
-        [viewController dismissModalViewControllerAnimated:YES];
-        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorCommentCancelledByUser]);
-    };
-    
-    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:composer] autorelease];
-    [viewController presentModalViewController:nav animated:YES];
++ (void)showCommentComposerWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
+    SZStackDisplay *stackDisplay = [SZStackDisplay stackDisplayForDisplay:display];
+    LinkWrapper(stackDisplay, ^{
+        SZComposeCommentMessageViewController *composer = [[[SZComposeCommentMessageViewController alloc] initWithEntity:entity] autorelease];
+        composer.completionBlock = ^(NSString *text, SZCommentOptions *options) {
+                            
+            // Add comment
+            [self addCommentWithDisplay:stackDisplay entity:entity text:text options:options success:^(id<SZComment> comment) {
+                [display socializeWillEndDisplaySequence];
+                BLOCK_CALL_1(success, comment);
+            } failure:^(NSError *error) {
+                [display socializeWillEndDisplaySequence];
+                BLOCK_CALL_1(failure, error);
+            }];
+        };
+        composer.cancellationBlock = ^{
+            [display socializeWillEndDisplaySequence];
+            BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorCommentCancelledByUser]);
+        };
+        [stackDisplay beginWithOrTransitionToViewController:composer];
+    }, ^(NSError *error) {
+        [display socializeWillEndDisplaySequence];
+        BLOCK_CALL_1(failure, error);
+    });
 }
 
 + (void)addCommentWithEntity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options networks:(SZSocialNetwork)networks success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
@@ -61,9 +73,16 @@
     CreateAndShareActivity(comment, options, networks, commentCreator, success, failure);
 }
 
-+ (void)addCommentWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
-    [SZShareUtils getPreferredShareNetworksWithViewController:viewController success:^(SZSocialNetwork networks) {
-        [self addCommentWithEntity:entity text:text options:options networks:networks success:success failure:failure];
++ (void)addCommentWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
+    [SZShareUtils getPreferredShareNetworksWithDisplay:display success:^(SZSocialNetwork networks) {
+        [display socializeWillStartLoadingWithMessage:@"Creating Comment"];
+        [self addCommentWithEntity:entity text:text options:options networks:networks success:^(id<SZComment> comment) {
+            [display socializeWillStopLoading];
+            BLOCK_CALL_1(success, comment);
+        } failure:^(NSError *error) {
+            [display socializeWillStopLoading];
+            BLOCK_CALL_1(failure, error);
+        }];
     } failure:failure];
 }
 
