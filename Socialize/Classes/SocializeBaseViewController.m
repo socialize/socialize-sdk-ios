@@ -43,6 +43,7 @@
 #import "SocializeFacebookAuthenticator.h"
 #import "SocializeUIDisplayProxy.h"
 #import "SocializeUIDisplay.h"
+#import "SZDisplay.h"
 
 @interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
 -(void)leftNavigationButtonPressed:(id)sender;
@@ -245,6 +246,14 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 
 - (UIView*)showLoadingInView {
     return self.view;
+}
+
+- (void)socializeWillStartLoadingWithMessage:(NSString *)message {
+    [self startLoading];
+}
+
+- (void)socializeWillStopLoading {
+    [self stopLoading];
 }
 
 #pragma Location enable/disable button callbacks
