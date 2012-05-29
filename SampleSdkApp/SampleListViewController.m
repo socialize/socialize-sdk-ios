@@ -97,9 +97,9 @@ static NSString *kCommentSection = @"kCommentSection";
 
     [commentRows addObject:[self rowWithText:@"Show Comment Composer" executionBlock:^{
         SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
-//        [SZCommentUtils showCommentComposerWithDisplay:self entity:entity success:nil failure:nil];
-        SZComposeCommentViewController *compose = [[[SZComposeCommentViewController alloc] initWithEntity:entity] autorelease];
-        [self presentModalViewController:compose animated:YES];
+        [SZCommentUtils showCommentComposerWithDisplay:self entity:entity success:nil failure:nil];
+//        SZComposeCommentViewController *compose = [[[SZComposeCommentViewController alloc] initWithEntity:entity] autorelease];
+//        [self presentModalViewController:compose animated:YES];
     }]];
 
     return [NSArray arrayWithObjects:

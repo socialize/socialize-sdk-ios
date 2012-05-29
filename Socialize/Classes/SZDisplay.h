@@ -40,6 +40,7 @@
 @interface SZStackDisplay : NSObject <SZDisplay>
 - (void)beginWithOrTransitionToViewController:(UIViewController *)viewController;
 + (SZStackDisplay*)stackDisplayForDisplay:(id<SZDisplay>)display;
+- (void)pop;
 @end
 
 @interface UIViewController (SZDisplay) <SZDisplay>

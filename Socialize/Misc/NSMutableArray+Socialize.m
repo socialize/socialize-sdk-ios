@@ -10,9 +10,18 @@
 
 @implementation NSMutableArray (Socialize)
 
+- (void)removeObjectsFromIndex:(NSUInteger)index {
+    NSUInteger count = [self count];
+    NSAssert(index < count, @"Index out of bounds");
+    NSUInteger size = count - index;
+    NSAssert(size > 0, @"Size not larger than 0");
+    
+    NSRange range = NSMakeRange(index, size);
+    [self removeObjectsInRange:range];        
+}
+
 - (void)removeObjectsAfterIndex:(NSUInteger)index {
-    NSRange range = NSMakeRange(index, [self count] - index);
-    [self removeObjectsInRange:range];    
+    [self removeObjectsFromIndex:index + 1];
 }
 
 - (void)removeObjectsAfterObject:(id)object {

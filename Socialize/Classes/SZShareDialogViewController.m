@@ -102,6 +102,12 @@ static NSString *kAutopostSection = @"kAutopostSection";
     self.navigationItem.leftBarButtonItem = self.cancelButton;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    if ([self.navigationController.viewControllers count] >= 2) {
+        [self.cancelButton changeTitleOnCustomButtonToText:@"Back"];
+    }
+}
+
 #define COPIED_BLOCK(identifier) [[identifier copy] autorelease]
 
 - (SZSocialNetwork)selectedNetworks {

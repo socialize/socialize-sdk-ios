@@ -16,7 +16,8 @@
     #import "UINavigationController+Socialize.h"
     #import "UIViewController+Socialize.h"
     #import "NSMutableArray+Socialize.h"
-
+    #import "UIBarButtonItem+Socialize.h"
+    #import "UIButton+Socialize.h"
 #endif
 
 #ifdef DEBUG

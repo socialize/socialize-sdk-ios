@@ -101,7 +101,11 @@
 }
 
 + (SZStackDisplay*)stackDisplayForDisplay:(id<SZDisplay>)display {
-    return [[[self alloc] initWithOuterDisplay:display] autorelease];
+    if ([display isKindOfClass:[SZStackDisplay class]]) {
+        return display;
+    } else {
+        return [[[self alloc] initWithOuterDisplay:display] autorelease];
+    }
 }
 
 - (id)initWithOuterDisplay:(id<SZDisplay>)outerDisplay {
@@ -155,6 +159,11 @@
 
 - (void)socializeWillStopLoading {
     [[self topDisplay] socializeWillStopLoading];
+}
+
+- (void)pop {
+    UIViewController *controller = [self.controllers objectAtIndex:[self.controllers count] - 2];
+    [self socializeWillReturnToViewController:controller];
 }
 
 @end

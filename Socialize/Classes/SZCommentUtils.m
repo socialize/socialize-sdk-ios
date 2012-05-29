@@ -76,21 +76,22 @@
 }
 
 + (void)addCommentWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
-
+    SZStackDisplay *stackDisplay = [SZStackDisplay stackDisplayForDisplay:display];
+    
     __block void (^addCommentBlock)() = [^(SZSocialNetwork networks) {
-        [display socializeWillStartLoadingWithMessage:@"Creating Comment"];
+        [stackDisplay socializeWillStartLoadingWithMessage:@"Creating Comment"];
         [self addCommentWithEntity:entity text:text options:options networks:networks success:^(id<SZComment> comment) {
             
             // Comment created successfully
             [addCommentBlock autorelease];
             
-            [display socializeWillStopLoading];
+            [stackDisplay socializeWillStopLoading];
             BLOCK_CALL_1(success, comment);
         } failure:^(NSError *error) {
 
             // Comment create failed -- show an alert
 
-            [display socializeWillStopLoading];
+            [stackDisplay socializeWillStopLoading];
             NSString *message = [NSString stringWithFormat:@"Error code %d", [error code]];
             UIAlertView *alertView = [UIAlertView alertWithTitle:@"Comment Create Failed" message:message];
             [alertView addButtonWithTitle:@"Cancel" handler:^{
@@ -102,7 +103,7 @@
             }];
             
             [alertView addButtonWithTitle:@"Retry" handler:addCommentBlock];
-            [display socializeWillShowAlertView:alertView];
+            [stackDisplay socializeWillShowAlertView:alertView];
         }];
         
     } copy]; // `addCommentBlock` refers to the heap version of this block for the recursive alert retry call
@@ -110,7 +111,14 @@
     if (LinkedSocialNetworks() == SZSocialNetworkNone) {
         addCommentBlock(SZSocialNetworkNone);
     } else {
-        [SZShareUtils getPreferredShareNetworksWithDisplay:display success:addCommentBlock failure:failure];
+        [SZShareUtils getPreferredShareNetworksWithDisplay:display success:addCommentBlock failure:^(NSError *error) {
+            if ([error isSocializeErrorWithCode:SocializeErrorProcessCancelledByUser]) {
+                [stackDisplay pop];
+            } else {
+                [display socializeWillEndDisplaySequence];
+                BLOCK_CALL_1(failure, error);
+            }
+        }];
     }
 }
 
