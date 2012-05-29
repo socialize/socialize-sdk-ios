@@ -16,6 +16,7 @@
 #import "SZShareUtils.h"
 #import "SZUserUtils.h"
 #import "SZDisplay.h"
+#import "UIAlertView+BlocksKit.h"
 
 @implementation SZCommentUtils
 
@@ -40,7 +41,7 @@
     LinkWrapper(stackDisplay, ^{
         SZComposeCommentMessageViewController *composer = [[[SZComposeCommentMessageViewController alloc] initWithEntity:entity] autorelease];
         composer.completionBlock = ^(NSString *text, SZCommentOptions *options) {
-                            
+
             // Add comment
             [self addCommentWithDisplay:stackDisplay entity:entity text:text options:options success:^(id<SZComment> comment) {
                 [display socializeWillEndDisplaySequence];
@@ -49,6 +50,7 @@
                 [display socializeWillEndDisplaySequence];
                 BLOCK_CALL_1(failure, error);
             }];
+            
         };
         composer.cancellationBlock = ^{
             [display socializeWillEndDisplaySequence];
@@ -74,16 +76,38 @@
 }
 
 + (void)addCommentWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
-    [SZShareUtils getPreferredShareNetworksWithDisplay:display success:^(SZSocialNetwork networks) {
+
+    __block void (^addCommentBlock)() = [^(SZSocialNetwork networks) {
         [display socializeWillStartLoadingWithMessage:@"Creating Comment"];
         [self addCommentWithEntity:entity text:text options:options networks:networks success:^(id<SZComment> comment) {
+            
+            // Comment created successfully
+            [addCommentBlock autorelease];
+            
             [display socializeWillStopLoading];
             BLOCK_CALL_1(success, comment);
         } failure:^(NSError *error) {
+
+            // Comment create failed -- show an alert
+
             [display socializeWillStopLoading];
-            BLOCK_CALL_1(failure, error);
+            NSString *message = [NSString stringWithFormat:@"Error code %d", [error code]];
+            UIAlertView *alertView = [UIAlertView alertWithTitle:@"Comment Create Failed" message:message];
+            [alertView addButtonWithTitle:@"Cancel" handler:^{
+                
+                // User cancelled out of loop -- fail
+                [addCommentBlock autorelease];
+                [display socializeWillEndDisplaySequence];
+                BLOCK_CALL_1(failure, error);
+            }];
+            
+            [alertView addButtonWithTitle:@"Retry" handler:addCommentBlock];
+            [display socializeWillShowAlertView:alertView];
         }];
-    } failure:failure];
+        
+    } copy]; // `addCommentBlock` refers to the heap version of this block for the recursive alert retry call
+    
+    [SZShareUtils getPreferredShareNetworksWithDisplay:display success:addCommentBlock failure:failure];
 }
 
 + (void)getCommentWithId:(NSNumber*)commentId success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {

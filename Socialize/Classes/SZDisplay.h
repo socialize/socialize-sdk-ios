@@ -13,6 +13,7 @@
 - (void)socializeWillBeginDisplaySequenceWithViewController:(UIViewController*)viewController;
 - (void)socializeWillTransitionFromViewController:(UIViewController*)fromViewController toViewController:(UIViewController *)toViewController;
 - (void)socializeWillReturnToViewController:(UIViewController*)viewController;
+- (void)socializeWillShowAlertView:(UIAlertView*)alertView;
 - (void)socializeWillEndDisplaySequence;
 - (void)socializeWillStartLoadingWithMessage:(NSString*)message;
 - (void)socializeWillStopLoading;
@@ -28,6 +29,7 @@
 @property (nonatomic, copy) void (^transitionBlock)(UIViewController *a, UIViewController *b);
 @property (nonatomic, copy) void (^returnBlock)(UIViewController *viewController);
 @property (nonatomic, copy) void (^endBlock)();
+@property (nonatomic, copy) void (^alertBlock)(UIAlertView *alertView);
 @property (nonatomic, copy) void (^startLoadingBlock)(NSString *message);
 @property (nonatomic, copy) void (^stopLoadingBlock)();
 

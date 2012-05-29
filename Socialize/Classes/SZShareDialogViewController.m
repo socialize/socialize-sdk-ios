@@ -103,7 +103,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 #define COPIED_BLOCK(identifier) [[identifier copy] autorelease]
 
 - (SZSocialNetwork)selectedNetworks {
-    SZSocialNetwork networks;
+    SZSocialNetwork networks = SZSocialNetworkNone;
     if ([SZTwitterUtils isAvailable] && self.twitterSwitch.on) {
         networks |= SZSocialNetworkTwitter;
     }

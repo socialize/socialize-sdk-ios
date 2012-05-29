@@ -16,10 +16,23 @@
 @synthesize transitionBlock = transitionBlock_;
 @synthesize returnBlock = returnBlock_;
 @synthesize endBlock = endSequenceBlock_;
-@synthesize fallbackDisplay = fallbackDisplay_;
+@synthesize alertBlock = alertBlock_;
 @synthesize startLoadingBlock = startLoadingBlock_;
 @synthesize stopLoadingBlock = stopLoadingBlock_;
+@synthesize fallbackDisplay = fallbackDisplay_;
 
+- (void)dealloc {
+    self.beginBlock = nil;
+    self.transitionBlock = nil;
+    self.returnBlock = nil;
+    self.endBlock = nil;
+    self.alertBlock = nil;
+    self.startLoadingBlock = nil;
+    self.stopLoadingBlock = nil;
+    self.fallbackDisplay = nil;
+    
+    [super dealloc];
+}
 + (SZBlockDisplay*)blockDisplay {
     return [[[self alloc] init] autorelease];
 }
@@ -56,6 +69,10 @@
 
 - (void)socializeWillStopLoading {
     FALLBACK(self.stopLoadingBlock);
+}
+
+- (void)socializeWillShowAlertView:(UIAlertView *)alertView {
+    FALLBACK_1(self.alertBlock, alertView);
 }
 
 @end
@@ -120,6 +137,10 @@
     [self.outerDisplay socializeWillReturnToViewController:viewController];
 }
 
+- (void)socializeWillShowAlertView:(UIAlertView *)alertView {
+    [self.outerDisplay socializeWillShowAlertView:alertView];
+}
+
 - (id<SZDisplay>)topDisplay {
     id<SZDisplay> display = [self.controllers lastObject];
     if (display == nil) {
@@ -167,6 +188,10 @@ static char *kSocializeLoadingViewKey = "kSocializeLoadingViewKey";
 - (void)socializeWillStopLoading {
     UIView *view = [self associatedValueForKey:kSocializeLoadingViewKey];
     [view removeFromSuperview];
+}
+
+- (void)socializeWillShowAlertView:(UIAlertView *)alertView {
+    [alertView show];
 }
 
 @end

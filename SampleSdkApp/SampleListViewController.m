@@ -12,6 +12,7 @@
 #import "SocializeEntity.h"
 #import "UIAlertView+BlocksKit.h"
 #import "SZCommentUtils.h"
+#import "SZComposeCommentViewController.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -96,7 +97,9 @@ static NSString *kCommentSection = @"kCommentSection";
 
     [commentRows addObject:[self rowWithText:@"Show Comment Composer" executionBlock:^{
         SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
-        [SZCommentUtils showCommentComposerWithDisplay:self entity:entity success:nil failure:nil];
+//        [SZCommentUtils showCommentComposerWithDisplay:self entity:entity success:nil failure:nil];
+        SZComposeCommentViewController *compose = [[[SZComposeCommentViewController alloc] initWithEntity:entity] autorelease];
+        [self presentModalViewController:compose animated:YES];
     }]];
 
     return [NSArray arrayWithObjects:
