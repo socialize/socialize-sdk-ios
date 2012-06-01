@@ -103,6 +103,8 @@ static NSString *kAutopostSection = @"kAutopostSection";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     if ([self.navigationController.viewControllers count] >= 2) {
         [self.cancelButton changeTitleOnCustomButtonToText:@"Back"];
     }

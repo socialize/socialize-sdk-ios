@@ -34,12 +34,11 @@
 @class SocializeLoadingView;
 @class ImagesCache;
 @class SZSettingsViewController;
-@class SocializeUIDisplayProxy;
-@protocol SocializeUIDisplay;
 
+@protocol SZDisplay;
 @protocol SocializeBaseViewControllerDelegate;
 
-@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, SZSettingsViewControllerDelegate, SocializeKeyboardListenerDelegate> {
+@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, SocializeKeyboardListenerDelegate, SocializeBaseViewControllerDelegate> {
     @private 
     SocializeLoadingView*  _loadingIndicatorView;
 }
@@ -56,12 +55,9 @@
 @property (nonatomic, retain) ImagesCache *imagesCache;
 @property (nonatomic, retain) NSBundle *bundle;
 @property (nonatomic, retain) SocializeKeyboardListener *keyboardListener;
-@property (nonatomic, retain) SZSettingsViewController *profileEditViewController;
-@property (nonatomic, retain) UINavigationController *navigationControllerForEdit;
-@property (nonatomic, retain) SocializeUIDisplayProxy *displayProxy;
-@property (nonatomic, retain) id<SocializeUIDisplay> display;
 @property (nonatomic, copy) void (^completionBlock)();
 @property (nonatomic, copy) void (^cancellationBlock)();
+@property (nonatomic, retain) id<SZDisplay> display;
 
 -(void) showAlertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
 -(void) startLoading;
@@ -89,12 +85,12 @@
 - (void)doneButtonPressed:(UIBarButtonItem*)button;
 - (void)cancelButtonPressed:(UIBarButtonItem*)button;
 - (void)settingsButtonPressed:(UIBarButtonItem*)button;
-- (void)showEditController;
 - (void)notifyDelegateOfCompletion;
 - (void)notifyDelegateOfCancellation;
 - (void)failWithError:(NSError*)error;
 - (BOOL)dontShowErrors;
 - (void)postErrorNotificationForError:(NSError*)error;
+- (void)userSettingsChanged:(id<SZFullUser>)updatedSettings;
 
 @end
 

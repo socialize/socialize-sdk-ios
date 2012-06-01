@@ -15,8 +15,8 @@
 @interface SZUserUtils : NSObject
 
 + (void)showLinkDialogWithDisplay:(id<SZDisplay>)display success:(void(^)(SZSocialNetwork selectedNetwork))success failure:(void(^)(NSError *error))failure;
-+ (void)showUserProfileWithViewController:(UIViewController*)viewController user:(id<SocializeFullUser>)user;
-+ (void)showUserSettingsWithViewController:(UIViewController*)viewController;
++ (void)showUserProfileWithDisplay:(id<SZDisplay>)display user:(id<SocializeFullUser>)user;
++ (void)showUserSettingsWithDisplay:(id<SZDisplay>)display;
 + (void)saveUserSettings:(id<SocializeFullUser>)user profileImage:(UIImage*)image success:(void(^)(id<SocializeFullUser> user))success failure:(void(^)(NSError *error))failure;
 + (id<SocializeFullUser>)currentUser;
 + (BOOL)userIsLinked;

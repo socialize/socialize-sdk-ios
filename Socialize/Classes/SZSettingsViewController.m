@@ -186,12 +186,17 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     if (self.fullUser == nil) {
         self.saveButton.enabled = NO;
         [self getCurrentUser];
     } else {
         self.saveButton.enabled = YES;
         [self configureViewsForUser];
+    }
+    
+    if ([self.navigationController.viewControllers count] >= 2) {
+        [self.cancelButton changeTitleOnCustomButtonToText:@"Back"];
     }
 }
 

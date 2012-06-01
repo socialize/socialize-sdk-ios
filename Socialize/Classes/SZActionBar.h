@@ -31,6 +31,7 @@
 #import "SZActionBarDelegate.h"
 #import "SocializeUIDisplayProxyDelegate.h"
 #import "SZCommentsListViewController.h"
+#import "SZDisplay.h"
 
 @class SZCommentsListViewController;
 @protocol SocializeView;
@@ -56,6 +57,7 @@
 @property (nonatomic, assign) BOOL noAutoLayout;
 @property (nonatomic, assign, readonly) BOOL initialized;
 @property (nonatomic, retain) UIAlertView *unconfiguredEmailAlert;
+@property (nonatomic, retain) id<SZDisplay> display;
 
 /** @name Initialization */
 
@@ -129,7 +131,7 @@
  @param url The URL for the Entity Key
  @param display Target for display actions. Either a UIViewController or a SocializeUIDisplay implementation
  */
--(id)initWithEntity:(id<SocializeEntity>)entity display:(id<SocializeUIDisplay>)display;
+-(id)initWithEntity:(id<SocializeEntity>)entity display:(id<SZDisplay>)display;
 
 @end
 

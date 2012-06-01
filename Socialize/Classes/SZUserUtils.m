@@ -29,40 +29,59 @@
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorLinkNotPossible]);
     }
     
+    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
     SocializeAuthViewController *auth = [[[SocializeAuthViewController alloc] init] autorelease];
+    auth.display = display;
     
     auth.completionBlock = ^(SZSocialNetwork selectedNetwork) {
-        [display socializeWillEndDisplaySequence];
+        [wrapper endSequence];
         BLOCK_CALL_1(success, selectedNetwork);
     };
     
     auth.cancellationBlock = ^{
-        [display socializeWillEndDisplaySequence];
+        [wrapper endSequence];
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorLinkCancelledByUser]);
     };
-    
-    [display socializeWillBeginDisplaySequenceWithViewController:auth];
+
+    [wrapper beginSequenceWithViewController:auth];
 }
 
-+ (void)showUserProfileWithViewController:(UIViewController*)viewController user:(id<SocializeFullUser>)user {
++ (void)showUserProfileWithDisplay:(id<SZDisplay>)display user:(id<SocializeFullUser>)user {
+    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
     SZProfileViewController *profile = [SZProfileViewController profileViewController];
-    SocializeUIDisplayProxy *proxy = [SocializeUIDisplayProxy UIDisplayProxyWithObject:profile display:viewController];
-    profile.displayProxy = proxy;
+    
     profile.fullUser = user;
-    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
-    [proxy presentModalViewController:nav];
+    profile.completionBlock = ^{
+        [wrapper endSequence];
+    };
+    
+    profile.cancellationBlock = ^{
+        [wrapper endSequence];
+    };
+
+    [wrapper beginSequenceWithViewController:profile];
 }
 
-+ (void)showUserSettingsWithViewController:(UIViewController*)viewController {
++ (void)showUserSettingsWithDisplay:(id<SZDisplay>)display {
+    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
+
     SZSettingsViewController *settings = [SZSettingsViewController settingsViewController];
-    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:settings] autorelease];
-    SocializeUIDisplayProxy *proxy = [SocializeUIDisplayProxy UIDisplayProxyWithObject:settings display:viewController];
-    settings.displayProxy = proxy;
-    [proxy presentModalViewController:nav];
+    settings.cancellationBlock = ^{
+        [wrapper endSequence];
+    };
+    settings.completionBlock = ^{
+        [wrapper endSequence];
+    };
+    
+    [wrapper beginSequenceWithViewController:settings];
 }
 
 + (void)saveUserSettings:(id<SocializeFullUser>)user profileImage:(UIImage*)image success:(void(^)(id<SocializeFullUser> user))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] updateUserProfile:user profileImage:image success:success failure:failure];
+    [[Socialize sharedSocialize] updateUserProfile:user profileImage:image success:^(id<SZFullUser> fullUser) {
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:fullUser forKey:kSZUpdatedUserSettingsKey];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SZUserSettingsDidChangeNotification object:nil userInfo:userInfo];
+        BLOCK_CALL_1(success, fullUser);
+    } failure:failure];
 }
 
 + (id<SocializeFullUser>)currentUser {

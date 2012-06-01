@@ -10,6 +10,7 @@
 #import "SZNavigationController.h"
 #import "SocializeLoadingView.h"
 #import "NSObject+AssociatedObjects.h"
+#import "SocializeBaseViewController.h"
 
 @implementation SZBlockDisplay
 @synthesize beginBlock = beginSequenceBlock_;
@@ -33,14 +34,22 @@
     
     [super dealloc];
 }
+
 + (SZBlockDisplay*)blockDisplay {
-    return [[[self alloc] init] autorelease];
+    return [self blockDisplayWrappingDisplay:nil beginSequence:nil endSequence:nil];
 }
 
-+ (SZBlockDisplay*)blockDisplayWithFallback:(id<SZDisplay>)fallback {
-    SZBlockDisplay *display = [self blockDisplay];
-    display.fallbackDisplay = fallback;
-    return display;
++ (SZBlockDisplay*)blockDisplayWrappingDisplay:(id<SZDisplay>)fallback {
+    return [self blockDisplayWrappingDisplay:fallback beginSequence:nil endSequence:nil];
+}
+
++ (SZBlockDisplay*)blockDisplayWrappingDisplay:(id<SZDisplay>)fallback beginSequence:(void(^)(UIViewController*))beginSequence endSequence:(void(^)())endSequence {
+    SZBlockDisplay *blockDisplay = [[[self alloc] init] autorelease]; 
+    blockDisplay.fallbackDisplay = fallback;
+    blockDisplay.beginBlock = beginSequence;
+    blockDisplay.endBlock = endSequence;
+    
+    return blockDisplay;
 }
 
 #define FALLBACK(blk) do { if (blk != nil) blk(); else [self.fallbackDisplay performSelector:_cmd]; } while (0)
@@ -78,18 +87,24 @@
 @end
 
 
-@interface SZStackDisplay ()
+@interface SZDisplayWrapper ()
 @property (nonatomic, retain) NSMutableArray *controllers;
 @property (nonatomic, retain) id<SZDisplay> outerDisplay;
 @end
 
-@implementation SZStackDisplay
+@implementation SZDisplayWrapper
 @synthesize controllers = controllers_;
 @synthesize outerDisplay = outerDisplay_;
+@synthesize continueBlock = continueBlock_;
+@synthesize endBlock = endBlock_;
+@synthesize running = running_;
 
 - (void)dealloc {
     self.controllers = nil;
     self.outerDisplay = nil;
+    self.continueBlock = nil;
+    self.endBlock = nil;
+    
     [super dealloc];
 }
 
@@ -100,39 +115,63 @@
     return controllers_;
 }
 
-+ (SZStackDisplay*)stackDisplayForDisplay:(id<SZDisplay>)display {
-    if ([display isKindOfClass:[SZStackDisplay class]]) {
-        return display;
-    } else {
-        return [[[self alloc] initWithOuterDisplay:display] autorelease];
-    }
++ (SZDisplayWrapper*)displayWrapperWithDisplay:(id<SZDisplay>)display {
+    return [self displayWrapperWithDisplay:display continueBlock:nil existingStack:nil];
 }
 
-- (id)initWithOuterDisplay:(id<SZDisplay>)outerDisplay {
++ (SZDisplayWrapper*)displayWrapperWithDisplay:(id<SZDisplay>)display continueBlock:(void(^)(UIViewController*))continueBlock {
+    return [self displayWrapperWithDisplay:display continueBlock:continueBlock existingStack:nil];
+}
+
++ (SZDisplayWrapper*)displayWrapperWithDisplay:(id<SZDisplay>)display continueBlock:(void(^)(UIViewController*))continueBlock existingStack:(NSArray*)existingStack {
+    return [[[self alloc] initWithDisplay:display continueBlock:continueBlock existingStack:existingStack] autorelease];
+}
+
+- (id)initWithDisplay:(id<SZDisplay>)outerDisplay continueBlock:(void(^)(UIViewController*))continueBlock existingStack:(NSArray*)existingStack {
     if (self = [super init]) {
         self.outerDisplay = outerDisplay;
+        self.continueBlock = continueBlock;
+        
+        if ([outerDisplay isKindOfClass:[SZDisplayWrapper class]]) {
+            NSAssert(existingStack == nil, @"Cannot both wrap a wrapper and specify an existing stack");
+
+            SZDisplayWrapper *outerWrapper = (SZDisplayWrapper*)outerDisplay;
+            self.running = outerWrapper.running;
+            [self.controllers addObjectsFromArray:[outerWrapper controllers]];
+        }
+
+        if (existingStack != nil) {
+            self.running = YES;
+            [self.controllers addObjectsFromArray:existingStack];
+        }
+        
     }
     return self;
 }
 
-- (void)beginWithOrTransitionToViewController:(UIViewController *)viewController {
+- (void)socializeWillBeginDisplaySequenceWithViewController:(UIViewController *)viewController {
+    self.running = YES;
+    
     if ([self.controllers count] > 0) {
-        [self.outerDisplay socializeWillTransitionFromViewController:[self.controllers lastObject] toViewController:viewController];
+        if (self.continueBlock != nil) {
+            [self.controllers addObject:viewController];
+            self.continueBlock(viewController);
+        } else {
+            [self pushViewController:viewController];
+        }
     } else {
+        [self.controllers addObject:viewController];
         [self.outerDisplay socializeWillBeginDisplaySequenceWithViewController:viewController];
     }
-    [self.controllers addObject:viewController];
-}
-
-- (void)socializeWillBeginDisplaySequenceWithViewController:(UIViewController *)viewController {
-    [self beginWithOrTransitionToViewController:viewController];
 }
 
 - (void)socializeWillEndDisplaySequence {
+    BLOCK_CALL(self.endBlock);
 }
 
 - (void)socializeWillTransitionFromViewController:(UIViewController *)fromViewController toViewController:(UIViewController *)toViewController {
     [self.controllers addObject:toViewController];
+    
     [self.outerDisplay socializeWillTransitionFromViewController:fromViewController toViewController:toViewController];
 }
 
@@ -145,6 +184,20 @@
     [self.outerDisplay socializeWillShowAlertView:alertView];
 }
 
+- (void)beginWithOrTransitionToViewController:(UIViewController *)viewController {
+    UIViewController *topController = [self.controllers lastObject];
+    
+    if (topController != nil) {
+        [self transitionFromViewController:topController toViewController:viewController];
+    } else {
+        [self beginSequenceWithViewController:viewController];
+    }
+}
+
+- (UIViewController*)topController {
+    return [self.controllers lastObject];
+}
+
 - (id<SZDisplay>)topDisplay {
     id<SZDisplay> display = [self.controllers lastObject];
     if (display == nil) {
@@ -154,11 +207,11 @@
 }
 
 - (void)socializeWillStartLoadingWithMessage:(NSString *)message {
-    [[self topDisplay] socializeWillStartLoadingWithMessage:message];
+    [self.outerDisplay socializeWillStartLoadingWithMessage:message];
 }
 
 - (void)socializeWillStopLoading {
-    [[self topDisplay] socializeWillStopLoading];
+    [self.outerDisplay socializeWillStopLoading];
 }
 
 - (void)pop {
@@ -166,9 +219,69 @@
     [self socializeWillReturnToViewController:controller];
 }
 
-@end
+- (void)pushViewController:(UIViewController*)viewController {
+    UIViewController *topController = [self.controllers objectAtIndex:[self.controllers count] - 1];
+    [self transitionFromViewController:topController toViewController:viewController];
+}
 
-static char *kSocializeLoadingViewKey = "kSocializeLoadingViewKey";
+- (void)beginSequenceWithViewController:(UIViewController*)viewController {
+    if ([viewController isKindOfClass:[SocializeBaseViewController class]]) {
+        [(SocializeBaseViewController*)viewController setDisplay:self];
+    }
+
+    [self socializeWillBeginDisplaySequenceWithViewController:viewController];
+}
+
+- (void)transitionFromViewController:(UIViewController*)fromViewController toViewController:(UIViewController*)toViewController {
+    [self.controllers addObject:toViewController];
+    
+    SDT(self.outerDisplay, fromViewController, toViewController);
+}
+
+- (void)returnToViewController:(UIViewController*)viewController {
+    [self.controllers removeObjectsAfterObject:viewController];
+    SDRET(self.outerDisplay, viewController);
+}
+
+- (void)startLoadingInTopControllerWithMessage:(NSString*)message {
+    UIViewController *topController = [self.controllers lastObject];
+    if (topController != nil) {
+        if ([topController isKindOfClass:[SocializeBaseViewController class]]) {
+            [(SocializeBaseViewController*)topController startLoading];
+        } else {
+            [topController showSocializeLoadingViewInSubview:nil];
+        }
+    } else {
+        [self.outerDisplay socializeWillStartLoadingWithMessage:message];
+    }
+}
+
+- (void)stopLoadingInTopController {
+    UIViewController *topController = [self.controllers lastObject];
+    if (topController != nil) {
+        if ([topController isKindOfClass:[SocializeBaseViewController class]]) {
+            [(SocializeBaseViewController*)topController stopLoading];
+        } else {
+            [topController showSocializeLoadingViewInSubview:nil];
+        }
+    } else {
+        [self.outerDisplay socializeWillStopLoading];
+    }
+}
+
+- (void)showAlertView:(UIAlertView*)alertView {
+    [self.outerDisplay socializeWillShowAlertView:alertView];
+}
+
+
+- (void)endSequence {
+    if (self.running) {
+        self.running = NO;
+        SDEND(self.outerDisplay);
+    }
+}
+
+@end
 
 @implementation UIViewController (SZDisplay)
 - (void)socializeWillBeginDisplaySequenceWithViewController:(UIViewController *)viewController {
@@ -190,13 +303,11 @@ static char *kSocializeLoadingViewKey = "kSocializeLoadingViewKey";
 }
 
 - (void)socializeWillStartLoadingWithMessage:(NSString*)message {
-    SocializeLoadingView *loading = [SocializeLoadingView loadingViewInView:self.view];
-    [self weaklyAssociateValue:loading withKey:kSocializeLoadingViewKey];
+    [self showSocializeLoadingViewInSubview:self.view];
 }
 
 - (void)socializeWillStopLoading {
-    UIView *view = [self associatedValueForKey:kSocializeLoadingViewKey];
-    [view removeFromSuperview];
+    [self hideSocializeLoadingView];
 }
 
 - (void)socializeWillShowAlertView:(UIAlertView *)alertView {

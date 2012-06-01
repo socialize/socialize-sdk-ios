@@ -13,6 +13,7 @@
 
 @protocol SZSettingsViewControllerDelegate <SocializeBaseViewControllerDelegate>
 
+@optional
 - (void)profileEditViewController:(SZSettingsViewController*)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user;
 
 @end

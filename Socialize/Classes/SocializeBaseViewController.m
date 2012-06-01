@@ -41,13 +41,10 @@
 #import "SocializePreprocessorUtilities.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeFacebookAuthenticator.h"
-#import "SocializeUIDisplayProxy.h"
-#import "SocializeUIDisplay.h"
 #import "SZDisplay.h"
+#import "SZUserUtils.h"
 
 @interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
--(void)leftNavigationButtonPressed:(id)sender;
--(void)showEditController;
 @end
 
 @implementation SocializeBaseViewController
@@ -64,15 +61,14 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 @synthesize authViewController = authViewController_;
 @synthesize bundle = bundle_;
 @synthesize keyboardListener = keyboardListener_;
-@synthesize profileEditViewController = profileEditViewController_;
-@synthesize navigationControllerForEdit = navigationControllerForEdit_;
-@synthesize displayProxy = displayProxy_;
-@synthesize display = display_;
 @synthesize completionBlock = completionBlock_;
 @synthesize cancellationBlock = cancellationBlock_;
+@synthesize display = display_;
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     self.tableView.delegate = nil;
     self.tableView.dataSource = nil;
     self.tableView = nil;
@@ -92,12 +88,9 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     self.bundle = nil;
     self.keyboardListener.delegate = nil;
     self.keyboardListener = nil;
-    self.profileEditViewController = nil;
-    self.navigationControllerForEdit = nil;
-    self.display = nil;
-    self.displayProxy = nil;
     self.cancellationBlock = nil;
     self.completionBlock = nil;
+    self.display = nil;
 
     [super dealloc];
 }
@@ -105,6 +98,8 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         (void)self.keyboardListener;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_userSettingsChanged:) name:SZUserSettingsDidChangeNotification object:nil];
     }
     return self;
 }
@@ -161,17 +156,13 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     return imagesCache_;
 }
 
-- (void)setDisplay:(id<SocializeUIDisplay>)display {
-    NonatomicRetainedSetToFrom(display_, display);
-    self.displayProxy.display = display;
+- (void)userSettingsChanged:(id<SZFullUser>)updatedSettings {
+    
 }
 
-- (SocializeUIDisplayProxy*)displayProxy {
-    if (displayProxy_ == nil) {
-        displayProxy_ = [[SocializeUIDisplayProxy alloc] initWithObject:self display:self.display];
-    }
-    
-    return displayProxy_;
+- (void)_userSettingsChanged:(NSNotification*)notification {
+    id<SZFullUser> updatedSettings = [[notification userInfo] objectForKey:kSZUpdatedUserSettingsKey];
+    [self userSettingsChanged:updatedSettings];
 }
 
 - (void)changeTitleOnCustomBarButton:(UIBarButtonItem*)barButton toText:(NSString*)text {
@@ -220,9 +211,12 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 }
 
 - (void)settingsButtonPressed:(UIButton *)button {
-    [self showEditController];
+    __block SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:self.display];
+    wrapper.endBlock = ^{
+        [wrapper returnToViewController:self];
+    };
+    [SZUserUtils showUserSettingsWithDisplay:wrapper];
 }
-
 
 -(void)leftNavigationButtonPressed:(id)sender {
     //default implementation for the left navigation button
@@ -515,58 +509,6 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
         NSAssert([fullUser conformsToProtocol:@protocol(SocializeFullUser)], @"Not a socialize user");
         [self didGetCurrentUser:fullUser];
     }
-}
-
-- (SZSettingsViewController*)profileEditViewController {
-    if (profileEditViewController_ == nil) {
-        profileEditViewController_ = [[SZSettingsViewController alloc]
-                                      init];
-        profileEditViewController_.delegate = self;
-    }
-    return profileEditViewController_;
-}
-
-- (UINavigationController*)navigationControllerForEdit {
-    if (navigationControllerForEdit_ == nil) {
-        navigationControllerForEdit_ = [[UINavigationController socializeNavigationControllerWithRootViewController:self.profileEditViewController] retain];
-        navigationControllerForEdit_.delegate = self;
-    }
-    return navigationControllerForEdit_;
-}
-
--(void)showEditController
-{
-    [self presentModalViewController:self.navigationControllerForEdit animated:YES];
-}
-
-
--(void)hideEditController
-{
-    [self stopLoading];
-    [self dismissModalViewControllerAnimated:YES];
-    self.navigationControllerForEdit = nil;
-    self.profileEditViewController.delegate = nil;
-    self.profileEditViewController = nil;
-}
-
-- (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
-    if (baseViewController == self.profileEditViewController) {
-        [self hideEditController];    
-    } else if ([baseViewController isKindOfClass:[SocializeAuthViewController class]]) {
-        [self dismissModalViewControllerAnimated:YES];
-    }
-}
-
-- (void)profileEditViewController:(SZSettingsViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
-    [self hideEditController];
-}
-
-- (void)socializeObjectWillStartLoading:(id)object {
-    [self startLoading];
-}
-
-- (void)socializeObjectWillStopLoading:(id)object {
-    [self stopLoading];
 }
 
 @end

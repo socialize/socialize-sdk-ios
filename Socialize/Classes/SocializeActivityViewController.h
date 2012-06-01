@@ -20,7 +20,6 @@
 @property (nonatomic, assign) BOOL dontShowDisclosure;
 
 - (IBAction)viewProfileButtonTouched:(UIButton*)button;
-- (void)fullUserChanged:(id<SocializeFullUser>)fullUser;
 @end
 
 @protocol SocializeActivityViewControllerDelegate <NSObject>

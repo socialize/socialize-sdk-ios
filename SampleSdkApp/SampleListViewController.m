@@ -51,11 +51,11 @@ static NSString *kCommentSection = @"kCommentSection";
 
     [userRows addObject:[self rowWithText:@"Show User Profile" executionBlock:^{
         id<SocializeFullUser> user = [SZUserUtils currentUser];
-        [SZUserUtils showUserProfileWithViewController:self user:user];
+        [SZUserUtils showUserProfileWithDisplay:self user:user];
     }]];
 
     [userRows addObject:[self rowWithText:@"Show User Settings" executionBlock:^{
-        [SZUserUtils showUserSettingsWithViewController:self];
+        [SZUserUtils showUserSettingsWithDisplay:self];
     }]];
     
     // Share Utilities
@@ -92,7 +92,7 @@ static NSString *kCommentSection = @"kCommentSection";
     NSMutableArray *commentRows = [NSMutableArray array];
     [commentRows addObject:[self rowWithText:@"Show Comments List" executionBlock:^{
         SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
-        [SZCommentUtils showCommentsListWithViewController:self entity:entity completion:nil];
+        [SZCommentUtils showCommentsListWithDisplay:self entity:entity completion:nil];
     }]];
 
     [commentRows addObject:[self rowWithText:@"Show Comment Composer" executionBlock:^{

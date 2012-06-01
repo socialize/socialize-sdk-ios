@@ -16,7 +16,7 @@
 
 + (SZCommentOptions*)userCommentOptions;
 
-+ (void)showCommentsListWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)())completion;
++ (void)showCommentsListWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity completion:(void(^)())completion;
 + (void)showCommentComposerWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure;
 
 + (void)addCommentWithEntity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options networks:(SZSocialNetwork)networks success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure;

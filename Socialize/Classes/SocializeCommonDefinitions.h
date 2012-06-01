@@ -45,6 +45,10 @@ extern NSString *const kSocializeConsumerSecret;
 
 // Notifications
 extern NSString *const SocializeAuthenticatedUserDidChangeNotification;
+
+extern NSString *const SZUserSettingsDidChangeNotification;
+extern NSString *const kSZUpdatedUserSettingsKey;
+
 extern NSString *const SocializeCLAuthorizationStatusDidChangeNotification;
 extern NSString *const kSocializeCLAuthorizationStatusKey;
 extern NSString *const kSocializeShouldShareLocationKey;

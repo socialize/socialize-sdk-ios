@@ -85,7 +85,7 @@ static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
     [super dealloc];
 }
 
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity display:(id<SocializeUIDisplay>)display {
+- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity display:(id<SZDisplay>)display {
     self = [super initWithFrame:frame];
     if (self) {
         [self configureButtonBackgroundImages];
@@ -100,7 +100,7 @@ static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
 }
 
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)controller {
-    return [self initWithFrame:frame entity:entity display:(id<SocializeUIDisplay>)controller];
+    return [self initWithFrame:frame entity:entity display:controller];
 }
 
 
@@ -462,21 +462,21 @@ static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
     if (self.likeCreateRequestState != SocializeRequestStateSent) {
         self.likeCreateRequestState = SocializeRequestStateSent;
         
-        SocializeLike *like = [SocializeLike likeWithEntity:self.entity];
-        [SocializeUILikeCreator createLike:like options:nil display:self.display success:^(id<SocializeLike> serverLike) {
-            // Like has been successfully created
-            self.likeCreateRequestState = SocializeRequestStateFinished;
-            self.like = serverLike;
-            self.actualButton.enabled = YES;
-            self.serverEntity = serverLike.entity;
-            [self configureButtonBackgroundImages];
-            [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
-
-        } failure:^(NSError *error) {
-            self.likeCreateRequestState = SocializeRequestStateFailed;
-            self.actualButton.enabled = YES;
-            [self failWithError:error];
-        }];
+//        SocializeLike *like = [SocializeLike likeWithEntity:self.entity];
+//        [SocializeUILikeCreator createLike:like options:nil display:self.display success:^(id<SocializeLike> serverLike) {
+//            // Like has been successfully created
+//            self.likeCreateRequestState = SocializeRequestStateFinished;
+//            self.like = serverLike;
+//            self.actualButton.enabled = YES;
+//            self.serverEntity = serverLike.entity;
+//            [self configureButtonBackgroundImages];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
+//
+//        } failure:^(NSError *error) {
+//            self.likeCreateRequestState = SocializeRequestStateFailed;
+//            self.actualButton.enabled = YES;
+//            [self failWithError:error];
+//        }];
     }
 }
 

@@ -42,10 +42,6 @@
     self.userLocationLabel = nil;
     self.profileImageView = nil;
     self.profileImageActivityIndicator = nil;
-    self.profileEditViewController.delegate = nil;
-    self.profileEditViewController = nil;
-    self.navigationControllerForEdit.delegate = nil;
-    self.navigationControllerForEdit = nil;
     self.imagesCache = nil;
     self.defaultProfileImage = nil;
     self.alertView = nil;
@@ -65,7 +61,6 @@
     self.userDescriptionLabel = nil;
     self.userLocationLabel = nil;
     self.profileImageView = nil;
-    self.navigationControllerForEdit = nil;
     self.defaultProfileImage = nil;
     self.activityViewController = nil;
 }
@@ -97,14 +92,11 @@
 }
 
 - (id)initWithUser:(id<SocializeUser>)user delegate:(id<SocializeBaseViewControllerDelegate>)delegate {
-    if( self = [self init] ) {
+    if (self = [super init]) {
         self.delegate = delegate;
         self.user = user;
     }
     return self;
-}
-- (id)init {
-    return [super initWithNibName:@"SZProfileViewController" bundle:nil];
 }
 
 - (void)afterLoginAction:(BOOL)userChanged {
@@ -216,18 +208,9 @@
     [self.activityViewController initializeContent];
 }
 
-- (void)showEditController {
-    self.profileEditViewController.fullUser = self.fullUser;
-    self.profileEditViewController.profileImage = self.profileImageView.image;
-    [super showEditController];
-}
-
-- (void)profileEditViewController:(SZSettingsViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
-    self.fullUser = user;
+- (void)userSettingsChanged:(id<SocializeFullUser>)updatedSettings {
+    self.fullUser = updatedSettings;
     [self configureViews];
-    [self.activityViewController fullUserChanged:self.fullUser];
-    
-    [super profileEditViewController:profileEditViewController didUpdateProfileWithUser:user];
 }
 
 - (SocializeActivityViewController*)activityViewController {

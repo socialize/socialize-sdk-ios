@@ -45,6 +45,7 @@
 #import "SocializeUIShareCreator.h"
 #import "SocializeUILikeCreator.h"
 #import "SZNavigationController.h"
+#import "SZDisplay.h"
 
 @interface SZActionBar()
 @property (nonatomic, retain) id<SocializeView> entityView;
@@ -71,6 +72,7 @@
 @synthesize delegate = delegate_;
 @synthesize unconfiguredEmailAlert = unconfiguredEmailAlert_;
 @synthesize shareTextMessageComposer = shareTextMessageComposer_;
+@synthesize display = display_;
 
 - (void)dealloc
 {
@@ -82,6 +84,7 @@
     self.commentsNavController = nil;
     self.unconfiguredEmailAlert = nil;
     self.shareTextMessageComposer = nil;
+    self.display = nil;
     
     if (self.isViewLoaded) {
         [(SocializeActionView*)self.view setDelegate: nil];
@@ -128,7 +131,7 @@
     return [self initWithEntity:entity display:controller];
 }
 
--(id)initWithEntity:(id<SocializeEntity>)entity display:(id<SocializeUIDisplay>)display {
+-(id)initWithEntity:(id<SocializeEntity>)entity display:(id<SZDisplay>)display {
     self = [super init];
     if(self)
     {
@@ -141,7 +144,8 @@
 #pragma mark - View lifecycle
 
 - (void)presentInternalController:(UIViewController*)viewController {
-    [self.displayProxy presentModalViewController:viewController];
+    self.ignoreNextView = YES;
+    [self.display socializeWillBeginDisplaySequenceWithViewController:viewController];
 }
 
 - (void)displayProxy:(SocializeUIDisplayProxy *)proxy willDisplayViewController:(UIViewController *)controller {
@@ -182,7 +186,7 @@
 }
 
 - (void)commentsTableViewControllerDidFinish:(SZCommentsListViewController *)commentsTableViewController {
-    [self.displayProxy dismissModalViewController];
+    [self.display socializeWillEndDisplaySequence];
 }
 
 #pragma mark Socialize base class method
@@ -246,16 +250,16 @@
     if(self.entityLike)
         [self.socialize unlikeEntity:self.entityLike];
     else {
-        SocializeLike *like = [SocializeLike likeWithEntity:self.entity];
-        __block __typeof__(self) weakSelf = self;
-        [SocializeUILikeCreator createLike:like
-                                 options:nil
-                                 displayProxy:self.displayProxy
-                                 success:^(id<SocializeLike> serverLike) {
-                                     [weakSelf finishedCreatingLike:serverLike];
-                                 } failure:^(NSError *error) {
-                                     [weakSelf failedCreatingLikeWithError:error];
-                                 }];
+//        SocializeLike *like = [SocializeLike likeWithEntity:self.entity];
+//        __block __typeof__(self) weakSelf = self;
+//        [SocializeUILikeCreator createLike:like
+//                                 options:nil
+//                                 displayProxy:self.displayProxy
+//                                 success:^(id<SocializeLike> serverLike) {
+//                                     [weakSelf finishedCreatingLike:serverLike];
+//                                 } failure:^(NSError *error) {
+//                                     [weakSelf failedCreatingLikeWithError:error];
+//                                 }];
     }
 }
 
@@ -268,15 +272,15 @@
 
 -(void)shareButtonTouched: (id) sender
 {
-    SocializeUIShareOptions *options = [SocializeUIShareOptions UIShareOptionsWithEntity:self.entity];
-    [SocializeUIShareCreator createShareWithOptions:options
-                                       displayProxy:self.displayProxy
-                                            success:^{}
-                                            failure:^(NSError *error) {
-                                                if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
-                                                    [self showAlertWithText:[error localizedDescription] andTitle:@"Share Failed"];
-                                                }
-                                            }];
+//    SocializeUIShareOptions *options = [SocializeUIShareOptions UIShareOptionsWithEntity:self.entity];
+//    [SocializeUIShareCreator createShareWithOptions:options
+//                                       displayProxy:self.displayProxy
+//                                            success:^{}
+//                                            failure:^(NSError *error) {
+//                                                if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
+//                                                    [self showAlertWithText:[error localizedDescription] andTitle:@"Share Failed"];
+//                                                }
+//                                            }];
 }
 
 - (void)reloadEntity {

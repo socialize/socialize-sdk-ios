@@ -143,7 +143,8 @@
     [cell.profileImageActivity stopAnimating];    
 }
 
-- (void)fullUserChanged:(id<SocializeFullUser>)fullUser {
+- (void)userSettingsChanged:(id<SocializeFullUser>)updatedSettings {
+    id<SZFullUser> fullUser = updatedSettings;
     for (SocializeActivity *activity in self.content) {
         if (activity.user.objectID == fullUser.objectID) {
             activity.user.smallImageUrl = fullUser.smallImageUrl;

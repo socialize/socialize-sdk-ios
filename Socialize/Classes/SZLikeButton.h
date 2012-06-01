@@ -30,14 +30,14 @@
 
 // end-image-properties
 
-@property (nonatomic, retain) id<SocializeUIDisplay> display;
+@property (nonatomic, retain) id<SZDisplay> display;
 
 @property (nonatomic, assign) BOOL hideCount;
 @property (nonatomic, assign) BOOL autoresizeDisabled;
 
 @property (nonatomic, retain) id<SocializeEntity> entity;
 
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity display:(id<SocializeUIDisplay>)display;
+- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity display:(id<SZDisplay>)display;
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)controller;
 - (void)refresh;
 

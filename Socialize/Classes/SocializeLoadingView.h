@@ -27,3 +27,9 @@
 - (void)removeView;
 + (id)loadingViewInView:(UIView *)aSuperview withFrame:(CGRect)myrect andString:(NSString*)message;
 @end
+
+@interface UIViewController (SocializeLoadingView)
+- (void)showSocializeLoadingViewInSubview:(UIView*)subview;
+- (void)hideSocializeLoadingView;
+
+@end

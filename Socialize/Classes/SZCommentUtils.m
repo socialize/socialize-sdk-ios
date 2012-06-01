@@ -25,40 +25,58 @@
     return options;
 }
 
-+ (void)showCommentsListWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)())completion {
++ (void)showCommentsListWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity completion:(void(^)())completion {
+    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
+
     SZCommentsListViewController *commentsList = [SZCommentsListViewController commentsListViewControllerWithEntity:entity];
     commentsList.completionBlock = ^{
-        [viewController dismissModalViewControllerAnimated:YES];
+        [wrapper endSequence];
         BLOCK_CALL(completion);
     };
     
-    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:commentsList] autorelease];
-    [viewController presentModalViewController:nav animated:YES];
+    [wrapper beginSequenceWithViewController:commentsList]; 
 }
 
-+ (void)showCommentComposerWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
-    SZStackDisplay *stackDisplay = [SZStackDisplay stackDisplayForDisplay:display];
-    LinkWrapper(stackDisplay, ^{
-        SZComposeCommentMessageViewController *composer = [[[SZComposeCommentMessageViewController alloc] initWithEntity:entity] autorelease];
-        composer.completionBlock = ^(NSString *text, SZCommentOptions *options) {
+// Compose and share (but no initial link)
++ (void)_showCommentComposerWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
+    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
 
-            // Add comment
-            [self addCommentWithDisplay:stackDisplay entity:entity text:text options:options success:^(id<SZComment> comment) {
-                [display socializeWillEndDisplaySequence];
-                BLOCK_CALL_1(success, comment);
-            } failure:^(NSError *error) {
-                [display socializeWillEndDisplaySequence];
-                BLOCK_CALL_1(failure, error);
-            }];
-            
-        };
-        composer.cancellationBlock = ^{
-            [display socializeWillEndDisplaySequence];
-            BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorCommentCancelledByUser]);
-        };
-        [stackDisplay beginWithOrTransitionToViewController:composer];
+    SZComposeCommentMessageViewController *composer = [[[SZComposeCommentMessageViewController alloc] initWithEntity:entity] autorelease];
+    composer.completionBlock = ^(NSString *text, SZCommentOptions *options) {
+        
+        // Add comment
+        [self addCommentWithDisplay:wrapper entity:entity text:text options:options success:^(id<SZComment> comment) {
+            [wrapper endSequence];
+            BLOCK_CALL_1(success, comment);
+        } failure:^(NSError *error) {
+            [wrapper endSequence];
+            BLOCK_CALL_1(failure, error);
+        }];
+        
+    };
+    composer.cancellationBlock = ^{
+        [wrapper endSequence];
+        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorCommentCancelledByUser]);
+    };
+    
+    [wrapper beginSequenceWithViewController:composer];
+}
+
+// Initial Link (if needed), compose, and share (if needed)
++ (void)showCommentComposerWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
+    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
+
+    LinkWrapper(wrapper, ^{
+        [self _showCommentComposerWithDisplay:wrapper entity:entity success:^(id<SZComment> comment) {
+            [wrapper endSequence];
+            BLOCK_CALL_1(success, comment);
+        } failure:^(NSError *error) {
+            [wrapper endSequence];
+            BLOCK_CALL_1(failure, error);
+        }];
+ 
     }, ^(NSError *error) {
-        [display socializeWillEndDisplaySequence];
+        [wrapper endSequence];
         BLOCK_CALL_1(failure, error);
     });
 }
@@ -76,48 +94,58 @@
 }
 
 + (void)addCommentWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
-    SZStackDisplay *stackDisplay = [SZStackDisplay stackDisplayForDisplay:display];
-    
+    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
+
     __block void (^addCommentBlock)() = [^(SZSocialNetwork networks) {
-        [stackDisplay socializeWillStartLoadingWithMessage:@"Creating Comment"];
+        
+        [wrapper startLoadingInTopControllerWithMessage:@"Creating Comment"];
+        
         [self addCommentWithEntity:entity text:text options:options networks:networks success:^(id<SZComment> comment) {
+
+            // Comment has been added
             
-            // Comment created successfully
+            [wrapper stopLoadingInTopController];
+
             [addCommentBlock autorelease];
-            
-            [stackDisplay socializeWillStopLoading];
+
             BLOCK_CALL_1(success, comment);
         } failure:^(NSError *error) {
+            
+            // Comment add failure -- show an alert and possibly loop (recursively call addCommentBlock)
 
-            // Comment create failed -- show an alert
+            [wrapper stopLoadingInTopController];
 
-            [stackDisplay socializeWillStopLoading];
             NSString *message = [NSString stringWithFormat:@"Error code %d", [error code]];
             UIAlertView *alertView = [UIAlertView alertWithTitle:@"Comment Create Failed" message:message];
+            
+            // Cancel button -- fail
             [alertView addButtonWithTitle:@"Cancel" handler:^{
                 
-                // User cancelled out of loop -- fail
                 [addCommentBlock autorelease];
-                [display socializeWillEndDisplaySequence];
+                [wrapper endSequence];
                 BLOCK_CALL_1(failure, error);
             }];
             
+            // Retry button -- recursively call addCommentBlock
             [alertView addButtonWithTitle:@"Retry" handler:addCommentBlock];
-            [stackDisplay socializeWillShowAlertView:alertView];
+            
+            [wrapper showAlertView:alertView];
+            
         }];
         
     } copy]; // `addCommentBlock` refers to the heap version of this block for the recursive alert retry call
     
     if (LinkedSocialNetworks() == SZSocialNetworkNone) {
+        
+        // No networks are linked, so the user must have opted out of linking. Skip the selection dialog
         addCommentBlock(SZSocialNetworkNone);
+        
     } else {
-        [SZShareUtils getPreferredShareNetworksWithDisplay:display success:addCommentBlock failure:^(NSError *error) {
-            if ([error isSocializeErrorWithCode:SocializeErrorProcessCancelledByUser]) {
-                [stackDisplay pop];
-            } else {
-                [display socializeWillEndDisplaySequence];
-                BLOCK_CALL_1(failure, error);
-            }
+
+        // Networks are available, so get the user's post preference (may show network selection dialog)
+        [SZShareUtils getPreferredShareNetworksWithDisplay:wrapper success:addCommentBlock failure:^(NSError *error) {
+            [wrapper endSequence];
+            BLOCK_CALL_1(failure, error);
         }];
     }
 }
