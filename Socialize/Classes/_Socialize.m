@@ -548,6 +548,11 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_likeService deleteLike:like]; 
 }
 
+- (void)deleteLikeForUser:(id<SZFullUser>)user entity:(id<SZEntity>)entity success:(void(^)(id<SZLike>))success failure:(void(^)(NSError *error))failure {
+    [_userService deleteLikeForUser:user entity:entity success:success failure:failure];
+}
+
+
 - (void)createLike:(id<SocializeLike>)like {
     [_likeService createLike:like];
 }
@@ -699,6 +704,18 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
 
 - (void)getCommentsForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
     [_userService getCommentsForUser:user entity:entity first:first last:last success:success failure:failure];
+}
+
+- (void)getLikesWithIds:(NSArray*)likeIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [_likeService getLikesWithIds:likeIds success:success failure:failure];
+}
+
+- (void)getLikesForEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure {
+    [_likeService getLikesForEntity:entity first:first last:last success:success failure:failure];
+}
+
+- (void)createLikes:(NSArray*)likes success:(void(^)(id entityOrEntities))success failure:(void(^)(NSError *error))failure {
+    [_likeService createLikes:likes success:success failure:failure];
 }
 
 #pragma mark activity related stuff

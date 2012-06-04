@@ -546,6 +546,14 @@
 		AA05FF7C157C4B0500E82CB4 /* SZEntityUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */; };
 		AA05FF7D157C4B0500E82CB4 /* SZEntityUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FF7A157C4B0500E82CB4 /* SZEntityUtils.m */; };
 		AA05FF7E157C4B0500E82CB4 /* SZEntityUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FF7A157C4B0500E82CB4 /* SZEntityUtils.m */; };
+		AA05FFA5157C624A00E82CB4 /* SZLikeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFA3157C624A00E82CB4 /* SZLikeUtils.h */; };
+		AA05FFA6157C624A00E82CB4 /* SZLikeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFA3157C624A00E82CB4 /* SZLikeUtils.h */; };
+		AA05FFA7157C624A00E82CB4 /* SZLikeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFA4157C624A00E82CB4 /* SZLikeUtils.m */; };
+		AA05FFA8157C624A00E82CB4 /* SZLikeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFA4157C624A00E82CB4 /* SZLikeUtils.m */; };
+		AA05FFAB157C73AB00E82CB4 /* SZLikeOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */; };
+		AA05FFAC157C73AB00E82CB4 /* SZLikeOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */; };
+		AA05FFAD157C73AB00E82CB4 /* SZLikeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */; };
+		AA05FFAE157C73AB00E82CB4 /* SZLikeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */; };
 		AA06B68C148EE39E00D084D4 /* DebugUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = AA06B68B148EE39E00D084D4 /* DebugUtil.h */; };
 		AA06B68D148EE39E00D084D4 /* DebugUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = AA06B68B148EE39E00D084D4 /* DebugUtil.h */; };
 		AA0705DE156196780001A6FA /* SZShareDialogView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0705DC156196770001A6FA /* SZShareDialogView.h */; };
@@ -2853,6 +2861,10 @@
 		AA047F9E14AD63900047D596 /* SocializeNotificationHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNotificationHandlerTests.m; path = "Test Cases/SocializeNotificationHandlerTests.m"; sourceTree = "<group>"; };
 		AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZEntityUtils.h; path = Classes/SZEntityUtils.h; sourceTree = "<group>"; };
 		AA05FF7A157C4B0500E82CB4 /* SZEntityUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZEntityUtils.m; path = Classes/SZEntityUtils.m; sourceTree = "<group>"; };
+		AA05FFA3157C624A00E82CB4 /* SZLikeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZLikeUtils.h; path = Classes/SZLikeUtils.h; sourceTree = "<group>"; };
+		AA05FFA4157C624A00E82CB4 /* SZLikeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZLikeUtils.m; path = Classes/SZLikeUtils.m; sourceTree = "<group>"; };
+		AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZLikeOptions.h; path = Classes/SZLikeOptions.h; sourceTree = "<group>"; };
+		AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZLikeOptions.m; path = Classes/SZLikeOptions.m; sourceTree = "<group>"; };
 		AA06B68B148EE39E00D084D4 /* DebugUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugUtil.h; sourceTree = "<group>"; };
 		AA0705DC156196770001A6FA /* SZShareDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZShareDialogView.h; path = Classes/SZShareDialogView.h; sourceTree = "<group>"; };
 		AA0705DD156196770001A6FA /* SZShareDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZShareDialogView.m; path = Classes/SZShareDialogView.m; sourceTree = "<group>"; };
@@ -5061,6 +5073,10 @@
 				AA0AE1051571F57A0057FF40 /* SZDisplay.m */,
 				AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */,
 				AA05FF7A157C4B0500E82CB4 /* SZEntityUtils.m */,
+				AA05FFA3157C624A00E82CB4 /* SZLikeUtils.h */,
+				AA05FFA4157C624A00E82CB4 /* SZLikeUtils.m */,
+				AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */,
+				AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -5476,6 +5492,8 @@
 				AAC9AA3015742C3300377869 /* NSMutableArray+Socialize.h in Headers */,
 				AA0A441015756FBC00C56EF6 /* UIBarButtonItem+Socialize.h in Headers */,
 				AA05FF7C157C4B0500E82CB4 /* SZEntityUtils.h in Headers */,
+				AA05FFA6157C624A00E82CB4 /* SZLikeUtils.h in Headers */,
+				AA05FFAC157C73AB00E82CB4 /* SZLikeOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5654,6 +5672,8 @@
 				AAC9AA2F15742C3300377869 /* NSMutableArray+Socialize.h in Headers */,
 				AA0A440F15756FBC00C56EF6 /* UIBarButtonItem+Socialize.h in Headers */,
 				AA05FF7B157C4B0500E82CB4 /* SZEntityUtils.h in Headers */,
+				AA05FFA5157C624A00E82CB4 /* SZLikeUtils.h in Headers */,
+				AA05FFAB157C73AB00E82CB4 /* SZLikeOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7644,6 +7664,8 @@
 				AAC9AA3115742C3300377869 /* NSMutableArray+Socialize.m in Sources */,
 				AA0A441115756FBC00C56EF6 /* UIBarButtonItem+Socialize.m in Sources */,
 				AA05FF7D157C4B0500E82CB4 /* SZEntityUtils.m in Sources */,
+				AA05FFA7157C624A00E82CB4 /* SZLikeUtils.m in Sources */,
+				AA05FFAD157C73AB00E82CB4 /* SZLikeOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8067,6 +8089,8 @@
 				AAC9AA3215742C3300377869 /* NSMutableArray+Socialize.m in Sources */,
 				AA0A441215756FBC00C56EF6 /* UIBarButtonItem+Socialize.m in Sources */,
 				AA05FF7E157C4B0500E82CB4 /* SZEntityUtils.m in Sources */,
+				AA05FFA8157C624A00E82CB4 /* SZLikeUtils.m in Sources */,
+				AA05FFAE157C73AB00E82CB4 /* SZLikeOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

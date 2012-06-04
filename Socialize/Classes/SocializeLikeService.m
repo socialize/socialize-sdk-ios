@@ -36,6 +36,49 @@
     return  @protocol(SocializeLike);
 }
 
+- (void)callLikeWithMethod:(NSString*)method params:(id)params success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+    SocializeRequest *request = [SocializeRequest requestWithHttpMethod:method
+                                                           resourcePath:LIKE_METHOD
+                                                     expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                                                 params:params];
+    
+    request.successBlock = success;
+    request.failureBlock = failure;
+    
+    [self executeRequest:request];
+}
+
+- (void)callLikeGetWithParams:(NSDictionary*)params success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+    [self callLikeWithMethod:@"GET" params:params success:success failure:failure];
+}
+
+- (void)callLikePostWithParams:(NSArray*)params success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [self callLikeWithMethod:@"POST" params:params success:success failure:failure];
+}
+
+- (void)callLikeDeleteWithParams:(NSArray*)params success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [self callLikeWithMethod:@"DELETE" params:params success:success failure:failure];
+}
+
+- (void)getLikesWithIds:(NSArray*)likeIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    NSDictionary *params = [NSDictionary dictionaryWithObject:likeIds forKey:@"id"];
+    [self callLikeGetWithParams:params success:success failure:failure];
+}
+
+- (void)getLikesForEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:entity.key forKey:@"entity_key"];
+    [params setValue:first forKey:@"first"];
+    [params setValue:last forKey:@"last"];
+
+    [self callLikeGetWithParams:params success:success failure:failure];
+}
+
+- (void)createLikes:(NSArray*)likes success:(void(^)(id entityOrEntities))success failure:(void(^)(NSError *error))failure {
+    NSArray* params = [_objectCreator createDictionaryRepresentationArrayForObjects:likes];
+    [self callLikePostWithParams:params success:success failure:failure];
+}
+
 -(void)postLikeForEntity:(id<SocializeEntity>)entity andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat
 {
     SocializeLike *like = [SocializeLike likeWithEntity:entity];

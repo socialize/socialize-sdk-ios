@@ -13,6 +13,7 @@
 #import "UIAlertView+BlocksKit.h"
 #import "SZCommentUtils.h"
 #import "SZComposeCommentViewController.h"
+#import "SZLikeUtils.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -26,6 +27,7 @@ static NSString *kRowText = @"kRowText";
 static NSString *kUserSection = @"kUserSection";
 static NSString *kShareSection = @"kShareSection";
 static NSString *kCommentSection = @"kCommentSection";
+static NSString *kLikeSection = @"kLikeSection";
 
 @interface SampleListViewController ()
 @property (nonatomic, retain) NSArray *sections;
@@ -102,6 +104,12 @@ static NSString *kCommentSection = @"kCommentSection";
 //        [self presentModalViewController:compose animated:YES];
     }]];
 
+    NSMutableArray *likeRows = [NSMutableArray array];
+    [likeRows addObject:[self rowWithText:@"Like an Entity" executionBlock:^{
+        SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
+        [SZLikeUtils likeWithDisplay:self entity:entity success:nil failure:nil];
+    }]];
+    
     return [NSArray arrayWithObjects:
             [self sectionWithIdentifier:kUserSection
                                   title:@"User Utilities"
@@ -112,6 +120,10 @@ static NSString *kCommentSection = @"kCommentSection";
             [self sectionWithIdentifier:kCommentSection
                                   title:@"Comment Utilities"
                                    rows:commentRows],
+            
+            [self sectionWithIdentifier:kLikeSection
+                                  title:@"Like Utilities"
+                                   rows:likeRows],
 
             nil];
 }

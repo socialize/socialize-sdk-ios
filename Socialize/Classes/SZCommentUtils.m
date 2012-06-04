@@ -66,7 +66,7 @@
 + (void)showCommentComposerWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
     SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
 
-    LinkWrapper(wrapper, ^{
+    LinkWrapper(wrapper, ^(BOOL didPrompt, SZSocialNetwork selectedNetwork) {
         [self _showCommentComposerWithDisplay:wrapper entity:entity success:^(id<SZComment> comment) {
             [wrapper endSequence];
             BLOCK_CALL_1(success, comment);

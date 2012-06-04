@@ -47,13 +47,13 @@ BOOL ShouldShowLinkDialog() {
     return ( LinkedSocialNetworks() == SZSocialNetworkNone && AvailableSocialNetworks() != SZSocialNetworkNone && ![Socialize authenticationNotRequired]);
 }
 
-void LinkWrapper(id<SZDisplay> display, void (^success)(), void (^failure)(NSError *error)) {
+void LinkWrapper(id<SZDisplay> display, void (^success)(BOOL didPrompt, SZSocialNetwork selectedNetwork), void (^failure)(NSError *error)) {
     if (ShouldShowLinkDialog()) {
         [SZUserUtils showLinkDialogWithDisplay:display success:^(SZSocialNetwork network) {
-            success();
+            success(YES, network);
         } failure:failure];
     } else {
-        success();
+        success(NO, SZSocialNetworkNone);
     }
 }
 

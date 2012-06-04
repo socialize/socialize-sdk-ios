@@ -19,12 +19,14 @@
 @synthesize  comments = _comments;
 @synthesize  shares = _shares;
 @synthesize  meta = _meta;
+@synthesize  userActionSummary = _userActionSummary;
 
 -(void)dealloc
 {
     [_key release];
     [_name release];
     [_meta release];
+    [_userActionSummary release];
     
     [super dealloc];
 }

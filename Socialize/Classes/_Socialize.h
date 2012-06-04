@@ -556,6 +556,8 @@ otherwise you will get a failure.
  */
 -(void)unlikeEntity:(id<SocializeLike>)like;
 
+- (void)deleteLikeForUser:(id<SZFullUser>)user entity:(id<SZEntity>)entity success:(void(^)(id<SZLike>))success failure:(void(^)(NSError *error))failure;
+
 - (void)createLike:(id<SocializeLike>)like;
 - (void)createLikes:(NSArray*)likes;
 
@@ -764,6 +766,10 @@ otherwise you will get a failure.
 -(void)getActivityOfUser:(id<SocializeUser>)user;
 -(void)getActivityOfUserId:(NSInteger)userId;
 -(void)getActivityOfUserId:(NSInteger)userId first:(NSNumber*)first last:(NSNumber*)last activity:(SocializeActivityType)activityType;
+
+- (void)getLikesWithIds:(NSArray*)likeIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+- (void)getLikesForEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure;
+- (void)createLikes:(NSArray*)likes success:(void(^)(id entityOrEntities))success failure:(void(^)(NSError *error))failure;
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text;
 -(void)createShareForEntityWithKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text;

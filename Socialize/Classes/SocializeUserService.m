@@ -157,4 +157,19 @@
     [self getActivityForEndpoint:USER_COMMENT_ENDPOINT([user objectID]) protocol:@protocol(SocializeShare) user:user entity:entity first:first last:last success:success failure:failure];
 }
 
+- (void)deleteLikeForUser:(id<SZFullUser>)user entity:(id<SZEntity>)entity success:(void(^)(id<SZLike>))success failure:(void(^)(NSError *error))failure {
+    NSDictionary *params = [NSDictionary dictionaryWithObject:[entity key] forKey:@"entity_key"];
+    
+    SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"DELETE"
+                                                           resourcePath:USER_LIKE_ENDPOINT([user objectID])
+                                                     expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                                                 params:params];
+    request.successBlock = success;
+    request.failureBlock = failure;
+
+    request.expectedProtocol = @protocol(SZLike);
+}
+
+
+
 @end

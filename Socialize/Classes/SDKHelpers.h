@@ -19,5 +19,5 @@ typedef void (^ActivityCreatorBlock)(id<SZActivity>, void(^)(id<SZActivity>), vo
 SocializeShareMedium SocializeShareMediumForSZSocialNetworks(SZSocialNetwork networks);
 void CreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *options, SZSocialNetwork networks, ActivityCreatorBlock creator, void (^success)(id<SZActivity> activity), void (^failure)(NSError *error));
 SZActivityOptions *ActivityOptionsFromUserDefaults(Class optionsClass);
-void LinkWrapper(id<SZDisplay> display, void (^success)(), void (^failure)(NSError *error));
+void LinkWrapper(id<SZDisplay> display, void (^success)(BOOL didPrompt, SZSocialNetwork selectedNetwork), void (^failure)(NSError *error));
 BOOL ShouldShowLinkDialog();
