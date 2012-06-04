@@ -91,4 +91,12 @@
 
 - (void)getEntityWithId:(NSNumber*)entityId;
 
+- (void)getEntitiesWithIds:(NSArray*)entityIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+
+- (void)getEntityWithKey:(NSString*)entityKey success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure;
+
+- (void)getEntitiesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure;
+
+- (void)createEntities:(NSArray*)entities success:(void(^)(id entityOrEntities))success failure:(void(^)(NSError *error))failure;
+
 @end

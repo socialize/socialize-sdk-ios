@@ -542,6 +542,10 @@
 		AA047F9B14AD5AA20047D596 /* SocializeNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047F9814AD5AA20047D596 /* SocializeNotificationHandler.m */; };
 		AA047F9C14AD5AA20047D596 /* SocializeNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047F9814AD5AA20047D596 /* SocializeNotificationHandler.m */; };
 		AA047F9F14AD63900047D596 /* SocializeNotificationHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047F9E14AD63900047D596 /* SocializeNotificationHandlerTests.m */; };
+		AA05FF7B157C4B0500E82CB4 /* SZEntityUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */; };
+		AA05FF7C157C4B0500E82CB4 /* SZEntityUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */; };
+		AA05FF7D157C4B0500E82CB4 /* SZEntityUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FF7A157C4B0500E82CB4 /* SZEntityUtils.m */; };
+		AA05FF7E157C4B0500E82CB4 /* SZEntityUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FF7A157C4B0500E82CB4 /* SZEntityUtils.m */; };
 		AA06B68C148EE39E00D084D4 /* DebugUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = AA06B68B148EE39E00D084D4 /* DebugUtil.h */; };
 		AA06B68D148EE39E00D084D4 /* DebugUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = AA06B68B148EE39E00D084D4 /* DebugUtil.h */; };
 		AA0705DE156196780001A6FA /* SZShareDialogView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0705DC156196770001A6FA /* SZShareDialogView.h */; };
@@ -2847,6 +2851,8 @@
 		AA047F9814AD5AA20047D596 /* SocializeNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNotificationHandler.m; path = Classes/SocializeNotificationHandler.m; sourceTree = "<group>"; };
 		AA047F9D14AD63900047D596 /* SocializeNotificationHandlerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNotificationHandlerTests.h; path = "Test Cases/SocializeNotificationHandlerTests.h"; sourceTree = "<group>"; };
 		AA047F9E14AD63900047D596 /* SocializeNotificationHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNotificationHandlerTests.m; path = "Test Cases/SocializeNotificationHandlerTests.m"; sourceTree = "<group>"; };
+		AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZEntityUtils.h; path = Classes/SZEntityUtils.h; sourceTree = "<group>"; };
+		AA05FF7A157C4B0500E82CB4 /* SZEntityUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZEntityUtils.m; path = Classes/SZEntityUtils.m; sourceTree = "<group>"; };
 		AA06B68B148EE39E00D084D4 /* DebugUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugUtil.h; sourceTree = "<group>"; };
 		AA0705DC156196770001A6FA /* SZShareDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZShareDialogView.h; path = Classes/SZShareDialogView.h; sourceTree = "<group>"; };
 		AA0705DD156196770001A6FA /* SZShareDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZShareDialogView.m; path = Classes/SZShareDialogView.m; sourceTree = "<group>"; };
@@ -5053,6 +5059,8 @@
 				AA2C7181156DAF7700796D22 /* SZCommentOptions.m */,
 				AA0AE1041571F57A0057FF40 /* SZDisplay.h */,
 				AA0AE1051571F57A0057FF40 /* SZDisplay.m */,
+				AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */,
+				AA05FF7A157C4B0500E82CB4 /* SZEntityUtils.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -5467,6 +5475,7 @@
 				AA0AE1071571F57A0057FF40 /* SZDisplay.h in Headers */,
 				AAC9AA3015742C3300377869 /* NSMutableArray+Socialize.h in Headers */,
 				AA0A441015756FBC00C56EF6 /* UIBarButtonItem+Socialize.h in Headers */,
+				AA05FF7C157C4B0500E82CB4 /* SZEntityUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5644,6 +5653,7 @@
 				AA0AE1061571F57A0057FF40 /* SZDisplay.h in Headers */,
 				AAC9AA2F15742C3300377869 /* NSMutableArray+Socialize.h in Headers */,
 				AA0A440F15756FBC00C56EF6 /* UIBarButtonItem+Socialize.h in Headers */,
+				AA05FF7B157C4B0500E82CB4 /* SZEntityUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7633,6 +7643,7 @@
 				AA0AE1081571F57A0057FF40 /* SZDisplay.m in Sources */,
 				AAC9AA3115742C3300377869 /* NSMutableArray+Socialize.m in Sources */,
 				AA0A441115756FBC00C56EF6 /* UIBarButtonItem+Socialize.m in Sources */,
+				AA05FF7D157C4B0500E82CB4 /* SZEntityUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8055,6 +8066,7 @@
 				AA0AE1091571F57A0057FF40 /* SZDisplay.m in Sources */,
 				AAC9AA3215742C3300377869 /* NSMutableArray+Socialize.m in Sources */,
 				AA0A441215756FBC00C56EF6 /* UIBarButtonItem+Socialize.m in Sources */,
+				AA05FF7E157C4B0500E82CB4 /* SZEntityUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -625,6 +625,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [self createEntityWithKey:entityKey name:name];
 }
 
+- (void)createEntities:(NSArray*)entities success:(void(^)(id entityOrEntities))success failure:(void(^)(NSError *error))failure {
+    [_entityService createEntities:entities success:success failure:failure];
+}
+
 #pragma view related stuff
 
 -(void)viewEntityWithKey:(NSString*)url longitude:(NSNumber*)lng latitude: (NSNumber*)lat {
@@ -784,8 +788,20 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_entityService getEntitiesWithIds:entityIds];
 }
 
+- (void)getEntitiesWithIds:(NSArray*)entityIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [_entityService getEntitiesWithIds:entityIds success:success failure:failure];
+}
+
 - (void)getEntityWithId:(NSNumber*)entityId {
     [_entityService getEntityWithId:entityId];
+}
+
+- (void)getEntityWithKey:(NSString*)entityKey success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+    [_entityService getEntityWithKey:entityKey success:success failure:failure];
+}
+
+- (void)getEntitiesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+    [_entityService getEntitiesWithFirst:first last:last success:success failure:failure];
 }
 
 - (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values {
