@@ -97,6 +97,19 @@
     }    
 }
 
+- (void)callEndpointWithPath:(NSString*)path method:(NSString*)method params:(NSMutableDictionary*)params  success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    
+    SocializeRequest *request = [SocializeRequest requestWithHttpMethod:method
+                                                           resourcePath:path
+                                                     expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                                                 params:params];
+    
+    request.successBlock = success;
+    request.failureBlock = failure;
+    
+    [self executeRequest:request];
+}
+
 #pragma mark - Socialize request delegate
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error {
      //[self doDidFailWithError:error];

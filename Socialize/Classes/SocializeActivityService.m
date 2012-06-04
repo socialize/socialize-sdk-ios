@@ -14,6 +14,27 @@
 
 @implementation SocializeActivityService
 
+- (void)callActivityGetWithParams:(NSMutableDictionary*)params success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [self callEndpointWithPath:@"activity/" method:@"GET" params:params success:success failure:failure];
+}
+
+- (void)getActivityOfApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    [params setValue:first forKey:@"first"];
+    [params setValue:last forKey:@"last"];
+    
+    [self callActivityGetWithParams:params success:success failure:failure];
+}
+
+- (void)getActivityOfEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    [params setValue:first forKey:@"first"];
+    [params setValue:last forKey:@"last"];
+    [params addEntriesFromDictionary:SZServerParamsForEntity(entity)];
+    
+    [self callActivityGetWithParams:params success:success failure:failure];
+}
+
 -(NSString*)resourcePathWithUserId: (int)identificator andActivityType:(SocializeActivityType) type
 {
     NSString* resourcePath = nil;

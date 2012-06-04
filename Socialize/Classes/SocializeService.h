@@ -44,6 +44,7 @@
 
 -(id) initWithObjectFactory: (SocializeObjectFactory*) objectFactory delegate:(id<SocializeServiceDelegate>) delegate;
 
+- (void)callEndpointWithPath:(NSString*)path method:(NSString*)method params:(NSMutableDictionary*)params  success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
 - (void)executeRequest:(SocializeRequest*)request;
 -(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList;
 -(NSMutableArray *)getObjectListArray:(id)objectList;

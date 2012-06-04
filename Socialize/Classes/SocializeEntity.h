@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeObject.h"
+#import "SocializeCommonDefinitions.h"
 
 /**
  Protocol for socialize entity representation.
@@ -103,3 +104,5 @@
 + (SocializeEntity*)entityWithKey:(NSString*)key name:(NSString*)name;
 
 @end
+
+NSDictionary *SZServerParamsForEntity(id<SZEntity> entity);

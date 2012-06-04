@@ -7,7 +7,7 @@
 //
 
 #import "SocializeEntity.h"
-
+#import "SocializeObjectFactory.h"
 
 @implementation SocializeEntity
 
@@ -39,3 +39,16 @@
 }
 
 @end
+
+NSDictionary *SZServerParamsForEntity(id<SZEntity> entity) {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([[entity name] length] > 0) {
+        NSDictionary *subParams = [[SocializeObjectFactory sharedObjectFactory] createDictionaryRepresentationOfObject:entity];
+        [params setObject:subParams forKey:@"entity"];
+    } else {
+        [params setObject:[entity key] forKey:@"entity_key"];
+    }
+    
+    return params;
+}
+
