@@ -554,6 +554,10 @@
 		AA05FFAC157C73AB00E82CB4 /* SZLikeOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */; };
 		AA05FFAD157C73AB00E82CB4 /* SZLikeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */; };
 		AA05FFAE157C73AB00E82CB4 /* SZLikeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */; };
+		AA05FFB1157D1FE400E82CB4 /* SZSmartAlertUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFAF157D1FE300E82CB4 /* SZSmartAlertUtils.h */; };
+		AA05FFB2157D1FE400E82CB4 /* SZSmartAlertUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFAF157D1FE300E82CB4 /* SZSmartAlertUtils.h */; };
+		AA05FFB3157D1FE400E82CB4 /* SZSmartAlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFB0157D1FE400E82CB4 /* SZSmartAlertUtils.m */; };
+		AA05FFB4157D1FE400E82CB4 /* SZSmartAlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFB0157D1FE400E82CB4 /* SZSmartAlertUtils.m */; };
 		AA06B68C148EE39E00D084D4 /* DebugUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = AA06B68B148EE39E00D084D4 /* DebugUtil.h */; };
 		AA06B68D148EE39E00D084D4 /* DebugUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = AA06B68B148EE39E00D084D4 /* DebugUtil.h */; };
 		AA0705DE156196780001A6FA /* SZShareDialogView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0705DC156196770001A6FA /* SZShareDialogView.h */; };
@@ -2865,6 +2869,8 @@
 		AA05FFA4157C624A00E82CB4 /* SZLikeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZLikeUtils.m; path = Classes/SZLikeUtils.m; sourceTree = "<group>"; };
 		AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZLikeOptions.h; path = Classes/SZLikeOptions.h; sourceTree = "<group>"; };
 		AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZLikeOptions.m; path = Classes/SZLikeOptions.m; sourceTree = "<group>"; };
+		AA05FFAF157D1FE300E82CB4 /* SZSmartAlertUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZSmartAlertUtils.h; path = Classes/SZSmartAlertUtils.h; sourceTree = "<group>"; };
+		AA05FFB0157D1FE400E82CB4 /* SZSmartAlertUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZSmartAlertUtils.m; path = Classes/SZSmartAlertUtils.m; sourceTree = "<group>"; };
 		AA06B68B148EE39E00D084D4 /* DebugUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugUtil.h; sourceTree = "<group>"; };
 		AA0705DC156196770001A6FA /* SZShareDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZShareDialogView.h; path = Classes/SZShareDialogView.h; sourceTree = "<group>"; };
 		AA0705DD156196770001A6FA /* SZShareDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZShareDialogView.m; path = Classes/SZShareDialogView.m; sourceTree = "<group>"; };
@@ -5077,6 +5083,8 @@
 				AA05FFA4157C624A00E82CB4 /* SZLikeUtils.m */,
 				AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */,
 				AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */,
+				AA05FFAF157D1FE300E82CB4 /* SZSmartAlertUtils.h */,
+				AA05FFB0157D1FE400E82CB4 /* SZSmartAlertUtils.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -5494,6 +5502,7 @@
 				AA05FF7C157C4B0500E82CB4 /* SZEntityUtils.h in Headers */,
 				AA05FFA6157C624A00E82CB4 /* SZLikeUtils.h in Headers */,
 				AA05FFAC157C73AB00E82CB4 /* SZLikeOptions.h in Headers */,
+				AA05FFB2157D1FE400E82CB4 /* SZSmartAlertUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5674,6 +5683,7 @@
 				AA05FF7B157C4B0500E82CB4 /* SZEntityUtils.h in Headers */,
 				AA05FFA5157C624A00E82CB4 /* SZLikeUtils.h in Headers */,
 				AA05FFAB157C73AB00E82CB4 /* SZLikeOptions.h in Headers */,
+				AA05FFB1157D1FE400E82CB4 /* SZSmartAlertUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7666,6 +7676,7 @@
 				AA05FF7D157C4B0500E82CB4 /* SZEntityUtils.m in Sources */,
 				AA05FFA7157C624A00E82CB4 /* SZLikeUtils.m in Sources */,
 				AA05FFAD157C73AB00E82CB4 /* SZLikeOptions.m in Sources */,
+				AA05FFB3157D1FE400E82CB4 /* SZSmartAlertUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8091,6 +8102,7 @@
 				AA05FF7E157C4B0500E82CB4 /* SZEntityUtils.m in Sources */,
 				AA05FFA8157C624A00E82CB4 /* SZLikeUtils.m in Sources */,
 				AA05FFAE157C73AB00E82CB4 /* SZLikeOptions.m in Sources */,
+				AA05FFB4157D1FE400E82CB4 /* SZSmartAlertUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
