@@ -24,4 +24,13 @@
     [super dealloc];
 }
 
++ (SocializeSubscription*)subscriptionWithEntity:(id<SocializeEntity>)entity type:(NSString*)type subscribed:(BOOL)subscribed {
+    SocializeSubscription *subscription = [[[SocializeSubscription alloc] init] autorelease];
+    [subscription setEntity:entity];
+    [subscription setType:type];
+    [subscription setSubscribed:subscribed];
+    
+    return subscription;
+}
+
 @end

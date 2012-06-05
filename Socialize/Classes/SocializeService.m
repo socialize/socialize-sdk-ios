@@ -110,6 +110,12 @@
     [self executeRequest:request];
 }
 
+- (void)callListingGetEndpointWithPath:(NSString*)path params:(NSMutableDictionary*)params first:(NSNumber*)start last:(NSNumber*)end success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [params setValue:start forKey:@"start"];
+    [params setValue:end forKey:@"end"];
+    [self callEndpointWithPath:path method:@"GET" params:params success:success failure:failure];
+}
+
 #pragma mark - Socialize request delegate
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error {
      //[self doDidFailWithError:error];

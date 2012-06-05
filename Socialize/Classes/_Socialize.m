@@ -799,6 +799,18 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_subscriptionService getSubscriptionsForEntityKey:entityKey first:first last:last];
 }
 
+- (void)getSubscriptionsForEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *subscriptions))success failure:(void(^)(NSError *error))failure {
+    [_subscriptionService getSubscriptionsForEntity:entity first:first last:last success:success failure:failure];
+}
+
+- (void)createSubscriptions:(NSArray*)subscriptions success:(void(^)(NSArray *subscriptions))success failure:(void(^)(NSError *error))failure {
+    [_subscriptionService createSubscriptions:subscriptions success:success failure:failure];
+}
+
+- (void)createSubscription:(id<SZSubscription>)subscription success:(void(^)(id<SZSubscription>))success failure:(void(^)(NSError *error))failure {
+    [_subscriptionService createSubscription:subscription success:success failure:failure];
+}
+
 - (BOOL)notificationsAreConfigured {
     BOOL entityLoaderDefined = [Socialize entityLoaderBlock] != nil;
     BOOL tokenAvailable = [[SocializeDeviceTokenSender sharedDeviceTokenSender] tokenAvailable];
