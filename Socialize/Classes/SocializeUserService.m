@@ -32,6 +32,7 @@
 #import "SocializeEntity.h"
 #import "SocializeLike.h"
 #import "SocializeShare.h"
+#import "SocializeView.h"
 
 #define USER_GET_ENDPOINT     @"user/"
 #define USER_POST_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/", userid]
@@ -39,6 +40,7 @@
 #define USER_SHARE_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/share/", userid]
 #define USER_COMMENT_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/comment/", userid]
 #define USER_ACTIVITY_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/activity/", userid]
+#define USER_VIEW_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/view/", userid]
 
 @implementation SocializeUserService
 
@@ -160,6 +162,10 @@
 
 - (void)getActivityForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
     [self getActivityForEndpoint:USER_ACTIVITY_ENDPOINT([user objectID]) protocol:@protocol(SocializeActivity) user:user entity:entity first:first last:last success:success failure:failure];
+}
+
+- (void)getViewsForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
+    [self getActivityForEndpoint:USER_VIEW_ENDPOINT([user objectID]) protocol:@protocol(SocializeView) user:user entity:entity first:first last:last success:success failure:failure];
 }
 
 - (void)deleteLikeForUser:(id<SZFullUser>)user entity:(id<SZEntity>)entity success:(void(^)(id<SZLike>))success failure:(void(^)(NSError *error))failure {

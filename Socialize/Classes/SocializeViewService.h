@@ -21,6 +21,11 @@
 
 }
 
+- (void)createViews:(NSArray*)views success:(void(^)(NSArray *views))success failure:(void(^)(NSError *error))failure;
+- (void)createView:(id<SZView>)view success:(void(^)(id<SZView>))success failure:(void(^)(NSError *error))failure;
+- (void)createViews:(NSArray*)views;
+- (void)createView:(id<SocializeView>)view;
+
 /**@name Create view*/
 
 /**
@@ -56,8 +61,5 @@
  */
 //-(void)getViewsForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last;
 
-- (void)createViews:(NSArray*)views;
-
-- (void)createView:(id<SocializeView>)view;
 
 @end

@@ -566,6 +566,10 @@
 		AA05FFF4157D623500E82CB4 /* SZSubscriptionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFF1157D623500E82CB4 /* SZSubscriptionUtils.h */; };
 		AA05FFF5157D623500E82CB4 /* SZSubscriptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFF2157D623500E82CB4 /* SZSubscriptionUtils.m */; };
 		AA05FFF6157D623500E82CB4 /* SZSubscriptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFF2157D623500E82CB4 /* SZSubscriptionUtils.m */; };
+		AA05FFF9157E7AAE00E82CB4 /* SZViewUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFF7157E7AAC00E82CB4 /* SZViewUtils.h */; };
+		AA05FFFA157E7AAE00E82CB4 /* SZViewUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFF7157E7AAC00E82CB4 /* SZViewUtils.h */; };
+		AA05FFFB157E7AAE00E82CB4 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFF8157E7AAD00E82CB4 /* SZViewUtils.m */; };
+		AA05FFFC157E7AAE00E82CB4 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFF8157E7AAD00E82CB4 /* SZViewUtils.m */; };
 		AA06B68C148EE39E00D084D4 /* DebugUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = AA06B68B148EE39E00D084D4 /* DebugUtil.h */; };
 		AA06B68D148EE39E00D084D4 /* DebugUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = AA06B68B148EE39E00D084D4 /* DebugUtil.h */; };
 		AA0705DE156196780001A6FA /* SZShareDialogView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0705DC156196770001A6FA /* SZShareDialogView.h */; };
@@ -2883,6 +2887,8 @@
 		AA05FFB6157D215100E82CB4 /* SZActionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZActionUtils.m; path = Classes/SZActionUtils.m; sourceTree = "<group>"; };
 		AA05FFF1157D623500E82CB4 /* SZSubscriptionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZSubscriptionUtils.h; path = Classes/SZSubscriptionUtils.h; sourceTree = "<group>"; };
 		AA05FFF2157D623500E82CB4 /* SZSubscriptionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZSubscriptionUtils.m; path = Classes/SZSubscriptionUtils.m; sourceTree = "<group>"; };
+		AA05FFF7157E7AAC00E82CB4 /* SZViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZViewUtils.h; path = Classes/SZViewUtils.h; sourceTree = "<group>"; };
+		AA05FFF8157E7AAD00E82CB4 /* SZViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZViewUtils.m; path = Classes/SZViewUtils.m; sourceTree = "<group>"; };
 		AA06B68B148EE39E00D084D4 /* DebugUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugUtil.h; sourceTree = "<group>"; };
 		AA0705DC156196770001A6FA /* SZShareDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZShareDialogView.h; path = Classes/SZShareDialogView.h; sourceTree = "<group>"; };
 		AA0705DD156196770001A6FA /* SZShareDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZShareDialogView.m; path = Classes/SZShareDialogView.m; sourceTree = "<group>"; };
@@ -5101,6 +5107,8 @@
 				AA05FFB6157D215100E82CB4 /* SZActionUtils.m */,
 				AA05FFF1157D623500E82CB4 /* SZSubscriptionUtils.h */,
 				AA05FFF2157D623500E82CB4 /* SZSubscriptionUtils.m */,
+				AA05FFF7157E7AAC00E82CB4 /* SZViewUtils.h */,
+				AA05FFF8157E7AAD00E82CB4 /* SZViewUtils.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -5521,6 +5529,7 @@
 				AA05FFB2157D1FE400E82CB4 /* SZSmartAlertUtils.h in Headers */,
 				AA05FFB8157D215200E82CB4 /* SZActionUtils.h in Headers */,
 				AA05FFF4157D623500E82CB4 /* SZSubscriptionUtils.h in Headers */,
+				AA05FFFA157E7AAE00E82CB4 /* SZViewUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5704,6 +5713,7 @@
 				AA05FFB1157D1FE400E82CB4 /* SZSmartAlertUtils.h in Headers */,
 				AA05FFB7157D215200E82CB4 /* SZActionUtils.h in Headers */,
 				AA05FFF3157D623500E82CB4 /* SZSubscriptionUtils.h in Headers */,
+				AA05FFF9157E7AAE00E82CB4 /* SZViewUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7699,6 +7709,7 @@
 				AA05FFB3157D1FE400E82CB4 /* SZSmartAlertUtils.m in Sources */,
 				AA05FFB9157D215200E82CB4 /* SZActionUtils.m in Sources */,
 				AA05FFF5157D623500E82CB4 /* SZSubscriptionUtils.m in Sources */,
+				AA05FFFB157E7AAE00E82CB4 /* SZViewUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8127,6 +8138,7 @@
 				AA05FFB4157D1FE400E82CB4 /* SZSmartAlertUtils.m in Sources */,
 				AA05FFBA157D215200E82CB4 /* SZActionUtils.m in Sources */,
 				AA05FFF6157D623500E82CB4 /* SZSubscriptionUtils.m in Sources */,
+				AA05FFFC157E7AAE00E82CB4 /* SZViewUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

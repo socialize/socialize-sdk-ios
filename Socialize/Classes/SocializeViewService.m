@@ -26,10 +26,33 @@
     return  @protocol(SocializeView);
 }
 
+- (void)callViewPostWithParams:(id)params success:(void(^)(NSArray *views))success failure:(void(^)(NSError *error))failure {
+    [self callEndpointWithPath:VIEW_METHOD method:@"POST" params:params success:success failure:failure];
+}
+
+- (void)createViews:(NSArray*)views success:(void(^)(NSArray *views))success failure:(void(^)(NSError *error))failure {
+    NSArray *params = [_objectCreator createDictionaryRepresentationArrayForObjects:views];
+    [self callViewPostWithParams:params success:success failure:failure];
+}
+
+- (void)createView:(id<SZView>)view success:(void(^)(id<SZView>))success failure:(void(^)(NSError *error))failure {
+    [self createViews:[NSArray arrayWithObject:view] success:^(NSArray *views) {
+        BLOCK_CALL_1(success, [views objectAtIndex:0]);
+    } failure:failure];
+}
+
+- (void)createView:(id<SocializeView>)view {
+    [self createView:view success:nil failure:nil];
+}
+
+- (void)createViews:(NSArray*)views {
+    [self createViews:views success:nil failure:nil];
+}
+
 -(void)createViewForEntity:(id<SocializeEntity>)entity longitude:(NSNumber*)lng latitude: (NSNumber*)lat{
-    SocializeView *view = [SocializeView viewWithEntity:entity];
-    view.lng = lng;
+    SZView *view = [SZView viewWithEntity:entity];
     view.lat = lat;
+    view.lng = lng;
     
     [self createView:view];
 }
@@ -38,38 +61,6 @@
     SocializeEntity *entity = [SocializeEntity entityWithKey:key name:nil];
     [self createViewForEntity:entity longitude:lng latitude:lat];
 }
-
-- (void)createViews:(NSArray*)views {
-    NSArray *params = [_objectCreator createDictionaryRepresentationArrayForObjects:views];
-    [self executeRequest:
-     [SocializeRequest requestWithHttpMethod:@"POST"
-                                resourcePath:VIEW_METHOD
-                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
-                                      params:params]
-     ];
-}
-
-- (void)createView:(id<SocializeView>)view {
-    [self createViews:[NSArray arrayWithObject:view]];
-}
-
-/*
--(void)getViewsForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last{
-    NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
-    if (key)
-        [params setObject:key forKey:@"entity_key"];
-    if (first && last){
-        [params setObject:first forKey:@"first"];
-        [params setObject:last forKey:@"last"];
-    }
-    [self executeRequest:
-     [SocializeRequest requestWithHttpMethod:@"GET"
-                                resourcePath:VIEW_METHOD
-                          expectedJSONFormat:SocializeDictionaryWIthListAndErrors
-                                      params:params]
-     ];
-}
-*/
 
 
 @end
