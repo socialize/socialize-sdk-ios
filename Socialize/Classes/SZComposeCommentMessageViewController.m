@@ -12,11 +12,8 @@
 #import "UINavigationController+Socialize.h"
 #import "SocializeAuthViewController.h"
 #import "SocializeSubscriptionService.h"
-#import "SocializeCommentCreator.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
-#import "SocializeFacebookAuthenticator.h"
-#import "SocializeTwitterAuthenticator.h"
 #import "SocializeUIDisplayProxy.h"
 #import "SZCommentUtils.h"
 

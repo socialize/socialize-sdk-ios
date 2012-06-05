@@ -12,6 +12,7 @@
 #import "_Socialize.h"
 #import "UIAlertView+BlocksKit.h"
 #import "SocializeFacebookInterface.h"
+#import "SZDisplay.h"
 
 @implementation SZFacebookUtils
 
@@ -56,11 +57,25 @@
                                                        } failure:failure];
 }
 
-+ (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
-
++ (void)_linkWithDisplay:(id<SZDisplay>)display success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
+    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
+    
     NSString *facebookAppId = [SocializeThirdPartyFacebook facebookAppId];
     NSString *urlSchemeSuffix = [SocializeThirdPartyFacebook facebookUrlSchemeSuffix];
     NSArray *permissions = [NSArray arrayWithObjects:@"publish_stream", @"offline_access", nil];
+    
+    [[SocializeFacebookAuthHandler sharedFacebookAuthHandler]
+     authenticateWithAppId:facebookAppId
+     urlSchemeSuffix:urlSchemeSuffix
+     permissions:permissions
+     success:^(NSString *accessToken, NSDate *expirationDate) {
+         [wrapper startLoadingInTopControllerWithMessage:@"Linking With Facebook"];
+         [self linkWithAccessToken:accessToken expirationDate:expirationDate success:success failure:failure];
+     } failure:failure];
+}
+
++ (void)linkWithDisplay:(id<SZDisplay>)display success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
+    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
 
     NSString *title = @"Facebook Login Required";
     NSString *message = @"Do you want to log in with Facebook?";
@@ -71,16 +86,10 @@
     }];
     
     [alertView addButtonWithTitle:@"Yes" handler:^{
-        [[SocializeFacebookAuthHandler sharedFacebookAuthHandler]
-         authenticateWithAppId:facebookAppId
-         urlSchemeSuffix:urlSchemeSuffix
-         permissions:permissions
-         success:^(NSString *accessToken, NSDate *expirationDate) {
-             [self linkWithAccessToken:accessToken expirationDate:expirationDate success:success failure:failure];
-         } failure:failure];
+        [self _linkWithDisplay:display success:success failure:failure];
     }];
     
-    [alertView show];
+    [wrapper showAlertView:alertView];
 }
 
 + (void)sendRequestWithHTTPMethod:(NSString*)method graphPath:(NSString*)graphPath postData:(NSDictionary*)postData success:(void(^)(id))success failure:(void(^)(NSError *error))failure {

@@ -39,11 +39,8 @@
 #import "SocializeFacebookInterface.h"
 #import "SocializeEntityService.h"
 #import "SZProfileViewController.h"
-#import "SocializeUIShareOptions.h"
 #import "NSError+Socialize.h"
 #import "SocializeUIDisplayProxy.h"
-#import "SocializeUIShareCreator.h"
-#import "SocializeUILikeCreator.h"
 #import "SZNavigationController.h"
 #import "SZDisplay.h"
 

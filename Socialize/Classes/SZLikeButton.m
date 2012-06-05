@@ -11,7 +11,6 @@
 #import "SocializeEntityService.h"
 #import "SocializeLikeService.h"
 #import "NSTimer+BlocksKit.h"
-#import "SocializeUILikeCreator.h"
 #import "NSNumber+Additions.h"
 #import "UIAlertView+BlocksKit.h"
 

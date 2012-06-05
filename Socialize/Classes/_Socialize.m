@@ -23,18 +23,17 @@
 #import "NSTimer+BlocksKit.h"
 #import "SocializeNotificationHandler.h"
 #import "StringHelper.h"
-#import "SocializeTwitterAuthenticator.h"
 #import "SocializeDeviceTokenSender.h"
-#import "SocializeUIShareCreator.h"
-#import "SocializeUIShareOptions.h"
-#import "SocializeTwitterAuthOptions.h"
 #import "SocializeFacebookAuthHandler.h"
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
-#import "SocializeFacebookAuthenticator.h"
 #import "SocializeEventService.h"
 #import "SZTwitterUtils.h"
 #import "SZFacebookUtils.h"
+
+@interface SZFacebookUtils ()
++ (void)_linkWithSuccess:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
+@end
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -415,7 +414,7 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
                                   success:(void(^)())success
                                   failure:(void(^)(NSError *error))failure {
     
-    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options display:display success:success failure:failure];
+    [SZTwitterUtils linkWithDisplay:display success:success failure:failure];
 }
 
 -(void)authenticateAnonymously
@@ -455,12 +454,11 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [Socialize storeFacebookAppId:thirdPartyAppId];
     [Socialize storeFacebookLocalAppId:thirdPartyLocalAppId];
 
-    SocializeFacebookAuthOptions *options = [SocializeFacebookAuthOptions options];
-    options.doNotPromptForPermission = YES;
-    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:options
-                                                               display:nil
-                                                               success:nil
-                                                               failure:nil];
+    [SZFacebookUtils _linkWithSuccess:^(id<SZFullUser> user) {
+        [self.delegate didAuthenticate:(id<SZUser>)user];
+    } failure:^(NSError *error) {
+        [self.delegate service:_authService didFail:error];
+    }];
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey
@@ -832,10 +830,6 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
 
 - (void)_registerDeviceTokenString:(NSString*)deviceTokenString {
     [_deviceTokenService registerDeviceTokenString:deviceTokenString];
-}
-
-+ (void)createShareWithOptions:(SocializeUIShareOptions*)options display:(id)display success:(void(^)())success failure:(void(^)(NSError *error))failure {
-    [SocializeUIShareCreator createShareWithOptions:options display:display success:success failure:failure];
 }
 
 - (void)getEntitiesWithIds:(NSArray*)entityIds {

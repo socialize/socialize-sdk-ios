@@ -13,6 +13,7 @@
 #import "UINavigationController+Socialize.h"
 #import "SocializeActivityViewController.h"
 #import "SZNavigationController.h"
+#import "SZUserUtils.h"
 
 @interface SZProfileViewController ()
 -(void)configureViews;
@@ -109,7 +110,7 @@
         [self.socialize getUserWithId:self.user.objectID];
     } else {
         // no full user or partial user, load for current user
-        [self getCurrentUser];
+        self.fullUser = [SZUserUtils currentUser];
     }
 }
 

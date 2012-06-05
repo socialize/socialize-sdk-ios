@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SZDisplay.h"
 
 @protocol SZSocialNetworkUtils <NSObject>
 + (BOOL)isAvailable;
 + (BOOL)isLinked;
 
-+ (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
++ (void)linkWithDisplay:(id<SZDisplay>)display success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
 + (void)unlink;
 
 @end

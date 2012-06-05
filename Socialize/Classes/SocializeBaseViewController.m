@@ -40,9 +40,9 @@
 #import "UINavigationController+Socialize.h"
 #import "SocializePreprocessorUtilities.h"
 #import "SocializeThirdPartyFacebook.h"
-#import "SocializeFacebookAuthenticator.h"
 #import "SZDisplay.h"
 #import "SZUserUtils.h"
+#import "UIAlertView+BlocksKit.h"
 
 @interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
 @end
@@ -53,12 +53,8 @@
 SYNTH_RED_SOCIALIZE_BAR_BUTTON(settingsButton, @"Settings")
 SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(doneButton, @"Done")
 SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
-@synthesize genericAlertView = genericAlertView_;
 @synthesize socialize = socialize_;
 @synthesize imagesCache = imagesCache_;
-@synthesize shareBuilder = shareBuilder_;
-@synthesize sendActivityToFacebookFeedAlertView = sendActivityToFacebookFeedAlertView_;
-@synthesize authViewController = authViewController_;
 @synthesize bundle = bundle_;
 @synthesize keyboardListener = keyboardListener_;
 @synthesize completionBlock = completionBlock_;
@@ -75,16 +71,9 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     self.doneButton = nil;
     self.cancelButton = nil;
     self.settingsButton = nil;
-    self.genericAlertView.delegate = nil;
-    self.genericAlertView = nil;
     self.socialize.delegate = nil;
     self.socialize = nil;
     self.imagesCache = nil;
-    self.shareBuilder.successAction = nil;
-    self.shareBuilder.errorAction = nil;
-    self.shareBuilder = nil;
-    self.sendActivityToFacebookFeedAlertView = nil;
-    self.authViewController = nil;
     self.bundle = nil;
     self.keyboardListener.delegate = nil;
     self.keyboardListener = nil;
@@ -111,9 +100,6 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     self.doneButton = nil;
     self.cancelButton = nil;
     self.settingsButton = nil;
-    self.genericAlertView = nil;
-    self.sendActivityToFacebookFeedAlertView = nil;
-    self.authViewController = nil;
 }
 
 - (void)viewDidLoad {
@@ -223,19 +209,8 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (UIAlertView*)genericAlertView {
-    if (genericAlertView_ == nil) {
-        genericAlertView_ = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    }
-    
-    return genericAlertView_;
-}
-
--(void) showAlertWithText:(NSString*)alertMessage andTitle:(NSString*)title
-{
-    self.genericAlertView.message = alertMessage;
-    self.genericAlertView.title = title;
-    [self.genericAlertView show];
+-(void) showAlertWithText:(NSString*)alertMessage andTitle:(NSString*)title {
+    [UIAlertView showAlertWithTitle:title message:alertMessage buttonTitle:@"Ok" handler:nil];
 }
 
 - (UIView*)showLoadingInView {
@@ -273,10 +248,6 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 
 -(BOOL)shouldAutoAuthOnAppear {
     return YES;
-}
-
--(BOOL) shouldShowAuthViewController {
-    return ( ![self.socialize isAuthenticatedWithThirdParty] && [self.socialize thirdPartyAvailable] && ![Socialize authenticationNotRequired]);
 }
 
 -(void)performAutoAuth
@@ -357,106 +328,11 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [localNavigationController.navigationBar resetBackground];
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (alertView == self.sendActivityToFacebookFeedAlertView) {
-        if (buttonIndex == alertView.cancelButtonIndex) {
-            [self sendActivityToFacebookFeedCancelled];
-        }
-        else if (buttonIndex == alertView.firstOtherButtonIndex) {
-            [self sendActivityToFacebookFeed:self.shareBuilder.shareObject];
-        }
-    }
-}
-
-- (void)authenticateWithFacebook {
-    if (![SocializeThirdPartyFacebook available]) {
-        [self showAlertWithText:@"Proper facebook configuration is required to use this view" andTitle:@"Facebook not Configured"];
-        return;
-    }
-    
-    if (![SocializeThirdPartyFacebook isLinkedToSocialize]) {
-        [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:nil
-                                                                   display:self
-                                                                   success:^{
-                                                                       [self afterLoginAction:YES];
-                                                                   } failure:^(NSError *error) {
-                                                                       [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
-                                                                   }];
-    }
-}
--(UINavigationController *)authViewController{    
-    if(!authViewController_) {
-        authViewController_ = [[SocializeAuthViewController authViewControllerInNavigationController:self] retain];
-    }
-    return authViewController_;
-}
-
 -(void)didAuthenticate:(id<SocializeUser>)user
 {
     [self stopLoadAnimation];
     
     [self afterLoginAction:YES];
-}
-
-- (UIAlertView*)sendActivityToFacebookFeedAlertView {
-    if (sendActivityToFacebookFeedAlertView_ == nil) {
-        sendActivityToFacebookFeedAlertView_ = [[UIAlertView alloc]
-                                                initWithTitle:@"Facebook Error"
-                                                message:nil
-                                                delegate:self
-                                                cancelButtonTitle:@"Dismiss"
-                                                otherButtonTitles:@"Retry", nil];
-    }
-    
-    return sendActivityToFacebookFeedAlertView_;
-}
-
-- (void)sendActivityToFacebookFeedSucceeded {
-    [self stopLoading];
-}
-    
-- (void)sendActivityToFacebookFeedFailed:(NSError*)error {
-    [self stopLoading];
-    
-    NSString *message = @"There was a Problem Writing to Your Facebook Wall";
-    
-    // Provide more detailed error if available
-    NSString *facebookErrorType = [[[error userInfo] objectForKey:@"error"] objectForKey:@"type"];
-    NSString *facebookErrorMessage = [[[error userInfo] objectForKey:@"error"] objectForKey:@"message"];
-    if (facebookErrorType != nil && facebookErrorMessage != nil) {
-        message = [NSString stringWithFormat:@"%@: %@", facebookErrorType, facebookErrorMessage];
-    }
-    
-    self.sendActivityToFacebookFeedAlertView.message = message;
-    
-    [self.sendActivityToFacebookFeedAlertView show];
-}
-
-- (void)sendActivityToFacebookFeedCancelled {
-    
-}
-
-- (SocializeShareBuilder*)shareBuilder {
-    if (shareBuilder_ == nil) {
-        shareBuilder_ = [[SocializeShareBuilder alloc] init];
-        shareBuilder_.shareProtocol = [[[SocializeFacebookInterface alloc] init] autorelease];
-        
-        __block __typeof__(self) weakSelf = self;
-        shareBuilder_.successAction = ^{
-            [weakSelf sendActivityToFacebookFeedSucceeded];
-        };
-        shareBuilder_.errorAction = ^(NSError *error) {
-            [weakSelf sendActivityToFacebookFeedFailed:error];
-        };
-        
-    }
-    return shareBuilder_;
-}
-
-- (void)sendActivityToFacebookFeed:(id<SocializeActivity>)activity {
-    [self startLoading];
-    self.shareBuilder.shareObject = activity;
-    [self.shareBuilder performShareForPath:@"me/feed"];
 }
 
 - (void)loadImageAtURL:(NSString*)imageURL
@@ -489,26 +365,6 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [self.imagesCache loadImageFromUrl:imageURL
                         completeAction:complete];
 
-}
-
-- (void)getCurrentUser {
-    [self startLoading];
-    [self.socialize getCurrentUser];
-}
-
-- (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser {
-    
-}
-
--(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
-{
-    [self stopLoading];
-    
-    if ([service isKindOfClass:[SocializeUserService class]]) {
-        id<SocializeFullUser> fullUser = [dataArray objectAtIndex:0];
-        NSAssert([fullUser conformsToProtocol:@protocol(SocializeFullUser)], @"Not a socialize user");
-        [self didGetCurrentUser:fullUser];
-    }
 }
 
 @end

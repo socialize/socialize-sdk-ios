@@ -15,8 +15,8 @@
 #import "SocializeAuthInfoTableViewCell.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
-#import "SocializeFacebookAuthenticator.h"
-#import "SocializeTwitterAuthenticator.h"
+#import "SZFacebookUtils.h"
+#import "SZTwitterUtils.h"
 
 static NSString *const kAuthTypeRowText = @"kAuthTypeRowText";
 static NSString *const kAuthTypeRowImageName = @"kAuthTypeRowImageName";
@@ -135,18 +135,14 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 - (void)authenticateWithFacebook {
     self.selectedNetwork = SZSocialNetworkFacebook;
 
-    SocializeFacebookAuthOptions *options = [SocializeFacebookAuthOptions options];
-    options.doNotPromptForPermission = YES;
-
-    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:options
-                                                               display:self
-                                                               success:^{
-                                                                   [self authenticationComplete];
-                                                               } failure:^(NSError *error) {
-                                                                   if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
-                                                                       [self failWithError:error];
-                                                                   }
-                                                               }];
+    [SZFacebookUtils linkWithDisplay:self success:^(id<SZFullUser> fullUser) {
+        [self authenticationComplete];
+    } failure:^(NSError *error) {
+        if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
+            [self failWithError:error];
+        }
+    }];
+    
 }
 
 - (void)authenticationComplete {
@@ -159,18 +155,13 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 - (void)authenticateWithTwitter {
     self.selectedNetwork = SZSocialNetworkTwitter;
     
-    SocializeTwitterAuthOptions *options = [SocializeTwitterAuthOptions options];
-    options.doNotPromptForPermission = YES;
-
-    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options
-                                                             display:self
-                                                             success:^{
-                                                                 [self authenticationComplete];
-                                                             } failure:^(NSError *error) {
-                                                                 if (![error isSocializeErrorWithCode:SocializeErrorTwitterCancelledByUser]) {
-                                                                     [self failWithError:error];
-                                                                 }
-                                                             }];
+    [SZTwitterUtils linkWithDisplay:self success:^(id<SZFullUser> user) {
+        [self authenticationComplete];
+    } failure:^(NSError *error) {
+        if (![error isSocializeErrorWithCode:SocializeErrorTwitterCancelledByUser]) {
+            [self failWithError:error];
+        }
+    }];
 }
 
 - (NSMutableArray*)authTypeRowData {

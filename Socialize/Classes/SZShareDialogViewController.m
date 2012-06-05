@@ -151,7 +151,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 
                 // Switch just turned on
                 // Attempt link
-                [SZFacebookUtils linkWithViewController:weakSelf success:^(id<SZFullUser> fullUser) {
+                [SZFacebookUtils linkWithDisplay:weakSelf success:^(id<SZFullUser> fullUser) {
                     // Successfully linked
                     [self syncInterfaceWithThirdPartyState];
                 } failure:^(NSError *error) {
@@ -211,7 +211,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 // Switch just turned on, not already linked
                 
                 // Attempt link
-                [SZTwitterUtils linkWithViewController:weakSelf success:^(id<SZFullUser> fullUser) {
+                [SZTwitterUtils linkWithDisplay:weakSelf success:^(id<SZFullUser> fullUser) {
                     
                     // Successfully linked
                     [self syncInterfaceWithThirdPartyState];

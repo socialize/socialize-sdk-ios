@@ -16,13 +16,12 @@
 #import "UINavigationController+Socialize.h"
 #import "UIImage+Resize.h"
 #import "UIAlertView+BlocksKit.h"
-#import "SocializeTwitterAuthenticator.h"
-#import "SocializeFacebookAuthenticator.h"
-#import "SocializeTwitterAuthenticator.h"
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SZUserUtils.h"
 #import "UITableView+Socialize.h"
+#import "SZFacebookUtils.h"
+#import "SZTwitterUtils.h"
 
 @interface SZSettingsViewController ()
 
@@ -189,7 +188,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     
     if (self.fullUser == nil) {
         self.saveButton.enabled = NO;
-        [self getCurrentUser];
+        self.fullUser = [SZUserUtils currentUser];
     } else {
         self.saveButton.enabled = YES;
         [self configureViewsForUser];
@@ -669,41 +668,20 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     [self.tableView scrollToRowAtIndexPath:[self indexPathForTwitterLogoutRow] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
-- (void)twitterAuthenticatorDidSucceed:(SocializeTwitterAuthenticator *)twitterAuthenticator {
-    
-    // Add the twitter logout row
-    [self updateInterfaceToReflectSessionStatuses];
-}
-
-- (void)twitterAuthenticator:(SocializeTwitterAuthenticator *)twitterAuthenticator didFailWithError:(NSError *)error {
-    [self updateInterfaceToReflectSessionStatuses];
-}
-
 - (void)authenticateViaTwitter {
-    SocializeTwitterAuthOptions *options = [SocializeTwitterAuthOptions options];
-    options.doNotShowProfile = YES;
-    options.doNotPromptForPermission = YES;
-
-    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options
-                                              display:self
-                                              success:^{
-                                                  [self updateInterfaceToReflectSessionStatuses];
-                                              } failure:^(NSError *error) {
-                                                  [self updateInterfaceToReflectSessionStatuses];
-                                              }];
+    [SZTwitterUtils linkWithDisplay:self success:^(id<SZFullUser> user) {
+        [self updateInterfaceToReflectSessionStatuses];
+    } failure:^(NSError *error) {
+        [self updateInterfaceToReflectSessionStatuses];        
+    }];
 }
 
 - (void)authenticateViaFacebook {
-    SocializeFacebookAuthOptions *options = [SocializeFacebookAuthOptions options];
-    options.doNotShowProfile = YES;
-
-    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:options
-                                                                display:self
-                                                                success:^{
-                                                                    [self updateInterfaceToReflectSessionStatuses];
-                                                                } failure:^(NSError *error) {
-                                                                    [self updateInterfaceToReflectSessionStatuses];
-                                                                }];
+    [SZFacebookUtils linkWithDisplay:self success:^(id<SZFullUser> user) {
+        [self updateInterfaceToReflectSessionStatuses];
+    } failure:^(NSError *error) {
+        [self updateInterfaceToReflectSessionStatuses];        
+    }];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

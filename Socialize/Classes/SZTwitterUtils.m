@@ -10,7 +10,6 @@
 #import "SocializeThirdPartyTwitter.h"
 #import "_Socialize.h"
 #import "SocializeTwitterAuthViewController.h"
-#import "SZNavigationController.h"
 
 @implementation SZTwitterUtils
 
@@ -37,24 +36,25 @@
                                                       } failure:failure];
 }
 
-+ (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
++ (void)linkWithDisplay:(id<SZDisplay>)display success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
+    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
+    
     NSString *consumerKey = [SocializeThirdPartyTwitter consumerKey];
     NSString *consumerSecret = [SocializeThirdPartyTwitter consumerSecret];
     
     SocializeTwitterAuthViewController *auth = [[[SocializeTwitterAuthViewController alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret] autorelease];
-    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:auth] autorelease];
 
     auth.twitterAuthSuccessBlock = ^(NSString *accessToken, NSString *accessTokenSecret, NSString *screenName, NSString *userId) {
-        [viewController dismissModalViewControllerAnimated:YES];
+        [wrapper endSequence];
         [self linkWithAccessToken:accessToken accessTokenSecret:accessTokenSecret success:success failure:failure];
     };
     
     auth.cancellationBlock = ^{
-        [viewController dismissModalViewControllerAnimated:YES];
+        [wrapper endSequence];
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser]);
     };
     
-    [viewController presentModalViewController:nav animated:YES];
+    [wrapper beginSequenceWithViewController:auth];
 }
 
 @end
