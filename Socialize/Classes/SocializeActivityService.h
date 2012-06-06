@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SocializeService.h"
 #import "SocializeCommonDefinitions.h"
+#import "SocializeObjects.h"
 
 @protocol SocializeUser;
 

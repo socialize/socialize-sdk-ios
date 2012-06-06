@@ -674,8 +674,6 @@
 		AA08B3FF147C344900E6D1CA /* SocializeActivityViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA08B3FC147C344800E6D1CA /* SocializeActivityViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA08B400147C344900E6D1CA /* SocializeActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA08B3FD147C344900E6D1CA /* SocializeActivityViewController.m */; };
 		AA08B401147C344900E6D1CA /* SocializeActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA08B3FD147C344900E6D1CA /* SocializeActivityViewController.m */; };
-		AA08FC3214FD5555002242EB /* SocializeUIShareCreatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA08FC3114FD5555002242EB /* SocializeUIShareCreatorTests.m */; };
-		AA08FC3614FD650E002242EB /* SocializeActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA08FC3514FD650D002242EB /* SocializeActionTests.m */; };
 		AA0A440F15756FBC00C56EF6 /* UIBarButtonItem+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0A440D15756FBC00C56EF6 /* UIBarButtonItem+Socialize.h */; };
 		AA0A441015756FBC00C56EF6 /* UIBarButtonItem+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0A440D15756FBC00C56EF6 /* UIBarButtonItem+Socialize.h */; };
 		AA0A441115756FBC00C56EF6 /* UIBarButtonItem+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A440E15756FBC00C56EF6 /* UIBarButtonItem+Socialize.m */; };
@@ -765,7 +763,6 @@
 		AA202537144CA8C9006C1F8F /* SocializeCommonDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA202538144CA8DC006C1F8F /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11CC1443261E004E4C1B /* SocializeServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA202539144CA8DD006C1F8F /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11CC1443261E004E4C1B /* SocializeServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA2044A11470EA40003A875C /* ComposeCommentViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D2478A1417A985008A550D /* ComposeCommentViewControllerTests.m */; };
 		AA29CEB314F71654005F4686 /* SocializeLocationManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA29CEB214F71654005F4686 /* SocializeLocationManagerTests.m */; };
 		AA2C7182156DAF7700796D22 /* SZCommentOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2C7180156DAF7600796D22 /* SZCommentOptions.h */; };
 		AA2C7183156DAF7700796D22 /* SZCommentOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2C7180156DAF7600796D22 /* SZCommentOptions.h */; };
@@ -1237,7 +1234,6 @@
 		AA4956FF1484276A00718BC4 /* SocializeDynamicTest.h in Headers */ = {isa = PBXBuildFile; fileRef = AA4956FC1484276A00718BC4 /* SocializeDynamicTest.h */; };
 		AA4957001484276A00718BC4 /* SocializeDynamicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4956FD1484276A00718BC4 /* SocializeDynamicTest.m */; };
 		AA4957011484276A00718BC4 /* SocializeDynamicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4956FD1484276A00718BC4 /* SocializeDynamicTest.m */; };
-		AA4CDFE815098EFD00558287 /* SocializeCommentCreatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4CDFE715098EFD00558287 /* SocializeCommentCreatorTests.m */; };
 		AA51C1441471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
 		AA51C1451471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
 		AA51C1461471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
@@ -1246,7 +1242,6 @@
 		AA51C1491471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
 		AA51C14A1471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
 		AA51C14D1471D10700E5C003 /* SocializeBaseViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */; };
-		AA540D8714E45DBA002E9FA4 /* SocializeTwitterAuthenticatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA540D8614E45DBA002E9FA4 /* SocializeTwitterAuthenticatorTests.m */; };
 		AA5ACEEF1467C3F200790B3D /* SocializeProfileEditValueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C2144325F9004E4C1B /* SocializeProfileEditValueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5ACEF01467C3F300790B3D /* SocializeProfileEditValueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C2144325F9004E4C1B /* SocializeProfileEditValueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA63C44714EA22C70035D4D0 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63C44614EA22C70035D4D0 /* JRSwizzle.m */; };
@@ -1358,7 +1353,6 @@
 		AA7FCA9D15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7FCA9815118BEE008D4102 /* SocializeRichPushNotificationViewController.xib */; };
 		AA7FCA9E15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7FCA9815118BEE008D4102 /* SocializeRichPushNotificationViewController.xib */; };
 		AA7FCA9F15118BEE008D4102 /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7FCA9815118BEE008D4102 /* SocializeRichPushNotificationViewController.xib */; };
-		AA813807153F4D09007CAE00 /* SZLikeButtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA813806153F4D09007CAE00 /* SZLikeButtonTests.m */; };
 		AA82E75514F8559C002CDF93 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA82E75414F8559C002CDF93 /* SocializeComposeMessageViewController.xib */; };
 		AA839A9F14D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA839A9D14D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA839AA014D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA839A9D14D3764F00103ECE /* SocializeDirectURLNotificationDisplayController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1583,7 +1577,6 @@
 		AA94619A152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA946198152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.xib */; };
 		AA973CC21468A02800DAE945 /* TestShareServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CC11468A02800DAE945 /* TestShareServices.m */; };
 		AA973CF51468A6AB00DAE945 /* TestEntityServices.m in Sources */ = {isa = PBXBuildFile; fileRef = AA973CF41468A6AB00DAE945 /* TestEntityServices.m */; };
-		AA9A12A81504769500176AFD /* SocializeFacebookAuthenticatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9A12A71504769500176AFD /* SocializeFacebookAuthenticatorTests.m */; };
 		AA9E0C8E144E076D00D2C37F /* GenericViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9E0C8C144E076D00D2C37F /* GenericViewController.m */; };
 		AA9E0C8F144E076D00D2C37F /* GenericViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9E0C8D144E076D00D2C37F /* GenericViewController.xib */; };
 		AA9E0C91144E147900D2C37F /* GenericViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9E0C8C144E076D00D2C37F /* GenericViewController.m */; };
@@ -1676,7 +1669,6 @@
 		AAB427F914BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB427F614BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h */; };
 		AAB427FA14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
 		AAB427FB14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
-		AAB7B1E2153CEC6000A69D64 /* SocializeUILikeCreatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB7B1E1153CEC6000A69D64 /* SocializeUILikeCreatorTests.m */; };
 		AABA1FC11522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AABA1FC01522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m */; };
 		AABA233D1523A17700B511FA /* SocializeEventService.h in Headers */ = {isa = PBXBuildFile; fileRef = AABA233B1523A17700B511FA /* SocializeEventService.h */; };
 		AABA233E1523A17700B511FA /* SocializeEventService.h in Headers */ = {isa = PBXBuildFile; fileRef = AABA233B1523A17700B511FA /* SocializeEventService.h */; };
@@ -1905,7 +1897,6 @@
 		AAC9AA3115742C3300377869 /* NSMutableArray+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC9AA2E15742C3300377869 /* NSMutableArray+Socialize.m */; };
 		AAC9AA3215742C3300377869 /* NSMutableArray+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC9AA2E15742C3300377869 /* NSMutableArray+Socialize.m */; };
 		AACA15FA146B6F05005E05EE /* SZProfileViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7E38A144F80320073308D /* SZProfileViewControllerTests.m */; };
-		AACA15FE146B7730005E05EE /* SZSettingsViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA91664F1463B24700EFBD7E /* SZSettingsViewControllerTest.m */; };
 		AACC4F6B1496A42300F106D4 /* SocializeKeyboardListenerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AACC4F661496A3E600F106D4 /* SocializeKeyboardListenerTests.m */; };
 		AAD218FA148AFBD600EF5503 /* StringHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD218F8148AFBD600EF5503 /* StringHelper.h */; };
 		AAD218FB148AFBD600EF5503 /* StringHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD218F8148AFBD600EF5503 /* StringHelper.h */; };
@@ -1992,7 +1983,6 @@
 		AAE94D901500258100877A7B /* SocializeThirdPartyFacebook.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE94D8D1500258100877A7B /* SocializeThirdPartyFacebook.h */; };
 		AAE94D911500258100877A7B /* SocializeThirdPartyFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE94D8E1500258100877A7B /* SocializeThirdPartyFacebook.m */; };
 		AAE94D921500258100877A7B /* SocializeThirdPartyFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE94D8E1500258100877A7B /* SocializeThirdPartyFacebook.m */; };
-		AAE94D98150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE94D97150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m */; };
 		AAE995D0157EE61E0048AAC0 /* SZAPIEventListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE995CE157EE61E0048AAC0 /* SZAPIEventListener.h */; };
 		AAE995D1157EE61E0048AAC0 /* SZAPIEventListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE995CE157EE61E0048AAC0 /* SZAPIEventListener.h */; };
 		AAE995D2157EE61E0048AAC0 /* SZAPIEventListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE995CF157EE61E0048AAC0 /* SZAPIEventListener.m */; };
@@ -2038,9 +2028,6 @@
 		AAF3168915520CB300E4A164 /* create_action_bar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3163E1551B98200E4A164 /* create_action_bar.m */; };
 		AAF3BC7614880E9B00D0756C /* SZComposeCommentViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF3BC7514880E9B00D0756C /* SZComposeCommentViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAF3BC7714880E9B00D0756C /* SZComposeCommentViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF3BC7514880E9B00D0756C /* SZComposeCommentViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAF46179150D575C003B55F5 /* SocializeActivityCreatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF46178150D575B003B55F5 /* SocializeActivityCreatorTests.m */; };
-		AAF4617F150D7FC6003B55F5 /* SocializeShareCreatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF4617E150D7FC5003B55F5 /* SocializeShareCreatorTests.m */; };
-		AAF46182150D7FD9003B55F5 /* SocializeLikeCreatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF46181150D7FD8003B55F5 /* SocializeLikeCreatorTests.m */; };
 		AAF50D6A14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF50D6914CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib */; };
 		AAF50D6B14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF50D6914CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib */; };
 		AAF50D6C14CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF50D6914CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib */; };
@@ -2828,10 +2815,6 @@
 		AA08B3EF147C336300E6D1CA /* SocializeActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeActivityViewController.xib; path = Resources/SocializeActivityViewController.xib; sourceTree = "<group>"; };
 		AA08B3FC147C344800E6D1CA /* SocializeActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityViewController.h; path = Classes/SocializeActivityViewController.h; sourceTree = "<group>"; };
 		AA08B3FD147C344900E6D1CA /* SocializeActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityViewController.m; path = Classes/SocializeActivityViewController.m; sourceTree = "<group>"; };
-		AA08FC3014FD5555002242EB /* SocializeUIShareCreatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUIShareCreatorTests.h; path = "Test Cases/SocializeUIShareCreatorTests.h"; sourceTree = "<group>"; };
-		AA08FC3114FD5555002242EB /* SocializeUIShareCreatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUIShareCreatorTests.m; path = "Test Cases/SocializeUIShareCreatorTests.m"; sourceTree = "<group>"; };
-		AA08FC3414FD650D002242EB /* SocializeActionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActionTests.h; path = "Test Cases/SocializeActionTests.h"; sourceTree = "<group>"; };
-		AA08FC3514FD650D002242EB /* SocializeActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActionTests.m; path = "Test Cases/SocializeActionTests.m"; sourceTree = "<group>"; };
 		AA0A440D15756FBC00C56EF6 /* UIBarButtonItem+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+Socialize.h"; path = "Misc/UIBarButtonItem+Socialize.h"; sourceTree = "<group>"; };
 		AA0A440E15756FBC00C56EF6 /* UIBarButtonItem+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+Socialize.m"; path = "Misc/UIBarButtonItem+Socialize.m"; sourceTree = "<group>"; };
 		AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZActivityOptions.h; path = Classes/SZActivityOptions.h; sourceTree = "<group>"; };
@@ -2913,13 +2896,9 @@
 		AA4889F8155D973C00ED28AC /* socialize-selectnetwork-table-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-table-back@2x.png"; path = "Resources/socialize-selectnetwork-table-back@2x.png"; sourceTree = "<group>"; };
 		AA4956FC1484276A00718BC4 /* SocializeDynamicTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDynamicTest.h; path = Classes/SocializeDynamicTest.h; sourceTree = "<group>"; };
 		AA4956FD1484276A00718BC4 /* SocializeDynamicTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDynamicTest.m; path = Classes/SocializeDynamicTest.m; sourceTree = "<group>"; };
-		AA4CDFE615098EFD00558287 /* SocializeCommentCreatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeCommentCreatorTests.h; path = "Test Cases/SocializeCommentCreatorTests.h"; sourceTree = "<group>"; };
-		AA4CDFE715098EFD00558287 /* SocializeCommentCreatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeCommentCreatorTests.m; path = "Test Cases/SocializeCommentCreatorTests.m"; sourceTree = "<group>"; };
 		AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthViewController.xib; path = Resources/SocializeAuthViewController.xib; sourceTree = "<group>"; };
 		AA51C14B1471D10700E5C003 /* SocializeBaseViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBaseViewControllerTests.h; path = "Test Cases/SocializeBaseViewControllerTests.h"; sourceTree = "<group>"; };
 		AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBaseViewControllerTests.m; path = "Test Cases/SocializeBaseViewControllerTests.m"; sourceTree = "<group>"; };
-		AA540D8514E45DBA002E9FA4 /* SocializeTwitterAuthenticatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeTwitterAuthenticatorTests.h; path = "Test Cases/SocializeTwitterAuthenticatorTests.h"; sourceTree = "<group>"; };
-		AA540D8614E45DBA002E9FA4 /* SocializeTwitterAuthenticatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeTwitterAuthenticatorTests.m; path = "Test Cases/SocializeTwitterAuthenticatorTests.m"; sourceTree = "<group>"; };
 		AA553A1C14FD825800CCB3AE /* NSObject+Observer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Observer.h"; sourceTree = "<group>"; };
 		AA553A1D14FD825800CCB3AE /* NSObject+Observer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Observer.m"; sourceTree = "<group>"; };
 		AA639F84144A34B600660E26 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -3031,8 +3010,6 @@
 		AA973CC11468A02800DAE945 /* TestShareServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShareServices.m; sourceTree = "<group>"; };
 		AA973CF31468A6AB00DAE945 /* TestEntityServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEntityServices.h; sourceTree = "<group>"; };
 		AA973CF41468A6AB00DAE945 /* TestEntityServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEntityServices.m; sourceTree = "<group>"; };
-		AA9A12A61504769500176AFD /* SocializeFacebookAuthenticatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebookAuthenticatorTests.h; path = "Test Cases/SocializeFacebookAuthenticatorTests.h"; sourceTree = "<group>"; };
-		AA9A12A71504769500176AFD /* SocializeFacebookAuthenticatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebookAuthenticatorTests.m; path = "Test Cases/SocializeFacebookAuthenticatorTests.m"; sourceTree = "<group>"; };
 		AA9E0C8B144E076D00D2C37F /* GenericViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericViewController.h; sourceTree = "<group>"; };
 		AA9E0C8C144E076D00D2C37F /* GenericViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericViewController.m; sourceTree = "<group>"; };
 		AA9E0C8D144E076D00D2C37F /* GenericViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericViewController.xib; sourceTree = "<group>"; };
@@ -3125,8 +3102,6 @@
 		AAB2DEE5143A796300C3C1F5 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = "Frameworks/OCMock/Source/build/Release-iphoneos/libOCMock.a"; sourceTree = "<group>"; };
 		AAB427F614BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNotificationToggleBubbleContentView.h; path = Classes/SocializeNotificationToggleBubbleContentView.h; sourceTree = "<group>"; };
 		AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNotificationToggleBubbleContentView.m; path = Classes/SocializeNotificationToggleBubbleContentView.m; sourceTree = "<group>"; };
-		AAB7B1E0153CEC6000A69D64 /* SocializeUILikeCreatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeUILikeCreatorTests.h; path = "Test Cases/SocializeUILikeCreatorTests.h"; sourceTree = "<group>"; };
-		AAB7B1E1153CEC6000A69D64 /* SocializeUILikeCreatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeUILikeCreatorTests.m; path = "Test Cases/SocializeUILikeCreatorTests.m"; sourceTree = "<group>"; };
 		AABA1FBF1522913C00B511FA /* SocializeRichPushNotificationDisplayControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRichPushNotificationDisplayControllerTests.h; path = "Test Cases/SocializeRichPushNotificationDisplayControllerTests.h"; sourceTree = "<group>"; };
 		AABA1FC01522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRichPushNotificationDisplayControllerTests.m; path = "Test Cases/SocializeRichPushNotificationDisplayControllerTests.m"; sourceTree = "<group>"; };
 		AABA233B1523A17700B511FA /* SocializeEventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEventService.h; path = Classes/SocializeEventService.h; sourceTree = "<group>"; };
@@ -3204,8 +3179,6 @@
 		AAE94D871500236B00877A7B /* SocializeThirdParty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeThirdParty.h; path = Classes/SocializeThirdParty.h; sourceTree = "<group>"; };
 		AAE94D8D1500258100877A7B /* SocializeThirdPartyFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeThirdPartyFacebook.h; path = Classes/SocializeThirdPartyFacebook.h; sourceTree = "<group>"; };
 		AAE94D8E1500258100877A7B /* SocializeThirdPartyFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeThirdPartyFacebook.m; path = Classes/SocializeThirdPartyFacebook.m; sourceTree = "<group>"; };
-		AAE94D96150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeThirdPartyAuthenticatorTests.h; path = "Test Cases/SocializeThirdPartyAuthenticatorTests.h"; sourceTree = "<group>"; };
-		AAE94D97150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeThirdPartyAuthenticatorTests.m; path = "Test Cases/SocializeThirdPartyAuthenticatorTests.m"; sourceTree = "<group>"; };
 		AAE995CE157EE61E0048AAC0 /* SZAPIEventListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZAPIEventListener.h; path = Classes/SZAPIEventListener.h; sourceTree = "<group>"; };
 		AAE995CF157EE61E0048AAC0 /* SZAPIEventListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZAPIEventListener.m; path = Classes/SZAPIEventListener.m; sourceTree = "<group>"; };
 		AAE995D4157EE8BA0048AAC0 /* SZAPIHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZAPIHelpers.h; path = Classes/SZAPIHelpers.h; sourceTree = "<group>"; };
@@ -3238,12 +3211,6 @@
 		AAF316761551F91300E4A164 /* api_client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = api_client.h; path = Documentation/sphinx/source/snippets/api_client.h; sourceTree = SOURCE_ROOT; };
 		AAF316771551F91300E4A164 /* api_client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = api_client.m; path = Documentation/sphinx/source/snippets/api_client.m; sourceTree = SOURCE_ROOT; };
 		AAF3BC7514880E9B00D0756C /* SZComposeCommentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZComposeCommentViewControllerDelegate.h; path = Classes/SZComposeCommentViewControllerDelegate.h; sourceTree = "<group>"; };
-		AAF46177150D575A003B55F5 /* SocializeActivityCreatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeActivityCreatorTests.h; path = "Test Cases/SocializeActivityCreatorTests.h"; sourceTree = "<group>"; };
-		AAF46178150D575B003B55F5 /* SocializeActivityCreatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeActivityCreatorTests.m; path = "Test Cases/SocializeActivityCreatorTests.m"; sourceTree = "<group>"; };
-		AAF4617D150D7FC4003B55F5 /* SocializeShareCreatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeShareCreatorTests.h; path = "Test Cases/SocializeShareCreatorTests.h"; sourceTree = "<group>"; };
-		AAF4617E150D7FC5003B55F5 /* SocializeShareCreatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeShareCreatorTests.m; path = "Test Cases/SocializeShareCreatorTests.m"; sourceTree = "<group>"; };
-		AAF46180150D7FD7003B55F5 /* SocializeLikeCreatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLikeCreatorTests.h; path = "Test Cases/SocializeLikeCreatorTests.h"; sourceTree = "<group>"; };
-		AAF46181150D7FD8003B55F5 /* SocializeLikeCreatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeLikeCreatorTests.m; path = "Test Cases/SocializeLikeCreatorTests.m"; sourceTree = "<group>"; };
 		AAF50D6914CA0E8600585474 /* SocializeNotificationToggleBubbleContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeNotificationToggleBubbleContentView.xib; path = Resources/SocializeNotificationToggleBubbleContentView.xib; sourceTree = "<group>"; };
 		AAF50D7114CA0ED700585474 /* SocializeBaseViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBaseViewControllerDelegate.h; path = Classes/SocializeBaseViewControllerDelegate.h; sourceTree = "<group>"; };
 		AAF559DB14AE51EF00565248 /* DebugUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugUtil.m; sourceTree = "<group>"; };
@@ -3860,7 +3827,6 @@
 				AA51C14B1471D10700E5C003 /* SocializeBaseViewControllerTests.h */,
 				AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */,
 				AA813804153F4CAE007CAE00 /* Like Button */,
-				AAF07C0114FD51EA003FB34D /* Actions */,
 				AA92BC1414E3981700F67058 /* Twitter Auth */,
 				AA36761C150452CC00B57A7E /* Facebook Auth */,
 				AA047D7614BFC1CC005560C3 /* Bubble */,
@@ -4995,33 +4961,6 @@
 				AAE94D8E1500258100877A7B /* SocializeThirdPartyFacebook.m */,
 			);
 			name = "Third Parties";
-			sourceTree = "<group>";
-		};
-		AAF07C0114FD51EA003FB34D /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-				AA08FC3414FD650D002242EB /* SocializeActionTests.h */,
-				AA08FC3514FD650D002242EB /* SocializeActionTests.m */,
-				AAE94D96150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.h */,
-				AAE94D97150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m */,
-				AA540D8514E45DBA002E9FA4 /* SocializeTwitterAuthenticatorTests.h */,
-				AA540D8614E45DBA002E9FA4 /* SocializeTwitterAuthenticatorTests.m */,
-				AA9A12A61504769500176AFD /* SocializeFacebookAuthenticatorTests.h */,
-				AA9A12A71504769500176AFD /* SocializeFacebookAuthenticatorTests.m */,
-				AA08FC3014FD5555002242EB /* SocializeUIShareCreatorTests.h */,
-				AA08FC3114FD5555002242EB /* SocializeUIShareCreatorTests.m */,
-				AAF46177150D575A003B55F5 /* SocializeActivityCreatorTests.h */,
-				AAF46178150D575B003B55F5 /* SocializeActivityCreatorTests.m */,
-				AA4CDFE615098EFD00558287 /* SocializeCommentCreatorTests.h */,
-				AA4CDFE715098EFD00558287 /* SocializeCommentCreatorTests.m */,
-				AAF4617D150D7FC4003B55F5 /* SocializeShareCreatorTests.h */,
-				AAF4617E150D7FC5003B55F5 /* SocializeShareCreatorTests.m */,
-				AAF46180150D7FD7003B55F5 /* SocializeLikeCreatorTests.h */,
-				AAF46181150D7FD8003B55F5 /* SocializeLikeCreatorTests.m */,
-				AAB7B1E0153CEC6000A69D64 /* SocializeUILikeCreatorTests.h */,
-				AAB7B1E1153CEC6000A69D64 /* SocializeUILikeCreatorTests.m */,
-			);
-			name = Actions;
 			sourceTree = "<group>";
 		};
 		AAF3163C1551B4C700E4A164 /* Code Snippets */ = {
@@ -7511,11 +7450,9 @@
 				AA33A43B1463174700319168 /* profile_functions.c in Sources */,
 				18D8EDD1146B162600E9991F /* AuthViewControllerTests.m in Sources */,
 				AACA15FA146B6F05005E05EE /* SZProfileViewControllerTests.m in Sources */,
-				AACA15FE146B7730005E05EE /* SZSettingsViewControllerTest.m in Sources */,
 				AABDA008146B8F8B00D73FE4 /* TestUtils.m in Sources */,
 				AABDA009146B901600D73FE4 /* SocializeProfileEditValueViewControllerTest.m in Sources */,
 				AAFD1E57146B997A00FCB8A7 /* SZActionBarTests.m in Sources */,
-				AA2044A11470EA40003A875C /* ComposeCommentViewControllerTests.m in Sources */,
 				AA51C14D1471D10700E5C003 /* SocializeBaseViewControllerTests.m in Sources */,
 				AA88E847147DCA4300123E6F /* SocializeActivityViewControllerTests.m in Sources */,
 				AA88E84B147DCAFD00123E6F /* SocializeTableViewTests.m in Sources */,
@@ -7536,29 +7473,18 @@
 				AAAF7F4114CA2D5800EA387C /* SocializeHorizontalLayoutTests.m in Sources */,
 				AA839AB314D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m in Sources */,
 				AA92BC1714E3985500F67058 /* SocializeTwitterAuthViewControllerTests.m in Sources */,
-				AA540D8714E45DBA002E9FA4 /* SocializeTwitterAuthenticatorTests.m in Sources */,
 				AA73815E14EAEB1900C8AE25 /* SocializeDeviceTokenSenderTests.m in Sources */,
 				AA63C44714EA22C70035D4D0 /* JRSwizzle.m in Sources */,
 				AA63C44A14EA24070035D4D0 /* UIAlertView+Observer.m in Sources */,
 				AAE2750814EB446D00CE081D /* SocializeTestCase.m in Sources */,
 				AAD6953214F5D3E000422942 /* SocializeUIDisplayTests.m in Sources */,
 				AA29CEB314F71654005F4686 /* SocializeLocationManagerTests.m in Sources */,
-				AA08FC3214FD5555002242EB /* SocializeUIShareCreatorTests.m in Sources */,
-				AA08FC3614FD650E002242EB /* SocializeActionTests.m in Sources */,
 				AAEDA76414FEC3430098EE75 /* NSObject+Observer.m in Sources */,
-				AAE94D98150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m in Sources */,
 				AA36761F150452EF00B57A7E /* SocializeFacebookAuthHandlerTests.m in Sources */,
-				AA9A12A81504769500176AFD /* SocializeFacebookAuthenticatorTests.m in Sources */,
-				AA4CDFE815098EFD00558287 /* SocializeCommentCreatorTests.m in Sources */,
 				AA76792014F70A6000919EC4 /* GCDAProfiling.c in Sources */,
-				AAF46179150D575C003B55F5 /* SocializeActivityCreatorTests.m in Sources */,
-				AAF4617F150D7FC6003B55F5 /* SocializeShareCreatorTests.m in Sources */,
-				AAF46182150D7FD9003B55F5 /* SocializeLikeCreatorTests.m in Sources */,
 				AAE33AFD1522674800BEE348 /* SocializeDirectEntityNotificationDisplayControllerTests.m in Sources */,
 				AAE126A7152281C80096BC99 /* SocializeNotificationDisplayControllerTests.m in Sources */,
 				AABA1FC11522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m in Sources */,
-				AAB7B1E2153CEC6000A69D64 /* SocializeUILikeCreatorTests.m in Sources */,
-				AA813807153F4D09007CAE00 /* SZLikeButtonTests.m in Sources */,
 				AAF3167C15520CB300E4A164 /* api_client.m in Sources */,
 				AAF3167D15520CB300E4A164 /* third_party_link_options.m in Sources */,
 				AAF3167E15520CB300E4A164 /* disable_error_alerts.m in Sources */,

@@ -11,7 +11,7 @@
 #import "SocializeUserService.h"
 #import "SocializeLikeService.h"
 #import "SocializeEntityService.h"
-#import "SocializeUILikeCreator.h"
+#import "SZDisplay.h"
 
 static NSInteger authenticatedUserID = 12345;
 static NSString *entityKey = @"entityKey";
@@ -32,7 +32,7 @@ static NSString *entityKey = @"entityKey";
 - (id)createUUT {
     CGRect testFrame = CGRectMake(0, 0, 60, 30);
     self.mockEntity = [OCMockObject mockForProtocol:@protocol(SocializeEntity)];
-    self.mockDisplay = [OCMockObject mockForProtocol:@protocol(SocializeUIDisplay)];
+    self.mockDisplay = [OCMockObject mockForProtocol:@protocol(SZDisplay)];
     self.likeButton = [[[SZLikeButton alloc] initWithFrame:testFrame entity:self.mockEntity display:self.mockDisplay] autorelease];
     
     return self.likeButton;

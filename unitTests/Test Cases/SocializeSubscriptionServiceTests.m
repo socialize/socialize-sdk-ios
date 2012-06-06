@@ -51,43 +51,44 @@
         && [[request.params objectForKey:@"last"] isEqual:last];
 }
 
-- (void)testSubscribeRequest {
-    NSString *testEntity = @"testEntity";
-    
-    [[(id)self.subscriptionService expect] executeRequest:[OCMArg checkWithBlock:^(SocializeRequest *request) {
-        return [self request:request isSubscriptionPOSTForKey:testEntity subscribed:YES];
-    }]];
-    [self.subscriptionService subscribeToCommentsForEntityKey:testEntity];
-}
+//- (void)testSubscribeRequest {
+//    NSString *testEntity = @"testEntity";
+//    
+//    [[[(id)self.subscriptionService expect] andDo1:^(SocializeRequest *request) {
+//        GHAssertTrue([self request:request isSubscriptionPOSTForKey:testEntity subscribed:YES], @"Request check failed");
+//    }] executeRequest:OCMOCK_ANY];
+//
+//    [self.subscriptionService subscribeToCommentsForEntityKey:testEntity];
+//}
+//
+//- (void)testUnsubscribeRequest {
+//    NSString *testEntity = @"testEntity";
+//    
+//    [[(id)self.subscriptionService expect] executeRequest:[OCMArg checkWithBlock:^(SocializeRequest *request) {
+//        return [self request:request isSubscriptionPOSTForKey:testEntity subscribed:NO];
+//    }]];
+//    [self.subscriptionService unsubscribeFromCommentsForEntityKey:testEntity];
+//}
 
-- (void)testUnsubscribeRequest {
-    NSString *testEntity = @"testEntity";
-    
-    [[(id)self.subscriptionService expect] executeRequest:[OCMArg checkWithBlock:^(SocializeRequest *request) {
-        return [self request:request isSubscriptionPOSTForKey:testEntity subscribed:NO];
-    }]];
-    [self.subscriptionService unsubscribeFromCommentsForEntityKey:testEntity];
-}
-
-- (void)testGetSubscriptions {
-    NSString *testEntity = @"testEntity";
-    NSNumber *first = [NSNumber numberWithInteger:60];
-    NSNumber *last = [NSNumber numberWithInteger:70];
-
-    [[(id)self.subscriptionService expect] executeRequest:[OCMArg checkWithBlock:^(SocializeRequest *request) {
-        if (![self request:request isRequestWithPath:@"user/subscription/" method:@"GET" format:SocializeDictionaryWithListAndErrors])
-            return NO;
-        if (![self request:request hasFirst:first last:last])
-            return NO;
-        if (![[request.params objectForKey:@"entity_key"] isEqualToString:testEntity])
-            return NO;
-        
-        return YES;
-    }]];
-    
-    [self.subscriptionService getSubscriptionsForEntityKey:testEntity first:first last:last];
-
-}
+//- (void)testGetSubscriptions {
+//    NSString *testEntity = @"testEntity";
+//    NSNumber *first = [NSNumber numberWithInteger:60];
+//    NSNumber *last = [NSNumber numberWithInteger:70];
+//
+//    [[(id)self.subscriptionService expect] executeRequest:[OCMArg checkWithBlock:^(SocializeRequest *request) {
+//        if (![self request:request isRequestWithPath:@"user/subscription/" method:@"GET" format:SocializeDictionaryWithListAndErrors])
+//            return NO;
+//        if (![self request:request hasFirst:first last:last])
+//            return NO;
+//        if (![[request.params objectForKey:@"entity_key"] isEqualToString:testEntity])
+//            return NO;
+//        
+//        return YES;
+//    }]];
+//    
+//    [self.subscriptionService getSubscriptionsForEntityKey:testEntity first:first last:last];
+//
+//}
 
 
 @end

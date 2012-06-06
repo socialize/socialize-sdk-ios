@@ -37,12 +37,8 @@
 #import "SocializePrivateDefinitions.h"
 #import "SocializeSubscriptionService.h"
 #import "SocializeHorizontalContainerView.h"
-#import "SocializeCommentCreator.h"
-#import "SocializeFacebookAuthenticator.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
-#import "SocializeTwitterAuthenticator.h"
-#import "SocializeCommentOptions.h"
 
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
@@ -67,11 +63,8 @@
 - (void)setUp {
     [super setUp];
     
-    [SocializeCommentCreator startMockingClass];
     [SocializeThirdPartyFacebook startMockingClass];
-    [SocializeFacebookAuthenticator startMockingClass];
     [SocializeThirdPartyTwitter startMockingClass];
-    [SocializeTwitterAuthenticator startMockingClass];
     
     // super setUp creates self.viewController
     self.postCommentViewController = (SZComposeCommentMessageViewController*)self.viewController;

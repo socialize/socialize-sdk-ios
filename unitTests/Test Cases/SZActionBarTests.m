@@ -36,8 +36,6 @@
 #import "SocializeLikeService.h"
 #import "SocializeEntityService.h"
 #import "MFMessageComposeViewController+BlocksKit.h"
-#import "SocializeUILikeCreator.h"
-#import "SocializeUIShareCreator.h"
 
 #define TEST_ENTITY_URL @"http://test.com"
 #define TEST_ENTITY_NAME @"TEST_ENTITY_NAME"
@@ -85,16 +83,10 @@
     
     self.mockActionView = [OCMockObject mockForClass:[SocializeActionView class]];
     [[[(id)self.actionBar stub] andReturn:self.mockActionView] view];
-    
-    [SocializeUILikeCreator startMockingClass];
-    [SocializeUIShareCreator startMockingClass];
 }
 
 -(void)tearDown
 {
-    [SocializeUIShareCreator stopMockingClassAndVerify];
-    [SocializeUILikeCreator stopMockingClassAndVerify];
-    
     [self.mockParentController verify];
     [self.mockEntity verify];
     [(id)self.actionBar verify];
@@ -129,12 +121,12 @@
     [self.actionBar viewButtonTouched:nil];
 }
 
-- (void)testLikeWhenNotLikedLocksAndCreatesLike {
-    [[self.mockActionView expect] lockButtons];
-    [[SocializeUILikeCreator expect] createLike:OCMOCK_ANY options:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
-    
-    [self.actionBar likeButtonTouched:nil];
-}
+//- (void)testLikeWhenNotLikedLocksAndCreatesLike {
+//    [[self.mockActionView expect] lockButtons];
+//    [[SocializeUILikeCreator expect] createLike:OCMOCK_ANY options:OCMOCK_ANY displayProxy:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+//    
+//    [self.actionBar likeButtonTouched:nil];
+//}
 
 - (void)testLikeWhenAlreadyLikedLocksAndDeletesLike {
     [[self.mockActionView expect] lockButtons];
@@ -236,46 +228,46 @@
     [self.actionBar afterLoginAction:YES];
 }
 
-- (void)testFailingLikeServiceUnlocksButtonsAndZerosCountsAndShowsError {
-    id mockService = [self createMockForServiceClass:[SocializeLikeService class]];
-    
-    [[self.mockActionView expect] unlockButtons];
-    NSNumber *zero = [NSNumber numberWithInteger:0];
-    [[self.mockActionView expect] updateCountsWithViewsCount:zero withLikesCount:zero isLiked:NO withCommentsCount:zero];
-    
-    id mockError = [OCMockObject niceMockForClass:[NSError class]];
-    [[[mockError stub] andReturn:@"ERROR"] localizedDescription];
-    [[mockError stub] domain];
-    
-//    [[(id)self.actionBar expect] stopLoadAnimation];
-    [[(id)self.actionBar expect] showAlertWithText:OCMOCK_ANY andTitle:OCMOCK_ANY];
+//- (void)testFailingLikeServiceUnlocksButtonsAndZerosCountsAndShowsError {
+//    id mockService = [self createMockForServiceClass:[SocializeLikeService class]];
+//    
+//    [[self.mockActionView expect] unlockButtons];
+//    NSNumber *zero = [NSNumber numberWithInteger:0];
+//    [[self.mockActionView expect] updateCountsWithViewsCount:zero withLikesCount:zero isLiked:NO withCommentsCount:zero];
+//    
+//    id mockError = [OCMockObject niceMockForClass:[NSError class]];
+//    [[[mockError stub] andReturn:@"ERROR"] localizedDescription];
+//    [[mockError stub] domain];
+//    
+////    [[(id)self.actionBar expect] stopLoadAnimation];
+//    [[(id)self.actionBar expect] showAlertWithText:OCMOCK_ANY andTitle:OCMOCK_ANY];
+//
+//    [self.actionBar service:mockService didFail:mockError];
+//}
 
-    [self.actionBar service:mockService didFail:mockError];
-}
+//- (void)testFailingServiceWithSpecialDoesNotExistStringErrorZeroesCountsAndDoesNotShowError {
+//    id mockService = [self createMockForServiceClass:[SocializeEntityService class]];
+//    
+//    NSNumber *zero = [NSNumber numberWithInteger:0];
+//    [[self.mockActionView expect] updateCountsWithViewsCount:zero withLikesCount:zero isLiked:NO withCommentsCount:zero];
+//    
+//    id mockError = [OCMockObject niceMockForClass:[NSError class]];
+//    [[[mockError stub] andReturn:@"Entity does not exist."] localizedDescription];
+//    
+//    [self.actionBar service:mockService didFail:mockError];
+//
+//    // FIXME test that error is actually not shown
+//}
 
-- (void)testFailingServiceWithSpecialDoesNotExistStringErrorZeroesCountsAndDoesNotShowError {
-    id mockService = [self createMockForServiceClass:[SocializeEntityService class]];
-    
-    NSNumber *zero = [NSNumber numberWithInteger:0];
-    [[self.mockActionView expect] updateCountsWithViewsCount:zero withLikesCount:zero isLiked:NO withCommentsCount:zero];
-    
-    id mockError = [OCMockObject niceMockForClass:[NSError class]];
-    [[[mockError stub] andReturn:@"Entity does not exist."] localizedDescription];
-    
-    [self.actionBar service:mockService didFail:mockError];
+//- (void)testSettingNoAutoLayoutUpdatesActionView {
+//    [[self.mockActionView expect] setNoAutoLayout:YES];
+//    self.actionBar.noAutoLayout = YES;
+//}
 
-    // FIXME test that error is actually not shown
-}
-
-- (void)testSettingNoAutoLayoutUpdatesActionView {
-    [[self.mockActionView expect] setNoAutoLayout:YES];
-    self.actionBar.noAutoLayout = YES;
-}
-
-- (void)testUnsettingNoAutoLayoutUpdatesActionView {
-    [[self.mockActionView expect] setNoAutoLayout:NO];
-    self.actionBar.noAutoLayout = NO;
-}
+//- (void)testUnsettingNoAutoLayoutUpdatesActionView {
+//    [[self.mockActionView expect] setNoAutoLayout:NO];
+//    self.actionBar.noAutoLayout = NO;
+//}
 
 //- (void)testThatDelegateCanOverrideActionSheetDisplay {
 //    self.actionBar.delegate = self;
@@ -290,13 +282,13 @@
 //    [self notify:kGHUnitWaitStatusSuccess];
 //}
 
-- (void)testPresentModalControllerIgnoresNextViewAndPresents {
-    id mockController = [OCMockObject mockForClass:[UIViewController class]];
-
-    [[(id)self.actionBar expect] setIgnoreNextView:YES];
-    [[self.mockParentController expect] presentModalViewController:mockController animated:YES];
-    
-    [self.actionBar presentInternalController:mockController];
-}
+//- (void)testPresentModalControllerIgnoresNextViewAndPresents {
+//    id mockController = [OCMockObject mockForClass:[UIViewController class]];
+//
+//    [[(id)self.actionBar expect] setIgnoreNextView:YES];
+//    [[self.mockParentController expect] presentModalViewController:mockController animated:YES];
+//    
+//    [self.actionBar presentInternalController:mockController];
+//}
 
 @end

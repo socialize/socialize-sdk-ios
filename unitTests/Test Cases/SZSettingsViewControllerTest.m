@@ -16,11 +16,9 @@
 #import "UIImage+Resize.h"
 #import "SocializeBaseViewControllerDelegate.h"
 #import "UIAlertView+BlocksKit.h"
-#import "SocializeFacebookAuthenticator.h"
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "NSObject+ClassMock.h"
-#import "SocializeTwitterAuthenticator.h"
 #import "SZUserUtils.h"
 
 @interface SZSettingsViewController ()
@@ -62,8 +60,6 @@
     
     [SocializeThirdPartyTwitter startMockingClass];
     [SocializeThirdPartyFacebook startMockingClass];
-    [SocializeFacebookAuthenticator startMockingClass];
-    [SocializeTwitterAuthenticator startMockingClass];
     [SZUserUtils startMockingClass];
     
     [[[SocializeThirdPartyTwitter stub] andReturnBoolFromBlock:^{ return self.isAuthenticatedWithTwitter; } ] isLinkedToSocialize];
