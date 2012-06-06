@@ -38,6 +38,9 @@ test:
 	WRITE_JUNIT_XML=YES RUN_CLI=YES xcodebuild -workspace socialize-sdk-ios.xcworkspace/ -sdk iphonesimulator -configuration Debug -scheme unitTests
 	#WRITE_JUNIT_XML=YES GHUNIT_UI_CLI=1 xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme unitTests -configuration Debug -sdk iphonesimulator build
 
+coverage:
+	RUN_CLI=1 xcodebuild -workspace socialize-sdk-ios.xcworkspace/ -sdk iphonesimulator -configuration Debug -scheme "Generate Coverage Report"
+
 integration-tests:
 	cd SampleSdkApp && WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -workspace SampleSdkApp.xcworkspace/ -scheme IntegrationTests -configuration Debug -sdk iphonesimulator build
 

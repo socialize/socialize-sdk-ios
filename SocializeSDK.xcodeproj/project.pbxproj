@@ -20,6 +20,17 @@
 			name = "Socialize Framework";
 			productName = "Socialize-IOS";
 		};
+		AAE99622157FDA560048AAC0 /* Generate Coverage Report */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = AAE99623157FDA560048AAC0 /* Build configuration list for PBXAggregateTarget "Generate Coverage Report" */;
+			buildPhases = (
+				AAE99626157FDA5F0048AAC0 /* Generate Coverage */,
+			);
+			dependencies = (
+			);
+			name = "Generate Coverage Report";
+			productName = "Generate Coverage Report";
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -5461,7 +5472,6 @@
 				5CC3DAE61378859000B11B78 /* Frameworks */,
 				5CC3DAE71378859000B11B78 /* Resources */,
 				6DE0950213F1BFDB0066D507 /* ShellScript */,
-				AA33A43A146316A100319168 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -5609,6 +5619,7 @@
 				AA318173144A440F008F4D59 /* Socialize Bundle */,
 				AA3325EA144CD8070033C7FA /* UIIntegrationTests */,
 				AA3E209D1461F057000321BF /* IntegrationTests */,
+				AAE99622157FDA560048AAC0 /* Generate Coverage Report */,
 			);
 		};
 /* End PBXProject section */
@@ -7096,20 +7107,6 @@
 			shellScript = "GHUNIT_CLI=1 ./util/run-headless-simulator.sh";
 			showEnvVarsInLog = 0;
 		};
-		AA33A43A146316A100319168 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./util/generate-coverage-report.sh";
-			showEnvVarsInLog = 0;
-		};
 		AA40E4A514D209E700EB6DEE /* Make Version Header */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -7183,6 +7180,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${PROJECT_DIR}/util/dump-xcode-env.sh";
+			showEnvVarsInLog = 0;
+		};
+		AAE99626157FDA5F0048AAC0 /* Generate Coverage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Coverage";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./util/generate-coverage-report.sh";
 			showEnvVarsInLog = 0;
 		};
 		AAEB4A6C1458DB0300A01F5B /* Run Script */ = {
@@ -8460,6 +8472,20 @@
 			};
 			name = Release;
 		};
+		AAE99624157FDA560048AAC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AAE99625157FDA560048AAC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -8543,6 +8569,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		AAE99623157FDA560048AAC0 /* Build configuration list for PBXAggregateTarget "Generate Coverage Report" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAE99624157FDA560048AAC0 /* Debug */,
+				AAE99625157FDA560048AAC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
