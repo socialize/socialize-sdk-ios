@@ -76,8 +76,6 @@
 - (void)notifyDelegateOfCompletion;
 - (void)notifyDelegateOfCancellation;
 - (void)failWithError:(NSError*)error;
-- (BOOL)dontShowErrors;
-- (void)postErrorNotificationForError:(NSError*)error;
 - (void)userSettingsChanged:(id<SZFullUser>)updatedSettings;
 
 @end

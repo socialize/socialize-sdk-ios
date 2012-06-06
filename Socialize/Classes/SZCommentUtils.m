@@ -21,7 +21,7 @@
 @implementation SZCommentUtils
 
 + (SZCommentOptions*)userCommentOptions {
-    SZCommentOptions *options = (SZCommentOptions*)ActivityOptionsFromUserDefaults([SZCommentOptions class]);
+    SZCommentOptions *options = (SZCommentOptions*)SZActivityOptionsFromUserDefaults([SZCommentOptions class]);
     return options;
 }
 

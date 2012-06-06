@@ -1993,6 +1993,14 @@
 		AAE94D911500258100877A7B /* SocializeThirdPartyFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE94D8E1500258100877A7B /* SocializeThirdPartyFacebook.m */; };
 		AAE94D921500258100877A7B /* SocializeThirdPartyFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE94D8E1500258100877A7B /* SocializeThirdPartyFacebook.m */; };
 		AAE94D98150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE94D97150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m */; };
+		AAE995D0157EE61E0048AAC0 /* SZAPIEventListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE995CE157EE61E0048AAC0 /* SZAPIEventListener.h */; };
+		AAE995D1157EE61E0048AAC0 /* SZAPIEventListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE995CE157EE61E0048AAC0 /* SZAPIEventListener.h */; };
+		AAE995D2157EE61E0048AAC0 /* SZAPIEventListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE995CF157EE61E0048AAC0 /* SZAPIEventListener.m */; };
+		AAE995D3157EE61E0048AAC0 /* SZAPIEventListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE995CF157EE61E0048AAC0 /* SZAPIEventListener.m */; };
+		AAE995D6157EE8BA0048AAC0 /* SZAPIHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE995D4157EE8BA0048AAC0 /* SZAPIHelpers.h */; };
+		AAE995D7157EE8BA0048AAC0 /* SZAPIHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE995D4157EE8BA0048AAC0 /* SZAPIHelpers.h */; };
+		AAE995D8157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE995D5157EE8BA0048AAC0 /* SZAPIHelpers.m */; };
+		AAE995D9157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE995D5157EE8BA0048AAC0 /* SZAPIHelpers.m */; };
 		AAEABFF414919575007C3D23 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAEABFF514919575007C3D23 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAEABFF614919575007C3D23 /* SocializeKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */; };
@@ -3198,6 +3206,10 @@
 		AAE94D8E1500258100877A7B /* SocializeThirdPartyFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeThirdPartyFacebook.m; path = Classes/SocializeThirdPartyFacebook.m; sourceTree = "<group>"; };
 		AAE94D96150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeThirdPartyAuthenticatorTests.h; path = "Test Cases/SocializeThirdPartyAuthenticatorTests.h"; sourceTree = "<group>"; };
 		AAE94D97150030C400877A7B /* SocializeThirdPartyAuthenticatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeThirdPartyAuthenticatorTests.m; path = "Test Cases/SocializeThirdPartyAuthenticatorTests.m"; sourceTree = "<group>"; };
+		AAE995CE157EE61E0048AAC0 /* SZAPIEventListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZAPIEventListener.h; path = Classes/SZAPIEventListener.h; sourceTree = "<group>"; };
+		AAE995CF157EE61E0048AAC0 /* SZAPIEventListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZAPIEventListener.m; path = Classes/SZAPIEventListener.m; sourceTree = "<group>"; };
+		AAE995D4157EE8BA0048AAC0 /* SZAPIHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZAPIHelpers.h; path = Classes/SZAPIHelpers.h; sourceTree = "<group>"; };
+		AAE995D5157EE8BA0048AAC0 /* SZAPIHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZAPIHelpers.m; path = Classes/SZAPIHelpers.m; sourceTree = "<group>"; };
 		AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeKeyboardListener.h; path = Classes/SocializeKeyboardListener.h; sourceTree = "<group>"; };
 		AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeKeyboardListener.m; path = Classes/SocializeKeyboardListener.m; sourceTree = "<group>"; };
 		AAEB4A791458E88300A01F5B /* SocializeServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeServiceTests.h; path = "Test Cases/SocializeServiceTests.h"; sourceTree = "<group>"; };
@@ -3602,6 +3614,10 @@
 				AABA23411523A3EB00B511FA /* _Socialize_private.h */,
 				1670BE5113C6EB44000CC441 /* SocializeCommonDefinitions.h */,
 				167E11BE144325D2004E4C1B /* SocializePrivateDefinitions.h */,
+				AAE995CE157EE61E0048AAC0 /* SZAPIEventListener.h */,
+				AAE995CF157EE61E0048AAC0 /* SZAPIEventListener.m */,
+				AAE995D4157EE8BA0048AAC0 /* SZAPIHelpers.h */,
+				AAE995D5157EE8BA0048AAC0 /* SZAPIHelpers.m */,
 				5C6AAC62137C3F5500AF0219 /* Models */,
 				AAB64D9A14730859009E892D /* Network */,
 				AAB64D99147307DA009E892D /* Services */,
@@ -4271,6 +4287,46 @@
 			name = Notifications;
 			sourceTree = "<group>";
 		};
+		AA050003157EE37700E82CB4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AAE56C6815476A6100A444C5 /* SZUserUtils.h */,
+				AAE56C6915476A6100A444C5 /* SZUserUtils.m */,
+				AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */,
+				AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */,
+				AAFD904E155B3D1F0036E6AF /* SZFacebookUtils.h */,
+				AAFD904F155B3D1F0036E6AF /* SZFacebookUtils.m */,
+				AAFD9054155B3D300036E6AF /* SZTwitterUtils.h */,
+				AAFD9055155B3D300036E6AF /* SZTwitterUtils.m */,
+				AA8C7192156463870092D5D3 /* SZSocialNetworkUtils.h */,
+				AAAB8371156895C700C6BDCE /* SZCommentUtils.h */,
+				AAAB8372156895C700C6BDCE /* SZCommentUtils.m */,
+				AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */,
+				AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */,
+				AA419C951565D31A0030AAB1 /* SZShareOptions.h */,
+				AA419C961565D31A0030AAB1 /* SZShareOptions.m */,
+				AA2C7180156DAF7600796D22 /* SZCommentOptions.h */,
+				AA2C7181156DAF7700796D22 /* SZCommentOptions.m */,
+				AA0AE1041571F57A0057FF40 /* SZDisplay.h */,
+				AA0AE1051571F57A0057FF40 /* SZDisplay.m */,
+				AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */,
+				AA05FF7A157C4B0500E82CB4 /* SZEntityUtils.m */,
+				AA05FFA3157C624A00E82CB4 /* SZLikeUtils.h */,
+				AA05FFA4157C624A00E82CB4 /* SZLikeUtils.m */,
+				AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */,
+				AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */,
+				AA05FFAF157D1FE300E82CB4 /* SZSmartAlertUtils.h */,
+				AA05FFB0157D1FE400E82CB4 /* SZSmartAlertUtils.m */,
+				AA05FFB5157D215100E82CB4 /* SZActionUtils.h */,
+				AA05FFB6157D215100E82CB4 /* SZActionUtils.m */,
+				AA05FFF1157D623500E82CB4 /* SZSubscriptionUtils.h */,
+				AA05FFF2157D623500E82CB4 /* SZSubscriptionUtils.m */,
+				AA05FFF7157E7AAC00E82CB4 /* SZViewUtils.h */,
+				AA05FFF8157E7AAD00E82CB4 /* SZViewUtils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		AA08B3D9147C31B700E6D1CA /* Activity List */ = {
 			isa = PBXGroup;
 			children = (
@@ -4900,39 +4956,7 @@
 			children = (
 				AAAB83771569767C00C6BDCE /* SDKHelpers.h */,
 				AAAB83781569767C00C6BDCE /* SDKHelpers.m */,
-				AAE56C6815476A6100A444C5 /* SZUserUtils.h */,
-				AAE56C6915476A6100A444C5 /* SZUserUtils.m */,
-				AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */,
-				AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */,
-				AAFD904E155B3D1F0036E6AF /* SZFacebookUtils.h */,
-				AAFD904F155B3D1F0036E6AF /* SZFacebookUtils.m */,
-				AAFD9054155B3D300036E6AF /* SZTwitterUtils.h */,
-				AAFD9055155B3D300036E6AF /* SZTwitterUtils.m */,
-				AA8C7192156463870092D5D3 /* SZSocialNetworkUtils.h */,
-				AAAB8371156895C700C6BDCE /* SZCommentUtils.h */,
-				AAAB8372156895C700C6BDCE /* SZCommentUtils.m */,
-				AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */,
-				AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */,
-				AA419C951565D31A0030AAB1 /* SZShareOptions.h */,
-				AA419C961565D31A0030AAB1 /* SZShareOptions.m */,
-				AA2C7180156DAF7600796D22 /* SZCommentOptions.h */,
-				AA2C7181156DAF7700796D22 /* SZCommentOptions.m */,
-				AA0AE1041571F57A0057FF40 /* SZDisplay.h */,
-				AA0AE1051571F57A0057FF40 /* SZDisplay.m */,
-				AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */,
-				AA05FF7A157C4B0500E82CB4 /* SZEntityUtils.m */,
-				AA05FFA3157C624A00E82CB4 /* SZLikeUtils.h */,
-				AA05FFA4157C624A00E82CB4 /* SZLikeUtils.m */,
-				AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */,
-				AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */,
-				AA05FFAF157D1FE300E82CB4 /* SZSmartAlertUtils.h */,
-				AA05FFB0157D1FE400E82CB4 /* SZSmartAlertUtils.m */,
-				AA05FFB5157D215100E82CB4 /* SZActionUtils.h */,
-				AA05FFB6157D215100E82CB4 /* SZActionUtils.m */,
-				AA05FFF1157D623500E82CB4 /* SZSubscriptionUtils.h */,
-				AA05FFF2157D623500E82CB4 /* SZSubscriptionUtils.m */,
-				AA05FFF7157E7AAC00E82CB4 /* SZViewUtils.h */,
-				AA05FFF8157E7AAD00E82CB4 /* SZViewUtils.m */,
+				AA050003157EE37700E82CB4 /* Utils */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -5298,6 +5322,8 @@
 				AA05FFB8157D215200E82CB4 /* SZActionUtils.h in Headers */,
 				AA05FFF4157D623500E82CB4 /* SZSubscriptionUtils.h in Headers */,
 				AA05FFFA157E7AAE00E82CB4 /* SZViewUtils.h in Headers */,
+				AAE995D1157EE61E0048AAC0 /* SZAPIEventListener.h in Headers */,
+				AAE995D7157EE8BA0048AAC0 /* SZAPIHelpers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5458,6 +5484,8 @@
 				AA05FFB7157D215200E82CB4 /* SZActionUtils.h in Headers */,
 				AA05FFF3157D623500E82CB4 /* SZSubscriptionUtils.h in Headers */,
 				AA05FFF9157E7AAE00E82CB4 /* SZViewUtils.h in Headers */,
+				AAE995D0157EE61E0048AAC0 /* SZAPIEventListener.h in Headers */,
+				AAE995D6157EE8BA0048AAC0 /* SZAPIHelpers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7430,6 +7458,8 @@
 				AA05FFB9157D215200E82CB4 /* SZActionUtils.m in Sources */,
 				AA05FFF5157D623500E82CB4 /* SZSubscriptionUtils.m in Sources */,
 				AA05FFFB157E7AAE00E82CB4 /* SZViewUtils.m in Sources */,
+				AAE995D2157EE61E0048AAC0 /* SZAPIEventListener.m in Sources */,
+				AAE995D8157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7835,6 +7865,8 @@
 				AA05FFBA157D215200E82CB4 /* SZActionUtils.m in Sources */,
 				AA05FFF6157D623500E82CB4 /* SZSubscriptionUtils.m in Sources */,
 				AA05FFFC157E7AAE00E82CB4 /* SZViewUtils.m in Sources */,
+				AAE995D3157EE61E0048AAC0 /* SZAPIEventListener.m in Sources */,
+				AAE995D9157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

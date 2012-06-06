@@ -134,7 +134,7 @@ NSString *const SZLikeButtonDidChangeStateNotification = @"SZLikeButtonDidChange
 @synthesize subscriptionService = _subscriptionService;
 @synthesize eventsService = _eventsService;
 
-static Socialize *_sharedSocialize = nil;
+static Socialize *_sharedSocialize;
 static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 

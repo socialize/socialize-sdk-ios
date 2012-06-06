@@ -52,3 +52,7 @@ NSDictionary *SZServerParamsForEntity(id<SZEntity> entity) {
     return params;
 }
 
+BOOL SZEntityIsLiked(id<SZEntity> entity) {
+    return [[[entity userActionSummary] objectForKey:@"liked"] integerValue] > 0;
+}
+

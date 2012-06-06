@@ -106,3 +106,6 @@
 @end
 
 NSDictionary *SZServerParamsForEntity(id<SZEntity> entity);
+
+BOOL SZEntityIsLiked(id<SZEntity> entity);
+

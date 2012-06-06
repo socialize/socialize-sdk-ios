@@ -12,6 +12,7 @@
 #import "SZLikeOptions.h"
 
 @interface SZLikeUtils : NSObject
++ (SZLikeOptions*)userLikeOptions;
 + (void)likeWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure;
 + (void)likeWithEntity:(id<SZEntity>)entity options:(SZLikeOptions*)options networks:(SZSocialNetwork)networks success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure;
 

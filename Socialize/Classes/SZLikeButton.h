@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Socialize.h"
+#import "SZDisplay.h"
 
-@interface SZLikeButton : UIView <SocializeServiceDelegate>
+@interface SZLikeButton : UIView
+
+@property (nonatomic, readonly) BOOL initialized;
 
 @property (nonatomic, retain) UIButton *actualButton;
 
 @property (nonatomic, readonly) BOOL liked;
+@property (nonatomic, readonly) BOOL isLiked;
 
 // begin-image-properties
 
@@ -40,8 +43,6 @@
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity display:(id<SZDisplay>)display;
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)controller;
 - (void)refresh;
-
-@property (nonatomic, retain) Socialize *socialize;
 
 
 @end

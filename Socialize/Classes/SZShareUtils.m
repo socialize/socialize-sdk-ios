@@ -22,7 +22,7 @@
 @implementation SZShareUtils
 
 + (SZShareOptions*)userShareOptions {
-    SZShareOptions *options = (SZShareOptions*)ActivityOptionsFromUserDefaults([SZShareOptions class]);
+    SZShareOptions *options = (SZShareOptions*)SZActivityOptionsFromUserDefaults([SZShareOptions class]);
     return options;
 }
 

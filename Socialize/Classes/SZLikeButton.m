@@ -13,27 +13,29 @@
 #import "NSTimer+BlocksKit.h"
 #import "NSNumber+Additions.h"
 #import "UIAlertView+BlocksKit.h"
+#import "SZEntityUtils.h"
+#import "SDKHelpers.h"
+#import "SZLikeUtils.h"
 
 #define BUTTON_PADDINGS 4
 #define PADDING_IN_BETWEEN_BUTTONS 10
 #define PADDING_BETWEEN_TEXT_ICON 2
 
-
 static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
+
+typedef enum {
+    SZLikeButtonInitStateInitNotStarted,
+    SZLikeButtonInitStateRequestedEntityCreate,
+    SZLikeButtonInitStateCompletedEntityCreate,
+    SZLikeButtonInitStateCompleted,
+} SZLikeButtonInitState;
 
 @interface SZLikeButton ()
 
-@property (nonatomic, assign) BOOL initialized;
+@property (nonatomic, assign) SZLikeButtonInitState initState;
 
-@property (nonatomic, assign) SocializeRequestState likeGetRequestState;
-@property (nonatomic, assign) SocializeRequestState entityCreateRequestState;
-@property (nonatomic, assign) SocializeRequestState likeCreateRequestState;
-@property (nonatomic, assign) SocializeRequestState likeDeleteRequestState;
-
-@property (nonatomic, retain) id<SocializeLike> like;
-@property (nonatomic, retain) NSTimer *recoveryTimer;
 @property (nonatomic, retain) id<SocializeEntity> serverEntity;
-
+@property (nonatomic, retain) NSTimer *recoveryTimer;
 
 @end
 
@@ -48,19 +50,12 @@ static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
 @synthesize unlikedIcon = unlikedIcon_;
 @synthesize display = display_;
 @synthesize entity = entity_;
-@synthesize socialize = socialize_;
-@synthesize like = like_;
 @synthesize recoveryTimer = recoveryTimer_;
 @synthesize serverEntity = serverEntity_;
 
-@synthesize initialized = initialized_;
+@synthesize initState = initState_;
 @synthesize hideCount = hideCount_;
 @synthesize autoresizeDisabled = autoresizeDisabled_;
-
-@synthesize likeGetRequestState = likeGetRequestState_;
-@synthesize likeCreateRequestState = likeCreateRequestState_;
-@synthesize likeDeleteRequestState = likeDeleteRequestState_;
-@synthesize entityCreateRequestState = entityCreateRequestState_;
 
 - (void)dealloc {
     self.actualButton = nil;
@@ -74,7 +69,6 @@ static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
     self.display = nil;
     entity_ = nil; [entity_ release];
     self.serverEntity = nil;
-    self.like = nil;
     
     if (recoveryTimer_ != nil) {
         [recoveryTimer_ invalidate];
@@ -134,7 +128,7 @@ static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
 }
 
 - (void)attemptRecovery {
-    if (!self.initialized) {
+    if (self.initState < SZLikeButtonInitStateCompleted) {
         [self tryToFinishInitializing];
     } else {
         [self stopRecoveryTimer];
@@ -158,29 +152,30 @@ static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
     }
 }
 
+- (BOOL)isLiked {
+    return SZEntityIsLiked(self.serverEntity);
+}
+
 - (BOOL)liked {
-    return self.like != nil;
-}
-
-- (Socialize*)socialize {
-    if (socialize_ == nil) {
-        socialize_ = [[Socialize alloc] initWithDelegate:self];
-    }
-    return socialize_;
-}
-
-- (void)getLikeFromServer {
-    self.likeGetRequestState = SocializeRequestStateSent;
-    [self.socialize getLikesForUser:[self.socialize authenticatedUser] entity:self.entity first:nil last:[NSNumber numberWithInteger:1]];
+    return [self isLiked];
 }
 
 - (void)createEntityOnServer {
-    self.entityCreateRequestState = SocializeRequestStateSent;
-    [self.socialize createEntity:self.entity];
+    [SZEntityUtils addEntity:self.entity success:^(id<SZEntity> entity) {
+        self.serverEntity = entity;
+        self.initState = SZLikeButtonInitStateCompletedEntityCreate;
+        [self tryToFinishInitializing];
+    } failure:^(NSError *error) {
+        [self startRecoveryTimer];
+    }];
+}
+
+- (BOOL)initialized {
+    return self.initState == SZLikeButtonInitStateCompleted;
 }
 
 - (void)tryToFinishInitializing {
-    if (self.initialized) {
+    if (self.initState == SZLikeButtonInitStateCompleted) {
         return;
     }
     
@@ -188,75 +183,20 @@ static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
         return;
     }
     
-    if (self.likeGetRequestState <= SocializeRequestStateNotStarted) {
-        [self getLikeFromServer];
-        return;
-    } else if (self.likeGetRequestState < SocializeRequestStateFinished) {
-        // Still waiting for response
+    if (self.initState < SZLikeButtonInitStateInitNotStarted) {
+        [self createEntityOnServer];
         return;
     }
     
-    if (self.like == nil) {
-        // Could not fetch an existing like from server -- we need to get the entity
-        
-        if (self.entityCreateRequestState <= SocializeRequestStateNotStarted) {
-            // We know the entity is not liked. Just make sure the entity exists.
-            [self createEntityOnServer];
-            return;
-        } else if (self.entityCreateRequestState < SocializeRequestStateFinished) {
-            // Still waiting for entity -- initialization not complete
-            return;
-        }
-    } 
+    if (self.initState < SZLikeButtonInitStateCompletedEntityCreate) {
+        return;
+    }
 
-    [self stopRecoveryTimer];
-    self.initialized = YES;
+    self.initState = SZLikeButtonInitStateCompleted;
+    
     [self configureButtonBackgroundImages];
     self.actualButton.enabled = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
-}
-
-- (void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
-    if ([service isKindOfClass:[SocializeUserService class]]) {
-        // Get likes for user
-        if ([dataArray count] > 0) {
-            self.like = [dataArray objectAtIndex:0];
-            self.serverEntity = self.like.entity;
-        } else {
-            // the like did not exist, which is ok. Continue on, anyway
-        }
-        
-        self.likeGetRequestState = SocializeRequestStateFinished;
-        [self tryToFinishInitializing];
-        
-    }
-}
-
-- (void)service:(SocializeService *)service didCreate:(id)objectOrObjects {
-    if ([service isKindOfClass:[SocializeEntityService class]]) {
-        
-        // Finished creating entity (initialization)
-        self.serverEntity = objectOrObjects;
-        self.entityCreateRequestState = SocializeRequestStateFinished;
-        [self tryToFinishInitializing];
-    }
-}
-
-- (void)service:(SocializeService *)service didDelete:(id<SocializeObject>)object {
-    if ([service isKindOfClass:[SocializeLikeService class]]) {
-        id<SocializeLike> serverLike = (id<SocializeLike>)object;
-        self.serverEntity = serverLike.entity;
-        
-        self.likeDeleteRequestState = SocializeRequestStateFinished;
-        self.like = nil;
-        self.actualButton.enabled = YES;
-        [self configureButtonBackgroundImages];
-        [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
-    }
-}
-
-- (BOOL)dontShowErrors {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeUIErrorAlertsDisabled] boolValue];
 }
 
 - (void)postErrorNotificationForError:(NSError*)error {
@@ -270,28 +210,7 @@ static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
 }
 
 - (void)failWithError:(NSError*)error {
-    [self postErrorNotificationForError:error];
-    
-    if (![self dontShowErrors]) {
-        [UIAlertView showAlertWithTitle:@"Error" message:[error localizedDescription] buttonTitle:@"Ok" handler:nil];
-    }
-    
-}
-
-- (void)service:(SocializeService *)service didFail:(NSError *)error {
-    if ([service isKindOfClass:[SocializeUserService class]]) {
-        self.likeGetRequestState = SocializeRequestStateFailed;
-        [self startRecoveryTimer];
-    } else if ([service isKindOfClass:[SocializeEntityService class]]) {
-        self.entityCreateRequestState = SocializeRequestStateFailed;
-        [self startRecoveryTimer];
-    } else if ([service isKindOfClass:[SocializeLikeService class]]) {
-        if (self.likeDeleteRequestState == SocializeRequestStateSent) {
-            self.likeDeleteRequestState = SocializeRequestStateFailed;
-            self.actualButton.enabled = YES;
-            [self failWithError:error];
-        }
-    }
+    SZEmitUIError(self, error);
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
@@ -422,7 +341,7 @@ static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
 - (void)configureButtonBackgroundImages {
     [self.actualButton setBackgroundImage:self.disabledImage forState:UIControlStateDisabled];
     
-    if (self.like != nil) {
+    if (self.isLiked) {
         [self.actualButton setBackgroundImage:self.activeImage forState:UIControlStateNormal];
         [self.actualButton setBackgroundImage:self.activeHighlightedImage forState:UIControlStateHighlighted];
         [self.actualButton setImage:self.likedIcon forState:UIControlStateNormal];
@@ -451,63 +370,60 @@ static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
 }
 
 - (void)unlikeOnServer {
-    if (self.likeDeleteRequestState != SocializeRequestStateSent) {
-        self.likeDeleteRequestState = SocializeRequestStateSent;
-        [self.socialize unlikeEntity:self.like];
-    }
+    self.actualButton.enabled = NO;
+    
+    [SZLikeUtils unlike:self.entity success:^(id<SZLike> like) {
+        self.serverEntity = like.entity;
+        self.actualButton.enabled = YES;
+        [self configureButtonBackgroundImages];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
+    } failure:^(NSError *error) {
+        self.actualButton.enabled = YES;
+        [self failWithError:error];
+    }];
 }
 
 - (void)likeOnServer {
-    if (self.likeCreateRequestState != SocializeRequestStateSent) {
-        self.likeCreateRequestState = SocializeRequestStateSent;
+    self.actualButton.enabled = NO;
+
+    [SZLikeUtils likeWithDisplay:self.display entity:self.entity success:^(id<SZLike> like) {
+
+        // Like succeeded
+        self.actualButton.enabled = YES;
+        self.serverEntity = like.entity;
+        [self configureButtonBackgroundImages];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
         
-//        SocializeLike *like = [SocializeLike likeWithEntity:self.entity];
-//        [SocializeUILikeCreator createLike:like options:nil display:self.display success:^(id<SocializeLike> serverLike) {
-//            // Like has been successfully created
-//            self.likeCreateRequestState = SocializeRequestStateFinished;
-//            self.like = serverLike;
-//            self.actualButton.enabled = YES;
-//            self.serverEntity = serverLike.entity;
-//            [self configureButtonBackgroundImages];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
-//
-//        } failure:^(NSError *error) {
-//            self.likeCreateRequestState = SocializeRequestStateFailed;
-//            self.actualButton.enabled = YES;
-//            [self failWithError:error];
-//        }];
-    }
+    } failure:^(NSError *error) {
+        
+        // Like failed
+        self.actualButton.enabled = YES;
+        [self failWithError:error];
+    }];
 }
 
 - (void)toggleLikeState {
-    if (self.like == nil) {
-        [self likeOnServer];
-    } else {
+    if (self.isLiked) {
         [self unlikeOnServer];
+    } else {
+        [self likeOnServer];
     }
 }
 
 - (void)actualButtonPressed:(UIButton*)button {
-    self.actualButton.enabled = NO;
     [self toggleLikeState];
 }
 
 - (void)setEntity:(id<SocializeEntity>)entity {
     NonatomicRetainedSetToFrom(entity_, entity);
     
+    // This is the user-set entity property. The server entity is always stored in self.serverEntity
     [self refresh];
 }
 
 - (void)refresh {
-    [self.socialize cancelAllRequests];
-    self.initialized = NO;
-    self.likeGetRequestState = SocializeRequestStateNotStarted;
-    self.likeDeleteRequestState = SocializeRequestStateNotStarted;
-    self.likeCreateRequestState = SocializeRequestStateNotStarted;
-    self.entityCreateRequestState = SocializeRequestStateNotStarted;
-    self.like = nil;
+    self.initState = SZLikeButtonInitStateInitNotStarted;
     self.serverEntity = nil;
-    [self stopRecoveryTimer];
     self.actualButton.enabled = NO;
     
     [self tryToFinishInitializing];

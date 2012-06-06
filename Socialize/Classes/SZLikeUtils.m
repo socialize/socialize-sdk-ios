@@ -15,6 +15,11 @@
 
 @implementation SZLikeUtils
 
++ (SZLikeOptions*)userLikeOptions {
+    SZLikeOptions *options = (SZLikeOptions*)SZActivityOptionsFromUserDefaults([SZLikeOptions class]);
+    return options;
+}
+
 + (void)likeWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
     SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
     

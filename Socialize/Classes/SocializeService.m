@@ -28,7 +28,7 @@
 #import "SocializeService.h"
 #import "JSONKit.h"
 #import "SocializeError.h"
-
+#import "_Socialize.h"
 
 @interface SocializeService()
 -(void) dispatch:(SocializeRequest *)request didLoadRawResponse:(NSData *)data;
@@ -118,6 +118,13 @@
 
 #pragma mark - Socialize request delegate
 - (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error {
+    if ([[error domain] isEqualToString:SocializeErrorDomain] && [error code] == SocializeErrorServerReturnedHTTPError) {
+        NSHTTPURLResponse *response = [[error userInfo] objectForKey:kSocializeErrorNSHTTPURLResponseKey];
+        if ([response statusCode] == 401) {
+            [[Socialize sharedSocialize] removeSocializeAuthenticationInfo];
+        }
+    }
+
      //[self doDidFailWithError:error];
     [self removeRequest:request];
     

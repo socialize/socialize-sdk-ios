@@ -14,6 +14,8 @@
 #import "SZCommentOptions.h"
 #import "SocializeThirdParty.h"
 #import "Socialize.h"
+#import "UIAlertView+BlocksKit.h"
+#import "SZDisplay.h"
 
 SZSocialNetwork LinkedSocialNetworks() {
     SZSocialNetwork networks = SZSocialNetworkNone;
@@ -57,7 +59,7 @@ void LinkWrapper(id<SZDisplay> display, void (^success)(BOOL didPrompt, SZSocial
     }
 }
 
-SZActivityOptions *ActivityOptionsFromUserDefaults(Class optionsClass) {
+SZActivityOptions *SZActivityOptionsFromUserDefaults(Class optionsClass) {
     SZActivityOptions *options = [optionsClass defaultOptions];
     options.dontShareLocation = ![[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue];
     
@@ -151,3 +153,54 @@ void CreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *options,
     }, failure);
 
 }
+
+BOOL SZErrorsAreDisabled() {
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeUIErrorAlertsDisabled] boolValue];
+}
+
+void UIControllerDidFailWithErrorNotification(id object, NSError *error) {
+    NSDictionary *userInfo = nil;
+    if (error != nil) {
+        userInfo = [NSDictionary dictionaryWithObject:error forKey:SocializeUIControllerErrorUserInfoKey];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:SocializeUIControllerDidFailWithErrorNotification
+                                                        object:object
+                                                      userInfo:userInfo];
+}
+
+id<SZDisplay> SZDisplayForObject(id object) {
+    if ([object respondsToSelector:@selector(display)]) {
+        id<SZDisplay> display = [object display];
+        if ([display conformsToProtocol:@protocol(SZDisplay)]) {
+            return display;
+        }
+    }
+    return nil;
+}
+
+void SZPostSocializeUIControllerDidFailWithErrorNotification(id object, NSError *error) {
+    NSDictionary *userInfo = nil;
+    if (error != nil) {
+        userInfo = [NSDictionary dictionaryWithObject:error forKey:SocializeUIControllerErrorUserInfoKey];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:SocializeUIControllerDidFailWithErrorNotification
+                                                        object:object
+                                                      userInfo:userInfo];
+}
+
+void SZEmitUIError(id object, NSError *error) {
+    SZPostSocializeUIControllerDidFailWithErrorNotification(object, error);
+    
+    if (!SZErrorsAreDisabled()) {
+        id<SZDisplay> display = SZDisplayForObject(object);
+        UIAlertView *alertView = [UIAlertView alertWithTitle:@"Error" message:[error localizedDescription]];
+        if (display != nil) {
+            [display socializeWillShowAlertView:alertView];
+        } else {
+            [alertView show];
+        }
+    }
+}
+
+
