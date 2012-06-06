@@ -428,8 +428,16 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     options.doNotPromptForPermission = YES;
     [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:options
                                                                display:nil
-                                                               success:nil
-                                                               failure:nil];
+                                                               success:^{
+                                                                   id<SocializeUser> authenticatedUser = [self authenticatedUser];
+                                                                   if ([self.delegate respondsToSelector:@selector(didAuthenticate:)]) {
+                                                                       [self.delegate didAuthenticate:authenticatedUser];
+                                                                   }
+                                                               } failure:^(NSError *error) {
+                                                                   if ([self.delegate respondsToSelector:@selector(service:didFail:)]) {
+                                                                       [self.delegate service:_authService didFail:error];
+                                                                   }
+                                                               }];
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey
