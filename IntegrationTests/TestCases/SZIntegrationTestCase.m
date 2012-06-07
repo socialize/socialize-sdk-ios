@@ -7,6 +7,7 @@
 //
 
 #import "SZIntegrationTestCase.h"
+#import "SocializePrivateDefinitions.h"
 
 static NSString *UUIDString() {
     CFUUIDRef	uuidObj = CFUUIDCreate(nil);
@@ -78,6 +79,26 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     if (![self.socialize isAuthenticated]) {
         [self authenticateAnonymously];
     }
+}
+
+- (void)fakeCurrentUserWithThirdParties:(NSArray*)thirdParties {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *fakeUser = [NSDictionary dictionaryWithObjectsAndKeys:
+                              thirdParties, @"third_party_auth",
+                              [NSNumber numberWithInteger:123], @"id",
+                              nil];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:fakeUser];
+    [userDefaults setObject:data forKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
+    [userDefaults synchronize];
+}
+
+- (void)fakeCurrentUserAnonymous {
+    [self fakeCurrentUserWithThirdParties:[NSArray array]];
+}
+
+- (void)fakeCurrentUserNotAuthed {
+    [[Socialize sharedSocialize] removeAuthenticationInfo];
 }
 
 - (Socialize*)socialize {

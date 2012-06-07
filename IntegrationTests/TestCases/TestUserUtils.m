@@ -7,7 +7,20 @@
 //
 
 #import "TestUserUtils.h"
+#import "SZUserUtils.h"
 
 @implementation TestUserUtils
+
+- (void)testIsLinkedFalseWhenAnonymous {
+    [self fakeCurrentUserAnonymous];
+    BOOL isLinked = [SZUserUtils userIsLinked];
+    GHAssertFalse(isLinked, @"Should not be linked");
+}
+
+- (void)testIsLinkedTrueWhenLinked {
+    [self fakeCurrentUserWithThirdParties:[NSArray arrayWithObject:kSocializeFacebookStringForAPI]];
+    BOOL isLinked = [SZUserUtils userIsLinked];
+    GHAssertTrue(isLinked, @"Should be linked");
+}
 
 @end

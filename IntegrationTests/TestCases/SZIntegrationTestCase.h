@@ -41,6 +41,9 @@
 - (void)subscribeToCommentsOnEntity:(id<SocializeEntity>)entity;
 - (void)authenticateAnonymouslyIfNeeded;
 - (void)authenticateAnonymously;
+- (void)fakeCurrentUserWithThirdParties:(NSArray*)thirdParties;
+- (void)fakeCurrentUserAnonymous;
+- (void)fakeCurrentUserNotAuthed;
 
 //- (void)getViewsForURL:(NSString*)url;
 @end
