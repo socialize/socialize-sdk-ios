@@ -1,13 +1,13 @@
 //
-//  TestSZShareUtils.h
+//  TestSmartAlertUtils.h
 //  SocializeSDK
 //
-//  Created by Nathaniel Griswold on 5/8/12.
+//  Created by Nathaniel Griswold on 6/7/12.
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
 #import "SocializeAsyncTestCase.h"
 
-@interface TestSZShareUtils : SocializeAsyncTestCase
+@interface TestSmartAlertUtils : SocializeAsyncTestCase
 
 @end

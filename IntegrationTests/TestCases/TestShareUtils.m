@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import "TestSZShareUtils.h"
+#import "TestShareUtils.h"
 #import "SZShareUtils.h"
 
-@implementation TestSZShareUtils
+@implementation TestShareUtils
 
 - (id<SZShare>)createTestShareForSelector:(SEL)selector {
     NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", selector]];

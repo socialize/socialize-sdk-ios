@@ -711,6 +711,51 @@
 		AA156BEE15213E6200EB2D53 /* socialize_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AA156AF11521109800EB2D53 /* socialize_logo.png */; };
 		AA156BF015213E6400EB2D53 /* socialize_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AA156AF11521109800EB2D53 /* socialize_logo.png */; };
 		AA156BF115213E6400EB2D53 /* socialize_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AA156AF11521109800EB2D53 /* socialize_logo.png */; };
+		AA16D679158153C2002F1E16 /* TestUserUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D677158153C2002F1E16 /* TestUserUtils.h */; };
+		AA16D67A158153C2002F1E16 /* TestUserUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D677158153C2002F1E16 /* TestUserUtils.h */; };
+		AA16D67B158153C2002F1E16 /* TestUserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D678158153C2002F1E16 /* TestUserUtils.m */; };
+		AA16D67C158153C2002F1E16 /* TestUserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D678158153C2002F1E16 /* TestUserUtils.m */; };
+		AA16D67D158153C2002F1E16 /* TestUserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D678158153C2002F1E16 /* TestUserUtils.m */; };
+		AA16D6801581540B002F1E16 /* TestFacebookUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D67E1581540B002F1E16 /* TestFacebookUtils.h */; };
+		AA16D6811581540B002F1E16 /* TestFacebookUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D67E1581540B002F1E16 /* TestFacebookUtils.h */; };
+		AA16D6821581540B002F1E16 /* TestFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D67F1581540B002F1E16 /* TestFacebookUtils.m */; };
+		AA16D6831581540B002F1E16 /* TestFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D67F1581540B002F1E16 /* TestFacebookUtils.m */; };
+		AA16D6841581540B002F1E16 /* TestFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D67F1581540B002F1E16 /* TestFacebookUtils.m */; };
+		AA16D6871581541C002F1E16 /* TestTwitterUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D6851581541C002F1E16 /* TestTwitterUtils.h */; };
+		AA16D6881581541C002F1E16 /* TestTwitterUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D6851581541C002F1E16 /* TestTwitterUtils.h */; };
+		AA16D6891581541C002F1E16 /* TestTwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6861581541C002F1E16 /* TestTwitterUtils.m */; };
+		AA16D68A1581541C002F1E16 /* TestTwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6861581541C002F1E16 /* TestTwitterUtils.m */; };
+		AA16D68B1581541C002F1E16 /* TestTwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6861581541C002F1E16 /* TestTwitterUtils.m */; };
+		AA16D68E15815473002F1E16 /* TestCommentUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D68C15815473002F1E16 /* TestCommentUtils.h */; };
+		AA16D68F15815473002F1E16 /* TestCommentUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D68C15815473002F1E16 /* TestCommentUtils.h */; };
+		AA16D69015815473002F1E16 /* TestCommentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D68D15815473002F1E16 /* TestCommentUtils.m */; };
+		AA16D69115815473002F1E16 /* TestCommentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D68D15815473002F1E16 /* TestCommentUtils.m */; };
+		AA16D69215815473002F1E16 /* TestCommentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D68D15815473002F1E16 /* TestCommentUtils.m */; };
+		AA16D69515815485002F1E16 /* TestEntityUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D69315815485002F1E16 /* TestEntityUtils.h */; };
+		AA16D69615815485002F1E16 /* TestEntityUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D69315815485002F1E16 /* TestEntityUtils.h */; };
+		AA16D69715815485002F1E16 /* TestEntityUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D69415815485002F1E16 /* TestEntityUtils.m */; };
+		AA16D69815815485002F1E16 /* TestEntityUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D69415815485002F1E16 /* TestEntityUtils.m */; };
+		AA16D69915815485002F1E16 /* TestEntityUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D69415815485002F1E16 /* TestEntityUtils.m */; };
+		AA16D69C158154BC002F1E16 /* TestSmartAlertUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D69A158154BC002F1E16 /* TestSmartAlertUtils.h */; };
+		AA16D69D158154BC002F1E16 /* TestSmartAlertUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D69A158154BC002F1E16 /* TestSmartAlertUtils.h */; };
+		AA16D69E158154BC002F1E16 /* TestSmartAlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D69B158154BC002F1E16 /* TestSmartAlertUtils.m */; };
+		AA16D69F158154BC002F1E16 /* TestSmartAlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D69B158154BC002F1E16 /* TestSmartAlertUtils.m */; };
+		AA16D6A0158154BC002F1E16 /* TestSmartAlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D69B158154BC002F1E16 /* TestSmartAlertUtils.m */; };
+		AA16D6A3158154CF002F1E16 /* TestActionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D6A1158154CF002F1E16 /* TestActionUtils.h */; };
+		AA16D6A4158154CF002F1E16 /* TestActionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D6A1158154CF002F1E16 /* TestActionUtils.h */; };
+		AA16D6A5158154CF002F1E16 /* TestActionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6A2158154CF002F1E16 /* TestActionUtils.m */; };
+		AA16D6A6158154CF002F1E16 /* TestActionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6A2158154CF002F1E16 /* TestActionUtils.m */; };
+		AA16D6A7158154CF002F1E16 /* TestActionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6A2158154CF002F1E16 /* TestActionUtils.m */; };
+		AA16D6AA158154DE002F1E16 /* TestSubscriptionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D6A8158154DE002F1E16 /* TestSubscriptionUtils.h */; };
+		AA16D6AB158154DE002F1E16 /* TestSubscriptionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D6A8158154DE002F1E16 /* TestSubscriptionUtils.h */; };
+		AA16D6AC158154DE002F1E16 /* TestSubscriptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6A9158154DE002F1E16 /* TestSubscriptionUtils.m */; };
+		AA16D6AD158154DE002F1E16 /* TestSubscriptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6A9158154DE002F1E16 /* TestSubscriptionUtils.m */; };
+		AA16D6AE158154DE002F1E16 /* TestSubscriptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6A9158154DE002F1E16 /* TestSubscriptionUtils.m */; };
+		AA16D6B1158154EF002F1E16 /* TestViewUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D6AF158154EE002F1E16 /* TestViewUtils.h */; };
+		AA16D6B2158154EF002F1E16 /* TestViewUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA16D6AF158154EE002F1E16 /* TestViewUtils.h */; };
+		AA16D6B3158154EF002F1E16 /* TestViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6B0158154EE002F1E16 /* TestViewUtils.m */; };
+		AA16D6B4158154EF002F1E16 /* TestViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6B0158154EE002F1E16 /* TestViewUtils.m */; };
+		AA16D6B5158154EF002F1E16 /* TestViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6B0158154EE002F1E16 /* TestViewUtils.m */; };
 		AA1A2DF4155864020085D0D9 /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1A2DF3155864020085D0D9 /* SampleListViewController.m */; };
 		AA1A2DF5155864020085D0D9 /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1A2DF3155864020085D0D9 /* SampleListViewController.m */; };
 		AA1A2DF7155876990085D0D9 /* SampleListViewController.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA1A2DF6155876990085D0D9 /* SampleListViewController.plist */; };
@@ -1280,7 +1325,7 @@
 		AA7F8BAD1558D399000ADA70 /* SZShareUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7F8BAE1558D399000ADA70 /* SZShareUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */; };
 		AA7F8BAF1558D399000ADA70 /* SZShareUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */; };
-		AA7F8BD31559D606000ADA70 /* TestSZShareUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BD21559D606000ADA70 /* TestSZShareUtils.m */; };
+		AA7F8BD31559D606000ADA70 /* TestShareUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BD21559D606000ADA70 /* TestShareUtils.m */; };
 		AA7FB8B51491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
 		AA7FB8B61491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
 		AA7FB8B71491415600B018DE /* socialize-iphone-notification-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */; };
@@ -2828,6 +2873,24 @@
 		AA156AE61521102400EB2D53 /* SocializeDummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDummyViewController.m; path = Classes/SocializeDummyViewController.m; sourceTree = "<group>"; };
 		AA156AEE1521105200EB2D53 /* SocializeDummyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeDummyViewController.xib; path = Resources/SocializeDummyViewController.xib; sourceTree = "<group>"; };
 		AA156AF11521109800EB2D53 /* socialize_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = socialize_logo.png; path = Resources/socialize_logo.png; sourceTree = "<group>"; };
+		AA16D677158153C2002F1E16 /* TestUserUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUserUtils.h; sourceTree = "<group>"; };
+		AA16D678158153C2002F1E16 /* TestUserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUserUtils.m; sourceTree = "<group>"; };
+		AA16D67E1581540B002F1E16 /* TestFacebookUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFacebookUtils.h; sourceTree = "<group>"; };
+		AA16D67F1581540B002F1E16 /* TestFacebookUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFacebookUtils.m; sourceTree = "<group>"; };
+		AA16D6851581541C002F1E16 /* TestTwitterUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTwitterUtils.h; sourceTree = "<group>"; };
+		AA16D6861581541C002F1E16 /* TestTwitterUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTwitterUtils.m; sourceTree = "<group>"; };
+		AA16D68C15815473002F1E16 /* TestCommentUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCommentUtils.h; sourceTree = "<group>"; };
+		AA16D68D15815473002F1E16 /* TestCommentUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCommentUtils.m; sourceTree = "<group>"; };
+		AA16D69315815485002F1E16 /* TestEntityUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEntityUtils.h; sourceTree = "<group>"; };
+		AA16D69415815485002F1E16 /* TestEntityUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEntityUtils.m; sourceTree = "<group>"; };
+		AA16D69A158154BC002F1E16 /* TestSmartAlertUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSmartAlertUtils.h; sourceTree = "<group>"; };
+		AA16D69B158154BC002F1E16 /* TestSmartAlertUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSmartAlertUtils.m; sourceTree = "<group>"; };
+		AA16D6A1158154CF002F1E16 /* TestActionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestActionUtils.h; sourceTree = "<group>"; };
+		AA16D6A2158154CF002F1E16 /* TestActionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestActionUtils.m; sourceTree = "<group>"; };
+		AA16D6A8158154DE002F1E16 /* TestSubscriptionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSubscriptionUtils.h; sourceTree = "<group>"; };
+		AA16D6A9158154DE002F1E16 /* TestSubscriptionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSubscriptionUtils.m; sourceTree = "<group>"; };
+		AA16D6AF158154EE002F1E16 /* TestViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewUtils.h; sourceTree = "<group>"; };
+		AA16D6B0158154EE002F1E16 /* TestViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewUtils.m; sourceTree = "<group>"; };
 		AA1A2DF2155864020085D0D9 /* SampleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleListViewController.h; sourceTree = "<group>"; };
 		AA1A2DF3155864020085D0D9 /* SampleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleListViewController.m; sourceTree = "<group>"; };
 		AA1A2DF6155876990085D0D9 /* SampleListViewController.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SampleListViewController.plist; sourceTree = "<group>"; };
@@ -2929,8 +2992,8 @@
 		AA7F8BA315589A76000ADA70 /* SocializeSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeSubscription.h; path = Classes/SocializeSubscription.h; sourceTree = "<group>"; };
 		AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZShareUtils.h; path = Classes/SZShareUtils.h; sourceTree = "<group>"; };
 		AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZShareUtils.m; path = Classes/SZShareUtils.m; sourceTree = "<group>"; };
-		AA7F8BD11559D606000ADA70 /* TestSZShareUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSZShareUtils.h; sourceTree = "<group>"; };
-		AA7F8BD21559D606000ADA70 /* TestSZShareUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSZShareUtils.m; sourceTree = "<group>"; };
+		AA7F8BD11559D606000ADA70 /* TestShareUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShareUtils.h; sourceTree = "<group>"; };
+		AA7F8BD21559D606000ADA70 /* TestShareUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShareUtils.m; sourceTree = "<group>"; };
 		AA7FB8931491415600B018DE /* socialize-iphone-notification-button-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-highlighted.png"; path = "Resources/socialize-iphone-notification-button-highlighted.png"; sourceTree = "<group>"; };
 		AA7FB8941491415600B018DE /* socialize-iphone-notification-button-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-highlighted@2x.png"; path = "Resources/socialize-iphone-notification-button-highlighted@2x.png"; sourceTree = "<group>"; };
 		AA7FB8951491415600B018DE /* socialize-iphone-notification-button-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-iphone-notification-button-normal.png"; path = "Resources/socialize-iphone-notification-button-normal.png"; sourceTree = "<group>"; };
@@ -4263,20 +4326,10 @@
 				AA8C7192156463870092D5D3 /* SZSocialNetworkUtils.h */,
 				AAAB8371156895C700C6BDCE /* SZCommentUtils.h */,
 				AAAB8372156895C700C6BDCE /* SZCommentUtils.m */,
-				AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */,
-				AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */,
-				AA419C951565D31A0030AAB1 /* SZShareOptions.h */,
-				AA419C961565D31A0030AAB1 /* SZShareOptions.m */,
-				AA2C7180156DAF7600796D22 /* SZCommentOptions.h */,
-				AA2C7181156DAF7700796D22 /* SZCommentOptions.m */,
-				AA0AE1041571F57A0057FF40 /* SZDisplay.h */,
-				AA0AE1051571F57A0057FF40 /* SZDisplay.m */,
 				AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */,
 				AA05FF7A157C4B0500E82CB4 /* SZEntityUtils.m */,
 				AA05FFA3157C624A00E82CB4 /* SZLikeUtils.h */,
 				AA05FFA4157C624A00E82CB4 /* SZLikeUtils.m */,
-				AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */,
-				AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */,
 				AA05FFAF157D1FE300E82CB4 /* SZSmartAlertUtils.h */,
 				AA05FFB0157D1FE400E82CB4 /* SZSmartAlertUtils.m */,
 				AA05FFB5157D215100E82CB4 /* SZActionUtils.h */,
@@ -4285,6 +4338,7 @@
 				AA05FFF2157D623500E82CB4 /* SZSubscriptionUtils.m */,
 				AA05FFF7157E7AAC00E82CB4 /* SZViewUtils.h */,
 				AA05FFF8157E7AAD00E82CB4 /* SZViewUtils.m */,
+				AA16D67615815321002F1E16 /* Options */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -4309,6 +4363,21 @@
 				AA0AE0C91571D8350057FF40 /* SZComposeCommentViewController.m */,
 			);
 			name = "Compose Comment";
+			sourceTree = "<group>";
+		};
+		AA16D67615815321002F1E16 /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */,
+				AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */,
+				AA419C951565D31A0030AAB1 /* SZShareOptions.h */,
+				AA419C961565D31A0030AAB1 /* SZShareOptions.m */,
+				AA2C7180156DAF7600796D22 /* SZCommentOptions.h */,
+				AA2C7181156DAF7700796D22 /* SZCommentOptions.m */,
+				AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */,
+				AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */,
+			);
+			name = Options;
 			sourceTree = "<group>";
 		};
 		AA3326DE144CD9FB0033C7FA /* KIF */ = {
@@ -4611,8 +4680,26 @@
 		AA7F8BD01559D5E7000ADA70 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				AA7F8BD11559D606000ADA70 /* TestSZShareUtils.h */,
-				AA7F8BD21559D606000ADA70 /* TestSZShareUtils.m */,
+				AA7F8BD11559D606000ADA70 /* TestShareUtils.h */,
+				AA7F8BD21559D606000ADA70 /* TestShareUtils.m */,
+				AA16D677158153C2002F1E16 /* TestUserUtils.h */,
+				AA16D678158153C2002F1E16 /* TestUserUtils.m */,
+				AA16D67E1581540B002F1E16 /* TestFacebookUtils.h */,
+				AA16D67F1581540B002F1E16 /* TestFacebookUtils.m */,
+				AA16D6851581541C002F1E16 /* TestTwitterUtils.h */,
+				AA16D6861581541C002F1E16 /* TestTwitterUtils.m */,
+				AA16D68C15815473002F1E16 /* TestCommentUtils.h */,
+				AA16D68D15815473002F1E16 /* TestCommentUtils.m */,
+				AA16D69315815485002F1E16 /* TestEntityUtils.h */,
+				AA16D69415815485002F1E16 /* TestEntityUtils.m */,
+				AA16D69A158154BC002F1E16 /* TestSmartAlertUtils.h */,
+				AA16D69B158154BC002F1E16 /* TestSmartAlertUtils.m */,
+				AA16D6A1158154CF002F1E16 /* TestActionUtils.h */,
+				AA16D6A2158154CF002F1E16 /* TestActionUtils.m */,
+				AA16D6A8158154DE002F1E16 /* TestSubscriptionUtils.h */,
+				AA16D6A9158154DE002F1E16 /* TestSubscriptionUtils.m */,
+				AA16D6AF158154EE002F1E16 /* TestViewUtils.h */,
+				AA16D6B0158154EE002F1E16 /* TestViewUtils.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -4918,6 +5005,8 @@
 			children = (
 				AAAB83771569767C00C6BDCE /* SDKHelpers.h */,
 				AAAB83781569767C00C6BDCE /* SDKHelpers.m */,
+				AA0AE1041571F57A0057FF40 /* SZDisplay.h */,
+				AA0AE1051571F57A0057FF40 /* SZDisplay.m */,
 				AA050003157EE37700E82CB4 /* Utils */,
 			);
 			name = SDK;
@@ -5258,6 +5347,15 @@
 				AA05FFFA157E7AAE00E82CB4 /* SZViewUtils.h in Headers */,
 				AAE995D1157EE61E0048AAC0 /* SZAPIEventListener.h in Headers */,
 				AAE995D7157EE8BA0048AAC0 /* SZAPIHelpers.h in Headers */,
+				AA16D67A158153C2002F1E16 /* TestUserUtils.h in Headers */,
+				AA16D6811581540B002F1E16 /* TestFacebookUtils.h in Headers */,
+				AA16D6881581541C002F1E16 /* TestTwitterUtils.h in Headers */,
+				AA16D68F15815473002F1E16 /* TestCommentUtils.h in Headers */,
+				AA16D69615815485002F1E16 /* TestEntityUtils.h in Headers */,
+				AA16D69D158154BC002F1E16 /* TestSmartAlertUtils.h in Headers */,
+				AA16D6A4158154CF002F1E16 /* TestActionUtils.h in Headers */,
+				AA16D6AB158154DE002F1E16 /* TestSubscriptionUtils.h in Headers */,
+				AA16D6B2158154EF002F1E16 /* TestViewUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5419,6 +5517,15 @@
 				AA05FFF9157E7AAE00E82CB4 /* SZViewUtils.h in Headers */,
 				AAE995D0157EE61E0048AAC0 /* SZAPIEventListener.h in Headers */,
 				AAE995D6157EE8BA0048AAC0 /* SZAPIHelpers.h in Headers */,
+				AA16D679158153C2002F1E16 /* TestUserUtils.h in Headers */,
+				AA16D6801581540B002F1E16 /* TestFacebookUtils.h in Headers */,
+				AA16D6871581541C002F1E16 /* TestTwitterUtils.h in Headers */,
+				AA16D68E15815473002F1E16 /* TestCommentUtils.h in Headers */,
+				AA16D69515815485002F1E16 /* TestEntityUtils.h in Headers */,
+				AA16D69C158154BC002F1E16 /* TestSmartAlertUtils.h in Headers */,
+				AA16D6A3158154CF002F1E16 /* TestActionUtils.h in Headers */,
+				AA16D6AA158154DE002F1E16 /* TestSubscriptionUtils.h in Headers */,
+				AA16D6B1158154EF002F1E16 /* TestViewUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7441,6 +7548,15 @@
 				AA05FFFB157E7AAE00E82CB4 /* SZViewUtils.m in Sources */,
 				AAE995D2157EE61E0048AAC0 /* SZAPIEventListener.m in Sources */,
 				AAE995D8157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */,
+				AA16D67B158153C2002F1E16 /* TestUserUtils.m in Sources */,
+				AA16D6821581540B002F1E16 /* TestFacebookUtils.m in Sources */,
+				AA16D6891581541C002F1E16 /* TestTwitterUtils.m in Sources */,
+				AA16D69015815473002F1E16 /* TestCommentUtils.m in Sources */,
+				AA16D69715815485002F1E16 /* TestEntityUtils.m in Sources */,
+				AA16D69E158154BC002F1E16 /* TestSmartAlertUtils.m in Sources */,
+				AA16D6A5158154CF002F1E16 /* TestActionUtils.m in Sources */,
+				AA16D6AC158154DE002F1E16 /* TestSubscriptionUtils.m in Sources */,
+				AA16D6B3158154EF002F1E16 /* TestViewUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7606,8 +7722,17 @@
 				AA94613B152A877200BCEB4A /* TestNotifications.m in Sources */,
 				AA946199152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.m in Sources */,
 				AAE85400153DF18A002B93AD /* TestUserService.m in Sources */,
-				AA7F8BD31559D606000ADA70 /* TestSZShareUtils.m in Sources */,
+				AA7F8BD31559D606000ADA70 /* TestShareUtils.m in Sources */,
 				AAE99628157FE51E0048AAC0 /* GCDAProfiling.c in Sources */,
+				AA16D67D158153C2002F1E16 /* TestUserUtils.m in Sources */,
+				AA16D6841581540B002F1E16 /* TestFacebookUtils.m in Sources */,
+				AA16D68B1581541C002F1E16 /* TestTwitterUtils.m in Sources */,
+				AA16D69215815473002F1E16 /* TestCommentUtils.m in Sources */,
+				AA16D69915815485002F1E16 /* TestEntityUtils.m in Sources */,
+				AA16D6A0158154BC002F1E16 /* TestSmartAlertUtils.m in Sources */,
+				AA16D6A7158154CF002F1E16 /* TestActionUtils.m in Sources */,
+				AA16D6AE158154DE002F1E16 /* TestSubscriptionUtils.m in Sources */,
+				AA16D6B5158154EF002F1E16 /* TestViewUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7837,6 +7962,15 @@
 				AA05FFFC157E7AAE00E82CB4 /* SZViewUtils.m in Sources */,
 				AAE995D3157EE61E0048AAC0 /* SZAPIEventListener.m in Sources */,
 				AAE995D9157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */,
+				AA16D67C158153C2002F1E16 /* TestUserUtils.m in Sources */,
+				AA16D6831581540B002F1E16 /* TestFacebookUtils.m in Sources */,
+				AA16D68A1581541C002F1E16 /* TestTwitterUtils.m in Sources */,
+				AA16D69115815473002F1E16 /* TestCommentUtils.m in Sources */,
+				AA16D69815815485002F1E16 /* TestEntityUtils.m in Sources */,
+				AA16D69F158154BC002F1E16 /* TestSmartAlertUtils.m in Sources */,
+				AA16D6A6158154CF002F1E16 /* TestActionUtils.m in Sources */,
+				AA16D6AD158154DE002F1E16 /* TestSubscriptionUtils.m in Sources */,
+				AA16D6B4158154EF002F1E16 /* TestViewUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
