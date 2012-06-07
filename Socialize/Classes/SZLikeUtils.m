@@ -69,7 +69,11 @@
 + (void)likeWithEntity:(id<SZEntity>)entity options:(SZLikeOptions*)options networks:(SZSocialNetwork)networks success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
     SZLike *like = [SZLike likeWithEntity:entity];
     ActivityCreatorBlock likeCreator = ^(id<SZActivity> activity, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
-        [[Socialize sharedSocialize] createLikes:[NSArray arrayWithObject:activity] success:createSuccess failure:createFailure];
+        
+        SZAuthWrapper(^{
+            [[Socialize sharedSocialize] createLikes:[NSArray arrayWithObject:activity] success:createSuccess failure:createFailure];
+        }, failure);
+
     };
 
     CreateAndShareActivity(like, options, networks, likeCreator, success, failure);
@@ -77,7 +81,10 @@
 
 + (void)unlike:(id<SZEntity>)entity success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
     id<SZFullUser> user = [SZUserUtils currentUser];
-    [[Socialize sharedSocialize] deleteLikeForUser:user entity:entity success:success failure:failure];
+    
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] deleteLikeForUser:user entity:entity success:success failure:failure];
+    }, failure);
 }
 
 + (void)getLikeStatusForEntity:(id<SZEntity>)entity success:(void(^)(BOOL isLiked))success failure:(void(^)(NSError *error))failure {
@@ -89,21 +96,30 @@
 
 + (void)getLike:(id<SZEntity>)entity success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
     id<SZFullUser> user = [SZUserUtils currentUser];
-    [[Socialize sharedSocialize] getLikesForUser:(id<SZUser>)user entity:entity first:nil last:nil success:^(NSArray *likes) {
-        BLOCK_CALL_1(success, [likes objectAtIndex:0]);
-    } failure:failure];
+    
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getLikesForUser:(id<SZUser>)user entity:entity first:nil last:nil success:^(NSArray *likes) {
+            BLOCK_CALL_1(success, [likes objectAtIndex:0]);
+        } failure:failure];
+    }, failure);
 }
 
 + (void)getLikesForUser:(id<SZFullUser>)user start:(NSNumber*)start end:(NSNumber*)end success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getLikesForUser:(id<SZUser>)user entity:nil first:start last:end success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getLikesForUser:(id<SZUser>)user entity:nil first:start last:end success:success failure:failure];
+    }, failure);
 }
 
 + (void)getLikesForEntity:(id<SZEntity>)entity start:(NSNumber*)start end:(NSNumber*)end success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getLikesForEntity:entity first:start last:end success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getLikesForEntity:entity first:start last:end success:success failure:failure];
+    }, failure);
 }
 
 + (void)getLikesForUser:(id<SZFullUser>)user entity:(id<SZEntity>)entity start:(NSNumber*)start end:(NSNumber*)end success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getLikesForUser:(id<SZUser>)user entity:entity first:start last:end success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getLikesForUser:(id<SZUser>)user entity:entity first:start last:end success:success failure:failure];
+    }, failure);
 }
 
 @end

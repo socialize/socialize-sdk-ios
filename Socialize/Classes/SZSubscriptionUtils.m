@@ -8,6 +8,7 @@
 
 #import "SZSubscriptionUtils.h"
 #import "_Socialize.h"
+#import "SDKHelpers.h"
 
 NSString *NSStringFromSZSubscriptionType(SZSubscriptionType type) {
     switch (type) {
@@ -20,20 +21,28 @@ NSString *NSStringFromSZSubscriptionType(SZSubscriptionType type) {
 
 + (void)subscribeToEntity:(id<SZEntity>)entity subscriptionType:(SZSubscriptionType)type success:(void(^)(id<SZSubscription> subscription))success failure:(void(^)(NSError *error))failure {
     SZSubscription *subscription = [SZSubscription subscriptionWithEntity:entity type:NSStringFromSZSubscriptionType(type) subscribed:YES];
-    [[Socialize sharedSocialize] createSubscription:subscription success:success failure:failure];
+    
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] createSubscription:subscription success:success failure:failure];
+    }, failure);
 }
 
 + (void)unsubscribeFromEntity:(id<SZEntity>)entity subscriptionType:(SZSubscriptionType)type success:(void(^)(id<SZSubscription> subscription))success failure:(void(^)(NSError *error))failure {
     SZSubscription *subscription = [SZSubscription subscriptionWithEntity:entity type:NSStringFromSZSubscriptionType(type) subscribed:NO];
-    [[Socialize sharedSocialize] createSubscription:subscription success:success failure:failure];
+    
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] createSubscription:subscription success:success failure:failure];
+    }, failure);
 }
 
 + (void)getSubscriptionsForEntity:(id<SZEntity>)entity subscriptionType:(SZSubscriptionType)type start:(NSNumber*)start end:(NSNumber*)end success:(void(^)(NSArray *subscriptions))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getSubscriptionsForEntity:entity first:start last:end success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getSubscriptionsForEntity:entity first:start last:end success:success failure:failure];
+    }, failure);
 }
 
 + (void)isSubscribedToEntity:(id<SZEntity>)entity subscriptionType:(SZSubscriptionType)type success:(void(^)(BOOL isSubscribed))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getSubscriptionsForEntity:entity first:nil last:nil success:^(NSArray *subscriptions) {
+    [self getSubscriptionsForEntity:entity subscriptionType:(SZSubscriptionType)type start:nil end:nil success:^(NSArray *subscriptions) {
         id<SZSubscription> subscription = [subscriptions lastObject];
         BLOCK_CALL_1(success, [subscription subscribed]);
     } failure:failure];

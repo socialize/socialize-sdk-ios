@@ -23,3 +23,4 @@ void LinkWrapper(id<SZDisplay> display, void (^success)(BOOL didPrompt, SZSocial
 BOOL ShouldShowLinkDialog();
 BOOL SZErrorsAreDisabled();
 void SZEmitUIError(id object, NSError *error);
+void SZAuthWrapper(void (^success)(), void (^failure)(NSError *error));

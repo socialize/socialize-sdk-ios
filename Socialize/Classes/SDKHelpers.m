@@ -16,6 +16,8 @@
 #import "Socialize.h"
 #import "UIAlertView+BlocksKit.h"
 #import "SZDisplay.h"
+#import "SZUserUtils.h"
+#import "_Socialize.h"
 
 SZSocialNetwork LinkedSocialNetworks() {
     SZSocialNetwork networks = SZSocialNetworkNone;
@@ -56,6 +58,14 @@ void LinkWrapper(id<SZDisplay> display, void (^success)(BOOL didPrompt, SZSocial
         } failure:failure];
     } else {
         success(NO, SZSocialNetworkNone);
+    }
+}
+
+void SZAuthWrapper(void (^success)(), void (^failure)(NSError *error)) {
+    if (![[Socialize sharedSocialize] isAuthenticated]) {
+        [[Socialize sharedSocialize] authenticateAnonymouslyWithSuccess:success failure:failure];
+    } else {
+        success([[Socialize sharedSocialize] authenticatedFullUser]);
     }
 }
 

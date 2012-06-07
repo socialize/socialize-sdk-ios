@@ -34,12 +34,12 @@
 #define AUTHENTICATE_METHOD @"authenticate/"
 #define ASSOCIATE_METHOD @"third_party_authenticate/"
 
--(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret{            
+-(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
     NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier]];
     NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                payloadJson, @"jsonData",
-                                                nil];
-
+                                       payloadJson, @"jsonData",
+                                       nil];
+    
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
     SocializeRequest *request = [SocializeRequest secureRequestWithHttpMethod:@"POST"
                                                                  resourcePath:AUTHENTICATE_METHOD
@@ -48,8 +48,14 @@
     
     // Flag this as a token request so we do not send the existing token
     request.tokenRequest = YES;
+    request.successBlock = success;
+    request.failureBlock = failure;
     
     [self executeRequest:request];
+}
+
+-(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret {
+    [self authenticateWithApiKey:apiKey apiSecret:apiSecret success:nil failure:nil];
 }
 
 +(BOOL)isAuthenticated {

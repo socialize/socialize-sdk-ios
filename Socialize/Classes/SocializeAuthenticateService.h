@@ -37,6 +37,8 @@ Socialize authentication service is the authentication engine. It performs anony
                     apiSecret:(NSString*)apiSecret;
 
 
+-(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
+
 /**@name Third party authentication*/
 
 - (void)authenticateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type

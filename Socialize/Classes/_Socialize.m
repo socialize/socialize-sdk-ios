@@ -360,6 +360,11 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
    [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret]; 
 }
 
+-(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
+    [_authService authenticateWithApiKey:apiKey apiSecret:apiSecret success:success failure:failure]; 
+}
+
+
 -(void)setDelegate:(id<SocializeServiceDelegate>)delegate{
     _delegate = delegate;
     _authService.delegate = delegate;
@@ -417,15 +422,20 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [SZTwitterUtils linkWithDisplay:display success:success failure:failure];
 }
 
--(void)authenticateAnonymously
-{
+-(void)authenticateAnonymouslyWithSuccess:(void(^)())success
+                                  failure:(void(^)(NSError *error))failure {
+    
     NSString *apiKey = [Socialize apiKey];
     NSString *apiSecret = [Socialize apiSecret];
     
     NSAssert(apiKey != nil, @"Missing api key. API key must be configured before using socialize. [Socialize storeApiKey:Secret]");
     NSAssert(apiSecret != nil, @"Missing api secret. API secret must be configured before using socialize.[Socialize storeApiKey:Secret]");
     
-    [self authenticateWithApiKey:apiKey apiSecret:apiSecret];
+    [self authenticateWithApiKey:apiKey apiSecret:apiSecret success:success failure:failure];
+}
+
+-(void)authenticateAnonymously {
+    [self authenticateAnonymouslyWithSuccess:nil failure:nil];
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey 

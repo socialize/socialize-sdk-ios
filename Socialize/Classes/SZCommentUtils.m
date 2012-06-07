@@ -87,7 +87,11 @@
     [comment setSubscribe:![options dontSubscribeToNotifications]];
     
     ActivityCreatorBlock commentCreator = ^(id<SZShare> share, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
-        [[Socialize sharedSocialize] createComments:[NSArray arrayWithObject:comment] success:createSuccess failure:createFailure];
+
+        SZAuthWrapper(^{
+            [[Socialize sharedSocialize] createComments:[NSArray arrayWithObject:comment] success:createSuccess failure:createFailure];
+        }, failure);
+
     };
     
     CreateAndShareActivity(comment, options, networks, commentCreator, success, failure);
@@ -151,23 +155,34 @@
 }
 
 + (void)getCommentWithId:(NSNumber*)commentId success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getCommentsWithIds:[NSArray arrayWithObject:commentId] success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getCommentsWithIds:[NSArray arrayWithObject:commentId] success:success failure:failure];
+    }, failure);
+
 }
 
 + (void)getCommentsWithIds:(NSArray*)commentIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getCommentsWithIds:commentIds success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getCommentsWithIds:commentIds success:success failure:failure];
+    }, failure);
 }
 
 + (void)getCommentsByEntityWithEntityKey:(NSString*)entityKey success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getCommentsWithEntityKey:entityKey success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getCommentsWithEntityKey:entityKey success:success failure:failure];
+    }, failure);
 }
 
 + (void)getCommentsByUserWithUser:(id<SZUser>)user first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getCommentsForUser:user entity:nil first:first last:last success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getCommentsForUser:user entity:nil first:first last:last success:success failure:failure];
+    }, failure);
 }
 
 + (void)getCommentsByUserAndEntityWithUser:(id<SZUser>)user entity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getCommentsForUser:user entity:nil first:first last:last success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getCommentsForUser:user entity:nil first:first last:last success:success failure:failure];
+    }, failure);
 }
 
 @end

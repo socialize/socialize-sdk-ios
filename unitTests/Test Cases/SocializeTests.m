@@ -266,7 +266,7 @@
     [Socialize storeConsumerKey:apiKey];
     [Socialize storeConsumerSecret:apiSecret];
     
-    [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret];
+    [[auth expect] authenticateWithApiKey:apiKey apiSecret:apiSecret success:nil failure:nil];
     [socialize authenticateAnonymously];
     [auth verify];
     

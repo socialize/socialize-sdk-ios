@@ -76,7 +76,9 @@
     SZShare *share = [SZShare shareWithEntity:entity text:options.text medium:medium];
     
     ActivityCreatorBlock shareCreator = ^(id<SZShare> share, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
-        [[Socialize sharedSocialize] createShare:share success:createSuccess failure:createFailure];
+        SZAuthWrapper(^{
+            [[Socialize sharedSocialize] createShare:share success:createSuccess failure:createFailure];
+        }, failure);
     };
                                      
     CreateAndShareActivity(share, options, networks, shareCreator, success, failure);
@@ -94,8 +96,12 @@
         [viewController dismissModalViewControllerAnimated:YES];
         switch (result) {
             case MFMailComposeResultSent: {
-                SZShare *share = [SZShare shareWithEntity:entity text:@"" medium:SocializeShareMediumEmail];
-                [[Socialize sharedSocialize] createShare:share success:success failure:failure];
+                
+                SZAuthWrapper(^{
+                    SZShare *share = [SZShare shareWithEntity:entity text:@"" medium:SocializeShareMediumEmail];
+                    [[Socialize sharedSocialize] createShare:share success:success failure:failure];
+                }, failure);
+                
                 break;
             }
             case MFMailComposeResultFailed:
@@ -123,8 +129,12 @@
         [viewController dismissModalViewControllerAnimated:YES];
         switch (result) {
             case MessageComposeResultSent: {
-                SZShare *share = [SZShare shareWithEntity:entity text:@"" medium:SocializeShareMediumSMS];
-                [[Socialize sharedSocialize] createShare:share success:success failure:failure];
+                
+                SZAuthWrapper(^{
+                    SZShare *share = [SZShare shareWithEntity:entity text:@"" medium:SocializeShareMediumSMS];
+                    [[Socialize sharedSocialize] createShare:share success:success failure:failure];
+                }, failure);
+
                 break;
             }
             case MessageComposeResultFailed:
@@ -149,23 +159,33 @@
 }
 
 + (void)getShareWithId:(NSNumber*)shareId success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getShareWithId:shareId success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getShareWithId:shareId success:success failure:failure];
+    }, failure);
 }
 
 + (void)getSharesWithIds:(NSArray*)shareIds success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getSharesWithIds:shareIds success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getSharesWithIds:shareIds success:success failure:failure];
+    }, failure);
 }
 
 + (void)getSharesWithEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getSharesForEntityKey:[entity key] first:first last:last success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getSharesForEntityKey:[entity key] first:first last:last success:success failure:failure];
+    }, failure);
 }
 
 + (void)getSharesWithUser:(id<SZUser>)user first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getSharesForUser:user entity:nil first:first last:last success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getSharesForUser:user entity:nil first:first last:last success:success failure:failure];
+    }, failure);
 }
 
 + (void)getSharesWithUser:(id<SZUser>)user entity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
-    [[Socialize sharedSocialize] getSharesForUser:user entity:entity first:first last:last success:success failure:failure];
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getSharesForUser:user entity:entity first:first last:last success:success failure:failure];
+    }, failure);
 }
 
 @end

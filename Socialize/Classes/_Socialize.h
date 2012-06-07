@@ -320,6 +320,8 @@ otherwise you will get a failure.
  */
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret;
 
+-(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
+
 /**
  Third party authentication via SDK service.
  
@@ -439,6 +441,9 @@ otherwise you will get a failure.
  @see storeSocializeApiKey:andSecret:
  */
 -(void)authenticateAnonymously;
+
+-(void)authenticateAnonymouslyWithSuccess:(void(^)())success
+                                  failure:(void(^)(NSError *error))failure;
 
 /**
  Third party authentication.
