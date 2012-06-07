@@ -6,8 +6,8 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "SocializeAsyncTestCase.h"
+#import "SZIntegrationTestCase.h"
 
-@interface TestEntityServices : SocializeAsyncTestCase
+@interface TestEntityServices : SZIntegrationTestCase
 
 @end

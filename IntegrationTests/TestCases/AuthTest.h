@@ -7,8 +7,8 @@
 //
 
 
-#import "SocializeAsyncTestCase.h"
-@interface AuthTest : SocializeAsyncTestCase<SocializeServiceDelegate> {
+#import "SZIntegrationTestCase.h"
+@interface AuthTest : SZIntegrationTestCase<SocializeServiceDelegate> {
    
 }
 

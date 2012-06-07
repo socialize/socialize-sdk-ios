@@ -6,7 +6,7 @@
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeAsyncTestCase.h"
+#import "SZIntegrationTestCase.h"
 
 static NSString *UUIDString() {
     CFUUIDRef	uuidObj = CFUUIDCreate(nil);
@@ -17,7 +17,7 @@ static NSString *UUIDString() {
 
 static NSString *SocializeAsyncTestCaseRunID = nil;
 
-@implementation SocializeAsyncTestCase
+@implementation SZIntegrationTestCase
 @synthesize socialize = socialize_;
 @synthesize fetchedElements = fetchedElements_;
 @synthesize createdObject = createdObject_;

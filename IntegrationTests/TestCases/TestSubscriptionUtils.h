@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeAsyncTestCase.h"
+#import "SZIntegrationTestCase.h"
 
-@interface TestSubscriptionUtils : SocializeAsyncTestCase
+@interface TestSubscriptionUtils : SZIntegrationTestCase
 
 @end

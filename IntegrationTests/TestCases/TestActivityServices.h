@@ -7,8 +7,8 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
-#import "SocializeAsyncTestCase.h"
+#import "SZIntegrationTestCase.h"
 
-@interface TestActivityServices : SocializeAsyncTestCase
+@interface TestActivityServices : SZIntegrationTestCase
 
 @end

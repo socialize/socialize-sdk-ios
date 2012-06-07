@@ -9,7 +9,7 @@
 #import <GHUnitIOS/GHUnit.h>
 #import <Socialize/Socialize.h>
 
-@interface SocializeAsyncTestCase : GHAsyncTestCase <SocializeServiceDelegate>
+@interface SZIntegrationTestCase : GHAsyncTestCase <SocializeServiceDelegate>
 @property (nonatomic, readonly) NSString *runID;
 @property (nonatomic, retain) Socialize *socialize;
 @property (nonatomic, retain) NSArray *fetchedElements;
