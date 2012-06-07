@@ -39,13 +39,13 @@ test:
 	#WRITE_JUNIT_XML=YES GHUNIT_UI_CLI=1 xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme unitTests -configuration Debug -sdk iphonesimulator build
 
 coverage:
-	RUN_CLI=1 xcodebuild -workspace socialize-sdk-ios.xcworkspace/ -sdk iphonesimulator -configuration Debug -scheme "Generate Coverage Report"
+	./util/generate-combined-coverage-report.sh build/test-coverage/UIIntegrationTests-Coverage.info build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info
 
 integration-tests:
-	cd SampleSdkApp && WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -workspace SampleSdkApp.xcworkspace/ -scheme IntegrationTests -configuration Debug -sdk iphonesimulator build
+	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -workspace socialize-sdk-ios.xcworkspace/ -scheme IntegrationTests -configuration Debug -sdk iphonesimulator build
 
 ui-integration-tests:
-	cd SampleSdkApp && RUN_CLI=1 xcodebuild -workspace SampleSdkApp.xcworkspace/ -scheme UIIntegrationTests -configuration Debug -sdk iphonesimulator build
+	RUN_CLI=1 xcodebuild -workspace socialize-sdk-ios.xcworkspace/ -scheme UIIntegrationTests -configuration Debug -sdk iphonesimulator build
 
 doc:
 	cd "./Socialize";\

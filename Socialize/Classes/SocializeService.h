@@ -48,6 +48,7 @@
 - (void)callListingGetEndpointWithPath:(NSString*)path params:(NSMutableDictionary*)params first:(NSNumber*)start last:(NSNumber*)end success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
 - (void)executeRequest:(SocializeRequest*)request;
 -(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList;
+- (void)invokeBlockOrDelegateCallbackForBlock:(void(^)(id object))block selector:(SEL)selector object:(id)object;
 -(NSMutableArray *)getObjectListArray:(id)objectList;
 -(NSMutableDictionary*)generateParamsFromJsonString:(NSString*)jsonRequest;
 -(void)freeDelegate;

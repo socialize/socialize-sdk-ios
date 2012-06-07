@@ -147,12 +147,33 @@
     return array;
 }
 
-- (void)invokeCallbackWithRequest:(SocializeRequest*)request object:(id)object selector:(SEL)selector {
-    if (request.successBlock != nil) {
-        request.successBlock(object);
-    } else if ([self.delegate respondsToSelector:selector]) {
-        [self.delegate performSelector:selector withObject:self withObject:object];
+- (void)invokeBlockOrDelegateCallbackForBlock:(void(^)(id object))block selector:(SEL)sel object:(id)object {
+    if (block != nil) {
+        block(object);
+    } else if ([self.delegate respondsToSelector:sel]) {
+        
+        // Keep some legacy callback service:didCreate: special cases (just for backward compatibility)
+        if (sel == @selector(service:didCreate:)) {
+            
+            if ([object isKindOfClass:[NSArray class]]) {
+                if ([object count] == 1) {
+                    
+                    // Single result is passed as scalar when using callbacks
+                    object = [object objectAtIndex:0];
+                } else if ([object count] == 0) {
+                    
+                    // No result passed as nil when using callbacks
+                    object = nil;
+                }
+            }
+        }
+        
+        [self.delegate performSelector:sel withObject:self withObject:object];
     }
+}
+
+- (void)invokeCallbackWithRequest:(SocializeRequest*)request object:(id)object selector:(SEL)selector {
+    [self invokeBlockOrDelegateCallbackForBlock:request.successBlock selector:selector object:object];
 }
 
 -(void)invokeAppropriateCallback:(SocializeRequest*)request objectList:(id)objectList errorList:(id)errorList {
@@ -161,14 +182,8 @@
     
     if (request.operationType == SocializeRequestOperationTypeInferred) {
     
-        if ([request.httpMethod isEqualToString:@"POST"]){
-            if ([array count] > 1) {
-                [self invokeCallbackWithRequest:request object:array selector:@selector(service:didCreate:)];
-            } else if ([array count] == 1) {
-                [self invokeCallbackWithRequest:request object:[array objectAtIndex:0] selector:@selector(service:didCreate:)];
-            } else {
-                [self invokeCallbackWithRequest:request object:nil selector:@selector(service:didCreate:)];
-            }
+        if ([request.httpMethod isEqualToString:@"POST"]) {
+            [self invokeCallbackWithRequest:request object:array selector:@selector(service:didCreate:)];
         } else if ([request.httpMethod isEqualToString:@"GET"]) {
             [self invokeCallbackWithRequest:request object:array selector:@selector(service:didFetchElements:)];
         } else if ([request.httpMethod isEqualToString:@"DELETE"]) {

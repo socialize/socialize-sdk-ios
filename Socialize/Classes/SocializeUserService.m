@@ -117,16 +117,13 @@
 }
 
 - (void)getActivityForEndpoint:(NSString*)endpoint protocol:(Protocol*)protocol user:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
-    NSNumber *userId = [NSNumber numberWithInteger:[user objectID]];
-    
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     if (entity != nil) {
-        [params addEntriesFromDictionary:SZServerParamsForEntity(entity)];
+        [params setObject:[entity key] forKey:@"entity_key"];
     }
     
     [params setValue:first forKey:@"first"];
     [params setValue:last forKey:@"last"];
-    [params setValue:userId forKey:@"id"];
     
     SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"GET"
                                                            resourcePath:endpoint

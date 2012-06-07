@@ -233,19 +233,19 @@
         {
             UIViewController *profile = [SZProfileViewController profileViewControllerInNavigationController];
 #ifdef RUN_KIF_TESTS
-            UINavigationController *nav = (UINavigationController*)profile;
-            SZProfileViewController *pvc = (SZProfileViewController*)[[nav viewControllers] objectAtIndex:0];
-            SZSettingsViewController *edit = pvc.profileEditViewController;
-
-            id mockActionSheet = [OCMockObject mockForClass:[UIActionSheet class]];
-             
-            edit.uploadPicActionSheet = mockActionSheet;
-            
-            UIImage *profileImage = [UIImage imageNamed:@"Smiley.png"];
-            [[[mockActionSheet expect] andDo:^(NSInvocation* blah){
-                NSDictionary *info = [NSDictionary dictionaryWithObject:profileImage forKey:UIImagePickerControllerEditedImage];
-                [edit imagePickerController:nil didFinishPickingMediaWithInfo:info];
-            }] showInView:OCMOCK_ANY];
+//            UINavigationController *nav = (UINavigationController*)profile;
+//            SZProfileViewController *pvc = (SZProfileViewController*)[[nav viewControllers] objectAtIndex:0];
+//            SZSettingsViewController *edit = pvc.profileEditViewController;
+//
+//            id mockActionSheet = [OCMockObject mockForClass:[UIActionSheet class]];
+//             
+//            edit.uploadPicActionSheet = mockActionSheet;
+//            
+//            UIImage *profileImage = [UIImage imageNamed:@"Smiley.png"];
+//            [[[mockActionSheet expect] andDo:^(NSInvocation* blah){
+//                NSDictionary *info = [NSDictionary dictionaryWithObject:profileImage forKey:UIImagePickerControllerEditedImage];
+//                [edit imagePickerController:nil didFinishPickingMediaWithInfo:info];
+//            }] showInView:OCMOCK_ANY];
             
 #endif
             [self.navigationController presentModalViewController:profile animated:YES];

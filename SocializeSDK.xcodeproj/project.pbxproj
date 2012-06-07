@@ -20,17 +20,6 @@
 			name = "Socialize Framework";
 			productName = "Socialize-IOS";
 		};
-		AAE99622157FDA560048AAC0 /* Generate Coverage Report */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = AAE99623157FDA560048AAC0 /* Build configuration list for PBXAggregateTarget "Generate Coverage Report" */;
-			buildPhases = (
-				AAE99626157FDA5F0048AAC0 /* Generate Coverage */,
-			);
-			dependencies = (
-			);
-			name = "Generate Coverage Report";
-			productName = "Generate Coverage Report";
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -553,32 +542,32 @@
 		AA047F9B14AD5AA20047D596 /* SocializeNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047F9814AD5AA20047D596 /* SocializeNotificationHandler.m */; };
 		AA047F9C14AD5AA20047D596 /* SocializeNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047F9814AD5AA20047D596 /* SocializeNotificationHandler.m */; };
 		AA047F9F14AD63900047D596 /* SocializeNotificationHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047F9E14AD63900047D596 /* SocializeNotificationHandlerTests.m */; };
-		AA05FF7B157C4B0500E82CB4 /* SZEntityUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */; };
-		AA05FF7C157C4B0500E82CB4 /* SZEntityUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */; };
+		AA05FF7B157C4B0500E82CB4 /* SZEntityUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA05FF7C157C4B0500E82CB4 /* SZEntityUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FF79157C4B0500E82CB4 /* SZEntityUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA05FF7D157C4B0500E82CB4 /* SZEntityUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FF7A157C4B0500E82CB4 /* SZEntityUtils.m */; };
 		AA05FF7E157C4B0500E82CB4 /* SZEntityUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FF7A157C4B0500E82CB4 /* SZEntityUtils.m */; };
-		AA05FFA5157C624A00E82CB4 /* SZLikeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFA3157C624A00E82CB4 /* SZLikeUtils.h */; };
-		AA05FFA6157C624A00E82CB4 /* SZLikeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFA3157C624A00E82CB4 /* SZLikeUtils.h */; };
+		AA05FFA5157C624A00E82CB4 /* SZLikeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFA3157C624A00E82CB4 /* SZLikeUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA05FFA6157C624A00E82CB4 /* SZLikeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFA3157C624A00E82CB4 /* SZLikeUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA05FFA7157C624A00E82CB4 /* SZLikeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFA4157C624A00E82CB4 /* SZLikeUtils.m */; };
 		AA05FFA8157C624A00E82CB4 /* SZLikeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFA4157C624A00E82CB4 /* SZLikeUtils.m */; };
-		AA05FFAB157C73AB00E82CB4 /* SZLikeOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */; };
-		AA05FFAC157C73AB00E82CB4 /* SZLikeOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */; };
+		AA05FFAB157C73AB00E82CB4 /* SZLikeOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA05FFAC157C73AB00E82CB4 /* SZLikeOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFA9157C73AA00E82CB4 /* SZLikeOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA05FFAD157C73AB00E82CB4 /* SZLikeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */; };
 		AA05FFAE157C73AB00E82CB4 /* SZLikeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */; };
-		AA05FFB1157D1FE400E82CB4 /* SZSmartAlertUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFAF157D1FE300E82CB4 /* SZSmartAlertUtils.h */; };
-		AA05FFB2157D1FE400E82CB4 /* SZSmartAlertUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFAF157D1FE300E82CB4 /* SZSmartAlertUtils.h */; };
+		AA05FFB1157D1FE400E82CB4 /* SZSmartAlertUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFAF157D1FE300E82CB4 /* SZSmartAlertUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA05FFB2157D1FE400E82CB4 /* SZSmartAlertUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFAF157D1FE300E82CB4 /* SZSmartAlertUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA05FFB3157D1FE400E82CB4 /* SZSmartAlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFB0157D1FE400E82CB4 /* SZSmartAlertUtils.m */; };
 		AA05FFB4157D1FE400E82CB4 /* SZSmartAlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFB0157D1FE400E82CB4 /* SZSmartAlertUtils.m */; };
-		AA05FFB7157D215200E82CB4 /* SZActionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFB5157D215100E82CB4 /* SZActionUtils.h */; };
-		AA05FFB8157D215200E82CB4 /* SZActionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFB5157D215100E82CB4 /* SZActionUtils.h */; };
+		AA05FFB7157D215200E82CB4 /* SZActionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFB5157D215100E82CB4 /* SZActionUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA05FFB8157D215200E82CB4 /* SZActionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFB5157D215100E82CB4 /* SZActionUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA05FFB9157D215200E82CB4 /* SZActionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFB6157D215100E82CB4 /* SZActionUtils.m */; };
 		AA05FFBA157D215200E82CB4 /* SZActionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFB6157D215100E82CB4 /* SZActionUtils.m */; };
-		AA05FFF3157D623500E82CB4 /* SZSubscriptionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFF1157D623500E82CB4 /* SZSubscriptionUtils.h */; };
-		AA05FFF4157D623500E82CB4 /* SZSubscriptionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFF1157D623500E82CB4 /* SZSubscriptionUtils.h */; };
+		AA05FFF3157D623500E82CB4 /* SZSubscriptionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFF1157D623500E82CB4 /* SZSubscriptionUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA05FFF4157D623500E82CB4 /* SZSubscriptionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFF1157D623500E82CB4 /* SZSubscriptionUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA05FFF5157D623500E82CB4 /* SZSubscriptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFF2157D623500E82CB4 /* SZSubscriptionUtils.m */; };
 		AA05FFF6157D623500E82CB4 /* SZSubscriptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFF2157D623500E82CB4 /* SZSubscriptionUtils.m */; };
-		AA05FFF9157E7AAE00E82CB4 /* SZViewUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFF7157E7AAC00E82CB4 /* SZViewUtils.h */; };
-		AA05FFFA157E7AAE00E82CB4 /* SZViewUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFF7157E7AAC00E82CB4 /* SZViewUtils.h */; };
+		AA05FFF9157E7AAE00E82CB4 /* SZViewUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFF7157E7AAC00E82CB4 /* SZViewUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA05FFFA157E7AAE00E82CB4 /* SZViewUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA05FFF7157E7AAC00E82CB4 /* SZViewUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA05FFFB157E7AAE00E82CB4 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFF8157E7AAD00E82CB4 /* SZViewUtils.m */; };
 		AA05FFFC157E7AAE00E82CB4 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05FFF8157E7AAD00E82CB4 /* SZViewUtils.m */; };
 		AA06B68C148EE39E00D084D4 /* DebugUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = AA06B68B148EE39E00D084D4 /* DebugUtil.h */; };
@@ -689,16 +678,16 @@
 		AA0A441015756FBC00C56EF6 /* UIBarButtonItem+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0A440D15756FBC00C56EF6 /* UIBarButtonItem+Socialize.h */; };
 		AA0A441115756FBC00C56EF6 /* UIBarButtonItem+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A440E15756FBC00C56EF6 /* UIBarButtonItem+Socialize.m */; };
 		AA0A441215756FBC00C56EF6 /* UIBarButtonItem+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A440E15756FBC00C56EF6 /* UIBarButtonItem+Socialize.m */; };
-		AA0ADFC3156E98DB0057FF40 /* SZActivityOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */; };
-		AA0ADFC4156E98DB0057FF40 /* SZActivityOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */; };
+		AA0ADFC3156E98DB0057FF40 /* SZActivityOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA0ADFC4156E98DB0057FF40 /* SZActivityOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0ADFC1156E98DB0057FF40 /* SZActivityOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0ADFC5156E98DB0057FF40 /* SZActivityOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */; };
 		AA0ADFC6156E98DB0057FF40 /* SZActivityOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0ADFC2156E98DB0057FF40 /* SZActivityOptions.m */; };
 		AA0AE0CA1571D8350057FF40 /* SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0AE0C81571D8350057FF40 /* SZComposeCommentViewController.h */; };
 		AA0AE0CB1571D8350057FF40 /* SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0AE0C81571D8350057FF40 /* SZComposeCommentViewController.h */; };
 		AA0AE0CC1571D8350057FF40 /* SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0AE0C91571D8350057FF40 /* SZComposeCommentViewController.m */; };
 		AA0AE0CD1571D8350057FF40 /* SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0AE0C91571D8350057FF40 /* SZComposeCommentViewController.m */; };
-		AA0AE1061571F57A0057FF40 /* SZDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0AE1041571F57A0057FF40 /* SZDisplay.h */; };
-		AA0AE1071571F57A0057FF40 /* SZDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0AE1041571F57A0057FF40 /* SZDisplay.h */; };
+		AA0AE1061571F57A0057FF40 /* SZDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0AE1041571F57A0057FF40 /* SZDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA0AE1071571F57A0057FF40 /* SZDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0AE1041571F57A0057FF40 /* SZDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0AE1081571F57A0057FF40 /* SZDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0AE1051571F57A0057FF40 /* SZDisplay.m */; };
 		AA0AE1091571F57A0057FF40 /* SZDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0AE1051571F57A0057FF40 /* SZDisplay.m */; };
 		AA0F95E4150FE2490055770F /* SocializeUIDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0F95E3150FE2490055770F /* SocializeUIDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -775,8 +764,8 @@
 		AA202538144CA8DC006C1F8F /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11CC1443261E004E4C1B /* SocializeServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA202539144CA8DD006C1F8F /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11CC1443261E004E4C1B /* SocializeServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA29CEB314F71654005F4686 /* SocializeLocationManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA29CEB214F71654005F4686 /* SocializeLocationManagerTests.m */; };
-		AA2C7182156DAF7700796D22 /* SZCommentOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2C7180156DAF7600796D22 /* SZCommentOptions.h */; };
-		AA2C7183156DAF7700796D22 /* SZCommentOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2C7180156DAF7600796D22 /* SZCommentOptions.h */; };
+		AA2C7182156DAF7700796D22 /* SZCommentOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2C7180156DAF7600796D22 /* SZCommentOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA2C7183156DAF7700796D22 /* SZCommentOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2C7180156DAF7600796D22 /* SZCommentOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2C7184156DAF7700796D22 /* SZCommentOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2C7181156DAF7700796D22 /* SZCommentOptions.m */; };
 		AA2C7185156DAF7700796D22 /* SZCommentOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2C7181156DAF7700796D22 /* SZCommentOptions.m */; };
 		AA2CDD7D14D103A4003B61BC /* SocializeLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 169BC79F1420CD94007ED41E /* SocializeLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -911,7 +900,6 @@
 		AA332600144CD8070033C7FA /* UILabel-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAFE8D114355F1B00851C73 /* UILabel-Additions.m */; };
 		AA332604144CD8070033C7FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE93B1435633300851C73 /* CoreLocation.framework */; };
 		AA332605144CD8070033C7FA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE93C1435633300851C73 /* MapKit.framework */; };
-		AA332606144CD8070033C7FA /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6742ED13F9AFD800140AA3 /* libSocialize.a */; };
 		AA332607144CD8070033C7FA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAFE936143562CA00851C73 /* QuartzCore.framework */; };
 		AA332608144CD8070033C7FA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		AA332609144CD8070033C7FA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
@@ -1181,14 +1169,13 @@
 		AA3E20AE1461F057000321BF /* IntegrationTestsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E20AD1461F057000321BF /* IntegrationTestsAppDelegate.m */; };
 		AA3E20B81461F329000321BF /* AuthTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E20B51461F329000321BF /* AuthTest.m */; };
 		AA3E20B91461F329000321BF /* SocializeAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E20B71461F329000321BF /* SocializeAsyncTestCase.m */; };
-		AA3E20BA1461F3B9000321BF /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6742ED13F9AFD800140AA3 /* libSocialize.a */; };
 		AA3E20BB1461FA94000321BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18029E121432B815002BDEC7 /* CoreLocation.framework */; };
 		AA3E20BC1461FA94000321BF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C330E013F3C2D1004EA34D /* MapKit.framework */; };
 		AA3E20BD1461FA94000321BF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C365F5145192B900DD5421 /* MessageUI.framework */; };
 		AA3E20BE1461FA9B000321BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D97F03C13DFC91500B16454 /* QuartzCore.framework */; };
 		AA4132C3146852AE006D906F /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4132C2146852AE006D906F /* StringHelper.m */; };
-		AA419C971565D31A0030AAB1 /* SZShareOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA419C951565D31A0030AAB1 /* SZShareOptions.h */; };
-		AA419C981565D31A0030AAB1 /* SZShareOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA419C951565D31A0030AAB1 /* SZShareOptions.h */; };
+		AA419C971565D31A0030AAB1 /* SZShareOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA419C951565D31A0030AAB1 /* SZShareOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA419C981565D31A0030AAB1 /* SZShareOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA419C951565D31A0030AAB1 /* SZShareOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA419C991565D31A0030AAB1 /* SZShareOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA419C961565D31A0030AAB1 /* SZShareOptions.m */; };
 		AA419C9A1565D31A0030AAB1 /* SZShareOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA419C961565D31A0030AAB1 /* SZShareOptions.m */; };
 		AA4889F9155D973C00ED28AC /* socialize-selectnetwork-continue-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4889EF155D973C00ED28AC /* socialize-selectnetwork-continue-btn.png */; };
@@ -1283,14 +1270,14 @@
 		AA7F0A5D153CAD7B00EC6DD7 /* SZLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F0A5A153CAD7B00EC6DD7 /* SZLikeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7F0A5E153CAD7B00EC6DD7 /* SZLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F0A5B153CAD7B00EC6DD7 /* SZLikeButton.m */; };
 		AA7F0A5F153CAD7B00EC6DD7 /* SZLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F0A5B153CAD7B00EC6DD7 /* SZLikeButton.m */; };
-		AA7F8BA415589A77000ADA70 /* SocializeError.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BA115589A74000ADA70 /* SocializeError.h */; };
-		AA7F8BA515589A77000ADA70 /* SocializeError.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BA115589A74000ADA70 /* SocializeError.h */; };
+		AA7F8BA415589A77000ADA70 /* SocializeError.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BA115589A74000ADA70 /* SocializeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA7F8BA515589A77000ADA70 /* SocializeError.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BA115589A74000ADA70 /* SocializeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7F8BA615589A77000ADA70 /* SocializeError.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BA215589A75000ADA70 /* SocializeError.m */; };
 		AA7F8BA715589A77000ADA70 /* SocializeError.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BA215589A75000ADA70 /* SocializeError.m */; };
-		AA7F8BA815589A77000ADA70 /* SocializeSubscription.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BA315589A76000ADA70 /* SocializeSubscription.h */; };
-		AA7F8BA915589A77000ADA70 /* SocializeSubscription.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BA315589A76000ADA70 /* SocializeSubscription.h */; };
-		AA7F8BAC1558D399000ADA70 /* SZShareUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */; };
-		AA7F8BAD1558D399000ADA70 /* SZShareUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */; };
+		AA7F8BA815589A77000ADA70 /* SocializeSubscription.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BA315589A76000ADA70 /* SocializeSubscription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA7F8BA915589A77000ADA70 /* SocializeSubscription.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BA315589A76000ADA70 /* SocializeSubscription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA7F8BAC1558D399000ADA70 /* SZShareUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA7F8BAD1558D399000ADA70 /* SZShareUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7F8BAA1558D399000ADA70 /* SZShareUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7F8BAE1558D399000ADA70 /* SZShareUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */; };
 		AA7F8BAF1558D399000ADA70 /* SZShareUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BAB1558D399000ADA70 /* SZShareUtils.m */; };
 		AA7F8BD31559D606000ADA70 /* TestSZShareUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7F8BD21559D606000ADA70 /* TestSZShareUtils.m */; };
@@ -1600,8 +1587,8 @@
 		AAA4901F1553054E003FB943 /* TestTabbedSZActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA490181553054E003FB943 /* TestTabbedSZActionBar.m */; };
 		AAA490201553054E003FB943 /* TestTabbedSZActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA490191553054E003FB943 /* TestTabbedSZActionBar.xib */; };
 		AAA490211553054E003FB943 /* TestTabbedSZActionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA490191553054E003FB943 /* TestTabbedSZActionBar.xib */; };
-		AAAB8373156895C700C6BDCE /* SZCommentUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAB8371156895C700C6BDCE /* SZCommentUtils.h */; };
-		AAAB8374156895C700C6BDCE /* SZCommentUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAB8371156895C700C6BDCE /* SZCommentUtils.h */; };
+		AAAB8373156895C700C6BDCE /* SZCommentUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAB8371156895C700C6BDCE /* SZCommentUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAB8374156895C700C6BDCE /* SZCommentUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAB8371156895C700C6BDCE /* SZCommentUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAB8375156895C700C6BDCE /* SZCommentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAB8372156895C700C6BDCE /* SZCommentUtils.m */; };
 		AAAB8376156895C700C6BDCE /* SZCommentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAB8372156895C700C6BDCE /* SZCommentUtils.m */; };
 		AAAB83791569767C00C6BDCE /* SDKHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAB83771569767C00C6BDCE /* SDKHelpers.h */; };
@@ -2002,6 +1989,10 @@
 		AAE995D7157EE8BA0048AAC0 /* SZAPIHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE995D4157EE8BA0048AAC0 /* SZAPIHelpers.h */; };
 		AAE995D8157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE995D5157EE8BA0048AAC0 /* SZAPIHelpers.m */; };
 		AAE995D9157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE995D5157EE8BA0048AAC0 /* SZAPIHelpers.m */; };
+		AAE99627157FE51D0048AAC0 /* GCDAProfiling.c in Sources */ = {isa = PBXBuildFile; fileRef = AA76791F14F70A6000919EC4 /* GCDAProfiling.c */; };
+		AAE99628157FE51E0048AAC0 /* GCDAProfiling.c in Sources */ = {isa = PBXBuildFile; fileRef = AA76791F14F70A6000919EC4 /* GCDAProfiling.c */; };
+		AAE99629157FE52D0048AAC0 /* libSocialize-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AABC15AF144A114900088B7D /* libSocialize-profiling.a */; };
+		AAE9962A157FE5330048AAC0 /* libSocialize-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AABC15AF144A114900088B7D /* libSocialize-profiling.a */; };
 		AAEABFF414919575007C3D23 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAEABFF514919575007C3D23 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEABFF214919575007C3D23 /* SocializeKeyboardListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAEABFF614919575007C3D23 /* SocializeKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */; };
@@ -2204,12 +2195,12 @@
 		AAFD8DFE155B38940036E6AF /* SZShareDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFD8DF9155B38860036E6AF /* SZShareDialogViewController.xib */; };
 		AAFD8DFF155B38950036E6AF /* SZShareDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFD8DF9155B38860036E6AF /* SZShareDialogViewController.xib */; };
 		AAFD8E00155B38950036E6AF /* SZShareDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFD8DF9155B38860036E6AF /* SZShareDialogViewController.xib */; };
-		AAFD9050155B3D1F0036E6AF /* SZFacebookUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFD904E155B3D1F0036E6AF /* SZFacebookUtils.h */; };
-		AAFD9051155B3D1F0036E6AF /* SZFacebookUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFD904E155B3D1F0036E6AF /* SZFacebookUtils.h */; };
+		AAFD9050155B3D1F0036E6AF /* SZFacebookUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFD904E155B3D1F0036E6AF /* SZFacebookUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAFD9051155B3D1F0036E6AF /* SZFacebookUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFD904E155B3D1F0036E6AF /* SZFacebookUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAFD9052155B3D1F0036E6AF /* SZFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFD904F155B3D1F0036E6AF /* SZFacebookUtils.m */; };
 		AAFD9053155B3D1F0036E6AF /* SZFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFD904F155B3D1F0036E6AF /* SZFacebookUtils.m */; };
-		AAFD9056155B3D300036E6AF /* SZTwitterUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFD9054155B3D300036E6AF /* SZTwitterUtils.h */; };
-		AAFD9057155B3D300036E6AF /* SZTwitterUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFD9054155B3D300036E6AF /* SZTwitterUtils.h */; };
+		AAFD9056155B3D300036E6AF /* SZTwitterUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFD9054155B3D300036E6AF /* SZTwitterUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAFD9057155B3D300036E6AF /* SZTwitterUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFD9054155B3D300036E6AF /* SZTwitterUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAFD9058155B3D300036E6AF /* SZTwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9055155B3D300036E6AF /* SZTwitterUtils.m */; };
 		AAFD9059155B3D300036E6AF /* SZTwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9055155B3D300036E6AF /* SZTwitterUtils.m */; };
 /* End PBXBuildFile section */
@@ -3298,11 +3289,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAE99629157FE52D0048AAC0 /* libSocialize-profiling.a in Frameworks */,
 				AA0307C11506DA8000E8C43F /* libOCMock.a in Frameworks */,
 				AA3326F5144CDA850033C7FA /* libKIF.a in Frameworks */,
 				AA332604144CD8070033C7FA /* CoreLocation.framework in Frameworks */,
 				AA332605144CD8070033C7FA /* MapKit.framework in Frameworks */,
-				AA332606144CD8070033C7FA /* libSocialize.a in Frameworks */,
 				AA332607144CD8070033C7FA /* QuartzCore.framework in Frameworks */,
 				AA332608144CD8070033C7FA /* UIKit.framework in Frameworks */,
 				AA332609144CD8070033C7FA /* Foundation.framework in Frameworks */,
@@ -3315,11 +3306,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAE9962A157FE5330048AAC0 /* libSocialize-profiling.a in Frameworks */,
 				AA3E20BE1461FA9B000321BF /* QuartzCore.framework in Frameworks */,
 				AA3E20BB1461FA94000321BF /* CoreLocation.framework in Frameworks */,
 				AA3E20BC1461FA94000321BF /* MapKit.framework in Frameworks */,
 				AA3E20BD1461FA94000321BF /* MessageUI.framework in Frameworks */,
-				AA3E20BA1461F3B9000321BF /* libSocialize.a in Frameworks */,
 				AA3E20A01461F057000321BF /* UIKit.framework in Frameworks */,
 				AA3E20A11461F057000321BF /* Foundation.framework in Frameworks */,
 				AA3E20A21461F057000321BF /* CoreGraphics.framework in Frameworks */,
@@ -5472,6 +5463,7 @@
 				5CC3DAE61378859000B11B78 /* Frameworks */,
 				5CC3DAE71378859000B11B78 /* Resources */,
 				6DE0950213F1BFDB0066D507 /* ShellScript */,
+				AAE999D315801C5C0048AAC0 /* Generate Coverage Report */,
 			);
 			buildRules = (
 			);
@@ -5510,6 +5502,8 @@
 				AA332603144CD8070033C7FA /* Frameworks */,
 				AA33260B144CD8070033C7FA /* Resources */,
 				AA332689144CD8070033C7FA /* Dump Xcode Environment */,
+				AA984DC1158065A70006F0D0 /* ShellScript */,
+				AAE999D415801C710048AAC0 /* Generate Coverage Report */,
 			);
 			buildRules = (
 			);
@@ -5531,6 +5525,7 @@
 				AA3E209B1461F057000321BF /* Frameworks */,
 				AA3E209C1461F057000321BF /* Resources */,
 				AA33A41114630B3600319168 /* ShellScript */,
+				AAE999D515801CBC0048AAC0 /* Generate Coverage Report */,
 			);
 			buildRules = (
 			);
@@ -5619,7 +5614,6 @@
 				AA318173144A440F008F4D59 /* Socialize Bundle */,
 				AA3325EA144CD8070033C7FA /* UIIntegrationTests */,
 				AA3E209D1461F057000321BF /* IntegrationTests */,
-				AAE99622157FDA560048AAC0 /* Generate Coverage Report */,
 			);
 		};
 /* End PBXProject section */
@@ -7137,6 +7131,20 @@
 			shellScript = "cd \"${PROJECT_DIR}\" && make subst-build";
 			showEnvVarsInLog = 0;
 		};
+		AA984DC1158065A70006F0D0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./util/run-integration-tests.sh";
+			showEnvVarsInLog = 0;
+		};
 		AAB8F4751443713900441515 /* Dump Xcode Environment */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -7182,14 +7190,44 @@
 			shellScript = "${PROJECT_DIR}/util/dump-xcode-env.sh";
 			showEnvVarsInLog = 0;
 		};
-		AAE99626157FDA5F0048AAC0 /* Generate Coverage */ = {
+		AAE999D315801C5C0048AAC0 /* Generate Coverage Report */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Generate Coverage";
+			name = "Generate Coverage Report";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./util/generate-coverage-report.sh";
+			showEnvVarsInLog = 0;
+		};
+		AAE999D415801C710048AAC0 /* Generate Coverage Report */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Coverage Report";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./util/generate-coverage-report.sh";
+			showEnvVarsInLog = 0;
+		};
+		AAE999D515801CBC0048AAC0 /* Generate Coverage Report */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Coverage Report";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7552,6 +7590,7 @@
 				AAA4901B1553054E003FB943 /* TestSZActionBar.m in Sources */,
 				AAA4901F1553054E003FB943 /* TestTabbedSZActionBar.m in Sources */,
 				AA1A2DF5155864020085D0D9 /* SampleListViewController.m in Sources */,
+				AAE99627157FE51D0048AAC0 /* GCDAProfiling.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7576,6 +7615,7 @@
 				AA946199152CCAC700BCEB4A /* IntegrationTestStatusViewControllerViewController.m in Sources */,
 				AAE85400153DF18A002B93AD /* TestUserService.m in Sources */,
 				AA7F8BD31559D606000ADA70 /* TestSZShareUtils.m in Sources */,
+				AAE99628157FE51E0048AAC0 /* GCDAProfiling.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8175,7 +8215,6 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -8187,6 +8226,10 @@
 				);
 				INFOPLIST_FILE = "SampleSdkApp/UIIntegrationTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = (
+					"-fprofile-arcs",
+					"-ftest-coverage",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -8215,7 +8258,6 @@
 					"RUN_KIF_TESTS=1",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -8263,11 +8305,14 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = (
+					"-fprofile-arcs",
+					"-ftest-coverage",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -8296,7 +8341,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
@@ -8472,20 +8516,6 @@
 			};
 			name = Release;
 		};
-		AAE99624157FDA560048AAC0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		AAE99625157FDA560048AAC0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -8569,14 +8599,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		AAE99623157FDA560048AAC0 /* Build configuration list for PBXAggregateTarget "Generate Coverage Report" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AAE99624157FDA560048AAC0 /* Debug */,
-				AAE99625157FDA560048AAC0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

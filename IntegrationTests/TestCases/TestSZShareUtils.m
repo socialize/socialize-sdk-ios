@@ -86,7 +86,7 @@
                               success:^(NSArray *shares) {
                                   id<SZShare> fetchedShare1 = [shares objectAtIndex:0];
                                   
-                                  GHAssertTrue([shares count] == 1, @"Bad count");
+                                  GHAssertTrue([shares count] == 1, @"Bad count %d", [shares count]);
                                   GHAssertEquals([fetchedShare1 objectID], [createdShare objectID], @"Bad id");
                                   GHAssertTrue([fetchedShare1 conformsToProtocol:@protocol(SocializeShare)], @"Bad protocol");
                                   
@@ -109,7 +109,7 @@
                             success:^(NSArray *shares) {
                                 id<SZShare> fetchedShare = [shares objectAtIndex:0];
                                 
-                                GHAssertTrue([shares count] == 1, @"Bad count");
+                                GHAssertTrue([shares count] == 1, @"Expected 1 share but found %d", [shares count]);
                                 GHAssertEquals([fetchedShare objectID], [createdShare objectID], @"Bad id");
                                 GHAssertTrue([fetchedShare conformsToProtocol:@protocol(SocializeShare)], @"Bad protocol");
 

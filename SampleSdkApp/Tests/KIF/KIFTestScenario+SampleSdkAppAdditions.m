@@ -148,6 +148,12 @@
     return scenario;
 }
 
++ (id)scenarioToSleep {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test nothing."];
+    [scenario addStep:[KIFTestStep stepToWaitForTimeInterval:5 description:@"Waiting"]];
+    return scenario;
+}
+
 + (id)scenarioToAuthenticate {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that a user can successfully log in."];
     [scenario addStepsFromArray:[KIFTestStep stepsToAuthenticate]];
