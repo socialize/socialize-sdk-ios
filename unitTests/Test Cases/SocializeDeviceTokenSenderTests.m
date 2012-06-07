@@ -49,6 +49,8 @@
     self.deviceTokenSender.tokenOnServer = YES;
     
     [[self.mockSocialize expect] _registerDeviceTokenString:testToken];
+    [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticated];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:SocializeAuthenticatedUserDidChangeNotification object:nil];
     
     BOOL registered = self.deviceTokenSender.tokenOnServer;

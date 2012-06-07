@@ -88,7 +88,11 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
 - (void)sendDeviceTokenIfNecessary {
     NSString *existingToken = [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDeviceTokenKey];
     if ([existingToken length] > 0 && !self.tokenOnServer) {
-        [self.socialize _registerDeviceTokenString:existingToken];
+        if (![self.socialize isAuthenticated]) {
+            [self.socialize authenticateAnonymously];
+        } else {
+            [self.socialize _registerDeviceTokenString:existingToken];
+        }
     }
 }
 
@@ -135,10 +139,14 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
     return [token length] > 0;
 }
 
-- (void)service:(SocializeService *)service didFail:(NSError *)error {
+- (void)registrationFailureWithError:(NSError*)error {
     NSLog(@"Socialize: device token registration failed (%@). Retrying in %f seconds", [error localizedDescription], TimerCheckTimeInterval);
+    
+    [self startTimerIfNecessary];    
+}
 
-    [self startTimerIfNecessary];
+- (void)service:(SocializeService *)service didFail:(NSError *)error {
+    [self registrationFailureWithError:error];
 }
 
 - (void)service:(SocializeService *)service didCreate:(id<SocializeObject>)object {
