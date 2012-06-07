@@ -21,4 +21,5 @@
     GHAssertEqualStrings(like.entity.key, likeURL, @"Unexpected like");
     GHAssertEquals(like.entity.likes, 1, @"Should be liked exactly once");
 }
+
 @end

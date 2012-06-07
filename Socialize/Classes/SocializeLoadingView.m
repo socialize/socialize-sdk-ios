@@ -14,6 +14,7 @@
 
 #import "SocializeLoadingView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "NSObject+AssociatedObjects.h"
 
 //
 // NewPathWithRoundRect
@@ -272,6 +273,26 @@ static CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 	if (timestamp)
 		[timestamp release];
     [super dealloc];
+}
+
+@end
+
+static char *kSocializeLoadingViewKey = "kSocializeLoadingViewKey";
+
+@implementation UIViewController (SocializeLoadingView)
+
+- (void)showSocializeLoadingViewInSubview:(UIView*)subview {
+    if (subview == nil) {
+        subview = self.view;
+    }
+    
+    SocializeLoadingView *loading = [SocializeLoadingView loadingViewInView:subview];
+    [self associateValue:loading withKey:kSocializeLoadingViewKey];
+}
+
+- (void)hideSocializeLoadingView {
+    UIView *view = [self associatedValueForKey:kSocializeLoadingViewKey];
+    [view removeFromSuperview];
 }
 
 @end

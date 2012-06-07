@@ -10,13 +10,10 @@
 #import "SocializeBaseViewController.h"
 #import "UINavigationBarBackground.h"
 #import "SocializeBaseViewControllerDelegate.h"
-#import "SocializeProfileEditViewController.h"
+#import "SZSettingsViewController.h"
 #import "SocializeCommonDefinitions.h"
-#import "SocializeTwitterAuthenticator.h"
-#import "SocializeFacebookAuthenticator.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
-#import "SocializeFacebookAuthenticator.h"
 #import "_Socialize.h"
 
 @implementation SocializeBaseViewControllerTests
@@ -78,9 +75,6 @@
 
     self.viewController.socialize = self.mockSocialize;
     
-    self.mockGenericAlertView = [OCMockObject mockForClass:[UIAlertView class]];
-    self.viewController.genericAlertView = self.mockGenericAlertView;
-    
     self.mockDoneButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.viewController.doneButton = self.mockDoneButton;
     
@@ -101,10 +95,6 @@
     
     self.mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeBaseViewControllerDelegate)];
     self.viewController.delegate = self.mockDelegate;
-    
-    self.mockProfileEditViewController = [OCMockObject mockForClass:[SocializeProfileEditViewController class]];
-    [[self.mockProfileEditViewController stub] setDelegate:nil];
-    self.viewController.profileEditViewController = self.mockProfileEditViewController;
     
     [Socialize storeUIErrorAlertsDisabled:NO];
 }
@@ -155,9 +145,6 @@
     [[(id)self.viewController expect] setDoneButton:nil];
     [[(id)self.viewController expect] setCancelButton:nil];
     [[(id)self.viewController expect] setSettingsButton:nil];
-    [[(id)self.viewController expect] setGenericAlertView:nil];
-    [[(id)self.viewController expect] setSendActivityToFacebookFeedAlertView:nil];
-    [[(id)self.viewController expect] setAuthViewController:nil];
     
     [self.viewController viewDidUnload];
 }
@@ -227,32 +214,9 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     [self.viewController doneButtonPressed:self.mockDoneButton];
 }
 
-- (void)testDefaultGenericAlertView {
-    self.viewController.genericAlertView = nil;
-    GHAssertEquals(self.viewController.genericAlertView.delegate, self.origViewController, nil);
-}
-
-- (void)testShowAlert {
-    NSString *testTitle = @"testTitle";
-    NSString *testMessage = @"testMessage";
-    
-    [[self.mockGenericAlertView expect] setTitle:testTitle];
-    [[self.mockGenericAlertView expect] setMessage:testMessage];
-    [[self.mockGenericAlertView expect] show];
-    
-    [self.viewController showAlertWithText:testMessage andTitle:testTitle];
-}
-
 - (void)testDefaultShowLoadingInView {
     UIView *showLoadingInView = [self.viewController showLoadingInView];
     GHAssertEquals(self.mockView, showLoadingInView, nil);
-}
-
-- (void)testshouldShowAuthViewController {
-    [[[self.mockSocialize expect] andReturnBool:NO] isAuthenticatedWithThirdParty];
-    [[[self.mockSocialize expect] andReturnBool:YES] thirdPartyAvailable];
-    BOOL shouldShow = [self.viewController shouldShowAuthViewController];
-    GHAssertTrue(shouldShow, @"should show auth view controller should've returned true");
 }
 
 - (void)testDefaultAutoAuth {
@@ -281,62 +245,6 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     [self.viewController performAutoAuth];
 }
 
-- (void)testAuthenticateWithFacebookWhenFacebookNotAvailable {
-    [SocializeThirdPartyFacebook startMockingClass];
-    
-    [[[SocializeThirdPartyFacebook stub] andReturnBool:NO] available];
-
-    [[(id)self.viewController expect] showAlertWithText:OCMOCK_ANY andTitle:OCMOCK_ANY];
-    [self.origViewController authenticateWithFacebook];
-    
-    [SocializeThirdPartyFacebook stopMockingClassAndVerify];
-}
-- (void)testAuthenticateWithFacebookWhenFacebookAvailable {
-    [SocializeThirdPartyFacebook startMockingClass];
-    [SocializeFacebookAuthenticator startMockingClass];
-    
-    [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] available];
-    [[[SocializeThirdPartyFacebook stub] andReturnBool:NO] isLinkedToSocialize];
-
-    [[SocializeFacebookAuthenticator expect] authenticateViaFacebookWithOptions:OCMOCK_ANY
-                                                                        display:OCMOCK_ANY
-                                                                        success:OCMOCK_ANY
-                                                                        failure:OCMOCK_ANY];
-    [self.origViewController authenticateWithFacebook];
-    
-    [SocializeThirdPartyFacebook stopMockingClassAndVerify];
-    [SocializeFacebookAuthenticator stopMockingClassAndVerify];
-}
-
-- (void) testDidDismissWithButtonForFBSend {
-    int buttonIndex = 2;
-    
-    //setup mock alert view and expected methods
-    id mockAlertView = [OCMockObject mockForClass:[UIAlertView class]];
-    [[[mockAlertView expect] andReturnInteger:1] cancelButtonIndex];
-    [[[mockAlertView expect] andReturnInteger:buttonIndex] firstOtherButtonIndex];
-    [[[(id)self.viewController expect] andReturn:mockAlertView] sendActivityToFacebookFeedAlertView];
-    
-    //expect activity is cancelled
-    [[(id)self.viewController expect]  sendActivityToFacebookFeed:OCMOCK_ANY];
-    
-    [self.origViewController alertView:mockAlertView didDismissWithButtonIndex:buttonIndex];
-    [mockAlertView verify];
-}
-- (void) testDidDismissWithButtonForFBCancel {
-    int buttonIndex = 1;
-    
-    //setup mock alert view and expected methods
-    id mockAlertView = [OCMockObject mockForClass:[UIAlertView class]];
-    [[[mockAlertView expect] andReturnValue:OCMOCK_VALUE(buttonIndex)] cancelButtonIndex];
-    [[[(id)self.viewController expect] andReturn:mockAlertView] sendActivityToFacebookFeedAlertView];
-     
-    //expect activity is cancelled
-    [[(id)self.viewController expect] sendActivityToFacebookFeedCancelled];
-    
-    [self.origViewController alertView:mockAlertView didDismissWithButtonIndex:buttonIndex];
-    [mockAlertView verify];
-}
 - (void)testDidAuthenticateAfterAnonymousAuthCallsAfterAnonymouslyLoginAction {
     [[(id)self.viewController expect] stopLoadAnimation];
     BOOL no = NO;
@@ -372,36 +280,17 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
     return [self observerMockForNotificationName:SocializeUIControllerDidFailWithErrorNotification object:self.origViewController userInfo:errorInfo];
 }
 
-- (void)testServiceFailureShowsAnAlert {
-    id mockError = [OCMockObject mockForClass:[NSError class]];
-    id observer = [self observerMockForUIError:mockError];
-    NSString *testDescription = @"testDescription";
-    [[[mockError stub] andReturn:testDescription] localizedDescription];
-    [[mockError stub] domain];
-    [self expectServiceFailure];
-    [self.viewController service:nil didFail:mockError];
-    
-    [observer verify];
-}
-
-- (void)testServiceAuthenticationFailureRemovesSocializeAuthenticationInfo {
-    [[self.mockSocialize expect] removeSocializeAuthenticationInfo];
-    
-    id mockError = [OCMockObject mockForClass:[NSError class]];
-    [[mockError stub] localizedDescription];
-    [[[mockError stub] andReturn:SocializeErrorDomain] domain];
-    [[[mockError stub] andReturnInteger:SocializeErrorServerReturnedHTTPError] code];
-    id mockRequest = [OCMockObject mockForClass:[NSHTTPURLResponse class]];
-    [[[mockRequest stub] andReturnInteger:401] statusCode];
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:mockRequest forKey:kSocializeErrorNSHTTPURLResponseKey];
-    [[[mockError stub] andReturn:userInfo] userInfo];
-    [[[mockError stub] andReturn:SocializeErrorDomain] domain];
-
-    // Expect general failure flow
-    [self expectServiceFailure];
-    
-    [self.viewController service:nil didFail:mockError];
-}
+//- (void)testServiceFailureShowsAnAlert {
+//    id mockError = [OCMockObject mockForClass:[NSError class]];
+//    id observer = [self observerMockForUIError:mockError];
+//    NSString *testDescription = @"testDescription";
+//    [[[mockError stub] andReturn:testDescription] localizedDescription];
+//    [[mockError stub] domain];
+//    [self expectServiceFailure];
+//    [self.viewController service:nil didFail:mockError];
+//    
+//    [observer verify];
+//}
 
 - (void)testServiceFailureDoesNotShowAlertIfAlertsSilenced {
     id mockError = [OCMockObject niceMockForClass:[NSError class]];

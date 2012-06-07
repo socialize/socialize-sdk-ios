@@ -13,6 +13,8 @@
 + (SocializeLocationManager*)sharedLocationManager;
 + (BOOL)locationServicesAvailable;
 - (CLLocation*)currentLocation;
-@property (nonatomic, retain) CLLocationManager *locationManager;
-@property (nonatomic, retain) CLLocation *lastLocation;
+- (void)getCurrentLocationWithSuccess:(void(^)(CLLocation*))success failure:(void(^)(NSError*))failure;
+- (void)tryToAcceptLocation:(CLLocation*)newLocation;
+
+@property (nonatomic, readonly) CLLocation *currentLocation;
 @end

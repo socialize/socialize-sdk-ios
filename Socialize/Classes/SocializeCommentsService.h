@@ -61,7 +61,7 @@
  @param commentsId The array of comment ids.
  @param keys The array of entity keys.
  */
--(void) getCommentsList: (NSArray*) commentsId andKeys: (NSArray*)keys;
+- (void)getCommentsList:(NSArray*)commentsId andKeys:(NSArray*)keys;
 
 /**
  Fetch list of comments.
@@ -140,5 +140,8 @@
  */
 - (void)createComment:(id<SocializeComment>)comment;
 
+- (void)getCommentsWithIds:(NSArray*)commentIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+- (void)getCommentsWithEntityKey:(NSString*)entityKey success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+- (void)createComments:(NSArray*)comments success:(void(^)(id commentOrComments))success failure:(void(^)(NSError *error))failure;
 
 @end

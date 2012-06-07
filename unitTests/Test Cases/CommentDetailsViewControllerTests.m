@@ -29,7 +29,7 @@
 #import "CommentDetailsViewControllerTests.h"
 #import "SocializeCommentDetailsViewController.h"
 #import "SocializeComment.h"
-#import "SocializeProfileViewController.h"
+#import "SZProfileViewController.h"
 #import "CommentDetailsView.h"
 #import <OCMock/OCMock.h>
 #import "HtmlPageCreator.h"
@@ -40,7 +40,7 @@
 
 /*
 @interface SocializeCommentDetailsViewController(public)
--(SocializeProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
+-(SZProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 @end*/
 
 @implementation CommentDetailsViewControllerTests
@@ -54,7 +54,7 @@
 
 -(void)setUp 
 {
-    self.mockProfileNavigationController = [OCMockObject niceMockForClass:[SocializeProfileViewController class]];
+    self.mockProfileNavigationController = [OCMockObject niceMockForClass:[SZProfileViewController class]];
     self.mockButton = [OCMockObject mockForClass:[UIButton class]];
     self.partialMockCommentDetailsViewController = [OCMockObject partialMockForObject:commentDetails];
     self.mockNavigationController = [OCMockObject mockForClass:[UINavigationController class]];

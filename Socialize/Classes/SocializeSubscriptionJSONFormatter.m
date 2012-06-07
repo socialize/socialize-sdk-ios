@@ -31,6 +31,19 @@
     [activity setType:[JSONDictionary objectForKey:@"type"]];
 }
 
+- (void)doToDictionary:(NSMutableDictionary *)dictionaryRepresentation fromObject:(id<SocializeObject>)fromObject {
+    
+    id<SocializeSubscription> subscription = (id<SocializeSubscription>)fromObject;
+    
+    [dictionaryRepresentation setValue:[NSNumber numberWithBool:[subscription subscribed]] forKey:@"subscribed"];
+    [dictionaryRepresentation setValue:[subscription type] forKey:@"type"];
+    
+    [dictionaryRepresentation addEntriesFromDictionary:SZServerParamsForEntity([subscription entity])];
+
+    [super doToDictionary:dictionaryRepresentation fromObject:fromObject];
+}
+
+
 
 @end
 

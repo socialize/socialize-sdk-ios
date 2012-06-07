@@ -11,8 +11,9 @@
     //create an entity that is unique with your application.
     NSString *entityURL = @"http://www.example.com/object/1234";
     
-    UIViewController *commentsController = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:entityURL];
-    [self presentModalViewController:commentsController animated:YES];
+    SZCommentsListViewController *commentsList = [SZCommentsListViewController commentsListViewControllerWithEntityKey:entityURL];
+    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:commentsList] autorelease];
+    [self presentModalViewController:nav animated:YES];
 }
 
 @end

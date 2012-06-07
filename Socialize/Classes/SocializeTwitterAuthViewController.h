@@ -29,4 +29,9 @@ extern NSString *const SocializeTwitterAuthCallbackScheme;
 @property (nonatomic, copy) NSString *verifier;
 @property (nonatomic, copy) NSString *screenName;
 @property (nonatomic, copy) NSString *userID;
+
+@property (nonatomic, copy) void (^twitterAuthSuccessBlock)(NSString *accessToken, NSString *accessTokenSecret, NSString *screenName, NSString *userId);
+
+- (id)initWithConsumerKey:(NSString*)consumerKey consumerSecret:(NSString*)consumerSecret;
+
 @end

@@ -15,8 +15,8 @@
 #import "SocializeAuthInfoTableViewCell.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
-#import "SocializeFacebookAuthenticator.h"
-#import "SocializeTwitterAuthenticator.h"
+#import "SZFacebookUtils.h"
+#import "SZTwitterUtils.h"
 
 static NSString *const kAuthTypeRowText = @"kAuthTypeRowText";
 static NSString *const kAuthTypeRowImageName = @"kAuthTypeRowImageName";
@@ -30,6 +30,7 @@ static NSString *const kAuthTypeRowAction = @"kAuthTypeRowAction";
 @property (nonatomic, retain) id<SocializeAuthViewControllerDelegate> delegate;
 @property (nonatomic, retain) id<SocializeUser> user;
 @property (nonatomic, retain) NSMutableArray *authTypeRowData;
+@property (nonatomic, assign) SZSocialNetwork selectedNetwork;
 @end
 
 
@@ -44,6 +45,8 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 @synthesize delegate = _delegate;
 @synthesize user = _user;
 @synthesize authTypeRowData = authTypeRowData_;
+@synthesize completionBlock = completionBlock_;
+@synthesize selectedNetwork = selectedNetwork_;
 
 -(void) dealloc {
     self.tableView = nil;
@@ -108,10 +111,14 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 -(IBAction)skipButtonPressed:(id)sender {
-    if( [self.delegate respondsToSelector:@selector(authorizationSkipped)] ) {
-        [self.delegate authorizationSkipped];
-    }
-    [self dismissModalViewControllerAnimated:YES];
+    if (self.completionBlock != nil) {
+        self.completionBlock(SZSocialNetworkNone);
+    } else {
+        if( [self.delegate respondsToSelector:@selector(authorizationSkipped)] ) {
+            [self.delegate authorizationSkipped];
+        }
+        [self dismissModalViewControllerAnimated:YES];
+    } 
 }
 
 // Dismiss any SocializeAction controllers non-animated
@@ -126,18 +133,16 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 - (void)authenticateWithFacebook {
-    SocializeFacebookAuthOptions *options = [SocializeFacebookAuthOptions options];
-    options.doNotPromptForPermission = YES;
+    self.selectedNetwork = SZSocialNetworkFacebook;
 
-    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:options
-                                                               display:self
-                                                               success:^{
-                                                                   [self authenticationComplete];
-                                                               } failure:^(NSError *error) {
-                                                                   if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
-                                                                       [self failWithError:error];
-                                                                   }
-                                                               }];
+    [SZFacebookUtils linkWithDisplay:self success:^(id<SZFullUser> fullUser) {
+        [self authenticationComplete];
+    } failure:^(NSError *error) {
+        if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
+            [self failWithError:error];
+        }
+    }];
+    
 }
 
 - (void)authenticationComplete {
@@ -148,18 +153,15 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 - (void)authenticateWithTwitter {
-    SocializeTwitterAuthOptions *options = [SocializeTwitterAuthOptions options];
-    options.doNotPromptForPermission = YES;
-
-    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options
-                                                             display:self
-                                                             success:^{
-                                                                 [self authenticationComplete];
-                                                             } failure:^(NSError *error) {
-                                                                 if (![error isSocializeErrorWithCode:SocializeErrorTwitterCancelledByUser]) {
-                                                                     [self failWithError:error];
-                                                                 }
-                                                             }];
+    self.selectedNetwork = SZSocialNetworkTwitter;
+    
+    [SZTwitterUtils linkWithDisplay:self success:^(id<SZFullUser> user) {
+        [self authenticationComplete];
+    } failure:^(NSError *error) {
+        if (![error isSocializeErrorWithCode:SocializeErrorTwitterCancelledByUser]) {
+            [self failWithError:error];
+        }
+    }];
 }
 
 - (NSMutableArray*)authTypeRowData {
@@ -239,12 +241,16 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
     
 - (void)finish {
-    // Dismiss self
-    [self dismissModalViewControllerAnimated:YES];
+    if (self.completionBlock != nil) {
+        self.completionBlock(self.selectedNetwork);
+    } else {
+        // Dismiss self
+        [self dismissModalViewControllerAnimated:YES];
 
-    SEL didAuthSelector = @selector(socializeAuthViewController:didAuthenticate:);
-    if ([self.delegate respondsToSelector:didAuthSelector] ) {
-        [self.delegate socializeAuthViewController:self didAuthenticate:self.user];
+        SEL didAuthSelector = @selector(socializeAuthViewController:didAuthenticate:);
+        if ([self.delegate respondsToSelector:didAuthSelector] ) {
+            [self.delegate socializeAuthViewController:self didAuthenticate:self.user];
+        }
     }
 }
 

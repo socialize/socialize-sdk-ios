@@ -30,7 +30,7 @@
 #import "UINavigationBarBackground.h"
 #import "SocializeAuthViewController.h"
 #import "UIButton+Socialize.h"
-#import "SocializeProfileViewController.h"
+#import "SZProfileViewController.h"
 #import "SocializeShareBuilder.h"
 #import "SocializeFacebookInterface.h"
 #import "SocializeUserService.h"
@@ -40,11 +40,12 @@
 #import "UINavigationController+Socialize.h"
 #import "SocializePreprocessorUtilities.h"
 #import "SocializeThirdPartyFacebook.h"
-#import "SocializeFacebookAuthenticator.h"
+#import "SZDisplay.h"
+#import "SZUserUtils.h"
+#import "UIAlertView+BlocksKit.h"
+#import "SDKHelpers.h"
 
 @interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
--(void)leftNavigationButtonPressed:(id)sender;
--(void)showEditController;
 @end
 
 @implementation SocializeBaseViewController
@@ -53,40 +54,33 @@
 SYNTH_RED_SOCIALIZE_BAR_BUTTON(settingsButton, @"Settings")
 SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(doneButton, @"Done")
 SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
-@synthesize genericAlertView = genericAlertView_;
 @synthesize socialize = socialize_;
 @synthesize imagesCache = imagesCache_;
-@synthesize shareBuilder = shareBuilder_;
-@synthesize sendActivityToFacebookFeedAlertView = sendActivityToFacebookFeedAlertView_;
-@synthesize authViewController = authViewController_;
 @synthesize bundle = bundle_;
 @synthesize keyboardListener = keyboardListener_;
-@synthesize profileEditViewController = profileEditViewController_;
-@synthesize navigationControllerForEdit = navigationControllerForEdit_;
+@synthesize completionBlock = completionBlock_;
+@synthesize cancellationBlock = cancellationBlock_;
+@synthesize display = display_;
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     self.tableView.delegate = nil;
     self.tableView.dataSource = nil;
     self.tableView = nil;
     self.doneButton = nil;
     self.cancelButton = nil;
     self.settingsButton = nil;
-    self.genericAlertView.delegate = nil;
-    self.genericAlertView = nil;
     self.socialize.delegate = nil;
     self.socialize = nil;
     self.imagesCache = nil;
-    self.shareBuilder.successAction = nil;
-    self.shareBuilder.errorAction = nil;
-    self.shareBuilder = nil;
-    self.sendActivityToFacebookFeedAlertView = nil;
-    self.authViewController = nil;
     self.bundle = nil;
     self.keyboardListener.delegate = nil;
     self.keyboardListener = nil;
-    self.profileEditViewController = nil;
-    self.navigationControllerForEdit = nil;
+    self.cancellationBlock = nil;
+    self.completionBlock = nil;
+    self.display = nil;
 
     [super dealloc];
 }
@@ -94,6 +88,8 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         (void)self.keyboardListener;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_userSettingsChanged:) name:SZUserSettingsDidChangeNotification object:nil];
     }
     return self;
 }
@@ -105,9 +101,6 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     self.doneButton = nil;
     self.cancelButton = nil;
     self.settingsButton = nil;
-    self.genericAlertView = nil;
-    self.sendActivityToFacebookFeedAlertView = nil;
-    self.authViewController = nil;
 }
 
 - (void)viewDidLoad {
@@ -150,6 +143,15 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     return imagesCache_;
 }
 
+- (void)userSettingsChanged:(id<SZFullUser>)updatedSettings {
+    
+}
+
+- (void)_userSettingsChanged:(NSNotification*)notification {
+    id<SZFullUser> updatedSettings = [[notification userInfo] objectForKey:kSZUpdatedUserSettingsKey];
+    [self userSettingsChanged:updatedSettings];
+}
+
 - (void)changeTitleOnCustomBarButton:(UIBarButtonItem*)barButton toText:(NSString*)text {
     UIButton *button = (UIButton*)[barButton customView];
     [button setTitle:text forState:UIControlStateNormal];
@@ -164,11 +166,15 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 }
 
 - (void)notifyDelegateOfCompletion {
-    if ([self.delegate respondsToSelector:@selector(baseViewControllerDidFinish:)]) {
-        [self.delegate baseViewControllerDidFinish:self];
+    if (self.completionBlock != nil) {
+        self.completionBlock();
     } else {
-        [self dismissModalViewControllerAnimated:YES];
-    }    
+        if ([self.delegate respondsToSelector:@selector(baseViewControllerDidFinish:)]) {
+            [self.delegate baseViewControllerDidFinish:self];
+        } else {
+            [self dismissModalViewControllerAnimated:YES];
+        }    
+    }
 }
 
 - (void)doneButtonPressed:(UIBarButtonItem*)button {
@@ -176,11 +182,15 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 }
 
 - (void)notifyDelegateOfCancellation {
-    if ([self.delegate respondsToSelector:@selector(baseViewControllerDidCancel:)]) {
-        [self.delegate baseViewControllerDidCancel:self];
+    if (self.cancellationBlock != nil) {
+        self.cancellationBlock();
     } else {
-        [self dismissModalViewControllerAnimated:YES];
-    }    
+        if ([self.delegate respondsToSelector:@selector(baseViewControllerDidCancel:)]) {
+            [self.delegate baseViewControllerDidCancel:self];
+        } else {
+            [self dismissModalViewControllerAnimated:YES];
+        }
+    }
 }
 
 - (void)cancelButtonPressed:(UIButton*)button {
@@ -188,32 +198,32 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 }
 
 - (void)settingsButtonPressed:(UIButton *)button {
-    [self showEditController];
+    __block SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:self.display];
+    wrapper.endBlock = ^{
+        [wrapper returnToViewController:self];
+    };
+    [SZUserUtils showUserSettingsWithDisplay:wrapper];
 }
-
 
 -(void)leftNavigationButtonPressed:(id)sender {
     //default implementation for the left navigation button
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (UIAlertView*)genericAlertView {
-    if (genericAlertView_ == nil) {
-        genericAlertView_ = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    }
-    
-    return genericAlertView_;
-}
-
--(void) showAlertWithText:(NSString*)alertMessage andTitle:(NSString*)title
-{
-    self.genericAlertView.message = alertMessage;
-    self.genericAlertView.title = title;
-    [self.genericAlertView show];
+-(void) showAlertWithText:(NSString*)alertMessage andTitle:(NSString*)title {
+    [UIAlertView showAlertWithTitle:title message:alertMessage buttonTitle:@"Ok" handler:nil];
 }
 
 - (UIView*)showLoadingInView {
     return self.view;
+}
+
+- (void)socializeWillStartLoadingWithMessage:(NSString *)message {
+    [self startLoading];
+}
+
+- (void)socializeWillStopLoading {
+    [self stopLoading];
 }
 
 #pragma Location enable/disable button callbacks
@@ -239,10 +249,6 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 
 -(BOOL)shouldAutoAuthOnAppear {
     return YES;
-}
-
--(BOOL) shouldShowAuthViewController {
-    return ( ![self.socialize isAuthenticatedWithThirdParty] && [self.socialize thirdPartyAvailable] && ![Socialize authenticationNotRequired]);
 }
 
 -(void)performAutoAuth
@@ -275,34 +281,8 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [self.navigationController.navigationBar resetBackground];
 }
 
-- (BOOL)dontShowErrors {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeUIErrorAlertsDisabled] boolValue];
-}
-
-- (void)postErrorNotificationForError:(NSError*)error {
-    NSDictionary *userInfo = nil;
-    if (error != nil) {
-        userInfo = [NSDictionary dictionaryWithObject:error forKey:SocializeUIControllerErrorUserInfoKey];
-    }
-    [[NSNotificationCenter defaultCenter] postNotificationName:SocializeUIControllerDidFailWithErrorNotification
-                                                        object:self
-                                                      userInfo:userInfo];
-}
-
 - (void)failWithError:(NSError*)error {
-    [self postErrorNotificationForError:error];
-    
-    if ([[error domain] isEqualToString:SocializeErrorDomain] && [error code] == SocializeErrorServerReturnedHTTPError) {
-        NSHTTPURLResponse *response = [[error userInfo] objectForKey:kSocializeErrorNSHTTPURLResponseKey];
-        if ([response statusCode] == 401) {
-            [self.socialize removeSocializeAuthenticationInfo];
-        }
-    }
-
-    if (![self dontShowErrors]) {
-        [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
-    }
-    
+    SZEmitUIError(self, error);
 }
 
 -(void)service:(SocializeService *)service didFail:(NSError *)error
@@ -323,106 +303,11 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [localNavigationController.navigationBar resetBackground];
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (alertView == self.sendActivityToFacebookFeedAlertView) {
-        if (buttonIndex == alertView.cancelButtonIndex) {
-            [self sendActivityToFacebookFeedCancelled];
-        }
-        else if (buttonIndex == alertView.firstOtherButtonIndex) {
-            [self sendActivityToFacebookFeed:self.shareBuilder.shareObject];
-        }
-    }
-}
-
-- (void)authenticateWithFacebook {
-    if (![SocializeThirdPartyFacebook available]) {
-        [self showAlertWithText:@"Proper facebook configuration is required to use this view" andTitle:@"Facebook not Configured"];
-        return;
-    }
-    
-    if (![SocializeThirdPartyFacebook isLinkedToSocialize]) {
-        [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:nil
-                                                                   display:self
-                                                                   success:^{
-                                                                       [self afterLoginAction:YES];
-                                                                   } failure:^(NSError *error) {
-                                                                       [self showAlertWithText:[error localizedDescription] andTitle:@"Error"];
-                                                                   }];
-    }
-}
--(UINavigationController *)authViewController{    
-    if(!authViewController_) {
-        authViewController_ = [[SocializeAuthViewController authViewControllerInNavigationController:self] retain];
-    }
-    return authViewController_;
-}
-
 -(void)didAuthenticate:(id<SocializeUser>)user
 {
     [self stopLoadAnimation];
     
     [self afterLoginAction:YES];
-}
-
-- (UIAlertView*)sendActivityToFacebookFeedAlertView {
-    if (sendActivityToFacebookFeedAlertView_ == nil) {
-        sendActivityToFacebookFeedAlertView_ = [[UIAlertView alloc]
-                                                initWithTitle:@"Facebook Error"
-                                                message:nil
-                                                delegate:self
-                                                cancelButtonTitle:@"Dismiss"
-                                                otherButtonTitles:@"Retry", nil];
-    }
-    
-    return sendActivityToFacebookFeedAlertView_;
-}
-
-- (void)sendActivityToFacebookFeedSucceeded {
-    [self stopLoading];
-}
-    
-- (void)sendActivityToFacebookFeedFailed:(NSError*)error {
-    [self stopLoading];
-    
-    NSString *message = @"There was a Problem Writing to Your Facebook Wall";
-    
-    // Provide more detailed error if available
-    NSString *facebookErrorType = [[[error userInfo] objectForKey:@"error"] objectForKey:@"type"];
-    NSString *facebookErrorMessage = [[[error userInfo] objectForKey:@"error"] objectForKey:@"message"];
-    if (facebookErrorType != nil && facebookErrorMessage != nil) {
-        message = [NSString stringWithFormat:@"%@: %@", facebookErrorType, facebookErrorMessage];
-    }
-    
-    self.sendActivityToFacebookFeedAlertView.message = message;
-    
-    [self.sendActivityToFacebookFeedAlertView show];
-}
-
-- (void)sendActivityToFacebookFeedCancelled {
-    
-}
-
-- (SocializeShareBuilder*)shareBuilder {
-    if (shareBuilder_ == nil) {
-        shareBuilder_ = [[SocializeShareBuilder alloc] init];
-        shareBuilder_.shareProtocol = [[[SocializeFacebookInterface alloc] init] autorelease];
-        
-        __block __typeof__(self) weakSelf = self;
-        shareBuilder_.successAction = ^{
-            [weakSelf sendActivityToFacebookFeedSucceeded];
-        };
-        shareBuilder_.errorAction = ^(NSError *error) {
-            [weakSelf sendActivityToFacebookFeedFailed:error];
-        };
-        
-    }
-    return shareBuilder_;
-}
-
-- (void)sendActivityToFacebookFeed:(id<SocializeActivity>)activity {
-    [self startLoading];
-    self.shareBuilder.shareObject = activity;
-    [self.shareBuilder performShareForPath:@"me/feed"];
 }
 
 - (void)loadImageAtURL:(NSString*)imageURL
@@ -455,78 +340,6 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [self.imagesCache loadImageFromUrl:imageURL
                         completeAction:complete];
 
-}
-
-- (void)getCurrentUser {
-    [self startLoading];
-    [self.socialize getCurrentUser];
-}
-
-- (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser {
-    
-}
-
--(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray
-{
-    [self stopLoading];
-    
-    if ([service isKindOfClass:[SocializeUserService class]]) {
-        id<SocializeFullUser> fullUser = [dataArray objectAtIndex:0];
-        NSAssert([fullUser conformsToProtocol:@protocol(SocializeFullUser)], @"Not a socialize user");
-        [self didGetCurrentUser:fullUser];
-    }
-}
-
-- (SocializeProfileEditViewController*)profileEditViewController {
-    if (profileEditViewController_ == nil) {
-        profileEditViewController_ = [[SocializeProfileEditViewController alloc]
-                                      init];
-        profileEditViewController_.delegate = self;
-    }
-    return profileEditViewController_;
-}
-
-- (UINavigationController*)navigationControllerForEdit {
-    if (navigationControllerForEdit_ == nil) {
-        navigationControllerForEdit_ = [[UINavigationController socializeNavigationControllerWithRootViewController:self.profileEditViewController] retain];
-        navigationControllerForEdit_.delegate = self;
-    }
-    return navigationControllerForEdit_;
-}
-
--(void)showEditController
-{
-    [self presentModalViewController:self.navigationControllerForEdit animated:YES];
-}
-
-
--(void)hideEditController
-{
-    [self stopLoading];
-    [self dismissModalViewControllerAnimated:YES];
-    self.navigationControllerForEdit = nil;
-    self.profileEditViewController.delegate = nil;
-    self.profileEditViewController = nil;
-}
-
-- (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
-    if (baseViewController == self.profileEditViewController) {
-        [self hideEditController];    
-    } else if ([baseViewController isKindOfClass:[SocializeAuthViewController class]]) {
-        [self dismissModalViewControllerAnimated:YES];
-    }
-}
-
-- (void)profileEditViewController:(SocializeProfileEditViewController *)profileEditViewController didUpdateProfileWithUser:(id<SocializeFullUser>)user {
-    [self hideEditController];
-}
-
-- (void)socializeObjectWillStartLoading:(id)object {
-    [self startLoading];
-}
-
-- (void)socializeObjectWillStopLoading:(id)object {
-    [self stopLoading];
 }
 
 @end

@@ -23,6 +23,31 @@
     [self configureWithoutResizingWithTitle:nil type:type];
 }
 
+- (void)configureWithTitle:(NSString*)title {
+    if ([title length] > 0) 
+    {
+        [self setTitle:title forState:UIControlStateNormal];
+        self.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+    }
+    
+    if ([self.titleLabel.text length] > 0) 
+    {
+        CGSize buttonSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font constrainedToSize:CGSizeMake(100, 29)];
+        self.bounds = CGRectMake(0, 0, buttonSize.width+20, 29);
+    }
+    else
+    {
+        self.bounds = CGRectMake(0, 0, 50, 29); 
+    }
+    
+	self.titleLabel.layer.shadowOpacity = 1.0;
+	self.titleLabel.layer.shadowRadius = 0.0;
+	self.titleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+	self.titleLabel.layer.shadowOffset = CGSizeMake(0, -1.0);
+    
+    
+}
+
 -(void)configureWithTitle:(NSString *)title type:(AMSocializeButtonType)type
 {
     NSString * normalImageURI = nil;
@@ -66,28 +91,7 @@
         [self setBackgroundImage:disabledImage forState:UIControlStateDisabled];
     }
     
-    
-    if ([title length] > 0) 
-    {
-        [self setTitle:title forState:UIControlStateNormal];
-        self.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-    }
-    
-    if ([self.titleLabel.text length] > 0) 
-    {
-        CGSize buttonSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font constrainedToSize:CGSizeMake(100, 29)];
-        self.bounds = CGRectMake(0, 0, buttonSize.width+20, 29);
-    }
-    else
-    {
-        self.bounds = CGRectMake(0, 0, 50, 29); 
-    }
-
-	self.titleLabel.layer.shadowOpacity = 1.0;
-	self.titleLabel.layer.shadowRadius = 0.0;
-	self.titleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-	self.titleLabel.layer.shadowOffset = CGSizeMake(0, -1.0);
- 
+    [self configureWithTitle:title];
        
 }
 

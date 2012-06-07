@@ -11,6 +11,8 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeFacebook.h"
 
+static SocializeFacebookInterface *sharedFacebookInterface;
+
 typedef void (^RequestCompletionBlock)(id result, NSError *error);
 
 @interface SocializeFacebookInterface () <SocializeFBRequestDelegate>
@@ -19,6 +21,14 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 @implementation SocializeFacebookInterface
 @synthesize facebook = facebook_;
 @synthesize handlers = handlers_;
+
++ (SocializeFacebookInterface*)sharedFacebookInterface {
+    if (sharedFacebookInterface == nil) {
+        sharedFacebookInterface = [[SocializeFacebookInterface alloc] init];
+    }
+    
+    return sharedFacebookInterface;
+}
 
 - (void)dealloc {
     self.facebook = nil;

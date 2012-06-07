@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SocializeService.h"
 #import "SocializeCommonDefinitions.h"
+#import "SocializeObjects.h"
 
 @protocol SocializeUser;
 
@@ -16,6 +17,8 @@
 {
 }
 
+- (void)getActivityOfEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+- (void)getActivityOfApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
 -(void) getActivityOfCurrentApplication;
 -(void) getActivityOfCurrentApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last;
 -(void) getActivityOfUser:(id<SocializeUser>)user;

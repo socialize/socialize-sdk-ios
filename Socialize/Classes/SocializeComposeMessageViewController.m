@@ -1,5 +1,5 @@
 //
-//  PostCommentViewController.m
+//  ComposeCommentViewController.m
 //  appbuildr
 //
 //  Created by William M. Johnson on 4/5/11.
@@ -13,7 +13,7 @@
 #import "SocializeLocationManager.h"
 #import "UILabel+FormatedText.h"
 #import "UINavigationBarBackground.h"
-#import "SocializeProfileViewController.h"
+#import "SZProfileViewController.h"
 #import "SocializeAuthenticateService.h"
 #import "SocializeGeocoderAdapter.h"
 #import "NSString+PlaceMark.h"
@@ -38,13 +38,13 @@
 
 @implementation SocializeComposeMessageViewController
 
+@synthesize entity = entity_;
 @synthesize commentTextView;
 @synthesize locationText;
 @synthesize doNotShareLocationButton;
 @synthesize activateLocationButton;
 @synthesize mapOfUserLocation;
 @synthesize mapContainer = _mapContainer;
-@synthesize entityURL = _entityURL;
 @synthesize delegate = delegate_;
 @synthesize lowerContainer = lowerContainer_;
 @synthesize upperContainer = upperContainer_;
@@ -54,14 +54,19 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 @synthesize currentLocationDescription = currentLocationDescription_;
 @synthesize locationManager = locationManager_;
 
-- (id)initWithEntityUrlString:(NSString*)entityUrlString 
-{
+- (id)initWithEntity:(id<SZEntity>)entity {
     if (self = [super init]) {
-        self.entityURL = entityUrlString;
+        self.entity = entity;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coreLocationAuthorizationStatusDidChange:) name:SocializeCLAuthorizationStatusDidChangeNotification object:nil];
     }
     return self;
+}
+
+- (id)initWithEntityUrlString:(NSString*)entityUrlString 
+{
+    SZEntity *entity = [SZEntity entityWithKey:entityUrlString name:nil];
+    return [self initWithEntity:entity];
 }
 
 - (void)dealloc
@@ -73,7 +78,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [activateLocationButton release];
     [mapOfUserLocation release];
     [locationText release];
-    [_entityURL release];
+    [entity_ release];
     [_geoCoderInfo release];
     [_mapContainer release];
     [lowerContainer_ release];
@@ -339,8 +344,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 #pragma mark - Map View Delegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    [self.locationManager setLastLocation:userLocation.location];
-    
+    [[SocializeLocationManager sharedLocationManager] tryToAcceptLocation:[userLocation location]];
     [self updateViewWithNewLocation:userLocation.location];
 }
 

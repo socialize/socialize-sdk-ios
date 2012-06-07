@@ -14,13 +14,13 @@
     [super viewDidLoad];
     
     if (self.actionBar == nil) {
-        self.actionBar = [SocializeActionBar actionBarWithKey:@"http://www.example.com/object/1234" name:@"My Object" presentModalInController:self];
+        self.actionBar = [SZActionBar actionBarWithKey:@"http://www.example.com/object/1234" name:@"My Object" presentModalInController:self];
         self.actionBar.delegate = self;
         [self.view addSubview:self.actionBar.view];
     }
 }
 
-- (void)actionBar:(SocializeActionBar*)actionBar wantsDisplayActionSheet:(UIActionSheet*)actionSheet {
+- (void)actionBar:(SZActionBar*)actionBar wantsDisplayActionSheet:(UIActionSheet*)actionSheet {
     [actionSheet showFromRect:CGRectMake(50, 50, 50, 50) inView:self.view animated:YES];
 }
 

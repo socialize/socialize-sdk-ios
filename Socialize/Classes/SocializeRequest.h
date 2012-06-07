@@ -67,6 +67,10 @@ typedef enum {
 @property(nonatomic,assign,getter=isRunning) BOOL        running;
 @property(nonatomic,assign,getter=isTokenRequest) BOOL        tokenRequest;
 @property (nonatomic, assign) Protocol *expectedProtocol;
+
+@property (nonatomic, copy) void (^successBlock)(id objectOrObjects);
+@property (nonatomic, copy) void (^failureBlock)(NSError *error);
+
 + (NSString*)defaultBaseURL;
 + (NSString*)defaultSecureBaseURL;
 

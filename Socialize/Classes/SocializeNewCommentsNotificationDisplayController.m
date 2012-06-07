@@ -8,7 +8,7 @@
 
 #import "SocializeNewCommentsNotificationDisplayController.h"
 #import "SocializeActivityDetailsViewController.h"
-#import "SocializeCommentsTableViewController.h"
+#import "SZCommentsListViewController.h"
 #import "UINavigationController+Socialize.h"
 
 @implementation SocializeNewCommentsNotificationDisplayController
@@ -35,9 +35,9 @@
     return activityDetailsViewController_;
 }
 
-- (SocializeCommentsTableViewController*)commentsTableViewController {
+- (SZCommentsListViewController*)commentsTableViewController {
     if (commentsTableViewController_ == nil) {
-        commentsTableViewController_ = [[SocializeCommentsTableViewController alloc] initWithNibName:nil bundle:nil entryUrlString:nil];
+        commentsTableViewController_ = [[SZCommentsListViewController alloc] initWithNibName:nil bundle:nil entryUrlString:nil];
         commentsTableViewController_.delegate = self;
     }
     return commentsTableViewController_;
@@ -61,7 +61,7 @@
     self.commentsTableViewController.entity = activity.entity;
 }
 
-- (void)commentsTableViewControllerDidFinish:(SocializeCommentsTableViewController *)commentsTableViewController {
+- (void)commentsTableViewControllerDidFinish:(SZCommentsListViewController *)commentsTableViewController {
     [self.delegate notificationDisplayControllerDidFinish:self];
 }
 

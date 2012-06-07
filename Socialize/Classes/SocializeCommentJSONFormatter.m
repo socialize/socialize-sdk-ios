@@ -53,7 +53,10 @@
 - (void)doToDictionary:(NSMutableDictionary *)dictionaryRepresentation fromObject:(id<SocializeObject>)fromObject {
     id<SocializeComment> comment = (id<SocializeComment>)fromObject;
     
-    [dictionaryRepresentation setObject:[comment text] forKey:@"text"];
+    NSString *text = [comment text];
+    if (text == nil) text = @"";
+    
+    [dictionaryRepresentation setObject:text forKey:@"text"];
     
     [dictionaryRepresentation setObject:[NSNumber numberWithBool:[comment subscribe]] forKey:@"subscribe"];
     

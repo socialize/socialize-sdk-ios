@@ -59,11 +59,9 @@ If you wish, you can customize the way the Action Bar shows action sheets. To do
 just implement actionBar:wantsDisplayActionSheet:, as below
 
 .. literalinclude:: snippets/create_action_bar_with_delegate.h
-  :language: objective-c
   :emphasize-lines: 7
 
 .. literalinclude:: snippets/create_action_bar_with_delegate.m
-  :language: objective-c
   :start-after: begin-snippet
   :end-before: end-snippet
   :emphasize-lines: 11, 15-18

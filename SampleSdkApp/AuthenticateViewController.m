@@ -58,6 +58,8 @@
 
 #pragma mark - View lifecycle
 
+#import "SZShareUtils.h"
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -83,6 +85,9 @@
     [Socialize storeConsumerSecret:[apiInfo objectForKey:@"secret"]];
 
     [Socialize storeFacebookAppId:@"115622641859087"];
+
+//    SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
+//    [SZShareUtils showShareDialogWithViewController:self entity:entity success:nil failure:nil];
     
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];
@@ -97,7 +102,7 @@
     [Socialize storeFacebookLocalAppId:nil];
 #endif
     
-//    UIViewController *comments = [SocializeCommentsTableViewController socializeCommentsTableViewControllerForEntity:@"http://www.npr.org/"];
+//    UIViewController *comments = [SZCommentsListViewController socializeCommentsTableViewControllerForEntity:@"http://www.npr.org/"];
 //    [self presentModalViewController:comments animated:YES];
     
 //    NSString *commentType = @"comment";

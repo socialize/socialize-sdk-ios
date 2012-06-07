@@ -7,7 +7,7 @@
 //
 
 #import "SocializeEntity.h"
-
+#import "SocializeObjectFactory.h"
 
 @implementation SocializeEntity
 
@@ -19,12 +19,14 @@
 @synthesize  comments = _comments;
 @synthesize  shares = _shares;
 @synthesize  meta = _meta;
+@synthesize  userActionSummary = _userActionSummary;
 
 -(void)dealloc
 {
     [_key release];
     [_name release];
     [_meta release];
+    [_userActionSummary release];
     
     [super dealloc];
 }
@@ -37,3 +39,20 @@
 }
 
 @end
+
+NSDictionary *SZServerParamsForEntity(id<SZEntity> entity) {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([[entity name] length] > 0) {
+        NSDictionary *subParams = [[SocializeObjectFactory sharedObjectFactory] createDictionaryRepresentationOfObject:entity];
+        [params setObject:subParams forKey:@"entity"];
+    } else {
+        [params setObject:[entity key] forKey:@"entity_key"];
+    }
+    
+    return params;
+}
+
+BOOL SZEntityIsLiked(id<SZEntity> entity) {
+    return [[[entity userActionSummary] objectForKey:@"liked"] integerValue] > 0;
+}
+

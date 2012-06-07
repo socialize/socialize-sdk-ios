@@ -20,6 +20,10 @@
     [super dealloc];
 }
 
+- (void)testRunnerDidStart:(GHTestRunner *)runner {
+    
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSString *serverURL = [[SocializeConfiguration sharedConfiguration] secureRestserverBaseURL];

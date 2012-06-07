@@ -390,7 +390,16 @@ otherwise you will get a failure.
  */
 - (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken expirationDate:(NSDate*)expirationDate;
 
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken 
+                       expirationDate:(NSDate *)expirationDate
+                              success:(void(^)(id<SZFullUser>))success
+                              failure:(void(^)(NSError *error))failure;
+
 - (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret;
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken 
+                   accessTokenSecret:(NSString *)twitterAccessTokenSecret
+                             success:(void(^)(id<SZFullUser>))success
+                             failure:(void(^)(NSError *error))failure;
 
 /**
  Perform a managed Twitter authentication process, including webview callout to twitter auth process if necessary
@@ -547,6 +556,8 @@ otherwise you will get a failure.
  */
 -(void)unlikeEntity:(id<SocializeLike>)like;
 
+- (void)deleteLikeForUser:(id<SZFullUser>)user entity:(id<SZEntity>)entity success:(void(^)(id<SZLike>))success failure:(void(^)(NSError *error))failure;
+
 - (void)createLike:(id<SocializeLike>)like;
 - (void)createLikes:(NSArray*)likes;
 
@@ -652,6 +663,9 @@ otherwise you will get a failure.
  */
 -(void)getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last;
 
+- (void)getCommentsWithIds:(NSArray*)commentIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+- (void)getCommentsWithEntityKey:(NSString*)entityKey success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+
 /**
  Create comment for entity.
  
@@ -703,6 +717,8 @@ otherwise you will get a failure.
  */
 - (void)createComments:(NSArray*)comments;
 
+- (void)createComments:(NSArray*)comments success:(void(^)(id commentOrComments))success failure:(void(^)(NSError *error))failure;
+
 /** Socialize Notification Service **/
 //registers a device token.  Call this method when the developer gets the callback for:
 //didRegisterForRemoteNotificationsWithDeviceToken from the system
@@ -725,6 +741,9 @@ otherwise you will get a failure.
 - (void)createView:(id<SocializeView>)view;
 - (void)createViews:(NSArray*)views;
 
+- (void)createViews:(NSArray*)views success:(void(^)(NSArray *views))success failure:(void(^)(NSError *error))failure;
+- (void)createView:(id<SZView>)view success:(void(^)(id<SZView>))success failure:(void(^)(NSError *error))failure;
+
 -(void)getCurrentUser;
 -(void)getUserWithId:(int)userId;
 -(void)updateUserProfile:(id<SocializeFullUser>)user;
@@ -740,16 +759,33 @@ otherwise you will get a failure.
  */
 - (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last;
 
+- (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last;
+
+- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure;
+- (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure;
+- (void)getCommentsForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure;
+- (void)getActivityForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure;
+- (void)getViewsForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure;
+
+- (void)getActivityOfEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+- (void)getActivityOfApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
 -(void)getActivityOfCurrentApplication;
 -(void)getActivityOfCurrentApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last;
 -(void)getActivityOfUser:(id<SocializeUser>)user;
 -(void)getActivityOfUserId:(NSInteger)userId;
 -(void)getActivityOfUserId:(NSInteger)userId first:(NSNumber*)first last:(NSNumber*)last activity:(SocializeActivityType)activityType;
 
+- (void)getLikesWithIds:(NSArray*)likeIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+- (void)getLikesForEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure;
+- (void)createLikes:(NSArray*)likes success:(void(^)(id entityOrEntities))success failure:(void(^)(NSError *error))failure;
+
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text;
 -(void)createShareForEntityWithKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text;
 - (void)createShare:(id<SocializeShare>)share;
-
+- (void)createShare:(id<SocializeShare>)share success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
+-(void)getSharesWithIds:(NSArray*)shareIds success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure;
+-(void)getShareWithId:(NSNumber*)shareId success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
+- (void)getSharesForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure;
 
 /**
  Enable push notifications for new comments on the given entity
@@ -782,6 +818,11 @@ otherwise you will get a failure.
  @param last Last index, noninclusive
  */
 - (void)getSubscriptionsForEntityKey:(NSString*)entityKey first:(NSNumber*)first last:(NSNumber*)last;
+
+- (void)getSubscriptionsForEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *subscriptions))success failure:(void(^)(NSError *error))failure;
+
+- (void)createSubscriptions:(NSArray*)subscriptions success:(void(^)(NSArray *subscriptions))success failure:(void(^)(NSError *error))failure;
+- (void)createSubscription:(id<SZSubscription>)subscription success:(void(^)(id<SZSubscription>))success failure:(void(^)(NSError *error))failure;
 
 - (BOOL)notificationsAreConfigured;
 
@@ -822,6 +863,14 @@ otherwise you will get a failure.
  */
 - (void)getEntitiesWithIds:(NSArray*)entityIds;
 
+- (void)getEntitiesWithIds:(NSArray*)entityIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+
+- (void)getEntityWithKey:(NSString*)entityKey success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure;
+
+- (void)getEntitiesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure;
+
+- (void)createEntities:(NSArray*)entities success:(void(^)(id entityOrEntities))success failure:(void(^)(NSError *error))failure;
+
 /**
  Check if the app can actually load this entity
  */
@@ -831,5 +880,10 @@ otherwise you will get a failure.
  Track an event
  */
 - (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values;
+
+- (void)updateUserProfile:(id<SocializeFullUser>)user
+             profileImage:(UIImage*)image
+                  success:(void(^)(id<SocializeFullUser> user))success
+                  failure:(void(^)(NSError *error))failure;
 
 @end

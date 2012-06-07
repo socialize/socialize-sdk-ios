@@ -107,7 +107,10 @@
 
 - (void)authenticateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
                        thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
-                    thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret {
+                    thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret
+                                   success:(void(^)(id<SZFullUser>))success
+                                   failure:(void(^)(NSError *error))failure
+{
     
     NSString *authType = [NSString stringWithFormat :@"%d", type];
 
@@ -123,27 +126,51 @@
                                                            expectedJSONFormat:SocializeDictionary
                                                                        params:params];
     
+    request.successBlock = success;
+    request.failureBlock = failure;
+    
     [self executeRequest:request];
 
 }
 
-- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret {
+- (void)authenticateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
+                       thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
+                 thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret {
+    [self authenticateWithThirdPartyAuthType:type
+                         thirdPartyAuthToken:thirdPartyAuthToken
+                   thirdPartyAuthTokenSecret:thirdPartyAuthTokenSecret
+                                     success:nil
+                                     failure:nil];
+}
+
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken
+                   accessTokenSecret:(NSString*)twitterAccessTokenSecret
+                             success:(void(^)(id<SZFullUser>))success
+                             failure:(void(^)(NSError *error))failure {
+    
     [self authenticateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeTwitter
                          thirdPartyAuthToken:twitterAccessToken
-                   thirdPartyAuthTokenSecret:twitterAccessTokenSecret];
+                   thirdPartyAuthTokenSecret:twitterAccessTokenSecret
+                                     success:success
+                                     failure:failure];
+}
+
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret {
+    [self linkToTwitterWithAccessToken:twitterAccessToken accessTokenSecret:twitterAccessTokenSecret success:nil failure:nil];
+}
+
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken 
+                              success:(void(^)(id<SZFullUser>))success
+                              failure:(void(^)(NSError *error))failure
+{
+    [self authenticateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeFacebook
+                         thirdPartyAuthToken:facebookAccessToken
+                   thirdPartyAuthTokenSecret:nil
+                                     success:success failure:failure];
 }
 
 - (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken {
-    [self authenticateWithThirdPartyAuthType:SocializeThirdPartyAuthTypeFacebook
-                         thirdPartyAuthToken:facebookAccessToken
-                   thirdPartyAuthTokenSecret:nil];
-}
-
-/**
- * Called when an error prevents the request from completing successfully.
- */
-- (void)request:(SocializeRequest *)request didFailWithError:(NSError *)error{
-    [_delegate service:self didFail:error];
+    [self linkToFacebookWithAccessToken:facebookAccessToken success:nil failure:nil];
 }
 
 /**
@@ -172,16 +199,19 @@
             [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
             [requestToken release]; requestToken = nil;
             [self persistUserInfo:[jsonObject objectForKey:@"user"]];
-            
-            if (([((NSObject*)_delegate) respondsToSelector:@selector(didAuthenticate:)]) )
+
+            if (request.successBlock != nil) {
+                request.successBlock(self.authenticatedUser);
+            } else if (([_delegate respondsToSelector:@selector(didAuthenticate:)])) {
                 [_delegate didAuthenticate:self.authenticatedUser];
+            }
             
             // Post a global notification that the authenticated user has changed
             [[NSNotificationCenter defaultCenter] postNotificationName:SocializeAuthenticatedUserDidChangeNotification object:self.authenticatedUser];
             
         } else {
             SDebugLog0(@"Unexpected JSON Response: %@", responseBody);
-            [self failWithError:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseBody reason:@"Response Missing OAuth Token and Secret"]];
+            [self failWithRequest:request error:[NSError socializeUnexpectedJSONResponseErrorWithResponse:responseBody reason:@"Response Missing OAuth Token and Secret"]];
         }            
     }
     

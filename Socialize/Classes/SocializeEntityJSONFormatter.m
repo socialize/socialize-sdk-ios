@@ -24,6 +24,7 @@
     [toEntity setComments:[[JSONDictionary objectForKey:@"comments"]intValue]];  
     [toEntity setShares:[[JSONDictionary objectForKey:@"shares"]intValue]]; 
     [toEntity setMeta:[JSONDictionary objectForKey:@"meta"]];
+    [toEntity setUserActionSummary:[JSONDictionary objectForKey:@"user_action_summary"]];
     
     [super doToObject:toObject fromDictionary:JSONDictionary];
 }

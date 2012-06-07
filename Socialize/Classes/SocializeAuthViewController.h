@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SocializeBaseViewController.h"
-#import "SocializeProfileEditViewController.h"
+#import "SZSettingsViewController.h"
 #import "SocializeUser.h"
 
 @class SocializeTwitterAuthDataStore;
@@ -27,7 +27,7 @@ typedef enum {
 
 @protocol SocializeAuthViewControllerDelegate;
 
-@interface SocializeAuthViewController : SocializeBaseViewController<SocializeProfileEditViewControllerDelegate> {
+@interface SocializeAuthViewController : SocializeBaseViewController<SZSettingsViewControllerDelegate> {
     UITableView                 *tableView;
     NSString                    *_facebookUsername;
     UIButton                    *skipButton;
@@ -37,6 +37,7 @@ typedef enum {
 
 @property (nonatomic, retain) IBOutlet UITableView     *tableView;
 @property (nonatomic, retain) IBOutlet UIButton        *skipButton;
+@property (nonatomic, copy) void (^completionBlock)(SZSocialNetwork selectedNetwork);
 
 - (id)initWithDelegate:(id<SocializeAuthViewControllerDelegate>)delegate;
 +(UINavigationController*)authViewControllerInNavigationController:(id<SocializeAuthViewControllerDelegate>)delegate;

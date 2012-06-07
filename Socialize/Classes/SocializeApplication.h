@@ -33,3 +33,4 @@
 /**Set\get application name.*/
 @property(nonatomic, copy) NSString * name;
 @end
+

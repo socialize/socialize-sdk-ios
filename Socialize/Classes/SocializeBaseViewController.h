@@ -28,37 +28,34 @@
 #import <UIKit/UIKit.h>
 #import "_Socialize.h"
 #import "SocializeKeyboardListener.h"
-#import "SocializeProfileEditViewControllerDelegate.h"
-#import "SocializeUIDisplay.h"
+#import "SZSettingsViewControllerDelegate.h"
 
 @class SocializeShareBuilder;
 @class SocializeLoadingView;
 @class ImagesCache;
-@class SocializeProfileEditViewController;
+@class SZSettingsViewController;
 
+@protocol SZDisplay;
 @protocol SocializeBaseViewControllerDelegate;
 
-@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, SocializeProfileEditViewControllerDelegate, SocializeKeyboardListenerDelegate, SocializeUIDisplay> {
+@interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, SocializeKeyboardListenerDelegate, SocializeBaseViewControllerDelegate> {
     @private 
     SocializeLoadingView*  _loadingIndicatorView;
 }
 @property (nonatomic, assign) id<SocializeBaseViewControllerDelegate> delegate;
-@property(nonatomic, retain) UINavigationController* authViewController;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) Socialize *socialize;
 @property (nonatomic, retain) UIBarButtonItem *doneButton;
 @property (nonatomic, retain) UIBarButtonItem *cancelButton;
 @property (nonatomic, retain) UIBarButtonItem *settingsButton;
-@property (nonatomic, retain) UIAlertView *genericAlertView;
-@property (nonatomic, retain) UIAlertView *sendActivityToFacebookFeedAlertView;
-@property (nonatomic, retain) SocializeShareBuilder *shareBuilder;
 @property (nonatomic, retain) ImagesCache *imagesCache;
 @property (nonatomic, retain) NSBundle *bundle;
 @property (nonatomic, retain) SocializeKeyboardListener *keyboardListener;
-@property (nonatomic, retain) SocializeProfileEditViewController *profileEditViewController;
-@property (nonatomic, retain) UINavigationController *navigationControllerForEdit;
+@property (nonatomic, copy) void (^completionBlock)();
+@property (nonatomic, copy) void (^cancellationBlock)();
+@property (nonatomic, retain) id<SZDisplay> display;
 
--(void) showAlertWithText: (NSString*)allertMsg andTitle: (NSString*)title;
+-(void) showAlertWithText:(NSString*)alertMessage andTitle:(NSString*)title;
 -(void) startLoading;
 -(void) stopLoading;
 -(void) startLoadAnimationForView: (UIView*) view;
@@ -67,15 +64,7 @@
 -(void) afterLoginAction:(BOOL)userChanged;
 -(BOOL)shouldAutoAuthOnAppear;
 - (UIView*)showLoadingInView;
-- (void)authenticateWithFacebook;
-- (BOOL)shouldShowAuthViewController;
-- (void)sendActivityToFacebookFeed:(id<SocializeActivity>)activity;
-- (void)sendActivityToFacebookFeedSucceeded;
-- (void)sendActivityToFacebookFeedFailed:(NSError*)error;
-- (void)sendActivityToFacebookFeedCancelled;
 - (UIBarButtonItem*)createLeftNavigationButtonWithCaption:(NSString*)caption;
-- (void)getCurrentUser;
-- (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser;
 - (void)loadImageAtURL:(NSString*)imageURL
           startLoading:(void(^)())startLoadingBlock
            stopLoading:(void(^)())stopLoadingBlock
@@ -84,12 +73,10 @@
 - (void)doneButtonPressed:(UIBarButtonItem*)button;
 - (void)cancelButtonPressed:(UIBarButtonItem*)button;
 - (void)settingsButtonPressed:(UIBarButtonItem*)button;
-- (void)showEditController;
 - (void)notifyDelegateOfCompletion;
 - (void)notifyDelegateOfCancellation;
 - (void)failWithError:(NSError*)error;
-- (BOOL)dontShowErrors;
-- (void)postErrorNotificationForError:(NSError*)error;
+- (void)userSettingsChanged:(id<SZFullUser>)updatedSettings;
 
 @end
 

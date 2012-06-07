@@ -24,7 +24,10 @@
 // These are fallbacks, used only if the above are not implemented. This allows UIViewController instances to
 // be used unmodified if custom behavior is not needed
 - (void)presentModalViewController:(UIViewController *)modalViewController animated:(BOOL)animated;
-- (void)dismissModalViewController:(UIViewController*)controller;
+- (void)dismissModalViewControllerAnimated:(BOOL)animated;
 - (UIView*)view;
 
+@end
+
+@interface UIViewController () <SocializeUIDisplay>
 @end

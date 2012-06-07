@@ -124,4 +124,3 @@
 @property (nonatomic, copy) NSArray* thirdPartyAuth;
 
 @end
-

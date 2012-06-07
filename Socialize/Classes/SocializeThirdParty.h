@@ -9,7 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "SocializeCommonDefinitions.h"
 
-@protocol SocializeThirdParty
+@protocol SocializeThirdPartyBase <NSObject>
+
+
+@end
+
+@protocol SocializeThirdParty <SocializeThirdPartyBase>
 
 + (BOOL)available;
 + (NSString*)thirdPartyName;
@@ -18,11 +23,15 @@
 + (NSError*)userAbortedAuthError;
 + (BOOL)hasLocalCredentials;
 + (void)removeLocalCredentials;
++ (SZSocialNetwork)socialNetworkFlag;
++ (NSString*)dontPostKey;
 
 // The information used for linking to Socialize
 + (NSString*)socializeAuthToken;
 + (NSString*)socializeAuthTokenSecret;
 + (SocializeThirdPartyAuthType)socializeAuthType;
++ (BOOL)userPrefersPost;
++ (BOOL)shouldAutopost;
 
 @end
 
@@ -31,5 +40,6 @@
 + (Class<SocializeThirdParty>)thirdPartyWithName:(NSString*)name;
 + (BOOL)thirdPartyLinked;
 + (BOOL)thirdPartyAvailable;
++ (SZSocialNetwork)preferredNetworks;
 
 @end

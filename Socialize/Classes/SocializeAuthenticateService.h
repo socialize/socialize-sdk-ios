@@ -43,6 +43,12 @@ Socialize authentication service is the authentication engine. It performs anony
                        thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
                  thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret;
 
+- (void)authenticateWithThirdPartyAuthType:(SocializeThirdPartyAuthType)type
+                       thirdPartyAuthToken:(NSString*)thirdPartyAuthToken
+                 thirdPartyAuthTokenSecret:(NSString*)thirdPartyAuthTokenSecret
+                                   success:(void(^)(id<SZFullUser>))success
+                                   failure:(void(^)(NSError *error))failure;
+
 /**
  * This API call is currently unused
  */
@@ -69,6 +75,15 @@ Socialize authentication service is the authentication engine. It performs anony
  Link Socialize user to an existing Twitter session
  */
 - (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret;
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken
+                   accessTokenSecret:(NSString*)twitterAccessTokenSecret
+                             success:(void(^)(id<SZFullUser>))success
+                             failure:(void(^)(NSError *error))failure;
+
 - (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken;
+
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken 
+                              success:(void(^)(id<SZFullUser>))success
+                              failure:(void(^)(NSError *error))failure;
 
 @end

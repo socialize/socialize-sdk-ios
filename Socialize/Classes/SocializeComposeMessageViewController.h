@@ -1,5 +1,5 @@
 //
-//  PostCommentViewController.h
+//  ComposeCommentViewController.h
 //  appbuildr
 //
 //  Created by William M. Johnson on 4/5/11.
@@ -11,7 +11,7 @@
 
 #import "SocializeBaseViewController.h"
 #import "_Socialize.h"
-#import "SocializeProfileViewController.h"
+#import "SZProfileViewController.h"
 #import "SocializeBaseViewControllerDelegate.h"
 #import "SocializeLocationManager.h"
 
@@ -29,7 +29,7 @@
     NSArray *messageActionButtons_;
 }
 
-@property (nonatomic, copy) NSString *entityURL;
+@property (nonatomic, retain) id<SZEntity> entity;
 @property(nonatomic, retain) IBOutlet UITextView    *commentTextView;
 @property(nonatomic, retain) IBOutlet UILabel       *locationText;
 @property(nonatomic, retain) IBOutlet UIButton      *doNotShareLocationButton;
@@ -48,6 +48,7 @@
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
 
 - (id)initWithEntityUrlString:(NSString*)entityUrlString;
+- (id)initWithEntity:(id<SZEntity>)entity;
 
 - (void)addSocializeRoundedGrayButtonImagesToButton:(UIButton*)button;
 - (void)setSubviewForLowerContainer:(UIView*)newSubview;

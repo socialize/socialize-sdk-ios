@@ -33,6 +33,12 @@ typedef enum {
     SocializeErrorThirdPartyNotLinked,
     SocializeErrorThirdPartyNotAvailable,
     SocializeErrorThirdPartyLinkCancelledByUser,
+    SocializeErrorProcessCancelledByUser,
+    SocializeErrorCommentCancelledByUser,
+    SocializeErrorLocationUpdateRejectedByUser,
+    SocializeErrorLocationUpdateTimedOut,
+    SocializeErrorLinkCancelledByUser,
+    SocializeErrorLinkNotPossible,
     SocializeNumErrors,
 } SocializeErrorCode;
 

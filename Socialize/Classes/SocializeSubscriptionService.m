@@ -16,52 +16,46 @@
     return  @protocol(SocializeSubscription);
 }
 
-- (NSDictionary*)subscriptionParamDictForEntityKey:(NSString*)entityKey subscribed:(BOOL)subscribed type:(NSString*)type {
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            entityKey, @"entity_key",
-                            [NSNumber numberWithBool:subscribed], @"subscribed",
-                            type, @"type",
-                            nil];
-    
-    return params;
+- (void)callSubscriptionPostWithParams:(id)params success:(void(^)(NSArray *subscriptions))success failure:(void(^)(NSError *error))failure {
+    [self callEndpointWithPath:@"user/subscription/" method:@"POST" params:params success:success failure:failure];
 }
 
-- (void)createSubscriptions:(NSArray*)subscriptions {
-    [self executeRequest:
-     [SocializeRequest requestWithHttpMethod:@"POST"
-                                resourcePath:@"user/subscription/"
-                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
-                                      params:subscriptions]
-     ];
+- (void)createSubscriptions:(NSArray*)subscriptions success:(void(^)(NSArray *subscriptions))success failure:(void(^)(NSError *error))failure {
+    NSArray *params = [_objectCreator createDictionaryRepresentationArrayForObjects:subscriptions];
+    [self callSubscriptionPostWithParams:params success:success failure:failure];
 }
 
-- (void)createSubscription:(NSDictionary*)subscription {
-    [self createSubscriptions:[NSArray arrayWithObject:subscription]];
+- (void)createSubscription:(id<SZSubscription>)subscription success:(void(^)(id<SZSubscription>))success failure:(void(^)(NSError *error))failure {
+    [self createSubscriptions:[NSArray arrayWithObject:subscription] success:^(NSArray *subscriptions) {
+        BLOCK_CALL_1(success, [subscriptions objectAtIndex:0]);
+    } failure:failure];
+}
+
+- (void)createSubscription:(id<SZSubscription>)subscription {
+    [self createSubscriptions:[NSArray arrayWithObject:subscription] success:nil failure:nil];
 }
 
 - (void)subscribeToCommentsForEntityKey:(NSString*)entityKey {
-    NSDictionary *dict = [self subscriptionParamDictForEntityKey:entityKey subscribed:YES type:@"new_comments"];
-    [self createSubscription:dict];
+    SZEntity *entity = [SZEntity entityWithKey:entityKey name:nil];
+    SZSubscription *subscription = [SZSubscription subscriptionWithEntity:entity type:@"new_comments" subscribed:YES];
+    [self createSubscription:subscription];
 }
 
 - (void)unsubscribeFromCommentsForEntityKey:(NSString*)entityKey {
-    NSDictionary *dict = [self subscriptionParamDictForEntityKey:entityKey subscribed:NO type:@"new_comments"];
-    [self createSubscription:dict];
+    SZEntity *entity = [SZEntity entityWithKey:entityKey name:nil];
+    SZSubscription *subscription = [SZSubscription subscriptionWithEntity:entity type:@"new_comments" subscribed:NO];
+    [self createSubscription:subscription];
+}
+
+- (void)getSubscriptionsForEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *subscriptions))success failure:(void(^)(NSError *error))failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:SZServerParamsForEntity(entity)];
+    [self callListingGetEndpointWithPath:@"user/subscription/" params:params first:first last:last success:nil failure:nil];
 }
 
 - (void)getSubscriptionsForEntityKey:(NSString*)entityKey first:(NSNumber*)first last:(NSNumber*)last {
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:entityKey forKey:@"entity_key"];
-    if (first != nil && last != nil) {
-        [params setObject:first forKey:@"first"];
-        [params setObject:last forKey:@"last"];
-    }
-    [self executeRequest:
-     [SocializeRequest requestWithHttpMethod:@"GET"
-                                resourcePath:@"user/subscription/"
-                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
-                                      params:params]
-     ];
+    SZEntity *entity = [SZEntity entityWithKey:entityKey name:nil];
+    [self getSubscriptionsForEntity:entity first:first last:last success:nil failure:nil];
 }
+
 
 @end

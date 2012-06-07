@@ -13,6 +13,7 @@
 #import "SocializeThirdPartyTwitter.h"
 
 @implementation SocializeThirdParty
+
 + (NSArray*)allThirdParties {
     return [NSArray arrayWithObjects:[SocializeThirdPartyTwitter class], [SocializeThirdPartyFacebook class], nil];
 }
@@ -43,6 +44,17 @@
         }
     }
     return NO;
+}
+
++ (SZSocialNetwork)preferredNetworks {
+    SZSocialNetwork networks = SZSocialNetworkNone;
+    for (Class<SocializeThirdParty> thirdParty in [self allThirdParties]) {
+        if ([thirdParty userPrefersPost]) {
+            networks |= [thirdParty socialNetworkFlag];
+        }
+    }
+    
+    return networks;
 }
 
 @end

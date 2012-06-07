@@ -44,3 +44,4 @@
 + (SocializeComment*)commentWithEntity:(id<SocializeEntity>)entity text:(NSString*)text;
 
 @end
+

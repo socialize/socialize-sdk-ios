@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    SocializeLikeButton *likeButton = [[SocializeLikeButton alloc] initWithFrame:CGRectMake(120, 30, 0, 0) entity:self.entity viewController:self];
+    SZLikeButton *likeButton = [[SZLikeButton alloc] initWithFrame:CGRectMake(120, 30, 0, 0) entity:self.entity viewController:self];
     [self.view addSubview:likeButton];
 }
 

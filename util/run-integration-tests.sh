@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$RUN_CLI" = "" ]; then
+if [ -z "$RUN_CLI" ]; then
   exit 0
 fi
 

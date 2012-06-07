@@ -17,12 +17,13 @@
 #import "AuthenticateViewController.h"
 #import <Socialize/Socialize.h>
 #import "TestShowSmallUserInfo.h"
-#import "TestSocializeActionBar.h"
+#import "TestSZActionBar.h"
 #import "InputBox.h"
 #import "TestActivityViewController.h"
-#import "TestTabbedSocializeActionBar.h"
+#import "TestTabbedSZActionBar.h"
 //#import "UINavigationController+Socialize.h"
 #import "TestLikeButton.h"
+#import "SampleListViewController.h"
 
 #if RUN_KIF_TESTS
 #import <OCMock/OCMock.h>
@@ -56,6 +57,7 @@
                       @"Test Direct URL Notification",
                       @"Test Direct Entity Notification",
                       @"Test Standalone Buttons",
+                      @"Test New List",
                       nil
                       ]retain];
 
@@ -218,7 +220,7 @@
         {
             NSString* url = [self getEntityKey];
             if(url) {
-                UINavigationController *nav = [SocializePostCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:url delegate:nil];
+                UINavigationController *nav = [SZComposeCommentMessageViewController postCommentViewControllerInNavigationControllerWithEntityURL:url delegate:nil];
                 [self presentModalViewController:nav animated:YES];
             }
             break;
@@ -229,21 +231,21 @@
             break;
         case 9:
         {
-            UIViewController *profile = [SocializeProfileViewController profileViewControllerInNavigationController];
+            UIViewController *profile = [SZProfileViewController profileViewControllerInNavigationController];
 #ifdef RUN_KIF_TESTS
-            UINavigationController *nav = (UINavigationController*)profile;
-            SocializeProfileViewController *pvc = (SocializeProfileViewController*)[[nav viewControllers] objectAtIndex:0];
-            SocializeProfileEditViewController *edit = pvc.profileEditViewController;
-
-            id mockActionSheet = [OCMockObject mockForClass:[UIActionSheet class]];
-             
-            edit.uploadPicActionSheet = mockActionSheet;
-            
-            UIImage *profileImage = [UIImage imageNamed:@"Smiley.png"];
-            [[[mockActionSheet expect] andDo:^(NSInvocation* blah){
-                NSDictionary *info = [NSDictionary dictionaryWithObject:profileImage forKey:UIImagePickerControllerEditedImage];
-                [edit imagePickerController:nil didFinishPickingMediaWithInfo:info];
-            }] showInView:OCMOCK_ANY];
+//            UINavigationController *nav = (UINavigationController*)profile;
+//            SZProfileViewController *pvc = (SZProfileViewController*)[[nav viewControllers] objectAtIndex:0];
+//            SZSettingsViewController *edit = pvc.profileEditViewController;
+//
+//            id mockActionSheet = [OCMockObject mockForClass:[UIActionSheet class]];
+//             
+//            edit.uploadPicActionSheet = mockActionSheet;
+//            
+//            UIImage *profileImage = [UIImage imageNamed:@"Smiley.png"];
+//            [[[mockActionSheet expect] andDo:^(NSInvocation* blah){
+//                NSDictionary *info = [NSDictionary dictionaryWithObject:profileImage forKey:UIImagePickerControllerEditedImage];
+//                [edit imagePickerController:nil didFinishPickingMediaWithInfo:info];
+//            }] showInView:OCMOCK_ANY];
             
 #endif
             [self.navigationController presentModalViewController:profile animated:YES];
@@ -254,7 +256,7 @@
             NSString* url = [self getEntityKey];
             if(url)
             {
-                controller = [[TestSocializeActionBar alloc] initWithEntityUrl:url];
+                controller = [[TestSZActionBar alloc] initWithEntityUrl:url];
                 [self.navigationController pushViewController:controller animated:YES];
             }
             break;
@@ -263,8 +265,8 @@
         {
             NSString* url = [self getEntityKey];
             if (url) {
-                controller = [[TestTabbedSocializeActionBar alloc] init];
-                [(TestTabbedSocializeActionBar*)controller setEntityUrl:url];
+                controller = [[TestTabbedSZActionBar alloc] init];
+                [(TestTabbedSZActionBar*)controller setEntityUrl:url];
                 [self.navigationController pushViewController:controller animated:YES];
             }
             break;
@@ -275,16 +277,16 @@
             break;
         case 13:
         {
-            NSString* url = [self getEntityKey];
-            if(url) {
-                UINavigationController *nav = [SocializePostShareViewController postShareViewControllerInNavigationControllerWithEntityURL:url];
-                [self presentModalViewController:nav animated:YES];
-            }
+//            NSString* url = [self getEntityKey];
+//            if(url) {
+//                UINavigationController *nav = [SocializePostShareViewController postShareViewControllerInNavigationControllerWithEntityURL:url];
+//                [self presentModalViewController:nav animated:YES];
+//            }
             break;
         }
         case 14:
         {
-            UINavigationController *nav = [SocializeProfileEditViewController profileEditViewControllerInNavigationController];
+            UINavigationController *nav = [SZSettingsViewController profileEditViewControllerInNavigationController];
             [self.navigationController presentModalViewController:nav animated:YES];
             break;
         }
@@ -342,10 +344,14 @@
                 TestLikeButton *testLike = [[[TestLikeButton alloc] initWithEntity:entity] autorelease];
                 [self.navigationController pushViewController:testLike animated:YES];
             }
-
+            break;
         }
-  
-
+        case 19:
+        {
+            SampleListViewController *sampleList = [[[SampleListViewController alloc] init] autorelease];
+            [self.navigationController pushViewController:sampleList animated:YES];
+            break;
+        }   
     }    
     [controller release];
 }

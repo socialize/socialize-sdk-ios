@@ -80,6 +80,8 @@
 /**Private implementation of <SocializeSubscription> protocol*/
 @interface SocializeSubscription : SocializeObject <SocializeSubscription>
 
++ (SocializeSubscription*)subscriptionWithEntity:(id<SocializeEntity>)entity type:(NSString*)type subscribed:(BOOL)subscribed;
+
 /** Set\get <SocializeEntity> object.*/
 @property (nonatomic, retain) id<SocializeEntity>      entity;
 /** Set\get <SocializeUser> object.*/

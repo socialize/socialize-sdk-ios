@@ -14,11 +14,12 @@
 @property (nonatomic, assign) id display;
 @property (nonatomic, assign) id object;
 @property (nonatomic, assign, readonly) BOOL loading;
+@property (nonatomic, retain) NSMutableArray *controllers;
 
 + (id)UIDisplayProxyWithObject:(id)object display:(id)display;
 - (id)initWithObject:(id) object display:(id)display;
 - (void)presentModalViewController:(UIViewController*)controller;
-- (void)dismissModalViewController:(UIViewController*)controller;
+- (void)dismissModalViewController;
 - (void)showActionSheet:(UIActionSheet*)actionSheet;
 - (void)showAlertView:(UIAlertView*)alertView;
 - (void)startLoading;

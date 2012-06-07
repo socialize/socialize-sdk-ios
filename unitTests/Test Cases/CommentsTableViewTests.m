@@ -7,19 +7,19 @@
 //
 
 #import "CommentsTableViewTests.h"
-#import "SocializeCommentsTableViewController.h"
+#import "SZCommentsListViewController.h"
 #import "CommentsTableViewCell.h"
 #import <OCMock/OCMock.h>
 #import "SocializeTableBGInfoView.h"
 #import "SocializeCommentsService.h"
-#import "SocializeProfileViewController.h"
+#import "SZProfileViewController.h"
 #import "SocializeSubscriptionService.h"
 #import "SocializeActivityDetailsViewController.h"
 #import "SocializeBubbleView.h"
 #import "SocializeNotificationToggleBubbleContentView.h"
 #import "CommentsTableFooterView.h"
 
-@interface SocializeCommentsTableViewController(public)
+@interface SZCommentsListViewController(public)
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender;
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 -(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment;
@@ -36,13 +36,13 @@
 #define TEST_URL @"test_entity_url"
 
 + (SocializeBaseViewController*)createController {
-    return [[[SocializeCommentsTableViewController alloc] initWithNibName:@"SocializeCommentsTableViewController" bundle:nil entryUrlString: TEST_URL] autorelease];
+    return [[[SZCommentsListViewController alloc] initWithNibName:@"SZCommentsListViewController" bundle:nil entryUrlString: TEST_URL] autorelease];
 }
 
 -(void)setUp {
     [super setUp];
     // super setUp creates self.viewController
-    self.commentsTableViewController = (SocializeCommentsTableViewController*)self.viewController;
+    self.commentsTableViewController = (SZCommentsListViewController*)self.viewController;
     self.mockView = self.mockTableView;
     
     self.mockFooterView = [OCMockObject mockForClass:[CommentsTableFooterView class]];
@@ -166,7 +166,7 @@
     self.commentsTableViewController.content = [NSArray arrayWithObject:mockComment];
     
     //mock out creation of profile controller and present
-    id mockProfileViewController = [OCMockObject mockForClass:[SocializeProfileViewController class]];
+    id mockProfileViewController = [OCMockObject mockForClass:[SZProfileViewController class]];
     [[[(id)self.commentsTableViewController expect] andReturn:mockProfileViewController] getProfileViewControllerForUser:mockUser];
     [[(id)self.commentsTableViewController expect] presentModalViewController:mockProfileViewController animated:YES];
     
@@ -236,13 +236,13 @@
     [[(id)self.commentsTableViewController expect] insertContentAtHead:[NSArray arrayWithObject:mockComment]];
     
     // Stub a post comment where the user chose not to subscribe to the discussion
-    id mockPostCommentViewController = [OCMockObject mockForClass:[SocializePostCommentViewController class]];
-    [[[mockPostCommentViewController stub] andReturnBool:YES] dontSubscribeToDiscussion];
+    id mockComposeCommentViewController = [OCMockObject mockForClass:[SZComposeCommentMessageViewController class]];
+    [[[mockComposeCommentViewController stub] andReturnBool:YES] dontSubscribeToDiscussion];
     
     // Subscribed button should turn off
     [[self.mockSubscribedButton expect] setSelected:NO];
     
-    [self.commentsTableViewController postCommentViewController:mockPostCommentViewController didCreateComment:mockComment];
+    [self.commentsTableViewController postCommentViewController:mockComposeCommentViewController didCreateComment:mockComment];
 }
 
 - (void)expectBubbleConfigurationForEnabled:(BOOL)enabled {

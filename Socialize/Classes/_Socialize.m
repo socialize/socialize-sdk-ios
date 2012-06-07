@@ -23,16 +23,17 @@
 #import "NSTimer+BlocksKit.h"
 #import "SocializeNotificationHandler.h"
 #import "StringHelper.h"
-#import "SocializeTwitterAuthenticator.h"
 #import "SocializeDeviceTokenSender.h"
-#import "SocializeUIShareCreator.h"
-#import "SocializeUIShareOptions.h"
-#import "SocializeTwitterAuthOptions.h"
 #import "SocializeFacebookAuthHandler.h"
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
-#import "SocializeFacebookAuthenticator.h"
 #import "SocializeEventService.h"
+#import "SZTwitterUtils.h"
+#import "SZFacebookUtils.h"
+
+@interface SZFacebookUtils ()
++ (void)_linkWithSuccess:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
+@end
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -72,12 +73,17 @@ NSString *const kSocializeConsumerKey = SOCIALIZE_API_KEY;
 NSString *const kSocializeConsumerSecret = SOCIALIZE_API_SECRET;
 
 NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAuthenticatedUserDidChangeNotification";
+NSString *const SZUserSettingsDidChangeNotification = @"SZAuthenticatedUserSettingsDidChangeNotification";
+NSString *const kSZUpdatedUserSettingsKey = @"kSZUpdatedUserSettingsKey";
 
 NSString *const SocializeEntityLoaderDidFinishNotification = @"SocializeEntityLoaderDidFinishNotification";
 
 NSString *const SocializeCLAuthorizationStatusDidChangeNotification = @"SocializeLocationManagerAuthorizationStatusDidChangeNotification";
 NSString *const kSocializeCLAuthorizationStatusKey = @"kSocializeCLAuthorizationStatusKey";
 NSString *const kSocializeShouldShareLocationKey = @"kSocializeShouldShareLocationKey";
+
+NSString *const SZLocationDidChangeNotification = @"SZLocationDidChangeNotification";
+NSString *const kSZNewLocationKey = @"kSZNewLocationKey";
 
 NSString *const SocializeUIControllerDidFailWithErrorNotification = @"SocializeUIControllerDidFailWithErrorNotification";
 NSString *const SocializeUIControllerErrorUserInfoKey = @"SocializeUIControllerErrorUserInfoKey";
@@ -99,6 +105,10 @@ NSString *const kSocializeFacebookAuthLocalAppId = SOCIALIZE_FACEBOOK_LOCAL_APP_
 NSString *const kSocializeFacebookAuthAccessToken = @"kSocializeFacebookAuthAccessToken";
 NSString *const kSocializeFacebookAuthExpirationDate = @"kSocializeFacebookAuthExpirationDate";
 
+NSString *const kSocializeDontPostToFacebookKey = kSOCIALIZE_DONT_POST_TO_FACEBOOK_KEY;
+NSString *const kSocializeDontPostToTwitterKey = kSOCIALIZE_DONT_POST_TO_TWITTER_KEY;
+NSString *const kSocializeAutoPostToSocialNetworksKey = @"kSocializeAutoPostToSocialNetworksKey";
+
 NSString *const kSocializeFacebookStringForAPI = @"FaceBook";
 
 // Authentication settings
@@ -106,7 +116,7 @@ NSString *const kSocializeAuthenticationNotRequired = @"kSocializeAuthentication
 NSString *const kSocializeAnonymousAllowed = @"kSocializeAnonymousAllowed";
 
 NSString *const SocializeDidRegisterDeviceTokenNotification = @"SocializeDidRegisterDeviceTokenNotification";
-NSString *const SocializeLikeButtonDidChangeStateNotification = @"SocializeLikeButtonDidChangeStateNotification";
+NSString *const SZLikeButtonDidChangeStateNotification = @"SZLikeButtonDidChangeStateNotification";
 
 
 @implementation Socialize
@@ -124,7 +134,7 @@ NSString *const SocializeLikeButtonDidChangeStateNotification = @"SocializeLikeB
 @synthesize subscriptionService = _subscriptionService;
 @synthesize eventsService = _eventsService;
 
-static Socialize *_sharedSocialize = nil;
+static Socialize *_sharedSocialize;
 static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 
@@ -132,6 +142,13 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
     if (self == [Socialize class]) {
         Class dynamicTest = NSClassFromString(@"SocializeDynamicTest");
         NSAssert(dynamicTest != nil, @"Dynamic Class Load Error -- does your application build settings for 'other linker flags' contain the flag '-all_load'?");
+        
+        if (![SZFacebookUtils isAvailable]) {
+            DebugLog(SOCIALIZE_FACEBOOK_NOT_CONFIGURED_MESSAGE);        
+        }
+        if (![SZTwitterUtils isAvailable]) {
+            DebugLog(SOCIALIZE_TWITTER_NOT_CONFIGURED_MESSAGE);        
+        }
     }
 }
 
@@ -368,14 +385,28 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [self linkToFacebookWithAccessToken:accessToken expirationDate:expirationDate];
 }
 
-- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret {
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken 
+                   accessTokenSecret:(NSString *)twitterAccessTokenSecret
+                             success:(void(^)(id<SZFullUser>))success
+                             failure:(void(^)(NSError *error))failure {
     [SocializeThirdPartyTwitter storeLocalCredentialsWithAccessToken:twitterAccessToken accessTokenSecret:twitterAccessTokenSecret];
-    [_authService linkToTwitterWithAccessToken:twitterAccessToken accessTokenSecret:twitterAccessTokenSecret];
+    [_authService linkToTwitterWithAccessToken:twitterAccessToken accessTokenSecret:twitterAccessTokenSecret success:success failure:failure];
+}
+
+- (void)linkToTwitterWithAccessToken:(NSString*)twitterAccessToken accessTokenSecret:(NSString*)twitterAccessTokenSecret {
+    [self linkToTwitterWithAccessToken:twitterAccessToken accessTokenSecret:twitterAccessTokenSecret success:nil failure:nil];
 }
 
 - (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken expirationDate:(NSDate*)expirationDate {
+    [self linkToFacebookWithAccessToken:facebookAccessToken expirationDate:expirationDate success:nil failure:nil];
+}
+
+- (void)linkToFacebookWithAccessToken:(NSString*)facebookAccessToken 
+                       expirationDate:(NSDate *)expirationDate
+                              success:(void(^)(id<SZFullUser>))success
+                              failure:(void(^)(NSError *error))failure {
     [SocializeThirdPartyFacebook storeLocalCredentialsWithAccessToken:facebookAccessToken expirationDate:[NSDate distantFuture]];
-    [_authService linkToFacebookWithAccessToken:facebookAccessToken];
+    [_authService linkToFacebookWithAccessToken:facebookAccessToken success:success failure:failure];
 }
 
 - (void)authenticateViaTwitterWithOptions:(SocializeTwitterAuthOptions*)options
@@ -383,7 +414,7 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
                                   success:(void(^)())success
                                   failure:(void(^)(NSError *error))failure {
     
-    [SocializeTwitterAuthenticator authenticateViaTwitterWithOptions:options display:display success:success failure:failure];
+    [SZTwitterUtils linkWithDisplay:display success:success failure:failure];
 }
 
 -(void)authenticateAnonymously
@@ -423,12 +454,11 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [Socialize storeFacebookAppId:thirdPartyAppId];
     [Socialize storeFacebookLocalAppId:thirdPartyLocalAppId];
 
-    SocializeFacebookAuthOptions *options = [SocializeFacebookAuthOptions options];
-    options.doNotPromptForPermission = YES;
-    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:options
-                                                               display:nil
-                                                               success:nil
-                                                               failure:nil];
+    [SZFacebookUtils _linkWithSuccess:^(id<SZFullUser> user) {
+        [self.delegate didAuthenticate:(id<SZUser>)user];
+    } failure:^(NSError *error) {
+        [self.delegate service:_authService didFail:error];
+    }];
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey
@@ -516,6 +546,11 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_likeService deleteLike:like]; 
 }
 
+- (void)deleteLikeForUser:(id<SZFullUser>)user entity:(id<SZEntity>)entity success:(void(^)(id<SZLike>))success failure:(void(^)(NSError *error))failure {
+    [_userService deleteLikeForUser:user entity:entity success:success failure:failure];
+}
+
+
 - (void)createLike:(id<SocializeLike>)like {
     [_likeService createLike:like];
 }
@@ -536,6 +571,13 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
 
 -(void)getCommentList: (NSString*) entryKey first:(NSNumber*)first last:(NSNumber*)last{
     [_commentsService getCommentList:entryKey first:first last:last];
+}
+
+- (void)getCommentsWithIds:(NSArray*)commentIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [_commentsService getCommentsWithIds:commentIds success:success failure:failure];
+}
+- (void)getCommentsWithEntityKey:(NSString*)entityKey success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [_commentsService getCommentsWithEntityKey:entityKey success:success failure:failure];
 }
 
 -(void)createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat{
@@ -562,6 +604,11 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_commentsService createComments:comments];
 }
 
+- (void)createComments:(NSArray*)comments success:(void(^)(id commentOrComments))success failure:(void(^)(NSError *error))failure {
+    [_commentsService createComments:comments success:success failure:failure];
+}
+
+
 #pragma entity related stuff
 
 -(void)getEntityByKey:(NSString *)entitykey{
@@ -581,6 +628,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [self createEntityWithKey:entityKey name:name];
 }
 
+- (void)createEntities:(NSArray*)entities success:(void(^)(id entityOrEntities))success failure:(void(^)(NSError *error))failure {
+    [_entityService createEntities:entities success:success failure:failure];
+}
+
 #pragma view related stuff
 
 -(void)viewEntityWithKey:(NSString*)url longitude:(NSNumber*)lng latitude: (NSNumber*)lat {
@@ -597,6 +648,14 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
 
 - (void)createViews:(NSArray*)views {
     [_viewService createViews:views];
+}
+
+- (void)createViews:(NSArray*)views success:(void(^)(NSArray *views))success failure:(void(^)(NSError *error))failure {
+    [_viewService createViews:views success:success failure:failure];
+}
+
+- (void)createView:(id<SZView>)view success:(void(^)(id<SZView>))success failure:(void(^)(NSError *error))failure {
+    [_viewService createView:view success:success failure:failure];
 }
 
 /*
@@ -626,9 +685,61 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_userService updateUser:user profileImage:profileImage];
 }
 
+- (void)updateUserProfile:(id<SocializeFullUser>)user
+             profileImage:(UIImage*)image
+                  success:(void(^)(id<SocializeFullUser> user))success
+                  failure:(void(^)(NSError *error))failure {
+    [_userService updateUser:user profileImage:image success:success failure:failure];
+}
+
 - (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
     [_userService getLikesForUser:user entity:entity first:first last:last];
 }
+
+- (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last {
+    [_userService getSharesForUser:user entity:entity first:first last:last];
+}
+
+- (void)getLikesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
+    [_userService getLikesForUser:user entity:entity first:first last:last success:success failure:failure];
+}
+
+- (void)getSharesForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
+    [_userService getSharesForUser:user entity:entity first:first last:last success:success failure:failure];
+}
+
+- (void)getCommentsForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
+    [_userService getCommentsForUser:user entity:entity first:first last:last success:success failure:failure];
+}
+
+- (void)getActivityForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
+    [_userService getActivityForUser:user entity:entity first:first last:last success:success failure:failure];    
+}
+
+- (void)getViewsForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
+    [_userService getViewsForUser:user entity:entity first:first last:last success:success failure:failure];
+}
+
+- (void)getLikesWithIds:(NSArray*)likeIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [_likeService getLikesWithIds:likeIds success:success failure:failure];
+}
+
+- (void)getLikesForEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure {
+    [_likeService getLikesForEntity:entity first:first last:last success:success failure:failure];
+}
+
+- (void)createLikes:(NSArray*)likes success:(void(^)(id entityOrEntities))success failure:(void(^)(NSError *error))failure {
+    [_likeService createLikes:likes success:success failure:failure];
+}
+
+- (void)getActivityOfApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [_activityService getActivityOfApplicationWithFirst:first last:last success:success failure:failure];
+}
+
+- (void)getActivityOfEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [_activityService getActivityOfEntity:entity first:first last:last success:success failure:failure];
+}
+
 
 #pragma mark activity related stuff
 -(void)getActivityOfCurrentApplication
@@ -667,6 +778,19 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_shareService createShare:share];
 }
 
+-(void)getSharesWithIds:(NSArray*)shareIds success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+    [_shareService getSharesWithIds:shareIds success:success failure:failure];
+}
+
+-(void)getShareWithId:(NSNumber*)shareId success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
+    [_shareService getShareWithId:shareId success:success failure:failure];
+}
+
+- (void)getSharesForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+    [_shareService getSharesForEntityKey:key first:first last:last success:success failure:failure];
+}
+
+
 #pragma mark notification service stuff
 +(void)registerDeviceToken:(NSData *)deviceToken {
     [[SocializeDeviceTokenSender sharedDeviceTokenSender] registerDeviceToken:deviceToken];
@@ -685,6 +809,18 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_subscriptionService getSubscriptionsForEntityKey:entityKey first:first last:last];
 }
 
+- (void)getSubscriptionsForEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *subscriptions))success failure:(void(^)(NSError *error))failure {
+    [_subscriptionService getSubscriptionsForEntity:entity first:first last:last success:success failure:failure];
+}
+
+- (void)createSubscriptions:(NSArray*)subscriptions success:(void(^)(NSArray *subscriptions))success failure:(void(^)(NSError *error))failure {
+    [_subscriptionService createSubscriptions:subscriptions success:success failure:failure];
+}
+
+- (void)createSubscription:(id<SZSubscription>)subscription success:(void(^)(id<SZSubscription>))success failure:(void(^)(NSError *error))failure {
+    [_subscriptionService createSubscription:subscription success:success failure:failure];
+}
+
 - (BOOL)notificationsAreConfigured {
     BOOL entityLoaderDefined = [Socialize entityLoaderBlock] != nil;
     BOOL tokenAvailable = [[SocializeDeviceTokenSender sharedDeviceTokenSender] tokenAvailable];
@@ -696,20 +832,32 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_deviceTokenService registerDeviceTokenString:deviceTokenString];
 }
 
-+ (void)createShareWithOptions:(SocializeUIShareOptions*)options display:(id)display success:(void(^)())success failure:(void(^)(NSError *error))failure {
-    [SocializeUIShareCreator createShareWithOptions:options display:display success:success failure:failure];
-}
-
 - (void)getEntitiesWithIds:(NSArray*)entityIds {
     [_entityService getEntitiesWithIds:entityIds];
+}
+
+- (void)getEntitiesWithIds:(NSArray*)entityIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [_entityService getEntitiesWithIds:entityIds success:success failure:failure];
 }
 
 - (void)getEntityWithId:(NSNumber*)entityId {
     [_entityService getEntityWithId:entityId];
 }
 
+- (void)getEntityWithKey:(NSString*)entityKey success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+    [_entityService getEntityWithKey:entityKey success:success failure:failure];
+}
+
+- (void)getEntitiesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+    [_entityService getEntitiesWithFirst:first last:last success:success failure:failure];
+}
+
 - (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values {
     [_eventsService trackEventWithBucket:bucket values:values];
+}
+
+- (void)createShare:(id<SocializeShare>)share success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
+    [_shareService createShare:share success:success failure:failure];
 }
 
 @end

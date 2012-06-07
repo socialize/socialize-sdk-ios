@@ -15,8 +15,8 @@
 
 @implementation SZNavigationController
 
-- (id)initWithRootViewController:(UIViewController *)rootViewController {
-    if (self = [super initWithRootViewController:rootViewController]) {
+- (id)init {
+    if (self = [super init]) {
         UIImage * socializeNavBarBackground = [UIImage imageNamed:@"socialize-navbar-bg.png"];
         [self.navigationBar setBackgroundImage:socializeNavBarBackground];
     }

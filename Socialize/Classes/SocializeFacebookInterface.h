@@ -16,6 +16,7 @@
 @property (nonatomic, retain) SocializeFacebook *facebook;
 @property (nonatomic, retain) NSMutableDictionary *handlers;
 
++ (SocializeFacebookInterface*)sharedFacebookInterface;
 - (void)requestWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params httpMethod:(NSString*)httpMethod completion:(void (^)(id result, NSError *error))completion;
 
 @end
