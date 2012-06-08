@@ -11,6 +11,9 @@
 #import "NSObject+Observer.h"
 #import <objc/runtime.h>
 #import "ClassMockRegistry.h"
+#import "_Socialize.h"
+#import <OCMock/OCMock.h>
+
 
 id testSelf;
 
@@ -150,5 +153,25 @@ id testSelf;
     [mockService stubIsKindOfClass:serviceClass];
     return mockService;
 }
+
+- (void)fakeCurrentUserWithSocialize:(id)socialize user:(id<SZFullUser>)user {
+    [[[socialize stub] andReturnBool:YES] isAuthenticated];
+    [[[socialize stub] andReturn:user] authenticatedFullUser];
+    [[[socialize stub] andReturn:(id<SZUser>)user] authenticatedUser];
+}
+
+- (void)fakeCurrentUserAnonymousInSocialize:(id)socialize {
+    id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
+    [[[mockUser stub] andReturn:nil] thirdPartyAuth];
+    [self fakeCurrentUserWithSocialize:socialize user:mockUser];
+}
+
+- (void)fakeCurrentUserNotAuthedInSocialize:(id)socialize {
+    [[[socialize stub] andReturnBool:NO] isAuthenticated];
+    [[[socialize stub] andReturn:nil] authenticatedFullUser];
+    [[[socialize stub] andReturn:nil] authenticatedUser];
+
+}
+
 
 @end

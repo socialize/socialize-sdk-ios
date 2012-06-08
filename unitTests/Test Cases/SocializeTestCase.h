@@ -7,6 +7,7 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
+#import "SocializeObjects.h"
 
 @class SocializeTestCase;
 
@@ -24,5 +25,9 @@ extern id testSelf;
 - (void)swizzleClass:(Class)target_class selector:(SEL)classSelector toObject:(id)object selector:(SEL)objectSelector;
 - (void)deswizzle;
 - (id)createMockServiceForClass:(Class)serviceClass;
+
+- (void)fakeCurrentUserWithSocialize:(id)socialize user:(id<SZFullUser>)user;
+- (void)fakeCurrentUserAnonymousInSocialize:(id)socialize;
+- (void)fakeCurrentUserNotAuthedInSocialize:(id)socialize;
 
 @end

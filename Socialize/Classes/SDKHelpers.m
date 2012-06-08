@@ -65,7 +65,7 @@ void SZAuthWrapper(void (^success)(), void (^failure)(NSError *error)) {
     if (![[Socialize sharedSocialize] isAuthenticated]) {
         [[Socialize sharedSocialize] authenticateAnonymouslyWithSuccess:success failure:failure];
     } else {
-        success([[Socialize sharedSocialize] authenticatedFullUser]);
+        success();
     }
 }
 

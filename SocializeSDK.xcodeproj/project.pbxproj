@@ -743,6 +743,7 @@
 		AA16D6F2158158EC002F1E16 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA16D6EF158158EC002F1E16 /* GHUnitIOS.framework */; };
 		AA16D6F3158158EC002F1E16 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA16D6EF158158EC002F1E16 /* GHUnitIOS.framework */; };
 		AA16D6F4158158EC002F1E16 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA16D6EF158158EC002F1E16 /* GHUnitIOS.framework */; };
+		AA16D6F915817058002F1E16 /* UserUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6F815817058002F1E16 /* UserUtilsTests.m */; };
 		AA1A2DF4155864020085D0D9 /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1A2DF3155864020085D0D9 /* SampleListViewController.m */; };
 		AA1A2DF5155864020085D0D9 /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1A2DF3155864020085D0D9 /* SampleListViewController.m */; };
 		AA1A2DF7155876990085D0D9 /* SampleListViewController.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA1A2DF6155876990085D0D9 /* SampleListViewController.plist */; };
@@ -2877,6 +2878,8 @@
 		AA16D6AF158154EE002F1E16 /* TestViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewUtils.h; sourceTree = "<group>"; };
 		AA16D6B0158154EE002F1E16 /* TestViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewUtils.m; sourceTree = "<group>"; };
 		AA16D6EF158158EC002F1E16 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
+		AA16D6F715817058002F1E16 /* UserUtilsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserUtilsTests.h; path = "Test Cases/UserUtilsTests.h"; sourceTree = "<group>"; };
+		AA16D6F815817058002F1E16 /* UserUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserUtilsTests.m; path = "Test Cases/UserUtilsTests.m"; sourceTree = "<group>"; };
 		AA1A2DF2155864020085D0D9 /* SampleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleListViewController.h; sourceTree = "<group>"; };
 		AA1A2DF3155864020085D0D9 /* SampleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleListViewController.m; sourceTree = "<group>"; };
 		AA1A2DF6155876990085D0D9 /* SampleListViewController.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SampleListViewController.plist; sourceTree = "<group>"; };
@@ -3747,6 +3750,7 @@
 				AAE2750614EB446D00CE081D /* SocializeTestCase.h */,
 				AAE2750714EB446D00CE081D /* SocializeTestCase.m */,
 				6D44A37613FC342D004B3A46 /* UI tests */,
+				AA16D6F615817023002F1E16 /* SDK Tests */,
 				1657EF9D13A226A800E488CC /* Utils Tests */,
 				1657EF9413A1FFBA00E488CC /* Infrastructure Tests */,
 				5CFCBE3F1385B60D00EF5073 /* Configuration Tests */,
@@ -4366,6 +4370,15 @@
 				AA05FFAA157C73AA00E82CB4 /* SZLikeOptions.m */,
 			);
 			name = Options;
+			sourceTree = "<group>";
+		};
+		AA16D6F615817023002F1E16 /* SDK Tests */ = {
+			isa = PBXGroup;
+			children = (
+				AA16D6F715817058002F1E16 /* UserUtilsTests.h */,
+				AA16D6F815817058002F1E16 /* UserUtilsTests.m */,
+			);
+			name = "SDK Tests";
 			sourceTree = "<group>";
 		};
 		AA3326DE144CD9FB0033C7FA /* KIF */ = {
@@ -7636,6 +7649,7 @@
 				AAF3168715520CB300E4A164 /* create_action_bar_with_delegate.m in Sources */,
 				AAF3168815520CB300E4A164 /* create_action_bar_no_auto.m in Sources */,
 				AAF3168915520CB300E4A164 /* create_action_bar.m in Sources */,
+				AA16D6F915817058002F1E16 /* UserUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

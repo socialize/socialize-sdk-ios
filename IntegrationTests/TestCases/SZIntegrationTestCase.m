@@ -81,26 +81,6 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     }
 }
 
-- (void)fakeCurrentUserWithThirdParties:(NSArray*)thirdParties {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *fakeUser = [NSDictionary dictionaryWithObjectsAndKeys:
-                              thirdParties, @"third_party_auth",
-                              [NSNumber numberWithInteger:123], @"id",
-                              nil];
-    
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:fakeUser];
-    [userDefaults setObject:data forKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
-    [userDefaults synchronize];
-}
-
-- (void)fakeCurrentUserAnonymous {
-    [self fakeCurrentUserWithThirdParties:[NSArray array]];
-}
-
-- (void)fakeCurrentUserNotAuthed {
-    [[Socialize sharedSocialize] removeAuthenticationInfo];
-}
-
 - (Socialize*)socialize {
     if (socialize_ == nil) {
         socialize_ = [[Socialize alloc] initWithDelegate:self];
@@ -292,6 +272,27 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
 - (void)didAuthenticate:(id<SocializeUser>)user {
     [self notify:kGHUnitWaitStatusSuccess];
 }
+
+- (void)fakeCurrentUserWithThirdParties:(NSArray*)thirdParties {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *fakeUser = [NSDictionary dictionaryWithObjectsAndKeys:
+                              thirdParties, @"third_party_auth",
+                              [NSNumber numberWithInteger:123], @"id",
+                              nil];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:fakeUser];
+    [userDefaults setObject:data forKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
+    [userDefaults synchronize];
+}
+
+- (void)fakeCurrentUserAnonymous {
+    [self fakeCurrentUserWithThirdParties:[NSArray array]];
+}
+
+- (void)fakeCurrentUserNotAuthed {
+    [[Socialize sharedSocialize] removeAuthenticationInfo];
+}
+
 
 
 @end
