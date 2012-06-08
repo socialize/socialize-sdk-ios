@@ -70,6 +70,7 @@
     [self.mockContent verify];
     [self.mockActivityLoadingActivityIndicatorView verify];
     
+    self.tableViewController.content = nil;
     self.tableViewController = nil;
     self.partialTableViewController = nil;
     self.mockTableView = nil;

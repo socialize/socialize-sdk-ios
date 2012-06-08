@@ -17,6 +17,7 @@
 #import "UIWindow-KIFAdditions.h"
 //#import <Socialize/SocializeFacebookInterface.h>
 #import "SampleSdkAppKIFTestController.h"
+#import "UIApplication-KIFAdditions.h"
 
 @implementation KIFTestStep (SampleSdkAppAdditions)
 
@@ -55,7 +56,7 @@
 + (NSArray*)stepsToReturnToList;
 {
     NSMutableArray *steps = [NSMutableArray array];
-    [steps addObjectsFromArray:[self stepsToPopNavigationControllerToIndex:1]];
+    [steps addObjectsFromArray:[self stepsToPopNavigationControllerToIndex:0]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];
     return steps;
 }
@@ -85,7 +86,7 @@
 
 + (NSArray*)stepsToOpenProfile {
     NSMutableArray *steps = [NSMutableArray array];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
     [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     return steps;
@@ -97,11 +98,66 @@
     return steps;
 }
 
+#import "SampleListViewController.h"
+
++ (KIFTestStep*)stepToDumpAccessibilityElementsMatchingBlock:(BOOL(^)(UIAccessibilityElement*))block {
+    return [KIFTestStep stepWithDescription:@"Dump" executionBlock:^(KIFTestStep *step, NSError **error) {
+        [[UIApplication sharedApplication] accessibilityElementMatchingBlock:^(UIAccessibilityElement *e) {
+            NSString *accessibilityLabel = [e accessibilityLabel];
+            NSString *accessibilityValue = [e accessibilityValue];
+            
+            if (block(e) && ([accessibilityLabel length] > 0 || [accessibilityValue length] > 0)) {
+                NSLog(@"Found element: %@/%@ - %@", [e accessibilityLabel], [e accessibilityValue], e);
+            }
+            return NO;
+        }];
+        
+        return KIFTestStepResultSuccess;
+    }];
+}
+
++ (KIFTestStep*)stepToTapRowInTopTableViewAtIndexPath:(NSIndexPath*)indexPath {
+    NSString *description = [NSString stringWithFormat:@"Tap top tableView at (%d,%d)", indexPath.section, indexPath.row];
+    return [KIFTestStep stepWithDescription:description executionBlock:^(KIFTestStep *step, NSError **error) {
+
+        UITableView *tableView = (UITableView*)[[UIApplication sharedApplication] accessibilityElementMatchingBlock:^(UIAccessibilityElement *e) {
+            return [e isKindOfClass:[UITableView class]];
+        }];
+        KIFTestCondition(tableView != nil, error, @"Not a tableview");
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        CGRect cellFrame = [cell.contentView convertRect:[cell.contentView frame] toView:tableView];
+        [tableView tapAtPoint:CGPointCenteredInRect(cellFrame)];
+        
+        return KIFTestStepResultSuccess;
+    }];
+}
+
++ (KIFTestStep*)stepToTapTopViewMatchingBlock:(BOOL(^)(UIAccessibilityElement*))block {
+    NSString *description = [NSString stringWithFormat:@"Tap top view matching block"];
+    return [KIFTestStep stepWithDescription:description executionBlock:^(KIFTestStep *step, NSError **error) {
+        
+        UIView *view = (UITableView*)[[UIApplication sharedApplication] accessibilityElementMatchingBlock:block];
+        KIFTestCondition(view != nil, error, @"Not a tableview");
+        [view tap];
+        
+        return KIFTestStepResultSuccess;
+    }];
+}
+
 + (NSArray*)stepsToEditProfileImage {
     NSMutableArray *steps = [NSMutableArray array];
     // Tap image
     NSIndexPath *imagePath = [NSIndexPath indexPathForRow:0 inSection:0];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"edit profile" atIndexPath:imagePath]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Choose From Album"]];
+    [steps addObject:[KIFTestStep stepToTapRowInTopTableViewAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
+    [steps addObject:[KIFTestStep stepToDumpAccessibilityElementsMatchingBlock:^(UIAccessibilityElement *e) {
+        return YES;
+    }]];
+    [steps addObject:[KIFTestStep stepToTapTopViewMatchingBlock:^(UIAccessibilityElement *e) {
+        return [e isKindOfClass:[UIImageView class]];
+    }]];
+
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Save"]];
     return steps;
 }

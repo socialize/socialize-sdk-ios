@@ -73,7 +73,7 @@ NSString *const kSocializeConsumerKey = SOCIALIZE_API_KEY;
 NSString *const kSocializeConsumerSecret = SOCIALIZE_API_SECRET;
 
 NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAuthenticatedUserDidChangeNotification";
-NSString *const SZUserSettingsDidChangeNotification = @"SZAuthenticatedUserSettingsDidChangeNotification";
+NSString *const SZUserSettingsDidChangeNotification = @"SZUserSettingsDidChangeNotification";
 NSString *const kSZUpdatedUserSettingsKey = @"kSZUpdatedUserSettingsKey";
 
 NSString *const SocializeEntityLoaderDidFinishNotification = @"SocializeEntityLoaderDidFinishNotification";

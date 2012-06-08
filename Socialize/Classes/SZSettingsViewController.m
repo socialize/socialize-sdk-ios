@@ -215,7 +215,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 - (void)dismissSelfAfterSave {
     [self persistSettingsToDisk];
     
-    if ([self.delegate respondsToSelector:@selector(profileEditViewController:didUpdateProfileWithUser:)]) {
+    if (self.completionBlock != nil) {
+        self.completionBlock();
+    } else if ([self.delegate respondsToSelector:@selector(profileEditViewController:didUpdateProfileWithUser:)]) {
         [self.delegate profileEditViewController:self didUpdateProfileWithUser:self.fullUser];
     } else {
         [self dismissModalViewControllerAnimated:YES];

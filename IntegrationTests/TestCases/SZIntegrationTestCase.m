@@ -8,6 +8,8 @@
 
 #import "SZIntegrationTestCase.h"
 #import "SocializePrivateDefinitions.h"
+#import "SZCommentUtils.h"
+#import "SDKHelpers.h"
 
 static NSString *UUIDString() {
     CFUUIDRef	uuidObj = CFUUIDCreate(nil);
@@ -122,7 +124,12 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
 
 - (void)createComments:(NSArray*)comments {
     [self prepare];
-    [self.socialize createComments:comments];
+    SZAuthWrapper(^{
+        [self.socialize createComments:comments];
+    }, ^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    });
+    
     [self waitForStatus:kGHUnitWaitStatusSuccess];
 }
 

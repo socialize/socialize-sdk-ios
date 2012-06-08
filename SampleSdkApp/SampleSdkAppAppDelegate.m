@@ -18,6 +18,8 @@
 #import <GHUnitIOS/GHUnit.h>
 #endif
 
+#import <dlfcn.h>
+
 #if RUN_KIF_TESTS
 #import "SampleSdkAppKIFTestController.h"
 #endif
@@ -28,6 +30,28 @@
 
 
 @synthesize window=_window, rootController;
+
+//+ (void)load
+//{
+//    NSAutoreleasePool *autoReleasePool = [[NSAutoreleasePool alloc] init];
+//    
+//    NSString *simulatorRoot = [[[NSProcessInfo processInfo] environment] objectForKey:@"IPHONE_SIMULATOR_ROOT"];
+//    if (simulatorRoot) {
+//        void *appSupportLibrary = dlopen([[simulatorRoot stringByAppendingPathComponent:@"/System/Library/PrivateFrameworks/AppSupport.framework/AppSupport"] fileSystemRepresentation], RTLD_LAZY);
+//        CFStringRef (*copySharedResourcesPreferencesDomainForDomain)(CFStringRef domain) = dlsym(appSupportLibrary, "CPCopySharedResourcesPreferencesDomainForDomain");
+//        
+//        if (copySharedResourcesPreferencesDomainForDomain) {
+//            CFStringRef accessibilityDomain = copySharedResourcesPreferencesDomainForDomain(CFSTR("com.apple.Accessibility"));
+//            
+//            if (accessibilityDomain) {
+//                CFPreferencesSetValue(CFSTR("ApplicationAccessibilityEnabled"), kCFBooleanTrue, accessibilityDomain, kCFPreferencesAnyUser, kCFPreferencesAnyHost);
+//                CFRelease(accessibilityDomain);
+//            }
+//        }
+//    }
+//    
+//    [autoReleasePool drain];
+//}
 
 + (id)sharedDelegate {
     return [[UIApplication sharedApplication] delegate];
@@ -61,16 +85,6 @@
 
     [Socialize storeAnonymousAllowed:YES];
     [Socialize storeAuthenticationNotRequired:NO];
-#if RUN_KIF_TESTS
-    [[SampleSdkAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
-        // Exit after the tests complete so that CI knows we're done
-        int failureCount = [[SampleSdkAppKIFTestController sharedInstance] failureCount];
-        if (getenv("RUN_CLI")) {
-            NSLog(@"Exiting with %i failures", failureCount);
-            exit(failureCount);
-        }
-    }];
-#endif
 
     NSDictionary* apiInfo = [self authInfoFromConfig];
     if ([apiInfo objectForKey:@"facebookToken"]) {
@@ -126,6 +140,17 @@
     [Socialize storeUIErrorAlertsDisabled:NO];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errorNotification:) name:SocializeUIControllerDidFailWithErrorNotification object:nil];
     
+#if RUN_KIF_TESTS
+    [[SampleSdkAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
+        // Exit after the tests complete so that CI knows we're done
+        int failureCount = [[SampleSdkAppKIFTestController sharedInstance] failureCount];
+        if (getenv("RUN_CLI")) {
+            NSLog(@"Exiting with %i failures", failureCount);
+            exit(failureCount);
+        }
+    }];
+#endif
+
     return YES;
 }
 

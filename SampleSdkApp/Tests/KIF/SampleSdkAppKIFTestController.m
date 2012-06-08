@@ -49,10 +49,11 @@ static NSString *SampleSdkAppKIFTestControllerRunID = nil;
 
 - (void)initializeScenarios;
 {
-    [self addScenario:[KIFTestScenario scenarioToSleep]];
+    [self addScenario:[KIFTestScenario scenarioToTestUserProfile]];
+
+    //    [self addScenario:[KIFTestScenario scenarioToSleep]];
 //    [self addScenario:[KIFTestScenario scenarioToAuthenticate]];
 //    [self addScenario:[KIFTestScenario scenarioToTestViewOtherProfile]];
-//    [self addScenario:[KIFTestScenario scenarioToTestUserProfile]];
 //    [self addScenario:[KIFTestScenario scenarioToTestActionBar]];
 //    [self addScenario:[KIFTestScenario scenarioToTestLikeButton]];
 //    [self addScenario:[KIFTestScenario scenarioToTestDirectURLNotification]];

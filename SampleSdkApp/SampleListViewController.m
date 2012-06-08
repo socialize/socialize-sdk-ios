@@ -133,6 +133,7 @@ static NSString *kLikeSection = @"kLikeSection";
     imageView.contentMode = UIViewContentModeCenter;
     imageView.alpha = 0.25;
     self.tableView.backgroundView = imageView;
+    self.tableView.accessibilityLabel = @"tableView";
 }
 
 - (NSArray*)sections {

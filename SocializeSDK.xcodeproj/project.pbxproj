@@ -1697,6 +1697,10 @@
 		AAB427FA14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
 		AAB427FB14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
 		AAB93B87158268B700D003CC /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3CB2C5144CEEAC00AA861A /* Smiley.png */; };
+		AAB93B8A15826C0200D003CC /* SZTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB93B8915826C0200D003CC /* SZTestHelper.m */; };
+		AAB93B8B15826C0200D003CC /* SZTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB93B8915826C0200D003CC /* SZTestHelper.m */; };
+		AAB93B8C15826C5800D003CC /* SZIntegrationTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E20B71461F329000321BF /* SZIntegrationTestCase.m */; };
+		AAB93B8E158283BD00D003CC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB93B8D158283BD00D003CC /* AssetsLibrary.framework */; };
 		AABA1FC11522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AABA1FC01522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m */; };
 		AABA233D1523A17700B511FA /* SocializeEventService.h in Headers */ = {isa = PBXBuildFile; fileRef = AABA233B1523A17700B511FA /* SocializeEventService.h */; };
 		AABA233E1523A17700B511FA /* SocializeEventService.h in Headers */ = {isa = PBXBuildFile; fileRef = AABA233B1523A17700B511FA /* SocializeEventService.h */; };
@@ -3152,6 +3156,9 @@
 		AAB2DEE5143A796300C3C1F5 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = "Frameworks/OCMock/Source/build/Release-iphoneos/libOCMock.a"; sourceTree = "<group>"; };
 		AAB427F614BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNotificationToggleBubbleContentView.h; path = Classes/SocializeNotificationToggleBubbleContentView.h; sourceTree = "<group>"; };
 		AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNotificationToggleBubbleContentView.m; path = Classes/SocializeNotificationToggleBubbleContentView.m; sourceTree = "<group>"; };
+		AAB93B8815826C0200D003CC /* SZTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZTestHelper.h; path = TestCases/SZTestHelper.h; sourceTree = "<group>"; };
+		AAB93B8915826C0200D003CC /* SZTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZTestHelper.m; path = TestCases/SZTestHelper.m; sourceTree = "<group>"; };
+		AAB93B8D158283BD00D003CC /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		AABA1FBF1522913C00B511FA /* SocializeRichPushNotificationDisplayControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeRichPushNotificationDisplayControllerTests.h; path = "Test Cases/SocializeRichPushNotificationDisplayControllerTests.h"; sourceTree = "<group>"; };
 		AABA1FC01522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeRichPushNotificationDisplayControllerTests.m; path = "Test Cases/SocializeRichPushNotificationDisplayControllerTests.m"; sourceTree = "<group>"; };
 		AABA233B1523A17700B511FA /* SocializeEventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeEventService.h; path = Classes/SocializeEventService.h; sourceTree = "<group>"; };
@@ -3338,6 +3345,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB93B8E158283BD00D003CC /* AssetsLibrary.framework in Frameworks */,
 				AAE99629157FE52D0048AAC0 /* libSocialize-profiling.a in Frameworks */,
 				AA0307C11506DA8000E8C43F /* libOCMock.a in Frameworks */,
 				AA3326F5144CDA850033C7FA /* libKIF.a in Frameworks */,
@@ -3650,6 +3658,7 @@
 		5CC3DAB1137881B900B11B78 = {
 			isa = PBXGroup;
 			children = (
+				AAB93B8D158283BD00D003CC /* AssetsLibrary.framework */,
 				180B37F114749A37009D2E22 /* libprofile_rt.dylib */,
 				5CC3DAC31378824800B11B78 /* Socialize */,
 				5CC3DAEE1378859000B11B78 /* unitTests */,
@@ -4456,6 +4465,8 @@
 				AA3E20AC1461F057000321BF /* IntegrationTestsAppDelegate.h */,
 				AA3E20AD1461F057000321BF /* IntegrationTestsAppDelegate.m */,
 				AA3E20A41461F057000321BF /* Supporting Files */,
+				AAB93B8815826C0200D003CC /* SZTestHelper.h */,
+				AAB93B8915826C0200D003CC /* SZTestHelper.m */,
 			);
 			path = IntegrationTests;
 			sourceTree = "<group>";
@@ -7694,6 +7705,8 @@
 				AAA4901F1553054E003FB943 /* TestTabbedSZActionBar.m in Sources */,
 				AA1A2DF5155864020085D0D9 /* SampleListViewController.m in Sources */,
 				AAE99627157FE51D0048AAC0 /* GCDAProfiling.c in Sources */,
+				AAB93B8A15826C0200D003CC /* SZTestHelper.m in Sources */,
+				AAB93B8C15826C5800D003CC /* SZIntegrationTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7728,6 +7741,7 @@
 				AA16D6A7158154CF002F1E16 /* TestActionUtils.m in Sources */,
 				AA16D6AE158154DE002F1E16 /* TestSubscriptionUtils.m in Sources */,
 				AA16D6B5158154EF002F1E16 /* TestViewUtils.m in Sources */,
+				AAB93B8B15826C0200D003CC /* SZTestHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

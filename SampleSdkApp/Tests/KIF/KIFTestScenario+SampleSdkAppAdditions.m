@@ -9,6 +9,9 @@
 #import "KIFTestScenario+SampleSdkAppAdditions.h"
 #import "KIFTestStep+SampleSdkAppAdditions.h"
 #import "SampleSdkAppKIFTestController.h"
+#import "SZTestHelper.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+
 @implementation KIFTestScenario (SampleSdkAppAdditions)
 
 //+ (id)scenarioToTestFacebook {
@@ -126,20 +129,38 @@
     return scenario;
 }
 
-
 + (id)scenarioToTestUserProfile {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test Socialize User Profiles"];
-    [scenario addStep:[KIFTestStep stepToDisableValidFacebookSession]];
-
+    
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
     NSString *commentText = [NSString stringWithFormat:@"comment for %@", [SampleSdkAppKIFTestController runID]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToCreateCommentWithControllerForEntity:url comment:commentText]];
-
+    id<SZEntity> entity = [SZEntity entityWithKey:url name:@"Test"];
+    id<SZComment> comment = [SZComment commentWithEntity:entity text:commentText];
+    [[SZTestHelper sharedTestHelper] createComment:comment];
+    
+//    ALAssetsLibrary *assets = [[ALAssetsLibrary alloc] init];
+    
+//    NSDictionary *meta = [NSDictionary dictionaryWithObjectsAndKeys:@"somevalue", @"somekey", nil];
+    
+//    [assets writeImageToSavedPhotosAlbum:[[UIImage imageNamed:@"Smiley.png"] CGImage] metadata:meta completionBlock:nil];
+//    [assets enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+//        NSLog(@"group %@", group);
+//        [group enumerateAssetsUsingBlock:^(ALAsset *asset, NSUInteger index, BOOL *stop) {
+//            NSLog(@"Asset %@", asset);
+//            
+//        }];
+//    } failureBlock:^(NSError *error) {
+//        
+//    }];
+    
+//    UIImageWriteToSavedPhotosAlbum([UIImage imageNamed:@"Smiley.png"], nil, NULL, NULL);
+//    [assets release];
+    
     NSString *firstName = @"Test First Name";
     [scenario addStepsFromArray:[KIFTestStep stepsToOpenProfile]];
     [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:commentText]];
     [scenario addStepsFromArray:[KIFTestStep stepsToOpenEditProfile]];
-    [scenario addStepsFromArray:[KIFTestStep stepsToEditProfileImage]];
+//    [scenario addStepsFromArray:[KIFTestStep stepsToEditProfileImage]];
     [scenario addStepsFromArray:[KIFTestStep stepsToSetProfileFirstName:firstName]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyProfileFirstName:firstName]];

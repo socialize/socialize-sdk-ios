@@ -62,7 +62,6 @@
 }
 
 - (void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
-    [super service:service didFetchElements:dataArray];
     if ([service isKindOfClass:[SocializeActivityService class]]) {
         [self receiveNewContent:dataArray];
     }

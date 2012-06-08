@@ -59,13 +59,13 @@
 }
 
 -(void)tearDown {
-    [super tearDown];
-    
     [self.mockFooterView verify];
     [self.mockSubscribedButton verify];
     self.commentsTableViewController = nil;
     self.mockFooterView = nil;
     self.mockSubscribedButton = nil;
+    
+    [super tearDown];
 }
 
 -(void)testAfterLoginActionInitializesContentAndGetsSubscriptions {
