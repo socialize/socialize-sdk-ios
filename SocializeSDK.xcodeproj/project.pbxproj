@@ -1696,6 +1696,7 @@
 		AAB427F914BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB427F614BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.h */; };
 		AAB427FA14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
 		AAB427FB14BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB427F714BFABA6007AAF90 /* SocializeNotificationToggleBubbleContentView.m */; };
+		AAB93B87158268B700D003CC /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3CB2C5144CEEAC00AA861A /* Smiley.png */; };
 		AABA1FC11522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AABA1FC01522913D00B511FA /* SocializeRichPushNotificationDisplayControllerTests.m */; };
 		AABA233D1523A17700B511FA /* SocializeEventService.h in Headers */ = {isa = PBXBuildFile; fileRef = AABA233B1523A17700B511FA /* SocializeEventService.h */; };
 		AABA233E1523A17700B511FA /* SocializeEventService.h in Headers */ = {isa = PBXBuildFile; fileRef = AABA233B1523A17700B511FA /* SocializeEventService.h */; };
@@ -6668,6 +6669,7 @@
 				AA87C91B156BF94D0018AD79 /* socialize-selectnetwork-twitter-dis-icon@2x.png in Resources */,
 				AA87C922156BF94D0018AD79 /* socialize-selectnetwork-twitter-icon.png in Resources */,
 				AA87C929156BF94D0018AD79 /* socialize-selectnetwork-twitter-icon@2x.png in Resources */,
+				AAB93B87158268B700D003CC /* Smiley.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
