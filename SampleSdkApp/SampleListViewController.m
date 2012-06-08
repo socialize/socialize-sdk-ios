@@ -14,6 +14,7 @@
 #import "SZCommentUtils.h"
 #import "SZComposeCommentViewController.h"
 #import "SZLikeUtils.h"
+#import "SZFacebookUtils.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -28,6 +29,7 @@ static NSString *kUserSection = @"kUserSection";
 static NSString *kShareSection = @"kShareSection";
 static NSString *kCommentSection = @"kCommentSection";
 static NSString *kLikeSection = @"kLikeSection";
+static NSString *kFacebookSection = @"kFacebookSection";
 
 @interface SampleListViewController ()
 @property (nonatomic, retain) NSArray *sections;
@@ -110,6 +112,11 @@ static NSString *kLikeSection = @"kLikeSection";
         [SZLikeUtils likeWithDisplay:self entity:entity success:nil failure:nil];
     }]];
     
+    NSMutableArray *facebookRows = [NSMutableArray array];
+    [facebookRows addObject:[self rowWithText:@"Link to Facebook" executionBlock:^{
+        [SZFacebookUtils linkWithDisplay:self success:nil failure:nil];
+    }]];
+
     return [NSArray arrayWithObjects:
             [self sectionWithIdentifier:kUserSection
                                   title:@"User Utilities"
@@ -124,6 +131,10 @@ static NSString *kLikeSection = @"kLikeSection";
             [self sectionWithIdentifier:kLikeSection
                                   title:@"Like Utilities"
                                    rows:likeRows],
+
+            [self sectionWithIdentifier:kFacebookSection
+                                  title:@"Facebook Utilities"
+                                   rows:facebookRows],
 
             nil];
 }

@@ -18,7 +18,7 @@
 + (id)scenarioToTestLikeButton;
 + (id)scenarioToTestDirectURLNotification;
 + (id)scenarioToSleep;
-
++ (id)scenarioToTestFacebookAuth;
 //+ (id)scenarioToTestFacebook;
 
 @end

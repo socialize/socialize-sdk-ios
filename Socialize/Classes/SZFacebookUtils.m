@@ -53,7 +53,7 @@
                                                 expirationDate:expirationDate
                                                        success:^(id<SZFullUser> user) {
                                                            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSocializeDontPostToFacebookKey];
-                                                           success(user);
+                                                           BLOCK_CALL_1(success, user);
                                                        } failure:failure];
 }
 
@@ -70,7 +70,11 @@
      permissions:permissions
      success:^(NSString *accessToken, NSDate *expirationDate) {
          [wrapper startLoadingInTopControllerWithMessage:@"Linking With Facebook"];
-         [self linkWithAccessToken:accessToken expirationDate:expirationDate success:success failure:failure];
+         [self linkWithAccessToken:accessToken expirationDate:expirationDate success:^(id _) {
+             [wrapper stopLoadingInTopController];
+         } failure:^(NSError *error) {
+             [wrapper stopLoadingInTopController];
+         }];
      } failure:failure];
 }
 
@@ -82,7 +86,7 @@
     UIAlertView *alertView = [UIAlertView alertWithTitle:title message:message];
     
     [alertView setCancelButtonWithTitle:@"No" handler:^{
-        failure([NSError defaultSocializeErrorForCode:SocializeErrorFacebookCancelledByUser]);
+        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorFacebookCancelledByUser]);
     }];
     
     [alertView addButtonWithTitle:@"Yes" handler:^{

@@ -10,4 +10,8 @@
 
 @interface SZTestHelper : SZIntegrationTestCase
 + (id)sharedTestHelper;
+- (NSString*)facebookAccessToken;
+- (void)startMockingSucceedingFacebookAuth;
+- (void)stopMockingSucceedingFacebookAuth;
+
 @end

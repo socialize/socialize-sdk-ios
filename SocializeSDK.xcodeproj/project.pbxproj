@@ -2033,6 +2033,8 @@
 		AAEABFF714919575007C3D23 /* SocializeKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */; };
 		AAEB4A7B1458E88300A01F5B /* SocializeServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */; };
 		AAEDA76414FEC3430098EE75 /* NSObject+Observer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA553A1D14FD825800CCB3AE /* NSObject+Observer.m */; };
+		AAEEDDD81582A8BE00FFB876 /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE88714355F1B00851C73 /* SocializeApiInfo.plist */; };
+		AAEEDDEB1582BD0C00FFB876 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AABE17891500634900500D45 /* libOCMock.a */; };
 		AAEFDE3214CDFD8900764633 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD4CEF14ACC220000D6FAB /* UIView+Layout.m */; };
 		AAF177301472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */; };
 		AAF177311472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */; };
@@ -3364,6 +3366,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAEEDDEB1582BD0C00FFB876 /* libOCMock.a in Frameworks */,
 				AAE9962A157FE5330048AAC0 /* libSocialize-profiling.a in Frameworks */,
 				AA3E20BE1461FA9B000321BF /* QuartzCore.framework in Frameworks */,
 				AA3E20BB1461FA94000321BF /* CoreLocation.framework in Frameworks */,
@@ -6681,6 +6684,7 @@
 				AA87C922156BF94D0018AD79 /* socialize-selectnetwork-twitter-icon.png in Resources */,
 				AA87C929156BF94D0018AD79 /* socialize-selectnetwork-twitter-icon@2x.png in Resources */,
 				AAB93B87158268B700D003CC /* Smiley.png in Resources */,
+				AAEEDDD81582A8BE00FFB876 /* SocializeApiInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8351,6 +8355,7 @@
 					"\"$(SRCROOT)\"/unitTests/Libraries/**",
 					"\"$(SRCROOT)\"/Socialize/**",
 					"$(CONFIGURATION_BUILD_DIR)/Headers",
+					"$(CONFIGURATION_BUILD_DIR)",
 				);
 				INFOPLIST_FILE = "SampleSdkApp/UIIntegrationTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -8435,6 +8440,12 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Libraries/**",
+					"\"$(SRCROOT)\"/Socialize/**",
+					"$(CONFIGURATION_BUILD_DIR)",
+				);
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = (
@@ -8471,6 +8482,12 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
+					"\"$(SRCROOT)\"/unitTests/Libraries/**",
+					"\"$(SRCROOT)\"/Socialize/**",
+					"$(CONFIGURATION_BUILD_DIR)",
+				);
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

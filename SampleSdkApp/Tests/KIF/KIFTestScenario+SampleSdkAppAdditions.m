@@ -132,35 +132,20 @@
 + (id)scenarioToTestUserProfile {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test Socialize User Profiles"];
     
+    [scenario addStep:[KIFTestStep stepToWipeAuthenticationInfo]];
+    
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
     NSString *commentText = [NSString stringWithFormat:@"comment for %@", [SampleSdkAppKIFTestController runID]];
-    id<SZEntity> entity = [SZEntity entityWithKey:url name:@"Test"];
-    id<SZComment> comment = [SZComment commentWithEntity:entity text:commentText];
-    [[SZTestHelper sharedTestHelper] createComment:comment];
-    
-//    ALAssetsLibrary *assets = [[ALAssetsLibrary alloc] init];
-    
-//    NSDictionary *meta = [NSDictionary dictionaryWithObjectsAndKeys:@"somevalue", @"somekey", nil];
-    
-//    [assets writeImageToSavedPhotosAlbum:[[UIImage imageNamed:@"Smiley.png"] CGImage] metadata:meta completionBlock:nil];
-//    [assets enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-//        NSLog(@"group %@", group);
-//        [group enumerateAssetsUsingBlock:^(ALAsset *asset, NSUInteger index, BOOL *stop) {
-//            NSLog(@"Asset %@", asset);
-//            
-//        }];
-//    } failureBlock:^(NSError *error) {
-//        
-//    }];
-    
-//    UIImageWriteToSavedPhotosAlbum([UIImage imageNamed:@"Smiley.png"], nil, NULL, NULL);
-//    [assets release];
+    [scenario addStep:[KIFTestStep stepToExecuteBlock:^{
+        id<SZEntity> entity = [SZEntity entityWithKey:url name:@"Test"];
+        id<SZComment> comment = [SZComment commentWithEntity:entity text:commentText];
+        [[SZTestHelper sharedTestHelper] createComment:comment];
+    }]];
     
     NSString *firstName = @"Test First Name";
     [scenario addStepsFromArray:[KIFTestStep stepsToOpenProfile]];
     [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:commentText]];
     [scenario addStepsFromArray:[KIFTestStep stepsToOpenEditProfile]];
-//    [scenario addStepsFromArray:[KIFTestStep stepsToEditProfileImage]];
     [scenario addStepsFromArray:[KIFTestStep stepsToSetProfileFirstName:firstName]];
     [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Save"]];
     [scenario addStepsFromArray:[KIFTestStep stepsToVerifyProfileFirstName:firstName]];
@@ -211,6 +196,30 @@
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Done"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
     
+    [scenario addStepsFromArray:steps];
+    
+    return scenario;
+}
+
++ (id)scenarioToTestFacebookAuth {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test Facebook Auth Process"];
+    
+    NSMutableArray *steps = [NSMutableArray array];
+    
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
+
+    [steps addObject:[KIFTestStep stepToExecuteBlock:^{
+        [[SZTestHelper sharedTestHelper] startMockingSucceedingFacebookAuth];
+    }]];
+
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:4];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Yes"]];
+
+    [steps addObject:[KIFTestStep stepToExecuteBlock:^{
+        [[SZTestHelper sharedTestHelper] stopMockingSucceedingFacebookAuth];
+    }]];
+
     [scenario addStepsFromArray:steps];
     
     return scenario;

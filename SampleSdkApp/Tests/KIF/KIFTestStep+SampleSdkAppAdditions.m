@@ -477,6 +477,20 @@
     }];
 }
 
++ (id)stepToExecuteBlock:(void (^)())block {
+    return [KIFTestStep stepWithDescription:@"Execute generic block" executionBlock:^(KIFTestStep *step, NSError **error) {
+        block();
+        return KIFTestStepResultSuccess;
+    }];
+}
+
++ (id)stepToWipeAuthenticationInfo {
+    return [self stepToExecuteBlock:^{
+        [[Socialize sharedSocialize] removeAuthenticationInfo];
+    }];
+}
+            
+
 + (id)stepToVerifyViewWithAccessibilityLabel:(NSString*)label passesTest:(BOOL (^)(id view))testBlock {
     NSString *description = [NSString stringWithFormat:@"Step to test view with label %@ passes block test", label];
     return [KIFTestStep stepWithDescription:description executionBlock:^(KIFTestStep *step, NSError **error) {

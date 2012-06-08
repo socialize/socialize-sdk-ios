@@ -22,6 +22,7 @@
 + (NSArray*)stepsToCreateEntityWithRandomURL;
 + (NSArray*)stepsToGetEntityWithURL:(NSString*)url;
 + (NSArray*)stepsToSkipAuth;
++ (id)stepToExecuteBlock:(void (^)())block;
 + (NSArray*)stepsToGetCommentsForEntity:(NSString*)entity;
 + (NSArray*)stepsToLikeEntity:(NSString*)entity;
 + (NSArray*)stepsToVerifyLikesForEntity:(NSString*)entity areAtCount:(NSInteger)count;
@@ -48,5 +49,6 @@
 + (NSArray*)stepsToVerifyProfileFirstName:(NSString*)firstName;
 + (id)stepToDisableValidFacebookSession;
 + (id)stepToEnableValidFacebookSession;
++ (id)stepToWipeAuthenticationInfo;
 
 @end
