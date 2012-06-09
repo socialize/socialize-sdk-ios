@@ -107,16 +107,16 @@
     }];
 }
 
-+ (void)postWithGraphPath:(NSString*)graphPath postData:(NSDictionary*)postData success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
-    [self sendRequestWithHTTPMethod:@"POST" graphPath:graphPath postData:postData success:success failure:failure];
++ (void)postWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
+    [self sendRequestWithHTTPMethod:@"POST" graphPath:graphPath postData:params success:success failure:failure];
 }
 
-+ (void)getWithGraphPath:(NSString*)graphPath postData:(NSDictionary*)postData success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
-    [self sendRequestWithHTTPMethod:@"GET" graphPath:graphPath postData:postData success:success failure:failure];
++ (void)getWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
+    [self sendRequestWithHTTPMethod:@"GET" graphPath:graphPath postData:params success:success failure:failure];
 }
 
-+ (void)deleteWithGraphPath:(NSString*)graphPath postData:(NSDictionary*)postData success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
-    [self sendRequestWithHTTPMethod:@"DELETE" graphPath:graphPath postData:postData success:success failure:failure];
++ (void)deleteWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
+    [self sendRequestWithHTTPMethod:@"DELETE" graphPath:graphPath postData:params success:success failure:failure];
 }
 
 @end

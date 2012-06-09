@@ -150,7 +150,7 @@ void CreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *options,
                                       @"This is the description", @"description",
                                       nil];
             
-            [SZFacebookUtils postWithGraphPath:@"me/links" postData:postData success:^(id result) {
+            [SZFacebookUtils postWithGraphPath:@"me/links" params:postData success:^(id result) {
                 BLOCK_CALL_1(success, activity);
             } failure:^(NSError *error) {
                 

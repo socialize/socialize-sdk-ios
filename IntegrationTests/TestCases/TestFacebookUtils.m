@@ -46,7 +46,7 @@
     
     // POST the post and grab id
     [self prepare];
-    [SZFacebookUtils postWithGraphPath:@"me/feed" postData:postData success:^(id info) {
+    [SZFacebookUtils postWithGraphPath:@"me/feed" params:postData success:^(id info) {
         postInfo = [info retain];
         [self notify:kGHUnitWaitStatusSuccess];
     } failure:^(NSError *error) {
@@ -57,7 +57,7 @@
     
     // GET the post and verify id
     [self prepare];
-    [SZFacebookUtils getWithGraphPath:postID postData:nil success:^(id info) {
+    [SZFacebookUtils getWithGraphPath:postID params:nil success:^(id info) {
         GHAssertEqualStrings([info objectForKey:@"id"], postID, @"Not the post");
         [self notify:kGHUnitWaitStatusSuccess];
     } failure:^(NSError *error) {
@@ -67,7 +67,7 @@
 
     // DELETE the post
     [self prepare];
-    [SZFacebookUtils deleteWithGraphPath:postID postData:nil success:^(id info) {
+    [SZFacebookUtils deleteWithGraphPath:postID params:nil success:^(id info) {
         [self notify:kGHUnitWaitStatusSuccess];
     } failure:^(NSError *error) {
         [self notify:kGHUnitWaitStatusFailure];
