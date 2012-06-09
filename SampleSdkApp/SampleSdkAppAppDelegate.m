@@ -30,6 +30,7 @@
 
 
 @synthesize window=_window, rootController;
+@synthesize globalEntity = globalEntity_;
 
 //+ (void)load
 //{
@@ -139,6 +140,8 @@
 
     [Socialize storeUIErrorAlertsDisabled:NO];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errorNotification:) name:SocializeUIControllerDidFailWithErrorNotification object:nil];
+    
+    self.globalEntity = [SZEntity entityWithKey:@"samplesdkapp_test" name:@"SampleSdkApp Test Entity"];
     
 #if RUN_KIF_TESTS
     [[SampleSdkAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{

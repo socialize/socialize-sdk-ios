@@ -16,6 +16,7 @@
 #import "SZLikeUtils.h"
 #import "SZFacebookUtils.h"
 #import "SZTwitterUtils.h"
+#import "SampleSdkAppAppDelegate.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -97,7 +98,7 @@ static NSString *kTwitterSection = @"kTwitterSection";
 
     NSMutableArray *commentRows = [NSMutableArray array];
     [commentRows addObject:[self rowWithText:@"Show Comments List" executionBlock:^{
-        SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
+        id<SZEntity> entity = [[SampleSdkAppAppDelegate sharedDelegate] globalEntity];
         [SZCommentUtils showCommentsListWithDisplay:self entity:entity completion:nil];
     }]];
 

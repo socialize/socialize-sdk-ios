@@ -21,7 +21,6 @@
 #import "InputBox.h"
 #import "TestActivityViewController.h"
 #import "TestTabbedSZActionBar.h"
-//#import "UINavigationController+Socialize.h"
 #import "TestLikeButton.h"
 #import "SampleListViewController.h"
 

@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "AuthenticateViewController.h"
 #import <Socialize/Socialize.h>
+#import "SocializeObjects.h"
 
 @interface SampleSdkAppAppDelegate : NSObject <UIApplicationDelegate, SocializeServiceDelegate> {
 @private
     UINavigationController*         rootController;
 }
 
+@property (nonatomic, retain) id<SZEntity> globalEntity;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *rootController;
 //@property (nonatomic, retain) IBOutlet AuthenticateViewController *authenticationViewController;

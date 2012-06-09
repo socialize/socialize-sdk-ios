@@ -31,20 +31,6 @@
 
 @implementation KIFTestStep (SampleSdkAppAdditions)
 
-+ (id)stepToEnableValidFacebookSession {
-    return [self stepWithDescription:@"Enable preauthed facebook session" executionBlock:^(KIFTestStep *step, NSError **error) {
-        [SampleSdkAppKIFTestController enableValidFacebookSession];
-        return KIFTestStepResultSuccess;
-    }];
-}
-
-+ (id)stepToDisableValidFacebookSession {
-    return [self stepWithDescription:@"Disable preauthed facebook session" executionBlock:^(KIFTestStep *step, NSError **error) {
-        [SampleSdkAppKIFTestController disableValidFacebookSession];
-        return KIFTestStepResultSuccess;
-    }];
-}
-
 + (NSArray*)stepsToPopNavigationControllerToIndex:(NSInteger)index
 {
     NSMutableArray *steps = [NSMutableArray array];
@@ -68,29 +54,6 @@
     NSMutableArray *steps = [NSMutableArray array];
     [steps addObjectsFromArray:[self stepsToPopNavigationControllerToIndex:0]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];
-    return steps;
-}
-
-+ (NSArray*)stepsToReturnToAuth;
-{
-    return [self stepsToPopNavigationControllerToIndex:0];
-}
-
-+ (NSArray*)stepsToNoAuth
-{
-    NSMutableArray *steps = [NSMutableArray array];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"emptycache"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"noauth"]]; 
-    return steps;
-}
-+ (NSArray*)stepsToAuthenticate;
-{
-    NSMutableArray *steps = [NSMutableArray array];
-    
-    // Tap the "I already have an account" button
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"authenticate"]];
-    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Test List"]];
-    
     return steps;
 }
 
@@ -572,33 +535,36 @@
 
 }
 
-//+ (id)stepToVerifyFacebookFeedContainsMessage:(NSString*)message {
-//    NSString *description = [NSString stringWithFormat:@"Step to find message %@ in facebook feed", message];
-//    return [KIFTestStep stepWithDescription:description executionBlock:^(KIFTestStep *step, NSError **error) {
-//        SocializeFacebookInterface *fbi = [[[SocializeFacebookInterface alloc] init] autorelease];
-//        __block BOOL done = NO;
-//        __block KIFTestStepResult result = KIFTestStepResultFailure;
-//        
-//        [fbi requestWithGraphPath:@"me/feed" params:nil httpMethod:@"GET" completion:^(id response, NSError *error) {
-//            if (error == nil) {
-//                NSString *fullMessage = [[[response objectForKey:@"data"] objectAtIndex:0] objectForKey:@"message"];
-//                if ([fullMessage containsString:message]) {
-//                    result = KIFTestStepResultSuccess;
-//                }
-//            } else {
-//                NSLog(@"Failed to get feed -- %@", [error userInfo]);
-//            }
-//            done = YES;
-//        }]; 
-//        
-//        while (!done) { 
-//            CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.3, YES);
-//        }
-//        NSLog(@"Finished");
-//        
-//        return result;;
-//    }];
-//
-//}
++ (UIView*)viewWithAccessibilityLabel:(NSString*)label {
+    UIAccessibilityElement *element = [[UIApplication sharedApplication] accessibilityElementWithLabel:label];
+    UIView *view = (UIView*)[UIAccessibilityElement viewContainingAccessibilityElement:element];
+    return view;
+}
+
++ (id)stepToScrollScrollViewWithAccessibilityLabel:(NSString*)scrollViewLabel toViewWithAcccessibilityLabel:(NSString*)viewLabel {
+    NSString *description = [NSString stringWithFormat:@"Scroll UIScrollView %@ to view %@", scrollViewLabel, viewLabel];
+    return [KIFTestStep stepWithDescription:description executionBlock:^(KIFTestStep *step, NSError **error) {
+        UIScrollView *scrollView = (UIScrollView*)[self viewWithAccessibilityLabel:scrollViewLabel];
+        KIFTestCondition([scrollView isKindOfClass:[UIScrollView class]], error, @"Element with label %@ not UIScrollView", scrollViewLabel);
+        UIView *view = [self viewWithAccessibilityLabel:viewLabel];
+        KIFTestCondition([view isKindOfClass:[UIView class]], error, @"Element with label %@ not UIView", scrollViewLabel);
+        [scrollView scrollViewToVisible:view animated:YES];
+        
+        return KIFTestStepResultSuccess;
+    }];
+    
+}
+
++ (id)stepToScrollTableViewWithAccessibilityLabel:(NSString*)label toRowAtIndexPath:(NSIndexPath*)indexPath scrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated {
+    NSString *description = [NSString stringWithFormat:@"Scroll UITableView %@ to indexPath %@", label, indexPath];
+    return [KIFTestStep stepWithDescription:description executionBlock:^(KIFTestStep *step, NSError **error) {
+        UITableView *tableView = (UITableView*)[self viewWithAccessibilityLabel:label];
+        KIFTestCondition([tableView isKindOfClass:[UITableView class]], error, @"Element with label %@ not UITableView", label);
+        
+        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
+        
+        return KIFTestStepResultSuccess;
+    }];
+}
 
 @end

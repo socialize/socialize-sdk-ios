@@ -10,17 +10,14 @@
 
 @interface KIFTestScenario (SampleSdkAppAdditions)
 
-+ (id)scenarioToAuthenticate;
 + (id)scenarioToTestUserProfile;
-+ (id)scenarioToTestCommentsViewControllerWithAutoAuth;
-+ (id)scenarioToTestActionBar;
-+ (id)scenarioToTestViewOtherProfile;
-+ (id)scenarioToTestLikeButton;
-+ (id)scenarioToTestDirectURLNotification;
+//+ (id)scenarioToTestActionBar;
+//+ (id)scenarioToTestViewOtherProfile;
+//+ (id)scenarioToTestLikeButton;
+//+ (id)scenarioToTestDirectURLNotification;
 + (id)scenarioToSleep;
 + (id)scenarioToTestFacebookAuth;
 + (id)scenarioToTestTwitterAuth;
-
-//+ (id)scenarioToTestFacebook;
++ (id)scenarioToTestCommentsList;
 
 @end

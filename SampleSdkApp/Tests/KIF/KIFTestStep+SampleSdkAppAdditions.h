@@ -11,10 +11,7 @@
 @interface KIFTestStep (SampleSdkAppAdditions)
 
 + (NSArray*)stepsToReturnToList;
-+ (NSArray*)stepsToReturnToAuth;
-+ (NSArray*)stepsToNoAuth;
 + (NSString *)getRandomURL;
-+ (NSArray*)stepsToAuthenticate;
 + (NSArray*)stepsToShowTabbedActionBarForURL:(NSString*)url;
 + (NSArray*)stepsToLikeOnActionBar;
 + (NSArray*)stepsToCommentOnActionBar;
@@ -47,8 +44,8 @@
 + (NSArray*)stepsToEditProfileImage;
 + (NSArray*)stepsToSetProfileFirstName:(NSString*)firstName;
 + (NSArray*)stepsToVerifyProfileFirstName:(NSString*)firstName;
-+ (id)stepToDisableValidFacebookSession;
-+ (id)stepToEnableValidFacebookSession;
 + (id)stepToWipeAuthenticationInfo;
 + (id)stepToNoCheckEnterText:(NSString *)text intoViewWithAccessibilityLabel:(NSString *)label traits:(UIAccessibilityTraits)traits;
++ (id)stepToScrollScrollViewWithAccessibilityLabel:(NSString*)scrollViewLabel toViewWithAcccessibilityLabel:(NSString*)viewLabel;
++ (id)stepToScrollTableViewWithAccessibilityLabel:(NSString*)label toRowAtIndexPath:(NSIndexPath*)indexPath scrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
 @end
