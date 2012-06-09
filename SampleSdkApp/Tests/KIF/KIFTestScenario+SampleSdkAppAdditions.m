@@ -11,6 +11,9 @@
 #import "SampleSdkAppKIFTestController.h"
 #import "SZTestHelper.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "UIAccessibilityElement-KIFAdditions.h"
+#import "UIApplication-KIFAdditions.h"
+#import "SZTwitterUtils.h"
 
 @implementation KIFTestScenario (SampleSdkAppAdditions)
 
@@ -224,6 +227,32 @@
     
     return scenario;
 }
+
++ (id)scenarioToTestTwitterAuth {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test Twitter Auth Process"];
+    
+    NSMutableArray *steps = [NSMutableArray array];
+    
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
+    
+    [steps addObject:[KIFTestStep stepToExecuteBlock:^{
+        [SZTwitterUtils unlink];
+    }]];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:5];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
+    
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Username or email"]];
+    [steps addObject:[KIFTestStep stepToNoCheckEnterText:@"mr_socialize" intoViewWithAccessibilityLabel:@"Username or email" traits:UIAccessibilityTraitNone]];
+    [steps addObject:[KIFTestStep stepToNoCheckEnterText:@"supersecret" intoViewWithAccessibilityLabel:@"Password" traits:UIAccessibilityTraitNone]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Sign In"]];
+    [steps addObject:[KIFTestStep stepToWaitForAbsenceOfViewWithAccessibilityLabel:@"Twitter Auth"]];
+
+    [scenario addStepsFromArray:steps];
+    
+    return scenario;
+}
+
 
 
 @end

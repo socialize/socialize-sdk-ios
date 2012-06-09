@@ -10,6 +10,7 @@
 #import "SocializeThirdPartyTwitter.h"
 #import "_Socialize.h"
 #import "SocializeTwitterAuthViewController.h"
+#import "SDKHelpers.h"
 
 @implementation SZTwitterUtils
 
@@ -32,7 +33,7 @@
                                             accessTokenSecret:accessTokenSecret
                                                       success:^(id<SZFullUser> user) {
                                                           [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSocializeDontPostToTwitterKey];
-                                                          success(user);
+                                                          BLOCK_CALL_1(success, user);
                                                       } failure:failure];
 }
 
@@ -45,8 +46,14 @@
     SocializeTwitterAuthViewController *auth = [[[SocializeTwitterAuthViewController alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret] autorelease];
 
     auth.twitterAuthSuccessBlock = ^(NSString *accessToken, NSString *accessTokenSecret, NSString *screenName, NSString *userId) {
-        [wrapper endSequence];
-        [self linkWithAccessToken:accessToken accessTokenSecret:accessTokenSecret success:success failure:failure];
+        [wrapper startLoadingInTopControllerWithMessage:@"Linking"];
+        [self linkWithAccessToken:accessToken accessTokenSecret:accessTokenSecret success:^(id<SZFullUser> user) {
+            [wrapper stopLoadingInTopController];
+            [wrapper endSequence];
+        } failure:^(NSError *error) {
+            SZEmitUIError(auth, error);
+            [wrapper stopLoadingInTopController];
+        }];
     };
     
     auth.cancellationBlock = ^{

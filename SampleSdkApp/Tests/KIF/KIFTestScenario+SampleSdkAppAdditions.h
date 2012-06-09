@@ -19,6 +19,8 @@
 + (id)scenarioToTestDirectURLNotification;
 + (id)scenarioToSleep;
 + (id)scenarioToTestFacebookAuth;
++ (id)scenarioToTestTwitterAuth;
+
 //+ (id)scenarioToTestFacebook;
 
 @end

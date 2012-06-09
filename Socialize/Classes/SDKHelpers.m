@@ -205,6 +205,7 @@ void SZEmitUIError(id object, NSError *error) {
     if (!SZErrorsAreDisabled()) {
         id<SZDisplay> display = SZDisplayForObject(object);
         UIAlertView *alertView = [UIAlertView alertWithTitle:@"Error" message:[error localizedDescription]];
+        [alertView addButtonWithTitle:@"Ok"];
         if (display != nil) {
             [display socializeWillShowAlertView:alertView];
         } else {

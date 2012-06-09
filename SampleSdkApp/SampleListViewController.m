@@ -15,6 +15,7 @@
 #import "SZComposeCommentViewController.h"
 #import "SZLikeUtils.h"
 #import "SZFacebookUtils.h"
+#import "SZTwitterUtils.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -30,6 +31,7 @@ static NSString *kShareSection = @"kShareSection";
 static NSString *kCommentSection = @"kCommentSection";
 static NSString *kLikeSection = @"kLikeSection";
 static NSString *kFacebookSection = @"kFacebookSection";
+static NSString *kTwitterSection = @"kTwitterSection";
 
 @interface SampleListViewController ()
 @property (nonatomic, retain) NSArray *sections;
@@ -117,6 +119,11 @@ static NSString *kFacebookSection = @"kFacebookSection";
         [SZFacebookUtils linkWithDisplay:self success:nil failure:nil];
     }]];
 
+    NSMutableArray *twitterRows = [NSMutableArray array];
+    [twitterRows addObject:[self rowWithText:@"Link to Twitter" executionBlock:^{
+        [SZTwitterUtils linkWithDisplay:self success:nil failure:nil];
+    }]];
+
     return [NSArray arrayWithObjects:
             [self sectionWithIdentifier:kUserSection
                                   title:@"User Utilities"
@@ -135,6 +142,10 @@ static NSString *kFacebookSection = @"kFacebookSection";
             [self sectionWithIdentifier:kFacebookSection
                                   title:@"Facebook Utilities"
                                    rows:facebookRows],
+            
+            [self sectionWithIdentifier:kTwitterSection
+                                  title:@"Twiter Utilities"
+                                   rows:twitterRows],
 
             nil];
 }

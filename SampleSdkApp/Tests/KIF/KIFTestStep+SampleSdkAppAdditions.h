@@ -50,5 +50,5 @@
 + (id)stepToDisableValidFacebookSession;
 + (id)stepToEnableValidFacebookSession;
 + (id)stepToWipeAuthenticationInfo;
-
++ (id)stepToNoCheckEnterText:(NSString *)text intoViewWithAccessibilityLabel:(NSString *)label traits:(UIAccessibilityTraits)traits;
 @end

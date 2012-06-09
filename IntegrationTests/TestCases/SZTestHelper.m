@@ -36,6 +36,16 @@ static SZTestHelper *sharedTestHelper;
     return [apiInfo objectForKey:@"facebookToken"];
 }
 
+- (NSString*)twitterAccessToken {
+    NSDictionary *apiInfo = [self authInfoFromConfig];
+    return [apiInfo objectForKey:@"twitterToken"];
+}
+
+- (NSString*)twitterAccessTokenSecret {
+    NSDictionary *apiInfo = [self authInfoFromConfig];
+    return [apiInfo objectForKey:@"twitterTokenSecret"];
+}
+
 - (void)startMockingSucceedingFacebookAuth {
     [SocializeFacebookAuthHandler startMockingClass];
     
