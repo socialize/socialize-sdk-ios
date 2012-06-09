@@ -242,7 +242,7 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:5];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     
-    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Username or email"]];
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Username or email"]];
     [steps addObject:[KIFTestStep stepToNoCheckEnterText:@"mr_socialize" intoViewWithAccessibilityLabel:@"Username or email" traits:UIAccessibilityTraitNone]];
     [steps addObject:[KIFTestStep stepToNoCheckEnterText:@"supersecret" intoViewWithAccessibilityLabel:@"Password" traits:UIAccessibilityTraitNone]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Sign In"]];
