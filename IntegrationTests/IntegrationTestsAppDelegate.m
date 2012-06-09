@@ -39,6 +39,7 @@
     [Socialize registerDeviceToken:nil];
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
 
+    [Socialize storeFacebookAppId:@"115622641859087"];
 
 #if TARGET_IPHONE_SIMULATOR
     [super applicationDidFinishLaunching:application];

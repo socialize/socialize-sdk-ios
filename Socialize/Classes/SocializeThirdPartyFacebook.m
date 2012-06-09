@@ -15,16 +15,26 @@
 
 + (BOOL)available {
     NSString *facebookAppId = [self facebookAppId];
-    NSString *facebookLocalAppId = [self facebookLocalAppId];
     if (facebookAppId == nil) {
         return NO;
     }
     
+    if (![self canOpenFacebookURL]) {
+        NSLog(@"Socialize Warning: Application cannot open facebook url");
+    }
+    
+    return YES;
+}
+
++ (BOOL)canOpenFacebookURL {
+    NSString *facebookAppId = [self facebookAppId];
+    NSString *facebookLocalAppId = [self facebookLocalAppId];
+
     NSURL *testURL = [NSURL URLWithString:[self baseUrlForAppId:facebookAppId localAppId:facebookLocalAppId]];
     if (![[UIApplication sharedApplication] canOpenURL:testURL]) {
         return NO;
     }
-    
+
     return YES;
 }
 

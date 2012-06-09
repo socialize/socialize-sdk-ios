@@ -13,5 +13,6 @@
 - (NSString*)facebookAccessToken;
 - (void)startMockingSucceedingFacebookAuth;
 - (void)stopMockingSucceedingFacebookAuth;
+- (void)removeAuthenticationInfo;
 
 @end

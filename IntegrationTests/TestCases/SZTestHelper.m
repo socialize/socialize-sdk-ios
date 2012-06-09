@@ -52,4 +52,8 @@ static SZTestHelper *sharedTestHelper;
     [SocializeFacebookAuthHandler stopMockingClass];
 }
 
+- (void)removeAuthenticationInfo {
+    [[Socialize sharedSocialize] removeAuthenticationInfo];
+}
+
 @end
