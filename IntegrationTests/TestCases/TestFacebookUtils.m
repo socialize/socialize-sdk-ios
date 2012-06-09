@@ -27,7 +27,7 @@
 }
 
 - (void)testLink {
-    [[SZTestHelper sharedTestHelper] removeAuthenticationInfo];
+    [SZFacebookUtils unlink];
     [self linkToFacebookIfNeeded];
 }
 
