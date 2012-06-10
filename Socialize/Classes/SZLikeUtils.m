@@ -68,10 +68,10 @@
 
 + (void)likeWithEntity:(id<SZEntity>)entity options:(SZLikeOptions*)options networks:(SZSocialNetwork)networks success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
     SZLike *like = [SZLike likeWithEntity:entity];
-    ActivityCreatorBlock likeCreator = ^(id<SZActivity> activity, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
+    ActivityCreatorBlock likeCreator = ^(id<SZLike> like, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
         
         SZAuthWrapper(^{
-            [[Socialize sharedSocialize] createLikes:[NSArray arrayWithObject:activity] success:createSuccess failure:createFailure];
+            [[Socialize sharedSocialize] createLike:like success:createSuccess failure:createFailure];
         }, failure);
 
     };

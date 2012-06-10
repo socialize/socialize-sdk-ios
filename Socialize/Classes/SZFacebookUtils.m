@@ -70,11 +70,14 @@
      permissions:permissions
      success:^(NSString *accessToken, NSDate *expirationDate) {
          [wrapper startLoadingInTopControllerWithMessage:@"Linking With Facebook"];
-         [self linkWithAccessToken:accessToken expirationDate:expirationDate success:^(id _) {
+         [self linkWithAccessToken:accessToken expirationDate:expirationDate success:^(id<SZFullUser> user) {
              [wrapper stopLoadingInTopController];
+             [wrapper endSequence];
+             BLOCK_CALL_1(success, user);
          } failure:^(NSError *error) {
              [wrapper stopLoadingInTopController];
-         }];
+             [wrapper endSequence];
+     }];
      } failure:failure];
 }
 

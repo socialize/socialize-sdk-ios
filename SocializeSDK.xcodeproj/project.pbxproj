@@ -8211,6 +8211,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/socialize\"/**",
 					"\"$(CONFIGURATION_BUILD_DIR)/Headers\"/**",
+					"$(CONFIGURATION_BUILD_DIR)",
 				);
 				INFOPLIST_FILE = "unitTests/unitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;

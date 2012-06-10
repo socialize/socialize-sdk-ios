@@ -722,7 +722,9 @@ otherwise you will get a failure.
  */
 - (void)createComments:(NSArray*)comments;
 
-- (void)createComments:(NSArray*)comments success:(void(^)(id commentOrComments))success failure:(void(^)(NSError *error))failure;
+- (void)createComments:(NSArray*)comments success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+
+- (void)createComment:(id<SZComment>)comment success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure;
 
 /** Socialize Notification Service **/
 //registers a device token.  Call this method when the developer gets the callback for:
@@ -783,6 +785,7 @@ otherwise you will get a failure.
 - (void)getLikesWithIds:(NSArray*)likeIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
 - (void)getLikesForEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure;
 - (void)createLikes:(NSArray*)likes success:(void(^)(id entityOrEntities))success failure:(void(^)(NSError *error))failure;
+- (void)createLike:(id<SZLike>)like success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure;
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text;
 -(void)createShareForEntityWithKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text;

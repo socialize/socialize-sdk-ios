@@ -128,9 +128,16 @@
     [self executeRequest:request];
 }
 
-- (void)createComments:(NSArray*)comments success:(void(^)(id commentOrComments))success failure:(void(^)(NSError *error))failure {
+- (void)createComments:(NSArray*)comments success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
     NSArray* params = [_objectCreator createDictionaryRepresentationArrayForObjects:comments];
     [self callCommentsPostWithParams:params success:success failure:failure];
+}
+
+- (void)createComment:(id<SZComment>)comment success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
+    [self createComments:[NSArray arrayWithObject:comment] success:^(NSArray *comments) {
+        id<SZComment> comment = [comments objectAtIndex:0];
+        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:comment];
+    } failure:failure];
 }
 
 - (void)createComments:(NSArray*)comments {

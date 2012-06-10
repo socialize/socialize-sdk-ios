@@ -76,7 +76,7 @@
     ActivityCreatorBlock commentCreator = ^(id<SZShare> share, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
 
         SZAuthWrapper(^{
-            [[Socialize sharedSocialize] createComments:[NSArray arrayWithObject:comment] success:createSuccess failure:createFailure];
+            [[Socialize sharedSocialize] createComment:comment success:createSuccess failure:createFailure];
         }, failure);
 
     };

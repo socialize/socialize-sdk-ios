@@ -79,6 +79,12 @@
     [self callLikePostWithParams:params success:success failure:failure];
 }
 
+- (void)createLike:(id<SZLike>)like success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
+    [self createLikes:[NSArray arrayWithObject:like] success:^(NSArray *likes) {
+        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:like];
+    } failure:failure];
+}
+
 -(void)postLikeForEntity:(id<SocializeEntity>)entity andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat
 {
     SocializeLike *like = [SocializeLike likeWithEntity:entity];
