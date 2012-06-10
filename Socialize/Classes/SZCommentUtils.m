@@ -38,7 +38,7 @@
 }
 
 // Compose and share (but no initial link)
-+ (void)_showCommentComposerWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
++ (void)showCommentComposerWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
     SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
 
     SZComposeCommentMessageViewController *composer = [[[SZComposeCommentMessageViewController alloc] initWithEntity:entity] autorelease];
@@ -49,8 +49,14 @@
             [wrapper endSequence];
             BLOCK_CALL_1(success, comment);
         } failure:^(NSError *error) {
-            [wrapper endSequence];
-            BLOCK_CALL_1(failure, error);
+            if ([error isSocializeErrorWithCode:SocializeErrorLinkCancelledByUser]) {
+                [wrapper returnToViewController:composer];
+            } else if ([error isSocializeErrorWithCode:SocializeErrorNetworkSelectionCancelledByUser]) {
+                [wrapper returnToViewController:composer];
+            } else {
+                [wrapper endSequence];
+                BLOCK_CALL_1(failure, error);
+            }
         }];
         
     };
@@ -60,25 +66,6 @@
     };
     
     [wrapper beginSequenceWithViewController:composer];
-}
-
-// Initial Link (if needed), compose, and share (if needed)
-+ (void)showCommentComposerWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
-    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-
-    LinkWrapper(wrapper, ^(BOOL didPrompt, SZSocialNetwork selectedNetwork) {
-        [self _showCommentComposerWithDisplay:wrapper entity:entity success:^(id<SZComment> comment) {
-            [wrapper endSequence];
-            BLOCK_CALL_1(success, comment);
-        } failure:^(NSError *error) {
-            [wrapper endSequence];
-            BLOCK_CALL_1(failure, error);
-        }];
- 
-    }, ^(NSError *error) {
-        [wrapper endSequence];
-        BLOCK_CALL_1(failure, error);
-    });
 }
 
 + (void)addCommentWithEntity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options networks:(SZSocialNetwork)networks success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
@@ -139,19 +126,24 @@
         
     } copy]; // `addCommentBlock` refers to the heap version of this block for the recursive alert retry call
     
-    if (LinkedSocialNetworks() == SZSocialNetworkNone) {
-        
-        // No networks are linked, so the user must have opted out of linking. Skip the selection dialog
-        addCommentBlock(SZSocialNetworkNone);
-        
-    } else {
+    LinkWrapper(wrapper, ^(BOOL didPrompt, SZSocialNetwork selectedNetwork) {
+        if (AvailableSocialNetworks() == SZSocialNetworkNone || (didPrompt && selectedNetwork == SZSocialNetworkNone)) {
+            
+            // No networks are linked, so the user must have opted out of linking. Skip the selection dialog
+            addCommentBlock(SZSocialNetworkNone);
+            
+        } else {
 
-        // Networks are available, so get the user's post preference (may show network selection dialog)
-        [SZShareUtils getPreferredShareNetworksWithDisplay:wrapper success:addCommentBlock failure:^(NSError *error) {
-            [wrapper endSequence];
-            BLOCK_CALL_1(failure, error);
-        }];
-    }
+            // Networks are available, so get the user's post preference (may show network selection dialog)
+            [SZShareUtils getPreferredShareNetworksWithDisplay:wrapper success:addCommentBlock failure:^(NSError *error) {
+                [wrapper endSequence];
+                BLOCK_CALL_1(failure, error);
+            }];
+        }
+    }, ^(NSError *error) {
+        [wrapper endSequence];
+        BLOCK_CALL_1(failure, error);
+    });
 }
 
 + (void)getCommentWithId:(NSNumber*)commentId success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {

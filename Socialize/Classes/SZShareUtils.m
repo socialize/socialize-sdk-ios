@@ -46,7 +46,7 @@
         };
         dialog.cancellationBlock = ^{
             [display socializeWillEndDisplaySequence];
-            BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorProcessCancelledByUser]);
+            BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorNetworkSelectionCancelledByUser]);
         };
         [display socializeWillBeginDisplaySequenceWithViewController:dialog];
     }
