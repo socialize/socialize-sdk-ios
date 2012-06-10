@@ -31,28 +31,7 @@
 
 @synthesize window=_window, rootController;
 @synthesize globalEntity = globalEntity_;
-
-//+ (void)load
-//{
-//    NSAutoreleasePool *autoReleasePool = [[NSAutoreleasePool alloc] init];
-//    
-//    NSString *simulatorRoot = [[[NSProcessInfo processInfo] environment] objectForKey:@"IPHONE_SIMULATOR_ROOT"];
-//    if (simulatorRoot) {
-//        void *appSupportLibrary = dlopen([[simulatorRoot stringByAppendingPathComponent:@"/System/Library/PrivateFrameworks/AppSupport.framework/AppSupport"] fileSystemRepresentation], RTLD_LAZY);
-//        CFStringRef (*copySharedResourcesPreferencesDomainForDomain)(CFStringRef domain) = dlsym(appSupportLibrary, "CPCopySharedResourcesPreferencesDomainForDomain");
-//        
-//        if (copySharedResourcesPreferencesDomainForDomain) {
-//            CFStringRef accessibilityDomain = copySharedResourcesPreferencesDomainForDomain(CFSTR("com.apple.Accessibility"));
-//            
-//            if (accessibilityDomain) {
-//                CFPreferencesSetValue(CFSTR("ApplicationAccessibilityEnabled"), kCFBooleanTrue, accessibilityDomain, kCFPreferencesAnyUser, kCFPreferencesAnyHost);
-//                CFRelease(accessibilityDomain);
-//            }
-//        }
-//    }
-//    
-//    [autoReleasePool drain];
-//}
+@synthesize sampleListViewController = sampleListViewController;
 
 + (id)sharedDelegate {
     return [[UIApplication sharedApplication] delegate];
@@ -74,13 +53,9 @@
     NSLog(@"Consumer key is %@", consumerKey);
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];  
 
-    UIViewController* rootViewController = nil;
-       
-    // we check the authentication here.
-//    rootViewController = [[[AuthenticateViewController alloc] initWithNibName:@"AuthenticateViewController" bundle:nil] autorelease];
-    rootViewController = [[[SampleListViewController alloc] init] autorelease];
+    self.sampleListViewController = [[[SampleListViewController alloc] init] autorelease];
  
-    rootController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+    rootController = [[UINavigationController alloc] initWithRootViewController:self.sampleListViewController];
     [self.window addSubview:rootController.view];
     [self.window makeKeyAndVisible];
 
@@ -88,29 +63,13 @@
     [Socialize storeAuthenticationNotRequired:NO];
 
     NSDictionary* apiInfo = [self authInfoFromConfig];
-    if ([apiInfo objectForKey:@"facebookToken"]) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:[apiInfo objectForKey:@"facebookToken"] forKey:@"FBAccessTokenKey"];
-        [defaults setObject:[NSDate distantFuture] forKey:@"FBExpirationDateKey"];
-        [defaults synchronize];
-    }
     [Socialize storeConsumerKey:[apiInfo objectForKey:@"key"]];
     [Socialize storeConsumerSecret:[apiInfo objectForKey:@"secret"]];
     
     [Socialize storeFacebookAppId:@"115622641859087"];
     
-    //    SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
-    //    [SZShareUtils showShareDialogWithViewController:self entity:entity success:nil failure:nil];
-    
 #if RUN_KIF_TESTS
     [Socialize storeFacebookLocalAppId:@"itest"];
-    
-    
-    
-    //    NSString *token = [apiInfo objectForKey:@"facebookToken"];
-    //    if ([token length] > 0) {
-    //        [[Socialize sharedSocialize] linkToFacebookWithAccessToken:token expirationDate:[NSDate distantFuture]];
-    //    }
 #else
     [Socialize storeFacebookLocalAppId:nil];
 #endif
@@ -120,23 +79,13 @@
         [navigationController pushViewController:entityLoader animated:YES];
     }];
 
-//    [[SocializeLocationManager sharedLocationManager] getCurrentLocationWithSuccess:^(CLLocation *location) {
-//        NSLog(@"Got location: %@!", location);        
-//    } failure:^(NSError *error) {
-//        NSLog(@"Failed location: %@!", [error localizedDescription]);
-//    }];
-    
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"kSocializeDeviceTokenRegisteredKey"];
 //    char testTokenData[32] = "\xaa\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff";
 //    NSData *testToken = [NSData dataWithBytes:&testTokenData length:sizeof(testTokenData)];
 //    [Socialize registerDeviceToken:testToken];
     
-//    [Socialize setEntityLoaderBlock:nil];
-    
     [Socialize storeTwitterConsumerKey:@"ZWxJ0zIK73n5HKwGLHolQ"];
     [Socialize storeTwitterConsumerSecret:@"3K1LTY39QM9DPAqJzSZAD3L2EBEXXvuCdtTRr8NDd8"];
-//    [Socialize storeTwitterAccessToken:@"blah"];
-//    [Socialize storeTwitterAccessTokenSecret:@"blah"];
 
     [Socialize storeUIErrorAlertsDisabled:NO];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errorNotification:) name:SocializeUIControllerDidFailWithErrorNotification object:nil];

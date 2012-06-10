@@ -26,13 +26,21 @@ static NSString *kSectionRows = @"kSectionRows";
 
 static NSString *kRowExecutionBlock = @"kRowExecutionBlock";
 static NSString *kRowText = @"kRowText";
+static NSString *kRowIdentifier = @"kRowIdentifier";
 
-static NSString *kUserSection = @"kUserSection";
-static NSString *kShareSection = @"kShareSection";
-static NSString *kCommentSection = @"kCommentSection";
-static NSString *kLikeSection = @"kLikeSection";
-static NSString *kFacebookSection = @"kFacebookSection";
-static NSString *kTwitterSection = @"kTwitterSection";
+// Sections
+NSString *kUserSection = @"kUserSection";
+NSString *kShareSection = @"kShareSection";
+NSString *kCommentSection = @"kCommentSection";
+NSString *kLikeSection = @"kLikeSection";
+NSString *kFacebookSection = @"kFacebookSection";
+NSString *kTwitterSection = @"kTwitterSection";
+
+// Rows
+NSString *kShowCommentComposerRow = @"kShowCommentComposerRow";
+NSString *kShowCommentsListRow = @"kShowCommentsListRow";
+NSString *kLinkToFacebookRow = @"kLinkToFacebookRow";
+NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
 
 @interface SampleListViewController ()
 @property (nonatomic, retain) NSArray *sections;
@@ -97,16 +105,14 @@ static NSString *kTwitterSection = @"kTwitterSection";
     }]];
 
     NSMutableArray *commentRows = [NSMutableArray array];
-    [commentRows addObject:[self rowWithText:@"Show Comments List" executionBlock:^{
+    [commentRows addObject:[self rowWithIdentifier:kShowCommentsListRow text:@"Show Comments List" executionBlock:^{
         id<SZEntity> entity = [[SampleSdkAppAppDelegate sharedDelegate] globalEntity];
         [SZCommentUtils showCommentsListWithDisplay:self entity:entity completion:nil];
     }]];
 
-    [commentRows addObject:[self rowWithText:@"Show Comment Composer" executionBlock:^{
+    [commentRows addObject:[self rowWithIdentifier:kShowCommentComposerRow text:@"Show Comment Composer" executionBlock:^{
         SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
         [SZCommentUtils showCommentComposerWithDisplay:self entity:entity success:nil failure:nil];
-//        SZComposeCommentViewController *compose = [[[SZComposeCommentViewController alloc] initWithEntity:entity] autorelease];
-//        [self presentModalViewController:compose animated:YES];
     }]];
 
     NSMutableArray *likeRows = [NSMutableArray array];
@@ -116,12 +122,12 @@ static NSString *kTwitterSection = @"kTwitterSection";
     }]];
     
     NSMutableArray *facebookRows = [NSMutableArray array];
-    [facebookRows addObject:[self rowWithText:@"Link to Facebook" executionBlock:^{
+    [facebookRows addObject:[self rowWithIdentifier:kLinkToFacebookRow text:@"Link to Facebook" executionBlock:^{
         [SZFacebookUtils linkWithDisplay:self success:nil failure:nil];
     }]];
 
     NSMutableArray *twitterRows = [NSMutableArray array];
-    [twitterRows addObject:[self rowWithText:@"Link to Twitter" executionBlock:^{
+    [twitterRows addObject:[self rowWithIdentifier:kLinkToTwitterRow text:@"Link to Twitter" executionBlock:^{
         [SZTwitterUtils linkWithDisplay:self success:nil failure:nil];
     }]];
 
@@ -167,6 +173,34 @@ static NSString *kTwitterSection = @"kTwitterSection";
     return sections_;
 }
 
+- (NSUInteger)indexForSectionIdentifier:(NSString*)identifier {
+    for (int i = 0; i < [self.sections count]; i++) {
+        NSDictionary *section = [self.sections objectAtIndex:i];
+        if ([[section objectForKey:kSectionIdentifier] isEqualToString:identifier]) {
+            return i;
+        }
+    }
+    
+    return NSNotFound;
+}
+
+- (NSIndexPath*)indexPathForRowIdentifier:(NSString*)identifier {
+    for (int s = 0; s < [self.sections count]; s++) {
+        NSDictionary *section = [self.sections objectAtIndex:s];
+        
+        NSArray *rows = [section objectForKey:kSectionRows];
+        for (int r = 0; r < [rows count]; r++) {
+            NSDictionary *row = [rows objectAtIndex:r];
+            
+            if ([[row objectForKey:kRowIdentifier] isEqualToString:identifier]) {
+                return [NSIndexPath indexPathForRow:r inSection:s];
+            }
+        }
+    }
+
+    return nil;
+}
+
 - (NSDictionary*)sectionWithIdentifier:(NSString*)identifier title:(NSString*)title rows:(NSArray*)rows {
     return [NSDictionary dictionaryWithObjectsAndKeys:
             identifier, kSectionIdentifier,
@@ -176,7 +210,13 @@ static NSString *kTwitterSection = @"kTwitterSection";
 }
 
 - (NSDictionary*)rowWithText:(NSString*)text executionBlock:(void(^)())executionBlock {
+    return [self rowWithIdentifier:@"undefined" text:text executionBlock:executionBlock];
+}
+
+
+- (NSDictionary*)rowWithIdentifier:(NSString*)identifier text:(NSString*)text executionBlock:(void(^)())executionBlock {
     return [NSDictionary dictionaryWithObjectsAndKeys:
+            identifier, kRowIdentifier,
             text, kRowText,
             [[executionBlock copy] autorelease], kRowExecutionBlock,
             nil];

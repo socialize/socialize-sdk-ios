@@ -19,6 +19,10 @@
 
 @implementation KIFTestScenario (SampleSdkAppAdditions)
 
++ (SampleListViewController*)sampleListViewController {
+    return [[SampleSdkAppAppDelegate sharedDelegate] sampleListViewController];
+}
+
 + (NSArray*)stepsToInitializeTest {
     NSMutableArray *steps = [NSMutableArray array];
     [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
@@ -208,7 +212,7 @@
         [[SZTestHelper sharedTestHelper] startMockingSucceedingFacebookAuth];
     }]];
 
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:4];
+    NSIndexPath *indexPath = [[self sampleListViewController] indexPathForRowIdentifier:kLinkToFacebookRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Yes"]];
 
@@ -231,7 +235,7 @@
     [steps addObject:[KIFTestStep stepToExecuteBlock:^{
     }]];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:5];
+    NSIndexPath *indexPath = [[self sampleListViewController] indexPathForRowIdentifier:kLinkToTwitterRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Username or email"]];
@@ -271,7 +275,7 @@
         [[SZTestHelper sharedTestHelper] createComments:comments];
     }]];
 
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+    NSIndexPath *indexPath = [[self sampleListViewController] indexPathForRowIdentifier:kShowCommentsListRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
 
     // Wait to see first comment
