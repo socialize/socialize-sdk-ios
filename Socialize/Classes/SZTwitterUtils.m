@@ -50,9 +50,11 @@
         [self linkWithAccessToken:accessToken accessTokenSecret:accessTokenSecret success:^(id<SZFullUser> user) {
             [wrapper stopLoadingInTopController];
             [wrapper endSequence];
+            BLOCK_CALL_1(success, user);
         } failure:^(NSError *error) {
             SZEmitUIError(auth, error);
             [wrapper stopLoadingInTopController];
+            BLOCK_CALL_1(failure, error);
         }];
     };
     
