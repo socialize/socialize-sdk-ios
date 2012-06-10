@@ -15,6 +15,7 @@ extern NSString *kLikeSection;
 extern NSString *kFacebookSection;
 extern NSString *kTwitterSection;
 
+extern NSString *kShowUserProfileRow;
 extern NSString *kShowCommentComposerRow;
 extern NSString *kShowCommentsListRow;
 extern NSString *kLinkToFacebookRow;

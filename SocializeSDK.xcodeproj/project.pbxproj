@@ -744,6 +744,10 @@
 		AA16D6F3158158EC002F1E16 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA16D6EF158158EC002F1E16 /* GHUnitIOS.framework */; };
 		AA16D6F4158158EC002F1E16 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA16D6EF158158EC002F1E16 /* GHUnitIOS.framework */; };
 		AA16D6F915817058002F1E16 /* UserUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16D6F815817058002F1E16 /* UserUtilsTests.m */; };
+		AA179ECA15853A360097D59A /* SZTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB93B8915826C0200D003CC /* SZTestHelper.m */; };
+		AA179ECB15853A6C0097D59A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AABE17891500634900500D45 /* libOCMock.a */; };
+		AA179ECC15853B8E0097D59A /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA16D6EF158158EC002F1E16 /* GHUnitIOS.framework */; };
+		AA179ECD15853BB10097D59A /* SZIntegrationTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E20B71461F329000321BF /* SZIntegrationTestCase.m */; };
 		AA1A2DF4155864020085D0D9 /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1A2DF3155864020085D0D9 /* SampleListViewController.m */; };
 		AA1A2DF5155864020085D0D9 /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1A2DF3155864020085D0D9 /* SampleListViewController.m */; };
 		AA1A2DF7155876990085D0D9 /* SampleListViewController.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA1A2DF6155876990085D0D9 /* SampleListViewController.plist */; };
@@ -3383,6 +3387,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA179ECB15853A6C0097D59A /* libOCMock.a in Frameworks */,
 				16C365F6145192B900DD5421 /* MessageUI.framework in Frameworks */,
 				AAAFE93D1435633300851C73 /* CoreLocation.framework in Frameworks */,
 				AAAFE93E1435633300851C73 /* MapKit.framework in Frameworks */,
@@ -3391,6 +3396,7 @@
 				AAAFE5E614355BF900851C73 /* UIKit.framework in Frameworks */,
 				AAAFE5E714355BF900851C73 /* Foundation.framework in Frameworks */,
 				AAAFE5E814355BF900851C73 /* CoreGraphics.framework in Frameworks */,
+				AA179ECC15853B8E0097D59A /* GHUnitIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7776,6 +7782,8 @@
 				AAA4901A1553054E003FB943 /* TestSZActionBar.m in Sources */,
 				AAA4901E1553054E003FB943 /* TestTabbedSZActionBar.m in Sources */,
 				AA1A2DF4155864020085D0D9 /* SampleListViewController.m in Sources */,
+				AA179ECA15853A360097D59A /* SZTestHelper.m in Sources */,
+				AA179ECD15853BB10097D59A /* SZIntegrationTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8512,6 +8520,10 @@
 				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -8530,6 +8542,7 @@
 					"\"$(SRCROOT)\"/unitTests/Frameworks/GHUnitIOS.framework/Headers",
 					"\"$(CONFIGURATION_BUILD_DIR)/socialize-public-headers\"",
 					"\"$(SRCROOT)\"/unitTests/Libraries/**",
+					"$(CONFIGURATION_BUILD_DIR)",
 				);
 				INFOPLIST_FILE = "SampleSdkApp/SampleSdkApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -8555,6 +8568,10 @@
 				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SampleSdkApp/SampleSdkApp-Prefix.pch";

@@ -148,7 +148,8 @@
     }]];
     
     NSString *firstName = @"Test First Name";
-    [scenario addStepsFromArray:[KIFTestStep stepsToOpenProfile]];
+    NSIndexPath *indexPath = [[self sampleListViewController] indexPathForRowIdentifier:kShowUserProfileRow];
+    [scenario addStep:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:commentText]];
     [scenario addStepsFromArray:[KIFTestStep stepsToOpenEditProfile]];
     [scenario addStepsFromArray:[KIFTestStep stepsToSetProfileFirstName:firstName]];

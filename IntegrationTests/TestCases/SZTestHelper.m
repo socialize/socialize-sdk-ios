@@ -11,6 +11,7 @@
 #import "SocializeFacebookAuthHandler.h"
 #import <OCMock/OCMock.h>
 #import <OCMock/NSObject+ClassMock.h>
+#import "_Socialize.h"
 
 static SZTestHelper *sharedTestHelper;
 

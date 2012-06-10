@@ -17,6 +17,7 @@
 #import "SZFacebookUtils.h"
 #import "SZTwitterUtils.h"
 #import "SampleSdkAppAppDelegate.h"
+#import "SZTestHelper.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -29,6 +30,7 @@ static NSString *kRowText = @"kRowText";
 static NSString *kRowIdentifier = @"kRowIdentifier";
 
 // Sections
+NSString *kConfigSection = @"kConfigSection";
 NSString *kUserSection = @"kUserSection";
 NSString *kShareSection = @"kShareSection";
 NSString *kCommentSection = @"kCommentSection";
@@ -37,6 +39,7 @@ NSString *kFacebookSection = @"kFacebookSection";
 NSString *kTwitterSection = @"kTwitterSection";
 
 // Rows
+NSString *kShowUserProfileRow = @"kShowUserProfileRow";
 NSString *kShowCommentComposerRow = @"kShowCommentComposerRow";
 NSString *kShowCommentsListRow = @"kShowCommentsListRow";
 NSString *kLinkToFacebookRow = @"kLinkToFacebookRow";
@@ -57,6 +60,14 @@ NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
 
 - (NSArray*)createSections {
     
+    // General
+    NSMutableArray *configRows = [NSMutableArray array];
+    
+    [configRows addObject:[self rowWithText:@"Wipe Auth Data" executionBlock:^{
+        [[SZTestHelper sharedTestHelper] removeAuthenticationInfo];
+        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    }]];
+
     // User Utilities
     NSMutableArray *userRows = [NSMutableArray array];
     
@@ -64,7 +75,7 @@ NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
         [SZUserUtils showLinkDialogWithDisplay:self success:nil failure:nil];
     }]];
 
-    [userRows addObject:[self rowWithText:@"Show User Profile" executionBlock:^{
+    [userRows addObject:[self rowWithIdentifier:kShowUserProfileRow text:@"Show User Profile" executionBlock:^{
         id<SocializeFullUser> user = [SZUserUtils currentUser];
         [SZUserUtils showUserProfileWithDisplay:self user:user];
     }]];
@@ -132,12 +143,18 @@ NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
     }]];
 
     return [NSArray arrayWithObjects:
+            [self sectionWithIdentifier:kConfigSection
+                                  title:@"Configuration"
+                                   rows:configRows],
+            
             [self sectionWithIdentifier:kUserSection
                                   title:@"User Utilities"
                                    rows:userRows],
+            
             [self sectionWithIdentifier:kShareSection
                                   title:@"Share Utilities"
                                    rows:shareRows],
+            
             [self sectionWithIdentifier:kCommentSection
                                   title:@"Comment Utilities"
                                    rows:commentRows],
