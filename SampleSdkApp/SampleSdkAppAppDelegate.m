@@ -141,8 +141,6 @@
     [Socialize storeUIErrorAlertsDisabled:NO];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errorNotification:) name:SocializeUIControllerDidFailWithErrorNotification object:nil];
     
-    self.globalEntity = [SZEntity entityWithKey:@"samplesdkapp_test" name:@"SampleSdkApp Test Entity"];
-    
 #if RUN_KIF_TESTS
     [[SampleSdkAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
         // Exit after the tests complete so that CI knows we're done
@@ -155,6 +153,13 @@
 #endif
 
     return YES;
+}
+
+- (id<SZEntity>)globalEntity {
+    if (globalEntity_ == nil) {
+        globalEntity_ = [[SZEntity entityWithKey:@"samplesdkapp_test" name:@"SampleSdkApp Test Entity"] retain];
+    }
+    return globalEntity_;
 }
 
 - (void)errorNotification:(NSNotification*)notification {

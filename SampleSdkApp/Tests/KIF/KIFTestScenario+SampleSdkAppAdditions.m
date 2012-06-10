@@ -15,8 +15,21 @@
 #import "UIApplication-KIFAdditions.h"
 #import "SZTwitterUtils.h"
 #import "SampleSdkAppAppDelegate.h"
+#import "SZFacebookUtils.h"
 
 @implementation KIFTestScenario (SampleSdkAppAdditions)
+
++ (NSArray*)stepsToInitializeTest {
+    NSMutableArray *steps = [NSMutableArray array];
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
+    [steps addObject:[KIFTestStep stepToExecuteBlock:^{
+        [[SZTestHelper sharedTestHelper] removeAuthenticationInfo];
+        [SZTwitterUtils unlink];
+        [SZFacebookUtils unlink];
+        [[SampleSdkAppAppDelegate sharedDelegate] setGlobalEntity:nil];
+    }]];
+    return steps;
+}
 
 //+ (id)scenarioToTestFacebook {
 //    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that another user's profile can be viewed."];
@@ -120,7 +133,7 @@
 + (id)scenarioToTestUserProfile {
     KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test Socialize User Profiles"];
     
-    [scenario addStep:[KIFTestStep stepToWipeAuthenticationInfo]];
+    [scenario addStepsFromArray:[self stepsToInitializeTest]];
     
     NSString *url = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
     NSString *commentText = [NSString stringWithFormat:@"comment for %@", [SampleSdkAppKIFTestController runID]];
@@ -168,7 +181,8 @@
     
     NSMutableArray *steps = [NSMutableArray array];
     
-    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
+    [steps addObjectsFromArray:[self stepsToInitializeTest]];
+
     NSIndexPath *path = [NSIndexPath indexPathForRow:16 inSection:0];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:path]];
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Input Field"]];
@@ -188,7 +202,7 @@
     
     NSMutableArray *steps = [NSMutableArray array];
     
-    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
+    [steps addObjectsFromArray:[self stepsToInitializeTest]];
 
     [steps addObject:[KIFTestStep stepToExecuteBlock:^{
         [[SZTestHelper sharedTestHelper] startMockingSucceedingFacebookAuth];
@@ -212,10 +226,9 @@
     
     NSMutableArray *steps = [NSMutableArray array];
     
-    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
+    [steps addObjectsFromArray:[self stepsToInitializeTest]];
     
     [steps addObject:[KIFTestStep stepToExecuteBlock:^{
-        [SZTwitterUtils unlink];
     }]];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:5];
@@ -235,16 +248,21 @@
 + (id)scenarioToTestCommentsList {
     NSUInteger numRows = 50;
     
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that test that socialize UI views work even when not logged in."];
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test comments list."];
     
-    NSString *entityKey = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
-    id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
-    [[SampleSdkAppAppDelegate sharedDelegate] setGlobalEntity:entity];
-
     NSMutableArray *steps = [NSMutableArray array];
     
+    [steps addObjectsFromArray:[self stepsToInitializeTest]];
+
+    NSString *entityKey = [SampleSdkAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
+    id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
+
+    // Set a specific entity for this test
     [steps addObject:[KIFTestStep stepToExecuteBlock:^{
-        
+        [[SampleSdkAppAppDelegate sharedDelegate] setGlobalEntity:entity];
+    }]];
+
+    [steps addObject:[KIFTestStep stepToExecuteBlock:^{
         NSMutableArray *comments = [NSMutableArray array];
         for (int i = 0; i < numRows; i++) {
             id<SZComment> comment = [SZComment commentWithEntity:entity text:[NSString stringWithFormat:@"Comment%02d", i]];
@@ -277,6 +295,7 @@
     
     return scenario;
 }
+
 
 
 
