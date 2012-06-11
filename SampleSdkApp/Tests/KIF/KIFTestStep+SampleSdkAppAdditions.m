@@ -567,4 +567,17 @@
     }];
 }
 
++ (NSArray*)stepsToAuthWithTestTwitterInfo {
+    NSMutableArray *steps = [NSMutableArray array];
+    
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Twitter Auth"]];
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Username or email"]];
+    [steps addObject:[KIFTestStep stepToNoCheckEnterText:@"mr_socialize" intoViewWithAccessibilityLabel:@"Username or email" traits:UIAccessibilityTraitNone]];
+    [steps addObject:[KIFTestStep stepToNoCheckEnterText:@"supersecret" intoViewWithAccessibilityLabel:@"Password" traits:UIAccessibilityTraitNone]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Sign In"]];
+    [steps addObject:[KIFTestStep stepToWaitForAbsenceOfViewWithAccessibilityLabel:@"Twitter Auth"]];
+    
+    return steps;
+}
+
 @end

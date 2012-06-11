@@ -48,4 +48,5 @@
 + (id)stepToNoCheckEnterText:(NSString *)text intoViewWithAccessibilityLabel:(NSString *)label traits:(UIAccessibilityTraits)traits;
 + (id)stepToScrollScrollViewWithAccessibilityLabel:(NSString*)scrollViewLabel toViewWithAcccessibilityLabel:(NSString*)viewLabel;
 + (id)stepToScrollTableViewWithAccessibilityLabel:(NSString*)label toRowAtIndexPath:(NSIndexPath*)indexPath scrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
++ (NSArray*)stepsToAuthWithTestTwitterInfo;
 @end

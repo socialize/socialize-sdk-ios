@@ -233,18 +233,10 @@
     
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
     
-    [steps addObject:[KIFTestStep stepToExecuteBlock:^{
-    }]];
-    
     NSIndexPath *indexPath = [[self sampleListViewController] indexPathForRowIdentifier:kLinkToTwitterRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToAuthWithTestTwitterInfo]];
     
-    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Username or email"]];
-    [steps addObject:[KIFTestStep stepToNoCheckEnterText:@"mr_socialize" intoViewWithAccessibilityLabel:@"Username or email" traits:UIAccessibilityTraitNone]];
-    [steps addObject:[KIFTestStep stepToNoCheckEnterText:@"supersecret" intoViewWithAccessibilityLabel:@"Password" traits:UIAccessibilityTraitNone]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Sign In"]];
-    [steps addObject:[KIFTestStep stepToWaitForAbsenceOfViewWithAccessibilityLabel:@"Twitter Auth"]];
-
     [scenario addStepsFromArray:steps];
     
     return scenario;
@@ -295,6 +287,7 @@
     // Show and hide add comment
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"add comment button"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Close"]];
 
     [scenario addStepsFromArray:steps];
     
@@ -302,7 +295,85 @@
 }
 
 
++ (id)scenarioToTestComposeCommentNoAuth {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test comment composer with anon."];
+    NSMutableArray *steps = [NSMutableArray array];
+    [steps addObjectsFromArray:[self stepsToInitializeTest]];
 
+    NSIndexPath *indexPath = [[self sampleListViewController] indexPathForRowIdentifier:kShowCommentComposerRow];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
+
+    [steps addObject:[KIFTestStep stepToEnterText:@"Anonymous Comment" intoViewWithAccessibilityLabel:@"Comment Entry"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Skip"]];
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];;
+
+    [scenario addStepsFromArray:steps];
+    return scenario;
+}
+
++ (id)scenarioToTestComposeCommentTwitterAuth {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test comment composer with Twitter."];
+    NSMutableArray *steps = [NSMutableArray array];
+    [steps addObjectsFromArray:[self stepsToInitializeTest]];
+    
+    NSIndexPath *indexPath = [[self sampleListViewController] indexPathForRowIdentifier:kShowCommentComposerRow];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
+    
+    [steps addObject:[KIFTestStep stepToEnterText:@"Twitter Comment" intoViewWithAccessibilityLabel:@"Comment Entry"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"twitter"]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToAuthWithTestTwitterInfo]];
+    [steps addObject:[KIFTestStep stepToVerifyViewWithAccessibilityLabel:@"Twitter Switch" passesTest:^(UISwitch *sw) {
+        return sw.isOn;
+    }]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Continue"]];
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];;
+
+    [scenario addStepsFromArray:steps];
+    return scenario;
+}
+
++ (id)scenarioToTestComposeCommentFacebookAuth {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test comment composer with Facebook."];
+    NSMutableArray *steps = [NSMutableArray array];
+    [steps addObjectsFromArray:[self stepsToInitializeTest]];
+    
+    // Select composer in test list
+    NSIndexPath *indexPath = [[self sampleListViewController] indexPathForRowIdentifier:kShowCommentComposerRow];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
+    
+    // Type in a test message
+    [steps addObject:[KIFTestStep stepToEnterText:@"Facebook Comment" intoViewWithAccessibilityLabel:@"Comment Entry"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
+    
+    // Mock out the facebook flow
+    [steps addObject:[KIFTestStep stepToExecuteBlock:^{
+        [[SZTestHelper sharedTestHelper] startMockingSucceedingFacebookAuth];
+    }]];
+
+    // Auth with Facebook, wait for completion
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"facebook"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Yes"]];
+    [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Continue"]];
+    
+    // Unmock the facebook flow
+    [steps addObject:[KIFTestStep stepToExecuteBlock:^{
+        [[SZTestHelper sharedTestHelper] stopMockingSucceedingFacebookAuth];
+    }]];
+
+    // Facebook Switch should be on
+    [steps addObject:[KIFTestStep stepToVerifyViewWithAccessibilityLabel:@"Facebook Switch" passesTest:^(UISwitch *sw) {
+        return sw.isOn;
+    }]];
+    
+    // Finish posting the comment
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Continue"]];
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];;
+    
+    [scenario addStepsFromArray:steps];
+    return scenario;
+}
 
 
 @end

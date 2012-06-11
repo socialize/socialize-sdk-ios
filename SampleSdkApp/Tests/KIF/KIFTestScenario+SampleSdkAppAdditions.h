@@ -19,5 +19,8 @@
 + (id)scenarioToTestFacebookAuth;
 + (id)scenarioToTestTwitterAuth;
 + (id)scenarioToTestCommentsList;
++ (id)scenarioToTestComposeCommentNoAuth;
++ (id)scenarioToTestComposeCommentTwitterAuth;
++ (id)scenarioToTestComposeCommentFacebookAuth;
 
 @end

@@ -143,6 +143,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 - (UISwitch*)facebookSwitch {
     if (facebookSwitch_ == nil) {
         facebookSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
+        facebookSwitch_.accessibilityLabel = @"Facebook Switch";
         
         __block __typeof__(self) weakSelf = self;
 
@@ -203,6 +204,8 @@ static NSString *kAutopostSection = @"kAutopostSection";
 - (UISwitch*)twitterSwitch {
     if (twitterSwitch_ == nil) {
         twitterSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
+        
+        twitterSwitch_.accessibilityLabel = @"Twitter Switch";
         
         __block __typeof__(self) weakSelf = self;
         void (^controlChangedBlock)(UISwitch *sw) = ^(UISwitch *sw) {
