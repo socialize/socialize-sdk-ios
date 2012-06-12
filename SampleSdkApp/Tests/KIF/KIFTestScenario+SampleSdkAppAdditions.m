@@ -375,5 +375,40 @@
     return scenario;
 }
 
++ (id)scenarioToTestLikeNoAuth {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test comment composer with Facebook."];
+    NSMutableArray *steps = [NSMutableArray array];
+    [steps addObjectsFromArray:[self stepsToInitializeTest]];
+
+    // Select composer in test list
+    NSIndexPath *indexPath = [[self sampleListViewController] indexPathForRowIdentifier:kLikeEntityRow];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
+
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Skip"]];
+
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];;
+    
+    [scenario addStepsFromArray:steps];
+    return scenario;
+}
+
++ (id)scenarioToTestLikeTwitterAuth {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test comment composer with Facebook."];
+    NSMutableArray *steps = [NSMutableArray array];
+    [steps addObjectsFromArray:[self stepsToInitializeTest]];
+    
+    // Select composer in test list
+    NSIndexPath *indexPath = [[self sampleListViewController] indexPathForRowIdentifier:kLikeEntityRow];
+    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
+    
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"twitter"]];
+    [steps addObjectsFromArray:[KIFTestStep stepsToAuthWithTestTwitterInfo]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Continue"]];
+
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];;
+    
+    [scenario addStepsFromArray:steps];
+    return scenario;
+}
 
 @end

@@ -44,6 +44,7 @@ NSString *kShowCommentComposerRow = @"kShowCommentComposerRow";
 NSString *kShowCommentsListRow = @"kShowCommentsListRow";
 NSString *kLinkToFacebookRow = @"kLinkToFacebookRow";
 NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
+NSString *kLikeEntityRow = @"kLikeEntityRow";
 
 @interface SampleListViewController ()
 @property (nonatomic, retain) NSArray *sections;
@@ -127,7 +128,7 @@ NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
     }]];
 
     NSMutableArray *likeRows = [NSMutableArray array];
-    [likeRows addObject:[self rowWithText:@"Like an Entity" executionBlock:^{
+    [likeRows addObject:[self rowWithIdentifier:kLikeEntityRow text:@"Like an Entity" executionBlock:^{
         SZEntity *entity = [SZEntity entityWithKey:@"Something" name:@"Something"];
         [SZLikeUtils likeWithDisplay:self entity:entity success:nil failure:nil];
     }]];

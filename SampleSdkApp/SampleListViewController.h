@@ -20,6 +20,7 @@ extern NSString *kShowCommentComposerRow;
 extern NSString *kShowCommentsListRow;
 extern NSString *kLinkToFacebookRow;
 extern NSString *kLinkToTwitterRow;
+extern NSString *kLikeEntityRow;
 
 @interface SampleListViewController : UITableViewController
 
