@@ -233,15 +233,25 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 +(void)storeConsumerKey:(NSString*)consumerKey {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     consumerKey = [consumerKey trim];
-    [[NSUserDefaults standardUserDefaults] setValue:consumerKey forKey:SOCIALIZE_API_KEY];
-    [defaults synchronize];
+    
+    NSString *existingKey = [[NSUserDefaults standardUserDefaults] objectForKey:SOCIALIZE_API_KEY];
+    if (![existingKey isEqualToString:consumerKey]) {
+        [[Socialize sharedSocialize] removeAuthenticationInfo];
+        [[NSUserDefaults standardUserDefaults] setValue:consumerKey forKey:SOCIALIZE_API_KEY];
+        [defaults synchronize];
+    }
 }
 
 +(void)storeConsumerSecret:(NSString*)consumerSecret {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     consumerSecret = [consumerSecret trim];
-    [[NSUserDefaults standardUserDefaults] setValue:consumerSecret forKey:SOCIALIZE_API_SECRET];
-    [defaults synchronize];
+    
+    NSString *existingSecret = [[NSUserDefaults standardUserDefaults] objectForKey:SOCIALIZE_API_SECRET];
+    if (![existingSecret isEqualToString:consumerSecret]) {
+        [[Socialize sharedSocialize] removeAuthenticationInfo];
+        [[NSUserDefaults standardUserDefaults] setValue:consumerSecret forKey:SOCIALIZE_API_SECRET];
+        [defaults synchronize];
+    }
 }
 
 +(void)storeFacebookAppId:(NSString*)facebookAppId {

@@ -17,6 +17,7 @@
 #import "SocializeViewService.h"
 #import "SocializeSubscriptionService.h"
 #import "SocializeDeviceTokenService.h"
+#import "SocializePrivateDefinitions.h"
 
 @implementation SocializeTests
 
@@ -270,6 +271,46 @@
     [socialize authenticateAnonymously];
     [auth verify];
     
+}
+
+- (void)fakeCurrentUserWithThirdParties:(NSArray*)thirdParties {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *fakeUser = [NSDictionary dictionaryWithObjectsAndKeys:
+                              thirdParties, @"third_party_auth",
+                              [NSNumber numberWithInteger:123], @"id",
+                              nil];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:fakeUser];
+    [userDefaults setObject:data forKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
+    [userDefaults synchronize];
+}
+
+- (void)fakeCurrentUserAnonymous {
+    [self fakeCurrentUserWithThirdParties:[NSArray array]];
+}
+
+- (void)testChangingConsumerKeyWipesUser {
+    [Socialize storeConsumerKey:@"123"];
+    [self fakeCurrentUserAnonymous];
+    GHAssertNotNil([[Socialize sharedSocialize] authenticatedUser], @"Should have user");
+    
+    [Socialize storeConsumerKey:@"123"];
+    GHAssertNotNil([[Socialize sharedSocialize] authenticatedUser], @"Should still have user");
+
+    [Socialize storeConsumerKey:@"456"];
+    GHAssertNil([[Socialize sharedSocialize] authenticatedUser], @"Should not have user");
+}
+
+- (void)testChangingConsumerSecretWipesUser {
+    [Socialize storeConsumerSecret:@"123"];
+    [self fakeCurrentUserAnonymous];
+    GHAssertNotNil([[Socialize sharedSocialize] authenticatedUser], @"Should have user");
+    
+    [Socialize storeConsumerSecret:@"123"];
+    GHAssertNotNil([[Socialize sharedSocialize] authenticatedUser], @"Should still have user");
+
+    [Socialize storeConsumerSecret:@"456"];
+    GHAssertNil([[Socialize sharedSocialize] authenticatedUser], @"Should not have user");
 }
 
 -(void)service:(SocializeService*)service didDelete:(id<SocializeObject>)object{
