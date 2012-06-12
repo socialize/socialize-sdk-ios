@@ -235,6 +235,7 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     [self prepare];
     [SZLikeUtils isLiked:entity success:^(BOOL isLiked) {
         isLiked = isLiked;
+        [self notify:kGHUnitWaitStatusSuccess];
     } failure:^(NSError *error) {
         [self notify:kGHUnitWaitStatusFailure];
     }];

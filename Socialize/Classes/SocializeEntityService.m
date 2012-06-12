@@ -59,7 +59,7 @@
 
 - (void)callEntityGetWithParams:(NSDictionary*)params success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
     SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"GET"
-                                                           resourcePath:ENTITY_KEY
+                                                           resourcePath:ENTITY_GET_ENDPOINT
                                                      expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                                                  params:params];
     

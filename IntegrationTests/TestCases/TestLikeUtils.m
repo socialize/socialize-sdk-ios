@@ -36,10 +36,9 @@
     }];
     GHAssertNotNil(foundLike, @"Should have like");
 
-//    [NSThread sleepForTimeInterval:5];
-//    // Check isLiked
-//    BOOL isLiked = [self isLiked:entity];
-//    GHAssertTrue(isLiked, @"Should be liked");
+    // Check isLiked
+    BOOL isLiked = [self isLiked:entity];
+    GHAssertTrue(isLiked, @"Should be liked");
     
     // Unlike the entity
     [self unlike:entity];
