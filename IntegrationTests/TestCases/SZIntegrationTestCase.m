@@ -10,6 +10,7 @@
 #import "SocializePrivateDefinitions.h"
 #import "SZCommentUtils.h"
 #import "SDKHelpers.h"
+#import <UIKit/UIKit.h>
 
 static NSString *UUIDString() {
     CFUUIDRef	uuidObj = CFUUIDCreate(nil);
@@ -135,6 +136,71 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
 
 - (void)createComment:(id<SocializeComment>)comment {
     [self createComments:[NSArray arrayWithObject:comment]];
+}
+
+- (id<SZComment>)addCommentWithEntity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options networks:(SZSocialNetwork)networks {
+    __block id<SZComment> createdComment = nil;
+    [self prepare];
+    [SZCommentUtils addCommentWithEntity:entity text:text options:nil networks:SZSocialNetworkNone success:^(id<SZComment> comment) {
+        createdComment = [comment retain];
+        [self notify:kGHUnitWaitStatusSuccess];
+    } failure:^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    return [createdComment autorelease];
+}
+
+- (id<SZComment>)getCommentWithId:(NSNumber*)commentId {
+    __block id<SZComment> fetchedComment = nil;
+    [self prepare];
+    [SZCommentUtils getCommentWithId:commentId success:^(id<SZComment> comment) {
+        fetchedComment = [comment retain];
+        [self notify:kGHUnitWaitStatusSuccess];
+    } failure:^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    return [fetchedComment autorelease];
+}
+
+- (NSArray*)utilGetCommentsForEntityWithKey:(NSString*)entityKey {
+    __block NSArray *fetchedComments = nil;
+    [self prepare];
+    [SZCommentUtils getCommentsByEntityWithEntityKey:entityKey success:^(NSArray *comments) {
+        fetchedComments = [comments retain];
+        [self notify:kGHUnitWaitStatusSuccess];
+    } failure:^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    return [fetchedComments autorelease];
+}
+
+- (NSArray*)getCommentsByUser:(id<SZUser>)user {
+    __block NSArray *fetchedComments = nil;
+    [self prepare];
+    [SZCommentUtils getCommentsByUserWithUser:user first:nil last:nil success:^(NSArray *comments) {
+        fetchedComments = [comments retain];
+        [self notify:kGHUnitWaitStatusSuccess];
+    } failure:^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    return [fetchedComments autorelease];
+}
+
+- (NSArray*)getCommentsByUser:(id<SZUser>)user entity:(id<SZEntity>)entity {
+    __block NSArray *fetchedComments = nil;
+    [self prepare];
+    [SZCommentUtils getCommentsByUserAndEntityWithUser:user entity:entity first:nil last:nil success:^(NSArray *comments) {
+        fetchedComments = [comments retain];
+        [self notify:kGHUnitWaitStatusSuccess];
+    } failure:^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    return [fetchedComments autorelease];
 }
 
 - (void)getEntityWithURL:(NSString*)url {

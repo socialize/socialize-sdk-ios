@@ -1282,6 +1282,8 @@
 		AA68733C14D1E56300970F77 /* SocializeVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = AA68733B14D1E56300970F77 /* SocializeVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA68733D14D1E56300970F77 /* SocializeVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = AA68733B14D1E56300970F77 /* SocializeVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6DE805145FBBB40037E48E /* SocializeFacebookInterfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE804145FBBB40037E48E /* SocializeFacebookInterfaceTests.m */; };
+		AA6E49F01586C57100660587 /* NSArray+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656014518F1600DD5421 /* NSArray+BlocksKit.m */; };
+		AA6E49F11586C57400660587 /* NSArray+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656014518F1600DD5421 /* NSArray+BlocksKit.m */; };
 		AA6FBAC114BCAC0C00D8646C /* SocializeNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6FBABF14BCAC0C00D8646C /* SocializeNotificationDisplayController.h */; };
 		AA6FBAC214BCAC0C00D8646C /* SocializeNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6FBABF14BCAC0C00D8646C /* SocializeNotificationDisplayController.h */; };
 		AA6FBAC314BCAC0C00D8646C /* SocializeNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6FBAC014BCAC0C00D8646C /* SocializeNotificationDisplayController.m */; };
@@ -7572,6 +7574,7 @@
 				AA05FFFB157E7AAE00E82CB4 /* SZViewUtils.m in Sources */,
 				AAE995D2157EE61E0048AAC0 /* SZAPIEventListener.m in Sources */,
 				AAE995D8157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */,
+				AA6E49F11586C57400660587 /* NSArray+BlocksKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7983,6 +7986,7 @@
 				AA05FFFC157E7AAE00E82CB4 /* SZViewUtils.m in Sources */,
 				AAE995D3157EE61E0048AAC0 /* SZAPIEventListener.m in Sources */,
 				AAE995D9157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */,
+				AA6E49F01586C57100660587 /* NSArray+BlocksKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

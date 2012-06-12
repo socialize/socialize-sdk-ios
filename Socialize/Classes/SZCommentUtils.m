@@ -146,9 +146,11 @@
     });
 }
 
-+ (void)getCommentWithId:(NSNumber*)commentId success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
++ (void)getCommentWithId:(NSNumber*)commentId success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
     SZAuthWrapper(^{
-        [[Socialize sharedSocialize] getCommentsWithIds:[NSArray arrayWithObject:commentId] success:success failure:failure];
+        [[Socialize sharedSocialize] getCommentsWithIds:[NSArray arrayWithObject:commentId] success:^(NSArray *comments) {
+            BLOCK_CALL_1(success, [comments objectAtIndex:0]);
+        } failure:failure];
     }, failure);
 
 }

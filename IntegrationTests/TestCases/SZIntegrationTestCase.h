@@ -21,6 +21,8 @@
 - (NSString*)testURL:(NSString*)suffix;
 - (void)createCommentWithURL:(NSString*)url text:(NSString*)text latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude subscribe:(BOOL)subscribe;
 - (void)createCommentWithEntity:(id<SocializeEntity>)entity text:(NSString*)text latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude subscribe:(BOOL)subscribe;
+- (id<SZComment>)addCommentWithEntity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options networks:(SZSocialNetwork)networks;
+- (id<SZComment>)getCommentWithId:(NSNumber*)commentId;
 - (void)getCommentsForEntityWithKey:(NSString*)entityKey;
 - (void)createShareWithURL:(NSString*)url medium:(SocializeShareMedium)medium text:(NSString*)text;
 - (void)createShare:(id<SocializeShare>)share;
@@ -44,6 +46,9 @@
 - (void)fakeCurrentUserWithThirdParties:(NSArray*)thirdParties;
 - (void)fakeCurrentUserAnonymous;
 - (void)fakeCurrentUserNotAuthed;
+- (NSArray*)utilGetCommentsForEntityWithKey:(NSString*)entityKey;
+- (NSArray*)getCommentsByUser:(id<SZUser>)user;
+- (NSArray*)getCommentsByUser:(id<SZUser>)user entity:(id<SZEntity>)entity;
 
 //- (void)getViewsForURL:(NSString*)url;
 @end
