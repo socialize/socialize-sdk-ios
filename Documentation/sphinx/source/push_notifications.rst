@@ -179,6 +179,17 @@ a comma-separated list of user ids.
 
 .. note:: Socialize v1.6 or later is required to receive target SmartAlerts
 
+Programmatically Dismissing Notification Popups
+----------------------------------------
+
+You might find that you'd like to dismiss all Socialize notifications outside of the normal
+user flow. As a convenience, you can dismiss all Socialize notification popups
+programatically by posting a SocializeShouldDismissAllNotificationControllersNotification.
+
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-dismiss-notifications-snippet
+  :end-before: end-dismiss-notifications-snippet
+
 Troubleshooting Notifications
 ----------------------------------------
 
