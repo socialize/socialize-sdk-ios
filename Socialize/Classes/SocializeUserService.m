@@ -176,6 +176,8 @@
     request.failureBlock = failure;
 
     request.expectedProtocol = @protocol(SZLike);
+    
+    [self executeRequest:request];
 }
 
 

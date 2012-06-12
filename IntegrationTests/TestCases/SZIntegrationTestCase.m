@@ -11,6 +11,7 @@
 #import "SZCommentUtils.h"
 #import "SDKHelpers.h"
 #import <UIKit/UIKit.h>
+#import "SZLikeUtils.h"
 
 static NSString *UUIDString() {
     CFUUIDRef	uuidObj = CFUUIDCreate(nil);
@@ -201,6 +202,83 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     }];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
     return [fetchedComments autorelease];
+}
+
+- (id<SZLike>)likeWithEntity:(id<SZEntity>)entity options:(SZLikeOptions*)options networks:(SZSocialNetwork)networks {
+    __block id<SZLike> fetchedLike = nil;
+    [self prepare];
+    [SZLikeUtils likeWithEntity:entity options:options networks:networks success:^(id<SZLike> like) {
+        fetchedLike = [like retain];
+        [self notify:kGHUnitWaitStatusSuccess];
+    } failure:^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    return [fetchedLike autorelease];
+}
+
+- (id<SZLike>)unlike:(id<SZEntity>)entity {
+    __block id<SZLike> fetchedLike = nil;
+    [self prepare];
+    [SZLikeUtils unlike:entity success:^(id<SZLike> like) {
+        fetchedLike = [like retain];
+        [self notify:kGHUnitWaitStatusSuccess];
+    } failure:^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    return [fetchedLike autorelease];
+}
+
+- (BOOL)isLiked:(id<SZEntity>)entity {
+    __block BOOL isLiked;
+    [self prepare];
+    [SZLikeUtils isLiked:entity success:^(BOOL isLiked) {
+        isLiked = isLiked;
+    } failure:^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    return isLiked;
+}
+
+- (id<SZLike>)getLike:(id<SZEntity>)entity {
+    __block id<SZLike> fetchedLike = nil;
+    [self prepare];
+    [SZLikeUtils getLike:entity success:^(id<SZLike> like) {
+        fetchedLike = [like retain];
+        [self notify:kGHUnitWaitStatusSuccess];
+    } failure:^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    return [fetchedLike autorelease];
+}
+
+- (NSArray*)getLikesForUser:(id<SZUser>)user {
+    __block NSArray *fetchedLikes = nil;
+    [self prepare];
+    [SZLikeUtils getLikesForUser:user start:nil end:nil success:^(NSArray *likes) {
+        fetchedLikes = [likes retain];
+        [self notify:kGHUnitWaitStatusSuccess];
+    } failure:^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    return [fetchedLikes autorelease];
+}
+
+- (id<SZLike>)getLikeForUser:(id<SZUser>)user entity:(id<SZEntity>)entity {
+    __block id<SZLike> fetchedLike = nil;
+    [self prepare];
+    [SZLikeUtils getLikeForUser:user entity:entity start:nil end:nil success:^(id<SZLike> like) {
+        fetchedLike = [like retain];
+        [self notify:kGHUnitWaitStatusSuccess];
+    } failure:^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    return [fetchedLike autorelease];
 }
 
 - (void)getEntityWithURL:(NSString*)url {

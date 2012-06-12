@@ -1284,6 +1284,9 @@
 		AA6DE805145FBBB40037E48E /* SocializeFacebookInterfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6DE804145FBBB40037E48E /* SocializeFacebookInterfaceTests.m */; };
 		AA6E49F01586C57100660587 /* NSArray+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656014518F1600DD5421 /* NSArray+BlocksKit.m */; };
 		AA6E49F11586C57400660587 /* NSArray+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C3656014518F1600DD5421 /* NSArray+BlocksKit.m */; };
+		AA6E49F41587025A00660587 /* TestLikeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6E49F21587025A00660587 /* TestLikeUtils.h */; };
+		AA6E49F51587025A00660587 /* TestLikeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6E49F21587025A00660587 /* TestLikeUtils.h */; };
+		AA6E49F81587025A00660587 /* TestLikeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6E49F31587025A00660587 /* TestLikeUtils.m */; };
 		AA6FBAC114BCAC0C00D8646C /* SocializeNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6FBABF14BCAC0C00D8646C /* SocializeNotificationDisplayController.h */; };
 		AA6FBAC214BCAC0C00D8646C /* SocializeNotificationDisplayController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6FBABF14BCAC0C00D8646C /* SocializeNotificationDisplayController.h */; };
 		AA6FBAC314BCAC0C00D8646C /* SocializeNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6FBAC014BCAC0C00D8646C /* SocializeNotificationDisplayController.m */; };
@@ -2974,6 +2977,8 @@
 		AA6B6F171472F4A4008E885B /* SocializeComposeMessageViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeComposeMessageViewControllerTests.m; path = "Test Cases/SocializeComposeMessageViewControllerTests.m"; sourceTree = "<group>"; };
 		AA6DE803145FBBB40037E48E /* SocializeFacebookInterfaceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebookInterfaceTests.h; path = "Test Cases/SocializeFacebookInterfaceTests.h"; sourceTree = "<group>"; };
 		AA6DE804145FBBB40037E48E /* SocializeFacebookInterfaceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeFacebookInterfaceTests.m; path = "Test Cases/SocializeFacebookInterfaceTests.m"; sourceTree = "<group>"; };
+		AA6E49F21587025A00660587 /* TestLikeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLikeUtils.h; sourceTree = "<group>"; };
+		AA6E49F31587025A00660587 /* TestLikeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLikeUtils.m; sourceTree = "<group>"; };
 		AA6FBABF14BCAC0C00D8646C /* SocializeNotificationDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNotificationDisplayController.h; path = Classes/SocializeNotificationDisplayController.h; sourceTree = "<group>"; };
 		AA6FBAC014BCAC0C00D8646C /* SocializeNotificationDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeNotificationDisplayController.m; path = Classes/SocializeNotificationDisplayController.m; sourceTree = "<group>"; };
 		AA6FBAC614BCB6D900D8646C /* SocializeNewCommentsNotificationDisplayControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeNewCommentsNotificationDisplayControllerTests.h; path = "Test Cases/SocializeNewCommentsNotificationDisplayControllerTests.h"; sourceTree = "<group>"; };
@@ -4724,6 +4729,8 @@
 				AA16D6A9158154DE002F1E16 /* TestSubscriptionUtils.m */,
 				AA16D6AF158154EE002F1E16 /* TestViewUtils.h */,
 				AA16D6B0158154EE002F1E16 /* TestViewUtils.m */,
+				AA6E49F21587025A00660587 /* TestLikeUtils.h */,
+				AA6E49F31587025A00660587 /* TestLikeUtils.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -5380,6 +5387,7 @@
 				AA16D6A4158154CF002F1E16 /* TestActionUtils.h in Headers */,
 				AA16D6AB158154DE002F1E16 /* TestSubscriptionUtils.h in Headers */,
 				AA16D6B2158154EF002F1E16 /* TestViewUtils.h in Headers */,
+				AA6E49F51587025A00660587 /* TestLikeUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5550,6 +5558,7 @@
 				AA16D6A3158154CF002F1E16 /* TestActionUtils.h in Headers */,
 				AA16D6AA158154DE002F1E16 /* TestSubscriptionUtils.h in Headers */,
 				AA16D6B1158154EF002F1E16 /* TestViewUtils.h in Headers */,
+				AA6E49F41587025A00660587 /* TestLikeUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7755,6 +7764,7 @@
 				AA16D6AE158154DE002F1E16 /* TestSubscriptionUtils.m in Sources */,
 				AA16D6B5158154EF002F1E16 /* TestViewUtils.m in Sources */,
 				AAB93B8B15826C0200D003CC /* SZTestHelper.m in Sources */,
+				AA6E49F81587025A00660587 /* TestLikeUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

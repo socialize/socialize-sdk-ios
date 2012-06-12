@@ -292,7 +292,7 @@ tokenRequest = _tokenRequest;
         [params addObject:[OARequestParameter requestParameterWithName:@"payload" value:stringValue]];          
         [self.request setSocializeParameters:params];
     }   
-    else if([self.httpMethod isEqualToString: @"GET"])
+    else if([self.httpMethod isEqualToString: @"GET"] || [self.httpMethod isEqualToString:@"DELETE"])
     {
         [self.request setSocializeParameters:[self formatUrlParams]];
     }

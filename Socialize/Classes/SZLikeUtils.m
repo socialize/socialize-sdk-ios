@@ -87,7 +87,7 @@
     }, failure);
 }
 
-+ (void)getLikeStatusForEntity:(id<SZEntity>)entity success:(void(^)(BOOL isLiked))success failure:(void(^)(NSError *error))failure {
++ (void)isLiked:(id<SZEntity>)entity success:(void(^)(BOOL isLiked))success failure:(void(^)(NSError *error))failure {
     [SZEntityUtils getEntityWithKey:[entity key] success:^(id<SocializeEntity> entity) {
         BOOL isLiked = [[[entity userActionSummary] objectForKey:@"likes"] integerValue] > 0;
         BLOCK_CALL_1(success, isLiked);
@@ -99,14 +99,14 @@
     
     SZAuthWrapper(^{
         [[Socialize sharedSocialize] getLikesForUser:(id<SZUser>)user entity:entity first:nil last:nil success:^(NSArray *likes) {
-            BLOCK_CALL_1(success, [likes objectAtIndex:0]);
+            BLOCK_CALL_1(success, [likes lastObject]);
         } failure:failure];
     }, failure);
 }
 
-+ (void)getLikesForUser:(id<SZFullUser>)user start:(NSNumber*)start end:(NSNumber*)end success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure {
++ (void)getLikesForUser:(id<SZUser>)user start:(NSNumber*)start end:(NSNumber*)end success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure {
     SZAuthWrapper(^{
-        [[Socialize sharedSocialize] getLikesForUser:(id<SZUser>)user entity:nil first:start last:end success:success failure:failure];
+        [[Socialize sharedSocialize] getLikesForUser:user entity:nil first:start last:end success:success failure:failure];
     }, failure);
 }
 
@@ -116,9 +116,11 @@
     }, failure);
 }
 
-+ (void)getLikesForUser:(id<SZFullUser>)user entity:(id<SZEntity>)entity start:(NSNumber*)start end:(NSNumber*)end success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure {
++ (void)getLikeForUser:(id<SZUser>)user entity:(id<SZEntity>)entity start:(NSNumber*)start end:(NSNumber*)end success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
     SZAuthWrapper(^{
-        [[Socialize sharedSocialize] getLikesForUser:(id<SZUser>)user entity:entity first:start last:end success:success failure:failure];
+        [[Socialize sharedSocialize] getLikesForUser:user entity:entity first:start last:end success:^(NSArray *likes) {
+            BLOCK_CALL_1(success, [likes lastObject]);
+        } failure:failure];
     }, failure);
 }
 
