@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 #import "SZLikeUtils.h"
 #import "NSArray+BlocksKit.h"
+#import "SZViewUtils.h"
 
 static NSString *UUIDString() {
     CFUUIDRef	uuidObj = CFUUIDCreate(nil);
@@ -85,7 +86,7 @@ typedef void (^ActionBlock1)(void(^actionSuccess)(id), void(^actionFailure)(NSEr
     }, ^(NSError *error) {
         [self notify:kGHUnitWaitStatusFailure];
     });
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:60];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
     return [outerResult autorelease];
 
 }
@@ -344,6 +345,30 @@ typedef void (^ActionBlock1)(void(^actionSuccess)(id), void(^actionFailure)(NSEr
 - (id<SZEntity>)addEntity:(id<SZEntity>)entity {
     return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
         [SZEntityUtils addEntity:entity success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (id<SZView>)viewEntity:(id<SZEntity>)entity {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZViewUtils viewEntity:entity success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (id<SZView>)getView:(id<SZEntity>)entity {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZViewUtils getView:entity success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (NSArray*)getViewsByUser:(id<SZUser>)user {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZViewUtils getViewsByUser:user start:nil end:nil success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (NSArray*)getViewsByUser:(id<SZUser>)user entity:(id<SZEntity>)entity {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZViewUtils getViewsByUser:user entity:entity start:nil end:nil success:actionSuccess failure:actionFailure];
     }];
 }
 

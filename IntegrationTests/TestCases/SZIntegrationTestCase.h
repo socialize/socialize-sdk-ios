@@ -65,5 +65,10 @@
 - (NSArray*)getEntities;
 - (NSArray*)getEntitiesWithIds:(NSArray*)ids;
 - (id<SZEntity>)addEntity:(id<SZEntity>)entity;
+- (id<SZView>)viewEntity:(id<SZEntity>)entity;
+- (id<SZView>)getView:(id<SZEntity>)entity;
+- (NSArray*)getViewsByUser:(id<SZUser>)user;
+- (NSArray*)getViewsByUser:(id<SZUser>)user entity:(id<SZEntity>)entity;
+
 //- (void)getViewsForURL:(NSString*)url;
 @end
