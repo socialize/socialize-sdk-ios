@@ -10,4 +10,27 @@
 
 @implementation TestActionUtils
 
+- (void)testActionHelpers {
+    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/like_target", _cmd]];
+    SZEntity *entity = [SZEntity entityWithKey:entityKey name:@"Like target"];
+    
+    id<SZLike> serverLike = [self likeWithEntity:entity options:nil networks:SZSocialNetworkNone];
+
+    NSArray *actions = [self getActionsForApplication];
+    id<SZLike> foundLike = (id<SZLike>)[self findObjectWithId:[serverLike objectID] inArray:actions];
+    GHAssertNotNil(foundLike, @"Should have like");
+
+    actions = [self getActionsByEntity:entity];
+    foundLike = (id<SZLike>)[self findObjectWithId:[serverLike objectID] inArray:actions];
+    GHAssertNotNil(foundLike, @"Should have like");
+    
+    actions = [self getActionsForUser:(id<SZUser>)[SZUserUtils currentUser]];
+    foundLike = (id<SZLike>)[self findObjectWithId:[serverLike objectID] inArray:actions];
+    GHAssertNotNil(foundLike, @"Should have like");
+
+    actions = [self getActionsForUser:(id<SZUser>)[SZUserUtils currentUser] entity:entity];
+    foundLike = (id<SZLike>)[self findObjectWithId:[serverLike objectID] inArray:actions];
+    GHAssertNotNil(foundLike, @"Should have like");
+}
+
 @end

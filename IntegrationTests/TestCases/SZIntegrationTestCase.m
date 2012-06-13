@@ -12,6 +12,7 @@
 #import "SDKHelpers.h"
 #import <UIKit/UIKit.h>
 #import "SZLikeUtils.h"
+#import "NSArray+BlocksKit.h"
 
 static NSString *UUIDString() {
     CFUUIDRef	uuidObj = CFUUIDCreate(nil);
@@ -21,6 +22,8 @@ static NSString *UUIDString() {
 }
 
 static NSString *SocializeAsyncTestCaseRunID = nil;
+
+typedef void (^ActionBlock1)(void(^actionSuccess)(id), void(^actionFailure)(NSError*));
 
 @implementation SZIntegrationTestCase
 @synthesize socialize = socialize_;
@@ -71,6 +74,20 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
 
 - (void)setUpClass {
     [[self class] resetRunID];
+}
+
+- (id)callAsync1WithAction:(ActionBlock1)action {
+    __block id outerResult = nil;
+    [self prepare];
+    action(^(id result) {
+        outerResult = [result retain];
+        [self notify:kGHUnitWaitStatusSuccess];
+    }, ^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    });
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    return [outerResult autorelease];
+
 }
 
 - (void)authenticateAnonymously {
@@ -280,6 +297,36 @@ static NSString *SocializeAsyncTestCaseRunID = nil;
     }];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
     return [fetchedLike autorelease];
+}
+
+- (NSArray*)getActionsForApplication {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZActionUtils getActionsByApplicationWithStart:nil end:nil success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (NSArray*)getActionsForUser:(id<SZUser>)user {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZActionUtils getActionsByUser:user start:nil end:nil success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (NSArray*)getActionsByEntity:(id<SZEntity>)entity {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZActionUtils getActionsByEntity:entity start:nil end:nil success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (NSArray*)getActionsForUser:(id<SZUser>)user entity:(id<SZEntity>)entity {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZActionUtils getActionsByUser:user entity:entity start:nil end:nil success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (id<SZObject>)findObjectWithId:(int)objectID inArray:(NSArray*)array {
+    return [array match:^BOOL (id<SZObject> object) {
+        return [object objectID] == objectID;
+    }];   
 }
 
 - (void)getEntityWithURL:(NSString*)url {

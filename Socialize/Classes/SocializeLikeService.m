@@ -81,7 +81,7 @@
 
 - (void)createLike:(id<SZLike>)like success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
     [self createLikes:[NSArray arrayWithObject:like] success:^(NSArray *likes) {
-        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:like];
+        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:[likes objectAtIndex:0]];
     } failure:failure];
 }
 

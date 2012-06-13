@@ -55,6 +55,11 @@
 - (id<SZLike>)getLike:(id<SZEntity>)entity;
 - (NSArray*)getLikesForUser:(id<SZUser>)user;
 - (id<SZLike>)getLikeForUser:(id<SZUser>)user entity:(id<SZEntity>)entity;
+- (NSArray*)getActionsForApplication;
+- (NSArray*)getActionsForUser:(id<SZUser>)user;
+- (NSArray*)getActionsByEntity:(id<SZEntity>)entity;
+- (NSArray*)getActionsForUser:(id<SZUser>)user entity:(id<SZEntity>)entity;
+- (id<SZObject>)findObjectWithId:(int)objectID inArray:(NSArray*)array;
 
 //- (void)getViewsForURL:(NSString*)url;
 @end
