@@ -34,7 +34,9 @@
 
 + (void)addEntity:(id<SZEntity>)entity success:(void(^)(id<SZEntity> entity))success failure:(void(^)(NSError *error))failure {
     SZAuthWrapper(^{
-        [[Socialize sharedSocialize] createEntities:[NSArray arrayWithObject:entity] success:success failure:failure];
+        [[Socialize sharedSocialize] createEntities:[NSArray arrayWithObject:entity] success:^(NSArray *entities) {
+            BLOCK_CALL_1(success, [entities lastObject]);
+        } failure:failure];
     }, failure);
 }
 

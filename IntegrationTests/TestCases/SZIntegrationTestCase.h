@@ -60,6 +60,10 @@
 - (NSArray*)getActionsByEntity:(id<SZEntity>)entity;
 - (NSArray*)getActionsForUser:(id<SZUser>)user entity:(id<SZEntity>)entity;
 - (id<SZObject>)findObjectWithId:(int)objectID inArray:(NSArray*)array;
-
+- (void)assertObject:(id<SZObject>)object inCollection:(id)collection;
+- (id<SZEntity>)getEntityWithKey:(NSString*)entityKey;
+- (NSArray*)getEntities;
+- (NSArray*)getEntitiesWithIds:(NSArray*)ids;
+- (id<SZEntity>)addEntity:(id<SZEntity>)entity;
 //- (void)getViewsForURL:(NSString*)url;
 @end

@@ -85,7 +85,7 @@ typedef void (^ActionBlock1)(void(^actionSuccess)(id), void(^actionFailure)(NSEr
     }, ^(NSError *error) {
         [self notify:kGHUnitWaitStatusFailure];
     });
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:60];
     return [outerResult autorelease];
 
 }
@@ -323,10 +323,39 @@ typedef void (^ActionBlock1)(void(^actionSuccess)(id), void(^actionFailure)(NSEr
     }];
 }
 
+- (id<SZEntity>)getEntityWithKey:(NSString*)entityKey {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZEntityUtils getEntityWithKey:entityKey success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (NSArray*)getEntities {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZEntityUtils getEntitiesWithFirst:nil last:[NSNumber numberWithInteger:20] success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (NSArray*)getEntitiesWithIds:(NSArray*)ids {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZEntityUtils getEntitiesWithIds:ids success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (id<SZEntity>)addEntity:(id<SZEntity>)entity {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZEntityUtils addEntity:entity success:actionSuccess failure:actionFailure];
+    }];
+}
+
 - (id<SZObject>)findObjectWithId:(int)objectID inArray:(NSArray*)array {
     return [array match:^BOOL (id<SZObject> object) {
         return [object objectID] == objectID;
     }];   
+}
+
+- (void)assertObject:(id<SZObject>)object inCollection:(id)collection {
+    id<SZObject> foundObject = (id<SZObject>)[self findObjectWithId:[object objectID] inArray:collection];
+    GHAssertNotNil(foundObject, @"Should have object with id %@", [object objectID]);
 }
 
 - (void)getEntityWithURL:(NSString*)url {
