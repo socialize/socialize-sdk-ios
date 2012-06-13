@@ -69,6 +69,10 @@
 - (id<SZView>)getView:(id<SZEntity>)entity;
 - (NSArray*)getViewsByUser:(id<SZUser>)user;
 - (NSArray*)getViewsByUser:(id<SZUser>)user entity:(id<SZEntity>)entity;
+- (id<SZSubscription>)subscribeToEntity:(id<SZEntity>)entity subscriptionType:(SZSubscriptionType)subscriptionType;
+- (id<SZSubscription>)unsubscribeFromEntity:(id<SZEntity>)entity subscriptionType:(SZSubscriptionType)subscriptionType;
+- (NSArray*)getSubscriptionsForEntity:(id<SZEntity>)entity;
+- (BOOL)isSubscribedToEntity:(id<SZEntity>)entity subscriptionType:(SZSubscriptionType)subscriptionType;
 
 //- (void)getViewsForURL:(NSString*)url;
 @end

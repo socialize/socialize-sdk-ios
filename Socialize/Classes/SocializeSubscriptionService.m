@@ -48,8 +48,8 @@
 }
 
 - (void)getSubscriptionsForEntity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *subscriptions))success failure:(void(^)(NSError *error))failure {
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:SZServerParamsForEntity(entity)];
-    [self callListingGetEndpointWithPath:@"user/subscription/" params:params first:first last:last success:nil failure:nil];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObject:[entity key] forKey:@"entity_key"];
+    [self callListingGetEndpointWithPath:@"user/subscription/" params:params first:first last:last success:success failure:failure];
 }
 
 - (void)getSubscriptionsForEntityKey:(NSString*)entityKey first:(NSNumber*)first last:(NSNumber*)last {

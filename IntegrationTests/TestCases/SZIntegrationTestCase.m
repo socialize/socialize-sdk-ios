@@ -25,6 +25,7 @@ static NSString *UUIDString() {
 static NSString *SocializeAsyncTestCaseRunID = nil;
 
 typedef void (^ActionBlock1)(void(^actionSuccess)(id), void(^actionFailure)(NSError*));
+typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(NSError*));
 
 @implementation SZIntegrationTestCase
 @synthesize socialize = socialize_;
@@ -89,6 +90,19 @@ typedef void (^ActionBlock1)(void(^actionSuccess)(id), void(^actionFailure)(NSEr
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
     return [outerResult autorelease];
 
+}
+
+- (BOOL)callAsync1BWithAction:(ActionBlock1B)action {
+    __block BOOL outerResult;
+    [self prepare];
+    action(^(BOOL result) {
+        outerResult = result;
+        [self notify:kGHUnitWaitStatusSuccess];
+    }, ^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    });
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    return outerResult;
 }
 
 - (void)authenticateAnonymously {
@@ -249,16 +263,9 @@ typedef void (^ActionBlock1)(void(^actionSuccess)(id), void(^actionFailure)(NSEr
 }
 
 - (BOOL)isLiked:(id<SZEntity>)entity {
-    __block BOOL isLiked;
-    [self prepare];
-    [SZLikeUtils isLiked:entity success:^(BOOL isLiked) {
-        isLiked = isLiked;
-        [self notify:kGHUnitWaitStatusSuccess];
-    } failure:^(NSError *error) {
-        [self notify:kGHUnitWaitStatusFailure];
+    return [self callAsync1BWithAction:^(void(^actionSuccess)(BOOL), void(^actionFailure)(NSError*)) {
+        [SZLikeUtils isLiked:entity success:actionSuccess failure:actionFailure];
     }];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
-    return isLiked;
 }
 
 - (id<SZLike>)getLike:(id<SZEntity>)entity {
@@ -369,6 +376,30 @@ typedef void (^ActionBlock1)(void(^actionSuccess)(id), void(^actionFailure)(NSEr
 - (NSArray*)getViewsByUser:(id<SZUser>)user entity:(id<SZEntity>)entity {
     return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
         [SZViewUtils getViewsByUser:user entity:entity start:nil end:nil success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (id<SZSubscription>)subscribeToEntity:(id<SZEntity>)entity subscriptionType:(SZSubscriptionType)subscriptionType {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZSubscriptionUtils subscribeToEntity:entity subscriptionType:subscriptionType success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (id<SZSubscription>)unsubscribeFromEntity:(id<SZEntity>)entity subscriptionType:(SZSubscriptionType)subscriptionType {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZSubscriptionUtils unsubscribeFromEntity:entity subscriptionType:subscriptionType success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (NSArray*)getSubscriptionsForEntity:(id<SZEntity>)entity {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZSubscriptionUtils getSubscriptionsForEntity:entity subscriptionType:SZSubscriptionTypeNewComments start:nil end:nil success:actionSuccess failure:actionFailure];
+    }];
+}
+
+- (BOOL)isSubscribedToEntity:(id<SZEntity>)entity subscriptionType:(SZSubscriptionType)subscriptionType {
+    return [self callAsync1BWithAction:^(void(^actionSuccess)(BOOL), void(^actionFailure)(NSError*)) {
+        [SZSubscriptionUtils isSubscribedToEntity:entity subscriptionType:subscriptionType success:actionSuccess failure:actionFailure];
     }];
 }
 

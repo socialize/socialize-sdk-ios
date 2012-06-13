@@ -11,8 +11,8 @@
 @implementation TestViewUtils
 
 - (void)testViewWrappers {
-    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/like_target", _cmd]];
-    SZEntity *entity = [SZEntity entityWithKey:entityKey name:@"Like target"];
+    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/view_target", _cmd]];
+    SZEntity *entity = [SZEntity entityWithKey:entityKey name:@"View target"];
 
     id<SZView> createdView = [self viewEntity:entity];
     
