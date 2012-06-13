@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 1.7.6 documentation</title>
+    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 1.7.7 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.6',
+        VERSION:     '1.7.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.6 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 1.7.7 documentation" href="index.html" />
     <link rel="next" title="Socialize Comments" href="comments.html" />
     <link rel="prev" title="Twitter Integration" href="twitter.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -302,6 +302,21 @@ a comma-separated list of user ids.</p>
 <p class="last">Socialize v1.6 or later is required to receive target SmartAlerts</p>
 </div>
 </div>
+<div class="section" id="programmatically-dismissing-notification-popups">
+<h2>Programmatically Dismissing Notification Popups<a class="headerlink" href="#programmatically-dismissing-notification-popups" title="Permalink to this headline">¶</a></h2>
+<p>You might find that you&#8217;d like to dismiss all Socialize notifications outside of the normal
+user flow. As a convenience, you can dismiss all Socialize notification popups
+programatically by posting a SocializeShouldDismissAllNotificationControllersNotification.</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dismissSocializeNotifications</span>
+    
+    <span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="n">defaultCenter</span><span class="p">]</span> <span class="nl">postNotificationName:</span><span class="n">SocializeShouldDismissAllNotificationControllersNotification</span> <span class="nl">object:</span><span class="nb">nil</span><span class="p">];</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="troubleshooting-notifications">
 <h2>Troubleshooting Notifications<a class="headerlink" href="#troubleshooting-notifications" title="Permalink to this headline">¶</a></h2>
 <p>If you are not receiving notifications, there are some simple ways to
@@ -384,6 +399,7 @@ for development and distribution. Socialize itself does not support development 
 <li class="toctree-l2"><a class="reference internal" href="#step-6-configuring-notifications-in-your-app">Step 6: Configuring Notifications in Your App</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#testing-smartalerts">Testing SmartAlerts™</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sending-targeted-smartalerts">Sending Targeted SmartAlerts™</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#programmatically-dismissing-notification-popups">Programmatically Dismissing Notification Popups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting-notifications">Troubleshooting Notifications</a></li>
 </ul>
 </li>
@@ -420,7 +436,7 @@ for development and distribution. Socialize itself does not support development 
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
