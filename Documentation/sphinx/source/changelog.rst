@@ -4,6 +4,14 @@
 Changelog
 =============================================
 
+v1.7.7
+------
+[bug] Token registration should auto auth if needed [ ]
+
+[bug] Changing consumer keys should wipe existing user. [ ]
+
+[feature] Dev can dismiss push notification popups programatically [ ]
+
 v1.7.6
 ------
 [feature] Add ability to show share action sheet directly
