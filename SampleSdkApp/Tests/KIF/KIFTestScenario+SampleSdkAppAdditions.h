@@ -14,7 +14,6 @@
 //+ (id)scenarioToTestActionBar;
 //+ (id)scenarioToTestViewOtherProfile;
 //+ (id)scenarioToTestLikeButton;
-//+ (id)scenarioToTestDirectURLNotification;
 + (id)scenarioToSleep;
 + (id)scenarioToTestFacebookAuth;
 + (id)scenarioToTestTwitterAuth;
@@ -24,5 +23,5 @@
 + (id)scenarioToTestComposeCommentFacebookAuth;
 + (id)scenarioToTestLikeNoAuth;
 + (id)scenarioToTestLikeTwitterAuth;
-
++ (id)scenarioToTestDirectURLNotification;
 @end

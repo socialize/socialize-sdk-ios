@@ -58,6 +58,7 @@ static NSString *SampleSdkAppKIFTestControllerRunID = nil;
     [self addScenario:[KIFTestScenario scenarioToTestComposeCommentFacebookAuth]];
     [self addScenario:[KIFTestScenario scenarioToTestLikeNoAuth]];
     [self addScenario:[KIFTestScenario scenarioToTestLikeTwitterAuth]];
+    [self addScenario:[KIFTestScenario scenarioToTestDirectURLNotification]];
 }
 
 + (NSString*)runID {

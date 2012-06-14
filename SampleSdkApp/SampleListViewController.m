@@ -37,6 +37,7 @@ NSString *kCommentSection = @"kCommentSection";
 NSString *kLikeSection = @"kLikeSection";
 NSString *kFacebookSection = @"kFacebookSection";
 NSString *kTwitterSection = @"kTwitterSection";
+NSString *kSmartAlertsSection = @"kSmartAlertsSection";
 
 // Rows
 NSString *kShowUserProfileRow = @"kShowUserProfileRow";
@@ -45,6 +46,7 @@ NSString *kShowCommentsListRow = @"kShowCommentsListRow";
 NSString *kLinkToFacebookRow = @"kLinkToFacebookRow";
 NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
 NSString *kLikeEntityRow = @"kLikeEntityRow";
+NSString *kHandleDirectURLSmartAlertRow = @"kHandleDirectURLSmartAlertRow";
 
 @interface SampleListViewController ()
 @property (nonatomic, retain) NSArray *sections;
@@ -143,6 +145,17 @@ NSString *kLikeEntityRow = @"kLikeEntityRow";
         [SZTwitterUtils linkWithDisplay:self success:nil failure:nil];
     }]];
 
+    NSMutableArray *smartAlertsRows = [NSMutableArray array];
+    [smartAlertsRows addObject:[self rowWithIdentifier:kHandleDirectURLSmartAlertRow text:@"Direct URL SmartAlert" executionBlock:^{
+        NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       @"www.getsocialize.com", @"url",
+                                       @"developer_direct_url", @"notification_type",
+                                       nil];
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+        
+        [SZSmartAlertUtils handleNotification:userInfo];
+    }]];
+
     return [NSArray arrayWithObjects:
             [self sectionWithIdentifier:kConfigSection
                                   title:@"Configuration"
@@ -171,6 +184,10 @@ NSString *kLikeEntityRow = @"kLikeEntityRow";
             [self sectionWithIdentifier:kTwitterSection
                                   title:@"Twiter Utilities"
                                    rows:twitterRows],
+
+            [self sectionWithIdentifier:kSmartAlertsSection
+                                  title:@"Smart Alerts Utilities"
+                                   rows:smartAlertsRows],
 
             nil];
 }
