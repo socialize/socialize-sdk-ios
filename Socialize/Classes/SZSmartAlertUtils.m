@@ -19,7 +19,7 @@
     return [Socialize isSocializeNotification:userInfo];
 }
 
-- (void)registerDeviceToken:(NSData*)deviceToken {
++ (void)registerDeviceToken:(NSData*)deviceToken {
     [Socialize registerDeviceToken:deviceToken];
 }
 

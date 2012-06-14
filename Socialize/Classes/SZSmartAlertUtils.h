@@ -12,6 +12,6 @@
 
 + (BOOL)handleNotification:(NSDictionary*)userInfo;
 + (BOOL)isSocializeNotification:(NSDictionary*)userInfo;
-- (void)registerDeviceToken:(NSData*)deviceToken;
++ (void)registerDeviceToken:(NSData*)deviceToken;
 
 @end

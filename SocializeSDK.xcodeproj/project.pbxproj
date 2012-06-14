@@ -1196,6 +1196,10 @@
 		AA3D69551432ADEF00DA77AC /* socialize-profileimage-large-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694B1432ADEF00DA77AC /* socialize-profileimage-large-default@2x.png */; };
 		AA3D69561432ADEF00DA77AC /* socialize-sectionheader-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694C1432ADEF00DA77AC /* socialize-sectionheader-bg.png */; };
 		AA3D69571432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3D694D1432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png */; };
+		AA3D919B158950E000A8BF1E /* SZLocationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA3D9199158950E000A8BF1E /* SZLocationUtils.h */; };
+		AA3D919C158950E000A8BF1E /* SZLocationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA3D9199158950E000A8BF1E /* SZLocationUtils.h */; };
+		AA3D919D158950E000A8BF1E /* SZLocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3D919A158950E000A8BF1E /* SZLocationUtils.m */; };
+		AA3D919E158950E000A8BF1E /* SZLocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3D919A158950E000A8BF1E /* SZLocationUtils.m */; };
 		AA3E20A01461F057000321BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB111378889E00B11B78 /* UIKit.framework */; };
 		AA3E20A11461F057000321BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DAC11378824800B11B78 /* Foundation.framework */; };
 		AA3E20A21461F057000321BF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC3DB101378889E00B11B78 /* CoreGraphics.framework */; };
@@ -1277,6 +1281,7 @@
 		AA51C14D1471D10700E5C003 /* SocializeBaseViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */; };
 		AA5ACEEF1467C3F200790B3D /* SocializeProfileEditValueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C2144325F9004E4C1B /* SocializeProfileEditValueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5ACEF01467C3F300790B3D /* SocializeProfileEditValueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 167E11C2144325F9004E4C1B /* SocializeProfileEditValueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA61932515899BBD003C615F /* SmartAlertUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA61932415899BBD003C615F /* SmartAlertUtilsTests.m */; };
 		AA63C44714EA22C70035D4D0 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63C44614EA22C70035D4D0 /* JRSwizzle.m */; };
 		AA63C44A14EA24070035D4D0 /* UIAlertView+Observer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63C44914EA24070035D4D0 /* UIAlertView+Observer.m */; };
 		AA68733C14D1E56300970F77 /* SocializeVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = AA68733B14D1E56300970F77 /* SocializeVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2935,6 +2940,8 @@
 		AA3D694B1432ADEF00DA77AC /* socialize-profileimage-large-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-profileimage-large-default@2x.png"; path = "Resources/socialize-profileimage-large-default@2x.png"; sourceTree = "<group>"; };
 		AA3D694C1432ADEF00DA77AC /* socialize-sectionheader-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-sectionheader-bg.png"; path = "Resources/socialize-sectionheader-bg.png"; sourceTree = "<group>"; };
 		AA3D694D1432ADEF00DA77AC /* socialize-sectionheader-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-sectionheader-bg@2x.png"; path = "Resources/socialize-sectionheader-bg@2x.png"; sourceTree = "<group>"; };
+		AA3D9199158950E000A8BF1E /* SZLocationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZLocationUtils.h; path = Classes/SZLocationUtils.h; sourceTree = "<group>"; };
+		AA3D919A158950E000A8BF1E /* SZLocationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZLocationUtils.m; path = Classes/SZLocationUtils.m; sourceTree = "<group>"; };
 		AA3E209E1461F057000321BF /* IntegrationTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntegrationTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3E20A51461F057000321BF /* IntegrationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IntegrationTests-Info.plist"; sourceTree = "<group>"; };
 		AA3E20A71461F057000321BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2967,6 +2974,8 @@
 		AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBaseViewControllerTests.m; path = "Test Cases/SocializeBaseViewControllerTests.m"; sourceTree = "<group>"; };
 		AA553A1C14FD825800CCB3AE /* NSObject+Observer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Observer.h"; sourceTree = "<group>"; };
 		AA553A1D14FD825800CCB3AE /* NSObject+Observer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Observer.m"; sourceTree = "<group>"; };
+		AA61932315899BBD003C615F /* SmartAlertUtilsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartAlertUtilsTests.h; path = "Test Cases/SmartAlertUtilsTests.h"; sourceTree = "<group>"; };
+		AA61932415899BBD003C615F /* SmartAlertUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmartAlertUtilsTests.m; path = "Test Cases/SmartAlertUtilsTests.m"; sourceTree = "<group>"; };
 		AA639F84144A34B600660E26 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		AA63C44514EA22C70035D4D0 /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
 		AA63C44614EA22C70035D4D0 /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
@@ -4356,6 +4365,8 @@
 				AA05FFF2157D623500E82CB4 /* SZSubscriptionUtils.m */,
 				AA05FFF7157E7AAC00E82CB4 /* SZViewUtils.h */,
 				AA05FFF8157E7AAD00E82CB4 /* SZViewUtils.m */,
+				AA3D9199158950E000A8BF1E /* SZLocationUtils.h */,
+				AA3D919A158950E000A8BF1E /* SZLocationUtils.m */,
 				AA16D67615815321002F1E16 /* Options */,
 			);
 			name = Utils;
@@ -4403,6 +4414,8 @@
 			children = (
 				AA16D6F715817058002F1E16 /* UserUtilsTests.h */,
 				AA16D6F815817058002F1E16 /* UserUtilsTests.m */,
+				AA61932315899BBD003C615F /* SmartAlertUtilsTests.h */,
+				AA61932415899BBD003C615F /* SmartAlertUtilsTests.m */,
 			);
 			name = "SDK Tests";
 			sourceTree = "<group>";
@@ -5388,6 +5401,7 @@
 				AA16D6AB158154DE002F1E16 /* TestSubscriptionUtils.h in Headers */,
 				AA16D6B2158154EF002F1E16 /* TestViewUtils.h in Headers */,
 				AA6E49F51587025A00660587 /* TestLikeUtils.h in Headers */,
+				AA3D919C158950E000A8BF1E /* SZLocationUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5559,6 +5573,7 @@
 				AA16D6AA158154DE002F1E16 /* TestSubscriptionUtils.h in Headers */,
 				AA16D6B1158154EF002F1E16 /* TestViewUtils.h in Headers */,
 				AA6E49F41587025A00660587 /* TestLikeUtils.h in Headers */,
+				AA3D919B158950E000A8BF1E /* SZLocationUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7584,6 +7599,7 @@
 				AAE995D2157EE61E0048AAC0 /* SZAPIEventListener.m in Sources */,
 				AAE995D8157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */,
 				AA6E49F11586C57400660587 /* NSArray+BlocksKit.m in Sources */,
+				AA3D919D158950E000A8BF1E /* SZLocationUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7685,6 +7701,7 @@
 				AAF3168815520CB300E4A164 /* create_action_bar_no_auto.m in Sources */,
 				AAF3168915520CB300E4A164 /* create_action_bar.m in Sources */,
 				AA16D6F915817058002F1E16 /* UserUtilsTests.m in Sources */,
+				AA61932515899BBD003C615F /* SmartAlertUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7997,6 +8014,7 @@
 				AAE995D3157EE61E0048AAC0 /* SZAPIEventListener.m in Sources */,
 				AAE995D9157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */,
 				AA6E49F01586C57100660587 /* NSArray+BlocksKit.m in Sources */,
+				AA3D919E158950E000A8BF1E /* SZLocationUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
