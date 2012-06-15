@@ -2047,6 +2047,10 @@
 		AAEABFF614919575007C3D23 /* SocializeKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */; };
 		AAEABFF714919575007C3D23 /* SocializeKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */; };
 		AAEB4A7B1458E88300A01F5B /* SocializeServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */; };
+		AAECC916158BF86800B4660F /* SZActionBarUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAECC914158BF86800B4660F /* SZActionBarUtils.h */; };
+		AAECC917158BF86800B4660F /* SZActionBarUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAECC914158BF86800B4660F /* SZActionBarUtils.h */; };
+		AAECC918158BF86800B4660F /* SZActionBarUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAECC915158BF86800B4660F /* SZActionBarUtils.m */; };
+		AAECC919158BF86800B4660F /* SZActionBarUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAECC915158BF86800B4660F /* SZActionBarUtils.m */; };
 		AAEDA76414FEC3430098EE75 /* NSObject+Observer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA553A1D14FD825800CCB3AE /* NSObject+Observer.m */; };
 		AAEEDDD81582A8BE00FFB876 /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAAFE88714355F1B00851C73 /* SocializeApiInfo.plist */; };
 		AAEEDDEB1582BD0C00FFB876 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AABE17891500634900500D45 /* libOCMock.a */; };
@@ -3269,6 +3273,8 @@
 		AAEABFF314919575007C3D23 /* SocializeKeyboardListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeKeyboardListener.m; path = Classes/SocializeKeyboardListener.m; sourceTree = "<group>"; };
 		AAEB4A791458E88300A01F5B /* SocializeServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeServiceTests.h; path = "Test Cases/SocializeServiceTests.h"; sourceTree = "<group>"; };
 		AAEB4A7A1458E88300A01F5B /* SocializeServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeServiceTests.m; path = "Test Cases/SocializeServiceTests.m"; sourceTree = "<group>"; };
+		AAECC914158BF86800B4660F /* SZActionBarUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZActionBarUtils.h; path = Classes/SZActionBarUtils.h; sourceTree = "<group>"; };
+		AAECC915158BF86800B4660F /* SZActionBarUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZActionBarUtils.m; path = Classes/SZActionBarUtils.m; sourceTree = "<group>"; };
 		AAF1772E1472F0FC008D53A1 /* SocializeAuthInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthInfoTableViewCell.xib; path = Resources/SocializeAuthInfoTableViewCell.xib; sourceTree = "<group>"; };
 		AAF1772F1472F0FC008D53A1 /* SocializeAuthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthTableViewCell.xib; path = Resources/SocializeAuthTableViewCell.xib; sourceTree = "<group>"; };
 		AAF3163D1551B98200E4A164 /* create_action_bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = create_action_bar.h; path = Documentation/sphinx/source/snippets/create_action_bar.h; sourceTree = SOURCE_ROOT; };
@@ -4370,6 +4376,8 @@
 				AA05FFF8157E7AAD00E82CB4 /* SZViewUtils.m */,
 				AA3D9199158950E000A8BF1E /* SZLocationUtils.h */,
 				AA3D919A158950E000A8BF1E /* SZLocationUtils.m */,
+				AAECC914158BF86800B4660F /* SZActionBarUtils.h */,
+				AAECC915158BF86800B4660F /* SZActionBarUtils.m */,
 				AA16D67615815321002F1E16 /* Options */,
 			);
 			name = Utils;
@@ -5407,6 +5415,7 @@
 				AA16D6B2158154EF002F1E16 /* TestViewUtils.h in Headers */,
 				AA6E49F51587025A00660587 /* TestLikeUtils.h in Headers */,
 				AA3D919C158950E000A8BF1E /* SZLocationUtils.h in Headers */,
+				AAECC917158BF86800B4660F /* SZActionBarUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5579,6 +5588,7 @@
 				AA16D6B1158154EF002F1E16 /* TestViewUtils.h in Headers */,
 				AA6E49F41587025A00660587 /* TestLikeUtils.h in Headers */,
 				AA3D919B158950E000A8BF1E /* SZLocationUtils.h in Headers */,
+				AAECC916158BF86800B4660F /* SZActionBarUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7605,6 +7615,7 @@
 				AAE995D8157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */,
 				AA6E49F11586C57400660587 /* NSArray+BlocksKit.m in Sources */,
 				AA3D919D158950E000A8BF1E /* SZLocationUtils.m in Sources */,
+				AAECC918158BF86800B4660F /* SZActionBarUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8021,6 +8032,7 @@
 				AAE995D9157EE8BA0048AAC0 /* SZAPIHelpers.m in Sources */,
 				AA6E49F01586C57100660587 /* NSArray+BlocksKit.m in Sources */,
 				AA3D919E158950E000A8BF1E /* SZLocationUtils.m in Sources */,
+				AAECC919158BF86800B4660F /* SZActionBarUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
