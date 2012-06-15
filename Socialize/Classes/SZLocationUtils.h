@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface SZLocationUtils : NSObject
++ (void)getCurrentLocationWithSuccess:(void(^)(CLLocation* location))success failure:(void(^)(NSError *error))failure;
++ (CLLocation*)lastLocation;
 
 @end

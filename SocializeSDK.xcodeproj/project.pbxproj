@@ -1406,6 +1406,7 @@
 		AA839AA614D3772800103ECE /* SocializeRichPushNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA839AA314D3772800103ECE /* SocializeRichPushNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA839AA714D3772800103ECE /* SocializeRichPushNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA839AA314D3772800103ECE /* SocializeRichPushNotificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA839AB314D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA839AB214D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m */; };
+		AA87AA30158BDFEE0017306B /* TestLocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA87AA2F158BDFEE0017306B /* TestLocationUtils.m */; };
 		AA87C5DC146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA87C5D9146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA87C5DD146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA87C5D9146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA87C5DE146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA87C5DA146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.m */; };
@@ -3030,6 +3031,8 @@
 		AA839AB114D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeRichPushNotificationViewControllerTests.h; sourceTree = "<group>"; };
 		AA839AB214D38AA600103ECE /* SocializeRichPushNotificationViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeRichPushNotificationViewControllerTests.m; sourceTree = "<group>"; };
 		AA863889144CA42C00CFA759 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = Frameworks/OCMock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
+		AA87AA2E158BDFEE0017306B /* TestLocationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLocationUtils.h; sourceTree = "<group>"; };
+		AA87AA2F158BDFEE0017306B /* TestLocationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLocationUtils.m; sourceTree = "<group>"; };
 		AA87C5D9146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZComposeCommentMessageViewController.h; path = Classes/SZComposeCommentMessageViewController.h; sourceTree = "<group>"; };
 		AA87C5DA146C7E8C00B22EF4 /* SZComposeCommentMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZComposeCommentMessageViewController.m; path = Classes/SZComposeCommentMessageViewController.m; sourceTree = "<group>"; };
 		AA87C8EA156BF94D0018AD79 /* socialize-selectnetwork-facebook-dis-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-facebook-dis-icon.png"; path = "Resources/socialize-selectnetwork-facebook-dis-icon.png"; sourceTree = "<group>"; };
@@ -4744,6 +4747,8 @@
 				AA16D6B0158154EE002F1E16 /* TestViewUtils.m */,
 				AA6E49F21587025A00660587 /* TestLikeUtils.h */,
 				AA6E49F31587025A00660587 /* TestLikeUtils.m */,
+				AA87AA2E158BDFEE0017306B /* TestLocationUtils.h */,
+				AA87AA2F158BDFEE0017306B /* TestLocationUtils.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -7247,7 +7252,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "GHUNIT_CLI=1 ./util/run-headless-simulator.sh";
+			shellScript = "./util/run-integration-tests.sh";
 			showEnvVarsInLog = 0;
 		};
 		AA40E4A514D209E700EB6DEE /* Make Version Header */ = {
@@ -7291,7 +7296,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./util/run-integration-tests.sh";
+			shellScript = "./util/run-ui-integration-tests.sh";
 			showEnvVarsInLog = 0;
 		};
 		AAB8F4751443713900441515 /* Dump Xcode Environment */ = {
@@ -7782,6 +7787,7 @@
 				AA16D6B5158154EF002F1E16 /* TestViewUtils.m in Sources */,
 				AAB93B8B15826C0200D003CC /* SZTestHelper.m in Sources */,
 				AA6E49F81587025A00660587 /* TestLikeUtils.m in Sources */,
+				AA87AA30158BDFEE0017306B /* TestLocationUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

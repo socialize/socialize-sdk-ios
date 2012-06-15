@@ -87,7 +87,7 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
     }, ^(NSError *error) {
         [self notify:kGHUnitWaitStatusFailure];
     });
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:20];
     return [outerResult autorelease];
 
 }

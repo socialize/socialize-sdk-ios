@@ -7,7 +7,17 @@
 //
 
 #import "SZLocationUtils.h"
+#import <CoreLocation/CoreLocation.h>
+#import "SocializeLocationManager.h"
 
 @implementation SZLocationUtils
+
++ (void)getCurrentLocationWithSuccess:(void(^)(CLLocation* location))success failure:(void(^)(NSError *error))failure {
+    [[SocializeLocationManager sharedLocationManager] getCurrentLocationWithSuccess:success failure:failure];
+}
+
++ (CLLocation*)lastLocation {
+    return [[SocializeLocationManager sharedLocationManager] lastLocation];
+}
 
 @end

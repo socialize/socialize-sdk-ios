@@ -17,4 +17,6 @@
 - (void)tryToAcceptLocation:(CLLocation*)newLocation;
 
 @property (nonatomic, readonly) CLLocation *currentLocation;
+@property (nonatomic, retain, readonly) CLLocation *lastLocation;
+
 @end
