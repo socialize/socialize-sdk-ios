@@ -14,7 +14,7 @@
     [super viewDidLoad];
 
     if (self.actionBar == nil) {
-        self.actionBar = [SZActionBar actionBarWithKey:@"http://www.example.com/object/1234" name:@"Something" presentModalInController:self];
+        self.actionBar = [SocializeActionBar actionBarWithKey:@"http://www.example.com/object/1234" name:@"Something" presentModalInController:self];
         [self.view addSubview:self.actionBar.view];
     }
 }

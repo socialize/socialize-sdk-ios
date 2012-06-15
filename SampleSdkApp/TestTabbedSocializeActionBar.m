@@ -1,14 +1,14 @@
 //
-//  TestTabbedSZActionBar.m
+//  TestTabbedSocializeActionBar.m
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 10/18/11.
 //  Copyright (c) 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "TestTabbedSZActionBar.h"
+#import "TestTabbedSocializeActionBar.h"
 
-@implementation TestTabbedSZActionBar
+@implementation TestTabbedSocializeActionBar
 @synthesize tabBarController = _tabBarController;
 @synthesize entityUrl = _entityUrl;
 @synthesize generic1 = _generic1;
@@ -41,11 +41,11 @@
     SocializeEntity *entity = [[[SocializeEntity alloc] init] autorelease];
     entity.key = self.entityUrl;
     entity.name = @"TestBar";
-    self.actionBar = [SZActionBar actionBarWithKey:self.entityUrl name:@"TestBar" presentModalInController:self];
+    self.actionBar = [SocializeActionBar actionBarWithKey:self.entityUrl name:@"TestBar" presentModalInController:self];
 
-//    self.actionBar = [SZActionBar actionBarWithEntity:entity display:self];
+//    self.actionBar = [SocializeActionBar actionBarWithEntity:entity display:self];
 
-//    self.actionBar = [SZActionBar actionBarWithKey:self.entityUrl name:@"TestBar" presentModalInController:self];
+//    self.actionBar = [SocializeActionBar actionBarWithKey:self.entityUrl name:@"TestBar" presentModalInController:self];
     [self.generic1.view addSubview:self.actionBar.view];
     self.generic1.label.text = @"First controller";
     self.generic2.label.text = @"Second controller";

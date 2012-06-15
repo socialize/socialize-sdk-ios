@@ -1,5 +1,5 @@
 /*
- * SZActionBar.h
+ * SocializeActionBar.h
  * SocializeSDK
  *
  * Created on 10/5/11.
@@ -28,7 +28,7 @@
 #import <UIKit/UIKit.h>
 #import "SocializeBaseViewController.h"
 #import "SocializeActionView.h"
-#import "SZActionBarDelegate.h"
+#import "SocializeActionBarDelegate.h"
 #import "SocializeUIDisplayProxyDelegate.h"
 #import "SZCommentsListViewController.h"
 #import "SZDisplay.h"
@@ -44,9 +44,9 @@
  The Socialize Action Bar
 
  */
-@interface SZActionBar : SocializeBaseViewController<SocializeActionViewDelegate, SocializeUIDisplayProxyDelegate, SZCommentsListViewControllerDelegate>
+@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate, SocializeUIDisplayProxyDelegate, SZCommentsListViewControllerDelegate>
 
-@property (nonatomic, assign) id<SZActionBarDelegate> delegate;
+@property (nonatomic, assign) id<SocializeActionBarDelegate> delegate;
 @property (nonatomic, retain) id<SocializeEntity> entity;
 @property (nonatomic, retain) UIViewController *commentsNavController;
 
@@ -69,7 +69,7 @@
  
  @warning Deprecated. Use actionbarWithKey:name:presentModalInController: instead
  */
-+(SZActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller __attribute__((deprecated));
++(SocializeActionBar*)actionBarWithUrl:(NSString*)url presentModalInController:(UIViewController*)controller __attribute__((deprecated));
 
 
 /**
@@ -80,7 +80,7 @@
  
  @warning Deprecated. Use actionBarWithKey:name:presentModalInController:
  */
-+(SZActionBar*)actionBarWithKey:(NSString*)key presentModalInController:(UIViewController*)controller __attribute__((deprecated));
++(SocializeActionBar*)actionBarWithKey:(NSString*)key presentModalInController:(UIViewController*)controller __attribute__((deprecated));
 
 /**
  Class helper method to create an Action Bar
@@ -89,7 +89,7 @@
  @param name The Entity Name
  @param presentModalInController Modal dialogs and UIActionSheet popups will be presented in this controller and its view
  */
-+(SZActionBar*)actionBarWithKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller;
++(SocializeActionBar*)actionBarWithKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller;
 
 
 /**
@@ -123,7 +123,7 @@
  @param entity The Socialize entity. It will be created if it does not exist
  @param display Target for display actions. Either a UIViewController or a SocializeUIDisplay implementation
  */
-//+(SZActionBar*)actionBarWithEntity:(id<SocializeEntity>)entity display:(id)display;
+//+(SocializeActionBar*)actionBarWithEntity:(id<SocializeEntity>)entity display:(id)display;
 
 /**
  Action Bar Init

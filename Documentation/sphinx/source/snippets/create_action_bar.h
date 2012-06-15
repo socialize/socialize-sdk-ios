@@ -5,5 +5,5 @@
 #import <Socialize/Socialize.h>
 
 @interface CreateActionBarViewController : UIViewController
-@property (nonatomic, retain) SZActionBar *actionBar;
+@property (nonatomic, retain) SocializeActionBar *actionBar;
 @end

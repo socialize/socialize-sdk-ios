@@ -17,10 +17,10 @@
 #import "AuthenticateViewController.h"
 #import <Socialize/Socialize.h>
 #import "TestShowSmallUserInfo.h"
-#import "TestSZActionBar.h"
+#import "TestOldActionBar.h"
 #import "InputBox.h"
 #import "TestActivityViewController.h"
-#import "TestTabbedSZActionBar.h"
+#import "TestTabbedSocializeActionBar.h"
 #import "TestLikeButton.h"
 #import "SampleListViewController.h"
 
@@ -255,7 +255,7 @@
             NSString* url = [self getEntityKey];
             if(url)
             {
-                controller = [[TestSZActionBar alloc] initWithEntityUrl:url];
+                controller = [[TestOldActionBar alloc] initWithEntityUrl:url];
                 [self.navigationController pushViewController:controller animated:YES];
             }
             break;
@@ -264,8 +264,8 @@
         {
             NSString* url = [self getEntityKey];
             if (url) {
-                controller = [[TestTabbedSZActionBar alloc] init];
-                [(TestTabbedSZActionBar*)controller setEntityUrl:url];
+                controller = [[TestTabbedSocializeActionBar alloc] init];
+                [(TestTabbedSocializeActionBar*)controller setEntityUrl:url];
                 [self.navigationController pushViewController:controller animated:YES];
             }
             break;

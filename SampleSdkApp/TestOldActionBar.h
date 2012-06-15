@@ -1,5 +1,5 @@
 /*
- * TestSZActionBar.h
+ * TestSocializeActionBar.h
  * SocializeSDK
  *
  * Created on 10/5/11.
@@ -28,12 +28,12 @@
 #import <UIKit/UIKit.h>
 #import <Socialize/Socialize.h>
 
-@class SZActionBar;
+@class SocializeActionBar;
 
-@interface TestSZActionBar : UIViewController <SZActionBarDelegate> {
+@interface TestOldActionBar : UIViewController <SocializeActionBarDelegate> {
     NSString* entityUrl;
     IBOutlet UIWebView* entityView;
-    SZActionBar* bar;
+    SocializeActionBar* bar;
 }
 
 @property(nonatomic, retain) IBOutlet UIWebView* entityView;

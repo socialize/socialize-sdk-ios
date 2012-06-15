@@ -4,6 +4,6 @@
 
 #import <Socialize/Socialize.h>
 
-@interface CreateActionBarWithDelegateViewController : UIViewController <SZActionBarDelegate>
-@property (nonatomic, retain) SZActionBar *actionBar;
+@interface CreateActionBarWithDelegateViewController : UIViewController <SocializeActionBarDelegate>
+@property (nonatomic, retain) SocializeActionBar *actionBar;
 @end
