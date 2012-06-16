@@ -1271,6 +1271,16 @@
 		AA4956FF1484276A00718BC4 /* SocializeDynamicTest.h in Headers */ = {isa = PBXBuildFile; fileRef = AA4956FC1484276A00718BC4 /* SocializeDynamicTest.h */; };
 		AA4957001484276A00718BC4 /* SocializeDynamicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4956FD1484276A00718BC4 /* SocializeDynamicTest.m */; };
 		AA4957011484276A00718BC4 /* SocializeDynamicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4956FD1484276A00718BC4 /* SocializeDynamicTest.m */; };
+		AA4B13E7158C00E2001C1998 /* SZActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = AA4B13E5158C00E2001C1998 /* SZActionBar.h */; };
+		AA4B13E8158C00E2001C1998 /* SZActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = AA4B13E5158C00E2001C1998 /* SZActionBar.h */; };
+		AA4B13E9158C00E2001C1998 /* SZActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4B13E6158C00E2001C1998 /* SZActionBar.m */; };
+		AA4B13EA158C00E2001C1998 /* SZActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4B13E6158C00E2001C1998 /* SZActionBar.m */; };
+		AA4B13EE158C04E7001C1998 /* ActionBarExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4B13EC158C04E7001C1998 /* ActionBarExampleViewController.m */; };
+		AA4B13EF158C04E7001C1998 /* ActionBarExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4B13EC158C04E7001C1998 /* ActionBarExampleViewController.m */; };
+		AA4B13F0158C04E7001C1998 /* ActionBarExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4B13EC158C04E7001C1998 /* ActionBarExampleViewController.m */; };
+		AA4B13F1158C04E7001C1998 /* ActionBarExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4B13ED158C04E7001C1998 /* ActionBarExampleViewController.xib */; };
+		AA4B13F2158C04E7001C1998 /* ActionBarExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4B13ED158C04E7001C1998 /* ActionBarExampleViewController.xib */; };
+		AA4B13F3158C04E7001C1998 /* ActionBarExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4B13ED158C04E7001C1998 /* ActionBarExampleViewController.xib */; };
 		AA51C1441471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
 		AA51C1451471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
 		AA51C1461471CECF00E5C003 /* SocializeAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */; };
@@ -2974,6 +2984,11 @@
 		AA4889F8155D973C00ED28AC /* socialize-selectnetwork-table-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-table-back@2x.png"; path = "Resources/socialize-selectnetwork-table-back@2x.png"; sourceTree = "<group>"; };
 		AA4956FC1484276A00718BC4 /* SocializeDynamicTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeDynamicTest.h; path = Classes/SocializeDynamicTest.h; sourceTree = "<group>"; };
 		AA4956FD1484276A00718BC4 /* SocializeDynamicTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeDynamicTest.m; path = Classes/SocializeDynamicTest.m; sourceTree = "<group>"; };
+		AA4B13E5158C00E2001C1998 /* SZActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZActionBar.h; path = Classes/SZActionBar.h; sourceTree = "<group>"; };
+		AA4B13E6158C00E2001C1998 /* SZActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZActionBar.m; path = Classes/SZActionBar.m; sourceTree = "<group>"; };
+		AA4B13EB158C04E7001C1998 /* ActionBarExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionBarExampleViewController.h; sourceTree = "<group>"; };
+		AA4B13EC158C04E7001C1998 /* ActionBarExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionBarExampleViewController.m; sourceTree = "<group>"; };
+		AA4B13ED158C04E7001C1998 /* ActionBarExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionBarExampleViewController.xib; sourceTree = "<group>"; };
 		AA51C1431471CECF00E5C003 /* SocializeAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthViewController.xib; path = Resources/SocializeAuthViewController.xib; sourceTree = "<group>"; };
 		AA51C14B1471D10700E5C003 /* SocializeBaseViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeBaseViewControllerTests.h; path = "Test Cases/SocializeBaseViewControllerTests.h"; sourceTree = "<group>"; };
 		AA51C14C1471D10700E5C003 /* SocializeBaseViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocializeBaseViewControllerTests.m; path = "Test Cases/SocializeBaseViewControllerTests.m"; sourceTree = "<group>"; };
@@ -4979,6 +4994,9 @@
 		AAB64D9D147309AE009E892D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				AA4B13EB158C04E7001C1998 /* ActionBarExampleViewController.h */,
+				AA4B13EC158C04E7001C1998 /* ActionBarExampleViewController.m */,
+				AA4B13ED158C04E7001C1998 /* ActionBarExampleViewController.xib */,
 				AAA490141553054E003FB943 /* TestOldActionBar.h */,
 				AAA490151553054E003FB943 /* TestOldActionBar.m */,
 				AAA490161553054E003FB943 /* TestOldActionBar.xib */,
@@ -5146,6 +5164,8 @@
 		AAF903081472FC8500AB8674 /* Action Bar */ = {
 			isa = PBXGroup;
 			children = (
+				AA4B13E5158C00E2001C1998 /* SZActionBar.h */,
+				AA4B13E6158C00E2001C1998 /* SZActionBar.m */,
 				1638C521143DC96A00538659 /* SocializeActionBar.h */,
 				1638C522143DC96A00538659 /* SocializeActionBar.m */,
 				AA0186CA14C61A4A00858AD8 /* SocializeActionBarDelegate.h */,
@@ -5416,6 +5436,7 @@
 				AA6E49F51587025A00660587 /* TestLikeUtils.h in Headers */,
 				AA3D919C158950E000A8BF1E /* SZLocationUtils.h in Headers */,
 				AAECC917158BF86800B4660F /* SZActionBarUtils.h in Headers */,
+				AA4B13E8158C00E2001C1998 /* SZActionBar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5589,6 +5610,7 @@
 				AA6E49F41587025A00660587 /* TestLikeUtils.h in Headers */,
 				AA3D919B158950E000A8BF1E /* SZLocationUtils.h in Headers */,
 				AAECC916158BF86800B4660F /* SZActionBarUtils.h in Headers */,
+				AA4B13E7158C00E2001C1998 /* SZActionBar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6634,6 +6656,7 @@
 				AA87C91A156BF94D0018AD79 /* socialize-selectnetwork-twitter-dis-icon@2x.png in Resources */,
 				AA87C921156BF94D0018AD79 /* socialize-selectnetwork-twitter-icon.png in Resources */,
 				AA87C928156BF94D0018AD79 /* socialize-selectnetwork-twitter-icon@2x.png in Resources */,
+				AA4B13F2158C04E7001C1998 /* ActionBarExampleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6732,6 +6755,7 @@
 				AA87C929156BF94D0018AD79 /* socialize-selectnetwork-twitter-icon@2x.png in Resources */,
 				AAB93B87158268B700D003CC /* Smiley.png in Resources */,
 				AAEEDDD81582A8BE00FFB876 /* SocializeApiInfo.plist in Resources */,
+				AA4B13F3158C04E7001C1998 /* ActionBarExampleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6959,6 +6983,7 @@
 				AA87C918156BF94D0018AD79 /* socialize-selectnetwork-twitter-dis-icon@2x.png in Resources */,
 				AA87C91F156BF94D0018AD79 /* socialize-selectnetwork-twitter-icon.png in Resources */,
 				AA87C926156BF94D0018AD79 /* socialize-selectnetwork-twitter-icon@2x.png in Resources */,
+				AA4B13F1158C04E7001C1998 /* ActionBarExampleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7616,6 +7641,7 @@
 				AA6E49F11586C57400660587 /* NSArray+BlocksKit.m in Sources */,
 				AA3D919D158950E000A8BF1E /* SZLocationUtils.m in Sources */,
 				AAECC918158BF86800B4660F /* SZActionBarUtils.m in Sources */,
+				AA4B13E9158C00E2001C1998 /* SZActionBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7762,6 +7788,7 @@
 				AAE99627157FE51D0048AAC0 /* GCDAProfiling.c in Sources */,
 				AAB93B8A15826C0200D003CC /* SZTestHelper.m in Sources */,
 				AAB93B8C15826C5800D003CC /* SZIntegrationTestCase.m in Sources */,
+				AA4B13EF158C04E7001C1998 /* ActionBarExampleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7799,6 +7826,7 @@
 				AAB93B8B15826C0200D003CC /* SZTestHelper.m in Sources */,
 				AA6E49F81587025A00660587 /* TestLikeUtils.m in Sources */,
 				AA87AA30158BDFEE0017306B /* TestLocationUtils.m in Sources */,
+				AA4B13F0158C04E7001C1998 /* ActionBarExampleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7831,6 +7859,7 @@
 				AA1A2DF4155864020085D0D9 /* SampleListViewController.m in Sources */,
 				AA179ECA15853A360097D59A /* SZTestHelper.m in Sources */,
 				AA179ECD15853BB10097D59A /* SZIntegrationTestCase.m in Sources */,
+				AA4B13EE158C04E7001C1998 /* ActionBarExampleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8033,6 +8062,7 @@
 				AA6E49F01586C57100660587 /* NSArray+BlocksKit.m in Sources */,
 				AA3D919E158950E000A8BF1E /* SZLocationUtils.m in Sources */,
 				AAECC919158BF86800B4660F /* SZActionBarUtils.m in Sources */,
+				AA4B13EA158C00E2001C1998 /* SZActionBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,7 @@
 #import "SZTwitterUtils.h"
 #import "SampleSdkAppAppDelegate.h"
 #import "SZTestHelper.h"
+#import "ActionBarExampleViewController.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -38,6 +39,7 @@ NSString *kLikeSection = @"kLikeSection";
 NSString *kFacebookSection = @"kFacebookSection";
 NSString *kTwitterSection = @"kTwitterSection";
 NSString *kSmartAlertsSection = @"kSmartAlertsSection";
+NSString *kActionBarSection = @"kActionBarSection";
 
 // Rows
 NSString *kShowUserProfileRow = @"kShowUserProfileRow";
@@ -47,6 +49,7 @@ NSString *kLinkToFacebookRow = @"kLinkToFacebookRow";
 NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
 NSString *kLikeEntityRow = @"kLikeEntityRow";
 NSString *kHandleDirectURLSmartAlertRow = @"kHandleDirectURLSmartAlertRow";
+NSString *kShowActionBarExampleRow = @"kShowActionBarExampleRow";
 
 @interface SampleListViewController ()
 @property (nonatomic, retain) NSArray *sections;
@@ -156,6 +159,13 @@ NSString *kHandleDirectURLSmartAlertRow = @"kHandleDirectURLSmartAlertRow";
         [SZSmartAlertUtils handleNotification:userInfo];
     }]];
 
+    NSMutableArray *actionBarRows = [NSMutableArray array];
+    [actionBarRows addObject:[self rowWithIdentifier:kHandleDirectURLSmartAlertRow text:@"Show Action Bar Example" executionBlock:^{
+        ActionBarExampleViewController *actionBarExample = [[[ActionBarExampleViewController alloc] init] autorelease];
+        SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:actionBarExample] autorelease];
+        [self presentModalViewController:nav animated:YES];
+    }]];
+
     return [NSArray arrayWithObjects:
             [self sectionWithIdentifier:kConfigSection
                                   title:@"Configuration"
@@ -188,6 +198,10 @@ NSString *kHandleDirectURLSmartAlertRow = @"kHandleDirectURLSmartAlertRow";
             [self sectionWithIdentifier:kSmartAlertsSection
                                   title:@"Smart Alerts Utilities"
                                    rows:smartAlertsRows],
+
+            [self sectionWithIdentifier:kActionBarSection
+                                  title:@"Action Bar Utilities"
+                                   rows:actionBarRows],
 
             nil];
 }
