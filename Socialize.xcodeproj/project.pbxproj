@@ -511,9 +511,9 @@
 		AA1C1C2A158EF44000A763CA /* SZTwitterUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008720158D35BF00480399 /* SZTwitterUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C2B158EF44000A763CA /* SZUserUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008722158D35BF00480399 /* SZUserUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C2C158EF44000A763CA /* SZViewUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008724158D35BF00480399 /* SZViewUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA25FEAD159119F00067741A /* SZUserSettingsViewControllerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA25FEAB159119F00067741A /* SZUserSettingsViewControllerViewController.h */; };
-		AA25FEAE159119F00067741A /* SZUserSettingsViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA25FEAC159119F00067741A /* SZUserSettingsViewControllerViewController.m */; };
-		AA25FEB015911ACC0067741A /* SZUserSettingsViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA25FEAC159119F00067741A /* SZUserSettingsViewControllerViewController.m */; };
+		AA25FEAD159119F00067741A /* SZUserSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA25FEAB159119F00067741A /* SZUserSettingsViewController.h */; };
+		AA25FEAE159119F00067741A /* SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */; };
+		AA25FEB015911ACC0067741A /* SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */; };
 		AA2C7A43158EF4F3009A2370 /* Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008626158D35BD00480399 /* Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA3BC36F158E7F170073AD50 /* libSocialize-noarc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085F3158D358B00480399 /* libSocialize-noarc.a */; };
 		AA3BC370158E7F200073AD50 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085C0158D2EFC00480399 /* libSocialize.a */; };
@@ -2122,8 +2122,8 @@
 		AA159E25158FAE11006E1CAE /* TestAppKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestAppKIFTestController.m; path = UIIntegrationTests/TestAppKIFTestController.m; sourceTree = "<group>"; };
 		AA1AD26815902E3B0020023C /* hide_symbols_blockskit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hide_symbols_blockskit.h; path = ThirdParty/BlocksKit/hide_symbols_blockskit.h; sourceTree = "<group>"; };
 		AA1D1090158EFBCE000C8A44 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = ThirdParty/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
-		AA25FEAB159119F00067741A /* SZUserSettingsViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserSettingsViewControllerViewController.h; sourceTree = "<group>"; };
-		AA25FEAC159119F00067741A /* SZUserSettingsViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserSettingsViewControllerViewController.m; sourceTree = "<group>"; };
+		AA25FEAB159119F00067741A /* SZUserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserSettingsViewController.h; sourceTree = "<group>"; };
+		AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserSettingsViewController.m; sourceTree = "<group>"; };
 		AA3BC371158E7F680073AD50 /* SZDummyLibSocialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZDummyLibSocialize.h; sourceTree = "<group>"; };
 		AA3BC372158E7F680073AD50 /* SZDummyLibSocialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDummyLibSocialize.m; sourceTree = "<group>"; };
 		AA3BC374158E80780073AD50 /* SampleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleListViewController.h; sourceTree = "<group>"; };
@@ -3131,8 +3131,8 @@
 		AA25FEAF159119F50067741A /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				AA25FEAB159119F00067741A /* SZUserSettingsViewControllerViewController.h */,
-				AA25FEAC159119F00067741A /* SZUserSettingsViewControllerViewController.m */,
+				AA25FEAB159119F00067741A /* SZUserSettingsViewController.h */,
+				AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -3738,7 +3738,7 @@
 				AA1C1C2B158EF44000A763CA /* SZUserUtils.h in Headers */,
 				AA1C1C2C158EF44000A763CA /* SZViewUtils.h in Headers */,
 				AA2C7A43158EF4F3009A2370 /* Socialize.h in Headers */,
-				AA25FEAD159119F00067741A /* SZUserSettingsViewControllerViewController.h in Headers */,
+				AA25FEAD159119F00067741A /* SZUserSettingsViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5129,7 +5129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA3BC373158E7F680073AD50 /* SZDummyLibSocialize.m in Sources */,
-				AA25FEAE159119F00067741A /* SZUserSettingsViewControllerViewController.m in Sources */,
+				AA25FEAE159119F00067741A /* SZUserSettingsViewController.m in Sources */,
 				AA41522F15911E37003717AC /* SZActionBarUtils.m in Sources */,
 				AA41523015911E37003717AC /* SZActionUtils.m in Sources */,
 				AA41523115911E37003717AC /* SZActivityOptions.m in Sources */,
@@ -5599,7 +5599,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAB5E522159044F900D3EBDF /* SZDummyLibSocialize.m in Sources */,
-				AA25FEB015911ACC0067741A /* SZUserSettingsViewControllerViewController.m in Sources */,
+				AA25FEB015911ACC0067741A /* SZUserSettingsViewController.m in Sources */,
 				AA41524015911E38003717AC /* SZActionBarUtils.m in Sources */,
 				AA41524115911E38003717AC /* SZActionUtils.m in Sources */,
 				AA41524215911E38003717AC /* SZActivityOptions.m in Sources */,

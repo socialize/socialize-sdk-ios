@@ -6,14 +6,14 @@
 //  Copyright (c) 2012 Socialize. All rights reserved.
 //
 
-#import "SZUserSettingsViewControllerViewController.h"
+#import "SZUserSettingsViewController.h"
 #import "_SZUserSettingsViewController.h"
 
-@interface SZUserSettingsViewControllerViewController ()
+@interface SZUserSettingsViewController ()
 @property (nonatomic, assign) BOOL initialized;
 @end
 
-@implementation SZUserSettingsViewControllerViewController
+@implementation SZUserSettingsViewController
 @synthesize completionBlock = _completionBlock;
 @synthesize initialized = _initialized;
 
