@@ -1,5 +1,5 @@
 //
-//  SZSettingsViewControllerTest.h
+//  _SZUserSettingsViewControllerTest.h
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 11/3/11.
@@ -9,10 +9,10 @@
 #import <GHUnitIOS/GHUnit.h>
 #import "SocializeBaseViewControllerTests.h"
 
-@class SZSettingsViewController;
+@class _SZUserSettingsViewController;
 
-@interface SZSettingsViewControllerTest : SocializeBaseViewControllerTests
-@property (nonatomic, retain) SZSettingsViewController *profileEditViewController;
+@interface _SZUserSettingsViewControllerTest : SocializeBaseViewControllerTests
+@property (nonatomic, retain) _SZUserSettingsViewController *profileEditViewController;
 @property (nonatomic, retain) id mockDelegate;
 @property (nonatomic, retain) id mockTableView;
 @property (nonatomic, retain) id mockBundle;

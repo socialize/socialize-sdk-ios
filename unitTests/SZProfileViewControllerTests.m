@@ -277,7 +277,7 @@
     self.profileViewController.navigationControllerForEdit = nil;
     
     // Temporarily a nice mock because it needs to pass through UIKit's UINavigationController init
-    self.profileViewController.profileEditViewController = [OCMockObject niceMockForClass:[SZSettingsViewController class]];
+    self.profileViewController.profileEditViewController = [OCMockObject niceMockForClass:[_SZUserSettingsViewController class]];
     
     UINavigationController *defaultNavigationControllerForEdit = self.profileViewController.navigationControllerForEdit;
     GHAssertEquals(defaultNavigationControllerForEdit.delegate, self.origViewController, @"delegate not configured");

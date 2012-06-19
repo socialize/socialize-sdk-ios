@@ -10,7 +10,7 @@
 #import "SocializeBaseViewController.h"
 #import "UINavigationBarBackground.h"
 #import "SocializeBaseViewControllerDelegate.h"
-#import "SZSettingsViewController.h"
+#import "_SZUserSettingsViewController.h"
 #import "SocializeCommonDefinitions.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"

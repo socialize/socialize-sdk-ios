@@ -63,7 +63,7 @@
 + (void)showUserSettingsWithDisplay:(id<SZDisplay>)display {
     SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
 
-    SZSettingsViewController *settings = [SZSettingsViewController settingsViewController];
+    _SZUserSettingsViewController *settings = [_SZUserSettingsViewController settingsViewController];
     settings.cancellationBlock = ^{
         [wrapper endSequence];
     };

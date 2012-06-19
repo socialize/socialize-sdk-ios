@@ -28,11 +28,11 @@
 #import <UIKit/UIKit.h>
 #import "_Socialize.h"
 #import "SocializeKeyboardListener.h"
-#import "SZSettingsViewControllerDelegate.h"
+#import "_SZUserSettingsViewControllerDelegate.h"
 
 @class SocializeLoadingView;
 @class ImagesCache;
-@class SZSettingsViewController;
+@class _SZUserSettingsViewController;
 
 @protocol SZDisplay;
 @protocol SocializeBaseViewControllerDelegate;

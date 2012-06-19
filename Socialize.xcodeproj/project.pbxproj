@@ -153,7 +153,7 @@
 		AA0087B8158D35C000480399 /* SZLocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870B158D35BF00480399 /* SZLocationUtils.m */; };
 		AA0087B9158D35C000480399 /* SZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870D158D35BF00480399 /* SZNavigationController.m */; };
 		AA0087BA158D35C000480399 /* SZProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870F158D35BF00480399 /* SZProfileViewController.m */; };
-		AA0087BB158D35C000480399 /* SZSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008711158D35BF00480399 /* SZSettingsViewController.m */; };
+		AA0087BB158D35C000480399 /* _SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008711158D35BF00480399 /* _SZUserSettingsViewController.m */; };
 		AA0087BC158D35C000480399 /* SZShareDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008714158D35BF00480399 /* SZShareDialogView.m */; };
 		AA0087BD158D35C000480399 /* SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008716158D35BF00480399 /* SZShareDialogViewController.m */; };
 		AA0087BE158D35C000480399 /* SZShareOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008718158D35BF00480399 /* SZShareOptions.m */; };
@@ -498,7 +498,7 @@
 		AA1C1C0C158EF3A200A763CA /* SZCommentsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086F5158D35BF00480399 /* SZCommentsListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C0D158EF3AA00A763CA /* SocializeComposeMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008655158D35BD00480399 /* SocializeComposeMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C0E158EF3B600A763CA /* SZProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00870E158D35BF00480399 /* SZProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA1C1C0F158EF3BB00A763CA /* SZSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008710158D35BF00480399 /* SZSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA1C1C0F158EF3BB00A763CA /* _SZUserSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008710158D35BF00480399 /* _SZUserSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C10158EF3C100A763CA /* SZComposeCommentMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086F9158D35BF00480399 /* SZComposeCommentMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C11158EF3CD00A763CA /* SocializeActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00862A158D35BD00480399 /* SocializeActionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C12158EF3D200A763CA /* SocializeActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008627158D35BD00480399 /* SocializeActionBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1128,7 +1128,7 @@
 		AAB5E4F1159044E600D3EBDF /* SZLocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870B158D35BF00480399 /* SZLocationUtils.m */; };
 		AAB5E4F2159044E600D3EBDF /* SZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870D158D35BF00480399 /* SZNavigationController.m */; };
 		AAB5E4F3159044E600D3EBDF /* SZProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870F158D35BF00480399 /* SZProfileViewController.m */; };
-		AAB5E4F4159044E600D3EBDF /* SZSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008711158D35BF00480399 /* SZSettingsViewController.m */; };
+		AAB5E4F4159044E600D3EBDF /* _SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008711158D35BF00480399 /* _SZUserSettingsViewController.m */; };
 		AAB5E4F5159044E600D3EBDF /* SZShareDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008714158D35BF00480399 /* SZShareDialogView.m */; };
 		AAB5E4F6159044E600D3EBDF /* SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008716158D35BF00480399 /* SZShareDialogViewController.m */; };
 		AAB5E4F7159044E600D3EBDF /* SZShareOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008718158D35BF00480399 /* SZShareOptions.m */; };
@@ -1173,7 +1173,7 @@
 		AAB5E52A159044F900D3EBDF /* SZCommentsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086F5158D35BF00480399 /* SZCommentsListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E52B159044F900D3EBDF /* SocializeComposeMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008655158D35BD00480399 /* SocializeComposeMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E52C159044F900D3EBDF /* SZProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00870E158D35BF00480399 /* SZProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAB5E52D159044F900D3EBDF /* SZSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008710158D35BF00480399 /* SZSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAB5E52D159044F900D3EBDF /* _SZUserSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008710158D35BF00480399 /* _SZUserSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E52E159044F900D3EBDF /* SZComposeCommentMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086F9158D35BF00480399 /* SZComposeCommentMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E52F159044F900D3EBDF /* SocializeActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00862A158D35BD00480399 /* SocializeActionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E530159044F900D3EBDF /* SocializeActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008627158D35BD00480399 /* SocializeActionBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1874,9 +1874,9 @@
 		AA00870D158D35BF00480399 /* SZNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZNavigationController.m; sourceTree = "<group>"; };
 		AA00870E158D35BF00480399 /* SZProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZProfileViewController.h; sourceTree = "<group>"; };
 		AA00870F158D35BF00480399 /* SZProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZProfileViewController.m; sourceTree = "<group>"; };
-		AA008710158D35BF00480399 /* SZSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSettingsViewController.h; sourceTree = "<group>"; };
-		AA008711158D35BF00480399 /* SZSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZSettingsViewController.m; sourceTree = "<group>"; };
-		AA008712158D35BF00480399 /* SZSettingsViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSettingsViewControllerDelegate.h; sourceTree = "<group>"; };
+		AA008710158D35BF00480399 /* _SZUserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SZUserSettingsViewController.h; sourceTree = "<group>"; };
+		AA008711158D35BF00480399 /* _SZUserSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SZUserSettingsViewController.m; sourceTree = "<group>"; };
+		AA008712158D35BF00480399 /* _SZUserSettingsViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; path = _SZUserSettingsViewControllerDelegate.h; sourceTree = "<group>"; };
 		AA008713158D35BF00480399 /* SZShareDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZShareDialogView.h; sourceTree = "<group>"; };
 		AA008714158D35BF00480399 /* SZShareDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZShareDialogView.m; sourceTree = "<group>"; };
 		AA008715158D35BF00480399 /* SZShareDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZShareDialogViewController.h; sourceTree = "<group>"; };
@@ -2094,8 +2094,8 @@
 		AA0C6103158FC61D00F66A3B /* SZLikeButtonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLikeButtonTests.m; sourceTree = "<group>"; };
 		AA0C6104158FC61D00F66A3B /* SZProfileViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZProfileViewControllerTests.h; sourceTree = "<group>"; };
 		AA0C6105158FC61D00F66A3B /* SZProfileViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZProfileViewControllerTests.m; sourceTree = "<group>"; };
-		AA0C6106158FC61D00F66A3B /* SZSettingsViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSettingsViewControllerTest.h; sourceTree = "<group>"; };
-		AA0C6107158FC61D00F66A3B /* SZSettingsViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZSettingsViewControllerTest.m; sourceTree = "<group>"; };
+		AA0C6106158FC61D00F66A3B /* _SZUserSettingsViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; path = _SZUserSettingsViewControllerTest.h; sourceTree = "<group>"; };
+		AA0C6107158FC61D00F66A3B /* _SZUserSettingsViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; path = _SZUserSettingsViewControllerTest.m; sourceTree = "<group>"; };
 		AA0C6108158FC61D00F66A3B /* UIFontForTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFontForTest.h; sourceTree = "<group>"; };
 		AA0C6109158FC61D00F66A3B /* UIFontForTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFontForTest.m; sourceTree = "<group>"; };
 		AA0C610A158FC61D00F66A3B /* UIImage+ResizeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ResizeTests.h"; sourceTree = "<group>"; };
@@ -2897,8 +2897,8 @@
 				AA0C6103158FC61D00F66A3B /* SZLikeButtonTests.m */,
 				AA0C6104158FC61D00F66A3B /* SZProfileViewControllerTests.h */,
 				AA0C6105158FC61D00F66A3B /* SZProfileViewControllerTests.m */,
-				AA0C6106158FC61D00F66A3B /* SZSettingsViewControllerTest.h */,
-				AA0C6107158FC61D00F66A3B /* SZSettingsViewControllerTest.m */,
+				AA0C6106158FC61D00F66A3B /* _SZUserSettingsViewControllerTest.h */,
+				AA0C6107158FC61D00F66A3B /* _SZUserSettingsViewControllerTest.m */,
 				AA0C6108158FC61D00F66A3B /* UIFontForTest.h */,
 				AA0C6109158FC61D00F66A3B /* UIFontForTest.m */,
 				AA0C610A158FC61D00F66A3B /* UIImage+ResizeTests.h */,
@@ -3525,7 +3525,7 @@
 				AA0086FB158D35BF00480399 /* SZComposeCommentViewController.h */,
 				AA0086FC158D35BF00480399 /* SZComposeCommentViewController.m */,
 				AA0086FD158D35BF00480399 /* SZComposeCommentViewControllerDelegate.h */,
-				AA008712158D35BF00480399 /* SZSettingsViewControllerDelegate.h */,
+				AA008712158D35BF00480399 /* _SZUserSettingsViewControllerDelegate.h */,
 				AA008602158D35BC00480399 /* CommentDetailsView.h */,
 				AA008603158D35BC00480399 /* CommentDetailsView.m */,
 				AA008604158D35BC00480399 /* CommentMapView.h */,
@@ -3596,8 +3596,8 @@
 				AA00870D158D35BF00480399 /* SZNavigationController.m */,
 				AA00870E158D35BF00480399 /* SZProfileViewController.h */,
 				AA00870F158D35BF00480399 /* SZProfileViewController.m */,
-				AA008710158D35BF00480399 /* SZSettingsViewController.h */,
-				AA008711158D35BF00480399 /* SZSettingsViewController.m */,
+				AA008710158D35BF00480399 /* _SZUserSettingsViewController.h */,
+				AA008711158D35BF00480399 /* _SZUserSettingsViewController.m */,
 				AA008713158D35BF00480399 /* SZShareDialogView.h */,
 				AA008714158D35BF00480399 /* SZShareDialogView.m */,
 				AA008715158D35BF00480399 /* SZShareDialogViewController.h */,
@@ -3684,7 +3684,7 @@
 				AA1C1C0C158EF3A200A763CA /* SZCommentsListViewController.h in Headers */,
 				AA1C1C0D158EF3AA00A763CA /* SocializeComposeMessageViewController.h in Headers */,
 				AA1C1C0E158EF3B600A763CA /* SZProfileViewController.h in Headers */,
-				AA1C1C0F158EF3BB00A763CA /* SZSettingsViewController.h in Headers */,
+				AA1C1C0F158EF3BB00A763CA /* _SZUserSettingsViewController.h in Headers */,
 				AA1C1C10158EF3C100A763CA /* SZComposeCommentMessageViewController.h in Headers */,
 				AA1C1C11158EF3CD00A763CA /* SocializeActionView.h in Headers */,
 				AA1C1C12158EF3D200A763CA /* SocializeActionBar.h in Headers */,
@@ -3727,7 +3727,7 @@
 				AAB5E52A159044F900D3EBDF /* SZCommentsListViewController.h in Headers */,
 				AAB5E52B159044F900D3EBDF /* SocializeComposeMessageViewController.h in Headers */,
 				AAB5E52C159044F900D3EBDF /* SZProfileViewController.h in Headers */,
-				AAB5E52D159044F900D3EBDF /* SZSettingsViewController.h in Headers */,
+				AAB5E52D159044F900D3EBDF /* _SZUserSettingsViewController.h in Headers */,
 				AAB5E52E159044F900D3EBDF /* SZComposeCommentMessageViewController.h in Headers */,
 				AAB5E52F159044F900D3EBDF /* SocializeActionView.h in Headers */,
 				AAB5E530159044F900D3EBDF /* SocializeActionBar.h in Headers */,
@@ -5235,7 +5235,7 @@
 				AA0087B8158D35C000480399 /* SZLocationUtils.m in Sources */,
 				AA0087B9158D35C000480399 /* SZNavigationController.m in Sources */,
 				AA0087BA158D35C000480399 /* SZProfileViewController.m in Sources */,
-				AA0087BB158D35C000480399 /* SZSettingsViewController.m in Sources */,
+				AA0087BB158D35C000480399 /* _SZUserSettingsViewController.m in Sources */,
 				AA0087BC158D35C000480399 /* SZShareDialogView.m in Sources */,
 				AA0087BD158D35C000480399 /* SZShareDialogViewController.m in Sources */,
 				AA0087BE158D35C000480399 /* SZShareOptions.m in Sources */,
@@ -5550,7 +5550,7 @@
 				AAB5E4F1159044E600D3EBDF /* SZLocationUtils.m in Sources */,
 				AAB5E4F2159044E600D3EBDF /* SZNavigationController.m in Sources */,
 				AAB5E4F3159044E600D3EBDF /* SZProfileViewController.m in Sources */,
-				AAB5E4F4159044E600D3EBDF /* SZSettingsViewController.m in Sources */,
+				AAB5E4F4159044E600D3EBDF /* _SZUserSettingsViewController.m in Sources */,
 				AAB5E4F5159044E600D3EBDF /* SZShareDialogView.m in Sources */,
 				AAB5E4F6159044E600D3EBDF /* SZShareDialogViewController.m in Sources */,
 				AAB5E4F7159044E600D3EBDF /* SZShareOptions.m in Sources */,

@@ -1,12 +1,12 @@
 //
-//  SZSettingsViewController.m
+//  _SZUserSettingsViewController.m
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 11/1/11.
 //  Copyright (c) 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "SZSettingsViewController.h"
+#import "_SZUserSettingsViewController.h"
 #import "SocializeProfileEditTableViewImageCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SocializeProfileEditTableViewCell.h"
@@ -22,7 +22,7 @@
 #import "SZFacebookUtils.h"
 #import "SZTwitterUtils.h"
 
-@interface SZSettingsViewController ()
+@interface _SZUserSettingsViewController ()
 
 // Latch the status for these, so we can perform row animations
 @property (nonatomic, assign) BOOL showFacebookLogout;
@@ -42,16 +42,16 @@ typedef struct {
     NSString *displayName;
     NSString *editName;
     NSString *storageKeyPath;
-} SZSettingsViewControllerPropertiesInfo;
+} _SZUserSettingsViewControllerPropertiesInfo;
 
-static SZSettingsViewControllerPropertiesInfo SZSettingsViewControllerPropertiesInfoItems[] = {
+static _SZUserSettingsViewControllerPropertiesInfo _SZUserSettingsViewControllerPropertiesInfoItems[] = {
     { @"first name", @"First name", @"fullUser.firstName" },
     { @"last name", @"Last name", @"fullUser.lastName" },
     { @"bio", @"Bio", @"fullUser.description" },
 };
 
 
-@implementation SZSettingsViewController
+@implementation _SZUserSettingsViewController
 @synthesize fullUser = fullUser_;
 @synthesize profileImageCell = profileImageCell_;
 @synthesize profileImage = profileImage_;
@@ -73,16 +73,16 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 @synthesize popover = popover_;
 
 + (UINavigationController*)profileEditViewControllerInNavigationController {
-    SZSettingsViewController *profileEditViewController = [self profileEditViewController];
+    _SZUserSettingsViewController *profileEditViewController = [self profileEditViewController];
     UINavigationController *navigationController = [UINavigationController socializeNavigationControllerWithRootViewController:profileEditViewController];
     return navigationController;
 }
 
-+ (SZSettingsViewController*)profileEditViewController {
++ (_SZUserSettingsViewController*)profileEditViewController {
     return [self settingsViewController];
 }
 
-+ (SZSettingsViewController*)settingsViewController {
++ (_SZUserSettingsViewController*)settingsViewController {
     return [[[[self class] alloc] init] autorelease];
 }
 
@@ -108,7 +108,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 - (id)init
 {
-    self = [super initWithNibName:@"SZSettingsViewController" bundle:nil];
+    self = [super initWithNibName:@"_SZUserSettingsViewController" bundle:nil];
     if (self) {
     }
     return self;
@@ -321,7 +321,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     if (section == [self imageSection]) {
         numRows = 1;
     } else if (section == [self propertiesSection]) {
-        numRows = sizeof(SZSettingsViewControllerPropertiesInfoItems) / sizeof(SZSettingsViewControllerPropertiesInfo);
+        numRows = sizeof(_SZUserSettingsViewControllerPropertiesInfoItems) / sizeof(_SZUserSettingsViewControllerPropertiesInfo);
     } else if (section == [self facebookSection]) {
         if (self.showFacebookLogout) {
             numRows = 2;
@@ -397,8 +397,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 
-- (NSString*)keyPathForPropertiesRow:(SZSettingsViewControllerPropertiesRow)row {
-    return SZSettingsViewControllerPropertiesInfoItems[row].storageKeyPath;
+- (NSString*)keyPathForPropertiesRow:(_SZUserSettingsViewControllerPropertiesRow)row {
+    return _SZUserSettingsViewControllerPropertiesInfoItems[row].storageKeyPath;
 }
 
 - (NSUserDefaults*)userDefaults {
@@ -470,7 +470,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     } else if (indexPath.section == [self propertiesSection]) {
         cell = [self getProfileEditCell];
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        NSString *keyText = SZSettingsViewControllerPropertiesInfoItems[indexPath.row].displayName;
+        NSString *keyText = _SZUserSettingsViewControllerPropertiesInfoItems[indexPath.row].displayName;
         NSString *valueText = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
         [[(SocializeProfileEditTableViewCell*)cell keyLabel] setText:keyText];
         [[(SocializeProfileEditTableViewCell*)cell valueLabel] setText:valueText];
@@ -480,13 +480,13 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.f];
         cell.textLabel.textColor = [self cellFontColor];
         switch (indexPath.row) {
-            case SZSettingsViewControllerFacebookRowPost:
+            case _SZUserSettingsViewControllerFacebookRowPost:
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.textAlignment = UITextAlignmentLeft;
                 cell.textLabel.text = @"Autopost to Facebook";
                 cell.accessoryView = self.facebookSwitch;
                 break;
-            case SZSettingsViewControllerFacebookRowLogout:
+            case _SZUserSettingsViewControllerFacebookRowLogout:
                 cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 cell.textLabel.textAlignment = UITextAlignmentCenter;
                 cell.textLabel.text = @"Sign out of Facebook";
@@ -501,14 +501,14 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         cell.textLabel.textColor = [self cellFontColor];
         
         switch (indexPath.row) {
-            case SZSettingsViewControllerTwitterRowPost:
+            case _SZUserSettingsViewControllerTwitterRowPost:
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.textAlignment = UITextAlignmentLeft;
                 cell.textLabel.text = @"Autopost to Twitter";
                 cell.accessoryView = self.twitterSwitch;
                 
                 break;
-            case SZSettingsViewControllerTwitterRowLogout:
+            case _SZUserSettingsViewControllerTwitterRowLogout:
                 cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 cell.textLabel.textAlignment = UITextAlignmentCenter;
                 cell.textLabel.text = @"Sign out of Twitter";
@@ -649,11 +649,11 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (NSIndexPath*)indexPathForTwitterLogoutRow {
-    return [NSIndexPath indexPathForRow:SZSettingsViewControllerTwitterRowLogout inSection:[self twitterSection]];
+    return [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerTwitterRowLogout inSection:[self twitterSection]];
 }
 
 - (NSIndexPath*)indexPathForFacebookLogoutRow {
-    return [NSIndexPath indexPathForRow:SZSettingsViewControllerFacebookRowLogout inSection:[self facebookSection]];
+    return [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerFacebookRowLogout inSection:[self facebookSection]];
 }
 
 - (void)showConfirmLogoutDialogForService:(NSString*)service handler:(void(^)())handler {
@@ -693,18 +693,18 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 		[self showActionSheet];
 		return;
 	} else if (indexPath.section == [self propertiesSection]) {
-        NSString *editName = SZSettingsViewControllerPropertiesInfoItems[indexPath.row].editName;
+        NSString *editName = _SZUserSettingsViewControllerPropertiesInfoItems[indexPath.row].editName;
         self.editValueController.title = editName;
         self.editValueController.valueToEdit = [self valueForKeyPath:[self keyPathForPropertiesRow:indexPath.row]];
         self.editValueController.indexPath = indexPath;
         [self.navigationController pushViewController:self.editValueController animated:YES];
     } else if (indexPath.section == [self twitterSection]) {
-        if (indexPath.row == SZSettingsViewControllerTwitterRowLogout) {
+        if (indexPath.row == _SZUserSettingsViewControllerTwitterRowLogout) {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
             [self showConfirmLogoutDialogForService:@"Twitter" handler:^{ [weakSelf twitterLogout]; }];
         }
     } else if (indexPath.section == [self facebookSection]) {
-        if (indexPath.row == SZSettingsViewControllerFacebookRowLogout) {
+        if (indexPath.row == _SZUserSettingsViewControllerFacebookRowLogout) {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
             [self showConfirmLogoutDialogForService:@"Facebook" handler:^{ [weakSelf facebookLogout]; }];
         }
@@ -719,7 +719,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     if ([SocializeThirdPartyFacebook isLinkedToSocialize] && !self.showFacebookLogout) {
 
         // Logout button should be shown but isn't. Animate it into view
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:SZSettingsViewControllerFacebookRowLogout inSection:[self facebookSection]];        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerFacebookRowLogout inSection:[self facebookSection]];        
         [self.tableView beginUpdates];
         self.showFacebookLogout = YES;
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
@@ -750,7 +750,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     if ([SocializeThirdPartyTwitter isLinkedToSocialize] && !self.showTwitterLogout) {
 
         // Logout button should be shown but isn't. Animate it into view
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:SZSettingsViewControllerTwitterRowLogout inSection:[self twitterSection]];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerTwitterRowLogout inSection:[self twitterSection]];
         [self.tableView beginUpdates];
         self.showTwitterLogout = YES;
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
