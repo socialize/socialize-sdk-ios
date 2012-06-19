@@ -38,32 +38,32 @@
 }
 
 + (void)linkWithDisplay:(id<SZDisplay>)display success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
-    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-    
-    NSString *consumerKey = [SocializeThirdPartyTwitter consumerKey];
-    NSString *consumerSecret = [SocializeThirdPartyTwitter consumerSecret];
-    
-    SocializeTwitterAuthViewController *auth = [[[SocializeTwitterAuthViewController alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret] autorelease];
-
-    auth.twitterAuthSuccessBlock = ^(NSString *accessToken, NSString *accessTokenSecret, NSString *screenName, NSString *userId) {
-        [wrapper startLoadingInTopControllerWithMessage:@"Linking"];
-        [self linkWithAccessToken:accessToken accessTokenSecret:accessTokenSecret success:^(id<SZFullUser> user) {
-            [wrapper stopLoadingInTopController];
-            [wrapper endSequence];
-            BLOCK_CALL_1(success, user);
-        } failure:^(NSError *error) {
-            SZEmitUIError(auth, error);
-            [wrapper stopLoadingInTopController];
-            BLOCK_CALL_1(failure, error);
-        }];
-    };
-    
-    auth.cancellationBlock = ^{
-        [wrapper endSequence];
-        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser]);
-    };
-    
-    [wrapper beginSequenceWithViewController:auth];
+//    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
+//    
+//    NSString *consumerKey = [SocializeThirdPartyTwitter consumerKey];
+//    NSString *consumerSecret = [SocializeThirdPartyTwitter consumerSecret];
+//    
+//    SocializeTwitterAuthViewController *auth = [[SocializeTwitterAuthViewController alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret];
+//
+//    auth.twitterAuthSuccessBlock = ^(NSString *accessToken, NSString *accessTokenSecret, NSString *screenName, NSString *userId) {
+//        [wrapper startLoadingInTopControllerWithMessage:@"Linking"];
+//        [self linkWithAccessToken:accessToken accessTokenSecret:accessTokenSecret success:^(id<SZFullUser> user) {
+//            [wrapper stopLoadingInTopController];
+//            [wrapper endSequence];
+//            BLOCK_CALL_1(success, user);
+//        } failure:^(NSError *error) {
+//            SZEmitUIError(auth, error);
+//            [wrapper stopLoadingInTopController];
+//            BLOCK_CALL_1(failure, error);
+//        }];
+//    };
+//    
+//    auth.cancellationBlock = ^{
+//        [wrapper endSequence];
+//        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser]);
+//    };
+//    
+//    [wrapper beginSequenceWithViewController:auth];
 }
 
 @end

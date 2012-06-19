@@ -12,7 +12,7 @@
 @synthesize dontSubscribeToNotifications = dontSubscribeToNotifications_;
 
 + (SZCommentOptions*)defaultOptions {
-    return [[[self alloc] init] autorelease];
+    return [[self alloc] init];
 }
 
 @end

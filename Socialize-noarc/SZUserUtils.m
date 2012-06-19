@@ -23,25 +23,25 @@
 }
 
 + (void)showLinkDialogWithDisplay:(id<SZDisplay>)display success:(void(^)(SZSocialNetwork selectedNetwork))success failure:(void(^)(NSError *error))failure {
-    if (AvailableSocialNetworks() == SZSocialNetworkNone) {
-        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorLinkNotPossible]);
-    }
-    
-    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-    SocializeAuthViewController *auth = [[[SocializeAuthViewController alloc] init] autorelease];
-    auth.display = display;
-    
-    auth.completionBlock = ^(SZSocialNetwork selectedNetwork) {
-        [wrapper endSequence];
-        BLOCK_CALL_1(success, selectedNetwork);
-    };
-    
-    auth.cancellationBlock = ^{
-        [wrapper endSequence];
-        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorLinkCancelledByUser]);
-    };
-
-    [wrapper beginSequenceWithViewController:auth];
+//    if (AvailableSocialNetworks() == SZSocialNetworkNone) {
+//        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorLinkNotPossible]);
+//    }
+//    
+//    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
+//    SocializeAuthViewController *auth = [[SocializeAuthViewController alloc] init];
+//    auth.display = display;
+//    
+//    auth.completionBlock = ^(SZSocialNetwork selectedNetwork) {
+//        [wrapper endSequence];
+//        BLOCK_CALL_1(success, selectedNetwork);
+//    };
+//    
+//    auth.cancellationBlock = ^{
+//        [wrapper endSequence];
+//        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorLinkCancelledByUser]);
+//    };
+//
+//    [wrapper beginSequenceWithViewController:auth];
 }
 
 + (void)showUserProfileWithDisplay:(id<SZDisplay>)display user:(id<SocializeFullUser>)user {

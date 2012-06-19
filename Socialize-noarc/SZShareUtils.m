@@ -27,48 +27,48 @@
 }
 
 + (void)getPreferredShareNetworksWithDisplay:(id<SZDisplay>)display success:(void(^)(SZSocialNetwork networks))success failure:(void(^)(NSError *error))failure {
-    BOOL autopostIsSet = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeAutoPostToSocialNetworksKey] boolValue];
-    
-    if (autopostIsSet || AvailableSocialNetworks() == SZSocialNetworkNone) {
-        
-        // The user has autopost enabled, so we already know the answer
-        SZSocialNetwork socialNetworks = [SocializeThirdParty preferredNetworks];
-        BLOCK_CALL_1(success, socialNetworks);
-    } else {
-        
-        // The user has not enable autopost, so we must prompt them
-        SZShareDialogViewController *dialog = [[[SZShareDialogViewController alloc] initWithEntity:nil] autorelease];
-        dialog.dontRequireNetworkSelection = YES;
-        
-        dialog.completionBlock = ^(SZSocialNetwork selectedNetworks) {
-            [display socializeWillEndDisplaySequence];
-            BLOCK_CALL_1(success, selectedNetworks);
-        };
-        dialog.cancellationBlock = ^{
-            [display socializeWillEndDisplaySequence];
-            BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorNetworkSelectionCancelledByUser]);
-        };
-        [display socializeWillBeginDisplaySequenceWithViewController:dialog];
-    }
+//    BOOL autopostIsSet = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeAutoPostToSocialNetworksKey] boolValue];
+//    
+//    if (autopostIsSet || AvailableSocialNetworks() == SZSocialNetworkNone) {
+//        
+//        // The user has autopost enabled, so we already know the answer
+//        SZSocialNetwork socialNetworks = [SocializeThirdParty preferredNetworks];
+//        BLOCK_CALL_1(success, socialNetworks);
+//    } else {
+//        
+//        // The user has not enable autopost, so we must prompt them
+//        SZShareDialogViewController *dialog = [[[SZShareDialogViewController alloc] initWithEntity:nil] autorelease];
+//        dialog.dontRequireNetworkSelection = YES;
+//        
+//        dialog.completionBlock = ^(SZSocialNetwork selectedNetworks) {
+//            [display socializeWillEndDisplaySequence];
+//            BLOCK_CALL_1(success, selectedNetworks);
+//        };
+//        dialog.cancellationBlock = ^{
+//            [display socializeWillEndDisplaySequence];
+//            BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorNetworkSelectionCancelledByUser]);
+//        };
+//        [display socializeWillBeginDisplaySequenceWithViewController:dialog];
+//    }
 }
 
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
-    SZShareDialogViewController *selectNetwork = [[[SZShareDialogViewController alloc] initWithEntity:entity] autorelease];
-    selectNetwork.disableAutopostSelection = YES;
-    selectNetwork.showOtherShareTypes = YES;
-    selectNetwork.completionBlock = ^(SZSocialNetwork networks) {
-        [viewController dismissModalViewControllerAnimated:YES];
-        
-        SZShareOptions *shareOptions = [self userShareOptions];
-
-        [self shareViaSocialNetworksWithEntity:entity networks:networks options:shareOptions success:success failure:failure];
-    };
-    selectNetwork.cancellationBlock = ^{
-        [viewController dismissModalViewControllerAnimated:YES];        
-    };
-    
-    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:selectNetwork] autorelease];
-    [viewController presentModalViewController:nav animated:YES];
+//    SZShareDialogViewController *selectNetwork = [[[SZShareDialogViewController alloc] initWithEntity:entity] autorelease];
+//    selectNetwork.disableAutopostSelection = YES;
+//    selectNetwork.showOtherShareTypes = YES;
+//    selectNetwork.completionBlock = ^(SZSocialNetwork networks) {
+//        [viewController dismissModalViewControllerAnimated:YES];
+//        
+//        SZShareOptions *shareOptions = [self userShareOptions];
+//
+//        [self shareViaSocialNetworksWithEntity:entity networks:networks options:shareOptions success:success failure:failure];
+//    };
+//    selectNetwork.cancellationBlock = ^{
+//        [viewController dismissModalViewControllerAnimated:YES];        
+//    };
+//    
+//    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:selectNetwork] autorelease];
+//    [viewController presentModalViewController:nav animated:YES];
 }
 
 + (void)shareViaSocialNetworksWithEntity:(id<SZEntity>)entity networks:(SZSocialNetwork)networks options:(SZShareOptions*)options success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
@@ -91,7 +91,7 @@
         return;
     }
     
-    MFMailComposeViewController *composer = [[[MFMailComposeViewController alloc] init] autorelease];
+    MFMailComposeViewController *composer = [[MFMailComposeViewController alloc] init];
     composer.sz_completionBlock = ^(MFMailComposeResult result, NSError *error) {
         [viewController dismissModalViewControllerAnimated:YES];
         switch (result) {
@@ -124,7 +124,7 @@
         return;
     }
     
-    MFMessageComposeViewController *composer = [[[MFMessageComposeViewController alloc] init] autorelease];
+    MFMessageComposeViewController *composer = [[MFMessageComposeViewController alloc] init];
     composer.sz_completionBlock = ^(MessageComposeResult result) {
         [viewController dismissModalViewControllerAnimated:YES];
         switch (result) {

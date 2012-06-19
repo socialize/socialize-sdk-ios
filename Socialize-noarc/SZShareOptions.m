@@ -12,7 +12,7 @@
 @synthesize text = text_;
 
 + (SZShareOptions*)defaultOptions {
-    return [[[self alloc] init] autorelease];
+    return [[self alloc] init];
 }
 
 @end

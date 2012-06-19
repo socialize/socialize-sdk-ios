@@ -4,5 +4,25 @@
 
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
-    #import "SocializeObjects.h"
+
+#import "hide_symbols_facebook.h"
+#import "hide_symbols_oauth.h"
+#import "hide_symbols_blockskit.h"
+#import "hide_symbols_jsonkit.h"
+
+#import <BlocksKit/BlocksKit.h>
+#import "SocializePrivateDefinitions.h"
+#import "SocializeObjects.h"
+#import "NSError+Socialize.h"
+#import "NSString+Socialize.h"
+#import "DebugUtil.h"
+#import "PropertyHelpers.h"
+#import "NSDate+Socialize.h"
+#import "PropertyHelpers.h"
+#import "UINavigationController+Socialize.h"
+#import "UIViewController+Socialize.h"
+#import "NSMutableArray+Socialize.h"
+#import "UIBarButtonItem+Socialize.h"
+#import "UIButton+Socialize.h"
+
 #endif

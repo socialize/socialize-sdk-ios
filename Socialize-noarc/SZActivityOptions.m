@@ -14,7 +14,7 @@
 @synthesize didPostToSocialNetworkBlock = didPostToSocialNetworkBlock_;
 
 + (SZActivityOptions*)defaultOptions {
-    return [[[self alloc] init] autorelease];
+    return [[self alloc] init];
 }
 
 @end
