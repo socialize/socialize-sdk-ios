@@ -570,6 +570,8 @@
     
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Twitter Auth"]];
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Username or email"]];
+    [steps addObject:[KIFTestStep stepToWaitForAbsenceOfViewWithAccessibilityLabel:@"In progress"]];
+
     [steps addObject:[KIFTestStep stepToNoCheckEnterText:@"mr_socialize" intoViewWithAccessibilityLabel:@"Username or email" traits:UIAccessibilityTraitNone]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Password"]];
     [steps addObject:[KIFTestStep stepToNoCheckEnterText:@"supersecret" intoViewWithAccessibilityLabel:@"Password" traits:UIAccessibilityTraitNone]];
