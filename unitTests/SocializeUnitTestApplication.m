@@ -13,8 +13,10 @@
 @implementation SocializeUnitTestApplication
 
 
+#import "SZDummyLibSocialize.h"
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+    [SZDummyLibSocialize class];
     [super applicationDidFinishLaunching:application];
 }
 

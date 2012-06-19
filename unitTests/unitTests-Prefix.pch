@@ -1,64 +1,25 @@
 //
-// Prefix header for all source files of the 'unitTests' target in the 'unitTests' project
+// Prefix header for all source files of the 'UnitTests' target in the 'UnitTests' project
 //
 
 #import <Availability.h>
 
 #ifndef __IPHONE_3_0
-#warning "This project uses features only available in iPhone SDK 3.0 and later."
+#warning "This project uses features only available in iOS SDK 3.0 and later."
 #endif
 
-#define JSONDecoder SocializeJSONDecoder 
-#define JSONKitDeserializing SocializeJSONKitDeserializing
-#define JSONKitSerializing SocializeJSONKitSerializing
-
-#define JKArray SocializeJKArray
-#define JKDictionaryEnumerator SocializeJKDictionaryEnumerator
-#define JKDictionary SocializeJKDictionary
-#define JKMutableDictionary SocializeJKMutableDictionary
-#define JKSerializer SocializeJKSerializer
-#define JKMutableArray SocializeJKMutableArray
-
-#define OAAsynchronousDataFetcher SocializeOAAsynchronousDataFetcher
-#define OAConsumer SocializeOAConsumer
-#define OADataFetcher SocializeOADataFetcher
-#define OAHMAC_SHA1SignatureProvider SocializeOAHMAC_SHA1SignatureProvider
-#define OAMutableURLRequest SocializeOAMutableURLRequest
-#define OAMutableURLRequest SocializeOAMutableURLRequest
-#define OAPlaintextSignatureProvider SocializeOAPlaintextSignatureProvider
-#define OARequestParameter SocializeOARequestParameter
-#define OAServiceTicket SocializeOAServiceTicket
-#define OAToken SocializeOAToken
-#define OASignatureProviding SocializeOASignatureProviding
-#define OAParameterAdditions SocializeOAParameterAdditions
-#define OAURLEncodingAdditions SocializeOAURLEncodingAdditions
-#define OABaseAdditions SocializeOABaseAdditions
-
-#define EstimateBas64EncodedDataSize SocializeEstimateBas64EncodedDataSize
-#define EstimateBas64DecodedDataSize SocializeEstimateBas64DecodedDataSize
-#define Base64EncodeData SocializeBase64EncodeData
-#define Base64DecodeData SocializeBase64DecodeData
-
-#define NSObject_SBJSON SocializeNSObject_SBJSON
-#define NSString_SBJSON SocializeNSString_SBJSON
-#define SBJSON SocializeSBJSON
-#define SBJsonBase SocializeSBJsonBase
-#define SBJsonParser SocializeSBJsonParser
-#define Private SocializePrivate
-#define SBJsonWriter SocializeSBJsonWriter
-#define SBProxyForJson SocializeSBProxyForJson
-#define SBJSONErrorDomain SocializeSBJSONErrorDomain
-
-#define MD5Addition SocializeMD5Addition
-#define IdentifierAddition SocializeIdentifierAddition
-
 #ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-    #import <Foundation/Foundation.h>
-    #import "SocializeService+Testing.h"
-    #import "TestUtils.h"
-    #import "StringHelper.h"
-#import "NSObject+ClassMock.h"
-#import <OCMock/OCMock.h>
 
+#import "hide_symbols_facebook.h"
+#import "hide_symbols_oauth.h"
+#import "hide_symbols_blockskit.h"
+#import "hide_symbols_jsonkit.h"
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <OCMock/OCMock.h>
+#import "TestUtils.h"
+#import <OCMock/NSObject+ClassMock.h>
+#import "SocializeService+Testing.h"
+#import "StringHelper.h"
 #endif

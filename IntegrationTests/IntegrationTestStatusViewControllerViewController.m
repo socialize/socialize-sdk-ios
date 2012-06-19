@@ -8,7 +8,6 @@
 
 #import "IntegrationTestStatusViewControllerViewController.h"
 #import <Socialize/Socialize.h>
-#import "NSTimer+BlocksKit.h"
 
 @interface IntegrationTestStatusViewControllerViewController ()
 
