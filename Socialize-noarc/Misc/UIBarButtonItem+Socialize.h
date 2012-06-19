@@ -10,6 +10,9 @@
 
 @interface UIBarButtonItem (Socialize)
 
++ (UIBarButtonItem*)redSocializeBarButtonWithTitle:(NSString*)title handler:(void(^)(id sender))handler;
++ (UIBarButtonItem*)blueSocializeBarButtonWithTitle:(NSString*)title handler:(void(^)(id sender))handler;
+
 - (void)changeTitleOnCustomButtonToText:(NSString*)text;
 
 @end
