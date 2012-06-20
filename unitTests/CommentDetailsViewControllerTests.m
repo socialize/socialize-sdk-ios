@@ -74,8 +74,12 @@
 
 -(void)setUpClass
 {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"
     commentDetails = [[SocializeCommentDetailsViewController alloc] initWithNibName:@"SocializeCommentDetailsViewController" bundle:nil];
-    [Socialize storeSocializeApiKey:@"12341234" andSecret: @"12341234"];
+#pragma GCC diagnostic pop
+    [Socialize storeConsumerKey:@"12341234"];
+    [Socialize storeConsumerSecret:@"12341234"];
 }
 
 -(void)tearDownClass
