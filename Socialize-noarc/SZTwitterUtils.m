@@ -9,7 +9,7 @@
 #import "SZTwitterUtils.h"
 #import "SocializeThirdPartyTwitter.h"
 #import "_Socialize.h"
-#import "_SZTwitterLinkViewController.h"
+#import "SZTwitterLinkViewController.h"
 #import "SDKHelpers.h"
 #import "SZUserUtils.h"
 
@@ -42,15 +42,20 @@
     NSString *consumerKey = [SocializeThirdPartyTwitter consumerKey];
     NSString *consumerSecret = [SocializeThirdPartyTwitter consumerSecret];
     
-    _SZTwitterLinkViewController *link = [[_SZTwitterLinkViewController alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret];
+    SZTwitterLinkViewController *link = [[SZTwitterLinkViewController alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret];
 
     link.completionBlock = ^{
+        [viewController dismissModalViewControllerAnimated:YES];
         BLOCK_CALL_1(success, [SZUserUtils currentUser]);
     };
     
     link.cancellationBlock = ^{
+        [viewController dismissModalViewControllerAnimated:YES];
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser]);
     };
+    
+    
+    [viewController presentModalViewController:link animated:YES];
 }
 
 @end
