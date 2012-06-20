@@ -13,6 +13,7 @@
 #import "SocializeAuthViewController.h"
 #import "SDKHelpers.h"
 #import "SZDisplay.h"
+#import "SZUserSettingsViewController.h"
 
 @implementation SZUserUtils
 
@@ -60,18 +61,15 @@
     [wrapper beginSequenceWithViewController:profile];
 }
 
-+ (void)showUserSettingsWithDisplay:(id<SZDisplay>)display {
-    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-
-    _SZUserSettingsViewController *settings = [_SZUserSettingsViewController settingsViewController];
-    settings.cancellationBlock = ^{
-        [wrapper endSequence];
-    };
-    settings.completionBlock = ^{
-        [wrapper endSequence];
++ (SZUserSettingsViewController*)showUserSettingsInViewController:(UIViewController*)viewController {
+    SZUserSettingsViewController *settings = [[SZUserSettingsViewController alloc] init];
+    settings.completionBlock = ^(BOOL didSave, id<SZFullUser> user) {
+        [viewController dismissModalViewControllerAnimated:YES];
     };
     
-    [wrapper beginSequenceWithViewController:settings];
+    [viewController presentModalViewController:settings animated:YES];
+    
+    return settings;
 }
 
 + (void)saveUserSettings:(id<SocializeFullUser>)user profileImage:(UIImage*)image success:(void(^)(id<SocializeFullUser> user))success failure:(void(^)(NSError *error))failure {

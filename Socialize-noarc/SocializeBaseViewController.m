@@ -43,6 +43,7 @@
 #import "SZUserUtils.h"
 #import <BlocksKit/BlocksKit.h>
 #import "SDKHelpers.h"
+#import "_SZUserSettingsViewController.h"
 
 @interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
 @end
@@ -197,11 +198,12 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 }
 
 - (void)settingsButtonPressed:(UIButton *)button {
-    __block SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:self.display];
-    wrapper.endBlock = ^{
-        [wrapper returnToViewController:self];
+    _SZUserSettingsViewController *settings = [[[_SZUserSettingsViewController alloc] init] autorelease];
+    settings.userSettingsCompletionBlock = ^(BOOL didEdit, id<SZFullUser> user) {
+        [self.navigationController popToViewController:self animated:YES];
     };
-    [SZUserUtils showUserSettingsWithDisplay:wrapper];
+    
+    [self.navigationController pushViewController:settings animated:YES];
 }
 
 -(void)leftNavigationButtonPressed:(id)sender {

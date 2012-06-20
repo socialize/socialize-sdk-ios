@@ -468,7 +468,7 @@
 		AA159E08158FAD4B006E1CAE /* SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598B158F187200B5B2BC /* SZCommentsListViewController.xib */; };
 		AA159E09158FAD4B006E1CAE /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598C158F187200B5B2BC /* SZComposeCommentMessageViewController.xib */; };
 		AA159E0A158FAD4B006E1CAE /* SZProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598D158F187200B5B2BC /* SZProfileViewController.xib */; };
-		AA159E0B158FAD4B006E1CAE /* SZSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598E158F187200B5B2BC /* SZSettingsViewController.xib */; };
+		AA159E0B158FAD4B006E1CAE /* _SZUserSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */; };
 		AA159E0C158FAD4B006E1CAE /* SZShareDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598F158F187200B5B2BC /* SZShareDialogViewController.xib */; };
 		AA159E0D158FAD4B006E1CAE /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935C05158F1C2600B5B2BC /* Smiley.png */; };
 		AA159E0E158FAD4B006E1CAE /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA935C06158F1C2600B5B2BC /* SocializeApiInfo.plist */; };
@@ -1017,8 +1017,8 @@
 		AA935BE1158F187200B5B2BC /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598C158F187200B5B2BC /* SZComposeCommentMessageViewController.xib */; };
 		AA935BE2158F187200B5B2BC /* SZProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598D158F187200B5B2BC /* SZProfileViewController.xib */; };
 		AA935BE4158F187200B5B2BC /* SZProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598D158F187200B5B2BC /* SZProfileViewController.xib */; };
-		AA935BE5158F187200B5B2BC /* SZSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598E158F187200B5B2BC /* SZSettingsViewController.xib */; };
-		AA935BE7158F187200B5B2BC /* SZSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598E158F187200B5B2BC /* SZSettingsViewController.xib */; };
+		AA935BE5158F187200B5B2BC /* _SZUserSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */; };
+		AA935BE7158F187200B5B2BC /* _SZUserSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */; };
 		AA935BE8158F187200B5B2BC /* SZShareDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598F158F187200B5B2BC /* SZShareDialogViewController.xib */; };
 		AA935BEA158F187200B5B2BC /* SZShareDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598F158F187200B5B2BC /* SZShareDialogViewController.xib */; };
 		AA935C07158F1C2600B5B2BC /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935C05158F1C2600B5B2BC /* Smiley.png */; };
@@ -1411,7 +1411,7 @@
 		AACEDA0F158FCE770024EC43 /* SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598B158F187200B5B2BC /* SZCommentsListViewController.xib */; };
 		AACEDA10158FCE770024EC43 /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598C158F187200B5B2BC /* SZComposeCommentMessageViewController.xib */; };
 		AACEDA11158FCE770024EC43 /* SZProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598D158F187200B5B2BC /* SZProfileViewController.xib */; };
-		AACEDA12158FCE770024EC43 /* SZSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598E158F187200B5B2BC /* SZSettingsViewController.xib */; };
+		AACEDA12158FCE770024EC43 /* _SZUserSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */; };
 		AACEDA13158FCE770024EC43 /* SZShareDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598F158F187200B5B2BC /* SZShareDialogViewController.xib */; };
 		AACEDA15158FCF920024EC43 /* JSON-RequestAndResponse-TestFiles in Resources */ = {isa = PBXBuildFile; fileRef = AACEDA14158FCF920024EC43 /* JSON-RequestAndResponse-TestFiles */; };
 		AACEDA16158FCFDA0024EC43 /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935C05158F1C2600B5B2BC /* Smiley.png */; };
@@ -2419,7 +2419,7 @@
 		AA93598B158F187200B5B2BC /* SZCommentsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZCommentsListViewController.xib; path = Socialize/Resources/SZCommentsListViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA93598C158F187200B5B2BC /* SZComposeCommentMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZComposeCommentMessageViewController.xib; path = Socialize/Resources/SZComposeCommentMessageViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA93598D158F187200B5B2BC /* SZProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZProfileViewController.xib; path = Socialize/Resources/SZProfileViewController.xib; sourceTree = SOURCE_ROOT; };
-		AA93598E158F187200B5B2BC /* SZSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZSettingsViewController.xib; path = Socialize/Resources/SZSettingsViewController.xib; sourceTree = SOURCE_ROOT; };
+		AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = _SZUserSettingsViewController.xib; path = Socialize/Resources/_SZUserSettingsViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA93598F158F187200B5B2BC /* SZShareDialogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZShareDialogViewController.xib; path = Socialize/Resources/SZShareDialogViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA935C05158F1C2600B5B2BC /* Smiley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Smiley.png; path = Resources/Smiley.png; sourceTree = "<group>"; };
 		AA935C06158F1C2600B5B2BC /* SocializeApiInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SocializeApiInfo.plist; path = Resources/SocializeApiInfo.plist; sourceTree = "<group>"; };
@@ -3381,7 +3381,6 @@
 				AA93598B158F187200B5B2BC /* SZCommentsListViewController.xib */,
 				AA93598C158F187200B5B2BC /* SZComposeCommentMessageViewController.xib */,
 				AA93598D158F187200B5B2BC /* SZProfileViewController.xib */,
-				AA93598E158F187200B5B2BC /* SZSettingsViewController.xib */,
 				AA93598F158F187200B5B2BC /* SZShareDialogViewController.xib */,
 			);
 			name = Resources;
@@ -3621,6 +3620,7 @@
 				AA00870F158D35BF00480399 /* SZProfileViewController.m */,
 				AA008710158D35BF00480399 /* _SZUserSettingsViewController.h */,
 				AA008711158D35BF00480399 /* _SZUserSettingsViewController.m */,
+				AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */,
 				AA008713158D35BF00480399 /* SZShareDialogView.h */,
 				AA008714158D35BF00480399 /* SZShareDialogView.m */,
 				AA008715158D35BF00480399 /* SZShareDialogViewController.h */,
@@ -4313,7 +4313,7 @@
 				AA935BDC158F187200B5B2BC /* SZCommentsListViewController.xib in Resources */,
 				AA935BDF158F187200B5B2BC /* SZComposeCommentMessageViewController.xib in Resources */,
 				AA935BE2158F187200B5B2BC /* SZProfileViewController.xib in Resources */,
-				AA935BE5158F187200B5B2BC /* SZSettingsViewController.xib in Resources */,
+				AA935BE5158F187200B5B2BC /* _SZUserSettingsViewController.xib in Resources */,
 				AA935BE8158F187200B5B2BC /* SZShareDialogViewController.xib in Resources */,
 				AA935C07158F1C2600B5B2BC /* Smiley.png in Resources */,
 				AA935C0A158F1C2600B5B2BC /* SocializeApiInfo.plist in Resources */,
@@ -4527,7 +4527,7 @@
 				AACEDA0F158FCE770024EC43 /* SZCommentsListViewController.xib in Resources */,
 				AACEDA10158FCE770024EC43 /* SZComposeCommentMessageViewController.xib in Resources */,
 				AACEDA11158FCE770024EC43 /* SZProfileViewController.xib in Resources */,
-				AACEDA12158FCE770024EC43 /* SZSettingsViewController.xib in Resources */,
+				AACEDA12158FCE770024EC43 /* _SZUserSettingsViewController.xib in Resources */,
 				AACEDA13158FCE770024EC43 /* SZShareDialogViewController.xib in Resources */,
 				AACEDA15158FCF920024EC43 /* JSON-RequestAndResponse-TestFiles in Resources */,
 				AACEDA16158FCFDA0024EC43 /* Smiley.png in Resources */,
@@ -4739,7 +4739,7 @@
 				AA159E08158FAD4B006E1CAE /* SZCommentsListViewController.xib in Resources */,
 				AA159E09158FAD4B006E1CAE /* SZComposeCommentMessageViewController.xib in Resources */,
 				AA159E0A158FAD4B006E1CAE /* SZProfileViewController.xib in Resources */,
-				AA159E0B158FAD4B006E1CAE /* SZSettingsViewController.xib in Resources */,
+				AA159E0B158FAD4B006E1CAE /* _SZUserSettingsViewController.xib in Resources */,
 				AA159E0C158FAD4B006E1CAE /* SZShareDialogViewController.xib in Resources */,
 				AA159E0D158FAD4B006E1CAE /* Smiley.png in Resources */,
 				AA159E0E158FAD4B006E1CAE /* SocializeApiInfo.plist in Resources */,
@@ -4951,7 +4951,7 @@
 				AA935BDE158F187200B5B2BC /* SZCommentsListViewController.xib in Resources */,
 				AA935BE1158F187200B5B2BC /* SZComposeCommentMessageViewController.xib in Resources */,
 				AA935BE4158F187200B5B2BC /* SZProfileViewController.xib in Resources */,
-				AA935BE7158F187200B5B2BC /* SZSettingsViewController.xib in Resources */,
+				AA935BE7158F187200B5B2BC /* _SZUserSettingsViewController.xib in Resources */,
 				AA935BEA158F187200B5B2BC /* SZShareDialogViewController.xib in Resources */,
 				AA935C09158F1C2600B5B2BC /* Smiley.png in Resources */,
 				AA935C0C158F1C2600B5B2BC /* SocializeApiInfo.plist in Resources */,

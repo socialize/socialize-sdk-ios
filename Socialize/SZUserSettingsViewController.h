@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SZNavigationController.h"
 
-@interface SZUserSettingsViewController : UINavigationController
+@interface SZUserSettingsViewController : SZNavigationController
 - (id)init;
 
 @property (nonatomic, copy) void (^completionBlock)(BOOL didSave, id<SZFullUser> user);

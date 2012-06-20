@@ -59,7 +59,7 @@ typedef enum {
 @property (nonatomic, retain) UIBarButtonItem *saveButton;
 @property (nonatomic, retain) NSMutableArray *facebookCells;
 @property (nonatomic, retain) UIPopoverController *popover;
-
+@property (nonatomic, copy) void (^userSettingsCompletionBlock)(BOOL didSave, id<SZFullUser> user);
 + (UINavigationController*)profileEditViewControllerInNavigationController;
 + (_SZUserSettingsViewController*)profileEditViewController;
 + (_SZUserSettingsViewController*)settingsViewController;

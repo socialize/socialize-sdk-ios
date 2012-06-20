@@ -11,11 +11,13 @@
 
 @interface SZUserSettingsViewController ()
 @property (nonatomic, assign) BOOL initialized;
+@property (nonatomic, strong) _SZUserSettingsViewController *settings;
 @end
 
 @implementation SZUserSettingsViewController
 @synthesize completionBlock = _completionBlock;
 @synthesize initialized = _initialized;
+@synthesize settings = _settings;
 
 - (id)init {
     if (self = [super init]) {
@@ -30,10 +32,16 @@
     [self initializeIfNeeded];
 }
 
+- (_SZUserSettingsViewController*)settings {
+    if (_settings == nil) {
+        _settings = [[_SZUserSettingsViewController alloc] init];
+    }
+    return _settings;
+}
+
 - (void)initializeIfNeeded {
     if (!self.initialized) {
-        _SZUserSettingsViewController *settings = [[_SZUserSettingsViewController alloc] init];
-        [self pushViewController:settings animated:NO];
+        [self pushViewController:self.settings animated:NO];
         self.initialized = YES;
     }
 }
@@ -41,6 +49,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)setCompletionBlock:(void (^)(BOOL, id<SocializeFullUser>))completionBlock {
+    _completionBlock = completionBlock;
+    self.settings.userSettingsCompletionBlock = completionBlock;
 }
 
 @end

@@ -71,6 +71,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 @synthesize showFacebookLogout = showFacebookLogout_;
 @synthesize showTwitterLogout = showTwitterLogout_;
 @synthesize popover = popover_;
+@synthesize userSettingsCompletionBlock = userSettingsCompletionBlock_;
 
 + (UINavigationController*)profileEditViewControllerInNavigationController {
     _SZUserSettingsViewController *profileEditViewController = [self profileEditViewController];
@@ -84,6 +85,13 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 + (_SZUserSettingsViewController*)settingsViewController {
     return [[[[self class] alloc] init] autorelease];
+}
+
+- (id)init {
+    if (self = [super init]) {
+        
+    }
+    return self;
 }
 
 - (void)dealloc {
@@ -106,14 +114,6 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     [super dealloc];
 }
 
-- (id)init
-{
-    self = [super initWithNibName:@"_SZUserSettingsViewController" bundle:nil];
-    if (self) {
-    }
-    return self;
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -123,7 +123,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     self.title = @"Settings";
     
     self.tableView.accessibilityLabel = @"edit profile";
-    self.navigationItem.leftBarButtonItem = self.cancelButton;	
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem redSocializeBarButtonWithTitle:@"Cancel" handler:^(id _) {
+        BLOCK_CALL_2(self.userSettingsCompletionBlock, NO, self.fullUser);
+    }];
     self.navigationItem.rightBarButtonItem = self.saveButton;
     [self changeTitleOnCustomBarButton:self.saveButton toText:@"Done"];
 
@@ -193,7 +195,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     }
     
     if ([self.navigationController.viewControllers count] >= 2) {
-        [self.cancelButton changeTitleOnCustomButtonToText:@"Back"];
+        [self.navigationItem.leftBarButtonItem changeTitleOnCustomButtonToText:@"Back"];
     }
 }
 
@@ -210,11 +212,11 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     [self.userDefaults synchronize];
 }
 
-- (void)dismissSelfAfterSave {
+- (void)dismissSelfDidSave:(BOOL)didSave {
     [self persistSettingsToDisk];
     
-    if (self.completionBlock != nil) {
-        self.completionBlock();
+    if (self.userSettingsCompletionBlock != nil) {
+        self.userSettingsCompletionBlock(didSave, self.fullUser);
     } else if ([self.delegate respondsToSelector:@selector(profileEditViewController:didUpdateProfileWithUser:)]) {
         [self.delegate profileEditViewController:self didUpdateProfileWithUser:self.fullUser];
     } else {
@@ -238,7 +240,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
                                   success:^(id<SocializeFullUser> fullUser) {
                                       self.fullUser = fullUser;
                                       [self stopLoading];
-                                      [self dismissSelfAfterSave];
+                                      [self dismissSelfDidSave:YES];
                                   } failure:^(NSError *error) {
                                       [self stopLoading];
                                       self.saveButton.enabled = YES;
@@ -246,7 +248,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
                                       [self failWithError:error];
                                   }];
     } else {
-        [self dismissSelfAfterSave];
+        [self dismissSelfDidSave:NO];
     }
 }
 
@@ -788,7 +790,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     self.fullUser = (id<SocializeFullUser>)object;
     [self stopLoading];
     
-    [self dismissSelfAfterSave];
+    [self dismissSelfDidSave:YES];
 }
 
 - (void)didAuthenticate:(id<SocializeUser>)user {

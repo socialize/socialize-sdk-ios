@@ -24,5 +24,6 @@
 #import "NSMutableArray+Socialize.h"
 #import "UIBarButtonItem+Socialize.h"
 #import "UIButton+Socialize.h"
+#import "SZNavigationController.h"
 
 #endif

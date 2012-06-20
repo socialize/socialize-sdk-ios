@@ -105,7 +105,7 @@ static SampleListViewController *sharedSampleListViewController;
     }]];
 
     [userRows addObject:[self rowWithText:@"Show User Settings" executionBlock:^{
-        [SZUserUtils showUserSettingsWithDisplay:self];
+        [SZUserUtils showUserSettingsInViewController:self];
     }]];
     
     // Share Utilities
