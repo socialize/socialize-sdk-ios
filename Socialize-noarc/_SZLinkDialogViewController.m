@@ -6,7 +6,7 @@
 //  Copyright 2011 pointabout. All rights reserved.
 //
 
-#import "SocializeAuthViewController.h"
+#import "_SZLinkDialogViewController.h"
 #import "SocializeAuthenticateService.h"
 #import "UIButton+Socialize.h"
 #import "UINavigationBarBackground.h"
@@ -22,12 +22,12 @@ static NSString *const kAuthTypeRowText = @"kAuthTypeRowText";
 static NSString *const kAuthTypeRowImageName = @"kAuthTypeRowImageName";
 static NSString *const kAuthTypeRowAction = @"kAuthTypeRowAction";
 
-@interface  SocializeAuthViewController()
+@interface  _SZLinkDialogViewController()
 -(SocializeAuthTableViewCell *)getAuthorizeTableViewCell;
 -(SocializeAuthInfoTableViewCell*)getAuthorizeInfoTableViewCell;
 -(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass;
 -(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName;
-@property (nonatomic, retain) id<SocializeAuthViewControllerDelegate> delegate;
+@property (nonatomic, retain) id<_SZLinkDialogViewControllerDelegate> delegate;
 @property (nonatomic, retain) id<SocializeUser> user;
 @property (nonatomic, retain) NSMutableArray *authTypeRowData;
 @property (nonatomic, assign) SZSocialNetwork selectedNetwork;
@@ -36,7 +36,7 @@ static NSString *const kAuthTypeRowAction = @"kAuthTypeRowAction";
 
 CGFloat SocializeAuthTableViewRowHeight = 56;
 
-@implementation SocializeAuthViewController
+@implementation _SZLinkDialogViewController
 
 
 
@@ -61,10 +61,10 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     return NO;
 }
 
-+(UINavigationController*)authViewControllerInNavigationController:(id<SocializeAuthViewControllerDelegate>)delegate;
++(UINavigationController*)authViewControllerInNavigationController:(id<_SZLinkDialogViewControllerDelegate>)delegate;
 {
-    SocializeAuthViewController *authController 
-    = [[[SocializeAuthViewController alloc] initWithDelegate:delegate] autorelease];
+    _SZLinkDialogViewController *authController 
+    = [[[_SZLinkDialogViewController alloc] initWithDelegate:delegate] autorelease];
                                                                                                               
     UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:authController] autorelease];
     UIImage *navBarImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
@@ -72,8 +72,8 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     return navController;
 }
 
-- (id)initWithDelegate:(id<SocializeAuthViewControllerDelegate>)delegate {
-    if( self = [super initWithNibName:@"SocializeAuthViewController" bundle:nil] ) {
+- (id)initWithDelegate:(id<_SZLinkDialogViewControllerDelegate>)delegate {
+    if( self = [super initWithNibName:@"_SZLinkDialogViewController" bundle:nil] ) {
         self.delegate = delegate;
         self.title = @"Authenticate";
     }
@@ -82,7 +82,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return SocializeAuthViewControllerNumSections;
+    return _SZLinkDialogViewControllerNumSections;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -201,10 +201,10 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     NSInteger noOfRows = 0;
 	switch (section) 
 	{
-		case SocializeAuthViewControllerSectionAuthTypes:
+		case _SZLinkDialogViewControllerSectionAuthTypes:
             noOfRows = [self.authTypeRowData count];
             break;
-        case SocializeAuthViewControllerSectionAuthInfo:
+        case _SZLinkDialogViewControllerSectionAuthInfo:
             noOfRows = 1;
             break;
     }
@@ -272,7 +272,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [aTableView deselectRowAtIndexPath:indexPath animated:YES];
-	if(indexPath.section == SocializeAuthViewControllerSectionAuthTypes){
+	if(indexPath.section == _SZLinkDialogViewControllerSectionAuthTypes){
         
         // execute the action
         NSDictionary *data = [self.authTypeRowData objectAtIndex:indexPath.row];
@@ -288,7 +288,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 	
 	switch (indexPath.section)  
 	{
-		case SocializeAuthViewControllerSectionAuthTypes:
+		case _SZLinkDialogViewControllerSectionAuthTypes:
 			authCell = [self getAuthorizeTableViewCell];
 			authCell.backgroundColor = [UIColor colorWithRed:61/255.0f green:70/255.0f blue:76/255.0f alpha:1.0] ;
 
@@ -300,7 +300,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
             cell = authCell;
             break;
 			
-		case SocializeAuthViewControllerSectionAuthInfo:
+		case _SZLinkDialogViewControllerSectionAuthInfo:
 		default:
 			infoCell = [self getAuthorizeInfoTableViewCell];
 			infoCell.backgroundColor = [UIColor colorWithRed:41/255.0f green:48/255.0f blue:54/255.0f alpha:1.0];

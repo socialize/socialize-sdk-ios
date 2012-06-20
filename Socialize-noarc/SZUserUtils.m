@@ -10,7 +10,7 @@
 #import "_Socialize.h"
 #import "_SZUserProfileViewController.h"
 #import "SZNavigationController.h"
-#import "SocializeAuthViewController.h"
+#import "_SZLinkDialogViewController.h"
 #import "SDKHelpers.h"
 #import "SZDisplay.h"
 #import "SZUserSettingsViewController.h"
@@ -30,7 +30,7 @@
 //    }
 //    
 //    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-//    SocializeAuthViewController *auth = [[SocializeAuthViewController alloc] init];
+//    _SZLinkDialogViewController *auth = [[_SZLinkDialogViewController alloc] init];
 //    auth.display = display;
 //    
 //    auth.completionBlock = ^(SZSocialNetwork selectedNetwork) {

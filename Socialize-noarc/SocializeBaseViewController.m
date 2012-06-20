@@ -28,7 +28,7 @@
 #import "SocializeBaseViewController.h"
 #import "SocializeLoadingView.h"
 #import "UINavigationBarBackground.h"
-#import "SocializeAuthViewController.h"
+#import "_SZLinkDialogViewController.h"
 #import "UIButton+Socialize.h"
 #import "_SZUserProfileViewController.h"
 #import "SocializeFacebookInterface.h"
@@ -45,7 +45,7 @@
 #import "SDKHelpers.h"
 #import "_SZUserSettingsViewController.h"
 
-@interface SocializeBaseViewController () <SocializeAuthViewControllerDelegate>
+@interface SocializeBaseViewController () <_SZLinkDialogViewControllerDelegate>
 @end
 
 @implementation SocializeBaseViewController

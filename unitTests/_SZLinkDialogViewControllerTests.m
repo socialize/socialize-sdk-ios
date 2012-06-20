@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "AuthViewControllerTests.h"
+#import "_SZLinkDialogViewControllerTests.h"
 #import "SocializeAuthenticateService.h"
 #import "SocializeAuthTableViewCell.h"
 #import "SocializeAuthInfoTableViewCell.h"
@@ -14,7 +14,7 @@
 #import "SocializeThirdPartyTwitter.h"
 
 //THIS REDEFINES THE INTERFACES AS PUBLIC SO WE CAN TEST THEM
-@interface  SocializeAuthViewController(public)
+@interface  _SZLinkDialogViewController(public)
     -(SocializeAuthTableViewCell *)getAuthorizeTableViewCell;
     -(SocializeAuthInfoTableViewCell*)getAuthorizeInfoTableViewCell;
     - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -24,7 +24,7 @@
     -(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass;
     -(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName;
     - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
-    @property (nonatomic, retain) id<SocializeAuthViewControllerDelegate> delegate;
+    @property (nonatomic, retain) id<_SZLinkDialogViewControllerDelegate> delegate;
     @property (nonatomic, retain) id<SocializeUser> user;
 @end
 
@@ -46,7 +46,7 @@ BOOL isAuthenticatedWithFacebook = YES;
 @synthesize mockSocialize = _mockSocialize;
 
 - (void)setUp { 
-    self.authViewController = [[SocializeAuthViewController alloc] initWithNibName:nil bundle:nil];
+    self.authViewController = [[_SZLinkDialogViewController alloc] initWithNibName:nil bundle:nil];
     //WE'LL CREATE A PARTIAL MOCK INCASE WE WANT TO SWIZZLE/STUB METHODS OUT IN ONE OF THE TESTS
     self.partialMockAuthViewController = [OCMockObject partialMockForObject:self.authViewController];
     self.mockAuthTableViewCell = [OCMockObject niceMockForClass:[SocializeAuthTableViewCell class]];
@@ -77,22 +77,22 @@ BOOL isAuthenticatedWithFacebook = YES;
 -(void) testSkipButtonPressed {
     id mockButton = [OCMockObject mockForClass:[UIButton class]];
     //create and set mock delegate
-    id delegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewControllerDelegate)];
+    id delegate = [OCMockObject mockForProtocol:@protocol(_SZLinkDialogViewControllerDelegate)];
     [[delegate expect] authorizationSkipped];
     self.authViewController.delegate = delegate;
     [self.authViewController skipButtonPressed:mockButton];
     [delegate verify];
 }
 - (void) testInitWithDelegate {
-    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewControllerDelegate)];
-    SocializeAuthViewController *authController = [[SocializeAuthViewController alloc] initWithDelegate:mockDelegate];
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(_SZLinkDialogViewControllerDelegate)];
+    _SZLinkDialogViewController *authController = [[_SZLinkDialogViewController alloc] initWithDelegate:mockDelegate];
     NSAssert( authController.delegate == mockDelegate, @"The delegate was not set on the init method" );
 }
 
 
 - (void)testCreateWithNavigationController {
-    id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeAuthViewControllerDelegate)];
-    NSObject *object = [SocializeAuthViewController authViewControllerInNavigationController:mockDelegate];
+    id mockDelegate = [OCMockObject mockForProtocol:@protocol(_SZLinkDialogViewControllerDelegate)];
+    NSObject *object = [_SZLinkDialogViewController authViewControllerInNavigationController:mockDelegate];
     NSAssert( [object isKindOfClass:[UINavigationController class]], @"static creation method did not create uinavigation controller" ) ;   
 }
 /*
@@ -121,7 +121,7 @@ BOOL isAuthenticatedWithFacebook = YES;
     [mockTableCell verify];
     [mockTableView verify];
 }
-- (void)setupSectionAuthTypes:(NSString *)authString  withType:(SocializeAuthViewControllerRows) authType  {
+- (void)setupSectionAuthTypes:(NSString *)authString  withType:(_SZLinkDialogViewControllerRows) authType  {
     [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] available];
     [[[SocializeThirdPartyTwitter stub] andReturnBool:YES] available];
 
@@ -131,21 +131,21 @@ BOOL isAuthenticatedWithFacebook = YES;
     [[mockLabel expect] setText:authString];
     [[[self.mockAuthTableViewCell expect] andReturn:mockLabel] cellLabel];
     
-    NSIndexPath *path = [NSIndexPath indexPathForRow:authType inSection:SocializeAuthViewControllerSectionAuthTypes];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:authType inSection:_SZLinkDialogViewControllerSectionAuthTypes];
     [self.authViewController tableView:self.mockTableView cellForRowAtIndexPath:path];
     [self.partialMockAuthViewController verify];
 }
 
 - (void) testRowForTwitter{
-    [self setupSectionAuthTypes:@"twitter" withType:SocializeAuthViewControllerRowTwitter];
+    [self setupSectionAuthTypes:@"twitter" withType:_SZLinkDialogViewControllerRowTwitter];
 }
 
 - (void) testRowForFacebook{
-    [self setupSectionAuthTypes:@"facebook" withType:SocializeAuthViewControllerRowFacebook];
+    [self setupSectionAuthTypes:@"facebook" withType:_SZLinkDialogViewControllerRowFacebook];
 }
 
 - (void) testRowForAuthInfo {
-    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:SocializeAuthViewControllerSectionAuthInfo];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:_SZLinkDialogViewControllerSectionAuthInfo];
     //mock SocializeAuthInfoTableViewCell
     id mockAuthInfoCell = [OCMockObject niceMockForClass:[SocializeAuthInfoTableViewCell class]];
     //MOCK PARTIAL getAuthorizeInfoTableViewCell

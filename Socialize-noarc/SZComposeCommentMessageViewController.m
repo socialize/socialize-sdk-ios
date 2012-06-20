@@ -10,7 +10,7 @@
 #import "SocializeLocationManager.h"
 #import "CommentMapView.h"
 #import "UINavigationController+Socialize.h"
-#import "SocializeAuthViewController.h"
+#import "_SZLinkDialogViewController.h"
 #import "SocializeSubscriptionService.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
@@ -101,7 +101,7 @@
 }
 
 - (void)dismissSelf {
-    // In the case that the user just came back from the SocializeAuthViewController, and the 
+    // In the case that the user just came back from the _SZLinkDialogViewController, and the 
     // socialize server finishes creating the comment before the modal dismissal animation has played,
     // we need to hack a delay for iOS5 or the second dismissal will not happen
     

@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "SocializeComposeMessageViewController.h"
-#import "SocializeAuthViewController.h"
+#import "_SZLinkDialogViewController.h"
 #import "SZComposeCommentViewControllerDelegate.h"
 #import "SZCommentOptions.h"
 
-@interface SZComposeCommentMessageViewController : SocializeComposeMessageViewController <SocializeAuthViewControllerDelegate>
+@interface SZComposeCommentMessageViewController : SocializeComposeMessageViewController <_SZLinkDialogViewControllerDelegate>
 + (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SZComposeCommentViewControllerDelegate>)delegate;
 + (SZComposeCommentMessageViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL;
 + (SZComposeCommentMessageViewController*)composeCommentViewControllerWithEntity:(id<SZEntity>)entity;

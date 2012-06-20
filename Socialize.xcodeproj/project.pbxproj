@@ -62,7 +62,7 @@
 		AA008759158D35BF00480399 /* SocializeAuthenticateService.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008640158D35BD00480399 /* SocializeAuthenticateService.m */; };
 		AA00875A158D35BF00480399 /* SocializeAuthInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008642158D35BD00480399 /* SocializeAuthInfoTableViewCell.m */; };
 		AA00875B158D35BF00480399 /* SocializeAuthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008644158D35BD00480399 /* SocializeAuthTableViewCell.m */; };
-		AA00875C158D35BF00480399 /* SocializeAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008646158D35BD00480399 /* SocializeAuthViewController.m */; };
+		AA00875C158D35BF00480399 /* _SZLinkDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008646158D35BD00480399 /* _SZLinkDialogViewController.m */; };
 		AA00875D158D35BF00480399 /* SocializeBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008648158D35BD00480399 /* SocializeBaseViewController.m */; };
 		AA00875E158D35BF00480399 /* SocializeBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00864B158D35BD00480399 /* SocializeBubbleView.m */; };
 		AA00875F158D35BF00480399 /* SocializeComment.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00864D158D35BD00480399 /* SocializeComment.m */; };
@@ -182,7 +182,7 @@
 		AA0C6077158FC5D000F66A3B /* NSObject+Observer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6073158FC5D000F66A3B /* NSObject+Observer.m */; };
 		AA0C6114158FC61D00F66A3B /* ActivityDetailsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6079158FC61D00F66A3B /* ActivityDetailsViewControllerTests.m */; };
 		AA0C6115158FC61D00F66A3B /* ActivityDetailsViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C607B158FC61D00F66A3B /* ActivityDetailsViewTests.m */; };
-		AA0C6116158FC61D00F66A3B /* AuthViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C607D158FC61D00F66A3B /* AuthViewControllerTests.m */; };
+		AA0C6116158FC61D00F66A3B /* _SZLinkDialogViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C607D158FC61D00F66A3B /* _SZLinkDialogViewControllerTests.m */; };
 		AA0C6117158FC61D00F66A3B /* CommentDetailsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C607F158FC61D00F66A3B /* CommentDetailsViewControllerTests.m */; };
 		AA0C6118158FC61D00F66A3B /* CommentDetailsViewForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6081158FC61D00F66A3B /* CommentDetailsViewForTest.m */; };
 		AA0C6119158FC61D00F66A3B /* CommentDetailsViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6083158FC61D00F66A3B /* CommentDetailsViewTests.m */; };
@@ -1072,7 +1072,7 @@
 		AAB5E496159044E600D3EBDF /* SocializeAuthenticateService.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008640158D35BD00480399 /* SocializeAuthenticateService.m */; };
 		AAB5E497159044E600D3EBDF /* SocializeAuthInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008642158D35BD00480399 /* SocializeAuthInfoTableViewCell.m */; };
 		AAB5E498159044E600D3EBDF /* SocializeAuthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008644158D35BD00480399 /* SocializeAuthTableViewCell.m */; };
-		AAB5E499159044E600D3EBDF /* SocializeAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008646158D35BD00480399 /* SocializeAuthViewController.m */; };
+		AAB5E499159044E600D3EBDF /* _SZLinkDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008646158D35BD00480399 /* _SZLinkDialogViewController.m */; };
 		AAB5E49A159044E600D3EBDF /* SocializeBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008648158D35BD00480399 /* SocializeBaseViewController.m */; };
 		AAB5E49B159044E600D3EBDF /* SocializeBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00864B158D35BD00480399 /* SocializeBubbleView.m */; };
 		AAB5E49C159044E600D3EBDF /* SocializeComment.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00864D158D35BD00480399 /* SocializeComment.m */; };
@@ -1704,8 +1704,8 @@
 		AA008642158D35BD00480399 /* SocializeAuthInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAuthInfoTableViewCell.m; sourceTree = "<group>"; };
 		AA008643158D35BD00480399 /* SocializeAuthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeAuthTableViewCell.h; sourceTree = "<group>"; };
 		AA008644158D35BD00480399 /* SocializeAuthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAuthTableViewCell.m; sourceTree = "<group>"; };
-		AA008645158D35BD00480399 /* SocializeAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeAuthViewController.h; sourceTree = "<group>"; };
-		AA008646158D35BD00480399 /* SocializeAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeAuthViewController.m; sourceTree = "<group>"; };
+		AA008645158D35BD00480399 /* _SZLinkDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SZLinkDialogViewController.h; sourceTree = "<group>"; };
+		AA008646158D35BD00480399 /* _SZLinkDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SZLinkDialogViewController.m; sourceTree = "<group>"; };
 		AA008647158D35BD00480399 /* SocializeBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeBaseViewController.h; sourceTree = "<group>"; };
 		AA008648158D35BD00480399 /* SocializeBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeBaseViewController.m; sourceTree = "<group>"; };
 		AA008649158D35BD00480399 /* SocializeBaseViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeBaseViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -1983,8 +1983,8 @@
 		AA0C6079158FC61D00F66A3B /* ActivityDetailsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailsViewControllerTests.m; sourceTree = "<group>"; };
 		AA0C607A158FC61D00F66A3B /* ActivityDetailsViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailsViewTests.h; sourceTree = "<group>"; };
 		AA0C607B158FC61D00F66A3B /* ActivityDetailsViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailsViewTests.m; sourceTree = "<group>"; };
-		AA0C607C158FC61D00F66A3B /* AuthViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewControllerTests.h; sourceTree = "<group>"; };
-		AA0C607D158FC61D00F66A3B /* AuthViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewControllerTests.m; sourceTree = "<group>"; };
+		AA0C607C158FC61D00F66A3B /* _SZLinkDialogViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SZLinkDialogViewControllerTests.h; sourceTree = "<group>"; };
+		AA0C607D158FC61D00F66A3B /* _SZLinkDialogViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SZLinkDialogViewControllerTests.m; sourceTree = "<group>"; };
 		AA0C607E158FC61D00F66A3B /* CommentDetailsViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailsViewControllerTests.h; sourceTree = "<group>"; };
 		AA0C607F158FC61D00F66A3B /* CommentDetailsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailsViewControllerTests.m; sourceTree = "<group>"; };
 		AA0C6080158FC61D00F66A3B /* CommentDetailsViewForTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailsViewForTest.h; sourceTree = "<group>"; };
@@ -2802,8 +2802,8 @@
 				AA0C6079158FC61D00F66A3B /* ActivityDetailsViewControllerTests.m */,
 				AA0C607A158FC61D00F66A3B /* ActivityDetailsViewTests.h */,
 				AA0C607B158FC61D00F66A3B /* ActivityDetailsViewTests.m */,
-				AA0C607C158FC61D00F66A3B /* AuthViewControllerTests.h */,
-				AA0C607D158FC61D00F66A3B /* AuthViewControllerTests.m */,
+				AA0C607C158FC61D00F66A3B /* _SZLinkDialogViewControllerTests.h */,
+				AA0C607D158FC61D00F66A3B /* _SZLinkDialogViewControllerTests.m */,
 				AA0C607E158FC61D00F66A3B /* CommentDetailsViewControllerTests.h */,
 				AA0C607F158FC61D00F66A3B /* CommentDetailsViewControllerTests.m */,
 				AA0C6080158FC61D00F66A3B /* CommentDetailsViewForTest.h */,
@@ -3631,8 +3631,8 @@
 				AA008642158D35BD00480399 /* SocializeAuthInfoTableViewCell.m */,
 				AA008643158D35BD00480399 /* SocializeAuthTableViewCell.h */,
 				AA008644158D35BD00480399 /* SocializeAuthTableViewCell.m */,
-				AA008645158D35BD00480399 /* SocializeAuthViewController.h */,
-				AA008646158D35BD00480399 /* SocializeAuthViewController.m */,
+				AA008645158D35BD00480399 /* _SZLinkDialogViewController.h */,
+				AA008646158D35BD00480399 /* _SZLinkDialogViewController.m */,
 				AA008647158D35BD00480399 /* SocializeBaseViewController.h */,
 				AA008648158D35BD00480399 /* SocializeBaseViewController.m */,
 				AA008649158D35BD00480399 /* SocializeBaseViewControllerDelegate.h */,
@@ -5257,7 +5257,7 @@
 				AA008759158D35BF00480399 /* SocializeAuthenticateService.m in Sources */,
 				AA00875A158D35BF00480399 /* SocializeAuthInfoTableViewCell.m in Sources */,
 				AA00875B158D35BF00480399 /* SocializeAuthTableViewCell.m in Sources */,
-				AA00875C158D35BF00480399 /* SocializeAuthViewController.m in Sources */,
+				AA00875C158D35BF00480399 /* _SZLinkDialogViewController.m in Sources */,
 				AA00875D158D35BF00480399 /* SocializeBaseViewController.m in Sources */,
 				AA00875E158D35BF00480399 /* SocializeBubbleView.m in Sources */,
 				AA00875F158D35BF00480399 /* SocializeComment.m in Sources */,
@@ -5378,7 +5378,7 @@
 				AA0C6077158FC5D000F66A3B /* NSObject+Observer.m in Sources */,
 				AA0C6114158FC61D00F66A3B /* ActivityDetailsViewControllerTests.m in Sources */,
 				AA0C6115158FC61D00F66A3B /* ActivityDetailsViewTests.m in Sources */,
-				AA0C6116158FC61D00F66A3B /* AuthViewControllerTests.m in Sources */,
+				AA0C6116158FC61D00F66A3B /* _SZLinkDialogViewControllerTests.m in Sources */,
 				AA0C6117158FC61D00F66A3B /* CommentDetailsViewControllerTests.m in Sources */,
 				AA0C6118158FC61D00F66A3B /* CommentDetailsViewForTest.m in Sources */,
 				AA0C6119158FC61D00F66A3B /* CommentDetailsViewTests.m in Sources */,
@@ -5556,7 +5556,7 @@
 				AAB5E496159044E600D3EBDF /* SocializeAuthenticateService.m in Sources */,
 				AAB5E497159044E600D3EBDF /* SocializeAuthInfoTableViewCell.m in Sources */,
 				AAB5E498159044E600D3EBDF /* SocializeAuthTableViewCell.m in Sources */,
-				AAB5E499159044E600D3EBDF /* SocializeAuthViewController.m in Sources */,
+				AAB5E499159044E600D3EBDF /* _SZLinkDialogViewController.m in Sources */,
 				AAB5E49A159044E600D3EBDF /* SocializeBaseViewController.m in Sources */,
 				AAB5E49B159044E600D3EBDF /* SocializeBubbleView.m in Sources */,
 				AAB5E49C159044E600D3EBDF /* SocializeComment.m in Sources */,
