@@ -75,4 +75,13 @@ static SocializeFacebookAuthHandler *sharedFacebookAuthHandler;
     [self failWithError:[NSError defaultSocializeErrorForCode:SocializeErrorFacebookCancelledByUser]];
 }
 
+- (void)fbDidExtendToken:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
+}
+
+- (void)fbDidLogout {
+}
+
+- (void)fbSessionInvalidated {
+}
+
 @end
