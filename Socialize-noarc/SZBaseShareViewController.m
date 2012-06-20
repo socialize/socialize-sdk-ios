@@ -1,12 +1,12 @@
 //
-//  SZShareDialogViewController.m
+//  SZBaseShareViewController.m
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 5/9/12.
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import "SZShareDialogViewController.h"
+#import "SZBaseShareViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SocializeThirdPartyTwitter.h"
 #import "SocializeThirdPartyFacebook.h"
@@ -36,7 +36,7 @@ static NSString *kSocialNetworkSection = @"kSocialNetworkSection";
 static NSString *kOtherSection = @"kOtherSection";
 static NSString *kAutopostSection = @"kAutopostSection";
 
-@interface SZShareDialogViewController ()
+@interface SZBaseShareViewController ()
 @property (nonatomic, retain) NSMutableArray *sections;
 @property (nonatomic, retain) NSMutableDictionary *socialNetworkSection;
 @property (nonatomic, retain) NSMutableDictionary *facebookRow;
@@ -46,7 +46,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 @property (nonatomic, retain) UISwitch *autopostSwitch;
 @end
 
-@implementation SZShareDialogViewController
+@implementation SZBaseShareViewController
 @synthesize shareDialogView = shareDialogView_;
 @synthesize sections = sections_;
 @synthesize socialNetworkSection = socializeNetworkSection_;
@@ -62,6 +62,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 @synthesize completionBlock = completionBlock_;
 @synthesize hideUnlinkedNetworks = hideUnlinkedNetworks_;
 @synthesize dontRequireNetworkSelection = dontRequireNetworkSelection_;
+@synthesize createdShares = createdShares_;
 
 - (void)dealloc {
     self.shareDialogView = nil;
@@ -78,8 +79,16 @@ static NSString *kAutopostSection = @"kAutopostSection";
     [super dealloc];
 }
 
+- (NSMutableArray*)createdShares {
+    if (createdShares_ == nil) {
+        createdShares_ = [[NSMutableArray alloc] init];
+    }
+    
+    return createdShares_;
+}
+
 - (id)initWithEntity:(id<SZEntity>)entity {
-    if (self = [super init]) {
+    if (self = [super initWithNibName:@"SZBaseShareViewController" bundle:nil]) {
         self.entity = entity;
     }
     
@@ -105,6 +114,15 @@ static NSString *kAutopostSection = @"kAutopostSection";
     
     if ([self.navigationController.viewControllers count] >= 2) {
         [self.cancelButton changeTitleOnCustomButtonToText:@"Back"];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    if (indexPath != nil) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     }
 }
 
@@ -298,7 +316,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 - (NSDictionary*)SMSRow {
     void (^executionBlock)() = ^{
         [SZShareUtils shareViaSMSWithViewController:self entity:self.entity success:^(id<SZShare> share) {
-            
+            [self.createdShares addObject:share];
         } failure:^(NSError *error) {
             [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 
@@ -325,7 +343,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 - (NSDictionary*)emailRow {
     void (^executionBlock)() = ^{
         [SZShareUtils shareViaEmailWithViewController:self entity:self.entity success:^(id<SZShare> share) {
-            
+            [self.createdShares addObject:share];
         } failure:^(NSError *error) {
             [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 
@@ -586,19 +604,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)finishAndCallCompletion {
-    SZSocialNetwork networks = [self selectedNetworks];
-    if (networks == SZSocialNetworkNone && !self.dontRequireNetworkSelection) {
-        [UIAlertView showAlertWithTitle:@"No Networks Selected" message:@"Please select one or more networks to continue." buttonTitle:@"Ok" handler:nil];
-        return;
-    }
-    [self persistSelection];
-    
-    BLOCK_CALL_1(self.completionBlock, networks);
-}
-
 - (IBAction)continueButtonPressed:(id)sender {
-    [self finishAndCallCompletion];
 }
 
 - (void)socializeWillStartLoadingWithMessage:(NSString *)message {

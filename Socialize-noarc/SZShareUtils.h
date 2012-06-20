@@ -14,8 +14,8 @@
 @interface SZShareUtils : NSObject
 
 + (SZShareOptions*)userShareOptions;
-+ (void)getPreferredShareNetworksWithDisplay:(id<SZDisplay>)display success:(void(^)(SZSocialNetwork networks))success failure:(void(^)(NSError *error))failure;
-+ (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
++ (void)getPreferredShareNetworksWithViewController:(UIViewController*)viewController success:(void(^)(SZSocialNetwork networks))success failure:(void(^)(NSError *error))failure;
++ (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure;
 
 + (void)shareViaEmailWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure;
 + (BOOL)canShareViaEmail;

@@ -118,7 +118,7 @@ static SampleListViewController *sharedSampleListViewController;
 
     [shareRows addObject:[self rowWithText:@"Share Via Email" executionBlock:^{
         [SZShareUtils shareViaEmailWithViewController:self entity:self.entity success:^(id<SZShare> share) {
-            [UIAlertView showAlertWithTitle:@"Share successful" message:nil buttonTitle:@"OK" handler:nil];
+//            [UIAlertView showAlertWithTitle:@"Share successful" message:nil buttonTitle:@"OK" handler:nil];
         } failure:^(NSError *error) {
             NSString *reason = [NSString stringWithFormat:@"Share failed: %@", [error localizedDescription]];
             [UIAlertView showAlertWithTitle:reason message:nil buttonTitle:@"Ok" handler:nil];

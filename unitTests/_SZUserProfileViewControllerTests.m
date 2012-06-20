@@ -103,8 +103,7 @@
 //
 - (void)testBasicViewDidLoad {
 //    [[self.mockNavigationBar expect] setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
-    [[[self.mockNavigationItem stub] andReturn:nil] leftBarButtonItem];
-    [[self.mockNavigationItem expect] setLeftBarButtonItem:self.profileViewController.doneButton];
+    [self.mockNavigationItem makeNice];
     [[(id)self.profileViewController expect] addActivityControllerToView];
     [[(id)self.profileViewController expect] setProfileImageFromImage:self.profileViewController.defaultProfileImage];
     [self.profileViewController viewDidLoad];

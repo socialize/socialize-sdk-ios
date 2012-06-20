@@ -21,48 +21,48 @@
 }
 
 + (void)likeWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
-    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-    
-    LinkWrapper(wrapper, ^(BOOL didPrompt, SZSocialNetwork selectedNetwork) {
-        if (AvailableSocialNetworks() == SZSocialNetworkNone || (didPrompt && selectedNetwork == SZSocialNetworkNone)) {
-            
-            [wrapper startLoadingInTopControllerWithMessage:@"Creating Like"];
-            [self likeWithEntity:entity options:nil networks:SZSocialNetworkNone success:^(id<SZLike> like) {
-                [wrapper stopLoadingInTopController];
-                [wrapper endSequence];
-                BLOCK_CALL_1(success, like);
-            } failure:^(NSError *error) {
-                [wrapper stopLoadingInTopController];
-                [wrapper endSequence];
-                BLOCK_CALL_1(failure, error);
-            }];
-            
-        } else {
-            
-            // Networks are available, so get the user's post preference (may show network selection dialog)
-            [SZShareUtils getPreferredShareNetworksWithDisplay:wrapper success:^(SZSocialNetwork networks) {
-                [wrapper startLoadingInTopControllerWithMessage:@"Creating Like"];
-                
-                [self likeWithEntity:entity options:nil networks:networks success:^(id<SZLike> like) {
-                    [wrapper stopLoadingInTopController];
-                    [wrapper endSequence];
-                    BLOCK_CALL_1(success, like);
-                } failure:^(NSError *error) {
-                    [wrapper stopLoadingInTopController];
-                    [wrapper endSequence];
-                    BLOCK_CALL_1(failure, error);                    
-                }];
-
-            } failure:^(NSError *error) {
-                [wrapper endSequence];
-                BLOCK_CALL_1(failure, error);
-            }];
-        }
-        
-    }, ^(NSError *error) {
-        [wrapper endSequence];
-        BLOCK_CALL_1(failure, error);
-    });
+//    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
+//    
+//    LinkWrapper(wrapper, ^(BOOL didPrompt, SZSocialNetwork selectedNetwork) {
+//        if (AvailableSocialNetworks() == SZSocialNetworkNone || (didPrompt && selectedNetwork == SZSocialNetworkNone)) {
+//            
+//            [wrapper startLoadingInTopControllerWithMessage:@"Creating Like"];
+//            [self likeWithEntity:entity options:nil networks:SZSocialNetworkNone success:^(id<SZLike> like) {
+//                [wrapper stopLoadingInTopController];
+//                [wrapper endSequence];
+//                BLOCK_CALL_1(success, like);
+//            } failure:^(NSError *error) {
+//                [wrapper stopLoadingInTopController];
+//                [wrapper endSequence];
+//                BLOCK_CALL_1(failure, error);
+//            }];
+//            
+//        } else {
+//            
+//            // Networks are available, so get the user's post preference (may show network selection dialog)
+//            [SZShareUtils getPreferredShareNetworksWithDisplay:wrapper success:^(SZSocialNetwork networks) {
+//                [wrapper startLoadingInTopControllerWithMessage:@"Creating Like"];
+//                
+//                [self likeWithEntity:entity options:nil networks:networks success:^(id<SZLike> like) {
+//                    [wrapper stopLoadingInTopController];
+//                    [wrapper endSequence];
+//                    BLOCK_CALL_1(success, like);
+//                } failure:^(NSError *error) {
+//                    [wrapper stopLoadingInTopController];
+//                    [wrapper endSequence];
+//                    BLOCK_CALL_1(failure, error);                    
+//                }];
+//
+//            } failure:^(NSError *error) {
+//                [wrapper endSequence];
+//                BLOCK_CALL_1(failure, error);
+//            }];
+//        }
+//        
+//    }, ^(NSError *error) {
+//        [wrapper endSequence];
+//        BLOCK_CALL_1(failure, error);
+//    });
 
 }
 
