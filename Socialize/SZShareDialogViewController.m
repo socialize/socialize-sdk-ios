@@ -16,7 +16,6 @@
 
 @implementation SZShareDialogViewController
 @synthesize completionBlock = _completionBlock;
-@synthesize cancellationBlock = _cancellationBlock;
 @synthesize shareDialog = _shareDialog;
 @synthesize shares = _shares;
 @synthesize entity = entity_;
@@ -29,22 +28,15 @@
 - (id)initWithEntity:(id<SZEntity>)entity {
     if (self = [super init]) {
         self.entity = entity;
-        [self pushShareDialog];
+        [self createShareDialog];
     }
     
     return self;
 }
 
-- (void)pushShareDialog {
-    _SZShareDialogViewController *shareDialog = [[_SZShareDialogViewController alloc] initWithEntity:self.entity];
-    [self pushViewController:shareDialog animated:NO];
-}
-
-- (_SZShareDialogViewController*)shareDialog {
-    if (_shareDialog == nil) {
-        _shareDialog = [[_SZShareDialogViewController alloc] init];
-    }
-    return _shareDialog;
+- (void)createShareDialog {
+    self.shareDialog = [[_SZShareDialogViewController alloc] initWithEntity:self.entity];
+    [self pushViewController:self.shareDialog animated:NO];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

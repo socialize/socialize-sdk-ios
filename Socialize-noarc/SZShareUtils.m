@@ -50,11 +50,11 @@
 //    }
 }
 
-+ (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
++ (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))completion {
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
-    shareDialog.completionBlock = success;
-    shareDialog.cancellationBlock = ^{
-        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]);
+    shareDialog.completionBlock = ^(NSArray *shares) {
+        [viewController dismissModalViewControllerAnimated:YES];
+        BLOCK_CALL_1(completion, shares);
     };
     [viewController presentModalViewController:shareDialog animated:YES];
 }

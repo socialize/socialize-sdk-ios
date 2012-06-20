@@ -24,6 +24,14 @@
     return self;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem redSocializeBarButtonWithTitle:@"Cancel" handler:^(id sender) {
+        BLOCK_CALL_1(self.completionBlock, [NSArray array]);
+    }];
+}
+
 - (void)continueButtonPressed:(id)sender {
     SZSocialNetwork networks = [self selectedNetworks];
     SZShareOptions *shareOptions = [SZShareUtils userShareOptions];

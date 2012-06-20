@@ -112,7 +112,7 @@ static SampleListViewController *sharedSampleListViewController;
     NSMutableArray *shareRows = [NSMutableArray array];
     
     [shareRows addObject:[self rowWithText:@"Show Share Dialog" executionBlock:^{
-        [SZShareUtils showShareDialogWithViewController:self entity:self.entity success:nil failure:nil];
+        [SZShareUtils showShareDialogWithViewController:self entity:self.entity completion:nil];
     }]];
          
 
