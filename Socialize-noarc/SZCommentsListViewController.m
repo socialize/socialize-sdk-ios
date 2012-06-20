@@ -315,7 +315,7 @@
 }
 
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
-    SZProfileViewController *profile = [SZProfileViewController profileViewController];
+    _SZUserProfileViewController *profile = [_SZUserProfileViewController profileViewController];
     profile.user = user;
     UINavigationController *nav = [UINavigationController socializeNavigationControllerWithRootViewController:profile];
     return nav;

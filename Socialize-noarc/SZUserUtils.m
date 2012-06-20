@@ -8,12 +8,13 @@
 
 #import "SZUserUtils.h"
 #import "_Socialize.h"
-#import "SZProfileViewController.h"
+#import "_SZUserProfileViewController.h"
 #import "SZNavigationController.h"
 #import "SocializeAuthViewController.h"
 #import "SDKHelpers.h"
 #import "SZDisplay.h"
 #import "SZUserSettingsViewController.h"
+#import "SZUserProfileViewController.h"
 
 @implementation SZUserUtils
 
@@ -45,20 +46,12 @@
 //    [wrapper beginSequenceWithViewController:auth];
 }
 
-+ (void)showUserProfileWithDisplay:(id<SZDisplay>)display user:(id<SocializeFullUser>)user {
-    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-    SZProfileViewController *profile = [SZProfileViewController profileViewController];
-    
-    profile.fullUser = user;
-    profile.completionBlock = ^{
-        [wrapper endSequence];
++ (void)showUserProfileInViewController:(UIViewController*)viewController user:(id<SocializeFullUser>)user completion:(void(^)(id<SZFullUser> user))completion {
+    SZUserProfileViewController *profile = [[SZUserProfileViewController alloc] initWithUser:(id<SZUser>)user];
+    profile.completionBlock = ^(id<SZFullUser> user) {
+        [viewController dismissModalViewControllerAnimated:YES];
     };
-    
-    profile.cancellationBlock = ^{
-        [wrapper endSequence];
-    };
-
-    [wrapper beginSequenceWithViewController:profile];
+    [viewController presentModalViewController:profile animated:YES];
 }
 
 + (SZUserSettingsViewController*)showUserSettingsInViewController:(UIViewController*)viewController {

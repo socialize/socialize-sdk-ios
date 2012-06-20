@@ -6,7 +6,7 @@
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "SZProfileViewController.h"
+#import "_SZUserProfileViewController.h"
 #import "ImagesCache.h"
 #import "UINavigationBarBackground.h"
 #import "UIButton+Socialize.h"
@@ -15,12 +15,12 @@
 #import "SZNavigationController.h"
 #import "SZUserUtils.h"
 
-@interface SZProfileViewController ()
+@interface _SZUserProfileViewController ()
 -(void)configureViews;
 - (void)addActivityControllerToView;
 @end
 
-@implementation SZProfileViewController
+@implementation _SZUserProfileViewController
 @synthesize delegate = delegate_;
 @synthesize user = user_;
 @synthesize fullUser = fullUser_;
@@ -34,6 +34,7 @@
 @synthesize alertView = alertView_;
 @synthesize activityViewController = activityViewController_;
 @synthesize activityLoadingActivityIndicator = activityLoadingActivityIndicator_;
+@synthesize userProfileCompletionBlock = userProfileCompletionBlock_;
 
 - (void)dealloc {
     self.user = nil;
@@ -67,29 +68,29 @@
 }
 
 + (UINavigationController*)socializeProfileViewControllerForUser:(id<SocializeUser>)user delegate:(id<SocializeBaseViewControllerDelegate>)delegate {
-    SZProfileViewController *profile = [[[SZProfileViewController alloc] initWithUser:user delegate:delegate] autorelease];
+    _SZUserProfileViewController *profile = [[[_SZUserProfileViewController alloc] initWithUser:user delegate:delegate] autorelease];
     UIImage *navImage = [UIImage imageNamed:@"socialize-navbar-bg.png"];
     UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:profile] autorelease];
     [nav.navigationBar setBackgroundImage:navImage];
     return nav;
 }
 
-+ (SZProfileViewController*)profileViewController {
-    return [[[SZProfileViewController alloc] init] autorelease];
++ (_SZUserProfileViewController*)profileViewController {
+    return [[[_SZUserProfileViewController alloc] init] autorelease];
 }
 
 + (UINavigationController*)profileViewControllerInNavigationController {
-    SZProfileViewController *profile = [self profileViewController];
+    _SZUserProfileViewController *profile = [self profileViewController];
     return [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
 }
 
 
 + (UINavigationController*)socializeProfileViewControllerWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate {
-    return [SZProfileViewController socializeProfileViewControllerForUser:nil delegate:delegate];
+    return [_SZUserProfileViewController socializeProfileViewControllerForUser:nil delegate:delegate];
 }
 
 + (UINavigationController*)currentUserProfileWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate {
-    return [SZProfileViewController socializeProfileViewControllerWithDelegate:delegate];
+    return [_SZUserProfileViewController socializeProfileViewControllerWithDelegate:delegate];
 }
 
 - (id)initWithUser:(id<SocializeUser>)user delegate:(id<SocializeBaseViewControllerDelegate>)delegate {
@@ -121,8 +122,11 @@
     self.title = @"Profile";
     
     //we will show a done button here if there is not left barbutton item already showing
-    if (!self.navigationItem.leftBarButtonItem)
-        self.navigationItem.leftBarButtonItem = self.doneButton;
+    if (!self.navigationItem.leftBarButtonItem) {
+        self.navigationItem.leftBarButtonItem = [UIBarButtonItem blueSocializeBarButtonWithTitle:@"Done" handler:^(id sender) {
+            BLOCK_CALL_1(self.userProfileCompletionBlock, self.fullUser);
+        }];
+    }
 
     [self setProfileImageFromImage:[self defaultProfileImage]];
     
@@ -237,7 +241,7 @@
 
 - (void)activityViewController:(SocializeActivityViewController *)activityViewController profileTappedForUser:(id<SocializeUser>)user {
     if (user.objectID != self.fullUser.objectID) {
-        SZProfileViewController *profile = [SZProfileViewController profileViewController];
+        _SZUserProfileViewController *profile = [_SZUserProfileViewController profileViewController];
         profile.user = user;
         SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
         [self presentModalViewController:nav animated:YES];
@@ -264,6 +268,11 @@
 - (void)didGetCurrentUser:(id<SocializeFullUser>)fullUser {
     self.fullUser = fullUser;
     [self configureViews];
+}
+
+- (void)service:(SocializeService *)service didFetchElements:(NSArray *)dataArray {
+    [self stopLoading];
+    [self didGetCurrentUser:[dataArray objectAtIndex:0]];
 }
 
 - (IBAction)headerTapped:(id)sender {

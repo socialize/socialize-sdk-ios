@@ -9,7 +9,7 @@
 #import "SocializeActivityViewController.h"
 #import "SocializeActivityTableViewCell.h"
 #import "SocializeActivityService.h"
-#import "SZProfileViewController.h"
+#import "_SZUserProfileViewController.h"
 #import "SocializeTableBGInfoView.h"
 #import "_Socialize.h"
 

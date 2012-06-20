@@ -12,7 +12,7 @@
 #import <OCMock/OCMock.h>
 #import "SocializeTableBGInfoView.h"
 #import "SocializeCommentsService.h"
-#import "SZProfileViewController.h"
+#import "_SZUserProfileViewController.h"
 #import "SocializeSubscriptionService.h"
 #import "SocializeActivityDetailsViewController.h"
 #import "SocializeBubbleView.h"
@@ -166,7 +166,7 @@
     self.commentsTableViewController.content = [NSArray arrayWithObject:mockComment];
     
     //mock out creation of profile controller and present
-    id mockProfileViewController = [OCMockObject mockForClass:[SZProfileViewController class]];
+    id mockProfileViewController = [OCMockObject mockForClass:[_SZUserProfileViewController class]];
     [[[(id)self.commentsTableViewController expect] andReturn:mockProfileViewController] getProfileViewControllerForUser:mockUser];
     [[(id)self.commentsTableViewController expect] presentModalViewController:mockProfileViewController animated:YES];
     

@@ -17,8 +17,8 @@
 @class SocializeLoadingView;
 @class SocializeActivityViewController;
 
-@interface SZProfileViewController : SocializeBaseViewController <UINavigationControllerDelegate, _SZUserSettingsViewControllerDelegate, SocializeServiceDelegate, SocializeActivityViewControllerDelegate>
-+ (SZProfileViewController*)profileViewController;
+@interface _SZUserProfileViewController : SocializeBaseViewController <UINavigationControllerDelegate, _SZUserSettingsViewControllerDelegate, SocializeServiceDelegate, SocializeActivityViewControllerDelegate>
++ (_SZUserProfileViewController*)profileViewController;
 + (UINavigationController*)profileViewControllerInNavigationController;
 + (UINavigationController*)socializeProfileViewControllerWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate;
 + (UINavigationController*)currentUserProfileWithDelegate:(id<SocializeBaseViewControllerDelegate>)delegate;
@@ -36,6 +36,7 @@
 @property (nonatomic, retain) UIAlertView *alertView;
 @property (nonatomic, retain) SocializeActivityViewController *activityViewController;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityLoadingActivityIndicator;
+@property (nonatomic, copy) void (^userProfileCompletionBlock)(id<SZFullUser> user);
 
 - (void)setProfileImageFromURL:(NSString*)imageURL;
 - (void)setProfileImageFromImage:(UIImage*)image;

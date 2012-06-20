@@ -7,13 +7,13 @@
 //
 
 #import "ActivityDetailsViewControllerTests.h"
-#import "SZProfileViewController.h"
+#import "_SZUserProfileViewController.h"
 #import "URLDownload.h"
 #import <OCMock/OCMock.h>
 #import "SocializeActivityDetailsView.h"
 
 @interface SocializeActivityDetailsViewController()
--(SZProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
+-(_SZUserProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 -(void)loadActivityDetailData;
 -(void)updateProfileImage;
 - (void)configureSettingsButton;

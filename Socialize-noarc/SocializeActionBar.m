@@ -37,7 +37,7 @@
 #import <BlocksKit/BlocksKit.h>
 #import "SocializeFacebookInterface.h"
 #import "SocializeEntityService.h"
-#import "SZProfileViewController.h"
+#import "_SZUserProfileViewController.h"
 #import "NSError+Socialize.h"
 #import "SZNavigationController.h"
 #import "SZDisplay.h"
@@ -248,7 +248,7 @@
 
 -(void)viewButtonTouched:(id)sender
 {
-    SZProfileViewController *profile = [SZProfileViewController profileViewController];
+    _SZUserProfileViewController *profile = [_SZUserProfileViewController profileViewController];
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
     [self presentInternalController:nav];
 }

@@ -11,7 +11,7 @@
 
 #import "SocializeBaseViewController.h"
 #import "_Socialize.h"
-#import "SZProfileViewController.h"
+#import "_SZUserProfileViewController.h"
 #import "SocializeBaseViewControllerDelegate.h"
 #import "SocializeLocationManager.h"
 

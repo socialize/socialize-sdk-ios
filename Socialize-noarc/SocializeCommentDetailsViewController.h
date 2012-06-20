@@ -11,13 +11,13 @@
 #import "SocializeBaseViewController.h"
 #import "AvailabilityMacros.h"
 #import "SocializeBaseViewController.h"
-#import "SZProfileViewController.h"
+#import "_SZUserProfileViewController.h"
 
 @class CommentDetailsView;
 @class URLDownload;
 @protocol SocializeComment;
 @class ImagesCache;
-@protocol SZProfileViewControllerDelegate;
+@protocol _SZUserProfileViewControllerDelegate;
 
  __attribute__((deprecated))
 @interface SocializeCommentDetailsViewController : SocializeBaseViewController<SocializeBaseViewControllerDelegate>
@@ -31,7 +31,7 @@
 -(void) showComment;
 -(void) setupCommentGeoLocation;
 -(void) showShareLocation:(BOOL)hasLocation;
--(SZProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
+-(_SZUserProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 
 
 @property (nonatomic, retain) IBOutlet CommentDetailsView*     commentDetailsView;

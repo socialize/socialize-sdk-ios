@@ -18,7 +18,7 @@
 #import "ImagesCache.h"
 #import "ImageLoader.h"
 #import "SocializeGeocoderAdapter.h"
-#import "SZProfileViewController.h"
+#import "_SZUserProfileViewController.h"
 
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
@@ -89,12 +89,12 @@
     ];
 }
 -(IBAction)profileButtonTapped:(id)sender {
-    SZProfileViewController *profileViewController = [self getProfileViewControllerForUser:self.comment.user];
+    _SZUserProfileViewController *profileViewController = [self getProfileViewControllerForUser:self.comment.user];
     profileViewController.navigationItem.leftBarButtonItem = [self createLeftNavigationButtonWithCaption:@"Comment"];
     [self.navigationController pushViewController:(UIViewController *)profileViewController animated:YES];
 }
--(SZProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
-    SZProfileViewController *profileViewController = [SZProfileViewController profileViewController];
+-(_SZUserProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
+    _SZUserProfileViewController *profileViewController = [_SZUserProfileViewController profileViewController];
     profileViewController.user = user;
     profileViewController.delegate = self;
     return profileViewController;
@@ -152,10 +152,10 @@
     
     [htmlCreator release];
 }
-- (void)profileViewControllerDidCancel:(SZProfileViewController*)profileViewController {
+- (void)profileViewControllerDidCancel:(_SZUserProfileViewController*)profileViewController {
     //implement
 }
-- (void)profileViewControllerDidSave:(SZProfileViewController*)profileViewController {
+- (void)profileViewControllerDidSave:(_SZUserProfileViewController*)profileViewController {
         //implement
 }
 

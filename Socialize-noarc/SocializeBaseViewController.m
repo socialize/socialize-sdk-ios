@@ -30,7 +30,7 @@
 #import "UINavigationBarBackground.h"
 #import "SocializeAuthViewController.h"
 #import "UIButton+Socialize.h"
-#import "SZProfileViewController.h"
+#import "_SZUserProfileViewController.h"
 #import "SocializeFacebookInterface.h"
 #import "SocializeUserService.h"
 #import "ImagesCache.h"

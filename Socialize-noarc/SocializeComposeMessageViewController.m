@@ -13,7 +13,7 @@
 #import "SocializeLocationManager.h"
 #import "UILabel+FormatedText.h"
 #import "UINavigationBarBackground.h"
-#import "SZProfileViewController.h"
+#import "_SZUserProfileViewController.h"
 #import "SocializeAuthenticateService.h"
 #import "SocializeGeocoderAdapter.h"
 #import "NSString+PlaceMark.h"

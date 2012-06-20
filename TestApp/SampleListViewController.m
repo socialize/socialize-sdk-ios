@@ -101,7 +101,7 @@ static SampleListViewController *sharedSampleListViewController;
 
     [userRows addObject:[self rowWithIdentifier:kShowUserProfileRow text:@"Show User Profile" executionBlock:^{
         id<SocializeFullUser> user = [SZUserUtils currentUser];
-        [SZUserUtils showUserProfileWithDisplay:self user:user];
+        [SZUserUtils showUserProfileInViewController:self user:user completion:nil];
     }]];
 
     [userRows addObject:[self rowWithText:@"Show User Settings" executionBlock:^{
