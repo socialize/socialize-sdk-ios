@@ -12,5 +12,4 @@
 @interface SocializeTwitterAuthViewControllerTests : SocializeBaseViewControllerTests
 @property (nonatomic, retain) SocializeTwitterAuthViewController *twitterAuthViewController;
 @property (nonatomic, retain) id mockWebView;
-@property (nonatomic, retain) id mockDelegate;
 @end

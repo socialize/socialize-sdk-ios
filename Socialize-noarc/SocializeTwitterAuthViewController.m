@@ -15,12 +15,10 @@
 #import "NSString+QueryString.h"
 #import <BlocksKit/BlocksKit.h>
 #import "NSHTTPCookieStorage+Utilities.h"
+#import "SZTwitterUtils.h"
 
 @interface SocializeTwitterAuthViewController ()
-- (void)requestRequestToken;
-- (void)showRetryDialogWithMessage:(NSString*)message;
-- (void)openAuthenticateURL;
-- (void)requestAccessToken;
+@property (nonatomic, assign) BOOL sentTokenToSocialize;
 @end
 
 NSString *const SocializeTwitterAuthCallbackScheme = @"socializeoauth";
@@ -46,27 +44,10 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 @synthesize delegate = delegate_;
 @synthesize screenName = screenName_;
 @synthesize userID = userID_;
-@synthesize twitterAuthSuccessBlock = twitterAuthSuccessBlock_;
+@synthesize sentTokenToSocialize = sentTokenToSocialize_;
 
 - (BOOL)shouldAutoAuthOnAppear {
     return NO;
-}
-
-- (void)dealloc {
-    self.consumerKey = nil;
-    self.consumerSecret = nil;
-    [webView_ setDelegate:nil];
-    self.webView = nil;
-    self.requestToken = nil;
-    self.verifier = nil;
-    self.accessToken = nil;
-    [self.dataFetcher cancel];
-    self.dataFetcher = nil;
-    self.screenName = nil;
-    self.userID = nil;
-    self.twitterAuthSuccessBlock = nil;
-    
-    [super dealloc];
 }
 
 - (id)initWithConsumerKey:(NSString*)consumerKey consumerSecret:(NSString*)consumerSecret {
@@ -116,24 +97,21 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
         [self requestAccessToken];
         return;
     }
-
-    [self notifyDelegateOfCompletion];
-}
-
-- (void)notifyDelegateOfCompletion {
-    if (self.twitterAuthSuccessBlock != nil) {
-        self.twitterAuthSuccessBlock(self.accessToken.key, self.accessToken.secret, self.screenName, self.userID);
-    } else {
-        if ([self.delegate respondsToSelector:@selector(twitterAuthViewController:didReceiveAccessToken:accessTokenSecret:screenName:userID:)]) {
-            [self.delegate twitterAuthViewController:self
-                               didReceiveAccessToken:self.accessToken.key
-                                   accessTokenSecret:self.accessToken.secret
-                                          screenName:self.screenName
-                                              userID:self.userID];
-        }
-        
-        [super notifyDelegateOfCompletion];
+    
+    if (!self.sentTokenToSocialize) {
+        [self startLoading];
+        [SZTwitterUtils linkWithAccessToken:self.accessToken.key accessTokenSecret:self.accessToken.secret success:^(id<SZFullUser> user) {
+            self.sentTokenToSocialize = YES;
+            [self tryToCompleteOAuthProcess];
+        } failure:^(NSError *error) {
+            [self stopLoadingAndShowRetryDialogWithMessage:@"Sending to Socialize"];
+        }];
+        return;
     }
+    
+    [self stopLoading];
+
+    BLOCK_CALL(self.completionBlock);
 }
 
 - (void)openAuthenticateURL {
@@ -146,9 +124,9 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 
 - (OAMutableURLRequest*)requestWithURL:(NSString*)urlString token:(OAToken*)token {
     // Build an OARequest with our twitter app info
-    OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:self.consumerKey secret:self.consumerSecret] autorelease];
+    OAConsumer *consumer = [[OAConsumer alloc] initWithKey:self.consumerKey secret:self.consumerSecret];
     NSURL *requestURL = [NSURL URLWithString:urlString];
-    OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:requestURL consumer:consumer token:token realm:nil signatureProvider:nil] autorelease];
+    OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:requestURL consumer:consumer token:token realm:nil signatureProvider:nil];
     return request;
 }
 
@@ -182,8 +160,8 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 
 - (OAToken*)tokenForResponseBody:(NSData*)data {
     // Build a new token from a response
-    NSString *responseBody = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    OAToken *token = [[[OAToken alloc] initWithHTTPResponseBody:responseBody] autorelease];
+    NSString *responseBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    OAToken *token = [[OAToken alloc] initWithHTTPResponseBody:responseBody];
     
     return token;
 }
@@ -197,16 +175,16 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
             self.requestToken = token;
             [self tryToCompleteOAuthProcess];
         } else {
-            [self showRetryDialogWithMessage:@"Could not parse request token"];
+            [self stopLoadingAndShowRetryDialogWithMessage:@"Could not parse request token"];
         }
     } else {
-        [self showRetryDialogWithMessage:@"Could not get request token"];
+        [self stopLoadingAndShowRetryDialogWithMessage:@"Could not get request token"];
     }
 }
 
 - (void)requestRequestToken:(OAServiceTicket *)ticket didFailWithError:(NSError*)error {
     // The actual request for the request token has failed
-    [self showRetryDialogWithMessage:@"Twitter error"];
+    [self stopLoadingAndShowRetryDialogWithMessage:@"Twitter error"];
 }
 
 - (void)requestAccessToken:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
@@ -217,23 +195,23 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
             // The actual request for the access token has succeeded
             self.accessToken = token;
             
-            NSString *responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+            NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSDictionary *params = [[responseString parseQueryString] dictionaryFromPairs];
             self.screenName = [params objectForKey:kTwitterAccessResponseScreenName];
             self.userID = [params objectForKey:kTwitterAccessResponseUserID];
 
             [self tryToCompleteOAuthProcess];
         } else {
-            [self showRetryDialogWithMessage:@"Could not parse access token"];
+            [self stopLoadingAndShowRetryDialogWithMessage:@"Could not parse access token"];
         }
     } else {
-        [self showRetryDialogWithMessage:@"Could not get access token"];
+        [self stopLoadingAndShowRetryDialogWithMessage:@"Could not get access token"];
     }
 }
 
 - (void)requestAccessToken:(OAServiceTicket *)ticket didFailWithError:(NSError*)error {
     // The request for the access token has failed
-    [self showRetryDialogWithMessage:@"Twitter error"];
+    [self stopLoadingAndShowRetryDialogWithMessage:@"Twitter error"];
 }
 
 - (void)removeTwitterCookies {
@@ -278,14 +256,14 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
                 self.verifier = verifier;
                 [self tryToCompleteOAuthProcess];
             } else {
-                [self showRetryDialogWithMessage:@"Received bad token"];
+                [self stopLoadingAndShowRetryDialogWithMessage:@"Received bad token"];
             }
         } else if ([params objectForKey:kTwitterAuthorizationDenied]) {
             // user clicked cancel link in web page
             [self notifyDelegateOfCancellation];
         } else {
             // Something else happened
-            [self showRetryDialogWithMessage:nil];
+            [self stopLoadingAndShowRetryDialogWithMessage:nil];
         }
         
         return NO;
@@ -295,7 +273,7 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    [self showRetryDialogWithMessage:[error localizedDescription]];
+    [self stopLoadingAndShowRetryDialogWithMessage:[error localizedDescription]];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -311,7 +289,7 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
     [self tryToCompleteOAuthProcess];
  }
      
-- (void)showRetryDialogWithMessage:(NSString*)message {
+- (void)stopLoadingAndShowRetryDialogWithMessage:(NSString*)message {
     [self stopLoading];
 
     UIAlertView *alertView = [UIAlertView alertWithTitle:@"Twitter Authentication Failed" message:message];

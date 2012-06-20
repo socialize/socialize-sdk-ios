@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "SocializeBaseViewController.h"
-#import "SocializeTwitterAuthViewControllerDelegate.h"
 
 @class OAAsynchronousDataFetcher;
 @class OAToken;
@@ -19,7 +18,6 @@ extern NSString *const SocializeTwitterAuthenticateURL;
 extern NSString *const SocializeTwitterAuthCallbackScheme;
 
 @interface SocializeTwitterAuthViewController : SocializeBaseViewController <UIWebViewDelegate>
-@property (nonatomic, assign) id<SocializeTwitterAuthViewControllerDelegate> delegate;
 @property (nonatomic, copy) NSString *consumerKey;
 @property (nonatomic, copy) NSString *consumerSecret;
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
@@ -29,8 +27,6 @@ extern NSString *const SocializeTwitterAuthCallbackScheme;
 @property (nonatomic, copy) NSString *verifier;
 @property (nonatomic, copy) NSString *screenName;
 @property (nonatomic, copy) NSString *userID;
-
-@property (nonatomic, copy) void (^twitterAuthSuccessBlock)(NSString *accessToken, NSString *accessTokenSecret, NSString *screenName, NSString *userId);
 
 - (id)initWithConsumerKey:(NSString*)consumerKey consumerSecret:(NSString*)consumerSecret;
 

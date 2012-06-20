@@ -10,6 +10,7 @@
 #import <OAuthConsumer/OAuthConsumer.h>
 #import "NSArray+AssociativeArray.h"
 #import "NSString+QueryString.h"
+#import "SZTwitterUtils.h"
 
 @interface SocializeTwitterAuthViewController ()
 - (void)fetchDataWithRequest:(OAMutableURLRequest*)request didFinishSelector:(SEL)finish didFailSelector:(SEL)fail;
@@ -43,7 +44,6 @@
     [[self.mockWebView stub] setDelegate:nil];
     self.twitterAuthViewController.webView = self.mockWebView;
     
-    self.mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeTwitterAuthViewControllerDelegate)];
     self.twitterAuthViewController.delegate = self.mockDelegate;
 }
 
@@ -188,7 +188,7 @@
     GHAssertNotNil(request, @"Should have real request");
 }
 
-- (void)testReceivingAccessTokenSetsParametersAndNotifiesDelegate {
+- (void)testReceivingAccessTokenSetsParametersAndSendsToSocialize {
     NSString *testAccessToken = @"testAccessToken";
     NSString *testAccessTokenSecret = @"testAccessTokenSecret";
     NSString *testUserID = @"12345";
@@ -204,13 +204,10 @@
     NSData *data = [self networkDataForString:[NSString stringWithFormat:@"oauth_token=%@&testToken&oauth_token_secret=%@&testSecret&user_id=%@&screen_name=%@", testAccessToken, testAccessTokenSecret, testUserID, testScreenName]];
     id ticket = [self succeedingTicket];
 
-    // Should notify of credentials
-    [[self.mockDelegate expect] twitterAuthViewController:(id)self.origViewController didReceiveAccessToken:testAccessToken accessTokenSecret:testAccessTokenSecret screenName:testScreenName userID:testUserID];
-    
-    // Should finish
-    [[self.mockDelegate expect] baseViewControllerDidFinish:(id)self.origViewController];
-    
+    [SZTwitterUtils startMockingClass];
+    [[SZTwitterUtils expect] linkWithAccessToken:testAccessToken accessTokenSecret:testAccessTokenSecret success:OCMOCK_ANY failure:OCMOCK_ANY];
     [self.twitterAuthViewController requestAccessToken:ticket didFinishWithData:data];
+    [SZTwitterUtils stopMockingClassAndVerify];
 }
 
 @end
