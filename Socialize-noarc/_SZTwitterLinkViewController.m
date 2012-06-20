@@ -1,12 +1,12 @@
 //
-//  SocializeTwitterAuthViewController.m
+//  _SZTwitterLinkViewController.m
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 2/8/12.
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeTwitterAuthViewController.h"
+#import "_SZTwitterLinkViewController.h"
 #import <OAuthConsumer/OAuthConsumer.h>
 #import "SocializePrivateDefinitions.h"
 #import "SocializeCommonDefinitions.h"
@@ -17,7 +17,7 @@
 #import "NSHTTPCookieStorage+Utilities.h"
 #import "SZTwitterUtils.h"
 
-@interface SocializeTwitterAuthViewController ()
+@interface _SZTwitterLinkViewController ()
 @property (nonatomic, assign) BOOL sentTokenToSocialize;
 @end
 
@@ -33,7 +33,7 @@ static NSString *const kTwitterAuthorizationDenied = @"denied";
 static NSString *const kTwitterAccessResponseScreenName = @"screen_name";
 static NSString *const kTwitterAccessResponseUserID = @"user_id";
 
-@implementation SocializeTwitterAuthViewController
+@implementation _SZTwitterLinkViewController
 @synthesize consumerKey = consumerKey_;
 @synthesize consumerSecret = consumerSecret_;
 @synthesize webView = webView_;

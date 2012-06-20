@@ -9,7 +9,7 @@
 #import "SZTwitterUtils.h"
 #import "SocializeThirdPartyTwitter.h"
 #import "_Socialize.h"
-#import "SocializeTwitterAuthViewController.h"
+#import "_SZTwitterLinkViewController.h"
 #import "SDKHelpers.h"
 
 @implementation SZTwitterUtils
@@ -43,7 +43,7 @@
 //    NSString *consumerKey = [SocializeThirdPartyTwitter consumerKey];
 //    NSString *consumerSecret = [SocializeThirdPartyTwitter consumerSecret];
 //    
-//    SocializeTwitterAuthViewController *auth = [[SocializeTwitterAuthViewController alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret];
+//    _SZTwitterLinkViewController *auth = [[_SZTwitterLinkViewController alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret];
 //
 //    auth.twitterAuthSuccessBlock = ^(NSString *accessToken, NSString *accessTokenSecret, NSString *screenName, NSString *userId) {
 //        [wrapper startLoadingInTopControllerWithMessage:@"Linking"];

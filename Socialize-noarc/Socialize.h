@@ -18,7 +18,7 @@
 #import "SocializeObjects.h"
 #import "SocializeActivityDetailsViewController.h"
 #import "SocializeActionBarDelegate.h"
-#import "SocializeTwitterAuthViewController.h"
+#import "_SZTwitterLinkViewController.h"
 #import "SocializeConfiguration.h"
 #import "SZLikeButton.h"
 #import "SampleEntityLoader.h"

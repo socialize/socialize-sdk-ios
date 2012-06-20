@@ -1,18 +1,18 @@
 //
-//  SocializeTwitterAuthViewControllerTests.m
+//  _SZTwitterLinkViewControllerTests.m
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 2/8/12.
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeTwitterAuthViewControllerTests.h"
+#import "_SZTwitterLinkViewControllerTests.h"
 #import <OAuthConsumer/OAuthConsumer.h>
 #import "NSArray+AssociativeArray.h"
 #import "NSString+QueryString.h"
 #import "SZTwitterUtils.h"
 
-@interface SocializeTwitterAuthViewController ()
+@interface _SZTwitterLinkViewController ()
 - (void)fetchDataWithRequest:(OAMutableURLRequest*)request didFinishSelector:(SEL)finish didFailSelector:(SEL)fail;
 - (OAMutableURLRequest*)requestWithURL:(NSString*)urlString token:(OAToken*)token;
 - (void)requestRequestToken:(OAServiceTicket *)ticket didFailWithError:(NSError*)error;
@@ -23,13 +23,13 @@
 
 @end
 
-@implementation SocializeTwitterAuthViewControllerTests
+@implementation _SZTwitterLinkViewControllerTests
 @synthesize twitterAuthViewController = twitterAuthViewController_;
 @synthesize mockWebView = mockWebView_;
 @synthesize mockDelegate = mockDelegate_;
 
 + (SocializeBaseViewController*)createController {
-    SocializeTwitterAuthViewController *controller = [[[SocializeTwitterAuthViewController alloc] init] autorelease];
+    _SZTwitterLinkViewController *controller = [[[_SZTwitterLinkViewController alloc] init] autorelease];
     
     return controller;
 }
@@ -37,7 +37,7 @@
 - (void)setUp {
     [super setUp];
     
-    self.twitterAuthViewController = (SocializeTwitterAuthViewController*)self.viewController;
+    self.twitterAuthViewController = (_SZTwitterLinkViewController*)self.viewController;
     
     // Set up mock web view
     self.mockWebView = [OCMockObject mockForClass:[UIWebView class]];

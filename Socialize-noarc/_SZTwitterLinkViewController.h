@@ -1,5 +1,5 @@
 //
-//  SocializeTwitterAuthViewController.h
+//  _SZTwitterLinkViewController.h
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 2/8/12.
@@ -17,7 +17,7 @@ extern NSString *const SocializeTwitterAccessTokenURL;
 extern NSString *const SocializeTwitterAuthenticateURL;
 extern NSString *const SocializeTwitterAuthCallbackScheme;
 
-@interface SocializeTwitterAuthViewController : SocializeBaseViewController <UIWebViewDelegate>
+@interface _SZTwitterLinkViewController : SocializeBaseViewController <UIWebViewDelegate>
 @property (nonatomic, copy) NSString *consumerKey;
 @property (nonatomic, copy) NSString *consumerSecret;
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
