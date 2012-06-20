@@ -152,12 +152,12 @@ static SampleListViewController *sharedSampleListViewController;
     
     NSMutableArray *facebookRows = [NSMutableArray array];
     [facebookRows addObject:[self rowWithIdentifier:kLinkToFacebookRow text:@"Link to Facebook" executionBlock:^{
-        [SZFacebookUtils linkWithDisplay:self success:nil failure:nil];
+        [SZFacebookUtils linkWithViewController:self success:nil failure:nil];
     }]];
 
     NSMutableArray *twitterRows = [NSMutableArray array];
     [twitterRows addObject:[self rowWithIdentifier:kLinkToTwitterRow text:@"Link to Twitter" executionBlock:^{
-        [SZTwitterUtils linkWithDisplay:self success:nil failure:nil];
+        [SZTwitterUtils linkWithViewController:self success:nil failure:nil];
     }]];
 
     NSMutableArray *smartAlertsRows = [NSMutableArray array];

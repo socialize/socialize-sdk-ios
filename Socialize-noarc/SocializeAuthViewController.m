@@ -135,7 +135,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 - (void)authenticateWithFacebook {
     self.selectedNetwork = SZSocialNetworkFacebook;
 
-    [SZFacebookUtils linkWithDisplay:self success:^(id<SZFullUser> fullUser) {
+    [SZFacebookUtils linkWithViewController:self success:^(id<SZFullUser> fullUser) {
         [self authenticationComplete];
     } failure:^(NSError *error) {
         if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
@@ -155,7 +155,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 - (void)authenticateWithTwitter {
     self.selectedNetwork = SZSocialNetworkTwitter;
     
-    [SZTwitterUtils linkWithDisplay:self success:^(id<SZFullUser> user) {
+    [SZTwitterUtils linkWithViewController:self success:^(id<SZFullUser> user) {
         [self authenticationComplete];
     } failure:^(NSError *error) {
         if (![error isSocializeErrorWithCode:SocializeErrorTwitterCancelledByUser]) {

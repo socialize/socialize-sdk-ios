@@ -420,7 +420,7 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
                                   success:(void(^)())success
                                   failure:(void(^)(NSError *error))failure {
     
-    [SZTwitterUtils linkWithDisplay:display success:success failure:failure];
+    [SZTwitterUtils linkWithViewController:display success:success failure:failure];
 }
 
 -(void)authenticateAnonymouslyWithSuccess:(void(^)())success

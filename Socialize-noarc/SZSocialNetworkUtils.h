@@ -13,7 +13,7 @@
 + (BOOL)isAvailable;
 + (BOOL)isLinked;
 
-+ (void)linkWithDisplay:(id<SZDisplay>)display success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
++ (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
 + (void)unlink;
 
 @end

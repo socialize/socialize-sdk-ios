@@ -671,7 +671,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)authenticateViaTwitter {
-    [SZTwitterUtils linkWithDisplay:self success:^(id<SZFullUser> user) {
+    [SZTwitterUtils linkWithViewController:self success:^(id<SZFullUser> user) {
         [self updateInterfaceToReflectSessionStatuses];
     } failure:^(NSError *error) {
         [self updateInterfaceToReflectSessionStatuses];        
@@ -679,7 +679,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)authenticateViaFacebook {
-    [SZFacebookUtils linkWithDisplay:self success:^(id<SZFullUser> user) {
+    [SZFacebookUtils linkWithViewController:self success:^(id<SZFullUser> user) {
         [self updateInterfaceToReflectSessionStatuses];
     } failure:^(NSError *error) {
         [self updateInterfaceToReflectSessionStatuses];        

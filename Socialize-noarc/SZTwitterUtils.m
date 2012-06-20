@@ -11,6 +11,7 @@
 #import "_Socialize.h"
 #import "_SZTwitterLinkViewController.h"
 #import "SDKHelpers.h"
+#import "SZUserUtils.h"
 
 @implementation SZTwitterUtils
 
@@ -37,33 +38,19 @@
                                                       } failure:failure];
 }
 
-+ (void)linkWithDisplay:(id<SZDisplay>)display success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
-//    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-//    
-//    NSString *consumerKey = [SocializeThirdPartyTwitter consumerKey];
-//    NSString *consumerSecret = [SocializeThirdPartyTwitter consumerSecret];
-//    
-//    _SZTwitterLinkViewController *auth = [[_SZTwitterLinkViewController alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret];
-//
-//    auth.twitterAuthSuccessBlock = ^(NSString *accessToken, NSString *accessTokenSecret, NSString *screenName, NSString *userId) {
-//        [wrapper startLoadingInTopControllerWithMessage:@"Linking"];
-//        [self linkWithAccessToken:accessToken accessTokenSecret:accessTokenSecret success:^(id<SZFullUser> user) {
-//            [wrapper stopLoadingInTopController];
-//            [wrapper endSequence];
-//            BLOCK_CALL_1(success, user);
-//        } failure:^(NSError *error) {
-//            SZEmitUIError(auth, error);
-//            [wrapper stopLoadingInTopController];
-//            BLOCK_CALL_1(failure, error);
-//        }];
-//    };
-//    
-//    auth.cancellationBlock = ^{
-//        [wrapper endSequence];
-//        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser]);
-//    };
-//    
-//    [wrapper beginSequenceWithViewController:auth];
++ (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
+    NSString *consumerKey = [SocializeThirdPartyTwitter consumerKey];
+    NSString *consumerSecret = [SocializeThirdPartyTwitter consumerSecret];
+    
+    _SZTwitterLinkViewController *link = [[_SZTwitterLinkViewController alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret];
+
+    link.completionBlock = ^{
+        BLOCK_CALL_1(success, [SZUserUtils currentUser]);
+    };
+    
+    link.cancellationBlock = ^{
+        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser]);
+    };
 }
 
 @end

@@ -80,22 +80,22 @@
      } failure:failure];
 }
 
-+ (void)linkWithDisplay:(id<SZDisplay>)display success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
-    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-
-    NSString *title = @"Facebook Login Required";
-    NSString *message = @"Do you want to log in with Facebook?";
-    UIAlertView *alertView = [UIAlertView alertWithTitle:title message:message];
-    
-    [alertView setCancelButtonWithTitle:@"No" handler:^{
-        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorFacebookCancelledByUser]);
-    }];
-    
-    [alertView addButtonWithTitle:@"Yes" handler:^{
-        [self _linkWithDisplay:display success:success failure:failure];
-    }];
-    
-    [wrapper showAlertView:alertView];
++ (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
+//    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
+//
+//    NSString *title = @"Facebook Login Required";
+//    NSString *message = @"Do you want to log in with Facebook?";
+//    UIAlertView *alertView = [UIAlertView alertWithTitle:title message:message];
+//    
+//    [alertView setCancelButtonWithTitle:@"No" handler:^{
+//        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorFacebookCancelledByUser]);
+//    }];
+//    
+//    [alertView addButtonWithTitle:@"Yes" handler:^{
+//        [self _linkWithDisplay:display success:success failure:failure];
+//    }];
+//    
+//    [wrapper showAlertView:alertView];
 }
 
 + (void)sendRequestWithHTTPMethod:(NSString*)method graphPath:(NSString*)graphPath postData:(NSDictionary*)postData success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
