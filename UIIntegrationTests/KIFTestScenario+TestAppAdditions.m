@@ -210,7 +210,8 @@
 
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLinkToFacebookRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Yes"]];
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Facebook link successful"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Ok"]];
 
     [steps addObject:[KIFTestStep stepToExecuteBlock:^{
         [[SZTestHelper sharedTestHelper] stopMockingSucceedingFacebookAuth];
@@ -350,7 +351,7 @@
 
     // Auth with Facebook, wait for completion
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"facebook"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Yes"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Ok"]];
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Continue"]];
     
     // Unmock the facebook flow

@@ -17,6 +17,7 @@
 #import "SocializeThirdPartyTwitter.h"
 #import "SZFacebookUtils.h"
 #import "SZTwitterUtils.h"
+#import "SDKHelpers.h"
 
 static NSString *const kAuthTypeRowText = @"kAuthTypeRowText";
 static NSString *const kAuthTypeRowImageName = @"kAuthTypeRowImageName";
@@ -144,16 +145,17 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
         [self startLoading];
     };
     
-    [SZFacebookUtils linkWithViewController:self options:options success:^(id<SZFullUser> fullUser) {
-        [self stopLoading];
-        [self authenticationComplete];
-    } failure:^(NSError *error) {
-        [self stopLoading];
-        if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
-            [self failWithError:error];
-        }
-    }];
-    
+    SZShowLinkToFacebookAlertView(^{
+        [SZFacebookUtils linkWithViewController:self options:options success:^(id<SZFullUser> fullUser) {
+            [self stopLoading];
+            [self authenticationComplete];
+        } failure:^(NSError *error) {
+            [self stopLoading];
+            if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
+                [self failWithError:error];
+            }
+        }];
+    });
 }
 
 - (void)authenticationComplete {

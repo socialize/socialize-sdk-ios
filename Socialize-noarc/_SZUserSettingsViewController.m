@@ -21,6 +21,7 @@
 #import "UITableView+Socialize.h"
 #import "SZFacebookUtils.h"
 #import "SZTwitterUtils.h"
+#import "SDKHelpers.h"
 
 @interface _SZUserSettingsViewController ()
 
@@ -679,11 +680,14 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)authenticateViaFacebook {
-    [SZFacebookUtils linkWithViewController:self options:nil success:^(id<SZFullUser> user) {
-        [self updateInterfaceToReflectSessionStatuses];
-    } failure:^(NSError *error) {
-        [self updateInterfaceToReflectSessionStatuses];        
-    }];
+    SZShowLinkToFacebookAlertView(^{
+
+        [SZFacebookUtils linkWithViewController:self options:nil success:^(id<SZFullUser> user) {
+            [self updateInterfaceToReflectSessionStatuses];
+        } failure:^(NSError *error) {
+            [self updateInterfaceToReflectSessionStatuses];        
+        }];
+    });
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

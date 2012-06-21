@@ -14,6 +14,7 @@
 #import "SZShareUtils.h"
 #import "SZFacebookUtils.h"
 #import "SZTwitterUtils.h"
+#import "SDKHelpers.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -168,18 +169,22 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 
                 // Switch just turned on
                 // Attempt link
-                [SZFacebookUtils linkWithViewController:weakSelf options:nil success:^(id<SZFullUser> fullUser) {
-                    // Successfully linked
-                    [self syncInterfaceWithThirdPartyState];
-                } failure:^(NSError *error) {
-                    
-                    // Link failed
-                    [self syncInterfaceWithThirdPartyState];
-                    
-                    if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
-                        [weakSelf failWithError:error];
-                    }
-                }];
+                
+                SZShowLinkToFacebookAlertView(^{
+
+                    [SZFacebookUtils linkWithViewController:weakSelf options:nil success:^(id<SZFullUser> fullUser) {
+                        // Successfully linked
+                        [self syncInterfaceWithThirdPartyState];
+                    } failure:^(NSError *error) {
+                        
+                        // Link failed
+                        [self syncInterfaceWithThirdPartyState];
+                        
+                        if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
+                            [weakSelf failWithError:error];
+                        }
+                    }];
+                });
             }
             
         };

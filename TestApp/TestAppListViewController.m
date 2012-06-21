@@ -152,7 +152,11 @@ static TestAppListViewController *sharedSampleListViewController;
     
     NSMutableArray *facebookRows = [NSMutableArray array];
     [facebookRows addObject:[self rowWithIdentifier:kLinkToFacebookRow text:@"Link to Facebook" executionBlock:^{
-        [SZFacebookUtils linkWithViewController:self options:nil success:nil failure:nil];
+        [SZFacebookUtils linkWithViewController:self options:nil success:^(id<SZFullUser> user) {
+            [UIAlertView showAlertWithTitle:@"Facebook link successful" message:nil buttonTitle:@"Ok" handler:nil];
+        } failure:^(NSError *error) {
+            [UIAlertView showAlertWithTitle:@"Facebook link failed" message:nil buttonTitle:@"Ok" handler:nil];
+        }];
     }]];
 
     NSMutableArray *twitterRows = [NSMutableArray array];

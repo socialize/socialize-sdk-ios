@@ -67,6 +67,14 @@ void LinkWrapper(id<SZDisplay> display, void (^success)(BOOL didPrompt, SZSocial
     }
 }
 
+void SZShowLinkToFacebookAlertView(void (^linkBlock)()) {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook Authentication Required" message:@"Link to Facebook?"];
+    [alertView addButtonWithTitle:@"Cancel" handler:^{}];
+    [alertView addButtonWithTitle:@"Ok" handler:linkBlock];
+
+    [alertView show];
+}
+
 void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^completion)(SZSocialNetwork preferredNetworks), void (^cancellation)()) {
     
     // No Social Networks available
