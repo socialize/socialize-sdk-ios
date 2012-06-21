@@ -42,11 +42,15 @@
 + (void)showCommentComposerWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(id<SZComment> comment))completion cancellation:(void(^)())cancellation {
     SZComposeCommentViewController *composer = [[SZComposeCommentViewController alloc] initWithEntity:entity];
     composer.completionBlock = ^(id<SZComment> comment) {
-        [viewController dismissModalViewControllerAnimated:YES];
+        [viewController dismissViewControllerAnimated:YES completion:^{
+            BLOCK_CALL_1(completion, comment);
+        }];
     };
+    
     composer.cancellationBlock = ^{
-        BLOCK_CALL(cancellation);
-        [viewController dismissModalViewControllerAnimated:YES];
+        [viewController dismissViewControllerAnimated:YES completion:^{
+            BLOCK_CALL(cancellation);
+        }];
     };
     
     [viewController presentModalViewController:composer animated:YES];

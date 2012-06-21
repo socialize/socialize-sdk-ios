@@ -40,7 +40,8 @@ static NSString *SocializeDefaultErrorStrings[SocializeNumErrors] = {
     @"Location update timed out",
     @"Link cancelled by user",
     @"Linking is not possible",
-    @"Network Selection Cancalled by user",
+    @"Network Selection Cancelled by user",
+    @"Failed to send SMS",
 };
 
 NSString *SocializeDefaultErrorStringForCode(NSUInteger code) {

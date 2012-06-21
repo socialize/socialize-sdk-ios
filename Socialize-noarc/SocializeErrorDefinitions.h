@@ -40,6 +40,7 @@ typedef enum {
     SocializeErrorLinkCancelledByUser,
     SocializeErrorLinkNotPossible,
     SocializeErrorNetworkSelectionCancelledByUser,
+    SocializeErrorSMSSendFailure,
     SocializeNumErrors,
 } SocializeErrorCode;
 

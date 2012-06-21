@@ -16,7 +16,7 @@
 
 + (void)showLinkDialogWithViewController:(UIViewController*)viewController completion:(void(^)(SZSocialNetwork selectedNetwork))completion cancellation:(void(^)())cancellation;
 + (void)showUserProfileInViewController:(UIViewController*)viewController user:(id<SocializeFullUser>)user completion:(void(^)(id<SZFullUser> user))completion;
-+ (SZUserSettingsViewController*)showUserSettingsInViewController:(UIViewController*)viewController;
++ (void)showUserSettingsInViewController:(UIViewController*)viewController completion:(void(^)())completion;
 + (void)saveUserSettings:(id<SocializeFullUser>)user profileImage:(UIImage*)image success:(void(^)(id<SocializeFullUser> user))success failure:(void(^)(NSError *error))failure;
 + (id<SocializeFullUser>)currentUser;
 + (BOOL)userIsLinked;

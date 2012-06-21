@@ -53,8 +53,9 @@
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))completion {
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
     shareDialog.completionBlock = ^(NSArray *shares) {
-        [viewController dismissModalViewControllerAnimated:YES];
-        BLOCK_CALL_1(completion, shares);
+        [viewController dismissViewControllerAnimated:YES completion:^{
+            BLOCK_CALL_1(completion, shares);
+        }];
     };
     [viewController presentModalViewController:shareDialog animated:YES];
 }
@@ -82,22 +83,39 @@
     MFMailComposeViewController *composer = [[MFMailComposeViewController alloc] init];
     composer.sz_completionBlock = ^(MFMailComposeResult result, NSError *error) {
         [viewController dismissModalViewControllerAnimated:YES];
+
         switch (result) {
             case MFMailComposeResultSent: {
                 
                 SZAuthWrapper(^{
                     SZShare *share = [SZShare shareWithEntity:entity text:@"" medium:SocializeShareMediumEmail];
-                    [[Socialize sharedSocialize] createShare:share success:success failure:failure];
-                }, failure);
+                    [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> createdShare) {
+                        [viewController dismissViewControllerAnimated:YES completion:^{
+                            BLOCK_CALL_1(success, createdShare);
+                        }];
+                    } failure:^(NSError *error) {
+                        [viewController dismissViewControllerAnimated:YES completion:^{
+                            BLOCK_CALL_1(failure, error);
+                        }];
+                    }];
+                }, ^(NSError *error) {
+                    [viewController dismissViewControllerAnimated:YES completion:^{
+                        BLOCK_CALL_1(failure, error);
+                    }];                                            
+                });
                 
                 break;
             }
             case MFMailComposeResultFailed:
-                BLOCK_CALL_1(failure, error);
+                [viewController dismissViewControllerAnimated:YES completion:^{
+                    BLOCK_CALL_1(failure, error);
+                }];
                 break;
             case MFMailComposeResultCancelled:
             case MFMailComposeResultSaved:
-                BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]);
+                [viewController dismissViewControllerAnimated:YES completion:^{
+                    BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]);
+                }];
                 break;
         }
     };
@@ -120,16 +138,32 @@
                 
                 SZAuthWrapper(^{
                     SZShare *share = [SZShare shareWithEntity:entity text:@"" medium:SocializeShareMediumSMS];
-                    [[Socialize sharedSocialize] createShare:share success:success failure:failure];
-                }, failure);
+                    [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> createdShare) {
+                        [viewController dismissViewControllerAnimated:YES completion:^{
+                            BLOCK_CALL_1(success, createdShare);
+                        }];
+                    } failure:^(NSError *error) {
+                        [viewController dismissViewControllerAnimated:YES completion:^{
+                            BLOCK_CALL_1(failure, error);
+                        }];
+                    }];
+                }, ^(NSError *error) {
+                    [viewController dismissViewControllerAnimated:YES completion:^{
+                        BLOCK_CALL_1(failure, error);
+                    }];                                            
+                });
 
                 break;
             }
             case MessageComposeResultFailed:
-                BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorShareCreationFailed]);
+                [viewController dismissViewControllerAnimated:YES completion:^{
+                    BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorSMSSendFailure]);
+                }];
                 break;
             case MessageComposeResultCancelled:
-                BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]);
+                [viewController dismissViewControllerAnimated:YES completion:^{
+                    BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]);
+                }];
                 break;
         }
     };

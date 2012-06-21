@@ -45,13 +45,15 @@
     SZTwitterLinkViewController *link = [[SZTwitterLinkViewController alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret];
 
     link.completionBlock = ^{
-        [viewController dismissModalViewControllerAnimated:YES];
-        BLOCK_CALL_1(success, [SZUserUtils currentUser]);
+        [viewController dismissViewControllerAnimated:YES completion:^{
+            BLOCK_CALL_1(success, [SZUserUtils currentUser]);
+        }];
     };
     
     link.cancellationBlock = ^{
-        [viewController dismissModalViewControllerAnimated:YES];
-        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser]);
+        [viewController dismissViewControllerAnimated:YES completion:^{
+            BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser]);
+        }];
     };
     
     

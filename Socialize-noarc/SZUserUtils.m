@@ -29,13 +29,15 @@
     
     SZLinkDialogViewController *linkDialog = [[SZLinkDialogViewController alloc] init];
     linkDialog.completionBlock = ^(SZSocialNetwork selectedNetwork) {
-        [viewController dismissModalViewControllerAnimated:YES];
-        BLOCK_CALL_1(completion, selectedNetwork);
+        [viewController dismissViewControllerAnimated:YES completion:^{
+            BLOCK_CALL_1(completion, selectedNetwork);
+        }];
     };
     
     linkDialog.cancellationBlock = ^{
-        [viewController dismissModalViewControllerAnimated:YES];
-        BLOCK_CALL(cancellation);
+        [viewController dismissViewControllerAnimated:YES completion:^{
+            BLOCK_CALL(cancellation);
+        }];
     };
     
     [viewController presentModalViewController:linkDialog animated:YES];
@@ -44,20 +46,22 @@
 + (void)showUserProfileInViewController:(UIViewController*)viewController user:(id<SocializeFullUser>)user completion:(void(^)(id<SZFullUser> user))completion {
     SZUserProfileViewController *profile = [[SZUserProfileViewController alloc] initWithUser:(id<SZUser>)user];
     profile.completionBlock = ^(id<SZFullUser> user) {
-        [viewController dismissModalViewControllerAnimated:YES];
+        [viewController dismissViewControllerAnimated:YES completion:^{
+            BLOCK_CALL_1(completion, user);
+        }];
     };
     [viewController presentModalViewController:profile animated:YES];
 }
 
-+ (SZUserSettingsViewController*)showUserSettingsInViewController:(UIViewController*)viewController {
++ (void)showUserSettingsInViewController:(UIViewController*)viewController completion:(void(^)())completion {
     SZUserSettingsViewController *settings = [[SZUserSettingsViewController alloc] init];
     settings.completionBlock = ^(BOOL didSave, id<SZFullUser> user) {
-        [viewController dismissModalViewControllerAnimated:YES];
+        [viewController dismissViewControllerAnimated:YES completion:^{
+            BLOCK_CALL(completion);
+        }];
     };
     
     [viewController presentModalViewController:settings animated:YES];
-    
-    return settings;
 }
 
 + (void)saveUserSettings:(id<SocializeFullUser>)user profileImage:(UIImage*)image success:(void(^)(id<SocializeFullUser> user))success failure:(void(^)(NSError *error))failure {
