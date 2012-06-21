@@ -11,5 +11,6 @@
 
 @interface SZSelectNetworkViewController : SZNavigationController
 @property (nonatomic, copy) void (^completionBlock)(SZSocialNetwork selectedNetworks);
+@property (nonatomic, copy) void (^cancellationBlock)();
 
 @end

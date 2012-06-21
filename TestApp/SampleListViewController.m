@@ -88,7 +88,7 @@ static SampleListViewController *sharedSampleListViewController;
     NSMutableArray *configRows = [NSMutableArray array];
     
     [configRows addObject:[self rowWithText:@"Wipe Auth Data" executionBlock:^{
-//        [[SZTestHelper sharedTestHelper] removeAuthenticationInfo];
+        [[Socialize sharedSocialize] removeAuthenticationInfo];
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     }]];
 

@@ -11,6 +11,11 @@
 #import "SZActivityOptions.h"
 #import "SZDisplay.h"
 
+typedef enum {
+    SZViewControllerTransitionStyleModal,
+    SZViewControllerTransitionStyleNavigation,
+} SZViewControllerTransitionStyle;
+
 @class SZShareOptions;
 
 SZSocialNetwork LinkedSocialNetworks();
@@ -24,3 +29,4 @@ BOOL ShouldShowLinkDialog();
 BOOL SZErrorsAreDisabled();
 void SZEmitUIError(id object, NSError *error);
 void SZAuthWrapper(void (^success)(), void (^failure)(NSError *error));
+void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^completion)(SZSocialNetwork preferredNetworks), void (^cancellation)());

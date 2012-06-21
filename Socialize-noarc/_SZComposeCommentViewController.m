@@ -114,16 +114,10 @@
     }];
 }
 
-- (void)callCompletion {
-    SZCommentOptions *options = [SZCommentOptions defaultOptions];
-    options.dontShareLocation = ![[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue];
-    options.dontSubscribeToNotifications = self.dontSubscribeToDiscussion;
-
-    self.completionBlock(self.commentTextView.text, options);
-}
-
 - (void)notifyDelegateOrDismissSelf {
-    if ([self.delegate respondsToSelector:@selector(postCommentViewController:didCreateComment:)]) {
+    if (self.completionBlock != nil) {
+        self.completionBlock(self.commentObject);
+    } else if ([self.delegate respondsToSelector:@selector(postCommentViewController:didCreateComment:)]) {
         [self executeAfterModalDismissDelay:^{
             [self stopLoadAnimation];
             [self.delegate postCommentViewController:self didCreateComment:self.commentObject];
@@ -139,12 +133,15 @@
     SZCommentOptions *options = [SZCommentUtils userCommentOptions];
     options.dontSubscribeToNotifications = self.dontSubscribeToDiscussion;
     
-    [SZCommentUtils addCommentWithDisplay:self entity:self.entity text:commentTextView.text options:options success:^(id<SZComment> comment) {
+    [SZCommentUtils addCommentWithViewController:self entity:self.entity text:commentTextView.text options:options success:^(id<SZComment> comment) {
         self.commentObject = comment;
         [self notifyDelegateOrDismissSelf];
     } failure:^(NSError *error) {
         [self stopLoading];
-        [self failWithError:error];
+        
+        if (![error isSocializeErrorWithCode:SocializeErrorCommentCancelledByUser]) {
+            [self failWithError:error];
+        }
     }];
 }
 
@@ -163,11 +160,7 @@
 }
 
 -(void)sendButtonPressed:(UIButton*)button {
-    if (self.completionBlock != nil) {
-        [self callCompletion];
-    } else {
-        [self createComment];
-    }
+    [self createComment];
 }
 
 - (void)setDontSubscribeToDiscussion:(BOOL)dontSubscribeToDiscussion {

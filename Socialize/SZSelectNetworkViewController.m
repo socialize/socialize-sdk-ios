@@ -14,21 +14,17 @@
 @end
 
 @implementation SZSelectNetworkViewController
-@synthesize completionBlock = _completionBlock;
+@dynamic completionBlock;
+@dynamic cancellationBlock;
 @synthesize selectNetwork = _selectNetwork;
 
 - (id)init {
     if (self = [super init]) {
+        self.selectNetwork = [[_SZSelectNetworkViewController alloc] init];
+        [self pushViewController:self.selectNetwork animated:NO];
     }
     
     return self;
-}
-
-- (_SZSelectNetworkViewController*)settings {
-    if (_selectNetwork == nil) {
-        _selectNetwork = [[_SZSelectNetworkViewController alloc] initWithEntity:nil];
-    }
-    return _selectNetwork;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -36,9 +32,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)setCompletionBlock:(void (^)(SZSocialNetwork selectedNetworks))completionBlock {
-    _completionBlock = completionBlock;
-    self.selectNetwork.completionBlock = completionBlock;
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    return self.selectNetwork;
 }
 
 @end

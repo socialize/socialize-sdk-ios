@@ -80,6 +80,10 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     return self;
 }
 
+- (id)init {
+    return [self initWithDelegate:nil];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return _SZLinkDialogViewControllerNumSections;

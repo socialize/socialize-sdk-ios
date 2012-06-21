@@ -19,6 +19,9 @@
 #import "SZUserUtils.h"
 #import "_Socialize.h"
 #import "SocializePrivateDefinitions.h"
+#import "_SZSelectNetworkViewController.h"
+#import "SZLinkDialogViewController.h"
+#import "SZSelectNetworkViewController.h"
 
 SZSocialNetwork LinkedSocialNetworks() {
     SZSocialNetwork networks = SZSocialNetworkNone;
@@ -61,6 +64,62 @@ void LinkWrapper(id<SZDisplay> display, void (^success)(BOOL didPrompt, SZSocial
         }];
     } else {
         success(NO, SZSocialNetworkNone);
+    }
+}
+
+void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^completion)(SZSocialNetwork preferredNetworks), void (^cancellation)()) {
+    
+    // No Social Networks available
+    if (AvailableSocialNetworks() == SZSocialNetworkNone) {
+        BLOCK_CALL_1(completion, SZSocialNetworkNone);
+    }
+    
+    if (ShouldShowLinkDialog()) {
+        
+        // Link and possibly show network selection
+        SZLinkDialogViewController *link = [[SZLinkDialogViewController alloc] init];
+        link.completionBlock = ^(SZSocialNetwork selectedNetwork) {
+            
+            if (selectedNetwork != SZSocialNetworkNone) {
+                
+                // Linked to a network -- Show network selection
+                _SZSelectNetworkViewController *selectNetwork = [[_SZSelectNetworkViewController alloc] init];
+                selectNetwork.completionBlock = completion;
+                selectNetwork.cancellationBlock = ^{
+                    [link.navigationController popToViewController:link animated:YES];
+                };
+                
+                [link pushViewController:selectNetwork animated:YES];
+            } else {
+                
+                // Opted out of linking -- Don't show network selection
+                [viewController dismissViewControllerAnimated:YES completion:^{
+                    BLOCK_CALL_1(completion, SZSocialNetworkNone);
+                }];
+            }
+        };
+        
+        link.cancellationBlock = ^{
+            
+            // Explicitly cancelled link -- Dismiss and call cancellation
+            [viewController dismissViewControllerAnimated:YES completion:^{
+                BLOCK_CALL(cancellation);                
+            }];
+        };
+        
+        [viewController presentModalViewController:link animated:YES];
+    } else {
+        
+        // No link dialog required
+        SZSelectNetworkViewController *selectNetwork = [[SZSelectNetworkViewController alloc] init];
+        selectNetwork.completionBlock = completion;
+        selectNetwork.cancellationBlock = ^{
+            [viewController dismissViewControllerAnimated:YES completion:^{
+                BLOCK_CALL(cancellation);
+            }];
+        };
+        
+        [viewController presentModalViewController:selectNetwork animated:YES];
     }
 }
 

@@ -15,6 +15,11 @@
 @implementation _SZSelectNetworkViewController
 @synthesize completionBlock = _completionBlock;
 
+- (id)initWithEntity:(id<SocializeEntity>)entity {
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
+}
+
 - (id)init {
     if (self = [super initWithNibName:@"SZBaseShareViewController" bundle:nil]) {
         self.dontRequireNetworkSelection = YES;

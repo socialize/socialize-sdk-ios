@@ -18,6 +18,7 @@
 #import "SZDisplay.h"
 #import <BlocksKit/BlocksKit.h>
 #import "SZComposeCommentViewController.h"
+#import "_SZSelectNetworkViewController.h"
 
 @implementation SZCommentUtils
 
@@ -68,66 +69,16 @@
     CreateAndShareActivity(comment, options, networks, commentCreator, success, failure);
 }
 
-+ (void)addCommentWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
-//    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-//
-//    __block void (^addCommentBlock)() = [^(SZSocialNetwork networks) {
-//        
-//        [wrapper startLoadingInTopControllerWithMessage:@"Creating Comment"];
-//        
-//        [self addCommentWithEntity:entity text:text options:options networks:networks success:^(id<SZComment> comment) {
-//
-//            // Comment has been added
-//            
-//            [wrapper stopLoadingInTopController];
-//
-//            [addCommentBlock autorelease];
-//
-//            BLOCK_CALL_1(success, comment);
-//        } failure:^(NSError *error) {
-//            
-//            // Comment add failure -- show an alert and possibly loop (recursively call addCommentBlock)
-//
-//            [wrapper stopLoadingInTopController];
-//
-//            NSString *message = [NSString stringWithFormat:@"Error code %d", [error code]];
-//            UIAlertView *alertView = [UIAlertView alertWithTitle:@"Comment Create Failed" message:message];
-//            
-//            // Cancel button -- fail
-//            [alertView addButtonWithTitle:@"Cancel" handler:^{
-//                
-//                [addCommentBlock autorelease];
-//                [wrapper endSequence];
-//                BLOCK_CALL_1(failure, error);
-//            }];
-//            
-//            // Retry button -- recursively call addCommentBlock
-//            [alertView addButtonWithTitle:@"Retry" handler:addCommentBlock];
-//            
-//            [wrapper showAlertView:alertView];
-//            
-//        }];
-//        
-//    } copy]; // `addCommentBlock` refers to the heap version of this block for the recursive alert retry call
-//    
-//    LinkWrapper(wrapper, ^(BOOL didPrompt, SZSocialNetwork selectedNetwork) {
-//        if (AvailableSocialNetworks() == SZSocialNetworkNone || (didPrompt && selectedNetwork == SZSocialNetworkNone)) {
-//            
-//            // No networks are linked, so the user must have opted out of linking. Skip the selection dialog
-//            addCommentBlock(SZSocialNetworkNone);
-//            
-//        } else {
-//
-//            // Networks are available, so get the user's post preference (may show network selection dialog)
-//            [SZShareUtils getPreferredShareNetworksWithDisplay:wrapper success:addCommentBlock failure:^(NSError *error) {
-//                [wrapper endSequence];
-//                BLOCK_CALL_1(failure, error);
-//            }];
-//        }
-//    }, ^(NSError *error) {
-//        [wrapper endSequence];
-//        BLOCK_CALL_1(failure, error);
-//    });
++ (void)addCommentWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
+    SZLinkAndGetPreferredNetworks(viewController, ^(SZSocialNetwork preferredNetworks) {
+        
+        // Determined users preferred networks, create the comment ...
+        [self addCommentWithEntity:entity text:text options:options networks:preferredNetworks success:success failure:failure];
+    }, ^{
+        
+        // Network selection cancelled ...
+        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorCommentCancelledByUser]);
+    });
 }
 
 + (void)getCommentWithId:(NSNumber*)commentId success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
