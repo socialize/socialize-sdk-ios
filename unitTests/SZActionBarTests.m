@@ -34,6 +34,7 @@
 #import "SocializeAuthenticateService.h"
 #import "SocializeLikeService.h"
 #import "SocializeEntityService.h"
+#import "SZCommentUtils.h"
 
 #define TEST_ENTITY_URL @"http://test.com"
 #define TEST_ENTITY_NAME @"TEST_ENTITY_NAME"
@@ -73,7 +74,7 @@
     [[[self.mockEntity stub] andReturn:TEST_ENTITY_URL] key];
     [[[self.mockEntity stub] andReturn:TEST_ENTITY_NAME] name];
 
-    self.origActionBar = [[[SocializeActionBar alloc] initWithEntity:self.mockEntity display:self.mockParentController] autorelease];
+    self.origActionBar = [[[SocializeActionBar alloc] initWithEntity:self.mockEntity presentModalInController:self.mockParentController] autorelease];
     self.actionBar = [OCMockObject partialMockForObject:self.origActionBar];
     
     self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
@@ -110,8 +111,10 @@
 
 
 - (void)testModalCommentDisplay {
-    [[(id)self.actionBar expect] presentInternalController:OCMOCK_ANY];
+    [SZCommentUtils startMockingClass];
+    [[SZCommentUtils expect] showCommentsListWithViewController:OCMOCK_ANY entity:OCMOCK_ANY completion:OCMOCK_ANY];
     [self.actionBar commentButtonTouched:nil];
+    [SZCommentUtils stopMockingClass];
 }
 
 - (void)testModalProfileDisplay {

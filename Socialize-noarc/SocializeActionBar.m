@@ -43,6 +43,8 @@
 #import "SZLikeUtils.h"
 #import "SZShareUtils.h"
 #import "SZCommentUtils.h"
+#import "SZUserProfileViewController.h"
+#import "SZUserUtils.h"
 
 @interface SocializeActionBar()
 @property (nonatomic, retain) id<SocializeView> entityView;
@@ -226,9 +228,11 @@
 
 -(void)viewButtonTouched:(id)sender
 {
-    _SZUserProfileViewController *profile = [_SZUserProfileViewController profileViewController];
-    SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
-    [self presentInternalController:nav];
+    SZUserProfileViewController *profile = [[[SZUserProfileViewController alloc] initWithUser:(id<SZUser>)[SZUserUtils currentUser]] autorelease];
+    profile.completionBlock = ^(id<SZFullUser> user) {
+        [self.viewController dismissModalViewControllerAnimated:YES];
+    };
+    [self presentInternalController:profile];
 }
 
 -(void)shareButtonTouched: (id) sender

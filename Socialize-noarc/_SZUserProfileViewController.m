@@ -124,7 +124,11 @@
     //we will show a done button here if there is not left barbutton item already showing
     if (!self.navigationItem.leftBarButtonItem) {
         self.navigationItem.leftBarButtonItem = [UIBarButtonItem blueSocializeBarButtonWithTitle:@"Done" handler:^(id sender) {
-            BLOCK_CALL_1(self.completionBlock, self.fullUser);
+            if ([self.delegate respondsToSelector:@selector(baseViewControllerDidFinish:)]) {
+                [self.delegate baseViewControllerDidFinish:self];
+            } else {
+                BLOCK_CALL_1(self.completionBlock, self.fullUser);
+            }
         }];
     }
 

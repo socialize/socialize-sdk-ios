@@ -51,33 +51,33 @@
     }] updateUserProfile:OCMOCK_ANY profileImage:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
 }
 
-- (void)testSuccessfulSaveUserSettings {
-    
-    // Start not authed
-    [self fakeCurrentUserAnonymousInSocialize:self.mockSharedSocialize];
-    
-    // Become anonymous
-    [self succeedUserAuthAndDo:^{
-        [self.mockSharedSocialize reset];
-        [self fakeCurrentUserAnonymousInSocialize:self.mockSharedSocialize];
-    }];
-    
-    // Profile update succeeds with shared socialize
-    [self succeedUpdateProfile];
-    
-    // Call utils settings save
-    [self prepare];
-    
-    id mockUser = [OCMockObject mockForProtocol:@protocol(SZFullUser)];
-    
-    [SZUserUtils saveUserSettings:mockUser profileImage:nil success:^(id<SZFullUser> user) {
-        [self notify:kGHUnitWaitStatusSuccess];
-    } failure:^(NSError *error) {
-        [self notify:kGHUnitWaitStatusFailure];
-    }];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
-}
-
+//- (void)testSuccessfulSaveUserSettings {
+//    
+//    // Start not authed
+//    [self fakeCurrentUserAnonymousInSocialize:self.mockSharedSocialize];
+//    
+//    // Become anonymous
+//    [self succeedUserAuthAndDo:^{
+//        [self.mockSharedSocialize reset];
+//        [self fakeCurrentUserAnonymousInSocialize:self.mockSharedSocialize];
+//    }];
+//    
+//    // Profile update succeeds with shared socialize
+//    [self succeedUpdateProfile];
+//    
+//    // Call utils settings save
+//    [self prepare];
+//    
+//    id mockUser = [OCMockObject mockForProtocol:@protocol(SZFullUser)];
+//    
+//    [SZUserUtils saveUserSettings:mockUser profileImage:nil success:^(id<SZFullUser> user) {
+//        [self notify:kGHUnitWaitStatusSuccess];
+//    } failure:^(NSError *error) {
+//        [self notify:kGHUnitWaitStatusFailure];
+//    }];
+//    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1];
+//}
+//
 - (void)testIsLinkedFalseWhenAnonymous {
     [self fakeCurrentUserAnonymousInSocialize:self.mockSharedSocialize];
     BOOL isLinked = [SZUserUtils userIsLinked];
