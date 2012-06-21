@@ -577,6 +577,10 @@
 		AA552F591592A14C0020E0E4 /* SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA552F561592A14C0020E0E4 /* SZComposeCommentViewController.h */; };
 		AA552F5A1592A14C0020E0E4 /* SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA552F571592A14C0020E0E4 /* SZComposeCommentViewController.m */; };
 		AA552F5B1592A14C0020E0E4 /* SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA552F571592A14C0020E0E4 /* SZComposeCommentViewController.m */; };
+		AA552F5E1592EF260020E0E4 /* SZCommentsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA552F5C1592EF240020E0E4 /* SZCommentsListViewController.h */; };
+		AA552F5F1592EF260020E0E4 /* SZCommentsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA552F5C1592EF240020E0E4 /* SZCommentsListViewController.h */; };
+		AA552F601592EF260020E0E4 /* SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA552F5D1592EF250020E0E4 /* SZCommentsListViewController.m */; };
+		AA552F611592EF260020E0E4 /* SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA552F5D1592EF250020E0E4 /* SZCommentsListViewController.m */; };
 		AA5624CD159046000052FCFD /* libSocialize-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */; };
 		AA5CE7C11592998200DB5EAF /* SZLinkDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CE7BF1592998200DB5EAF /* SZLinkDialogViewController.h */; };
 		AA5CE7C21592998200DB5EAF /* SZLinkDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CE7BF1592998200DB5EAF /* SZLinkDialogViewController.h */; };
@@ -2166,6 +2170,8 @@
 		AA3C62A115906FBE00386330 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = ThirdParty/GHUnitIOS.framework; sourceTree = "<group>"; };
 		AA552F561592A14C0020E0E4 /* SZComposeCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZComposeCommentViewController.h; path = Socialize/SZComposeCommentViewController.h; sourceTree = SOURCE_ROOT; };
 		AA552F571592A14C0020E0E4 /* SZComposeCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZComposeCommentViewController.m; path = Socialize/SZComposeCommentViewController.m; sourceTree = SOURCE_ROOT; };
+		AA552F5C1592EF240020E0E4 /* SZCommentsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZCommentsListViewController.h; sourceTree = "<group>"; };
+		AA552F5D1592EF250020E0E4 /* SZCommentsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZCommentsListViewController.m; sourceTree = "<group>"; };
 		AA5CE7BF1592998200DB5EAF /* SZLinkDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLinkDialogViewController.h; sourceTree = "<group>"; };
 		AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLinkDialogViewController.m; sourceTree = "<group>"; };
 		AA6C63CC158F0EB0005E5632 /* IntegrationTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntegrationTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3193,6 +3199,8 @@
 				AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */,
 				AA552F561592A14C0020E0E4 /* SZComposeCommentViewController.h */,
 				AA552F571592A14C0020E0E4 /* SZComposeCommentViewController.m */,
+				AA552F5C1592EF240020E0E4 /* SZCommentsListViewController.h */,
+				AA552F5D1592EF250020E0E4 /* SZCommentsListViewController.m */,
 			);
 			name = Wrappers;
 			sourceTree = "<group>";
@@ -3813,6 +3821,7 @@
 				AA2FC1A715926CAF00B52772 /* SZTwitterLinkViewController.h in Headers */,
 				AA5CE7C11592998200DB5EAF /* SZLinkDialogViewController.h in Headers */,
 				AA552F581592A14C0020E0E4 /* SZComposeCommentViewController.h in Headers */,
+				AA552F5E1592EF260020E0E4 /* SZCommentsListViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3862,6 +3871,7 @@
 				AA2FC1A815926CAF00B52772 /* SZTwitterLinkViewController.h in Headers */,
 				AA5CE7C21592998200DB5EAF /* SZLinkDialogViewController.h in Headers */,
 				AA552F591592A14C0020E0E4 /* SZComposeCommentViewController.h in Headers */,
+				AA552F5F1592EF260020E0E4 /* SZCommentsListViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5234,6 +5244,7 @@
 				AA2FC1A915926CAF00B52772 /* SZTwitterLinkViewController.m in Sources */,
 				AA5CE7C31592998200DB5EAF /* SZLinkDialogViewController.m in Sources */,
 				AA552F5A1592A14C0020E0E4 /* SZComposeCommentViewController.m in Sources */,
+				AA552F601592EF260020E0E4 /* SZCommentsListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5711,6 +5722,7 @@
 				AA2FC1AA15926CAF00B52772 /* SZTwitterLinkViewController.m in Sources */,
 				AA5CE7C41592998200DB5EAF /* SZLinkDialogViewController.m in Sources */,
 				AA552F5B1592A14C0020E0E4 /* SZComposeCommentViewController.m in Sources */,
+				AA552F611592EF260020E0E4 /* SZCommentsListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,7 +18,7 @@
 #import "SZDisplay.h"
 #import <BlocksKit/BlocksKit.h>
 #import "SZComposeCommentViewController.h"
-#import "_SZSelectNetworkViewController.h"
+#import "SZCommentsListViewController.h"
 
 @implementation SZCommentUtils
 
@@ -27,16 +27,15 @@
     return options;
 }
 
-+ (void)showCommentsListWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity completion:(void(^)())completion {
-    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-
-    _SZCommentsListViewController *commentsList = [_SZCommentsListViewController commentsListViewControllerWithEntity:entity];
++ (void)showCommentsListWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)())completion {
+    SZCommentsListViewController *commentsList = [[SZCommentsListViewController alloc] initWithEntity:entity];
     commentsList.completionBlock = ^{
-        [wrapper endSequence];
-        BLOCK_CALL(completion);
+        [viewController dismissViewControllerAnimated:YES completion:^{
+            BLOCK_CALL(completion);
+        }];
     };
     
-    [wrapper beginSequenceWithViewController:commentsList]; 
+    [viewController presentModalViewController:commentsList animated:YES];
 }
 
 // Compose and share (but no initial link)

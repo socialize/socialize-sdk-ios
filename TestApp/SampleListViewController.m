@@ -138,7 +138,7 @@ static SampleListViewController *sharedSampleListViewController;
 
     NSMutableArray *commentRows = [NSMutableArray array];
     [commentRows addObject:[self rowWithIdentifier:kShowCommentsListRow text:@"Show Comments List" executionBlock:^{
-        [SZCommentUtils showCommentsListWithDisplay:self entity:self.entity completion:nil];
+        [SZCommentUtils showCommentsListWithViewController:self entity:self.entity completion:nil];
     }]];
 
     [commentRows addObject:[self rowWithIdentifier:kShowCommentComposerRow text:@"Show Comment Composer" executionBlock:^{
