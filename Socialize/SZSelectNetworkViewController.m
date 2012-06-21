@@ -27,11 +27,6 @@
     return self;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 - (id)forwardingTargetForSelector:(SEL)aSelector {
     return self.selectNetwork;
 }
