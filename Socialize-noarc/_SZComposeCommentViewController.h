@@ -1,5 +1,5 @@
 //
-//  SZComposeCommentMessageViewController.h
+//  _SZComposeCommentViewController.h
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 11/10/11.
@@ -12,10 +12,10 @@
 #import "SZComposeCommentViewControllerDelegate.h"
 #import "SZCommentOptions.h"
 
-@interface SZComposeCommentMessageViewController : SocializeComposeMessageViewController <_SZLinkDialogViewControllerDelegate>
+@interface _SZComposeCommentViewController : SocializeComposeMessageViewController <_SZLinkDialogViewControllerDelegate>
 + (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SZComposeCommentViewControllerDelegate>)delegate;
-+ (SZComposeCommentMessageViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL;
-+ (SZComposeCommentMessageViewController*)composeCommentViewControllerWithEntity:(id<SZEntity>)entity;
++ (_SZComposeCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL;
++ (_SZComposeCommentViewController*)composeCommentViewControllerWithEntity:(id<SZEntity>)entity;
 @property (nonatomic, assign) id<SZComposeCommentViewControllerDelegate> delegate;
 @property (nonatomic, retain) id<SocializeComment> commentObject;
 @property (nonatomic, retain) IBOutlet UIButton *facebookButton;

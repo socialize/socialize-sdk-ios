@@ -236,7 +236,7 @@
     [[(id)self.commentsTableViewController expect] insertContentAtHead:[NSArray arrayWithObject:mockComment]];
     
     // Stub a post comment where the user chose not to subscribe to the discussion
-    id mockComposeCommentViewController = [OCMockObject mockForClass:[SZComposeCommentMessageViewController class]];
+    id mockComposeCommentViewController = [OCMockObject mockForClass:[_SZComposeCommentViewController class]];
     [[[mockComposeCommentViewController stub] andReturnBool:YES] dontSubscribeToDiscussion];
     
     // Subscribed button should turn off

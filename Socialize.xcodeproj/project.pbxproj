@@ -136,7 +136,7 @@
 		AA0087A6158D35C000480399 /* SocializeViewService.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086E5158D35BF00480399 /* SocializeViewService.m */; };
 		AA0087A7158D35C000480399 /* SZActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086E8158D35BF00480399 /* SZActionBar.m */; };
 		AA0087AE158D35C000480399 /* SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086F6158D35BF00480399 /* SZCommentsListViewController.m */; };
-		AA0087B0158D35C000480399 /* SZComposeCommentMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FA158D35BF00480399 /* SZComposeCommentMessageViewController.m */; };
+		AA0087B0158D35C000480399 /* _SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FA158D35BF00480399 /* _SZComposeCommentViewController.m */; };
 		AA0087B2158D35C000480399 /* SZDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FF158D35BF00480399 /* SZDisplay.m */; };
 		AA0087B5158D35C000480399 /* SZLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008705158D35BF00480399 /* SZLikeButton.m */; };
 		AA0087B9158D35C000480399 /* SZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870D158D35BF00480399 /* SZNavigationController.m */; };
@@ -484,7 +484,7 @@
 		AA1C1C0D158EF3AA00A763CA /* SocializeComposeMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008655158D35BD00480399 /* SocializeComposeMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C0E158EF3B600A763CA /* _SZUserProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00870E158D35BF00480399 /* _SZUserProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C0F158EF3BB00A763CA /* _SZUserSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008710158D35BF00480399 /* _SZUserSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA1C1C10158EF3C100A763CA /* SZComposeCommentMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086F9158D35BF00480399 /* SZComposeCommentMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA1C1C10158EF3C100A763CA /* _SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086F9158D35BF00480399 /* _SZComposeCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C11158EF3CD00A763CA /* SocializeActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00862A158D35BD00480399 /* SocializeActionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C12158EF3D200A763CA /* SocializeActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008627158D35BD00480399 /* SocializeActionBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C13158EF3D700A763CA /* SocializeObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086A5158D35BE00480399 /* SocializeObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1149,7 +1149,7 @@
 		AAB5E4E1159044E600D3EBDF /* SocializeViewService.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086E5158D35BF00480399 /* SocializeViewService.m */; };
 		AAB5E4E2159044E600D3EBDF /* SZActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086E8158D35BF00480399 /* SZActionBar.m */; };
 		AAB5E4E7159044E600D3EBDF /* SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086F6158D35BF00480399 /* SZCommentsListViewController.m */; };
-		AAB5E4E9159044E600D3EBDF /* SZComposeCommentMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FA158D35BF00480399 /* SZComposeCommentMessageViewController.m */; };
+		AAB5E4E9159044E600D3EBDF /* _SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FA158D35BF00480399 /* _SZComposeCommentViewController.m */; };
 		AAB5E4EB159044E600D3EBDF /* SZDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FF158D35BF00480399 /* SZDisplay.m */; };
 		AAB5E4EE159044E600D3EBDF /* SZLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008705158D35BF00480399 /* SZLikeButton.m */; };
 		AAB5E4F2159044E600D3EBDF /* SZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870D158D35BF00480399 /* SZNavigationController.m */; };
@@ -1193,7 +1193,7 @@
 		AAB5E52B159044F900D3EBDF /* SocializeComposeMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008655158D35BD00480399 /* SocializeComposeMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E52C159044F900D3EBDF /* _SZUserProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00870E158D35BF00480399 /* _SZUserProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E52D159044F900D3EBDF /* _SZUserSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008710158D35BF00480399 /* _SZUserSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAB5E52E159044F900D3EBDF /* SZComposeCommentMessageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086F9158D35BF00480399 /* SZComposeCommentMessageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAB5E52E159044F900D3EBDF /* _SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086F9158D35BF00480399 /* _SZComposeCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E52F159044F900D3EBDF /* SocializeActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00862A158D35BD00480399 /* SocializeActionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E530159044F900D3EBDF /* SocializeActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008627158D35BD00480399 /* SocializeActionBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E531159044F900D3EBDF /* SocializeObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086A5158D35BE00480399 /* SocializeObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1875,8 +1875,8 @@
 		AA0086F6158D35BF00480399 /* SZCommentsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZCommentsListViewController.m; sourceTree = "<group>"; };
 		AA0086F7158D35BF00480399 /* SZCommentUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZCommentUtils.h; path = "Socialize-noarc/SZCommentUtils.h"; sourceTree = SOURCE_ROOT; };
 		AA0086F8158D35BF00480399 /* SZCommentUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZCommentUtils.m; path = "Socialize-noarc/SZCommentUtils.m"; sourceTree = SOURCE_ROOT; };
-		AA0086F9158D35BF00480399 /* SZComposeCommentMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZComposeCommentMessageViewController.h; sourceTree = "<group>"; };
-		AA0086FA158D35BF00480399 /* SZComposeCommentMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZComposeCommentMessageViewController.m; sourceTree = "<group>"; };
+		AA0086F9158D35BF00480399 /* _SZComposeCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SZComposeCommentViewController.h; sourceTree = "<group>"; };
+		AA0086FA158D35BF00480399 /* _SZComposeCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SZComposeCommentViewController.m; sourceTree = "<group>"; };
 		AA0086FD158D35BF00480399 /* SZComposeCommentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZComposeCommentViewControllerDelegate.h; sourceTree = "<group>"; };
 		AA0086FE158D35BF00480399 /* SZDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZDisplay.h; sourceTree = "<group>"; };
 		AA0086FF158D35BF00480399 /* SZDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDisplay.m; sourceTree = "<group>"; };
@@ -3600,8 +3600,8 @@
 				AA0086DF158D35BF00480399 /* SocializeVerticalLayoutContainerView.m */,
 				AA0086F5158D35BF00480399 /* SZCommentsListViewController.h */,
 				AA0086F6158D35BF00480399 /* SZCommentsListViewController.m */,
-				AA0086F9158D35BF00480399 /* SZComposeCommentMessageViewController.h */,
-				AA0086FA158D35BF00480399 /* SZComposeCommentMessageViewController.m */,
+				AA0086F9158D35BF00480399 /* _SZComposeCommentViewController.h */,
+				AA0086FA158D35BF00480399 /* _SZComposeCommentViewController.m */,
 				AA0086FD158D35BF00480399 /* SZComposeCommentViewControllerDelegate.h */,
 				AA008712158D35BF00480399 /* _SZUserSettingsViewControllerDelegate.h */,
 				AA008602158D35BC00480399 /* CommentDetailsView.h */,
@@ -3768,7 +3768,7 @@
 				AA1C1C0D158EF3AA00A763CA /* SocializeComposeMessageViewController.h in Headers */,
 				AA1C1C0E158EF3B600A763CA /* _SZUserProfileViewController.h in Headers */,
 				AA1C1C0F158EF3BB00A763CA /* _SZUserSettingsViewController.h in Headers */,
-				AA1C1C10158EF3C100A763CA /* SZComposeCommentMessageViewController.h in Headers */,
+				AA1C1C10158EF3C100A763CA /* _SZComposeCommentViewController.h in Headers */,
 				AA1C1C11158EF3CD00A763CA /* SocializeActionView.h in Headers */,
 				AA1C1C12158EF3D200A763CA /* SocializeActionBar.h in Headers */,
 				AA1C1C13158EF3D700A763CA /* SocializeObjects.h in Headers */,
@@ -3817,7 +3817,7 @@
 				AAB5E52B159044F900D3EBDF /* SocializeComposeMessageViewController.h in Headers */,
 				AAB5E52C159044F900D3EBDF /* _SZUserProfileViewController.h in Headers */,
 				AAB5E52D159044F900D3EBDF /* _SZUserSettingsViewController.h in Headers */,
-				AAB5E52E159044F900D3EBDF /* SZComposeCommentMessageViewController.h in Headers */,
+				AAB5E52E159044F900D3EBDF /* _SZComposeCommentViewController.h in Headers */,
 				AAB5E52F159044F900D3EBDF /* SocializeActionView.h in Headers */,
 				AAB5E530159044F900D3EBDF /* SocializeActionBar.h in Headers */,
 				AAB5E531159044F900D3EBDF /* SocializeObjects.h in Headers */,
@@ -5336,7 +5336,7 @@
 				AA0087A6158D35C000480399 /* SocializeViewService.m in Sources */,
 				AA0087A7158D35C000480399 /* SZActionBar.m in Sources */,
 				AA0087AE158D35C000480399 /* SZCommentsListViewController.m in Sources */,
-				AA0087B0158D35C000480399 /* SZComposeCommentMessageViewController.m in Sources */,
+				AA0087B0158D35C000480399 /* _SZComposeCommentViewController.m in Sources */,
 				AA0087B2158D35C000480399 /* SZDisplay.m in Sources */,
 				AA0087B5158D35C000480399 /* SZLikeButton.m in Sources */,
 				AA0087B9158D35C000480399 /* SZNavigationController.m in Sources */,
@@ -5634,7 +5634,7 @@
 				AAB5E4E1159044E600D3EBDF /* SocializeViewService.m in Sources */,
 				AAB5E4E2159044E600D3EBDF /* SZActionBar.m in Sources */,
 				AAB5E4E7159044E600D3EBDF /* SZCommentsListViewController.m in Sources */,
-				AAB5E4E9159044E600D3EBDF /* SZComposeCommentMessageViewController.m in Sources */,
+				AAB5E4E9159044E600D3EBDF /* _SZComposeCommentViewController.m in Sources */,
 				AAB5E4EB159044E600D3EBDF /* SZDisplay.m in Sources */,
 				AAB5E4EE159044E600D3EBDF /* SZLikeButton.m in Sources */,
 				AAB5E4F2159044E600D3EBDF /* SZNavigationController.m in Sources */,

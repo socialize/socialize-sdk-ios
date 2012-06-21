@@ -129,7 +129,7 @@
 
 -(void)testCreateMethod
 {
-    UINavigationController* controller = [SZComposeCommentMessageViewController postCommentViewControllerInNavigationControllerWithEntityURL:TEST_URL delegate:nil];
+    UINavigationController* controller = [_SZComposeCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:TEST_URL delegate:nil];
     GHAssertNotNil(controller, nil);
 }
 

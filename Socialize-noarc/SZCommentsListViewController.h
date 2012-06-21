@@ -11,7 +11,7 @@
 #import "_Socialize.h"
 #import "SocializeBaseViewController.h"
 #import "SocializeTableViewController.h"
-#import "SZComposeCommentMessageViewController.h"
+#import "_SZComposeCommentViewController.h"
 
 @class CommentsTableFooterView;
 @class SocializeTableBGInfoView;

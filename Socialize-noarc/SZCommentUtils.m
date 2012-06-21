@@ -11,7 +11,7 @@
 #import "SDKHelpers.h"
 #import "SZCommentsListViewController.h"
 #import "SZNavigationController.h"
-#import "SZComposeCommentMessageViewController.h"
+#import "_SZComposeCommentViewController.h"
 #import "SZCommentOptions.h"
 #import "SZShareUtils.h"
 #import "SZUserUtils.h"
@@ -41,7 +41,7 @@
 + (void)showCommentComposerWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
 //    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
 //
-//    SZComposeCommentMessageViewController *composer = [[SZComposeCommentMessageViewController alloc] initWithEntity:entity];
+//    _SZComposeCommentViewController *composer = [[_SZComposeCommentViewController alloc] initWithEntity:entity];
 //    composer.completionBlock = ^(NSString *text, SZCommentOptions *options) {
 //        
 //        // Add comment

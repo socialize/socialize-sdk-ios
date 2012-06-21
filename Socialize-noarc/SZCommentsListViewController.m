@@ -10,7 +10,7 @@
 #import "CommentsTableViewCell.h"
 #import "NSDateAdditions.h"
 #import "SocializeCommentDetailsViewController.h"
-#import "SZComposeCommentMessageViewController.h"
+#import "_SZComposeCommentViewController.h"
 #import "UILabel-Additions.h"
 #import "UIButton+Socialize.h"
 #import <QuartzCore/CALayer.h>
@@ -260,7 +260,7 @@
 
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
-    UINavigationController * pcNavController = [SZComposeCommentMessageViewController postCommentViewControllerInNavigationControllerWithEntityURL:_entity.key delegate:self];
+    UINavigationController * pcNavController = [_SZComposeCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:_entity.key delegate:self];
     [self presentModalViewController:pcNavController animated:YES];
 }
 
@@ -268,7 +268,7 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)postCommentViewController:(SZComposeCommentMessageViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
+- (void)postCommentViewController:(_SZComposeCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
     [self insertContentAtHead:[NSArray arrayWithObject:comment]];
     
     self.footerView.subscribedButton.selected = !postCommentViewController.dontSubscribeToDiscussion;

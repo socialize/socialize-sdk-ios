@@ -43,7 +43,7 @@
 #define TEST_URL @"test_entity_url"
 #define TEST_LOCATION @"some_test_loaction_description"
 
-@interface SZComposeCommentMessageViewController (Tests)
+@interface _SZComposeCommentViewController (Tests)
 - (void)dismissSelf;
 - (void)configureFacebookButton;
 @end
@@ -57,7 +57,7 @@
 @synthesize mockSubscribeContainer = mockSubscribeContainer_;
 
 + (SocializeBaseViewController*)createController {
-    return [SZComposeCommentMessageViewController postCommentViewControllerWithEntityURL:TEST_URL];
+    return [_SZComposeCommentViewController postCommentViewControllerWithEntityURL:TEST_URL];
 }
 
 - (void)setUp {
@@ -67,7 +67,7 @@
     [SocializeThirdPartyTwitter startMockingClass];
     
     // super setUp creates self.viewController
-    self.postCommentViewController = (SZComposeCommentMessageViewController*)self.viewController;
+    self.postCommentViewController = (_SZComposeCommentViewController*)self.viewController;
     
     self.mockFacebookButton = [OCMockObject mockForClass:[UIButton class]];
     self.postCommentViewController.facebookButton = self.mockFacebookButton;
@@ -311,7 +311,7 @@
     [self.postCommentViewController viewDidLoad];
 }
 
-- (void)postCommentViewController:(SZComposeCommentMessageViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
+- (void)postCommentViewController:(_SZComposeCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
     [self notify:kGHUnitWaitStatusSuccess];
 }
 

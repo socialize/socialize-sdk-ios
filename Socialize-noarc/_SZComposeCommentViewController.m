@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 Socialize, Inc. All rights reserved.
 //
 
-#import "SZComposeCommentMessageViewController.h"
+#import "_SZComposeCommentViewController.h"
 #import "SocializeLocationManager.h"
 #import "CommentMapView.h"
 #import "UINavigationController+Socialize.h"
@@ -17,7 +17,7 @@
 #import "SZCommentUtils.h"
 #import "SocializePrivateDefinitions.h"
 
-@implementation SZComposeCommentMessageViewController
+@implementation _SZComposeCommentViewController
 @synthesize commentObject = commentObject_;
 @synthesize facebookButton = facebookButton_;
 @synthesize delegate = delegate_;
@@ -29,18 +29,18 @@
 @synthesize completionBlock = completionBlock_;
 
 + (UINavigationController*)postCommentViewControllerInNavigationControllerWithEntityURL:(NSString*)entityURL delegate:(id<SZComposeCommentViewControllerDelegate>)delegate {
-    SZComposeCommentMessageViewController *postCommentViewController = [self postCommentViewControllerWithEntityURL:entityURL];
+    _SZComposeCommentViewController *postCommentViewController = [self postCommentViewControllerWithEntityURL:entityURL];
     postCommentViewController.delegate = delegate;
     UINavigationController *navigationController = [UINavigationController socializeNavigationControllerWithRootViewController:postCommentViewController];
     return navigationController;    
 }
 
-+ (SZComposeCommentMessageViewController*)composeCommentViewControllerWithEntity:(id<SZEntity>)entity {
++ (_SZComposeCommentViewController*)composeCommentViewControllerWithEntity:(id<SZEntity>)entity {
     return [[[self alloc] initWithEntity:entity] autorelease];
 }
 
-+ (SZComposeCommentMessageViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL {
-    SZComposeCommentMessageViewController *postCommentViewController = [[[SZComposeCommentMessageViewController alloc]
++ (_SZComposeCommentViewController*)postCommentViewControllerWithEntityURL:(NSString*)entityURL {
+    _SZComposeCommentViewController *postCommentViewController = [[[_SZComposeCommentViewController alloc]
                                                        initWithEntityUrlString:entityURL]
                                                       autorelease];
     return postCommentViewController;
