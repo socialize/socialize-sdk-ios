@@ -39,11 +39,6 @@
     [self pushViewController:self.shareDialog animated:NO];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 - (void)setCompletionBlock:(void (^)(NSArray *shares))completionBlock {
     _completionBlock = completionBlock;
     self.shareDialog.completionBlock = completionBlock;
