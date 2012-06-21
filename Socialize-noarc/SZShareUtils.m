@@ -28,28 +28,6 @@
     return options;
 }
 
-+ (void)getPreferredShareNetworksWithViewController:(UIViewController*)viewController success:(void(^)(SZSocialNetwork networks))success failure:(void(^)(NSError *error))failure {
-//    BOOL autopostIsSet = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeAutoPostToSocialNetworksKey] boolValue];
-//    
-//    if (autopostIsSet || AvailableSocialNetworks() == SZSocialNetworkNone) {
-//        
-//        // The user has autopost enabled, so we already know the answer
-//        SZSocialNetwork socialNetworks = [SocializeThirdParty preferredNetworks];
-//        BLOCK_CALL_1(success, socialNetworks);
-//    } else {
-//        
-//        // The user has not enable autopost, so we must prompt them
-//        SZSelectNetworkViewController *selectNetwork = [[SZSelectNetworkViewController alloc] init];
-//        selectNetwork.completionBlock = ^(SZSocialNetwork selectedNetworks) {
-//            BLOCK_CALL_1(success, selectedNetworks);
-//        };
-//        dialog.cancellationBlock = ^{
-//            BLOCK_CALL_1(failure, );
-//        };
-//        [display socializeWillBeginDisplaySequenceWithViewController:dialog];
-//    }
-}
-
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))completion {
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
     shareDialog.completionBlock = ^(NSArray *shares) {
