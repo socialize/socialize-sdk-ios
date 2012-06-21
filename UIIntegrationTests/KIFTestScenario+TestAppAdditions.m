@@ -373,7 +373,7 @@
 }
 
 + (id)scenarioToTestLikeNoAuth {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test comment composer with Facebook."];
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test Anonymous Like."];
     NSMutableArray *steps = [NSMutableArray array];
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
 
@@ -390,7 +390,7 @@
 }
 
 + (id)scenarioToTestLikeTwitterAuth {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test comment composer with Facebook."];
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test Like with Twitter Auth"];
     NSMutableArray *steps = [NSMutableArray array];
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
     

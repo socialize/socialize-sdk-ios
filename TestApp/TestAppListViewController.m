@@ -147,7 +147,7 @@ static TestAppListViewController *sharedSampleListViewController;
 
     NSMutableArray *likeRows = [NSMutableArray array];
     [likeRows addObject:[self rowWithIdentifier:kLikeEntityRow text:@"Like an Entity" executionBlock:^{
-        [SZLikeUtils likeWithDisplay:self entity:self.entity success:nil failure:nil];
+        [SZLikeUtils likeWithViewController:self options:nil entity:self.entity success:nil failure:nil];
     }]];
     
     NSMutableArray *facebookRows = [NSMutableArray array];

@@ -47,7 +47,7 @@ typedef enum {
 @synthesize activeHighlightedImage = activeHighlightedImage_;
 @synthesize likedIcon = likedIcon_;
 @synthesize unlikedIcon = unlikedIcon_;
-@synthesize display = display_;
+@synthesize viewController = viewController_;
 @synthesize entity = entity_;
 @synthesize recoveryTimer = recoveryTimer_;
 @synthesize serverEntity = serverEntity_;
@@ -65,7 +65,7 @@ typedef enum {
     self.activeHighlightedImage = nil;
     self.likedIcon = nil;
     self.unlikedIcon = nil;
-    self.display = nil;
+    self.viewController = nil;
     entity_ = nil; [entity_ release];
     self.serverEntity = nil;
     
@@ -77,24 +77,19 @@ typedef enum {
     [super dealloc];
 }
 
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity display:(id<SZDisplay>)display {
+- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)viewController {
     self = [super initWithFrame:frame];
     if (self) {
         [self configureButtonBackgroundImages];
 
         NonatomicRetainedSetToFrom(entity_, entity);
-        self.display = display;
+        self.viewController = viewController;
         
         self.actualButton.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         [self addSubview:self.actualButton];
     }
     return self;
 }
-
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)controller {
-    return [self initWithFrame:frame entity:entity display:controller];
-}
-
 
 - (id)initWithFrame:(CGRect)frame {
     [self doesNotRecognizeSelector:_cmd];
@@ -385,7 +380,7 @@ typedef enum {
 - (void)likeOnServer {
     self.actualButton.enabled = NO;
 
-    [SZLikeUtils likeWithDisplay:self.display entity:self.entity success:^(id<SZLike> like) {
+    [SZLikeUtils likeWithViewController:self.viewController options:nil entity:self.entity success:^(id<SZLike> like) {
 
         // Like succeeded
         self.actualButton.enabled = YES;

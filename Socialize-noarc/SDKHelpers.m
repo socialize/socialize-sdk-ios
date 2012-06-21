@@ -92,7 +92,11 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
                 
                 // Linked to a network -- Show network selection
                 _SZSelectNetworkViewController *selectNetwork = [[_SZSelectNetworkViewController alloc] init];
-                selectNetwork.completionBlock = completion;
+                selectNetwork.completionBlock = ^(SZSocialNetwork selectedNetworks) {
+                    [viewController dismissViewControllerAnimated:YES completion:^{
+                        BLOCK_CALL_1(completion, selectedNetworks);
+                    }];
+                };
                 selectNetwork.cancellationBlock = ^{
                     [link.navigationController popToViewController:link animated:YES];
                 };
@@ -120,7 +124,12 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
         
         // No link dialog required
         SZSelectNetworkViewController *selectNetwork = [[SZSelectNetworkViewController alloc] init];
-        selectNetwork.completionBlock = completion;
+        selectNetwork.completionBlock = ^(SZSocialNetwork selectedNetworks) {
+            [viewController dismissViewControllerAnimated:YES completion:^{
+                BLOCK_CALL_1(completion, selectedNetworks);
+            }];
+            
+        };
         selectNetwork.cancellationBlock = ^{
             [viewController dismissViewControllerAnimated:YES completion:^{
                 BLOCK_CALL(cancellation);
