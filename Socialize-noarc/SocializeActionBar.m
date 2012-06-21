@@ -40,6 +40,9 @@
 #import "_SZUserProfileViewController.h"
 #import "NSError+Socialize.h"
 #import "SZNavigationController.h"
+#import "SZLikeUtils.h"
+#import "SZShareUtils.h"
+#import "SZCommentUtils.h"
 
 @interface SocializeActionBar()
 @property (nonatomic, retain) id<SocializeView> entityView;
@@ -59,7 +62,6 @@
 @synthesize ignoreNextView = ignoreNextView_;
 @synthesize shareActionSheet = shareActionSheet_;
 @synthesize shareComposer = shareComposer_;
-@synthesize commentsNavController = commentsNavController_;
 @synthesize finishedAskingServerForExistingLike = finishedAskingServerForExistingLike_;
 @synthesize noAutoLayout = noAutoLayout_;
 @synthesize initialized = initialized_;
@@ -76,7 +78,6 @@
     self.entityView = nil;
     self.shareActionSheet = nil;
     self.shareComposer = nil;
-    self.commentsNavController = nil;
     self.unconfiguredEmailAlert = nil;
     self.shareTextMessageComposer = nil;
     self.viewController = nil;
@@ -150,20 +151,6 @@
     [actionView release];
 }
 
-- (UIViewController*)commentsNavController {
-    if (commentsNavController_ == nil) {
-        _SZCommentsListViewController *comments = [_SZCommentsListViewController commentsListViewControllerWithEntityKey:self.entity.key];
-        comments.delegate = self;
-        commentsNavController_ = [[SZNavigationController alloc] initWithRootViewController:comments];
-    }
-    
-    return commentsNavController_;
-}
-
-- (void)commentsTableViewControllerDidFinish:(_SZCommentsListViewController *)commentsTableViewController {
-    [self.viewController dismissModalViewControllerAnimated:YES];
-}
-
 #pragma mark Socialize base class method
 -(void) startLoadAnimationForView: (UIView*) view;
 {
@@ -212,29 +199,28 @@
 
 -(void)commentButtonTouched:(id)sender
 {
-    // Reset for now, since we yet don't have refresh functionality
-    self.commentsNavController = nil;
-    
-    [self presentInternalController:self.commentsNavController];
+    self.ignoreNextView = YES;
+    [SZCommentUtils showCommentsListWithViewController:self.viewController entity:self.entity completion:nil];
 }
 
 -(void)likeButtonTouched:(id)sender
 {
     [(SocializeActionView*)self.view lockButtons];
     
-    if(self.entityLike)
+    if (self.entityLike)
         [self.socialize unlikeEntity:self.entityLike];
     else {
-//        SocializeLike *like = [SocializeLike likeWithEntity:self.entity];
-//        __block __typeof__(self) weakSelf = self;
-//        [SocializeUILikeCreator createLike:like
-//                                 options:nil
-//                                 displayProxy:self.displayProxy
-//                                 success:^(id<SocializeLike> serverLike) {
-//                                     [weakSelf finishedCreatingLike:serverLike];
-//                                 } failure:^(NSError *error) {
-//                                     [weakSelf failedCreatingLikeWithError:error];
-//                                 }];
+        self.ignoreNextView = YES;
+
+        [SZLikeUtils likeWithViewController:self.viewController options:nil entity:self.entity success:^(id<SZLike> like) {
+            [self finishedCreatingLike:like];
+        } failure:^(NSError *error) {
+            [(SocializeActionView*)self.view unlockButtons];
+
+            if (![error isSocializeErrorWithCode:SocializeErrorLikeCancelledByUser]) {
+                [self failedCreatingLikeWithError:error];
+            }
+        }];
     }
 }
 
@@ -247,15 +233,8 @@
 
 -(void)shareButtonTouched: (id) sender
 {
-//    SocializeUIShareOptions *options = [SocializeUIShareOptions UIShareOptionsWithEntity:self.entity];
-//    [SocializeUIShareCreator createShareWithOptions:options
-//                                       displayProxy:self.displayProxy
-//                                            success:^{}
-//                                            failure:^(NSError *error) {
-//                                                if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
-//                                                    [self showAlertWithText:[error localizedDescription] andTitle:@"Share Failed"];
-//                                                }
-//                                            }];
+    self.ignoreNextView = YES;
+    [SZShareUtils showShareDialogWithViewController:self.viewController entity:self.entity completion:nil];
 }
 
 - (void)reloadEntity {

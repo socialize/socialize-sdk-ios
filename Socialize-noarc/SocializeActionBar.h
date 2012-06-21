@@ -42,11 +42,10 @@
  The Socialize Action Bar
 
  */
-@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate, _SZCommentsListViewControllerDelegate>
+@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate>
 
 @property (nonatomic, assign) id<SocializeActionBarDelegate> delegate;
 @property (nonatomic, retain) id<SocializeEntity> entity;
-@property (nonatomic, retain) UIViewController *commentsNavController;
 
 @property (nonatomic, assign) BOOL ignoreNextView;
 @property (nonatomic, retain) UIActionSheet *shareActionSheet;

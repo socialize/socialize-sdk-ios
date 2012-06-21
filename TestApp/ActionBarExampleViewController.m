@@ -14,6 +14,8 @@
 @end
 
 @implementation ActionBarExampleViewController
+@synthesize actionBar = _actionBar;
+@synthesize oldActionBar = _oldActionBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,11 +30,11 @@
 {
     [super viewDidLoad];
     
-    SZActionBar *actionBar = [[SZActionBar alloc] initWithFrame:CGRectMake(0, 300, 0, 0)];
-    [self.view addSubview:actionBar];
+    self.actionBar = [[SZActionBar alloc] initWithFrame:CGRectMake(0, 300, 0, 0)];
+    [self.view addSubview:self.actionBar];
     
-    SocializeActionBar *oldBar = [SocializeActionBar actionBarWithKey:@"Something" name:@"Something" presentModalInController:self];
-    [self.view addSubview:oldBar.view];
+    self.oldActionBar = [SocializeActionBar actionBarWithKey:@"Something" name:@"Something" presentModalInController:self];
+    [self.view addSubview:self.oldActionBar.view];
     self.view.backgroundColor = [UIColor greenColor];
     // Do any additional setup after loading the view from its nib.
 }

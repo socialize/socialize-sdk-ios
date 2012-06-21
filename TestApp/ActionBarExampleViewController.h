@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Socialize/Socialize.h>
 
 @interface ActionBarExampleViewController : UIViewController
+
+@property (nonatomic, strong) SocializeActionBar *oldActionBar;
+@property (nonatomic, strong) SZActionBar *actionBar;
 
 @end
