@@ -3226,8 +3226,6 @@
 				AA0086EA158D35BF00480399 /* SZActionBarUtils.m */,
 				AA0086EB158D35BF00480399 /* SZActionUtils.h */,
 				AA0086EC158D35BF00480399 /* SZActionUtils.m */,
-				AA0086F3158D35BF00480399 /* SZCommentOptions.h */,
-				AA0086F4158D35BF00480399 /* SZCommentOptions.m */,
 				AA0086F7158D35BF00480399 /* SZCommentUtils.h */,
 				AA0086F8158D35BF00480399 /* SZCommentUtils.m */,
 				AA008700158D35BF00480399 /* SZEntityUtils.h */,
@@ -3549,6 +3547,8 @@
 				AA008718158D35BF00480399 /* SZShareOptions.m */,
 				AA6D5A831592F34000058669 /* SZFacebookLinkOptions.h */,
 				AA6D5A841592F34000058669 /* SZFacebookLinkOptions.m */,
+				AA0086F3158D35BF00480399 /* SZCommentOptions.h */,
+				AA0086F4158D35BF00480399 /* SZCommentOptions.m */,
 			);
 			name = Options;
 			sourceTree = "<group>";
