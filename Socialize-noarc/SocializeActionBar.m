@@ -40,7 +40,6 @@
 #import "_SZUserProfileViewController.h"
 #import "NSError+Socialize.h"
 #import "SZNavigationController.h"
-#import "SZDisplay.h"
 
 @interface SocializeActionBar()
 @property (nonatomic, retain) id<SocializeView> entityView;
@@ -68,6 +67,7 @@
 @synthesize unconfiguredEmailAlert = unconfiguredEmailAlert_;
 @synthesize shareTextMessageComposer = shareTextMessageComposer_;
 @synthesize display = display_;
+@synthesize viewController = viewController_;
 
 - (void)dealloc
 {
@@ -79,7 +79,7 @@
     self.commentsNavController = nil;
     self.unconfiguredEmailAlert = nil;
     self.shareTextMessageComposer = nil;
-    self.display = nil;
+    self.viewController = nil;
     
     if (self.isViewLoaded) {
         [(SocializeActionView*)self.view setDelegate: nil];
@@ -102,10 +102,6 @@
     return [[[SocializeActionBar alloc] initWithEntityKey:key name:name presentModalInController:controller] autorelease];
 }
 
-+(SocializeActionBar*)actionBarWithEntity:(id<SocializeEntity>)entity display:(id)display {
-    return [[[SocializeActionBar alloc] initWithEntity:entity display:display] autorelease];
-}
-
 -(id)initWithEntityKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller {
     id<SocializeEntity> newEntity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];
     [newEntity setKey:key];
@@ -123,15 +119,11 @@
 }
 
 -(id)initWithEntity:(id<SocializeEntity>)entity presentModalInController:(UIViewController*)controller {
-    return [self initWithEntity:entity display:controller];
-}
-
--(id)initWithEntity:(id<SocializeEntity>)entity display:(id<SZDisplay>)display {
     self = [super init];
     if(self)
     {
         self.entity = entity;
-        self.display = display;
+        self.viewController = controller;
     }
     return self;
 }
@@ -140,7 +132,7 @@
 
 - (void)presentInternalController:(UIViewController*)viewController {
     self.ignoreNextView = YES;
-    [self.display socializeWillBeginDisplaySequenceWithViewController:viewController];
+    [self.viewController presentModalViewController:viewController animated:YES];
 }
 
 - (void)setNoAutoLayout:(BOOL)noAutoLayout {
@@ -169,7 +161,7 @@
 }
 
 - (void)commentsTableViewControllerDidFinish:(_SZCommentsListViewController *)commentsTableViewController {
-    [self.display socializeWillEndDisplaySequence];
+    [self.viewController dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark Socialize base class method

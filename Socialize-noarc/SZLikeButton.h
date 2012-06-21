@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SZDisplay.h"
 #import "SocializeObjects.h"
 
 @interface SZLikeButton : UIView

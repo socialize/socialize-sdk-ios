@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "SocializeUser.h"
 #import "SocializeFullUser.h"
-#import "SZDisplay.h"
 #import "SZUserSettingsViewController.h"
 
 @interface SZUserUtils : NSObject

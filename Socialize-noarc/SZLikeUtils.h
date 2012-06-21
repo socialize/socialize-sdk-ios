@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "_Socialize.h"
-#import "SZDisplay.h"
 #import "SZLikeOptions.h"
 
 @interface SZLikeUtils : NSObject

@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeObjects.h"
-#import "SZDisplay.h"
 #import "SZFacebookLinkOptions.h"
 
 @interface SZFacebookUtils : NSObject

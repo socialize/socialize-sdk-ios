@@ -474,8 +474,7 @@
 		AA159E27158FAE11006E1CAE /* KIFTestStep+TestAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA159E23158FAE11006E1CAE /* KIFTestStep+TestAppAdditions.m */; };
 		AA159E28158FAE11006E1CAE /* TestAppKIFTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA159E25158FAE11006E1CAE /* TestAppKIFTestController.m */; };
 		AA159E29158FAE2C006E1CAE /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1D1098158EFBCF000C8A44 /* libKIF.a */; };
-		AA15EFF015915300008F1237 /* SZUserProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA15EFEE15915300008F1237 /* SZUserProfileViewController.h */; };
-		AA15EFF115915300008F1237 /* SZUserProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA15EFEE15915300008F1237 /* SZUserProfileViewController.h */; };
+		AA15EFF115915300008F1237 /* SZUserProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA15EFEE15915300008F1237 /* SZUserProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA15EFF215915300008F1237 /* SZUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA15EFEF15915300008F1237 /* SZUserProfileViewController.m */; };
 		AA15EFF315915300008F1237 /* SZUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA15EFEF15915300008F1237 /* SZUserProfileViewController.m */; };
 		AA1C1C0A158EF35D00A763CA /* _Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008600158D35BC00480399 /* _Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -512,12 +511,10 @@
 		AA1C1C2A158EF44000A763CA /* SZTwitterUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008720158D35BF00480399 /* SZTwitterUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C2B158EF44000A763CA /* SZUserUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008722158D35BF00480399 /* SZUserUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C2C158EF44000A763CA /* SZViewUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008724158D35BF00480399 /* SZViewUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA25FEAD159119F00067741A /* SZUserSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA25FEAB159119F00067741A /* SZUserSettingsViewController.h */; };
 		AA25FEAE159119F00067741A /* SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */; };
 		AA25FEB015911ACC0067741A /* SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */; };
 		AA2C7A43158EF4F3009A2370 /* Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008626158D35BD00480399 /* Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA2FC1A715926CAF00B52772 /* SZTwitterLinkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2FC1A515926CAF00B52772 /* SZTwitterLinkViewController.h */; };
-		AA2FC1A815926CAF00B52772 /* SZTwitterLinkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2FC1A515926CAF00B52772 /* SZTwitterLinkViewController.h */; };
+		AA2FC1A815926CAF00B52772 /* SZTwitterLinkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2FC1A515926CAF00B52772 /* SZTwitterLinkViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2FC1A915926CAF00B52772 /* SZTwitterLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2FC1A615926CAF00B52772 /* SZTwitterLinkViewController.m */; };
 		AA2FC1AA15926CAF00B52772 /* SZTwitterLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2FC1A615926CAF00B52772 /* SZTwitterLinkViewController.m */; };
 		AA2FC2381592789800B52772 /* _SZTwitterLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086D0158D35BE00480399 /* _SZTwitterLinkViewController.m */; };
@@ -572,17 +569,14 @@
 		AA51122E158F12C8007341AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC392158E86770073AD50 /* QuartzCore.framework */; };
 		AA51122F158F12CD007341AA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC38E158E866B0073AD50 /* MessageUI.framework */; };
 		AA511230158F12D2007341AA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC390158E866F0073AD50 /* CoreLocation.framework */; };
-		AA552F581592A14C0020E0E4 /* SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA552F561592A14C0020E0E4 /* SZComposeCommentViewController.h */; };
-		AA552F591592A14C0020E0E4 /* SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA552F561592A14C0020E0E4 /* SZComposeCommentViewController.h */; };
+		AA552F591592A14C0020E0E4 /* SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA552F561592A14C0020E0E4 /* SZComposeCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA552F5A1592A14C0020E0E4 /* SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA552F571592A14C0020E0E4 /* SZComposeCommentViewController.m */; };
 		AA552F5B1592A14C0020E0E4 /* SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA552F571592A14C0020E0E4 /* SZComposeCommentViewController.m */; };
-		AA552F5E1592EF260020E0E4 /* SZCommentsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA552F5C1592EF240020E0E4 /* SZCommentsListViewController.h */; };
-		AA552F5F1592EF260020E0E4 /* SZCommentsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA552F5C1592EF240020E0E4 /* SZCommentsListViewController.h */; };
+		AA552F5F1592EF260020E0E4 /* SZCommentsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA552F5C1592EF240020E0E4 /* SZCommentsListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA552F601592EF260020E0E4 /* SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA552F5D1592EF250020E0E4 /* SZCommentsListViewController.m */; };
 		AA552F611592EF260020E0E4 /* SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA552F5D1592EF250020E0E4 /* SZCommentsListViewController.m */; };
 		AA5624CD159046000052FCFD /* libSocialize-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */; };
-		AA5CE7C11592998200DB5EAF /* SZLinkDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CE7BF1592998200DB5EAF /* SZLinkDialogViewController.h */; };
-		AA5CE7C21592998200DB5EAF /* SZLinkDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CE7BF1592998200DB5EAF /* SZLinkDialogViewController.h */; };
+		AA5CE7C21592998200DB5EAF /* SZLinkDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CE7BF1592998200DB5EAF /* SZLinkDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5CE7C31592998200DB5EAF /* SZLinkDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */; };
 		AA5CE7C41592998200DB5EAF /* SZLinkDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */; };
 		AA6C63CE158F0EB0005E5632 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
@@ -620,16 +614,15 @@
 		AA6C6445158F117E005E5632 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
 		AA6C99821591634600E24658 /* _SZSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C99811591634600E24658 /* _SZSelectNetworkViewController.m */; };
 		AA6C99831591634600E24658 /* _SZSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C99811591634600E24658 /* _SZSelectNetworkViewController.m */; };
-		AA6C99861591653900E24658 /* SZSelectNetworkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6C99841591653900E24658 /* SZSelectNetworkViewController.h */; };
-		AA6C99871591653900E24658 /* SZSelectNetworkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6C99841591653900E24658 /* SZSelectNetworkViewController.h */; };
+		AA6C99871591653900E24658 /* SZSelectNetworkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6C99841591653900E24658 /* SZSelectNetworkViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6C99881591653900E24658 /* SZSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C99851591653900E24658 /* SZSelectNetworkViewController.m */; };
 		AA6C99891591653900E24658 /* SZSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C99851591653900E24658 /* SZSelectNetworkViewController.m */; };
 		AA6CE2EA15905AE800A4B074 /* GCDAProfiling.c in Sources */ = {isa = PBXBuildFile; fileRef = AACEDA19158FD4D50024EC43 /* GCDAProfiling.c */; };
 		AA6CE2EB15905AF800A4B074 /* libSocialize-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */; };
 		AA6CE2EC15905B0200A4B074 /* libSocialize-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */; };
 		AA6CE2ED15905BBD00A4B074 /* GCDAProfiling.c in Sources */ = {isa = PBXBuildFile; fileRef = AACEDA19158FD4D50024EC43 /* GCDAProfiling.c */; };
-		AA6D5A851592F34000058669 /* SZFacebookLinkOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D5A831592F34000058669 /* SZFacebookLinkOptions.h */; };
-		AA6D5A861592F34000058669 /* SZFacebookLinkOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D5A831592F34000058669 /* SZFacebookLinkOptions.h */; };
+		AA6D5A851592F34000058669 /* SZFacebookLinkOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D5A831592F34000058669 /* SZFacebookLinkOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA6D5A861592F34000058669 /* SZFacebookLinkOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D5A831592F34000058669 /* SZFacebookLinkOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6D5A871592F34000058669 /* SZFacebookLinkOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D5A841592F34000058669 /* SZFacebookLinkOptions.m */; };
 		AA6D5A881592F34000058669 /* SZFacebookLinkOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D5A841592F34000058669 /* SZFacebookLinkOptions.m */; };
 		AA7D5DFF159072CD005B12A3 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3C62A115906FBE00386330 /* GHUnitIOS.framework */; };
@@ -1054,6 +1047,74 @@
 		AA935C09158F1C2600B5B2BC /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935C05158F1C2600B5B2BC /* Smiley.png */; };
 		AA935C0A158F1C2600B5B2BC /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA935C06158F1C2600B5B2BC /* SocializeApiInfo.plist */; };
 		AA935C0C158F1C2600B5B2BC /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA935C06158F1C2600B5B2BC /* SocializeApiInfo.plist */; };
+		AAAC15C6159328A800804916 /* SocializeActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00862C158D35BD00480399 /* SocializeActivity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1641159328FF00804916 /* SocializeError.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008673158D35BD00480399 /* SocializeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1642159328FF00804916 /* SocializeEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00866D158D35BD00480399 /* SocializeEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1643159328FF00804916 /* SocializeFullUser.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00867F158D35BD00480399 /* SocializeFullUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1644159328FF00804916 /* SocializeLike.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008689158D35BE00480399 /* SocializeLike.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1645159328FF00804916 /* SocializeObject.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00869D158D35BE00480399 /* SocializeObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1646159328FF00804916 /* SocializeSubscription.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086BF158D35BE00480399 /* SocializeSubscription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1647159328FF00804916 /* SocializeUser.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086D6158D35BF00480399 /* SocializeUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1648159328FF00804916 /* SocializeView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086E0158D35BF00480399 /* SocializeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1649159328FF00804916 /* SocializeDeviceToken.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00865B158D35BD00480399 /* SocializeDeviceToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC164A159328FF00804916 /* SocializeComment.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00864C158D35BD00480399 /* SocializeComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC164B159328FF00804916 /* SocializeApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00863B158D35BD00480399 /* SocializeApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC165B1593290200804916 /* SocializeError.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008673158D35BD00480399 /* SocializeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC165C1593290200804916 /* SocializeEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00866D158D35BD00480399 /* SocializeEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC165D1593290200804916 /* SocializeFullUser.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00867F158D35BD00480399 /* SocializeFullUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC165E1593290200804916 /* SocializeLike.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008689158D35BE00480399 /* SocializeLike.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC165F1593290200804916 /* SocializeObject.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00869D158D35BE00480399 /* SocializeObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16601593290200804916 /* SocializeSubscription.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086BF158D35BE00480399 /* SocializeSubscription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16611593290200804916 /* SocializeUser.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086D6158D35BF00480399 /* SocializeUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16621593290200804916 /* SocializeView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086E0158D35BF00480399 /* SocializeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16631593290200804916 /* SocializeDeviceToken.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00865B158D35BD00480399 /* SocializeDeviceToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16641593290200804916 /* SocializeComment.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00864C158D35BD00480399 /* SocializeComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16651593290200804916 /* SocializeApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00863B158D35BD00480399 /* SocializeApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16661593291900804916 /* SocializeCommonDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008654158D35BD00480399 /* SocializeCommonDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16671593291A00804916 /* SocializeCommonDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008654158D35BD00480399 /* SocializeCommonDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16681593292B00804916 /* SocializeErrorDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008675158D35BD00480399 /* SocializeErrorDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16691593292B00804916 /* SocializeErrorDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008675158D35BD00480399 /* SocializeErrorDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC166A1593293600804916 /* SocializeVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086DC158D35BF00480399 /* SocializeVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC166B1593293600804916 /* SocializeVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086DC158D35BF00480399 /* SocializeVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC166C1593294300804916 /* SocializeShare.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086B7158D35BE00480399 /* SocializeShare.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC166D1593294300804916 /* SocializeShare.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086B7158D35BE00480399 /* SocializeShare.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC166E1593297200804916 /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086B6158D35BE00480399 /* SocializeServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC166F1593297300804916 /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086B6158D35BE00480399 /* SocializeServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16701593298100804916 /* SocializeBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008647158D35BD00480399 /* SocializeBaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16711593298100804916 /* SocializeBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008647158D35BD00480399 /* SocializeBaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1672159329A500804916 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008687158D35BE00480399 /* SocializeKeyboardListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1673159329A600804916 /* SocializeKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008687158D35BE00480399 /* SocializeKeyboardListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1674159329B600804916 /* _SZUserSettingsViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008712158D35BF00480399 /* _SZUserSettingsViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1675159329B800804916 /* _SZUserSettingsViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008712158D35BF00480399 /* _SZUserSettingsViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1676159329C200804916 /* SocializeBaseViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008649158D35BD00480399 /* SocializeBaseViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1677159329C400804916 /* SocializeBaseViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008649158D35BD00480399 /* SocializeBaseViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1678159329CF00804916 /* SocializeProfileEditValueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086AE158D35BE00480399 /* SocializeProfileEditValueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1679159329D000804916 /* SocializeProfileEditValueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086AE158D35BE00480399 /* SocializeProfileEditValueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC167A159329E100804916 /* SocializeActivityViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008639158D35BD00480399 /* SocializeActivityViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC167B159329E100804916 /* SocializeActivityViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008639158D35BD00480399 /* SocializeActivityViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC167C159329ED00804916 /* SocializeTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086C7158D35BE00480399 /* SocializeTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC167D159329EE00804916 /* SocializeTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086C7158D35BE00480399 /* SocializeTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC167E15932A2D00804916 /* _SZLinkDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008645158D35BD00480399 /* _SZLinkDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC167F15932A2D00804916 /* _SZLinkDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008645158D35BD00480399 /* _SZLinkDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC168015932A3900804916 /* SZComposeCommentViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086FD158D35BF00480399 /* SZComposeCommentViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC168115932A3900804916 /* SZComposeCommentViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086FD158D35BF00480399 /* SZComposeCommentViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16821593392D00804916 /* SocializeActivityDetailsView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00862E158D35BD00480399 /* SocializeActivityDetailsView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16831593392E00804916 /* SocializeActivityDetailsView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00862E158D35BD00480399 /* SocializeActivityDetailsView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16841593395300804916 /* SocializeActivityDetailsViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008632158D35BD00480399 /* SocializeActivityDetailsViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16851593395400804916 /* SocializeActivityDetailsViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008632158D35BD00480399 /* SocializeActivityDetailsViewControllerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16861593397300804916 /* SZActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086E7158D35BF00480399 /* SZActionBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16871593397400804916 /* SZActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086E7158D35BF00480399 /* SZActionBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16881593398300804916 /* SDKHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008623158D35BD00480399 /* SDKHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC16891593398300804916 /* SDKHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008623158D35BD00480399 /* SDKHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC168A159339D800804916 /* SZUserSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA25FEAB159119F00067741A /* SZUserSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC168B159339D800804916 /* SZUserProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA15EFEE15915300008F1237 /* SZUserProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC168C159339D800804916 /* SZSelectNetworkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6C99841591653900E24658 /* SZSelectNetworkViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC168D159339D800804916 /* SZShareDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD98F9E15916C6900845FC9 /* SZShareDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC168E159339D800804916 /* SZTwitterLinkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2FC1A515926CAF00B52772 /* SZTwitterLinkViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC168F159339D800804916 /* SZLinkDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CE7BF1592998200DB5EAF /* SZLinkDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1690159339D800804916 /* SZComposeCommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA552F561592A14C0020E0E4 /* SZComposeCommentViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1691159339D800804916 /* SZCommentsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA552F5C1592EF240020E0E4 /* SZCommentsListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAC1692159339D900804916 /* SZUserSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA25FEAB159119F00067741A /* SZUserSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E479159044E600D3EBDF /* _Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008601158D35BC00480399 /* _Socialize.m */; };
 		AAB5E47A159044E600D3EBDF /* CommentDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008603158D35BC00480399 /* CommentDetailsView.m */; };
 		AAB5E47B159044E600D3EBDF /* CommentMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008605158D35BC00480399 /* CommentMapView.m */; };
@@ -1444,8 +1505,7 @@
 		AACEDA1A158FD4D50024EC43 /* GCDAProfiling.c in Sources */ = {isa = PBXBuildFile; fileRef = AACEDA19158FD4D50024EC43 /* GCDAProfiling.c */; };
 		AAD98F9C1591682000845FC9 /* _SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD98F9B1591682000845FC9 /* _SZShareDialogViewController.m */; };
 		AAD98F9D1591682000845FC9 /* _SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD98F9B1591682000845FC9 /* _SZShareDialogViewController.m */; };
-		AAD98FA015916C6900845FC9 /* SZShareDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD98F9E15916C6900845FC9 /* SZShareDialogViewController.h */; };
-		AAD98FA115916C6900845FC9 /* SZShareDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD98F9E15916C6900845FC9 /* SZShareDialogViewController.h */; };
+		AAD98FA115916C6900845FC9 /* SZShareDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD98F9E15916C6900845FC9 /* SZShareDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAD98FA215916C6900845FC9 /* SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD98F9F15916C6900845FC9 /* SZShareDialogViewController.m */; };
 		AAD98FA315916C6900845FC9 /* SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD98F9F15916C6900845FC9 /* SZShareDialogViewController.m */; };
 		AAE9E1DE1590012300B2B9FC /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
@@ -3055,6 +3115,8 @@
 				AA00863C158D35BD00480399 /* SocializeApplication.m */,
 				AA00862C158D35BD00480399 /* SocializeActivity.h */,
 				AA00862D158D35BD00480399 /* SocializeActivity.m */,
+				AA0086B7158D35BE00480399 /* SocializeShare.h */,
+				AA0086B8158D35BE00480399 /* SocializeShare.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -3112,8 +3174,6 @@
 				AA0086B4158D35BE00480399 /* SocializeService.h */,
 				AA0086B5158D35BE00480399 /* SocializeService.m */,
 				AA0086B6158D35BE00480399 /* SocializeServiceDelegate.h */,
-				AA0086B7158D35BE00480399 /* SocializeShare.h */,
-				AA0086B8158D35BE00480399 /* SocializeShare.m */,
 				AA0086BD158D35BE00480399 /* SocializeShareService.h */,
 				AA0086BE158D35BE00480399 /* SocializeShareService.m */,
 				AA008635158D35BD00480399 /* SocializeActivityService.h */,
@@ -3825,15 +3885,45 @@
 				AA1C1C2B158EF44000A763CA /* SZUserUtils.h in Headers */,
 				AA1C1C2C158EF44000A763CA /* SZViewUtils.h in Headers */,
 				AA2C7A43158EF4F3009A2370 /* Socialize.h in Headers */,
-				AA25FEAD159119F00067741A /* SZUserSettingsViewController.h in Headers */,
-				AA15EFF015915300008F1237 /* SZUserProfileViewController.h in Headers */,
-				AA6C99861591653900E24658 /* SZSelectNetworkViewController.h in Headers */,
-				AAD98FA015916C6900845FC9 /* SZShareDialogViewController.h in Headers */,
-				AA2FC1A715926CAF00B52772 /* SZTwitterLinkViewController.h in Headers */,
-				AA5CE7C11592998200DB5EAF /* SZLinkDialogViewController.h in Headers */,
-				AA552F581592A14C0020E0E4 /* SZComposeCommentViewController.h in Headers */,
-				AA552F5E1592EF260020E0E4 /* SZCommentsListViewController.h in Headers */,
 				AA6D5A851592F34000058669 /* SZFacebookLinkOptions.h in Headers */,
+				AAAC15C6159328A800804916 /* SocializeActivity.h in Headers */,
+				AAAC1641159328FF00804916 /* SocializeError.h in Headers */,
+				AAAC1642159328FF00804916 /* SocializeEntity.h in Headers */,
+				AAAC1643159328FF00804916 /* SocializeFullUser.h in Headers */,
+				AAAC1644159328FF00804916 /* SocializeLike.h in Headers */,
+				AAAC1645159328FF00804916 /* SocializeObject.h in Headers */,
+				AAAC1646159328FF00804916 /* SocializeSubscription.h in Headers */,
+				AAAC1647159328FF00804916 /* SocializeUser.h in Headers */,
+				AAAC1648159328FF00804916 /* SocializeView.h in Headers */,
+				AAAC1649159328FF00804916 /* SocializeDeviceToken.h in Headers */,
+				AAAC164A159328FF00804916 /* SocializeComment.h in Headers */,
+				AAAC164B159328FF00804916 /* SocializeApplication.h in Headers */,
+				AAAC16661593291900804916 /* SocializeCommonDefinitions.h in Headers */,
+				AAAC16681593292B00804916 /* SocializeErrorDefinitions.h in Headers */,
+				AAAC166A1593293600804916 /* SocializeVersion.h in Headers */,
+				AAAC166C1593294300804916 /* SocializeShare.h in Headers */,
+				AAAC166E1593297200804916 /* SocializeServiceDelegate.h in Headers */,
+				AAAC16711593298100804916 /* SocializeBaseViewController.h in Headers */,
+				AAAC1672159329A500804916 /* SocializeKeyboardListener.h in Headers */,
+				AAAC1674159329B600804916 /* _SZUserSettingsViewControllerDelegate.h in Headers */,
+				AAAC1676159329C200804916 /* SocializeBaseViewControllerDelegate.h in Headers */,
+				AAAC1678159329CF00804916 /* SocializeProfileEditValueViewController.h in Headers */,
+				AAAC167A159329E100804916 /* SocializeActivityViewController.h in Headers */,
+				AAAC167C159329ED00804916 /* SocializeTableViewController.h in Headers */,
+				AAAC167E15932A2D00804916 /* _SZLinkDialogViewController.h in Headers */,
+				AAAC168015932A3900804916 /* SZComposeCommentViewControllerDelegate.h in Headers */,
+				AAAC16821593392D00804916 /* SocializeActivityDetailsView.h in Headers */,
+				AAAC16841593395300804916 /* SocializeActivityDetailsViewControllerDelegate.h in Headers */,
+				AAAC16861593397300804916 /* SZActionBar.h in Headers */,
+				AAAC16881593398300804916 /* SDKHelpers.h in Headers */,
+				AAAC168A159339D800804916 /* SZUserSettingsViewController.h in Headers */,
+				AAAC168B159339D800804916 /* SZUserProfileViewController.h in Headers */,
+				AAAC168C159339D800804916 /* SZSelectNetworkViewController.h in Headers */,
+				AAAC168D159339D800804916 /* SZShareDialogViewController.h in Headers */,
+				AAAC168E159339D800804916 /* SZTwitterLinkViewController.h in Headers */,
+				AAAC168F159339D800804916 /* SZLinkDialogViewController.h in Headers */,
+				AAAC1690159339D800804916 /* SZComposeCommentViewController.h in Headers */,
+				AAAC1691159339D800804916 /* SZCommentsListViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3884,6 +3974,36 @@
 				AA552F591592A14C0020E0E4 /* SZComposeCommentViewController.h in Headers */,
 				AA552F5F1592EF260020E0E4 /* SZCommentsListViewController.h in Headers */,
 				AA6D5A861592F34000058669 /* SZFacebookLinkOptions.h in Headers */,
+				AAAC165B1593290200804916 /* SocializeError.h in Headers */,
+				AAAC165C1593290200804916 /* SocializeEntity.h in Headers */,
+				AAAC165D1593290200804916 /* SocializeFullUser.h in Headers */,
+				AAAC165E1593290200804916 /* SocializeLike.h in Headers */,
+				AAAC165F1593290200804916 /* SocializeObject.h in Headers */,
+				AAAC16601593290200804916 /* SocializeSubscription.h in Headers */,
+				AAAC16611593290200804916 /* SocializeUser.h in Headers */,
+				AAAC16621593290200804916 /* SocializeView.h in Headers */,
+				AAAC16631593290200804916 /* SocializeDeviceToken.h in Headers */,
+				AAAC16641593290200804916 /* SocializeComment.h in Headers */,
+				AAAC16651593290200804916 /* SocializeApplication.h in Headers */,
+				AAAC16671593291A00804916 /* SocializeCommonDefinitions.h in Headers */,
+				AAAC16691593292B00804916 /* SocializeErrorDefinitions.h in Headers */,
+				AAAC166B1593293600804916 /* SocializeVersion.h in Headers */,
+				AAAC166D1593294300804916 /* SocializeShare.h in Headers */,
+				AAAC166F1593297300804916 /* SocializeServiceDelegate.h in Headers */,
+				AAAC16701593298100804916 /* SocializeBaseViewController.h in Headers */,
+				AAAC1673159329A600804916 /* SocializeKeyboardListener.h in Headers */,
+				AAAC1675159329B800804916 /* _SZUserSettingsViewControllerDelegate.h in Headers */,
+				AAAC1677159329C400804916 /* SocializeBaseViewControllerDelegate.h in Headers */,
+				AAAC1679159329D000804916 /* SocializeProfileEditValueViewController.h in Headers */,
+				AAAC167B159329E100804916 /* SocializeActivityViewController.h in Headers */,
+				AAAC167D159329EE00804916 /* SocializeTableViewController.h in Headers */,
+				AAAC167F15932A2D00804916 /* _SZLinkDialogViewController.h in Headers */,
+				AAAC168115932A3900804916 /* SZComposeCommentViewControllerDelegate.h in Headers */,
+				AAAC16831593392E00804916 /* SocializeActivityDetailsView.h in Headers */,
+				AAAC16851593395400804916 /* SocializeActivityDetailsViewControllerDelegate.h in Headers */,
+				AAAC16871593397400804916 /* SZActionBar.h in Headers */,
+				AAAC16891593398300804916 /* SDKHelpers.h in Headers */,
+				AAAC1692159339D900804916 /* SZUserSettingsViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

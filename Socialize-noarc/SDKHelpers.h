@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "SocializeObjects.h"
 #import "SZActivityOptions.h"
-#import "SZDisplay.h"
 
 @class SZShareOptions;
 
@@ -20,7 +19,6 @@ typedef void (^ActivityCreatorBlock)(id<SZActivity>, void(^)(id<SZActivity>), vo
 SocializeShareMedium SocializeShareMediumForSZSocialNetworks(SZSocialNetwork networks);
 void CreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *options, SZSocialNetwork networks, ActivityCreatorBlock creator, void (^success)(id<SZActivity> activity), void (^failure)(NSError *error));
 SZActivityOptions *SZActivityOptionsFromUserDefaults(Class optionsClass);
-void LinkWrapper(id<SZDisplay> display, void (^success)(BOOL didPrompt, SZSocialNetwork selectedNetwork), void (^failure)(NSError *error));
 BOOL ShouldShowLinkDialog();
 BOOL SZErrorsAreDisabled();
 void SZEmitUIError(id object, NSError *error);

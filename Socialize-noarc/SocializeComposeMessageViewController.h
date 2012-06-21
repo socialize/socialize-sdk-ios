@@ -13,8 +13,8 @@
 #import "_Socialize.h"
 #import "_SZUserProfileViewController.h"
 #import "SocializeBaseViewControllerDelegate.h"
-#import "SocializeLocationManager.h"
 
+@class SocializeLocationManager;
 @class CommentMapView;
 @class SocializeHorizontalContainerView;
 

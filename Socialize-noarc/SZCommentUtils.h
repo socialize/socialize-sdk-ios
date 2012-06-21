@@ -10,7 +10,6 @@
 #import "SocializeObjects.h"
 #import "SZShareOptions.h"
 #import "SZCommentOptions.h"
-#import "SZDisplay.h"
 
 @interface SZCommentUtils : NSObject
 
