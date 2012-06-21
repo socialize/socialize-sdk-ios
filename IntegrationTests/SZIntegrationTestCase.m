@@ -7,12 +7,8 @@
 //
 
 #import "SZIntegrationTestCase.h"
-#import "SocializePrivateDefinitions.h"
-#import "SZCommentUtils.h"
-#import "SDKHelpers.h"
+#import <Socialize/Socialize.h>
 #import <UIKit/UIKit.h>
-#import "SZLikeUtils.h"
-#import "SZViewUtils.h"
 
 static NSString *UUIDString() {
     CFUUIDRef	uuidObj = CFUUIDCreate(nil);
@@ -565,7 +561,7 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
                               nil];
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:fakeUser];
-    [userDefaults setObject:data forKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
+    [userDefaults setObject:data forKey:@"SOCIALIZE_AUTHENTICATED_USER_KEY"];
     [userDefaults synchronize];
 }
 

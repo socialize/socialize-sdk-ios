@@ -7,7 +7,6 @@
 //
 
 #import "TestCommentUtils.h"
-#import "SZCommentUtils.h"
 #import <Socialize/Socialize.h>
 
 @implementation TestCommentUtils

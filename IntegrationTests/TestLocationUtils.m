@@ -7,7 +7,7 @@
 //
 
 #import "TestLocationUtils.h"
-#import "SZLocationUtils.h"
+#import <Socialize/Socialize.h>
 
 @implementation TestLocationUtils
 

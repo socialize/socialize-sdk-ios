@@ -7,8 +7,7 @@
 //
 
 #import "ActionBarExampleViewController.h"
-#import "SZActionBar.h"
-#import "SocializeActionBar.h"
+#import <Socialize/Socialize.h>
 
 @interface ActionBarExampleViewController ()
 

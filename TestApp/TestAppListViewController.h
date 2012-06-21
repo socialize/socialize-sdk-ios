@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import <Socialize/Socialize.h>
-#import "SocializeEntity.h"
+#import <Socialize/Socialize.h>
 
 extern NSString *kUserSection;
 extern NSString *kShareSection;

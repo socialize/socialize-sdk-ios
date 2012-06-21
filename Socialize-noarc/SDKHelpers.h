@@ -11,11 +11,6 @@
 #import "SZActivityOptions.h"
 #import "SZDisplay.h"
 
-typedef enum {
-    SZViewControllerTransitionStyleModal,
-    SZViewControllerTransitionStyleNavigation,
-} SZViewControllerTransitionStyle;
-
 @class SZShareOptions;
 
 void SZShowLinkToFacebookAlertView(void (^linkBlock)());

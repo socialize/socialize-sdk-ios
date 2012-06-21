@@ -14,8 +14,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "UIAccessibilityElement-KIFAdditions.h"
 #import "UIApplication-KIFAdditions.h"
-#import "SZTwitterUtils.h"
-#import "SZFacebookUtils.h"
+#import <Socialize/Socialize.h>
 
 @implementation KIFTestScenario (SampleSdkAppAdditions)
 

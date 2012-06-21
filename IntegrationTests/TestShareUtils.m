@@ -7,7 +7,7 @@
 //
 
 #import "TestShareUtils.h"
-#import "SZShareUtils.h"
+#import <Socialize/Socialize.h>
 
 @implementation TestShareUtils
 

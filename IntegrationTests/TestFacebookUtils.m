@@ -7,7 +7,6 @@
 //
 
 #import "TestFacebookUtils.h"
-#import "SZFacebookUtils.h"
 #import "SZTestHelper.h"
 
 @implementation TestFacebookUtils

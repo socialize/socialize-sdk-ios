@@ -7,8 +7,7 @@
 //
 
 #import "TestUserUtils.h"
-#import "SZUserUtils.h"
-#import "SocializeObjects.h"
+#import <Socialize/Socialize.h>
 
 @implementation TestUserUtils
 

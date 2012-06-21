@@ -7,7 +7,6 @@
 //
 
 #import "TestNotifications.h"
-#import "SocializePrivateDefinitions.h"
 #import "IntegrationTestsAppDelegate.h"
 
 @implementation TestNotifications

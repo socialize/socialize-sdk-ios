@@ -1,50 +1,23 @@
 //
 //  SZAppDelegate.m
-//  TestApp
+//  ReleaseTest
 //
-//  Created by Nathaniel Griswold on 6/16/12.
-//  Copyright (c) 2012 Socialize. All rights reserved.
+//  Created by Nathaniel Griswold on 6/21/12.
+//  Copyright (c) 2012 Nathaniel Griswold. All rights reserved.
 //
 
-#import "SZTestAppDelegate.h"
-#import "TestAppListViewController.h"
-#import <Socialize/Socialize.h>
+#import "SZAppDelegate.h"
 
-#if RUN_KIF_TESTS
-#import "TestAppKIFTestController.h"
-#endif
+@implementation SZAppDelegate
 
-@implementation SZTestAppDelegate
-@synthesize window = window_;
+@synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    
-    [Socialize storeAnonymousAllowed:YES];
-    [Socialize storeConsumerKey:@"0a3bc7cd-c269-4587-8687-cd02db56d57f"];
-    [Socialize storeConsumerSecret:@"8ee55515-4f1f-42ea-b25e-c4eddebf6c02"];
-    [Socialize storeTwitterConsumerKey:@"ZWxJ0zIK73n5HKwGLHolQ"];
-    [Socialize storeTwitterConsumerSecret:@"3K1LTY39QM9DPAqJzSZAD3L2EBEXXvuCdtTRr8NDd8"];
-    [Socialize storeFacebookAppId:@"115622641859087"];
-
-    TestAppListViewController *sample = [TestAppListViewController sharedSampleListViewController];
-    self.window.rootViewController = sample;
     [self.window makeKeyAndVisible];
-    
-#if RUN_KIF_TESTS
-    [[TestAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
-        // Exit after the tests complete so that CI knows we're done
-        int failureCount = [[TestAppKIFTestController sharedInstance] failureCount];
-        if (getenv("RUN_CLI")) {
-            NSLog(@"Exiting with %i failures", failureCount);
-            exit(failureCount);
-        }
-    }];
-#endif
-
     return YES;
 }
 
@@ -73,10 +46,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [Socialize handleOpenURL:url];
 }
 
 @end
