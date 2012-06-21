@@ -27,10 +27,10 @@ extern NSString *kLinkToTwitterRow;
 extern NSString *kLikeEntityRow;
 extern NSString *kHandleDirectURLSmartAlertRow;
 
-@interface SampleListViewController : UITableViewController
+@interface TestAppListViewController : UITableViewController
 @property (nonatomic, retain) id<SZEntity> entity;
 
-+ (SampleListViewController*)sharedSampleListViewController;
++ (TestAppListViewController*)sharedSampleListViewController;
 - (NSUInteger)indexForSectionIdentifier:(NSString*)identifier;
 - (NSIndexPath*)indexPathForRowIdentifier:(NSString*)identifier;
 

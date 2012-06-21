@@ -256,7 +256,7 @@
 		AA0C6167158FC72700F66A3B /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
 		AA159D34158FAD4B006E1CAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0085A0158D2B1100480399 /* main.m */; };
 		AA159D35158FAD4B006E1CAE /* SZTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0085A4158D2B1100480399 /* SZTestAppDelegate.m */; };
-		AA159D36158FAD4B006E1CAE /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC375158E80780073AD50 /* SampleListViewController.m */; };
+		AA159D36158FAD4B006E1CAE /* TestAppListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC375158E80780073AD50 /* TestAppListViewController.m */; };
 		AA159D37158FAD4B006E1CAE /* ActionBarExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC378158E820B0073AD50 /* ActionBarExampleViewController.m */; };
 		AA159D39158FAD4B006E1CAE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC394158E868D0073AD50 /* MapKit.framework */; };
 		AA159D3A158FAD4B006E1CAE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC392158E86770073AD50 /* QuartzCore.framework */; };
@@ -525,7 +525,7 @@
 		AA3BC36F158E7F170073AD50 /* libSocialize-noarc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085F3158D358B00480399 /* libSocialize-noarc.a */; };
 		AA3BC370158E7F200073AD50 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085C0158D2EFC00480399 /* libSocialize.a */; };
 		AA3BC373158E7F680073AD50 /* SZDummyLibSocialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC372158E7F680073AD50 /* SZDummyLibSocialize.m */; };
-		AA3BC376158E80780073AD50 /* SampleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC375158E80780073AD50 /* SampleListViewController.m */; };
+		AA3BC376158E80780073AD50 /* TestAppListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC375158E80780073AD50 /* TestAppListViewController.m */; };
 		AA3BC37A158E820B0073AD50 /* ActionBarExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC378158E820B0073AD50 /* ActionBarExampleViewController.m */; };
 		AA3BC37B158E820B0073AD50 /* ActionBarExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3BC379158E820B0073AD50 /* ActionBarExampleViewController.xib */; };
 		AA3BC38F158E866B0073AD50 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC38E158E866B0073AD50 /* MessageUI.framework */; };
@@ -2158,8 +2158,8 @@
 		AA2FC1A615926CAF00B52772 /* SZTwitterLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTwitterLinkViewController.m; sourceTree = "<group>"; };
 		AA3BC371158E7F680073AD50 /* SZDummyLibSocialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZDummyLibSocialize.h; sourceTree = "<group>"; };
 		AA3BC372158E7F680073AD50 /* SZDummyLibSocialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDummyLibSocialize.m; sourceTree = "<group>"; };
-		AA3BC374158E80780073AD50 /* SampleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleListViewController.h; sourceTree = "<group>"; };
-		AA3BC375158E80780073AD50 /* SampleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleListViewController.m; sourceTree = "<group>"; };
+		AA3BC374158E80780073AD50 /* TestAppListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAppListViewController.h; sourceTree = "<group>"; };
+		AA3BC375158E80780073AD50 /* TestAppListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAppListViewController.m; sourceTree = "<group>"; };
 		AA3BC377158E820B0073AD50 /* ActionBarExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionBarExampleViewController.h; sourceTree = "<group>"; };
 		AA3BC378158E820B0073AD50 /* ActionBarExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionBarExampleViewController.m; sourceTree = "<group>"; };
 		AA3BC379158E820B0073AD50 /* ActionBarExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionBarExampleViewController.xib; sourceTree = "<group>"; };
@@ -2644,8 +2644,8 @@
 				AA3BC377158E820B0073AD50 /* ActionBarExampleViewController.h */,
 				AA3BC378158E820B0073AD50 /* ActionBarExampleViewController.m */,
 				AA3BC379158E820B0073AD50 /* ActionBarExampleViewController.xib */,
-				AA3BC374158E80780073AD50 /* SampleListViewController.h */,
-				AA3BC375158E80780073AD50 /* SampleListViewController.m */,
+				AA3BC374158E80780073AD50 /* TestAppListViewController.h */,
+				AA3BC375158E80780073AD50 /* TestAppListViewController.m */,
 				AA0085A3158D2B1100480399 /* SZTestAppDelegate.h */,
 				AA0085A4158D2B1100480399 /* SZTestAppDelegate.m */,
 				AA00859B158D2B1100480399 /* Supporting Files */,
@@ -5221,7 +5221,7 @@
 			files = (
 				AA0085A1158D2B1100480399 /* main.m in Sources */,
 				AA0085A5158D2B1100480399 /* SZTestAppDelegate.m in Sources */,
-				AA3BC376158E80780073AD50 /* SampleListViewController.m in Sources */,
+				AA3BC376158E80780073AD50 /* TestAppListViewController.m in Sources */,
 				AA3BC37A158E820B0073AD50 /* ActionBarExampleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5513,7 +5513,7 @@
 			files = (
 				AA159D34158FAD4B006E1CAE /* main.m in Sources */,
 				AA159D35158FAD4B006E1CAE /* SZTestAppDelegate.m in Sources */,
-				AA159D36158FAD4B006E1CAE /* SampleListViewController.m in Sources */,
+				AA159D36158FAD4B006E1CAE /* TestAppListViewController.m in Sources */,
 				AA159D37158FAD4B006E1CAE /* ActionBarExampleViewController.m in Sources */,
 				AA159E26158FAE11006E1CAE /* KIFTestScenario+TestAppAdditions.m in Sources */,
 				AA159E27158FAE11006E1CAE /* KIFTestStep+TestAppAdditions.m in Sources */,

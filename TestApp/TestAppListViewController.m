@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import "SampleListViewController.h"
+#import "TestAppListViewController.h"
 #import <Socialize/Socialize.h>
 #import "ActionBarExampleViewController.h"
 
@@ -41,19 +41,19 @@ NSString *kLikeEntityRow = @"kLikeEntityRow";
 NSString *kHandleDirectURLSmartAlertRow = @"kHandleDirectURLSmartAlertRow";
 NSString *kShowActionBarExampleRow = @"kShowActionBarExampleRow";
 
-static SampleListViewController *sharedSampleListViewController;
+static TestAppListViewController *sharedSampleListViewController;
 
-@interface SampleListViewController ()
+@interface TestAppListViewController ()
 @property (nonatomic, strong) NSArray *sections;
 @end
 
-@implementation SampleListViewController
+@implementation TestAppListViewController
 @synthesize sections = sections_;
 @synthesize entity = entity_;
 
-+ (SampleListViewController*)sharedSampleListViewController {
++ (TestAppListViewController*)sharedSampleListViewController {
     if (sharedSampleListViewController == nil) {
-        sharedSampleListViewController = [[SampleListViewController alloc] init];
+        sharedSampleListViewController = [[TestAppListViewController alloc] init];
     }
     
     return sharedSampleListViewController;

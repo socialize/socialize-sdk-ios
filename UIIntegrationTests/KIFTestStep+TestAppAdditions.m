@@ -14,7 +14,7 @@
 #import "UITouch-KIFAdditions.h"
 #import "UIView-KIFAdditions.h"
 #import "UIWindow-KIFAdditions.h"
-#import "SampleListViewController.h"
+#import "TestAppListViewController.h"
 #import "TestAppKIFTestController.h"
 #import "UIApplication-KIFAdditions.h"
 #import <Socialize/Socialize.h>
@@ -38,7 +38,7 @@
     [steps addObject:[KIFTestStep stepWithDescription:[NSString stringWithFormat:@"Reset nav to level %d.", index] executionBlock:^(KIFTestStep *step, NSError **error) {
         BOOL successfulReset = YES;
         
-        [[[SampleListViewController sharedSampleListViewController] navigationController] popToRootViewControllerAnimated:NO];
+        [[[TestAppListViewController sharedSampleListViewController] navigationController] popToRootViewControllerAnimated:NO];
         // Do the actual reset for your app. Set successfulReset = NO if it fails.
         KIFTestCondition(successfulReset, error, @"Failed to reset the application.");
         return KIFTestStepResultSuccess;
@@ -69,7 +69,7 @@
     return steps;
 }
 
-#import "SampleListViewController.h"
+#import "TestAppListViewController.h"
 
 + (KIFTestStep*)stepToDumpAccessibilityElementsMatchingBlock:(BOOL(^)(UIAccessibilityElement*))block {
     return [KIFTestStep stepWithDescription:@"Dump" executionBlock:^(KIFTestStep *step, NSError **error) {

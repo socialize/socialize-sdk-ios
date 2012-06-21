@@ -7,7 +7,7 @@
 //
 
 #import "SZTestAppDelegate.h"
-#import "SampleListViewController.h"
+#import "TestAppListViewController.h"
 #import "Socialize.h"
 
 #if RUN_KIF_TESTS
@@ -30,7 +30,7 @@
     [Socialize storeTwitterConsumerSecret:@"3K1LTY39QM9DPAqJzSZAD3L2EBEXXvuCdtTRr8NDd8"];
     [Socialize storeFacebookAppId:@"115622641859087"];
 
-    SampleListViewController *sample = [SampleListViewController sharedSampleListViewController];
+    TestAppListViewController *sample = [TestAppListViewController sharedSampleListViewController];
     self.window.rootViewController = sample;
     [self.window makeKeyAndVisible];
     

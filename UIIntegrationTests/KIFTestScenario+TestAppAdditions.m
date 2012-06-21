@@ -10,7 +10,7 @@
 #import "KIFTestStep+TestAppAdditions.h"
 #import "TestAppKIFTestController.h"
 #import "SZTestHelper.h"
-#import "SampleListViewController.h"
+#import "TestAppListViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "UIAccessibilityElement-KIFAdditions.h"
 #import "UIApplication-KIFAdditions.h"
@@ -26,7 +26,7 @@
         [[SZTestHelper sharedTestHelper] removeAuthenticationInfo];
         [SZTwitterUtils unlink];
         [SZFacebookUtils unlink];
-        [[SampleListViewController sharedSampleListViewController] setEntity:nil];
+        [[TestAppListViewController sharedSampleListViewController] setEntity:nil];
     }]];
     return steps;
 }
@@ -144,7 +144,7 @@
     }]];
     
 //    NSString *firstName = @"Test First Name";
-    NSIndexPath *indexPath = [[SampleListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowUserProfileRow];
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowUserProfileRow];
     [scenario addStep:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:commentText]];
     [scenario addStepsFromArray:[KIFTestStep stepsToOpenEditProfile]];
@@ -185,7 +185,7 @@
     
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
 
-    NSIndexPath *indexPath = [[SampleListViewController sharedSampleListViewController] indexPathForRowIdentifier:kHandleDirectURLSmartAlertRow];
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kHandleDirectURLSmartAlertRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
 
     [steps addObject:[KIFTestStep stepToWaitForTappableViewWithAccessibilityLabel:@"Done"]];
@@ -208,7 +208,7 @@
         [[SZTestHelper sharedTestHelper] startMockingSucceedingFacebookAuth];
     }]];
 
-    NSIndexPath *indexPath = [[SampleListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLinkToFacebookRow];
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLinkToFacebookRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Yes"]];
 
@@ -229,7 +229,7 @@
     
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
     
-    NSIndexPath *indexPath = [[SampleListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLinkToTwitterRow];
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLinkToTwitterRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     [steps addObjectsFromArray:[KIFTestStep stepsToAuthWithTestTwitterInfo]];
     
@@ -252,7 +252,7 @@
 
     // Set a specific entity for this test
     [steps addObject:[KIFTestStep stepToExecuteBlock:^{
-        [[SampleListViewController sharedSampleListViewController] setEntity:entity];
+        [[TestAppListViewController sharedSampleListViewController] setEntity:entity];
     }]];
 
     [steps addObject:[KIFTestStep stepToExecuteBlock:^{
@@ -264,7 +264,7 @@
         [[SZTestHelper sharedTestHelper] createComments:comments];
     }]];
 
-    NSIndexPath *indexPath = [[SampleListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowCommentsListRow];
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowCommentsListRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
 
     // Wait to see first comment
@@ -296,7 +296,7 @@
     NSMutableArray *steps = [NSMutableArray array];
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
 
-    NSIndexPath *indexPath = [[SampleListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowCommentComposerRow];
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowCommentComposerRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
 
     [steps addObject:[KIFTestStep stepToEnterText:@"Anonymous Comment" intoViewWithAccessibilityLabel:@"Comment Entry"]];
@@ -313,7 +313,7 @@
     NSMutableArray *steps = [NSMutableArray array];
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
     
-    NSIndexPath *indexPath = [[SampleListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowCommentComposerRow];
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowCommentComposerRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     
     [steps addObject:[KIFTestStep stepToEnterText:@"Twitter Comment" intoViewWithAccessibilityLabel:@"Comment Entry"]];
@@ -336,7 +336,7 @@
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
     
     // Select composer in test list
-    NSIndexPath *indexPath = [[SampleListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowCommentComposerRow];
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowCommentComposerRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     
     // Type in a test message
@@ -377,7 +377,7 @@
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
 
     // Select composer in test list
-    NSIndexPath *indexPath = [[SampleListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLikeEntityRow];
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLikeEntityRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
 
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Skip"]];
@@ -394,7 +394,7 @@
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
     
     // Select composer in test list
-    NSIndexPath *indexPath = [[SampleListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLikeEntityRow];
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLikeEntityRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"twitter"]];
