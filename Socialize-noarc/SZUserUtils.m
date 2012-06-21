@@ -15,35 +15,30 @@
 #import "SZDisplay.h"
 #import "SZUserSettingsViewController.h"
 #import "SZUserProfileViewController.h"
+#import "SZLinkDialogViewController.h"
 
 @implementation SZUserUtils
 
-    
 + (BOOL)userIsLinked {
     id<SZFullUser> user = [self currentUser];
     return [[user thirdPartyAuth] count] > 0;
 }
 
-+ (void)showLinkDialogWithDisplay:(id<SZDisplay>)display success:(void(^)(SZSocialNetwork selectedNetwork))success failure:(void(^)(NSError *error))failure {
-//    if (AvailableSocialNetworks() == SZSocialNetworkNone) {
-//        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorLinkNotPossible]);
-//    }
-//    
-//    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-//    _SZLinkDialogViewController *auth = [[_SZLinkDialogViewController alloc] init];
-//    auth.display = display;
-//    
-//    auth.completionBlock = ^(SZSocialNetwork selectedNetwork) {
-//        [wrapper endSequence];
-//        BLOCK_CALL_1(success, selectedNetwork);
-//    };
-//    
-//    auth.cancellationBlock = ^{
-//        [wrapper endSequence];
-//        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorLinkCancelledByUser]);
-//    };
-//
-//    [wrapper beginSequenceWithViewController:auth];
++ (void)showLinkDialogWithViewController:(UIViewController*)viewController completion:(void(^)(SZSocialNetwork selectedNetwork))completion cancellation:(void(^)())cancellation {
+    NSAssert(AvailableSocialNetworks() != SZSocialNetworkNone, @"Link not possible");
+    
+    SZLinkDialogViewController *linkDialog = [[SZLinkDialogViewController alloc] init];
+    linkDialog.completionBlock = ^(SZSocialNetwork selectedNetwork) {
+        [viewController dismissModalViewControllerAnimated:YES];
+        BLOCK_CALL_1(completion, selectedNetwork);
+    };
+    
+    linkDialog.cancellationBlock = ^{
+        [viewController dismissModalViewControllerAnimated:YES];
+        BLOCK_CALL(cancellation);
+    };
+    
+    [viewController presentModalViewController:linkDialog animated:YES];
 }
 
 + (void)showUserProfileInViewController:(UIViewController*)viewController user:(id<SocializeFullUser>)user completion:(void(^)(id<SZFullUser> user))completion {

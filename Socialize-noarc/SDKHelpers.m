@@ -54,9 +54,11 @@ BOOL ShouldShowLinkDialog() {
 
 void LinkWrapper(id<SZDisplay> display, void (^success)(BOOL didPrompt, SZSocialNetwork selectedNetwork), void (^failure)(NSError *error)) {
     if (ShouldShowLinkDialog()) {
-        [SZUserUtils showLinkDialogWithDisplay:display success:^(SZSocialNetwork network) {
+        [SZUserUtils showLinkDialogWithViewController:(id)display completion:^(SZSocialNetwork network) {
             success(YES, network);
-        } failure:failure];
+        } cancellation:^(NSError *error) {
+            BLOCK_CALL_1(failure, nil);
+        }];
     } else {
         success(NO, SZSocialNetworkNone);
     }

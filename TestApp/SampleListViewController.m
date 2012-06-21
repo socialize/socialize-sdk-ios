@@ -96,7 +96,7 @@ static SampleListViewController *sharedSampleListViewController;
     NSMutableArray *userRows = [NSMutableArray array];
     
     [userRows addObject:[self rowWithText:@"Show Link Dialog" executionBlock:^{
-        [SZUserUtils showLinkDialogWithDisplay:self success:nil failure:nil];
+        [SZUserUtils showLinkDialogWithViewController:self completion:nil cancellation:nil];
     }]];
 
     [userRows addObject:[self rowWithIdentifier:kShowUserProfileRow text:@"Show User Profile" executionBlock:^{
