@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "_Socialize.h"
 #import "SocializeActivityDetailsViewController.h"
-#import "SZCommentsListViewController.h"
+#import "_SZCommentsListViewController.h"
 #import "SocializeNewCommentsNotificationDisplayController.h"
 #import "SocializeDirectURLNotificationDisplayController.h"
 

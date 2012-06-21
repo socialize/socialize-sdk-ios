@@ -1,5 +1,5 @@
 //
-//  SZCommentsListViewController.h
+//  _SZCommentsListViewController.h
 //  appbuildr
 //
 //  Created by Fawad Haider  on 12/2/10.
@@ -29,9 +29,9 @@
 */
 
 @class CommentsTableViewCell;
-@protocol SZCommentsListViewControllerDelegate;
+@protocol _SZCommentsListViewControllerDelegate;
 
-@interface SZCommentsListViewController : SocializeTableViewController<UITableViewDataSource, SocializeServiceDelegate, UITableViewDelegate, SZComposeCommentViewControllerDelegate> 
+@interface _SZCommentsListViewController : SocializeTableViewController<UITableViewDataSource, SocializeServiceDelegate, UITableViewDelegate, SZComposeCommentViewControllerDelegate> 
 {
 
 	IBOutlet UIView*        backgroundView;
@@ -63,15 +63,15 @@
 @property (retain, nonatomic) ImagesCache               *cache;
 @property (assign, nonatomic) BOOL                      isLoading;
 
-@property (nonatomic, assign) id<SZCommentsListViewControllerDelegate> delegate;
+@property (nonatomic, assign) id<_SZCommentsListViewControllerDelegate> delegate;
 @property (nonatomic, retain) id<SocializeEntity> entity;
 
 @property (retain, nonatomic) SocializeBubbleView *bubbleView;
 @property (retain, nonatomic) SocializeNotificationToggleBubbleContentView *bubbleContentView;
 
-+ (SZCommentsListViewController*)commentsListViewControllerWithEntityKey:(NSString*)entityKey;
++ (_SZCommentsListViewController*)commentsListViewControllerWithEntityKey:(NSString*)entityKey;
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName __attribute__((deprecated("Please use commentsListViewControllerWithEntityKey: and the SZNavigationController, or the utility functions in SZCommentUtils")));
-+ (SZCommentsListViewController*)commentsListViewControllerWithEntity:(id<SZEntity>)entity;
++ (_SZCommentsListViewController*)commentsListViewControllerWithEntity:(id<SZEntity>)entity;
 
 -(IBAction)subscribedButtonPressed:(id)sender;
 
@@ -87,8 +87,8 @@
 @end
 
 
-@protocol SZCommentsListViewControllerDelegate <NSObject>
+@protocol _SZCommentsListViewControllerDelegate <NSObject>
 
-- (void)commentsTableViewControllerDidFinish:(SZCommentsListViewController*)commentsTableViewController;
+- (void)commentsTableViewControllerDidFinish:(_SZCommentsListViewController*)commentsTableViewController;
 
 @end

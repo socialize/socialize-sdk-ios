@@ -11,12 +11,12 @@
 #import <UIKit/UIKit.h>
 #import "SocializeTableViewTests.h"
 
-@class SZCommentsListViewController;
+@class _SZCommentsListViewController;
 @class SocializeComposeMessageViewController;
 
 @interface CommentsTableViewTests : SocializeTableViewTests
 
-@property (nonatomic, retain) SZCommentsListViewController *commentsTableViewController;
+@property (nonatomic, retain) _SZCommentsListViewController *commentsTableViewController;
 @property (nonatomic, retain) id mockSubscribedButton;
 @property (nonatomic, retain) id mockBubbleView;
 @property (nonatomic, retain) id mockBubbleContentView;

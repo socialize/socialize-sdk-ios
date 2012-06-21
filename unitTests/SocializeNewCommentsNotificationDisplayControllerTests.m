@@ -7,7 +7,7 @@
 //
 
 #import "SocializeNewCommentsNotificationDisplayControllerTests.h"
-#import "SZCommentsListViewController.h"
+#import "_SZCommentsListViewController.h"
 #import "SocializeActivityDetailsViewController.h"
 #import "SocializeNewCommentsNotificationDisplayController.h"
 
@@ -40,7 +40,7 @@
     [[self.mockActivityDetailsViewController stub] setDelegate:nil];
     
     // Stub Comments list
-    self.mockCommentsTableViewController = [OCMockObject mockForClass:[SZCommentsListViewController class]];
+    self.mockCommentsTableViewController = [OCMockObject mockForClass:[_SZCommentsListViewController class]];
     self.commentsNotificationDisplayController.commentsTableViewController = self.mockCommentsTableViewController;
     [[self.mockCommentsTableViewController stub] setDelegate:nil];
     
@@ -69,7 +69,7 @@
 
 /*
 - (void)testDefaultNavigationController {
-    id niceCommentsTableViewController = [OCMockObject niceMockForClass:[SZCommentsListViewController class]];
+    id niceCommentsTableViewController = [OCMockObject niceMockForClass:[_SZCommentsListViewController class]];
     self.commentsNotificationDisplayController.commentsTableViewController = niceCommentsTableViewController;
 
     id niceActivityDetailsViewController = [OCMockObject niceMockForClass:[SocializeActivityDetailsViewController class]];

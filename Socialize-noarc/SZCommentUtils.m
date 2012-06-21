@@ -9,7 +9,7 @@
 #import "SZCommentUtils.h"
 #import "_Socialize.h"
 #import "SDKHelpers.h"
-#import "SZCommentsListViewController.h"
+#import "_SZCommentsListViewController.h"
 #import "SZNavigationController.h"
 #import "_SZComposeCommentViewController.h"
 #import "SZCommentOptions.h"
@@ -30,7 +30,7 @@
 + (void)showCommentsListWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity completion:(void(^)())completion {
     SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
 
-    SZCommentsListViewController *commentsList = [SZCommentsListViewController commentsListViewControllerWithEntity:entity];
+    _SZCommentsListViewController *commentsList = [_SZCommentsListViewController commentsListViewControllerWithEntity:entity];
     commentsList.completionBlock = ^{
         [wrapper endSequence];
         BLOCK_CALL(completion);

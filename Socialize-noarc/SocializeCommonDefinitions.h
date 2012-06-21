@@ -93,7 +93,7 @@ extern NSString *const kSocializeUIErrorAlertsDisabled;
 
 @class _SZUserSettingsViewController;
 @class _SZUserProfileViewController;
-@class SZCommentsListViewController;
+@class _SZCommentsListViewController;
 @class SocializeActionBar;
 @class SZLikeButton;
 @protocol _SZUserSettingsViewControllerDelegate;
@@ -103,7 +103,7 @@ typedef _SZUserSettingsViewController SocializeProfileEditViewController __attri
 #define SocializeProfileEditViewControllerDelegate _SZUserSettingsViewControllerDelegate
 
 typedef _SZUserProfileViewController SocializeProfileViewController __attribute__((deprecated("Please use SZUserProfileViewController or the utility functions in SZUserUtils")));
-typedef SZCommentsListViewController SocializeCommentsTableViewController __attribute__((deprecated("Please use SZCommentsListViewController or the utility functions in SZCommentUtils")));
+typedef _SZCommentsListViewController SocializeCommentsTableViewController __attribute__((deprecated("Please use _SZCommentsListViewController or the utility functions in SZCommentUtils")));
 //typedef SocializeActionBar SocializeActionBar __attribute__((deprecated("Please use SocializeActionBar or the utility functions in SocializeActionBarUtils")));
 //#define SocializeActionBarDelegate SocializeActionBarDelegate
 typedef SZLikeButton SocializeLikeButton __attribute__((deprecated("Please use SZLikeButton")));

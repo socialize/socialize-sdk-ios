@@ -1,12 +1,12 @@
 //
-//  SZCommentsListViewController.m
+//  _SZCommentsListViewController.m
 //  appbuildr
 //
 //  Created by Fawad Haider on 12/2/10.
 //  Copyright 2010. All rights reserved.
 //
 
-#import "SZCommentsListViewController.h"
+#import "_SZCommentsListViewController.h"
 #import "CommentsTableViewCell.h"
 #import "NSDateAdditions.h"
 #import "SocializeCommentDetailsViewController.h"
@@ -31,14 +31,14 @@
 #import "SZNavigationController.h"
 #import "SocializePrivateDefinitions.h"
 
-@interface SZCommentsListViewController()
+@interface _SZCommentsListViewController()
 -(NSString*)getDateString:(NSDate*)date;
 -(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
 -(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment;
 - (void)getSubscriptionStatus;
 @end
 
-@implementation SZCommentsListViewController
+@implementation _SZCommentsListViewController
 
 @synthesize cache = _cache;
 @synthesize isLoading = _isLoading;
@@ -59,18 +59,18 @@
 @synthesize bubbleContentView = bubbleContentView_;
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName {
-    SZCommentsListViewController* commentsController = [[[SZCommentsListViewController alloc] initWithNibName:@"SZCommentsListViewController" bundle:nil entryUrlString:entityName] autorelease];
+    _SZCommentsListViewController* commentsController = [[[_SZCommentsListViewController alloc] initWithNibName:@"_SZCommentsListViewController" bundle:nil entryUrlString:entityName] autorelease];
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:commentsController] autorelease];
     
     return nav;
 }
 
-+ (SZCommentsListViewController*)commentsListViewControllerWithEntityKey:(NSString*)entityKey {
-    SZCommentsListViewController* commentsController = [[[SZCommentsListViewController alloc] initWithEntityKey:entityKey] autorelease];
++ (_SZCommentsListViewController*)commentsListViewControllerWithEntityKey:(NSString*)entityKey {
+    _SZCommentsListViewController* commentsController = [[[_SZCommentsListViewController alloc] initWithEntityKey:entityKey] autorelease];
     return commentsController;
 }
 
-+ (SZCommentsListViewController*)commentsListViewControllerWithEntity:(id<SZEntity>)entity {
++ (_SZCommentsListViewController*)commentsListViewControllerWithEntity:(id<SZEntity>)entity {
     return [[[self alloc] initWithEntity:entity] autorelease];
 }
 

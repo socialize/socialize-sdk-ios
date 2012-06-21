@@ -29,7 +29,7 @@
 #import "SocializeActionView.h"
 #import "SocializeAuthenticateService.h"
 #import "SocializeLikeService.h"
-#import "SZCommentsListViewController.h"
+#import "_SZCommentsListViewController.h"
 #import "UIButton+Socialize.h"
 #import "UINavigationBarBackground.h"
 #import "SocializeView.h"
@@ -160,7 +160,7 @@
 
 - (UIViewController*)commentsNavController {
     if (commentsNavController_ == nil) {
-        SZCommentsListViewController *comments = [SZCommentsListViewController commentsListViewControllerWithEntityKey:self.entity.key];
+        _SZCommentsListViewController *comments = [_SZCommentsListViewController commentsListViewControllerWithEntityKey:self.entity.key];
         comments.delegate = self;
         commentsNavController_ = [[SZNavigationController alloc] initWithRootViewController:comments];
     }
@@ -168,7 +168,7 @@
     return commentsNavController_;
 }
 
-- (void)commentsTableViewControllerDidFinish:(SZCommentsListViewController *)commentsTableViewController {
+- (void)commentsTableViewControllerDidFinish:(_SZCommentsListViewController *)commentsTableViewController {
     [self.display socializeWillEndDisplaySequence];
 }
 
