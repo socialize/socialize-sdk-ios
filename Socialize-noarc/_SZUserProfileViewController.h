@@ -36,7 +36,7 @@
 @property (nonatomic, retain) UIAlertView *alertView;
 @property (nonatomic, retain) SocializeActivityViewController *activityViewController;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityLoadingActivityIndicator;
-@property (nonatomic, copy) void (^userProfileCompletionBlock)(id<SZFullUser> user);
+@property (nonatomic, copy) void (^completionBlock)(id<SZFullUser> user);
 
 - (void)setProfileImageFromURL:(NSString*)imageURL;
 - (void)setProfileImageFromImage:(UIImage*)image;

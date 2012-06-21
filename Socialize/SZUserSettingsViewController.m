@@ -52,8 +52,12 @@
 }
 
 - (void)setCompletionBlock:(void (^)(BOOL, id<SocializeFullUser>))completionBlock {
-    _completionBlock = completionBlock;
     self.settings.userSettingsCompletionBlock = completionBlock;
+    _completionBlock = [completionBlock copy];
+}
+
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    return self.settings;
 }
 
 @end

@@ -15,8 +15,8 @@
 @end
 
 @implementation SZUserProfileViewController
+@dynamic completionBlock;
 @synthesize profile = _profile;
-@synthesize completionBlock = _completionBlock;
 @synthesize user = _user;
 
 - (id)init {
@@ -45,9 +45,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)setCompletionBlock:(void (^)(id<SocializeFullUser>))completionBlock {
-    _completionBlock = completionBlock;
-    self.profile.userProfileCompletionBlock = completionBlock;
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    return self.profile;
 }
 
 @end

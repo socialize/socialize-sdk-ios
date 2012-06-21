@@ -34,7 +34,7 @@
 @synthesize alertView = alertView_;
 @synthesize activityViewController = activityViewController_;
 @synthesize activityLoadingActivityIndicator = activityLoadingActivityIndicator_;
-@synthesize userProfileCompletionBlock = userProfileCompletionBlock_;
+@synthesize completionBlock = completionBlock_;
 
 - (void)dealloc {
     self.user = nil;
@@ -124,7 +124,7 @@
     //we will show a done button here if there is not left barbutton item already showing
     if (!self.navigationItem.leftBarButtonItem) {
         self.navigationItem.leftBarButtonItem = [UIBarButtonItem blueSocializeBarButtonWithTitle:@"Done" handler:^(id sender) {
-            BLOCK_CALL_1(self.userProfileCompletionBlock, self.fullUser);
+            BLOCK_CALL_1(self.completionBlock, self.fullUser);
         }];
     }
 
