@@ -34,16 +34,22 @@
 
 - (void)continueButtonPressed:(id)sender {
     SZSocialNetwork networks = [self selectedNetworks];
-    SZShareOptions *shareOptions = [SZShareUtils userShareOptions];
-    [self startLoading];
-    [SZShareUtils shareViaSocialNetworksWithEntity:self.entity networks:networks options:shareOptions success:^(id<SZShare> share) {
-        [self.createdShares addObject:share];
-        BLOCK_CALL_1(self.completionBlock, self.createdShares);
-    } failure:^(NSError *error) {
+    
+    if (networks == SZSocialNetworkNone) {
+        [UIAlertView showAlertWithTitle:@"Select a Network" message:@"One or more networks must be selected to perform a share" buttonTitle:@"Ok" handler:nil];
+    } else {
+        
+        SZShareOptions *shareOptions = [SZShareUtils userShareOptions];
+        [self startLoading];
+        [SZShareUtils shareViaSocialNetworksWithEntity:self.entity networks:networks options:shareOptions success:^(id<SZShare> share) {
+            [self.createdShares addObject:share];
+            BLOCK_CALL_1(self.completionBlock, self.createdShares);
+        } failure:^(NSError *error) {
+            [self stopLoading];
+            [self failWithError:error];
+        }];
         [self stopLoading];
-        [self failWithError:error];
-    }];
-    [self stopLoading];
+    }
 }
 
 @end
