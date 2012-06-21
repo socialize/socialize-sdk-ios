@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeObjects.h"
-#import "SZSocialNetworkUtils.h"
 #import "SZDisplay.h"
+#import "SZFacebookLinkOptions.h"
 
-@interface SZFacebookUtils : NSObject <SZSocialNetworkUtils>
+@interface SZFacebookUtils : NSObject
 
 + (void)setAppId:(NSString*)appId expirationDate:(NSDate*)expirationDate;
 + (NSString*)accessToken;
@@ -21,14 +21,11 @@
 + (BOOL)isLinked;
 
 + (void)linkWithAccessToken:(NSString*)accessToken expirationDate:(NSDate*)expirationDate success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
-+ (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
++ (void)linkWithViewController:(UIViewController*)viewController options:(SZFacebookLinkOptions*)options success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
 + (void)unlink;
 
 + (void)postWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure;
 + (void)getWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure;
 + (void)deleteWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure;
-
-
-+ (void)_linkWithDisplay:(id<SZDisplay>)display success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
 
 @end

@@ -679,7 +679,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)authenticateViaFacebook {
-    [SZFacebookUtils linkWithViewController:self success:^(id<SZFullUser> user) {
+    [SZFacebookUtils linkWithViewController:self options:nil success:^(id<SZFullUser> user) {
         [self updateInterfaceToReflectSessionStatuses];
     } failure:^(NSError *error) {
         [self updateInterfaceToReflectSessionStatuses];        

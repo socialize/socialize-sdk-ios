@@ -56,46 +56,27 @@
                                                        } failure:failure];
 }
 
-+ (void)_linkWithDisplay:(id<SZDisplay>)display success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
-    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
++ (void)linkWithViewController:(UIViewController*)viewController options:(SZFacebookLinkOptions*)options success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
+    if (options == nil) {
+        options = [SZFacebookLinkOptions defaultOptions];
+    }
     
     NSString *facebookAppId = [SocializeThirdPartyFacebook facebookAppId];
     NSString *urlSchemeSuffix = [SocializeThirdPartyFacebook facebookUrlSchemeSuffix];
-    NSArray *permissions = [NSArray arrayWithObjects:@"publish_stream", @"offline_access", nil];
+    NSArray *permissions = options.permissions != nil ? options.permissions : [NSArray arrayWithObjects:@"publish_stream", @"offline_access", nil];
     
     [[SocializeFacebookAuthHandler sharedFacebookAuthHandler]
      authenticateWithAppId:facebookAppId
      urlSchemeSuffix:urlSchemeSuffix
      permissions:permissions
      success:^(NSString *accessToken, NSDate *expirationDate) {
-         [wrapper startLoadingInTopControllerWithMessage:@"Linking With Facebook"];
+         BLOCK_CALL(options.willSendLinkRequestToSocializeBlock);
          [self linkWithAccessToken:accessToken expirationDate:expirationDate success:^(id<SZFullUser> user) {
-             [wrapper stopLoadingInTopController];
-             [wrapper endSequence];
              BLOCK_CALL_1(success, user);
          } failure:^(NSError *error) {
-             [wrapper stopLoadingInTopController];
-             [wrapper endSequence];
-     }];
+             BLOCK_CALL_1(failure, error);
+         }];
      } failure:failure];
-}
-
-+ (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
-//    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-//
-//    NSString *title = @"Facebook Login Required";
-//    NSString *message = @"Do you want to log in with Facebook?";
-//    UIAlertView *alertView = [UIAlertView alertWithTitle:title message:message];
-//    
-//    [alertView setCancelButtonWithTitle:@"No" handler:^{
-//        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorFacebookCancelledByUser]);
-//    }];
-//    
-//    [alertView addButtonWithTitle:@"Yes" handler:^{
-//        [self _linkWithDisplay:display success:success failure:failure];
-//    }];
-//    
-//    [wrapper showAlertView:alertView];
 }
 
 + (void)sendRequestWithHTTPMethod:(NSString*)method graphPath:(NSString*)graphPath postData:(NSDictionary*)postData success:(void(^)(id))success failure:(void(^)(NSError *error))failure {

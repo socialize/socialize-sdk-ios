@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "SocializeObjects.h"
-#import "SZSocialNetworkUtils.h"
 
-@interface SZTwitterUtils : NSObject <SZSocialNetworkUtils>
+@interface SZTwitterUtils : NSObject
 
 + (BOOL)isAvailable;
 + (BOOL)isLinked;

@@ -152,7 +152,7 @@ static SampleListViewController *sharedSampleListViewController;
     
     NSMutableArray *facebookRows = [NSMutableArray array];
     [facebookRows addObject:[self rowWithIdentifier:kLinkToFacebookRow text:@"Link to Facebook" executionBlock:^{
-        [SZFacebookUtils linkWithViewController:self success:nil failure:nil];
+        [SZFacebookUtils linkWithViewController:self options:nil success:nil failure:nil];
     }]];
 
     NSMutableArray *twitterRows = [NSMutableArray array];
