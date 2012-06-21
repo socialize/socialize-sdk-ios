@@ -464,7 +464,7 @@
 		AA159E06158FAD4B006E1CAE /* SocializeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935989158F187200B5B2BC /* SocializeTableViewController.xib */; };
 		AA159E07158FAD4B006E1CAE /* _SZTwitterLinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598A158F187200B5B2BC /* _SZTwitterLinkViewController.xib */; };
 		AA159E08158FAD4B006E1CAE /* SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598B158F187200B5B2BC /* SZCommentsListViewController.xib */; };
-		AA159E09158FAD4B006E1CAE /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598C158F187200B5B2BC /* SZComposeCommentMessageViewController.xib */; };
+		AA159E09158FAD4B006E1CAE /* _SZComposeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598C158F187200B5B2BC /* _SZComposeCommentViewController.xib */; };
 		AA159E0A158FAD4B006E1CAE /* _SZUserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598D158F187200B5B2BC /* _SZUserProfileViewController.xib */; };
 		AA159E0B158FAD4B006E1CAE /* _SZUserSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */; };
 		AA159E0C158FAD4B006E1CAE /* SZBaseShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598F158F187200B5B2BC /* SZBaseShareViewController.xib */; };
@@ -1035,8 +1035,8 @@
 		AA935BDB158F187200B5B2BC /* _SZTwitterLinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598A158F187200B5B2BC /* _SZTwitterLinkViewController.xib */; };
 		AA935BDC158F187200B5B2BC /* SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598B158F187200B5B2BC /* SZCommentsListViewController.xib */; };
 		AA935BDE158F187200B5B2BC /* SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598B158F187200B5B2BC /* SZCommentsListViewController.xib */; };
-		AA935BDF158F187200B5B2BC /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598C158F187200B5B2BC /* SZComposeCommentMessageViewController.xib */; };
-		AA935BE1158F187200B5B2BC /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598C158F187200B5B2BC /* SZComposeCommentMessageViewController.xib */; };
+		AA935BDF158F187200B5B2BC /* _SZComposeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598C158F187200B5B2BC /* _SZComposeCommentViewController.xib */; };
+		AA935BE1158F187200B5B2BC /* _SZComposeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598C158F187200B5B2BC /* _SZComposeCommentViewController.xib */; };
 		AA935BE2158F187200B5B2BC /* _SZUserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598D158F187200B5B2BC /* _SZUserProfileViewController.xib */; };
 		AA935BE4158F187200B5B2BC /* _SZUserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598D158F187200B5B2BC /* _SZUserProfileViewController.xib */; };
 		AA935BE5158F187200B5B2BC /* _SZUserSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */; };
@@ -1429,7 +1429,7 @@
 		AACEDA0D158FCE770024EC43 /* SocializeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935989158F187200B5B2BC /* SocializeTableViewController.xib */; };
 		AACEDA0E158FCE770024EC43 /* _SZTwitterLinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598A158F187200B5B2BC /* _SZTwitterLinkViewController.xib */; };
 		AACEDA0F158FCE770024EC43 /* SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598B158F187200B5B2BC /* SZCommentsListViewController.xib */; };
-		AACEDA10158FCE770024EC43 /* SZComposeCommentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598C158F187200B5B2BC /* SZComposeCommentMessageViewController.xib */; };
+		AACEDA10158FCE770024EC43 /* _SZComposeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598C158F187200B5B2BC /* _SZComposeCommentViewController.xib */; };
 		AACEDA11158FCE770024EC43 /* _SZUserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598D158F187200B5B2BC /* _SZUserProfileViewController.xib */; };
 		AACEDA12158FCE770024EC43 /* _SZUserSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */; };
 		AACEDA13158FCE770024EC43 /* SZBaseShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598F158F187200B5B2BC /* SZBaseShareViewController.xib */; };
@@ -2452,7 +2452,7 @@
 		AA935989158F187200B5B2BC /* SocializeTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeTableViewController.xib; path = Socialize/Resources/SocializeTableViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA93598A158F187200B5B2BC /* _SZTwitterLinkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = _SZTwitterLinkViewController.xib; path = Socialize/Resources/_SZTwitterLinkViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA93598B158F187200B5B2BC /* SZCommentsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZCommentsListViewController.xib; path = Socialize/Resources/SZCommentsListViewController.xib; sourceTree = SOURCE_ROOT; };
-		AA93598C158F187200B5B2BC /* SZComposeCommentMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZComposeCommentMessageViewController.xib; path = Socialize/Resources/SZComposeCommentMessageViewController.xib; sourceTree = SOURCE_ROOT; };
+		AA93598C158F187200B5B2BC /* _SZComposeCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = _SZComposeCommentViewController.xib; path = Socialize/Resources/_SZComposeCommentViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA93598D158F187200B5B2BC /* _SZUserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = _SZUserProfileViewController.xib; path = Socialize/Resources/_SZUserProfileViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = _SZUserSettingsViewController.xib; path = Socialize/Resources/_SZUserSettingsViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA93598F158F187200B5B2BC /* SZBaseShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZBaseShareViewController.xib; path = Socialize/Resources/SZBaseShareViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -3447,7 +3447,6 @@
 				AA935988158F187200B5B2BC /* SocializeRichPushNotificationViewController.xib */,
 				AA935989158F187200B5B2BC /* SocializeTableViewController.xib */,
 				AA93598B158F187200B5B2BC /* SZCommentsListViewController.xib */,
-				AA93598C158F187200B5B2BC /* SZComposeCommentMessageViewController.xib */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -3610,6 +3609,7 @@
 				AA0086F6158D35BF00480399 /* SZCommentsListViewController.m */,
 				AA0086F9158D35BF00480399 /* _SZComposeCommentViewController.h */,
 				AA0086FA158D35BF00480399 /* _SZComposeCommentViewController.m */,
+				AA93598C158F187200B5B2BC /* _SZComposeCommentViewController.xib */,
 				AA0086FD158D35BF00480399 /* SZComposeCommentViewControllerDelegate.h */,
 				AA008712158D35BF00480399 /* _SZUserSettingsViewControllerDelegate.h */,
 				AA008602158D35BC00480399 /* CommentDetailsView.h */,
@@ -4391,7 +4391,7 @@
 				AA935BD6158F187200B5B2BC /* SocializeTableViewController.xib in Resources */,
 				AA935BD9158F187200B5B2BC /* _SZTwitterLinkViewController.xib in Resources */,
 				AA935BDC158F187200B5B2BC /* SZCommentsListViewController.xib in Resources */,
-				AA935BDF158F187200B5B2BC /* SZComposeCommentMessageViewController.xib in Resources */,
+				AA935BDF158F187200B5B2BC /* _SZComposeCommentViewController.xib in Resources */,
 				AA935BE2158F187200B5B2BC /* _SZUserProfileViewController.xib in Resources */,
 				AA935BE5158F187200B5B2BC /* _SZUserSettingsViewController.xib in Resources */,
 				AA935BE8158F187200B5B2BC /* SZBaseShareViewController.xib in Resources */,
@@ -4605,7 +4605,7 @@
 				AACEDA0D158FCE770024EC43 /* SocializeTableViewController.xib in Resources */,
 				AACEDA0E158FCE770024EC43 /* _SZTwitterLinkViewController.xib in Resources */,
 				AACEDA0F158FCE770024EC43 /* SZCommentsListViewController.xib in Resources */,
-				AACEDA10158FCE770024EC43 /* SZComposeCommentMessageViewController.xib in Resources */,
+				AACEDA10158FCE770024EC43 /* _SZComposeCommentViewController.xib in Resources */,
 				AACEDA11158FCE770024EC43 /* _SZUserProfileViewController.xib in Resources */,
 				AACEDA12158FCE770024EC43 /* _SZUserSettingsViewController.xib in Resources */,
 				AACEDA13158FCE770024EC43 /* SZBaseShareViewController.xib in Resources */,
@@ -4817,7 +4817,7 @@
 				AA159E06158FAD4B006E1CAE /* SocializeTableViewController.xib in Resources */,
 				AA159E07158FAD4B006E1CAE /* _SZTwitterLinkViewController.xib in Resources */,
 				AA159E08158FAD4B006E1CAE /* SZCommentsListViewController.xib in Resources */,
-				AA159E09158FAD4B006E1CAE /* SZComposeCommentMessageViewController.xib in Resources */,
+				AA159E09158FAD4B006E1CAE /* _SZComposeCommentViewController.xib in Resources */,
 				AA159E0A158FAD4B006E1CAE /* _SZUserProfileViewController.xib in Resources */,
 				AA159E0B158FAD4B006E1CAE /* _SZUserSettingsViewController.xib in Resources */,
 				AA159E0C158FAD4B006E1CAE /* SZBaseShareViewController.xib in Resources */,
@@ -5029,7 +5029,7 @@
 				AA935BD8158F187200B5B2BC /* SocializeTableViewController.xib in Resources */,
 				AA935BDB158F187200B5B2BC /* _SZTwitterLinkViewController.xib in Resources */,
 				AA935BDE158F187200B5B2BC /* SZCommentsListViewController.xib in Resources */,
-				AA935BE1158F187200B5B2BC /* SZComposeCommentMessageViewController.xib in Resources */,
+				AA935BE1158F187200B5B2BC /* _SZComposeCommentViewController.xib in Resources */,
 				AA935BE4158F187200B5B2BC /* _SZUserProfileViewController.xib in Resources */,
 				AA935BE7158F187200B5B2BC /* _SZUserSettingsViewController.xib in Resources */,
 				AA935BEA158F187200B5B2BC /* SZBaseShareViewController.xib in Resources */,

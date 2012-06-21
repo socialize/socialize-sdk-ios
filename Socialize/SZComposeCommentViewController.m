@@ -11,11 +11,13 @@
 
 @interface SZComposeCommentViewController ()
 @property (nonatomic, strong) _SZComposeCommentViewController *composeComment;
+@property (nonatomic, strong) id<SZEntity> entity;
 
 @end
 
 @implementation SZComposeCommentViewController
 @synthesize composeComment = _composeComment;
+@synthesize entity = _entity;
 @dynamic completionBlock;
 @dynamic cancellationBlock;
 
@@ -26,7 +28,8 @@
 
 - (id)initWithEntity:(id<SZEntity>)entity {
     if (self = [super init]) {
-        self.composeComment = [[_SZComposeCommentViewController alloc] init];
+        self.entity = entity;
+        self.composeComment = [[_SZComposeCommentViewController alloc] initWithEntity:self.entity];
         [self pushViewController:self.composeComment animated:NO];
     }
     

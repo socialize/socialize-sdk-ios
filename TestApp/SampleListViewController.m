@@ -142,7 +142,7 @@ static SampleListViewController *sharedSampleListViewController;
     }]];
 
     [commentRows addObject:[self rowWithIdentifier:kShowCommentComposerRow text:@"Show Comment Composer" executionBlock:^{
-        [SZCommentUtils showCommentComposerWithDisplay:self entity:self.entity success:nil failure:nil];
+        [SZCommentUtils showCommentComposerWithViewController:self entity:self.entity completion:nil cancellation:nil];
     }]];
 
     NSMutableArray *likeRows = [NSMutableArray array];

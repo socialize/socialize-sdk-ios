@@ -17,6 +17,7 @@
 #import "SZUserUtils.h"
 #import "SZDisplay.h"
 #import <BlocksKit/BlocksKit.h>
+#import "SZComposeCommentViewController.h"
 
 @implementation SZCommentUtils
 
@@ -38,34 +39,17 @@
 }
 
 // Compose and share (but no initial link)
-+ (void)showCommentComposerWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
-//    SZDisplayWrapper *wrapper = [SZDisplayWrapper displayWrapperWithDisplay:display];
-//
-//    _SZComposeCommentViewController *composer = [[_SZComposeCommentViewController alloc] initWithEntity:entity];
-//    composer.completionBlock = ^(NSString *text, SZCommentOptions *options) {
-//        
-//        // Add comment
-//        [self addCommentWithDisplay:wrapper entity:entity text:text options:options success:^(id<SZComment> comment) {
-//            [wrapper endSequence];
-//            BLOCK_CALL_1(success, comment);
-//        } failure:^(NSError *error) {
-//            if ([error isSocializeErrorWithCode:SocializeErrorLinkCancelledByUser]) {
-//                [wrapper returnToViewController:composer];
-//            } else if ([error isSocializeErrorWithCode:SocializeErrorNetworkSelectionCancelledByUser]) {
-//                [wrapper returnToViewController:composer];
-//            } else {
-//                [wrapper endSequence];
-//                BLOCK_CALL_1(failure, error);
-//            }
-//        }];
-//        
-//    };
-//    composer.cancellationBlock = ^{
-//        [wrapper endSequence];
-//        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorCommentCancelledByUser]);
-//    };
-//    
-//    [wrapper beginSequenceWithViewController:composer];
++ (void)showCommentComposerWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(id<SZComment> comment))completion cancellation:(void(^)())cancellation {
+    SZComposeCommentViewController *composer = [[SZComposeCommentViewController alloc] initWithEntity:entity];
+    composer.completionBlock = ^(id<SZComment> comment) {
+        [viewController dismissModalViewControllerAnimated:YES];
+    };
+    composer.cancellationBlock = ^{
+        BLOCK_CALL(cancellation);
+        [viewController dismissModalViewControllerAnimated:YES];
+    };
+    
+    [viewController presentModalViewController:composer animated:YES];
 }
 
 + (void)addCommentWithEntity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options networks:(SZSocialNetwork)networks success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {

@@ -9,7 +9,8 @@
 #import "SZNavigationController.h"
 
 @interface SZComposeCommentViewController : SZNavigationController
+- (id)initWithEntity:(id<SZEntity>)entity;
 @property (nonatomic, copy) void (^completionBlock)(id<SZComment> comment);
 @property (nonatomic, copy) void (^cancellationBlock)();
-
+@property (nonatomic, strong, readonly) id<SZEntity> entity;
 @end
