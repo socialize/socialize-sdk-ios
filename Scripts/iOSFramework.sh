@@ -22,7 +22,7 @@ THISDIR=$(dirname "$0")
 # Where we'll put the build framework.
 # The script presumes we're in the project root
 # directory. Xcode builds in "build" by default
-FRAMEWORK_BUILD_PATH="build/Framework"
+FRAMEWORK_BUILD_PATH="build/Socialize.embeddedframework"
 
 # Clean any existing framework that might be there
 # already
@@ -76,7 +76,7 @@ lipo \
 # header files and the plist file
 echo "Framework: Copying assets into current version..."
 cp Socialize/*.h Socialize-noarc/*.h $FRAMEWORK_DIR/Headers/
-rsync -avzlH Socialize/Resources/ $FRAMEWORK_DIR/Resources
+rsync -avzlH Socialize/Resources/ $FRAMEWORK_BUILD_PATH/Resources
 
 #cp Framework.plist $FRAMEWORK_DIR/Resources/Info.plist
 
