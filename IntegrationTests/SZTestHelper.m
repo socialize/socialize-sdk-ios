@@ -7,9 +7,11 @@
 //
 
 #import "SZTestHelper.h"
-#import <Socialize/Socialize.h>
+//#import "SZFacebookUtils.h"
+#import "SocializeFacebookAuthHandler.h"
 #import <OCMock/OCMock.h>
 #import <OCMock/NSObject+ClassMock.h>
+//#import "_Socialize.h"
 
 static SZTestHelper *sharedTestHelper;
 
@@ -46,16 +48,19 @@ static SZTestHelper *sharedTestHelper;
 }
 
 - (void)startMockingSucceedingFacebookAuth {
-    [SZFacebookUtils startMockingClass];
+    [SocializeFacebookAuthHandler startMockingClass];
     
-    [[[SZFacebookUtils stub] andDo4:^(id _1, id _2, id success, id _4) {
+    id mockHandler = [OCMockObject mockForClass:[SocializeFacebookAuthHandler class]];
+    [[[mockHandler stub] andDo5:^(id _1, id _2, id _3, id success, id _4) {
         void (^successBlock)(NSString *accessToken, NSDate *expirationDate) = success;
         successBlock([self facebookAccessToken], [NSDate distantFuture]);
-    }] linkWithViewController:OCMOCK_ANY options:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+    }] authenticateWithAppId:OCMOCK_ANY urlSchemeSuffix:OCMOCK_ANY permissions:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+    
+    [[[SocializeFacebookAuthHandler stub] andReturn:mockHandler] sharedFacebookAuthHandler];
 }
 
 - (void)stopMockingSucceedingFacebookAuth {
-    [SZFacebookUtils stopMockingClass];
+    [SocializeFacebookAuthHandler stopMockingClass];
 }
 
 - (void)removeAuthenticationInfo {

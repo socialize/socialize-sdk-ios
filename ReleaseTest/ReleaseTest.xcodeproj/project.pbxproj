@@ -306,6 +306,27 @@
 			remoteGlobalIDString = 60FF000713C023CB004A1394;
 			remoteInfo = "iOS Tests";
 		};
+		AA442E47159321430045C0EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA1CF8CE159313910068910A /* BlocksKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6C3DBF8C1382F1BA00E6C9AA;
+			remoteInfo = "iOS Library";
+		};
+		AA442E52159321DA0045C0EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA442E4B159321D90045C0EF /* facebook-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = "facebook-ios-sdk";
+		};
+		AA442E54159321EA0045C0EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA442E4B159321D90045C0EF /* facebook-ios-sdk.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = "facebook-ios-sdk";
+		};
 		AA494F4E159312B400572CD4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA494F45159312B300572CD4 /* OCMock.xcodeproj */;
@@ -545,6 +566,8 @@
 		AA1CFA50159317910068910A /* SocializeTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeTableViewController.xib; sourceTree = "<group>"; };
 		AA1CFA51159317910068910A /* SZBaseShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SZBaseShareViewController.xib; sourceTree = "<group>"; };
 		AA1CFA52159317910068910A /* Socialize.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Socialize.framework; sourceTree = "<group>"; };
+		AA442E4A1593218E0045C0EF /* SocializeFacebookAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeFacebookAuthHandler.h; path = "../Socialize-noarc/SocializeFacebookAuthHandler.h"; sourceTree = "<group>"; };
+		AA442E4B159321D90045C0EF /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "facebook-ios-sdk.xcodeproj"; path = "../ThirdParty/facebook-ios-sdk/src/facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		AA494ECE15930F8200572CD4 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = ../ThirdParty/GHUnitIOS.framework; sourceTree = "<group>"; };
 		AA494ED315930FCF00572CD4 /* AuthTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthTest.h; sourceTree = "<group>"; };
 		AA494ED415930FCF00572CD4 /* AuthTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthTest.m; sourceTree = "<group>"; };
@@ -890,6 +913,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		AA442E4C159321D90045C0EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA442E53159321DA0045C0EF /* libfacebook_ios_sdk.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		AA494ED215930FCF00572CD4 /* IntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -997,10 +1028,7 @@
 		AA5CBCBA15930EE00009C759 = {
 			isa = PBXGroup;
 			children = (
-				AA1CF985159315920068910A /* MessageUI.framework */,
-				AA1CF9831593158D0068910A /* QuartzCore.framework */,
-				AA1CF981159315840068910A /* CoreLocation.framework */,
-				AA1CF97F159315810068910A /* MapKit.framework */,
+				AA442E4A1593218E0045C0EF /* SocializeFacebookAuthHandler.h */,
 				AA494F441593108800572CD4 /* StringHelper.h */,
 				AA494F2B15930FEE00572CD4 /* TestApp */,
 				AA5CBCF515930F070009C759 /* ThirdParty */,
@@ -1024,6 +1052,10 @@
 			isa = PBXGroup;
 			children = (
 				AA1CF987159317910068910A /* Socialize.embeddedframework */,
+				AA1CF985159315920068910A /* MessageUI.framework */,
+				AA1CF9831593158D0068910A /* QuartzCore.framework */,
+				AA1CF981159315840068910A /* CoreLocation.framework */,
+				AA1CF97F159315810068910A /* MapKit.framework */,
 				AA494ECE15930F8200572CD4 /* GHUnitIOS.framework */,
 				AA5CBCC915930EE00009C759 /* UIKit.framework */,
 				AA5CBCCB15930EE00009C759 /* Foundation.framework */,
@@ -1079,6 +1111,7 @@
 			isa = PBXGroup;
 			children = (
 				AA1CF8E7159313990068910A /* hide_symbols_blockskit.h */,
+				AA442E4B159321D90045C0EF /* facebook-ios-sdk.xcodeproj */,
 				AA1CF8CE159313910068910A /* BlocksKit.xcodeproj */,
 				AA494F45159312B300572CD4 /* OCMock.xcodeproj */,
 				AA5CBCEC15930F050009C759 /* KIF.xcodeproj */,
@@ -1100,6 +1133,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				AA442E55159321EA0045C0EF /* PBXTargetDependency */,
+				AA442E48159321430045C0EF /* PBXTargetDependency */,
 			);
 			name = ReleaseTest;
 			productName = ReleaseTest;
@@ -1130,6 +1165,10 @@
 				{
 					ProductGroup = AA1CF8CF159313910068910A /* Products */;
 					ProjectRef = AA1CF8CE159313910068910A /* BlocksKit.xcodeproj */;
+				},
+				{
+					ProductGroup = AA442E4C159321D90045C0EF /* Products */;
+					ProjectRef = AA442E4B159321D90045C0EF /* facebook-ios-sdk.xcodeproj */;
 				},
 				{
 					ProductGroup = AA5CBCED15930F050009C759 /* Products */;
@@ -1188,6 +1227,13 @@
 			fileType = wrapper.application;
 			path = "iOS Tests.app";
 			remoteRef = AA1CF8E5159313920068910A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA442E53159321DA0045C0EF /* libfacebook_ios_sdk.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libfacebook_ios_sdk.a;
+			remoteRef = AA442E52159321DA0045C0EF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		AA494F4F159312B400572CD4 /* OCMock.framework */ = {
@@ -1482,6 +1528,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA442E48159321430045C0EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "iOS Library";
+			targetProxy = AA442E47159321430045C0EF /* PBXContainerItemProxy */;
+		};
+		AA442E55159321EA0045C0EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "facebook-ios-sdk";
+			targetProxy = AA442E54159321EA0045C0EF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AA494ED515930FCF00572CD4 /* InfoPlist.strings */ = {

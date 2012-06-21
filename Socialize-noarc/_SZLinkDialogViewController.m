@@ -18,6 +18,7 @@
 #import "SZFacebookUtils.h"
 #import "SZTwitterUtils.h"
 #import "SDKHelpers.h"
+#import "SZUserUtils.h"
 
 static NSString *const kAuthTypeRowText = @"kAuthTypeRowText";
 static NSString *const kAuthTypeRowImageName = @"kAuthTypeRowImageName";
@@ -159,7 +160,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 - (void)authenticationComplete {
-    if ( [self.socialize isAuthenticatedWithThirdParty]) {
+    if ([SZUserUtils userIsLinked]) {
         [self finish];
         self.user = [self.socialize authenticatedUser];
     }
