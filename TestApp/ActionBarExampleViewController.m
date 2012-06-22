@@ -36,6 +36,11 @@
     self.oldActionBar = [SocializeActionBar actionBarWithKey:@"Something" name:@"Something" presentModalInController:self];
     [self.view addSubview:self.oldActionBar.view];
     self.view.backgroundColor = [UIColor greenColor];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel handler:^(id sender) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
