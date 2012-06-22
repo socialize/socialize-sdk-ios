@@ -190,6 +190,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     if (self.fullUser == nil) {
         self.saveButton.enabled = NO;
         self.fullUser = [SZUserUtils currentUser];
+        [self configureViewsForUser];
     } else {
         self.saveButton.enabled = YES;
         [self configureViewsForUser];
@@ -349,7 +350,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 	}
 	else {
 		self.profileImageCell.spinner.hidesWhenStopped = YES;
-		[self.profileImageCell.spinner startAnimating];
+//		[self.profileImageCell.spinner startAnimating];
 	}
 }
 
