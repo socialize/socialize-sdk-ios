@@ -22,6 +22,7 @@
 #import "_SZSelectNetworkViewController.h"
 #import "SZLinkDialogViewController.h"
 #import "SZSelectNetworkViewController.h"
+#import "SZLocationUtils.h"
 
 SZSocialNetwork LinkedSocialNetworks() {
     SZSocialNetwork networks = SZSocialNetworkNone;
@@ -136,6 +137,16 @@ void SZAuthWrapper(void (^success)(), void (^failure)(NSError *error)) {
     }
 }
 
+BOOL SZShouldShareLocation() {
+    // FIXME -- Sense should be inverted for a simpler check
+    NSNumber *shouldShareNumber = [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey];
+    if (shouldShareNumber == nil) {
+        return YES;
+    }
+    
+    return [shouldShareNumber boolValue];
+}
+
 SZActivityOptions *SZActivityOptionsFromUserDefaults(Class optionsClass) {
     SZActivityOptions *options = [optionsClass defaultOptions];
     options.dontShareLocation = ![[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue];
@@ -181,54 +192,70 @@ void CreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *options,
         activity.propagation = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"twitter"] forKey:@"third_parties"];
     }
     
-    creator(activity, ^(id<SZActivity> activity) {
-        if (networks & SZSocialNetworkFacebook) {
-            
-            // This shortened link returned from the server encapsulates all the Socialize magic
-            NSString *shareURL = [[[activity propagationInfoResponse] objectForKey:@"facebook"] objectForKey:@"application_url"];
-            
-            NSString *name = activity.application.name;
-            NSString *link = shareURL;
-            NSString *caption = [NSString stringWithSocializeAppDownloadPlug];
-            
-            // Build the message string
-            NSMutableString *message = [NSMutableString string];
-            if ([activity.entity.name length] > 0) {
-                [message appendFormat:@"%@: ", activity.entity.name];
-            }
-            
-            [message appendFormat:@"%@\n\n", shareURL];
-            
-            NSString *text = nil;
-            if ([activity respondsToSelector:@selector(text)]) {
-                text = [(id)activity text];
-            }
-            if ([text length] > 0) {
-                [message appendFormat:@"%@\n\n", text];
-            }
-            
-            [message appendFormat:@"Shared from %@.", activity.application.name];
-            
-            NSDictionary *postData = [NSDictionary dictionaryWithObjectsAndKeys:
-                                      message, @"message",
-                                      caption, @"caption",
-                                      link, @"link",
-                                      name, @"name",
-                                      @"This is the description", @"description",
-                                      nil];
-            
-            [SZFacebookUtils postWithGraphPath:@"me/links" params:postData success:^(id result) {
-                BLOCK_CALL_1(success, activity);
-            } failure:^(NSError *error) {
+    void (^creationBlock)() = ^{
+        
+        creator(activity, ^(id<SZActivity> activity) {
+            if (networks & SZSocialNetworkFacebook) {
                 
-                // Failed Wall post is still a success. Handle separately in options.
+                // This shortened link returned from the server encapsulates all the Socialize magic
+                NSString *shareURL = [[[activity propagationInfoResponse] objectForKey:@"facebook"] objectForKey:@"application_url"];
+                
+                NSString *name = activity.application.name;
+                NSString *link = shareURL;
+                NSString *caption = [NSString stringWithSocializeAppDownloadPlug];
+                
+                // Build the message string
+                NSMutableString *message = [NSMutableString string];
+                if ([activity.entity.name length] > 0) {
+                    [message appendFormat:@"%@: ", activity.entity.name];
+                }
+                
+                [message appendFormat:@"%@\n\n", shareURL];
+                
+                NSString *text = nil;
+                if ([activity respondsToSelector:@selector(text)]) {
+                    text = [(id)activity text];
+                }
+                if ([text length] > 0) {
+                    [message appendFormat:@"%@\n\n", text];
+                }
+                
+                [message appendFormat:@"Shared from %@.", activity.application.name];
+                
+                NSDictionary *postData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          message, @"message",
+                                          caption, @"caption",
+                                          link, @"link",
+                                          name, @"name",
+                                          @"This is the description", @"description",
+                                          nil];
+                
+                [SZFacebookUtils postWithGraphPath:@"me/links" params:postData success:^(id result) {
+                    BLOCK_CALL_1(success, activity);
+                } failure:^(NSError *error) {
+                    
+                    // Failed Wall post is still a success. Handle separately in options.
+                    BLOCK_CALL_1(success, activity);
+                }];
+            } else {
                 BLOCK_CALL_1(success, activity);
-            }];
-        } else {
-            BLOCK_CALL_1(success, activity);
-        }
-    }, failure);
+            }
+        }, failure);
+        
+    };
 
+    if (SZShouldShareLocation()) {
+        [SZLocationUtils getCurrentLocationWithSuccess:^(CLLocation *location) {
+            activity.lat = [NSNumber numberWithDouble:location.coordinate.latitude];
+            activity.lng = [NSNumber numberWithDouble:location.coordinate.longitude];
+            creationBlock();
+        } failure:^(NSError *error) {
+            NSLog(@"Socialize Warning: Location sharing requested, but could not get location. %@", [error localizedDescription]);
+            creationBlock();
+        }];
+    } else {
+        creationBlock();
+    }    
 }
 
 BOOL SZErrorsAreDisabled() {

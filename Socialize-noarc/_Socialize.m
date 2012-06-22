@@ -82,6 +82,7 @@ NSString *const SocializeEntityLoaderDidFinishNotification = @"SocializeEntityLo
 NSString *const SocializeCLAuthorizationStatusDidChangeNotification = @"SocializeLocationManagerAuthorizationStatusDidChangeNotification";
 NSString *const kSocializeCLAuthorizationStatusKey = @"kSocializeCLAuthorizationStatusKey";
 NSString *const kSocializeShouldShareLocationKey = @"kSocializeShouldShareLocationKey";
+NSString *const kSocializeDontShareLocationKey = @"kSocializeDontShareLocationKey";
 
 NSString *const SZLocationDidChangeNotification = @"SZLocationDidChangeNotification";
 NSString *const kSZNewLocationKey = @"kSZNewLocationKey";
