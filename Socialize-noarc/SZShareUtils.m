@@ -60,40 +60,28 @@
     
     MFMailComposeViewController *composer = [[MFMailComposeViewController alloc] init];
     composer.sz_completionBlock = ^(MFMailComposeResult result, NSError *error) {
-        [viewController dismissModalViewControllerAnimated:YES];
-
         switch (result) {
             case MFMailComposeResultSent: {
                 
                 SZAuthWrapper(^{
                     SZShare *share = [SZShare shareWithEntity:entity text:@"" medium:SocializeShareMediumEmail];
                     [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> createdShare) {
-                        [viewController dismissViewControllerAnimated:YES completion:^{
-                            BLOCK_CALL_1(success, createdShare);
-                        }];
+                        BLOCK_CALL_1(success, createdShare);
                     } failure:^(NSError *error) {
-                        [viewController dismissViewControllerAnimated:YES completion:^{
-                            BLOCK_CALL_1(failure, error);
-                        }];
+                        BLOCK_CALL_1(failure, error);
                     }];
                 }, ^(NSError *error) {
-                    [viewController dismissViewControllerAnimated:YES completion:^{
-                        BLOCK_CALL_1(failure, error);
-                    }];                                            
+                    BLOCK_CALL_1(failure, error);
                 });
                 
                 break;
             }
             case MFMailComposeResultFailed:
-                [viewController dismissViewControllerAnimated:YES completion:^{
-                    BLOCK_CALL_1(failure, error);
-                }];
+                BLOCK_CALL_1(failure, error);
                 break;
             case MFMailComposeResultCancelled:
             case MFMailComposeResultSaved:
-                [viewController dismissViewControllerAnimated:YES completion:^{
-                    BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]);
-                }];
+                BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]);
                 break;
         }
     };
@@ -110,38 +98,27 @@
     
     MFMessageComposeViewController *composer = [[MFMessageComposeViewController alloc] init];
     composer.sz_completionBlock = ^(MessageComposeResult result) {
-        [viewController dismissModalViewControllerAnimated:YES];
         switch (result) {
             case MessageComposeResultSent: {
                 
                 SZAuthWrapper(^{
                     SZShare *share = [SZShare shareWithEntity:entity text:@"" medium:SocializeShareMediumSMS];
                     [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> createdShare) {
-                        [viewController dismissViewControllerAnimated:YES completion:^{
-                            BLOCK_CALL_1(success, createdShare);
-                        }];
+                        BLOCK_CALL_1(success, createdShare);
                     } failure:^(NSError *error) {
-                        [viewController dismissViewControllerAnimated:YES completion:^{
-                            BLOCK_CALL_1(failure, error);
-                        }];
+                        BLOCK_CALL_1(failure, error);
                     }];
                 }, ^(NSError *error) {
-                    [viewController dismissViewControllerAnimated:YES completion:^{
-                        BLOCK_CALL_1(failure, error);
-                    }];                                            
+                    BLOCK_CALL_1(failure, error);
                 });
 
                 break;
             }
             case MessageComposeResultFailed:
-                [viewController dismissViewControllerAnimated:YES completion:^{
-                    BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorSMSSendFailure]);
-                }];
+                BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorSMSSendFailure]);
                 break;
             case MessageComposeResultCancelled:
-                [viewController dismissViewControllerAnimated:YES completion:^{
-                    BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]);
-                }];
+                BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]);
                 break;
         }
     };
