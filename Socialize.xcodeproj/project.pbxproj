@@ -521,7 +521,6 @@
 		AA2FC2391592789900B52772 /* _SZTwitterLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086D0158D35BE00480399 /* _SZTwitterLinkViewController.m */; };
 		AA3BC36F158E7F170073AD50 /* libSocialize-noarc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085F3158D358B00480399 /* libSocialize-noarc.a */; };
 		AA3BC370158E7F200073AD50 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085C0158D2EFC00480399 /* libSocialize.a */; };
-		AA3BC373158E7F680073AD50 /* SZDummyLibSocialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC372158E7F680073AD50 /* SZDummyLibSocialize.m */; };
 		AA3BC376158E80780073AD50 /* TestAppListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC375158E80780073AD50 /* TestAppListViewController.m */; };
 		AA3BC37A158E820B0073AD50 /* ActionBarExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC378158E820B0073AD50 /* ActionBarExampleViewController.m */; };
 		AA3BC37B158E820B0073AD50 /* ActionBarExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3BC379158E820B0073AD50 /* ActionBarExampleViewController.xib */; };
@@ -1257,7 +1256,6 @@
 		AAB5E518159044E600D3EBDF /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
 		AAB5E519159044E600D3EBDF /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085BA158D2E2C00480399 /* libfacebook_ios_sdk.a */; };
 		AAB5E51A159044E600D3EBDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
-		AAB5E522159044F900D3EBDF /* SZDummyLibSocialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC372158E7F680073AD50 /* SZDummyLibSocialize.m */; };
 		AAB5E525159044F900D3EBDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
 		AAB5E528159044F900D3EBDF /* _Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008600158D35BC00480399 /* _Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E529159044F900D3EBDF /* SocializeCommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00864E158D35BD00480399 /* SocializeCommentDetailsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2216,8 +2214,6 @@
 		AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserSettingsViewController.m; sourceTree = "<group>"; };
 		AA2FC1A515926CAF00B52772 /* SZTwitterLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTwitterLinkViewController.h; sourceTree = "<group>"; };
 		AA2FC1A615926CAF00B52772 /* SZTwitterLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTwitterLinkViewController.m; sourceTree = "<group>"; };
-		AA3BC371158E7F680073AD50 /* SZDummyLibSocialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZDummyLibSocialize.h; sourceTree = "<group>"; };
-		AA3BC372158E7F680073AD50 /* SZDummyLibSocialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDummyLibSocialize.m; sourceTree = "<group>"; };
 		AA3BC374158E80780073AD50 /* TestAppListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAppListViewController.h; sourceTree = "<group>"; };
 		AA3BC375158E80780073AD50 /* TestAppListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAppListViewController.m; sourceTree = "<group>"; };
 		AA3BC377158E820B0073AD50 /* ActionBarExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionBarExampleViewController.h; sourceTree = "<group>"; };
@@ -2739,8 +2735,6 @@
 				AA25FEAF159119F50067741A /* UI */,
 				AA5807E4158E994D005B9F6C /* Resources */,
 				AA0085C3158D2EFC00480399 /* Supporting Files */,
-				AA3BC371158E7F680073AD50 /* SZDummyLibSocialize.h */,
-				AA3BC372158E7F680073AD50 /* SZDummyLibSocialize.m */,
 			);
 			path = Socialize;
 			sourceTree = "<group>";
@@ -5350,7 +5344,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA3BC373158E7F680073AD50 /* SZDummyLibSocialize.m in Sources */,
 				AA25FEAE159119F00067741A /* SZUserSettingsViewController.m in Sources */,
 				AA41522F15911E37003717AC /* SZActionBarUtils.m in Sources */,
 				AA41523015911E37003717AC /* SZActionUtils.m in Sources */,
@@ -5829,7 +5822,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAB5E522159044F900D3EBDF /* SZDummyLibSocialize.m in Sources */,
 				AA25FEB015911ACC0067741A /* SZUserSettingsViewController.m in Sources */,
 				AA41524015911E38003717AC /* SZActionBarUtils.m in Sources */,
 				AA41524115911E38003717AC /* SZActionUtils.m in Sources */,
