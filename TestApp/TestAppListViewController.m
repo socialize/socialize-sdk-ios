@@ -152,7 +152,7 @@ static TestAppListViewController *sharedSampleListViewController;
     
     NSMutableArray *facebookRows = [NSMutableArray array];
     [facebookRows addObject:[self rowWithIdentifier:kLinkToFacebookRow text:@"Link to Facebook" executionBlock:^{
-        [SZFacebookUtils linkWithViewController:self options:nil success:^(id<SZFullUser> user) {
+        [SZFacebookUtils linkWithOptions:nil success:^(id<SZFullUser> user) {
             [UIAlertView showAlertWithTitle:@"Facebook link successful" message:nil buttonTitle:@"Ok" handler:nil];
         } foreground:^{
             [UIAlertView showAlertWithTitle:@"Facebook link foregrounded without success or failure" message:nil buttonTitle:@"Ok" handler:nil];

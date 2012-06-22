@@ -60,7 +60,7 @@
     [[SocializeFacebookAuthHandler sharedFacebookAuthHandler] cancelAuthentication];
 }
 
-+ (void)linkWithViewController:(UIViewController*)viewController options:(SZFacebookLinkOptions*)options success:(void(^)(id<SZFullUser>))success foreground:(void(^)())foreground failure:(void(^)(NSError *error))failure {
++ (void)linkWithOptions:(SZFacebookLinkOptions*)options success:(void(^)(id<SZFullUser>))success foreground:(void(^)())foreground failure:(void(^)(NSError *error))failure {
     if (options == nil) {
         options = [SZFacebookLinkOptions defaultOptions];
     }

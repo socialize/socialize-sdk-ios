@@ -176,7 +176,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 
                 SZShowLinkToFacebookAlertView(^{
 
-                    [SZFacebookUtils linkWithViewController:weakSelf options:nil success:^(id<SZFullUser> fullUser) {
+                    [SZFacebookUtils linkWithOptions:nil success:^(id<SZFullUser> fullUser) {
                         // Successfully linked
                         [weakSelf syncInterfaceWithThirdPartyState];
                     } foreground:^{

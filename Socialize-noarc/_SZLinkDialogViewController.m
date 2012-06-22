@@ -147,7 +147,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     };
     
     SZShowLinkToFacebookAlertView(^{
-        [SZFacebookUtils linkWithViewController:self options:options success:^(id<SZFullUser> fullUser) {
+        [SZFacebookUtils linkWithOptions:options success:^(id<SZFullUser> fullUser) {
             [self stopLoading];
             [self authenticationComplete];
         } foreground:nil failure:^(NSError *error) {

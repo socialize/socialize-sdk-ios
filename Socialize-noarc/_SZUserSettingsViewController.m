@@ -683,7 +683,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 - (void)authenticateViaFacebook {
     SZShowLinkToFacebookAlertView(^{
 
-        [SZFacebookUtils linkWithViewController:self options:nil success:^(id<SZFullUser> user) {
+        [SZFacebookUtils linkWithOptions:nil success:^(id<SZFullUser> user) {
             [self updateInterfaceToReflectSessionStatuses];
         } foreground:^{
             [self updateInterfaceToReflectSessionStatuses];            
