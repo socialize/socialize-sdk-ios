@@ -117,7 +117,7 @@ static SocializeFacebookAuthHandler *sharedFacebookAuthHandler;
 }
 
 - (void)fbSessionInvalidated {
-    NSLog(@"FB Session Invalidated");
+    [SocializeThirdPartyFacebook removeLocalCredentials];
 }
 
 @end
