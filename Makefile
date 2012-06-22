@@ -1,4 +1,4 @@
-.PHONY: tags framework bundle integration-tests ui-integration-tests clean test
+.PHONY: tags framework bundle integration-tests ui-integration-tests clean test package release
 
 test:
 	RUN_CLI=1 xcodebuild -scheme UnitTests -configuration Debug -sdk iphonesimulator
@@ -7,6 +7,8 @@ default: build buildsample test package
 
 package: framework
 	./Scripts/package.sh
+
+release: package
      
 framework:
 	xcodebuild -scheme "Socialize Framework" -configuration Release
