@@ -55,10 +55,10 @@ BOOL ShouldShowLinkDialog() {
     return ( LinkedSocialNetworks() == SZSocialNetworkNone && AvailableSocialNetworks() != SZSocialNetworkNone && ![Socialize authenticationNotRequired]);
 }
 
-void SZShowLinkToFacebookAlertView(void (^linkBlock)()) {
+void SZShowLinkToFacebookAlertView(void (^okBlock)(), void (^cancelBlock)()) {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook Authentication Required" message:@"Link to Facebook?"];
-    [alertView addButtonWithTitle:@"Cancel" handler:^{}];
-    [alertView addButtonWithTitle:@"Ok" handler:linkBlock];
+    [alertView addButtonWithTitle:@"Cancel" handler:cancelBlock];
+    [alertView addButtonWithTitle:@"Ok" handler:okBlock];
 
     [alertView show];
 }

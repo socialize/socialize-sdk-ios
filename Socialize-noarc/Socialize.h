@@ -25,6 +25,7 @@
 #import "SZNavigationController.h"
 #import "SZActionBar.h"
 #import "SDKHelpers.h"
+#import "NSError+Socialize.h"
 
 // SDK Utils Toplevel Classes
 #import "SZActionBarUtils.h"

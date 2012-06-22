@@ -684,9 +684,13 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
         [SZFacebookUtils linkWithViewController:self options:nil success:^(id<SZFullUser> user) {
             [self updateInterfaceToReflectSessionStatuses];
+        } foreground:^{
+            [self updateInterfaceToReflectSessionStatuses];            
         } failure:^(NSError *error) {
             [self updateInterfaceToReflectSessionStatuses];        
         }];
+    }, ^{
+        [self updateInterfaceToReflectSessionStatuses];
     });
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <facebook-ios-sdk/FBConnect.h>
+#import <FBConnect/FBConnect.h>
 
 @interface SocializeFacebookAuthHandler : NSObject <FBSessionDelegate>
 
@@ -16,11 +16,14 @@
               urlSchemeSuffix:(NSString*)urlSchemeSuffix
                   permissions:(NSArray*)permissions
                       success:(void(^)())success
+                   foreground:(void(^)())foreground
                       failure:(void(^)(NSError*))failure;
 - (BOOL)handleOpenURL:(NSURL*)url;
+- (void)cancelAuthentication;
 
 @property (nonatomic, retain) NSArray *permissions;
 @property (nonatomic, copy) void (^successBlock)(NSString *accessToken, NSDate *expirationDate);
+@property (nonatomic, copy) void (^foregroundBlock)();
 @property (nonatomic, copy) void (^failureBlock)(NSError *error);
 @property (nonatomic, retain) Facebook *facebook;
 @property (nonatomic, assign) BOOL authenticating;

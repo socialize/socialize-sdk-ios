@@ -20,8 +20,9 @@
 + (BOOL)isLinked;
 
 + (void)linkWithAccessToken:(NSString*)accessToken expirationDate:(NSDate*)expirationDate success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
-+ (void)linkWithViewController:(UIViewController*)viewController options:(SZFacebookLinkOptions*)options success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
++ (void)linkWithViewController:(UIViewController*)viewController options:(SZFacebookLinkOptions*)options success:(void(^)(id<SZFullUser>))success foreground:(void(^)())foreground failure:(void(^)(NSError *error))failure;
 + (void)unlink;
++ (void)cancelLink;
 
 + (void)postWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure;
 + (void)getWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure;

@@ -9,7 +9,6 @@
 
 #import "SocializeFacebookInterface.h"
 #import "SocializeThirdPartyFacebook.h"
-#import <facebook-ios-sdk/FBConnect.h>
 
 static SocializeFacebookInterface *sharedFacebookInterface;
 
@@ -37,9 +36,10 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
     [super dealloc];
 }
 
-- (SocializeFacebook*)facebook {
+- (Facebook*)facebook {
     if (facebook_ == nil) {
         facebook_ = [[SocializeThirdPartyFacebook createFacebookClient] retain];
+        facebook_.sessionDelegate = self;
     }
     
     return facebook_;
@@ -85,6 +85,26 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
     RequestCompletionBlock completionBlock = [self.handlers objectForKey:[self requestIdentifier:request]]; 
     completionBlock(result, nil);
     [self removeHandlerForRequest:request];
+}
+
+- (void)fbDidLogin {
+    // Unused here    
+}
+
+- (void)fbDidLogout {
+    // Unused here    
+}
+
+- (void)fbDidExtendToken:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
+    [SocializeThirdPartyFacebook storeLocalCredentialsWithAccessToken:accessToken expirationDate:expiresAt];
+}
+
+- (void)fbDidNotLogin:(BOOL)cancelled {
+    // Unused here
+}
+
+- (void)fbSessionInvalidated {
+    [SocializeThirdPartyFacebook removeLocalCredentials];
 }
 
 @end

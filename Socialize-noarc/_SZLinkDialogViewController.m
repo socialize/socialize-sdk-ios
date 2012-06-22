@@ -150,13 +150,13 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
         [SZFacebookUtils linkWithViewController:self options:options success:^(id<SZFullUser> fullUser) {
             [self stopLoading];
             [self authenticationComplete];
-        } failure:^(NSError *error) {
+        } foreground:nil failure:^(NSError *error) {
             [self stopLoading];
             if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
                 [self failWithError:error];
             }
         }];
-    });
+    }, nil);
 }
 
 - (void)authenticationComplete {

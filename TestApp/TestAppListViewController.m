@@ -154,8 +154,16 @@ static TestAppListViewController *sharedSampleListViewController;
     [facebookRows addObject:[self rowWithIdentifier:kLinkToFacebookRow text:@"Link to Facebook" executionBlock:^{
         [SZFacebookUtils linkWithViewController:self options:nil success:^(id<SZFullUser> user) {
             [UIAlertView showAlertWithTitle:@"Facebook link successful" message:nil buttonTitle:@"Ok" handler:nil];
+        } foreground:^{
+            [UIAlertView showAlertWithTitle:@"Facebook link foregrounded without success or failure" message:nil buttonTitle:@"Ok" handler:nil];
+            [SZFacebookUtils cancelLink];
         } failure:^(NSError *error) {
-            [UIAlertView showAlertWithTitle:@"Facebook link failed" message:nil buttonTitle:@"Ok" handler:nil];
+            if ([error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
+                [UIAlertView showAlertWithTitle:@"Facebook link cancelled by user" message:nil buttonTitle:@"Ok" handler:nil];                
+            } else {
+                NSString *message = [NSString stringWithFormat:@"Facebook link failed: %@", [error localizedDescription]];
+                [UIAlertView showAlertWithTitle:message message:nil buttonTitle:@"Ok" handler:nil];
+            }
         }];
     }]];
 

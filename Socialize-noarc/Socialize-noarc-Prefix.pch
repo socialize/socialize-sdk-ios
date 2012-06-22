@@ -6,7 +6,6 @@
     #import <Foundation/Foundation.h>
 
 // Use hidden symbol names for some our third party libraries
-#import "hide_symbols_facebook.h"
 #import "hide_symbols_oauth.h"
 #import "hide_symbols_blockskit.h"
 #import "hide_symbols_jsonkit.h"

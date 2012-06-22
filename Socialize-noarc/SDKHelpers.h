@@ -12,7 +12,7 @@
 
 @class SZShareOptions;
 
-void SZShowLinkToFacebookAlertView(void (^linkBlock)());
+void SZShowLinkToFacebookAlertView(void (^okBlock)(), void (^cancelBlock)());
 SZSocialNetwork LinkedSocialNetworks();
 SZSocialNetwork AvailableSocialNetworks();
 typedef void (^ActivityCreatorBlock)(id<SZActivity>, void(^)(id<SZActivity>), void(^)(NSError*));

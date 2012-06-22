@@ -7,6 +7,7 @@
 //
 
 #import "SocializeThirdParty.h"
+#import <FBConnect/FBConnect.h>
 
 @class SocializeFacebook;
 
@@ -21,6 +22,6 @@
 + (void)storeLocalCredentialsWithAccessToken:(NSString*)accessToken
                               expirationDate:(NSDate*)expirationDate;
 
-+ (SocializeFacebook*)createFacebookClient;
++ (Facebook*)createFacebookClient;
 
 @end

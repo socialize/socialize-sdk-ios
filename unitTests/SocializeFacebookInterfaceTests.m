@@ -8,7 +8,7 @@
 
 #import "SocializeFacebookInterfaceTests.h"
 #import "SocializeFacebookInterface.h"
-#import <facebook-ios-sdk/Facebook.h>
+#import <FBConnect/FBConnect.h>
 #import "Socialize.h"
 #import "SocializeThirdPartyFacebook.h"
 

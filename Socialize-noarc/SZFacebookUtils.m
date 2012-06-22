@@ -56,7 +56,11 @@
                                                        } failure:failure];
 }
 
-+ (void)linkWithViewController:(UIViewController*)viewController options:(SZFacebookLinkOptions*)options success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
++ (void)cancelLink {
+    [[SocializeFacebookAuthHandler sharedFacebookAuthHandler] cancelAuthentication];
+}
+
++ (void)linkWithViewController:(UIViewController*)viewController options:(SZFacebookLinkOptions*)options success:(void(^)(id<SZFullUser>))success foreground:(void(^)())foreground failure:(void(^)(NSError *error))failure {
     if (options == nil) {
         options = [SZFacebookLinkOptions defaultOptions];
     }
@@ -76,7 +80,7 @@
          } failure:^(NSError *error) {
              BLOCK_CALL_1(failure, error);
          }];
-     } failure:failure];
+     } foreground:foreground failure:failure];
 }
 
 + (void)sendRequestWithHTTPMethod:(NSString*)method graphPath:(NSString*)graphPath postData:(NSDictionary*)postData success:(void(^)(id))success failure:(void(^)(NSError *error))failure {

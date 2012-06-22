@@ -9,7 +9,7 @@
 #import "SocializeFacebookAuthHandlerTests.h"
 #import "SocializeCommonDefinitions.h"
 #import "NSError+Socialize.h"
-#import <facebook-ios-sdk/Facebook.h>
+#import <FBConnect/FBConnect.h>
 
 @implementation SocializeFacebookAuthHandlerTests
 @synthesize facebookAuthHandler = facebookAuthHandler_;
@@ -46,6 +46,7 @@
                                     urlSchemeSuffix:nil
                                         permissions:nil
                                             success:success
+                                         foreground:nil
                                             failure:failure];
 }
 

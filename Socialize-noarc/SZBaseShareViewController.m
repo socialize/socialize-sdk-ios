@@ -76,6 +76,8 @@ static NSString *kAutopostSection = @"kAutopostSection";
     self.facebookSwitch = nil;
     self.twitterSwitch = nil;
     self.completionBlock = nil;
+    
+    [SZFacebookUtils cancelLink];
 
     [super dealloc];
 }
@@ -121,6 +123,8 @@ static NSString *kAutopostSection = @"kAutopostSection";
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [self syncInterfaceWithThirdPartyState];
+
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     if (indexPath != nil) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -174,16 +178,20 @@ static NSString *kAutopostSection = @"kAutopostSection";
 
                     [SZFacebookUtils linkWithViewController:weakSelf options:nil success:^(id<SZFullUser> fullUser) {
                         // Successfully linked
-                        [self syncInterfaceWithThirdPartyState];
+                        [weakSelf syncInterfaceWithThirdPartyState];
+                    } foreground:^{
+                        [weakSelf syncInterfaceWithThirdPartyState];                        
                     } failure:^(NSError *error) {
                         
                         // Link failed
-                        [self syncInterfaceWithThirdPartyState];
+                        [weakSelf syncInterfaceWithThirdPartyState];
                         
                         if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
                             [weakSelf failWithError:error];
                         }
                     }];
+                }, ^{
+                    [weakSelf syncInterfaceWithThirdPartyState];
                 });
             }
             

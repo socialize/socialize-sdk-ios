@@ -9,7 +9,6 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeCommonDefinitions.h"
 #import "_Socialize.h"
-#import <facebook-ios-sdk/FBConnect.h>
 
 @implementation SocializeThirdPartyFacebook
 
