@@ -33,8 +33,8 @@ typedef enum {
 
 @property (nonatomic, assign) SZLikeButtonInitState initState;
 
-@property (nonatomic, retain) id<SocializeEntity> serverEntity;
-@property (nonatomic, retain) NSTimer *recoveryTimer;
+@property (nonatomic, strong) id<SocializeEntity> serverEntity;
+@property (nonatomic, strong) NSTimer *recoveryTimer;
 
 @end
 
@@ -57,24 +57,9 @@ typedef enum {
 @synthesize autoresizeDisabled = autoresizeDisabled_;
 
 - (void)dealloc {
-    self.actualButton = nil;
-    self.disabledImage = nil;
-    self.inactiveImage = nil;
-    self.inactiveHighlightedImage = nil;
-    self.activeImage = nil;
-    self.activeHighlightedImage = nil;
-    self.likedIcon = nil;
-    self.unlikedIcon = nil;
-    self.viewController = nil;
-    entity_ = nil; [entity_ release];
-    self.serverEntity = nil;
-    
     if (recoveryTimer_ != nil) {
         [recoveryTimer_ invalidate];
     }
-    self.recoveryTimer = nil;
-    
-    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)viewController {
@@ -82,7 +67,7 @@ typedef enum {
     if (self) {
         [self configureButtonBackgroundImages];
 
-        NonatomicRetainedSetToFrom(entity_, entity);
+        self.entity = entity;
         self.viewController = viewController;
         
         self.actualButton.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -119,7 +104,7 @@ typedef enum {
 }
 
 - (void)setServerEntity:(id<SocializeEntity>)serverEntity {
-    NonatomicRetainedSetToFrom(serverEntity_, serverEntity);
+    serverEntity_ = serverEntity;
     [self updateViewFromServerEntity:self.serverEntity];
 }
 
@@ -244,26 +229,26 @@ typedef enum {
 }
 
 - (void)setLikedIcon:(UIImage*)likedIcon {
-    NonatomicRetainedSetToFrom(likedIcon_, likedIcon);
+    likedIcon_ = likedIcon;
     [self configureButtonBackgroundImages];
 }
 
 - (UIImage*)likedIcon {
     if (likedIcon_ == nil) {
-        likedIcon_ = [[[self class] defaultLikedIcon] retain];
+        likedIcon_ = [[self class] defaultLikedIcon];
     }
     
     return likedIcon_;
 }
 
 - (void)setUnlikedIcon:(UIImage*)unlikedIcon {
-    NonatomicRetainedSetToFrom(unlikedIcon_, unlikedIcon);
+    unlikedIcon_ = unlikedIcon;
     [self configureButtonBackgroundImages];
 }
 
 - (UIImage*)unlikedIcon {
     if (unlikedIcon_ == nil) {
-        unlikedIcon_ = [[[self class] defaultUnlikedIcon] retain];
+        unlikedIcon_ = [[self class] defaultUnlikedIcon];
     }
     
     return unlikedIcon_;
@@ -271,66 +256,66 @@ typedef enum {
 
 - (UIImage*)disabledImage {
     if (disabledImage_ == nil) {
-        disabledImage_ = [[[self class] defaultDisabledImage] retain];
+        disabledImage_ = [[self class] defaultDisabledImage];
     }
     
     return disabledImage_;
 }
 
 - (void)setDisabledImage:(UIImage *)disabledImage {
-    NonatomicCopySetToFrom(disabledImage_, disabledImage);
+    disabledImage_ = disabledImage;
     [self configureButtonBackgroundImages];
 }
 
 - (UIImage*)inactiveImage {
     if (inactiveImage_ == nil) {
-        inactiveImage_ = [[[self class] defaultInactiveImage] retain];
+        inactiveImage_ = [[self class] defaultInactiveImage];
     }
     
     return inactiveImage_;
 }
 
 - (void)setInactiveImage:(UIImage *)inactiveImage {
-    NonatomicCopySetToFrom(inactiveImage_, inactiveImage);
+    inactiveImage_ = inactiveImage;
     [self configureButtonBackgroundImages];
 }
 
 - (UIImage*)inactiveHighlightedImage {
     if (inactiveHighlightedImage_ == nil) {
-        inactiveHighlightedImage_ = [[[self class] defaultInactiveHighlightedImage] retain];
+        inactiveHighlightedImage_ = [[self class] defaultInactiveHighlightedImage];
     }
     
     return inactiveHighlightedImage_;
 }
 
 - (void)setInactiveHighlightedImage:(UIImage *)inactiveHighlightedImage {
-    NonatomicCopySetToFrom(inactiveHighlightedImage_, inactiveHighlightedImage);
+    inactiveHighlightedImage_ = inactiveHighlightedImage;
     [self configureButtonBackgroundImages];
 }
 
 - (UIImage*)activeImage {
     if (activeImage_ == nil) {
-        activeImage_ = [[[self class] defaultActiveImage] retain];
+        activeImage_ = [[self class] defaultActiveImage];
     }
     
     return activeImage_;
 }
 
 - (void)setActiveImage:(UIImage *)activeImage {
-    NonatomicCopySetToFrom(activeImage_, activeImage);
+    activeImage_ = activeImage;
     [self configureButtonBackgroundImages];
 }
 
 - (UIImage*)activeHighlightedImage {
     if (activeHighlightedImage_ == nil) {
-        activeHighlightedImage_ = [[[self class] defaultActiveHighlightedImage] retain];
+        activeHighlightedImage_ = [[self class] defaultActiveHighlightedImage];
     }
     
     return activeHighlightedImage_;
 }
 
 - (void)setActiveHighlightedImage:(UIImage *)activeHighlightedImage {
-    NonatomicCopySetToFrom(activeHighlightedImage_, activeHighlightedImage);
+    activeHighlightedImage_ = activeHighlightedImage;
     [self configureButtonBackgroundImages];
 }
 
@@ -351,7 +336,7 @@ typedef enum {
 
 - (UIButton*)actualButton {
     if (actualButton_ == nil) {
-        actualButton_ = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        actualButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
         actualButton_.accessibilityLabel = @"like button";
         actualButton_.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
         [actualButton_ addTarget:self action:@selector(actualButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -411,7 +396,7 @@ typedef enum {
 }
 
 - (void)setEntity:(id<SocializeEntity>)entity {
-    NonatomicRetainedSetToFrom(entity_, entity);
+    entity_ = entity;
     
     // This is the user-set entity property. The server entity is always stored in self.serverEntity
     [self refresh];

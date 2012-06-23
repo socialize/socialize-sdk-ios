@@ -136,7 +136,6 @@
 		AA0087AE158D35C000480399 /* _SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086F6158D35BF00480399 /* _SZCommentsListViewController.m */; };
 		AA0087B0158D35C000480399 /* _SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FA158D35BF00480399 /* _SZComposeCommentViewController.m */; };
 		AA0087B2158D35C000480399 /* SZDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FF158D35BF00480399 /* SZDisplay.m */; };
-		AA0087B5158D35C000480399 /* SZLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008705158D35BF00480399 /* SZLikeButton.m */; };
 		AA0087B9158D35C000480399 /* SZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870D158D35BF00480399 /* SZNavigationController.m */; };
 		AA0087BA158D35C000480399 /* _SZUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870F158D35BF00480399 /* _SZUserProfileViewController.m */; };
 		AA0087BB158D35C000480399 /* _SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008711158D35BF00480399 /* _SZUserSettingsViewController.m */; };
@@ -491,7 +490,6 @@
 		AA1C1C15158EF3EC00A763CA /* SocializeActionBarDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008629158D35BD00480399 /* SocializeActionBarDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C16158EF3F100A763CA /* _SZTwitterLinkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086CF158D35BE00480399 /* _SZTwitterLinkViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C17158EF3FA00A763CA /* SocializeConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008657158D35BD00480399 /* SocializeConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA1C1C18158EF40200A763CA /* SZLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008704158D35BF00480399 /* SZLikeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C19158EF40700A763CA /* SampleEntityLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008621158D35BD00480399 /* SampleEntityLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C1A158EF41000A763CA /* SZNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00870C158D35BF00480399 /* SZNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C1B158EF43700A763CA /* SZActionBarUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086E9158D35BF00480399 /* SZActionBarUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1225,7 +1223,6 @@
 		AAB5E4E7159044E600D3EBDF /* _SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086F6158D35BF00480399 /* _SZCommentsListViewController.m */; };
 		AAB5E4E9159044E600D3EBDF /* _SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FA158D35BF00480399 /* _SZComposeCommentViewController.m */; };
 		AAB5E4EB159044E600D3EBDF /* SZDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FF158D35BF00480399 /* SZDisplay.m */; };
-		AAB5E4EE159044E600D3EBDF /* SZLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008705158D35BF00480399 /* SZLikeButton.m */; };
 		AAB5E4F2159044E600D3EBDF /* SZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870D158D35BF00480399 /* SZNavigationController.m */; };
 		AAB5E4F3159044E600D3EBDF /* _SZUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870F158D35BF00480399 /* _SZUserProfileViewController.m */; };
 		AAB5E4F4159044E600D3EBDF /* _SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008711158D35BF00480399 /* _SZUserSettingsViewController.m */; };
@@ -1274,7 +1271,6 @@
 		AAB5E533159044F900D3EBDF /* SocializeActionBarDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008629158D35BD00480399 /* SocializeActionBarDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E534159044F900D3EBDF /* _SZTwitterLinkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086CF158D35BE00480399 /* _SZTwitterLinkViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E535159044F900D3EBDF /* SocializeConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008657158D35BD00480399 /* SocializeConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAB5E536159044F900D3EBDF /* SZLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008704158D35BF00480399 /* SZLikeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E537159044F900D3EBDF /* SampleEntityLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008621158D35BD00480399 /* SampleEntityLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E538159044F900D3EBDF /* SZNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00870C158D35BF00480399 /* SZNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E539159044F900D3EBDF /* SZActionBarUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086E9158D35BF00480399 /* SZActionBarUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1509,6 +1505,10 @@
 		AAD98FA115916C6900845FC9 /* SZShareDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD98F9E15916C6900845FC9 /* SZShareDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAD98FA215916C6900845FC9 /* SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD98F9F15916C6900845FC9 /* SZShareDialogViewController.m */; };
 		AAD98FA315916C6900845FC9 /* SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD98F9F15916C6900845FC9 /* SZShareDialogViewController.m */; };
+		AADFE5E515967A0E00FE2B61 /* SZLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */; };
+		AADFE5E615967A0E00FE2B61 /* SZLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */; };
+		AADFE5E715967A0E00FE2B61 /* SZLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5E415967A0E00FE2B61 /* SZLikeButton.m */; };
+		AADFE5E815967A0E00FE2B61 /* SZLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5E415967A0E00FE2B61 /* SZLikeButton.m */; };
 		AAE9E1DE1590012300B2B9FC /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
 		AAE9E25515902BA300B2B9FC /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */; };
 		AAF098DA158FB447005726C2 /* SZTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6431158F10D7005E5632 /* SZTestHelper.m */; };
@@ -1955,8 +1955,6 @@
 		AA008701158D35BF00480399 /* SZEntityUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZEntityUtils.m; path = "Socialize-noarc/SZEntityUtils.m"; sourceTree = SOURCE_ROOT; };
 		AA008702158D35BF00480399 /* SZFacebookUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZFacebookUtils.h; path = "Socialize-noarc/SZFacebookUtils.h"; sourceTree = SOURCE_ROOT; };
 		AA008703158D35BF00480399 /* SZFacebookUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZFacebookUtils.m; path = "Socialize-noarc/SZFacebookUtils.m"; sourceTree = SOURCE_ROOT; };
-		AA008704158D35BF00480399 /* SZLikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLikeButton.h; sourceTree = "<group>"; };
-		AA008705158D35BF00480399 /* SZLikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLikeButton.m; sourceTree = "<group>"; };
 		AA008706158D35BF00480399 /* SZLikeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZLikeOptions.h; path = "Socialize-noarc/SZLikeOptions.h"; sourceTree = SOURCE_ROOT; };
 		AA008707158D35BF00480399 /* SZLikeOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZLikeOptions.m; path = "Socialize-noarc/SZLikeOptions.m"; sourceTree = SOURCE_ROOT; };
 		AA008708158D35BF00480399 /* SZLikeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZLikeUtils.h; path = "Socialize-noarc/SZLikeUtils.h"; sourceTree = SOURCE_ROOT; };
@@ -2538,6 +2536,8 @@
 		AAD98F9B1591682000845FC9 /* _SZShareDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SZShareDialogViewController.m; sourceTree = "<group>"; };
 		AAD98F9E15916C6900845FC9 /* SZShareDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZShareDialogViewController.h; sourceTree = "<group>"; };
 		AAD98F9F15916C6900845FC9 /* SZShareDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZShareDialogViewController.m; sourceTree = "<group>"; };
+		AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLikeButton.h; sourceTree = "<group>"; };
+		AADFE5E415967A0E00FE2B61 /* SZLikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLikeButton.m; sourceTree = "<group>"; };
 		AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlocksKit.xcodeproj; path = ThirdParty/BlocksKit/BlocksKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3665,6 +3665,8 @@
 		AA9701AA159644B2006CDC8E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */,
+				AADFE5E415967A0E00FE2B61 /* SZLikeButton.m */,
 				AA008685158D35BE00480399 /* SZHorizontalContainerView.h */,
 				AA008686158D35BE00480399 /* SZHorizontalContainerView.m */,
 				AA0086E7158D35BF00480399 /* SZActionBar.h */,
@@ -3765,8 +3767,6 @@
 				AA0086C8158D35BE00480399 /* SocializeTableViewController.m */,
 				AA0086FE158D35BF00480399 /* SZDisplay.h */,
 				AA0086FF158D35BF00480399 /* SZDisplay.m */,
-				AA008704158D35BF00480399 /* SZLikeButton.h */,
-				AA008705158D35BF00480399 /* SZLikeButton.m */,
 				AA00870C158D35BF00480399 /* SZNavigationController.h */,
 				AA00870D158D35BF00480399 /* SZNavigationController.m */,
 				AA00870E158D35BF00480399 /* _SZUserProfileViewController.h */,
@@ -3875,7 +3875,6 @@
 				AA1C1C15158EF3EC00A763CA /* SocializeActionBarDelegate.h in Headers */,
 				AA1C1C16158EF3F100A763CA /* _SZTwitterLinkViewController.h in Headers */,
 				AA1C1C17158EF3FA00A763CA /* SocializeConfiguration.h in Headers */,
-				AA1C1C18158EF40200A763CA /* SZLikeButton.h in Headers */,
 				AA1C1C19158EF40700A763CA /* SampleEntityLoader.h in Headers */,
 				AA1C1C1A158EF41000A763CA /* SZNavigationController.h in Headers */,
 				AA1C1C1B158EF43700A763CA /* SZActionBarUtils.h in Headers */,
@@ -3936,6 +3935,7 @@
 				AAAC1690159339D800804916 /* SZComposeCommentViewController.h in Headers */,
 				AAAC1691159339D800804916 /* SZCommentsListViewController.h in Headers */,
 				AA0602B415965A22002D2535 /* SZActionBarItem.h in Headers */,
+				AADFE5E515967A0E00FE2B61 /* SZLikeButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3957,7 +3957,6 @@
 				AAB5E533159044F900D3EBDF /* SocializeActionBarDelegate.h in Headers */,
 				AAB5E534159044F900D3EBDF /* _SZTwitterLinkViewController.h in Headers */,
 				AAB5E535159044F900D3EBDF /* SocializeConfiguration.h in Headers */,
-				AAB5E536159044F900D3EBDF /* SZLikeButton.h in Headers */,
 				AAB5E537159044F900D3EBDF /* SampleEntityLoader.h in Headers */,
 				AAB5E538159044F900D3EBDF /* SZNavigationController.h in Headers */,
 				AAB5E539159044F900D3EBDF /* SZActionBarUtils.h in Headers */,
@@ -4017,6 +4016,7 @@
 				AAAC16891593398300804916 /* SDKHelpers.h in Headers */,
 				AAAC1692159339D900804916 /* SZUserSettingsViewController.h in Headers */,
 				AA0602B515965A22002D2535 /* SZActionBarItem.h in Headers */,
+				AADFE5E615967A0E00FE2B61 /* SZLikeButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5392,6 +5392,7 @@
 				AA6D5A871592F34000058669 /* SZFacebookLinkOptions.m in Sources */,
 				AA9701DB15964711006CDC8E /* SZActionBar.m in Sources */,
 				AA97020B15964768006CDC8E /* SZHorizontalContainerView.m in Sources */,
+				AADFE5E715967A0E00FE2B61 /* SZLikeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5505,7 +5506,6 @@
 				AA0087AE158D35C000480399 /* _SZCommentsListViewController.m in Sources */,
 				AA0087B0158D35C000480399 /* _SZComposeCommentViewController.m in Sources */,
 				AA0087B2158D35C000480399 /* SZDisplay.m in Sources */,
-				AA0087B5158D35C000480399 /* SZLikeButton.m in Sources */,
 				AA0087B9158D35C000480399 /* SZNavigationController.m in Sources */,
 				AA0087BA158D35C000480399 /* _SZUserProfileViewController.m in Sources */,
 				AA0087BB158D35C000480399 /* _SZUserSettingsViewController.m in Sources */,
@@ -5802,7 +5802,6 @@
 				AAB5E4E7159044E600D3EBDF /* _SZCommentsListViewController.m in Sources */,
 				AAB5E4E9159044E600D3EBDF /* _SZComposeCommentViewController.m in Sources */,
 				AAB5E4EB159044E600D3EBDF /* SZDisplay.m in Sources */,
-				AAB5E4EE159044E600D3EBDF /* SZLikeButton.m in Sources */,
 				AAB5E4F2159044E600D3EBDF /* SZNavigationController.m in Sources */,
 				AAB5E4F3159044E600D3EBDF /* _SZUserProfileViewController.m in Sources */,
 				AAB5E4F4159044E600D3EBDF /* _SZUserSettingsViewController.m in Sources */,
@@ -5869,6 +5868,7 @@
 				AA6D5A881592F34000058669 /* SZFacebookLinkOptions.m in Sources */,
 				AA9701DA15964711006CDC8E /* SZActionBar.m in Sources */,
 				AA97020C15964769006CDC8E /* SZHorizontalContainerView.m in Sources */,
+				AADFE5E815967A0E00FE2B61 /* SZLikeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
