@@ -35,6 +35,7 @@ typedef enum {
 
 @property (nonatomic, strong) id<SocializeEntity> serverEntity;
 @property (nonatomic, strong) NSTimer *recoveryTimer;
+@property (nonatomic, getter=isLiked) BOOL liked;
 
 @end
 
@@ -51,6 +52,7 @@ typedef enum {
 @synthesize entity = entity_;
 @synthesize recoveryTimer = recoveryTimer_;
 @synthesize serverEntity = serverEntity_;
+@synthesize liked = liked_;
 
 @synthesize initState = initState_;
 @synthesize hideCount = hideCount_;
@@ -67,7 +69,7 @@ typedef enum {
     if (self) {
         [self configureButtonBackgroundImages];
 
-        self.entity = entity;
+        entity_ = entity;
         self.viewController = viewController;
         
         self.actualButton.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -96,16 +98,11 @@ typedef enum {
 }
 
 - (UIImage*)currentIcon {
-    if ([self liked]) {
+    if (self.isLiked) {
         return self.likedIcon;
     } else {
         return self.unlikedIcon;
     }
-}
-
-- (void)setServerEntity:(id<SocializeEntity>)serverEntity {
-    serverEntity_ = serverEntity;
-    [self updateViewFromServerEntity:self.serverEntity];
 }
 
 - (void)attemptRecovery {
@@ -133,20 +130,13 @@ typedef enum {
     }
 }
 
-- (BOOL)isLiked {
-    return SZEntityIsLiked(self.serverEntity);
-}
-
-- (BOOL)liked {
-    return [self isLiked];
-}
-
 - (void)createEntityOnServer {
     [SZEntityUtils addEntity:self.entity success:^(id<SZEntity> entity) {
-        self.serverEntity = entity;
+        [self configureForNewServerEntity:entity];
         self.initState = SZLikeButtonInitStateCompletedEntityCreate;
         [self tryToFinishInitializing];
     } failure:^(NSError *error) {
+        self.initState = SZLikeButtonInitStateInitNotStarted;
         [self startRecoveryTimer];
     }];
 }
@@ -156,17 +146,28 @@ typedef enum {
 }
 
 - (void)tryToFinishInitializing {
-    if (self.initState == SZLikeButtonInitStateCompleted) {
+    if ([self initialized]) {
         return;
     }
-    
+
     if (self.entity == nil) {
         return;
     }
     
-    if (self.initState < SZLikeButtonInitStateInitNotStarted) {
-        [self createEntityOnServer];
-        return;
+    if (self.initState < SZLikeButtonInitStateRequestedEntityCreate) {
+        if ([self.entity isFromServer]) {
+            
+            // Already a server entity -- set state and continue
+            [self configureForNewServerEntity:self.entity];
+            self.initState = SZLikeButtonInitStateCompletedEntityCreate;
+
+        } else {
+            
+            // Not a server entity - go fetch it
+            self.initState = SZLikeButtonInitStateRequestedEntityCreate;
+            [self createEntityOnServer];
+            return;
+        }
     }
     
     if (self.initState < SZLikeButtonInitStateCompletedEntityCreate) {
@@ -195,9 +196,12 @@ typedef enum {
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
-    self.actualButton.enabled = NO;
     [self autoresize];
-    [self tryToFinishInitializing];
+    
+    if (![self initialized]) {
+        self.actualButton.enabled = NO;
+        [self tryToFinishInitializing];
+    }
 }
 
 + (UIImage*)defaultDisabledImage {
@@ -354,7 +358,8 @@ typedef enum {
     self.actualButton.enabled = NO;
     
     [SZLikeUtils unlike:self.entity success:^(id<SZLike> like) {
-        self.serverEntity = like.entity;
+        self.liked = NO;
+        [self configureForNewServerEntity:like.entity];
         self.actualButton.enabled = YES;
         [self configureButtonBackgroundImages];
         [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
@@ -364,22 +369,36 @@ typedef enum {
     }];
 }
 
+- (void)configureForNewServerEntity:(id<SZEntity>)entity {
+    NSAssert([entity isFromServer], @"Not a server entity");
+    self.serverEntity = entity;
+    [self configureButtonBackgroundImages];
+    [self updateViewFromServerEntity:self.serverEntity];
+    
+    if ([entity userActionSummary] != nil) {
+        self.liked = SZEntityIsLiked(entity);
+    }
+}
+
 - (void)likeOnServer {
     self.actualButton.enabled = NO;
 
     [SZLikeUtils likeWithViewController:self.viewController options:nil entity:self.entity success:^(id<SZLike> like) {
 
         // Like succeeded
+        self.liked = YES;
         self.actualButton.enabled = YES;
-        self.serverEntity = like.entity;
-        [self configureButtonBackgroundImages];
+        [self configureForNewServerEntity:like.entity];
         [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
         
     } failure:^(NSError *error) {
         
         // Like failed
         self.actualButton.enabled = YES;
-        [self failWithError:error];
+        
+        if (![error isSocializeErrorWithCode:SocializeErrorLikeCancelledByUser]) {
+            [self failWithError:error];
+        }
     }];
 }
 
@@ -406,6 +425,7 @@ typedef enum {
     self.initState = SZLikeButtonInitStateInitNotStarted;
     self.serverEntity = nil;
     self.actualButton.enabled = NO;
+    self.liked = NO;
     
     [self tryToFinishInitializing];
 }

@@ -14,14 +14,16 @@
 @synthesize initialPadding = _initialPadding;
 @synthesize padding = _padding;
 
-- (void)removeAllSubviews {
+- (void)removeUnneededSubviews {
     for (UIView *subview in self.subviews) {
-        [subview removeFromSuperview];
+        if (![self.columns containsObject:subview]) {
+            [subview removeFromSuperview];
+        }
     }
 }
 
 - (void)layoutColumns {
-    [self removeAllSubviews];
+    [self removeUnneededSubviews];
     
     // Currently always lays out right-justified
     

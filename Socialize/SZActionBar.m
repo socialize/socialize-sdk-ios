@@ -9,6 +9,9 @@
 #import "SZActionBar.h"
 #import "SZHorizontalContainerView.h"
 #import "SZLikeButton.h"
+#import "SZEntityUtils.h"
+#import "SDKHelpers.h"
+#import "SZActionBarItem.h"
 
 @interface SZActionBar ()
 @property (nonatomic, strong) SZHorizontalContainerView *buttonsContainer;
@@ -19,12 +22,13 @@
 @synthesize items = _items;
 @synthesize buttonsContainer = _buttonsContainer;
 @synthesize entity = _entity;
+@synthesize serverEntity = _serverEntity;
 @synthesize viewController = _viewController;
 @synthesize testView = _testView;
 @synthesize betweenButtonsPadding = _betweenButtonsPadding;
 
 + (id)defaultActionBarWithFrame:(CGRect)frame entity:(id<SZEntity>)entity viewController:(UIViewController*)viewController {
-    SZLikeButton *likeButton = [[SZLikeButton alloc] initWithFrame:CGRectZero entity:entity viewController:viewController];
+    SZLikeButton *likeButton = [[SZLikeButton alloc] initWithFrame:CGRectZero entity:nil viewController:viewController];
     
     UIView *purpleBlock = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     purpleBlock.backgroundColor = [UIColor purpleColor];
@@ -36,13 +40,15 @@
     return [[self alloc] initWithFrame:frame entity:entity viewController:viewController items:items];
 }
 
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController *)controller items:(NSArray*)items {
+- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController *)viewController items:(NSArray*)items {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         
         self.betweenButtonsPadding = [[self class] defaultBetweenButtonsPadding];
         
+        self.entity = entity;
+        self.viewController = viewController;
         self.items = items;
         
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
@@ -116,12 +122,39 @@
     [self autoresizeForSuperview:self.superview];
 }
 
+- (void)configureForNewServerEntity:(id<SZEntity>)entity {
+    self.serverEntity = entity;
+    for (id<SZActionBarItem> item in self.items) {
+        if ([item conformsToProtocol:@protocol(SZActionBarItem)]) {
+            [item setEntity:entity];
+        }
+    }
+}
+
+- (void)initializeEntity {
+    if (self.entity == nil) {
+        return;
+    }
+    
+    if ([self.entity isFromServer]) {
+        [self configureForNewServerEntity:self.entity];
+    } else {
+        [SZEntityUtils addEntity:self.entity success:^(id<SZEntity> entity) {
+            [self configureForNewServerEntity:entity];
+        } failure:^(NSError *error) {
+            SZEmitUIError(self, error);
+        }];
+    }
+}
+
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     
     // Autosize if we don't yet have a nonzero frame
     if (CGRectIsEmpty(self.frame)) {
         [self autoresizeForSuperview:newSuperview];
     }
+    
+    [self initializeEntity];
 }
 
 - (void)drawRect:(CGRect)rect 

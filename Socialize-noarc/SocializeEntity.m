@@ -38,6 +38,10 @@
     return entity;
 }
 
+- (NSString*)description {
+    return [NSString stringWithFormat:@"%@/%@, %d/%d/%d, %@", [self key], [self name], [self comments], [self likes], [self shares], [self userActionSummary]];
+}
+
 @end
 
 NSDictionary *SZServerParamsForEntity(id<SZEntity> entity) {
@@ -53,6 +57,6 @@ NSDictionary *SZServerParamsForEntity(id<SZEntity> entity) {
 }
 
 BOOL SZEntityIsLiked(id<SZEntity> entity) {
-    return [[[entity userActionSummary] objectForKey:@"liked"] integerValue] > 0;
+    return [[[entity userActionSummary] objectForKey:@"likes"] integerValue] > 0;
 }
 

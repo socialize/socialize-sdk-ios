@@ -24,6 +24,9 @@
  */
 -(void) setObjectID:(int)objectID;
 
+- (BOOL)isFromServer;
+- (void)setFromServer:(BOOL)fromServer;
+
 @end
 
 /**
@@ -37,5 +40,7 @@
 
 /**Set/get object unique identificator*/
 @property(nonatomic, assign) int objectID;
+
+@property (nonatomic, assign, getter=isFromServer) BOOL fromServer;
 
 @end

@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "SocializeObjects.h"
+#import "SZActionBarItem.h"
 
-@interface SZLikeButton : UIView
+@interface SZLikeButton : UIView <SZActionBarItem>
 
 @property (nonatomic, readonly) BOOL initialized;
 
 @property (nonatomic, strong) UIButton *actualButton;
 
-@property (nonatomic, readonly) BOOL liked;
-@property (nonatomic, readonly) BOOL isLiked;
+@property (nonatomic, readonly, getter=isLiked) BOOL liked;
 
 // begin-image-properties
 

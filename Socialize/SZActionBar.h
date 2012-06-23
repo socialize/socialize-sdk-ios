@@ -18,6 +18,7 @@
 + (CGFloat)defaultBetweenButtonsPadding;
 
 @property (nonatomic, strong) id<SZEntity> entity;
+@property (nonatomic, strong) id<SZEntity> serverEntity;
 @property (nonatomic, strong) UIViewController *viewController;
 @property (nonatomic, strong) NSArray *items;
 @property (nonatomic, strong) UIView *testView;

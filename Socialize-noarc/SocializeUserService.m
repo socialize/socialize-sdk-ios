@@ -172,7 +172,9 @@
                                                            resourcePath:USER_LIKE_ENDPOINT([user objectID])
                                                      expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                                                  params:params];
-    request.successBlock = success;
+    request.successBlock = ^(NSArray *likes) {
+        BLOCK_CALL_1(success, [likes objectAtIndex:0]);
+    };
     request.failureBlock = failure;
 
     request.expectedProtocol = @protocol(SZLike);
