@@ -166,6 +166,8 @@
 		AA00884F158D424100480399 /* UITableView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008843158D424100480399 /* UITableView+Resize.m */; };
 		AA008850158D424100480399 /* UITableView+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008845158D424100480399 /* UITableView+Socialize.m */; };
 		AA0089AC158D6F4E00480399 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0089AB158D6F4E00480399 /* DataHelper.m */; };
+		AA0602B415965A22002D2535 /* SZActionBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0602B315965A22002D2535 /* SZActionBarItem.h */; };
+		AA0602B515965A22002D2535 /* SZActionBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0602B315965A22002D2535 /* SZActionBarItem.h */; };
 		AA081873159046670046D661 /* libSocialize-noarc-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E51F159044E600D3EBDF /* libSocialize-noarc-profiling.a */; };
 		AA0C6016158FC4F000F66A3B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
 		AA0C6017158FC4F000F66A3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
@@ -2032,6 +2034,7 @@
 		AA008845158D424100480399 /* UITableView+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Socialize.m"; sourceTree = "<group>"; };
 		AA0089AA158D6F4E00480399 /* DataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHelper.h; sourceTree = "<group>"; };
 		AA0089AB158D6F4E00480399 /* DataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHelper.m; sourceTree = "<group>"; };
+		AA0602B315965A22002D2535 /* SZActionBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionBarItem.h; sourceTree = "<group>"; };
 		AA0C6014158FC4F000F66A3B /* UnitTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0C601B158FC4F000F66A3B /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		AA0C601D158FC4F000F66A3B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -3666,6 +3669,7 @@
 				AA008686158D35BE00480399 /* SZHorizontalContainerView.m */,
 				AA0086E7158D35BF00480399 /* SZActionBar.h */,
 				AA0086E8158D35BF00480399 /* SZActionBar.m */,
+				AA0602B315965A22002D2535 /* SZActionBarItem.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -3931,6 +3935,7 @@
 				AAAC168F159339D800804916 /* SZLinkDialogViewController.h in Headers */,
 				AAAC1690159339D800804916 /* SZComposeCommentViewController.h in Headers */,
 				AAAC1691159339D800804916 /* SZCommentsListViewController.h in Headers */,
+				AA0602B415965A22002D2535 /* SZActionBarItem.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4011,6 +4016,7 @@
 				AAAC16871593397400804916 /* SZActionBar.h in Headers */,
 				AAAC16891593398300804916 /* SDKHelpers.h in Headers */,
 				AAAC1692159339D900804916 /* SZUserSettingsViewController.h in Headers */,
+				AA0602B515965A22002D2535 /* SZActionBarItem.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

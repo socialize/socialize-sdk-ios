@@ -184,7 +184,7 @@ static TestAppListViewController *sharedSampleListViewController;
     }]];
 
     NSMutableArray *actionBarRows = [NSMutableArray array];
-    [actionBarRows addObject:[self rowWithIdentifier:kHandleDirectURLSmartAlertRow text:@"Show Action Bar Example" executionBlock:^{
+    [actionBarRows addObject:[self rowWithIdentifier:kShowActionBarExampleRow text:@"Show Action Bar Example" executionBlock:^{
         ActionBarExampleViewController *actionBarExample = [[ActionBarExampleViewController alloc] init];
         SZNavigationController *nav = [[SZNavigationController alloc] initWithRootViewController:actionBarExample];
         [self presentModalViewController:nav animated:YES];
@@ -240,6 +240,11 @@ static TestAppListViewController *sharedSampleListViewController;
     self.tableView.accessibilityLabel = @"tableView";
     
 //    [self createSections];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    NSIndexPath *indexPath = [self indexPathForRowIdentifier:kShowActionBarExampleRow];
+    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 }
 
 //- (NSArray*)sections {

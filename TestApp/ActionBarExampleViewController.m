@@ -30,7 +30,8 @@
 {
     [super viewDidLoad];
     
-    self.actionBar = [[SZActionBar alloc] initWithFrame:CGRectMake(0, 300, 0, 0)];
+    SZEntity *entity = [SZEntity entityWithKey:@"Key" name:@"Name"];
+    self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectMake(0, 300, 0, 0) entity:entity viewController:self];
     [self.view addSubview:self.actionBar];
     
     self.oldActionBar = [SocializeActionBar actionBarWithKey:@"Something" name:@"Something" presentModalInController:self];
@@ -53,7 +54,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait) || UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 @end

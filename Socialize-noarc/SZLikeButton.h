@@ -42,6 +42,7 @@
 
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)controller;
 - (void)refresh;
+- (void)autoresize;
 
 
 @end

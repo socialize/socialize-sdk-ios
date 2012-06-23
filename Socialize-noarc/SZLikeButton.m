@@ -87,6 +87,8 @@ typedef enum {
         
         self.actualButton.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         [self addSubview:self.actualButton];
+        
+        [self autoresize];
     }
     return self;
 }
@@ -98,7 +100,7 @@ typedef enum {
 
 - (void)updateButtonTitle:(NSString*)title {
     [self.actualButton setTitle:title forState:UIControlStateNormal];
-    [self resizeButton];
+    [self autoresize];
 }
 
 - (void)updateViewFromServerEntity:(id<SocializeEntity>)serverEntity {
@@ -209,7 +211,7 @@ typedef enum {
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     self.actualButton.enabled = NO;
-    [self resizeButton];
+    [self autoresize];
     [self tryToFinishInitializing];
 }
 
@@ -436,7 +438,7 @@ typedef enum {
 	return buttonSize;
 }
 
-- (void)resizeButton {
+- (void)autoresize {
     if (!self.autoresizeDisabled) {
         CGRect frame = self.frame;
         CGSize currentSize = [self currentButtonSize];

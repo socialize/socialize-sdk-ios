@@ -9,7 +9,10 @@
 #import "SZHorizontalContainerView.h"
 
 @implementation SZHorizontalContainerView
-@synthesize columns = columns_;
+@synthesize columns = _columns;
+@synthesize centerColumns = _centerColumns;
+@synthesize initialPadding = _initialPadding;
+@synthesize padding = _padding;
 
 - (void)removeAllSubviews {
     for (UIView *subview in self.subviews) {
@@ -22,18 +25,22 @@
     
     // Currently always lays out right-justified
     
-    CGFloat curX = self.frame.size.width;
+    CGFloat curX = self.frame.size.width - self.initialPadding;
     
     for (UIView *view in [self.columns reverseObjectEnumerator]) {
         CGFloat x = curX - view.frame.size.width;
-        view.frame = CGRectMake(x, 0, view.frame.size.width, view.frame.size.height);
+        
+        CGFloat y = self.centerColumns ? self.frame.size.height / 2.f - view.frame.size.height / 2.f : 0;
+        
+        view.frame = CGRectMake(x, y, view.frame.size.width, view.frame.size.height);
         [self addSubview:view];
         
-        curX -= view.frame.size.width;
+        curX -= view.frame.size.width + self.padding;
     }
 }
 
-- (void)willMoveToSuperview:(UIView *)newSuperview {
+- (void)setColumns:(NSArray *)columns {
+    _columns = columns;
     [self layoutColumns];
 }
 
