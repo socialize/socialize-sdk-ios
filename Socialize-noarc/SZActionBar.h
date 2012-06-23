@@ -10,6 +10,6 @@
 
 @interface SZActionBar : UIView
 
-@property (nonatomic, retain) UIImage *backgroundImage;
+@property (nonatomic, strong) UIImage *backgroundImage;
 
 @end

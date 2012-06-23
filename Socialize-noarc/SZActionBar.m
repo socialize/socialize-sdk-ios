@@ -18,7 +18,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
         self.backgroundColor = [UIColor whiteColor];
     }
     return self;
@@ -41,11 +40,13 @@
 }
 
 - (void)setBackgroundImage:(UIImage *)backgroundImage {
-    NonatomicRetainedSetToFrom(_backgroundImage, backgroundImage);
+    _backgroundImage = backgroundImage;
     [self setNeedsDisplay];
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
+    
+    // Autosize if we don't yet have a nonzero frame
     if (CGRectIsEmpty(self.frame)) {
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, newSuperview.frame.size.width, [[self class] defaultHeight]);
     }
