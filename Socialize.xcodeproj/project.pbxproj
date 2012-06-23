@@ -93,7 +93,6 @@
 		AA008778158D35BF00480399 /* SocializeFullUser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008680158D35BD00480399 /* SocializeFullUser.m */; };
 		AA008779158D35BF00480399 /* SocializeFullUserJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008682158D35BD00480399 /* SocializeFullUserJSONFormatter.m */; };
 		AA00877A158D35BF00480399 /* SocializeGeocoderAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008684158D35BD00480399 /* SocializeGeocoderAdapter.m */; };
-		AA00877B158D35BF00480399 /* SocializeHorizontalContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008686158D35BE00480399 /* SocializeHorizontalContainerView.m */; };
 		AA00877C158D35BF00480399 /* SocializeKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008688158D35BE00480399 /* SocializeKeyboardListener.m */; };
 		AA00877D158D35BF00480399 /* SocializeLike.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00868A158D35BE00480399 /* SocializeLike.m */; };
 		AA00877E158D35BF00480399 /* SocializeLikeJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00868C158D35BE00480399 /* SocializeLikeJSONFormatter.m */; };
@@ -1048,6 +1047,8 @@
 		AA9701A915953942006CDC8E /* FacebookUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9701A815953942006CDC8E /* FacebookUtilsTests.m */; };
 		AA9701DA15964711006CDC8E /* SZActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086E8158D35BF00480399 /* SZActionBar.m */; };
 		AA9701DB15964711006CDC8E /* SZActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086E8158D35BF00480399 /* SZActionBar.m */; };
+		AA97020B15964768006CDC8E /* SZHorizontalContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008686158D35BE00480399 /* SZHorizontalContainerView.m */; };
+		AA97020C15964769006CDC8E /* SZHorizontalContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008686158D35BE00480399 /* SZHorizontalContainerView.m */; };
 		AAAC15C6159328A800804916 /* SocializeActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00862C158D35BD00480399 /* SocializeActivity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAC1641159328FF00804916 /* SocializeError.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008673158D35BD00480399 /* SocializeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAC1642159328FF00804916 /* SocializeEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00866D158D35BD00480399 /* SocializeEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1179,7 +1180,6 @@
 		AAB5E4B5159044E600D3EBDF /* SocializeFullUser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008680158D35BD00480399 /* SocializeFullUser.m */; };
 		AAB5E4B6159044E600D3EBDF /* SocializeFullUserJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008682158D35BD00480399 /* SocializeFullUserJSONFormatter.m */; };
 		AAB5E4B7159044E600D3EBDF /* SocializeGeocoderAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008684158D35BD00480399 /* SocializeGeocoderAdapter.m */; };
-		AAB5E4B8159044E600D3EBDF /* SocializeHorizontalContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008686158D35BE00480399 /* SocializeHorizontalContainerView.m */; };
 		AAB5E4B9159044E600D3EBDF /* SocializeKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008688158D35BE00480399 /* SocializeKeyboardListener.m */; };
 		AAB5E4BA159044E600D3EBDF /* SocializeLike.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00868A158D35BE00480399 /* SocializeLike.m */; };
 		AAB5E4BB159044E600D3EBDF /* SocializeLikeJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00868C158D35BE00480399 /* SocializeLikeJSONFormatter.m */; };
@@ -1839,8 +1839,8 @@
 		AA008682158D35BD00480399 /* SocializeFullUserJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeFullUserJSONFormatter.m; sourceTree = "<group>"; };
 		AA008683158D35BD00480399 /* SocializeGeocoderAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeGeocoderAdapter.h; sourceTree = "<group>"; };
 		AA008684158D35BD00480399 /* SocializeGeocoderAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeGeocoderAdapter.m; sourceTree = "<group>"; };
-		AA008685158D35BE00480399 /* SocializeHorizontalContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeHorizontalContainerView.h; sourceTree = "<group>"; };
-		AA008686158D35BE00480399 /* SocializeHorizontalContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeHorizontalContainerView.m; sourceTree = "<group>"; };
+		AA008685158D35BE00480399 /* SZHorizontalContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZHorizontalContainerView.h; path = "Socialize-noarc/SZHorizontalContainerView.h"; sourceTree = SOURCE_ROOT; };
+		AA008686158D35BE00480399 /* SZHorizontalContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZHorizontalContainerView.m; path = "Socialize-noarc/SZHorizontalContainerView.m"; sourceTree = SOURCE_ROOT; };
 		AA008687158D35BE00480399 /* SocializeKeyboardListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeKeyboardListener.h; sourceTree = "<group>"; };
 		AA008688158D35BE00480399 /* SocializeKeyboardListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeKeyboardListener.m; sourceTree = "<group>"; };
 		AA008689158D35BE00480399 /* SocializeLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeLike.h; sourceTree = "<group>"; };
@@ -3662,6 +3662,8 @@
 		AA9701AA159644B2006CDC8E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA008685158D35BE00480399 /* SZHorizontalContainerView.h */,
+				AA008686158D35BE00480399 /* SZHorizontalContainerView.m */,
 				AA0086E7158D35BF00480399 /* SZActionBar.h */,
 				AA0086E8158D35BF00480399 /* SZActionBar.m */,
 			);
@@ -3681,8 +3683,6 @@
 		AAD1FF6C158EB21E00D908EC /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				AA008685158D35BE00480399 /* SocializeHorizontalContainerView.h */,
-				AA008686158D35BE00480399 /* SocializeHorizontalContainerView.m */,
 				AA008683158D35BD00480399 /* SocializeGeocoderAdapter.h */,
 				AA008684158D35BD00480399 /* SocializeGeocoderAdapter.m */,
 				AA008687158D35BE00480399 /* SocializeKeyboardListener.h */,
@@ -5385,6 +5385,7 @@
 				AA552F601592EF260020E0E4 /* SZCommentsListViewController.m in Sources */,
 				AA6D5A871592F34000058669 /* SZFacebookLinkOptions.m in Sources */,
 				AA9701DB15964711006CDC8E /* SZActionBar.m in Sources */,
+				AA97020B15964768006CDC8E /* SZHorizontalContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5455,7 +5456,6 @@
 				AA008778158D35BF00480399 /* SocializeFullUser.m in Sources */,
 				AA008779158D35BF00480399 /* SocializeFullUserJSONFormatter.m in Sources */,
 				AA00877A158D35BF00480399 /* SocializeGeocoderAdapter.m in Sources */,
-				AA00877B158D35BF00480399 /* SocializeHorizontalContainerView.m in Sources */,
 				AA00877C158D35BF00480399 /* SocializeKeyboardListener.m in Sources */,
 				AA00877D158D35BF00480399 /* SocializeLike.m in Sources */,
 				AA00877E158D35BF00480399 /* SocializeLikeJSONFormatter.m in Sources */,
@@ -5753,7 +5753,6 @@
 				AAB5E4B5159044E600D3EBDF /* SocializeFullUser.m in Sources */,
 				AAB5E4B6159044E600D3EBDF /* SocializeFullUserJSONFormatter.m in Sources */,
 				AAB5E4B7159044E600D3EBDF /* SocializeGeocoderAdapter.m in Sources */,
-				AAB5E4B8159044E600D3EBDF /* SocializeHorizontalContainerView.m in Sources */,
 				AAB5E4B9159044E600D3EBDF /* SocializeKeyboardListener.m in Sources */,
 				AAB5E4BA159044E600D3EBDF /* SocializeLike.m in Sources */,
 				AAB5E4BB159044E600D3EBDF /* SocializeLikeJSONFormatter.m in Sources */,
@@ -5863,6 +5862,7 @@
 				AA552F611592EF260020E0E4 /* SZCommentsListViewController.m in Sources */,
 				AA6D5A881592F34000058669 /* SZFacebookLinkOptions.m in Sources */,
 				AA9701DA15964711006CDC8E /* SZActionBar.m in Sources */,
+				AA97020C15964769006CDC8E /* SZHorizontalContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@
 @synthesize horizontalContainerView = horizontalContainerView_;
 
 - (void)setUp {
-    self.horizontalContainerView = [[[SocializeHorizontalContainerView alloc] init] autorelease];
+    self.horizontalContainerView = [[[SZHorizontalContainerView alloc] init] autorelease];
     self.horizontalContainerView = [OCMockObject partialMockForObject:self.horizontalContainerView];
 }
 

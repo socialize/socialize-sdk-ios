@@ -15,7 +15,7 @@
 #import "CommentsTableViewCell.h"
 #import "SocializeGeocoderAdapter.h"
 #import "SocializeComposeMessageViewController.h"
-#import "SocializeHorizontalContainerView.h"
+#import "SZHorizontalContainerView.h"
 
 @interface SocializeComposeMessageViewController ()
 - (void)setShareLocation:(BOOL)shareLocation;
@@ -86,7 +86,7 @@
     self.mockSendButton = [OCMockObject mockForClass:[UIBarButtonItem class]];
     self.composeMessageViewController.sendButton = self.mockSendButton;
     
-    self.mockMessageActionButtonContainer = [OCMockObject mockForClass:[SocializeHorizontalContainerView class]];
+    self.mockMessageActionButtonContainer = [OCMockObject mockForClass:[SZHorizontalContainerView class]];
     self.composeMessageViewController.messageActionButtonContainer = self.mockMessageActionButtonContainer;
     
     self.mockLocationManager = [OCMockObject mockForClass:[SocializeLocationManager class]];

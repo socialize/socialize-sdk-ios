@@ -19,7 +19,7 @@
 #import "NSString+PlaceMark.h"
 #import "SocializeFacebookInterface.h"
 #import "SocializePrivateDefinitions.h"
-#import "SocializeHorizontalContainerView.h"
+#import "SZHorizontalContainerView.h"
 
 #define NO_CITY_MSG @"Could not locate the place name."
 

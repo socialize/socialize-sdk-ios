@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SocializeHorizontalContainerView : UIView
+@interface SZHorizontalContainerView : UIView
 
 @property (nonatomic, retain) NSArray *columns;
 

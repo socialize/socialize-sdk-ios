@@ -16,7 +16,7 @@
 
 @class SocializeLocationManager;
 @class CommentMapView;
-@class SocializeHorizontalContainerView;
+@class SZHorizontalContainerView;
 
 @interface SocializeComposeMessageViewController : SocializeBaseViewController <UITextViewDelegate, MKMapViewDelegate, SocializeServiceDelegate>
 {
@@ -39,7 +39,7 @@
 @property(nonatomic, retain) IBOutlet UIView *upperContainer;
 @property(nonatomic, retain) IBOutlet UIView *mapContainer;
 @property(nonatomic, retain) UIBarButtonItem *sendButton;
-@property(nonatomic, retain) IBOutlet SocializeHorizontalContainerView *messageActionButtonContainer;
+@property(nonatomic, retain) IBOutlet SZHorizontalContainerView *messageActionButtonContainer;
 @property(nonatomic, retain) NSArray *messageActionButtons;
 @property(nonatomic, copy) NSString *currentLocationDescription;
 @property (nonatomic, retain) SocializeLocationManager *locationManager;

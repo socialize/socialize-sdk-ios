@@ -7,8 +7,8 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
-#import "SocializeHorizontalContainerView.h"
+#import "SZHorizontalContainerView.h"
 
 @interface SocializeHorizontalLayoutTests : GHAsyncTestCase
-@property (nonatomic, retain) SocializeHorizontalContainerView *horizontalContainerView;
+@property (nonatomic, retain) SZHorizontalContainerView *horizontalContainerView;
 @end

@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import "SocializeHorizontalContainerView.h"
+#import "SZHorizontalContainerView.h"
 
-@implementation SocializeHorizontalContainerView
+@implementation SZHorizontalContainerView
 @synthesize columns = columns_;
 
 - (void)removeAllSubviews {
