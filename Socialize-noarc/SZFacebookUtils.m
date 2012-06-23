@@ -12,6 +12,7 @@
 #import "_Socialize.h"
 #import "SocializeFacebookInterface.h"
 #import "SZDisplay.h"
+#import "SDKHelpers.h"
 
 @implementation SZFacebookUtils
 
@@ -95,15 +96,21 @@
 }
 
 + (void)postWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
-    [self sendRequestWithHTTPMethod:@"POST" graphPath:graphPath postData:params success:success failure:failure];
+    SZFBAuthWrapper(^{
+        [self sendRequestWithHTTPMethod:@"POST" graphPath:graphPath postData:params success:success failure:failure];
+    }, failure);
 }
 
 + (void)getWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
-    [self sendRequestWithHTTPMethod:@"GET" graphPath:graphPath postData:params success:success failure:failure];
+    SZFBAuthWrapper(^{
+        [self sendRequestWithHTTPMethod:@"GET" graphPath:graphPath postData:params success:success failure:failure];
+    }, failure);
 }
 
 + (void)deleteWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
-    [self sendRequestWithHTTPMethod:@"DELETE" graphPath:graphPath postData:params success:success failure:failure];
+    SZFBAuthWrapper(^{
+        [self sendRequestWithHTTPMethod:@"DELETE" graphPath:graphPath postData:params success:success failure:failure];
+    }, failure);
 }
 
 @end

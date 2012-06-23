@@ -11,10 +11,12 @@
 @interface SZTestHelper : SZIntegrationTestCase
 + (id)sharedTestHelper;
 - (NSString*)facebookAccessToken;
-- (void)startMockingSucceedingFacebookAuth;
+- (void)startMockingSucceedingFacebookAuthWithDidAuth:(void(^)(NSString *token, NSDate *expiration))didAuth;
 - (void)stopMockingSucceedingFacebookAuth;
 - (void)removeAuthenticationInfo;
 - (NSString*)twitterAccessToken;
 - (NSString*)twitterAccessTokenSecret;
+- (void)startMockingSucceededFacebookAuth;
+- (void)stopMockingSucceededFacebookAuth;
 
 @end

@@ -129,6 +129,18 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
     }
 }
 
+void SZFBAuthWrapper( void (^success)(), void (^failure)(NSError *error)) {
+    if (![SZFacebookUtils isLinked]) {
+        [SZFacebookUtils linkWithOptions:nil success:^(id _) {
+            BLOCK_CALL(success);
+        } foreground:nil failure:^(NSError *error) {
+            BLOCK_CALL_1(failure, error);
+        }];
+    } else {
+        success();
+    }
+}
+
 void SZAuthWrapper(void (^success)(), void (^failure)(NSError *error)) {
     if (![[Socialize sharedSocialize] isAuthenticated]) {
         [[Socialize sharedSocialize] authenticateAnonymouslyWithSuccess:success failure:failure];

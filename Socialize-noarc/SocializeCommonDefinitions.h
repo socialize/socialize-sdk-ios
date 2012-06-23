@@ -122,3 +122,7 @@ typedef SZLikeButton SocializeLikeButton __attribute__((deprecated("Please use S
 #define SZSubscription SocializeSubscription
 #define SZError SocializeError
 
+#define BLOCK_CALL(blk) do { if (blk != nil) blk(); } while (0)
+#define BLOCK_CALL_1(blk, arg1) do { if (blk != nil) blk(arg1); } while (0)
+#define BLOCK_CALL_2(blk, arg1, arg2) do { if (blk != nil) blk(arg1, arg2); } while (0)
+

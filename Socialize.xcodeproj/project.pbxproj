@@ -1046,6 +1046,7 @@
 		AA935C09158F1C2600B5B2BC /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935C05158F1C2600B5B2BC /* Smiley.png */; };
 		AA935C0A158F1C2600B5B2BC /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA935C06158F1C2600B5B2BC /* SocializeApiInfo.plist */; };
 		AA935C0C158F1C2600B5B2BC /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA935C06158F1C2600B5B2BC /* SocializeApiInfo.plist */; };
+		AA9701A915953942006CDC8E /* FacebookUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9701A815953942006CDC8E /* FacebookUtilsTests.m */; };
 		AAAC15C6159328A800804916 /* SocializeActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00862C158D35BD00480399 /* SocializeActivity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAC1641159328FF00804916 /* SocializeError.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008673158D35BD00480399 /* SocializeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAC1642159328FF00804916 /* SocializeEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00866D158D35BD00480399 /* SocializeEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2523,6 +2524,8 @@
 		AA93598F158F187200B5B2BC /* SZBaseShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZBaseShareViewController.xib; path = Socialize/Resources/SZBaseShareViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA935C05158F1C2600B5B2BC /* Smiley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Smiley.png; path = Resources/Smiley.png; sourceTree = "<group>"; };
 		AA935C06158F1C2600B5B2BC /* SocializeApiInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SocializeApiInfo.plist; path = Resources/SocializeApiInfo.plist; sourceTree = "<group>"; };
+		AA9701A715953942006CDC8E /* FacebookUtilsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookUtilsTests.h; sourceTree = "<group>"; };
+		AA9701A815953942006CDC8E /* FacebookUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookUtilsTests.m; sourceTree = "<group>"; };
 		AAB5E51F159044E600D3EBDF /* libSocialize-noarc-profiling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSocialize-noarc-profiling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSocialize-profiling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACEDA14158FCF920024EC43 /* JSON-RequestAndResponse-TestFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "JSON-RequestAndResponse-TestFiles"; sourceTree = "<group>"; };
@@ -3020,6 +3023,8 @@
 				AA0C6111158FC61D00F66A3B /* UrlSerializationTests.m */,
 				AA0C6112158FC61D00F66A3B /* UserUtilsTests.h */,
 				AA0C6113158FC61D00F66A3B /* UserUtilsTests.m */,
+				AA9701A715953942006CDC8E /* FacebookUtilsTests.h */,
+				AA9701A815953942006CDC8E /* FacebookUtilsTests.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -5617,6 +5622,7 @@
 				AA90FFF8159065C400AFD8A2 /* link_to_twitter.m in Sources */,
 				AA90FFF9159065C400AFD8A2 /* show_comments_list.m in Sources */,
 				AA90FFFA159065C400AFD8A2 /* third_party_link_options.m in Sources */,
+				AA9701A915953942006CDC8E /* FacebookUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

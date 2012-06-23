@@ -9,6 +9,7 @@
 #import "SZIntegrationTestCase.h"
 #import <Socialize/Socialize.h>
 #import <UIKit/UIKit.h>
+#import <OCMock/ClassMockRegistry.h>
 
 static NSString *UUIDString() {
     CFUUIDRef	uuidObj = CFUUIDCreate(nil);
@@ -37,6 +38,10 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
     self.deletedObject = nil;
     
     [super dealloc];
+}
+
+- (void)handleException:(NSException *)exception {
+    [ClassMockRegistry stopMockingAllClasses];
 }
 
 + (NSString*)runID {

@@ -8,6 +8,7 @@
 
 #import "TestFacebookUtils.h"
 #import "SZTestHelper.h"
+#import <OCMock/NSObject+ClassMock.h>
 
 @implementation TestFacebookUtils
 
@@ -29,6 +30,44 @@
     [SZFacebookUtils unlink];
     [self linkToFacebookIfNeeded];
 }
+
+//- (void)testGraphGetWhenNotAuthed {
+//    [SZFacebookUtils unlink];
+//
+//    __block BOOL didAuth = NO;
+//    [[SZTestHelper sharedTestHelper] startMockingSucceedingFacebookAuthWithDidAuth:^(NSString *token, NSDate *date) {
+//        didAuth = YES;
+//        [self linkToFacebookIfNeeded];
+//    }];
+//    
+//    [self prepare];
+//    [SZFacebookUtils postWithGraphPath:@"me/feed" params:nil success:^(id result) {
+//        [self notify:kGHUnitWaitStatusSuccess];
+//    } failure:^(NSError *error) {
+//        [self notify:kGHUnitWaitStatusFailure];
+//    }];
+//    [self waitForStatus:kGHUnitWaitStatusSuccess];
+//    
+//    GHAssertTrue(didAuth, @"Should have authed");
+//    [[SZTestHelper sharedTestHelper] stopMockingSucceedingFacebookAuth];
+//}
+//
+//- (void)testGraphGetWhenAuthed {
+//    [self linkToFacebookIfNeeded];
+//
+//    [[SZTestHelper sharedTestHelper] startMockingSucceededFacebookAuth];
+//    
+//    [self prepare];
+//    [[SZFacebookUtils origClass] postWithGraphPath:@"me/feed" params:nil success:^(id result) {
+//        [self notify:kGHUnitWaitStatusSuccess];
+//    } failure:^(NSError *error) {
+//        [self notify:kGHUnitWaitStatusFailure];
+//    }];
+//    [self waitForStatus:kGHUnitWaitStatusSuccess];
+//    
+//    [[SZTestHelper sharedTestHelper] stopMockingSucceededFacebookAuth];
+//}
+
 
 //- (void)testGraphPosting {
 //    [self linkToFacebookIfNeeded];

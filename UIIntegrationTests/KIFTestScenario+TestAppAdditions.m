@@ -204,7 +204,7 @@
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
 
     [steps addObject:[KIFTestStep stepToExecuteBlock:^{
-        [[SZTestHelper sharedTestHelper] startMockingSucceedingFacebookAuth];
+        [[SZTestHelper sharedTestHelper] startMockingSucceedingFacebookAuthWithDidAuth:nil];
     }]];
 
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLinkToFacebookRow];
@@ -345,7 +345,7 @@
     
     // Mock out the facebook flow
     [steps addObject:[KIFTestStep stepToExecuteBlock:^{
-        [[SZTestHelper sharedTestHelper] startMockingSucceedingFacebookAuth];
+        [[SZTestHelper sharedTestHelper] startMockingSucceedingFacebookAuthWithDidAuth:nil];
     }]];
 
     // Auth with Facebook, wait for completion

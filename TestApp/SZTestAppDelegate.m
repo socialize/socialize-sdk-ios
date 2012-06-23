@@ -33,7 +33,7 @@
     TestAppListViewController *sample = [TestAppListViewController sharedSampleListViewController];
     self.window.rootViewController = sample;
     [self.window makeKeyAndVisible];
-    
+
 #if RUN_KIF_TESTS
     [[TestAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
         // Exit after the tests complete so that CI knows we're done

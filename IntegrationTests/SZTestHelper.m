@@ -49,13 +49,24 @@ static SZTestHelper *sharedTestHelper;
     return [apiInfo objectForKey:@"twitterTokenSecret"];
 }
 
-- (void)startMockingSucceedingFacebookAuth {
+- (void)startMockingSucceededFacebookAuth {
+    [SZFacebookUtils startMockingClass];
+    [[[SZFacebookUtils stub] andReturnBool:YES] isLinked];
+}
+
+- (void)stopMockingSucceededFacebookAuth {
+    [SZFacebookUtils stopMockingClass];    
+}
+
+- (void)startMockingSucceedingFacebookAuthWithDidAuth:(void(^)(NSString *token, NSDate *expiration))didAuth {
     [SocializeFacebookAuthHandler startMockingClass];
     
     id mockHandler = [OCMockObject mockForClass:[SocializeFacebookAuthHandler class]];
     [[[mockHandler stub] andDo5:^(id _1, id _2, id _3, id success, id _4) {
         void (^successBlock)(NSString *accessToken, NSDate *expirationDate) = success;
         successBlock([self facebookAccessToken], [NSDate distantFuture]);
+        
+        BLOCK_CALL_2(didAuth, [self facebookAccessToken], [NSDate distantFuture]);
     }] authenticateWithAppId:OCMOCK_ANY urlSchemeSuffix:OCMOCK_ANY permissions:OCMOCK_ANY success:OCMOCK_ANY foreground:OCMOCK_ANY failure:OCMOCK_ANY];
     
     [[[SocializeFacebookAuthHandler stub] andReturn:mockHandler] sharedFacebookAuthHandler];
