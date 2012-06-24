@@ -8,19 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "SocializeObjects.h"
-#import "SZActionBarItem.h"
+#import "SZActionButton.h"
 
-@interface SZLikeButton : UIView <SZActionBarItem>
+@interface SZLikeButton : SZActionButton <SZActionBarItem>
 
 @property (nonatomic, readonly) BOOL initialized;
-
-@property (nonatomic, strong) UIButton *actualButton;
 
 @property (nonatomic, readonly, getter=isLiked) BOOL liked;
 
 // begin-image-properties
-
-@property (nonatomic, strong) UIImage *disabledImage;
 
 @property (nonatomic, strong) UIImage *inactiveImage;
 @property (nonatomic, strong) UIImage *inactiveHighlightedImage;
@@ -36,13 +32,11 @@
 @property (nonatomic, strong) UIViewController *viewController;
 
 @property (nonatomic, assign) BOOL hideCount;
-@property (nonatomic, assign) BOOL autoresizeDisabled;
 
 @property (nonatomic, strong) id<SocializeEntity> entity;
 
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)controller;
 - (void)refresh;
-- (void)autoresize;
 
 
 @end

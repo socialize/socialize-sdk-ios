@@ -1511,6 +1511,10 @@
 		AADFE5F215967A7400FE2B61 /* SZHorizontalContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5EB15967A7400FE2B61 /* SZHorizontalContainerView.h */; };
 		AADFE5F315967A7400FE2B61 /* SZHorizontalContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5EC15967A7400FE2B61 /* SZHorizontalContainerView.m */; };
 		AADFE5F415967A7400FE2B61 /* SZHorizontalContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5EC15967A7400FE2B61 /* SZHorizontalContainerView.m */; };
+		AADFE5F71596973D00FE2B61 /* SZActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5F51596973C00FE2B61 /* SZActionButton.h */; };
+		AADFE5F81596973D00FE2B61 /* SZActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5F51596973C00FE2B61 /* SZActionButton.h */; };
+		AADFE5F91596973D00FE2B61 /* SZActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5F61596973C00FE2B61 /* SZActionButton.m */; };
+		AADFE5FA1596973D00FE2B61 /* SZActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5F61596973C00FE2B61 /* SZActionButton.m */; };
 		AAE9E1DE1590012300B2B9FC /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
 		AAE9E25515902BA300B2B9FC /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */; };
 		AAF098DA158FB447005726C2 /* SZTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6431158F10D7005E5632 /* SZTestHelper.m */; };
@@ -2540,6 +2544,8 @@
 		AADFE5EA15967A7400FE2B61 /* SZActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionBar.m; sourceTree = "<group>"; };
 		AADFE5EB15967A7400FE2B61 /* SZHorizontalContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZHorizontalContainerView.h; sourceTree = "<group>"; };
 		AADFE5EC15967A7400FE2B61 /* SZHorizontalContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZHorizontalContainerView.m; sourceTree = "<group>"; };
+		AADFE5F51596973C00FE2B61 /* SZActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionButton.h; sourceTree = "<group>"; };
+		AADFE5F61596973C00FE2B61 /* SZActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionButton.m; sourceTree = "<group>"; };
 		AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlocksKit.xcodeproj; path = ThirdParty/BlocksKit/BlocksKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3671,6 +3677,8 @@
 				AADFE5EA15967A7400FE2B61 /* SZActionBar.m */,
 				AADFE5EB15967A7400FE2B61 /* SZHorizontalContainerView.h */,
 				AADFE5EC15967A7400FE2B61 /* SZHorizontalContainerView.m */,
+				AADFE5F51596973C00FE2B61 /* SZActionButton.h */,
+				AADFE5F61596973C00FE2B61 /* SZActionButton.m */,
 				AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */,
 				AADFE5E415967A0E00FE2B61 /* SZLikeButton.m */,
 				AA0602B315965A22002D2535 /* SZActionBarItem.h */,
@@ -3939,6 +3947,7 @@
 				AADFE5E515967A0E00FE2B61 /* SZLikeButton.h in Headers */,
 				AADFE5ED15967A7400FE2B61 /* SZActionBar.h in Headers */,
 				AADFE5F115967A7400FE2B61 /* SZHorizontalContainerView.h in Headers */,
+				AADFE5F71596973D00FE2B61 /* SZActionButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4021,6 +4030,7 @@
 				AADFE5E615967A0E00FE2B61 /* SZLikeButton.h in Headers */,
 				AADFE5EE15967A7400FE2B61 /* SZActionBar.h in Headers */,
 				AADFE5F215967A7400FE2B61 /* SZHorizontalContainerView.h in Headers */,
+				AADFE5F81596973D00FE2B61 /* SZActionButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5397,6 +5407,7 @@
 				AADFE5E715967A0E00FE2B61 /* SZLikeButton.m in Sources */,
 				AADFE5EF15967A7400FE2B61 /* SZActionBar.m in Sources */,
 				AADFE5F315967A7400FE2B61 /* SZHorizontalContainerView.m in Sources */,
+				AADFE5F91596973D00FE2B61 /* SZActionButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5873,6 +5884,7 @@
 				AADFE5E815967A0E00FE2B61 /* SZLikeButton.m in Sources */,
 				AADFE5F015967A7400FE2B61 /* SZActionBar.m in Sources */,
 				AADFE5F415967A7400FE2B61 /* SZHorizontalContainerView.m in Sources */,
+				AADFE5FA1596973D00FE2B61 /* SZActionButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

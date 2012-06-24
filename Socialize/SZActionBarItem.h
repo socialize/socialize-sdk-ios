@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol SZActionBarItem <NSObject>
-
+@optional
 - (void)setEntity:(id<SZEntity>)entity;
 
 @end

@@ -16,10 +16,6 @@
 #import "SDKHelpers.h"
 #import "SZLikeUtils.h"
 
-#define BUTTON_PADDINGS 4
-#define PADDING_IN_BETWEEN_BUTTONS 10
-#define PADDING_BETWEEN_TEXT_ICON 2
-
 static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
 
 typedef enum {
@@ -40,8 +36,6 @@ typedef enum {
 @end
 
 @implementation SZLikeButton
-@synthesize actualButton = actualButton_;
-@synthesize disabledImage = disabledImage_;
 @synthesize inactiveImage = inactiveImage_;
 @synthesize inactiveHighlightedImage = inactiveHighlightedImage_;
 @synthesize activeImage = activeImage_;
@@ -56,7 +50,6 @@ typedef enum {
 
 @synthesize initState = initState_;
 @synthesize hideCount = hideCount_;
-@synthesize autoresizeDisabled = autoresizeDisabled_;
 
 - (void)dealloc {
     if (recoveryTimer_ != nil) {
@@ -72,10 +65,6 @@ typedef enum {
         entity_ = entity;
         self.viewController = viewController;
         
-        self.actualButton.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        [self addSubview:self.actualButton];
-        
-        [self autoresize];
     }
     return self;
 }
@@ -97,7 +86,7 @@ typedef enum {
     }
 }
 
-- (UIImage*)currentIcon {
+- (UIImage*)icon {
     if (self.isLiked) {
         return self.likedIcon;
     } else {
@@ -204,10 +193,6 @@ typedef enum {
     }
 }
 
-+ (UIImage*)defaultDisabledImage {
-    return nil;
-}
-
 + (UIImage*)defaultInactiveImage {
     return [[UIImage imageNamed:@"action-bar-button-black.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 }
@@ -256,19 +241,6 @@ typedef enum {
     }
     
     return unlikedIcon_;
-}
-
-- (UIImage*)disabledImage {
-    if (disabledImage_ == nil) {
-        disabledImage_ = [[self class] defaultDisabledImage];
-    }
-    
-    return disabledImage_;
-}
-
-- (void)setDisabledImage:(UIImage *)disabledImage {
-    disabledImage_ = disabledImage;
-    [self configureButtonBackgroundImages];
 }
 
 - (UIImage*)inactiveImage {
@@ -336,22 +308,6 @@ typedef enum {
         [self.actualButton setImage:self.unlikedIcon forState:UIControlStateNormal];
     }
     
-}
-
-- (UIButton*)actualButton {
-    if (actualButton_ == nil) {
-        actualButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
-        actualButton_.accessibilityLabel = @"like button";
-        actualButton_.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
-        [actualButton_ addTarget:self action:@selector(actualButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [actualButton_.titleLabel setFont:[UIFont boldSystemFontOfSize:11.0f]];
-        
-        [actualButton_ setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        actualButton_.titleLabel.shadowColor = [UIColor blackColor]; 
-        actualButton_.titleLabel.shadowOffset = CGSizeMake(0, -1); 
-    }
-    
-    return actualButton_;
 }
 
 - (void)unlikeOnServer {
@@ -428,37 +384,6 @@ typedef enum {
     self.liked = NO;
     
     [self tryToFinishInitializing];
-}
-
-- (CGSize)currentButtonSize {
-    NSString *currentTitle = [self.actualButton titleForState:UIControlStateNormal];
-	CGSize titleSize = [currentTitle sizeWithFont:self.actualButton.titleLabel.font];
-    CGSize iconSize = [[self currentIcon] size];
-    
-    UIImage *currentBackground = [self.actualButton backgroundImageForState:UIControlStateNormal];
-    CGSize backgroundSize = [currentBackground size];
-    
-    CGSize buttonSize = CGSizeMake(titleSize.width + (2 * BUTTON_PADDINGS) + PADDING_BETWEEN_TEXT_ICON + 5 + iconSize.width, backgroundSize.height);
-	
-	return buttonSize;
-}
-
-- (void)autoresize {
-    if (!self.autoresizeDisabled) {
-        CGRect frame = self.frame;
-        CGSize currentSize = [self currentButtonSize];
-        CGRect newFrame = CGRectMake(frame.origin.x, frame.origin.y, currentSize.width, currentSize.height);
-        self.frame = newFrame;
-        
-        NSString *currentTitle = [self.actualButton titleForState:UIControlStateNormal];
-        if ([currentTitle length] == 0) {
-            [actualButton_ setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
-        
-        } else {
-            [actualButton_ setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0.0, 0.0)]; // Right inset is the negative of text bounds width.
-            [actualButton_ setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -PADDING_BETWEEN_TEXT_ICON)]; // Left inset is the negative of image width.
-        }
-    }
 }
 
 @end
