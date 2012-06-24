@@ -31,7 +31,7 @@
 + (id)defaultActionBarWithFrame:(CGRect)frame entity:(id<SZEntity>)entity viewController:(UIViewController*)viewController {
     SZLikeButton *likeButton = [[SZLikeButton alloc] initWithFrame:CGRectZero entity:nil viewController:viewController];
 
-    SZCommentButton *commentButton = [[SZCommentButton alloc] initWithFrame:CGRectZero entity:nil];
+    SZCommentButton *commentButton = [[SZCommentButton alloc] initWithFrame:CGRectZero entity:nil viewController:viewController];
 
     UIView *yellowBlock = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     yellowBlock.backgroundColor = [UIColor yellowColor];
@@ -124,11 +124,16 @@
 
 - (void)configureForNewServerEntity:(id<SZEntity>)entity {
     self.serverEntity = entity;
-    for (id<SZActionBarItem> item in self.items) {
-        if ([item conformsToProtocol:@protocol(SZActionBarItem)]) {
-            [item actionBar:self didLoadEntity:entity];
+
+    [UIView animateWithDuration:0.3 animations:^{
+        for (id<SZActionBarItem> item in self.items) {
+            if ([item conformsToProtocol:@protocol(SZActionBarItem)]) {
+                [item actionBar:self didLoadEntity:entity];
+            }
         }
-    }
+        [self.buttonsContainer layoutColumns];
+    }];
+    
 }
 
 - (void)initializeEntity {

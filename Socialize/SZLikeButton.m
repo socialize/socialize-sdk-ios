@@ -17,8 +17,6 @@
 #import "SZActionButton_Private.h"
 #import "SZEntityUtils.h"
 
-static NSTimeInterval SZLikeButtonRetryInterval = 10;
-
 @interface SZLikeButton ()
 
 @property (nonatomic, getter=isLiked) BOOL liked;
@@ -277,7 +275,7 @@ static NSTimeInterval SZLikeButtonRetryInterval = 10;
     self.serverEntity = nil;
     self.actualButton.enabled = NO;
     
-    SZAttemptAction(SZLikeButtonRetryInterval, ^(void(^didFail)(NSError*)) {
+    SZAttemptAction(self.failureRetryInterval, ^(void(^didFail)(NSError*)) {
         [SZEntityUtils addEntity:self.entity success:^(id<SZEntity> entity) {
             self.actualButton.enabled = YES;
             [self configureForNewServerEntity:entity];

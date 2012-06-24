@@ -14,6 +14,7 @@
 #define BUTTON_PADDINGS 4
 
 @implementation SZActionButton
+@synthesize failureRetryInterval = _failureRetryInterval;
 @synthesize actualButton = actualButton_;
 @synthesize disabledImage = disabledImage_;
 @synthesize icon = _icon;
@@ -26,10 +27,14 @@
     if (self) {
         self.actualButton.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         [self addSubview:self.actualButton];
-        
+
         [self autoresize];
     }
     return self;
+}
+
++ (NSTimeInterval)defaultFailureRetryInterval {
+    return 10;
 }
 
 + (UIImage*)defaultDisabledImage {

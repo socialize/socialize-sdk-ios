@@ -19,6 +19,9 @@
 
 @property (nonatomic, assign) BOOL autoresizeDisabled;
 
+@property (nonatomic, assign) NSTimeInterval failureRetryInterval;
+
++ (NSTimeInterval)defaultFailureRetryInterval;
 - (void)setTitle:(NSString*)title;
 - (void)autoresize;
 
