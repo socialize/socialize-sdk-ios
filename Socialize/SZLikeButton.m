@@ -12,26 +12,17 @@
 #import "SocializeLikeService.h"
 #import <BlocksKit/BlocksKit.h>
 #import "NSNumber+Additions.h"
-#import "SZEntityUtils.h"
 #import "SDKHelpers.h"
 #import "SZLikeUtils.h"
+#import "SZActionButton_Private.h"
+#import "SZEntityUtils.h"
 
-static NSTimeInterval SZLikeButtonRecoveryTimerInterval = 5.0;
-
-typedef enum {
-    SZLikeButtonInitStateInitNotStarted,
-    SZLikeButtonInitStateRequestedEntityCreate,
-    SZLikeButtonInitStateCompletedEntityCreate,
-    SZLikeButtonInitStateCompleted,
-} SZLikeButtonInitState;
+static NSTimeInterval SZLikeButtonRetryInterval = 10;
 
 @interface SZLikeButton ()
 
-@property (nonatomic, assign) SZLikeButtonInitState initState;
-
-@property (nonatomic, strong) id<SocializeEntity> serverEntity;
-@property (nonatomic, strong) NSTimer *recoveryTimer;
 @property (nonatomic, getter=isLiked) BOOL liked;
+@property (nonatomic, retain) id<SZEntity> serverEntity;
 
 @end
 
@@ -43,47 +34,40 @@ typedef enum {
 @synthesize likedIcon = likedIcon_;
 @synthesize unlikedIcon = unlikedIcon_;
 @synthesize viewController = viewController_;
-@synthesize entity = entity_;
-@synthesize recoveryTimer = recoveryTimer_;
-@synthesize serverEntity = serverEntity_;
 @synthesize liked = liked_;
-
-@synthesize initState = initState_;
+@synthesize entity = _entity;
+@synthesize serverEntity = _serverEntity;
 @synthesize hideCount = hideCount_;
-
-- (void)dealloc {
-    if (recoveryTimer_ != nil) {
-        [recoveryTimer_ invalidate];
-    }
-}
 
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)viewController {
     self = [super initWithFrame:frame];
     if (self) {
         [self configureButtonBackgroundImages];
+        
+        self.actualButton.accessibilityLabel = @"like button";
 
-        entity_ = entity;
         self.viewController = viewController;
+        
+        self.entity = entity;
         
     }
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame {
-    [self doesNotRecognizeSelector:_cmd];
-    return nil;
-}
+- (void)configureForNewServerEntity:(id<SocializeEntity>)serverEntity {
 
-- (void)updateButtonTitle:(NSString*)title {
-    [self.actualButton setTitle:title forState:UIControlStateNormal];
-    [self autoresize];
-}
-
-- (void)updateViewFromServerEntity:(id<SocializeEntity>)serverEntity {
     if (!self.hideCount) {
         NSString* formattedValue = [NSNumber formatMyNumber:[NSNumber numberWithInteger:serverEntity.likes] ceiling:[NSNumber numberWithInt:1000]]; 
-        [self updateButtonTitle:formattedValue];
+        [self setTitle:formattedValue];
     }
+    
+    if ([serverEntity userActionSummary] != nil) {
+        self.liked = SZEntityIsLiked(serverEntity);
+    }
+
+    [self configureButtonBackgroundImages];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
 }
 
 - (UIImage*)icon {
@@ -94,103 +78,8 @@ typedef enum {
     }
 }
 
-- (void)attemptRecovery {
-    if (self.initState < SZLikeButtonInitStateCompleted) {
-        [self tryToFinishInitializing];
-    } else {
-        [self stopRecoveryTimer];
-    }
-}
-
-- (void)startRecoveryTimer {
-    if (self.recoveryTimer == nil) {
-        __block __typeof__(self) weakSelf = self;
-        self.recoveryTimer = [NSTimer scheduledTimerWithTimeInterval:SZLikeButtonRecoveryTimerInterval
-                                                               block:^(NSTimeInterval interval) {
-                                                                   [weakSelf attemptRecovery];
-                                                               } repeats:YES];
-    }
-}
-
-- (void)stopRecoveryTimer {
-    if (self.recoveryTimer != nil) {
-        [self.recoveryTimer invalidate];
-        self.recoveryTimer = nil;
-    }
-}
-
-- (void)createEntityOnServer {
-    [SZEntityUtils addEntity:self.entity success:^(id<SZEntity> entity) {
-        [self configureForNewServerEntity:entity];
-        self.initState = SZLikeButtonInitStateCompletedEntityCreate;
-        [self tryToFinishInitializing];
-    } failure:^(NSError *error) {
-        self.initState = SZLikeButtonInitStateInitNotStarted;
-        [self startRecoveryTimer];
-    }];
-}
-
-- (BOOL)initialized {
-    return self.initState == SZLikeButtonInitStateCompleted;
-}
-
-- (void)tryToFinishInitializing {
-    if ([self initialized]) {
-        return;
-    }
-
-    if (self.entity == nil) {
-        return;
-    }
-    
-    if (self.initState < SZLikeButtonInitStateRequestedEntityCreate) {
-        if ([self.entity isFromServer]) {
-            
-            // Already a server entity -- set state and continue
-            [self configureForNewServerEntity:self.entity];
-            self.initState = SZLikeButtonInitStateCompletedEntityCreate;
-
-        } else {
-            
-            // Not a server entity - go fetch it
-            self.initState = SZLikeButtonInitStateRequestedEntityCreate;
-            [self createEntityOnServer];
-            return;
-        }
-    }
-    
-    if (self.initState < SZLikeButtonInitStateCompletedEntityCreate) {
-        return;
-    }
-
-    self.initState = SZLikeButtonInitStateCompleted;
-    
-    [self configureButtonBackgroundImages];
-    self.actualButton.enabled = YES;
-    [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
-}
-
-- (void)postErrorNotificationForError:(NSError*)error {
-    NSDictionary *userInfo = nil;
-    if (error != nil) {
-        userInfo = [NSDictionary dictionaryWithObject:error forKey:SocializeUIControllerErrorUserInfoKey];
-    }
-    [[NSNotificationCenter defaultCenter] postNotificationName:SocializeUIControllerDidFailWithErrorNotification
-                                                        object:self
-                                                      userInfo:userInfo];
-}
-
 - (void)failWithError:(NSError*)error {
     SZEmitUIError(self, error);
-}
-
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-    [self autoresize];
-    
-    if (![self initialized]) {
-        self.actualButton.enabled = NO;
-        [self tryToFinishInitializing];
-    }
 }
 
 + (UIImage*)defaultInactiveImage {
@@ -315,25 +204,14 @@ typedef enum {
     
     [SZLikeUtils unlike:self.entity success:^(id<SZLike> like) {
         self.liked = NO;
-        [self configureForNewServerEntity:like.entity];
         self.actualButton.enabled = YES;
+        [self configureForNewServerEntity:like.entity];
         [self configureButtonBackgroundImages];
         [[NSNotificationCenter defaultCenter] postNotificationName:SZLikeButtonDidChangeStateNotification object:self];
     } failure:^(NSError *error) {
         self.actualButton.enabled = YES;
         [self failWithError:error];
     }];
-}
-
-- (void)configureForNewServerEntity:(id<SZEntity>)entity {
-    NSAssert([entity isFromServer], @"Not a server entity");
-    self.serverEntity = entity;
-    [self configureButtonBackgroundImages];
-    [self updateViewFromServerEntity:self.serverEntity];
-    
-    if ([entity userActionSummary] != nil) {
-        self.liked = SZEntityIsLiked(entity);
-    }
 }
 
 - (void)likeOnServer {
@@ -370,20 +248,41 @@ typedef enum {
     [self toggleLikeState];
 }
 
+
 - (void)setEntity:(id<SocializeEntity>)entity {
-    entity_ = entity;
+    _entity = entity;
+    
+    if (_entity == nil) {
+        return;
+    }
     
     // This is the user-set entity property. The server entity is always stored in self.serverEntity
-    [self refresh];
+    if (![entity isFromServer]) {
+        [self refresh];
+    } else {
+        [self configureForNewServerEntity:entity];
+    }
+}
+
+- (BOOL)initialized {
+    return self.serverEntity != nil;
+}
+
+- (void)actionBar:(SZActionBar *)actionBar didLoadEntity:(id<SocializeEntity>)entity {
+    self.entity = entity;
 }
 
 - (void)refresh {
-    self.initState = SZLikeButtonInitStateInitNotStarted;
+    self.liked = NO;
     self.serverEntity = nil;
     self.actualButton.enabled = NO;
-    self.liked = NO;
     
-    [self tryToFinishInitializing];
+    SZAttemptAction(SZLikeButtonRetryInterval, ^(void(^didFail)(NSError*)) {
+        [SZEntityUtils addEntity:self.entity success:^(id<SZEntity> entity) {
+            self.actualButton.enabled = YES;
+            [self configureForNewServerEntity:entity];
+        } failure:didFail];
+    });
 }
 
 @end

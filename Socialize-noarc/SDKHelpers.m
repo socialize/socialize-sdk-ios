@@ -185,6 +185,18 @@ void CreateAndShareActivityPromptIfNeeded(id<SZActivity> activity, SZShareOption
     }
 }
 
+void SZAttemptAction(NSTimeInterval retryInterval, SZAttemptActionBlock attempt) {
+    __block void (^attemptBlock)() = ^{
+        attempt(^(NSError* error) {
+            [NSTimer scheduledTimerWithTimeInterval:retryInterval block:^(NSTimeInterval interval) {
+                attemptBlock();
+            } repeats:NO];
+        });
+    };
+    
+    attemptBlock();
+}
+
 void CreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *options, SZSocialNetwork networks, ActivityCreatorBlock creator, void (^success)(id<SZActivity> activity), void (^failure)(NSError *error)) {
     if (networks & SZSocialNetworkFacebook && (![SZFacebookUtils isAvailable] || ![SZFacebookUtils isLinked])) {
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorFacebookUnavailable]);

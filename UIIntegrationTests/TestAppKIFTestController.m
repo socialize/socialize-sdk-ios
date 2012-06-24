@@ -59,6 +59,7 @@ static NSString *TestAppKIFTestControllerRunID = nil;
     [self addScenario:[KIFTestScenario scenarioToTestLikeNoAuth]];
     [self addScenario:[KIFTestScenario scenarioToTestLikeTwitterAuth]];
     [self addScenario:[KIFTestScenario scenarioToTestDirectURLNotification]];
+    [self addScenario:[KIFTestScenario scenarioToTestLikeButton]];
 }
 
 + (NSString*)runID {

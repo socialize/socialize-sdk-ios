@@ -13,7 +13,7 @@
 + (id)scenarioToTestUserProfile;
 //+ (id)scenarioToTestActionBar;
 //+ (id)scenarioToTestViewOtherProfile;
-//+ (id)scenarioToTestLikeButton;
++ (id)scenarioToTestLikeButton;
 + (id)scenarioToSleep;
 + (id)scenarioToTestFacebookAuth;
 + (id)scenarioToTestTwitterAuth;

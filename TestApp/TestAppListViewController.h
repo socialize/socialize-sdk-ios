@@ -25,6 +25,8 @@ extern NSString *kLinkToFacebookRow;
 extern NSString *kLinkToTwitterRow;
 extern NSString *kLikeEntityRow;
 extern NSString *kHandleDirectURLSmartAlertRow;
+extern NSString *kShowActionBarExampleRow;
+extern NSString *kShowButtonsExampleRow;
 
 @interface TestAppListViewController : UITableViewController
 @property (nonatomic, retain) id<SZEntity> entity;

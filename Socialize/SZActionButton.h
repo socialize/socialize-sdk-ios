@@ -7,15 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SZActionBarItem.h"
 
-@interface SZActionButton : UIView <SZActionBarItem>
+@interface SZActionButton : UIView
 
 @property (nonatomic, strong) UIButton *actualButton;
+
 @property (nonatomic, strong) UIImage *disabledImage;
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIImage *highlightedImage;
 @property (nonatomic, strong) UIImage *icon;
+
 @property (nonatomic, assign) BOOL autoresizeDisabled;
 
+- (void)setTitle:(NSString*)title;
 - (void)autoresize;
+
 
 @end

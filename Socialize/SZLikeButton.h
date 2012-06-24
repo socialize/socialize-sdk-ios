@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "SocializeObjects.h"
 #import "SZActionButton.h"
+#import "SZActionBarItem.h"
 
 @interface SZLikeButton : SZActionButton <SZActionBarItem>
+
+- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)controller;
+- (void)refresh;
 
 @property (nonatomic, readonly) BOOL initialized;
 
@@ -33,10 +37,6 @@
 
 @property (nonatomic, assign) BOOL hideCount;
 
-@property (nonatomic, strong) id<SocializeEntity> entity;
-
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)controller;
-- (void)refresh;
-
+@property (nonatomic, retain) id<SZEntity> entity;
 
 @end

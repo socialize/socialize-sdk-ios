@@ -7,6 +7,8 @@
 //
 
 #import "SZActionButton.h"
+#import "SZActionButton_Private.h"
+#import "SZEntityUtils.h"
 
 #define PADDING_BETWEEN_TEXT_ICON 2
 #define BUTTON_PADDINGS 4
@@ -16,9 +18,10 @@
 @synthesize disabledImage = disabledImage_;
 @synthesize icon = _icon;
 @synthesize autoresizeDisabled = autoresizeDisabled_;
+@synthesize image = _image;
+@synthesize highlightedImage = _highlightedImage;
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.actualButton.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -41,8 +44,43 @@
     return disabledImage_;
 }
 
++ (UIImage*)defaultImage {
+    return [[UIImage imageNamed:@"action-bar-button-black.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+}
+
++ (UIImage*)defaultHighlightedImage {
+    return [[UIImage imageNamed:@"action-bar-button-black-hover.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+}
+
+- (UIImage*)image {
+    if (_image == nil) {
+        _image = [[self class] defaultImage];
+    }
+    
+    return _image;
+}
+
+- (void)setImage:(UIImage *)image {
+    _image = image;
+    [self configureButtonBackgroundImages];
+}
+
+- (UIImage*)highlightedImage {
+    if (_highlightedImage == nil) {
+        _highlightedImage = [[self class] defaultHighlightedImage];
+    }
+    
+    return _highlightedImage;
+}
+
+- (void)highlightedImage:(UIImage *)highlightedImage {
+    _highlightedImage = highlightedImage;
+    [self configureButtonBackgroundImages];
+}
+
 - (void)setIcon:(UIImage*)icon {
     _icon = icon;
+    [self configureButtonBackgroundImages];
 }
 
 - (void)setDisabledImage:(UIImage *)disabledImage {
@@ -65,7 +103,6 @@
 - (UIButton*)actualButton {
     if (actualButton_ == nil) {
         actualButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
-        actualButton_.accessibilityLabel = @"like button";
         actualButton_.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
         [actualButton_ addTarget:self action:@selector(actualButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [actualButton_.titleLabel setFont:[UIFont boldSystemFontOfSize:11.0f]];
@@ -78,7 +115,24 @@
     return actualButton_;
 }
 
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [self autoresize];
+}
+
+- (void)configureButtonBackgroundImages {
+    [self.actualButton setBackgroundImage:self.disabledImage forState:UIControlStateDisabled];
+    
+    [self.actualButton setBackgroundImage:self.image forState:UIControlStateNormal];
+    [self.actualButton setBackgroundImage:self.highlightedImage forState:UIControlStateHighlighted];
+    [self.actualButton setImage:self.icon forState:UIControlStateNormal];
+}
+
 - (void)actualButtonPressed:(UIButton*)button {
+}
+
+- (void)setTitle:(NSString*)title {
+    [self.actualButton setTitle:title forState:UIControlStateNormal];
+    [self autoresize];
 }
 
 - (void)autoresize {

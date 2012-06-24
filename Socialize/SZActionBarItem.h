@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "SocializeObjects.h"
+
+@class SZActionBar;
 
 @protocol SZActionBarItem <NSObject>
-@optional
-- (void)setEntity:(id<SZEntity>)entity;
+- (void)actionBar:(SZActionBar*)actionBar didLoadEntity:(id<SZEntity>)entity;
 
 @end

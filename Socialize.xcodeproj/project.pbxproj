@@ -1285,6 +1285,10 @@
 		AAB5E549159044F900D3EBDF /* SZUserUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008722158D35BF00480399 /* SZUserUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E54A159044F900D3EBDF /* SZViewUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008724158D35BF00480399 /* SZViewUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB5E54B159044F900D3EBDF /* Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008626158D35BD00480399 /* Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAB73D571597C01800220492 /* ButtonExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB73D551597C01800220492 /* ButtonExampleViewController.m */; };
+		AAB73D581597C01800220492 /* ButtonExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB73D551597C01800220492 /* ButtonExampleViewController.m */; };
+		AAB73D591597C01800220492 /* ButtonExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB73D561597C01800220492 /* ButtonExampleViewController.xib */; };
+		AAB73D5A1597C01800220492 /* ButtonExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB73D561597C01800220492 /* ButtonExampleViewController.xib */; };
 		AACED945158FCDC70024EC43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C601F158FC4F000F66A3B /* main.m */; };
 		AACED946158FCDD20024EC43 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC394158E868D0073AD50 /* MapKit.framework */; };
 		AACED947158FCDD20024EC43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC392158E86770073AD50 /* QuartzCore.framework */; };
@@ -1515,6 +1519,12 @@
 		AADFE5F81596973D00FE2B61 /* SZActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5F51596973C00FE2B61 /* SZActionButton.h */; };
 		AADFE5F91596973D00FE2B61 /* SZActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5F61596973C00FE2B61 /* SZActionButton.m */; };
 		AADFE5FA1596973D00FE2B61 /* SZActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5F61596973C00FE2B61 /* SZActionButton.m */; };
+		AADFE5FD15969D4600FE2B61 /* SZCommentButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5FB15969D4500FE2B61 /* SZCommentButton.h */; };
+		AADFE5FE15969D4600FE2B61 /* SZCommentButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5FB15969D4500FE2B61 /* SZCommentButton.h */; };
+		AADFE5FF15969D4600FE2B61 /* SZCommentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5FC15969D4500FE2B61 /* SZCommentButton.m */; };
+		AADFE60015969D4600FE2B61 /* SZCommentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5FC15969D4500FE2B61 /* SZCommentButton.m */; };
+		AADFE6031596A49100FE2B61 /* SZActionButton_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */; };
+		AADFE6041596A49100FE2B61 /* SZActionButton_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */; };
 		AAE9E1DE1590012300B2B9FC /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
 		AAE9E25515902BA300B2B9FC /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */; };
 		AAF098DA158FB447005726C2 /* SZTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6431158F10D7005E5632 /* SZTestHelper.m */; };
@@ -2531,6 +2541,9 @@
 		AA9701A815953942006CDC8E /* FacebookUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookUtilsTests.m; sourceTree = "<group>"; };
 		AAB5E51F159044E600D3EBDF /* libSocialize-noarc-profiling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSocialize-noarc-profiling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSocialize-profiling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAB73D541597C01800220492 /* ButtonExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonExampleViewController.h; sourceTree = "<group>"; };
+		AAB73D551597C01800220492 /* ButtonExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonExampleViewController.m; sourceTree = "<group>"; };
+		AAB73D561597C01800220492 /* ButtonExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonExampleViewController.xib; sourceTree = "<group>"; };
 		AACEDA14158FCF920024EC43 /* JSON-RequestAndResponse-TestFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "JSON-RequestAndResponse-TestFiles"; sourceTree = "<group>"; };
 		AACEDA19158FD4D50024EC43 /* GCDAProfiling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GCDAProfiling.c; sourceTree = "<group>"; };
 		AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuthConsumer.xcodeproj; path = ThirdParty/OAuthConsumer/OAuthConsumer.xcodeproj; sourceTree = "<group>"; };
@@ -2546,6 +2559,9 @@
 		AADFE5EC15967A7400FE2B61 /* SZHorizontalContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZHorizontalContainerView.m; sourceTree = "<group>"; };
 		AADFE5F51596973C00FE2B61 /* SZActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionButton.h; sourceTree = "<group>"; };
 		AADFE5F61596973C00FE2B61 /* SZActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionButton.m; sourceTree = "<group>"; };
+		AADFE5FB15969D4500FE2B61 /* SZCommentButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZCommentButton.h; sourceTree = "<group>"; };
+		AADFE5FC15969D4500FE2B61 /* SZCommentButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZCommentButton.m; sourceTree = "<group>"; };
+		AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionButton_Private.h; sourceTree = "<group>"; };
 		AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlocksKit.xcodeproj; path = ThirdParty/BlocksKit/BlocksKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2711,6 +2727,9 @@
 			isa = PBXGroup;
 			children = (
 				AA935C0D158F1C2E00B5B2BC /* Resources */,
+				AAB73D541597C01800220492 /* ButtonExampleViewController.h */,
+				AAB73D551597C01800220492 /* ButtonExampleViewController.m */,
+				AAB73D561597C01800220492 /* ButtonExampleViewController.xib */,
 				AA3BC377158E820B0073AD50 /* ActionBarExampleViewController.h */,
 				AA3BC378158E820B0073AD50 /* ActionBarExampleViewController.m */,
 				AA3BC379158E820B0073AD50 /* ActionBarExampleViewController.xib */,
@@ -3681,7 +3700,10 @@
 				AADFE5F61596973C00FE2B61 /* SZActionButton.m */,
 				AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */,
 				AADFE5E415967A0E00FE2B61 /* SZLikeButton.m */,
+				AADFE5FB15969D4500FE2B61 /* SZCommentButton.h */,
+				AADFE5FC15969D4500FE2B61 /* SZCommentButton.m */,
 				AA0602B315965A22002D2535 /* SZActionBarItem.h */,
+				AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -3948,6 +3970,8 @@
 				AADFE5ED15967A7400FE2B61 /* SZActionBar.h in Headers */,
 				AADFE5F115967A7400FE2B61 /* SZHorizontalContainerView.h in Headers */,
 				AADFE5F71596973D00FE2B61 /* SZActionButton.h in Headers */,
+				AADFE5FD15969D4600FE2B61 /* SZCommentButton.h in Headers */,
+				AADFE6031596A49100FE2B61 /* SZActionButton_Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4031,6 +4055,8 @@
 				AADFE5EE15967A7400FE2B61 /* SZActionBar.h in Headers */,
 				AADFE5F215967A7400FE2B61 /* SZHorizontalContainerView.h in Headers */,
 				AADFE5F81596973D00FE2B61 /* SZActionButton.h in Headers */,
+				AADFE5FE15969D4600FE2B61 /* SZCommentButton.h in Headers */,
+				AADFE6041596A49100FE2B61 /* SZActionButton_Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4566,6 +4592,7 @@
 				AA935BE8158F187200B5B2BC /* SZBaseShareViewController.xib in Resources */,
 				AA935C07158F1C2600B5B2BC /* Smiley.png in Resources */,
 				AA935C0A158F1C2600B5B2BC /* SocializeApiInfo.plist in Resources */,
+				AAB73D591597C01800220492 /* ButtonExampleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4992,6 +5019,7 @@
 				AA159E0C158FAD4B006E1CAE /* SZBaseShareViewController.xib in Resources */,
 				AA159E0D158FAD4B006E1CAE /* Smiley.png in Resources */,
 				AA159E0E158FAD4B006E1CAE /* SocializeApiInfo.plist in Resources */,
+				AAB73D5A1597C01800220492 /* ButtonExampleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5370,6 +5398,7 @@
 				AA0085A5158D2B1100480399 /* SZTestAppDelegate.m in Sources */,
 				AA3BC376158E80780073AD50 /* TestAppListViewController.m in Sources */,
 				AA3BC37A158E820B0073AD50 /* ActionBarExampleViewController.m in Sources */,
+				AAB73D571597C01800220492 /* ButtonExampleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5408,6 +5437,7 @@
 				AADFE5EF15967A7400FE2B61 /* SZActionBar.m in Sources */,
 				AADFE5F315967A7400FE2B61 /* SZHorizontalContainerView.m in Sources */,
 				AADFE5F91596973D00FE2B61 /* SZActionButton.m in Sources */,
+				AADFE5FF15969D4600FE2B61 /* SZCommentButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5669,6 +5699,7 @@
 				AAF098DA158FB447005726C2 /* SZTestHelper.m in Sources */,
 				AAF098DB158FB4DD005726C2 /* SZIntegrationTestCase.m in Sources */,
 				AA6CE2ED15905BBD00A4B074 /* GCDAProfiling.c in Sources */,
+				AAB73D581597C01800220492 /* ButtonExampleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5885,6 +5916,7 @@
 				AADFE5F015967A7400FE2B61 /* SZActionBar.m in Sources */,
 				AADFE5F415967A7400FE2B61 /* SZHorizontalContainerView.m in Sources */,
 				AADFE5FA1596973D00FE2B61 /* SZActionButton.m in Sources */,
+				AADFE60015969D4600FE2B61 /* SZCommentButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

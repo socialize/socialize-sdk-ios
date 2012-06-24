@@ -9,6 +9,7 @@
 #import "TestAppListViewController.h"
 #import <Socialize/Socialize.h>
 #import "ActionBarExampleViewController.h"
+#import "ButtonExampleViewController.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -30,6 +31,7 @@ NSString *kFacebookSection = @"kFacebookSection";
 NSString *kTwitterSection = @"kTwitterSection";
 NSString *kSmartAlertsSection = @"kSmartAlertsSection";
 NSString *kActionBarSection = @"kActionBarSection";
+NSString *kButtonsExampleSection = @"kButtonsExampleSection";
 
 // Rows
 NSString *kShowUserProfileRow = @"kShowUserProfileRow";
@@ -40,6 +42,7 @@ NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
 NSString *kLikeEntityRow = @"kLikeEntityRow";
 NSString *kHandleDirectURLSmartAlertRow = @"kHandleDirectURLSmartAlertRow";
 NSString *kShowActionBarExampleRow = @"kShowActionBarExampleRow";
+NSString *kShowButtonsExampleRow = @"kShowButtonsExampleRow";
 
 static TestAppListViewController *sharedSampleListViewController;
 
@@ -190,6 +193,13 @@ static TestAppListViewController *sharedSampleListViewController;
         [self presentModalViewController:nav animated:YES];
     }]];
 
+    NSMutableArray *buttonsRows = [NSMutableArray array];
+    [buttonsRows addObject:[self rowWithIdentifier:kShowButtonsExampleRow text:@"Show Button Examples" executionBlock:^{
+        ButtonExampleViewController *buttonsExample = [[ButtonExampleViewController alloc] initWithEntity:self.entity];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:buttonsExample];
+        [self presentModalViewController:nav animated:YES];
+    }]];
+
     NSArray *sections = [NSArray arrayWithObjects:
             [self sectionWithIdentifier:kConfigSection
                                   title:@"Configuration"
@@ -226,7 +236,11 @@ static TestAppListViewController *sharedSampleListViewController;
             [self sectionWithIdentifier:kActionBarSection
                                   title:@"Action Bar Utilities"
                                    rows:actionBarRows],
-
+                         
+            [self sectionWithIdentifier:kButtonsExampleSection
+                               title:@"Buttons Example"
+                                rows:buttonsRows],
+                         
             nil];
     
     return sections;
@@ -243,8 +257,8 @@ static TestAppListViewController *sharedSampleListViewController;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSIndexPath *indexPath = [self indexPathForRowIdentifier:kShowActionBarExampleRow];
-    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+//    NSIndexPath *indexPath = [self indexPathForRowIdentifier:kShowActionBarExampleRow];
+//    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 }
 
 //- (NSArray*)sections {

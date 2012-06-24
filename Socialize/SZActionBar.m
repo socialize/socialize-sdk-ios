@@ -9,6 +9,7 @@
 #import "SZActionBar.h"
 #import "SZHorizontalContainerView.h"
 #import "SZLikeButton.h"
+#import "SZCommentButton.h"
 #import "SZEntityUtils.h"
 #import "SDKHelpers.h"
 #import "SZActionBarItem.h"
@@ -29,14 +30,13 @@
 
 + (id)defaultActionBarWithFrame:(CGRect)frame entity:(id<SZEntity>)entity viewController:(UIViewController*)viewController {
     SZLikeButton *likeButton = [[SZLikeButton alloc] initWithFrame:CGRectZero entity:nil viewController:viewController];
-    
-    UIView *purpleBlock = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    purpleBlock.backgroundColor = [UIColor purpleColor];
+
+    SZCommentButton *commentButton = [[SZCommentButton alloc] initWithFrame:CGRectZero entity:nil];
 
     UIView *yellowBlock = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     yellowBlock.backgroundColor = [UIColor yellowColor];
 
-    NSArray *items = [NSArray arrayWithObjects:yellowBlock, purpleBlock, likeButton, nil];
+    NSArray *items = [NSArray arrayWithObjects:yellowBlock, commentButton, likeButton, nil];
     return [[self alloc] initWithFrame:frame entity:entity viewController:viewController items:items];
 }
 
@@ -126,7 +126,7 @@
     self.serverEntity = entity;
     for (id<SZActionBarItem> item in self.items) {
         if ([item conformsToProtocol:@protocol(SZActionBarItem)]) {
-            [item setEntity:entity];
+            [item actionBar:self didLoadEntity:entity];
         }
     }
 }
