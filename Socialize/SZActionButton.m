@@ -12,6 +12,7 @@
 
 #define PADDING_BETWEEN_TEXT_ICON 2
 #define BUTTON_PADDINGS 4
+#define DEFAULT_BUTTON_HEIGHT 30
 
 @implementation SZActionButton
 @synthesize failureRetryInterval = _failureRetryInterval;
@@ -37,11 +38,19 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.actualButton.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        [self resetButtonsToDefaults];
         [self addSubview:self.actualButton];
-
+        
         [self autoresize];
     }
     return self;
+}
+
+- (void)resetButtonsToDefaults {
+    self.image = [[self class] defaultImage];
+    self.highlightedImage = [[self class] defaultHighlightedImage];
+    self.disabledImage = [[self class] defaultDisabledImage];
+    [self configureButtonBackgroundImages];
 }
 
 + (NSTimeInterval)defaultFailureRetryInterval {
@@ -52,14 +61,6 @@
     return nil;
 }
 
-- (UIImage*)disabledImage {
-    if (disabledImage_ == nil) {
-        disabledImage_ = [[self class] defaultDisabledImage];
-    }
-    
-    return disabledImage_;
-}
-
 + (UIImage*)defaultImage {
     return [[UIImage imageNamed:@"action-bar-button-black.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 }
@@ -68,25 +69,9 @@
     return [[UIImage imageNamed:@"action-bar-button-black-hover.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 }
 
-- (UIImage*)image {
-    if (_image == nil) {
-        _image = [[self class] defaultImage];
-    }
-    
-    return _image;
-}
-
 - (void)setImage:(UIImage *)image {
     _image = image;
     [self configureButtonBackgroundImages];
-}
-
-- (UIImage*)highlightedImage {
-    if (_highlightedImage == nil) {
-        _highlightedImage = [[self class] defaultHighlightedImage];
-    }
-    
-    return _highlightedImage;
 }
 
 - (void)highlightedImage:(UIImage *)highlightedImage {
@@ -108,10 +93,16 @@
 	CGSize titleSize = [currentTitle sizeWithFont:self.actualButton.titleLabel.font];
     CGSize iconSize = [[self icon] size];
     
+    CGFloat height;
     UIImage *currentBackground = [self.actualButton backgroundImageForState:UIControlStateNormal];
-    CGSize backgroundSize = [currentBackground size];
+    if (currentBackground != nil) {
+        CGSize backgroundSize = [currentBackground size];
+        height = backgroundSize.height;
+    } else {
+        height = DEFAULT_BUTTON_HEIGHT;
+    }
     
-    CGSize buttonSize = CGSizeMake(titleSize.width + (2 * BUTTON_PADDINGS) + PADDING_BETWEEN_TEXT_ICON + 5 + iconSize.width, backgroundSize.height);
+    CGSize buttonSize = CGSizeMake(titleSize.width + (2 * BUTTON_PADDINGS) + PADDING_BETWEEN_TEXT_ICON + 5 + iconSize.width, height);
 	
 	return buttonSize;
 }

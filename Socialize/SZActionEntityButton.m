@@ -1,29 +1,30 @@
 //
-//  SZCommentButton.m
+//  SZActionEntityButton.m
 //  Socialize
 //
-//  Created by Nathaniel Griswold on 6/23/12.
+//  Created by Nathaniel Griswold on 6/24/12.
 //  Copyright (c) 2012 Socialize. All rights reserved.
 //
 
-#import "SZCommentButton.h"
-#import "NSNumber+Additions.h"
+#import "SZActionEntityButton.h"
 #import "SDKHelpers.h"
 #import "SZEntityUtils.h"
-#import "SZCommentUtils.h"
+#import "SZActionButton_Private.h"
 
-@implementation SZCommentButton
+@implementation SZActionEntityButton
 @synthesize entity = _entity;
 @synthesize serverEntity = _serverEntity;
-@synthesize viewController = _viewController;
+@synthesize entityConfigurationBlock = _entityConfigurationBlock;
 
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)viewController {
++ (SZActionEntityButton*)actionEntityButtonWithFrame:(CGRect)frame entity:(id<SZEntity>)entity entityConfiguration:(void(^)(SZActionEntityButton *button, id<SZEntity> entity))entityConfigurationBlock {
+    SZActionEntityButton *button = [[SZActionEntityButton alloc] initWithFrame:frame entity:entity];
+    button.entityConfigurationBlock = entityConfigurationBlock;
+    return button;
+}
+
+- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity {
     if (self = [super initWithFrame:frame]) {
-        
-        self.icon = [UIImage imageNamed:@"action-bar-icon-comments.png"];
-        self.actualButton.accessibilityLabel = @"comment button";
         self.entity = entity;
-        self.viewController = viewController;
     }
     return self;
 }
@@ -47,9 +48,20 @@
     self.entity = entity;
 }
 
+- (void)configureForEntity:(id<SZEntity>)entity {
+}
+
 - (void)configureForNewServerEntity:(id<SZEntity>)serverEntity {
-    NSString* formattedValue = [NSNumber formatMyNumber:[NSNumber numberWithInteger:serverEntity.comments] ceiling:[NSNumber numberWithInt:1000]]; 
-    [self setTitle:formattedValue];
+    self.serverEntity = serverEntity;
+    
+    if (self.entityConfigurationBlock != nil) {
+        self.entityConfigurationBlock(self, serverEntity);
+    } else {
+        [self configureForEntity:serverEntity];
+    }
+    
+    [self configureButtonBackgroundImages];
+    [self autoresize];
 }
 
 - (void)refresh {
@@ -62,10 +74,6 @@
             [self configureForNewServerEntity:entity];
         } failure:didFail];
     });
-}
-
-- (void)handleButtonPress:(id)sender {
-    [SZCommentUtils showCommentsListWithViewController:self.viewController entity:self.entity completion:nil];
 }
 
 @end

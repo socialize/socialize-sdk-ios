@@ -14,6 +14,8 @@
 #import "SDKHelpers.h"
 #import "SZActionBarItem.h"
 #import "SZShareUtils.h"
+#import "SZActionEntityButton.h"
+#import "NSNumber+Additions.h"
 
 @interface SZActionBar ()
 @property (nonatomic, strong) SZHorizontalContainerView *buttonsContainerRight;
@@ -43,13 +45,16 @@
                                     
     NSArray *itemsRight = [NSArray arrayWithObjects:likeButton, commentButton, shareButton, nil];
     
-    UIView *yellowBlock = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    yellowBlock.backgroundColor = [UIColor yellowColor];
-
-    UIView *purpleBlock = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    purpleBlock.backgroundColor = [UIColor purpleColor];
+    SZActionEntityButton *viewsButton = [SZActionEntityButton actionEntityButtonWithFrame:CGRectZero entity:nil entityConfiguration:^(SZActionEntityButton *button, id<SZEntity> serverEntity) {
+        NSString* formattedValue = [NSNumber formatMyNumber:[NSNumber numberWithInteger:serverEntity.views] ceiling:[NSNumber numberWithInt:1000]]; 
+        [button setTitle:formattedValue];
+    }];
     
-    NSArray *itemsLeft = [NSArray arrayWithObjects:purpleBlock, yellowBlock, nil];
+    UIImage *icon = [UIImage imageNamed:@"action-bar-icon-views.png"];
+    viewsButton.icon = icon;
+    viewsButton.image = nil;
+    
+    NSArray *itemsLeft = [NSArray arrayWithObjects:viewsButton, nil];
 
 
     return [[self alloc] initWithFrame:frame entity:entity viewController:viewController itemsLeft:itemsLeft itemsRight:itemsRight];

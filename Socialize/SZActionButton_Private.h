@@ -11,6 +11,7 @@
 @interface SZActionButton ()
 
 - (void)handleButtonPress:(id)sender;
+- (void)configureButtonBackgroundImages;
 
 @end
 
