@@ -20,6 +20,9 @@
 @interface SZActionBar ()
 @property (nonatomic, strong) SZHorizontalContainerView *buttonsContainerRight;
 @property (nonatomic, strong) SZHorizontalContainerView *buttonsContainerLeft;
+
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+
 @end
 
 @implementation SZActionBar
@@ -33,6 +36,7 @@
 @synthesize viewController = _viewController;
 @synthesize testView = _testView;
 @synthesize betweenButtonsPadding = _betweenButtonsPadding;
+@synthesize activityIndicator = _activityIndicator;
 
 + (id)defaultActionBarWithFrame:(CGRect)frame entity:(id<SZEntity>)entity viewController:(UIViewController*)viewController {
     SZLikeButton *likeButton = [[SZLikeButton alloc] initWithFrame:CGRectZero entity:nil viewController:viewController];
@@ -76,6 +80,7 @@
         
         [self addSubview:self.buttonsContainerRight];
         [self addSubview:self.buttonsContainerLeft];
+        [self addSubview:self.activityIndicator];
     }
     return self;
 }
@@ -120,19 +125,30 @@
     return _buttonsContainerLeft;
 }
 
-- (void)copyFrameToContainers {
+- (void)adjustForNewFrame {
     self.buttonsContainerRight.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    self.buttonsContainerLeft.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);    
+    self.buttonsContainerLeft.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    
+    self.activityIndicator.frame = CGRectMake(30, roundf(self.frame.size.height / 2.f), 0, 0);
+}
+
+- (UIActivityIndicatorView*)activityIndicator {
+    if (_activityIndicator == nil) {
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        _activityIndicator.hidesWhenStopped = YES;
+    }
+    
+    return _activityIndicator;
 }
 
 - (void)layoutSubviews {
-    [self copyFrameToContainers];
+    [self adjustForNewFrame];
 }
 
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
     
-    [self copyFrameToContainers];
+    [self adjustForNewFrame];
     [self.buttonsContainerRight layoutColumns];
     [self.buttonsContainerLeft layoutColumns];
 }
@@ -190,17 +206,38 @@
     
 }
 
+- (void)hideButtons {
+    self.buttonsContainerLeft.hidden = YES;
+    self.buttonsContainerRight.hidden = YES;
+}
+
+- (void)showButtons {
+    self.buttonsContainerLeft.hidden = NO;
+    self.buttonsContainerRight.hidden = NO;
+}
+
 - (void)initializeEntity {
     if (self.entity == nil) {
+        return;
+    }
+    
+    // Already initialized
+    if ([[self.serverEntity key] isEqualToString:[self.entity key]]) {
         return;
     }
     
     if ([self.entity isFromServer]) {
         [self configureForNewServerEntity:self.entity];
     } else {
+        [self hideButtons];
+        [self.activityIndicator startAnimating];
         [SZEntityUtils addEntity:self.entity success:^(id<SZEntity> entity) {
+            [self.activityIndicator stopAnimating];
+            [self showButtons];
             [self configureForNewServerEntity:entity];
         } failure:^(NSError *error) {
+            [self.activityIndicator stopAnimating];
+            [self showButtons];
             SZEmitUIError(self, error);
         }];
     }
