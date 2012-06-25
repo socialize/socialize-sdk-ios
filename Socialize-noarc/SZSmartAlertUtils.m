@@ -8,8 +8,14 @@
 
 #import "SZSmartAlertUtils.h"
 #import "_Socialize.h"
+#import "SDKHelpers.h"
 
 @implementation SZSmartAlertUtils
+
++ (BOOL)isAvailable {
+    SZEmitUnconfiguredSmartAlertsMessage();
+    return [[Socialize sharedSocialize] notificationsAreConfigured];
+}
 
 + (BOOL)handleNotification:(NSDictionary*)userInfo {
     return [Socialize handleNotification:userInfo];

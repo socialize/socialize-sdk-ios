@@ -10,6 +10,7 @@
 
 @interface SZSmartAlertUtils : NSObject
 
++ (BOOL)isAvailable;
 + (BOOL)handleNotification:(NSDictionary*)userInfo;
 + (BOOL)isSocializeNotification:(NSDictionary*)userInfo;
 + (void)registerDeviceToken:(NSData*)deviceToken;

@@ -30,6 +30,8 @@
 #import "CommentsTableFooterView.h"
 #import "SZNavigationController.h"
 #import "SocializePrivateDefinitions.h"
+#import "SDKHelpers.h"
+#import "SZSmartAlertUtils.h"
 
 @interface _SZCommentsListViewController()
 -(NSString*)getDateString:(NSDate*)date;
@@ -251,9 +253,7 @@
     
     self.footerView.subscribedButton.enabled = NO;
     
-    if (![self.socialize notificationsAreConfigured]) {
-        DebugLog(SOCIALIZE_NOTIFICATIONS_NOT_CONFIGURED_MESSAGE);
-        
+    if (![SZSmartAlertUtils isAvailable]) {
         [self.footerView hideSubscribedButton];
     }
 }

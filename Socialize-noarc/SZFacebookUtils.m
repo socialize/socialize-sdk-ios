@@ -34,6 +34,7 @@
 }
 
 + (BOOL)isAvailable {
+    SZEmitUnconfiguredFacebookMessage();
     return [SocializeThirdPartyFacebook available];
 }
 

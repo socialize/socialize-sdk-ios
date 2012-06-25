@@ -16,6 +16,7 @@
 #import "SocializeThirdPartyTwitter.h"
 #import "SZCommentUtils.h"
 #import "SocializePrivateDefinitions.h"
+#import "SZSmartAlertUtils.h"
 
 @implementation _SZComposeCommentViewController
 @synthesize commentObject = commentObject_;
@@ -85,10 +86,8 @@
 - (void)configureMessageActionButtons {
     NSMutableArray *buttons = [NSMutableArray array];
 
-    if ([self.socialize notificationsAreConfigured]) {
+    if ([SZSmartAlertUtils isAvailable]) {
         [buttons addObject:self.enableSubscribeButton];
-    } else {
-        DebugLog(SOCIALIZE_NOTIFICATIONS_NOT_CONFIGURED_MESSAGE);
     }
     
     self.messageActionButtons = buttons;

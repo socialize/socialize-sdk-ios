@@ -29,3 +29,6 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
 BOOL SZShouldShareLocation();
 void SZFBAuthWrapper( void (^success)(), void (^failure)(NSError *error));
 BOOL SZOSGTE(NSString *minVersion);
+void SZEmitUnconfiguredFacebookMessage();
+void SZEmitUnconfiguredTwitterMessage();
+void SZEmitUnconfiguredSmartAlertsMessage();

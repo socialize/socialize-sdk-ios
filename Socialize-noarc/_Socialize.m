@@ -145,12 +145,6 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 //        Class dynamicTest = NSClassFromString(@"SocializeDynamicTest");
 //        NSAssert(dynamicTest != nil, @"Dynamic Class Load Error -- does your application build settings for 'other linker flags' contain the flag '-all_load'?");
         
-        if (![SZFacebookUtils isAvailable]) {
-            DebugLog(SOCIALIZE_FACEBOOK_NOT_CONFIGURED_MESSAGE);        
-        }
-        if (![SZTwitterUtils isAvailable]) {
-            DebugLog(SOCIALIZE_TWITTER_NOT_CONFIGURED_MESSAGE);        
-        }
     }
 }
 
