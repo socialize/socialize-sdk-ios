@@ -32,7 +32,7 @@
     for (UIView *view in [self.columns reverseObjectEnumerator]) {
         CGFloat x = curX - view.frame.size.width;
         
-        CGFloat y = self.centerColumns ? self.frame.size.height / 2.f - view.frame.size.height / 2.f : 0;
+        CGFloat y = roundf(self.centerColumns ? self.frame.size.height / 2.f - view.frame.size.height / 2.f : 0);
         
         view.frame = CGRectMake(x, y, view.frame.size.width, view.frame.size.height);
         [self addSubview:view];
