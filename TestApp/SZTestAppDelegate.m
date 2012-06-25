@@ -12,6 +12,7 @@
 
 #if RUN_KIF_TESTS
 #import "TestAppKIFTestController.h"
+#import "SZTestHelper.h"
 #endif
 
 @implementation SZTestAppDelegate
@@ -35,6 +36,7 @@
     [self.window makeKeyAndVisible];
 
 #if RUN_KIF_TESTS
+    [[SZTestHelper sharedTestHelper] startMockingSucceedingLocation];
     [[TestAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
         // Exit after the tests complete so that CI knows we're done
         int failureCount = [[TestAppKIFTestController sharedInstance] failureCount];
@@ -43,6 +45,7 @@
             exit(failureCount);
         }
     }];
+    [[SZTestHelper sharedTestHelper] stopMockingSucceedingLocation];
 #endif
 
     return YES;

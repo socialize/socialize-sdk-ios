@@ -186,7 +186,8 @@
 
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"like button"]];
 //    [steps addObjectsFromArray:[KIFTestStep stepsToVerifyActionBarLikesAtCount:0]];
-    
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
+
     [scenario addStepsFromArray:steps];
     
     return scenario;
@@ -212,6 +213,7 @@
     
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"comment button"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Close"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
     
     [scenario addStepsFromArray:steps];
     

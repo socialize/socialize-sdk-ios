@@ -17,6 +17,14 @@
 - (void)tryToAcceptLocation:(CLLocation*)newLocation;
 
 @property (nonatomic, readonly) CLLocation *currentLocation;
-@property (nonatomic, retain, readonly) CLLocation *lastLocation;
+
+
+
+@property (nonatomic, retain) CLLocationManager *locationManager;
+@property (nonatomic, retain) CLLocation *lastLocation;
+@property (nonatomic, retain) NSTimer *waitingForLocationTimer;
+@property (nonatomic, assign) BOOL waitingForLocation;
+@property (nonatomic, assign) BOOL waitingForUserToEnableLocation;
+@property (nonatomic, retain) NSMutableArray *locationCallbacks;
 
 @end

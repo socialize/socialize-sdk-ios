@@ -18,5 +18,7 @@
 - (NSString*)twitterAccessTokenSecret;
 - (void)startMockingSucceededFacebookAuth;
 - (void)stopMockingSucceededFacebookAuth;
+- (void)startMockingSucceedingLocation;
+- (void)stopMockingSucceedingLocation;
 
 @end

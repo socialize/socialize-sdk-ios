@@ -16,12 +16,6 @@ static NSTimeInterval SocializeLocationManagerWaitingForLocationTimeout = 10.;
 static CLLocationDistance SocializeLocationManagerFixRequiredAccuracy = 200.;
 
 @interface SocializeLocationManager ()
-@property (nonatomic, retain) CLLocationManager *locationManager;
-@property (nonatomic, retain) CLLocation *lastLocation;
-@property (nonatomic, retain) NSTimer *waitingForLocationTimer;
-@property (nonatomic, assign) BOOL waitingForLocation;
-@property (nonatomic, assign) BOOL waitingForUserToEnableLocation;
-@property (nonatomic, retain) NSMutableArray *locationCallbacks;
 @end
 
 @implementation SocializeLocationManager

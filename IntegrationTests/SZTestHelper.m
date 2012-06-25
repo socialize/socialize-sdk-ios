@@ -13,7 +13,7 @@
 #import <OCMock/NSObject+ClassMock.h>
 //#import "_Socialize.h"
 #import <FBConnect/FBConnect.h>
-
+#import "SocializeLocationManager.h"
 
 static SZTestHelper *sharedTestHelper;
 
@@ -74,6 +74,35 @@ static SZTestHelper *sharedTestHelper;
 
 - (void)stopMockingSucceedingFacebookAuth {
     [SocializeFacebookAuthHandler stopMockingClass];
+}
+
+- (void)startMockingSucceedingLocation {
+    [SocializeLocationManager startMockingClass];
+    [[[SocializeLocationManager stub] andReturnBool:YES] locationServicesAvailable];
+    SocializeLocationManager *sharedManager = [[SocializeLocationManager origClass] sharedLocationManager];
+    [[[SocializeLocationManager stub] andReturn:sharedManager] sharedLocationManager];
+
+    id mockLocationManager = [OCMockObject mockForClass:[CLLocationManager class]];
+    [[[mockLocationManager stub] andDo0:^{
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(37.779432,-122.392166);
+        id mockLocation = [OCMockObject mockForClass:[CLLocation class]];
+        [[[mockLocation stub] andReturnValue:OCMOCK_VALUE(coordinate)] coordinate];
+        [(CLLocation*)[[mockLocation stub] andReturn:[NSDate date]] timestamp];
+        CLLocationAccuracy accuracy = 50.f;
+        [[[mockLocation stub] andReturnValue:OCMOCK_VALUE(accuracy)] horizontalAccuracy];
+
+        
+        [[[SocializeLocationManager origClass] sharedLocationManager] locationManager:nil didUpdateToLocation:mockLocation fromLocation:nil];
+    }] startUpdatingLocation];
+    
+    [[mockLocationManager stub] stopUpdatingLocation];
+    
+    [[[SocializeLocationManager origClass] sharedLocationManager] setLocationManager:mockLocationManager];
+}
+
+- (void)stopMockingSucceedingLocation {
+    [[SocializeLocationManager sharedLocationManager] setLocationManager:nil];
+    [SocializeLocationManager stopMockingClass];
 }
 
 - (void)removeAuthenticationInfo {
