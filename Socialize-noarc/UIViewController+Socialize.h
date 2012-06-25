@@ -11,5 +11,6 @@
 @interface UIViewController (Socialize)
 
 - (UINavigationController*)wrappingSocializeNavigationController;
+- (void)SZDismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion;
 
 @end

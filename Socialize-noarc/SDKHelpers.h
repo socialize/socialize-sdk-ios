@@ -28,4 +28,4 @@ void SZAuthWrapper(void (^success)(), void (^failure)(NSError *error));
 void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^completion)(SZSocialNetwork preferredNetworks), void (^cancellation)());
 BOOL SZShouldShareLocation();
 void SZFBAuthWrapper( void (^success)(), void (^failure)(NSError *error));
-
+BOOL SZOSGTE(NSString *minVersion);

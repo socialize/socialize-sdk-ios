@@ -138,7 +138,9 @@
 }
 
 - (void)closeButtonPressed:(id)button {
-    if ([self.delegate respondsToSelector:@selector(commentsTableViewControllerDidFinish:)]) {
+    if (self.completionBlock != nil) {
+        self.completionBlock();
+    } else if ([self.delegate respondsToSelector:@selector(commentsTableViewControllerDidFinish:)]) {
         [self.delegate commentsTableViewControllerDidFinish:self];
     } else {
         [self dismissModalViewControllerAnimated:YES];

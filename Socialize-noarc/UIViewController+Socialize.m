@@ -8,12 +8,28 @@
 
 #import "UIViewController+Socialize.h"
 #import "UINavigationController+Socialize.h"
+#import "SDKHelpers.h"
+
+static NSTimeInterval ModalDismissDelayHack = 0.5;
 
 @implementation UIViewController (Socialize)
 
 - (UINavigationController*)wrappingSocializeNavigationController {
     UINavigationController *nav = [UINavigationController socializeNavigationControllerWithRootViewController:self];
     return nav;
+}
+
+- (void)SZDismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
+    if (SZOSGTE(@"5.0")) {
+        [self dismissViewControllerAnimated:flag completion:completion];
+    } else {
+        [self dismissModalViewControllerAnimated:flag];
+        double delayInSeconds = ModalDismissDelayHack;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            BLOCK_CALL(completion);
+        });
+    }
 }
 
 @end

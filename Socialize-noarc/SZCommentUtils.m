@@ -30,7 +30,7 @@
 + (void)showCommentsListWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)())completion {
     SZCommentsListViewController *commentsList = [[SZCommentsListViewController alloc] initWithEntity:entity];
     commentsList.completionBlock = ^{
-        [viewController dismissViewControllerAnimated:YES completion:^{
+        [viewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL(completion);
         }];
     };
@@ -48,7 +48,10 @@
     };
     
     composer.cancellationBlock = ^{
-        [viewController dismissViewControllerAnimated:YES completion:^{
+        NSDate *start = [NSDate date];
+        [viewController SZDismissViewControllerAnimated:YES completion:^{
+            NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:start];
+            NSLog(@"Took %f seconds", interval);
             BLOCK_CALL(cancellation);
         }];
     };

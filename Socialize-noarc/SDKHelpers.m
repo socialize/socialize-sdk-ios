@@ -332,4 +332,8 @@ void SZEmitUIError(id object, NSError *error) {
     }
 }
 
-
+BOOL SZOSGTE(NSString *minVersion) {
+    NSString *currOsVersion = [[UIDevice currentDevice] systemVersion];
+    NSComparisonResult result = [currOsVersion compare:minVersion options:NSNumericSearch];
+    return result == NSOrderedSame || result == NSOrderedDescending;
+}
