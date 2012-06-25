@@ -242,7 +242,7 @@
     }
 }
 
-- (void)actualButtonPressed:(UIButton*)button {
+- (void)handleButtonPress:(id)sender {
     [self toggleLikeState];
 }
 

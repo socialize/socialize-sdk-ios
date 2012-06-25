@@ -64,7 +64,7 @@
     });
 }
 
-- (void)actualButtonPressed:(UIButton*)button {
+- (void)handleButtonPress:(id)sender {
     [SZCommentUtils showCommentsListWithViewController:self.viewController entity:self.entity completion:nil];
 }
 

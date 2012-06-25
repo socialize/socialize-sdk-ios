@@ -10,5 +10,7 @@
 
 @interface SZActionButton ()
 
+- (void)handleButtonPress:(id)sender;
+
 @end
 

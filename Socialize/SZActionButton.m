@@ -143,9 +143,14 @@
     [self.actualButton setImage:self.icon forState:UIControlStateNormal];
 }
 
+- (void)handleButtonPress:(id)sender {
+}
+
 - (void)actualButtonPressed:(UIButton*)button {
     if (self.actionBlock != nil) {
         self.actionBlock();
+    } else {
+        [self handleButtonPress:button];
     }
 }
 
