@@ -38,9 +38,6 @@
         [SZShareUtils showShareDialogWithViewController:viewController entity:entity completion:nil];
     }];
                                     
-    UIView *yellowBlock = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    yellowBlock.backgroundColor = [UIColor yellowColor];
-
     NSArray *items = [NSArray arrayWithObjects:likeButton, commentButton, shareButton, nil];
     return [[self alloc] initWithFrame:frame entity:entity viewController:viewController items:items];
 }
