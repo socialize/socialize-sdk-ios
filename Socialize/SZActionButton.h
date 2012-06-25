@@ -28,6 +28,7 @@
 + (SZActionButton*)actionButtonWithFrame:(CGRect)frame icon:(UIImage*)icon title:(NSString*)title actionBlock:(void(^)())actionBlock;
 + (NSTimeInterval)defaultFailureRetryInterval;
 - (void)autoresize;
+- (void)resetButtonsToDefaults;
 
 
 @end

@@ -52,6 +52,16 @@
     return self;
 }
 
+- (void)resetButtonsToDefaults {
+    [super resetButtonsToDefaults];
+    self.inactiveImage = [[self class] defaultInactiveImage];
+    self.inactiveHighlightedImage = [[self class] defaultInactiveHighlightedImage];
+    self.activeImage = [[self class] defaultActiveImage];
+    self.activeHighlightedImage = [[self class] defaultActiveHighlightedImage];
+    self.likedIcon = [[self class] defaultLikedIcon];
+    self.unlikedIcon = [[self class] defaultUnlikedIcon];
+}
+
 - (void)configureForNewServerEntity:(id<SocializeEntity>)serverEntity {
 
     if (!self.hideCount) {
@@ -109,33 +119,9 @@
     [self configureButtonBackgroundImages];
 }
 
-- (UIImage*)likedIcon {
-    if (likedIcon_ == nil) {
-        likedIcon_ = [[self class] defaultLikedIcon];
-    }
-    
-    return likedIcon_;
-}
-
 - (void)setUnlikedIcon:(UIImage*)unlikedIcon {
     unlikedIcon_ = unlikedIcon;
     [self configureButtonBackgroundImages];
-}
-
-- (UIImage*)unlikedIcon {
-    if (unlikedIcon_ == nil) {
-        unlikedIcon_ = [[self class] defaultUnlikedIcon];
-    }
-    
-    return unlikedIcon_;
-}
-
-- (UIImage*)inactiveImage {
-    if (inactiveImage_ == nil) {
-        inactiveImage_ = [[self class] defaultInactiveImage];
-    }
-    
-    return inactiveImage_;
 }
 
 - (void)setInactiveImage:(UIImage *)inactiveImage {
@@ -143,38 +129,14 @@
     [self configureButtonBackgroundImages];
 }
 
-- (UIImage*)inactiveHighlightedImage {
-    if (inactiveHighlightedImage_ == nil) {
-        inactiveHighlightedImage_ = [[self class] defaultInactiveHighlightedImage];
-    }
-    
-    return inactiveHighlightedImage_;
-}
-
 - (void)setInactiveHighlightedImage:(UIImage *)inactiveHighlightedImage {
     inactiveHighlightedImage_ = inactiveHighlightedImage;
     [self configureButtonBackgroundImages];
 }
 
-- (UIImage*)activeImage {
-    if (activeImage_ == nil) {
-        activeImage_ = [[self class] defaultActiveImage];
-    }
-    
-    return activeImage_;
-}
-
 - (void)setActiveImage:(UIImage *)activeImage {
     activeImage_ = activeImage;
     [self configureButtonBackgroundImages];
-}
-
-- (UIImage*)activeHighlightedImage {
-    if (activeHighlightedImage_ == nil) {
-        activeHighlightedImage_ = [[self class] defaultActiveHighlightedImage];
-    }
-    
-    return activeHighlightedImage_;
 }
 
 - (void)setActiveHighlightedImage:(UIImage *)activeHighlightedImage {
