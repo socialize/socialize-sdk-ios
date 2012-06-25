@@ -141,10 +141,6 @@
     return _activityIndicator;
 }
 
-- (void)layoutSubviews {
-    [self adjustForNewFrame];
-}
-
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
     
