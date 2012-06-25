@@ -21,6 +21,7 @@
 }
 
 - (void)testLayoutForTwoViews {
+    self.horizontalContainerView.rightJustified = YES;
     CGRect containerSize = CGRectMake(0, 0, 100, 40);
     self.horizontalContainerView.frame = containerSize;
     
