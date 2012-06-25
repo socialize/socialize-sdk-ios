@@ -71,7 +71,7 @@
         
         self.betweenButtonsPadding = [[self class] defaultBetweenButtonsPadding];
         
-        self.entity = entity;
+        _entity = entity;
         self.viewController = viewController;
         self.itemsRight = itemsRight;
         self.itemsLeft = itemsLeft;
@@ -222,6 +222,8 @@
         return;
     }
     
+    self.serverEntity = nil;
+    
     if ([self.entity isFromServer]) {
         [self configureForNewServerEntity:self.entity];
     } else {
@@ -246,6 +248,11 @@
         [self autoresizeForSuperview:newSuperview];
     }
     
+    [self initializeEntity];
+}
+
+- (void)setEntity:(id<SocializeEntity>)entity {
+    _entity = entity;
     [self initializeEntity];
 }
 
