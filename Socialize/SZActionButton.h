@@ -21,8 +21,12 @@
 
 @property (nonatomic, assign) NSTimeInterval failureRetryInterval;
 
+@property (nonatomic, copy) void(^actionBlock)();
+
+@property (nonatomic, strong) NSString *title;
+
++ (SZActionButton*)actionButtonWithFrame:(CGRect)frame icon:(UIImage*)icon title:(NSString*)title actionBlock:(void(^)())actionBlock;
 + (NSTimeInterval)defaultFailureRetryInterval;
-- (void)setTitle:(NSString*)title;
 - (void)autoresize;
 
 

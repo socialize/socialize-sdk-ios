@@ -31,7 +31,7 @@
     [super viewDidLoad];
     
     SZEntity *entity = [SZEntity entityWithKey:@"Key" name:@"Name"];
-    self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectMake(0, 300, 0, 0) entity:entity viewController:self];
+    self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectMake(0, 360, 0, 0) entity:entity viewController:self];
     [self.view addSubview:self.actionBar];
     
     self.oldActionBar = [SocializeActionBar actionBarWithKey:@"Something" name:@"Something" presentModalInController:self];

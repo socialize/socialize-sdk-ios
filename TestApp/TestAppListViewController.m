@@ -257,8 +257,8 @@ static TestAppListViewController *sharedSampleListViewController;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-//    NSIndexPath *indexPath = [self indexPathForRowIdentifier:kShowActionBarExampleRow];
-//    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+    NSIndexPath *indexPath = [self indexPathForRowIdentifier:kShowActionBarExampleRow];
+    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 }
 
 //- (NSArray*)sections {

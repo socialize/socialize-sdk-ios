@@ -21,6 +21,17 @@
 @synthesize autoresizeDisabled = autoresizeDisabled_;
 @synthesize image = _image;
 @synthesize highlightedImage = _highlightedImage;
+@synthesize actionBlock = _actionBlock;
+@synthesize title = _title;
+
++ (SZActionButton*)actionButtonWithFrame:(CGRect)frame icon:(UIImage*)icon title:(NSString*)title actionBlock:(void(^)())actionBlock {
+    SZActionButton *actionButton = [[SZActionButton alloc] initWithFrame:frame];
+    actionButton.actionBlock = actionBlock;
+    actionButton.icon = icon;
+    actionButton.title = title;
+    
+    return actionButton;
+}
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -114,7 +125,7 @@
         
         [actualButton_ setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         actualButton_.titleLabel.shadowColor = [UIColor blackColor]; 
-        actualButton_.titleLabel.shadowOffset = CGSizeMake(0, -1); 
+        actualButton_.titleLabel.shadowOffset = CGSizeMake(0, 0); 
     }
     
     return actualButton_;
@@ -133,9 +144,13 @@
 }
 
 - (void)actualButtonPressed:(UIButton*)button {
+    if (self.actionBlock != nil) {
+        self.actionBlock();
+    }
 }
 
 - (void)setTitle:(NSString*)title {
+    _title = title;
     [self.actualButton setTitle:title forState:UIControlStateNormal];
     [self autoresize];
 }

@@ -13,6 +13,7 @@
 #import "SZEntityUtils.h"
 #import "SDKHelpers.h"
 #import "SZActionBarItem.h"
+#import "SZShareUtils.h"
 
 @interface SZActionBar ()
 @property (nonatomic, strong) SZHorizontalContainerView *buttonsContainer;
@@ -33,10 +34,14 @@
 
     SZCommentButton *commentButton = [[SZCommentButton alloc] initWithFrame:CGRectZero entity:nil viewController:viewController];
 
+    SZActionButton *shareButton = [SZActionButton actionButtonWithFrame:CGRectZero icon:[UIImage imageNamed:@"action-bar-icon-share.png"] title:@"Share" actionBlock:^{
+        [SZShareUtils showShareDialogWithViewController:viewController entity:entity completion:nil];
+    }];
+                                    
     UIView *yellowBlock = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     yellowBlock.backgroundColor = [UIColor yellowColor];
 
-    NSArray *items = [NSArray arrayWithObjects:yellowBlock, commentButton, likeButton, nil];
+    NSArray *items = [NSArray arrayWithObjects:likeButton, commentButton, shareButton, nil];
     return [[self alloc] initWithFrame:frame entity:entity viewController:viewController items:items];
 }
 
