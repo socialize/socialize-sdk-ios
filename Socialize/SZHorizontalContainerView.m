@@ -11,6 +11,7 @@
 @implementation SZHorizontalContainerView
 @synthesize columns = _columns;
 @synthesize centerColumns = _centerColumns;
+@synthesize rightJustified = _rightJustified;
 @synthesize initialPadding = _initialPadding;
 @synthesize padding = _padding;
 
@@ -22,10 +23,8 @@
     }
 }
 
-- (void)layoutColumns {
+- (void)layoutColumnsRight {
     [self removeUnneededSubviews];
-    
-    // Currently always lays out right-justified
     
     CGFloat curX = self.frame.size.width - self.initialPadding;
     
@@ -38,6 +37,30 @@
         [self addSubview:view];
         
         curX -= view.frame.size.width + self.padding;
+    }
+}
+
+- (void)layoutColumnsLeft {
+    [self removeUnneededSubviews];
+    
+    CGFloat curX = self.initialPadding;
+    
+    for (UIView *view in self.columns) {
+        CGFloat x = curX;
+        CGFloat y = roundf(self.centerColumns ? self.frame.size.height / 2.f - view.frame.size.height / 2.f : 0);
+        
+        view.frame = CGRectMake(x, y, view.frame.size.width, view.frame.size.height);
+        [self addSubview:view];
+        
+        curX += view.frame.size.width + self.padding;
+    }
+}
+
+- (void)layoutColumns {
+    if (self.isRightJustied) {
+        [self layoutColumnsRight];
+    } else {
+        [self layoutColumnsLeft];
     }
 }
 

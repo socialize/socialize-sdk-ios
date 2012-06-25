@@ -16,13 +16,16 @@
 #import "SZShareUtils.h"
 
 @interface SZActionBar ()
-@property (nonatomic, strong) SZHorizontalContainerView *buttonsContainer;
+@property (nonatomic, strong) SZHorizontalContainerView *buttonsContainerRight;
+@property (nonatomic, strong) SZHorizontalContainerView *buttonsContainerLeft;
 @end
 
 @implementation SZActionBar
 @synthesize backgroundImage = _backgroundImage;
-@synthesize items = _items;
-@synthesize buttonsContainer = _buttonsContainer;
+@synthesize itemsRight = _itemsRight;
+@synthesize itemsLeft = _itemsLeft;
+@synthesize buttonsContainerRight = _buttonsContainerRight;
+@synthesize buttonsContainerLeft = _buttonsContainerLeft;
 @synthesize entity = _entity;
 @synthesize serverEntity = _serverEntity;
 @synthesize viewController = _viewController;
@@ -38,11 +41,21 @@
         [SZShareUtils showShareDialogWithViewController:viewController entity:entity completion:nil];
     }];
                                     
-    NSArray *items = [NSArray arrayWithObjects:likeButton, commentButton, shareButton, nil];
-    return [[self alloc] initWithFrame:frame entity:entity viewController:viewController items:items];
+    NSArray *itemsRight = [NSArray arrayWithObjects:likeButton, commentButton, shareButton, nil];
+    
+    UIView *yellowBlock = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    yellowBlock.backgroundColor = [UIColor yellowColor];
+
+    UIView *purpleBlock = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    purpleBlock.backgroundColor = [UIColor purpleColor];
+    
+    NSArray *itemsLeft = [NSArray arrayWithObjects:purpleBlock, yellowBlock, nil];
+
+
+    return [[self alloc] initWithFrame:frame entity:entity viewController:viewController itemsLeft:itemsLeft itemsRight:itemsRight];
 }
 
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController *)viewController items:(NSArray*)items {
+- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController *)viewController itemsLeft:(NSArray*)itemsLeft itemsRight:(NSArray*)itemsRight {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
@@ -51,11 +64,13 @@
         
         self.entity = entity;
         self.viewController = viewController;
-        self.items = items;
+        self.itemsRight = itemsRight;
+        self.itemsLeft = itemsLeft;
         
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         
-        [self addSubview:self.buttonsContainer];
+        [self addSubview:self.buttonsContainerRight];
+        [self addSubview:self.buttonsContainerLeft];
     }
     return self;
 }
@@ -75,32 +90,56 @@
 
 - (void)setBetweenButtonsPadding:(CGFloat)betweenButtonsPadding {
     _betweenButtonsPadding = betweenButtonsPadding;
-    self.buttonsContainer.padding = betweenButtonsPadding;
-    self.buttonsContainer.initialPadding = betweenButtonsPadding;
+    self.buttonsContainerRight.padding = betweenButtonsPadding;
+    self.buttonsContainerRight.initialPadding = betweenButtonsPadding;
+    self.buttonsContainerLeft.padding = betweenButtonsPadding;
+    self.buttonsContainerLeft.initialPadding = betweenButtonsPadding;
 }
 
-- (SZHorizontalContainerView*)buttonsContainer {
-    if (_buttonsContainer == nil) {
-        _buttonsContainer = [[SZHorizontalContainerView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.height, self.frame.size.width)];
-        _buttonsContainer.centerColumns = YES;
+- (SZHorizontalContainerView*)buttonsContainerRight {
+    if (_buttonsContainerRight == nil) {
+        _buttonsContainerRight = [[SZHorizontalContainerView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.height, self.frame.size.width)];
+        _buttonsContainerRight.centerColumns = YES;
+        _buttonsContainerRight.rightJustified = YES;
     }
     
-    return _buttonsContainer;
+    return _buttonsContainerRight;
+}
+
+- (SZHorizontalContainerView*)buttonsContainerLeft {
+    if (_buttonsContainerLeft == nil) {
+        _buttonsContainerLeft = [[SZHorizontalContainerView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.height, self.frame.size.width)];
+        _buttonsContainerLeft.centerColumns = YES;
+    }
+    
+    return _buttonsContainerLeft;
+}
+
+- (void)copyFrameToContainers {
+    self.buttonsContainerRight.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    self.buttonsContainerLeft.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);    
 }
 
 - (void)layoutSubviews {
-    self.buttonsContainer.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    [self copyFrameToContainers];
 }
 
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
-    self.buttonsContainer.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    [self.buttonsContainer layoutColumns];
+    
+    [self copyFrameToContainers];
+    [self.buttonsContainerRight layoutColumns];
+    [self.buttonsContainerLeft layoutColumns];
 }
 
-- (void)setItems:(NSArray *)items {
-    _items = items;
-    [self.buttonsContainer setColumns:_items];
+- (void)setItemsRight:(NSArray *)items {
+    _itemsRight = items;
+    [self.buttonsContainerRight setColumns:_itemsRight];
+}
+
+- (void)setItemsLeft:(NSArray *)items {
+    _itemsLeft = items;
+    [self.buttonsContainerLeft setColumns:_itemsLeft];
 }
 
 - (UIImage*)backgroundImage {
@@ -128,12 +167,20 @@
     self.serverEntity = entity;
 
     [UIView animateWithDuration:0.3 animations:^{
-        for (id<SZActionBarItem> item in self.items) {
+        for (id<SZActionBarItem> item in self.itemsRight) {
             if ([item conformsToProtocol:@protocol(SZActionBarItem)]) {
                 [item actionBar:self didLoadEntity:entity];
             }
         }
-        [self.buttonsContainer layoutColumns];
+        
+        for (id<SZActionBarItem> item in self.itemsLeft) {
+            if ([item conformsToProtocol:@protocol(SZActionBarItem)]) {
+                [item actionBar:self didLoadEntity:entity];
+            }
+        }
+
+        [self.buttonsContainerRight layoutColumns];
+        [self.buttonsContainerLeft layoutColumns];
     }];
     
 }

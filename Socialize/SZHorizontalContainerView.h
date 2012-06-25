@@ -12,6 +12,7 @@
 
 @property (nonatomic, retain) NSArray *columns;
 @property (nonatomic, assign) BOOL centerColumns;
+@property (nonatomic, assign, getter=isRightJustied) BOOL rightJustified;
 @property (nonatomic, assign) CGFloat initialPadding;
 @property (nonatomic, assign) CGFloat padding;
 
