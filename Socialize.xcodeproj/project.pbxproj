@@ -165,8 +165,8 @@
 		AA00884F158D424100480399 /* UITableView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008843158D424100480399 /* UITableView+Resize.m */; };
 		AA008850158D424100480399 /* UITableView+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008845158D424100480399 /* UITableView+Socialize.m */; };
 		AA0089AC158D6F4E00480399 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0089AB158D6F4E00480399 /* DataHelper.m */; };
-		AA0602B415965A22002D2535 /* SZActionBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0602B315965A22002D2535 /* SZActionBarItem.h */; };
-		AA0602B515965A22002D2535 /* SZActionBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0602B315965A22002D2535 /* SZActionBarItem.h */; };
+		AA0602B415965A22002D2535 /* SZActionBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0602B315965A22002D2535 /* SZActionBarItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA0602B515965A22002D2535 /* SZActionBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0602B315965A22002D2535 /* SZActionBarItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA081873159046670046D661 /* libSocialize-noarc-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E51F159044E600D3EBDF /* libSocialize-noarc-profiling.a */; };
 		AA0C6016158FC4F000F66A3B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
 		AA0C6017158FC4F000F66A3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
@@ -1507,8 +1507,8 @@
 		AAD98FA115916C6900845FC9 /* SZShareDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD98F9E15916C6900845FC9 /* SZShareDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAD98FA215916C6900845FC9 /* SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD98F9F15916C6900845FC9 /* SZShareDialogViewController.m */; };
 		AAD98FA315916C6900845FC9 /* SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD98F9F15916C6900845FC9 /* SZShareDialogViewController.m */; };
-		AADFE5E515967A0E00FE2B61 /* SZLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */; };
-		AADFE5E615967A0E00FE2B61 /* SZLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */; };
+		AADFE5E515967A0E00FE2B61 /* SZLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AADFE5E615967A0E00FE2B61 /* SZLikeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AADFE5E715967A0E00FE2B61 /* SZLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5E415967A0E00FE2B61 /* SZLikeButton.m */; };
 		AADFE5E815967A0E00FE2B61 /* SZLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5E415967A0E00FE2B61 /* SZLikeButton.m */; };
 		AADFE5ED15967A7400FE2B61 /* SZActionBar.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5E915967A7400FE2B61 /* SZActionBar.h */; };
@@ -1523,8 +1523,8 @@
 		AADFE5F81596973D00FE2B61 /* SZActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5F51596973C00FE2B61 /* SZActionButton.h */; };
 		AADFE5F91596973D00FE2B61 /* SZActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5F61596973C00FE2B61 /* SZActionButton.m */; };
 		AADFE5FA1596973D00FE2B61 /* SZActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5F61596973C00FE2B61 /* SZActionButton.m */; };
-		AADFE5FD15969D4600FE2B61 /* SZCommentButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5FB15969D4500FE2B61 /* SZCommentButton.h */; };
-		AADFE5FE15969D4600FE2B61 /* SZCommentButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5FB15969D4500FE2B61 /* SZCommentButton.h */; };
+		AADFE5FD15969D4600FE2B61 /* SZCommentButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5FB15969D4500FE2B61 /* SZCommentButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AADFE5FE15969D4600FE2B61 /* SZCommentButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5FB15969D4500FE2B61 /* SZCommentButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AADFE5FF15969D4600FE2B61 /* SZCommentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5FC15969D4500FE2B61 /* SZCommentButton.m */; };
 		AADFE60015969D4600FE2B61 /* SZCommentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5FC15969D4500FE2B61 /* SZCommentButton.m */; };
 		AADFE6031596A49100FE2B61 /* SZActionButton_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */; };

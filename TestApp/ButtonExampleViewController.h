@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Socialize/Socialize.h>
-#import "SZLikeButton.h"
-#import "SZCommentButton.h"
 
 @interface ButtonExampleViewController : UIViewController
 - (id)initWithEntity:(id<SZEntity>)entity;

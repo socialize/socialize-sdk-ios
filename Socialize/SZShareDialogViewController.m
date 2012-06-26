@@ -40,7 +40,7 @@
 }
 
 - (void)setCompletionBlock:(void (^)(NSArray *shares))completionBlock {
-    _completionBlock = completionBlock;
+    _completionBlock = [completionBlock copy];
     self.shareDialog.completionBlock = completionBlock;
 }
 
