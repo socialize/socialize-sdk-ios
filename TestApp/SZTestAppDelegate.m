@@ -30,7 +30,11 @@
     [Socialize storeTwitterConsumerKey:@"ZWxJ0zIK73n5HKwGLHolQ"];
     [Socialize storeTwitterConsumerSecret:@"3K1LTY39QM9DPAqJzSZAD3L2EBEXXvuCdtTRr8NDd8"];
     [Socialize storeFacebookAppId:@"115622641859087"];
-
+    [Socialize setEntityLoaderBlock:^(UINavigationController *nav, id<SZEntity> entity) {
+        SampleEntityLoader *sample = [[SampleEntityLoader alloc] initWithEntity:entity];
+        [nav pushViewController:sample animated:YES];
+    }];
+     
     TestAppListViewController *sample = [TestAppListViewController sharedSampleListViewController];
     self.window.rootViewController = sample;
     [self.window makeKeyAndVisible];
