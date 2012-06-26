@@ -44,6 +44,9 @@
 @property (nonatomic, retain) NSString*                 username;
 @property (nonatomic, retain) NSDateFormatter*          dateFormatter;
 @property (nonatomic, retain) HtmlPageCreator*          htmlPageCreator;
+@property (nonatomic, retain) IBOutlet UILabel *locationTextLabel;
+@property (nonatomic, retain) IBOutlet UIButton *locationPinButton;
+@property (nonatomic, retain) IBOutlet UIButton *locationFatButton;
 
 -(void) updateProfileImage: (UIImage* )image;
 -(void) updateActivityMessageView;

@@ -257,11 +257,11 @@ static TestAppListViewController *sharedSampleListViewController;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        NSIndexPath *indexPath = [self indexPathForRowIdentifier:kShowActionBarExampleRow];
-//        [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
-//    });
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSIndexPath *indexPath = [self indexPathForRowIdentifier:kShowCommentsListRow];
+        [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+    });
 }
 
 //- (NSArray*)sections {

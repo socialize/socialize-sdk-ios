@@ -21,7 +21,6 @@ NSString * const kNoCityMessage = @"Could not locate the place name.";
 NSString * const kNoCommentMessage = @"Could not load activity.";
 
 @interface SocializeActivityDetailsView()
--(void) configureProfileImage;
 @end
 
 @implementation SocializeActivityDetailsView
@@ -41,6 +40,10 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 @synthesize showEntityView = showEntityView_;
 @synthesize showEntityButton = showEntityButton_;
 @synthesize delegate = delegate_;
+@synthesize locationTextLabel = _locationTextLabel;
+@synthesize locationPinButton = _locationPinButton;
+@synthesize locationFatButton = _locationFatButton;
+
 #pragma mark init/dealloc methods
 - (void)dealloc
 {
@@ -59,6 +62,9 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     [htmlPageCreator release];
     [showEntityView_ release];
     [showEntityButton_ release];
+    [_locationTextLabel release];
+    [_locationPinButton release];
+    [_locationFatButton release];
     
     [super dealloc];
 }
@@ -80,11 +86,8 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 }
 
 - (void)awakeFromNib {
-    [self.showEntityButton addSocializeRoundedGrayButtonImages];
-    
-    UIEdgeInsets insets = UIEdgeInsetsMake(0, 20, 0, 20);
-    self.showEntityButton.contentEdgeInsets = insets;
-    [self configureProfileImage];
+    UIImage *entityImage = [[UIImage imageNamed:@"socialize-activity-details-btn-link.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5];
+    [self.showEntityButton setBackgroundImage:entityImage forState:UIControlStateNormal];
 }
 
 -(void) addShadowForView:(UIView*)view
@@ -102,17 +105,8 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     [shadowView release];
 }
 
--(void) configureProfileImage {
-    self.profileImage.layer.cornerRadius = 3.0;
-    self.profileImage.layer.masksToBounds = YES;
-    self.profileImage.layer.borderWidth = 1.0;
-    
-    [self addShadowForView:self.profileImage];
-}
-
 -(void) updateProfileImage: (UIImage* )image {
     self.profileImage.image = image;
-    [self configureProfileImage];
 }
 
 -(void) setUsername:(NSString*)name {

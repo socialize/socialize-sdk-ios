@@ -162,7 +162,7 @@
     cell.activityIcon.image = [self iconForActivity:activity];
     
     // FIXME +1 why?
-    UIImage * backgroundImage = [UIImage imageNamed:@"socialize-cell-bg.png"];
+    UIImage * backgroundImage = [UIImage imageNamed:@"socialize-activity-details-back-entry-x"];
     UIImageView * imageView = [[UIImageView alloc] initWithImage:backgroundImage];
     CGRect backgroundImageFrame = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height+1);
     imageView.frame = backgroundImageFrame;

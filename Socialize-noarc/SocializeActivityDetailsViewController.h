@@ -25,12 +25,13 @@
 -(void)fetchActivityForType:(NSString*)activityType activityID:(NSNumber*)activityID;
 -(void)configureDetailsView;
 - (IBAction)showEntityButtonPressed:(id)sender;
+- (IBAction)locationButtonPressed:(id)sender;
 
 @property (nonatomic, retain) IBOutlet SocializeActivityDetailsView*     activityDetailsView;
 @property (nonatomic, retain) id<SocializeActivity> socializeActivity;
 /** this view controller shows all the recent activity for a given user */
 @property (nonatomic, retain) IBOutlet SocializeActivityViewController*  activityViewController;
 @property (nonatomic, assign) id <SocializeActivityDetailsViewControllerDelegate> delegate;
-
+@property (nonatomic, retain) NSString *currentLocationDescription;
 @end
 

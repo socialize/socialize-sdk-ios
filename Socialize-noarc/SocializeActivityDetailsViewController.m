@@ -24,14 +24,11 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-
 #define kCenterPointLatitude  37.779941
 #define kCenterPointLongitude -122.417908
 
 
 @interface SocializeActivityDetailsViewController()
--(void)loadActivityDetailData;
--(void)updateProfileImage;
 @end
 
 @implementation SocializeActivityDetailsViewController
@@ -40,6 +37,7 @@
 @synthesize socializeActivity = socializeActivity_;
 @synthesize activityViewController = activityViewController_;
 @synthesize delegate = delegate_;
+@synthesize currentLocationDescription = _currentLocationDescription;
 
 #pragma mark init/dealloc
 - (void)dealloc
@@ -82,6 +80,63 @@
 -(void)fetchActivityForType:(NSString*)activityType activityID:(NSNumber*)activityID {
     //comments are currently the only type that exist
     [self.socialize getCommentById:[activityID intValue]];    
+}
+
+- (IBAction)locationButtonPressed:(id)sender {
+    CLLocation *location = [self activityLocation];
+    CLLocationCoordinate2D coordinate = location.coordinate;
+    
+    UIAlertView *alertView = [UIAlertView alertWithTitle:@"Open in maps?" message:@"External application required"];
+    [alertView addButtonWithTitle:@"No"];
+    [alertView addButtonWithTitle:@"Yes" handler:^{
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://maps.google.com/maps?q=%f,%f", coordinate.latitude, coordinate.longitude]]];
+    }];
+    [alertView show];
+}
+
+- (void)configureInterfaceForLocation {
+    if ([self.currentLocationDescription length] > 0) {
+        self.activityDetailsView.locationTextLabel.text = self.currentLocationDescription;
+        self.activityDetailsView.locationPinButton.enabled = YES;
+        self.activityDetailsView.locationFatButton.enabled = YES;
+    } else {
+        self.activityDetailsView.locationTextLabel.text = @"Location unavailable";
+        self.activityDetailsView.locationPinButton.enabled = NO;            
+        self.activityDetailsView.locationFatButton.enabled = NO;
+    }
+}
+
+- (CLLocation*)activityLocation {
+    NSNumber *lat = self.socializeActivity.lat;
+    NSNumber *lng = self.socializeActivity.lng;
+    if (lat != nil && lng != nil) {
+        CLLocation *location = [[[CLLocation alloc] initWithLatitude:[lat doubleValue] longitude:[lng doubleValue]] autorelease];
+        return location;
+    }
+    return nil;
+}
+
+- (void)reverseGeocodeLocationAndUpdateInterface {
+    
+    CLLocation *location = [self activityLocation];
+    
+    if (location != nil) {
+        __block id geocoder = [[SocializeGeocoderAdapter alloc] init];
+        
+        [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray*placemarks, NSError *error)
+         {
+             if (error != nil) {
+                 self.currentLocationDescription = nil;
+             }
+             else {
+                 self.currentLocationDescription = [NSString stringWithPlacemark:[placemarks objectAtIndex:0]];
+             }
+             
+             [self configureInterfaceForLocation];
+             [geocoder autorelease];
+         }
+         ];
+    }
 }
 
 -(void)service:(SocializeService*)service didFetchElements:(NSArray*)dataArray {
@@ -151,6 +206,9 @@
 { 
     [super viewWillAppear:animated];
     [self loadActivityDetailData];
+    
+    [self configureInterfaceForLocation];
+    [self reverseGeocodeLocationAndUpdateInterface];
 }
 
 - (void)viewDidLoad

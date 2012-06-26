@@ -88,7 +88,7 @@
 
 - (void)testAwakeFromNibConfiguresButton {
     [self.mockShowEntityButton makeNice];
-    [[self.mockShowEntityButton expect] addSocializeRoundedGrayButtonImages];
+    [[self.mockShowEntityButton expect] setBackgroundImage:OCMOCK_ANY forState:UIControlStateNormal];
     [self.activityDetailsView awakeFromNib];
 }
 

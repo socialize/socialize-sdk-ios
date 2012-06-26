@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1296</int>
-		<string key="IBDocument.SystemVersion">11D50b</string>
+		<string key="IBDocument.SystemVersion">11E53</string>
 		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
-		<string key="IBDocument.AppKitVersion">1138.32</string>
-		<string key="IBDocument.HIToolboxVersion">568.00</string>
+		<string key="IBDocument.AppKitVersion">1138.47</string>
+		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1179</string>
+			<string key="NS.object.0">1181</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -75,10 +75,10 @@
 									<object class="IBUIImageView" id="549849538">
 										<reference key="NSNextResponder" ref="862533372"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{8, 8}, {48, 48}}</string>
+										<string key="NSFrame">{{8, 10}, {42, 42}}</string>
 										<reference key="NSSuperview" ref="862533372"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="1063835662"/>
+										<reference key="NSNextKeyView" ref="565497677"/>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<object class="NSCustomResource" key="IBUIImage">
@@ -86,12 +86,27 @@
 											<string key="NSResourceName">socialize-cell-image-default.png</string>
 										</object>
 									</object>
+									<object class="IBUIImageView" id="565497677">
+										<reference key="NSNextResponder" ref="862533372"/>
+										<int key="NSvFlags">292</int>
+										<string key="NSFrame">{{8, 10}, {42, 42}}</string>
+										<reference key="NSSuperview" ref="862533372"/>
+										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="24182396"/>
+										<bool key="IBUIUserInteractionEnabled">NO</bool>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<object class="NSCustomResource" key="IBUIImage">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">socialize-activity-details-profile-pic-small.png</string>
+										</object>
+									</object>
 									<object class="IBUIActivityIndicatorView" id="24182396">
 										<reference key="NSNextResponder" ref="862533372"/>
 										<int key="NSvFlags">-2147483356</int>
-										<string key="NSFrame">{{14, 12}, {37, 37}}</string>
+										<string key="NSFrame">{{11, 11}, {37, 37}}</string>
 										<reference key="NSSuperview" ref="862533372"/>
 										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="1063835662"/>
 										<string key="NSReuseIdentifierKey">_NS:1030</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -159,24 +174,27 @@
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<string key="IBUIText">Lorem ipsum dolor sit amet ips...</string>
-										<reference key="IBUITextColor" ref="1040680893"/>
-										<reference key="IBUIHighlightedColor" ref="1040680893"/>
-										<object class="NSColor" key="IBUIShadowColor" id="1070676359">
+										<object class="NSColor" key="IBUITextColor">
 											<int key="NSColorSpace">3</int>
-											<bytes key="NSWhite">MAA</bytes>
+											<bytes key="NSWhite">MQA</bytes>
 										</object>
-										<string key="IBUIShadowOffset">{0, 1}</string>
+										<reference key="IBUIHighlightedColor" ref="1040680893"/>
+										<object class="NSColor" key="IBUIShadowColor">
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MCAwLjUAA</bytes>
+										</object>
+										<string key="IBUIShadowOffset">{1, 1}</string>
 										<int key="IBUIBaselineAdjustment">1</int>
 										<float key="IBUIMinimumFontSize">10</float>
-										<object class="IBUIFontDescription" key="IBUIFontDescription" id="894297193">
+										<object class="IBUIFontDescription" key="IBUIFontDescription">
 											<string key="name">Helvetica</string>
 											<string key="family">Helvetica</string>
 											<int key="traits">0</int>
-											<double key="pointSize">15</double>
+											<double key="pointSize">14</double>
 										</object>
-										<object class="NSFont" key="IBUIFont" id="1004107324">
+										<object class="NSFont" key="IBUIFont">
 											<string key="NSName">Helvetica</string>
-											<double key="NSSize">15</double>
+											<double key="NSSize">14</double>
 											<int key="NSfFlags">16</int>
 										</object>
 										<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
@@ -196,12 +214,24 @@
 										<string key="IBUIText">Lorem ipsum dolor sit amet ips...</string>
 										<reference key="IBUITextColor" ref="1040680893"/>
 										<reference key="IBUIHighlightedColor" ref="1040680893"/>
-										<reference key="IBUIShadowColor" ref="1070676359"/>
-										<string key="IBUIShadowOffset">{0, 1}</string>
+										<object class="NSColor" key="IBUIShadowColor">
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MCAwLjUAA</bytes>
+										</object>
+										<string key="IBUIShadowOffset">{1, 1}</string>
 										<int key="IBUIBaselineAdjustment">1</int>
 										<float key="IBUIMinimumFontSize">10</float>
-										<reference key="IBUIFontDescription" ref="894297193"/>
-										<reference key="IBUIFont" ref="1004107324"/>
+										<object class="IBUIFontDescription" key="IBUIFontDescription" id="606623618">
+											<string key="name">Helvetica-Bold</string>
+											<string key="family">Helvetica</string>
+											<int key="traits">2</int>
+											<double key="pointSize">11</double>
+										</object>
+										<object class="NSFont" key="IBUIFont" id="244045951">
+											<string key="NSName">Helvetica-Bold</string>
+											<double key="NSSize">11</double>
+											<int key="NSfFlags">16</int>
+										</object>
 										<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 									</object>
 									<object class="IBUILabel" id="287460201">
@@ -219,27 +249,19 @@
 										<string key="IBUIText">Jeff Broderick about 12h ago</string>
 										<object class="NSColor" key="IBUITextColor">
 											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC41NDUwOTgwMzkyIDAuNjMxMzcyNTQ5IDAuNzA5ODAzOTIxNgA</bytes>
+											<bytes key="NSRGB">MC41OTYwNzg0MzE0IDAuNjQzMTM3MjU0OSAwLjY4NjI3NDUwOTgAA</bytes>
 										</object>
 										<reference key="IBUIHighlightedColor" ref="1040680893"/>
 										<object class="NSColor" key="IBUIShadowColor">
 											<int key="NSColorSpace">3</int>
-											<bytes key="NSWhite">MC4xNzg4MzIxMTY4AA</bytes>
+											<bytes key="NSWhite">MCAwLjk1AA</bytes>
 										</object>
-										<string key="IBUIShadowOffset">{0, 1}</string>
+										<string key="IBUIShadowOffset">{1, 0}</string>
 										<int key="IBUIBaselineAdjustment">1</int>
 										<float key="IBUIMinimumFontSize">10</float>
-										<object class="IBUIFontDescription" key="IBUIFontDescription">
-											<string key="name">Helvetica</string>
-											<string key="family">Helvetica</string>
-											<int key="traits">0</int>
-											<double key="pointSize">12</double>
-										</object>
-										<object class="NSFont" key="IBUIFont">
-											<string key="NSName">Helvetica</string>
-											<double key="NSSize">12</double>
-											<int key="NSfFlags">16</int>
-										</object>
+										<reference key="IBUIFontDescription" ref="606623618"/>
+										<reference key="IBUIFont" ref="244045951"/>
+										<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 									</object>
 									<object class="IBUIImageView" id="507126631">
 										<reference key="NSNextResponder" ref="1063835662"/>
@@ -266,14 +288,15 @@
 							<object class="IBUIImageView" id="417913683">
 								<reference key="NSNextResponder" ref="210649253"/>
 								<int key="NSvFlags">297</int>
-								<string key="NSFrame">{{296, 19}, {15, 22}}</string>
+								<string key="NSFrame">{{300, 23}, {10, 15}}</string>
 								<reference key="NSSuperview" ref="210649253"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">socialize-activity-call-out-arrow.png</string>
+									<string key="NSResourceName">socialize-activity-details-categ_arrow.png</string>
 								</object>
 							</object>
 						</object>
@@ -473,6 +496,7 @@
 							<reference ref="549849538"/>
 							<reference ref="392554414"/>
 							<reference ref="24182396"/>
+							<reference ref="565497677"/>
 						</object>
 						<reference key="parent" ref="936046983"/>
 						<string key="objectName">ProfileView</string>
@@ -507,6 +531,12 @@
 						<reference key="object" ref="24182396"/>
 						<reference key="parent" ref="862533372"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">35</int>
+						<reference key="object" ref="565497677"/>
+						<reference key="parent" ref="862533372"/>
+						<string key="objectName">Image Corners</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -526,6 +556,7 @@
 					<string>26.IBPluginDependency</string>
 					<string>28.IBPluginDependency</string>
 					<string>32.IBPluginDependency</string>
+					<string>35.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
@@ -539,6 +570,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>SocializeActivityTableViewCell</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -564,7 +596,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">34</int>
+			<int key="maxID">35</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -807,19 +839,21 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>socialize-activity-call-out-arrow.png</string>
 				<string>socialize-activity-cell-icon-comment.png</string>
+				<string>socialize-activity-details-categ_arrow.png</string>
+				<string>socialize-activity-details-profile-pic-small.png</string>
 				<string>socialize-cell-bg.png</string>
 				<string>socialize-cell-image-default.png</string>
 			</object>
 			<object class="NSArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{12, 18}</string>
 				<string>{15, 15}</string>
+				<string>{10, 15}</string>
+				<string>{42, 42}</string>
 				<string>{1, 74}</string>
 				<string>{34, 34}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">1179</string>
+		<string key="IBCocoaTouchPluginVersion">1181</string>
 	</data>
 </archive>
