@@ -166,9 +166,7 @@
     self.commentsTableViewController.content = [NSArray arrayWithObject:mockComment];
     
     //mock out creation of profile controller and present
-    id mockProfileViewController = [OCMockObject mockForClass:[_SZUserProfileViewController class]];
-    [[[(id)self.commentsTableViewController expect] andReturn:mockProfileViewController] getProfileViewControllerForUser:mockUser];
-    [[(id)self.commentsTableViewController expect] presentModalViewController:mockProfileViewController animated:YES];
+    [[self.mockNavigationController expect] pushViewController:OCMOCK_ANY animated:YES];
     
 
     [self.commentsTableViewController viewProfileButtonTouched:mockButton];
