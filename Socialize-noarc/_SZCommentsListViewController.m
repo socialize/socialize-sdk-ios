@@ -34,10 +34,6 @@
 #import "SZSmartAlertUtils.h"
 
 @interface _SZCommentsListViewController()
--(NSString*)getDateString:(NSDate*)date;
--(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
--(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment;
-- (void)getSubscriptionStatus;
 @end
 
 @implementation _SZCommentsListViewController
@@ -312,15 +308,13 @@
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender {
     // TODO :  lets view the profile
     SocializeComment *comment = ((SocializeComment*)[self.content objectAtIndex:sender.tag]);
-    UIViewController *profileViewController = [self getProfileViewControllerForUser:comment.user];
-    [self presentModalViewController:profileViewController animated:YES];
-}
-
--(UIViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user {
+    
     _SZUserProfileViewController *profile = [_SZUserProfileViewController profileViewController];
-    profile.user = user;
-    UINavigationController *nav = [UINavigationController socializeNavigationControllerWithRootViewController:profile];
-    return nav;
+    profile.user = comment.user;
+    profile.completionBlock = ^(id<SZFullUser> user) {
+        [self.navigationController popToViewController:self animated:YES];
+    };
+    [self.navigationController pushViewController:profile animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)newTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
