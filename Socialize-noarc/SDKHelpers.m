@@ -335,9 +335,7 @@ void SZEmitUIError(id object, NSError *error) {
 void SZEmitUnconfiguredFacebookMessage() {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        if (![SZFacebookUtils isAvailable]) {
-            NSLog(SOCIALIZE_FACEBOOK_NOT_CONFIGURED_MESSAGE);
-        }
+        NSLog(SOCIALIZE_FACEBOOK_NOT_CONFIGURED_MESSAGE);
     });
 
 }
@@ -345,9 +343,7 @@ void SZEmitUnconfiguredFacebookMessage() {
 void SZEmitUnconfiguredTwitterMessage() {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        if (![SZTwitterUtils isAvailable]) {
-            NSLog(SOCIALIZE_TWITTER_NOT_CONFIGURED_MESSAGE);        
-        }
+        NSLog(SOCIALIZE_TWITTER_NOT_CONFIGURED_MESSAGE);        
     });
     
 }
@@ -355,9 +351,7 @@ void SZEmitUnconfiguredTwitterMessage() {
 void SZEmitUnconfiguredSmartAlertsMessage() {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        if (![SZSmartAlertUtils isAvailable]) {
-            NSLog(SOCIALIZE_NOTIFICATIONS_NOT_CONFIGURED_MESSAGE);
-        }
+        NSLog(SOCIALIZE_NOTIFICATIONS_NOT_CONFIGURED_MESSAGE);
     });
 }
 

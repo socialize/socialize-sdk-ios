@@ -34,8 +34,9 @@
 }
 
 + (BOOL)isAvailable {
-    SZEmitUnconfiguredFacebookMessage();
-    return [SocializeThirdPartyFacebook available];
+    BOOL available = [SocializeThirdPartyFacebook available];
+    if (!available) SZEmitUnconfiguredFacebookMessage();
+    return available;
 }
 
 + (BOOL)isLinked {

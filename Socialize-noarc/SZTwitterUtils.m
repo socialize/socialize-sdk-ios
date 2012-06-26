@@ -16,8 +16,9 @@
 @implementation SZTwitterUtils
 
 + (BOOL)isAvailable {
-    SZEmitUnconfiguredTwitterMessage();
-    return [SocializeThirdPartyTwitter available];
+    BOOL available = [SocializeThirdPartyTwitter available];
+    if (!available) SZEmitUnconfiguredTwitterMessage();
+    return available;
 }
 
 + (BOOL)isLinked {

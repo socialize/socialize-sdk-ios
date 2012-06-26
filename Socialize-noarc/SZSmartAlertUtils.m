@@ -13,8 +13,11 @@
 @implementation SZSmartAlertUtils
 
 + (BOOL)isAvailable {
-    SZEmitUnconfiguredSmartAlertsMessage();
-    return [[Socialize sharedSocialize] notificationsAreConfigured];
+    BOOL available = [[Socialize sharedSocialize] notificationsAreConfigured];
+    if (!available) {
+        SZEmitUnconfiguredSmartAlertsMessage();
+    }
+    return available;
 }
 
 + (BOOL)handleNotification:(NSDictionary*)userInfo {
