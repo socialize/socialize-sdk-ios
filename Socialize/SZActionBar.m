@@ -47,6 +47,7 @@
     SZActionButton *shareButton = [SZActionButton actionButtonWithFrame:CGRectZero icon:[UIImage imageNamed:@"action-bar-icon-share.png"] title:@"Share" actionBlock:^{
         [SZShareUtils showShareDialogWithViewController:viewController entity:entity completion:nil];
     }];
+    shareButton.accessibilityLabel = @"share button";
                                     
     NSArray *itemsRight = [NSArray arrayWithObjects:likeButton, commentButton, shareButton, nil];
     
@@ -62,6 +63,7 @@
     viewsButton.actionBlock = ^{
         [SZUserUtils showUserProfileInViewController:viewController user:nil completion:nil];
     };
+    viewsButton.actualButton.accessibilityLabel = @"views button";
     
     NSArray *itemsLeft = [NSArray arrayWithObjects:viewsButton, nil];
 

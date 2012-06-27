@@ -41,8 +41,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 
-    self.actionBar = [SZActionBarUtils showActionBarInViewController:self entity:self.entity options:nil];
-//    [self makeActionBarVertical];
+    if (self.actionBar == nil) {
+        self.actionBar = [SZActionBarUtils showActionBarInViewController:self entity:self.entity options:nil];
+        //    [self makeActionBarVertical];
+    }
 }
 
 - (void)makeActionBarVertical {

@@ -188,7 +188,7 @@ static TestAppListViewController *sharedSampleListViewController;
 
     NSMutableArray *actionBarRows = [NSMutableArray array];
     [actionBarRows addObject:[self rowWithIdentifier:kShowActionBarExampleRow text:@"Show Action Bar Example" executionBlock:^{
-        ActionBarExampleViewController *actionBarExample = [[ActionBarExampleViewController alloc] init];
+        ActionBarExampleViewController *actionBarExample = [[ActionBarExampleViewController alloc] initWithEntity:self.entity];
         SZNavigationController *nav = [[SZNavigationController alloc] initWithRootViewController:actionBarExample];
         [self presentModalViewController:nav animated:YES];
     }]];

@@ -11,7 +11,7 @@
 @interface KIFTestScenario (TestAppAdditions)
 
 + (id)scenarioToTestUserProfile;
-//+ (id)scenarioToTestActionBar;
++ (id)scenarioToTestActionBar;
 //+ (id)scenarioToTestViewOtherProfile;
 + (id)scenarioToTestLikeButton;
 + (id)scenarioToSleep;
