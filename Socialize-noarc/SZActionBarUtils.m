@@ -7,13 +7,16 @@
 //
 
 #import "SZActionBarUtils.h"
-#import "SZDisplay.h"
 #import "SocializeObjects.h"
+#import "SZActionBar.h"
 
 @implementation SZActionBarUtils
 
-+ (void)showActionBarWithDisplay:(id<SZDisplay>)display entity:(id<SZEntity>)entity options:(id)options {
++ (SZActionBar*)showActionBarInViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity options:(id)options {
+    SZActionBar *actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:entity viewController:viewController];
+    [viewController.view addSubview:actionBar];
     
+    return actionBar;
 }
 
 @end

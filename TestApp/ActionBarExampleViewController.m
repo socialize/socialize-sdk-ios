@@ -16,12 +16,12 @@
 @implementation ActionBarExampleViewController
 @synthesize actionBar = _actionBar;
 @synthesize oldActionBar = _oldActionBar;
+@synthesize entity = _entity;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)initWithEntity:(id<SZEntity>)entity {
+    self = [super init];
     if (self) {
-        // Custom initialization
+        self.entity = entity;
     }
     return self;
 }
@@ -30,8 +30,22 @@
 {
     [super viewDidLoad];
     
-    SZEntity *entity = [SZEntity entityWithKey:@"Key" name:@"Name"];
-    self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectMake(0, 0, 320, [SZActionBar defaultHeight] * 1.5f) entity:entity viewController:self];
+    self.view.backgroundColor = [UIColor greenColor];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel handler:^(id sender) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+
+    self.actionBar = [SZActionBarUtils showActionBarInViewController:self entity:self.entity options:nil];
+//    [self makeActionBarVertical];
+}
+
+- (void)makeActionBarVertical {
     self.actionBar.transform = CGAffineTransformMakeRotation(M_PI_2);
     for (UIView *view in self.actionBar.itemsLeft) {
         view.transform = CGAffineTransformMakeRotation(-M_PI_2);
@@ -42,17 +56,6 @@
     }
 
     self.actionBar.center = self.view.center;
-    [self.view addSubview:self.actionBar];
-    
-    self.oldActionBar = [SocializeActionBar actionBarWithKey:@"Something" name:@"Something" presentModalInController:self];
-    [self.view addSubview:self.oldActionBar.view];
-    self.view.backgroundColor = [UIColor greenColor];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel handler:^(id sender) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload

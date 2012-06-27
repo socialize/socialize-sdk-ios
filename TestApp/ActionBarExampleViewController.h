@@ -10,8 +10,9 @@
 #import <Socialize/Socialize.h>
 
 @interface ActionBarExampleViewController : UIViewController
+- (id)initWithEntity:(id<SZEntity>)entity;
 
 @property (nonatomic, strong) SocializeActionBar *oldActionBar;
 @property (nonatomic, strong) SZActionBar *actionBar;
-
+@property (nonatomic, strong) id<SZEntity> entity;
 @end

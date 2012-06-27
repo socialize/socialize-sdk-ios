@@ -177,14 +177,6 @@
     [self setNeedsDisplay];
 }
 
-- (void)autoresizeForSuperview:(UIView*)superview {
-    self.bounds = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, superview.bounds.size.width, [[self class] defaultHeight]);
-}
-
-- (void)autoresize {
-    [self autoresizeForSuperview:self.superview];
-}
-
 - (void)configureForNewServerEntity:(id<SZEntity>)entity {
     self.serverEntity = entity;
 
@@ -246,14 +238,29 @@
     }
 }
 
+- (void)moveToBottomOfSuperview:(UIView*)superview {
+    self.frame = CGRectMake(0, superview.bounds.size.height - [[self class] defaultHeight], superview.bounds.size.width, [[self class] defaultHeight]);    
+}
+
+- (void)autoresizeForSuperview:(UIView*)superview {
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, superview.bounds.size.width, [[self class] defaultHeight]);
+}
+
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     
     // Autosize if we don't yet have a nonzero frame
-    if (CGRectIsEmpty(self.frame)) {
+    if (CGRectIsNull(self.frame)) {
+        [self moveToBottomOfSuperview:newSuperview];
+    } else if (CGRectIsEmpty(self.frame)) {
         [self autoresizeForSuperview:newSuperview];
     }
     
     [self initializeEntity];
+}
+
+- (void)didMoveToSuperview {
+    CGRect frame = [self frame];
+    (void)frame;
 }
 
 - (void)setEntity:(id<SocializeEntity>)entity {
