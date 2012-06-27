@@ -16,6 +16,7 @@
 #import "SZShareUtils.h"
 #import "SZActionEntityButton.h"
 #import "NSNumber+Additions.h"
+#import "SZUserUtils.h"
 
 @interface SZActionBar ()
 @property (nonatomic, strong) SZHorizontalContainerView *buttonsContainerRight;
@@ -57,6 +58,10 @@
     UIImage *icon = [UIImage imageNamed:@"action-bar-icon-views.png"];
     viewsButton.icon = icon;
     viewsButton.image = nil;
+    viewsButton.highlightedImage = nil;
+    viewsButton.actionBlock = ^{
+        [SZUserUtils showUserProfileInViewController:viewController user:nil completion:nil];
+    };
     
     NSArray *itemsLeft = [NSArray arrayWithObjects:viewsButton, nil];
 

@@ -44,6 +44,10 @@
 }
 
 + (void)showUserProfileInViewController:(UIViewController*)viewController user:(id<SocializeFullUser>)user completion:(void(^)(id<SZFullUser> user))completion {
+    if (user == nil) {
+        user = [self currentUser];
+    }
+    
     SZUserProfileViewController *profile = [[SZUserProfileViewController alloc] initWithUser:(id<SZUser>)user];
     profile.completionBlock = ^(id<SZFullUser> user) {
         [viewController dismissViewControllerAnimated:YES completion:^{
