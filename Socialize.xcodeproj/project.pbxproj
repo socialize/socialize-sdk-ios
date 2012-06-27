@@ -1357,6 +1357,7 @@
 		AAB73D581597C01800220492 /* ButtonExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB73D551597C01800220492 /* ButtonExampleViewController.m */; };
 		AAB73D591597C01800220492 /* ButtonExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB73D561597C01800220492 /* ButtonExampleViewController.xib */; };
 		AAB73D5A1597C01800220492 /* ButtonExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB73D561597C01800220492 /* ButtonExampleViewController.xib */; };
+		AACC19F2159B9B1900800576 /* SZActionBarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AACC19F1159B9B1900800576 /* SZActionBarTests.m */; };
 		AACED945158FCDC70024EC43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C601F158FC4F000F66A3B /* main.m */; };
 		AACED946158FCDD20024EC43 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC394158E868D0073AD50 /* MapKit.framework */; };
 		AACED947158FCDD20024EC43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC392158E86770073AD50 /* QuartzCore.framework */; };
@@ -2259,7 +2260,7 @@
 		AA0C60FD158FC61D00F66A3B /* SocializeViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeViewTests.m; sourceTree = "<group>"; };
 		AA0C60FE158FC61D00F66A3B /* StringWithPlacemarkTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringWithPlacemarkTest.h; sourceTree = "<group>"; };
 		AA0C60FF158FC61D00F66A3B /* StringWithPlacemarkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringWithPlacemarkTest.m; sourceTree = "<group>"; };
-		AA0C6100158FC61D00F66A3B /* SocializeActionBarTests.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SocializeActionBarTests.h; sourceTree = "<group>"; };
+		AA0C6100158FC61D00F66A3B /* SocializeActionBarTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeActionBarTests.h; sourceTree = "<group>"; };
 		AA0C6101158FC61D00F66A3B /* SocializeActionBarTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeActionBarTests.m; sourceTree = "<group>"; };
 		AA0C6102158FC61D00F66A3B /* SZLikeButtonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLikeButtonTests.h; sourceTree = "<group>"; };
 		AA0C6103158FC61D00F66A3B /* SZLikeButtonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLikeButtonTests.m; sourceTree = "<group>"; };
@@ -2630,6 +2631,8 @@
 		AAB73D541597C01800220492 /* ButtonExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonExampleViewController.h; sourceTree = "<group>"; };
 		AAB73D551597C01800220492 /* ButtonExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonExampleViewController.m; sourceTree = "<group>"; };
 		AAB73D561597C01800220492 /* ButtonExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonExampleViewController.xib; sourceTree = "<group>"; };
+		AACC19F0159B9B1900800576 /* SZActionBarTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionBarTests.h; sourceTree = "<group>"; };
+		AACC19F1159B9B1900800576 /* SZActionBarTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionBarTests.m; sourceTree = "<group>"; };
 		AACEDA14158FCF920024EC43 /* JSON-RequestAndResponse-TestFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "JSON-RequestAndResponse-TestFiles"; sourceTree = "<group>"; };
 		AACEDA19158FD4D50024EC43 /* GCDAProfiling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GCDAProfiling.c; sourceTree = "<group>"; };
 		AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuthConsumer.xcodeproj; path = ThirdParty/OAuthConsumer/OAuthConsumer.xcodeproj; sourceTree = "<group>"; };
@@ -3141,6 +3144,8 @@
 				AA0C6113158FC61D00F66A3B /* UserUtilsTests.m */,
 				AA9701A715953942006CDC8E /* FacebookUtilsTests.h */,
 				AA9701A815953942006CDC8E /* FacebookUtilsTests.m */,
+				AACC19F0159B9B1900800576 /* SZActionBarTests.h */,
+				AACC19F1159B9B1900800576 /* SZActionBarTests.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -5853,6 +5858,7 @@
 				AA90FFF9159065C400AFD8A2 /* show_comments_list.m in Sources */,
 				AA90FFFA159065C400AFD8A2 /* third_party_link_options.m in Sources */,
 				AA9701A915953942006CDC8E /* FacebookUtilsTests.m in Sources */,
+				AACC19F2159B9B1900800576 /* SZActionBarTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
