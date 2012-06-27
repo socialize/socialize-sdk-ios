@@ -108,7 +108,7 @@
 
 - (SZHorizontalContainerView*)buttonsContainerRight {
     if (_buttonsContainerRight == nil) {
-        _buttonsContainerRight = [[SZHorizontalContainerView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.height, self.frame.size.width)];
+        _buttonsContainerRight = [[SZHorizontalContainerView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.height, self.bounds.size.width)];
         _buttonsContainerRight.centerColumns = YES;
         _buttonsContainerRight.rightJustified = YES;
     }
@@ -118,7 +118,7 @@
 
 - (SZHorizontalContainerView*)buttonsContainerLeft {
     if (_buttonsContainerLeft == nil) {
-        _buttonsContainerLeft = [[SZHorizontalContainerView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.height, self.frame.size.width)];
+        _buttonsContainerLeft = [[SZHorizontalContainerView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.height, self.bounds.size.width)];
         _buttonsContainerLeft.centerColumns = YES;
     }
     
@@ -126,10 +126,10 @@
 }
 
 - (void)adjustForNewFrame {
-    self.buttonsContainerRight.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    self.buttonsContainerLeft.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    self.buttonsContainerRight.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+    self.buttonsContainerLeft.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
     
-    self.activityIndicator.frame = CGRectMake(30, roundf(self.frame.size.height / 2.f), 0, 0);
+    self.activityIndicator.frame = CGRectMake(30, roundf(self.bounds.size.height / 2.f), 0, 0);
 }
 
 - (UIActivityIndicatorView*)activityIndicator {
@@ -173,7 +173,7 @@
 }
 
 - (void)autoresizeForSuperview:(UIView*)superview {
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, superview.frame.size.width, [[self class] defaultHeight]);    
+    self.bounds = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, superview.bounds.size.width, [[self class] defaultHeight]);
 }
 
 - (void)autoresize {

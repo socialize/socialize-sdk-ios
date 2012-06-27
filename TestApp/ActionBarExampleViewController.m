@@ -31,7 +31,17 @@
     [super viewDidLoad];
     
     SZEntity *entity = [SZEntity entityWithKey:@"Key" name:@"Name"];
-    self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectMake(0, 360, 0, 0) entity:entity viewController:self];
+    self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectMake(0, 0, 320, [SZActionBar defaultHeight] * 1.5f) entity:entity viewController:self];
+    self.actionBar.transform = CGAffineTransformMakeRotation(M_PI_2);
+    for (UIView *view in self.actionBar.itemsLeft) {
+        view.transform = CGAffineTransformMakeRotation(-M_PI_2);
+    }
+    
+    for (UIView *view in self.actionBar.itemsRight) {
+        view.transform = CGAffineTransformMakeRotation(-M_PI_2);
+    }
+
+    self.actionBar.center = self.view.center;
     [self.view addSubview:self.actionBar];
     
     self.oldActionBar = [SocializeActionBar actionBarWithKey:@"Something" name:@"Something" presentModalInController:self];

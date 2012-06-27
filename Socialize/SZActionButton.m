@@ -153,10 +153,10 @@
 
 - (void)autoresize {
     if (!self.autoresizeDisabled) {
-        CGRect frame = self.frame;
+        CGRect bounds = self.bounds;
         CGSize currentSize = [self currentButtonSize];
-        CGRect newFrame = CGRectMake(frame.origin.x, frame.origin.y, currentSize.width, currentSize.height);
-        self.frame = newFrame;
+        CGRect newBounds = CGRectMake(bounds.origin.x, bounds.origin.y, currentSize.width, currentSize.height);
+        self.bounds = newBounds;
         
         NSString *currentTitle = [self.actualButton titleForState:UIControlStateNormal];
         if ([currentTitle length] == 0) {
