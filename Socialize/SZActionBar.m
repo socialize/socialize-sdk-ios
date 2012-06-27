@@ -9,12 +9,10 @@
 #import "SZActionBar.h"
 #import "SZHorizontalContainerView.h"
 #import "SZLikeButton.h"
-#import "SZCommentButton.h"
 #import "SZEntityUtils.h"
 #import "SDKHelpers.h"
 #import "SZActionBarItem.h"
 #import "SZShareUtils.h"
-#import "SZActionEntityButton.h"
 #import "NSNumber+Additions.h"
 #import "SZUserUtils.h"
 
@@ -42,31 +40,13 @@
 + (id)defaultActionBarWithFrame:(CGRect)frame entity:(id<SZEntity>)entity viewController:(UIViewController*)viewController {
     SZLikeButton *likeButton = [[SZLikeButton alloc] initWithFrame:CGRectZero entity:nil viewController:viewController];
 
-    SZCommentButton *commentButton = [[SZCommentButton alloc] initWithFrame:CGRectZero entity:nil viewController:viewController];
+    SZActionButton *commentButton = [SZActionButton commentButton];
+    SZActionButton *shareButton = [SZActionButton shareButton];
 
-    SZActionButton *shareButton = [SZActionButton actionButtonWithFrame:CGRectZero icon:[UIImage imageNamed:@"action-bar-icon-share.png"] title:@"Share" actionBlock:^{
-        [SZShareUtils showShareDialogWithViewController:viewController entity:entity completion:nil];
-    }];
-    shareButton.accessibilityLabel = @"share button";
-                                    
     NSArray *itemsRight = [NSArray arrayWithObjects:likeButton, commentButton, shareButton, nil];
     
-    SZActionEntityButton *viewsButton = [SZActionEntityButton actionEntityButtonWithFrame:CGRectZero entity:nil entityConfiguration:^(SZActionEntityButton *button, id<SZEntity> serverEntity) {
-        NSString* formattedValue = [NSNumber formatMyNumber:[NSNumber numberWithInteger:serverEntity.views] ceiling:[NSNumber numberWithInt:1000]]; 
-        [button setTitle:formattedValue];
-    }];
-    
-    UIImage *icon = [UIImage imageNamed:@"action-bar-icon-views.png"];
-    viewsButton.icon = icon;
-    viewsButton.image = nil;
-    viewsButton.highlightedImage = nil;
-    viewsButton.actionBlock = ^{
-        [SZUserUtils showUserProfileInViewController:viewController user:nil completion:nil];
-    };
-    viewsButton.actualButton.accessibilityLabel = @"views button";
-    
+    SZActionButton *viewsButton = [SZActionButton viewsButton];
     NSArray *itemsLeft = [NSArray arrayWithObjects:viewsButton, nil];
-
 
     return [[self alloc] initWithFrame:frame entity:entity viewController:viewController itemsLeft:itemsLeft itemsRight:itemsRight];
 }
@@ -159,11 +139,23 @@
 - (void)setItemsRight:(NSArray *)items {
     _itemsRight = items;
     [self.buttonsContainerRight setColumns:_itemsRight];
+    
+    for (id<SZActionBarItem> item in items) {
+        if ([item conformsToProtocol:@protocol(SZActionBarItem)]) {
+            [item actionBarDidAddAsItem:self];
+        }
+    }
 }
 
 - (void)setItemsLeft:(NSArray *)items {
     _itemsLeft = items;
     [self.buttonsContainerLeft setColumns:_itemsLeft];
+    
+    for (id<SZActionBarItem> item in items) {
+        if ([item conformsToProtocol:@protocol(SZActionBarItem)]) {
+            [item actionBarDidAddAsItem:self];
+        }
+    }
 }
 
 - (UIImage*)backgroundImage {

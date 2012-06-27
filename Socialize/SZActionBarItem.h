@@ -13,6 +13,7 @@
 @class SZActionBar;
 
 @protocol SZActionBarItem <NSObject>
+- (void)actionBarDidAddAsItem:(SZActionBar*)actionBar;
 - (void)actionBar:(SZActionBar*)actionBar didLoadEntity:(id<SZEntity>)entity;
 
 @end

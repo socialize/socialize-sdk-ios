@@ -9,13 +9,18 @@
 #import "SZActionButton.h"
 #import "SZActionButton_Private.h"
 #import "SZEntityUtils.h"
+#import "SZActionBar.h"
+#import "NSNumber+Additions.h"
+#import "SZCommentUtils.h"
+#import "SZShareUtils.h"
+#import "SZUserUtils.h"
+
 
 #define PADDING_BETWEEN_TEXT_ICON 2
 #define BUTTON_PADDINGS 4
 #define DEFAULT_BUTTON_HEIGHT 30
 
 @implementation SZActionButton
-@synthesize failureRetryInterval = _failureRetryInterval;
 @synthesize actualButton = actualButton_;
 @synthesize disabledImage = disabledImage_;
 @synthesize icon = _icon;
@@ -24,14 +29,60 @@
 @synthesize highlightedImage = _highlightedImage;
 @synthesize actionBlock = _actionBlock;
 @synthesize title = _title;
+@synthesize entity = _entity;
+@synthesize entityConfigurationBlock = _entityConfigurationBlock;
+@synthesize actionBar = _actionBar;
 
-+ (SZActionButton*)actionButtonWithFrame:(CGRect)frame icon:(UIImage*)icon title:(NSString*)title actionBlock:(void(^)())actionBlock {
-    SZActionButton *actionButton = [[SZActionButton alloc] initWithFrame:frame];
-    actionButton.actionBlock = actionBlock;
++ (SZActionButton*)actionButtonWithIcon:(UIImage*)icon title:(NSString*)title {
+    SZActionButton *actionButton = [[SZActionButton alloc] initWithFrame:CGRectZero];
     actionButton.icon = icon;
     actionButton.title = title;
     
     return actionButton;
+}
+
++ (SZActionButton*)commentButton {
+    SZActionButton *commentButton = [self actionButtonWithIcon:[UIImage imageNamed:@"action-bar-icon-comments.png"] title:nil];
+    commentButton.actualButton.accessibilityLabel = @"comment button";
+    commentButton.entityConfigurationBlock = ^(SZActionButton *button, SZActionBar *actionBar, id<SZEntity> entity) {
+        NSString* formattedValue = [NSNumber formatMyNumber:[NSNumber numberWithInteger:entity.comments] ceiling:[NSNumber numberWithInt:1000]]; 
+        [button setTitle:formattedValue];
+    };
+    
+    commentButton.actionBlock = ^(SZActionButton *button, SZActionBar *bar) {
+        [SZCommentUtils showCommentsListWithViewController:bar.viewController entity:bar.entity completion:nil];        
+    };
+    
+    return commentButton;
+}
+
++ (SZActionButton*)shareButton {
+    SZActionButton *shareButton = [SZActionButton actionButtonWithIcon:[UIImage imageNamed:@"action-bar-icon-share.png"] title:@"Share"];
+    shareButton.actionBlock = ^(SZActionButton *button, SZActionBar *bar) {
+        [SZShareUtils showShareDialogWithViewController:bar.viewController entity:bar.entity completion:nil];
+    };
+    shareButton.actualButton.accessibilityLabel = @"share button";
+    
+    return shareButton;
+}
+
++ (SZActionButton*)viewsButton {
+    SZActionButton *viewsButton = [SZActionButton actionButtonWithIcon:[UIImage imageNamed:@"action-bar-icon-views.png"] title:nil];
+    
+    viewsButton.entityConfigurationBlock = ^(SZActionButton *button, SZActionBar *actionBar, id<SZEntity> entity) {
+
+        NSString* formattedValue = [NSNumber formatMyNumber:[NSNumber numberWithInteger:entity.views] ceiling:[NSNumber numberWithInt:1000]]; 
+        [button setTitle:formattedValue];
+    };
+    
+    viewsButton.image = nil;
+    viewsButton.highlightedImage = nil;
+    viewsButton.actionBlock = ^(SZActionButton *button, SZActionBar *bar) {
+        [SZUserUtils showUserProfileInViewController:bar.viewController user:nil completion:nil];
+    };
+    viewsButton.actualButton.accessibilityLabel = @"views button";
+    
+    return viewsButton;
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -51,10 +102,6 @@
     self.highlightedImage = [[self class] defaultHighlightedImage];
     self.disabledImage = [[self class] defaultDisabledImage];
     [self configureButtonBackgroundImages];
-}
-
-+ (NSTimeInterval)defaultFailureRetryInterval {
-    return 10;
 }
 
 + (UIImage*)defaultDisabledImage {
@@ -139,7 +186,7 @@
 
 - (void)actualButtonPressed:(UIButton*)button {
     if (self.actionBlock != nil) {
-        self.actionBlock();
+        self.actionBlock(self, self.actionBar);
     } else {
         [self handleButtonPress:button];
     }
@@ -168,5 +215,22 @@
         }
     }
 }
+
+- (void)actionBar:(SZActionBar*)actionBar didLoadEntity:(id<SocializeEntity>)entity {
+    self.entity = entity;
+    
+    if (self.entityConfigurationBlock != nil) {
+        self.entityConfigurationBlock(self, self.actionBar, entity);
+    }
+    
+    [self configureButtonBackgroundImages];
+    [self autoresize];
+    
+}
+
+- (void)actionBarDidAddAsItem:(SZActionBar*)actionBar {
+    self.actionBar = actionBar;
+}
+
 
 @end

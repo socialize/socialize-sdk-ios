@@ -9,11 +9,9 @@
 #import "ButtonExampleViewController.h"
 
 static CGRect likeFrame = { 240.f, 120.f, 0.f, 0.f };
-static CGRect commentFrame = { 190.f, 120.f, 0.f, 0.f };
 
 @implementation ButtonExampleViewController
 @synthesize likeButton = _likeButton;
-@synthesize commentButton = _commentButton;
 @synthesize entity = _entity;
 
 - (id)initWithEntity:(id)entity {
@@ -32,9 +30,7 @@ static CGRect commentFrame = { 190.f, 120.f, 0.f, 0.f };
     }];
         
     self.likeButton = [[SZLikeButton alloc] initWithFrame:likeFrame entity:self.entity viewController:self];
-    self.commentButton = [[SZCommentButton alloc] initWithFrame:commentFrame entity:self.entity viewController:self];
     [self.view addSubview:self.likeButton];
-    [self.view addSubview:self.commentButton];
 }
 
 @end

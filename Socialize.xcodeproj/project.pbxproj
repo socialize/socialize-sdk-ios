@@ -476,10 +476,6 @@
 		AA15EFF115915300008F1237 /* SZUserProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA15EFEE15915300008F1237 /* SZUserProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA15EFF215915300008F1237 /* SZUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA15EFEF15915300008F1237 /* SZUserProfileViewController.m */; };
 		AA15EFF315915300008F1237 /* SZUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA15EFEF15915300008F1237 /* SZUserProfileViewController.m */; };
-		AA1BCCDC1597EC9F00BF3008 /* SZActionEntityButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1BCCDA1597EC9F00BF3008 /* SZActionEntityButton.h */; };
-		AA1BCCDD1597EC9F00BF3008 /* SZActionEntityButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1BCCDA1597EC9F00BF3008 /* SZActionEntityButton.h */; };
-		AA1BCCDE1597EC9F00BF3008 /* SZActionEntityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCCDB1597EC9F00BF3008 /* SZActionEntityButton.m */; };
-		AA1BCCDF1597EC9F00BF3008 /* SZActionEntityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1BCCDB1597EC9F00BF3008 /* SZActionEntityButton.m */; };
 		AA1C1C0A158EF35D00A763CA /* _Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008600158D35BC00480399 /* _Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C0B158EF36700A763CA /* SocializeCommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00864E158D35BD00480399 /* SocializeCommentDetailsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C0C158EF3A200A763CA /* _SZCommentsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086F5158D35BF00480399 /* _SZCommentsListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1588,10 +1584,6 @@
 		AADFE5F81596973D00FE2B61 /* SZActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5F51596973C00FE2B61 /* SZActionButton.h */; };
 		AADFE5F91596973D00FE2B61 /* SZActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5F61596973C00FE2B61 /* SZActionButton.m */; };
 		AADFE5FA1596973D00FE2B61 /* SZActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5F61596973C00FE2B61 /* SZActionButton.m */; };
-		AADFE5FD15969D4600FE2B61 /* SZCommentButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5FB15969D4500FE2B61 /* SZCommentButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AADFE5FE15969D4600FE2B61 /* SZCommentButton.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE5FB15969D4500FE2B61 /* SZCommentButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AADFE5FF15969D4600FE2B61 /* SZCommentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5FC15969D4500FE2B61 /* SZCommentButton.m */; };
-		AADFE60015969D4600FE2B61 /* SZCommentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5FC15969D4500FE2B61 /* SZCommentButton.m */; };
 		AADFE6031596A49100FE2B61 /* SZActionButton_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */; };
 		AADFE6041596A49100FE2B61 /* SZActionButton_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */; };
 		AAE9E1DE1590012300B2B9FC /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
@@ -2292,8 +2284,6 @@
 		AA15EFEE15915300008F1237 /* SZUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserProfileViewController.h; sourceTree = "<group>"; };
 		AA15EFEF15915300008F1237 /* SZUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserProfileViewController.m; sourceTree = "<group>"; };
 		AA1AD26815902E3B0020023C /* hide_symbols_blockskit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hide_symbols_blockskit.h; path = ThirdParty/BlocksKit/hide_symbols_blockskit.h; sourceTree = "<group>"; };
-		AA1BCCDA1597EC9F00BF3008 /* SZActionEntityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionEntityButton.h; sourceTree = "<group>"; };
-		AA1BCCDB1597EC9F00BF3008 /* SZActionEntityButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionEntityButton.m; sourceTree = "<group>"; };
 		AA1D1090158EFBCE000C8A44 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = ThirdParty/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
 		AA25FEAB159119F00067741A /* SZUserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserSettingsViewController.h; sourceTree = "<group>"; };
 		AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserSettingsViewController.m; sourceTree = "<group>"; };
@@ -2648,8 +2638,6 @@
 		AADFE5EC15967A7400FE2B61 /* SZHorizontalContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZHorizontalContainerView.m; sourceTree = "<group>"; };
 		AADFE5F51596973C00FE2B61 /* SZActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionButton.h; sourceTree = "<group>"; };
 		AADFE5F61596973C00FE2B61 /* SZActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionButton.m; sourceTree = "<group>"; };
-		AADFE5FB15969D4500FE2B61 /* SZCommentButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZCommentButton.h; sourceTree = "<group>"; };
-		AADFE5FC15969D4500FE2B61 /* SZCommentButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZCommentButton.m; sourceTree = "<group>"; };
 		AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionButton_Private.h; sourceTree = "<group>"; };
 		AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlocksKit.xcodeproj; path = ThirdParty/BlocksKit/BlocksKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3805,12 +3793,8 @@
 				AADFE5EC15967A7400FE2B61 /* SZHorizontalContainerView.m */,
 				AADFE5F51596973C00FE2B61 /* SZActionButton.h */,
 				AADFE5F61596973C00FE2B61 /* SZActionButton.m */,
-				AA1BCCDA1597EC9F00BF3008 /* SZActionEntityButton.h */,
-				AA1BCCDB1597EC9F00BF3008 /* SZActionEntityButton.m */,
 				AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */,
 				AADFE5E415967A0E00FE2B61 /* SZLikeButton.m */,
-				AADFE5FB15969D4500FE2B61 /* SZCommentButton.h */,
-				AADFE5FC15969D4500FE2B61 /* SZCommentButton.m */,
 				AA0602B315965A22002D2535 /* SZActionBarItem.h */,
 				AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */,
 			);
@@ -4079,9 +4063,7 @@
 				AADFE5ED15967A7400FE2B61 /* SZActionBar.h in Headers */,
 				AADFE5F115967A7400FE2B61 /* SZHorizontalContainerView.h in Headers */,
 				AADFE5F71596973D00FE2B61 /* SZActionButton.h in Headers */,
-				AADFE5FD15969D4600FE2B61 /* SZCommentButton.h in Headers */,
 				AADFE6031596A49100FE2B61 /* SZActionButton_Private.h in Headers */,
-				AA1BCCDC1597EC9F00BF3008 /* SZActionEntityButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4165,9 +4147,7 @@
 				AADFE5EE15967A7400FE2B61 /* SZActionBar.h in Headers */,
 				AADFE5F215967A7400FE2B61 /* SZHorizontalContainerView.h in Headers */,
 				AADFE5F81596973D00FE2B61 /* SZActionButton.h in Headers */,
-				AADFE5FE15969D4600FE2B61 /* SZCommentButton.h in Headers */,
 				AADFE6041596A49100FE2B61 /* SZActionButton_Private.h in Headers */,
-				AA1BCCDD1597EC9F00BF3008 /* SZActionEntityButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5612,8 +5592,6 @@
 				AADFE5EF15967A7400FE2B61 /* SZActionBar.m in Sources */,
 				AADFE5F315967A7400FE2B61 /* SZHorizontalContainerView.m in Sources */,
 				AADFE5F91596973D00FE2B61 /* SZActionButton.m in Sources */,
-				AADFE5FF15969D4600FE2B61 /* SZCommentButton.m in Sources */,
-				AA1BCCDE1597EC9F00BF3008 /* SZActionEntityButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6093,8 +6071,6 @@
 				AADFE5F015967A7400FE2B61 /* SZActionBar.m in Sources */,
 				AADFE5F415967A7400FE2B61 /* SZHorizontalContainerView.m in Sources */,
 				AADFE5FA1596973D00FE2B61 /* SZActionButton.m in Sources */,
-				AADFE60015969D4600FE2B61 /* SZCommentButton.m in Sources */,
-				AA1BCCDF1597EC9F00BF3008 /* SZActionEntityButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,5 @@
 @property (nonatomic, strong) id<SZEntity> entity;
 
 @property (nonatomic, strong) SZLikeButton *likeButton;
-@property (nonatomic, strong) SZCommentButton *commentButton;
 
 @end

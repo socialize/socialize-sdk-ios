@@ -39,4 +39,8 @@
 
 @property (nonatomic, retain) id<SZEntity> entity;
 
+@property (nonatomic, assign) NSTimeInterval failureRetryInterval;
+
++ (NSTimeInterval)defaultFailureRetryInterval;
+
 @end

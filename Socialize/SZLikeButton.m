@@ -36,6 +36,7 @@
 @synthesize entity = _entity;
 @synthesize serverEntity = _serverEntity;
 @synthesize hideCount = hideCount_;
+@synthesize failureRetryInterval = _failureRetryInterval;
 
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)viewController {
     self = [super initWithFrame:frame];
@@ -88,6 +89,10 @@
 
 - (void)failWithError:(NSError*)error {
     SZEmitUIError(self, error);
+}
+
++ (NSTimeInterval)defaultFailureRetryInterval {
+    return 10;
 }
 
 + (UIImage*)defaultInactiveImage {
