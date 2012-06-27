@@ -26,7 +26,7 @@
  * See Also: http://gabriel.github.com/gh-unit/
  */
 
-#import "SZActionBarTests.h"
+#import "SocializeActionBarTests.h"
 #import "SocializeActionBar.h"
 #import <OCMock/OCMock.h>
 #import "Socialize.h"

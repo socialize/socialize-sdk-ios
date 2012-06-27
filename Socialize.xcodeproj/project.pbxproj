@@ -243,7 +243,7 @@
 		AA0C6156158FC61D00F66A3B /* SocializeViewFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60FB158FC61D00F66A3B /* SocializeViewFormatterTests.m */; };
 		AA0C6157158FC61D00F66A3B /* SocializeViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60FD158FC61D00F66A3B /* SocializeViewTests.m */; };
 		AA0C6158158FC61D00F66A3B /* StringWithPlacemarkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60FF158FC61D00F66A3B /* StringWithPlacemarkTest.m */; };
-		AA0C6159158FC61D00F66A3B /* SZActionBarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6101158FC61D00F66A3B /* SZActionBarTests.m */; };
+		AA0C6159158FC61D00F66A3B /* SocializeActionBarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6101158FC61D00F66A3B /* SocializeActionBarTests.m */; };
 		AA0C615B158FC61D00F66A3B /* _SZUserProfileViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6105158FC61D00F66A3B /* _SZUserProfileViewControllerTests.m */; };
 		AA0C615D158FC61D00F66A3B /* UIFontForTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6109158FC61D00F66A3B /* UIFontForTest.m */; };
 		AA0C615E158FC61D00F66A3B /* UIImage+ResizeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C610B158FC61D00F66A3B /* UIImage+ResizeTests.m */; };
@@ -2259,8 +2259,8 @@
 		AA0C60FD158FC61D00F66A3B /* SocializeViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeViewTests.m; sourceTree = "<group>"; };
 		AA0C60FE158FC61D00F66A3B /* StringWithPlacemarkTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringWithPlacemarkTest.h; sourceTree = "<group>"; };
 		AA0C60FF158FC61D00F66A3B /* StringWithPlacemarkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringWithPlacemarkTest.m; sourceTree = "<group>"; };
-		AA0C6100158FC61D00F66A3B /* SZActionBarTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionBarTests.h; sourceTree = "<group>"; };
-		AA0C6101158FC61D00F66A3B /* SZActionBarTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionBarTests.m; sourceTree = "<group>"; };
+		AA0C6100158FC61D00F66A3B /* SocializeActionBarTests.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SocializeActionBarTests.h; sourceTree = "<group>"; };
+		AA0C6101158FC61D00F66A3B /* SocializeActionBarTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeActionBarTests.m; sourceTree = "<group>"; };
 		AA0C6102158FC61D00F66A3B /* SZLikeButtonTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLikeButtonTests.h; sourceTree = "<group>"; };
 		AA0C6103158FC61D00F66A3B /* SZLikeButtonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLikeButtonTests.m; sourceTree = "<group>"; };
 		AA0C6104158FC61D00F66A3B /* _SZUserProfileViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SZUserProfileViewControllerTests.h; sourceTree = "<group>"; };
@@ -3119,8 +3119,8 @@
 				AA0C60FD158FC61D00F66A3B /* SocializeViewTests.m */,
 				AA0C60FE158FC61D00F66A3B /* StringWithPlacemarkTest.h */,
 				AA0C60FF158FC61D00F66A3B /* StringWithPlacemarkTest.m */,
-				AA0C6100158FC61D00F66A3B /* SZActionBarTests.h */,
-				AA0C6101158FC61D00F66A3B /* SZActionBarTests.m */,
+				AA0C6100158FC61D00F66A3B /* SocializeActionBarTests.h */,
+				AA0C6101158FC61D00F66A3B /* SocializeActionBarTests.m */,
 				AA0C6102158FC61D00F66A3B /* SZLikeButtonTests.h */,
 				AA0C6103158FC61D00F66A3B /* SZLikeButtonTests.m */,
 				AA0C6104158FC61D00F66A3B /* _SZUserProfileViewControllerTests.h */,
@@ -5827,7 +5827,7 @@
 				AA0C6156158FC61D00F66A3B /* SocializeViewFormatterTests.m in Sources */,
 				AA0C6157158FC61D00F66A3B /* SocializeViewTests.m in Sources */,
 				AA0C6158158FC61D00F66A3B /* StringWithPlacemarkTest.m in Sources */,
-				AA0C6159158FC61D00F66A3B /* SZActionBarTests.m in Sources */,
+				AA0C6159158FC61D00F66A3B /* SocializeActionBarTests.m in Sources */,
 				AA0C615B158FC61D00F66A3B /* _SZUserProfileViewControllerTests.m in Sources */,
 				AA0C615D158FC61D00F66A3B /* UIFontForTest.m in Sources */,
 				AA0C615E158FC61D00F66A3B /* UIImage+ResizeTests.m in Sources */,
