@@ -101,6 +101,7 @@
 
 @property (nonatomic, retain) NSDictionary * userActionSummary;
 
++ (SocializeEntity*)entityWithKey:(NSString*)key;
 + (SocializeEntity*)entityWithKey:(NSString*)key name:(NSString*)name;
 
 @end

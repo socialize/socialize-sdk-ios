@@ -9,6 +9,7 @@
 #import "SZActionUtils.h"
 #import "_Socialize.h"
 #import "SDKHelpers.h"
+#import "SZUserUtils.h"
 
 @implementation SZActionUtils
 
@@ -19,6 +20,10 @@
 }
 
 + (void)getActionsByUser:(id<SZUser>)user start:(NSNumber*)start end:(NSNumber*)end success:(void(^)(NSArray *actions))success failure:(void(^)(NSError *error))failure {
+    if (user == nil) {
+        user = (id<SZUser>)[SZUserUtils currentUser];
+    }
+
     SZAuthWrapper(^{
         [[Socialize sharedSocialize] getActivityForUser:user entity:nil first:start last:end success:success failure:failure];
     }, failure);
@@ -31,6 +36,10 @@
 }
 
 + (void)getActionsByUser:(id<SZUser>)user entity:(id<SZEntity>)entity start:(NSNumber*)start end:(NSNumber*)end success:(void(^)(NSArray *actions))success failure:(void(^)(NSError *error))failure {
+    if (user == nil) {
+        user = (id<SZUser>)[SZUserUtils currentUser];
+    }
+
     SZAuthWrapper(^{
         [[Socialize sharedSocialize] getActivityForUser:user entity:entity first:start last:end success:success failure:failure];
     }, failure);

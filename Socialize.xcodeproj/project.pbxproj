@@ -576,6 +576,7 @@
 		AA5CE7C21592998200DB5EAF /* SZLinkDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CE7BF1592998200DB5EAF /* SZLinkDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5CE7C31592998200DB5EAF /* SZLinkDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */; };
 		AA5CE7C41592998200DB5EAF /* SZLinkDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */; };
+		AA67143A159CC5D60000E3BE /* actions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA671439159CC5D60000E3BE /* actions.m */; };
 		AA6C63CE158F0EB0005E5632 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
 		AA6C63CF158F0EB0005E5632 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
 		AA6C63D0158F0EB0005E5632 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008598158D2B1100480399 /* CoreGraphics.framework */; };
@@ -2306,6 +2307,8 @@
 		AA552F5D1592EF250020E0E4 /* SZCommentsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZCommentsListViewController.m; sourceTree = "<group>"; };
 		AA5CE7BF1592998200DB5EAF /* SZLinkDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLinkDialogViewController.h; sourceTree = "<group>"; };
 		AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLinkDialogViewController.m; sourceTree = "<group>"; };
+		AA671438159CC5D60000E3BE /* actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = actions.h; sourceTree = "<group>"; };
+		AA671439159CC5D60000E3BE /* actions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = actions.m; sourceTree = "<group>"; };
 		AA6C63CC158F0EB0005E5632 /* IntegrationTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntegrationTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA6C63D3158F0EB0005E5632 /* IntegrationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IntegrationTests-Info.plist"; sourceTree = "<group>"; };
 		AA6C63D5158F0EB0005E5632 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -3770,6 +3773,8 @@
 				AA90FFEA159065C400AFD8A2 /* link_to_twitter.m */,
 				AA90FFEB159065C400AFD8A2 /* show_comments_list.m */,
 				AA90FFEC159065C400AFD8A2 /* third_party_link_options.m */,
+				AA671438159CC5D60000E3BE /* actions.h */,
+				AA671439159CC5D60000E3BE /* actions.m */,
 			);
 			name = snippets;
 			path = Documentation/sphinx/source/snippets;
@@ -5837,6 +5842,7 @@
 				AA90FFFA159065C400AFD8A2 /* third_party_link_options.m in Sources */,
 				AA9701A915953942006CDC8E /* FacebookUtilsTests.m in Sources */,
 				AACC19F2159B9B1900800576 /* SZActionBarTests.m in Sources */,
+				AA67143A159CC5D60000E3BE /* actions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

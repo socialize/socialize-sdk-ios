@@ -15,24 +15,24 @@ Working with Actions
 
 To retrieve the raw list of actions performed by a user
 
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
+.. literalinclude:: snippets/actions.m
+	:start-after: begin-user-snippet
+	:end-before: end-user-snippet
 	
 Or get the list of actions by a single user on a single entity
 
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
+.. literalinclude:: snippets/actions.m
+	:start-after: begin-user-entity-snippet
+	:end-before: end-user-entity-snippet
 
 Or get the list of actions by all users on a single entity
 
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
+.. literalinclude:: snippets/actions.m
+	:start-after: begin-entity-snippet
+	:end-before: end-entity-snippet
 
 Or list activity for the entire application
 
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
+.. literalinclude:: snippets/actions.m
+	:start-after: begin-application-snippet
+	:end-before: end-application-snippet
