@@ -77,12 +77,13 @@ Meta data is stored with the entity and returned then the entity is requested.
 	:start-after: begin-basic-meta-snippet
 	:end-before: end-basic-meta-snippet
 
-If you want a more complex data structure, we recommend using JSON as an object notation. To do this,
-you will need to use a third party library such as `JSONKit <https://github.com/johnezang/JSONKit/>`_
+If you want a more complex data structure, we recommend using JSON as an object
+notation. To do this, you will need to use a third party library such as the
+excellent `JSONKit <https://github.com/johnezang/JSONKit/>`_
 
 .. literalinclude:: snippets/entities.m
-	:start-after: begin-basic-meta-snippet
-	:end-before: end-basic-meta-snippet
+	:start-after: begin-json-meta-snippet
+	:end-before: end-json-meta-snippet
 
 Entity Activity
 ~~~~~~~~~~~~~~~
