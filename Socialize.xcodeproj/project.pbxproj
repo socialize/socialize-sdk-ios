@@ -5465,7 +5465,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Scripts/run-integration-tests.sh";
+			shellScript = "GHUNIT_CLI=1 ./Scripts/run-headless-simulator.sh";
 			showEnvVarsInLog = 0;
 		};
 		AA6CE2E51590592100A4B074 /* Generate Coverage (Command-line only) */ = {

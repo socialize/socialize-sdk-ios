@@ -9,6 +9,7 @@
 #import "IntegrationTestsAppDelegate.h"
 #import <Socialize/Socialize.h>
 #import "IntegrationTestStatusViewControllerViewController.h"
+#import "SZTestHelper.h"
 
 @implementation IntegrationTestsAppDelegate
 @synthesize origToken = origToken_;
@@ -42,6 +43,7 @@
     [Socialize storeFacebookAppId:@"115622641859087"];
 
 #if TARGET_IPHONE_SIMULATOR
+    [[SZTestHelper sharedTestHelper] startMockingSucceedingLocation];
     [super applicationDidFinishLaunching:application];
 #else
     [[UIApplication sharedApplication] setIdleTimerDisabled: YES];    
