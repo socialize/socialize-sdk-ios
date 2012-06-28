@@ -515,6 +515,7 @@
 		AA25FEAE159119F00067741A /* SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */; };
 		AA25FEB015911ACC0067741A /* SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */; };
 		AA2C7A43158EF4F3009A2370 /* Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008626158D35BD00480399 /* Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA2D42E4159D19F400622210 /* likes.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2D42E3159D19F400622210 /* likes.m */; };
 		AA2FC1A815926CAF00B52772 /* SZTwitterLinkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2FC1A515926CAF00B52772 /* SZTwitterLinkViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2FC1A915926CAF00B52772 /* SZTwitterLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2FC1A615926CAF00B52772 /* SZTwitterLinkViewController.m */; };
 		AA2FC1AA15926CAF00B52772 /* SZTwitterLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2FC1A615926CAF00B52772 /* SZTwitterLinkViewController.m */; };
@@ -2298,6 +2299,8 @@
 		AA1D1090158EFBCE000C8A44 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = ThirdParty/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
 		AA25FEAB159119F00067741A /* SZUserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserSettingsViewController.h; sourceTree = "<group>"; };
 		AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserSettingsViewController.m; sourceTree = "<group>"; };
+		AA2D42E2159D19F400622210 /* likes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = likes.h; sourceTree = "<group>"; };
+		AA2D42E3159D19F400622210 /* likes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = likes.m; sourceTree = "<group>"; };
 		AA2FC1A515926CAF00B52772 /* SZTwitterLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTwitterLinkViewController.h; sourceTree = "<group>"; };
 		AA2FC1A615926CAF00B52772 /* SZTwitterLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTwitterLinkViewController.m; sourceTree = "<group>"; };
 		AA3BC374158E80780073AD50 /* TestAppListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAppListViewController.h; sourceTree = "<group>"; };
@@ -3795,6 +3798,8 @@
 				AA166552159CF9CB001B6A1D /* sharing.m */,
 				AA166554159D0B79001B6A1D /* comments.h */,
 				AA166555159D0B79001B6A1D /* comments.m */,
+				AA2D42E2159D19F400622210 /* likes.h */,
+				AA2D42E3159D19F400622210 /* likes.m */,
 			);
 			name = snippets;
 			path = Documentation/sphinx/source/snippets;
@@ -5867,6 +5872,7 @@
 				AA1505FA159CDE0E00F639E7 /* users.m in Sources */,
 				AA166553159CF9CB001B6A1D /* sharing.m in Sources */,
 				AA166556159D0B79001B6A1D /* comments.m in Sources */,
+				AA2D42E4159D19F400622210 /* likes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

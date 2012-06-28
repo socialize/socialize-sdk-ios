@@ -11,6 +11,9 @@ In v1.7 of the Socialize SDK for iOS is a new stand-alone Like Button. This
 is simply the “like” capablity of Socialize contained in a self-standing UI
 element which can be easily customized to suit your app.
 
+.. image:: images/like_button_unliked.png	
+.. image:: images/like_button_liked.png	
+
 Displaying the Like Button
 -------------------------
 

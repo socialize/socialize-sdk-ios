@@ -85,9 +85,9 @@
     }, failure);
 }
 
-+ (void)getLikeForUser:(id<SZUser>)user entity:(id<SZEntity>)entity start:(NSNumber*)start end:(NSNumber*)end success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
++ (void)getLikeForUser:(id<SZUser>)user entity:(id<SZEntity>)entity success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
     SZAuthWrapper(^{
-        [[Socialize sharedSocialize] getLikesForUser:user entity:entity first:start last:end success:^(NSArray *likes) {
+        [[Socialize sharedSocialize] getLikesForUser:user entity:entity first:nil last:nil success:^(NSArray *likes) {
             BLOCK_CALL_1(success, [likes lastObject]);
         } failure:failure];
     }, failure);
