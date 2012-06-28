@@ -85,4 +85,8 @@
     return [[Socialize sharedSocialize] authenticatedFullUser];
 }
 
++ (void)getUsersWithIds:(NSArray*)ids success:(void(^)(NSArray *users))success failure:(void(^)(NSError *error))failure {
+    [[Socialize sharedSocialize] getUsersWithIds:ids success:success failure:failure];
+}
+
 @end

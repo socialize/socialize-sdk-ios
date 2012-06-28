@@ -44,4 +44,20 @@
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
 }
 
+- (void)testFetchCurrentUser {
+    id<SZFullUser> currentUser = [SZUserUtils currentUser];
+    NSNumber *userId = [NSNumber numberWithInteger:[currentUser objectID]];
+    
+    [self prepare];
+    [SZUserUtils getUsersWithIds:[NSArray arrayWithObject:userId] success:^(NSArray *users) {
+        id<SZFullUser> user = [users objectAtIndex:0];
+        int serverId = [user objectID];
+        GHAssertEquals(serverId, [currentUser objectID], @"Id did not match");
+        [self notify:kGHUnitWaitStatusSuccess];
+    } failure:^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+}
+
 @end

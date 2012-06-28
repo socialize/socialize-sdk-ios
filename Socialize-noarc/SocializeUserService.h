@@ -39,6 +39,7 @@
     
 }
 
+-(void) getUsersWithIds:(NSArray*)ids success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure;
 -(void) getUserWithId:(int)userId;
 -(void) getUsersWithIds:(NSArray*)ids;
 -(void) getCurrentUser;

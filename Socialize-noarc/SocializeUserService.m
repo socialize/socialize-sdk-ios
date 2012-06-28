@@ -50,20 +50,24 @@
 }
 
 
--(void) getUsersWithIds:(NSArray*)ids
-{
+-(void) getUsersWithIds:(NSArray*)ids success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
     NSDictionary* params = [NSDictionary dictionaryWithObject:ids forKey:@"id"];
-    [self executeRequest:
-     [SocializeRequest requestWithHttpMethod:@"GET"
-                                resourcePath:USER_GET_ENDPOINT
-                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
-                                      params:params]
-     ];
+    SocializeRequest *request =      [SocializeRequest requestWithHttpMethod:@"GET"
+                                                                resourcePath:USER_GET_ENDPOINT
+                                                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
+                                                                      params:params];
+    request.successBlock = success;
+    request.failureBlock = failure;
+
+    [self executeRequest:request];
 }
 
--(void) getUserWithId:(int)userId
-{
+-(void) getUserWithId:(int)userId {
     [self getUsersWithIds:[NSArray arrayWithObjects:[NSNumber numberWithInt:userId], nil]];
+}
+
+-(void) getUsersWithIds:(NSArray*)ids {
+    [self getUsersWithIds:ids success:nil failure:nil];
 }
 
 -(void) getCurrentUser

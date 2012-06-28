@@ -684,6 +684,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_userService getUserWithId:userId];
 }
 
+-(void) getUsersWithIds:(NSArray*)ids success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
+    [_userService getUsersWithIds:ids success:success failure:failure];
+}
+
 -(void)updateUserProfile:(id<SocializeFullUser>)user
 {
     [_userService updateUser:user];

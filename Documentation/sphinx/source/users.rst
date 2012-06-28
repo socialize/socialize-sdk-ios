@@ -21,20 +21,24 @@ User Profile
 ~~~~~~~~~~~
 You can display a profile view for any user which includes their recent activity
 
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
- 
+.. literalinclude:: snippets/users.m
+	:start-after: begin-show-profile-snippet
+	:end-before: end-show-profile-snippet
+
+.. image:: images/user_profile.png
+  :align: center
 
 User Settings
 ~~~~~~~~~~~
 	
 To allow a user to update their settings you can simply present them with the User Settings view:
 
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
-	
+.. literalinclude:: snippets/users.m
+	:start-after: begin-show-settings-snippet
+	:end-before: end-show-settings-snippet
+
+.. image:: images/user_settings.png
+  :align: center
 
 Working with Users
 -------------------------------
@@ -44,22 +48,22 @@ Getting a User
 
 To obtain a reference to the current user simply call the **getCurrentUser** method
 
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
+.. literalinclude:: snippets/users.m
+	:start-after: begin-current-user-snippet
+	:end-before: end-current-user-snippet
 	
-To obtain a User object for a user other than the current user
+To obtain a User object users other than the current user
 
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
+.. literalinclude:: snippets/users.m
+	:start-after: begin-other-user-snippet
+	:end-before: end-other-user-snippet
 	
 
 If you want to build your own UI to update a User's settings you can simply call the *saveUserSettings* method
 
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
+.. literalinclude:: snippets/users.m
+	:start-after: begin-save-settings-snippet
+	:end-before: end-save-settings-snippet
  
 User Activity
 ~~~~~~~~~~~~~

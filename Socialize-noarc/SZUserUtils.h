@@ -19,5 +19,5 @@
 + (void)saveUserSettings:(id<SocializeFullUser>)user profileImage:(UIImage*)image success:(void(^)(id<SocializeFullUser> user))success failure:(void(^)(NSError *error))failure;
 + (id<SocializeFullUser>)currentUser;
 + (BOOL)userIsLinked;
-
++ (void)getUsersWithIds:(NSArray*)ids success:(void(^)(NSArray *users))success failure:(void(^)(NSError *error))failure;
 @end

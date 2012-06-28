@@ -253,6 +253,7 @@
 		AA0C6162158FC61D00F66A3B /* UserUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6113158FC61D00F66A3B /* UserUtilsTests.m */; };
 		AA0C6165158FC6D400F66A3B /* SocializeUnitTestApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6164158FC6D400F66A3B /* SocializeUnitTestApplication.m */; };
 		AA0C6167158FC72700F66A3B /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
+		AA1505FA159CDE0E00F639E7 /* users.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1505F9159CDE0E00F639E7 /* users.m */; };
 		AA159D34158FAD4B006E1CAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0085A0158D2B1100480399 /* main.m */; };
 		AA159D35158FAD4B006E1CAE /* SZTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0085A4158D2B1100480399 /* SZTestAppDelegate.m */; };
 		AA159D36158FAD4B006E1CAE /* TestAppListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC375158E80780073AD50 /* TestAppListViewController.m */; };
@@ -2276,6 +2277,8 @@
 		AA0C6113158FC61D00F66A3B /* UserUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserUtilsTests.m; sourceTree = "<group>"; };
 		AA0C6163158FC6D400F66A3B /* SocializeUnitTestApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUnitTestApplication.h; sourceTree = "<group>"; };
 		AA0C6164158FC6D400F66A3B /* SocializeUnitTestApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUnitTestApplication.m; sourceTree = "<group>"; };
+		AA1505F8159CDE0E00F639E7 /* users.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = users.h; sourceTree = "<group>"; };
+		AA1505F9159CDE0E00F639E7 /* users.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = users.m; sourceTree = "<group>"; };
 		AA159E12158FAD4B006E1CAE /* UIIntegrationTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIIntegrationTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA159E20158FAE11006E1CAE /* KIFTestScenario+TestAppAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestScenario+TestAppAdditions.h"; path = "UIIntegrationTests/KIFTestScenario+TestAppAdditions.h"; sourceTree = "<group>"; };
 		AA159E21158FAE11006E1CAE /* KIFTestScenario+TestAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestScenario+TestAppAdditions.m"; path = "UIIntegrationTests/KIFTestScenario+TestAppAdditions.m"; sourceTree = "<group>"; };
@@ -3780,6 +3783,8 @@
 				AA671439159CC5D60000E3BE /* actions.m */,
 				AA65A264159CD43600613E5A /* entities.h */,
 				AA65A265159CD43600613E5A /* entities.m */,
+				AA1505F8159CDE0E00F639E7 /* users.h */,
+				AA1505F9159CDE0E00F639E7 /* users.m */,
 			);
 			name = snippets;
 			path = Documentation/sphinx/source/snippets;
@@ -5849,6 +5854,7 @@
 				AACC19F2159B9B1900800576 /* SZActionBarTests.m in Sources */,
 				AA67143A159CC5D60000E3BE /* actions.m in Sources */,
 				AA65A266159CD43600613E5A /* entities.m in Sources */,
+				AA1505FA159CDE0E00F639E7 /* users.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
