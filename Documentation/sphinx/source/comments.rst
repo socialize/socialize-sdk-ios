@@ -15,13 +15,12 @@ Bar however if you wanted to create your own ActionBar or simply want to launch
 the Comment List from elsewhere in your app this can simply be done with a few
 lines of code
 
-.. literalinclude:: snippets/show_comments_list.m
-  :start-after: begin-snippet
-  :end-before: end-snippet
+.. literalinclude:: snippets/comments.m
+  :start-after: begin-show-comments-list-snippet
+  :end-before: end-show-comments-list-snippet
 
-.. image:: images/comment_list.png	
-.. image:: images/new_comment.png	
-.. image:: images/comment_detail.png	
+.. image:: images/comments_list.png	
+.. image:: images/comment_details.png	
 
 Comment Composer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -29,21 +28,39 @@ Comment Composer
 Although the comments list opens a composer, a standalone comment composition
 controller is also provided:
 
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
+.. literalinclude:: snippets/comments.m
+  :start-after: begin-show-comment-composer-snippet
+  :end-before: end-show-comment-composer-snippet
+
+.. image:: images/comment_composer.png	
+.. image:: images/select_network.png	
 
 Working with comments
 ----------------------
 
-Creating Comments
-~~~~~~~~~~~~~~~~~
+Creating Comments, specify networks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To create a comment programmatically you simply call the **addComment** method
 on **CommentUtils**
 
-You can also manually specify how the comment is to be propagated to 3rd party
+Similar to shares, you can specify how the comment is to be propagated to 3rd party
 networks (currently, customization is only possible for Facebook)
+
+.. literalinclude:: snippets/comments.m
+  :start-after: begin-add-comment-snippet
+  :end-before: end-add-comment-snippet
+
+Create comment, prompt for networks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you'd to create a comment and specify text but not networks, you can do so.
+You might use this to build your own comment composer but still show the
+Socialize network selection dialog.
+
+.. literalinclude:: snippets/comments.m
+  :start-after: begin-add-comment-ui-snippet
+  :end-before: end-add-comment-ui-snippet
 
 Retrieving Comments
 ~~~~~~~~~~~~~~~~~~~
@@ -52,18 +69,24 @@ You can retrieve existing comments by User, Entity or directly using an ID
 
 List comments by User
 
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
+.. literalinclude:: snippets/comments.m
+  :start-after: begin-list-by-user-snippet
+  :end-before: end-list-by-user-snippet
 	
 List comments by Entity
 	
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
+.. literalinclude:: snippets/comments.m
+  :start-after: begin-list-by-entity-snippet
+  :end-before: end-list-by-entity-snippet
+
+List comments by User on a specific entity
+
+.. literalinclude:: snippets/comments.m
+  :start-after: begin-list-by-user-and-entity-snippet
+  :end-before: end-list-by-user-and-entity-snippet
 	
 List comments by ID	
 	
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
+.. literalinclude:: snippets/comments.m
+  :start-after: begin-list-by-ids-snippet
+  :end-before: end-list-by-ids-snippet

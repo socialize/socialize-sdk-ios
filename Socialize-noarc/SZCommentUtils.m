@@ -102,19 +102,26 @@
     }, failure);
 }
 
-+ (void)getCommentsByEntityWithEntityKey:(NSString*)entityKey success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
++ (void)getCommentsByEntity:(id<SZEntity>)entity success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
     SZAuthWrapper(^{
-        [[Socialize sharedSocialize] getCommentsWithEntityKey:entityKey success:success failure:failure];
+        [[Socialize sharedSocialize] getCommentsWithEntityKey:[entity key] success:success failure:failure];
     }, failure);
 }
 
 + (void)getCommentsByUserWithUser:(id<SZUser>)user first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    if (user == nil) {
+        user = (id<SZUser>)[SZUserUtils currentUser];
+    }
     SZAuthWrapper(^{
         [[Socialize sharedSocialize] getCommentsForUser:user entity:nil first:first last:last success:success failure:failure];
     }, failure);
 }
 
 + (void)getCommentsByUserAndEntityWithUser:(id<SZUser>)user entity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    if (user == nil) {
+        user = (id<SZUser>)[SZUserUtils currentUser];
+    }
+
     SZAuthWrapper(^{
         [[Socialize sharedSocialize] getCommentsForUser:user entity:nil first:first last:last success:success failure:failure];
     }, failure);

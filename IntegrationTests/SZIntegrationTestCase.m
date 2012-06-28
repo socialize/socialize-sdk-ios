@@ -201,7 +201,8 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
 - (NSArray*)utilGetCommentsForEntityWithKey:(NSString*)entityKey {
     __block NSArray *fetchedComments = nil;
     [self prepare];
-    [SZCommentUtils getCommentsByEntityWithEntityKey:entityKey success:^(NSArray *comments) {
+    id<SZEntity> entity = [SZEntity entityWithKey:entityKey];
+    [SZCommentUtils getCommentsByEntity:entity success:^(NSArray *comments) {
         fetchedComments = [comments retain];
         [self notify:kGHUnitWaitStatusSuccess];
     } failure:^(NSError *error) {
