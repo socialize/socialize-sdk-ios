@@ -12,6 +12,7 @@
 @synthesize dontShareLocation = dontShareLocation_;
 @synthesize willPostToSocialNetworkBlock = willPostToSocialNetworkBlock_;
 @synthesize didPostToSocialNetworkBlock = didPostToSocialNetworkBlock_;
+@synthesize didFailToPostToSocialNetworkBlock = _didFailToPostToSocialNetworkBlock;
 
 + (SZActivityOptions*)defaultOptions {
     return [[self alloc] init];

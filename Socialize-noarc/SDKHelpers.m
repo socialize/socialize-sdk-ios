@@ -24,7 +24,7 @@
 #import "SZSelectNetworkViewController.h"
 #import "SZLocationUtils.h"
 
-SZSocialNetwork LinkedSocialNetworks() {
+SZSocialNetwork SZLinkedSocialNetworks() {
     SZSocialNetwork networks = SZSocialNetworkNone;
     
     if ([SZTwitterUtils isLinked]) {
@@ -38,7 +38,7 @@ SZSocialNetwork LinkedSocialNetworks() {
     return networks;
 }
 
-SZSocialNetwork AvailableSocialNetworks() {
+SZSocialNetwork SZAvailableSocialNetworks() {
     SZSocialNetwork networks = SZSocialNetworkNone;
     
     if ([SZTwitterUtils isAvailable]) {
@@ -53,7 +53,7 @@ SZSocialNetwork AvailableSocialNetworks() {
 }
 
 BOOL ShouldShowLinkDialog() {
-    return ( LinkedSocialNetworks() == SZSocialNetworkNone && AvailableSocialNetworks() != SZSocialNetworkNone && ![Socialize authenticationNotRequired]);
+    return ( SZLinkedSocialNetworks() == SZSocialNetworkNone && SZAvailableSocialNetworks() != SZSocialNetworkNone && ![Socialize authenticationNotRequired]);
 }
 
 void SZShowLinkToFacebookAlertView(void (^okBlock)(), void (^cancelBlock)()) {
@@ -67,7 +67,7 @@ void SZShowLinkToFacebookAlertView(void (^okBlock)(), void (^cancelBlock)()) {
 void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^completion)(SZSocialNetwork preferredNetworks), void (^cancellation)()) {
     
     // No Social Networks available
-    if (AvailableSocialNetworks() == SZSocialNetworkNone) {
+    if (SZAvailableSocialNetworks() == SZSocialNetworkNone) {
         BLOCK_CALL_1(completion, SZSocialNetworkNone);
     }
     
@@ -246,19 +246,24 @@ void CreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *options,
                 
                 [message appendFormat:@"Shared from %@.", activity.application.name];
                 
-                NSDictionary *postData = [NSDictionary dictionaryWithObjectsAndKeys:
-                                          message, @"message",
-                                          caption, @"caption",
-                                          link, @"link",
-                                          name, @"name",
-                                          @"This is the description", @"description",
-                                          nil];
+                NSMutableDictionary *postData = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                                 message, @"message",
+                                                 caption, @"caption",
+                                                 link, @"link",
+                                                 name, @"name",
+                                                 @"This is the description", @"description",
+                                                 nil];
+                
+                BLOCK_CALL_2(options.willPostToSocialNetworkBlock, SZSocialNetworkFacebook, postData);
                 
                 [SZFacebookUtils postWithGraphPath:@"me/links" params:postData success:^(id result) {
+                    BLOCK_CALL_1(options.didPostToSocialNetworkBlock, SZSocialNetworkFacebook);
                     BLOCK_CALL_1(success, activity);
                 } failure:^(NSError *error) {
                     
                     // Failed Wall post is still a success. Handle separately in options.
+                    BLOCK_CALL_1(options.didFailToPostToSocialNetworkBlock, SZSocialNetworkFacebook);
+
                     BLOCK_CALL_1(success, activity);
                 }];
             } else {
@@ -268,7 +273,7 @@ void CreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *options,
         
     };
 
-    if (SZShouldShareLocation()) {
+    if (SZShouldShareLocation() && !options.dontShareLocation) {
         [SZLocationUtils getCurrentLocationWithSuccess:^(CLLocation *location) {
             activity.lat = [NSNumber numberWithDouble:location.coordinate.latitude];
             activity.lng = [NSNumber numberWithDouble:location.coordinate.longitude];

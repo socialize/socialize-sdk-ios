@@ -477,6 +477,7 @@
 		AA15EFF115915300008F1237 /* SZUserProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA15EFEE15915300008F1237 /* SZUserProfileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA15EFF215915300008F1237 /* SZUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA15EFEF15915300008F1237 /* SZUserProfileViewController.m */; };
 		AA15EFF315915300008F1237 /* SZUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA15EFEF15915300008F1237 /* SZUserProfileViewController.m */; };
+		AA166553159CF9CB001B6A1D /* sharing.m in Sources */ = {isa = PBXBuildFile; fileRef = AA166552159CF9CB001B6A1D /* sharing.m */; };
 		AA1C1C0A158EF35D00A763CA /* _Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008600158D35BC00480399 /* _Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C0B158EF36700A763CA /* SocializeCommentDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00864E158D35BD00480399 /* SocializeCommentDetailsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1C1C0C158EF3A200A763CA /* _SZCommentsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086F5158D35BF00480399 /* _SZCommentsListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2288,6 +2289,8 @@
 		AA159E25158FAE11006E1CAE /* TestAppKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestAppKIFTestController.m; path = UIIntegrationTests/TestAppKIFTestController.m; sourceTree = "<group>"; };
 		AA15EFEE15915300008F1237 /* SZUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserProfileViewController.h; sourceTree = "<group>"; };
 		AA15EFEF15915300008F1237 /* SZUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserProfileViewController.m; sourceTree = "<group>"; };
+		AA166551159CF9CB001B6A1D /* sharing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sharing.h; sourceTree = "<group>"; };
+		AA166552159CF9CB001B6A1D /* sharing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sharing.m; sourceTree = "<group>"; };
 		AA1AD26815902E3B0020023C /* hide_symbols_blockskit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hide_symbols_blockskit.h; path = ThirdParty/BlocksKit/hide_symbols_blockskit.h; sourceTree = "<group>"; };
 		AA1D1090158EFBCE000C8A44 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = ThirdParty/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
 		AA25FEAB159119F00067741A /* SZUserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserSettingsViewController.h; sourceTree = "<group>"; };
@@ -3785,6 +3788,8 @@
 				AA65A265159CD43600613E5A /* entities.m */,
 				AA1505F8159CDE0E00F639E7 /* users.h */,
 				AA1505F9159CDE0E00F639E7 /* users.m */,
+				AA166551159CF9CB001B6A1D /* sharing.h */,
+				AA166552159CF9CB001B6A1D /* sharing.m */,
 			);
 			name = snippets;
 			path = Documentation/sphinx/source/snippets;
@@ -5855,6 +5860,7 @@
 				AA67143A159CC5D60000E3BE /* actions.m in Sources */,
 				AA65A266159CD43600613E5A /* entities.m in Sources */,
 				AA1505FA159CDE0E00F639E7 /* users.m in Sources */,
+				AA166553159CF9CB001B6A1D /* sharing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

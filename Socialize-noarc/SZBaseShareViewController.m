@@ -385,9 +385,9 @@ static NSString *kAutopostSection = @"kAutopostSection";
         [rows addObject:[self emailRow]];
     }
 
-    if ([SZShareUtils canShareViaSMS]) {
+//    if ([SZShareUtils canShareViaSMS]) {
         [rows addObject:[self SMSRow]];
-    }
+//    }
     
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
         

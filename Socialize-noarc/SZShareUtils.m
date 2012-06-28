@@ -20,6 +20,7 @@
 #import "SocializeThirdParty.h"
 #import "SZSelectNetworkViewController.h"
 #import "SZShareDialogViewController.h"
+#import "SZUserUtils.h"
 
 @implementation SZShareUtils
 
@@ -154,6 +155,10 @@
 }
 
 + (void)getSharesWithUser:(id<SZUser>)user first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+    if (user == nil) {
+        user = (id<SZUser>)[SZUserUtils currentUser];
+    }
+    
     SZAuthWrapper(^{
         [[Socialize sharedSocialize] getSharesForUser:user entity:nil first:first last:last success:success failure:failure];
     }, failure);

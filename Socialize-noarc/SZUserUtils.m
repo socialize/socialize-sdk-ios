@@ -25,7 +25,7 @@
 }
 
 + (void)showLinkDialogWithViewController:(UIViewController*)viewController completion:(void(^)(SZSocialNetwork selectedNetwork))completion cancellation:(void(^)())cancellation {
-    NSAssert(AvailableSocialNetworks() != SZSocialNetworkNone, @"Link not possible");
+    NSAssert(SZAvailableSocialNetworks() != SZSocialNetworkNone, @"Link not possible");
     
     SZLinkDialogViewController *linkDialog = [[SZLinkDialogViewController alloc] init];
     linkDialog.completionBlock = ^(SZSocialNetwork selectedNetwork) {
