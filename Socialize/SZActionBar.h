@@ -12,7 +12,7 @@
 @interface SZActionBar : UIView
 
 + (id)defaultActionBarWithFrame:(CGRect)frame entity:(id<SZEntity>)entity viewController:(UIViewController*)viewController;
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController *)viewController itemsLeft:(NSArray*)itemsLeft itemsRight:(NSArray*)itemsRight;
+- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController *)viewController;
 
 + (CGFloat)defaultHeight;
 + (CGFloat)defaultBetweenButtonsPadding;

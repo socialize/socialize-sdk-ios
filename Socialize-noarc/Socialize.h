@@ -24,6 +24,7 @@
 #import "SampleEntityLoader.h"
 #import "SZNavigationController.h"
 #import "SZActionBar.h"
+#import "SZActionButton.h"
 #import "SDKHelpers.h"
 #import "NSError+Socialize.h"
 

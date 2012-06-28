@@ -19,7 +19,7 @@
 
 - (void)testInitWithNoEntityDoesNotCreateEntity {
     [SZEntityUtils startMockingClass];
-    self.actionBar = [[[SZActionBar alloc] initWithFrame:CGRectMake(0, 0, 1, 1) entity:nil viewController:nil itemsLeft:nil itemsRight:nil] autorelease];
+    self.actionBar = [[[SZActionBar alloc] initWithFrame:CGRectMake(0, 0, 1, 1) entity:nil viewController:nil] autorelease];
     [[SZEntityUtils reject] addEntity:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
     [self.actionBar willMoveToSuperview:nil];
     [SZEntityUtils stopMockingClassAndVerify];
@@ -37,7 +37,7 @@
     [SZEntityUtils startMockingClass];
     
     id mockEntity = [self mockEntityWithKey:@"key" fromServer:NO];
-    self.actionBar = [[[SZActionBar alloc] initWithFrame:CGRectMake(0, 0, 1, 1) entity:mockEntity viewController:nil itemsLeft:nil itemsRight:nil] autorelease];
+    self.actionBar = [[[SZActionBar alloc] initWithFrame:CGRectMake(0, 0, 1, 1) entity:mockEntity viewController:nil] autorelease];
     [[SZEntityUtils expect] addEntity:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
     [self.actionBar willMoveToSuperview:nil];
     [SZEntityUtils stopMockingClassAndVerify];
@@ -47,7 +47,7 @@
     [SZEntityUtils startMockingClass];
     id mockEntity = [self mockEntityWithKey:@"key" fromServer:YES];
     
-    self.actionBar = [[[SZActionBar alloc] initWithFrame:CGRectMake(0, 0, 1, 1) entity:mockEntity viewController:nil itemsLeft:nil itemsRight:nil] autorelease];
+    self.actionBar = [[[SZActionBar alloc] initWithFrame:CGRectMake(0, 0, 1, 1) entity:mockEntity viewController:nil] autorelease];
     [[SZEntityUtils reject] addEntity:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
     [self.actionBar willMoveToSuperview:nil];
     [SZEntityUtils stopMockingClassAndVerify];
@@ -57,7 +57,7 @@
     [SZEntityUtils startMockingClass];
     id mockEntity = [self mockEntityWithKey:@"key" fromServer:NO];
     
-    self.actionBar = [[[SZActionBar alloc] initWithFrame:CGRectMake(0, 0, 1, 1) entity:mockEntity viewController:nil itemsLeft:nil itemsRight:nil] autorelease];
+    self.actionBar = [[[SZActionBar alloc] initWithFrame:CGRectMake(0, 0, 1, 1) entity:mockEntity viewController:nil] autorelease];
     [[SZEntityUtils expect] addEntity:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
     [self.actionBar willMoveToSuperview:nil];
     

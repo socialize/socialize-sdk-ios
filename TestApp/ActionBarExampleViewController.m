@@ -39,13 +39,40 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)emailButtonPressed:(id)sender {
+    [SZShareUtils shareViaEmailWithViewController:self entity:self.entity success:nil failure:nil];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
 
     if (self.actionBar == nil) {
-        self.actionBar = [SZActionBarUtils showActionBarInViewController:self entity:self.entity options:nil];
-        //    [self makeActionBarVertical];
+        self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:self.entity viewController:self];
+        [self.view addSubview:self.actionBar];
+
+//        [self customizeButtons];
+//        [self makeActionBarVertical];
     }
 }
+
+// begin-customize-action-bar-buttons-snippet
+
+- (void)customizeButtons {
+    SZActionButton *panicButton = [SZActionButton actionButtonWithIcon:nil title:@"Panic"];
+    panicButton.actionBlock = ^(SZActionButton *button, SZActionBar *bar) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+        [alertView show];
+    };
+    
+    self.actionBar.itemsRight = [NSArray arrayWithObjects:panicButton, [SZActionButton commentButton], nil];
+    
+    UIButton *emailButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    [emailButton setImage:[UIImage imageNamed:@"socialize-selectnetwork-email-icon.png"] forState:UIControlStateNormal];
+    [emailButton sizeToFit];
+    [emailButton addTarget:self action:@selector(emailButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    self.actionBar.itemsLeft = [NSArray arrayWithObjects:[SZActionButton viewsButton], emailButton, nil];
+}
+
+// end-customize-action-bar-buttons-snippet
 
 - (void)makeActionBarVertical {
     self.actionBar.transform = CGAffineTransformMakeRotation(M_PI_2);

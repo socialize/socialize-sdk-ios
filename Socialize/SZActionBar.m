@@ -48,10 +48,14 @@
     SZActionButton *viewsButton = [SZActionButton viewsButton];
     NSArray *itemsLeft = [NSArray arrayWithObjects:viewsButton, nil];
 
-    return [[self alloc] initWithFrame:frame entity:entity viewController:viewController itemsLeft:itemsLeft itemsRight:itemsRight];
+    SZActionBar *actionBar = [[self alloc] initWithFrame:frame entity:entity viewController:viewController];
+    actionBar.itemsLeft = itemsLeft;
+    actionBar.itemsRight = itemsRight;
+    
+    return actionBar;
 }
 
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController *)viewController itemsLeft:(NSArray*)itemsLeft itemsRight:(NSArray*)itemsRight {
+- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController *)viewController {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
@@ -60,8 +64,6 @@
         
         _entity = entity;
         self.viewController = viewController;
-        self.itemsRight = itemsRight;
-        self.itemsLeft = itemsLeft;
         
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         
