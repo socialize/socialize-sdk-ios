@@ -43,13 +43,13 @@
     [[SZTestHelper sharedTestHelper] startMockingSucceedingLocation];
     [[TestAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
         // Exit after the tests complete so that CI knows we're done
+        [[SZTestHelper sharedTestHelper] stopMockingSucceedingLocation];
         int failureCount = [[TestAppKIFTestController sharedInstance] failureCount];
         if (getenv("RUN_CLI")) {
             NSLog(@"Exiting with %i failures", failureCount);
             exit(failureCount);
         }
     }];
-    [[SZTestHelper sharedTestHelper] stopMockingSucceedingLocation];
 #endif
 
     return YES;

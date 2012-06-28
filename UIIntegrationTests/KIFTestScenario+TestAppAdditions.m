@@ -222,38 +222,11 @@
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"like button"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Skip"]];
     [steps addObjectsFromArray:[KIFTestStep stepsToVerifyActionBarLikesAtCount:1]];
-    
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"like button"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
+    
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
     
 
-    [scenario addStepsFromArray:steps];
-    
-    return scenario;
-}
-
-+ (id)scenarioToTestCommentButton {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test the comment button"];
-    
-    NSMutableArray *steps = [NSMutableArray array];
-    
-    [steps addObjectsFromArray:[self stepsToInitializeTest]];
-    
-    // Set up a test entity
-    NSString *entityKey = [TestAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", _cmd]];
-    [steps addObject:[KIFTestStep stepToExecuteBlock:^{
-        id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
-        [[TestAppListViewController sharedSampleListViewController] setEntity:entity];
-    }]];
-    
-    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowButtonsExampleRow];
-    [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
-    
-    
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"comment button"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Close"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
-    
     [scenario addStepsFromArray:steps];
     
     return scenario;

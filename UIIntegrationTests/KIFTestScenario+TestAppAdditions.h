@@ -24,5 +24,4 @@
 + (id)scenarioToTestLikeNoAuth;
 + (id)scenarioToTestLikeTwitterAuth;
 + (id)scenarioToTestDirectURLNotification;
-+ (id)scenarioToTestCommentButton;
 @end
