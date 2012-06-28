@@ -9,13 +9,25 @@ A "view" represents the action of a user viewing an entity and is an extremely u
 Recording Views
 ------------
 
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
+.. literalinclude:: snippets/views.m
+	:start-after: begin-record-snippet
+	:end-before: end-record-snippet
 
 Retrieving Views
 -------------------------
 
-.. literalinclude:: snippets/placeholder.m
-	:start-after: begin-snippet
-	:end-before: end-snippet
+
+By User (all entities)
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. literalinclude:: snippets/views.m
+	:start-after: begin-get-for-user-snippet
+	:end-before: end-get-for-user-snippet
+
+By User (Specific entity)
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. literalinclude:: snippets/views.m
+	:start-after: begin-get-for-user-and-entity-snippet
+	:end-before: end-get-for-user-and-entity-snippet
+

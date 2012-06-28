@@ -299,7 +299,7 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
 - (id<SZLike>)getLikeForUser:(id<SZUser>)user entity:(id<SZEntity>)entity {
     __block id<SZLike> fetchedLike = nil;
     [self prepare];
-    [SZLikeUtils getLikeForUser:user entity:entity start:nil end:nil success:^(id<SZLike> like) {
+    [SZLikeUtils getLikeForUser:user entity:entity success:^(id<SZLike> like) {
         fetchedLike = [like retain];
         [self notify:kGHUnitWaitStatusSuccess];
     } failure:^(NSError *error) {
@@ -360,12 +360,6 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
 - (id<SZView>)viewEntity:(id<SZEntity>)entity {
     return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
         [SZViewUtils viewEntity:entity success:actionSuccess failure:actionFailure];
-    }];
-}
-
-- (id<SZView>)getView:(id<SZEntity>)entity {
-    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
-        [SZViewUtils getView:entity success:actionSuccess failure:actionFailure];
     }];
 }
 
