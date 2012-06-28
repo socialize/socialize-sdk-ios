@@ -1,8 +1,8 @@
 #import "create_action_bar.h"
 
 @implementation CreateActionBarViewController
-@synthesize actionBar = actionBar_;
-
+@synthesize actionBar = _actionBar;
+@synthesize entity = _entity;
 // begin-simple-create-snippet
 
 // Implementation
@@ -13,8 +13,8 @@
     [super viewWillAppear:animated];
 
     if (self.actionBar == nil) {
-        SZEntity *entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
-        self.actionBar = [SZActionBarUtils showActionBarInViewController:self entity:entity options:nil];
+        self.entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
+        self.actionBar = [SZActionBarUtils showActionBarInViewController:self entity:self.entity options:nil];
     }
 }
 
@@ -35,8 +35,8 @@
     [super viewWillAppear:animated];
     
     if (self.actionBar == nil) {
-        SZEntity *entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
-        self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:entity viewController:self];
+        self.entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
+        self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:self.entity viewController:self];
         [self.view addSubview:self.actionBar];
     }
 }
@@ -58,8 +58,8 @@
     [super viewWillAppear:animated];
     
     if (self.actionBar == nil) {
-        SZEntity *entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
-        self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectZero entity:entity viewController:self];
+        self.entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
+        self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectZero entity:self.entity viewController:self];
         self.actionBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         [self.view addSubview:self.actionBar];
     }
@@ -73,16 +73,16 @@
 
 // begin-customize-buttons-create-snippet
 
-// Implementation
-
-// Instantiate the action bar in your view controller
+- (void)emailButtonPressed:(id)sender {
+    [SZShareUtils shareViaEmailWithViewController:self entity:self.entity success:nil failure:nil];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     if (self.actionBar == nil) {
-        SZEntity *entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
-        self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:entity viewController:self];
+        self.entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
+        self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:self.entity viewController:self];
         
         SZActionButton *panicButton = [SZActionButton actionButtonWithIcon:nil title:@"Panic"];
         panicButton.actionBlock = ^(SZActionButton *button, SZActionBar *bar) {

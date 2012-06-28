@@ -4,4 +4,5 @@
 
 @interface CreateActionBarViewController : UIViewController
 @property (nonatomic, retain) SZActionBar *actionBar;
+@property (nonatomic, retain) id<SZEntity> entity;
 @end
