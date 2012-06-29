@@ -19,4 +19,23 @@
 @synthesize profileImage = _profileImage;
 @synthesize meta = _meta;
 
+- (id)initWithFullUser:(id<SZFullUser>)fullUser {
+    if (self = [super init]) {
+        self.firstName = fullUser.firstName;
+        self.lastName = fullUser.lastName;
+        self.bio = fullUser.description;
+        self.lastName = fullUser.lastName;
+        self.meta = fullUser.meta;
+    }
+    
+    return self;
+}
+
+- (void)populateFullUser:(id<SZFullUser>)fullUser {
+    [fullUser setFirstName:self.firstName];
+    [fullUser setLastName:self.lastName];
+    [fullUser setDescription:self.bio];
+    [fullUser setMeta:self.meta];
+}
+
 @end

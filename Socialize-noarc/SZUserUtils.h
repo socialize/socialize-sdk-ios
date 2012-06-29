@@ -10,14 +10,16 @@
 #import "SocializeUser.h"
 #import "SocializeFullUser.h"
 #import "SZUserSettingsViewController.h"
+#import "SZUserSettings.h"
 
 @interface SZUserUtils : NSObject
 
 + (void)showLinkDialogWithViewController:(UIViewController*)viewController completion:(void(^)(SZSocialNetwork selectedNetwork))completion cancellation:(void(^)())cancellation;
 + (void)showUserProfileInViewController:(UIViewController*)viewController user:(id<SocializeFullUser>)user completion:(void(^)(id<SZFullUser> user))completion;
 + (void)showUserSettingsInViewController:(UIViewController*)viewController completion:(void(^)())completion;
-+ (void)saveUserSettings:(id<SocializeFullUser>)user profileImage:(UIImage*)image success:(void(^)(id<SocializeFullUser> user))success failure:(void(^)(NSError *error))failure;
++ (SZUserSettings*)currentUserSettings;
 + (id<SocializeFullUser>)currentUser;
 + (BOOL)userIsLinked;
 + (void)getUsersWithIds:(NSArray*)ids success:(void(^)(NSArray *users))success failure:(void(^)(NSError *error))failure;
++ (void)saveUserSettings:(SZUserSettings*)settings success:(void(^)(SZUserSettings *settings, id<SocializeFullUser> updatedUser))success failure:(void(^)(NSError *error))failure;
 @end

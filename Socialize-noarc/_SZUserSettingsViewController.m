@@ -202,22 +202,24 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     }
 }
 
-- (void)persistSettingsToDisk {
+- (SZUserSettings*)userSettingsForInterfaceState {
+    SZUserSettings *userSettings = [[[SZUserSettings alloc] initWithFullUser:self.fullUser] autorelease];
+    
     BOOL postToFacebook = self.facebookSwitch.on;
-    [self.userDefaults setObject:[NSNumber numberWithBool:!postToFacebook] forKey:kSocializeDontPostToFacebookKey];
-    
-    BOOL postToTwitter = self.twitterSwitch.on;
-    [self.userDefaults setObject:[NSNumber numberWithBool:!postToTwitter] forKey:kSocializeDontPostToTwitterKey];
+    userSettings.dontPostToFacebook = [NSNumber numberWithBool:!postToFacebook];
 
-    BOOL autopost = postToTwitter || postToFacebook;
-    [self.userDefaults setObject:[NSNumber numberWithBool:autopost] forKey:kSocializeAutoPostToSocialNetworksKey];
+    BOOL postToTwitter = self.twitterSwitch.on;
+    userSettings.dontPostToTwitter = [NSNumber numberWithBool:!postToTwitter];
     
-    [self.userDefaults synchronize];
+    BOOL autopost = postToTwitter || postToFacebook;
+    userSettings.autopostEnabled = [NSNumber numberWithBool:autopost];
+
+    userSettings.profileImage = self.profileImage;
+    
+    return userSettings;
 }
 
 - (void)dismissSelfDidSave:(BOOL)didSave {
-    [self persistSettingsToDisk];
-    
     if (self.userSettingsCompletionBlock != nil) {
         self.userSettingsCompletionBlock(didSave, self.fullUser);
     } else if ([self.delegate respondsToSelector:@selector(profileEditViewController:didUpdateProfileWithUser:)]) {
@@ -238,9 +240,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         [self startLoading];
         self.saveButton.enabled = NO;
         
-        SocializeFullUser *newUser = [[(SocializeFullUser*)self.fullUser copy] autorelease];
-        [SZUserUtils saveUserSettings:newUser profileImage:self.profileImage
-                                  success:^(id<SocializeFullUser> fullUser) {
+        SZUserSettings *settings = [self userSettingsForInterfaceState];
+        [SZUserUtils saveUserSettings:settings
+                                  success:^(SZUserSettings *settings, id<SocializeFullUser> fullUser) {
                                       self.fullUser = fullUser;
                                       [self stopLoading];
                                       [self dismissSelfDidSave:YES];

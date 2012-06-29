@@ -27,21 +27,47 @@
     [[Socialize sharedSocialize] removeAuthenticationInfo];
     [self authenticateAnonymously];
     
-    id<SZFullUser> user = [SZUserUtils currentUser];
-    [user setFirstName:@"testFirstName"];
-    [user setLastName:@"testLastName"];
-    UIImage *image = [UIImage imageNamed:@"Smiley.png"];
+    NSString *testFirstName = @"testFirstName";
+    NSString *testLastName = @"testLastName";
+    NSString *testBio = @"testBio";
+    
+    SZUserSettings *settings = [[SZUserUtils currentUserSettings] retain];
+    
+    settings.firstName = testFirstName;
+    settings.lastName = testLastName;
+    settings.bio = testBio;
+    settings.profileImage = [UIImage imageNamed:@"Smiley.png"];
     
     [self prepare];
-    [SZUserUtils saveUserSettings:user profileImage:image success:^(id<SZFullUser> serverUser) {
-        GHAssertEqualStrings([serverUser firstName], [user firstName], @"bad first name");
-        GHAssertEqualStrings([serverUser lastName], [user lastName], @"bad last name");
+    [SZUserUtils saveUserSettings:settings success:^(SZUserSettings *settings, id<SZFullUser> serverUser) {
+        GHAssertEqualStrings([serverUser firstName], testFirstName, @"bad first name");
+        GHAssertEqualStrings([serverUser lastName], testLastName, @"bad last name");
+        GHAssertEqualStrings([serverUser description], testBio, @"bad bio");
         GHAssertNotNil([serverUser smallImageUrl], @"Should have image url");
         [self notify:kGHUnitWaitStatusSuccess];
     } failure:^(NSError *error) {
         [self notify:kGHUnitWaitStatusFailure];
     }];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+}
+
+- (void)testDefaultsAreCopiedToSettings {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:nil forKey:kSocializeShouldShareLocationKey];
+    [defaults setObject:[NSNumber numberWithBool:YES] forKey:kSocializeDontPostToTwitterKey];
+    [defaults setObject:[NSNumber numberWithBool:YES] forKey:kSocializeDontPostToFacebookKey];
+    [defaults setObject:[NSNumber numberWithBool:YES] forKey:kSocializeAutoPostToSocialNetworksKey];
+    [defaults synchronize];
+    
+    SZUserSettings *settings = [SZUserUtils currentUserSettings];
+    
+    // Share location should default to on (sense of option is wrong for historical reasons)
+    BOOL dontShareLocation = [settings.dontShareLocation boolValue];
+    GHAssertFalse(dontShareLocation, @"Should default to sharing location");
+    
+    GHAssertTrue([settings.dontPostToTwitter boolValue], @"Should not be posting to twitter");
+    GHAssertTrue([settings.dontPostToFacebook boolValue], @"Should not be posting to facebook");
+    GHAssertTrue([settings.autopostEnabled boolValue], @"autopost should be on");
 }
 
 - (void)testFetchCurrentUser {
