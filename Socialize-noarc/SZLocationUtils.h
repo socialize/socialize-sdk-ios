@@ -11,6 +11,6 @@
 
 @interface SZLocationUtils : NSObject
 + (void)getCurrentLocationWithSuccess:(void(^)(CLLocation* location))success failure:(void(^)(NSError *error))failure;
-+ (CLLocation*)lastLocation;
++ (CLLocation*)lastKnownLocation;
 
 @end

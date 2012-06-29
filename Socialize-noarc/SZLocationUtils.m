@@ -16,7 +16,7 @@
     [[SocializeLocationManager sharedLocationManager] getCurrentLocationWithSuccess:success failure:failure];
 }
 
-+ (CLLocation*)lastLocation {
++ (CLLocation*)lastKnownLocation {
     return [[SocializeLocationManager sharedLocationManager] lastLocation];
 }
 

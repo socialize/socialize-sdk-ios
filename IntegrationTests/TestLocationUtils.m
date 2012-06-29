@@ -21,7 +21,7 @@
     }];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
     
-    CLLocation *lastLocation = [SZLocationUtils lastLocation];
+    CLLocation *lastLocation = [SZLocationUtils lastKnownLocation];
     GHAssertNotNil(lastLocation, @"last location should not be nil");
 }
 
