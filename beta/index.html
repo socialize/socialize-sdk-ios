@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Socialize iOS SDK &mdash; Socialize iOS SDK 1.7.7 documentation</title>
+    <title>Socialize iOS SDK &mdash; Socialize iOS SDK 2.0beta1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.7',
+        VERSION:     '2.0beta1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.7 documentation" href="#" />
+    <link rel="top" title="Socialize iOS SDK 2.0beta1 documentation" href="#" />
     <link rel="next" title="Getting Started Guide" href="getting_started.html" /> 
   </head>
   <body>
@@ -35,7 +35,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="getting_started.html" title="Getting Started Guide"
              accesskey="N">next</a></li>
-        <li><a href="#">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="#">Socialize iOS SDK 2.0beta1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -81,9 +81,6 @@
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="action_bar.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="action_bar.html#displaying-the-action-bar">Displaying the Action Bar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="action_bar.html#advanced-layout-configuration">Advanced Layout Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="action_bar.html#delegate">Delegate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="action_bar.html#more-info">More Info</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a><ul>
@@ -100,7 +97,10 @@
 <li class="toctree-l2"><a class="reference internal" href="twitter.html#creating-a-twitter-application">Creating a Twitter Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="twitter.html#configuring-twitter-in-socialize">Configuring Twitter in Socialize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="twitter.html#linking-to-twitter-using-existing-credentials">Linking to Twitter Using Existing Credentials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="twitter.html#propagating-socialize-actions-to-twitter">Propagating Socialize Actions to Twitter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="facebook.html#linking-with-existing-facebook-credentials">Linking with Existing Facebook Credentials</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a><ul>
@@ -117,8 +117,41 @@
 <li class="toctree-l2"><a class="reference internal" href="push_notifications.html#troubleshooting-notifications">Troubleshooting Notifications</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="comments.html#comment-view">Comment View</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="entities.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="entities.html#working-with-entities">Working with Entities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="users.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#user-ui-elements">User UI Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#working-with-users">Working with Users</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#working-with-actions">Working with Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#ui-elements">UI Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#working-with-shares">Working with Shares</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comments.html#ui-elements">UI Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comments.html#working-with-comments">Working with comments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="likes.html#like-ui-elements">Like UI Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="likes.html#working-with-likes">Working with Likes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="views.html#recording-views">Recording Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#retrieving-views">Retrieving Views</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a><ul>
@@ -127,23 +160,12 @@
 <li class="toctree-l2"><a class="reference internal" href="ui_advanced.html#standalone-share">Standalone Share</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sdk_user_guide.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdk_user_guide.html#initializing-socialize">Initializing Socialize</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdk_user_guide.html#authentication">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdk_user_guide.html#entities">Entities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdk_user_guide.html#view">View</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdk_user_guide.html#like">Like</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdk_user_guide.html#get-likes-for-a-user">Get likes for a user</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdk_user_guide.html#comment">Comment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdk_user_guide.html#share">Share</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="sdk_pro_tips.html#building-the-sdk-from-source">Building the SDK from source</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v2-0">v2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v1-7-7">v1.7.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v1-7-6">v1.7.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v1-7-5">v1.7.5</a></li>
@@ -201,15 +223,20 @@
         <div class="sphinxsidebarwrapper">
 <h3><a href="#">Table Of Contents</a></h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="http://socialize.github.com/socialize-sdk-ios/beta/index.html">2.0 Beta Docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
@@ -237,7 +264,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="getting_started.html" title="Getting Started Guide"
              >next</a></li>
-        <li><a href="#">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="#">Socialize iOS SDK 2.0beta1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

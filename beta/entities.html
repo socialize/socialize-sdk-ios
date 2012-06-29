@@ -1,0 +1,276 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entities &mdash; Socialize iOS SDK 2.0beta1 documentation</title>
+    
+    <link rel="stylesheet" href="static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0beta1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+    <link rel="top" title="Socialize iOS SDK 2.0beta1 documentation" href="index.html" />
+    <link rel="next" title="Users" href="users.html" />
+    <link rel="prev" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="users.html" title="Users"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Socialize iOS SDK 2.0beta1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "socialize";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#222";
+  feedback_widget_options.style = "idea";
+  feedback_widget_options.product = "socialize_ios_sdk";
+  feedback_widget_options.tag = "Feedback";
+
+  feedback_widget_options.limit = "3";
+
+  GSFN.feedback_widget.prototype.local_base_url = "http://support.getsocialize.com";
+  GSFN.feedback_widget.prototype.local_ssl_base_url = "http://support.getsocialize.com";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script><div class="section" id="entities">
+<h1>Entities<a class="headerlink" href="#entities" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>An entity is a single item of content in your app</p>
+<p>Throughout the documentation and the code snippets we refer to an “entity”.
+This is simply a generic term for something that can be view, shared, liked or
+commented on. Generally this will correspond to a single item of content in
+your app.</p>
+<p>Entities in Socialize MUST be associated with a unique key. It is recommended
+that where possible an HTTP URL be used (i.e. one that corresponds to an active
+web page).</p>
+</div>
+<div class="section" id="working-with-entities">
+<h2>Working with Entities<a class="headerlink" href="#working-with-entities" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creating-an-entity">
+<h3>Creating an Entity<a class="headerlink" href="#creating-an-entity" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You do necessarily need to create an entity on your own. The <a class="reference external" href="comments.html#working-with-comments">Comment</a>, <a class="reference external" href="likes.html#working-with-likes">Like</a>, and <a class="reference external" href="sharing.html#working-with-shares">Share</a> utility functions will automatically create any specified entities.</p>
+</div>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">createEntity</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;my_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">addEntity:</span><span class="n">entity</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created entity %@/%d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">entity</span> <span class="n">key</span><span class="p">],</span> <span class="p">[</span><span class="n">entity</span> <span class="n">objectID</span><span class="p">]);</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failure: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>        
+    <span class="p">}];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="retrieving-entity-data">
+<h3>Retrieving Entity Data<a class="headerlink" href="#retrieving-entity-data" title="Permalink to this headline">¶</a></h3>
+<p>An existing entity can be retrieved via the getEntity method. Entities obtained
+in this way will also provide aggregate data on comments, likes, shares and
+views. Refer to the <a class="reference external" href="http://api.getsocialize.com/docs/v1/#entity-object">Entity Object Structure</a>  in the API Docs. for more detail on
+these aggregate values.</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getEntity</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">getEntityWithKey:</span><span class="s">@&quot;my_key&quot;</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Retrieved entity %@/%d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">entity</span> <span class="n">key</span><span class="p">],</span> <span class="p">[</span><span class="n">entity</span> <span class="n">objectID</span><span class="p">]);</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failure: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>        
+    <span class="p">}];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also retrieve several entities in one call:</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getMultipleEntitiesById</span> <span class="p">{</span>
+    <span class="n">NSArray</span> <span class="o">*</span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="nl">arrayWithObjects:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInt:</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInt:</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInt:</span><span class="mi">3</span><span class="p">],</span> <span class="nb">nil</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">getEntitiesWithIds:</span><span class="n">ids</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="k">in</span> <span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Retrieved entity %@/%d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">entity</span> <span class="n">key</span><span class="p">],</span> <span class="p">[</span><span class="n">entity</span> <span class="n">objectID</span><span class="p">]);</span>            
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failure: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>        
+    <span class="p">}];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Or page through entities for the entire application</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getAllEntitiesForApplication</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">getEntitiesWithFirst:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInteger:</span><span class="mi">0</span><span class="p">]</span> <span class="nl">last:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInteger:</span><span class="mi">50</span><span class="p">]</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="k">in</span> <span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Retrieved entity %@/%d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">entity</span> <span class="n">key</span><span class="p">],</span> <span class="p">[</span><span class="n">entity</span> <span class="n">objectID</span><span class="p">]);</span>            
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failure: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>        
+    <span class="p">}];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="entity-stats">
+<h3>Entity Stats<a class="headerlink" href="#entity-stats" title="Permalink to this headline">¶</a></h3>
+<p>Each entity object retrieved from the server contains aggregate statistics
+about the number of comments,likes,views and shares:</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getUserStats</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">getEntitiesWithFirst:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInteger:</span><span class="mi">0</span><span class="p">]</span> <span class="nl">last:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInteger:</span><span class="mi">50</span><span class="p">]</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="k">in</span> <span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
+            
+            <span class="c1">// userActionSummary contains information about how the authenticated user has acted on this entity</span>
+            <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">userActions</span> <span class="o">=</span> <span class="p">[</span><span class="n">entity</span> <span class="n">userActionSummary</span><span class="p">];</span>
+            <span class="kt">BOOL</span> <span class="n">isLiked</span> <span class="o">=</span> <span class="p">[[</span><span class="n">userActions</span> <span class="nl">objectForKey:</span><span class="s">@&quot;likes&quot;</span><span class="p">]</span> <span class="n">integerValue</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="n">NSNumber</span> <span class="o">*</span><span class="n">comments</span> <span class="o">=</span> <span class="p">[</span><span class="n">userActions</span> <span class="nl">objectForKey:</span><span class="s">@&quot;comments&quot;</span><span class="p">];</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;The user has %@ comments, liked=%d, total likes=%d, total comments=%d, total shares=%d&quot;</span><span class="p">,</span> <span class="n">comments</span><span class="p">,</span> <span class="n">isLiked</span><span class="p">,</span> <span class="p">[</span><span class="n">entity</span> <span class="n">likes</span><span class="p">],</span> <span class="p">[</span><span class="n">entity</span> <span class="n">comments</span><span class="p">],</span> <span class="p">[</span><span class="n">entity</span> <span class="n">shares</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failure: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>        
+    <span class="p">}];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="entity-metadata">
+<h3>Entity Metadata<a class="headerlink" href="#entity-metadata" title="Permalink to this headline">¶</a></h3>
+<p>Entities stored in Socialize can optionally include meta data. This is for any
+additional information you want to store about the entity.</p>
+<p>Meta data is stored with the entity and returned then the entity is requested.</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">createEntityWithMeta</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;my_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
+    <span class="n">entity</span><span class="p">.</span><span class="n">meta</span> <span class="o">=</span> <span class="s">@&quot;123&quot;</span><span class="p">;</span>
+    
+    <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">addEntity:</span><span class="n">entity</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">serverEntity</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created entity with meta %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">serverEntity</span> <span class="n">meta</span><span class="p">]);</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failure: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>        
+    <span class="p">}];</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you want a more complex data structure, we recommend using JSON as an object
+notation. To do this, you will need to use a third party library such as the
+excellent <a class="reference external" href="https://github.com/johnezang/JSONKit/">JSONKit</a></p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">createEntityWithJSONMeta</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;my_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
+    
+    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">dictionary</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDictionary</span> <span class="nl">dictionaryWithObject:</span><span class="s">@&quot;123&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;key&quot;</span><span class="p">];</span>
+    <span class="n">entity</span><span class="p">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">[</span><span class="n">dictionary</span> <span class="n">JSONString</span><span class="p">];</span>
+    
+    <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">addEntity:</span><span class="n">entity</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">serverEntity</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">retrievedDictionary</span> <span class="o">=</span> <span class="p">[[</span><span class="n">entity</span> <span class="n">meta</span><span class="p">]</span> <span class="n">objectFromJSONString</span><span class="p">];</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Retrieved meta: %@&quot;</span><span class="p">,</span> <span class="n">retrievedDictionary</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failure: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>        
+    <span class="p">}];</span>
+    
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="entity-activity">
+<h3>Entity Activity<a class="headerlink" href="#entity-activity" title="Permalink to this headline">¶</a></h3>
+<p>For information on retrieving a social activity stream for a given entity, see the <a class="reference external" href="actions.html#working-with-actions">Actions Section</a>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Entities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-entities">Working with Entities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="users.html" title="Users"
+             >next</a></li>
+        <li class="right" >
+          <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
+             >previous</a> |</li>
+        <li><a href="index.html">Socialize iOS SDK 2.0beta1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Socialize Inc.
+    </div>
+  </body>
+</html>

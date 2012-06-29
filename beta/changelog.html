@@ -1,0 +1,551 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Changelog &mdash; Socialize iOS SDK 2.0beta1 documentation</title>
+    
+    <link rel="stylesheet" href="static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0beta1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+    <link rel="top" title="Socialize iOS SDK 2.0beta1 documentation" href="index.html" />
+    <link rel="prev" title="SDK Pro Tips" href="sdk_pro_tips.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="sdk_pro_tips.html" title="SDK Pro Tips"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Socialize iOS SDK 2.0beta1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "socialize";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#222";
+  feedback_widget_options.style = "idea";
+  feedback_widget_options.product = "socialize_ios_sdk";
+  feedback_widget_options.tag = "Feedback";
+
+  feedback_widget_options.limit = "3";
+
+  GSFN.feedback_widget.prototype.local_base_url = "http://support.getsocialize.com";
+  GSFN.feedback_widget.prototype.local_ssl_base_url = "http://support.getsocialize.com";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script><div class="section" id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v2-0">
+<h2>v2.0<a class="headerlink" href="#v2-0" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Add block callbacks to socialize api client [ ]</p>
+<p>[feature] Reorganize core functionality into &#8216;utils&#8217; classes</p>
+<p>[feature] Remake sample app [ ]</p>
+<p>[feature] Add SZ Prefix and simplify names of front facing UI controllers, deprecate old names [ ]</p>
+<p>[feature] Facebook shares should post to &#8220;links&#8221; endpoint, not &#8220;feed&#8221; endpoint [ ]</p>
+<p>[feature] Facebook/twitter now available for all actions (moved from compose comment to share sheet) [ ]</p>
+<p>[feature] SDK Calls automatically create an anon user when necessary (when using utils classes) [ ]</p>
+<p>[feature] Update to latest facebook SDK version [ publicize ]</p>
+<p>[feature] Add facebook link callback for app foreground (neither authed nor cancelled) [ publicize ]</p>
+<p>[feature] Project rebuilt from scratch [ ]</p>
+<p>[feature] Update FB auth to handle Facebook&#8217;s deprecation of offline_access [ ]</p>
+<p>[feature] Add consistent, configurable location sharing for all actions [ ]</p>
+<p>[bug] Fix an inappropriate emission of &#8216;unconfigured social network&#8217; log messages [ ]</p>
+<p>[feature] Comment details screen redesign [ ]</p>
+<p>[feature] Rewrite action bar for performance, configurability, and new interfaces [ ]</p>
+<p>[bug] Change blue socialize navigation bar button back to correct style [ ]</p>
+<p>[feature] Add programmatic saving of user settings [ ]</p>
+<p>[feature] Expose ability to post directly to facebook graph [ ]</p>
+</div>
+<div class="section" id="v1-7-7">
+<h2>v1.7.7<a class="headerlink" href="#v1-7-7" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Token registration should auto auth if needed [ ]</p>
+<p>[bug] Changing consumer keys should wipe existing user. [ ]</p>
+<p>[feature] Dev can dismiss push notification popups programatically [ ]</p>
+</div>
+<div class="section" id="v1-7-6">
+<h2>v1.7.6<a class="headerlink" href="#v1-7-6" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Add ability to show share action sheet directly</p>
+</div>
+<div class="section" id="v1-7-5">
+<h2>v1.7.5<a class="headerlink" href="#v1-7-5" title="Permalink to this headline">¶</a></h2>
+<p>[bug] External links such as iTunes should open for direct url requests [ ]</p>
+<p>[bug] Direct URL entities should work if scheme unspecified [ ]</p>
+</div>
+<div class="section" id="v1-7-4">
+<h2>v1.7.4<a class="headerlink" href="#v1-7-4" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Add launch-time notification handling info to documentation [ ]</p>
+<p>[bug] Direct-URL smartalerts are crashing [ ]</p>
+</div>
+<div class="section" id="v1-7-3">
+<h2>v1.7.3<a class="headerlink" href="#v1-7-3" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Cancelling auth does not work from post comment [ ui ]</p>
+<p>[bug] Action Bar should not refetch entity after view creation [ actionbar ]</p>
+<p>[bug] Entity name should show on facebook wall comment. like, share [ facebook ]</p>
+<p>[bug] Remove &#8220;using Socialize for iOS&#8221; from Facebook wall posts [ ]</p>
+</div>
+<div class="section" id="v1-7-2">
+<h2>v1.7.2<a class="headerlink" href="#v1-7-2" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Fix bug where sms share might be sent to twitter [ ]</p>
+<p>[bug] Activity creates slow due to too many url shortens [ ]</p>
+<p>[feature] Expose socialize branded navigation controller [ ]</p>
+<p>[feature] Clean up static utilities for profile and profile edit [ ]</p>
+<p>[feature] Expose authenticated full user object (previously partial user) [ ]</p>
+<p>[feature] Improve quality of code samples [ ]</p>
+<p>[feature] Change title of Profile Edit to Settings [ ]</p>
+<p>[bug] iPad is crashing when updating profile (UIImagePickerController) [ ]</p>
+</div>
+<div class="section" id="v1-7-1">
+<h2>v1.7.1<a class="headerlink" href="#v1-7-1" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Fix PostComment keyboard crash after low-memory event [ crash memory ]</p>
+<p>[feature] Improve failure text for missing SocializeConfigurationInfo.plist [ ]</p>
+<p>[bug] SocializeAuthViewController needs a back or cancel button to completely cancel the flow [ ]</p>
+<p>[feature] Include an example entity loader in release distrubution (SampleEntityLoader) [ ]</p>
+<p>[bug] Action bar not reporting like error [ ]</p>
+<p>[bug] iPad layout broken in activity, profile, and profile edit [ ]</p>
+</div>
+<div class="section" id="v1-7">
+<h2>v1.7<a class="headerlink" href="#v1-7" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Expose user-specific likes GET endpoint in SDK [ ]</p>
+<p>[feature] Developer can add a stand-alone like button [ Piecemeal UI Components ]</p>
+</div>
+<div class="section" id="v1-6-5">
+<h2>v1.6.5<a class="headerlink" href="#v1-6-5" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Fix iPad form factor when posting comment, listing comments, and linking to third party</p>
+</div>
+<div class="section" id="v1-6-4">
+<h2>v1.6.4<a class="headerlink" href="#v1-6-4" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Allow pagination in get application activity [ ]</p>
+<p>[bug] Third party link dialog is being reshown on relike [ ]</p>
+<p>[bug] Like from action bar creating under wrong user [ ]</p>
+</div>
+<div class="section" id="v1-6-3">
+<h2>v1.6.3<a class="headerlink" href="#v1-6-3" title="Permalink to this headline">¶</a></h2>
+<p>[feature] prompt authentication on likes [ ]</p>
+<p>[bug] Entity name not being propagated through action bar [ ]</p>
+<p>[feature] developer can hide/show &#8216;id rather not&#8217; text on auth screen with parameter [ ]</p>
+<p>[feature] Developer can enable/disable prompt auth on action (See Advanced UI Section in Documentation) [ ]</p>
+<p>[bug] Fix a bad notifications image reference in comments list [ ]</p>
+</div>
+<div class="section" id="v1-6-2">
+<h2>v1.6.2<a class="headerlink" href="#v1-6-2" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Using SMS crashes appmakr app. [ appmakr ]</p>
+<p>[bug] Facebook wall post app link incorrectly showed entity name [ ]</p>
+<p>[bug] Add missing docs for explicit Facebook linking [ ]</p>
+<p>[feature] Improve look of Post Comment action buttons [ ]</p>
+<p>[feature] Remove getsocialize.com link from Facebook wall posts [ ]</p>
+</div>
+<div class="section" id="v1-6-1">
+<h2>v1.6.1<a class="headerlink" href="#v1-6-1" title="Permalink to this headline">¶</a></h2>
+<p>Update notification registration docs to reduce registration of invalid tokens</p>
+</div>
+<div class="section" id="v1-6">
+<h2>v1.6<a class="headerlink" href="#v1-6" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Developer can send direct url to user as SmartAlert [ ]</p>
+<p>[feature] Developer can send direct entity to user as SmartAlert [ ]</p>
+<p>[feature] Add documentation for getting device token from logs [ ]</p>
+<p>[feature] Device calls events endpoint on notification open [ ]</p>
+<p>[feature] Email and SMS include app/entity links [ ]</p>
+</div>
+<div class="section" id="v1-5-5">
+<h2>v1.5.5<a class="headerlink" href="#v1-5-5" title="Permalink to this headline">¶</a></h2>
+<p>[bug] UI should not be blocked on manual return from fb auth [ facebook authentication]</p>
+<p>[bug] In-app modal facebook dialog should work (support certain devices that cannot open to safari/fb) [ facebook authentication ]</p>
+<p>[bug] Fix memory leaks [ memory ]</p>
+</div>
+<div class="section" id="v1-5-4">
+<h2>v1.5.4<a class="headerlink" href="#v1-5-4" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Fix a bug where consumer key could be unset before using Socialize UI or when doing manual third party link [ ]</p>
+</div>
+<div class="section" id="v1-5-3">
+<h2>v1.5.3<a class="headerlink" href="#v1-5-3" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Fix double display of settings after auth controller [ ]</p>
+<p>[bug] Fix modal transition crash on iOS 4.2 and earlier [ ]</p>
+<p>[bug] Socialize app link on facebook wall incorrect [ ]</p>
+<p>[bug] ActionBar Share via twitter / fb would not show text composer on first run [ ]</p>
+</div>
+<div class="section" id="v1-5-2">
+<h2>v1.5.2<a class="headerlink" href="#v1-5-2" title="Permalink to this headline">¶</a></h2>
+<p>[bug] iOS 4.3 crashes at end of twitter authentication [ ]</p>
+<p>[bug] &#8220;View Entity&#8221; button label on comment details is too wide [ ]</p>
+<p>[bug] Remove an unused property that is causing some warnings (LoaderFactory) [ ]</p>
+<p>[bug] Hide an undocumented method that should not yet be public [ ]</p>
+<p>[bug] Link to twitter from getting started doc [ ]</p>
+<p>[bug] Do not attempt to send push token before authenticated (consumer key null) [ ]</p>
+<p>[bug] Remove some lingering NSLogs [ ]</p>
+<p>[bug] Posting a subscription comment would not subscribe to smartalerts [ ]</p>
+<p>[bug] Update confusing facebook url config image in docs [ ]</p>
+<p>[bug] Freshly signing in to third party should force autopost enabled [ ]</p>
+<p>[bug] Comment actions should disable when loading [ ]</p>
+<p>[bug] A twitter auth failure case should show retry dialog [ ]</p>
+<p>[bug] Default title as key for entity loader button is ugly</p>
+</div>
+<div class="section" id="v1-5-1">
+<h2>v1.5.1<a class="headerlink" href="#v1-5-1" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Logging into third party from profile now shows profile on top of profile [ ]</p>
+<p>[bug] Configuring twitter but not Facebook caused a profile controller inconsistency [ ]</p>
+</div>
+<div class="section" id="v1-5">
+<h2>v1.5<a class="headerlink" href="#v1-5" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Add canLoadEntity block to disallow loading of specific entities [ ui]</p>
+<p>[feature] Developer can authenticate user with twitter in SDK [ twitter auth ]</p>
+<p>[feature] User can sign in to Twitter from UI [ twitter]</p>
+<p>[feature] User can sign out of facebook [ facebook auth ui]</p>
+<p>[feature] Socialize 401 error should automatically wipe local credentials for default UI controls [ ]</p>
+<p>[feature] Developer can link to multiple third parties via /authenticate/ [ ]</p>
+<p>[feature] Add develop device token notes to trouble shooting section of ios SDK docs [ documentation ]</p>
+<p>[feature] User can share via twitter on share window [ twitter share ]</p>
+<p>[bug] Facebook default perms now include offline_access [ facebook]</p>
+<p>[feature] Likes autotweet if enabled [ twitter ]</p>
+<p>[feature] User can enable/disable auto-tweeting of likes and comments in settings [ ui twitter]</p>
+<p>[feature] Comments autotweet if enabled [ twitter ui]</p>
+<p>[bug] Fix a case where empty comment still allowed [ ui]</p>
+<p>[feature] Third parties always show on comment controller [ ui]</p>
+<p>[feature] Third party auth flow goes directly to settings instead of profile [ ui auth]</p>
+</div>
+<div class="section" id="v1-3-5">
+<h2>v1.3.5<a class="headerlink" href="#v1-3-5" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Fix SocializeRequest crash [ ]</p>
+<p>[bug] NSDate hexString category method has same name as apple private API [ ]</p>
+<p>[feature] Developer can silence Socialize UI error messages [ ]</p>
+<p>[feature] Errors in Socialize UI should post notification [ ]</p>
+<p>[feature] Enable search box in docs [ ]</p>
+</div>
+<div class="section" id="v1-3-4">
+<h2>v1.3.4<a class="headerlink" href="#v1-3-4" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Remove all caching of device tokens [ notifications]</p>
+</div>
+<div class="section" id="v1-3-3">
+<h2>v1.3.3<a class="headerlink" href="#v1-3-3" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Update documentation to make it clear that entity loader is required for notifications [ documentation notifications]</p>
+<p>[bug] Clean up token send logic and add better logging [ notifications]</p>
+</div>
+<div class="section" id="v1-3-2">
+<h2>v1.3.2<a class="headerlink" href="#v1-3-2" title="Permalink to this headline">¶</a></h2>
+<p>[bug] App will crash if external Facebook auth is used, but no app id defined with Socialize [ crash facebook ]</p>
+<p>[bug] Displaying PostComment before being authenticated causes 400 error [ authentication ]</p>
+</div>
+<div class="section" id="v1-3-1">
+<h2>v1.3.1<a class="headerlink" href="#v1-3-1" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Changing app&#8217;s location authorized status should immediately update UI controls [ ]</p>
+<p>[feature] add debug level warning that facebook isn&#8217;t configured. [ ]</p>
+<p>[bug] &#8220;no comments to show&#8221; message should hide after first comment [ ]</p>
+<p>[bug] &#8220;Add Comment&#8221; at bottom of comments list not justified when notifications button hidden [ ]</p>
+<p>[bug] storeSocializeApiKey:andSecret: needs to be deprecated/renamed [ ]</p>
+<p>[feature] add SMS to Sharing [ ]</p>
+<p>[feature] Allow specifying entity name when creating action bar [ ]</p>
+<p>[feature] Allow navigation to settings from activity detail [ ]</p>
+<p>[feature] add description of an &#8220;entity key&#8221; in documentation - get this from the android doco [ ]</p>
+<p>[bug] make sure to strip blank space from key/secret before sending it to server [ ]</p>
+</div>
+<div class="section" id="v1-3">
+<h2>v1.3<a class="headerlink" href="#v1-3" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Socialize Smart Alerts (push notifications on iOS) [ ]</p>
+<p>[feature] add a block callback to handle entity loading. [ ]</p>
+<p>[bug] Setting url scheme suffix should not be required (currently crashes on assertion) for users fb authing on their own [ ]</p>
+<p>[feature] Likes should post to Facebook [ ]</p>
+<p>[feature] Add a generic Action Detail view for comment info</p>
+<p>[feature] Facebook wall content urls for app and entity now use indirect getsocialize.com links instead of direct links [ ]</p>
+</div>
+<div class="section" id="v1-1-9">
+<h2>v1.1.9<a class="headerlink" href="#v1-1-9" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Fix setDelegate warning on _Socialize.h when using ARC [ ]</p>
+<p>[bug] Paginated view would hit server on scroll of empty view [ ]</p>
+<p>[bug] Dismiss action bar mail composer would increment view count [ ]</p>
+</div>
+<div class="section" id="v1-1-8">
+<h2>v1.1.8<a class="headerlink" href="#v1-1-8" title="Permalink to this headline">¶</a></h2>
+<p>[bug] fix the final package to not follow symlinks and reduce the total package size. [ ]</p>
+<p>[bug] MFMailComposeDelegate crashes on nil modal display attempt when no email clients are configured. [ ]</p>
+</div>
+<div class="section" id="v1-1-7">
+<h2>v1.1.7<a class="headerlink" href="#v1-1-7" title="Permalink to this headline">¶</a></h2>
+<p>[bug] when FB is not configured the authentication screen still shows [ ]</p>
+<p>[bug] canceling FB when authenticating causes anonymous data to be removed, resulting in a new anonymous user [ ]</p>
+<p>[bug] Profile View still show facebook details after removeAuthenticationInfo. [ ]</p>
+<p>[bug] Username label in comment details is too small [ ]</p>
+<p>[bug] Fix Profile and Comments List view layout on iPad [ ]</p>
+<p>[bug] Profile and Comments List do not paginate correctly on iPad [ ]</p>
+<p>[bug] ActionBar should use showFromTabBar: for action sheet display when target is a UITabBarController [ ]</p>
+<p>[feature] Add ActionBar delegate callback for custom action sheet display behavior [ ]</p>
+</div>
+<div class="section" id="v1-1-6">
+<h2>v1.1.6<a class="headerlink" href="#v1-1-6" title="Permalink to this headline">¶</a></h2>
+<p>[bug] User&#8217;s own profile image does not update in activity after changing profile image [ ]</p>
+<p>[bug] Large profile images fail to send to server [ ]</p>
+<p>[bug] Profile edit right side button being called &#8220;save&#8221; before edit is confusing [ ]</p>
+<p>[bug] Crash can occur after certain profile edits [ ]</p>
+<p>[bug] Fix some bugs that occur when editing profile a second time [ ]</p>
+<p>[bug] Changing profile image to a large image causes noticeable main thread block with no indication [ ]</p>
+</div>
+<div class="section" id="v1-1-5">
+<h2>v1.1.5<a class="headerlink" href="#v1-1-5" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Remove requirement for URL from code and docs [ ]</p>
+<p>[bug] Fixed some minor bugs found by static analyzer [ ]</p>
+<p>[bug] Fix memory leaks [ ]</p>
+</div>
+<div class="section" id="v1-1-4">
+<h2>v1.1.4<a class="headerlink" href="#v1-1-4" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Editing only profile image does not update server [ regression ]</p>
+<p>[bug] Pressing share on pre-5.0 iPad causes crash [ ]</p>
+<p>[bug] Socialize Navigation Bar background cut off on iPad [ ]</p>
+<p>[bug] Fix some circular references in action sheet block callbacks [ ]</p>
+</div>
+<div class="section" id="v1-1-3">
+<h2>v1.1.3<a class="headerlink" href="#v1-1-3" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Facebook errors presented to user (e.g. &#8220;Wall post failed&#8221;) are more detailed [ ]</p>
+<p>[bug] Docs &#8220;My App Already Uses Facebook&#8221; section missing a step [ ]</p>
+<p>[bug] Facebook section shows up twice in docs [ ]</p>
+<p>[feature] Socialize errors presented to user (e.g. 400) are more specific [ ]</p>
+<p>[bug] Facebook wall post success should not be required for create comment [ ]</p>
+<p>[bug] Facebook button does not adjust properly for landscape [ ]</p>
+<p>[bug] Share subsection in the docs &#8220;SDK User Guide&#8221; section out of date [ ]</p>
+<p>[feature] Improve getting started guide [ ]</p>
+</div>
+<div class="section" id="v1-1-2">
+<h2>v1.1.2<a class="headerlink" href="#v1-1-2" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Posting a new comment from comments list should update the comments list [ ]</p>
+<p>[bug] Reopening comments list should refresh content [ ]</p>
+<p>[bug] Action Bar Buttons should not be visible during initial load [ ]</p>
+<p>[bug] Post Share&#8217;s send button should still be disabled after a new facebook auth [ ]</p>
+<p>[bug] If paginated view quickly hidden and shown during initial content load, first page is requested twice [ ]</p>
+<p>[bug] On second edit profile from action bar, save button is not reenabled [ ]</p>
+<p>[bug] Remove some lingering NSLog messages [ ]</p>
+</div>
+<div class="section" id="v1-1-1">
+<h2>v1.1.1<a class="headerlink" href="#v1-1-1" title="Permalink to this headline">¶</a></h2>
+<p>[feature] documentation should have a more complete getting started guide [ ]</p>
+<p>[bug] UIBarButtonItem memory leaks [ ]</p>
+<p>[bug] fix shouldAutoRotateToInterfaceOrientation: for message composition views [ ]</p>
+</div>
+<div class="section" id="v1-0-0">
+<h2>v1.0.0<a class="headerlink" href="#v1-0-0" title="Permalink to this headline">¶</a></h2>
+<p>[feature] make profile clickable in the comment detail view</p>
+<p>[bug] Profile edit value nav buttons still hiding on 4.3</p>
+<p>[chore] hide the activity view on profile view controller</p>
+<p>[feature] Authorizing drops user into directly into edit profile (instead of profile) to make some settings more obvious</p>
+</div>
+<div class="section" id="v0-10-1">
+<h2>v0.10.1<a class="headerlink" href="#v0-10-1" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Create new getting started video based on new documentation [ ]</p>
+<p>[feature] List activity for User SDK [ ]</p>
+<p>[feature] Create an entity share for SDK [ ]</p>
+<p>[feature] Share via email [ ]</p>
+<p>[feature] add landscape support for commenting/action bar [ ]</p>
+<p>[feature] Add share to Action Bar [ ui ]</p>
+<p>[feature] Add call to facebook graph API [ ]</p>
+<p>[feature] Comments/likes should post to FB [ ]</p>
+<p>[feature] Add user preferences for auto-posting comments/likes [ ]</p>
+<p>[feature] Create UDID replacement algorithm [ ]</p>
+<p>[bug] Fix button on action bar [ ]</p>
+<p>[feature] LIkes should post to FB [ ]</p>
+<p>[bug] when you clean out auth and then go to the profile view controller sample app [ crash]</p>
+<p>[bug] Socialize auth conflicts with users pre-authorizing facebook [ ]</p>
+<p>[bug] Loading mode disabled too early in text composition views [ regression]</p>
+<p>[feature] ActionBar should not hide any content [ ]</p>
+<p>[bug] navigation buttons for UIViewControllers on simulator 4.3 don&#8217;t show up [ ]</p>
+<p>[feature] make profile clickable in the comment detail view [ ]</p>
+<p>[feature] add custom FB authentication dialog from AppMakr [ ]</p>
+<p>[feature] Add &#8220;post to facebook&#8221; switch to PostCommentViewController [ ]</p>
+</div>
+<div class="section" id="v0-9-0">
+<h2>v0.9.0<a class="headerlink" href="#v0-9-0" title="Permalink to this headline">¶</a></h2>
+<p>[feature] add documentation for adding FB ID to the code [ ]</p>
+<p>[feature] add branding to the top of the navigation bar [ ]</p>
+<p>[feature] Action bar should auto increment view [ ]</p>
+<p>[bug] Action bar buttons cannot be pressed [ ]</p>
+<p>[bug] PostCommentViewController does not dismiss self after facebook profile view on iOS5 [ ]</p>
+<p>[bug] ActionBar comment count not updating after post [ ]</p>
+<p>[feature] add documentation for Action Bar [ ]</p>
+<p>[feature] An End User should be able to view another users profile [ ]</p>
+<p>[bug] SocializeActionBar should require parent view controller [ ]</p>
+</div>
+<div class="section" id="v0-8-0">
+<h2>v0.8.0<a class="headerlink" href="#v0-8-0" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Add like service support to the action bar [ ]</p>
+<p>[feature] remove the second dialog when adding a comment [ ]</p>
+<p>[bug] Fix issues in the SDK and Sample Sdk App which were found by static analyzer. [ ]</p>
+<p>[feature] Add GetSatisfaction widget to documentation [ ]</p>
+<p>[bug] App Crashes if facebook id not defined [ ]</p>
+<p>[bug] Update documentation on presenting SocializeCommentsTableViewController [ ]</p>
+<p>[feature] Re-add posting of profile image once PUTs are fixed [ ]</p>
+<p>[feature] Facebook auth hardening (assertions) and documentation updates [ ]</p>
+<p>[feature] Our SocializeActionBarView should work similar to existing Ad SDKS like Admob [ ]</p>
+</div>
+<div class="section" id="v0-7-1">
+<h2>v0.7.1<a class="headerlink" href="#v0-7-1" title="Permalink to this headline">¶</a></h2>
+<p>[bug] Release configuration contains incorrect url [ ]</p>
+</div>
+<div class="section" id="v0-7-0">
+<h2>v0.7.0<a class="headerlink" href="#v0-7-0" title="Permalink to this headline">¶</a></h2>
+<p>[feature] upgrade to iOS5 [ ]</p>
+<p>[bug] remove alert when user pushes &#8216;cancel&#8217; on comment entry box. [ ]</p>
+<p>[bug] Find and fix memory allocation issues in the Sample Application. [ ]</p>
+<p>[bug] Find and fix memory allocation issues in the Socialize SDK [ ]</p>
+<p>[feature] apply the existing the UI Profile view from AppMakr [ ]</p>
+<p>[feature] User edit UI actually edits the user&#8217;s profile [ ]</p>
+<p>[feature] Edit User(Profile) SDK [ ]</p>
+<p>[feature] Socialize action bar [ ui ]</p>
+<p>[bug] remove gcov dependency [ ]</p>
+<p>[bug] UI bug when rendering UICommentsViewController [ ui ]</p>
+<p>[bug] navbar header image in iOS5 don&#8217;t show [ ]</p>
+<p>[feature] exposed viewcontrollers should provide their own navigation controller since we&#8217;ll ask users to present us a modal. [ ]</p>
+<p>[bug] Buttons get hidden when using ios4.3 simulator and navigating back and forth [ ]</p>
+</div>
+<div class="section" id="id1">
+<h2>0.6.0<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>[feature] User can authenticate with Facebook [ i-test needed ]</p>
+<p>[bug] the embedded framework package zip doesn&#8217;t work because of missing header files [ ]</p>
+<p>[bug] rename SBJSON library from FB to have the socialize prefix [ ]</p>
+<p>[feature] remove alert from comment list view when getting comments for an entity if the entity doesn&#8217;t exist. [ ]</p>
+<p>[feature] provide better error log messages for raw response method [ ]</p>
+<p>[feature] UI Views should automatically authenticate [ ]</p>
+<p>[feature] Get User (Profile) SDK [ ]</p>
+<p>[feature] User profile view [ ui ]</p>
+<p>[bug] fix embedded framework to include the right headers [ ]</p>
+</div>
+<div class="section" id="id2">
+<h2>0.1.0<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>[feature] Unlike an entity [ ]</p>
+<p>[feature] All API calls must be authenticated using the /authenticate API [ ]</p>
+<p>[feature] Like an entity [ ]</p>
+<p>[feature] Device will send agent in request [ ]</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v2-0">v2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-7">v1.7.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-6">v1.7.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-5">v1.7.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-4">v1.7.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-3">v1.7.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-2">v1.7.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7-1">v1.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-7">v1.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-6-5">v1.6.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-6-4">v1.6.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-6-3">v1.6.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-6-2">v1.6.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-6-1">v1.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-6">v1.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-5-5">v1.5.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-5-4">v1.5.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-5-3">v1.5.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-5-2">v1.5.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-5-1">v1.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-5">v1.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-3-5">v1.3.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-3-4">v1.3.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-3-3">v1.3.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-3-2">v1.3.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-3-1">v1.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-3">v1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-1-9">v1.1.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-1-8">v1.1.8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-1-7">v1.1.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-1-6">v1.1.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-1-5">v1.1.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-1-4">v1.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-1-3">v1.1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-1-2">v1.1.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-1-1">v1.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-0-0">v1.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-10-1">v0.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-9-0">v0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-8-0">v0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-7-1">v0.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-7-0">v0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">0.1.0</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="sdk_pro_tips.html" title="SDK Pro Tips"
+             >previous</a></li>
+        <li><a href="index.html">Socialize iOS SDK 2.0beta1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Socialize Inc.
+    </div>
+  </body>
+</html>
