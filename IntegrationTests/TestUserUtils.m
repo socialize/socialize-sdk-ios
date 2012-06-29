@@ -31,7 +31,7 @@
     NSString *testLastName = @"testLastName";
     NSString *testBio = @"testBio";
     
-    SZUserSettings *settings = [[SZUserUtils currentUserSettings] retain];
+    SZUserSettings *settings = [SZUserUtils currentUserSettings];
     
     settings.firstName = testFirstName;
     settings.lastName = testLastName;

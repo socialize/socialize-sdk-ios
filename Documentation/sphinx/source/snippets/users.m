@@ -63,13 +63,14 @@
 - (void)saveSettings {
     
     // Specify a new image and description for the current user
-    id<SZFullUser> currentUser = [SZUserUtils currentUser];
+    SZUserSettings *settings = [SZUserUtils currentUserSettings];
     UIImage *newImage = [UIImage imageNamed:@"Smiley.png"];
-    currentUser.description = @"I do some stuff from time to time";
+    settings.profileImage = newImage;
+    settings.bio = @"I do some stuff from time to time";
     
     // Update the server
-    [SZUserUtils saveUserSettings:currentUser profileImage:newImage success:^(id<SZFullUser> user) {
-        NSLog(@"Saved user %d", [user objectID]);
+    [SZUserUtils saveUserSettings:settings success:^(SZUserSettings *settings, id<SocializeFullUser> updatedUser) {
+        NSLog(@"Saved user %d", [updatedUser objectID]);
     } failure:^(NSError *error) {
         NSLog(@"Broke: %@", [error localizedDescription]);
     }];

@@ -84,7 +84,7 @@
 }
 
 + (void)saveUserSettings:(SZUserSettings*)settings success:(void(^)(SZUserSettings *settings, id<SocializeFullUser> updatedUser))success failure:(void(^)(NSError *error))failure {
-    SZAuthWrapper([^{
+    SZAuthWrapper(^{
         
         // Save the portion of the settings that are user defaults
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -104,7 +104,7 @@
             BLOCK_CALL_2(success, settings, fullUser);
         } failure:failure];
         
-    } copy], failure);
+    }, failure);
 
 }
 
