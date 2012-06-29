@@ -157,7 +157,11 @@ static CLLocationDistance SocializeLocationManagerFixRequiredAccuracy = 200.;
 - (void)callAndClearLocationSuccessCallbacksWithLocation:(CLLocation*)location {
 
     for (NSArray *pair in self.locationCallbacks) {
-        void (^successBlock)(CLLocation*) = [pair objectAtIndex:0];
+        id blockObject = [pair objectAtIndex:0];
+        if (blockObject == [NSNull null])
+            continue;
+
+        void (^successBlock)(CLLocation*) = blockObject;
         successBlock(location);
     }
     [self.locationCallbacks removeAllObjects];
@@ -166,6 +170,10 @@ static CLLocationDistance SocializeLocationManagerFixRequiredAccuracy = 200.;
 - (void)callAndClearLocationFailureCallbacksWithError:(NSError*)error {
     
     for (NSArray *pair in self.locationCallbacks) {
+        id failObject = [pair objectAtIndex:1];
+        if (failObject == [NSNull null])
+            continue;
+        
         void (^failureBlock)(NSError*) = [pair objectAtIndex:1];
         failureBlock(error);
     }
@@ -217,6 +225,14 @@ static CLLocationDistance SocializeLocationManagerFixRequiredAccuracy = 200.;
     [self callAndClearLocationFailureCallbacksWithError:error];
 }
 
+- (id)blockCopyOrNSNull:(id)block {
+    if (block != nil) {
+        return [[block copy] autorelease];
+    } else {
+        return [NSNull null];
+    }
+}
+
 - (void)getCurrentLocationWithSuccess:(void(^)(CLLocation*))success failure:(void(^)(NSError*))failure {
     CLLocation *currentLocation = [self currentLocation];
     if (currentLocation != nil) {
@@ -224,7 +240,7 @@ static CLLocationDistance SocializeLocationManagerFixRequiredAccuracy = 200.;
         return;
     }
 
-    [self.locationCallbacks addObject:[NSArray arrayWithObjects:[success copy], [failure copy], nil]];
+    [self.locationCallbacks addObject:[NSArray arrayWithObjects:[self blockCopyOrNSNull:success], [self blockCopyOrNSNull:failure], nil]];
 
     if (!self.waitingForLocation) {
         [self startWaitingForLocation];
