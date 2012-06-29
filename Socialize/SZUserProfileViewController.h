@@ -7,6 +7,8 @@
 //
 
 #import "SZNavigationController.h"
+#import "socialize_globals.h"
+#import "SocializeObjects.h"
 
 @interface SZUserProfileViewController : SZNavigationController
 - (id)initWithUser:(id<SZUser>)user;

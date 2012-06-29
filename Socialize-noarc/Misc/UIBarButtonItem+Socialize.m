@@ -7,6 +7,7 @@
 //
 
 #import "UIBarButtonItem+Socialize.h"
+#import "socialize_globals.h"
 
 @implementation UIBarButtonItem (Socialize)
 

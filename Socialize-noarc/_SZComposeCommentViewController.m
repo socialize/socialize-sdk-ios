@@ -17,6 +17,7 @@
 #import "SZCommentUtils.h"
 #import "SocializePrivateDefinitions.h"
 #import "SZSmartAlertUtils.h"
+#import "socialize_globals.h"
 
 @implementation _SZComposeCommentViewController
 @synthesize commentObject = commentObject_;

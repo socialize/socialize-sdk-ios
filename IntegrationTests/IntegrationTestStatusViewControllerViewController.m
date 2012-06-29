@@ -8,6 +8,7 @@
 
 #import "IntegrationTestStatusViewControllerViewController.h"
 #import <Socialize/Socialize.h>
+#import "integrationtests_globals.h"
 
 @interface IntegrationTestStatusViewControllerViewController ()
 

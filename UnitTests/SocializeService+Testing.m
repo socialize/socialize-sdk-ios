@@ -7,6 +7,7 @@
 //
 
 #import "SocializeService+Testing.h"
+#import "SocializeTestCase.h"
 
 @implementation SocializeService (Testing)
 

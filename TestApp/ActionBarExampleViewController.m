@@ -8,6 +8,7 @@
 
 #import "ActionBarExampleViewController.h"
 #import <Socialize/Socialize.h>
+#import <BlocksKit/BlocksKit.h>
 
 @interface ActionBarExampleViewController ()
 

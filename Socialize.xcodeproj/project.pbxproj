@@ -2116,6 +2116,7 @@
 		AA008845158D424100480399 /* UITableView+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Socialize.m"; sourceTree = "<group>"; };
 		AA0089AA158D6F4E00480399 /* DataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHelper.h; sourceTree = "<group>"; };
 		AA0089AB158D6F4E00480399 /* DataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHelper.m; sourceTree = "<group>"; };
+		AA05955E159D5F1D00138B12 /* integrationtests_globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = integrationtests_globals.h; sourceTree = "<group>"; };
 		AA0602B315965A22002D2535 /* SZActionBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionBarItem.h; sourceTree = "<group>"; };
 		AA0C6014158FC4F000F66A3B /* UnitTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0C601B158FC4F000F66A3B /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
@@ -2310,6 +2311,7 @@
 		AA2D42E6159D1FA600622210 /* views.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = views.m; sourceTree = "<group>"; };
 		AA2D42E8159D4FFD00622210 /* SZUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserSettings.h; sourceTree = "<group>"; };
 		AA2D42E9159D4FFD00622210 /* SZUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserSettings.m; sourceTree = "<group>"; };
+		AA2D434E159D585D00622210 /* socialize_globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = socialize_globals.h; sourceTree = "<group>"; };
 		AA2FC1A515926CAF00B52772 /* SZTwitterLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTwitterLinkViewController.h; sourceTree = "<group>"; };
 		AA2FC1A615926CAF00B52772 /* SZTwitterLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTwitterLinkViewController.m; sourceTree = "<group>"; };
 		AA3BC374158E80780073AD50 /* TestAppListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAppListViewController.h; sourceTree = "<group>"; };
@@ -2880,6 +2882,7 @@
 			isa = PBXGroup;
 			children = (
 				AA0085C4158D2EFC00480399 /* Socialize-Prefix.pch */,
+				AA2D434E159D585D00622210 /* socialize_globals.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -3732,6 +3735,7 @@
 		AA6C63D2158F0EB0005E5632 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AA05955E159D5F1D00138B12 /* integrationtests_globals.h */,
 				AA6C63D3158F0EB0005E5632 /* IntegrationTests-Info.plist */,
 				AA6C63D4158F0EB0005E5632 /* InfoPlist.strings */,
 				AA6C63D7158F0EB0005E5632 /* main.m */,
@@ -6237,7 +6241,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "TestApp/TestApp-Info.plist";
@@ -6255,7 +6258,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "TestApp/TestApp-Info.plist";
@@ -6270,7 +6272,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/Socialize.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6288,7 +6289,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/Socialize.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6307,7 +6307,6 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/Socialize_noarc.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6325,7 +6324,6 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/Socialize_noarc.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6348,7 +6346,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdParty",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
@@ -6377,7 +6374,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdParty",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
@@ -6400,7 +6396,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -6426,7 +6421,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -6454,7 +6448,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
@@ -6479,7 +6472,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
@@ -6513,7 +6505,6 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/Socialize_noarc.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6535,7 +6526,6 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/Socialize_noarc.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6552,7 +6542,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/Socialize.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6574,7 +6563,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/Socialize.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;

@@ -9,6 +9,7 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeCommonDefinitions.h"
 #import "_Socialize.h"
+#import "socialize_globals.h"
 
 @implementation SocializeThirdPartyFacebook
 

@@ -7,6 +7,7 @@
 //
 
 #import "_SZSelectNetworkViewController.h"
+#import "socialize_globals.h"
 
 @interface _SZSelectNetworkViewController ()
 

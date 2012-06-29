@@ -11,6 +11,7 @@
 #import "SocializeLoadingView.h"
 #import <BlocksKit/BlocksKit.h>
 #import "SocializeBaseViewController.h"
+#import "socialize_globals.h"
 
 @implementation SZBlockDisplay
 @synthesize beginBlock = beginSequenceBlock_;

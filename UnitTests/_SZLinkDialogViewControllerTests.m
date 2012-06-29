@@ -12,6 +12,7 @@
 #import "SocializeAuthInfoTableViewCell.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
+#import "SocializeTestCase.h"
 
 //THIS REDEFINES THE INTERFACES AS PUBLIC SO WE CAN TEST THEM
 @interface  _SZLinkDialogViewController(public)

@@ -29,6 +29,7 @@
 #import <JSONKit/JSONKit.h>
 #import "SocializeError.h"
 #import "_Socialize.h"
+#import "socialize_globals.h"
 
 @interface SocializeService()
 -(void) dispatch:(SocializeRequest *)request didLoadRawResponse:(NSData *)data;

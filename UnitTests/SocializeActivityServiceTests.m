@@ -31,6 +31,7 @@
 #import "SocializeService+Testing.h"
 #import "SocializeLikeService.h"
 #import "SocializeActivity.h"
+#import "SocializeTestCase.h"
 
 @implementation SocializeActivityServiceTests
 

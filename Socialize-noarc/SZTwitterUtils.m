@@ -12,6 +12,7 @@
 #import "SZTwitterLinkViewController.h"
 #import "SDKHelpers.h"
 #import "SZUserUtils.h"
+#import "socialize_globals.h"
 
 @implementation SZTwitterUtils
 

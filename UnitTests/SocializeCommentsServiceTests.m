@@ -34,6 +34,7 @@
 
 #import <Foundation/Foundation.h>
 #import <JSONKit/JSONKit.h>
+#import "SocializeTestCase.h"
 
 
 #define ENTITY @"entity_key"

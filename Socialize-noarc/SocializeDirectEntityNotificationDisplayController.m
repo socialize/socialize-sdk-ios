@@ -8,6 +8,7 @@
 
 #import "SocializeDirectEntityNotificationDisplayController.h"
 #import "SocializeDummyViewController.h"
+#import "socialize_globals.h"
 
 @interface SocializeDirectEntityNotificationDisplayController ()
 @property (nonatomic, assign) BOOL loadComplete;

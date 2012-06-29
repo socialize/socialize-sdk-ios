@@ -8,6 +8,7 @@
 
 #import "URLDownload.h"
 #import "URLDownloadOperation.h"
+#import "socialize_globals.h"
 
 
 @interface URLDownload()

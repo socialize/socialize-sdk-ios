@@ -14,6 +14,7 @@
 #import "SocializeActivityViewController.h"
 #import "SZNavigationController.h"
 #import "SZUserUtils.h"
+#import "socialize_globals.h"
 
 @interface _SZUserProfileViewController ()
 -(void)configureViews;

@@ -10,12 +10,12 @@
 #import "SocializeUserService.h"
 #import "SocializeEntityService.h"
 #import "SocializeLikeService.h"
-#import <BlocksKit/BlocksKit.h>
 #import "NSNumber+Additions.h"
 #import "SDKHelpers.h"
 #import "SZLikeUtils.h"
 #import "SZActionButton_Private.h"
 #import "SZEntityUtils.h"
+#import "socialize_globals.h"
 
 @interface SZLikeButton ()
 

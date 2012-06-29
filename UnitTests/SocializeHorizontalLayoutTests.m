@@ -7,6 +7,7 @@
 //
 
 #import "SocializeHorizontalLayoutTests.h"
+#import "SocializeTestCase.h"
 
 @implementation SocializeHorizontalLayoutTests
 @synthesize horizontalContainerView = horizontalContainerView_;

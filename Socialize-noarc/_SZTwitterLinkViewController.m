@@ -6,14 +6,12 @@
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
-#import "_SZTwitterLinkViewController.h"
 #import <OAuthConsumer/OAuthConsumer.h>
-#import "SocializePrivateDefinitions.h"
-#import "SocializeCommonDefinitions.h"
+#import "socialize_globals.h"
+#import "_SZTwitterLinkViewController.h"
 #import <OAuthConsumer/OAuthConsumer.h>
 #import "NSArray+AssociativeArray.h"
 #import "NSString+QueryString.h"
-#import <BlocksKit/BlocksKit.h>
 #import "NSHTTPCookieStorage+Utilities.h"
 #import "SZTwitterUtils.h"
 

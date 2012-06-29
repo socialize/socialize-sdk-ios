@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "hide_symbols_oauth.h"
 
 
 typedef enum {

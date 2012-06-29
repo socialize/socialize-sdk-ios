@@ -7,6 +7,7 @@
 //
 
 #import "ButtonExampleViewController.h"
+#import <BlocksKit/BlocksKit.h>
 
 static CGRect likeFrame = { 240.f, 120.f, 0.f, 0.f };
 

@@ -11,6 +11,7 @@
 #import "SocializePrivateDefinitions.h"
 #import "SocializeCommonDefinitions.h"
 #import <JSONKit/JSONKit.h>
+#import "SocializeTestCase.h"
 
 @implementation SocializeUserServiceTests
 // Run before each test method

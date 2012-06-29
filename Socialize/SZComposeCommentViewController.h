@@ -7,6 +7,7 @@
 //
 
 #import "SZNavigationController.h"
+#import "SocializeObjects.h"
 
 @interface SZComposeCommentViewController : SZNavigationController
 - (id)initWithEntity:(id<SZEntity>)entity;

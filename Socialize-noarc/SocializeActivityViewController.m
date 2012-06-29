@@ -12,6 +12,7 @@
 #import "_SZUserProfileViewController.h"
 #import "SocializeTableBGInfoView.h"
 #import "_Socialize.h"
+#import "socialize_globals.h"
 
 @implementation SocializeActivityViewController
 @synthesize activityTableViewCell = activityTableViewCell_;

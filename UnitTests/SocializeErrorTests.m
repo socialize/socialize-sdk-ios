@@ -10,6 +10,7 @@
 #import "SocializeErrorDefinitions.h"
 #import "NSError+Socialize.h"
 #import "SocializeError.h"
+#import "SocializeTestCase.h"
 
 @implementation SocializeErrorTests
 

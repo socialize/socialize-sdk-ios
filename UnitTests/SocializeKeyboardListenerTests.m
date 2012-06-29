@@ -8,6 +8,7 @@
 
 #import "SocializeKeyboardListener.h"
 #import "SocializeKeyboardListenerTests.h"
+#import "SocializeTestCase.h"
 
 @implementation SocializeKeyboardListenerTests
 @synthesize keyboardListener = keyboardListener_;

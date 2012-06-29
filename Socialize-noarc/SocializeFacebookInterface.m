@@ -9,6 +9,7 @@
 
 #import "SocializeFacebookInterface.h"
 #import "SocializeThirdPartyFacebook.h"
+#import "socialize_globals.h"
 
 static SocializeFacebookInterface *sharedFacebookInterface;
 

@@ -12,6 +12,7 @@
 #import "SocializeCommonDefinitions.h"
 #import "SocializePreprocessorUtilities.h"
 #import "SocializeThirdPartyFacebook.h"
+#import "socialize_globals.h"
 
 static SocializeFacebookAuthHandler *sharedFacebookAuthHandler;
 

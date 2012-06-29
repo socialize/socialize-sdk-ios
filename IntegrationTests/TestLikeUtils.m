@@ -7,6 +7,7 @@
 //
 
 #import "TestLikeUtils.h"
+#import "integrationtests_globals.h"
 
 @implementation TestLikeUtils
 

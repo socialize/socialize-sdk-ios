@@ -8,6 +8,7 @@
 
 #import "SocializeSubscriptionServiceTests.h"
 #import "SocializeSubscriptionService.h"
+#import "SocializeTestCase.h"
 
 @implementation SocializeSubscriptionServiceTests
 @synthesize subscriptionService = subscriptionService_;

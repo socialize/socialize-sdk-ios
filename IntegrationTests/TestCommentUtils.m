@@ -8,6 +8,7 @@
 
 #import "TestCommentUtils.h"
 #import <Socialize/Socialize.h>
+#import "integrationtests_globals.h"
 
 @implementation TestCommentUtils
 

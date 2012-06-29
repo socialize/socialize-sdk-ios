@@ -13,6 +13,7 @@
 #import "SocializeCommonDefinitions.h"
 #import "SocializeObjectFactory.h"
 #import "SocializeLike.h"
+#import "SocializeTestCase.h"
 
 #define ENTITY @"entity_key"
 

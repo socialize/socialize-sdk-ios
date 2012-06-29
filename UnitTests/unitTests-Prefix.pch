@@ -10,16 +10,6 @@
 
 #ifdef __OBJC__
 
-#import "hide_symbols_facebook.h"
-#import "hide_symbols_oauth.h"
-#import "hide_symbols_blockskit.h"
-#import "hide_symbols_jsonkit.h"
-
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <OCMock/OCMock.h>
-#import "TestUtils.h"
-#import <OCMock/NSObject+ClassMock.h>
-#import "SocializeService+Testing.h"
-#import "StringHelper.h"
 #endif

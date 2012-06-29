@@ -8,6 +8,7 @@
 
 #import "SocializeNotificationToggleBubbleContentViewTests.h"
 #import "SocializeNotificationToggleBubbleContentView.h"
+#import "SocializeTestCase.h"
 
 @implementation SocializeNotificationToggleBubbleContentViewTests
 @synthesize notificationToggleBubbleContentView = notificationToggleBubbleContentView_;

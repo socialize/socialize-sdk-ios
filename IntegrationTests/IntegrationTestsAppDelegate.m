@@ -10,6 +10,7 @@
 #import <Socialize/Socialize.h>
 #import "IntegrationTestStatusViewControllerViewController.h"
 #import "SZTestHelper.h"
+#import "integrationtests_globals.h"
 
 @implementation IntegrationTestsAppDelegate
 @synthesize origToken = origToken_;

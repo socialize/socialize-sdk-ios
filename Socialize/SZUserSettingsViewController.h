@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SZNavigationController.h"
+#import "SocializeObjects.h"
 
 @interface SZUserSettingsViewController : SZNavigationController
 - (id)init;

@@ -23,6 +23,7 @@
 #import "SZLinkDialogViewController.h"
 #import "SZSelectNetworkViewController.h"
 #import "SZLocationUtils.h"
+#import "socialize_globals.h"
 
 SZSocialNetwork SZLinkedSocialNetworks() {
     SZSocialNetwork networks = SZSocialNetworkNone;

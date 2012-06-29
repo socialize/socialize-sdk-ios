@@ -16,6 +16,7 @@
 #import <Foundation/NSURLResponse.h>
 #import "SocializePrivateDefinitions.h"
 #import "SocializeConfiguration.h"
+#import "socialize_globals.h"
 
 @interface OAMutableURLRequest ()
 - (NSString *)_signatureBaseString;

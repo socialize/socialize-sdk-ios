@@ -31,6 +31,7 @@
 #import "SZTwitterUtils.h"
 #import "SZFacebookUtils.h"
 #import "SocializePrivateDefinitions.h"
+#import "socialize_globals.h"
 
 @interface SZFacebookUtils ()
 + (void)_linkWithSuccess:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;

@@ -10,6 +10,7 @@
 #import <Socialize/Socialize.h>
 #import "ActionBarExampleViewController.h"
 #import "ButtonExampleViewController.h"
+#import <BlocksKit/BlocksKit.h>
 
 static NSString *CellIdentifier = @"CellIdentifier";
 

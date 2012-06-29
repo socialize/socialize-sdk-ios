@@ -10,6 +10,7 @@
 #import "SocializeActivityDetailsViewController.h"
 #import "_Socialize_private.h"
 #import "SocializeDirectEntityNotificationDisplayController.h"
+#import "SocializeTestCase.h"
 
 @interface SocializeNotificationHandler ()
 - (void)animatedDismissOfTopDisplayController;

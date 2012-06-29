@@ -16,9 +16,9 @@
 #import "SZShareUtils.h"
 #import "SZUserUtils.h"
 #import "SZDisplay.h"
-#import <BlocksKit/BlocksKit.h>
 #import "SZComposeCommentViewController.h"
 #import "SZCommentsListViewController.h"
+#import "socialize_globals.h"
 
 @implementation SZCommentUtils
 

@@ -7,6 +7,7 @@
 //
 
 #import "SocializeBubbleViewTests.h"
+#import "SocializeTestCase.h"
 
 @interface SocializeBubbleView ()
 - (void)animateInStepThree;

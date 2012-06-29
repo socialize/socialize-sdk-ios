@@ -9,6 +9,7 @@
 #import "SocializeDeviceTokenSenderTests.h"
 #import "_Socialize.h"
 #import "SocializePrivateDefinitions.h"
+#import "SocializeTestCase.h"
 
 @interface SocializeDeviceTokenSender ()
 - (void)startTimer;

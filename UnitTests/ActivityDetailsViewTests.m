@@ -11,6 +11,7 @@
 #import "UIButton+Socialize.h"
 #import "_Socialize.h"
 #import "UIView+Layout.h"
+#import "SocializeTestCase.h"
 
 @interface SocializeActivityDetailsView ()
 -(CGFloat)getMessageHeight;

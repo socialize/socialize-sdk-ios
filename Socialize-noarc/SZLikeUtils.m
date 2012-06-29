@@ -12,6 +12,7 @@
 #import "SDKHelpers.h"
 #import "SocializeObjects.h"
 #import "SZShareUtils.h"
+#import "socialize_globals.h"
 
 @implementation SZLikeUtils
 

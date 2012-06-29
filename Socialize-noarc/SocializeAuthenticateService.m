@@ -14,6 +14,7 @@
 #import "SocializePrivateDefinitions.h"
 #import "UIDevice+IdentifierAddition.h"
 #import "SocializeFullUser.h"
+#import "socialize_globals.h"
 
 @interface SocializeAuthenticateService()
 -(NSString*)getSocializeToken;

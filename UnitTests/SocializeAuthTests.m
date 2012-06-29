@@ -15,6 +15,7 @@
 #import "SocializePrivateDefinitions.h"
 #import <OAuthConsumer/OAuthConsumer.h>
 #import "UIDevice+IdentifierAddition.h"
+#import "SocializeTestCase.h"
 
 
 @implementation SocializeAuthTests

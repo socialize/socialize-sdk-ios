@@ -20,6 +20,7 @@
 #import "SocializeFacebookInterface.h"
 #import "SocializePrivateDefinitions.h"
 #import "SZHorizontalContainerView.h"
+#import "socialize_globals.h"
 
 #define NO_CITY_MSG @"Could not locate the place name."
 

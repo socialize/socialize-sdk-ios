@@ -8,6 +8,11 @@
 
 #import <GHUnitIOS/GHUnit.h>
 #import "SocializeObjects.h"
+#import <OCMock/OCMock.h>
+#import "TestUtils.h"
+#import <OCMock/NSObject+ClassMock.h>
+#import "SocializeService+Testing.h"
+#import "StringHelper.h"
 
 @class SocializeTestCase;
 

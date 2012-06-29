@@ -9,6 +9,7 @@
 #import "SocializeLocationManager.h"
 #import "SocializeCommonDefinitions.h"
 #import <BlocksKit/BlocksKit.h>
+#import "socialize_globals.h"
 
 static SocializeLocationManager *sharedLocationManager;
 static NSTimeInterval SocializeLocationManagerCurrentLocationExpireTime = 600.;

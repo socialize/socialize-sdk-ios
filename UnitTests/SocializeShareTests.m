@@ -9,6 +9,7 @@
 #import "SocializeShareTests.h"
 #import <OCMock/OCMock.h>
 #import "SocializeShare.h"
+#import "SocializeTestCase.h"
 
 @interface SocializeShareTests()
 -(NSString *)helperGetJSONStringFromFile:(NSString *)fileName;

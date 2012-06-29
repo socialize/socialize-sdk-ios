@@ -11,6 +11,7 @@
 #import <FBConnect/FBConnect.h>
 #import "Socialize.h"
 #import "SocializeThirdPartyFacebook.h"
+#import "SocializeTestCase.h"
 
 @interface SocializeFacebookInterface () <FBRequestDelegate>
 @end

@@ -15,6 +15,7 @@
 #import "SZFacebookUtils.h"
 #import "SZTwitterUtils.h"
 #import "SDKHelpers.h"
+#import "socialize_globals.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 

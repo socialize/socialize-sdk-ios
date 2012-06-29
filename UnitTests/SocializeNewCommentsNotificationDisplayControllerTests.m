@@ -10,6 +10,7 @@
 #import "_SZCommentsListViewController.h"
 #import "SocializeActivityDetailsViewController.h"
 #import "SocializeNewCommentsNotificationDisplayController.h"
+#import "SocializeTestCase.h"
 
 @implementation SocializeNewCommentsNotificationDisplayControllerTests
 @synthesize commentsNotificationDisplayController = commentsNotificationDisplayController_;

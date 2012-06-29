@@ -8,6 +8,7 @@
 
 #import "_SZShareDialogViewController.h"
 #import "SZShareUtils.h"
+#import "socialize_globals.h"
 
 @interface _SZShareDialogViewController ()
 

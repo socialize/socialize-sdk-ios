@@ -19,6 +19,7 @@
 #import "SZTwitterUtils.h"
 #import "SDKHelpers.h"
 #import "SZUserUtils.h"
+#import "socialize_globals.h"
 
 static NSString *const kAuthTypeRowText = @"kAuthTypeRowText";
 static NSString *const kAuthTypeRowImageName = @"kAuthTypeRowImageName";

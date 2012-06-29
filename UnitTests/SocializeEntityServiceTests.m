@@ -9,6 +9,7 @@
 #import "SocializeEntityServiceTests.h"
 #import "SocializeObjectFactory.h"
 #import "SocializeRequest.h"
+#import "SocializeTestCase.h"
 
 @implementation SocializeEntityServiceTests
 

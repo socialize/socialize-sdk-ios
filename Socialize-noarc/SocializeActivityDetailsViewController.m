@@ -19,8 +19,7 @@
 #import "ImageLoader.h"
 #import "SocializeGeocoderAdapter.h"
 #import "_SZUserProfileViewController.h"
-
-#import <Foundation/Foundation.h>
+#import "socialize_globals.h"
 #import <QuartzCore/QuartzCore.h>
 
 

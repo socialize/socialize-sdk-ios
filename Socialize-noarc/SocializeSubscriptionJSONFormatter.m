@@ -10,6 +10,7 @@
 #import "SocializeSubscription.h"
 #import "SocializeEntity.h"
 #import "SocializeObjectFactory.h"
+#import "socialize_globals.h"
 
 @implementation SocializeSubscriptionJSONFormatter
 
