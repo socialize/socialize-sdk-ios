@@ -49,8 +49,8 @@ typedef enum {
 @property (nonatomic, retain) UIImagePickerController *imagePicker;
 @property (nonatomic, retain) UIActionSheet *uploadPicActionSheet;
 @property (nonatomic, retain) SocializeProfileEditValueViewController *editValueController;
-@property (nonatomic, assign) IBOutlet SocializeProfileEditTableViewImageCell * profileImageCell;
-@property (nonatomic, assign) IBOutlet SocializeProfileEditTableViewCell * profileTextCell;
+@property (nonatomic, retain) IBOutlet SocializeProfileEditTableViewImageCell * profileImageCell;
+@property (nonatomic, retain) IBOutlet SocializeProfileEditTableViewCell * profileTextCell;
 @property (nonatomic, retain) UISwitch *facebookSwitch;
 @property (nonatomic, retain) UISwitch *twitterSwitch;
 @property (nonatomic, retain) NSBundle *bundle;
