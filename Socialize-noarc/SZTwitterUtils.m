@@ -16,6 +16,12 @@
 
 @implementation SZTwitterUtils
 
++ (void)setConsumerKey:(NSString*)accessToken consumerSecret:(NSString*)consumerSecret {
+    [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:kSocializeTwitterAuthConsumerKey];
+    [[NSUserDefaults standardUserDefaults] setObject:consumerSecret forKey:kSocializeTwitterAuthConsumerSecret];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 + (BOOL)isAvailable {
     BOOL available = [SocializeThirdPartyTwitter available];
     if (!available) SZEmitUnconfiguredTwitterMessage();
@@ -37,6 +43,7 @@
                                             accessTokenSecret:accessTokenSecret
                                                       success:^(id<SZFullUser> user) {
                                                           [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSocializeDontPostToTwitterKey];
+                                                          [[NSUserDefaults standardUserDefaults] synchronize];
                                                           BLOCK_CALL_1(success, user);
                                                       } failure:failure];
 }

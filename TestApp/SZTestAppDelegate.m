@@ -27,9 +27,9 @@
     [Socialize storeAnonymousAllowed:YES];
     [Socialize storeConsumerKey:@"0a3bc7cd-c269-4587-8687-cd02db56d57f"];
     [Socialize storeConsumerSecret:@"8ee55515-4f1f-42ea-b25e-c4eddebf6c02"];
-    [Socialize storeTwitterConsumerKey:@"ZWxJ0zIK73n5HKwGLHolQ"];
-    [Socialize storeTwitterConsumerSecret:@"3K1LTY39QM9DPAqJzSZAD3L2EBEXXvuCdtTRr8NDd8"];
-    [Socialize storeFacebookAppId:@"115622641859087"];
+    [SZTwitterUtils setConsumerKey:@"ZWxJ0zIK73n5HKwGLHolQ" consumerSecret:@"3K1LTY39QM9DPAqJzSZAD3L2EBEXXvuCdtTRr8NDd8"];
+    [SZFacebookUtils setAppId:@"115622641859087"];
+    
     [Socialize setEntityLoaderBlock:^(UINavigationController *nav, id<SZEntity> entity) {
         SampleEntityLoader *sample = [[SampleEntityLoader alloc] initWithEntity:entity];
         [nav pushViewController:sample animated:YES];

@@ -16,13 +16,20 @@
 
 @implementation SZFacebookUtils
 
-+ (void)setAppId:(NSString*)appId expirationDate:(NSDate*)expirationDate {
-    [[NSUserDefaults standardUserDefaults] setObject:appId forKey:kSocializeFacebookAuthAppId];
++ (void)setAccessToken:(NSString*)accessToken expirationDate:(NSDate*)expirationDate {
+    [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:kSocializeFacebookAuthAccessToken];
     [[NSUserDefaults standardUserDefaults] setObject:expirationDate forKey:kSocializeFacebookAuthExpirationDate];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)setAppId:(NSString*)appId {
+    [[NSUserDefaults standardUserDefaults] setObject:appId forKey:kSocializeFacebookAuthAppId];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (void)setURLSchemeSuffix:(NSString*)suffix {
     [[NSUserDefaults standardUserDefaults] setObject:suffix forKey:kSocializeFacebookAuthLocalAppId];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (NSString*)accessToken {
@@ -55,6 +62,7 @@
                                                 expirationDate:expirationDate
                                                        success:^(id<SZFullUser> user) {
                                                            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSocializeDontPostToFacebookKey];
+                                                           [[NSUserDefaults standardUserDefaults] synchronize];
                                                            BLOCK_CALL_1(success, user);
                                                        } failure:failure];
 }

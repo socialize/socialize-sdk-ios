@@ -11,6 +11,7 @@
 
 @interface SZTwitterUtils : NSObject
 
++ (void)setConsumerKey:(NSString*)accessToken consumerSecret:(NSString*)consumerSecret;
 + (BOOL)isAvailable;
 + (BOOL)isLinked;
 + (void)unlink;

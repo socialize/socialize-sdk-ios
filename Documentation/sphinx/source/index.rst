@@ -12,6 +12,7 @@ Contents:
    action_bar
    like_button
    twitter
+   facebook
    push_notifications
    entities
    users

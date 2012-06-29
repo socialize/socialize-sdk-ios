@@ -12,7 +12,8 @@
 
 @interface SZFacebookUtils : NSObject
 
-+ (void)setAppId:(NSString*)appId expirationDate:(NSDate*)expirationDate;
++ (void)setAccessToken:(NSString*)accessToken expirationDate:(NSDate*)expirationDate;
++ (void)setAppId:(NSString*)appId;
 + (NSString*)accessToken;
 + (NSDate*)expirationDate;
 + (void)setURLSchemeSuffix:(NSString*)suffix;
