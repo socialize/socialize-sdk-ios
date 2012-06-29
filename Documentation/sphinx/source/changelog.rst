@@ -4,6 +4,45 @@
 Changelog
 =============================================
 
+v2.0
+----
+
+[feature] Add block callbacks to socialize api client [ ]
+
+[feature] Reorganize core functionality into 'utils' classes
+
+[feature] Remake sample app [ ]
+
+[feature] Add SZ Prefix and simplify names of front facing UI controllers, deprecate old names [ ]
+
+[feature] Facebook shares should post to "links" endpoint, not "feed" endpoint [ ]
+
+[feature] Facebook/twitter now available for all actions (moved from compose comment to share sheet) [ ]
+
+[feature] SDK Calls automatically create an anon user when necessary (when using utils classes) [ ]
+
+[feature] Update to latest facebook SDK version [ publicize ]
+
+[feature] Add facebook link callback for app foreground (neither authed nor cancelled) [ publicize ]
+
+[feature] Project rebuilt from scratch [ ]
+
+[feature] Update FB auth to handle Facebook's deprecation of offline_access [ ]
+
+[feature] Add consistent, configurable location sharing for all actions [ ]
+
+[bug] Fix an inappropriate emission of 'unconfigured social network' log messages [ ]
+
+[feature] Comment details screen redesign [ ]
+
+[feature] Rewrite action bar for performance, configurability, and new interfaces [ ]
+
+[bug] Change blue socialize navigation bar button back to correct style [ ]
+
+[feature] Add programmatic saving of user settings [ ]
+
+[feature] Expose ability to post directly to facebook graph [ ]
+
 v1.7.4
 ------
 [feature] Add launch-time notification handling info to documentation [ ]
