@@ -16,6 +16,7 @@
 #import "SZTwitterUtils.h"
 #import "SDKHelpers.h"
 #import "socialize_globals.h"
+#import "SZLocationUtils.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -109,7 +110,12 @@ static NSString *kAutopostSection = @"kAutopostSection";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    // Fire off a first-time location request as soon as this view shows
+    if ([SZLocationUtils lastKnownLocation] == nil) {
+        [SZLocationUtils getCurrentLocationWithSuccess:nil failure:nil];
+    }
+         
     self.navigationItem.leftBarButtonItem = self.cancelButton;
 }
 
