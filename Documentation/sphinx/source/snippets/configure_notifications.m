@@ -26,7 +26,7 @@
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken
 {
 #if !DEBUG
-    [Socialize registerDeviceToken:deviceToken];
+    [SZSmartAlertUtils registerDeviceToken:deviceToken];
 #endif
 }
 
@@ -50,7 +50,7 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
     // Handle Socialize notification at foreground
-    if ([Socialize handleNotification:userInfo]) {
+    if ([SZSmartAlertUtils handleNotification:userInfo]) {
         NSLog(@"Socialize handled the notification on foreground");
         return;
     }
@@ -68,7 +68,7 @@
     // Handle Socialize notification at launch
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo != nil) {
-        if ([Socialize handleNotification:userInfo]) {
+        if ([SZSmartAlertUtils handleNotification:userInfo]) {
             NSLog(@"Socialize handled the notification on app launch.");
         } else {
             NSLog(@"Socialize did not handle the notification on app launch.");
@@ -99,7 +99,7 @@
     // Handle Socialize notification at launch
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo != nil) {
-        if ([Socialize handleNotification:userInfo]) {
+        if ([SZSmartAlertUtils handleNotification:userInfo]) {
             NSLog(@"Socialize handled the notification on app launch.");
         } else {
             NSLog(@"Socialize did not handle the notification on app launch.");
