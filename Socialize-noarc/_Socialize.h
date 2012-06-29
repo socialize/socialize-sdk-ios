@@ -896,4 +896,6 @@ otherwise you will get a failure.
                   success:(void(^)(id<SocializeFullUser> user))success
                   failure:(void(^)(NSError *error))failure;
 
+//+ (void)showShareActionSheetWithViewController:(UIViewController*)viewController entity:(id<SocializeEntity>)entity success:(void(^)())success failure:(void(^)(NSError *error))failure;
+
 @end

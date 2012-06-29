@@ -136,6 +136,18 @@
 
 // end-can-load-entity-snippet
 
+// begin-dismiss-notifications-snippet
+
+#import <Socialize/Socialize.h>
+
+- (void)dismissSocializeNotifications {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:SocializeShouldDismissAllNotificationControllersNotification object:nil];
+
+}
+
+// end-dismiss-notifications-snippet
+
 @end
 
 

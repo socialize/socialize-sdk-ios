@@ -26,7 +26,17 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     self.displayWindow = nil;
     self.displayControllers = nil;
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     [super dealloc];
+}
+
+- (id)init {
+    if (self = [super init]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldDismiss:) name:SocializeShouldDismissAllNotificationControllersNotification object:nil];
+    }
+    
+    return self;
 }
 
 - (Socialize*)socialize {
@@ -63,6 +73,20 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     [self.displayWindow addSubview:displayController.mainViewController.view];
     [self.displayControllers addObject:displayController];
     [displayController viewWasAdded];
+}
+
+- (void)dismissAllDisplayControllers {
+    for (SocializeNotificationDisplayController *controller in self.displayControllers) {
+        if (controller != [self topDisplayController]) {
+            [controller.mainViewController.view removeFromSuperview];
+        }
+    }
+    
+    [self animatedDismissOfTopDisplayController];
+}
+
+- (void)shouldDismiss:(NSNotification*)notification {
+    [self dismissAllDisplayControllers];
 }
 
 - (SocializeNotificationDisplayController*)topDisplayController {

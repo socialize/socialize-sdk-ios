@@ -636,6 +636,7 @@
 		AA6D5A871592F34000058669 /* SZFacebookLinkOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D5A841592F34000058669 /* SZFacebookLinkOptions.m */; };
 		AA6D5A881592F34000058669 /* SZFacebookLinkOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D5A841592F34000058669 /* SZFacebookLinkOptions.m */; };
 		AA7D5DFF159072CD005B12A3 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3C62A115906FBE00386330 /* GHUnitIOS.framework */; };
+		AA85D2F2159E55B7004DEB35 /* standalone_share.m in Sources */ = {isa = PBXBuildFile; fileRef = AA85D2F1159E55B7004DEB35 /* standalone_share.m */; };
 		AA876708159032E900E9B2C1 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8767021590327C00E9B2C1 /* libJSONKit.a */; };
 		AA90FFED159065C400AFD8A2 /* api_client.m in Sources */ = {isa = PBXBuildFile; fileRef = AA90FFD9159065C400AFD8A2 /* api_client.m */; };
 		AA90FFEF159065C400AFD8A2 /* configure_keys.m in Sources */ = {isa = PBXBuildFile; fileRef = AA90FFDB159065C400AFD8A2 /* configure_keys.m */; };
@@ -2401,6 +2402,8 @@
 		AA6D5A831592F34000058669 /* SZFacebookLinkOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZFacebookLinkOptions.h; sourceTree = "<group>"; };
 		AA6D5A841592F34000058669 /* SZFacebookLinkOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZFacebookLinkOptions.m; sourceTree = "<group>"; };
 		AA6E9979158FFFD7001F81FF /* hide_symbols_oauth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hide_symbols_oauth.h; path = ThirdParty/OAuthConsumer/hide_symbols_oauth.h; sourceTree = "<group>"; };
+		AA85D2F0159E55B7004DEB35 /* standalone_share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = standalone_share.h; sourceTree = "<group>"; };
+		AA85D2F1159E55B7004DEB35 /* standalone_share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = standalone_share.m; sourceTree = "<group>"; };
 		AA8766FA1590327B00E9B2C1 /* JSONKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSONKit.xcodeproj; path = ThirdParty/JSONKit/JSONKit.xcodeproj; sourceTree = "<group>"; };
 		AA876771159034D000E9B2C1 /* hide_symbols_jsonkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hide_symbols_jsonkit.h; path = ThirdParty/JSONKit/hide_symbols_jsonkit.h; sourceTree = "<group>"; };
 		AA90FFD8159065C400AFD8A2 /* api_client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = api_client.h; sourceTree = "<group>"; };
@@ -3772,6 +3775,8 @@
 		AA90FFD7159065C400AFD8A2 /* snippets */ = {
 			isa = PBXGroup;
 			children = (
+				AA85D2F0159E55B7004DEB35 /* standalone_share.h */,
+				AA85D2F1159E55B7004DEB35 /* standalone_share.m */,
 				AA90FFD8159065C400AFD8A2 /* api_client.h */,
 				AA90FFD9159065C400AFD8A2 /* api_client.m */,
 				AA90FFDB159065C400AFD8A2 /* configure_keys.m */,
@@ -5874,6 +5879,7 @@
 				AA2D42E7159D1FA600622210 /* views.m in Sources */,
 				AA2B1247159E475E00AD53D5 /* twitter.m in Sources */,
 				AA2B124A159E486E00AD53D5 /* facebook.m in Sources */,
+				AA85D2F2159E55B7004DEB35 /* standalone_share.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

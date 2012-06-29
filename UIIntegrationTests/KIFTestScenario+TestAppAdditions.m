@@ -462,4 +462,42 @@
     return scenario;
 }
 
++ (id)scenarioToTestProgrammaticNotificationDismissal {
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test the like button"];
+    
+    NSMutableArray *steps = [NSMutableArray array];
+    
+    [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
+    
+    [steps addObject:[KIFTestStep stepWithDescription:@"Open multiple notifications" executionBlock:^(KIFTestStep *step, NSError **error) {
+        NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       @"http://www.getsocialize.com/", @"url",
+                                       @"developer_direct_url", @"notification_type",
+                                       nil];
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];     
+        
+        [Socialize handleNotification:userInfo];
+        [Socialize handleNotification:userInfo];
+        
+        return KIFTestStepResultSuccess;
+    }]];
+    
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Done"]];
+    [steps addObject:[KIFTestStep stepToWaitForTimeInterval:1 description:@"Delay"]];
+    
+    
+    [steps addObject:[KIFTestStep stepWithDescription:@"Post Notification" executionBlock:^(KIFTestStep *step, NSError **error) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:SocializeShouldDismissAllNotificationControllersNotification object:nil];
+        
+        return KIFTestStepResultSuccess;
+    }]];
+    
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];
+    
+    [scenario addStepsFromArray:steps];
+    
+    return scenario;
+}
+
+
 @end

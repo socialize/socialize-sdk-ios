@@ -33,10 +33,6 @@
 #import "SocializePrivateDefinitions.h"
 #import "socialize_globals.h"
 
-@interface SZFacebookUtils ()
-+ (void)_linkWithSuccess:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
-@end
-
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
     return [[NSUserDefaults standardUserDefaults] objectForKey:STORE_KEY]; \
@@ -119,6 +115,8 @@ NSString *const kSocializeAnonymousAllowed = @"kSocializeAnonymousAllowed";
 
 NSString *const SocializeDidRegisterDeviceTokenNotification = @"SocializeDidRegisterDeviceTokenNotification";
 NSString *const SZLikeButtonDidChangeStateNotification = @"SZLikeButtonDidChangeStateNotification";
+
+NSString *const SocializeShouldDismissAllNotificationControllersNotification = @"SocializeShouldDismissAllNotificationControllersNotification";
 
 
 @implementation Socialize
@@ -245,15 +243,25 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 +(void)storeConsumerKey:(NSString*)consumerKey {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     consumerKey = [consumerKey trim];
-    [[NSUserDefaults standardUserDefaults] setValue:consumerKey forKey:SOCIALIZE_API_KEY];
-    [defaults synchronize];
+    
+    NSString *existingKey = [[NSUserDefaults standardUserDefaults] objectForKey:SOCIALIZE_API_KEY];
+    if (![existingKey isEqualToString:consumerKey]) {
+        [[Socialize sharedSocialize] removeAuthenticationInfo];
+        [[NSUserDefaults standardUserDefaults] setValue:consumerKey forKey:SOCIALIZE_API_KEY];
+        [defaults synchronize];
+    }
 }
 
 +(void)storeConsumerSecret:(NSString*)consumerSecret {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     consumerSecret = [consumerSecret trim];
-    [[NSUserDefaults standardUserDefaults] setValue:consumerSecret forKey:SOCIALIZE_API_SECRET];
-    [defaults synchronize];
+    
+    NSString *existingSecret = [[NSUserDefaults standardUserDefaults] objectForKey:SOCIALIZE_API_SECRET];
+    if (![existingSecret isEqualToString:consumerSecret]) {
+        [[Socialize sharedSocialize] removeAuthenticationInfo];
+        [[NSUserDefaults standardUserDefaults] setValue:consumerSecret forKey:SOCIALIZE_API_SECRET];
+        [defaults synchronize];
+    }
 }
 
 +(void)storeFacebookAppId:(NSString*)facebookAppId {
@@ -460,11 +468,30 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [Socialize storeFacebookAppId:thirdPartyAppId];
     [Socialize storeFacebookLocalAppId:thirdPartyLocalAppId];
 
+    /*
+<<<<<<< HEAD:Socialize-noarc/_Socialize.m
     [SZFacebookUtils _linkWithSuccess:^(id<SZFullUser> user) {
         [self.delegate didAuthenticate:(id<SZUser>)user];
     } failure:^(NSError *error) {
         [self.delegate service:_authService didFail:error];
     }];
+=======
+    SocializeFacebookAuthOptions *options = [SocializeFacebookAuthOptions options];
+    options.doNotPromptForPermission = YES;
+    [SocializeFacebookAuthenticator authenticateViaFacebookWithOptions:options
+                                                               display:nil
+                                                               success:^{
+                                                                   id<SocializeUser> authenticatedUser = [self authenticatedUser];
+                                                                   if ([self.delegate respondsToSelector:@selector(didAuthenticate:)]) {
+                                                                       [self.delegate didAuthenticate:authenticatedUser];
+                                                                   }
+                                                               } failure:^(NSError *error) {
+                                                                   if ([self.delegate respondsToSelector:@selector(service:didFail:)]) {
+                                                                       [self.delegate service:_authService didFail:error];
+                                                                   }
+                                                               }];
+>>>>>>> master:Socialize/Classes/_Socialize.m
+*/
 }
 
 -(void)authenticateWithApiKey:(NSString*)apiKey
@@ -849,6 +876,17 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_deviceTokenService registerDeviceTokenString:deviceTokenString];
 }
 
+/*
++ (void)showShareActionSheetWithViewController:(UIViewController*)viewController entity:(id<SocializeEntity>)entity success:(void(^)())success failure:(void(^)(NSError *error))failure {
+    SocializeUIShareOptions *options = [SocializeUIShareOptions UIShareOptionsWithEntity:entity];
+    [SocializeUIShareCreator createShareWithOptions:options display:viewController success:success failure:failure];
+}
+
++ (void)createShareWithOptions:(SocializeUIShareOptions*)options display:(id)display success:(void(^)())success failure:(void(^)(NSError *error))failure {
+    [SocializeUIShareCreator createShareWithOptions:options display:display success:success failure:failure];
+}
+
+*/
 - (void)getEntitiesWithIds:(NSArray*)entityIds {
     [_entityService getEntitiesWithIds:entityIds];
 }

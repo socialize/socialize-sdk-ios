@@ -43,6 +43,24 @@ v2.0
 
 [feature] Expose ability to post directly to facebook graph [ ]
 
+v1.7.7
+------
+[bug] Token registration should auto auth if needed [ ]
+
+[bug] Changing consumer keys should wipe existing user. [ ]
+
+[feature] Dev can dismiss push notification popups programatically [ ]
+
+v1.7.6
+------
+[feature] Add ability to show share action sheet directly
+
+v1.7.5
+------
+[bug] External links such as iTunes should open for direct url requests [ ]
+
+[bug] Direct URL entities should work if scheme unspecified [ ]
+
 v1.7.4
 ------
 [feature] Add launch-time notification handling info to documentation [ ]
