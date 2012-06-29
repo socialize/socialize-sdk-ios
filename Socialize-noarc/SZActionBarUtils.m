@@ -12,7 +12,7 @@
 
 @implementation SZActionBarUtils
 
-+ (SZActionBar*)showActionBarInViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity options:(id)options {
++ (SZActionBar*)showActionBarWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity options:(id)options {
     SZActionBar *actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:entity viewController:viewController];
     [viewController.view addSubview:actionBar];
     

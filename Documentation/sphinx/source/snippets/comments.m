@@ -72,7 +72,7 @@
 // begin-list-by-user-snippet
 
 - (void)listCommentsByUser {
-    [SZCommentUtils getCommentsByUserWithUser:nil first:nil last:nil success:^(NSArray *comments) {
+    [SZCommentUtils getCommentsByUser:nil first:nil last:nil success:^(NSArray *comments) {
         NSLog(@"Fetched comments: %@", comments);
     } failure:^(NSError *error) {
         NSLog(@"Failed: %@", [error localizedDescription]);
@@ -86,7 +86,7 @@
 - (void)listCommentsByUserAndEntity {
     SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
 
-    [SZCommentUtils getCommentsByUserAndEntityWithUser:USER_ADDR_NULL entity:entity first:nil last:nil success:^(NSArray *comments) {
+    [SZCommentUtils getCommentsByUser:USER_ADDR_NULL entity:entity first:nil last:nil success:^(NSArray *comments) {
         NSLog(@"Fetched comments: %@", comments);
     } failure:^(NSError *error) {
         NSLog(@"Failed: %@", [error localizedDescription]);

@@ -14,7 +14,7 @@
 
     if (self.actionBar == nil) {
         self.entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
-        self.actionBar = [SZActionBarUtils showActionBarInViewController:self entity:self.entity options:nil];
+        self.actionBar = [SZActionBarUtils showActionBarWithViewController:self entity:self.entity options:nil];
     }
 }
 

@@ -108,7 +108,7 @@
     }, failure);
 }
 
-+ (void)getCommentsByUserWithUser:(id<SZUser>)user first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
++ (void)getCommentsByUser:(id<SZUser>)user first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
     if (user == nil) {
         user = (id<SZUser>)[SZUserUtils currentUser];
     }
@@ -117,7 +117,7 @@
     }, failure);
 }
 
-+ (void)getCommentsByUserAndEntityWithUser:(id<SZUser>)user entity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
++ (void)getCommentsByUser:(id<SZUser>)user entity:(id<SZEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
     if (user == nil) {
         user = (id<SZUser>)[SZUserUtils currentUser];
     }

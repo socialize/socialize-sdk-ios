@@ -31,7 +31,7 @@
 - (void)getActionsForAllUsersOnASingleEntity {
     SZEntity *entity = [SZEntity entityWithKey:@"interesting_key"];
     
-    [SZActionUtils getActionsByUser:nil entity:entity start:nil end:nil success:^(NSArray *actions) {
+    [SZActionUtils getActionsByEntity:entity start:nil end:nil success:^(NSArray *actions) {
         for (id<SZActivity> action in actions) {
             NSLog(@"Found action %d by user %@ %@", [action objectID], [action.user firstName], [action.user lastName]);
         }

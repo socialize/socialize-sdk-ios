@@ -11,6 +11,6 @@
 
 @interface SZActionBarUtils : NSObject
 
-+ (SZActionBar*)showActionBarInViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity options:(id)options;
++ (SZActionBar*)showActionBarWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity options:(id)options;
 
 @end

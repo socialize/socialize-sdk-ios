@@ -217,7 +217,7 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
 - (NSArray*)getCommentsByUser:(id<SZUser>)user {
     __block NSArray *fetchedComments = nil;
     [self prepare];
-    [SZCommentUtils getCommentsByUserWithUser:user first:nil last:nil success:^(NSArray *comments) {
+    [SZCommentUtils getCommentsByUser:user first:nil last:nil success:^(NSArray *comments) {
         fetchedComments = [comments retain];
         [self notify:kGHUnitWaitStatusSuccess];
     } failure:^(NSError *error) {
@@ -230,7 +230,7 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
 - (NSArray*)getCommentsByUser:(id<SZUser>)user entity:(id<SZEntity>)entity {
     __block NSArray *fetchedComments = nil;
     [self prepare];
-    [SZCommentUtils getCommentsByUserAndEntityWithUser:user entity:entity first:nil last:nil success:^(NSArray *comments) {
+    [SZCommentUtils getCommentsByUser:user entity:entity first:nil last:nil success:^(NSArray *comments) {
         fetchedComments = [comments retain];
         [self notify:kGHUnitWaitStatusSuccess];
     } failure:^(NSError *error) {
