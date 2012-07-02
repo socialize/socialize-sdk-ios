@@ -264,6 +264,11 @@
     [self initializeEntity];
 }
 
+- (void)refresh {
+    self.serverEntity = nil;
+    [self initializeEntity];
+}
+
 - (void)drawRect:(CGRect)rect 
 {	
 	[super drawRect:rect];   

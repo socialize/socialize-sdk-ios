@@ -14,6 +14,8 @@
 + (id)defaultActionBarWithFrame:(CGRect)frame entity:(id<SZEntity>)entity viewController:(UIViewController*)viewController;
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController *)viewController;
 
+- (void)refresh;
+
 + (CGFloat)defaultHeight;
 + (CGFloat)defaultBetweenButtonsPadding;
 
