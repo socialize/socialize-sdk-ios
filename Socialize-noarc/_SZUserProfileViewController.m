@@ -219,8 +219,8 @@
     [self.activityViewController initializeContent];
 }
 
-- (void)userSettingsChanged:(id<SocializeFullUser>)updatedSettings {
-    self.fullUser = updatedSettings;
+- (void)userChanged:(id<SocializeFullUser>)newUser {
+    self.fullUser = newUser;
     [self configureViews];
 }
 

@@ -90,6 +90,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
         (void)self.keyboardListener;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_userSettingsChanged:) name:SZUserSettingsDidChangeNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_userChanged:) name:SocializeAuthenticatedUserDidChangeNotification object:nil];
     }
     return self;
 }
@@ -144,12 +145,19 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 }
 
 - (void)userSettingsChanged:(id<SZFullUser>)updatedSettings {
-    
 }
 
 - (void)_userSettingsChanged:(NSNotification*)notification {
-    id<SZFullUser> updatedSettings = [[notification userInfo] objectForKey:kSZUpdatedUserSettingsKey];
+    id<SZFullUser> updatedSettings = [[notification userInfo] objectForKey:kSZUpdatedUserKey];
     [self userSettingsChanged:updatedSettings];
+}
+
+- (void)userChanged:(id<SZFullUser>)newUser {
+}
+
+- (void)_userChanged:(NSNotification*)notification {
+    id<SZFullUser> newUser = [notification object];
+    [self userChanged:newUser];
 }
 
 - (void)changeTitleOnCustomBarButton:(UIBarButtonItem*)barButton toText:(NSString*)text {
