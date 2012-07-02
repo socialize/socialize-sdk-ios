@@ -37,6 +37,10 @@
 @synthesize betweenButtonsPadding = _betweenButtonsPadding;
 @synthesize activityIndicator = _activityIndicator;
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 + (id)defaultActionBarWithFrame:(CGRect)frame entity:(id<SZEntity>)entity viewController:(UIViewController*)viewController {
     SZLikeButton *likeButton = [[SZLikeButton alloc] initWithFrame:CGRectZero entity:nil viewController:viewController];
 
@@ -70,6 +74,8 @@
         [self addSubview:self.buttonsContainerRight];
         [self addSubview:self.buttonsContainerLeft];
         [self addSubview:self.activityIndicator];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidChange:) name:SocializeAuthenticatedUserDidChangeNotification object:nil];
     }
     return self;
 }
@@ -267,6 +273,10 @@
 - (void)refresh {
     self.serverEntity = nil;
     [self initializeEntity];
+}
+
+- (void)userDidChange:(NSNotification*)notification {
+    [self refresh];
 }
 
 - (void)drawRect:(CGRect)rect 

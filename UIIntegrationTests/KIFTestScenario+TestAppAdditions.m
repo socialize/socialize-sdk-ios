@@ -224,7 +224,14 @@
     [steps addObjectsFromArray:[KIFTestStep stepsToVerifyActionBarLikesAtCount:1]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"like button"]];
     
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
+    [steps addObject:[KIFTestStep stepToExecuteBlock:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:SocializeAuthenticatedUserDidChangeNotification object:[SZUserUtils currentUser]];
+    }]];
+    
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"In progress"]];
+    [steps addObject:[KIFTestStep stepToWaitForAbsenceOfViewWithAccessibilityLabel:@"In progress"]];
+     
+//    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
     
 
     [scenario addStepsFromArray:steps];
