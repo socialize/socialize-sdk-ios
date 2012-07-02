@@ -99,7 +99,10 @@
         id<SocializeFullUser> user = [self currentUser];
         [settings populateFullUser:user];
         [[Socialize sharedSocialize] updateUserProfile:user profileImage:settings.profileImage success:^(id<SZFullUser> fullUser) {
-            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:fullUser forKey:kSZUpdatedUserSettingsKey];
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      fullUser, kSZUpdatedUserKey,
+                                      settings, kSZUpdatedUserSettingsKey, nil];
+            
             [[NSNotificationCenter defaultCenter] postNotificationName:SZUserSettingsDidChangeNotification object:nil userInfo:userInfo];
             BLOCK_CALL_2(success, settings, fullUser);
         } failure:failure];
