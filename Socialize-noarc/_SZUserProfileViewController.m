@@ -113,6 +113,7 @@
     } else {
         // no full user or partial user, load for current user
         self.fullUser = [SZUserUtils currentUser];
+        [self configureViews];
     }
 }
 
