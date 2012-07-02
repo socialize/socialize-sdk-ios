@@ -32,7 +32,10 @@
                                                            resourcePath:SHARE_METHOD
                                                      expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                                                  params:[NSArray arrayWithObject:params]];
-    request.successBlock = success;
+    request.successBlock = ^(NSArray *shares) {
+        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:[shares objectAtIndex:0]];
+    };
+    
     request.failureBlock = failure;
 
     [self executeRequest:request];

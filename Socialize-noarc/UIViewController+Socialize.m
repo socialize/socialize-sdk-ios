@@ -32,4 +32,18 @@ static NSTimeInterval ModalDismissDelayHack = 0.5;
     }
 }
 
+- (void)SZPresentViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
+    if (SZOSGTE(@"5.0")) {
+        [self presentViewController:viewController animated:flag completion:completion];
+    } else {
+        [self presentModalViewController:viewController animated:flag];
+        double delayInSeconds = ModalDismissDelayHack;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            BLOCK_CALL(completion);
+        });
+    }
+
+}
+
 @end

@@ -21,6 +21,7 @@
 #import "SZSelectNetworkViewController.h"
 #import "SZShareDialogViewController.h"
 #import "SZUserUtils.h"
+#import "SocializeLoadingView.h"
 
 @implementation SZShareUtils
 
@@ -50,6 +51,26 @@
     };
                                      
     CreateAndShareActivity(share, options, networks, shareCreator, success, failure);
+}
+
++ (NSString*)defaultMessageForShare:(id<SZShare>)share {
+    NSDictionary *info = [[[share propagationInfoResponse] allValues] lastObject];
+    NSString *entityURL = [info objectForKey:@"entity_url"];
+    NSString *applicationURL = [info objectForKey:@"application_url"];
+
+    id<SocializeEntity> e = share.entity;
+    
+    NSMutableString *msg = [NSMutableString stringWithString:@"I thought you would find this interesting: "];
+    
+    if ([e.name length] > 0) {
+        [msg appendFormat:@"%@ ", e.name];
+    }
+    
+    NSString *applicationName = [share.application name];
+    
+    [msg appendFormat:@"%@\n\nSent from %@ (%@)", entityURL, applicationName, applicationURL];
+    
+    return msg;    
 }
 
 + (void)shareViaEmailWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
@@ -87,7 +108,21 @@
         }
     };
     
-    [viewController presentModalViewController:composer animated:YES];
+    // Note that composers dismiss themselves
+
+    [viewController showSocializeLoadingViewInSubview:nil];
+    SZShare *share = [SZShare shareWithEntity:entity text:nil medium:SocializeShareMediumSMS];
+    [share setPropagationInfoRequest:[NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"email"] forKey:@"third_parties"]];
+    [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> serverShare) {
+        [viewController hideSocializeLoadingView];
+        [composer setSubject:@"123"];
+        [composer setMessageBody:[self defaultMessageForShare:serverShare] isHTML:NO];
+        [viewController presentModalViewController:composer animated:YES];
+    } failure:^(NSError *error) {
+        [viewController hideSocializeLoadingView];
+    }];
+     
+    
 }
 
 + (void)shareViaSMSWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
@@ -124,7 +159,18 @@
         }
     };
     
-    [viewController presentModalViewController:composer animated:YES];
+    // Note that composers dismiss themselves
+    
+    [viewController showSocializeLoadingViewInSubview:nil];
+    SZShare *share = [SZShare shareWithEntity:entity text:nil medium:SocializeShareMediumSMS];
+    [share setPropagationInfoRequest:[NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"sms"] forKey:@"third_parties"]];
+    [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> serverShare) {
+        [viewController hideSocializeLoadingView];
+        [composer setBody:[self defaultMessageForShare:serverShare]];
+        [viewController presentModalViewController:composer animated:YES];
+    } failure:^(NSError *error) {
+        [viewController hideSocializeLoadingView];
+    }];
 }
 
 
