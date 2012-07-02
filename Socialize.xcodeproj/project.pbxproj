@@ -47,7 +47,6 @@
 		AA00874A158D35BF00480399 /* NSString+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00861D158D35BC00480399 /* NSString+Socialize.m */; };
 		AA00874B158D35BF00480399 /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00861F158D35BD00480399 /* NSString+UrlSerialization.m */; };
 		AA00874C158D35BF00480399 /* SampleEntityLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008622158D35BD00480399 /* SampleEntityLoader.m */; };
-		AA00874D158D35BF00480399 /* SDKHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008624158D35BD00480399 /* SDKHelpers.m */; };
 		AA00874E158D35BF00480399 /* SocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008628158D35BD00480399 /* SocializeActionBar.m */; };
 		AA00874F158D35BF00480399 /* SocializeActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00862B158D35BD00480399 /* SocializeActionView.m */; };
 		AA008750158D35BF00480399 /* SocializeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00862D158D35BD00480399 /* SocializeActivity.m */; };
@@ -1201,7 +1200,6 @@
 		AAB5E487159044E600D3EBDF /* NSString+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00861D158D35BC00480399 /* NSString+Socialize.m */; };
 		AAB5E488159044E600D3EBDF /* NSString+UrlSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00861F158D35BD00480399 /* NSString+UrlSerialization.m */; };
 		AAB5E489159044E600D3EBDF /* SampleEntityLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008622158D35BD00480399 /* SampleEntityLoader.m */; };
-		AAB5E48A159044E600D3EBDF /* SDKHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008624158D35BD00480399 /* SDKHelpers.m */; };
 		AAB5E48B159044E600D3EBDF /* SocializeActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008628158D35BD00480399 /* SocializeActionBar.m */; };
 		AAB5E48C159044E600D3EBDF /* SocializeActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00862B158D35BD00480399 /* SocializeActionView.m */; };
 		AAB5E48D159044E600D3EBDF /* SocializeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00862D158D35BD00480399 /* SocializeActivity.m */; };
@@ -1597,6 +1595,8 @@
 		AADFE6041596A49100FE2B61 /* SZActionButton_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */; };
 		AAE9E1DE1590012300B2B9FC /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
 		AAE9E25515902BA300B2B9FC /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */; };
+		AAEEE5D315A2692E003566BA /* SDKHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008624158D35BD00480399 /* SDKHelpers.m */; };
+		AAEEE5D415A2692E003566BA /* SDKHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008624158D35BD00480399 /* SDKHelpers.m */; };
 		AAF098DA158FB447005726C2 /* SZTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6431158F10D7005E5632 /* SZTestHelper.m */; };
 		AAF098DB158FB4DD005726C2 /* SZIntegrationTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C63E1158F0EE6005E5632 /* SZIntegrationTestCase.m */; };
 		AAF098DC158FB4EA005726C2 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
@@ -5636,6 +5636,7 @@
 				AADFE5F315967A7400FE2B61 /* SZHorizontalContainerView.m in Sources */,
 				AADFE5F91596973D00FE2B61 /* SZActionButton.m in Sources */,
 				AA2D42EC159D4FFD00622210 /* SZUserSettings.m in Sources */,
+				AAEEE5D315A2692E003566BA /* SDKHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5660,7 +5661,6 @@
 				AA00874A158D35BF00480399 /* NSString+Socialize.m in Sources */,
 				AA00874B158D35BF00480399 /* NSString+UrlSerialization.m in Sources */,
 				AA00874C158D35BF00480399 /* SampleEntityLoader.m in Sources */,
-				AA00874D158D35BF00480399 /* SDKHelpers.m in Sources */,
 				AA00874E158D35BF00480399 /* SocializeActionBar.m in Sources */,
 				AA00874F158D35BF00480399 /* SocializeActionView.m in Sources */,
 				AA008750158D35BF00480399 /* SocializeActivity.m in Sources */,
@@ -5963,7 +5963,6 @@
 				AAB5E487159044E600D3EBDF /* NSString+Socialize.m in Sources */,
 				AAB5E488159044E600D3EBDF /* NSString+UrlSerialization.m in Sources */,
 				AAB5E489159044E600D3EBDF /* SampleEntityLoader.m in Sources */,
-				AAB5E48A159044E600D3EBDF /* SDKHelpers.m in Sources */,
 				AAB5E48B159044E600D3EBDF /* SocializeActionBar.m in Sources */,
 				AAB5E48C159044E600D3EBDF /* SocializeActionView.m in Sources */,
 				AAB5E48D159044E600D3EBDF /* SocializeActivity.m in Sources */,
@@ -6121,6 +6120,7 @@
 				AADFE5F415967A7400FE2B61 /* SZHorizontalContainerView.m in Sources */,
 				AADFE5FA1596973D00FE2B61 /* SZActionButton.m in Sources */,
 				AA2D42ED159D4FFD00622210 /* SZUserSettings.m in Sources */,
+				AAEEE5D415A2692E003566BA /* SDKHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

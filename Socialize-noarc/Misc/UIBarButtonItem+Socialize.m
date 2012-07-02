@@ -22,14 +22,14 @@
     UIButton *button = [UIButton redSocializeNavBarButtonWithTitle:title];
     [button addEventHandler:handler forControlEvents:UIControlEventTouchUpInside];
     
-    return [[UIBarButtonItem alloc] initWithCustomView:button];
+    return [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
 }
 
 + (UIBarButtonItem*)blueSocializeBarButtonWithTitle:(NSString*)title handler:(void(^)(id sender))handler {
     UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:title];
     [button addEventHandler:handler forControlEvents:UIControlEventTouchUpInside];
     
-    return [[UIBarButtonItem alloc] initWithCustomView:button];
+    return [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
 }
 
 

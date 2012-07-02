@@ -76,6 +76,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
         
         // Link and possibly show network selection
         SZLinkDialogViewController *link = [[SZLinkDialogViewController alloc] init];
+        __block SZLinkDialogViewController *weakLink = link;
         link.completionBlock = ^(SZSocialNetwork selectedNetwork) {
             
             if (selectedNetwork != SZSocialNetworkNone) {
@@ -91,7 +92,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
                     [link.navigationController popToViewController:link animated:YES];
                 };
                 
-                [link pushViewController:selectNetwork animated:YES];
+                [weakLink pushViewController:selectNetwork animated:YES];
             } else {
                 
                 // Opted out of linking -- Don't show network selection
@@ -302,16 +303,6 @@ void UIControllerDidFailWithErrorNotification(id object, NSError *error) {
                                                       userInfo:userInfo];
 }
 
-id<SZDisplay> SZDisplayForObject(id object) {
-    if ([object respondsToSelector:@selector(display)]) {
-        id<SZDisplay> display = [object performSelector:@selector(display)];
-        if ([display conformsToProtocol:@protocol(SZDisplay)]) {
-            return display;
-        }
-    }
-    return nil;
-}
-
 void SZPostSocializeUIControllerDidFailWithErrorNotification(id object, NSError *error) {
     NSDictionary *userInfo = nil;
     if (error != nil) {
@@ -327,14 +318,9 @@ void SZEmitUIError(id object, NSError *error) {
     SZPostSocializeUIControllerDidFailWithErrorNotification(object, error);
     
     if (!SZErrorsAreDisabled()) {
-        id<SZDisplay> display = SZDisplayForObject(object);
         UIAlertView *alertView = [UIAlertView alertWithTitle:@"Error" message:[error localizedDescription]];
         [alertView addButtonWithTitle:@"Ok"];
-        if (display != nil) {
-            [display socializeWillShowAlertView:alertView];
-        } else {
-            [alertView show];
-        }
+        [alertView show];
     }
 }
 
