@@ -587,6 +587,7 @@
 		AA5CE7C21592998200DB5EAF /* SZLinkDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CE7BF1592998200DB5EAF /* SZLinkDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5CE7C31592998200DB5EAF /* SZLinkDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */; };
 		AA5CE7C41592998200DB5EAF /* SZLinkDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */; };
+		AA60B3BA15A23E500062BD41 /* BaseShareViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE748B115A23963009FFE95 /* BaseShareViewControllerTests.m */; };
 		AA65A266159CD43600613E5A /* entities.m in Sources */ = {isa = PBXBuildFile; fileRef = AA65A265159CD43600613E5A /* entities.m */; };
 		AA67143A159CC5D60000E3BE /* actions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA671439159CC5D60000E3BE /* actions.m */; };
 		AA6C63CE158F0EB0005E5632 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
@@ -2661,6 +2662,8 @@
 		AADFE5F51596973C00FE2B61 /* SZActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionButton.h; sourceTree = "<group>"; };
 		AADFE5F61596973C00FE2B61 /* SZActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionButton.m; sourceTree = "<group>"; };
 		AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionButton_Private.h; sourceTree = "<group>"; };
+		AAE748B015A23963009FFE95 /* BaseShareViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseShareViewControllerTests.h; sourceTree = "<group>"; };
+		AAE748B115A23963009FFE95 /* BaseShareViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseShareViewControllerTests.m; sourceTree = "<group>"; };
 		AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlocksKit.xcodeproj; path = ThirdParty/BlocksKit/BlocksKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3157,6 +3160,8 @@
 				AA9701A815953942006CDC8E /* FacebookUtilsTests.m */,
 				AACC19F0159B9B1900800576 /* SZActionBarTests.h */,
 				AACC19F1159B9B1900800576 /* SZActionBarTests.m */,
+				AAE748B015A23963009FFE95 /* BaseShareViewControllerTests.h */,
+				AAE748B115A23963009FFE95 /* BaseShareViewControllerTests.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -5880,6 +5885,7 @@
 				AA2B1247159E475E00AD53D5 /* twitter.m in Sources */,
 				AA2B124A159E486E00AD53D5 /* facebook.m in Sources */,
 				AA85D2F2159E55B7004DEB35 /* standalone_share.m in Sources */,
+				AA60B3BA15A23E500062BD41 /* BaseShareViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

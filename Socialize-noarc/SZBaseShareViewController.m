@@ -551,7 +551,10 @@ static NSString *kAutopostSection = @"kAutopostSection";
 
 - (void)reloadRowWithIdentifier:(NSString*)identifier {
     NSIndexPath *indexPath = [self indexPathForRowIdentifier:identifier];
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    
+    if (indexPath != nil) {
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 - (NSDictionary*)sectionDataForSection:(NSUInteger)section {
