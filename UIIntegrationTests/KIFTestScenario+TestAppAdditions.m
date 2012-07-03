@@ -231,7 +231,7 @@
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"In progress"]];
     [steps addObject:[KIFTestStep stepToWaitForAbsenceOfViewWithAccessibilityLabel:@"In progress"]];
      
-//    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
     
 
     [scenario addStepsFromArray:steps];

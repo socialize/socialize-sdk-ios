@@ -19,9 +19,9 @@
 @synthesize oldActionBar = _oldActionBar;
 @synthesize entity = _entity;
 
-- (void)dealloc {
-    self.actionBar.viewController = nil;
-}
+//- (void)dealloc {
+////    self.actionBar.viewController = nil;
+//}
 
 - (id)initWithEntity:(id<SZEntity>)entity {
     self = [super init];
