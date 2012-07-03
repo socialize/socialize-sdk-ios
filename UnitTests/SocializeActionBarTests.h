@@ -26,6 +26,8 @@
  * See Also: http://gabriel.github.com/gh-unit/
  */
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"
 
 #import "SocializeTestCase.h"
 #import <UIKit/UIKit.h>
@@ -44,3 +46,4 @@
 @property (nonatomic, retain) id mockEntity;
 
 @end
+#pragma GCC diagnostic pop

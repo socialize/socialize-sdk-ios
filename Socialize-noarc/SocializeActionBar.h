@@ -42,7 +42,7 @@
  The Socialize Action Bar
 
  */
-@interface SocializeActionBar : SocializeBaseViewController<SocializeActionViewDelegate>
+ __attribute__((deprecated("Please use SZActionBar or the utility functions in SZActionBarUtils"))) @interface SocializeActionBar : SocializeBaseViewController <SocializeActionViewDelegate> 
 
 @property (nonatomic, assign) id<SocializeActionBarDelegate> delegate;
 @property (nonatomic, retain) id<SocializeEntity> entity;

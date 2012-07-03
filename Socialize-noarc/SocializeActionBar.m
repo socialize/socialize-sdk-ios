@@ -101,9 +101,12 @@
     return [self actionBarWithKey:url presentModalInController:controller];
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"
 +(SocializeActionBar*)actionBarWithKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller {
     return [[[SocializeActionBar alloc] initWithEntityKey:key name:name presentModalInController:controller] autorelease];
 }
+#pragma GCC diagnostic pop
 
 -(id)initWithEntityKey:(NSString*)key name:(NSString*)name presentModalInController:(UIViewController*)controller {
     id<SocializeEntity> newEntity = [self.socialize createObjectForProtocol:@protocol(SocializeEntity)];

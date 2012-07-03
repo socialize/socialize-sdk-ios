@@ -12,7 +12,10 @@
 @interface ActionBarExampleViewController : UIViewController
 - (id)initWithEntity:(id<SZEntity>)entity;
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"
 @property (nonatomic, strong) SocializeActionBar *oldActionBar;
+#pragma GCC diagnostic pop
 @property (nonatomic, strong) SZActionBar *actionBar;
 @property (nonatomic, strong) id<SZEntity> entity;
 @end

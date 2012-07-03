@@ -26,6 +26,9 @@
  * See Also: http://gabriel.github.com/gh-unit/
  */
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"
+
 #import "SocializeActionBarTests.h"
 #import "SocializeActionBar.h"
 #import <OCMock/OCMock.h>
@@ -293,3 +296,4 @@
 //}
 
 @end
+#pragma GCC diagnostic pop
