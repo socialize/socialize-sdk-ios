@@ -39,22 +39,40 @@
 @implementation _SZCommentsListViewController
 
 @synthesize cache = _cache;
-@synthesize isLoading = _isLoading;
-
 @synthesize brushedMetalBackground;
 @synthesize backgroundView;
 @synthesize roundedContainerView;
-
 @synthesize noCommentsIconView;
 @synthesize commentsCell;
 @synthesize footerView;
 @synthesize closeButton = _closeButton;
 @synthesize brandingButton = _brandingButton;
 @synthesize entity = _entity;
-
-@synthesize delegate = delegate_;
 @synthesize bubbleView = bubbleView_;
 @synthesize bubbleContentView = bubbleContentView_;
+
+@synthesize delegate = delegate_;
+@synthesize isLoading = _isLoading;
+
+- (void)dealloc {
+    [_cache stopOperations];
+    [_cache release];
+    [brushedMetalBackground release];
+    [backgroundView release];
+    [roundedContainerView release];
+    [noCommentsIconView release];
+    [commentsCell release];
+    [footerView release];
+    [_closeButton release];
+    [_brandingButton release];
+	[_entity release];
+    [bubbleView_ release];
+    [bubbleContentView_ release];
+	[_commentDateFormatter release];
+    
+    [super dealloc];
+}
+
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName {
     _SZCommentsListViewController* commentsController = [[[_SZCommentsListViewController alloc] initWithNibName:@"_SZCommentsListViewController" bundle:nil entryUrlString:entityName] autorelease];
@@ -407,19 +425,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
 	
 	return 0;
-}
-
-- (void)dealloc {
-    [_cache release];
-	[_entity release];
-	[_commentDateFormatter release];
-    [footerView release];
-    [_closeButton release];
-    [_brandingButton release];
-    [bubbleContentView_ release];
-    [bubbleView_ release];
-    
-    [super dealloc];
 }
 
 @end

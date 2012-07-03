@@ -84,11 +84,14 @@
 }
 
 - (void)dealloc {
-	self.bgImage = nil;
-	self.userProfileImage = nil;
 	self.headlineLabel = nil;
 	self.summaryLabel = nil;
 	self.dateLabel = nil;
+	self.userProfileImage = nil;
+	self.bgImage = nil;
+    self.btnViewProfile = nil;
+    self.locationPin = nil;
+    
 	[super dealloc];
 }
 
