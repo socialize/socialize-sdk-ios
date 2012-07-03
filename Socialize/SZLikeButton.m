@@ -242,12 +242,12 @@
     self.serverEntity = nil;
     self.actualButton.enabled = NO;
     
-    SZAttemptAction(self.failureRetryInterval, ^(void(^didFail)(NSError*)) {
-        [SZEntityUtils addEntity:self.entity success:^(id<SZEntity> entity) {
-            self.actualButton.enabled = YES;
-            [self configureForNewServerEntity:entity];
-        } failure:didFail];
-    });
+    [SZEntityUtils addEntity:self.entity success:^(id<SZEntity> entity) {
+        self.actualButton.enabled = YES;
+        [self configureForNewServerEntity:entity];
+    } failure:^(NSError *error) {
+        SZEmitUIError(self, error);
+    }];
 }
 
 @end

@@ -37,7 +37,7 @@
     
     self.view.backgroundColor = [UIColor greenColor];
     
-    __unsafe_unretained __typeof__(self) weakSelf = self;
+    __unsafe_unretained id weakSelf = self;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel handler:^(id sender) {
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     }];
