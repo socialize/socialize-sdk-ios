@@ -26,8 +26,9 @@ static CGRect likeFrame = { 240.f, 120.f, 0.f, 0.f };
 {
     [super viewDidLoad];
     
+    __unsafe_unretained id weakSelf = self;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithTitle:@"Done" style:UIBarButtonItemStyleDone handler:^(id sender) {
-        [self dismissModalViewControllerAnimated:YES];
+        [weakSelf dismissModalViewControllerAnimated:YES];
     }];
         
     self.likeButton = [[SZLikeButton alloc] initWithFrame:likeFrame entity:self.entity viewController:self];

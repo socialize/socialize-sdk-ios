@@ -28,8 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    __block __typeof__(self) weakSelf = self;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem redSocializeBarButtonWithTitle:@"Cancel" handler:^(id sender) {
-        BLOCK_CALL_1(self.completionBlock, [NSArray array]);
+        BLOCK_CALL_1(weakSelf.completionBlock, [NSArray array]);
     }];
 }
 
