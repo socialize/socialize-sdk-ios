@@ -9,6 +9,7 @@ Contents:
    :maxdepth: 2
    
    getting_started
+   upgrading
    action_bar
    like_button
    twitter
