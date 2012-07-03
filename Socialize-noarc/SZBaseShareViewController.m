@@ -218,6 +218,8 @@ static NSString *kAutopostSection = @"kAutopostSection";
 - (NSMutableDictionary*)facebookRow {
     if (facebookRow_ == nil) {
         
+        __block __typeof__(self) weakSelf = self;
+
         void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
             if ([SZFacebookUtils isLinked]) {
                 cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-facebook-icon.png"];
@@ -225,7 +227,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-facebook-dis-icon.png"];
             }
             cell.textLabel.text = @"Facebook";
-            cell.accessoryView = self.facebookSwitch;
+            cell.accessoryView = weakSelf.facebookSwitch;
         };
 
         facebookRow_ = [[NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -253,11 +255,11 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 [SZTwitterUtils linkWithViewController:weakSelf success:^(id<SZFullUser> fullUser) {
                     
                     // Successfully linked
-                    [self syncInterfaceWithThirdPartyState];
+                    [weakSelf syncInterfaceWithThirdPartyState];
                 } failure:^(NSError *error) {
                     
                     // Link failed
-                    [self syncInterfaceWithThirdPartyState];
+                    [weakSelf syncInterfaceWithThirdPartyState];
                     
                     if (![error isSocializeErrorWithCode:SocializeErrorTwitterCancelledByUser]) {
                         [weakSelf failWithError:error];
@@ -280,6 +282,9 @@ static NSString *kAutopostSection = @"kAutopostSection";
 
 - (NSDictionary*)twitterRow {
     if (twitterRow_ == nil) {
+
+        __block __typeof__(self) weakSelf = self;
+
         void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
             if ([SZTwitterUtils isLinked]) {
                 cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-twitter-icon.png"];
@@ -287,7 +292,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-twitter-dis-icon.png"];
             }
             cell.textLabel.text = @"Twitter";
-            cell.accessoryView = self.twitterSwitch;
+            cell.accessoryView = weakSelf.twitterSwitch;
         };
 
         twitterRow_ = [[NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -334,14 +339,17 @@ static NSString *kAutopostSection = @"kAutopostSection";
 }
 
 - (NSDictionary*)SMSRow {
+    
+    __block __typeof__(self) weakSelf = self;
+
     void (^executionBlock)() = ^{
-        [SZShareUtils shareViaSMSWithViewController:self entity:self.entity success:^(id<SZShare> share) {
-            [self.createdShares addObject:share];
+        [SZShareUtils shareViaSMSWithViewController:weakSelf entity:weakSelf.entity success:^(id<SZShare> share) {
+            [weakSelf.createdShares addObject:share];
         } failure:^(NSError *error) {
-            [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+            [weakSelf.tableView deselectRowAtIndexPath:weakSelf.tableView.indexPathForSelectedRow animated:YES];
 
             if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
-                [self failWithError:error];
+                [weakSelf failWithError:error];
             }
         }];
     };
@@ -361,14 +369,17 @@ static NSString *kAutopostSection = @"kAutopostSection";
 }
 
 - (NSDictionary*)emailRow {
+    
+    __block __typeof__(self) weakSelf = self;
+    
     void (^executionBlock)() = ^{
-        [SZShareUtils shareViaEmailWithViewController:self entity:self.entity success:^(id<SZShare> share) {
-            [self.createdShares addObject:share];
+        [SZShareUtils shareViaEmailWithViewController:weakSelf entity:weakSelf.entity success:^(id<SZShare> share) {
+            [weakSelf.createdShares addObject:share];
         } failure:^(NSError *error) {
-            [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+            [weakSelf.tableView deselectRowAtIndexPath:weakSelf.tableView.indexPathForSelectedRow animated:YES];
 
             if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
-                [self failWithError:error];
+                [weakSelf failWithError:error];
             }
         }];
 

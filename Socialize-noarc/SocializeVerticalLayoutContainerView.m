@@ -11,6 +11,12 @@
 @implementation SocializeVerticalLayoutContainerView
 @synthesize rows = rows_;
 
+- (void)dealloc {
+    self.rows = nil;
+    
+    [super dealloc];
+}
+
 - (void)removeAllSubviews {
     for (UIView *subview in self.subviews) {
         [subview removeFromSuperview];
