@@ -21,7 +21,7 @@
 
 @property (nonatomic, strong) id<SZEntity> entity;
 @property (nonatomic, strong) id<SZEntity> serverEntity;
-@property (nonatomic, strong) UIViewController *viewController;
+@property (nonatomic, unsafe_unretained) UIViewController *viewController;
 @property (nonatomic, strong) NSArray *itemsRight;
 @property (nonatomic, strong) NSArray *itemsLeft;
 @property (nonatomic, strong) UIView *testView;

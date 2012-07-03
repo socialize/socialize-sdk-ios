@@ -19,6 +19,10 @@
 @synthesize oldActionBar = _oldActionBar;
 @synthesize entity = _entity;
 
+- (void)dealloc {
+    self.actionBar.viewController = nil;
+}
+
 - (id)initWithEntity:(id<SZEntity>)entity {
     self = [super init];
     if (self) {
@@ -33,8 +37,9 @@
     
     self.view.backgroundColor = [UIColor greenColor];
     
+    __unsafe_unretained __typeof__(self) weakSelf = self;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel handler:^(id sender) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
     }];
     
     // Do any additional setup after loading the view from its nib.
@@ -45,7 +50,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-
+    [super viewWillAppear:animated];
     if (self.actionBar == nil) {
         self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:self.entity viewController:self];
         [self.view addSubview:self.actionBar];

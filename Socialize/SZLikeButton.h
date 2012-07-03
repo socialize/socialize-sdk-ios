@@ -33,7 +33,7 @@
 
 // end-image-properties
 
-@property (nonatomic, strong) UIViewController *viewController;
+@property (nonatomic, unsafe_unretained) UIViewController *viewController;
 
 @property (nonatomic, assign) BOOL hideCount;
 
