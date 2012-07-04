@@ -27,6 +27,9 @@ The main class through which you will be interacting would be Socialize.
 Installing the SDK
 ------------------
 
+If you are upgrading from a previous release, check out the `Upgrading Guide`_.
+    .. _Upgrading Guide: upgrading.html
+
 Step 1: Add the Socialize Framework to Your Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

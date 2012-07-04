@@ -131,7 +131,15 @@ Defining an Entity Loader
 For Smart Alerts to work correctly, you must define an entity loader.
 
 Defining an Entity Loader allows Socialize's UI objects to link back to your
-application's objects.
+application's objects. The entity loader block is called from certain builtin
+Socialize UI Controls when it needs to show information about an entity. It is currently
+shown in the comment details activity listing table view.
+
+Typically, you should have your own view controller for showing detail on an entity in your
+app. You should push a view controller onto the stack.
+
+If you'd just like to see notifications in action, you can use the bundled entity example entity
+loader called **SampleEntityLoader**. This class is not intended for use in a production app.
 
 Copy the lines below to add an entity loader 
 

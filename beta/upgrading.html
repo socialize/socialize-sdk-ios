@@ -1,0 +1,200 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Upgrading Socialize &mdash; Socialize iOS SDK 2.0beta1 documentation</title>
+    
+    <link rel="stylesheet" href="static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0beta1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+    <link rel="top" title="Socialize iOS SDK 2.0beta1 documentation" href="index.html" />
+    <link rel="next" title="Socialize Action Bar" href="action_bar.html" />
+    <link rel="prev" title="Upgrading to Socialize v2" href="upgrading_2_0.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="action_bar.html" title="Socialize Action Bar"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="upgrading_2_0.html" title="Upgrading to Socialize v2"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Socialize iOS SDK 2.0beta1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "socialize";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#222";
+  feedback_widget_options.style = "idea";
+  feedback_widget_options.product = "socialize_ios_sdk";
+  feedback_widget_options.tag = "Feedback";
+
+  feedback_widget_options.limit = "3";
+
+  GSFN.feedback_widget.prototype.local_base_url = "http://support.getsocialize.com";
+  GSFN.feedback_widget.prototype.local_ssl_base_url = "http://support.getsocialize.com";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script><div class="section" id="upgrading-socialize">
+<h1>Upgrading Socialize<a class="headerlink" href="#upgrading-socialize" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This document highlights the process you should use for updating your project to use a new
+Socialize iOS SDK release.</p>
+<div class="section" id="step-1-download-a-new-release">
+<h3>Step 1: Download a new release<a class="headerlink" href="#step-1-download-a-new-release" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Download and unzip an iOS SDK release from the website.</strong>
+Release can be found here: <a class="reference external" href="https://github.com/socialize/socialize-sdk-ios/downloads">https://github.com/socialize/socialize-sdk-ios/downloads</a></li>
+</ul>
+</div>
+<div class="section" id="step-2-delete-the-old-socialize-framework-from-your-project">
+<h3>Step 2: Delete the Old Socialize Framework from your Project<a class="headerlink" href="#step-2-delete-the-old-socialize-framework-from-your-project" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first"><strong>Remove the existing embedded static framework and resources from your application.</strong></p>
+<p>Assuming resources are unmodified, the simplest thing to do is to just delete
+all resources and readd them.</p>
+</li>
+</ul>
+<img alt="images/delete_framework.png" src="images/delete_framework.png" />
+<ul class="simple">
+<li><strong>Ensure that the Socialize.embeddedframework folder is also removed from
+disk. Xcode may leave the empty Socialize.embeddedframework
+directory around. This could cause a copy error in the next step.</strong></li>
+</ul>
+</div>
+<div class="section" id="step-2-readd-the-framework-to-your-project">
+<h3>Step 2: Readd the framework to your project<a class="headerlink" href="#step-2-readd-the-framework-to-your-project" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first"><strong>Install the embedded static framework to your application.</strong></p>
+<p>To do this just drag and drop Socialize.embeddedframework folder from the
+package to your framework section in your project.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Be sure to drag the outlying .embeddedframework folder, not just the
+framework. The .embeddedframework directory contains both the Socialize
+framework and the Socialize resources.  If you just add the framework, you will
+be missing important Socialize images and configuration files.</p>
+</div>
+<img alt="images/drag_and_drop.png" src="images/drag_and_drop.png" />
+<ul>
+<li><p class="first"><strong>When prompted, check &#8220;Copy items into destination group&#8217;s folder (if needed)&#8221; and click finish</strong></p>
+<blockquote>
+<div><img alt="images/check_copy_items.png" src="images/check_copy_items.png" />
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you get errors when copying files, ensure that the Socialize.embeddedframework
+folder has been removed from the filesystem (using finder or terminal). If it still there,
+delete it before performing this step</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Upgrading Socialize</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="action_bar.html" title="Socialize Action Bar"
+             >next</a></li>
+        <li class="right" >
+          <a href="upgrading_2_0.html" title="Upgrading to Socialize v2"
+             >previous</a> |</li>
+        <li><a href="index.html">Socialize iOS SDK 2.0beta1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Socialize Inc.
+    </div>
+  </body>
+</html>

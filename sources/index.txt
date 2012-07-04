@@ -8,6 +8,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
    
+   v2 (beta) docs <http://socialize.github.com/socialize-sdk-ios/beta/index.html>
    getting_started
    action_bar
    like_button
