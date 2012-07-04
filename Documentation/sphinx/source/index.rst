@@ -8,6 +8,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
    
+   v1 (production) docs <http://socialize.github.com/socialize-sdk-ios/>
    getting_started
    upgrading_2_0
    upgrading
