@@ -30,6 +30,10 @@
     [SZTwitterUtils setConsumerKey:@"ZWxJ0zIK73n5HKwGLHolQ" consumerSecret:@"3K1LTY39QM9DPAqJzSZAD3L2EBEXXvuCdtTRr8NDd8"];
     [SZFacebookUtils setAppId:@"115622641859087"];
     
+//     char testTokenData[32] = "\xaa\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff";
+//     NSData *testToken = [NSData dataWithBytes:&testTokenData length:sizeof(testTokenData)];
+//     [Socialize registerDeviceToken:testToken];
+    
     [Socialize setEntityLoaderBlock:^(UINavigationController *nav, id<SZEntity> entity) {
         SampleEntityLoader *sample = [[SampleEntityLoader alloc] initWithEntity:entity];
         [nav pushViewController:sample animated:YES];
