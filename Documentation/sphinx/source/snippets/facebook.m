@@ -62,4 +62,24 @@
 
 // end-link-snippet
 
+
+// begin-post-image-snippet
+
+- (void)postImageToFacebook {
+    UIImage *logo = [UIImage imageNamed:@"socialize_logo.png"];
+    NSData *logoData = UIImagePNGRepresentation(logo);
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:logoData forKey:@"source"];
+    [params setObject:@"Socialize" forKey:@"caption"];
+    [SZFacebookUtils postWithGraphPath:@"me/photos" params:params success:^(id info) {
+        NSLog(@"Created post: %@", info);
+    } failure:^(NSError *error) {
+        NSLog(@"Failed to post: %@", [error localizedDescription]);
+    }];
+}
+
+// end-post-image-snippet
+
+
 @end

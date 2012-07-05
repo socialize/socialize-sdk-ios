@@ -49,4 +49,13 @@ using FBConnect on your own, you can check the official Facebook tutorial at
   :start-after: begin-link-snippet
   :end-before: end-link-snippet
 
+Posting Images to Facebook
+------------------------------------------
+
+Should you need to post an image to Facebook, you can do so by using the direct Facebook
+access methods on the utils classes
+
+.. literalinclude:: snippets/facebook.m
+  :start-after: begin-post-image-snippet
+  :end-before: end-post-image-snippet
 
