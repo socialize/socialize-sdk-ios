@@ -1624,6 +1624,20 @@
 			remoteGlobalIDString = AAB07268139719AC008AF393;
 			remoteInfo = KIF;
 		};
+		AA1E632915A6186F0067070F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6C3DBF8C1382F1BA00E6C9AA;
+			remoteInfo = "iOS Library";
+		};
+		AA1E632B15A618AB0067070F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6C3DBF8C1382F1BA00E6C9AA;
+			remoteInfo = "iOS Library";
+		};
 		AA6C643F158F115D005E5632 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA6C6436158F115D005E5632 /* OCMock.xcodeproj */;
@@ -4244,6 +4258,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AA1E632A15A6186F0067070F /* PBXTargetDependency */,
 				AAE9E1E01590012B00B2B9FC /* PBXTargetDependency */,
 				AA008964158D634300480399 /* PBXTargetDependency */,
 			);
@@ -4321,6 +4336,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AA1E632C15A618AB0067070F /* PBXTargetDependency */,
 				AAB5E474159044E600D3EBDF /* PBXTargetDependency */,
 				AAB5E476159044E600D3EBDF /* PBXTargetDependency */,
 			);
@@ -6132,6 +6148,16 @@
 			name = "facebook-ios-sdk";
 			targetProxy = AA008963158D634300480399 /* PBXContainerItemProxy */;
 		};
+		AA1E632A15A6186F0067070F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "iOS Library";
+			targetProxy = AA1E632915A6186F0067070F /* PBXContainerItemProxy */;
+		};
+		AA1E632C15A618AB0067070F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "iOS Library";
+			targetProxy = AA1E632B15A618AB0067070F /* PBXContainerItemProxy */;
+		};
 		AAB5E474159044E600D3EBDF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "OAuthConsumer iOS";
@@ -6181,6 +6207,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7,
+					armv6,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -6208,6 +6238,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7,
+					armv6,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -6450,7 +6484,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6474,7 +6508,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
