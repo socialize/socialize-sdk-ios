@@ -205,6 +205,9 @@
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.mockCancelButton];
     [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockSendButton];
     [[self.mockSendButton expect] setEnabled:NO];
+    
+    [[self.mockMessageActionButtonContainer expect] setRightJustified:YES];
+    
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kSocializeShouldShareLocationKey];
 }
 
