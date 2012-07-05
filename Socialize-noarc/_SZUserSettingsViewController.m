@@ -179,6 +179,12 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     }
 }
 
+- (void)userChanged:(id<SZFullUser>)newUser {
+    self.fullUser = newUser;
+    self.profileImage = nil;
+    [self configureViewsForUser];
+}
+
 - (void)configureViewsForUser {
     if (self.profileImage == nil) {
         NSString *imageURL = self.fullUser.smallImageUrl;
