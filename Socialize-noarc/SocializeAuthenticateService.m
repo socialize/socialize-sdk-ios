@@ -212,7 +212,7 @@
             }
             
             // Post a global notification that the authenticated user has changed
-            [[NSNotificationCenter defaultCenter] postNotificationName:SocializeAuthenticatedUserDidChangeNotification object:self.authenticatedUser];
+            [[NSNotificationCenter defaultCenter] postNotificationName:SocializeAuthenticatedUserDidChangeNotification object:self.authenticatedFullUser];
             
         } else {
             SDebugLog0(@"Unexpected JSON Response: %@", responseBody);
