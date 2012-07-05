@@ -285,6 +285,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [self.mapOfUserLocation roundCorners];
     [self configureDoNotShareLocationButton];       
     [self updateViewWithNewLocation: mapOfUserLocation.userLocation.location];
+    
+    self.messageActionButtonContainer.rightJustified = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated
