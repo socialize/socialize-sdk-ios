@@ -33,6 +33,20 @@
 
 // end-show-settings-snippet
 
+// begin-show-link-dialog-snippet
+
+- (void)showLinkDialog {
+    if (![SZUserUtils userIsLinked]) {
+        [SZUserUtils showLinkDialogWithViewController:self completion:^(SZSocialNetwork selectedNetwork) {
+            NSLog(@"Linked!");
+        } cancellation:^{
+            NSLog(@"Not linked!");
+        }];
+    }
+}
+
+// end-show-link-dialog-snippet
+
 // begin-current-user-snippet
 
 - (void)getCurrentUser {

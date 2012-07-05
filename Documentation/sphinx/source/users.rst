@@ -40,6 +40,18 @@ To allow a user to update their settings you can simply present them with the Us
 .. image:: images/user_settings.png
   :align: center
 
+Link Dialog
+~~~~~~~~~~~
+	
+If you'd like to prompt the user to link to a third party on your own, you can do so:
+
+.. literalinclude:: snippets/users.m
+	:start-after: begin-show-link-dialog-snippet
+	:end-before: end-show-link-dialog-snippet
+
+.. image:: images/link_dialog.png
+  :align: center
+
 Working with Users
 -------------------------------
 
