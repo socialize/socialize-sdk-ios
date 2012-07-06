@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Facebook &mdash; Socialize iOS SDK 2.0beta1 documentation</title>
+    <title>Facebook &mdash; Socialize iOS SDK 2.0beta4 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.0beta1',
+        VERSION:     '2.0beta4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.0beta1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.0beta4 documentation" href="index.html" />
     <link rel="next" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" />
     <link rel="prev" title="Twitter Integration" href="twitter.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.0beta1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0beta4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -119,6 +119,26 @@ using FBConnect on your own, you can check the official Facebook tutorial at
 </pre></div>
 </div>
 </div>
+<div class="section" id="posting-images-to-facebook">
+<h2>Posting Images to Facebook<a class="headerlink" href="#posting-images-to-facebook" title="Permalink to this headline">¶</a></h2>
+<p>Should you need to post an image to Facebook, you can do so by using the direct Facebook
+access methods on the utils classes</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">postImageToFacebook</span> <span class="p">{</span>
+    <span class="n">UIImage</span> <span class="o">*</span><span class="n">logo</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIImage</span> <span class="nl">imageNamed:</span><span class="s">@&quot;socialize_logo.png&quot;</span><span class="p">];</span>
+    <span class="n">NSData</span> <span class="o">*</span><span class="n">logoData</span> <span class="o">=</span> <span class="n">UIImagePNGRepresentation</span><span class="p">(</span><span class="n">logo</span><span class="p">);</span>
+
+    <span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableDictionary</span> <span class="n">dictionary</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">params</span> <span class="nl">setObject:</span><span class="n">logoData</span> <span class="nl">forKey:</span><span class="s">@&quot;source&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;Socialize&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;caption&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">postWithGraphPath:</span><span class="s">@&quot;me/photos&quot;</span> <span class="nl">params:</span><span class="n">params</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">info</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created post: %@&quot;</span><span class="p">,</span> <span class="n">info</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed to post: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -138,6 +158,7 @@ using FBConnect on your own, you can check the official Facebook tutorial at
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Facebook</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#linking-with-existing-facebook-credentials">Linking with Existing Facebook Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#posting-images-to-facebook">Posting Images to Facebook</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
@@ -179,7 +200,7 @@ using FBConnect on your own, you can check the official Facebook tutorial at
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.0beta1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0beta4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
