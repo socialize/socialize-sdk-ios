@@ -86,7 +86,7 @@
     [_request connect];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
 
-    NSArray* oaRequestParamsActual = [_request.request SZParameters];
+    NSArray* oaRequestParamsActual = [_request.request OAParameters];
     
     OARequestParameter* p1 = [OARequestParameter requestParameterWithName:@"id" value:@"1"];
     OARequestParameter* p2 = [OARequestParameter requestParameterWithName:@"id" value:@"2"];
@@ -114,7 +114,7 @@
     NSLog(@"#####################");
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
 
-    NSArray* oaRequestParamsActual = [_request.request SZParameters];
+    NSArray* oaRequestParamsActual = [_request.request OAParameters];
     
     OARequestParameter* p1 = [OARequestParameter requestParameterWithName:@"id" value:@"1"];
     OARequestParameter* p2 = [OARequestParameter requestParameterWithName:@"id" value:@"2"];
@@ -142,7 +142,7 @@
     [[mockRequest expect] setURL:OCMOCK_ANY];
     [[mockRequest expect] setHTTPMethod:@"GET"];
     [[mockRequest expect] addValue:userAgentStr forHTTPHeaderField:@"User-Agent"];
-    [[mockRequest expect] setSZParameters:[NSMutableArray arrayWithCapacity:0]];
+    [[mockRequest expect] setOAParameters:[NSMutableArray arrayWithCapacity:0]];
     [[mockRequest expect] prepare];
     _request = [SocializeRequest requestWithHttpMethod:@"GET" resourcePath:@"entity/" expectedJSONFormat:SocializeDictionaryWithListAndErrors params:nil];
     _request.request = mockRequest;
