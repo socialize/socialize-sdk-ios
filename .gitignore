@@ -38,3 +38,5 @@ xcuserdata
 profile
 *.moved-aside
 .DS_Store
+ThirdParty/include
+ThirdParty/lib
