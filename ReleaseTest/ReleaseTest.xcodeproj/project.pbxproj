@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA03CFC715A78C760046C59C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5CBCC915930EE00009C759 /* UIKit.framework */; };
+		AA03CFC815A78C760046C59C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5CBCCB15930EE00009C759 /* Foundation.framework */; };
+		AA03CFC915A78C760046C59C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5CBCCD15930EE00009C759 /* CoreGraphics.framework */; };
+		AA03CFCF15A78C760046C59C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA03CFCD15A78C760046C59C /* InfoPlist.strings */; };
+		AA03CFD115A78C760046C59C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA03CFD015A78C760046C59C /* main.m */; };
+		AA03CFD515A78C760046C59C /* SZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA03CFD415A78C760046C59C /* SZAppDelegate.m */; };
+		AA03CFD915A78C900046C59C /* Socialize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1CFA52159317910068910A /* Socialize.framework */; };
+		AA03D01515A79A2A0046C59C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1CF985159315920068910A /* MessageUI.framework */; };
+		AA03D01615A79A2D0046C59C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1CF9831593158D0068910A /* QuartzCore.framework */; };
+		AA03D01715A79A330046C59C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1CF981159315840068910A /* CoreLocation.framework */; };
+		AA03D01815A79A3C0046C59C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1CF97F159315810068910A /* MapKit.framework */; };
+		AA03D09F15A7A6550046C59C /* libTestBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA03D09B15A7A6550046C59C /* libTestBlocksKit.a */; };
+		AA03D0A015A7A6550046C59C /* libTestfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA03D09C15A7A6550046C59C /* libTestfacebook_ios_sdk.a */; };
+		AA03D0A115A7A6550046C59C /* libTestJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA03D09D15A7A6550046C59C /* libTestJSONKit.a */; };
+		AA03D0A215A7A6550046C59C /* libTestOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA03D09E15A7A6550046C59C /* libTestOAuthConsumer.a */; };
 		AA1C4577159A123700BF5F2E /* ButtonExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1C4575159A123700BF5F2E /* ButtonExampleViewController.m */; };
 		AA1C4578159A123700BF5F2E /* ButtonExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA1C4576159A123700BF5F2E /* ButtonExampleViewController.xib */; };
 		AA1C457F159A124F00BF5F2E /* KIFTestScenario+TestAppAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5CBCE215930EF00009C759 /* KIFTestScenario+TestAppAdditions.m */; };
@@ -630,6 +645,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA03CFC515A78C760046C59C /* CheckLibs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckLibs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA03CFCC15A78C760046C59C /* CheckLibs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CheckLibs-Info.plist"; sourceTree = "<group>"; };
+		AA03CFCE15A78C760046C59C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AA03CFD015A78C760046C59C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AA03CFD215A78C760046C59C /* CheckLibs-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CheckLibs-Prefix.pch"; sourceTree = "<group>"; };
+		AA03CFD315A78C760046C59C /* SZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZAppDelegate.h; sourceTree = "<group>"; };
+		AA03CFD415A78C760046C59C /* SZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZAppDelegate.m; sourceTree = "<group>"; };
+		AA03D09B15A7A6550046C59C /* libTestBlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestBlocksKit.a; sourceTree = "<group>"; };
+		AA03D09C15A7A6550046C59C /* libTestfacebook_ios_sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestfacebook_ios_sdk.a; sourceTree = "<group>"; };
+		AA03D09D15A7A6550046C59C /* libTestJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestJSONKit.a; sourceTree = "<group>"; };
+		AA03D09E15A7A6550046C59C /* libTestOAuthConsumer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestOAuthConsumer.a; sourceTree = "<group>"; };
 		AA1C44D7159A108D00BF5F2E /* SocializeLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocializeLocationManager.h; path = "../Socialize-noarc/SocializeLocationManager.h"; sourceTree = "<group>"; };
 		AA1C4574159A123700BF5F2E /* ButtonExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonExampleViewController.h; sourceTree = "<group>"; };
 		AA1C4575159A123700BF5F2E /* ButtonExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonExampleViewController.m; sourceTree = "<group>"; };
@@ -938,6 +964,25 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AA03CFC215A78C760046C59C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA03D01815A79A3C0046C59C /* MapKit.framework in Frameworks */,
+				AA03D01715A79A330046C59C /* CoreLocation.framework in Frameworks */,
+				AA03D01615A79A2D0046C59C /* QuartzCore.framework in Frameworks */,
+				AA03D01515A79A2A0046C59C /* MessageUI.framework in Frameworks */,
+				AA03CFC715A78C760046C59C /* UIKit.framework in Frameworks */,
+				AA03CFC815A78C760046C59C /* Foundation.framework in Frameworks */,
+				AA03CFC915A78C760046C59C /* CoreGraphics.framework in Frameworks */,
+				AA03CFD915A78C900046C59C /* Socialize.framework in Frameworks */,
+				AA03D09F15A7A6550046C59C /* libTestBlocksKit.a in Frameworks */,
+				AA03D0A015A7A6550046C59C /* libTestfacebook_ios_sdk.a in Frameworks */,
+				AA03D0A115A7A6550046C59C /* libTestJSONKit.a in Frameworks */,
+				AA03D0A215A7A6550046C59C /* libTestOAuthConsumer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA1C45A1159A124F00BF5F2E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -977,6 +1022,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA03CFCA15A78C760046C59C /* CheckLibs */ = {
+			isa = PBXGroup;
+			children = (
+				AA03CFD315A78C760046C59C /* SZAppDelegate.h */,
+				AA03CFD415A78C760046C59C /* SZAppDelegate.m */,
+				AA03CFCB15A78C760046C59C /* Supporting Files */,
+			);
+			path = CheckLibs;
+			sourceTree = "<group>";
+		};
+		AA03CFCB15A78C760046C59C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA03CFCC15A78C760046C59C /* CheckLibs-Info.plist */,
+				AA03CFCD15A78C760046C59C /* InfoPlist.strings */,
+				AA03CFD015A78C760046C59C /* main.m */,
+				AA03CFD215A78C760046C59C /* CheckLibs-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA03CFDA15A78CAC0046C59C /* TestLibs */ = {
+			isa = PBXGroup;
+			children = (
+				AA03D09B15A7A6550046C59C /* libTestBlocksKit.a */,
+				AA03D09C15A7A6550046C59C /* libTestfacebook_ios_sdk.a */,
+				AA03D09D15A7A6550046C59C /* libTestJSONKit.a */,
+				AA03D09E15A7A6550046C59C /* libTestOAuthConsumer.a */,
+			);
+			path = TestLibs;
+			sourceTree = "<group>";
+		};
 		AA1CF8CF159313910068910A /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1334,8 +1411,10 @@
 				AA494ED215930FCF00572CD4 /* IntegrationTests */,
 				AA5CBCE015930EF00009C759 /* UIIntegrationTests */,
 				AA5CBCCF15930EE00009C759 /* ReleaseTest */,
+				AA03CFCA15A78C760046C59C /* CheckLibs */,
 				AA5CBCC815930EE00009C759 /* Frameworks */,
 				AA5CBCC615930EE00009C759 /* Products */,
+				AA03CFDA15A78CAC0046C59C /* TestLibs */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1344,6 +1423,7 @@
 			children = (
 				AA5CBCC515930EE00009C759 /* ReleaseTest.app */,
 				AA1C4684159A124F00BF5F2E /* ReleaseTest copy.app */,
+				AA03CFC515A78C760046C59C /* CheckLibs.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1422,6 +1502,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AA03CFC415A78C760046C59C /* CheckLibs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA03CFD615A78C760046C59C /* Build configuration list for PBXNativeTarget "CheckLibs" */;
+			buildPhases = (
+				AA03CFC115A78C760046C59C /* Sources */,
+				AA03CFC215A78C760046C59C /* Frameworks */,
+				AA03CFC315A78C760046C59C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CheckLibs;
+			productName = CheckLibs;
+			productReference = AA03CFC515A78C760046C59C /* CheckLibs.app */;
+			productType = "com.apple.product-type.application";
+		};
 		AA1C4579159A124F00BF5F2E /* ReleaseTest KIF */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA1C4681159A124F00BF5F2E /* Build configuration list for PBXNativeTarget "ReleaseTest KIF" */;
@@ -1502,6 +1599,7 @@
 			targets = (
 				AA5CBCC415930EE00009C759 /* ReleaseTest */,
 				AA1C4579159A124F00BF5F2E /* ReleaseTest KIF */,
+				AA03CFC415A78C760046C59C /* CheckLibs */,
 			);
 		};
 /* End PBXProject section */
@@ -1587,6 +1685,14 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AA03CFC315A78C760046C59C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA03CFCF15A78C760046C59C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA1C45AD159A124F00BF5F2E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2026,6 +2132,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AA03CFC115A78C760046C59C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA03CFD115A78C760046C59C /* main.m in Sources */,
+				AA03CFD515A78C760046C59C /* SZAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA1C457E159A124F00BF5F2E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2134,6 +2249,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		AA03CFCD15A78C760046C59C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA03CFCE15A78C760046C59C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		AA494ED515930FCF00572CD4 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2161,6 +2284,58 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AA03CFD715A78C760046C59C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../build/Socialize.embeddedframework\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CheckLibs/CheckLibs-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../ThirdParty/include";
+				INFOPLIST_FILE = "CheckLibs/CheckLibs-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/TestLibs\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AA03CFD815A78C760046C59C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../build/Socialize.embeddedframework\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CheckLibs/CheckLibs-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../ThirdParty/include";
+				INFOPLIST_FILE = "CheckLibs/CheckLibs-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/TestLibs\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		AA1C4682159A124F00BF5F2E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2321,6 +2496,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AA03CFD615A78C760046C59C /* Build configuration list for PBXNativeTarget "CheckLibs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA03CFD715A78C760046C59C /* Debug */,
+				AA03CFD815A78C760046C59C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AA1C4681159A124F00BF5F2E /* Build configuration list for PBXNativeTarget "ReleaseTest KIF" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
