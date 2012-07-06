@@ -289,11 +289,11 @@ tokenRequest = _tokenRequest;
             stringValue = [self.params  JSONString];
         
         [params addObject:[OARequestParameter requestParameterWithName:@"payload" value:stringValue]];          
-        [self.request setSZParameters:params];
+        [self.request setOAParameters:params];
     }   
     else if([self.httpMethod isEqualToString: @"GET"] || [self.httpMethod isEqualToString:@"DELETE"])
     {
-        [self.request setSZParameters:[self formatUrlParams]];
+        [self.request setOAParameters:[self formatUrlParams]];
     }
     
     [self.request prepare];
