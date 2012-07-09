@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started Guide &mdash; Socialize iOS SDK 1.7.7 documentation</title>
+    <title>Getting Started Guide &mdash; Socialize iOS SDK 2.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.7',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.7 documentation" href="index.html" />
-    <link rel="next" title="Socialize Action Bar" href="action_bar.html" />
+    <link rel="top" title="Socialize iOS SDK 2.0 documentation" href="index.html" />
+    <link rel="next" title="Upgrading to Socialize v2" href="upgrading_2_0.html" />
     <link rel="prev" title="Socialize iOS SDK" href="index.html" /> 
   </head>
   <body>
@@ -34,12 +34,12 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="action_bar.html" title="Socialize Action Bar"
+          <a href="upgrading_2_0.html" title="Upgrading to Socialize v2"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -72,29 +72,29 @@
 
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 </script><div class="section" id="getting-started-guide">
-<h1><a class="toc-backref" href="#id2">Getting Started Guide</a><a class="headerlink" href="#getting-started-guide" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id1">Getting Started Guide</a><a class="headerlink" href="#getting-started-guide" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="table-of-contents">
 <p class="topic-title first">Table of contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#getting-started-guide" id="id2">Getting Started Guide</a><ul>
-<li><a class="reference internal" href="#introduction" id="id3">Introduction</a></li>
-<li><a class="reference internal" href="#installing-the-sdk" id="id4">Installing the SDK</a><ul>
-<li><a class="reference internal" href="#step-1-add-the-socialize-framework-to-your-project" id="id5">Step 1: Add the Socialize Framework to Your Project</a></li>
-<li><a class="reference internal" href="#step-2-add-required-frameworks-to-your-project" id="id6">Step 2: Add Required Frameworks to Your Project</a></li>
-<li><a class="reference internal" href="#step-3-set-project-linker-flags" id="id7">Step 3: Set Project Linker Flags</a></li>
-<li><a class="reference internal" href="#step-4-import-header-and-set-up-your-socialize-keys" id="id8">Step 4: Import Header and Set up your Socialize Keys</a></li>
-<li><a class="reference internal" href="#step-5-include-socialize-in-your-app" id="id9">Step 5: Include Socialize in your App!</a></li>
-<li><a class="reference internal" href="#optional-configure-your-app-for-facebook" id="id10">Optional: Configure Your App for Facebook</a></li>
-<li><a class="reference internal" href="#optional-configure-your-app-for-twitter" id="id11">Optional: Configure Your App for Twitter</a></li>
+<li><a class="reference internal" href="#getting-started-guide" id="id1">Getting Started Guide</a><ul>
+<li><a class="reference internal" href="#introduction" id="id2">Introduction</a></li>
+<li><a class="reference internal" href="#installing-the-sdk" id="id3">Installing the SDK</a><ul>
+<li><a class="reference internal" href="#step-1-add-the-socialize-framework-to-your-project" id="id4">Step 1: Add the Socialize Framework to Your Project</a></li>
+<li><a class="reference internal" href="#step-2-add-required-frameworks-to-your-project" id="id5">Step 2: Add Required Frameworks to Your Project</a></li>
+<li><a class="reference internal" href="#step-3-set-project-linker-flags" id="id6">Step 3: Set Project Linker Flags</a></li>
+<li><a class="reference internal" href="#step-4-import-header-and-set-up-your-socialize-keys" id="id7">Step 4: Import Header and Set up your Socialize Keys</a></li>
+<li><a class="reference internal" href="#step-5-include-socialize-in-your-app" id="id8">Step 5: Include Socialize in your App!</a></li>
+<li><a class="reference internal" href="#optional-configure-your-app-for-facebook" id="id9">Optional: Configure Your App for Facebook</a></li>
+<li><a class="reference internal" href="#optional-configure-your-app-for-twitter" id="id10">Optional: Configure Your App for Twitter</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#next-steps" id="id12">Next Steps</a></li>
+<li><a class="reference internal" href="#next-steps" id="id11">Next Steps</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="introduction">
-<h2><a class="toc-backref" href="#id3">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>The Socialize SDK provides a simple set of classes and methods built upon the <a class="reference external" href="http://www.getsocialize.com/docs/v1/">Socialize REST API</a></p>
 <p>App developers can elect to use either the pre-defined user interface controls provided in the Socialize UI
 framework, or &#8220;roll their own&#8221; using direct SDK calls.</p>
@@ -111,9 +111,13 @@ passed into each call to the Socialize SDK.</p>
 </div>
 </div>
 <div class="section" id="installing-the-sdk">
-<h2><a class="toc-backref" href="#id4">Installing the SDK</a><a class="headerlink" href="#installing-the-sdk" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Installing the SDK</a><a class="headerlink" href="#installing-the-sdk" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>If you are upgrading from a previous release, check out the <a class="reference external" href="upgrading.html">Upgrading Guide</a>.</dt>
+<dd></dd>
+</dl>
 <div class="section" id="step-1-add-the-socialize-framework-to-your-project">
-<h3><a class="toc-backref" href="#id5">Step 1: Add the Socialize Framework to Your Project</a><a class="headerlink" href="#step-1-add-the-socialize-framework-to-your-project" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id4">Step 1: Add the Socialize Framework to Your Project</a><a class="headerlink" href="#step-1-add-the-socialize-framework-to-your-project" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first"><strong>Download and unzip the lastest iOS SDK release from the website.</strong>
 You can find it here: <a class="reference external" href="http://www.getsocialize.com/sdk/">http://www.getsocialize.com/sdk/</a></p>
@@ -138,7 +142,7 @@ If you just add the framework, you will be missing important Socialize images an
 </ul>
 </div>
 <div class="section" id="step-2-add-required-frameworks-to-your-project">
-<h3><a class="toc-backref" href="#id6">Step 2: Add Required Frameworks to Your Project</a><a class="headerlink" href="#step-2-add-required-frameworks-to-your-project" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id5">Step 2: Add Required Frameworks to Your Project</a><a class="headerlink" href="#step-2-add-required-frameworks-to-your-project" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Add the following frameworks to your application target:</li>
 </ul>
@@ -152,7 +156,7 @@ If you just add the framework, you will be missing important Socialize images an
 <img alt="images/add_frameworks.png" src="images/add_frameworks.png" />
 </div>
 <div class="section" id="step-3-set-project-linker-flags">
-<h3><a class="toc-backref" href="#id7">Step 3: Set Project Linker Flags</a><a class="headerlink" href="#step-3-set-project-linker-flags" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id6">Step 3: Set Project Linker Flags</a><a class="headerlink" href="#step-3-set-project-linker-flags" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Add <strong>-ObjC</strong> and <strong>-all_load</strong> flag to the Other Linker Flags in the build settings of your application target. <em>Please use the flag exactly as it is—the most common mistake here tends to be misspelling or incorrect capitalization.</em></p>
 <blockquote>
@@ -169,7 +173,7 @@ If you just add the framework, you will be missing important Socialize images an
 <div></div></blockquote>
 </div>
 <div class="section" id="step-4-import-header-and-set-up-your-socialize-keys">
-<h3><a class="toc-backref" href="#id8">Step 4: Import Header and Set up your Socialize Keys</a><a class="headerlink" href="#step-4-import-header-and-set-up-your-socialize-keys" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id7">Step 4: Import Header and Set up your Socialize Keys</a><a class="headerlink" href="#step-4-import-header-and-set-up-your-socialize-keys" title="Permalink to this headline">¶</a></h3>
 <p>To utilize the iOS SDK and views into your app, we need to import the Socialize.h header and let the library know your app key and secret.  Your application key and secret can be found
 at <a class="reference external" href="http://www.getsocialize.com/apps">http://www.getsocialize.com/apps</a>.  Click your app and look for the &#8216;oAuth Keys&#8217; module on the right-hand column.</p>
 <div class="admonition note">
@@ -193,7 +197,7 @@ at <a class="reference external" href="http://www.getsocialize.com/apps">http://
 </div>
 </div>
 <div class="section" id="step-5-include-socialize-in-your-app">
-<h3><a class="toc-backref" href="#id9">Step 5: Include Socialize in your App!</a><a class="headerlink" href="#step-5-include-socialize-in-your-app" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id8">Step 5: Include Socialize in your App!</a><a class="headerlink" href="#step-5-include-socialize-in-your-app" title="Permalink to this headline">¶</a></h3>
 <p>Now that you have your environment all setup, it’s time to include Socialize.</p>
 <p>The core component of the Socialize SDK is the “Action Bar”</p>
 <img alt="images/action_bar_solo.png" src="images/action_bar_solo.png" />
@@ -207,30 +211,17 @@ components individually please go see the SDK user guide.</p>
 It is not necessary to explicitly create an Entity object when rendering the Action bar as this will be done for you, however entities can be created manually.</p>
 <p>Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller.</p>
 <p>In your View controller&#8217;s header file place the following code:</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">// Header</span>
-
-<span class="cp">// Store the action bar in a property on your view controller</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">// Store the action bar in a property on your view controller</span>
 
 <span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
 <span class="k">@interface</span> <span class="nc">CreateActionBarViewController</span> : <span class="nc">UIViewController</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">SocializeActionBar</span> <span class="o">*</span><span class="n">actionBar</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">SZActionBar</span> <span class="o">*</span><span class="n">actionBar</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span><span class="p">;</span>
 <span class="k">@end</span>
 </pre></div>
 </div>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="c1">// Implementation</span>
-
-<span class="c1">// Instantiate the action bar in your view controller</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SocializeActionBar</span> <span class="nl">actionBarWithKey:</span><span class="s">@&quot;http://www.example.com/object/1234&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Something&quot;</span> <span class="nl">presentModalInController:</span><span class="n">self</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">view</span><span class="p">];</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-objective-c"><div class="highlight"><pre>
 </pre></div>
 </div>
 <p>By default, the Action Bar will automatically place itself at the bottom of its
@@ -244,101 +235,16 @@ of any content.</p>
 <p>By now you should be able to see the Socialize Action Bar.  If you need any help please visit us at <a class="reference external" href="http://support.getsocialize.com">http://support.getsocialize.com</a></p>
 </div>
 <div class="section" id="optional-configure-your-app-for-facebook">
-<h3><a class="toc-backref" href="#id10">Optional: Configure Your App for Facebook</a><a class="headerlink" href="#optional-configure-your-app-for-facebook" title="Permalink to this headline">¶</a></h3>
-<p>It is strongly recommended that users be able to authenticate with Facebook when using Socialize so as to maximize the exposure, and promotion of your app.</p>
-<p>Let Socialize know your Facebook app id.  You can register or find your
-Facebook app id here: <a class="reference external" href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a></p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">//import the socialize header</span>
-<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
-
-<span class="cp">#pragma mark</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
-    <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerKey:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerSecret:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
-<span class="hll">    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeFacebookAppId:</span><span class="s">@&quot;YOUR FB APP ID&quot;</span><span class="p">];</span>
-</span>    
-    <span class="c1">//your application specific code</span>
-    
-    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>If your app is not already configured for facebook authentication, then you&#8217;ll
-need to perform two more steps:</p>
-<p>First, you must register your app to open with your facebook app id url by
-adding a URL Types array to your Application&#8217;s &lt;MyApp&gt;-Info.plist.  The string
-is a lowercase fb followed by your app id. The example app is configured as
-below:</p>
-<img alt="images/facebook_urltypes.png" src="images/facebook_urltypes.png" />
-<p>And lastly, you must be sure to call [Socialize handleOpenURL:url] from your
-UIApplicationDelegate&#8217;s application:openURL:sourceApplication: method. Socialize will take
-care of handing off the openURL request to the underlying <a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>. This
-completes the authentication flow.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">openURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">url</span> <span class="nl">sourceApplication:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">sourceApplication</span> <span class="nl">annotation:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">annotation</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">Socialize</span> <span class="nl">handleOpenURL:</span><span class="n">url</span><span class="p">];</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>If your app already authenticates with Facebook, you will need to let Socialize
-know about the existing session. You can do this with the
-linkToFacebookWithAccessToken:expirationDate: call.  For more information on
-using FBConnect on your own, you can check the official Facebook tutorial at
-<a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
-
-<span class="k">@interface</span> <span class="nc">LinkToFacebookExample</span> : <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">SocializeServiceDelegate</span><span class="o">&gt;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">Socialize</span> <span class="o">*</span><span class="n">socialize</span><span class="p">;</span>
-<span class="k">@end</span>
-</pre></div>
-</div>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">LinkToFacebookExample</span>
-<span class="k">@synthesize</span> <span class="n">socialize</span> <span class="o">=</span> <span class="n">socialize_</span><span class="p">;</span>
-
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
-    <span class="n">self</span><span class="p">.</span><span class="n">socialize</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
-    
-    <span class="p">[</span><span class="n">super</span> <span class="n">dealloc</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="n">Socialize</span><span class="o">*</span><span class="p">)</span><span class="n">socialize</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">socialize_</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">socialize_</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Socialize</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithDelegate:</span><span class="n">self</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">socialize_</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">linkToFacebook</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeFacebookAppId:</span><span class="s">@&quot;fbMYFACEBOOKAPPID&quot;</span><span class="p">];</span>
-    
-    <span class="c1">// The following is only needed if you have multiple apps sharing the same facebook app id</span>
-    <span class="c1">// [Socialize storeFacebookURLSchemeSuffix:@&quot;myfreeapp&quot;];</span>
-    
-    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">socialize</span> <span class="nl">linkToFacebookWithAccessToken:</span><span class="s">@&quot;EXISTING_TOKEN&quot;</span> <span class="nl">expirationDate:</span><span class="p">[</span><span class="n">NSDate</span> <span class="n">distantFuture</span><span class="p">]];</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">didAuthenticate:</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeUser</span><span class="o">&gt;</span><span class="p">)</span><span class="n">user</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">([</span><span class="n">self</span><span class="p">.</span><span class="n">socialize</span> <span class="n">isAuthenticatedWithFacebook</span><span class="p">])</span> <span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Facebook link successful&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">service:</span><span class="p">(</span><span class="n">SocializeService</span> <span class="o">*</span><span class="p">)</span><span class="n">service</span> <span class="nl">didFail:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="n">error</span> <span class="p">{</span>
-    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Error: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<h3><a class="toc-backref" href="#id9">Optional: Configure Your App for Facebook</a><a class="headerlink" href="#optional-configure-your-app-for-facebook" title="Permalink to this headline">¶</a></h3>
+<p>See the <a class="reference external" href="facebook.html">Facebook section</a>.</p>
 </div>
 <div class="section" id="optional-configure-your-app-for-twitter">
-<h3><a class="toc-backref" href="#id11">Optional: Configure Your App for Twitter</a><a class="headerlink" href="#optional-configure-your-app-for-twitter" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">Optional: Configure Your App for Twitter</a><a class="headerlink" href="#optional-configure-your-app-for-twitter" title="Permalink to this headline">¶</a></h3>
 <p>See the <a class="reference external" href="twitter.html">Twitter section</a>.</p>
 </div>
 </div>
 <div class="section" id="next-steps">
-<h2><a class="toc-backref" href="#id12">Next Steps</a><a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">Next Steps</a><a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
 <p>Run the app in your simulator or device, have fun with the action bar, add comments, likes and shares. Then you can visit the app dashboard on the Socialize website to see new user actions show up in the analytics charts.  You can also enable additional features like Push Notifications.</p>
 <p><a class="reference external" href="http://www.getsocialize.com/apps/">http://www.getsocialize.com/apps/</a></p>
 </div>
@@ -352,20 +258,28 @@ using FBConnect on your own, you can check the official Facebook tutorial at
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/beta/index.html">v2 (beta) docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-the-sdk">Installing the SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
@@ -391,12 +305,12 @@ using FBConnect on your own, you can check the official Facebook tutorial at
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="action_bar.html" title="Socialize Action Bar"
+          <a href="upgrading_2_0.html" title="Upgrading to Socialize v2"
              >next</a></li>
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>SDK Pro Tips &mdash; Socialize iOS SDK 2.0 documentation</title>
+    <title>Upgrading Socialize &mdash; Socialize iOS SDK 2.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -26,18 +26,18 @@
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
     <link rel="top" title="Socialize iOS SDK 2.0 documentation" href="index.html" />
-    <link rel="next" title="Changelog" href="changelog.html" />
-    <link rel="prev" title="Advanced UI Configuration" href="ui_advanced.html" /> 
+    <link rel="next" title="Socialize Action Bar" href="action_bar.html" />
+    <link rel="prev" title="Upgrading to Socialize v2" href="upgrading_2_0.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="changelog.html" title="Changelog"
+          <a href="action_bar.html" title="Socialize Action Bar"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="ui_advanced.html" title="Advanced UI Configuration"
+          <a href="upgrading_2_0.html" title="Upgrading to Socialize v2"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
@@ -71,21 +71,64 @@
   GSFN.feedback_widget.prototype.local_ssl_base_url = "http://support.getsocialize.com";
 
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
-</script><div class="section" id="sdk-pro-tips">
-<h1>SDK Pro Tips<a class="headerlink" href="#sdk-pro-tips" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="building-the-sdk-from-source">
-<h2>Building the SDK from source<a class="headerlink" href="#building-the-sdk-from-source" title="Permalink to this headline">¶</a></h2>
-<p>The framework can be built with the command &#8220;make framework&#8221;. The output of
-this command’s execution will be the embedded static framework in the
-build/Socialize.embeddedframework directory of the project</p>
-<p>A sample app is included in the SampleSdkApp subdirectory of the Socialize source tree.</p>
+</script><div class="section" id="upgrading-socialize">
+<h1>Upgrading Socialize<a class="headerlink" href="#upgrading-socialize" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This document highlights the process you should use for updating your project to use a new
+Socialize iOS SDK release.</p>
+<div class="section" id="step-1-download-a-new-release">
+<h3>Step 1: Download a new release<a class="headerlink" href="#step-1-download-a-new-release" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Download and unzip an iOS SDK release from the website.</strong>
+Release can be found here: <a class="reference external" href="https://github.com/socialize/socialize-sdk-ios/downloads">https://github.com/socialize/socialize-sdk-ios/downloads</a></li>
+</ul>
+</div>
+<div class="section" id="step-2-delete-the-old-socialize-framework-from-your-project">
+<h3>Step 2: Delete the Old Socialize Framework from your Project<a class="headerlink" href="#step-2-delete-the-old-socialize-framework-from-your-project" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first">If you experience any problems with user credentials, you can perform a manual xcodebuild with override as follows:</p>
+<li><p class="first"><strong>Remove the existing embedded static framework and resources from your application.</strong></p>
+<p>Assuming resources are unmodified, the simplest thing to do is to just delete
+all resources and readd them.</p>
+</li>
+</ul>
+<img alt="images/delete_framework.png" src="images/delete_framework.png" />
+<ul class="simple">
+<li><strong>Ensure that the Socialize.embeddedframework folder is also removed from
+disk. Xcode may leave the empty Socialize.embeddedframework
+directory around. This could cause a copy error in the next step.</strong></li>
+</ul>
+</div>
+<div class="section" id="step-2-readd-the-framework-to-your-project">
+<h3>Step 2: Readd the framework to your project<a class="headerlink" href="#step-2-readd-the-framework-to-your-project" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first"><strong>Install the embedded static framework to your application.</strong></p>
+<p>To do this just drag and drop Socialize.embeddedframework folder from the
+package to your framework section in your project.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Be sure to drag the outlying .embeddedframework folder, not just the
+framework. The .embeddedframework directory contains both the Socialize
+framework and the Socialize resources.  If you just add the framework, you will
+be missing important Socialize images and configuration files.</p>
+</div>
+<img alt="images/drag_and_drop.png" src="images/drag_and_drop.png" />
+<ul>
+<li><p class="first"><strong>When prompted, check &#8220;Copy items into destination group&#8217;s folder (if needed)&#8221; and click finish</strong></p>
 <blockquote>
-<div><p>xcodebuild -workspace socialize-sdk-ios.xcworkspace -scheme &#8220;Socialize Framework&#8221; -configuration Release -sdk iphoneos build PROVISIONING_PROFILE=&#8221;User provision profile&#8221; CODE_SIGN_IDENTITY=&#8221;iPhone Distribution: user identity&#8221;</p>
+<div><img alt="images/check_copy_items.png" src="images/check_copy_items.png" />
 </div></blockquote>
 </li>
 </ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you get errors when copying files, ensure that the Socialize.embeddedframework
+folder has been removed from the filesystem (using finder or terminal). If it still there,
+delete it before performing this step</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -100,7 +143,10 @@ build/Socialize.embeddedframework directory of the project</p>
 <li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Upgrading Socialize</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
@@ -114,10 +160,7 @@ build/Socialize.embeddedframework directory of the project</p>
 <li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">SDK Pro Tips</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#building-the-sdk-from-source">Building the SDK from source</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
@@ -142,10 +185,10 @@ build/Socialize.embeddedframework directory of the project</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="changelog.html" title="Changelog"
+          <a href="action_bar.html" title="Socialize Action Bar"
              >next</a></li>
         <li class="right" >
-          <a href="ui_advanced.html" title="Advanced UI Configuration"
+          <a href="upgrading_2_0.html" title="Upgrading to Socialize v2"
              >previous</a> |</li>
         <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>

@@ -1,0 +1,210 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Facebook &mdash; Socialize iOS SDK 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+    <link rel="top" title="Socialize iOS SDK 2.0 documentation" href="index.html" />
+    <link rel="next" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" />
+    <link rel="prev" title="Twitter Integration" href="twitter.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="twitter.html" title="Twitter Integration"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="facebook">
+<h1>Facebook<a class="headerlink" href="#facebook" title="Permalink to this headline">¶</a></h1>
+<p>It is strongly recommended that users be able to authenticate with Facebook when using Socialize so as to maximize the exposure, and promotion of your app.</p>
+<p>Let Socialize know your Facebook app id.  You can register or find your
+Facebook app id here: <a class="reference external" href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a></p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">//import the socialize header</span>
+<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
+
+<span class="cp">#pragma mark</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+    <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerKey:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerSecret:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
+<span class="hll">    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">setAppId:</span><span class="s">@&quot;YOUR FB APP ID&quot;</span><span class="p">];</span>
+</span>    
+    <span class="c1">//your application specific code</span>
+    
+    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If your app is not already configured for facebook authentication, then you&#8217;ll
+need to perform two more steps:</p>
+<p>First, you must register your app to open with your facebook app id url by
+adding a URL Types array to your Application&#8217;s &lt;MyApp&gt;-Info.plist.  The string
+is a lowercase fb followed by your app id. The example app is configured as
+below:</p>
+<img alt="images/facebook_urltypes.png" src="images/facebook_urltypes.png" />
+<p>And lastly, you must be sure to call [Socialize handleOpenURL:url] from your
+UIApplicationDelegate&#8217;s application:openURL:sourceApplication: method. Socialize will take
+care of handing off the openURL request to the underlying <a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>. This
+completes the authentication flow.</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">openURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">url</span> <span class="nl">sourceApplication:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">sourceApplication</span> <span class="nl">annotation:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">annotation</span> <span class="p">{</span>
+<span class="hll">    <span class="k">return</span> <span class="p">[</span><span class="n">Socialize</span> <span class="nl">handleOpenURL:</span><span class="n">url</span><span class="p">];</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Standard Facebook configuration complete. Keep reading for special configuration</p>
+</div>
+<div class="section" id="linking-with-existing-facebook-credentials">
+<h2>Linking with Existing Facebook Credentials<a class="headerlink" href="#linking-with-existing-facebook-credentials" title="Permalink to this headline">¶</a></h2>
+<p>If your app already authenticates with Facebook, you can let Socialize
+know about the existing session. You can do this with the
+<strong>linkToFacebookWithAccessToken:expirationDate:</strong> call.  For more information on
+using FBConnect on your own, you can check the official Facebook tutorial at
+<a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>.</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">linkToFacebook</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">setAppId:</span><span class="s">@&quot;fbMYFACEBOOKAPPID&quot;</span><span class="p">];</span>
+    
+    <span class="c1">// The following is only needed if you have multiple apps sharing the same facebook app id</span>
+    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">setURLSchemeSuffix:</span><span class="s">@&quot;myfreeversion&quot;</span><span class="p">];</span>
+    
+    <span class="c1">// Don&#39;t forget to add the fbMYFACEBOOKAPPIDmyfreeversion:// URL Scheme to your app, as above</span>
+    
+    <span class="c1">// These should come from your own facebook auth process</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">existingToken</span> <span class="o">=</span> <span class="s">@&quot;EXISTING_TOKEN&quot;</span><span class="p">;</span>
+    <span class="n">NSDate</span> <span class="o">*</span><span class="n">existingExpiration</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDate</span> <span class="n">distantFuture</span><span class="p">];</span>
+    
+    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">linkWithAccessToken:</span><span class="n">existingToken</span> <span class="nl">expirationDate:</span><span class="n">existingExpiration</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeFullUser</span><span class="o">&gt;</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Link successful&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Link failed: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="posting-images-to-facebook">
+<h2>Posting Images to Facebook<a class="headerlink" href="#posting-images-to-facebook" title="Permalink to this headline">¶</a></h2>
+<p>Should you need to post an image to Facebook, you can do so by using the direct Facebook
+access methods on the utils classes</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">postImageToFacebook</span> <span class="p">{</span>
+    <span class="n">UIImage</span> <span class="o">*</span><span class="n">logo</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIImage</span> <span class="nl">imageNamed:</span><span class="s">@&quot;socialize_logo.png&quot;</span><span class="p">];</span>
+    <span class="n">NSData</span> <span class="o">*</span><span class="n">logoData</span> <span class="o">=</span> <span class="n">UIImagePNGRepresentation</span><span class="p">(</span><span class="n">logo</span><span class="p">);</span>
+
+    <span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableDictionary</span> <span class="n">dictionary</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">params</span> <span class="nl">setObject:</span><span class="n">logoData</span> <span class="nl">forKey:</span><span class="s">@&quot;source&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;Socialize&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;caption&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">postWithGraphPath:</span><span class="s">@&quot;me/photos&quot;</span> <span class="nl">params:</span><span class="n">params</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">info</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created post: %@&quot;</span><span class="p">,</span> <span class="n">info</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed to post: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Facebook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#linking-with-existing-facebook-credentials">Linking with Existing Facebook Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#posting-images-to-facebook">Posting Images to Facebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
+             >next</a></li>
+        <li class="right" >
+          <a href="twitter.html" title="Twitter Integration"
+             >previous</a> |</li>
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Socialize Inc.
+    </div>
+  </body>
+</html>

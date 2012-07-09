@@ -1,0 +1,212 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Upgrading to Socialize v2 &mdash; Socialize iOS SDK 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+    <link rel="top" title="Socialize iOS SDK 2.0 documentation" href="index.html" />
+    <link rel="next" title="Upgrading Socialize" href="upgrading.html" />
+    <link rel="prev" title="Getting Started Guide" href="getting_started.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="upgrading.html" title="Upgrading Socialize"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="getting_started.html" title="Getting Started Guide"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "socialize";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#222";
+  feedback_widget_options.style = "idea";
+  feedback_widget_options.product = "socialize_ios_sdk";
+  feedback_widget_options.tag = "Feedback";
+
+  feedback_widget_options.limit = "3";
+
+  GSFN.feedback_widget.prototype.local_base_url = "http://support.getsocialize.com";
+  GSFN.feedback_widget.prototype.local_ssl_base_url = "http://support.getsocialize.com";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script><div class="section" id="upgrading-to-socialize-v2">
+<h1>Upgrading to Socialize v2<a class="headerlink" href="#upgrading-to-socialize-v2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This document highlights some of the major changes made in the second version
+of the SDK, and how you can update your product to get the most out of
+Socialize v2.</p>
+</div>
+<div class="section" id="basic-upgrade-process">
+<h2>Basic Upgrade Process<a class="headerlink" href="#basic-upgrade-process" title="Permalink to this headline">¶</a></h2>
+<p>For starters, this is your first time upgrading to a new Socialize release,
+check out our <a class="reference external" href="upgrading.html">Upgrading Guide</a>.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+<div class="section" id="api-client-changes">
+<h2>API Client Changes<a class="headerlink" href="#api-client-changes" title="Permalink to this headline">¶</a></h2>
+<p>Direct API calls are now block-based. In addition, most of the core API functionality
+has been grouped into the utils classes. The utils classes with new API calls are:</p>
+<ul class="simple">
+<li><a class="reference external" href="entities.html#working-with-entities">SZEntityUtils</a></li>
+<li><a class="reference external" href="users.html#working-with-users">SZUserUtils</a></li>
+<li><a class="reference external" href="actions.html#working-with-actions">SZActionUtils</a></li>
+<li><a class="reference external" href="sharing.html#working-with-shares">SZShareUtils</a></li>
+<li><a class="reference external" href="comments.html#working-with-comments">SZCommentUtils</a></li>
+<li><a class="reference external" href="likes.html#working-with-likes">SZLikeUtils</a></li>
+<li><a class="reference external" href="views.html#views">SZViewUtils</a></li>
+</ul>
+</div>
+<div class="section" id="view-controller-changes">
+<h2>View Controller changes<a class="headerlink" href="#view-controller-changes" title="Permalink to this headline">¶</a></h2>
+<p>The builtin view controllers are now packaged in simpler wrapper classes that
+you should use instead. Typedefs have been added, and your old code should
+continue to work. The new top-level controllers hide many underlying details
+and have a simpler block-based interface for handling completion.</p>
+<p>The full list of view controller changes:</p>
+<ul class="simple">
+<li><a class="reference external" href="users.html#user-profile">SZUserSettingsViewController</a> has replaced SocializeProfileEditViewController</li>
+<li><a class="reference external" href="users.html#user-settings">SZUserProfileViewController</a> has replaced SocializeProfileViewController</li>
+<li><a class="reference external" href="comments.html#comments-list">SZCommentsListViewController</a> has replaced SocializeCommentsTableViewController</li>
+<li><a class="reference external" href="comments.html#comment-composer">SZComposeCommentViewController</a> has replaced SocializeCommentsTableViewController</li>
+</ul>
+<p>There is a new share dialog controller <a class="reference external" href="sharing.html#share-dialog">SZShareDialogViewController</a> which you can display directly.</p>
+</div>
+<div class="section" id="action-bar-changes">
+<h2>Action Bar Changes<a class="headerlink" href="#action-bar-changes" title="Permalink to this headline">¶</a></h2>
+<p>In addition, the action bar has been rewritten. Because the interface has
+changed significantly, this is packaged as an entirely new class. You should
+prefer the <a class="reference external" href="action_bar.html#displaying-the-action-bar">SZActionBar</a> instead of the SocializeActionBar. The major change in the way
+the bar is used is that instead of having a view property, the bar is itself a view. You
+can read more about using the new action bar in the <a class="reference external" href="action_bar.html">Action Bar Section</a></p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="c1">// Implementation</span>
+
+<span class="c1">// Instantiate the action bar in your view controller</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="nl">defaultActionBarWithFrame:</span><span class="n">CGRectNull</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">viewController:</span><span class="n">self</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Upgrading to Socialize v2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-upgrade-process">Basic Upgrade Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-client-changes">API Client Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view-controller-changes">View Controller changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#action-bar-changes">Action Bar Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="upgrading.html" title="Upgrading Socialize"
+             >next</a></li>
+        <li class="right" >
+          <a href="getting_started.html" title="Getting Started Guide"
+             >previous</a> |</li>
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Socialize Inc.
+    </div>
+  </body>
+</html>

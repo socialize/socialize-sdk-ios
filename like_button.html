@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Socialize Like Button &mdash; Socialize iOS SDK 1.7.7 documentation</title>
+    <title>Socialize Like Button &mdash; Socialize iOS SDK 2.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.7',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.7 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.0 documentation" href="index.html" />
     <link rel="next" title="Twitter Integration" href="twitter.html" />
     <link rel="prev" title="Socialize Action Bar" href="action_bar.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="action_bar.html" title="Socialize Action Bar"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -78,6 +78,8 @@
 <p>In v1.7 of the Socialize SDK for iOS is a new stand-alone Like Button. This
 is simply the “like” capablity of Socialize contained in a self-standing UI
 element which can be easily customized to suit your app.</p>
+<img alt="images/like_button_unliked.png" src="images/like_button_unliked.png" />
+<img alt="images/like_button_liked.png" src="images/like_button_liked.png" />
 </div>
 <div class="section" id="displaying-the-like-button">
 <h2>Displaying the Like Button<a class="headerlink" href="#displaying-the-like-button" title="Permalink to this headline">¶</a></h2>
@@ -90,7 +92,7 @@ add it to your view hierarchy.</p>
 <span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
 <span class="k">@interface</span> <span class="nc">CreateLikeButtonViewController</span> : <span class="nc">UIViewController</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">SocializeLikeButton</span> <span class="o">*</span><span class="n">likeButton</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">SZLikeButton</span> <span class="o">*</span><span class="n">likeButton</span><span class="p">;</span>
 <span class="k">@end</span>
 </pre></div>
 </div>
@@ -109,7 +111,7 @@ add it to your view hierarchy.</p>
     
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">likeButton</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">SocializeEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SocializeEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;hot_ticket_1&quot;</span> <span class="nl">name:</span><span class="s">@&quot;A Hot Ticket&quot;</span><span class="p">];</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">likeButton</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SocializeLikeButton</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="nl">entity:</span><span class="n">entity</span> <span class="nl">viewController:</span><span class="n">self</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">likeButton</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SZLikeButton</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="nl">entity:</span><span class="n">entity</span> <span class="nl">viewController:</span><span class="n">self</span><span class="p">];</span>
         
         <span class="c1">// Turn of automatic sizing of the like button (default NO)</span>
         <span class="c1">// likeButton.autoresizeDisabled = YES;</span>
@@ -130,18 +132,6 @@ add it to your view hierarchy.</p>
 <h2>Customizing the Like Button<a class="headerlink" href="#customizing-the-like-button" title="Permalink to this headline">¶</a></h2>
 <p>All of the images on the like button can be changed. To do this, just set the appropriate property.
 The full list of image properties is:</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">UIImage</span> <span class="o">*</span><span class="n">disabledImage</span><span class="p">;</span>
-
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">UIImage</span> <span class="o">*</span><span class="n">inactiveImage</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">UIImage</span> <span class="o">*</span><span class="n">inactiveHighlightedImage</span><span class="p">;</span>
-
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">UIImage</span> <span class="o">*</span><span class="n">activeImage</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">UIImage</span> <span class="o">*</span><span class="n">activeHighlightedImage</span><span class="p">;</span>
-
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">UIImage</span> <span class="o">*</span><span class="n">likedIcon</span><span class="p">;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">UIImage</span> <span class="o">*</span><span class="n">unlikedIcon</span><span class="p">;</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="responding-to-state-changes">
 <h2>Responding to State Changes<a class="headerlink" href="#responding-to-state-changes" title="Permalink to this headline">¶</a></h2>
@@ -149,7 +139,7 @@ The full list of image properties is:</p>
 this by listening for the SocializeLikeButtonDidChangeStateNotification as follows:</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nl">initWithNibName:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">nibNameOrNil</span> <span class="nl">bundle:</span><span class="p">(</span><span class="n">NSBundle</span> <span class="o">*</span><span class="p">)</span><span class="n">nibBundleOrNil</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nl">initWithNibName:</span><span class="n">nibNameOrNil</span> <span class="nl">bundle:</span><span class="n">nibBundleOrNil</span><span class="p">])</span> <span class="p">{</span>
-        <span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="n">defaultCenter</span><span class="p">]</span> <span class="nl">addObserver:</span><span class="n">self</span> <span class="nl">selector:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">likeButtonChanged:</span><span class="p">)</span> <span class="nl">name:</span><span class="n">SocializeLikeButtonDidChangeStateNotification</span> <span class="nl">object:</span><span class="n">self</span><span class="p">.</span><span class="n">likeButton</span><span class="p">];</span>
+        <span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="n">defaultCenter</span><span class="p">]</span> <span class="nl">addObserver:</span><span class="n">self</span> <span class="nl">selector:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">likeButtonChanged:</span><span class="p">)</span> <span class="nl">name:</span><span class="n">SZLikeButtonDidChangeStateNotification</span> <span class="nl">object:</span><span class="n">self</span><span class="p">.</span><span class="n">likeButton</span><span class="p">];</span>
     <span class="p">}</span>
     
     <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
@@ -195,8 +185,10 @@ this by listening for the SocializeLikeButtonDidChangeStateNotification as follo
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/beta/index.html">v2 (beta) docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Socialize Like Button</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
@@ -208,10 +200,16 @@ this by listening for the SocializeLikeButtonDidChangeStateNotification as follo
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
@@ -242,7 +240,7 @@ this by listening for the SocializeLikeButtonDidChangeStateNotification as follo
         <li class="right" >
           <a href="action_bar.html" title="Socialize Action Bar"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

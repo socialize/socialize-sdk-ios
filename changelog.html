@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Changelog &mdash; Socialize iOS SDK 1.7.7 documentation</title>
+    <title>Changelog &mdash; Socialize iOS SDK 2.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.7',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.7 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.0 documentation" href="index.html" />
     <link rel="prev" title="SDK Pro Tips" href="sdk_pro_tips.html" /> 
   </head>
   <body>
@@ -35,7 +35,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="sdk_pro_tips.html" title="SDK Pro Tips"
              accesskey="P">previous</a></li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -69,6 +69,47 @@
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 </script><div class="section" id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v2-0">
+<h2>v2.0<a class="headerlink" href="#v2-0" title="Permalink to this headline">¶</a></h2>
+<p>[bug] armv6 not being bundled (support older devices)</p>
+<p>[feature] Add facebook image post docs [docs]</p>
+<p>[feature] Add docs on showing link dialog</p>
+<p>[bug] Fix Comment Composer layout issues</p>
+<p>[bug] SMS share showing n/a</p>
+<p>[bug] User profile not modifiable after some third party changes (You didn&#8217;t create this)</p>
+<p>[bug] Fix some symbol collisions (SBJSON, Facebook, JSONKit, Blockskit)</p>
+<p>[feature] Add an upgrading section to the documentation [ ]</p>
+<p>[feature] Deprecate old action bar [ ]</p>
+<p>[feature] Add a 2.0-specific upgrading section to the documentation [ ]</p>
+<p>[feature] Update documentation for clearer entity loader information [ ]</p>
+<p>[bug] Fix memory leaks [ ]</p>
+<p>[bug] Fix share dialog crash when twitter or facebook unconfigured. [ ]</p>
+<p>[bug] Email and SMS are missing default text [ ]</p>
+<p>[bug] SZUserSettingsChanged notification should include both settings and user [ ]</p>
+<p>[bug] First profile load was not configuring correctly [ ]</p>
+<p>[bug] If changing users in settings, profile controller one level up does not update to the new user [ ]</p>
+<p>[feature] Expose action bar refresh call [ ]</p>
+<p>[bug] Action bar should autorefresh on user change [ ]</p>
+<p>[bug] References to view controller in action bar and like button should not be strong [ ]</p>
+<p>[feature] Add block callbacks to socialize api client [ ]</p>
+<p>[feature] Reorganize core functionality into &#8216;utils&#8217; classes</p>
+<p>[feature] Remake sample app [ ]</p>
+<p>[feature] Add SZ Prefix and simplify names of front facing UI controllers, deprecate old names [ ]</p>
+<p>[feature] Facebook shares should post to &#8220;links&#8221; endpoint, not &#8220;feed&#8221; endpoint [ ]</p>
+<p>[feature] Facebook/twitter now available for all actions (moved from compose comment to share sheet) [ ]</p>
+<p>[feature] SDK Calls automatically create an anon user when necessary (when using utils classes) [ ]</p>
+<p>[feature] Update to latest facebook SDK version [ publicize ]</p>
+<p>[feature] Add facebook link callback for app foreground (neither authed nor cancelled) [ publicize ]</p>
+<p>[feature] Project rebuilt from scratch [ ]</p>
+<p>[feature] Update FB auth to handle Facebook&#8217;s deprecation of offline_access [ ]</p>
+<p>[feature] Add consistent, configurable location sharing for all actions [ ]</p>
+<p>[bug] Fix an inappropriate emission of &#8216;unconfigured social network&#8217; log messages [ ]</p>
+<p>[feature] Comment details screen redesign [ ]</p>
+<p>[feature] Rewrite action bar for performance, configurability, and new interfaces [ ]</p>
+<p>[bug] Change blue socialize navigation bar button back to correct style [ ]</p>
+<p>[feature] Add programmatic saving of user settings [ ]</p>
+<p>[feature] Expose ability to post directly to facebook graph [ ]</p>
+</div>
 <div class="section" id="v1-7-7">
 <h2>v1.7.7<a class="headerlink" href="#v1-7-7" title="Permalink to this headline">¶</a></h2>
 <p>[bug] Token registration should auto auth if needed [ ]</p>
@@ -433,17 +474,26 @@
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/beta/index.html">v2 (beta) docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v2-0">v2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-7-7">v1.7.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-7-6">v1.7.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-7-5">v1.7.5</a></li>
@@ -514,7 +564,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="sdk_pro_tips.html" title="SDK Pro Tips"
              >previous</a></li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

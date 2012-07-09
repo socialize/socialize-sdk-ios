@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 1.7.7 documentation</title>
+    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 2.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.7',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,21 +25,21 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.7 documentation" href="index.html" />
-    <link rel="next" title="Socialize Comments" href="comments.html" />
-    <link rel="prev" title="Twitter Integration" href="twitter.html" /> 
+    <link rel="top" title="Socialize iOS SDK 2.0 documentation" href="index.html" />
+    <link rel="next" title="Entities" href="entities.html" />
+    <link rel="prev" title="Facebook" href="facebook.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="comments.html" title="Socialize Comments"
+          <a href="entities.html" title="Entities"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="twitter.html" title="Twitter Integration"
+          <a href="facebook.html" title="Facebook"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -167,7 +167,7 @@ provisioning profile for your changes to take effect.</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didRegisterForRemoteNotificationsWithDeviceToken:</span><span class="n">deviceToken</span>
 <span class="p">{</span>
 <span class="cp">#if !DEBUG</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">registerDeviceToken:</span><span class="n">deviceToken</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZSmartAlertUtils</span> <span class="nl">registerDeviceToken:</span><span class="n">deviceToken</span><span class="p">];</span>
 <span class="cp">#endif</span>
 <span class="p">}</span>
 </pre></div>
@@ -181,7 +181,7 @@ provisioning profile for your changes to take effect.</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="hll"><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didReceiveRemoteNotification:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">userInfo</span> <span class="p">{</span>
 </span><span class="hll">    
 </span><span class="hll">    <span class="c1">// Handle Socialize notification at foreground</span>
-</span><span class="hll">    <span class="k">if</span> <span class="p">([</span><span class="n">Socialize</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">])</span> <span class="p">{</span>
+</span><span class="hll">    <span class="k">if</span> <span class="p">([</span><span class="n">SZSmartAlertUtils</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">])</span> <span class="p">{</span>
 </span><span class="hll">        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize handled the notification on foreground&quot;</span><span class="p">);</span>
 </span><span class="hll">        <span class="k">return</span><span class="p">;</span>
 </span><span class="hll">    <span class="p">}</span>
@@ -199,7 +199,7 @@ provisioning profile for your changes to take effect.</p>
 </span><span class="hll">    <span class="c1">// Handle Socialize notification at launch</span>
 </span><span class="hll">    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">userInfo</span> <span class="o">=</span> <span class="p">[</span><span class="n">launchOptions</span> <span class="nl">objectForKey:</span><span class="n">UIApplicationLaunchOptionsRemoteNotificationKey</span><span class="p">];</span>
 </span><span class="hll">    <span class="k">if</span> <span class="p">(</span><span class="n">userInfo</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="hll">        <span class="k">if</span> <span class="p">([</span><span class="n">Socialize</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">])</span> <span class="p">{</span>
+</span><span class="hll">        <span class="k">if</span> <span class="p">([</span><span class="n">SZSmartAlertUtils</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">])</span> <span class="p">{</span>
 </span><span class="hll">            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize handled the notification on app launch.&quot;</span><span class="p">);</span>
 </span><span class="hll">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span><span class="hll">            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize did not handle the notification on app launch.&quot;</span><span class="p">);</span>
@@ -224,7 +224,13 @@ provisioning profile for your changes to take effect.</p>
 <h3>Defining an Entity Loader<a class="headerlink" href="#defining-an-entity-loader" title="Permalink to this headline">¶</a></h3>
 <p>For Smart Alerts to work correctly, you must define an entity loader.</p>
 <p>Defining an Entity Loader allows Socialize&#8217;s UI objects to link back to your
-application&#8217;s objects.</p>
+application&#8217;s objects. The entity loader block is called from certain builtin
+Socialize UI Controls when it needs to show information about an entity. It is currently
+shown in the comment details activity listing table view.</p>
+<p>Typically, you should have your own view controller for showing detail on an entity in your
+app. You should push a view controller onto the stack.</p>
+<p>If you&#8217;d just like to see notifications in action, you can use the bundled entity example entity
+loader called <strong>SampleEntityLoader</strong>. This class is not intended for use in a production app.</p>
 <p>Copy the lines below to add an entity loader</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
     
@@ -236,7 +242,7 @@ application&#8217;s objects.</p>
     <span class="c1">// Handle Socialize notification at launch</span>
     <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">userInfo</span> <span class="o">=</span> <span class="p">[</span><span class="n">launchOptions</span> <span class="nl">objectForKey:</span><span class="n">UIApplicationLaunchOptionsRemoteNotificationKey</span><span class="p">];</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">userInfo</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">([</span><span class="n">Socialize</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">([</span><span class="n">SZSmartAlertUtils</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">])</span> <span class="p">{</span>
             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize handled the notification on app launch.&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize did not handle the notification on app launch.&quot;</span><span class="p">);</span>
@@ -309,7 +315,7 @@ user flow. As a convenience, you can dismiss all Socialize notification popups
 programatically by posting a SocializeShouldDismissAllNotificationControllersNotification.</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dismissSocializeNotifications</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dismissSocializeNotifications</span> <span class="p">{</span>
     
     <span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="n">defaultCenter</span><span class="p">]</span> <span class="nl">postNotificationName:</span><span class="n">SocializeShouldDismissAllNotificationControllersNotification</span> <span class="nl">object:</span><span class="nb">nil</span><span class="p">];</span>
 
@@ -365,7 +371,7 @@ registerDeviceToken:]</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didRegisterForRemoteNotificationsWithDeviceToken:</span><span class="n">deviceToken</span>
 <span class="p">{</span>
 <span class="cp">#if !DEBUG</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">registerDeviceToken:</span><span class="n">deviceToken</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZSmartAlertUtils</span> <span class="nl">registerDeviceToken:</span><span class="n">deviceToken</span><span class="p">];</span>
 <span class="cp">#endif</span>
 <span class="p">}</span>
 </pre></div>
@@ -385,11 +391,14 @@ for development and distribution. Socialize itself does not support development 
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/beta/index.html">v2 (beta) docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Enabling SmartAlerts™ Notifications</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-1-setup-smartalerts-on-the-app-dashboard">Step 1: Setup SmartAlerts™ on the App Dashboard</a></li>
@@ -404,9 +413,14 @@ for development and distribution. Socialize itself does not support development 
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting-notifications">Troubleshooting Notifications</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
@@ -432,12 +446,12 @@ for development and distribution. Socialize itself does not support development 
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="comments.html" title="Socialize Comments"
+          <a href="entities.html" title="Entities"
              >next</a></li>
         <li class="right" >
-          <a href="twitter.html" title="Twitter Integration"
+          <a href="facebook.html" title="Facebook"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Advanced UI Configuration &mdash; Socialize iOS SDK 1.7.7 documentation</title>
+    <title>Advanced UI Configuration &mdash; Socialize iOS SDK 2.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.7',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,21 +25,21 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.7 documentation" href="index.html" />
-    <link rel="next" title="SDK User Guide" href="sdk_user_guide.html" />
-    <link rel="prev" title="Socialize Comments" href="comments.html" /> 
+    <link rel="top" title="Socialize iOS SDK 2.0 documentation" href="index.html" />
+    <link rel="next" title="SDK Pro Tips" href="sdk_pro_tips.html" />
+    <link rel="prev" title="Views" href="views.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="sdk_user_guide.html" title="SDK User Guide"
+          <a href="sdk_pro_tips.html" title="SDK Pro Tips"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="comments.html" title="Socialize Comments"
+          <a href="views.html" title="Views"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -136,14 +136,14 @@ to your app.</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">StandaloneShareViewController</span>
 
 <span class="o">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nl">shareButtonPressed:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
-    <span class="n">SocializeEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SocializeEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;my_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">showShareActionSheetWithViewController:</span><span class="n">self</span> <span class="nl">entity:</span><span class="n">entity</span> <span class="nl">success:</span><span class="o">^</span><span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Share created successfully&quot;</span><span class="p">);</span>
-    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">error</span> <span class="nl">isSocializeErrorWithCode:</span><span class="n">SocializeErrorShareCancelledByUser</span><span class="p">])</span> <span class="p">{</span>
-            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Share creation failed with error %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>        
-        <span class="p">}</span>
-    <span class="p">}];</span>
+<span class="c1">//    SocializeEntity *entity = [SocializeEntity entityWithKey:@&quot;my_key&quot; name:@&quot;An Entity&quot;];</span>
+<span class="c1">//    [Socialize showShareActionSheetWithViewController:self entity:entity success:^{</span>
+<span class="c1">//        NSLog(@&quot;Share created successfully&quot;);</span>
+<span class="c1">//    } failure:^(NSError *error) {</span>
+<span class="c1">//        if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {</span>
+<span class="c1">//            NSLog(@&quot;Share creation failed with error %@&quot;, [error localizedDescription]);        </span>
+<span class="c1">//        }</span>
+<span class="c1">//    }];</span>
 <span class="p">}</span>
 
 <span class="k">@end</span>
@@ -160,20 +160,28 @@ to your app.</p>
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/beta/index.html">v2 (beta) docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Advanced UI Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#disabling-error-alerts">Disabling Error Alerts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#automatic-third-party-linking">Automatic Third Party Linking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#standalone-share">Standalone Share</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
@@ -199,12 +207,12 @@ to your app.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="sdk_user_guide.html" title="SDK User Guide"
+          <a href="sdk_pro_tips.html" title="SDK Pro Tips"
              >next</a></li>
         <li class="right" >
-          <a href="comments.html" title="Socialize Comments"
+          <a href="views.html" title="Views"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

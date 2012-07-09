@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Socialize Action Bar &mdash; Socialize iOS SDK 1.7.7 documentation</title>
+    <title>Socialize Action Bar &mdash; Socialize iOS SDK 2.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.7',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,9 +25,9 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.7 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.0 documentation" href="index.html" />
     <link rel="next" title="Socialize Like Button" href="like_button.html" />
-    <link rel="prev" title="Getting Started Guide" href="getting_started.html" /> 
+    <link rel="prev" title="Upgrading Socialize" href="upgrading.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,9 +37,9 @@
           <a href="like_button.html" title="Socialize Like Button"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="getting_started.html" title="Getting Started Guide"
+          <a href="upgrading.html" title="Upgrading Socialize"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -75,20 +75,31 @@
 <h1>Socialize Action Bar<a class="headerlink" href="#socialize-action-bar" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>v0.5.0 of the Socialize SDK introduced the &#8220;Action Bar&#8221; which provides a single
-entry point into the entire set of Socialize features.</p>
+<p>The Socialize Action Bar is a prebuilt control that exposes some core Socialize
+functionality.  It is a relatively simple drop-in component and can quickly be
+added to any app that might benefit from additional social features. The Action
+Bar is customizable, so you can pick and choose which components you&#8217;d like
+displayed.</p>
+<img alt="images/action_bar_default.png" class="align-center" src="images/action_bar_default.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you have been using the Socialize Action Bar from previous releases, you should note that the new action bar (SZActionBar) is incompatible with the old (SocializeActionBar). To upgrade from the old action bar to the new, you will have to update your code. The main difference is that the new action bar is a UIView subclass.</p>
+</div>
 </div>
 <div class="section" id="displaying-the-action-bar">
 <h2>Displaying the Action Bar<a class="headerlink" href="#displaying-the-action-bar" title="Permalink to this headline">¶</a></h2>
-<p>Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller:</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">// Header</span>
-
-<span class="cp">// Store the action bar in a property on your view controller</span>
+<div class="section" id="simple-display">
+<h3>Simple Display<a class="headerlink" href="#simple-display" title="Permalink to this headline">¶</a></h3>
+<p>The simplest way to use the action bar is just by calling
+<strong>showActionBarInViewController:entity:options:</strong> on the <strong>SZActionBarUtils</strong>
+class.</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">// Store the action bar in a property on your view controller</span>
 
 <span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
 <span class="k">@interface</span> <span class="nc">CreateActionBarViewController</span> : <span class="nc">UIViewController</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">SocializeActionBar</span> <span class="o">*</span><span class="n">actionBar</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">SZActionBar</span> <span class="o">*</span><span class="n">actionBar</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span><span class="p">;</span>
 <span class="k">@end</span>
 </pre></div>
 </div>
@@ -96,97 +107,108 @@ entry point into the entire set of Socialize features.</p>
 
 <span class="c1">// Instantiate the action bar in your view controller</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SocializeActionBar</span> <span class="nl">actionBarWithKey:</span><span class="s">@&quot;http://www.example.com/object/1234&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Something&quot;</span> <span class="nl">presentModalInController:</span><span class="n">self</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">view</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBarUtils</span> <span class="nl">showActionBarWithViewController:</span><span class="n">self</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">options:</span><span class="nb">nil</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-</div>
-<p>By default, the Action Bar will automatically place itself at the bottom of its
-superview and adjust to rotation.  If you find that content is being hidden,
-one option is to ensure that 44 pixels are left empty at the bottom of your
-view. When using interface builder, this is as simple as sliding up the bottom
-of any content.</p>
-</div>
-<div class="section" id="advanced-layout-configuration">
-<h2>Advanced Layout Configuration<a class="headerlink" href="#advanced-layout-configuration" title="Permalink to this headline">¶</a></h2>
-<p><em>Optional Configuration with no Automatic Layout</em></p>
-<p>If you  find you have problems with the Action Bar Automatic Layout, and you
-would like to disable the auto layout feature completely, you can do so. The
-following example disables autolayout and manually places the Action Bar at
-(0,400).</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="c1">// Implementation</span>
 
-<span class="c1">// Instantiate the action bar in your view controller</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
-    
-    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SocializeActionBar</span> <span class="nl">actionBarWithKey:</span><span class="s">@&quot;http://www.example.com/object/1234&quot;</span> <span class="nl">name:</span><span class="s">@&quot;My Object&quot;</span> <span class="nl">presentModalInController:</span><span class="n">self</span><span class="p">];</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">noAutoLayout</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="n">SOCIALIZE_ACTION_PANE_HEIGHT</span><span class="p">);</span>
-        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">view</span><span class="p">];</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>If you need more detail on installing the action bar please see our <a class="reference external" href="http://vimeo.com/31403049">Adding the Socialize Action Bar Video</a>.</p>
-<blockquote>
-<div></div></blockquote>
-</div>
-<div class="section" id="delegate">
-<h2>Delegate<a class="headerlink" href="#delegate" title="Permalink to this headline">¶</a></h2>
-<p>Defining a SocializeActionBarDelegate will allow you to customize some behavior of the
-action bar.</p>
-<div class="section" id="showing-action-sheets">
-<h3>Showing Action Sheets<a class="headerlink" href="#showing-action-sheets" title="Permalink to this headline">¶</a></h3>
-<p>If you wish, you can customize the way the Action Bar shows action sheets. To do this,
-just implement actionBar:wantsDisplayActionSheet:, as below</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">// Header</span>
-
-<span class="cp">// Store the action bar in a property on your view controller</span>
-
-<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
-
-<span class="hll"><span class="k">@interface</span> <span class="nc">CreateActionBarWithDelegateViewController</span> : <span class="nc">UIViewController</span> <span class="o">&lt;</span><span class="n">SocializeActionBarDelegate</span><span class="o">&gt;</span>
-</span><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">SocializeActionBar</span> <span class="o">*</span><span class="n">actionBar</span><span class="p">;</span>
 <span class="k">@end</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="manual-display">
+<h3>Manual Display<a class="headerlink" href="#manual-display" title="Permalink to this headline">¶</a></h3>
+<p>Since the action bar is just a UIView subclass, you can instantiate one
+yourself If you initialize the view with a frame of CGRectNull (or if
+<strong>SZActionBarUtils</strong> is used), the Action Bar will automatically place itself
+at the bottom of its superview and adjust to rotation.</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="c1">// Implementation</span>
 
 <span class="c1">// Instantiate the action bar in your view controller</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
     
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SocializeActionBar</span> <span class="nl">actionBarWithKey:</span><span class="s">@&quot;http://www.example.com/object/1234&quot;</span> <span class="nl">name:</span><span class="s">@&quot;My Object&quot;</span> <span class="nl">presentModalInController:</span><span class="n">self</span><span class="p">];</span>
-<span class="hll">        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
-</span>        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">view</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="nl">defaultActionBarWithFrame:</span><span class="n">CGRectNull</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">viewController:</span><span class="n">self</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="hll">
-</span><span class="hll"><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">actionBar:</span><span class="p">(</span><span class="n">SocializeActionBar</span><span class="o">*</span><span class="p">)</span><span class="n">actionBar</span> <span class="nl">wantsDisplayActionSheet:</span><span class="p">(</span><span class="n">UIActionSheet</span><span class="o">*</span><span class="p">)</span><span class="n">actionSheet</span> <span class="p">{</span>
-</span><span class="hll">    <span class="p">[</span><span class="n">actionSheet</span> <span class="nl">showFromRect:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="nl">inView:</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">animated:</span><span class="n">YES</span><span class="p">];</span>
-</span><span class="hll"><span class="p">}</span>
-</span></pre></div>
+</pre></div>
 </div>
 </div>
+<div class="section" id="manual-display-with-custom-frame">
+<h3>Manual Display with Custom Frame<a class="headerlink" href="#manual-display-with-custom-frame" title="Permalink to this headline">¶</a></h3>
+<p>If you&#8217;d like the bar to appear somewhere else, you can initialize the bar with
+a custom frame.</p>
+<p>If you do this, you should note that the default autoresizing mask for the
+action bar is UIViewAutoresizingFlexibleWidth |
+UIViewAutoresizingFlexibleTopMargin, which is suitable for a bar that hugs the
+buttom of a view. If you wish to display the bar somewhere else, you should
+adjust the autoresizing mask accordingly, as below.</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="c1">// Implementation</span>
+
+<span class="c1">// Instantiate the action bar in your view controller</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="nl">defaultActionBarWithFrame:</span><span class="n">CGRectZero</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">viewController:</span><span class="n">self</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">autoresizingMask</span> <span class="o">=</span> <span class="n">UIViewAutoresizingFlexibleWidth</span> <span class="o">|</span> <span class="n">UIViewAutoresizingFlexibleBottomMargin</span><span class="p">;</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 </div>
-<div class="section" id="more-info">
-<h2>More Info<a class="headerlink" href="#more-info" title="Permalink to this headline">¶</a></h2>
-<p>If you need more detail on installing the action bar please see our <a class="reference external" href="http://vimeo.com/31403049">Adding the Socialize Action Bar Video</a>.</p>
-<blockquote>
-<div></div></blockquote>
+</div>
+<div class="section" id="manual-display-with-custom-buttons">
+<h3>Manual Display with Custom Buttons<a class="headerlink" href="#manual-display-with-custom-buttons" title="Permalink to this headline">¶</a></h3>
+<p>If you don&#8217;t like the default buttons on the bar, or if you&#8217;d like to add your
+own, you can do so by changing the <strong>itemsLeft</strong> and <strong>itemsRight</strong> properties.
+If you change these properties, you should specify an NSArray with elements of
+type UIView. You can also take advantage of the SZActionButton class, which
+allows you to specify both an <strong>actionBlock</strong> and an
+<strong>entityConfigurationBlock</strong>.  The following example shows how you might add
+both an email and a panic button to the action bar.</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">emailButtonPressed:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZShareUtils</span> <span class="nl">shareViaEmailWithViewController:</span><span class="n">self</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">success:</span><span class="nb">nil</span> <span class="nl">failure:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="nl">defaultActionBarWithFrame:</span><span class="n">CGRectNull</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">viewController:</span><span class="n">self</span><span class="p">];</span>
+        
+        <span class="n">SZActionButton</span> <span class="o">*</span><span class="n">panicButton</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionButton</span> <span class="nl">actionButtonWithIcon:</span><span class="nb">nil</span> <span class="nl">title:</span><span class="s">@&quot;Panic&quot;</span><span class="p">];</span>
+        <span class="n">panicButton</span><span class="p">.</span><span class="n">actionBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZActionButton</span> <span class="o">*</span><span class="n">button</span><span class="p">,</span> <span class="n">SZActionBar</span> <span class="o">*</span><span class="n">bar</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">UIAlertView</span> <span class="o">*</span><span class="n">alertView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIAlertView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTitle:</span><span class="s">@&quot;Oh no!&quot;</span> <span class="nl">message:</span><span class="nb">nil</span> <span class="nl">delegate:</span><span class="nb">nil</span> <span class="nl">cancelButtonTitle:</span><span class="nb">nil</span> <span class="nl">otherButtonTitles:</span><span class="s">@&quot;Ok&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+            <span class="p">[</span><span class="n">alertView</span> <span class="n">show</span><span class="p">];</span>
+        <span class="p">};</span>
+        
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">itemsRight</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="nl">arrayWithObjects:</span><span class="n">panicButton</span><span class="p">,</span> <span class="p">[</span><span class="n">SZActionButton</span> <span class="n">commentButton</span><span class="p">],</span> <span class="nb">nil</span><span class="p">];</span>
+        
+        <span class="n">UIButton</span> <span class="o">*</span><span class="n">emailButton</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIButton</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame:</span><span class="n">CGRectZero</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">emailButton</span> <span class="nl">setImage:</span><span class="p">[</span><span class="n">UIImage</span> <span class="nl">imageNamed:</span><span class="s">@&quot;socialize-selectnetwork-email-icon.png&quot;</span><span class="p">]</span> <span class="nl">forState:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">emailButton</span> <span class="n">sizeToFit</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">emailButton</span> <span class="nl">addTarget:</span><span class="n">self</span> <span class="nl">action:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">emailButtonPressed:</span><span class="p">)</span> <span class="nl">forControlEvents:</span><span class="n">UIControlEventTouchUpInside</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">itemsLeft</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="nl">arrayWithObjects:</span><span class="p">[</span><span class="n">SZActionButton</span> <span class="n">viewsButton</span><span class="p">],</span> <span class="n">emailButton</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+        
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="images/action_bar_custom_buttons.png" class="align-center" src="images/action_bar_custom_buttons.png" />
+</div>
 </div>
 </div>
 
@@ -198,22 +220,27 @@ just implement actionBar:wantsDisplayActionSheet:, as below</p>
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/beta/index.html">v2 (beta) docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Socialize Action Bar</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#displaying-the-action-bar">Displaying the Action Bar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#advanced-layout-configuration">Advanced Layout Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#delegate">Delegate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#more-info">More Info</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
@@ -242,9 +269,9 @@ just implement actionBar:wantsDisplayActionSheet:, as below</p>
           <a href="like_button.html" title="Socialize Like Button"
              >next</a></li>
         <li class="right" >
-          <a href="getting_started.html" title="Getting Started Guide"
+          <a href="upgrading.html" title="Upgrading Socialize"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -55,24 +55,17 @@ Configuring Twitter in Socialize
 
 Once you have a twitter application, simply tell Socialize about your consumer key and secret:
 
-.. literalinclude:: snippets/configure_twitter.m
-  :start-after: begin-snippet
-  :end-before: end-snippet
-  :emphasize-lines: 9-10
+.. literalinclude:: snippets/twitter.m
+  :start-after: begin-configure-snippet
+  :end-before: end-configure-snippet
+  :emphasize-lines: 9
+
+.. note:: Standard Twitter configuration complete. Keep reading for special configuration
 
 Linking to Twitter Using Existing Credentials
 ---------------------------------------------
 If you already have a Twitter access token of your own, you can link to Socialize like so:
 
-.. literalinclude:: snippets/link_to_twitter.h
-
-.. literalinclude:: snippets/link_to_twitter.m
-  :start-after: begin-snippet
-  :end-before: end-snippet
-
-Propagating Socialize Actions to Twitter
------------------------------------------
-
-Social actions such as Comment and Like will automatically be propagated to
-Twitter when using the Socialize UI. SDK Calls for creating propagating
-actions will be available soon.
+.. literalinclude:: snippets/twitter.m
+  :start-after: begin-link-snippet
+  :end-before: end-link-snippet

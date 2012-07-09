@@ -27,6 +27,9 @@ The main class through which you will be interacting would be Socialize.
 Installing the SDK
 ------------------
 
+If you are upgrading from a previous release, check out the `Upgrading Guide`_.
+    .. _Upgrading Guide: upgrading.html
+
 Step 1: Add the Socialize Framework to Your Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -136,51 +139,7 @@ By now you should be able to see the Socialize Action Bar.  If you need any help
 
 Optional: Configure Your App for Facebook
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-It is strongly recommended that users be able to authenticate with Facebook when using Socialize so as to maximize the exposure, and promotion of your app.
-
-Let Socialize know your Facebook app id.  You can register or find your
-Facebook app id here: https://developers.facebook.com/apps
-
-.. literalinclude:: snippets/configure_facebook.m
-  :start-after: begin-snippet
-  :end-before: end-snippet
-  :emphasize-lines: 9
-
-If your app is not already configured for facebook authentication, then you'll
-need to perform two more steps:
-
-First, you must register your app to open with your facebook app id url by
-adding a URL Types array to your Application's <MyApp>-Info.plist.  The string
-is a lowercase fb followed by your app id. The example app is configured as
-below:
-
-.. image:: images/facebook_urltypes.png	
-
-And lastly, you must be sure to call [Socialize handleOpenURL:url] from your
-UIApplicationDelegate's application:openURL:sourceApplication: method. Socialize will take
-care of handing off the openURL request to the underlying `Facebook iOS SDK
-<http://developers.facebook.com/docs/reference/iossdk/authentication/>`_. This
-completes the authentication flow.
-
-.. literalinclude:: snippets/configure_facebook.m
-  :start-after: begin-openurl-snippet
-  :end-before: end-openurl-snippet
-  :emphasize-lines: 9
-
-If your app already authenticates with Facebook, you will need to let Socialize
-know about the existing session. You can do this with the
-linkToFacebookWithAccessToken:expirationDate: call.  For more information on
-using FBConnect on your own, you can check the official Facebook tutorial at
-`Facebook iOS SDK
-<http://developers.facebook.com/docs/reference/iossdk/authentication/>`_.
-
-.. literalinclude:: snippets/link_to_facebook.h
-
-.. literalinclude:: snippets/link_to_facebook.m
-  :start-after: begin-snippet
-  :end-before: end-snippet
-
+See the `Facebook section <facebook.html>`_.
 
 Optional: Configure Your App for Twitter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Twitter Integration &mdash; Socialize iOS SDK 1.7.7 documentation</title>
+    <title>Twitter Integration &mdash; Socialize iOS SDK 2.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7.7',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 1.7.7 documentation" href="index.html" />
-    <link rel="next" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" />
+    <link rel="top" title="Socialize iOS SDK 2.0 documentation" href="index.html" />
+    <link rel="next" title="Facebook" href="facebook.html" />
     <link rel="prev" title="Socialize Like Button" href="like_button.html" /> 
   </head>
   <body>
@@ -34,12 +34,12 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
+          <a href="facebook.html" title="Facebook"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -109,68 +109,35 @@ valid URL for callback otherwise authentication will fail.</li>
     <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
     <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerKey:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
     <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerSecret:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
-<span class="hll">    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeTwitterConsumerKey:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_KEY&quot;</span><span class="p">];</span>
-</span><span class="hll">    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeTwitterConsumerSecret:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_SECRET&quot;</span><span class="p">];</span>    
+<span class="hll">    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="nl">setConsumerKey:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_KEY&quot;</span> <span class="nl">consumerSecret:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_SECRET&quot;</span><span class="p">];</span>
 </span>    <span class="c1">//your application specific code</span>
     
     <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Standard Twitter configuration complete. Keep reading for special configuration</p>
+</div>
 </div>
 <div class="section" id="linking-to-twitter-using-existing-credentials">
 <h2>Linking to Twitter Using Existing Credentials<a class="headerlink" href="#linking-to-twitter-using-existing-credentials" title="Permalink to this headline">¶</a></h2>
 <p>If you already have a Twitter access token of your own, you can link to Socialize like so:</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
-
-<span class="k">@interface</span> <span class="nc">LinkToTwitterExample</span> : <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">SocializeServiceDelegate</span><span class="o">&gt;</span>
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">Socialize</span> <span class="o">*</span><span class="n">socialize</span><span class="p">;</span>
-<span class="k">@end</span>
-</pre></div>
-</div>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">LinkToTwitterExample</span>
-<span class="k">@synthesize</span> <span class="n">socialize</span> <span class="o">=</span> <span class="n">socialize_</span><span class="p">;</span>
-
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
-    <span class="n">self</span><span class="p">.</span><span class="n">socialize</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">linkToTwitter</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="nl">setConsumerKey:</span><span class="s">@&quot;MYAPPCONSUMERKEY&quot;</span> <span class="nl">consumerSecret:</span><span class="s">@&quot;MYAPPCONSUMERSECRET&quot;</span><span class="p">];</span>
     
-    <span class="p">[</span><span class="n">super</span> <span class="n">dealloc</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="n">Socialize</span><span class="o">*</span><span class="p">)</span><span class="n">socialize</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">socialize_</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">socialize_</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Socialize</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithDelegate:</span><span class="n">self</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">socialize_</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">linkToTwitter</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeTwitterConsumerKey:</span><span class="s">@&quot;MYAPPCONSUMERKEY&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeTwitterConsumerSecret:</span><span class="s">@&quot;MYAPPCONSUMERSECRET&quot;</span><span class="p">];</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">existingAccessToken</span> <span class="o">=</span> <span class="s">@&quot;PREAUTHEDACCESSTOKEN&quot;</span><span class="p">;</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">existingSecret</span> <span class="o">=</span> <span class="s">@&quot;PREAUTHEDACCESSTOKENSECRET&quot;</span><span class="p">;</span>
     
-    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">socialize</span> <span class="nl">linkToTwitterWithAccessToken:</span><span class="s">@&quot;PREAUTHEDACCESSTOKEN&quot;</span> <span class="nl">accessTokenSecret:</span><span class="s">@&quot;PREAUTHEDACCESSTOKENSECRET&quot;</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">didAuthenticate:</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeUser</span><span class="o">&gt;</span><span class="p">)</span><span class="n">user</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">([</span><span class="n">self</span><span class="p">.</span><span class="n">socialize</span> <span class="n">isAuthenticatedWithTwitter</span><span class="p">])</span> <span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Twit Tah! %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">user</span> <span class="n">thirdPartyAuth</span><span class="p">]);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Not authenticated with Twitter&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">service:</span><span class="p">(</span><span class="n">SocializeService</span> <span class="o">*</span><span class="p">)</span><span class="n">service</span> <span class="nl">didFail:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="n">error</span> <span class="p">{</span>
-    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;All is not well: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
+    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="nl">linkWithAccessToken:</span><span class="n">existingAccessToken</span> <span class="nl">accessTokenSecret:</span><span class="n">existingSecret</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeFullUser</span><span class="o">&gt;</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Link Complete&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Link failure: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
+    <span class="p">}];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="propagating-socialize-actions-to-twitter">
-<h2>Propagating Socialize Actions to Twitter<a class="headerlink" href="#propagating-socialize-actions-to-twitter" title="Permalink to this headline">¶</a></h2>
-<p>Social actions such as Comment and Like will automatically be propagated to
-Twitter when using the Socialize UI. SDK Calls for creating propagating
-actions will be available soon.</p>
 </div>
 </div>
 
@@ -182,8 +149,10 @@ actions will be available soon.</p>
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/beta/index.html">v2 (beta) docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Twitter Integration</a><ul>
@@ -191,13 +160,18 @@ actions will be available soon.</p>
 <li class="toctree-l2"><a class="reference internal" href="#creating-a-twitter-application">Creating a Twitter Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-twitter-in-socialize">Configuring Twitter in Socialize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linking-to-twitter-using-existing-credentials">Linking to Twitter Using Existing Credentials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#propagating-socialize-actions-to-twitter">Propagating Socialize Actions to Twitter</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="comments.html">Socialize Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sdk_user_guide.html">SDK User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
@@ -223,12 +197,12 @@ actions will be available soon.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
+          <a href="facebook.html" title="Facebook"
              >next</a></li>
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 1.7.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
