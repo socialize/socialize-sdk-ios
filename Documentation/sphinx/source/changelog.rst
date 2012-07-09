@@ -7,6 +7,49 @@ Changelog
 v2.0
 ----
 
+[bug] armv6 not being bundled (support older devices)
+
+[feature] Add facebook image post docs [docs]
+
+[feature] Add docs on showing link dialog
+
+[bug] Fix Comment Composer layout issues
+
+[bug] SMS share showing n/a
+
+[bug] User profile not modifiable after some third party changes (You didn't create this)
+
+[bug] Fix some symbol collisions (SBJSON, Facebook, JSONKit, Blockskit) 
+
+
+[feature] Add an upgrading section to the documentation [ ]
+
+[feature] Deprecate old action bar [ ]
+
+[feature] Add a 2.0-specific upgrading section to the documentation [ ]
+
+[feature] Update documentation for clearer entity loader information [ ]
+
+[bug] Fix memory leaks [ ]
+
+
+[bug] Fix share dialog crash when twitter or facebook unconfigured. [ ]
+
+[bug] Email and SMS are missing default text [ ]
+
+[bug] SZUserSettingsChanged notification should include both settings and user [ ]
+
+[bug] First profile load was not configuring correctly [ ]
+
+[bug] If changing users in settings, profile controller one level up does not update to the new user [ ]
+
+[feature] Expose action bar refresh call [ ]
+
+[bug] Action bar should autorefresh on user change [ ]
+
+[bug] References to view controller in action bar and like button should not be strong [ ]
+
+
 [feature] Add block callbacks to socialize api client [ ]
 
 [feature] Reorganize core functionality into 'utils' classes
