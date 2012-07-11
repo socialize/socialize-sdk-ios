@@ -22,6 +22,7 @@
 #import "SZShareDialogViewController.h"
 #import "SZUserUtils.h"
 #import "SocializeLoadingView.h"
+#import "socialize_globals.h"
 
 @implementation SZShareUtils
 
@@ -33,7 +34,7 @@
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))completion {
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
     shareDialog.completionBlock = ^(NSArray *shares) {
-        [viewController dismissViewControllerAnimated:YES completion:^{
+        [viewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL_1(completion, shares);
         }];
     };

@@ -84,7 +84,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
                 // Linked to a network -- Show network selection
                 _SZSelectNetworkViewController *selectNetwork = [[_SZSelectNetworkViewController alloc] init];
                 selectNetwork.completionBlock = ^(SZSocialNetwork selectedNetworks) {
-                    [viewController dismissViewControllerAnimated:YES completion:^{
+                    [viewController SZDismissViewControllerAnimated:YES completion:^{
                         BLOCK_CALL_1(completion, selectedNetworks);
                     }];
                 };
@@ -96,7 +96,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
             } else {
                 
                 // Opted out of linking -- Don't show network selection
-                [viewController dismissViewControllerAnimated:YES completion:^{
+                [viewController SZDismissViewControllerAnimated:YES completion:^{
                     BLOCK_CALL_1(completion, SZSocialNetworkNone);
                 }];
             }
@@ -105,7 +105,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
         link.cancellationBlock = ^{
             
             // Explicitly cancelled link -- Dismiss and call cancellation
-            [viewController dismissViewControllerAnimated:YES completion:^{
+            [viewController SZDismissViewControllerAnimated:YES completion:^{
                 BLOCK_CALL(cancellation);                
             }];
         };
@@ -116,13 +116,13 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
         // No link dialog required
         SZSelectNetworkViewController *selectNetwork = [[SZSelectNetworkViewController alloc] init];
         selectNetwork.completionBlock = ^(SZSocialNetwork selectedNetworks) {
-            [viewController dismissViewControllerAnimated:YES completion:^{
+            [viewController SZDismissViewControllerAnimated:YES completion:^{
                 BLOCK_CALL_1(completion, selectedNetworks);
             }];
             
         };
         selectNetwork.cancellationBlock = ^{
-            [viewController dismissViewControllerAnimated:YES completion:^{
+            [viewController SZDismissViewControllerAnimated:YES completion:^{
                 BLOCK_CALL(cancellation);
             }];
         };

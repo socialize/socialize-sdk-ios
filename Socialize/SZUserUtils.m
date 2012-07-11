@@ -30,13 +30,13 @@
     
     SZLinkDialogViewController *linkDialog = [[SZLinkDialogViewController alloc] init];
     linkDialog.completionBlock = ^(SZSocialNetwork selectedNetwork) {
-        [viewController dismissViewControllerAnimated:YES completion:^{
+        [viewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL_1(completion, selectedNetwork);
         }];
     };
     
     linkDialog.cancellationBlock = ^{
-        [viewController dismissViewControllerAnimated:YES completion:^{
+        [viewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL(cancellation);
         }];
     };
@@ -51,7 +51,7 @@
     
     SZUserProfileViewController *profile = [[SZUserProfileViewController alloc] initWithUser:(id<SZUser>)user];
     profile.completionBlock = ^(id<SZFullUser> user) {
-        [viewController dismissViewControllerAnimated:YES completion:^{
+        [viewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL_1(completion, user);
         }];
     };
@@ -61,7 +61,7 @@
 + (void)showUserSettingsInViewController:(UIViewController*)viewController completion:(void(^)())completion {
     SZUserSettingsViewController *settings = [[SZUserSettingsViewController alloc] init];
     settings.completionBlock = ^(BOOL didSave, id<SZFullUser> user) {
-        [viewController dismissViewControllerAnimated:YES completion:^{
+        [viewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL(completion);
         }];
     };
