@@ -46,7 +46,7 @@
 
     };
 
-    CreateAndShareActivity(like, options, networks, likeCreator, success, failure);
+    SZCreateAndShareActivity(like, options, networks, likeCreator, success, failure);
 }
 
 + (void)unlike:(id<SZEntity>)entity success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {

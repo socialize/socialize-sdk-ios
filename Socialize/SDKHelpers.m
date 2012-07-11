@@ -53,7 +53,7 @@ SZSocialNetwork SZAvailableSocialNetworks() {
     return networks;
 }
 
-BOOL ShouldShowLinkDialog() {
+BOOL SZShouldShowLinkDialog() {
     return ( SZLinkedSocialNetworks() == SZSocialNetworkNone && SZAvailableSocialNetworks() != SZSocialNetworkNone && ![Socialize authenticationNotRequired]);
 }
 
@@ -72,7 +72,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
         BLOCK_CALL_1(completion, SZSocialNetworkNone);
     }
     
-    if (ShouldShowLinkDialog()) {
+    if (SZShouldShowLinkDialog()) {
         
         // Link and possibly show network selection
         SZLinkDialogViewController *link = [[SZLinkDialogViewController alloc] init];
@@ -199,7 +199,7 @@ void SZAttemptAction(NSTimeInterval retryInterval, SZAttemptActionBlock attempt)
     attemptBlock();
 }
 
-void CreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *options, SZSocialNetwork networks, ActivityCreatorBlock creator, void (^success)(id<SZActivity> activity), void (^failure)(NSError *error)) {
+void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *options, SZSocialNetwork networks, ActivityCreatorBlock creator, void (^success)(id<SZActivity> activity), void (^failure)(NSError *error)) {
     if (networks & SZSocialNetworkFacebook && (![SZFacebookUtils isAvailable] || ![SZFacebookUtils isLinked])) {
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorFacebookUnavailable]);
         return;

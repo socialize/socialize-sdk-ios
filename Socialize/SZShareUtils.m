@@ -56,7 +56,7 @@
         }, failure);
     };
                                      
-    CreateAndShareActivity(share, options, networks, shareCreator, success, failure);
+    SZCreateAndShareActivity(share, options, networks, shareCreator, success, failure);
 }
 
 + (NSString*)defaultMessageForShare:(id<SZShare>)share {

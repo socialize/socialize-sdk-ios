@@ -72,7 +72,7 @@
 
     };
     
-    CreateAndShareActivity(comment, options, networks, commentCreator, success, failure);
+    SZCreateAndShareActivity(comment, options, networks, commentCreator, success, failure);
 }
 
 + (void)addCommentWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
