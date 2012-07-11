@@ -24,6 +24,24 @@
 
 // end-show-share-dialog-snippet
 
+// begin-manual-show-share-dialog-snippet
+
+- (void)manuallyShowShareDialog {
+    SZEntity *entity = [SZEntity entityWithKey:@"key" name:@"name"];
+    SZShareDialogViewController *share = [[SZShareDialogViewController alloc] initWithEntity:entity];
+    share.completionBlock = ^{
+        
+        // Dismiss however you want here
+        [self dismissModalViewControllerAnimated:NO];
+    };
+    
+    // Present however you want here
+    [self presentModalViewController:share animated:NO];
+}
+
+// end-manual-show-share-dialog-snippet
+
+
 // begin-create-share-snippet
 
 - (void)createShare {

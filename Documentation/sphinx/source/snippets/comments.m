@@ -20,6 +20,23 @@
 
 // end-show-comments-list-snippet
 
+// begin-manual-show-comments-list-snippet
+
+- (void)manuallyShowCommentsList {
+    SZEntity *entity = [SZEntity entityWithKey:@"key" name:@"name"];
+    SZCommentsListViewController *comments = [[SZCommentsListViewController alloc] initWithEntity:entity];
+    comments.completionBlock = ^{
+        
+        // Dismiss however you want here
+        [self dismissModalViewControllerAnimated:NO];
+    };
+    
+    // Present however you want here
+    [self presentModalViewController:share animated:NO];
+}
+
+// end-manual-show-comments-list-snippet
+
 // begin-show-comment-composer-snippet
 
 - (void)showCommentComposer {
@@ -32,6 +49,23 @@
 }
 
 // end-show-comment-composer-snippet
+
+// begin-manual-show-comment-composer-snippet
+
+- (void)manuallyShowCommentComposer {
+    SZEntity *entity = [SZEntity entityWithKey:@"key" name:@"name"];
+    SZComposeCommentViewController *composer = [[SZComposeCommentViewController alloc] initWithEntity:entity];
+    composer.completionBlock = ^{
+        
+        // Dismiss however you want here
+        [self dismissModalViewControllerAnimated:NO];
+    };
+    
+    // Present however you want here
+    [self presentModalViewController:share animated:NO];
+}
+
+// end-manual-show-comment-composer-snippet
 
 // begin-add-comment-snippet
 
