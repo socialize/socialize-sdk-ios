@@ -42,7 +42,13 @@
 
 + (void)shareViaSocialNetworksWithEntity:(id<SZEntity>)entity networks:(SZSocialNetwork)networks options:(SZShareOptions*)options success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
     SocializeShareMedium medium = SocializeShareMediumForSZSocialNetworks(networks);
-    SZShare *share = [SZShare shareWithEntity:entity text:options.text medium:medium];
+    
+    NSString *text = options.text;
+    if ([text length] == 0) {
+        text = @"Shared";
+    }
+    
+    SZShare *share = [SZShare shareWithEntity:entity text:text medium:medium];
     
     ActivityCreatorBlock shareCreator = ^(id<SZShare> share, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
         SZAuthWrapper(^{
