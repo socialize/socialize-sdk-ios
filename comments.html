@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Comments &mdash; Socialize iOS SDK 2.0 documentation</title>
+    <title>Comments &mdash; Socialize iOS SDK 2.0.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.0',
+        VERSION:     '2.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.0 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.0.1 documentation" href="index.html" />
     <link rel="next" title="Likes" href="likes.html" />
     <link rel="prev" title="Sharing" href="sharing.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="sharing.html" title="Sharing"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -89,6 +89,21 @@ lines of code</p>
 </div>
 <img alt="images/comments_list.png" src="images/comments_list.png" />
 <img alt="images/comment_details.png" src="images/comment_details.png" />
+<p>If you need to, you can directly instantiate the comments list and manage its lifecycle on your own.</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">manuallyShowCommentsList</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>
+    <span class="n">SZCommentsListViewController</span> <span class="o">*</span><span class="n">comments</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SZCommentsListViewController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithEntity:</span><span class="n">entity</span><span class="p">];</span>
+    <span class="n">comments</span><span class="p">.</span><span class="n">completionBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+        
+        <span class="c1">// Dismiss however you want here</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nl">dismissModalViewControllerAnimated:</span><span class="n">NO</span><span class="p">];</span>
+    <span class="p">};</span>
+    
+    <span class="c1">// Present however you want here</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nl">presentModalViewController:</span><span class="n">comments</span> <span class="nl">animated:</span><span class="n">NO</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="comment-composer">
 <h3>Comment Composer<a class="headerlink" href="#comment-composer" title="Permalink to this headline">¶</a></h3>
@@ -106,6 +121,21 @@ controller is also provided:</p>
 </div>
 <img alt="images/comment_composer.png" src="images/comment_composer.png" />
 <img alt="images/select_network.png" src="images/select_network.png" />
+<p>You can also directly instantiate the comment composer</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">manuallyShowCommentComposer</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>
+    <span class="n">SZComposeCommentViewController</span> <span class="o">*</span><span class="n">composer</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SZComposeCommentViewController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithEntity:</span><span class="n">entity</span><span class="p">];</span>
+    <span class="n">composer</span><span class="p">.</span><span class="n">completionBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZComment</span><span class="o">&gt;</span> <span class="n">comment</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created comment: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">comment</span> <span class="n">text</span><span class="p">]);</span>
+        <span class="c1">// Dismiss however you want here</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nl">dismissModalViewControllerAnimated:</span><span class="n">NO</span><span class="p">];</span>
+    <span class="p">};</span>
+    
+    <span class="c1">// Present however you want here</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nl">presentModalViewController:</span><span class="n">composer</span> <span class="nl">animated:</span><span class="n">NO</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="working-with-comments">
@@ -266,7 +296,7 @@ Socialize network selection dialog.</p>
         <li class="right" >
           <a href="sharing.html" title="Sharing"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started Guide &mdash; Socialize iOS SDK 2.0 documentation</title>
+    <title>Getting Started Guide &mdash; Socialize iOS SDK 2.0.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.0',
+        VERSION:     '2.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.0 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.0.1 documentation" href="index.html" />
     <link rel="next" title="Upgrading to Socialize v2" href="upgrading_2_0.html" />
     <link rel="prev" title="Socialize iOS SDK" href="index.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -221,17 +221,23 @@ It is not necessary to explicitly create an Entity object when rendering the Act
 <span class="k">@end</span>
 </pre></div>
 </div>
-<div class="highlight-objective-c"><div class="highlight"><pre>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="c1">// Implementation</span>
+
+<span class="c1">// Instantiate the action bar in your view controller</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBarUtils</span> <span class="nl">showActionBarWithViewController:</span><span class="n">self</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">options:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
 </pre></div>
 </div>
-<p>By default, the Action Bar will automatically place itself at the bottom of its
-superview and adjust to rotation.  If you find that content is being hidden,
-one option is to ensure that 44 pixels are left empty at the bottom of your
-view. When using interface builder, this is as simple as sliding up the bottom
-of any content.</p>
-<p>If you need more detail on installing the action bar please see our <a class="reference external" href="http://vimeo.com/31403049">Adding the Socialize Action Bar Video</a>.</p>
-<blockquote>
-<div></div></blockquote>
+<p>For more info on configuring the action bar, see the <a class="reference external" href="action_bar.html">Action Bar Section</a>.</p>
 <p>By now you should be able to see the Socialize Action Bar.  If you need any help please visit us at <a class="reference external" href="http://support.getsocialize.com">http://support.getsocialize.com</a></p>
 </div>
 <div class="section" id="optional-configure-your-app-for-facebook">
@@ -310,7 +316,7 @@ of any content.</p>
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

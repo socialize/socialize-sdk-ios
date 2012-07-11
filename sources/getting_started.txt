@@ -121,18 +121,11 @@ In your View controller's header file place the following code:
 .. literalinclude:: snippets/create_action_bar.h
 
 .. literalinclude:: snippets/create_action_bar.m
-  :start-after: begin-snippet
-  :end-before: end-snippet
+  :start-after: begin-simple-create-snippet
+  :end-before: end-simple-create-snippet
 
-By default, the Action Bar will automatically place itself at the bottom of its
-superview and adjust to rotation.  If you find that content is being hidden,
-one option is to ensure that 44 pixels are left empty at the bottom of your
-view. When using interface builder, this is as simple as sliding up the bottom
-of any content.
+For more info on configuring the action bar, see the `Action Bar Section <action_bar.html>`_.
 
-If you need more detail on installing the action bar please see our `Adding the Socialize Action Bar Video`_.
-
-    .. _Adding the Socialize Action Bar Video: http://vimeo.com/31403049
 
 
 By now you should be able to see the Socialize Action Bar.  If you need any help please visit us at http://support.getsocialize.com

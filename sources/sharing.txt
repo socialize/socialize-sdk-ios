@@ -24,6 +24,12 @@ The simplest way to allow users to share an entity (your content) is via the sha
 
 .. image:: images/share_dialog.png
 
+If you need to, you can directly instantiate the share dialog and manage its lifecycle on your own.
+
+.. literalinclude:: snippets/sharing.m
+	:start-after: begin-manual-show-share-dialog-snippet
+	:end-before: end-manual-show-share-dialog-snippet
+
 Working with Shares
 -------------------
 

@@ -22,6 +22,12 @@ lines of code
 .. image:: images/comments_list.png	
 .. image:: images/comment_details.png	
 
+If you need to, you can directly instantiate the comments list and manage its lifecycle on your own.
+
+.. literalinclude:: snippets/comments.m
+	:start-after: begin-manual-show-comments-list-snippet
+	:end-before: end-manual-show-comments-list-snippet
+
 Comment Composer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -34,6 +40,12 @@ controller is also provided:
 
 .. image:: images/comment_composer.png	
 .. image:: images/select_network.png	
+
+You can also directly instantiate the comment composer
+
+.. literalinclude:: snippets/comments.m
+	:start-after: begin-manual-show-comment-composer-snippet
+	:end-before: end-manual-show-comment-composer-snippet
 
 Working with comments
 ----------------------
