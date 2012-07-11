@@ -4,6 +4,20 @@
 Changelog
 =============================================
 
+v2.0.1
+------
+[bug] Fix action bar code in getting started section [ ]
+
+[bug] Fix missing text for twitter share from share dialog [ ]
+
+[bug] Old (unused) social network buttons show briefly on first comment composer load [ ]
+
+[feature] Add failed to post warning for Facebook wall posts [ ]
+
+[feature] Add docs for managing the bundled controllers on your own [ ]
+
+[bug] Fix unrecognized selector dismissViewControllerAnimated:completion: [ ios4 ]
+
 v2.0
 ----
 
