@@ -29,7 +29,7 @@
 - (void)manuallyShowShareDialog {
     SZEntity *entity = [SZEntity entityWithKey:@"key" name:@"name"];
     SZShareDialogViewController *share = [[SZShareDialogViewController alloc] initWithEntity:entity];
-    share.completionBlock = ^{
+    share.completionBlock = ^(NSArray *shares) {
         
         // Dismiss however you want here
         [self dismissModalViewControllerAnimated:NO];

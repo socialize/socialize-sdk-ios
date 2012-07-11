@@ -32,7 +32,7 @@
     };
     
     // Present however you want here
-    [self presentModalViewController:share animated:NO];
+    [self presentModalViewController:comments animated:NO];
 }
 
 // end-manual-show-comments-list-snippet
@@ -55,14 +55,14 @@
 - (void)manuallyShowCommentComposer {
     SZEntity *entity = [SZEntity entityWithKey:@"key" name:@"name"];
     SZComposeCommentViewController *composer = [[SZComposeCommentViewController alloc] initWithEntity:entity];
-    composer.completionBlock = ^{
-        
+    composer.completionBlock = ^(id<SZComment> comment) {
+        NSLog(@"Created comment: %@", [comment text]);
         // Dismiss however you want here
         [self dismissModalViewControllerAnimated:NO];
     };
     
     // Present however you want here
-    [self presentModalViewController:share animated:NO];
+    [self presentModalViewController:composer animated:NO];
 }
 
 // end-manual-show-comment-composer-snippet
