@@ -263,6 +263,10 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
                     BLOCK_CALL_1(success, activity);
                 } failure:^(NSError *error) {
                     
+                    if (error != nil) {
+                        NSLog(@"Socialize Warning: Failed to post to Facebook wall: %@", [error localizedDescription]);
+                    }
+                    
                     // Failed Wall post is still a success. Handle separately in options.
                     BLOCK_CALL_1(options.didFailToPostToSocialNetworkBlock, SZSocialNetworkFacebook);
 
