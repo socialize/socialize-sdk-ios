@@ -54,23 +54,6 @@
     if (self.actionBar == nil) {
         self.entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
         self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:self.entity viewController:self];
-        
-        SZActionButton *shareButton = [SZActionButton actionButtonWithIcon:nil title:@"Share"];
-        shareButton.actionBlock = ^(SZActionButton *button, SZActionBar *bar) {
-            SZEntity *entity = [SZEntity entityWithKey:@"key" name:@"name"];
-            SZShareDialogViewController *share = [[SZShareDialogViewController alloc] initWithEntity:entity];
-            share.completionBlock = ^(NSArray *shares) {
-                
-                // Dismiss however you want here
-                [self dismissModalViewControllerAnimated:NO];
-            };
-            
-            // Present however you want here
-            [self presentModalViewController:share animated:NO];
-            
-        };
-        
-        self.actionBar.itemsRight = [NSArray arrayWithObjects:shareButton, [SZActionButton commentButton], nil];
         [self.view addSubview:self.actionBar];
 //        [self customizeButtons];
 //        [self makeActionBarVertical];

@@ -319,7 +319,14 @@
 
     [steps addObject:[KIFTestStep stepToExecuteBlock:^{
         NSMutableArray *comments = [NSMutableArray array];
-        for (int i = 0; i < numRows; i++) {
+        for (int i = 0; i < numRows / 2; i++) {
+            id<SZComment> comment = [SZComment commentWithEntity:entity text:[NSString stringWithFormat:@"Comment%02d", i]];
+            [comments addObject:comment];
+        }
+        [[SZTestHelper sharedTestHelper] createComments:comments];
+        
+        [comments removeAllObjects];
+        for (int i = numRows / 2; i < numRows; i++) {
             id<SZComment> comment = [SZComment commentWithEntity:entity text:[NSString stringWithFormat:@"Comment%02d", i]];
             [comments addObject:comment];
         }
