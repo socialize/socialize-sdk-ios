@@ -4,6 +4,10 @@
 Changelog
 =============================================
 
+v2.0.2
+------
+[bug] Fix a header problem with the 2.0.1 release
+
 v2.0.1
 ------
 [bug] Fix action bar code in getting started section [ ]
