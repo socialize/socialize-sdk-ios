@@ -224,7 +224,7 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
             if (networks & SZSocialNetworkFacebook) {
                 
                 // This shortened link returned from the server encapsulates all the Socialize magic
-                NSString *shareURL = [[[activity propagationInfoResponse] objectForKey:@"facebook"] objectForKey:@"application_url"];
+                NSString *shareURL = [[[activity propagationInfoResponse] objectForKey:@"facebook"] objectForKey:@"entity_url"];
                 
                 NSString *name = activity.application.name;
                 NSString *link = shareURL;
