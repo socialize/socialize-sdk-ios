@@ -356,3 +356,19 @@ BOOL SZOSGTE(NSString *minVersion) {
     NSComparisonResult result = [currOsVersion compare:minVersion options:NSNumericSearch];
     return result == NSOrderedSame || result == NSOrderedDescending;
 }
+
+NSStringEncoding NSStringEncodingForURLResponse(NSHTTPURLResponse *response) {
+    NSStringEncoding encoding = NSISOLatin1StringEncoding;
+    NSString *contentType = [[[response allHeaderFields] objectForKey:@"Content-Type"] lowercaseString];
+    if (contentType && [contentType rangeOfString:@"charset=utf-8"].location != NSNotFound) {
+        encoding = NSUTF8StringEncoding;
+    }
+    
+    return encoding;
+}
+
+NSString *NSStringForHTTPURLResponse(NSHTTPURLResponse* response, NSData *data) {
+    NSStringEncoding encoding = NSStringEncodingForURLResponse(response);
+    return [[NSString alloc] initWithData:data encoding:encoding];
+}
+

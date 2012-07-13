@@ -32,3 +32,5 @@ BOOL SZOSGTE(NSString *minVersion);
 void SZEmitUnconfiguredFacebookMessage();
 void SZEmitUnconfiguredTwitterMessage();
 void SZEmitUnconfiguredSmartAlertsMessage();
+NSStringEncoding NSStringEncodingForURLResponse(NSHTTPURLResponse *response);
+NSString *NSStringForHTTPURLResponse(NSHTTPURLResponse* response, NSData *data);

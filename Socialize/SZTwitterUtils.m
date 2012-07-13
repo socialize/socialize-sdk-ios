@@ -13,6 +13,7 @@
 #import "SDKHelpers.h"
 #import "SZUserUtils.h"
 #import "socialize_globals.h"
+#import "SZOARequest+Twitter.h"
 
 @implementation SZTwitterUtils
 
@@ -68,6 +69,16 @@
     
     
     [viewController presentModalViewController:link animated:YES];
+}
+
++ (void)getWithPath:(NSString*)path params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
+    SZOARequest *req = [SZOARequest twitterRequestWithMethod:@"GET" path:path parameters:params success:success failure:failure];
+    [[NSOperationQueue socializeQueue] addOperation:req];
+}
+
++ (void)postWithPath:(NSString*)path params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
+    SZOARequest *req = [SZOARequest twitterRequestWithMethod:@"POST" path:path parameters:params success:success failure:failure];
+    [[NSOperationQueue socializeQueue] addOperation:req];
 }
 
 @end
