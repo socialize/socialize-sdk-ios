@@ -13,6 +13,7 @@
 
 @synthesize objectID = _objectID;
 @synthesize fromServer = _fromServer;
+@synthesize serverDictionary = _serverDictionary;
 
 - (id)copyWithZone:(NSZone *)zone {
     SocializeObject *copy = [[self class] allocWithZone:zone];

@@ -76,7 +76,7 @@
     [self prepare];
     id mockDelegate = [OCMockObject mockForProtocol:@protocol(SocializeServiceDelegate)];
     _service.delegate = [mockDelegate retain];
-    [[mockDelegate expect] didAuthenticate:nil];
+    [[mockDelegate expect] didAuthenticate:OCMOCK_ANY];
 
     NSString* reponseString =@"{\"oauth_token_secret\": \"f0e68570-00a4-4516-af27-b61a23099ad4\", \"oauth_token\": \"7ef9831c-5e23-4060-b197-4df5481a381d\", \"user\": {\"username\": \"User3920508\", \"id\": 3920508, \"small_image_uri\": null}}";
     

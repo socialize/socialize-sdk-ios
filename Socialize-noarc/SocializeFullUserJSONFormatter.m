@@ -57,6 +57,8 @@
     }
     
     [toUser setThirdPartyAuth:TYPE_CHECK([JSONDictionary valueForKey:@"third_party_auth"])];
+    
+    [super doToObject:toObject fromDictionary:JSONDictionary];
 }
 
 -(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
@@ -81,6 +83,8 @@
     
     if([fromFullUser meta])
         [JSONFormatDictionary setObject:[fromFullUser meta] forKey:@"meta"];
+    
+    [super doToDictionary:JSONFormatDictionary fromObject:fromObject];
 }
 
 @end

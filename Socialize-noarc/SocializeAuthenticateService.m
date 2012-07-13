@@ -18,7 +18,6 @@
 
 @interface SocializeAuthenticateService()
 -(NSString*)getSocializeToken;
--(void)persistUserInfo:(NSDictionary*)dictionary;
 -(void)persistConsumerInfo:(NSString*)apiKey andApiSecret:(NSString*)apiSecret;
 @end
 
@@ -70,15 +69,6 @@
     if (userDefaults){
         [userDefaults setObject:apiKey forKey:kSocializeConsumerKey];
         [userDefaults setObject:apiSecret forKey:kSocializeConsumerSecret];
-        [userDefaults synchronize];
-    }
-}
-
--(void)persistUserInfo:(NSDictionary*)dictionary{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if (userDefaults){
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dictionary];
-        [userDefaults setObject:data forKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
         [userDefaults synchronize];
     }
 }
@@ -203,16 +193,16 @@
             OAToken *requestToken = [[OAToken alloc] initWithKey:token secret:token_secret];
             [requestToken storeInUserDefaultsWithServiceProviderName:kPROVIDER_NAME prefix:kPROVIDER_PREFIX];
             [requestToken release]; requestToken = nil;
-            [self persistUserInfo:[jsonObject objectForKey:@"user"]];
+            
+            NSDictionary *fullUserDictionary = [jsonObject objectForKey:@"user"];
+            id<SZFullUser> fullUser = [_objectCreator createObjectFromDictionary:fullUserDictionary forProtocol:@protocol(SZFullUser)];
+            SZHandleUserChange(fullUser);
 
             if (request.successBlock != nil) {
                 request.successBlock(self.authenticatedUser);
             } else if (([_delegate respondsToSelector:@selector(didAuthenticate:)])) {
                 [_delegate didAuthenticate:self.authenticatedUser];
             }
-            
-            // Post a global notification that the authenticated user has changed
-            [[NSNotificationCenter defaultCenter] postNotificationName:SocializeAuthenticatedUserDidChangeNotification object:self.authenticatedFullUser];
             
         } else {
             SDebugLog0(@"Unexpected JSON Response: %@", responseBody);
@@ -240,23 +230,12 @@
     [defaults synchronize]; 
 }
 
-- (id)unarchiveFullUserWithProtocol:(Protocol*)protocol {
-    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:kSOCIALIZE_AUTHENTICATED_USER_KEY];
-    if (userData != nil) {
-        NSDictionary *info = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
-        return [_objectCreator createObjectFromDictionary:info forProtocol:protocol];
-    }
-    
-    // Not available
-    return nil;
-}
-
 - (id<SocializeUser>)authenticatedUser {  
-    return [self unarchiveFullUserWithProtocol:@protocol(SocializeUser)];
+    return SZUnarchiveUser(@protocol(SocializeUser));
 }
 
 - (id<SocializeFullUser>)authenticatedFullUser {    
-    return [self unarchiveFullUserWithProtocol:@protocol(SocializeFullUser)];
+    return SZUnarchiveUser(@protocol(SocializeFullUser));
 }
 
 
