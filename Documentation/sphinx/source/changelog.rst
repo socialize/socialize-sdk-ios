@@ -4,8 +4,25 @@
 Changelog
 =============================================
 
+v2.0.3
+------
+
+[feature] Add slightly more verbose facebook error logging [ ]
+
+[bug] Facebook is sharing application link, not entity link [ ]
+
+[feature] Add doc note on required permissions when authenticating on your own [ ]
+
+[feature] Add doc example for manual graph post [ ]
+
+v2.0.2
+------
+
+[bug] Fix a header problem with the 2.0.1 release
+
 v2.0.1
 ------
+
 [bug] Fix action bar code in getting started section [ ]
 
 [bug] Fix missing text for twitter share from share dialog [ ]

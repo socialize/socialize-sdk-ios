@@ -27,6 +27,9 @@
 - (BOOL)isFromServer;
 - (void)setFromServer:(BOOL)fromServer;
 
+- (void)setServerDictionary:(NSDictionary*)serverDictionary;
+- (NSDictionary*)serverDictionary;
+
 @end
 
 /**
@@ -42,5 +45,6 @@
 @property(nonatomic, assign) int objectID;
 
 @property (nonatomic, assign, getter=isFromServer) BOOL fromServer;
+@property (nonatomic, retain) NSDictionary *serverDictionary;
 
 @end

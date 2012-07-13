@@ -56,6 +56,7 @@
 {
     [toObject setFromServer:YES];
     [toObject setObjectID:[[JSONDictionary objectForKey:@"id"] intValue]]; 
+    [toObject setServerDictionary:JSONDictionary];
 }
 
 -(void)doToDictionary:(NSMutableDictionary *)dictionary fromObject:(id<SocializeObject>) fromObject

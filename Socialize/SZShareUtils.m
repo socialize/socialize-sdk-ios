@@ -46,7 +46,7 @@
     
     NSString *text = options.text;
     if ([text length] == 0) {
-        text = @"Shared";
+        text = DEFAULT_TWITTER_SHARE_MSG;
     }
     
     SZShare *share = [SZShare shareWithEntity:entity text:text medium:medium];

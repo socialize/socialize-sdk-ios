@@ -44,13 +44,13 @@
         SZShareOptions *shareOptions = [SZShareUtils userShareOptions];
         [self startLoading];
         [SZShareUtils shareViaSocialNetworksWithEntity:self.entity networks:networks options:shareOptions success:^(id<SZShare> share) {
+            [self stopLoading];
             [self.createdShares addObject:share];
             BLOCK_CALL_1(self.completionBlock, self.createdShares);
         } failure:^(NSError *error) {
             [self stopLoading];
             [self failWithError:error];
         }];
-        [self stopLoading];
     }
 }
 

@@ -49,13 +49,28 @@ using FBConnect on your own, you can check the official Facebook tutorial at
   :start-after: begin-link-snippet
   :end-before: end-link-snippet
 
+.. note:: The "publish_stream" permission is required for Socialize to function correctly. You must
+  request this permission when performing your own Facebook authentication.
+
+Posting to Facebook on your own
+------------------------------------------
+
+Should you need to post to Facebook on your own, you can do so by using the
+direct Facebook access methods on the utils classes
+
+.. literalinclude:: snippets/facebook.m
+  :start-after: begin-post-to-feed-snippet
+  :end-before: end-post-to-feed-snippet
+
+See http://developers.facebook.com/docs/reference/api/post/ for more info
+
 Posting Images to Facebook
 ------------------------------------------
 
-Should you need to post an image to Facebook, you can do so by using the direct Facebook
-access methods on the utils classes
+You can also post an image.
 
 .. literalinclude:: snippets/facebook.m
   :start-after: begin-post-image-snippet
   :end-before: end-post-image-snippet
 
+See http://developers.facebook.com/docs/reference/api/photo/ for more info

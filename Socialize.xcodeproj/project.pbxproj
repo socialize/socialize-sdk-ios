@@ -663,6 +663,10 @@
 		AA90FFF6159065C400AFD8A2 /* disable_error_alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = AA90FFE6159065C400AFD8A2 /* disable_error_alerts.m */; };
 		AA90FFF9159065C400AFD8A2 /* show_comments_list.m in Sources */ = {isa = PBXBuildFile; fileRef = AA90FFEB159065C400AFD8A2 /* show_comments_list.m */; };
 		AA90FFFA159065C400AFD8A2 /* third_party_link_options.m in Sources */ = {isa = PBXBuildFile; fileRef = AA90FFEC159065C400AFD8A2 /* third_party_link_options.m */; };
+		AA91F93815B0D2E800BC373E /* SZAPIClientHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AA91F93615B0D2E800BC373E /* SZAPIClientHelpers.h */; };
+		AA91F93915B0D2E800BC373E /* SZAPIClientHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AA91F93615B0D2E800BC373E /* SZAPIClientHelpers.h */; };
+		AA91F93A15B0D2E800BC373E /* SZAPIClientHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AA91F93715B0D2E800BC373E /* SZAPIClientHelpers.m */; };
+		AA91F93B15B0D2E800BC373E /* SZAPIClientHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AA91F93715B0D2E800BC373E /* SZAPIClientHelpers.m */; };
 		AA935990158F187200B5B2BC /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358C7158F187200B5B2BC /* action-bar-bg.png */; };
 		AA935992158F187200B5B2BC /* action-bar-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358C7158F187200B5B2BC /* action-bar-bg.png */; };
 		AA935993158F187200B5B2BC /* action-bar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358C8158F187200B5B2BC /* action-bar-bg@2x.png */; };
@@ -2444,6 +2448,8 @@
 		AA90FFE6159065C400AFD8A2 /* disable_error_alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = disable_error_alerts.m; sourceTree = "<group>"; };
 		AA90FFEB159065C400AFD8A2 /* show_comments_list.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = show_comments_list.m; sourceTree = "<group>"; };
 		AA90FFEC159065C400AFD8A2 /* third_party_link_options.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = third_party_link_options.m; sourceTree = "<group>"; };
+		AA91F93615B0D2E800BC373E /* SZAPIClientHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZAPIClientHelpers.h; sourceTree = "<group>"; };
+		AA91F93715B0D2E800BC373E /* SZAPIClientHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZAPIClientHelpers.m; sourceTree = "<group>"; };
 		AA9358C7158F187200B5B2BC /* action-bar-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-bar-bg.png"; path = "Socialize/Resources/action-bar-bg.png"; sourceTree = SOURCE_ROOT; };
 		AA9358C8158F187200B5B2BC /* action-bar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-bar-bg@2x.png"; path = "Socialize/Resources/action-bar-bg@2x.png"; sourceTree = SOURCE_ROOT; };
 		AA9358C9158F187200B5B2BC /* action-bar-button-black-hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "action-bar-button-black-hover.png"; path = "Socialize/Resources/action-bar-button-black-hover.png"; sourceTree = SOURCE_ROOT; };
@@ -2900,6 +2906,7 @@
 			children = (
 				AAC194E415AF923700DDE42F /* Extensions */,
 				AA77C95A15ACCE8900745096 /* Network */,
+				AA91F93515B0D2B800BC373E /* API Client */,
 				AA41522E15911DF0003717AC /* Utils */,
 				AA25FEAF159119F50067741A /* UI */,
 				AA5807E4158E994D005B9F6C /* Resources */,
@@ -3861,6 +3868,15 @@
 			path = Documentation/sphinx/source/snippets;
 			sourceTree = SOURCE_ROOT;
 		};
+		AA91F93515B0D2B800BC373E /* API Client */ = {
+			isa = PBXGroup;
+			children = (
+				AA91F93615B0D2E800BC373E /* SZAPIClientHelpers.h */,
+				AA91F93715B0D2E800BC373E /* SZAPIClientHelpers.m */,
+			);
+			name = "API Client";
+			sourceTree = "<group>";
+		};
 		AA935C0D158F1C2E00B5B2BC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -4163,6 +4179,7 @@
 				AA77C95615ACCE6B00745096 /* SZOARequest.h in Headers */,
 				AAC194DA15AF712B00DDE42F /* SZOARequest+Twitter.h in Headers */,
 				AAC194E715AF925200DDE42F /* NSOperationQueue+Socialize.h in Headers */,
+				AA91F93815B0D2E800BC373E /* SZAPIClientHelpers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4251,6 +4268,7 @@
 				AA77C95715ACCE6B00745096 /* SZOARequest.h in Headers */,
 				AAC194DB15AF712B00DDE42F /* SZOARequest+Twitter.h in Headers */,
 				AAC194E815AF925200DDE42F /* NSOperationQueue+Socialize.h in Headers */,
+				AA91F93915B0D2E800BC373E /* SZAPIClientHelpers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5702,6 +5720,7 @@
 				AA77C95815ACCE6B00745096 /* SZOARequest.m in Sources */,
 				AAC194DC15AF712B00DDE42F /* SZOARequest+Twitter.m in Sources */,
 				AAC194E915AF925200DDE42F /* NSOperationQueue+Socialize.m in Sources */,
+				AA91F93A15B0D2E800BC373E /* SZAPIClientHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6189,6 +6208,7 @@
 				AA77C95915ACCE6B00745096 /* SZOARequest.m in Sources */,
 				AAC194DD15AF712B00DDE42F /* SZOARequest+Twitter.m in Sources */,
 				AAC194EA15AF925200DDE42F /* NSOperationQueue+Socialize.m in Sources */,
+				AA91F93B15B0D2E800BC373E /* SZAPIClientHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

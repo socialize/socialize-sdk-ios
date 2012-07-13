@@ -63,6 +63,10 @@
     
     [[mockUser expect] setThirdPartyAuth: [JSONDictionaryToParse objectForKey:@"third_party_auth"]];
     
+    [[mockUser expect] setFromServer:YES];
+    [[mockUser expect] setObjectID:1];
+    [[mockUser expect] setServerDictionary:OCMOCK_ANY];
+    
     
     SocializeFullUserJSONFormatter * userFormatter = [[[SocializeFullUserJSONFormatter alloc]initWithFactory:_factory] autorelease];
     

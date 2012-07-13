@@ -29,6 +29,7 @@
 // Latch the status for these, so we can perform row animations
 @property (nonatomic, assign) BOOL showFacebookLogout;
 @property (nonatomic, assign) BOOL showTwitterLogout;
+@property (nonatomic, assign) BOOL profileImageChanged;
 
 - (void)updateInterfaceToReflectFacebookSessionStatus ;
 - (void)updateInterfaceToReflectSessionStatuses;
@@ -74,6 +75,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 @synthesize showTwitterLogout = showTwitterLogout_;
 @synthesize popover = popover_;
 @synthesize userSettingsCompletionBlock = userSettingsCompletionBlock_;
+@synthesize profileImageChanged = _profileImageChanged;
 
 + (UINavigationController*)profileEditViewControllerInNavigationController {
     _SZUserSettingsViewController *profileEditViewController = [self profileEditViewController];
@@ -222,7 +224,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     BOOL autopost = postToTwitter || postToFacebook;
     userSettings.autopostEnabled = [NSNumber numberWithBool:autopost];
 
-    userSettings.profileImage = self.profileImage;
+    if (self.profileImageChanged) {
+        userSettings.profileImage = self.profileImage;
+    }
     
     return userSettings;
 }
@@ -440,6 +444,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)facebookSwitchChanged:(UISwitch*)facebookSwitch {
+    [self configureForAfterEdit];
+
     if ([facebookSwitch isOn] && ![SocializeThirdPartyFacebook isLinkedToSocialize]) {
         [self authenticateViaFacebook];
     }
@@ -463,10 +469,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)twitterSwitchChanged:(UISwitch*)twitterSwitch {
-    NSNumber *dontPostToTwitter = [NSNumber numberWithBool:!twitterSwitch.isOn];
-    [self.userDefaults setObject:dontPostToTwitter forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
-    [self.userDefaults synchronize];
-    
+    [self configureForAfterEdit];
+
     if ([twitterSwitch isOn] && ![SocializeThirdPartyTwitter isLinkedToSocialize]) {
         [self authenticateViaTwitter];
     }
@@ -606,11 +610,13 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)configureForAfterEdit {
+    self.saveButton.enabled = YES;
     self.editOccured = YES;
     [self changeTitleOnCustomBarButton:self.saveButton toText:@"Save"];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    self.profileImageChanged = YES;
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
@@ -685,8 +691,10 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 - (void)authenticateViaTwitter {
     [SZTwitterUtils linkWithViewController:self success:^(id<SZFullUser> user) {
+        [self configureForAfterEdit];
         [self updateInterfaceToReflectSessionStatuses];
     } failure:^(NSError *error) {
+        [self configureForAfterEdit];
         [self updateInterfaceToReflectSessionStatuses];        
     }];
 }
@@ -695,10 +703,12 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     SZShowLinkToFacebookAlertView(^{
 
         [SZFacebookUtils linkWithOptions:nil success:^(id<SZFullUser> user) {
+            [self configureForAfterEdit];
             [self updateInterfaceToReflectSessionStatuses];
         } foreground:^{
             [self updateInterfaceToReflectSessionStatuses];            
         } failure:^(NSError *error) {
+            [self configureForAfterEdit];
             [self updateInterfaceToReflectSessionStatuses];        
         }];
     }, ^{

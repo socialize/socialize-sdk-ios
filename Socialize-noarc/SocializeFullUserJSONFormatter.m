@@ -57,6 +57,8 @@
     }
     
     [toUser setThirdPartyAuth:TYPE_CHECK([JSONDictionary valueForKey:@"third_party_auth"])];
+    
+    [super doToObject:toObject fromDictionary:JSONDictionary];
 }
 
 -(void)doToDictionary:(NSMutableDictionary *)JSONFormatDictionary fromObject:(id<SocializeObject>) fromObject
@@ -76,14 +78,13 @@
     if([fromFullUser location])
         [JSONFormatDictionary setObject:[fromFullUser location] forKey:@"location"];
 
-    if([fromFullUser smallImageUrl])
-        [JSONFormatDictionary setObject:[fromFullUser smallImageUrl] forKey:@"picture"];
-    
     if([fromFullUser sex])
         [JSONFormatDictionary setObject:[fromFullUser sex] forKey:@"sex"];
     
     if([fromFullUser meta])
         [JSONFormatDictionary setObject:[fromFullUser meta] forKey:@"meta"];
+    
+    [super doToDictionary:JSONFormatDictionary fromObject:fromObject];
 }
 
 @end

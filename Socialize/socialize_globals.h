@@ -15,3 +15,7 @@
 #import "UIButton+Socialize.h"
 #import "SZNavigationController.h"
 #import "NSOperationQueue+Socialize.h"
+
+#import "SocializeObjects.h"
+#import "SocializeCommonDefinitions.h"
+#import "SZAPIClientHelpers.h"

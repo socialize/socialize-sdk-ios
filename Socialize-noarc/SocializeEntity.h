@@ -69,6 +69,8 @@
 -(NSDictionary*)userActionSummary;
 -(void)setUserActionSummary:(NSDictionary*)userActionSummary;
 
+- (NSString*)displayName;
+
 @end
 
 /**Private implementation of <SocializeEntity> protocol*/

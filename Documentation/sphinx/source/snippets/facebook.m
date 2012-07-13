@@ -62,6 +62,21 @@
 
 // end-link-snippet
 
+// begin-post-to-feed-snippet
+
+- (void)postToFacebookFeed {
+    NSMutableDictionary *postData = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                     @"hi there", @"message",
+                                     nil];
+    
+    [SZFacebookUtils postWithGraphPath:@"me/feed" params:postData success:^(id post) {
+        NSLog(@"Posted %@!", post);
+    } failure:^(NSError *error) {
+        NSLog(@"Facebook post failed: %@, %@", [error localizedDescription], [error userInfo]);
+    }];
+}
+
+// end-post-to-feed-snippet
 
 // begin-post-image-snippet
 

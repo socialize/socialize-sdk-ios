@@ -33,6 +33,7 @@
 #import "SocializeLike.h"
 #import "SocializeShare.h"
 #import "SocializeView.h"
+#import "socialize_globals.h"
 
 #define USER_GET_ENDPOINT     @"user/"
 #define USER_POST_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/", userid]
@@ -112,7 +113,10 @@
                                                          expectedJSONFormat:SocializeDictionary
                                                                      params:params];
         request.operationType = SocializeRequestOperationTypeUpdate;
-        request.successBlock = success;
+        request.successBlock = ^(id<SZFullUser> newUser) {
+            SZHandleUserChange(newUser);
+            [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didUpdate:) object:newUser];
+        };
         request.failureBlock = failure;
         
         [self executeRequest:request];
