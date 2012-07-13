@@ -440,6 +440,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)facebookSwitchChanged:(UISwitch*)facebookSwitch {
+    [self configureForAfterEdit];
+
     if ([facebookSwitch isOn] && ![SocializeThirdPartyFacebook isLinkedToSocialize]) {
         [self authenticateViaFacebook];
     }
@@ -463,10 +465,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)twitterSwitchChanged:(UISwitch*)twitterSwitch {
-    NSNumber *dontPostToTwitter = [NSNumber numberWithBool:!twitterSwitch.isOn];
-    [self.userDefaults setObject:dontPostToTwitter forKey:kSOCIALIZE_DONT_POST_TO_TWITTER_KEY];
-    [self.userDefaults synchronize];
-    
+    [self configureForAfterEdit];
+
     if ([twitterSwitch isOn] && ![SocializeThirdPartyTwitter isLinkedToSocialize]) {
         [self authenticateViaTwitter];
     }
@@ -606,6 +606,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)configureForAfterEdit {
+    self.saveButton.enabled = YES;
     self.editOccured = YES;
     [self changeTitleOnCustomBarButton:self.saveButton toText:@"Save"];
 }
@@ -685,8 +686,10 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 - (void)authenticateViaTwitter {
     [SZTwitterUtils linkWithViewController:self success:^(id<SZFullUser> user) {
+        [self configureForAfterEdit];
         [self updateInterfaceToReflectSessionStatuses];
     } failure:^(NSError *error) {
+        [self configureForAfterEdit];
         [self updateInterfaceToReflectSessionStatuses];        
     }];
 }
@@ -695,10 +698,12 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     SZShowLinkToFacebookAlertView(^{
 
         [SZFacebookUtils linkWithOptions:nil success:^(id<SZFullUser> user) {
+            [self configureForAfterEdit];
             [self updateInterfaceToReflectSessionStatuses];
         } foreground:^{
             [self updateInterfaceToReflectSessionStatuses];            
         } failure:^(NSError *error) {
+            [self configureForAfterEdit];
             [self updateInterfaceToReflectSessionStatuses];        
         }];
     }, ^{
