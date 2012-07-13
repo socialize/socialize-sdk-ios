@@ -324,14 +324,17 @@
             [comments addObject:comment];
         }
         [[SZTestHelper sharedTestHelper] createComments:comments];
-        
-        [comments removeAllObjects];
+    }]];
+    
+    [steps addObject:[KIFTestStep stepToExecuteBlock:^{
+        NSMutableArray *comments = [NSMutableArray array];
         for (int i = numRows / 2; i < numRows; i++) {
             id<SZComment> comment = [SZComment commentWithEntity:entity text:[NSString stringWithFormat:@"Comment%02d", i]];
             [comments addObject:comment];
         }
         [[SZTestHelper sharedTestHelper] createComments:comments];
     }]];
+
 
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowCommentsListRow];
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
