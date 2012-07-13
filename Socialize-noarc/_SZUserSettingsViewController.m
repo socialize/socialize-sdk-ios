@@ -29,6 +29,7 @@
 // Latch the status for these, so we can perform row animations
 @property (nonatomic, assign) BOOL showFacebookLogout;
 @property (nonatomic, assign) BOOL showTwitterLogout;
+@property (nonatomic, assign) BOOL profileImageChanged;
 
 - (void)updateInterfaceToReflectFacebookSessionStatus ;
 - (void)updateInterfaceToReflectSessionStatuses;
@@ -74,6 +75,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 @synthesize showTwitterLogout = showTwitterLogout_;
 @synthesize popover = popover_;
 @synthesize userSettingsCompletionBlock = userSettingsCompletionBlock_;
+@synthesize profileImageChanged = _profileImageChanged;
 
 + (UINavigationController*)profileEditViewControllerInNavigationController {
     _SZUserSettingsViewController *profileEditViewController = [self profileEditViewController];
@@ -222,7 +224,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     BOOL autopost = postToTwitter || postToFacebook;
     userSettings.autopostEnabled = [NSNumber numberWithBool:autopost];
 
-    userSettings.profileImage = self.profileImage;
+    if (self.profileImageChanged) {
+        userSettings.profileImage = self.profileImage;
+    }
     
     return userSettings;
 }
@@ -612,6 +616,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    self.profileImageChanged = YES;
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {

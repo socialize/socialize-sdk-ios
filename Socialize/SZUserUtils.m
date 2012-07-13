@@ -97,7 +97,12 @@
         
         // Generate an SZFullUser and send it off
         id<SocializeFullUser> user = [self currentUser];
-        [settings populateFullUser:user];   
+        [settings populateFullUser:user];
+        
+        if (settings.profileImage == nil) {
+            
+        }
+        
         [[Socialize sharedSocialize] updateUserProfile:user profileImage:settings.profileImage success:^(id<SZFullUser> fullUser) {
             NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                                       fullUser, kSZUpdatedUserKey,

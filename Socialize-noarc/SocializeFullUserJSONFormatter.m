@@ -76,9 +76,6 @@
     if([fromFullUser location])
         [JSONFormatDictionary setObject:[fromFullUser location] forKey:@"location"];
 
-    if([fromFullUser smallImageUrl])
-        [JSONFormatDictionary setObject:[fromFullUser smallImageUrl] forKey:@"picture"];
-    
     if([fromFullUser sex])
         [JSONFormatDictionary setObject:[fromFullUser sex] forKey:@"sex"];
     
