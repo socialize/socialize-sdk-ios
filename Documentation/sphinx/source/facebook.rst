@@ -49,6 +49,9 @@ using FBConnect on your own, you can check the official Facebook tutorial at
   :start-after: begin-link-snippet
   :end-before: end-link-snippet
 
+.. note:: The "publish_stream" permission is required for Socialize to function correctly. You must
+  request this permission when performing your own Facebook authentication.
+
 Posting to Facebook on your own
 ------------------------------------------
 
