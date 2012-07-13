@@ -46,6 +46,17 @@
     return [NSString stringWithFormat:@"%@/%@, %d/%d/%d, %@", [self key], [self name], [self comments], [self likes], [self shares], [self userActionSummary]];
 }
 
+- (NSString*)displayName {
+    NSString *displayName;
+    if ([[self name] length] > 0) {
+        displayName = [self name];
+    } else {
+        displayName = [self key];
+    }
+    
+    return displayName;
+}
+
 @end
 
 NSDictionary *SZServerParamsForEntity(id<SZEntity> entity) {

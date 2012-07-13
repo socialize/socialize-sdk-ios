@@ -226,34 +226,24 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
                 // This shortened link returned from the server encapsulates all the Socialize magic
                 NSString *shareURL = [[[activity propagationInfoResponse] objectForKey:@"facebook"] objectForKey:@"entity_url"];
                 
-                NSString *name = activity.application.name;
+                NSString *name = [activity.entity displayName];
                 NSString *link = shareURL;
-                NSString *caption = [NSString stringWithSocializeAppDownloadPlug];
                 
-                // Build the message string
-                NSMutableString *message = [NSMutableString string];
-                if ([activity.entity.name length] > 0) {
-                    [message appendFormat:@"%@: ", activity.entity.name];
-                }
-                
-                [message appendFormat:@"%@\n\n", shareURL];
-                
-                NSString *text = nil;
+                NSString *message = @"";
                 if ([activity respondsToSelector:@selector(text)]) {
-                    text = [(id)activity text];
+                    message = [(id)activity text];
+                    
+                    // Temporary hack until we move tweet to client
+                    if ([activity conformsToProtocol:@protocol(SZShare)] && [message isEqualToString:DEFAULT_TWITTER_SHARE_MSG]) {
+                        message = @"";
+                    }
                 }
-                if ([text length] > 0) {
-                    [message appendFormat:@"%@\n\n", text];
-                }
-                
-                [message appendFormat:@"Shared from %@.", activity.application.name];
                 
                 NSMutableDictionary *postData = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                 message, @"message",
-                                                 caption, @"caption",
-                                                 link, @"link",
                                                  name, @"name",
-                                                 @"This is the description", @"description",
+                                                 message, @"message",
+                                                 link, @"link",
+                                                 @"link", @"type",
                                                  nil];
                 
                 BLOCK_CALL_2(options.willPostToSocialNetworkBlock, SZSocialNetworkFacebook, postData);
