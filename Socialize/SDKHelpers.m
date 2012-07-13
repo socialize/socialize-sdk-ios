@@ -264,7 +264,7 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
                 } failure:^(NSError *error) {
                     
                     if (error != nil) {
-                        NSLog(@"Socialize Warning: Failed to post to Facebook wall: %@", [error localizedDescription]);
+                        NSLog(@"Socialize Warning: Failed to post to Facebook wall: %@ / %@", [error localizedDescription], [error userInfo]);
                     }
                     
                     // Failed Wall post is still a success. Handle separately in options.
