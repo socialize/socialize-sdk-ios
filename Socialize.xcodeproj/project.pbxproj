@@ -653,6 +653,7 @@
 		AA7D041415A26CAA00EBB705 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */; };
 		AA7D041515A26CAA00EBB705 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */; };
 		AA7D5DFF159072CD005B12A3 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3C62A115906FBE00386330 /* GHUnitIOS.framework */; };
+		AA84CCE915B0F50A00D7109C /* SZOARequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */; };
 		AA85D2F2159E55B7004DEB35 /* standalone_share.m in Sources */ = {isa = PBXBuildFile; fileRef = AA85D2F1159E55B7004DEB35 /* standalone_share.m */; };
 		AA876708159032E900E9B2C1 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8767021590327C00E9B2C1 /* libJSONKit.a */; };
 		AA90FFED159065C400AFD8A2 /* api_client.m in Sources */ = {isa = PBXBuildFile; fileRef = AA90FFD9159065C400AFD8A2 /* api_client.m */; };
@@ -2433,6 +2434,8 @@
 		AA7D03DF15A26CAA00EBB705 /* SZUserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserUtils.m; sourceTree = "<group>"; };
 		AA7D03E015A26CAA00EBB705 /* SZViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZViewUtils.h; sourceTree = "<group>"; };
 		AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZViewUtils.m; sourceTree = "<group>"; };
+		AA84CCE715B0F50A00D7109C /* SZOARequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZOARequestTests.h; sourceTree = "<group>"; };
+		AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZOARequestTests.m; sourceTree = "<group>"; };
 		AA85D2F0159E55B7004DEB35 /* standalone_share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = standalone_share.h; sourceTree = "<group>"; };
 		AA85D2F1159E55B7004DEB35 /* standalone_share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = standalone_share.m; sourceTree = "<group>"; };
 		AA8766FA1590327B00E9B2C1 /* JSONKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSONKit.xcodeproj; path = ThirdParty/JSONKit/JSONKit.xcodeproj; sourceTree = "<group>"; };
@@ -3203,6 +3206,8 @@
 				AACC19F1159B9B1900800576 /* SZActionBarTests.m */,
 				AAE748B015A23963009FFE95 /* BaseShareViewControllerTests.h */,
 				AAE748B115A23963009FFE95 /* BaseShareViewControllerTests.m */,
+				AA84CCE715B0F50A00D7109C /* SZOARequestTests.h */,
+				AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -5970,6 +5975,7 @@
 				AA2B124A159E486E00AD53D5 /* facebook.m in Sources */,
 				AA85D2F2159E55B7004DEB35 /* standalone_share.m in Sources */,
 				AA60B3BA15A23E500062BD41 /* BaseShareViewControllerTests.m in Sources */,
+				AA84CCE915B0F50A00D7109C /* SZOARequestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
