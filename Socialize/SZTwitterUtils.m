@@ -23,6 +23,22 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
++ (NSString*)consumerKey {
+    return [SocializeThirdPartyTwitter consumerKey];
+}
+
++ (NSString*)consumerSecret {
+    return [SocializeThirdPartyTwitter consumerSecret];
+}
+
++ (NSString*)accessToken {
+    return [SocializeThirdPartyTwitter accessToken];
+}
+
++ (NSString*)accessTokenSecret {
+    return [SocializeThirdPartyTwitter accessTokenSecret];
+}
+
 + (BOOL)isAvailable {
     BOOL available = [SocializeThirdPartyTwitter available];
     if (!available) SZEmitUnconfiguredTwitterMessage();

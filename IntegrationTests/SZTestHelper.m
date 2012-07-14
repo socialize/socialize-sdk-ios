@@ -49,6 +49,29 @@ static SZTestHelper *sharedTestHelper;
     return [apiInfo objectForKey:@"twitterTokenSecret"];
 }
 
+- (NSString*)twitterConsumerKey {
+    NSDictionary *apiInfo = [self authInfoFromConfig];
+    return [apiInfo objectForKey:@"twitterConsumerKey"];
+}
+
+- (NSString*)twitterConsumerSecret {
+    NSDictionary *apiInfo = [self authInfoFromConfig];
+    return [apiInfo objectForKey:@"twitterConsumerSecret"];
+}
+
+- (void)startMockingSucceededTwitterAuth {
+    [SZTwitterUtils startMockingClass];
+    [[[SZTwitterUtils stub] andReturnBool:YES] isLinked];
+    [[[SZTwitterUtils stub] andReturn:[self twitterAccessToken]] accessToken];
+    [[[SZTwitterUtils stub] andReturn:[self twitterAccessTokenSecret]] accessTokenSecret];
+    [[[SZTwitterUtils stub] andReturn:[self twitterConsumerKey]] consumerKey];
+    [[[SZTwitterUtils stub] andReturn:[self twitterConsumerSecret]] consumerSecret];
+}
+
+- (void)stopMockingSucceededTwitterAuth {
+    [SZTwitterUtils stopMockingClassAndVerify];
+}
+
 - (void)startMockingSucceededFacebookAuth {
     [SZFacebookUtils startMockingClass];
     [[[SZFacebookUtils stub] andReturnBool:YES] isLinked];

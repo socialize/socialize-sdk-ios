@@ -7,7 +7,7 @@
 //
 
 #import "SZOARequest+Twitter.h"
-#import "SocializeThirdPartyTwitter.h"
+#import "SZTwitterUtils.h"
 #import <JSONKit/JSONKit.h>
 
 @implementation SZOARequest (Twitter)
@@ -18,10 +18,10 @@
                                  success:(void(^)(id result))success
                                  failure:(void(^)(NSError *error))failure {
     
-    NSString *accessToken = [SocializeThirdPartyTwitter accessToken];
-    NSString *accessTokenSecret = [SocializeThirdPartyTwitter accessTokenSecret];
-    NSString *consumerKey = [SocializeThirdPartyTwitter consumerKey];
-    NSString *consumerSecret = [SocializeThirdPartyTwitter consumerSecret];
+    NSString *accessToken = [SZTwitterUtils accessToken];
+    NSString *accessTokenSecret = [SZTwitterUtils accessTokenSecret];
+    NSString *consumerKey = [SZTwitterUtils consumerKey];
+    NSString *consumerSecret = [SZTwitterUtils consumerSecret];
     
     NSString *credentialsMessage = @"Tried to make twitter request without existing credentials";
     NSAssert(accessToken != nil, credentialsMessage);

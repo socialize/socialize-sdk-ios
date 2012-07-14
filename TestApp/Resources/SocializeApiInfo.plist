@@ -5,9 +5,13 @@
 	<key>Socialize API info</key>
 	<dict>
 		<key>twitterToken</key>
-		<string></string>
+		<string>503796128-VA26yOLlCtbgx8HbLDM0KNuJ5rOoVoW8INFItwyO</string>
 		<key>twitterTokenSecret</key>
-		<string></string>
+		<string>IlLu0p1XS2tomSfF3MiDFeqBKm0HTlBSx845mZTPizs</string>
+		<key>twitterConsumerKey</key>
+		<string>ZWxJ0zIK73n5HKwGLHolQ</string>
+		<key>twitterConsumerSecret</key>
+		<string>3K1LTY39QM9DPAqJzSZAD3L2EBEXXvuCdtTRr8NDd8</string>
 		<key>facebookToken</key>
 		<string>BAABpKH5ZBZBg8BALfmslGRTtnhHKdxJvHonHPoyUASTvo2RIwzokyKwRrZBEvQ4FPUulltwZCWnwd0at1PmrVjrD5AYahlLNZBJy7Q1b1QdWnD8tdKAiFYBexNpDdVE7JwfBZBZCYuLJQZDZD</string>
 		<key>key</key>
