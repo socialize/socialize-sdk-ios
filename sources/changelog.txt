@@ -4,6 +4,17 @@
 Changelog
 =============================================
 
+v2.0.4
+------
+
+[feature] Clean up facebook propagations for like, comment, share [ ]
+
+[bug] Share dialog not showing loading indicator on share [ ]
+
+[bug] Profile edit save button not enabled for some cases [ ]
+
+[bug] Updating user settings should update globally stored user [ ]
+
 v2.0.3
 ------
 
