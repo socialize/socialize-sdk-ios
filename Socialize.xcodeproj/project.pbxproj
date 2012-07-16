@@ -1610,6 +1610,9 @@
 		AADFE6041596A49100FE2B61 /* SZActionButton_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */; };
 		AAE9E1DE1590012300B2B9FC /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
 		AAE9E25515902BA300B2B9FC /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */; };
+		AAEC2B0C15B4D88000C9C65A /* SDKHelpersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEC2B0B15B4D88000C9C65A /* SDKHelpersTests.m */; };
+		AAEC2B0E15B4DA4D00C9C65A /* example-dev.embedded.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = AAEC2B0D15B4DA4D00C9C65A /* example-dev.embedded.mobileprovision */; };
+		AAEC2B1015B4DA5400C9C65A /* example-distribution.embedded.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = AAEC2B0F15B4DA5400C9C65A /* example-distribution.embedded.mobileprovision */; };
 		AAEEE62515A26B6B003566BA /* SDKHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEEE62315A26B6B003566BA /* SDKHelpers.h */; };
 		AAEEE62615A26B6B003566BA /* SDKHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEEE62315A26B6B003566BA /* SDKHelpers.h */; };
 		AAEEE62715A26B6B003566BA /* SDKHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEEE62415A26B6B003566BA /* SDKHelpers.m */; };
@@ -2704,6 +2707,10 @@
 		AAE748B015A23963009FFE95 /* BaseShareViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseShareViewControllerTests.h; sourceTree = "<group>"; };
 		AAE748B115A23963009FFE95 /* BaseShareViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseShareViewControllerTests.m; sourceTree = "<group>"; };
 		AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlocksKit.xcodeproj; path = ThirdParty/BlocksKit/BlocksKit.xcodeproj; sourceTree = "<group>"; };
+		AAEC2B0A15B4D88000C9C65A /* SDKHelpersTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKHelpersTests.h; sourceTree = "<group>"; };
+		AAEC2B0B15B4D88000C9C65A /* SDKHelpersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDKHelpersTests.m; sourceTree = "<group>"; };
+		AAEC2B0D15B4DA4D00C9C65A /* example-dev.embedded.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "example-dev.embedded.mobileprovision"; sourceTree = "<group>"; };
+		AAEC2B0F15B4DA5400C9C65A /* example-distribution.embedded.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "example-distribution.embedded.mobileprovision"; sourceTree = "<group>"; };
 		AAEEE62315A26B6B003566BA /* SDKHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDKHelpers.h; path = Socialize/SDKHelpers.h; sourceTree = SOURCE_ROOT; };
 		AAEEE62415A26B6B003566BA /* SDKHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDKHelpers.m; path = Socialize/SDKHelpers.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -3208,6 +3215,8 @@
 				AAE748B115A23963009FFE95 /* BaseShareViewControllerTests.m */,
 				AA84CCE715B0F50A00D7109C /* SZOARequestTests.h */,
 				AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */,
+				AAEC2B0A15B4D88000C9C65A /* SDKHelpersTests.h */,
+				AAEC2B0B15B4D88000C9C65A /* SDKHelpersTests.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -3215,6 +3224,8 @@
 		AA0C602A158FC59D00F66A3B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AAEC2B0F15B4DA5400C9C65A /* example-distribution.embedded.mobileprovision */,
+				AAEC2B0D15B4DA4D00C9C65A /* example-dev.embedded.mobileprovision */,
 				AACEDA14158FCF920024EC43 /* JSON-RequestAndResponse-TestFiles */,
 				AA0C604B158FC5B700F66A3B /* UnitTest-SocializeConfigurationInfo-EMPTY.plist */,
 				AA0C604C158FC5B700F66A3B /* UnitTest-SocializeConfigurationInfo.plist */,
@@ -5058,6 +5069,8 @@
 				AAA92902159A370300BE83F3 /* socialize-activity-details-profile-pic-small@2x.png in Resources */,
 				AAA92906159A370300BE83F3 /* socialize-activity-details-top-back.png in Resources */,
 				AAA9290A159A370300BE83F3 /* socialize-activity-details-top-back@2x.png in Resources */,
+				AAEC2B0E15B4DA4D00C9C65A /* example-dev.embedded.mobileprovision in Resources */,
+				AAEC2B1015B4DA5400C9C65A /* example-distribution.embedded.mobileprovision in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5976,6 +5989,7 @@
 				AA85D2F2159E55B7004DEB35 /* standalone_share.m in Sources */,
 				AA60B3BA15A23E500062BD41 /* BaseShareViewControllerTests.m in Sources */,
 				AA84CCE915B0F50A00D7109C /* SZOARequestTests.m in Sources */,
+				AAEC2B0C15B4D88000C9C65A /* SDKHelpersTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6323,7 +6337,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -6331,6 +6345,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

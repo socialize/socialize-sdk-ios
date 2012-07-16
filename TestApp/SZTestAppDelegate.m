@@ -55,7 +55,8 @@
         }
     }];
 #endif
-    
+    BOOL dev  = SZIsProduction();
+    (void)dev;
     return YES;
 }
 

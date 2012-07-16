@@ -34,3 +34,4 @@ void SZEmitUnconfiguredTwitterMessage();
 void SZEmitUnconfiguredSmartAlertsMessage();
 NSStringEncoding NSStringEncodingForURLResponse(NSHTTPURLResponse *response);
 NSString *NSStringForHTTPURLResponse(NSHTTPURLResponse* response, NSData *data);
+BOOL SZIsProduction();
