@@ -26,7 +26,7 @@
 }
 
 - (id<SZEntity>)mockEntityWithKey:(NSString*)key fromServer:(BOOL)fromServer {
-    id mockEntity = [OCMockObject mockForProtocol:@protocol(SZEntity)];
+    id mockEntity = [OCMockObject niceMockForProtocol:@protocol(SZEntity)];
     [[[mockEntity stub] andReturn:key] key];
     [[[mockEntity stub] andReturn:@"name"] name];
     [[[mockEntity stub] andReturnBool:fromServer] isFromServer];    
