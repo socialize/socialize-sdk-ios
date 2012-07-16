@@ -11,5 +11,6 @@
 @interface _SZShareDialogViewController : SZBaseShareViewController
 
 @property (nonatomic, copy) void (^completionBlock)(NSArray *shares);
+@property (nonatomic, copy) void (^cancellationBlock)();
 
 @end
