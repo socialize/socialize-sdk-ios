@@ -185,9 +185,7 @@
 
 - (void)configureForNewServerEntity:(id<SZEntity>)entity {
     entity.views = entity.views + 1;
-    [SZViewUtils viewEntity:entity success:^(id<SocializeView> view) {
-        NSLog(@"Views at %d", view.entity.views);
-    } failure:nil];
+    [SZViewUtils viewEntity:entity success:nil failure:nil];
     
     self.serverEntity = entity;
     
