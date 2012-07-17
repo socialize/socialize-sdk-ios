@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Twitter Integration &mdash; Socialize iOS SDK 2.0.4 documentation</title>
+    <title>Twitter Integration &mdash; Socialize iOS SDK 2.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.0.4',
+        VERSION:     '2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.0.4 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.1 documentation" href="index.html" />
     <link rel="next" title="Facebook" href="facebook.html" />
     <link rel="prev" title="Socialize Like Button" href="like_button.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.0.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -139,6 +139,25 @@ valid URL for callback otherwise authentication will fail.</li>
 </pre></div>
 </div>
 </div>
+<div class="section" id="posting-to-twitter-on-your-own">
+<h2>Posting to Twitter on your own<a class="headerlink" href="#posting-to-twitter-on-your-own" title="Permalink to this headline">¶</a></h2>
+<p>Should you need to post to Facebook on your own, you can do so by using the
+direct Twitter access methods on the utils classes</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">postToTwitter</span> <span class="p">{</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">text</span> <span class="o">=</span> <span class="s">@&quot;The Status&quot;</span><span class="p">;</span>
+    <span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableDictionary</span> <span class="nl">dictionaryWithObject:</span><span class="n">text</span> <span class="nl">forKey:</span><span class="s">@&quot;status&quot;</span><span class="p">];</span>
+
+    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="nl">postWithPath:</span><span class="s">@&quot;/1/statuses/update.json&quot;</span> <span class="nl">params:</span><span class="n">params</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Posted to Twitter feed: %@&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed to post to Twitter feed: %@ / %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">],</span> <span class="p">[</span><span class="n">error</span> <span class="n">userInfo</span><span class="p">]);</span>
+    <span class="p">}];</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -160,6 +179,7 @@ valid URL for callback otherwise authentication will fail.</li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-a-twitter-application">Creating a Twitter Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-twitter-in-socialize">Configuring Twitter in Socialize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linking-to-twitter-using-existing-credentials">Linking to Twitter Using Existing Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#posting-to-twitter-on-your-own">Posting to Twitter on your own</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
@@ -202,7 +222,7 @@ valid URL for callback otherwise authentication will fail.</li>
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.0.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
