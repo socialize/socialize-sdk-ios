@@ -20,6 +20,7 @@
 + (SZUserSettings*)currentUserSettings;
 + (id<SocializeFullUser>)currentUser;
 + (BOOL)userIsLinked;
++ (BOOL)userIsAuthenticated;
 + (void)getUsersWithIds:(NSArray*)ids success:(void(^)(NSArray *users))success failure:(void(^)(NSError *error))failure;
 + (void)saveUserSettings:(SZUserSettings*)settings success:(void(^)(SZUserSettings *settings, id<SocializeFullUser> updatedUser))success failure:(void(^)(NSError *error))failure;
 @end

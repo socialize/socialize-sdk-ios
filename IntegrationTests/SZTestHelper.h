@@ -20,5 +20,7 @@
 - (void)stopMockingSucceededFacebookAuth;
 - (void)startMockingSucceedingLocation;
 - (void)stopMockingSucceedingLocation;
+- (void)startMockingSucceededTwitterAuth;
+- (void)stopMockingSucceededTwitterAuth;
 
 @end

@@ -43,6 +43,7 @@ static NSString *SocializeDefaultErrorStrings[SocializeNumErrors] = {
     @"Network Selection Cancelled by user",
     @"Failed to send SMS",
     @"Like creation cancelled by user",
+    @"The request was cancelled",
 };
 
 NSString *SocializeDefaultErrorStringForCode(NSUInteger code) {

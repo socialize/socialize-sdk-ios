@@ -52,7 +52,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (self.actionBar == nil) {
-        self.entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
         self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:self.entity viewController:self];
         [self.view addSubview:self.actionBar];
 //        [self customizeButtons];

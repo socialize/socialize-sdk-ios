@@ -16,10 +16,13 @@
 
 - (void)registerDeviceTokens:(NSArray *)tokens {
     NSMutableArray *params = [NSMutableArray array];
+    NSNumber *isProduction = [NSNumber numberWithBool:SZIsProduction()];
     for ( NSString *token in tokens ) {
+        
         NSDictionary *deviceToken = [NSDictionary dictionaryWithObjectsAndKeys:
                                      token, @"device_token",
                                      @"iOS", @"device_type",
+                                     isProduction, @"is_production",
                                      nil];
         [params addObject:deviceToken];
        

@@ -144,7 +144,7 @@ void SZFBAuthWrapper( void (^success)(), void (^failure)(NSError *error)) {
 }
 
 void SZAuthWrapper(void (^success)(), void (^failure)(NSError *error)) {
-    if (![[Socialize sharedSocialize] isAuthenticated]) {
+    if (![SZUserUtils userIsAuthenticated]) {
         [[Socialize sharedSocialize] authenticateAnonymouslyWithSuccess:success failure:failure];
     } else {
         success();
@@ -209,16 +209,24 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorTwitterUnavailable]);
         return;
     }
+
+    NSMutableArray *thirdParties = [NSMutableArray array];
     
     if (networks & SZSocialNetworkFacebook) {
-        activity.propagationInfoRequest = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"facebook"] forKey:@"third_parties"];
+        [thirdParties addObject:@"facebook"];
     }
     
     if (networks & SZSocialNetworkTwitter) {
-        activity.propagation = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"twitter"] forKey:@"third_parties"];
+        [thirdParties addObject:@"twitter"];
+    }
+    
+    if ([thirdParties count] > 0) {
+        activity.propagationInfoRequest = [NSDictionary dictionaryWithObject:thirdParties forKey:@"third_parties"];
     }
     
     void (^creationBlock)() = ^{
+        
+        NSConditionLock *finishedNetworksLock = [[NSConditionLock alloc] initWithCondition:0];
         
         creator(activity, ^(id<SZActivity> activity) {
             if (networks & SZSocialNetworkFacebook) {
@@ -232,11 +240,6 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
                 NSString *message = @"";
                 if ([activity respondsToSelector:@selector(text)]) {
                     message = [(id)activity text];
-                    
-                    // Temporary hack until we move tweet to client
-                    if ([activity conformsToProtocol:@protocol(SZShare)] && [message isEqualToString:DEFAULT_TWITTER_SHARE_MSG]) {
-                        message = @"";
-                    }
                 }
                 
                 NSMutableDictionary *postData = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -250,7 +253,10 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
                 
                 [SZFacebookUtils postWithGraphPath:@"me/links" params:postData success:^(id result) {
                     BLOCK_CALL_1(options.didPostToSocialNetworkBlock, SZSocialNetworkFacebook);
-                    BLOCK_CALL_1(success, activity);
+                    
+                    [finishedNetworksLock lock];
+                    [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkFacebook];
+                    
                 } failure:^(NSError *error) {
                     
                     if (error != nil) {
@@ -260,11 +266,45 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
                     // Failed Wall post is still a success. Handle separately in options.
                     BLOCK_CALL_1(options.didFailToPostToSocialNetworkBlock, SZSocialNetworkFacebook);
 
-                    BLOCK_CALL_1(success, activity);
+                    [finishedNetworksLock lock];
+                    [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkFacebook];
                 }];
-            } else {
-                BLOCK_CALL_1(success, activity);
             }
+            
+            if (networks & SZSocialNetworkTwitter) {
+                NSString *text = [SZTwitterUtils defaultTwitterTextForActivity:activity];
+                NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObject:text forKey:@"status"];
+                
+                BLOCK_CALL_2(options.willPostToSocialNetworkBlock, SZSocialNetworkTwitter, params);
+
+                [SZTwitterUtils postWithPath:@"/1/statuses/update.json" params:params success:^(id result) {
+                    BLOCK_CALL_1(options.didPostToSocialNetworkBlock, SZSocialNetworkTwitter);
+
+                    [finishedNetworksLock lock];
+                    [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkTwitter];
+                } failure:^(NSError *error) {
+                    
+                    BLOCK_CALL_1(options.didFailToPostToSocialNetworkBlock, SZSocialNetworkTwitter);
+
+                    NSLog(@"Socialize Warning: Failed to post to Twitter feed: %@ / %@", [error localizedDescription], [error userInfo]);
+                    [finishedNetworksLock lock];
+                    [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkTwitter];
+                }];
+            }
+            
+
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                
+                // Wait for all networks to finish
+                [finishedNetworksLock lockWhenCondition:networks];
+                [finishedNetworksLock unlock];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    BLOCK_CALL_1(success, activity);
+                });
+            });
+            
+
         }, failure);
         
     };
@@ -345,4 +385,53 @@ BOOL SZOSGTE(NSString *minVersion) {
     NSString *currOsVersion = [[UIDevice currentDevice] systemVersion];
     NSComparisonResult result = [currOsVersion compare:minVersion options:NSNumericSearch];
     return result == NSOrderedSame || result == NSOrderedDescending;
+}
+
+NSStringEncoding NSStringEncodingForURLResponse(NSHTTPURLResponse *response) {
+    NSStringEncoding encoding = NSISOLatin1StringEncoding;
+    NSString *contentType = [[[response allHeaderFields] objectForKey:@"Content-Type"] lowercaseString];
+    if (contentType && [contentType rangeOfString:@"charset=utf-8"].location != NSNotFound) {
+        encoding = NSUTF8StringEncoding;
+    }
+    
+    return encoding;
+}
+
+NSString *NSStringForHTTPURLResponse(NSHTTPURLResponse* response, NSData *data) {
+    NSStringEncoding encoding = NSStringEncodingForURLResponse(response);
+    return [[NSString alloc] initWithData:data encoding:encoding];
+}
+
+NSString *SZGetProvisioningProfile() {
+    NSString * profilePath = [[NSBundle mainBundle] pathForResource:@"embedded.mobileprovision" ofType:nil];
+    if (profilePath == nil) {
+        return nil;
+    }
+    
+    NSData *profileData = [NSData dataWithContentsOfFile:profilePath];
+    NSData *startData = [@"<!DOCTYPE" dataUsingEncoding:NSISOLatin1StringEncoding];
+
+    // Find the xml string
+    NSRange doctypeRange = [profileData rangeOfData:startData options:0 range:NSMakeRange(0, [profileData length])];
+    if (doctypeRange.location == NSNotFound) {
+        return nil;
+    }
+    NSRange xmlRange = NSMakeRange(doctypeRange.location, [profileData length] - doctypeRange.location);
+    NSData *xmlData = [profileData subdataWithRange:xmlRange];
+    NSString *profileAsString = [[NSString alloc] initWithData:xmlData encoding:NSISOLatin1StringEncoding];
+
+    return profileAsString;
+}
+
+BOOL SZIsProduction() {
+    NSString *profileAsString = SZGetProvisioningProfile();
+    if ([profileAsString length] == 0) {
+        return NO;
+    }
+    
+    profileAsString = [[profileAsString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] componentsJoinedByString:@""];
+    NSRange range = [profileAsString rangeOfString:@"<key>get-task-allow</key><true/>" options:NSCaseInsensitiveSearch];
+    BOOL isProduction = range.location == NSNotFound;
+
+    return isProduction;
 }

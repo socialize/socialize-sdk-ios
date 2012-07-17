@@ -15,8 +15,12 @@
 #import "SZShareUtils.h"
 #import "NSNumber+Additions.h"
 #import "SZUserUtils.h"
+#import "SZViewUtils.h"
 
-@interface SZActionBar ()
+@interface SZActionBar () {
+    BOOL _ignoreNextView;
+}
+
 @property (nonatomic, strong) SZHorizontalContainerView *buttonsContainerRight;
 @property (nonatomic, strong) SZHorizontalContainerView *buttonsContainerLeft;
 
@@ -180,8 +184,11 @@
 }
 
 - (void)configureForNewServerEntity:(id<SZEntity>)entity {
+    entity.views = entity.views + 1;
+    [SZViewUtils viewEntity:entity success:nil failure:nil];
+    
     self.serverEntity = entity;
-
+    
     [UIView animateWithDuration:0.3 animations:^{
         for (id<SZActionBarItem> item in self.itemsRight) {
             if ([item conformsToProtocol:@protocol(SZActionBarItem)]) {
@@ -258,11 +265,6 @@
     }
     
     [self initializeEntity];
-}
-
-- (void)didMoveToSuperview {
-    CGRect frame = [self frame];
-    (void)frame;
 }
 
 - (void)setEntity:(id<SocializeEntity>)entity {
