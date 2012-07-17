@@ -219,7 +219,10 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
     if (networks & SZSocialNetworkTwitter) {
         [thirdParties addObject:@"twitter"];
     }
-    activity.propagationInfoRequest = [NSDictionary dictionaryWithObject:thirdParties forKey:@"third_parties"];
+    
+    if ([thirdParties count] > 0) {
+        activity.propagationInfoRequest = [NSDictionary dictionaryWithObject:thirdParties forKey:@"third_parties"];
+    }
     
     void (^creationBlock)() = ^{
         
