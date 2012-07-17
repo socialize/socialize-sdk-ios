@@ -41,6 +41,24 @@
     [viewController presentModalViewController:shareDialog animated:YES];
 }
 
++ (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))completion cancellation:(void(^)())cancellation {
+    
+    SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
+    shareDialog.completionBlock = ^(NSArray *shares) {
+        [viewController SZDismissViewControllerAnimated:YES completion:^{
+            BLOCK_CALL_1(completion, shares);
+        }];
+    };
+    
+    shareDialog.cancellationBlock = ^{
+        [viewController SZDismissViewControllerAnimated:YES completion:^{
+            BLOCK_CALL(cancellation);
+        }];
+     };
+    [viewController presentModalViewController:shareDialog animated:YES];
+}
+
+
 + (void)shareViaSocialNetworksWithEntity:(id<SZEntity>)entity networks:(SZSocialNetwork)networks options:(SZShareOptions*)options success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
     SocializeShareMedium medium = SocializeShareMediumForSZSocialNetworks(networks);
     

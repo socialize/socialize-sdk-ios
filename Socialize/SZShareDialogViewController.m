@@ -16,6 +16,7 @@
 
 @implementation SZShareDialogViewController
 @synthesize completionBlock = _completionBlock;
+@synthesize cancellationBlock = _cancellationBlock;
 @synthesize shareDialog = _shareDialog;
 @synthesize shares = _shares;
 @synthesize entity = entity_;
@@ -42,6 +43,12 @@
 - (void)setCompletionBlock:(void (^)(NSArray *shares))completionBlock {
     _completionBlock = [completionBlock copy];
     self.shareDialog.completionBlock = completionBlock;
+    
+}
+
+- (void)setCancellationBlock:(void(^)())cancellationBlock {
+    _cancellationBlock = [cancellationBlock copy];
+    self.shareDialog.cancellationBlock = cancellationBlock;
 }
 
 @end

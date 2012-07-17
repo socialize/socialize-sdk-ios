@@ -13,5 +13,6 @@
 - (id)initWithEntity:(id<SZEntity>)entity;
 @property (nonatomic, retain) NSArray *shares;
 @property (nonatomic, copy) void (^completionBlock)(NSArray *shares);
+@property (nonatomic, copy) void (^cancellationBlock)();
 @property (nonatomic, strong) id<SZEntity> entity;
 @end

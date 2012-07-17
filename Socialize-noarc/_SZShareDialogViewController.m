@@ -16,6 +16,7 @@
 
 @implementation _SZShareDialogViewController
 @synthesize completionBlock = _completionBlock;
+@synthesize cancellationBlock = _cancellationBlock;
 
 - (id)initWithEntity:(id<SocializeEntity>)entity {
     if (self = [super initWithEntity:entity]) {
@@ -29,8 +30,9 @@
     [super viewDidLoad];
     
     __block __typeof__(self) weakSelf = self;
+    
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem redSocializeBarButtonWithTitle:@"Cancel" handler:^(id sender) {
-        BLOCK_CALL_1(weakSelf.completionBlock, [NSArray array]);
+        BLOCK_CALL(weakSelf.cancellationBlock);
     }];
 }
 
