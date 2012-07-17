@@ -4,6 +4,19 @@
 Changelog
 =============================================
 
+v2.1
+----
+
+[feature] Tweet from client [ ]
+
+[bug] Views are not incrementing on action bar [ ]
+
+[bug] Reenable a project setting so some failures are more obvious [ ]
+
+[feature] specify prod or dev in token registration call for better web feedback / smartalerts debugging [ ]
+
+[feature] Developer can customize the content of Twitter Posts [ ]
+
 v2.0.4
 ------
 
