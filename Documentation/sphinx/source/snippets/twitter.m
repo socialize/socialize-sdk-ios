@@ -45,4 +45,20 @@
 
 // end-link-snippet
 
+// begin-post-snippet
+
+- (void)postToTwitter {
+    NSString *text = @"The Status";
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObject:text forKey:@"status"];
+
+    [SZTwitterUtils postWithPath:@"/1/statuses/update.json" params:params success:^(id result) {
+        NSLog(@"Posted to Twitter feed: %@", result);
+
+    } failure:^(NSError *error) {
+        NSLog(@"Failed to post to Twitter feed: %@ / %@", [error localizedDescription], [error userInfo]);
+    }];
+
+}
+
+// end-post-snippet
 @end
