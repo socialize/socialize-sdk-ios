@@ -17,6 +17,7 @@
 @implementation SZShareDialogViewController
 @dynamic completionBlock;
 @dynamic cancellationBlock;
+@synthesize title = __title;
 @synthesize shareDialog = _shareDialog;
 @synthesize shares = _shares;
 @synthesize entity = entity_;
@@ -38,6 +39,15 @@
 - (void)createShareDialog {
     self.shareDialog = [[_SZShareDialogViewController alloc] initWithEntity:self.entity];
     [self pushViewController:self.shareDialog animated:NO];
+}
+
+- (void)setTitle:(NSString *)title {
+    __title = title;
+    [self.shareDialog setTitle:title];
+}
+
+- (NSString*)title {
+    return self.shareDialog.title;
 }
 
 - (id)forwardingTargetForSelector:(SEL)aSelector {

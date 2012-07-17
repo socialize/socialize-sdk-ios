@@ -14,5 +14,6 @@
 @property (nonatomic, retain) NSArray *shares;
 @property (nonatomic, copy) void (^completionBlock)(NSArray *shares);
 @property (nonatomic, copy) void (^cancellationBlock)();
+@property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) id<SZEntity> entity;
 @end
