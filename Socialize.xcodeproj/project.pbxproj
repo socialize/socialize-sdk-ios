@@ -533,6 +533,7 @@
 		AA41524315911E38003717AC /* SZCommentOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086F4158D35BF00480399 /* SZCommentOptions.m */; };
 		AA41524715911E38003717AC /* SZLikeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008707158D35BF00480399 /* SZLikeOptions.m */; };
 		AA41524A15911E38003717AC /* SZShareOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008718158D35BF00480399 /* SZShareOptions.m */; };
+		AA4BDF3D15B5222100301AD0 /* SZShareUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4BDF3C15B5222100301AD0 /* SZShareUtilsTests.m */; };
 		AA51122D158F12C0007341AA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC394158E868D0073AD50 /* MapKit.framework */; };
 		AA51122E158F12C8007341AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC392158E86770073AD50 /* QuartzCore.framework */; };
 		AA51122F158F12CD007341AA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC38E158E866B0073AD50 /* MessageUI.framework */; };
@@ -2333,6 +2334,8 @@
 		AA3BC394158E868D0073AD50 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AA3BC396158E87A60073AD50 /* hide_symbols_facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hide_symbols_facebook.h; path = "ThirdParty/facebook-ios-sdk/src/hide_symbols_facebook.h"; sourceTree = "<group>"; };
 		AA3C62A115906FBE00386330 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = ThirdParty/GHUnitIOS.framework; sourceTree = "<group>"; };
+		AA4BDF3B15B5222100301AD0 /* SZShareUtilsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZShareUtilsTests.h; sourceTree = "<group>"; };
+		AA4BDF3C15B5222100301AD0 /* SZShareUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZShareUtilsTests.m; sourceTree = "<group>"; };
 		AA552F561592A14C0020E0E4 /* SZComposeCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZComposeCommentViewController.h; path = Socialize/SZComposeCommentViewController.h; sourceTree = SOURCE_ROOT; };
 		AA552F571592A14C0020E0E4 /* SZComposeCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZComposeCommentViewController.m; path = Socialize/SZComposeCommentViewController.m; sourceTree = SOURCE_ROOT; };
 		AA552F5C1592EF240020E0E4 /* SZCommentsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZCommentsListViewController.h; sourceTree = "<group>"; };
@@ -3217,6 +3220,8 @@
 				AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */,
 				AAEC2B0A15B4D88000C9C65A /* SDKHelpersTests.h */,
 				AAEC2B0B15B4D88000C9C65A /* SDKHelpersTests.m */,
+				AA4BDF3B15B5222100301AD0 /* SZShareUtilsTests.h */,
+				AA4BDF3C15B5222100301AD0 /* SZShareUtilsTests.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -5990,6 +5995,7 @@
 				AA60B3BA15A23E500062BD41 /* BaseShareViewControllerTests.m in Sources */,
 				AA84CCE915B0F50A00D7109C /* SZOARequestTests.m in Sources */,
 				AAEC2B0C15B4D88000C9C65A /* SDKHelpersTests.m in Sources */,
+				AA4BDF3D15B5222100301AD0 /* SZShareUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

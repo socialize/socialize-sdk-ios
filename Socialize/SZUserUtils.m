@@ -25,6 +25,10 @@
     return [[user thirdPartyAuth] count] > 0;
 }
 
++ (BOOL)userIsAuthenticated {
+    return [[Socialize sharedSocialize] isAuthenticated];
+}
+
 + (void)showLinkDialogWithViewController:(UIViewController*)viewController completion:(void(^)(SZSocialNetwork selectedNetwork))completion cancellation:(void(^)())cancellation {
     NSAssert(SZAvailableSocialNetworks() != SZSocialNetworkNone, @"Link not possible");
     
