@@ -23,5 +23,6 @@
 + (void)linkWithViewController:(UIViewController*)viewController success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure;
 + (void)getWithPath:(NSString*)path params:(NSDictionary*)params success:(void(^)(id result))success failure:(void(^)(NSError *error))failure;
 + (void)postWithPath:(NSString*)path params:(NSDictionary*)params success:(void(^)(id result))success failure:(void(^)(NSError *error))failure;
++ (NSString*)defaultTwitterTextForActivity:(id<SZActivity>)activity;
 
 @end

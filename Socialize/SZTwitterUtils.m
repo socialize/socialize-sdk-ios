@@ -97,4 +97,26 @@
     [[NSOperationQueue socializeQueue] addOperation:req];
 }
 
++ (NSString*)defaultTwitterTextForActivity:(id<SZActivity>)activity {
+    NSAssert([activity isFromServer], @"Must be server activity");
+    
+    NSString *entityURL = [[[activity propagationInfoResponse] objectForKey:@"twitter"] objectForKey:@"entity_url"];
+    if ([activity conformsToProtocol:@protocol(SZShare)]) {
+        id<SZShare> share = (id<SZShare>)activity;
+        NSString *text = [share text];
+        if ([text length] == 0) {
+            text = @"Shared";
+        }
+        return [NSString stringWithFormat:@"%@, %@ %@", text, [[activity entity] displayName], entityURL];
+    } else if ([activity conformsToProtocol:@protocol(SZComment)]) {
+        id<SZComment> comment = (id<SZComment>)activity;
+        NSString *text = [comment text];
+        return [NSString stringWithFormat:@"%@, %@ %@", text, [[activity entity] displayName], entityURL];
+    } else if ([activity conformsToProtocol:@protocol(SZLike)]) {
+        return [NSString stringWithFormat:@"♥ Likes %@ %@", [[activity entity] displayName], entityURL];
+    }
+    
+    return nil;
+}
+
 @end

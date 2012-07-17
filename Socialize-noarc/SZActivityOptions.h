@@ -14,7 +14,7 @@
 + (SZActivityOptions*)defaultOptions;
 
 @property (nonatomic, assign) BOOL dontShareLocation;
-@property (nonatomic, copy) void (^willPostToSocialNetworkBlock)(SZSocialNetwork network, NSMutableDictionary *options);
+@property (nonatomic, copy) void (^willPostToSocialNetworkBlock)(SZSocialNetwork network, NSMutableDictionary *params);
 @property (nonatomic, copy) void (^didPostToSocialNetworkBlock)(SZSocialNetwork network);
 @property (nonatomic, copy) void (^didFailToPostToSocialNetworkBlock)(SZSocialNetwork network);
 

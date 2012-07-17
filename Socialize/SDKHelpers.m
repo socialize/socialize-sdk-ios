@@ -209,16 +209,21 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorTwitterUnavailable]);
         return;
     }
+
+    NSMutableArray *thirdParties = [NSMutableArray array];
     
     if (networks & SZSocialNetworkFacebook) {
-        activity.propagationInfoRequest = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"facebook"] forKey:@"third_parties"];
+        [thirdParties addObject:@"facebook"];
     }
     
     if (networks & SZSocialNetworkTwitter) {
-        activity.propagation = [NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"twitter"] forKey:@"third_parties"];
+        [thirdParties addObject:@"twitter"];
     }
+    activity.propagationInfoRequest = [NSDictionary dictionaryWithObject:thirdParties forKey:@"third_parties"];
     
     void (^creationBlock)() = ^{
+        
+        NSConditionLock *finishedNetworksLock = [[NSConditionLock alloc] initWithCondition:0];
         
         creator(activity, ^(id<SZActivity> activity) {
             if (networks & SZSocialNetworkFacebook) {
@@ -232,11 +237,6 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
                 NSString *message = @"";
                 if ([activity respondsToSelector:@selector(text)]) {
                     message = [(id)activity text];
-                    
-                    // Temporary hack until we move tweet to client
-                    if ([activity conformsToProtocol:@protocol(SZShare)] && [message isEqualToString:DEFAULT_TWITTER_SHARE_MSG]) {
-                        message = @"";
-                    }
                 }
                 
                 NSMutableDictionary *postData = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -250,7 +250,10 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
                 
                 [SZFacebookUtils postWithGraphPath:@"me/links" params:postData success:^(id result) {
                     BLOCK_CALL_1(options.didPostToSocialNetworkBlock, SZSocialNetworkFacebook);
-                    BLOCK_CALL_1(success, activity);
+                    
+                    [finishedNetworksLock lock];
+                    [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkFacebook];
+                    
                 } failure:^(NSError *error) {
                     
                     if (error != nil) {
@@ -260,11 +263,45 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
                     // Failed Wall post is still a success. Handle separately in options.
                     BLOCK_CALL_1(options.didFailToPostToSocialNetworkBlock, SZSocialNetworkFacebook);
 
-                    BLOCK_CALL_1(success, activity);
+                    [finishedNetworksLock lock];
+                    [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkFacebook];
                 }];
-            } else {
-                BLOCK_CALL_1(success, activity);
             }
+            
+            if (networks & SZSocialNetworkTwitter) {
+                NSString *text = [SZTwitterUtils defaultTwitterTextForActivity:activity];
+                NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObject:text forKey:@"status"];
+                
+                BLOCK_CALL_2(options.willPostToSocialNetworkBlock, SZSocialNetworkTwitter, params);
+
+                [SZTwitterUtils postWithPath:@"/1/statuses/update.json" params:params success:^(id result) {
+                    BLOCK_CALL_1(options.didPostToSocialNetworkBlock, SZSocialNetworkTwitter);
+
+                    [finishedNetworksLock lock];
+                    [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkTwitter];
+                } failure:^(NSError *error) {
+                    
+                    BLOCK_CALL_1(options.didFailToPostToSocialNetworkBlock, SZSocialNetworkTwitter);
+
+                    NSLog(@"Socialize Warning: Failed to post to Twitter feed: %@ / %@", [error localizedDescription], [error userInfo]);
+                    [finishedNetworksLock lock];
+                    [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkTwitter];
+                }];
+            }
+            
+
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                
+                // Wait for all networks to finish
+                [finishedNetworksLock lockWhenCondition:networks];
+                [finishedNetworksLock unlock];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    BLOCK_CALL_1(success, activity);
+                });
+            });
+            
+
         }, failure);
         
     };
