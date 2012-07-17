@@ -28,9 +28,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    if ([self.title length] == 0) {
+        self.title = @"Share";
+    }
     
     __block __typeof__(self) weakSelf = self;
-    
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem redSocializeBarButtonWithTitle:@"Cancel" handler:^(id sender) {
         BLOCK_CALL(weakSelf.cancellationBlock);
     }];
