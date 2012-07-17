@@ -38,6 +38,14 @@
             BLOCK_CALL_1(completion, shares);
         }];
     };
+    
+    // Backward compatibility
+    shareDialog.cancellationBlock = ^{
+        [viewController SZDismissViewControllerAnimated:YES completion:^{
+            BLOCK_CALL_1(completion, [NSArray array]);
+        }];
+    };
+    
     [viewController presentModalViewController:shareDialog animated:YES];
 }
 

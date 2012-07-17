@@ -59,7 +59,7 @@
 + (SZActionButton*)shareButton {
     SZActionButton *shareButton = [SZActionButton actionButtonWithIcon:[UIImage imageNamed:@"action-bar-icon-share.png"] title:@"Share"];
     shareButton.actionBlock = ^(SZActionButton *button, SZActionBar *bar) {
-        [SZShareUtils showShareDialogWithViewController:bar.viewController entity:bar.entity completion:nil];
+        [SZShareUtils showShareDialogWithViewController:bar.viewController entity:bar.entity completion:nil cancellation:nil];
     };
     shareButton.actualButton.accessibilityLabel = @"share button";
     

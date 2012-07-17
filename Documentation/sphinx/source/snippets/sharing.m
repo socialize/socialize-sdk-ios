@@ -16,13 +16,10 @@
 - (void)showShareDialog {
     id<SZEntity> entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
     [SZShareUtils showShareDialogWithViewController:self entity:entity completion:^(NSArray *shares) {
-        
-        if ([shares count] == 0) {
-            NSLog(@"Share creation cancelled");
-        } else {
-            // `shares` is a list of all shares created during the lifetime of the share dialog
-            NSLog(@"Created %d shares: %@", [shares count], shares);
-        }
+        // `shares` is a list of all shares created during the lifetime of the share dialog
+        NSLog(@"Created %d shares: %@", [shares count], shares);
+    } cancellation:^{
+        NSLog(@"Share creation cancelled");
     }];
 }
 

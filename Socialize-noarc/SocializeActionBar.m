@@ -241,7 +241,7 @@
 -(void)shareButtonTouched: (id) sender
 {
     self.ignoreNextView = YES;
-    [SZShareUtils showShareDialogWithViewController:self.viewController entity:self.entity completion:nil];
+    [SZShareUtils showShareDialogWithViewController:self.viewController entity:self.entity completion:nil cancellation:nil];
 }
 
 - (void)reloadEntity {
