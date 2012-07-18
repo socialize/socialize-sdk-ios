@@ -143,7 +143,7 @@
     [share setPropagationInfoRequest:[NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"email"] forKey:@"third_parties"]];
     [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> serverShare) {
         [viewController hideSocializeLoadingView];
-        [composer setSubject:@"123"];
+        [composer setSubject:[[serverShare entity] displayName]];
         [composer setMessageBody:[self defaultMessageForShare:serverShare] isHTML:NO];
         [viewController presentModalViewController:composer animated:YES];
     } failure:^(NSError *error) {
