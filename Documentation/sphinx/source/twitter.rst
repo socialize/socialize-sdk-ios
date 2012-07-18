@@ -66,6 +66,9 @@ Linking to Twitter Using Existing Credentials
 ---------------------------------------------
 If you already have a Twitter access token of your own, you can link to Socialize like so:
 
+.. note:: You only need to do this if you implement your own twitter link flow. If you just want
+  to use Socialize's automatic twitter login, you should not perform this step.
+
 .. literalinclude:: snippets/twitter.m
   :start-after: begin-link-snippet
   :end-before: end-link-snippet
@@ -78,3 +81,11 @@ direct Twitter access methods on the utils classes
 .. literalinclude:: snippets/twitter.m
   :start-after: begin-post-snippet
   :end-before: end-post-snippet
+
+Troubleshooting
+---------------
+
+There are a couple of app settings that may cause issues. You can configure your app's settings at http://dev.twitter.com
+
+* For token errors during login, please ensure the app has a callback url defined in its settings.
+* If posts are not showing up in your feed, you should verify that application is set read-write in its settings.
