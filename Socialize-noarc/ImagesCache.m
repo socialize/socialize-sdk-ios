@@ -81,9 +81,11 @@ static ImagesCache *sharedImagesCache;
     return [[^(NSString* url, NSData* data)
     {
         [blockSelf completeLoadHandler:data url: url];
-        for (CompleteBlock cAction in [pendingUrlCallbacks objectForKey:url]) {
+        NSMutableArray *callbacks = [pendingUrlCallbacks objectForKey:url];
+        for (CompleteBlock cAction in callbacks) {
             cAction(blockSelf);
         }
+        
         [pendingUrlCallbacks removeObjectForKey:url];
     }copy]autorelease];
 }
@@ -117,9 +119,11 @@ static ImagesCache *sharedImagesCache;
     {
         [loader cancelDownload];
     }];
-    
-    [pendingUrlCallbacks removeAllObjects];
-    [pendingUrlDownloads removeAllObjects];
+
+    [pendingUrlCallbacks release]; 
+    [pendingUrlDownloads release];
+    pendingUrlDownloads = [[NSMutableDictionary alloc]initWithCapacity:20];
+    pendingUrlCallbacks = [[NSMutableDictionary alloc]initWithCapacity:20];
 }
 
 -(void)clearCache
