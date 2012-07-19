@@ -47,7 +47,13 @@ Step 1: Add the Socialize Framework to Your Project
 
 - When prompted, check "Copy items into destination group's folder (if needed)" and click finish
 
- 	.. image:: images/check_copy_items.png
+.. image:: images/check_copy_items.png
+
+.. note:: Be sure the 'Create groups for any added folders' radio button is selected during the above step. If you select
+  'Create folder references for any added folders', a blue folder reference will be added to the project
+  and socialize will not be able to locate its resources.
+
+
  
 
 Step 2: Add Required Frameworks to Your Project
