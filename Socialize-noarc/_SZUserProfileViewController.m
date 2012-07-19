@@ -210,8 +210,8 @@
 - (void)configureViews {
     // Configure labels
     self.userNameLabel.text = self.fullUser.userName;
-    if (self.fullUser.firstName != nil && self.fullUser.lastName != nil) {
-        self.userDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@", self.fullUser.firstName, self.fullUser.lastName];
+    if ([[self.fullUser description] length] > 0) {
+        self.userDescriptionLabel.text = [self.fullUser description];
     }
     
     // Configure the profile image
