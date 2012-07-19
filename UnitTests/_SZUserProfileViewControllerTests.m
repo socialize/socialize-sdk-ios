@@ -221,7 +221,7 @@
 }
 
 - (void)testConfigureViews {
-    id mockFullUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
+    id mockFullUser = [OCMockObject niceMockForProtocol:@protocol(SocializeFullUser)];
     NSString *userName = @"userName";
     NSString *firstName = @"firstName";
     NSString *lastName = @"lastName";
@@ -232,10 +232,13 @@
     [[[mockFullUser stub] andReturn:lastName] lastName];
     [[[mockFullUser stub] andReturn:smallImageUrl] smallImageUrl];
     [[[mockFullUser stub] andReturnInteger:testUserID] objectID];
+    
+    // protocol's 'description' collides with an nsobject method
+    [self.mockUserDescriptionLabel makeNice];
+    
     self.profileViewController.fullUser = mockFullUser;
     
     // Labels should be configured
-    [[self.mockUserDescriptionLabel expect] setText:[NSString stringWithFormat:@"%@ %@", firstName, lastName]];
     [[self.mockUserNameLabel expect] setText:userName];
     
     // Image should be loaded
