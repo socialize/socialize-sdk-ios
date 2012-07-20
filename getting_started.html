@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started Guide &mdash; Socialize iOS SDK 2.1 documentation</title>
+    <title>Getting Started Guide &mdash; Socialize iOS SDK 2.1.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.1',
+        VERSION:     '2.1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.1.1 documentation" href="index.html" />
     <link rel="next" title="Upgrading to Socialize v2" href="upgrading_2_0.html" />
     <link rel="prev" title="Socialize iOS SDK" href="index.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -133,13 +133,16 @@ package to your framework section in your project.</p>
 If you just add the framework, you will be missing important Socialize images and configuration files.</p>
 </div>
 <img alt="images/drag_and_drop.png" src="images/drag_and_drop.png" />
-<ul>
-<li><p class="first">When prompted, check &#8220;Copy items into destination group&#8217;s folder (if needed)&#8221; and click finish</p>
-<blockquote>
-<div><img alt="images/check_copy_items.png" src="images/check_copy_items.png" />
-</div></blockquote>
-</li>
+<ul class="simple">
+<li>When prompted, check &#8220;Copy items into destination group&#8217;s folder (if needed)&#8221; and click finish</li>
 </ul>
+<img alt="images/check_copy_items.png" src="images/check_copy_items.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Be sure the &#8216;Create groups for any added folders&#8217; radio button is selected during the above step. If you select
+&#8216;Create folder references for any added folders&#8217;, a blue folder reference will be added to the project
+and socialize will not be able to locate its resources.</p>
+</div>
 </div>
 <div class="section" id="step-2-add-required-frameworks-to-your-project">
 <h3><a class="toc-backref" href="#id5">Step 2: Add Required Frameworks to Your Project</a><a class="headerlink" href="#step-2-add-required-frameworks-to-your-project" title="Permalink to this headline">¶</a></h3>
@@ -162,6 +165,8 @@ If you just add the framework, you will be missing important Socialize images an
 <blockquote>
 <div><img alt="images/image00.png" src="images/image00.png" style="width: 700px; height: 410px;" />
 </div></blockquote>
+</li>
+<li><p class="first">For older versions of Xcode where the project is not arc, also add <strong>-fobjc-arc</strong> to the Other Linker flags.</p>
 </li>
 </ul>
 <p>If you need more detail configuring the SDK in your app please see our <a class="reference external" href="http://vimeo.com/31403067">Getting Started Video</a>.</p>
@@ -264,7 +269,6 @@ It is not necessary to explicitly create an Entity object when rendering the Act
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-the-sdk">Installing the SDK</a></li>
@@ -316,7 +320,7 @@ It is not necessary to explicitly create an Entity object when rendering the Act
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

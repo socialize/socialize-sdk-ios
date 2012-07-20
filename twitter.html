@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Twitter Integration &mdash; Socialize iOS SDK 2.1 documentation</title>
+    <title>Twitter Integration &mdash; Socialize iOS SDK 2.1.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.1',
+        VERSION:     '2.1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.1.1 documentation" href="index.html" />
     <link rel="next" title="Facebook" href="facebook.html" />
     <link rel="prev" title="Socialize Like Button" href="like_button.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -124,6 +124,11 @@ valid URL for callback otherwise authentication will fail.</li>
 <div class="section" id="linking-to-twitter-using-existing-credentials">
 <h2>Linking to Twitter Using Existing Credentials<a class="headerlink" href="#linking-to-twitter-using-existing-credentials" title="Permalink to this headline">¶</a></h2>
 <p>If you already have a Twitter access token of your own, you can link to Socialize like so:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You only need to do this if you implement your own twitter link flow. If you just want
+to use Socialize&#8217;s automatic twitter login, you should not perform this step.</p>
+</div>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">linkToTwitter</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="nl">setConsumerKey:</span><span class="s">@&quot;MYAPPCONSUMERKEY&quot;</span> <span class="nl">consumerSecret:</span><span class="s">@&quot;MYAPPCONSUMERSECRET&quot;</span><span class="p">];</span>
     
@@ -158,6 +163,14 @@ direct Twitter access methods on the utils classes</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>There are a couple of app settings that may cause issues. You can configure your app&#8217;s settings at <a class="reference external" href="http://dev.twitter.com">http://dev.twitter.com</a></p>
+<ul class="simple">
+<li>For token errors during login, please ensure the app has a callback url defined in its settings.</li>
+<li>If posts are not showing up in your feed, you should verify that application is set read-write in its settings.</li>
+</ul>
+</div>
 </div>
 
 
@@ -168,7 +181,6 @@ direct Twitter access methods on the utils classes</p>
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
@@ -180,6 +192,7 @@ direct Twitter access methods on the utils classes</p>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-twitter-in-socialize">Configuring Twitter in Socialize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linking-to-twitter-using-existing-credentials">Linking to Twitter Using Existing Credentials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#posting-to-twitter-on-your-own">Posting to Twitter on your own</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
@@ -222,7 +235,7 @@ direct Twitter access methods on the utils classes</p>
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

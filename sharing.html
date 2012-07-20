@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sharing &mdash; Socialize iOS SDK 2.1 documentation</title>
+    <title>Sharing &mdash; Socialize iOS SDK 2.1.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.1',
+        VERSION:     '2.1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.1.1 documentation" href="index.html" />
     <link rel="next" title="Comments" href="comments.html" />
     <link rel="prev" title="Activity (Social Actions)" href="actions.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -86,13 +86,10 @@ in your app as easy as possible.</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">showShareDialog</span> <span class="p">{</span>
     <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
     <span class="p">[</span><span class="n">SZShareUtils</span> <span class="nl">showShareDialogWithViewController:</span><span class="n">self</span> <span class="nl">entity:</span><span class="n">entity</span> <span class="nl">completion:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">shares</span><span class="p">)</span> <span class="p">{</span>
-        
-        <span class="k">if</span> <span class="p">([</span><span class="n">shares</span> <span class="n">count</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Share creation cancelled&quot;</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="c1">// `shares` is a list of all shares created during the lifetime of the share dialog</span>
-            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created %d shares: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">shares</span> <span class="n">count</span><span class="p">],</span> <span class="n">shares</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="c1">// `shares` is a list of all shares created during the lifetime of the share dialog</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created %d shares: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">shares</span> <span class="n">count</span><span class="p">],</span> <span class="n">shares</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nl">cancellation:</span><span class="o">^</span><span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Share creation cancelled&quot;</span><span class="p">);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
 </pre></div>
@@ -260,7 +257,6 @@ can do so</p>
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference external" href="http://socialize.github.com/socialize-sdk-ios/">v1 (production) docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
@@ -312,7 +308,7 @@ can do so</p>
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
