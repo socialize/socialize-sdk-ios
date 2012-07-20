@@ -4,6 +4,26 @@
 Changelog
 =============================================
 
+v2.1.1
+------
+feature] Allow customization of title in share dialog [ ]
+
+[feature] Support landscape during twitter link [ ]
+
+[bug] Email composer showing "123" for subject [ ]
+
+[feature] Clarity and troubleshooting updates for twitter docs [ ]
+
+[feature] Add note to docs on setting -fobjc-arc (older xcode) [ ]
+
+[bug] Fix a comments list cell background display problem on device [ ]
+
+[feature] Show description / bio in profile [ ]
+
+[feature] Make 'add as folder' when dragging very explicit in docs / getting started [ ]
+
+[bug] Fix a crash related to dismissing the comments list [ ]
+
 v2.1
 ----
 
