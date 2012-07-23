@@ -29,4 +29,13 @@
     GHAssertFalse(isSubscribed, @"Should not be subscribed");
 }
 
+- (void)testSubscribeEntity {
+    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/subscription_target", _cmd]];
+    SZEntity *entity = [SZEntity entityWithKey:entityKey name:@"Subscription target"];
+    
+    id<SZSubscription> createdSubscription = [self subscribeToEntity:entity subscriptionType:SZSubscriptionTypeNewComments];
+    
+    GHAssertNotNil(createdSubscription, @"Should have created");
+}
+
 @end

@@ -14,6 +14,8 @@ NSString *NSStringFromSZSubscriptionType(SZSubscriptionType type) {
     switch (type) {
         case SZSubscriptionTypeNewComments:
             return @"new_comments";
+        case SZSubscriptionTypeEntityNotification:
+            return @"entity_notification";
     }
 }
 

@@ -11,6 +11,7 @@
 
 typedef enum {
     SZSubscriptionTypeNewComments,
+    SZSubscriptionTypeEntityNotification,
 } SZSubscriptionType;
 
 NSString *NSStringFromSZSubscriptionType(SZSubscriptionType type);
