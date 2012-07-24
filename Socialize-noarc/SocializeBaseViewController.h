@@ -70,7 +70,7 @@
             completion:(void(^)(UIImage *image))completionBlock;
 - (void)changeTitleOnCustomBarButton:(UIBarButtonItem*)barButton toText:(NSString*)text;
 - (void)doneButtonPressed:(UIBarButtonItem*)button;
-- (void)cancelButtonPressed:(UIBarButtonItem*)button;
+- (void)cancelButtonPressed:(id)button;
 - (void)settingsButtonPressed:(UIBarButtonItem*)button;
 - (void)notifyDelegateOfCompletion;
 - (void)notifyDelegateOfCancellation;
