@@ -18,6 +18,7 @@
 @synthesize completionBlock = _completionBlock;
 @synthesize initialized = _initialized;
 @synthesize settings = _settings;
+@dynamic hideLogoutButtons;
 
 - (id)init {
     if (self = [super init]) {

@@ -24,11 +24,13 @@
 #import "SDKHelpers.h"
 #import "socialize_globals.h"
 
-@interface _SZUserSettingsViewController ()
+@interface _SZUserSettingsViewController () {
+    BOOL _initialized;
+}
 
 // Latch the status for these, so we can perform row animations
-@property (nonatomic, assign) BOOL showFacebookLogout;
-@property (nonatomic, assign) BOOL showTwitterLogout;
+@property (nonatomic, assign) BOOL showingFacebookLogout;
+@property (nonatomic, assign) BOOL showingTwitterLogout;
 @property (nonatomic, assign) BOOL profileImageChanged;
 
 - (void)updateInterfaceToReflectFacebookSessionStatus ;
@@ -71,11 +73,12 @@ static _SZUserSettingsViewControllerPropertiesInfo _SZUserSettingsViewController
 @synthesize editOccured = editOccured_;
 SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 @synthesize facebookCells = facebookCells_;
-@synthesize showFacebookLogout = showFacebookLogout_;
-@synthesize showTwitterLogout = showTwitterLogout_;
+@synthesize showingFacebookLogout = showFacebookLogout_;
+@synthesize showingTwitterLogout = showTwitterLogout_;
 @synthesize popover = popover_;
 @synthesize userSettingsCompletionBlock = userSettingsCompletionBlock_;
 @synthesize profileImageChanged = _profileImageChanged;
+@synthesize hideLogoutButtons = _hideLogoutButtons;
 
 + (UINavigationController*)profileEditViewControllerInNavigationController {
     _SZUserSettingsViewController *profileEditViewController = [self profileEditViewController];
@@ -135,9 +138,6 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     self.navigationItem.rightBarButtonItem = self.saveButton;
     [self changeTitleOnCustomBarButton:self.saveButton toText:@"Done"];
 
-    self.showTwitterLogout = [SocializeThirdPartyTwitter isLinkedToSocialize];
-    self.showFacebookLogout = [SocializeThirdPartyFacebook isLinkedToSocialize];
-    
     // Remove default gray background (iPad / http://stackoverflow.com/questions/2688007/uitableview-backgroundcolor-always-gray-on-ipad)
     [self.tableView setBackgroundView:nil];
 }
@@ -195,8 +195,23 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     [self.tableView reloadData];
 }
 
+- (BOOL)shouldShowTwitterLogout{
+    return !self.hideLogoutButtons && [SocializeThirdPartyTwitter isLinkedToSocialize];
+}
+
+- (BOOL)shouldShowFacebookLogout {
+    return !self.hideLogoutButtons && [SocializeThirdPartyFacebook isLinkedToSocialize];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if (!_initialized) {
+        _initialized = YES;
+        
+        self.showingTwitterLogout = [self shouldShowTwitterLogout];
+        self.showingFacebookLogout = [self shouldShowFacebookLogout];
+    }
     
     if (self.fullUser == nil) {
         self.saveButton.enabled = NO;
@@ -342,13 +357,13 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     } else if (section == [self propertiesSection]) {
         numRows = sizeof(_SZUserSettingsViewControllerPropertiesInfoItems) / sizeof(_SZUserSettingsViewControllerPropertiesInfo);
     } else if (section == [self facebookSection]) {
-        if (self.showFacebookLogout) {
+        if (self.showingFacebookLogout) {
             numRows = 2;
         } else {
             numRows = 1;
         }
     } else if (section == [self twitterSection]) {
-        if (self.showTwitterLogout) {
+        if (self.showingTwitterLogout) {
             numRows = 2;
         } else {
             numRows = 1;
@@ -748,19 +763,19 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         return;
     }
     
-    if ([SocializeThirdPartyFacebook isLinkedToSocialize] && !self.showFacebookLogout) {
+    if ([self shouldShowFacebookLogout] && !self.showingFacebookLogout) {
 
         // Logout button should be shown but isn't. Animate it into view
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerFacebookRowLogout inSection:[self facebookSection]];        
         [self.tableView beginUpdates];
-        self.showFacebookLogout = YES;
+        self.showingFacebookLogout = YES;
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
         [self.tableView endUpdates];
-    } else if (![SocializeThirdPartyFacebook isLinkedToSocialize] && self.showFacebookLogout) {
+    } else if (![self shouldShowFacebookLogout] && self.showingFacebookLogout) {
         
         // Logout button shown but shouldn't be. Animate it out of view
         [self.tableView beginUpdates];
-        self.showFacebookLogout = NO;
+        self.showingFacebookLogout = NO;
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForFacebookLogoutRow]] withRowAnimation:UITableViewRowAnimationBottom];
         [self.tableView endUpdates];
 
@@ -779,12 +794,12 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         return;
     }
 
-    if ([SocializeThirdPartyTwitter isLinkedToSocialize] && !self.showTwitterLogout) {
+    if ([self shouldShowTwitterLogout] && !self.showingTwitterLogout) {
 
         // Logout button should be shown but isn't. Animate it into view
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerTwitterRowLogout inSection:[self twitterSection]];
         [self.tableView beginUpdates];
-        self.showTwitterLogout = YES;
+        self.showingTwitterLogout = YES;
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
         [self.tableView endUpdates];
         
@@ -792,11 +807,11 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         // Since twitter logout is currently the last row, it feels awkward if we don't scroll
         [self scrollToTwitterLogoutRow];
 
-    } else if (![SocializeThirdPartyTwitter isLinkedToSocialize] && self.showTwitterLogout) {
+    } else if (![self shouldShowTwitterLogout] && self.showingTwitterLogout) {
         
         // Logout button shown but shouldn't be. Animate it out of view
         [self.tableView beginUpdates];
-        self.showTwitterLogout = NO;
+        self.showingTwitterLogout = NO;
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForTwitterLogoutRow]] withRowAnimation:UITableViewRowAnimationBottom];
         [self.tableView endUpdates];
 

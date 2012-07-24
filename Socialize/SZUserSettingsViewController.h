@@ -13,6 +13,7 @@
 @interface SZUserSettingsViewController : SZNavigationController
 - (id)init;
 
+@property (nonatomic, assign) BOOL hideLogoutButtons;
 @property (nonatomic, copy) void (^completionBlock)(BOOL didSave, id<SZFullUser> user);
 
 @end
