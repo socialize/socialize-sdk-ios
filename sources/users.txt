@@ -40,6 +40,12 @@ To allow a user to update their settings you can simply present them with the Us
 .. image:: images/user_settings.png
   :align: center
 
+You can manually show the settings for further customization
+
+.. literalinclude:: snippets/users.m
+	:start-after: begin-manual-show-settings-snippet
+	:end-before: end-manual-show-settings-snippet
+
 Link Dialog
 ~~~~~~~~~~~
 	

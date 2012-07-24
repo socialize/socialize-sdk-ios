@@ -4,6 +4,14 @@
 Changelog
 =============================================
 
+v2.1.2
+------
+[bug] Fix another comments list crash [ ]
+
+[feature] Support landscape in comments list [ ]
+
+[feature] Developer can disable logout buttons in settings [ ]
+
 v2.1.1
 ------
 feature] Allow customization of title in share dialog [ ]
