@@ -192,13 +192,16 @@ NSInteger SocializeTableViewControllerDefaultPageSize = 20;
 - (void)receiveNewContent:(NSArray*)content {
     [self stopLoadingContent];
     
+    BOOL animated = [self isViewLoaded] && self.view.window != nil;
+    
     if ([content count] > 0) {
-        [self.tableView beginUpdates];
+        
+        if (animated) [self.tableView beginUpdates];
         NSRange rowRange = NSMakeRange([self.content count], [content count]);
         NSArray *paths = [self indexPathsForSectionRange:NSMakeRange(0, 1) rowRange:rowRange];
-        [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
+        if (animated) [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
         [self.content addObjectsFromArray:content];
-        [self.tableView endUpdates];
+        if (animated) [self.tableView endUpdates];
     }
     
     if ([content count] < self.pageSize || [content count] == 0) {

@@ -86,6 +86,7 @@ static ImagesCache *sharedImagesCache;
             cAction(blockSelf);
         }
         
+        [[pendingUrlCallbacks retain] autorelease];
         [pendingUrlCallbacks removeObjectForKey:url];
     }copy]autorelease];
 }
