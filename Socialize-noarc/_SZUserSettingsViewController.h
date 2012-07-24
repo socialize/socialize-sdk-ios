@@ -42,6 +42,7 @@ typedef enum {
 @class SocializeProfileEditValueViewController;
 
 @interface _SZUserSettingsViewController : SocializeBaseViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate>
+@property (nonatomic, assign) BOOL hideLogoutButtons;
 @property (nonatomic, retain) id<SocializeFullUser> fullUser;
 @property (nonatomic, retain) UIImage *profileImage;
 @property (nonatomic, retain) NSArray *cellBackgroundColors;

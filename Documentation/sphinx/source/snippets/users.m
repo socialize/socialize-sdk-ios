@@ -33,6 +33,27 @@
 
 // end-show-settings-snippet
 
+// begin-manual-show-settings-snippet
+
+- (void)manuallyShowUserSettings {
+    SZUserSettingsViewController *settings = [[SZUserSettingsViewController alloc] init];
+    
+    // Uncomment to hide logout buttons
+//    settings.hideLogoutButtons = YES;
+    
+    settings.completionBlock = ^(BOOL didSave, id<SZFullUser> user) {
+        
+        // Dismiss however you want here
+        [self dismissModalViewControllerAnimated:NO];
+    };
+    
+    // Present however you want here
+    [self presentModalViewController:settings animated:NO];
+
+}
+
+// end-manual-show-settings-snippet
+
 // begin-show-link-dialog-snippet
 
 - (void)showLinkDialog {
