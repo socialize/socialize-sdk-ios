@@ -21,11 +21,15 @@
 #import "SZUserUtils.h"
 #import "socialize_globals.h"
 
+#define LINK_DIALOG_BUCKET @"LINK_DIALOG"
+
 static NSString *const kAuthTypeRowText = @"kAuthTypeRowText";
 static NSString *const kAuthTypeRowImageName = @"kAuthTypeRowImageName";
 static NSString *const kAuthTypeRowAction = @"kAuthTypeRowAction";
 
-@interface  _SZLinkDialogViewController()
+@interface  _SZLinkDialogViewController() {
+    dispatch_once_t _initToken;
+}
 -(SocializeAuthTableViewCell *)getAuthorizeTableViewCell;
 -(SocializeAuthInfoTableViewCell*)getAuthorizeInfoTableViewCell;
 -(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass;
@@ -62,6 +66,14 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 
 - (BOOL)shouldAutoAuthOnAppear {
     return NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    dispatch_once(&_initToken, ^{
+        [self trackEventWithAction:@"show" values:nil];
+    });
 }
 
 +(UINavigationController*)authViewControllerInNavigationController:(id<_SZLinkDialogViewControllerDelegate>)delegate;
@@ -118,6 +130,8 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 -(IBAction)skipButtonPressed:(id)sender {
+    [self trackEventWithAction:@"skip" values:nil];
+    
     if (self.completionBlock != nil) {
         self.completionBlock(SZSocialNetworkNone);
     } else {
@@ -126,6 +140,12 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
         }
         [self dismissModalViewControllerAnimated:YES];
     } 
+}
+
+- (void)cancelButtonPressed:(id)button {
+    [super cancelButtonPressed:button];
+    
+    [self trackEventWithAction:@"skip" values:nil];
 }
 
 // Dismiss any SocializeAction controllers non-animated
@@ -254,8 +274,24 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 -(NSArray *) getTopLevelViewsFromNib:(NSString *)nibName {
     return [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil];
 }
+
+- (void)trackEventWithAction:(NSString*)action values:(NSDictionary*)values {
+    NSMutableDictionary *fullValues = [NSMutableDictionary dictionaryWithObject:action forKey:@"action"];
+    if (values != nil) {
+        [fullValues addEntriesFromDictionary:values];  
+    }
+    
+    [[Socialize sharedSocialize] trackEventWithBucket:LINK_DIALOG_BUCKET values:fullValues];
+}
     
 - (void)finish {
+    Class<SocializeThirdParty> thirdParty = [SocializeThirdParty thirdPartyForSocialNetworkFlag:self.selectedNetwork];
+    if (thirdParty != nil) {
+        NSString *networkName = [[thirdParty thirdPartyName] uppercaseString];
+        NSDictionary *values = [NSDictionary dictionaryWithObject:networkName forKey:@"network"];
+        [self trackEventWithAction:@"auth" values:values];
+    }
+    
     if (self.completionBlock != nil) {
         self.completionBlock(self.selectedNetwork);
     } else {
@@ -295,6 +331,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
         action();
     }
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UITableViewCell* cell = nil;

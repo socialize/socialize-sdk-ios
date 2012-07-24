@@ -41,5 +41,6 @@
 + (BOOL)thirdPartyLinked;
 + (BOOL)thirdPartyAvailable;
 + (SZSocialNetwork)preferredNetworks;
++ (Class<SocializeThirdParty>)thirdPartyForSocialNetworkFlag:(SZSocialNetwork)network;
 
 @end

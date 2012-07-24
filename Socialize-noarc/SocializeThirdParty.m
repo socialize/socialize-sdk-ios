@@ -57,4 +57,14 @@
     return networks;
 }
 
++ (Class<SocializeThirdParty>)thirdPartyForSocialNetworkFlag:(SZSocialNetwork)network {
+    for (Class<SocializeThirdParty> thirdParty in [self allThirdParties]) {
+        if ([thirdParty socialNetworkFlag] == network) {
+            return thirdParty;
+        }
+    }
+    
+    return nil;
+}
+
 @end
