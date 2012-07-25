@@ -18,6 +18,12 @@
 //}
 //
 - (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values {
+
+    const char *disabled = getenv("SZEventTrackingDisabled");
+    if (disabled != NULL && strncmp("1", disabled, 1) == 0) {
+        return;
+    }
+    
     if (values == nil) {
         values = [NSDictionary dictionary];
     }
