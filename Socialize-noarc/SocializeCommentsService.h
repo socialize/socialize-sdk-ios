@@ -145,5 +145,6 @@
 - (void)getCommentsWithIds:(NSArray*)commentIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
 - (void)getCommentsWithEntityKey:(NSString*)entityKey success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
 - (void)createComments:(NSArray*)comments success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
+- (void)getCommentsWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure;
 
 @end

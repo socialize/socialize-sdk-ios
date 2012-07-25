@@ -49,6 +49,7 @@
 - (NSArray*)utilGetCommentsForEntityWithKey:(NSString*)entityKey;
 - (NSArray*)getCommentsByUser:(id<SZUser>)user;
 - (NSArray*)getCommentsByUser:(id<SZUser>)user entity:(id<SZEntity>)entity;
+- (NSArray*)getCommentsByApplication;
 - (id<SZLike>)likeWithEntity:(id<SZEntity>)entity options:(SZLikeOptions*)options networks:(SZSocialNetwork)networks;
 - (id<SZLike>)unlike:(id<SZEntity>)entity;
 - (BOOL)isLiked:(id<SZEntity>)entity;

@@ -614,6 +614,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_commentsService getCommentsWithEntityKey:entityKey success:success failure:failure];
 }
 
+- (void)getCommentsWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [_commentsService getCommentsWithFirst:first last:last success:success failure:failure];
+}
+
 -(void)createCommentForEntityWithKey:(NSString*)entityKey comment:(NSString*) comment longitude:(NSNumber*)lng latitude:(NSNumber*)lat{
     [_commentsService createCommentForEntityWithKey:entityKey comment:comment longitude: lng latitude: lat];
 }

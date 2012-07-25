@@ -159,4 +159,17 @@
 
 // end-list-by-ids-snippet
 
+// begin-list-by-application-snippet
+
+- (void)listCommentsByApplication {
+    
+    [SZCommentUtils getCommentsByApplicationWithFirst:nil last:nil success:^(NSArray *comments) {
+        NSLog(@"Fetched comments: %@", comments);
+    } failure:^(NSError *error) {
+        NSLog(@"Failed: %@", [error localizedDescription]);
+    }];
+}
+
+// end-list-by-application-snippet
+
 @end

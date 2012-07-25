@@ -169,4 +169,8 @@
     [self createCommentForEntity:entity comment:comment longitude:lng latitude:lat subscribe:NO];
 }
 
+- (void)getCommentsWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [self callListingGetEndpointWithPath:COMMENTS_LIST_METHOD params:nil first:first last:last success:success failure:failure];
+}
+
 @end

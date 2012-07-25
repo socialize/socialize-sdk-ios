@@ -240,6 +240,13 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
     return [fetchedComments autorelease];
 }
 
+- (NSArray*)getCommentsByApplication {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZCommentUtils getCommentsByApplicationWithFirst:nil last:nil success:actionSuccess failure:actionFailure];
+    }];
+
+}
+
 - (id<SZLike>)likeWithEntity:(id<SZEntity>)entity options:(SZLikeOptions*)options networks:(SZSocialNetwork)networks {
     __block id<SZLike> fetchedLike = nil;
     [self prepare];

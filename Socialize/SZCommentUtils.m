@@ -127,4 +127,10 @@
     }, failure);
 }
 
++ (void)getCommentsByApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getCommentsWithFirst:first last:last success:success failure:failure];
+    }, failure);
+}
+
 @end

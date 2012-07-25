@@ -44,6 +44,14 @@
         return [comment objectID] == [serverComment objectID];
     }];
     GHAssertNotNil(fetchedComment, @"Comment not on user");
+    
+    // Fetch by app (globally)
+    fetchedComments = [self getCommentsByApplication];
+    fetchedComment = [fetchedComments match:^BOOL (id<SZComment> comment) {
+        return [comment objectID] == [serverComment objectID];
+    }];
+    GHAssertNotNil(fetchedComment, @"Comment not in application");
+
 }
 
 @end
