@@ -1,0 +1,5 @@
+{
+  "szsd_thumb":"http://the_url_to_your_thumbnail_image",
+  "szsd_title": "Some title for the page, if you don't want to use the entity name",
+  "szsd_description": "Description text on the page if there is no URL to parse"
+}

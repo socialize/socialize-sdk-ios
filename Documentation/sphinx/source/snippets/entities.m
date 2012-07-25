@@ -122,4 +122,30 @@
 
 // end-json-meta-snippet
 
+// begin-custom-entity-page-snippet
+
+- (void)createEntityWithCustomPageInfo {
+    SZEntity *entity = [SZEntity entityWithKey:@"my_key" name:@"An Entity"];
+
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"Some title for the page, if you don't want to use the entity name", @"szsd_title",
+                            @"Description text on the page if there is no URL to parse", @"szsd_description",
+                            @"http://the_url_to_your_thumbnail_image", @"szsd_thumb",
+                            nil];
+    
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+    NSAssert(error == nil, @"Error writing json: %@", [error localizedDescription]);
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    entity.meta = jsonString;
+    
+    [SZEntityUtils addEntity:entity success:^(id<SZEntity> serverEntity) {
+        NSLog(@"Successfully updated entity meta: %@", [serverEntity meta]);
+    } failure:^(NSError *error) {
+        NSLog(@"Failure: %@", [error localizedDescription]);        
+    }];
+}
+
+// end-custom-entity-page-snippet
+
 @end
