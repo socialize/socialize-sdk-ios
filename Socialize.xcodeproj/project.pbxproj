@@ -1368,6 +1368,14 @@
 		AAB73D581597C01800220492 /* ButtonExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB73D551597C01800220492 /* ButtonExampleViewController.m */; };
 		AAB73D591597C01800220492 /* ButtonExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB73D561597C01800220492 /* ButtonExampleViewController.xib */; };
 		AAB73D5A1597C01800220492 /* ButtonExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB73D561597C01800220492 /* ButtonExampleViewController.xib */; };
+		AABCC67715C08181005FA860 /* SZSessionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = AABCC67515C08181005FA860 /* SZSessionTracker.h */; };
+		AABCC67815C08181005FA860 /* SZSessionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = AABCC67515C08181005FA860 /* SZSessionTracker.h */; };
+		AABCC67915C08181005FA860 /* SZSessionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCC67615C08181005FA860 /* SZSessionTracker.m */; };
+		AABCC67A15C08181005FA860 /* SZSessionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCC67615C08181005FA860 /* SZSessionTracker.m */; };
+		AABCC67D15C083CD005FA860 /* NSString+UUID.h in Headers */ = {isa = PBXBuildFile; fileRef = AABCC67B15C083CD005FA860 /* NSString+UUID.h */; };
+		AABCC67E15C083CD005FA860 /* NSString+UUID.h in Headers */ = {isa = PBXBuildFile; fileRef = AABCC67B15C083CD005FA860 /* NSString+UUID.h */; };
+		AABCC67F15C083CD005FA860 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCC67C15C083CD005FA860 /* NSString+UUID.m */; };
+		AABCC68015C083CD005FA860 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCC67C15C083CD005FA860 /* NSString+UUID.m */; };
 		AAC194DA15AF712B00DDE42F /* SZOARequest+Twitter.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC194D815AF712B00DDE42F /* SZOARequest+Twitter.h */; };
 		AAC194DB15AF712B00DDE42F /* SZOARequest+Twitter.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC194D815AF712B00DDE42F /* SZOARequest+Twitter.h */; };
 		AAC194DC15AF712B00DDE42F /* SZOARequest+Twitter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC194D915AF712B00DDE42F /* SZOARequest+Twitter.m */; };
@@ -2685,6 +2693,10 @@
 		AAB73D541597C01800220492 /* ButtonExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonExampleViewController.h; sourceTree = "<group>"; };
 		AAB73D551597C01800220492 /* ButtonExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonExampleViewController.m; sourceTree = "<group>"; };
 		AAB73D561597C01800220492 /* ButtonExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonExampleViewController.xib; sourceTree = "<group>"; };
+		AABCC67515C08181005FA860 /* SZSessionTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSessionTracker.h; sourceTree = "<group>"; };
+		AABCC67615C08181005FA860 /* SZSessionTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZSessionTracker.m; sourceTree = "<group>"; };
+		AABCC67B15C083CD005FA860 /* NSString+UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UUID.h"; sourceTree = "<group>"; };
+		AABCC67C15C083CD005FA860 /* NSString+UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UUID.m"; sourceTree = "<group>"; };
 		AAC194D815AF712B00DDE42F /* SZOARequest+Twitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SZOARequest+Twitter.h"; sourceTree = "<group>"; };
 		AAC194D915AF712B00DDE42F /* SZOARequest+Twitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SZOARequest+Twitter.m"; sourceTree = "<group>"; };
 		AAC194E515AF925200DDE42F /* NSOperationQueue+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+Socialize.h"; sourceTree = "<group>"; };
@@ -2917,11 +2929,10 @@
 		AA0085C2158D2EFC00480399 /* Socialize */ = {
 			isa = PBXGroup;
 			children = (
+				AABCC67415C08141005FA860 /* SDK */,
 				AAC194E415AF923700DDE42F /* Extensions */,
 				AA77C95A15ACCE8900745096 /* Network */,
 				AA91F93515B0D2B800BC373E /* API Client */,
-				AA41522E15911DF0003717AC /* Utils */,
-				AA25FEAF159119F50067741A /* UI */,
 				AA5807E4158E994D005B9F6C /* Resources */,
 				AA0085C3158D2EFC00480399 /* Supporting Files */,
 			);
@@ -3924,11 +3935,24 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		AABCC67415C08141005FA860 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				AA41522E15911DF0003717AC /* Utils */,
+				AA25FEAF159119F50067741A /* UI */,
+				AABCC67515C08181005FA860 /* SZSessionTracker.h */,
+				AABCC67615C08181005FA860 /* SZSessionTracker.m */,
+			);
+			name = SDK;
+			sourceTree = "<group>";
+		};
 		AAC194E415AF923700DDE42F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				AAC194E515AF925200DDE42F /* NSOperationQueue+Socialize.h */,
 				AAC194E615AF925200DDE42F /* NSOperationQueue+Socialize.m */,
+				AABCC67B15C083CD005FA860 /* NSString+UUID.h */,
+				AABCC67C15C083CD005FA860 /* NSString+UUID.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -4201,6 +4225,8 @@
 				AAC194DA15AF712B00DDE42F /* SZOARequest+Twitter.h in Headers */,
 				AAC194E715AF925200DDE42F /* NSOperationQueue+Socialize.h in Headers */,
 				AA91F93815B0D2E800BC373E /* SZAPIClientHelpers.h in Headers */,
+				AABCC67715C08181005FA860 /* SZSessionTracker.h in Headers */,
+				AABCC67D15C083CD005FA860 /* NSString+UUID.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4290,6 +4316,8 @@
 				AAC194DB15AF712B00DDE42F /* SZOARequest+Twitter.h in Headers */,
 				AAC194E815AF925200DDE42F /* NSOperationQueue+Socialize.h in Headers */,
 				AA91F93915B0D2E800BC373E /* SZAPIClientHelpers.h in Headers */,
+				AABCC67815C08181005FA860 /* SZSessionTracker.h in Headers */,
+				AABCC67E15C083CD005FA860 /* NSString+UUID.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5744,6 +5772,8 @@
 				AAC194DC15AF712B00DDE42F /* SZOARequest+Twitter.m in Sources */,
 				AAC194E915AF925200DDE42F /* NSOperationQueue+Socialize.m in Sources */,
 				AA91F93A15B0D2E800BC373E /* SZAPIClientHelpers.m in Sources */,
+				AABCC67915C08181005FA860 /* SZSessionTracker.m in Sources */,
+				AABCC67F15C083CD005FA860 /* NSString+UUID.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6235,6 +6265,8 @@
 				AAC194DD15AF712B00DDE42F /* SZOARequest+Twitter.m in Sources */,
 				AAC194EA15AF925200DDE42F /* NSOperationQueue+Socialize.m in Sources */,
 				AA91F93B15B0D2E800BC373E /* SZAPIClientHelpers.m in Sources */,
+				AABCC67A15C08181005FA860 /* SZSessionTracker.m in Sources */,
+				AABCC68015C083CD005FA860 /* NSString+UUID.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
