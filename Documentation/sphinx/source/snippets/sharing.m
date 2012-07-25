@@ -174,5 +174,17 @@
 
 // end-get-shares-snippet
 
+// begin-list-by-application-snippet
+
+- (void)listSharesByApplication {
+    
+    [SZShareUtils getSharesByApplicationWithFirst:nil last:nil success:^(NSArray *shares) {
+        NSLog(@"Fetched shares: %@", shares);
+    } failure:^(NSError *error) {
+        NSLog(@"Failed: %@", [error localizedDescription]);
+    }];
+}
+
+// end-list-by-application-snippet
 
 @end

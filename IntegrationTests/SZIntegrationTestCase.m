@@ -312,6 +312,13 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
     
 }
 
+- (NSArray*)getSharesByApplication {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZShareUtils getSharesByApplicationWithFirst:nil last:nil success:actionSuccess failure:actionFailure];
+    }];
+    
+}
+
 - (id<SZLike>)getLikeForUser:(id<SZUser>)user entity:(id<SZEntity>)entity {
     __block id<SZLike> fetchedLike = nil;
     [self prepare];

@@ -74,6 +74,7 @@
 - (id<SZSubscription>)unsubscribeFromEntity:(id<SZEntity>)entity subscriptionType:(SZSubscriptionType)subscriptionType;
 - (NSArray*)getSubscriptionsForEntity:(id<SZEntity>)entity;
 - (BOOL)isSubscribedToEntity:(id<SZEntity>)entity subscriptionType:(SZSubscriptionType)subscriptionType;
+- (NSArray*)getSharesByApplication;
 
 //- (void)getViewsForURL:(NSString*)url;
 @end

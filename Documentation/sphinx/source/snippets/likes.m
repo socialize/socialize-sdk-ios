@@ -91,7 +91,7 @@
 
 - (void)listLikesByApplication {
     
-    [SZCommentUtils getLikesByApplicationWithFirst:nil last:nil success:^(NSArray *likes) {
+    [SZLikeUtils getLikesByApplicationWithFirst:nil last:nil success:^(NSArray *likes) {
         NSLog(@"Fetched likes: %@", likes);
     } failure:^(NSError *error) {
         NSLog(@"Failed: %@", [error localizedDescription]);

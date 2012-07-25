@@ -8,6 +8,7 @@
 
 #import "TestShareUtils.h"
 #import <Socialize/Socialize.h>
+#import "integrationtests_globals.h"
 
 @implementation TestShareUtils
 
@@ -119,6 +120,17 @@
                                 [self notify:kGHUnitWaitStatusFailure];
                             }];
     [self waitForStatus:kGHUnitWaitStatusSuccess];
+}
+
+- (void)testGetSharesByApplication {
+    id<SZShare> createdShare = [self createTestShareForSelector:_cmd];
+
+    // Fetch by user and entity
+    NSArray *fetchedShares = [self getSharesByApplication];
+    id<SZComment> fetchedComment = [fetchedShares match:^BOOL (id<SZShare> share) {
+        return [share objectID] == [createdShare objectID];
+    }];
+    GHAssertNotNil(fetchedComment, @"Comment not on user");
 }
 
 

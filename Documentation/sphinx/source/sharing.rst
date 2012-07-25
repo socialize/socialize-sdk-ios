@@ -70,3 +70,9 @@ You can retrieve information about what has been shared in your application.
 .. literalinclude:: snippets/sharing.m
 	:start-after: begin-get-shares-snippet
 	:end-before: end-get-shares-snippet
+
+List all shares in the application
+	
+.. literalinclude:: snippets/shares.m
+  :start-after: begin-list-by-application-snippet
+  :end-before: end-list-by-application-snippet

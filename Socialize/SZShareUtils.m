@@ -244,4 +244,9 @@
     }, failure);
 }
 
++ (void)getSharesByApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getSharesWithFirst:first last:last success:success failure:failure];
+    }, failure);
+}
 @end

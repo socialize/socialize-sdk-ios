@@ -843,6 +843,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_shareService getSharesForEntityKey:key first:first last:last success:success failure:failure];
 }
 
+- (void)getSharesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+    [_shareService getSharesWithFirst:first last:last success:success failure:failure];
+}
+
 
 #pragma mark notification service stuff
 +(void)registerDeviceToken:(NSData *)deviceToken {
