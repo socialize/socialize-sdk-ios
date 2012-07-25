@@ -10,9 +10,6 @@
 #import "SZShareUtils.h"
 #import "socialize_globals.h"
 #import "SocializeThirdParty.h"
-#import <JSONKit/JSONKit.h>
-
-#define SHARE_DIALOG_BUCKET @"SHARE_DIALOG"
 
 @interface _SZShareDialogViewController () {
     dispatch_once_t _initToken;
@@ -44,21 +41,6 @@
         [self trackCloseEvent];
         BLOCK_CALL(weakSelf.cancellationBlock);
     }];
-}
-
-- (void)trackShareEventsForNetworks:(SZSocialNetwork)networks {
-    NSMutableArray *networkNames = [NSMutableArray array];
-    for (Class<SocializeThirdParty> thirdParty in [SocializeThirdParty allThirdParties]) {
-        if (networks & [thirdParty socialNetworkFlag]) {
-            [networkNames addObject:[thirdParty thirdPartyName]];
-        }
-    }
-
-    if ([networkNames count]) {
-        NSString *jsonNetworks = [networkNames JSONString];
-        NSDictionary *values = [NSDictionary dictionaryWithObjectsAndKeys:@"share", @"action", jsonNetworks, @"networks", nil];
-        [[Socialize sharedSocialize] trackEventWithBucket:SHARE_DIALOG_BUCKET values:values];
-    }
 }
 
 - (void)continueButtonPressed:(id)sender {
