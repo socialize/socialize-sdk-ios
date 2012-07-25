@@ -61,3 +61,9 @@ Get likes by all users on a specific entity
 .. literalinclude:: snippets/likes.m
 	:start-after: begin-get-by-entity-snippet
 	:end-before: end-get-by-entity-snippet
+
+List all likes in the application
+	
+.. literalinclude:: snippets/likes.m
+  :start-after: begin-list-by-application-snippet
+  :end-before: end-list-by-application-snippet

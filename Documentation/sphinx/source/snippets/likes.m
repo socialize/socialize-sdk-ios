@@ -87,4 +87,17 @@
 
 // end-get-by-entity-snippet
 
+// begin-list-by-application-snippet
+
+- (void)listLikesByApplication {
+    
+    [SZCommentUtils getLikesByApplicationWithFirst:nil last:nil success:^(NSArray *likes) {
+        NSLog(@"Fetched likes: %@", likes);
+    } failure:^(NSError *error) {
+        NSLog(@"Failed: %@", [error localizedDescription]);
+    }];
+}
+
+// end-list-by-application-snippet
+
 @end

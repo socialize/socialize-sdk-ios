@@ -773,6 +773,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_likeService getLikesForEntity:entity first:first last:last success:success failure:failure];
 }
 
+- (void)getLikesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+    [_likeService getLikesWithFirst:first last:last success:success failure:failure];
+}
+
 - (void)createLikes:(NSArray*)likes success:(void(^)(id entityOrEntities))success failure:(void(^)(NSError *error))failure {
     [_likeService createLikes:likes success:success failure:failure];
 }

@@ -34,7 +34,14 @@
     id<SZLike> foundLike = [fetchedLikes match:^BOOL (id<SZLike> like) {
         return [like objectID] == [serverLike objectID];
     }];
-    GHAssertNotNil(foundLike, @"Should have like");
+    GHAssertNotNil(foundLike, @"Should have like in user likes");
+
+    // Check most recent likes for current user
+    fetchedLikes = [self getLikesByApplication];
+    foundLike = [fetchedLikes match:^BOOL (id<SZLike> like) {
+        return [like objectID] == [serverLike objectID];
+    }];
+    GHAssertNotNil(foundLike, @"Should have like in application likes");
 
     // Check isLiked
     BOOL isLiked = [self isLiked:entity];

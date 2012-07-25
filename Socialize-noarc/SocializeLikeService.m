@@ -168,4 +168,8 @@
         [self getLikesForEntityKey:[entity key] first:first last:last];
 }
 
+- (void)getLikesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure {
+    [self callListingGetEndpointWithPath:LIKES_METHOD params:nil first:first last:last success:success failure:failure];
+}
+
 @end

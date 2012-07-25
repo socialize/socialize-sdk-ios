@@ -94,4 +94,10 @@
     }, failure);
 }
 
++ (void)getLikesByApplicationWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *likes))success failure:(void(^)(NSError *error))failure {
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getLikesWithFirst:first last:last success:success failure:failure];
+    }, failure);
+}
+
 @end

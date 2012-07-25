@@ -305,6 +305,13 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
     return [fetchedLikes autorelease];
 }
 
+- (NSArray*)getLikesByApplication {
+    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
+        [SZLikeUtils getLikesByApplicationWithFirst:nil last:nil success:actionSuccess failure:actionFailure];
+    }];
+    
+}
+
 - (id<SZLike>)getLikeForUser:(id<SZUser>)user entity:(id<SZEntity>)entity {
     __block id<SZLike> fetchedLike = nil;
     [self prepare];

@@ -55,6 +55,7 @@
 - (BOOL)isLiked:(id<SZEntity>)entity;
 - (id<SZLike>)getLike:(id<SZEntity>)entity;
 - (NSArray*)getLikesForUser:(id<SZUser>)user;
+- (NSArray*)getLikesByApplication;
 - (id<SZLike>)getLikeForUser:(id<SZUser>)user entity:(id<SZEntity>)entity;
 - (NSArray*)getActionsForApplication;
 - (NSArray*)getActionsForUser:(id<SZUser>)user;
