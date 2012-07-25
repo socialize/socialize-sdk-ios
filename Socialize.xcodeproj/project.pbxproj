@@ -654,6 +654,7 @@
 		AA7D041415A26CAA00EBB705 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */; };
 		AA7D041515A26CAA00EBB705 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */; };
 		AA7D5DFF159072CD005B12A3 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3C62A115906FBE00386330 /* GHUnitIOS.framework */; };
+		AA823CD715C09D8900F83091 /* SZSessionTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA823CD615C09D8900F83091 /* SZSessionTrackerTests.m */; };
 		AA84CCE915B0F50A00D7109C /* SZOARequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */; };
 		AA85D2F2159E55B7004DEB35 /* standalone_share.m in Sources */ = {isa = PBXBuildFile; fileRef = AA85D2F1159E55B7004DEB35 /* standalone_share.m */; };
 		AA876708159032E900E9B2C1 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8767021590327C00E9B2C1 /* libJSONKit.a */; };
@@ -2448,6 +2449,8 @@
 		AA7D03DF15A26CAA00EBB705 /* SZUserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserUtils.m; sourceTree = "<group>"; };
 		AA7D03E015A26CAA00EBB705 /* SZViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZViewUtils.h; sourceTree = "<group>"; };
 		AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZViewUtils.m; sourceTree = "<group>"; };
+		AA823CD515C09D8900F83091 /* SZSessionTrackerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSessionTrackerTests.h; sourceTree = "<group>"; };
+		AA823CD615C09D8900F83091 /* SZSessionTrackerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZSessionTrackerTests.m; sourceTree = "<group>"; };
 		AA84CCE715B0F50A00D7109C /* SZOARequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZOARequestTests.h; sourceTree = "<group>"; };
 		AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZOARequestTests.m; sourceTree = "<group>"; };
 		AA85D2F0159E55B7004DEB35 /* standalone_share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = standalone_share.h; sourceTree = "<group>"; };
@@ -3233,6 +3236,8 @@
 				AAEC2B0B15B4D88000C9C65A /* SDKHelpersTests.m */,
 				AA4BDF3B15B5222100301AD0 /* SZShareUtilsTests.h */,
 				AA4BDF3C15B5222100301AD0 /* SZShareUtilsTests.m */,
+				AA823CD515C09D8900F83091 /* SZSessionTrackerTests.h */,
+				AA823CD615C09D8900F83091 /* SZSessionTrackerTests.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -6026,6 +6031,7 @@
 				AA84CCE915B0F50A00D7109C /* SZOARequestTests.m in Sources */,
 				AAEC2B0C15B4D88000C9C65A /* SDKHelpersTests.m in Sources */,
 				AA4BDF3D15B5222100301AD0 /* SZShareUtilsTests.m in Sources */,
+				AA823CD715C09D8900F83091 /* SZSessionTrackerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

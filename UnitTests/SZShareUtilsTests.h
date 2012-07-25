@@ -9,6 +9,5 @@
 #import "SocializeTestCase.h"
 
 @interface SZShareUtilsTests : SocializeTestCase
-@property (nonatomic, retain) id mockSharedSocialize;
 
 @end

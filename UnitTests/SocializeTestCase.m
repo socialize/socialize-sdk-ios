@@ -23,6 +23,7 @@ id testSelf;
 @synthesize swizzledMethods = swizzledMethods_;
 @synthesize lastException = lastException_;
 @synthesize uut = uut_;
+@synthesize mockSharedSocialize = _mockSharedSocialize;
 
 - (id)createUUT {
     return nil;
@@ -43,6 +44,18 @@ id testSelf;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
+}
+
+- (void)startMockingSharedSocialize {
+    self.mockSharedSocialize = [OCMockObject mockForClass:[Socialize class]];
+    [Socialize startMockingClass];
+    [[[Socialize stub] andReturn:self.mockSharedSocialize] sharedSocialize];
+}
+
+- (void)stopMockingSharedSocialize {
+    [Socialize stopMockingClassAndVerify];
+    [self.mockSharedSocialize verify];
+    self.mockSharedSocialize = nil;
 }
 
 - (NSMutableDictionary*)swizzledMethods {
@@ -80,6 +93,9 @@ id testSelf;
 
 - (void)tearDown {
     self.uut = nil;
+    [self.mockSharedSocialize verify];
+    self.mockSharedSocialize = nil;
+    
     [super tearDown];
 }
 

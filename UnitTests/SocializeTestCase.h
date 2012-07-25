@@ -13,6 +13,7 @@
 #import <OCMock/NSObject+ClassMock.h>
 #import "SocializeService+Testing.h"
 #import "StringHelper.h"
+#import "_Socialize.h"
 
 @class SocializeTestCase;
 
@@ -25,6 +26,7 @@ extern id testSelf;
 @property (nonatomic, retain) UIAlertView *lastShownAlert;
 @property (nonatomic, retain) NSMutableDictionary *expectedDeallocations;
 @property (nonatomic, retain) NSException *lastException;
+@property (nonatomic, retain) id mockSharedSocialize;
 
 - (void)expectDeallocationOfObject:(NSObject*)object fromTest:(SEL)test;
 - (void)swizzleClass:(Class)target_class selector:(SEL)classSelector toObject:(id)object selector:(SEL)objectSelector;
@@ -34,5 +36,7 @@ extern id testSelf;
 - (void)fakeCurrentUserWithSocialize:(id)socialize user:(id<SZFullUser>)user;
 - (void)fakeCurrentUserAnonymousInSocialize:(id)socialize;
 - (void)fakeCurrentUserNotAuthedInSocialize:(id)socialize;
+- (void)startMockingSharedSocialize;
+- (void)stopMockingSharedSocialize;
 
 @end

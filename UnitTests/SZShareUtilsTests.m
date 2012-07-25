@@ -20,10 +20,7 @@
 - (void)setUp {
     [super setUp];
     
-    self.mockSharedSocialize = [OCMockObject mockForClass:[Socialize class]];
-    [Socialize startMockingClass];
-    [[[Socialize stub] andReturn:self.mockSharedSocialize] sharedSocialize];
-    
+    [self startMockingSharedSocialize];
     [SZTwitterUtils startMockingClass];
     [SZFacebookUtils startMockingClass];
     [SZUserUtils startMockingClass];
@@ -35,8 +32,6 @@
 - (void)tearDown {
     [super tearDown];
     
-    [self.mockSharedSocialize verify];
-    self.mockSharedSocialize = nil;
     [Socialize stopMockingClassAndVerify];
     [SZFacebookUtils stopMockingClassAndVerify];
     [SZTwitterUtils stopMockingClassAndVerify];
