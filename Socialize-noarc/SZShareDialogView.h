@@ -10,7 +10,6 @@
 #import "SocializeVerticalLayoutContainerView.h"
 
 @interface SZShareDialogView : UIView
-@property (nonatomic, retain) IBOutlet UIButton *continueButton;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UIImageView *headerImageView;
 @property (nonatomic, retain) IBOutlet UIView *headerView;

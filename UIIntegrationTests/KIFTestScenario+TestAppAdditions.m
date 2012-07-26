@@ -392,6 +392,8 @@
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"twitter"]];
     [steps addObjectsFromArray:[KIFTestStep stepsToAuthWithTestTwitterInfo]];
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Share"]];
+
     [steps addObject:[KIFTestStep stepToVerifyViewWithAccessibilityLabel:@"Twitter Switch" passesTest:^(UISwitch *sw) {
         return sw.isOn;
     }]];

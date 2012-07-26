@@ -11,7 +11,6 @@
 #import "socialize_globals.h"
 
 @implementation SZShareDialogView
-@synthesize continueButton = continueButton_;
 @synthesize headerImageView = headerImageView_;
 @synthesize headerView = headerView_;
 @synthesize tableView = tableView_;
@@ -19,7 +18,6 @@
 @synthesize footerView = footerView_;
 
 - (void)dealloc {
-    self.continueButton = nil;
     self.headerImageView = nil;
     self.headerView = nil;
     self.tableView = nil;

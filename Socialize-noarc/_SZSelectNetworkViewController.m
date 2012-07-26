@@ -28,6 +28,15 @@
     return self;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    if ([self.title length] == 0) {
+        self.title = @"Share";
+    }
+
+}
+
 - (void)continueButtonPressed:(id)sender {
     SZSocialNetwork networks = [self selectedNetworks];
     if (networks == SZSocialNetworkNone && !self.dontRequireNetworkSelection) {
