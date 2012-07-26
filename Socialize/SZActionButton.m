@@ -78,7 +78,7 @@
     viewsButton.image = nil;
     viewsButton.highlightedImage = nil;
     viewsButton.actionBlock = ^(SZActionButton *button, SZActionBar *bar) {
-        [SZUserUtils showUserProfileInViewController:bar.viewController user:nil completion:nil];
+        [SZUserUtils showUserSettingsInViewController:bar.viewController completion:nil];
     };
     viewsButton.actualButton.accessibilityLabel = @"views button";
     
