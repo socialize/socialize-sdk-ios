@@ -4,6 +4,42 @@
 Changelog
 =============================================
 
+v2.2
+----
+[feature] Share decisions from end user should be reported via event tracker [ ]
+
+[feature] Auth decisions from end user should be reported via event tracker [ ]
+
+[bug] Fix a comments list crash when returning after comment post under certain conditions [ ]
+
+[feature] Documentation has new info on overriding web entity display [ ]
+
+[feature] Mobile app session opens and closes are tracked and reported [ ]
+
+[feature] Developer can get comments by application [ ]
+
+[feature] Developer can get likes by application [ ]
+
+[feature] Developer can get shares by application [ ]
+
+[feature] Developer can list entities by popularity [ ]
+
+[feature] Documentation has new info on testing sandbox push [ ]
+
+[bug] tapping profile in activity details should navigate to that profile [ ]
+
+[feature] Developer can customize header view (image) in share dialog [ ]
+
+[feature] Pressing views count should go directly to settings [ ]
+
+[feature] Improve placement of continue button in share dialog [ ]
+
+[feature] Developer can customize footer view in share dialog [ ]
+
+[feature] Share dialog 'continue' now greyed out unless something is selected [ ]
+
+[feature] Improve default twitter link controller title [ ]
+
 v2.1.2
 ------
 [bug] Fix another comments list crash [ ]

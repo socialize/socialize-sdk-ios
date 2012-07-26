@@ -55,6 +55,12 @@ Or page through entities for the entire application
 	:start-after: begin-get-all-snippet
 	:end-before: end-get-all-snippet
 
+You can select a sort order for listed entities
+
+.. literalinclude:: snippets/entities.m
+	:start-after: begin-get-popular-snippet
+	:end-before: end-get-popular-snippet
+
 Entity Stats
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -89,3 +95,34 @@ Entity Activity
 ~~~~~~~~~~~~~~~
 
 For information on retrieving a social activity stream for a given entity, see the `Actions Section <actions.html#working-with-actions>`_.
+
+Entities Without URLs
+---------------------
+
+.. _SmartDownload: http://go.getsocialize.com/SmartDownloads
+
+All entities in Socialize will be given an automatically generated entity page which forms part of the Socialize SmartDownload_ process.
+
+This default entity page can be **completely customized** to suit the look and feel of your app as well as being able to display specific information
+taken from your entity meta data.
+
+.. note:: If your entity key uses an HTTP URL the contents of your entity page will be automatically parsed from that URL by default
+
+To customize the content displayed on your entity pages simply add a JSON structure to your entity **meta data** that includes the following *szsd_* prefixed attributes:
+
+.. literalinclude:: snippets/entity_page_json.txt
+   :language: javascript
+   :tab-width: 4
+   
+In code this would look something like this
+
+.. literalinclude:: snippets/entities.m
+  :start-after: begin-custom-entity-page-snippet
+  :end-before: end-custom-entity-page-snippet
+  
+This will display on your entity page like this:
+
+.. image:: images/szsd_entity_page.png
+
+.. include:: footer.inc     
+

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Likes &mdash; Socialize iOS SDK 2.1.2 documentation</title>
+    <title>Likes &mdash; Socialize iOS SDK 2.2 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.1.2',
+        VERSION:     '2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.1.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.2 documentation" href="index.html" />
     <link rel="next" title="Views" href="views.html" />
     <link rel="prev" title="Comments" href="comments.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="comments.html" title="Comments"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.1.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -161,6 +161,17 @@ be propagated to 3rd party networks such as Facebook and Twitter</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>List all likes in the application</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">listLikesByApplication</span> <span class="p">{</span>
+    
+    <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="nl">getLikesByApplicationWithFirst:</span><span class="nb">nil</span> <span class="nl">last:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">likes</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Fetched likes: %@&quot;</span><span class="p">,</span> <span class="n">likes</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -223,7 +234,7 @@ be propagated to 3rd party networks such as Facebook and Twitter</p>
         <li class="right" >
           <a href="comments.html" title="Comments"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.1.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

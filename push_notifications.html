@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 2.1.2 documentation</title>
+    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 2.2 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.1.2',
+        VERSION:     '2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.1.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.2 documentation" href="index.html" />
     <link rel="next" title="Entities" href="entities.html" />
     <link rel="prev" title="Facebook" href="facebook.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="facebook.html" title="Facebook"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.1.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -100,13 +100,13 @@
 <div class="section" id="step-3-keys-certificates-for-your-app-id-for-apns">
 <h2>Step 3: Keys/Certificates for your App ID for APNS<a class="headerlink" href="#step-3-keys-certificates-for-your-app-id-for-apns" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Click the &#8216;configure&#8217; button for your &#8216;Production Push SSL Certificate&#8217; on the right hand side.</li>
+<li>Click the &#8216;configure&#8217; button for your desired certificate (&#8216;Production Push
+SSL Certificate&#8217; or &#8216;Development Push SSL Certificate&#8217;) on the right hand
+side.  Follow the directions given to you by Apple <strong>very carefully</strong>.</li>
 </ul>
-<p>Follow the directions given to you by Apple <strong>very carefully</strong>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>We currently don’t support development push certificates</li>
 <li>You don’t have to use your primary Keychain key as the identifier, nor does it have to connect to your developer account.   You can make a new keychain in Keychain Access, and use that to handle the Certificate Signing Request. This can be especially useful if you need to share this between multiple developers.</li>
 </ul>
 </div>
@@ -138,6 +138,12 @@ provisioning profile for your changes to take effect.</p>
 </ul>
 <p>If you&#8217;ve added a password to your p12 make sure to put that in.</p>
 <img alt="images/notification_p12_upload.png" src="images/notification_p12_upload.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Only one p12 can be configured at a time for any given Socialize app. If you need to test
+both production and development push tokens, it is recommended that you create separate
+Socialize apps (one for Development, and one for Production).</p>
+</div>
 </div>
 <div class="section" id="step-6-configuring-notifications-in-your-app">
 <h2>Step 6: Configuring Notifications in Your App<a class="headerlink" href="#step-6-configuring-notifications-in-your-app" title="Permalink to this headline">¶</a></h2>
@@ -362,22 +368,6 @@ by attaching your device, selecting Window -&gt; Organizer, choosing your device
 <pre>Mar 28 12:16:57 AppName[3354] <Warning>: Socialize: device token FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF successfully registered with server</pre><p>You can then send a notification from the web interface, in the &#8220;View Debugger&#8221; section of the
 web interface.</p>
 <img alt="images/send_to_device.png" src="images/send_to_device.png" />
-<p>One possibility is that Socialize has received a development push token.
-Development tokens will currently prevent pushes being sent to real devices.
-Until Socialize automatically clears these on error, you should verify that you
-do not send development tokens to Socialize using [Socialize
-registerDeviceToken:]</p>
-<p>As a precaution, you might wrap the registration call as follows:</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didRegisterForRemoteNotificationsWithDeviceToken:</span><span class="n">deviceToken</span>
-<span class="p">{</span>
-<span class="cp">#if !DEBUG</span>
-    <span class="p">[</span><span class="n">SZSmartAlertUtils</span> <span class="nl">registerDeviceToken:</span><span class="n">deviceToken</span><span class="p">];</span>
-<span class="cp">#endif</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>This is only a problem if you already have separate push configurations and certificates
-for development and distribution. Socialize itself does not support development push.</p>
 <p>Please go to support.getsocialize.com for additional support.</p>
 </div>
 </div>
@@ -450,7 +440,7 @@ for development and distribution. Socialize itself does not support development 
         <li class="right" >
           <a href="facebook.html" title="Facebook"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.1.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

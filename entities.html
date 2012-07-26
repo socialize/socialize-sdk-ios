@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Entities &mdash; Socialize iOS SDK 2.1.2 documentation</title>
+    <title>Entities &mdash; Socialize iOS SDK 2.2 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.1.2',
+        VERSION:     '2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.1.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.2 documentation" href="index.html" />
     <link rel="next" title="Users" href="users.html" />
     <link rel="prev" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.1.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -143,6 +143,18 @@ these aggregate values.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>You can select a sort order for listed entities</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getPopularEntitiesForApplication</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">getEntitiesWithSorting:</span><span class="n">SZResultSortingPopularity</span> <span class="nl">first:</span><span class="nb">nil</span> <span class="nl">last:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="k">in</span> <span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Retrieved entity %@/%d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">entity</span> <span class="n">key</span><span class="p">],</span> <span class="p">[</span><span class="n">entity</span> <span class="n">objectID</span><span class="p">]);</span>            
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failure: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>        
+    <span class="p">}];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="entity-stats">
 <h3>Entity Stats<a class="headerlink" href="#entity-stats" title="Permalink to this headline">¶</a></h3>
@@ -208,6 +220,50 @@ excellent <a class="reference external" href="https://github.com/johnezang/JSONK
 <p>For information on retrieving a social activity stream for a given entity, see the <a class="reference external" href="actions.html#working-with-actions">Actions Section</a>.</p>
 </div>
 </div>
+<div class="section" id="entities-without-urls">
+<h2>Entities Without URLs<a class="headerlink" href="#entities-without-urls" title="Permalink to this headline">¶</a></h2>
+<p>All entities in Socialize will be given an automatically generated entity page which forms part of the Socialize <a class="reference external" href="http://go.getsocialize.com/SmartDownloads">SmartDownload</a> process.</p>
+<p>This default entity page can be <strong>completely customized</strong> to suit the look and feel of your app as well as being able to display specific information
+taken from your entity meta data.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If your entity key uses an HTTP URL the contents of your entity page will be automatically parsed from that URL by default</p>
+</div>
+<p>To customize the content displayed on your entity pages simply add a JSON structure to your entity <strong>meta data</strong> that includes the following <em>szsd_</em> prefixed attributes:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;szsd_thumb&quot;</span><span class="o">:</span><span class="s2">&quot;http://the_url_to_your_thumbnail_image&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;szsd_title&quot;</span><span class="o">:</span> <span class="s2">&quot;Some title for the page, if you don&#39;t want to use the entity name&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;szsd_description&quot;</span><span class="o">:</span> <span class="s2">&quot;Description text on the page if there is no URL to parse&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In code this would look something like this</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">createEntityWithCustomPageInfo</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;my_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
+
+    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDictionary</span> <span class="nl">dictionaryWithObjectsAndKeys:</span>
+                            <span class="s">@&quot;Some title for the page, if you don&#39;t want to use the entity name&quot;</span><span class="p">,</span> <span class="s">@&quot;szsd_title&quot;</span><span class="p">,</span>
+                            <span class="s">@&quot;Description text on the page if there is no URL to parse&quot;</span><span class="p">,</span> <span class="s">@&quot;szsd_description&quot;</span><span class="p">,</span>
+                            <span class="s">@&quot;http://the_url_to_your_thumbnail_image&quot;</span><span class="p">,</span> <span class="s">@&quot;szsd_thumb&quot;</span><span class="p">,</span>
+                            <span class="nb">nil</span><span class="p">];</span>
+    
+    <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="n">NSData</span> <span class="o">*</span><span class="n">jsonData</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSJSONSerialization</span> <span class="nl">dataWithJSONObject:</span><span class="n">params</span> <span class="nl">options:</span><span class="mi">0</span> <span class="nl">error:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">];</span>
+    <span class="n">NSAssert</span><span class="p">(</span><span class="n">error</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">,</span> <span class="s">@&quot;Error writing json: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">jsonString</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithData:</span><span class="n">jsonData</span> <span class="nl">encoding:</span><span class="n">NSUTF8StringEncoding</span><span class="p">];</span>
+    <span class="n">entity</span><span class="p">.</span><span class="n">meta</span> <span class="o">=</span> <span class="n">jsonString</span><span class="p">;</span>
+    
+    <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">addEntity:</span><span class="n">entity</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">serverEntity</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Successfully updated entity meta: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">serverEntity</span> <span class="n">meta</span><span class="p">]);</span>
+    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failure: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>        
+    <span class="p">}];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will display on your entity page like this:</p>
+<img alt="images/szsd_entity_page.png" src="images/szsd_entity_page.png" />
+</div>
 </div>
 
 
@@ -229,6 +285,7 @@ excellent <a class="reference external" href="https://github.com/johnezang/JSONK
 <li class="toctree-l1 current"><a class="current reference internal" href="">Entities</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#working-with-entities">Working with Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#entities-without-urls">Entities Without URLs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
@@ -268,7 +325,7 @@ excellent <a class="reference external" href="https://github.com/johnezang/JSONK
         <li class="right" >
           <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.1.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

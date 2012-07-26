@@ -102,3 +102,9 @@ List comments by ID
 .. literalinclude:: snippets/comments.m
   :start-after: begin-list-by-ids-snippet
   :end-before: end-list-by-ids-snippet
+
+List all comments in application
+	
+.. literalinclude:: snippets/comments.m
+  :start-after: begin-list-by-application-snippet
+  :end-before: end-list-by-application-snippet
