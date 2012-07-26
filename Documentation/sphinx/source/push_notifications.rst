@@ -44,12 +44,12 @@ Make sure "Enable for Apple Push Notification service" is checked.
 Step 3: Keys/Certificates for your App ID for APNS
 --------------------------------------------------------------------------------
 
-* Click the 'configure' button for your 'Production Push SSL Certificate' on the right hand side.  
-Follow the directions given to you by Apple **very carefully**.  
+* Click the 'configure' button for your desired certificate ('Production Push
+  SSL Certificate' or 'Development Push SSL Certificate') on the right hand
+  side.  Follow the directions given to you by Apple **very carefully**.  
 
 .. note:: 
 
-    * We currently don’t support development push certificates
     * You don’t have to use your primary Keychain key as the identifier, nor does it have to connect to your developer account.   You can make a new keychain in Keychain Access, and use that to handle the Certificate Signing Request. This can be especially useful if you need to share this between multiple developers.
 
 .. image:: images/add_certificates.png
@@ -88,7 +88,9 @@ If you've added a password to your p12 make sure to put that in.
 
 .. image:: images/notification_p12_upload.png
 
-
+.. note:: Only one p12 can be configured at a time for any given Socialize app. If you need to test
+  both production and development push tokens, it is recommended that you create separate
+  Socialize apps (one for Development, and one for Production).
 
 
 Step 6: Configuring Notifications in Your App
@@ -250,20 +252,5 @@ You can then send a notification from the web interface, in the "View Debugger" 
 web interface.
 
 .. image:: images/send_to_device.png
-
-One possibility is that Socialize has received a development push token.
-Development tokens will currently prevent pushes being sent to real devices.
-Until Socialize automatically clears these on error, you should verify that you
-do not send development tokens to Socialize using [Socialize
-registerDeviceToken:]
-
-As a precaution, you might wrap the registration call as follows:
-
-.. literalinclude:: snippets/configure_notifications.m
-  :start-after: begin-register-snippet
-  :end-before: end-register-snippet
-
-This is only a problem if you already have separate push configurations and certificates
-for development and distribution. Socialize itself does not support development push.
 
 Please go to support.getsocialize.com for additional support.
