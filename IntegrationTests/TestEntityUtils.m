@@ -21,6 +21,10 @@
     NSArray *entities = [self getEntities];
     [self assertObject:createdEntity inCollection:entities];
 
+    // Get entities (app-wide)
+    entities = [self getEntitiesWithSorting:SZResultSortingPopularity];
+    [self assertObject:createdEntity inCollection:entities];
+
     // Get entities (by id)
     entities = [self getEntitiesWithIds:[NSArray arrayWithObject:[NSNumber numberWithInteger:[createdEntity objectID]]]];
     [self assertObject:createdEntity inCollection:entities];

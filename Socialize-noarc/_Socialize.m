@@ -920,6 +920,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     [_entityService getEntitiesWithFirst:first last:last success:success failure:failure];
 }
 
+- (void)getEntitiesWithSorting:(SZResultSorting)sorting first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+    [_entityService getEntitiesWithSorting:sorting first:first last:last success:success failure:failure];
+}
+
 - (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values {
     [_eventsService trackEventWithBucket:bucket values:values];
 }

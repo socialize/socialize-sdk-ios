@@ -11,3 +11,4 @@
 
 id SZUnarchiveUser(Protocol* protocol);
 void SZHandleUserChange(id<SZFullUser> fullUser);
+NSString *SZAPINSStringFromSZResultSorting(SZResultSorting sorting);

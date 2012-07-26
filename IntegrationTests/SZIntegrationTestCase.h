@@ -65,6 +65,7 @@
 - (void)assertObject:(id<SZObject>)object inCollection:(id)collection;
 - (id<SZEntity>)getEntityWithKey:(NSString*)entityKey;
 - (NSArray*)getEntities;
+- (NSArray*)getEntitiesWithSorting:(SZResultSorting)sorting;
 - (NSArray*)getEntitiesWithIds:(NSArray*)ids;
 - (id<SZEntity>)addEntity:(id<SZEntity>)entity;
 - (id<SZView>)viewEntity:(id<SZEntity>)entity;

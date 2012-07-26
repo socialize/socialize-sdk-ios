@@ -55,6 +55,12 @@ Or page through entities for the entire application
 	:start-after: begin-get-all-snippet
 	:end-before: end-get-all-snippet
 
+You can select a sort order for listed entities
+
+.. literalinclude:: snippets/entities.m
+	:start-after: begin-get-popular-snippet
+	:end-before: end-get-popular-snippet
+
 Entity Stats
 ~~~~~~~~~~~~~~~~~~~~~~
 

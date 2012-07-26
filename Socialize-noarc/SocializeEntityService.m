@@ -28,7 +28,7 @@
 #import "SocializeEntityService.h"
 #import "SocializeObjectFactory.h"
 #import "SocializeEntity.h"
-
+#import "socialize_globals.h"
 
 #define ENTITY_GET_ENDPOINT     @"entity/"
 #define ENTITY_CREATE_ENDPOINT  @"entity/"
@@ -99,12 +99,18 @@
     [self callEntityGetWithParams:params success:success failure:failure];
 }
 
-- (void)getEntitiesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+- (void)getEntitiesWithSorting:(SZResultSorting)sorting first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+    NSString *sortingString = SZAPINSStringFromSZResultSorting(sorting);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:first forKey:@"first"];
     [params setValue:last forKey:@"last"];
+    [params setValue:sortingString forKey:@"sort"];
     
     [self callEntityGetWithParams:params success:success failure:failure];
+}
+
+- (void)getEntitiesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+    [self getEntitiesWithSorting:SZResultSortingDefault first:first last:last success:success failure:failure];
 }
 
 -(void)entityWithKey:(NSString *)keyOfEntity

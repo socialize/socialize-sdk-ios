@@ -10,6 +10,12 @@
 #import "SocializeErrorDefinitions.h"
 #import "SocializeVersion.h"
 
+typedef enum {
+    SZResultSortingDefault,
+    SZResultSortingMostRecent = SZResultSortingDefault,
+    SZResultSortingPopularity,
+} SZResultSorting;
+
 /** 
  Third party authentication type 
 */

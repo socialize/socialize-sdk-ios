@@ -362,10 +362,14 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
     }];
 }
 
-- (NSArray*)getEntities {
+- (NSArray*)getEntitiesWithSorting:(SZResultSorting)sorting {
     return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
-        [SZEntityUtils getEntitiesWithFirst:nil last:[NSNumber numberWithInteger:20] success:actionSuccess failure:actionFailure];
+        [SZEntityUtils getEntitiesWithSorting:sorting first:nil last:[NSNumber numberWithInteger:20] success:actionSuccess failure:actionFailure];
     }];
+}
+
+- (NSArray*)getEntities {
+    return [self getEntitiesWithSorting:SZResultSortingDefault];
 }
 
 - (NSArray*)getEntitiesWithIds:(NSArray*)ids {

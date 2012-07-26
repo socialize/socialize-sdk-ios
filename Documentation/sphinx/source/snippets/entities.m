@@ -51,6 +51,20 @@
 
 // end-get-all-snippet
 
+// begin-get-popular-snippet
+
+- (void)getPopularEntitiesForApplication {
+    [SZEntityUtils getEntitiesWithSorting:SZResultSortingPopularity first:nil last:nil success:^(NSArray *entities) {
+        for (id<SZEntity> entity in entities) {
+            NSLog(@"Retrieved entity %@/%d", [entity key], [entity objectID]);            
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"Failure: %@", [error localizedDescription]);        
+    }];
+}
+
+// end-get-popular-snippet
+
 // begin-get-many-snippet
 
 - (void)getMultipleEntitiesById {

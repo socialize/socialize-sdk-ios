@@ -33,3 +33,15 @@ id SZUnarchiveUser(Protocol* protocol) {
     // Not available
     return nil;
 }
+
+NSString *SZAPINSStringFromSZResultSorting(SZResultSorting sorting) {
+    switch (sorting) {
+        case SZResultSortingMostRecent:
+            return nil;
+        case SZResultSortingPopularity:
+            return @"total_activity";
+            
+    }
+    
+    return nil;
+}

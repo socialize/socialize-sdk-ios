@@ -26,10 +26,14 @@
     }, failure);
 }
 
-+ (void)getEntitiesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entity))success failure:(void(^)(NSError *error))failure {
++ (void)getEntitiesWithSorting:(SZResultSorting)sorting first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entity))success failure:(void(^)(NSError *error))failure {
     SZAuthWrapper(^{
-        [[Socialize sharedSocialize] getEntitiesWithFirst:first last:last success:success failure:failure];
+        [[Socialize sharedSocialize] getEntitiesWithSorting:sorting first:first last:last success:success failure:failure];
     }, failure);
+}
+
++ (void)getEntitiesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entity))success failure:(void(^)(NSError *error))failure {
+    [self getEntitiesWithSorting:SZResultSortingDefault first:first last:last success:success failure:failure];
 }
 
 + (void)addEntity:(id<SZEntity>)entity success:(void(^)(id<SZEntity> entity))success failure:(void(^)(NSError *error))failure {
