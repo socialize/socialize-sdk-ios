@@ -194,7 +194,7 @@
 }
 
 + (id)scenarioToTestActionBar {
-    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test the like button"];
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test the action bar"];
     
     NSMutableArray *steps = [NSMutableArray array];
     
@@ -214,7 +214,7 @@
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Close"]];
 
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"views button"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Done"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
     
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"share button"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Cancel"]];
