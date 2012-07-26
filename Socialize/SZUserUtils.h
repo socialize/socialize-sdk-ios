@@ -15,7 +15,7 @@
 @interface SZUserUtils : NSObject
 
 + (void)showLinkDialogWithViewController:(UIViewController*)viewController completion:(void(^)(SZSocialNetwork selectedNetwork))completion cancellation:(void(^)())cancellation;
-+ (void)showUserProfileInViewController:(UIViewController*)viewController user:(id<SocializeFullUser>)user completion:(void(^)(id<SZFullUser> user))completion;
++ (void)showUserProfileInViewController:(UIViewController*)viewController user:(id)user completion:(void(^)(id<SZFullUser> user))completion;
 + (void)showUserSettingsInViewController:(UIViewController*)viewController completion:(void(^)())completion;
 + (SZUserSettings*)currentUserSettings;
 + (id<SocializeFullUser>)currentUser;

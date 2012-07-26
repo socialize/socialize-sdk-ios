@@ -21,7 +21,7 @@
 #import "_SZUserProfileViewController.h"
 #import "socialize_globals.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "SZUserUtils.h"
 
 #define kCenterPointLatitude  37.779941
 #define kCenterPointLongitude -122.417908
@@ -238,8 +238,12 @@
     }
 }
 
+- (IBAction)profileButtonPressed:(id)sender {
+    [SZUserUtils showUserProfileInViewController:self user:self.socializeActivity.user completion:nil];    
+}
+
 - (void)activityViewController:(SocializeActivityViewController*)activityViewController profileTappedForUser:(id<SocializeUser>)user {
-    
+    [SZUserUtils showUserProfileInViewController:self user:user completion:nil];
 }
 
 - (void)activityViewController:(SocializeActivityViewController *)activityViewController activityTapped:(id<SocializeActivity>)activity {

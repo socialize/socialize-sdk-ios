@@ -48,7 +48,7 @@
     [viewController presentModalViewController:linkDialog animated:YES];
 }
 
-+ (void)showUserProfileInViewController:(UIViewController*)viewController user:(id<SocializeFullUser>)user completion:(void(^)(id<SZFullUser> user))completion {
++ (void)showUserProfileInViewController:(UIViewController*)viewController user:(id)user completion:(void(^)(id<SZFullUser> user))completion {
     if (user == nil) {
         user = [self currentUser];
     }
