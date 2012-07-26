@@ -40,7 +40,10 @@ static NSString *kSocialNetworkSection = @"kSocialNetworkSection";
 static NSString *kOtherSection = @"kOtherSection";
 static NSString *kAutopostSection = @"kAutopostSection";
 
-@interface SZBaseShareViewController ()
+@interface SZBaseShareViewController () {
+    dispatch_once_t _initToken;
+}
+
 @property (nonatomic, retain) NSMutableArray *sections;
 @property (nonatomic, retain) NSMutableDictionary *socialNetworkSection;
 @property (nonatomic, retain) NSMutableDictionary *facebookRow;
@@ -146,12 +149,21 @@ static NSString *kAutopostSection = @"kAutopostSection";
 
 }
 
+- (void)updateContinueButtonState {
+    SZSocialNetwork selectedNetworks = [self selectedNetworks];
+    self.navigationItem.rightBarButtonItem.enabled = self.dontRequireNetworkSelection || selectedNetworks != SZSocialNetworkNone;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     if ([self.navigationController.viewControllers count] >= 2) {
         [self.cancelButton changeTitleOnCustomButtonToText:@"Back"];
     }
+    
+    dispatch_once(&_initToken, ^{
+        [self updateContinueButtonState];
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -193,6 +205,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     
     [self reloadRowWithIdentifier:kTwitterRow];
     [self reloadRowWithIdentifier:kFacebookRow];
+    [self updateContinueButtonState];
 }
 
 - (UISwitch*)facebookSwitch {
@@ -227,6 +240,8 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 }, ^{
                     [weakSelf syncInterfaceWithThirdPartyState];
                 });
+            } else {
+                [weakSelf syncInterfaceWithThirdPartyState];
             }
             
         };
@@ -292,6 +307,8 @@ static NSString *kAutopostSection = @"kAutopostSection";
                         [weakSelf failWithError:error];
                     }
                 }];
+            } else {
+                [weakSelf syncInterfaceWithThirdPartyState];
             }
         };
         
