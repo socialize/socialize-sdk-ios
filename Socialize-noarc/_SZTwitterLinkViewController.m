@@ -225,7 +225,7 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 {
     [super viewDidLoad];
     
-    self.title = @"Twitter Auth";
+    self.title = @"Twitter";
     self.navigationItem.leftBarButtonItem = self.cancelButton;
 
     [NSHTTPCookieStorage removeCookiesInDomain:@".twitter.com"];
