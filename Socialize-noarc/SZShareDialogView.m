@@ -39,12 +39,17 @@
     [self setNeedsLayout];
 }
 
+- (void)setFooterView:(UIView *)footerView {
+    NonatomicRetainedSetToFrom(footerView_, footerView);
+    [self setNeedsLayout];
+}
+
 - (void)layoutSubviews {
     if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]) && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         // Hide upper image on phone, in landscape
-        self.containerView.rows = [NSArray arrayWithObjects:self.tableView, nil];
+        self.containerView.rows = [NSArray arrayWithObjects:self.tableView, self.footerView, nil];
     } else {
-        self.containerView.rows = [NSArray arrayWithObjects:self.headerView, self.tableView, nil];
+        self.containerView.rows = [NSArray arrayWithObjects:self.headerView, self.tableView, self.footerView, nil];
     }
     
     [self.tableView sizeToCells];

@@ -29,4 +29,5 @@
 @property (nonatomic, assign) BOOL hideUnlinkedNetworks;
 @property (nonatomic, assign) BOOL dontRequireNetworkSelection;
 @property (nonatomic, retain) UIView *headerView;
+@property (nonatomic, retain) UIView *footerView;
 @end

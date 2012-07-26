@@ -68,6 +68,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 @synthesize dontRequireNetworkSelection = dontRequireNetworkSelection_;
 @synthesize createdShares = createdShares_;
 @synthesize headerView = headerView_;
+@synthesize footerView = footerView_;
 
 - (void)dealloc {
     self.shareDialogView = nil;
@@ -89,6 +90,11 @@ static NSString *kAutopostSection = @"kAutopostSection";
 - (void)setHeaderView:(UIView *)headerView {
     NonatomicRetainedSetToFrom(headerView_, headerView);
     [self.shareDialogView setHeaderView:headerView];
+}
+
+- (void)setFooterView:(UIView *)footerView {
+    NonatomicRetainedSetToFrom(footerView_, footerView);
+    [self.shareDialogView setFooterView:footerView];
 }
 
 - (NSMutableArray*)createdShares {
@@ -133,6 +139,11 @@ static NSString *kAutopostSection = @"kAutopostSection";
     if (self.headerView != nil) {
         self.shareDialogView.headerView = self.headerView;
     }
+    
+    if (self.footerView != nil) {
+        self.shareDialogView.footerView = self.footerView;
+    }
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {

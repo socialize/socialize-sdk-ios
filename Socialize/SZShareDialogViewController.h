@@ -17,4 +17,5 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) id<SZEntity> entity;
 @property (nonatomic, strong) UIView *headerView;
+@property (nonatomic, strong) UIView *footerView;
 @end

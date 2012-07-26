@@ -18,6 +18,7 @@
 @dynamic completionBlock;
 @dynamic cancellationBlock;
 @dynamic headerView;
+@dynamic footerView;
 @synthesize title = __title;
 @synthesize shareDialog = _shareDialog;
 @synthesize shares = _shares;
