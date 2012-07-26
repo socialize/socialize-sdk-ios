@@ -67,6 +67,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 @synthesize hideUnlinkedNetworks = hideUnlinkedNetworks_;
 @synthesize dontRequireNetworkSelection = dontRequireNetworkSelection_;
 @synthesize createdShares = createdShares_;
+@synthesize headerView = headerView_;
 
 - (void)dealloc {
     self.shareDialogView = nil;
@@ -83,6 +84,11 @@ static NSString *kAutopostSection = @"kAutopostSection";
     [SZFacebookUtils cancelLink];
 
     [super dealloc];
+}
+
+- (void)setHeaderView:(UIView *)headerView {
+    NonatomicRetainedSetToFrom(headerView_, headerView);
+    [self.shareDialogView setHeaderView:headerView];
 }
 
 - (NSMutableArray*)createdShares {
@@ -118,6 +124,10 @@ static NSString *kAutopostSection = @"kAutopostSection";
     }
          
     self.navigationItem.leftBarButtonItem = self.cancelButton;
+    
+    if (self.headerView != nil) {
+        self.shareDialogView.headerView = self.headerView;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

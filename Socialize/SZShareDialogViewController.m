@@ -17,6 +17,7 @@
 @implementation SZShareDialogViewController
 @dynamic completionBlock;
 @dynamic cancellationBlock;
+@dynamic headerView;
 @synthesize title = __title;
 @synthesize shareDialog = _shareDialog;
 @synthesize shares = _shares;

@@ -33,6 +33,7 @@
 
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))completion {
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
+
     shareDialog.completionBlock = ^(NSArray *shares) {
         [viewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL_1(completion, shares);
@@ -52,6 +53,7 @@
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))completion cancellation:(void(^)())cancellation {
     
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
+    
     shareDialog.completionBlock = ^(NSArray *shares) {
         [viewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL_1(completion, shares);

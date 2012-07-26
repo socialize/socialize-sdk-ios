@@ -16,4 +16,5 @@
 @property (nonatomic, copy) void (^cancellationBlock)();
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) id<SZEntity> entity;
+@property (nonatomic, strong) UIView *headerView;
 @end

@@ -28,4 +28,5 @@
 @property (nonatomic, assign) BOOL disableAutopostSelection;
 @property (nonatomic, assign) BOOL hideUnlinkedNetworks;
 @property (nonatomic, assign) BOOL dontRequireNetworkSelection;
+@property (nonatomic, retain) UIView *headerView;
 @end

@@ -8,6 +8,7 @@
 
 #import "SZShareDialogView.h"
 #import "UITableView+Resize.h"
+#import "socialize_globals.h"
 
 @implementation SZShareDialogView
 @synthesize continueButton = continueButton_;
@@ -33,6 +34,11 @@
     self.tableView.separatorColor = [UIColor colorWithRed:25/255.0f green:31/255.0f blue:37/255.0f alpha:1.0];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.tableView setBackgroundView:nil];            
+}
+
+- (void)setHeaderView:(UIView *)headerView {
+    NonatomicRetainedSetToFrom(headerView_, headerView);
+    [self setNeedsLayout];
 }
 
 - (void)layoutSubviews {

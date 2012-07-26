@@ -30,6 +30,12 @@
 - (void)manuallyShowShareDialog {
     SZEntity *entity = [SZEntity entityWithKey:@"key" name:@"name"];
     SZShareDialogViewController *share = [[SZShareDialogViewController alloc] initWithEntity:entity];
+    
+//    share.title = @"A Custom Title";
+//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+//    headerView.backgroundColor = [UIColor greenColor];    
+//    share.headerView = headerView;
+    
     share.completionBlock = ^(NSArray *shares) {
         
         // Dismiss however you want here
