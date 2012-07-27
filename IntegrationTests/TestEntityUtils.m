@@ -23,7 +23,7 @@
 
     // Get entities (app-wide)
     entities = [self getEntitiesWithSorting:SZResultSortingPopularity];
-    [self assertObject:createdEntity inCollection:entities];
+    GHAssertNotNil(entities, @"Should have found popular entities");
 
     // Get entities (by id)
     entities = [self getEntitiesWithIds:[NSArray arrayWithObject:[NSNumber numberWithInteger:[createdEntity objectID]]]];
