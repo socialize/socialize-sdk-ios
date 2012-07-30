@@ -166,7 +166,8 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     } else if ([notificationType isEqualToString:@"entity_notification"]) {
         SocializeDirectEntityNotificationDisplayController *display = [[[SocializeDirectEntityNotificationDisplayController alloc] initWithUserInfo:userInfo] autorelease];
         [self addDisplayController:display];
-
+    } else if ([notificationType isEqualToString:@"developer_notification"]) {
+        // noop
     } else {
         return NO;
     }
