@@ -99,10 +99,10 @@
     GHAssertFalse(self.deviceTokenSender.tokenOnServer, @"Should not be registered");
 }
 
-- (void)testDeviceTokenRegistrationWithNoUserDoesNotSend {
+- (void)testDeviceTokenRegistrationWithNoUserAuths {
     self.deviceTokenSender.tokenOnServer = NO;
     [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
-    [[self.mockSocialize reject] _registerDeviceTokenString:self.testTokenString];
+    [[self.mockSocialize expect] authenticateAnonymously];
     
     [self.deviceTokenSender registerDeviceToken:self.testTokenData];    
 }
