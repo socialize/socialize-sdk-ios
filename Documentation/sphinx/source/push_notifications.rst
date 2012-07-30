@@ -187,7 +187,24 @@ a comma-separated list of user ids.
 
 .. image:: images/send_targeted_smartalert.png
 
-.. note:: Socialize v1.6 or later is required to receive target SmartAlerts
+.. note:: Socialize v1.6 or later is required to receive targeted SmartAlerts
+
+Subscribing to Entity Subscribers (Without Comments)
+-----------------------------------------------------------------------------------
+It's possible to subscribe your users to specific entities, and send alerts only to users
+who have subscribed to these entities. The builtin UI controllers do not expose this
+functionality, but if you wish, you can handle the subscription on your own.
+
+#. Open the Socialize web dashboard for your app at getsocialize.com / "My Apps"
+#. Select the "Entities" tab
+#. Navigate to or search for your entity by key or id
+#. Click 'Send SmartAlert' underneath 'I want to...' on the right
+#. Fill out the alert content
+#. Check 'Send only to explicitly subscribed users'
+
+.. image:: images/send_subscriber_smartalert.png
+
+.. note:: Socialize v2.2.1 or later is required to receive subscriber-only smart alerts
 
 Programmatically Dismissing Notification Popups
 ----------------------------------------
