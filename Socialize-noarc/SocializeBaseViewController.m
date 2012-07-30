@@ -39,7 +39,6 @@
 #import "UINavigationController+Socialize.h"
 #import "SocializePreprocessorUtilities.h"
 #import "SocializeThirdPartyFacebook.h"
-#import "SZDisplay.h"
 #import "SZUserUtils.h"
 #import <BlocksKit/BlocksKit.h>
 #import "SDKHelpers.h"
@@ -60,7 +59,6 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 @synthesize keyboardListener = keyboardListener_;
 @synthesize completionBlock = completionBlock_;
 @synthesize cancellationBlock = cancellationBlock_;
-@synthesize display = display_;
 
 - (void)dealloc
 {
@@ -80,7 +78,6 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     self.keyboardListener = nil;
     self.cancellationBlock = nil;
     self.completionBlock = nil;
-    self.display = nil;
 
     [super dealloc];
 }

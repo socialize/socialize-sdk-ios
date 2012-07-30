@@ -11,7 +11,6 @@
 #import "SocializeFacebookAuthHandler.h"
 #import "_Socialize.h"
 #import "SocializeFacebookInterface.h"
-#import "SZDisplay.h"
 #import "SDKHelpers.h"
 
 @implementation SZFacebookUtils

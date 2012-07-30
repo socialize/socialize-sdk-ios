@@ -12,7 +12,6 @@
 #import "SZNavigationController.h"
 #import "_SZLinkDialogViewController.h"
 #import "SDKHelpers.h"
-#import "SZDisplay.h"
 #import "SZUserSettingsViewController.h"
 #import "SZUserProfileViewController.h"
 #import "SZLinkDialogViewController.h"

@@ -115,19 +115,5 @@
  */
 -(id)initWithEntity:(id<SocializeEntity>)entity presentModalInController:(UIViewController*)controller;
 
-/**
- 
- @param entity The Socialize entity. It will be created if it does not exist
- */
-//+(SocializeActionBar*)actionBarWithEntity:(id<SocializeEntity>)entity display:(id)display;
-
-/**
- Action Bar Init
- 
- @param url The URL for the Entity Key
- @param display Target for display actions. SZDisplay implementation
- */
-//-(id)initWithEntity:(id<SocializeEntity>)entity display:(id<SZDisplay>)display;
-
 @end
 

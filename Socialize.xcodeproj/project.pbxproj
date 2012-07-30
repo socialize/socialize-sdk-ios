@@ -134,7 +134,6 @@
 		AA0087A6158D35C000480399 /* SocializeViewService.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086E5158D35BF00480399 /* SocializeViewService.m */; };
 		AA0087AE158D35C000480399 /* _SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086F6158D35BF00480399 /* _SZCommentsListViewController.m */; };
 		AA0087B0158D35C000480399 /* _SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FA158D35BF00480399 /* _SZComposeCommentViewController.m */; };
-		AA0087B2158D35C000480399 /* SZDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FF158D35BF00480399 /* SZDisplay.m */; };
 		AA0087B9158D35C000480399 /* SZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870D158D35BF00480399 /* SZNavigationController.m */; };
 		AA0087BA158D35C000480399 /* _SZUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870F158D35BF00480399 /* _SZUserProfileViewController.m */; };
 		AA0087BB158D35C000480399 /* _SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008711158D35BF00480399 /* _SZUserSettingsViewController.m */; };
@@ -1309,7 +1308,6 @@
 		AAB5E4E1159044E600D3EBDF /* SocializeViewService.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086E5158D35BF00480399 /* SocializeViewService.m */; };
 		AAB5E4E7159044E600D3EBDF /* _SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086F6158D35BF00480399 /* _SZCommentsListViewController.m */; };
 		AAB5E4E9159044E600D3EBDF /* _SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FA158D35BF00480399 /* _SZComposeCommentViewController.m */; };
-		AAB5E4EB159044E600D3EBDF /* SZDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086FF158D35BF00480399 /* SZDisplay.m */; };
 		AAB5E4F2159044E600D3EBDF /* SZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870D158D35BF00480399 /* SZNavigationController.m */; };
 		AAB5E4F3159044E600D3EBDF /* _SZUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00870F158D35BF00480399 /* _SZUserProfileViewController.m */; };
 		AAB5E4F4159044E600D3EBDF /* _SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008711158D35BF00480399 /* _SZUserSettingsViewController.m */; };
@@ -2067,8 +2065,6 @@
 		AA0086F9158D35BF00480399 /* _SZComposeCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SZComposeCommentViewController.h; sourceTree = "<group>"; };
 		AA0086FA158D35BF00480399 /* _SZComposeCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SZComposeCommentViewController.m; sourceTree = "<group>"; };
 		AA0086FD158D35BF00480399 /* SZComposeCommentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZComposeCommentViewControllerDelegate.h; sourceTree = "<group>"; };
-		AA0086FE158D35BF00480399 /* SZDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZDisplay.h; sourceTree = "<group>"; };
-		AA0086FF158D35BF00480399 /* SZDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDisplay.m; sourceTree = "<group>"; };
 		AA008706158D35BF00480399 /* SZLikeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZLikeOptions.h; path = "Socialize-noarc/SZLikeOptions.h"; sourceTree = SOURCE_ROOT; };
 		AA008707158D35BF00480399 /* SZLikeOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZLikeOptions.m; path = "Socialize-noarc/SZLikeOptions.m"; sourceTree = SOURCE_ROOT; };
 		AA00870C158D35BF00480399 /* SZNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZNavigationController.h; sourceTree = "<group>"; };
@@ -4051,8 +4047,6 @@
 				AA0086C6158D35BE00480399 /* SocializeTableBGInfoView.m */,
 				AA0086C7158D35BE00480399 /* SocializeTableViewController.h */,
 				AA0086C8158D35BE00480399 /* SocializeTableViewController.m */,
-				AA0086FE158D35BF00480399 /* SZDisplay.h */,
-				AA0086FF158D35BF00480399 /* SZDisplay.m */,
 				AA00870C158D35BF00480399 /* SZNavigationController.h */,
 				AA00870D158D35BF00480399 /* SZNavigationController.m */,
 				AA00870E158D35BF00480399 /* _SZUserProfileViewController.h */,
@@ -5890,7 +5884,6 @@
 				AA0087A6158D35C000480399 /* SocializeViewService.m in Sources */,
 				AA0087AE158D35C000480399 /* _SZCommentsListViewController.m in Sources */,
 				AA0087B0158D35C000480399 /* _SZComposeCommentViewController.m in Sources */,
-				AA0087B2158D35C000480399 /* SZDisplay.m in Sources */,
 				AA0087B9158D35C000480399 /* SZNavigationController.m in Sources */,
 				AA0087BA158D35C000480399 /* _SZUserProfileViewController.m in Sources */,
 				AA0087BB158D35C000480399 /* _SZUserSettingsViewController.m in Sources */,
@@ -6196,7 +6189,6 @@
 				AAB5E4E1159044E600D3EBDF /* SocializeViewService.m in Sources */,
 				AAB5E4E7159044E600D3EBDF /* _SZCommentsListViewController.m in Sources */,
 				AAB5E4E9159044E600D3EBDF /* _SZComposeCommentViewController.m in Sources */,
-				AAB5E4EB159044E600D3EBDF /* SZDisplay.m in Sources */,
 				AAB5E4F2159044E600D3EBDF /* SZNavigationController.m in Sources */,
 				AAB5E4F3159044E600D3EBDF /* _SZUserProfileViewController.m in Sources */,
 				AAB5E4F4159044E600D3EBDF /* _SZUserSettingsViewController.m in Sources */,

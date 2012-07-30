@@ -70,7 +70,6 @@
 @synthesize delegate = delegate_;
 @synthesize unconfiguredEmailAlert = unconfiguredEmailAlert_;
 @synthesize shareTextMessageComposer = shareTextMessageComposer_;
-@synthesize display = display_;
 @synthesize viewController = viewController_;
 
 - (void)dealloc

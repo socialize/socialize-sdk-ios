@@ -15,7 +15,6 @@
 #import "SocializeThirdParty.h"
 #import "Socialize.h"
 #import <BlocksKit/BlocksKit.h>
-#import "SZDisplay.h"
 #import "SZUserUtils.h"
 #import "_Socialize.h"
 #import "SocializePrivateDefinitions.h"

@@ -34,7 +34,6 @@
 @class ImagesCache;
 @class _SZUserSettingsViewController;
 
-@protocol SZDisplay;
 @protocol SocializeBaseViewControllerDelegate;
 
 @interface SocializeBaseViewController : UIViewController<SocializeServiceDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, SocializeKeyboardListenerDelegate, SocializeBaseViewControllerDelegate> {
@@ -52,7 +51,6 @@
 @property (nonatomic, retain) SocializeKeyboardListener *keyboardListener;
 @property (nonatomic, copy) void (^completionBlock)();
 @property (nonatomic, copy) void (^cancellationBlock)();
-@property (nonatomic, retain) id<SZDisplay> display;
 
 -(void) showAlertWithText:(NSString*)alertMessage andTitle:(NSString*)title;
 -(void) startLoading;
