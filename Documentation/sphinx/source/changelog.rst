@@ -4,6 +4,22 @@
 Changelog
 =============================================
 
+v2.2.1
+------
+[bug] Fix a case where device token would not be sent on startupa [ ]
+
+[bug] Subscriber-only smartalerts not being handled correctly [ ]
+
+[feature] Add note to docs on subscriber-only smartalerts [ ]
+
+[feature] add entity-notification as a subscription type [ publicize ]
+
+[bug] developer_notification type should be eaten by handleSocializeNotification [ ]
+
+[feature] Add docs and better support for handling notifications while in foreground [ ]
+
+[bug] Fix 'server refusing to fulfill request' problem with initial twitter posts [ ]
+
 v2.2
 ----
 [feature] Share decisions from end user should be reported via event tracker [ ]
