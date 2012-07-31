@@ -56,6 +56,7 @@
         self.request = [[OAMutableURLRequest alloc] initWithURL:url consumer:consumer token:tokenObject realm:@"" signatureProvider:nil];
         
         [self.request setHTTPMethod:method];
+        [self.request setHTTPShouldHandleCookies:NO];
 
         NSMutableArray *oaParams = [NSMutableArray arrayWithCapacity:[parameters count]];
         [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
