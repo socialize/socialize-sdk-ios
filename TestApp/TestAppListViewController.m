@@ -185,7 +185,7 @@ static TestAppListViewController *sharedSampleListViewController;
                                        nil];
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
         
-        [SZSmartAlertUtils handleNotification:userInfo];
+        [SZSmartAlertUtils openNotification:userInfo];
     }]];
 
     NSMutableArray *actionBarRows = [NSMutableArray array];
