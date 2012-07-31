@@ -349,6 +349,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnony
     return [SocializeNotificationHandler isSocializeNotification:userInfo];
 }
 
++ (BOOL)openNotification:(NSDictionary*)userInfo {
+    return [[SocializeNotificationHandler sharedNotificationHandler] openSocializeNotification:userInfo];
+}
+
 + (BOOL)handleNotification:(NSDictionary*)userInfo {
     return [[SocializeNotificationHandler sharedNotificationHandler] handleSocializeNotification:userInfo];
 }

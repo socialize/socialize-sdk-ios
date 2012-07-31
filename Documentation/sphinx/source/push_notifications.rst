@@ -121,11 +121,11 @@ Handle Notifications
 .. literalinclude:: snippets/configure_notifications.m
   :start-after: begin-handle-snippet
   :end-before: end-handle-snippet
-  :emphasize-lines: 0-10,18-27
+  :emphasize-lines: 1-22,24-28,38-41
 
 .. note::
 
-    * Socialize will not currently do any foreground handling of notifications. If a notification is received while the Application is in the foreground, it will be ignored.
+    * Socialize will not currently do any UI display for notifications received while in the foreground. If you need special behavior for foreground notifications, you should add it on your own. See the bottom else block in handleNotification: above.
     * Our method call will let you know if the notification was a Socialize notification. This allows you to use the logic below to also handle notifications of your own, if you need to.
  
 Defining an Entity Loader
@@ -148,7 +148,7 @@ Copy the lines below to add an entity loader
 .. literalinclude:: snippets/configure_notifications.m
   :start-after: begin-entity-loader-snippet
   :end-before: end-entity-loader-snippet
-  :emphasize-lines: 18-22
+  :emphasize-lines: 14-18
 
 .. image:: images/entity_loader.png
 

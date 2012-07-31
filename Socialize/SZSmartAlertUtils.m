@@ -20,6 +20,10 @@
     return available;
 }
 
++ (BOOL)openNotification:(NSDictionary*)userInfo {
+    return [Socialize handleNotification:userInfo];
+}
+
 + (BOOL)handleNotification:(NSDictionary*)userInfo {
     return [Socialize handleNotification:userInfo];
 }

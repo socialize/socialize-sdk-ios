@@ -47,15 +47,33 @@
 
 // begin-handle-snippet
 
+- (void)handleNotification:(NSDictionary*)userInfo {
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+        if ([SZSmartAlertUtils openNotification:userInfo]) {
+            NSLog(@"Socialize handled the notification (background).");
+            
+        } else {
+            NSLog(@"Socialize did not handle the notification (background).");
+            
+        }
+    } else {
+        
+        NSLog(@"Notification received in foreground");
+        
+        // You may want to display an alert or other popup instead of immediately opening the notification here.
+        
+        if ([SZSmartAlertUtils openNotification:userInfo]) {
+            NSLog(@"Socialize handled the notification (foreground).");
+        } else {
+            NSLog(@"Socialize did not handle the notification (foreground).");
+        }
+    }
+}
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
     // Handle Socialize notification at foreground
-    if ([SZSmartAlertUtils handleNotification:userInfo]) {
-        NSLog(@"Socialize handled the notification on foreground");
-        return;
-    }
-    
-    NSLog(@"Socialize did not handle the notification on foreground");
+    [self handleNotification:userInfo];
 }
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
@@ -68,11 +86,7 @@
     // Handle Socialize notification at launch
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo != nil) {
-        if ([SZSmartAlertUtils handleNotification:userInfo]) {
-            NSLog(@"Socialize handled the notification on app launch.");
-        } else {
-            NSLog(@"Socialize did not handle the notification on app launch.");
-        }
+        [self handleNotification:userInfo];
     }
     
     //your application specific code
@@ -99,11 +113,7 @@
     // Handle Socialize notification at launch
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo != nil) {
-        if ([SZSmartAlertUtils handleNotification:userInfo]) {
-            NSLog(@"Socialize handled the notification on app launch.");
-        } else {
-            NSLog(@"Socialize did not handle the notification on app launch.");
-        }
+        [self handleNotification:userInfo];
     }
 
     // Specify a Socialize entity loader block

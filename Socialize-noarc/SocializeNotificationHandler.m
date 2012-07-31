@@ -129,6 +129,17 @@ static SocializeNotificationHandler *sharedNotificationHandler;
 }
 
 - (BOOL)handleSocializeNotification:(NSDictionary*)userInfo {
+    NSString *notificationType = [[userInfo objectForKey:@"socialize"] objectForKey:@"notification_type"];
+
+    if ([notificationType isEqualToString:@"new_comments"] && [self applicationInForeground]) {
+        // Legacy behavior for new_comments
+        return NO;
+    }
+    
+    return [self openSocializeNotification:userInfo];
+}
+
+- (BOOL)openSocializeNotification:(NSDictionary*)userInfo {
     
     NSLog(@"Handling notification: %@", userInfo);
     
@@ -150,11 +161,6 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     
 
     if ([notificationType isEqualToString:@"new_comments"]) {
-        // Don't handle any foreground notifications new_comments, for now
-        if ([self applicationInForeground]) {
-            return NO;
-        }
-        
         SocializeNewCommentsNotificationDisplayController *display = [[[SocializeNewCommentsNotificationDisplayController alloc] initWithUserInfo:userInfo] autorelease];
         [self addDisplayController:display];
     } else if ([notificationType isEqualToString:@"developer_direct_url"]) {

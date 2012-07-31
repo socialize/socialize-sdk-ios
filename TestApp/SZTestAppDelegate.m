@@ -43,6 +43,12 @@
     self.window.rootViewController = sample;
     [self.window makeKeyAndVisible];
 
+    // Handle Socialize notification at launch
+    NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (userInfo != nil) {
+        [self handleNotification:userInfo];
+    }
+    
 #if RUN_KIF_TESTS
     [[SZTestHelper sharedTestHelper] startMockingSucceedingLocation];
     [[TestAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
@@ -69,8 +75,31 @@
     NSLog(@"Registration failure: %@", [error localizedDescription]);
 }
 
+- (void)handleNotification:(NSDictionary*)userInfo {
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+        if ([SZSmartAlertUtils openNotification:userInfo]) {
+            NSLog(@"Socialize handled the notification (background).");
+
+        } else {
+            NSLog(@"Socialize did not handle the notification (background).");
+            
+        }
+    } else {
+        
+        NSLog(@"Notification received in foreground");
+        
+        // You may want to display an alert or other popup instead of immediately opening the notification here.
+        
+        if ([SZSmartAlertUtils openNotification:userInfo]) {
+            NSLog(@"Socialize handled the notification (foreground).");
+        } else {
+            NSLog(@"Socialize did not handle the notification (foreground).");
+        }
+    }
+}
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [SZSmartAlertUtils handleNotification:userInfo];
+    [self handleNotification:userInfo];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -126,6 +126,8 @@ otherwise you will get a failure.
 
 + (BOOL)handleNotification:(NSDictionary*)userInfo;
 
++ (BOOL)openNotification:(NSDictionary*)userInfo;
+
 /**
  Provide access to the entity loader block
  

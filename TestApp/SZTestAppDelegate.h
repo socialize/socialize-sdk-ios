@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SZTestAppDelegate : UIResponder <UIApplicationDelegate>
+@interface SZTestAppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
