@@ -11,7 +11,7 @@
 @interface SZSmartAlertUtils : NSObject
 
 + (BOOL)isAvailable;
-+ (BOOL)handleNotification:(NSDictionary*)userInfo __attribute__((deprecated("Please use `openNotification:` (which unconditionally opens the notification), instead")));
++ (BOOL)handleNotification:(NSDictionary*)userInfo; // __attribute__((deprecated("Please use `openNotification:` (which unconditionally opens the notification), instead")));
 + (BOOL)isSocializeNotification:(NSDictionary*)userInfo;
 + (void)registerDeviceToken:(NSData*)deviceToken;
 + (BOOL)openNotification:(NSDictionary*)userInfo;
